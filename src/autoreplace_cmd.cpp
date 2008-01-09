@@ -161,12 +161,10 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	/* We give the player a loan of the same amount as the sell value.
 	 * This is needed in case he needs the income from the sale to build the new vehicle.
 	 * We take it back if building fails or when we really sell the old engine */
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	SubtractMoneyFromPlayer(sell_value);
 
 	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, GetCmdBuildVeh(old_v));
 	if (CmdFailed(cost)) {
-		SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 		/* Take back the money we just gave the player */
 		sell_value.MultiplyCost(-1);
 		SubtractMoneyFromPlayer(sell_value);
@@ -266,7 +264,6 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 		/* Ensure that the player will not end up having negative money while autoreplacing
 		 * This is needed because the only other check is done after the income from selling the old vehicle is substracted from the cost */
 		if (CmdFailed(tmp_move) || p->player_money < (cost.GetCost() + total_cost)) {
-			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 			/* Pay back the loan */
 			sell_value.MultiplyCost(-1);
 			SubtractMoneyFromPlayer(sell_value);
@@ -276,7 +273,6 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 
 	/* Take back the money we just gave the player just before building the vehicle
 	 * The player will get the same amount now that the sale actually takes place */
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	sell_value.MultiplyCost(-1);
 	SubtractMoneyFromPlayer(sell_value);
 
@@ -336,7 +332,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 	v->leave_depot_instantly = false;
 
 	for (;;) {
-		cost = CommandCost();
+		cost = CommandCost(EXPENSES_NEW_VEHICLES);
 		w = v;
 		do {
 			if (w->type == VEH_TRAIN && IsRearDualheaded(w)) {

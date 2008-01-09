@@ -1616,7 +1616,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData* p, RailType railtype, byte flag)
 {
 	CommandCost ret;
-	CommandCost total_cost;
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	Town *t = NULL;
 	int rating = 0;
 	int i, j, k;
@@ -2605,7 +2605,7 @@ static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo
 static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
 	CommandCost ret;
-	CommandCost total_cost;
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	Town *t = NULL;
 	int rating = 0;
 	int roadflag = 0;
@@ -3366,7 +3366,7 @@ static void AiStateAirportStuff(Player *p)
 static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
 	uint32 avail_airports = GetValidAirports();
-	CommandCost total_cost, ret;
+	CommandCost ret,total_cost(EXPENSES_CONSTRUCTION);
 
 	for (; p->mode == 0; p++) {
 		if (!HasBit(avail_airports, p->attr)) return CMD_ERROR;

@@ -157,7 +157,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidatePlayerWindows(p);
 	}
 
-	return CommandCost();
+	return CommandCost(EXPENSES_OTHER);
 }
 
 /** Decrease the loan of your company.
@@ -357,8 +357,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 #ifndef _DEBUG
 	if (_networking) return CMD_ERROR;
 #endif
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-	return CommandCost(-(Money)p1);
+	return CommandCost(EXPENSES_OTHER, -(Money)p1);
 }
 
 /** Transfer funds (money) from one player to another.
@@ -375,9 +374,7 @@ CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!_patches.give_money) return CMD_ERROR;
 
 	const Player *p = GetPlayer(_current_player);
-	CommandCost amount(min((Money)p1, (Money)20000000LL));
-
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
+	CommandCost amount(EXPENSES_OTHER, min((Money)p1, (Money)20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (p->player_money - p->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
@@ -387,7 +384,7 @@ CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Add money to player */
 		PlayerID old_cp = _current_player;
 		_current_player = (PlayerID)p2;
-		SubtractMoneyFromPlayer(CommandCost(-amount.GetCost()));
+		SubtractMoneyFromPlayer(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
 		_current_player = old_cp;
 	}
 

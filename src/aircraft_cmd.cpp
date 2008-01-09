@@ -234,7 +234,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 
 static CommandCost EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
 {
-	return CommandCost(GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
 }
 
 
@@ -281,8 +281,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_QUERY_COST) return value;
 
 	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	/* Prevent building aircraft types at places which can't handle them */
 	if (!CanAircraftUseStation(p1, tile)) return CMD_ERROR;
@@ -492,9 +490,7 @@ CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
-	CommandCost ret(-v->value);
+	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
 		// Invalidate depot
@@ -650,8 +646,6 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CargoID new_cid = GB(p2, 0, 8);
 	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
-
 	/* Check the refit capacity callback */
 	uint16 callback = CALLBACK_FAILED;
 	if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {
@@ -741,11 +735,10 @@ void OnNewDay_Aircraft(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	CommandCost cost = CommandCost(GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364);
+	CommandCost cost = CommandCost(EXPENSES_AIRCRAFT_RUN, GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364);
 
 	v->profit_this_year -= cost.GetCost() >> 8;
 
-	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

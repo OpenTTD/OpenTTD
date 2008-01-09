@@ -511,10 +511,8 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 {
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	CommandCost value((GetEngineProperty(engine, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8);
+	CommandCost value(EXPENSES_NEW_VEHICLES, (GetEngineProperty(engine, 0x17, rvi->base_cost) * _price.build_railwagon) >> 8);
 
 	uint num_vehicles = 1 + CountArticulatedParts(engine, false);
 
@@ -600,7 +598,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 		}
 	}
 
-	return CommandCost(value);
+	return value;
 }
 
 /** Move all free vehicles in the depot to the train */
@@ -621,7 +619,7 @@ static void NormalizeTrainVehInDepot(const Vehicle* u)
 
 static CommandCost EstimateTrainCost(EngineID engine, const RailVehicleInfo* rvi)
 {
-	return CommandCost(GetEngineProperty(engine, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine, 0x17, rvi->base_cost) * (_price.build_railvehicle >> 3) >> 5);
 }
 
 static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool building)
@@ -670,8 +668,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
 		if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 	}
-
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	const RailVehicleInfo *rvi = RailVehInfo(p1);
 
@@ -1313,8 +1309,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
 	while (IsArticulatedPart(v)) v = v->Previous();
 	Vehicle *first = v->First();
 
@@ -1334,7 +1328,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 	}
 
-	CommandCost cost;
+	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	switch (p2) {
 		case 0: case 2: { /* Delete given wagon */
 			bool switch_engine = false;    // update second wagon to engine?
@@ -1804,9 +1798,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	/* Check cargo */
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
-
-	CommandCost cost;
+	CommandCost cost(EXPENSES_TRAIN_RUN);
 	uint num = 0;
 
 	do {
@@ -3481,11 +3473,10 @@ void OnNewDay_Train(Vehicle *v)
 
 		if ((v->vehstatus & VS_STOPPED) == 0) {
 			/* running costs */
-			CommandCost cost(v->GetRunningCost() / 364);
+			CommandCost cost(EXPENSES_TRAIN_RUN, v->GetRunningCost() / 364);
 
 			v->profit_this_year -= cost.GetCost() >> 8;
 
-			SET_EXPENSES_TYPE(EXPENSES_TRAIN_RUN);
 			SubtractMoneyFromPlayerFract(v->owner, cost);
 
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

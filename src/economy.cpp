@@ -103,7 +103,6 @@ Money _additional_cash_required;
 Money CalculateCompanyValue(const Player* p)
 {
 	PlayerID owner = p->index;
-	/* Do a little nasty by using CommandCost, so we can use the "overflow" protection of CommandCost */
 	Money value = 0;
 
 	Station *st;
@@ -662,8 +661,8 @@ static void PlayersGenStatistics()
 
 	FOR_ALL_STATIONS(st) {
 		_current_player = st->owner;
-		SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
-		SubtractMoneyFromPlayer(_price.station_value >> 1);
+		CommandCost cost(EXPENSES_PROPERTY, _price.station_value >> 1);
+		SubtractMoneyFromPlayer(cost);
 	}
 
 	if (!HasBit(1<<0|1<<3|1<<6|1<<9, _cur_month))
@@ -763,12 +762,10 @@ static void PlayersPayInterest()
 		if (!p->is_active) continue;
 
 		_current_player = p->index;
-		SET_EXPENSES_TYPE(EXPENSES_LOAN_INT);
 
-		SubtractMoneyFromPlayer(CommandCost((Money)BigMulSU(p->current_loan, interest, 16)));
+		SubtractMoneyFromPlayer(CommandCost(EXPENSES_LOAN_INT, (Money)BigMulSU(p->current_loan, interest, 16)));
 
-		SET_EXPENSES_TYPE(EXPENSES_OTHER);
-		SubtractMoneyFromPlayer(_price.station_value >> 2);
+		SubtractMoneyFromPlayer(CommandCost(EXPENSES_OTHER, _price.station_value >> 2));
 	}
 }
 
@@ -1516,7 +1513,7 @@ void VehiclePayment(Vehicle *front_v)
 
 	if (route_profit != 0) {
 		front_v->profit_this_year += vehicle_profit;
-		SubtractMoneyFromPlayer(-route_profit);
+		SubtractMoneyFromPlayer(CommandCost(front_v->GetExpenseType(true), -route_profit));
 
 		if (IsLocalPlayer() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {
 			SndPlayVehicleFx(SND_14_CASHTILL, front_v);
@@ -1825,9 +1822,8 @@ static void DoAcquireCompany(Player *p)
 	PlayerID old_player = _current_player;
 	for (i = 0; i != 4; i++) {
 		if (p->share_owners[i] != PLAYER_SPECTATOR) {
-			SET_EXPENSES_TYPE(EXPENSES_OTHER);
 			_current_player = p->share_owners[i];
-			SubtractMoneyFromPlayer(CommandCost(-value));
+			SubtractMoneyFromPlayer(CommandCost(EXPENSES_OTHER, -value));
 		}
 	}
 	_current_player = old_player;
@@ -1849,7 +1845,7 @@ extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
 CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_OTHER);
 
 	/* Check if buying shares is allowed (protection against modified clients) */
 	/* Cannot buy own shares */
@@ -1859,8 +1855,6 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	/* Cannot buy shares of non-existent nor bankrupted company */
 	if (!p->is_active) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
@@ -1911,8 +1905,6 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 	/* Cannot sell shares of non-existent nor bankrupted company */
 	if (!p->is_active) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0) return CommandCost();
 
@@ -1926,7 +1918,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 		*b = PLAYER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
 	}
-	return CommandCost(cost);
+	return CommandCost(EXPENSES_OTHER, cost);
 }
 
 /** Buy up another company.
@@ -1949,7 +1941,6 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Do not allow players to take over themselves */
 	if (pid == _current_player) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = GetPlayer(pid);
 
 	if (!p->is_ai) return CMD_ERROR;
@@ -1957,7 +1948,7 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		DoAcquireCompany(p);
 	}
-	return CommandCost(p->bankrupt_value);
+	return CommandCost(EXPENSES_OTHER, p->bankrupt_value);
 }
 
 /** Prices */

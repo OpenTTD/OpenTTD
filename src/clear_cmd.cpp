@@ -32,7 +32,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 		&_price.clear_roughland,
 		&_price.clear_roughland,
 	};
-	CommandCost price;
+	CommandCost price(EXPENSES_CONSTRUCTION);
 
 	if (!IsClearGround(tile, CLEAR_GRASS) || GetClearDensity(tile) != 0) {
 		price.AddCost(*clear_price_table[GetClearGround(tile)]);

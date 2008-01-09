@@ -14,6 +14,7 @@
  * a possible error message/state together.
  */
 class CommandCost {
+	ExpensesType expense_type; ///< the type of expence as shown on the finances view
 	Money cost;       ///< The cost of this action
 	StringID message; ///< Warning message for when success is unset
 	bool success;     ///< Whether the comment went fine up to this moment
@@ -22,18 +23,25 @@ public:
 	/**
 	 * Creates a command cost return with no cost and no error
 	 */
-	CommandCost() : cost(0), message(INVALID_STRING_ID), success(true) {}
+	CommandCost() : expense_type(INVALID_EXPENSES), cost(0), message(INVALID_STRING_ID), success(true) {}
 
 	/**
 	 * Creates a command return value the is failed with the given message
 	 */
-	CommandCost(StringID msg) : cost(0), message(msg), success(false) {}
+	CommandCost(StringID msg) : expense_type(INVALID_EXPENSES), cost(0), message(msg), success(false) {}
 
 	/**
-	 * Creates a command return value with the given start cost
+	 * Creates a command cost with given expense type and start cost of 0
+	 * @param ex_t the expense type
+	 */
+	CommandCost(ExpensesType ex_t) : expense_type(ex_t), cost(0), message(INVALID_STRING_ID), success(true) {}
+
+	/**
+	 * Creates a command return value with the given start cost and expense type
+	 * @param ex_t the expense type
 	 * @param cst the initial cost of this command
 	 */
-	CommandCost(Money cst) : cost(cst), message(INVALID_STRING_ID), success(true) {}
+	CommandCost(ExpensesType ex_t, Money cst) : expense_type(ex_t), cost(cst), message(INVALID_STRING_ID), success(true) {}
 
 	/**
 	 * Adds the cost of the given command return value to this cost.
@@ -62,6 +70,12 @@ public:
 	 * @return the costs
 	 */
 	Money GetCost() const;
+
+	/**
+	 * The expense type of the cost
+	 * @return the expense type
+	 */
+	ExpensesType GetExpensesType() const;
 
 	/**
 	 * Sets the global error message *if* this class has one.

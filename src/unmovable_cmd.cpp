@@ -38,8 +38,6 @@ static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 {
 	Player* p = GetPlayer(pid);
 
-	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
-
 	if (flags & DC_EXEC) {
 		TileIndex t = p->location_of_house;
 
@@ -52,7 +50,7 @@ static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 	}
 
 	/* cost of relocating company is 1% of company value */
-	return CommandCost(CalculateCompanyValue(p) / 100);
+	return CommandCost(EXPENSES_PROPERTY, CalculateCompanyValue(p) / 100);
 }
 
 void UpdateCompanyHQ(Player *p, uint score)
@@ -87,9 +85,7 @@ extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags
 CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p = GetPlayer(_current_player);
-	CommandCost cost;
-
-	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
+	CommandCost cost(EXPENSES_PROPERTY);
 
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
 	if (CmdFailed(cost)) return cost;
@@ -122,9 +118,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  */
 CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_player)) {
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
@@ -151,8 +145,6 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
  */
 CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
 
@@ -161,7 +153,7 @@ CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(- _price.clear_roughland * 2);
+	return CommandCost(EXPENSES_CONSTRUCTION,- _price.clear_roughland * 2);
 }
 
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
@@ -463,7 +455,7 @@ static CommandCost TerraformTile_Unmovable(TileIndex tile, uint32 flags, uint z_
 	if (IsOwnedLand(tile) && CheckTileOwnership(tile)) return CommandCost();
 
 	if (AutoslopeEnabled() && (IsStatue(tile) || IsCompanyHQ(tile))) {
-		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return _price.terraform;
+		if (!IsSteepSlope(tileh_new) && (z_new + GetSlopeMaxZ(tileh_new) == GetTileMaxZ(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

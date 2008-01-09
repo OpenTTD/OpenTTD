@@ -124,6 +124,7 @@ enum ExpensesType {
 	EXPENSES_SHIP_INC     = 10,
 	EXPENSES_LOAN_INT     = 11,
 	EXPENSES_OTHER        = 12,
+	INVALID_EXPENSES      = 0xFF,
 };
 
 #endif /* ECONOMY_TYPE_H */

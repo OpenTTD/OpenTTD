@@ -163,8 +163,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 	Slope tileh;
 	Axis axis;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	/* if custom gfx are used, make sure it is within bounds */
 	if (p1 >= GetNumCustomStations(STAT_CLASS_WAYP)) return CMD_ERROR;
 
@@ -247,7 +245,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		wp_auto_delete.Detach();
 	}
 
-	return CommandCost(_price.build_train_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_train_depot);
 }
 
 /**
@@ -299,7 +297,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
-	return CommandCost(_price.remove_train_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
 }
 
 /**
@@ -312,7 +310,6 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
  */
 CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 	return RemoveTrainWaypoint(tile, flags, true);
 }
 

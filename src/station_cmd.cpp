@@ -706,7 +706,7 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags);
  */
 CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invalid_dirs, StationID *station, bool check_clear = true)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int allowed_z = -1;
 
 	BEGIN_TILE_LOOP(tile_cur, w, h, tile) {
@@ -903,8 +903,6 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	int w_org, h_org;
 	CommandCost ret;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	/* Does the authority allow this? */
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
 	if (!ValParamRailtype(p2 & 0xF)) return CMD_ERROR;
@@ -936,7 +934,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	 * https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365 */
 	ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
 	if (CmdFailed(ret)) return ret;
-	CommandCost cost(ret.GetCost() + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len);
+	CommandCost cost(EXPENSES_CONSTRUCTION, ret.GetCost() + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len);
 
 	Station *st = NULL;
 	bool check_surrounding = true;
@@ -1176,8 +1174,6 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 	int size_x = ex - sx + 1;
 	int size_y = ey - sy + 1;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	/* Do the action for every tile into the area */
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
 		/* Make sure the specified tile is a railroad station */
@@ -1234,7 +1230,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 	/* If we've not removed any tiles, give an error */
 	if (quantity == 0) return CMD_ERROR;
 
-	return CommandCost(_price.remove_rail_station * quantity);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_rail_station * quantity);
 }
 
 
@@ -1255,7 +1251,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 
 	assert(w != 0 && h != 0);
 
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	/* clear all areas of the station */
 	do {
 		int w_bak = w;
@@ -1345,8 +1341,6 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (is_drive_through && !IsValidAxis((Axis)p1)) return CMD_ERROR;
 	/* Road bits in the wrong direction */
 	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
 
@@ -1506,7 +1500,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 		DeleteStationIfEmpty(st);
 	}
 
-	return CommandCost((is_truck) ? _price.remove_truck_station : _price.remove_bus_station);
+	return CommandCost(EXPENSES_CONSTRUCTION, (is_truck) ? _price.remove_truck_station : _price.remove_bus_station);
 }
 
 /** Remove a bus or truck stop
@@ -1645,8 +1639,6 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	bool airport_upgrade = true;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	/* Check if a valid, buildable airport was chosen for construction */
 	if (p1 > lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
 
@@ -1673,9 +1665,8 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int w = afc->size_x;
 	int h = afc->size_y;
 
-	CommandCost ret = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
-	if (CmdFailed(ret)) return ret;
-	CommandCost cost(ret.GetCost());
+	CommandCost cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
+	if (CmdFailed(cost)) return cost;
 
 	Station *st = NULL;
 
@@ -1780,7 +1771,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 	int w = afc->size_x;
 	int h = afc->size_y;
 
-	CommandCost cost(w * h * _price.remove_airport);
+	CommandCost cost(EXPENSES_CONSTRUCTION, w * h * _price.remove_airport);
 
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
@@ -1826,8 +1817,6 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
  */
 CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
@@ -1864,7 +1853,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st_auto_delete.Detach();
 	}
 
-	return CommandCost(_price.build_dock);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
 }
 
 /**
@@ -1918,7 +1907,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 		DeleteStationIfEmpty(st);
 	}
 
-	return CommandCost(_price.remove_truck_station);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_truck_station);
 }
 
 static const TileIndexDiffC _dock_tileoffs_chkaround[] = {
@@ -1939,8 +1928,6 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
 CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CommandCost cost;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	DiagDirection direction;
 	switch (GetTileSlope(tile, NULL)) {
@@ -2033,7 +2020,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* success, so don't delete the new station */
 		st_auto_delete.Detach();
 	}
-	return CommandCost(_price.build_dock);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
 }
 
 static CommandCost RemoveDock(Station *st, uint32 flags)
@@ -2063,7 +2050,7 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 		DeleteStationIfEmpty(st);
 	}
 
-	return CommandCost(_price.remove_dock);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_dock);
 }
 
 #include "table/station_land.h"
@@ -2981,11 +2968,11 @@ static CommandCost TerraformTile_Station(TileIndex tile, uint32 flags, uint z_ne
 					DiagDirection direction = AxisToDiagDir(GetRailStationAxis(tile));
 					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, direction)) break;
 					if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
-					return _price.terraform;
+					return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 				}
 
 				case STATION_AIRPORT:
-					return _price.terraform;
+					return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 
 				case STATION_TRUCK:
 				case STATION_BUS: {
@@ -2994,7 +2981,7 @@ static CommandCost TerraformTile_Station(TileIndex tile, uint32 flags, uint z_ne
 					if (IsDriveThroughStopTile(tile)) {
 						if (!AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, ReverseDiagDir(direction))) break;
 					}
-					return _price.terraform;
+					return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 				}
 
 				default: break;

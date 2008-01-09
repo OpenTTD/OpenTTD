@@ -86,9 +86,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 {
 	TileIndex tile2;
 
-	CommandCost cost, ret;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+	CommandCost ret;
 
 	Axis axis = Extract<Axis, 0>(p1);
 
@@ -120,7 +118,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		d_auto_delete.Detach();
 	}
 
-	return cost.AddCost(_price.build_ship_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_ship_depot);
 }
 
 void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o)
@@ -154,7 +152,7 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 		MarkTileDirtyByTile(tile2);
 	}
 
-	return CommandCost(_price.remove_ship_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_ship_depot);
 }
 
 /** build a shiplift */
@@ -195,7 +193,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 		MarkTileDirtyByTile(tile + delta);
 	}
 
-	return CommandCost(_price.clear_water * 22 >> 3);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 22 >> 3);
 }
 
 static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
@@ -214,7 +212,7 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 		MakeWaterOrCanalDependingOnSurroundings(tile - delta, _current_player);
 	}
 
-	return CommandCost(_price.clear_water * 2);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 2);
 }
 
 /**
@@ -244,8 +242,6 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	DiagDirection dir;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	switch (GetTileSlope(tile, NULL)) {
 		case SLOPE_SW: dir = DIAGDIR_SW; break;
 		case SLOPE_SE: dir = DIAGDIR_SE; break;
@@ -264,7 +260,7 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int size_x, size_y;
 	int x;
 	int y;
@@ -278,8 +274,6 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	y = TileY(tile);
 	sx = TileX(p1);
 	sy = TileY(p1);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (x < sx) Swap(x, sx);
 	if (y < sy) Swap(y, sy);
@@ -341,7 +335,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
-			return CommandCost(_price.clear_water);
+			return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
 
 		case WATER_TILE_COAST: {
 			Slope slope = GetTileSlope(tile, NULL);
@@ -351,9 +345,9 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {
-				return CommandCost(_price.clear_water);
+				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
 			} else {
-				return CommandCost(_price.clear_roughland);
+				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_roughland);
 			}
 		}
 

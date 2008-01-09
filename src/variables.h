@@ -89,7 +89,6 @@ VARDEF bool _rightclick_emulate;
 VARDEF PlayerFace _player_face; ///< for player face storage in openttd.cfg
 
 /* IN/OUT parameters to commands */
-VARDEF byte _yearly_expenses_type;
 VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 
@@ -109,8 +108,6 @@ VARDEF char *_config_file;
 VARDEF char *_highscore_file;
 VARDEF char *_log_file;
 
-
-#define SET_EXPENSES_TYPE(x) _yearly_expenses_type = x;
 
 /* landscape.cpp */
 extern const byte _tileh_to_sprite[32];

@@ -123,7 +123,7 @@ static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope tileh)
 	valid =
 		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) | M(SLOPE_STEEP_N) |
 		(axis == AXIS_X ? M(SLOPE_E) | M(SLOPE_STEEP_E) : M(SLOPE_W) | M(SLOPE_STEEP_W));
-	if (HasBit(valid, tileh)) return CommandCost(_price.terraform);
+	if (HasBit(valid, tileh)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 
 	return CMD_ERROR;
 }
@@ -138,7 +138,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope tileh)
 	valid =
 		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) | M(SLOPE_STEEP_S) |
 		(axis == AXIS_X ? M(SLOPE_W) | M(SLOPE_STEEP_W) : M(SLOPE_E) | M(SLOPE_STEEP_E));
-	if (HasBit(valid, tileh)) return CommandCost(_price.terraform);
+	if (HasBit(valid, tileh)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 
 	return CMD_ERROR;
 }
@@ -197,12 +197,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	TileIndexDiff delta;
 	uint bridge_len;
 	Axis direction;
-	CommandCost cost, terraformcost, ret;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	CommandCost terraformcost, ret;
 	bool allow_on_slopes;
 	bool replace_bridge = false;
 	uint replaced_bridge_type;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* unpack parameters */
 	bridge_type = GB(p2, 0, 8);
@@ -458,7 +457,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	Slope end_tileh;
 	uint start_z;
 	uint end_z;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 
 	_build_tunnel_endtile = 0;
@@ -578,8 +577,6 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 	Town *t = NULL;
 	TileIndex endtile;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
 	endtile = GetOtherTunnelEnd(tile);
@@ -617,7 +614,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(tile, track);
 		YapfNotifyTrackLayoutChange(endtile, track);
 	}
-	return CommandCost(_price.clear_tunnel * (DistanceManhattan(tile, endtile) + 1));
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_tunnel * (DistanceManhattan(tile, endtile) + 1));
 }
 
 
@@ -627,8 +624,6 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 	TileIndexDiff delta;
 	TileIndex endtile;
 	Town *t = NULL;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
@@ -673,7 +668,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(endtile, track);
 	}
 
-	return CommandCost((DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge);
+	return CommandCost(EXPENSES_CONSTRUCTION, (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge);
 }
 
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
@@ -1398,7 +1393,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint
 			z_new += ApplyFoundationToSlope(GetBridgeFoundation(tileh_new, axis), &tileh_new);
 
 			/* Surface slope remains unchanged? */
-			if ((z_old == z_new) && (tileh_old == tileh_new)) return _price.terraform;
+			if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 		}
 	}
 

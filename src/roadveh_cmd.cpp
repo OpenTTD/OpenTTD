@@ -125,7 +125,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static CommandCost EstimateRoadVehCost(EngineID engine_type)
 {
-	return CommandCost(((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5);
 }
 
 byte GetRoadVehLength(const Vehicle *v)
@@ -171,8 +171,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_ROAD, _current_player)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
-
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	cost = EstimateRoadVehCost(p1);
 	if (flags & DC_QUERY_COST) return cost;
@@ -279,7 +277,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		GetPlayer(_current_player)->num_engines[p1]++;
 	}
 
-	return CommandCost(cost);
+	return cost;
 }
 
 /** Start/Stop a road vehicle.
@@ -366,13 +364,11 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
 	if (!CheckRoadVehInDepotStopped(v)) {
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 	}
 
-	CommandCost ret(-v->value);
+	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
 		// Invalidate depot
@@ -2006,7 +2002,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 void OnNewDay_RoadVeh(Vehicle *v)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_ROADVEH_RUN);
 
 	if (!IsRoadVehFront(v)) return;
 
@@ -2086,12 +2082,11 @@ void OnNewDay_RoadVeh(Vehicle *v)
 		}
 	}
 
-	cost = RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364;
+	cost = CommandCost(EXPENSES_ROADVEH_RUN, RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364);
 
 	v->profit_this_year -= cost.GetCost() >> 8;
 
-	SET_EXPENSES_TYPE(EXPENSES_ROADVEH_RUN);
-	SubtractMoneyFromPlayerFract(v->owner, CommandCost(cost));
+	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
@@ -2124,7 +2119,7 @@ void RoadVehiclesYearlyLoop()
 CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_ROADVEH_RUN);
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
 	bool only_this = HasBit(p2, 16);
@@ -2140,8 +2135,6 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_ROADVEH_RUN);
 
 	for (; v != NULL; v = v->Next()) {
 		/* XXX: We refit all the attached wagons en-masse if they can be

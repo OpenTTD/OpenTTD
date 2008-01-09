@@ -192,30 +192,24 @@ bool CheckPlayerHasMoney(CommandCost cost)
 
 static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
-	CommandCost tmp(p->player_money);
-	tmp.AddCost(-cost.GetCost());
-	p->player_money = tmp.GetCost();
+	if (cost.GetCost() == 0) return;
+	assert(cost.GetExpensesType() != INVALID_EXPENSES);
 
-	tmp = CommandCost(p->yearly_expenses[0][_yearly_expenses_type]);
-	tmp.AddCost(cost);
-	p->yearly_expenses[0][_yearly_expenses_type] = tmp.GetCost();
+	p->player_money -= cost.GetCost();
+	p->yearly_expenses[0][cost.GetExpensesType()] += cost.GetCost();
 
 	if (HasBit(1 << EXPENSES_TRAIN_INC    |
 	           1 << EXPENSES_ROADVEH_INC  |
 	           1 << EXPENSES_AIRCRAFT_INC |
-	           1 << EXPENSES_SHIP_INC, _yearly_expenses_type)) {
-		tmp = CommandCost(p->cur_economy.income);
-		tmp.AddCost(-cost.GetCost());
-		p->cur_economy.income = tmp.GetCost();
+	           1 << EXPENSES_SHIP_INC, cost.GetExpensesType())) {
+		p->cur_economy.income += cost.GetCost();
 	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
-	                  1 << EXPENSES_LOAN_INT, _yearly_expenses_type)) {
-		tmp = CommandCost(p->cur_economy.expenses);
-		tmp.AddCost(-cost.GetCost());
-		p->cur_economy.expenses = tmp.GetCost();
+	                  1 << EXPENSES_LOAN_INT, cost.GetExpensesType())) {
+		p->cur_economy.expenses += cost.GetCost();
 	}
 
 	InvalidatePlayerWindows(p);
@@ -237,7 +231,7 @@ void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cst)
 	p->player_money_fraction = m - (byte)cost;
 	cost >>= 8;
 	if (p->player_money_fraction > m) cost++;
-	if (cost != 0) SubtractMoneyFromAnyPlayer(p, CommandCost(cost));
+	if (cost != 0) SubtractMoneyFromAnyPlayer(p, CommandCost(cst.GetExpensesType(), cost));
 }
 
 void GetNameOfOwner(Owner owner, TileIndex tile)

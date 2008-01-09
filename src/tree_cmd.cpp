@@ -273,7 +273,7 @@ void GenerateTrees()
 CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	StringID msg = INVALID_STRING_ID;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_OTHER);
 	int ex;
 	int ey;
 	int sx, sy, x, y;
@@ -281,8 +281,6 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p2 >= MapSize()) return CMD_ERROR;
 	/* Check the tree type. It can be random or some valid value within the current climate */
 	if (p1 != (uint)-1 && p1 - _tree_base_by_landscape[_opt.landscape] >= _tree_count_by_landscape[_opt.landscape]) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
 	// make sure sx,sy are smaller than ex,ey
 	ex = TileX(tile);
@@ -499,7 +497,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(num * _price.remove_trees);
+	return CommandCost(EXPENSES_CONSTRUCTION, num * _price.remove_trees);
 }
 
 static void GetAcceptedCargo_Trees(TileIndex tile, AcceptedCargo ac)

@@ -288,7 +288,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 	   ) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
-	return CommandCost(f_new != f_old ? _price.terraform : (Money)0);
+	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price.terraform : (Money)0);
 }
 
 /* Validate functions for rail building */
@@ -306,7 +306,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	RailType railtype;
 	Track track;
 	TrackBits trackbit;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 
 	if (!ValParamRailtype(p1) || !ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
@@ -315,8 +315,6 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	tileh = GetTileSlope(tile, NULL);
 	trackbit = TrackToTrackBits(track);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
@@ -438,13 +436,11 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 {
 	Track track = (Track)p2;
 	TrackBits trackbit;
-	CommandCost cost(_price.remove_rail);
+	CommandCost cost(EXPENSES_CONSTRUCTION, _price.remove_rail );
 	bool crossing = false;
 
 	if (!ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
 	trackbit = TrackToTrackBits(track);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
@@ -624,7 +620,7 @@ static CommandCost ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileInd
  */
 static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost ret, total_cost;
+	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
 	Track track = (Track)GB(p2, 4, 3);
 	Trackdir trackdir;
 	byte mode = HasBit(p2, 7);
@@ -635,8 +631,6 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
 	if (p1 >= MapSize()) return CMD_ERROR;
 	end_tile = p1;
 	trackdir = TrackToTrackdir(track);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
@@ -706,10 +700,7 @@ CommandCost CmdRemoveRailroadTrack(TileIndex tile, uint32 flags, uint32 p1, uint
  */
 CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost;
 	Slope tileh;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* check railtype and valid direction for depot (0 through 3), 4 in total */
 	if (!ValParamRailtype(p1)) return CMD_ERROR;
@@ -735,7 +726,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
-	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+	CommandCost cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -806,21 +797,19 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	/* you can not convert a signal if no signal is on track */
 	if (convert_signal && !HasSignalOnTrack(tile, track)) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	if (!HasSignalOnTrack(tile, track)) {
 		/* build new signals */
-		cost = CommandCost(_price.build_signals);
+		cost = CommandCost(EXPENSES_CONSTRUCTION, _price.build_signals);
 	} else {
 		if (p2 != 0 && sigvar != GetSignalVariant(tile, track)) {
 			/* convert signals <-> semaphores */
-			cost = CommandCost(_price.build_signals + _price.remove_signals);
+			cost = CommandCost(EXPENSES_CONSTRUCTION, _price.build_signals + _price.remove_signals);
 
 		} else if (convert_signal) {
 			/* convert button pressed */
 			if (ctrl_pressed || GetSignalVariant(tile, track) != sigvar) {
 				/* convert electric <-> semaphore */
-				cost = CommandCost(_price.build_signals + _price.remove_signals);
+				cost = CommandCost(EXPENSES_CONSTRUCTION, _price.build_signals + _price.remove_signals);
 			} else {
 				/* it is free to change signal type: normal-pre-exit-combo */
 				cost = CommandCost();
@@ -956,7 +945,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
  */
 static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost ret, total_cost;
+	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
 	int signal_ctr;
 	byte signals;
 	bool error = true;
@@ -976,8 +965,6 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	if (signal_density == 0 || signal_density > 20) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY)) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* for vertical/horizontal tracks, double the given signals density
 	 * since the original amount will be too dense (shorter tracks) */
@@ -1101,8 +1088,6 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 	/* Only water can remove signals from anyone */
 	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	/* Do it? */
 	if (flags & DC_EXEC) {
 		SetPresentSignals(tile, GetPresentSignals(tile) & ~SignalOnTrack(track));
@@ -1120,7 +1105,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 		MarkTileDirtyByTile(tile);
 	}
 
-	return CommandCost(_price.remove_signals);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_signals);
 }
 
 /** Remove signals on a stretch of track.
@@ -1164,7 +1149,7 @@ void *UpdateTrainPowerProc(Vehicle *v, void *data)
  */
 CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (!ValParamRailtype(p2)) return CMD_ERROR;
 	if (p1 >= MapSize()) return CMD_ERROR;
@@ -1179,8 +1164,6 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* make sure sx,sy are smaller than ex,ey */
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK; // by default, there is no track to convert
 
@@ -1331,12 +1314,12 @@ static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}
 
-	return CommandCost(_price.remove_train_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
 }
 
 static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 
 	if (flags & DC_AUTO) {
@@ -2433,7 +2416,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 		case TRACK_BIT_UPPER: track_corner = CORNER_N; break;
 
 		/* Surface slope must not be changed */
-		default: return (((z_old != z_new) || (tileh_old != tileh_new)) ? CMD_ERROR : _price.terraform);
+		default: return (((z_old != z_new) || (tileh_old != tileh_new)) ? CMD_ERROR : CommandCost(EXPENSES_CONSTRUCTION, _price.terraform));
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
@@ -2441,7 +2424,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	z_new += GetSlopeZInCorner((Slope)(tileh_new & ~SLOPE_HALFTILE_MASK), track_corner);
 	if (z_old != z_new) return CMD_ERROR;
 
-	CommandCost cost = CommandCost(_price.terraform);
+	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	/* Make the ground dirty, if surface slope has changed */
 	if (tileh_old != tileh_new) {
 		if (GetRailGroundType(tile) == RAIL_GROUND_WATER) cost.AddCost(_price.clear_water);
@@ -2488,7 +2471,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 		if ((flags & DC_EXEC) != 0) SetRailGroundType(tile, RAIL_GROUND_BARREN);
 
 		/* allow terraforming */
-		return (was_water ? CommandCost(_price.clear_water) : CommandCost());
+		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price.clear_water : (Money)0);
 	} else {
 		if (_patches.build_on_slopes && AutoslopeEnabled()) {
 			switch (GetRailTileType(tile)) {
@@ -2499,7 +2482,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 				}
 
 				case RAIL_TILE_DEPOT:
-					if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) return _price.terraform;
+					if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRailDepotDirection(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 					break;
 
 				default: NOT_REACHED();

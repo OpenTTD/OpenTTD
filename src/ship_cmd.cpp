@@ -170,7 +170,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 void OnNewDay_Ship(Vehicle *v)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_SHIP_RUN);
 
 	if ((++v->day_counter & 7) == 0)
 		DecreaseVehicleValue(v);
@@ -186,8 +186,7 @@ void OnNewDay_Ship(Vehicle *v)
 	cost.AddCost(GetVehicleProperty(v, 0x0F, ShipVehInfo(v->engine_type)->running_cost) * _price.ship_running / 364);
 	v->profit_this_year -= cost.GetCost() >> 8;
 
-	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
-	SubtractMoneyFromPlayerFract(v->owner, CommandCost(cost));
+	SubtractMoneyFromPlayerFract(v->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 	/* we need this for the profit */
@@ -401,7 +400,7 @@ static bool ShipAccelerate(Vehicle *v)
 
 static CommandCost EstimateShipCost(EngineID engine_type)
 {
-	return CommandCost(GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base >> 3) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base >> 3) >> 5);
 }
 
 static void ShipArrivesAt(const Vehicle* v, Station* st)
@@ -815,8 +814,6 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsEngineBuildable(p1, VEH_SHIP, _current_player)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
 	value = EstimateShipCost(p1);
 	if (flags & DC_QUERY_COST) return value;
 
@@ -912,13 +909,11 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
 	if (!v->IsStoppedInDepot()) {
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
 	}
 
-	CommandCost ret(-v->value);
+	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -1061,7 +1056,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_SHIP_RUN);
 	CargoID new_cid = GB(p2, 0, 8); //gets the cargo number
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;
@@ -1077,8 +1072,6 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Check cargo */
 	if (!ShipVehInfo(v->engine_type)->refittable) return CMD_ERROR;
 	if (new_cid >= NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 
 	/* Check the refit capacity callback */
 	if (HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_REFIT_CAPACITY)) {

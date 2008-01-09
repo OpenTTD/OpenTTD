@@ -502,7 +502,7 @@ static void ClickTile_Town(TileIndex tile)
 static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 {
 	int rating;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	Town *t;
 	HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
@@ -1496,8 +1496,6 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;
 	if (p2 > TSM_CITY) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-
 	/* Check if too close to the edge of map */
 	if (DistanceFromEdge(tile) < 12)
 		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
@@ -2097,7 +2095,6 @@ extern uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t);
  */
 CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost;
 	Town *t;
 
 	if (!IsValidTownID(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
@@ -2106,9 +2103,7 @@ CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!HasBit(GetMaskOfTownActions(NULL, _current_player, t), p2)) return CMD_ERROR;
 
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-
-	cost.AddCost((_price.build_industry >> 8) * _town_action_costs[p2]);
+	CommandCost cost(EXPENSES_OTHER, (_price.build_industry >> 8) * _town_action_costs[p2]);
 
 	if (flags & DC_EXEC) {
 		_town_action_proc[p2](t);
@@ -2364,7 +2359,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, 
 
 		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
 		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&
-			(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) return _price.terraform;
+			(GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new))) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);

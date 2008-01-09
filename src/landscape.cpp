@@ -524,8 +524,6 @@ void ClearSnowLine(void)
  */
 CommandCost CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	return _tile_type_procs[GetTileType(tile)]->clear_tile_proc(tile, flags);
 }
 
@@ -537,7 +535,8 @@ CommandCost CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  */
 CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost, ret, money;
+	CommandCost ret, money;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int ex;
 	int ey;
 	int sx, sy;
@@ -545,8 +544,6 @@ CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool success = false;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* make sure sx,sy are smaller than ex,ey */
 	ex = TileX(tile);

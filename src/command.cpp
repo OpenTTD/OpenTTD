@@ -441,7 +441,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 	}
 
 	/* Execute the command here. All cost-relevant functions set the expenses type
-	 * themselves with "SET_EXPENSES_TYPE(...);" at the beginning of the function */
+	 * themselves to the cost object at some point */
 	res = proc(tile, flags, p1, p2);
 	if (CmdFailed(res)) {
 		res.SetGlobalErrorMessage();
@@ -622,7 +622,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
-	_yearly_expenses_type = EXPENSES_CONSTRUCTION;
 	res2 = proc(tile, flags | DC_EXEC, p1, p2);
 
 	/* If notest is on, it means the result of the test can be different than
@@ -695,6 +694,11 @@ CommandCost CommandCost::MultiplyCost(int factor)
 Money CommandCost::GetCost() const
 {
 	return this->cost;
+}
+
+ExpensesType CommandCost::GetExpensesType() const
+{
+	return this->expense_type;
 }
 
 void CommandCost::SetGlobalErrorMessage() const

@@ -148,7 +148,7 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
  */
 static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height)
 {
-	CommandCost total_cost = CommandCost();
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
 	assert(tile < MapSize());
 
@@ -228,10 +228,8 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TerraformerState ts;
-	CommandCost total_cost = CommandCost();
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 	int direction = (p2 != 0 ? 1 : -1);
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	_terraform_err_tile = 0;
 
@@ -358,11 +356,9 @@ CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	uint h, oldh, curh;
 	CommandCost money;
 	CommandCost ret;
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* remember level height */
 	oldh = TileHeight(p1);

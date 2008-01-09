@@ -706,19 +706,33 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 */
 CommandCost GetRefitCost(EngineID engine_type)
 {
-	CommandCost base_cost;
-
+	Money base_cost;
+	ExpensesType expense_type;
 	switch (GetEngine(engine_type)->type) {
-		case VEH_SHIP: base_cost.AddCost(_price.ship_base); break;
-		case VEH_ROAD: base_cost.AddCost(_price.roadveh_base); break;
-		case VEH_AIRCRAFT: base_cost.AddCost(_price.aircraft_base); break;
-		case VEH_TRAIN:
-			base_cost.AddCost(2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
-							 _price.build_railwagon : _price.build_railvehicle));
+		case VEH_SHIP:
+			base_cost = _price.ship_base;
+			expense_type = EXPENSES_SHIP_RUN;
 			break;
-		default: NOT_REACHED(); break;
+
+		case VEH_ROAD:
+			base_cost = _price.roadveh_base;
+			expense_type = EXPENSES_ROADVEH_RUN;
+			break;
+
+		case VEH_AIRCRAFT:
+			base_cost = _price.aircraft_base;
+			expense_type = EXPENSES_AIRCRAFT_RUN;
+			break;
+
+		case VEH_TRAIN:
+			base_cost = 2 * ((RailVehInfo(engine_type)->railveh_type == RAILVEH_WAGON) ?
+							 _price.build_railwagon : _price.build_railvehicle);
+			expense_type = EXPENSES_TRAIN_RUN;
+			break;
+
+		default: NOT_REACHED();
 	}
-	return CommandCost((EngInfo(engine_type)->refit_cost * base_cost.GetCost()) >> 10);
+	return CommandCost(expense_type, (EngInfo(engine_type)->refit_cost * base_cost) >> 10);
 }
 
 static void DoDrawVehicle(const Vehicle *v)
@@ -1697,7 +1711,6 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 			 * Because of this, we can't estimate costs due to wagon removal and we will have to always return 0 and pay manually
 			 * Since we pay after each vehicle is replaced and MaybeReplaceVehicle() check if the player got enough money
 			 * we should never reach a condition where the player will end up with negative money from doing this */
-			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 			SubtractMoneyFromPlayer(ret);
 		}
 	}
@@ -1726,7 +1739,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
-	CommandCost cost, total_cost;
+	CommandCost cost, total_cost(EXPENSES_NEW_VEHICLES);
 	uint32 build_argument = 2;
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -1880,9 +1893,6 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	/* Set the expense type last as refitting will make the cost go towards
-	 * running costs... */
-	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	return total_cost;
 }
 
@@ -3105,7 +3115,6 @@ void Vehicle::BeginLoading()
 	current_order.type = OT_LOADING;
 	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 
-	SET_EXPENSES_TYPE(this->GetExpenseType(true));
 	VehiclePayment(this);
 
 	InvalidateWindow(this->GetVehicleListWindowClass(), this->owner);

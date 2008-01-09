@@ -114,8 +114,6 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
 
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
-
 	RoadType rt = (RoadType)GB(p1, 4, 2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
@@ -156,7 +154,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* If it's the last roadtype, just clear the whole tile */
 		if (rts == RoadTypeToRoadTypes(rt)) return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 
-		CommandCost cost;
+		CommandCost cost(EXPENSES_CONSTRUCTION);
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 			/* Pay for *every* tile of the bridge or tunnel */
@@ -181,7 +179,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MarkTileDirtyByTile(tile);
 			}
 		}
-		return CommandCost(cost);
+		return cost;
 	}
 
 	switch (GetRoadTileType(tile)) {
@@ -224,7 +222,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return CommandCost(CountBits(c) * _price.remove_road);
+			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(c) * _price.remove_road);
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -250,7 +248,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MarkTileDirtyByTile(tile);
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 			}
-			return CommandCost(_price.remove_road * 2);
+			return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_road * 2);
 		}
 
 		default:
@@ -346,7 +344,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 		*pieces |= MirrorRoadBits(*pieces);
 
 		if (existing == ROAD_NONE || existing == *pieces) {
-			if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
+			if (*pieces == ROAD_X || *pieces == ROAD_Y) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 		}
 		return CMD_ERROR;
 	}
@@ -358,7 +356,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 	if (_patches.build_on_slopes && !_is_old_ai_player &&
 			existing == ROAD_NONE && CountBits(*pieces) == 1 &&
 			(_valid_tileh_slopes_road[2][tileh] & *pieces) == ROAD_NONE) {
-		return CommandCost(_price.terraform);
+		return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 
 	/* no special foundation */
@@ -370,7 +368,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 
 	/* foundation is used. Whole tile is leveled up */
 	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == ROAD_NONE) {
-		return CommandCost(existing != ROAD_NONE ? (Money)0 : _price.terraform);
+		return CommandCost(EXPENSES_CONSTRUCTION, existing != ROAD_NONE ? (Money)0 : _price.terraform);
 	}
 
 	/* Force straight roads. */
@@ -378,7 +376,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 
 	/* partly leveled up tile, only if there's no road on that tile */
 	if ((existing == ROAD_NONE || existing == *pieces) && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
-		if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
+		if (*pieces == ROAD_X || *pieces == ROAD_Y) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 	return CMD_ERROR;
 }
@@ -393,13 +391,11 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
  */
 CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost cost;
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 	RoadBits existing = ROAD_NONE;
 	RoadBits all_bits = ROAD_NONE;
 	Slope tileh;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
@@ -494,7 +490,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				MarkTileDirtyByTile(tile);
 			}
-			return CommandCost(_price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));
+			return CommandCost(EXPENSES_CONSTRUCTION, _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));
 		}
 
 		case MP_STATION:
@@ -604,13 +600,11 @@ do_clear:;
 CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
-	CommandCost cost, ret;
+	CommandCost ret, cost(EXPENSES_CONSTRUCTION);
 	bool had_bridge = false;
 	bool had_tunnel = false;
 	bool had_success = false;
 	DisallowedRoadDirections drd = DRD_NORTHBOUND;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
@@ -691,9 +685,8 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TileIndex start_tile, tile;
-	CommandCost cost, ret, money;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
+	CommandCost ret, cost(EXPENSES_CONSTRUCTION);
+	Money money;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
 
@@ -713,7 +706,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 		p2 ^= IsInsideMM(p2 & 3, 1, 3) ? 3 : 0;
 	}
 
-	money.AddCost(GetAvailableMoneyForCommand());
+	money = GetAvailableMoneyForCommand();
 	tile = start_tile;
 	/* Start tile is the small number. */
 	for (;;) {
@@ -727,8 +720,8 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 			ret = DoCommand(tile, rt << 4 | bits, 0, flags & ~DC_EXEC, CMD_REMOVE_ROAD);
 			if (CmdSucceeded(ret)) {
 				if (flags & DC_EXEC) {
-					money.AddCost(-ret.GetCost());
-					if (money.GetCost() < 0) {
+					money -= ret.GetCost();
+					if (money < 0) {
 						_additional_cash_required = DoCommand(end_tile, start_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD).GetCost();
 						return cost;
 					}
@@ -760,8 +753,6 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 {
 	CommandCost cost;
 	Slope tileh;
-
-	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	DiagDirection dir = Extract<DiagDirection, 0>(p1);
 	RoadType rt = (RoadType)GB(p1, 2, 2);
@@ -808,7 +799,7 @@ static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
 		delete GetDepotByTile(tile);
 	}
 
-	return CommandCost(_price.remove_road_depot);
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_road_depot);
 }
 
 static CommandCost ClearTile_Road(TileIndex tile, byte flags)
@@ -824,7 +815,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 			    !(flags & DC_AUTO)
 				) {
 				RoadTypes rts = GetRoadTypes(tile);
-				CommandCost ret;
+				CommandCost ret(EXPENSES_CONSTRUCTION);
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					if (HasBit(rts, rt)) {
 						CommandCost tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
@@ -839,7 +830,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 
 		case ROAD_TILE_CROSSING: {
 			RoadTypes rts = GetRoadTypes(tile);
-			CommandCost ret;
+			CommandCost ret(EXPENSES_CONSTRUCTION);
 
 			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
 
@@ -1420,11 +1411,11 @@ static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, 
 	if (_patches.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {
 			case ROAD_TILE_CROSSING:
-				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return _price.terraform;
+				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 				break;
 
 			case ROAD_TILE_DEPOT:
-				if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRoadDepotDirection(tile))) return _price.terraform;
+				if (AutoslopeCheckForEntranceEdge(tile, z_new, tileh_new, GetRoadDepotDirection(tile))) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 				break;
 
 			case ROAD_TILE_NORMAL: {
@@ -1442,7 +1433,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, 
 						z_new += ApplyFoundationToSlope(GetRoadFoundation(tileh_new, bits), &tileh_new);
 
 						/* The surface slope must not be changed */
-						if ((z_old == z_new) && (tileh_old == tileh_new)) return _price.terraform;
+						if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 					}
 				}
 				break;

@@ -400,7 +400,7 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 	}
 
 	if (flags & DC_EXEC) delete i;
-	return CommandCost(indspec->GetRemovalCost());
+	return CommandCost(EXPENSES_CONSTRUCTION, indspec->GetRemovalCost());
 }
 
 static void TransportIndustryGoods(TileIndex tile)
@@ -1590,8 +1590,6 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const IndustrySpec *indspec;
 
-	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-
 	indspec = GetIndustrySpec(p1);
 
 	/* Check if the to-be built/founded industry is available for this climate. */
@@ -1646,7 +1644,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num) == NULL) return CMD_ERROR;
 	}
 
-	return CommandCost(indspec->GetConstructionCost());
+	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
 }
 
 
@@ -2263,10 +2261,10 @@ static CommandCost TerraformTile_Industry(TileIndex tile, uint32 flags, uint z_n
 			if (HasBit(itspec->callback_flags, CBM_INDT_AUTOSLOPE)) {
 				/* If the callback fails, allow autoslope. */
 				uint16 res = GetIndustryTileCallback(CBID_INDUSTRY_AUTOSLOPE, 0, 0, gfx, GetIndustryByTile(tile), tile);
-				if ((res == 0) || (res == CALLBACK_FAILED)) return _price.terraform;
+				if ((res == 0) || (res == CALLBACK_FAILED)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 			} else {
 				/* allow autoslope */
-				return _price.terraform;
+				return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 			}
 		}
 	}
