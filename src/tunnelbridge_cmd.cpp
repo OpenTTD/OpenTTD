@@ -35,6 +35,7 @@
 #include "functions.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "signal_func.h"
 
 
 const Bridge orig_bridge[] = {
@@ -419,7 +420,7 @@ not_valid_below:;
 
 	if (flags & DC_EXEC && railtype != INVALID_RAILTYPE) {
 		Track track = AxisToTrack(direction);
-		SetSignalsOnBothDir(tile_start, track);
+		UpdateSignalsOnSegment(tile_start, INVALID_DIAGDIR);
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
@@ -549,7 +550,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
 			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
-			UpdateSignalsOnSegment(start_tile, direction);
+			UpdateSignalsOnSegment(start_tile, INVALID_DIAGDIR);
 			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
 			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 3));

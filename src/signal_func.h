@@ -6,6 +6,9 @@
 #define SIGNAL_FUNC_H
 
 #include "track_type.h"
+#include "tile_type.h"
+#include "direction_type.h"
+#include "track_type.h"
 
 /**
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
@@ -36,5 +39,8 @@ static inline byte SignalOnTrack(Track track)
 	extern const byte _signal_on_track[TRACK_END];
 	return _signal_on_track[track];
 }
+
+bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side);
+void SetSignalsOnBothDir(TileIndex tile, Track track);
 
 #endif /* SIGNAL_FUNC_H */

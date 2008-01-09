@@ -42,6 +42,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "signal_func.h"
 
 
 const byte _track_sloped_sprites[14] = {
@@ -84,7 +85,7 @@ const byte _track_sloped_sprites[14] = {
  */
 
 
-static void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
+void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 {
 	TrackBits rail_bits = *(TrackBits *)data;
 
@@ -740,7 +741,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		UpdateSignalsOnSegment(tile, dir);
+		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 		d_auto_delete.Detach();
 	}
@@ -1844,227 +1845,6 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 	const DrawTileSprites* dts = &_waypoint_gfx_table[AXIS_X];
 
 	DrawTileSequence(x, y, dts->ground_sprite + offset, dts->seq, 0);
-}
-
-struct SetSignalsData {
-	int cur;
-	int cur_stack;
-	bool stop;
-	bool has_presignal;
-
-	/* presignal info */
-	int presignal_exits;
-	int presignal_exits_free;
-
-	/* these are used to keep track of the signals that change. */
-	TrackdirByte bit[NUM_SSD_ENTRY];
-	TileIndex tile[NUM_SSD_ENTRY];
-
-	/* these are used to keep track of the stack that modifies presignals recursively */
-	TileIndex next_tile[NUM_SSD_STACK];
-	DiagDirectionByte next_dir[NUM_SSD_STACK];
-
-};
-
-static bool SetSignalsEnumProc(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
-{
-	SetSignalsData* ssd = (SetSignalsData*)data;
-	Track track = TrackdirToTrack(trackdir);
-
-	if (!IsTileType(tile, MP_RAILWAY)) return false;
-
-	/* the tile has signals? */
-	if (HasSignalOnTrack(tile, track)) {
-		if (HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
-			/* yes, add the signal to the list of signals */
-			if (ssd->cur != NUM_SSD_ENTRY) {
-				ssd->tile[ssd->cur] = tile; // remember the tile index
-				ssd->bit[ssd->cur] = trackdir; // and the controlling bit number
-				ssd->cur++;
-			}
-
-			/* remember if this block has a presignal. */
-			ssd->has_presignal |= IsPresignalEntry(tile, track);
-		}
-
-		if (HasSignalOnTrackdir(tile, trackdir) && IsPresignalExit(tile, track)) {
-			/* this is an exit signal that points out from the segment */
-			ssd->presignal_exits++;
-			if (GetSignalStateByTrackdir(tile, trackdir) != SIGNAL_STATE_RED)
-				ssd->presignal_exits_free++;
-		}
-
-		return true;
-	} else if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-		return true; // don't look further if the tile is a depot
-	}
-
-	return false;
-}
-
-static void *SignalVehicleCheckProc(Vehicle *v, void *data)
-{
-	uint track = *(uint*)data;
-
-	if (v->type != VEH_TRAIN) return NULL;
-
-	/* Are we on the same piece of track? */
-	if (track & v->u.rail.track * 0x101) return v;
-
-	return NULL;
-}
-
-/* Special check for SetSignalsAfterProc, to see if there is a vehicle on this tile */
-static bool SignalVehicleCheck(TileIndex tile, uint track)
-{
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		/* Locate vehicles in tunnels or on bridges */
-		return GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL;
-	} else {
-		return VehicleFromPos(tile, &track, &SignalVehicleCheckProc) != NULL;
-	}
-}
-
-static void SetSignalsAfterProc(TrackPathFinder *tpf)
-{
-	SetSignalsData *ssd = (SetSignalsData*)tpf->userdata;
-	const TrackPathFinderLink* link;
-	uint offs;
-	uint i;
-
-	ssd->stop = false;
-
-	/* Go through all the PF tiles */
-	for (i = 0; i < lengthof(tpf->hash_head); i++) {
-		/* Empty hash item */
-		if (tpf->hash_head[i] == 0) continue;
-
-		/* If 0x8000 is not set, there is only 1 item */
-		if (!(tpf->hash_head[i] & 0x8000)) {
-			/* Check if there is a vehicle on this tile */
-			if (SignalVehicleCheck(tpf->hash_tile[i], tpf->hash_head[i])) {
-				ssd->stop = true;
-				return;
-			}
-		} else {
-			/* There are multiple items, where hash_tile points to the first item in the list */
-			offs = tpf->hash_tile[i];
-			do {
-				/* Find the next item */
-				link = PATHFIND_GET_LINK_PTR(tpf, offs);
-				/* Check if there is a vehicle on this tile */
-				if (SignalVehicleCheck(link->tile, link->flags)) {
-					ssd->stop = true;
-					return;
-				}
-				/* Goto the next item */
-			} while ((offs = link->next) != 0xFFFF);
-		}
-	}
-}
-
-static void ChangeSignalStates(SetSignalsData *ssd)
-{
-	int i;
-
-	/* thinking about presignals...
-	 * the presignal is green if,
-	 *   if no train is in the segment AND
-	 *   there is at least one green exit signal OR
-	 *   there are no exit signals in the segment */
-
-	/* then mark the signals in the segment accordingly */
-	for (i = 0; i != ssd->cur; i++) {
-		TileIndex tile = ssd->tile[i];
-		byte bit = SignalAgainstTrackdir(ssd->bit[i]);
-		uint signals = GetSignalStates(tile);
-		Track track = TrackdirToTrack(ssd->bit[i]);
-
-		/* presignals don't turn green if there is at least one presignal exit and none are free */
-		if (IsPresignalEntry(tile, track)) {
-			int ex = ssd->presignal_exits, exfree = ssd->presignal_exits_free;
-
-			/* subtract for dual combo signals so they don't count themselves */
-			if (IsPresignalExit(tile, track) && HasSignalOnTrackdir(tile, ssd->bit[i])) {
-				ex--;
-				if (GetSignalStateByTrackdir(tile, ssd->bit[i]) != SIGNAL_STATE_RED) exfree--;
-			}
-
-			/* if we have exits and none are free, make red. */
-			if (ex && !exfree) goto make_red;
-		}
-
-		/* check if the signal is unaffected. */
-		if (ssd->stop) {
-make_red:
-			/* turn red */
-			if ((bit & signals) == 0) continue;
-		} else {
-			/* turn green */
-			if ((bit & signals) != 0) continue;
-		}
-
-		/* Update signals on the other side of this exit-combo signal; it changed. */
-		if (IsPresignalExit(tile, track)) {
-			if (ssd->cur_stack != NUM_SSD_STACK) {
-				ssd->next_tile[ssd->cur_stack] = tile;
-				ssd->next_dir[ssd->cur_stack] = TrackdirToExitdir(ssd->bit[i]);
-				ssd->cur_stack++;
-			} else {
-				DEBUG(misc, 0, "NUM_SSD_STACK too small"); /// @todo WTF is this???
-			}
-		}
-
-		/* it changed, so toggle it */
-		SetSignalStates(tile, signals ^ bit);
-		MarkTileDirtyByTile(tile);
-	}
-}
-
-
-bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction)
-{
-	SetSignalsData ssd;
-	int result = -1;
-
-	ssd.cur_stack = 0;
-
-	for (;;) {
-		/* go through one segment and update all signals pointing into that segment. */
-		ssd.cur = ssd.presignal_exits = ssd.presignal_exits_free = 0;
-		ssd.has_presignal = false;
-
-		FollowTrack(tile, 0xC000 | TRANSPORT_RAIL, 0, direction, SetSignalsEnumProc, SetSignalsAfterProc, &ssd);
-		ChangeSignalStates(&ssd);
-
-		/* remember the result only for the first iteration. */
-		if (result < 0) {
-			/* stay in depot while segment is occupied or while all presignal exits are blocked */
-			result = ssd.stop || (ssd.presignal_exits > 0 && ssd.presignal_exits_free == 0);
-		}
-
-		/* if any exit signals were changed, we need to keep going to modify the stuff behind those. */
-		if (ssd.cur_stack == 0) break;
-
-		/* one or more exit signals were changed, so we need to update another segment too. */
-		tile = ssd.next_tile[--ssd.cur_stack];
-		direction = ssd.next_dir[ssd.cur_stack];
-	}
-
-	return result != 0;
-}
-
-void SetSignalsOnBothDir(TileIndex tile, byte track)
-{
-	static const DiagDirection _search_dir_1[] = {
-		DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE
-	};
-	static const DiagDirection _search_dir_2[] = {
-		DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
-	};
-
-	UpdateSignalsOnSegment(tile, _search_dir_1[track]);
-	UpdateSignalsOnSegment(tile, _search_dir_2[track]);
 }
 
 static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)

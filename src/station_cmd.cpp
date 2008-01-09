@@ -45,6 +45,8 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"
+#include "signal_func.h"
+
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

@@ -96,14 +96,6 @@ struct RailtypeInfo {
 };
 
 
-/** these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block */
-enum {
-	NUM_SSD_ENTRY = 256, ///< max amount of blocks
-	NUM_SSD_STACK =  32, ///< max amount of blocks to check recursively
-};
-
-
-
 /**
  * Returns a pointer to the Railtype information for a given railtype
  * @param railtype the rail type which the information is requested for
@@ -188,6 +180,7 @@ static inline Money RailConvertCost(RailType from, RailType to)
 void *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
+void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 
 /**
  * Draws overhead wires and pylons for electric railways.

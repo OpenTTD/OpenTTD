@@ -375,6 +375,18 @@ static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trac
 		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
 }
 
+/**
+ * Sets the state of the signal along the given trackdir.
+ */
+static inline void SetSignalStateByTrackdir(TileIndex tile, Trackdir trackdir, SignalState state)
+{
+	if (state == SIGNAL_STATE_GREEN) { // set 1
+		SetSignalStates(tile, GetSignalStates(tile) | SignalAlongTrackdir(trackdir));
+	} else {
+		SetSignalStates(tile, GetSignalStates(tile) & ~SignalAlongTrackdir(trackdir));
+	}
+}
+
 
 /**
  * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.

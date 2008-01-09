@@ -43,6 +43,7 @@
 #include "track_type.h"
 #include "track_func.h"
 #include "rail_map.h"
+#include "signal_func.h"
 #include "gfx_func.h"
 
 /**

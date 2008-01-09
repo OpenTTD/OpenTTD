@@ -43,6 +43,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "signal_func.h"
 #include "variables.h"
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
@@ -2156,7 +2157,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
-		if (UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction))) {
+		if (UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR)) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
 		}
@@ -2175,7 +2176,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	v->UpdateDeltaXY(v->direction);
 	v->cur_image = v->GetImage(v->direction);
 	VehiclePositionChanged(v);
-	UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction));
+	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR);
 	UpdateTrainAcceleration(v);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
@@ -3114,7 +3115,7 @@ static void DeleteLastWagon(Vehicle *v)
 	delete v;
 
 	if (v->u.rail.track != TRACK_BIT_DEPOT && v->u.rail.track != TRACK_BIT_WORMHOLE)
-		SetSignalsOnBothDir(v->tile, FIND_FIRST_BIT(v->u.rail.track));
+		SetSignalsOnBothDir(v->tile, (Track)(FIND_FIRST_BIT(v->u.rail.track)));
 
 	/* Check if the wagon was on a road/rail-crossing and disable it if no
 	 * others are on it */
@@ -3125,11 +3126,8 @@ static void DeleteLastWagon(Vehicle *v)
 
 		if (GetVehicleTunnelBridge(v->tile, endtile) != NULL) return; // tunnel / bridge is busy
 
-		DiagDirection dir = GetTunnelBridgeDirection(v->tile);
-
 		/* v->direction is "random", so it cannot be used to determine the direction of the track */
-		UpdateSignalsOnSegment(v->tile, dir);
-		UpdateSignalsOnSegment(endtile, ReverseDiagDir(dir));
+		UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR);
 	}
 }
 

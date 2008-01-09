@@ -66,6 +66,7 @@ screenshot.cpp
 	sdl.cpp
 #end
 settings.cpp
+signal.cpp
 signs.cpp
 sound.cpp
 spritecache.cpp
@@ -182,6 +183,7 @@ sound/sdl_s.h
 video/sdl_v.h
 settings.h
 signs.h
+signal_func.h
 slope.h
 sound.h
 sprite.h

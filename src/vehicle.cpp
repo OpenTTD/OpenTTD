@@ -43,6 +43,7 @@
 #include "date_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "signal_func.h"
 #include "sound_func.h"
 #include "variables.h"
 #include "autoreplace_func.h"
@@ -2175,7 +2176,7 @@ void VehicleEnterDepot(Vehicle *v)
 		case VEH_TRAIN:
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			if (!IsFrontEngine(v)) v = v->First();
-			UpdateSignalsOnSegment(v->tile, GetRailDepotDirection(v->tile));
+			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR);
 			v->load_unload_time_rem = 0;
 			break;
 

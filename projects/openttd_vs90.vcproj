@@ -689,6 +689,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\signal.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\signs.cpp"
 				>
 			</File>
@@ -1090,6 +1094,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\signs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\signal_func.h"
 				>
 			</File>
 			<File
