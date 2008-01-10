@@ -1627,7 +1627,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 	uint16 wagon_list_length = 0;
 	uint16 wagon_count = 0;
 
-	CommandCost cost;
+	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	uint i, sell_command, total_number_vehicles;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
