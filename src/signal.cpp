@@ -530,7 +530,10 @@ static bool UpdateSignalsInBuffer()
 		}
 
 		/* do not do anything when some buffer was full */
-		if (flags & SF_FULL) break;
+		if (flags & SF_FULL) {
+			ResetSets(); // free all sets
+			break;
+		}
 
 		UpdateSignalsAroundSegment(flags);
 	}
