@@ -38,15 +38,13 @@ set_default() {
 	enable_network="1"
 	enable_static="1"
 	enable_translator="0"
+	enable_unicode="1"
 	enable_assert="1"
 	enable_strip="1"
 	enable_universal="1"
 	enable_osx_g5="0"
-	enable_unicode="1"
 	enable_cocoa_quartz="1"
 	enable_cocoa_quickdraw="1"
-	with_distcc="1"
-	with_ccache="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
 	with_sdl="1"
@@ -64,8 +62,10 @@ set_default() {
 	with_fontconfig="1"
 	with_psp_config="1"
 	with_threads="1"
+	with_distcc="1"
+	with_ccache="1"
 
-	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip awk lipo os cpu_type revision endian config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_desync_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_assert enable_strip with_distcc with_osx_sysroot enable_universal enable_osx_g5 enable_unicode enable_cocoa_quartz enable_cocoa_quickdraw with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config with_threads CC CXX CFLAGS LDFLAGS"
+	save_params_array="build host cc_build cc_host cxx_build cxx_host windres strip lipo awk os endian cpu_type revision config_log prefix_dir binary_dir data_dir icon_dir personal_dir install_dir enable_debug enable_desync_debug enable_profiling enable_dedicated enable_network enable_static enable_translator enable_unicode enable_assert enable_strip enable_universal enable_osx_g5 enable_cocoa_quartz enable_cocoa_quickdraw with_osx_sysroot with_application_bundle with_sdl with_cocoa with_zlib with_png with_makedepend with_direct_music with_sort with_iconv with_midi with_midi_arg with_libtimidity with_freetype with_fontconfig with_psp_config with_threads with_distcc with_ccache CC CXX CFLAGS LDFLAGS"
 }
 
 detect_params() {
