@@ -204,14 +204,14 @@ static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 	           1 << EXPENSES_ROADVEH_INC  |
 	           1 << EXPENSES_AIRCRAFT_INC |
 	           1 << EXPENSES_SHIP_INC, cost.GetExpensesType())) {
-		p->cur_economy.income += cost.GetCost();
+		p->cur_economy.income -= cost.GetCost();
 	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
 	                  1 << EXPENSES_LOAN_INT, cost.GetExpensesType())) {
-		p->cur_economy.expenses += cost.GetCost();
+		p->cur_economy.expenses -= cost.GetCost();
 	}
 
 	InvalidatePlayerWindows(p);
