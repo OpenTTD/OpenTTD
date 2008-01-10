@@ -166,6 +166,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->u.industry.tile = tile;
 	res->u.industry.ind  = indus;
 	res->u.industry.gfx  = gfx;
+	res->u.industry.type = indus->type;
 
 	res->callback        = CBID_NO_CALLBACK;
 	res->callback_param1 = 0;
