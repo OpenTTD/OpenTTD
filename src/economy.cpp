@@ -1564,7 +1564,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	int result = 0;
 	uint cap;
 
-	bool completely_empty  = true;
+	bool completely_emptied = true;
 	bool anything_unloaded = false;
 	bool anything_loaded   = false;
 	uint32 cargo_not_full  = 0;
@@ -1612,7 +1612,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			anything_unloaded = true;
 			if (_patches.gradual_loading && remaining) {
-				completely_empty = false;
+				completely_emptied = false;
 			} else {
 				/* We have finished unloading (cargo count == 0) */
 				ClrBit(v->vehicle_flags, VF_CARGO_UNLOADING);
@@ -1665,9 +1665,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			 * loading them. Since this will cause
 			 * VEHICLE_TRIGGER_EMPTY to be called at the time when
 			 * the whole vehicle chain is really totally empty, the
-			 * completely_empty assignment can then be safely
+			 * completely_emptied assignment can then be safely
 			 * removed; that's how TTDPatch behaves too. --pasky */
-			completely_empty = false;
+			completely_emptied = false;
 			anything_loaded = true;
 
 			ge->cargo.MoveTo(&v->cargo, cap, CargoList::MTA_CARGO_LOAD, st->xy);
@@ -1686,6 +1686,9 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			SetBit(cargo_not_full, v->cargo_type);
 		}
 	}
+
+	/* Only set completly_emptied, if we just unloaded all remaining cargo */
+	completely_emptied &= anything_unloaded;
 
 	/* We update these variables here, so gradual loading still fills
 	 * all wagons at the same time instead of using the same 'improved'
@@ -1754,7 +1757,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	v->load_unload_time_rem = unloading_time;
 
-	if (completely_empty) {
+	if (completely_emptied) {
 		TriggerVehicle(v, VEHICLE_TRIGGER_EMPTY);
 	}
 
