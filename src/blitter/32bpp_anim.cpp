@@ -13,7 +13,7 @@ static FBlitter_32bppAnim iFBlitter_32bppAnim;
 
 void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	if (bp->dst < _screen.dst_ptr || bp->dst > (uint32 *)_screen.dst_ptr + _screen.width * _screen.height) {
+	if (_screen_disable_anim) {
 		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent Draw() */
 		Blitter_32bppOptimized::Draw(bp, mode, zoom);
 		return;
@@ -98,6 +98,12 @@ void Blitter_32bppAnim::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomL
 
 void Blitter_32bppAnim::DrawColorMappingRect(void *dst, int width, int height, int pal)
 {
+	if (_screen_disable_anim) {
+		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawColorMappingRect() */
+		Blitter_32bppOptimized::DrawColorMappingRect(dst, width, height, pal);
+		return;
+	}
+
 	uint32 *udst = (uint32 *)dst;
 	uint8 *anim;
 
@@ -136,7 +142,9 @@ void Blitter_32bppAnim::DrawColorMappingRect(void *dst, int width, int height, i
 void Blitter_32bppAnim::SetPixel(void *video, int x, int y, uint8 color)
 {
 	*((uint32 *)video + x + y * _screen.pitch) = LookupColourInPalette(color);
-	/* Set the color in the anim-buffer too */
+
+	/* Set the color in the anim-buffer too, if we are rendering to the screen */
+	if (_screen_disable_anim) return;
 	this->anim_buf[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * this->anim_buf_width] = color;
 }
 
@@ -145,13 +153,20 @@ void Blitter_32bppAnim::SetPixelIfEmpty(void *video, int x, int y, uint8 color)
 	uint32 *dst = (uint32 *)video + x + y * _screen.pitch;
 	if (*dst == 0) {
 		*dst = LookupColourInPalette(color);
-		/* Set the color in the anim-buffer too */
+		/* Set the color in the anim-buffer too, if we are rendering to the screen */
+		if (_screen_disable_anim) return;
 		this->anim_buf[((uint32 *)video - (uint32 *)_screen.dst_ptr) + x + y * this->anim_buf_width] = color;
 	}
 }
 
 void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8 color)
 {
+	if (_screen_disable_anim) {
+		/* This means our output is not to the screen, so we can't be doing any animation stuff, so use our parent DrawRect() */
+		Blitter_32bppOptimized::DrawRect(video, width, height, color);
+		return;
+	}
+
 	uint32 color32 = LookupColourInPalette(color);
 	uint8 *anim_line;
 
@@ -175,6 +190,7 @@ void Blitter_32bppAnim::DrawRect(void *video, int width, int height, uint8 color
 
 void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, int height)
 {
+	assert(!_screen_disable_anim);
 	assert(video >= _screen.dst_ptr && video <= (uint32 *)_screen.dst_ptr + _screen.width + _screen.height * _screen.pitch);
 	uint32 *dst = (uint32 *)video;
 	uint32 *usrc = (uint32 *)src;
@@ -198,6 +214,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 
 void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, int height)
 {
+	assert(!_screen_disable_anim);
 	assert(video >= _screen.dst_ptr && video <= (uint32 *)_screen.dst_ptr + _screen.width + _screen.height * _screen.pitch);
 	uint32 *udst = (uint32 *)dst;
 	uint32 *src = (uint32 *)video;
@@ -220,6 +237,8 @@ void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, in
 
 void Blitter_32bppAnim::ScrollBuffer(void *video, int &left, int &top, int &width, int &height, int scroll_x, int scroll_y)
 {
+	assert(!_screen_disable_anim);
+	assert(video >= _screen.dst_ptr && video <= (uint32 *)_screen.dst_ptr + _screen.width + _screen.height * _screen.pitch);
 	uint8 *dst, *src;
 
 	/* We need to scroll the anim-buffer too */
@@ -268,6 +287,7 @@ int Blitter_32bppAnim::BufferSize(int width, int height)
 
 void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 {
+	assert(!_screen_disable_anim);
 	uint8 *anim = this->anim_buf;
 
 	/* Never repaint the transparency pixel */

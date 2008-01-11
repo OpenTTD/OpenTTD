@@ -488,12 +488,28 @@ static void CurrentScreenCallback(void *userdata, void *buf, uint y, uint pitch,
 	blitter->CopyImageToBuffer(src, buf, _screen.width, n, pitch);
 }
 
-/* generate a large piece of the world */
+/** generate a large piece of the world
+ * @param userdata Viewport area to draw
+ * @param buf Videobuffer with same bitdepth as current blitter
+ * @param y First line to render
+ * @param pitch Pitch of the videobuffer
+ * @param n Number of lines to render
+ */
 static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, uint n)
 {
 	ViewPort *vp = (ViewPort *)userdata;
 	DrawPixelInfo dpi, *old_dpi;
 	int wx, left;
+
+	/* We are no longer rendering to the screen */
+	DrawPixelInfo old_screen = _screen;
+	bool old_disable_anim = _screen_disable_anim;
+
+	_screen.dst_ptr = buf;
+	_screen.width = pitch;
+	_screen.height = n;
+	_screen.pitch = pitch;
+	_screen_disable_anim = true;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &dpi;
@@ -506,6 +522,7 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 	dpi.left = 0;
 	dpi.top = y;
 
+	/* Render viewport in blocks of 1600 pixels width */
 	left = 0;
 	while (vp->width - left != 0) {
 		wx = min(vp->width - left, 1600);
@@ -520,6 +537,10 @@ static void LargeWorldCallback(void *userdata, void *buf, uint y, uint pitch, ui
 	}
 
 	_cur_dpi = old_dpi;
+
+	/* Switch back to rendering to the screen */
+	_screen = old_screen;
+	_screen_disable_anim = old_disable_anim;
 }
 
 static char *MakeScreenshotName(const char *ext)

@@ -31,6 +31,7 @@ bool _left_button_clicked;
 bool _right_button_down;
 bool _right_button_clicked;
 DrawPixelInfo _screen;
+bool _screen_disable_anim = false;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 bool _exit_game;
 bool _networking;         ///< are we in networking mode?
 byte _game_mode;
