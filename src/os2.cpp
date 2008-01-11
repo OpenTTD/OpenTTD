@@ -11,6 +11,8 @@
 #include "fios.h" // opendir/readdir/closedir
 #include "functions.h"
 #include "core/random_func.hpp"
+#include "string_func.h"
+#include "textbuf_gui.h"
 
 #include <dirent.h>
 #include <unistd.h>
