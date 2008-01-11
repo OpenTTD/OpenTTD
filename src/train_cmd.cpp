@@ -54,7 +54,28 @@ static void TrainController(Vehicle *v, bool update_image);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
-static const TrackBits _state_dir_table[4] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER };
+
+
+/**
+ * Determine the side in which the train will leave the tile
+ *
+ * @param direction vehicle direction
+ * @param track vehicle track bits
+ * @return side of tile the train will leave
+ */
+static inline DiagDirection TrainExitDir(Direction direction, TrackBits track)
+{
+	static const TrackBits state_dir_table[DIAGDIR_END] = { TRACK_BIT_RIGHT, TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER };
+
+	DiagDirection diagdir = DirToDiagDir(direction);
+
+	/* Determine the diagonal direction in which we will exit this tile */
+	if (!HasBit(direction, 0) && track != state_dir_table[diagdir]) {
+		diagdir = ChangeDiagDir(diagdir, DIAGDIRDIFF_90LEFT);
+	}
+
+	return diagdir;
+}
 
 
 /** Return the cargo weight multiplier to use for a rail vehicle
@@ -1666,16 +1687,10 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	/* Check if we were approaching a rail/road-crossing */
 	{
-		TileIndex tile = v->tile;
-		DiagDirection dir = DirToDiagDir(v->direction);
-
 		/* Determine the diagonal direction in which we will exit this tile */
-		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[dir]) {
-			dir = ChangeDiagDir(dir, DIAGDIRDIFF_90LEFT);
-		}
+		DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
 		/* Calculate next tile */
-		tile += TileOffsByDiagDir(dir);
-
+		TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 		/* Check if the train left a rail/road-crossing */
 		DisableTrainCrossing(tile);
 	}
@@ -1938,18 +1953,12 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		}
 	} else {
 		/* search in the forward direction first. */
-		DiagDirection i = DirToDiagDir(v->direction);
-		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) {
-			i = ChangeDiagDir(i, DIAGDIRDIFF_90LEFT);
-		}
+		DiagDirection i = TrainExitDir(v->direction, v->u.rail.track);
 		NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		if (tfdd.best_length == (uint)-1){
 			tfdd.reverse = true;
 			/* search in backwards direction */
-			i = ReverseDiagDir(DirToDiagDir(v->direction));
-			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) {
-				i = ChangeDiagDir(i, DIAGDIRDIFF_90LEFT);
-			}
+			i = TrainExitDir(ReverseDir(v->direction), v->u.rail.track);
 			NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		}
 	}
@@ -3251,10 +3260,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		return true;*/
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
-	DiagDirection dir = DirToDiagDir(v->direction);
-	if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[dir]) {
-		dir = ChangeDiagDir(dir, DIAGDIRDIFF_90LEFT);
-	}
+	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
 	/* Calculate next tile */
 	tile += TileOffsByDiagDir(dir);
 	// determine the track status on the next tile.
