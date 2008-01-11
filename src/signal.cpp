@@ -462,14 +462,12 @@ static bool UpdateSignalsInBuffer()
 
 	Owner owner = OWNER_NONE; // owner whose signals we are updating
 
-	while (!_globset.IsEmpty()) {
+	TileIndex tile;
+	DiagDirection dir;
+
+	while (_globset.Get(&tile, &dir)) {
 		assert(_tbuset.IsEmpty());
 		assert(_tbdset.IsEmpty());
-
-		TileIndex tile;
-		DiagDirection dir;
-
-		_globset.Get(&tile, &dir);
 
 		/* After updating signal, data stored are always MP_RAILWAY with signals.
 		 * Other situations happen when data are from outside functions -
