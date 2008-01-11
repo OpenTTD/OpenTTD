@@ -2242,6 +2242,7 @@ showhelp() {
 	echo ""
 	echo "Features and packages:"
 	echo "  --enable-debug[=LVL]           enable debug-mode (LVL=[0123], 0 is release)"
+	echo "  --enable_desync_debug=[LVL]    enable desync debug options (LVL=[012], 0 is none"
 	echo "  --enable-profiling             enables profiling"
 	echo "  --enable-dedicated             compile a dedicated server (without video)"
 	echo "  --enable-static                enable static compile (doesn't work for"

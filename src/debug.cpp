@@ -176,3 +176,20 @@ const char *GetDebugString()
 
 	return dbgstr;
 }
+
+#ifdef DEBUG_DUMP_COMMANDS
+#include "fileio.h"
+
+void CDECL DebugDumpCommands(const char *s, ...)
+{
+	static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
+	if (f == NULL) return;
+
+	va_list va;
+	va_start(va, s);
+	vfprintf(f, s, va);
+	va_end(va);
+
+	fflush(f);
+}
+#endif /* DEBUG_DUMP_COMMANDS */

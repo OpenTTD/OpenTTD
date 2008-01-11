@@ -13,6 +13,7 @@
 #include "functions.h"
 #include "date_func.h"
 #include "vehicle_base.h"
+#include "debug.h"
 #ifdef DEBUG_DUMP_COMMANDS
 #include "saveload.h"
 #include "town_map.h"
@@ -282,7 +283,7 @@ void IncreaseDate()
 		char name[MAX_PATH];
 		snprintf(name, lengthof(name), "dmp_cmds_%d.sav", _date);
 		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
-		debug_dump_commands("ddc:save:%s\n", name);
+		DebugDumpCommands("ddc:save:%s\n", name);
 #endif /* DUMP_COMMANDS */
 		if (_opt.autosave != 0 && (_cur_month % _autosave_months[_opt.autosave]) == 0) {
 			_do_autosave = true;

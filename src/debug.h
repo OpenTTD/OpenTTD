@@ -132,4 +132,10 @@ const char *GetDebugString();
 void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
 
+#ifdef DEBUG_DUMP_COMMANDS
+	void CDECL DebugDumpCommands(const char *s, ...);
+#else /* DEBUG_DUMP_COMMANDS */
+	static inline void DebugDumpCommands(const char *s, ...) {}
+#endif /* DEBUG_DUMP_COMMANDS */
+
 #endif /* DEBUG_H */

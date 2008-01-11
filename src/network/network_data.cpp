@@ -10,6 +10,7 @@
 #include "../callback_table.h"
 #include "../core/alloc_func.hpp"
 #include "../string_func.h"
+#include "../date_func.h"
 
 // Add a command to the local command queue
 void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp)
@@ -99,11 +100,7 @@ void NetworkExecuteCommand(CommandPacket *cp)
 		cp->callback = 0;
 	}
 
-#ifdef DEBUG_DUMP_COMMANDS
-	extern Date      _date;
-	extern DateFract _date_fract;
-	debug_dump_commands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->player, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
-#endif /* DUMP_COMMANDS */
+	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->player, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
 
 	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND, cp->my_cmd);
 }

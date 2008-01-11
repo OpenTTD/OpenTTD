@@ -34,7 +34,7 @@ extern const char _openttd_revision[];
 #include "../string_func.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
-#endif
+#endif /* DEBUG_DUMP_COMMANDS */
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
@@ -193,9 +193,7 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 			break;
 	}
 
-#ifdef DEBUG_DUMP_COMMANDS
-	debug_dump_commands("ddc:cmsg:%d;%d;%s\n", _date, _date_fract, message);
-#endif /* DUMP_COMMANDS */
+	DebugDumpCommands("ddc:cmsg:%d;%d;%s\n", _date, _date_fract, message);
 	IConsolePrintF(color, "%s", message);
 	AddChatMessage(color, duration, "%s", message);
 }
@@ -1236,9 +1234,7 @@ static bool NetworkDoClientLoop()
 			if (_sync_seed_1 != _random_seeds[0][0]) {
 #endif
 				NetworkError(STR_NETWORK_ERR_DESYNC);
-#ifdef DEBUG_DUMP_COMMANDS
-				debug_dump_commands("ddc:serr:%d;%d\n", _date, _date_fract);
-#endif /* DUMP_COMMANDS */
+				DebugDumpCommands("ddc:serr:%d;%d\n", _date, _date_fract);
 				DEBUG(net, 0, "Sync error detected!");
 				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, DEREF_CLIENT(0));
 				return false;
@@ -1313,7 +1309,7 @@ void NetworkGameLoop()
 			sscanf(&buff[8], "%d;%d;%d;%d;%d;%d;%d;%s", &next_date, &next_date_fract, &player, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
 			cp->player = (Owner)player;
 		}
-#endif /* DUMP_COMMANDS */
+#endif /* DEBUG_DUMP_COMMANDS */
 
 		bool send_frame = false;
 
@@ -1467,18 +1463,4 @@ bool IsNetworkCompatibleVersion(const char *other)
 	return strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
 }
 
-#ifdef DEBUG_DUMP_COMMANDS
-void CDECL debug_dump_commands(const char *s, ...)
-{
-	static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
-	if (f == NULL) return;
-
-	va_list va;
-	va_start(va, s);
-	vfprintf(f, s, va);
-	va_end(va);
-
-	fflush(f);
-}
-#endif /* DEBUG_DUMP_COMMANDS */
 #endif /* ENABLE_NETWORK */

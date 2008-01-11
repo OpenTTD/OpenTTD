@@ -18,17 +18,6 @@
 //  nothing will happen.
 //#define ENABLE_NETWORK_SYNC_EVERY_FRAME
 
-/*
- * Dumps all commands that are sent/received to stderr and saves every month.
- * This log can become quite large over time; say in the order of two to three
- * times the bandwidth used for network games.
- */
-//#define DEBUG_DUMP_COMMANDS
-
-#ifdef DEBUG_DUMP_COMMANDS
-void CDECL debug_dump_commands(const char *s, ...);
-#endif /* DEBUG_DUMP_COMMANDS */
-
 // In theory sending 1 of the 2 seeds is enough to check for desyncs
 //   so in theory, this next define can be left off.
 //#define NETWORK_SEND_DOUBLE_SEED
