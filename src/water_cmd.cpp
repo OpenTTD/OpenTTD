@@ -33,7 +33,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "variables.h"
-#include "player.h"
+#include "player_func.h"
 
 
 static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);

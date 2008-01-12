@@ -8,6 +8,7 @@
 #include "core/bitmath_func.hpp"
 #include "vehicle_type.h"
 #include "viewport_type.h"
+#include "player_type.h"
 
 /**
  * The maximum number of windows that can be opened.
@@ -366,13 +367,6 @@ struct smallmap_d {
 	int32 subscroll;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
-
-/* player face selection window */
-struct facesel_d {
-	PlayerFace face; // player face bits
-	bool advanced;   // advance player face selection window
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
 struct refit_d {
 	int sel;

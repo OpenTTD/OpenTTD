@@ -13,7 +13,7 @@
 #include "town.h"
 #include "news.h"
 #include "saveload.h"
-#include "player.h"
+#include "player_func.h"
 #include "airport.h"
 #include "sprite.h"
 #include "depot.h"

@@ -18,7 +18,7 @@
 #include "command_func.h"
 #include "industry.h"
 #include "station.h"
-#include "player.h"
+#include "player_base.h"
 #include "news.h"
 #include "saveload.h"
 #include "gui.h"

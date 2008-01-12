@@ -30,7 +30,7 @@
 #include "vehicle_base.h"
 #include "string_func.h"
 #include "signal_func.h"
-#include "player.h"
+#include "player_func.h"
 
 
 enum {

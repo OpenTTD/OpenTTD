@@ -5,7 +5,6 @@
 #include "bridge_map.h"
 #include "heightmap.h"
 #include "clear_map.h"
-#include "player.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include <stdarg.h>

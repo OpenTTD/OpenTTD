@@ -6,6 +6,7 @@
 #define WINDOW_FUNC_H
 
 #include "window_type.h"
+#include "player_type.h"
 
 /**
  * Marks the window as dirty for repaint.
@@ -18,7 +19,6 @@ void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lpar
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindow(Window *w);
-void DeletePlayerWindows(PlayerID pi);
 void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
 
 void ResizeWindow(Window *w, int x, int y);

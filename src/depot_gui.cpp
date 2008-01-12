@@ -23,7 +23,7 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
-#include "player.h"
+#include "player_func.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.

@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "player.h"
+#include "player_func.h"
 #include "station.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -939,7 +939,6 @@ static void DrawVehicleListWindow(Window *w)
 	int max;
 	int i;
 	const PlayerID owner = (PlayerID)w->caption_color;
-	const Player *p = GetPlayer(owner);
 	const uint16 window_type = w->window_number & VLW_MASK;
 	const uint16 index = GB(w->window_number, 16, 16);
 
@@ -959,7 +958,7 @@ static void DrawVehicleListWindow(Window *w)
 			break;
 
 		case VLW_STANDARD: /* Company Name */
-			SetDParam(0, p->index);
+			SetDParam(0, owner);
 			SetDParam(1, w->vscroll.count);
 			break;
 

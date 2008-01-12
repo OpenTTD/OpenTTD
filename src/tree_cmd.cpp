@@ -20,7 +20,7 @@
 #include "genworld.h"
 #include "transparency.h"
 #include "functions.h"
-#include "player.h"
+#include "player_func.h"
 #include "sound_func.h"
 
 /**

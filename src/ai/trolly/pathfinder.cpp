@@ -12,6 +12,8 @@
 #include "../../tunnelbridge_map.h"
 #include "../ai.h"
 #include "../../variables.h"
+#include "../../player_base.h"
+#include "../../player_func.h"
 
 
 #define TEST_STATION_NO_DIR 0xFF

@@ -11,7 +11,8 @@
 #include "tunnelbridge_map.h"
 #include "settings_type.h"
 #include "date_func.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_base.h"
 
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */

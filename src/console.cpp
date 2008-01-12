@@ -8,7 +8,6 @@
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
-#include "player.h"
 #include "variables.h"
 #include <stdarg.h>
 #include <string.h>

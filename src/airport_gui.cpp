@@ -19,7 +19,7 @@
 #include "variables.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "player.h"
+#include "player_func.h"
 
 static byte _selected_airport_type;
 

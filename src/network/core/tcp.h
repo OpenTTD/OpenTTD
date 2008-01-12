@@ -12,6 +12,7 @@
 #include "os_abstraction.h"
 #include "core.h"
 #include "packet.h"
+#include "../../tile_type.h"
 
 /**
  * Enum with all types of UDP packets.

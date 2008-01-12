@@ -30,7 +30,7 @@
 #include "waypoint.h"
 #include "town.h"
 #include "industry.h"
-#include "player.h"
+#include "player_func.h"
 #include "airport.h"
 #include "variables.h"
 #include "table/sprites.h"

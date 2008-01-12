@@ -22,7 +22,8 @@
 #include "gfx_func.h"
 #include "station.h"
 #include "command_func.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_base.h"
 #include "town.h"
 #include "network/network.h"
 #include "variables.h"
@@ -40,6 +41,7 @@
 #include "date_func.h"
 #include "sound_func.h"
 #include "string_func.h"
+#include "player_gui.h"
 
 /* Variables to display file lists */
 FiosItem *_fios_list;

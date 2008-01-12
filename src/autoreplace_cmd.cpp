@@ -6,7 +6,7 @@
 #include "ship.h"
 #include "table/strings.h"
 #include "news.h"
-#include "player.h"
+#include "player_func.h"
 #include "engine.h"
 #include "debug.h"
 #include "vehicle_gui.h"

@@ -85,9 +85,6 @@ void ShowBuildTreesScenToolbar();
 void ShowTownDirectory();
 void ShowIndustryDirectory();
 void ShowSubsidiesList();
-void ShowPlayerStations(PlayerID player);
-void ShowPlayerFinances(PlayerID player);
-void ShowPlayerCompany(PlayerID player);
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);

@@ -15,6 +15,8 @@
 #define OTTDThread void
 #endif
 
+#include "player_type.h"
+
 /*
  * Order of these enums has to be the same as in lang/english.txt
  * Otherwise you will get inconsistent behaviour.

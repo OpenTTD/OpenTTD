@@ -4,7 +4,6 @@
 #define AI_H
 
 #include "../network/network.h"
-#include "../player.h"
 #include "../command_type.h"
 #include "../core/random_func.hpp"
 #include "../settings_type.h"

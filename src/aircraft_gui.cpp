@@ -10,7 +10,6 @@
 #include "table/strings.h"
 #include "gui.h"
 #include "engine.h"
-#include "player.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"

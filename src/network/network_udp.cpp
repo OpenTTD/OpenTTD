@@ -20,6 +20,8 @@
 #include "../newgrf_config.h"
 #include "../core/endian_func.hpp"
 #include "../string_func.h"
+#include "../player_base.h"
+#include "../player_func.h"
 
 #include "core/udp.h"
 

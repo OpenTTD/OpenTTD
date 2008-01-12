@@ -23,7 +23,7 @@
 #include "newgrf_commons.h"
 #include "transparency.h"
 #include "functions.h"
-#include "player.h"
+#include "player_func.h"
 
 static BuildingCounts    _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

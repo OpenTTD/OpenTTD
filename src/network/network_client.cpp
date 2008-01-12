@@ -22,6 +22,9 @@
 #include "../strings_func.h"
 #include "../window_func.h"
 #include "../string_func.h"
+#include "../player_func.h"
+#include "../player_base.h"
+#include "../player_gui.h"
 
 // This file handles all the client-commands
 

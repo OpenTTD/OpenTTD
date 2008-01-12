@@ -32,6 +32,7 @@ extern const char _openttd_revision[];
 #include "../core/random_func.hpp"
 #include "../window_func.h"
 #include "../string_func.h"
+#include "../player_func.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
 #endif /* DEBUG_DUMP_COMMANDS */

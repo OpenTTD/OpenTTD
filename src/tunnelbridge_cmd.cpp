@@ -18,7 +18,6 @@
 #include "unmovable_map.h"
 #include "viewport_func.h"
 #include "command_func.h"
-#include "player.h"
 #include "town.h"
 #include "variables.h"
 #include "bridge.h"

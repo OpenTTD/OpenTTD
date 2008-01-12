@@ -9,7 +9,6 @@
 #include "tile_map.h"
 #include "gui.h"
 #include "command_func.h"
-#include "player.h"
 #include "network/network.h"
 #include "variables.h"
 #include "genworld.h"
@@ -20,6 +19,8 @@
 #include "town.h"
 #include "date_func.h"
 #include "debug.h"
+#include "player_func.h"
+#include "player_base.h"
 
 const char *_cmd_text = NULL;
 

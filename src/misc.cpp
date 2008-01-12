@@ -7,7 +7,6 @@
 #include "currency.h"
 #include "landscape.h"
 #include "news.h"
-#include "player.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "saveload.h"

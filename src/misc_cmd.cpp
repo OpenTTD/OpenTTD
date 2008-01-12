@@ -7,7 +7,6 @@
 #include "table/strings.h"
 #include "command_func.h"
 #include "economy_func.h"
-#include "player.h"
 #include "gui.h"
 #include "window_func.h"
 #include "textbuf_gui.h"
@@ -20,6 +19,9 @@
 #include "functions.h"
 #include "vehicle_func.h"
 #include "string_func.h"
+#include "player_func.h"
+#include "player_base.h"
+#include "player_gui.h"
 
 /** Change the player's face.
  * @param tile unused

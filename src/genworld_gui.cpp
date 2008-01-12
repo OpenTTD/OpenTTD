@@ -11,7 +11,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "gfxinit.h"
-#include "player.h"
 #include "command_func.h"
 #include "variables.h"
 #include "settings_func.h"

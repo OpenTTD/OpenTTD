@@ -8,6 +8,7 @@
 #include "core/bitmath_func.hpp"
 #include "road_type.h"
 #include "direction_func.h"
+#include "player_type.h"
 
 /**
  * Whether the given roadtype is valid.

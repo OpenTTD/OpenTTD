@@ -14,7 +14,6 @@
 #include "window_func.h"
 #include "textbuf_gui.h"
 #include "viewport_func.h"
-#include "player.h"
 #include "command_func.h"
 #include "news.h"
 #include "town.h"
@@ -49,6 +48,9 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "string_func.h"
+#include "player_base.h"
+#include "player_func.h"
+#include "player_gui.h"
 
 static int _rename_id = 1;
 static int _rename_what = -1;

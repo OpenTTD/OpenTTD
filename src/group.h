@@ -6,6 +6,9 @@
 #define GROUP_H
 
 #include "oldpool.h"
+#include "player_type.h"
+#include "vehicle_type.h"
+#include "engine.h"
 
 enum {
 	ALL_GROUP     = 0xFFFD,

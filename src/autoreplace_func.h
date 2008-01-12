@@ -6,7 +6,7 @@
 #define AUTOREPLACE_FUNC_H
 
 #include "autoreplace_type.h"
-#include "player.h"
+#include "player_base.h"
 
 /**
  * Remove all engine replacement settings for the player.

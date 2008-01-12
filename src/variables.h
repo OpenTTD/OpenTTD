@@ -86,8 +86,6 @@ VARDEF StringID _error_message;
 
 VARDEF bool _rightclick_emulate;
 
-VARDEF PlayerFace _player_face; ///< for player face storage in openttd.cfg
-
 /* IN/OUT parameters to commands */
 VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;

@@ -4,7 +4,8 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "player.h"
+#include "core/math_func.hpp"
+#include "player_func.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "gfx_func.h"

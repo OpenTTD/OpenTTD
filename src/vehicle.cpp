@@ -18,7 +18,7 @@
 #include "news.h"
 #include "command_func.h"
 #include "saveload.h"
-#include "player.h"
+#include "player_func.h"
 #include "engine.h"
 #include "debug.h"
 #include "vehicle_gui.h"

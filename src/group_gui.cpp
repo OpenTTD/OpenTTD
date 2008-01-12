@@ -24,7 +24,7 @@
 #include "string_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "player.h"
+#include "player_func.h"
 
 
 struct Sorting {
@@ -289,7 +289,6 @@ static void UpdateGroupActionDropdown(Window *w, GroupID gid, bool refresh = tru
 static void GroupWndProc(Window *w, WindowEvent *e)
 {
 	const PlayerID owner = (PlayerID)GB(w->window_number, 0, 8);
-	const Player *p = GetPlayer(owner);
 	groupveh_d *gv = &WP(w, groupveh_d);
 	grouplist_d *gl = &WP(w, groupveh_d).gl;
 
@@ -369,7 +368,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
 			   We list all vehicles or ungrouped vehicles */
 			if (IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel)) {
-				SetDParam(0, p->index);
+				SetDParam(0, owner);
 				SetDParam(1, gv->l.list_length);
 
 				switch (gv->vehicle_type) {

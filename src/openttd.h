@@ -45,8 +45,6 @@ assert_compile(sizeof(DestinationID) == sizeof(DepotID));
 assert_compile(sizeof(DestinationID) == sizeof(WaypointID));
 assert_compile(sizeof(DestinationID) == sizeof(StationID));
 
-typedef uint32 PlayerFace; ///< player face bits, info see in player_face.h
-
 enum GameModes {
 	GM_MENU,
 	GM_NORMAL,
@@ -82,33 +80,6 @@ enum InitializeGameModes {
 	IG_DATE_RESET = 1,  /* Reset the date when initializing a game */
 };
 
-enum Owner {
-	PLAYER_INACTIVE_CLIENT = 253,
-	PLAYER_NEW_COMPANY = 254,
-	PLAYER_SPECTATOR = 255,
-	OWNER_BEGIN     = 0x00,
-	PLAYER_FIRST    = 0x00,
-	MAX_PLAYERS     = 8,
-	OWNER_TOWN      = 0x0F, // a town owns the tile
-	OWNER_NONE      = 0x10, // nobody owns the tile
-	OWNER_WATER     = 0x11, // "water" owns the tile
-	OWNER_END       = 0x12,
-	INVALID_OWNER   = 0xFF,
-	INVALID_PLAYER  = 0xFF,
-	/* Player identifiers All players below MAX_PLAYERS are playable
-	* players, above, they are special, computer controlled players */
-};
-
-typedef Owner PlayerID;
-
-DECLARE_POSTFIX_INCREMENT(Owner);
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};
-typedef TinyEnumT<Owner> OwnerByte;
-typedef OwnerByte PlayerByte;
-
-
 enum TransportType {
 	/* These constants are for now linked to the representation of bridges
 	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge.
@@ -127,7 +98,6 @@ enum TransportType {
 /** Define basic enum properties */
 template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byte, TRANSPORT_BEGIN, TRANSPORT_END, INVALID_TRANSPORT> {};
 typedef TinyEnumT<TransportType> TransportTypeByte;
-
 
 /* Display Options */
 enum {

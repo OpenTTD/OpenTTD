@@ -15,6 +15,7 @@
 #include "../fios.h"
 #include "../blitter/factory.hpp"
 #include "../core/alloc_func.hpp"
+#include "../player_func.h"
 #include "dedicated_v.h"
 
 #ifdef BEOS_NET_SERVER

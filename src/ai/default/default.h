@@ -4,6 +4,8 @@
 #define DEFAULT_H
 
 #include "../../direction_type.h"
+#include "../../vehicle_type.h"
+#include "../../rail_type.h"
 
 void AiDoGameLoop(Player*);
 void SaveLoad_AI(PlayerID id);

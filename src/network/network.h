@@ -5,7 +5,8 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "../player.h"
+#include "../player_type.h"
+#include "../economy_type.h"
 #include "core/config.h"
 #include "core/game.h"
 

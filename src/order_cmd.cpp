@@ -11,7 +11,7 @@
 #include "waypoint.h"
 #include "command_func.h"
 #include "station.h"
-#include "player.h"
+#include "player_func.h"
 #include "news.h"
 #include "saveload.h"
 #include "vehicle_gui.h"

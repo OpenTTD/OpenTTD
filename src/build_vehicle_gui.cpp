@@ -17,7 +17,7 @@
 #include "station.h"
 #include "command_func.h"
 #include "engine.h"
-#include "player.h"
+#include "player_func.h"
 #include "depot.h"
 #include "airport.h"
 #include "vehicle_gui.h"

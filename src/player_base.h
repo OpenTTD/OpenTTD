@@ -1,9 +1,9 @@
 /* $Id$ */
 
-/** @file player.h */
+/** @file player_base.h Definition of stuff that is very close to a player, like the player struct itself. */
 
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER_BASE_H
+#define PLAYER_BASE_H
 
 #include "road_type.h"
 #include "rail_type.h"
@@ -20,12 +20,6 @@ struct PlayerEconomyEntry {
 	int32 delivered_cargo;
 	int32 performance_history; ///< player score (scale 0-1000)
 	Money company_value;
-};
-
-/* The "steps" in loan size, in British Pounds! */
-enum {
-	LOAN_INTERVAL        = 10000,
-	LOAN_INTERVAL_OLD_AI = 50000,
 };
 
 struct Player {
@@ -77,21 +71,8 @@ struct Player {
 	uint16 num_engines[TOTAL_NUM_ENGINES]; ///< caches the number of engines of each type the player owns (no need to save this)
 };
 
-uint16 GetDrawStringPlayerColor(PlayerID player);
-
-void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
-void GetNameOfOwner(Owner owner, TileIndex tile);
-Money CalculateCompanyValue(const Player *p);
-void InvalidatePlayerWindows(const Player *p);
-void SetLocalPlayer(PlayerID new_player);
+extern Player _players[MAX_PLAYERS];
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
-
-VARDEF PlayerByte _local_player;
-VARDEF PlayerByte _current_player;
-
-VARDEF Player _players[MAX_PLAYERS];
-/* NOSAVE: can be determined from player structs */
-VARDEF byte _player_colors[MAX_PLAYERS];
 
 static inline byte ActivePlayerCount()
 {
@@ -111,45 +92,6 @@ static inline Player *GetPlayer(PlayerID i)
 	return &_players[i];
 }
 
-static inline bool IsLocalPlayer()
-{
-	return _local_player == _current_player;
-}
+Money CalculateCompanyValue(const Player *p);
 
-static inline bool IsValidPlayer(PlayerID pi)
-{
-	return IsInsideBS(pi, PLAYER_FIRST, MAX_PLAYERS);
-}
-
-static inline bool IsHumanPlayer(PlayerID pi)
-{
-	return !GetPlayer(pi)->is_ai;
-}
-
-static inline bool IsInteractivePlayer(PlayerID pi)
-{
-	return pi == _local_player;
-}
-
-void DrawPlayerIcon(PlayerID p, int x, int y);
-
-struct HighScore {
-	char company[100];
-	StringID title; ///< NO_SAVE, has troubles with changing string-numbers.
-	uint16 score;   ///< do NOT change type, will break hs.dat
-};
-
-VARDEF HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
-void SaveToHighScore();
-void LoadFromHighScore();
-int8 SaveHighScoreValue(const Player *p);
-int8 SaveHighScoreValueNetwork();
-
-/**
- * Reset the livery schemes to the player's primary colour.
- * This is used on loading games without livery information and on new player start up.
- * @param p Player to reset.
- */
-void ResetPlayerLivery(Player *p);
-
-#endif /* PLAYER_H */
+#endif /* PLAYER_BASE_H */

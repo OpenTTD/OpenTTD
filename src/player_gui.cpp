@@ -11,7 +11,8 @@
 #include "textbuf_gui.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_base.h"
 #include "command_func.h"
 #include "network/network.h"
 #include "variables.h"
@@ -28,6 +29,13 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "string_func.h"
+
+/* player face selection window */
+struct facesel_d {
+	PlayerFace face; // player face bits
+	bool advanced;   // advance player face selection window
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
 static void DoSelectPlayerFace(PlayerID player, bool show_big);

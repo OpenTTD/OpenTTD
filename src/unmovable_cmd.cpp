@@ -10,7 +10,8 @@
 #include "landscape.h"
 #include "command_func.h"
 #include "viewport_func.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_base.h"
 #include "gui.h"
 #include "station.h"
 #include "town.h"
@@ -26,6 +27,7 @@
 #include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
+#include "player_gui.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are

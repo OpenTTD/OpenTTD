@@ -36,6 +36,8 @@
 #include "../../date_func.h"
 #include "../ai.h"
 #include "../../order.h"
+#include "../../player_base.h"
+#include "../../player_func.h"
 
 PlayerAiNew _players_ainew[MAX_PLAYERS];
 

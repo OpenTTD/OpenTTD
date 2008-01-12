@@ -34,7 +34,8 @@
 #include "date_func.h"
 #include "vehicle_base.h"
 #include "string_func.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_base.h"
 
 /* for opendir/readdir/closedir */
 # include "fios.h"

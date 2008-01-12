@@ -9,7 +9,7 @@
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
-#include "player.h"
+#include "player_gui.h"
 #include "signs.h"
 #include "debug.h"
 #include "variables.h"

@@ -8,7 +8,6 @@
 #include "station.h"
 #include "industry.h"
 #include "town.h"
-#include "player.h"
 #include "economy_func.h"
 #include "variables.h"
 #include "cargotype.h"

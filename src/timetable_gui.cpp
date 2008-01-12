@@ -17,7 +17,7 @@
 #include "vehicle_base.h"
 #include "string_func.h"
 #include "gfx_func.h"
-#include "player.h"
+#include "player_func.h"
 
 static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 {

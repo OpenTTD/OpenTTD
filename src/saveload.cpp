@@ -19,7 +19,6 @@
 #include "station.h"
 #include "thread.h"
 #include "town.h"
-#include "player.h"
 #include "saveload.h"
 #include "network/network.h"
 #include "variables.h"

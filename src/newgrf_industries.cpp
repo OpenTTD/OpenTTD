@@ -20,7 +20,8 @@
 #include "newgrf_town.h"
 #include "window_func.h"
 #include "town.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_base.h"
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
  * to those used by the game, the IDs used for overriding old industries must be

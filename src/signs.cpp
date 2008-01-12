@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "table/strings.h"
 #include "landscape.h"
-#include "player.h"
+#include "player_func.h"
 #include "signs.h"
 #include "saveload.h"
 #include "command_func.h"

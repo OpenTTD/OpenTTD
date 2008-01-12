@@ -12,6 +12,8 @@
 #include "../../bridge.h"
 #include "../../vehicle_func.h"
 #include "../../vehicle_base.h"
+#include "../../player_base.h"
+#include "../../player_func.h"
 #include "../ai.h"
 
 // Build HQ

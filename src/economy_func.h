@@ -12,6 +12,7 @@
 #include "tile_type.h"
 #include "town_type.h"
 #include "industry_type.h"
+#include "player_type.h"
 
 struct Player;
 

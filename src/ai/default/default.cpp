@@ -10,7 +10,6 @@
 #include "../../road_map.h"
 #include "../../roadveh.h"
 #include "../../station_map.h"
-#include "../../player.h"
 #include "../../tunnel_map.h"
 #include "../../engine.h"
 #include "../../command_func.h"
@@ -28,6 +27,8 @@
 #include "../../vehicle_func.h"
 #include "../../functions.h"
 #include "../../saveload.h"
+#include "../../player_func.h"
+#include "../../player_base.h"
 #include "default.h"
 
 // remove some day perhaps?

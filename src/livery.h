@@ -5,6 +5,7 @@
 #ifndef LIVERY_H
 #define LIVERY_H
 
+#include "player_type.h"
 
 /* List of different livery schemes. */
 enum LiveryScheme {
@@ -62,5 +63,12 @@ struct Livery {
 	byte colour1; ///< First colour, for all vehicles.
 	byte colour2; ///< Second colour, for vehicles with 2CC support.
 };
+
+/**
+ * Reset the livery schemes to the player's primary colour.
+ * This is used on loading games without livery information and on new player start up.
+ * @param p Player to reset.
+ */
+void ResetPlayerLivery(Player *p);
 
 #endif /* LIVERY_H */

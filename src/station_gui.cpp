@@ -10,7 +10,7 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "station.h"
-#include "player.h"
+#include "player_func.h"
 #include "economy_func.h"
 #include "town.h"
 #include "command_func.h"

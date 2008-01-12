@@ -18,7 +18,7 @@
 #include "tunnel_map.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "player.h"
+#include "player_base.h"
 #include "town.h"
 #include "variables.h"
 #include "blitter/factory.hpp"

@@ -2,11 +2,12 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../player.h"
 #include "../variables.h"
 #include "../command_func.h"
 #include "../network/network.h"
 #include "../core/alloc_func.hpp"
+#include "../player_func.h"
+#include "../player_base.h"
 #include "ai.h"
 #include "default/default.h"
 

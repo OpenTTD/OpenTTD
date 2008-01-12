@@ -7,7 +7,8 @@
 #include "engine.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "player.h"
+#include "player_func.h"
+#include "player_gui.h"
 #include "town.h"
 #include "station.h"
 #include "news.h"
@@ -35,6 +36,14 @@
 #include "road_func.h"
 #include "rail.h"
 
+Player _players[MAX_PLAYERS];
+PlayerByte _local_player;
+PlayerByte _current_player;
+/* NOSAVE: can be determined from player structs */
+byte _player_colors[MAX_PLAYERS];
+PlayerFace _player_face; ///< for player face storage in openttd.cfg
+HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
+
 /**
  * Sets the local player and updates the patch settings that are set on a
  * per-company (player) basis to reflect the core's state in the GUI.
@@ -56,6 +65,11 @@ void SetLocalPlayer(PlayerID new_player)
 		_patches.autorenew_money  = p->engine_renew_money;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
+}
+
+bool IsHumanPlayer(PlayerID pi)
+{
+	return !GetPlayer(pi)->is_ai;
 }
 
 
