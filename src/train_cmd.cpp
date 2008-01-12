@@ -3122,22 +3122,26 @@ static void DeleteLastWagon(Vehicle *v)
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
 
+	/* 'v' shouldn't be accessed after it has been deleted */
+	TrackBits track = v->u.rail.track;
+	TileIndex tile = v->tile;
+
 	delete v;
 
-	if (v->u.rail.track != TRACK_BIT_DEPOT && v->u.rail.track != TRACK_BIT_WORMHOLE)
-		SetSignalsOnBothDir(v->tile, (Track)(FIND_FIRST_BIT(v->u.rail.track)));
+	if (track != TRACK_BIT_DEPOT && track != TRACK_BIT_WORMHOLE)
+		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)));
 
 	/* Check if the wagon was on a road/rail-crossing and disable it if no
 	 * others are on it */
-	DisableTrainCrossing(v->tile);
+	DisableTrainCrossing(tile);
 
-	if (v->u.rail.track == TRACK_BIT_WORMHOLE) { // inside a tunnel / bridge
-		TileIndex endtile = GetOtherTunnelBridgeEnd(v->tile);
+	if (track == TRACK_BIT_WORMHOLE) { // inside a tunnel / bridge
+		TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
 
-		if (GetVehicleTunnelBridge(v->tile, endtile) != NULL) return; // tunnel / bridge is busy
+		if (GetVehicleTunnelBridge(tile, endtile) != NULL) return; // tunnel / bridge is busy
 
 		/* v->direction is "random", so it cannot be used to determine the direction of the track */
-		UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR);
+		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR);
 	}
 }
 
