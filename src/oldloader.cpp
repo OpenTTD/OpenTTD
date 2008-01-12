@@ -1264,10 +1264,11 @@ static const OldChunks sign_chunk[] = {
 
 static bool LoadOldSign(LoadgameState *ls, int num)
 {
-	if (!LoadChunk(ls, new (num) Sign(), sign_chunk)) return false;
+	Sign *si = new (num) Sign();
+	if (!LoadChunk(ls, si, sign_chunk)) return false;
 
 	_old_string_id = RemapOldStringID(_old_string_id);
-	// XXX copy if custom name$$$
+	si->name = CopyFromOldName(_old_string_id);
 
 	return true;
 }
