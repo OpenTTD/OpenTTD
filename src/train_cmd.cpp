@@ -3118,6 +3118,9 @@ static void DeleteLastWagon(Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
+	if (v->u.rail.track == TRACK_BIT_DEPOT) {
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	}
 
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
