@@ -3131,20 +3131,15 @@ static void DeleteLastWagon(Vehicle *v)
 
 	delete v;
 
-	if (track != TRACK_BIT_DEPOT && track != TRACK_BIT_WORMHOLE)
-		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)));
-
 	/* Check if the wagon was on a road/rail-crossing and disable it if no
 	 * others are on it */
 	DisableTrainCrossing(tile);
 
-	if (track == TRACK_BIT_WORMHOLE) { // inside a tunnel / bridge
-		TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
-
-		if (GetVehicleTunnelBridge(tile, endtile) != NULL) return; // tunnel / bridge is busy
-
-		/* v->direction is "random", so it cannot be used to determine the direction of the track */
+	/* Update signals */
+	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileDepotType(tile, TRANSPORT_RAIL)) {
 		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR);
+	} else {
+		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)));
 	}
 }
 
