@@ -1306,6 +1306,13 @@ static bool LoadOldEngine(LoadgameState *ls, int num)
 	return true;
 }
 
+static bool LoadOldEngineName(LoadgameState *ls, int num)
+{
+	Engine *e = GetEngine(num);
+	e->name = CopyFromOldName(RemapOldStringID(ReadUint16(ls)));
+	return true;
+}
+
 static const OldChunks subsidy_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Subsidy, cargo_type ),
 	OCL_SVAR(  OC_UINT8, Subsidy, age ),
@@ -1512,7 +1519,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_NULL( 144 ),             ///< cargo-stuff, calculated in InitializeLandscapeVariables
 
-	OCL_VAR ( OC_UINT16,  256, &_engine_name_strings[0] ),
+	OCL_CHUNK(256, LoadOldEngineName ),
 
 	OCL_NULL( 144 ),             ///< AI cargo-stuff, calculated in InitializeLandscapeVariables
 	OCL_NULL( 2 ),               ///< Company indexes of players, no longer in use

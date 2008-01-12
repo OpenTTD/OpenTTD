@@ -212,8 +212,6 @@ static inline Engine* GetEngine(EngineID i)
 	return &_engines[i];
 }
 
-VARDEF StringID _engine_name_strings[TOTAL_NUM_ENGINES];
-
 static inline bool IsEngineIndex(uint index)
 {
 	return index < TOTAL_NUM_ENGINES;
