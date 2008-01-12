@@ -1414,9 +1414,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 
 		if (diag_dir == INVALID_DIAGDIR) return INVALID_TRACKDIR;
 		dir = DiagdirToDiagTrackdir(diag_dir);
-	} else if (HasBit(prev_state, RVS_IN_DT_ROAD_STOP)) {
-		dir = (Trackdir)(prev_state & RVSB_ROAD_STOP_TRACKDIR_MASK);
-	} else if (prev_state < TRACKDIR_END) {
+	} else {
 		if (already_reversed && prev->tile != tile) {
 			/*
 			 * The vehicle has reversed, but did not go straight back.
@@ -1437,11 +1435,13 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 				{ TRACKDIR_UPPER_W, TRACKDIR_RIGHT_N, TRACKDIR_LEFT_N,  TRACKDIR_UPPER_E },
 				{ TRACKDIR_RIGHT_S, TRACKDIR_LOWER_W, TRACKDIR_LOWER_E, TRACKDIR_LEFT_S  }};
 			dir = reversed_turn_lookup[prev->tile < tile ? 0 : 1][ReverseDiagDir(entry_dir)];
-		} else {
+		} else if (HasBit(prev_state, RVS_IN_DT_ROAD_STOP)) {
+			dir = (Trackdir)(prev_state & RVSB_ROAD_STOP_TRACKDIR_MASK);
+		} else if (prev_state < TRACKDIR_END) {
 			dir = (Trackdir)prev_state;
+		} else {
+			return INVALID_TRACKDIR;
 		}
-	} else {
-		return INVALID_TRACKDIR;
 	}
 
 	/* Do some sanity checking. */
