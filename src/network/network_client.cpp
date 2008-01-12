@@ -53,17 +53,18 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 	memset(salted_password, 0, sizeof(salted_password));
 	snprintf(salted_password, sizeof(salted_password), "%s", password);
 	/* Add the game seed and the server's unique ID as the salt. */
-	for (uint i = 0; i < NETWORK_UNIQUE_ID_LENGTH; i++) salted_password[i] ^= _password_server_unique_id[i] ^ (_password_game_seed >> i);
+	for (uint i = 0; i < NETWORK_UNIQUE_ID_LENGTH - 1; i++) salted_password[i] ^= _password_server_unique_id[i] ^ (_password_game_seed >> i);
 
 	Md5 checksum;
 	uint8 digest[16];
 	static char hashed_password[NETWORK_UNIQUE_ID_LENGTH];
 
 	/* Generate the MD5 hash */
-	checksum.Append((const uint8*)salted_password, sizeof(salted_password));
+	checksum.Append((const uint8*)salted_password, sizeof(salted_password) - 1);
 	checksum.Finish(digest);
 
 	for (int di = 0; di < 16; di++) sprintf(hashed_password + di * 2, "%02x", digest[di]);
+	hashed_password[lengthof(hashed_password) - 1] = '\0';
 
 	return hashed_password;
 }
