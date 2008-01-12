@@ -26,7 +26,7 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
 	uint16 num_engines[TOTAL_NUM_ENGINES];  ///< Caches the number of engines of each type the player owns (no need to save this)
 
-	Group(StringID str = STR_NULL);
+	Group(PlayerID owner = INVALID_PLAYER);
 	virtual ~Group();
 
 	bool IsValid() const;

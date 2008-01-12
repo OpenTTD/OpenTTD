@@ -45,20 +45,20 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 DEFINE_OLD_POOL_GENERIC(Group, Group)
 
 
-Group::Group(StringID str)
+Group::Group(PlayerID owner)
 {
-	this->string_id = str;
+	this->owner = owner;
 }
 
 Group::~Group()
 {
 	DeleteName(this->string_id);
-	this->string_id = STR_NULL;
+	this->owner = INVALID_PLAYER;
 }
 
 bool Group::IsValid() const
 {
-	return this->string_id != STR_NULL;
+	return this->owner != INVALID_PLAYER;
 }
 
 void InitializeGroup(void)
@@ -93,13 +93,12 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	AutoPtrT<Group> g_auto_delete;
 
-	Group *g = new Group(STR_EMPTY);
+	Group *g = new Group(_current_player);
 	if (g == NULL) return CMD_ERROR;
 
 	g_auto_delete = g;
 
 	if (flags & DC_EXEC) {
-		g->owner = _current_player;
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 
