@@ -134,7 +134,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	const UnitID cached_unitnumber = old_v->unitnumber;
 	bool new_front = false;
 	Vehicle *new_v = NULL;
-	char vehicle_name[32];
+	char *vehicle_name = NULL;
 	CargoID replacement_cargo_type;
 
 	/* If the vehicle belongs to a group, check if the group is protected from the global autoreplace.
@@ -240,12 +240,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 		MoveVehicleCargo(new_v->type == VEH_TRAIN ? new_v->First() : new_v, old_v);
 
 		// Get the name of the old vehicle if it has a custom name.
-		if (!IsCustomName(old_v->string_id)) {
-			vehicle_name[0] = '\0';
-		} else {
-			SetDParam(0, old_v->index);
-			GetString(vehicle_name, STR_VEHICLE_NAME, lastof(vehicle_name));
-		}
+		if (old_v->name != NULL) vehicle_name = strdup(old_v->name);
 	} else { // flags & DC_EXEC not set
 		CommandCost tmp_move;
 
@@ -285,9 +280,10 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	}
 
 	/* Transfer the name of the old vehicle */
-	if ((flags & DC_EXEC) && vehicle_name[0] != '\0') {
+	if ((flags & DC_EXEC) && vehicle_name != NULL) {
 		_cmd_text = vehicle_name;
 		DoCommand(0, new_v->index, 0, DC_EXEC, CMD_NAME_VEHICLE);
+		free(vehicle_name);
 	}
 
 	return cost;

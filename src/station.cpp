@@ -61,7 +61,7 @@ Station::~Station()
 {
 	DEBUG(station, cDebugCtorLevel, "I-%3d", index);
 
-	DeleteName(this->string_id);
+	free(this->name);
 	free(this->speclist);
 
 	if (CleaningPool()) return;

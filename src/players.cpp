@@ -612,10 +612,12 @@ static void DeletePlayerStuff(PlayerID pi)
 
 	DeletePlayerWindows(pi);
 	p = GetPlayer(pi);
-	DeleteName(p->name_1);
-	DeleteName(p->president_name_1);
-	p->name_1 = 0;
-	p->president_name_1 = 0;
+	p->name_1 = STR_NULL;
+	p->president_name_1 = STR_NULL;
+	free(p->name);
+	free(p->president_name);
+	p->name = NULL;
+	p->president_name = NULL;
 }
 
 /** Change engine renewal parameters
@@ -1096,9 +1098,11 @@ void LoadFromHighScore()
 static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, name_2,          SLE_UINT32),
 	    SLE_VAR(Player, name_1,          SLE_STRINGID),
+	SLE_CONDSTR(Player, name,            SLE_STR, 0,                       84, SL_MAX_VERSION),
 
 	    SLE_VAR(Player, president_name_1,SLE_UINT16),
 	    SLE_VAR(Player, president_name_2,SLE_UINT32),
+	SLE_CONDSTR(Player, president_name,  SLE_STR, 0,                       84, SL_MAX_VERSION),
 
 	    SLE_VAR(Player, face,            SLE_UINT32),
 

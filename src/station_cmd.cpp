@@ -2625,19 +2625,13 @@ CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsUniqueStationName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-	StringID str = AllocateName(_cmd_text, 6);
-	if (str == 0) return CMD_ERROR;
-
 	if (flags & DC_EXEC) {
-		StringID old_str = st->string_id;
+		free(st->name);
+		st->name = strdup(_cmd_text);
 
-		st->string_id = str;
 		UpdateStationVirtCoord(st);
-		DeleteName(old_str);
 		ResortStationLists();
 		MarkWholeScreenDirty();
-	} else {
-		DeleteName(str);
 	}
 
 	return CommandCost();
@@ -3046,6 +3040,7 @@ static const SaveLoad _station_desc[] = {
 	SLE_CONDNULL(1, 0, 3),
 
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
+	SLE_CONDSTR(Station, name,                       SLE_STR, 0,                 84, SL_MAX_VERSION),
 	    SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT16),
 
 	    SLE_VAR(Station, time_since_load,            SLE_UINT8),

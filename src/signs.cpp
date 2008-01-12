@@ -26,15 +26,15 @@ uint _total_signs;
 /* Initialize the sign-pool */
 DEFINE_OLD_POOL_GENERIC(Sign, Sign)
 
-Sign::Sign(StringID string)
+Sign::Sign(PlayerID owner)
 {
-	this->str = string;
+	this->owner = owner;
 }
 
 Sign::~Sign()
 {
-	DeleteName(this->str);
-	this->str = STR_NULL;
+	free(this->name);
+	this->owner = INVALID_PLAYER;
 }
 
 /**
@@ -95,7 +95,7 @@ static void MarkSignDirty(Sign *si)
 CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Try to locate a new sign */
-	Sign *si = new Sign(STR_280A_SIGN);
+	Sign *si = new Sign(_current_player);
 	if (si == NULL) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
 	AutoPtrT<Sign> s_auto_delete = si;
 
@@ -106,7 +106,6 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		si->x = x;
 		si->y = y;
-		si->owner = _current_player; // owner of the sign; just eyecandy
 		si->z = GetSlopeZ(x, y);
 		UpdateSignVirtCoords(si);
 		MarkSignDirty(si);
@@ -136,17 +135,13 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* If _cmd_text 0 means the new text for the sign is non-empty.
 	 * So rename the sign. If it is empty, it has no name, so delete it */
 	if (!StrEmpty(_cmd_text)) {
-		/* Create the name */
-		StringID str = AllocateName(_cmd_text, 0);
-		if (str == 0) return CMD_ERROR;
-
 		if (flags & DC_EXEC) {
 			Sign *si = GetSign(p1);
 
 			/* Delete the old name */
-			DeleteName(si->str);
+			free(si->name);
 			/* Assign the new one */
-			si->str = str;
+			si->name = strdup(_cmd_text);
 			si->owner = _current_player;
 
 			/* Update; mark sign dirty twice, because it can either becom longer, or shorter */
@@ -155,9 +150,6 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			MarkSignDirty(si);
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
-		} else {
-			/* Free the name, because we did not assign it yet */
-			DeleteName(str);
 		}
 	} else { // Delete sign
 		if (flags & DC_EXEC) {
@@ -214,7 +206,8 @@ void InitializeSigns()
 }
 
 static const SaveLoad _sign_desc[] = {
-      SLE_VAR(Sign, str,   SLE_UINT16),
+  SLE_CONDVAR(Sign, name,  SLE_NAME,                   0, 83),
+  SLE_CONDSTR(Sign, name,  SLE_STR, 0,                84, SL_MAX_VERSION),
   SLE_CONDVAR(Sign, x,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
   SLE_CONDVAR(Sign, y,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
   SLE_CONDVAR(Sign, x,     SLE_INT32,                  5, SL_MAX_VERSION),

@@ -11,7 +11,7 @@ struct Sign;
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
 struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
-	StringID     str;
+	char *name;
 	ViewportSign sign;
 	int32        x;
 	int32        y;
@@ -21,12 +21,12 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	/**
 	 * Creates a new sign
 	 */
-	Sign(StringID string = STR_NULL);
+	Sign(PlayerID owner = INVALID_PLAYER);
 
 	/** Destroy the sign */
 	~Sign();
 
-	inline bool IsValid() const { return this->str != STR_NULL; }
+	inline bool IsValid() const { return this->owner != INVALID_PLAYER; }
 };
 
 enum {

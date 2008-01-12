@@ -55,7 +55,7 @@ Town::Town(TileIndex tile)
 
 Town::~Town()
 {
-	DeleteName(this->townnametype);
+	free(this->name);
 
 	if (CleaningPool()) return;
 
@@ -1888,7 +1888,6 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	StringID str;
 	Town *t;
 
 	if (!IsValidTownID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
@@ -1897,21 +1896,15 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsUniqueTownName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-	str = AllocateName(_cmd_text, 4);
-	if (str == 0) return CMD_ERROR;
-
 	if (flags & DC_EXEC) {
-		DeleteName(t->townnametype);
-		t->townnametype = str;
-		t->townnamegrfid = 0;
+		free(t->name);
+		t->name = strdup(_cmd_text);
 
 		UpdateTownVirtCoord(t);
 		_town_sort_dirty = true;
 		UpdateAllStationVirtCoord();
 		UpdateAllWaypointSigns();
 		MarkWholeScreenDirty();
-	} else {
-		DeleteName(str);
 	}
 	return CommandCost();
 }
@@ -2417,6 +2410,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, 66, SL_MAX_VERSION),
 	    SLE_VAR(Town, townnametype,          SLE_UINT16),
 	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
+	SLE_CONDSTR(Town, name,                  SLE_STR, 0, 84, SL_MAX_VERSION),
 
 	    SLE_VAR(Town, flags12,               SLE_UINT8),
 	    SLE_VAR(Town, statues,               SLE_UINT8),

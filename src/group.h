@@ -20,7 +20,7 @@ struct Group;
 DECLARE_OLD_POOL(Group, Group, 5, 2047)
 
 struct Group : PoolItem<Group, GroupID, &_Group_pool> {
-	StringID string_id;                     ///< Group Name
+	char *name;                             ///< Group Name
 
 	uint16 num_vehicle;                     ///< Number of vehicles wich belong to the group
 	PlayerID owner;                         ///< Group Owner

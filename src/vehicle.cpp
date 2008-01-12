@@ -570,7 +570,7 @@ void Vehicle::PreDestructor()
 
 Vehicle::~Vehicle()
 {
-	DeleteName(this->string_id);
+	free(this->name);
 
 	if (CleaningPool()) return;
 
@@ -2308,7 +2308,6 @@ static bool IsUniqueVehicleName(const char *name)
 CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	StringID str;
 
 	if (!IsValidVehicleID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
@@ -2318,17 +2317,11 @@ CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-	str = AllocateName(_cmd_text, 2);
-	if (str == 0) return CMD_ERROR;
-
 	if (flags & DC_EXEC) {
-		StringID old_str = v->string_id;
-		v->string_id = str;
-		DeleteName(old_str);
+		free(v->name);
+		v->name = strdup(_cmd_text);
 		ResortVehicleLists();
 		MarkWholeScreenDirty();
-	} else {
-		DeleteName(str);
 	}
 
 	return CommandCost();
@@ -2741,7 +2734,8 @@ static const SaveLoad _common_veh_desc[] = {
 	    SLE_VAR(Vehicle, subtype,              SLE_UINT8),
 
 	    SLE_REF(Vehicle, next,                 REF_VEHICLE_OLD),
-	    SLE_VAR(Vehicle, string_id,            SLE_STRINGID),
+	SLE_CONDVAR(Vehicle, name,                 SLE_NAME,                    0, 83),
+	SLE_CONDSTR(Vehicle, name,                 SLE_STR, 0,                 84, SL_MAX_VERSION),
 	SLE_CONDVAR(Vehicle, unitnumber,           SLE_FILE_U8  | SLE_VAR_U16,  0, 7),
 	SLE_CONDVAR(Vehicle, unitnumber,           SLE_UINT16,                  8, SL_MAX_VERSION),
 	    SLE_VAR(Vehicle, owner,                SLE_UINT8),

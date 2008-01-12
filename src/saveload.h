@@ -117,6 +117,7 @@ enum VarTypes {
 	SLE_VAR_STRBQ = 11 << 4, ///< string enclosed in quotes (with pre-allocated buffer)
 	SLE_VAR_STR   = 12 << 4, ///< string pointer
 	SLE_VAR_STRQ  = 13 << 4, ///< string pointer enclosed in quotes
+	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a char pointer
 	/* 2 more possible memory-primitives */
 
 	/* Shortcut values */
@@ -140,6 +141,7 @@ enum VarTypes {
 	SLE_STRINGBQUOTE = SLE_FILE_STRING   | SLE_VAR_STRBQ,
 	SLE_STRING       = SLE_FILE_STRING   | SLE_VAR_STR,
 	SLE_STRINGQUOTE  = SLE_FILE_STRING   | SLE_VAR_STRQ,
+	SLE_NAME         = SLE_FILE_STRINGID | SLE_VAR_NAME,
 
 	/* Shortcut values */
 	SLE_UINT  = SLE_UINT32,

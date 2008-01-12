@@ -3170,7 +3170,8 @@ static void FeatureNewName(byte *buf, int len)
 			case GSF_AIRCRAFT:
 				if (id < TOTAL_NUM_ENGINES) {
 					StringID string = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_8000_KIRBY_PAUL_TANK_STEAM + id);
-					SetCustomEngineName(id, string);
+					EngineInfo *ei = &_engine_info[id];
+					ei->string_id = string;
 				} else {
 					AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
 				}
@@ -5014,7 +5015,6 @@ static void ResetNewGRFData()
 	/* Unload sprite group data */
 	UnloadWagonOverrides();
 	UnloadCustomEngineSprites();
-	UnloadCustomEngineNames();
 	ResetEngineListOrder();
 
 	/* Reset price base data */

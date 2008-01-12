@@ -54,6 +54,12 @@ void SetupEngines()
 	do e->type = VEH_ROAD;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
 	do e->type = VEH_SHIP;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
 	do e->type = VEH_AIRCRAFT; while (++e < &_engines[TOTAL_NUM_ENGINES]);
+
+	/* Set up default engine names */
+	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		EngineInfo *ei = &_engine_info[engine];
+		ei->string_id = STR_8000_KIRBY_PAUL_TANK_STEAM + engine;
+	}
 }
 
 
@@ -61,13 +67,10 @@ void ShowEnginePreviewWindow(EngineID engine);
 
 void DeleteCustomEngineNames()
 {
-	uint i;
-	StringID old;
-
-	for (i = 0; i != TOTAL_NUM_ENGINES; i++) {
-		old = _engine_name_strings[i];
-		_engine_name_strings[i] = i + STR_8000_KIRBY_PAUL_TANK_STEAM;
-		DeleteName(old);
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		free(e->name);
+		e->name = NULL;
 	}
 
 	_vehicle_design_names &= ~1;
@@ -78,18 +81,6 @@ void LoadCustomEngineNames()
 	/* XXX: not done */
 	DEBUG(misc, 1, "LoadCustomEngineNames: not done");
 }
-
-static void SetupEngineNames()
-{
-	StringID *name;
-
-	for (name = _engine_name_strings; name != endof(_engine_name_strings); name++)
-		*name = STR_SV_EMPTY;
-
-	DeleteCustomEngineNames();
-	LoadCustomEngineNames();
-}
-
 
 static void CalcEngineReliability(Engine *e)
 {
@@ -133,8 +124,6 @@ void StartupEngines()
 	const EngineInfo *ei;
 	/* Aging of vehicles stops, so account for that when starting late */
 	const Date aging_date = min(_date, ConvertYMDToDate(YEAR_ENGINE_AGING_STOPS, 0, 1));
-
-	SetupEngineNames();
 
 	for (e = _engines, ei = _engine_info; e != endof(_engines); e++, ei++) {
 		uint32 r;
@@ -402,23 +391,16 @@ static bool IsUniqueEngineName(const char *name)
  */
 CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	StringID str;
-
 	if (!IsEngineIndex(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
 	if (!IsUniqueEngineName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-	str = AllocateName(_cmd_text, 0);
-	if (str == 0) return CMD_ERROR;
-
 	if (flags & DC_EXEC) {
-		StringID old_str = _engine_name_strings[p1];
-		_engine_name_strings[p1] = str;
-		DeleteName(old_str);
+		Engine *e = GetEngine(p1);
+		free(e->name);
+		e->name = strdup(_cmd_text);
 		_vehicle_design_names |= 3;
 		MarkWholeScreenDirty();
-	} else {
-		DeleteName(str);
 	}
 
 	return CommandCost();
@@ -637,6 +619,7 @@ static const SaveLoad _engine_desc[] = {
 	    SLE_VAR(Engine, preview_wait,        SLE_UINT8),
 	SLE_CONDNULL(1, 0, 44),
 	    SLE_VAR(Engine, player_avail,        SLE_UINT8),
+	SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 84, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
@@ -662,14 +645,21 @@ static void Load_ENGN()
 	}
 }
 
-static void LoadSave_ENGS()
+static void Load_ENGS()
 {
-	SlArray(_engine_name_strings, lengthof(_engine_name_strings), SLE_STRINGID);
+	StringID names[TOTAL_NUM_ENGINES];
+
+	SlArray(names, lengthof(names), SLE_STRINGID);
+
+	for (EngineID engine = 0; engine < lengthof(names); engine++) {
+		Engine *e = GetEngine(engine);
+		e->name = CopyFromOldName(names[engine]);
+	}
 }
 
 extern const ChunkHandler _engine_chunk_handlers[] = {
 	{ 'ENGN', Save_ENGN,     Load_ENGN,     CH_ARRAY          },
-	{ 'ENGS', LoadSave_ENGS, LoadSave_ENGS, CH_RIFF           },
+	{ 'ENGS', NULL,          Load_ENGS,     CH_RIFF           },
 	{ 'ERNW', Save_ERNW,     Load_ERNW,     CH_ARRAY | CH_LAST},
 };
 
@@ -678,4 +668,10 @@ void InitializeEngines()
 	/* Clean the engine renew pool and create 1 block in it */
 	_EngineRenew_pool.CleanPool();
 	_EngineRenew_pool.AddBlockToPool();
+
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		free(e->name);
+		e->name = NULL;
+	}
 }

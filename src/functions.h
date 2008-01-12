@@ -35,12 +35,7 @@ void InitializeLandscapeVariables(bool only_constants);
 
 /* misc.cpp */
 bool IsCustomName(StringID id);
-void DeleteName(StringID id);
-char *GetName(char *buff, StringID id, const char *last);
-
-#define AllocateName(name, skip) RealAllocateName(name, skip, false)
-StringID RealAllocateName(const char *name, byte skip, bool check_double);
-void ConvertNameArray();
+char *CopyFromOldName(StringID id);
 
 /* misc functions */
 /**

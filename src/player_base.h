@@ -25,9 +25,11 @@ struct PlayerEconomyEntry {
 struct Player {
 	uint32 name_2;
 	uint16 name_1;
+	char *name;
 
 	uint16 president_name_1;
 	uint32 president_name_2;
+	char *president_name;
 
 	PlayerFace face;
 

@@ -751,7 +751,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			v->reliability_spd_dec = e->reliability_spd_dec;
 			v->max_age = e->lifelength * 366;
 
-			v->string_id = STR_SV_TRAIN_NAME;
+			v->name = NULL;
 			v->u.rail.railtype = rvi->railtype;
 			_new_vehicle_id = v->index;
 

@@ -116,18 +116,6 @@ bool IsCustomName(StringID id)
 	return GB(id, 11, 5) == 15;
 }
 
-void DeleteName(StringID id)
-{
-	if (IsCustomName(id)) {
-		memset(_name_array[id & 0x1FF], 0, sizeof(_name_array[id & 0x1FF]));
-	}
-}
-
-char *GetName(char *buff, StringID id, const char* last)
-{
-	return strecpy(buff, _name_array[id & ~0x600], last);
-}
-
 
 static void InitializeCheats()
 {
@@ -140,40 +128,22 @@ static void InitializeNameMgr()
 	memset(_name_array, 0, sizeof(_name_array));
 }
 
-StringID RealAllocateName(const char *name, byte skip, bool check_double)
+/* Copy and convert old custom names to UTF-8 */
+char *CopyFromOldName(StringID id)
 {
-	char (*free_item)[lengthof(*_name_array)] = NULL;
-	char (*i)[lengthof(*_name_array)];
+	if (!IsCustomName(id)) return NULL;
 
-	for (i = _name_array; i != endof(_name_array); ++i) {
-		if ((*i)[0] == '\0') {
-			if (free_item == NULL) free_item = i;
-		} else if (check_double && strncmp(*i, name, lengthof(*i) - 1) == 0) {
-			_error_message = STR_0132_CHOSEN_NAME_IN_USE_ALREADY;
-			return 0;
-		}
-	}
-
-	if (free_item != NULL) {
-		ttd_strlcpy(*free_item, name, lengthof(*free_item));
-		return (free_item - _name_array) | 0x7800 | (skip << 8);
-	} else {
-		_error_message = STR_0131_TOO_MANY_NAMES_DEFINED;
-		return 0;
-	}
-}
-
-void ConvertNameArray()
-{
-	uint i;
-
-	for (i = 0; i < lengthof(_name_array); i++) {
-		const char *strfrom = _name_array[i];
-		char tmp[sizeof(*_name_array)];
+	if (CheckSavegameVersion(37)) {
+		/* Old names were 32 characters long, so 128 characters should be
+		 * plenty to allow for expansion when converted to UTF-8. */
+		char tmp[128];
+		const char *strfrom = _name_array[GB(id, 0, 9)];
 		char *strto = tmp;
 
 		for (; *strfrom != '\0'; strfrom++) {
 			WChar c = (byte)*strfrom;
+
+			/* Map from non-ISO8859-15 characters to UTF-8. */
 			switch (c) {
 				case 0xA4: c = 0x20AC; break; // Euro
 				case 0xA6: c = 0x0160; break; // S with caron
@@ -185,13 +155,20 @@ void ConvertNameArray()
 				case 0xBE: c = 0x0178; break; // Y with diaresis
 				default: break;
 			}
+
+			/* Check character will fit into our buffer. */
 			if (strto + Utf8CharLen(c) > lastof(tmp)) break;
+
 			strto += Utf8Encode(strto, c);
 		}
 
 		/* Terminate the new string and copy it back to the name array */
 		*strto = '\0';
-		memcpy(_name_array[i], tmp, sizeof(*_name_array));
+
+		return strdup(tmp);
+	} else {
+		/* Name will already be in UTF-8. */
+		return strdup(_name_array[GB(id, 0, 9)]);
 	}
 }
 
@@ -203,19 +180,6 @@ void InitializeLandscapeVariables(bool only_constants)
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		_cargo_payment_rates[i] = GetCargo(i)->initial_payment;
 		_cargo_payment_rates_frac[i] = 0;
-	}
-}
-
-
-static void Save_NAME()
-{
-	int i;
-
-	for (i = 0; i != lengthof(_name_array); ++i) {
-		if (_name_array[i][0] != '\0') {
-			SlSetArrayIndex(i);
-			SlArray(_name_array[i], (uint)strlen(_name_array[i]), SLE_UINT8);
-		}
 	}
 }
 
@@ -584,7 +548,7 @@ extern const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'MAPE', Save_MAP6,     Load_MAP6,     CH_RIFF },
 	{ 'MAP7', Save_MAP7,     Load_MAP7,     CH_RIFF },
 
-	{ 'NAME', Save_NAME,     Load_NAME,     CH_ARRAY},
+	{ 'NAME', NULL,          Load_NAME,     CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},
 	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF},
 	{ 'CHTS', Save_CHTS,     Load_CHTS,     CH_RIFF | CH_LAST}

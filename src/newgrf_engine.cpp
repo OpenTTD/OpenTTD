@@ -707,8 +707,6 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x5D: return GB(ClampToI32(v->value),  8, 24);
 		case 0x5E: return GB(ClampToI32(v->value), 16, 16);
 		case 0x5F: return GB(ClampToI32(v->value), 24,  8);
-		case 0x60: return v->string_id;
-		case 0x61: return GB(v->string_id, 8, 8);
 		case 0x72: return v->cargo_subtype;
 		case 0x7A: return v->random_bits;
 		case 0x7B: return v->waiting_triggers;
@@ -1039,27 +1037,6 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 	}
 
 	DoTriggerVehicle(v, trigger, 0, true);
-}
-
-StringID _engine_custom_names[TOTAL_NUM_ENGINES];
-
-void SetCustomEngineName(EngineID engine, StringID name)
-{
-	assert(engine < lengthof(_engine_custom_names));
-	_engine_custom_names[engine] = name;
-}
-
-void UnloadCustomEngineNames()
-{
-	EngineID i;
-	for (i = 0; i < TOTAL_NUM_ENGINES; i++) {
-		_engine_custom_names[i] = 0;
-	}
-}
-
-StringID GetCustomEngineName(EngineID engine)
-{
-	return _engine_custom_names[engine] == 0 ? _engine_name_strings[engine] : _engine_custom_names[engine];
 }
 
 /* Functions for changing the order of vehicle purchase lists

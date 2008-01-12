@@ -33,11 +33,13 @@ static int CDECL SignNameSorter(const void *a, const void *b)
 	const Sign *sign1 = *(const Sign**)b;
 	char buf1[64];
 
-	GetString(buf1, sign0->str, lastof(buf1));
+	SetDParam(0, sign0->index);
+	GetString(buf1, STR_SIGN_NAME, lastof(buf1));
 
 	if (sign1 != _last_sign) {
 		_last_sign = sign1;
-		GetString(_bufcache, sign1->str, lastof(_bufcache));
+		SetDParam(0, sign1->index);
+		GetString(_bufcache, STR_SIGN_NAME, lastof(_bufcache));
 	}
 
 	return strcmp(buf1, _bufcache); // sort by name
@@ -175,7 +177,7 @@ enum QueryEditSignWidgets {
 static void UpdateSignEditWindow(Window *w, const Sign *si)
 {
 	/* Display an empty string when the sign hasnt been edited yet */
-	if (si->str != STR_280A_SIGN) {
+	if (si->name != NULL) {
 		SetDParam(0, si->index);
 		GetString(_edit_str_buf, STR_SIGN_NAME, lastof(_edit_str_buf));
 	} else {

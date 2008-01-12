@@ -52,7 +52,7 @@ Group::Group(PlayerID owner)
 
 Group::~Group()
 {
-	DeleteName(this->string_id);
+	free(this->name);
 	this->owner = INVALID_PLAYER;
 }
 
@@ -186,19 +186,13 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsUniqueGroupName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-	/* Create the name */
-	StringID str = AllocateName(_cmd_text, 0);
-	if (str == STR_NULL) return CMD_ERROR;
-
 	if (flags & DC_EXEC) {
 		/* Delete the old name */
-		DeleteName(g->string_id);
+		free(g->name);
 		/* Assign the new one */
-		g->string_id = str;
+		g->name = strdup(_cmd_text);
 
 		InvalidateWindowData(GetWCForVT(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
-	} else {
-		DeleteName(str);
 	}
 
 	return CommandCost();
@@ -433,7 +427,8 @@ void RemoveAllGroupsForPlayer(const PlayerID p)
 
 
 static const SaveLoad _group_desc[] = {
-  SLE_VAR(Group, string_id,          SLE_UINT16),
+  SLE_CONDVAR(Group, name,           SLE_NAME,    0, 83),
+  SLE_CONDSTR(Group, name,           SLE_STR, 0, 84, SL_MAX_VERSION),
   SLE_VAR(Group, num_vehicle,        SLE_UINT16),
   SLE_VAR(Group, owner,              SLE_UINT8),
   SLE_VAR(Group, vehicle_type,       SLE_UINT8),

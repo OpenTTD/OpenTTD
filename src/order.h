@@ -127,7 +127,7 @@ struct BackuppedOrders {
 	VehicleOrderID orderindex;
 	Order *order;
 	uint16 service_interval;
-	char name[32];
+	char *name;
 };
 
 VARDEF TileIndex _backup_orders_tile;

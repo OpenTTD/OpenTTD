@@ -201,7 +201,7 @@ public:
 
 	Vehicle *depot_list;     // NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
-	StringID string_id;      // Displayed string
+	char *name;              ///< Name of vehicle
 
 	UnitID unitnumber;       // unit number, for display purposes only
 	PlayerByte owner;        // which player owns the vehicle?

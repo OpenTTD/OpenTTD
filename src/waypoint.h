@@ -17,7 +17,8 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 
 	TownID town_index; ///< Town associated with the waypoint
 	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)
-	StringID string;   ///< If this is zero (i.e. no custom name), town + town_cn is used for naming
+	StringID string;   ///< C000-C03F have special meaning in old games
+	char *name;        ///< Custom name. If not set, town + town_cn is used for naming
 
 	ViewportSign sign; ///< Dimensions of sign (not saved)
 	Date build_date;   ///< Date of construction

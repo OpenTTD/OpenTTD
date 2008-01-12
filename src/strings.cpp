@@ -138,8 +138,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 			break;
 
 		case 15:
-			/* User defined name */
-			return GetName(buffr, index, last);
+			error("Boo!");
 
 		case 26:
 			/* Include string within newgrf text (format code 81) */
@@ -821,17 +820,20 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
-				int64 temp[2];
 				Waypoint *wp = GetWaypoint(GetInt32(&argv));
-				StringID str;
-				if (wp->string != STR_NULL) {
-					str = wp->string;
+
+				if (!wp->IsValid()) { // waypoint doesn't exist anymore
+					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
+				} else if (wp->name != NULL) {
+					buff = strecpy(buff, wp->name, last);
 				} else {
+					int64 temp[2];
 					temp[0] = wp->town_index;
 					temp[1] = wp->town_cn + 1;
-					str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
+					StringID str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
+
+					buff = GetStringWithArgs(buff, str, temp, last);
 				}
-				buff = GetStringWithArgs(buff, str, temp, last);
 				break;
 			}
 
@@ -840,6 +842,8 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 				if (!st->IsValid()) { // station doesn't exist anymore
 					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
+				} else if (st->name != NULL) {
+					buff = strecpy(buff, st->name, last);
 				} else {
 					int64 temp[3];
 					temp[0] = STR_TOWN;
@@ -859,7 +863,9 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				temp[0] = t->townnameparts;
 				uint32 grfid = t->townnamegrfid;
 
-				if (grfid == 0) {
+				if (t->name != NULL) {
+					buff = strecpy(buff, t->name, last);
+				} else if (grfid == 0) {
 					/* Original town name */
 					buff = GetStringWithArgs(buff, t->townnametype, temp, last);
 				} else {
@@ -877,44 +883,75 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 			case SCC_GROUP_NAME: { // {GROUP}
 				const Group *g = GetGroup(GetInt32(&argv));
-				int64 args[1];
 
 				assert(g->IsValid());
 
-				args[0] = g->index;
-				buff = GetStringWithArgs(buff, IsCustomName(g->string_id) ? g->string_id : STR_GROUP_NAME_FORMAT, args, last);
+				if (g->name != NULL) {
+					buff = strecpy(buff, g->name, last);
+				} else {
+					int64 args[1];
 
+					args[0] = g->index;
+					buff = GetStringWithArgs(buff, STR_GROUP_NAME_FORMAT, args, last);
+				}
 				break;
 			}
 
 			case SCC_ENGINE_NAME: { // {ENGINE}
 				EngineID engine = (EngineID)GetInt32(&argv);
+				const Engine *e = GetEngine(engine);
 
-				buff = GetString(buff, GetCustomEngineName(engine), last);
+				if (e->name != NULL) {
+					buff = strecpy(buff, e->name, last);
+				} else {
+					buff = GetStringWithArgs(buff, EngInfo(engine)->string_id, NULL, last);
+				}
 				break;
 			}
 
 			case SCC_VEHICLE_NAME: { // {VEHICLE}
 				const Vehicle *v = GetVehicle(GetInt32(&argv));
 
-				int64 args[1];
-				args[0] = v->unitnumber;
+				if (v->name != NULL) {
+					buff = strecpy(buff, v->name, last);
+				} else {
+					int64 args[1];
+					args[0] = v->unitnumber;
 
-				buff = GetStringWithArgs(buff, v->string_id, args, last);
+					StringID str;
+					switch (v->type) {
+						default: NOT_REACHED();
+						case VEH_TRAIN:    str = STR_SV_TRAIN_NAME; break;
+						case VEH_ROAD:     str = STR_SV_ROADVEH_NAME; break;
+						case VEH_SHIP:     str = STR_SV_SHIP_NAME; break;
+						case VEH_AIRCRAFT: str = STR_SV_AIRCRAFT_NAME; break;
+					}
+
+					buff = GetStringWithArgs(buff, str, args, last);
+				}
 				break;
 			}
 
 			case SCC_SIGN_NAME: { // {SIGN}
 				const Sign *si = GetSign(GetInt32(&argv));
-				buff = GetString(buff, si->str, last);
+				if (si->name != NULL) {
+					buff = strecpy(buff, si->name, last);
+				} else {
+					buff = GetStringWithArgs(buff, STR_280A_SIGN, NULL, last);
+				}
 				break;
 			}
 
 			case SCC_COMPANY_NAME: { // {COMPANY}
 				const Player *p = GetPlayer((PlayerID)GetInt32(&argv));
-				int64 args[1];
-				args[0] = p->name_2;
-				buff = GetStringWithArgs(buff, p->name_1, args, last);
+
+				if (p->name != NULL) {
+					buff = strecpy(buff, p->name, last);
+				} else {
+					int64 args[1];
+					args[0] = p->name_2;
+					buff = GetStringWithArgs(buff, p->name_1, args, last);
+				}
 				break;
 			}
 
@@ -932,9 +969,14 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 			case SCC_PLAYER_NAME: { // {PLAYERNAME}
 				const Player *p = GetPlayer((PlayerID)GetInt32(&argv));
-				int64 args[1];
-				args[0] = p->president_name_2;
-				buff = GetStringWithArgs(buff, p->president_name_1, args, last);
+
+				if (p->president_name != NULL) {
+					buff = strecpy(buff, p->president_name, last);
+				} else {
+					int64 args[1];
+					args[0] = p->president_name_2;
+					buff = GetStringWithArgs(buff, p->president_name_1, args, last);
+				}
 				break;
 			}
 

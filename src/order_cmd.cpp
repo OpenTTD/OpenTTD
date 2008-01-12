@@ -926,18 +926,13 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 	/* Make sure we always have freed the stuff */
 	free(bak->order);
 	bak->order = NULL;
+	free(bak->name);
+	bak->name = NULL;
 
 	/* Save general info */
 	bak->orderindex       = v->cur_order_index;
 	bak->service_interval = v->service_interval;
-
-	/* Safe custom string, if any */
-	if (!IsCustomName(v->string_id)) {
-		bak->name[0] = '\0';
-	} else {
-		SetDParam(0, v->index);
-		GetString(bak->name, STR_VEHICLE_NAME, lastof(bak->name));
-	}
+	if (v->name != NULL) bak->name = strdup(v->name);
 
 	/* If we have shared orders, store it on a special way */
 	if (IsOrderListShared(v)) {
@@ -979,7 +974,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 {
 	/* If we have a custom name, process that */
-	if (!StrEmpty(bak->name)) {
+	if (bak->name != NULL) {
 		_cmd_text = bak->name;
 		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
 	}

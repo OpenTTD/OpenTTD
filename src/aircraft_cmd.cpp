@@ -335,7 +335,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->cargo_subtype = 0;
 
-		v->string_id = STR_SV_AIRCRAFT_NAME;
+		v->name = NULL;
 //		v->next_order_param = v->next_order = 0;
 
 //		v->load_unload_time_rem = 0;

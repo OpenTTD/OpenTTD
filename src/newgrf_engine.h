@@ -53,12 +53,8 @@ enum VehicleTrigger {
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
-void SetCustomEngineName(EngineID engine, StringID name);
-StringID GetCustomEngineName(EngineID engine);
-
 void UnloadWagonOverrides();
 void UnloadCustomEngineSprites();
-void UnloadCustomEngineNames();
 
 void ResetEngineListOrder();
 EngineID GetRailVehAtPosition(EngineID pos);

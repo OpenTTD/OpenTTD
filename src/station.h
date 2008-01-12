@@ -136,7 +136,8 @@ public:
 	TileIndex airport_tile;
 	TileIndex dock_tile;
 	Town *town;
-	uint16 string_id;
+	StringID string_id;     ///< Default name (town area) of station
+	char *name;             ///< Custom name
 
 	ViewportSign sign;
 

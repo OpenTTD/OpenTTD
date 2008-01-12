@@ -88,6 +88,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	uint32 townnamegrfid;
 	uint16 townnametype;
 	uint32 townnameparts;
+	char *name;
 
 	/* NOSAVE: Location of name sign, UpdateTownVirtCoord updates this. */
 	ViewportSign sign;

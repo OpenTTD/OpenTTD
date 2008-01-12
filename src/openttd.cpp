@@ -1343,6 +1343,34 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(84)) {
+		Player *p;
+		FOR_ALL_PLAYERS(p) {
+			p->name = CopyFromOldName(p->name_1);
+			if (p->name != NULL) p->name_1 = STR_SV_UNNAMED;
+			p->president_name = CopyFromOldName(p->president_name_1);
+			if (p->president_name != NULL) p->president_name_1 = SPECSTR_PRESIDENT_NAME;
+		}
+
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			st->name = CopyFromOldName(st->string_id);
+			if (st->name != NULL) st->string_id = STR_EMPTY;
+		}
+
+		Town *t;
+		FOR_ALL_TOWNS(t) {
+			t->name = CopyFromOldName(t->townnametype);
+			if (t->name != NULL) t->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+		}
+
+		Waypoint *wp;
+		FOR_ALL_WAYPOINTS(wp) {
+			wp->name = CopyFromOldName(wp->string);
+			wp->string = STR_EMPTY;
+		}
+	}
+
 	/* convert road side to my format. */
 	if (_opt.road_side) _opt.road_side = 1;
 
@@ -1934,10 +1962,6 @@ bool AfterLoadGame()
 			v->current_order.refit_cargo   = CT_NO_REFIT;
 			v->current_order.refit_subtype = CT_NO_REFIT;
 		}
-	}
-
-	if (CheckSavegameVersion(37)) {
-		ConvertNameArray();
 	}
 
 	/* from version 38 we have optional elrails, since we cannot know the

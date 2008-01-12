@@ -109,9 +109,11 @@ struct EngineInfo {
 	byte misc_flags;
 	byte callbackmask;
 	byte retire_early; ///< Number of years early to retire vehicle
+	StringID string_id; ///< Default name of engine
 };
 
 struct Engine {
+	char *name;         ///< Custom name of engine
 	Date intro_date;
 	Date age;
 	uint16 reliability;

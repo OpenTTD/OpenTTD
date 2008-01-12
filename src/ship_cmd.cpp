@@ -864,7 +864,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->max_age = e->lifelength * 366;
 		_new_vehicle_id = v->index;
 
-		v->string_id = STR_SV_SHIP_NAME;
+		v->name = NULL;
 		v->u.ship.state = TRACK_BIT_DEPOT;
 
 		v->service_interval = _patches.servint_ships;

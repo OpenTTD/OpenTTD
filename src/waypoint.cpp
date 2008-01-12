@@ -92,14 +92,14 @@ static void MakeDefaultWaypointName(Waypoint* wp)
 	FOR_ALL_WAYPOINTS(local_wp) {
 		if (wp == local_wp) continue;
 
-		if (local_wp->xy && local_wp->string == STR_NULL && local_wp->town_index == wp->town_index)
+		if (local_wp->xy && local_wp->name == NULL && local_wp->town_index == wp->town_index)
 			used_waypoint[local_wp->town_cn] = true;
 	}
 
 	/* Find an empty spot */
 	for (i = 0; used_waypoint[i] && i < MAX_WAYPOINTS_PER_TOWN; i++) {}
 
-	wp->string = STR_NULL;
+	wp->name = NULL;
 	wp->town_cn = i;
 }
 
@@ -197,7 +197,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		wp_auto_delete = wp;
 
 		wp->town_index = 0;
-		wp->string = STR_NULL;
+		wp->name = NULL;
 		wp->town_cn = 0;
 	} else if (flags & DC_EXEC) {
 		/* Move existing (recently deleted) waypoint to the new location */
@@ -350,24 +350,17 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (!StrEmpty(_cmd_text)) {
 		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
-		StringID str = AllocateName(_cmd_text, 0);
-
-		if (str == 0) return CMD_ERROR;
-
 		if (flags & DC_EXEC) {
-			if (wp->string != STR_NULL) DeleteName(wp->string);
-
-			wp->string = str;
+			free(wp->name);
+			wp->name = strdup(_cmd_text);
 			wp->town_cn = 0;
 
 			UpdateWaypointSign(wp);
 			MarkWholeScreenDirty();
-		} else {
-			DeleteName(str);
 		}
 	} else {
 		if (flags & DC_EXEC) {
-			if (wp->string != STR_NULL) DeleteName(wp->string);
+			free(wp->name);
 
 			MakeDefaultWaypointName(wp);
 			UpdateWaypointSign(wp);
@@ -393,7 +386,6 @@ Station *ComposeWaypointStation(TileIndex tile)
 
 	stat.train_tile = stat.xy = wp->xy;
 	stat.town = GetTown(wp->town_index);
-	stat.string_id = wp->string;
 	stat.build_date = wp->build_date;
 
 	return &stat;
@@ -423,7 +415,7 @@ Waypoint::Waypoint(TileIndex tile)
 
 Waypoint::~Waypoint()
 {
-	if (this->string != STR_NULL) DeleteName(this->string);
+	free(this->name);
 
 	if (CleaningPool()) return;
 
@@ -462,7 +454,8 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, xy,         SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16,                 12, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, town_cn,    SLE_UINT8,                  12, SL_MAX_VERSION),
-	    SLE_VAR(Waypoint, string,     SLE_UINT16),
+	SLE_CONDVAR(Waypoint, string,     SLE_STRINGID,                0, 83),
+	SLE_CONDSTR(Waypoint, name,       SLE_STR, 0,                 84, SL_MAX_VERSION),
 	    SLE_VAR(Waypoint, deleted,    SLE_UINT8),
 
 	SLE_CONDVAR(Waypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  3, 30),

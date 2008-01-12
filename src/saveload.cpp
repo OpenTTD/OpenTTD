@@ -33,7 +33,7 @@
 #include "autoreplace_base.h"
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 83;
+extern const uint16 SAVEGAME_VERSION = 84;
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
@@ -434,6 +434,7 @@ void WriteValue(void *ptr, VarType conv, int64 val)
 	case SLE_VAR_U32: *(uint32*)ptr = val; break;
 	case SLE_VAR_I64: *(int64 *)ptr = val; break;
 	case SLE_VAR_U64: *(uint64*)ptr = val; break;
+	case SLE_VAR_NAME: *(char**)ptr = CopyFromOldName(val); break;
 	case SLE_VAR_NULL: break;
 	default: NOT_REACHED();
 	}
@@ -921,6 +922,9 @@ static void SlStubSaveProc() {SlAutolength(SlStubSaveProc2, NULL);}
 static void SlSaveChunk(const ChunkHandler *ch)
 {
 	ChunkSaveLoadProc *proc = ch->save_proc;
+
+	/* Don't save any chunk information if there is no save handler. */
+	if (proc == NULL) return;
 
 	SlWriteUint32(ch->id);
 	DEBUG(sl, 2, "Saving chunk %c%c%c%c", ch->id >> 24, ch->id >> 16, ch->id >> 8, ch->id);

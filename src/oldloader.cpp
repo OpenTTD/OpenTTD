@@ -1235,7 +1235,8 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 		if (_old_next_ptr != 0xFFFF) v->next = GetVehiclePoolSize() <= _old_next_ptr ? new (_old_next_ptr) InvalidVehicle() : GetVehicle(_old_next_ptr);
 
-		v->string_id = RemapOldStringID(_old_string_id);
+		_old_string_id = RemapOldStringID(_old_string_id);
+		v->name = CopyFromOldName(_old_string_id);
 
 		/* Vehicle-subtype is different in TTD(Patch) */
 		if (v->type == VEH_SPECIAL) v->subtype = v->subtype >> 1;
@@ -1251,7 +1252,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 }
 
 static const OldChunks sign_chunk[] = {
-	OCL_SVAR( OC_UINT16, Sign, str ),
+	OCL_VAR ( OC_UINT16, 1, &_old_string_id ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Sign, x ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Sign, y ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_I8, Sign, z ),
@@ -1263,7 +1264,12 @@ static const OldChunks sign_chunk[] = {
 
 static bool LoadOldSign(LoadgameState *ls, int num)
 {
-	return LoadChunk(ls, new (num) Sign(), sign_chunk);
+	if (!LoadChunk(ls, new (num) Sign(), sign_chunk)) return false;
+
+	_old_string_id = RemapOldStringID(_old_string_id);
+	// XXX copy if custom name$$$
+
+	return true;
 }
 
 static const OldChunks engine_chunk[] = {
