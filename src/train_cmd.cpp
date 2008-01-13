@@ -2805,7 +2805,6 @@ static uint CountPassengersInTrain(const Vehicle* v)
 
 struct TrainCollideChecker {
 	Vehicle *v;
-	const Vehicle *v_skip;
 	uint num;
 };
 
@@ -2813,20 +2812,16 @@ static void *FindTrainCollideEnum(Vehicle *v, void *data)
 {
 	TrainCollideChecker* tcc = (TrainCollideChecker*)data;
 
-	if (v != tcc->v &&
-			v != tcc->v_skip &&
-			v->type == VEH_TRAIN &&
-			v->u.rail.track != TRACK_BIT_DEPOT &&
+	if (v->type != VEH_TRAIN) return NULL;
+
+	/* get first vehicle now to make most usual checks faster */
+	Vehicle *coll = v->First();
+
+	/* can't collide with own wagons && can't crash in depot && not too far */
+	if (coll != tcc->v && v->u.rail.track != TRACK_BIT_DEPOT &&
 			abs(v->z_pos - tcc->v->z_pos) < 6 &&
 			abs(v->x_pos - tcc->v->x_pos) < 6 &&
 			abs(v->y_pos - tcc->v->y_pos) < 6 ) {
-
-		Vehicle *coll = v->First();
-
-		/* it can't collide with its own wagons */
-		if (tcc->v == coll ||
-			(tcc->v->u.rail.track == TRACK_BIT_WORMHOLE && (tcc->v->direction & 2) != (v->direction & 2)))
-			return NULL;
 
 		/* two drivers + passengers killed in train tcc->v (if it was not crashed already) */
 		if (!(tcc->v->vehstatus & VS_CRASHED)) {
@@ -2859,7 +2854,6 @@ static void CheckTrainCollision(Vehicle *v)
 
 	TrainCollideChecker tcc;
 	tcc.v = v;
-	tcc.v_skip = v->Next();
 	tcc.num = 0;
 
 	/* find colliding vehicles */
