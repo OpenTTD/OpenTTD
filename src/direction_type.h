@@ -30,6 +30,9 @@ enum Direction {
 	INVALID_DIR = 0xFF,     ///< Flag for an invalid direction
 };
 
+/** Allow incrementing of Direction variables */
+DECLARE_POSTFIX_INCREMENT(Direction);
+
 /** Define basic enum properties */
 template <> struct EnumPropsT<Direction> : MakeEnumPropsT<Direction, byte, DIR_BEGIN, DIR_END, INVALID_DIR> {};
 typedef TinyEnumT<Direction> DirectionByte; //typedefing-enumification of Direction
@@ -77,6 +80,7 @@ enum DiagDirection {
 	INVALID_DIAGDIR = 0xFF, ///< Flag for an invalid DiagDirection
 };
 
+/** Allow incrementing of DiagDirection variables */
 DECLARE_POSTFIX_INCREMENT(DiagDirection);
 
 /** Define basic enum properties */

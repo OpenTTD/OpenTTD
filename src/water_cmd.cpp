@@ -644,10 +644,9 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
 			/* Mark surrounding canal tiles dirty too to avoid glitches */
-			MarkTileDirtyIfCanal(target + TileDiffXY(0, 1));
-			MarkTileDirtyIfCanal(target + TileDiffXY(1, 0));
-			MarkTileDirtyIfCanal(target + TileDiffXY(0, -1));
-			MarkTileDirtyIfCanal(target + TileDiffXY(-1, 0));
+			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+				MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
+			}
 		}
 	}
 }
