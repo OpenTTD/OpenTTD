@@ -38,6 +38,8 @@ extern const char _openttd_revision[];
 
 #include "table/strings.h"
 
+bool _network_reload_cfg;
+
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
 

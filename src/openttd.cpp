@@ -843,6 +843,13 @@ void SwitchMode(int new_mode)
 		if (_is_network_server) {
 			/* But not if we are going to the menu */
 			if (new_mode != SM_MENU) {
+				/* check if we should reload the config */
+				if (_network_reload_cfg) {
+					LoadFromConfig();
+					_patches = _patches_newgame;
+					_opt = _opt_newgame;
+					ResetGRFConfig(false);
+				}
 				NetworkServerStart();
 			} else {
 				/* This client no longer wants to be a network-server */

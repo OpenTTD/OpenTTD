@@ -1652,6 +1652,8 @@ void IConsoleStdLibRegister()
 	IConsoleVarRegister("min_players",           &_network_min_players, ICONSOLE_VAR_BYTE, "Automatically pause the game when the number of active players passes below the given amount");
 	IConsoleVarHookAdd("min_players",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarHookAdd("min_players",            ICONSOLE_HOOK_POST_ACTION, ConHookCheckMinPlayers);
+	IConsoleVarRegister("reload_cfg",            &_network_reload_cfg, ICONSOLE_VAR_BOOLEAN, "reload the entire config file between the end of this game, and starting the next new game - dedicated servers");
+	IConsoleVarHookAdd("reload_cfg",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
 #endif /* ENABLE_NETWORK */
 
