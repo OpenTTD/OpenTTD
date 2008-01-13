@@ -3107,6 +3107,8 @@ reverse_train_direction:
  */
 static void DeleteLastWagon(Vehicle *v)
 {
+	Vehicle *first = v->First();
+
 	/* Go to the last wagon and delete the link pointing there
 	 * *u is then the one-before-last wagon, and *v the last
 	 * one which will physicially be removed */
@@ -3114,13 +3116,22 @@ static void DeleteLastWagon(Vehicle *v)
 	for (; v->Next() != NULL; v = v->Next()) u = v;
 	u->SetNext(NULL);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-	RebuildVehicleLists();
-	InvalidateWindow(WC_COMPANY, v->owner);
-	if (v->u.rail.track == TRACK_BIT_DEPOT) {
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	if (first == v) {
+		/* Removing front vehicle (the last to go) */
+		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
+		InvalidateWindow(WC_COMPANY, v->owner);
+	} else {
+		/* Recalculate cached train properties */
+		TrainConsistChanged(first);
+		InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
+		/* Update the depot window if the first vehicle is in depot -
+		 * if v == first, then it is updated in PreDestructor() */
+		if (first->u.rail.track == TRACK_BIT_DEPOT) {
+			InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
+		}
 	}
+
+	RebuildVehicleLists();
 
 	BeginVehicleMove(v);
 	EndVehicleMove(v);
