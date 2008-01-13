@@ -8,8 +8,8 @@
 #include "../strings_func.h"
 #include "network_data.h"
 #include "core/tcp.h"
-#include "../train.h"
-#include "../aircraft.h"
+#include "../vehicle_base.h"
+#include "../vehicle_func.h"
 #include "../date_func.h"
 #include "network_server.h"
 #include "network_udp.h"
@@ -1302,30 +1302,15 @@ void NetworkPopulateCompanyInfo()
 	// Go through all vehicles and count the type of vehicles
 	FOR_ALL_VEHICLES(v) {
 		if (!IsValidPlayer(v->owner)) continue;
-
+		byte type = 0;
 		switch (v->type) {
-			case VEH_TRAIN:
-				if (IsFrontEngine(v)) _network_player_info[v->owner].num_vehicle[0]++;
-				break;
-
-			case VEH_ROAD:
-				if (v->cargo_type != CT_PASSENGERS) {
-					_network_player_info[v->owner].num_vehicle[1]++;
-				} else {
-					_network_player_info[v->owner].num_vehicle[2]++;
-				}
-				break;
-
-			case VEH_AIRCRAFT:
-				if (IsNormalAircraft(v)) _network_player_info[v->owner].num_vehicle[3]++;
-				break;
-
-			case VEH_SHIP:
-				_network_player_info[v->owner].num_vehicle[4]++;
-				break;
-
-			default: break;
+			case VEH_TRAIN: type = 0; break;
+			case VEH_ROAD: type = (v->cargo_type != CT_PASSENGERS) ? 1 : 2; break;
+			case VEH_AIRCRAFT: type = 3; break;
+			case VEH_SHIP: type = 4; break;
+			default: continue;
 		}
+		if (IsEngineCountable(v)) _network_player_info[v->owner].num_vehicle[type]++;
 	}
 
 	// Go through all stations and count the types of stations
