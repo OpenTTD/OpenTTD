@@ -393,6 +393,7 @@ static bool IsWateredTile(TileIndex tile)
 					return false;
 			}
 
+		case MP_RAILWAY:  return GetRailGroundType(tile) == RAIL_GROUND_WATER;
 		case MP_STATION:  return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
 		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
 		default:          return false;
