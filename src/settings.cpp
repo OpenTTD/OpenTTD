@@ -51,6 +51,10 @@
 #include "string_func.h"
 #include "gui.h"
 #include "town.h"
+#include "video/video_driver.hpp"
+#include "sound/sound_driver.hpp"
+#include "music/music_driver.hpp"
+#include "blitter/factory.hpp"
 
 #include "table/strings.h"
 

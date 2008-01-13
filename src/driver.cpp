@@ -11,9 +11,19 @@
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"
 
-SoundDriver *_sound_driver;
-MusicDriver *_music_driver;
 VideoDriver *_video_driver;
+char _ini_videodriver[32];
+int _num_resolutions;
+uint16 _resolutions[32][2];
+uint16 _cur_resolution[2];
+
+SoundDriver *_sound_driver;
+char _ini_sounddriver[32];
+
+MusicDriver *_music_driver;
+char _ini_musicdriver[32];
+
+char _ini_blitter[32];
 
 static const char* GetDriverParam(const char* const* parm, const char* name)
 {

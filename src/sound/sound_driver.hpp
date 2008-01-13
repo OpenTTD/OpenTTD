@@ -23,5 +23,6 @@ public:
 };
 
 extern SoundDriver *_sound_driver;
+extern char _ini_sounddriver[32];
 
 #endif /* SOUND_SOUND_DRIVER_HPP */

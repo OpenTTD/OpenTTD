@@ -31,5 +31,6 @@ public:
 };
 
 extern MusicDriver *_music_driver;
+extern char _ini_musicdriver[32];
 
 #endif /* MUSIC_MUSIC_DRIVER_HPP */

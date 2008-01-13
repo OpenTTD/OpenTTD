@@ -79,8 +79,6 @@ VARDEF int _autosave_ctr;
 VARDEF byte _display_opt;
 VARDEF int _caret_timer;
 
-VARDEF StringID _error_message;
-
 VARDEF bool _rightclick_emulate;
 
 /* IN/OUT parameters to commands */
@@ -91,18 +89,11 @@ VARDEF bool _generating_world;
 VARDEF byte _switch_mode;
 VARDEF StringID _switch_mode_errorstr;
 
-VARDEF char _ini_videodriver[32], _ini_musicdriver[32], _ini_sounddriver[32], _ini_blitter[32];
-
-VARDEF int _num_resolutions;
-VARDEF uint16 _resolutions[32][2];
-VARDEF uint16 _cur_resolution[2];
-
 VARDEF char _savegame_format[8];
 
 VARDEF char *_config_file;
 VARDEF char *_highscore_file;
 VARDEF char *_log_file;
-
 
 /* landscape.cpp */
 extern const byte _tileh_to_sprite[32];

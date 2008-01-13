@@ -21,6 +21,7 @@
 #include "town.h"
 #include "player_func.h"
 #include "player_base.h"
+#include "command_func.h"
 
 #include "table/strings.h"
 

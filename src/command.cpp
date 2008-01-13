@@ -24,6 +24,7 @@
 #include "table/strings.h"
 
 const char *_cmd_text = NULL;
+StringID _error_message;
 
 /**
  * Helper macro to define the header of all command handler macros.

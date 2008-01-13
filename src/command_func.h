@@ -77,6 +77,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
  */
 extern const char *_cmd_text;
 extern Money _additional_cash_required;
+extern StringID _error_message;
 
 /**
  * Checks if a integer value belongs to a command.

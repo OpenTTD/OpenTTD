@@ -130,4 +130,6 @@ public:
 	const char *GetName();
 };
 
+extern char _ini_blitter[32];
+
 #endif /* BLITTER_FACTORY_HPP */

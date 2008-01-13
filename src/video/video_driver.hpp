@@ -31,5 +31,9 @@ public:
 };
 
 extern VideoDriver *_video_driver;
+extern char _ini_videodriver[32];
+extern int _num_resolutions;
+extern uint16 _resolutions[32][2];
+extern uint16 _cur_resolution[2];
 
 #endif /* VIDEO_VIDEO_DRIVER_HPP */

@@ -30,6 +30,7 @@
 #include "date_func.h"
 #include "variables.h"
 #include "settings_type.h"
+#include "command_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

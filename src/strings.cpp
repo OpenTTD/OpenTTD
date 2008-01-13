@@ -36,6 +36,7 @@
 #include "player_base.h"
 #include "fios.h"
 #include "settings_type.h"
+#include "video/video_driver.hpp"
 
 #include "table/strings.h"
 #include "table/control_codes.h"

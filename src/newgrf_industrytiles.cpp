@@ -22,6 +22,7 @@
 #include "transparency.h"
 #include "functions.h"
 #include "town.h"
+#include "command_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
