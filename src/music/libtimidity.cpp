@@ -2,7 +2,7 @@
 
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../sound.h"
+#include "../sound_type.h"
 #include "../variables.h"
 #include "../debug.h"
 #include "libtimidity.h"
