@@ -5,6 +5,8 @@
 #ifndef TRACK_TYPE_H
 #define TRACK_TYPE_H
 
+#include "core/enum_type.hpp"
+
 /**
  * These are used to specify a single track.
  * Can be translated to a trackbit with TrackToTrackbit

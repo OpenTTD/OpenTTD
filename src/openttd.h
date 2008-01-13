@@ -8,7 +8,6 @@
 #define VARDEF extern
 #endif
 
-#include "core/enum_type.hpp"
 #include "strings_type.h"
 
 // Forward declarations of structs.
@@ -94,10 +93,6 @@ enum TransportType {
 	TRANSPORT_END,
 	INVALID_TRANSPORT = 0xff,
 };
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<TransportType> : MakeEnumPropsT<TransportType, byte, TRANSPORT_BEGIN, TRANSPORT_END, INVALID_TRANSPORT> {};
-typedef TinyEnumT<TransportType> TransportTypeByte;
 
 /* Display Options */
 enum {

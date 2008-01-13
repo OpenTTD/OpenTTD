@@ -5,6 +5,8 @@
 #ifndef PLAYER_TYPE_H
 #define PLAYER_TYPE_H
 
+#include "core/enum_type.hpp"
+
 /**
  * Enum for all players/owners.
  */

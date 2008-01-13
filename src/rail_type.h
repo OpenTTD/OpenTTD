@@ -5,6 +5,8 @@
 #ifndef RAIL_TYPE_H
 #define RAIL_TYPE_H
 
+#include "core/enum_type.hpp"
+
 /**
  * Enumeration for all possible railtypes.
  *

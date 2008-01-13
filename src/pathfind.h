@@ -55,7 +55,7 @@ struct TrackPathFinder {
 
 	TrackdirByte the_dir;
 
-	TransportTypeByte tracktype;
+	TransportType tracktype;
 	uint sub_type;
 
 	byte var2;
