@@ -10,7 +10,6 @@
 #include "landscape.h"
 #include "gui.h"
 #include "station_map.h"
-#include "table/strings.h"
 #include "tunnel_map.h"
 #include "timetable.h"
 #include "articulated_vehicles.h"
@@ -18,7 +17,6 @@
 #include "pathfind.h"
 #include "npf.h"
 #include "station.h"
-#include "table/train_cmd.h"
 #include "news.h"
 #include "engine.h"
 #include "player_func.h"
@@ -49,6 +47,8 @@
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
 
+#include "table/strings.h"
+#include "table/train_cmd.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, bool update_image);

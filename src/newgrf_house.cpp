@@ -11,9 +11,6 @@
 #include "town.h"
 #include "town_map.h"
 #include "sprite.h"
-#include "table/strings.h"
-#include "table/sprites.h"
-#include "table/town_land.h"
 #include "newgrf.h"
 #include "newgrf_house.h"
 #include "newgrf_spritegroup.h"
@@ -24,6 +21,10 @@
 #include "transparency.h"
 #include "functions.h"
 #include "player_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "table/town_land.h"
 
 static BuildingCounts    _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

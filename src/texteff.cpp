@@ -10,9 +10,7 @@
 #include "saveload.h"
 #include "console.h"
 #include "variables.h"
-#include "table/sprites.h"
 #include "blitter/factory.hpp"
-#include <stdarg.h> /* va_list */
 #include "texteff.hpp"
 #include "video/video_driver.hpp"
 #include "transparency.h"
@@ -21,6 +19,10 @@
 #include "date_func.h"
 #include "functions.h"
 #include "viewport_func.h"
+
+#include "table/sprites.h"
+
+#include <stdarg.h> /* va_list */
 
 enum {
 	MAX_TEXTMESSAGE_LENGTH = 200,

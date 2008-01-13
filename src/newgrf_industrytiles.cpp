@@ -18,12 +18,13 @@
 #include "newgrf_text.h"
 #include "industry_map.h"
 #include "clear_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "sprite.h"
 #include "transparency.h"
 #include "functions.h"
 #include "town.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static uint32 GetGRFParameter(IndustryGfx indtile_id, byte parameter)
 {

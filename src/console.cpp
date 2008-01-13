@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
@@ -19,6 +18,8 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

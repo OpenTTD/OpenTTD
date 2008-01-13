@@ -9,7 +9,6 @@
 #include "saveload.h"
 
 #include "openttd.h"
-#include "table/strings.h"
 #include "bridge_map.h"
 #include "mixer.h"
 #include "spritecache.h"
@@ -78,6 +77,8 @@
 #include "void_map.h"
 
 #include <stdarg.h>
+
+#include "table/strings.h"
 
 void CallLandscapeTick();
 void IncreaseDate();

@@ -1,10 +1,11 @@
 /* $Id$ */
 
 #include "../stdafx.h"
-#include "../table/control_codes.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
 #include "../string_func.h"
+#include "../table/control_codes.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

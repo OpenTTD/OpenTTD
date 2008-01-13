@@ -11,7 +11,6 @@
 #include "console.h"
 #include "viewport_func.h"
 #include "variables.h"
-#include "table/sprites.h"
 #include "genworld.h"
 #include "blitter/factory.hpp"
 #include "window_gui.h"
@@ -19,6 +18,8 @@
 #include "core/alloc_func.hpp"
 #include "map_func.h"
 #include "vehicle_base.h"
+
+#include "table/sprites.h"
 
 /* delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;

@@ -8,8 +8,6 @@
 #define VARDEF extern
 #endif
 
-#include "strings_type.h"
-
 // Forward declarations of structs.
 struct Depot;
 struct Waypoint;

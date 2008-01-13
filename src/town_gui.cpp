@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "town.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
@@ -22,6 +20,9 @@
 #include "strings_func.h"
 #include "economy_func.h"
 #include "core/alloc_func.hpp"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 enum TownAuthorityWidget {
 	TWA_CLOSEBOX = 0,

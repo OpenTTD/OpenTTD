@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/strings.h"
 #include "fileio.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
@@ -19,6 +18,8 @@
 #include "map_func.h"
 #include "date_func.h"
 #include "player_func.h"
+
+#include "table/strings.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

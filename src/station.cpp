@@ -7,8 +7,6 @@
 #include "bridge_map.h"
 #include "debug.h"
 #include "station_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "station.h"
 #include "town.h"
 #include "news.h"
@@ -31,6 +29,9 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "variables.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 Station::Station(TileIndex tile)
 {

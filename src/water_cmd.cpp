@@ -8,8 +8,6 @@
 #include "bridge.h"
 #include "cmd_helper.h"
 #include "station_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "viewport_func.h"
@@ -35,6 +33,8 @@
 #include "variables.h"
 #include "player_func.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);
 static void FloodVehicle(Vehicle *v);

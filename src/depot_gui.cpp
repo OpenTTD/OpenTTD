@@ -8,8 +8,6 @@
 #include "roadveh.h"
 #include "ship.h"
 #include "aircraft.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "viewport_func.h"
@@ -24,6 +22,9 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "player_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.

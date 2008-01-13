@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "heightmap.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -26,6 +24,9 @@
 #include "fios.h"
 #include "string_func.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 /**
  * In what 'mode' the GenerateLandscapeWindowProc is.

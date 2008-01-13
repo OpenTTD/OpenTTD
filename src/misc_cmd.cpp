@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "gui.h"
@@ -22,6 +21,8 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "player_gui.h"
+
+#include "table/strings.h"
 
 /** Change the player's face.
  * @param tile unused

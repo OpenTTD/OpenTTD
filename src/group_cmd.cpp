@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "saveload.h"
 #include "debug.h"
@@ -22,6 +21,8 @@
 #include "autoreplace_func.h"
 #include "string_func.h"
 #include "player_func.h"
+
+#include "table/strings.h"
 
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one

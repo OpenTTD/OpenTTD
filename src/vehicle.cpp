@@ -8,8 +8,6 @@
 #include "roadveh.h"
 #include "ship.h"
 #include "spritecache.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "timetable.h"
@@ -49,6 +47,9 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 #define INVALID_COORD (0x7fffffff)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))

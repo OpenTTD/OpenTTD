@@ -6,7 +6,6 @@
 #include <math.h>
 #include "openttd.h"
 #include "clear_map.h"
-#include "table/strings.h"
 #include "clear_map.h"
 #include "variables.h"
 #include "void_map.h"
@@ -15,6 +14,8 @@
 #include "genworld.h"
 #include "core/alloc_func.hpp"
 #include "core/random_func.hpp"
+
+#include "table/strings.h"
 
 /*
  *

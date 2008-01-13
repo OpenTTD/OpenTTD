@@ -7,7 +7,6 @@
 #include "variables.h"
 #include "heightmap.h"
 #include "clear_map.h"
-#include "table/strings.h"
 #include "void_map.h"
 #include "debug.h"
 #include "gui.h"
@@ -16,6 +15,8 @@
 #include "gfx_func.h"
 #include "core/alloc_func.hpp"
 #include "fios.h"
+
+#include "table/strings.h"
 
 /**
  * Convert RGB colors to Grayscale using 29.9% Red, 58.7% Green, 11.4% Blue

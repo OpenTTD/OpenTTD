@@ -11,8 +11,6 @@
 #include "road_map.h"
 #include "road_internal.h"
 #include "sprite.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "town_map.h"
@@ -35,6 +33,8 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
 
 #define M(x) (1 << (x))
 /* Level crossings may only be built on these slopes */

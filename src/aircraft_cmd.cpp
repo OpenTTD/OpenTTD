@@ -9,7 +9,6 @@
 #include "debug.h"
 #include "landscape.h"
 #include "station_map.h"
-#include "table/strings.h"
 #include "timetable.h"
 #include "depot.h"
 #include "engine.h"
@@ -18,7 +17,6 @@
 #include "aircraft.h"
 #include "airport.h"
 #include "vehicle_gui.h"
-#include "table/sprites.h"
 #include "newgrf_engine.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text.h"
@@ -37,6 +35,9 @@
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
 #include "player_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 void Aircraft::UpdateDeltaXY(Direction direction)
 {

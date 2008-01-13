@@ -6,8 +6,6 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "clear_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "player_func.h"
 #include "player_base.h"
 #include "gui.h"
@@ -23,6 +21,9 @@
 #include "unmovable_map.h"
 #include "textbuf_gui.h"
 #include "genworld.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

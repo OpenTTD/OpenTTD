@@ -7,7 +7,6 @@
 #include "debug.h"
 #include "variables.h"
 #include "landscape.h"
-#include "table/strings.h"
 #include "industry.h"
 #include "industry_map.h"
 #include "newgrf.h"
@@ -22,6 +21,8 @@
 #include "town.h"
 #include "player_func.h"
 #include "player_base.h"
+
+#include "table/strings.h"
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
  * to those used by the game, the IDs used for overriding old industries must be

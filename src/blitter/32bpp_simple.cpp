@@ -4,8 +4,9 @@
 #include "../gfx_func.h"
 #include "../zoom_func.h"
 #include "../debug.h"
-#include "../table/sprites.h"
 #include "32bpp_simple.hpp"
+
+#include "../table/sprites.h"
 
 static FBlitter_32bppSimple iFBlitter_32bppSimple;
 

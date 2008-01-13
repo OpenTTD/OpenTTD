@@ -6,8 +6,6 @@
 #include "openttd.h"
 #include "road_map.h"
 #include "station_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "station.h"
@@ -28,6 +26,9 @@
 #include "vehicle_func.h"
 #include "settings_type.h"
 #include "player_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,

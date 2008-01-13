@@ -4,11 +4,12 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "tile_cmd.h"
 #include "command_func.h"
-#include "table/sprites.h"
 #include "viewport_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 static void DrawTile_Dummy(TileInfo *ti)
 {

@@ -11,8 +11,6 @@
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "station_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "station.h"
 #include "viewport_func.h"
 #include "command_func.h"
@@ -46,6 +44,8 @@
 #include "string_func.h"
 #include "signal_func.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
 
 DEFINE_OLD_POOL_GENERIC(Station, Station)
 DEFINE_OLD_POOL_GENERIC(RoadStop, RoadStop)

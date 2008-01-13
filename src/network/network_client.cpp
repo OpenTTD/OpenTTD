@@ -7,7 +7,6 @@
 #include "../openttd.h"
 #include "network_data.h"
 #include "core/tcp.h"
-#include "table/strings.h"
 #include "network_client.h"
 #include "network_gamelist.h"
 #include "network_gui.h"
@@ -25,6 +24,8 @@
 #include "../player_func.h"
 #include "../player_base.h"
 #include "../player_gui.h"
+
+#include "table/strings.h"
 
 // This file handles all the client-commands
 

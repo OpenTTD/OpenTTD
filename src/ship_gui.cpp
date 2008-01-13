@@ -6,8 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "ship.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport_func.h"
@@ -17,6 +15,9 @@
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {

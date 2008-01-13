@@ -11,7 +11,6 @@
 #include "../train.h"
 #include "../aircraft.h"
 #include "../date_func.h"
-#include "table/strings.h"
 #include "network_server.h"
 #include "network_udp.h"
 #include "../console.h"
@@ -26,6 +25,8 @@
 #include "../player_base.h"
 #include "../player_func.h"
 #include "../player_gui.h"
+
+#include "table/strings.h"
 
 // This file handles all the server-commands
 

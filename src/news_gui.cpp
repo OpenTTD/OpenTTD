@@ -3,8 +3,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport_func.h"
@@ -17,6 +15,9 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "string_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 /** @file news_gui.cpp
  *

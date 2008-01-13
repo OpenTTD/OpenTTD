@@ -10,9 +10,6 @@
 #include "newgrf.h"
 #include "newgrf_text.h"
 #include "saveload.h"
-#include "table/sprites.h"
-#include "table/strings.h"
-#include "table/tree_land.h"
 #include "tile_map.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -42,6 +39,10 @@
 #include "sound_func.h"
 #include "string_func.h"
 #include "player_gui.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
+#include "table/tree_land.h"
 
 /* Variables to display file lists */
 FiosItem *_fios_list;

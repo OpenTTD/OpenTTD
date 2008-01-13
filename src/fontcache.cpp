@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/sprites.h"
-#include "table/control_codes.h"
 #include "spritecache.h"
 #include "fontcache.h"
 #include "spriteloader/spriteloader.hpp"
@@ -15,8 +13,10 @@
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
 
-#ifdef WITH_FREETYPE
+#include "table/sprites.h"
+#include "table/control_codes.h"
 
+#ifdef WITH_FREETYPE
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_GLYPH_H

@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -19,6 +17,9 @@
 #include "window_func.h"
 #include "fios.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,         STR_NULL},

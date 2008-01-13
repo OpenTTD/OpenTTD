@@ -8,10 +8,11 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "newgrf_townname.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+
+#include "table/strings.h"
 
 static GRFTownName *_grf_townnames = NULL;
 

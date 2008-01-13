@@ -49,6 +49,10 @@
 #include "spritecache.h"
 #include "transparency.h"
 #include "string_func.h"
+#include "gui.h"
+#include "town.h"
+
+#include "table/strings.h"
 
 GameOptions _opt;
 GameOptions _opt_newgame;
@@ -1084,11 +1088,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define CR SGF_CURRENCY
 #define NN SGF_NO_NETWORK
 
-#include "table/strings.h"
-
 /* Begin - Callback Functions for the various settings */
-#include "gui.h"
-#include "town.h"
 /* virtual PositionMainToolbar function, calls the right one.*/
 static int32 v_PositionMainToolbar(int32 p1)
 {

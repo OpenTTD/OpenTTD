@@ -5,12 +5,10 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "bridge.h"
 #include "landscape.h"
 #include "variables.h"
-#include "table/sprites.h"
 #include "unmovable_map.h"
 #include "genworld.h"
 #include "industry.h"
@@ -18,8 +16,11 @@
 #include "tile_cmd.h"
 #include "functions.h"
 #include "economy_func.h"
-#include "table/clear_land.h"
 #include "viewport_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "table/clear_land.h"
 
 static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 {

@@ -4,7 +4,6 @@
 #include "../zoom_func.h"
 #include "../gfx_func.h"
 #include "../debug.h"
-#include "../table/sprites.h"
 #include "32bpp_optimized.hpp"
 
 static FBlitter_32bppOptimized iFBlitter_32bppOptimized;

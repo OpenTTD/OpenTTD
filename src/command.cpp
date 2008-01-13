@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "landscape.h"
 #include "tile_map.h"
 #include "gui.h"
@@ -21,6 +20,8 @@
 #include "debug.h"
 #include "player_func.h"
 #include "player_base.h"
+
+#include "table/strings.h"
 
 const char *_cmd_text = NULL;
 

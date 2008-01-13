@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
@@ -20,6 +18,9 @@
 #include "map_func.h"
 #include "gfx_func.h"
 #include "viewport_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 static const Sign **_sign_sort;
 static uint _num_sign_sort;

@@ -7,6 +7,7 @@
 
 #include "cargo_type.h"
 #include "gfx_type.h"
+#include "strings_type.h"
 
 typedef uint32 CargoLabel;
 

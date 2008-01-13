@@ -16,7 +16,6 @@
 #include "town.h"
 #include "waypoint.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "yapf/yapf.h"
 #include "newgrf.h"
 #include "misc/autoptr.hpp"
@@ -32,6 +31,7 @@
 #include "signal_func.h"
 #include "player_func.h"
 
+#include "table/strings.h"
 
 enum {
 	MAX_WAYPOINTS_PER_TOWN = 64,

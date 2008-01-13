@@ -7,8 +7,6 @@
 #include "debug.h"
 #include "player_func.h"
 #include "station.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "engine.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -36,6 +34,9 @@
 #include "autoreplace_gui.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 struct Sorting {
 	Listing aircraft;

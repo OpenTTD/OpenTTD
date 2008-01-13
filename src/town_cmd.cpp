@@ -8,8 +8,6 @@
 #include "debug.h"
 #include "road_map.h"
 #include "road_internal.h" /* Cleaning up road bits */
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "landscape.h"
 #include "town_map.h"
 #include "tunnel_map.h"
@@ -27,7 +25,6 @@
 #include "variables.h"
 #include "bridge.h"
 #include "bridge_map.h"
-#include "table/town_land.h"
 #include "genworld.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"
@@ -43,6 +40,9 @@
 #include "window_func.h"
 #include "string_func.h"
 
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "table/town_land.h"
 
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)

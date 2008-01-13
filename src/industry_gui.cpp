@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -24,6 +22,9 @@
 #include "strings_func.h"
 #include "map_func.h"
 #include "player_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 bool _ignore_restrictions;
 

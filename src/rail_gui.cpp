@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "gui.h"
@@ -36,6 +34,8 @@
 #include "tunnel_map.h"
 #include "tunnelbridge_map.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static RailType _cur_railtype;
 static bool _remove_button_clicked;

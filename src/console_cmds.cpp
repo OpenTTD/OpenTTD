@@ -33,6 +33,10 @@
 #include "player_func.h"
 #include "player_base.h"
 
+#ifdef ENABLE_NETWORK
+	#include "table/strings.h"
+#endif /* ENABLE_NETWORK */
+
 // ** scriptfile handling ** //
 static FILE *_script_file;
 static bool _script_running;
@@ -1223,10 +1227,6 @@ DEF_CONSOLE_CMD(ConSay)
 
 	return true;
 }
-
-#ifdef ENABLE_NETWORK
-	#include "table/strings.h"
-#endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConPlayers)
 {

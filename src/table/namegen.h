@@ -2,7 +2,6 @@
 
 /** @file table/namegen.h Namepart tables for the town name generator */
 
-#include "../stdafx.h"
 #include "../core/enum_type.hpp"
 
 static const char *name_original_english_1[] = {

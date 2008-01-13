@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "player_base.h"
@@ -18,6 +16,9 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 /* Bitmasks of player and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_players;

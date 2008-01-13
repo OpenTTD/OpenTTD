@@ -1,3 +1,4 @@
+
 /* $Id$ */
 
 /** @file smallmap_gui.cpp */
@@ -9,8 +10,6 @@
 #include "industry_map.h"
 #include "industry.h"
 #include "station_map.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "landscape.h"
 #include "gui.h"
 #include "window_gui.h"
@@ -29,6 +28,8 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 
+#include "table/strings.h"
+#include "table/sprites.h"
 
 static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},

@@ -7,6 +7,7 @@
 
 #include "newgrf_callbacks.h"
 #include "cargo_type.h"
+#include "gfx_type.h"
 
 enum {
 	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified

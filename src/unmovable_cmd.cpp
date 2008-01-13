@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "command_func.h"
@@ -19,7 +17,6 @@
 #include "bridge_map.h"
 #include "unmovable_map.h"
 #include "variables.h"
-#include "table/unmovable_land.h"
 #include "genworld.h"
 #include "bridge.h"
 #include "autoslope.h"
@@ -28,6 +25,10 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "player_gui.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "table/unmovable_land.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are

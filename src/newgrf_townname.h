@@ -2,6 +2,8 @@
 #ifndef NEWGRF_TOWNNAME_H
 #define NEWGRF_TOWNNAME_H
 
+#include "strings_type.h"
+
 /** @file newgrf_townname.h
  * Header of Action 0F "universal holder" structure and functions
  */

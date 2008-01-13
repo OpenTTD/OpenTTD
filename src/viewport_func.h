@@ -8,6 +8,7 @@
 #include "gfx_type.h"
 #include "viewport_type.h"
 #include "vehicle_type.h"
+#include "strings_type.h"
 
 void SetSelectionRed(bool);
 

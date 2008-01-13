@@ -6,8 +6,9 @@
 #include "openttd.h"
 #include "debug.h"
 #include "namegen.h"
-#include "table/namegen.h"
 #include "string_func.h"
+
+#include "table/namegen.h"
 
 static inline uint32 SeedChance(int shift_by, int max, uint32 seed)
 {

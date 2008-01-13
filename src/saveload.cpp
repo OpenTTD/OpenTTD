@@ -22,7 +22,6 @@
 #include "saveload.h"
 #include "network/network.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "window_func.h"
 #include "strings_func.h"
 #include "gfx_func.h"
@@ -32,6 +31,8 @@
 #include "vehicle_base.h"
 #include "autoreplace_base.h"
 #include <list>
+
+#include "table/strings.h"
 
 extern const uint16 SAVEGAME_VERSION = 84;
 uint16 _sl_version;       ///< the major savegame version identifier

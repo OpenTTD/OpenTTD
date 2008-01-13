@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "gfx_func.h"
@@ -18,6 +16,9 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "settings_type.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {

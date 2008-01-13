@@ -7,8 +7,9 @@
 #include "currency.h"
 #include "news.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "date_func.h"
+
+#include "table/strings.h"
 
 	//   exchange rate    prefix             symbol_pos
 	//   |  separator        |     postfix   |

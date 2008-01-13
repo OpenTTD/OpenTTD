@@ -6,7 +6,6 @@
 #include "heightmap.h"
 #include "clear_map.h"
 #include "spritecache.h"
-#include "table/sprites.h"
 #include <stdarg.h>
 #include "viewport_func.h"
 #include "command_func.h"
@@ -23,6 +22,8 @@
 #include "functions.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+
+#include "table/sprites.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,

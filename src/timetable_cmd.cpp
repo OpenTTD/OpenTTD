@@ -5,13 +5,13 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "vehicle_base.h"
 
+#include "table/strings.h"
 
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time, bool is_journey)
 {

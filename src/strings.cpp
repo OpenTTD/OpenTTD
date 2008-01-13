@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "table/strings.h"
 #include "namegen.h"
 #include "station.h"
 #include "town.h"
@@ -15,7 +14,6 @@
 #include "industry.h"
 #include "variables.h"
 #include "newgrf_text.h"
-#include "table/control_codes.h"
 #include "music.h"
 #include "industry.h"
 #include "fileio.h"
@@ -36,9 +34,10 @@
 #include "string_func.h"
 #include "player_func.h"
 #include "player_base.h"
+#include "fios.h"
 
-/* for opendir/readdir/closedir */
-# include "fios.h"
+#include "table/strings.h"
+#include "table/control_codes.h"
 
 DynamicLanguages _dynlang;
 char _userstring[128];

@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "station_gui.h"
@@ -25,6 +23,8 @@
 #include "sound_func.h"
 #include "player_func.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static void ShowRVStationPicker(RoadStop::Type rs);
 static void ShowRoadDepotPicker();

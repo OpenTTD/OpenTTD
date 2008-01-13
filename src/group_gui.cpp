@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -26,6 +24,8 @@
 #include "gfx_func.h"
 #include "player_func.h"
 
+#include "table/strings.h"
+#include "table/sprites.h"
 
 struct Sorting {
 	Listing aircraft;

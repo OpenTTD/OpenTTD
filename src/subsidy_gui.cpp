@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "station.h"
 #include "industry.h"
 #include "town.h"
@@ -16,6 +15,8 @@
 #include "date_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
 
 static void HandleSubsidyClick(int y)
 {

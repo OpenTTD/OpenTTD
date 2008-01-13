@@ -22,7 +22,6 @@
 #include "../../debug.h"
 #include "../../road_map.h"
 #include "../../station_map.h"
-#include "table/strings.h"
 #include "../../command_func.h"
 #include "trolly.h"
 #include "../../town.h"
@@ -38,6 +37,8 @@
 #include "../../order.h"
 #include "../../player_base.h"
 #include "../../player_func.h"
+
+#include "table/strings.h"
 
 PlayerAiNew _players_ainew[MAX_PLAYERS];
 

@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -16,7 +15,6 @@
 #include "command_func.h"
 #include "variables.h"
 #include "vehicle_gui.h"
-#include "table/sprites.h"
 #include "cargotype.h"
 #include "station_gui.h"
 #include "station.h"
@@ -25,6 +23,9 @@
 #include "window_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 

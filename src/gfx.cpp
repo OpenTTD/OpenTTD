@@ -6,10 +6,7 @@
 #include "openttd.h"
 #include "gfx_func.h"
 #include "spritecache.h"
-#include "table/palettes.h"
-#include "table/sprites.h"
 #include "variables.h"
-#include "table/control_codes.h"
 #include "fontcache.h"
 #include "genworld.h"
 #include "debug.h"
@@ -19,6 +16,10 @@
 #include "video/video_driver.hpp"
 #include "strings_func.h"
 #include "core/math_func.hpp"
+
+#include "table/palettes.h"
+#include "table/sprites.h"
+#include "table/control_codes.h"
 
 byte _dirkeys;        ///< 1 = left, 2 = up, 4 = right, 8 = down
 bool _fullscreen;

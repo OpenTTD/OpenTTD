@@ -10,11 +10,12 @@
 #include "../../debug.h"
 #include "../../openttd.h"
 #include "../../variables.h"
-#include "table/strings.h"
 
 #include "../network_data.h"
 #include "packet.h"
 #include "tcp.h"
+
+#include "table/strings.h"
 
 /** Very ugly temporary hack !!! */
 void NetworkTCPSocketHandler::Initialize()

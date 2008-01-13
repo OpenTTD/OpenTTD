@@ -7,7 +7,6 @@
 #include "debug.h"
 #include "gfxinit.h"
 #include "spritecache.h"
-#include "table/sprites.h"
 #include "fileio.h"
 #include "fios.h"
 #include "newgrf.h"
@@ -18,6 +17,8 @@
 #include "core/alloc_func.hpp"
 #include "core/bitmath_func.hpp"
 #include <string.h>
+
+#include "table/sprites.h"
 
 struct MD5File {
 	const char * filename;     ///< filename

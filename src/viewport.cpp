@@ -8,8 +8,6 @@
 #include "tile_cmd.h"
 #include "gui.h"
 #include "spritecache.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "landscape.h"
 #include "viewport_func.h"
 #include "station.h"
@@ -26,6 +24,9 @@
 #include "zoom_func.h"
 #include "vehicle_func.h"
 #include "player_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 

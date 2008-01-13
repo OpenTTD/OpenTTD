@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "gfx_func.h"
@@ -17,6 +15,8 @@
 #include "newgrf_engine.h"
 #include "strings_func.h"
 
+#include "table/strings.h"
+#include "table/sprites.h"
 
 static StringID GetEngineCategoryName(EngineID engine)
 {

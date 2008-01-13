@@ -4,11 +4,12 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/strings.h"
 #include "variables.h"
 #include "textbuf_gui.h"
 #include "functions.h"
 #include "core/random_func.hpp"
+
+#include "table/strings.h"
 
 #include <dirent.h>
 #include <unistd.h>

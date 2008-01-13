@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "command_func.h"
 #include "variables.h"
@@ -20,6 +18,9 @@
 #include "autoreplace_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static RailType _railtype_selected_in_replace_gui;
 

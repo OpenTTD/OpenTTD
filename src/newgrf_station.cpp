@@ -9,8 +9,6 @@
 #include "landscape.h"
 #include "debug.h"
 #include "sprite.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "station.h"
 #include "station_map.h"
 #include "newgrf.h"
@@ -24,6 +22,9 @@
 #include "gfx_func.h"
 #include "date_func.h"
 #include "player_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 

@@ -4,8 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
@@ -29,6 +27,9 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "string_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 /* player face selection window */
 struct facesel_d {

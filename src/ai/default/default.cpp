@@ -31,6 +31,8 @@
 #include "../../player_base.h"
 #include "default.h"
 
+#include "../../table/ai_rail.h"
+
 // remove some day perhaps?
 static uint _ai_service_interval;
 PlayerAI _players_ai[MAX_PLAYERS];
@@ -64,8 +66,6 @@ enum {
 	AIS_REMOVE_SINGLE_RAIL_TILE      = 23
 };
 
-
-#include "../../table/ai_rail.h"
 
 static TrackBits GetRailTrackStatus(TileIndex tile)
 {

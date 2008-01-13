@@ -2,13 +2,14 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "variables.h"
 #include "transparency.h"
 #include "sound_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 TransparencyOptionBits _transparency_opt;
 

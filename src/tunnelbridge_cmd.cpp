@@ -10,8 +10,6 @@
 #include "bridge_map.h"
 #include "rail_map.h"
 #include "road_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "tunnel_map.h"
@@ -28,7 +26,6 @@
 #include "autoslope.h"
 #include "transparency.h"
 #include "tunnelbridge_map.h"
-#include "table/bridge_land.h"
 #include "strings_func.h"
 #include "date_func.h"
 #include "functions.h"
@@ -36,6 +33,9 @@
 #include "sound_func.h"
 #include "signal_func.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
+#include "table/bridge_land.h"
 
 const Bridge orig_bridge[] = {
 /*

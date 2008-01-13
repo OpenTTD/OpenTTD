@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "engine.h"
 #include "gui.h"
@@ -18,6 +17,8 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+
+#include "table/strings.h"
 
 static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 {

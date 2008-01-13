@@ -15,7 +15,6 @@ extern const char _openttd_revision[];
 #include "../variables.h"
 #include "../date_func.h"
 #include "../newgrf_config.h"
-#include "table/strings.h"
 #include "network_client.h"
 #include "network_server.h"
 #include "network_udp.h"
@@ -36,6 +35,8 @@ extern const char _openttd_revision[];
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
 #endif /* DEBUG_DUMP_COMMANDS */
+
+#include "table/strings.h"
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);

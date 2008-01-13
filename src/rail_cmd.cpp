@@ -11,8 +11,6 @@
 #include "tile_cmd.h"
 #include "rail_map.h"
 #include "road_map.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "landscape.h"
 #include "town_map.h"
 #include "tunnel_map.h"
@@ -26,7 +24,6 @@
 #include "depot.h"
 #include "waypoint.h"
 #include "rail.h"
-#include "table/railtypes.h" // include table for railtypes
 #include "newgrf.h"
 #include "yapf/yapf.h"
 #include "newgrf_engine.h"
@@ -44,6 +41,9 @@
 #include "sound_func.h"
 #include "signal_func.h"
 
+#include "table/sprites.h"
+#include "table/strings.h"
+#include "table/railtypes.h"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,

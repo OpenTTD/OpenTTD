@@ -9,8 +9,6 @@
 #include "ship.h"
 #include "aircraft.h"
 #include "debug.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
@@ -31,6 +29,9 @@
 #include "vehicle_func.h"
 #include "settings_type.h"
 #include "gfx_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 struct buildvehicle_d {
 	VehicleType vehicle_type;

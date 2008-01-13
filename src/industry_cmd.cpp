@@ -7,8 +7,6 @@
 #include "clear_map.h"
 #include "industry_map.h"
 #include "station_map.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "train.h"
 #include "landscape.h"
 #include "viewport_func.h"
@@ -18,8 +16,6 @@
 #include "news.h"
 #include "saveload.h"
 #include "variables.h"
-#include "table/industry_land.h"
-#include "table/build_industry.h"
 #include "genworld.h"
 #include "water_map.h"
 #include "tree_map.h"
@@ -40,6 +36,11 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "table/industry_land.h"
+#include "table/build_industry.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);

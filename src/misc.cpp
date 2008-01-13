@@ -7,8 +7,6 @@
 #include "currency.h"
 #include "landscape.h"
 #include "news.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "saveload.h"
 #include "engine.h"
 #include "vehicle_gui.h"
@@ -28,6 +26,8 @@
 #include "string_func.h"
 #include "gfx_func.h"
 
+#include "table/strings.h"
+#include "table/sprites.h"
 
 char _name_array[512][32];
 

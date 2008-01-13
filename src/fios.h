@@ -5,6 +5,8 @@
 #ifndef FIOS_H
 #define FIOS_H
 
+#include "strings_type.h"
+
 enum {
 	/**
 	 * Slot used for the GRF scanning and such. This slot cannot be reused

@@ -6,6 +6,7 @@
 #define CURRENCY_H
 
 #include "date_type.h"
+#include "strings_type.h"
 
 enum {
 	CF_NOEURO = 0,

@@ -7,7 +7,6 @@
 #include "order.h"
 #include "airport.h"
 #include "depot.h"
-#include "table/strings.h"
 #include "waypoint.h"
 #include "command_func.h"
 #include "station.h"
@@ -23,6 +22,8 @@
 #include "window_func.h"
 #include "settings_type.h"
 #include "string_func.h"
+
+#include "table/strings.h"
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 

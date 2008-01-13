@@ -15,6 +15,7 @@
 #include "date_type.h"
 #include "town_type.h"
 #include "industry_type.h"
+#include "strings_type.h"
 
 enum {
 	INVALID_INDUSTRY       = 0xFFFF,

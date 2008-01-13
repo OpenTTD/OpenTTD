@@ -6,8 +6,6 @@
 #include "openttd.h"
 #include "currency.h"
 #include "landscape.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "news.h"
 #include "player_base.h"
 #include "player_func.h"
@@ -46,6 +44,9 @@
 #include "rail_map.h"
 #include "signal_func.h"
 #include "gfx_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 /**
  * Multiply two integer values and shift the results to right.

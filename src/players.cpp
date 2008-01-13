@@ -5,8 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine.h"
-#include "table/strings.h"
-#include "table/sprites.h"
 #include "player_func.h"
 #include "player_gui.h"
 #include "town.h"
@@ -35,6 +33,9 @@
 #include "ai/trolly/trolly.h"
 #include "road_func.h"
 #include "rail.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 Player _players[MAX_PLAYERS];
 PlayerByte _local_player;

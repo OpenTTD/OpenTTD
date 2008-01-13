@@ -8,7 +8,6 @@
 #include "openttd.h"
 #include "variables.h"
 #include "heightmap.h"
-#include "table/strings.h"
 #include "fios.h"
 #include "fileio.h"
 #include "core/alloc_func.hpp"
@@ -23,6 +22,8 @@
 #else
 # include <unistd.h>
 #endif /* WIN32 */
+
+#include "table/strings.h"
 
 /* Variables to display file lists */
 int _fios_num;

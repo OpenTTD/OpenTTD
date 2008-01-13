@@ -12,6 +12,7 @@
 #include "date_type.h"
 #include "sound_type.h"
 #include "player_type.h"
+#include "strings_type.h"
 
 enum RailVehicleTypes {
 	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive

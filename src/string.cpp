@@ -4,10 +4,11 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "table/control_codes.h"
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+
+#include "table/control_codes.h"
 
 #include <stdarg.h>
 #include <ctype.h> // required for tolower()

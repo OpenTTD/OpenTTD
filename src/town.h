@@ -12,6 +12,7 @@
 #include "date_type.h"
 #include "town_type.h"
 #include "player_type.h"
+#include "strings_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,

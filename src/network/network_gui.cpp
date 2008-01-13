@@ -4,12 +4,9 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../strings_func.h"
-#include "../table/sprites.h"
 #include "network.h"
 #include "../date_func.h"
-
 #include "../fios.h"
-#include "table/strings.h"
 #include "network_data.h"
 #include "network_client.h"
 #include "network_gui.h"
@@ -28,6 +25,9 @@
 #include "../string_func.h"
 #include "../gfx_func.h"
 #include "../player_func.h"
+
+#include "table/strings.h"
+#include "../table/sprites.h"
 
 #define BGC 5
 #define BTC 15

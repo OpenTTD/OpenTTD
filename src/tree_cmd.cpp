@@ -6,9 +6,6 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "clear_map.h"
-#include "table/strings.h"
-#include "table/sprites.h"
-#include "table/tree_land.h"
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "tree_map.h"
@@ -22,6 +19,10 @@
 #include "functions.h"
 #include "player_func.h"
 #include "sound_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
+#include "table/tree_land.h"
 
 /**
  * List of tree placer algorithm.

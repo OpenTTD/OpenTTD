@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "fileio.h"
 #include "fios.h" // opendir/readdir/closedir
@@ -13,6 +12,8 @@
 #include "core/random_func.hpp"
 #include "string_func.h"
 #include "textbuf_gui.h"
+
+#include "table/strings.h"
 
 #include <dirent.h>
 #include <unistd.h>

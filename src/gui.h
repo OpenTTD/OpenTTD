@@ -10,6 +10,7 @@
 #include "gfx_type.h"
 #include "economy_type.h"
 #include "tile_type.h"
+#include "strings_type.h"
 
 /* main_gui.cpp */
 void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);

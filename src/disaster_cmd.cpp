@@ -22,7 +22,6 @@
 
 #include "industry_map.h"
 #include "station_map.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "tile_cmd.h"
 #include "news.h"
@@ -33,13 +32,15 @@
 #include "player_func.h"
 #include "airport.h"
 #include "variables.h"
-#include "table/sprites.h"
 #include "strings_func.h"
 #include "date_func.h"
 #include "functions.h"
 #include "vehicle_func.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
+
+#include "table/strings.h"
+#include "table/sprites.h"
 
 enum DisasterSubType {
 	ST_Zeppeliner,

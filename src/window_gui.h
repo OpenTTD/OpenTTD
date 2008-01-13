@@ -9,6 +9,7 @@
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "player_type.h"
+#include "strings_type.h"
 
 /**
  * The maximum number of windows that can be opened.

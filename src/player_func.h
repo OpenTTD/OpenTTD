@@ -8,6 +8,7 @@
 #include "core/math_func.hpp"
 #include "player_type.h"
 #include "tile_type.h"
+#include "strings_type.h"
 
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(Owner owner, TileIndex tile);

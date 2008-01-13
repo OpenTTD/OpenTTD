@@ -10,7 +10,6 @@
 #include "road_map.h"
 #include "roadveh.h"
 #include "station_map.h"
-#include "table/strings.h"
 #include "timetable.h"
 #include "engine.h"
 #include "command_func.h"
@@ -43,6 +42,7 @@
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
 
+#include "table/strings.h"
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,

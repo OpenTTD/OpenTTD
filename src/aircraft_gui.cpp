@@ -6,8 +6,6 @@
 #include "openttd.h"
 #include "aircraft.h"
 #include "debug.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "engine.h"
 #include "depot.h"
@@ -16,6 +14,9 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "gfx_func.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 /**
 * Draw the details for the given vehicle at the position (x,y)

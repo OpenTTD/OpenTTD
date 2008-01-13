@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "strings_type.h"
-#include "table/strings.h"
 #include "command_func.h"
 #include "tile_map.h"
 #include "tunnel_map.h"
@@ -13,6 +12,8 @@
 #include "variables.h"
 #include "functions.h"
 #include "economy_func.h"
+
+#include "table/strings.h"
 
 /*
  * In one terraforming command all four corners of a initial tile can be raised/lowered (though this is not available to the player).

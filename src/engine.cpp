@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "table/strings.h"
 #include "engine.h"
 #include "player_base.h"
 #include "player_func.h"
@@ -16,7 +15,6 @@
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_cargo.h"
-#include "table/engines.h"
 #include "group.h"
 #include "misc/autoptr.hpp"
 #include "strings_func.h"
@@ -27,6 +25,9 @@
 #include "autoreplace_base.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+
+#include "table/strings.h"
+#include "table/engines.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

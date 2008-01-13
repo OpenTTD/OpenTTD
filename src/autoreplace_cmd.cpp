@@ -4,7 +4,6 @@
 #include "openttd.h"
 #include "roadveh.h"
 #include "ship.h"
-#include "table/strings.h"
 #include "news.h"
 #include "player_func.h"
 #include "engine.h"
@@ -22,6 +21,8 @@
 #include "functions.h"
 #include "variables.h"
 #include "autoreplace_func.h"
+
+#include "table/strings.h"
 
 /*
  * move the cargo from one engine to another if possible

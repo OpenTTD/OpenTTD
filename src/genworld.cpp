@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "landscape.h"
 #include "player_func.h"
-#include "table/sprites.h"
 #include "variables.h"
 #include "thread.h"
 #include "command_func.h"
@@ -23,6 +22,8 @@
 #include "date_func.h"
 #include "core/random_func.hpp"
 #include "engine.h"
+
+#include "table/sprites.h"
 
 void GenerateClearTile();
 void GenerateIndustries();

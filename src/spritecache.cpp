@@ -7,7 +7,6 @@
 #include "variables.h"
 #include "debug.h"
 #include "spritecache.h"
-#include "table/sprites.h"
 #include "fileio.h"
 #include "spriteloader/grf.hpp"
 #include "core/alloc_func.hpp"
@@ -16,6 +15,8 @@
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */
 #include "blitter/factory.hpp"
+
+#include "table/sprites.h"
 
 /* Default of 4MB spritecache */
 uint _sprite_cache_size = 4;

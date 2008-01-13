@@ -7,8 +7,6 @@
 #include "heightmap.h"
 #include "currency.h"
 #include "spritecache.h"
-#include "table/sprites.h"
-#include "table/strings.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"
@@ -18,7 +16,6 @@
 #include "news.h"
 #include "town.h"
 #include "console.h"
-#include "network/network.h"
 #include "signs.h"
 #include "waypoint.h"
 #include "variables.h"
@@ -38,11 +35,6 @@
 #include "sound_func.h"
 #include "fios.h"
 #include "terraform_gui.h"
-
-#include "network/network_data.h"
-#include "network/network_client.h"
-#include "network/network_server.h"
-#include "network/network_gui.h"
 #include "industry.h"
 #include "transparency.h"
 #include "strings_func.h"
@@ -51,6 +43,15 @@
 #include "player_base.h"
 #include "player_func.h"
 #include "player_gui.h"
+
+#include "network/network.h"
+#include "network/network_data.h"
+#include "network/network_client.h"
+#include "network/network_server.h"
+#include "network/network_gui.h"
+
+#include "table/sprites.h"
+#include "table/strings.h"
 
 static int _rename_id = 1;
 static int _rename_what = -1;

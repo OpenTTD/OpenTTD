@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "station_map.h"
-#include "table/strings.h"
 #include "town.h"
 #include "industry.h"
 #include "station.h"
@@ -27,6 +26,8 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "variables.h"
+
+#include "table/strings.h"
 
 enum {
 	HEADER_SIZE = 49,
