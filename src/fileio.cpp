@@ -646,7 +646,14 @@ void DetermineBasePaths(const char *exe)
 
 	_searchpaths[SP_PERSONAL_DIR] = strdup(tmp);
 #endif
+
+#if defined(WITH_SHARED_DIR)
+	snprintf(tmp, MAX_PATH, "%s", SHARED_DIR);
+	AppendPathSeparator(tmp, MAX_PATH);
+	_searchpaths[SP_SHARED_DIR] = strdup(tmp);
+#else
 	_searchpaths[SP_SHARED_DIR] = NULL;
+#endif
 
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 	_searchpaths[SP_WORKING_DIR] = NULL;

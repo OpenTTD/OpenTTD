@@ -30,6 +30,7 @@ set_default() {
 	data_dir="share/games/openttd"
 	icon_dir="share/pixmaps"
 	personal_dir="1"
+	shared_dir="1"
 	install_dir="/"
 	enable_debug="0"
 	enable_desync_debug="0"
@@ -86,6 +87,7 @@ set_default() {
 		data_dir
 		icon_dir
 		personal_dir
+		shared_dir
 		install_dir
 		enable_debug
 		enable_desync_debug
@@ -192,6 +194,10 @@ detect_params() {
 			--personal-dir)               prevp_p="personal-dir";;
 			--personal-dir=*)             personal_dir="$optarg";;
 			--without-personal-dir)       personal_dir="";;
+
+			--shared-dir)                 prevp_p="shared-dir";;
+			--shared-dir=*)               shared_dir="$optarg";;
+			--without-shared-dir)         shared_dir="";;
 
 			--install-dir)                prevp_p="install-dir";;
 			--install-dir=*)              install_dir="$optarg";;
@@ -814,11 +820,27 @@ check_params() {
 		fi
 	fi
 
+	if [ "$shared_dir" = "1" ]; then
+		# we are using default values
+		if [ "$os" = "OSX" ]; then
+			shared_dir='/Library/Application\\ Support/OpenTTD'
+		else
+			shared_dir=""
+		fi
+	fi
+
 	if [ -n "$personal_dir" ]
 	then
 		log 1 "personal home directory... $personal_dir"
 	else
 		log 1 "personal home directory... none"
+	fi
+
+	if [ -n "$shared_dir" ]
+	then
+		log 1 "shared data directory... $shared_dir"
+	else
+		log 1 "shared data directory... none"
 	fi
 
 	if [ -n "$install_dir" ]
@@ -1179,6 +1201,10 @@ make_cflags_and_ldflags() {
 
 	if [ -n "$personal_dir" ]; then
 		CFLAGS="$CFLAGS -DWITH_PERSONAL_DIR -DPERSONAL_DIR=\\\\\"$personal_dir\\\\\""
+	fi
+
+	if [ -n "$shared_dir" ]; then
+		CFLAGS="$CFLAGS -DWITH_SHARED_DIR -DSHARED_DIR=\\\\\"$shared_dir\\\\\""
 	fi
 
 	CFLAGS="$CFLAGS -DGLOBAL_DATA_DIR=\\\\\"$prefix_dir/$data_dir\\\\\""
@@ -2151,6 +2177,7 @@ make_sed() {
 		s#!!DATA_DIR!!#$prefix_dir/$data_dir#g;
 		s#!!ICON_DIR!!#$prefix_dir/$icon_dir#g;
 		s#!!PERSONAL_DIR!!#$personal_dir#g;
+		s#!!SHARED_DIR!!#$shared_dir#g;
 		s#!!INSTALL_DIR!!#$install_dir#g;
 		s#!!STRGEN!!#$STRGEN#g;
 		s#!!ENDIAN_CHECK!!#$ENDIAN_CHECK#g;
@@ -2291,7 +2318,10 @@ showhelp() {
 	echo "                                 [share/games/openttd]"
 	echo "  --icon-dir=dir                 location of icons. Will be prefixed"
 	echo "                                 with the prefix-dir [share/pixmaps]"
-	echo "  --personal-dir=dir             location of the personal directory [.openttd]"
+	echo "  --personal-dir=dir             location of the personal directory"
+	echo "                                 [os-dependent default]"
+	echo "  --shared-dir=dir               location of shared data files"
+	echo "                                 [os-dependent default]"
 	echo "  --install-dir=dir              specifies the root to install to."
 	echo "                                 Useful to install into jails [/]"
 	echo ""
