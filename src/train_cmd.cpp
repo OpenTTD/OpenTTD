@@ -2779,12 +2779,19 @@ static void SetVehicleCrashed(Vehicle *v)
 
 	v->u.rail.crash_anim_pos++;
 
-	Vehicle *u = v;
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+
+	if (v->u.rail.track == TRACK_BIT_DEPOT) {
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	}
+
+	RebuildVehicleLists();
+
 	BEGIN_ENUM_WAGONS(v)
 		v->vehstatus |= VS_CRASHED;
+		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 	END_ENUM_WAGONS(v)
-
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, u->index, STATUS_BAR);
 }
 
 static uint CountPassengersInTrain(const Vehicle* v)
