@@ -895,6 +895,7 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 	rvf.veh = v;
 	if (front->u.road.state == RVSB_WORMHOLE) {
 		u = (Vehicle*)VehicleFromPos(v->tile, &rvf, EnumCheckRoadVehClose);
+		if (u == NULL) u = (Vehicle*)VehicleFromPos(GetOtherTunnelBridgeEnd(v->tile), &rvf, EnumCheckRoadVehClose);
 	} else {
 		u = (Vehicle*)VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
 	}
@@ -1511,10 +1512,12 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 		/* Vehicle is entering a depot or is on a bridge or in a tunnel */
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
-		const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
-		if (u != NULL && u->First()->cur_speed < v->cur_speed) {
-			v->cur_speed = u->First()->cur_speed;
-			return false;
+		if (IsRoadVehFront(v)) {
+			const Vehicle *u = RoadVehFindCloseTo(v, gp.x, gp.y, v->direction);
+			if (u != NULL) {
+				v->cur_speed = u->First()->cur_speed;
+				return false;
+			}
 		}
 
 		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
