@@ -7,6 +7,7 @@
 #include "../win32.h"
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
+#include "../core/math_func.hpp"
 #include "win32_v.h"
 #include <windows.h>
 #include <tchar.h>
