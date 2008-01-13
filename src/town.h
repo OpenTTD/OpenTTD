@@ -198,7 +198,7 @@ struct HouseSpec {
 	const struct GRFFile *grffile;     ///< grf file that introduced this house
 };
 
-VARDEF HouseSpec _house_specs[HOUSE_MAX];
+extern HouseSpec _house_specs[HOUSE_MAX];
 
 uint32 GetWorldPopulation();
 
@@ -239,8 +239,6 @@ enum {
 
 bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
-VARDEF const Town** _town_sort;
-
 static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 {
 	assert(house_id < HOUSE_MAX);
@@ -257,8 +255,6 @@ static inline bool IsValidTownID(TownID index)
 	return index < GetTownPoolSize() && GetTown(index)->IsValid();
 }
 
-VARDEF uint _total_towns;
-
 static inline TownID GetMaxTownIndex()
 {
 	/* TODO - This isn't the real content of the function, but
@@ -271,6 +267,8 @@ static inline TownID GetMaxTownIndex()
 
 static inline uint GetNumTowns()
 {
+	extern uint _total_towns;
+
 	return _total_towns;
 }
 
@@ -296,16 +294,17 @@ static inline Town *GetRandomTown()
 	return GetTown(index);
 }
 
-Town* CalcClosestTownFromTile(TileIndex tile, uint threshold);
+Town *CalcClosestTownFromTile(TileIndex tile, uint threshold);
 
 #define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (t->IsValid())
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
-VARDEF bool _town_sort_dirty;
-VARDEF byte _town_sort_order;
+extern bool _town_sort_dirty;
+extern byte _town_sort_order;
+extern const Town **_town_sort;
 
-VARDEF Town *_cleared_town;
-VARDEF int _cleared_town_rating;
+extern Town *_cleared_town;
+extern int _cleared_town_rating;
 
 uint OriginalTileRandomiser(uint x, uint y);
 void ResetHouses();

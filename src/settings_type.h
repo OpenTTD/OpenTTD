@@ -9,6 +9,31 @@
 #include "date_type.h"
 #include "town_type.h"
 
+#define GAME_DIFFICULTY_NUM 18
+
+/** Specific type for Game Difficulty to ease changing the type */
+typedef uint16 GDType;
+struct GameDifficulty {
+	GDType max_no_competitors;
+	GDType competitor_start_time;
+	GDType number_towns;
+	GDType number_industries;
+	GDType max_loan;
+	GDType initial_interest;
+	GDType vehicle_costs;
+	GDType competitor_speed;
+	GDType competitor_intelligence; // no longer in use
+	GDType vehicle_breakdowns;
+	GDType subsidy_multiplier;
+	GDType construction_cost;
+	GDType terrain_type;
+	GDType quantity_sea_lakes;
+	GDType economy;
+	GDType line_reverse_mode;
+	GDType disasters;
+	GDType town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
+};
+
 struct GameOptions {
 	GameDifficulty diff;
 	byte diff_level;

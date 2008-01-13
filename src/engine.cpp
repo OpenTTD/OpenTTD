@@ -29,6 +29,7 @@
 #include "table/strings.h"
 #include "table/engines.h"
 
+Engine _engines[TOTAL_NUM_ENGINES];
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
 ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];

@@ -23,6 +23,7 @@
 
 SignID _new_sign_id;
 uint _total_signs;
+bool _sign_sort_dirty;
 
 /* Initialize the sign-pool */
 DEFINE_OLD_POOL_GENERIC(Sign, Sign)

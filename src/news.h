@@ -49,7 +49,7 @@ void NewsLoop();
 void DrawNewsBorder(const Window *w);
 void InitNewsItemStructs();
 
-VARDEF NewsItem _statusbar_news_item;
+extern NewsItem _statusbar_news_item;
 
 /** Type of news. */
 enum NewsType {

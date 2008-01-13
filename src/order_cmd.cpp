@@ -25,6 +25,9 @@
 
 #include "table/strings.h"
 
+TileIndex _backup_orders_tile;
+BackuppedOrders _backup_orders_data;
+
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 
 /**

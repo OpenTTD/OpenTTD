@@ -36,8 +36,8 @@ struct AIStruct {
 	uint tick;              ///< The current tick (something like _frame_counter, only for AIs)
 };
 
-VARDEF AIStruct _ai;
-VARDEF AIPlayer _ai_player[MAX_PLAYERS];
+extern AIStruct _ai;
+extern AIPlayer _ai_player[MAX_PLAYERS];
 
 // ai.c
 void AI_StartNewAI(PlayerID player);

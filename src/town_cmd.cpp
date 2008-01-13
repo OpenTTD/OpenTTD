@@ -44,6 +44,16 @@
 #include "table/sprites.h"
 #include "table/town_land.h"
 
+uint _total_towns;
+HouseSpec _house_specs[HOUSE_MAX];
+
+bool _town_sort_dirty;
+byte _town_sort_order;
+const Town **_town_sort;
+
+Town *_cleared_town;
+int _cleared_town_rating;
+
 /* Initialize the town-pool */
 DEFINE_OLD_POOL_GENERIC(Town, Town)
 

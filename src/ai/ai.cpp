@@ -11,6 +11,9 @@
 #include "ai.h"
 #include "default/default.h"
 
+AIStruct _ai;
+AIPlayer _ai_player[MAX_PLAYERS];
+
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
  */

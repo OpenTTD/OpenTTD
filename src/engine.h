@@ -202,7 +202,7 @@ static inline EngineID GetLastEngineOfType(byte type)
 	return end[type];
 }
 
-VARDEF Engine _engines[TOTAL_NUM_ENGINES];
+extern Engine _engines[TOTAL_NUM_ENGINES];
 #define FOR_ALL_ENGINES(e) for (e = _engines; e != endof(_engines); e++)
 #define FOR_ALL_ENGINEIDS_OF_TYPE(e, type) for (e = GetFirstEngineOfType(type); e != GetLastEngineOfType(type); e++)
 

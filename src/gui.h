@@ -112,7 +112,6 @@ void ShowMusicWindow();
 
 /* main_gui.cpp */
 void HandleOnEditText(const char *str);
-VARDEF bool _station_show_coverage;
 
 void InitializeGUI();
 

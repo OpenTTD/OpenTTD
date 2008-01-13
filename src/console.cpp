@@ -29,6 +29,19 @@
 #define ICON_MAX_ALIAS_LINES 40
 #define ICON_TOKEN_COUNT 20
 
+/* console parser */
+IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
+IConsoleVar   *_iconsole_vars;    ///< list of registred vars
+IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
+
+/* console colors/modes */
+byte _icolour_def;
+byte _icolour_err;
+byte _icolour_warn;
+byte _icolour_dbg;
+byte _icolour_cmd;
+IConsoleModes _iconsole_mode;
+
 /* ** main console ** */
 static char *_iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];

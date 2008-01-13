@@ -28,6 +28,19 @@ static Window _windows[MAX_NUMBER_OF_WINDOWS];
 Window *_z_windows[lengthof(_windows)];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 
+Point _cursorpos_drag_start;
+
+int _scrollbar_start_pos;
+int _scrollbar_size;
+byte _scroller_click_timeout;
+
+bool _scrolling_scrollbar;
+bool _scrolling_viewport;
+bool _popup_menu_active;
+
+byte _special_mouse_mode;
+
+
 void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 {
 	va_list wdg_list;

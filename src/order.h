@@ -130,8 +130,8 @@ struct BackuppedOrders {
 	char *name;
 };
 
-VARDEF TileIndex _backup_orders_tile;
-VARDEF BackuppedOrders _backup_orders_data;
+extern TileIndex _backup_orders_tile;
+extern BackuppedOrders _backup_orders_data;
 
 static inline VehicleOrderID GetMaxOrderIndex()
 {

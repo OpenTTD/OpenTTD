@@ -607,17 +607,17 @@ extern Window *_z_windows[];
 extern Window **_last_z_window;
 #define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)
 
-VARDEF Point _cursorpos_drag_start;
+extern Point _cursorpos_drag_start;
 
-VARDEF int _scrollbar_start_pos;
-VARDEF int _scrollbar_size;
-VARDEF byte _scroller_click_timeout;
+extern int _scrollbar_start_pos;
+extern int _scrollbar_size;
+extern byte _scroller_click_timeout;
 
-VARDEF bool _scrolling_scrollbar;
-VARDEF bool _scrolling_viewport;
-VARDEF bool _popup_menu_active;
+extern bool _scrolling_scrollbar;
+extern bool _scrolling_viewport;
+extern bool _popup_menu_active;
 
-VARDEF byte _special_mouse_mode;
+extern byte _special_mouse_mode;
 enum SpecialMouseMode {
 	WSM_NONE     = 0,
 	WSM_DRAGDROP = 1,

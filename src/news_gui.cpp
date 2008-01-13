@@ -51,6 +51,7 @@
 typedef byte NewsID;
 #define INVALID_NEWS 255
 
+NewsItem _statusbar_news_item;
 static NewsItem _news_items[MAX_NEWS];      ///< The news FIFO queue
 static NewsID _current_news = INVALID_NEWS; ///< points to news item that should be shown next
 static NewsID _oldest_news = 0;             ///< points to first item in fifo queue

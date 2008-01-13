@@ -60,7 +60,7 @@ static inline bool IsValidSignID(uint index)
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1U < GetSignPoolSize()) ? GetSign(ss->index + 1U) : NULL) if (ss->IsValid())
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
-VARDEF bool _sign_sort_dirty;
+extern bool _sign_sort_dirty;
 
 void UpdateAllSignVirtCoords();
 void PlaceProc_Sign(TileIndex tile);

@@ -34,6 +34,8 @@ static StationSortListingTypeFunction StationTypeSorter;
 static StationSortListingTypeFunction StationWaitingSorter;
 static StationSortListingTypeFunction StationRatingMaxSorter;
 
+bool _station_show_coverage;
+
 /**
  * Draw small boxes of cargo amount and ratings data at the given
  * coordinates. If amount exceeds 576 units, it is shown 'full', same
