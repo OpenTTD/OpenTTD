@@ -11,6 +11,7 @@
 #include "newgrf_spritegroup.h"
 #include "sprite.h"
 #include "date_func.h"
+#include "settings_type.h"
 
 static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
 

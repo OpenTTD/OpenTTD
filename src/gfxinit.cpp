@@ -17,6 +17,7 @@
 #include "core/alloc_func.hpp"
 #include "core/bitmath_func.hpp"
 #include <string.h>
+#include "settings_type.h"
 
 #include "table/sprites.h"
 

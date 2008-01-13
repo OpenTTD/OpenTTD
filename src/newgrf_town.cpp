@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "variables.h"
+#include "settings_type.h"
 #include "debug.h"
 #include "core/bitmath_func.hpp"
 #include "town.h"

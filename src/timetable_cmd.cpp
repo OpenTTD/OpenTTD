@@ -10,6 +10,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "vehicle_base.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 

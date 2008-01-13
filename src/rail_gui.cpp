@@ -26,6 +26,7 @@
 #include "date_func.h"
 #include "sound_func.h"
 #include "player_func.h"
+#include "settings_type.h"
 
 #include "bridge_map.h"
 #include "rail_map.h"

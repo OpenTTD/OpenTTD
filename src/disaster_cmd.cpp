@@ -32,6 +32,7 @@
 #include "player_func.h"
 #include "airport.h"
 #include "variables.h"
+#include "settings_type.h"
 #include "strings_func.h"
 #include "date_func.h"
 #include "functions.h"

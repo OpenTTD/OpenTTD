@@ -15,6 +15,7 @@
 #include "gfx_func.h"
 #include "core/alloc_func.hpp"
 #include "fios.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 

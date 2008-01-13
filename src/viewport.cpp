@@ -24,6 +24,7 @@
 #include "zoom_func.h"
 #include "vehicle_func.h"
 #include "player_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

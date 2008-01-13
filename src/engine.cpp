@@ -25,6 +25,7 @@
 #include "autoreplace_base.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/engines.h"

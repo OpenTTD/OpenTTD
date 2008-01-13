@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
+#include "settings_type.h"
 #include "network/network.h"
 #include "network/network_data.h"
 #include "network/network_server.h"

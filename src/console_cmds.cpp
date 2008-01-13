@@ -32,6 +32,7 @@
 #include "string_func.h"
 #include "player_func.h"
 #include "player_base.h"
+#include "settings_type.h"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"

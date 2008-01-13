@@ -46,6 +46,7 @@
 #include "variables.h"
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"

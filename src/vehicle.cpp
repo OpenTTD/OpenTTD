@@ -47,6 +47,7 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

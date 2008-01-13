@@ -14,7 +14,7 @@
 #include "depot.h"
 #include "sound_func.h"
 #include "window_func.h"
-#include "variables.h"
+#include "settings_type.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "player_func.h"

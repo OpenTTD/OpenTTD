@@ -19,6 +19,7 @@
 #include "functions.h"
 #include "player_func.h"
 #include "sound_func.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

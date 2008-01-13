@@ -14,6 +14,7 @@
 #include "genworld.h"
 #include "core/alloc_func.hpp"
 #include "core/random_func.hpp"
+#include "settings_type.h"
 
 #include "table/strings.h"
 

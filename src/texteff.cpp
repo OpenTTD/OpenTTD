@@ -19,6 +19,7 @@
 #include "date_func.h"
 #include "functions.h"
 #include "viewport_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 

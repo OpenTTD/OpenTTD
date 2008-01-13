@@ -27,6 +27,7 @@
 #include "core/endian_func.hpp"
 #include "vehicle_base.h"
 #include "sound_func.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

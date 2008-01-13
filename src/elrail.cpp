@@ -49,7 +49,7 @@
 #include "openttd.h"
 #include "station_map.h"
 #include "viewport_func.h"
-#include "variables.h" /* ... same here */
+#include "settings_type.h"
 #include "landscape.h"
 #include "rail_type.h"
 #include "debug.h"

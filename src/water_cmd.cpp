@@ -32,6 +32,7 @@
 #include "sound_func.h"
 #include "variables.h"
 #include "player_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

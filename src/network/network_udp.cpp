@@ -22,6 +22,7 @@
 #include "../string_func.h"
 #include "../player_base.h"
 #include "../player_func.h"
+#include "../settings_type.h"
 
 #include "core/udp.h"
 

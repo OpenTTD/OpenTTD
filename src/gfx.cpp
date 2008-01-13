@@ -16,6 +16,7 @@
 #include "video/video_driver.hpp"
 #include "strings_func.h"
 #include "core/math_func.hpp"
+#include "settings_type.h"
 
 #include "table/palettes.h"
 #include "table/sprites.h"

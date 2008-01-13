@@ -35,6 +35,7 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "fios.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"

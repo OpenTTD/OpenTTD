@@ -13,7 +13,7 @@
 #include "rail_type.h"
 #include "debug.h"
 #include "tunnel_map.h"
-#include "variables.h"
+#include "settings_type.h"
 #include "depot.h"
 #include "tunnelbridge_map.h"
 #include "core/random_func.hpp"

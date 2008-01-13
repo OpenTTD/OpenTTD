@@ -22,6 +22,7 @@
 #include "strings_func.h"
 #include "map_func.h"
 #include "player_func.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

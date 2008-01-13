@@ -29,6 +29,7 @@
 #include "../../saveload.h"
 #include "../../player_func.h"
 #include "../../player_base.h"
+#include "../../settings_type.h"
 #include "default.h"
 
 #include "../../table/ai_rail.h"

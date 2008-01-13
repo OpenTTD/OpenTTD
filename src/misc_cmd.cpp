@@ -21,6 +21,7 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "player_gui.h"
+#include "settings_type.h"
 
 #include "table/strings.h"
 

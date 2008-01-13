@@ -22,6 +22,7 @@
 #include "date_func.h"
 #include "core/random_func.hpp"
 #include "engine.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 

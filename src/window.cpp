@@ -18,6 +18,7 @@
 #include "core/alloc_func.hpp"
 #include "map_func.h"
 #include "vehicle_base.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 

@@ -6,11 +6,11 @@
 #include "openttd.h"
 #include "debug.h"
 #include "airport.h"
-#include "variables.h"
 #include "airport_movement.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_func.hpp"
 #include "date_func.h"
+#include "settings_type.h"
 
 /* Uncomment this to print out a full report of the airport-structure
  * You should either use

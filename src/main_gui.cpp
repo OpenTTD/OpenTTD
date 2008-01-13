@@ -43,6 +43,7 @@
 #include "player_base.h"
 #include "player_func.h"
 #include "player_gui.h"
+#include "settings_type.h"
 
 #include "network/network.h"
 #include "network/network_data.h"

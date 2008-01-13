@@ -39,6 +39,7 @@
 #include "sound_func.h"
 #include "string_func.h"
 #include "player_gui.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

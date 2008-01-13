@@ -11,7 +11,7 @@
 #include "window_gui.h"
 #include "station_gui.h"
 #include "command_func.h"
-#include "variables.h"
+#include "settings_type.h"
 #include "water.h"
 #include "window_func.h"
 #include "vehicle_func.h"

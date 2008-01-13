@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "currency.h"
 #include "news.h"
-#include "variables.h"
+#include "settings_type.h"
 #include "date_func.h"
 
 #include "table/strings.h"

@@ -21,6 +21,7 @@
 #include "unmovable_map.h"
 #include "textbuf_gui.h"
 #include "genworld.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

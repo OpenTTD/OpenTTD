@@ -7,7 +7,7 @@
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "news.h"
-#include "variables.h"
+#include "settings_type.h"
 #include "transparency.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -52,6 +52,8 @@ typedef byte NewsID;
 #define INVALID_NEWS 255
 
 NewsItem _statusbar_news_item;
+uint32 _news_display_opt;
+bool _news_ticker_sound;
 static NewsItem _news_items[MAX_NEWS];      ///< The news FIFO queue
 static NewsID _current_news = INVALID_NEWS; ///< points to news item that should be shown next
 static NewsID _oldest_news = 0;             ///< points to first item in fifo queue

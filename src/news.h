@@ -50,6 +50,8 @@ void DrawNewsBorder(const Window *w);
 void InitNewsItemStructs();
 
 extern NewsItem _statusbar_news_item;
+extern uint32 _news_display_opt;
+extern bool _news_ticker_sound;
 
 /** Type of news. */
 enum NewsType {
