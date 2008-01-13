@@ -37,6 +37,7 @@
 #include "console.h"
 #include "screenshot.h"
 #include "network/network.h"
+#include "network/network_internal.h"
 #include "signs.h"
 #include "depot.h"
 #include "waypoint.h"

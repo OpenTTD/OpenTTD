@@ -5,6 +5,7 @@
 
 #include "../openttd.h"
 #include "network.h"
+#include "network_internal.h"
 
 // Is the network enabled?
 #ifdef ENABLE_NETWORK

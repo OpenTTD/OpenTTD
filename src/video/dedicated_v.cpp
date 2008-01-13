@@ -8,6 +8,7 @@
 #include "../debug.h"
 #include "../gfx_func.h"
 #include "../network/network.h"
+#include "../network/network_internal.h"
 #include "../console.h"
 #include "../variables.h"
 #include "../genworld.h"

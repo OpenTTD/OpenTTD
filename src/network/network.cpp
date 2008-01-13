@@ -3,8 +3,6 @@
 #include "../stdafx.h"
 #include "network_data.h"
 
-extern const char _openttd_revision[];
-
 #ifdef ENABLE_NETWORK
 
 #include "../openttd.h"
@@ -40,6 +38,10 @@ extern const char _openttd_revision[];
 #include "table/strings.h"
 
 bool _network_reload_cfg;
+bool _network_server;     ///< network-server is active
+bool _network_available;  ///< is network mode available?
+bool _network_dedicated;  ///< are we a dedicated server?
+bool _network_advertise;  ///< is the server advertising to the master server?
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
@@ -1202,8 +1204,7 @@ static void NetworkHandleLocalQueue()
 		if (_frame_counter > cp->frame) {
 			// If we reach here, it means for whatever reason, we've already executed
 			// past the command we need to execute.
-			DEBUG(net, 0, "Trying to execute a packet in the past!");
-			assert(0);
+			error("[net] Trying to execute a packet in the past!");
 		}
 
 		// We can execute this command
@@ -1469,3 +1470,6 @@ bool IsNetworkCompatibleVersion(const char *other)
 }
 
 #endif /* ENABLE_NETWORK */
+
+/* NOTE: this variable needs to be always available */
+PlayerID _network_playas;

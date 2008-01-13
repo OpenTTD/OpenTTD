@@ -25,6 +25,7 @@
 #include "screenshot.h"
 #include "variables.h"
 #include "network/network.h"
+#include "network/network_internal.h"
 #include "settings_internal.h"
 #include "command_func.h"
 #include "console.h"
