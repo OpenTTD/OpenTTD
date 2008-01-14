@@ -435,8 +435,7 @@ static void TileLoop_Town(TileIndex tile)
 		for (uint i = 0; i < 256; i++) {
 			uint16 callback = GetHouseCallback(CBID_HOUSE_PRODUCE_CARGO, i, r, house_id, t, tile);
 
-			if (callback == CALLBACK_FAILED) break;
-			if (callback == 0x20FF) break;
+			if (callback == CALLBACK_FAILED || callback == CALLBACK_HOUSEPRODCARGO_END) break;
 
 			CargoID cargo = GetCargoTranslation(GB(callback, 8, 7), hs->grffile);
 			if (cargo == CT_INVALID) continue;
@@ -1604,9 +1603,9 @@ static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 	int b;
 	Slope slope;
 
-	static const byte _masks[8] = {
-		0xC,0x3,0x9,0x6,
-		0x3,0xC,0x6,0x9,
+	static const Slope _masks[8] = {
+		SLOPE_NE,  SLOPE_SW,  SLOPE_NW,  SLOPE_SE,
+		SLOPE_SW,  SLOPE_NE,  SLOPE_SE,  SLOPE_NW,
 	};
 
 	slope = GetTileSlope(tile, NULL);
@@ -1616,7 +1615,7 @@ static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 
 	b = 0;
 	if ((slope != SLOPE_FLAT && ~slope & _masks[mode])) b = ~b;
-	if ((tileh != SLOPE_FLAT && ~tileh & _masks[mode+4])) b = ~b;
+	if ((tileh != SLOPE_FLAT && ~tileh & _masks[mode + 4])) b = ~b;
 	if (b)
 		return false;
 

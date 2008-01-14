@@ -297,10 +297,11 @@ enum IndustryTileCallbackMask {
 };
 
 /**
- * Result of a failed callback.
+ * Different values for Callback result evaluations
  */
 enum {
-	CALLBACK_FAILED = 0xFFFF
+	CALLBACK_FAILED              = 0xFFFF,  ///< Result of a failed callback.
+	CALLBACK_HOUSEPRODCARGO_END  = 0x20FF,  ///< Sentinel indicating that the loop for CBID_HOUSE_PRODUCE_CARGO has ended
 };
 
 #endif /* NEWGRF_CALLBACKS_H */
