@@ -42,6 +42,8 @@ class DropDownListParamStringItem : public DropDownListStringItem {
 public:
 	uint64 decode_params[10]; ///< Parameters of the string
 
+	DropDownListParamStringItem(StringID string, uint result, bool masked) : DropDownListStringItem(string, result, masked) {}
+
 	StringID String() const;
 	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
 };
