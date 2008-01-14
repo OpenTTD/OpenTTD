@@ -37,7 +37,7 @@ if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
 		exit 1
 	fi
 	# Make sure we don't lock config.cache
-	cat config.cache > cache.tmp
+	cat config.cache | sed 's/\\ /\\\\ /g' > cache.tmp
 	sh cache.tmp
 	rm -f cache.tmp
 	exit $?

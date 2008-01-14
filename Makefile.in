@@ -79,7 +79,7 @@ ifeq ($(shell if test -f config.cache; then echo 1; fi), 1)
 	@echo " Going to reconfigure with last known settings..."
 	@echo "----------------"
 # Make sure we don't lock config.cache
-	@$(shell cat config.cache) || exit 1
+	@$(shell cat config.cache | sed 's/\\ /\\\\ /g') || exit 1
 	@echo "----------------"
 	@echo "Reconfig done. Now compiling..."
 	@echo "----------------"

@@ -823,7 +823,7 @@ check_params() {
 	if [ "$shared_dir" = "1" ]; then
 		# we are using default values
 		if [ "$os" = "OSX" ]; then
-			shared_dir='/Library/Application\\ Support/OpenTTD'
+			shared_dir="/Library/Application\\\\ Support/OpenTTD"
 		else
 			shared_dir=""
 		fi
