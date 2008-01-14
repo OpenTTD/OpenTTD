@@ -15,6 +15,8 @@ public:
 	int result;  ///< Result code to return to window on selection
 	bool masked; ///< Masked and unselectable item
 
+	DropDownListItem(int result, bool masked) : result(result), masked(masked) {}
+	virtual ~DropDownListItem() {}
 	virtual StringID String() const;
 };
 
@@ -25,12 +27,7 @@ class DropDownListStringItem : public DropDownListItem {
 public:
 	StringID string; ///< String ID of item
 
-	DropDownListStringItem(StringID string, uint result, bool masked)
-	{
-		this->string = string;
-		this->result = result;
-		this->masked = masked;
-	}
+	DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
 
 	StringID String() const;
 };
@@ -42,7 +39,7 @@ class DropDownListParamStringItem : public DropDownListStringItem {
 public:
 	uint64 decode_params[10]; ///< Parameters of the string
 
-	DropDownListParamStringItem(StringID string, uint result, bool masked) : DropDownListStringItem(string, result, masked) {}
+	DropDownListParamStringItem(StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked) {}
 
 	StringID String() const;
 	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
