@@ -2348,7 +2348,7 @@ static void NewSpriteSet(byte *buf, int len)
 		_cur_spriteid, feature, num_sets, num_ents, num_sets * num_ents
 	);
 
-	for (uint i = 0; i < num_sets * num_ents; i++) {
+	for (int i = 0; i < num_sets * num_ents; i++) {
 		_nfo_line++;
 		LoadNextSprite(_cur_spriteid++, _file_index, _nfo_line);
 	}
