@@ -752,6 +752,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\widgets\dropdown.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\win32.cpp"
 				>
 			</File>
@@ -1205,6 +1209,18 @@
 			</File>
 			<File
 				RelativePath=".\..\src\window.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown_func.h"
 				>
 			</File>
 			<File

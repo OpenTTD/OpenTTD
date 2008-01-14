@@ -212,6 +212,8 @@ sound/win32_s.h
 video/win32_v.h
 window.h
 widgets/dropdown.h
+widgets/dropdown_type.h
+widgets/dropdown_func.h
 zoom.hpp
 
 # GUI Source Code
