@@ -942,6 +942,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}사용�
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}전체화면
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD를 전체화면으로 플레이하려면 클릭하세요
+STR_FULLSCREEN_FAILED                                           :{WHITE}풀스크린 모드 실패
 
 STR_OPTIONS_RES                                                 :{BLACK}화면 해상도
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

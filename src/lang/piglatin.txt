@@ -1662,7 +1662,9 @@ STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}An'tcay 
 STR_180A_ROAD_CONSTRUCTION                                      :Oadray onstructioncay
 STR_180A_TRAMWAY_CONSTRUCTION                                   :Amwaytray onstructioncay
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Uildbay oadray ectionsay
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Uildbay oadray ectionsay usingway ethay Autoroadway odemay
 STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Uildbay amwaytray ectionsay
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Uildbay amwaytray ectionsay usingway ethay Autotramway odemay
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Uildbay oadray ehiclevay epotday (orfay uildingbay andway ervicingsay ehiclesvay)
 STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Uildbay amtray ehiclevay epotday (orfay uildingbay andway ervicingsay ehiclesvay)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Uildbay usbay ationstay
@@ -1673,6 +1675,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Uildbay 
 STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Uildbay amwaytray idgebray
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Uildbay oadray unneltay
 STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Uildbay amwaytray unneltay
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activateway/Eactivateday oneway ayway oadsray
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Oggletay uildbay/emoveray orfay oadray onstructioncay
 STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Oggletay uildbay/emoveray orfay amwaytray onstructioncay
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Electsay oadray ehiclevay epotday orientationway
@@ -1694,6 +1697,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Uildingbay ustmay ebay emolishedday irstfay
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Opulationpay: {ORANGE}{COMMA}{BLACK}  Ouseshay: {ORANGE}{COMMA}
@@ -2016,6 +2020,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unablewa
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Ustmay emolishday unneltay irstfay
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Ustmay emolishday idgebray irstfay
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Annotcay artstay andway endway inway ethay amesay otspay
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Idgebray eadshay otnay atway ethay amesay evellay
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Idgebray isway ootay owlay orfay ethay erraintay
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Artstay andway endway ustmay ebay inway inelay
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Itesay unsuitableway orfay unneltay entranceway
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2296,6 +2302,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}Elocater
 STR_COMPANY_PASSWORD                                            :{BLACK}Asswordpay
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Asswordpay-otectpray ouryay ompanycay otay eventpray unauthorisedway usersway omfray oiningjay.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Etsay ompanycay asswordpay
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Oday otnay avesay ethay enteredway asswordpay
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Ivegay ethay ompanycay ethay ewnay asswordpay
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Ompanycay asswordpay
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Efaultday ompanycay asswordpay
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Useway isthay ompanycay asswordpay asway efaultday orfay ewnay ompaniescay
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Orldway Ecessionray!{}{}Inancialfay expertsway earfay orstway asway economyway umpsslay!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Ecessionray Overway!{}{}Upturnway inway adetray ivesgay onfidencecay otay industriesway asway economyway engthensstray!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Oggletay argelay/allsmay indowway izesay
@@ -2775,6 +2786,9 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ewnay {STRING} ownay availableway!  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}An'tcay ellsay estroyedday ehiclevay...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}An'tcay efitray estroyedday ehiclevay...
+
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Ancay otnay imetabletay ehiclevay...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Ehiclesvay ancay onlyway aitway atway ationsstay.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Isthay ehiclevay isway otnay oppingstay atway isthay ationstay.
@@ -3063,7 +3077,9 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} isway 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalidway arameterpay orfay {STRING}: arameterpay {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} ustmay ebay oadedlay eforebay {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ustmay ebay oadedlay afterway {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} equiresray OpenTTDWAY ersionvay {STRING} orway etterbay.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ethay GRFay ilefay itway asway esignedday otay anslatetray
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ootay anymay NewGRFs areway oadedlay.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Addway
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Addway away EwGRFnay ilefay otay ethay istlay
@@ -3092,6 +3108,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atching
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Ompatiblecay GRFay(say) oadedlay orfay issingmay ilesfay
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Issingmay GRFay ilefay(say) avehay eenbay isabledday
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Issingmay GRFay ilefay(say) otay ebay ableway otay oadlay amegay
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Issingmay GRF filesay
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausingway ancay ashcray OpenTTD. Oday otnay ilefay ugbay eportsray orfay ubsequentsay ashescray.{}Oday ouyay eallyray antway otay unpauseway?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Ustomcay urrencycay
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchangeway ateray: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3272,6 +3290,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Eighthay
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Entercay ethay allmapsmay onway ethay urrentcay ositionpay
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Allsmay
@@ -3378,3 +3397,11 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Undfay
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Ospectpray
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Uildbay
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Oosechay ethay appropriateway industryway omfray isthay istlay
+
+############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Advancedway
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Advancedway acefay electionsay.
+########
+
+############ signal GUI
+########

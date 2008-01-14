@@ -941,6 +941,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Seleccio
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Ecrã Inteiro
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Seleccione esta opção para jogar o OpenTTD em modo de ecrã inteiro
+STR_FULLSCREEN_FAILED                                           :{WHITE}Modo de ecrã inteiro falhou
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolução do ecrã
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
