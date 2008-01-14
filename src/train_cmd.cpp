@@ -3243,10 +3243,17 @@ static void HandleBrokenTrain(Vehicle *v)
 	}
 }
 
+/** Maximum speeds for train that is broken down or approaching line end */
 static const byte _breakdown_speeds[16] = {
 	225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 15
 };
 
+/**
+ * Checks for line end. Also, bars crossing at next tile if needed
+ *
+ * @param v vehicle we are checking
+ * @return true iff we do NOT have to reverse
+ */
 static bool TrainCheckIfLineEnds(Vehicle *v)
 {
 	int t = v->breakdown_ctr;
@@ -3269,11 +3276,10 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		if (DiagDirToDir(dir) == v->direction) return true;
 	}
 
-	// depot?
-	/* XXX -- When enabled, this makes it possible to crash trains of others
-	     (by building a depot right against a station) */
-/*	if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT)
-		return true;*/
+	if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_DEPOT) {
+		DiagDirection dir = ReverseDiagDir(GetRailDepotDirection(tile));
+		if (DiagDirToDir(dir) == v->direction) return true;
+	}
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
 	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
