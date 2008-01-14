@@ -439,20 +439,6 @@ struct message_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(message_d));
 
-struct dropdown_d {
-	uint32 disabled_state;
-	uint32 hidden_state;
-	WindowClass parent_wnd_class;
-	WindowNumber parent_wnd_num;
-	byte parent_button;
-	byte num_items;
-	byte selected_index;
-	const StringID *items;
-	byte click_delay;
-	bool drag_mode;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
-
 struct vehiclelist_d {
 	const Vehicle** sort_list;  // List of vehicles (sorted)
 	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
@@ -592,7 +578,6 @@ static inline void GuiShowTooltips(StringID str)
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
 void DrawWindowWidgets(const Window *w);
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask);
 
 
 Window *GetCallbackWnd();

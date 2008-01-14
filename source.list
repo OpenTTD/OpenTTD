@@ -93,6 +93,7 @@ vehicle.cpp
 viewport.cpp
 waypoint.cpp
 widget.cpp
+widgets/dropdown.cpp
 #if WIN32
 	win32.cpp
 #end
@@ -210,6 +211,7 @@ music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
 window.h
+widgets/dropdown.h
 zoom.hpp
 
 # GUI Source Code

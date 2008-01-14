@@ -25,6 +25,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "settings_type.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

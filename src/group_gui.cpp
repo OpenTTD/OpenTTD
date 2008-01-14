@@ -23,6 +23,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -328,14 +329,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			/* The drop down menu is out, *but* it may not be used, retract it. */
 			if (gv->l.list_length == 0 && w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
 				w->RaiseWidget(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
-				Window **w2;
-				FOR_ALL_WINDOWS(w2) {
-					if (w->window_class  == WP(*w2, dropdown_d).parent_wnd_class &&
-							w->window_number == WP(*w2, dropdown_d).parent_wnd_num) {
-						DeleteWindow(*w2);
-						break;
-					}
-				}
+				HideDropDownMenu(w);
 			}
 
 			/* Disable all lists management button when the list is empty */

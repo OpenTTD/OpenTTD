@@ -15,6 +15,7 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "string_func.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

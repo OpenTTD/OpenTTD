@@ -28,6 +28,7 @@
 #include "date_func.h"
 #include "string_func.h"
 #include "settings_type.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

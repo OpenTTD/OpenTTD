@@ -27,6 +27,7 @@
 #include "sound_func.h"
 #include "player_func.h"
 #include "settings_type.h"
+#include "widgets/dropdown_func.h"
 
 #include "bridge_map.h"
 #include "rail_map.h"
