@@ -7,7 +7,7 @@
 
 #include "cargo_type.h"
 #include "gfx_type.h"
-#include "strings_type.h"
+#include "newgrf_string_type.h"
 
 typedef uint32 CargoLabel;
 
@@ -36,11 +36,11 @@ struct CargoSpec {
 	uint16 multipliertowngrowth;
 	uint8 callback_mask;
 
-	StringID name;
-	StringID name_single;
-	StringID units_volume;
-	StringID quantifier;
-	StringID abbrev;
+	GRFMappedStringID name;
+	GRFMappedStringID name_single;
+	GRFMappedStringID units_volume;
+	GRFMappedStringID quantifier;
+	GRFMappedStringID abbrev;
 
 	SpriteID sprite;
 

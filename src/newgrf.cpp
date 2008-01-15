@@ -1343,7 +1343,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				break;
 
 			case 0x12: // Building name ID
-				housespec->building_name = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				housespec->building_name = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x13: // Building availability mask
@@ -1596,25 +1596,25 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 				break;
 
 			case 0x09: /* String ID for cargo type name */
-				cs->name = grf_load_word(&buf);
+				cs->name = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0A: /* String for 1 unit of cargo */
-				cs->name_single = grf_load_word(&buf);
+				cs->name_single = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0B:
 				/* String for units of cargo. This is different in OpenTTD to TTDPatch
 				 * (e.g. 10 tonnes of coal) */
-				cs->units_volume = grf_load_word(&buf);
+				cs->units_volume = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0C: /* String for quantity of cargo (e.g. 10 tonnes of coal) */
-				cs->quantifier = grf_load_word(&buf);
+				cs->quantifier = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0D: /* String for two letter cargo abbreviation */
-				cs->abbrev = grf_load_word(&buf);
+				cs->abbrev = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0E: /* Sprite ID for cargo icon */
@@ -1998,15 +1998,15 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x0C: // Industry closure message
-				indsp->closure_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				indsp->closure_text = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0D: // Production increase message
-				indsp->production_up_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				indsp->production_up_text = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0E: // Production decrease message
-				indsp->production_down_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				indsp->production_down_text = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x0F: // Fund cost multiplier
@@ -2065,7 +2065,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x1B: // New industry text ID
-				indsp->new_industry_text = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				indsp->new_industry_text = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x1C: // Input cargo multipliers for the three input cargo types
@@ -2077,7 +2077,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				} break;
 
 			case 0x1F: // Industry name
-				indsp->name = MapGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				indsp->name = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			case 0x20: // Prospecting success chance
@@ -3208,7 +3208,7 @@ static void FeatureNewName(byte *buf, int len)
 						if (_cur_grffile->housespec == NULL || _cur_grffile->housespec[GB(id, 0, 8)] == NULL) {
 							grfmsg(1, "FeatureNewName: Attempt to name undefined house 0x%X, ignoring.", GB(id, 0, 8));
 						} else {
-							_cur_grffile->housespec[GB(id, 0, 8)]->building_name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
+							_cur_grffile->housespec[GB(id, 0, 8)]->building_name = GRFMappedStringID(AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED), 0);
 						}
 						break;
 
@@ -5284,6 +5284,7 @@ static void FinaliseHouseArray()
 		for (int i = 0; i < HOUSE_MAX; i++) {
 			HouseSpec *hs = file->housespec[i];
 			if (hs != NULL) {
+				hs->building_name.MapString();
 				_house_mngr.SetEntitySpec(hs);
 				if (hs->min_date < min_date) min_date = hs->min_date;
 			}
@@ -5314,18 +5315,23 @@ static void FinaliseIndustriesArray()
 					/* process the conversion of text at the end, so to be sure everything will be fine
 					 * and available.  Check if it does not return undefind marker, which is a very good sign of a
 					 * substitute industry who has not changed the string been examined, thus using it as such */
+					indsp->name.MapString();
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->name);
 					if (strid != STR_UNDEFINED) indsp->name = strid;
 
+					indsp->closure_text.MapString();
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->closure_text);
 					if (strid != STR_UNDEFINED) indsp->closure_text = strid;
 
+					indsp->production_up_text.MapString();
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_up_text);
 					if (strid != STR_UNDEFINED) indsp->production_up_text = strid;
 
+					indsp->production_down_text.MapString();
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->production_down_text);
 					if (strid != STR_UNDEFINED) indsp->production_down_text = strid;
 
+					indsp->new_industry_text.MapString();
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
 					if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
 
@@ -5365,11 +5371,11 @@ static void MapNewCargoStrings()
 		/* Don't map if the cargo is unavailable or not from NewGRF */
 		if (cs->grfid == 0) continue;
 
-		cs->name         = MapGRFStringID(cs->grfid, cs->name);
-		cs->name_single  = MapGRFStringID(cs->grfid, cs->name_single);
-		cs->units_volume = MapGRFStringID(cs->grfid, cs->units_volume);
-		cs->quantifier   = MapGRFStringID(cs->grfid, cs->quantifier);
-		cs->abbrev       = MapGRFStringID(cs->grfid, cs->abbrev);
+		cs->name.MapString();
+		cs->name_single.MapString();
+		cs->units_volume.MapString();
+		cs->quantifier.MapString();
+		cs->abbrev.MapString();
 	}
 }
 
@@ -5635,4 +5641,12 @@ void LoadNewGRF(uint load_index, uint file_index)
 bool HasGrfMiscBit(GrfMiscBit bit)
 {
 	return HasBit(_misc_grf_features, bit);
+}
+
+void GRFMappedStringID::MapString()
+{
+	if (this->grfid == 0) return;
+
+	this->string = MapGRFStringID(this->grfid, this->string);
+	this->grfid = 0;
 }
