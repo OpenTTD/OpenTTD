@@ -606,15 +606,19 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 		/* We first need to request the direction before calling DoClearSquare
 		 *  else the direction is always 0.. dah!! ;) */
 		DiagDirection dir = GetTunnelBridgeDirection(tile);
-		Track track;
+		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
-		UpdateSignalsOnSegment(tile, ReverseDiagDir(dir));
-		UpdateSignalsOnSegment(endtile, dir);
-		track = AxisToTrack(DiagDirToAxis(dir));
-		YapfNotifyTrackLayoutChange(tile, track);
-		YapfNotifyTrackLayoutChange(endtile, track);
+
+		if (rail) {
+			UpdateSignalsOnSegment(tile, ReverseDiagDir(dir));
+			UpdateSignalsOnSegment(endtile, dir);
+
+			Track track = AxisToTrack(DiagDirToAxis(dir));
+			YapfNotifyTrackLayoutChange(tile, track);
+			YapfNotifyTrackLayoutChange(endtile, track);
+		}
 	}
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_tunnel * (DistanceManhattan(tile, endtile) + 1));
 }
@@ -654,21 +658,24 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		TileIndex c;
-		Track track;
+		/* read this value before actual removal of bridge */
+		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
-		for (c = tile + delta; c != endtile; c += delta) {
-				ClearBridgeMiddle(c);
+		for (TileIndex c = tile + delta; c != endtile; c += delta) {
+			ClearBridgeMiddle(c);
 			MarkTileDirtyByTile(c);
 		}
 
-		UpdateSignalsOnSegment(tile, ReverseDiagDir(direction));
-		UpdateSignalsOnSegment(endtile, direction);
-		track = AxisToTrack(DiagDirToAxis(direction));
-		YapfNotifyTrackLayoutChange(tile, track);
-		YapfNotifyTrackLayoutChange(endtile, track);
+		if (rail) {
+			UpdateSignalsOnSegment(tile, ReverseDiagDir(direction));
+			UpdateSignalsOnSegment(endtile, direction);
+
+			Track track = AxisToTrack(DiagDirToAxis(direction));
+			YapfNotifyTrackLayoutChange(tile, track);
+			YapfNotifyTrackLayoutChange(endtile, track);
+		}
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge);
