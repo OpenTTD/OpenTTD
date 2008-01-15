@@ -2018,8 +2018,8 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Count the buildings after updating the map array. */
-	AfterLoadCountBuildings();
+	/* Check that house ids are still valid. */
+	CheckHouseIDs();
 
 	if (CheckSavegameVersion(43)) {
 		for (TileIndex t = 0; t < map_size; t++) {

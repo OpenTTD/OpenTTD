@@ -33,7 +33,11 @@ HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 
 void CheckHouseIDs()
 {
+	Town *town;
 	InitializeBuildingCounts();
+
+	/* Reset town population */
+	FOR_ALL_TOWNS(town) town->population = 0;
 
 	for (TileIndex t = 0; t < MapSize(); t++) {
 		HouseID house_id;
@@ -47,7 +51,9 @@ void CheckHouseIDs()
 			house_id = _house_mngr.GetSubstituteID(house_id);
 			SetHouseType(t, house_id);
 		}
-		IncreaseBuildingCount(GetTownByTile(t), house_id);
+		town = GetTownByTile(t);
+		IncreaseBuildingCount(town, house_id);
+		if (IsHouseCompleted(t)) town->population += GetHouseSpecs(house_id)->population;
 	}
 }
 
@@ -121,22 +127,6 @@ void DecreaseBuildingCount(Town *t, HouseID house_id)
 	if (t->building_counts.class_count[class_id] > 0) t->building_counts.class_count[class_id]--;
 	if (_building_counts.class_count[class_id] > 0)   _building_counts.class_count[class_id]--;
 }
-
-/**
- * AfterLoadCountBuildings()
- *
- * After a savegame has been loaded, count the number of buildings on the map.
- */
-void AfterLoadCountBuildings()
-{
-	if (!_loaded_newgrf_features.has_newhouses) return;
-
-	for (TileIndex t = 0; t < MapSize(); t++) {
-		if (!IsTileType(t, MP_HOUSE)) continue;
-		IncreaseBuildingCount(GetTownByTile(t), GetHouseType(t));
-	}
-}
-
 
 static uint32 HouseGetRandomBits(const ResolverObject *object)
 {

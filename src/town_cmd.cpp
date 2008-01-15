@@ -2411,9 +2411,8 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 6, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town, population,            SLE_FILE_U16 | SLE_VAR_U32, 0, 2),
-	SLE_CONDVAR(Town, population,            SLE_UINT32,                 3, SL_MAX_VERSION),
-
+	SLE_CONDNULL(2, 0, 2),
+	SLE_CONDNULL(4, 3, 84),
 
 	    SLE_VAR(Town, num_houses,            SLE_UINT16),
 	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, 66, SL_MAX_VERSION),

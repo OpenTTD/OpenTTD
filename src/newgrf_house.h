@@ -33,7 +33,6 @@ HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid);
 void InitializeBuildingCounts();
 void IncreaseBuildingCount(Town *t, HouseID house_id);
 void DecreaseBuildingCount(Town *t, HouseID house_id);
-void AfterLoadCountBuildings();
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
