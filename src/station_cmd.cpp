@@ -1004,7 +1004,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	}
 
 	/* Check if the given station class is valid */
-	if (GB(p2, 8, 8) >= STAT_CLASS_MAX) return CMD_ERROR;
+	if (GB(p2, 8, 8) >= GetNumStationClasses()) return CMD_ERROR;
 
 	/* Check if we can allocate a custom stationspec to this station */
 	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 8, 8), GB(p2, 16, 8));
