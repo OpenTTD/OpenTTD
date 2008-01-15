@@ -8,6 +8,7 @@
 #include "../strings_type.h"
 #include "../gfx_func.h"
 #include "../window_func.h"
+#include "../core/math_func.hpp"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
 
@@ -51,6 +52,7 @@ struct dropdown_d {
 	byte selected_index;
 	byte click_delay;
 	bool drag_mode;
+	int scrolling;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 
@@ -133,6 +135,17 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
+		case WE_TICK:
+			if (WP(w, dropdown_d).scrolling == -1) {
+				w->vscroll.pos = max(0, w->vscroll.pos - 1);
+				SetWindowDirty(w);
+			} else if (WP(w, dropdown_d).scrolling == 1) {
+				w->vscroll.pos = min(w->vscroll.count - w->vscroll.cap, w->vscroll.pos + 1);
+				SetWindowDirty(w);
+			}
+			WP(w, dropdown_d).scrolling = 0;
+			break;
+
 		case WE_MOUSELOOP: {
 			Window *w2 = FindWindowById(WP(w, dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 == NULL) {
@@ -158,6 +171,16 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 					if (item < 0) return;
 					WP(w, dropdown_d).click_delay = 2;
 				} else {
+					if (_cursor.pos.y <= w->top + 2) {
+						/* Cursor is above the list, set scroll up */
+						WP(w, dropdown_d).scrolling = -1;
+						return;
+					} else if (_cursor.pos.y >= w->top + w->height - 2) {
+						/* Cursor is below list, set scroll down */
+						WP(w, dropdown_d).scrolling = 1;
+						return;
+					}
+
 					if (item < 0) return;
 				}
 
