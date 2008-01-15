@@ -28,6 +28,7 @@ public:
 	StringID string; ///< String ID of item
 
 	DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
+	virtual ~DropDownListStringItem() {}
 
 	StringID String() const;
 };
@@ -40,6 +41,7 @@ public:
 	uint64 decode_params[10]; ///< Parameters of the string
 
 	DropDownListParamStringItem(StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked) {}
+	virtual ~DropDownListParamStringItem() {}
 
 	StringID String() const;
 	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
