@@ -974,8 +974,6 @@ void SwitchMode(int new_mode)
  * That check is enforced in DoCommand. */
 void StateGameLoop()
 {
-	ClearStorageChanges(false);
-
 	/* dont execute the state loop during pause */
 	if (_pause_game) {
 		CallWindowTickEvent();
@@ -983,10 +981,14 @@ void StateGameLoop()
 	}
 	if (IsGeneratingWorld()) return;
 
+	ClearStorageChanges(false);
+
 	if (_game_mode == GM_EDITOR) {
 		RunTileLoop();
 		CallVehicleTicks();
 		CallLandscapeTick();
+		ClearStorageChanges(true);
+
 		CallWindowTickEvent();
 		NewsLoop();
 	} else {
@@ -1000,6 +1002,7 @@ void StateGameLoop()
 		RunTileLoop();
 		CallVehicleTicks();
 		CallLandscapeTick();
+		ClearStorageChanges(true);
 
 		AI_RunGameLoop();
 

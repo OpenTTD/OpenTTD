@@ -23,6 +23,7 @@
 #include "core/random_func.hpp"
 #include "engine.h"
 #include "settings_type.h"
+#include "newgrf_storage.h"
 
 #include "table/sprites.h"
 
@@ -117,6 +118,8 @@ static void *_GenerateWorld(void *arg)
 			GenerateTrees();
 		}
 	}
+
+	ClearStorageChanges(true);
 
 	/* These are probably pointless when inside the scenario editor. */
 	SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
