@@ -419,7 +419,7 @@ not_valid_below:;
 
 	if (flags & DC_EXEC && railtype != INVALID_RAILTYPE) {
 		Track track = AxisToTrack(direction);
-		UpdateSignalsOnSegment(tile_start, INVALID_DIAGDIR);
+		UpdateSignalsOnSegment(tile_start, INVALID_DIAGDIR, _current_player);
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
@@ -549,7 +549,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
 			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
-			UpdateSignalsOnSegment(start_tile, INVALID_DIAGDIR);
+			UpdateSignalsOnSegment(start_tile, INVALID_DIAGDIR, _current_player);
 			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
 			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 3));
@@ -603,21 +603,24 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		/* We first need to request the direction before calling DoClearSquare
-		 *  else the direction is always 0.. dah!! ;) */
-		DiagDirection dir = GetTunnelBridgeDirection(tile);
-		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
+		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
+			/* We first need to request values before calling DoClearSquare */
+			DiagDirection dir = GetTunnelBridgeDirection(tile);
+			Owner owner = GetTileOwner(tile);
 
-		DoClearSquare(tile);
-		DoClearSquare(endtile);
+			DoClearSquare(tile);
+			DoClearSquare(endtile);
 
-		if (rail) {
-			UpdateSignalsOnSegment(tile, ReverseDiagDir(dir));
-			UpdateSignalsOnSegment(endtile, dir);
+			/* cannot use INVALID_DIAGDIR for signal update because the tunnel doesn't exist anymore */
+			UpdateSignalsOnSegment(tile, ReverseDiagDir(dir), owner);
+			UpdateSignalsOnSegment(endtile, dir, owner);
 
 			Track track = AxisToTrack(DiagDirToAxis(dir));
 			YapfNotifyTrackLayoutChange(tile, track);
 			YapfNotifyTrackLayoutChange(endtile, track);
+		} else {
+			DoClearSquare(tile);
+			DoClearSquare(endtile);
 		}
 	}
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_tunnel * (DistanceManhattan(tile, endtile) + 1));
@@ -660,6 +663,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		/* read this value before actual removal of bridge */
 		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
+		Owner owner = GetTileOwner(tile);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
@@ -669,8 +673,9 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		}
 
 		if (rail) {
-			UpdateSignalsOnSegment(tile, ReverseDiagDir(direction));
-			UpdateSignalsOnSegment(endtile, direction);
+			/* cannot use INVALID_DIAGDIR for signal update because the bridge doesn't exist anymore */
+			UpdateSignalsOnSegment(tile, ReverseDiagDir(direction), owner);
+			UpdateSignalsOnSegment(endtile, direction, owner);
 
 			Track track = AxisToTrack(DiagDirToAxis(direction));
 			YapfNotifyTrackLayoutChange(tile, track);

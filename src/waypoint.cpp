@@ -286,6 +286,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 
 	if (flags & DC_EXEC) {
 		Track track = GetRailWaypointTrack(tile);
+		Owner owner = GetTileOwner(tile); // cannot use _current_player because of possible floods
 		wp = GetWaypointByTile(tile);
 
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
@@ -296,7 +297,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);
-			SetSignalsOnBothDir(tile, track);
+			SetSignalsOnBothDir(tile, track, owner);
 		}
 		YapfNotifyTrackLayoutChange(tile, track);
 	}

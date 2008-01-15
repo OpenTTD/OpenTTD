@@ -2178,7 +2178,7 @@ void VehicleEnterDepot(Vehicle *v)
 		case VEH_TRAIN:
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			if (!IsFrontEngine(v)) v = v->First();
-			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR);
+			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 			v->load_unload_time_rem = 0;
 			break;
 

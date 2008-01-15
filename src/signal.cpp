@@ -257,12 +257,10 @@ static SigFlags ExploreSegment(Owner owner)
 {
 	SigFlags flags = SF_NONE;
 
-	while (!_tbdset.IsEmpty()) {
-		TileIndex tile;
-		DiagDirection enterdir;
+	TileIndex tile;
+	DiagDirection enterdir;
 
-		_tbdset.Get(&tile, &enterdir);
-
+	while (_tbdset.Get(&tile, &enterdir)) {
 		TileIndex oldtile = tile; // tile we are leaving
 		DiagDirection exitdir = enterdir == INVALID_DIAGDIR ? INVALID_DIAGDIR : ReverseDiagDir(enterdir); // expected new exit direction (for straight line)
 
@@ -396,11 +394,10 @@ static SigFlags ExploreSegment(Owner owner)
  */
 static void UpdateSignalsAroundSegment(SigFlags flags)
 {
-	while (!_tbuset.IsEmpty()) {
-		TileIndex tile;
-		Trackdir trackdir;
-		_tbuset.Get(&tile, &trackdir);
+	TileIndex tile;
+	Trackdir trackdir;
 
+	while (_tbuset.Get(&tile, &trackdir)) {
 		assert(HasSignalOnTrackdir(tile, trackdir));
 
 		SignalType sig = GetSignalType(tile, TrackdirToTrack(trackdir));
@@ -453,14 +450,16 @@ static inline void ResetSets()
 /**
  * Updates blocks in _globset buffer
  *
+ * @param owner player whose signals we are updating
  * @return false iff presignal entry would be green (needed for trains leaving depot)
+ * @pre IsValidPlayer(owner)
  */
-static bool UpdateSignalsInBuffer()
+static bool UpdateSignalsInBuffer(Owner owner)
 {
+	assert(IsValidPlayer(owner));
+
 	bool first = true;  // first block?
 	bool state = false; // value to return
-
-	Owner owner = OWNER_NONE; // owner whose signals we are updating
 
 	TileIndex tile;
 	DiagDirection dir;
@@ -479,7 +478,6 @@ static bool UpdateSignalsInBuffer()
 				/* 'optimization assert' - do not try to update signals when it is not needed */
 				assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL);
 				assert(dir == INVALID_DIAGDIR || dir == ReverseDiagDir(GetTunnelBridgeDirection(tile)));
-				if (first) owner = GetTileOwner(tile);
 				_tbdset.Add(tile, INVALID_DIAGDIR);  // we can safely start from wormhole centre
 				_tbdset.Add(GetOtherTunnelBridgeEnd(tile), INVALID_DIAGDIR);
 				break;
@@ -488,7 +486,6 @@ static bool UpdateSignalsInBuffer()
 				if (IsRailDepot(tile)) {
 					/* 'optimization assert' do not try to update signals in other cases */
 					assert(dir == INVALID_DIAGDIR || dir == GetRailDepotDirection(tile));
-					if (first) owner = GetTileOwner(tile);
 					_tbdset.Add(tile, INVALID_DIAGDIR); // start from depot inside
 					break;
 				}
@@ -497,7 +494,6 @@ static bool UpdateSignalsInBuffer()
 			case MP_ROAD:
 				if ((TrackBits)(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
  					/* only add to set when there is some 'interesting' track */
-					if (first) owner = GetTileOwner(tile);
 					_tbdset.Add(tile, dir);
 					_tbdset.Add(tile + TileOffsByDiagDir(dir), ReverseDiagDir(dir));
 					break;
@@ -508,7 +504,6 @@ static bool UpdateSignalsInBuffer()
 				tile = tile + TileOffsByDiagDir(dir);
 				dir = ReverseDiagDir(dir);
 				if ((TrackBits)(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
-					if (first) owner = GetTileOwner(tile);
 					_tbdset.Add(tile, dir);
 					break;
 				}
@@ -516,7 +511,6 @@ static bool UpdateSignalsInBuffer()
 				continue; // continue the while() loop
 		}
 
-		assert(IsValidPlayer(owner));
 		assert(!_tbdset.Overflowed()); // it really shouldn't overflow by these one or two items
 		assert(!_tbdset.IsEmpty()); // it wouldn't hurt anyone, but shouldn't happen too
 
@@ -547,14 +541,15 @@ static bool UpdateSignalsInBuffer()
  * @see UpdateSignalsInBuffer()
  * @param tile tile where we start
  * @param side side of tile
+ * @param owner owner whose signals we will update
  * @return false iff train can leave depot
  */
-bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side)
+bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner)
 {
 	assert(_globset.IsEmpty());
 	_globset.Add(tile, side);
 
-	return UpdateSignalsInBuffer();
+	return UpdateSignalsInBuffer(owner);
 }
 
 
@@ -565,8 +560,9 @@ bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side)
  * @see UpdateSignalsInBuffer()
  * @param tile tile where we start
  * @param track track at which ends we will update signals
+ * @param owner owner whose signals we will update
  */
-void SetSignalsOnBothDir(TileIndex tile, Track track)
+void SetSignalsOnBothDir(TileIndex tile, Track track, Owner owner)
 {
 	static const DiagDirection _search_dir_1[] = {
 		DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE
@@ -579,5 +575,5 @@ void SetSignalsOnBothDir(TileIndex tile, Track track)
 
 	_globset.Add(tile, _search_dir_1[track]);
 	_globset.Add(tile, _search_dir_2[track]);
-	UpdateSignalsInBuffer();
+	UpdateSignalsInBuffer(owner);
 }

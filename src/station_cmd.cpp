@@ -1073,7 +1073,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 				tile += tile_delta;
 			} while (--w);
-			SetSignalsOnBothDir(tile_org, track);
+			SetSignalsOnBothDir(tile_org, track, _current_player);
 			YapfNotifyTrackLayoutChange(tile_org, track);
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
@@ -1202,11 +1202,14 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 		quantity++;
 
 		if (flags & DC_EXEC) {
+			/* read variables before the station tile is removed */
 			uint specindex = GetCustomStationSpecIndex(tile2);
 			Track track = GetRailStationTrack(tile2);
+			Owner owner = GetTileOwner(tile2);
+
 			DoClearSquare(tile2);
 			st->rect.AfterRemoveTile(st, tile2);
-			SetSignalsOnBothDir(tile2, track);
+			SetSignalsOnBothDir(tile2, track, owner);
 			YapfNotifyTrackLayoutChange(tile2, track);
 
 			DeallocateSpecFromStation(st, specindex);
@@ -1257,15 +1260,17 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 	do {
 		int w_bak = w;
 		do {
-			// for nonuniform stations, only remove tiles that are actually train station tiles
+			/* for nonuniform stations, only remove tiles that are actually train station tiles */
 			if (st->TileBelongsToRailStation(tile)) {
 				if (!EnsureNoVehicleOnGround(tile))
 					return CMD_ERROR;
 				cost.AddCost(_price.remove_rail_station);
 				if (flags & DC_EXEC) {
+					/* read variables before the station tile is removed */
 					Track track = GetRailStationTrack(tile);
+					Owner owner = GetTileOwner(tile); // _current_player can be OWNER_WATER
 					DoClearSquare(tile);
-					SetSignalsOnBothDir(tile, track);
+					SetSignalsOnBothDir(tile, track, owner);
 					YapfNotifyTrackLayoutChange(tile, track);
 				}
 			}

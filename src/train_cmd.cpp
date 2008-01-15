@@ -2168,7 +2168,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
-		if (UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR)) {
+		if (UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner)) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
 		}
@@ -2187,7 +2187,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	v->UpdateDeltaXY(v->direction);
 	v->cur_image = v->GetImage(v->direction);
 	VehiclePositionChanged(v);
-	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR);
+	UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	UpdateTrainAcceleration(v);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
@@ -2768,7 +2768,7 @@ static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 	if (IsTileType(tile, MP_RAILWAY) &&
 			GetRailTileType(tile) == RAIL_TILE_SIGNALS) {
 		uint i = FindFirstBit2x64(GetTrackBits(tile) * 0x101 & _reachable_tracks[dir]);
-		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i]);
+		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i], GetTileOwner(tile));
 	}
 }
 
@@ -3141,8 +3141,10 @@ static void DeleteLastWagon(Vehicle *v)
 	/* 'v' shouldn't be accessed after it has been deleted */
 	TrackBits track = v->u.rail.track;
 	TileIndex tile = v->tile;
+	Owner owner = v->owner;
 
 	delete v;
+	v = NULL; // make sure nobody will won't try to read 'v' anymore
 
 	/* Check if the wagon was on a road/rail-crossing and disable it if no
 	 * others are on it */
@@ -3150,9 +3152,9 @@ static void DeleteLastWagon(Vehicle *v)
 
 	/* Update signals */
 	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileDepotType(tile, TRANSPORT_RAIL)) {
-		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR);
+		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR, owner);
 	} else {
-		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)));
+		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)), owner);
 	}
 }
 

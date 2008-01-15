@@ -9,6 +9,7 @@
 #include "tile_type.h"
 #include "direction_type.h"
 #include "track_type.h"
+#include "player_type.h"
 
 /**
  * Maps a trackdir to the bit that stores its status in the map arrays, in the
@@ -40,7 +41,7 @@ static inline byte SignalOnTrack(Track track)
 	return _signal_on_track[track];
 }
 
-bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side);
-void SetSignalsOnBothDir(TileIndex tile, Track track);
+bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner);
+void SetSignalsOnBothDir(TileIndex tile, Track track, Owner owner);
 
 #endif /* SIGNAL_FUNC_H */
