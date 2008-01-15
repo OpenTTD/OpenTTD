@@ -30,6 +30,19 @@ StringID DropDownListParamStringItem::String() const
 	return this->string;
 }
 
+/**
+ * Delete all items of a drop down list and the list itself
+ * @param list List to delete.
+ */
+static void DeleteDropDownList(DropDownList *list)
+{
+	for (DropDownList::iterator it = list->begin(); it != list->end(); ++it) {
+		DropDownListItem *item = *it;
+		delete item;
+	}
+	delete list;
+}
+
 struct dropdown_d {
 	WindowClass parent_wnd_class;
 	WindowNumber parent_wnd_num;
@@ -160,7 +173,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 				w2->InvalidateWidget(WP(w, dropdown_d).parent_button);
 			}
 
-			delete WP(w, dropdown_d).list;
+			DeleteDropDownList(WP(w, dropdown_d).list);
 		} break;
 	}
 }
@@ -172,7 +185,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 
 	if (is_dropdown_menu_shown) {
-		delete list;
+		DeleteDropDownList(list);
 		return;
 	}
 
@@ -252,6 +265,12 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask)
 {
+	/* Don't create a new list if we're just closing an existing menu */
+	if (w->IsWidgetLowered(button)) {
+		DeleteWindowById(WC_DROPDOWN_MENU, 0);
+		return;
+	}
+
 	uint result = 0;
 	DropDownList *list = new DropDownList();
 
@@ -264,7 +283,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 
 	/* No entries in the list? */
 	if (list->size() == 0) {
-		delete list;
+		DeleteDropDownList(list);
 		return;
 	}
 
