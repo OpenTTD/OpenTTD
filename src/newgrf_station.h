@@ -102,7 +102,6 @@ void ResetStationClasses();
 StationClassID AllocateStationClass(uint32 cls);
 void SetStationClassName(StationClassID sclass, StringID name);
 StringID GetStationClassName(StationClassID sclass);
-StringID *BuildStationClassDropdown();
 
 uint GetNumStationClasses();
 uint GetNumCustomStations(StationClassID sclass);

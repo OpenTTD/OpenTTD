@@ -98,25 +98,6 @@ StringID GetStationClassName(StationClassID sclass)
 	return station_classes[sclass].name;
 }
 
-/** Build a list of station class name StringIDs to use in a dropdown list
- * @return Pointer to a (static) array of StringIDs
- */
-StringID *BuildStationClassDropdown()
-{
-	/* Allow room for all station classes, plus a terminator entry */
-	static StringID names[STAT_CLASS_MAX + 1];
-	uint i;
-
-	/* Add each name */
-	for (i = 0; i < STAT_CLASS_MAX && station_classes[i].id != 0; i++) {
-		names[i] = station_classes[i].name;
-	}
-	/* Terminate the list */
-	names[i] = INVALID_STRING_ID;
-
-	return names;
-}
-
 /**
  * Get the number of station classes in use.
  * @return Number of station classes.

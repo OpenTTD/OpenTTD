@@ -27,6 +27,7 @@
 #include "sound_func.h"
 #include "player_func.h"
 #include "settings_type.h"
+#include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 
 #include "bridge_map.h"
@@ -774,6 +775,18 @@ static void CheckSelectedSize(Window *w, const StationSpec *statspec)
 	}
 }
 
+static DropDownList *BuildStationClassDropDown()
+{
+	DropDownList *list = new DropDownList();
+
+	for (uint i = 0; i < GetNumStationClasses(); i++) {
+		if (i == STAT_CLASS_WAYP) continue;
+		list->push_back(new DropDownListStringItem(GetStationClassName((StationClassID)i), i, false));
+	}
+
+	return list;
+}
+
 static void StationBuildWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -992,7 +1005,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		case BRSW_NEWST_DROPDOWN:
 		case BRSW_NEWST_DROPDOWN_TEXT:
-			ShowDropDownMenu(w, BuildStationClassDropdown(), _railstation.station_class, 23, 0, 1 << STAT_CLASS_WAYP);
+			ShowDropDownList(w, BuildStationClassDropDown(), _railstation.station_class, BRSW_NEWST_DROPDOWN_TEXT);
 			break;
 
 		case BRSW_NEWST_LIST: {
