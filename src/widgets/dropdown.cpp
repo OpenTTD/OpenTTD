@@ -95,12 +95,12 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 
 						if (item->masked) {
 							GfxFillRect(x, y, x + width, y + 9,
-								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[_dropdown_menu_widgets[0].color][5]
+								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[w->widget[0].color][5]
 							);
 						}
 					} else {
-						int c1 = _colour_gradient[_dropdown_menu_widgets[0].color][3];
-						int c2 = _colour_gradient[_dropdown_menu_widgets[0].color][7];
+						int c1 = _colour_gradient[w->widget[0].color][3];
+						int c2 = _colour_gradient[w->widget[0].color][7];
 
 						GfxFillRect(x + 1, y + 3, x + w->width - 5, y + 3, c1);
 						GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);
