@@ -215,14 +215,14 @@ static void DrawOrdersWindow(Window *w)
 						SetDParam(2, GetDepot(order->dest)->town_index);
 
 						switch (v->type) {
-							case VEH_TRAIN: s = (order->flags & OF_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
+							case VEH_TRAIN: s = (order->flags & OFB_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
 							case VEH_ROAD:  s = STR_9038_GO_TO_ROADVEH_DEPOT; break;
 							case VEH_SHIP:  s = STR_GO_TO_SHIP_DEPOT; break;
 							default: break;
 						}
 					}
 
-					if (order->flags & OF_FULL_LOAD) s++; /* service at */
+					if (order->flags & OFB_FULL_LOAD) s++; /* service at */
 
 					SetDParam(1, s);
 					if (order->refit_cargo < NUM_CARGO) {
@@ -235,7 +235,7 @@ static void DrawOrdersWindow(Window *w)
 				}
 
 				case OT_GOTO_WAYPOINT:
-					SetDParam(1, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+					SetDParam(1, (order->flags & OFB_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(2, order->dest);
 					break;
 
@@ -273,7 +273,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
 				if (IsRailDepot(tile)) {
 					order.type = OT_GOTO_DEPOT;
-					order.flags = OF_PART_OF_ORDERS;
+					order.flags = OFB_PART_OF_ORDERS;
 					order.dest = GetDepotByTile(tile)->index;
 					return order;
 				}
@@ -283,7 +283,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		case MP_ROAD:
 			if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_PART_OF_ORDERS;
+				order.flags = OFB_PART_OF_ORDERS;
 				order.dest = GetDepotByTile(tile)->index;
 				return order;
 			}
@@ -293,7 +293,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (v->type != VEH_AIRCRAFT) break;
 			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_PART_OF_ORDERS;
+				order.flags = OFB_PART_OF_ORDERS;
 				order.dest = GetStationIndex(tile);
 				return order;
 			}
@@ -306,7 +306,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				TileIndex tile2 = GetOtherShipDepotTile(tile);
 
 				order.type = OT_GOTO_DEPOT;
-				order.flags = OF_PART_OF_ORDERS;
+				order.flags = OFB_PART_OF_ORDERS;
 				order.dest = GetDepotByTile(tile < tile2 ? tile : tile2)->index;
 				return order;
 			}
@@ -419,7 +419,7 @@ static void OrderClick_Goto(Window *w, const Vehicle *v)
  */
 static void OrderClick_FullLoad(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_FULL_LOAD, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OF_FULL_LOAD, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -430,7 +430,7 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v)
  */
 static void OrderClick_Unload(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_UNLOAD,    NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OF_UNLOAD,    NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -441,7 +441,7 @@ static void OrderClick_Unload(Window *w, const Vehicle *v)
  */
 static void OrderClick_Nonstop(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OFB_NON_STOP,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OF_NON_STOP,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -452,7 +452,7 @@ static void OrderClick_Nonstop(Window *w, const Vehicle *v)
  */
 static void OrderClick_Transfer(Window* w, const Vehicle* v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) <<  16), OFB_TRANSFER, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) <<  16), OF_TRANSFER, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**

@@ -303,13 +303,13 @@ static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 	assert(v->type == VEH_TRAIN);
 	/* When does a train drive through a station
 	 * first we deal with the "new nonstop handling" */
-	if (_patches.new_nonstop && o->flags & OF_NON_STOP && sid == o->dest) {
+	if (_patches.new_nonstop && o->flags & OFB_NON_STOP && sid == o->dest) {
 		return false;
 	}
 
 	if (v->last_station_visited == sid) return false;
 
-	if (sid != o->dest && (o->flags & OF_NON_STOP || _patches.new_nonstop)) {
+	if (sid != o->dest && (o->flags & OFB_NON_STOP || _patches.new_nonstop)) {
 		return false;
 	}
 
@@ -1993,13 +1993,13 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
-		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
 			if (flags & DC_EXEC) {
-				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
-				ToggleBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
+				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
 			return CommandCost();
@@ -2007,7 +2007,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
 		if (flags & DC_EXEC) {
-			if (HasBit(v->current_order.flags, OFB_PART_OF_ORDERS)) {
+			if (HasBit(v->current_order.flags, OF_PART_OF_ORDERS)) {
 				v->cur_order_index++;
 			}
 
@@ -2030,8 +2030,8 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP;
-		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
+		v->current_order.flags = OFB_NON_STOP;
+		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 		v->current_order.dest = GetDepotByTile(tfdd.tile)->index;
 		v->current_order.refit_cargo = CT_INVALID;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -2481,8 +2481,8 @@ static bool ProcessTrainOrder(Vehicle *v)
 {
 	switch (v->current_order.type) {
 		case OT_GOTO_DEPOT:
-			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return false;
-			if ((v->current_order.flags & OF_SERVICE_IF_NEEDED) &&
+			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return false;
+			if ((v->current_order.flags & OFB_SERVICE_IF_NEEDED) &&
 					!VehicleNeedsService(v)) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
@@ -2513,7 +2513,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 
 	/* check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
 	if (_patches.new_nonstop &&
-			v->current_order.flags & OF_NON_STOP &&
+			v->current_order.flags & OFB_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.dest == GetStationIndex(v->tile)) {
 		UpdateVehicleTimetable(v, true);
@@ -3475,7 +3475,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	}
 
 	v->current_order.type = OT_GOTO_DEPOT;
-	v->current_order.flags = OF_NON_STOP;
+	v->current_order.flags = OFB_NON_STOP;
 	v->current_order.dest = depot->index;
 	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

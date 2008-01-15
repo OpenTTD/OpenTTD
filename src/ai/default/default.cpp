@@ -2516,9 +2516,9 @@ handle_nocash:
 		order.flags = 0;
 		order.dest = AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule);
 
-		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
+		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
-			order.flags |= OF_FULL_LOAD;
+			order.flags |= OFB_FULL_LOAD;
 
 		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
@@ -3258,9 +3258,9 @@ static void AiStateBuildRoadVehicles(Player *p)
 		order.flags = 0;
 		order.dest = AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule);
 
-		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
+		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
-			order.flags |= OF_FULL_LOAD;
+			order.flags |= OFB_FULL_LOAD;
 
 		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
@@ -3526,9 +3526,9 @@ static void AiStateBuildAircraftVehicles(Player *p)
 		order.flags = 0;
 		order.dest = AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule);
 
-		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
+		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
-			order.flags |= OF_FULL_LOAD;
+			order.flags |= OFB_FULL_LOAD;
 
 		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}

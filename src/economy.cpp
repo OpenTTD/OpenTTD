@@ -1475,7 +1475,7 @@ void VehiclePayment(Vehicle *front_v)
 			if (!cp->paid_for &&
 					cp->source != last_visited &&
 					HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) &&
-					(front_v->current_order.flags & OF_TRANSFER) == 0) {
+					(front_v->current_order.flags & OFB_TRANSFER) == 0) {
 				/* Deliver goods to the station */
 				st->time_since_unload = 0;
 
@@ -1488,8 +1488,8 @@ void VehiclePayment(Vehicle *front_v)
 				result |= 1;
 
 				SetBit(v->vehicle_flags, VF_CARGO_UNLOADING);
-			} else if (front_v->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
-				if (!cp->paid_for && (front_v->current_order.flags & OF_TRANSFER) != 0) {
+			} else if (front_v->current_order.flags & (OFB_UNLOAD | OFB_TRANSFER)) {
+				if (!cp->paid_for && (front_v->current_order.flags & OFB_TRANSFER) != 0) {
 					Money profit = GetTransportedGoodsIncome(
 						cp->count,
 						/* pay transfer vehicle for only the part of transfer it has done: ie. cargo_loaded_at_xy to here */
@@ -1542,7 +1542,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	/* We have not waited enough time till the next round of loading/unloading */
 	if (--v->load_unload_time_rem != 0) {
-		if (_patches.improved_load && HasBit(v->current_order.flags, OFB_FULL_LOAD)) {
+		if (_patches.improved_load && HasBit(v->current_order.flags, OF_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->Next()) {
 				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
@@ -1590,12 +1590,12 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			uint amount_unloaded = _patches.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
 			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
 
-			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.flags & OF_TRANSFER)) {
+			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.flags & OFB_TRANSFER)) {
 				/* The cargo has reached it's final destination, the packets may now be destroyed */
 				remaining = v->cargo.MoveTo(NULL, amount_unloaded, CargoList::MTA_FINAL_DELIVERY, last_visited);
 
 				result |= 1;
-			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
+			} else if (u->current_order.flags & (OFB_UNLOAD | OFB_TRANSFER)) {
 				remaining = v->cargo.MoveTo(&ge->cargo, amount_unloaded);
 				SetBit(ge->acceptance_pickup, GoodsEntry::PICKUP);
 
@@ -1624,7 +1624,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 
 		/* Do not pick up goods that we unloaded */
-		if (u->current_order.flags & OF_UNLOAD) continue;
+		if (u->current_order.flags & OFB_UNLOAD) continue;
 
 		/* update stats */
 		int t;
@@ -1696,7 +1696,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	 * all wagons at the same time instead of using the same 'improved'
 	 * loading algorithm for the wagons (only fill wagon when there is
 	 * enough to fill the previous wagons) */
-	if (_patches.improved_load && HasBit(u->current_order.flags, OFB_FULL_LOAD)) {
+	if (_patches.improved_load && HasBit(u->current_order.flags, OF_FULL_LOAD)) {
 		/* Update left cargo */
 		for (v = u; v != NULL; v = v->Next()) {
 			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
@@ -1715,7 +1715,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 	} else {
 		bool finished_loading = true;
-		if (HasBit(v->current_order.flags, OFB_FULL_LOAD)) {
+		if (HasBit(v->current_order.flags, OF_FULL_LOAD)) {
 			if (_patches.full_load_any) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */

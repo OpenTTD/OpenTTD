@@ -479,13 +479,13 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
-		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot) */
 			if (flags & DC_EXEC) {
-				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
-				ToggleBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
+				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
 			return CommandCost();
@@ -495,7 +495,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
-			if (HasBit(v->current_order.flags, OFB_PART_OF_ORDERS))
+			if (HasBit(v->current_order.flags, OF_PART_OF_ORDERS))
 				v->cur_order_index++;
 
 			v->current_order.type = OT_DUMMY;
@@ -513,8 +513,8 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 		ClearSlot(v);
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP;
-		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
+		v->current_order.flags = OFB_NON_STOP;
+		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 		v->current_order.refit_cargo = CT_INVALID;
 		v->current_order.dest = dep->index;
 		v->dest_tile = dep->xy;
@@ -764,8 +764,8 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	switch (v->current_order.type) {
 		case OT_GOTO_DEPOT:
 			/* Let a depot order in the orderlist interrupt. */
-			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
-			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
+			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
+			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
@@ -1990,7 +1990,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	}
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.flags & OF_NON_STOP &&
+			v->current_order.flags & OFB_NON_STOP &&
 			!Chance16(1, 20)) {
 		return;
 	}
@@ -1999,7 +1999,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	ClearSlot(v);
 
 	v->current_order.type = OT_GOTO_DEPOT;
-	v->current_order.flags = OF_NON_STOP;
+	v->current_order.flags = OFB_NON_STOP;
 	v->current_order.dest = depot->index;
 	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

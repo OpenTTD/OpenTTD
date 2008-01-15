@@ -219,19 +219,19 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.flags) {
 				case 0:
-				case OF_FULL_LOAD:
-				case OF_FULL_LOAD | OF_TRANSFER:
-				case OF_UNLOAD:
-				case OF_UNLOAD | OF_TRANSFER:
-				case OF_TRANSFER:
+				case OFB_FULL_LOAD:
+				case OFB_FULL_LOAD | OFB_TRANSFER:
+				case OFB_UNLOAD:
+				case OFB_UNLOAD | OFB_TRANSFER:
+				case OFB_TRANSFER:
 					break;
 
-				case OF_NON_STOP:
-				case OF_NON_STOP | OF_FULL_LOAD:
-				case OF_NON_STOP | OF_FULL_LOAD | OF_TRANSFER:
-				case OF_NON_STOP | OF_UNLOAD:
-				case OF_NON_STOP | OF_UNLOAD | OF_TRANSFER:
-				case OF_NON_STOP | OF_TRANSFER:
+				case OFB_NON_STOP:
+				case OFB_NON_STOP | OFB_FULL_LOAD:
+				case OFB_NON_STOP | OFB_FULL_LOAD | OFB_TRANSFER:
+				case OFB_NON_STOP | OFB_UNLOAD:
+				case OFB_NON_STOP | OFB_UNLOAD | OFB_TRANSFER:
+				case OFB_NON_STOP | OFB_TRANSFER:
 					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
@@ -282,12 +282,12 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * order [+ halt] [+ non-stop]
 			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.flags) {
-				case OF_PART_OF_ORDERS:
-				case OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
+				case OFB_PART_OF_ORDERS:
+				case OFB_PART_OF_ORDERS | OFB_HALT_IN_DEPOT:
 					break;
 
-				case OF_NON_STOP | OF_PART_OF_ORDERS:
-				case OF_NON_STOP | OF_PART_OF_ORDERS | OF_HALT_IN_DEPOT:
+				case OFB_NON_STOP | OFB_PART_OF_ORDERS:
+				case OFB_NON_STOP | OFB_PART_OF_ORDERS | OFB_HALT_IN_DEPOT:
 					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
@@ -312,7 +312,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			switch (new_order.flags) {
 				case 0: break;
 
-				case OF_NON_STOP:
+				case OFB_NON_STOP:
 					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
@@ -514,7 +514,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
 			if (sel_ord == u->cur_order_index && u->current_order.type == OT_LOADING &&
-					HasBit(u->current_order.flags, OFB_NON_STOP)) {
+					HasBit(u->current_order.flags, OF_NON_STOP)) {
 				u->current_order.flags = 0;
 			}
 
@@ -556,7 +556,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->LeaveStation();
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
-			if (HasBit(v->current_order.flags, OFB_NON_STOP)) v->current_order.flags = 0;
+			if (HasBit(v->current_order.flags, OF_NON_STOP)) v->current_order.flags = 0;
 		}
 
 		InvalidateVehicleOrder(v);
@@ -673,7 +673,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	VehicleID veh   = GB(p1,  0, 16);
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
-	if (p2 != OFB_FULL_LOAD && p2 != OFB_UNLOAD && p2 != OFB_NON_STOP && p2 != OFB_TRANSFER) return CMD_ERROR;
+	if (p2 != OF_FULL_LOAD && p2 != OF_UNLOAD && p2 != OF_NON_STOP && p2 != OF_TRANSFER) return CMD_ERROR;
 
 	v = GetVehicle(veh);
 
@@ -684,26 +684,26 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	order = GetVehicleOrder(v, sel_ord);
 	if ((order->type != OT_GOTO_STATION  || GetStation(order->dest)->IsBuoy()) &&
-			(order->type != OT_GOTO_DEPOT    || p2 == OFB_UNLOAD) &&
-			(order->type != OT_GOTO_WAYPOINT || p2 != OFB_NON_STOP)) {
+			(order->type != OT_GOTO_DEPOT    || p2 == OF_UNLOAD) &&
+			(order->type != OT_GOTO_WAYPOINT || p2 != OF_NON_STOP)) {
 		return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {
 		switch (p2) {
-		case OFB_FULL_LOAD:
-			ToggleBit(order->flags, OFB_FULL_LOAD);
-			if (order->type != OT_GOTO_DEPOT) ClrBit(order->flags, OFB_UNLOAD);
+		case OF_FULL_LOAD:
+			ToggleBit(order->flags, OF_FULL_LOAD);
+			if (order->type != OT_GOTO_DEPOT) ClrBit(order->flags, OF_UNLOAD);
 			break;
-		case OFB_UNLOAD:
-			ToggleBit(order->flags, OFB_UNLOAD);
-			ClrBit(order->flags, OFB_FULL_LOAD);
+		case OF_UNLOAD:
+			ToggleBit(order->flags, OF_UNLOAD);
+			ClrBit(order->flags, OF_FULL_LOAD);
 			break;
-		case OFB_NON_STOP:
-			ToggleBit(order->flags, OFB_NON_STOP);
+		case OF_NON_STOP:
+			ToggleBit(order->flags, OF_NON_STOP);
 			break;
-		case OFB_TRANSFER:
-			ToggleBit(order->flags, OFB_TRANSFER);
+		case OF_TRANSFER:
+			ToggleBit(order->flags, OF_TRANSFER);
 			break;
 		default: NOT_REACHED();
 		}
@@ -726,8 +726,8 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 */
 				if (sel_ord == u->cur_order_index &&
 						u->current_order.type != OT_GOTO_DEPOT &&
-						HasBit(u->current_order.flags, OFB_FULL_LOAD) != HasBit(order->flags, OFB_FULL_LOAD)) {
-					ToggleBit(u->current_order.flags, OFB_FULL_LOAD);
+						HasBit(u->current_order.flags, OF_FULL_LOAD) != HasBit(order->flags, OF_FULL_LOAD)) {
+					ToggleBit(u->current_order.flags, OF_FULL_LOAD);
 				}
 				InvalidateVehicleOrder(u);
 			}
@@ -909,7 +909,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateVehicleOrder(u);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
-			if (u->cur_order_index == order_number && HasBit(u->current_order.flags, OFB_PART_OF_ORDERS)) {
+			if (u->cur_order_index == order_number && HasBit(u->current_order.flags, OF_PART_OF_ORDERS)) {
 				u->current_order.refit_cargo = cargo;
 				u->current_order.refit_subtype = subtype;
 			}

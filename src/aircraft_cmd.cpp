@@ -569,13 +569,13 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || v->IsInDepot()) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT && !(p2 & DEPOT_LOCATE_HANGAR)) {
-		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
 			 * Note: the if is (true for requesting service == true for ordered to stop in hangar) */
 			if (flags & DC_EXEC) {
-				ClrBit(v->current_order.flags, OFB_PART_OF_ORDERS);
-				ToggleBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
+				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			}
 			return CommandCost();
@@ -583,7 +583,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of hangar orders
 		if (flags & DC_EXEC) {
-			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;
+			if (v->current_order.flags & OFB_UNLOAD) v->cur_order_index++;
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -606,8 +606,8 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 			if (v->current_order.type == OT_LOADING) v->LeaveStation();
 
 			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = OF_NON_STOP;
-			if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OFB_HALT_IN_DEPOT);
+			v->current_order.flags = OFB_NON_STOP;
+			if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 			v->current_order.refit_cargo = CT_INVALID;
 			v->current_order.dest = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -714,7 +714,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP;
+		v->current_order.flags = OFB_NON_STOP;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	} else if (v->current_order.type == OT_GOTO_DEPOT) {
 		v->current_order.type = OT_DUMMY;
@@ -1347,8 +1347,8 @@ static void ProcessAircraftOrder(Vehicle *v)
 {
 	switch (v->current_order.type) {
 		case OT_GOTO_DEPOT:
-			if (!(v->current_order.flags & OF_PART_OF_ORDERS)) return;
-			if (v->current_order.flags & OF_SERVICE_IF_NEEDED &&
+			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
+			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
 					!VehicleNeedsService(v)) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;

@@ -37,32 +37,32 @@ template <> struct EnumPropsT<OrderType> : MakeEnumPropsT<OrderType, byte, OT_BE
 typedef TinyEnumT<OrderType> OrderTypeByte;
 
 
-/* Order flags -- please use OFB instead OF and use HASBIT/SETBIT/CLEARBIT */
+/* Order flags -- please use OF instead OF and use HASBIT/SETBIT/CLEARBIT */
 
 /** Order flag masks - these are for direct bit operations */
 enum OrderFlagMasks {
 	//Flags for stations:
 	/** vehicle will transfer cargo (i. e. not deliver to nearby industry/town even if accepted there) */
-	OF_TRANSFER           = 0x1,
-	/** If OF_TRANSFER is not set, drop any cargo loaded. If accepted, deliver, otherwise cargo remains at the station.
+	OFB_TRANSFER           = 0x1,
+	/** If OFB_TRANSFER is not set, drop any cargo loaded. If accepted, deliver, otherwise cargo remains at the station.
       * No new cargo is loaded onto the vehicle whatsoever */
-	OF_UNLOAD             = 0x2,
+	OFB_UNLOAD             = 0x2,
 	/** Wait for full load of all vehicles, or of at least one cargo type, depending on patch setting
 	  * @todo make this two different flags */
-	OF_FULL_LOAD          = 0x4,
+	OFB_FULL_LOAD          = 0x4,
 
 	//Flags for depots:
 	/** The current depot-order was initiated because it was in the vehicle's order list */
-	OF_PART_OF_ORDERS     = 0x2,
-	/** if OF_PART_OF_ORDERS is not set, this will cause the vehicle to be stopped in the depot */
-	OF_HALT_IN_DEPOT      = 0x4,
-	/** if OF_PART_OF_ORDERS is set, this will cause the order only be come active if the vehicle needs servicing */
-	OF_SERVICE_IF_NEEDED  = 0x4, //used when OF_PART_OF_ORDERS is set.
+	OFB_PART_OF_ORDERS     = 0x2,
+	/** if OFB_PART_OF_ORDERS is not set, this will cause the vehicle to be stopped in the depot */
+	OFB_HALT_IN_DEPOT      = 0x4,
+	/** if OFB_PART_OF_ORDERS is set, this will cause the order only be come active if the vehicle needs servicing */
+	OFB_SERVICE_IF_NEEDED  = 0x4, //used when OFB_PART_OF_ORDERS is set.
 
 	//Common flags
 	/** This causes the vehicle not to stop at intermediate OR the destination station (depending on patch settings)
 	  * @todo make this two different flags */
-	OF_NON_STOP           = 0x8
+	OFB_NON_STOP           = 0x8
 };
 
 /** Order flags bits - these are for the *BIT macros
@@ -70,13 +70,13 @@ enum OrderFlagMasks {
  * @see OrderFlagMasks
  */
 enum {
-	OFB_TRANSFER          = 0,
-	OFB_UNLOAD            = 1,
-	OFB_FULL_LOAD         = 2,
-	OFB_PART_OF_ORDERS    = 1,
-	OFB_HALT_IN_DEPOT     = 2,
-	OFB_SERVICE_IF_NEEDED = 2,
-	OFB_NON_STOP          = 3
+	OF_TRANSFER          = 0,
+	OF_UNLOAD            = 1,
+	OF_FULL_LOAD         = 2,
+	OF_PART_OF_ORDERS    = 1,
+	OF_HALT_IN_DEPOT     = 2,
+	OF_SERVICE_IF_NEEDED = 2,
+	OF_NON_STOP          = 3
 };
 
 

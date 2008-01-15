@@ -2354,9 +2354,9 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 				!IsCompatibleTrainStationTile(tile + TileOffsByDiagDir(DirToDiagDir(v->direction)), tile)) {
 			StationID station_id = GetStationIndex(tile);
 
-			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||
+			if ((!(v->current_order.flags & OFB_NON_STOP) && !_patches.new_nonstop) ||
 					(v->current_order.type == OT_GOTO_STATION && v->current_order.dest == station_id)) {
-				if (!(_patches.new_nonstop && v->current_order.flags & OF_NON_STOP) &&
+				if (!(_patches.new_nonstop && v->current_order.flags & OFB_NON_STOP) &&
 						v->current_order.type != OT_LEAVESTATION &&
 						v->last_station_visited != station_id) {
 					DiagDirection dir = DirToDiagDir(v->direction);

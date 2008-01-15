@@ -64,7 +64,7 @@ static void DrawTimetableWindow(Window *w)
 			w->EnableWidget(7);
 		} else {
 			const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
-			bool disable = order == NULL || order->type != OT_GOTO_STATION || (_patches.new_nonstop && (order->flags & OF_NON_STOP));
+			bool disable = order == NULL || order->type != OT_GOTO_STATION || (_patches.new_nonstop && (order->flags & OFB_NON_STOP));
 
 			w->SetWidgetDisabledState(6, disable);
 			w->SetWidgetDisabledState(7, disable);
@@ -104,7 +104,7 @@ static void DrawTimetableWindow(Window *w)
 					break;
 
 				case OT_GOTO_STATION:
-					SetDParam(0, (order->flags & OF_NON_STOP) ? STR_880C_GO_NON_STOP_TO : STR_8806_GO_TO);
+					SetDParam(0, (order->flags & OFB_NON_STOP) ? STR_880C_GO_NON_STOP_TO : STR_8806_GO_TO);
 					SetDParam(1, order->dest);
 
 					if (order->wait_time > 0) {
@@ -124,20 +124,20 @@ static void DrawTimetableWindow(Window *w)
 						SetDParam(1, GetDepot(order->dest)->town_index);
 
 						switch (v->type) {
-							case VEH_TRAIN: string = (order->flags & OF_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
+							case VEH_TRAIN: string = (order->flags & OFB_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
 							case VEH_ROAD:  string = STR_9038_GO_TO_ROADVEH_DEPOT; break;
 							case VEH_SHIP:  string = STR_GO_TO_SHIP_DEPOT; break;
 							default: break;
 						}
 					}
 
-					if (order->flags & OF_FULL_LOAD) string++; // Service at orders
+					if (order->flags & OFB_FULL_LOAD) string++; // Service at orders
 
 					SetDParam(0, string);
 				} break;
 
 				case OT_GOTO_WAYPOINT:
-					SetDParam(0, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+					SetDParam(0, (order->flags & OFB_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(1, order->dest);
 					break;
 
@@ -182,7 +182,7 @@ static void DrawTimetableWindow(Window *w)
 		for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
 			total_time += order->travel_time + order->wait_time;
 			if (order->travel_time == 0) complete = false;
-			if (order->wait_time == 0 && order->type == OT_GOTO_STATION && !(_patches.new_nonstop && (order->flags & OF_NON_STOP))) complete = false;
+			if (order->wait_time == 0 && order->type == OT_GOTO_STATION && !(_patches.new_nonstop && (order->flags & OFB_NON_STOP))) complete = false;
 		}
 
 		if (total_time != 0) {
