@@ -2817,14 +2817,16 @@ static void *FindTrainCollideEnum(Vehicle *v, void *data)
 	/* get first vehicle now to make most usual checks faster */
 	Vehicle *coll = v->First();
 
-	/* can't collide with own wagons && can't crash in depot && not too far */
-	if (coll != tcc->v && v->u.rail.track != TRACK_BIT_DEPOT &&
-			abs(v->z_pos - tcc->v->z_pos) < 6 &&
-			abs(v->x_pos - tcc->v->x_pos) < 6 &&
-			abs(v->y_pos - tcc->v->y_pos) < 6 ) {
+	/* can't collide with own wagons && can't crash in depot && the same height level */
+	if (coll != tcc->v && v->u.rail.track != TRACK_BIT_DEPOT && abs(v->z_pos - tcc->v->z_pos) < 6) {
+		int x_diff = v->x_pos - tcc->v->x_pos;
+		int y_diff = v->y_pos - tcc->v->y_pos;
 
-		/* two drivers + passengers killed in train tcc->v (if it was not crashed already) */
+		/* needed to disable possible crash of competitor train in station by building diagonal track at its end */
+		if (x_diff * x_diff + y_diff * y_diff > 25) return NULL;
+
 		if (!(tcc->v->vehstatus & VS_CRASHED)) {
+			/* two drivers + passengers killed in train tcc->v (if it was not crashed already) */
 			tcc->num += 2 + CountPassengersInTrain(tcc->v);
 			SetVehicleCrashed(tcc->v);
 		}
@@ -3246,7 +3248,7 @@ static void HandleBrokenTrain(Vehicle *v)
 }
 
 /** Maximum speeds for train that is broken down or approaching line end */
-static const byte _breakdown_speeds[16] = {
+static const uint16 _breakdown_speeds[16] = {
 	225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 15
 };
 
@@ -3264,14 +3266,16 @@ static bool TrainApproachingLineEnd(Vehicle *v, bool signal)
 	uint x = v->x_pos & 0xF;
 	uint y = v->y_pos & 0xF;
 
+	/* for diagonal directions, 'x' will be 0..15 -
+	 * for other directions, it will be 1, 3, 5, ..., 15 */
 	switch (v->direction) {
-		case DIR_N : x = ~x + ~y + 24; break;
+		case DIR_N : x = ~x + ~y + 25; break;
 		case DIR_NW: x = y;            /* FALLTHROUGH */
 		case DIR_NE: x = ~x + 16;      break;
-		case DIR_E : x = ~x + y + 8;   break;
+		case DIR_E : x = ~x + y + 9;   break;
 		case DIR_SE: x = y;            break;
-		case DIR_S : x = x + y - 8;    break;
-		case DIR_W : x = ~y + x + 8;   break;
+		case DIR_S : x = x + y - 7;    break;
+		case DIR_W : x = ~y + x + 9;   break;
 		default: break;
 	}
 
@@ -3286,7 +3290,6 @@ static bool TrainApproachingLineEnd(Vehicle *v, bool signal)
 	/* slow down */
 	v->vehstatus |= VS_TRAIN_SLOWING;
 	uint16 break_speed = _breakdown_speeds[x & 0xF];
-	if (!(v->direction & 1)) break_speed >>= 1;
 	if (break_speed < v->cur_speed) v->cur_speed = break_speed;
 
 	return true;
