@@ -166,8 +166,8 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			int i;
 			StringID str = STR_02BE_DEFAULT;
 
-			w->SetWidgetDisabledState(21, !(_vehicle_design_names & 1));
-			if (!w->IsWidgetDisabled(21)) str = STR_02BF_CUSTOM;
+			w->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
+			if (!w->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
 			SetDParam(0, str);
 			SetDParam(1, _currency_specs[_opt_ptr->currency].name);
 			SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
