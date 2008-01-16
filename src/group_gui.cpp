@@ -299,6 +299,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		case WE_INVALIDATE_DATA:
 			gv->l.flags |= VL_REBUILD;
 			gl->l.flags |= VL_REBUILD;
+			if (!IsValidGroupID(gv->group_sel)) gv->group_sel = ALL_GROUP;
 			UpdateGroupActionDropdown(w, gv->group_sel);
 			SetWindowDirty(w);
 			break;
