@@ -57,8 +57,9 @@ void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);
 void VehicleEnteredDepotThisTick(Vehicle *v);
 
-void BeginVehicleMove(Vehicle *v);
-void EndVehicleMove(Vehicle *v);
+void BeginVehicleMove(const Vehicle *v);
+void EndVehicleMove(const Vehicle *v);
+void MarkSingleVehicleDirty(const Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);
 

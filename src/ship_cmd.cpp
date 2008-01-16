@@ -229,7 +229,7 @@ static void HandleBrokenShip(Vehicle *v)
 void Ship::MarkDirty()
 {
 	this->cur_image = this->GetImage(this->direction);
-	MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
+	MarkSingleVehicleDirty(this);
 }
 
 static void PlayShipSound(const Vehicle *v)

@@ -735,7 +735,7 @@ static void FloodVehicle(Vehicle *v)
 			BEGIN_ENUM_WAGONS(v)
 				if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.Count();
 				v->vehstatus |= VS_CRASHED;
-				MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+				MarkSingleVehicleDirty(v);
 			END_ENUM_WAGONS(v)
 
 			v = u;

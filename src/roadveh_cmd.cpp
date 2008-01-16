@@ -564,7 +564,7 @@ void RoadVehicle::MarkDirty()
 {
 	for (Vehicle *v = this; v != NULL; v = v->Next()) {
 		v->cur_image = v->GetImage(v->direction);
-		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+		MarkSingleVehicleDirty(v);
 	}
 }
 
@@ -615,8 +615,7 @@ static void DeleteLastRoadVeh(Vehicle *v)
 
 	if (IsTileType(v->tile, MP_STATION)) ClearCrashedStation(v);
 
-	BeginVehicleMove(v);
-	EndVehicleMove(v);
+	MarkSingleVehicleDirty(v);
 
 	delete v;
 }
@@ -690,7 +689,7 @@ static void RoadVehCrash(Vehicle *v)
 
 		u->vehstatus |= VS_CRASHED;
 
-		MarkAllViewportsDirty(u->left_coord, u->top_coord, u->right_coord + 1, u->bottom_coord + 1);
+		MarkSingleVehicleDirty(u);
 	}
 
 	ClearSlot(v);

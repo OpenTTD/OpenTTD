@@ -1288,8 +1288,7 @@ static void HandleCrashedAircraft(Vehicle *v)
 		CLRBITS(st->airport_flags, RUNWAY_IN_OUT_block); // commuter airport
 		CLRBITS(st->airport_flags, RUNWAY_IN2_block);    // intercontinental
 
-		BeginVehicleMove(v);
-		EndVehicleMove(v);
+		MarkSingleVehicleDirty(v);
 
 		DoDeleteAircraft(v);
 	}
@@ -1417,7 +1416,7 @@ void Aircraft::MarkDirty()
 {
 		this->cur_image = this->GetImage(this->direction);
 		if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
-		MarkAllViewportsDirty(this->left_coord, this->top_coord, this->right_coord + 1, this->bottom_coord + 1);
+		MarkSingleVehicleDirty(this);
 }
 
 static void CrashAirplane(Vehicle *v)

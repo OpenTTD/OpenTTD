@@ -138,8 +138,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 
 	DisasterVehicleUpdateImage(v);
 	VehiclePositionChanged(v);
-	BeginVehicleMove(v);
-	EndVehicleMove(v);
+	MarkSingleVehicleDirty(v);
 }
 
 static void DeleteDisasterVeh(Vehicle *v)
@@ -547,8 +546,7 @@ static void DisasterTick_Helicopter_Rotors(Vehicle *v)
 	if (++v->cur_image > SPR_ROTOR_MOVING_3) v->cur_image = SPR_ROTOR_MOVING_1;
 
 	VehiclePositionChanged(v);
-	BeginVehicleMove(v);
-	EndVehicleMove(v);
+	MarkSingleVehicleDirty(v);
 }
 
 /**
@@ -706,8 +704,7 @@ static void DisasterTick_Submarine(Vehicle *v)
 
 	if (++v->age > 8880) {
 		VehiclePositionChanged(v);
-		BeginVehicleMove(v);
-		EndVehicleMove(v);
+		MarkSingleVehicleDirty(v);
 		delete v;
 		return;
 	}

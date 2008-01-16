@@ -596,11 +596,9 @@ void DeleteVehicleChain(Vehicle *v)
 
 	do {
 		Vehicle *u = v;
-		if (!(v->vehstatus & VS_HIDDEN)) {
-			/* sometimes, eg. for disaster vehicles, when company bankrupts, when removing crashed/flooded vehicles,
-			 * it may happen that vehicle chain is deleted when visible */
-			MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
-		}
+		/* sometimes, eg. for disaster vehicles, when company bankrupts, when removing crashed/flooded vehicles,
+		 * it may happen that vehicle chain is deleted when visible */
+		if (!(v->vehstatus & VS_HIDDEN)) MarkSingleVehicleDirty(v);
 		v = v->Next();
 		delete u;
 	} while (v != NULL);
@@ -2356,24 +2354,49 @@ CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 
 }
 
 
-static Rect _old_vehicle_coords;
+static Rect _old_vehicle_coords; ///< coords of vehicle before it has moved
 
-void BeginVehicleMove(Vehicle *v)
+/**
+ * Stores the vehicle image coords for later call to EndVehicleMove()
+ * @param v vehicle which image's coords to store
+ * @see _old_vehicle_coords
+ * @see EndVehicleMove()
+ */
+void BeginVehicleMove(const Vehicle *v)
 {
-	_old_vehicle_coords.left = v->left_coord;
-	_old_vehicle_coords.top = v->top_coord;
-	_old_vehicle_coords.right = v->right_coord;
+	_old_vehicle_coords.left   = v->left_coord;
+	_old_vehicle_coords.top    = v->top_coord;
+	_old_vehicle_coords.right  = v->right_coord;
 	_old_vehicle_coords.bottom = v->bottom_coord;
 }
 
-void EndVehicleMove(Vehicle *v)
+/**
+ * Marks screen dirty after a vehicle has moved
+ * @param v vehicle which is marked dirty
+ * @see _old_vehicle_coords
+ * @see BeginVehicleMove()
+ */
+void EndVehicleMove(const Vehicle *v)
 {
 	MarkAllViewportsDirty(
-		min(_old_vehicle_coords.left,v->left_coord),
-		min(_old_vehicle_coords.top,v->top_coord),
-		max(_old_vehicle_coords.right,v->right_coord)+1,
-		max(_old_vehicle_coords.bottom,v->bottom_coord)+1
+		min(_old_vehicle_coords.left,   v->left_coord),
+		min(_old_vehicle_coords.top,    v->top_coord),
+		max(_old_vehicle_coords.right,  v->right_coord) + 1,
+		max(_old_vehicle_coords.bottom, v->bottom_coord) + 1
 	);
+}
+
+/**
+ * Marks viewports dirty where the vehicle's image is
+ * In fact, it equals
+ *   BeginVehicleMove(v); EndVehicleMove(v);
+ * @param v vehicle to mark dirty
+ * @see BeginVehicleMove()
+ * @see EndVehicleMove()
+ */
+void MarkSingleVehicleDirty(const Vehicle *v)
+{
+	MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 }
 
 /* returns true if staying in the same tile */

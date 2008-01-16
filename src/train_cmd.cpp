@@ -2572,7 +2572,7 @@ void Train::MarkDirty()
 	Vehicle *v = this;
 	do {
 		v->cur_image = v->GetImage(v->direction);
-		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+		MarkSingleVehicleDirty(v);
 	} while ((v = v->Next()) != NULL);
 
 	/* need to update acceleration and cached values since the goods on the train changed. */
@@ -2790,7 +2790,7 @@ static void SetVehicleCrashed(Vehicle *v)
 
 	BEGIN_ENUM_WAGONS(v)
 		v->vehstatus |= VS_CRASHED;
-		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+		MarkSingleVehicleDirty(v);
 	END_ENUM_WAGONS(v)
 }
 
@@ -3137,8 +3137,7 @@ static void DeleteLastWagon(Vehicle *v)
 
 	RebuildVehicleLists();
 
-	BeginVehicleMove(v);
-	EndVehicleMove(v);
+	MarkSingleVehicleDirty(v);
 
 	/* 'v' shouldn't be accessed after it has been deleted */
 	TrackBits track = v->u.rail.track;
