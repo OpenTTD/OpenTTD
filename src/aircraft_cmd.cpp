@@ -1549,6 +1549,45 @@ static void AircraftLeaveHangar(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
+/** Checks if an aircraft should head towards a hangar because it needs replacement
+ * @param *v the vehicle to test
+ * @return true if the aircraft should head towards a hangar
+ */
+static inline bool CheckSendAircraftToHangarForReplacement(const Vehicle *v)
+{
+	EngineID new_engine;
+	Player *p = GetPlayer(v->owner);
+
+	if (VehicleHasDepotOrders(v)) return false; // The aircraft will end up in the hangar eventually on it's own
+
+	new_engine = EngineReplacementForPlayer(p, v->engine_type, v->group_id);
+
+	if (new_engine == INVALID_ENGINE) {
+		/* There is no autoreplace assigned to this EngineID so we will set it to renew to the same type if needed */
+		new_engine = v->engine_type;
+
+		if((p->engine_renew && v->age - v->max_age) < p->engine_renew_months * 30) {
+			/* No need to replace the aircraft */
+			return false;
+		}
+	}
+
+	if (!HasBit(GetEngine(new_engine)->player_avail, v->owner)) {
+		/* Engine is not buildable anymore */
+		return false;
+	}
+
+	if (p->player_money < (p->engine_renew_money + (2 * DoCommand(0, new_engine, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT).GetCost()))) {
+		/* We lack enough money to request the replacement right away.
+		 * We want 2*(the price of the new vehicle) and not looking at the value of the vehicle we are going to sell.
+		 * The reason is that we don't want to send a whole lot of vehicles to the hangars when we only have enough money to replace a single one.
+		 * Remember this happens in the background so the user can't stop this. */
+		return false;
+	}
+
+	/* We found no reason NOT to send the aircraft to a hangar so we will send it there at once */
+	return true;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 ///////////////////   AIRCRAFT MOVEMENT SCHEME  ////////////////////////////////
@@ -1677,22 +1716,16 @@ static void AircraftEventHandler_EndTakeOff(Vehicle *v, const AirportFTAClass *a
 
 static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *apc)
 {
-	const Player* p = GetPlayer(v->owner);
 	v->u.air.state = FLYING;
 	v->UpdateDeltaXY(INVALID_DIR);
 
 	/* get the next position to go to, differs per airport */
 	AircraftNextAirportPos_and_Order(v);
 
-	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
-	 * unless it is due for renewal but the engine is no longer available */
-	if (v->owner == _local_player && (
-				EngineHasReplacementForPlayer(p, v->engine_type, v->group_id) ||
-				((p->engine_renew && v->age - v->max_age > p->engine_renew_months * 30) &&
-				HasBit(GetEngine(v->engine_type)->player_avail, _local_player))
-			)) {
-		_current_player = _local_player;
-		DoCommandP(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+	/* Send the helicopter to a hangar if needed for replacement */
+	if (CheckSendAircraftToHangarForReplacement(v)) {
+		_current_player = v->owner;
+		DoCommand(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		_current_player = OWNER_NONE;
 	}
 }
@@ -1742,16 +1775,10 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *apc)
 	AircraftLandAirplane(v);  // maybe crash airplane
 
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
-	if (v->current_order.type != OT_GOTO_DEPOT && v->owner == _local_player) {
-		/* only the vehicle owner needs to calculate the rest (locally) */
-		const Player* p = GetPlayer(v->owner);
-		if (EngineHasReplacementForPlayer(p, v->engine_type, v->group_id) ||
-			(p->engine_renew && v->age - v->max_age > (p->engine_renew_months * 30))) {
-			/* send the aircraft to the hangar at next airport */
-			_current_player = _local_player;
-			DoCommandP(v->tile, v->index, DEPOT_SERVICE, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
-			_current_player = OWNER_NONE;
-		}
+	if (CheckSendAircraftToHangarForReplacement(v)) {
+		_current_player = v->owner;
+		DoCommand(v->tile, v->index, DEPOT_SERVICE, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
+		_current_player = OWNER_NONE;
 	}
 }
 
