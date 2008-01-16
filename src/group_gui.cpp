@@ -23,6 +23,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+#include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
@@ -258,6 +259,14 @@ static void CreateVehicleGroupWindow(Window *w)
 	}
 }
 
+enum GroupActionListFunction {
+	GALF_REPLACE,
+	GALF_SERVICE,
+	GALF_DEPOT,
+	GALF_ADD_SHARED,
+	GALF_REMOVE_ALL,
+};
+
 /**
  * Update/redraw the group action dropdown
  * @param w   the window the dropdown belongs to
@@ -265,19 +274,18 @@ static void CreateVehicleGroupWindow(Window *w)
  */
 static void ShowGroupActionDropdown(Window *w, GroupID gid)
 {
-	static StringID action_str[] = {
-		STR_REPLACE_VEHICLES,
-		STR_SEND_FOR_SERVICING,
-		STR_SEND_TRAIN_TO_DEPOT,
-		STR_NULL,
-		STR_NULL,
-		INVALID_STRING_ID
-	};
+	DropDownList *list = new DropDownList();
 
-	action_str[3] = IsValidGroupID(gid) ? STR_GROUP_ADD_SHARED_VEHICLE : INVALID_STRING_ID;
-	action_str[4] = IsValidGroupID(gid) ? STR_GROUP_REMOVE_ALL_VEHICLES : INVALID_STRING_ID;
+	list->push_back(new DropDownListStringItem(STR_REPLACE_VEHICLES,    GALF_REPLACE, false));
+	list->push_back(new DropDownListStringItem(STR_SEND_FOR_SERVICING,  GALF_SERVICE, false));
+	list->push_back(new DropDownListStringItem(STR_SEND_TRAIN_TO_DEPOT, GALF_DEPOT,   false));
 
-	ShowDropDownMenu(w, action_str, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN, 0, 0);
+	if (IsValidGroupID(gid)) {
+		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE,  GALF_ADD_SHARED, false));
+		list->push_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, GALF_REMOVE_ALL, false));
+	}
+
+	ShowDropDownList(w, list, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 }
 
 /**
@@ -707,24 +715,24 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					assert(gv->l.list_length != 0);
 
 					switch (e->we.dropdown.index) {
-						case 0: // Replace window
+						case GALF_REPLACE: // Replace window
 							ShowReplaceGroupVehicleWindow(gv->group_sel, gv->vehicle_type);
 							break;
-						case 1: // Send for servicing
+						case GALF_SERVICE: // Send for servicing
 							DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 										| DEPOT_MASS_SEND
 										| DEPOT_SERVICE, NULL, GetCmdSendToDepot(gv->vehicle_type));
 							break;
-						case 2: // Send to Depots
+						case GALF_DEPOT: // Send to Depots
 							DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 										| DEPOT_MASS_SEND, NULL, GetCmdSendToDepot(gv->vehicle_type));
 							break;
-						case 3: // Add shared Vehicles
+						case GALF_ADD_SHARED: // Add shared Vehicles
 							assert(IsValidGroupID(gv->group_sel));
 
 							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
 							break;
-						case 4: // Remove all Vehicles from the selected group
+						case GALF_REMOVE_ALL: // Remove all Vehicles from the selected group
 							assert(IsValidGroupID(gv->group_sel));
 
 							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
