@@ -3250,47 +3250,17 @@ static const byte _breakdown_speeds[16] = {
 	225, 210, 195, 180, 165, 150, 135, 120, 105, 90, 75, 60, 45, 30, 15, 15
 };
 
+
 /**
- * Checks for line end. Also, bars crossing at next tile if needed
+ * Train is approaching line end, slow down and possibly reverse
  *
- * @param v vehicle we are checking
- * @return true iff we do NOT have to reverse
+ * @param v front train engine
+ * @param signal not line end, just a red signal
+ * @return true iff we did NOT have to reverse
  */
-static bool TrainCheckIfLineEnds(Vehicle *v)
+static bool TrainApproachingLineEnd(Vehicle *v, bool signal)
 {
-	int t = v->breakdown_ctr;
-	if (t > 1) {
-		v->vehstatus |= VS_TRAIN_SLOWING;
-
-		uint16 break_speed = _breakdown_speeds[GB(~t, 4, 4)];
-		if (break_speed < v->cur_speed) v->cur_speed = break_speed;
-	} else {
-		v->vehstatus &= ~VS_TRAIN_SLOWING;
-	}
-
-	if (v->u.rail.track == TRACK_BIT_WORMHOLE) return true; // exit if inside a tunnel
-	if (v->u.rail.track == TRACK_BIT_DEPOT) return true; // exit if inside a depot
-
-	TileIndex tile = v->tile;
-
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		DiagDirection dir = GetTunnelBridgeDirection(tile);
-		if (DiagDirToDir(dir) == v->direction) return true;
-	}
-
-	if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_DEPOT) {
-		DiagDirection dir = ReverseDiagDir(GetRailDepotDirection(tile));
-		if (DiagDirToDir(dir) == v->direction) return true;
-	}
-
-	/* Determine the non-diagonal direction in which we will exit this tile */
-	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
-	/* Calculate next tile */
-	tile += TileOffsByDiagDir(dir);
-	// determine the track status on the next tile.
-	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _reachable_tracks[dir];
-
-	/* Calc position within the current tile ?? */
+	/* Calc position within the current tile */
 	uint x = v->x_pos & 0xF;
 	uint y = v->y_pos & 0xF;
 
@@ -3305,29 +3275,9 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		default: break;
 	}
 
-	if (GB(ts, 0, 16) != 0) {
-		/* If we approach a rail-piece which we can't enter, or the back of a depot, don't enter it! */
-		if (x + 4 >= TILE_SIZE &&
-				(!CheckCompatibleRail(v, tile) ||
-				(IsTileDepotType(tile, TRANSPORT_RAIL) &&
-				GetRailDepotDirection(tile) == dir))) {
-			v->cur_speed = 0;
-			ReverseTrainDirection(v);
-			return false;
-		}
-		if ((ts &= (ts >> 16)) == 0) {
-			/* make a rail/road crossing red
-			 * do not make crossing red behind depot the train is entering */
-			if (IsLevelCrossingTile(tile) && (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || GetRailDepotDirection(v->tile) == dir)) {
-				if (!IsCrossingBarred(tile)) {
-					BarCrossing(tile);
-					SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
-					MarkTileDirtyByTile(tile);
-				}
-			}
-			return true;
-		}
-	} else if (x + 4 >= TILE_SIZE) {
+	/* do not reverse when approaching red signal */
+	if (!signal && x + 4 >= TILE_SIZE) {
+		/* we are too near the tile end, reverse now */
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);
 		return false;
@@ -3341,6 +3291,76 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	return true;
 }
+
+
+/**
+ * Checks for line end. Also, bars crossing at next tile if needed
+ *
+ * @param v vehicle we are checking
+ * @return true iff we did NOT have to reverse
+ */
+static bool TrainCheckIfLineEnds(Vehicle *v)
+{
+	/* First, handle broken down train */
+
+	int t = v->breakdown_ctr;
+	if (t > 1) {
+		v->vehstatus |= VS_TRAIN_SLOWING;
+
+		uint16 break_speed = _breakdown_speeds[GB(~t, 4, 4)];
+		if (break_speed < v->cur_speed) v->cur_speed = break_speed;
+	} else {
+		v->vehstatus &= ~VS_TRAIN_SLOWING;
+	}
+
+	/* Exit if inside a tunnel/bridge or a depot */
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE || v->u.rail.track == TRACK_BIT_DEPOT) return true;
+
+	TileIndex tile = v->tile;
+
+	/* entering a tunnel/bridge? */
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
+		if (DiagDirToDir(dir) == v->direction) return true;
+	}
+
+	/* entering a depot? */
+	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+		DiagDirection dir = ReverseDiagDir(GetRailDepotDirection(tile));
+		if (DiagDirToDir(dir) == v->direction) return true;
+	}
+
+	/* Determine the non-diagonal direction in which we will exit this tile */
+	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
+	/* Calculate next tile */
+	tile += TileOffsByDiagDir(dir);
+
+	/* Determine the track status on the next tile */
+	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _reachable_tracks[dir];
+
+	/* We are sure the train is not entering a depot, it is detected above */
+
+	/* no suitable trackbits at all || wrong railtype || not our track ||
+	 *   tunnel/bridge from opposite side || depot from opposite side */
+	if (GB(ts, 0, 16) == 0 || !CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner ||
+			(IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(tile) != dir) ||
+			(IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == dir) ) {
+		return TrainApproachingLineEnd(v, false);
+	}
+
+	/* approaching red signal */
+	if ((ts & (ts >> 16)) != 0) return TrainApproachingLineEnd(v, true);
+
+	/* approaching a rail/road crossing? then make it red */
+	if (IsLevelCrossingTile(tile) && !IsCrossingBarred(tile)) {
+		BarCrossing(tile);
+		SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
+		MarkTileDirtyByTile(tile);
+	}
+
+	return true;
+}
+
 
 static void TrainLocoHandler(Vehicle *v, bool mode)
 {
