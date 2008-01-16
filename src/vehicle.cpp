@@ -2581,42 +2581,35 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 			case VEH_TRAIN: {
 				const RailVehicleInfo *rvi = RailVehInfo(engine_type);
 
-				switch (rvi->railtype) {
-					default: NOT_REACHED();
-					case RAILTYPE_RAIL:
-					case RAILTYPE_ELECTRIC:
-					{
-						if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
-						if (rvi->railveh_type == RAILVEH_WAGON) {
-							if (!GetCargo(cargo_type)->is_freight) {
-								if (parent_engine_type == INVALID_ENGINE) {
-									scheme = LS_PASSENGER_WAGON_STEAM;
-								} else {
-									switch (RailVehInfo(parent_engine_type)->engclass) {
-										default: NOT_REACHED();
-										case EC_STEAM:    scheme = LS_PASSENGER_WAGON_STEAM;    break;
-										case EC_DIESEL:   scheme = LS_PASSENGER_WAGON_DIESEL;   break;
-										case EC_ELECTRIC: scheme = LS_PASSENGER_WAGON_ELECTRIC; break;
-									}
-								}
-							} else {
-								scheme = LS_FREIGHT_WAGON;
-							}
+				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
+				if (rvi->railveh_type == RAILVEH_WAGON) {
+					if (!GetCargo(cargo_type)->is_freight) {
+						if (parent_engine_type == INVALID_ENGINE) {
+							scheme = LS_PASSENGER_WAGON_STEAM;
 						} else {
-							bool is_mu = HasBit(EngInfo(engine_type)->misc_flags, EF_RAIL_IS_MU);
-
-							switch (rvi->engclass) {
+							switch (RailVehInfo(parent_engine_type)->engclass) {
 								default: NOT_REACHED();
-								case EC_STEAM:    scheme = LS_STEAM; break;
-								case EC_DIESEL:   scheme = is_mu ? LS_DMU : LS_DIESEL;   break;
-								case EC_ELECTRIC: scheme = is_mu ? LS_EMU : LS_ELECTRIC; break;
+								case EC_STEAM:    scheme = LS_PASSENGER_WAGON_STEAM;    break;
+								case EC_DIESEL:   scheme = LS_PASSENGER_WAGON_DIESEL;   break;
+								case EC_ELECTRIC: scheme = LS_PASSENGER_WAGON_ELECTRIC; break;
+								case EC_MONORAIL: scheme = LS_PASSENGER_WAGON_MONORAIL; break;
+								case EC_MAGLEV:   scheme = LS_PASSENGER_WAGON_MAGLEV;   break;
 							}
 						}
-						break;
+					} else {
+						scheme = LS_FREIGHT_WAGON;
 					}
+				} else {
+					bool is_mu = HasBit(EngInfo(engine_type)->misc_flags, EF_RAIL_IS_MU);
 
-					case RAILTYPE_MONO: scheme = LS_MONORAIL; break;
-					case RAILTYPE_MAGLEV: scheme = LS_MAGLEV; break;
+					switch (rvi->engclass) {
+						default: NOT_REACHED();
+						case EC_STEAM:    scheme = LS_STEAM; break;
+						case EC_DIESEL:   scheme = is_mu ? LS_DMU : LS_DIESEL;   break;
+						case EC_ELECTRIC: scheme = is_mu ? LS_EMU : LS_ELECTRIC; break;
+						case EC_MONORAIL: scheme = LS_MONORAIL; break;
+						case EC_MAGLEV:   scheme = LS_MAGLEV; break;
+					}
 				}
 				break;
 			}

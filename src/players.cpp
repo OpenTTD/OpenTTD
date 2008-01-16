@@ -1201,12 +1201,19 @@ static void SaveLoad_PLYR(Player* p)
 	}
 
 	/* Write each livery entry. */
-	int num_liveries = CheckSavegameVersion(63) ? LS_END - 2 : LS_END;
+	int num_liveries = CheckSavegameVersion(63) ? LS_END - 4 : (CheckSavegameVersion(85) ? LS_END - 2: LS_END);
 	for (i = 0; i < num_liveries; i++) {
 		SlObject(&p->livery[i], _player_livery_desc);
 	}
 
-	if (num_liveries == LS_END - 2) {
+	if (num_liveries < LS_END) {
+		/* We want to insert some liveries somewhere in between. This means some have to be moved. */
+		memmove(&p->livery[LS_FREIGHT_WAGON], &p->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(p->livery[0]));
+		p->livery[LS_PASSENGER_WAGON_MONORAIL] = p->livery[LS_MONORAIL];
+		p->livery[LS_PASSENGER_WAGON_MAGLEV]   = p->livery[LS_MAGLEV];
+	}
+
+	if (num_liveries == LS_END - 4) {
 		/* Copy bus/truck liveries over to trams */
 		p->livery[LS_PASSENGER_TRAM] = p->livery[LS_BUS];
 		p->livery[LS_FREIGHT_TRAM]   = p->livery[LS_TRUCK];
