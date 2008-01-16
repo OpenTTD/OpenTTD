@@ -441,9 +441,11 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (!ValParamTrackOrientation((Track)p2)) return CMD_ERROR;
 	trackbit = TrackToTrackBits(track);
 
-	/* Need to read tile owner now because it may change when the rail is removed.
-	 * Also, in case of floods, _current_player != owner */
-	Owner owner = GetTileOwner(tile);
+	/* Need to read tile owner now because it may change when the rail is removed
+	 * Also, in case of floods, _current_player != owner
+	 * There may be invalid tiletype even in exec run (when removing long track),
+	 * so do not call GetTileOwner(tile) in any case here */
+	Owner owner = INVALID_OWNER;
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
@@ -455,6 +457,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			}
 
 			if (flags & DC_EXEC) {
+				owner = GetTileOwner(tile);
 				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
 			}
 			break;
@@ -478,6 +481,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				cost.AddCost(DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS));
 
 			if (flags & DC_EXEC) {
+				owner = GetTileOwner(tile);
 				present ^= trackbit;
 				if (present == 0) {
 					if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
@@ -496,6 +500,9 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	}
 
 	if (flags & DC_EXEC) {
+		/* if we got that far, 'owner' variable is set correctly */
+		assert(IsValidPlayer(owner));
+
 		MarkTileDirtyByTile(tile);
 		if (crossing) {
 			/* crossing is set when only TRACK_BIT_X and TRACK_BIT_Y are set. As we
