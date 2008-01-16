@@ -263,10 +263,8 @@ static void CreateVehicleGroupWindow(Window *w)
  * @param w   the window the dropdown belongs to
  * @param gid the currently selected group in the window
  */
-static void UpdateGroupActionDropdown(Window *w, GroupID gid, bool refresh = true)
+static void ShowGroupActionDropdown(Window *w, GroupID gid)
 {
-	if (refresh && !w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) return;
-
 	static StringID action_str[] = {
 		STR_REPLACE_VEHICLES,
 		STR_SEND_FOR_SERVICING,
@@ -299,8 +297,10 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		case WE_INVALIDATE_DATA:
 			gv->l.flags |= VL_REBUILD;
 			gl->l.flags |= VL_REBUILD;
-			if (!IsValidGroupID(gv->group_sel)) gv->group_sel = ALL_GROUP;
-			UpdateGroupActionDropdown(w, gv->group_sel);
+			if (!IsValidGroupID(gv->group_sel)) {
+				gv->group_sel = ALL_GROUP;
+				HideDropDownMenu(w);
+			}
 			SetWindowDirty(w);
 			break;
 
@@ -513,7 +513,6 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					if (!IsAllGroupID(gv->group_sel)) {
 						gv->group_sel = ALL_GROUP;
 						gv->l.flags |= VL_REBUILD;
-						UpdateGroupActionDropdown(w, gv->group_sel);
 						SetWindowDirty(w);
 					}
 					break;
@@ -522,7 +521,6 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					if (!IsDefaultGroupID(gv->group_sel)) {
 						gv->group_sel = DEFAULT_GROUP;
 						gv->l.flags |= VL_REBUILD;
-						UpdateGroupActionDropdown(w, gv->group_sel);
 						SetWindowDirty(w);
 					}
 					break;
@@ -539,7 +537,6 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					gv->group_sel = gl->sort_list[id_g]->index;;
 
 					gv->l.flags |= VL_REBUILD;
-					UpdateGroupActionDropdown(w, gv->group_sel);
 					SetWindowDirty(w);
 					break;
 				}
@@ -594,7 +591,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				case GRP_WIDGET_MANAGE_VEHICLES:
 				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:  {
-					UpdateGroupActionDropdown(w, gv->group_sel, false);
+					ShowGroupActionDropdown(w, gv->group_sel);
 					break;
 				}
 
