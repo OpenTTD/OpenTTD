@@ -648,6 +648,9 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 				MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
 			}
 		}
+
+		/* update signals if needed */
+		UpdateSignalsInBuffer();
 	}
 }
 

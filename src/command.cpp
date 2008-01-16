@@ -20,6 +20,7 @@
 #include "debug.h"
 #include "player_func.h"
 #include "player_base.h"
+#include "signal_func.h"
 
 #include "table/strings.h"
 
@@ -641,6 +642,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	}
 
 	SubtractMoneyFromPlayer(res2);
+
+	/* update signals if needed */
+	UpdateSignalsInBuffer();
 
 	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
 		if (res2.GetCost() != 0 && tile != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());

@@ -419,7 +419,7 @@ not_valid_below:;
 
 	if (flags & DC_EXEC && railtype != INVALID_RAILTYPE) {
 		Track track = AxisToTrack(direction);
-		UpdateSignalsOnSegment(tile_start, INVALID_DIAGDIR, _current_player);
+		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, _current_player);
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
@@ -549,7 +549,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
 			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
-			UpdateSignalsOnSegment(start_tile, INVALID_DIAGDIR, _current_player);
+			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_player);
 			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
 			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 3));
@@ -612,8 +612,8 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 			DoClearSquare(endtile);
 
 			/* cannot use INVALID_DIAGDIR for signal update because the tunnel doesn't exist anymore */
-			UpdateSignalsOnSegment(tile, ReverseDiagDir(dir), owner);
-			UpdateSignalsOnSegment(endtile, dir, owner);
+			AddSideToSignalBuffer(tile, ReverseDiagDir(dir), owner);
+			AddSideToSignalBuffer(endtile, dir, owner);
 
 			Track track = AxisToTrack(DiagDirToAxis(dir));
 			YapfNotifyTrackLayoutChange(tile, track);
@@ -674,8 +674,8 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 
 		if (rail) {
 			/* cannot use INVALID_DIAGDIR for signal update because the bridge doesn't exist anymore */
-			UpdateSignalsOnSegment(tile, ReverseDiagDir(direction), owner);
-			UpdateSignalsOnSegment(endtile, direction, owner);
+			AddSideToSignalBuffer(tile, ReverseDiagDir(direction), owner);
+			AddSideToSignalBuffer(endtile, direction, owner);
 
 			Track track = AxisToTrack(DiagDirToAxis(direction));
 			YapfNotifyTrackLayoutChange(tile, track);

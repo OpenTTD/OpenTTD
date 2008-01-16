@@ -10,6 +10,7 @@
 #include "../player_base.h"
 #include "ai.h"
 #include "default/default.h"
+#include "../signal_func.h"
 
 AIStruct _ai;
 AIPlayer _ai_player[MAX_PLAYERS];
@@ -159,6 +160,9 @@ static void AI_RunTick(PlayerID player)
 		AiDoGameLoop(p);
 		_is_old_ai_player = false;
 	}
+
+	/* AI could change some track, so update signals */
+	UpdateSignalsInBuffer();
 }
 
 

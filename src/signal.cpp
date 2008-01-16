@@ -22,10 +22,13 @@
 
 /** these are the maximums used for updating signal blocks */
 enum {
-	SIG_TBU_SIZE  =  64, ///< number of signals entering to block
-	SIG_TBD_SIZE  = 256, ///< number of intersections - open nodes in current block
-	SIG_GLOB_SIZE =  64, ///< number of open blocks (block can be opened more times until detected)
+	SIG_TBU_SIZE    =  64, ///< number of signals entering to block
+	SIG_TBD_SIZE    = 256, ///< number of intersections - open nodes in current block
+	SIG_GLOB_SIZE   = 128, ///< number of open blocks (block can be opened more times until detected)
+	SIG_GLOB_UPDATE =  64, ///< how many items need to be in _globset to force update
 };
+
+assert_compile(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
 
 /** incidating trackbits with given enterdir */
 static const TrackBitsByte _enterdir_to_trackbits[DIAGDIR_END] = {
@@ -98,6 +101,16 @@ public:
 	{
 		return this->n == lengthof(data);
 	}
+
+	/**
+	 * Reads the number of items
+	 * @return current number of items
+	 */
+	uint Items()
+	{
+		return this->n;
+	}
+
 
 	/**
 	 * Tries to remove first instance of given tile and dir
@@ -534,6 +547,77 @@ static bool UpdateSignalsInBuffer(Owner owner)
 }
 
 
+static Owner _last_owner = INVALID_OWNER; ///< last owner whose track was put into _globset
+
+
+/**
+ * Update signals in buffer
+ * Called from 'outside'
+ */
+void UpdateSignalsInBuffer()
+{
+	if (!_globset.IsEmpty()) {
+		UpdateSignalsInBuffer(_last_owner);
+		_last_owner = INVALID_OWNER; // invalidate
+	}
+}
+
+
+/**
+ * Add track to signal update buffer
+ *
+ * @param tile tile where we start
+ * @param track track at which ends we will update signals
+ * @param owner owner whose signals we will update
+ */
+void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
+{
+	static const DiagDirection _search_dir_1[] = {
+		DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE
+	};
+	static const DiagDirection _search_dir_2[] = {
+		DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
+	};
+
+	/* do not allow signal updates for two players in one run */
+	assert(_globset.IsEmpty() || owner == _last_owner);
+
+	_last_owner = owner;
+
+	_globset.Add(tile, _search_dir_1[track]);
+	_globset.Add(tile, _search_dir_2[track]);
+
+	if (_globset.Items() >= SIG_GLOB_UPDATE) {
+		/* too many items, force update */
+		UpdateSignalsInBuffer(_last_owner);
+		_last_owner = INVALID_OWNER;
+	}
+}
+
+
+/**
+ * Add side of tile to signal update buffer
+ *
+ * @param tile tile where we start
+ * @param side side of tile
+ * @param owner owner whose signals we will update
+ */
+void AddSideToSignalBuffer(TileIndex tile, DiagDirection side, Owner owner)
+{
+	/* do not allow signal updates for two players in one run */
+	assert(_globset.IsEmpty() || owner == _last_owner);
+
+	_last_owner = owner;
+
+	_globset.Add(tile, side);
+
+	if (_globset.Items() >= SIG_GLOB_UPDATE) {
+		/* too many items, force update */
+		UpdateSignalsInBuffer(_last_owner);
+		_last_owner = INVALID_OWNER;
+	}
+}
+
 /**
  * Update signals, starting at one side of a tile
  * Will check tile next to this at opposite side too
@@ -564,16 +648,8 @@ bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner)
  */
 void SetSignalsOnBothDir(TileIndex tile, Track track, Owner owner)
 {
-	static const DiagDirection _search_dir_1[] = {
-		DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE
-	};
-	static const DiagDirection _search_dir_2[] = {
-		DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
-	};
-
 	assert(_globset.IsEmpty());
 
-	_globset.Add(tile, _search_dir_1[track]);
-	_globset.Add(tile, _search_dir_2[track]);
+	AddTrackToSignalBuffer(tile, track, owner);
 	UpdateSignalsInBuffer(owner);
 }

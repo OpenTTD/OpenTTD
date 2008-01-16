@@ -440,10 +440,13 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					TrackBits tracks = GetTrackBits(tile);
 					do { // there may be two tracks with signals for TRACK_BIT_HORZ and TRACK_BIT_VERT
 						Track track = RemoveFirstTrack(&tracks);
-						if (HasSignalOnTrack(tile, track)) SetSignalsOnBothDir(tile, track, new_player);
+						if (HasSignalOnTrack(tile, track)) AddTrackToSignalBuffer(tile, track, new_player);
 					} while (tracks != TRACK_BIT_NONE);
 				}
 			} while (++tile != MapSize());
+
+			/* update signals in buffer */
+			UpdateSignalsInBuffer();
 		}
 	}
 

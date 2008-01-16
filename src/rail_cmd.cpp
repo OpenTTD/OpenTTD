@@ -418,7 +418,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (flags & DC_EXEC) {
 		MarkTileDirtyByTile(tile);
-		SetSignalsOnBothDir(tile, track, _current_player);
+		AddTrackToSignalBuffer(tile, track, _current_player);
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
@@ -502,12 +502,12 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			 * are removing one of these pieces, we'll need to update signals for
 			 * both directions explicitly, as after the track is removed it won't
 			 * 'connect' with the other piece. */
-			SetSignalsOnBothDir(tile, TRACK_X, owner);
-			SetSignalsOnBothDir(tile, TRACK_Y, owner);
+			AddTrackToSignalBuffer(tile, TRACK_X, owner);
+			AddTrackToSignalBuffer(tile, TRACK_Y, owner);
 			YapfNotifyTrackLayoutChange(tile, TRACK_X);
 			YapfNotifyTrackLayoutChange(tile, TRACK_Y);
 		} else {
-			SetSignalsOnBothDir(tile, track, owner);
+			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
 		}
 	}
@@ -745,7 +745,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR, _current_player);
+		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_player);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 		d_auto_delete.Detach();
 	}
@@ -871,7 +871,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 		}
 
 		MarkTileDirtyByTile(tile);
-		SetSignalsOnBothDir(tile, track, _current_player);
+		AddTrackToSignalBuffer(tile, track, _current_player);
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
@@ -1102,7 +1102,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 			SetSignalVariant(tile, INVALID_TRACK, SIG_ELECTRIC); // remove any possible semaphores
 		}
 
-		SetSignalsOnBothDir(tile, track, GetTileOwner(tile));
+		AddTrackToSignalBuffer(tile, track, GetTileOwner(tile));
 		YapfNotifyTrackLayoutChange(tile, track);
 
 		MarkTileDirtyByTile(tile);
@@ -1314,7 +1314,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 
 		DoClearSquare(tile);
 		delete GetDepotByTile(tile);
-		UpdateSignalsOnSegment(tile, dir, owner);
+		AddSideToSignalBuffer(tile, dir, owner);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}
 

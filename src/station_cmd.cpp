@@ -1073,7 +1073,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 				tile += tile_delta;
 			} while (--w);
-			SetSignalsOnBothDir(tile_org, track, _current_player);
+			AddTrackToSignalBuffer(tile_org, track, _current_player);
 			YapfNotifyTrackLayoutChange(tile_org, track);
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
@@ -1209,7 +1209,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 			DoClearSquare(tile2);
 			st->rect.AfterRemoveTile(st, tile2);
-			SetSignalsOnBothDir(tile2, track, owner);
+			AddTrackToSignalBuffer(tile2, track, owner);
 			YapfNotifyTrackLayoutChange(tile2, track);
 
 			DeallocateSpecFromStation(st, specindex);
@@ -1270,7 +1270,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 					Track track = GetRailStationTrack(tile);
 					Owner owner = GetTileOwner(tile); // _current_player can be OWNER_WATER
 					DoClearSquare(tile);
-					SetSignalsOnBothDir(tile, track, owner);
+					AddTrackToSignalBuffer(tile, track, owner);
 					YapfNotifyTrackLayoutChange(tile, track);
 				}
 			}
