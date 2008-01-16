@@ -1524,11 +1524,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 				SetIndustryConstructionCounter(cur_tile, 3);
 				SetIndustryConstructionStage(cur_tile, 2);
 			}
-			if (it->gfx >= NEW_INDUSTRYTILEOFFSET) {
-				/* New industry */
-				const IndustryTileSpec *its = GetIndustryTileSpec(it->gfx);
-				if (its->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
-			}
+
+			/* it->gfx is stored in the map. But the translated ID cur_gfx is the interesting one */
+			IndustryGfx cur_gfx = GetTranslatedIndustryTileID(it->gfx);
+			const IndustryTileSpec *its = GetIndustryTileSpec(cur_gfx);
+			if (its->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
 		}
 	} while ((++it)->ti.x != -0x80);
 
