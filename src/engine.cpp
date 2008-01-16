@@ -507,6 +507,10 @@ void RemoveAllEngineReplacement(EngineRenewList *erl)
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine, GroupID group)
 {
 	const EngineRenew *er = GetEngineReplacement(erl, engine, group);
+	if (er == NULL && (group == DEFAULT_GROUP || (IsValidGroupID(group) && !GetGroup(group)->replace_protection))) {
+		/* We didn't find anything useful in the vehicle's own group so we will try ALL_GROUP */
+		er = GetEngineReplacement(erl, engine, ALL_GROUP);
+	}
 	return er == NULL ? INVALID_ENGINE : er->to;
 }
 
