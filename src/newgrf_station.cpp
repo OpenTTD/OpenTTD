@@ -26,7 +26,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static StationClass station_classes[STAT_CLASS_MAX];
+static StationClass _station_classes[STAT_CLASS_MAX];
 
 enum {
 	MAX_SPECLIST = 255,
@@ -40,42 +40,42 @@ enum {
 void ResetStationClasses()
 {
 	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
-		station_classes[i].id = 0;
-		station_classes[i].name = STR_EMPTY;
-		station_classes[i].stations = 0;
+		_station_classes[i].id = 0;
+		_station_classes[i].name = STR_EMPTY;
+		_station_classes[i].stations = 0;
 
-		free(station_classes[i].spec);
-		station_classes[i].spec = NULL;
+		free(_station_classes[i].spec);
+		_station_classes[i].spec = NULL;
 	}
 
 	/* Set up initial data */
-	station_classes[0].id = 'DFLT';
-	station_classes[0].name = STR_STAT_CLASS_DFLT;
-	station_classes[0].stations = 1;
-	station_classes[0].spec = MallocT<StationSpec*>(1);
-	station_classes[0].spec[0] = NULL;
+	_station_classes[0].id = 'DFLT';
+	_station_classes[0].name = STR_STAT_CLASS_DFLT;
+	_station_classes[0].stations = 1;
+	_station_classes[0].spec = MallocT<StationSpec*>(1);
+	_station_classes[0].spec[0] = NULL;
 
-	station_classes[1].id = 'WAYP';
-	station_classes[1].name = STR_STAT_CLASS_WAYP;
-	station_classes[1].stations = 1;
-	station_classes[1].spec = MallocT<StationSpec*>(1);
-	station_classes[1].spec[0] = NULL;
+	_station_classes[1].id = 'WAYP';
+	_station_classes[1].name = STR_STAT_CLASS_WAYP;
+	_station_classes[1].stations = 1;
+	_station_classes[1].spec = MallocT<StationSpec*>(1);
+	_station_classes[1].spec[0] = NULL;
 }
 
 /**
  * Allocate a station class for the given class id.
  * @param cls A 32 bit value identifying the class.
- * @return Index into station_classes of allocated class.
+ * @return Index into _station_classes of allocated class.
  */
 StationClassID AllocateStationClass(uint32 cls)
 {
 	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
-		if (station_classes[i].id == cls) {
+		if (_station_classes[i].id == cls) {
 			/* ClassID is already allocated, so reuse it. */
 			return i;
-		} else if (station_classes[i].id == 0) {
+		} else if (_station_classes[i].id == 0) {
 			/* This class is empty, so allocate it to the ClassID. */
-			station_classes[i].id = cls;
+			_station_classes[i].id = cls;
 			return i;
 		}
 	}
@@ -88,14 +88,14 @@ StationClassID AllocateStationClass(uint32 cls)
 void SetStationClassName(StationClassID sclass, StringID name)
 {
 	assert(sclass < STAT_CLASS_MAX);
-	station_classes[sclass].name = name;
+	_station_classes[sclass].name = name;
 }
 
 /** Retrieve the name of a custom station class */
 StringID GetStationClassName(StationClassID sclass)
 {
 	assert(sclass < STAT_CLASS_MAX);
-	return station_classes[sclass].name;
+	return _station_classes[sclass].name;
 }
 
 /**
@@ -105,7 +105,7 @@ StringID GetStationClassName(StationClassID sclass)
 uint GetNumStationClasses()
 {
 	uint i;
-	for (i = 0; i < STAT_CLASS_MAX && station_classes[i].id != 0; i++);
+	for (i = 0; i < STAT_CLASS_MAX && _station_classes[i].id != 0; i++);
 	return i;
 }
 
@@ -117,7 +117,7 @@ uint GetNumStationClasses()
 uint GetNumCustomStations(StationClassID sclass)
 {
 	assert(sclass < STAT_CLASS_MAX);
-	return station_classes[sclass].stations;
+	return _station_classes[sclass].stations;
 }
 
 /**
@@ -133,7 +133,7 @@ void SetCustomStationSpec(StationSpec *statspec)
 	if (statspec->allocated) return;
 
 	assert(statspec->sclass < STAT_CLASS_MAX);
-	station_class = &station_classes[statspec->sclass];
+	station_class = &_station_classes[statspec->sclass];
 
 	i = station_class->stations++;
 	station_class->spec = ReallocT(station_class->spec, station_class->stations);
@@ -151,8 +151,8 @@ void SetCustomStationSpec(StationSpec *statspec)
 const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 {
 	assert(sclass < STAT_CLASS_MAX);
-	if (station < station_classes[sclass].stations)
-		return station_classes[sclass].spec[station];
+	if (station < _station_classes[sclass].stations)
+		return _station_classes[sclass].spec[station];
 
 	/* If the custom station isn't defined any more, then the GRF file
 	 * probably was not loaded. */
@@ -165,8 +165,8 @@ const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx)
 	uint j;
 
 	for (StationClassID i = STAT_CLASS_BEGIN; i < STAT_CLASS_MAX; i++) {
-		for (j = 0; j < station_classes[i].stations; j++) {
-			const StationSpec *statspec = station_classes[i].spec[j];
+		for (j = 0; j < _station_classes[i].stations; j++) {
+			const StationSpec *statspec = _station_classes[i].spec[j];
 			if (statspec == NULL) continue;
 			if (statspec->grffile->grfid == grfid && statspec->localidx == localidx) return statspec;
 		}
