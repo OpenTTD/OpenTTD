@@ -44,13 +44,21 @@ enum BuildingFlags {
 
 DECLARE_ENUM_AS_BIT_SET(BuildingFlags)
 
+enum HouseZonesBits {
+	HZB_TOWN_EDGE = 0,
+	HZB_TOWN_OUTSKIRT,
+	HZB_TOWN_OUTER_SUBURB,
+	HZB_TOWN_INNER_SUBURB,
+	HZB_TOWN_CENTRE,
+};
+
 enum HouseZones {                  ///< Bit  Value       Meaning
 	HZ_NOZNS             = 0x0000,  ///<       0          This is just to get rid of zeros, meaning none
-	HZ_ZON1              = 0x0001,  ///< 0..4 1,2,4,8,10  which town zones the building can be built in, Zone1 been the further suburb
-	HZ_ZON2              = 0x0002,
-	HZ_ZON3              = 0x0004,
-	HZ_ZON4              = 0x0008,
-	HZ_ZON5              = 0x0010,  ///<                  center of town
+	HZ_ZON1              = 1U << HZB_TOWN_EDGE,    ///< 0..4 1,2,4,8,10  which town zones the building can be built in, Zone1 been the further suburb
+	HZ_ZON2              = 1U << HZB_TOWN_OUTSKIRT,
+	HZ_ZON3              = 1U << HZB_TOWN_OUTER_SUBURB,
+	HZ_ZON4              = 1U << HZB_TOWN_INNER_SUBURB,
+	HZ_ZON5              = 1U << HZB_TOWN_CENTRE,  ///<  center of town
 	HZ_ZONALL            = 0x001F,  ///<       1F         This is just to englobe all above types at once
 	HZ_SUBARTC_ABOVE     = 0x0800,  ///< 11    800        can appear in sub-arctic climate above the snow line
 	HZ_TEMP              = 0x1000,  ///< 12   1000        can appear in temperate climate
@@ -315,7 +323,7 @@ void UpdateTownMaxPass(Town *t);
 bool CheckIfAuthorityAllows(TileIndex tile);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
-uint GetTownRadiusGroup(const Town* t, TileIndex tile);
+HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 
 #endif /* TOWN_H */

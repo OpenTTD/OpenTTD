@@ -1622,18 +1622,22 @@ static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 	return CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
 }
 
-
-uint GetTownRadiusGroup(const Town* t, TileIndex tile)
+/** Returns the bit corresponding to the town zone of the specified tile
+ * @param t Town on which radius is to be found
+ * @param tile TileIndex where radius needs to be found
+ * @return the bit position of the given zone, as defined in HouseZones
+ */
+HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile)
 {
 	uint dist = DistanceSquare(tile, t->xy);
-	uint smallest;
+	HouseZonesBits smallest;
 	uint i;
 
-	if (t->fund_buildings_months && dist <= 25) return 4;
+	if (t->fund_buildings_months && dist <= 25) return HZB_TOWN_CENTRE;
 
-	smallest = 0;
+	smallest = HZB_TOWN_EDGE;
 	for (i = 0; i != lengthof(t->radius); i++) {
-		if (dist < t->radius[i]) smallest = i;
+		if (dist < t->radius[i]) smallest = (HouseZonesBits)i;
 	}
 
 	return smallest;
@@ -1677,9 +1681,10 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	/* Above snow? */
 	slope = GetTileSlope(tile, &z);
 
-	/* Get the town zone type */
+	/* Get the town zone type of the current tile, as well as the climate.
+	 * This will allow to easily compare with the specs of the new house to build */
 	{
-		uint rad = GetTownRadiusGroup(t, tile);
+		HouseZonesBits rad = GetTownRadiusGroup(t, tile);
 
 		int land = _opt.landscape;
 		if (land == LT_ARCTIC && z >= _opt.snow_line) land = -1;
@@ -1699,6 +1704,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		/* Generate a list of all possible houses that can be built. */
 		for (i = 0; i < HOUSE_MAX; i++) {
 			hs = GetHouseSpecs(i);
+			/* Verify that the candidate house spec matches the current tile status */
 			if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
 				if (_loaded_newgrf_features.has_newhouses) {
 					probability_max += hs->probability;

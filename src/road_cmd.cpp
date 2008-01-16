@@ -1203,14 +1203,14 @@ static void TileLoop_Road(TileIndex tile)
 
 	const Town* t = ClosestTownFromTile(tile, (uint)-1);
 	if (!HasRoadWorks(tile)) {
-		int grp = 0;
+		HouseZonesBits grp = HZB_TOWN_EDGE;
 
 		if (t != NULL) {
 			grp = GetTownRadiusGroup(t, tile);
 
 			/* Show an animation to indicate road work */
 			if (t->road_build_months != 0 &&
-					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
+					(DistanceManhattan(t->xy, tile) < 8 || grp != HZB_TOWN_EDGE) &&
 					GetRoadTileType(tile) == ROAD_TILE_NORMAL && CountBits(GetAllRoadBits(tile)) > 1 ) {
 				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && Chance16(1, 40)) {
 					StartRoadWorks(tile);
