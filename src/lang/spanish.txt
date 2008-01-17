@@ -300,12 +300,6 @@ STR_SINGLE_PLAYER                                               :{BLACK}Un jugad
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor de Escenario
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Tamaño del mapa:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opciones de Juego

@@ -299,12 +299,6 @@ STR_SINGLE_PLAYER                                               :{BLACK}Un singu
 STR_MULTIPLAYER                                                 :{BLACK}Multiplayer
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor harta
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Marime harta:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Optiuni

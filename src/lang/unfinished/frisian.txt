@@ -231,12 +231,6 @@ STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Nei Spul
 STR_0141_LOAD_GAME                                              :{BLACK}Laad Spul
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spul Opsjes
 
 STR_0150_SOMEONE                                                :immen{SKIP}{SKIP}

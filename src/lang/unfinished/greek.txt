@@ -298,12 +298,6 @@ STR_SINGLE_PLAYER                                               :{BLACK}Ένας
 STR_MULTIPLAYER                                                 :{BLACK}Πολοί παίκτες
 STR_SCENARIO_EDITOR                                             :{BLACK}Διαμόρφωση Σεναρίου
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Διάσταση χάρτη:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού

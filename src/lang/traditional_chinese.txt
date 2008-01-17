@@ -299,12 +299,6 @@ STR_SINGLE_PLAYER                                               :{BLACK}單人�
 STR_MULTIPLAYER                                                 :{BLACK}多人遊戲
 STR_SCENARIO_EDITOR                                             :{BLACK}場景編輯器
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}版圖大小：
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}遊戲選項

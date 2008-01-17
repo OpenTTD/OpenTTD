@@ -299,12 +299,6 @@ STR_SINGLE_PLAYER                                               :{BLACK}一人�
 STR_MULTIPLAYER                                                 :{BLACK}多人数プレイ
 STR_SCENARIO_EDITOR                                             :{BLACK}シナリオエディタ
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}地図のサイズ：
 STR_BY                                                          :{BLACK}x
 STR_0148_GAME_OPTIONS                                           :{BLACK}ゲームの設定
