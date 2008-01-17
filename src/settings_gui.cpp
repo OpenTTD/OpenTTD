@@ -116,26 +116,17 @@ static inline bool RoadVehiclesAreBuilt()
 
 
 enum GameOptionsWidgets {
-	GAMEOPT_CURRENCY_TXT    =  4,
-	GAMEOPT_CURRENCY_BTN,
-	GAMEOPT_DISTANCE_TXT    =  7,
-	GAMEOPT_DISTANCE_BTN,
-	GAMEOPT_ROADSIDE_TXT    = 10,
-	GAMEOPT_ROADSIDE_BTN,
-	GAMEOPT_TOWNNAME_TXT    = 13,
-	GAMEOPT_TOWNNAME_BTN,
-	GAMEOPT_AUTOSAVE_TXT    = 16,
-	GAMEOPT_AUTOSAVE_BTN,
-	GAMEOPT_VEHICLENAME_TXT = 19,
-	GAMEOPT_VEHICLENAME_BTN,
+	GAMEOPT_CURRENCY_BTN    =  4,
+	GAMEOPT_DISTANCE_BTN    =  6,
+	GAMEOPT_ROADSIDE_BTN    =  8,
+	GAMEOPT_TOWNNAME_BTN    = 10,
+	GAMEOPT_AUTOSAVE_BTN    = 12,
+	GAMEOPT_VEHICLENAME_BTN = 14,
 	GAMEOPT_VEHICLENAME_SAVE,
-	GAMEOPT_LANG_TXT        = 23,
-	GAMEOPT_LANG_BTN,
-	GAMEOPT_RESOLUTION_TXT  = 26,
-	GAMEOPT_RESOLUTION_BTN,
+	GAMEOPT_LANG_BTN        = 17,
+	GAMEOPT_RESOLUTION_BTN  = 19,
 	GAMEOPT_FULLSCREEN,
-	GAMEOPT_SCREENSHOT_TXT  = 30,
-	GAMEOPT_SCREENSHOT_BTN,
+	GAMEOPT_SCREENSHOT_BTN  = 22,
 };
 
 /**
@@ -211,15 +202,15 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case GAMEOPT_CURRENCY_TXT: case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
+				case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
 					ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 					break;
 
-				case GAMEOPT_DISTANCE_TXT: case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
+				case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
 					ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
 					break;
 
-				case GAMEOPT_ROADSIDE_TXT: case GAMEOPT_ROADSIDE_BTN: { /* Setup road-side dropdown */
+				case GAMEOPT_ROADSIDE_BTN: { /* Setup road-side dropdown */
 					int i = 0;
 
 					/* You can only change the drive side if you are in the menu or ingame with
@@ -230,26 +221,26 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
 				} break;
 
-				case GAMEOPT_TOWNNAME_TXT: case GAMEOPT_TOWNNAME_BTN: /* Setup townname dropdown */
+				case GAMEOPT_TOWNNAME_BTN: /* Setup townname dropdown */
 					ShowTownnameDropdown(w, _opt_ptr->town_name);
 					break;
 
-				case GAMEOPT_AUTOSAVE_TXT: case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
+				case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
 					ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
 					break;
 
-				case GAMEOPT_VEHICLENAME_TXT: case GAMEOPT_VEHICLENAME_BTN: /* Setup customized vehicle-names dropdown */
+				case GAMEOPT_VEHICLENAME_BTN: /* Setup customized vehicle-names dropdown */
 					ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
 					break;
 
 				case GAMEOPT_VEHICLENAME_SAVE: /* Save customized vehicle-names to disk */
 					break;  // not implemented
 
-				case GAMEOPT_LANG_TXT: case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
+				case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
 					ShowLangDropdown(w);
 					break;
 
-				case GAMEOPT_RESOLUTION_TXT: case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
+				case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
 					ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GAMEOPT_RESOLUTION_BTN, 0, 0);
 					break;
 
@@ -262,7 +253,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 
-				case GAMEOPT_SCREENSHOT_TXT: case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
+				case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
 					ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
 					break;
 			}
@@ -360,38 +351,29 @@ static const Widget _game_options_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,             STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   369,    14,   238, 0x0,                               STR_NULL},
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,           STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    35,    44, STR_0225,                          STR_02E2_CURRENCY_UNITS_SELECTION},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
 {      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    20,    55, STR_MEASURING_UNITS,               STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,                          STR_MEASURING_UNITS_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    35,    44, STR_0225,                          STR_MEASURING_UNITS_SELECTION},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,                          STR_MEASURING_UNITS_SELECTION},
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    62,    97, STR_02E6_ROAD_VEHICLES,            STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,    20,   169,    76,    87, STR_02E7,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    77,    86, STR_0225,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,    76,    87, STR_02E7,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
 {      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    62,    97, STR_02EB_TOWN_NAMES,               STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,   200,   349,    76,    87, STR_02EC,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    77,    86, STR_0225,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,    76,    87, STR_02EC,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   104,   139, STR_02F4_AUTOSAVE,                 STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,    20,   169,   118,   129, STR_02F5,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,   119,   128, STR_0225,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,   118,   129, STR_02F5,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
 
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,     STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,    20,   119,   207,   218, STR_02BD,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   108,   118,   208,   217, STR_0225,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   119,   207,   218, STR_02BD,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES,        STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
 
 {      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   104,   139, STR_OPTIONS_LANG,                  STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,              STR_OPTIONS_LANG_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,   119,   128, STR_0225,                          STR_OPTIONS_LANG_TIP},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,              STR_OPTIONS_LANG_TIP},
 
 {      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   146,   190, STR_OPTIONS_RES,                   STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,               STR_OPTIONS_RES_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,   161,   170, STR_0225,                          STR_OPTIONS_RES_TIP},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,               STR_OPTIONS_RES_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   149,   169,   176,   184, STR_EMPTY,                         STR_OPTIONS_FULLSCREEN_TIP},
 
 {      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,     STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,   161,   170, STR_0225,                          STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 
 {   WIDGETS_END},
 };
