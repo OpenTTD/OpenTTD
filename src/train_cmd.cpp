@@ -1685,7 +1685,7 @@ static Vehicle *TrainApproachingCrossing(TileIndex tile)
  * @param tile tile to update
  * @pre tile is a rail-road crossing
  */
-void UpdateTrainCrossing(TileIndex tile)
+void UpdateLevelCrossing(TileIndex tile)
 {
 	assert(IsLevelCrossingTile(tile));
 
@@ -1773,11 +1773,11 @@ static void ReverseTrainDirection(Vehicle *v)
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
 
 	/* update crossing we were approaching */
-	if (crossing != INVALID_TILE) UpdateTrainCrossing(crossing);
+	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
 
 	/* maybe we are approaching crossing now, after reversal */
 	crossing = TrainApproachingCrossingTile(v);
-	if (crossing != INVALID_TILE) UpdateTrainCrossing(crossing);
+	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
 }
 
 /** Reverse train.
@@ -2856,7 +2856,7 @@ static void SetVehicleCrashed(Vehicle *v)
 	END_ENUM_WAGONS(v)
 
 	/* must be updated after the train has been marked crashed */
-	if (crossing != INVALID_TILE) UpdateTrainCrossing(crossing);
+	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
 }
 
 static uint CountPassengersInTrain(const Vehicle* v)
@@ -3148,7 +3148,7 @@ static void TrainController(Vehicle *v, bool update_image)
 			 * (above) or the last vehicle moves. */
 			if (v->Next() == NULL) {
 				TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
-				if (IsLevelCrossingTile(gp.old_tile)) UpdateTrainCrossing(gp.old_tile);
+				if (IsLevelCrossingTile(gp.old_tile)) UpdateLevelCrossing(gp.old_tile);
 			}
 		}
 	}
@@ -3211,7 +3211,7 @@ static void DeleteLastWagon(Vehicle *v)
 	v = NULL; // make sure nobody will won't try to read 'v' anymore
 
 	/* check if the wagon was on a road/rail-crossing */
-	if (IsLevelCrossingTile(tile)) UpdateTrainCrossing(tile);
+	if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile);
 
 	/* Update signals */
 	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileDepotType(tile, TRANSPORT_RAIL)) {

@@ -65,6 +65,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "variables.h"
+#include "road_func.h"
 
 #include "bridge_map.h"
 #include "clear_map.h"
@@ -2310,6 +2311,13 @@ bool AfterLoadGame()
 					if (!IsValidPlayer(o) || o == p->index || !GetPlayer(o)->is_active) p->share_owners[i] = PLAYER_SPECTATOR;
 				}
 			}
+		}
+	}
+
+	if (CheckSavegameVersion(86)) {
+		/* Now all crossings should be in correct state */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t);
 		}
 	}
 

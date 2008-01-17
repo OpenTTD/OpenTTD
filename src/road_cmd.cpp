@@ -32,6 +32,7 @@
 #include "vehicle_func.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
+#include "road_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -486,6 +487,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 				/* Always add road to the roadtypes (can't draw without it) */
 				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
+				UpdateLevelCrossing(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			return CommandCost(EXPENSES_CONSTRUCTION, _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));
@@ -1343,11 +1345,9 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 {
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_CROSSING:
-			if (v->type == VEH_TRAIN && !IsCrossingBarred(tile)) {
-				/* train crossing a road */
-				SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
-				BarCrossing(tile);
-				MarkTileDirtyByTile(tile);
+			if (v->type == VEH_TRAIN) {
+				/* it should be barred */
+				assert(IsCrossingBarred(tile));
 			}
 			break;
 

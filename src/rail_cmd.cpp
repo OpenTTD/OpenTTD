@@ -383,6 +383,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 						(track == TRACK_Y && road == ROAD_X)) {
 					if (flags & DC_EXEC) {
 						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
+						UpdateLevelCrossing(tile);
 					}
 					break;
 				}

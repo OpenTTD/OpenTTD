@@ -41,6 +41,7 @@
 #include "sound_func.h"
 #include "track_type.h"
 #include "track_func.h"
+#include "road_func.h"
 #include "rail_map.h"
 #include "signal_func.h"
 #include "gfx_func.h"
@@ -432,7 +433,9 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 		if (new_player != PLAYER_SPECTATOR) {
 			/* Update all signals because there can be new segment that was owned by two players
-			 * and signals were not propagated */
+			 * and signals were not propagated
+			 * Similiar with crossings - it is needed to bar crossings that weren't before
+			 * because of different owner of crossing and approaching train */
 			tile = 0;
 
 			do {
@@ -442,6 +445,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 						Track track = RemoveFirstTrack(&tracks);
 						if (HasSignalOnTrack(tile, track)) AddTrackToSignalBuffer(tile, track, new_player);
 					} while (tracks != TRACK_BIT_NONE);
+				} else if (IsLevelCrossingTile(tile) && IsTileOwner(tile, new_player)) {
+					UpdateLevelCrossing(tile);
 				}
 			} while (++tile != MapSize());
 
