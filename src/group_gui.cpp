@@ -305,7 +305,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		case WE_INVALIDATE_DATA:
 			gv->l.flags |= VL_REBUILD;
 			gl->l.flags |= VL_REBUILD;
-			if (!IsValidGroupID(gv->group_sel)) {
+			if (!(IsAllGroupID(gv->group_sel) || IsDefaultGroupID(gv->group_sel) || IsValidGroupID(gv->group_sel))) {
 				gv->group_sel = ALL_GROUP;
 				HideDropDownMenu(w);
 			}
@@ -503,6 +503,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK:
+			HideDropDownMenu(w);
+
 			switch(e->we.click.widget) {
 				case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
 					gv->l.flags ^= VL_DESC;
