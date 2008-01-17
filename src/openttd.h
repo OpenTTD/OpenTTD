@@ -38,9 +38,9 @@ typedef uint16 DestinationID;
 /* DestinationID must be at least as large as every these below, because it can
  * be any of them
  */
-assert_compile(sizeof(DestinationID) == sizeof(DepotID));
-assert_compile(sizeof(DestinationID) == sizeof(WaypointID));
-assert_compile(sizeof(DestinationID) == sizeof(StationID));
+assert_compile(sizeof(DestinationID) >= sizeof(DepotID));
+assert_compile(sizeof(DestinationID) >= sizeof(WaypointID));
+assert_compile(sizeof(DestinationID) >= sizeof(StationID));
 
 enum GameModes {
 	GM_MENU,
