@@ -1,0 +1,11 @@
+Makefile*
+bin/*
+!bin/data/chars.grf
+!bin/data/openttdd.grf
+!bin/data/openttdw.grf
+!bin/data/opntitle.grf
+!bin/scenario/README
+!bin/scripts*
+config.*
+objs/*
+src/rev.cpp
