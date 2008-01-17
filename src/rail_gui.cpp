@@ -723,7 +723,6 @@ enum BuildRailStationWidgets {
 	BRSW_HIGHLIGHT_ON,
 
 	BRSW_NEWST_DROPDOWN,
-	BRSW_NEWST_DROPDOWN_TEXT,
 	BRSW_NEWST_LIST,
 	BRSW_NEWST_SCROLL
 };
@@ -1004,8 +1003,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case BRSW_NEWST_DROPDOWN:
-		case BRSW_NEWST_DROPDOWN_TEXT:
-			ShowDropDownList(w, BuildStationClassDropDown(), _railstation.station_class, BRSW_NEWST_DROPDOWN_TEXT);
+			ShowDropDownList(w, BuildStationClassDropDown(), _railstation.station_class, BRSW_NEWST_DROPDOWN);
 			break;
 
 		case BRSW_NEWST_LIST: {
@@ -1122,8 +1120,7 @@ static const Widget _newstation_builder_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   242,   253, STR_02DA_ON,                     STR_3064_HIGHLIGHT_COVERAGE_AREA},    // BRSW_HIGHLIGHT_ON
 
 /* newstations gui additions */
-{      WWT_INSET,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD,                        STR_SELECT_STATION_CLASS_TIP},        // BRSW_NEWST_DROPDOWN
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   129,   139,    18,    27, STR_0225,                        STR_SELECT_STATION_CLASS_TIP},        // BRSW_NEWST_DROPDOWN_TEXT
+{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD,                        STR_SELECT_STATION_CLASS_TIP},        // BRSW_NEWST_DROPDOWN
 {     WWT_MATRIX,   RESIZE_NONE,    14,     7,   128,    32,   102, 0x501,                           STR_SELECT_STATION_TYPE_TIP},         // BRSW_NEWST_LIST
 {  WWT_SCROLLBAR,   RESIZE_NONE,    14,   129,   140,    32,   102, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST},    // BRSW_NEWST_SCROLL
 {   WIDGETS_END},

@@ -743,14 +743,12 @@ enum VehicleListWindowWidgets {
 	VLW_WIDGET_CAPTION,
 	VLW_WIDGET_STICKY,
 	VLW_WIDGET_SORT_ORDER,
-	VLW_WIDGET_SORT_BY_TEXT,
 	VLW_WIDGET_SORT_BY_PULLDOWN,
 	VLW_WIDGET_EMPTY_TOP_RIGHT,
 	VLW_WIDGET_LIST,
 	VLW_WIDGET_SCROLLBAR,
 	VLW_WIDGET_OTHER_PLAYER_FILLER,
 	VLW_WIDGET_AVAILABLE_VEHICLES,
-	VLW_WIDGET_MANAGE_VEHICLES,
 	VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 	VLW_WIDGET_STOP_ALL,
 	VLW_WIDGET_START_ALL,
@@ -763,8 +761,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
 	{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
 	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
-	{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
-	{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,             STR_SORT_CRITERIA_TIP},
+	{   WWT_DROPDOWN,   RESIZE_NONE,    14,    81,   247,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
 	{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                  STR_NULL},
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x0,                  STR_NULL},
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -772,8 +769,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
 
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   105,   170,   181, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-	{    WWT_TEXTBTN,     RESIZE_TB,    14,   106,   211,   170,   181, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
-	{    WWT_TEXTBTN,     RESIZE_TB,    14,   212,   223,   170,   181, STR_0225,             STR_MANAGE_LIST_TIP},
+	{   WWT_DROPDOWN,     RESIZE_TB,    14,   106,   223,   170,   181, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
 
 	{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
 	{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
@@ -801,7 +797,6 @@ static void CreateVehicleListWindow(Window *w)
 	} else {
 		w->SetWidgetsHiddenState(true,
 			VLW_WIDGET_AVAILABLE_VEHICLES,
-			VLW_WIDGET_MANAGE_VEHICLES,
 			VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 			VLW_WIDGET_STOP_ALL,
 			VLW_WIDGET_START_ALL,
@@ -983,7 +978,6 @@ static void DrawVehicleListWindow(Window *w)
 	}
 
 	w->SetWidgetsDisabledState(vl->l.list_length == 0,
-		VLW_WIDGET_MANAGE_VEHICLES,
 		VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 		VLW_WIDGET_STOP_ALL,
 		VLW_WIDGET_START_ALL,
@@ -1059,7 +1053,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					vl->_sorting->order = !!(vl->l.flags & VL_DESC);
 					SetWindowDirty(w);
 					break;
-				case VLW_WIDGET_SORT_BY_TEXT: case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
+				case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
 					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, 0);
 					return;
 				case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
@@ -1081,7 +1075,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					ShowBuildVehicleWindow(0, vl->vehicle_type);
 					break;
 
-				case VLW_WIDGET_MANAGE_VEHICLES:
 				case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {
 					static StringID action_str[] = {
 						STR_REPLACE_VEHICLES,

@@ -49,7 +49,6 @@ enum ReplaceVehicleWindowWidgets {
 
 	RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
 	RVW_WIDGET_TRAIN_FLUFF_LEFT,
-	RVW_WIDGET_TRAIN_RAILTYPE_TEXT,
 	RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
 	RVW_WIDGET_TRAIN_FLUFF_RIGHT,
 	RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
@@ -311,13 +310,13 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				w->widget[RVW_WIDGET_TRAIN_FLUFF_RIGHT].color = _player_colors[_local_player];
 			}
 
-			DrawWindowWidgets(w);
-
 			if (w->window_number == VEH_TRAIN) {
-				/* Draw the selected railtype in the pulldown menu */
+				/* Show the selected railtype in the pulldown menu */
 				RailType railtype = _railtype_selected_in_replace_gui;
-				DrawString(157, w->widget[RVW_WIDGET_TRAIN_RAILTYPE_TEXT].top + 1, _rail_types_list[railtype], TC_BLACK);
+				w->widget[RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN].data = _rail_types_list[railtype];
 			}
+
+			DrawWindowWidgets(w);
 
 			/* sets up the string for the vehicle that is being replaced to */
 			if (selected_id[0] != INVALID_ENGINE) {
@@ -361,7 +360,6 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 
-				case RVW_WIDGET_TRAIN_RAILTYPE_TEXT:
 				case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: /* Railtype selection dropdown menu */
 					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN, 0, ~GetPlayer(_local_player)->avail_railtypes);
 					break;
@@ -457,8 +455,7 @@ static const Widget _replace_rail_vehicle_widgets[] = {
 // train specific stuff
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   228,   239, STR_REPLACE_ENGINE_WAGON_SELECT,       STR_REPLACE_ENGINE_WAGON_SELECT_HELP},  // widget 12
 {      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   240,   251, 0x0,            STR_NULL},
-{      WWT_PANEL,     RESIZE_TB,    14,   154,   277,   240,   251, 0x0,            STR_REPLACE_HELP_RAILTYPE},
-{    WWT_TEXTBTN,     RESIZE_TB,    14,   278,   289,   240,   251, STR_0225,       STR_REPLACE_HELP_RAILTYPE},
+{   WWT_DROPDOWN,     RESIZE_TB,    14,   154,   289,   240,   251, 0x0,            STR_REPLACE_HELP_RAILTYPE},
 {      WWT_PANEL,     RESIZE_TB,    14,   290,   305,   240,   251, 0x0,            STR_NULL},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   317,   455,   228,   239, STR_REPLACE_REMOVE_WAGON,       STR_REPLACE_REMOVE_WAGON_HELP},
 // end of train specific stuff
