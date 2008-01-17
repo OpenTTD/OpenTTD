@@ -119,6 +119,12 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 }
 
+enum PlayerFinancesWindowWidgets {
+	PFW_WIDGET_TOGGLE_SIZE   = 2,
+	PFW_WIDGET_INCREASE_LOAN = 6,
+	PFW_WIDGET_REPAY_LOAN    = 7,
+};
+
 static const Widget _player_finances_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -159,15 +165,15 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			w->height = new_height;
 			SetWindowDirty(w);
 
-			w->SetWidgetHiddenState(6, player != _local_player);
-			w->SetWidgetHiddenState(7, player != _local_player);
+			w->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
+			w->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
 		}
 
 		/* Borrow button only shows when there is any more money to loan */
-		w->SetWidgetDisabledState(6, p->current_loan == _economy.max_loan);
+		w->SetWidgetDisabledState(PFW_WIDGET_INCREASE_LOAN, p->current_loan == _economy.max_loan);
 
 		/* Repay button only shows when there is any more money to repay */
-		w->SetWidgetDisabledState(7, player != _local_player || p->current_loan == 0);
+		w->SetWidgetDisabledState(PFW_WIDGET_REPAY_LOAN, player != _local_player || p->current_loan == 0);
 
 		SetDParam(0, p->index);
 		SetDParam(1, p->index);
@@ -179,7 +185,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 2: {/* toggle size */
+		case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
 			byte mode = (byte)WP(w, def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
 			PlayerID player = (PlayerID)w->window_number;
@@ -187,11 +193,11 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			DoShowPlayerFinances(player, !HasBit(mode, 0), stickied);
 		} break;
 
-		case 6: /* increase loan */
+		case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
 			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
 			break;
 
-		case 7: /* repay loan */
+		case PFW_WIDGET_REPAY_LOAN: /* repay loan */
 			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
 			break;
 		}
@@ -278,6 +284,21 @@ struct livery_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(livery_d));
 
+
+enum PlayerLiveryWindowWidgets {
+	PLW_WIDGET_CLASS_GENERAL = 2,
+	PLW_WIDGET_CLASS_RAIL,
+	PLW_WIDGET_CLASS_ROAD,
+	PLW_WIDGET_CLASS_SHIP,
+	PLW_WIDGET_CLASS_AIRCRAFT,
+
+	PLW_WIDGET_PRI_COL_TEXT = 9,
+	PLW_WIDGET_PRI_COL_DROPDOWN,
+	PLW_WIDGET_SEC_COL_TEXT,
+	PLW_WIDGET_SEC_COL_DROPDOWN,
+	PLW_WIDGET_MATRIX,
+};
+
 static void ShowColourDropDownMenu(Window *w, uint32 widget)
 {
 	uint32 used_colours = 0;
@@ -285,7 +306,7 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 	LiveryScheme scheme;
 
 	/* Disallow other player colours for the primary colour */
-	if (HasBit(WP(w, livery_d).sel, LS_DEFAULT) && widget == 10) {
+	if (HasBit(WP(w, livery_d).sel, LS_DEFAULT) && widget == PLW_WIDGET_PRI_COL_DROPDOWN) {
 		const Player *p;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active && p->index != _local_player) SetBit(used_colours, p->player_color);
@@ -299,17 +320,17 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 	if (scheme == LS_END) scheme = LS_DEFAULT;
 	livery = &GetPlayer((PlayerID)w->window_number)->livery[scheme];
 
-	ShowDropDownMenu(w, _colour_dropdown, widget == 10 ? livery->colour1 : livery->colour2, widget, used_colours, 0);
+	ShowDropDownMenu(w, _colour_dropdown, widget == PLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget, used_colours, 0);
 }
 
 static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			w->LowerWidget(WP(w, livery_d).livery_class + 2);
+			w->LowerWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
 			if (!_loaded_newgrf_features.has_2CC) {
-				w->HideWidget(11);
-				w->HideWidget(12);
+				w->HideWidget(PLW_WIDGET_SEC_COL_TEXT);
+				w->HideWidget(PLW_WIDGET_SEC_COL_DROPDOWN);
 			}
 			break;
 
@@ -319,10 +340,10 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			int y = 51;
 
 			/* Disable dropdown controls if no scheme is selected */
-			w->SetWidgetDisabledState( 9, (WP(w, livery_d).sel == 0));
-			w->SetWidgetDisabledState(10, (WP(w, livery_d).sel == 0));
-			w->SetWidgetDisabledState(11, (WP(w, livery_d).sel == 0));
-			w->SetWidgetDisabledState(12, (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_TEXT,     (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_DROPDOWN, (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_TEXT,     (WP(w, livery_d).sel == 0));
+			w->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_DROPDOWN, (WP(w, livery_d).sel == 0));
 
 			if (!(WP(w, livery_d).sel == 0)) {
 				for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
@@ -363,17 +384,17 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
 				/* Livery Class buttons */
-				case 2:
-				case 3:
-				case 4:
-				case 5:
-				case 6: {
+				case PLW_WIDGET_CLASS_GENERAL:
+				case PLW_WIDGET_CLASS_RAIL:
+				case PLW_WIDGET_CLASS_ROAD:
+				case PLW_WIDGET_CLASS_SHIP:
+				case PLW_WIDGET_CLASS_AIRCRAFT: {
 					LiveryScheme scheme;
 
-					w->RaiseWidget(WP(w, livery_d).livery_class + 2);
-					WP(w, livery_d).livery_class = (LiveryClass)(e->we.click.widget - 2);
+					w->RaiseWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
+					WP(w, livery_d).livery_class = (LiveryClass)(e->we.click.widget - PLW_WIDGET_CLASS_GENERAL);
 					WP(w, livery_d).sel = 0;
-					w->LowerWidget(WP(w, livery_d).livery_class + 2);
+					w->LowerWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
 
 					/* Select the first item in the list */
 					for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
@@ -383,23 +404,23 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 						}
 					}
 					w->height = 49 + livery_height[WP(w, livery_d).livery_class] * 14;
-					w->widget[13].bottom = w->height - 1;
-					w->widget[13].data = livery_height[WP(w, livery_d).livery_class] << 8 | 1;
+					w->widget[PLW_WIDGET_MATRIX].bottom = w->height - 1;
+					w->widget[PLW_WIDGET_MATRIX].data = livery_height[WP(w, livery_d).livery_class] << 8 | 1;
 					MarkWholeScreenDirty();
 					break;
 				}
 
-				case 9:
-				case 10: /* First colour dropdown */
-					ShowColourDropDownMenu(w, 10);
+				case PLW_WIDGET_PRI_COL_TEXT:
+				case PLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
+					ShowColourDropDownMenu(w, PLW_WIDGET_PRI_COL_DROPDOWN);
 					break;
 
-				case 11:
-				case 12: /* Second colour dropdown */
-					ShowColourDropDownMenu(w, 12);
+				case PLW_WIDGET_SEC_COL_TEXT:
+				case PLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
+					ShowColourDropDownMenu(w, PLW_WIDGET_SEC_COL_DROPDOWN);
 					break;
 
-				case 13: {
+				case PLW_WIDGET_MATRIX: {
 					LiveryScheme scheme;
 					LiveryScheme j = (LiveryScheme)((e->we.click.pt.y - 48) / 14);
 
@@ -431,7 +452,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (HasBit(WP(w, livery_d).sel, scheme)) {
-					DoCommandP(0, scheme | (e->we.dropdown.button == 10 ? 0 : 256), e->we.dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
+					DoCommandP(0, scheme | (e->we.dropdown.button == PLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), e->we.dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
 				}
 			}
 			break;
