@@ -73,15 +73,18 @@ enum GenerateLandscapeWindowWidgets {
 	GLAND_INDUSTRY_TEXT,
 	GLAND_INDUSTRY_PULLDOWN,
 
+	GLAND_RANDOM_TEXT,
 	GLAND_RANDOM_EDITBOX,
 	GLAND_RANDOM_BUTTON,
 
 	GLAND_GENERATE_BUTTON,
 
+	GLAND_START_DATE_TEXT1,
 	GLAND_START_DATE_DOWN,
 	GLAND_START_DATE_TEXT,
 	GLAND_START_DATE_UP,
 
+	GLAND_SNOW_LEVEL_TEXT1,
 	GLAND_SNOW_LEVEL_DOWN,
 	GLAND_SNOW_LEVEL_TEXT,
 	GLAND_SNOW_LEVEL_UP,
@@ -111,39 +114,47 @@ static const Widget _generate_landscape_widgets[] = {
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL,      STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,           STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 149,  90, 101, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161,  90, 101, STR_0225,                     STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 180, 215,  90, 101, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227,  90, 101, STR_0225,                     STR_NULL}, // Mapsize Y
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110,  91, 101, STR_MAPSIZE,                  STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 161,  90, 101, 0x0,                          STR_NULL}, // Mapsize X
+{       WWT_TEXT, RESIZE_NONE,  0, 168, 176,  91, 101, STR_BY,                       STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 180, 227,  90, 101, 0x0,                          STR_NULL}, // Mapsize Y
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 112, 123, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 112, 123, STR_0225,                     STR_NULL}, // Number of towns
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 130, 141, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 130, 141, STR_0225,                     STR_NULL}, // Number of industries
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 113, 123, STR_NUMBER_OF_TOWNS,          STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 112, 123, 0x0,                          STR_NULL}, // Number of towns
 
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 131, 141, STR_NUMBER_OF_INDUSTRIES,     STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 130, 141, 0x0,                          STR_NULL}, // Number of industries
+
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 153, 163, STR_RANDOM_SEED,              STR_NULL},
 {      WWT_PANEL, RESIZE_NONE, 15, 114, 207, 152, 163, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 326, 152, 163, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 228, 257, STR_GENERATE,                 STR_NULL}, // Generate button
 
+{       WWT_TEXT, RESIZE_NONE,  0, 182, 212, 113, 123, STR_DATE,                     STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 112, 123, SPR_ARROW_DOWN,               STR_029E_MOVE_THE_STARTING_DATE},
 {      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 112, 123, 0x0,                          STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 112, 123, SPR_ARROW_UP,                 STR_029F_MOVE_THE_STARTING_DATE},
 
+{       WWT_TEXT, RESIZE_NONE,  0, 182, 278, 131, 141, STR_SNOW_LINE_HEIGHT,         STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 130, 141, SPR_ARROW_DOWN,               STR_SNOW_LINE_DOWN},
 {      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 130, 141, 0x0,                          STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 130, 141, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 192, 203, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 192, 203, STR_0225,                     STR_NULL}, // Tree placer
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 174, 185, STR_0225,                     STR_NULL}, // Landscape generator
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 210, 221, STR_0225,                     STR_NULL}, // Terrain type
-{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 228, 239, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 228, 239, STR_0225,                     STR_NULL}, // Water quantity
-{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 246, 257, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 246, 257, STR_0225,                     STR_NULL}, // Map smoothness
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 193, 203, STR_TREE_PLACER,              STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 192, 203, 0x0,                          STR_NULL}, // Tree placer
+
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 175, 185, STR_LAND_GENERATOR,           STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 174, 185, 0x0,                          STR_NULL}, // Landscape generator
+
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 211, 221, STR_TERRAIN_TYPE,             STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 210, 221, 0x0,                          STR_NULL}, // Terrain type
+
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 229, 239, STR_QUANTITY_OF_SEA_LAKES,    STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 228, 239, 0x0,                          STR_NULL}, // Water quantity
+
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 245, 257, STR_SMOOTHNESS,               STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 246, 257, 0x0,                          STR_NULL}, // Map smoothness
 {   WIDGETS_END},
 };
 
@@ -157,34 +168,39 @@ static const Widget _heightmap_load_widgets[] = {
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL,     STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,          STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 149, 112, 123, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161, 112, 123, STR_0225,                     STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 180, 215, 112, 123, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227, 112, 123, STR_0225,                     STR_NULL}, // Mapsize Y
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 113, 123, STR_MAPSIZE,                  STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 161, 112, 123, 0x0,                          STR_NULL}, // Mapsize X
+{       WWT_TEXT, RESIZE_NONE,  0, 168, 176, 113, 123, STR_BY,                       STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 180, 227, 112, 123, 0x0,                          STR_NULL}, // Mapsize Y
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 134, 145, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 134, 145, STR_0225,                     STR_NULL}, // Number of towns
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 152, 163, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 152, 163, STR_0225,                     STR_NULL}, // Number of industries
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 135, 145, STR_NUMBER_OF_TOWNS,          STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 134, 145, 0x0,                          STR_NULL}, // Number of towns
 
-{      WWT_PANEL, RESIZE_NONE, 15, 114, 194, 174, 185, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 174, 185, STR_RANDOM,                   STR_RANDOM_HELP},
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 153, 163, STR_NUMBER_OF_INDUSTRIES,     STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 152, 163, 0x0,                          STR_NULL}, // Number of industries
+
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 175, 185, STR_RANDOM_SEED,              STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 15, 114, 207, 174, 185, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 326, 174, 185, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 196, 225, STR_GENERATE,                 STR_NULL}, // Generate button
 
+{       WWT_TEXT, RESIZE_NONE,  0, 182, 212, 135, 145, STR_DATE,                     STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 134, 145, SPR_ARROW_DOWN,               STR_029E_MOVE_THE_STARTING_DATE},
 {      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 134, 145, 0x0,                          STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 134, 145, SPR_ARROW_UP,                 STR_029F_MOVE_THE_STARTING_DATE},
 
+{       WWT_TEXT, RESIZE_NONE,  0, 182, 278, 153, 163, STR_SNOW_LINE_HEIGHT,         STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 152, 163, SPR_ARROW_DOWN,               STR_SNOW_LINE_DOWN},
 {      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 152, 163, 0x0,                          STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 152, 163, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 196, 207, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 196, 207, STR_0225,                     STR_NULL}, // Tree placer
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 197, 207, STR_TREE_PLACER,              STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 196, 207, STR_0225,                     STR_NULL}, // Tree placer
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 214, 225, 0x0,                          STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 214, 225, STR_0225,                     STR_NULL}, // Heightmap rotation
+{       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 215, 225, STR_HEIGHTMAP_ROTATION,       STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 231, 214, 225, STR_0225,                     STR_NULL}, // Heightmap rotation
+
 {   WIDGETS_END},
 };
 
@@ -256,17 +272,13 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT:
 		/* You can't select smoothness if not terragenesis */
 		if (mode == GLWP_GENERATE) {
-			w->SetWidgetDisabledState(GLAND_SMOOTHNESS_TEXT,     _patches_newgame.land_generator == 0);
 			w->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _patches_newgame.land_generator == 0);
 		}
 		/* Disable snowline if not hilly */
 		w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_ARCTIC);
 		/* Disable town, industry and trees in SE */
-		w->SetWidgetDisabledState(GLAND_TOWN_TEXT,         _game_mode == GM_EDITOR);
 		w->SetWidgetDisabledState(GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
-		w->SetWidgetDisabledState(GLAND_INDUSTRY_TEXT,     _game_mode == GM_EDITOR);
 		w->SetWidgetDisabledState(GLAND_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
-		w->SetWidgetDisabledState(GLAND_TREE_TEXT,         _game_mode == GM_EDITOR);
 		w->SetWidgetDisabledState(GLAND_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
 
 		w->SetWidgetDisabledState(GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
@@ -278,54 +290,45 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		w->SetWidgetLoweredState(GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
 		w->SetWidgetLoweredState(GLAND_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
 		w->SetWidgetLoweredState(GLAND_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
+
+		if (_game_mode == GM_EDITOR) {
+			w->widget[GLAND_TOWN_PULLDOWN].data     = STR_6836_OFF;
+			w->widget[GLAND_INDUSTRY_PULLDOWN].data = STR_6836_OFF;
+		} else {
+			w->widget[GLAND_TOWN_PULLDOWN].data     = num_towns[_opt_newgame.diff.number_towns];
+			w->widget[GLAND_INDUSTRY_PULLDOWN].data = num_inds[_opt_newgame.diff.number_industries];
+		}
+
+		if (mode == GLWP_GENERATE) {
+			w->widget[GLAND_LANDSCAPE_PULLDOWN].data  = landscape[_patches_newgame.land_generator];
+			w->widget[GLAND_TREE_PULLDOWN].data       = tree_placer[_patches_newgame.tree_placer];
+			w->widget[GLAND_TERRAIN_PULLDOWN].data    = elevations[_opt_newgame.diff.terrain_type];
+			w->widget[GLAND_WATER_PULLDOWN].data      = sea_lakes[_opt_newgame.diff.quantity_sea_lakes];
+			w->widget[GLAND_SMOOTHNESS_PULLDOWN].data = smoothness[_patches_newgame.tgen_smoothness];
+		} else {
+			w->widget[GLAND_TREE_PULLDOWN].data               = tree_placer[_patches_newgame.tree_placer];
+			w->widget[GLAND_HEIGHTMAP_ROTATION_PULLDOWN].data = rotation[_patches_newgame.heightmap_rotation];
+		}
+
 		DrawWindowWidgets(w);
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
 
-		DrawString( 12,  91 + y, STR_MAPSIZE, TC_FROMSTRING);
 		SetDParam(0, 1 << _patches_newgame.map_x);
 		DrawString(119,  91 + y, STR_JUST_INT, TC_BLACK);
-		DrawString(168,  91 + y, STR_BY, TC_FROMSTRING);
+
 		SetDParam(0, 1 << _patches_newgame.map_y);
 		DrawString(182,  91 + y, STR_JUST_INT, TC_BLACK);
 
-		DrawString( 12, 113 + y, STR_NUMBER_OF_TOWNS, TC_FROMSTRING);
-		DrawString( 12, 131 + y, STR_NUMBER_OF_INDUSTRIES, TC_FROMSTRING);
-		if (_game_mode == GM_EDITOR) {
-			DrawString(118, 113 + y, STR_6836_OFF, TC_BLACK);
-			DrawString(118, 131 + y, STR_6836_OFF, TC_BLACK);
-		} else {
-			DrawString(118, 113 + y, num_towns[_opt_newgame.diff.number_towns], TC_BLACK);
-			DrawString(118, 131 + y, num_inds[_opt_newgame.diff.number_industries], TC_BLACK);
-		}
-
-		DrawString( 12, 153 + y, STR_RANDOM_SEED, TC_FROMSTRING);
 		DrawEditBox(w, &_genseed_query, GLAND_RANDOM_EDITBOX);
 
-		DrawString(182, 113 + y, STR_DATE, TC_FROMSTRING);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 		DrawStringCentered(271, 113 + y, STR_GENERATE_DATE, TC_FROMSTRING);
 
-		DrawString(182, 131 + y, STR_SNOW_LINE_HEIGHT, TC_FROMSTRING);
 		SetDParam(0, _patches_newgame.snow_line_height);
 		DrawStringCentered(303, 131 + y, STR_SNOW_LINE_HEIGHT_NUM, TC_BLACK);
 
-		if (mode == GLWP_GENERATE) {
-			DrawString( 12, 175, STR_LAND_GENERATOR, TC_FROMSTRING);
-			DrawString(118, 175, landscape[_patches_newgame.land_generator], TC_BLACK);
-
-			DrawString( 12, 193, STR_TREE_PLACER, TC_FROMSTRING);
-			DrawString(118, 193, tree_placer[_patches_newgame.tree_placer], TC_BLACK);
-
-			DrawString( 12, 211, STR_TERRAIN_TYPE, TC_FROMSTRING);
-			DrawString(118, 211, elevations[_opt_newgame.diff.terrain_type], TC_BLACK);
-
-			DrawString( 12, 229, STR_QUANTITY_OF_SEA_LAKES, TC_FROMSTRING);
-			DrawString(118, 229, sea_lakes[_opt_newgame.diff.quantity_sea_lakes], TC_BLACK);
-
-			DrawString( 12, 247, STR_SMOOTHNESS, TC_FROMSTRING);
-			DrawString(118, 247, smoothness[_patches_newgame.tgen_smoothness], TC_BLACK);
-		} else {
+		if (mode != GLWP_GENERATE) {
 			char buffer[512];
 
 			if (_patches_newgame.heightmap_rotation == HM_CLOCKWISE) {
@@ -341,12 +344,6 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			DrawString( 12,  91, STR_HEIGHTMAP_NAME, TC_BLACK);
 			SetDParamStr(0, WP(w, generate_d).name);
 			DrawStringTruncated(114,  91, STR_ORANGE, TC_BLACK, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
-
-			DrawString( 12, 197, STR_TREE_PLACER, TC_FROMSTRING);
-			DrawString(118, 197, tree_placer[_patches_newgame.tree_placer], TC_BLACK);
-
-			DrawString( 12, 215, STR_HEIGHTMAP_ROTATION, TC_FROMSTRING);
-			DrawString(118, 215, rotation[_patches_newgame.heightmap_rotation], TC_BLACK);
 		}
 
 		break;
@@ -357,16 +354,16 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			w->RaiseWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
 			SetNewLandscapeType(e->we.click.widget - GLAND_TEMPERATE);
 			break;
-		case GLAND_MAPSIZE_X_TEXT: case GLAND_MAPSIZE_X_PULLDOWN: // Mapsize X
+		case GLAND_MAPSIZE_X_PULLDOWN: // Mapsize X
 			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_x, GLAND_MAPSIZE_X_PULLDOWN);
 			break;
-		case GLAND_MAPSIZE_Y_TEXT: case GLAND_MAPSIZE_Y_PULLDOWN: // Mapsize Y
+		case GLAND_MAPSIZE_Y_PULLDOWN: // Mapsize Y
 			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_y, GLAND_MAPSIZE_Y_PULLDOWN);
 			break;
-		case GLAND_TOWN_TEXT: case GLAND_TOWN_PULLDOWN: // Number of towns
+		case GLAND_TOWN_PULLDOWN: // Number of towns
 			ShowDropDownMenu(w, num_towns, _opt_newgame.diff.number_towns, GLAND_TOWN_PULLDOWN, 0, 0);
 			break;
-		case GLAND_INDUSTRY_TEXT: case GLAND_INDUSTRY_PULLDOWN: // Number of industries
+		case GLAND_INDUSTRY_PULLDOWN: // Number of industries
 			ShowDropDownMenu(w, num_inds, _opt_newgame.diff.number_industries, GLAND_INDUSTRY_PULLDOWN, 0, 0);
 			break;
 		case GLAND_RANDOM_BUTTON: // Random seed
@@ -430,10 +427,10 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, _patches_newgame.snow_line_height);
 			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
 			break;
-		case GLAND_TREE_TEXT: case GLAND_TREE_PULLDOWN: // Tree placer
+		case GLAND_TREE_PULLDOWN: // Tree placer
 			ShowDropDownMenu(w, tree_placer, _patches_newgame.tree_placer, GLAND_TREE_PULLDOWN, 0, 0);
 			break;
-		case GLAND_LANDSCAPE_TEXT: case GLAND_LANDSCAPE_PULLDOWN: // Landscape generator OR Heightmap rotation
+		case GLAND_LANDSCAPE_PULLDOWN: // Landscape generator OR Heightmap rotation
 		/* case GLAND_HEIGHTMAP_ROTATION_TEXT: case GLAND_HEIGHTMAP_ROTATION_PULLDOWN:*/
 			if (mode == GLWP_HEIGHTMAP) {
 				ShowDropDownMenu(w, rotation, _patches_newgame.heightmap_rotation, GLAND_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
@@ -441,13 +438,13 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				ShowDropDownMenu(w, landscape, _patches_newgame.land_generator, GLAND_LANDSCAPE_PULLDOWN, 0, 0);
 			}
 			break;
-		case GLAND_TERRAIN_TEXT: case GLAND_TERRAIN_PULLDOWN: // Terrain type
+		case GLAND_TERRAIN_PULLDOWN: // Terrain type
 			ShowDropDownMenu(w, elevations, _opt_newgame.diff.terrain_type, GLAND_TERRAIN_PULLDOWN, 0, 0);
 			break;
-		case GLAND_WATER_TEXT: case GLAND_WATER_PULLDOWN: // Water quantity
+		case GLAND_WATER_PULLDOWN: // Water quantity
 			ShowDropDownMenu(w, sea_lakes, _opt_newgame.diff.quantity_sea_lakes, GLAND_WATER_PULLDOWN, 0, 0);
 			break;
-		case GLAND_SMOOTHNESS_TEXT: case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
+		case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
 			ShowDropDownMenu(w, smoothness, _patches_newgame.tgen_smoothness, GLAND_SMOOTHNESS_PULLDOWN, 0, 0);
 			break;
 		}
