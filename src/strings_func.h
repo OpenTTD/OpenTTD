@@ -72,7 +72,7 @@ int CDECL StringIDSorter(const void *a, const void *b);
 /** Key comparison function for std::map */
 struct StringIDCompare
 {
-	bool operator()(StringID s1, StringID s2) { return StringIDSorter(&s1, &s2) < 0; }
+	bool operator()(StringID s1, StringID s2) const { return StringIDSorter(&s1, &s2) < 0; }
 };
 
 void CheckForMissingGlyphsInLoadedLanguagePack();
