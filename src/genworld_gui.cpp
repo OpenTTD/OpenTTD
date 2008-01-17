@@ -25,6 +25,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "settings_type.h"
+#include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
@@ -211,9 +212,21 @@ static void LandscapeGenerationCallback(Window *w, bool confirmed)
 	if (confirmed) StartGeneratingLandscape((glwp_modes)w->window_number);
 }
 
+static DropDownList *BuildMapsizeDropDown()
+{
+	DropDownList *list = new DropDownList();
+
+	for (uint i = 6; i <= 11; i++) {
+		DropDownListParamStringItem *item = new DropDownListParamStringItem(STR_JUST_INT, i, false);
+		item->SetParam(0, 1 << i);
+		list->push_back(item);
+	}
+
+	return list;
+}
+
 static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 {
-	static const StringID mapsizes[]    = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
 	static const StringID elevations[]  = {STR_682A_VERY_FLAT, STR_682B_FLAT, STR_682C_HILLY, STR_682D_MOUNTAINOUS, INVALID_STRING_ID};
 	static const StringID sea_lakes[]   = {STR_VERY_LOW, STR_6820_LOW, STR_6821_MEDIUM, STR_6822_HIGH, INVALID_STRING_ID};
 	static const StringID smoothness[]  = {STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
@@ -270,9 +283,11 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
 
 		DrawString( 12,  91 + y, STR_MAPSIZE, TC_FROMSTRING);
-		DrawString(119,  91 + y, mapsizes[_patches_newgame.map_x - 6], TC_BLACK);
+		SetDParam(0, 1 << _patches_newgame.map_x);
+		DrawString(119,  91 + y, STR_JUST_INT, TC_BLACK);
 		DrawString(168,  91 + y, STR_BY, TC_FROMSTRING);
-		DrawString(182,  91 + y, mapsizes[_patches_newgame.map_y - 6], TC_BLACK);
+		SetDParam(0, 1 << _patches_newgame.map_y);
+		DrawString(182,  91 + y, STR_JUST_INT, TC_BLACK);
 
 		DrawString( 12, 113 + y, STR_NUMBER_OF_TOWNS, TC_FROMSTRING);
 		DrawString( 12, 131 + y, STR_NUMBER_OF_INDUSTRIES, TC_FROMSTRING);
@@ -343,10 +358,10 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			SetNewLandscapeType(e->we.click.widget - GLAND_TEMPERATE);
 			break;
 		case GLAND_MAPSIZE_X_TEXT: case GLAND_MAPSIZE_X_PULLDOWN: // Mapsize X
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, GLAND_MAPSIZE_X_PULLDOWN, 0, 0);
+			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_x, GLAND_MAPSIZE_X_PULLDOWN);
 			break;
 		case GLAND_MAPSIZE_Y_TEXT: case GLAND_MAPSIZE_Y_PULLDOWN: // Mapsize Y
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_y - 6, GLAND_MAPSIZE_Y_PULLDOWN, 0, 0);
+			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_y, GLAND_MAPSIZE_Y_PULLDOWN);
 			break;
 		case GLAND_TOWN_TEXT: case GLAND_TOWN_PULLDOWN: // Number of towns
 			ShowDropDownMenu(w, num_towns, _opt_newgame.diff.number_towns, GLAND_TOWN_PULLDOWN, 0, 0);
@@ -454,8 +469,8 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT:
 		switch (e->we.dropdown.button) {
-			case GLAND_MAPSIZE_X_PULLDOWN:  _patches_newgame.map_x = e->we.dropdown.index + 6; break;
-			case GLAND_MAPSIZE_Y_PULLDOWN:  _patches_newgame.map_y = e->we.dropdown.index + 6; break;
+			case GLAND_MAPSIZE_X_PULLDOWN:  _patches_newgame.map_x = e->we.dropdown.index; break;
+			case GLAND_MAPSIZE_Y_PULLDOWN:  _patches_newgame.map_y = e->we.dropdown.index; break;
 			case GLAND_TREE_PULLDOWN:       _patches_newgame.tree_placer = e->we.dropdown.index; break;
 			case GLAND_SMOOTHNESS_PULLDOWN: _patches_newgame.tgen_smoothness = e->we.dropdown.index;  break;
 
@@ -606,8 +621,6 @@ enum CreateScenarioWindowWidgets {
 
 static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 {
-	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
-
 	switch (e->event) {
 	case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + CSCEN_TEMPERATE); break;
 
@@ -624,9 +637,11 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		DrawStringRightAligned(211, 97, STR_MAPSIZE, TC_FROMSTRING);
-		DrawString(            221, 97, mapsizes[_patches_newgame.map_x - 6], TC_BLACK);
+		SetDParam(0, 1 << _patches_newgame.map_x);
+		DrawString(            221, 97, STR_JUST_INT, TC_BLACK);
 		DrawStringCentered(    272, 97, STR_BY, TC_FROMSTRING);
-		DrawString(            284, 97, mapsizes[_patches_newgame.map_y - 6], TC_BLACK);
+		SetDParam(0, 1 << _patches_newgame.map_y);
+		DrawString(            284, 97, STR_JUST_INT, TC_BLACK);
 
 		DrawStringRightAligned(211, 115, STR_DATE, TC_FROMSTRING);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
@@ -644,10 +659,10 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			SetNewLandscapeType(e->we.click.widget - CSCEN_TEMPERATE);
 			break;
 		case CSCEN_MAPSIZE_X_TEXT: case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, CSCEN_MAPSIZE_X_PULLDOWN, 0, 0);
+			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_x, CSCEN_MAPSIZE_X_PULLDOWN);
 			break;
 		case CSCEN_MAPSIZE_Y_TEXT: case CSCEN_MAPSIZE_Y_PULLDOWN: // Mapsize Y
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_y - 6, CSCEN_MAPSIZE_Y_PULLDOWN, 0, 0);
+			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_y, CSCEN_MAPSIZE_Y_PULLDOWN);
 			break;
 		case CSCEN_EMPTY_WORLD: // Empty world / flat world
 			StartGeneratingLandscape(GLWP_SCENARIO);
@@ -690,8 +705,8 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 
 	case WE_DROPDOWN_SELECT:
 		switch (e->we.dropdown.button) {
-			case CSCEN_MAPSIZE_X_PULLDOWN: _patches_newgame.map_x = e->we.dropdown.index + 6; break;
-			case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = e->we.dropdown.index + 6; break;
+			case CSCEN_MAPSIZE_X_PULLDOWN: _patches_newgame.map_x = e->we.dropdown.index; break;
+			case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = e->we.dropdown.index; break;
 		}
 		SetWindowDirty(w);
 		break;
