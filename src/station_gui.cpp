@@ -337,10 +337,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			/* draw widgets, with player's name in the caption */
 			SetDParam(0, owner);
 			SetDParam(1, w->vscroll.count);
+
+			/* Set text of sort by dropdown */
+			w->widget[SLW_SORTDROPBTN].data = _station_sort_listing[sl->sort_type];
+
 			DrawWindowWidgets(w);
 
-			/* draw sorting criteria string */
-			DrawString(85, 26, _station_sort_listing[sl->sort_type], TC_BLACK);
 			/* draw arrow pointing up/down for ascending/descending sorting */
 			DoDrawString(sl->flags & SL_ORDER ? DOWNARROW : UPARROW, 69, 26, TC_BLACK);
 
@@ -481,7 +483,6 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 
-				case SLW_SORTCRITERIA:
 				case SLW_SORTDROPBTN: // select sorting criteria dropdown menu
 					ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, SLW_SORTDROPBTN, 0, 0);
 					break;
@@ -591,8 +592,7 @@ static const Widget _player_stations_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   117,   357,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_RIGHT
 
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY,       STR_SORT_ORDER_TIP},               // SLW_SORTBY
-{      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    25,    36, 0x0,               STR_SORT_CRITERIA_TIP},            // SLW_SORTCRITERIA
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   233,   243,    25,    36, STR_0225,          STR_SORT_CRITERIA_TIP},            // SLW_SORTDROPBTN
+{   WWT_DROPDOWN,   RESIZE_NONE,    14,    81,   243,    25,    36, 0x0,               STR_SORT_CRITERIA_TIP},            // SLW_SORTDROPBTN
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   357,    25,    36, 0x0,               STR_NULL},                         // SLW_PAN_SORT_RIGHT
 {   WIDGETS_END},
 };

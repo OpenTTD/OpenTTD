@@ -115,7 +115,6 @@ enum GroupListWidgets {
 	GRP_WIDGET_LIST_GROUP,
 	GRP_WIDGET_LIST_GROUP_SCROLLBAR,
 	GRP_WIDGET_SORT_BY_ORDER,
-	GRP_WIDGET_SORT_BY_TEXT,
 	GRP_WIDGET_SORT_BY_DROPDOWN,
 	GRP_WIDGET_EMPTY_TOP_RIGHT,
 	GRP_WIDGET_LIST_VEHICLE,
@@ -127,7 +126,6 @@ enum GroupListWidgets {
 	GRP_WIDGET_REPLACE_PROTECTION,
 	GRP_WIDGET_EMPTY2,
 	GRP_WIDGET_AVAILABLE_VEHICLES,
-	GRP_WIDGET_MANAGE_VEHICLES,
 	GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 	GRP_WIDGET_STOP_ALL,
 	GRP_WIDGET_START_ALL,
@@ -146,8 +144,7 @@ static const Widget _group_widgets[] = {
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   188,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   189,   200,    52,   168, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   201,   281,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    14,   282,   435,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   436,   447,    14,    25, STR_0225,             STR_SORT_CRITERIA_TIP},
+{   WWT_DROPDOWN,   RESIZE_NONE,    14,   282,   447,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   448,   459,    14,    25, 0x0,                  STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,   201,   447,    26,   181, 0x701,                STR_NULL},
 { WWT_SCROLL2BAR,    RESIZE_LRB,    14,   448,   459,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
@@ -158,8 +155,7 @@ static const Widget _group_widgets[] = {
 { WWT_PUSHIMGBTN,     RESIZE_TB,    14,   165,   188,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},
 {      WWT_PANEL,     RESIZE_TB,    14,   189,   200,   169,   193, 0x0,                  STR_NULL},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   201,   306,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-{    WWT_TEXTBTN,     RESIZE_TB,    14,   307,   411,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
-{    WWT_TEXTBTN,     RESIZE_TB,    14,   412,   423,   182,   193, STR_0225,             STR_MANAGE_LIST_TIP},
+{   WWT_DROPDOWN,     RESIZE_TB,    14,   307,   423,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
 { WWT_PUSHIMGBTN,     RESIZE_TB,    14,   424,   435,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
 { WWT_PUSHIMGBTN,     RESIZE_TB,    14,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
 {      WWT_PANEL,    RESIZE_RTB,    14,   448,   447,   182,   193, 0x0,                  STR_NULL},
@@ -345,7 +341,6 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetsDisabledState(gv->l.list_length == 0 || _local_player != owner,
 					GRP_WIDGET_STOP_ALL,
 					GRP_WIDGET_START_ALL,
-					GRP_WIDGET_MANAGE_VEHICLES,
 					GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 					WIDGET_LIST_END);
 
@@ -420,6 +415,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				}
 			}
 
+			/* Set text of sort by dropdown */
+			w->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[gv->l.sort_type];
 
 			DrawWindowWidgets(w);
 
@@ -470,7 +467,6 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Draw Matrix Vehicle according to the vehicle list built before */
-			DrawString(285, 15, _vehicle_sort_listing[gv->l.sort_type], TC_BLACK);
 			DoDrawString(gv->l.flags & VL_DESC ? DOWNARROW : UPARROW, 269, 15, TC_BLACK);
 
 			max = min(w->vscroll2.pos + w->vscroll2.cap, gv->l.list_length);
@@ -514,7 +510,6 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 
-				case GRP_WIDGET_SORT_BY_TEXT:
 				case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
 					ShowDropDownMenu(w, _vehicle_sort_listing, gv->l.sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, 0);
 					return;
@@ -599,12 +594,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					ShowBuildVehicleWindow(0, gv->vehicle_type);
 					break;
 
-				case GRP_WIDGET_MANAGE_VEHICLES:
-				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:  {
+				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
 					ShowGroupActionDropdown(w, gv->group_sel);
 					break;
-				}
-
 
 				case GRP_WIDGET_START_ALL:
 				case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list

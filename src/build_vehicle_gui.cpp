@@ -55,7 +55,6 @@ enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_CLOSEBOX = 0,
 	BUILD_VEHICLE_WIDGET_CAPTION,
 	BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING,
-	BUILD_VEHICLE_WIDGET_SORT_TEXT,
 	BUILD_VEHICLE_WIDGET_SORT_DROPDOWN,
 	BUILD_VEHICLE_WIDGET_LIST,
 	BUILD_VEHICLE_WIDGET_SCROLLBAR,
@@ -70,8 +69,7 @@ static const Widget _build_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   239,     0,    13, 0x0,                     STR_018C_WINDOW_TITLE_DRAG_THIS },
 	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},
-	{      WWT_PANEL,  RESIZE_RIGHT,    14,    81,   227,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
-	{    WWT_TEXTBTN,     RESIZE_LR,    14,   228,   239,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,    14,    81,   239,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   227,    26,    39, 0x101,                   STR_NULL },
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   228,   239,    26,    39, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
 	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   239,    40,   161, 0x0,                     STR_NULL },
@@ -982,6 +980,10 @@ static void DrawBuildVehicleWindow(Window *w)
 
 	SetVScrollCount(w, EngList_Count(&bv->eng_list));
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
+
+	/* Set text of sort by dropdown */
+	w->widget[BUILD_VEHICLE_WIDGET_SORT_DROPDOWN].data = _sort_listing[bv->vehicle_type][bv->sort_criteria];
+
 	DrawWindowWidgets(w);
 
 	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, false, DEFAULT_GROUP);
@@ -993,7 +995,6 @@ static void DrawBuildVehicleWindow(Window *w)
 		if (text_end > wi->bottom) ExpandPurchaseInfoWidget(w, text_end - wi->bottom);
 	}
 
-	DrawString(85, 15, _sort_listing[bv->vehicle_type][bv->sort_criteria], TC_BLACK);
 	DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, TC_BLACK);
 }
 
@@ -1017,7 +1018,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 			break;
 		}
 
-		case BUILD_VEHICLE_WIDGET_SORT_TEXT: case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
+		case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
 			ShowDropDownMenu(w, _sort_listing[bv->vehicle_type], bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
 			break;
 

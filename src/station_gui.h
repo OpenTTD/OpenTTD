@@ -24,11 +24,10 @@ enum StationListWidgets {
 	SLW_PAN_RIGHT      = 15, ///< Panel right of list of cargo types
 
 	SLW_SORTBY         = 16, ///< 'Sort by' button - reverse sort direction
-	SLW_SORTCRITERIA   = 17, ///< Button - list of criteria
-	SLW_SORTDROPBTN    = 18, ///< Dropdown button
-	SLW_PAN_SORT_RIGHT = 19, ///< Panel right of sorting options
+	SLW_SORTDROPBTN    = 17, ///< Dropdown button
+	SLW_PAN_SORT_RIGHT = 18, ///< Panel right of sorting options
 
-	SLW_CARGOSTART     = 20, ///< Widget numbers used for list of cargo types (not present in _player_stations_widgets)
+	SLW_CARGOSTART     = 19, ///< Widget numbers used for list of cargo types (not present in _player_stations_widgets)
 };
 
 /** Enum for StationView, referring to _station_view_widgets and _station_view_expanded_widgets */
