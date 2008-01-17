@@ -28,7 +28,8 @@ enum {
 	SIG_GLOB_UPDATE =  64, ///< how many items need to be in _globset to force update
 };
 
-assert_compile(SIG_GLOB_UPDATE <= SIG_GLOB_SIZE);
+/* need to typecast to compile with MorphOS */
+assert_compile((int)SIG_GLOB_UPDATE <= (int)SIG_GLOB_SIZE);
 
 /** incidating trackbits with given enterdir */
 static const TrackBitsByte _enterdir_to_trackbits[DIAGDIR_END] = {
