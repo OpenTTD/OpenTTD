@@ -2317,7 +2317,7 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(86)) {
 		/* Now all crossings should be in correct state */
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t);
+			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t, false);
 		}
 	}
 

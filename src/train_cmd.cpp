@@ -1683,20 +1683,23 @@ static Vehicle *TrainApproachingCrossing(TileIndex tile)
 /**
  * Sets correct crossing state
  * @param tile tile to update
+ * @param sound should we play sound?
  * @pre tile is a rail-road crossing
  */
-void UpdateLevelCrossing(TileIndex tile)
+void UpdateLevelCrossing(TileIndex tile, bool sound)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	UnbarCrossing(tile);
-
 	/* train on crossing || train approaching crossing */
-	if (VehicleFromPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile)) {
-		BarCrossing(tile);
-	}
+	bool new_state = VehicleFromPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
 
-	MarkTileDirtyByTile(tile);
+	if (new_state != IsCrossingBarred(tile)) {
+		if (new_state && sound) {
+			SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
+		}
+		SetCrossingBarred(tile, new_state);
+		MarkTileDirtyByTile(tile);
+	}
 }
 
 
@@ -3458,7 +3461,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	/* approaching a rail/road crossing? then make it red */
 	if (IsLevelCrossingTile(tile) && !IsCrossingBarred(tile)) {
 		BarCrossing(tile);
-		SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
+		SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
 		MarkTileDirtyByTile(tile);
 	}
 

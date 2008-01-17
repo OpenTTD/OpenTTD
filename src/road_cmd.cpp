@@ -487,7 +487,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 				/* Always add road to the roadtypes (can't draw without it) */
 				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
-				UpdateLevelCrossing(tile);
+				UpdateLevelCrossing(tile, false);
 				MarkTileDirtyByTile(tile);
 			}
 			return CommandCost(EXPENSES_CONSTRUCTION, _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));

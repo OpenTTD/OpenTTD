@@ -136,6 +136,6 @@ bool ValParamRoadType(const RoadType rt);
  */
 RoadTypes GetPlayerRoadtypes(const PlayerID p);
 
-void UpdateLevelCrossing(TileIndex tile);
+void UpdateLevelCrossing(TileIndex tile, bool sound = true);
 
 #endif /* ROAD_FUNC_H */

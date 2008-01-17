@@ -191,23 +191,26 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 	return AxisToTrackBits(OtherAxis(GetCrossingRoadAxis(tile)));
 }
 
-
-static inline void UnbarCrossing(TileIndex t)
-{
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	ClrBit(_m[t].m4, 5);
-}
-
-static inline void BarCrossing(TileIndex t)
-{
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
-	SetBit(_m[t].m4, 5);
-}
-
 static inline bool IsCrossingBarred(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	return HasBit(_m[t].m4, 5);
+}
+
+static inline void SetCrossingBarred(TileIndex t, bool barred)
+{
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
+	SB(_m[t].m4, 5, 1, barred);
+}
+
+static inline void UnbarCrossing(TileIndex t)
+{
+	SetCrossingBarred(t, false);
+}
+
+static inline void BarCrossing(TileIndex t)
+{
+	SetCrossingBarred(t, true);
 }
 
 #define IsOnDesert IsOnSnow
