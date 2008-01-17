@@ -72,35 +72,15 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 }
 
 int _nb_orig_names = SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1;
-static StringID *_town_names = NULL;
 static StringID *_grf_names = NULL;
 static int _nb_grf_names = 0;
 
-void SortTownGeneratorNames()
+void InitGRFTownGeneratorNames()
 {
-	int n = 0;
-
-	/* Get Newgrf generators' names */
 	free(_grf_names);
 	_grf_names = GetGRFTownNameList();
 	_nb_grf_names = 0;
 	for (StringID *s = _grf_names; *s != INVALID_STRING_ID; s++) _nb_grf_names++;
-
-	/* Prepare the list */
-	free(_town_names);
-	_town_names = MallocT<StringID>(_nb_orig_names + _nb_grf_names + 1);
-
-	/* Put the original strings */
-	for (int i = 0; i < _nb_orig_names; i++) _town_names[n++] = STR_TOWNNAME_ORIGINAL_ENGLISH + i;
-
-	/* Put the grf strings */
-	for (int i = 0; i < _nb_grf_names; i++) _town_names[n++] = _grf_names[i];
-
-	/* Put the terminator */
-	_town_names[n] = INVALID_STRING_ID;
-
-	/* Sort the strings */
-	qsort(&_town_names[0], _nb_orig_names + _nb_grf_names, sizeof(StringID), &StringIDSorter);
 }
 
 static inline StringID TownName(int town_name)
@@ -157,6 +137,30 @@ enum GameOptionsWidgets {
 	GAMEOPT_SCREENSHOT_TXT  = 30,
 	GAMEOPT_SCREENSHOT_BTN,
 };
+
+/**
+ * Update/redraw the townnames dropdown
+ * @param w   the window the dropdown belongs to
+ * @param sel the currently selected townname generator
+ */
+static void ShowTownnameDropdown(Window *w, int sel)
+{
+	typedef std::map<StringID, int, StringIDCompare> TownList;
+	TownList townnames;
+
+	/* Add and sort original townnames generators */
+	for (int i = 0; i < _nb_orig_names; i++) townnames[STR_TOWNNAME_ORIGINAL_ENGLISH + i] = i;
+
+	/* Add and sort newgrf townnames generators */
+	for (int i = 0; i < _nb_grf_names; i++) townnames[_grf_names[i]] = _nb_orig_names + i;
+
+	DropDownList *list = new DropDownList();
+	for (TownList::iterator it = townnames.begin(); it != townnames.end(); it++) {
+		list->push_back(new DropDownListStringItem((*it).first, (*it).second, !(_game_mode == GM_MENU || (*it).second == sel)));
+	}
+
+	ShowDropDownList(w, list, sel, GAMEOPT_TOWNNAME_BTN);
+}
 
 /**
  * Update/redraw the languages dropdown
@@ -226,16 +230,9 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
 				} break;
 
-				case GAMEOPT_TOWNNAME_TXT: case GAMEOPT_TOWNNAME_BTN: { /* Setup townname dropdown */
-					uint sel = 0;
-					for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
-						if (_town_names[i] == TownName(_opt_ptr->town_name)) {
-							sel = i;
-							break;
-						}
-					}
-					ShowDropDownMenu(w, _town_names, sel, GAMEOPT_TOWNNAME_BTN, (_game_mode == GM_MENU) ? 0 : (-1) ^ (1 << sel), 0);
-				} break;
+				case GAMEOPT_TOWNNAME_TXT: case GAMEOPT_TOWNNAME_BTN: /* Setup townname dropdown */
+					ShowTownnameDropdown(w, _opt_ptr->town_name);
+					break;
 
 				case GAMEOPT_AUTOSAVE_TXT: case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
 					ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
@@ -303,12 +300,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 				case GAMEOPT_TOWNNAME_BTN: /* Town names */
 					if (_game_mode == GM_MENU) {
-						for (uint i = 0; _town_names[i] != INVALID_STRING_ID; i++) {
-							if (_town_names[e->we.dropdown.index] == TownName(i)) {
-								_opt_ptr->town_name = i;
-								break;
-							}
-						}
+						_opt_ptr->town_name = e->we.dropdown.index;
 						InvalidateWindow(WC_GAME_OPTIONS, 0);
 					}
 					break;

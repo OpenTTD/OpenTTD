@@ -5555,7 +5555,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 
 void InitDepotWindowBlockSizes();
 
-extern void SortTownGeneratorNames();
+extern void InitGRFTownGeneratorNames();
 
 static void AfterLoadGRFs()
 {
@@ -5586,7 +5586,7 @@ static void AfterLoadGRFs()
 	MapNewCargoStrings();
 
 	/* Update the townname generators list */
-	SortTownGeneratorNames();
+	InitGRFTownGeneratorNames();
 }
 
 void LoadNewGRF(uint load_index, uint file_index)
