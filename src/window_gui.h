@@ -492,6 +492,8 @@ enum WindowWidgetTypes {
 	WWT_SCROLL2BAR, ///< 2nd vertical scrollbar
 	WWT_RESIZEBOX,
 	WWT_CLOSEBOX,
+	WWT_DROPDOWN,   ///< Raised drop down list (regular)
+	WWT_DROPDOWNIN, ///< Inset drop down list (used on game options only)
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
 	WWT_MASK = 0x1F,

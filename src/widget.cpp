@@ -472,6 +472,28 @@ void DrawWindowWidgets(const Window *w)
 			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, 0x84);
 			break;
 		}
+
+		case WWT_DROPDOWN: {
+			assert(r.bottom - r.top == 11); // ensure consistent size
+
+			StringID str = wi->data;
+			DrawFrameRect(r.left, r.top, r.right - 12, r.bottom, wi->color, FR_NONE);
+			DrawFrameRect(r.right - 11, r.top, r.right, r.bottom, wi->color, clicked ? FR_LOWERED : FR_NONE);
+			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_BLACK, r.right - r.left - 12);
+			break;
+		}
+
+		case WWT_DROPDOWNIN: {
+			assert(r.bottom - r.top == 11); // ensure consistent size
+
+			StringID str = wi->data;
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
+			DrawFrameRect(r.right - 11, r.top + 1, r.right - 1, r.bottom - 1, wi->color, clicked ? FR_LOWERED : FR_NONE);
+			DrawString(r.right - (clicked ? 8 : 9), r.top + (clicked ? 2 : 1), STR_0225, TC_BLACK);
+			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 2, str, TC_BLACK, r.right - r.left - 12);
+			break;
+		}
 		}
 
 		if (w->IsWidgetDisabled(i)) {

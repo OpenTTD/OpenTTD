@@ -220,7 +220,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 	const Widget *wi = &w->widget[button];
 
 	/* The preferred position is just below the dropdown calling widget */
-	int top = w->top + wi->bottom + 2;
+	int top = w->top + wi->bottom + 1;
 	int height = list->size() * 10 + 4;
 
 	/* Check if the status bar is visible, as we don't want to draw over it */
@@ -235,8 +235,8 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 		int screen_top = w3 == NULL ? 0 : w3->top + w3->height;
 
 		/* If not, check if it will fit above the widget */
-		if (w->top + wi->top - height - 1 > screen_top) {
-			top = w->top + wi->top - height - 1;
+		if (w->top + wi->top - height > screen_top) {
+			top = w->top + wi->top - height;
 		} else {
 			/* ... and lastly if it won't, enable the scroll bar and fit the
 			 * list in below the widget */
@@ -246,17 +246,21 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 		}
 	}
 
+	/* XXX Temporary fix to make dropdown compatible with separate widgets */
+	const Widget *wil = wi;
+	if (wi->type != WWT_DROPDOWN && wi->type != WWT_DROPDOWNIN) wil--;
+
 	Window *dw = AllocateWindow(
-		w->left + wi[-1].left + 1,
+		w->left + wil->left,
 		top,
-		wi->right - wi[-1].left + 1,
+		wi->right - wil->left + 1,
 		height,
 		DropDownMenuWndProc,
 		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	dw->widget[0].color = wi->color;
-	dw->widget[0].right = wi->right - wi[-1].left;
+	dw->widget[0].right = wi->right - wil->left;
 	dw->widget[0].bottom = height - 1;
 
 	dw->SetWidgetHiddenState(1, !scroll);
