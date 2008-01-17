@@ -210,13 +210,13 @@ void DrawWindowWidgets(const Window *w)
 			/* show different image when clicked for WWT_IMGBTN_2 */
 			if ((wi->type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
 			DrawSprite(img, PAL_NONE, r.left + 1 + clicked, r.top + 1 + clicked);
-			goto draw_default;
+			break;
 		}
 
 		case WWT_PANEL: {
 			assert(wi->data == 0);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
-			goto draw_default;
+			break;
 		}
 
 		case WWT_TEXTBTN:
@@ -231,7 +231,7 @@ void DrawWindowWidgets(const Window *w)
 			if ((wi->type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 
 			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, TC_FROMSTRING);
-			goto draw_default;
+			break;
 		}
 
 		case WWT_TEXT: {
@@ -246,7 +246,7 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 
 			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, TC_FROMSTRING, r.right - r.left - 10);
-			goto draw_default;
+			break;
 		}
 
 		case WWT_MATRIX: {
@@ -290,7 +290,7 @@ void DrawWindowWidgets(const Window *w)
 				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
 			}
 
-			goto draw_default;
+			break;
 		}
 
 		/* vertical scrollbar */
@@ -426,7 +426,7 @@ void DrawWindowWidgets(const Window *w)
 			GfxFillRect(r.left + 1, r.bottom - 1, r.right - 1, r.bottom - 1, c1);
 			GfxFillRect(r.left, r.bottom, r.right, r.bottom, c2);
 
-			goto draw_default;
+			break;
 		}
 
 		case WWT_STICKYBOX: {
@@ -470,11 +470,12 @@ void DrawWindowWidgets(const Window *w)
 			}
 
 			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, 0x84);
-draw_default:;
-			if (w->IsWidgetDisabled(i)) {
-				GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->color & 0xF][2] | (1 << PALETTE_MODIFIER_GREYOUT));
-			}
+			break;
 		}
+		}
+
+		if (w->IsWidgetDisabled(i)) {
+			GfxFillRect(r.left + 1, r.top + 1, r.right - 1, r.bottom - 1, _colour_gradient[wi->color & 0xF][2] | (1 << PALETTE_MODIFIER_GREYOUT));
 		}
 	}
 
