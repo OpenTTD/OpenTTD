@@ -1048,7 +1048,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeu
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaube den Erwerb exklusiver Transportrechte: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaube es, anderen Firemn Geld zu schenken: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaube es, anderen Firmen Geld zu schenken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue globale Wegfindung für alle Fahrzeuge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen um schwere Züge zu simulieren: {ORANGE}{STRING}
