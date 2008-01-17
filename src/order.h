@@ -121,7 +121,8 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 };
 
 struct BackuppedOrders {
-	BackuppedOrders() : order(NULL) { }
+	BackuppedOrders() : order(NULL), name(NULL) { }
+	~BackuppedOrders() { free(order); free(name); }
 
 	VehicleID clone;
 	VehicleOrderID orderindex;

@@ -297,9 +297,9 @@ static void AiHandleGotoDepot(Player *p, int cmd)
 
 static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
-	uint i;
+	if (bak->order == NULL) return;
 
-	for (i = 0; bak->order[i].type != OT_NOTHING; i++) {
+	for (uint i = 0; bak->order[i].type != OT_NOTHING; i++) {
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}
@@ -338,7 +338,7 @@ static void AiHandleReplaceTrain(Player *p)
 static void AiHandleReplaceRoadVeh(Player *p)
 {
 	const Vehicle* v = _players_ai[p->index].cur_veh;
-	BackuppedOrders orderbak[1];
+	BackuppedOrders orderbak;
 	EngineID veh;
 
 	if (!v->IsStoppedInDepot()) {
@@ -350,14 +350,14 @@ static void AiHandleReplaceRoadVeh(Player *p)
 	if (veh != INVALID_ENGINE) {
 		TileIndex tile;
 
-		BackupVehicleOrders(v, orderbak);
+		BackupVehicleOrders(v, &orderbak);
 		tile = v->tile;
 
 		if (CmdSucceeded(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH)) &&
 				CmdSucceeded(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH))) {
 			VehicleID veh = _new_vehicle_id;
 
-			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
+			AiRestoreVehicleOrders(GetVehicle(veh), &orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
@@ -367,7 +367,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 static void AiHandleReplaceAircraft(Player *p)
 {
 	const Vehicle* v = _players_ai[p->index].cur_veh;
-	BackuppedOrders orderbak[1];
+	BackuppedOrders orderbak;
 	EngineID veh;
 
 	if (!v->IsStoppedInDepot()) {
@@ -379,13 +379,13 @@ static void AiHandleReplaceAircraft(Player *p)
 	if (veh != INVALID_ENGINE) {
 		TileIndex tile;
 
-		BackupVehicleOrders(v, orderbak);
+		BackupVehicleOrders(v, &orderbak);
 		tile = v->tile;
 
 		if (CmdSucceeded(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT)) &&
 				CmdSucceeded(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) {
 			VehicleID veh = _new_vehicle_id;
-			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
+			AiRestoreVehicleOrders(GetVehicle(veh), &orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
 
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
