@@ -506,38 +506,6 @@ static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
 };
 
 
-void ShowReplaceVehicleWindow(VehicleType vehicletype)
-{
-	Window *w;
-
-	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
-
-	switch (vehicletype) {
-		case VEH_TRAIN:
-			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
-			w->vscroll.cap  = 8;
-			w->resize.step_height = 14;
-			WP(w, replaceveh_d).wagon_btnstate = true;
-			break;
-		case VEH_ROAD:
-			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
-			w->vscroll.cap  = 8;
-			w->resize.step_height = 14;
-			break;
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront(&_replace_ship_aircraft_vehicle_desc, vehicletype);
-			w->vscroll.cap  = 4;
-			w->resize.step_height = 24;
-			break;
-		default: return;
-	}
-
-	w->caption_color = _local_player;
-	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same
-	WP(w, replaceveh_d).sel_group = DEFAULT_GROUP;
- }
-
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
 	Window *w;

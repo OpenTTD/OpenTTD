@@ -1125,7 +1125,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 					switch (e->we.dropdown.index) {
 						case 0: /* Replace window */
-							ShowReplaceVehicleWindow(vl->vehicle_type);
+							ShowReplaceGroupVehicleWindow(DEFAULT_GROUP, vl->vehicle_type);
 							break;
 						case 1: /* Send for servicing */
 							DoCommandP(0, GB(w->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,

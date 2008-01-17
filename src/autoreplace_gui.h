@@ -13,7 +13,6 @@
  */
 void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type);
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g);
-void ShowReplaceVehicleWindow(VehicleType vehicletype);
 void ShowReplaceGroupVehicleWindow(GroupID group, VehicleType veh);
 
 #endif /* AUTOREPLACE_GUI_H */
