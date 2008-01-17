@@ -786,10 +786,9 @@ void ShowMessageHistory()
 
 /** News settings window widget offset constants */
 enum {
-	WIDGET_NEWSOPT_BTN_SUMMARY  = 4,  ///< Button that adjusts at once the level for all settings
-	WIDGET_NEWSOPT_DROP_SUMMARY,      ///< Drop down button for same upper button
-	WIDGET_NEWSOPT_SOUNDTICKER  = 7,  ///< Button activating sound on events
-	WIDGET_NEWSOPT_START_OPTION = 9,  ///< First widget that is part of a group [<] .. [.]
+	WIDGET_NEWSOPT_DROP_SUMMARY = 4,  ///< Dropdown that adjusts at once the level for all settings
+	WIDGET_NEWSOPT_SOUNDTICKER  = 6,  ///< Button activating sound on events
+	WIDGET_NEWSOPT_START_OPTION = 8,  ///< First widget that is part of a group [<] .. [.]
 };
 
 /**
@@ -841,6 +840,8 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			int i, y;
 
 			if (_news_ticker_sound) w->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
+
+			w->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = message_opt[WP(w, def_d).data_1];
 			DrawWindowWidgets(w);
 
 			/* Draw the string of each setting on each button. */
@@ -849,14 +850,10 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 				 * which will give centered position */
 				DrawStringCentered(51, y + 1, message_opt[val & 0x3], TC_BLACK);
 			}
-
-			/* Draw the general bottom button string as well */
-			DrawStringCentered(51, y + 10, message_opt[WP(w, def_d).data_1], TC_BLACK);
 		} break;
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case WIDGET_NEWSOPT_BTN_SUMMARY:
 				case WIDGET_NEWSOPT_DROP_SUMMARY: // Dropdown menu for all settings
 					ShowDropDownMenu(w, message_opt, WP(w, def_d).data_1, WIDGET_NEWSOPT_DROP_SUMMARY, 0, 0);
 					break;
@@ -949,13 +946,9 @@ static const Widget _message_options_widgets[] = {
 	STR_0205_MESSAGE_TYPES,   STR_NULL},
 
 /* General drop down and sound button, widgets WIDGET_NEWSOPT_BTN_SUMMARY and WIDGET_NEWSOPT_DROP_SUMMARY */
-{     WWT_PANEL, RESIZE_NONE, COLOUR_YELLOW,
-	  4,  86,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
+{  WWT_DROPDOWN, RESIZE_NONE, COLOUR_YELLOW,
+	  4,  98,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
 	0x0, STR_NULL},
-
-{   WWT_TEXTBTN, RESIZE_NONE, COLOUR_YELLOW,
-	 87,  98,  34 + NT_END * NEWS_SETTING_BASELINE_SKIP,  45 + NT_END * NEWS_SETTING_BASELINE_SKIP,
-	STR_0225, STR_NULL},
 
 {      WWT_TEXT, RESIZE_NONE, COLOUR_YELLOW,
 	103, 409,  35 + NT_END * NEWS_SETTING_BASELINE_SKIP,  47 + NT_END * NEWS_SETTING_BASELINE_SKIP,

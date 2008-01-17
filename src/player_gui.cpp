@@ -292,9 +292,7 @@ enum PlayerLiveryWindowWidgets {
 	PLW_WIDGET_CLASS_SHIP,
 	PLW_WIDGET_CLASS_AIRCRAFT,
 
-	PLW_WIDGET_PRI_COL_TEXT = 9,
-	PLW_WIDGET_PRI_COL_DROPDOWN,
-	PLW_WIDGET_SEC_COL_TEXT,
+	PLW_WIDGET_PRI_COL_DROPDOWN = 9,
 	PLW_WIDGET_SEC_COL_DROPDOWN,
 	PLW_WIDGET_MATRIX,
 };
@@ -329,7 +327,6 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 		case WE_CREATE:
 			w->LowerWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
 			if (!_loaded_newgrf_features.has_2CC) {
-				w->HideWidget(PLW_WIDGET_SEC_COL_TEXT);
 				w->HideWidget(PLW_WIDGET_SEC_COL_DROPDOWN);
 			}
 			break;
@@ -340,9 +337,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			int y = 51;
 
 			/* Disable dropdown controls if no scheme is selected */
-			w->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_TEXT,     (WP(w, livery_d).sel == 0));
 			w->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_DROPDOWN, (WP(w, livery_d).sel == 0));
-			w->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_TEXT,     (WP(w, livery_d).sel == 0));
 			w->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_DROPDOWN, (WP(w, livery_d).sel == 0));
 
 			if (!(WP(w, livery_d).sel == 0)) {
@@ -410,12 +405,10 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case PLW_WIDGET_PRI_COL_TEXT:
 				case PLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
 					ShowColourDropDownMenu(w, PLW_WIDGET_PRI_COL_DROPDOWN);
 					break;
 
-				case PLW_WIDGET_SEC_COL_TEXT:
 				case PLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
 					ShowColourDropDownMenu(w, PLW_WIDGET_SEC_COL_DROPDOWN);
 					break;
@@ -470,10 +463,8 @@ static const Widget _select_player_livery_2cc_widgets[] = {
 {   WWT_IMGBTN, RESIZE_NONE, 14,  88, 109,  14,  35, SPR_IMG_AIRPLANESLIST,     STR_LIVERY_AIRCRAFT_TIP },
 {    WWT_PANEL, RESIZE_NONE, 14, 110, 399,  14,  35, 0x0,                       STR_NULL },
 {    WWT_PANEL, RESIZE_NONE, 14,   0, 149,  36,  47, 0x0,                       STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 150, 262,  36,  47, STR_02BD,                  STR_LIVERY_PRIMARY_TIP },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 263, 274,  36,  47, STR_0225,                  STR_LIVERY_PRIMARY_TIP },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 275, 387,  36,  47, STR_02E1,                  STR_LIVERY_SECONDARY_TIP },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 388, 399,  36,  47, STR_0225,                  STR_LIVERY_SECONDARY_TIP },
+{ WWT_DROPDOWN, RESIZE_NONE, 14, 150, 274,  36,  47, STR_02BD,                  STR_LIVERY_PRIMARY_TIP },
+{ WWT_DROPDOWN, RESIZE_NONE, 14, 275, 399,  36,  47, STR_02E1,                  STR_LIVERY_SECONDARY_TIP },
 {   WWT_MATRIX, RESIZE_NONE, 14,   0, 399,  48,  48 + 1 * 14, (1 << 8) | 1,     STR_LIVERY_PANEL_TIP },
 { WIDGETS_END },
 };
@@ -497,10 +488,8 @@ static const Widget _select_player_livery_widgets[] = {
 {   WWT_IMGBTN, RESIZE_NONE, 14,  88, 109,  14,  35, SPR_IMG_AIRPLANESLIST,     STR_LIVERY_AIRCRAFT_TIP },
 {    WWT_PANEL, RESIZE_NONE, 14, 110, 274,  14,  35, 0x0,                       STR_NULL },
 {    WWT_PANEL, RESIZE_NONE, 14,   0, 149,  36,  47, 0x0,                       STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 150, 262,  36,  47, STR_02BD,                  STR_LIVERY_PRIMARY_TIP },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 263, 274,  36,  47, STR_0225,                  STR_LIVERY_PRIMARY_TIP },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 275, 275,  36,  47, STR_02E1,                  STR_LIVERY_SECONDARY_TIP },
-{  WWT_TEXTBTN, RESIZE_NONE, 14, 275, 275,  36,  47, STR_0225,                  STR_LIVERY_SECONDARY_TIP },
+{ WWT_DROPDOWN, RESIZE_NONE, 14, 150, 274,  36,  47, STR_02BD,                  STR_LIVERY_PRIMARY_TIP },
+{ WWT_DROPDOWN, RESIZE_NONE, 14, 275, 275,  36,  47, STR_02E1,                  STR_LIVERY_SECONDARY_TIP },
 {   WWT_MATRIX, RESIZE_NONE, 14,   0, 274,  48,  48 + 1 * 14, (1 << 8) | 1,     STR_LIVERY_PANEL_TIP },
 { WIDGETS_END },
 };
