@@ -577,7 +577,8 @@ static void AnimateTile_Water(TileIndex tile)
  *
  * @param tile tile to check
  */
-static inline void MarkTileDirtyIfCanal(TileIndex tile) {
+static inline void MarkTileDirtyIfCanal(TileIndex tile)
+{
 	if (IsTileType(tile, MP_WATER) && IsCanal(tile)) MarkTileDirtyByTile(tile);
 }
 

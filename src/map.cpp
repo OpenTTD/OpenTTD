@@ -139,7 +139,7 @@ uint ScaleByMapSize1D(uint n)
  * @param addy the amount of tiles in the Y direction to add
  * @return translated tile, or INVALID_TILE when it would've wrapped.
  */
-uint TileAddWrap(TileIndex tile, int addx, int addy)
+TileIndex TileAddWrap(TileIndex tile, int addx, int addy)
 {
 	uint x = TileX(tile) + addx;
 	uint y = TileY(tile) + addy;

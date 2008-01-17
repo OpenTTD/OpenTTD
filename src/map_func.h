@@ -227,7 +227,7 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 /**
  * Adds an offset to a tile and check if we are still on the map.
  */
-uint TileAddWrap(TileIndex tile, int addx, int addy);
+TileIndex TileAddWrap(TileIndex tile, int addx, int addy);
 
 /**
  * Returns the TileIndexDiffC offset from a DiagDirection.
