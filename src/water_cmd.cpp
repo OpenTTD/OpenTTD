@@ -605,6 +605,8 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 		return;
 	}
 
+	bool flooded = false; // Will be set to true, when something is flooded
+
 	/* Is any corner of the dest tile raised? (First two corners already checked above. */
 	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
 			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
@@ -613,7 +615,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_RAILWAY: {
 				if (!IsPlainRailTile(target)) break;
 
-				FloodHalftile(target);
+				flooded = FloodHalftile(target);
 
 				Vehicle *v = FindFloodableVehicleOnTile(target);
 				if (v != NULL) FloodVehicle(v);
@@ -625,6 +627,7 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 			case MP_TREES:
 				_current_player = OWNER_WATER;
 				if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+					flooded = true;
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
 				}
@@ -642,14 +645,17 @@ static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
 
 		/* flood flat tile */
 		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+			flooded = true;
 			MakeWater(target);
 			MarkTileDirtyByTile(target);
-			/* Mark surrounding canal tiles dirty too to avoid glitches */
-			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
-				MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
-			}
 		}
+	}
 
+	if (flooded) {
+		/* Mark surrounding canal tiles dirty too to avoid glitches */
+		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+			MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
+		}
 		/* update signals if needed */
 		UpdateSignalsInBuffer();
 	}

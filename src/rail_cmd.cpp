@@ -528,10 +528,12 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
  * The function floods the lower halftile, if the tile has a halftile foundation.
  *
  * @param t The tile to flood.
+ * @return true if something was flooded.
  */
-void FloodHalftile(TileIndex t)
+bool FloodHalftile(TileIndex t)
 {
-	if (GetRailGroundType(t) == RAIL_GROUND_WATER) return;
+	bool flooded = false;
+	if (GetRailGroundType(t) == RAIL_GROUND_WATER) return flooded;
 
 	Slope tileh = GetTileSlope(t, NULL);
 	TrackBits rail_bits = GetTrackBits(t);
@@ -542,20 +544,23 @@ void FloodHalftile(TileIndex t)
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != 0) {
 			_current_player = OWNER_WATER;
-			if (CmdFailed(DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL))) return; // not yet floodable
+			if (CmdFailed(DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL))) return flooded; // not yet floodable
+			flooded = true;
 			rail_bits = rail_bits & ~to_remove;
 			if (rail_bits == 0) {
 				MakeShore(t);
 				MarkTileDirtyByTile(t);
-				return;
+				return flooded;
 			}
 		}
 
 		if (IsNonContinuousFoundation(GetRailFoundation(tileh, rail_bits))) {
+			flooded = true;
 			SetRailGroundType(t, RAIL_GROUND_WATER);
 			MarkTileDirtyByTile(t);
 		}
 	}
+	return flooded;
 }
 
 static const TileIndexDiffC _trackdelta[] = {
