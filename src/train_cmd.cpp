@@ -53,6 +53,7 @@
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, bool update_image);
+static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
@@ -1624,22 +1625,80 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 	TrainPowerChanged(v);
 }
 
-/* Check if the vehicle is a train and is on the tile we are testing */
-static void *TestTrainOnCrossing(Vehicle *v, void *data)
+
+/**
+ * Check if the vehicle is a train
+ * @param v vehicle on tile
+ * @return v if it is a train, NULL otherwise
+ */
+static void *TrainOnTileEnum(Vehicle *v, void *)
 {
-	if (v->type != VEH_TRAIN) return NULL;
+	return (v->type == VEH_TRAIN) ? v : NULL;
+}
+
+
+/**
+ * Checks if a train is approaching a rail-road crossing
+ * @param v vehicle on tile
+ * @param data tile with crossing we are testing
+ * @return v if it is approaching a crossing, NULL otherwise
+ */
+static void *TrainApproachingCrossingEnum(Vehicle *v, void *data)
+{
+	/* not a train || not front engine || crashed */
+	if (v->type != VEH_TRAIN || !IsFrontEngine(v) || v->vehstatus & VS_CRASHED) return NULL;
+
+	TileIndex tile = *(TileIndex*)data;
+
+	if (TrainApproachingCrossingTile(v) != tile) return NULL;
+
 	return v;
 }
 
-static void DisableTrainCrossing(TileIndex tile)
+
+/**
+ * Finds a vehicle approaching rail-road crossing
+ * @param tile tile to test
+ * @return pointer to vehicle approaching the crossing
+ * @pre tile is a rail-road crossing
+ */
+static Vehicle *TrainApproachingCrossing(TileIndex tile)
 {
-	if (IsLevelCrossingTile(tile) &&
-			IsCrossingBarred(tile) &&
-			VehicleFromPos(tile, NULL, &TestTrainOnCrossing) == NULL) { // empty?
-		UnbarCrossing(tile);
-		MarkTileDirtyByTile(tile);
-	}
+	assert(IsLevelCrossingTile(tile));
+
+	DiagDirection dir = AxisToDiagDir(OtherAxis(GetCrossingRoadAxis(tile)));
+	TileIndex tile_from = tile + TileOffsByDiagDir(dir);
+
+	Vehicle *v = (Vehicle *)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
+
+	if (v != NULL) return v;
+
+	dir = ReverseDiagDir(dir);
+	tile_from = tile + TileOffsByDiagDir(dir);
+
+	return (Vehicle *)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
 }
+
+
+/**
+ * Sets correct crossing state
+ * @param tile tile to update
+ * @pre tile is a rail-road crossing
+ */
+void UpdateTrainCrossing(TileIndex tile)
+{
+	assert(IsLevelCrossingTile(tile));
+
+	UnbarCrossing(tile);
+
+	/* train on crossing || train approaching crossing */
+	if (VehicleFromPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile)) {
+		BarCrossing(tile);
+	}
+
+	MarkTileDirtyByTile(tile);
+}
+
 
 /**
  * Advances wagons for train reversing, needed for variable length wagons.
@@ -1688,14 +1747,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	}
 
 	/* Check if we were approaching a rail/road-crossing */
-	{
-		/* Determine the diagonal direction in which we will exit this tile */
-		DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
-		/* Calculate next tile */
-		TileIndex tile = v->tile + TileOffsByDiagDir(dir);
-		/* Check if the train left a rail/road-crossing */
-		DisableTrainCrossing(tile);
-	}
+	TileIndex crossing = TrainApproachingCrossingTile(v);
 
 	/* count number of vehicles */
 	int r = 0;  ///< number of vehicles - 1
@@ -1719,6 +1771,13 @@ static void ReverseTrainDirection(Vehicle *v)
 	for (Vehicle *u = v; u != NULL; u = u->Next()) { u->cur_image = u->GetImage(u->direction); }
 
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
+
+	/* update crossing we were approaching */
+	if (crossing != INVALID_TILE) UpdateTrainCrossing(crossing);
+
+	/* maybe we are approaching crossing now, after reversal */
+	crossing = TrainApproachingCrossingTile(v);
+	if (crossing != INVALID_TILE) UpdateTrainCrossing(crossing);
 }
 
 /** Reverse train.
@@ -2777,6 +2836,9 @@ static void SetVehicleCrashed(Vehicle *v)
 {
 	if (v->u.rail.crash_anim_pos != 0) return;
 
+	/* we may need to update crossing we were approaching */
+	TileIndex crossing = TrainApproachingCrossingTile(v);
+
 	v->u.rail.crash_anim_pos++;
 
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -2792,6 +2854,9 @@ static void SetVehicleCrashed(Vehicle *v)
 		v->vehstatus |= VS_CRASHED;
 		MarkSingleVehicleDirty(v);
 	END_ENUM_WAGONS(v)
+
+	/* must be updated after the train has been marked crashed */
+	if (crossing != INVALID_TILE) UpdateTrainCrossing(crossing);
 }
 
 static uint CountPassengersInTrain(const Vehicle* v)
@@ -2899,7 +2964,7 @@ static void TrainController(Vehicle *v, bool update_image)
 	/* For every vehicle after and including the given vehicle */
 	for (prev = v->Previous(); v != NULL; prev = v, v = v->Next()) {
 		DiagDirection enterdir = DIAGDIR_BEGIN;
-		bool update_signals = false;
+		bool update_signals_crossing = false; // will we update signals or crossing state?
 		BeginVehicleMove(v);
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
@@ -3022,11 +3087,6 @@ static void TrainController(Vehicle *v, bool update_image)
 					goto invalid_rail;
 				}
 
-				if (IsLevelCrossingTile(v->tile) && v->Next() == NULL) {
-					UnbarCrossing(v->tile);
-					MarkTileDirtyByTile(v->tile);
-				}
-
 				if (IsFrontEngine(v)) v->load_unload_time_rem = 0;
 
 				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
@@ -3042,7 +3102,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* We need to update signal status, but after the vehicle position hash
 				 * has been updated by AfterSetTrainPos() */
-				update_signals = true;
+				update_signals_crossing = true;
 
 				if (prev == NULL) AffectSpeedByDirChange(v, chosen_dir);
 
@@ -3081,12 +3141,15 @@ static void TrainController(Vehicle *v, bool update_image)
 			AffectSpeedByZChange(v, old_z);
 		}
 
-		if (update_signals) {
+		if (update_signals_crossing) {
 			if (IsFrontEngine(v)) TrainMovedChangeSignals(gp.new_tile, enterdir);
 
 			/* Signals can only change when the first
 			 * (above) or the last vehicle moves. */
-			if (v->Next() == NULL) TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
+			if (v->Next() == NULL) {
+				TrainMovedChangeSignals(gp.old_tile, ReverseDiagDir(enterdir));
+				if (IsLevelCrossingTile(gp.old_tile)) UpdateTrainCrossing(gp.old_tile);
+			}
 		}
 	}
 	return;
@@ -3147,9 +3210,8 @@ static void DeleteLastWagon(Vehicle *v)
 	delete v;
 	v = NULL; // make sure nobody will won't try to read 'v' anymore
 
-	/* Check if the wagon was on a road/rail-crossing and disable it if no
-	 * others are on it */
-	DisableTrainCrossing(tile);
+	/* check if the wagon was on a road/rail-crossing */
+	if (IsLevelCrossingTile(tile)) UpdateTrainCrossing(tile);
 
 	/* Update signals */
 	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileDepotType(tile, TRANSPORT_RAIL)) {
@@ -3296,6 +3358,61 @@ static bool TrainApproachingLineEnd(Vehicle *v, bool signal)
 
 
 /**
+ * Determines whether train would like to leave the tile
+ * @param v train to test
+ * @return true iff vehicle is NOT entering or inside a depot or tunnel/bridge
+ */
+static bool TrainCanLeaveTile(const Vehicle *v)
+{
+	/* Exit if inside a tunnel/bridge or a depot */
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE || v->u.rail.track == TRACK_BIT_DEPOT) return false;
+
+	TileIndex tile = v->tile;
+
+	/* entering a tunnel/bridge? */
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
+		if (DiagDirToDir(dir) == v->direction) return false;
+	}
+
+	/* entering a depot? */
+	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+		DiagDirection dir = ReverseDiagDir(GetRailDepotDirection(tile));
+		if (DiagDirToDir(dir) == v->direction) return false;
+	}
+
+	return true;
+}
+
+
+/**
+ * Determines whether train is approaching a rail-road crossing
+ *   (thus making it barred)
+ * @param v front engine of train
+ * @return TileIndex of crossing the train is approaching, else INVALID_TILE
+ * @pre v in non-crashed front engine
+ */
+static TileIndex TrainApproachingCrossingTile(const Vehicle *v)
+{
+	assert(IsFrontEngine(v));
+	assert(!(v->vehstatus & VS_CRASHED));
+
+	if (!TrainCanLeaveTile(v)) return INVALID_TILE;
+
+	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
+	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
+
+	/* not a crossing || wrong axis || wrong railtype || wrong owner */
+	if (!IsLevelCrossingTile(tile) || DiagDirToAxis(dir) == GetCrossingRoadAxis(tile) ||
+			!CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner) {
+		return INVALID_TILE;
+	}
+
+	return tile;
+}
+
+
+/**
  * Checks for line end. Also, bars crossing at next tile if needed
  *
  * @param v vehicle we are checking
@@ -3315,27 +3432,12 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		v->vehstatus &= ~VS_TRAIN_SLOWING;
 	}
 
-	/* Exit if inside a tunnel/bridge or a depot */
-	if (v->u.rail.track == TRACK_BIT_WORMHOLE || v->u.rail.track == TRACK_BIT_DEPOT) return true;
-
-	TileIndex tile = v->tile;
-
-	/* entering a tunnel/bridge? */
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		DiagDirection dir = GetTunnelBridgeDirection(tile);
-		if (DiagDirToDir(dir) == v->direction) return true;
-	}
-
-	/* entering a depot? */
-	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-		DiagDirection dir = ReverseDiagDir(GetRailDepotDirection(tile));
-		if (DiagDirToDir(dir) == v->direction) return true;
-	}
+	if (!TrainCanLeaveTile(v)) return true;
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
 	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
 	/* Calculate next tile */
-	tile += TileOffsByDiagDir(dir);
+	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
 	/* Determine the track status on the next tile */
 	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _reachable_tracks[dir];
