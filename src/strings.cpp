@@ -1318,14 +1318,6 @@ const char *GetCurrentLocale(const char *param)
 }
 #endif /* !(defined(WIN32) || defined(__APPLE__)) */
 
-static int CDECL LanguageCompareFunc(const void *a, const void *b)
-{
-	const Language *cmp1 = (const Language*)a;
-	const Language *cmp2 = (const Language*)b;
-
-	return strcmp(cmp1->file, cmp2->file);
-}
-
 int CDECL StringIDSorter(const void *a, const void *b)
 {
 	const StringID va = *(const StringID*)a;
@@ -1432,9 +1424,6 @@ void InitializeLanguagePacks()
 	}
 	if (language_count == 0) error("No available language packs (invalid versions?)");
 
-	/* Sort the language names alphabetically */
-	qsort(files, language_count, sizeof(Language), LanguageCompareFunc);
-
 	/* Acquire the locale of the current system */
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
 	if (lang == NULL) lang = "en_GB";
@@ -1453,7 +1442,6 @@ void InitializeLanguagePacks()
 
 		dl->ent[dl->num].file = files[i].file;
 		dl->ent[dl->num].name = strdup(hdr.name);
-		dl->dropdown[dl->num] = SPECSTR_LANGUAGE_START + dl->num;
 
 		/* We are trying to find a default language. The priority is by
 		 * configuration file, local environment and last, if nothing found,
@@ -1469,8 +1457,6 @@ void InitializeLanguagePacks()
 
 		dl->num++;
 	}
-	/* Terminate the dropdown list */
-	dl->dropdown[dl->num] = INVALID_STRING_ID;
 
 	if (dl->num == 0) error("Invalid version of language packs");
 

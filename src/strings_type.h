@@ -20,11 +20,10 @@ struct Language {
 
 /** Used for dynamic language support */
 struct DynamicLanguages {
-	int num;                         ///< Number of languages
-	int curr;                        ///< Currently selected language index
-	char curr_file[MAX_PATH];        ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
-	StringID dropdown[MAX_LANG + 1]; ///< List of languages in the settings gui
-	Language ent[MAX_LANG];          ///< Information about the languages
+	int num;                  ///< Number of languages
+	int curr;                 ///< Currently selected language index
+	char curr_file[MAX_PATH]; ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
+	Language ent[MAX_LANG];   ///< Information about the languages
 };
 
 // special string constants

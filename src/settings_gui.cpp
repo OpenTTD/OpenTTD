@@ -24,6 +24,7 @@
 #include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "gfx_func.h"
+#include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 
 #include "table/sprites.h"
@@ -157,6 +158,26 @@ enum GameOptionsWidgets {
 	GAMEOPT_SCREENSHOT_BTN,
 };
 
+/**
+ * Update/redraw the languages dropdown
+ * @param w   the window the dropdown belongs to
+ */
+static void ShowLangDropdown(Window *w)
+{
+	typedef std::map<StringID, int, StringIDCompare> LangList;
+
+	/* Sort language names */
+	LangList langs;
+	for (int i = 0; i < _dynlang.num; i++) langs[SPECSTR_LANGUAGE_START + i] = i;
+
+	DropDownList *list = new DropDownList();
+	for (LangList::iterator it = langs.begin(); it != langs.end(); it++) {
+		list->push_back(new DropDownListStringItem((*it).first, (*it).second, false));
+	}
+
+	ShowDropDownList(w, list, _dynlang.curr, GAMEOPT_LANG_BTN);
+}
+
 static void ShowCustCurrency();
 
 static void GameOptionsWndProc(Window *w, WindowEvent *e)
@@ -228,7 +249,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					break;  // not implemented
 
 				case GAMEOPT_LANG_TXT: case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
-					ShowDropDownMenu(w, _dynlang.dropdown, _dynlang.curr, GAMEOPT_LANG_BTN, 0, 0);
+					ShowLangDropdown(w);
 					break;
 
 				case GAMEOPT_RESOLUTION_TXT: case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
