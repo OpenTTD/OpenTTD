@@ -36,6 +36,25 @@ static const StringID _rail_types_list[] = {
 	INVALID_STRING_ID
 };
 
+enum ReplaceVehicleWindowWidgets {
+	RVW_WIDGET_LEFT_DETAILS = 3,
+	RVW_WIDGET_START_REPLACE,
+	RVW_WIDGET_INFO_TAB,
+	RVW_WIDGET_STOP_REPLACE,
+	RVW_WIDGET_LEFT_MATRIX,
+	RVW_WIDGET_LEFT_SCROLLBAR,
+	RVW_WIDGET_RIGHT_MATRIX,
+	RVW_WIDGET_RIGHT_SCROLLBAR,
+	RVW_WIDGET_RIGHT_DETAILS,
+
+	RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
+	RVW_WIDGET_TRAIN_FLUFF_LEFT,
+	RVW_WIDGET_TRAIN_RAILTYPE_TEXT,
+	RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
+	RVW_WIDGET_TRAIN_FLUFF_RIGHT,
+	RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
+};
+
 static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
 {
 	const EngineID va = *(const EngineID*)a;
@@ -264,7 +283,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			 *    Either list is empty
 			 * or The selected replacement engine has a replacement (to prevent loops)
 			 * or The right list (new replacement) has the existing replacement vehicle selected */
-			w->SetWidgetDisabledState(4,
+			w->SetWidgetDisabledState(RVW_WIDGET_START_REPLACE,
 										 selected_id[0] == INVALID_ENGINE ||
 										 selected_id[1] == INVALID_ENGINE ||
 										 EngineReplacementForPlayer(p, selected_id[1], selected_group) != INVALID_ENGINE ||
@@ -273,7 +292,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			/* Disable the "Stop Replacing" button if:
 			 *   The left list (existing vehicle) is empty
 			 *   or The selected vehicle has no replacement set up */
-			w->SetWidgetDisabledState(6,
+			w->SetWidgetDisabledState(RVW_WIDGET_STOP_REPLACE,
 										 selected_id[0] == INVALID_ENGINE ||
 										 !EngineHasReplacementForPlayer(p, selected_id[0], selected_group));
 
@@ -288,8 +307,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				SetDParam(2, WP(w, replaceveh_d).wagon_btnstate ? STR_ENGINES : STR_WAGONS);
 
 				/* sets the colour of that art thing */
-				w->widget[13].color = _player_colors[_local_player];
-				w->widget[16].color = _player_colors[_local_player];
+				w->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].color  = _player_colors[_local_player];
+				w->widget[RVW_WIDGET_TRAIN_FLUFF_RIGHT].color = _player_colors[_local_player];
 			}
 
 			DrawWindowWidgets(w);
@@ -297,7 +316,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			if (w->window_number == VEH_TRAIN) {
 				/* Draw the selected railtype in the pulldown menu */
 				RailType railtype = _railtype_selected_in_replace_gui;
-				DrawString(157, w->widget[14].top + 1, _rail_types_list[railtype], TC_BLACK);
+				DrawString(157, w->widget[RVW_WIDGET_TRAIN_RAILTYPE_TEXT].top + 1, _rail_types_list[railtype], TC_BLACK);
 			}
 
 			/* sets up the string for the vehicle that is being replaced to */
@@ -312,7 +331,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 			}
 
-			DrawString(145, w->widget[5].top + 1, STR_02BD, TC_BLACK);
+			DrawString(145, w->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_02BD, TC_BLACK);
 
 			/* Draw the lists */
 			for(byte i = 0; i < 2; i++) {
@@ -326,7 +345,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 				/* Also draw the details if an engine is selected */
 				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
-					const Widget *wi = &w->widget[i == 0 ? 3 : 11];
+					const Widget *wi = &w->widget[i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS];
 					DrawVehiclePurchaseInfo(wi->left + 2, wi->top + 1, wi->right - wi->left - 2, WP(w, replaceveh_d).sel_engine[i]);
 				}
 			}
@@ -335,39 +354,39 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
-				case 12:
+				case RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE:
 					WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
 					WP(w, replaceveh_d).update_left = true;
 					WP(w, replaceveh_d).init_lists  = true;
 					SetWindowDirty(w);
 					break;
 
-				case 14:
-				case 15: /* Railtype selection dropdown menu */
-					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, 15, 0, ~GetPlayer(_local_player)->avail_railtypes);
+				case RVW_WIDGET_TRAIN_RAILTYPE_TEXT:
+				case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: /* Railtype selection dropdown menu */
+					ShowDropDownMenu(w, _rail_types_list, _railtype_selected_in_replace_gui, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN, 0, ~GetPlayer(_local_player)->avail_railtypes);
 					break;
 
-				case 17: /* toggle renew_keep_length */
+				case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: /* toggle renew_keep_length */
 					DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_SET_AUTOREPLACE);
 					break;
 
-				case 4: { /* Start replacing */
+				case RVW_WIDGET_START_REPLACE: { /* Start replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
 					DoCommandP(0, 3 + (WP(w, replaceveh_d).sel_group << 16) , veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
 				} break;
 
-				case 6: { /* Stop replacing */
+				case RVW_WIDGET_STOP_REPLACE: { /* Stop replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					DoCommandP(0, 3 + (WP(w, replaceveh_d).sel_group << 16), veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
 				} break;
 
-				case 7:
-				case 9: {
+				case RVW_WIDGET_LEFT_MATRIX:
+				case RVW_WIDGET_RIGHT_MATRIX: {
 					uint i = (e->we.click.pt.y - 14) / w->resize.step_height;
-					uint16 click_scroll_pos = e->we.click.widget == 7 ? w->vscroll.pos : w->vscroll2.pos;
-					uint16 click_scroll_cap = e->we.click.widget == 7 ? w->vscroll.cap : w->vscroll2.cap;
-					byte click_side         = e->we.click.widget == 7 ? 0 : 1;
+					uint16 click_scroll_pos = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? w->vscroll.pos : w->vscroll2.pos;
+					uint16 click_scroll_cap = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? w->vscroll.cap : w->vscroll2.cap;
+					byte click_side         = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
 					uint16 engine_count     = EngList_Count(&WP(w, replaceveh_d).list[click_side]);
 
 					if (i < click_scroll_cap) {
@@ -405,8 +424,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
 			w->vscroll2.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 
-			w->widget[7].data = (w->vscroll.cap  << 8) + 1;
-			w->widget[9].data = (w->vscroll2.cap << 8) + 1;
+			w->widget[RVW_WIDGET_LEFT_MATRIX].data  = (w->vscroll.cap  << 8) + 1;
+			w->widget[RVW_WIDGET_RIGHT_MATRIX].data = (w->vscroll2.cap << 8) + 1;
 			break;
 
 		case WE_INVALIDATE_DATA:
