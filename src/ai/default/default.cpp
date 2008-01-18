@@ -2918,7 +2918,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 			tile_new = TILE_MASK(tile_new + TileOffsByDiagDir(dir2));
 			type = GetTileType(tile_new);
 
-			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
+			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile_new, NULL) != SLOPE_FLAT) {
 				// Allow a bridge if either we have a tile that's water, rail or street,
 				// or if we found an up tile.
 				if (!flag) return;
