@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file random_func.h */
+/** @file random_func.hpp */
 
 #ifndef RANDOM_FUNC_HPP
 #define RANDOM_FUNC_HPP

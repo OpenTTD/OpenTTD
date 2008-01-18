@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file road.h Enums and other types related to roads. */
+/** @file road_type.h Enums and other types related to roads. */
 
 #ifndef ROAD_TYPE_H
 #define ROAD_TYPE_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file string.h Functions related to low-level strings. */
+/** @file string_func.h Functions related to low-level strings. */
 
 #ifndef STRING_FUNC_H
 #define STRING_FUNC_H

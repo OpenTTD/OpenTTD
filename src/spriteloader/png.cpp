@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file grf.cpp */
+/** @file png.cpp */
 
 #ifdef WITH_PNG
 

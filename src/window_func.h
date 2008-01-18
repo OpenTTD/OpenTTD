@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file window.h Window functions not directly related to making/drawing windows. */
+/** @file window_func.h Window functions not directly related to making/drawing windows. */
 
 #ifndef WINDOW_FUNC_H
 #define WINDOW_FUNC_H

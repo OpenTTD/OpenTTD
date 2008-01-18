@@ -1,11 +1,9 @@
 /* $Id$ */
 
-/** @file countedptr.hpp */
+/** @file countedptr.hpp CCountedPtr - smart pointer implementation. */
 
 #ifndef COUNTEDPTR_HPP
 #define COUNTEDPTR_HPP
-
-/** @file CCountedPtr - smart pointer implementation */
 
 /** CCountedPtr - simple reference counting smart pointer.
  *

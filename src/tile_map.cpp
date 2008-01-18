@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tile.cpp */
+/** @file tile_map.cpp */
 
 #include "stdafx.h"
 #include "openttd.h"
