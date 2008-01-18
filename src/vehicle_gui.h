@@ -22,7 +22,27 @@ void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 wi
 
 extern const StringID _vehicle_sort_listing[];
 
-/* Start of functions regarding vehicle list windows */
+/** Constants of vehicle view widget indices */
+enum VehicleViewWindowWidgets {
+	VVW_WIDGET_CLOSEBOX = 0,
+	VVW_WIDGET_CAPTION,
+	VVW_WIDGET_STICKY,
+	VVW_WIDGET_PANEL,
+	VVW_WIDGET_VIEWPORT,
+	VVW_WIDGET_START_STOP_VEH,
+	VVW_WIDGET_CENTER_MAIN_VIEH,
+	VVW_WIDGET_GOTO_DEPOT,
+	VVW_WIDGET_REFIT_VEH,
+	VVW_WIDGET_SHOW_ORDERS,
+	VVW_WIDGET_SHOW_DETAILS,
+	VVW_WIDGET_CLONE_VEH,
+	VVW_WIDGET_EMPTY_BOTTOM_RIGHT,
+	VVW_WIDGET_RESIZE,
+	VVW_WIDGET_TURN_AROUND,
+	VVW_WIDGET_FORCE_PROCEED,
+};
+
+/** Start of functions regarding vehicle list windows */
 enum {
 	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
 	PLY_WND_PRC__SIZE_OF_ROW_TINY  = 13,
@@ -31,7 +51,7 @@ enum {
 	PLY_WND_PRC__SIZE_OF_ROW_BIG2  = 39,
 };
 
-/* Vehicle List Window type flags */
+/** Vehicle List Window type flags */
 enum {
 	VLW_STANDARD      = 0 << 8,
 	VLW_SHARED_ORDERS = 1 << 8,

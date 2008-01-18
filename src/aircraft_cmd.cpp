@@ -537,7 +537,7 @@ CommandCost CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 		v->vehstatus ^= VS_STOPPED;
 		v->cur_speed = 0;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 	}
@@ -576,7 +576,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 			if (flags & DC_EXEC) {
 				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
 				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
 		}
@@ -586,7 +586,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 			if (v->current_order.flags & OFB_UNLOAD) v->cur_order_index++;
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	} else {
 		bool next_airport_has_hangar = true;
@@ -610,7 +610,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 			if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 			v->current_order.refit_cargo = CT_INVALID;
 			v->current_order.dest = next_airport_index;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			if (v->u.air.state == FLYING && !next_airport_has_hangar) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
 				AircraftNextAirportPos_and_Order(v);
@@ -715,11 +715,11 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 //		v->u.air.targetairport = st->index;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OFB_NON_STOP;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	} else if (v->current_order.type == OT_GOTO_DEPOT) {
 		v->current_order.type = OT_DUMMY;
 		v->current_order.flags = 0;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -941,7 +941,7 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_patches.vehicle_speed)
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	if (!(v->direction & 1)) spd = spd * 3 / 4;

@@ -132,7 +132,7 @@ void TrainPowerChanged(Vehicle* v)
 		v->u.rail.cached_power = total_power;
 		v->u.rail.cached_max_te = max_te;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -1247,7 +1247,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
 				/* Update the refit button and window */
 				InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, 12);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, VVW_WIDGET_REFIT_VEH);
 			}
 			/* Update the depot window */
 			InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
@@ -1261,7 +1261,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				UpdateTrainAcceleration(dst_head);
 				InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
 				/* Update the refit button and window */
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, 12);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, VVW_WIDGET_REFIT_VEH);
 				InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
 			}
 			/* Update the depot window */
@@ -1304,7 +1304,7 @@ CommandCost CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 
 		v->vehstatus ^= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 	return CommandCost();
@@ -1549,7 +1549,7 @@ static void SetLastSpeed(Vehicle* v, int spd)
 	if (spd != old) {
 		v->u.rail.last_speed = spd;
 		if (_patches.vehicle_speed || (old == 0) != (spd == 0))
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
 
@@ -2062,7 +2062,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			if (flags & DC_EXEC) {
 				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
 				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
 		}
@@ -2075,7 +2075,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
 	}
@@ -2096,7 +2096,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 		v->current_order.dest = GetDepotByTile(tfdd.tile)->index;
 		v->current_order.refit_cargo = CT_INVALID;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		/* If there is no depot in front, reverse automatically */
 		if (tfdd.reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 	}
@@ -2844,7 +2844,7 @@ static void SetVehicleCrashed(Vehicle *v)
 
 	v->u.rail.crash_anim_pos++;
 
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	if (v->u.rail.track == TRACK_BIT_DEPOT) {
@@ -2995,7 +2995,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 					if (v->current_order.type == OT_LEAVESTATION) {
 						v->current_order.Free();
-						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 					}
 				}
 			} else {
@@ -3588,7 +3588,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 			 * schedule? */
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
@@ -3605,7 +3605,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	v->current_order.flags = OFB_NON_STOP;
 	v->current_order.dest = depot->index;
 	v->dest_tile = tfdd.tile;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
 void OnNewDay_Train(Vehicle *v)

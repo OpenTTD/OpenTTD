@@ -314,7 +314,7 @@ CommandCost CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		v->vehstatus ^= VS_STOPPED;
 		v->cur_speed = 0;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 
@@ -486,7 +486,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 			if (flags & DC_EXEC) {
 				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
 				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
 		}
@@ -500,7 +500,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
 	}
@@ -518,7 +518,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 		v->current_order.refit_cargo = CT_INVALID;
 		v->current_order.dest = dep->index;
 		v->dest_tile = dep->xy;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	return CommandCost();
@@ -694,7 +694,7 @@ static void RoadVehCrash(Vehicle *v)
 
 	ClearSlot(v);
 
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 
 	SetDParam(0, pass);
 	AddNewsItem(
@@ -963,7 +963,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_patches.vehicle_speed) {
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
 
@@ -1892,7 +1892,7 @@ again:
 		}
 
 		StartRoadVehSound(v);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* Check tile position conditions - i.e. stop position in depot,
@@ -1983,7 +1983,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 		if (v->current_order.type == OT_GOTO_DEPOT) {
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
@@ -2001,7 +2001,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	v->current_order.flags = OFB_NON_STOP;
 	v->current_order.dest = depot->index;
 	v->dest_tile = depot->xy;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
 void OnNewDay_RoadVeh(Vehicle *v)

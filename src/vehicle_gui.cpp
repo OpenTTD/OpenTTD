@@ -1645,26 +1645,6 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 
 /* Unified vehicle GUI - Vehicle View Window */
 
-/** Constants of vehicle view widget indices */
-enum VehicleViewWindowWidgets {
-	VVW_WIDGET_CLOSEBOX = 0,
-	VVW_WIDGET_CAPTION,
-	VVW_WIDGET_STICKY,
-	VVW_WIDGET_PANEL,
-	VVW_WIDGET_VIEWPORT,
-	VVW_WIDGET_START_STOP_VEH,
-	VVW_WIDGET_CENTER_MAIN_VIEH,
-	VVW_WIDGET_GOTO_DEPOT,
-	VVW_WIDGET_REFIT_VEH,
-	VVW_WIDGET_SHOW_ORDERS,
-	VVW_WIDGET_SHOW_DETAILS,
-	VVW_WIDGET_CLONE_VEH,
-	VVW_WIDGET_EMPTY_BOTTOM_RIGHT,
-	VVW_WIDGET_RESIZE,
-	VVW_WIDGET_TURN_AROUND,
-	VVW_WIDGET_FORCE_PROCEED,
-};
-
 /** Vehicle view widgets. */
 static const Widget _vehicle_view_widgets[] = {
 	{   WWT_CLOSEBOX,  RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                 STR_018B_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX

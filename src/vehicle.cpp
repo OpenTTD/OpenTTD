@@ -3131,7 +3131,7 @@ void Vehicle::BeginLoading()
 	VehiclePayment(this);
 
 	InvalidateWindow(this->GetVehicleListWindowClass(), this->owner);
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, STATUS_BAR);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindow(WC_STATION_VIEW, this->last_station_visited);
 
@@ -3222,7 +3222,7 @@ void StopAllVehicles()
 		/* Code ripped from CmdStartStopTrain. Can't call it, because of
 		 * ownership problems, so we'll duplicate some code, for now */
 		v->vehstatus |= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 }

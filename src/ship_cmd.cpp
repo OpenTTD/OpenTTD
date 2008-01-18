@@ -158,7 +158,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 		if (v->current_order.type == OT_GOTO_DEPOT) {
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
@@ -167,7 +167,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	v->current_order.flags = OFB_NON_STOP;
 	v->current_order.dest = depot->index;
 	v->dest_tile = depot->xy;
-	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
 void OnNewDay_Ship(Vehicle *v)
@@ -386,7 +386,7 @@ static bool ShipAccelerate(Vehicle *v)
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
 		if (_patches.vehicle_speed)
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* Decrease somewhat when turning */
@@ -683,7 +683,7 @@ static void ShipController(Vehicle *v)
 			 * always skip ahead. */
 			if (v->current_order.type == OT_LEAVESTATION) {
 				v->current_order.Free();
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			} else if (v->dest_tile != 0) {
 				/* We have a target, let's see if we reached it... */
 				if (v->current_order.type == OT_GOTO_STATION &&
@@ -961,7 +961,7 @@ CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->vehstatus ^= VS_STOPPED;
 		v->cur_speed = 0;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClasses(WC_SHIPS_LIST);
 	}
@@ -1007,7 +1007,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			if (flags & DC_EXEC) {
 				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
 				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
 		}
@@ -1021,7 +1021,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
 	}
@@ -1038,7 +1038,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
 		v->current_order.refit_cargo = CT_INVALID;
 		v->current_order.dest = dep->index;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	return CommandCost();

@@ -133,10 +133,6 @@ SpriteID GetEnginePalette(EngineID engine_type, PlayerID player);
  */
 SpriteID GetVehiclePalette(const Vehicle *v);
 
-/* A lot of code calls for the invalidation of the status bar, which is widget 5.
- * Best is to have a virtual value for it when it needs to change again */
-#define STATUS_BAR 5
-
 extern const uint32 _veh_build_proc_table[];
 extern const uint32 _veh_sell_proc_table[];
 extern const uint32 _veh_refit_proc_table[];
