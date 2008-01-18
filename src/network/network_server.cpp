@@ -1301,7 +1301,7 @@ void NetworkPopulateCompanyInfo()
 
 	// Go through all vehicles and count the type of vehicles
 	FOR_ALL_VEHICLES(v) {
-		if (!IsValidPlayer(v->owner)) continue;
+		if (!IsValidPlayer(v->owner) || !v->IsPrimaryVehicle()) continue;
 		byte type = 0;
 		switch (v->type) {
 			case VEH_TRAIN: type = 0; break;
@@ -1310,7 +1310,7 @@ void NetworkPopulateCompanyInfo()
 			case VEH_SHIP: type = 4; break;
 			default: continue;
 		}
-		if (IsEngineCountable(v)) _network_player_info[v->owner].num_vehicle[type]++;
+		_network_player_info[v->owner].num_vehicle[type]++;
 	}
 
 	// Go through all stations and count the types of stations
