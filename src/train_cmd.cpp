@@ -1704,6 +1704,21 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 
 
 /**
+ * Bars crossing and plays ding-ding sound if not barred already
+ * @param tile tile with crossing
+ * @pre tile is a rail-road crossing
+ */
+static inline void MaybeBarCrossingWithSound(TileIndex tile)
+{
+	if (!IsCrossingBarred(tile)) {
+		BarCrossing(tile);
+		SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
+		MarkTileDirtyByTile(tile);
+	}
+}
+
+
+/**
  * Advances wagons for train reversing, needed for variable length wagons.
  * Needs to be called once before the train is reversed, and once after it.
  * @param v First vehicle in chain
@@ -1780,7 +1795,7 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	/* maybe we are approaching crossing now, after reversal */
 	crossing = TrainApproachingCrossingTile(v);
-	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
+	if (crossing != INVALID_TILE) MaybeBarCrossingWithSound(crossing);
 }
 
 /** Reverse train.
@@ -3459,11 +3474,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	if ((ts & (ts >> 16)) != 0) return TrainApproachingLineEnd(v, true);
 
 	/* approaching a rail/road crossing? then make it red */
-	if (IsLevelCrossingTile(tile) && !IsCrossingBarred(tile)) {
-		BarCrossing(tile);
-		SndPlayTileFx(SND_0E_LEVEL_CROSSING, tile);
-		MarkTileDirtyByTile(tile);
-	}
+	if (IsLevelCrossingTile(tile)) MaybeBarCrossingWithSound(tile);
 
 	return true;
 }
