@@ -781,10 +781,6 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		int n;
-		uint p;
-		static const uint16 _indicator_positions[4] = {88, 187, 284, 387};
-
 		if (_industry_sort_dirty) {
 			_industry_sort_dirty = false;
 			MakeSortedIndustryList();
@@ -793,10 +789,10 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_industry_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_industry_sort_order & 1 ? DOWNARROW : UPARROW, _indicator_positions[_industry_sort_order >> 1], 15, TC_BLACK);
+		DrawSortButtonState(w, IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
-		p = w->vscroll.pos;
-		n = 0;
+		uint p = w->vscroll.pos;
+		int n = 0;
 
 		while (p < _num_industry_sort) {
 			const Industry* i = _industry_sort[p];

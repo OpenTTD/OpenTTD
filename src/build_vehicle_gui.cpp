@@ -995,7 +995,7 @@ static void DrawBuildVehicleWindow(Window *w)
 		if (text_end > wi->bottom) ExpandPurchaseInfoWidget(w, text_end - wi->bottom);
 	}
 
-	DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, TC_BLACK);
+	DrawSortButtonState(w, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING, bv->descending_sort_order ? SBS_DOWN : SBS_UP);
 }
 
 static void BuildVehicleClickEvent(Window *w, WindowEvent *e)

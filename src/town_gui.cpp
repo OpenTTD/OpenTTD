@@ -478,7 +478,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_town_sort);
 
 		DrawWindowWidgets(w);
-		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, TC_BLACK);
+		DrawSortButtonState(w, (_town_sort_order <= 1) ? 3 : 4, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
 		{
 			int n = 0;

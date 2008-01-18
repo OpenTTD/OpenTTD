@@ -14,6 +14,9 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+static const char *UPARROW   = "\xEE\x8A\x80";
+static const char *DOWNARROW = "\xEE\x8A\xAA";
+
 static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 {
 	Point pt;
@@ -578,4 +581,17 @@ void ResizeButtons(Window *w, byte left, byte right)
 			ResizeButtons(w, widget + 1, right);
 		}
 	}
+}
+
+/** Draw a sort button's up or down arrow symbol.
+ * @param w Window of widget
+ * @param widget Sort button widget
+ * @param state State of sort button
+ */
+void DrawSortButtonState(const Window *w, int widget, SortButtonState state)
+{
+	if (state == SBS_OFF) return;
+
+	int offset = w->IsWidgetLowered(widget) ? 1 : 0;
+	DoDrawString(state == SBS_DOWN ? DOWNARROW : UPARROW, w->widget[widget].right - 11 + offset, w->widget[widget].top + 1 + offset, TC_BLACK);
 }

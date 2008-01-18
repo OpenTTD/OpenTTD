@@ -581,6 +581,14 @@ static inline void GuiShowTooltips(StringID str)
 int GetWidgetFromPos(const Window *w, int x, int y);
 void DrawWindowWidgets(const Window *w);
 
+enum SortButtonState {
+	SBS_OFF,
+	SBS_DOWN,
+	SBS_UP,
+};
+
+void DrawSortButtonState(const Window *w, int widget, SortButtonState state);
+
 
 Window *GetCallbackWnd();
 void DeleteNonVitalWindows();

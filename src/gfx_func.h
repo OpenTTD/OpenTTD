@@ -83,12 +83,6 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub = NULL);
 
-/* XXX doesn't really belong here, but the only
- * consumers always use it in conjunction with DoDrawString() */
-#define UPARROW   "\xEE\x8A\x80"
-#define DOWNARROW "\xEE\x8A\xAA"
-
-
 int DrawStringCentered(int x, int y, StringID str, uint16 color);
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color);
 int DoDrawStringCentered(int x, int y, const char *str, uint16 color);

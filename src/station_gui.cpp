@@ -344,7 +344,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			/* draw arrow pointing up/down for ascending/descending sorting */
-			DoDrawString(sl->flags & SL_ORDER ? DOWNARROW : UPARROW, 69, 26, TC_BLACK);
+			DrawSortButtonState(w, SLW_SORTBY, sl->flags & SL_ORDER ? SBS_DOWN : SBS_UP);
 
 			int cg_ofst;
 			int x = 89;

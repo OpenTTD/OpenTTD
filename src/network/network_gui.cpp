@@ -268,7 +268,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT: {
 		const NetworkGameList *sel = nd->server;
-		const char *arrow = (ld->flags & VL_DESC) ? DOWNARROW : UPARROW;
+		const SortButtonState arrow = (ld->flags & VL_DESC) ? SBS_DOWN : SBS_UP;
 
 		if (ld->flags & VL_REBUILD) {
 			BuildNetworkGameList(&WP(w, network_ql_d));
@@ -300,9 +300,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (ld->sort_type) {
-			case NGWW_NAME    - NGWW_NAME: DoDrawString(arrow, w->widget[NGWW_NAME].right    - 10, 42, TC_BLACK); break;
-			case NGWW_CLIENTS - NGWW_NAME: DoDrawString(arrow, w->widget[NGWW_CLIENTS].right - 10, 42, TC_BLACK); break;
-			case NGWW_INFO    - NGWW_NAME: DoDrawString(arrow, w->widget[NGWW_INFO].right    - 10, 42, TC_BLACK); break;
+			case NGWW_NAME    - NGWW_NAME: DrawSortButtonState(w, NGWW_NAME,    arrow); break;
+			case NGWW_CLIENTS - NGWW_NAME: DrawSortButtonState(w, NGWW_CLIENTS, arrow); break;
+			case NGWW_INFO    - NGWW_NAME: DrawSortButtonState(w, NGWW_INFO,    arrow); break;
 		}
 
 		{ // draw list of games

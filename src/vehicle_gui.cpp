@@ -988,7 +988,7 @@ static void DrawVehicleListWindow(Window *w)
 	/* draw sorting criteria string */
 	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], TC_BLACK);
 	/* draw arrow pointing up/down for ascending/descending sorting */
-	DoDrawString(vl->l.flags & VL_DESC ? DOWNARROW : UPARROW, 69, 15, TC_BLACK);
+	DrawSortButtonState(w, VLW_WIDGET_SORT_ORDER, vl->l.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 	max = min(w->vscroll.pos + w->vscroll.cap, vl->l.list_length);
 	for (i = w->vscroll.pos; i < max; ++i) {

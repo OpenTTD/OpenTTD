@@ -466,9 +466,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (gv->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 			}
 
-			/* Draw Matrix Vehicle according to the vehicle list built before */
-			DoDrawString(gv->l.flags & VL_DESC ? DOWNARROW : UPARROW, 269, 15, TC_BLACK);
+			DrawSortButtonState(w, GRP_WIDGET_SORT_BY_ORDER, gv->l.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
+			/* Draw Matrix Vehicle according to the vehicle list built before */
 			max = min(w->vscroll2.pos + w->vscroll2.cap, gv->l.list_length);
 			for (i = w->vscroll2.pos ; i < max ; ++i) {
 				const Vehicle* v = gv->sort_list[i];

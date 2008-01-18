@@ -1505,11 +1505,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		GfxFillRect(w->widget[7].left + 1, w->widget[7].top + 1, w->widget[7].right, w->widget[7].bottom, 0xD7);
-		DoDrawString(
-			_savegame_sort_order & SORT_DESCENDING ? DOWNARROW : UPARROW,
-			_savegame_sort_order & SORT_BY_NAME ? w->widget[2].right - 9 : w->widget[3].right - 9,
-			15, TC_BLACK
-		);
+		DrawSortButtonState(w, _savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
 
 		y = w->widget[7].top + 1;
 		for (pos = w->vscroll.pos; pos < _fios_num; pos++) {
