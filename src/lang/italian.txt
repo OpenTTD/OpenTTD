@@ -3267,7 +3267,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avviso s
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ridimensionare di molto l'heightmap sorgente non è consigliabile. Continuare con la generazione?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Avviso sulla disposizione delle strade
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}L'opzione "Nessuna nuova strada" non è raccomandata. Proseguire con la generazione?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome heightmap:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dim.: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generazione del mondo...
@@ -3293,7 +3292,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Sposta i
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Sposta in su di uno l'altezza del terreno pianeggiante
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Cambia l'altezza del terreno pianeggiante
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altezza terreno pianeggiante:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

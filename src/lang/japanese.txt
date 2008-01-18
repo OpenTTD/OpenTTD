@@ -3265,7 +3265,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}リサ�
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}道路網の警告
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}「道路網を拡大せず」という道路網をおすすめしません。続けてもよろしいですか？
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}ハイトマップ名：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}サイズ：{ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}地形作成中...
@@ -3291,7 +3290,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}平地�
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}平地の高さを上げる
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}平地の高さを変更
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}平地の土地の高さ：
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}予約地図を現在の場所に移動します
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

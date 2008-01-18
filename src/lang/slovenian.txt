@@ -3344,7 +3344,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Opozoril
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Opozorilo mestne  razporeditve
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Mestna razporeditev "nič več cest" ni priporočena. Nadaljuješ z ustvarjanjem?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ime višinskega zemljevida:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Ustvarjanje sveta...
@@ -3370,7 +3369,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Premik v
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Premik višine ravnega terena eno enoto višje
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Spremeni višino ravnega terena
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Višina ravnega terena:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrira majhen zemljevid na trenutno točko
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

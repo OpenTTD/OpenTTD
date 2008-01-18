@@ -3265,7 +3265,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso de disposição da cidade
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}A disposição de cidade "sem mais estradas" não é recomendado. Continuar a geração?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome mapa de alt.:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}A gerar mundo...
@@ -3291,7 +3290,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Mover al
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Mover altura da terra plana um nível acima
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Mudar altura da terra plana
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura da terra plana:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar o mapa na posição actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

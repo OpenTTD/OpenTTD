@@ -3428,7 +3428,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Заве
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Попередження про схему міста
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Схема міста "не треба більше доріг" небажана. Продовжити генерацію?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ім'я рельєфа:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Генерація світу...
@@ -3454,7 +3453,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Підн
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Опустити рівень рівної землі на 1
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Змінити висоту рівня рівної землі
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Висота рівня моря
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Центрувати мінікарту сюди
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

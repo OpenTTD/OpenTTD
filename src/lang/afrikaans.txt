@@ -3250,7 +3250,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaal wa
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Om te verstel oorsprong werfkaart te is nie aanbeveel. Voortgaan met die generasie?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Dorp uitleg waarskuwing
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Die dorp uitleg "geen meer paaie" is nie aanbeveel nie. Gaan aan met generasie?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart name:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Groote: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genereer wêreld...
@@ -3276,7 +3275,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Beweeg d
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Beweeg die hoogte van platte daal bo een
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Verander die hoogte van platte daal
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte van platte daal:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Senter die kleinwerfkaart op die huidige posisie
 

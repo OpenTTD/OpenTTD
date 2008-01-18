@@ -3263,7 +3263,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalerin
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}At ændre størrelsen på kildebilledet anbefales ikke. Fortsæt genereringen?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Vejlayout-advarsel
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vejlayoutet "ikke flere veje" anbefales ikke. Fortsæt med at generere?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Højdekortets navn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genererer verden...
@@ -3289,7 +3288,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt hø
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af fladt land en op
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af fladt land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af fladt land:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

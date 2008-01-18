@@ -3266,7 +3266,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avertiss
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé. Continuer la génération ?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Avertissement schéma de ville
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Le schéma de ville "pas de routes" n'est pas recommandé.  Voulez-vous poursuivre la génération?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nom de la carte d'altitude :
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Taille: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Création du monde...
@@ -3292,7 +3291,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Diminuer
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Augmenter l'altitude du terrain plat
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Modifier l'altitude du terrain plat
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altitude du terrain plat :
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer la carte sur la position actuelle
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

@@ -3110,7 +3110,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}改变�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}改变游戏开始的日期
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}缩放警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}高度图名称：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}大小： {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}正在生成地图……
@@ -3136,7 +3135,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}提升�
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}降低地面高度
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}改变地面的高度
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}地面高度：
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}设置小地图的中心位置
 

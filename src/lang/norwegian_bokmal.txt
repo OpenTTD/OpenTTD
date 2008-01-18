@@ -3266,7 +3266,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalaadv
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Å endre kildemapstørrelsen for mye er ikke anbefalt. Fortsette generering?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Byutleggsadvarsel
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Byutlegget «ingen flere veier» anbefales ikke. Fortsette generering?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Høydekartnavn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genererer verden...
@@ -3292,7 +3291,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flytt la
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flytt høyden på flagg land ett nivå opp
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Endre høyden på flatt land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Høyde av flatt land:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på den gjeldende posisjonen
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

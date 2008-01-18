@@ -3083,7 +3083,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Pakeisti
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Keisti pradzios metus
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skales ispejimas
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Zemelapio vardas:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dydis: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Pasaulis generuojamas...
@@ -3109,7 +3108,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Pakeisk 
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Pakelti lygios zemes lygi vienu lygiu
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Keisti lygumos auksti
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lygumos aukstis:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti maza zemelapi i sita vieta
 

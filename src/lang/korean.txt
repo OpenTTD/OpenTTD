@@ -3266,7 +3266,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크�
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 생성을 계속하시겠습니까?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 생성을 계속 하시겠습니까?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}DEM지형 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}나는야 신이라네~ 천지창조중...
@@ -3292,7 +3291,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지�
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}평지의 높이를 1칸 낮춥니다
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}평지의 높이 변경
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}평지의 높이:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}소형맵을 현재 위치에 위치시킵니다
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

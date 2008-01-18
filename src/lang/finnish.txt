@@ -3237,7 +3237,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Mittakaa
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varoitus tiekaavasta
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Tiekaavaa "ei uusia teitä" ei suositella. Jatketaanko?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Korkeuskartan nimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Koko: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Maailmaa luodaan...
@@ -3263,7 +3262,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Siirrä 
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Siirrä tasaista maata yksi ylöspäin
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Vaihda tasaisen maan korkeutta
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Tasaisen maan korkeus:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Keskitä pieni kartta tähän paikkaan
 

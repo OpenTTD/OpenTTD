@@ -3266,7 +3266,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalieru
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Städtebauwarnung
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Der Stadtaufbau "keine weiteren Straßen" wird nicht empfohlen. Mit der Generierung fortfahren?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Reliefkartenname:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Größe: {ORANGE}{NUM} × {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Spielfeld wird generiert...
@@ -3292,7 +3291,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flachlan
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flachland um eine Stufe erhöhen
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Flachlandhöhe ändern
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höhe des Flachlands:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Zusatzansicht zur akutellen Position scrollen
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

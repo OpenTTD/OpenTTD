@@ -3329,7 +3329,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozorne
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Upozornenie na štruktúra mesta
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Štruktúra mesta  "žiadne cesty naviac" sa neodporúca. Pokracovat s generovaním?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nazov vyskovej mapy:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velkost: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generujem  krajinu ...
@@ -3355,7 +3354,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Znizit v
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Zvysit vysku rovnej krajiny o jedno
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Zmenit vysku rovnej krajiny
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Vyska rovnej krajiny:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malu mapu na aktualnu poziciu
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

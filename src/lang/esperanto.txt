@@ -3091,7 +3091,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala av
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Urbaspekta averto
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}La urbaspekto "sen pliaj vojoj" ne estas rekomendata. Ĉu plugeneri?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Mapa nomo:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grandeco: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generante mondon...
@@ -3117,7 +3116,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Malaltig
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Altigu la altecon de ebena lando per unu
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ŝanĝu altecon de ebena lando
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alteco de ebena lando:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrigu la mapeton al la nuna loko
 

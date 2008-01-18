@@ -3259,7 +3259,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}縮放�
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}不建議過度縮放地圖。繼續產生？
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}市鎮規劃警告
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW} "市鎮道路不再規劃" 是不建議的。要繼續產生嗎？
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}高度圖名稱：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}大小：{ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}正在產生世界...
@@ -3285,7 +3284,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}將平�
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}將平地高度上移一格
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}修改平地高度
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}平地高度：
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}將小地圖移到目前地點位置
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

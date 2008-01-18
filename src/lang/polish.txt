@@ -3393,7 +3393,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ostrzeż
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źrodłowej. Kontynuować tworzenie?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Ostrzeżenie o planie miasta
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Model rozwoju miasta "bez nowych dróg" nie jest polecany. Kontynuować tworzenie?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nazwa mapy wysokosci:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Rozmiar: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Tworzenie świata...
@@ -3419,7 +3418,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Obniż w
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Podnieś wysokość terenu o jeden w górę
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Zmień wysokość płaskiego świata
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Wysokość płaskiego świata:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

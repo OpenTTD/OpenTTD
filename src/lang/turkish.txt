@@ -3258,7 +3258,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Kar yük
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Başlangıç yılını değiştir
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Yükseklik haritası adı:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Boyut: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Harita oluşturuluyor...
@@ -3284,7 +3283,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Düzlü�
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Düzlüğün yüksekliğini bir arttır
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Düzlüğün yüksekliğini değiştir
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Düzlüğün Yüksekliği:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı burada ortala
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

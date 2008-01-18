@@ -3265,7 +3265,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avertism
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionarea excesiva a hartii nu este recomandata. Continui cu generarea?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Avertisment aspect oras
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Aspectul de oras "fara alte drumuri" nu este recomanat. Continui generarea?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nume harta inaltimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dimensiune: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generez lumea...
@@ -3291,7 +3290,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Muta in 
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Muta in sus, cu o unitate, inaltimea terenului plan
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Modifica inaltimea terenului plan
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Inaltimea terenului plat:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centreaza harta mica la pozitia actuala
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

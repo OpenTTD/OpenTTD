@@ -3261,7 +3261,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Scale wa
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Town layout warning
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}The town layout "no more roads" is not recommended. Continue with the generation?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap name:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Size: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generating world...
@@ -3287,7 +3286,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Move the
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Move the height of flat land up one
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Change height of flat land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height of flat land:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

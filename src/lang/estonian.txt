@@ -3365,7 +3365,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaala h
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaardi suuruse muutmine pole soovitatav. Jätka?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Linnaplaneerimise hoiatus
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Linnaplaneeringut "ilma teedeta" ei ole soovitatav kasutada. Jätkata selle tekitamisega?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Kõrgusekaardi nimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Suurus: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Maailma genereerimine...
@@ -3391,7 +3390,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Liiguta 
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Liiguta lameda maa kõrgus ühe võrra üles
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Muuda maa kõrgust lamedal maal
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lameda maa kõrgus:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vii väikekaart praegusele asukohale
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

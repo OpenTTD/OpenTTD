@@ -3329,7 +3329,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Varován
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varování kvůli vzoru silnic
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vzor "žádné silnice" není doporučen (nepostaví se ani domy). Pokračovat ve vytváření mapy?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Jméno výškové mapy:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Vytvářím krajinu...
@@ -3355,7 +3354,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Snížit
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Zvednout výšku ploché země o jednu úroveň
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Změnit výšku ploché země
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Výška ploché země:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malou mapu na tomto místě
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

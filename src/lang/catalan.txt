@@ -3265,7 +3265,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alerta d
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}No es recomana redimensionar massa el mapa d'origen. Vols continuar amb la generació?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Alerta de format de poble
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}El format de poble "no més carreteres" no està recomanat. Continuar amb la generació?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nom del mapa d'alçades:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Mida: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generant món...
@@ -3291,7 +3290,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Mou l'al
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Mou l'alçada del terreny pla un pas amunt
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Canvia alçada del terreny pla
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alçada del terreny pla:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar el mapa petit a la posició actual
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

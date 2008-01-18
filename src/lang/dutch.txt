@@ -3265,7 +3265,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal w
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Stadsindelingswaarschuwing
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}De stadsindeling "geen wegen" is niet aanbevolen. Doorgaan met aanmaken?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart naam:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grootte: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Wereld creëren
@@ -3291,7 +3290,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Maak de 
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Maak de hoogte van plat land een hoger
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Verander hoogte van vlak land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte van platte grond:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centreer de kleine kaart op huidige positie
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

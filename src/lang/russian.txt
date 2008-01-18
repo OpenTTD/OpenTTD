@@ -3276,7 +3276,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Выхо
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Увеличение карты до таких размеров не рекомендуется. Продолжить?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Предупреждение о расположении дорог
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Расположение дорог "не строить дороги" не рекомендуется. Продолжить создание карты?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Имя РЕЛЬЕФА:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Создание мира...
@@ -3302,7 +3301,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Подн
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Опустить уровень ровной земли на 1
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Изменить высоту ровной земли
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Высота над уровнем моря:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Центрировать миникарту по этой позиции
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

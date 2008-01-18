@@ -3267,7 +3267,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozoren
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine mape nije preporučena. Nastaviti sa kreiranjem?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Upozorenje na raspored grada
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Raspored grada s opcijom "nema više cesti" nije preporučen. Nastaviti s generiranjem?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ime heightmape:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Izrada svijeta u toku...
@@ -3293,7 +3292,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Snizi ra
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Povisi ravnu površinu za jedan korak
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Promijeni visinu ravne površine
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Visina ravne površine:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centriraj malu mapu na trenutni položaj
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})

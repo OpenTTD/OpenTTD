@@ -3267,7 +3267,6 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Маща
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Грацки план предупреждение
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Грацкиа план "няма повече пътища" не е препоръчан. Продължи със създаването?
-STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Име на височинна карта:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Създаване на свят...
@@ -3293,7 +3292,6 @@ STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Свал
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Повишаване височината на плоска земя
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Промяна височината на плоска земя
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Височина на плоска земя:
-STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Центриране на малката карта на текущата позиция
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
