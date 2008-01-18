@@ -986,7 +986,7 @@ static void DrawBuildVehicleWindow(Window *w)
 
 	DrawWindowWidgets(w);
 
-	DrawEngineList(bv->vehicle_type, 2, 27, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, false, DEFAULT_GROUP);
+	DrawEngineList(bv->vehicle_type, w->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, w->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, false, DEFAULT_GROUP);
 
 	if (bv->sel_engine != INVALID_ENGINE) {
 		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
@@ -1011,7 +1011,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 			break;
 
 		case BUILD_VEHICLE_WIDGET_LIST: {
-			uint i = (e->we.click.pt.y - 26) / GetVehicleListHeight(bv->vehicle_type) + w->vscroll.pos;
+			uint i = (e->we.click.pt.y - w->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(bv->vehicle_type) + w->vscroll.pos;
 			uint num_items = EngList_Count(&bv->eng_list);
 			bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
 			SetWindowDirty(w);

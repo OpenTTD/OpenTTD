@@ -334,13 +334,13 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 			/* Draw the lists */
 			for(byte i = 0; i < 2; i++) {
-				uint16 x        = i == 0 ? 2 : 230; // at what X offset
+				uint widget     = (i == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
 				EngineList list = WP(w, replaceveh_d).list[i]; // which list to draw
 				EngineID start  = i == 0 ? w->vscroll.pos : w->vscroll2.pos; // what is the offset for the start (scrolling)
 				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, EngList_Count(&list));
 
 				/* Do the actual drawing */
-				DrawEngineList((VehicleType)w->window_number, x, 15, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0, selected_group);
+				DrawEngineList((VehicleType)w->window_number, w->widget[widget].left + 2, w->widget[widget].top + 1, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0, selected_group);
 
 				/* Also draw the details if an engine is selected */
 				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
