@@ -115,9 +115,9 @@ static const Widget _generate_landscape_widgets[] = {
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,           STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110,  91, 101, STR_MAPSIZE,                  STR_NULL},
-{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 161,  90, 101, 0x0,                          STR_NULL}, // Mapsize X
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 161,  90, 101, STR_NUM_1,                    STR_NULL}, // Mapsize X
 {       WWT_TEXT, RESIZE_NONE,  0, 168, 176,  91, 101, STR_BY,                       STR_NULL},
-{   WWT_DROPDOWN, RESIZE_NONE, 12, 180, 227,  90, 101, 0x0,                          STR_NULL}, // Mapsize Y
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 180, 227,  90, 101, STR_NUM_2,                    STR_NULL}, // Mapsize Y
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 113, 123, STR_NUMBER_OF_TOWNS,          STR_NULL},
 {   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 112, 123, 0x0,                          STR_NULL}, // Number of towns
@@ -133,12 +133,12 @@ static const Widget _generate_landscape_widgets[] = {
 
 {       WWT_TEXT, RESIZE_NONE,  0, 182, 212, 113, 123, STR_DATE,                     STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 112, 123, SPR_ARROW_DOWN,               STR_029E_MOVE_THE_STARTING_DATE},
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 112, 123, 0x0,                          STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 228, 314, 112, 123, STR_GENERATE_DATE,            STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 112, 123, SPR_ARROW_UP,                 STR_029F_MOVE_THE_STARTING_DATE},
 
 {       WWT_TEXT, RESIZE_NONE,  0, 182, 278, 131, 141, STR_SNOW_LINE_HEIGHT,         STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 130, 141, SPR_ARROW_DOWN,               STR_SNOW_LINE_DOWN},
-{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 130, 141, 0x0,                          STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 294, 314, 130, 141, STR_NUM_3,                    STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 130, 141, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 193, 203, STR_TREE_PLACER,              STR_NULL},
@@ -169,9 +169,9 @@ static const Widget _heightmap_load_widgets[] = {
 {   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,          STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 113, 123, STR_MAPSIZE,                  STR_NULL},
-{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 161, 112, 123, 0x0,                          STR_NULL}, // Mapsize X
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 161, 112, 123, STR_NUM_1,                    STR_NULL}, // Mapsize X
 {       WWT_TEXT, RESIZE_NONE,  0, 168, 176, 113, 123, STR_BY,                       STR_NULL},
-{   WWT_DROPDOWN, RESIZE_NONE, 12, 180, 227, 112, 123, 0x0,                          STR_NULL}, // Mapsize Y
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 180, 227, 112, 123, STR_NUM_2,                    STR_NULL}, // Mapsize Y
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 135, 145, STR_NUMBER_OF_TOWNS,          STR_NULL},
 {   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 134, 145, 0x0,                          STR_NULL}, // Number of towns
@@ -187,12 +187,12 @@ static const Widget _heightmap_load_widgets[] = {
 
 {       WWT_TEXT, RESIZE_NONE,  0, 182, 212, 135, 145, STR_DATE,                     STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 134, 145, SPR_ARROW_DOWN,               STR_029E_MOVE_THE_STARTING_DATE},
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 134, 145, 0x0,                          STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 228, 314, 134, 145, STR_GENERATE_DATE,            STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 134, 145, SPR_ARROW_UP,                 STR_029F_MOVE_THE_STARTING_DATE},
 
 {       WWT_TEXT, RESIZE_NONE,  0, 182, 278, 153, 163, STR_SNOW_LINE_HEIGHT,         STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 152, 163, SPR_ARROW_DOWN,               STR_SNOW_LINE_DOWN},
-{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 152, 163, 0x0,                          STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 294, 314, 152, 163, STR_NUM_3,                    STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 152, 163, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 197, 207, STR_TREE_PLACER,              STR_NULL},
@@ -257,7 +257,6 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	static char _genseed_buffer[11];
 
 	glwp_modes mode = (glwp_modes)w->window_number;
-	uint y;
 
 	switch (e->event) {
 	case WE_CREATE:
@@ -310,23 +309,15 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			w->widget[GLAND_HEIGHTMAP_ROTATION_PULLDOWN].data = rotation[_patches_newgame.heightmap_rotation];
 		}
 
+		/* Set parameters for widget text that requires them. */
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1)); // GLAND_START_DATE_TEXT
+		SetDParam(1, 1 << _patches_newgame.map_x); // GLAND_MAPSIZE_X_PULLDOWN
+		SetDParam(2, 1 << _patches_newgame.map_y); // GLAND_MAPSIZE_Y_PULLDOWN
+		SetDParam(3, _patches_newgame.snow_line_height); // GLAND_SNOW_LEVEL_TEXT
+
 		DrawWindowWidgets(w);
 
-		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
-
-		SetDParam(0, 1 << _patches_newgame.map_x);
-		DrawString(119,  91 + y, STR_JUST_INT, TC_BLACK);
-
-		SetDParam(0, 1 << _patches_newgame.map_y);
-		DrawString(182,  91 + y, STR_JUST_INT, TC_BLACK);
-
 		DrawEditBox(w, &_genseed_query, GLAND_RANDOM_EDITBOX);
-
-		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(271, 113 + y, STR_GENERATE_DATE, TC_FROMSTRING);
-
-		SetDParam(0, _patches_newgame.snow_line_height);
-		DrawStringCentered(303, 131 + y, STR_SNOW_LINE_HEIGHT_NUM, TC_BLACK);
 
 		if (mode != GLWP_GENERATE) {
 			char buffer[512];
@@ -607,9 +598,11 @@ enum CreateScenarioWindowWidgets {
 	CSCEN_MAPSIZE_X_PULLDOWN,
 	CSCEN_MAPSIZE_Y_TEXT,
 	CSCEN_MAPSIZE_Y_PULLDOWN,
+	CSCEN_START_DATE_LABEL,
 	CSCEN_START_DATE_DOWN,
 	CSCEN_START_DATE_TEXT,
 	CSCEN_START_DATE_UP,
+	CSCEN_FLAT_LAND_HEIGHT_LABEL,
 	CSCEN_FLAT_LAND_HEIGHT_DOWN,
 	CSCEN_FLAT_LAND_HEIGHT_TEXT,
 	CSCEN_FLAT_LAND_HEIGHT_UP
@@ -631,22 +624,14 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		w->SetWidgetLoweredState(CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
 		w->SetWidgetLoweredState(CSCEN_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
 		w->SetWidgetLoweredState(CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
+
+		/* Set parameters for widget text that requires them */
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1)); // CSCEN_START_DATE_TEXT
+		SetDParam(1, 1 << _patches_newgame.map_x); // CSCEN_MAPSIZE_X_PULLDOWN
+		SetDParam(2, 1 << _patches_newgame.map_y); // CSCEN_MAPSIZE_Y_PULLDOWN
+		SetDParam(3, _patches_newgame.se_flat_world_height); // CSCEN_FLAT_LAND_HEIGHT_TEXT
+
 		DrawWindowWidgets(w);
-
-		DrawStringRightAligned(211, 97, STR_MAPSIZE, TC_FROMSTRING);
-		SetDParam(0, 1 << _patches_newgame.map_x);
-		DrawString(            221, 97, STR_JUST_INT, TC_BLACK);
-		DrawStringCentered(    272, 97, STR_BY, TC_FROMSTRING);
-		SetDParam(0, 1 << _patches_newgame.map_y);
-		DrawString(            284, 97, STR_JUST_INT, TC_BLACK);
-
-		DrawStringRightAligned(211, 115, STR_DATE, TC_FROMSTRING);
-		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-		DrawStringCentered(271, 115, STR_GENERATE_DATE, TC_FROMSTRING);
-
-		DrawStringRightAligned(278, 133, STR_FLAT_WORLD_HEIGHT, TC_FROMSTRING);
-		SetDParam(0, _patches_newgame.se_flat_world_height);
-		DrawStringCentered(303, 133, STR_FLAT_WORLD_HEIGHT_NUM, TC_BLACK);
 
 		break;
 	case WE_CLICK:
@@ -655,10 +640,10 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			w->RaiseWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
 			SetNewLandscapeType(e->we.click.widget - CSCEN_TEMPERATE);
 			break;
-		case CSCEN_MAPSIZE_X_TEXT: case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X
+		case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X
 			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_x, CSCEN_MAPSIZE_X_PULLDOWN);
 			break;
-		case CSCEN_MAPSIZE_Y_TEXT: case CSCEN_MAPSIZE_Y_PULLDOWN: // Mapsize Y
+		case CSCEN_MAPSIZE_Y_PULLDOWN: // Mapsize Y
 			ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_y, CSCEN_MAPSIZE_Y_PULLDOWN);
 			break;
 		case CSCEN_EMPTY_WORLD: // Empty world / flat world
@@ -743,17 +728,19 @@ static const Widget _create_scenario_widgets[] = {
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 115,  95, 124, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD_TIP},         // Empty (sea-level) map
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 115, 131, 160, STR_SE_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND}, // Generate
 
-{      WWT_PANEL, RESIZE_NONE, 12, 216, 251,  95, 106, 0x0,                     STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 252, 263,  95, 106, STR_0225,                STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 279, 314,  95, 106, 0x0,                     STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 315, 326,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
+{       WWT_TEXT, RESIZE_NONE, 12, 182, 212,  96, 106, STR_MAPSIZE,             STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 216, 263,  95, 106, STR_NUM_1,               STR_NULL}, // Mapsize X
+{       WWT_TEXT, RESIZE_NONE, 12, 268, 276,  96, 106, STR_BY,                  STR_NULL},
+{   WWT_DROPDOWN, RESIZE_NONE, 12, 279, 326,  95, 106, STR_NUM_2,               STR_NULL}, // Mapsize Y
 
+{       WWT_TEXT, RESIZE_NONE,  0, 182, 212, 114, 124, STR_DATE,                STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 113, 124, SPR_ARROW_DOWN,          STR_029E_MOVE_THE_STARTING_DATE},
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 113, 124, 0x0,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 228, 314, 113, 124, STR_GENERATE_DATE,       STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 113, 124, SPR_ARROW_UP,            STR_029F_MOVE_THE_STARTING_DATE},
 
+{       WWT_TEXT, RESIZE_NONE,  0, 182, 278, 132, 142, STR_FLAT_WORLD_HEIGHT,   STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 131, 142, SPR_ARROW_DOWN,          STR_FLAT_WORLD_HEIGHT_DOWN},
-{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 131, 142, 0x0,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 294, 314, 131, 142, STR_NUM_3,               STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 131, 142, SPR_ARROW_UP,            STR_FLAT_WORLD_HEIGHT_UP},
 {   WIDGETS_END},
 };
