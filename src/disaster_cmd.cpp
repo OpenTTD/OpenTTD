@@ -72,6 +72,9 @@ static void DisasterClearSquare(TileIndex tile)
 				_current_player = OWNER_WATER;
 				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				_current_player = p;
+
+				/* update signals in buffer */
+				UpdateSignalsInBuffer();
 			}
 			break;
 

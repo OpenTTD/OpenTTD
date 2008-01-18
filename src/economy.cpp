@@ -449,10 +449,10 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					UpdateLevelCrossing(tile);
 				}
 			} while (++tile != MapSize());
-
-			/* update signals in buffer */
-			UpdateSignalsInBuffer();
 		}
+
+		/* update signals in buffer */
+		UpdateSignalsInBuffer();
 	}
 
 	/* Change color of existing windows */
