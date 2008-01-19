@@ -246,21 +246,17 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 		}
 	}
 
-	/* XXX Temporary fix to make dropdown compatible with separate widgets */
-	const Widget *wil = wi;
-	if (wi->type != WWT_DROPDOWN && wi->type != WWT_DROPDOWNIN) wil--;
-
 	Window *dw = AllocateWindow(
-		w->left + wil->left,
+		w->left + wi->left,
 		top,
-		wi->right - wil->left + 1,
+		wi->right - wi->left + 1,
 		height,
 		DropDownMenuWndProc,
 		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	dw->widget[0].color = wi->color;
-	dw->widget[0].right = wi->right - wil->left;
+	dw->widget[0].right = wi->right - wi->left;
 	dw->widget[0].bottom = height - 1;
 
 	dw->SetWidgetHiddenState(1, !scroll);
