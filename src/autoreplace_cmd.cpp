@@ -93,7 +93,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 
 	if (new_cargo_type == CT_INVALID) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
-	if (v->cargo_type == new_cargo_type || CanRefitTo(engine_type, v->cargo_type)) {
+	if (v->cargo_cap != 0 && (v->cargo_type == new_cargo_type || CanRefitTo(engine_type, v->cargo_type))) {
 		if (VerifyAutoreplaceRefitForOrders(v, engine_type)) {
 			return v->cargo_type == new_cargo_type ? (CargoID)CT_NO_REFIT : v->cargo_type;
 		} else {
