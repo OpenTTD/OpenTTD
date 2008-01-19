@@ -21,6 +21,7 @@
 #include "functions.h"
 #include "variables.h"
 #include "autoreplace_func.h"
+#include "articulated_vehicles.h"
 
 #include "table/strings.h"
 
@@ -175,7 +176,10 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	if (replacement_cargo_type != CT_NO_REFIT) {
 		/* add refit cost */
 		CommandCost refit_cost = GetRefitCost(new_engine_type);
-		if (old_v->type == VEH_TRAIN && IsMultiheaded(old_v)) refit_cost.AddCost(refit_cost); // pay for both ends
+		if (old_v->type == VEH_TRAIN && RailVehInfo(new_engine_type)->railveh_type == RAILVEH_MULTIHEAD) {
+			/* Since it's a dualheaded engine we have to pay once more because the rear end is being refitted too. */
+			refit_cost.AddCost(refit_cost);
+		}
 		cost.AddCost(refit_cost);
 	}
 
