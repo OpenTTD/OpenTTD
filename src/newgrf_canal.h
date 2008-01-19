@@ -11,6 +11,8 @@ enum CanalFeature {
 	CF_DIKES,
 	CF_ICON,
 	CF_DOCKS,
+	CF_RIVER_SLOPE,
+	CF_RIVER_EDGE,
 	CF_END,
 };
 

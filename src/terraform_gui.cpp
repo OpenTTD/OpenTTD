@@ -132,6 +132,9 @@ bool GUIPlaceProcDragXY(const WindowEvent *e)
 		case DDSP_CREATE_WATER:
 			DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
 			break;
+		case DDSP_CREATE_RIVER:
+			DoCommandP(end_tile, start_tile, 2, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
+			break;
 		default:
 			return false;
 	}
@@ -412,23 +415,29 @@ static void PlaceProc_WaterArea(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_WATER);
 }
 
+static void PlaceProc_RiverArea(TileIndex tile)
+{
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
+}
+
 static const Widget _scen_edit_land_gen_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
-{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_STICKYBOX,   RESIZE_NONE,     7,   170,   181,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
-{     WWT_PANEL,   RESIZE_NONE,     7,     0,   181,    14,   102, 0x0,                       STR_NULL},
+{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   191,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_STICKYBOX,   RESIZE_NONE,     7,   192,   203,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
+{     WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,   102, 0x0,                       STR_NULL},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    16,    37, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    16,    37, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    16,    37, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    68,    89,    16,    37, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    90,   111,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_LAKE},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   134,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   135,   157,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL}, // XXX - dynamic
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   158,   179,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   139,   150,    45,    56, SPR_ARROW_UP,              STR_0228_INCREASE_SIZE_OF_LAND_AREA},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   139,   150,    58,    69, SPR_ARROW_DOWN,            STR_0229_DECREASE_SIZE_OF_LAND_AREA},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   157,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   157,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_RIVER},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   134,   156,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   157,   179,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL}, // XXX - dynamic
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   180,   201,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    45,    56, SPR_ARROW_UP,              STR_0228_INCREASE_SIZE_OF_LAND_AREA},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    58,    69, SPR_ARROW_DOWN,            STR_0229_DECREASE_SIZE_OF_LAND_AREA},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},
 {   WIDGETS_END},
 };
 
@@ -472,19 +481,24 @@ static void EditorTerraformClick_WaterArea(Window *w)
 	HandlePlacePushButton(w, 8, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_WaterArea);
 }
 
+static void EditorTerraformClick_RiverArea(Window *w)
+{
+	HandlePlacePushButton(w, 9, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_RiverArea);
+}
+
 static void EditorTerraformClick_RockyArea(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
+	HandlePlacePushButton(w, 10, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
 }
 
 static void EditorTerraformClick_DesertLightHouse(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, 11, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
 }
 
 static void EditorTerraformClick_Transmitter(Window *w)
 {
-	HandlePlacePushButton(w, 11, SPR_CURSOR_TRANSMITTER, VHM_RECT, PlaceProc_Transmitter);
+	HandlePlacePushButton(w, 12, SPR_CURSOR_TRANSMITTER, VHM_RECT, PlaceProc_Transmitter);
 }
 
 static const uint16 _editor_terraform_keycodes[] = {
@@ -495,7 +509,8 @@ static const uint16 _editor_terraform_keycodes[] = {
 	'R',
 	'T',
 	'Y',
-	'U'
+	'U',
+	'I'
 };
 
 typedef void OnButtonClick(Window *w);
@@ -505,6 +520,7 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 	EditorTerraformClick_RaiseBigLand,
 	EditorTerraformClick_LevelLand,
 	EditorTerraformClick_WaterArea,
+	EditorTerraformClick_RiverArea,
 	EditorTerraformClick_RockyArea,
 	EditorTerraformClick_DesertLightHouse,
 	EditorTerraformClick_Transmitter
@@ -543,8 +559,8 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			/* XXX - lighthouse button is widget 10!! Don't forget when changing */
-			w->widget[10].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
+			/* XXX - lighthouse button is widget 11!! Don't forget when changing */
+			w->widget[11].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 			break;
 
 		case WE_PAINT: {
@@ -555,7 +571,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 			assert(n != 0);
 			do {
-				DrawSprite(SPR_WHITE_POINT, PAL_NONE, 77 + coords[0], 55 + coords[1]);
+				DrawSprite(SPR_WHITE_POINT, PAL_NONE, 88 + coords[0], 55 + coords[1]);
 				coords += 2;
 			} while (--n);
 
@@ -576,11 +592,11 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11:
+				case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12:
 					_editor_terraform_button_proc[e->we.click.widget - 4](w);
 					break;
-				case 12: case 13: { // Increase/Decrease terraform size
-					int size = (e->we.click.widget == 12) ? 1 : -1;
+				case 13: case 14: { // Increase/Decrease terraform size
+					int size = (e->we.click.widget == 13) ? 1 : -1;
 					w->HandleButtonClick(e->we.click.widget);
 					size += _terraform_size;
 
@@ -590,11 +606,11 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 					SndPlayFx(SND_15_BEEP);
 					SetWindowDirty(w);
 				} break;
-				case 14: // gen random land
-					w->HandleButtonClick(14);
+				case 15: // gen random land
+					w->HandleButtonClick(15);
 					ShowCreateScenario();
 					break;
-				case 15: // Reset landscape
+				case 16: // Reset landscape
 					ShowQuery(
 						STR_022C_RESET_LANDSCAPE,
 						STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
@@ -610,7 +626,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 					w->RaiseWidget(i);
 					w->InvalidateWidget(i);
 				}
-				if (i == 3) i = 11;
+				if (i == 3) i = 12;
 			}
 			break;
 
@@ -628,6 +644,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 					case DDSP_CREATE_ROCKS:
 					case DDSP_CREATE_DESERT:
 					case DDSP_CREATE_WATER:
+					case DDSP_CREATE_RIVER:
 					case DDSP_RAISE_AND_LEVEL_AREA:
 					case DDSP_LOWER_AND_LEVEL_AREA:
 					case DDSP_LEVEL_AREA:
@@ -646,7 +663,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scen_edit_land_gen_desc = {
-	WDP_AUTO, WDP_AUTO, 182, 103, 182, 103,
+	WDP_AUTO, WDP_AUTO, 204, 103, 204, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,

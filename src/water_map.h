@@ -10,6 +10,7 @@ enum WaterTileType {
 	WATER_TILE_COAST,
 	WATER_TILE_LOCK,
 	WATER_TILE_DEPOT,
+	WATER_TILE_RIVER,
 };
 
 enum DepotPart {
@@ -31,6 +32,7 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 
 	if (_m[t].m5 == 0) return WATER_TILE_CLEAR;
 	if (_m[t].m5 == 1) return WATER_TILE_COAST;
+	if (_m[t].m5 == 2) return WATER_TILE_RIVER;
 	if (IsInsideMM(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_TILE_LOCK;
 
 	assert(IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END));
@@ -58,6 +60,11 @@ static inline bool IsCoast(TileIndex t)
 static inline bool IsCanal(TileIndex t)
 {
 	return GetWaterTileType(t) == WATER_TILE_CLEAR && GetTileOwner(t) != OWNER_WATER;
+}
+
+static inline bool IsRiver(TileIndex t)
+{
+	return GetWaterTileType(t) == WATER_TILE_RIVER;
 }
 
 static inline bool IsWaterTile(TileIndex t)
@@ -120,6 +127,16 @@ static inline void MakeShore(TileIndex t)
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = 1;
+}
+
+static inline void MakeRiver(TileIndex t)
+{
+	SetTileType(t, MP_WATER);
+	SetTileOwner(t, OWNER_WATER);
+	_m[t].m2 = 0;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0;
+	_m[t].m5 = 2;
 }
 
 static inline void MakeCanal(TileIndex t, Owner o)

@@ -269,8 +269,9 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int sx, sy;
 
 	if (p1 >= MapSize()) return CMD_ERROR;
+
 	/* Outside of the editor you can only build canals, not oceans */
-	if (HasBit(p2, 0) && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (p2 == 0 && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	x = TileX(tile);
 	y = TileY(tile);
@@ -288,20 +289,23 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		CommandCost ret;
 
-		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) {
+		Slope slope = GetTileSlope(tile, NULL);
+		if (slope != SLOPE_FLAT && (p2 != 2 || (slope != SLOPE_NW && slope != SLOPE_NE && slope != SLOPE_SW && slope != SLOPE_SE))) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
 		/* can't make water of water! */
-		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || HasBit(p2, 0))) continue;
+		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || p2 == 1)) continue;
 
 		ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 		cost.AddCost(ret);
 
 		if (flags & DC_EXEC) {
-			if (TileHeight(tile) == 0 && HasBit(p2, 0)) {
+			if (TileHeight(tile) == 0 && p2 == 1) {
 				MakeWater(tile);
+			} else if (p2 == 2) {
+				MakeRiver(tile);
 			} else {
 				MakeCanal(tile, _current_player);
 			}
@@ -323,6 +327,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
+		case WATER_TILE_RIVER:
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 			/* Make sure it's not an edge tile. */
@@ -400,14 +405,9 @@ static bool IsWateredTile(TileIndex tile)
 	}
 }
 
-/** draw a canal styled water tile with dikes around */
-void DrawCanalWater(TileIndex tile)
+static void DrawWaterEdges(SpriteID base, TileIndex tile)
 {
 	uint wa;
-
-	/* Test for custom graphics, else use the default */
-	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
-	if (dikes_base == 0) dikes_base = SPR_CANAL_DIKES_BASE;
 
 	/* determine the edges around with water. */
 	wa  = IsWateredTile(TILE_ADDXY(tile, -1,  0)) << 0;
@@ -415,34 +415,44 @@ void DrawCanalWater(TileIndex tile)
 	wa += IsWateredTile(TILE_ADDXY(tile,  1,  0)) << 2;
 	wa += IsWateredTile(TILE_ADDXY(tile,  0, -1)) << 3;
 
-	if (!(wa & 1)) DrawGroundSprite(dikes_base,     PAL_NONE);
-	if (!(wa & 2)) DrawGroundSprite(dikes_base + 1, PAL_NONE);
-	if (!(wa & 4)) DrawGroundSprite(dikes_base + 2, PAL_NONE);
-	if (!(wa & 8)) DrawGroundSprite(dikes_base + 3, PAL_NONE);
+	if (!(wa & 1)) DrawGroundSprite(base,     PAL_NONE);
+	if (!(wa & 2)) DrawGroundSprite(base + 1, PAL_NONE);
+	if (!(wa & 4)) DrawGroundSprite(base + 2, PAL_NONE);
+	if (!(wa & 8)) DrawGroundSprite(base + 3, PAL_NONE);
 
 	/* right corner */
 	switch (wa & 0x03) {
-		case 0: DrawGroundSprite(dikes_base + 4, PAL_NONE); break;
-		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(dikes_base + 8, PAL_NONE); break;
+		case 0: DrawGroundSprite(base + 4, PAL_NONE); break;
+		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(base + 8, PAL_NONE); break;
 	}
 
 	/* bottom corner */
 	switch (wa & 0x06) {
-		case 0: DrawGroundSprite(dikes_base + 5, PAL_NONE); break;
-		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(dikes_base + 9, PAL_NONE); break;
+		case 0: DrawGroundSprite(base + 5, PAL_NONE); break;
+		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(base + 9, PAL_NONE); break;
 	}
 
 	/* left corner */
 	switch (wa & 0x0C) {
-		case  0: DrawGroundSprite(dikes_base + 6, PAL_NONE); break;
-		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(dikes_base + 10, PAL_NONE); break;
+		case  0: DrawGroundSprite(base + 6, PAL_NONE); break;
+		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(base + 10, PAL_NONE); break;
 	}
 
 	/* upper corner */
 	switch (wa & 0x09) {
-		case 0: DrawGroundSprite(dikes_base + 7, PAL_NONE); break;
-		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(dikes_base + 11, PAL_NONE); break;
+		case 0: DrawGroundSprite(base + 7, PAL_NONE); break;
+		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(base + 11, PAL_NONE); break;
 	}
+}
+
+/** draw a canal styled water tile with dikes around */
+void DrawCanalWater(TileIndex tile)
+{
+	/* Test for custom graphics, else use the default */
+	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
+	if (dikes_base == 0) dikes_base = SPR_CANAL_DIKES_BASE;
+
+	DrawWaterEdges(dikes_base, tile);
 }
 
 struct LocksDrawTileStruct {
@@ -483,6 +493,33 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	}
 }
 
+static void DrawRiverWater(const TileInfo *ti)
+{
+	SpriteID image = SPR_FLAT_WATER_TILE;
+	SpriteID edges_base = GetCanalSprite(CF_RIVER_EDGE, ti->tile);
+
+	if (ti->tileh != SLOPE_FLAT) {
+		image = GetCanalSprite(CF_RIVER_SLOPE, ti->tile);
+		if (image == 0) {
+			image = SPR_FLAT_WATER_TILE;
+		} else {
+			switch (ti->tileh) {
+				default: NOT_REACHED();
+				case SLOPE_SE:             edges_base += 12; break;
+				case SLOPE_NE: image += 1; edges_base += 24; break;
+				case SLOPE_SW: image += 2; edges_base += 36; break;
+				case SLOPE_NW: image += 3; edges_base += 48; break;
+			}
+		}
+	}
+
+	DrawGroundSprite(image, PAL_NONE);
+
+	/* Draw canal dikes if there are no river edges to draw. */
+	if (edges_base <= 48) edges_base = SPR_CANAL_DIKES_BASE;
+	DrawWaterEdges(edges_base, ti->tile);
+}
+
 static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
@@ -512,6 +549,11 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_DEPOT:
 			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
+			break;
+
+		case WATER_TILE_RIVER:
+			DrawRiverWater(ti);
+			DrawBridgeMiddle(ti);
 			break;
 	}
 }
@@ -551,6 +593,7 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
+		case WATER_TILE_RIVER:
 			if (!IsCanal(tile)) {
 				td->str = STR_3804_WATER;
 			} else {
@@ -848,6 +891,7 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint 
 		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
 		case WATER_TILE_LOCK:  ts = AxisToTrackBits(DiagDirToAxis(GetLockDirection(tile))); break;
 		case WATER_TILE_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
+		case WATER_TILE_RIVER: ts = (GetTileSlope(tile, NULL) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
 		default: return 0;
 	}
 	if (TileX(tile) == 0) {

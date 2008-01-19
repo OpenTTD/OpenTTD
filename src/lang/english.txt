@@ -726,6 +726,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place li
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
 STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_CREATE_RIVER                                                :{BLACK}Place rivers.
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
