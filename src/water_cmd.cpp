@@ -271,7 +271,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	/* Outside of the editor you can only build canals, not oceans */
-	if (p2 == 0 && _game_mode != GM_EDITOR) return CMD_ERROR;
+	if (p2 != 0 && _game_mode != GM_EDITOR) return CMD_ERROR;
 
 	x = TileX(tile);
 	y = TileY(tile);
