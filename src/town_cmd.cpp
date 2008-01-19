@@ -2467,15 +2467,15 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, grow_counter,          SLE_UINT8,                  0, 53),
 	SLE_CONDVAR(Town, growth_rate,           SLE_UINT8,                  0, 53),
 
-	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT16,                 54, SL_MAX_VERSION),
-	SLE_CONDVAR(Town, grow_counter,          SLE_UINT16,                 54, SL_MAX_VERSION),
-	SLE_CONDVAR(Town, growth_rate,           SLE_INT16,                  54, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, time_until_rebuild,    SLE_UINT16,                54, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, grow_counter,          SLE_UINT16,                54, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, growth_rate,           SLE_INT16,                 54, SL_MAX_VERSION),
 
 	    SLE_VAR(Town, fund_buildings_months, SLE_UINT8),
 	    SLE_VAR(Town, road_build_months,     SLE_UINT8),
 
-	    SLE_VAR(Town, exclusivity,           SLE_UINT8),
-	    SLE_VAR(Town, exclusive_counter,     SLE_UINT8),
+	SLE_CONDVAR(Town, exclusivity,           SLE_UINT8,                  2, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, exclusive_counter,     SLE_UINT8,                  2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  56, SL_MAX_VERSION),
 
