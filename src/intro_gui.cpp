@@ -55,48 +55,48 @@ static inline void SetNewLandscapeType(byte landscape)
 static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + 8); break;
+		case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + 8); break;
 
-	case WE_PAINT:
-		w->SetWidgetLoweredState(8,  _opt_newgame.landscape == LT_TEMPERATE);
-		w->SetWidgetLoweredState(9,  _opt_newgame.landscape == LT_ARCTIC);
-		w->SetWidgetLoweredState(10, _opt_newgame.landscape == LT_TROPIC);
-		w->SetWidgetLoweredState(11, _opt_newgame.landscape == LT_TOYLAND);
-		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
-		DrawWindowWidgets(w);
-		break;
+		case WE_PAINT:
+			w->SetWidgetLoweredState(8,  _opt_newgame.landscape == LT_TEMPERATE);
+			w->SetWidgetLoweredState(9,  _opt_newgame.landscape == LT_ARCTIC);
+			w->SetWidgetLoweredState(10, _opt_newgame.landscape == LT_TROPIC);
+			w->SetWidgetLoweredState(11, _opt_newgame.landscape == LT_TOYLAND);
+			SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
+			DrawWindowWidgets(w);
+			break;
 
-	case WE_CLICK:
+		case WE_CLICK:
 #ifdef ENABLE_NETWORK
-		/* Do not create a network server when you (just) have closed one of the game
-		 * creation/load windows for the network server. */
-		if (2 <= e->we.click.widget && e->we.click.widget <= 6) _is_network_server = false;
+			/* Do not create a network server when you (just) have closed one of the game
+			 * creation/load windows for the network server. */
+			if (2 <= e->we.click.widget && e->we.click.widget <= 6) _is_network_server = false;
 #endif /* ENABLE_NETWORK */
 
-		switch (e->we.click.widget) {
-		case 2: ShowGenerateLandscape(); break;
-		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-		case 4: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-		case 5: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
-		case 6: StartScenarioEditor(); break;
-		case 7:
-			if (!_network_available) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
-			} else {
-				ShowNetworkGameWindow();
+			switch (e->we.click.widget) {
+				case 2: ShowGenerateLandscape(); break;
+				case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
+				case 4: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+				case 5: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+				case 6: StartScenarioEditor(); break;
+				case 7:
+					if (!_network_available) {
+						ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+					} else {
+						ShowNetworkGameWindow();
+					}
+					break;
+				case 8: case 9: case 10: case 11:
+					w->RaiseWidget(_opt_newgame.landscape + 8);
+					SetNewLandscapeType(e->we.click.widget - 8);
+					break;
+				case 12: ShowGameOptions(); break;
+				case 13: ShowGameDifficulty(); break;
+				case 14: ShowPatchesSelection(); break;
+				case 15: ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
+				case 16: HandleExitGameRequest(); break;
 			}
 			break;
-		case 8: case 9: case 10: case 11:
-			w->RaiseWidget(_opt_newgame.landscape + 8);
-			SetNewLandscapeType(e->we.click.widget - 8);
-			break;
-		case 12: ShowGameOptions(); break;
-		case 13: ShowGameDifficulty(); break;
-		case 14: ShowPatchesSelection(); break;
-		case 15: ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
-		case 16: HandleExitGameRequest(); break;
-		}
-		break;
 	}
 }
 
