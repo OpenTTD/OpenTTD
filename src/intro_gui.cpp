@@ -88,7 +88,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 #ifdef ENABLE_NETWORK
 			/* Do not create a network server when you (just) have closed one of the game
 			 * creation/load windows for the network server. */
-			if (2 <= e->we.click.widget && e->we.click.widget <= 6) _is_network_server = false;
+			if (SGI_GENERATE_GAME <= e->we.click.widget && e->we.click.widget <= SGI_EDIT_SCENARIO) _is_network_server = false;
 #endif /* ENABLE_NETWORK */
 
 			switch (e->we.click.widget) {
