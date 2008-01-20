@@ -52,16 +52,34 @@ static inline void SetNewLandscapeType(byte landscape)
 	InvalidateWindowClasses(WC_SELECT_GAME);
 }
 
+enum SelectGameIntroWidgets {
+	SGI_GENERATE_GAME = 2,
+	SGI_LOAD_GAME,
+	SGI_PLAY_SCENARIO,
+	SGI_PLAY_HEIGHTMAP,
+	SGI_EDIT_SCENARIO,
+	SGI_PLAY_NETWORK,
+	SGI_TEMPERATE_LANDSCAPE,
+	SGI_ARCTIC_LANDSCAPE,
+	SGI_TROPIC_LANDSCAPE,
+	SGI_TOYLAND_LANDSCAPE,
+	SGI_OPTIONS,
+	SGI_DIFFICULTIES,
+	SGI_PATCHES_OPTIONS,
+	SGI_GRF_SETTINGS,
+	SGI_EXIT,
+};
+
 static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + 8); break;
 
 		case WE_PAINT:
-			w->SetWidgetLoweredState(8,  _opt_newgame.landscape == LT_TEMPERATE);
-			w->SetWidgetLoweredState(9,  _opt_newgame.landscape == LT_ARCTIC);
-			w->SetWidgetLoweredState(10, _opt_newgame.landscape == LT_TROPIC);
-			w->SetWidgetLoweredState(11, _opt_newgame.landscape == LT_TOYLAND);
+			w->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _opt_newgame.landscape == LT_TEMPERATE);
+			w->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE, _opt_newgame.landscape == LT_ARCTIC);
+			w->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE, _opt_newgame.landscape == LT_TROPIC);
+			w->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE, _opt_newgame.landscape == LT_TOYLAND);
 			SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 			DrawWindowWidgets(w);
 			break;
@@ -74,27 +92,31 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 #endif /* ENABLE_NETWORK */
 
 			switch (e->we.click.widget) {
-				case 2: ShowGenerateLandscape(); break;
-				case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-				case 4: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-				case 5: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
-				case 6: StartScenarioEditor(); break;
-				case 7:
+				case SGI_GENERATE_GAME:  ShowGenerateLandscape(); break;
+				case SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
+				case SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+				case SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+				case SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
+
+				case SGI_PLAY_NETWORK:
 					if (!_network_available) {
 						ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 					} else {
 						ShowNetworkGameWindow();
 					}
 					break;
-				case 8: case 9: case 10: case 11:
-					w->RaiseWidget(_opt_newgame.landscape + 8);
-					SetNewLandscapeType(e->we.click.widget - 8);
+
+				case SGI_TEMPERATE_LANDSCAPE:	case SGI_ARCTIC_LANDSCAPE:
+				case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
+					w->RaiseWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
+					SetNewLandscapeType(e->we.click.widget - SGI_TEMPERATE_LANDSCAPE);
 					break;
-				case 12: ShowGameOptions(); break;
-				case 13: ShowGameDifficulty(); break;
-				case 14: ShowPatchesSelection(); break;
-				case 15: ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
-				case 16: HandleExitGameRequest(); break;
+
+				case SGI_OPTIONS:         ShowGameOptions(); break;
+				case SGI_DIFFICULTIES:    ShowGameDifficulty(); break;
+				case SGI_PATCHES_OPTIONS: ShowPatchesSelection(); break;
+				case SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
+				case SGI_EXIT:            HandleExitGameRequest(); break;
 			}
 			break;
 	}
