@@ -654,6 +654,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Baleset
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginformációk
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ipari létesítmények létrejötte / bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Termelésváltozások az általad szállított ipari cégeknél
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Termelésváltozások a konkurrenseid által szállított ipari cégeknél
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Más ipari termelési változások
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Tanácsok / információk a játékos járműveiről
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Új járművek
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Áruk elfogadásának változásai
@@ -789,6 +792,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Világí
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Rádióadó építése
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatagot hoz létre.{}Nyomj CTRL-t az eltávolításához
 STR_CREATE_LAKE                                                 :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten CTRL-t lenyomva hívod meg, ekkor elárasztja a területet
+STR_CREATE_RIVER                                                :{BLACK}Folyók elhelyezése
 STR_0290_DELETE                                                 :{BLACK}Töröl
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}A város teljes eltüntetése
 STR_0292_SAVE_SCENARIO                                          :Pálya mentése
@@ -998,6 +1002,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Válassz
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Teljes képernyő
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Jelöld be ezt, ha teljes képernyős módban szeretnél OpenTTD-zni
+STR_FULLSCREEN_FAILED                                           :{WHITE}Teljesképernyős módra váltás sikertelen
 
 STR_OPTIONS_RES                                                 :{BLACK}A képernyő felbontása
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2406,8 +2411,10 @@ STR_COMPANY_PASSWORD                                            :{BLACK}Jelszó
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vállalati jelszó beállítása
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Ne mentsd el a megadott jelszót
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Új jelszó megadása a céghez
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Cég jelszó
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Alapértelmezett cég jelszó
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Ezen jelszó mint alapjelszó használata az új cégeknél
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Gazdasági visszaesés!{}{}A közgazdászok gazdasági válságtól tartanak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Vége a visszaesésnek!{}{}A kereskedelem fellendül, ami önbizalmat ad az iparnak, és erősödik a gazdaság!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Kicsi/nagy ablakméret közötti váltás
@@ -2433,6 +2440,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Utasszállító kocsi (gőz)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Utasszállító kocsi (dízeles)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Utasszállító kocsi (elektromos)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Utasszállító kocsi (Egysínű)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Utasszállító kocsi (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Tehervagon
 STR_LIVERY_BUS                                                  :Busz
 STR_LIVERY_TRUCK                                                :Teherautó
@@ -2888,6 +2897,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Új {STRING} elérhető!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}A megsemmisült jármű nem eladható...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nem lehetséges a megsemmisült jármű átalakítása...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}A jármű nem időzíthető
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}A járművek csak az állomáson várakozhatnak
@@ -3209,6 +3219,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányzó GRF fájl(oka)t kikapcsoltam
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Kritikus GRF fájl(ok) hiányoznak, a játék nem betölthető
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó GRF fájl(ok)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3332,6 +3343,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalak�
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállítmány típusra
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális húzó erő: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3555,6 +3572,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Belépő
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Kilépő-szignál (lámpa){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombó-szignál (lámpa){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Szignál Átalakító{}Amikor ki van jelölve, egy meglévő szignálra kattintással átkonvertálja a kiválasztott szignál-típusra és -variációra, CTRL+kattintás a variációt fogja változtatni.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Automata szignálsűrűség
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Automata szignáltávolság csökkentése
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Automata szignáltávolság növelése
 ########

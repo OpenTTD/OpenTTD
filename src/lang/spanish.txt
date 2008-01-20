@@ -936,6 +936,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Seleccio
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pantalla completa
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Marca esta opción para jugar OpenTTD a pantalla completa
+STR_FULLSCREEN_FAILED                                           :{WHITE}El modo de pantalla completa ha fallado
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolución de pantalla
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2336,6 +2337,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón Pasajeros (Vapor)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón Pasajeros (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón Pasajeros (Electrico)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón Pasajeros (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón Pasajeros (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagón de Carga
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Camión
@@ -3237,6 +3240,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Converti
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esfuerzo de Tracción {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 

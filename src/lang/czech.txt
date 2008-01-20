@@ -784,6 +784,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umístit
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umístit vysílač
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvořit pouštní oblast{}Stiskem CTRL ji odstraníš
 STR_CREATE_LAKE                                                 :{BLACK}Vytvořit vodní plochu.{}Pokud není držen CTRL, vytvoří se na úrovni moře průplav; v opačném případě se zaplaví ostatní dílky
+STR_CREATE_RIVER                                                :{BLACK}Vytvořit řeky.
 STR_0290_DELETE                                                 :{BLACK}Smaž
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto město
 STR_0292_SAVE_SCENARIO                                          :Uložit mapu
@@ -2394,6 +2395,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Osobní vagon (parní)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Osobní vagon (dieselový)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Osobní vagon (elektrický)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Osobní vagon (monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Osobní vagon (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Nákladní vagon
 STR_LIVERY_BUS                                                  :Autobus
 STR_LIVERY_TRUCK                                                :Nákladní vůz
@@ -3301,6 +3304,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitova
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všechny druhy nákladu
 STR_PURCHASE_INFO_ALL_BUT                                       :Všechny kromě {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. tažná síla: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

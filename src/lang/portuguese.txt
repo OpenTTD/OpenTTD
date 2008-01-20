@@ -1603,7 +1603,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de 
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Deverá remover a linha férrea primeiro
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construir caminhos-de-ferro
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construir Via Férrea Electrificada
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construir caminhos-de-ferro electrificados
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir monocarril
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construir MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Seleccione Ponte Ferroviária
@@ -1615,7 +1615,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Não é 
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Não é possível remover sinais daqui...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientação do Depósito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construir caminhos-de-ferro
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construir Via Férrea Electrificada
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construir caminhos-de-ferro electrificados
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construir monocarril
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construir MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir linha férrea
@@ -2336,6 +2336,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carruagem de Passageiros (Vapor)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carruagem de Passageiros (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carruagem de Passageiros (Eléctrica)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Carruagem de Passageiros (Monocarril)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Carruagem de Passageiros (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagão de Carga
 STR_LIVERY_BUS                                                  :Autocarro
 STR_LIVERY_TRUCK                                                :Veículo de Mercadorias
@@ -3237,6 +3239,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reconver
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Máx. Força de Tracção: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

@@ -22,9 +22,9 @@ STR_000B                                                        :{YELLOW}{STATIO
 STR_000C_ACCEPTS                                                :{BLACK}Prihvaća: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prihvaća: {GOLD}
 STR_000E                                                        :
-STR_000F_PASSENGERS                                             :putnici
-STR_0010_COAL                                                   :ugljen
-STR_0011_MAIL                                                   :pošta
+STR_000F_PASSENGERS                                             :Putnici
+STR_0010_COAL                                                   :Ugljen
+STR_0011_MAIL                                                   :Pošta
 STR_0012_OIL                                                    :nafta
 STR_0013_LIVESTOCK                                              :domaće životinje
 STR_0014_GOODS                                                  :robe
@@ -2728,7 +2728,7 @@ STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servisni
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlakovi - klikni na vlak za informacije
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Izgradi/kupi nove vlakove (zahtijeva spremište vlakova)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlakovi - klikni na vlak za informacije., vuci vozilo kako bi dodao/oduzeo od vlaka
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Izgradi novi vlak
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kupi novo željezničko vozilo
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Ovdje povuci vlak kako bi ga prodao
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centriraj glavni pogled na lokaciju željezničkog spremišta
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Popis izabranih vlakova - klikni na vlak za informacije
@@ -3239,6 +3239,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prenamje
 STR_PURCHASE_INFO_ALL_TYPES                                     :Sve vrste tereta
 STR_PURCHASE_INFO_ALL_BUT                                       :Sve osim {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Maks. vučni napor: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 

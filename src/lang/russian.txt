@@ -2111,7 +2111,7 @@ STR_SV_STNAME_UPPER                                             :Верхняя 
 STR_SV_STNAME_LOWER                                             :Нижняя {STRING}
 STR_SV_STNAME_HELIPORT                                          :Площадка {STRING}
 STR_SV_STNAME_FOREST                                            :Лес {STRING}
-STR_SV_STNAME_FALLBACK                                          :{STRING}-{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Станция #{NUM}
 
 ############ end of savegame specific region!
 
@@ -3248,6 +3248,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Пере
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всех типов грузов
 STR_PURCHASE_INFO_ALL_BUT                                       :Все, кроме {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. тяговое усилие: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 

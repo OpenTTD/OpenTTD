@@ -727,6 +727,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer u
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer un Transmetteur
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Définir une zone désertique.{}Garder Ctrl enfoncé pour retrait
 STR_CREATE_LAKE                                                 :{BLACK}Définir une zone d'eau.{}Construit un canal, si Ctrl est enfoncé au niveau de la mer, le voisinage sera innondé.
+STR_CREATE_RIVER                                                :{BLACK}Placer des rivières.
 STR_0290_DELETE                                                 :{BLACK}Supprimer
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Supprimer complètement cette ville
 STR_0292_SAVE_SCENARIO                                          :Sauvegarder scénario
@@ -2337,6 +2338,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Voiture (Vapeur)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Voiture (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Voiture (Electrique)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Voiture (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Voiture (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Wagon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Camion
@@ -3238,6 +3241,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réamén
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
 STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Effort de traction max.: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

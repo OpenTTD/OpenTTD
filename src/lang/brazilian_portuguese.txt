@@ -2340,6 +2340,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagão de Passageiro (Vapor)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagão de Passageiro (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagão de Passageiro (Elétrico)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagão de Passageiro (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagão de Passageiro (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagão de carga
 STR_LIVERY_BUS                                                  :Ônibus
 STR_LIVERY_TRUCK                                                :Caminhão
@@ -3241,6 +3243,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptáv
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tração : {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 

@@ -728,6 +728,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza f
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza trasmettitore
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definisce un'area desertica.{}Fare clic tenendo premuto CTRL per rimuoverla
 STR_CREATE_LAKE                                                 :{BLACK}Definisce una zona d'acqua.{}Costruisce un canale, a meno che non si tenga premuto CTRL mentre si fa clic al livello del mare, provocando l'allagamento dei dintorni
+STR_CREATE_RIVER                                                :{BLACK}Crea un fiume
 STR_0290_DELETE                                                 :{BLACK}Elimina
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina completamente questa città
 STR_0292_SAVE_SCENARIO                                          :Salva scenario
@@ -2338,6 +2339,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carrozza passeggeri (V)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carrozza passeggeri (D)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carrozza passeggeri (E)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Carrozza passeggeri (MR)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Carrozza passeggeri (ML)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagone merci
 STR_LIVERY_BUS                                                  :Autobus
 STR_LIVERY_TRUCK                                                :Camion
@@ -3239,6 +3242,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Riadatta
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di carico
 STR_PURCHASE_INFO_ALL_BUT                                       :Tutto tranne {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Sforzo di trazione massimo: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

@@ -726,6 +726,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Situa un
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Situa un repetidor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineix àrea de desert.{}Prem i mantingues la tecla CTRL per treure'l
 STR_CREATE_LAKE                                                 :{BLACK}Defineix l'area d'aigua.{}Fa un canal, excepte si CTRL està apretat al nivell del mar, llavors s'inundaran els voltants
+STR_CREATE_RIVER                                                :{BLACK}Posa rius.
 STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
@@ -2336,6 +2337,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagó de passatgers (Vapor)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagó de passatgers (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagó de passatgers (Elèctric)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagó de Passatgers (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagó de Passatgers (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagó de càrrega
 STR_LIVERY_BUS                                                  :Autobús
 STR_LIVERY_TRUCK                                                :Camió
@@ -3237,6 +3240,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Remodela
 STR_PURCHASE_INFO_ALL_TYPES                                     :Totes les càrregues
 STR_PURCHASE_INFO_ALL_BUT                                       :Tots menys {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esforç de Tracció: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

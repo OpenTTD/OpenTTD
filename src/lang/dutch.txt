@@ -2336,6 +2336,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagierswagon (Stoom)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagierswagon (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierswagon (Elektrisch)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagierswagon (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagierswagon (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vracht Wagon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Vrachtwagen
@@ -3237,6 +3239,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herindee
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vracht typen
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Trekkracht: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 
