@@ -56,7 +56,7 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 
 	/* Non-sealevel -> canal */
 	if (TileHeight(t) != 0) {
-		MakeCanal(t, o);
+		MakeCanal(t, o, Random());
 		return;
 	}
 
@@ -71,7 +71,7 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 		}
 	}
 	if (has_canal || !has_water) {
-		MakeCanal(t, o);
+		MakeCanal(t, o, Random());
 	} else {
 		MakeWater(t);
 	}
@@ -128,7 +128,7 @@ void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o)
 	if (o == OWNER_WATER) {
 		MakeWater(tile);
 	} else {
-		MakeCanal(tile, o);
+		MakeCanal(tile, o, Random());
 	}
 }
 
@@ -305,9 +305,9 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (TileHeight(tile) == 0 && p2 == 1) {
 				MakeWater(tile);
 			} else if (p2 == 2) {
-				MakeRiver(tile);
+				MakeRiver(tile, Random());
 			} else {
-				MakeCanal(tile, _current_player);
+				MakeCanal(tile, _current_player, Random());
 			}
 			MarkTileDirtyByTile(tile);
 			MarkTilesAroundDirty(tile);

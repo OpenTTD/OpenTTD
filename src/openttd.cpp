@@ -1710,7 +1710,7 @@ bool AfterLoadGame()
 						if (GB(_m[t].m5, 3, 2) == 0) {
 							MakeClear(t, CLEAR_GRASS, 3);
 						} else {
-							MakeCanal(t, (GetTileOwner(t) == OWNER_WATER) ? OWNER_NONE : GetTileOwner(t));
+							MakeCanal(t, (GetTileOwner(t) == OWNER_WATER) ? OWNER_NONE : GetTileOwner(t), Random());
 						}
 					}
 					SetBridgeMiddle(t, axis);

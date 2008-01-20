@@ -108,6 +108,11 @@ static inline byte GetSection(TileIndex t)
 	return GB(_m[t].m5, 0, 4);
 }
 
+static inline byte GetWaterTileRandomBits(TileIndex t)
+{
+	return _m[t].m4;
+}
+
 
 static inline void MakeWater(TileIndex t)
 {
@@ -129,24 +134,24 @@ static inline void MakeShore(TileIndex t)
 	_m[t].m5 = 1;
 }
 
-static inline void MakeRiver(TileIndex t)
+static inline void MakeRiver(TileIndex t, uint8 random_bits)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, OWNER_WATER);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
-	_m[t].m4 = 0;
+	_m[t].m4 = random_bits;
 	_m[t].m5 = 2;
 }
 
-static inline void MakeCanal(TileIndex t, Owner o)
+static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 {
 	assert(o != OWNER_WATER);
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
-	_m[t].m4 = 0;
+	_m[t].m4 = random_bits;
 	_m[t].m5 = 0;
 }
 

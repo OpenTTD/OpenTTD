@@ -11,6 +11,7 @@
 #include "newgrf_spritegroup.h"
 #include "newgrf_canal.h"
 #include "tile_map.h"
+#include "water_map.h"
 
 
 /** Table of canal 'feature' sprite groups */
@@ -21,7 +22,7 @@ const SpriteGroup *_canal_sg[CF_END];
  * three functions are stubs. */
 static uint32 CanalGetRandomBits(const ResolverObject *object)
 {
-	return 0;
+	return GetWaterTileRandomBits(object->u.canal.tile);
 }
 
 
@@ -47,6 +48,9 @@ static uint32 CanalGetVariable(const ResolverObject *object, byte variable, byte
 
 		case 0x81:
 			return GetTerrainType(tile);
+
+		case 0x83:
+			return GetWaterTileRandomBits(tile);
 	}
 
 	DEBUG(grf, 1, "Unhandled canal property 0x%02X", variable);
