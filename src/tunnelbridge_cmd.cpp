@@ -364,9 +364,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 
 	delta = (direction == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 	for (tile = tile_start + delta; tile != tile_end; tile += delta) {
-		uint z;
-
-		if (GetTileSlope(tile, &z) != SLOPE_FLAT && z >= z_start) return_cmd_error(STR_BRIDGE_TOO_LOW_FOR_TERRAIN);
+		if (GetTileMaxZ(tile) > z_start) return_cmd_error(STR_BRIDGE_TOO_LOW_FOR_TERRAIN);
 
 		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) && !replace_bridge) {
 			/* Disallow crossing bridges for the time being */
