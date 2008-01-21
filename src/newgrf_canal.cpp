@@ -15,7 +15,7 @@
 
 
 /** Table of canal 'feature' sprite groups */
-const SpriteGroup *_canal_sg[CF_END];
+WaterFeature _water_feature[CF_END];
 
 
 /* Random bits and triggers are not supported for canals, so the following
@@ -94,7 +94,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 
 	NewCanalResolver(&object, tile);
 
-	group = Resolve(_canal_sg[feature], &object);
+	group = Resolve(_water_feature[feature].group, &object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 
 	return group->g.result.sprite;

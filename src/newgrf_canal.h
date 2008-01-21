@@ -17,8 +17,15 @@ enum CanalFeature {
 };
 
 
+struct WaterFeature {
+	const SpriteGroup *group;
+	uint8 callbackmask;
+	uint8 flags;
+};
+
+
 /** Table of canal 'feature' sprite groups */
-extern const SpriteGroup *_canal_sg[CF_END];
+extern WaterFeature _water_feature[CF_END];
 
 
 /** Lookup the base sprite to use for a canal.

@@ -1134,6 +1134,38 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	return ret;
 }
 
+static bool CanalChangeInfo(uint id, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	bool ret = false;
+
+	if (id + numinfo > CF_END) {
+		grfmsg(1, "CanalChangeInfo: Canal feature %u is invalid, max %u, ignoreing", id + numinfo, CF_END);
+		return false;
+	}
+
+	for (int i = 0; i < numinfo; i++) {
+		WaterFeature *wf = &_water_feature[id + i];
+
+		switch (prop) {
+			case 0x08:
+				wf->callbackmask = grf_load_byte(&buf);
+				break;
+
+			case 0x09:
+				wf->flags = grf_load_byte(&buf);
+				break;
+
+			default:
+				ret = true;
+				break;
+		}
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -2128,7 +2160,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_SHIP */         ShipVehicleChangeInfo,
 		/* GSF_AIRCRAFT */     AircraftVehicleChangeInfo,
 		/* GSF_STATION */      StationChangeInfo,
-		/* GSF_CANAL */        NULL,
+		/* GSF_CANAL */        CanalChangeInfo,
 		/* GSF_BRIDGE */       BridgeChangeInfo,
 		/* GSF_TOWNHOUSE */    TownHouseChangeInfo,
 		/* GSF_GLOBALVAR */    NULL, /* Global variables are handled during reservation */
@@ -2876,7 +2908,7 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 			continue;
 		}
 
-		_canal_sg[cf] = _cur_grffile->spritegroups[groupid];
+		_water_feature[cf].group = _cur_grffile->spritegroups[groupid];
 	}
 }
 
@@ -5037,8 +5069,8 @@ static void ResetNewGRFData()
 	ResetStationClasses();
 	ResetCustomStations();
 
-	/* Reset canal sprite groups */
-	memset(_canal_sg, 0, sizeof(_canal_sg));
+	/* Reset canal sprite groups and flags */
+	memset(_water_feature, 0, sizeof(_water_feature));
 
 	/* Reset the snowline table. */
 	ClearSnowLine();
