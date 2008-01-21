@@ -81,17 +81,14 @@ int CalcBridgeLenCostFactor(int x)
 	}
 }
 
-#define M(x) (1 << (x))
-enum BridgeFoundation {
-	/* foundation, whole tile is leveled up --> 3 corners raised */
-	BRIDGE_FULL_LEVELED_FOUNDATION = M(SLOPE_WSE) | M(SLOPE_NWS) | M(SLOPE_ENW) | M(SLOPE_SEN),
-	/* foundation, tile is partly leveled up --> 1 corner raised */
-	BRIDGE_PARTLY_LEVELED_FOUNDATION = M(SLOPE_W) | M(SLOPE_S) | M(SLOPE_E) | M(SLOPE_N),
-	/* no foundations (X,Y direction) */
-	BRIDGE_NO_FOUNDATION = M(SLOPE_FLAT) | M(SLOPE_SW) | M(SLOPE_SE) | M(SLOPE_NW) | M(SLOPE_NE),
-	BRIDGE_HORZ_RAMP = (BRIDGE_PARTLY_LEVELED_FOUNDATION | BRIDGE_NO_FOUNDATION) & ~M(SLOPE_FLAT)
-};
-#undef M
+Foundation GetBridgeFoundation(Slope tileh, Axis axis)
+{
+	if ((tileh == SLOPE_FLAT) ||
+	    (((tileh == SLOPE_NE) || (tileh == SLOPE_SW)) && (axis == AXIS_X)) ||
+	    (((tileh == SLOPE_NW) || (tileh == SLOPE_SE)) && (axis == AXIS_Y))) return FOUNDATION_NONE;
+
+	return (HasSlopeHighestCorner(tileh) ? InclinedFoundation(axis) : FlatteningFoundation(tileh));
+}
 
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 {
@@ -107,42 +104,47 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 static inline byte GetBridgeFlags(int index) { return _bridge[index].flags;}
 
 
-/** Check the slope at the bridge ramps in three easy steps:
- * - valid slopes without foundation
- * - valid slopes with foundation
- * - rest is invalid
+/**
+ * Determines the foundation for the north bridge head, and tests if the resulting slope is valid.
+ *
+ * @param axis Axis of the bridge
+ * @param tileh Slope of the tile under the north bridge head; returns slope on top of foundation
+ * @param z TileZ corresponding to tileh, gets modified as well
+ * @return Error or cost for bridge foundation
  */
-#define M(x) (1 << (x))
-static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope tileh)
+static CommandCost CheckBridgeSlopeNorth(Axis axis, Slope *tileh, uint *z)
 {
-	uint32 valid;
+	Foundation f = GetBridgeFoundation(*tileh, axis);
+	*z += ApplyFoundationToSlope(f, tileh);
 
-	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_NE) : M(SLOPE_NW));
-	if (HasBit(valid, tileh)) return CommandCost();
+	Slope valid_inclined = (axis == AXIS_X ? SLOPE_NE : SLOPE_NW);
+	if ((*tileh != SLOPE_FLAT) && (*tileh != valid_inclined)) return CMD_ERROR;
 
-	valid =
-		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) | M(SLOPE_STEEP_N) |
-		(axis == AXIS_X ? M(SLOPE_E) | M(SLOPE_STEEP_E) : M(SLOPE_W) | M(SLOPE_STEEP_W));
-	if (HasBit(valid, tileh)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CMD_ERROR;
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 }
 
-static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope tileh)
+/**
+ * Determines the foundation for the south bridge head, and tests if the resulting slope is valid.
+ *
+ * @param axis Axis of the bridge
+ * @param tileh Slope of the tile under the south bridge head; returns slope on top of foundation
+ * @param z TileZ corresponding to tileh, gets modified as well
+ * @return Error or cost for bridge foundation
+ */
+static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 {
-	uint32 valid;
+	Foundation f = GetBridgeFoundation(*tileh, axis);
+	*z += ApplyFoundationToSlope(f, tileh);
 
-	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_SW) : M(SLOPE_SE));
-	if (HasBit(valid, tileh)) return CommandCost();
+	Slope valid_inclined = (axis == AXIS_X ? SLOPE_SW : SLOPE_SE);
+	if ((*tileh != SLOPE_FLAT) && (*tileh != valid_inclined)) return CMD_ERROR;
 
-	valid =
-		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) | M(SLOPE_STEEP_S) |
-		(axis == AXIS_X ? M(SLOPE_W) | M(SLOPE_STEEP_W) : M(SLOPE_E) | M(SLOPE_STEEP_E));
-	if (HasBit(valid, tileh)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+	if (f == FOUNDATION_NONE) return CommandCost();
 
-	return CMD_ERROR;
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 }
-#undef M
 
 
 uint32 GetBridgeLength(TileIndex begin, TileIndex end)
@@ -198,8 +200,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	uint bridge_len;
 	Axis direction;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	CommandCost terraformcost, ret;
-	bool allow_on_slopes;
+	CommandCost ret;
 	bool replace_bridge = false;
 	uint replaced_bridge_type;
 
@@ -250,16 +251,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	tileh_start = GetTileSlope(tile_start, &z_start);
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
-	if (IsSteepSlope(tileh_start)) z_start += TILE_HEIGHT;
-	if (HasBit(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) z_start += TILE_HEIGHT;
-
-	if (IsSteepSlope(tileh_end)) z_end += TILE_HEIGHT;
-	if (HasBit(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) z_end += TILE_HEIGHT;
+	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
+	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end, &z_end);
 
 	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
-
-	allow_on_slopes = (!_is_old_ai_player
-	                   && _patches.build_on_slopes);
 
 	TransportType transport_type = railtype == INVALID_RAILTYPE ? TRANSPORT_ROAD : TRANSPORT_RAIL;
 
@@ -305,15 +300,16 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	} else {
 		/* Build a new bridge. */
 
+		bool allow_on_slopes = (!_is_old_ai_player && _patches.build_on_slopes);
+
 		/* Try and clear the start landscape */
 		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return ret;
 		cost = ret;
 
-		terraformcost = CheckBridgeSlopeNorth(direction, tileh_start);
-		if (CmdFailed(terraformcost) || (terraformcost.GetCost() != 0 && !allow_on_slopes))
+		if (CmdFailed(terraform_cost_north) || (terraform_cost_north.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost.AddCost(terraformcost);
+		cost.AddCost(terraform_cost_north);
 
 		/* Try and clear the end landscape */
 		ret = DoCommand(tile_end, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -321,10 +317,9 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 		cost.AddCost(ret);
 
 		/* false - end tile slope check */
-		terraformcost = CheckBridgeSlopeSouth(direction, tileh_end);
-		if (CmdFailed(terraformcost) || (terraformcost.GetCost() != 0 && !allow_on_slopes))
+		if (CmdFailed(terraform_cost_south) || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-		cost.AddCost(terraformcost);
+		cost.AddCost(terraform_cost_south);
 	}
 
 	if (!replace_bridge) {
@@ -397,7 +392,6 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 				break;
 
 			case MP_CLEAR:
-				if (!replace_bridge && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 				break;
 
 			default:
@@ -755,13 +749,6 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 	}
 }
 
-Foundation GetBridgeFoundation(Slope tileh, Axis axis)
-{
-	if (HasBit(BRIDGE_NO_FOUNDATION, tileh)) return FOUNDATION_NONE;
-	if (HasBit(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return FlatteningFoundation(tileh);
-	return InclinedFoundation(axis);
-}
-
 /**
  * Draws the trambits over an already drawn (lower end) of a bridge.
  * @param x       the x of the bridge
@@ -1097,6 +1084,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
+	static const uint32 BRIDGE_HORZ_RAMP = (1 << SLOPE_SW) | (1 << SLOPE_SE) | (1 << SLOPE_NW) | (1 << SLOPE_NE);
 	uint z;
 	Slope tileh = GetTileSlope(tile, &z);
 
@@ -1390,24 +1378,20 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;
+		uint z_old;
+		Slope tileh_old = GetTileSlope(tile, &z_old);
 
 		/* Check if new slope is valid for bridges in general (so we can savely call GetBridgeFoundation()) */
 		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
-			res = CheckBridgeSlopeSouth(axis, tileh_new);
+			CheckBridgeSlopeSouth(axis, &tileh_old, &z_old);
+			res = CheckBridgeSlopeSouth(axis, &tileh_new, &z_new);
 		} else {
-			res = CheckBridgeSlopeNorth(axis, tileh_new);
+			CheckBridgeSlopeNorth(axis, &tileh_old, &z_old);
+			res = CheckBridgeSlopeNorth(axis, &tileh_new, &z_new);
 		}
 
-		if (!CmdFailed(res)) {
-			uint z_old;
-			Slope tileh_old = GetTileSlope(tile, &z_old);
-
-			z_old += ApplyFoundationToSlope(GetBridgeFoundation(tileh_old, axis), &tileh_old);
-			z_new += ApplyFoundationToSlope(GetBridgeFoundation(tileh_new, axis), &tileh_new);
-
-			/* Surface slope remains unchanged? */
-			if ((z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
-		}
+		/* Surface slope is valid and remains unchanged? */
+		if (!CmdFailed(res) && (z_old == z_new) && (tileh_old == tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
