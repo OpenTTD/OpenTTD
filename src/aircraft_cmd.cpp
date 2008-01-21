@@ -1565,7 +1565,7 @@ static inline bool CheckSendAircraftToHangarForReplacement(const Vehicle *v)
 		/* There is no autoreplace assigned to this EngineID so we will set it to renew to the same type if needed */
 		new_engine = v->engine_type;
 
-		if(p->engine_renew && (v->age - v->max_age) < p->engine_renew_months * 30) {
+		if(!p->engine_renew || (v->age - v->max_age) < p->engine_renew_months * 30) {
 			/* No need to replace the aircraft */
 			return false;
 		}
