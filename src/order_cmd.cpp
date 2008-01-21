@@ -1330,10 +1330,8 @@ static void Load_ORDR()
 		if (CheckSavegameVersion(5)) {
 			/* Pre-version 5 had an other layout for orders
 			    (uint16 instead of uint32) */
-			uint16 orders[5000];
-
 			len /= sizeof(uint16);
-			assert (len <= lengthof(orders));
+			uint16 *orders = MallocT<uint16>(len + 1);
 
 			SlArray(orders, len, SLE_UINT16);
 
@@ -1341,11 +1339,11 @@ static void Load_ORDR()
 				Order *order = new (i) Order();
 				AssignOrder(order, UnpackVersion4Order(orders[i]));
 			}
-		} else if (CheckSavegameVersionOldStyle(5, 2)) {
-			uint32 orders[5000];
 
-			len /= sizeof(uint32);
-			assert (len <= lengthof(orders));
+			free(orders);
+		} else if (CheckSavegameVersionOldStyle(5, 2)) {
+			len /= sizeof(uint16);
+			uint16 *orders = MallocT<uint16>(len + 1);
 
 			SlArray(orders, len, SLE_UINT32);
 
@@ -1353,6 +1351,8 @@ static void Load_ORDR()
 				Order *order = new (i) Order();
 				AssignOrder(order, UnpackOrder(orders[i]));
 			}
+
+			free(orders);
 		}
 
 		/* Update all the next pointer */

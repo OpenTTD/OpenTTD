@@ -106,7 +106,7 @@ void SetFiosType(const byte fiostype);
 extern const TextColour _fios_colors[];
 
 /* bridge_gui.cpp */
-void ShowBuildBridgeWindow(uint start, uint end, byte type);
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte type);
 
 void ShowBuildIndustryWindow();
 void ShowMusicWindow();

@@ -26,6 +26,7 @@ enum VehicleEnterTileStatus {
 	 * VETS_ENTERED_STATION is set
 	 */
 	VETS_STATION_ID_OFFSET = 8,
+	VETS_STATION_MASK      = 0xFFFF << VETS_STATION_ID_OFFSET,
 
 	/** Bit sets of the above specified bits */
 	VETSB_CONTINUE         = 0,                          ///< The vehicle can continue normally

@@ -51,7 +51,7 @@ Vehicle *CheckMouseOverVehicle();
 
 void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method);
 void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process);
-void VpSetPresizeRange(uint from, uint to);
+void VpSetPresizeRange(TileIndex from, TileIndex to);
 void VpSetPlaceSizingLimit(int limit);
 
 typedef void PlaceProc(TileIndex tile);

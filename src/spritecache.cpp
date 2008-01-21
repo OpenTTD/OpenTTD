@@ -23,12 +23,12 @@ uint _sprite_cache_size = 4;
 
 
 struct SpriteCache {
-	void *ptr;
-	uint8 file_slot;
-	uint32 file_pos;
-	int16 lru;
-	uint32 id;
+ 	void *ptr;
 	const char *grf_name;
+	uint32 id;
+ 	uint32 file_pos;
+	uint16 file_slot;
+ 	int16 lru;
 };
 
 

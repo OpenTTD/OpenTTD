@@ -5,6 +5,16 @@
 #ifndef STDAFX_H
 #define STDAFX_H
 
+#if defined(__NDS__)
+	#include <nds/jtypes.h>
+	/* NDS' types for uint32/int32 are based on longs, which causes
+	 * trouble all over the place in OpenTTD. */
+	#define uint32 uint32_ugly_hack
+	#define int32 int32_ugly_hack
+	typedef unsigned int uint32_ugly_hack;
+	typedef signed int int32_ugly_hack;
+#endif /* __NDS__ */
+
 /* It seems that we need to include stdint.h before anything else
  * We need INT64_MAX, which for most systems comes from stdint.h. However, MSVC
  * does not have stdint.h and apparently neither does MorphOS, so define
@@ -249,7 +259,7 @@ typedef unsigned char byte;
 	typedef unsigned int uint;
 #endif
 
-#if !defined(__BEOS__) /* Already defined on BEOS */
+#if !defined(__BEOS__) && !defined(__NDS__) /* Already defined on BEOS and NDS */
 	typedef unsigned char    uint8;
 	typedef   signed char     int8;
 	typedef unsigned short   uint16;
@@ -258,7 +268,7 @@ typedef unsigned char byte;
 	typedef   signed int      int32;
 	typedef unsigned __int64 uint64;
 	typedef   signed __int64  int64;
-#endif
+#endif /* !__BEOS__ && !__NDS__ */
 
 #if !defined(WITH_PERSONAL_DIR)
 	#define PERSONAL_DIR ""
@@ -301,18 +311,18 @@ assert_compile(sizeof(uint8)  == 1);
 
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 
-#if defined(MORPHOS)
-	/* MorphOS doesn't have C++ conformant _stricmp... */
+#if defined(MORPHOS) || defined(__NDS__)
+	/* MorphOS and NDS don't have C++ conformant _stricmp... */
 	#define _stricmp stricmp
 #elif defined(OPENBSD)
 	/* OpenBSD uses strcasecmp(3) */
 	#define _stricmp strcasecmp
 #endif
 
-#if !defined(MORPHOS) && !defined(OPENBSD)
-	/* MorphOS & OpenBSD don't know wchars, the rest does :( */
+#if !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__)
+	/* NDS, MorphOS & OpenBSD don't know wchars, the rest does :( */
 	#define HAS_WCHAR
-#endif /* !defined(MORPHOS) && !defined(OPENBSD) */
+#endif /* !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__) */
 
 #if !defined(MAX_PATH)
 	#define MAX_PATH 260
