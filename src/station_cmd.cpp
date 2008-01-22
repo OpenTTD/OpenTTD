@@ -1357,12 +1357,22 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
 		if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) return CMD_ERROR;
 
+		RoadTypes cur_rts = GetRoadTypes(tile);
+
+		/* there is a road, check if we can build road+tram stop over it */
+		if (HasBit(cur_rts, ROADTYPE_ROAD)) {
+			Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+			if (road_owner != OWNER_TOWN && road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
+		}
+
+		/* there is a tram, check if we can build road+tram stop over it */
+		if (HasBit(cur_rts, ROADTYPE_TRAM)) {
+			Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+			if (tram_owner != OWNER_NONE && !CheckOwnership(tram_owner)) return CMD_ERROR;
+		}
+
 		/* Don't allow building the roadstop when vehicles are already driving on it */
 		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
-
-		RoadTypes cur_rts = GetRoadTypes(tile);
-		if (GetRoadOwner(tile, ROADTYPE_ROAD) != OWNER_TOWN && HasBit(cur_rts, ROADTYPE_ROAD) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_ROAD))) return CMD_ERROR;
-		if (HasBit(cur_rts, ROADTYPE_TRAM) && !CheckOwnership(GetRoadOwner(tile, ROADTYPE_TRAM))) return CMD_ERROR;
 
 		/* Do not remove roadtypes! */
 		rts |= cur_rts;
