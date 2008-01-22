@@ -359,10 +359,6 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 
 extern Foundation GetRailFoundation(Slope tileh, TrackBits bits); // XXX function declaration in .c
 extern Foundation GetRoadFoundation(Slope tileh, RoadBits bits); // XXX function declaration in .c
-extern Foundation GetBridgeFoundation(Slope tileh, Axis); // XXX function declaration in .c
-enum BridgeFoundation {
-	BRIDGE_NO_FOUNDATION = 1 << 0 | 1 << 3 | 1 << 6 | 1 << 9 | 1 << 12,
-};
 
 // The most important function: it calculates the g-value
 static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
@@ -403,10 +399,10 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	if (parent_tileh != SLOPE_FLAT && parent->path.parent != NULL) {
 		// Skip if the tile was from a bridge or tunnel
 		if (parent->path.node.user_data[0] == 0 && current->user_data[0] == 0) {
+			static const uint32 SLOPED_TILEHS = (1 << SLOPE_NW) | (1 << SLOPE_SW) |  (1 << SLOPE_SE) | (1 << SLOPE_NE);
 			if (PathFinderInfo->rail_or_road) {
 				Foundation f = GetRailFoundation(parent_tileh, (TrackBits)(1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile)));
-				// Maybe is BRIDGE_NO_FOUNDATION a bit strange here, but it contains just the right information..
-				if (IsInclinedFoundation(f) || (!IsFoundation(f) && HasBit(BRIDGE_NO_FOUNDATION, parent_tileh))) {
+				if (IsInclinedFoundation(f) || (!IsFoundation(f) && HasBit(SLOPED_TILEHS, parent_tileh))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 				} else {
 					res += AI_PATHFINDER_FOUNDATION_PENALTY;
@@ -414,7 +410,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			} else {
 				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
 					Foundation f = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
-					if (IsInclinedFoundation(f) || (!IsFoundation(f) && HasBit(BRIDGE_NO_FOUNDATION, parent_tileh))) {
+					if (IsInclinedFoundation(f) || (!IsFoundation(f) && HasBit(SLOPED_TILEHS, parent_tileh))) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 					} else {
 						res += AI_PATHFINDER_FOUNDATION_PENALTY;
@@ -439,19 +435,9 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		res += AI_PATHFINDER_BRIDGE_PENALTY * GetBridgeLength(current->tile, parent->path.node.tile);
 		// Check if we are going up or down, first for the starting point
 		// In user_data[0] is at the 8th bit the direction
-		if (!HasBit(BRIDGE_NO_FOUNDATION, parent_tileh)) {
-			if (IsLeveledFoundation(GetBridgeFoundation(parent_tileh, (Axis)((current->user_data[0] >> 8) & 1)))) {
-				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
-			}
-		}
+		if (!HasBridgeFlatRamp(parent_tileh, (Axis)((current->user_data[0] >> 8) & 1))) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 		// Second for the end point
-		if (!HasBit(BRIDGE_NO_FOUNDATION, tileh)) {
-			if (IsLeveledFoundation(GetBridgeFoundation(tileh, (Axis)((current->user_data[0] >> 8) & 1)))) {
-				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
-			}
-		}
-		if (parent_tileh == SLOPE_FLAT) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
-		if (tileh == SLOPE_FLAT) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
+		if (!HasBridgeFlatRamp(tileh, (Axis)((current->user_data[0] >> 8) & 1))) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 	}
 
 	//  To prevent the AI from taking the fastest way in tiles, but not the fastest way

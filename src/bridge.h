@@ -32,6 +32,7 @@ extern const Bridge orig_bridge[MAX_BRIDGES];
 extern Bridge _bridge[MAX_BRIDGES];
 
 Foundation GetBridgeFoundation(Slope tileh, Axis axis);
+bool HasBridgeFlatRamp(Slope tileh, Axis axis);
 
 static inline const Bridge *GetBridge(uint i)
 {

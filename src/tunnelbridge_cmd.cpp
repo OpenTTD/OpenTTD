@@ -90,6 +90,20 @@ Foundation GetBridgeFoundation(Slope tileh, Axis axis)
 	return (HasSlopeHighestCorner(tileh) ? InclinedFoundation(axis) : FlatteningFoundation(tileh));
 }
 
+/**
+ * Determines if the track on a bridge ramp is flat or goes up/down.
+ *
+ * @param tileh Slope of the tile under the bridge head
+ * @param axis Orientation of bridge
+ * @return true iff the track is flat.
+ */
+bool HasBridgeFlatRamp(Slope tileh, Axis axis)
+{
+	ApplyFoundationToSlope(GetBridgeFoundation(tileh, axis), &tileh);
+	/* If the foundation slope is flat the bridge has a non-flat ramp and vice versa. */
+	return (tileh != SLOPE_FLAT);
+}
+
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 {
 	const Bridge *bridge = &_bridge[index];
@@ -1084,7 +1098,6 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
-	static const uint32 BRIDGE_HORZ_RAMP = (1 << SLOPE_SW) | (1 << SLOPE_SE) | (1 << SLOPE_NW) | (1 << SLOPE_NE);
 	uint z;
 	Slope tileh = GetTileSlope(tile, &z);
 
@@ -1106,7 +1119,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 		if (5 <= pos && pos <= 10) {
 			uint delta;
 
-			if (HasBit(BRIDGE_HORZ_RAMP, tileh)) return z + TILE_HEIGHT;
+			if (tileh != SLOPE_FLAT) return z + TILE_HEIGHT;
 
 			switch (dir) {
 				default: NOT_REACHED();
