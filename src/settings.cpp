@@ -1324,8 +1324,10 @@ static const SettingDesc _gameopt_settings[] = {
 	 * same-sized members
 	 * XXX - To save file-space and since values are never bigger than about 10? only
 	 * save the first 16 bits in the savegame. Question is why the values are still int32
-	 * and why not byte for example? */
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16, 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
+	 * and why not byte for example?
+	 * 'SLE_FILE_I16 | SLE_VAR_U16' in "diff_custom" is needed to get around SlArray() hack
+	 * for savegames version 0 - though it is an array, it has to go through the byteswap process */
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_FILE_I16 | SLE_VAR_U16, 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
 	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16, 0, 0, GameOptions, diff, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
 	    SDT_VAR(GameOptions, diff_level, SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
 	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
