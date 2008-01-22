@@ -72,6 +72,11 @@ static inline bool IsWaterTile(TileIndex t)
 	return IsTileType(t, MP_WATER) && IsWater(t);
 }
 
+static inline bool IsRiverTile(TileIndex t)
+{
+	return IsTileType(t, MP_WATER) && IsRiver(t);
+}
+
 static inline TileIndex GetOtherShipDepotTile(TileIndex t)
 {
 	return t + (HasBit(_m[t].m5, 0) ? -1 : 1) * (HasBit(_m[t].m5, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));

@@ -1226,7 +1226,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			IndustryBehaviour ind_behav = GetIndustrySpec(type)->behaviour;
 
 			/* Perform land/water check if not disabled */
-			if (!HasBit(its->slopes_refused, 5) && (IsWaterTile(cur_tile) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;
+			if (!HasBit(its->slopes_refused, 5) && ((IsWaterTile(cur_tile) || IsRiverTile(cur_tile)) == !(ind_behav & INDUSTRYBEH_BUILT_ONWATER))) return false;
 
 			if (HasBit(its->callback_flags, CBM_INDT_SHAPE_CHECK)) {
 				custom_shape = true;
