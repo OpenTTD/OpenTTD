@@ -81,4 +81,35 @@ template <typename T> FORCEINLINE T* ReallocT(T *t_ptr, size_t num_elements)
 	return t_ptr;
 }
 
+/**
+ * A small 'wrapper' for allocations that can be done on most OSes on the
+ * stack, but are just too large to fit in the stack on devices with a small
+ * stack such as the NDS.
+ * So when it is possible a stack allocation is made, otherwise a heap
+ * allocation is made and this is freed once the struct goes out of scope.
+ * @param T      the type to make the allocation for
+ * @param length the amount of items to allocate
+ */
+template <typename T, size_t length>
+struct SmallStackSafeStackAlloc {
+#if !defined(__NDS__)
+	/** Storing the data on the stack */
+	T data[length];
+#else
+	/** Storing it on the heap */
+	T *data;
+
+	/** Allocating the memory */
+	SmallStackSafeStackAlloc() : data(MallocT<T>(length)) {}
+	/** And freeing when it goes out of scope */
+	~SmallStackSafeStackAlloc() { free(data); }
+#endif
+
+	/**
+	 * Gets a pointer to the data stored in this wrapper.
+	 * @return the pointer.
+	 */
+	operator T* () { return data; }
+};
+
 #endif /* ALLOC_FUNC_HPP */
