@@ -9,7 +9,7 @@
 #include "../core/alloc_func.hpp"
 #include "grf.hpp"
 
-bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, const char *filename, uint8 file_slot, uint32 file_pos)
+bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, uint32 file_pos)
 {
 	/* Open the right file and go to the correct position */
 	FioSeekToFile(file_slot, file_pos);

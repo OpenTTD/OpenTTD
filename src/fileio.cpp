@@ -33,6 +33,7 @@ struct Fio {
 	FILE *handles[MAX_FILE_SLOTS];         ///< array of file handles we can have open
 	byte buffer_start[FIO_BUFFER_SIZE];    ///< local buffer when read from file
 	const char *filenames[MAX_FILE_SLOTS]; ///< array of filenames we (should) have open
+	char *shortnames[MAX_FILE_SLOTS];///< array of short names for spriteloader's use
 #if defined(LIMITED_FDS)
 	uint open_handles;                     ///< current amount of open handles
 	uint usage_count[MAX_FILE_SLOTS];      ///< count how many times this file has been opened
@@ -47,9 +48,9 @@ uint32 FioGetPos()
 	return _fio.pos + (_fio.buffer - _fio.buffer_start) - FIO_BUFFER_SIZE;
 }
 
-const char *FioGetFilename()
+const char *FioGetFilename(uint8 slot)
 {
-	return _fio.filename;
+	return _fio.shortnames[slot];
 }
 
 void FioSeekTo(uint32 pos, int mode)
@@ -131,6 +132,10 @@ static inline void FioCloseFile(int slot)
 {
 	if (_fio.handles[slot] != NULL) {
 		fclose(_fio.handles[slot]);
+
+		free(_fio.shortnames[slot]);
+		_fio.shortnames[slot] = NULL;
+
 		_fio.handles[slot] = NULL;
 #if defined(LIMITED_FDS)
 		_fio.open_handles--;
@@ -184,6 +189,14 @@ void FioOpenFile(int slot, const char *filename)
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
 	_fio.filenames[slot] = filename;
+
+	/* Store the filename without path and extension */
+	const char *t = strrchr(filename, PATHSEPCHAR);
+	_fio.shortnames[slot] = strdup(t == NULL ? filename : t);
+	char *t2 = strrchr(_fio.shortnames[slot], '.');
+	if (t2 != NULL) *t2 = '\0';
+	strtolower(_fio.shortnames[slot]);
+
 #if defined(LIMITED_FDS)
 	_fio.usage_count[slot] = 0;
 	_fio.open_handles++;

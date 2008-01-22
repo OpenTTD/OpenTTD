@@ -24,7 +24,6 @@ uint _sprite_cache_size = 4;
 
 struct SpriteCache {
  	void *ptr;
-	const char *grf_name;
 	uint32 id;
  	uint32 file_pos;
 	uint16 file_slot;
@@ -143,7 +142,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		SpriteLoaderPNG sprite_loader;
 		SpriteLoader::Sprite sprite;
 
-		if (sprite_loader.LoadSprite(&sprite, sc->grf_name, 0, sc->id)) {
+		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id)) {
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 			free(sprite.data);
 
@@ -230,7 +229,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
 
-	if (!sprite_loader.LoadSprite(&sprite, sc->grf_name, file_slot, file_pos)) return NULL;
+	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos)) return NULL;
 	if (id == 142) sprite.height = 10; // Compensate for a TTD bug
 	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 	free(sprite.data);
@@ -257,19 +256,6 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	sc->lru = 0;
 	sc->id = file_sprite_id;
 
-	const char *fio_grf_name = FioGetFilename();
-	const char *t = strrchr(fio_grf_name, PATHSEPCHAR);
-	char *grf_name;
-	if (t == NULL) grf_name = strdup(fio_grf_name);
-	else           grf_name = strdup(t);
-	/* Make the string lowercase and strip extension */
-	char *t2 = strrchr(grf_name, '.');
-	if (t2 != NULL) *t2 = '\0';
-	strtolower(grf_name);
-
-	free((char *)sc->grf_name);
-	sc->grf_name = grf_name;
-
 	return true;
 }
 
@@ -283,8 +269,6 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
 	scnew->id = scold->id;
-	free((char *)scnew->grf_name);
-	scnew->grf_name = strdup(scold->grf_name);
 }
 
 
@@ -493,7 +477,6 @@ void GfxInitSpriteMem()
 	NextBlock(_spritecache_ptr)->size = 0;
 
 	/* Reset the spritecache 'pool' */
-	for (uint i = 0; i < _spritecache_items; i++) free((char *)_spritecache[i].grf_name);
 	free(_spritecache);
 	_spritecache_items = 0;
 	_spritecache = NULL;
