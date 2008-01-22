@@ -30,7 +30,6 @@ struct FileList {
 	MD5File basic[2];     ///< GRF files that always have to be loaded
 	MD5File landscape[3]; ///< Landscape specific grf files
 	MD5File sound;        ///< Sound samples
-	MD5File chars;        ///< GRF File with character replacements
 	MD5File openttd;      ///< GRF File with OTTD specific graphics
 };
 
@@ -192,10 +191,6 @@ void CheckExternalFiles()
 		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
 	}
 
-	if (!FileMD5(files->chars)) {
-		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files->chars.filename);
-	}
-
 	if (!FileMD5(files->openttd)) {
 		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files->openttd.filename);
 	}
@@ -284,53 +279,6 @@ static const SpriteID trg1idx[] = {
 	END
 };
 
-/** Replace some letter sprites with some other letters */
-static const SpriteID _chars_grf_indexes[] = {
-	134, 134, ///<  euro symbol medium size
-	582, 582, ///<  euro symbol large size
-	358, 358, ///<  euro symbol tiny
-	648, 648, ///<  nordic char: æ
-	616, 616, ///<  nordic char: Æ
-	666, 666, ///<  nordic char: ø
-	634, 634, ///<  nordic char: Ø
-	382, 383, ///<  Œ œ tiny
-	158, 159, ///<  Œ œ medium
-	606, 607, ///<  Œ œ large
-	360, 360, ///<  Š tiny
-	362, 362, ///<  š tiny
-	136, 136, ///<  Š medium
-	138, 138, ///<  š medium
-	584, 584, ///<  Š large
-	586, 586, ///<  š large
-	626, 626, ///<  Ð large
-	658, 658, ///<  ð large
-	374, 374, ///<  Ž tiny
-	378, 378, ///<  ž tiny
-	150, 150, ///<  Ž medium
-	154, 154, ///<  ž medium
-	598, 598, ///<  Ž large
-	602, 602, ///<  ž large
-	640, 640, ///<  Þ large
-	672, 672, ///<  þ large
-	380, 380, ///<  º tiny
-	156, 156, ///<  º medium
-	604, 604, ///<  º large
-	317, 320, ///<  { | } ~ tiny
-	 93,  96, ///<  { | } ~ medium
-	541, 544, ///<  { | } ~ large
-	585, 585, ///<  § large
-	587, 587, ///<  © large
-	592, 592, ///<  ® large
-	594, 597, ///<  ° ± ² ³ large
-	633, 633, ///<  × large
-	665, 665, ///<  ÷ large
-	377, 377, ///<  · small
-	153, 153, ///<  · medium
-	601, 601, ///<  · large
-	END
-};
-
-
 static void LoadSpriteTables()
 {
 	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
@@ -361,8 +309,6 @@ static void LoadSpriteTables()
 			i++
 		);
 	}
-
-	LoadGrfIndexed(files->chars.filename, _chars_grf_indexes, i++);
 
 	/* Initialize the unicode to sprite mapping table */
 	InitializeUnicodeGlyphMap();
