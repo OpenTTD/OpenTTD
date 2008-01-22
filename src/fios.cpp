@@ -19,6 +19,8 @@
 #ifdef WIN32
 # include <tchar.h>
 # include <io.h>
+# define access _taccess
+# define unlink _tunlink
 #else
 # include <unistd.h>
 #endif /* WIN32 */
@@ -202,7 +204,7 @@ bool FileExists(const char *filename)
 	CloseHandle(hand);
 	return 0;
 #else
-	return access(filename, 0) == 0;
+	return access(OTTD2FS(filename), 0) == 0;
 #endif
 }
 
