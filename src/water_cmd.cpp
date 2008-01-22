@@ -33,12 +33,46 @@
 #include "variables.h"
 #include "player_func.h"
 #include "settings_type.h"
+#include "clear_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static Vehicle *FindFloodableVehicleOnTile(TileIndex tile);
-static void FloodVehicle(Vehicle *v);
+/**
+ * Describes the behaviour of a tile during flooding.
+ */
+enum FloodingBehaviour {
+	FLOOD_NONE,    ///< The tile does not flood neighboured tiles.
+	FLOOD_ACTIVE,  ///< The tile floods neighboured tiles.
+	FLOOD_PASSIVE, ///< The tile does not actively flood neighboured tiles, but it prevents them from drying up.
+	FLOOD_DRYUP,   ///< The tile drys up if it is not constantly flooded from neighboured tiles.
+};
+
+/**
+ * Describes from which directions a specific slope can be flooded (if the tile is floodable at all).
+ */
+static const uint8 _flood_from_dirs[] = {
+	(1 << DIR_NW) | (1 << DIR_SW) | (1 << DIR_SE) | (1 << DIR_NE), // SLOPE_FLAT
+	(1 << DIR_NE) | (1 << DIR_SE),                                 // SLOPE_W
+	(1 << DIR_NW) | (1 << DIR_NE),                                 // SLOPE_S
+	(1 << DIR_NE),                                                 // SLOPE_SW
+	(1 << DIR_NW) | (1 << DIR_SW),                                 // SLOPE_E
+	0,                                                             // SLOPE_EW
+	(1 << DIR_NW),                                                 // SLOPE_SE
+	(1 << DIR_N ) | (1 << DIR_NW) | (1 << DIR_NE),                 // SLOPE_WSE, SLOPE_STEEP_S
+	(1 << DIR_SW) | (1 << DIR_SE),                                 // SLOPE_N
+	(1 << DIR_SE),                                                 // SLOPE_NW
+	0,                                                             // SLOPE_NS
+	(1 << DIR_E ) | (1 << DIR_NE) | (1 << DIR_SE),                 // SLOPE_NWS, SLOPE_STEEP_W
+	(1 << DIR_SW),                                                 // SLOPE_NE
+	(1 << DIR_S ) | (1 << DIR_SW) | (1 << DIR_SE),                 // SLOPE_ENW, SLOPE_STEEP_N
+	(1 << DIR_W ) | (1 << DIR_SW) | (1 << DIR_NW),                 // SLOPE_SEN, SLOPE_STEEP_E
+};
+
+/**
+ * Slopes that contain flat water and not only shore.
+ */
+static const uint32 _active_water_slopes = (1 << SLOPE_FLAT) | (1 << SLOPE_W) | (1 << SLOPE_S) | (1 << SLOPE_E) | (1 << SLOPE_N);
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -520,6 +554,23 @@ static void DrawRiverWater(const TileInfo *ti)
 	DrawWaterEdges(edges_base, ti->tile);
 }
 
+void DrawShoreTile(Slope tileh)
+{
+	/* Converts the enum Slope into an offset based on SPR_SHORE_BASE.
+	 * This allows to calculate the proper sprite to display for this Slope */
+	static const byte tileh_to_shoresprite[32] = {
+		0, 1, 2, 3, 4, 16, 6, 7, 8, 9, 17, 11, 12, 13, 14, 0,
+		0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15, 0,
+	};
+
+	assert(!IsHalftileSlope(tileh)); // Halftile slopes need to get handled earlier.
+	assert(tileh != SLOPE_FLAT);     // Shore is never flat
+
+	assert((tileh != SLOPE_EW) && (tileh != SLOPE_NS)); // No suitable sprites for current flooding behaviour
+
+	DrawGroundSprite(SPR_SHORE_BASE + tileh_to_shoresprite[tileh], PAL_NONE);
+}
+
 static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
@@ -530,15 +581,7 @@ static void DrawTile_Water(TileInfo *ti)
 			break;
 
 		case WATER_TILE_COAST: {
-			/* Converts the enum Slope into an offset based on SPR_SHORE_BASE.
-			 * This allows to calculate the proper sprite to display for this Slope */
-			static const byte tileh_to_shoresprite[32] = {
-				0, 1, 2, 3, 4, 16, 6, 7, 8, 9, 17, 11, 12, 13, 14, 0,
-				0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0,  5,  0, 10, 15, 0,
-			};
-
-			assert(!IsSteepSlope(ti->tileh));
-			DrawGroundSprite(SPR_SHORE_BASE + tileh_to_shoresprite[ti->tileh], PAL_NONE);
+			DrawShoreTile(ti->tileh);
 			DrawBridgeMiddle(ti);
 		} break;
 
@@ -625,84 +668,6 @@ static inline void MarkTileDirtyIfCanal(TileIndex tile)
 	if (IsTileType(tile, MP_WATER) && IsCanal(tile)) MarkTileDirtyByTile(tile);
 }
 
-/**
- * Floods neighboured floodable tiles
- *
- * @param tile The water source tile that causes the flooding.
- * @param offs[0] Destination tile to flood.
- * @param offs[1] First corner of edge between source and dest tile.
- * @param offs[2] Second corder of edge between source and dest tile.
- * @param offs[3] Third corner of dest tile.
- * @param offs[4] Fourth corner of dest tile.
- */
-static void TileLoopWaterHelper(TileIndex tile, const TileIndexDiffC *offs)
-{
-	TileIndex target = TILE_ADD(tile, ToTileIndexDiff(offs[0]));
-
-	/* type of this tile mustn't be water already. */
-	if (IsTileType(target, MP_WATER)) return;
-
-	/* Are both corners of the edge between source and dest on height 0 ? */
-	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[1]))) != 0 ||
-			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[2]))) != 0) {
-		return;
-	}
-
-	bool flooded = false; // Will be set to true, when something is flooded
-
-	/* Is any corner of the dest tile raised? (First two corners already checked above. */
-	if (TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[3]))) != 0 ||
-			TileHeight(TILE_ADD(tile, ToTileIndexDiff(offs[4]))) != 0) {
-		/* make coast.. */
-		switch (GetTileType(target)) {
-			case MP_RAILWAY: {
-				if (!IsPlainRailTile(target)) break;
-
-				flooded = FloodHalftile(target);
-
-				Vehicle *v = FindFloodableVehicleOnTile(target);
-				if (v != NULL) FloodVehicle(v);
-
-				break;
-			}
-
-			case MP_CLEAR:
-			case MP_TREES:
-				_current_player = OWNER_WATER;
-				if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
-					flooded = true;
-					MakeShore(target);
-					MarkTileDirtyByTile(target);
-				}
-				break;
-
-			default:
-				break;
-		}
-	} else {
-		/* Flood vehicles */
-		_current_player = OWNER_WATER;
-
-		Vehicle *v = FindFloodableVehicleOnTile(target);
-		if (v != NULL) FloodVehicle(v);
-
-		/* flood flat tile */
-		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
-			flooded = true;
-			MakeWater(target);
-			MarkTileDirtyByTile(target);
-		}
-	}
-
-	if (flooded) {
-		/* Mark surrounding canal tiles dirty too to avoid glitches */
-		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
-			MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
-		}
-		/* update signals if needed */
-		UpdateSignalsInBuffer();
-	}
-}
 
 /**
  * Finds a vehicle to flood.
@@ -827,6 +792,122 @@ static void FloodVehicle(Vehicle *v)
 }
 
 /**
+ * Returns the behaviour of a tile during flooding.
+ *
+ * @return Behaviour of the tile
+ */
+static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
+{
+	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, rail with flooded halftile
+	 * FLOOD_DRYUP:   coast with more than one corner raised
+	 * FLOOD_PASSIVE: oilrig, dock, water-industries
+	 * FLOOD_NONE:    canals, rivers, everything else
+	 */
+	switch (GetTileType(tile)) {
+		case MP_WATER:
+			if (IsCoast(tile)) {
+				Slope tileh = GetTileSlope(tile, NULL);
+				return (HasBit(_active_water_slopes, tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+			} else {
+				return ((IsSea(tile) || (IsShipDepot(tile) && (GetShipDepotWaterOwner(tile) == OWNER_WATER))) ? FLOOD_ACTIVE : FLOOD_NONE);
+			}
+
+		case MP_RAILWAY:
+			return ((GetRailGroundType(tile) == RAIL_GROUND_WATER) ? FLOOD_ACTIVE : FLOOD_NONE);
+
+		case MP_STATION:
+			if (IsSeaBuoyTile(tile)) return FLOOD_ACTIVE;
+			if (IsOilRig(tile) || IsDock(tile)) return FLOOD_PASSIVE;
+			return FLOOD_NONE;
+
+		case MP_INDUSTRY:
+			return ((GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0 ? FLOOD_PASSIVE : FLOOD_NONE);
+
+		default:
+			return FLOOD_NONE;
+	}
+}
+
+/**
+ * Floods a tile.
+ */
+static void DoFloodTile(TileIndex target)
+{
+	if (IsTileType(target, MP_WATER)) return;
+
+	bool flooded = false; // Will be set to true if something is changed.
+
+	_current_player = OWNER_WATER;
+
+	if (GetTileSlope(target, NULL) != SLOPE_FLAT) {
+		/* make coast.. */
+		switch (GetTileType(target)) {
+			case MP_RAILWAY: {
+				if (!IsPlainRailTile(target)) break;
+
+				flooded = FloodHalftile(target);
+
+				Vehicle *v = FindFloodableVehicleOnTile(target);
+				if (v != NULL) FloodVehicle(v);
+
+				break;
+			}
+
+			case MP_CLEAR:
+			case MP_TREES:
+				if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+					MakeShore(target);
+					MarkTileDirtyByTile(target);
+					flooded = true;
+				}
+				break;
+
+			default:
+				break;
+		}
+	} else {
+		/* Flood vehicles */
+		Vehicle *v = FindFloodableVehicleOnTile(target);
+		if (v != NULL) FloodVehicle(v);
+
+		/* flood flat tile */
+		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+			MakeWater(target);
+			MarkTileDirtyByTile(target);
+			flooded = true;
+		}
+	}
+
+	if (flooded) {
+		/* Mark surrounding canal tiles dirty too to avoid glitches */
+		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+			MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
+		}
+
+		/* update signals if needed */
+		UpdateSignalsInBuffer();
+	}
+
+	_current_player = OWNER_NONE;
+}
+
+/**
+ * Drys a tile up.
+ */
+static void DoDryUp(TileIndex tile)
+{
+	assert(IsTileType(tile, MP_WATER) && IsCoast(tile));
+	_current_player = OWNER_WATER;
+
+	if (CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+		MakeClear(tile, CLEAR_GRASS, 3);
+		MarkTileDirtyByTile(tile);
+	}
+
+	_current_player = OWNER_NONE;
+}
+
+/**
  * Let a water tile floods its diagonal adjoining tiles
  * called from tunnelbridge_cmd, and by TileLoop_Industry() and TileLoop_Track()
  *
@@ -834,47 +915,79 @@ static void FloodVehicle(Vehicle *v)
  */
 void TileLoop_Water(TileIndex tile)
 {
-	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
-		// tile to mod              shore?    shore?
-		{{-1,  0}, {0, 0}, {0, 1}, {-1,  0}, {-1,  1}},
-		{{ 0,  1}, {0, 1}, {1, 1}, { 0,  2}, { 1,  2}},
-		{{ 1,  0}, {1, 0}, {1, 1}, { 2,  0}, { 2,  1}},
-		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
-	};
+	switch (GetFloodingBehaviour(tile)) {
+		case FLOOD_ACTIVE:
+			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
+				if (dest == INVALID_TILE) continue;
 
-	/* Ensure buoys on canal borders do not flood */
-	if (IsCanalBuoyTile(tile)) return;
-	/* Ensure only sea and coast floods, not canals or rivers */
-	if (IsTileType(tile, MP_WATER) && !(IsSea(tile) || IsCoast(tile))) return;
+				uint z_dest;
+				Slope slope_dest = (Slope)(GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP);
+				if (z_dest > 0) continue;
 
-	/* floods in all four diagonal directions with the exception of the edges */
-	if (IsInsideMM(TileX(tile), 1, MapSizeX() - 3 + 1) &&
-			IsInsideMM(TileY(tile), 1, MapSizeY() - 3 + 1)) {
-		uint i;
+				if (!HasBit(_flood_from_dirs[slope_dest], ReverseDir(dir))) continue;
 
-		for (i = 0; i != lengthof(_tile_loop_offs_array); i++) {
-			TileLoopWaterHelper(tile, _tile_loop_offs_array[i]);
+				DoFloodTile(dest);
+			}
+			break;
+
+		case FLOOD_DRYUP: {
+			Slope slope_here = (Slope)(GetFoundationSlope(tile, NULL) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP);
+			uint check_dirs = _flood_from_dirs[slope_here];
+			uint dir;
+			FOR_EACH_SET_BIT(dir, check_dirs) {
+				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir((Direction)dir));
+				if (dest == INVALID_TILE) continue;
+
+				FloodingBehaviour dest_behaviour = GetFloodingBehaviour(dest);
+				if ((dest_behaviour == FLOOD_ACTIVE) || (dest_behaviour == FLOOD_PASSIVE)) return;
+			}
+			DoDryUp(tile);
+			break;
 		}
+
+		default: return;
 	}
+}
 
-	/* _current_player can be changed by TileLoopWaterHelper.. reset it back here */
-	_current_player = OWNER_NONE;
+void ConvertGroundTilesIntoWaterTiles()
+{
+	TileIndex tile;
+	uint z;
+	Slope slope;
 
-	/* edges */
-	if (TileX(tile) == 0 && IsInsideMM(TileY(tile), 1, MapSizeY() - 3 + 1)) { //NE
-		TileLoopWaterHelper(tile, _tile_loop_offs_array[2]);
-	}
+	for (tile = 0; tile < MapSize(); ++tile) {
+		slope = GetTileSlope(tile, &z);
+		if (IsTileType(tile, MP_CLEAR) && z == 0) {
+			/* Make both water for tiles at level 0
+			 * and make shore, as that looks much better
+			 * during the generation. */
+			switch (slope) {
+				case SLOPE_FLAT:
+					MakeWater(tile);
+					break;
 
-	if (TileX(tile) == MapSizeX() - 2 && IsInsideMM(TileY(tile), 1, MapSizeY() - 3 + 1)) { //SW
-		TileLoopWaterHelper(tile, _tile_loop_offs_array[0]);
-	}
+				case SLOPE_N:
+				case SLOPE_E:
+				case SLOPE_S:
+				case SLOPE_W:
+					MakeShore(tile);
+					break;
 
-	if (TileY(tile) == 0 && IsInsideMM(TileX(tile), 1, MapSizeX() - 3 + 1)) { //NW
-		TileLoopWaterHelper(tile, _tile_loop_offs_array[1]);
-	}
-
-	if (TileY(tile) == MapSizeY() - 2 && IsInsideMM(TileX(tile), 1, MapSizeX() - 3 + 1)) { //SE
-		TileLoopWaterHelper(tile, _tile_loop_offs_array[3]);
+				default:
+					uint check_dirs = _flood_from_dirs[slope & ~SLOPE_STEEP];
+					uint dir;
+					FOR_EACH_SET_BIT(dir, check_dirs) {
+						TileIndex dest = TILE_ADD(tile, TileOffsByDir((Direction)dir));
+						Slope slope_dest = (Slope)(GetTileSlope(dest, NULL) & ~SLOPE_STEEP);
+						if (HasBit(_active_water_slopes, slope_dest)) {
+							MakeShore(tile);
+							break;
+						}
+					}
+					break;
+			}
+		}
 	}
 }
 

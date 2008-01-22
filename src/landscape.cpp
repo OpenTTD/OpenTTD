@@ -23,6 +23,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "settings_type.h"
+#include "water.h"
 
 #include "table/sprites.h"
 
@@ -292,11 +293,12 @@ void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
 	if ((tileh & ~SLOPE_HALFTILE_MASK) == corners[edge][3]) *z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
 }
 
-static Slope GetFoundationSlope(TileIndex tile, uint* z)
+Slope GetFoundationSlope(TileIndex tile, uint* z)
 {
 	Slope tileh = GetTileSlope(tile, z);
 	Foundation f = _tile_type_procs[GetTileType(tile)]->get_foundation_proc(tile, tileh);
-	*z += ApplyFoundationToSlope(f, &tileh);
+	uint z_inc = ApplyFoundationToSlope(f, &tileh);
+	if (z != NULL) *z += z_inc;
 	return tileh;
 }
 
@@ -635,53 +637,6 @@ void InitializeLandscape()
 		MakeVoid(sizex * y + x);
 	}
 	for (x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
-}
-
-void ConvertGroundTilesIntoWaterTiles()
-{
-	TileIndex tile;
-	uint z;
-	Slope slope;
-
-	for (tile = 0; tile < MapSize(); ++tile) {
-		slope = GetTileSlope(tile, &z);
-		if (IsTileType(tile, MP_CLEAR) && z == 0) {
-			/* Make both water for tiles at level 0
-			 * and make shore, as that looks much better
-			 * during the generation. */
-			switch (slope) {
-				case SLOPE_FLAT:
-					MakeWater(tile);
-					break;
-
-				case SLOPE_N:
-				case SLOPE_E:
-				case SLOPE_S:
-				case SLOPE_W:
-					MakeShore(tile);
-					break;
-
-				case SLOPE_NW:
-					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_SE), NULL) != SLOPE_SE) MakeShore(tile);
-					break;
-
-				case SLOPE_SW:
-					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_NE), NULL) != SLOPE_NE) MakeShore(tile);
-					break;
-
-				case SLOPE_SE:
-					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_NW), NULL) != SLOPE_NW) MakeShore(tile);
-					break;
-
-				case SLOPE_NE:
-					if (GetTileSlope(TileAddByDiagDir(tile, DIAGDIR_SW), NULL) != SLOPE_SW) MakeShore(tile);
-					break;
-
-				default:
-					break;
-			}
-		}
-	}
 }
 
 static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };

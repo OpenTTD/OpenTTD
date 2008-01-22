@@ -244,6 +244,20 @@ static inline TileIndexDiffC TileIndexDiffCByDiagDir(DiagDirection dir)
 }
 
 /**
+ * Returns the TileIndexDiffC offset from a Direction.
+ *
+ * @param dir The given direction
+ * @return The offset as TileIndexDiffC value
+ */
+static inline TileIndexDiffC TileIndexDiffCByDir(Direction dir)
+{
+	extern const TileIndexDiffC _tileoffs_by_dir[DIR_END];
+
+	assert(IsValidDirection(dir));
+	return _tileoffs_by_dir[dir];
+}
+
+/**
  * Add a TileIndexDiffC to a TileIndex and returns the new one.
  *
  * Returns tile + the diff given in diff. If the result tile would end up

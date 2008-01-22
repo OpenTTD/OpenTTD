@@ -24,6 +24,7 @@
 #include "engine.h"
 #include "settings_type.h"
 #include "newgrf_storage.h"
+#include "water.h"
 
 #include "table/sprites.h"
 
