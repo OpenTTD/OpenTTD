@@ -430,7 +430,7 @@ static const Widget _scen_edit_land_gen_widgets[] = {
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    16,    37, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    68,    89,    16,    37, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    90,   111,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_LAKE},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_RIVER},
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_BUILD_RIVER,       STR_CREATE_RIVER},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   134,   156,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   157,   179,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL}, // XXX - dynamic
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   180,   201,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
@@ -483,7 +483,7 @@ static void EditorTerraformClick_WaterArea(Window *w)
 
 static void EditorTerraformClick_RiverArea(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_RiverArea);
+	HandlePlacePushButton(w, 9, SPR_CURSOR_RIVER, VHM_RECT, PlaceProc_RiverArea);
 }
 
 static void EditorTerraformClick_RockyArea(Window *w)

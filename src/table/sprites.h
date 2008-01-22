@@ -49,7 +49,7 @@ enum Sprites {
 
 	/* Extra graphic spritenumbers */
 	SPR_OPENTTD_BASE     = 4896,
-	OPENTTD_SPRITE_COUNT = 136,
+	OPENTTD_SPRITE_COUNT = 138,
 
 	/* Halftile-selection sprites */
 	SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE,
@@ -1017,6 +1017,7 @@ enum Sprites {
 	SPR_IMG_TRANSMITTER     = 4086,
 	SPR_IMG_LEVEL_LAND      = SPR_OPENTTD_BASE + 91,
 	SPR_IMG_BUILD_CANAL     = SPR_OPENTTD_BASE + 88,
+	SPR_IMG_BUILD_RIVER     = SPR_OPENTTD_BASE + 136,
 	SPR_IMG_BUILD_LOCK      = SPR_CANALS_BASE + 64,
 	SPR_IMG_PAUSE           = 726,
 	SPR_IMG_FASTFORWARD     = SPR_OPENTTD_BASE + 90,
@@ -1319,6 +1320,7 @@ enum CursorSprite {
 	SPR_CURSOR_DOCK           = 3668,
 	SPR_CURSOR_CANAL          = SPR_OPENTTD_BASE + 89,
 	SPR_CURSOR_LOCK           = SPR_OPENTTD_BASE + 87,
+	SPR_CURSOR_RIVER          = SPR_OPENTTD_BASE + 137,
 
 	/* shared road & rail cursors */
 	SPR_CURSOR_BRIDGE         = 2593,
