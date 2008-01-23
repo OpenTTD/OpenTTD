@@ -285,6 +285,10 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case SLOPE_NE: dir = DIAGDIR_NE; break;
 		default: return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
+
+	/* Disallow building of locks on river rapids */
+	if (IsRiverTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+
 	return DoBuildShiplift(tile, dir, flags);
 }
 

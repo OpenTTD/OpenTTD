@@ -1954,6 +1954,9 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		default: return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
+	/* Docks cannot be placed on rapids */
+	if (IsRiverTile(tile)) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
