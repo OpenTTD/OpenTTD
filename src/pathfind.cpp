@@ -218,6 +218,30 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection dir)
 	return flotr;
 }
 
+/**
+ * Checks if any vehicle can enter/leave tile in given diagdir
+ * Checks only for rail/road depots and road non-drivethrough stations
+ * @param tile tile to check
+ * @param side side of tile we are trying to leave/enter
+ * @param tracktype type of transport
+ * @pre tile has trackbit at that diagdir
+ * @return true iff vehicle can enter/leve the tile in given side
+ */
+static inline bool CanAccessTileInDir(TileIndex tile, DiagDirection side, TransportType tracktype)
+{
+	if (tracktype == TRANSPORT_RAIL) {
+		/* depot from wrong side */
+		if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) != side) return false;
+	} else if (tracktype == TRANSPORT_ROAD) {
+		/* depot from wrong side */
+		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != side) return false;
+		/* non-driverthrough road station from wrong side */
+		if (IsStandardRoadStopTile(tile) && GetRoadStopDir(tile) != side) return false;
+	}
+
+	return true;
+}
+
 static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
@@ -243,27 +267,21 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 			/* leaving tunnel / bridge? */
 			if (ReverseDiagDir(dir) != direction) return;
 		}
+	} else {
+		/* can we leave tile in this dir? */
+		if (!CanAccessTileInDir(tile, direction, tpf->tracktype)) return;
 	}
 
 	tile += TileOffsByDiagDir(direction);
 
+	/* can we enter tile in this dir? */
+	if (!CanAccessTileInDir(tile, ReverseDiagDir(direction), tpf->tracktype)) return;
+
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		/* don't enter train depot from the back */
-		if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == direction) return;
-
 		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
 			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 				if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
-	}
-
-	/* check if the new tile can be entered from that direction */
-	if (tpf->tracktype == TRANSPORT_ROAD) {
-		/* road stops and depots now have a track (r4419)
-		 * don't enter road stop from the back */
-		if (IsStandardRoadStopTile(tile) && ReverseDiagDir(GetRoadStopDir(tile)) != direction) return;
-		/* don't enter road depot from the back */
-		if (IsTileDepotType(tile, TRANSPORT_ROAD) && ReverseDiagDir(GetRoadDepotDirection(tile)) != direction) return;
 	}
 
 	/* Check if the new tile is a tunnel or bridge head and that the direction
