@@ -248,6 +248,9 @@ EngineID AiNew_PickVehicle(Player *p)
 			/* Skip vehicles which can't take our cargo type */
 			if (rvi->cargo_type != _players_ainew[p->index].cargo && !CanRefitTo(i, _players_ainew[p->index].cargo)) continue;
 
+			/* Skip trams */
+			if (HasBit(EngInfo(i)->misc_flags, EF_ROAD_TRAM)) continue;
+
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
 			if (!HasBit(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
