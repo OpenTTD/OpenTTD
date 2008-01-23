@@ -74,8 +74,11 @@ static inline TLG GetTLG(TileIndex t)
 	return (TLG)((HasBit(TileX(t), 0) << 1) + HasBit(TileY(t), 0));
 }
 
-/** Finds which Rail Bits are present on a given tile. For bridge tiles,
- * returns track bits under the bridge
+/**
+ * Finds which Electrified Rail Bits are present on a given tile.
+ * @param t tile to check
+ * @param override pointer to PCP override, can be NULL
+ * @return trackbits of tile if it is electrified
  */
 static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 {
@@ -94,7 +97,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 
 		case MP_TUNNELBRIDGE:
 			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
-			if (override != NULL && (IsTunnel(t) || DistanceMax(t, GetOtherBridgeEnd(t)) > 1)) {
+			if (override != NULL && (IsTunnel(t) || GetTunnelBridgeLength(t, GetOtherBridgeEnd(t)) > 0)) {
 				*override = 1 << GetTunnelBridgeDirection(t);
 			}
 			return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(t)));
