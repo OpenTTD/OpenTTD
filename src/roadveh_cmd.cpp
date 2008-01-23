@@ -439,7 +439,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 
 		/* search in all directions */
 		for (DiagDirection i = DIAGDIR_BEGIN; i != DIAGDIR_END; i++) {
-			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, v->u.road.compatible_roadtypes, i, EnumRoadSignalFindDepot, NULL, &rfdd);
+			FollowTrack(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, i, EnumRoadSignalFindDepot, NULL, &rfdd);
 		}
 
 		if (rfdd.best_length == (uint)-1) return NULL;
@@ -1280,7 +1280,7 @@ do_it:;
 			if (best_track == INVALID_TRACKDIR) best_track = (Trackdir)i; // in case we don't find the path, just pick a track
 			frd.maxtracklen = (uint)-1;
 			frd.mindist = (uint)-1;
-			FollowTrack(tile, 0x2000 | TRANSPORT_ROAD, v->u.road.compatible_roadtypes, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
+			FollowTrack(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, _road_pf_directions[i], EnumRoadTrackFindDist, NULL, &frd);
 
 			if (frd.mindist < best_dist || (frd.mindist == best_dist && frd.maxtracklen < best_maxlen)) {
 				best_dist = frd.mindist;

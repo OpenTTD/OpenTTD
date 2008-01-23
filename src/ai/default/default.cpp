@@ -1898,7 +1898,7 @@ static bool AiDoFollowTrack(const Player* p)
 	arpfd.tile2 = _players_ai[p->index].cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(_players_ai[p->index].cur_dir_a), 0x2000 | TRANSPORT_RAIL, 0, ReverseDiagDir(_players_ai[p->index].cur_dir_a),
+	FollowTrack(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(_players_ai[p->index].cur_dir_a), TRANSPORT_RAIL, 0, ReverseDiagDir(_players_ai[p->index].cur_dir_a),
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
@@ -2866,7 +2866,7 @@ static bool AiCheckRoadFinished(Player *p)
 
 	uint i;
 	FOR_EACH_SET_BIT(i, bits) {
-		FollowTrack(tile, 0x3000 | TRANSPORT_ROAD, ROADTYPES_ROAD, (DiagDirection)_dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
+		FollowTrack(tile, 0x1000 | TRANSPORT_ROAD, ROADTYPES_ROAD, (DiagDirection)_dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
 	}
 
 	if (DistanceManhattan(tile, are.dest) <= are.best_dist) return false;

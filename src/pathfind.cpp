@@ -230,13 +230,42 @@ static uint SkipToEndOfTunnel(TrackPathFinder* tpf, TileIndex tile, DiagDirectio
 	return flotr.tile;
 }
 
-static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction);
-
-/** Most code of the "Normal" case of TPF Mode 1; for signals special tricks
- * have to be done, but those happen in TPFMode1; this is just to prevent
- * gotos ;). */
-static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, TileIndex tile_org, DiagDirection direction)
+static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
+	TileIndex tile_org = tile;
+
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTunnel(tile)) {
+			if (GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+			/* Only skip through the tunnel if heading inwards. We can
+			 * be headed outwards if our starting position was in a
+			 * tunnel and we're pathfinding backwards */
+			if (GetTunnelBridgeDirection(tile) == direction) {
+				tile = SkipToEndOfTunnel(tpf, tile, direction);
+			} else if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
+				/* We don't support moving through the sides of a tunnel
+				 * entrance :-) */
+				return;
+			}
+		} else { // IsBridge(tile)
+			TileIndex tile_end;
+			if (GetTunnelBridgeDirection(tile) != direction ||
+					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
+				return;
+			}
+			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
+			// TODO doesn't work - WHAT doesn't work?
+			TPFSetTileBit(tpf, tile, 14);
+			tile_end = GetOtherBridgeEnd(tile);
+			tpf->rd.cur_length += DistanceManhattan(tile, tile_end);
+			tile = tile_end;
+			TPFSetTileBit(tpf, tile, 14);
+		}
+	}
+	tile += TileOffsByDiagDir(direction);
+
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
 		/* don't enter train depot from the back */
@@ -294,84 +323,6 @@ static inline void TPFMode1_NormalCase(TrackPathFinder* tpf, TileIndex tile, Til
 	}
 }
 
-static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
-{
-	TileIndex tile_org = tile;
-
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if (IsTunnel(tile)) {
-			if (GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-			/* Only skip through the tunnel if heading inwards. We can
-			 * be headed outwards if our starting position was in a
-			 * tunnel and we're pathfinding backwards */
-			if (GetTunnelBridgeDirection(tile) == direction) {
-				tile = SkipToEndOfTunnel(tpf, tile, direction);
-			} else if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
-				/* We don't support moving through the sides of a tunnel
-				 * entrance :-) */
-				return;
-			}
-		} else { // IsBridge(tile)
-			TileIndex tile_end;
-			if (GetTunnelBridgeDirection(tile) != direction ||
-					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
-			// TODO doesn't work - WHAT doesn't work?
-			TPFSetTileBit(tpf, tile, 14);
-			tile_end = GetOtherBridgeEnd(tile);
-			tpf->rd.cur_length += DistanceManhattan(tile, tile_end);
-			tile = tile_end;
-			TPFSetTileBit(tpf, tile, 14);
-		}
-	}
-	tile += TileOffsByDiagDir(direction);
-
-	TPFMode1_NormalCase(tpf, tile, tile_org, direction);
-
-	/* the next is only used when signals are checked.
-	 * seems to go in 2 directions simultaneously */
-
-	/* if i can get rid of this, tail end recursion can be used to minimize
-	 * stack space dramatically. */
-
-	/* If we are doing signal setting, we must reverse at evere tile, so we
-	 * iterate all the tracks in a signal block, even when a normal train would
-	 * not reach it (for example, when two lines merge */
-	if (tpf->hasbit_13)
-		return;
-
-	direction = ReverseDiagDir(direction);
-	tile += TileOffsByDiagDir(direction);
-
-	uint bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
-	bits |= (bits >> 8);
-
-	if ( (byte)bits != tpf->var2) {
-		bits &= _bits_mask[direction];
-	}
-
-	bits &= 0xBF;
-	if (bits == 0)
-		return;
-
-	do {
-		uint i = FIND_FIRST_BIT(bits);
-		bits = KillFirstBit(bits);
-
-		tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
-		RememberData rd = tpf->rd;
-		if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
-				!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, &tpf->rd.pft_var6) ) {
-			TPFMode1(tpf, tile, _tpf_new_direction[tpf->the_dir]);
-		}
-		tpf->rd = rd;
-	} while (bits != 0);
-}
-
 void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
 	TrackPathFinder tpf;
@@ -391,7 +342,6 @@ void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection dire
 	tpf.var2 = HasBit(flags, 15) ? 0x43 : 0xFF; // 0x8000
 
 	tpf.disable_tile_hash = HasBit(flags, 12);  // 0x1000
-	tpf.hasbit_13         = HasBit(flags, 13);  // 0x2000
 
 
 	tpf.tracktype = (TransportType)(flags & 0xFF);

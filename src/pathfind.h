@@ -60,7 +60,6 @@ struct TrackPathFinder {
 
 	byte var2;
 	bool disable_tile_hash;
-	bool hasbit_13;
 
 	uint16 hash_head[0x400];
 	TileIndex hash_tile[0x400];       ///< stores the link index when multi link.
