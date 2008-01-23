@@ -234,16 +234,12 @@ EngineID AiNew_PickVehicle(Player *p)
 	} else {
 		EngineID best_veh_index = INVALID_ENGINE;
 		int32 best_veh_rating = 0;
-		EngineID start = ROAD_ENGINES_INDEX;
-		EngineID end   = ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES;
 		EngineID i;
 
 		/* Loop through all road vehicles */
-		for (i = start; i != end; i++) {
+		FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_ROAD) {
 			const RoadVehicleInfo *rvi = RoadVehInfo(i);
 			const Engine* e = GetEngine(i);
-			int32 rating;
-			CommandCost ret;
 
 			/* Skip vehicles which can't take our cargo type */
 			if (rvi->cargo_type != _players_ainew[p->index].cargo && !CanRefitTo(i, _players_ainew[p->index].cargo)) continue;
@@ -256,11 +252,11 @@ EngineID AiNew_PickVehicle(Player *p)
 			if (!HasBit(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
 
 			/* Rate and compare the engine by speed & capacity */
-			rating = rvi->max_speed * rvi->capacity;
+			int rating = rvi->max_speed * rvi->capacity;
 			if (rating <= best_veh_rating) continue;
 
 			// Can we build it?
-			ret = AI_DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
+			CommandCost ret = AI_DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
 			if (CmdFailed(ret)) continue;
 
 			best_veh_rating = rating;

@@ -139,10 +139,9 @@ static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, 
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	byte best_veh_score = 0;
-	CommandCost ret;
 	EngineID i;
 
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const Engine* e = GetEngine(i);
 
@@ -154,7 +153,7 @@ static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, 
 			continue;
 		}
 
-		ret = DoCommand(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
+		CommandCost ret = DoCommand(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
 		if (CmdSucceeded(ret) && ret.GetCost() <= money && rvi->ai_rank >= best_veh_score) {
 			best_veh_score = rvi->ai_rank;
 			best_veh_index = i;
@@ -168,14 +167,11 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, Money money, TileIndex til
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_rating = 0;
-	EngineID i = ROAD_ENGINES_INDEX;
-	EngineID end = i + NUM_ROAD_ENGINES;
+	EngineID i;
 
-	for (; i != end; i++) {
+	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_ROAD) {
 		const RoadVehicleInfo *rvi = RoadVehInfo(i);
 		const Engine* e = GetEngine(i);
-		int32 rating;
-		CommandCost ret;
 
 		if (!HasBit(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
@@ -185,10 +181,10 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, Money money, TileIndex til
 		if (rvi->cargo_type != cargo && !CanRefitTo(i, cargo)) continue;
 
 		/* Rate and compare the engine by speed & capacity */
-		rating = rvi->max_speed * rvi->capacity;
+		int rating = rvi->max_speed * rvi->capacity;
 		if (rating <= best_veh_rating) continue;
 
-		ret = DoCommand(tile, i, 0, 0, CMD_BUILD_ROAD_VEH);
+		CommandCost ret = DoCommand(tile, i, 0, 0, CMD_BUILD_ROAD_VEH);
 		if (CmdFailed(ret)) continue;
 
 		/* Add the cost of refitting */
@@ -208,9 +204,8 @@ static EngineID AiChooseAircraftToBuild(Money money, byte flag)
 	Money best_veh_cost = 0;
 	EngineID i;
 
-	for (i = AIRCRAFT_ENGINES_INDEX; i != AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
+	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_AIRCRAFT) {
 		const Engine* e = GetEngine(i);
-		CommandCost ret;
 
 		if (!HasBit(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
@@ -218,7 +213,7 @@ static EngineID AiChooseAircraftToBuild(Money money, byte flag)
 
 		if ((AircraftVehInfo(i)->subtype & AIR_CTOL) != flag) continue;
 
-		ret = DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
+		CommandCost ret = DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
 		if (CmdSucceeded(ret) && ret.GetCost() <= money && ret.GetCost() >= best_veh_cost) {
 			best_veh_cost = ret.GetCost();
 			best_veh_index = i;
