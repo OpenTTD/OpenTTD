@@ -277,13 +277,6 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	/* can we enter tile in this dir? */
 	if (!CanAccessTileInDir(tile, ReverseDiagDir(direction), tpf->tracktype)) return;
 
-	/* Check in case of rail if the owner is the same */
-	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
-			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
-				if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
-	}
-
 	/* Check if the new tile is a tunnel or bridge head and that the direction
 	 * and transport type match */
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -293,9 +286,16 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		}
 	}
 
-	tpf->rd.cur_length++;
+	uint32 bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
 
-	uint bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
+	/* Check in case of rail if the owner is the same */
+	if (tpf->tracktype == TRANSPORT_RAIL) {
+		if (bits != 0 && GetTileTrackStatus(tile_org, TRANSPORT_RAIL, 0) != 0) {
+			if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
+		}
+	}
+
+	tpf->rd.cur_length++;
 
 	if ((byte)bits != tpf->var2) {
 		bits &= _tpfmode1_and[direction];
