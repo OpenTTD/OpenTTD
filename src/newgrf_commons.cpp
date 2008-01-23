@@ -265,7 +265,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
 uint32 GetTerrainType(TileIndex tile)
 {
 	switch (_opt.landscape) {
-		case LT_TROPIC: return GetTropicZone(tile) == TROPICZONE_DESERT ? 1 : 2;
+		case LT_TROPIC: return GetTropicZone(tile);
 		case LT_ARCTIC: return GetTileZ(tile) > GetSnowLine() ? 4 : 0;
 		default:        return 0;
 	}
