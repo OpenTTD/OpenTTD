@@ -313,7 +313,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 				 * entrance :-) */
 				return;
 			}
-		} else {
+		} else { // IsBridge(tile)
 			TileIndex tile_end;
 			if (GetTunnelBridgeDirection(tile) != direction ||
 					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
@@ -733,7 +733,7 @@ start_at:
 					tile = flotr.tile;
 					/* tile now points to the exit tile of the tunnel */
 				}
-			} else {
+			} else { // IsBridge(tile)
 				TileIndex tile_end;
 				if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
 					/* We are not just leaving the bridge */

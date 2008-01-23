@@ -1667,8 +1667,8 @@ bool AfterLoadGame()
 
 				case MP_TUNNELBRIDGE:
 					/* Middle part of "old" bridges */
-					if (old_bridge && IsBridgeTile(t) && HasBit(_m[t].m5, 6)) break;
-					if ((IsTunnel(t) ? GetTunnelBridgeTransportType(t) : (old_bridge ? (TransportType)GB(_m[t].m5, 1, 2) : GetTunnelBridgeTransportType(t))) == TRANSPORT_ROAD) {
+					if (old_bridge && IsBridge(t) && HasBit(_m[t].m5, 6)) break;
+					if (((old_bridge && IsBridge(t)) ? (TransportType)GB(_m[t].m5, 1, 2) : GetTunnelBridgeTransportType(t)) == TRANSPORT_ROAD) {
 						SetRoadTypes(t, ROADTYPES_ROAD);
 					}
 					break;

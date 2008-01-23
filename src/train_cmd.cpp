@@ -3135,7 +3135,7 @@ static void TrainController(Vehicle *v, bool update_image)
 					min(v->cur_speed, GetBridge(GetBridgeType(v->tile))->speed);
 			}
 
-			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				VehiclePositionChanged(v);

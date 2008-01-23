@@ -701,7 +701,7 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
 	if (IsTunnel(tile)) {
 		if (flags & DC_AUTO) return_cmd_error(STR_5006_MUST_DEMOLISH_TUNNEL_FIRST);
 		return DoClearTunnel(tile, flags);
-	} else if (IsBridge(tile)) { // XXX Is this necessary?
+	} else { // IsBridge(tile)
 		if (flags & DC_AUTO) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 		return DoClearBridge(tile, flags);
 	}
@@ -879,7 +879,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, ti->x + BB_data[4], ti->y + BB_data[5], BB_data[6], BB_data[7], TILE_HEIGHT, ti->z);
 
 		DrawBridgeMiddle(ti);
-	} else if (IsBridge(ti->tile)) { // XXX is this necessary?
+	} else { // IsBridge(ti->tile)
 		const PalSpriteID *psid;
 		int base_offset;
 		bool ice = HasTunnelBridgeSnowOrDesert(ti->tile);
@@ -943,8 +943,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		}
 
 		DrawBridgeMiddle(ti);
-	} else {
-		NOT_REACHED();
 	}
 }
 
@@ -1113,7 +1111,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 
 		/* In the tunnel entrance? */
 		if (5 <= pos && pos <= 10) return z;
-	} else {
+	} else { // IsBridge(tile)
 		DiagDirection dir = GetTunnelBridgeDirection(tile);
 		uint pos = (DiagDirToAxis(dir) == AXIS_X ? y : x);
 
@@ -1187,7 +1185,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	if (IsTunnel(tile)) {
 		td->str = (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
-	} else {
+	} else { // IsBridge(tile)
 		td->str = _bridge_tile_str[GetTunnelBridgeTransportType(tile) << 4 | GetBridgeType(tile)];
 	}
 	td->owner = GetTileOwner(tile);
@@ -1341,7 +1339,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				return VETSB_ENTERED_WORMHOLE;
 			}
 		}
-	} else if (IsBridge(tile)) { // XXX is this necessary?
+	} else { // IsBridge(tile)
 		DiagDirection dir;
 
 		if (v->IsPrimaryVehicle()) {

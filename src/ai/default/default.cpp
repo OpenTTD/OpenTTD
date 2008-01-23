@@ -2228,7 +2228,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 				return false;
 			_players_ai[p->index].cur_tile_a = TILE_MASK(_build_tunnel_endtile - TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
 			return true;
-		} else {
+		} else { // IsBridge(tile)
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
 			if (DiagDirToAxis(GetTunnelBridgeDirection(tile)) != (_players_ai[p->index].cur_dir_a & 1)) return false;

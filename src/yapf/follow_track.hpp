@@ -214,7 +214,7 @@ protected:
 						return false;
 					}
 				}
-			} else if (IsBridge(m_new_tile)) {
+			} else { // IsBridge(m_new_tile)
 				if (!m_is_bridge) {
 					DiagDirection ramp_enderdir = GetTunnelBridgeDirection(m_new_tile);
 					if (ramp_enderdir != m_exitdir) {

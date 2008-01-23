@@ -132,10 +132,9 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			{
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
-				if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
-			} break;
+			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+			if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
+			break;
 
 		default:
 			return CMD_ERROR;
@@ -498,18 +497,16 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
 			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-			/* Don't allow "upgrading" the roadstop when vehicles are already driving on it */
+			/* Don't allow adding roadtype to the roadstop when vehicles are already driving on it */
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_TUNNELBRIDGE:
-			{
-				if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
-				if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-
-				/* Don't allow "upgrading" the bridge/tunnel when vehicles are already driving on it */
-				if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
-			} break;
+			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
+			if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
+			break;
 
 		default:
 do_clear:;
@@ -672,7 +669,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 						cost.AddCost(ret);
 					}
 					had_bridge = true;
-				} else {
+				} else { // IsTunnel(tile)
 					if ((!had_tunnel || GetTunnelBridgeDirection(tile) == DIAGDIR_SE || GetTunnelBridgeDirection(tile) == DIAGDIR_SW)) {
 						cost.AddCost(ret);
 					}

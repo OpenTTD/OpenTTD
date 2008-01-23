@@ -1520,7 +1520,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 			}
 		}
 
-		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+		if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 			/* Vehicle has just entered a bridge or tunnel */
 			v->cur_image = v->GetImage(v->direction);
 			v->UpdateDeltaXY(v->direction);
