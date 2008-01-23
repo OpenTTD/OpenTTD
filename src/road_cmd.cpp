@@ -42,6 +42,8 @@
 static const uint32 VALID_LEVEL_CROSSING_SLOPES = (M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT));
 #undef M
 
+Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
+
 bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt)
 {
 	RoadBits present;
@@ -530,6 +532,23 @@ do_clear:;
 	if (IsTileType(tile, MP_ROAD)) {
 		/* Don't put the pieces that already exist */
 		pieces &= ComplementRoadBits(existing);
+
+		/* Check if new road bits will have the same foundation as other existing road types */
+		if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+			Slope slope = GetTileSlope(tile, NULL);
+			Foundation found_new = GetRoadFoundation(slope, pieces | existing);
+
+			/* Test if all other roadtypes can be built at that foundation */
+			for (RoadType rtest = ROADTYPE_ROAD; rtest < ROADTYPE_END; rtest++) {
+				if (rtest != rt) { // check only other road types
+					RoadBits bits = GetRoadBits(tile, rtest);
+					/* do not check if there are not road bits of given type */
+					if (bits != ROAD_NONE && GetRoadFoundation(slope, bits) != found_new) {
+						return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+					}
+				}
+			}
+		}
 	}
 
 	cost.AddCost(CountBits(pieces) * _price.build_road);
