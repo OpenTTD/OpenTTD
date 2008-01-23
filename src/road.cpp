@@ -96,11 +96,12 @@ RoadTypes GetPlayerRoadtypes(PlayerID p)
 {
 	RoadTypes rt = ROADTYPES_NONE;
 
-	for (EngineID i = 0; i != TOTAL_NUM_ENGINES; i++) {
+	EngineID i;
+	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_ROAD) {
 		const Engine* e = GetEngine(i);
 		const EngineInfo *ei = EngInfo(i);
 
-		if (e->type == VEH_ROAD && HasBit(ei->climates, _opt.landscape) &&
+		if (HasBit(ei->climates, _opt.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
 			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}

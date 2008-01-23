@@ -167,11 +167,12 @@ RailTypes GetPlayerRailtypes(PlayerID p)
 {
 	RailTypes rt = RAILTYPES_NONE;
 
-	for (EngineID i = 0; i != TOTAL_NUM_ENGINES; i++) {
+	EngineID i;
+	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_TRAIN) {
 		const Engine* e = GetEngine(i);
 		const EngineInfo *ei = EngInfo(i);
 
-		if (e->type == VEH_TRAIN && HasBit(ei->climates, _opt.landscape) &&
+		if (HasBit(ei->climates, _opt.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
 			const RailVehicleInfo *rvi = RailVehInfo(i);
 
