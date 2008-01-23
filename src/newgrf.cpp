@@ -44,6 +44,7 @@
 #include "road_func.h"
 #include "player_base.h"
 #include "settings_type.h"
+#include "map_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -4025,14 +4026,45 @@ static uint32 GetPatchVariable(uint8 param)
 	switch (param) {
 		/* start year - 1920 */
 		case 0x0B: return max(_patches.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR;
+
 		/* freight trains weight factor */
 		case 0x0E: return _patches.freight_trains;
+
 		/* empty wagon speed increase */
 		case 0x0F: return 0;
+
 		/* plane speed factor */
 		case 0x10: return 4;
+
 		/* 2CC colormap base sprite */
 		case 0x11: return SPR_2CCMAP_BASE;
+
+		/* map size: format = -MABXYSS
+		 * M  : the type of map
+		 *       bit 0 : set   : squared map. Bit 1 is now not relevant
+		 *               clear : rectangle map. Bit 1 will indicate the bigger edge of the map
+		 *       bit 1 : set   : Y is the bigger edge. Bit 0 is clear
+		 *               clear : X is the bigger edge.
+		 * A  : minimum edge(log2) of the map
+		 * B  : maximum edge(log2) of the map
+		 * XY : edges(log2) of each side of the map.
+		 * SS : combination of both X and Y, thus giving the size(log2) of the map
+		 */
+		case 0x13: {
+			byte map_bits = 0;
+			byte log_X = MapLogX() - 6;
+			byte log_Y = MapLogY() - 6;
+			byte max_edge = max(log_X, log_Y);
+
+			if (log_X == log_Y) { // we have a squared map, since both edges are identical
+				SetBit(map_bits ,0);
+			} else {
+				if (max_edge == log_Y) SetBit(map_bits, 1); // edge Y been the biggest, mark it
+			}
+
+			return (map_bits << 24) | (min(log_X, log_Y) << 20) | (max_edge << 16) |
+				(log_X << 12) | (log_Y << 8) | (log_X + log_Y);
+		}
 
 		default:
 			grfmsg(2, "ParamSet: Unknown Patch variable 0x%02X.", param);

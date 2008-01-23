@@ -16,6 +16,7 @@ extern "C" _CRTIMP void __cdecl _assert(void *, void *, unsigned);
 #endif
 
 uint _map_log_x;     ///< 2^_map_log_x == _map_size_x
+uint _map_log_y;     ///< 2^_map_log_y == _map_size_y
 uint _map_size_x;    ///< Size of the map along the X
 uint _map_size_y;    ///< Size of the map along the Y
 uint _map_size;      ///< The number of tiles on the map
@@ -43,6 +44,7 @@ void AllocateMap(uint size_x, uint size_y)
 	DEBUG(map, 1, "Allocating map of size %dx%d", size_x, size_y);
 
 	_map_log_x = FindFirstBit(size_x);
+	_map_log_y = FindFirstBit(size_y);
 	_map_size_x = size_x;
 	_map_size_y = size_y;
 	_map_size = size_x * size_y;

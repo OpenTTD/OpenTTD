@@ -57,6 +57,17 @@ static inline uint MapLogX()
 }
 
 /**
+ * Logarithm of the map size along the y side.
+ * @note try to avoid using this one
+ * @return 2^"return value" == MapSizeY()
+ */
+static inline uint MapLogY()
+{
+	extern uint _map_log_y;
+	return _map_log_y;
+}
+
+/**
  * Get the size of the map along the X
  * @return the number of tiles along the X of the map
  */
