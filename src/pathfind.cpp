@@ -220,50 +220,31 @@ FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection dir)
 
 static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 
-static uint SkipToEndOfTunnel(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
-{
-	FindLengthOfTunnelResult flotr;
-	TPFSetTileBit(tpf, tile, 14);
-	flotr = FindLengthOfTunnel(tile, direction);
-	tpf->rd.cur_length += flotr.length;
-	TPFSetTileBit(tpf, flotr.tile, 14);
-	return flotr.tile;
-}
-
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
-	TileIndex tile_org = tile;
+	const TileIndex tile_org = tile;
 
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		if (IsTunnel(tile)) {
-			if (GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-			/* Only skip through the tunnel if heading inwards. We can
-			 * be headed outwards if our starting position was in a
-			 * tunnel and we're pathfinding backwards */
-			if (GetTunnelBridgeDirection(tile) == direction) {
-				tile = SkipToEndOfTunnel(tpf, tile, direction);
-			} else if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
-				/* We don't support moving through the sides of a tunnel
-				 * entrance :-) */
-				return;
-			}
-		} else { // IsBridge(tile)
-			TileIndex tile_end;
-			if (GetTunnelBridgeDirection(tile) != direction ||
-					GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-				return;
-			}
-			//fprintf(stderr, "%s: Planning over bridge\n", __func__);
-			// TODO doesn't work - WHAT doesn't work?
+		/* wrong track type */
+		if (GetTunnelBridgeTransportType(tile) != tpf->tracktype) return;
+
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
+		/* entering tunnel / bridge? */
+		if (dir == direction) {
+			TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
+
+			tpf->rd.cur_length += DistanceManhattan(tile, endtile);
+
 			TPFSetTileBit(tpf, tile, 14);
-			tile_end = GetOtherBridgeEnd(tile);
-			tpf->rd.cur_length += DistanceManhattan(tile, tile_end);
-			tile = tile_end;
-			TPFSetTileBit(tpf, tile, 14);
+			TPFSetTileBit(tpf, endtile, 14);
+
+			tile = endtile;
+		} else {
+			/* leaving tunnel / bridge? */
+			if (ReverseDiagDir(dir) != direction) return;
 		}
 	}
+
 	tile += TileOffsByDiagDir(direction);
 
 	/* Check in case of rail if the owner is the same */
