@@ -202,6 +202,7 @@ town.h
 train.h
 transparency.h
 transparency_gui.h
+tunnelbridge.h
 variables.h
 vehicle.h
 vehicle_gui.h

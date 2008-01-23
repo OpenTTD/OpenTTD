@@ -32,6 +32,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "signal_func.h"
+#include "tunnelbridge.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -158,17 +159,6 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 	if (f == FOUNDATION_NONE) return CommandCost();
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
-}
-
-
-uint32 GetBridgeLength(TileIndex begin, TileIndex end)
-{
-	int x1 = TileX(begin);
-	int y1 = TileY(begin);
-	int x2 = TileX(end);
-	int y2 = TileY(end);
-
-	return abs(x2 + y2 - x1 - y1) - 1;
 }
 
 bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
@@ -633,7 +623,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 			DoClearSquare(endtile);
 		}
 	}
-	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_tunnel * (DistanceManhattan(tile, endtile) + 1));
+	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_tunnel * (GetTunnelBridgeLength(tile, endtile) + 2));
 }
 
 
@@ -693,7 +683,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		}
 	}
 
-	return CommandCost(EXPENSES_CONSTRUCTION, (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge);
+	return CommandCost(EXPENSES_CONSTRUCTION, (GetTunnelBridgeLength(tile, endtile) + 2) * _price.clear_bridge);
 }
 
 static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
@@ -1018,8 +1008,8 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	axis = GetBridgeAxis(ti->tile);
 	piece = CalcBridgePiece(
-		DistanceManhattan(ti->tile, rampnorth),
-		DistanceManhattan(ti->tile, rampsouth)
+		GetTunnelBridgeLength(ti->tile, rampnorth) + 1,
+		GetTunnelBridgeLength(ti->tile, rampsouth) + 1
 	);
 	type = GetBridgeType(rampsouth);
 

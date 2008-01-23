@@ -64,6 +64,7 @@
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
 #include "player_base.h"
+#include "tunnelbridge.h"
 
 #include "table/sprites.h"
 #include "table/elrail_data.h"
@@ -383,8 +384,8 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	TileIndex end = GetSouthernBridgeEnd(ti->tile);
 	TileIndex start = GetOtherBridgeEnd(end);
 
-	uint length = GetBridgeLength(start, end);
-	uint num = DistanceMax(ti->tile, start);
+	uint length = GetTunnelBridgeLength(start, end);
+	uint num = GetTunnelBridgeLength(ti->tile, start) + 1;
 	uint height;
 
 	const SortableSpriteStruct *sss;
@@ -421,7 +422,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	}
 
 	/* need a pylon on the southern end of the bridge */
-	if (DistanceMax(ti->tile, start) == length) {
+	if (GetTunnelBridgeLength(ti->tile, start) + 1 == length) {
 		DiagDirection PCPpos = (axis == AXIS_X ? DIAGDIR_SW : DIAGDIR_SE);
 		Direction PPPpos = (axis == AXIS_X ? DIR_NW : DIR_NE);
 		if (HasBit(tlg, (axis == AXIS_X ? 0 : 1))) PPPpos = ReverseDir(PPPpos);

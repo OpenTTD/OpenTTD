@@ -709,6 +709,9 @@
 				RelativePath=".\..\src\transparency_gui.h">
 			</File>
 			<File
+				RelativePath=".\..\src\tunnelbridge.h">
+			</File>
+			<File
 				RelativePath=".\..\src\variables.h">
 			</File>
 			<File

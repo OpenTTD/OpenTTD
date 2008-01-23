@@ -31,6 +31,7 @@
 #include "../../player_base.h"
 #include "../../settings_type.h"
 #include "default.h"
+#include "../../tunnelbridge.h"
 
 #include "../../table/ai_rail.h"
 
@@ -2173,7 +2174,7 @@ static void AiBuildRailConstruct(Player *p)
 
 	if (arf.best_ptr[0] & 0x80) {
 		int i;
-		int32 bridge_len = GetBridgeLength(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a);
+		int32 bridge_len = GetTunnelBridgeLength(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a);
 
 		/* Figure out which (rail)bridge type to build
 		 * start with best bridge, then go down to worse and worse bridges
@@ -3065,7 +3066,7 @@ do_some_terraform:
 		int i;
 		int32 bridge_len;
 		_players_ai[p->index].cur_tile_a = arf.bridge_end_tile;
-		bridge_len = GetBridgeLength(tile, _players_ai[p->index].cur_tile_a); // tile
+		bridge_len = GetTunnelBridgeLength(tile, _players_ai[p->index].cur_tile_a); // tile
 
 		/* Figure out what (road)bridge type to build
 		 * start with best bridge, then go down to worse and worse bridges

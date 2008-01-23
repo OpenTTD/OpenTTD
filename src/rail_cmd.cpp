@@ -40,6 +40,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "signal_func.h"
+#include "tunnelbridge.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -939,7 +940,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 			 * note that tile is a parameter by reference, so it must be updated */
 			tile = GetOtherTunnelBridgeEnd(tile);
 
-			signal_ctr += 2 + DistanceMax(orig_tile, tile) * 2;
+			signal_ctr += (GetTunnelBridgeLength(orig_tile, tile) + 2) * 2;
 			return true;
 		}
 
@@ -1294,7 +1295,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						}
 					}
 
-					cost.AddCost((DistanceManhattan(tile, endtile) + 1) * RailConvertCost(type, totype));
+					cost.AddCost((GetTunnelBridgeLength(tile, endtile) + 2) * RailConvertCost(type, totype));
 				} break;
 
 				default: // MP_STATION, MP_ROAD

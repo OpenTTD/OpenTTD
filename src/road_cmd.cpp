@@ -33,6 +33,7 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "road_func.h"
+#include "tunnelbridge.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -159,7 +160,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			TileIndex other_end = GetOtherTunnelBridgeEnd(tile);
 			/* Pay for *every* tile of the bridge or tunnel */
-			cost.AddCost((DistanceManhattan(other_end, tile) + 1) * _price.remove_road);
+			cost.AddCost((GetTunnelBridgeLength(other_end, tile) + 2) * _price.remove_road);
 			if (flags & DC_EXEC) {
 				SetRoadTypes(other_end, GetRoadTypes(other_end) & ~RoadTypeToRoadTypes(rt));
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
@@ -551,7 +552,7 @@ do_clear:;
 	cost.AddCost(CountBits(pieces) * _price.build_road);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		/* Pay for *every* tile of the bridge or tunnel */
-		cost.MultiplyCost(DistanceManhattan(GetOtherTunnelBridgeEnd(tile), tile) + 1);
+		cost.MultiplyCost(GetTunnelBridgeLength(GetOtherTunnelBridgeEnd(tile), tile) + 2);
 	}
 
 	if (flags & DC_EXEC) {

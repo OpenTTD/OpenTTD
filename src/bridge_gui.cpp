@@ -16,6 +16,7 @@
 #include "map_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
+#include "tunnelbridge.h"
 
 #include "table/strings.h"
 
@@ -182,7 +183,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 		/* check which bridges can be built
 		 * get absolute bridge length
 		 * length of the middle parts of the bridge */
-		const uint bridge_len = GetBridgeLength(start, end);
+		const uint bridge_len = GetTunnelBridgeLength(start, end);
 		/* total length of bridge */
 		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
 

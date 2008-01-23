@@ -23,6 +23,7 @@
 #include "../waypoint.h"
 #include "../debug.h"
 #include "../settings_type.h"
+#include "../tunnelbridge.h"
 
 extern uint64 _rdtsc();
 

@@ -76,32 +76,22 @@ protected:
 		m_is_station = m_is_bridge = m_is_tunnel = false;
 		m_tiles_skipped = 0;
 
-		// extra handling for tunnels in our direction
-		if (IsTunnelTile(m_old_tile)) {
-			DiagDirection tunnel_enterdir = GetTunnelBridgeDirection(m_old_tile);
-			if (tunnel_enterdir == m_exitdir) {
-				// we are entering the tunnel
-				FindLengthOfTunnelResult flotr = FindLengthOfTunnel(m_old_tile, m_exitdir);
-				m_new_tile = flotr.tile;
-				m_is_tunnel = true;
-				m_tiles_skipped = flotr.length - 1;
+		// extra handling for tunnels and bridges in our direction
+		if (IsTileType(m_old_tile, MP_TUNNELBRIDGE)) {
+			DiagDirection enterdir = GetTunnelBridgeDirection(m_old_tile);
+			if (enterdir == m_exitdir) {
+				// we are entering the tunnel / bridge
+				if (IsTunnel(m_old_tile)) {
+					m_is_tunnel = true;
+					m_new_tile = GetOtherTunnelEnd(m_old_tile);
+				} else { // IsBridge(m_old_tile)
+					m_is_bridge = true;
+					m_new_tile = GetOtherBridgeEnd(m_old_tile);
+				}
+				m_tiles_skipped = GetTunnelBridgeLength(m_new_tile, m_old_tile);
 				return;
 			}
-			assert(ReverseDiagDir(tunnel_enterdir) == m_exitdir);
-		}
-
-		// extra handling for bridge ramp in our direction
-		if (IsBridgeTile(m_old_tile)) {
-			DiagDirection bridge_enterdir = GetTunnelBridgeDirection(m_old_tile);
-			if (bridge_enterdir == m_exitdir) {
-				// we are entering the bridge ramp
-				m_new_tile = GetOtherBridgeEnd(m_old_tile);
-				uint32 bridge_length = GetBridgeLength(m_old_tile, m_new_tile);
-				m_tiles_skipped = bridge_length;
-				m_is_bridge = true;
-				return;
-			}
-			assert(ReverseDiagDir(bridge_enterdir) == m_exitdir);
+			assert(ReverseDiagDir(enterdir) == m_exitdir);
 		}
 
 		// normal or station tile, do one step

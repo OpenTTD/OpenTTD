@@ -22,6 +22,7 @@
 #include "functions.h"
 #include "vehicle_base.h"
 #include "settings_type.h"
+#include "tunnelbridge.h"
 
 static AyStar _npf_aystar;
 
@@ -176,9 +177,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 	if (GetTunnelBridgeDirection(tile) == ReverseDiagDir(exitdir)) {
 		/* We just popped out if this tunnel, since were
 		 * facing the tunnel exit */
-		FindLengthOfTunnelResult flotr;
-		flotr = FindLengthOfTunnel(tile, ReverseDiagDir(exitdir));
-		return flotr.length * NPF_TILE_LENGTH;
+		return NPF_TILE_LENGTH * (GetTunnelBridgeLength(current->tile, GetOtherTunnelEnd(current->tile)) + 1);
 		/* @todo: Penalty for tunnels? */
 	} else {
 		/* We are entering the tunnel, the enter tile is just a
@@ -189,7 +188,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 
 static inline uint NPFBridgeCost(AyStarNode *current)
 {
-	return NPF_TILE_LENGTH * GetBridgeLength(current->tile, GetOtherBridgeEnd(current->tile));
+	return NPF_TILE_LENGTH * GetTunnelBridgeLength(current->tile, GetOtherBridgeEnd(current->tile));
 }
 
 static uint NPFSlopeCost(AyStarNode* current)

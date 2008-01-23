@@ -17,6 +17,7 @@
 #include "depot.h"
 #include "tunnelbridge_map.h"
 #include "core/random_func.hpp"
+#include "tunnelbridge.h"
 
 /* remember which tiles we have already visited so we don't visit them again. */
 static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
@@ -192,32 +193,6 @@ continue_here:
 
 }
 
-
-/* Returns the end tile and the length of a tunnel. The length does not
- * include the starting tile (entry), it does include the end tile (exit).
- */
-FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection dir)
-{
-	TileIndexDiff delta = TileOffsByDiagDir(dir);
-	uint z = GetTileZ(tile);
-	FindLengthOfTunnelResult flotr;
-
-	flotr.length = 0;
-
-	dir = ReverseDiagDir(dir);
-	do {
-		flotr.length++;
-		tile += delta;
-	} while(
-		!IsTunnelTile(tile) ||
-		GetTunnelBridgeDirection(tile) != dir ||
-		GetTileZ(tile) != z
-	);
-
-	flotr.tile = tile;
-	return flotr;
-}
-
 /**
  * Checks if any vehicle can enter/leave tile in given diagdir
  * Checks only for rail/road depots and road non-drivethrough stations
@@ -257,7 +232,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		if (dir == direction) {
 			TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
 
-			tpf->rd.cur_length += DistanceManhattan(tile, endtile);
+			tpf->rd.cur_length += GetTunnelBridgeLength(tile, endtile) + 1;
 
 			TPFSetTileBit(tpf, tile, 14);
 			TPFSetTileBit(tpf, endtile, 14);
@@ -665,8 +640,6 @@ start_at:
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			if (IsTunnel(tile)) {
 				if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
-					FindLengthOfTunnelResult flotr;
-
 					/* We are not just driving out of the tunnel */
 					if (GetTunnelBridgeDirection(tile) != direction ||
 							GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
@@ -677,9 +650,10 @@ start_at:
 						bits = TRACK_BIT_NONE;
 						break;
 					}
-					flotr = FindLengthOfTunnel(tile, direction);
-					si.cur_length += flotr.length * DIAG_FACTOR;
-					tile = flotr.tile;
+
+					TileIndex endtile = GetOtherTunnelEnd(tile);
+					si.cur_length += DIAG_FACTOR * (GetTunnelBridgeLength(tile, endtile) + 1);
+					tile = endtile;
 					/* tile now points to the exit tile of the tunnel */
 				}
 			} else { // IsBridge(tile)
@@ -693,7 +667,7 @@ start_at:
 					}
 				}
 				tile_end = GetOtherBridgeEnd(tile);
-				si.cur_length += DistanceManhattan(tile, tile_end) * DIAG_FACTOR;
+				si.cur_length += DIAG_FACTOR * (GetTunnelBridgeLength(tile, tile_end) + 1);
 				tile = tile_end;
 			}
 		}

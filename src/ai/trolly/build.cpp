@@ -15,6 +15,8 @@
 #include "../../player_base.h"
 #include "../../player_func.h"
 #include "../ai.h"
+#include "../../tunnelbridge.h"
+
 
 // Build HQ
 //  Params:
@@ -58,7 +60,7 @@ CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, by
 	int bridge_type, bridge_len, type, type2;
 
 	// Find a good bridgetype (the best money can buy)
-	bridge_len = GetBridgeLength(tile_a, tile_b);
+	bridge_len = GetTunnelBridgeLength(tile_a, tile_b);
 	type = type2 = 0;
 	for (bridge_type = MAX_BRIDGES-1; bridge_type >= 0; bridge_type--) {
 		if (CheckBridge_Stuff(bridge_type, bridge_len)) {

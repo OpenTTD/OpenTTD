@@ -14,6 +14,7 @@
 #include "../../variables.h"
 #include "../../player_base.h"
 #include "../../player_func.h"
+#include "../../tunnelbridge.h"
 
 
 #define TEST_STATION_NO_DIR 0xFF
@@ -320,7 +321,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				new_tile += TileOffsByDiagDir(dir);
 
 				// Precheck, is the length allowed?
-				if (!CheckBridge_Stuff(0, GetBridgeLength(tile, new_tile))) break;
+				if (!CheckBridge_Stuff(0, GetTunnelBridgeLength(tile, new_tile))) break;
 
 				// Check if we hit the station-tile.. we don't like that!
 				if (TILES_BETWEEN(new_tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br)) break;
@@ -425,14 +426,14 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		int r;
 		// Tunnels are very expensive when build on long routes..
 		// Ironicly, we are using BridgeCode here ;)
-		r = AI_PATHFINDER_TUNNEL_PENALTY * GetBridgeLength(current->tile, parent->path.node.tile);
+		r = AI_PATHFINDER_TUNNEL_PENALTY * GetTunnelBridgeLength(current->tile, parent->path.node.tile);
 		res += r + (r >> 8);
 	}
 
 	// Are we part of a bridge?
 	if ((AI_PATHFINDER_FLAG_BRIDGE & current->user_data[0]) != 0) {
 		// That means for every length a penalty
-		res += AI_PATHFINDER_BRIDGE_PENALTY * GetBridgeLength(current->tile, parent->path.node.tile);
+		res += AI_PATHFINDER_BRIDGE_PENALTY * GetTunnelBridgeLength(current->tile, parent->path.node.tile);
 		// Check if we are going up or down, first for the starting point
 		// In user_data[0] is at the 8th bit the direction
 		if (!HasBridgeFlatRamp(parent_tileh, (Axis)((current->user_data[0] >> 8) & 1))) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;

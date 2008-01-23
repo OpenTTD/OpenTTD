@@ -68,13 +68,6 @@ struct TrackPathFinder {
 };
 
 void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
-
-struct FindLengthOfTunnelResult {
-	TileIndex tile;
-	int length;
-};
-FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection direction);
-
 void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data);
 
 #endif /* PATHFIND_H */
