@@ -4052,7 +4052,7 @@ static uint32 GetPatchVariable(uint8 param)
 		 */
 		case 0x13: {
 			byte map_bits = 0;
-			byte log_X = MapLogX() - 6;
+			byte log_X = MapLogX() - 6; // substraction is required to make the minimal size (64) zero based
 			byte log_Y = MapLogY() - 6;
 			byte max_edge = max(log_X, log_Y);
 
