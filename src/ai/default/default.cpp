@@ -199,7 +199,13 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, Money money, TileIndex til
 	return best_veh_index;
 }
 
-static EngineID AiChooseAircraftToBuild(Money money, byte flag)
+/**
+ * Choose aircraft to build.
+ * @param money current AI money
+ * @param forbidden forbidden flags - AIR_HELI = 0 (always allowed), AIR_CTOL = 1 (bit 0), AIR_FAST = 2 (bit 1)
+ * @return EngineID of aircraft to build
+ */
+static EngineID AiChooseAircraftToBuild(Money money, byte forbidden)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	Money best_veh_cost = 0;
@@ -212,7 +218,7 @@ static EngineID AiChooseAircraftToBuild(Money money, byte flag)
 			continue;
 		}
 
-		if ((AircraftVehInfo(i)->subtype & AIR_CTOL) != flag) continue;
+		if ((AircraftVehInfo(i)->subtype & forbidden) != 0) continue;
 
 		CommandCost ret = DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
 		if (CmdSucceeded(ret) && ret.GetCost() <= money && ret.GetCost() >= best_veh_cost) {
@@ -249,8 +255,24 @@ static EngineID AiChooseRoadVehToReplaceWith(const Player* p, const Vehicle* v)
 static EngineID AiChooseAircraftToReplaceWith(const Player* p, const Vehicle* v)
 {
 	Money avail_money = p->player_money + v->value;
+
+	/* determine forbidden aircraft bits */
+	byte forbidden = 0;
+	const Order *o;
+
+	FOR_VEHICLE_ORDERS(v, o) {
+		if (!o->IsValid()) continue;
+		if (!IsValidStationID(o->dest)) continue;
+		const Station *st = GetStation(o->dest);
+		if (!(st->facilities & FACIL_AIRPORT)) continue;
+
+		AirportFTAClass::Flags flags = st->Airport()->flags;
+		if (!(flags & AirportFTAClass::AIRPLANES)) forbidden |= AIR_CTOL | AIR_FAST; // no planes for heliports / oil rigs
+		if (flags & AirportFTAClass::SHORT_STRIP) forbidden |= AIR_FAST; // no fast planes for small airports
+	}
+
 	return AiChooseAircraftToBuild(
-		avail_money, AircraftVehInfo(v->engine_type)->subtype & AIR_CTOL
+		avail_money, forbidden
 	);
 }
 
@@ -1365,7 +1387,7 @@ static void AiWantPassengerAircraftRoute(Player *p)
 	/* Get aircraft that would be bought for this route
 	 * (probably, as conditions may change before the route is fully built,
 	 * like running out of money and having to select different aircraft, etc ...) */
-	EngineID veh = AiChooseAircraftToBuild(p->player_money, _players_ai[p->index].build_kind != 0 ? 0 : AIR_CTOL);
+	EngineID veh = AiChooseAircraftToBuild(p->player_money, _players_ai[p->index].build_kind != 0 ? AIR_CTOL : 0);
 
 	/* No aircraft buildable mean no aircraft route */
 	if (veh == INVALID_ENGINE) return;
@@ -3504,7 +3526,20 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	tile = TILE_ADD(_players_ai[p->index].src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
-	veh = AiChooseAircraftToBuild(p->player_money, _players_ai[p->index].build_kind != 0 ? 0 : AIR_CTOL);
+	/* determine forbidden aircraft bits */
+	byte forbidden = 0;
+	for (i = 0; _players_ai[p->index].order_list_blocks[i] != 0xFF; i++) {
+		const AiBuildRec *aib = (&_players_ai[p->index].src) + _players_ai[p->index].order_list_blocks[i];
+		const Station *st = GetStationByTile(aib->use_tile);
+
+		if (st == NULL || !(st->facilities & FACIL_AIRPORT)) continue;
+
+		AirportFTAClass::Flags flags = st->Airport()->flags;
+		if (!(flags & AirportFTAClass::AIRPLANES)) forbidden |= AIR_CTOL | AIR_FAST; // no planes for heliports / oil rigs
+		if (flags & AirportFTAClass::SHORT_STRIP) forbidden |= AIR_FAST; // no fast planes for small airports
+	}
+
+	veh = AiChooseAircraftToBuild(p->player_money, forbidden);
 	if (veh == INVALID_ENGINE) return;
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
