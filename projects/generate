@@ -25,13 +25,6 @@ fi
 # langs_vs80.vcproj   is for MSVC 2005
 # strgen_vs80.vcproj  is for MSVC 2005
 
-# openttd.sln         is for MSVC 2003
-# openttd.vcproj      is for MSVC 2003
-# langs.vcproj        is for MSVC 2003
-# strgen.vcproj       is for MSVC 2003
-
-# openttd.tgt         is for WatCom
-
 
 
 # First, collect the list of Windows files
@@ -110,7 +103,7 @@ load_main_data() {
 
 				print "		<Filter";
 				print "			Name=\\""$0"\\"";
-				print "			Filter=\\"\\">";
+				print "			>";
 			}
 
 			next;
@@ -121,7 +114,8 @@ load_main_data() {
 				gsub("	", "", $0);
 				gsub("/", "\\\\", $0);
 				print "			<File";
-				print "				RelativePath=\\".\\\\'$file_prefix'"$0"\\">";
+				print "				RelativePath=\\".\\\\'$file_prefix'"$0"\\"";
+				print "				>";
 				print "			</File>";
 			}
 		}
@@ -138,15 +132,18 @@ load_lang_data() {
 		i=`basename $i | sed s/.txt$//g`
 		RES="$RES
 		<File
-			RelativePath=\"..\\src\\lang\\"$i".txt\">
+			RelativePath=\"..\\src\\lang\\"$i".txt\"
+			>
 			<FileConfiguration
-				Name=\"Debug|Win32\">
+				Name=\"Debug|Win32\"
+				>
 				<Tool
 					Name=\"VCCustomBuildTool\"
 					Description=\"Generating "$i" language file\"
 					CommandLine=\"..\\objs\\strgen\\strgen.exe -s ..\\src\\lang -d ..\\bin\\lang &quot;\$(InputPath)&quot;&#x0D;&#x0A;\"
 					AdditionalDependencies=\"\"
-					Outputs=\"..\\bin\\lang\\"$i".lng\"/>
+					Outputs=\"..\\bin\\lang\\"$i".lng\"
+				/>
 			</FileConfiguration>
 		</File>"
 	done
@@ -165,22 +162,7 @@ generate() {
 		}
 	' > "$ROOT_DIR/projects/$2"
 
-	# The files-list
-	echo "$1" | awk -v type="$3" '
-		/&#x0D;&#x0A;/ {
-			if (type == "msvc2003") gsub("&#x0D;&#x0A;", "\n", $0);
-		}
-		/Filter="">/ {
-			if (type == "msvc2005") gsub("Filter=\"\">", ">", $0);
-		}
-		/"\/>/ {
-			if (type == "msvc2005") gsub("/>", "\n" substr($0, 1, index($0, $1) - 2) "/>", $0);
-		}
-		/">/ {
-			if (type == "msvc2005") gsub(">", "\n" substr($0, 1, index($0, $1) - 1) ">", $0);
-		}
-		{ print $0 }
-	' >> "$ROOT_DIR/projects/$2"
+	echo "$1" >> "$ROOT_DIR/projects/$2"
 
 	# Everything below the !!FILES!! marker
 	cat "$ROOT_DIR/projects/$2".in | tr '\r' '\n' | awk '
@@ -199,9 +181,7 @@ safety_check "$ROOT_DIR/source.list"
 load_main_data "$ROOT_DIR/source.list" openttd
 load_lang_data "$ROOT_DIR/src/lang/*.txt" lang
 
-generate "$openttd" "openttd.vcproj"      "msvc2003"
-generate "$openttd" "openttd_vs80.vcproj" "msvc2005"
-generate "$openttd" "openttd_vs90.vcproj" "msvc2005"
-generate "$lang" "langs.vcproj"           "msvc2003"
-generate "$lang" "langs_vs80.vcproj"      "msvc2005"
-generate "$lang" "langs_vs90.vcproj"      "msvc2005"
+generate "$openttd" "openttd_vs80.vcproj"
+generate "$openttd" "openttd_vs90.vcproj"
+generate "$lang" "langs_vs80.vcproj"
+generate "$lang" "langs_vs90.vcproj"

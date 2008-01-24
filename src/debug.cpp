@@ -59,50 +59,34 @@ struct DebugLevel {
 
 #if !defined(NO_DEBUG_MESSAGES)
 
-/** Functionized DEBUG macro for compilers that don't support
- * variadic macros (__VA_ARGS__) such as...yes MSVC2003 and lower */
-#if defined(NO_VARARG_MACRO)
-void CDECL DEBUG(int name, int level, ...)
-{
-	va_list va;
-	const char *dbg;
-	const DebugLevel *dl = &debug_level[name];
-
-	if (level != 0 && *dl->level < level) return;
-	dbg = dl->name;
-	va_start(va, level);
-#else
 void CDECL debug(const char *dbg, ...)
 {
 	va_list va;
 	va_start(va, dbg);
-#endif /* NO_VARARG_MACRO */
-	{
-		const char *s;
-		char buf[1024];
+	const char *s;
+	char buf[1024];
 
-		s = va_arg(va, const char*);
-		vsnprintf(buf, lengthof(buf), s, va);
-		va_end(va);
+	s = va_arg(va, const char*);
+	vsnprintf(buf, lengthof(buf), s, va);
+	va_end(va);
 #if defined(ENABLE_NETWORK)
-		if (_debug_socket != INVALID_SOCKET) {
-			char buf2[lengthof(buf) + 32];
+	if (_debug_socket != INVALID_SOCKET) {
+		char buf2[lengthof(buf) + 32];
 
-			snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
-			send(_debug_socket, buf2, strlen(buf2), 0);
-		} else
+		snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
+		send(_debug_socket, buf2, strlen(buf2), 0);
+	} else
 #endif /* ENABLE_NETWORK */
-		{
+	{
 #if defined(WINCE)
-			/* We need to do OTTD2FS twice, but as it uses a static buffer, we need to store one temporary */
-			TCHAR tbuf[512];
-			_sntprintf(tbuf, sizeof(tbuf), _T("%s"), OTTD2FS(dbg));
-			NKDbgPrintfW(_T("dbg: [%s] %s\n"), tbuf, OTTD2FS(buf));
+		/* We need to do OTTD2FS twice, but as it uses a static buffer, we need to store one temporary */
+		TCHAR tbuf[512];
+		_sntprintf(tbuf, sizeof(tbuf), _T("%s"), OTTD2FS(dbg));
+		NKDbgPrintfW(_T("dbg: [%s] %s\n"), tbuf, OTTD2FS(buf));
 #else
-			fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
+		fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
 #endif
-			IConsoleDebug(dbg, buf);
-		}
+		IConsoleDebug(dbg, buf);
 	}
 }
 #endif /* NO_DEBUG_MESSAGES */

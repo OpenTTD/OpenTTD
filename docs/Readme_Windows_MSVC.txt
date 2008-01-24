@@ -6,11 +6,11 @@ PLEASE READ THE ENTIRE DOCUMENT BEFORE DOING ANY ACTUAL CHANGES!!
 
 SUPPORTED MSVC COMPILERS
 ------------------------
-OpenTTD includes projects for MSVC 2003.NET and MSVC 2005.NET. Both will
+OpenTTD includes projects for MSVC 2005.NET and MSVC 2008.NET. Both will
 compile out of the box, providing you have the required libraries/headers;
-which ones, see below. There is no support for VS6, you are therefore
-strongly encouraged to either upgrade to MSVC 2005 Express (free) or use GCC.
-MSVC 2002 probably works as well, but it has not been tested.
+which ones, see below. There is no support for VS6 or MSVC 2002, or
+MSVC 2003.NET. You are therefore strongly encouraged to either upgrade to
+MSVC 2005 Express (free) or use GCC.
 
 
 1) REQUIRED FILES
@@ -74,20 +74,6 @@ NOTE: make sure that the directory for the DirectX SDK is the first one in the
 list, above all others, otherwise compilation will most likely fail!!
 
 
-2.3) DEBUGGING - WORKING DIRECTORY (MSVC 2003 ONLY!)
-----------------------------------------------------
-The very first time you check out and compile OpenTTD with Visual Studio 2003, running
-the binary will complain about missing files. You need to go into and change a setting
-
-OpenTTD > Project > Properties > Configuration (All Configurations) > ...
- Configuration Properties > Debugging >
-
-	* Working Directory: ..\bin
-
-VS 2005 works out of the box because Microsoft allowed a user to supply a humanly-
-readable defaults file (openttd_vs80.vcproj.user), whereas 2003 is braindead.
-
-
 3) TTD GRAPHICS FILES
 ---------------------
 Copy the following files from Transport Tycoon Deluxe to the bin/data folder
@@ -102,12 +88,12 @@ Copy the following files from Transport Tycoon Deluxe to the bin/data folder
 
 4) COMPILING
 ------------
-Open trunk/openttd[_vs80].sln
+Open trunk/openttd_vs[89]0.sln
 Set the build mode to 'Release' in
 Build > Configuration manager > Active solution configuration > select "Release"
 Compile...
 
-If everything works well the binary should be in trunk/objs/[Win32]/Release/openttd.exe
+If everything works well the binary should be in trunk/objs/Win[32|64]/Release/openttd.exe
 
 
 5) EDITING, CHANGING SOURCE CODE

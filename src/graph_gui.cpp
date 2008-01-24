@@ -43,7 +43,7 @@ enum {
 };
 
 /* Apparently these don't play well with enums. */
-static const OverflowSafeInt64 INVALID_DATAPOINT = INT64_MAX; // Value used for a datapoint that shouldn't be drawn.
+static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
 static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
 
 struct GraphDrawer {

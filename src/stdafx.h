@@ -156,19 +156,17 @@
 	#pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
 	#pragma warning(disable: 4200)  // nonstandard extension used : zero-sized array in struct/union
 
-	#if (_MSC_VER >= 1400)                   // MSVC 2005 safety checks
-		#pragma warning(disable: 4996)   // 'strdup' was declared deprecated
-		#define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
-		#pragma warning(disable: 6308)   // code analyzer: 'realloc' might return null pointer: assigning null pointer to 't_ptr', which is passed as an argument to 'realloc', will cause the original memory block to be leaked
-		#pragma warning(disable: 6011)   // code analyzer: Dereferencing NULL pointer 'pfGetAddrInfo': Lines: 995, 996, 998, 999, 1001
-		#pragma warning(disable: 6326)   // code analyzer: potential comparison of a constant with another constant
-		#pragma warning(disable: 6031)   // code analyzer: Return value ignored: 'ReadFile'
-		#pragma warning(disable: 6255)   // code analyzer: _alloca indicates failure by raising a stack overflow exception. Consider using _malloca instead
-		#pragma warning(disable: 6246)   // code analyzer: Local declaration of 'statspec' hides declaration of the same name in outer scope. For additional information, see previous declaration at ...
-	#else /* _MSC_VER >= 1400  ( <1400 for MSVC2003) */
-		#pragma warning(disable: 4288)   // nonstandard extension used : 'y' : loop control variable declared in the for-loop is used outside the for-loop scope; it conflicts with the declaration in the outer scope
-		#pragma warning(disable: 4292)   // compiler limit : terminating debug information emission for enum 'StringIdEnum' with member 'STR_801D_COAL_CAR'
-	#endif /* _MSC_VER >= 1400 */
+	#if (_MSC_VER < 1400)                   // MSVC 2005 safety checks
+		#error "Only MSVC 2005 or higher are supported. MSVC 2003 and earlier are not!. Upgrade your compiler."
+	#endif /* (_MSC_VER < 1400) */
+	#pragma warning(disable: 4996)   // 'strdup' was declared deprecated
+	#define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
+	#pragma warning(disable: 6308)   // code analyzer: 'realloc' might return null pointer: assigning null pointer to 't_ptr', which is passed as an argument to 'realloc', will cause the original memory block to be leaked
+	#pragma warning(disable: 6011)   // code analyzer: Dereferencing NULL pointer 'pfGetAddrInfo': Lines: 995, 996, 998, 999, 1001
+	#pragma warning(disable: 6326)   // code analyzer: potential comparison of a constant with another constant
+	#pragma warning(disable: 6031)   // code analyzer: Return value ignored: 'ReadFile'
+	#pragma warning(disable: 6255)   // code analyzer: _alloca indicates failure by raising a stack overflow exception. Consider using _malloca instead
+	#pragma warning(disable: 6246)   // code analyzer: Local declaration of 'statspec' hides declaration of the same name in outer scope. For additional information, see previous declaration at ...
 
 	#include <malloc.h> // alloca()
 	#define NORETURN __declspec(noreturn)
