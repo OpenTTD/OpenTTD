@@ -342,10 +342,9 @@ static void NewVehicleAvailable(Engine *e)
 
 void EnginesMonthlyLoop()
 {
-	Engine *e;
-
 	if (_cur_year < YEAR_ENGINE_AGING_STOPS) {
-		for (e = _engines; e != endof(_engines); e++) {
+		Engine *e;
+		FOR_ALL_ENGINES(e) {
 			/* Age the vehicle */
 			if (e->flags & ENGINE_AVAILABLE && e->age != 0xFFFF) {
 				e->age++;

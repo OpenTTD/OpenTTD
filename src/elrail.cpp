@@ -475,7 +475,6 @@ void DrawCatenary(const TileInfo *ti)
 
 int32 SettingsDisableElrail(int32 p1)
 {
-	EngineID e_id;
 	Vehicle *v;
 	Player *p;
 	bool disable = (p1 != 0);
@@ -485,8 +484,9 @@ int32 SettingsDisableElrail(int32 p1)
 	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
 
 	/* walk through all train engines */
-	for (e_id = 0; e_id < NUM_TRAIN_ENGINES; e_id++) {
-		RailVehicleInfo *rv_info = &_rail_vehicle_info[e_id];
+	EngineID eid;
+	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_TRAIN) {
+		RailVehicleInfo *rv_info = &_rail_vehicle_info[eid];
 		/* if it is an electric rail engine and its railtype is the wrong one */
 		if (rv_info->engclass == 2 && rv_info->railtype == old_railtype) {
 			/* change it to the proper one */
