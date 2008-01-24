@@ -635,7 +635,7 @@ check_params() {
 		distcc="$with_distcc"
 	fi
 	if [ "$with_distcc" != "0" ]; then
-		res="`$distcc --version 2>/dev/null | head -n 1 | cut -b 0-6`"
+		res="`$distcc --version 2>/dev/null | head -n 1 | cut -b 1-6`"
 		if [ "$res" != "distcc" ]; then
 			distcc=""
 			log 1 "checking distcc... no"
@@ -664,7 +664,7 @@ check_params() {
 		ccache="$with_ccache"
 	fi
 	if [ "$with_ccache" != "0" ]; then
-		res="`$ccache --version 2>/dev/null | head -n 1 | cut -b 0-6`"
+		res="`$ccache --version 2>/dev/null | head -n 1 | cut -b 1-6`"
 		if [ "$res" != "ccache" ]; then
 			ccache=""
 			log 1 "checking ccache... no"
