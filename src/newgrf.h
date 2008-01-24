@@ -85,10 +85,18 @@ struct GRFFile {
 
 extern GRFFile *_first_grffile;
 
+enum ShoreReplacement {
+	SHORE_REPLACE_NONE,       ///< No shore sprites were replaced.
+	SHORE_REPLACE_ACTION_5,   ///< Shore sprites were replaced by Action5.
+	SHORE_REPLACE_ACTION_A,   ///< Shore sprites were replaced by ActionA (using grass tiles for the corner-shores).
+	SHORE_REPLACE_ONLY_NEW,   ///< Only corner-shores were loaded by Action5 (openttd(w/d).grf only).
+};
+
 struct GRFLoadedFeatures {
 	bool has_2CC;             ///< Set if any vehicle is loaded which uses 2cc (two company colours).
 	bool has_newhouses;       ///< Set if there are any newhouses loaded.
 	bool has_newindustries;   ///< Set if there are any newindustries loaded.
+	ShoreReplacement shore;   ///< It which way shore sprites were replaced.
 };
 
 /* Indicates which are the newgrf features currently loaded ingame */

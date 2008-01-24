@@ -3303,25 +3303,6 @@ static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, 
 	return 0;
 }
 
-/** Allows to reposition the loaded sprite to its correct placment.
- * @param load_index SpriteID of the sprite to be relocated */
-static inline void TranslateShoreSprites(SpriteID load_index)
-{
-	/** Contains the displacement required for the corresponding initial sprite*/
-	static const SpriteID shore_dup[8] = {
-		SPR_SHORE_BASE +  4,  ///< 4062
-		SPR_SHORE_BASE +  1,  ///< 4063
-		SPR_SHORE_BASE +  2,  ///< 4064
-		SPR_SHORE_BASE +  8,  ///< 4065
-		SPR_SHORE_BASE +  6,  ///< 4066
-		SPR_SHORE_BASE + 12,  ///< 4067
-		SPR_SHORE_BASE +  3,  ///< 4068
-		SPR_SHORE_BASE +  9,  ///< 4069
-	};
-
-	DupSprite(load_index, shore_dup[load_index - SPR_ORIGINALSHORE_START]);
-}
-
 /* Action 0x05 */
 static void GraphicsNew(byte *buf, int len)
 {
@@ -3383,23 +3364,16 @@ static void GraphicsNew(byte *buf, int len)
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
 		grfmsg(2, "GraphicsNew: Loading 10 missing shore sprites from openttd(d/w).grf.");
 		LoadNextSprite(       SPR_SHORE_BASE          +  0, _file_index, _nfo_line++); // SLOPE_STEEP_S
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  1);                           // SLOPE_W
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  2);                           // SLOPE_S
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  6);                           // SLOPE_SW
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START     );                           // SLOPE_E
 		LoadNextSprite(       SPR_SHORE_BASE          +  5, _file_index, _nfo_line++); // SLOPE_STEEP_W
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  4);                           // SLOPE_SE
 		LoadNextSprite(       SPR_SHORE_BASE          +  7, _file_index, _nfo_line++); // SLOPE_WSE
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  3);                           // SLOPE_N
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  7);                           // SLOPE_NW
 		LoadNextSprite(       SPR_SHORE_BASE          + 10, _file_index, _nfo_line++); // SLOPE_STEEP_N
 		LoadNextSprite(       SPR_SHORE_BASE          + 11, _file_index, _nfo_line++); // SLOPE_NWS
-		TranslateShoreSprites(SPR_ORIGINALSHORE_START +  5);                           // SLOPE_NE
 		LoadNextSprite(       SPR_SHORE_BASE          + 13, _file_index, _nfo_line++); // SLOPE_ENW
 		LoadNextSprite(       SPR_SHORE_BASE          + 14, _file_index, _nfo_line++); // SLOPE_SEN
 		LoadNextSprite(       SPR_SHORE_BASE          + 15, _file_index, _nfo_line++); // SLOPE_STEEP_E
 		LoadNextSprite(       SPR_SHORE_BASE          + 16, _file_index, _nfo_line++); // SLOPE_EW
 		LoadNextSprite(       SPR_SHORE_BASE          + 17, _file_index, _nfo_line++); // SLOPE_NS
+		if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ONLY_NEW;
 		return;
 	}
 
@@ -3437,6 +3411,8 @@ static void GraphicsNew(byte *buf, int len)
 		_nfo_line++;
 		LoadNextSprite(replace == 0 ? _cur_spriteid++ : replace++, _file_index, _nfo_line);
 	}
+
+	if (type == 0x0D) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_5;
 
 	_skip_sprites = skip_num;
 }
@@ -3852,9 +3828,11 @@ static void SpriteReplace(byte *buf, int len)
 			_nfo_line++;
 			LoadNextSprite(load_index, _file_index, _nfo_line); // XXX
 
-			/*  Shore sprites now located at different addresses.
-			 * So apply the required displacements */
-			if (IsInsideMM(load_index, SPR_ORIGINALSHORE_START, SPR_ORIGINALSHORE_END + 1)) TranslateShoreSprites(load_index);
+			/* Shore sprites now located at different addresses.
+			 * So detect when the old ones get replaced. */
+			if (IsInsideMM(load_index, SPR_ORIGINALSHORE_START, SPR_ORIGINALSHORE_END + 1)) {
+				if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
+			}
 		}
 	}
 }
@@ -5127,6 +5105,7 @@ static void ResetNewGRFData()
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
+	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
@@ -5617,6 +5596,47 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	}
 }
 
+/**
+ * Relocates the old shore sprites at new positions.
+ *
+ * 1. If shore sprites are neither loaded by Action5 nor ActionA, the extra sprites from openttd(w/d).grf are used. (SHORE_REPLACE_ONLY_NEW)
+ * 2. If a newgrf replaces some shore sprites by ActionA. The (maybe also replaced) grass tiles are used for corner shores. (SHORE_REPLACE_ACTION_A)
+ * 3. If a newgrf replaces shore sprites by Action5 any shore replacement by ActionA has no effect. (SHORE_REPLACE_ACTION_5)
+ */
+static void ActivateOldShore()
+{
+	/* Use default graphics, if no shore sprites were loaded.
+	 * Should not happen, as openttd(w/d).grf includes some. */
+	if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ACTION_A;
+
+	if (_loaded_newgrf_features.shore != SHORE_REPLACE_ACTION_5) {
+		DupSprite(SPR_ORIGINALSHORE_START +  1, SPR_SHORE_BASE +  1); // SLOPE_W
+		DupSprite(SPR_ORIGINALSHORE_START +  2, SPR_SHORE_BASE +  2); // SLOPE_S
+		DupSprite(SPR_ORIGINALSHORE_START +  6, SPR_SHORE_BASE +  3); // SLOPE_SW
+		DupSprite(SPR_ORIGINALSHORE_START     , SPR_SHORE_BASE +  4); // SLOPE_E
+		DupSprite(SPR_ORIGINALSHORE_START +  4, SPR_SHORE_BASE +  6); // SLOPE_SE
+		DupSprite(SPR_ORIGINALSHORE_START +  3, SPR_SHORE_BASE +  8); // SLOPE_N
+		DupSprite(SPR_ORIGINALSHORE_START +  7, SPR_SHORE_BASE +  9); // SLOPE_NW
+		DupSprite(SPR_ORIGINALSHORE_START +  5, SPR_SHORE_BASE + 12); // SLOPE_NE
+	}
+
+	if (_loaded_newgrf_features.shore == SHORE_REPLACE_ACTION_A) {
+		DupSprite(SPR_FLAT_GRASS_TILE + 16, SPR_SHORE_BASE +  0); // SLOPE_STEEP_S
+		DupSprite(SPR_FLAT_GRASS_TILE + 17, SPR_SHORE_BASE +  5); // SLOPE_STEEP_W
+		DupSprite(SPR_FLAT_GRASS_TILE +  7, SPR_SHORE_BASE +  7); // SLOPE_WSE
+		DupSprite(SPR_FLAT_GRASS_TILE + 15, SPR_SHORE_BASE + 10); // SLOPE_STEEP_N
+		DupSprite(SPR_FLAT_GRASS_TILE + 11, SPR_SHORE_BASE + 11); // SLOPE_NWS
+		DupSprite(SPR_FLAT_GRASS_TILE + 13, SPR_SHORE_BASE + 13); // SLOPE_ENW
+		DupSprite(SPR_FLAT_GRASS_TILE + 14, SPR_SHORE_BASE + 14); // SLOPE_SEN
+		DupSprite(SPR_FLAT_GRASS_TILE + 18, SPR_SHORE_BASE + 15); // SLOPE_STEEP_E
+
+		/* XXX - SLOPE_EW, SLOPE_NS are currently not used.
+		 *       If they would be used somewhen, then these grass tiles will most like not look as needed */
+		DupSprite(SPR_FLAT_GRASS_TILE +  5, SPR_SHORE_BASE + 16); // SLOPE_EW
+		DupSprite(SPR_FLAT_GRASS_TILE + 10, SPR_SHORE_BASE + 17); // SLOPE_NS
+	}
+}
+
 void InitDepotWindowBlockSizes();
 
 extern void InitGRFTownGeneratorNames();
@@ -5651,6 +5671,9 @@ static void AfterLoadGRFs()
 
 	/* Update the townname generators list */
 	InitGRFTownGeneratorNames();
+
+	/* Load old shore sprites in new position, if they were replaced by ActionA */
+	ActivateOldShore();
 }
 
 void LoadNewGRF(uint load_index, uint file_index)
