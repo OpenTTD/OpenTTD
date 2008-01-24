@@ -30,10 +30,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static uint32 _difficulty_click_a;
-static uint32 _difficulty_click_b;
-static byte _difficulty_timeout;
-
 static const StringID _units_dropdown[] = {
 	STR_UNITS_IMPERIAL,
 	STR_UNITS_METRIC,
@@ -489,6 +485,16 @@ static GameOptions _opt_mod_temp;
 // 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
 #define DIFF_INGAME_DISABLED_BUTTONS 0x383E
 
+#define NO_SETTINGS_BUTTON 0xFF
+
+/** Carriage for the game settings window data */
+struct difficulty_d {
+	bool clicked_increase;
+	uint8 clicked_button;
+	uint8 timeout;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(difficulty_d));
+
 /* Names of the game difficulty settings window */
 enum GameDifficultyWidgets {
 	GDW_CLOSEBOX = 0,
@@ -507,8 +513,12 @@ enum GameDifficultyWidgets {
 
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
+	difficulty_d *diffic_d = &WP(w, difficulty_d);
 	switch (e->event) {
 		case WE_CREATE:
+			diffic_d->clicked_increase = false;
+			diffic_d->clicked_button = NO_SETTINGS_BUTTON;
+			diffic_d->timeout = 0;
 			/* Hide the closebox to make sure that the user aborts or confirms his changes */
 			w->HideWidget(GDW_CLOSEBOX);
 			w->widget[GDW_CAPTION].left = 0;
@@ -545,7 +555,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				value = ((GDType*)&_opt_mod_temp.diff)[i];
 
 				DrawArrowButtons(5, y, 3,
-						!!HasBit(_difficulty_click_a, i) | !!HasBit(_difficulty_click_b, i) << 1,
+						(diffic_d->clicked_button == i) ? 1 << diffic_d->clicked_increase : 0,
 						!(HasBit(disabled, i) || gsd->min == value),
 						!(HasBit(disabled, i) || gsd->max == value));
 
@@ -572,7 +582,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 					if (y < 0) return;
 
 					/* Get button from Y coord. */
-					const uint btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+					const uint8 btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
 					if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
 						return;
 
@@ -580,7 +590,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 					if (_game_mode == GM_NORMAL && HasBit(DIFF_INGAME_DISABLED_BUTTONS, btn))
 						return;
 
-					_difficulty_timeout = 5;
+					diffic_d->timeout = 5;
 
 					int16 val = ((GDType*)&_opt_mod_temp.diff)[btn];
 
@@ -588,13 +598,14 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 					if (x >= 10) {
 						/* Increase button clicked */
 						val = min(val + info->step, info->max);
-						SetBit(_difficulty_click_b, btn);
+						diffic_d->clicked_increase = true;
 					} else {
 						/* Decrease button clicked */
 						val -= info->step;
 						val = max(val,  info->min);
-						SetBit(_difficulty_click_a, btn);
+						diffic_d->clicked_increase = false;
 					}
+					diffic_d->clicked_button = btn;
 
 					/* save value in temporary variable */
 					((GDType*)&_opt_mod_temp.diff)[btn] = val;
@@ -642,9 +653,9 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			} break;
 
 		case WE_MOUSELOOP: /* Handle the visual 'clicking' of the buttons */
-			if (_difficulty_timeout != 0 && !--_difficulty_timeout) {
-				_difficulty_click_a = 0;
-				_difficulty_click_b = 0;
+			if (diffic_d->timeout != 0) {
+				diffic_d->timeout--;
+				if (diffic_d->timeout == 0) diffic_d->clicked_button = NO_SETTINGS_BUTTON;
 				SetWindowDirty(w);
 			}
 			break;
