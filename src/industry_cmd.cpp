@@ -2145,7 +2145,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	/* Increase or Decreasing the production level if needed */
 	if (increment != 0) {
-		if !(increment < 0 && i->prod_level == 4) {
+		if (increment < 0 && i->prod_level == 4) {
 			closeit = true;
 		} else {
 			i->prod_level = ClampU(i->prod_level + increment, 4, 0x80);
