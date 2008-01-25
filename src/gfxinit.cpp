@@ -199,95 +199,12 @@ void CheckExternalFiles()
 }
 
 
-static const SpriteID trg1idx[] = {
-	   0,    1, ///< Mouse cursor, ZZZ
-/* Medium font */
-	   2,   92, ///< ' ' till 'z'
-	SKIP,   36,
-	 160,  160, ///< Move Ÿ to the correct position
-	  98,   98, ///< Up arrow
-	 131,  133,
-	SKIP,    1, ///< skip currency sign
-	 135,  135,
-	SKIP,    1,
-	 137,  137,
-	SKIP,    1,
-	 139,  139,
-	 140,  140, ///< @todo Down arrow
-	 141,  141,
-	 142,  142, ///< @todo Check mark
-	 143,  143, ///< @todo Cross
-	 144,  144,
-	 145,  145, ///< @todo Right arrow
-	 146,  149,
-	 118,  122, ///< Transport markers
-	SKIP,    2,
-	 157,  157,
-	 114,  115, ///< Small up/down arrows
-	SKIP,    1,
-	 161,  225,
-/* Small font */
-	 226,  316, ///< ' ' till 'z'
-	SKIP,   36,
-	 384,  384, ///< Move Ÿ to the correct position
-	 322,  322, ///< Up arrow
-	 355,  357,
-	SKIP,    1, ///< skip currency sign
-	 359,  359,
-	SKIP,    1,
-	 361,  361,
-	SKIP,    1,
-	 363,  363,
-	 364,  364, ////< @todo Down arrow
-	 365,  366,
-	SKIP,    1,
-	 368,  368,
-	 369,  369, ///< @todo Right arrow
-	 370,  373,
-	SKIP,    7,
-	 381,  381,
-	SKIP,    3,
-	 385,  449,
-/* Big font */
-	 450,  540, ///< ' ' till 'z'
-	SKIP,   36,
-	 608,  608, ///< Move Ÿ to the correct position
-	SKIP,    1,
-	 579,  581,
-	SKIP,    1,
-	 583,  583,
-	SKIP,    5,
-	 589,  589,
-	SKIP,   15,
-	 605,  605,
-	SKIP,    3,
-	 609,  625,
-	SKIP,    1,
-	 627,  632,
-	SKIP,    1,
-	 634,  639,
-	SKIP,    1,
-	 641,  657,
-	SKIP,    1,
-	 659,  664,
-	SKIP,    2,
-	 667,  671,
-	SKIP,    1,
-	 673,  673,
-/* Graphics */
-	 674, 4792,
-	END
-};
-
 static void LoadSpriteTables()
 {
 	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
 	uint i = FIRST_GRF_SLOT;
 
-	LoadGrfIndexed(files->basic[0].filename, trg1idx, i++);
-	DupSprite(  2, 130); // non-breaking space medium
-	DupSprite(226, 354); // non-breaking space tiny
-	DupSprite(450, 578); // non-breaking space large
+	LoadGrfFile(files->basic[0].filename, 0, i++);
 
 	/*
 	 * The second basic file always starts at the given location and does

@@ -293,6 +293,9 @@ char *TranslateTTDPatchCodes(const char *str)
 			case 0xB6: d += Utf8Encode(d, SCC_BUS); break;
 			case 0xB7: d += Utf8Encode(d, SCC_PLANE); break;
 			case 0xB8: d += Utf8Encode(d, SCC_SHIP); break;
+			case 0xB9: d += Utf8Encode(d, SCC_SUPERSCRIPT_M1); break;
+			case 0xBC: d += Utf8Encode(d, SCC_SMALLUPARROW); break;
+			case 0xBD: d += Utf8Encode(d, SCC_SMALLDOWNARROW); break;
 			default:
 				/* Validate any unhandled character */
 				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';

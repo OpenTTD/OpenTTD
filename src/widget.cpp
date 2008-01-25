@@ -14,7 +14,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static const char *UPARROW   = "\xEE\x8A\x80";
+static const char *UPARROW   = "\xEE\x8A\xA0";
 static const char *DOWNARROW = "\xEE\x8A\xAA";
 
 static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)

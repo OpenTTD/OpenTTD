@@ -518,34 +518,38 @@ void SetUnicodeGlyph(FontSize size, uint32 key, SpriteID sprite)
 
 void InitializeUnicodeGlyphMap()
 {
-	FontSize size;
-	SpriteID base;
-	SpriteID sprite;
-	uint i;
-
-	for (size = FS_NORMAL; size != FS_END; size++) {
+	for (FontSize size = FS_NORMAL; size != FS_END; size++) {
 		/* Clear out existing glyph map if it exists */
 		if (_unicode_glyph_map[size] != NULL) {
-			for (i = 0; i < 256; i++) {
+			for (uint i = 0; i < 256; i++) {
 				if (_unicode_glyph_map[size][i] != NULL) free(_unicode_glyph_map[size][i]);
 			}
 			free(_unicode_glyph_map[size]);
 			_unicode_glyph_map[size] = NULL;
 		}
 
-		base = GetFontBase(size);
-		for (i = ASCII_LETTERSTART; i < 256; i++) {
-			sprite = base + i - ASCII_LETTERSTART;
+		SpriteID base = GetFontBase(size);
+
+		for (uint i = ASCII_LETTERSTART; i < 256; i++) {
+			SpriteID sprite = base + i - ASCII_LETTERSTART;
 			if (!SpriteExists(sprite)) continue;
 			SetUnicodeGlyph(size, i, sprite);
 			SetUnicodeGlyph(size, i + SCC_SPRITE_START, sprite);
 		}
-		for (i = 0; i < lengthof(_default_unicode_map); i++) {
-			sprite = base + _default_unicode_map[i].key - ASCII_LETTERSTART;
-			SetUnicodeGlyph(size, _default_unicode_map[i].code, sprite);
+
+		for (uint i = 0; i < lengthof(_default_unicode_map); i++) {
+			byte key = _default_unicode_map[i].key;
+			if (key == CLRA || key == CLRL) {
+				/* Clear the glyph. This happens if the glyph at this code point
+				 * is non-standard and should be accessed by an SCC_xxx enum
+				 * entry only. */
+				if (key == CLRA || size == FS_LARGE) {
+					SetUnicodeGlyph(size, _default_unicode_map[i].code, 0);
+				}
+			} else {
+				SpriteID sprite = base + key - ASCII_LETTERSTART;
+				SetUnicodeGlyph(size, _default_unicode_map[i].code, sprite);
+			}
 		}
 	}
 }
-
-
-
