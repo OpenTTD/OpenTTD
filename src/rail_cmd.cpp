@@ -396,6 +396,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			/* FALLTHROUGH */
 
 		default:
+			/* Will there be flat water on the lower halftile? */
 			bool water_ground = IsTileType(tile, MP_WATER) && IsSlopeWithOneCornerRaised(tileh);
 
 			ret = CheckRailSlope(tileh, trackbit, TRACK_BIT_NONE, tile);
@@ -486,7 +487,9 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				owner = GetTileOwner(tile);
 				present ^= trackbit;
 				if (present == 0) {
-					if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+					Slope tileh = GetTileSlope(tile, NULL);
+					/* If there is flat water on the lower halftile, convert the tile to shore so the water remains */
+					if (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh)) {
 						MakeShore(tile);
 					} else {
 						DoClearSquare(tile);
@@ -560,6 +563,15 @@ bool FloodHalftile(TileIndex t)
 			flooded = true;
 			SetRailGroundType(t, RAIL_GROUND_WATER);
 			MarkTileDirtyByTile(t);
+		}
+	} else {
+		/* Make shore on steep slopes and 'three-corners-raised'-slopes. */
+		if (ApplyFoundationToSlope(GetRailFoundation(tileh, rail_bits), &tileh) == 0) {
+			if (IsSteepSlope(tileh) || IsSlopeWithThreeCornersRaised(tileh)) {
+				flooded = true;
+				SetRailGroundType(t, RAIL_GROUND_WATER);
+				MarkTileDirtyByTile(t);
+			}
 		}
 	}
 	return flooded;
@@ -1354,7 +1366,9 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_SIGNALS:
 		case RAIL_TILE_NORMAL: {
-			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER);
+			Slope tileh = GetTileSlope(tile, NULL);
+			/* Is there flat water on the lower halftile, that gets cleared expensively? */
+			bool water_ground = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh));
 
 			TrackBits tracks = GetTrackBits(tile);
 			while (tracks != TRACK_BIT_NONE) {
@@ -1546,8 +1560,16 @@ static void DrawTrackDetails(const TileInfo* ti)
 		case RAIL_GROUND_FENCE_VERT2:  DrawTrackFence_NS_2(ti);  break;
 		case RAIL_GROUND_FENCE_HORIZ1: DrawTrackFence_WE_1(ti);  break;
 		case RAIL_GROUND_FENCE_HORIZ2: DrawTrackFence_WE_2(ti);  break;
-		case RAIL_GROUND_WATER:
-			switch (GetHalftileSlopeCorner(ti->tileh)) {
+		case RAIL_GROUND_WATER: {
+			Corner track_corner;
+			if (IsHalftileSlope(ti->tileh)) {
+				/* Steep slope or one-corner-raised slope with halftile foundation */
+				track_corner = GetHalftileSlopeCorner(ti->tileh);
+			} else {
+				/* Three-corner-raised slope */
+				track_corner = OppositeCorner(GetHighestSlopeCorner(ComplementSlope(ti->tileh)));
+			}
+			switch (track_corner) {
 				case CORNER_W: DrawTrackFence_NS_1(ti); break;
 				case CORNER_S: DrawTrackFence_WE_2(ti); break;
 				case CORNER_E: DrawTrackFence_NS_2(ti); break;
@@ -1555,6 +1577,7 @@ static void DrawTrackDetails(const TileInfo* ti)
 				default: NOT_REACHED();
 			}
 			break;
+		}
 		default: break;
 	}
 }
@@ -1567,6 +1590,15 @@ static void DrawTrackDetails(const TileInfo* ti)
  */
 static void DrawTrackBits(TileInfo* ti, TrackBits track)
 {
+	/* SubSprite for drawing the track halftile of 'three-corners-raised'-sloped rail sprites. */
+	static const int INF = 1000; // big number compared to tilesprite size
+	static const SubSprite _halftile_sub_sprite[4] = {
+		{ -INF    , -INF  , 32 - 33, INF     }, // CORNER_W, clip 33 pixels from right
+		{ -INF    ,  0 + 7, INF    , INF     }, // CORNER_S, clip 7 pixels from top
+		{ -31 + 33, -INF  , INF    , INF     }, // CORNER_E, clip 33 pixels from left
+		{ -INF    , -INF  , INF    , 30 - 23 }  // CORNER_N, clip 23 pixels from bottom
+	};
+
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	RailGroundType rgt = GetRailGroundType(ti->tile);
 	Foundation f = GetRailFoundation(ti->tileh, track);
@@ -1585,13 +1617,19 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 
 	SpriteID image;
 	SpriteID pal = PAL_NONE;
+	const SubSprite *sub = NULL;
 	bool junction = false;
 
 	/* Select the sprite to use. */
 	if (track == 0) {
 		/* Clear ground (only track on halftile foundation) */
 		if (rgt == RAIL_GROUND_WATER) {
-			image = SPR_FLAT_WATER_TILE;
+			if (IsSteepSlope(ti->tileh)) {
+				DrawShoreTile(ti->tileh);
+				image = 0;
+			} else {
+				image = SPR_FLAT_WATER_TILE;
+			}
 		} else {
 			switch (rgt) {
 				case RAIL_GROUND_BARREN:     image = SPR_FLAT_BARE_LAND;  break;
@@ -1628,12 +1666,18 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 		switch (rgt) {
 			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
 			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
-			case RAIL_GROUND_WATER:      NOT_REACHED();
+			case RAIL_GROUND_WATER: {
+				/* three-corner-raised slope */
+				DrawShoreTile(ti->tileh);
+				Corner track_corner = OppositeCorner(GetHighestSlopeCorner(ComplementSlope(ti->tileh)));
+				sub = &(_halftile_sub_sprite[track_corner]);
+				break;
+			}
 			default: break;
 		}
 	}
 
-	DrawGroundSprite(image, pal);
+	if (image != 0) DrawGroundSprite(image, pal, sub);
 
 	/* Draw track pieces individually for junction tiles */
 	if (junction) {
@@ -1657,15 +1701,6 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
 			default: break;
 		}
-
-		static const int INF = 1000; // big number compared to tilesprite size
-		static const SubSprite _halftile_sub_sprite[4] = {
-			{ -INF    , -INF  , 32 - 33, INF     }, // CORNER_W, clip 33 pixels from right
-			{ -INF    ,  0 + 7, INF    , INF     }, // CORNER_S, clip 7 pixels from top
-			{ -31 + 33, -INF  , INF    , INF     }, // CORNER_E, clip 33 pixels from left
-			{ -INF    , -INF  , INF    , 30 - 23 }  // CORNER_N, clip 23 pixels from bottom
-		};
-
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
 	}
 }
@@ -2216,7 +2251,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	/* Make the ground dirty, if surface slope has changed */
 	if (tileh_old != tileh_new) {
-		if (GetRailGroundType(tile) == RAIL_GROUND_WATER) cost.AddCost(_price.clear_water);
+		/* If there is flat water on the lower halftile add the cost for clearing it */
+		if (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old)) cost.AddCost(_price.clear_water);
 		if ((flags & DC_EXEC) != 0) SetRailGroundType(tile, RAIL_GROUND_BARREN);
 	}
 	return  cost;
@@ -2228,7 +2264,8 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 	Slope tileh_old = GetTileSlope(tile, &z_old);
 	if (IsPlainRailTile(tile)) {
 		TrackBits rail_bits = GetTrackBits(tile);
-		bool was_water = GetRailGroundType(tile) == RAIL_GROUND_WATER;
+		/* Is there flat water on the lower halftile, that must be cleared expensively? */
+		bool was_water = (GetRailGroundType(tile) == RAIL_GROUND_WATER && IsSlopeWithOneCornerRaised(tileh_old));
 
 		_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
 

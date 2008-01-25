@@ -94,9 +94,18 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 
 	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
 		TileIndex neighbour = TileAddByDiagDir(t, dir);
-		if (IsTileType(neighbour, MP_WATER)) {
-			has_water |= IsSea(neighbour) || IsCoast(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) == OWNER_WATER);
-			has_canal |= IsCanal(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) != OWNER_WATER);
+		switch (GetTileType(neighbour)) {
+			case MP_WATER:
+				has_water |= IsSea(neighbour) || IsCoast(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) == OWNER_WATER);
+				has_canal |= IsCanal(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) != OWNER_WATER);
+				break;
+
+			case MP_RAILWAY:
+				/* Shore or flooded halftile */
+				has_water |= (GetRailGroundType(neighbour) == RAIL_GROUND_WATER);
+				break;
+
+			default: break;
 		}
 	}
 	if (has_canal || !has_water) {
@@ -414,7 +423,13 @@ static bool IsWateredTile(TileIndex tile)
 			if (!IsCoast(tile)) return true;
 			return IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
 
-		case MP_RAILWAY:  return GetRailGroundType(tile) == RAIL_GROUND_WATER;
+		case MP_RAILWAY:
+			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+				assert(IsPlainRailTile(tile));
+				return IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
+			}
+			return false;
+
 		case MP_STATION:  return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
 		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
 		default:          return false;
@@ -781,7 +796,7 @@ static void FloodVehicle(Vehicle *v)
 static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 {
 	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, rail with flooded halftile
-	 * FLOOD_DRYUP:   coast with more than one corner raised
+	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track
 	 * FLOOD_PASSIVE: oilrig, dock, water-industries
 	 * FLOOD_NONE:    canals, rivers, everything else
 	 */
@@ -795,7 +810,10 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			}
 
 		case MP_RAILWAY:
-			return ((GetRailGroundType(tile) == RAIL_GROUND_WATER) ? FLOOD_ACTIVE : FLOOD_NONE);
+			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+				return (IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+			}
+			return FLOOD_NONE;
 
 		case MP_STATION:
 			if (IsSeaBuoyTile(tile)) return FLOOD_ACTIVE;
@@ -878,12 +896,35 @@ static void DoFloodTile(TileIndex target)
  */
 static void DoDryUp(TileIndex tile)
 {
-	assert(IsTileType(tile, MP_WATER) && IsCoast(tile));
 	_current_player = OWNER_WATER;
 
-	if (CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
-		MakeClear(tile, CLEAR_GRASS, 3);
-		MarkTileDirtyByTile(tile);
+	switch (GetTileType(tile)) {
+		case MP_RAILWAY:
+			assert(IsPlainRailTile(tile));
+			assert(GetRailGroundType(tile) == RAIL_GROUND_WATER);
+
+			RailGroundType new_ground;
+			switch (GetTrackBits(tile)) {
+				case TRACK_BIT_UPPER: new_ground = RAIL_GROUND_FENCE_HORIZ1; break;
+				case TRACK_BIT_LOWER: new_ground = RAIL_GROUND_FENCE_HORIZ2; break;
+				case TRACK_BIT_LEFT:  new_ground = RAIL_GROUND_FENCE_VERT1;  break;
+				case TRACK_BIT_RIGHT: new_ground = RAIL_GROUND_FENCE_VERT2;  break;
+				default: NOT_REACHED();
+			}
+			SetRailGroundType(tile, new_ground);
+			MarkTileDirtyByTile(tile);
+			break;
+
+		case MP_WATER:
+			assert(IsCoast(tile));
+
+			if (CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
+				MakeClear(tile, CLEAR_GRASS, 3);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	_current_player = OWNER_NONE;
