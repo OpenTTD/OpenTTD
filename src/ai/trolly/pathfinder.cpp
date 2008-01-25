@@ -341,14 +341,11 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 		// Next, check for tunnels!
 		// Tunnels can only be built on slopes corresponding to the direction
 		//  For now, we check both sides for this tile.. terraforming gives fuzzy result
-		if ((dir == DIAGDIR_NE && tileh == SLOPE_NE) ||
-				(dir == DIAGDIR_SE && tileh == SLOPE_SE) ||
-				(dir == DIAGDIR_SW && tileh == SLOPE_SW) ||
-				(dir == DIAGDIR_NW && tileh == SLOPE_NW)) {
+		if (tileh == InclinedSlope(dir)) {
 			// Now simply check if a tunnel can be build
 			ret = AI_DoCommand(tile, (PathFinderInfo->rail_or_road?0:0x200), 0, DC_AUTO, CMD_BUILD_TUNNEL);
 			tileh = GetTileSlope(_build_tunnel_endtile, NULL);
-			if (CmdSucceeded(ret) && (tileh == SLOPE_SW || tileh == SLOPE_SE || tileh == SLOPE_NW || tileh == SLOPE_NE)) {
+			if (CmdSucceeded(ret) && IsInclinedSlope(tileh)) {
 				aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
 				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
 				aystar->neighbours[aystar->num_neighbours++].direction = 0;
@@ -400,10 +397,9 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 	if (parent_tileh != SLOPE_FLAT && parent->path.parent != NULL) {
 		// Skip if the tile was from a bridge or tunnel
 		if (parent->path.node.user_data[0] == 0 && current->user_data[0] == 0) {
-			static const uint32 SLOPED_TILEHS = (1 << SLOPE_NW) | (1 << SLOPE_SW) |  (1 << SLOPE_SE) | (1 << SLOPE_NE);
 			if (PathFinderInfo->rail_or_road) {
 				Foundation f = GetRailFoundation(parent_tileh, (TrackBits)(1 << AiNew_GetRailDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile)));
-				if (IsInclinedFoundation(f) || (!IsFoundation(f) && HasBit(SLOPED_TILEHS, parent_tileh))) {
+				if (IsInclinedFoundation(f) || (!IsFoundation(f) && IsInclinedSlope(parent_tileh))) {
 					res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 				} else {
 					res += AI_PATHFINDER_FOUNDATION_PENALTY;
@@ -411,7 +407,7 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 			} else {
 				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
 					Foundation f = GetRoadFoundation(parent_tileh, (RoadBits)AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
-					if (IsInclinedFoundation(f) || (!IsFoundation(f) && HasBit(SLOPED_TILEHS, parent_tileh))) {
+					if (IsInclinedFoundation(f) || (!IsFoundation(f) && IsInclinedSlope(parent_tileh))) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
 					} else {
 						res += AI_PATHFINDER_FOUNDATION_PENALTY;

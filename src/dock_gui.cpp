@@ -19,6 +19,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+#include "slope_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -189,14 +190,11 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		TileIndex tile_from;
 		TileIndex tile_to;
 
-		tile_from = tile_to = e->we.place.tile;
-		switch (GetTileSlope(tile_from, NULL)) {
-			case SLOPE_SW: tile_to += TileDiffXY(-1,  0); break;
-			case SLOPE_SE: tile_to += TileDiffXY( 0, -1); break;
-			case SLOPE_NW: tile_to += TileDiffXY( 0,  1); break;
-			case SLOPE_NE: tile_to += TileDiffXY( 1,  0); break;
-			default: break;
-		}
+		tile_from = e->we.place.tile;
+
+		DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, NULL));
+		tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, ReverseDiagDir(dir)) : tile_from);
+
 		VpSetPresizeRange(tile_from, tile_to);
 	} break;
 

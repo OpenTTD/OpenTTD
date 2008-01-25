@@ -130,13 +130,7 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 		} else if (*tileh != SLOPE_FLAT) {
 			*tileh = SLOPE_FLAT;
 		} else {
-			switch (GetTunnelBridgeDirection(tile)) {
-				case DIAGDIR_NE: *tileh = SLOPE_NE; break;
-				case DIAGDIR_SE: *tileh = SLOPE_SE; break;
-				case DIAGDIR_SW: *tileh = SLOPE_SW; break;
-				case DIAGDIR_NW: *tileh = SLOPE_NW; break;
-				default: NOT_REACHED();
-			}
+			*tileh = InclinedSlope(GetTunnelBridgeDirection(tile));
 		}
 	}
 }

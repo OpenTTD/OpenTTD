@@ -239,11 +239,11 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
 
 			case TRACK_BIT_X:
-				if (HasSlopeHighestCorner(tileh)) return FOUNDATION_INCLINED_X;
+				if (IsSlopeWithOneCornerRaised(tileh)) return FOUNDATION_INCLINED_X;
 				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
 
 			case TRACK_BIT_Y:
-				if (HasSlopeHighestCorner(tileh)) return FOUNDATION_INCLINED_Y;
+				if (IsSlopeWithOneCornerRaised(tileh)) return FOUNDATION_INCLINED_Y;
 				return (valid_on_leveled ? FOUNDATION_LEVELED : FOUNDATION_INVALID);
 
 			default:
@@ -255,7 +255,7 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits)
 		if (!valid_on_leveled) return FOUNDATION_INVALID;
 
 		/* If slope has three raised corners, build leveled foundation */
-		if (HasSlopeHighestCorner(ComplementSlope(tileh))) return FOUNDATION_LEVELED;
+		if (IsSlopeWithThreeCornersRaised(tileh)) return FOUNDATION_LEVELED;
 
 		/* If neighboured corners of track_corner are lowered, build halftile foundation */
 		if ((tileh & SlopeWithThreeCornersRaised(OppositeCorner(track_corner))) == SlopeWithOneCornerRaised(track_corner)) return HalftileFoundation(track_corner);
@@ -396,7 +396,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			/* FALLTHROUGH */
 
 		default:
-			bool water_ground = IsTileType(tile, MP_WATER) && !IsSteepSlope(tileh) && HasSlopeHighestCorner(tileh);
+			bool water_ground = IsTileType(tile, MP_WATER) && IsSlopeWithOneCornerRaised(tileh);
 
 			ret = CheckRailSlope(tileh, trackbit, TRACK_BIT_NONE, tile);
 			if (CmdFailed(ret)) return ret;
@@ -540,7 +540,7 @@ bool FloodHalftile(TileIndex t)
 	Slope tileh = GetTileSlope(t, NULL);
 	TrackBits rail_bits = GetTrackBits(t);
 
-	if (!IsSteepSlope(tileh) && HasSlopeHighestCorner(tileh)) {
+	if (IsSlopeWithOneCornerRaised(tileh)) {
 		TrackBits lower_track = CornerToTrackBits(OppositeCorner(GetHighestSlopeCorner(tileh)));
 
 		TrackBits to_remove = lower_track & rail_bits;
@@ -1497,9 +1497,7 @@ static void DrawTrackFence_NE_SW(const TileInfo *ti)
  */
 static void DrawTrackFence_NS_1(const TileInfo *ti)
 {
-	int z = ti->z;
-	if (ti->tileh & SLOPE_W) z += TILE_HEIGHT;
-	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
+	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_W);
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1509,9 +1507,7 @@ static void DrawTrackFence_NS_1(const TileInfo *ti)
  */
 static void DrawTrackFence_NS_2(const TileInfo *ti)
 {
-	int z = ti->z;
-	if (ti->tileh & SLOPE_E) z += TILE_HEIGHT;
-	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
+	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_E);
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_VERT, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1521,9 +1517,7 @@ static void DrawTrackFence_NS_2(const TileInfo *ti)
  */
 static void DrawTrackFence_WE_1(const TileInfo *ti)
 {
-	int z = ti->z;
-	if (ti->tileh & SLOPE_N) z += TILE_HEIGHT;
-	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
+	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_N);
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -1533,9 +1527,7 @@ static void DrawTrackFence_WE_1(const TileInfo *ti)
  */
 static void DrawTrackFence_WE_2(const TileInfo *ti)
 {
-	int z = ti->z;
-	if (ti->tileh & SLOPE_S) z += TILE_HEIGHT;
-	if (IsSteepSlope(ti->tileh)) z += TILE_HEIGHT;
+	uint z = ti->z + GetSlopeZInCorner(RemoveHalftileSlope(ti->tileh), CORNER_S);
 	AddSortableSpriteToDraw(SPR_TRACK_FENCE_FLAT_HORZ, _drawtile_track_palette,
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
@@ -2217,8 +2209,8 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 	}
 
 	/* The height of the track_corner must not be changed. The rest ensures GetRailFoundation() already. */
-	z_old += GetSlopeZInCorner((Slope)(tileh_old & ~SLOPE_HALFTILE_MASK), track_corner);
-	z_new += GetSlopeZInCorner((Slope)(tileh_new & ~SLOPE_HALFTILE_MASK), track_corner);
+	z_old += GetSlopeZInCorner(RemoveHalftileSlope(tileh_old), track_corner);
+	z_new += GetSlopeZInCorner(RemoveHalftileSlope(tileh_new), track_corner);
 	if (z_old != z_new) return CMD_ERROR;
 
 	CommandCost cost = CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);

@@ -909,7 +909,7 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 	int offset;
 
 	FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
-	Slope autorail_tileh = (Slope)(ti->tileh & ~SLOPE_HALFTILE_MASK);
+	Slope autorail_tileh = RemoveHalftileSlope(ti->tileh);
 	if (IsHalftileSlope(ti->tileh)) {
 		static const uint _lower_rail[4] = { 5U, 2U, 4U, 3U };
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
@@ -958,7 +958,7 @@ static void DrawTileSelection(const TileInfo *ti)
 			FoundationPart foundation_part = FOUNDATION_PART_NORMAL;
 			if (ti->tileh & SLOPE_N) {
 				z += TILE_HEIGHT;
-				if ((ti->tileh & ~SLOPE_HALFTILE_MASK) == SLOPE_STEEP_N) z += TILE_HEIGHT;
+				if (RemoveHalftileSlope(ti->tileh) == SLOPE_STEEP_N) z += TILE_HEIGHT;
 			}
 			if (IsHalftileSlope(ti->tileh)) {
 				Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);

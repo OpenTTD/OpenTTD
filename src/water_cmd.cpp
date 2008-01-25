@@ -70,11 +70,6 @@ static const uint8 _flood_from_dirs[] = {
 };
 
 /**
- * Slopes that contain flat water and not only shore.
- */
-static const uint32 _active_water_slopes = (1 << SLOPE_FLAT) | (1 << SLOPE_W) | (1 << SLOPE_S) | (1 << SLOPE_E) | (1 << SLOPE_N);
-
-/**
  * Makes a tile canal or water depending on the surroundings.
  * This as for example docks and shipdepots do not store
  * whether the tile used to be canal or 'normal' water.
@@ -276,15 +271,8 @@ static void MarkTilesAroundDirty(TileIndex tile)
  */
 CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	DiagDirection dir;
-
-	switch (GetTileSlope(tile, NULL)) {
-		case SLOPE_SW: dir = DIAGDIR_SW; break;
-		case SLOPE_SE: dir = DIAGDIR_SE; break;
-		case SLOPE_NW: dir = DIAGDIR_NW; break;
-		case SLOPE_NE: dir = DIAGDIR_NE; break;
-		default: return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-	}
+	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
+	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	/* Disallow building of locks on river rapids */
 	if (IsRiverTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
@@ -296,7 +284,7 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile end tile of stretch-dragging
  * @param flags type of operation
  * @param p1 start tile of stretch-dragging
- * @param p2 ctrl pressed - toggles ocean / canals at sealevel (ocean only allowed in the scenario editor)
+ * @param p2 specifies canal (0), water (1) or river (2); last two can only be built in scenario editor
  */
 CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -328,7 +316,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		CommandCost ret;
 
 		Slope slope = GetTileSlope(tile, NULL);
-		if (slope != SLOPE_FLAT && (p2 != 2 || (slope != SLOPE_NW && slope != SLOPE_NE && slope != SLOPE_SW && slope != SLOPE_SE))) {
+		if (slope != SLOPE_FLAT && (p2 != 2 || !IsInclinedSlope(slope))) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
@@ -389,7 +377,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
-			if (slope == SLOPE_N || slope == SLOPE_E || slope == SLOPE_S || slope == SLOPE_W) {
+			if (IsSlopeWithOneCornerRaised(slope)) {
 				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
 			} else {
 				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_roughland);
@@ -424,17 +412,7 @@ static bool IsWateredTile(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_WATER:
 			if (!IsCoast(tile)) return true;
-
-			switch (GetTileSlope(tile, NULL)) {
-				case SLOPE_W:
-				case SLOPE_S:
-				case SLOPE_E:
-				case SLOPE_N:
-					return true;
-
-				default:
-					return false;
-			}
+			return IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
 
 		case MP_RAILWAY:  return GetRailGroundType(tile) == RAIL_GROUND_WATER;
 		case MP_STATION:  return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
@@ -811,7 +789,7 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 		case MP_WATER:
 			if (IsCoast(tile)) {
 				Slope tileh = GetTileSlope(tile, NULL);
-				return (HasBit(_active_water_slopes, tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
+				return (IsSlopeWithOneCornerRaised(tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			} else {
 				return ((IsSea(tile) || (IsShipDepot(tile) && (GetShipDepotWaterOwner(tile) == OWNER_WATER))) ? FLOOD_ACTIVE : FLOOD_NONE);
 			}
@@ -984,7 +962,7 @@ void ConvertGroundTilesIntoWaterTiles()
 					FOR_EACH_SET_BIT(dir, check_dirs) {
 						TileIndex dest = TILE_ADD(tile, TileOffsByDir((Direction)dir));
 						Slope slope_dest = (Slope)(GetTileSlope(dest, NULL) & ~SLOPE_STEEP);
-						if (HasBit(_active_water_slopes, slope_dest)) {
+						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest)) {
 							MakeShore(tile);
 							break;
 						}

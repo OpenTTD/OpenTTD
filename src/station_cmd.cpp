@@ -1945,14 +1945,9 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CommandCost cost;
 
-	DiagDirection direction;
-	switch (GetTileSlope(tile, NULL)) {
-		case SLOPE_SW: direction = DIAGDIR_NE; break;
-		case SLOPE_SE: direction = DIAGDIR_NW; break;
-		case SLOPE_NW: direction = DIAGDIR_SE; break;
-		case SLOPE_NE: direction = DIAGDIR_SW; break;
-		default: return_cmd_error(STR_304B_SITE_UNSUITABLE);
-	}
+	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
+	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	direction = ReverseDiagDir(direction);
 
 	/* Docks cannot be placed on rapids */
 	if (IsRiverTile(tile)) return_cmd_error(STR_304B_SITE_UNSUITABLE);

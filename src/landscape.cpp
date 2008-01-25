@@ -142,7 +142,7 @@ uint GetPartialZ(int x, int y, Slope corners)
 
 	int z = 0;
 
-	switch (corners & ~SLOPE_HALFTILE_MASK) {
+	switch (RemoveHalftileSlope(corners)) {
 	case SLOPE_W:
 		if (x - y >= 0)
 			z = (x - y) >> 1;
@@ -254,10 +254,7 @@ uint GetSlopeZ(int x, int y)
 int GetSlopeZInCorner(Slope tileh, Corner corner)
 {
 	assert(!IsHalftileSlope(tileh));
-	static const int _corner_slopes[4][2] = {
-		{ SLOPE_W, SLOPE_STEEP_W }, { SLOPE_S, SLOPE_STEEP_S }, { SLOPE_E, SLOPE_STEEP_E }, { SLOPE_N, SLOPE_STEEP_N }
-	};
-	return ((tileh & _corner_slopes[corner][0]) != 0 ? TILE_HEIGHT : 0) + (tileh == _corner_slopes[corner][1] ? TILE_HEIGHT : 0);
+	return ((tileh & SlopeWithOneCornerRaised(corner)) != 0 ? TILE_HEIGHT : 0) + (tileh == SteepSlope(corner) ? TILE_HEIGHT : 0);
 }
 
 /**
@@ -289,10 +286,18 @@ void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
 
 	if ((tileh & corners[edge][0]) != 0) *z1 += TILE_HEIGHT; // z1 is raised
 	if ((tileh & corners[edge][1]) != 0) *z2 += TILE_HEIGHT; // z2 is raised
-	if ((tileh & ~SLOPE_HALFTILE_MASK) == corners[edge][2]) *z1 += TILE_HEIGHT; // z1 is highest corner of a steep slope
-	if ((tileh & ~SLOPE_HALFTILE_MASK) == corners[edge][3]) *z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
+	if (RemoveHalftileSlope(tileh) == corners[edge][2]) *z1 += TILE_HEIGHT; // z1 is highest corner of a steep slope
+	if (RemoveHalftileSlope(tileh) == corners[edge][3]) *z2 += TILE_HEIGHT; // z2 is highest corner of a steep slope
 }
 
+/**
+ * Get slope of a tile on top of a (possible) foundation
+ * If a tile does not have a foundation, the function returns the same as GetTileSlope.
+ *
+ * @param tile The tile of interest.
+ * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
+ * @return The slope on top of the foundation.
+ */
 Slope GetFoundationSlope(TileIndex tile, uint* z)
 {
 	Slope tileh = GetTileSlope(tile, z);

@@ -45,6 +45,19 @@ static inline bool IsHalftileSlope(Slope s)
 }
 
 /**
+ * Removes a halftile slope from a slope
+ *
+ * Non-halftile slopes remain unmodified.
+ *
+ * @param s A #Slope.
+ * @return The slope s without it's halftile slope.
+ */
+static inline Slope RemoveHalftileSlope(Slope s)
+{
+	return (Slope)(s & ~SLOPE_HALFTILE_MASK);
+}
+
+/**
  * Return the complement of a slope.
  *
  * This method returns the complement of a slope. The complement of a
@@ -62,6 +75,29 @@ static inline Slope ComplementSlope(Slope s)
 }
 
 /**
+ * Tests if a specific slope has exactly one corner raised.
+ *
+ * @param s The #Slope
+ * @return true iff exactly one corner is raised
+ */
+static inline bool IsSlopeWithOneCornerRaised(Slope s)
+{
+	return (s == SLOPE_W) || (s == SLOPE_S) || (s == SLOPE_E) || (s == SLOPE_N);
+}
+
+/**
+ * Returns the slope with a specific corner raised.
+ *
+ * @param corner The #Corner.
+ * @return The #Slope with corner "corner" raised.
+ */
+static inline Slope SlopeWithOneCornerRaised(Corner corner)
+{
+	assert(IsValidCorner(corner));
+	return (Slope)(1 << corner);
+}
+
+/**
  * Tests if a slope has a highest corner (i.e. one corner raised or a steep slope).
  *
  * Note: A halftile slope is ignored.
@@ -71,8 +107,8 @@ static inline Slope ComplementSlope(Slope s)
  */
 static inline bool HasSlopeHighestCorner(Slope s)
 {
-	s = (Slope)(s & ~SLOPE_HALFTILE_MASK);
-	return IsSteepSlope(s) || (s == SLOPE_W) || (s == SLOPE_S) || (s == SLOPE_E) || (s == SLOPE_N);
+	s = RemoveHalftileSlope(s);
+	return IsSteepSlope(s) || IsSlopeWithOneCornerRaised(s);
 }
 
 /**
@@ -84,7 +120,7 @@ static inline bool HasSlopeHighestCorner(Slope s)
  */
 static inline Corner GetHighestSlopeCorner(Slope s)
 {
-	switch (s & ~SLOPE_HALFTILE_MASK) {
+	switch (RemoveHalftileSlope(s)) {
 		case SLOPE_W:
 		case SLOPE_STEEP_W: return CORNER_W;
 		case SLOPE_S:
@@ -135,15 +171,14 @@ static inline Corner OppositeCorner(Corner corner)
 }
 
 /**
- * Returns the slope with a specific corner raised.
+ * Tests if a specific slope has exactly three corners raised.
  *
- * @param corner The #Corner.
- * @return The #Slope with corner "corner" raised.
+ * @param s The #Slope
+ * @return true iff exactly three corners are raised
  */
-static inline Slope SlopeWithOneCornerRaised(Corner corner)
+static inline bool IsSlopeWithThreeCornersRaised(Slope s)
 {
-	assert(IsValidCorner(corner));
-	return (Slope)(1 << corner);
+	return !IsHalftileSlope(s) && !IsSteepSlope(s) && IsSlopeWithOneCornerRaised(ComplementSlope(s));
 }
 
 /**
@@ -155,6 +190,62 @@ static inline Slope SlopeWithOneCornerRaised(Corner corner)
 static inline Slope SlopeWithThreeCornersRaised(Corner corner)
 {
 	return ComplementSlope(SlopeWithOneCornerRaised(corner));
+}
+
+/**
+ * Returns a specific steep slope
+ *
+ * @param corner A #Corner.
+ * @return The steep #Slope with "corner" as highest corner.
+ */
+static inline Slope SteepSlope(Corner corner)
+{
+	return (Slope)(SLOPE_STEEP | SlopeWithThreeCornersRaised(OppositeCorner(corner)));
+}
+
+/**
+ * Tests if a specific slope is an inclined slope.
+ *
+ * @param s The #Slope
+ * @return true iff the slope is inclined.
+ */
+static inline bool IsInclinedSlope(Slope s)
+{
+	return (s == SLOPE_NW) || (s == SLOPE_SW) || (s == SLOPE_SE) || (s == SLOPE_NE);
+}
+
+/**
+ * Returns the direction of an inclined slope.
+ *
+ * @param s A #Slope
+ * @return The direction the slope goes up in. Or INVALID_DIAGDIR if the slope is not an inclined slope.
+ */
+static inline DiagDirection GetInclinedSlopeDirection(Slope s)
+{
+	switch (s) {
+		case SLOPE_NE: return DIAGDIR_NE;
+		case SLOPE_SE: return DIAGDIR_SE;
+		case SLOPE_SW: return DIAGDIR_SW;
+		case SLOPE_NW: return DIAGDIR_NW;
+		default: return INVALID_DIAGDIR;
+	}
+}
+
+/**
+ * Returns the slope, that is inclined in a specific direction.
+ *
+ * @param dir A #DiagDirection
+ * @return The #Slope that goes up in direction dir.
+ */
+static inline Slope InclinedSlope(DiagDirection dir)
+{
+	switch (dir) {
+		case DIAGDIR_NE: return SLOPE_NE;
+		case DIAGDIR_SE: return SLOPE_SE;
+		case DIAGDIR_SW: return SLOPE_SW;
+		case DIAGDIR_NW: return SLOPE_NW;
+		default: NOT_REACHED();
+	}
 }
 
 /**

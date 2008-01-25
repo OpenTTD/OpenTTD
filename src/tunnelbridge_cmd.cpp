@@ -465,14 +465,8 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	}
 
 	start_tileh = GetTileSlope(start_tile, &start_z);
-
-	switch (start_tileh) {
-		case SLOPE_SW: direction = DIAGDIR_SW; break;
-		case SLOPE_SE: direction = DIAGDIR_SE; break;
-		case SLOPE_NW: direction = DIAGDIR_NW; break;
-		case SLOPE_NE: direction = DIAGDIR_NE; break;
-		default: return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
-	}
+	direction = GetInclinedSlopeDirection(start_tileh);
+	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
 
 	if (IsRiverTile(start_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 

@@ -376,7 +376,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 	*pieces |= MirrorRoadBits(*pieces);
 
 	/* partly leveled up tile, only if there's no road on that tile */
-	if ((existing == ROAD_NONE || existing == *pieces) && (tileh == SLOPE_W || tileh == SLOPE_S || tileh == SLOPE_E || tileh == SLOPE_N)) {
+	if ((existing == ROAD_NONE || existing == *pieces) && IsSlopeWithOneCornerRaised(tileh)) {
 		if (*pieces == ROAD_X || *pieces == ROAD_Y) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 	}
 	return CMD_ERROR;
