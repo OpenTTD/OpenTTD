@@ -384,6 +384,7 @@ enum IndustryViewWidgets {
 	IVW_INFO,
 	IVW_GOTO,
 	IVW_SPACER,
+	IVW_RESIZE_WIDGET,
 };
 
 /** Information to store about the industry window */
@@ -437,13 +438,27 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			lines++;
 		}
 
-		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) lines += 2;
-
-		for (byte j = 5; j <= 7; j++) {
-			if (j != 5) w->widget[j].top += lines * 10;
-			w->widget[j].bottom += lines * 10;
+		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
+			lines += 2;
+		} else {
+			/* Remove the resizing option from the widgets. Do it before the Hiding since it will be overwritten */
+			for (byte j = IVW_INFO; j <= IVW_RESIZE_WIDGET; j++) {
+				w->widget[j].display_flags = RESIZE_NONE;
+			}
+			/* Hide the resize button and enlarge the spacer so it will take its place */
+			w->HideWidget(IVW_RESIZE_WIDGET);
+			w->widget[IVW_SPACER].right = w->widget[IVW_RESIZE_WIDGET].right;
 		}
-		w->height += lines * 10;
+
+		lines *= 10;
+
+		/* Resize the widgets for the new size, given by the addition of cargos */
+		for (byte j = IVW_INFO; j <= IVW_RESIZE_WIDGET; j++) {
+			if (j != IVW_INFO) w->widget[j].top += lines;
+			w->widget[j].bottom += lines;
+		}
+		w->height += lines;
+		w->resize.height += lines;
 	} break;
 
 	case WE_PAINT: {
@@ -515,10 +530,12 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			if (callback_res != CALLBACK_FAILED) {
 				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
 				if (message != STR_NULL && message != STR_UNDEFINED) {
+					const Widget *wi = &w->widget[IVW_INFO];
 					y += 10;
 
 					PrepareTextRefStackUsage(6);
-					DrawString(2, y, message, TC_FROMSTRING);
+					/* Use all the available space left from where we stand up to the end of the window */
+					DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, wi->bottom - y);
 					StopTextRefStackUsage();
 				}
 			}
@@ -607,9 +624,10 @@ static const Widget _industry_view_widgets[] = {
 {  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
 {      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
 {      WWT_INSET,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
-{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,               STR_NULL},                         // IVW_INFO
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     9,     0,   129,   148,   159, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
-{      WWT_PANEL,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,               STR_NULL},                         // IVW_SPACER
+{      WWT_PANEL, RESIZE_BOTTOM,     9,     0,   259,   106,   147, 0x0,               STR_NULL},                         // IVW_INFO
+{ WWT_PUSHTXTBTN,     RESIZE_TB,     9,     0,   129,   148,   159, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
+{      WWT_PANEL,     RESIZE_TB,     9,   130,   247,   148,   159, 0x0,               STR_NULL},                         // IVW_SPACER
+{  WWT_RESIZEBOX,     RESIZE_TB,     9,   248,   259,   148,   159, 0x0,               STR_RESIZE_BUTTON},                // IVW_RESIZE_WIDGET
 {   WIDGETS_END},
 };
 
@@ -617,7 +635,7 @@ static const Widget _industry_view_widgets[] = {
 static const WindowDesc _industry_view_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 160, 260, 160,
 	WC_INDUSTRY_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_view_widgets,
 	IndustryViewWndProc
 };
