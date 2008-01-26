@@ -36,15 +36,16 @@ enum StationViewWidgets {
 	SVW_CAPTION    =  1, ///< Caption of the window
 	SVW_WAITING    =  3, ///< List of waiting cargo
 	SVW_ACCEPTLIST =  5, ///< List of accepted cargos
-	SVW_RATINGLIST =  6, ///< Ratings of cargos
-	SVW_LOCATION   =  7, ///< 'Location' button
-	SVW_RATINGS    =  8, ///< 'Ratings' button
-	SVW_ACCEPTS    =  8, ///< 'Accepts' button
-	SVW_RENAME     =  9, ///< 'Rename' button
-	SVW_TRAINS     = 10, ///< List of scheduled trains button
+	SVW_RATINGLIST =  5, ///< Ratings of cargos
+	SVW_LOCATION   =  6, ///< 'Location' button
+	SVW_RATINGS    =  7, ///< 'Ratings' button
+	SVW_ACCEPTS    =  7, ///< 'Accepts' button
+	SVW_RENAME     =  8, ///< 'Rename' button
+	SVW_TRAINS     =  9, ///< List of scheduled trains button
 	SVW_ROADVEHS,        ///< List of scheduled road vehs button
 	SVW_PLANES,          ///< List of scheduled planes button
 	SVW_SHIPS,           ///< List of scheduled ships button
+	SVW_RESIZE,          ///< Resize button
 };
 
 /* sorter stuff */

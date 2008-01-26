@@ -664,39 +664,21 @@ void ShowPlayerStations(PlayerID player)
 	}
 }
 
-static const Widget _station_view_expanded_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},                // SVW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   236,    14,    65, 0x0,               STR_NULL},                             // SVW_WAITING
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   237,   248,    14,    65, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},                             // SVW_ACCEPTLIST
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   248,    66,   197, 0x0,               STR_NULL},                             // SVW_RATINGLIST
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,   198,   209, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION}, // SVW_LOCATION
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   128,   198,   209, STR_3033_ACCEPTS,  STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO}, // SVW_ACCEPTS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   129,   192,   198,   209, STR_0130_RENAME,   STR_3055_CHANGE_NAME_OF_STATION},      // SVW_RENAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   193,   206,   198,   209, STR_TRAIN,         STR_SCHEDULED_TRAINS_TIP },            // SVW_TRAINS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   207,   220,   198,   209, STR_LORRY,         STR_SCHEDULED_ROAD_VEHICLES_TIP },     // SVW_ROADVEHS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   221,   234,   198,   209, STR_PLANE,         STR_SCHEDULED_AIRCRAFT_TIP },          // SVW_PLANES
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   235,   248,   198,   209, STR_SHIP,          STR_SCHEDULED_SHIPS_TIP },             // SVW_SHIPS
-{   WIDGETS_END},
-};
-
 static const Widget _station_view_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},                // SVW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   236,     0,    13, STR_300A_0,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   237,   248,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   236,    14,    65, 0x0,               STR_NULL},                             // SVW_WAITING
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   237,   248,    14,    65, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   248,    66,    97, 0x0,               STR_NULL},                             // SVW_ACCEPTLIST
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},                             // SVW_RATINGLIST
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    63,    98,   109, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION}, // SVW_LOCATION
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    64,   128,    98,   109, STR_3032_RATINGS,  STR_3054_SHOW_STATION_RATINGS},        // SVW_RATINGS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   129,   192,    98,   109, STR_0130_RENAME,   STR_3055_CHANGE_NAME_OF_STATION},      // SVW_RENAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   193,   206,    98,   109, STR_TRAIN,         STR_SCHEDULED_TRAINS_TIP },            // SVW_TRAINS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   207,   220,    98,   109, STR_LORRY,         STR_SCHEDULED_ROAD_VEHICLES_TIP },     // SVW_ROADVEHS
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   221,   234,    98,   109, STR_PLANE,         STR_SCHEDULED_AIRCRAFT_TIP },          // SVW_PLANES
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   235,   248,    98,   109, STR_SHIP,          STR_SCHEDULED_SHIPS_TIP },             // SVW_SHIPS
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   236,     0,    13, STR_300A_0,        STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   237,   248,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,    14,     0,   236,    14,    65, 0x0,               STR_NULL},                             // SVW_WAITING
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   237,   248,    14,    65, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   248,    66,    97, 0x0,               STR_NULL},                             // SVW_ACCEPTLIST / SVW_RATINGLIST
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    59,    98,   109, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION}, // SVW_LOCATION
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    60,   120,    98,   109, STR_3032_RATINGS,  STR_3054_SHOW_STATION_RATINGS},        // SVW_RATINGS / SVW_ACCEPTS
+{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   121,   180,    98,   109, STR_0130_RENAME,   STR_3055_CHANGE_NAME_OF_STATION},      // SVW_RENAME
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   181,   194,    98,   109, STR_TRAIN,         STR_SCHEDULED_TRAINS_TIP },            // SVW_TRAINS
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   195,   208,    98,   109, STR_LORRY,         STR_SCHEDULED_ROAD_VEHICLES_TIP },     // SVW_ROADVEHS
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   209,   222,    98,   109, STR_PLANE,         STR_SCHEDULED_AIRCRAFT_TIP },          // SVW_PLANES
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   223,   236,    98,   109, STR_SHIP,          STR_SCHEDULED_SHIPS_TIP },             // SVW_SHIPS
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   237,   248,    98,   109, 0x0,               STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -708,9 +690,9 @@ static const Widget _station_view_widgets[] = {
  * @param x x on-screen coordinate where to start with drawing icons
  * @param y y coordinate
  */
-static void DrawCargoIcons(CargoID i, uint waiting, int x, int y)
+static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
 {
-	uint num = min((waiting + 5) / 10, 23); // maximum is 23 icons so it won't overflow
+	uint num = min((waiting + 5) / 10, width / 10); // maximum is width / 10 icons so it won't overflow
 	if (num == 0) return;
 
 	const CargoSpec *cs = GetCargo(i);
@@ -731,6 +713,20 @@ static void DrawCargoIcons(CargoID i, uint waiting, int x, int y)
 	} while (--num);
 }
 
+struct CargoData {
+	CargoID cargo;
+	StationID source;
+	uint count;
+
+	CargoData(CargoID cargo, StationID source, uint count) :
+		cargo(cargo),
+		source(source),
+		count(count)
+	{ }
+};
+
+typedef std::list<CargoData> CargoDataList;
+
 /**
  * Redraws whole StationView window
  *
@@ -740,20 +736,40 @@ static void DrawStationViewWindow(Window *w)
 {
 	StationID station_id = w->window_number;
 	const Station* st = GetStation(station_id);
-	uint num;     ///< number of cargo types waiting at station
 	int x, y;     ///< coordinates used for printing waiting/accepted/rating of cargo
 	int pos;      ///< = w->vscroll.pos
 	StringID str;
+	CargoDataList cargolist;
 
 	/* count types of cargos waiting in station */
-	num = 1;
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (!st->goods[i].cargo.Empty()) {
-			num++;
-			if (st->goods[i].cargo.Source() != station_id) num++;
+			/* Add an entry for total amount of cargo of this type waiting. */
+			cargolist.push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.Count()));
+
+			/* Add an entry for each distinct cargo source. */
+			const CargoList::List *packets = st->goods[i].cargo.Packets();
+			for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+				const CargoPacket *cp = *it;
+				if (cp->source != station_id) {
+					bool added = false;
+
+					/* Check if we already have this source in the list */
+					for (CargoDataList::iterator jt = cargolist.begin(); jt != cargolist.end(); jt++) {
+						CargoData *cd = &(*jt);
+						if (cd->cargo == i && cd->source == cp->source) {
+							cd->count += cp->count;
+							added = true;
+							break;
+						}
+					}
+
+					if (!added) cargolist.push_back(CargoData(i, cp->source, cp->count));
+				}
+			}
 		}
 	}
-	SetVScrollCount(w, num); // update scrollbar
+	SetVScrollCount(w, cargolist.size() + 1); // update scrollbar
 
 	/* disable some buttons */
 	w->SetWidgetDisabledState(SVW_RENAME,   st->owner != _local_player);
@@ -770,6 +786,9 @@ static void DrawStationViewWindow(Window *w)
 	y = 15;
 	pos = w->vscroll.pos;
 
+	uint width = w->widget[SVW_WAITING].right - w->widget[SVW_WAITING].left - 4;
+	int maxrows = w->vscroll.cap;
+
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
@@ -780,37 +799,27 @@ static void DrawStationViewWindow(Window *w)
 		y += 10;
 	}
 
-	for (CargoID i = 0; i < NUM_CARGO && pos > -5; i++) {
-		uint waiting = st->goods[i].cargo.Count();
-		if (waiting == 0) continue;
-
-		if (st->goods[i].cargo.Source() == station_id) {
-			if (--pos < 0) {
-				DrawCargoIcons(i, waiting, x, y);
-				SetDParam(1, waiting);
-				SetDParam(0, i);
-				DrawStringRightAligned(x + 234, y, STR_0009, TC_FROMSTRING);
-				y += 10;
-			}
-		} else {
-			/* enroute */
-			if (--pos < 0) {
-				DrawCargoIcons(i, waiting, x, y);
-				SetDParam(1, waiting);
-				SetDParam(0, i);
-				DrawStringRightAligned(x + 234, y, STR_000A_EN_ROUTE_FROM, TC_FROMSTRING);
-				y += 10;
+	for (CargoDataList::const_iterator it = cargolist.begin(); it != cargolist.end() && pos > -maxrows; ++it) {
+		if (--pos < 0) {
+			const CargoData *cd = &(*it);
+			if (cd->source == INVALID_STATION) {
+				/* Heading */
+				DrawCargoIcons(cd->cargo, cd->count, x, y, width);
+				SetDParam(0, cd->cargo);
+				SetDParam(1, cd->count);
+				DrawStringRightAligned(x + width, y, STR_0009, TC_FROMSTRING);
+			} else {
+				SetDParam(0, cd->cargo);
+				SetDParam(1, cd->count);
+				SetDParam(2, cd->source);
+				DrawStringRightAlignedTruncated(x + width, y, STR_EN_ROUTE_FROM, TC_FROMSTRING, width);
 			}
 
-			if (pos > -5 && --pos < 0) {
-				SetDParam(0, st->goods[i].cargo.Source());
-				DrawStringRightAligned(x + 234, y, STR_000B, TC_FROMSTRING);
-				y += 10;
-			}
+			y += 10;
 		}
 	}
 
-	if (IsWindowOfPrototype(w, _station_view_widgets)) { // small window with list of accepted cargo
+	if (w->widget[SVW_ACCEPTS].data == STR_3032_RATINGS) { // small window with list of accepted cargo
 		char *b = _userstring;
 		bool first = true;
 
@@ -838,11 +847,13 @@ static void DrawStationViewWindow(Window *w)
 		/* Make sure we detect any buffer overflow */
 		assert(b < endof(_userstring));
 
-		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);
+		DrawStringMultiLine(2, w->widget[SVW_ACCEPTLIST].top + 1, STR_SPEC_USERSTRING, w->widget[SVW_ACCEPTLIST].right - w->widget[SVW_ACCEPTLIST].left);
 	} else { // extended window with list of cargo ratings
-		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, TC_FROMSTRING);
+		y = w->widget[SVW_RATINGLIST].top + 1;
 
-		y = 77;
+		DrawString(2, y, STR_3034_LOCAL_RATING_OF_TRANSPORT, TC_FROMSTRING);
+		y += 10;
+
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			const CargoSpec *cs = GetCargo(i);
 			if (!cs->IsValid()) continue;
@@ -882,13 +893,16 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 				case SVW_RATINGS:
 					SetWindowDirty(w);
 
-					/* toggle height/widget set */
-					if (IsWindowOfPrototype(w, _station_view_expanded_widgets)) {
-						AssignWidgetToWindow(w, _station_view_widgets);
-						w->height = 110;
+					if (w->widget[SVW_RATINGS].data == STR_3032_RATINGS) {
+						/* Switch to ratings view */
+						w->widget[SVW_RATINGS].data = STR_3033_ACCEPTS;
+						w->widget[SVW_RATINGS].tooltips = STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO;
+						ResizeWindowForWidget(w, SVW_ACCEPTLIST, 0, 100);
 					} else {
-						AssignWidgetToWindow(w, _station_view_expanded_widgets);
-						w->height = 210;
+						/* Switch to accepts view */
+						w->widget[SVW_RATINGS].data = STR_3032_RATINGS;
+						w->widget[SVW_RATINGS].tooltips = STR_3054_SHOW_STATION_RATINGS;
+						ResizeWindowForWidget(w, SVW_ACCEPTLIST, 0, -100);
 					}
 
 					SetWindowDirty(w);
@@ -947,6 +961,11 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			DeleteWindowById(WC_AIRCRAFT_LIST, wno);
 			break;
 		}
+
+		case WE_RESIZE:
+			if (e->we.sizing.diff.x != 0) ResizeButtons(w, SVW_LOCATION, SVW_RENAME);
+			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
+			break;
 	}
 }
 
@@ -954,7 +973,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 static const WindowDesc _station_view_desc = {
 	WDP_AUTO, WDP_AUTO, 249, 110, 249, 110,
 	WC_STATION_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_station_view_widgets,
 	StationViewWndProc
 };
@@ -972,4 +991,5 @@ void ShowStationViewWindow(StationID station)
 	PlayerID owner = GetStation(w->window_number)->owner;
 	if (owner != OWNER_NONE) w->caption_color = owner;
 	w->vscroll.cap = 5;
+	w->resize.step_height = 10;
 }
