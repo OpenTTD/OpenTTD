@@ -17,8 +17,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jābūt plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING.a}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (ceļā no
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Pieņem: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Pieņem: {GOLD}
 STR_000E                                                        :

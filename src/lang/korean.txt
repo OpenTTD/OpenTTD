@@ -16,8 +16,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}평지가 필요합니다!
 STR_0008_WAITING                                                :{BLACK}대기: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (이것은
-STR_000B                                                        :{YELLOW}{STATION}에서 옴)
 STR_000C_ACCEPTS                                                :{BLACK}받음: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}받음: {GOLD}
 STR_000E                                                        :

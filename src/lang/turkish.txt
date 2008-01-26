@@ -15,8 +15,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin düzleştirilmesi lazım
 STR_0008_WAITING                                                :{BLACK}Bekleyen: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (aktarma:
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}İstenen: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}İstenen: {GOLD}
 STR_000E                                                        :

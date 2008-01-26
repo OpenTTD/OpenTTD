@@ -15,8 +15,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Landskabet skal være fladt
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (på vej fra
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterer: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterer: {GOLD}
 STR_000E                                                        :

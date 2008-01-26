@@ -15,8 +15,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Plat daal vereis
 STR_0008_WAITING                                                :{BLACK}Wag: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (en-roete van
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Aanvaar: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Aanvaar: {GOLD}
 STR_000E                                                        :

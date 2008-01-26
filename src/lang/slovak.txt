@@ -17,8 +17,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebný rovný terén
 STR_0008_WAITING                                                :{BLACK}Caka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (na ceste z
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Prijíma: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prijíma: {GOLD}
 STR_000E                                                        :

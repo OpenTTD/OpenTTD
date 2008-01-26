@@ -15,8 +15,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Platt mark krävs
 STR_0008_WAITING                                                :{BLACK}Väntar: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (på väg från
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterar: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterar: {GOLD}
 STR_000E                                                        :

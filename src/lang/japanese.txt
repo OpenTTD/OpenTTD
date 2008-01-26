@@ -15,8 +15,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}平地が必要です
 STR_0008_WAITING                                                :{BLACK}到着待ち：{WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}（原点：
-STR_000B                                                        :{YELLOW}{STATION}）
 STR_000C_ACCEPTS                                                :{BLACK}受入れ貨物：{WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}受入れ貨物：{GOLD}
 STR_000E                                                        :

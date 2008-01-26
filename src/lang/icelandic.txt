@@ -14,8 +14,6 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sléttlendi nauðsynlegt
 STR_0008_WAITING                                                :{BLACK}Bíður: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (á leið frá
-STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Tekur við: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Tekur við: {GOLD}
 STR_000E                                                        :
