@@ -345,7 +345,13 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				/* Also draw the details if an engine is selected */
 				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
 					const Widget *wi = &w->widget[i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS];
-					DrawVehiclePurchaseInfo(wi->left + 2, wi->top + 1, wi->right - wi->left - 2, WP(w, replaceveh_d).sel_engine[i]);
+					int text_end = DrawVehiclePurchaseInfo(wi->left + 2, wi->top + 1, wi->right - wi->left - 2, WP(w, replaceveh_d).sel_engine[i]);
+
+					if (text_end > wi->bottom) {
+						SetWindowDirty(w);
+						ResizeWindowForWidget(w, i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS, 0, text_end - wi->bottom);
+						SetWindowDirty(w);
+					}
 				}
 			}
 
