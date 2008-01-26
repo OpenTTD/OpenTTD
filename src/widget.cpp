@@ -583,6 +583,24 @@ void ResizeButtons(Window *w, byte left, byte right)
 	}
 }
 
+void ResizeWindowForWidget(Window *w, int widget, int delta_x, int delta_y)
+{
+	int right  = w->widget[widget].right;
+	int bottom = w->widget[widget].bottom;
+
+	for (uint i = 0; i < w->widget_count; i++) {
+		if (w->widget[i].left >= right) w->widget[i].left += delta_x;
+		if (w->widget[i].right >= right) w->widget[i].right += delta_x;
+		if (w->widget[i].top >= bottom) w->widget[i].top += delta_y;
+		if (w->widget[i].bottom >= bottom) w->widget[i].bottom += delta_y;
+	}
+
+	w->width  += delta_x;
+	w->height += delta_y;
+	w->resize.width  += delta_x;
+	w->resize.height += delta_y;
+}
+
 /** Draw a sort button's up or down arrow symbol.
  * @param w Window of widget
  * @param widget Sort button widget

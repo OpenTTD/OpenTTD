@@ -630,6 +630,10 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
  */
 void ResizeButtons(Window *w, byte left, byte right);
 
+/** Resize a widget an shuffle other widgets around to fit.
+ */
+void ResizeWindowForWidget(Window *w, int widget, int delta_x, int delta_y);
+
 
 /**
  * Sets the enabled/disabled status of a widget.

@@ -958,23 +958,6 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 	}
 }
 
-static void ExpandPurchaseInfoWidget(Window *w, int expand_by)
-{
-	Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
-
-	SetWindowDirty(w);
-	wi->bottom += expand_by;
-
-	for (uint i = BUILD_VEHICLE_WIDGET_BUILD; i < BUILD_VEHICLE_WIDGET_END; i++) {
-		wi = &w->widget[i];
-		wi->top += expand_by;
-		wi->bottom += expand_by;
-	}
-
-	w->height += expand_by;
-	SetWindowDirty(w);
-}
-
 static void DrawBuildVehicleWindow(Window *w)
 {
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
@@ -996,7 +979,11 @@ static void DrawBuildVehicleWindow(Window *w)
 		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
 		int text_end = DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
 
-		if (text_end > wi->bottom) ExpandPurchaseInfoWidget(w, text_end - wi->bottom);
+		if (text_end > wi->bottom) {
+			SetWindowDirty(w);
+			ResizeWindowForWidget(w, BUILD_VEHICLE_WIDGET_PANEL, 0, text_end - wi->bottom);
+			SetWindowDirty(w);
+		}
 	}
 
 	DrawSortButtonState(w, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING, bv->descending_sort_order ? SBS_DOWN : SBS_UP);
