@@ -3523,6 +3523,12 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	if (!mode) HandleLocomotiveSmokeCloud(v);
 
 	int j = UpdateTrainSpeed(v);
+
+	/* we need to invalidate the widget if we are stopping from 'Stopping 0 km/h' to 'Stopped' */
+	if (v->cur_speed == 0 && v->u.rail.last_speed == 0 && v->vehstatus & VS_STOPPED) {
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	}
+
 	if (j == 0) {
 		/* if the vehicle has speed 0, update the last_speed field. */
 		if (v->cur_speed != 0) return;
