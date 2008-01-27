@@ -216,17 +216,17 @@ STR_0130_RENAME                                                 :{BLACK}Omneame
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Te folle nammen definearre
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Dizze namme wurd al brûkt
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 
 STR_013B_OWNED_BY                                               :{WHITE}...is fan {STRING}
 STR_013C_CARGO                                                  :{BLACK}Fracht
 STR_013D_INFORMATION                                            :{BLACK}Ynformaasje
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteit
-STR_013E_TOTAL_CARGO                                            :{BLACK}Totale Fracht
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Totale kapasiteit fan dizze trein:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CARGO                                                 :{BLACK}Totale Fracht
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Totale kapasiteit fan dizze trein:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nei Spul
 STR_0141_LOAD_GAME                                              :{BLACK}Laad Spul
 
@@ -597,9 +597,9 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Reau ûn
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla eigen reau ûntwerp nammen op
 
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Spul Opsjes
-STR_02C5_DIFFICULTY_SETTINGS                                    :Swierrichheid ynstellings
-STR_02C7_CONFIG_PATCHES                                         :Patches Ynstellings
+STR_02C4_GAME_OPTIONS                                           :Spul Opsjes
+STR_02C6_DIFFICULTY_SETTINGS                                    :Swierrichheid ynstellings
+STR_MENU_CONFIG_PATCHES                                         :Patches Ynstellings
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stêd nammen sjen litte
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stasjon nammen sjen litte
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Buordsjes sjen litte
@@ -678,8 +678,8 @@ STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Keapje l
 STR_032F_AUTOSAVE                                               :{RED}AUTOSAVE
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selektear 'Ezy Street' musyk programma
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 ############ end of townname region
@@ -982,8 +982,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te ticht
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ferbynt mear dan ien stasjon
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te folle stasjons yn dizze stêd
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te folle stasjons
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Te folle bushaltes
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te folle frachtstasjons
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te folle bushaltes
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Te folle frachtstasjons
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Te ticht by in oar stasjon
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Treinspoar moat earst fuorthelle wurde
@@ -1044,7 +1044,7 @@ STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan 
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kin triem net fuortsmite
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Laden Mislearre{}{STRING}
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}List fan skiven, mappen en triemen
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laad Hichtemap
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Laad Hichtemap
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} yn it paad
@@ -1136,7 +1136,7 @@ STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terrein
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomy: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Gjin
+STR_NONE                                                        :Gjin
 STR_6816_LOW                                                    :Leech
 STR_6817_NORMAL                                                 :Gewoan
 STR_6818_HIGH                                                   :Heech

@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}Redenume
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Prea multe nume definite
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Numele ales este deja folosit
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...apart
 STR_013C_CARGO                                                  :{BLACK}Încãrcãturã
 STR_013D_INFORMATION                                            :{BLACK}Informatii
 STR_013E_CAPACITIES                                             :{BLACK}Capacitãti
-STR_013E_TOTAL_CARGO                                            :{BLACK}Încãrcãturi
+STR_TOTAL_CARGO                                                 :{BLACK}Încãrcãturi
 STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Capacitate: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Încãrcãtura totalã (capacitatea) acestui tren:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Încãrcãtura totalã (capacitatea) acestui tren:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc nou
 STR_0141_LOAD_GAME                                              :{BLACK}Încarcã joc
@@ -728,7 +728,7 @@ STR_0290_DELETE                                                 :{BLACK}Şterge
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Şterge acest oraş
 STR_0292_SAVE_SCENARIO                                          :Salvează scenariul
 STR_0293_LOAD_SCENARIO                                          :Încarcă scenariu
-STR_LOAD_HEIGHTMAP                                              :Incarca harta de inaltimi
+STR_MENU_LOAD_HEIGHTMAP                                         :Incarca harta de inaltimi
 STR_0294_QUIT_EDITOR                                            :Ieşire din editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ieşire din joc
@@ -768,9 +768,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salveaz�
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Opţiunile jocului (F2)
-STR_02C5_DIFFICULTY_SETTINGS                                    :Setări dificultate
-STR_02C7_CONFIG_PATCHES                                         :Configurare patch
+STR_02C4_GAME_OPTIONS                                           :Opţiunile jocului (F2)
+STR_02C6_DIFFICULTY_SETTINGS                                    :Setări dificultate
+STR_MENU_CONFIG_PATCHES                                         :Configurare patch
 STR_NEWGRF_SETTINGS                                             :Setari Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Optiuni transparenta
 STR_GAMEOPTMENU_0A                                              :
@@ -870,8 +870,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  SALV
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Salvarea se efectueaza încã,{}vã rugãm asteptati pânã se încheie!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selectează programul muzical 'Ezy Street'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleza (Original)
@@ -1646,42 +1646,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Trebuie 
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Mai întâi trebuie înlăturată şoseaua
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lucrari la drum in curs de desfasurare
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcţii rutiere
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construcţie Tramvai
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Construcţie Tramvai
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Alege pod rutier
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... drumurile cu sens unic nu pot avea bifurcatii
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nu pot construi şosea aici...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Nu pot construi şină de tramvai aici...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Nu pot construi şină de tramvai aici...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nu pot înlătura şoseaua...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Nu pot înlătura şina de tramvai de aici...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Nu pot înlătura şina de tramvai de aici...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientarea autobazei
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientarea Depoului de Tramvaie
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientarea Depoului de Tramvaie
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nu pot construi autobază aici...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Nu pot construi depou de tramvaie aici...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Nu pot construi depou de tramvaie aici...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nu pot construi staţie de autobuz...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nu pot construi platformă pentru camioane...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nu pot construi staţie de tramvai aici...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nu pot construi staţie de tramvai aici...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Nu pot construi staţie de tramvai aici...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Nu pot construi staţie de tramvai aici...
 STR_180A_ROAD_CONSTRUCTION                                      :Construcţii rutiere
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcţie tramvai
+STR_TRAMWAY_CONSTRUCTION                                        :Construcţie tramvai
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construieşte secţiune de şosea
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construieste sectiune de sosea folosind modul Auto-sosea
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construcieşte şină de tramvai
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Construcieşte şină de tramvai
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construieste sectiune de sina de tramvai folosind modul Auto-tramvai
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construieşte o autobază (pentru construire şi întreţinere de autovehicule)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construieste depou tramvaie (pentru constructii si reparatii vehicule)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Construieste depou tramvaie (pentru constructii si reparatii vehicule)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Plasează staţie de autobuz
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construieşte platformă pentru camioane
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Construieste statie de tramvai pentru calatori
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Construieste statie de transport marfar
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Construieste statie de tramvai pentru calatori
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Construieste statie de transport marfar
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construieşte pod rutier
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construieşte pod pentru tramvaie
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Construieşte pod pentru tramvaie
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construieşte tunel rutier
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construieşte tunel pentru tramvaie
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Construieşte tunel pentru tramvaie
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activare/Dezactivare sensuri unice
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Comutator pentru construcţie/înlăturare şosele
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Comuta constructie/stergere pentru constructia de linii de tramvaie
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Comuta constructie/stergere pentru constructia de linii de tramvaie
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Alege orientarea autobazei
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Alege orientarea depoului de tramvaie
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Alege orientarea depoului de tramvaie
 STR_1814_ROAD                                                   :Şosea
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Stradă iluminată
 STR_1816_TREE_LINED_ROAD                                        :Stradă cu copaci pe margine
@@ -1824,8 +1824,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Prea apr
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Este adiacentă mai multor staţii
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prea multe staţii în acest oraş
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prea multe staţii
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Prea multe staţii de autobuz
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Prea multe staţii de camion
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Prea multe staţii de autobuz
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Prea multe staţii de camion
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Prea aproape de altă staţie
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Mai întâi trebuie demolată gara
@@ -1856,12 +1856,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} acceptă acum {STRING} si {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientarea staţiei
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientarea platformei de camioane
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientarea staţiei de tramvai pentru călători
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientarea staţiei de tramvai pentru marfă
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orientarea staţiei de tramvai pentru călători
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Orientarea staţiei de tramvai pentru marfă
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Mai întâi trebuie demolată staţia de autobuz
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Mai întâi trebuie demolată platforma pentru camioane
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Mai întâi trebuie demolată staţia de tramvai
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Mai întâi trebuie demolată staţia de tramvai
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Mai întâi trebuie demolată staţia de tramvai
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Mai întâi trebuie demolată staţia de tramvai
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Staţi{P e i}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nici una -
@@ -1873,8 +1873,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Alege nu
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Alege lungimea liniilor gării
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Alege orientarea staţiei de autobuz
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Alege orientarea platformei pentru camioane
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Alege orientarea staţiei de tramvai
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Alege orientarea staţiei de tramvai
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Alege orientarea staţiei de tramvai
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Alege orientarea staţiei de tramvai
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrează imaginea pe locaţia staţiei
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Afişează evaluările staţiei
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Schimbă numele staţiei
@@ -1896,7 +1896,7 @@ STR_3068_DOCK                                                   :{WHITE}Port
 STR_3069_BUOY                                                   :Baliză
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...baliză în cale
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...staţie prea mare
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...staţiile neuniforme nu sunt permise
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...staţiile neuniforme nu sunt permise
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tine apãsat CTRL pentru a alege mai mult decât un obiect
 
 STR_UNDEFINED                                                   :(sir nedefinit)
@@ -1937,7 +1937,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salveaz�
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Alege tipul noului joc
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Alege un scenariu (verde), un joc predefinit (albastru) sau o hartă aleatoare
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generează o hartă aleatoare
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Încarcă harta înălţimilor
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Încarcă harta înălţimilor
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} în cale
@@ -2141,10 +2141,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Volumul
 STR_6813_ECONOMY                                                :{LTBLUE}Economie: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Trenurile întorc: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Dezastre: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Reacţia autorităţilor la modificarea mediului: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Reacţia autorităţilor la modificarea mediului: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :zero
+STR_NONE                                                        :zero
 STR_NUM_VERY_LOW                                                :Foarte putine
 STR_6816_LOW                                                    :scăzut
 STR_6817_NORMAL                                                 :normal
@@ -2182,9 +2182,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :doar la capăt 
 STR_6836_OFF                                                    :inactiv
 STR_6837_ON                                                     :activ
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Afişează clasamentul celor mai bune punctaje
-STR_6839_PERMISSIVE                                             :permisivă
-STR_683A_TOLERANT                                               :tolerantă
-STR_683B_HOSTILE                                                :ostilă
+STR_PERMISSIVE                                                  :permisivă
+STR_TOLERANT                                                    :tolerantă
+STR_HOSTILE                                                     :ostilă
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2321,7 +2321,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nu pot c
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nu pot vinde 25% din acţiunile acestei companii...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% deţinute de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} a fost preluată de {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Această companie încă nu vinde acţiuni...
+STR_PROTECTED                                                   :{WHITE}Această companie încă nu vinde acţiuni...
 
 STR_LIVERY_DEFAULT                                              :Uniforma standard
 STR_LIVERY_STEAM                                                :Motor cu abur
@@ -2628,17 +2628,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mergi la {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Mergi la {STATION} (Preia încărcătura pentru transfer)
-STR_8808_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcă)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mergi la {STATION} (Descarcă încărcătura pentru transfer)
-STR_880A_GO_TO_LOAD                                             :Mergi la {STATION} (Încarcă)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Mergi la {STATION} (Aşteaptă 100% încărcătură pentru transfer)
-STR_880C_GO_NON_STOP_TO                                         :Mergi fără oprire la {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Mergi fără oprire la {STATION} (Preia încărcătura pentru transfer)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Mergi fără oprire la {STATION} (Descarcă)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Mergi fără oprire la {STATION} (Descarcă încărcătura pentru transfer)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Mergi fără oprire la {STATION} (Încarcă)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Mergi fără oprire la {STATION} (Aşteaptă 100% încărcătură pentru transfer)
+STR_GO_TO_TRANSFER                                              :Mergi la {STATION} (Preia încărcătura pentru transfer)
+STR_8807_GO_TO_UNLOAD                                           :Mergi la {STATION} (Descarcă)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Mergi la {STATION} (Descarcă încărcătura pentru transfer)
+STR_8808_GO_TO_LOAD                                             :Mergi la {STATION} (Încarcă)
+STR_GO_TO_TRANSFER_LOAD                                         :Mergi la {STATION} (Aşteaptă 100% încărcătură pentru transfer)
+STR_880A_GO_NON_STOP_TO                                         :Mergi fără oprire la {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Mergi fără oprire la {STATION} (Preia încărcătura pentru transfer)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Mergi fără oprire la {STATION} (Descarcă)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Mergi fără oprire la {STATION} (Descarcă încărcătura pentru transfer)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Mergi fără oprire la {STATION} (Încarcă)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Mergi fără oprire la {STATION} (Aşteaptă 100% încărcătură pentru transfer)
 STR_GO_TO_TRAIN_DEPOT                                           :Mergi la depoul {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depoul {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi fără oprire la Depoul {TOWN}
@@ -2742,7 +2742,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Micsorea
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afiseazã detalii despre încãrcãtura transportatã
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afiseazã detalii despre componentele trenului
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afiseazã capacitãtile componentelor trenului
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afiseazã capacitãtile totale ale trenului, diferentiate pe tip de încãrcãturã
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Afiseazã capacitãtile totale ale trenului, diferentiate pe tip de încãrcãturã
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de comenzi - clic pe comandã pentru a o selecta
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Renunta la comanta acruala si preia-o pe urmatoarea. CTRL + click face salt la comanda selectata
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Sterge comanda selectatã
@@ -2773,8 +2773,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nu pot schimba sensul de mers al trenului...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu pot redenumi modelul acestui vehicul...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Comanda selectatã forteazã vehiculul sã arunce încãrcãtura
-STR_886F_TRANSFER                                               :{BLACK}Transferă
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Comanda selectatã forteazã vehiculul sã arunce încãrcãtura
+STR_TRANSFER                                                    :{BLACK}Transferă
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
 STR_RESET_LATENESS                                              :{BLACK}Reinitializeaza contorul de intarziere
 
@@ -2852,8 +2852,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nu pot r
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Numele autovehiculului
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc{}sosirea primului autobuz la {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetãtenii sãrbãtoresc{}sosirea primului camion la {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru călători la {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru marfă la {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru călători la {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Cetăţenii sărbătoresc . . .{}sosirea primului primul tramvai pentru marfă la {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident rutier!{}Soferul decedat in urma coliziunii cu un tren
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident rutier!{}{COMMA} victime in urma coliziunii cu un tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nu pot schimba întoarce autvehiculul...
@@ -2862,7 +2862,7 @@ STR_9034_RENAME                                                 :{BLACK}Redenume
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Redenumeste modelul de autovehicul
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Redenumeste modelul autovehiculului
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nu pot redenumi modelul acestui autovehicul...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Mergi la Autobaza {TOWN}
+STR_GO_TO_ROADVEH_DEPOT                                         :Mergi la Autobaza {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service la Autobaza {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Adapteaza autovehiculul pentru o incarcatura diferita

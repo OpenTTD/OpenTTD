@@ -306,9 +306,9 @@ STR_0130_RENAME                                                 :{BLACK}Pervardi
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Per daug vardų
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Pasirinktas vardas jau naudojamas
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -319,11 +319,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...prikl
 STR_013C_CARGO                                                  :{BLACK}Keliamoji galia
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Talpumas
-STR_013E_TOTAL_CARGO                                            :{BLACK}Visa keliamoji galia
+STR_TOTAL_CARGO                                                 :{BLACK}Visa keliamoji galia
 STR_013F_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Talpa: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Visa traukinio keliamoji galia:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Visa traukinio keliamoji galia:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Naujas žaidimas
 STR_0141_LOAD_GAME                                              :{BLACK}Atverti žaidimą
@@ -757,7 +757,7 @@ STR_0290_DELETE                                                 :{BLACK}Šalinti
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Šalinti šį miestą
 STR_0292_SAVE_SCENARIO                                          :Išsaugoti scenarijų
 STR_0293_LOAD_SCENARIO                                          :Atverti scenarijų
-STR_LOAD_HEIGHTMAP                                              :Atverti aukščių žemėlapį
+STR_MENU_LOAD_HEIGHTMAP                                         :Atverti aukščių žemėlapį
 STR_0294_QUIT_EDITOR                                            :Uždaryti redaktoriu
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Išeiti
@@ -797,9 +797,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Išsaugo
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Žaidimo nustatymai
-STR_02C5_DIFFICULTY_SETTINGS                                    :Sunkumo lygio nustatymai
-STR_02C7_CONFIG_PATCHES                                         :Papildomi nustatymai
+STR_02C4_GAME_OPTIONS                                           :Žaidimo nustatymai
+STR_02C6_DIFFICULTY_SETTINGS                                    :Sunkumo lygio nustatymai
+STR_MENU_CONFIG_PATCHES                                         :Papildomi nustatymai
 STR_NEWGRF_SETTINGS                                             :Papild. grafikos nustatymai (NewGRF)
 STR_TRANSPARENCY_OPTIONS                                        :Permatomumo nustatymai
 STR_GAMEOPTMENU_0A                                              :
@@ -898,8 +898,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  Issa
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vyksta išsaugojimas,{}palaukite kol baigsis!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Pasirink „Ezy Street“ muzikos stiliaus programą
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglų (Oginalus)
@@ -1730,8 +1730,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Per arti
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Ribojasi su daugiau nei viena stotele/pakrovimo aikštele
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Per daug stotelių/pakrovimo aikstelių šiame mieste
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Per daug stotelių
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Per daug autobusų stotelių
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Per daug sunkvežimių pakrovimo aikstelių
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Per daug autobusų stotelių
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Per daug sunkvežimių pakrovimo aikstelių
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Per arti kitos stotelės
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Pirmiausia reikia nugriauti geležinkelio stotį
@@ -1796,7 +1796,7 @@ STR_3068_DOCK                                                   :{WHITE}Prieplau
 STR_3069_BUOY                                                   :Pluduras
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...pluduras pakeliui
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stotis per daug issipletusi
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nestandartines stoteles atjungtos
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...nestandartines stoteles atjungtos
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Laikant nuspaustą VALD (CTRL) galima pažymėti daugiau nei vieną
 
 STR_UNDEFINED                                                   :(neapibrėžta eilutė)
@@ -1831,7 +1831,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Issaugot
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Pasirink zaujo zaidimo tipa
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Pasirinkite scenariju (zalia spalva), nustatyta zaidima (melyna), ar atsitiktini nauja zaidima
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Sukurti atsitiktinį naują žaidimą
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Atverti aukščių žemėlapį
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Atverti aukščių žemėlapį
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} kelyje
@@ -2028,10 +2028,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Vandens
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomika: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Traukiniai apsisuka: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Nelaimes, katastrofos: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Miesto valdžios požiūris į aplinkos pertvarkymą: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Miesto valdžios požiūris į aplinkos pertvarkymą: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Nėra
+STR_NONE                                                        :Nėra
 STR_6816_LOW                                                    :Žemas
 STR_6817_NORMAL                                                 :Vidutinis
 STR_6818_HIGH                                                   :Aukštas
@@ -2068,9 +2068,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Tik bėgių pab
 STR_6836_OFF                                                    :Išjungta
 STR_6837_ON                                                     :Įjungta
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Rodyti rezultatų lentelę
-STR_6839_PERMISSIVE                                             :Atlaidus
-STR_683A_TOLERANT                                               :Tolerantiskas
-STR_683B_HOSTILE                                                :Priešiškas
+STR_PERMISSIVE                                                  :Atlaidus
+STR_TOLERANT                                                    :Tolerantiskas
+STR_HOSTILE                                                     :Priešiškas
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2202,7 +2202,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Negalima
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Negalima parduoti 25% sios kompanijos akciju...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% priklauso {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} buvo perimta {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Si kompanija dar pernelyg jauna, kad galetu pardavineti savo akcijas...
+STR_PROTECTED                                                   :{WHITE}Si kompanija dar pernelyg jauna, kad galetu pardavineti savo akcijas...
 
 STR_LIVERY_DEFAULT                                              :Standartinis Livery
 STR_LIVERY_STEAM                                                :Garo Variklis
@@ -2507,17 +2507,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Traukiny
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Vaziuoja i {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Vykti i {STATION} (Perkelti ir pakrauti krovinius)
-STR_8808_GO_TO_UNLOAD                                           :Vykti i {STATION} (Issikrauti)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Vykti i {STATION} (Perkrauti ir palikti tuscia)
-STR_880A_GO_TO_LOAD                                             :Vykti i {STATION} (Pasikrauti)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Vykti i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
-STR_880C_GO_NON_STOP_TO                                         :Vykti be sustojimo i {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Vykti be sustojimo i {STATION} (Perkrauti ir paimti krovini)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Vykti be sustojimo i {STATION} (Issikrauti)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Vykti be sustojimo i {STATION} (Perkrauti ir palikti tuscia)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Vykti be sustojimo i {STATION} (Pasikrauti)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Vykti be sustojimo i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
+STR_GO_TO_TRANSFER                                              :Vykti i {STATION} (Perkelti ir pakrauti krovinius)
+STR_8807_GO_TO_UNLOAD                                           :Vykti i {STATION} (Issikrauti)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Vykti i {STATION} (Perkrauti ir palikti tuscia)
+STR_8808_GO_TO_LOAD                                             :Vykti i {STATION} (Pasikrauti)
+STR_GO_TO_TRANSFER_LOAD                                         :Vykti i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
+STR_880A_GO_NON_STOP_TO                                         :Vykti be sustojimo i {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Vykti be sustojimo i {STATION} (Perkrauti ir paimti krovini)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Vykti be sustojimo i {STATION} (Issikrauti)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Vykti be sustojimo i {STATION} (Perkrauti ir palikti tuscia)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Vykti be sustojimo i {STATION} (Pasikrauti)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Vykti be sustojimo i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
 STR_GO_TO_TRAIN_DEPOT                                           :Vaziuoti i {TOWN} Traukinio Depa
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN} traukiniu depe
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Važiuoti nestojant į {TOWN} traukinių depą
@@ -2610,7 +2610,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Mazinti 
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Rodyti detalia kroviniu informacija
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Rodyti detalia vagonu informacija
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Rodyti detalia vagonu talpos informacija
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Rodyti bendra traukinio talpos informacija pagal kroviniu tipa
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Rodyti bendra traukinio talpos informacija pagal kroviniu tipa
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Nurodymų sąrašas - nurodymas pažymimas ant jo spragtelėjus. Spregtelėjimas laikant VALD (CTRL) nukelia į stotį
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Istrinti pazymeta uzduoti
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Nestoti pazymetoje stoteleje
@@ -2636,8 +2636,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Pervardinti traukinio tipa
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Neimanoma pervardinti traukinio tipo...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Priversti iškrauti krovinius pažymėta tvarka
-STR_886F_TRANSFER                                               :{BLACK}Perkelti
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Priversti iškrauti krovinius pažymėta tvarka
+STR_TRANSFER                                                    :{BLACK}Perkelti
 
 STR_TRAIN_STOPPING                                              :{RED}Stabdoma
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas, {VELOCITY}
@@ -2703,7 +2703,7 @@ STR_9034_RENAME                                                 :{BLACK}Pervardi
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Pervardinti automobiliu tipa
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Pervardinti automobiliu tipa
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Negali pervardinti automobliu tipo...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Kursas: {TOWN} automobiliu garazas
+STR_GO_TO_ROADVEH_DEPOT                                         :Kursas: {TOWN} automobiliu garazas
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Remontas: {TOWN} garaze
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Perkomplektuoti transporto priemone kad galetu vezti kitoki krovinio tipa

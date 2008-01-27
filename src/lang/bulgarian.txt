@@ -274,9 +274,9 @@ STR_0130_RENAME                                                 :{BLACK}Преи
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Прекалено много имена
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избраното име вече е в употреба
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :ОС Х
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :ОС Х
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -287,11 +287,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...со�
 STR_013C_CARGO                                                  :{BLACK}Товар
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Вместимости
-STR_013E_TOTAL_CARGO                                            :{BLACK}Общо товар
+STR_TOTAL_CARGO                                                 :{BLACK}Общо товар
 STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Капацитет: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Обща товарна вместимост на влака:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Обща товарна вместимост на влака:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Нова игра
 STR_0141_LOAD_GAME                                              :{BLACK}Отвори игра
@@ -730,7 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Изтр
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
 STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
 STR_0293_LOAD_SCENARIO                                          :Зареждане на сценарий
-STR_LOAD_HEIGHTMAP                                              :Отвори височинна карта
+STR_MENU_LOAD_HEIGHTMAP                                         :Отвори височинна карта
 STR_0294_QUIT_EDITOR                                            :Изход от редактора
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Изход
@@ -770,9 +770,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Запи
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Игрови опции
-STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
-STR_02C7_CONFIG_PATCHES                                         :Конфигурирай патчове
+STR_02C4_GAME_OPTIONS                                           :Игрови опции
+STR_02C6_DIFFICULTY_SETTINGS                                    :Опции за трудност
+STR_MENU_CONFIG_PATCHES                                         :Конфигурирай патчове
 STR_NEWGRF_SETTINGS                                             :Newgrf настройки
 STR_TRANSPARENCY_OPTIONS                                        :Опций на прозрачност
 STR_GAMEOPTMENU_0A                                              :
@@ -872,8 +872,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  ЗА
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Записването продължава,{}моля изчакайте да сръши!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Избери програмата 'Ezy Street style music'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :английски (оригинални)
@@ -1648,42 +1648,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Желе
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Първо махнете пътя
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Пътни ремонти в процес
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Пътно строителство
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Конструкциа на трамвайна линиа
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Конструкциа на трамвайна линиа
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Избор на асфалтов мост
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... еднопосочни пътища немогат да имат съединениа
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Пътя не може да се построи...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Трамвайна линиа неможе да бъде посроена тук...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Трамвайна линиа неможе да бъде посроена тук...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Пътя не може да се махне...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Трамвайната линиа неможе да бъде премахната от тук...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Трамвайната линиа неможе да бъде премахната от тук...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Ориентация на гараж
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Посока на Трамвайно Депо
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Посока на Трамвайно Депо
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Гаража не може да се построи...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Трамвайно депо неможе да бъде построено тук...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Трамвайно депо неможе да бъде построено тук...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Автогарата не може да се построи...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Товарната гара не може да се построи...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Пътническа трамвайна гара неможе да бъде построена...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Товарна трамвайна гара неможе да бъде построена...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Пътническа трамвайна гара неможе да бъде построена...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Товарна трамвайна гара неможе да бъде построена...
 STR_180A_ROAD_CONSTRUCTION                                      :Пътно строителство
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Конструкциа на трамвайна линиа
+STR_TRAMWAY_CONSTRUCTION                                        :Конструкциа на трамвайна линиа
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Строене на път
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Построи отсечка от шосе използвайки Афто-шосе методът
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Построи секциа от трамвайна линиа
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Построи секциа от трамвайна линиа
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Построи отсечка от железопътна линиа използвайки Афто-линиа методът
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Строене на гараж (за строене и сервиз на МПС-та)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Построи трамвайно депо (за стройтелни и сервизни коли)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Построи трамвайно депо (за стройтелни и сервизни коли)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Строене на автогара
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Строене на товарна гара
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Построи пъгническа трамвайна гара
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Построи товарна трамвайна гара
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Построи пъгническа трамвайна гара
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Построи товарна трамвайна гара
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Построй мост
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Построи трамвайен мост
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Построи трамвайен мост
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построй тунел
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Построи трамвайен тунел
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Построи трамвайен тунел
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Активирай/Деактивирай еднопосочни пътища
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Премахване на асфалтов път
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Превключване строене/разрушаване на трамвайни консктрукции
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Превключване строене/разрушаване на трамвайни консктрукции
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ориентация на гараж
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Избери посоката на трамвайното депо
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Избери посоката на трамвайното депо
 STR_1814_ROAD                                                   :път
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Асфалтов път с улични лампи
 STR_1816_TREE_LINED_ROAD                                        :Асфалтов път с дървета
@@ -1826,8 +1826,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Твър
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Граничи с повече от една гара/товарна платформа
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Твърде много гари/товарни платформи в града
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Твърде много гари/товарни платформи
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Твърде много автобусни спирки
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Твърде много гари за камиони
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Твърде много автобусни спирки
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Твърде много гари за камиони
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Твърде близо до друга гара/товарна платформа
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Първо разрушете ЖП гарата
@@ -1858,12 +1858,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} вече приема {STRING} и {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Ориентация на автогара
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Ориент. товарна гара
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Посока на пътнически трамвай
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Посока на товарен трамвай
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Посока на пътнически трамвай
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Посока на товарен трамвай
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Първо разрушете автогарата
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Първо разрушете товарната гара
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Пътническата трамвайна гара трябва да бъде унищожена първо
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Товарната трамвайна гара трябва да бъде унищожена първо
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Пътническата трамвайна гара трябва да бъде унищожена първо
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Товарната трамвайна гара трябва да бъде унищожена първо
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Станци{P я и}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Николко -
@@ -1875,8 +1875,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Брой
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Дължина на ЖП гарата
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Ориентация на автогарата
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Ориентация на товарната гара
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Избери посоката на пътническата трамвайна гара
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Избери посоката на товарната трамвайна гара
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Избери посоката на пътническата трамвайна гара
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Избери посоката на товарната трамвайна гара
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Центриране на главния прозорец върху станцията
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Покажи нивото на обслужване
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Промяна името на станцията
@@ -1898,7 +1898,7 @@ STR_3068_DOCK                                                   :{WHITE}Док
 STR_3069_BUOY                                                   :Шамандура
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...шамандура на пътя
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станцията е прекалено разпръсната
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неправилните станции са изключени
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...неправилните станции са изключени
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Задържете CTRL за да изберете повече от един обект
 
 STR_UNDEFINED                                                   :(неопределен текст)
@@ -1939,7 +1939,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Запа
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Избери нов тип игра
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Избери на сценарии (зелено), предварително настроена игра (синьо), или произволна нова игра
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерирай произволна нова игра
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Зареди височинна карта
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Зареди височинна карта
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
@@ -2143,10 +2143,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Кол�
 STR_6813_ECONOMY                                                :{LTBLUE}Икономика: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Обръщане на влаковете: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Бедствия: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Отношение на градските власти към промяна на земята: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Отношение на градските власти към промяна на земята: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Николко
+STR_NONE                                                        :Николко
 STR_NUM_VERY_LOW                                                :Много ниско
 STR_6816_LOW                                                    :малко
 STR_6817_NORMAL                                                 :нормално
@@ -2184,9 +2184,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :само в к�
 STR_6836_OFF                                                    :изключено
 STR_6837_ON                                                     :включено
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Покажи класирането
-STR_6839_PERMISSIVE                                             :разрешаващи
-STR_683A_TOLERANT                                               :толерантни
-STR_683B_HOSTILE                                                :враждебни
+STR_PERMISSIVE                                                  :разрешаващи
+STR_TOLERANT                                                    :толерантни
+STR_HOSTILE                                                     :враждебни
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2323,7 +2323,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Не м�
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Не може да продадеш 25% от акциите на тази компания...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% е притежание на {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} бе закупена от {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Тази компания все още не е достатъчно стара да предлага акции...
+STR_PROTECTED                                                   :{WHITE}Тази компания все още не е достатъчно стара да предлага акции...
 
 STR_LIVERY_DEFAULT                                              :Стандартен Ливъри
 STR_LIVERY_STEAM                                                :Парен локомотив
@@ -2630,17 +2630,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Отиди на {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Отиди на {STATION} (Обмени и вземи товар)
-STR_8808_GO_TO_UNLOAD                                           :Отиди на {STATION} (Разтовари)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Отиди на {STATION} (Обмени и не взимай нов товар)
-STR_880A_GO_TO_LOAD                                             :Отиди на {STATION} (Товари)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Отиди на {STATION} (Обмени и изчакай до пълен товар)
-STR_880C_GO_NON_STOP_TO                                         :Отиди без да спираш на {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Отиди без да спираш на {STATION} (Обмени и вземи товар)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :отиди без да спираш на {STATION} (Разтовари)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Отиди без да спираш на {STATION} (Обмени и не товари)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Отиди без да спираш на {STATION} (Товари)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Отиди без да спираш на {STATION} (Обмени и изчакай до пълен товар)
+STR_GO_TO_TRANSFER                                              :Отиди на {STATION} (Обмени и вземи товар)
+STR_8807_GO_TO_UNLOAD                                           :Отиди на {STATION} (Разтовари)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Отиди на {STATION} (Обмени и не взимай нов товар)
+STR_8808_GO_TO_LOAD                                             :Отиди на {STATION} (Товари)
+STR_GO_TO_TRANSFER_LOAD                                         :Отиди на {STATION} (Обмени и изчакай до пълен товар)
+STR_880A_GO_NON_STOP_TO                                         :Отиди без да спираш на {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Отиди без да спираш на {STATION} (Обмени и вземи товар)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :отиди без да спираш на {STATION} (Разтовари)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Отиди без да спираш на {STATION} (Обмени и не товари)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Отиди без да спираш на {STATION} (Товари)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Отиди без да спираш на {STATION} (Обмени и изчакай до пълен товар)
 STR_GO_TO_TRAIN_DEPOT                                           :Отиди до Влаковото депо на {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонт в {TOWN} влаково депо
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди без да спираш на {TOWN} Влаково депо
@@ -2744,7 +2744,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Нама
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Информация за превозвания товар
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Информация за влаковата композиция
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Капацитет на влаковата композиция
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Общ капацитет на влака, разбит по типове товар
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Общ капацитет на влака, разбит по типове товар
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху станцията
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Прескачане на настоящата заповед и започване на цледващата. CTRL + клик прескача до избраната заповед
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Изтриване на избраното назначение
@@ -2775,8 +2775,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Не може да обърне посоката на влак...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Преименуване на влак
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Не може да се преименува влак...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изхвърляне на товара при достигане на избраното назначение
-STR_886F_TRANSFER                                               :{BLACK}Транфер
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Изхвърляне на товара при достигане на избраното назначение
+STR_TRANSFER                                                    :{BLACK}Транфер
 STR_CLEAR_TIME                                                  :{BLACK}Изчисти времето
 STR_RESET_LATENESS                                              :{BLACK}Преправи закъснялата бройка
 
@@ -2854,8 +2854,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Не м�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Преименувай МПС-то
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първият автобус пристигнал в {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първиат пътнически трамвай пристига на {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първиат товарен трамвай пристига на {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първиат пътнически трамвай пристига на {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Гражданите празнуват . . .{}Първиат товарен трамвай пристига на {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Не може да обърнеш МПС-то...
@@ -2864,7 +2864,7 @@ STR_9034_RENAME                                                 :{BLACK}Преи
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Преименувай МПС-то
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Преименувай МПС-то
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Не може да преименуваш МПС-то...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Отиди  в {TOWN} МПС-депото
+STR_GO_TO_ROADVEH_DEPOT                                         :Отиди  в {TOWN} МПС-депото
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ремонт в {TOWN} гараж
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Преоборудване автомобила за друг товар

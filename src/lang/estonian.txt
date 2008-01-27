@@ -372,9 +372,9 @@ STR_0130_RENAME                                                 :{BLACK}Nime muu
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liiga palju määratletud nimesid
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valitud nimi on juba kasutusel
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -385,11 +385,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...omani
 STR_013C_CARGO                                                  :{BLACK}Laadung
 STR_013D_INFORMATION                                            :{BLACK}Andmed
 STR_013E_CAPACITIES                                             :{BLACK}Kandevõimed
-STR_013E_TOTAL_CARGO                                            :{BLACK}Laadungit kokku
+STR_TOTAL_CARGO                                                 :{BLACK}Laadungit kokku
 STR_013F_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Selle rongi kandevõime:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Selle rongi kandevõime:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Uus mäng
 STR_0141_LOAD_GAME                                              :{BLACK}Mängu laadimine
@@ -828,7 +828,7 @@ STR_0290_DELETE                                                 :{BLACK}Kustuta
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hävita see linn täielikult
 STR_0292_SAVE_SCENARIO                                          :Salvesta kaart
 STR_0293_LOAD_SCENARIO                                          :Laadi kaart
-STR_LOAD_HEIGHTMAP                                              :Lae kõrguskaart
+STR_MENU_LOAD_HEIGHTMAP                                         :Lae kõrguskaart
 STR_0294_QUIT_EDITOR                                            :Lahku redaktorist
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Välju
@@ -868,9 +868,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvesta
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Mängu valikud
-STR_02C5_DIFFICULTY_SETTINGS                                    :Raskusastme seadistused
-STR_02C7_CONFIG_PATCHES                                         :Paikade seadistamine
+STR_02C4_GAME_OPTIONS                                           :Mängu valikud
+STR_02C6_DIFFICULTY_SETTINGS                                    :Raskusastme seadistused
+STR_MENU_CONFIG_PATCHES                                         :Paikade seadistamine
 STR_NEWGRF_SETTINGS                                             :NewGRF seadistused
 STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_GAMEOPTMENU_0A                                              :
@@ -970,8 +970,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  MÄN
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ikka salvestamisel,{}palun oota salvestuse lõpuni!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Street' stiilis muusikaprogrammi valimine
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglise (originaalne)
@@ -1746,42 +1746,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Raudteej
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Enne on vaja sõidutee lammutada
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Teede ehitamine
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Sõiduteede ehitus
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Trammitee ehitamine
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Trammitee ehitamine
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vali sillatüüp
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... ühesuunalised teed ei saa teedesõlmi omada
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Siia ei saa sõiduteed ehitada...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Trammiteed ei ole võimalik siia rajada...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Trammiteed ei ole võimalik siia rajada...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Siinset sõiduteed ei saa lammutada...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Siinset trammiteed ei saa lammutada...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Siinset trammiteed ei saa lammutada...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Depoo suund
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Trammidepoo suund
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Trammidepoo suund
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Siia ei saa depood ehitada...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Trammidepood ei saa siia rajada
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Trammidepood ei saa siia rajada
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Siia ei saa bussijaama ehitada...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Siia ei saa laadimisplatsi ehitada...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Siia ei saa reisitrammijaama rajada...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Siia ei saa kaubatrammijaama rajada...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Siia ei saa reisitrammijaama rajada...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Siia ei saa kaubatrammijaama rajada...
 STR_180A_ROAD_CONSTRUCTION                                      :Tee-ehitus
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Trammitee ehitamine
+STR_TRAMWAY_CONSTRUCTION                                        :Trammitee ehitamine
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Ehita sõidutee blokk
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Ehita autotee osa kasutades Autoroad režiimi
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Ehita trammitee blokk
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Ehita trammitee blokk
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Ehita trammitee osa kasutades Autotram režiimi
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Depoo ehitamine (veovahendite ehitamiseks ja hooldamiseks)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Ehita trammidepoo (veeremi ehitamiseks ja hoolduseks)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Ehita trammidepoo (veeremi ehitamiseks ja hoolduseks)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Ehita bussijaam
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Ehita veokite laadimisplats
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Ehita reisitrammijaam
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Ehita kaubatrammijaam
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Ehita reisitrammijaam
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Ehita kaubatrammijaam
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Ehita sild
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Ehita trammisild
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Ehita trammisild
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Ehita tunnel
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Ehita trammitunnel
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Ehita trammitunnel
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Lülita ühesuunalised teed sisse/välja
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tee-ehituse ja -lammutamise vahetamine
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Lülitu trammitee ehitamise ja lammutamise vahel
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Lülitu trammitee ehitamise ja lammutamise vahel
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vali depoole suund
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Vali trammidepoo suund
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Vali trammidepoo suund
 STR_1814_ROAD                                                   :Sõidutee
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Valgustatud sõidutee
 STR_1816_TREE_LINED_ROAD                                        :Puiestee
@@ -1924,8 +1924,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Teisele 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Mitme olemasoleva jaama ühendamine
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Selles linnas on juba liiga palju jaamasid
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Liiga palju jaamu
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Liiga palju bussipeatusi
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Liiga palju laadimisplatvorme
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Liiga palju bussipeatusi
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Liiga palju laadimisplatvorme
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Mõnele teisele jaamale liiga lähedal
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Raudteejaam tuleb eelnevalt lammutada
@@ -1956,12 +1956,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}Jaam {ST
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}Jaam {STATION} võtab nüüd vastu veoseid {STRING} ja {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bussijaama suund
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Laadimisplatsi suund
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Reisitrammi suund
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Kaubatrammi suund
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Reisitrammi suund
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Kaubatrammi suund
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Bussijaam tuleb enne hävitada
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Enne pead laadimisplatsi hävitama
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Reisitrammijaam tuleb eelnevalt lammutada
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Kaubatrammijaam tuleb eelnevalt lammutada
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Reisitrammijaam tuleb eelnevalt lammutada
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Kaubatrammijaam tuleb eelnevalt lammutada
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} jaam{P "" a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Puudub -
@@ -1973,8 +1973,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Vali rau
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Vali raudteejaama pikkus
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vali bussijaamale suund
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vali laadimisplatsile suund
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Vali reisitrammijaama suund
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Vali kaubatrammijaama suund
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Vali reisitrammijaama suund
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Vali kaubatrammijaama suund
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vaate viimine jaama juurde
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Näita jaamahinnangut
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Muuda jaama nime
@@ -1996,7 +1996,7 @@ STR_3068_DOCK                                                   :{WHITE}Sadam
 STR_3069_BUOY                                                   :Poi
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...poi on ees
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...jaam on liiga laiaks venitatud
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...korrapäratud jaamad keelatud
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...korrapäratud jaamad keelatud
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Enam kui ühe eseme valimiseks hoia all CTRL klahvi
 
 STR_UNDEFINED                                                   :(määratlemata väljend)
@@ -2037,7 +2037,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvesta
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vali uue mängu tüüp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vali valmis kaart (roheline), eelseadistatud mäng (sinine), või juhusliku kaardiga uus mäng
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Tekita suvaline kaart
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laadi kõrguskaart
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Laadi kõrguskaart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} on ees
@@ -2241,10 +2241,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Merede/
 STR_6813_ECONOMY                                                :{LTBLUE}Majandus: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Rongide ümberpööramine: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastroofid: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Linnanõukogu suhtumine maastikukujundusse: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Linnanõukogu suhtumine maastikukujundusse: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Pole
+STR_NONE                                                        :Pole
 STR_NUM_VERY_LOW                                                :Väga madal
 STR_6816_LOW                                                    :Madal
 STR_6817_NORMAL                                                 :Harilik
@@ -2282,9 +2282,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Ainult raudtee 
 STR_6836_OFF                                                    :Väljas
 STR_6837_ON                                                     :Sees
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Näita mängijate edetabelit
-STR_6839_PERMISSIVE                                             :Soodustav
-STR_683A_TOLERANT                                               :Tolerantne
-STR_683B_HOSTILE                                                :Vaenulik
+STR_PERMISSIVE                                                  :Soodustav
+STR_TOLERANT                                                    :Tolerantne
+STR_HOSTILE                                                     :Vaenulik
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2421,7 +2421,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Selle et
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Selle ettevõtte aktsiatest ei saa 25% müüa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
-STR_7080_PROTECTED                                              :{WHITE}See ettevõtte pole veel piisavalt vana, et aktsiaid vahetada...
+STR_PROTECTED                                                   :{WHITE}See ettevõtte pole veel piisavalt vana, et aktsiaid vahetada...
 
 STR_LIVERY_DEFAULT                                              :Firmavärv
 STR_LIVERY_STEAM                                                :Aurumootorvedur
@@ -2728,17 +2728,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mine {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (laadi ümber ja võta laadung peale)
-STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (laadi maha)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Mine {STATION} (laadi ümber ja jäta tühjaks)
-STR_880A_GO_TO_LOAD                                             :Mine {STATION} (laadi)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Mine {STATION} (laadi ümber ja oota täislaadungit)
-STR_880C_GO_NON_STOP_TO                                         :Sõida läbi {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (laadi maha)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Sõida läbi {STATION} (laadi ümber ja jäta tühjaks)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
+STR_GO_TO_TRANSFER                                              :Mine {STATION} (laadi ümber ja võta laadung peale)
+STR_8807_GO_TO_UNLOAD                                           :Mine {STATION} (laadi maha)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Mine {STATION} (laadi ümber ja jäta tühjaks)
+STR_8808_GO_TO_LOAD                                             :Mine {STATION} (laadi)
+STR_GO_TO_TRANSFER_LOAD                                         :Mine {STATION} (laadi ümber ja oota täislaadungit)
+STR_880A_GO_NON_STOP_TO                                         :Sõida läbi {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (laadi maha)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Sõida läbi {STATION} (laadi ümber ja jäta tühjaks)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
 STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {TOWN} rongidepoos
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
@@ -2842,7 +2842,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Vähenda
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Näita detaile viidud kauba kohta
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Näita täpsemat infot rongivagunite kohta
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Näita iga rongivaguni kandevõimet
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Näita kogu rongi mahtu, jagatud kauba tüübi järgi
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Näita kogu rongi mahtu, jagatud kauba tüübi järgi
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Sihtpunktide nimekiri - vajuta käsul et see valida. CTRL + klik kerib jaama juurde
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Jäta praegune järjestus vahele ja alusta järgmisega. CTRL + klõps jätab vahele kuni valitud järjestuseni
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Kustuta valitud käsk
@@ -2873,8 +2873,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ei saa rongi ümber pöörata.
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Muuda rongivaguni tüübinime
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Raudteesõiduki tüübinime ei saa muuta...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Käsi valitud sihtpunktis sõiduki laadung kõrvaldada
-STR_886F_TRANSFER                                               :{BLACK}Laadi ümber
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Käsi valitud sihtpunktis sõiduki laadung kõrvaldada
+STR_TRANSFER                                                    :{BLACK}Laadi ümber
 STR_CLEAR_TIME                                                  :{BLACK}Tühista aeg
 STR_RESET_LATENESS                                              :{BLACK}Tühista hilinemisloendur
 
@@ -2952,8 +2952,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ei saa m
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nimeta mootorsõidukit
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{}{STATION} jaama saabus esimene buss!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab . . .{} esimene veok saabus {STATION} jaama!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kodanikud tähistavad . . .{}Esimene reisitramm saabus trammijaama {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kodanikud tähistavad . . .{}Esimene kaubatramm saabus trammijaama {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Kodanikud tähistavad . . .{}Esimene reisitramm saabus trammijaama {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Kodanikud tähistavad . . .{}Esimene kaubatramm saabus trammijaama {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Rongikokkupõrge!{}Juht suri peale õnnetust tules
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Mootorsõiduki kokkupõrge rongiga!{}{COMMA} inimest suri õnnetuses
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Transpordivahendit ei saa ümber pöörata...
@@ -2962,7 +2962,7 @@ STR_9034_RENAME                                                 :{BLACK}Nime muu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Muuda mootorsõiduki tüübinime
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Muuda mootorsõiduki tüübinime
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Mootorsõiduki tüübinime ei saa muuta...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Mine linna {TOWN} garaaži
+STR_GO_TO_ROADVEH_DEPOT                                         :Mine linna {TOWN} garaaži
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Hoolda linna {TOWN} mootorsõidukidepoos
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Seadista mootorsõidukit kandmaks teist tüüpi veost

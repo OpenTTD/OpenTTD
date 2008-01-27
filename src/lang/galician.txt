@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}Renomear
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Hay demasiados nomes definidos
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}O nome elixido xa está en uso
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...É pr
 STR_013C_CARGO                                                  :{BLACK}Carga
 STR_013D_INFORMATION                                            :{BLACK}Información
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
-STR_013E_TOTAL_CARGO                                            :{BLACK}Carga Total
+STR_TOTAL_CARGO                                                 :{BLACK}Carga Total
 STR_013F_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Capacidade: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carga total (capacidade) deste tren:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Carga total (capacidade) deste tren:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nova Partida
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Partida
@@ -744,9 +744,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Graba-lo
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Opcións da Partida
-STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
-STR_02C7_CONFIG_PATCHES                                         :Configuración dos Parches
+STR_02C4_GAME_OPTIONS                                           :Opcións da Partida
+STR_02C6_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
+STR_MENU_CONFIG_PATCHES                                         :Configuración dos Parches
 STR_NEWGRF_SETTINGS                                             :Configuración NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Amosar nomes de cidades
@@ -843,8 +843,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  GRAB
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}¡Grabación en progreso,{}por favor espera ata que termine!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selecciona-lo programa 'Música Estilo Ezy Street'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglés
@@ -1666,8 +1666,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Demasiad
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Xunta máis dunha estación/área de carga existente
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Hay demasiadas estacións/áreas de carga nesta cidade
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Hay demasiadas estacións/áreas de carga
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de bus
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas estacions de camións
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Demasiadas paradas de bus
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Demasiadas estacions de camións
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Demasiado cerca doutra estación ou área de carga
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Debes demole-la estación de ferrocarril primeiro
@@ -1732,7 +1732,7 @@ STR_3068_DOCK                                                   :{WHITE}Peirao
 STR_3069_BUOY                                                   :Boia
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia no camiño
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...a estación ocupa demasiado
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacións non uniformes deshabilitadas
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...estacións non uniformes deshabilitadas
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Presiona CTRL para seleccionar máis dun ítem
 
 STR_UNDEFINED                                                   :(cadea indefinida)
@@ -1966,10 +1966,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Cantida
 STR_6813_ECONOMY                                                :{LTBLUE}Economía: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Inverti-lo sentido do tren: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Desastres: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Actitude do consello sobre a reestructuración de áreas: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Actitude do consello sobre a reestructuración de áreas: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Ningún
+STR_NONE                                                        :Ningún
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
@@ -2006,9 +2006,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Só ó final da
 STR_6836_OFF                                                    :Off
 STR_6837_ON                                                     :On
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Mostra-la lista das mellores puntuacións
-STR_6839_PERMISSIVE                                             :Permisivo
-STR_683A_TOLERANT                                               :Tolerante
-STR_683B_HOSTILE                                                :Hostil
+STR_PERMISSIVE                                                  :Permisivo
+STR_TOLERANT                                                    :Tolerante
+STR_HOSTILE                                                     :Hostil
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2139,7 +2139,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Non se p
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Non se pode vender un 25% das accións desta compañía...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propiedade de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} comprada por  {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Esta compañía todavía non comercia con accións...
+STR_PROTECTED                                                   :{WHITE}Esta compañía todavía non comercia con accións...
 
 STR_LIVERY_STEAM                                                :Máquina de Vapor
 STR_LIVERY_DIESEL                                               :Máquina Diésel
@@ -2435,17 +2435,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Hai un t
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir e coller carga)
-STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Ir a {STATION} (Transferir e sair valeiro)
-STR_880A_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} (Transferir e esperar a cargar)
-STR_880C_GO_NON_STOP_TO                                         :Ir sen parar a {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ir sen parar a {STATION} (Transferir e coller carga)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ir sen parar a {STATION} (Descargar)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ir sen parar a {STATION} (Descargar e saír baleiro)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Ir sen parar a {STATION} (Cargar)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sen parar a {STATION} (Transferir e esperar a cargar)
+STR_GO_TO_TRANSFER                                              :Ir a {STATION} (Transferir e coller carga)
+STR_8807_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Ir a {STATION} (Transferir e sair valeiro)
+STR_8808_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
+STR_GO_TO_TRANSFER_LOAD                                         :Ir a {STATION} (Transferir e esperar a cargar)
+STR_880A_GO_NON_STOP_TO                                         :Ir sen parar a {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Ir sen parar a {STATION} (Transferir e coller carga)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ir sen parar a {STATION} (Descargar)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ir sen parar a {STATION} (Descargar e saír baleiro)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Ir sen parar a {STATION} (Cargar)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ir sen parar a {STATION} (Transferir e esperar a cargar)
 STR_GO_TO_TRAIN_DEPOT                                           :Ir o Depósito De Trens de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Face-lo servicio no Depósito de Trens de {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sen paradas o Depósito de Trens de {TOWN}
@@ -2533,7 +2533,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Disminu�
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Mostra-los detalles das mercadorías transportadas
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra-los detalles dos vehículos do tren
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra-la capacidade de cada vehículo
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostra-la capacidade total do tren, dividida por tipos de carga
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra-la capacidade total do tren, dividida por tipos de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de Ordes - Pincha nunha orde para seleccionala
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borra-la orde seleccionada
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Facer que a orde seleccionada sexa de Non Parar
@@ -2559,7 +2559,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se pode cambia-lo sentido do tren...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomea-lo tipo de vehículo de ferrocarril
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Non se pode renome-lo tipo de vehículo de ferrocarril...
-STR_886F_TRANSFER                                               :{BLACK}Transferir
+STR_TRANSFER                                                    :{BLACK}Transferir
 
 STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
@@ -2632,7 +2632,7 @@ STR_9034_RENAME                                                 :{BLACK}Renomear
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomea-lo tipo de vehículo de estrada
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomea-lo tipo de vehículo de estrada
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Non se pode renomea-lo tipo de vehículo de estrada...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir ó Depósito de Vehículos de Estrada de {TOWN}
+STR_GO_TO_ROADVEH_DEPOT                                         :Ir ó Depósito de Vehículos de Estrada de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servicio no Depósito de Vehículos de Estrada de {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reaxustar vehículo para levar un tipo diferente de carga

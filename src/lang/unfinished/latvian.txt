@@ -274,9 +274,9 @@ STR_0130_RENAME                                                 :{BLACK}Maini't 
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Define'ti pa'ra'k daudz nosaukumi
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Izve'le'tais nosaukums jau tiek lietots
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -287,11 +287,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...piede
 STR_013C_CARGO                                                  :{BLACK}Krava
 STR_013D_INFORMATION                                            :{BLACK}Informa'cija
 STR_013E_CAPACITIES                                             :{BLACK}Ietilpi'ba
-STR_013E_TOTAL_CARGO                                            :{BLACK}Krava kopa'
+STR_TOTAL_CARGO                                                 :{BLACK}Krava kopa'
 STR_013F_CAPACITY                                               :{BLACK}Ietilpi'ba: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Jauna spe'le
 STR_0141_LOAD_GAME                                              :{BLACK}Iela'de't spe'li
@@ -758,9 +758,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglaba'
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Spe'les rez'i'mi
-STR_02C5_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
-STR_02C7_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
+STR_02C4_GAME_OPTIONS                                           :Spe'les rez'i'mi
+STR_02C6_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
+STR_MENU_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
 STR_NEWGRF_SETTINGS                                             :Newgrf rez'i'mi
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ra'di't pilse'tu nosaukumus
@@ -858,8 +858,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  Spe'
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Notiek saglabas'ana,{}lu'dzu uzgaidiet!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}izve'lies 'Ez'u Ielas muzikas stila' programmu
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglijas (orig'ina'lie)
@@ -1468,8 +1468,8 @@ STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platform
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekrašanas zonu šajā pilsētā
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz stacijas/iekraušanas zonas
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Pa'ra'k daudz autobusa pieturu
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}pa'ra'k daudz kravas auto staciju
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Pa'ra'k daudz autobusa pieturu
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}pa'ra'k daudz kravas auto staciju
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Jānojauc dzelzsceļa stacija vispirms
@@ -1523,7 +1523,7 @@ STR_3060_AIRPORT                                                :Lidosta
 STR_3062_BUS_STATION                                            :Autoosta
 STR_3063_SHIP_DOCK                                              :Osta
 STR_3068_DOCK                                                   :{WHITE}Osta
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...neregula'ras stacijas nav atl'autas
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...neregula'ras stacijas nav atl'autas
 
 STR_UNDEFINED                                                   :(nedefinēta rinda)
 
@@ -1676,7 +1676,7 @@ STR_7055                                                        :{YELLOW}{STRING
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrots!
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_COMPANY_PASSWORD                                            :{BLACK}Parole
-STR_7080_PROTECTED                                              :{WHITE}S'i' kompa'nija ir pa'ra'k jauna lai tirgotu akcijas...
+STR_PROTECTED                                                   :{WHITE}S'i' kompa'nija ir pa'ra'k jauna lai tirgotu akcijas...
 
 
 
@@ -1780,17 +1780,17 @@ STR_8104_AIRCRAFT                                               :lidmaðîna
 ##id 0x8800
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8807_GO_TO_TRANSFER                                         :Uz {STATION} (Pa'rvest un pan'emt kravu)
-STR_8808_GO_TO_UNLOAD                                           :Uz {STATION} (Nokraut)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Uz {STATION} (Pa'rvest un atsta't tuks'u)
-STR_880A_GO_TO_LOAD                                             :Uz {STATION} (Piekraut)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Go to {STATION} (Pa'rvest un gaidi't pilnu kravu)
-STR_880C_GO_NON_STOP_TO                                         :Bez pieturam uz {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Bez pieturam uz {STATION} (Pa'rvest un pan'emt kravu)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Bez pieturam uz {STATION} (Nokraut)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Bez pieturam uz {STATION} (Pa'rvest un atsta't tuks'u)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Bez pieturam uz {STATION} (Piekraut)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Bez pieturam uz {STATION} (Pa'rvest un gaidi't pilnu kravu)
+STR_GO_TO_TRANSFER                                              :Uz {STATION} (Pa'rvest un pan'emt kravu)
+STR_8807_GO_TO_UNLOAD                                           :Uz {STATION} (Nokraut)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Uz {STATION} (Pa'rvest un atsta't tuks'u)
+STR_8808_GO_TO_LOAD                                             :Uz {STATION} (Piekraut)
+STR_GO_TO_TRANSFER_LOAD                                         :Go to {STATION} (Pa'rvest un gaidi't pilnu kravu)
+STR_880A_GO_NON_STOP_TO                                         :Bez pieturam uz {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Bez pieturam uz {STATION} (Pa'rvest un pan'emt kravu)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Bez pieturam uz {STATION} (Nokraut)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Bez pieturam uz {STATION} (Pa'rvest un atsta't tuks'u)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Bez pieturam uz {STATION} (Piekraut)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Bez pieturam uz {STATION} (Pa'rvest un gaidi't pilnu kravu)
 STR_GO_TO_TRAIN_DEPOT                                           :Uz {TOWN} Vilcienu Depo
 
 
@@ -1808,8 +1808,8 @@ STR_8861_STOPPED                                                :{RED}Stoppets
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Nosaukt vilcienu
 STR_8867_NAME_TRAIN                                             :{BLACK}Nosaukt vilcienu
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Uzsve'rtai pa'velei spiest tansportli'dzekl'im nomest kravu
-STR_886F_TRANSFER                                               :{BLACK}Tranzi'ts
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Uzsve'rtai pa'velei spiest tansportli'dzekl'im nomest kravu
+STR_TRANSFER                                                    :{BLACK}Tranzi'ts
 
 
 
@@ -1821,7 +1821,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacit�
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 
 STR_9034_RENAME                                                 :{BLACK}Pârsaukt
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Dodas uz {TOWN} ceļa mašīnu depo
+STR_GO_TO_ROADVEH_DEPOT                                         :Dodas uz {TOWN} ceļa mašīnu depo
 
 
 ##id 0x9800

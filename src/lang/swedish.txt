@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}Byt namn
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}För många namn definerade
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Namnet används redan
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...ägs 
 STR_013C_CARGO                                                  :{BLACK}Gods
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteter
-STR_013E_TOTAL_CARGO                                            :{BLACK}Gods Totalt
+STR_TOTAL_CARGO                                                 :{BLACK}Gods Totalt
 STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Tågets totala kapacitet:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}{CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tågets totala kapacitet:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}{CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spel
 STR_0141_LOAD_GAME                                              :{BLACK}Ladda spel
@@ -728,7 +728,7 @@ STR_0290_DELETE                                                 :{BLACK}Ta bort
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Ta bort staden helt och hållet
 STR_0292_SAVE_SCENARIO                                          :Spara scenario
 STR_0293_LOAD_SCENARIO                                          :Öppna scenario
-STR_LOAD_HEIGHTMAP                                              :Ladda höjdkarta
+STR_MENU_LOAD_HEIGHTMAP                                         :Ladda höjdkarta
 STR_0294_QUIT_EDITOR                                            :Avsluta editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Avsluta
@@ -768,9 +768,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Spara eg
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Spelinställningar
-STR_02C5_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
-STR_02C7_CONFIG_PATCHES                                         :Ändra Patchar
+STR_02C4_GAME_OPTIONS                                           :Spelinställningar
+STR_02C6_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
+STR_MENU_CONFIG_PATCHES                                         :Ändra Patchar
 STR_NEWGRF_SETTINGS                                             :NewGRF inställningar
 STR_TRANSPARENCY_OPTIONS                                        :Genomskinlighetsinställningar
 STR_GAMEOPTMENU_0A                                              :
@@ -870,8 +870,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  SPAR
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Sparar fortfarande,{}vänta tills det är slutfört!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Välj 'Ezy Street style music'-program
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engelska
@@ -1646,42 +1646,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Måste t
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Måste ta bort väg först
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vägarbete pågår
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg väg
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Byggnation av spårvagn
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Byggnation av spårvagn
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Välj vägbro
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... enkelriktade vägar kan inte ha korsningar
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan inte bygga väg här...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan inte bygga spårvagnsräls här...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Kan inte bygga spårvagnsräls här...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan inte ta bort väg här...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Kan inte ta bort spårvagnsrälsen härifrån...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Kan inte ta bort spårvagnsrälsen härifrån...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Riktning för bussgarage
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Spårvagnsdepåns orientering
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Spårvagnsdepåns orientering
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan inte bygga bussgarage här...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kan inte bygga spårvagnsdepå här...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Kan inte bygga spårvagnsdepå här...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan inte bygga busshållplats...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan inte bygga lastbilsstation...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kan inte bygga passagerar-spårvagnsstation...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan inte bygga frakt-spårvagnsstation...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Kan inte bygga passagerar-spårvagnsstation...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Kan inte bygga frakt-spårvagnsstation...
 STR_180A_ROAD_CONSTRUCTION                                      :Bygg väg
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Spårvagnskonstruktion
+STR_TRAMWAY_CONSTRUCTION                                        :Spårvagnskonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bygg väg
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Använd Automatvägläge för att bygga vägsektion
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bygg spårvagnssektion
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Bygg spårvagnssektion
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Använd Automatspårläge för att bygga spårväg
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bygg bussgarage (för att bygga eller reparera vägfordon)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bygg spårvagnsdepå (för att konstruera och serva fordon)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Bygg spårvagnsdepå (för att konstruera och serva fordon)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bygg busshållplats
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bygg lastbilsstation
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Bygg passagerar-spårvagnsstation
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Bygg frakt-spårvagnsstation
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Bygg passagerar-spårvagnsstation
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Bygg frakt-spårvagnsstation
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg vägbro
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bygg spårvagnsbro
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Bygg spårvagnsbro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg vägtunnel
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bygg spårvagnstunnel
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Bygg spårvagnstunnel
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktivera/Deaktivera enkelriktade vägar
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Växla mellan att bygga/ta bort väg
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Växla byggande/rivande av spårvagnskonstruktion
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Växla byggande/rivande av spårvagnskonstruktion
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Välj riktning för bussgarage
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Välj spårvagnsdepåns orientering
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Välj spårvagnsdepåns orientering
 STR_1814_ROAD                                                   :Väg
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Väg med gatubelysning
 STR_1816_TREE_LINED_ROAD                                        :Väg med träd
@@ -1824,8 +1824,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}För nä
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Angränsar till mer än en station/hållplats
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}För många stationer/hållplatser i staden
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}För många stationer/hållplatser
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}För många busshållplatser
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}För många lastbilsstationer
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}För många busshållplatser
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}För många lastbilsstationer
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}För nära en annan stationer/hållplatser
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Måste riva järnvägsstation först
@@ -1856,12 +1856,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} tar nu emot {STRING} och {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busshållplatsriktning
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastbilsbryggsriktning
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Passagerar-spårvagns riktning
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Frakt-spårvagns riktning
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Passagerar-spårvagns riktning
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Frakt-spårvagns riktning
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Måste riva busshållplats först
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Måste riva lastbilsbrygga först
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Måste ta bort passagerar-spårvagnsstation först
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Måste ta bort frakt-spårvagnsstation först
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Måste ta bort passagerar-spårvagnsstation först
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Måste ta bort frakt-spårvagnsstation först
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Inga -
@@ -1873,8 +1873,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Välj an
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Välj längden på järnvägsstation
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Välj riktning för busshållplats
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Välj riktning för lastbilsbrygga
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Välj passagerar-spårvagnsstationens orientering
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Välj frakt-spårvagnsstationens orientering
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Välj passagerar-spårvagnsstationens orientering
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Välj frakt-spårvagnsstationens orientering
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrera vyn på stationen
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Visa stationens klassificering
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Byt namn på stationen
@@ -1896,7 +1896,7 @@ STR_3068_DOCK                                                   :{WHITE}Hamn
 STR_3069_BUOY                                                   :Boj
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boj i vägen
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station för utspridd
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ej enhetliga stationer inaktiverade
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ej enhetliga stationer inaktiverade
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Håll nere CTRL för att markera mer än en sak
 
 STR_UNDEFINED                                                   :(oidentifierad sträng)
@@ -1937,7 +1937,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Spara sp
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Välj typ av nytt spel
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (grön), förbestämt spel (blå), eller slumpmässigt nytt spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Skapa slumpmässigt nytt spel
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Läs höjdkarta
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Läs höjdkarta
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} i vägen
@@ -2141,10 +2141,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Mängd 
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Tåg kan vända: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrofer: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Stadens attityd mot områdesombyggnad: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Stadens attityd mot områdesombyggnad: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Ingen
+STR_NONE                                                        :Ingen
 STR_NUM_VERY_LOW                                                :Väldigt låg
 STR_6816_LOW                                                    :Låg
 STR_6817_NORMAL                                                 :Normal
@@ -2182,9 +2182,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Enbart vid slut
 STR_6836_OFF                                                    :Av
 STR_6837_ON                                                     :På
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Visa highscore-lista
-STR_6839_PERMISSIVE                                             :Eftergiven
-STR_683A_TOLERANT                                               :Tolerant
-STR_683B_HOSTILE                                                :Fientlig
+STR_PERMISSIVE                                                  :Eftergiven
+STR_TOLERANT                                                    :Tolerant
+STR_HOSTILE                                                     :Fientlig
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2321,7 +2321,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan inte
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan inte sälja 25% andelar i detta företag...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% ägs av {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har tagits över av {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Det här företaget bedriver inte aktiehandel ännu....
+STR_PROTECTED                                                   :{WHITE}Det här företaget bedriver inte aktiehandel ännu....
 
 STR_LIVERY_DEFAULT                                              :Normalt Färgschema
 STR_LIVERY_STEAM                                                :Ånglok
@@ -2628,17 +2628,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i v
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Åk till {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Åk till {STATION} (Lasta om och på)
-STR_8808_GO_TO_UNLOAD                                           :Åk till {STATION} (Lasta av)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Åk till {STATION} (Lasta om men inte på)
-STR_880A_GO_TO_LOAD                                             :Åk till {STATION} (Lasta på)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Åk till {STATION} (Lasta om och vänta på full last)
-STR_880C_GO_NON_STOP_TO                                         :Åk nonstop till {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Åk nonstop till {STATION} (Lasta om och på)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Åk nonstop till {STATION} (Lasta av)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Åk nonstop till {STATION} (Lasta om men inte på)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Åk nonstop till {STATION} (Lasta på)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Åk nonstop till {STATION} (Lasta om och vänta på full last)
+STR_GO_TO_TRANSFER                                              :Åk till {STATION} (Lasta om och på)
+STR_8807_GO_TO_UNLOAD                                           :Åk till {STATION} (Lasta av)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Åk till {STATION} (Lasta om men inte på)
+STR_8808_GO_TO_LOAD                                             :Åk till {STATION} (Lasta på)
+STR_GO_TO_TRANSFER_LOAD                                         :Åk till {STATION} (Lasta om och vänta på full last)
+STR_880A_GO_NON_STOP_TO                                         :Åk nonstop till {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Åk nonstop till {STATION} (Lasta om och på)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Åk nonstop till {STATION} (Lasta av)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Åk nonstop till {STATION} (Lasta om men inte på)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Åk nonstop till {STATION} (Lasta på)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Åk nonstop till {STATION} (Lasta om och vänta på full last)
 STR_GO_TO_TRAIN_DEPOT                                           :Åk till {TOWN}s tågdepå
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servning vid {TOWN} tågdepå
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Åk non-stop till {TOWN}s tågdepå
@@ -2742,7 +2742,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Minska s
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Visa detaljer för lastat gods
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Visa detaljer för tågfordon
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Visa kapaciteter för varje fordon
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlista - klicka på order för att markera det
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hoppa över nuvarande order och starta nästa. CTRL + klick hoppar över till vald order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Ta bort markerad order
@@ -2773,8 +2773,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan inte byta tågets riktning...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Byt namn på tågets fordonstyp
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan inte byta namn på tågets fordonstyp...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör så att den markerade ordern tvingar fordonet att lasta av
-STR_886F_TRANSFER                                               :{BLACK}Lasta om
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Gör så att den markerade ordern tvingar fordonet att lasta av
+STR_TRANSFER                                                    :{BLACK}Lasta om
 STR_CLEAR_TIME                                                  :{BLACK}Rensa tid
 STR_RESET_LATENESS                                              :{BLACK}Rensa räknaren för sen ankomst
 
@@ -2852,8 +2852,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan inte
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Byt namn på vägfordon
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första bussen ankommer till {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första lastbilen ankommer till {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Invånarna firar . . .{}Första passagerar-spårvagnen anländer på {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Invånarna firar . . .{}Första frakt-spårvagnen anländer på {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Invånarna firar . . .{}Första passagerar-spårvagnen anländer på {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Invånarna firar . . .{}Första frakt-spårvagnen anländer på {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Vägfordonskrash!{}förare dör i eldklot efter kollision med tåg
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Vägfordonskrash!{}{COMMA} dör i eldklot efter kollision med tåg
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan inte tvinga fordonet att vända om...
@@ -2862,7 +2862,7 @@ STR_9034_RENAME                                                 :{BLACK}Byt namn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Byt namn på vägfordon typ
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Byt namn på vägfordon typ
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan inte byta namn på vägfordon typ...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå till {TOWN} vägfordonsdepå
+STR_GO_TO_ROADVEH_DEPOT                                         :Gå till {TOWN} vägfordonsdepå
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servning vid {TOWN} vägfordonsdepå Depot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Anpassa vägfordon till att bära en annan sorts last

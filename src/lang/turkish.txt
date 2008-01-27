@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}Yeni ad
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Çok fazla adlandırma
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Seçilen isim kullanımda
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...sahib
 STR_013C_CARGO                                                  :{BLACK}Kargo
 STR_013D_INFORMATION                                            :{BLACK}Bilgi
 STR_013E_CAPACITIES                                             :{BLACK}Kapasite
-STR_013E_TOTAL_CARGO                                            :{BLACK}Toplam Kargo
+STR_TOTAL_CARGO                                                 :{BLACK}Toplam Kargo
 STR_013F_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapasite: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Bu trenin toplam kapasitesi:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Bu trenin toplam kapasitesi:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Yeni Oyun
 STR_0141_LOAD_GAME                                              :{BLACK}Oyun Yükle
@@ -728,7 +728,7 @@ STR_0290_DELETE                                                 :{BLACK}Sil
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
 STR_0292_SAVE_SCENARIO                                          :Kaydet
 STR_0293_LOAD_SCENARIO                                          :Yükle
-STR_LOAD_HEIGHTMAP                                              :Yükseklik haritası yükle
+STR_MENU_LOAD_HEIGHTMAP                                         :Yükseklik haritası yükle
 STR_0294_QUIT_EDITOR                                            :Editörden Çık
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Oyundan Çık
@@ -768,9 +768,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Özelle�
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Seçenekler
-STR_02C5_DIFFICULTY_SETTINGS                                    :Zorluk Ayarları
-STR_02C7_CONFIG_PATCHES                                         :Yamaları Düzenle
+STR_02C4_GAME_OPTIONS                                           :Seçenekler
+STR_02C6_DIFFICULTY_SETTINGS                                    :Zorluk Ayarları
+STR_MENU_CONFIG_PATCHES                                         :Yamaları Düzenle
 STR_NEWGRF_SETTINGS                                             :Newgrf ayarları
 STR_TRANSPARENCY_OPTIONS                                        :Şeffaflık seçenekleri
 STR_GAMEOPTMENU_0A                                              :
@@ -870,8 +870,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  KAYD
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Kayıt işlemi sürüyor,{}lütfen bitene kadar bekleyin!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Sokagi stili muzik' programını seç
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :İngilizce (Orjinal)
@@ -1644,42 +1644,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tr
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Önce yol silinmeli
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Yol çalışmaları
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yapımı
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Tramvay Yapımı
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvay Yapımı
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...tek yönlü yollar kesişemez
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol yapılamıyor...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Buraya tramvay yapılamaz...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Buraya tramvay yapılamaz...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Yol kaldırılamıyor...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Tramvay kaldırılamaz...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Tramvay kaldırılamaz...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Garaj Yönü
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Tramvay Garı Yönü
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Tramvay Garı Yönü
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Buraya Garaj yapılamaz...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Buraya tramvay garı yapılamaz...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Buraya tramvay garı yapılamaz...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Otobüs durağı yapılamaz...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kamyon durağı yapılamaz...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Yolcu tramvayı istasyonu yapılamaz...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Yük tramvayı istasyonu yapılamaz...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Yolcu tramvayı istasyonu yapılamaz...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Yük tramvayı istasyonu yapılamaz...
 STR_180A_ROAD_CONSTRUCTION                                      :Yol yapımı
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Tramvay yapımı
+STR_TRAMWAY_CONSTRUCTION                                        :Tramvay yapımı
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Yol bölmesi yap
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Otoyol modunu kullanarak yol yap
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Tramvay yolu yap
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Tramvay yolu yap
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Otoray modunu kullanarak tramvay yolu yap
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garaj yap (araç alımı ve bakımlar için)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Otobüs durağı yap
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Kamyon yükleme bölgesi yap
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Yolcu tramvayı istasyonu yap
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Yük tramvayı istasyonu yap
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Yolcu tramvayı istasyonu yap
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Yük tramvayı istasyonu yap
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Köprü yap
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Tramvay köprüsü yap
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Tramvay köprüsü yap
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Tünel Yap
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Tramvay tüneli yap
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Tramvay tüneli yap
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Tek yönlü yolları etkinleştir/kapat
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Yol yap/sil arasında geçiş yap
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Tramvay yapımı/yıkımı
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Tramvay yapımı/yıkımı
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Garaj yönünü seç
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Tramvay garı yönü
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Tramvay garı yönü
 STR_1814_ROAD                                                   :Yol
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Lambali yol
 STR_1816_TREE_LINED_ROAD                                        :Ağaçli yol
@@ -1822,8 +1822,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Başka t
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Birden fazla istasyona bitişik
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Bu şehirde çok fazla istasyon var
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Haritada çok fazla istasyon var
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Çok fazla durak var
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Çok fazla kamyon yükleme yeri var
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Çok fazla durak var
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Çok fazla kamyon yükleme yeri var
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Başka bir istasyona çok yakın
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Önce tren istasyonu yıkılmalı
@@ -1854,12 +1854,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} artık {STRING} ve {STRING} istiyor
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Otobüs Durağı Yönü
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Kamyon Durağı Yönü
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Yolcu Tramvayı Yönü
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Yük Tramvayı Yönü
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Yolcu Tramvayı Yönü
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Yük Tramvayı Yönü
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Önce otobüs durağı yıkılmalı
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Önce kamyon durağı yıkılmalı
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Önce yolcu tramvayı istasyonu yıkılmalı
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Önce yük tramvayı istasyonu kaldırılmalı
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Önce yolcu tramvayı istasyonu yıkılmalı
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Önce yük tramvayı istasyonu kaldırılmalı
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} istasyonları
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Yok -
@@ -1871,8 +1871,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Tren ist
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Tren istasyonu uzunluğu seç
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Otobüs durağı yönünü seç
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Kamyon durağı yönünü seç
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Yolcu tramvayı istasyonu yönünü seçin
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Yük tramvayı istasyonu yönünü seçin
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Yolcu tramvayı istasyonu yönünü seçin
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Yük tramvayı istasyonu yönünü seçin
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Durağın oldugu yere git
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}İstasyonun reytinglerini göster
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}İstasyonun ismini değiştir
@@ -1894,7 +1894,7 @@ STR_3068_DOCK                                                   :{WHITE}İskele
 STR_3069_BUOY                                                   :Şamandıra
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...yolda şamandıra var
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...istasyon çok yayılmış
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...özel istasyon ayarı kapalı
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...özel istasyon ayarı kapalı
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Birden fazla şey seçmek için CTRL'yi basılı tutun
 
 STR_UNDEFINED                                                   :(tanımlanmamış sözcük)
@@ -1935,7 +1935,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Oyunu se
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Yeni oyun türü seç
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Senaryo (yeşil), kurulu oyun (mavi) veya yeni oyun seç
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Rastgele haritada oyna
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Yükseklik haritası yükle
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Yükseklik haritası yükle
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}yolda {STRING} var
@@ -2139,10 +2139,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Su mikt
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Tren ters dönüşü: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Felaketler: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Belediyenin töleransi: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Belediyenin töleransi: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Hiç
+STR_NONE                                                        :Hiç
 STR_NUM_VERY_LOW                                                :Çok az
 STR_6816_LOW                                                    :Düşük
 STR_6817_NORMAL                                                 :Normal
@@ -2180,9 +2180,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Sadece Ray Sonu
 STR_6836_OFF                                                    :Kapalı
 STR_6837_ON                                                     :Açik
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Punaları Göster
-STR_6839_PERMISSIVE                                             :İzin verici
-STR_683A_TOLERANT                                               :Töleransli
-STR_683B_HOSTILE                                                :Katı
+STR_PERMISSIVE                                                  :İzin verici
+STR_TOLERANT                                                    :Töleransli
+STR_HOSTILE                                                     :Katı
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2319,7 +2319,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Şirketi
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Şirketin %25'i satılamıyor...
 STR_707D_OWNED_BY                                               :{WHITE}(%{COMMA} ortağı {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}, {COMPANY} tarafından alındı!
-STR_7080_PROTECTED                                              :{WHITE}Bu şirket hisselerini satacak kadar eski değil...
+STR_PROTECTED                                                   :{WHITE}Bu şirket hisselerini satacak kadar eski değil...
 
 STR_LIVERY_DEFAULT                                              :Şirket Rengi
 STR_LIVERY_STEAM                                                :Buharlı Lokomotif
@@ -2626,17 +2626,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Yolda tr
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Git: {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Aktar: {STATION} (Kargoyu al)
-STR_8808_GO_TO_UNLOAD                                           :Git: {STATION} (Boşalt)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Aktar: {STATION} (Boş dön)
-STR_880A_GO_TO_LOAD                                             :Git: {STATION} (Doldur)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Aktar: {STATION} (Tam doldur)
-STR_880C_GO_NON_STOP_TO                                         :Durmadan git: {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Durmadan aktar: {STATION} (Kargoyu al)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Durmadan git: {STATION} (Boşalt)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Durmadan aktar: {STATION} (Boş dön)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Durmadan git: {STATION} (Doldur)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Durmadan aktar: {STATION} (Tam doldur)
+STR_GO_TO_TRANSFER                                              :Aktar: {STATION} (Kargoyu al)
+STR_8807_GO_TO_UNLOAD                                           :Git: {STATION} (Boşalt)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Aktar: {STATION} (Boş dön)
+STR_8808_GO_TO_LOAD                                             :Git: {STATION} (Doldur)
+STR_GO_TO_TRANSFER_LOAD                                         :Aktar: {STATION} (Tam doldur)
+STR_880A_GO_NON_STOP_TO                                         :Durmadan git: {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Durmadan aktar: {STATION} (Kargoyu al)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Durmadan git: {STATION} (Boşalt)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Durmadan aktar: {STATION} (Boş dön)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Durmadan git: {STATION} (Doldur)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Durmadan aktar: {STATION} (Tam doldur)
 STR_GO_TO_TRAIN_DEPOT                                           :Git: {TOWN} Tren Garı
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakıma git: {TOWN} Tren Garı
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Garı
@@ -2740,7 +2740,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Bakım z
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Taşınan kargonun ayrıntıları
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Trenin ayrıntıları
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Her aracın kapasitesi
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Trenin kargo türlerine ayrilmis toplam kapasitesini göster
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Trenin kargo türlerine ayrilmis toplam kapasitesini göster
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki talimatı atla ve sonrakine geç. CTRL ile tıklanırsa seçili talimata geçilir
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili talimatı sil
@@ -2771,8 +2771,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Tren çevrilemez...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yeniden adlandırılamaz
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandırılamaz...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatta aracı kargoyu boşaltmaya zorla
-STR_886F_TRANSFER                                               :{BLACK}Aktar
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Seçili talimatta aracı kargoyu boşaltmaya zorla
+STR_TRANSFER                                                    :{BLACK}Aktar
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
 STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
 
@@ -2849,8 +2849,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Araba ad
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Arabayı adlandır
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez otobüs geldi: {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez kamyon geldi: {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yolcu tramvayı geldi!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}{STATION} istasyonuna ilk kez yük tramvayı geldi!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Trafik kazasi!{}Trenle çarpisan aracın soförü feci şekilde can verdi
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Trafik kazasi!{}{COMMA} kişi patlamadan kurtulamadı
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Araç döndürülemiyor...
@@ -2859,7 +2859,7 @@ STR_9034_RENAME                                                 :{BLACK}İsim
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Araç türünü yeniden adlandır
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Araç türünü yeniden adlandır
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Araç türü yeniden adlandırılamıyor...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Garaja git: {TOWN}
+STR_GO_TO_ROADVEH_DEPOT                                         :Garaja git: {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servise git: {TOWN} Garaji
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Kamyonu başka türde kargo taşıyabilmesi için modifiye et

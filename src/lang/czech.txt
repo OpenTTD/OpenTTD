@@ -330,9 +330,9 @@ STR_0130_RENAME                                                 :{BLACK}Přejmen
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Definováno příliš mnoho jmen
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Zvolené jméno se už používá
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unixu
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unixu
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -343,11 +343,11 @@ STR_013B_OWNED_BY                                               :{WHITE}... vlas
 STR_013C_CARGO                                                  :{BLACK}Náklad
 STR_013D_INFORMATION                                            :{BLACK}Informace
 STR_013E_CAPACITIES                                             :{BLACK}Kapacity
-STR_013E_TOTAL_CARGO                                            :{BLACK}Celkový náklad
+STR_TOTAL_CARGO                                                 :{BLACK}Celkový náklad
 STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celková kapacita tohoto vlaku:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Celková kapacita tohoto vlaku:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nová hra
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrát hru
@@ -787,7 +787,7 @@ STR_0290_DELETE                                                 :{BLACK}Smaž
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Smazat celé toto město
 STR_0292_SAVE_SCENARIO                                          :Uložit mapu
 STR_0293_LOAD_SCENARIO                                          :Otevřit mapu
-STR_LOAD_HEIGHTMAP                                              :Použít výškovou mapu
+STR_MENU_LOAD_HEIGHTMAP                                         :Použít výškovou mapu
 STR_0294_QUIT_EDITOR                                            :Ukončit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ukončit
@@ -827,9 +827,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Uložit 
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Možnosti hry
-STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavení obtížnosti
-STR_02C7_CONFIG_PATCHES                                         :Nastavení patchů
+STR_02C4_GAME_OPTIONS                                           :Možnosti hry
+STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavení obtížnosti
+STR_MENU_CONFIG_PATCHES                                         :Nastavení patchů
 STR_NEWGRF_SETTINGS                                             :Nastavení newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Nastavení průhlednosti
 STR_GAMEOPTMENU_0A                                              :
@@ -929,8 +929,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  UKL�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Zvolit 'Ezy Street style music' program
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglická (původní)
@@ -1705,42 +1705,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejpr
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Musíš nejprve odstranit silnici
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Silnice je v rekonstrukci
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Výstavba silnic
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Výstavba tramvajové tratě
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Výstavba tramvajové tratě
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Zvolit silniční most
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... na jednosměrných silnicích nemůžou být křižovatky
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Zde nemohu postavit silnici...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Zde není možné postavit tramvajovou trať...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Zde není možné postavit tramvajovou trať...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nemohu odsud odstranit silnici
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Není možné odsud odstranit tramvajovou trať...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Není možné odsud odstranit tramvajovou trať...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientace garáže
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientace tramvajového depa
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientace tramvajového depa
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tady nejde postavit garáž
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Zde není možné postavit depo pro tramvaje...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Zde není možné postavit depo pro tramvaje...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemohu postavit autobusovou stanici...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemohu postavit nákladovou rampu...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Není možné postavit tramvajovou stanici pro cestující...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Není možné postavit tramvajovou stanici pro cestující...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Není možné postavit tramvajovou stanici pro cestující...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Není možné postavit tramvajovou stanici pro cestující...
 STR_180A_ROAD_CONSTRUCTION                                      :Výstavba silnic
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Výstavba tramvajové tratě
+STR_TRAMWAY_CONSTRUCTION                                        :Výstavba tramvajové tratě
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit silnici
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Postavit úsek silnice pomocí módu Autoroad
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Položit kus kolejí pro tramvaje
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Položit kus kolejí pro tramvaje
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Postavit úsek tramvajové tratě pomocí módu Autoroad
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garáž (pro nákup a servis vozidel)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Vystavět tramvajové depo (na kupování a servis tramvají)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Vystavět tramvajové depo (na kupování a servis tramvají)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Postavit autobusovou stanici
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Postavit nákladovou rampu
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Postavit tramvajovou stanici pro cestující
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Postavit nákladní tramvajovou stanici
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Postavit tramvajovou stanici pro cestující
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Postavit nákladní tramvajovou stanici
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit silniční most
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Postavit tramvajový most
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Postavit tramvajový most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit silniční tunel
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Postavit tramvajový tunel
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Postavit tramvajový tunel
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Povolit / zakázat jednosměrné silnice
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Přepnout stavba / odstranění silnice
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Výběr orientace garáže
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Zvol směr tramvajového depa
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Zvol směr tramvajového depa
 STR_1814_ROAD                                                   :Silnice
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Silnice s pouličním osvětlením
 STR_1816_TREE_LINED_ROAD                                        :Silnice s alejí
@@ -1883,8 +1883,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Příli�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Spojuje více jak jedno existující nádraží nebo nákladovou rampu...
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Příliš mnoho nádraží nebo nákladových ramp v tomto městě
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Příliš mnoho nádraží nebo nákladových ramp
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Příliš mnoho autobusových zastávek
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Příliš mnoho zastávek nákladních automobilů
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Příliš mnoho autobusových zastávek
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Příliš mnoho zastávek nákladních automobilů
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Příliš blízko k jinému nádraží nebo nákladové rampě
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Musíš nejprve zničit stanici
@@ -1915,12 +1915,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} nyní přijímá {STRING} a {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientace autobusové zastávky.
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientace nákladové rampy
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientace tramvajové stanice pro cestující
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientace nákladní tramvajové stanice
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orientace tramvajové stanice pro cestující
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Orientace nákladní tramvajové stanice
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Musíš nejprve zničit autobusovou zastávku
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Musíš nejprve zničit nákladovou rampu
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Je nutné nejdříve zbourat tramvajovou stanici pro cestující
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Je nutné nejdříve zbourat nákladní tramvajovou stanici
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Je nutné nejdříve zbourat tramvajovou stanici pro cestující
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Je nutné nejdříve zbourat nákladní tramvajovou stanici
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stanic{P e e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nic -
@@ -1932,8 +1932,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Zvolit p
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Zvolit délku nádraží
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Zvolit orientaci autobusové zastávky
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Zvolit orientaci nákladové rampy
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Vyber směr tramvajové stanice pro cestující
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Vyber směr nákladní tramvajové stanice
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Vyber směr tramvajové stanice pro cestující
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Vyber směr nákladní tramvajové stanice
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentrovat pohled na stanici
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Ukázat hodnocení společností
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Změnit jméno stanice
@@ -1955,7 +1955,7 @@ STR_3068_DOCK                                                   :{WHITE}Přísta
 STR_3069_BUOY                                                   :Bójka
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... bójka v cestě
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanice je příliš rozložitá
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... nejednolité stanice nejsou povoleny
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}... nejednolité stanice nejsou povoleny
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podržením CTRL můžeš označit více položek
 
 STR_UNDEFINED                                                   :(nedefinovaný řetězec)
@@ -1996,7 +1996,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Uložit 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Zvolit nový typ hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Zvolit scénář (zelená), přednastavenou hru (modrá), nebo novou náhodnou hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vytvořit novou náhodnou hru
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Nahrát výškovou mapu
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Nahrát výškovou mapu
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} v cestě
@@ -2200,10 +2200,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Kvantit
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomika: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Otáčení vlaků: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrofy: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Postoj místní rady k (terénním) úpravám kolem města: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Postoj místní rady k (terénním) úpravám kolem města: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :žádný
+STR_NONE                                                        :žádný
 STR_NUM_VERY_LOW                                                :velmi nízké
 STR_6816_LOW                                                    :nízké
 STR_6817_NORMAL                                                 :střední
@@ -2241,9 +2241,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :pouze na konci 
 STR_6836_OFF                                                    :vypnuty
 STR_6837_ON                                                     :zapnuty
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Zobraz tabulku nejlepších výsledků
-STR_6839_PERMISSIVE                                             :nezaujatý
-STR_683A_TOLERANT                                               :tolerantní
-STR_683B_HOSTILE                                                :zaujatý
+STR_PERMISSIVE                                                  :nezaujatý
+STR_TOLERANT                                                    :tolerantní
+STR_HOSTILE                                                     :zaujatý
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2380,7 +2380,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nemohu k
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nemohu prodat podíl v této společnosti...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% vlastněno {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} byla převzata {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Tato společnost zatím neobchoduje s akciemi...
+STR_PROTECTED                                                   :{WHITE}Tato společnost zatím neobchoduje s akciemi...
 
 STR_LIVERY_DEFAULT                                              :Výchozí barva
 STR_LIVERY_STEAM                                                :Parní lokomotiva
@@ -2695,17 +2695,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Jet do {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Jet do {STATION} (přeložit a naložit jiný náklad)
-STR_8808_GO_TO_UNLOAD                                           :Jet do {STATION} (vyložit)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Jet do {STATION} (přeložit a nenakládat)
-STR_880A_GO_TO_LOAD                                             :Jet do {STATION} (naložit)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Jet do {STATION} (přeložit a plně naložit jiný náklad)
-STR_880C_GO_NON_STOP_TO                                         :Jet bez zastavení do {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Jet bez zastavení do {STATION} (přeložit a naložit jiný náklad)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Jet bez zastavení do {STATION} (vyložit)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Jet bez zastavení do {STATION} (přeložit a nenakládat)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Jet bez zastavení do {STATION} (naložit)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Jet bez zastavení do {STATION} (přeložit a plně naložit jiný náklad)
+STR_GO_TO_TRANSFER                                              :Jet do {STATION} (přeložit a naložit jiný náklad)
+STR_8807_GO_TO_UNLOAD                                           :Jet do {STATION} (vyložit)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Jet do {STATION} (přeložit a nenakládat)
+STR_8808_GO_TO_LOAD                                             :Jet do {STATION} (naložit)
+STR_GO_TO_TRANSFER_LOAD                                         :Jet do {STATION} (přeložit a plně naložit jiný náklad)
+STR_880A_GO_NON_STOP_TO                                         :Jet bez zastavení do {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Jet bez zastavení do {STATION} (přeložit a naložit jiný náklad)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Jet bez zastavení do {STATION} (vyložit)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Jet bez zastavení do {STATION} (přeložit a nenakládat)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Jet bez zastavení do {STATION} (naložit)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Jet bez zastavení do {STATION} (přeložit a plně naložit jiný náklad)
 STR_GO_TO_TRAIN_DEPOT                                           :Jet do železničního depa v {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Údržba v železničním depu {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastavení do železničního depa {TOWN}
@@ -2809,7 +2809,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Zkrátit
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Ukázat detaily přepravovaného zboží
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Ukázat detaily jednotlivých vagonů
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Ukázat kapacity jednotlivých vagonů
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Ukázat celkovou kapacitu vlaku, rozdělenou dle nákladu
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Ukázat celkovou kapacitu vlaku, rozdělenou dle nákladu
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na stanici
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Přeskočit příkaz a jít na další. Pomocí CTRL + kliknutí se přeskočí na vybraný příkaz
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Smazat označený příkaz
@@ -2840,8 +2840,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nelze obrátit vlak...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Přejmenovat typ železničního vozidla
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu přejmenovat typ železničního vozidla...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}U označeného příkazu vozidlo musí vyložit náklad
-STR_886F_TRANSFER                                               :{BLACK}Překládka
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}U označeného příkazu vozidlo musí vyložit náklad
+STR_TRANSFER                                                    :{BLACK}Překládka
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
 STR_RESET_LATENESS                                              :{BLACK}Smazat ukazatel zpoždění
 
@@ -2919,8 +2919,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nelze p�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Přejmenovat silniční vozidlo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První autobus přijel do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní vozidlo přijelo do {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První tramvaj pro cestující přijela do {STATION}
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První tramvaj pro cestující přijela do {STATION}
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První nákladní tramvaj přijíždí do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravní nehoda!{}Řidič zahynul v plamenech při srážce s vlakem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA} {P člověk lidé lidí} zahynul{P "" i o} v plamenech při srážce s vlakem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nelze otočit vozidlo...
@@ -2929,7 +2929,7 @@ STR_9034_RENAME                                                 :{BLACK}Přejmen
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Přejmenovat typ silničního vozidla
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Přejmenovat typ silničního vozidla
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nelze přejmenovat typ silničního vozidla...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Jet do garáže {TOWN}
+STR_GO_TO_ROADVEH_DEPOT                                         :Jet do garáže {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Údržba v garáži {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Přestavět silniční vozidlo, aby mohlo vozit jiný druh nákladu

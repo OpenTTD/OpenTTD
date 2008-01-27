@@ -273,9 +273,9 @@ STR_0130_RENAME                                                 :{BLACK}Renombra
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Demasiados nombres definidos
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}El nombre elegido está en uso
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -286,11 +286,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...propi
 STR_013C_CARGO                                                  :{BLACK}Carga
 STR_013D_INFORMATION                                            :{BLACK}Información
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
-STR_013E_TOTAL_CARGO                                            :{BLACK}Carga total
+STR_TOTAL_CARGO                                                 :{BLACK}Carga total
 STR_013F_CAPACITY                                               :{BLACK}Capacidad: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Capacidad: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carga total (capacidad) de este tren:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Carga total (capacidad) de este tren:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nuevo Juego
 STR_0141_LOAD_GAME                                              :{BLACK}Cargar Juego
@@ -729,7 +729,7 @@ STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar esta población completamente
 STR_0292_SAVE_SCENARIO                                          :Guardar escenario
 STR_0293_LOAD_SCENARIO                                          :Cargar escenario
-STR_LOAD_HEIGHTMAP                                              :Cargar mapa de alturas
+STR_MENU_LOAD_HEIGHTMAP                                         :Cargar mapa de alturas
 STR_0294_QUIT_EDITOR                                            :Salir del editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Salir
@@ -769,9 +769,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Guardar 
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Opciones de juego
-STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de dificultad
-STR_02C7_CONFIG_PATCHES                                         :Configurar parches
+STR_02C4_GAME_OPTIONS                                           :Opciones de juego
+STR_02C6_DIFFICULTY_SETTINGS                                    :Configuración de dificultad
+STR_MENU_CONFIG_PATCHES                                         :Configurar parches
 STR_NEWGRF_SETTINGS                                             :Configuración Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opciones de transparencia
 STR_GAMEOPTMENU_0A                                              :
@@ -871,8 +871,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  GUAR
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}El grabado está en progreso,{}por favor espere hasta que termine!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Elegir el programa musical de estilo 'Ezy Street'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inglés
@@ -1647,42 +1647,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Debes qu
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Ha de retirar carretera primero
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Trabajos en la carretera en progreso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcción de carretera
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construcción de tranvía
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Construcción de tranvía
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Elige puente de carretera
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... carreteras de un sentido no pueden tener intersecciones
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}No se puede construir carretera aquí...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}No se puede construir un tranvía aquí...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}No se puede construir un tranvía aquí...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}No se puede retirar carretera de aquí...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}No se puede quitar el tranvía de aquí...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}No se puede quitar el tranvía de aquí...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientación del depósito
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientación del depósito de tranvía
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientación del depósito de tranvía
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No se puede construir depósito de carretera aquí...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}No se puede construir depósito de tranvía aquí...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}No se puede construir depósito de tranvía aquí...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}No se puede construir estación de autobuses...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}No se puede construir estación de camiones...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}No se puede construir estación de tranvía de pasajeros...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}No puede construir estación de tranvía de carga...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}No se puede construir estación de tranvía de pasajeros...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}No puede construir estación de tranvía de carga...
 STR_180A_ROAD_CONSTRUCTION                                      :Construcción de carretera
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcción de tranvía
+STR_TRAMWAY_CONSTRUCTION                                        :Construcción de tranvía
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construir sección de carretera
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construir carretera usando el modo de Autocarretera
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construir sección de tranvía
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Construir sección de tranvía
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construir metro usando el modo de Autometro
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construir depósito de carretera (para construir y despachar vehículos)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construir depósito de tranvías (para vehículos de contrucción y servicio)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Construir depósito de tranvías (para vehículos de contrucción y servicio)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construir estación de autobús
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construir estación de carga para camiones
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Construir estación de tranvía de pasajeros
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Construir estación de tranvía de carga
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Construir estación de tranvía de pasajeros
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Construir estación de tranvía de carga
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construir puente de carretera
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construir puente de tranvía
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Construir puente de tranvía
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construir túnel de carretera
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construir tunel de tranvía
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Construir tunel de tranvía
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activar/Desactivar carreteras de un sentido
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Cambiar entre construir/retirar carretera
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Activar construir/quitar para construcciones de tranvía
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Activar construir/quitar para construcciones de tranvía
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Elegir orientación del depósito de carretera
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Seleccione orientación del depósito de tranvías
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Seleccione orientación del depósito de tranvías
 STR_1814_ROAD                                                   :Road
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Carretera con farolas
 STR_1816_TREE_LINED_ROAD                                        :Carretera arbolada
@@ -1825,8 +1825,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Demasiad
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}djunta más de una estación/zona de carga existente
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estaciones/zonas de carga en esta población
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Demasiadas estaciones/zonas de carga
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Demasiadas paradas de Autobús
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Demasiadas zonas de carga
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Demasiadas paradas de Autobús
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Demasiadas zonas de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Demasiado cerca de otra estación/zona de carga
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Primero debe demolerse estación de tren
@@ -1857,12 +1857,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} acepta ahora {STRING} y {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Or. estación de autobús
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Or. estación de camiones
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientación Tranvía Pasajeros
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientación Tranvía de Carga
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orientación Tranvía Pasajeros
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Orientación Tranvía de Carga
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Primero debe demolerse estación de autobús
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Primero debe demolerse estación de camiones
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Debe demoler la estación del tranvía de pasajeros primero
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Debe demoler la estación del tranvía de carga primero
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Debe demoler la estación del tranvía de pasajeros primero
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Debe demoler la estación del tranvía de carga primero
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estaciones
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ninguna -
@@ -1874,8 +1874,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Elige n�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Elige longitud de la estación de tren
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Elige la orientación de la estación de autobús
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Elige la orientación de la estación de camiones
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Seleccione la orientación de la estación del tranvía de pasajeros
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Seleccione la orientación de la estación del tranvía de carga
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Seleccione la orientación de la estación del tranvía de pasajeros
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Seleccione la orientación de la estación del tranvía de carga
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrar vista en la posición de la estación
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Ver calificación de la estación
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Cambiar nombre de la estación
@@ -1897,7 +1897,7 @@ STR_3068_DOCK                                                   :{WHITE}Muelle
 STR_3069_BUOY                                                   :Boya
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boya en medio
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estación demasiado extendida
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...desactivada estaciones no uniformes
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...desactivada estaciones no uniformes
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Manten pulsado CTRL para seleccionar varios elementos
 
 STR_UNDEFINED                                                   :(cadena sin determinar)
@@ -1938,7 +1938,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Guarda e
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccione Nuevo Tipo de Juego
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleccione escenario (verde), juegos preestablecidos-set (azul), o juego al azar
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generar juego nuevo al azar
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Cargar Mapas de altura
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Cargar Mapas de altura
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} en medio
@@ -2142,10 +2142,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Cantida
 STR_6813_ECONOMY                                                :{LTBLUE}Economía: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Marcha atrás trenes: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Desastres: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Actitud de la autoridades sobre reestructuraciones: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Actitud de la autoridades sobre reestructuraciones: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Ninguno
+STR_NONE                                                        :Ninguno
 STR_NUM_VERY_LOW                                                :Muy bajo
 STR_6816_LOW                                                    :Baja
 STR_6817_NORMAL                                                 :Normal
@@ -2183,9 +2183,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Solo al final d
 STR_6836_OFF                                                    :No
 STR_6837_ON                                                     :Si
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Ver gráfica de altas puntuaciones
-STR_6839_PERMISSIVE                                             :Permisiva
-STR_683A_TOLERANT                                               :Tolerante
-STR_683B_HOSTILE                                                :Hostil
+STR_PERMISSIVE                                                  :Permisiva
+STR_TOLERANT                                                    :Tolerante
+STR_HOSTILE                                                     :Hostil
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2322,7 +2322,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No se pu
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No se puede vender el 25% de acciones...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propiedad de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} ha sido comprada por {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Esta empresa todavía no dispone acciones a la venta...
+STR_PROTECTED                                                   :{WHITE}Esta empresa todavía no dispone acciones a la venta...
 
 STR_LIVERY_DEFAULT                                              :Estación normal
 STR_LIVERY_STEAM                                                :Locomotora a Vapor
@@ -2631,17 +2631,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir y cargar)
-STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Ir a {STATION} (Transferir y dejar vacío)
-STR_880A_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} (Transferir y esperar a carga completa)
-STR_880C_GO_NON_STOP_TO                                         :Ir sin paradas a {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ir sin paradas a {STATION} (Transferir y cargar)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ir sin paradas a {STATION} (Descargar)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ir sin paradas a {STATION} (Transferir y dejar vacío)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Ir sin paradas a  {STATION} (Cargar)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sin paradas a {STATION} (Transferir y esperar a carga completa)
+STR_GO_TO_TRANSFER                                              :Ir a {STATION} (Transferir y cargar)
+STR_8807_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Ir a {STATION} (Transferir y dejar vacío)
+STR_8808_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
+STR_GO_TO_TRANSFER_LOAD                                         :Ir a {STATION} (Transferir y esperar a carga completa)
+STR_880A_GO_NON_STOP_TO                                         :Ir sin paradas a {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Ir sin paradas a {STATION} (Transferir y cargar)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ir sin paradas a {STATION} (Descargar)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ir sin paradas a {STATION} (Transferir y dejar vacío)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Ir sin paradas a  {STATION} (Cargar)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ir sin paradas a {STATION} (Transferir y esperar a carga completa)
 STR_GO_TO_TRAIN_DEPOT                                           :Ir al depósito del tren de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito de {TOWN} para mantenimiento
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
@@ -2745,7 +2745,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Decremen
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Mostrar detalles de mercancía transportada
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostrar detalles de los vehículos
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostrar capacidades de cada vehículo
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostrar capacidad total del tren, dividida por tipo de carga
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostrar capacidad total del tren, dividida por tipo de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de órdenes - click en orden para resaltarla
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltar orden actual y comenzar la siguiente
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borrar orden resaltada
@@ -2776,8 +2776,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se puede revertir la dirección...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renombrar tipo de vehículo
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se puede renombrar tipo de vehículo...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer que la orden marcada fuerce al vehículo a descargar
-STR_886F_TRANSFER                                               :{BLACK}Transferir
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Hacer que la orden marcada fuerce al vehículo a descargar
+STR_TRANSFER                                                    :{BLACK}Transferir
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
 STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
 
@@ -2855,8 +2855,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No se pu
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nombrar vehículo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer autobús llega a {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer camión llega a {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Ciudadanos celebran . . .{}Llega primer tranvía de pasajeros a {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Ciudadanos celebran . . .{}Llega primer tranvía de carga a {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Ciudadanos celebran . . .{}Llega primer tranvía de pasajeros a {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Ciudadanos celebran . . .{}Llega primer tranvía de carga a {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}¡Accidente de tráfico!{}El conductor fallece en la explosión tras la colisión con el tren
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accidente de tráfico!{}{COMMA} fallecidos en la explosión tras la colisión con el tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}No se puede hacer girar al vehículo...
@@ -2865,7 +2865,7 @@ STR_9034_RENAME                                                 :{BLACK}Renombra
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renombrar tipo de vehículo
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renombrar tipo de vehículo
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No se puede renombrar tipo de vehículo....
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir al depósito de {TOWN}
+STR_GO_TO_ROADVEH_DEPOT                                         :Ir al depósito de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ir al depósito de {TOWN} para mantenimiento
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reparar vehículo de carretera para transportar otro tipo de cargas

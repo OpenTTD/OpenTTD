@@ -273,9 +273,9 @@ STR_0130_RENAME                                                 :{BLACK}Gje nytt
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mange namn oppgjeve
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Namnet er allereie i i bruk
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -286,11 +286,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...ått 
 STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Informasjon
 STR_013E_CAPACITIES                                             :{BLACK}Kapasitet
-STR_013E_TOTAL_CARGO                                            :{BLACK}Total last
+STR_TOTAL_CARGO                                                 :{BLACK}Total last
 STR_013F_CAPACITY                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapasitet: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Total kapasitet for dette toget:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Total kapasitet for dette toget:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spel
 STR_0141_LOAD_GAME                                              :{BLACK}Last inn spel
@@ -729,7 +729,7 @@ STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett byen heilt
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
 STR_0293_LOAD_SCENARIO                                          :Last inn scenario
-STR_LOAD_HEIGHTMAP                                              :Last inn høgdekart
+STR_MENU_LOAD_HEIGHTMAP                                         :Last inn høgdekart
 STR_0294_QUIT_EDITOR                                            :Avslutt redigeringsprogram
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Avslutt
@@ -769,9 +769,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Lagre ei
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Spelinstillingar
-STR_02C5_DIFFICULTY_SETTINGS                                    :Vanskegrad
-STR_02C7_CONFIG_PATCHES                                         :Konfigurer patcher
+STR_02C4_GAME_OPTIONS                                           :Spelinstillingar
+STR_02C6_DIFFICULTY_SETTINGS                                    :Vanskegrad
+STR_MENU_CONFIG_PATCHES                                         :Konfigurer patcher
 STR_NEWGRF_SETTINGS                                             :Instillingar for ny grafikk
 STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_GAMEOPTMENU_0A                                              :
@@ -871,8 +871,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  LAGR
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Lagring foregår framleis,{}ver venleg å vente til det er ferdig!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Vel 'Ezy Street style music'-program
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engelsk
@@ -1646,42 +1646,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Må fjer
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Må fjerne veg først
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vegarbeid pågår
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg veg
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Trikkekonstruksjon
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Trikkekonstruksjon
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vel type bru
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... einvegskøyrde vegar kan ikkje ha kryss
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikkje byggje veg her...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan ikkje byggje trikk her
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Kan ikkje byggje trikk her
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan ikkje fjerne veg her...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Kan ikkje fjerna trikk
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Kan ikkje fjerna trikk
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Retning for garasje
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Retning for trikkedepot
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Retning for trikkedepot
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikkje byggje garasje her...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kan ikkje byggje trikkedepot her
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Kan ikkje byggje trikkedepot her
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikkje byggje busstasjon...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikkje byggje lasteterminal...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kan ikkje byggje trikkestasjon for passasjerer...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan ikkje byggje trikkestasjon for frakt...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Kan ikkje byggje trikkestasjon for passasjerer...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Kan ikkje byggje trikkestasjon for frakt...
 STR_180A_ROAD_CONSTRUCTION                                      :Bygg veg
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Trikkekonstruksjon
+STR_TRAMWAY_CONSTRUCTION                                        :Trikkekonstruksjon
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bygg veg
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Bygg vegseksjon med automatisk vegmodus
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bygg trikkeseksjon
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Bygg trikkeseksjon
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Bygg trikkestasjon med automatisk trikkemodus
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bygg garasje (trengst for bygging og vedlikehald av køyretøy)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bygg trikkedepot ( for å bygge og vedlikeholde køyretøy)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Bygg trikkedepot ( for å bygge og vedlikeholde køyretøy)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bygg busstasjon
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bygg lasteterminal
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Bygg trikkestasjon for passasjerer
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Bygg trikkestasjon for frakt
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Bygg trikkestasjon for passasjerer
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Bygg trikkestasjon for frakt
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bygg bru
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bygg bro for trikk
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Bygg bro for trikk
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bygg tunnel
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bygg tunell for trikk
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Bygg tunell for trikk
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiver / Deaktiver envegskøyrde vegar
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Vel mellom bygging/fjerning for vegbygging
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Byt mellom bygge / fjerne for trikk
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Byt mellom bygge / fjerne for trikk
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vel retninga på garasjen
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Vel retning for trikkedepot
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Vel retning for trikkedepot
 STR_1814_ROAD                                                   :Veg
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Veg med gatelykter
 STR_1816_TREE_LINED_ROAD                                        :Aveny
@@ -1824,8 +1824,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}For nær
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grensar til meir enn éin eksisterande stasjon/lasteterminal
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stasjonar/lasteterminalar i byen
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}For mange stasjonar/lasteterminalar
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}For mange busshaldeplassar
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}For mange lasteterminalar
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}For mange busshaldeplassar
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}For mange lasteterminalar
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}For nær ein annan jernbanestasjon/lasteterminal
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Må rive eksisterande jernbanestasjon først
@@ -1856,12 +1856,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} godtek no {STRING} og {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Retning på bussterminal
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Retning på lasteterminal
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Retning på trikkestajon
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Retning på trikkestasjon
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Retning på trikkestajon
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Retning på trikkestasjon
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Må rive bussterminal først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Må rive lasteterminal først
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Må fjerne trikkestasjon først
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Må fjerne trikkestajon først
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Må fjerne trikkestasjon først
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Må fjerne trikkestajon først
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasjon{P "" ar}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ingen -
@@ -1873,8 +1873,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Vel anta
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Vel kor lang stasjonen skal vere
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vel retning på bussterminal
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vel retning på lasteterminal
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Velg retning på trikkestajon
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Velg retning på trikkestajon
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Velg retning på trikkestajon
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Velg retning på trikkestajon
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Sentrer biletet på stasjonen
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vis stasjonsvurdering
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Endre namnet på stasjonen
@@ -1896,7 +1896,7 @@ STR_3068_DOCK                                                   :{WHITE}Hamn
 STR_3069_BUOY                                                   :Bøye
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøya er i vegen
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjonen er spreidd for mykje
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikkje-einsarta stasjonar er deaktiverte
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ikkje-einsarta stasjonar er deaktiverte
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hald nede CTRL for å velje meir enn éin ting
 
 STR_UNDEFINED                                                   :(udefinert streng)
@@ -1937,7 +1937,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Lagre gj
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vel ny speltype
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vel scenario (grønn), førehandssette spel (blått), eller nytt tilfeldig spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Lag eit tilfeldig spel
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Last høgdekart
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Last høgdekart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} er i vegen
@@ -2141,10 +2141,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Mengd s
 STR_6813_ECONOMY                                                :{LTBLUE}Økonomi: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Togreversering: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrofar: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Haldninga til bystyret til ombygging av felt: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Haldninga til bystyret til ombygging av felt: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Ingen
+STR_NONE                                                        :Ingen
 STR_NUM_VERY_LOW                                                :Særs låg
 STR_6816_LOW                                                    :Lite
 STR_6817_NORMAL                                                 :Normal
@@ -2182,9 +2182,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Berre ved linje
 STR_6836_OFF                                                    :Av
 STR_6837_ON                                                     :På
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Vis rekordar
-STR_6839_PERMISSIVE                                             :Tillatande
-STR_683A_TOLERANT                                               :Tolerant
-STR_683B_HOSTILE                                                :Fiendsleg
+STR_PERMISSIVE                                                  :Tillatande
+STR_TOLERANT                                                    :Tolerant
+STR_HOSTILE                                                     :Fiendsleg
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2321,7 +2321,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan ikkj
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan ikkje selje 25 % av aksjane...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA} % eigast av {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har vorte kjøpt opp av {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Dette selskapet sel ikkje aksjer enno...
+STR_PROTECTED                                                   :{WHITE}Dette selskapet sel ikkje aksjer enno...
 
 STR_LIVERY_DEFAULT                                              :Standardovertaking
 STR_LIVERY_STEAM                                                :Damplokomotiv
@@ -2628,17 +2628,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i ve
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Køyr til {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Køyr til {STATION} (overfør og ta last)
-STR_8808_GO_TO_UNLOAD                                           :Køyr til {STATION} (last av)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Køyr til {STATION} (overfør og forlat som tom)
-STR_880A_GO_TO_LOAD                                             :Køyr til {STATION} (last)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Køyr til {STATION} (overfør og vent på full last)
-STR_880C_GO_NON_STOP_TO                                         :Køyr utan stopp til {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Køyr utan stopp til {STATION} (overfør og ta last)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Køyr utan stopp til {STATION} (last av)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Køyr utan stopp til {STATION} (overfør og forlat som tom)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Køyr utan stopp til {STATION} (last)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Køyr utan stopp til {STATION} (overfør og vent på full last)
+STR_GO_TO_TRANSFER                                              :Køyr til {STATION} (overfør og ta last)
+STR_8807_GO_TO_UNLOAD                                           :Køyr til {STATION} (last av)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Køyr til {STATION} (overfør og forlat som tom)
+STR_8808_GO_TO_LOAD                                             :Køyr til {STATION} (last)
+STR_GO_TO_TRANSFER_LOAD                                         :Køyr til {STATION} (overfør og vent på full last)
+STR_880A_GO_NON_STOP_TO                                         :Køyr utan stopp til {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Køyr utan stopp til {STATION} (overfør og ta last)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Køyr utan stopp til {STATION} (last av)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Køyr utan stopp til {STATION} (overfør og forlat som tom)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Køyr utan stopp til {STATION} (last)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Køyr utan stopp til {STATION} (overfør og vent på full last)
 STR_GO_TO_TRAIN_DEPOT                                           :Køyr til {TOWN} togstall
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Velikehald ved {TOWN} togstall
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Køyr utan stopp til togstallen i {TOWN}
@@ -2742,7 +2742,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Minsk in
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Vis detaljar om innhaldet i vognene
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Vis detaljar om tog/vogner
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Vis kapasiteten til vognene
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Vis total kapasitet på vognene, sortert etter type vare
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Vis total kapasitet på vognene, sortert etter type vare
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - trykk på ein ordre for å velje han
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hopp over gjedande ordre, og start neste.  CTRL + klikk hopper til valde ordre
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slett den valde ordren
@@ -2773,8 +2773,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikkje snu toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Gje tog/vogn nytt namn
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikkje gje tog/vogn nytt namn...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den merka ordren til å tvinge køyretøyet til å dumpe lasta
-STR_886F_TRANSFER                                               :{BLACK}Overfør
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Få den merka ordren til å tvinge køyretøyet til å dumpe lasta
+STR_TRANSFER                                                    :{BLACK}Overfør
 STR_CLEAR_TIME                                                  :{BLACK}Fjern Tid
 STR_RESET_LATENESS                                              :{BLACK}Still attende teljaren for forseining
 
@@ -2851,8 +2851,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikkj
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Namngje køyretøy
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggjarane jublar . . .{}Første buss kjem til {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggjarane jublar . . .{}Første lastebil kjem til {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Innbygjarane feirer . . .{}Første fraktetrikk kjem til {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Innbygjarane feirer . . .{}Første passasjertrikk kjem til{STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Innbygjarane feirer . . .{}Første fraktetrikk kjem til {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør døyr etter kollisjon med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} døyr etter kollisjon med tog
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikkje snu...
@@ -2861,7 +2861,7 @@ STR_9034_RENAME                                                 :{BLACK}Endre na
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endre namnet til køyretøytypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endre namnet til køyretøytypen
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikkje endre namnet til køyretøytypen...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Køyr til {TOWN} garasje
+STR_GO_TO_ROADVEH_DEPOT                                         :Køyr til {TOWN} garasje
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Vedlikehald ved {TOWN} garasje
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om køyretøyet til å ta ein annan type last

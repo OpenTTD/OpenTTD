@@ -271,9 +271,9 @@ STR_0130_RENAME                                                 :{BLACK}Μετο
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Καθορίστηκαν πάρα πολλά ονόματα
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Το όνομα που διαλέξατε υπάρχει ήδη
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -284,11 +284,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...ιδ�
 STR_013C_CARGO                                                  :{BLACK}Φορτίο
 STR_013D_INFORMATION                                            :{BLACK}Πληροφορίες
 STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητες
-STR_013E_TOTAL_CARGO                                            :{BLACK}Συνολικό Φορτίο
+STR_TOTAL_CARGO                                                 :{BLACK}Συνολικό Φορτίο
 STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Χωριτηκότητα: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
 STR_0141_LOAD_GAME                                              :{BLACK}Φόρτωση Παιχνιδιού
@@ -722,7 +722,7 @@ STR_0290_DELETE                                                 :{BLACK}Διαγ
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρης διαγραφή πόλεως
 STR_0292_SAVE_SCENARIO                                          :Απποθήκευση σεναρίου
 STR_0293_LOAD_SCENARIO                                          :Φόρτωση σεναρίου
-STR_LOAD_HEIGHTMAP                                              :Φόρτωση heightmap
+STR_MENU_LOAD_HEIGHTMAP                                         :Φόρτωση heightmap
 STR_0294_QUIT_EDITOR                                            :Έξοδος από το πρόγραμμα επεξεργασίας
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Έξοδος
@@ -761,9 +761,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Αποθ
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
-STR_02C5_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
-STR_02C7_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
+STR_02C4_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
+STR_02C6_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
+STR_MENU_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
 STR_NEWGRF_SETTINGS                                             :Ρυθμίσεις NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
@@ -861,8 +861,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  ΑΠ
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Η αποθήκευση είναι σε εξέλιξη,{}παρακαλώ περιμένετε να τελειώσει!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Επιλογή προγράμματος 'Ezy Street στυλ μουσικής'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Αγγλικά (Αυθεντικά)
@@ -1460,8 +1460,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Πολύ
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης σε αυτή την πόλη
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Πάρα πολλές στάσεις λεωφορείου
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Πολύ κοντά σε μιά άλλη περιοχή σταθμού/φόρτωσης
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Πρέπει να κατεδαφιστεί ο σιδηροδρομικός σταθμός πρώτα
@@ -1525,7 +1525,7 @@ STR_3068_DOCK                                                   :{WHITE}Λιμά
 STR_3069_BUOY                                                   :Σημαδούρα
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...σημαδούρα στη μέση
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...ο σταθμός είναι υπερβολικά απλωμένος
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ανομοιόμορφοι σταθμοί απενεργοποιημένοι
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ανομοιόμορφοι σταθμοί απενεργοποιημένοι
 
 
 ##id 0x3800
@@ -1556,7 +1556,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Αποθ
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Επιλογή Τύπου Νέου Παιχνιδιού
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Επιλογή σεναρίου (πράσινο), προεπιλεγμένου παιχνιδιού (μπλε), ή τυχαίου νέου παιχνιδιού
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Δημιουργία τυχαίου νέου παιχνιδιού
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Φόρτωση Heightmap
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Φόρτωση Heightmap
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} στη μέση
@@ -1707,10 +1707,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Ποσ�
 STR_6813_ECONOMY                                                :{LTBLUE}Οικονομικά: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Περιστροφή τρένων: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Καταστροφές: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Θέση δημαρχιακού συμβουλίου σχετικά με την αναδόμηση της πόλης: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Θέση δημαρχιακού συμβουλίου σχετικά με την αναδόμηση της πόλης: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Κανένα
+STR_NONE                                                        :Κανένα
 STR_6816_LOW                                                    :Χαμηλό
 STR_6817_NORMAL                                                 :Κανονικό
 STR_6818_HIGH                                                   :Υψηλό
@@ -1746,9 +1746,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Στο τέλο
 STR_6836_OFF                                                    :Ανενεργό
 STR_6837_ON                                                     :Ενεργό
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Εμφάνιση γραφήματος καλύτεων βαθμολογιών
-STR_6839_PERMISSIVE                                             :Ανεκτικό
-STR_683A_TOLERANT                                               :Υπομονετικό
-STR_683B_HOSTILE                                                :Εχθρικό
+STR_PERMISSIVE                                                  :Ανεκτικό
+STR_TOLERANT                                                    :Υπομονετικό
+STR_HOSTILE                                                     :Εχθρικό
 
 ##id 0x7000
 STR_7000                                                        :
@@ -1869,7 +1869,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Αδύν
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% είναι ιδιοκτησία της εταιρείας {COMPANY}{}   {COMMA}% ιδιοκτησία της {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Η {COMPANY} εξαγοράστηκε από την {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
+STR_PROTECTED                                                   :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
 
 
 

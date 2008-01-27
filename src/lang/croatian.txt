@@ -274,9 +274,9 @@ STR_0130_RENAME                                                 :{BLACK}Preimenu
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Previše definiranih imena
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Odabrano ime već se koristi
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -287,11 +287,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...u vla
 STR_013C_CARGO                                                  :{BLACK}Teret
 STR_013D_INFORMATION                                            :{BLACK}Informacije
 STR_013E_CAPACITIES                                             :{BLACK}Nosivosti
-STR_013E_TOTAL_CARGO                                            :{BLACK}Ukupni teret
+STR_TOTAL_CARGO                                                 :{BLACK}Ukupni teret
 STR_013F_CAPACITY                                               :{BLACK}Nosivost: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Nosivost: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Ukupna nosivost tereta ovog vlaka:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Ukupna nosivost tereta ovog vlaka:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nova igra
 STR_0141_LOAD_GAME                                              :{BLACK}Učitaj igru
@@ -730,7 +730,7 @@ STR_0290_DELETE                                                 :{BLACK}Obriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Obriši ovaj grad u cjelosti
 STR_0292_SAVE_SCENARIO                                          :Spremi scenarij
 STR_0293_LOAD_SCENARIO                                          :Učitaj secenarij
-STR_LOAD_HEIGHTMAP                                              :Učitaj visinsku kartu
+STR_MENU_LOAD_HEIGHTMAP                                         :Učitaj visinsku kartu
 STR_0294_QUIT_EDITOR                                            :Završi s uređivanjem
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Završi
@@ -770,9 +770,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Spremi p
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Postavke igre
-STR_02C5_DIFFICULTY_SETTINGS                                    :Postavke težine
-STR_02C7_CONFIG_PATCHES                                         :Konfiguriraj zakrpe
+STR_02C4_GAME_OPTIONS                                           :Postavke igre
+STR_02C6_DIFFICULTY_SETTINGS                                    :Postavke težine
+STR_MENU_CONFIG_PATCHES                                         :Konfiguriraj zakrpe
 STR_NEWGRF_SETTINGS                                             :Postavke NewGRF-a
 STR_TRANSPARENCY_OPTIONS                                        :Postavke prozirnosti
 STR_GAMEOPTMENU_0A                                              :
@@ -872,8 +872,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  SPRE
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Spremanje još u tijeku,{}molimo pričekajte dok se ne završi!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Odaberi glazbeni program 'Ezy Street style'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleski (original)
@@ -1648,42 +1648,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Najprije
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Najprije moraš ukloniti cestu
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Cestovni radovi u tijeku
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Izgradnja ceste
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Izgradnja tramvaja
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Izgradnja tramvaja
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Odaberi cestovni most
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...jednosmjerne ceste ne mogu imati raskrižja
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ovdje nije moguće izgraditi cestu...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Ovdje nije moguće izgraditi tramvaj...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Ovdje nije moguće izgraditi tramvaj...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nije moguće ukloniti cestu odavdje...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Nije moguće ukloniti tramvaj odavdje...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Nije moguće ukloniti tramvaj odavdje...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Smjer cestovnog spremišta
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Smjer tramvajskog spremišta
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Smjer tramvajskog spremišta
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ovdje nije moguće izgraditi spremište cestovnih vozila...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Ovdje nije moguće izgraditi tramvajsko spremište...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Ovdje nije moguće izgraditi tramvajsko spremište...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nije moguće izgraditi autobusnu stanicu...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nije moguće izgraditi kamionski terminal...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Nije moguće izgraditi tramvajsku stanicu za putnike...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Nije moguće izgraditi teretnu tramvajsku stanicu...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Nije moguće izgraditi tramvajsku stanicu za putnike...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Nije moguće izgraditi teretnu tramvajsku stanicu...
 STR_180A_ROAD_CONSTRUCTION                                      :Izgradnja ceste
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Izgradnja tramvaja
+STR_TRAMWAY_CONSTRUCTION                                        :Izgradnja tramvaja
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Izgradi dio ceste
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Izgradi cestu koristeći Autoroad način gradnje
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Izgradi tramvajski dio
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Izgradi tramvajski dio
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Izgradi tramvajsku prugu koristeći Autotram način gradnje
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Izgradi spremište cestovnih vozila (za izgradnju i servisiranje vozila)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Izgradi spremište tramvajskih vozila (za izgradnju i servisiranje vozila)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Izgradi spremište tramvajskih vozila (za izgradnju i servisiranje vozila)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Izgradi autobusnu stanicu
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Izgradi pretovarni kamionski terminal
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Izgradi putničku tramvajsku stanicu
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Izgradi teretnu tramvajsku stanicu
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Izgradi putničku tramvajsku stanicu
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Izgradi teretnu tramvajsku stanicu
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Izgradi cestovni most
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Izgradi tramvajski most
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Izgradi tramvajski most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Izgradi cestovni tunel
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Izgradi tramvajski tunel
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Izgradi tramvajski tunel
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktiviraj/deaktiviraj jednosmjerne ceste
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Aktiviraj izgradnju/uklanjanje ceste
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Aktiviraj izgradnju/brisanje za izgradnju tramvaja
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Aktiviraj izgradnju/brisanje za izgradnju tramvaja
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Odaberi smjer spremišta cestovnih vozila
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Odaberi smjer tramvajskog spremišta
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Odaberi smjer tramvajskog spremišta
 STR_1814_ROAD                                                   :Cesta
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta sa semaforima
 STR_1816_TREE_LINED_ROAD                                        :Cesta s tri trake
@@ -1826,8 +1826,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Preblizu
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Spaja više od jedne postojeće stanice/terminala
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}U ovom gradu ima previše stanica/terminala
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Previše stanica/terminala
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Previše autobusnih stanica
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Previše kamionskih stanica
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Previše autobusnih stanica
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Previše kamionskih stanica
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Preblizu drugoj stanici/terminalu
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Najprije moraš srušiti željezničku stanicu
@@ -1858,12 +1858,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} od sada prihvaća {STRING} i {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Smjer autobusne stanice
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Smjer kamionskog terminala
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orijentacija putničkog tramvaja
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orijentacija teretnog tramvaja
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orijentacija putničkog tramvaja
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Orijentacija teretnog tramvaja
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Najprije moraš srušiti autobusnu stanicu
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Najprije moraš srušiti kamionski terminal
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Najprije moraš srušiti putničku tramvajsku stanicu
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Najprije moraš srušiti teretnu tramvajsku stanicu
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Najprije moraš srušiti putničku tramvajsku stanicu
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Najprije moraš srušiti teretnu tramvajsku stanicu
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} stanic{P a e a}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Ništa -
@@ -1875,8 +1875,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Odaberi 
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Odaberi dužinu željezničke stanice
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Odaberi smjer autobusne stanice
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Odaberi smjer kamionskog terminala
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Odaberi smjer putničke tramvajske stanice
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Odaberi smjer teretne tramvajske stanice
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Odaberi smjer putničke tramvajske stanice
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Odaberi smjer teretne tramvajske stanice
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centriraj glavni pogled na lokaciju stanice
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Pokaži ocjene stanice
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Promijeni ime stanice
@@ -1898,7 +1898,7 @@ STR_3068_DOCK                                                   :{WHITE}Pristani
 STR_3069_BUOY                                                   :Plutača
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...plutača na putu
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stanica previše proširena
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...neujednačene stanice onemogućene
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...neujednačene stanice onemogućene
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Drži CTRL kako bi odabrao više od jedne stavke
 
 STR_UNDEFINED                                                   :(neodređen znakovni niz)
@@ -1939,7 +1939,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Spremi t
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Odaberi vrstu nove igre
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Odaberi scenarij (zeleno), namještenu igru (plavo), ili nasumičnu novu igru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Stvori nasumičnu novu igru
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Učitaj visinsku kartu
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Učitaj visinsku kartu
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na putu
@@ -2143,10 +2143,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Količi
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomija: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Promjena smjera vlaka: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Prirodne katastrofe: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Stav gradsko vijeća prema restrukturiranju područja: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Stav gradsko vijeća prema restrukturiranju područja: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Ništa
+STR_NONE                                                        :Ništa
 STR_NUM_VERY_LOW                                                :Vrlo nisko
 STR_6816_LOW                                                    :Nisko
 STR_6817_NORMAL                                                 :Normalno
@@ -2184,9 +2184,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Isključivo na 
 STR_6836_OFF                                                    :Isključeno
 STR_6837_ON                                                     :Uključeno
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Pokaži tablice najboljih rezultata
-STR_6839_PERMISSIVE                                             :Dopustiv
-STR_683A_TOLERANT                                               :Tolerantan
-STR_683B_HOSTILE                                                :Agresivan
+STR_PERMISSIVE                                                  :Dopustiv
+STR_TOLERANT                                                    :Tolerantan
+STR_HOSTILE                                                     :Agresivan
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2323,7 +2323,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nije mog
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nije moguće prodati 25% udjela u ovoj tvrtci...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% u vlasništvu {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} je preuzeta od strane tvrtke {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Ova tvrka još nije dovoljno stara da bi trgovala udjelima...
+STR_PROTECTED                                                   :{WHITE}Ova tvrka još nije dovoljno stara da bi trgovala udjelima...
 
 STR_LIVERY_DEFAULT                                              :Standardna boja
 STR_LIVERY_STEAM                                                :Parna lokomotiva
@@ -2630,17 +2630,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Idi do {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Idi do {STATION} (Transferiraj i preuzmi teret)
-STR_8808_GO_TO_UNLOAD                                           :Idi do {STATION} (Istovar)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Go to {STATION} (Transferiraj i otiđi prazan)
-STR_880A_GO_TO_LOAD                                             :Idi do{STATION} (Utovar)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Idi do {STATION} (Transferiraj i pričekaj puni utovar)
-STR_880C_GO_NON_STOP_TO                                         :Idi neprekidno do {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idi neprekidno do {STATION} (Transferiraj i preuzmi teret)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idi neprekidno do {STATION} (Istovar)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idi neprekidno do {STATION} (Transferiraj i otiđi prazan)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Idi neprekidno do {STATION} (Utovar)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idi neprekidno do {STATION} (Transferiraj i pričekaj puni utovar)
+STR_GO_TO_TRANSFER                                              :Idi do {STATION} (Transferiraj i preuzmi teret)
+STR_8807_GO_TO_UNLOAD                                           :Idi do {STATION} (Istovar)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Go to {STATION} (Transferiraj i otiđi prazan)
+STR_8808_GO_TO_LOAD                                             :Idi do{STATION} (Utovar)
+STR_GO_TO_TRANSFER_LOAD                                         :Idi do {STATION} (Transferiraj i pričekaj puni utovar)
+STR_880A_GO_NON_STOP_TO                                         :Idi neprekidno do {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Idi neprekidno do {STATION} (Transferiraj i preuzmi teret)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Idi neprekidno do {STATION} (Istovar)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Idi neprekidno do {STATION} (Transferiraj i otiđi prazan)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Idi neprekidno do {STATION} (Utovar)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Idi neprekidno do {STATION} (Transferiraj i pričekaj puni utovar)
 STR_GO_TO_TRAIN_DEPOT                                           :Idi u spremište vlakova grada {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiranje u spremištu vlakova grada {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi neprekidno do spremišta vlakova grada {TOWN}
@@ -2744,7 +2744,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Smanji s
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokaži detalje tereta koji se prevozi
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokaži detalje vagona
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Pokaži nosivosti svakog vagona
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Pokaži ukupnu nosivost vlaka podijeljenu prema vrsti tereta
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Pokaži ukupnu nosivost vlaka podijeljenu prema vrsti tereta
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Popis naredbi - klikni na naredbu kako bi ju označio. CTRL + klik klizi na stanicu
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i pokreni slijedeću. CTRL + klik preskače na odabranu naredbu
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
@@ -2775,8 +2775,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nije moguće promijeniti smjer vlaka...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj vrstu vagona
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nije moguće preimenovati vrstu vagona...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi da označena naredba prisili vozilo da izbaci teret
-STR_886F_TRANSFER                                               :{BLACK}Transfer
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Napravi da označena naredba prisili vozilo da izbaci teret
+STR_TRANSFER                                                    :{BLACK}Transfer
 STR_CLEAR_TIME                                                  :{BLACK}Obriši vrijeme
 STR_RESET_LATENESS                                              :{BLACK}Poništi Brojač Kašnjenja
 
@@ -2854,8 +2854,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nije mog
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Imenuj cestovno vozilo
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi bus je stigao na {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi kamion je stigao na {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Građani slave . . .{}Prvi putnički tramvaj je stigao na {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Građani slave . . .{}Prvi teretni tramvaj je stigao na {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Građani slave . . .{}Prvi putnički tramvaj je stigao na {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Građani slave . . .{}Prvi teretni tramvaj je stigao na {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}Vozač poginuo u eksploziji nakon sudara s vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Sudar cestovnog vozila!{}{COMMA} poginulih u eksploziji nakon sudara s vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nije moguće natjerati vozilo da se okrene...
@@ -2864,7 +2864,7 @@ STR_9034_RENAME                                                 :{BLACK}Preimenu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Preimenuj vrstu cestovnog vozila
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Preimenuj vrstu cestovnog vozila
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nije moguće preimenovati vrstu cestovnog vozila...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Idi prema spremištu cestovnih vozila grada {TOWN}
+STR_GO_TO_ROADVEH_DEPOT                                         :Idi prema spremištu cestovnih vozila grada {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servisiranje u spremištu cestovnih vozila grada {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prenamijeni cestovno vozilo  za prijevoz neke druge vrste tereta

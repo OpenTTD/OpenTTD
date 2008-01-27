@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}Reanomen
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Massa noms definits
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Aquest nom ja es fa servir
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...propi
 STR_013C_CARGO                                                  :{BLACK}Càrrega
 STR_013D_INFORMATION                                            :{BLACK}Informació
 STR_013E_CAPACITIES                                             :{BLACK}Capacitats
-STR_013E_TOTAL_CARGO                                            :{BLACK}Càrrega Total
+STR_TOTAL_CARGO                                                 :{BLACK}Càrrega Total
 STR_013F_CAPACITY                                               :{BLACK}Capacitats: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Capacitat: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Càrrega total (capacitat) d'aquest tren:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Càrrega total (capacitat) d'aquest tren:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
 STR_0141_LOAD_GAME                                              :{BLACK}Carrega un Joc
@@ -729,7 +729,7 @@ STR_0290_DELETE                                                 :{BLACK}Esborra
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborra totalment aquesta població
 STR_0292_SAVE_SCENARIO                                          :Desa l'escenari
 STR_0293_LOAD_SCENARIO                                          :Carrega un escenari
-STR_LOAD_HEIGHTMAP                                              :Carrega Mapa d'alçades
+STR_MENU_LOAD_HEIGHTMAP                                         :Carrega Mapa d'alçades
 STR_0294_QUIT_EDITOR                                            :Surt de l'editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Surt
@@ -769,9 +769,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Desa els
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Opcions del Joc
-STR_02C5_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
-STR_02C7_CONFIG_PATCHES                                         :Configura pedaços
+STR_02C4_GAME_OPTIONS                                           :Opcions del Joc
+STR_02C6_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
+STR_MENU_CONFIG_PATCHES                                         :Configura pedaços
 STR_NEWGRF_SETTINGS                                             :Extensions NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
 STR_GAMEOPTMENU_0A                                              :
@@ -871,8 +871,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  DESA
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}S'està desant el joc,{}espera a que acabi l'operació!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selecciona el programa 'Ezy Street style music'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Anglès
@@ -1647,42 +1647,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer h
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}S'ha de treure la carretera primer
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Obres en progrés
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcció de Carreteres
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Construcció de Tramvies
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Construcció de Tramvies
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona un Pont per Carretera
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... les carreteres de sentit únic no poden tenir encreuaments
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Aquí no es pot construir una carretera...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}No puc construir la via de tramvia aquí...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}No puc construir la via de tramvia aquí...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Aquí no es pot treure una carretera...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}No puc treure la via de tramvia d'aquí...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}No puc treure la via de tramvia d'aquí...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Cotxeres
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Orientació de les cotxeres de tramvies
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientació de les cotxeres de tramvies
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Aquí no es pot construir una cotxera...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Aquí no puc construir les cotxeres de tramvies...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Aquí no puc construir les cotxeres de tramvies...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}No es pot construir una parada d'autobús...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}No es pot construir estació de mercaderies...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}No puc construir l'estació de tramvies de passatgers
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}No puc construir l'estació de tramvies de càrrega
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}No puc construir l'estació de tramvies de passatgers
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}No puc construir l'estació de tramvies de càrrega
 STR_180A_ROAD_CONSTRUCTION                                      :Construcció de Carreteres
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Construcció de Tramvies
+STR_TRAMWAY_CONSTRUCTION                                        :Construcció de Tramvies
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construeix una secció de carretera
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construeix secció de carretera utilitzant el mode Autocarretera
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Construeix una secció de via de tramvia
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Construeix una secció de via de tramvia
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construeix secció de tramvia utilitzant el mode Autotramvia
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construeix una cotxera (per construir i mantenir vehicles)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Construeix cotxeres de tramvies (per construir i revisar tramvies)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Construeix cotxeres de tramvies (per construir i revisar tramvies)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Constueix una parada d'autobús
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construeix un moll de càrrega
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Construeix una estació de tramvies de passatgers
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Construeix una estació de tramvies de mercaderies
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Construeix una estació de tramvies de passatgers
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Construeix una estació de tramvies de mercaderies
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construeix un pont per carretera
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Construeix pont per tramvies
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Construeix pont per tramvies
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construeix un túnel per carretera
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Construeix túnel per tramvies
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Construeix túnel per tramvies
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activa/Desactiva les carreteres d'un sentit
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Intercanvia funció construeix/treu per la construcció de carreteres
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Canvia construeix/treu de la construcció de vies de tramvia
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selecciona la orientació de les Cotxeres
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Selecciona l'orientació de les cotxeres de tramvies
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Selecciona l'orientació de les cotxeres de tramvies
 STR_1814_ROAD                                                   :Carretera
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Carretera amb fanals
 STR_1816_TREE_LINED_ROAD                                        :Carretera de tres carrils
@@ -1825,8 +1825,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Massa a 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Hi ha massa estacions/àrees de càrrega en aquesta població
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Massa estacions/àrees de càrrega
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Massa parades d'autobús
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Massa parades d'autobús
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Masses estacions de càrrega
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Massa a prop d'una altra estació/àrea de càrrega
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Primer has d'enderrocar l'estació de tren
@@ -1857,12 +1857,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} ara accepta {STRING} i {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Parada d'autobús
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Estació de Mercaderies
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Orientació estació passatgers
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Orientació estació mercaderies
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orientació estació passatgers
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Orientació estació mercaderies
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Primer has d'enderrocar la parada d'autobús
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Primer has d'enderrocar l'estació de mercaderies
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Primer has de demolir l'estació de tramvies de passatgers
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Primer has de demolir l'estació de tramvies de mercaderies
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Primer has de demolir l'estació de tramvies de passatgers
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Primer has de demolir l'estació de tramvies de mercaderies
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estacions/Parades
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Cap -
@@ -1874,8 +1874,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Seleccio
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Selecciona la mida de les andanes de l'estació de tren
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Selecciona l'orientació de la parada d'autobús
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selecciona l'orientació del moll de càrrega de camions
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Selecciona l'orientació de l'estació de tramvies de passatgers
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Selecciona l'orientació de l'estació de tramvies de mercaderies
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Selecciona l'orientació de l'estació de tramvies de passatgers
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Selecciona l'orientació de l'estació de tramvies de mercaderies
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centra la pantalla principal al lloc de l'estació
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Mostra els ratis de l'estació
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Canvia el nom de l'estació
@@ -1897,7 +1897,7 @@ STR_3068_DOCK                                                   :{WHITE}Moll
 STR_3069_BUOY                                                   :Boia
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia en el camí
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estació massa extesa
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacions no uniformes desactivades
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...estacions no uniformes desactivades
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Mantin apretat CTRL per a seleccionar més de un item
 
 STR_UNDEFINED                                                   :(cadena sense definir)
@@ -1938,7 +1938,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Desa el 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecciona el Nou Tipus de Joc
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecciona l'escenari (verd), joc pre-programat (blau), o el nou joc aleatori
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genera un nou joc aleatori
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carrega un Mapa d'alçades
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Carrega un Mapa d'alçades
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} en el camí
@@ -2142,10 +2142,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantit
 STR_6813_ECONOMY                                                :{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Canvi de sentit dels trens: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Desastres: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Actitud de l'Ajuntament sobre reestructuracions d'àrees: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Actitud de l'Ajuntament sobre reestructuracions d'àrees: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Cap
+STR_NONE                                                        :Cap
 STR_NUM_VERY_LOW                                                :Molt baix
 STR_6816_LOW                                                    :Baix
 STR_6817_NORMAL                                                 :Normal
@@ -2183,9 +2183,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Només al final
 STR_6836_OFF                                                    :Desactivat
 STR_6837_ON                                                     :Activat
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Veure la taula de les majors puntuacions
-STR_6839_PERMISSIVE                                             :Permisiu
-STR_683A_TOLERANT                                               :Tolerant
-STR_683B_HOSTILE                                                :Hostil
+STR_PERMISSIVE                                                  :Permisiu
+STR_TOLERANT                                                    :Tolerant
+STR_HOSTILE                                                     :Hostil
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2322,7 +2322,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No pots 
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No pots vendre el 25% de participació en aquesta empresa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propietat de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} ha estat absorbida per {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Aquesta empresa ja no negocia participacions...
+STR_PROTECTED                                                   :{WHITE}Aquesta empresa ja no negocia participacions...
 
 STR_LIVERY_DEFAULT                                              :Decoració estandard
 STR_LIVERY_STEAM                                                :Motor de vapor
@@ -2631,17 +2631,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Ves a {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Ves a {STATION} (Transfereix i agafa càrrega)
-STR_8808_GO_TO_UNLOAD                                           :Ves a {STATION} (Descarrega)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Ves a {STATION} (Transfereix i deixa buit)
-STR_880A_GO_TO_LOAD                                             :Ves a {STATION} (Carrega)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Ves a {STATION} (Transfereix i espera càrrega completa)
-STR_880C_GO_NON_STOP_TO                                         :Ves sense parar a {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ves sense parar a {STATION} (Transfereix i agafa càrrega)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ves sense parar a {STATION} (Descarrega)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ves sense parar a {STATION} (Transfereix i deixa buit)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Ves sense parar a {STATION} (Carrega)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ves sense parar a {STATION} (Transfereix i espera càrrega completa)
+STR_GO_TO_TRANSFER                                              :Ves a {STATION} (Transfereix i agafa càrrega)
+STR_8807_GO_TO_UNLOAD                                           :Ves a {STATION} (Descarrega)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Ves a {STATION} (Transfereix i deixa buit)
+STR_8808_GO_TO_LOAD                                             :Ves a {STATION} (Carrega)
+STR_GO_TO_TRANSFER_LOAD                                         :Ves a {STATION} (Transfereix i espera càrrega completa)
+STR_880A_GO_NON_STOP_TO                                         :Ves sense parar a {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Ves sense parar a {STATION} (Transfereix i agafa càrrega)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ves sense parar a {STATION} (Descarrega)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ves sense parar a {STATION} (Transfereix i deixa buit)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Ves sense parar a {STATION} (Carrega)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ves sense parar a {STATION} (Transfereix i espera càrrega completa)
 STR_GO_TO_TRAIN_DEPOT                                           :Ves al Diposit {TOWN} de Tren
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a cotxeres de {TOWN}.
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ves sense parar a les cotxeres de {TOWN}.
@@ -2745,7 +2745,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Disminue
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Mostra els detalls de càrrega transportada
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra els detalls d'elements del tren
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra les capacitats de cada element
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Mostra la capacitat total del tren, separat per tipus de càrrega
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra la capacitat total del tren, separat per tipus de càrrega
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Llista d'ordres - clica en una per seleccionar-la
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta l'ordre actual, i comença la següent. CTRL + clic salta l'ordre seleccionada
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborra l'ordre seleccionada
@@ -2776,8 +2776,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No es pot invertir la direcció del tren...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Reanomena el tipus d'element del tren
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es pot reanomenar el tipus d'element del tren...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
-STR_886F_TRANSFER                                               :{BLACK}Transf.
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
+STR_TRANSFER                                                    :{BLACK}Transf.
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reset. control de retràs
 
@@ -2855,8 +2855,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No es po
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Anomena automòbil
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}Primer autobús arriba a {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}Primer camió arriba a {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de passatgers arriba a {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Els ciutadans celebren . . .{}El primer tramvia de mercaderies arriba a {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident de Vehicle!{}El conductor mor en una bola de foc després de la colisió amb un tren
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident de Vehicle!{}{COMMA} moren en una bola de foc després d'una colisió amb un tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}No es pot fer que el vehicle torni...
@@ -2865,7 +2865,7 @@ STR_9034_RENAME                                                 :{BLACK}Reanomen
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Reanomena tipus d'automòbil
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Reanomena tipus d'automòbil
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No es pot reanomenar tipus d'automòbil
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ves a la cotxera de {TOWN}.
+STR_GO_TO_ROADVEH_DEPOT                                         :Ves a la cotxera de {TOWN}.
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manteniment a la cotxera de {TOWN}.
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega

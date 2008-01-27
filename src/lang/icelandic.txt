@@ -271,9 +271,9 @@ STR_0130_RENAME                                                 :{BLACK}Endurnef
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Of mörg nöfn skilgreint
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valið nafn er þegar í notkun
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -283,11 +283,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...í ei
 STR_013C_CARGO                                                  :{BLACK}Farmur
 STR_013D_INFORMATION                                            :{BLACK}Upplýsingar
 STR_013E_CAPACITIES                                             :{BLACK}Burðargeta
-STR_013E_TOTAL_CARGO                                            :{BLACK}Heildarfarmur
+STR_TOTAL_CARGO                                                 :{BLACK}Heildarfarmur
 STR_013F_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Farmur alls (burðargeta) þessarar lestar:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Farmur alls (burðargeta) þessarar lestar:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nýr leikur
 STR_0141_LOAD_GAME                                              :{BLACK}Opna leik
@@ -721,7 +721,7 @@ STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
 STR_0292_SAVE_SCENARIO                                          :Vista kort
 STR_0293_LOAD_SCENARIO                                          :Opna kort
-STR_LOAD_HEIGHTMAP                                              :Hlaða hæðarkorti
+STR_MENU_LOAD_HEIGHTMAP                                         :Hlaða hæðarkorti
 STR_0294_QUIT_EDITOR                                            :Hætta í kortagerð
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Hætta
@@ -760,9 +760,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista br
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Stillingar
-STR_02C5_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
-STR_02C7_CONFIG_PATCHES                                         :Viðbætur
+STR_02C4_GAME_OPTIONS                                           :Stillingar
+STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
+STR_MENU_CONFIG_PATCHES                                         :Viðbætur
 STR_NEWGRF_SETTINGS                                             :NewGRF stillingar
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Bæjarnöfn sýnd
@@ -860,8 +860,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  VIST
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vistun er enn í gangi,{}vinsamlegast bíddu á meðan hún klárst!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Velja 'Ezy gata' listann
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk (Upphafleg)
@@ -1690,8 +1690,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Of nál�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Tengist fleiri en einni annarri stöð
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Of margar stöðvar/lestunarsvæði í þessum bæ
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Of margar stöðvar/lestunarsvæði
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Of margar strætisvagnastöðvar
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Of margar vörubílastöðvar
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Of margar strætisvagnastöðvar
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Of margar vörubílastöðvar
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Of nálægt annarri stöð/lestunarsvæði
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Þarf fyrst að rífa lestarstöð
@@ -1756,7 +1756,7 @@ STR_3068_DOCK                                                   :{WHITE}Höfn
 STR_3069_BUOY                                                   :Bauja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bauja fyrir
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stöð of dreyfð
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...óregluleg lögun lestarstöðva bönnuð
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...óregluleg lögun lestarstöðva bönnuð
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Haltu CTRL inni til að velja fleiri en eitt
 
 STR_UNDEFINED                                                   :(óskilgreindur strengur)
@@ -1791,7 +1791,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Vista le
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Velja tegund leiks
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Velja landslag (grænt), forstilltan leik (blátt) eða handahófskenndan leik
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Búa til nýjan leik
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Hlaða hæðakorti
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Hlaða hæðakorti
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} er fyrir
@@ -1985,10 +1985,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Magn sj
 STR_6813_ECONOMY                                                :{LTBLUE}Efnahagur: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Snúningur lestar: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Hrakföll: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Afstaða borgaryfirvalda til landmótunar: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Afstaða borgaryfirvalda til landmótunar: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Engin
+STR_NONE                                                        :Engin
 STR_6816_LOW                                                    :Fáir
 STR_6817_NORMAL                                                 :Miðlungs
 STR_6818_HIGH                                                   :Margir
@@ -2025,9 +2025,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Aðeins á enda
 STR_6836_OFF                                                    :Ekki á
 STR_6837_ON                                                     :Á
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Sýna topplistann
-STR_6839_PERMISSIVE                                             :Eftirgefin
-STR_683A_TOLERANT                                               :Umburðarlynd
-STR_683B_HOSTILE                                                :Fjandsamleg
+STR_PERMISSIVE                                                  :Eftirgefin
+STR_TOLERANT                                                    :Umburðarlynd
+STR_HOSTILE                                                     :Fjandsamleg
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2159,7 +2159,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Get ekki
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Get ekki selt 25% hlut í þessu fyrirtæki...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% í eigu {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} hefur verið yfirtekið af {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla með hluti ...
+STR_PROTECTED                                                   :{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla með hluti ...
 
 STR_LIVERY_DEFAULT                                              :Aðal litaskema
 STR_LIVERY_STEAM                                                :Gufuvagnar
@@ -2464,17 +2464,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyr
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Fer til {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Fer til {STATION} (Yfirfæra og ferma)
-STR_8808_GO_TO_UNLOAD                                           :Fer til {STATION} (Afferma)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Fer til {STATION} (Yfirfæra og yfirgefa tóm)
-STR_880A_GO_TO_LOAD                                             :Fer til {STATION} (Fullferma)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Fer til {STATION} (Yfirfæra og fullferma)
-STR_880C_GO_NON_STOP_TO                                         :Fer viðstöðulaust til {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Fer viðstöðulaust til {STATION} (Yfirfæra og ferma)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Fer viðstöðulaust til {STATION} (Afferma)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Fer viðstöðulaust til {STATION} (Yfirfæra og yfirgefa tóm)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Fer viðstöðulaust til {STATION} (Fullferma)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Fer viðstöðulaust til {STATION} (Yfirfæra og fullferma)
+STR_GO_TO_TRANSFER                                              :Fer til {STATION} (Yfirfæra og ferma)
+STR_8807_GO_TO_UNLOAD                                           :Fer til {STATION} (Afferma)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Fer til {STATION} (Yfirfæra og yfirgefa tóm)
+STR_8808_GO_TO_LOAD                                             :Fer til {STATION} (Fullferma)
+STR_GO_TO_TRANSFER_LOAD                                         :Fer til {STATION} (Yfirfæra og fullferma)
+STR_880A_GO_NON_STOP_TO                                         :Fer viðstöðulaust til {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Fer viðstöðulaust til {STATION} (Yfirfæra og ferma)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Fer viðstöðulaust til {STATION} (Afferma)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Fer viðstöðulaust til {STATION} (Yfirfæra og yfirgefa tóm)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Fer viðstöðulaust til {STATION} (Fullferma)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Fer viðstöðulaust til {STATION} (Yfirfæra og fullferma)
 STR_GO_TO_TRAIN_DEPOT                                           :Fer til {TOWN} Lestaskýli
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Viðgerð í {TOWN} Lestar Byggingu
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fer viðstöðulaust til {TOWN} Lestar Byggingar
@@ -2566,7 +2566,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Stytta s
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Sýna nánari upplýsingar um núverandi farm
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Sýna nánari upplýsingar um lestir
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Sýna burðargetu hvers farartækis
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Sýna heildar burðargetu lestar, raðar eftir tegund farms
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Sýna heildar burðargetu lestar, raðar eftir tegund farms
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Áætlun - smelltu til að velja stöð. CTRL + músartakki færir sjónarhorn að stöðinni
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eyða valdri skipun
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gera valda skipun viðstöðulausa
@@ -2592,8 +2592,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Get ekki snúið lest við...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Endurskíra lestargerð
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Get ekki endurskírt lestargerð...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lætur lestina losa farminn á valinni skipun
-STR_886F_TRANSFER                                               :{BLACK}Yfirfæra
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Lætur lestina losa farminn á valinni skipun
+STR_TRANSFER                                                    :{BLACK}Yfirfæra
 
 STR_TRAIN_STOPPING                                              :{RED}Stöðva
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stöðva, {VELOCITY}
@@ -2656,7 +2656,7 @@ STR_9034_RENAME                                                 :{BLACK}Endurnef
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endurnefna tegund bifreiðar
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endurnefna tegund bifreiðar
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE} Get ekki endurnefnat tegund bifreiðar...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Fara í {TOWN} bifreiðaskýli
+STR_GO_TO_ROADVEH_DEPOT                                         :Fara í {TOWN} bifreiðaskýli
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Skoða í  {TOWN} bifreiðaskýli
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Breyta bifreið svo hún flytji annan farm

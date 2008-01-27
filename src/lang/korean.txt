@@ -273,9 +273,9 @@ STR_0130_RENAME                                                 :{BLACK}이름
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}더이상 이름을 설정할 수 없습니다!
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}이미 사용중인 이름입니다!
 
-STR_0133_WINDOWS                                                :윈도우
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :윈도우
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -286,11 +286,11 @@ STR_013B_OWNED_BY                                               :{WHITE}... {STR
 STR_013C_CARGO                                                  :{BLACK}화물
 STR_013D_INFORMATION                                            :{BLACK}정보
 STR_013E_CAPACITIES                                             :{BLACK}수용량
-STR_013E_TOTAL_CARGO                                            :{BLACK}총 화물량
+STR_TOTAL_CARGO                                                 :{BLACK}총 화물량
 STR_013F_CAPACITY                                               :{BLACK}수용량: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}수용량: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}이 열차의 총 수용량:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}이 열차의 총 수용량:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}새로운 게임
 STR_0141_LOAD_GAME                                              :{BLACK}불러오기
@@ -729,7 +729,7 @@ STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
 STR_0293_LOAD_SCENARIO                                          :시나리오 불러오기
-STR_LOAD_HEIGHTMAP                                              :DEM지형 불러오기
+STR_MENU_LOAD_HEIGHTMAP                                         :DEM지형 불러오기
 STR_0294_QUIT_EDITOR                                            :에디터 종료
 STR_0295                                                        :
 STR_0296_QUIT                                                   :게임 종료
@@ -769,9 +769,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}사용�
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :게임 옵션
-STR_02C5_DIFFICULTY_SETTINGS                                    :난이도 설정
-STR_02C7_CONFIG_PATCHES                                         :패치 구성
+STR_02C4_GAME_OPTIONS                                           :게임 옵션
+STR_02C6_DIFFICULTY_SETTINGS                                    :난이도 설정
+STR_MENU_CONFIG_PATCHES                                         :패치 구성
 STR_NEWGRF_SETTINGS                                             :NewGRF 설정
 STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_GAMEOPTMENU_0A                                              :
@@ -871,8 +871,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  게�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}저장중입니다,{}끝날때까지 기다려주세요
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Street 스타일 음악' 프로그램 선택
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :영어 (기본)
@@ -1647,42 +1647,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 �
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}도로를 먼저 제거하십시오
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}도로 작업이 진행중입니다
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}도로 건설
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}전찻길 건설
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}전찻길 건설
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}교량을 선택하십시오
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... 일방통행 도로는 교차로를 만들 수 없습니다
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}도로를 건설할 수 없습니다...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}여기에 전찻길을 건설할 수 없습니다...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}여기에 전찻길을 건설할 수 없습니다...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}도로를 제거할 수 없습니다...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}이곳의 전찻길을 제거할 수 없습니다...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}이곳의 전찻길을 제거할 수 없습니다...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}차고 방향
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}차량기지 방향
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}차량기지 방향
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}여기에 차고를 지을 수 없습니다...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}여기에 차량기지를 건설할 수 없습니다...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}버스 정류장을 지을 수 없습니다...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}트럭 적하장을 지을 수 없습니다...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}여기에 승객 전차 정거장을 건설할 수 없습니다...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}여기에 화물 전차 정거장을 건설할 수 없습니다...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}여기에 승객 전차 정거장을 건설할 수 없습니다...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}여기에 화물 전차 정거장을 건설할 수 없습니다...
 STR_180A_ROAD_CONSTRUCTION                                      :도로 건설
-STR_180A_TRAMWAY_CONSTRUCTION                                   :전찻길 건설
+STR_TRAMWAY_CONSTRUCTION                                        :전찻길 건설
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}도로 섹션 건설
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}자동건설 모드로 도로 섹션 건설
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}전찻길 섹션 건설
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}전찻길 섹션 건설
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}자동건설 모드로 전차 섹션 건설
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}차고 건설 (차량의 제작/점검용)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}차량기지 건설 (차량 건설/점검용)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}차량기지 건설 (차량 건설/점검용)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}버스 정류장 건설
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}트럭 적하장 건설
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}승객 전차 정거장 건설
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}화물 전차 전거장 건설
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}승객 전차 정거장 건설
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}화물 전차 전거장 건설
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}교량 건설
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}철교 건설
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}철교 건설
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}터널 건설
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}터널 건설
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}터널 건설
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}일방통행 활성/비활성화
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}도로 제거툴 켜기/끄기
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}전찻길/신호등 제거툴 켜기/끄기
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}전찻길/신호등 제거툴 켜기/끄기
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}차고의 방향을 선택하십시오
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}차량기지의 방향을 선택하세요
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}차량기지의 방향을 선택하세요
 STR_1814_ROAD                                                   :도로
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :신호등이 있는 도로
 STR_1816_TREE_LINED_ROAD                                        :가로수가 있는 도로
@@ -1825,8 +1825,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}다른 �
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}1개 이상의 역을 인접시키십시오
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}이 도시에 너무 많은 역이 있습니다
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}역이 너무 많습니다
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}버스 정류장이 너무 많습니다
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}트럭 적하장이 너무 많습니다
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}버스 정류장이 너무 많습니다
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}트럭 적하장이 너무 많습니다
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}다른 역과 너무 가깝습니다!
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}기차역을 먼저 제거하십시오!
@@ -1857,12 +1857,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION}에서 {STRING}/{STRING}을/를 받습니다.
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}버스 정류장 방향
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}트럭 적하장 방향
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}승객 전차 정거장 방향
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}화물 전차 정거장 방향
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}승객 전차 정거장 방향
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}화물 전차 정거장 방향
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}버스 정류장을 먼저 제거하십시오.
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}트럭 적하장을 먼저 제거하십시오.
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}승객 전차 정거장을 먼저 제거하십시오.
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}화물 전차 정거장을 먼저 제거하십시오.
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}승객 전차 정거장을 먼저 제거하십시오.
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}화물 전차 정거장을 먼저 제거하십시오.
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA}개 역사
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- 없음 -
@@ -1874,8 +1874,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}기차�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}기차역의 길이를 선택합니다.
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}버스 정류장의 방향을 선택합니다.
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}트럭 적하장의 방향을 선택합니다.
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}승객 전차 정거장의 방향을 선택하세요.
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}화물 전차 정거장의 방향을 선택하세요.
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}승객 전차 정거장의 방향을 선택하세요.
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}화물 전차 정거장의 방향을 선택하세요.
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}이 역이 있는 곳으로 이동합니다.
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}역의 등급 표시
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}역 이름 변경
@@ -1897,7 +1897,7 @@ STR_3068_DOCK                                                   :{WHITE}항구
 STR_3069_BUOY                                                   :부이
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...도중에 부이가 있습니다.
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...역이 너무 큽니다.
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...역을 결합할 수 없습니다! (패치 구성 참고)
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...역을 결합할 수 없습니다! (패치 구성 참고)
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}1개 이상의 아이템을 선택하려면 CTRL키를 누르고 계십시오.
 
 STR_UNDEFINED                                                   :(정의되지 않은 문자열)
@@ -1938,7 +1938,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}선택�
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}새로운 게임 종류를 선택
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}시나리오(녹색), 프리셋 게임(파랑), 무작위 게임 선택
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :신규 무작위 게임 생성
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}DEM지형 로드
+STR_LOAD_HEIGHTMAP                                              :{WHITE}DEM지형 로드
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}중간에 {STRING}이/가 있습니다
@@ -2142,10 +2142,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}물/호
 STR_6813_ECONOMY                                                :{LTBLUE}경제: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}열차 회차: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}재앙: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}도시 당국의 지역 재건설에 대한 태도: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}도시 당국의 지역 재건설에 대한 태도: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :없음
+STR_NONE                                                        :없음
 STR_NUM_VERY_LOW                                                :매우 적음
 STR_6816_LOW                                                    :낮음
 STR_6817_NORMAL                                                 :보통
@@ -2183,9 +2183,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :선로 끝에�
 STR_6836_OFF                                                    :끔
 STR_6837_ON                                                     :켬
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}고득점 차트 보이기
-STR_6839_PERMISSIVE                                             :허용적
-STR_683A_TOLERANT                                               :관대함
-STR_683B_HOSTILE                                                :적대적
+STR_PERMISSIVE                                                  :허용적
+STR_TOLERANT                                                    :관대함
+STR_HOSTILE                                                     :적대적
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2322,7 +2322,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}이 회�
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}이 회사 주식의 25%를 매도할 수 없습니다...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% {COMPANY}의 소유)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}의 관리권이 {COMPANY}(으)로 넘어갔습니다!
-STR_7080_PROTECTED                                              :{WHITE}이 회사는 주식을 거래할 만큼 오래되지 않았습니다...
+STR_PROTECTED                                                   :{WHITE}이 회사는 주식을 거래할 만큼 오래되지 않았습니다...
 
 STR_LIVERY_DEFAULT                                              :기본 색상
 STR_LIVERY_STEAM                                                :증기 기관차
@@ -2629,17 +2629,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간�
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :{STATION} 행
-STR_8807_GO_TO_TRANSFER                                         :{STATION} 행 (환승시키고 화물 싣기)
-STR_8808_GO_TO_UNLOAD                                           :{STATION} 행 (모두 내림)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :{STATION} 행 (환승시키고 화물을 모두 내림)
-STR_880A_GO_TO_LOAD                                             :{STATION} 행 (모두 싣기)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :{STATION} 행 (환승시키고 화물을 가득 실음)
-STR_880C_GO_NON_STOP_TO                                         :{STATION} 급행
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :{STATION} 급행 (환승시키고 화물 싣기)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :{STATION} 급행 (모두 내림)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :{STATION} 급행 (환승시키고 화물을 모두 내림)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :{STATION} 급행 (모두 싣기)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :{STATION} 급행 (환승시키고 화물을 가득 실음)
+STR_GO_TO_TRANSFER                                              :{STATION} 행 (환승시키고 화물 싣기)
+STR_8807_GO_TO_UNLOAD                                           :{STATION} 행 (모두 내림)
+STR_GO_TO_TRANSFER_UNLOAD                                       :{STATION} 행 (환승시키고 화물을 모두 내림)
+STR_8808_GO_TO_LOAD                                             :{STATION} 행 (모두 싣기)
+STR_GO_TO_TRANSFER_LOAD                                         :{STATION} 행 (환승시키고 화물을 가득 실음)
+STR_880A_GO_NON_STOP_TO                                         :{STATION} 급행
+STR_GO_TO_NON_STOP_TRANSFER                                     :{STATION} 급행 (환승시키고 화물 싣기)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :{STATION} 급행 (모두 내림)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :{STATION} 급행 (환승시키고 화물을 모두 내림)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :{STATION} 급행 (모두 싣기)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :{STATION} 급행 (환승시키고 화물을 가득 실음)
 STR_GO_TO_TRAIN_DEPOT                                           :{TOWN} 차량기지행
 STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN} 차량기지행 (점검)
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN} 차량기지 급행
@@ -2743,7 +2743,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}점검 �
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}현재 싣고있는 화물 정보를 보여줌
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}각 차량의 상세 정보를 보여줌
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}각 차량의 수송량 정보를 보여줌
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}각 화물 종류에 따른 총 수송량 보여줌
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}각 화물 종류에 따른 총 수송량 보여줌
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다.
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}현재 경로를 건너 뜁니다, 그리고 다음 경로를 시작합니다. Ctrl + 클릭은 선택된 경로로 건너 뜁니다.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}선택된 경로를 삭제합니다.
@@ -2774,8 +2774,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}열차를 회차시킬 수 없습니다...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}열차 차량 타입 이름 재지정
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 내려서 쌓아놓도록 변경합니다.
-STR_886F_TRANSFER                                               :{BLACK}환승
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}선택된 경로에서 모든 화물을 내려서 쌓아놓도록 변경합니다.
+STR_TRANSFER                                                    :{BLACK}환승
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
 STR_RESET_LATENESS                                              :{BLACK}지연 카운터 초기화
 
@@ -2853,8 +2853,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}자동�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}자동차 이름 지정
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}첫 버스가 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}첫 트럭이 {STATION} 정류장에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}{STATION}에 처음으로 승객 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}자동차를 회차시킬 수 없습니다...
@@ -2863,7 +2863,7 @@ STR_9034_RENAME                                                 :{BLACK}이름 �
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}자동차 타입의 이름 지정
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}자동차 타입의 이름 지정
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}자동차 타입의 이름을 지정할 수 없습니다...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :{TOWN} 차고로 가는 중
+STR_GO_TO_ROADVEH_DEPOT                                         :{TOWN} 차고로 가는 중
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :{TOWN} 차고로 점검하러 가는 중
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}자동차가 다른 종류의 화물을 싣도록 개조

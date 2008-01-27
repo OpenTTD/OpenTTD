@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}Hernoem
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Te veel name bepaal
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Gekies naam alreeds in gebruik
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...besit
 STR_013C_CARGO                                                  :{BLACK}Vrag
 STR_013D_INFORMATION                                            :{BLACK}Inligting
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteite
-STR_013E_TOTAL_CARGO                                            :{BLACK}Totaale Vrag
+STR_TOTAL_CARGO                                                 :{BLACK}Totaale Vrag
 STR_013F_CAPACITY                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapasiteit: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Totaale vrag kapasitiet van die trein:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Totaale vrag kapasitiet van die trein:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nuwe Speletjie
 STR_0141_LOAD_GAME                                              :{BLACK}Laai Speletjie
@@ -725,7 +725,7 @@ STR_0290_DELETE                                                 :{BLACK}Uitvee
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Uitvee hierdie dorp heeltemal
 STR_0292_SAVE_SCENARIO                                          :Spaar draaiboek
 STR_0293_LOAD_SCENARIO                                          :Laai draaiboek
-STR_LOAD_HEIGHTMAP                                              :Laai Hoogtekaart
+STR_MENU_LOAD_HEIGHTMAP                                         :Laai Hoogtekaart
 STR_0294_QUIT_EDITOR                                            :Laat vaar redigeerder
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Laat vaar
@@ -765,9 +765,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Spaar pa
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Speletjie opsies
-STR_02C5_DIFFICULTY_SETTINGS                                    :Moeite stellings
-STR_02C7_CONFIG_PATCHES                                         :Konfigureer laslappe
+STR_02C4_GAME_OPTIONS                                           :Speletjie opsies
+STR_02C6_DIFFICULTY_SETTINGS                                    :Moeite stellings
+STR_MENU_CONFIG_PATCHES                                         :Konfigureer laslappe
 STR_NEWGRF_SETTINGS                                             :NewGRF stellings
 STR_TRANSPARENCY_OPTIONS                                        :Deursigtigheid opsies
 STR_GAMEOPTMENU_0A                                              :
@@ -867,8 +867,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  BESP
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Spaar nog in vorder, {}wag asb tot dit klaar is!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Kies 'Ezy Straat styl musiek' musiek lys
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engels (Oorspronkilik)
@@ -1641,41 +1641,41 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Moet eer
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Moet pad eers verwyder
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Pad werke in vorder
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pad Konstruksie
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}Tremweg Konstruksie
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tremweg Konstruksie
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Kies Pad Brug
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... een rigting paaie kan nie aansluitings hê nie
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan nie pad hier bou nie...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}Kan nie tremweg hier bou nie...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Kan nie tremweg hier bou nie...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan nie pad van hier verwyder nie...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}Kan nie tremweg van hier af verwyder nie...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Kan nie tremweg van hier af verwyder nie...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Pad Depot Ori�tering
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}Trem Depot Orientasie
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Trem Depot Orientasie
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan nie pad voertuig depot hier bou nie...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}Kan nie trem voertuig depot hier bou nie...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Kan nie trem voertuig depot hier bou nie...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan nie bus stasie hier bou nie...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan nie vragmotor stasie bou nie...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}Kan nie passasier trem stasie bou nie...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}Kan nie vrag trem stasie bou nie...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Kan nie passasier trem stasie bou nie...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Kan nie vrag trem stasie bou nie...
 STR_180A_ROAD_CONSTRUCTION                                      :Pad konstruksie
-STR_180A_TRAMWAY_CONSTRUCTION                                   :Tremweg konstruksie
+STR_TRAMWAY_CONSTRUCTION                                        :Tremweg konstruksie
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Bou pad afdeling
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Bou pad seksie gebruikend Outopad metode
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}Bou tremweg afdeling
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Bou tremweg afdeling
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Bou tremweg gebruikend die Outotrem metode
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Bou pad voertuig depot (vir bou en diens van voertuie)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}Bou trem voertuig depot (vir bou en diens van voertuie)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Bou trem voertuig depot (vir bou en diens van voertuie)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bou bus stasie
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bou vraagmotor laai area
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}Bou passasier trem stasie
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}Bou vrag trem stasie
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Bou passasier trem stasie
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Bou vrag trem stasie
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bou pad brug
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}Bou tremweg brug
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Bou tremweg brug
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bou pad tonnel
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}Bou tremweg tonnel
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Bou tremweg tonnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tokkel bou/verwyder vir pad bou
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}Tokkel bou/verwyder vir tremweg konstruksie
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Tokkel bou/verwyder vir tremweg konstruksie
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Kies pad voertuig depot orientasie
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}Kies trem voertuig depot orientasie
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Kies trem voertuig depot orientasie
 STR_1814_ROAD                                                   :Pad
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Pad met straatligte
 STR_1816_TREE_LINED_ROAD                                        :Boom-belynde pad
@@ -1817,8 +1817,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te naby 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grens aan meer as een bestaande stasie/laai area
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te veel stasies/laai areas in die stad
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Te veel stasies/laai areas
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushalte
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Te veel vragmotor stasies
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te veel bushalte
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Te veel vragmotor stasies
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Te naby aan 'n ander stasie/laai area
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Moet eers spoorweg stasie afbreek
@@ -1849,12 +1849,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} aanvaar nou {STRING} en {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bus Stasie Orientasie
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Vragmotor Stasie Orientasie
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}Passasier Trem Orientasie
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}Vrag Trem Orientasie
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Passasier Trem Orientasie
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Vrag Trem Orientasie
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Moet eers bus stasie afbreek
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Moet eers vragmotor stasie afbreek
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}Moet eers passasier trem stasie afbreek
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}Moet eers vrag trem stasie afbreek
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Moet eers passasier trem stasie afbreek
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Moet eers vrag trem stasie afbreek
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasie{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Geen -
@@ -1866,8 +1866,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Kies nom
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Kies lengte van spoorweg stasie
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Kies bus stasie orientasie
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Kies vragmotor laai area orientasie
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}Kies passasier trem stasie orientasie
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}Kies vrag trem stasie orientasie
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Kies passasier trem stasie orientasie
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Kies vrag trem stasie orientasie
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Senter skerm op stasie
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Toon stasie graderings
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Verander naam van stasie
@@ -1889,7 +1889,7 @@ STR_3068_DOCK                                                   :{WHITE}Werf
 STR_3069_BUOY                                                   :Baken
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...baken in die pad
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Stasie te ver van mekaar af
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ongelyk stasies is versper
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ongelyk stasies is versper
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hou in CTRL om meer as een item te selekteer
 
 STR_UNDEFINED                                                   :(undefined string)
@@ -1930,7 +1930,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Spaar di
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Kies Nuwe Speletjie Tipe
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Kies draaiboek (groen), vooraf-stel speletjie (blou), of lukraak nuwe speletjie
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Opwek lukraak nuwe speletjie
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laai Hoogtekaart
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Laai Hoogtekaart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in die pad
@@ -2134,10 +2134,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Hoeveel
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomie: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Trein omkeer: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Rampe: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Stad raad se houding na area herstruktuuring: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Stad raad se houding na area herstruktuuring: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Geen
+STR_NONE                                                        :Geen
 STR_NUM_VERY_LOW                                                :Baie laag
 STR_6816_LOW                                                    :Laag
 STR_6817_NORMAL                                                 :Normaal
@@ -2175,9 +2175,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Slegs op die en
 STR_6836_OFF                                                    :Af
 STR_6837_ON                                                     :Aan
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Wys ho�telling tabel
-STR_6839_PERMISSIVE                                             :Permissief
-STR_683A_TOLERANT                                               :Toelaatbaar
-STR_683B_HOSTILE                                                :Vyandelik
+STR_PERMISSIVE                                                  :Permissief
+STR_TOLERANT                                                    :Toelaatbaar
+STR_HOSTILE                                                     :Vyandelik
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2309,7 +2309,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan nie 
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan nie 25% aandeel in die maatskappy verkoop nie...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% besit by {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} is deur {COMPANY} oorgevat!
-STR_7080_PROTECTED                                              :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
+STR_PROTECTED                                                   :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
 
 STR_LIVERY_DEFAULT                                              :Standaard Lewery
 STR_LIVERY_STEAM                                                :Stoom Enjin
@@ -2616,17 +2616,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Gaan na {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Gaan na {STATION} (Oordrag en vat vrag)
-STR_8808_GO_TO_UNLOAD                                           :Gaan na {STATION} (Aflaai)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Gaan na {STATION} (Oordrag en verlaat leeg)
-STR_880A_GO_TO_LOAD                                             :Gaan na {STATION} (Laai)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Gaan na {STATION} (Oordrag en wag vir volle lading)
-STR_880C_GO_NON_STOP_TO                                         :Gaan deurgaande na {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Gaan deurgaande na {STATION} (Oordra en neem vrag)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Gaan deurgaande na {STATION} (Aflaai)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Gaan deurgaande na {STATION} (Oordra en verlaat leë)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Gaan deurgaande na {STATION} (Laai)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gaan deurgaande na {STATION} (Oordra en wag vir volle lading)
+STR_GO_TO_TRANSFER                                              :Gaan na {STATION} (Oordrag en vat vrag)
+STR_8807_GO_TO_UNLOAD                                           :Gaan na {STATION} (Aflaai)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Gaan na {STATION} (Oordrag en verlaat leeg)
+STR_8808_GO_TO_LOAD                                             :Gaan na {STATION} (Laai)
+STR_GO_TO_TRANSFER_LOAD                                         :Gaan na {STATION} (Oordrag en wag vir volle lading)
+STR_880A_GO_NON_STOP_TO                                         :Gaan deurgaande na {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Gaan deurgaande na {STATION} (Oordra en neem vrag)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Gaan deurgaande na {STATION} (Aflaai)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Gaan deurgaande na {STATION} (Oordra en verlaat leë)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Gaan deurgaande na {STATION} (Laai)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Gaan deurgaande na {STATION} (Oordra en wag vir volle lading)
 STR_GO_TO_TRAIN_DEPOT                                           :Gaan na {TOWN} Trein Depot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Diens by {TOWN} Trein Depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gaan deurgaande na {TOWN} Trein Depot
@@ -2730,7 +2730,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Verminde
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Toon besonderhede van vrag gedra
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Toon besonderhede van trein voertuie
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Toon kapasiteite van elke voertuig
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Toon totaale kapasitiet van trein, verdeel by vrag tipe
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Toon totaale kapasitiet van trein, verdeel by vrag tipe
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Opdraglys - kliek op 'n opdrag om dit te verlig. CTRL + kliek senter op stasie
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sprong die huidige opdraag, en begin die volgende. CTRL + kliek sprong na verkieste opdrag
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vee uit die verlig opdrag
@@ -2761,8 +2761,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan nie rigting van trein omkeer nie...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem trein voertuig tipe
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Trein voertuig tipe kan nie hernoem word nie...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die verlig opdrag forseer die voertuig om sy vrag te stort
-STR_886F_TRANSFER                                               :{BLACK}Oordra
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Maak die verlig opdrag forseer die voertuig om sy vrag te stort
+STR_TRANSFER                                                    :{BLACK}Oordra
 STR_CLEAR_TIME                                                  :{BLACK}Reinig Tyd
 STR_RESET_LATENESS                                              :{BLACK}Herstel Laat Teller
 
@@ -2839,8 +2839,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Pad voer
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Benaam pad voertuig
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste bus arriveer by {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trok arriveer by {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste passasier trein arriveer by {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste vrag trein arriveer by {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan nie voertuig forseer om te omdraai nie...
@@ -2849,7 +2849,7 @@ STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem pad voertuig tipe
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem pad voertuig tipe
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Pad voertuig tipe kan nie hernoem word nie...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gaan na {TOWN} Pad Voertuig Depot
+STR_GO_TO_ROADVEH_DEPOT                                         :Gaan na {TOWN} Pad Voertuig Depot
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Diens by {TOWN} Pad Voertuig Depot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Herpas pad voertuig om 'n ander vrag tipe te ontvoer

@@ -273,9 +273,9 @@ STR_0130_RENAME                                                 :{BLACK}Renomu
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Tro da nomoj difinitaj
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}La elektita nomo jam uziĝas
 
-STR_0133_WINDOWS                                                :Vindozo
-STR_0134_UNIX                                                   :Unikso
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Vindozo
+STR_OSNAME_UNIX                                                 :Unikso
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -286,11 +286,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...posed
 STR_013C_CARGO                                                  :{BLACK}Ŝarĝo
 STR_013D_INFORMATION                                            :{BLACK}Informoj
 STR_013E_CAPACITIES                                             :{BLACK}Kapabloj
-STR_013E_TOTAL_CARGO                                            :{BLACK}Tuta Ŝarĝo
+STR_TOTAL_CARGO                                                 :{BLACK}Tuta Ŝarĝo
 STR_013F_CAPACITY                                               :{BLACK}Enhavkapablo: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapablo: {LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nova Ludo
 STR_0141_LOAD_GAME                                              :{BLACK}Ŝarĝu ludon
@@ -726,7 +726,7 @@ STR_0290_DELETE                                                 :{BLACK}Forigu
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Plene forigu ĉi tiun urbon
 STR_0292_SAVE_SCENARIO                                          :Konservu scenaron
 STR_0293_LOAD_SCENARIO                                          :Ŝarĝu scenaron
-STR_LOAD_HEIGHTMAP                                              :Ŝarĝu altecmapon
+STR_MENU_LOAD_HEIGHTMAP                                         :Ŝarĝu altecmapon
 STR_0294_QUIT_EDITOR                                            :Fermu kreilon
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Fermu
@@ -766,9 +766,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Konservu
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :Ludaj opcioj
-STR_02C5_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
-STR_02C7_CONFIG_PATCHES                                         :Agordu flikojn
+STR_02C4_GAME_OPTIONS                                           :Ludaj opcioj
+STR_02C6_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
+STR_MENU_CONFIG_PATCHES                                         :Agordu flikojn
 STR_NEWGRF_SETTINGS                                             :Agordoj de NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
@@ -867,8 +867,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  KONS
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ankoraŭ konservas,{}bv atendi ĝis finiĝo!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Elektu programon de 'Facilvoja muziko'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angle (Origine)
@@ -1723,8 +1723,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Tro prok
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Alligas pli ol unu ekzistantan stacion/ŝarĝejon
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Tro da stacioj/ŝarĝejoj en la urbo
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Tro da stacioj/ŝarĝejoj
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Tro da bushaltejoj
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Tro da ŝarĝaŭtaj stacioj
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Tro da bushaltejoj
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Tro da ŝarĝaŭtaj stacioj
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Tro proksime al alia stacioj/ŝarĝejoj
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Antaŭe forigu stacidomon
@@ -1789,7 +1789,7 @@ STR_3068_DOCK                                                   :{WHITE}Haveno
 STR_3069_BUOY                                                   :Buo
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...buo okupas la lokon
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stacio tro vastas
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nekonformaj stacioj neebligitaj
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...nekonformaj stacioj neebligitaj
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tenu la CTRL-klavon por elekti pliajn erojn
 
 STR_UNDEFINED                                                   :(nedifinita tekstero)
@@ -1824,7 +1824,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Konservu
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Elektu Novan Ludtipon
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Elektu scenaron (green), antaŭ-agorditan ludon (blue), aŭ hazardan novan ludon
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generu hazardan novan ludon
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Ŝarĝu Altecmapon
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Ŝarĝu Altecmapon
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} okupas la lokon
@@ -2019,10 +2019,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Kiom da
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomio: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Trajna inversigo: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katastrofoj: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Urbestrara teniĝo al regiona strukturŝanĝiĝo: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}Urbestrara teniĝo al regiona strukturŝanĝiĝo: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :Neniu
+STR_NONE                                                        :Neniu
 STR_NUM_VERY_LOW                                                :Tre malalte
 STR_6816_LOW                                                    :Malalte
 STR_6817_NORMAL                                                 :Normale
@@ -2060,9 +2060,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Nur finlinie
 STR_6836_OFF                                                    :Malaktiva
 STR_6837_ON                                                     :Aktiva
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Montru plej bonajn ludantojn
-STR_6839_PERMISSIVE                                             :Permeseme
-STR_683A_TOLERANT                                               :Tolerante
-STR_683B_HOSTILE                                                :Gastige
+STR_PERMISSIVE                                                  :Permeseme
+STR_TOLERANT                                                    :Tolerante
+STR_HOSTILE                                                     :Gastige
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2194,7 +2194,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ne povas
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ne povas vendi 25%-an dividaĵon...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% posedataj de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} estas transprenita de {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
+STR_PROTECTED                                                   :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
 
 STR_LIVERY_DEFAULT                                              :Normala Koloro
 STR_LIVERY_STEAM                                                :Vapormaŝino
@@ -2499,17 +2499,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno o
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Iru al {STATION}
-STR_8807_GO_TO_TRANSFER                                         :Iru al {STATION} (Transigu kaj prenu ŝarĝon)
-STR_8808_GO_TO_UNLOAD                                           :Iru al {STATION} (Deŝarĝu)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Iru al {STATION} (Transigu kaj lasu malplena)
-STR_880A_GO_TO_LOAD                                             :Iru al {STATION} (Ŝarĝu)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Iru al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
-STR_880C_GO_NON_STOP_TO                                         :Iru senhalte al {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :Iru senhalte al {STATION} (Transigu kaj prenu ŝarĝon)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Iru senhalte al {STATION} (Deŝarĝu)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Iru senhalte al {STATION} (Transigu kaj lasu malplena)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :Iru senhalte al {STATION} (Ŝarĝu)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Iru senhalte al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
+STR_GO_TO_TRANSFER                                              :Iru al {STATION} (Transigu kaj prenu ŝarĝon)
+STR_8807_GO_TO_UNLOAD                                           :Iru al {STATION} (Deŝarĝu)
+STR_GO_TO_TRANSFER_UNLOAD                                       :Iru al {STATION} (Transigu kaj lasu malplena)
+STR_8808_GO_TO_LOAD                                             :Iru al {STATION} (Ŝarĝu)
+STR_GO_TO_TRANSFER_LOAD                                         :Iru al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
+STR_880A_GO_NON_STOP_TO                                         :Iru senhalte al {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :Iru senhalte al {STATION} (Transigu kaj prenu ŝarĝon)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Iru senhalte al {STATION} (Deŝarĝu)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Iru senhalte al {STATION} (Transigu kaj lasu malplena)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :Iru senhalte al {STATION} (Ŝarĝu)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Iru senhalte al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
 STR_GO_TO_TRAIN_DEPOT                                           :Iru al {TOWN} Trajndeponejo
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Prizorgo ĉe {TOWN} Trajndeponejo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Iru senhalte al {TOWN} Trajndeponejo
@@ -2601,7 +2601,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Malpliig
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Montru detalojn de portata ŝarĝo
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Montru detalojn de trajnaj veturiloj
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montru kapablojn de ĉiu veturilo
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordena listo - alklaku ordenon por elekti. CTRL + klako skrolas al la stacio
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu la elektitan ordenon
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Senhaltigu elektitan ordenon
@@ -2627,8 +2627,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne povas inversigi direkton de trajno...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomu trajnan veturiltipon
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne povas renomi trajnan veturiltipon...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon demeti la ŝarĝon
-STR_886F_TRANSFER                                               :{BLACK}Transigu
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}La elektita ordeno igu la veturilon demeti la ŝarĝon
+STR_TRANSFER                                                    :{BLACK}Transigu
 
 STR_TRAIN_STOPPING                                              :{RED}Haltiĝas
 STR_TRAIN_STOPPING_VEL                                          :{RED}Haltiĝas, {VELOCITY}
@@ -2695,7 +2695,7 @@ STR_9034_RENAME                                                 :{BLACK}Renomu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomu vojveturilan tipon
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomu vojveturilan tipon
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ne povas renomi vojveturilan tipon...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Iru al {TOWN} Vojveturila Deponejo
+STR_GO_TO_ROADVEH_DEPOT                                         :Iru al {TOWN} Vojveturila Deponejo
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Prizorgo ĉe {TOWN} Vojveturila Deponejo
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Transformu vojveturilon por porti alian ŝarĝon

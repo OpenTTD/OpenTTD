@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}更名
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}已定義過多名稱
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}所選名稱已被使用
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}...{STRI
 STR_013C_CARGO                                                  :{BLACK}貨物
 STR_013D_INFORMATION                                            :{BLACK}資訊
 STR_013E_CAPACITIES                                             :{BLACK}載量
-STR_013E_TOTAL_CARGO                                            :{BLACK}總貨物量
+STR_TOTAL_CARGO                                                 :{BLACK}總貨物量
 STR_013F_CAPACITY                                               :{BLACK}載量：{LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}載量：{LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列車的總載量：
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}此列車的總載量：
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}開新遊戲
 STR_0141_LOAD_GAME                                              :{BLACK}載入遊戲
@@ -725,7 +725,7 @@ STR_0290_DELETE                                                 :{BLACK}刪除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全移除這個市鎮
 STR_0292_SAVE_SCENARIO                                          :儲存場景
 STR_0293_LOAD_SCENARIO                                          :載入場景
-STR_LOAD_HEIGHTMAP                                              :載入高度圖
+STR_MENU_LOAD_HEIGHTMAP                                         :載入高度圖
 STR_0294_QUIT_EDITOR                                            :離開編輯器
 STR_0295                                                        :
 STR_0296_QUIT                                                   :離開
@@ -765,9 +765,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}儲存�
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :遊戲選項
-STR_02C5_DIFFICULTY_SETTINGS                                    :難易設定
-STR_02C7_CONFIG_PATCHES                                         :設置修正
+STR_02C4_GAME_OPTIONS                                           :遊戲選項
+STR_02C6_DIFFICULTY_SETTINGS                                    :難易設定
+STR_MENU_CONFIG_PATCHES                                         :設置修正
 STR_NEWGRF_SETTINGS                                             :NewGRF 設定
 STR_TRANSPARENCY_OPTIONS                                        :透明度選項
 STR_GAMEOPTMENU_0A                                              :
@@ -867,8 +867,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  遊�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}遊戲仍在儲存,{}請稍候!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}選擇「輕鬆街頭音樂」歌單
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英國 (原版)
@@ -1642,42 +1642,42 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}必須�
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}必須先移除道路
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}道路施工中
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}鋪設道路
-STR_1802_TRAMWAY_CONSTRUCTION                                   :{WHITE}鋪設電車軌
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}鋪設電車軌
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}選擇道路橋樑
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... 單向的道路不能有交叉點
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在此鋪設道路...
-STR_1804_CAN_T_BUILD_TRAMWAY_HERE                               :{WHITE}不可以在這裏鋪設電車軌...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}不可以在這裏鋪設電車軌...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}不能從此移除道路...
-STR_1805_CAN_T_REMOVE_TRAMWAY_FROM                              :{WHITE}不可以移除這裏的電車軌...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}不可以移除這裏的電車軌...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}車庫方向
-STR_1806_TRAM_DEPOT_ORIENTATION                                 :{WHITE}電車
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}電車
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}不能在此設置車庫...
-STR_1807_CAN_T_BUILD_TRAM_VEHICLE                               :{WHITE}不可以在這裏興建電車維修廠...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}不可以在這裏興建電車維修廠...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}無法設置公車站...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}無法設置貨運站...
-STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION                     :{WHITE}不可以興建電車站...
-STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION                         :{WHITE}不可興建載貨電車站...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}不可以興建電車站...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}不可興建載貨電車站...
 STR_180A_ROAD_CONSTRUCTION                                      :鋪設道路
-STR_180A_TRAMWAY_CONSTRUCTION                                   :鋪設電車軌
+STR_TRAMWAY_CONSTRUCTION                                        :鋪設電車軌
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}鋪設一段公路
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}鋪設道路區段時使用自動模式
-STR_180B_BUILD_TRAMWAY_SECTION                                  :{BLACK}興建電車站
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}興建電車站
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}鋪設輕軌區段時使用自動模式
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}設置車庫 (用來購置與維護公路車輛)
-STR_180C_BUILD_TRAM_VEHICLE_DEPOT                               :{BLACK}興建電車維修廠 (供製造及維修用)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}興建電車維修廠 (供製造及維修用)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}設置公車站
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}設置貨運站
-STR_180D_BUILD_PASSENGER_TRAM_STATION                           :{BLACK}興建載客電車站
-STR_180E_BUILD_CARGO_TRAM_STATION                               :{BLACK}興建載貨電車站
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}興建載客電車站
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}興建載貨電車站
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}建築公路橋樑
-STR_180F_BUILD_TRAMWAY_BRIDGE                                   :{BLACK}架設電車橋
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}架設電車橋
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}挖掘公路隧道
-STR_1810_BUILD_TRAMWAY_TUNNEL                                   :{BLACK}開鐅電車隧道
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}開鐅電車隧道
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}切換單行道/雙向道
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}切換鋪設/移除公路
-STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                       :{BLACK}鋪設電車軌開關
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}鋪設電車軌開關
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}選擇車庫方向
-STR_1813_SELECT_TRAM_VEHICLE_DEPOT                              :{BLACK}選擇電車維修廠方向
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}選擇電車維修廠方向
 STR_1814_ROAD                                                   :公路
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :有路燈的公路
 STR_1816_TREE_LINED_ROAD                                        :有行道樹的公路
@@ -1820,8 +1820,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}太靠�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}鄰接超過一個現有車站/載貨區
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}這個城鎮已有太多車站/載貨區 (可先修改現有車站/載貨區的名稱再試看看)
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}太多車站/載貨區
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}太多工車站
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}太多貨運站
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}太多工車站
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}太多貨運站
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}太靠近另一個車站/載貨區
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}必須先摧毀鐵道車站
@@ -1852,12 +1852,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} 現在接受 {STRING} 與 {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}公車站方向
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}貨運站方向
-STR_3042_PASSENGER_TRAM_STATION_ORIENTATION                     :{WHITE}載客電車方向
-STR_3043_CARGO_TRAM_STATION_ORIENT                              :{WHITE}載貨電車方向
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}載客電車方向
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}載貨電車方向
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}必須先摧毀公車站
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}必須先摧毀貨運站
-STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION                   :{WHITE}必須先移除載客電車車站
-STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION                       :{WHITE}必須先移除載貨電車車站
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}必須先移除載客電車車站
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}必須先移除載貨電車車站
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} 座車站
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- 無 -
@@ -1869,8 +1869,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}選擇�
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}選擇鐵道車站的長度
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}選擇公車站方向
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}選擇貨運站方向
-STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION              :{BLACK}選擇載客電車方向
-STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION                  :{BLACK}選擇載貨電車方向
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}選擇載客電車方向
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}選擇載貨電車方向
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}將主視野帶到車站位置
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}顯示車站評價
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}變更車站名稱
@@ -1892,7 +1892,7 @@ STR_3068_DOCK                                                   :{WHITE}碼頭
 STR_3069_BUOY                                                   :浮標
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...被浮標擋住
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...車站範圍太大
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...未啟動不規則車站外型功能
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...未啟動不規則車站外型功能
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}按住 CTRL 選擇多重項目
 
 STR_UNDEFINED                                                   :(未定義字串)
@@ -1933,7 +1933,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}已選�
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}選擇新遊戲類型
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}選擇劇本 (綠色)，預設遊戲 (藍)，或隨機產生場景
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :隨機產生新場景
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}載入高度圖
+STR_LOAD_HEIGHTMAP                                              :{WHITE}載入高度圖
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}被 {STRING} 擋住
@@ -2137,10 +2137,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}海/湖
 STR_6813_ECONOMY                                                :{LTBLUE}經濟：{ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}列車倒轉：{ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}災難：{ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}市議會對區域重建的態度：{ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}市議會對區域重建的態度：{ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :無
+STR_NONE                                                        :無
 STR_NUM_VERY_LOW                                                :非常少
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :普通
@@ -2178,9 +2178,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :僅限軌道終
 STR_6836_OFF                                                    :關
 STR_6837_ON                                                     :開
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}顯示排行榜
-STR_6839_PERMISSIVE                                             :寬容
-STR_683A_TOLERANT                                               :能忍受
-STR_683B_HOSTILE                                                :抱敵意
+STR_PERMISSIVE                                                  :寬容
+STR_TOLERANT                                                    :能忍受
+STR_HOSTILE                                                     :抱敵意
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2317,7 +2317,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}無法�
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}無法出售這間公司的股份...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% 由 {COMPANY} 擁有)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} 被 {COMPANY} 收購！
-STR_7080_PROTECTED                                              :{WHITE}這間公司才剛成立，還不能交易股票...
+STR_PROTECTED                                                   :{WHITE}這間公司才剛成立，還不能交易股票...
 
 STR_LIVERY_DEFAULT                                              :標準配色
 STR_LIVERY_STEAM                                                :蒸汽機車
@@ -2624,17 +2624,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}前方�
 STR_8804                                                        :{SETX 10}{COMMA}：{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}：{STRING} {STRING}
 STR_8806_GO_TO                                                  :前往 {STATION}
-STR_8807_GO_TO_TRANSFER                                         :前往 {STATION} (轉運，僅載不卸)
-STR_8808_GO_TO_UNLOAD                                           :前往 {STATION} (卸客貨)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :前往 {STATION} (轉運，卸客貨清空離站)
-STR_880A_GO_TO_LOAD                                             :前往 {STATION} (滿載)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :前往 {STATION} (轉運，等待滿載)
-STR_880C_GO_NON_STOP_TO                                         :前往 {STATION} 不停靠/中途不停
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :前往 {STATION} (轉運 [僅載不卸]) 中途不停
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :前往 {STATION} (卸載) 中途不停
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :前往 {STATION} (轉運 [卸載清空離站]) 中途不停
-STR_8810_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (滿載) 中途不停
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :前往 {STATION} (轉運 [等待滿載]) 中途不停
+STR_GO_TO_TRANSFER                                              :前往 {STATION} (轉運，僅載不卸)
+STR_8807_GO_TO_UNLOAD                                           :前往 {STATION} (卸客貨)
+STR_GO_TO_TRANSFER_UNLOAD                                       :前往 {STATION} (轉運，卸客貨清空離站)
+STR_8808_GO_TO_LOAD                                             :前往 {STATION} (滿載)
+STR_GO_TO_TRANSFER_LOAD                                         :前往 {STATION} (轉運，等待滿載)
+STR_880A_GO_NON_STOP_TO                                         :前往 {STATION} 不停靠/中途不停
+STR_GO_TO_NON_STOP_TRANSFER                                     :前往 {STATION} (轉運 [僅載不卸]) 中途不停
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :前往 {STATION} (卸載) 中途不停
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :前往 {STATION} (轉運 [卸載清空離站]) 中途不停
+STR_880C_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (滿載) 中途不停
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :前往 {STATION} (轉運 [等待滿載]) 中途不停
 STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 機廠
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 機廠維護
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往 {TOWN} 機廠 中途不停
@@ -2738,7 +2738,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}縮短�
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}顯示載貨詳細資料
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}顯示車輛詳細資料
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}顯示車輛的容量
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}顯示列車的總容量，照貨物分類
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}顯示列車的總容量，照貨物分類
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令清單 - 點選指令可選擇。按住 CTRL 點選可跳到車站位置
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳過目前的命令，從下一個開始。CTRL + 左鍵 可直接跳至所選的命令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}刪除選定指令
@@ -2769,8 +2769,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}無法到轉列車方向...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重新命名鐵道車輛
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}無法修改鐵道車輛名稱...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令強制卸載
-STR_886F_TRANSFER                                               :{BLACK}轉運
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}讓列車在選定的指令強制卸載
+STR_TRANSFER                                                    :{BLACK}轉運
 STR_CLEAR_TIME                                                  :{BLACK}清除時刻
 STR_RESET_LATENESS                                              :{BLACK}歸零誤點/慢分
 
@@ -2847,8 +2847,8 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}無法�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}為車輛命名
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛公車抵達 {STATION}！
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨車抵達 {STATION}!
-STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛客運輕軌抵達 {STATION}!
-STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM                          :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨運輕軌抵達 {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛客運輕軌抵達 {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛貨運輕軌抵達 {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}車禍！{}駕駛在與列車對撞後罹難
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}車禍！{}車輛在與列車對撞後, 造成 {COMMA} 人罹難
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}無法使車輛掉頭...
@@ -2857,7 +2857,7 @@ STR_9034_RENAME                                                 :{BLACK}更名
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}為車輛類型更名
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}為車輛類型更名
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}無法為車輛類型更名...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :前往 {TOWN} 車庫
+STR_GO_TO_ROADVEH_DEPOT                                         :前往 {TOWN} 車庫
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :在 {TOWN} 車庫維護
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}改裝車輛以運送不同的酬載

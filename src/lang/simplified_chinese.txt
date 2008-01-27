@@ -272,9 +272,9 @@ STR_0130_RENAME                                                 :{BLACK}重命�
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}自定义的名字过多
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}选定的名字已经被用了
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
@@ -285,11 +285,11 @@ STR_013B_OWNED_BY                                               :{WHITE}归 {STR
 STR_013C_CARGO                                                  :{BLACK}货物
 STR_013D_INFORMATION                                            :{BLACK}信息
 STR_013E_CAPACITIES                                             :{BLACK}装载能力
-STR_013E_TOTAL_CARGO                                            :{BLACK}全部货物
+STR_TOTAL_CARGO                                                 :{BLACK}全部货物
 STR_013F_CAPACITY                                               :{BLACK}装载能力：{LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}装载能力：{LTBLUE}{CARGO} (x{NUM})
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}全车的装载能力为：
-STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}全车的装载能力为：
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}新游戏
 STR_0141_LOAD_GAME                                              :{BLACK}读取存档
@@ -725,7 +725,7 @@ STR_0290_DELETE                                                 :{BLACK}删除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全删除这座城镇
 STR_0292_SAVE_SCENARIO                                          :保存场景
 STR_0293_LOAD_SCENARIO                                          :读取场景
-STR_LOAD_HEIGHTMAP                                              :读取高度图
+STR_MENU_LOAD_HEIGHTMAP                                         :读取高度图
 STR_0294_QUIT_EDITOR                                            :退出编辑器
 STR_0295                                                        :
 STR_0296_QUIT                                                   :退出
@@ -765,9 +765,9 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}保存�
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C3_GAME_OPTIONS                                           :游戏选项
-STR_02C5_DIFFICULTY_SETTINGS                                    :难度设定
-STR_02C7_CONFIG_PATCHES                                         :配置补丁
+STR_02C4_GAME_OPTIONS                                           :游戏选项
+STR_02C6_DIFFICULTY_SETTINGS                                    :难度设定
+STR_MENU_CONFIG_PATCHES                                         :配置补丁
 STR_NEWGRF_SETTINGS                                             :NewGRF 设置
 STR_TRANSPARENCY_OPTIONS                                        :透明选项
 STR_GAMEOPTMENU_0A                                              :
@@ -866,8 +866,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  保�
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}保存仍在继续，{}请耐心等待……
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}选择 'Ezy 大街' 风格的音乐
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :英国 (原始的)
@@ -1713,8 +1713,8 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}距离�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}与另一车站相连
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}这个城镇中的车站过多
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}车站过多
-STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}公共汽车站过多
-STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}汽车货场过多
+STR_TOO_MANY_BUS_STOPS                                          :{WHITE}公共汽车站过多
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}汽车货场过多
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}距离另一车站过近
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}必须先拆除火车站
@@ -1779,7 +1779,7 @@ STR_3068_DOCK                                                   :{WHITE}码头
 STR_3069_BUOY                                                   :浮标
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}指定的位置有浮标……
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}站区太大了……
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}已禁用了异形站台……
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}已禁用了异形站台……
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}摁住 CTRL 可以选择多个项目
 
 STR_UNDEFINED                                                   :(未定义字符串)
@@ -1814,7 +1814,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}以选�
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}选择新游戏类型
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}选择场景(绿色)，预设游戏(蓝色)或随机开始新游戏
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :随机生成新游戏
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}读取地形图
+STR_LOAD_HEIGHTMAP                                              :{WHITE}读取地形图
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}目标位置有 {STRING}
@@ -2008,10 +2008,10 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}海面/
 STR_6813_ECONOMY                                                :{LTBLUE}经济：{ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}列车调头：{ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}灾难：{ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}市政厅对辖区内建设的态度：{ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}市政厅对辖区内建设的态度：{ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_26816_NONE                                                  :没有
+STR_NONE                                                        :没有
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :一般
 STR_6818_HIGH                                                   :高
@@ -2048,9 +2048,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :仅在轨道尽
 STR_6836_OFF                                                    :关闭
 STR_6837_ON                                                     :开启
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}查看高分榜
-STR_6839_PERMISSIVE                                             :宽容
-STR_683A_TOLERANT                                               :隐忍
-STR_683B_HOSTILE                                                :对立
+STR_PERMISSIVE                                                  :宽容
+STR_TOLERANT                                                    :隐忍
+STR_HOSTILE                                                     :对立
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2182,7 +2182,7 @@ STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}不能�
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}不能出售此公司的股份……
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% 由 {COMPANY} 所有)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} 被 {COMPANY} 收购！
-STR_7080_PROTECTED                                              :{WHITE}这个公司刚刚开业，还不能进行股权交易……
+STR_PROTECTED                                                   :{WHITE}这个公司刚刚开业，还不能进行股权交易……
 
 STR_LIVERY_DEFAULT                                              :标准外观
 STR_LIVERY_STEAM                                                :蒸汽引擎
@@ -2487,17 +2487,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}指定�
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :前往 {STATION}
-STR_8807_GO_TO_TRANSFER                                         :前往 {STATION} (转运并装货)
-STR_8808_GO_TO_UNLOAD                                           :前往 {STATION} (全部卸货)
-STR_8809_GO_TO_TRANSFER_UNLOAD                                  :前往 {STATION} (转运且不装货)
-STR_880A_GO_TO_LOAD                                             :前往 {STATION} (等待装满)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :前往 {STATION} (转运并等待装满)
-STR_880C_GO_NON_STOP_TO                                         :前往(不停) {STATION}
-STR_880D_GO_TO_NON_STOP_TRANSFER                                :前往(不停) {STATION} (转运并装货)
-STR_880E_GO_NON_STOP_TO_UNLOAD                                  :前往(不停) {STATION} (全部卸货)
-STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :前往(不停) {STATION} (转运且不装货)
-STR_8810_GO_NON_STOP_TO_LOAD                                    :前往(不停) {STATION} (等待装满)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :前往(不停) {STATION} (转运并等待装满)
+STR_GO_TO_TRANSFER                                              :前往 {STATION} (转运并装货)
+STR_8807_GO_TO_UNLOAD                                           :前往 {STATION} (全部卸货)
+STR_GO_TO_TRANSFER_UNLOAD                                       :前往 {STATION} (转运且不装货)
+STR_8808_GO_TO_LOAD                                             :前往 {STATION} (等待装满)
+STR_GO_TO_TRANSFER_LOAD                                         :前往 {STATION} (转运并等待装满)
+STR_880A_GO_NON_STOP_TO                                         :前往(不停) {STATION}
+STR_GO_TO_NON_STOP_TRANSFER                                     :前往(不停) {STATION} (转运并装货)
+STR_880B_GO_NON_STOP_TO_UNLOAD                                  :前往(不停) {STATION} (全部卸货)
+STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :前往(不停) {STATION} (转运且不装货)
+STR_880C_GO_NON_STOP_TO_LOAD                                    :前往(不停) {STATION} (等待装满)
+STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :前往(不停) {STATION} (转运并等待装满)
 STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 车库
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 车库保养
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往(不停) {TOWN} 车库
@@ -2601,7 +2601,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}缩小�
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}显示运载货物的详情
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}显示列车的性能参数
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}显示列车的运载能力
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}根据不同的挂车种类显示相应的总运力
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}根据不同的挂车种类显示相应的总运力
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}调度列表 - 单击一个调度指令可以使之高亮化. CTRL + 单击可以将视点移动到相应的车站
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳过当前命令并执行下一条命令。CTRL并单击可以跳过选定的命令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}删除高亮的调度命令
@@ -2632,8 +2632,8 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}不能命令列车调头...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重命名车辆的类型
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}不能重命名车辆的类型...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮指令对应的车站寄存货物
-STR_886F_TRANSFER                                               :{BLACK}联运
+STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}命令列车在高亮指令对应的车站寄存货物
+STR_TRANSFER                                                    :{BLACK}联运
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
 STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
 
@@ -2715,7 +2715,7 @@ STR_9034_RENAME                                                 :{BLACK}重命�
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}重命名汽车型号
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}重命名汽车型号
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}不能重命名汽车型号……
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :前往 {TOWN} 车库
+STR_GO_TO_ROADVEH_DEPOT                                         :前往 {TOWN} 车库
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :在 {TOWN} 车库进行保养
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}改装汽车以装载其他货物
