@@ -58,7 +58,7 @@ enum StationCoverageType {
 	SCT_ALL
 };
 
-void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad);
+int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad);
 void CheckRedrawStationCoverage(const Window *w);
 
 extern bool _station_show_coverage;

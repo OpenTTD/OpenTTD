@@ -773,7 +773,7 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 }
 
 
-static void DrawStationCoverageText(const AcceptedCargo accepts,
+static int DrawStationCoverageText(const AcceptedCargo accepts,
 	int str_x, int str_y, StationCoverageType sct)
 {
 	char *b = _userstring;
@@ -809,17 +809,19 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 	/* Make sure we detect any buffer overflow */
 	assert(b < endof(_userstring));
 
-	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
+	return DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 
-void DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad)
+int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
 	AcceptedCargo accepts;
 	if (tile < MapSize()) {
 		GetAcceptanceAroundTiles(accepts, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
-		DrawStationCoverageText(accepts, sx, sy, sct);
+		return sy + DrawStationCoverageText(accepts, sx, sy, sct);
 	}
+
+	return sy;
 }
 
 void CheckRedrawStationCoverage(const Window *w)

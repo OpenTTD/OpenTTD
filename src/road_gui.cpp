@@ -825,9 +825,14 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
 		StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
 
-		DrawStationCoverageAreaText(2, 146,
+		int text_end = DrawStationCoverageAreaText(2, 146,
 			(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-			3);
+			3) + 4;
+		if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
+			SetWindowDirty(w);
+			ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
+			SetWindowDirty(w);
+		}
 
 	} break;
 
