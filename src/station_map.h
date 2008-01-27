@@ -190,6 +190,7 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 		IsRailwayStationTile(t1) &&
 		IsCompatibleRail(GetRailType(t1), GetRailType(t2)) &&
 		GetRailStationAxis(t1) == GetRailStationAxis(t2) &&
+		GetStationIndex(t1) == GetStationIndex(t2) &&
 		!IsStationTileBlocked(t1);
 }
 
