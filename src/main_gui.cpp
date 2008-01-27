@@ -972,7 +972,7 @@ static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x = 0;
 
-	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 14, 0);
+	w = PopupMainToolbMenu(w, 2, STR_02C4_GAME_OPTIONS, 14, 0);
 
 	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SetBit(x,  6);
 	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SetBit(x,  7);

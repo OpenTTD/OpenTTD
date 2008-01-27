@@ -154,13 +154,13 @@ static const RoadTypeInfo _road_type_infos[] = {
 		SPR_CURSOR_AUTOROAD,
 	},
 	{
-		STR_1804_CAN_T_BUILD_TRAMWAY_HERE,
-		STR_1805_CAN_T_REMOVE_TRAMWAY_FROM,
-		STR_1807_CAN_T_BUILD_TRAM_VEHICLE,
-		{ STR_1808_CAN_T_BUILD_PASSENGER_TRAM_STATION,        STR_1809_CAN_T_BUILD_CARGO_TRAM_STATION        },
-		{ STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION,            STR_CAN_T_REMOVE_CARGO_TRAM_STATION            },
-		{ STR_3042_PASSENGER_TRAM_STATION_ORIENTATION,        STR_3043_CARGO_TRAM_STATION_ORIENT             },
-		{ STR_3051_SELECT_PASSENGER_TRAM_STATION_ORIENTATION, STR_3052_SELECT_CARGO_TRAM_STATION_ORIENTATION },
+		STR_CAN_T_BUILD_TRAMWAY_HERE,
+		STR_CAN_T_REMOVE_TRAMWAY_FROM,
+		STR_CAN_T_BUILD_TRAM_VEHICLE,
+		{ STR_CAN_T_BUILD_PASSENGER_TRAM_STATION,        STR_CAN_T_BUILD_CARGO_TRAM_STATION        },
+		{ STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION,       STR_CAN_T_REMOVE_CARGO_TRAM_STATION       },
+		{ STR_PASSENGER_TRAM_STATION_ORIENTATION,        STR_CARGO_TRAM_STATION_ORIENT             },
+		{ STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION, STR_SELECT_CARGO_TRAM_STATION_ORIENTATION },
 
 		SPR_CURSOR_TRAMWAY_NESW,
 		SPR_CURSOR_TRAMWAY_NWSE,
@@ -602,21 +602,21 @@ static const WindowDesc _build_road_desc = {
 
 /** Widget definition of the build tram toolbar */
 static const Widget _build_tramway_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                     // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   228,     0,    13, STR_1802_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   229,   240,     0,    13, 0x0,                        STR_STICKY_BUTTON},                         // RTW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // RTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   228,     0,    13, STR_TRAMWAY_CONSTRUCTION,   STR_018C_WINDOW_TITLE_DRAG_THIS},      // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   229,   240,     0,    13, 0x0,                        STR_STICKY_BUTTON},                    // RTW_STICKY
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_TRAMWAY_X_DIR,      STR_180B_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_X
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_TRAMWAY_Y_DIR,      STR_180B_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOTRAM,           STR_BUILD_AUTOTRAM_TIP},                    // RTW_AUTOROAD
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},           // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                                  // RTW_ONE_WAY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   154,   196,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   197,   218,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   219,   240,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_TRAMWAY_X_DIR,      STR_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_X
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_TRAMWAY_Y_DIR,      STR_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_Y
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOTRAM,           STR_BUILD_AUTOTRAM_TIP},               // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},      // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                             // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   154,   196,    14,    35, SPR_IMG_BRIDGE,             STR_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   197,   218,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   219,   240,    14,    35, SPR_IMG_REMOVE,             STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
 
 {   WIDGETS_END},
 };
@@ -738,12 +738,12 @@ static const Widget _build_road_depot_widgets[] = {
 /** Widget definition of the build tram depot window */
 static const Widget _build_tram_depot_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},              // BRDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1806_TRAM_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // BRDW_CAPTION
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_TRAM_DEPOT_ORIENTATION,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // BRDW_CAPTION
 {      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,                             STR_NULL},                           // BRDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT}, // BRDW_DEPOT_NE
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT}, // BRDW_DEPOT_SE
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT}, // BRDW_DEPOT_SW
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                             STR_1813_SELECT_TRAM_VEHICLE_DEPOT}, // BRDW_DEPOT_NW
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_NE
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_SE
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_SW
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_NW
 {   WIDGETS_END},
 };
 

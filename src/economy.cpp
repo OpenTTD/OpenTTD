@@ -1871,7 +1871,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 	if (!p->is_active) return CMD_ERROR;
 
 	/* Protect new companies from hostile takeovers */
-	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
+	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0) return cost;

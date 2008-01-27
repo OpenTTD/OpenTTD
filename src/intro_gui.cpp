@@ -143,9 +143,9 @@ static void AskExitGameCallback(Window *w, bool confirmed)
 void AskExitGame()
 {
 #if defined(_WIN32)
-		SetDParam(0, STR_0133_WINDOWS);
+		SetDParam(0, STR_OSNAME_WINDOWS);
 #elif defined(__APPLE__)
-		SetDParam(0, STR_0135_OSX);
+		SetDParam(0, STR_OSNAME_OSX);
 #elif defined(__BEOS__)
 		SetDParam(0, STR_OSNAME_BEOS);
 #elif defined(__MORPHOS__)
@@ -157,7 +157,7 @@ void AskExitGame()
 #elif defined(SUNOS)
 		SetDParam(0, STR_OSNAME_SUNOS);
 #else
-		SetDParam(0, STR_0134_UNIX);
+		SetDParam(0, STR_OSNAME_UNIX);
 #endif
 	ShowQuery(
 		STR_00C7_QUIT,

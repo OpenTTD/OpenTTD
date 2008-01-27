@@ -250,7 +250,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	static const StringID rotation[]    = {STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
 	static const StringID landscape[]   = {STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL, STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
 	static const StringID num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
-	static const StringID num_inds[]    = {STR_26816_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
+	static const StringID num_inds[]    = {STR_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 
 	/* Data used for the generate seed edit box */
 	static querystr_d _genseed_query;

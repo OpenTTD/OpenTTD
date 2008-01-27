@@ -1691,7 +1691,7 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 		STR_0298_LOAD_SCENARIO,
 		STR_4000_SAVE_GAME,
 		STR_0299_SAVE_SCENARIO,
-		STR_4011_LOAD_HEIGHTMAP,
+		STR_LOAD_HEIGHTMAP,
 	};
 
 	Window *w;

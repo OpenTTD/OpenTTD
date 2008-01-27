@@ -241,7 +241,7 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 		}
 
 		/* draw total cargo tab */
-		DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY_TEXT, TC_FROMSTRING);
+		DrawString(x, y + 2, STR_TOTAL_CAPACITY_TEXT, TC_FROMSTRING);
 		for (CargoID i = 0; i < NUM_CARGO; i++) {
 			if (max_cargo[i] > 0 && --vscroll_pos < 0 && vscroll_pos > -vscroll_cap) {
 				y += 14;
@@ -250,7 +250,7 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				SetDParam(4, _patches.freight_trains);
-				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_013F_TOTAL_CAPACITY, TC_FROMSTRING);
+				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_TOTAL_CAPACITY, TC_FROMSTRING);
 			}
 		}
 		SetDParam(0, v->cargo.FeederShare());

@@ -400,7 +400,7 @@ static const GameSettingData _game_setting_info[] = {
 	{  0,   7,  1, STR_NULL},
 	{  0,   3,  1, STR_6830_IMMEDIATE},
 	{  0,   3,  1, STR_NUM_VERY_LOW},
-	{  0,   4,  1, STR_26816_NONE},
+	{  0,   4,  1, STR_NONE},
 	{100, 500, 50, STR_NULL},
 	{  2,   4,  1, STR_NULL},
 	{  0,   2,  1, STR_6820_LOW},
@@ -414,7 +414,7 @@ static const GameSettingData _game_setting_info[] = {
 	{  0,   1,  1, STR_682E_STEADY},
 	{  0,   1,  1, STR_6834_AT_END_OF_LINE_AND_AT_STATIONS},
 	{  0,   1,  1, STR_6836_OFF},
-	{  0,   2,  1, STR_6839_PERMISSIVE},
+	{  0,   2,  1, STR_PERMISSIVE},
 };
 
 /*

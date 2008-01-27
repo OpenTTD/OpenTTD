@@ -925,7 +925,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
-				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_902F_CITIZENS_CELEBRATE_FIRST_TRAM,
+				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM,
 				flags,
 				v->index,
 				0);
@@ -939,7 +939,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
-				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_9030_CITIZENS_CELEBRATE_FIRST_TRAM,
+				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM,
 				flags,
 				v->index,
 				0

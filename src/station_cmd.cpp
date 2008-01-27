@@ -798,14 +798,14 @@ static bool CanExpandRailroadStation(const Station* st, uint* fin, Axis axis)
 		 * the uniform-stations code wouldn't handle it well */
 		BEGIN_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
 			if (!st->TileBelongsToRailStation(t)) { // there may be adjoined station
-				_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
+				_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 				return false;
 			}
 		END_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
 
 		/* check so the orientation is the same */
 		if (GetRailStationAxis(st->train_tile) != axis) {
-			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
+			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 
@@ -825,7 +825,7 @@ static bool CanExpandRailroadStation(const Station* st, uint* fin, Axis axis)
 			tile -= TileDiffXY(curw, 0);
 			curw += w;
 		} else {
-			_error_message = STR_306D_NONUNIFORM_STATIONS_DISALLOWED;
+			_error_message = STR_NONUNIFORM_STATIONS_DISALLOWED;
 			return false;
 		}
 	}
@@ -1196,7 +1196,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
  		 */
-		if (!_patches.nonuniform_stations) return_cmd_error(STR_306D_NONUNIFORM_STATIONS_DISALLOWED);
+		if (!_patches.nonuniform_stations) return_cmd_error(STR_NONUNIFORM_STATIONS_DISALLOWED);
 
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
 		quantity++;
@@ -1393,7 +1393,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* give us a road stop in the list, and check if something went wrong */
 	RoadStop *road_stop = new RoadStop(tile);
 	if (road_stop == NULL) {
-		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
+		return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
 	}
 
 	/* ensure that in case of error (or no DC_EXEC) the new road stop gets deleted upon return */
@@ -1401,7 +1401,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (st != NULL &&
 			GetNumRoadStopsInStation(st, RoadStop::BUS) + GetNumRoadStopsInStation(st, RoadStop::TRUCK) >= RoadStop::LIMIT) {
-		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
+		return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
 	}
 
 	/* In case of new station if DC_EXEC is NOT set we still need to create the station
@@ -2903,8 +2903,8 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags)
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
 			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
-			case STATION_TRUCK:   return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3047_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
-			case STATION_BUS:     return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_3046_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
+			case STATION_TRUCK:   return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+			case STATION_BUS:     return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
 			case STATION_BUOY:    return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
 			case STATION_DOCK:    return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:
