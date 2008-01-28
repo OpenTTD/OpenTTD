@@ -4560,6 +4560,20 @@ static void GRFSound(byte *buf, int len)
 	if (_cur_grffile->sound_offset == 0) _cur_grffile->sound_offset = GetNumSounds();
 }
 
+/* Action 0x11 (SKIP) */
+static void SkipAct11(byte *buf, int len)
+{
+	/* <11> <num>
+	 *
+	 * W num      Number of sound files that follow */
+
+	if (!check_length(len, 1, "SkipAct11")) return;
+	buf++;
+	_skip_sprites = grf_load_word(&buf);
+
+	grfmsg(3, "SkipAct11: Skipping %d sprites", _skip_sprites);
+}
+
 static void ImportGRFSound(byte *buf, int len)
 {
 	const GRFFile *file;
@@ -4702,6 +4716,36 @@ static void LoadFontGlyph(byte *buf, int len)
 			LoadNextSprite(_cur_spriteid++, _file_index, _nfo_line);
 		}
 	}
+}
+
+/* Action 0x12 (SKIP) */
+static void SkipAct12(byte *buf, int len)
+{
+	/* <12> <num_def> <font_size> <num_char> <base_char>
+	 *
+	 * B num_def      Number of definitions
+	 * B font_size    Size of font (0 = normal, 1 = small, 2 = large)
+	 * B num_char     Number of consecutive glyphs
+	 * W base_char    First character index */
+
+	buf++; len--;
+	if (!check_length(len, 1, "SkipAct12")) return;
+	uint8 num_def = grf_load_byte(&buf);
+
+	if (!check_length(len, 1 + num_def * 4, "SkipAct12")) return;
+
+	for (uint i = 0; i < num_def; i++) {
+		/* Ignore 'size' byte */
+		grf_load_byte(&buf);
+
+		/* Sum up number of characters */
+		_skip_sprites += grf_load_byte(&buf);
+
+		/* Ignore 'base_char' word */
+		grf_load_word(&buf);
+	}
+
+	grfmsg(3, "SkipAct12: Skipping %d sprites", _skip_sprites);
 }
 
 /* Action 0x13 */
@@ -5461,8 +5505,8 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x0E */ { NULL,     SafeGRFInhibit, NULL,       GRFInhibit,     GRFInhibit,        GRFInhibit, },
 		/* 0x0F */ { NULL,     GRFUnsafe, NULL,            FeatureTownName, NULL,             NULL, },
 		/* 0x10 */ { NULL,     NULL,      DefineGotoLabel, NULL,           NULL,              NULL, },
-		/* 0x11 */ { NULL,     GRFUnsafe, NULL,            NULL,           NULL,              GRFSound, },
-		/* 0x12 */ { NULL,     NULL,      NULL,            NULL,           NULL,              LoadFontGlyph, },
+		/* 0x11 */ { SkipAct11,GRFUnsafe, SkipAct11,       SkipAct11,      SkipAct11,         GRFSound, },
+		/* 0x12 */ { SkipAct12, SkipAct12, SkipAct12,      SkipAct12,      SkipAct12,         LoadFontGlyph, },
 		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
 	};
 
