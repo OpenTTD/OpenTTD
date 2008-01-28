@@ -700,7 +700,7 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags);
  * @param w width of search area
  * @param h height of search area
  * @param flags operation to perform
- * @param invalid_dirs prohibited directions
+ * @param invalid_dirs prohibited directions (set of DiagDirections)
  * @param station StationID to be queried and returned if available
  * @param check_clear if clearing tile should be performed (in wich case, cost will be added)
  * @return the cost in case of success, or an error code if it failed.
@@ -735,11 +735,12 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 
 		int flat_z = z;
 		if (tileh != SLOPE_FLAT) {
-			/* need to check so the entrance to the station is not pointing at a slope. */
-			if ((invalid_dirs & 1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
-					(invalid_dirs & 2 && !(tileh & SLOPE_SE) && h_cur == 1) ||
-					(invalid_dirs & 4 && !(tileh & SLOPE_SW) && w_cur == 1) ||
-					(invalid_dirs & 8 && !(tileh & SLOPE_NW) && (uint)h_cur == h)) {
+			/* need to check so the entrance to the station is not pointing at a slope.
+			 * This must be valid for all station tiles, as the user can remove single station tiles. */
+			if ((HasBit(invalid_dirs, DIAGDIR_NE) && !(tileh & SLOPE_NE)) ||
+			    (HasBit(invalid_dirs, DIAGDIR_SE) && !(tileh & SLOPE_SE)) ||
+			    (HasBit(invalid_dirs, DIAGDIR_SW) && !(tileh & SLOPE_SW)) ||
+			    (HasBit(invalid_dirs, DIAGDIR_NW) && !(tileh & SLOPE_NW))) {
 				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 			}
 			cost.AddCost(_price.terraform);
