@@ -96,19 +96,15 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
 	return CheckAllowRemoveRoad(tile, remove, GetRoadOwner(tile, rt), edge_road, rt);
 }
 
+
 /** Delete a piece of road.
  * @param tile tile where to remove road from
  * @param flags operation to perform
- * @param p1 bit 0..3 road pieces to remove (RoadBits)
- *           bit 4..5 road type
- *           bit    6 ignore the fact that the tram track has not been removed
- *                    yet when removing the road bits when not actually doing
- *                    it. Makes it possible to test whether the road bits can
- *                    be removed from a level crossing without physically
- *                    removing the tram bits before the test.
- * @param p2 unused
+ * @param pieces roadbits to remove
+ * @param rt roadtype to remove
+ * @param crossing_check should we check if there is a tram track when we are removing road from crossing?
  */
-CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, RoadType rt, bool crossing_check)
 {
 	/* cost for removing inner/edge -roads */
 	static const uint16 road_remove_cost[2] = {50, 18};
@@ -116,9 +112,6 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* true if the roadpiece was always removeable,
 	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
-
-	RoadType rt = (RoadType)GB(p1, 4, 2);
-	if (!IsValidRoadType(rt)) return CMD_ERROR;
 
 	Town *t = NULL;
 	switch (GetTileType(tile)) {
@@ -141,7 +134,6 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return CMD_ERROR;
 	}
 
-	RoadBits pieces = Extract<RoadBits, 0>(p1);
 	RoadTypes rts = GetRoadTypes(tile);
 	/* The tile doesn't have the given road type */
 	if (!HasBit(rts, rt)) return CMD_ERROR;
@@ -233,7 +225,7 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Don't allow road to be removed from the crossing when there is tram;
 			 * we can't draw the crossing without trambits ;) */
-			if (rt == ROADTYPE_ROAD && HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) && ((flags & DC_EXEC) || !HasBit(p1, 6))) return CMD_ERROR;
+			if (rt == ROADTYPE_ROAD && HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
 
 			if (rt == ROADTYPE_ROAD) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
@@ -256,6 +248,24 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case ROAD_TILE_DEPOT:
 			return CMD_ERROR;
 	}
+}
+
+
+/** Delete a piece of road.
+ * @param tile tile where to remove road from
+ * @param flags operation to perform
+ * @param p1 bit 0..3 road pieces to remove (RoadBits)
+ *           bit 4..5 road type
+ * @param p2 unused
+ */
+CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	RoadType rt = (RoadType)GB(p1, 4, 2);
+	if (!IsValidRoadType(rt)) return CMD_ERROR;
+
+	RoadBits pieces = Extract<RoadBits, 0>(p1);
+
+	return RemoveRoad(tile, flags, pieces, rt, true);
 }
 
 
@@ -734,7 +744,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 
 		/* try to remove the halves. */
 		if (bits != 0) {
-			ret = DoCommand(tile, rt << 4 | bits, 0, flags & ~DC_EXEC, CMD_REMOVE_ROAD);
+			ret = RemoveRoad(tile, flags & ~DC_EXEC, bits, rt, true);
 			if (CmdSucceeded(ret)) {
 				if (flags & DC_EXEC) {
 					money -= ret.GetCost();
@@ -742,7 +752,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 						_additional_cash_required = DoCommand(end_tile, start_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD).GetCost();
 						return cost;
 					}
-					DoCommand(tile, rt << 4 | bits, 0, flags, CMD_REMOVE_ROAD);
+					RemoveRoad(tile, flags, bits, rt, true);
 				}
 				cost.AddCost(ret);
 			}
@@ -835,7 +845,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 				CommandCost ret(EXPENSES_CONSTRUCTION);
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					if (HasBit(rts, rt)) {
-						CommandCost tmp_ret = DoCommand(tile, rt << 4 | GetRoadBits(tile, rt), 0, flags, CMD_REMOVE_ROAD);
+						CommandCost tmp_ret = RemoveRoad(tile, flags, GetRoadBits(tile, rt), rt, true);
 						if (CmdFailed(tmp_ret)) return tmp_ret;
 						ret.AddCost(tmp_ret);
 					}
@@ -855,7 +865,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 			 * tram tracks must be removed before the road bits. */
 			for (RoadType rt = ROADTYPE_HWAY; rt >= ROADTYPE_ROAD; rt--) {
 				if (HasBit(rts, rt)) {
-					CommandCost tmp_ret = DoCommand(tile, 1 << 6 | rt << 4 | GetCrossingRoadBits(tile), 0, flags, CMD_REMOVE_ROAD);
+					CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rt, false);
 					if (CmdFailed(tmp_ret)) return tmp_ret;
 					ret.AddCost(tmp_ret);
 				}
@@ -1276,7 +1286,7 @@ static void TileLoop_Road(TileIndex tile)
 			const RoadBits new_rb = CleanUpRoadBits(tile, old_rb);
 
 			if (old_rb != new_rb) {
-				DoCommand(tile, (old_rb ^ new_rb), t->index, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_REMOVE_ROAD);
+				RemoveRoad(tile, DC_EXEC | DC_AUTO | DC_NO_WATER, (old_rb ^ new_rb), ROADTYPE_ROAD, true);
 			}
 		}
 
