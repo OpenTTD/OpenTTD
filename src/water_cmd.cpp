@@ -532,7 +532,13 @@ static void DrawRiverWater(const TileInfo *ti)
 	if (ti->tileh != SLOPE_FLAT) {
 		image = GetCanalSprite(CF_RIVER_SLOPE, ti->tile);
 		if (image == 0) {
-			image = SPR_FLAT_WATER_TILE;
+			switch (ti->tileh) {
+				case SLOPE_NW: image = SPR_WATER_SLOPE_Y_DOWN; break;
+				case SLOPE_SW: image = SPR_WATER_SLOPE_X_UP;   break;
+				case SLOPE_SE: image = SPR_WATER_SLOPE_Y_UP;   break;
+				case SLOPE_NE: image = SPR_WATER_SLOPE_X_DOWN; break;
+				default:       image = SPR_FLAT_WATER_TILE;    break;
+			}
 		} else {
 			switch (ti->tileh) {
 				default: NOT_REACHED();
@@ -546,9 +552,8 @@ static void DrawRiverWater(const TileInfo *ti)
 
 	DrawGroundSprite(image, PAL_NONE);
 
-	/* Draw canal dikes if there are no river edges to draw. */
-	if (edges_base <= 48) edges_base = SPR_CANAL_DIKES_BASE;
-	DrawWaterEdges(edges_base, ti->tile);
+	/* Draw river edges if available. */
+	if (edges_base > 48) DrawWaterEdges(edges_base, ti->tile);
 }
 
 void DrawShoreTile(Slope tileh)
