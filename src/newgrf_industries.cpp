@@ -466,8 +466,8 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
 		/* Square of Euclidian distance from town */
 		case 0x8D: return min(DistanceSquare(industry->town->xy, tile), 65535);
 
-		/* 32 random bits */
-		case 0x8F: return Random();
+		/* 32 random bits TODO! Wait for a better scheme that will not cause problems, MP desyncs and asserts */
+		// case 0x8F: return Random();
 	}
 
 	/* None of the special ones, so try the general ones */
