@@ -1,7 +1,6 @@
 /* $Id$ */
 
 enum {
-	SKIP = 0xFFFE,
 	END  = 0xFFFF
 };
 

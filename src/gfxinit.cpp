@@ -70,20 +70,15 @@ void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_t
 	while ((start = *index_tbl++) != END) {
 		uint end = *index_tbl++;
 
-		if (start == SKIP) { // skip sprites (amount in second var)
-			SkipSprites(end);
-			(*sprite_id) += end;
-		} else { // load sprites and use indexes from start to end
-			do {
-			#ifdef NDEBUG
-				LoadNextSprite(start, file_index, *sprite_id);
-			#else
-				bool b = LoadNextSprite(start, file_index, *sprite_id);
-				assert(b);
-			#endif
-				(*sprite_id)++;
-			} while (++start <= end);
-		}
+		do {
+		#ifdef NDEBUG
+			LoadNextSprite(start, file_index, *sprite_id);
+		#else
+			bool b = LoadNextSprite(start, file_index, *sprite_id);
+			assert(b);
+		#endif
+			(*sprite_id)++;
+		} while (++start <= end);
 	}
 }
 

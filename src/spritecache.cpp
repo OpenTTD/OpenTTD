@@ -272,14 +272,6 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 }
 
 
-void SkipSprites(uint count)
-{
-	for (; count > 0; --count) {
-		if (!ReadSpriteHeaderSkipData()) return;
-	}
-}
-
-
 #define S_FREE_MASK 1
 
 static inline MemBlock* NextBlock(MemBlock* block)
