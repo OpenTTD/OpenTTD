@@ -253,7 +253,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 							_generating_world = false;
 						}
 					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(WP(w, fnd_d).select)->IsRawIndustry()) {
-						DoCommandP(0, WP(w, fnd_d).select, 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+						DoCommandP(0, WP(w, fnd_d).select, InteractiveRandom(), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 						w->HandleButtonClick(DPIW_FUND_WIDGET);
 					} else {
 						HandlePlacePushButton(w, DPIW_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
@@ -272,6 +272,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			bool success = true;
 			/* We do not need to protect ourselves against "Random Many Industries" in this mode */
 			const IndustrySpec *indsp = GetIndustrySpec(WP(w, fnd_d).select);
+			uint32 seed = InteractiveRandom();
 
 			if (_game_mode == GM_EDITOR) {
 				/* Show error if no town exists at all */
@@ -284,7 +285,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				_current_player = OWNER_NONE;
 				_generating_world = true;
 				_ignore_restrictions = true;
-				success = DoCommandP(e->we.place.tile, WP(w, fnd_d).select, InteractiveRandomRange(indsp->num_table), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+				success = DoCommandP(e->we.place.tile, (InteractiveRandomRange(indsp->num_table) << 16) | WP(w, fnd_d).select, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 				if (!success) {
 					SetDParam(0, indsp->name);
 					ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
@@ -293,7 +294,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				_ignore_restrictions = false;
 				_generating_world = false;
 			} else {
-				success = DoCommandP(e->we.place.tile, WP(w, fnd_d).select, InteractiveRandomRange(indsp->num_table), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+				success = DoCommandP(e->we.place.tile, (InteractiveRandomRange(indsp->num_table) << 16) | WP(w, fnd_d).select, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 			}
 
 			/* If an industry has been built, just reset the cursor and the system */

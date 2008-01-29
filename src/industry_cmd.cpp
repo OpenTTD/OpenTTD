@@ -1548,9 +1548,10 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  * @param flags of operations to conduct
  * @param indspec pointer to industry specifications
  * @param itspec_index the index of the itsepc to build/fund
+ * @param seed random seed (possibly) used by industries
  * @return the pointer of the newly created industry, or NULL if it failed
  */
-static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, uint itspec_index)
+static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, uint itspec_index, uint32 seed)
 {
 	const IndustryTileTable *it = indspec->table[itspec_index];
 	bool custom_shape_check = false;
@@ -1558,7 +1559,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	if (!CheckIfIndustryTilesAreFree(tile, it, itspec_index, type, &custom_shape_check)) return NULL;
 
 	if (HasBit(GetIndustrySpec(type)->callback_flags, CBM_IND_LOCATION)) {
-		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index)) return NULL;
+		if (!CheckIfCallBackAllowsCreation(tile, type, itspec_index, seed)) return NULL;
 	} else {
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
@@ -1588,15 +1589,15 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 /** Build/Fund an industry
  * @param tile tile where industry is built
  * @param flags of operations to conduct
- * @param p1 industry type see build_industry.h and see industry.h
- * @param p2 first layout to try
+ * @param p1 various bitstuffed elements
+ * - p1 = (bit  0 - 15) - industry type see build_industry.h and see industry.h
+ * - p1 = (bit 16 - 31) - first layout to try
+ * @param p2 seed to use for variable 8F
  * @return index of the newly create industry, or CMD_ERROR if it failed
  */
 CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	const IndustrySpec *indspec;
-
-	indspec = GetIndustrySpec(p1);
+	const IndustrySpec *indspec = GetIndustrySpec(GB(p1, 0, 16));
 
 	/* Check if the to-be built/founded industry is available for this climate. */
 	if (!indspec->enabled) {
@@ -1620,7 +1621,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					const Industry *ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table));
+					const Industry *ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table), p2);
 					if (ind != NULL) {
 						SetDParam(0, indspec->name);
 						if (indspec->new_industry_text > STR_LAST_STRINGID) {
@@ -1639,7 +1640,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		int count = indspec->num_table;
 		const IndustryTileTable * const *itt = indspec->table;
-		int num = Clamp(p2, 0, count - 1);
+		int num = Clamp(GB(p1, 16, 16), 0, count - 1);
 
 		_error_message = STR_0239_SITE_UNSUITABLE;
 		do {
@@ -1647,7 +1648,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (--num < 0) num = indspec->num_table - 1;
 		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
 
-		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num) == NULL) return CMD_ERROR;
+		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num, p2) == NULL) return CMD_ERROR;
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
@@ -1658,7 +1659,8 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table));
+	uint32 seed = Random();
+	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, RandomRange(indspec->num_table), seed);
 }
 
 enum {
