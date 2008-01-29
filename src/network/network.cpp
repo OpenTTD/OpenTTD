@@ -404,6 +404,7 @@ static void NetworkFindIPs()
 				inaddr.s_addr = htonl(ip | ~netmask);
 				_broadcast_list[i] = inaddr.s_addr;
 				i++;
+				if (i == MAX_INTERFACES) break;
 			}
 			if (read < 0) {
 				break;
@@ -431,6 +432,7 @@ static void NetworkFindIPs()
 		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
 		_broadcast_list[i] = ((struct sockaddr_in*)ifa->ifa_broadaddr)->sin_addr.s_addr;
 		i++;
+		if (i == MAX_INTERFACES) break;
 	}
 	freeifaddrs(ifap);
 
@@ -470,6 +472,7 @@ static void NetworkFindIPs()
 		_broadcast_list[i++] =
 			 ifo[j].iiAddress.AddressIn.sin_addr.s_addr |
 			~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
+		if (i == MAX_INTERFACES) break;
 	}
 #else
 	ifconf.ifc_len = sizeof(buf);
@@ -493,6 +496,7 @@ static void NetworkFindIPs()
 					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
 				_broadcast_list[i++] =
 					((struct sockaddr_in*)&r.ifr_broadaddr)->sin_addr.s_addr;
+				if (i == MAX_INTERFACES) break;
 			}
 		}
 
