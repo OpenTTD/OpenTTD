@@ -724,6 +724,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placera 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placera radiosändare
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiera ökenområde.{}Tryck och håll CTRL för att ta bort
 STR_CREATE_LAKE                                                 :{BLACK}Definiera vattenyta.{}Skapa en kanal, om inte CTRL är nedhållen vid havsnivå, då den kommer att översvämma närliggande områden istället
+STR_CREATE_RIVER                                                :{BLACK}Placera flod.
 STR_0290_DELETE                                                 :{BLACK}Ta bort
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Ta bort staden helt och hållet
 STR_0292_SAVE_SCENARIO                                          :Spara scenario
@@ -2334,6 +2335,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagerarvagn (Ånga)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagervagn (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagerarvagn (Elektricitet)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagerarvagn (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagerarvagn (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Fraktvagn
 STR_LIVERY_BUS                                                  :Buss
 STR_LIVERY_TRUCK                                                :Lastbil
@@ -3235,6 +3238,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Upprustn
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av last
 STR_PURCHASE_INFO_ALL_BUT                                       :Allt utom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximal Dragkraft: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Необходимо ровное место
 STR_0008_WAITING                                                :{BLACK}Ожидает: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} транзитом из {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Принимаются: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Принимаются: {GOLD}
 STR_000E                                                        :
@@ -726,6 +727,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставить передатчик
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Задать площадь пустыни.{}Нажмите и держите CTRL для удаления
 STR_CREATE_LAKE                                                 :{BLACK}Создать воду:{}При отжатом CTRL создаётся канал.{}При зажатом CTRL клетка на уровне моря наполняется водой.
+STR_CREATE_RIVER                                                :{BLACK}Разместить реки.
 STR_0290_DELETE                                                 :{BLACK}Уничтожить
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Полностью уничтожить этот город
 STR_0292_SAVE_SCENARIO                                          :Сохранить сценарий
@@ -935,6 +937,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Язык
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Полноэкранный режим
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Включить/выключить полноэкранный режим
+STR_FULLSCREEN_FAILED                                           :{WHITE}Сбой полноэкранного режима
 
 STR_OPTIONS_RES                                                 :{BLACK}Разрешение экрана
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2346,6 +2349,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пассаж. вагон (паровоз)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пассаж. вагон (дизель)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пассаж. вагон (электро)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пассажирский вагон (монорельс)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пассажирский вагон (Маглев)
 STR_LIVERY_FREIGHT_WAGON                                        :Грузовой вагон
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Грузовое авто
@@ -2801,6 +2806,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Появился новый {STRING}!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Не могу продать разбитый транспорт ...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Не могу сменить тип груза для удаленного транспорта...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Не могу составить расписание для этого транспорта...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Транспорт может только ждать на станции.
@@ -3249,6 +3255,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

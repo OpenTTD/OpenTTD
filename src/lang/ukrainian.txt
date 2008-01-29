@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Потрібна рівна ділянка
 STR_0008_WAITING                                                :{BLACK}Чекає: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} з {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Приймає: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Приймає: {GOLD}
 STR_000E                                                        :
@@ -850,6 +851,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Поставити ретранслятор
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Позначити територію пустелі.{}Натисніть і утримуйте CTRL, щоб відмінити
 STR_CREATE_LAKE                                                 :{BLACK}Позначити, де буде вода.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_CREATE_RIVER                                                :{BLACK}Прокласти річки.
 STR_0290_DELETE                                                 :{BLACK}Видалити
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Видалити місто повністю
 STR_0292_SAVE_SCENARIO                                          :Зберегти сценарій
@@ -2497,6 +2499,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пасажирський вагон (електричка)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пасажирський вагон (монорельс)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пасажирський вагон (магнітна подушка)
 STR_LIVERY_FREIGHT_WAGON                                        :Товарний вагон
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Вантажівка
@@ -3398,6 +3402,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Пере
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 STR_PURCHASE_INFO_ALL_BUT                                       :Всі крім {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Максимальна тяглова сила: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

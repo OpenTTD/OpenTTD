@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Трябва равна земя
 STR_0008_WAITING                                                :{BLACK}Чакане: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} на път от {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Приема: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Приема: {GOLD}
 STR_000E                                                        :
@@ -726,6 +727,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Постави предавател
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
 STR_CREATE_LAKE                                                 :{BLACK}Определи водна площ.{}Построи канал, освем когато CTRL е натиснат на морско ниво, когато ще наводни околната среда в замяна
+STR_CREATE_RIVER                                                :{BLACK}Направи реки.
 STR_0290_DELETE                                                 :{BLACK}Изтрий
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни напълно града
 STR_0292_SAVE_SCENARIO                                          :Запис на сценарий
@@ -2336,6 +2338,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пътнически вагон (Парен)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пътнически вагон (Дизел)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Пътнически вагон (Електрически)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Пътнически вагон (Monorail - еднорелсова железопътна линия)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Пътнически вагон (Maglev - магнетично издигнат влак)
 STR_LIVERY_FREIGHT_WAGON                                        :Товарен вагон
 STR_LIVERY_BUS                                                  :Автобус
 STR_LIVERY_TRUCK                                                :Камион
@@ -3237,6 +3241,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Прео
 STR_PURCHASE_INFO_ALL_TYPES                                     :Всички видове товар
 STR_PURCHASE_INFO_ALL_BUT                                       :Всички освен {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Макс. теглеща сила: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

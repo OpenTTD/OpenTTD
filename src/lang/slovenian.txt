@@ -766,6 +766,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi oddajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Določi območja puščave.{}Pritisni in drži CTRL za odstranitev
 STR_CREATE_LAKE                                                 :{BLACK}Določi področje vode.{}Naredi kanal, razen če je pritisnjen CTRL na morski gladini, ko bo poplavilo okolico.
+STR_CREATE_RIVER                                                :{BLACK}Položi reke.
 STR_0290_DELETE                                                 :{BLACK}Izbriši
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Popolnoma izbriši mesto
 STR_0292_SAVE_SCENARIO                                          :Shrani scenarij
@@ -975,6 +976,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Izberi j
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Cel zaslon
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Označi to okno za igro v celozaslonskem načinu
+STR_FULLSCREEN_FAILED                                           :{WHITE}Celozaslonski način spodletel
 
 STR_OPTIONS_RES                                                 :{BLACK}Ločljivost
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2413,6 +2415,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Potniški vagon (za parne vlake)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Potniški vagon (za diesel vlake)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Potniški vagon (za električne vlake)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :potniški vagon (enotirni)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :potniški vagon (maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Tovorni vagon
 STR_LIVERY_BUS                                                  :Avtobus
 STR_LIVERY_TRUCK                                                :Tovornjak
@@ -3314,6 +3318,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Nadgradl
 STR_PURCHASE_INFO_ALL_TYPES                                     :Vse vrste tovora
 STR_PURCHASE_INFO_ALL_BUT                                       :Vse, razen {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Največja vlečna moč: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

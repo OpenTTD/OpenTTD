@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Requer terreno plano
 STR_0008_WAITING                                                :{BLACK}Aguardando: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} vindo de {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Aceita: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Aceita: {GOLD}
 STR_000E                                                        :
@@ -479,7 +480,7 @@ STR_019E_SHIP                                                   :{G=m}Embarcaç�
 STR_019F_TRAIN                                                  :{G=m}Trem
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} está ficando velho
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} está ficando muito velho
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} está ficando muito velho e precisa substituição urgente
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} está ficando muito velho e precisa ser substituído urgentemente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informações do Terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {LTBLUE}{CURRENCY}
@@ -726,6 +727,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{} Pressione e segure CTRL para removê-la
 STR_CREATE_LAKE                                                 :{BLACK}Define área com água.{} Faz um canal, a menos se CTRL for pressionado ao nível do mar, neste caso inundará ao redor
+STR_CREATE_RIVER                                                :{BLACK}Inserir rios.
 STR_0290_DELETE                                                 :{BLACK}Remover
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Remover esta cidade completamente
 STR_0292_SAVE_SCENARIO                                          :Salvar cenário
@@ -1396,7 +1398,7 @@ STR_NETWORK_LAN_INTERNET                                        :Rede Local / In
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não precisa estarem todos preenchidos
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não é necessário estarem todos preenchidos
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P ia ias}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de empresas:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para uma certa quantia de empresas
@@ -2237,7 +2239,7 @@ STR_702A_REPAY                                                  :{BLACK}Pagar {S
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...o empréstimo máximo permitido é de {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Impossível pedir mais dinheiro emprestado...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...não há empréstimo para pagar
-STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} requerido
+STR_702E_REQUIRED                                               :{WHITE}...precisa de {CURRENCY}
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Impossível pagar empréstimo...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Impossível dar o dinheiro emprestado do banco
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selecionar novo rosto para o presidente
@@ -2314,7 +2316,7 @@ STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Senha da
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Senha padrão da empresa
 STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Usar esta senha de empresa como padrão para novas empresas
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessão Mundial!{}{}Economistas temem crise!
-STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim do recessão!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Fim da recessão!{}{}Melhoras no comércio inspiram confiança nas indústrias à medida que a economia se fortalece!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Alternar entre janela grande/pequena
 STR_7076_COMPANY_VALUE                                          :{GOLD}Valor da empresa: {WHITE}{CURRENCY}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar 25% de ações
@@ -2760,7 +2762,7 @@ STR_TIMETABLE_TOOLTIP                                           :{BLACK}Plano de
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Mude a quantidade de tempo que a ordem deverá levar
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Reseta a quantidade de tempo para a ordem selecionada
 STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reseta o contador de atraso, fazendo o veículo estar na hora
-STR_SERVICE_HINT                                                :{BLACK}Saltar esta ordem a menos que seja preciso manutenção
+STR_SERVICE_HINT                                                :{BLACK}Pular esta ordem a menos que necessite de manutenção
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Custo: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potência: {POWER}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
@@ -3244,6 +3246,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tra
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

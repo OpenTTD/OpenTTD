@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebný rovný terén
 STR_0008_WAITING                                                :{BLACK}Caka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} na ceste z {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Prijíma: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prijíma: {GOLD}
 STR_000E                                                        :
@@ -788,6 +789,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiestni
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiestnit vysielac
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Vytvorit oblast puste.{}Drzanim CTRL ju odstranite
 STR_CREATE_LAKE                                                 :{BLACK}Definovat oblast vody.{}Vytvorí kanál, pri stlacení CTRL na úrovni mora zaplaví okolie
+STR_CREATE_RIVER                                                :{BLACK}Vytvorit rieky.
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Kompletne vymazat toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenár
@@ -2398,6 +2400,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Osobny vozen (Parny)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Osobny vozen (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Osobny vozen (Elektricky)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Vagón pre cestujúcich (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Vagón pre cestujúcich (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Nakladny vagon
 STR_LIVERY_BUS                                                  :Autobus
 STR_LIVERY_TRUCK                                                :Nakladny automobil
@@ -3299,6 +3303,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestava
 STR_PURCHASE_INFO_ALL_TYPES                                     :Všetky druhy nákladu
 STR_PURCHASE_INFO_ALL_BUT                                       :Všetko okrem {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. trakcna sila: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

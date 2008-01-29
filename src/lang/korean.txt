@@ -346,7 +346,7 @@ STR_0156_DELIVERED_CARGO_GRAPH                                  :수송 화물�
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :성취도 그래프
 STR_0158_COMPANY_VALUE_GRAPH                                    :회사가치 그래프
 STR_0159_CARGO_PAYMENT_RATES                                    :화물 지불량 그래프
-STR_015A_COMPANY_LEAGUE_TABLE                                   :회사 리그 순위
+STR_015A_COMPANY_LEAGUE_TABLE                                   :회사 성취도 순위
 STR_PERFORMANCE_DETAIL_MENU                                     :상세 성취도
 ############ range for menu ends
 
@@ -431,7 +431,7 @@ STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}마을 �
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}회사 재정 정보 보여주기
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}회사 기본 정보 보여주기
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}그래프 표시
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}회사의 리그 순위 표시
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}회사의 성취도 순위 표시
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 열차 목록 표시
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 자동차 목록 표시
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 선박 목록 표시
@@ -599,7 +599,7 @@ STR_MESSAGES_ALL                                                :{YELLOW}모든 
 STR_MESSAGE_SOUND                                               :{YELLOW}요약된 메시지와 함께 소리를 들려줍니다
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...이전의 목적지로부터 너무 멉니다
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}{NUM}에 달성한 최고의 회사 ({STRING} 난이도)
-STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM}의 회사 리그 목록
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM}의 회사 성취도 목록
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :초보자
 STR_0214_ENTREPRENEUR                                           :사업주
@@ -725,6 +725,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}등대�
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}송신기를 놓습니다.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}사막 지역을 지정합니다.{}CTRL키를 누른채로 지우십시오.
 STR_CREATE_LAKE                                                 :{BLACK}수면 지역을 정의하세요.{}바다 높이에서 CTRL이 눌려 있지 않으면, 운하를 만들때 침수할 것입니다.
+STR_CREATE_RIVER                                                :{BLACK}강을 만듦.
 STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
@@ -799,15 +800,15 @@ STR_02DA_ON                                                     :{BLACK}켜기
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}보조금 표시
 STR_02DD_SUBSIDIES                                              :보조금
 STR_02DE_MAP_OF_WORLD                                           :전체 지도 보기
-STR_EXTRA_VIEW_PORT                                             :추가 뷰포인트
+STR_EXTRA_VIEW_PORT                                             :추가 보임창
 STR_SIGN_LIST                                                   :팻말 목록
 STR_02DF_TOWN_DIRECTORY                                         :도시 목록
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}뷰포인트 {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}뷰포인트로 복사
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}이 지역의 풍경을 이 뷰포인트로 복사합니다
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}뷰포인트에서 붙여넣기
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}뷰포인트를 이 지역의 풍경으로 붙여넣습니다
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}보임창 {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}보임창으로 복사
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}이 지역의 풍경을 이 보임창으로 복사합니다
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}보임창에서 붙여넣기
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}이 지역의 풍경을 이 보임창에 붙여넣습니다
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}화폐 단위
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1092,7 +1093,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 뷰포인트 스크롤: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 보임창 스크롤: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리측정 툴팁 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
@@ -2335,6 +2336,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :객차 (증기)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :객차 (디젤)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :객차 (전기)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :승객 객차 (모노레일)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :승객 객차 (자기부상열차)
 STR_LIVERY_FREIGHT_WAGON                                        :화물차
 STR_LIVERY_BUS                                                  :버스
 STR_LIVERY_TRUCK                                                :트럭
@@ -3237,6 +3240,12 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :모든 종류�
 STR_PURCHASE_INFO_ALL_BUT                                       :모든 화물 / 제외: {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}최고 견인 효과: {GOLD}{FORCE}
 
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
+
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}생성
@@ -3325,7 +3334,7 @@ STR_DATE_LONG                                                   :{2:NUM}년 {1:S
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}환승 단위: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...여기는 마을 소유의 도로 입니다
-STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...도로가 잘못된 반향을 향하고 있습니다
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...도로가 잘못된 방향을 향하고 있습니다
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}투명 옵션
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역이름 팻말 투명 전환

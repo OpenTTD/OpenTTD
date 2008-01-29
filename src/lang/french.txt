@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Terrain plat requis
 STR_0008_WAITING                                                :{BLACK}En attente: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} venant de {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepte: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepte: {GOLD}
 STR_000E                                                        :

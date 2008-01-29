@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Maapind peab olema tasane
 STR_0008_WAITING                                                :{BLACK}Ootel: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} teel jaamast {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Võtab vastu: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Võtab vastu: {GOLD}
 STR_000E                                                        :
@@ -824,6 +825,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Ehita tu
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Paigalda saatjamast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Loo kõrbealad.{}Eemaldamiseks klõpsa hoides all CTRL nuppu
 STR_CREATE_LAKE                                                 :{BLACK}Määratle veealad.{}Ehita kanal. CTRL-klahvi all hoides ujutab ümbruskonna üle.
+STR_CREATE_RIVER                                                :{BLACK}Jõgede paigutamine.
 STR_0290_DELETE                                                 :{BLACK}Kustuta
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hävita see linn täielikult
 STR_0292_SAVE_SCENARIO                                          :Salvesta kaart
@@ -1224,7 +1226,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Algne r
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavaline rööbastee
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifitseeritud rööbastee
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorelss
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnethõljukrong
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Esimene saadaval
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Viimane saadaval
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Enim kasutatud
@@ -1703,7 +1705,7 @@ STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rööbas
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbasteede ehitus
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifitseeritud rööbastee ehitus
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorelsi ehitamine
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Elektromageetilise rööbastee ehitamine
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnethõljuktee ehitamine
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vali raudteesild
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Siia ei saa depood ehitada...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Siia ei saa raudteejaama ehitada...
@@ -1715,7 +1717,7 @@ STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Depoo su
 STR_1015_RAILROAD_CONSTRUCTION                                  :Rööbastee ehitamine
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifitseeritud rööbastee ehitus
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorelsi ehitamine
-STR_1017_MAGLEV_CONSTRUCTION                                    :Elektromagneetilise rööbastee ehitamine
+STR_1017_MAGLEV_CONSTRUCTION                                    :Magnethõljuktee ehitamine
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Ehita rööbasteed
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Ehita rongidepoo (rongide ehitamiseks ja hoolduseks)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Ehita raudteejaam
@@ -2428,12 +2430,14 @@ STR_LIVERY_STEAM                                                :Aurumootorvedur
 STR_LIVERY_DIESEL                                               :Diiselmootorvedur
 STR_LIVERY_ELECTRIC                                             :Elektrimootorvedur
 STR_LIVERY_MONORAIL                                             :Monorelssvedur
-STR_LIVERY_MAGLEV                                               :Elektromagneetiline mootorvedur
+STR_LIVERY_MAGLEV                                               :Magnethõljukvedur
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Reisivagun (auru)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Reisivagun (diisel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Reisivagun (elektri)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Reisivagun (monorelss)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Reisivagun (magnethõljukrong)
 STR_LIVERY_FREIGHT_WAGON                                        :Kaubavagun
 STR_LIVERY_BUS                                                  :Buss
 STR_LIVERY_TRUCK                                                :Veoauto
@@ -2718,7 +2722,7 @@ STR_8103_ROAD_VEHICLE                                           :mootorsõiduk
 STR_8104_AIRCRAFT                                               :lennuk
 STR_8105_SHIP                                                   :laev
 STR_8106_MONORAIL_LOCOMOTIVE                                    :monorelssvedur
-STR_8107_MAGLEV_LOCOMOTIVE                                      :maglevivedur
+STR_8107_MAGLEV_LOCOMOTIVE                                      :magnethõljukvedur
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}Linna {TOWN} rongidepoo
@@ -2762,17 +2766,17 @@ STR_UNKNOWN_DESTINATION                                         :tundmatu sihtpu
 STR_8812_EMPTY                                                  :{LTBLUE}Tühi
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} jaamast {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} jaamast {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Rong {COMMA} ootab depoos
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Rong {COMMA} on depoos ootel
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uus rong
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Rong on liiga pikk
-STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Ronge saab ainult siis muuta kui nad on peatatud depoo sees
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Ainult depoos peatunud ronge saab muuta
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} rong{P "" i}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Uued rööbassõidukid
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Uus elektriraudteeveerem
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uued monorelsi sõidukid
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus maglevi sõiduk
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uus monorelssveerem
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uus magnethõljukveerem
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rööbassõidukid
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Ehita veovahend
@@ -2795,7 +2799,7 @@ STR_REFIT_ORDER                                                 :(Taasseadista {
 STR_TIMETABLE_VIEW                                              :{BLACK}Sõiduplaan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näita sõiduplaani
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (käsud)
-STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Käskude Lõpp - -
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sihtpunktide lõpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Hooldus
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Rööbassõidukit ei saa ehitada...
@@ -3312,8 +3316,8 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Tellimus
 
 STR_RAIL_VEHICLES                                               :Raudteesõidukid
 STR_ELRAIL_VEHICLES                                             :Elektrirongid
-STR_MONORAIL_VEHICLES                                           :Monorelss-sõidukid
-STR_MAGLEV_VEHICLES                                             :Maglevi Sõidukid
+STR_MONORAIL_VEHICLES                                           :Monorelssveerem
+STR_MAGLEV_VEHICLES                                             :Magnethõljukveerem
 
 ############ End of list of rail types
 
@@ -3335,6 +3339,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ümberse
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kõik kaubatüübid
 STR_PURCHASE_INFO_ALL_BUT                                       :Kõik, välja arvatud {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurim veojõud: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

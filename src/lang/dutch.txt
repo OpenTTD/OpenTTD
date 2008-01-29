@@ -15,6 +15,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Vlak land nodig
 STR_0008_WAITING                                                :{BLACK}Wachtend: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} opweg van {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepteert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepteert: {GOLD}
 STR_000E                                                        :
@@ -724,6 +725,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats v
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijn gebied.{}Gebruik CTRL om het te verwijderen
 STR_CREATE_LAKE                                                 :{BLACK}Definiëer water gebied.{}Maak een kanaal, tenzij CTRL wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
+STR_CREATE_RIVER                                                :{BLACK}Maak rivier.
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
 STR_0292_SAVE_SCENARIO                                          :Scenario opslaan
@@ -3240,6 +3242,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tre
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

@@ -15,6 +15,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Landskabet skal være fladt
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} undervejs fra {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterer: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterer: {GOLD}
 STR_000E                                                        :
@@ -724,6 +725,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placér 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placér sender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Hold CTRL nede for at fjerne det
 STR_CREATE_LAKE                                                 :{BLACK}Definer vandområde.{}Lav en kanal, med mindre CTRL-tasten holdes ved havniveau, hvorved omgivelserne oversvømmes i stedet
+STR_CREATE_RIVER                                                :{BLACK}Placér floder.
 STR_0290_DELETE                                                 :{BLACK}Slet
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slet denne by fuldstændigt
 STR_0292_SAVE_SCENARIO                                          :Gem scenarie
@@ -933,6 +935,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Vælg sp
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fuld skærm
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Afkryds for at spille OpenTTD i fuld skærm
+STR_FULLSCREEN_FAILED                                           :{WHITE}Fuldskærmstilstand fejlede
 
 STR_OPTIONS_RES                                                 :{BLACK}Skærmopløsning
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -2333,6 +2336,8 @@ STR_LIVERY_EMU                                                  :Eltogsæt
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagervogn (damp)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagervogn (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagervogn (elektrisk)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagervogn (monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagervogn (magnetskinne)
 STR_LIVERY_FREIGHT_WAGON                                        :Godsvogn
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lastbil
@@ -2788,6 +2793,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} er nu tilgængelig!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan ikke sælge ødelagt køretøj...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan ikke ændre ødelagt køretøj...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke lave køreplan for transportmiddel...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportmidler kan kun vente ved stationer.
@@ -3233,6 +3239,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kan omby
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle lasttyper
 STR_PURCHASE_INFO_ALL_BUT                                       :Alle undtagen {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. trækkraft: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
