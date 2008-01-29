@@ -70,6 +70,30 @@ static const uint8 _flood_from_dirs[] = {
 };
 
 /**
+ * Marks tile dirty if it is a canal or river tile.
+ * Called to avoid glitches when flooding tiles next to canal tile.
+ *
+ * @param tile tile to check
+ */
+static inline void MarkTileDirtyIfCanalOrRiver(TileIndex tile)
+{
+	if (IsTileType(tile, MP_WATER) && (IsCanal(tile) || IsRiver(tile))) MarkTileDirtyByTile(tile);
+}
+
+/**
+ * Marks the tiles around a tile as dirty, if they are canals or rivers.
+ *
+ * @param tile The center of the tile where all other tiles are marked as dirty
+ * @ingroup dirty
+ */
+static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
+{
+	for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
+		MarkTileDirtyIfCanalOrRiver(tile + TileOffsByDir(dir));
+	}
+}
+
+/**
  * Makes a tile canal or water depending on the surroundings.
  * This as for example docks and shipdepots do not store
  * whether the tile used to be canal or 'normal' water.
@@ -231,6 +255,8 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
 		MarkTileDirtyByTile(tile + delta);
+		MarkCanalsAndRiversAroundDirty(tile - delta);
+		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 22 >> 3);
@@ -250,26 +276,11 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 		DoClearSquare(tile);
 		MakeWaterOrCanalDependingOnSurroundings(tile + delta, _current_player);
 		MakeWaterOrCanalDependingOnSurroundings(tile - delta, _current_player);
+		MarkCanalsAndRiversAroundDirty(tile - delta);
+		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water * 2);
-}
-
-/**
- * Marks the tiles around a tile as dirty.
- *
- * This functions marks the tiles around a given tile as dirty for repaint.
- *
- * @param tile The center of the tile where all other tiles are marked as dirty
- * @ingroup dirty
- * @see TerraformAddDirtyTileAround
- */
-static void MarkTilesAroundDirty(TileIndex tile)
-{
-	MarkTileDirtyByTile(TILE_ADDXY(tile, 0, 1));
-	MarkTileDirtyByTile(TILE_ADDXY(tile, 0, -1));
-	MarkTileDirtyByTile(TILE_ADDXY(tile, 1, 0));
-	MarkTileDirtyByTile(TILE_ADDXY(tile, -1, 0));
 }
 
 /** Builds a lock (ship-lift)
@@ -345,7 +356,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				MakeCanal(tile, _current_player, Random());
 			}
 			MarkTileDirtyByTile(tile);
-			MarkTilesAroundDirty(tile);
+			MarkCanalsAndRiversAroundDirty(tile);
 		}
 
 		cost.AddCost(_price.clear_water);
@@ -376,7 +387,10 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 
 			if (GetTileOwner(tile) != OWNER_WATER && GetTileOwner(tile) != OWNER_NONE && !CheckTileOwnership(tile)) return CMD_ERROR;
 
-			if (flags & DC_EXEC) DoClearSquare(tile);
+			if (flags & DC_EXEC) {
+				DoClearSquare(tile);
+				MarkCanalsAndRiversAroundDirty(tile);
+			}
 			return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
 
 		case WATER_TILE_COAST: {
@@ -385,7 +399,10 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			/* Make sure no vehicle is on the tile */
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
-			if (flags & DC_EXEC) DoClearSquare(tile);
+			if (flags & DC_EXEC) {
+				DoClearSquare(tile);
+				MarkCanalsAndRiversAroundDirty(tile);
+			}
 			if (IsSlopeWithOneCornerRaised(slope)) {
 				return CommandCost(EXPENSES_CONSTRUCTION, _price.clear_water);
 			} else {
@@ -678,17 +695,6 @@ static void AnimateTile_Water(TileIndex tile)
 	/* not used */
 }
 
-/**
- * Marks tile dirty if it is a canal tile.
- * Called to avoid glitches when flooding tiles next to canal tile.
- *
- * @param tile tile to check
- */
-static inline void MarkTileDirtyIfCanal(TileIndex tile)
-{
-	if (IsTileType(tile, MP_WATER) && IsCanal(tile)) MarkTileDirtyByTile(tile);
-}
-
 
 /**
  * Finds a vehicle to flood.
@@ -904,9 +910,7 @@ static void DoFloodTile(TileIndex target)
 
 	if (flooded) {
 		/* Mark surrounding canal tiles dirty too to avoid glitches */
-		for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
-			MarkTileDirtyIfCanal(target + TileOffsByDir(dir));
-		}
+		MarkCanalsAndRiversAroundDirty(target);
 
 		/* update signals if needed */
 		UpdateSignalsInBuffer();
