@@ -262,8 +262,8 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 
 void DupSprite(SpriteID old_spr, SpriteID new_spr)
 {
+	SpriteCache *scnew = AllocateSpriteCache(new_spr); // may reallocate: so put it first
 	SpriteCache *scold = GetSpriteCache(old_spr);
-	SpriteCache *scnew = AllocateSpriteCache(new_spr);
 
 	scnew->file_slot = scold->file_slot;
 	scnew->file_pos = scold->file_pos;
