@@ -9,6 +9,7 @@
 
 char *InlineString(char *buf, StringID string);
 char *GetString(char *buffr, StringID string, const char *last);
+const char *GetStringPtr(StringID string);
 
 extern char _userstring[128];
 

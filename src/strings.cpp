@@ -104,9 +104,14 @@ static const char *_bound_strings[NUM_BOUND_STRINGS];
  * the indices will be reused. */
 static int _bind_index;
 
-static const char *GetStringPtr(StringID string)
+const char *GetStringPtr(StringID string)
 {
-	return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
+	switch (GB(string, 11, 5)) {
+		case 28: return GetGRFStringPtr(GB(string, 0, 11));
+		case 29: return GetGRFStringPtr(GB(string, 0, 11) + 0x0800);
+		case 30: return GetGRFStringPtr(GB(string, 0, 11) + 0x1000);
+		default: return _langpack_offs[_langtab_start[string >> 11] + (string & 0x7FF)];
+	}
 }
 
 /** The highest 8 bits of string contain the "case index".
@@ -125,7 +130,6 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
-	char buff[512];
 
 	switch (tab) {
 		case 4:
@@ -139,7 +143,8 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 			break;
 
 		case 15:
-			error("Boo!");
+			/* Old table for custom names. This is no longer used */
+			error("Incorrect conversion of custom name string.");
 
 		case 26:
 			/* Include string within newgrf text (format code 81) */
@@ -150,16 +155,13 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 			break;
 
 		case 28:
-			GetGRFString(buff, index, lastof(buff));
-			return FormatString(buffr, buff, argv, 0, last);
+			return FormatString(buffr, GetGRFStringPtr(index), argv, 0, last);
 
 		case 29:
-			GetGRFString(buff, index + 0x800, lastof(buff));
-			return FormatString(buffr, buff, argv, 0, last);
+			return FormatString(buffr, GetGRFStringPtr(index + 0x0800), argv, 0, last);
 
 		case 30:
-			GetGRFString(buff, index + 0x1000, lastof(buff));
-			return FormatString(buffr, buff, argv, 0, last);
+			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), argv, 0, last);
 
 		case 31:
 			/* dynamic strings. These are NOT to be passed through the formatter,
@@ -695,8 +697,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
-				char buffr[512];
-				const char *s = GetStringWithArgs(buffr, argv_orig[(byte)*str++], argv, last); // contains the string that determines gender.
+				const char *s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
 				int len;
 				int gender = 0;
 				if (s != NULL) {

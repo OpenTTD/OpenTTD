@@ -405,7 +405,7 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 }
 
 
-char *GetGRFString(char *buff, uint16 stringid, const char* last)
+const char *GetGRFStringPtr(uint16 stringid)
 {
 	const GRFText *default_text = NULL;
 	const GRFText *search_text;
@@ -418,7 +418,7 @@ char *GetGRFString(char *buff, uint16 stringid, const char* last)
 	/*Search the list of lang-strings of this stringid for current lang */
 	for (search_text = _grf_text[stringid].textholder; search_text != NULL; search_text = search_text->next) {
 		if (search_text->langid == _currentLangID) {
-			return strecpy(buff, search_text->text, last);
+			return search_text->text;
 		}
 
 		/* If the current string is English or American, set it as the
@@ -429,10 +429,10 @@ char *GetGRFString(char *buff, uint16 stringid, const char* last)
 	}
 
 	/* If there is a fallback string, return that */
-	if (default_text != NULL) return strecpy(buff, default_text->text, last);
+	if (default_text != NULL) return default_text->text;
 
 	/* Use the default string ID if the fallback string isn't available */
-	return GetString(buff, _grf_text[stringid].def_string, last);
+	return GetStringPtr(_grf_text[stringid].def_string);
 }
 
 /**
