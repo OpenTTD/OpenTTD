@@ -385,7 +385,7 @@ static void PlaceProc_RockyArea(TileIndex tile)
 
 static void PlaceProc_LightHouse(TileIndex tile)
 {
-	if (!IsTileType(tile, MP_CLEAR) || IsSteepSlope(GetTileSlope(tile, NULL)) || IsBridgeAbove(tile)) {
+	if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != SLOPE_FLAT || IsBridgeAbove(tile)) {
 		return;
 	}
 
@@ -396,7 +396,7 @@ static void PlaceProc_LightHouse(TileIndex tile)
 
 static void PlaceProc_Transmitter(TileIndex tile)
 {
-	if (!IsTileType(tile, MP_CLEAR) || IsSteepSlope(GetTileSlope(tile, NULL)) || IsBridgeAbove(tile)) {
+	if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != SLOPE_FLAT || IsBridgeAbove(tile)) {
 		return;
 	}
 
