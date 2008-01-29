@@ -415,18 +415,37 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 	}
 }
 
-/** return true if a tile is a water tile. */
-static bool IsWateredTile(TileIndex tile)
+/**
+ * return true if a tile is a water tile wrt. a certain direction.
+ *
+ * @param tile The tile of interest.
+ * @param from The direction of interest.
+ * @return true iff the tile is water in the view of 'from'.
+ *
+ */
+static bool IsWateredTile(TileIndex tile, Direction from)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
 			if (!IsCoast(tile)) return true;
-			return IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
+			switch (GetTileSlope(tile, NULL)) {
+				case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
+				case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
+				case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
+				case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+				default: return false;
+			}
 
 		case MP_RAILWAY:
 			if (GetRailGroundType(tile) == RAIL_GROUND_WATER) {
 				assert(IsPlainRailTile(tile));
-				return IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
+				switch (GetTileSlope(tile, NULL)) {
+					case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
+					case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
+					case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
+					case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+					default: return false;
+				}
 			}
 			return false;
 
@@ -441,10 +460,10 @@ static void DrawWaterEdges(SpriteID base, TileIndex tile)
 	uint wa;
 
 	/* determine the edges around with water. */
-	wa  = IsWateredTile(TILE_ADDXY(tile, -1,  0)) << 0;
-	wa += IsWateredTile(TILE_ADDXY(tile,  0,  1)) << 1;
-	wa += IsWateredTile(TILE_ADDXY(tile,  1,  0)) << 2;
-	wa += IsWateredTile(TILE_ADDXY(tile,  0, -1)) << 3;
+	wa  = IsWateredTile(TILE_ADDXY(tile, -1,  0), DIR_SW) << 0;
+	wa += IsWateredTile(TILE_ADDXY(tile,  0,  1), DIR_NW) << 1;
+	wa += IsWateredTile(TILE_ADDXY(tile,  1,  0), DIR_NE) << 2;
+	wa += IsWateredTile(TILE_ADDXY(tile,  0, -1), DIR_SE) << 3;
 
 	if (!(wa & 1)) DrawGroundSprite(base,     PAL_NONE);
 	if (!(wa & 2)) DrawGroundSprite(base + 1, PAL_NONE);
@@ -454,25 +473,25 @@ static void DrawWaterEdges(SpriteID base, TileIndex tile)
 	/* right corner */
 	switch (wa & 0x03) {
 		case 0: DrawGroundSprite(base + 4, PAL_NONE); break;
-		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1))) DrawGroundSprite(base + 8, PAL_NONE); break;
+		case 3: if (!IsWateredTile(TILE_ADDXY(tile, -1, 1), DIR_W)) DrawGroundSprite(base + 8, PAL_NONE); break;
 	}
 
 	/* bottom corner */
 	switch (wa & 0x06) {
 		case 0: DrawGroundSprite(base + 5, PAL_NONE); break;
-		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1))) DrawGroundSprite(base + 9, PAL_NONE); break;
+		case 6: if (!IsWateredTile(TILE_ADDXY(tile, 1, 1), DIR_N)) DrawGroundSprite(base + 9, PAL_NONE); break;
 	}
 
 	/* left corner */
 	switch (wa & 0x0C) {
 		case  0: DrawGroundSprite(base + 6, PAL_NONE); break;
-		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1))) DrawGroundSprite(base + 10, PAL_NONE); break;
+		case 12: if (!IsWateredTile(TILE_ADDXY(tile, 1, -1), DIR_E)) DrawGroundSprite(base + 10, PAL_NONE); break;
 	}
 
 	/* upper corner */
 	switch (wa & 0x09) {
 		case 0: DrawGroundSprite(base + 7, PAL_NONE); break;
-		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1))) DrawGroundSprite(base + 11, PAL_NONE); break;
+		case 9: if (!IsWateredTile(TILE_ADDXY(tile, -1, -1), DIR_S)) DrawGroundSprite(base + 11, PAL_NONE); break;
 	}
 }
 
