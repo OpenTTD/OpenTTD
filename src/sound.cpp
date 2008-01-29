@@ -14,6 +14,7 @@
 #include "core/alloc_func.hpp"
 #include "map_func.h"
 #include "vehicle_base.h"
+#include "debug.h"
 
 static uint _file_count;
 static FileEntry *_files;
@@ -25,12 +26,20 @@ MusicFileSettings msf;
 
 static void OpenBankFile(const char *filename)
 {
-	uint count;
 	uint i;
 
 	FioOpenFile(SOUND_SLOT, filename);
 	uint pos = FioGetPos();
-	count = FioReadDword() / 8;
+	uint count = FioReadDword() / 8;
+
+	/* Simple check for the correct number of original sounds. */
+	if (count != 73) {
+		DEBUG(misc, 6, "Incorrect number of sounds in '%s', ignoring.", filename);
+		_file_count = 0;
+		_files = NULL;
+		return;
+	}
+
 	FileEntry *fe = CallocT<FileEntry>(count);
 
 	if (fe == NULL) {
@@ -104,13 +113,9 @@ uint GetNumOriginalSounds()
 	return _file_count;
 }
 
-static bool SetBankSource(MixerChannel *mc, uint bank)
+static bool SetBankSource(MixerChannel *mc, const FileEntry *fe)
 {
-	const FileEntry *fe;
-	uint i;
-
-	if (bank >= GetNumSounds()) return false;
-	fe = GetSound(bank);
+	assert(fe != NULL);
 
 	if (fe->file_size == 0) return false;
 
@@ -120,8 +125,9 @@ static bool SetBankSource(MixerChannel *mc, uint bank)
 	FioSeekToFile(fe->file_slot, fe->file_offset);
 	FioReadBlock(mem, fe->file_size);
 
-	for (i = 0; i != fe->file_size; i++)
+	for (uint i = 0; i != fe->file_size; i++) {
 		mem[i] += -128; // Convert unsigned sound data to signed
+	}
 
 	assert(fe->bits_per_sample == 8 && fe->channels == 1 && fe->file_size != 0 && fe->rate != 0);
 
@@ -139,17 +145,22 @@ bool SoundInitialize(const char *filename)
 /* Low level sound player */
 static void StartSound(uint sound, int panning, uint volume)
 {
-	MixerChannel *mc;
-	uint left_vol, right_vol;
-
 	if (volume == 0) return;
-	mc = MxAllocateChannel();
+
+	const FileEntry *fe = GetSound(sound);
+	if (fe == NULL) return;
+
+	MixerChannel *mc = MxAllocateChannel();
 	if (mc == NULL) return;
-	if (!SetBankSource(mc, sound)) return;
+
+	if (!SetBankSource(mc, fe)) return;
+
+	/* Apply the sound effect's own volume. */
+	volume = (fe->volume * volume) / 128;
 
 	panning = Clamp(panning, -PANNING_LEVELS, PANNING_LEVELS);
-	left_vol = (volume * PANNING_LEVELS) - (volume * panning);
-	right_vol = (volume * PANNING_LEVELS) + (volume * panning);
+	uint left_vol = (volume * PANNING_LEVELS) - (volume * panning);
+	uint right_vol = (volume * PANNING_LEVELS) + (volume * panning);
 	MxSetChannelVolume(mc, left_vol * 128 / PANNING_LEVELS, right_vol * 128 / PANNING_LEVELS);
 	MxActivateChannel(mc);
 }
@@ -215,7 +226,7 @@ static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 			StartSound(
 				sound,
 				left / max(1, vp->virtual_width / ((PANNING_LEVELS << 1) + 1)) - PANNING_LEVELS,
-				(GetSound(sound)->volume * msf.effect_vol * _vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]) >> 15
+				(msf.effect_vol * _vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]) / 256
 			);
 			return;
 		}
@@ -242,9 +253,5 @@ void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
 
 void SndPlayFx(SoundFx sound)
 {
-	StartSound(
-		sound,
-		0,
-		(GetSound(sound)->volume * msf.effect_vol) >> 7
-	);
+	StartSound(sound, 0, msf.effect_vol);
 }
