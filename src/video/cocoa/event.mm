@@ -47,6 +47,7 @@
 #include "../../blitter/factory.hpp"
 #include "../../gfx_func.h"
 #include "../../network/network.h"
+#include "../../core/random_func.hpp"
 
 
 /* Right Mouse Button Emulation enum */
