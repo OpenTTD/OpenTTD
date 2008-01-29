@@ -572,7 +572,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 			!(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR)) &&
 			(cmd & 0xFF) != CMD_PAUSE) {
 		/* estimate the cost. */
+		SetTownRatingTestMode(true);
 		res = proc(tile, flags, p1, p2);
+		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
 			ShowErrorMessage(_error_message, error_part1, x, y);
