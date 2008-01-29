@@ -69,8 +69,6 @@ void HandleMouseEvents();
 void CSleep(int milliseconds);
 void UpdateWindows();
 
-uint32 InteractiveRandom(); //< Used for random sequences that are not the same on the other end of the multiplayer link
-uint InteractiveRandomRange(uint max);
 void DrawChatMessage();
 void DrawMouseCursor();
 void ScreenSizeChanged();

@@ -17,6 +17,7 @@
 #include "../blitter/factory.hpp"
 #include "../core/alloc_func.hpp"
 #include "../player_func.h"
+#include "../core/random_func.hpp"
 #include "dedicated_v.h"
 
 #ifdef BEOS_NET_SERVER

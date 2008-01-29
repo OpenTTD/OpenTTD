@@ -27,6 +27,7 @@
 #include "settings_type.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
+#include "core/random_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
