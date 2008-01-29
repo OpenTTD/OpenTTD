@@ -27,6 +27,35 @@
 // Doesn't work with network yet.
 // #define MERSENNE_TWISTER
 
+/**
+ * Structure to encapsulate the pseudo random number generators.
+ */
+struct Randomizer {
+	/** The state of the randomizer */
+	uint32 state[2];
+
+	/**
+	 * Generate the next pseudo random number
+	 * @return the random number
+	 */
+	uint32 Next();
+
+	/**
+	 * Generate the next pseudo random number scaled to max
+	 * @param max the maximum value of the returned random number
+	 * @return the random number
+	 */
+	uint32 Next(uint16 max);
+
+	/**
+	 * (Re)set the state of the random number generator.
+	 * @param seed the new state
+	 */
+	void SetSeed(uint32 seed);
+};
+extern Randomizer _random; ///< Random used in the game state calculations
+extern Randomizer _interactive_random; ///< Random used every else where is does not (directly) influence the game state
+
 void SetRandomSeed(uint32 seed);
 #ifdef RANDOM_DEBUG
 	#define Random() DoRandom(__LINE__, __FILE__)
@@ -34,12 +63,12 @@ void SetRandomSeed(uint32 seed);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint DoRandomRange(uint max, int line, const char *file);
 #else
-	uint32 Random();
-	uint RandomRange(uint max);
+	static inline uint32 Random() { return _random.Next(); }
+	static inline uint32 RandomRange(uint16 max) { return _random.Next(max); }
 #endif
 
-uint32 InteractiveRandom(); // Used for random sequences that are not the same on the other end of the multiplayer link
-uint InteractiveRandomRange(uint max);
+static inline uint32 InteractiveRandom() { return _interactive_random.Next(); }
+static inline uint32 InteractiveRandomRange(uint16 max) { return _interactive_random.Next(max); }
 
 /**
  * Checks if a given randomize-number is below a given probability.
@@ -99,7 +128,5 @@ static inline bool Chance16R(const uint a, const uint b, uint32 &r)
 	r = Random();
 	return Chance16I(a, b, r);
 }
-
-extern uint32 _random_seeds[2][2];
 
 #endif /* RANDOM_FUNC_HPP */

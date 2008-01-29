@@ -6,20 +6,26 @@
 #include "random_func.hpp"
 #include "bitmath_func.hpp"
 
-uint32 _random_seeds[2][2];
+Randomizer _random, _interactive_random;
 
-uint32 InteractiveRandom()
+uint32 Randomizer::Next()
 {
-	const uint32 s = _random_seeds[1][0];
-	const uint32 t = _random_seeds[1][1];
+	const uint32 s = this->state[0];
+	const uint32 t = this->state[1];
 
-	_random_seeds[1][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
-	return _random_seeds[1][1] = ROR(s, 3) - 1;
+	this->state[0] = s + ROR(t ^ 0x1234567F, 7) + 1;
+	return this->state[1] = ROR(s, 3) - 1;
 }
 
-uint InteractiveRandomRange(uint max)
+uint32 Randomizer::Next(uint16 max)
 {
-	return GB(InteractiveRandom(), 0, 16) * max >> 16;
+	return GB(this->Next(), 0, 16) * max >> 16;
+}
+
+void Randomizer::SetSeed(uint32 seed)
+{
+	this->state[0] = seed;
+	this->state[1] = seed;
 }
 
 #ifdef MERSENNE_TWISTER
@@ -119,38 +125,26 @@ uint32 Random()
 #else /* MERSENNE_TWISTER */
 void SetRandomSeed(uint32 seed)
 {
-	_random_seeds[0][0] = seed;
-	_random_seeds[0][1] = seed;
-	_random_seeds[1][0] = seed * 0x1234567;
-	_random_seeds[1][1] = _random_seeds[1][0];
+	_random.SetSeed(seed);
+	_interactive_random.SetSeed(seed * 0x1234567);
 }
 
 #ifdef RANDOM_DEBUG
 #include "../network/network_data.h"
 uint32 DoRandom(int line, const char *file)
 {
-	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server))
+	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server)) {
 		printf("Random [%d/%d] %s:%d\n",_frame_counter, (byte)_current_player, file, line);
-#else /* RANDOM_DEBUG */
-uint32 Random()
-{
-#endif /* RANDOM_DEBUG */
-	const uint32 s = _random_seeds[0][0];
-	const uint32 t = _random_seeds[0][1];
+	}
 
-	_random_seeds[0][0] = s + ROR(t ^ 0x1234567F, 7) + 1;
-	return _random_seeds[0][1] = ROR(s, 3) - 1;
+	return _random->Next()
 }
+#endif /* RANDOM_DEBUG */
 #endif /* MERSENNE_TWISTER */
 
 #if defined(RANDOM_DEBUG) && !defined(MERSENNE_TWISTER)
 uint DoRandomRange(uint max, int line, const char *file)
 {
 	return GB(DoRandom(line, file), 0, 16) * max >> 16;
-}
-#else /* RANDOM_DEBUG & !MERSENNE_TWISTER */
-uint RandomRange(uint max)
-{
-	return GB(Random(), 0, 16) * max >> 16;
 }
 #endif /* RANDOM_DEBUG & !MERSENNE_TWISTER */

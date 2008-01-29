@@ -1235,9 +1235,9 @@ static bool NetworkDoClientLoop()
 	if (_sync_frame != 0) {
 		if (_sync_frame == _frame_counter) {
 #ifdef NETWORK_SEND_DOUBLE_SEED
-			if (_sync_seed_1 != _random_seeds[0][0] || _sync_seed_2 != _random_seeds[0][1]) {
+			if (_sync_seed_1 != _random.state[0] || _sync_seed_2 != _random.state[1]) {
 #else
-			if (_sync_seed_1 != _random_seeds[0][0]) {
+			if (_sync_seed_1 != _random.state[0]) {
 #endif
 				NetworkError(STR_NETWORK_ERR_DESYNC);
 				DebugDumpCommands("ddc:serr:%d;%d\n", _date, _date_fract);
@@ -1332,9 +1332,9 @@ void NetworkGameLoop()
 		// Then we make the frame
 		StateGameLoop();
 
-		_sync_seed_1 = _random_seeds[0][0];
+		_sync_seed_1 = _random.state[0];
 #ifdef NETWORK_SEND_DOUBLE_SEED
-		_sync_seed_2 = _random_seeds[0][1];
+		_sync_seed_2 = _random.state[1];
 #endif
 
 		NetworkServer_Tick(send_frame);

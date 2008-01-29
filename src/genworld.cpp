@@ -90,7 +90,7 @@ static void *_GenerateWorld(void *arg)
 	if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
 	/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
 	if (_patches.generation_seed == GENERATE_NEW_SEED) _patches.generation_seed = _patches_newgame.generation_seed = InteractiveRandom();
-	_random_seeds[0][0] = _random_seeds[0][1] = _patches.generation_seed;
+	_random.SetSeed(_patches.generation_seed);
 	SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
