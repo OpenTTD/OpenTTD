@@ -167,7 +167,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Quit
 STR_00C8_YES                                                    :{BLACK}Yes
 STR_00C9_NO                                                     :{BLACK}No
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to abandon this game and return to {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to quit OpenTTD and return to {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
