@@ -56,7 +56,7 @@ static void GenerateDesertArea(TileIndex end, TileIndex start)
 	_generating_world = true;
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		if (GetTileType(tile) != MP_WATER) {
-			SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_INVALID : TROPICZONE_DESERT);
+			SetTropicZone(tile, (_ctrl_pressed) ? TROPICZONE_NORMAL : TROPICZONE_DESERT);
 			DoCommandP(tile, 0, 0, NULL, CMD_LANDSCAPE_CLEAR);
 			MarkTileDirtyByTile(tile);
 		}

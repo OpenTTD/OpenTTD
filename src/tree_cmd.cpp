@@ -58,7 +58,7 @@ static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 
 		case LT_TROPIC:
 			switch (GetTropicZone(tile)) {
-				case TROPICZONE_INVALID: return (TreeType)(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
+				case TROPICZONE_NORMAL:  return (TreeType)(seed * TREE_COUNT_SUB_TROPICAL / 256 + TREE_SUB_TROPICAL);
 				case TROPICZONE_DESERT:  return (TreeType)((seed > 12) ? TREE_INVALID : TREE_CACTUS);
 				default:                 return (TreeType)(seed * TREE_COUNT_RAINFOREST / 256 + TREE_RAINFOREST);
 			}
