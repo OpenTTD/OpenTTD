@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Se requiere terreno llano
 STR_0008_WAITING                                                :{BLACK}Esperando: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} en ruta desde {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acepta: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Acepta: {GOLD}
 STR_000E                                                        :
@@ -725,6 +726,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desertica.{}Pulsa y mantén CTRL para quitarla
 STR_CREATE_LAKE                                                 :{BLACK}Define el area de agua.{}Haz un canal, a menos que mantengas pulsado CTRL a nivel del mar, entonces se inundarán los alrededores del lugar
+STR_CREATE_RIVER                                                :{BLACK}Colocar rios.
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar esta población completamente
 STR_0292_SAVE_SCENARIO                                          :Guardar escenario
@@ -3241,6 +3243,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Esf
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

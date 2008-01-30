@@ -3416,7 +3416,7 @@ STR_FACE_SIMPLE_TIP                                             :{BLACK}간단�
 STR_FACE_LOAD                                                   :{BLACK}불러오기
 STR_FACE_LOAD_TIP                                               :{BLACK}즐겨찾는 얼굴 불러오기
 STR_FACE_LOAD_DONE                                              :{WHITE}당신이 즐겨찾는 얼굴을 OpenTTD 설정 파일로부터 불러왔습니다.
-STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 없음.
+STR_FACE_FACECODE                                               :{BLACK}플레이어 얼굴 번호
 STR_FACE_FACECODE_TIP                                           :{BLACK}플레이어 얼굴 번호 보기/설정
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}플레이어 얼굴 번호 보기/설정
 STR_FACE_FACECODE_SET                                           :{WHITE}새 얼굴 번호 코드가 설정되었습니다.

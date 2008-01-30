@@ -728,7 +728,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Kas oled
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tööstuste loomine
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Tee-ehitus
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Maanteede ehitamine
 STR_0233_TOWN_GENERATION                                        :{WHITE}Linnade loomine
 STR_0234_NEW_TOWN                                               :{BLACK}Uus linn
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Ehita uus linn
@@ -1702,8 +1702,8 @@ STR_1004_TOO_HIGH                                               :{WHITE}Liiga k�
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Sobiv rongitee puudub
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juba ehitatud
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rööbastee tuleb eelnevalt lammutada
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbasteede ehitus
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifitseeritud rööbastee ehitus
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbasteede ehitamine
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifitseeritud rööbasteede ehitamine
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorelsi ehitamine
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnethõljuktee ehitamine
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vali raudteesild
@@ -1715,7 +1715,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Siit ei 
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Siit ei saa signaale lammutada...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Depoo suund
 STR_1015_RAILROAD_CONSTRUCTION                                  :Rööbastee ehitamine
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifitseeritud rööbastee ehitus
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifitseeritud rööbasteede ehitamine
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorelsi ehitamine
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnethõljuktee ehitamine
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Ehita rööbasteed
@@ -1747,8 +1747,8 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Raudteej
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Enne on vaja sõidutee lammutada
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Teede ehitamine
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Sõiduteede ehitus
-STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Trammitee ehitamine
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Sõiduteede ehitamine
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Trammiteede ehitamine
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vali sillatüüp
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... ühesuunalised teed ei saa teedesõlmi omada
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Siia ei saa sõiduteed ehitada...
@@ -1763,8 +1763,8 @@ STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Siia ei 
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Siia ei saa laadimisplatsi ehitada...
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Siia ei saa reisitrammijaama rajada...
 STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Siia ei saa kaubatrammijaama rajada...
-STR_180A_ROAD_CONSTRUCTION                                      :Tee-ehitus
-STR_TRAMWAY_CONSTRUCTION                                        :Trammitee ehitamine
+STR_180A_ROAD_CONSTRUCTION                                      :Maanteede ehitamine
+STR_TRAMWAY_CONSTRUCTION                                        :Trammiteede ehitamine
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Ehita sõidutee blokk
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Ehita autotee osa kasutades Autoroad režiimi
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Ehita trammitee blokk
@@ -1780,7 +1780,7 @@ STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Ehita tr
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Ehita tunnel
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Ehita trammitunnel
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Lülita ühesuunalised teed sisse/välja
-STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tee-ehituse ja -lammutamise vahetamine
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Lülitu maanteede ehitamise ja lammutamise vahel
 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Lülitu trammitee ehitamise ja lammutamise vahel
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vali depoole suund
 STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Vali trammidepoo suund
@@ -2976,7 +2976,7 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Mootors�
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali, millist tüüpi laadungit veovahend veab
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Sadamaehitus
+STR_9800_DOCK_CONSTRUCTION                                      :Sadamate ehitamine
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Sadama ehitus
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Siia ei saa sadamat ehitada
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Laevaangaar
@@ -3079,7 +3079,7 @@ STR_A019_CAPACITY                                               :{BLACK}Kandevõ
 STR_A01A_CAPACITY                                               :{BLACK}Kandevõime: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lennuk peab olema peatatud angaari sees
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ei saa lennukit müüa...
-STR_A01D_AIRPORT_CONSTRUCTION                                   :Lennuvälja ehitamine
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Lennuväljade ehitamine
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Ehita lennuväli
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lennuk - info saamiseks vajuta lennukile
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Ehita uus lennuk (vajab angaariga lennujaama)
