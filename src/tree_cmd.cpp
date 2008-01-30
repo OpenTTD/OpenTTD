@@ -37,6 +37,48 @@ enum TreePlacer {
 };
 
 /**
+ * Tests if a tile can be converted to MP_TREES
+ * This is true for clear ground without farms or rocks.
+ *
+ * @param tile the tile of interest
+ * @param allow_desert Allow planting trees on CLEAR_DESERT?
+ * @return true if trees can be built.
+ */
+static inline bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
+{
+	return IsTileType(tile, MP_CLEAR) && !IsBridgeAbove(tile) &&
+	       !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
+	       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
+}
+
+/**
+ * Creates a tree tile
+ * Ground type and density is preserved.
+ *
+ * @pre the tile must be suitable for trees.
+ *
+ * @param tile where to plant the trees.
+ * @param type The type of the tree
+ * @param count the number of trees (minus 1)
+ * @param growth the growth status
+ */
+static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, uint growth)
+{
+	assert(treetype != TREE_INVALID);
+	assert(CanPlantTreesOnTile(tile, true));
+
+	TreeGround ground;
+	uint density = 3;
+	switch (GetClearGround(tile)) {
+		case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       density = GetClearDensity(tile); break;
+		case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;                                        break;
+		default:           ground = TREE_GROUND_SNOW_DESERT; density = GetClearDensity(tile); break;
+	}
+
+	MakeTree(tile, treetype, count, growth, ground, density);
+}
+
+/**
  * Get a random TreeType for the given tile based on a given seed
  *
  * This function returns a random TreeType which can be placed on the given tile.
@@ -82,16 +124,15 @@ static void PlaceTree(TileIndex tile, uint32 r)
 	TreeType tree = GetRandomTreeType(tile, GB(r, 24, 8));
 
 	if (tree != TREE_INVALID) {
-		MakeTree(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6), TREE_GROUND_GRASS, 0);
+		PlantTreesOnTile(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6));
 
-		/* above snowline? */
-		if (_opt.landscape == LT_ARCTIC && GetTileZ(tile) > GetSnowLine()) {
-			SetTreeGroundDensity(tile, TREE_GROUND_SNOW_DESERT, 3);
-			SetTreeCounter(tile, (TreeGround)GB(r, 24, 3));
-		} else {
+		/* Rerandomize ground, if not snow */
+		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) {
 			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
-			SetTreeCounter(tile, (TreeGround)GB(r, 24, 4));
 		}
+
+		/* Set the counter to a random start value */
+		SetTreeCounter(tile, (TreeGround)GB(r, 24, 4));
 	}
 }
 
@@ -115,11 +156,7 @@ static void DoPlaceMoreTrees(TileIndex tile)
 		uint dist = abs(x) + abs(y);
 		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
 
-		if (dist <= 13 &&
-				IsTileType(cur_tile, MP_CLEAR) &&
-				!IsBridgeAbove(cur_tile) &&
-				!IsClearGround(cur_tile, CLEAR_FIELDS) &&
-				!IsClearGround(cur_tile, CLEAR_ROCKS)) {
+		if (dist <= 13 && CanPlantTreesOnTile(cur_tile, true)) {
 			PlaceTree(cur_tile, r);
 		}
 	}
@@ -147,7 +184,7 @@ static void PlaceMoreTrees()
  * @param tile The base tile to add a new tree somewhere around
  * @param height The height (like the one from the tile)
  */
-void PlaceTreeAtSameHeight(TileIndex tile, uint height)
+static void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 {
 	uint i;
 
@@ -161,10 +198,7 @@ void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 		if (abs(x) + abs(y) > 16) continue;
 
 		/* Clear tile, no farm-tiles or rocks */
-		if (!IsTileType(cur_tile, MP_CLEAR) ||
-				IsClearGround(cur_tile, CLEAR_FIELDS) ||
-				IsClearGround(cur_tile, CLEAR_ROCKS))
-			continue;
+		if (!CanPlantTreesOnTile(cur_tile, true)) continue;
 
 		/* Not too much height difference */
 		if (Delta(GetTileZ(cur_tile), height) > 2) continue;
@@ -191,10 +225,7 @@ void PlaceTreesRandomly()
 
 		IncreaseGeneratingWorldProgress(GWP_TREE);
 
-		if (IsTileType(tile, MP_CLEAR) &&
-				!IsBridgeAbove(tile) &&
-				!IsClearGround(tile, CLEAR_FIELDS) &&
-				!IsClearGround(tile, CLEAR_ROCKS)) {
+		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
 			if (_patches.tree_placer != TP_IMPROVED) continue;
 
@@ -226,10 +257,7 @@ void PlaceTreesRandomly()
 
 			IncreaseGeneratingWorldProgress(GWP_TREE);
 
-			if (IsTileType(tile, MP_CLEAR) &&
-					!IsBridgeAbove(tile) &&
-					!IsClearGround(tile, CLEAR_FIELDS) &&
-					GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
+			if (GetTropicZone(tile) == TROPICZONE_RAINFOREST && CanPlantTreesOnTile(tile, false)) {
 				PlaceTree(tile, r);
 			}
 		} while (--i);
@@ -318,15 +346,21 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case MP_CLEAR:
-					if (!IsTileOwner(tile, OWNER_NONE) ||
-							IsBridgeAbove(tile)) {
+					if (IsBridgeAbove(tile)) {
 						msg = STR_2804_SITE_UNSUITABLE;
 						continue;
 					}
 
+					/* Remove fields or rocks. Note that the ground will get barrened */
 					switch (GetClearGround(tile)) {
-						case CLEAR_FIELDS: cost.AddCost(_price.clear_fields); break;
-						case CLEAR_ROCKS:  cost.AddCost(_price.clear_rocks); break;
+						case CLEAR_FIELDS:
+						case CLEAR_ROCKS: {
+							CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+							if (CmdFailed(ret)) return ret;
+							cost.AddCost(ret);
+							break;
+						}
+
 						default: break;
 					}
 
@@ -337,7 +371,6 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 					if (flags & DC_EXEC) {
 						TreeType treetype;
-						uint growth;
 
 						treetype = (TreeType)p1;
 						if (treetype == TREE_INVALID) {
@@ -345,15 +378,11 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							if (treetype == TREE_INVALID) treetype = TREE_CACTUS;
 						}
 
-						growth = _game_mode == GM_EDITOR ? 3 : 0;
-						switch (GetClearGround(tile)) {
-							case CLEAR_ROUGH:  MakeTree(tile, treetype, 0, growth, TREE_GROUND_ROUGH, 3); break;
-							case CLEAR_SNOW:
-							case CLEAR_DESERT: MakeTree(tile, treetype, 0, growth, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
-							default:           MakeTree(tile, treetype, 0, growth, TREE_GROUND_GRASS, GetClearDensity(tile)); break;
-						}
+						/* Plant full grown trees in scenario editor */
+						PlantTreesOnTile(tile, treetype, 0, _game_mode == GM_EDITOR ? 3 : 0);
 						MarkTileDirtyByTile(tile);
 
+						/* When planting rainforest-trees, set tropiczone to rainforest in editor. */
 						if (_game_mode == GM_EDITOR && IsInsideMM(treetype, TREE_RAINFOREST, TREE_CACTUS))
 							SetTropicZone(tile, TROPICZONE_RAINFOREST);
 					}
@@ -627,19 +656,14 @@ static void TileLoop_Trees(TileIndex tile)
 
 						tile += TileOffsByDir((Direction)(Random() & 7));
 
-						if (!IsTileType(tile, MP_CLEAR) || IsBridgeAbove(tile)) return;
+						/* Cacti don't spread */
+						if (!CanPlantTreesOnTile(tile, false)) return;
 
-						switch (GetClearGround(tile)) {
-							case CLEAR_GRASS:
-								if (GetClearDensity(tile) != 3) return;
-								MakeTree(tile, treetype, 0, 0, TREE_GROUND_GRASS, 3);
-								break;
+						/* Don't plant trees, if ground was freshly cleared */
+						if (GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
 
-							case CLEAR_ROUGH: MakeTree(tile, treetype, 0, 0, TREE_GROUND_ROUGH, 3); break;
-							case CLEAR_DESERT: return; // Cacti don't spread
-							case CLEAR_SNOW: MakeTree(tile, treetype, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
-							default: return;
-						}
+						PlantTreesOnTile(tile, treetype, 0, 0);
+
 						break;
 					}
 
@@ -678,17 +702,14 @@ void OnTick_Trees()
 {
 	uint32 r;
 	TileIndex tile;
-	ClearGround ct;
 	TreeType tree;
 
 	/* place a tree at a random rainforest spot */
 	if (_opt.landscape == LT_TROPIC &&
 			(r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
-			IsTileType(tile, MP_CLEAR) &&
-			!IsBridgeAbove(tile) &&
-			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH) &&
+			CanPlantTreesOnTile(tile, false) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
-		MakeTree(tile, tree, 0, 0, ct == CLEAR_ROUGH ? TREE_GROUND_ROUGH : TREE_GROUND_GRASS, GetClearDensity(tile));
+		PlantTreesOnTile(tile, tree, 0, 0);
 	}
 
 	/* byte underflow */
@@ -697,15 +718,8 @@ void OnTick_Trees()
 	/* place a tree at a random spot */
 	r = Random();
 	tile = TILE_MASK(r);
-	if (IsTileType(tile, MP_CLEAR) &&
-			!IsBridgeAbove(tile) &&
-			(ct = GetClearGround(tile), ct == CLEAR_GRASS || ct == CLEAR_ROUGH || ct == CLEAR_SNOW) &&
-			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
-		switch (ct) {
-			case CLEAR_GRASS: MakeTree(tile, tree, 0, 0, TREE_GROUND_GRASS, GetClearDensity(tile)); break;
-			case CLEAR_ROUGH: MakeTree(tile, tree, 0, 0, TREE_GROUND_ROUGH, 3); break;
-			default: MakeTree(tile, tree, 0, 0, TREE_GROUND_SNOW_DESERT, GetClearDensity(tile)); break;
-		}
+	if (CanPlantTreesOnTile(tile, false) && (tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {
+		PlantTreesOnTile(tile, tree, 0, 0);
 	}
 }
 
