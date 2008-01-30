@@ -1068,7 +1068,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoren
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisible trees: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original

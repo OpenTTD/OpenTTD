@@ -428,8 +428,8 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	StartSpriteCombine();
 
-	/* Do not draw trees when buildings are transparent and when the invisile trees patch is on */
-	if (!(_patches.invisible_trees && IsTransparencySet(TO_HOUSES))) {
+	/* Do not draw trees when the invisible trees patch and transparency tree are set */
+	if (!(IsTransparencySet(TO_TREES) && _patches.invisible_trees)) {
 		TreeListEnt te[4];
 		uint i;
 

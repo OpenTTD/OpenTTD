@@ -7,7 +7,6 @@
 #include "variables.h"
 #include "transparency.h"
 #include "sound_func.h"
-#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -38,10 +37,6 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 			for (uint i = TTW_WIDGET_SIGNS; i < TTW_WIDGET_END; i++) {
 				w->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_SIGNS)));
 			}
-
-			/* Disabling the trees button allows to make it very evident that it has no effect
-			 * upon current situation */
-			w->SetWidgetDisabledState(TTW_WIDGET_TREES, _patches.invisible_trees && IsTransparencySet(TO_HOUSES));
 
 			DrawWindowWidgets(w);
 			break;

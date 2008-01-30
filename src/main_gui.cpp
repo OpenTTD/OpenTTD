@@ -176,7 +176,7 @@ static void MenuClickSettings(int index)
 		case  9: ToggleBit(_display_opt, DO_WAYPOINTS);          break;
 		case 10: ToggleBit(_display_opt, DO_FULL_ANIMATION);     break;
 		case 11: ToggleBit(_display_opt, DO_FULL_DETAIL);        break;
-		case 12:	ToggleTransparency(TO_HOUSES);                  break;
+		case 12: ToggleTransparency(TO_HOUSES);                  break;
 		case 13: ToggleTransparency(TO_SIGNS);                   break;
 	}
 	MarkWholeScreenDirty();
