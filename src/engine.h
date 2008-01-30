@@ -42,6 +42,7 @@ struct RailVehicleInfo {
 	byte capacity;
 	CargoID cargo_type;
 	byte ai_rank;
+	byte ai_passenger_only; ///< Bit value to tell AI that this engine is for passenger use only
 	uint16 pow_wag_power;
 	byte pow_wag_weight;
 	byte visual_effect; // NOTE: this is not 100% implemented yet, at the moment it is only used as a 'fallback' value

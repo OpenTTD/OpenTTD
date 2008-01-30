@@ -154,6 +154,9 @@ static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, 
 			continue;
 		}
 
+		/* Don't choose an engine designated for passenger use for freight. */
+		if (rvi->ai_passenger_only != 0 && flag == 1) continue;
+
 		CommandCost ret = DoCommand(tile, i, 0, 0, CMD_BUILD_RAIL_VEHICLE);
 		if (CmdSucceeded(ret) && ret.GetCost() <= money && rvi->ai_rank >= best_veh_score) {
 			best_veh_score = rvi->ai_rank;

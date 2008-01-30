@@ -345,7 +345,7 @@ const EngineInfo _orig_engine_info[] = {
  * @param m engclass
  * Tractive effort coefficient by default is the same as TTDPatch, 0.30*256=76
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k, l, m) { a, b, c, {l}, d, e, f, g, h, m, i, j, k, 0, 0, 0, 0, 76, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k, l, m) { a, b, c, {l}, d, e, f, g, h, m, i, j, k, 0, 0, 0, 0, 0, 76, 0 }
 #define M RAILVEH_MULTIHEAD
 #define W RAILVEH_WAGON
 #define G RAILVEH_SINGLEHEAD

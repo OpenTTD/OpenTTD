@@ -348,10 +348,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			} break;
 
 			case 0x08: // AI passenger service
-				/** @todo Tells the AI that this engine is designed for
+				/* Tells the AI that this engine is designed for
 				 * passenger services and shouldn't be used for freight. */
-				grf_load_byte(&buf);
-				ret = true;
+				rvi->ai_passenger_only = grf_load_byte(&buf);
 				break;
 
 			case 0x09: { // Speed (1 unit is 1 kmh)
