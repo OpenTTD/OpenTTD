@@ -673,25 +673,25 @@ static RoadBits GetTownRoadBits(TileIndex tile)
  * @return true if one of the neighboring tiles at the
  *  given distance is a road tile else false
  */
-static bool IsNeighborRoadTile(TileIndex tile, DiagDirection dir, uint dist_multi)
+static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dist_multi)
 {
-	static TileIndexDiff tid_lt[3]; // lookup table for the used diff values
-	tid_lt[0] = TileOffsByDiagDir(ChangeDiagDir(dir, DIAGDIRDIFF_90RIGHT));
-	tid_lt[1] = TileOffsByDiagDir(ChangeDiagDir(dir, DIAGDIRDIFF_90LEFT));
-	tid_lt[2] = TileOffsByDiagDir(ReverseDiagDir(dir));
+	/* Lookup table for the used diff values */
+	const TileIndexDiff tid_lt[3] = {
+		TileOffsByDiagDir(ChangeDiagDir(dir, DIAGDIRDIFF_90RIGHT)),
+		TileOffsByDiagDir(ChangeDiagDir(dir, DIAGDIRDIFF_90LEFT)),
+		TileOffsByDiagDir(ReverseDiagDir(dir)),
+	};
 
 	/* We add 1 to the distance because we want to get 1 for
 	 * the min distance multiplyer and not 0.
 	 * Therefore we start at 4. The 4 is used because
-	 * there are 4 tiles per distance step to check.
-	 */
+	 * there are 4 tiles per distance step to check. */
 	dist_multi = (dist_multi + 1) * 4;
 	for (uint pos = 4; pos < dist_multi; pos++) {
 		TileIndexDiff cur = 0;
 		/* For each even value of pos add the right TileIndexDiff
 		 * for each uneven value the left TileIndexDiff
-		 * for each with 2nd bit set (2,3,6,7,..) add the reversed TileIndexDiff
-		 */
+		 * for each with 2nd bit set (2,3,6,7,..) add the reversed TileIndexDiff */
 		cur += tid_lt[(pos & 1) ? 0 : 1];
 		if (pos & 2) cur += tid_lt[2];
 
@@ -710,19 +710,15 @@ static bool IsNeighborRoadTile(TileIndex tile, DiagDirection dir, uint dist_mult
  */
 static bool IsRoadAllowedHere(TileIndex tile, DiagDirection dir)
 {
-	if (TileX(tile) < 2 || TileY(tile) < 2 || MapMaxX() <= TileX(tile) || MapMaxY() <= TileY(tile)) return false;
+	if (TileX(tile) < 2 || TileX(tile) >= MapMaxX() || TileY(tile) < 2 || TileY(tile) >= MapMaxY()) return false;
 
 	Slope cur_slope, desired_slope;
-
-	/* If this assertion fails, it might be because the world contains
-	 *  land at the edges. This is not ok. */
-	TILE_ASSERT(tile);
 
 	for (;;) {
 		/* Check if there already is a road at this point? */
 		if (GetTownRoadBits(tile) == ROAD_NONE) {
-			/* No, try to build one in the direction.
-			 * if that fails clear the land, and if that fails exit.
+			/* No, try if we are able to build a road piece there.
+			 * If that fails clear the land, and if that fails exit.
 			 * This is to make sure that we can build a road here later. */
 			if (CmdFailed(DoCommand(tile, ((dir == DIAGDIR_NW || dir == DIAGDIR_SE) ? ROAD_X : ROAD_Y), 0, DC_AUTO, CMD_BUILD_ROAD)) &&
 					CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR)))
@@ -736,10 +732,10 @@ no_slope:
 			switch (_patches.town_layout) {
 				default: NOT_REACHED();
 
-				case TL_ORIGINAL: /* Disallow the road if any neighboring tile has a road (distance: 1) */
+				case TL_ORIGINAL: // Disallow the road if any neighboring tile has a road (distance: 1)
 					return !IsNeighborRoadTile(tile, dir, 1);
 
-				case TL_BETTER_ROADS: /* Disallow the road if any neighboring tile has a road (distance: 1 and 2). */
+				case TL_BETTER_ROADS: // Disallow the road if any neighboring tile has a road (distance: 1 and 2).
 					return !IsNeighborRoadTile(tile, dir, 2);
 			}
 		}
@@ -751,8 +747,8 @@ no_slope:
 			if (Chance16(1, 8)) {
 				CommandCost res = CMD_ERROR;
 				if (!_generating_world && Chance16(1, 10)) {
-					/* Note: Do not replace " ^ 0xF" with ComplementSlope(). The slope might be steep. */
-					res = DoCommand(tile, Chance16(1, 16) ? cur_slope : cur_slope ^ 0xF, 0,
+					/* Note: Do not replace "^ SLOPE_ELEVATED" with ComplementSlope(). The slope might be steep. */
+					res = DoCommand(tile, Chance16(1, 16) ? cur_slope : cur_slope ^ SLOPE_ELEVATED, 0,
 							DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
 				}
 				if (CmdFailed(res) && Chance16(1, 3)) {
@@ -790,8 +786,8 @@ static void LevelTownLand(TileIndex tile)
 	if (tileh == SLOPE_FLAT) return;
 
 	/* First try up, then down */
-	if (!TerraformTownTile(tile, ~tileh & 0xF, 1)) {
-		TerraformTownTile(tile, tileh & 0xF, 0);
+	if (!TerraformTownTile(tile, ~tileh & SLOPE_ELEVATED, 1)) {
+		TerraformTownTile(tile, tileh & SLOPE_ELEVATED, 0);
 	}
 }
 
@@ -914,7 +910,7 @@ static bool GrowTownWithRoad(const Town *t, TileIndex tile, RoadBits rcmd)
  * @param bridge_dir The valid direction in which to grow a bridge
  * @return true if a bridge has been build else false
  */
-static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection bridge_dir)
+static bool GrowTownWithBridge(const Town *t, const TileIndex tile, const DiagDirection bridge_dir)
 {
 	assert(bridge_dir < DIAGDIR_END);
 
@@ -922,33 +918,25 @@ static bool GrowTownWithBridge(const Town *t, TileIndex tile, DiagDirection brid
 	if (slope == SLOPE_FLAT) return false; // no slope, no bridge
 
 	/* Make sure the direction is compatible with the slope.
-	 * If any of the following bits match, the slope is forbidden for
-	 *  that diagdir. This means 5 non-steep slopes, and 3 steep-slopes
-	 *  per diagdir.
-	 * 0 -> 0b1100
-	 * 1 -> 0b0110
-	 * 2 -> 0b0011
-	 * 3 -> 0b1001
-	 * 0xCC is 0b11001100, so we just shift it right with
-	 * the direction to get the forbidden slope mask. */
-	if (HASBITS(slope & 0x0F, 0xCC >> bridge_dir)) return false;
+	 * Well we check if the slope has an up bit set in the
+	 * reverse direction. */
+	if (HASBITS(slope, InclinedSlope(bridge_dir))) return false;
 
 	/* Assure that the bridge is connectable to the start side */
 	if (!(GetTownRoadBits(TileAddByDiagDir(tile, ReverseDiagDir(bridge_dir))) & DiagDirToRoadBits(bridge_dir))) return false;
 
 	/* We are in the right direction */
-	uint8 bridge_length = 0;     // This value stores the length of the possible bridge
+	uint8 bridge_length = 0;      // This value stores the length of the possible bridge
 	TileIndex bridge_tile = tile; // Used to store the other waterside
 
-	int delta = TileOffsByDiagDir(bridge_dir);
-
+	const int delta = TileOffsByDiagDir(bridge_dir);
 	do {
 		if (bridge_length++ >= 11) {
 			/* Max 11 tile long bridges */
 			return false;
 		}
 		bridge_tile += delta;
-	} while (TileX(bridge_tile) != 0 && TileY(bridge_tile) != 0 && IsWaterTile(bridge_tile) && TileX(bridge_tile) != 0);
+	} while (TileX(bridge_tile) != 0 && TileY(bridge_tile) != 0 && IsWaterTile(bridge_tile));
 
 	/* no water tiles in between? */
 	if (bridge_length == 1) return false;
