@@ -426,12 +426,11 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			Axis axis = GetRailStationAxis(tile);
 
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
-			byte tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1;
 
-			uint z;
-			Slope tileh = GetTileSlope(tile, &z);
-			bool swap = (axis == AXIS_Y && HasBit(tileh, 0) != HasBit(tileh, 2));
-			return GetTileType(tile) << 24 | z << 16 | tile_type << 8 | (tileh ^ (swap ? 5 : 0));
+			Slope tileh = GetTileSlope(tile, NULL);
+			bool swap = (axis == AXIS_Y && HasBit(tileh, SLOPE_W) != HasBit(tileh, SLOPE_E));
+
+			return GetNearbyTileInformation(tile) ^ (swap ? SLOPE_EW : 0);
 		}
 
 		case 0x68: { // Station info of nearby tiles

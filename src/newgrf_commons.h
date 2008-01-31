@@ -93,5 +93,6 @@ extern IndustryTileOverrideManager _industile_mngr;
 
 uint32 GetTerrainType(TileIndex tile);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
+uint32 GetNearbyTileInformation(TileIndex tile);
 
 #endif /* NEWGRF_COMMONS_H */

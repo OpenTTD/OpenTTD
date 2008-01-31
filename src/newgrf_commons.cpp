@@ -285,3 +285,19 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile)
 	/* Make sure we never roam outside of the map */
 	return TILE_MASK(tile + TileDiffXY(x, y));
 }
+
+/**
+ * Common part of station var 0x67 , house var 0x62, indtile var 0x60, industry var 0x62.
+ *
+ * @param tile the tile of interest.
+ * @return 0czzbbss: c = TileType; zz = TileZ; bb: 7-3 zero, 4-2 TerrainType, 1 water/shore, 0 zero; ss = TileSlope
+ */
+uint32 GetNearbyTileInformation(TileIndex tile)
+{
+	TileType tile_type = GetTileType(tile);
+
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
+	byte terrain_type = GetTerrainType(tile) << 2 | (tile_type == MP_WATER ? 1 : 0) << 1;
+	return tile_type << 24 | z << 16 | terrain_type << 8 | tileh;
+}

@@ -170,14 +170,8 @@ static uint32 GetGRFParameter(HouseID house_id, byte parameter)
 
 uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
 {
-	uint32 tile_type;
-
 	tile = GetNearbyTile(parameter, tile);
-	tile_type = GetTerrainType(tile) << 2 | (IsTileType(tile, MP_WATER) ? 1 : 0) << 1;
-
-	uint z;
-	Slope tileh = GetTileSlope(tile, &z);
-	return GetTileType(tile) << 24 | z << 16 | tile_type << 8 | tileh;
+	return GetNearbyTileInformation(tile);
 }
 
 /**
