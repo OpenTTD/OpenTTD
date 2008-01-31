@@ -727,7 +727,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmissor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define área desértica.{} Pressione e segure CTRL para removê-la
 STR_CREATE_LAKE                                                 :{BLACK}Define área com água.{} Faz um canal, a menos se CTRL for pressionado ao nível do mar, neste caso inundará ao redor
-STR_CREATE_RIVER                                                :{BLACK}Inserir rios.
+STR_CREATE_RIVER                                                :{BLACK}Criar Rios
 STR_0290_DELETE                                                 :{BLACK}Remover
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Remover esta cidade completamente
 STR_0292_SAVE_SCENARIO                                          :Salvar cenário

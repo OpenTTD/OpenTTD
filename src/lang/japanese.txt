@@ -15,6 +15,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}平地が必要です
 STR_0008_WAITING                                                :{BLACK}到着待ち：{WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}（{1:STATION}から運送途中の{0:SHORTCARGO}）
 STR_000C_ACCEPTS                                                :{BLACK}受入れ貨物：{WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}受入れ貨物：{GOLD}
 STR_000E                                                        :
@@ -724,6 +725,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}灯台�
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}送信機を建設します
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}砂漠を作成します。{}Control+クリックすると消去します
 STR_CREATE_LAKE                                                 :{BLACK}。水を作成します。{}通常の使用時に運河を建設します。Controlをクリックすると、海水位にある地域が浸水できます。
+STR_CREATE_RIVER                                                :{BLACK}川を造る
 STR_0290_DELETE                                                 :{BLACK}破壊
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}この町を完全に破壊します
 STR_0292_SAVE_SCENARIO                                          :シナリオを保存
@@ -2334,6 +2336,8 @@ STR_LIVERY_EMU                                                  :電動車
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :客車（蒸気動）
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :客車（ディーゼル動）
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :客車（電動）
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :モノレール用乗客車
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :次期浮上式電車用乗客車
 STR_LIVERY_FREIGHT_WAGON                                        :貨車
 STR_LIVERY_BUS                                                  :バス
 STR_LIVERY_TRUCK                                                :トラック
@@ -3235,6 +3239,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}再装�
 STR_PURCHASE_INFO_ALL_TYPES                                     :すべて
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD}を除いてすべて
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力：{GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 

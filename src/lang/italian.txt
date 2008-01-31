@@ -169,7 +169,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Esci
 STR_00C8_YES                                                    :{BLACK}Sì
 STR_00C9_NO                                                     :{BLACK}No
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si è sicuri di voler abbandonare la partita e tornare a {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si è sicuri di voler uscire da OpenTTD e tornare a {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -1070,7 +1070,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di una città nell'etichetta del nome: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili (con edifici trasparenti attivati): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generatore terreno: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Originale
