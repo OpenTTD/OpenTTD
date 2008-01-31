@@ -264,6 +264,8 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
 	if (IsStatue(tile)) {
+		if (flags & DC_AUTO) return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
+
 		TownID town = GetStatueTownID(tile);
 		ClrBit(GetTown(town)->statues, _current_player);
 		InvalidateWindow(WC_TOWN_AUTHORITY, town);

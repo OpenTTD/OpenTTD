@@ -1189,7 +1189,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 			/* Don't allow building over roads of other cities */
 			if (IsTileOwner(tile, OWNER_TOWN) && GetTownByTile(tile) != t) {
 				_grow_town_result = GROWTH_SUCCEED;
-			} else if (_game_mode == GM_EDITOR) {
+			} else if (IsTileOwner(tile, OWNER_NONE) && _game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				 * owner :) (happy happy happy road now) */
 				SetTileOwner(tile, OWNER_TOWN);
