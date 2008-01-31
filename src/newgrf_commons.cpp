@@ -15,6 +15,7 @@
 #include "tile_map.h"
 #include "station_map.h"
 #include "settings_type.h"
+#include "tree_map.h"
 
 /** Constructor of generic class
  * @param offset end of original data for this entity. i.e: houses = 110
@@ -295,6 +296,9 @@ TileIndex GetNearbyTile(byte parameter, TileIndex tile)
 uint32 GetNearbyTileInformation(TileIndex tile)
 {
 	TileType tile_type = GetTileType(tile);
+
+	/* Fake tile type for trees on shore */
+	if (IsTileType(tile, MP_TREES) && GetTreeGround(tile) == TREE_GROUND_SHORE) tile_type = MP_WATER;
 
 	uint z;
 	Slope tileh = GetTileSlope(tile, &z);

@@ -34,6 +34,7 @@
 #include "player_func.h"
 #include "settings_type.h"
 #include "clear_map.h"
+#include "tree_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -127,6 +128,11 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 			case MP_RAILWAY:
 				/* Shore or flooded halftile */
 				has_water |= (GetRailGroundType(neighbour) == RAIL_GROUND_WATER);
+				break;
+
+			case MP_TREES:
+				/* trees on shore */
+				has_water |= (GetTreeGround(neighbour) == TREE_GROUND_SHORE);
 				break;
 
 			default: break;
@@ -826,7 +832,7 @@ static void FloodVehicle(Vehicle *v)
 static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 {
 	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, rail with flooded halftile
-	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track
+	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track, coast with trees
 	 * FLOOD_PASSIVE: oilrig, dock, water-industries
 	 * FLOOD_NONE:    canals, rivers, everything else
 	 */
@@ -844,6 +850,9 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 				return (IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL)) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			}
 			return FLOOD_NONE;
+
+		case MP_TREES:
+			return (GetTreeGround(tile) == TREE_GROUND_SHORE ? FLOOD_DRYUP : FLOOD_NONE);
 
 		case MP_STATION:
 			if (IsSeaBuoyTile(tile)) return FLOOD_ACTIVE;
@@ -869,7 +878,8 @@ static void DoFloodTile(TileIndex target)
 
 	_current_player = OWNER_WATER;
 
-	if (GetTileSlope(target, NULL) != SLOPE_FLAT) {
+	Slope tileh = GetTileSlope(target, NULL);
+	if (tileh != SLOPE_FLAT) {
 		/* make coast.. */
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
@@ -883,8 +893,15 @@ static void DoFloodTile(TileIndex target)
 				break;
 			}
 
-			case MP_CLEAR:
 			case MP_TREES:
+				if (!IsSlopeWithOneCornerRaised(tileh)) {
+					SetTreeGroundDensity(target, TREE_GROUND_SHORE, 3);
+					MarkTileDirtyByTile(target);
+					flooded = true;
+					break;
+				}
+			/* FALL THROUGH */
+			case MP_CLEAR:
 				if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {
 					MakeShore(target);
 					MarkTileDirtyByTile(target);
@@ -940,6 +957,11 @@ static void DoDryUp(TileIndex tile)
 				default: NOT_REACHED();
 			}
 			SetRailGroundType(tile, new_ground);
+			MarkTileDirtyByTile(tile);
+			break;
+
+		case MP_TREES:
+			SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 3);
 			MarkTileDirtyByTile(tile);
 			break;
 

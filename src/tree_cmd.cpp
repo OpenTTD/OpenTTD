@@ -20,6 +20,8 @@
 #include "player_func.h"
 #include "sound_func.h"
 #include "settings_type.h"
+#include "water_map.h"
+#include "water.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -44,11 +46,18 @@ enum TreePlacer {
  * @param allow_desert Allow planting trees on CLEAR_DESERT?
  * @return true if trees can be built.
  */
-static inline bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
+static bool CanPlantTreesOnTile(TileIndex tile, bool allow_desert)
 {
-	return IsTileType(tile, MP_CLEAR) && !IsBridgeAbove(tile) &&
-	       !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
-	       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
+	switch (GetTileType(tile)) {
+		case MP_WATER:
+			return !IsBridgeAbove(tile) && IsCoast(tile) && !IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL));
+
+		case MP_CLEAR:
+			return !IsBridgeAbove(tile) && !IsClearGround(tile, CLEAR_FIELDS) && !IsClearGround(tile, CLEAR_ROCKS) &&
+			       (allow_desert || !IsClearGround(tile, CLEAR_DESERT));
+
+		default: return false;
+	}
 }
 
 /**
@@ -69,10 +78,21 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, uint
 
 	TreeGround ground;
 	uint density = 3;
-	switch (GetClearGround(tile)) {
-		case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       density = GetClearDensity(tile); break;
-		case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;                                        break;
-		default:           ground = TREE_GROUND_SNOW_DESERT; density = GetClearDensity(tile); break;
+
+	switch (GetTileType(tile)) {
+		case MP_WATER:
+			ground = TREE_GROUND_SHORE;
+			break;
+
+		case MP_CLEAR:
+			switch (GetClearGround(tile)) {
+				case CLEAR_GRASS:  ground = TREE_GROUND_GRASS;       density = GetClearDensity(tile); break;
+				case CLEAR_ROUGH:  ground = TREE_GROUND_ROUGH;                                        break;
+				default:           ground = TREE_GROUND_SNOW_DESERT; density = GetClearDensity(tile); break;
+			}
+			break;
+
+		default: NOT_REACHED();
 	}
 
 	MakeTree(tile, treetype, count, growth, ground, density);
@@ -126,8 +146,9 @@ static void PlaceTree(TileIndex tile, uint32 r)
 	if (tree != TREE_INVALID) {
 		PlantTreesOnTile(tile, tree, GB(r, 22, 2), min(GB(r, 16, 3), 6));
 
-		/* Rerandomize ground, if not snow */
-		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) {
+		/* Rerandomize ground, if neither snow nor shore */
+		TreeGround ground = GetTreeGround(tile);
+		if (ground != TREE_GROUND_SNOW_DESERT && ground != TREE_GROUND_SHORE) {
 			SetTreeGroundDensity(tile, (TreeGround)GB(r, 28, 1), 3);
 		}
 
@@ -341,27 +362,30 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 
 				case MP_WATER:
-					msg = STR_3807_CAN_T_BUILD_ON_WATER;
-					continue;
-					break;
-
+					if (!IsCoast(tile) || IsSlopeWithOneCornerRaised(GetTileSlope(tile, NULL))) {
+						msg = STR_3807_CAN_T_BUILD_ON_WATER;
+						continue;
+					}
+				/* FALL THROUGH */
 				case MP_CLEAR:
 					if (IsBridgeAbove(tile)) {
 						msg = STR_2804_SITE_UNSUITABLE;
 						continue;
 					}
 
-					/* Remove fields or rocks. Note that the ground will get barrened */
-					switch (GetClearGround(tile)) {
-						case CLEAR_FIELDS:
-						case CLEAR_ROCKS: {
-							CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
-							if (CmdFailed(ret)) return ret;
-							cost.AddCost(ret);
-							break;
-						}
+					if (IsTileType(tile, MP_CLEAR)) {
+						/* Remove fields or rocks. Note that the ground will get barrened */
+						switch (GetClearGround(tile)) {
+							case CLEAR_FIELDS:
+							case CLEAR_ROCKS: {
+								CommandCost ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+								if (CmdFailed(ret)) return ret;
+								cost.AddCost(ret);
+								break;
+							}
 
-						default: break;
+							default: break;
+						}
 					}
 
 					if (_game_mode != GM_EDITOR && IsValidPlayer(_current_player)) {
@@ -416,6 +440,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	byte z;
 
 	switch (GetTreeGround(ti->tile)) {
+		case TREE_GROUND_SHORE: DrawShoreTile(ti->tileh); break;
 		case TREE_GROUND_GRASS: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
 		case TREE_GROUND_ROUGH: DrawHillyLandTile(ti); break;
 		default: DrawGroundSprite(_tree_sprites_1[GetTreeDensity(ti->tile)] + _tileh_to_sprite[ti->tileh], PAL_NONE); break;
@@ -608,9 +633,13 @@ static void TileLoopTreesAlps(TileIndex tile)
 
 static void TileLoop_Trees(TileIndex tile)
 {
-	switch (_opt.landscape) {
-		case LT_TROPIC: TileLoopTreesDesert(tile); break;
-		case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
+	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
+		TileLoop_Water(tile);
+	} else {
+		switch (_opt.landscape) {
+			case LT_TROPIC: TileLoopTreesDesert(tile); break;
+			case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
+		}
 	}
 
 	TileLoopClearHelper(tile);
@@ -660,7 +689,7 @@ static void TileLoop_Trees(TileIndex tile)
 						if (!CanPlantTreesOnTile(tile, false)) return;
 
 						/* Don't plant trees, if ground was freshly cleared */
-						if (GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
+						if (IsTileType(tile, MP_CLEAR) && GetClearGround(tile) == CLEAR_GRASS && GetClearDensity(tile) != 3) return;
 
 						PlantTreesOnTile(tile, treetype, 0, 0);
 
@@ -681,6 +710,7 @@ static void TileLoop_Trees(TileIndex tile)
 			} else {
 				/* just one tree, change type into MP_CLEAR */
 				switch (GetTreeGround(tile)) {
+					case TREE_GROUND_SHORE: MakeShore(tile); break;
 					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
 					default: // snow or desert

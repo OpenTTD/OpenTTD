@@ -841,7 +841,7 @@ static bool IsBadFarmFieldTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_CLEAR: return IsClearGround(tile, CLEAR_FIELDS) || IsClearGround(tile, CLEAR_SNOW) || IsClearGround(tile, CLEAR_DESERT);
-		case MP_TREES: return false;
+		case MP_TREES: return (GetTreeGround(tile) == TREE_GROUND_SHORE);
 		default:       return true;
 	}
 }
@@ -850,7 +850,7 @@ static bool IsBadFarmFieldTile2(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_CLEAR: return IsClearGround(tile, CLEAR_SNOW) || IsClearGround(tile, CLEAR_DESERT);
-		case MP_TREES: return false;
+		case MP_TREES: return (GetTreeGround(tile) == TREE_GROUND_SHORE);
 		default:       return true;
 	}
 }

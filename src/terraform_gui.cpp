@@ -22,6 +22,7 @@
 #include "textbuf_gui.h"
 #include "genworld.h"
 #include "settings_type.h"
+#include "tree_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -83,8 +84,10 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 	BEGIN_TILE_LOOP(tile, size_x, size_y, TileXY(sx, sy)) {
 		switch (GetTileType(tile)) {
-			case MP_CLEAR:
 			case MP_TREES:
+				if (GetTreeGround(tile) == TREE_GROUND_SHORE) continue;
+			/* FALL THROUGH */
+			case MP_CLEAR:
 				MakeClear(tile, CLEAR_ROCKS, 3);
 				break;
 
