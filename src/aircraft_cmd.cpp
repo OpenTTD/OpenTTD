@@ -723,27 +723,27 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	}
 }
 
-void OnNewDay_Aircraft(Vehicle *v)
+void Aircraft::OnNewDay()
 {
-	if (!IsNormalAircraft(v)) return;
+	if (!IsNormalAircraft(this)) return;
 
-	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
+	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
-	CheckOrders(v);
+	CheckOrders(this);
 
-	CheckVehicleBreakdown(v);
-	AgeVehicle(v);
-	CheckIfAircraftNeedsService(v);
+	CheckVehicleBreakdown(this);
+	AgeVehicle(this);
+	CheckIfAircraftNeedsService(this);
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (this->vehstatus & VS_STOPPED) return;
 
-	CommandCost cost = CommandCost(EXPENSES_AIRCRAFT_RUN, GetVehicleProperty(v, 0x0E, AircraftVehInfo(v->engine_type)->running_cost) * _price.aircraft_running / 364);
+	CommandCost cost = CommandCost(EXPENSES_AIRCRAFT_RUN, GetVehicleProperty(this, 0x0E, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running / 364);
 
-	v->profit_this_year -= cost.GetCost() >> 8;
+	this->profit_this_year -= cost.GetCost() >> 8;
 
-	SubtractMoneyFromPlayerFract(v->owner, cost);
+	SubtractMoneyFromPlayerFract(this->owner, cost);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 

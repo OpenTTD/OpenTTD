@@ -749,12 +749,6 @@ void DisasterVehicle::Tick()
 	_disastervehicle_tick_procs[this->subtype](this);
 }
 
-
-void OnNewDay_DisasterVehicle(Vehicle *v)
-{
-	// not used
-}
-
 typedef void DisasterInitProc();
 
 

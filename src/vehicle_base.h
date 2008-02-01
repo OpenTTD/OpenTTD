@@ -426,6 +426,11 @@ public:
 	virtual void Tick() {};
 
 	/**
+	 * Calls the new day handler of the vehicle
+	 */
+	virtual void OnNewDay() {};
+
+	/**
 	 * Gets the running cost of a vehicle  that can be sent into SetDParam for string processing.
 	 * @return the vehicle's running cost
 	 */

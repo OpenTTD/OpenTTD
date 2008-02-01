@@ -3625,38 +3625,38 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
-void OnNewDay_Train(Vehicle *v)
+void Train::OnNewDay()
 {
-	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
+	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
 
-	if (IsFrontEngine(v)) {
-		CheckVehicleBreakdown(v);
-		AgeVehicle(v);
+	if (IsFrontEngine(this)) {
+		CheckVehicleBreakdown(this);
+		AgeVehicle(this);
 
-		CheckIfTrainNeedsService(v);
+		CheckIfTrainNeedsService(this);
 
-		CheckOrders(v);
+		CheckOrders(this);
 
 		/* update destination */
-		if (v->current_order.type == OT_GOTO_STATION) {
-			TileIndex tile = GetStation(v->current_order.dest)->train_tile;
-			if (tile != 0) v->dest_tile = tile;
+		if (this->current_order.type == OT_GOTO_STATION) {
+			TileIndex tile = GetStation(this->current_order.dest)->train_tile;
+			if (tile != 0) this->dest_tile = tile;
 		}
 
-		if ((v->vehstatus & VS_STOPPED) == 0) {
+		if ((this->vehstatus & VS_STOPPED) == 0) {
 			/* running costs */
-			CommandCost cost(EXPENSES_TRAIN_RUN, v->GetRunningCost() / 364);
+			CommandCost cost(EXPENSES_TRAIN_RUN, this->GetRunningCost() / 364);
 
-			v->profit_this_year -= cost.GetCost() >> 8;
+			this->profit_this_year -= cost.GetCost() >> 8;
 
-			SubtractMoneyFromPlayerFract(v->owner, cost);
+			SubtractMoneyFromPlayerFract(this->owner, cost);
 
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+			InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 		}
-	} else if (IsTrainEngine(v)) {
+	} else if (IsTrainEngine(this)) {
 		/* Also age engines that aren't front engines */
-		AgeVehicle(v);
+		AgeVehicle(this);
 	}
 }
 

@@ -170,27 +170,27 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
-void OnNewDay_Ship(Vehicle *v)
+void Ship::OnNewDay()
 {
 	CommandCost cost(EXPENSES_SHIP_RUN);
 
-	if ((++v->day_counter & 7) == 0)
-		DecreaseVehicleValue(v);
+	if ((++this->day_counter & 7) == 0)
+		DecreaseVehicleValue(this);
 
-	CheckVehicleBreakdown(v);
-	AgeVehicle(v);
-	CheckIfShipNeedsService(v);
+	CheckVehicleBreakdown(this);
+	AgeVehicle(this);
+	CheckIfShipNeedsService(this);
 
-	CheckOrders(v);
+	CheckOrders(this);
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (this->vehstatus & VS_STOPPED) return;
 
-	cost.AddCost(GetVehicleProperty(v, 0x0F, ShipVehInfo(v->engine_type)->running_cost) * _price.ship_running / 364);
-	v->profit_this_year -= cost.GetCost() >> 8;
+	cost.AddCost(GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running / 364);
+	this->profit_this_year -= cost.GetCost() >> 8;
 
-	SubtractMoneyFromPlayerFract(v->owner, cost);
+	SubtractMoneyFromPlayerFract(this->owner, cost);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	/* we need this for the profit */
 	InvalidateWindowClasses(WC_SHIPS_LIST);
 }

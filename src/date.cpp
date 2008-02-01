@@ -165,24 +165,6 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 
 /** Functions used by the IncreaseDate function */
 
-extern void OnNewDay_Train(Vehicle *v);
-extern void OnNewDay_RoadVeh(Vehicle *v);
-extern void OnNewDay_Aircraft(Vehicle *v);
-extern void OnNewDay_Ship(Vehicle *v);
-static void OnNewDay_EffectVehicle(Vehicle *v) { /* empty */ }
-extern void OnNewDay_DisasterVehicle(Vehicle *v);
-
-typedef void OnNewVehicleDayProc(Vehicle *v);
-
-static OnNewVehicleDayProc * _on_new_vehicle_day_proc[] = {
-	OnNewDay_Train,
-	OnNewDay_RoadVeh,
-	OnNewDay_Ship,
-	OnNewDay_Aircraft,
-	OnNewDay_EffectVehicle,
-	OnNewDay_DisasterVehicle,
-};
-
 extern void WaypointsDailyLoop();
 extern void ChatMessageDailyLoop();
 extern void EnginesDailyLoop();
@@ -225,7 +207,7 @@ static void RunVehicleDayProc(uint daytick)
 		if (v->IsValid()) {
 			/* Call the 32-day callback if needed */
 			CheckVehicle32Day(v);
-			_on_new_vehicle_day_proc[v->type](v);
+			v->OnNewDay();
 		}
 	}
 }

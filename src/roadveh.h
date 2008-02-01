@@ -75,6 +75,7 @@ struct RoadVehicle : public Vehicle {
 	Money GetRunningCost() const { return RoadVehInfo(this->engine_type)->running_cost * _price.roadveh_running; }
 	bool IsInDepot() const { return this->u.road.state == RVSB_IN_DEPOT; }
 	void Tick();
+	void OnNewDay();
 };
 
 byte GetRoadVehLength(const Vehicle *v);

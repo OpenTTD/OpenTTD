@@ -2004,33 +2004,33 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
-void OnNewDay_RoadVeh(Vehicle *v)
+void RoadVehicle::OnNewDay()
 {
 	CommandCost cost(EXPENSES_ROADVEH_RUN);
 
-	if (!IsRoadVehFront(v)) return;
+	if (!IsRoadVehFront(this)) return;
 
-	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
-	if (v->u.road.blocked_ctr == 0) CheckVehicleBreakdown(v);
+	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
+	if (this->u.road.blocked_ctr == 0) CheckVehicleBreakdown(this);
 
-	AgeVehicle(v);
-	CheckIfRoadVehNeedsService(v);
+	AgeVehicle(this);
+	CheckIfRoadVehNeedsService(this);
 
-	CheckOrders(v);
+	CheckOrders(this);
 
 	/* Current slot has expired */
-	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot != NULL && v->u.road.slot_age-- == 0) {
+	if (this->current_order.type == OT_GOTO_STATION && this->u.road.slot != NULL && this->u.road.slot_age-- == 0) {
 		DEBUG(ms, 3, "Slot expired for vehicle %d (index %d) at stop 0x%X",
-			v->unitnumber, v->index, v->u.road.slot->xy);
-		ClearSlot(v);
+			this->unitnumber, this->index, this->u.road.slot->xy);
+		ClearSlot(this);
 	}
 
-	if (v->vehstatus & VS_STOPPED) return;
+	if (this->vehstatus & VS_STOPPED) return;
 
 	/* update destination */
-	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
-		Station *st = GetStation(v->current_order.dest);
-		RoadStop *rs = st->GetPrimaryRoadStop(v);
+	if (this->current_order.type == OT_GOTO_STATION && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
+		Station *st = GetStation(this->current_order.dest);
+		RoadStop *rs = st->GetPrimaryRoadStop(this);
 		RoadStop *best = NULL;
 
 		if (rs != NULL) {
@@ -2040,16 +2040,16 @@ void OnNewDay_RoadVeh(Vehicle *v)
 			 * 2) we're somewhere close to the station rectangle (to make sure we do assign
 			 *    slots even if the station and its road stops are incredibly spread out)
 			 */
-			if (DistanceManhattan(v->tile, rs->xy) < 16 || st->rect.PtInExtendedRect(TileX(v->tile), TileY(v->tile), 2)) {
+			if (DistanceManhattan(this->tile, rs->xy) < 16 || st->rect.PtInExtendedRect(TileX(this->tile), TileY(this->tile), 2)) {
 				uint dist, badness;
 				uint minbadness = UINT_MAX;
 
 				DEBUG(ms, 2, "Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
-					v->unitnumber, v->index, st->index, st->xy
+					this->unitnumber, this->index, st->index, st->xy
 				);
 				/* Now we find the nearest road stop that has a free slot */
-				for (; rs != NULL; rs = rs->GetNextRoadStop(v)) {
-					dist = RoadFindPathToStop(v, rs->xy);
+				for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
+					dist = RoadFindPathToStop(this, rs->xy);
 					if (dist == UINT_MAX) {
 						DEBUG(ms, 4, " stop 0x%X is unreachable, not treating further", rs->xy);
 						continue;
@@ -2070,29 +2070,29 @@ void OnNewDay_RoadVeh(Vehicle *v)
 					best->num_vehicles++;
 					DEBUG(ms, 3, "Assigned to stop 0x%X", best->xy);
 
-					v->u.road.slot = best;
-					v->dest_tile = best->xy;
-					v->u.road.slot_age = 14;
+					this->u.road.slot = best;
+					this->dest_tile = best->xy;
+					this->u.road.slot_age = 14;
 				} else {
 					DEBUG(ms, 3, "Could not find a suitable stop");
 				}
 			} else {
 				DEBUG(ms, 5, "Distance from station too far. Postponing slotting for vehicle %d (index %d) at station %d, (0x%X)",
-						v->unitnumber, v->index, st->index, st->xy);
+						this->unitnumber, this->index, st->index, st->xy);
 			}
 		} else {
 			DEBUG(ms, 4, "No road stop for vehicle %d (index %d) at station %d (0x%X)",
-					v->unitnumber, v->index, st->index, st->xy);
+					this->unitnumber, this->index, st->index, st->xy);
 		}
 	}
 
-	cost = CommandCost(EXPENSES_ROADVEH_RUN, RoadVehInfo(v->engine_type)->running_cost * _price.roadveh_running / 364);
+	cost = CommandCost(EXPENSES_ROADVEH_RUN, RoadVehInfo(this->engine_type)->running_cost * _price.roadveh_running / 364);
 
-	v->profit_this_year -= cost.GetCost() >> 8;
+	this->profit_this_year -= cost.GetCost() >> 8;
 
-	SubtractMoneyFromPlayerFract(v->owner, cost);
+	SubtractMoneyFromPlayerFract(this->owner, cost);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
 }
 

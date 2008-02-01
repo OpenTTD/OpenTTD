@@ -41,6 +41,7 @@ struct Ship: public Vehicle {
 	Money GetRunningCost() const { return ShipVehInfo(this->engine_type)->running_cost * _price.ship_running; }
 	bool IsInDepot() const { return this->u.ship.state == 0x80; }
 	void Tick();
+	void OnNewDay();
 };
 
 #endif /* SHIP_H */

@@ -124,6 +124,7 @@ struct Aircraft : public Vehicle {
 	Money GetRunningCost() const { return AircraftVehInfo(this->engine_type)->running_cost * _price.aircraft_running; }
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	void Tick();
+	void OnNewDay();
 };
 
 #endif /* AIRCRAFT_H */
