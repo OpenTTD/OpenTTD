@@ -251,6 +251,7 @@ void AfterLoadVehicles(bool clear_te_id)
 		assert(v->first != NULL);
 
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
+			if (IsFrontEngine(v)) v->u.rail.last_speed = v->cur_speed; // update displayed train speed
 			TrainConsistChanged(v);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
 			RoadVehUpdateCache(v);
