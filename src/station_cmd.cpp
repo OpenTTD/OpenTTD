@@ -2088,7 +2088,7 @@ static void DrawTile_Station(TileInfo *ti)
 		total_offset = rti->total_offset;
 		custom_ground_offset = rti->custom_ground_offset;
 	} else {
-		roadtypes = GetRoadTypes(ti->tile);
+		roadtypes = IsRoadStop(ti->tile) ? GetRoadTypes(ti->tile) : ROADTYPES_NONE;
 		total_offset = 0;
 		custom_ground_offset = 0;
 	}
