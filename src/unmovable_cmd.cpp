@@ -449,6 +449,19 @@ static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, Playe
 
 	if (IsOwnedLand(tile) && new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
+	} else if (IsStatueTile(tile)) {
+		TownID town = GetStatueTownID(tile);
+		Town *t = GetTown(town);
+		ClrBit(t->statues, old_player);
+		if (new_player != PLAYER_SPECTATOR && !HasBit(t->statues, new_player)) {
+			/* Transfer ownership to the new company */
+			SetBit(t->statues, new_player);
+			SetTileOwner(tile, new_player);
+		} else {
+			DoClearSquare(tile);
+		}
+
+		InvalidateWindow(WC_TOWN_AUTHORITY, town);
 	} else {
 		DoClearSquare(tile);
 	}
