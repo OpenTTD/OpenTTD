@@ -2159,9 +2159,8 @@ void PlaceObject()
 /* scrolls the viewport in a window to a given location */
 bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 {
-	Point pt;
-
-	pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(x, y));
+	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
+	Point pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(Clamp(x, 0, MapSizeX()), Clamp(y, 0, MapSizeY())));
 	WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 
 	if (WP(w, vp_d).dest_scrollpos_x == pt.x && WP(w, vp_d).dest_scrollpos_y == pt.y)
