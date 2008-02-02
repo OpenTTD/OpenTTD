@@ -212,7 +212,6 @@ void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v);
-bool IsOrderListShared(const Vehicle *v);
 void AssignOrder(Order *order, Order data);
 bool CheckForValidOrders(const Vehicle* v);
 

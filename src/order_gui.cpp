@@ -120,7 +120,7 @@ static void DrawOrdersWindow(Window *w)
 
 	v = GetVehicle(w->window_number);
 
-	shared_orders = IsOrderListShared(v);
+	shared_orders = v->IsOrderListShared();
 
 	SetVScrollCount(w, v->num_orders + 1);
 

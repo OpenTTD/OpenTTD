@@ -461,6 +461,13 @@ public:
 	 * @return the first vehicle of the chain.
 	 */
 	inline Vehicle *First() const { return this->first; }
+
+	/**
+	 * Check if we share our orders with another vehicle.
+	 * This is done by checking the previous and next pointers in the shared chain.
+	 * @return true if there are other vehicles sharing the same order
+	 */
+	inline bool IsOrderListShared() const { return this->next_shared != NULL || this->prev_shared != NULL; };
 };
 
 /**

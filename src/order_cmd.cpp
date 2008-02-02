@@ -837,7 +837,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* make sure there are orders available */
-			delta = IsOrderListShared(dst) ? src->num_orders + 1 : src->num_orders - dst->num_orders;
+			delta = dst->IsOrderListShared() ? src->num_orders + 1 : src->num_orders - dst->num_orders;
 			if (!HasOrderPoolFree(delta))
 				return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
@@ -939,7 +939,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 	if (v->name != NULL) bak->name = strdup(v->name);
 
 	/* If we have shared orders, store it on a special way */
-	if (IsOrderListShared(v)) {
+	if (v->IsOrderListShared()) {
 		const Vehicle *u = (v->next_shared) ? v->next_shared : v->prev_shared;
 
 		bak->clone = u->index;
@@ -1209,7 +1209,7 @@ void DeleteVehicleOrders(Vehicle *v)
 
 	/* If we have a shared order-list, don't delete the list, but just
 	    remove our pointer */
-	if (IsOrderListShared(v)) {
+	if (v->IsOrderListShared()) {
 		Vehicle *u = v;
 
 		v->orders = NULL;
@@ -1257,17 +1257,6 @@ Date GetServiceIntervalClamped(uint index)
 	return (_patches.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
-/**
- *
- * Check if we share our orders with an other vehicle
- *
- * @return Returns the vehicle who has the same order
- *
- */
-bool IsOrderListShared(const Vehicle *v)
-{
-	return v->next_shared != NULL || v->prev_shared != NULL;
-}
 
 /**
  *

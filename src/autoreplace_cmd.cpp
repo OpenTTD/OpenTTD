@@ -215,7 +215,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			DoCommand(0, (front->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 		} else {
 			// copy/clone the orders
-			DoCommand(0, (old_v->index << 16) | new_v->index, IsOrderListShared(old_v) ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
+			DoCommand(0, (old_v->index << 16) | new_v->index, old_v->IsOrderListShared() ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
 			new_v->cur_order_index = old_v->cur_order_index;
 			ChangeVehicleViewWindow(old_v, new_v);
 			new_v->profit_this_year = old_v->profit_this_year;
