@@ -1176,7 +1176,7 @@ enum {
 #define MI(tbl, sndc, snd, d, pc, ai1, ai2, ai3, ai4, ag1, ag2, ag3, ag4, col, \
            c1, c2, c3, proc, p1, r1, p2, r2, m, a1, im1, a2, im2, a3, im3, pr, clim, bev, in, intx, s1, s2, s3) \
 	 {tbl, lengthof(tbl), min(255, d), 0, d, pc, {c1, c2, c3}, proc, {p1, p2}, {r1, r2}, m,            \
-	 {a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, GRFMappedStringID(in, 0), GRFMappedStringID(intx, 0), GRFMappedStringID(s1, 0), GRFMappedStringID(s2, 0), GRFMappedStringID(s3, 0), {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
+	 {a1, a2, a3}, {{im1, 0}, {im2, 0}, {im3, 0}}, pr, clim, bev, col, GRFMappedStringID(in, 0), GRFMappedStringID(intx, 0), GRFMappedStringID(s1, 0), GRFMappedStringID(s2, 0), GRFMappedStringID(s3, 0), GRFMappedStringID(STR_UNDEFINED, 0), {ai1, ai2, ai3, ai4}, {ag1, ag2, ag3, ag4}, \
 	 sndc, snd, 0, 0, true, {INVALID_INDUSTRYTYPE, 0, NULL, NULL, INVALID_INDUSTRYTYPE}}
 	/* Format:
 	   tile table                              count and sounds table

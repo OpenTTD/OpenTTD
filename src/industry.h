@@ -179,6 +179,7 @@ struct IndustrySpec {
 	GRFMappedStringID closure_text;       ///< Message appearing when the industry closes
 	GRFMappedStringID production_up_text; ///< Message appearing when the industry's production is increasing
 	GRFMappedStringID production_down_text; ///< Message appearing when the industry's production is decreasing
+	GRFMappedStringID station_name;       ///< Default name for nearby station
 	byte appear_ingame[NUM_LANDSCAPE];    ///< Probability of appearance in game
 	byte appear_creation[NUM_LANDSCAPE];  ///< Probability of appearance during map creation
 	uint8 number_of_sounds;               ///< Number of sounds available in the sounds array

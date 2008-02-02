@@ -2126,6 +2126,10 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				indsp->removal_cost_multiplier = grf_load_dword(&buf);
 				break;
 
+			case 0x24: // name for nearby station
+				indsp->station_name = GRFMappedStringID(grf_load_dword(&buf), _cur_grffile->grfid);
+				break;
+
 			default:
 				ret = true;
 				break;
@@ -5420,6 +5424,14 @@ static void FinaliseIndustriesArray()
 					indsp->new_industry_text.MapString();
 					strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->new_industry_text);
 					if (strid != STR_UNDEFINED) indsp->new_industry_text = strid;
+
+					indsp->station_name.MapString();
+					if (indsp->station_name != STR_NULL) {
+						/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
+						 * station's name. Don't wont to loose the value, therefor, do not process. */
+						strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->station_name);
+						if (strid != STR_UNDEFINED) indsp->station_name = strid;
+					}
 
 					_industry_mngr.SetEntitySpec(indsp);
 					_loaded_newgrf_features.has_newindustries = true;
