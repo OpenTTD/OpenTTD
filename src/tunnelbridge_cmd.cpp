@@ -248,7 +248,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	/* retrieve landscape height and ensure it's on land */
 	tile_start = TileXY(x, y);
 	tile_end = TileXY(sx, sy);
-	if (IsWaterTile(tile_start) || IsRiverTile(tile_start) || IsWaterTile(tile_end) || IsRiverTile(tile_end)) {
+	if (IsWaterTile(tile_start) || IsWaterTile(tile_end)) {
 		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
 	}
 
@@ -373,7 +373,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 		switch (GetTileType(tile)) {
 			case MP_WATER:
 				if (!EnsureNoVehicleOnGround(tile)) return_cmd_error(STR_980E_SHIP_IN_THE_WAY);
-				if (!IsWater(tile) && !IsCoast(tile) && !IsRiver(tile)) goto not_valid_below;
+				if (!IsWater(tile) && !IsCoast(tile)) goto not_valid_below;
 				break;
 
 			case MP_RAILWAY:
@@ -468,7 +468,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	direction = GetInclinedSlopeDirection(start_tileh);
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL);
 
-	if (IsRiverTile(start_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+	if (IsWaterTile(start_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 	ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
@@ -522,7 +522,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	/* if the command fails from here on we want the end tile to be highlighted */
 	_build_tunnel_endtile = end_tile;
 
-	if (IsRiverTile(end_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+	if (IsWaterTile(end_tile)) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {

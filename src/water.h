@@ -11,10 +11,11 @@ bool FloodHalftile(TileIndex t);
 void ConvertGroundTilesIntoWaterTiles();
 
 void DrawShipDepotSprite(int x, int y, int image);
-void DrawCanalWater(TileIndex tile);
+void DrawCanalWater(TileIndex tile, bool draw_base);
+void DrawRiverWater(const struct TileInfo *ti, bool draw_base);
 void DrawShoreTile(Slope tileh);
 
-void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o);
-void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o);
+void MakeWaterKeepingClass(TileIndex tile, Owner o);
+void SetWaterClassDependingOnSurroundings(TileIndex t);
 
 #endif /* WATER_H */

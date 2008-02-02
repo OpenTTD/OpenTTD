@@ -794,6 +794,7 @@
      <li>m3 bits 7..4: persistent random data for newstations</li>
      <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway stations</li>
      <li>m3 bits 2..0: present road types for road stops</li>
+     <li>m3 bits 1..0: water class for buoys and water part of docks</li>
      <li>m4: custom station id; 0 means standard graphics</li>
      <li>m5: graphics index (range from 0..255 for each station type):
       <table>
@@ -906,23 +907,19 @@
    <td>
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> (for sea, rivers, and coasts normally <tt>11</tt>)</li>
+     <li>m3 bits 1..0 : Water class (sea, canal or river)
      <li>m4: Owner of the water when ship depot</li>
      <li>m4: Random data for canal or river tiles</li>
      <li>m5: tile type:
       <table>
        <tr>
         <td nowrap valign=top><tt>00</tt>&nbsp; </td>
-        <td align=left>water</td>
+        <td align=left>water, canal or river</td>
        </tr>
 
        <tr>
         <td nowrap valign=top><tt>01</tt>&nbsp; </td>
         <td align=left>coast or riverbank</td>
-       </tr>
-
-       <tr>
-        <td noswap valign=top><tt>02</tt>&nbsp; </td>
-        <td align=left>river</td>
        </tr>
 
        <tr>

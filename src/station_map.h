@@ -7,6 +7,7 @@
 
 #include "rail_map.h"
 #include "road_map.h"
+#include "water_map.h"
 #include "station.h"
 #include "rail.h"
 
@@ -155,16 +156,6 @@ static inline bool IsBuoyTile(TileIndex t)
 	return IsTileType(t, MP_STATION) && IsBuoy(t);
 }
 
-static inline bool IsCanalBuoyTile(TileIndex t)
-{
-	return IsBuoyTile(t) && !IsTileOwner(t, OWNER_WATER);
-}
-
-static inline bool IsSeaBuoyTile(TileIndex t)
-{
-	return IsBuoyTile(t) && IsTileOwner(t, OWNER_WATER);
-}
-
 static inline bool IsHangarTile(TileIndex t)
 {
 	return IsTileType(t, MP_STATION) && IsHangar(t);
@@ -287,18 +278,20 @@ static inline void MakeAirport(TileIndex t, Owner o, StationID sid, byte section
 	MakeStation(t, o, sid, STATION_AIRPORT, section);
 }
 
-static inline void MakeBuoy(TileIndex t, StationID sid)
+static inline void MakeBuoy(TileIndex t, StationID sid, WaterClass wc)
 {
 	/* Make the owner of the buoy tile the same as the current owner of the
 	 * water tile. In this way, we can reset the owner of the water to its
 	 * original state when the buoy gets removed. */
 	MakeStation(t, GetTileOwner(t), sid, STATION_BUOY, 0);
+	SetWaterClass(t, wc);
 }
 
-static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d)
+static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d, WaterClass wc)
 {
 	MakeStation(t, o, sid, STATION_DOCK, d);
 	MakeStation(t + TileOffsByDiagDir(d), o, sid, STATION_DOCK, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d));
+	SetWaterClass(t + TileOffsByDiagDir(d), wc);
 }
 
 static inline void MakeOilrig(TileIndex t, StationID sid)

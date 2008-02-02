@@ -22,7 +22,8 @@ WaterFeature _water_feature[CF_END];
  * three functions are stubs. */
 static uint32 CanalGetRandomBits(const ResolverObject *object)
 {
-	return GetWaterTileRandomBits(object->u.canal.tile);
+	/* Return random bits only for water tiles, not station tiles */
+	return IsTileType(object->u.canal.tile, MP_WATER) ? GetWaterTileRandomBits(object->u.canal.tile) : 0;
 }
 
 

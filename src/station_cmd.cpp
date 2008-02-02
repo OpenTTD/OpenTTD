@@ -1837,6 +1837,8 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
+	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+
 	/* allocate and initialize new station */
 	Station *st = new Station(tile);
 	if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
@@ -1859,7 +1861,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->build_date = _date;
 
-		MakeBuoy(tile, st->index);
+		MakeBuoy(tile, st->index, GetWaterClass(tile));
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -1917,7 +1919,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 		/* We have to set the water tile's state to the same state as before the
 		 * buoy was placed. Otherwise one could plant a buoy on a canal edge,
 		 * remove it and flood the land (if the canal edge is at level 0) */
-		MakeWaterOrCanalDependingOnOwner(tile, GetTileOwner(tile));
+		MakeWaterKeepingClass(tile, GetTileOwner(tile));
 		MarkTileDirtyByTile(tile);
 
 		UpdateStationVirtCoordDirty(st);
@@ -1951,7 +1953,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	direction = ReverseDiagDir(direction);
 
 	/* Docks cannot be placed on rapids */
-	if (IsRiverTile(tile)) return_cmd_error(STR_304B_SITE_UNSUITABLE);
+	if (IsWaterTile(tile)) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
 
@@ -1967,6 +1969,9 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (MayHaveBridgeAbove(tile_cur) && IsBridgeAbove(tile_cur)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+
+	/* Get the water class of the water tile before it is cleared.*/
+	WaterClass wc = GetWaterClass(tile_cur);
 
 	cost = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
@@ -2025,7 +2030,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->rect.BeforeAddRect(tile, _dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
 
-		MakeDock(tile, st->owner, st->index, direction);
+		MakeDock(tile, st->owner, st->index, direction, wc);
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
@@ -2050,7 +2055,7 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile1);
-		MakeWaterOrCanalDependingOnSurroundings(tile2, st->owner);
+		MakeWaterKeepingClass(tile2, st->owner);
 
 		st->rect.AfterRemoveTile(st, tile1);
 		st->rect.AfterRemoveTile(st, tile2);
@@ -2155,7 +2160,14 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
 	}
 
-	if (IsCanalBuoyTile(ti->tile)) DrawCanalWater(ti->tile);
+	if (IsBuoy(ti->tile)) {
+		/* Draw appropriate water edges */
+		switch (GetWaterClass(ti->tile)) {
+			case WATER_CLASS_SEA: break;
+			case WATER_CLASS_CANAL: DrawCanalWater(ti->tile, false); break;
+			case WATER_CLASS_RIVER: DrawRiverWater(ti, false); break;
+		}
+	}
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {

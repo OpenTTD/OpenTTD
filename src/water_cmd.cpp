@@ -101,21 +101,16 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  * @param t the tile to change.
  * @param o the owner of the new tile.
  */
-void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
+void SetWaterClassDependingOnSurroundings(TileIndex t)
 {
 	assert(GetTileSlope(t, NULL) == SLOPE_FLAT);
 
 	/* Mark tile dirty in all cases */
 	MarkTileDirtyByTile(t);
 
-	/* Non-sealevel -> canal */
-	if (TileHeight(t) != 0) {
-		MakeCanal(t, o, Random());
-		return;
-	}
-
 	bool has_water = false;
 	bool has_canal = false;
+	bool has_river = false;
 
 	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
 		TileIndex neighbour = TileAddByDiagDir(t, dir);
@@ -123,6 +118,7 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 			case MP_WATER:
 				has_water |= IsSea(neighbour) || IsCoast(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) == OWNER_WATER);
 				has_canal |= IsCanal(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) != OWNER_WATER);
+				has_river |= IsRiver(neighbour);
 				break;
 
 			case MP_RAILWAY:
@@ -138,10 +134,13 @@ void MakeWaterOrCanalDependingOnSurroundings(TileIndex t, Owner o)
 			default: break;
 		}
 	}
-	if (has_canal || !has_water) {
-		MakeCanal(t, o, Random());
+
+	if (has_river && !has_canal) {
+		SetWaterClass(t, WATER_CLASS_RIVER);
+	} else if (has_canal || !has_water) {
+		SetWaterClass(t, WATER_CLASS_CANAL);
 	} else {
-		MakeWater(t);
+		SetWaterClass(t, WATER_CLASS_SEA);
 	}
 }
 
@@ -162,11 +161,19 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	tile2 = tile + (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 
-	if (!IsWaterTile(tile) || !IsWaterTile(tile2))
+	if (!IsWaterTile(tile) || !IsWaterTile(tile2)) {
 		return_cmd_error(STR_3801_MUST_BE_BUILT_ON_WATER);
+	}
 
 	if (IsBridgeAbove(tile) || IsBridgeAbove(tile2)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
+	if (GetTileSlope(tile, NULL) != SLOPE_FLAT || GetTileSlope(tile2, NULL) != SLOPE_FLAT) {
+		/* Prevent depots on rapids */
+		return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	}
+
+	WaterClass wc1 = GetWaterClass(tile);
+	WaterClass wc2 = GetWaterClass(tile2);
 	Owner o1 = GetTileOwner(tile);
 	Owner o2 = GetTileOwner(tile2);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -181,8 +188,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (flags & DC_EXEC) {
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, o1);
-		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, o2);
+		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, wc1, o1);
+		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, wc2, o2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 		d_auto_delete.Detach();
@@ -191,12 +198,14 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_ship_depot);
 }
 
-void MakeWaterOrCanalDependingOnOwner(TileIndex tile, Owner o)
+void MakeWaterKeepingClass(TileIndex tile, Owner o)
 {
-	if (o == OWNER_WATER) {
-		MakeWater(tile);
-	} else {
-		MakeCanal(tile, o, Random());
+	assert(IsTileType(tile, MP_WATER) || (IsTileType(tile, MP_STATION) && (IsBuoy(tile) || IsDock(tile))));
+
+	switch (GetWaterClass(tile)) {
+		case WATER_CLASS_SEA:   MakeWater(tile);              break;
+		case WATER_CLASS_CANAL: MakeCanal(tile, o, Random()); break;
+		case WATER_CLASS_RIVER: MakeRiver(tile, Random());    break;
 	}
 }
 
@@ -216,8 +225,8 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
 		delete GetDepotByTile(tile2 < tile ? tile2 : tile);
 
-		MakeWaterOrCanalDependingOnOwner(tile,  GetShipDepotWaterOwner(tile));
-		MakeWaterOrCanalDependingOnOwner(tile2, GetShipDepotWaterOwner(tile2));
+		MakeWaterKeepingClass(tile,  GetShipDepotWaterOwner(tile));
+		MakeWaterKeepingClass(tile2, GetShipDepotWaterOwner(tile2));
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}
@@ -237,6 +246,8 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 
 	delta = TileOffsByDiagDir(dir);
 	/* lower tile */
+	WaterClass wc_lower = IsWaterTile(tile - delta) ? GetWaterClass(tile - delta) : WATER_CLASS_CANAL;
+
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile - delta, NULL) != SLOPE_FLAT) {
@@ -244,6 +255,8 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 	}
 
 	/* upper tile */
+	WaterClass wc_upper = IsWaterTile(tile + delta) ? GetWaterClass(tile + delta) : WATER_CLASS_CANAL;
+
 	ret = DoCommand(tile + delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	if (GetTileSlope(tile + delta, NULL) != SLOPE_FLAT) {
@@ -257,7 +270,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 	}
 
 	if (flags & DC_EXEC) {
-		MakeLock(tile, _current_player, dir);
+		MakeLock(tile, _current_player, dir, wc_lower, wc_upper);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
 		MarkTileDirtyByTile(tile + delta);
@@ -280,8 +293,10 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		DoClearSquare(tile);
-		MakeWaterOrCanalDependingOnSurroundings(tile + delta, _current_player);
-		MakeWaterOrCanalDependingOnSurroundings(tile - delta, _current_player);
+		MakeWaterKeepingClass(tile + delta, GetTileOwner(tile));
+		MakeWaterKeepingClass(tile - delta, GetTileOwner(tile));
+		MarkTileDirtyByTile(tile - delta);
+		MarkTileDirtyByTile(tile + delta);
 		MarkCanalsAndRiversAroundDirty(tile - delta);
 		MarkCanalsAndRiversAroundDirty(tile + delta);
 	}
@@ -301,7 +316,7 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	/* Disallow building of locks on river rapids */
-	if (IsRiverTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
+	if (IsWaterTile(tile)) return_cmd_error(STR_0239_SITE_UNSUITABLE);
 
 	return DoBuildShiplift(tile, dir, flags);
 }
@@ -379,7 +394,6 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
-		case WATER_TILE_RIVER:
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
 			/* Make sure it's not an edge tile. */
@@ -472,7 +486,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 			}
 			return false;
 
-		case MP_STATION:  return IsOilRig(tile) || IsDock(tile) || IsBuoy(tile);
+		case MP_STATION:  return IsOilRig(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
 		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
 		default:          return false;
 	}
@@ -518,9 +532,17 @@ static void DrawWaterEdges(SpriteID base, TileIndex tile)
 	}
 }
 
-/** draw a canal styled water tile with dikes around */
-void DrawCanalWater(TileIndex tile)
+/** Draw a plain sea water tile with no edges */
+void DrawSeaWater(TileIndex tile)
 {
+	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+}
+
+/** draw a canal styled water tile with dikes around */
+void DrawCanalWater(TileIndex tile, bool draw_base)
+{
+	if (draw_base) DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+
 	/* Test for custom graphics, else use the default */
 	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
 	if (dikes_base == 0) dikes_base = SPR_CANAL_DIKES_BASE;
@@ -566,7 +588,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	}
 }
 
-static void DrawRiverWater(const TileInfo *ti)
+void DrawRiverWater(const TileInfo *ti, bool draw_base)
 {
 	SpriteID image = SPR_FLAT_WATER_TILE;
 	SpriteID edges_base = GetCanalSprite(CF_RIVER_EDGE, ti->tile);
@@ -592,7 +614,7 @@ static void DrawRiverWater(const TileInfo *ti)
 		}
 	}
 
-	DrawGroundSprite(image, PAL_NONE);
+	if (draw_base) DrawGroundSprite(image, PAL_NONE);
 
 	/* Draw river edges if available. */
 	if (edges_base > 48) DrawWaterEdges(edges_base, ti->tile);
@@ -619,8 +641,11 @@ static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
-			DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
-			if (IsCanal(ti->tile)) DrawCanalWater(ti->tile);
+			switch (GetWaterClass(ti->tile)) {
+				case WATER_CLASS_SEA:   DrawSeaWater(ti->tile); break;
+				case WATER_CLASS_CANAL: DrawCanalWater(ti->tile, true); break;
+				case WATER_CLASS_RIVER: DrawRiverWater(ti, true); break;
+			}
 			DrawBridgeMiddle(ti);
 			break;
 
@@ -636,11 +661,6 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_DEPOT:
 			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
-			break;
-
-		case WATER_TILE_RIVER:
-			DrawRiverWater(ti);
-			DrawBridgeMiddle(ti);
 			break;
 	}
 }
@@ -680,7 +700,6 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
-		case WATER_TILE_RIVER:
 			if (!IsCanal(tile)) {
 				td->str = STR_3804_WATER;
 			} else {
@@ -842,7 +861,7 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 				Slope tileh = GetTileSlope(tile, NULL);
 				return (IsSlopeWithOneCornerRaised(tileh) ? FLOOD_ACTIVE : FLOOD_DRYUP);
 			} else {
-				return ((IsSea(tile) || (IsShipDepot(tile) && (GetShipDepotWaterOwner(tile) == OWNER_WATER))) ? FLOOD_ACTIVE : FLOOD_NONE);
+				return (GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE;
 			}
 
 		case MP_RAILWAY:
@@ -855,7 +874,7 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			return (GetTreeGround(tile) == TREE_GROUND_SHORE ? FLOOD_DRYUP : FLOOD_NONE);
 
 		case MP_STATION:
-			if (IsSeaBuoyTile(tile)) return FLOOD_ACTIVE;
+			if (IsBuoy(tile) && GetWaterClass(tile) == WATER_CLASS_SEA) return FLOOD_ACTIVE;
 			if (IsOilRig(tile) || IsDock(tile)) return FLOOD_PASSIVE;
 			return FLOOD_NONE;
 
@@ -1073,11 +1092,10 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint 
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_TILE_CLEAR: ts = TRACK_BIT_ALL; break;
+		case WATER_TILE_CLEAR: ts = (GetTileSlope(tile, NULL) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
 		case WATER_TILE_COAST: ts = (TrackBits)coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
 		case WATER_TILE_LOCK:  ts = AxisToTrackBits(DiagDirToAxis(GetLockDirection(tile))); break;
 		case WATER_TILE_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
-		case WATER_TILE_RIVER: ts = (GetTileSlope(tile, NULL) == SLOPE_FLAT) ? TRACK_BIT_ALL : TRACK_BIT_NONE; break;
 		default: return 0;
 	}
 	if (TileX(tile) == 0) {

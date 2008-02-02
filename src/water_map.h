@@ -10,7 +10,12 @@ enum WaterTileType {
 	WATER_TILE_COAST,
 	WATER_TILE_LOCK,
 	WATER_TILE_DEPOT,
-	WATER_TILE_RIVER,
+};
+
+enum WaterClass {
+	WATER_CLASS_SEA,
+	WATER_CLASS_CANAL,
+	WATER_CLASS_RIVER,
 };
 
 enum DepotPart {
@@ -32,11 +37,22 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 
 	if (_m[t].m5 == 0) return WATER_TILE_CLEAR;
 	if (_m[t].m5 == 1) return WATER_TILE_COAST;
-	if (_m[t].m5 == 2) return WATER_TILE_RIVER;
 	if (IsInsideMM(_m[t].m5, LOCK_MIDDLE, LOCK_END)) return WATER_TILE_LOCK;
 
 	assert(IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END));
 	return WATER_TILE_DEPOT;
+}
+
+static inline WaterClass GetWaterClass(TileIndex t)
+{
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION));
+	return (WaterClass)GB(_m[t].m3, 0, 2);
+}
+
+static inline void SetWaterClass(TileIndex t, WaterClass wc)
+{
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION));
+	SB(_m[t].m3, 0, 2, wc);
 }
 
 /** IsWater return true if any type of clear water like ocean, river, canal */
@@ -47,24 +63,17 @@ static inline bool IsWater(TileIndex t)
 
 static inline bool IsSea(TileIndex t)
 {
-	if (GetWaterTileType(t) != WATER_TILE_CLEAR) return false;
-	if (!IsTileOwner(t, OWNER_WATER)) return false; // 'Human' built water = canal, not sea
-	return true;
-}
-
-static inline bool IsCoast(TileIndex t)
-{
-	return GetWaterTileType(t) == WATER_TILE_COAST;
+	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_SEA;
 }
 
 static inline bool IsCanal(TileIndex t)
 {
-	return GetWaterTileType(t) == WATER_TILE_CLEAR && GetTileOwner(t) != OWNER_WATER;
+	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_CANAL;
 }
 
 static inline bool IsRiver(TileIndex t)
 {
-	return GetWaterTileType(t) == WATER_TILE_RIVER;
+	return IsWater(t) && GetWaterClass(t) == WATER_CLASS_RIVER;
 }
 
 static inline bool IsWaterTile(TileIndex t)
@@ -72,9 +81,9 @@ static inline bool IsWaterTile(TileIndex t)
 	return IsTileType(t, MP_WATER) && IsWater(t);
 }
 
-static inline bool IsRiverTile(TileIndex t)
+static inline bool IsCoast(TileIndex t)
 {
-	return IsTileType(t, MP_WATER) && IsRiver(t);
+	return GetWaterTileType(t) == WATER_TILE_COAST;
 }
 
 static inline TileIndex GetOtherShipDepotTile(TileIndex t)
@@ -124,7 +133,7 @@ static inline void MakeWater(TileIndex t)
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, OWNER_WATER);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = WATER_CLASS_SEA;
 	_m[t].m4 = 0;
 	_m[t].m5 = 0;
 }
@@ -144,9 +153,9 @@ static inline void MakeRiver(TileIndex t, uint8 random_bits)
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, OWNER_WATER);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = WATER_CLASS_RIVER;
 	_m[t].m4 = random_bits;
-	_m[t].m5 = 2;
+	_m[t].m5 = 0;
 }
 
 static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
@@ -155,38 +164,38 @@ static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = WATER_CLASS_CANAL;
 	_m[t].m4 = random_bits;
 	_m[t].m5 = 0;
 }
 
-static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, Owner original_owner)
+static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, WaterClass original_water_class, Owner original_owner)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = original_water_class;
 	_m[t].m4 = original_owner;
 	_m[t].m5 = base + a * 2;
 }
 
-static inline void MakeLockTile(TileIndex t, Owner o, byte section)
+static inline void MakeLockTile(TileIndex t, Owner o, byte section, WaterClass original_water_class)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
-	_m[t].m3 = 0;
+	_m[t].m3 = original_water_class;
 	_m[t].m4 = 0;
 	_m[t].m5 = section;
 }
 
-static inline void MakeLock(TileIndex t, Owner o, DiagDirection d)
+static inline void MakeLock(TileIndex t, Owner o, DiagDirection d, WaterClass wc_lower, WaterClass wc_upper)
 {
 	TileIndexDiff delta = TileOffsByDiagDir(d);
 
-	MakeLockTile(t, o, LOCK_MIDDLE + d);
-	MakeLockTile(t - delta, o, LOCK_LOWER + d);
-	MakeLockTile(t + delta, o, LOCK_UPPER + d);
+	MakeLockTile(t, o, LOCK_MIDDLE + d, WATER_CLASS_CANAL);
+	MakeLockTile(t - delta, o, LOCK_LOWER + d, wc_lower);
+	MakeLockTile(t + delta, o, LOCK_UPPER + d, wc_upper);
 }
 
 #endif /* WATER_MAP_H */

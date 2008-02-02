@@ -77,6 +77,7 @@
 #include "tree_map.h"
 #include "tunnelbridge_map.h"
 #include "void_map.h"
+#include "water.h"
 
 #include <stdarg.h>
 
@@ -2323,9 +2324,31 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(86)) {
-		/* Now all crossings should be in correct state */
 		for (TileIndex t = 0; t < map_size; t++) {
+			/* Now all crossings should be in correct state */
 			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t, false);
+
+			/* Move river flag and update canals to use water class */
+			if (IsTileType(t, MP_WATER)) {
+				if (_m[t].m5 == 2) {
+					MakeRiver(t, Random());
+				} else {
+					Owner o = GetTileOwner(t);
+					if (IsWater(t) && o != OWNER_WATER) {
+						MakeCanal(t, o, Random());
+					}
+				}
+			}
+		}
+
+		/* Update locks, depots, docks and buoys to have a water class based
+		 * on its neighbouring tiles. Done after river and canal updates to
+		 * ensure neighbours are correct. */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (GetTileSlope(t, NULL) != SLOPE_FLAT) continue;
+
+			if (IsTileType(t, MP_WATER) && (GetWaterTileType(t) == WATER_TILE_LOCK || IsShipDepot(t))) SetWaterClassDependingOnSurroundings(t);
+			if (IsTileType(t, MP_STATION) && (IsDock(t) || IsBuoy(t))) SetWaterClassDependingOnSurroundings(t);
 		}
 	}
 
