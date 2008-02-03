@@ -92,6 +92,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x0C: return object->callback;
 		case 0x10: return object->callback_param1;
 		case 0x11: return 0;
+		case 0x12: return _game_mode;
 		case 0x18: return object->callback_param2;
 		case 0x1A: return UINT_MAX;
 		case 0x1B: return GB(_display_opt, 0, 6);
