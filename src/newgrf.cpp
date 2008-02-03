@@ -1488,21 +1488,11 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				}
 			} break;
 
-			case 0x09: { // Cargo translation table
-				if (gvid != 0) {
-					if (i == 0) grfmsg(1, "InitChangeInfo: Cargo translation table must start at zero");
-					/* Skip data */
-					buf += 4;
-					break;
-				}
-				if (i == 0) {
-					free(_cur_grffile->cargo_list);
-					_cur_grffile->cargo_max = numinfo;
-					_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
-				}
-				CargoLabel cl = grf_load_dword(&buf);
-				_cur_grffile->cargo_list[i] = BSWAP32(cl);
-			} break;
+			case 0x09: // Cargo translation table
+				/* This is loaded during the reservation stage, so just skip it here. */
+				/* Each entry is 4 bytes. */
+				buf += 4;
+				break;
 
 			case 0x0A: { // Currency display names
 				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
@@ -2167,7 +2157,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_CANAL */        CanalChangeInfo,
 		/* GSF_BRIDGE */       BridgeChangeInfo,
 		/* GSF_TOWNHOUSE */    TownHouseChangeInfo,
-		/* GSF_GLOBALVAR */    NULL, /* Global variables are handled during reservation */
+		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
 		/* GSF_INDUSTRYTILES */IndustrytilesChangeInfo,
 		/* GSF_INDUSTRIES */   IndustriesChangeInfo,
 		/* GSF_CARGOS */       NULL, /* Cargo is handled during reservation */
@@ -2287,7 +2277,7 @@ static void ReserveChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
 
-	if (!check_length(len, 6, "InitChangeInfo")) return;
+	if (!check_length(len, 6, "ReserveChangeInfo")) return;
 	buf++;
 	uint8 feature  = grf_load_byte(&buf);
 
@@ -2307,7 +2297,23 @@ static void ReserveChangeInfo(byte *buf, int len)
 				ignoring = CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf);
 				break;
 			case GSF_GLOBALVAR:
-				ignoring = GlobalVarChangeInfo(index, numinfo, prop, &buf, bufend - buf);
+				switch (prop) {
+					case 0x09: // Cargo Translation Table
+						if (index != 0) {
+							grfmsg(1, "ReserveChangeInfo: Cargo translation table must start at zero");
+							return;
+						}
+
+						free(_cur_grffile->cargo_list);
+						_cur_grffile->cargo_max = numinfo;
+						_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+
+						for (uint i = 0; i < numinfo; i++) {
+							CargoLabel cl = grf_load_dword(&buf);
+							_cur_grffile->cargo_list[i] = BSWAP32(cl);
+						}
+						break;
+				}
 				break;
 		}
 
