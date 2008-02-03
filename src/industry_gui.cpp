@@ -57,6 +57,9 @@ static struct IndustryData {
 	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
 } _fund_gui;
 
+assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.text));
+assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.enabled));
+
 static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -79,10 +82,13 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 			WP(w, fnd_d).timer_enabled = _loaded_newgrf_features.has_newindustries;
 
 			/* Initilialize structures */
-			memset(&_fund_gui.index, 0xFF, NUM_INDUSTRYTYPES);
-			memset(&_fund_gui.text, STR_NULL, NUM_INDUSTRYTYPES);
-			memset(&_fund_gui.enabled, false, NUM_INDUSTRYTYPES);
 			_fund_gui.count = 0;
+
+			for (uint i = 0; i < lengthof(_fund_gui.index); i++) {
+				_fund_gui.index[i]   = 0xFF;
+				_fund_gui.text[i]    = STR_NULL;
+				_fund_gui.enabled[i] = false;
+			}
 
 			w->vscroll.cap = 8; // rows in grid, same in scroller
 			w->resize.step_height = 13;
