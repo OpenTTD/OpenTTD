@@ -38,29 +38,74 @@
 #include "table/strings.h"
 #include "table/bridge_land.h"
 
+
+/** Describes the data that defines each bridge in the game
+ * @param y   year of availablity
+ * @param mnl minimum length
+ * @param mxl maximum length
+ * @param p   price
+ * @param mxs maximum speed allowed
+ * @param spr sprite to use in purchase GUI
+ * @param plt palette for the sprite in purchase GUI
+ * @param dsc description of the bridge in purchase GUI
+ * @param nrl description of the rail bridge in query tool
+ * @param nrd description of the road bridge in query tool
+ */
+#define MB(y, mnl, mxl, p, mxs, spr, plt, dsc, nrl, nrd) \
+	{y, mnl, mxl, p, mxs, spr, plt, dsc, nrl, nrd, NULL, 0}
+
 const Bridge orig_bridge[] = {
 /*
-	     year of availablity
-	     |  minimum length
-	     |  |   maximum length
-	     |  |   |    price
-	     |  |   |    |    maximum speed
-	     |  |   |    |    |  sprite to use in GUI                string with description
-	     |  |   |    |    |  |                                   |                            */
-	{    0, 0, 16,  80,  32, 0xA24, PAL_NONE                  , STR_5012_WOODEN             , NULL, 0 },
-	{    0, 0,  2, 112,  48, 0xA26, PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE           , NULL, 0 },
-	{ 1930, 0,  5, 144,  64, 0xA25, PAL_NONE                  , STR_500F_GIRDER_STEEL       , NULL, 0 },
-	{    0, 2, 10, 168,  80, 0xA22, PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE, NULL, 0 },
-	{ 1930, 3, 16, 185,  96, 0xA22, PAL_NONE                  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
-	{ 1930, 3, 16, 192, 112, 0xA22, PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
-	{ 1930, 3,  7, 224, 160, 0xA23, PAL_NONE                  , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 1930, 3,  8, 232, 208, 0xA23, PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 1930, 3,  9, 248, 240, 0xA23, PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 1930, 0,  2, 240, 256, 0xA27, PAL_NONE                  , STR_500F_GIRDER_STEEL       , NULL, 0 },
-	{ 1995, 2, 16, 255, 320, 0xA28, PAL_NONE                  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
-	{ 2005, 2, 32, 380, 512, 0xA28, PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
-	{ 2010, 2, 32, 510, 608, 0xA28, PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
+	       year of availablity
+	       |  minimum length
+	       |  |   maximum length
+	       |  |   |    price
+	       |  |   |    |    maximum speed
+	       |  |   |    |    |  sprite to use in GUI
+	       |  |   |    |    |  |      palette in GUI
+	   string with description        name on rail                             name on road
+	   |                              |                                        | */
+	MB(    0, 0, 16,  80,  32, 0xA24, PAL_NONE,
+	   STR_5012_WOODEN,               STR_501F_WOODEN_RAIL_BRIDGE,             STR_5025_WOODEN_ROAD_BRIDGE),
+
+	MB(    0, 0,  2, 112,  48, 0xA26, PALETTE_TO_STRUCT_RED,
+	   STR_5013_CONCRETE,             STR_5020_CONCRETE_RAIL_BRIDGE,           STR_5026_CONCRETE_ROAD_BRIDGE),
+
+	MB( 1930, 0,  5, 144,  64, 0xA25, PAL_NONE,
+	   STR_500F_GIRDER_STEEL,         STR_501C_STEEL_GIRDER_RAIL_BRIDGE,       STR_5022_STEEL_GIRDER_ROAD_BRIDGE),
+
+	MB(    0, 2, 10, 168,  80, 0xA22, PALETTE_TO_STRUCT_CONCRETE,
+	   STR_5011_SUSPENSION_CONCRETE,  STR_501E_REINFORCED_CONCRETE_SUSPENSION, STR_5024_REINFORCED_CONCRETE_SUSPENSION),
+
+	MB( 1930, 3, 16, 185,  96, 0xA22, PAL_NONE,
+	   STR_500E_SUSPENSION_STEEL,     STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE,   STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE),
+
+	MB( 1930, 3, 16, 192, 112, 0xA22, PALETTE_TO_STRUCT_YELLOW,
+	   STR_500E_SUSPENSION_STEEL,     STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE,   STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE),
+
+	MB( 1930, 3,  7, 224, 160, 0xA23, PAL_NONE,
+	   STR_5010_CANTILEVER_STEEL,     STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE,   STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE),
+
+	MB( 1930, 3,  8, 232, 208, 0xA23, PALETTE_TO_STRUCT_BROWN,
+	   STR_5010_CANTILEVER_STEEL,     STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE,   STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE),
+
+	MB( 1930, 3,  9, 248, 240, 0xA23, PALETTE_TO_STRUCT_RED,
+	   STR_5010_CANTILEVER_STEEL,     STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE,   STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE),
+
+	MB( 1930, 0,  2, 240, 256, 0xA27, PAL_NONE,
+	   STR_500F_GIRDER_STEEL,         STR_501C_STEEL_GIRDER_RAIL_BRIDGE,       STR_5022_STEEL_GIRDER_ROAD_BRIDGE),
+
+	MB( 1995, 2, 16, 255, 320, 0xA28, PAL_NONE,
+	   STR_5014_TUBULAR_STEEL,        STR_5027_TUBULAR_RAIL_BRIDGE,            STR_5028_TUBULAR_ROAD_BRIDGE),
+
+	MB( 2005, 2, 32, 380, 512, 0xA28, PALETTE_TO_STRUCT_YELLOW,
+	   STR_5014_TUBULAR_STEEL,        STR_5027_TUBULAR_RAIL_BRIDGE,            STR_5028_TUBULAR_ROAD_BRIDGE),
+
+	MB( 2010, 2, 32, 510, 608, 0xA28, PALETTE_TO_STRUCT_GREY,
+	   STR_BRIDGE_TUBULAR_SILICON,    STR_5027_TUBULAR_RAIL_BRIDGE,            STR_5028_TUBULAR_ROAD_BRIDGE)
 };
+
+#undef MB
 
 Bridge _bridge[MAX_BRIDGES];
 
@@ -1132,45 +1177,14 @@ static void GetAcceptedCargo_TunnelBridge(TileIndex tile, AcceptedCargo ac)
 	/* not used */
 }
 
-static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = {
-	STR_501F_WOODEN_RAIL_BRIDGE,
-	STR_5020_CONCRETE_RAIL_BRIDGE,
-	STR_501C_STEEL_GIRDER_RAIL_BRIDGE,
-	STR_501E_REINFORCED_CONCRETE_SUSPENSION,
-	STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE,
-	STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE,
-	STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE,
-	STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE,
-	STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE,
-	STR_501C_STEEL_GIRDER_RAIL_BRIDGE,
-	STR_5027_TUBULAR_RAIL_BRIDGE,
-	STR_5027_TUBULAR_RAIL_BRIDGE,
-	STR_5027_TUBULAR_RAIL_BRIDGE,
-	0, 0, 0,
-
-	STR_5025_WOODEN_ROAD_BRIDGE,
-	STR_5026_CONCRETE_ROAD_BRIDGE,
-	STR_5022_STEEL_GIRDER_ROAD_BRIDGE,
-	STR_5024_REINFORCED_CONCRETE_SUSPENSION,
-	STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE,
-	STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE,
-	STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE,
-	STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE,
-	STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE,
-	STR_5022_STEEL_GIRDER_ROAD_BRIDGE,
-	STR_5028_TUBULAR_ROAD_BRIDGE,
-	STR_5028_TUBULAR_ROAD_BRIDGE,
-	STR_5028_TUBULAR_ROAD_BRIDGE,
-	0, 0, 0,
-};
-
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
 	if (IsTunnel(tile)) {
 		td->str = (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
-	} else { // IsBridge(tile)
-		td->str = _bridge_tile_str[GetTunnelBridgeTransportType(tile) << 4 | GetBridgeType(tile)];
+	} else { //so it must be a bridge
+		int brtype = GetBridgeType(tile);
+		td->str = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL ? _bridge[brtype].name_rail : _bridge[brtype].name_road;
 	}
 	td->owner = GetTileOwner(tile);
 }
