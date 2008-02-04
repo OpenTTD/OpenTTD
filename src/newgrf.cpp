@@ -2117,7 +2117,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x24: // name for nearby station
-				indsp->station_name = GRFMappedStringID(grf_load_dword(&buf), _cur_grffile->grfid);
+				indsp->station_name = GRFMappedStringID(grf_load_word(&buf), _cur_grffile->grfid);
 				break;
 
 			default:
