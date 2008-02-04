@@ -3462,9 +3462,15 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	/* We are sure the train is not entering a depot, it is detected above */
 
+	/* mask unreachable track bits if we are forbidden to do 90deg turns */
+	TrackBits bits = (TrackBits)((ts | (ts >> 8)) & TRACK_BIT_MASK);
+	if ((_patches.new_pathfinding_all || _patches.yapf.rail_use_yapf) && _patches.forbid_90_deg) {
+		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
+	}
+
 	/* no suitable trackbits at all || wrong railtype || not our track ||
 	 *   tunnel/bridge from opposite side || depot from opposite side */
-	if (GB(ts, 0, 16) == 0 || !CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner ||
+	if (bits == TRACK_BIT_NONE || !CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner ||
 			(IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(tile) != dir) ||
 			(IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == dir) ) {
 		return TrainApproachingLineEnd(v, false);
