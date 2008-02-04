@@ -81,9 +81,11 @@ static const Widget _build_vehicle_widgets[] = {
 };
 
 /* Setup widget strings to fit the different types of vehicles */
-static void SetupWindowStrings(Window *w, byte type)
+static void SetupWindowStrings(Window *w, VehicleType type)
 {
 	switch (type) {
+		default: NOT_REACHED();
+
 		case VEH_TRAIN:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_JUST_STRING;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
@@ -92,6 +94,7 @@ static void SetupWindowStrings(Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_8820_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_8845_RENAME_TRAIN_VEHICLE_TYPE;
 			break;
+
 		case VEH_ROAD:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9006_NEW_ROAD_VEHICLES;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
@@ -100,6 +103,7 @@ static void SetupWindowStrings(Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9034_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9035_RENAME_ROAD_VEHICLE_TYPE;
 			break;
+
 		case VEH_SHIP:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9808_NEW_SHIPS;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
@@ -108,6 +112,7 @@ static void SetupWindowStrings(Window *w, byte type)
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9836_RENAME;
 			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9837_RENAME_SHIP_TYPE;
 			break;
+
 		case VEH_AIRCRAFT:
 			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_A005_NEW_AIRCRAFT;
 			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
@@ -890,7 +895,7 @@ static void GenerateBuildList(Window *w)
 	EngList_Sort(&bv->eng_list, _sorter[bv->vehicle_type][bv->sort_criteria]);
 }
 
-static void DrawVehicleEngine(byte type, int x, int y, EngineID engine, SpriteID pal)
+static void DrawVehicleEngine(VehicleType type, int x, int y, EngineID engine, SpriteID pal)
 {
 	switch (type) {
 		case VEH_TRAIN:    DrawTrainEngine(   x, y, engine, pal); break;

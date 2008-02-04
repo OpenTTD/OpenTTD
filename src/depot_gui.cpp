@@ -519,9 +519,11 @@ static void ResizeDepotButtons(Window *w)
  * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
  * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the widget array
  */
-static void SetupStringsForDepotWindow(Window *w, byte type)
+static void SetupStringsForDepotWindow(Window *w, VehicleType type)
 {
 	switch (type) {
+		default: NOT_REACHED();
+
 		case VEH_TRAIN:
 			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_8800_TRAIN_DEPOT;
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;

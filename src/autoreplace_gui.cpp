@@ -80,7 +80,7 @@ void InitializeVehiclesGuiList()
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
 	Player *p = GetPlayer(_local_player);
-	byte type = GetEngine(e)->type;
+	VehicleType type = GetEngine(e)->type;
 	uint num_engines = GetGroupNumEngines(_local_player, id_g, e);
 
 	if (num_engines == 0 || p->num_engines[e] == 0) {
@@ -175,7 +175,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 {
 	EngineID e;
 	EngineID selected_engine = INVALID_ENGINE;
-	byte type = w->window_number;
+	VehicleType type = (VehicleType)w->window_number;
 	byte i = draw_left ? 0 : 1;
 
 	EngineList *list = &WP(w, replaceveh_d).list[i];

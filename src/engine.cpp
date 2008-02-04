@@ -403,22 +403,19 @@ CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-/*
- * returns true if an engine is valid, of the specified type, and buildable by
- * the given player, false otherwise
- *
- * engine = index of the engine to check
- * type   = the type the engine should be of (VEH_xxx)
- * player = index of the player
+/** Check if an engine is buildable.
+ * @param engine index of the engine to check.
+ * @param type   the type the engine should be.
+ * @param player index of the player.
+ * @return True if an engine is valid, of the specified type, and buildable by
+ *              the given player.
  */
-bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
+bool IsEngineBuildable(EngineID engine, VehicleType type, PlayerID player)
 {
-	const Engine *e;
-
 	/* check if it's an engine that is in the engine array */
 	if (!IsEngineIndex(engine)) return false;
 
-	e = GetEngine(engine);
+	const Engine *e = GetEngine(engine);
 
 	/* check if it's an engine of specified type */
 	if (e->type != type) return false;

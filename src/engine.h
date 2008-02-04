@@ -168,7 +168,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal);
 void LoadCustomEngineNames();
 void DeleteCustomEngineNames();
 
-bool IsEngineBuildable(EngineID engine, byte type, PlayerID player);
+bool IsEngineBuildable(EngineID engine, VehicleType type, PlayerID player);
 CargoID GetEngineCargoType(EngineID engine);
 
 enum {
@@ -185,14 +185,14 @@ enum {
 	ROAD_ENGINES_INDEX      = NUM_TRAIN_ENGINES,
 };
 
-static inline EngineID GetFirstEngineOfType(byte type)
+static inline EngineID GetFirstEngineOfType(VehicleType type)
 {
 	const EngineID start[] = {0, ROAD_ENGINES_INDEX, SHIP_ENGINES_INDEX, AIRCRAFT_ENGINES_INDEX};
 
 	return start[type];
 }
 
-static inline EngineID GetLastEngineOfType(byte type)
+static inline EngineID GetLastEngineOfType(VehicleType type)
 {
 	const EngineID end[] = {
 		NUM_TRAIN_ENGINES,
