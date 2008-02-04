@@ -13,7 +13,9 @@
 
 
 /**
- * Tunnel: Get the direction facing out of the tunnel
+ * Get the direction pointing to the other end.
+ *
+ * Tunnel: Get the direction facing into the tunnel
  * Bridge: Get the direction pointing onto the bridge
  * @param t The tile to analyze
  * @pre IsTileType(t, MP_TUNNELBRIDGE)

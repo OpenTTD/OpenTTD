@@ -181,15 +181,15 @@ public:
 		return next_trackdir;
 	}
 
-	static bool stCheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2)
+	static bool stCheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
 	{
 		Tpf pf1;
-		bool result1 = pf1.CheckReverseTrain(v, t1, td1, t2, td2);
+		bool result1 = pf1.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 
 #if DEBUG_YAPF_CACHE
 		Tpf pf2;
 		pf2.DisableCache(true);
-		bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2);
+		bool result2 = pf2.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
 		if (result1 != result2) {
 			DEBUG(yapf, 0, "CACHE ERROR: CheckReverseTrain() = [%s, %s]", result1 ? "T" : "F", result2 ? "T" : "F");
 		}
@@ -198,11 +198,11 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE bool CheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2)
+	FORCEINLINE bool CheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
 	{
 		// create pathfinder instance
 		// set origin and destination nodes
-		Yapf().SetOrigin(t1, td1, t2, td2, 1, false);
+		Yapf().SetOrigin(t1, td1, t2, td2, reverse_penalty, false);
 		Yapf().SetDestination(v);
 
 		// find the best path
@@ -265,18 +265,49 @@ Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 
 bool YapfCheckReverseTrain(Vehicle* v)
 {
-	// tile where the engine is
-	TileIndex tile = v->tile;
-	// tile where we have last wagon
+	/* last wagon */
 	Vehicle* last_veh = GetLastVehicleInChain(v);
-	// if we are in tunnel then give up
-	if (v->u.rail.track == 0x40 || last_veh->u.rail.track == 0x40) return false;
+
 	// get trackdirs of both ends
 	Trackdir td = GetVehicleTrackdir(v);
 	Trackdir td_rev = ReverseTrackdir(GetVehicleTrackdir(last_veh));
 
+	/* tiles where front and back are */
+	TileIndex tile = v->tile;
+	TileIndex tile_rev = last_veh->tile;
 
-	typedef bool (*PfnCheckReverseTrain)(Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir);
+	int reverse_penalty = 0;
+
+	if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
+		/* front in tunnel / on bridge */
+		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile);
+
+		if (TrackdirToExitdir(td) == dir_into_wormhole) tile = GetOtherTunnelBridgeEnd(tile);
+		/* Now 'tile' is the tunnel entry/bridge ramp the train will reach when driving forward */
+
+		/* Current position of the train in the wormhole */
+		TileIndex cur_tile = TileVirtXY(v->x_pos, v->y_pos);
+
+		/* Add distance to drive in the wormhole as penalty for the forward path, i.e. bonus for the reverse path
+		 * Note: Negative penalties are ok for the start tile. */
+		reverse_penalty -= DistanceManhattan(cur_tile, tile) * YAPF_TILE_LENGTH;
+	}
+
+	if (last_veh->u.rail.track == TRACK_BIT_WORMHOLE) {
+		/* back in tunnel / on bridge */
+		DiagDirection dir_into_wormhole = GetTunnelBridgeDirection(tile_rev);
+
+		if (TrackdirToExitdir(td_rev) == dir_into_wormhole) tile_rev = GetOtherTunnelBridgeEnd(tile_rev);
+		/* Now 'tile_rev' is the tunnel entry/bridge ramp the train will reach when reversing */
+
+		/* Current position of the last wagon in the wormhole */
+		TileIndex cur_tile = TileVirtXY(last_veh->x_pos, last_veh->y_pos);
+
+		/* Add distance to drive in the wormhole as penalty for the revere path. */
+		reverse_penalty += DistanceManhattan(cur_tile, tile_rev) * YAPF_TILE_LENGTH;
+	}
+
+	typedef bool (*PfnCheckReverseTrain)(Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int);
 	PfnCheckReverseTrain pfnCheckReverseTrain = CYapfRail1::stCheckReverseTrain;
 
 	// check if non-default YAPF type needed
@@ -284,7 +315,10 @@ bool YapfCheckReverseTrain(Vehicle* v)
 		pfnCheckReverseTrain = &CYapfRail2::stCheckReverseTrain; // Trackdir, forbid 90-deg
 	}
 
-	bool reverse = pfnCheckReverseTrain(v, tile, td, last_veh->tile, td_rev);
+	/* slightly hackish: If the pathfinders finds a path, the cost of the first node is tested to distinguish between forward- and reverse-path. */
+	if (reverse_penalty == 0) reverse_penalty = 1;
+
+	bool reverse = pfnCheckReverseTrain(v, tile, td, tile_rev, td_rev, reverse_penalty);
 
 	return reverse;
 }
