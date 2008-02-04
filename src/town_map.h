@@ -211,26 +211,6 @@ static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte sta
 }
 
 /**
- * Helper function for MakeHouseTile.
- * It is called  for each tile of a multi-tile house.
- * Parametes are the same.
- * @param t tile index
- * @param tid Town index
- * @param counter of construction step
- * @param stage of construction (used for drawing)
- * @param type of house.  Index into house specs array
- * @param random_bits required for newgrf houses
- */
-static inline void MakeTownHouse(TileIndex t, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
-{
-	BuildingFlags size = GetHouseSpecs(type)->building_flags;
-	MakeHouseTile(t, tid, counter, stage, type, random_bits);
-	if (size & BUILDING_2_TILES_Y)   MakeHouseTile(t + TileDiffXY(0, 1), tid, counter, stage, ++type, random_bits);
-	if (size & BUILDING_2_TILES_X)   MakeHouseTile(t + TileDiffXY(1, 0), tid, counter, stage, ++type, random_bits);
-	if (size & BUILDING_HAS_4_TILES) MakeHouseTile(t + TileDiffXY(1, 1), tid, counter, stage, ++type, random_bits);
-}
-
-/**
  * House Construction Scheme.
  *  Construction counter, for buildings under construction. Incremented on every
  *  periodic tile processing.

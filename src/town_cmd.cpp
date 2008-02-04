@@ -117,7 +117,6 @@ enum TownGrowthResult {
 };
 
 static bool BuildTownHouse(Town *t, TileIndex tile);
-static void DoBuildTownHouse(Town *t, TileIndex tile);
 
 static void TownDrawHouseLift(const TileInfo *ti)
 {
@@ -493,7 +492,7 @@ static void TileLoop_Town(TileIndex tile)
 		ClearTownHouse(t, tile);
 
 		/* Rebuild with another house? */
-		if (GB(r, 24, 8) >= 12) DoBuildTownHouse(t, tile);
+		if (GB(r, 24, 8) >= 12) BuildTownHouse(t, tile);
 	}
 
 	_current_player = OWNER_NONE;
@@ -1586,29 +1585,6 @@ bool GenerateTowns()
 	return true;
 }
 
-static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
-{
-	int b;
-	Slope slope;
-
-	static const Slope _masks[8] = {
-		SLOPE_NE,  SLOPE_SW,  SLOPE_NW,  SLOPE_SE,
-		SLOPE_SW,  SLOPE_NE,  SLOPE_SE,  SLOPE_NW,
-	};
-
-	slope = GetTileSlope(tile, NULL);
-	if (IsSteepSlope(slope)) return false;
-
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
-
-	b = 0;
-	if ((slope != SLOPE_FLAT && ~slope & _masks[mode])) b = ~b;
-	if ((tileh != SLOPE_FLAT && ~tileh & _masks[mode + 4])) b = ~b;
-	if (b)
-		return false;
-
-	return CmdSucceeded(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
-}
 
 /** Returns the bit corresponding to the town zone of the specified tile
  * @param t Town on which radius is to be found
@@ -1631,32 +1607,115 @@ HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile)
 	return smallest;
 }
 
-static bool CheckFree2x2Area(TileIndex tile)
+/**
+ * Clears tile and builds a house or house part.
+ * @param t tile index
+ * @param tid Town index
+ * @param counter of construction step
+ * @param stage of construction (used for drawing)
+ * @param type of house. Index into house specs array
+ * @param random_bits required for newgrf houses
+ * @pre house can be built here
+ */
+
+static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
 {
-	int i;
+	CommandCost cc = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
+	assert(CmdSucceeded(cc));
 
-	static const TileIndexDiffC _tile_add[] = {
-		{0    , 0    },
-		{0 - 0, 1 - 0},
-		{1 - 0, 0 - 1},
-		{1 - 1, 1 - 0}
-	};
+	MakeHouseTile(tile, tid, counter, stage, type, random_bits);
+}
 
-	for (i = 0; i != 4; i++) {
-		tile += ToTileIndexDiff(_tile_add[i]);
+/**
+ * Write house information into the map. For houses > 1 tile, all tiles are marked.
+ * @param t tile index
+ * @param tid Town index
+ * @param counter of construction step
+ * @param stage of construction (used for drawing)
+ * @param type of house. Index into house specs array
+ * @param random_bits required for newgrf houses
+ * @pre house can be built here
+ */
+static void MakeTownHouse(TileIndex t, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
+{
+	BuildingFlags size = GetHouseSpecs(type)->building_flags;
 
-		if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return false;
+	ClearMakeHouseTile(t, tid, counter, stage, type, random_bits);
+	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(t + TileDiffXY(0, 1), tid, counter, stage, ++type, random_bits);
+	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(t + TileDiffXY(1, 0), tid, counter, stage, ++type, random_bits);
+	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(t + TileDiffXY(1, 1), tid, counter, stage, ++type, random_bits);
+}
 
-		if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
 
-		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_FORCETEST, CMD_LANDSCAPE_CLEAR)))
-			return false;
+/**
+ * Checks if a house can be built here. Important is slope, bridge above
+ * and ability to clear the land.
+ * @param tile tile to check
+ * @param noslope are slopes (foundations) allowed?
+ * @return true iff house can be built here
+ */
+static inline bool CanBuildHouseHere(TileIndex tile, bool noslope)
+{
+	/* cannot build on these slopes... */
+	Slope slope = GetTileSlope(tile, NULL);
+	if ((noslope && slope != SLOPE_FLAT) || IsSteepSlope(slope)) return false;
+
+	/* building under a bridge? */
+	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
+
+	/* can we clear the land? */
+	return CmdSucceeded(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
+}
+
+
+/**
+ * Checks if a house can be built at this tile, must have the same max z as parameter.
+ * @param tile tile to check
+ * @param z max z of this tile so more parts of a house are at the same height (with foundation)
+ * @param noslope are slopes (foundations) allowed?
+ * @return true iff house can be built here
+ * @see CanBuildHouseHere()
+ */
+static inline bool CheckBuildHouseSameZ(TileIndex tile, uint z, bool noslope)
+{
+	if (!CanBuildHouseHere(tile, noslope)) return false;
+
+	/* if building on slopes is allowed, there will be flattening foundation (to tile max z) */
+	if (GetTileMaxZ(tile) != z) return false;
+
+	return true;
+}
+
+
+/**
+ * Checks if a house of size 2x2 can be built at this tile
+ * @param tile tile, N corner
+ * @param z maximum tile z so all tile have the same max z
+ * @param noslope are slopes (foundations) allowed?
+ * @return true iff house can be built
+ * @see CheckBuildHouseSameZ()
+ */
+static bool CheckFree2x2Area(TileIndex tile, uint z, bool noslope)
+{
+	/* we need to check this tile too because we can be at different tile now */
+	if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
+
+	for (DiagDirection d = DIAGDIR_SE; d < DIAGDIR_END; d++) {
+		tile += TileOffsByDiagDir(d);
+		if (!CheckBuildHouseSameZ(tile, z, noslope)) return false;
 	}
 
 	return true;
 }
 
-static void DoBuildTownHouse(Town *t, TileIndex tile)
+
+/**
+ * Tries to build a house at this tile
+ * @param t town the house will belong to
+ * @param tile where the house will be built
+ * @return false iff no house can be built at this tile
+ */
+static bool BuildTownHouse(Town *t, TileIndex tile)
 {
 	int i;
 	uint bitmask;
@@ -1665,6 +1724,9 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 	uint z;
 	uint oneof = 0;
 	HouseSpec *hs;
+
+	/* no house allowed at all, bail out */
+	if (!CanBuildHouseHere(tile, false)) return false;
 
 	/* Above snow? */
 	slope = GetTileSlope(tile, &z);
@@ -1701,6 +1763,8 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 				houses[num++] = (HouseID)i;
 			}
 		}
+
+		uint maxz = GetTileMaxZ(tile);
 
 		for (;;) {
 			if (_loaded_newgrf_features.has_newhouses) {
@@ -1742,27 +1806,30 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 			if (HASBITS(t->flags12 , oneof)) continue;
 
 			/* Make sure there is no slope? */
-			if (hs->building_flags & TILE_NOT_SLOPED && slope != SLOPE_FLAT) continue;
+			bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
+			if (noslope && slope != SLOPE_FLAT) continue;
 
 			if (hs->building_flags & TILE_SIZE_2x2) {
-				if (CheckFree2x2Area(tile) ||
-						CheckFree2x2Area(tile += TileDiffXY(-1,  0)) ||
-						CheckFree2x2Area(tile += TileDiffXY( 0, -1)) ||
-						CheckFree2x2Area(tile += TileDiffXY( 1,  0))) {
+				if (CheckFree2x2Area(tile, maxz, noslope) ||
+						CheckFree2x2Area(tile += TileDiffXY(-1,  0), maxz, noslope) ||
+						CheckFree2x2Area(tile += TileDiffXY( 0, -1), maxz, noslope) ||
+						CheckFree2x2Area(tile += TileDiffXY( 1,  0), maxz, noslope)) {
 					break;
 				}
+				/* return to original tile */
 				tile += TileDiffXY(0, 1);
 			} else if (hs->building_flags & TILE_SIZE_2x1) {
-				if (CheckBuildHouseMode(tile + TileDiffXY(1, 0), slope, 0)) break;
+				/* 'tile' is already checked above - CanBuildHouseHere() and slope test */
+				if (CheckBuildHouseSameZ(tile + TileDiffXY(1, 0), maxz, noslope)) break;
 
-				if (CheckBuildHouseMode(tile + TileDiffXY(-1, 0), slope, 1)) {
+				if (CheckBuildHouseSameZ(tile + TileDiffXY(-1, 0), maxz, noslope)) {
 					tile += TileDiffXY(-1, 0);
 					break;
 				}
 			} else if (hs->building_flags & TILE_SIZE_1x2) {
-				if (CheckBuildHouseMode(tile + TileDiffXY(0, 1), slope, 2)) break;
+				if (CheckBuildHouseSameZ(tile + TileDiffXY(0, 1), maxz, noslope)) break;
 
-				if (CheckBuildHouseMode(tile + TileDiffXY(0, -1), slope, 3)) {
+				if (CheckBuildHouseSameZ(tile + TileDiffXY(0, -1), maxz, noslope)) {
 					tile += TileDiffXY(0, -1);
 					break;
 				}
@@ -1795,19 +1862,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		}
 		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
 	}
-}
 
-static bool BuildTownHouse(Town *t, TileIndex tile)
-{
-	CommandCost r;
-
-	if (IsSteepSlope(GetTileSlope(tile, NULL))) return false;
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return false;
-
-	r = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
-	if (CmdFailed(r)) return false;
-
-	DoBuildTownHouse(t, tile);
 	return true;
 }
 
