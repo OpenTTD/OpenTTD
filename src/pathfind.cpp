@@ -287,7 +287,8 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 				tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
 				RememberData rd = tpf->rd;
 
-				if (TPFSetTileBit(tpf, tile, tpf->the_dir) &&
+				/* make sure we are not leaving from invalid side */
+				if (TPFSetTileBit(tpf, tile, tpf->the_dir) && CanAccessTileInDir(tile, TrackdirToExitdir(tpf->the_dir), tpf->tracktype) &&
 						!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, &tpf->rd.pft_var6) ) {
 					TPFMode1(tpf, tile, _tpf_new_direction[tpf->the_dir]);
 				}
