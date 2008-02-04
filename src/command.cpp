@@ -426,7 +426,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 	_docommand_recursive++;
 
 	/* only execute the test call if it's toplevel, or we're not execing. */
-	if (_docommand_recursive == 1 || !(flags & DC_EXEC) || (flags & DC_FORCETEST) ) {
+	if (_docommand_recursive == 1 || !(flags & DC_EXEC) ) {
 		SetTownRatingTestMode(true);
 		res = proc(tile, flags & ~DC_EXEC, p1, p2);
 		SetTownRatingTestMode(false);
