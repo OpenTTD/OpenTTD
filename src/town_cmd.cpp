@@ -1748,7 +1748,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	{
 		HouseID houses[HOUSE_MAX];
 		int num = 0;
-		uint cumulative_probs[HOUSE_MAX];
+		uint probs[HOUSE_MAX];
 		uint probability_max = 0;
 
 		/* Generate a list of all possible houses that can be built. */
@@ -1756,25 +1756,30 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			hs = GetHouseSpecs(i);
 			/* Verify that the candidate house spec matches the current tile status */
 			if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
-				if (_loaded_newgrf_features.has_newhouses) {
-					probability_max += hs->probability;
-					cumulative_probs[num] = probability_max;
-				}
+				/* Without NewHouses, all houses have probability '1' */
+				uint cur_prob = (_loaded_newgrf_features.has_newhouses ? hs->probability : 1);
+				probability_max += cur_prob;
+				probs[num] = cur_prob;
 				houses[num++] = (HouseID)i;
 			}
 		}
 
 		uint maxz = GetTileMaxZ(tile);
 
-		for (;;) {
-			if (_loaded_newgrf_features.has_newhouses) {
-				uint r = RandomRange(probability_max);
-				for (i = 0; i < num; i++) if (cumulative_probs[i] >= r) break;
-
-				house = houses[i];
-			} else {
-				house = houses[RandomRange(num)];
+		while (probability_max > 0) {
+			uint r = RandomRange(probability_max);
+			for (i = 0; i < num; i++) {
+				if (probs[i] > r) break;
+				r -= probs[i];
 			}
+
+			house = houses[i];
+			probability_max -= probs[i];
+
+			/* remove tested house from the set */
+			num--;
+			houses[i] = houses[num];
+			probs[i] = probs[num];
 
 			hs = GetHouseSpecs(house);
 
@@ -1810,60 +1815,57 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			if (noslope && slope != SLOPE_FLAT) continue;
 
 			if (hs->building_flags & TILE_SIZE_2x2) {
-				if (CheckFree2x2Area(tile, maxz, noslope) ||
-						CheckFree2x2Area(tile += TileDiffXY(-1,  0), maxz, noslope) ||
-						CheckFree2x2Area(tile += TileDiffXY( 0, -1), maxz, noslope) ||
-						CheckFree2x2Area(tile += TileDiffXY( 1,  0), maxz, noslope)) {
-					break;
+				if (!CheckFree2x2Area(tile, maxz, noslope) &&
+						!CheckFree2x2Area(tile += TileDiffXY(-1,  0), maxz, noslope) &&
+						!CheckFree2x2Area(tile += TileDiffXY( 0, -1), maxz, noslope) &&
+						!CheckFree2x2Area(tile += TileDiffXY( 1,  0), maxz, noslope)) {
+					/* return to the original tile */
+					tile += TileDiffXY(0, 1);
+					continue; /* continue the while() loop */
 				}
-				/* return to original tile */
-				tile += TileDiffXY(0, 1);
 			} else if (hs->building_flags & TILE_SIZE_2x1) {
 				/* 'tile' is already checked above - CanBuildHouseHere() and slope test */
-				if (CheckBuildHouseSameZ(tile + TileDiffXY(1, 0), maxz, noslope)) break;
-
-				if (CheckBuildHouseSameZ(tile + TileDiffXY(-1, 0), maxz, noslope)) {
+				if (!CheckBuildHouseSameZ(tile + TileDiffXY(1, 0), maxz, noslope)) {
+					if (!CheckBuildHouseSameZ(tile + TileDiffXY(-1, 0), maxz, noslope)) continue;
 					tile += TileDiffXY(-1, 0);
-					break;
 				}
 			} else if (hs->building_flags & TILE_SIZE_1x2) {
-				if (CheckBuildHouseSameZ(tile + TileDiffXY(0, 1), maxz, noslope)) break;
-
-				if (CheckBuildHouseSameZ(tile + TileDiffXY(0, -1), maxz, noslope)) {
+				if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, 1), maxz, noslope)) {
+					if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, -1), maxz, noslope)) continue;
 					tile += TileDiffXY(0, -1);
-					break;
 				}
-			} else {
-				break;
 			}
+
+			/* build the house */
+			t->num_houses++;
+			IncreaseBuildingCount(t, house);
+
+			/* Special houses that there can be only one of. */
+			t->flags12 |= oneof;
+
+			{
+				byte construction_counter = 0, construction_stage = 0;
+
+				if (_generating_world) {
+					uint32 r = Random();
+
+					construction_stage = TOWN_HOUSE_COMPLETED;
+					if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
+
+					if (construction_stage == TOWN_HOUSE_COMPLETED) {
+						ChangePopulation(t, hs->population);
+					} else {
+						construction_counter = GB(r, 2, 2);
+					}
+				}
+				MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
+			}
+
+			return true;
 		}
 	}
 
-	t->num_houses++;
-	IncreaseBuildingCount(t, house);
-
-	/* Special houses that there can be only one of. */
-	t->flags12 |= oneof;
-
-	{
-		byte construction_counter = 0, construction_stage = 0;
-
-		if (_generating_world) {
-			uint32 r = Random();
-
-			construction_stage = TOWN_HOUSE_COMPLETED;
-			if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
-
-			if (construction_stage == TOWN_HOUSE_COMPLETED) {
-				ChangePopulation(t, hs->population);
-			} else {
-				construction_counter = GB(r, 2, 2);
-			}
-		}
-		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
-	}
-
-	return true;
+	return false;
 }
 
 
