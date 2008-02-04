@@ -457,18 +457,17 @@ static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
  * Finds out if a given player's vehicles are allowed to enter a given tile.
  * @param owner    The owner of the vehicle.
  * @param tile     The tile that is about to be entered.
- * @param enterdir The direction from which the vehicle wants to enter the tile.
+ * @param enterdir The direction in which the vehicle wants to enter the tile.
  * @return         true if the vehicle can enter the tile.
  * @todo           This function should be used in other places than just NPF,
  *                 maybe moved to another file too.
  */
-static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enterdir)
+static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection enterdir)
 {
 	if (IsTileType(tile, MP_RAILWAY) ||           /* Rail tile (also rail depot) */
 			IsRailwayStationTile(tile) ||               /* Rail station tile */
 			IsTileDepotType(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
-			IsStandardRoadStopTile(tile) || /* Road station tile (but not drive-through stops) */
-			IsTileDepotType(tile, TRANSPORT_WATER)) { /* Water depot tile */
+			IsStandardRoadStopTile(tile)) { /* Road station tile (but not drive-through stops) */
 		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
 	}
 
@@ -510,6 +509,138 @@ static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
 	}
 }
 
+/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
+static DiagDirection GetSingleTramBit(TileIndex tile)
+{
+	if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+		RoadBits rb = GetRoadBits(tile, ROADTYPE_TRAM);
+		switch (rb) {
+			case ROAD_NW: return DIAGDIR_NW;
+			case ROAD_SW: return DIAGDIR_SW;
+			case ROAD_SE: return DIAGDIR_SE;
+			case ROAD_NE: return DIAGDIR_NE;
+			default: break;
+		}
+	}
+	return INVALID_DIAGDIR;
+}
+
+/**
+ * Tests if a tile can be entered or left only from one side.
+ *
+ * Depots, non-drive-through roadstops, and tiles with single trambits are tested.
+ *
+ * @param tile The tile of interest.
+ * @param type The transporttype of the vehicle.
+ * @param subtype For TRANSPORT_ROAD the compatible RoadTypes of the vehicle.
+ * @return The single entry/exit-direction of the tile, or INVALID_DIAGDIR if there are more or less directions
+ */
+static DiagDirection GetTileSingleEntry(TileIndex tile, TransportType type, uint subtype)
+{
+	if (type != TRANSPORT_WATER && IsTileDepotType(tile, type)) return GetDepotDirection(tile, type);
+
+	if (type == TRANSPORT_ROAD) {
+		if (IsStandardRoadStopTile(tile)) return GetRoadStopDir(tile);
+		if (HasBit(subtype, ROADTYPE_TRAM)) return GetSingleTramBit(tile);
+	}
+
+	return INVALID_DIAGDIR;
+}
+
+/**
+ * Tests if a vehicle must reverse on a tile.
+ *
+ * @param tile The tile of interest.
+ * @param dir The direction in which the vehicle drives on a tile.
+ * @param type The transporttype of the vehicle.
+ * @param subtype For TRANSPORT_ROAD the compatible RoadTypes of the vehicle.
+ * @return true iff the vehicle must reverse on the tile.
+ */
+static inline bool ForceReverse(TileIndex tile, DiagDirection dir, TransportType type, uint subtype)
+{
+	DiagDirection single_entry = GetTileSingleEntry(tile, type, subtype);
+	return single_entry != INVALID_DIAGDIR && single_entry != dir;
+}
+
+/**
+ * Tests if a vehicle can enter a tile.
+ *
+ * @param tile The tile of interest.
+ * @param dir The direction in which the vehicle drives onto a tile.
+ * @param type The transporttype of the vehicle.
+ * @param subtype For TRANSPORT_ROAD the compatible RoadTypes of the vehicle.
+ * @param railtypes For TRANSPORT_RAIL the compatible RailTypes of the vehicle.
+ * @param owner The owner of the vehicle.
+ * @return true iff the vehicle can enter the tile.
+ */
+static bool CanEnterTile(TileIndex tile, DiagDirection dir, TransportType type, uint subtype, RailTypes railtypes, Owner owner)
+{
+	/* Check tunnel entries and bridge ramps */
+	if (IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(tile) != dir) return false;
+
+	/* Test ownership */
+	if (!CanEnterTileOwnerCheck(owner, tile, dir)) return false;
+
+	/* check correct rail type (mono, maglev, etc) */
+	if (type == TRANSPORT_RAIL) {
+		RailType rail_type = GetTileRailType(tile);
+		if (!HasBit(railtypes, rail_type)) return false;
+	}
+
+	/* Depots, standard roadstops and single tram bits can only be entered from one direction */
+	DiagDirection single_entry = GetTileSingleEntry(tile, type, subtype);
+	if (single_entry != INVALID_DIAGDIR && single_entry != ReverseDiagDir(dir)) return false;
+
+	return true;
+}
+
+/**
+ * Returns the driveable Trackdirs on a tile.
+ *
+ * One-way-roads are taken into account. Signals are not tested.
+ *
+ * @param dst_tile The tile of interest.
+ * @param src_trackdir The direction the vehicle is currently moving.
+ * @param type The transporttype of the vehicle.
+ * @param subtype For TRANSPORT_ROAD the compatible RoadTypes of the vehicle.
+ * @return The Trackdirs the vehicle can continue moving on.
+ */
+static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_trackdir, TransportType type, uint subtype)
+{
+	uint32 ts = GetTileTrackStatus(dst_tile, type, subtype);
+	TrackdirBits trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+
+	if (trackdirbits == 0 && type == TRANSPORT_ROAD && HasBit(subtype, ROADTYPE_TRAM)) {
+		/* GetTileTrackStatus() returns 0 for single tram bits.
+		 * As we cannot change it there (easily) without breaking something, change it here */
+		switch (GetSingleTramBit(dst_tile)) {
+			case DIAGDIR_NE:
+			case DIAGDIR_SW:
+				trackdirbits = TRACKDIR_BIT_X_NE | TRACKDIR_BIT_X_SW;
+				break;
+
+			case DIAGDIR_NW:
+			case DIAGDIR_SE:
+				trackdirbits = TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_Y_SE;
+				break;
+
+			default: break;
+		}
+	}
+
+	DEBUG(npf, 4, "Next node: (%d, %d) [%d], possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
+
+	/* Select only trackdirs we can reach from our current trackdir */
+	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
+
+	/* Filter out trackdirs that would make 90 deg turns for trains */
+	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
+
+	DEBUG(npf, 6, "After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
+
+	return trackdirbits;
+}
+
 
 /* Will just follow the results of GetTileTrackStatus concerning where we can
  * go and where not. Uses AyStar.user_data[NPF_TYPE] as the transport type and
@@ -519,120 +650,62 @@ static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
  * copy AyStarNode.user_data[NPF_NODE_FLAGS] from the parent */
 static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 {
+	/* We leave src_tile on track src_trackdir in direction src_exitdir */
 	Trackdir src_trackdir = (Trackdir)current->path.node.direction;
 	TileIndex src_tile = current->path.node.tile;
 	DiagDirection src_exitdir = TrackdirToExitdir(src_trackdir);
-	TileIndex dst_tile = INVALID_TILE;
-	int i;
-	uint32 ts;
-	TrackdirBits trackdirbits;
+
+	/* Information about the vehicle: TransportType (road/rail/water) and SubType (compatible rail/road types) */
 	TransportType type = (TransportType)aystar->user_data[NPF_TYPE];
 	uint subtype = aystar->user_data[NPF_SUB_TYPE];
-	bool override_dst_check = false;
+
 	/* Initialize to 0, so we can jump out (return) somewhere an have no neighbours */
 	aystar->num_neighbours = 0;
 	DEBUG(npf, 4, "Expanding: (%d, %d, %d) [%d]", TileX(src_tile), TileY(src_tile), src_trackdir, src_tile);
 
+	/* We want to determine the tile we arrive, and which choices we have there */
+	TileIndex dst_tile;
+	TrackdirBits trackdirbits;
+
 	/* Find dest tile */
 	if (IsTileType(src_tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(src_tile) == src_exitdir) {
-		/* This is a tunnel/bridge. We know this tunnel/bridge is our type,
-		 * otherwise we wouldn't have got here. It is also facing us,
-		 * so we should skip it's body */
+		/* We drive through the wormhole and arrive on the other side */
 		dst_tile = GetOtherTunnelBridgeEnd(src_tile);
-		override_dst_check = true;
-	} else if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(src_tile) || IsTileDepotType(src_tile, type))) {
-		/* This is a road station (non drive-through) or a train or road depot. We can enter and exit
-		 * those from one side only. Trackdirs don't support that (yet), so we'll
-		 * do this here. */
-
-		DiagDirection exitdir;
-		/* Find out the exit direction first */
-		if (IsRoadStopTile(src_tile)) {
-			exitdir = GetRoadStopDir(src_tile);
-		} else { // Train or road depot
-			exitdir = GetDepotDirection(src_tile, type);
-		}
-
-		/* Let's see if were headed the right way into the depot */
-		if (src_trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(exitdir))) {
-			/* We are headed inwards. We cannot go through the back of the depot.
-			 * For rail, we can now reverse. Reversing for road vehicles is never
-			 * useful, since you cannot take paths you couldn't take before
-			 * reversing (as with rail). */
-			if (type == TRANSPORT_RAIL) {
-				/* We can only reverse here, so we'll not consider this direction, but
-				 * jump ahead to the reverse direction.  It would be nicer to return
-				 * one neighbour here (the reverse trackdir of the one we are
-				 * considering now) and then considering that one to return the tracks
-				 * outside of the depot. But, because the code layout is cleaner this
-				 * way, we will just pretend we are reversed already */
-				src_trackdir = ReverseTrackdir(src_trackdir);
-				dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(exitdir));
-			} else {
-				dst_tile = INVALID_TILE; /* Road vehicle heading inwards: dead end */
-			}
-		} else {
-			dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(exitdir));
-		}
+		trackdirbits = TrackdirToTrackdirBits(src_trackdir);
+	} else if (ForceReverse(src_tile, src_exitdir, type, subtype)) {
+		/* We can only reverse on this tile */
+		dst_tile = src_tile;
+		src_trackdir = ReverseTrackdir(src_trackdir);
+		trackdirbits = TrackdirToTrackdirBits(src_trackdir);
 	} else {
-		/* This a normal tile, a bridge, a tunnel exit, etc. */
-		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(TrackdirToExitdir(src_trackdir)));
-	}
-	if (dst_tile == INVALID_TILE) {
-		/* We reached the border of the map */
-		/* TODO Nicer control flow for this */
-		return;
-	}
+		/* We leave src_tile in src_exitdir and reach dst_tile */
+		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(src_exitdir));
 
-	/* I can't enter a tunnel entry/exit tile from a tile above the tunnel. Note
-	 * that I can enter the tunnel from a tile below the tunnel entrance. This
-	 * solves the problem of vehicles wanting to drive off a tunnel entrance */
-	if (!override_dst_check && IsTileType(dst_tile, MP_TUNNELBRIDGE) &&
-			GetTunnelBridgeDirection(dst_tile) != src_exitdir) {
-		return;
-	}
+		if (dst_tile != INVALID_TILE && !CanEnterTile(dst_tile, src_exitdir, type, subtype, (RailTypes)aystar->user_data[NPF_RAILTYPES], (Owner)aystar->user_data[NPF_OWNER])) dst_tile = INVALID_TILE;
 
-	/* check correct rail type (mono, maglev, etc) */
-	if (type == TRANSPORT_RAIL) {
-		RailType dst_type = GetTileRailType(dst_tile);
-		if (!HasBit(aystar->user_data[NPF_RAILTYPES], dst_type))
-			return;
-	}
+		if (dst_tile == INVALID_TILE) {
+			/* We cannot enter the next tile. Road vehicles can reverse, others reach dead end */
+			if (type != TRANSPORT_ROAD || HasBit(subtype, ROADTYPE_TRAM)) return;
 
-	/* Check the owner of the tile */
-	if (!VehicleMayEnterTile((Owner)aystar->user_data[NPF_OWNER], dst_tile, TrackdirToExitdir(src_trackdir))) {
-		return;
-	}
-
-	/* Determine available tracks */
-	if (type != TRANSPORT_WATER && (IsStandardRoadStopTile(dst_tile) || IsTileDepotType(dst_tile, type))){
-		/* Road stations and road and train depots return 0 on GTTS, so we have to do this by hand... */
-		DiagDirection exitdir;
-		if (IsRoadStopTile(dst_tile)) {
-			exitdir = GetRoadStopDir(dst_tile);
-		} else { // Road or train depot
-			exitdir = GetDepotDirection(dst_tile, type);
+			dst_tile = src_tile;
+			src_trackdir = ReverseTrackdir(src_trackdir);
 		}
-		/* Find the trackdirs that are available for a depot or station with this
-		 * orientation. They are only "inwards", since we are reaching this tile
-		 * from some other tile. This prevents vehicles driving into depots from
-		 * the back */
-		ts = TrackdirToTrackdirBits(DiagdirToDiagTrackdir(ReverseDiagDir(exitdir)));
-	} else {
-		ts = GetTileTrackStatus(dst_tile, type, subtype);
+
+		trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);
+
+		if (trackdirbits == 0) {
+			/* We cannot enter the next tile. Road vehicles can reverse, others reach dead end */
+			if (type != TRANSPORT_ROAD || HasBit(subtype, ROADTYPE_TRAM)) return;
+
+			dst_tile = src_tile;
+			src_trackdir = ReverseTrackdir(src_trackdir);
+
+			trackdirbits = GetDriveableTrackdirBits(dst_tile, src_trackdir, type, subtype);
+		}
 	}
-	trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK); /* Filter out signal status and the unused bits */
 
-	DEBUG(npf, 4, "Next node: (%d, %d) [%d], possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), dst_tile, trackdirbits);
-	/* Select only trackdirs we can reach from our current trackdir */
-	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
-	if (_patches.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) /* Filter out trackdirs that would make 90 deg turns for trains */
-		trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
-
-	DEBUG(npf, 6, "After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
-
-	i = 0;
 	/* Enumerate possible track */
+	uint i = 0;
 	while (trackdirbits != 0) {
 		Trackdir dst_trackdir = RemoveFirstTrackdir(&trackdirbits);
 		DEBUG(npf, 5, "Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
