@@ -30,7 +30,6 @@ struct Bridge {
 	byte flags;          ///< bit 0 set: disable drawing of far pillars.
 };
 
-extern const Bridge orig_bridge[MAX_BRIDGES];
 extern Bridge _bridge[MAX_BRIDGES];
 
 Foundation GetBridgeFoundation(Slope tileh, Axis axis);
