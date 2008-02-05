@@ -1717,152 +1717,142 @@ static bool CheckFree2x2Area(TileIndex tile, uint z, bool noslope)
  */
 static bool BuildTownHouse(Town *t, TileIndex tile)
 {
-	int i;
-	uint bitmask;
-	HouseID house;
-	Slope slope;
-	uint z;
-	uint oneof = 0;
-	HouseSpec *hs;
-
 	/* no house allowed at all, bail out */
 	if (!CanBuildHouseHere(tile, false)) return false;
 
-	/* Above snow? */
-	slope = GetTileSlope(tile, &z);
+	uint z;
+	Slope slope = GetTileSlope(tile, &z);
 
 	/* Get the town zone type of the current tile, as well as the climate.
 	 * This will allow to easily compare with the specs of the new house to build */
-	{
-		HouseZonesBits rad = GetTownRadiusGroup(t, tile);
+	HouseZonesBits rad = GetTownRadiusGroup(t, tile);
 
-		int land = _opt.landscape;
-		if (land == LT_ARCTIC && z >= _opt.snow_line) land = -1;
+	/* Above snow? */
+	int land = _opt.landscape;
+	if (land == LT_ARCTIC && z >= _opt.snow_line) land = -1;
 
-		bitmask = (1 << rad) + (1 << (land + 12));
-	}
+	uint bitmask = (1 << rad) + (1 << (land + 12));
 
 	/* bits 0-4 are used
 	 * bits 11-15 are used
 	 * bits 5-10 are not used. */
-	{
-		HouseID houses[HOUSE_MAX];
-		int num = 0;
-		uint probs[HOUSE_MAX];
-		uint probability_max = 0;
+	HouseID houses[HOUSE_MAX];
+	uint num = 0;
+	uint probs[HOUSE_MAX];
+	uint probability_max = 0;
 
-		/* Generate a list of all possible houses that can be built. */
-		for (i = 0; i < HOUSE_MAX; i++) {
-			hs = GetHouseSpecs(i);
-			/* Verify that the candidate house spec matches the current tile status */
-			if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
-				/* Without NewHouses, all houses have probability '1' */
-				uint cur_prob = (_loaded_newgrf_features.has_newhouses ? hs->probability : 1);
-				probability_max += cur_prob;
-				probs[num] = cur_prob;
-				houses[num++] = (HouseID)i;
+	/* Generate a list of all possible houses that can be built. */
+	for (uint i = 0; i < HOUSE_MAX; i++) {
+		HouseSpec *hs = GetHouseSpecs(i);
+		/* Verify that the candidate house spec matches the current tile status */
+		if ((~hs->building_availability & bitmask) == 0 && hs->enabled) {
+			/* Without NewHouses, all houses have probability '1' */
+			uint cur_prob = (_loaded_newgrf_features.has_newhouses ? hs->probability : 1);
+			probability_max += cur_prob;
+			probs[num] = cur_prob;
+			houses[num++] = (HouseID)i;
+		}
+	}
+
+	uint maxz = GetTileMaxZ(tile);
+
+	while (probability_max > 0) {
+		uint r = RandomRange(probability_max);
+		uint i;
+		for (i = 0; i < num; i++) {
+			if (probs[i] > r) break;
+			r -= probs[i];
+		}
+
+		HouseID house = houses[i];
+		probability_max -= probs[i];
+
+		/* remove tested house from the set */
+		num--;
+		houses[i] = houses[num];
+		probs[i] = probs[num];
+
+		HouseSpec *hs = GetHouseSpecs(house);
+
+		if (_loaded_newgrf_features.has_newhouses) {
+			if (hs->override != 0) {
+				house = hs->override;
+				hs = GetHouseSpecs(house);
+			}
+
+			if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
+
+			if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
+				uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
+				if (callback_res != CALLBACK_FAILED && callback_res == 0) continue;
 			}
 		}
 
-		uint maxz = GetTileMaxZ(tile);
+		if (_cur_year < hs->min_date || _cur_year > hs->max_date) continue;
 
-		while (probability_max > 0) {
-			uint r = RandomRange(probability_max);
-			for (i = 0; i < num; i++) {
-				if (probs[i] > r) break;
-				r -= probs[i];
+		/* Special houses that there can be only one of. */
+		uint oneof = 0;
+
+		if (hs->building_flags & BUILDING_IS_CHURCH) {
+			SetBit(oneof, TOWN_HAS_CHURCH);
+		} else if (hs->building_flags & BUILDING_IS_STADIUM) {
+			SetBit(oneof, TOWN_HAS_STADIUM);
+		}
+
+		if (HASBITS(t->flags12 , oneof)) continue;
+
+		/* Make sure there is no slope? */
+		bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
+		if (noslope && slope != SLOPE_FLAT) continue;
+
+		if (hs->building_flags & TILE_SIZE_2x2) {
+			if (!CheckFree2x2Area(tile, maxz, noslope) &&
+					!CheckFree2x2Area(tile += TileDiffXY(-1,  0), maxz, noslope) &&
+					!CheckFree2x2Area(tile += TileDiffXY( 0, -1), maxz, noslope) &&
+					!CheckFree2x2Area(tile += TileDiffXY( 1,  0), maxz, noslope)) {
+				/* return to the original tile */
+				tile += TileDiffXY(0, 1);
+				continue; /* continue the while() loop */
 			}
-
-			house = houses[i];
-			probability_max -= probs[i];
-
-			/* remove tested house from the set */
-			num--;
-			houses[i] = houses[num];
-			probs[i] = probs[num];
-
-			hs = GetHouseSpecs(house);
-
-			if (_loaded_newgrf_features.has_newhouses) {
-				if (hs->override != 0) {
-					house = hs->override;
-					hs = GetHouseSpecs(house);
-				}
-
-				if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
-
-				if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
-					uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
-					if (callback_res != CALLBACK_FAILED && callback_res == 0) continue;
-				}
+		} else if (hs->building_flags & TILE_SIZE_2x1) {
+			/* 'tile' is already checked above - CanBuildHouseHere() and slope test */
+			if (!CheckBuildHouseSameZ(tile + TileDiffXY(1, 0), maxz, noslope)) {
+				if (!CheckBuildHouseSameZ(tile + TileDiffXY(-1, 0), maxz, noslope)) continue;
+				tile += TileDiffXY(-1, 0);
 			}
+		} else if (hs->building_flags & TILE_SIZE_1x2) {
+			if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, 1), maxz, noslope)) {
+				if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, -1), maxz, noslope)) continue;
+				tile += TileDiffXY(0, -1);
+			}
+		}
 
-			if (_cur_year < hs->min_date || _cur_year > hs->max_date) continue;
+		/* build the house */
+		t->num_houses++;
+		IncreaseBuildingCount(t, house);
 
-			/* Special houses that there can be only one of. */
-			if (hs->building_flags & BUILDING_IS_CHURCH) {
-				SetBit(oneof, TOWN_HAS_CHURCH);
-			} else if (hs->building_flags & BUILDING_IS_STADIUM) {
-				SetBit(oneof, TOWN_HAS_STADIUM);
+		/* Special houses that there can be only one of. */
+		t->flags12 |= oneof;
+
+		byte construction_counter = 0;
+		byte construction_stage = 0;
+
+		if (_generating_world) {
+			uint32 r = Random();
+
+			construction_stage = TOWN_HOUSE_COMPLETED;
+			if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
+
+			if (construction_stage == TOWN_HOUSE_COMPLETED) {
+				ChangePopulation(t, hs->population);
 			} else {
-				oneof = 0;
+				construction_counter = GB(r, 2, 2);
 			}
-
-			if (HASBITS(t->flags12 , oneof)) continue;
-
-			/* Make sure there is no slope? */
-			bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
-			if (noslope && slope != SLOPE_FLAT) continue;
-
-			if (hs->building_flags & TILE_SIZE_2x2) {
-				if (!CheckFree2x2Area(tile, maxz, noslope) &&
-						!CheckFree2x2Area(tile += TileDiffXY(-1,  0), maxz, noslope) &&
-						!CheckFree2x2Area(tile += TileDiffXY( 0, -1), maxz, noslope) &&
-						!CheckFree2x2Area(tile += TileDiffXY( 1,  0), maxz, noslope)) {
-					/* return to the original tile */
-					tile += TileDiffXY(0, 1);
-					continue; /* continue the while() loop */
-				}
-			} else if (hs->building_flags & TILE_SIZE_2x1) {
-				/* 'tile' is already checked above - CanBuildHouseHere() and slope test */
-				if (!CheckBuildHouseSameZ(tile + TileDiffXY(1, 0), maxz, noslope)) {
-					if (!CheckBuildHouseSameZ(tile + TileDiffXY(-1, 0), maxz, noslope)) continue;
-					tile += TileDiffXY(-1, 0);
-				}
-			} else if (hs->building_flags & TILE_SIZE_1x2) {
-				if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, 1), maxz, noslope)) {
-					if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, -1), maxz, noslope)) continue;
-					tile += TileDiffXY(0, -1);
-				}
-			}
-
-			/* build the house */
-			t->num_houses++;
-			IncreaseBuildingCount(t, house);
-
-			/* Special houses that there can be only one of. */
-			t->flags12 |= oneof;
-
-			{
-				byte construction_counter = 0, construction_stage = 0;
-
-				if (_generating_world) {
-					uint32 r = Random();
-
-					construction_stage = TOWN_HOUSE_COMPLETED;
-					if (Chance16(1, 7)) construction_stage = GB(r, 0, 2);
-
-					if (construction_stage == TOWN_HOUSE_COMPLETED) {
-						ChangePopulation(t, hs->population);
-					} else {
-						construction_counter = GB(r, 2, 2);
-					}
-				}
-				MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
-			}
-
-			return true;
 		}
+
+		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
+
+		return true;
 	}
 
 	return false;
