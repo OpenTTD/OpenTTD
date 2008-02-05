@@ -956,7 +956,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 	/* Clamp */
 	spd = min(spd, v->max_speed);
 	if (v->u.road.state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
-		spd = min(spd, GetBridge(GetBridgeType(v->tile))->speed * 2);
+		spd = min(spd, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
 	}
 
 	/* updates statusbar only if speed have changed to save CPU time */

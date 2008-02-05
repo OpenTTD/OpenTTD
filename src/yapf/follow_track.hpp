@@ -342,7 +342,7 @@ public:
 
 		// for now we handle only on-bridge speed limit
 		if (!IsWaterTT() && IsBridgeTile(m_old_tile)) {
-			int spd = _bridge[GetBridgeType(m_old_tile)].speed;
+			int spd = GetBridgeSpec(GetBridgeType(m_old_tile))->speed;
 			if (IsRoadTT()) spd *= 2;
 			if (max_speed > spd) max_speed = spd;
 		}

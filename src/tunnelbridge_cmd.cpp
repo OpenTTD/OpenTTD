@@ -99,7 +99,7 @@ bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 {
-	const Bridge *bridge = &_bridge[index];
+	const Bridge *bridge = GetBridgeSpec(index);
 	assert(table < 7);
 	if (bridge->sprite_table == NULL || bridge->sprite_table[table] == NULL) {
 		return _bridge_sprite_table[index][table];
@@ -107,8 +107,6 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 		return bridge->sprite_table[table];
 	}
 }
-
-static inline byte GetBridgeFlags(int index) { return _bridge[index].flags;}
 
 
 /**
@@ -155,7 +153,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 
 bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 {
-	const Bridge *b = &_bridge[bridge_type];
+	const Bridge *b = GetBridgeSpec(bridge_type);
 	uint max; // max possible length of a bridge (with patch 100)
 
 	if (bridge_type >= MAX_BRIDGES) return false;
@@ -266,7 +264,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 
 		/* Do not replace town bridges with lower speed bridges. */
 		if (!(flags & DC_QUERY_COST) && IsTileOwner(tile_start, OWNER_TOWN) &&
-				_bridge[bridge_type].speed < _bridge[GetBridgeType(tile_start)].speed) {
+				GetBridgeSpec(bridge_type)->speed < GetBridgeSpec(GetBridgeType(tile_start))->speed) {
 			Town *t = ClosestTownFromTile(tile_start, UINT_MAX);
 
 			if (t == NULL) {
@@ -416,14 +414,12 @@ not_valid_below:;
 	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	 */
 	if (!(flags & DC_QUERY_COST)) {
-		const Bridge *b = &_bridge[bridge_type];
-
 		bridge_len += 2; // begin and end tiles/ramps
 
 		if (IsValidPlayer(_current_player) && !_is_old_ai_player)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
-		cost.AddCost((int64)bridge_len * _price.build_bridge * b->price >> 8);
+		cost.AddCost((int64)bridge_len * _price.build_bridge * GetBridgeSpec(bridge_type)->price >> 8);
 	}
 
 	return cost;
@@ -700,7 +696,7 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 {
 	SpriteID image = psid->sprite;
 	if (image != 0) {
-		bool drawfarpillar = !HasBit(GetBridgeFlags(type), 0);
+		bool drawfarpillar = !HasBit(GetBridgeSpec(type)->flags, 0);
 
 		/* "side" specifies the side the pillars stand on.
 		 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
@@ -1130,8 +1126,8 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 		td->str = (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else { //so it must be a bridge
-		int brtype = GetBridgeType(tile);
-		td->str = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL ? _bridge[brtype].name_rail : _bridge[brtype].name_road;
+		const Bridge *brspc = GetBridgeSpec(GetBridgeType(tile));
+		td->str = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL ? brspc->name_rail : brspc->name_road;
 	}
 	td->owner = GetTileOwner(tile);
 }
@@ -1289,7 +1285,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 		if (v->IsPrimaryVehicle()) {
 			/* modify speed of vehicle */
-			uint16 spd = _bridge[GetBridgeType(tile)].speed;
+			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 
 			if (v->type == VEH_ROAD) spd *= 2;
 			if (v->cur_speed > spd) v->cur_speed = spd;

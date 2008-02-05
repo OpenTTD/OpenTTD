@@ -3132,7 +3132,7 @@ static void TrainController(Vehicle *v, bool update_image)
 			 * - for bridges, only the middle part - without the bridge heads */
 			if (!(v->vehstatus & VS_HIDDEN)) {
 				v->cur_speed =
-					min(v->cur_speed, GetBridge(GetBridgeType(v->tile))->speed);
+					min(v->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed);
 			}
 
 			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {

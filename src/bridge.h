@@ -35,7 +35,7 @@ extern Bridge _bridge[MAX_BRIDGES];
 Foundation GetBridgeFoundation(Slope tileh, Axis axis);
 bool HasBridgeFlatRamp(Slope tileh, Axis axis);
 
-static inline const Bridge *GetBridge(uint i)
+static inline const Bridge *GetBridgeSpec(uint i)
 {
 	assert(i < lengthof(_bridge));
 	return &_bridge[i];
