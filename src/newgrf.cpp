@@ -5091,15 +5091,8 @@ static void ResetNewGRFData()
 	/* Copy/reset original engine info data */
 	SetupEngines();
 
-	/* Copy/reset original bridge info data
-	 * First, free sprite table data */
-	for (uint i = 0; i < MAX_BRIDGES; i++) {
-		if (_bridge[i].sprite_table != NULL) {
-			for (uint j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
-			free(_bridge[i].sprite_table);
-		}
-	}
-	memcpy(&_bridge, &orig_bridge, sizeof(_bridge));
+	/* Copy/reset original bridge info data */
+	ResetBridges();
 
 	/* Reset refit/cargo class data */
 	memset(&cargo_allowed, 0, sizeof(cargo_allowed));

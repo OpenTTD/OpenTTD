@@ -47,4 +47,6 @@ void DrawBridgeMiddle(const TileInfo *ti);
 bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
 int CalcBridgeLenCostFactor(int x);
 
+void ResetBridges();
+
 #endif /* BRIDGE_H */
