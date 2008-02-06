@@ -2333,9 +2333,16 @@ bool AfterLoadGame()
 				if (_m[t].m5 == 2) {
 					MakeRiver(t, Random());
 				} else {
-					Owner o = GetTileOwner(t);
-					if (IsWater(t) && o != OWNER_WATER) {
-						MakeCanal(t, o, Random());
+					if (IsWater(t)) {
+						Owner o = GetTileOwner(t);
+						if (o == OWNER_WATER) {
+							MakeWater(t);
+						} else {
+							MakeCanal(t, o, Random());
+						}
+					} else if (IsShipDepot(t)) {
+						Owner o = (Owner)_m[t].m4; // Original water owner
+						SetWaterClass(t, o == OWNER_WATER ? WATER_CLASS_SEA : WATER_CLASS_CANAL);
 					}
 				}
 			}
@@ -2347,7 +2354,7 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (GetTileSlope(t, NULL) != SLOPE_FLAT) continue;
 
-			if (IsTileType(t, MP_WATER) && (GetWaterTileType(t) == WATER_TILE_LOCK || IsShipDepot(t))) SetWaterClassDependingOnSurroundings(t);
+			if (IsTileType(t, MP_WATER) && IsLock(t)) SetWaterClassDependingOnSurroundings(t);
 			if (IsTileType(t, MP_STATION) && (IsDock(t) || IsBuoy(t))) SetWaterClassDependingOnSurroundings(t);
 		}
 	}

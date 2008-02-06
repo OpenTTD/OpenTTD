@@ -96,6 +96,9 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
 
 /**
  * Makes a tile canal or water depending on the surroundings.
+ *
+ * Must only be used for converting old savegames. Use WaterClass now.
+ *
  * This as for example docks and shipdepots do not store
  * whether the tile used to be canal or 'normal' water.
  * @param t the tile to change.
@@ -116,9 +119,17 @@ void SetWaterClassDependingOnSurroundings(TileIndex t)
 		TileIndex neighbour = TileAddByDiagDir(t, dir);
 		switch (GetTileType(neighbour)) {
 			case MP_WATER:
-				has_water |= IsSea(neighbour) || IsCoast(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) == OWNER_WATER);
-				has_canal |= IsCanal(neighbour) || (IsShipDepot(neighbour) && GetShipDepotWaterOwner(neighbour) != OWNER_WATER);
-				has_river |= IsRiver(neighbour);
+				/* clear water and shipdepots have already a WaterClass associated */
+				if (IsCoast(neighbour)) {
+					has_water = true;
+				} else if (!IsLock(neighbour)) {
+					switch (GetWaterClass(neighbour)) {
+						case WATER_CLASS_SEA:   has_water = true; break;
+						case WATER_CLASS_CANAL: has_canal = true; break;
+						case WATER_CLASS_RIVER: has_river = true; break;
+						default: NOT_REACHED();
+					}
+				}
 				break;
 
 			case MP_RAILWAY:
@@ -174,8 +185,6 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	WaterClass wc1 = GetWaterClass(tile);
 	WaterClass wc2 = GetWaterClass(tile2);
-	Owner o1 = GetTileOwner(tile);
-	Owner o2 = GetTileOwner(tile2);
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -188,8 +197,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (flags & DC_EXEC) {
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, wc1, o1);
-		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, wc2, o2);
+		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, wc1);
+		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 		d_auto_delete.Detach();
@@ -225,8 +234,8 @@ static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
 		delete GetDepotByTile(tile2 < tile ? tile2 : tile);
 
-		MakeWaterKeepingClass(tile,  GetShipDepotWaterOwner(tile));
-		MakeWaterKeepingClass(tile2, GetShipDepotWaterOwner(tile2));
+		MakeWaterKeepingClass(tile,  GetTileOwner(tile));
+		MakeWaterKeepingClass(tile2, GetTileOwner(tile2));
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}

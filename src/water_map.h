@@ -106,9 +106,9 @@ static inline DiagDirection GetShipDepotDirection(TileIndex t)
 	return XYNSToDiagDir(GetShipDepotAxis(t), GB(_m[t].m5, 0, 1));
 }
 
-static inline Owner GetShipDepotWaterOwner(TileIndex t)
+static inline bool IsLock(TileIndex t)
 {
-	return (Owner)_m[t].m4;
+	return IsInsideMM(_m[t].m5, LOCK_MIDDLE, LOCK_END);
 }
 
 static inline DiagDirection GetLockDirection(TileIndex t)
@@ -169,13 +169,13 @@ static inline void MakeCanal(TileIndex t, Owner o, uint8 random_bits)
 	_m[t].m5 = 0;
 }
 
-static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, WaterClass original_water_class, Owner original_owner)
+static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a, WaterClass original_water_class)
 {
 	SetTileType(t, MP_WATER);
 	SetTileOwner(t, o);
 	_m[t].m2 = 0;
 	_m[t].m3 = original_water_class;
-	_m[t].m4 = original_owner;
+	_m[t].m4 = 0;
 	_m[t].m5 = base + a * 2;
 }
 
