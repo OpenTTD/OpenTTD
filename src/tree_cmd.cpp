@@ -435,10 +435,6 @@ struct TreeListEnt {
 
 static void DrawTile_Trees(TileInfo *ti)
 {
-	const PalSpriteID *s;
-	const TreePos* d;
-	byte z;
-
 	switch (GetTreeGround(ti->tile)) {
 		case TREE_GROUND_SHORE: DrawShoreTile(ti->tileh); break;
 		case TREE_GROUND_GRASS: DrawClearLandTile(ti, GetTreeDensity(ti->tile)); break;
@@ -451,47 +447,39 @@ static void DrawTile_Trees(TileInfo *ti)
 	/* Do not draw trees when the invisible trees patch and transparency tree are set */
 	if (IsTransparencySet(TO_TREES) && _patches.invisible_trees) return;
 
-	z = ti->z;
-	if (ti->tileh != SLOPE_FLAT) {
-		z += 4;
-		if (IsSteepSlope(ti->tileh)) z += 4;
+	uint16 tmp = ti->x;
+
+	tmp = ROR(tmp, 2);
+	tmp -= ti->y;
+	tmp = ROR(tmp, 3);
+	tmp -= ti->x;
+	tmp = ROR(tmp, 1);
+	tmp += ti->y;
+
+	uint index = GB(tmp, 6, 2) + (GetTreeType(ti->tile) << 2);
+
+	/* different tree styles above one of the grounds */
+	if (GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT &&
+			GetTreeDensity(ti->tile) >= 2 &&
+			IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
+		index += 164 - (TREE_SUB_ARCTIC << 2);
 	}
 
-	{
-		uint16 tmp = ti->x;
-		uint index;
+	assert(index < lengthof(_tree_layout_sprite));
 
-		tmp = ROR(tmp, 2);
-		tmp -= ti->y;
-		tmp = ROR(tmp, 3);
-		tmp -= ti->x;
-		tmp = ROR(tmp, 1);
-		tmp += ti->y;
+	const PalSpriteID *s = _tree_layout_sprite[index];
+	const TreePos *d = _tree_layout_xy[GB(tmp, 4, 2)];
 
-		d = _tree_layout_xy[GB(tmp, 4, 2)];
-
-		index = GB(tmp, 6, 2) + (GetTreeType(ti->tile) << 2);
-
-		/* different tree styles above one of the grounds */
-		if (GetTreeGround(ti->tile) == TREE_GROUND_SNOW_DESERT &&
-				GetTreeDensity(ti->tile) >= 2 &&
-				IsInsideMM(index, TREE_SUB_ARCTIC << 2, TREE_RAINFOREST << 2)) {
-			index += 164 - (TREE_SUB_ARCTIC << 2);
-		}
-
-		assert(index < lengthof(_tree_layout_sprite));
-		s = _tree_layout_sprite[index];
-	}
-
+	/* combine trees into one sprite object */
 	StartSpriteCombine();
 
 	TreeListEnt te[4];
-	uint i;
 
 	/* put the trees to draw in a list */
-	i = GetTreeCount(ti->tile) + 1;
-	do {
-		SpriteID image = s[0].sprite + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
+	uint trees = GetTreeCount(ti->tile) + 1;
+
+	for (uint i = 0; i < trees; i++) {
+		SpriteID image = s[0].sprite + (i == trees - 1 ? GetTreeGrowth(ti->tile) : 3);
 		SpriteID pal = s[0].pal;
 
 		te[i].image = image;
@@ -500,25 +488,26 @@ static void DrawTile_Trees(TileInfo *ti)
 		te[i].y = d->y;
 		s++;
 		d++;
-	} while (i);
+	}
 
 	/* draw them in a sorted way */
-	for (;;) {
-		byte min = 0xFF;
-		TreeListEnt *tep = NULL;
+	byte z = ti->z + GetSlopeMaxZ(ti->tileh) / 2;
 
-		i = GetTreeCount(ti->tile) + 1;
-		do {
-			if (te[--i].image != 0 && te[i].x + te[i].y < min) {
+	for (; trees > 0; trees--) {
+		uint min = te[0].x + te[0].y;
+		uint mi = 0;
+
+		for (uint i = 1; i < trees; i++) {
+			if (te[i].x + te[i].y < min) {
 				min = te[i].x + te[i].y;
-				tep = &te[i];
+				mi = i;
 			}
-		} while (i);
+		}
 
-		if (tep == NULL) break;
+		AddSortableSpriteToDraw(te[mi].image, te[mi].pal, ti->x + te[mi].x, ti->y + te[mi].y, 16 - te[mi].x, 16 - te[mi].y, 0x30, z, IsTransparencySet(TO_TREES), -te[mi].x, -te[mi].y);
 
-		AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 16 - tep->x, 16 - tep->y, 0x30, z, IsTransparencySet(TO_TREES), -tep->x, -tep->y);
-		tep->image = 0;
+		/* replace the removed one with the last one */
+		te[mi] = te[trees - 1];
 	}
 
 	EndSpriteCombine();
