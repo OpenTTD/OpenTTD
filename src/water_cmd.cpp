@@ -542,15 +542,15 @@ static void DrawWaterEdges(SpriteID base, TileIndex tile)
 }
 
 /** Draw a plain sea water tile with no edges */
-void DrawSeaWater(TileIndex tile)
+static void DrawSeaWater(TileIndex tile)
 {
 	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 }
 
 /** draw a canal styled water tile with dikes around */
-void DrawCanalWater(TileIndex tile, bool draw_base)
+static void DrawCanalWater(TileIndex tile)
 {
-	if (draw_base) DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
 
 	/* Test for custom graphics, else use the default */
 	SpriteID dikes_base = GetCanalSprite(CF_DIKES, tile);
@@ -568,7 +568,7 @@ struct LocksDrawTileStruct {
 #include "table/water_land.h"
 
 static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
-	SpriteID palette, uint base
+	SpriteID palette, uint base, bool draw_ground
 )
 {
 	SpriteID image;
@@ -586,7 +586,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 
 	image = wdts++->image;
 	if (image < 4) image += water_base;
-	DrawGroundSprite(image, PAL_NONE);
+	if (draw_ground) DrawGroundSprite(image, PAL_NONE);
 
 	for (; wdts->delta_x != 0x80; wdts++) {
 		AddSortableSpriteToDraw(wdts->image + base + ((wdts->image < 24) ? locks_base : 0), palette,
@@ -597,7 +597,7 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	}
 }
 
-void DrawRiverWater(const TileInfo *ti, bool draw_base)
+static void DrawRiverWater(const TileInfo *ti)
 {
 	SpriteID image = SPR_FLAT_WATER_TILE;
 	SpriteID edges_base = GetCanalSprite(CF_RIVER_EDGE, ti->tile);
@@ -623,7 +623,7 @@ void DrawRiverWater(const TileInfo *ti, bool draw_base)
 		}
 	}
 
-	if (draw_base) DrawGroundSprite(image, PAL_NONE);
+	DrawGroundSprite(image, PAL_NONE);
 
 	/* Draw river edges if available. */
 	if (edges_base > 48) DrawWaterEdges(edges_base, ti->tile);
@@ -646,15 +646,19 @@ void DrawShoreTile(Slope tileh)
 	DrawGroundSprite(SPR_SHORE_BASE + tileh_to_shoresprite[tileh], PAL_NONE);
 }
 
+void DrawWaterClassGround(const TileInfo *ti) {
+	switch (GetWaterClass(ti->tile)) {
+		case WATER_CLASS_SEA:   DrawSeaWater(ti->tile); break;
+		case WATER_CLASS_CANAL: DrawCanalWater(ti->tile); break;
+		case WATER_CLASS_RIVER: DrawRiverWater(ti); break;
+	}
+}
+
 static void DrawTile_Water(TileInfo *ti)
 {
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_TILE_CLEAR:
-			switch (GetWaterClass(ti->tile)) {
-				case WATER_CLASS_SEA:   DrawSeaWater(ti->tile); break;
-				case WATER_CLASS_CANAL: DrawCanalWater(ti->tile, true); break;
-				case WATER_CLASS_RIVER: DrawRiverWater(ti, true); break;
-			}
+			DrawWaterClassGround(ti);
 			DrawBridgeMiddle(ti);
 			break;
 
@@ -665,11 +669,12 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_LOCK: {
 			const WaterDrawTileStruct *t = _shiplift_display_seq[GetSection(ti->tile)];
-			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0);
+			DrawWaterStuff(ti, t, 0, ti->z > t[3].delta_y ? 24 : 0, true);
 		} break;
 
 		case WATER_TILE_DEPOT:
-			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0);
+			DrawWaterClassGround(ti);
+			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0, false);
 			break;
 	}
 }

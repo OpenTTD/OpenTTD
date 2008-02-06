@@ -2140,17 +2140,30 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
 
-	SpriteID image = t->ground_sprite;
-	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
-		image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
-		image += custom_ground_offset;
-	} else {
-		image += total_offset;
-	}
 
-	/* station_land array has been increased from 82 elements to 114
-	 * but this is something else. If AI builds station with 114 it looks all weird */
-	DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
+	if (IsBuoy(ti->tile) || IsDock(ti->tile)) {
+		if (ti->tileh == SLOPE_FLAT) {
+			DrawWaterClassGround(ti);
+		} else {
+			assert(IsDock(ti->tile));
+			TileIndex water_tile = ti->tile + TileOffsByDiagDir(GetDockDirection(ti->tile));
+			WaterClass wc = GetWaterClass(water_tile);
+			if (wc == WATER_CLASS_SEA) {
+				DrawShoreTile(ti->tileh);
+			} else {
+				DrawClearLandTile(ti, 3);
+			}
+		}
+	} else {
+		SpriteID image = t->ground_sprite;
+		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
+			image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
+			image += custom_ground_offset;
+		} else {
+			image += total_offset;
+		}
+		DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
+	}
 
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
@@ -2160,18 +2173,9 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
 	}
 
-	if (IsBuoy(ti->tile)) {
-		/* Draw appropriate water edges */
-		switch (GetWaterClass(ti->tile)) {
-			case WATER_CLASS_SEA: break;
-			case WATER_CLASS_CANAL: DrawCanalWater(ti->tile, false); break;
-			case WATER_CLASS_RIVER: DrawRiverWater(ti, false); break;
-		}
-	}
-
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
-		image = dtss->image;
+		SpriteID image = dtss->image;
 		if (relocation == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += total_offset;
 		} else {
