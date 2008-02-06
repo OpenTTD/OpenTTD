@@ -1245,6 +1245,21 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				bridge->avail_year = Clamp(grf_load_dword(&buf), MIN_YEAR, MAX_YEAR);
 				break;
 
+			case 0x10: { // purchase string
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				if (newone != STR_UNDEFINED) bridge->material = newone;
+				} break;
+
+			case 0x11: { // description of bridge with rails
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				if (newone != STR_UNDEFINED) bridge->name_rail = newone;
+				} break;
+
+			case 0x12: { // description of bridge with roads
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
+				if (newone != STR_UNDEFINED) bridge->name_road = newone;
+				} break;
+
 			default:
 				ret = true;
 				break;
