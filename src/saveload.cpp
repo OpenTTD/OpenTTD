@@ -1376,7 +1376,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			index++;
 			if (index == INVALID_VEHICLE) return NULL;
 
-			if (_Vehicle_pool.AddBlockIfNeeded(index)) GetVehicle(index);
+			if (_Vehicle_pool.AddBlockIfNeeded(index)) return GetVehicle(index);
 			error("Vehicles: failed loading savegame: too many vehicles");
 
 		default: NOT_REACHED();
