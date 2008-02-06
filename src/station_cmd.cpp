@@ -2318,6 +2318,9 @@ static void TileLoop_Station(TileIndex tile)
 			}
 			break;
 
+		case STATION_DOCK:
+			if (GetTileSlope(tile, NULL) != SLOPE_FLAT) break; // only handle water part
+		/* FALL THROUGH */
 		case STATION_OILRIG: //(station part)
 		case STATION_BUOY:
 			TileLoop_Water(tile);

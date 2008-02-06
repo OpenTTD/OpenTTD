@@ -864,9 +864,9 @@ static void FloodVehicle(Vehicle *v)
  */
 static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 {
-	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, rail with flooded halftile
+	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, sea-docks (water part), rail with flooded halftile
 	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track, coast with trees
-	 * FLOOD_PASSIVE: oilrig, dock, water-industries
+	 * FLOOD_PASSIVE: oilrig, water-industries
 	 * FLOOD_NONE:    canals, rivers, everything else
 	 */
 	switch (GetTileType(tile)) {
@@ -888,9 +888,10 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			return (GetTreeGround(tile) == TREE_GROUND_SHORE ? FLOOD_DRYUP : FLOOD_NONE);
 
 		case MP_STATION:
-			if (IsBuoy(tile) && GetWaterClass(tile) == WATER_CLASS_SEA) return FLOOD_ACTIVE;
-			if (IsOilRig(tile) || IsDock(tile)) return FLOOD_PASSIVE;
-			return FLOOD_NONE;
+			if (IsBuoy(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT)) {
+				return (GetWaterClass(tile) == WATER_CLASS_SEA ? FLOOD_ACTIVE : FLOOD_NONE);
+			}
+			return (IsOilRig(tile) ? FLOOD_PASSIVE : FLOOD_NONE);
 
 		case MP_INDUSTRY:
 			return ((GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0 ? FLOOD_PASSIVE : FLOOD_NONE);
