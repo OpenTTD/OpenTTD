@@ -448,6 +448,9 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	DrawClearLandFence(ti);
 
+	/* Do not draw trees when the invisible trees patch and transparency tree are set */
+	if (IsTransparencySet(TO_TREES) && _patches.invisible_trees) return;
+
 	z = ti->z;
 	if (ti->tileh != SLOPE_FLAT) {
 		z += 4;
@@ -482,43 +485,40 @@ static void DrawTile_Trees(TileInfo *ti)
 
 	StartSpriteCombine();
 
-	/* Do not draw trees when the invisible trees patch and transparency tree are set */
-	if (!(IsTransparencySet(TO_TREES) && _patches.invisible_trees)) {
-		TreeListEnt te[4];
-		uint i;
+	TreeListEnt te[4];
+	uint i;
 
-		/* put the trees to draw in a list */
+	/* put the trees to draw in a list */
+	i = GetTreeCount(ti->tile) + 1;
+	do {
+		SpriteID image = s[0].sprite + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
+		SpriteID pal = s[0].pal;
+
+		te[i].image = image;
+		te[i].pal   = pal;
+		te[i].x = d->x;
+		te[i].y = d->y;
+		s++;
+		d++;
+	} while (i);
+
+	/* draw them in a sorted way */
+	for (;;) {
+		byte min = 0xFF;
+		TreeListEnt *tep = NULL;
+
 		i = GetTreeCount(ti->tile) + 1;
 		do {
-			SpriteID image = s[0].sprite + (--i == 0 ? GetTreeGrowth(ti->tile) : 3);
-			SpriteID pal = s[0].pal;
-
-			te[i].image = image;
-			te[i].pal   = pal;
-			te[i].x = d->x;
-			te[i].y = d->y;
-			s++;
-			d++;
+			if (te[--i].image != 0 && te[i].x + te[i].y < min) {
+				min = te[i].x + te[i].y;
+				tep = &te[i];
+			}
 		} while (i);
 
-		/* draw them in a sorted way */
-		for (;;) {
-			byte min = 0xFF;
-			TreeListEnt *tep = NULL;
+		if (tep == NULL) break;
 
-			i = GetTreeCount(ti->tile) + 1;
-			do {
-				if (te[--i].image != 0 && te[i].x + te[i].y < min) {
-					min = te[i].x + te[i].y;
-					tep = &te[i];
-				}
-			} while (i);
-
-			if (tep == NULL) break;
-
-			AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 16 - tep->x, 16 - tep->y, 0x30, z, IsTransparencySet(TO_TREES), -tep->x, -tep->y);
-			tep->image = 0;
-		}
+		AddSortableSpriteToDraw(tep->image, tep->pal, ti->x + tep->x, ti->y + tep->y, 16 - tep->x, 16 - tep->y, 0x30, z, IsTransparencySet(TO_TREES), -tep->x, -tep->y);
+		tep->image = 0;
 	}
 
 	EndSpriteCombine();
