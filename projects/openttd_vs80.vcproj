@@ -804,10 +804,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\command.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\console.h"
 				>
 			</File>
@@ -828,10 +824,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\date.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\debug.h"
 				>
 			</File>
@@ -844,19 +836,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\direction.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\music\dmusic.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\driver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\economy.h"
 				>
 			</File>
 			<File
@@ -881,10 +865,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\genworld.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\gfx.h"
 				>
 			</File>
 			<File
@@ -913,10 +893,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\livery.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\map.h"
 				>
 			</File>
 			<File
@@ -1060,10 +1036,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\player.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\player_face.h"
 				>
 			</File>
@@ -1096,23 +1068,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\settings.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\signs.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\signal_func.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\slope.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\sound.h"
 				>
 			</File>
 			<File
@@ -1136,10 +1096,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\string.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\texteff.hpp"
 				>
 			</File>
@@ -1149,10 +1105,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\thread.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\tile.h"
 				>
 			</File>
 			<File
@@ -1184,15 +1136,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\vehicle.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\vehicle_gui.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\viewport.h"
 				>
 			</File>
 			<File
@@ -1212,23 +1156,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\window.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\widgets\dropdown.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\widgets\dropdown_type.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\widgets\dropdown_func.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\zoom.hpp"
 				>
 			</File>
 		</Filter>
