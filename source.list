@@ -3,6 +3,7 @@ airport.cpp
 articulated_vehicles.cpp
 autoreplace_cmd.cpp
 aystar.cpp
+core/bitmath_func.cpp
 bmp.cpp
 callback_table.cpp
 cargopacket.cpp
@@ -10,14 +11,13 @@ cargotype.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
-core/bitmath_func.cpp
-core/random_func.cpp
 currency.cpp
 date.cpp
 debug.cpp
 dedicated.cpp
 depot.cpp
 driver.cpp
+widgets/dropdown.cpp
 economy.cpp
 elrail.cpp
 engine.cpp
@@ -58,6 +58,7 @@ pathfind.cpp
 players.cpp
 queue.cpp
 rail.cpp
+core/random_func.cpp
 rev.cpp
 road.cpp
 saveload.cpp
@@ -93,7 +94,6 @@ vehicle.cpp
 viewport.cpp
 waypoint.cpp
 widget.cpp
-widgets/dropdown.cpp
 #if WIN32
 	win32.cpp
 #end
@@ -110,6 +110,7 @@ autoreplace_gui.h
 autoreplace_type.h
 autoslope.h
 aystar.h
+core/bitmath_func.hpp
 bmp.h
 bridge.h
 callback_table.h
@@ -120,9 +121,6 @@ cmd_helper.h
 command_func.h
 command_type.h
 console.h
-core/bitmath_func.hpp
-core/math_func.hpp
-core/random_func.hpp
 currency.h
 date_func.h
 date_type.h
@@ -133,6 +131,8 @@ direction_func.h
 direction_type.h
 music/dmusic.h
 driver.h
+widgets/dropdown_type.h
+widgets/dropdown_func.h
 economy_func.h
 economy_type.h
 engine.h
@@ -152,6 +152,7 @@ industry.h
 industry_type.h
 landscape.h
 livery.h
+core/math_func.hpp
 md5.h
 mixer.h
 music.h
@@ -197,6 +198,7 @@ queue.h
 rail.h
 rail_gui.h
 rail_type.h
+core/random_func.hpp
 road_cmd.h
 road_func.h
 road_gui.h
@@ -255,8 +257,6 @@ window_type.h
 music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
-widgets/dropdown_type.h
-widgets/dropdown_func.h
 zoom_type.h
 zoom_func.h
 

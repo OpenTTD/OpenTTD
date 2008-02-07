@@ -465,6 +465,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\bitmath_func.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\bmp.cpp"
 				>
 			</File>
@@ -493,14 +497,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\bitmath_func.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\random_func.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\currency.cpp"
 				>
 			</File>
@@ -522,6 +518,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\driver.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown.cpp"
 				>
 			</File>
 			<File
@@ -665,6 +665,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\random_func.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\rev.cpp"
 				>
 			</File>
@@ -749,10 +753,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\widgets\dropdown.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\win32.cpp"
 				>
 			</File>
@@ -805,6 +805,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\bitmath_func.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\bmp.h"
 				>
 			</File>
@@ -845,18 +849,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\bitmath_func.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\math_func.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\random_func.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\currency.h"
 				>
 			</File>
@@ -894,6 +886,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\driver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown_func.h"
 				>
 			</File>
 			<File
@@ -970,6 +970,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\livery.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\math_func.hpp"
 				>
 			</File>
 			<File
@@ -1150,6 +1154,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\rail_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\random_func.hpp"
 				>
 			</File>
 			<File
@@ -1382,14 +1390,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\video\win32_v.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\widgets\dropdown_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\widgets\dropdown_func.h"
 				>
 			</File>
 			<File
