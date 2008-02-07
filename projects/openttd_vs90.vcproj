@@ -777,6 +777,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\alloc_func.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\articulated_vehicles.h"
 				>
 			</File>
@@ -905,7 +909,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\endian_func.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\engine.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\enum_type.hpp"
 				>
 			</File>
 			<File
@@ -926,6 +938,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\genworld.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\geometry_type.hpp"
 				>
 			</File>
 			<File
@@ -1006,6 +1022,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\network_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\network_internal.h"
 				>
 			</File>
 			<File
@@ -1114,6 +1134,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\order.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\overflowsafe_type.hpp"
 				>
 			</File>
 			<File
@@ -1990,6 +2014,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\station_map.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\tile_map.h"
 				>
 			</File>
 			<File

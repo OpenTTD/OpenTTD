@@ -103,6 +103,7 @@ window.cpp
 aircraft.h
 airport.h
 airport_movement.h
+core/alloc_func.hpp
 articulated_vehicles.h
 autoreplace_base.h
 autoreplace_func.h
@@ -135,12 +136,15 @@ widgets/dropdown_type.h
 widgets/dropdown_func.h
 economy_func.h
 economy_type.h
+core/endian_func.hpp
 engine.h
+code/enum_type.hpp
 fileio.h
 fios.h
 fontcache.h
 functions.h
 genworld.h
+core/geometry_type.hpp
 gfx_func.h
 gfx_type.h
 gfxinit.h
@@ -161,6 +165,7 @@ network/network_client.h
 network/network_data.h
 network/network_gamelist.h
 network/network_gui.h
+network/network_internal.h
 network/network_server.h
 network/network_udp.h
 newgrf.h
@@ -188,6 +193,7 @@ video/null_v.h
 oldpool.h
 openttd.h
 order.h
+overflowsafe_type.hpp
 pathfind.h
 player_base.h
 player_face.h
@@ -418,6 +424,7 @@ rail_map.h
 road_map.cpp
 road_map.h
 station_map.h
+tile_map.h
 town_map.h
 tree_map.h
 tunnel_map.cpp
