@@ -784,6 +784,22 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\autoreplace_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\autoreplace_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\autoreplace_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\autoreplace_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\autoslope.h"
 				>
 			</File>
@@ -796,11 +812,35 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\bridge.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\callback_table.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\cargo_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\cargopacket.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\cargotype.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\cmd_helper.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\command_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\command_type.h"
 				>
 			</File>
 			<File
@@ -824,6 +864,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\date_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\date_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\debug.h"
 				>
 			</File>
@@ -836,11 +884,27 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\direction_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\direction_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\music\dmusic.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\driver.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\economy_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\economy_type.h"
 				>
 			</File>
 			<File
@@ -868,11 +932,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\gfx_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\gfx_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\gfxinit.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\group.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\group_gui.h"
 				>
 			</File>
 			<File
@@ -885,6 +961,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\industry.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\industry_type.h"
 				>
 			</File>
 			<File
@@ -1032,11 +1112,31 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\order.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\pathfind.h"
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\player_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\player_face.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\player_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\player_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\player_type.h"
 				>
 			</File>
 			<File
@@ -1048,7 +1148,35 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\rail_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\rail_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\road_cmd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\road_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\road_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\road_internal.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\road_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\roadveh.h"
 				>
 			</File>
 			<File
@@ -1068,11 +1196,43 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\signs.h"
+				RelativePath=".\..\src\settings_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\settings_internal.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\settings_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ship.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\signal_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\signs.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\slope_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\slope_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\sound_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\sound_type.h"
 				>
 			</File>
 			<File
@@ -1096,6 +1256,30 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\string_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\string_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\strings_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\strings_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\terraform_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\textbuf_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\texteff.hpp"
 				>
 			</File>
@@ -1108,11 +1292,31 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tile_cmd.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\tile_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\timetable.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\town.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\town_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\track_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\track_type.h"
 				>
 			</File>
 			<File
@@ -1132,7 +1336,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\unmovable.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\variables.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\vehicle_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\vehicle_func.h"
 				>
 			</File>
 			<File
@@ -1140,7 +1356,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\vehicle_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\waypoint.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\window_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\window_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\window_type.h"
 				>
 			</File>
 			<File
@@ -1161,6 +1393,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\widgets\dropdown_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\zoom_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\zoom_func.h"
 				>
 			</File>
 		</Filter>
