@@ -24,6 +24,7 @@
 #include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "gfx_func.h"
+#include "waypoint.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 
@@ -301,6 +302,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					ReadLanguagePack(e->we.dropdown.index);
 					CheckForMissingGlyphsInLoadedLanguagePack();
 					UpdateAllStationVirtCoord();
+					UpdateAllWaypointSigns();
 					MarkWholeScreenDirty();
 					break;
 
