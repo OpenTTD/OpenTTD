@@ -810,7 +810,7 @@ DEF_CONSOLE_CMD(ConExec)
 
 	if (argc < 2) return false;
 
-	_script_file = fopen(argv[1], "r");
+	_script_file = FioFOpenFile(argv[1], "r", BASE_DIR);
 
 	if (_script_file == NULL) {
 		if (argc == 2 || atoi(argv[2]) != 0) IConsoleError("script file not found");
@@ -834,7 +834,7 @@ DEF_CONSOLE_CMD(ConExec)
 		IConsoleError("Encountered errror while trying to read from script file");
 
 	_script_running = false;
-	fclose(_script_file);
+	FioFCloseFile(_script_file);
 	return true;
 }
 
