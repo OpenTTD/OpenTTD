@@ -197,7 +197,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 		wp_auto_delete = wp;
 
-		wp->town_index = 0;
+		wp->town_index = INVALID_TOWN;
 		wp->name = NULL;
 		wp->town_cn = 0;
 	} else if (flags & DC_EXEC) {
@@ -241,7 +241,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		wp->deleted = 0;
 		wp->build_date = _date;
 
-		if (wp->town_index == 0) MakeDefaultWaypointName(wp);
+		if (wp->town_index == INVALID_TOWN) MakeDefaultWaypointName(wp);
 
 		UpdateWaypointSign(wp);
 		RedrawWaypointSign(wp);
