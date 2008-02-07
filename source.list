@@ -336,7 +336,7 @@ table/landscape_sprite.h
 table/namegen.h
 table/palettes.h
 table/road_land.h
-table/roadveh.h
+table/roadveh_movement.h
 table/sprites.h
 table/station_land.h
 ../objs/langs/table/strings.h

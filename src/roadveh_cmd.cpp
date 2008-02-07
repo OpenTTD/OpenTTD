@@ -1342,7 +1342,7 @@ struct RoadDriveEntry {
 	byte x, y;
 };
 
-#include "table/roadveh.h"
+#include "table/roadveh_movement.h"
 
 static const byte _road_veh_data_1[] = {
 	20, 20, 16, 16, 0, 0, 0, 0,

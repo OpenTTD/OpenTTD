@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file table/roadveh.h Data about how a road vehicle must drive on a tile */
+/** @file table/roadveh_movement.h Data about how a road vehicle must drive on a tile */
 
 static const RoadDriveEntry _roadveh_drive_data_0[] = {
 	{15, 5},

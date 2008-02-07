@@ -1697,7 +1697,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\table\roadveh.h"
+				RelativePath=".\..\src\table\roadveh_movement.h"
 				>
 			</File>
 			<File
