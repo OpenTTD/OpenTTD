@@ -498,7 +498,7 @@ static void DrawTile_Trees(TileInfo *ti)
 		uint mi = 0;
 
 		for (uint i = 1; i < trees; i++) {
-			if (te[i].x + te[i].y < min) {
+			if ((uint)(te[i].x + te[i].y) < min) {
 				min = te[i].x + te[i].y;
 				mi = i;
 			}

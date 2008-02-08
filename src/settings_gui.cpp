@@ -557,7 +557,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				value = ((GDType*)&_opt_mod_temp.diff)[i];
 
 				DrawArrowButtons(5, y, 3,
-						(diffic_d->clicked_button == i) ? 1 << diffic_d->clicked_increase : 0,
+						(diffic_d->clicked_button == i) ? 1 + !!diffic_d->clicked_increase : 0,
 						!(HasBit(disabled, i) || gsd->min == value),
 						!(HasBit(disabled, i) || gsd->max == value));
 
