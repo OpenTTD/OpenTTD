@@ -1442,8 +1442,11 @@ bool AfterLoadGame()
 	 * if a player does exist, rather then checking name_1 */
 	if (CheckSavegameVersionOldStyle(4, 1)) CheckIsPlayerActive();
 
-	/* the void tiles on the southern border used to belong to a wrong class (pre 4.3). */
-	if (CheckSavegameVersionOldStyle(4, 3)) UpdateVoidTiles();
+	/* The void tiles on the southern border used to belong to a wrong class (pre 4.3).
+	 * This problem appears in savegame version 21 too, see r3455. But after loading the
+	 * savegame and saving again, the buggy map array could be converted to new savegame
+	 * version. It didn't show up before r12070. */
+	if (CheckSavegameVersion(87)) UpdateVoidTiles();
 
 	/* If Load Scenario / New (Scenario) Game is used,
 	 *  a player does not exist yet. So create one here.
