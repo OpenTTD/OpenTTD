@@ -49,7 +49,7 @@ public:
 	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
 
 	uint16 GetSubstituteID(byte entity_id);
-	uint16 GetID(uint8 grf_local_id, uint32 grfid);
+	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid);
 
 	inline uint16 GetMaxMapping() { return max_new_entities; }
 	inline uint16 GetMaxOffset() { return max_offset; }
@@ -72,6 +72,7 @@ public:
 			OverrideManagerBase(offset, maximum, invalid) {}
 
 	virtual uint16 AddEntityID(byte grf_local_id, uint32 grfid, byte substitute_id);
+	virtual uint16 GetID(uint8 grf_local_id, uint32 grfid);
 	void SetEntitySpec(IndustrySpec *inds);
 };
 

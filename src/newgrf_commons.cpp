@@ -91,11 +91,6 @@ uint16 OverrideManagerBase::GetID(uint8 grf_local_id, uint32 grfid)
 		}
 	}
 
-	/* No mapping found, try the overrides */
-	for (uint16 id = 0; id < max_offset; id++) {
-		if (entity_overrides[id] == grf_local_id && grfid_overrides[id] == grfid) return id;
-	}
-
 	return invalid_ID;
 }
 
@@ -167,6 +162,24 @@ void HouseOverrideManager::SetEntitySpec(const HouseSpec *hs)
 		entity_overrides[i] = invalid_ID;
 		grfid_overrides[i] = 0;
 	}
+}
+
+/** Return the ID (if ever available) of a previously inserted entity.
+ * @param grf_local_id ID of this enity withing the grfID
+ * @param grfid ID of the grf file
+ * @return the ID of the candidate, of the Invalid flag item ID
+ */
+uint16 IndustryOverrideManager::GetID(uint8 grf_local_id, uint32 grfid)
+{
+	uint16 id = OverrideManagerBase::GetID(grf_local_id, grfid);
+	if (id != invalid_ID) return id;
+
+	/* No mapping found, try the overrides */
+	for (id = 0; id < max_offset; id++) {
+		if (entity_overrides[id] == grf_local_id && grfid_overrides[id] == grfid) return id;
+	}
+
+	return invalid_ID;
 }
 
 /** Method to find an entity ID and to mark it as reserved for the Industry to be included.
