@@ -110,7 +110,7 @@ struct EngineInfo {
 	byte refit_cost;
 	byte misc_flags;
 	byte callbackmask;
-	byte retire_early; ///< Number of years early to retire vehicle
+	int8 retire_early;  ///< Number of years early to retire vehicle
 	StringID string_id; ///< Default name of engine
 };
 
