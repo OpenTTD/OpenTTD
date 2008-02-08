@@ -2019,7 +2019,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
 
 		assert(trackdir != INVALID_TRACKDIR);
-		NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
+		NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
@@ -2379,7 +2379,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
-		NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
+		NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
 
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something
@@ -2489,7 +2489,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
+		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
 		if (ftd.best_bird_dist != 0) {
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;

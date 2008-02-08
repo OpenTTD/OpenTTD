@@ -60,9 +60,10 @@ enum {
 
 /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
 enum NPFNodeFlag {
-	NPF_FLAG_SEEN_SIGNAL,     ///< Used to mark that a signal was seen on the way, for rail only
-	NPF_FLAG_REVERSE,         ///< Used to mark that this node was reached from the second start node, if applicable
-	NPF_FLAG_LAST_SIGNAL_RED, ///< Used to mark that the last signal on this path was red
+	NPF_FLAG_SEEN_SIGNAL,       ///< Used to mark that a signal was seen on the way, for rail only
+	NPF_FLAG_REVERSE,           ///< Used to mark that this node was reached from the second start node, if applicable
+	NPF_FLAG_LAST_SIGNAL_RED,   ///< Used to mark that the last signal on this path was red
+	NPF_FLAG_IGNORE_START_TILE, ///< Used to mark that the start tile is invalid, and searching should start from the second tile on
 };
 
 /* Meant to be stored in AyStar.userpath */
@@ -78,28 +79,28 @@ struct NPFFoundTargetData {
 /* Will search from the given tile and direction, for a route to the given
  * station for the given transport type. See the declaration of
  * NPFFoundTargetData above for the meaning of the result. */
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 
 /* Will search as above, but with two start nodes, the second being the
  * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
  * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 
 /* Will search a route to the closest depot. */
 
 /* Search using breadth first. Good for little track choice and inaccurate
  * heuristic, such as railway/road.*/
-NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+NPFFoundTargetData NPFRouteToDepotBreadthFirst(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 /* Same as above but with two start nodes, the second being the reverse. Call
  * NPFGetBit(result.node, NPF_FLAG_REVERSE) to see from which node the path
  * orginated. All pathfs from the second node will have the given
  * reverse_penalty applied (NPF_TILE_LENGTH is the equivalent of one full
  * tile).
  */
-NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, TileIndex tile2, Trackdir trackdir2, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty);
+NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty);
 /* Search by trying each depot in order of Manhattan Distance. Good for lots
  * of choices and accurate heuristics, such as water. */
-NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 
 void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v);
 

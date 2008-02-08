@@ -123,7 +123,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
+		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 		if (ftd.best_bird_dist == 0) {
 			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
 		} else {
@@ -510,11 +510,11 @@ bad:;
 	return best_bird_dist;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypes railtypes)
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypes railtypes)
 {
 
 	void* perf = NpfBeginInterval();
-	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, 0, owner, railtypes);
+	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, 0, owner, railtypes);
 	int t = NpfEndInterval(perf);
 	DEBUG(yapf, 4, "[NPFW] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	return ret;
@@ -533,13 +533,12 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	} else if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
-		TileIndex src_tile = TILE_ADD(tile, TileOffsByDiagDir(ReverseDiagDir(enterdir)));
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = PerfNPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPES);
+		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPES);
 
 		if (ftd.best_trackdir != 0xff) {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains

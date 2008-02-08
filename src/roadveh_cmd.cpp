@@ -424,7 +424,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 		/* See where we are now */
 		Trackdir trackdir = GetVehicleTrackdir(v);
 
-		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, v->tile, ReverseTrackdir(trackdir), TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
+		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, v->tile, ReverseTrackdir(trackdir), false, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES, 0);
 		if (ftd.best_bird_dist == 0) {
 			return GetDepotByTile(ftd.node.tile); /* Target found */
 		} else {
@@ -1128,11 +1128,11 @@ static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir,
 	return false;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 
 	void* perf = NpfBeginInterval();
-	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, sub_type, owner, railtypes);
+	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, sub_type, owner, railtypes);
 	int t = NpfEndInterval(perf);
 	DEBUG(yapf, 4, "[NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	return ret;
@@ -1230,7 +1230,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 		trackdir = DiagdirToDiagTrackdir(enterdir);
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
-		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES);
+		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES);
 		if (ftd.best_trackdir == INVALID_TRACKDIR) {
 			/* We are already at our target. Just do something
 			 * @todo: maybe display error?
@@ -1312,7 +1312,7 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 		fstd.dest_coords = tile;
 		fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
 
-		dist = NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES).best_path_dist;
+		dist = NPFRouteToStationOrTile(v->tile, trackdir, false, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES).best_path_dist;
 		/* change units from NPF_TILE_LENGTH to # of tiles */
 		if (dist != UINT_MAX)
 			dist = (dist + NPF_TILE_LENGTH - 1) / NPF_TILE_LENGTH;
