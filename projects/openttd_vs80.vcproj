@@ -896,11 +896,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\widgets\dropdown_type.h"
+				RelativePath=".\..\src\widgets\dropdown_func.h"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\widgets\dropdown_func.h"
+				RelativePath=".\..\src\widgets\dropdown_type.h"
 				>
 			</File>
 			<File
@@ -1396,18 +1396,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\window_func.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\window_gui.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\window_type.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\music\win32_m.h"
 				>
 			</File>
@@ -1420,11 +1408,23 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\zoom_type.h"
+				RelativePath=".\..\src\window_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\window_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\window_type.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\zoom_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\zoom_type.h"
 				>
 			</File>
 		</Filter>

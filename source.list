@@ -132,8 +132,8 @@ direction_func.h
 direction_type.h
 music/dmusic.h
 driver.h
-widgets/dropdown_type.h
 widgets/dropdown_func.h
+widgets/dropdown_type.h
 economy_func.h
 economy_type.h
 core/endian_func.hpp
@@ -257,14 +257,14 @@ vehicle_func.h
 vehicle_gui.h
 vehicle_type.h
 waypoint.h
-window_func.h
-window_gui.h
-window_type.h
 music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
-zoom_type.h
+window_func.h
+window_gui.h
+window_type.h
 zoom_func.h
+zoom_type.h
 
 # GUI Source Code
 aircraft_gui.cpp
