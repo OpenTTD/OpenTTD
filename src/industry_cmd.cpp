@@ -2137,7 +2137,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	/* Increase if needed */
 	while (mul-- != 0 && i->prod_level < PRODLEVEL_MAXIMUM) {
-		i->prod_level <<= 1;
+		i->prod_level = min(i->prod_level * 2, PRODLEVEL_MAXIMUM);
 		i->production_rate[0] = min(i->production_rate[0] * 2, 0xFF);
 		i->production_rate[1] = min(i->production_rate[1] * 2, 0xFF);
 		if (str == STR_NULL) str = indspec->production_up_text;
@@ -2148,9 +2148,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		if (i->prod_level == PRODLEVEL_MINIMUM) {
 			closeit = true;
 		} else {
-			i->prod_level >>= 1;
-			i->production_rate[0] = (i->production_rate[0] + 1) >> 1;
-			i->production_rate[1] = (i->production_rate[1] + 1) >> 1;
+			i->prod_level = max(i->prod_level / 2, (int)PRODLEVEL_MINIMUM); // typecast to int required to please MSVC
+			i->production_rate[0] = (i->production_rate[0] + 1) / 2;
+			i->production_rate[1] = (i->production_rate[1] + 1) / 2;
 			if (str == STR_NULL) str = indspec->production_down_text;
 		}
 	}
