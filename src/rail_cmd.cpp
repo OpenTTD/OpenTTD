@@ -455,7 +455,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			if (!IsLevelCrossing(tile) ||
 					GetCrossingRailBits(tile) != trackbit ||
 					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					!EnsureNoVehicleOnGround(tile)) {
+					(!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile))) {
 				return CMD_ERROR;
 			}
 
@@ -2146,7 +2146,7 @@ static void ChangeTileOwner_Track(TileIndex tile, PlayerID old_player, PlayerID 
 	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
-		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 	}
 }
 

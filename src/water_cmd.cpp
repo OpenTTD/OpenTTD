@@ -1140,7 +1140,7 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else if (IsShipDepot(tile)) {
-		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 	} else {
 		SetTileOwner(tile, OWNER_NONE);
 	}

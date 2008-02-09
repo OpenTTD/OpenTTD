@@ -271,6 +271,7 @@ enum {
 	DC_NO_RAIL_OVERLAP = 0x10, ///< don't allow overlap of rails (used in buildrail)
 	DC_AI_BUILDING     = 0x20, ///< special building rules for AI
 	DC_NO_TOWN_RATING  = 0x40, ///< town rating does not disallow you from building
+	DC_BANKRUPT        = 0x80, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
 };
 
 /**

@@ -1404,7 +1404,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
 		if (GetTileOwner(tile) == old_player) {
 			if (new_player == PLAYER_SPECTATOR) {
-				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 			} else {
 				SetTileOwner(tile, new_player);
 			}
@@ -1423,7 +1423,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	if (IsLevelCrossing(tile)) {
 		if (GetTileOwner(tile) == old_player) {
 			if (new_player == PLAYER_SPECTATOR) {
-				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
+				DoCommand(tile, 0, AxisToTrack(OtherAxis(GetCrossingRoadAxis(tile))), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
 			} else {
 				SetTileOwner(tile, new_player);
 			}

@@ -422,6 +422,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 
 		if (_docommand_recursive == 1 &&
 				!(flags & DC_QUERY_COST) &&
+				!(flags & DC_BANKRUPT) &&
 				res.GetCost() != 0 &&
 				!CheckPlayerHasMoney(res)) {
 			goto error;
@@ -446,7 +447,7 @@ error:
 	}
 
 	/* if toplevel, subtract the money. */
-	if (--_docommand_recursive == 0) {
+	if (--_docommand_recursive == 0 && !(flags & DC_BANKRUPT)) {
 		SubtractMoneyFromPlayer(res);
 		/* XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player */
 		if (tile != 0 && IsValidPlayer(_current_player)) {

@@ -2893,9 +2893,9 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 	} else {
 		if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile)) {
 			/* For a drive-through stop on a town-owned road remove the stop and replace the road */
-			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? RoadStop::TRUCK : RoadStop::BUS, DC_EXEC, CMD_REMOVE_ROAD_STOP);
+			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? RoadStop::TRUCK : RoadStop::BUS, DC_EXEC | DC_BANKRUPT, CMD_REMOVE_ROAD_STOP);
 		} else {
-			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+			DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 		}
 	}
 }
