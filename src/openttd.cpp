@@ -2362,6 +2362,38 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(87)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
+				Owner o = GetTileOwner(t);
+				if (IsValidPlayer(o) && !GetPlayer(o)->is_active) {
+					_current_player = o;
+					ChangeTileOwner(t, o, PLAYER_SPECTATOR);
+				}
+				if (IsBuoyTile(t)) {
+					/* reset buoy owner to OWNER_NONE in the station struct
+					 * (even if it is owned by active player) */
+					GetStationByTile(t)->owner = OWNER_NONE;
+				}
+			} else if (IsTileType(t, MP_ROAD)) {
+				/* works for all RoadTileType */
+				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
+					/* update even non-existing road types to update tile owner too */
+					Owner o = GetRoadOwner(t, rt);
+					if (IsValidPlayer(o) && !GetPlayer(o)->is_active) SetRoadOwner(t, rt, OWNER_NONE);
+				}
+				if (GetRoadTileType(t) == ROAD_TILE_CROSSING) {
+					Owner o = GetTileOwner(t);
+					if (!GetPlayer(o)->is_active) {
+						/* remove leftover rail piece from crossing (from very old savegames) */
+						_current_player = o;
+						DoCommand(t, 0, AxisToTrack(OtherAxis(GetCrossingRoadAxis(t))), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
+					}
+				}
+			}
+		}
+	}
+
 	return InitializeWindowsAndCaches();
 }
 
