@@ -2887,7 +2887,7 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 		Station* st = GetStationByTile(tile);
 
 		SetTileOwner(tile, new_player);
-		st->owner = new_player;
+		if (!IsBuoy(tile)) st->owner = new_player; // do not set st->owner for buoys
 		RebuildStationLists();
 		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
