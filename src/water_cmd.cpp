@@ -220,15 +220,15 @@ void MakeWaterKeepingClass(TileIndex tile, Owner o)
 
 static CommandCost RemoveShipDepot(TileIndex tile, uint32 flags)
 {
-	TileIndex tile2;
-
 	if (!IsShipDepot(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
-	tile2 = GetOtherShipDepotTile(tile);
+	TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-	if (!EnsureNoVehicleOnGround(tile2)) return CMD_ERROR;
+	/* do not check for ship on tile when company goes bankrupt */
+	if (!(flags & DC_BANKRUPT)) {
+		if (!EnsureNoVehicleOnGround(tile) || !EnsureNoVehicleOnGround(tile2)) return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
@@ -1139,11 +1139,15 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 
 	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
-	} else if (IsShipDepot(tile)) {
-		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
-	} else {
-		SetTileOwner(tile, OWNER_NONE);
+		return;
 	}
+
+	/* Remove depot */
+	if (IsShipDepot(tile)) DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+
+	/* Set owner of canals and locks ... and also canal under dock there was before.
+	 * Check if the new owner after removing depot isn't OWNER_WATER. */
+	if (IsTileOwner(tile, old_player)) SetTileOwner(tile, OWNER_NONE);
 }
 
 static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)

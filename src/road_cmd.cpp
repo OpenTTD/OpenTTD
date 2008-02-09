@@ -1413,7 +1413,8 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	}
 
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
-		if (!HasBit(GetRoadTypes(tile), rt)) continue;
+		/* ROADTYPE_ROAD denotes the tile owner, so update it too */
+		if (rt != ROADTYPE_ROAD && !HasBit(GetRoadTypes(tile), rt)) continue;
 
 		if (GetRoadOwner(tile, rt) == old_player) {
 			SetRoadOwner(tile, rt, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);

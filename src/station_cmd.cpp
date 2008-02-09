@@ -1465,6 +1465,15 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
+
+static void *ClearRoadStopStatusEnum(Vehicle *v, void *)
+{
+	if (v->type == VEH_ROAD) ClrBit(v->u.road.state, RVS_IN_DT_ROAD_STOP);
+
+	return NULL;
+}
+
+
 /** Remove a bus station
  * @param st Station to remove
  * @param flags operation to perform
@@ -1491,7 +1500,13 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 	assert(cur_stop != NULL);
 
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	/* don't do the check for drive-through road stops when company bankrupts */
+	if (IsDriveThroughStopTile(tile) && (flags & DC_BANKRUPT)) {
+		/* remove the 'going through road stop' status from all vehicles on that tile */
+		if (flags & DC_EXEC) VehicleFromPos(tile, NULL, &ClearRoadStopStatusEnum);
+	} else {
+		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
 		if (*primary_stop == cur_stop) {
@@ -1905,7 +1920,8 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 	TileIndex tile = st->dock_tile;
 
 	if (HasStationInUse(st->index, INVALID_PLAYER)) return_cmd_error(STR_BUOY_IS_IN_USE);
-	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
+	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		st->dock_tile = 0;
@@ -2891,11 +2907,18 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 		RebuildStationLists();
 		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
-		if (IsDriveThroughStopTile(tile) && GetStopBuiltOnTownRoad(tile)) {
-			/* For a drive-through stop on a town-owned road remove the stop and replace the road */
+		if (IsDriveThroughStopTile(tile)) {
+			/* Remove the drive-through road stop */
 			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? RoadStop::TRUCK : RoadStop::BUS, DC_EXEC | DC_BANKRUPT, CMD_REMOVE_ROAD_STOP);
+			assert(IsTileType(tile, MP_ROAD));
+			/* Change owner of tile and all roadtypes */
+			ChangeTileOwner(tile, old_player, new_player);
 		} else {
 			DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
+			/* Set tile owner of water under (now removed) buoy and dock to OWNER_NONE.
+			 * Update owner of buoy if it was not removed (was in orders).
+			 * Do not update when owned by OWNER_WATER (sea and rivers). */
+			if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && IsTileOwner(tile, old_player)) SetTileOwner(tile, OWNER_NONE);
 		}
 	}
 }
