@@ -1415,6 +1415,16 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 	return true;
 }
 
+/** Production level maximum, minimum and default values.
+ * It is not a value been really used in order to change, but rather an indicator
+ * of how the industry is behaving. */
+enum ProductionLevels {
+	PRODLEVEL_CLOSURE = 0x00,  ///< signal set to actually close the industry
+	PRODLEVEL_MINIMUM = 0x04,  ///< below this level, the industry is set to be closing
+	PRODLEVEL_DEFAULT = 0x10,  ///< default level set when the industry is created
+	PRODLEVEL_MAXIMUM = 0x80,  ///< the industry is running at full speed
+};
+
 static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, byte layout, const Town *t, Owner owner)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(type);
@@ -1503,7 +1513,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 	if (!_generating_world) i->last_month_production[0] = i->last_month_production[1] = 0;
 
-	i->prod_level = 0x10;
+	i->prod_level = PRODLEVEL_DEFAULT;
 
 	do {
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
@@ -2126,7 +2136,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	/* Increase if needed */
-	while (mul-- != 0 && i->prod_level < 0x80) {
+	while (mul-- != 0 && i->prod_level < PRODLEVEL_MAXIMUM) {
 		i->prod_level <<= 1;
 		i->production_rate[0] = min(i->production_rate[0] * 2, 0xFF);
 		i->production_rate[1] = min(i->production_rate[1] * 2, 0xFF);
@@ -2135,7 +2145,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	/* Decrease if needed */
 	while (div-- != 0 && !closeit) {
-		if (i->prod_level == 4) {
+		if (i->prod_level == PRODLEVEL_MINIMUM) {
 			closeit = true;
 		} else {
 			i->prod_level >>= 1;
@@ -2147,16 +2157,16 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	/* Increase or Decreasing the production level if needed */
 	if (increment != 0) {
-		if (increment < 0 && i->prod_level == 4) {
+		if (increment < 0 && i->prod_level == PRODLEVEL_MINIMUM) {
 			closeit = true;
 		} else {
-			i->prod_level = ClampU(i->prod_level + increment, 4, 0x80);
+			i->prod_level = ClampU(i->prod_level + increment, PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
 		}
 	}
 
 	/* Close if needed and allowed */
 	if (closeit && !CheckIndustryCloseDownProtection(i->type)) {
-		i->prod_level = 0;
+		i->prod_level = PRODLEVEL_CLOSURE;
 		str = indspec->closure_text;
 	}
 
@@ -2200,7 +2210,7 @@ void IndustryMonthlyLoop()
 
 	FOR_ALL_INDUSTRIES(i) {
 		UpdateIndustryStatistics(i);
-		if (i->prod_level == 0) {
+		if (i->prod_level == PRODLEVEL_CLOSURE) {
 			delete i;
 		} else {
 			ChangeIndustryProduction(i, true);
