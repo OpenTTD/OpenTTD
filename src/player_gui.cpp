@@ -46,7 +46,7 @@ static void DoSelectPlayerFace(PlayerID player, bool show_big);
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
 	int x, y, i, j, year;
-	const Money (*tbl)[13];
+	const Money (*tbl)[EXPENSES_END];
 	Money sum, cost;
 	StringID str;
 

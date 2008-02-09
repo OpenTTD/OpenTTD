@@ -62,7 +62,7 @@ struct Player {
 	bool is_active;
 	bool is_ai;
 
-	Money yearly_expenses[3][13];
+	Money yearly_expenses[3][EXPENSES_END];
 	PlayerEconomyEntry cur_economy;
 	PlayerEconomyEntry old_economy[24];
 	EngineRenewList engine_renew_list; ///< Defined later
