@@ -2853,11 +2853,11 @@ static const SaveLoad _common_veh_desc[] = {
 	 SLE_CONDVAR(Vehicle, value,                SLE_FILE_I32 | SLE_VAR_I64, 0, 64),
 	 SLE_CONDVAR(Vehicle, value,                SLE_INT64,                 65, SL_MAX_VERSION),
 
-	    SLE_VAR(Vehicle, random_bits,          SLE_UINT8),
-	    SLE_VAR(Vehicle, waiting_triggers,     SLE_UINT8),
+	 SLE_CONDVAR(Vehicle, random_bits,          SLE_UINT8,                 2, SL_MAX_VERSION),
+	 SLE_CONDVAR(Vehicle, waiting_triggers,     SLE_UINT8,                 2, SL_MAX_VERSION),
 
-	    SLE_REF(Vehicle, next_shared,          REF_VEHICLE),
-	    SLE_REF(Vehicle, prev_shared,          REF_VEHICLE),
+	 SLE_CONDREF(Vehicle, next_shared,        REF_VEHICLE,                 2, SL_MAX_VERSION),
+	 SLE_CONDREF(Vehicle, prev_shared,        REF_VEHICLE,                 2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Vehicle, group_id,             SLE_UINT16,                60, SL_MAX_VERSION),
 
