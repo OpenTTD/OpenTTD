@@ -111,7 +111,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t)
 	/* Mark tile dirty in all cases */
 	MarkTileDirtyByTile(t);
 
-	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) {
+	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1) {
 		/* tiles at map borders are always WATER_CLASS_SEA */
 		SetWaterClass(t, WATER_CLASS_SEA);
 		return;
