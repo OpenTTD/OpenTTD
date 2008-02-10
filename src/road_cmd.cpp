@@ -945,7 +945,7 @@ static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
 void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 {
 	/* Don't draw the catenary under a low bridge */
-	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_BUILDINGS)) {
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_CATENARY)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
 
 		if (height <= GetTileMaxZ(ti->tile) + TILE_HEIGHT) return;
@@ -962,8 +962,8 @@ void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 		front = SPR_TRAMWAY_BASE + _road_frontwire_sprites_1[tram];
 	}
 
-	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_BUILDINGS));
-	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_BUILDINGS));
+	AddSortableSpriteToDraw(back,  PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_CATENARY));
+	AddSortableSpriteToDraw(front, PAL_NONE, ti->x, ti->y, 16, 16, TILE_HEIGHT + BB_HEIGHT_UNDER_BRIDGE, ti->z, IsTransparencySet(TO_CATENARY));
 }
 
 /**

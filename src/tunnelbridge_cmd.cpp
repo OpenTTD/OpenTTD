@@ -762,14 +762,14 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 	 * The bounding boxes here are the same as for bridge front/roof */
 	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, IsTransparencySet(TO_BRIDGES));
 
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, IsTransparencySet(TO_BUILDINGS));
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, IsTransparencySet(TO_CATENARY));
 
 	/* Start a new SpriteCombine for the front part */
 	EndSpriteCombine();
 	StartSpriteCombine();
 
 	/* For sloped sprites the bounding box needs to be higher, as the pylons stop on a higher point */
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z, IsTransparencySet(TO_BUILDINGS), front_bb_offset_x[offset], front_bb_offset_y[offset]);
+	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z, IsTransparencySet(TO_CATENARY), front_bb_offset_x[offset], front_bb_offset_y[offset]);
 }
 
 /**
@@ -832,7 +832,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 				catenary = true;
 				StartSpriteCombine();
-				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_BUILDINGS), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
+				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 			}
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);

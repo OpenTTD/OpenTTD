@@ -3341,10 +3341,11 @@ STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Toggle t
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Toggle transparency for trees. CTRL+click to lock.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Toggle transparency for houses. CTRL+click to lock.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle transparency for industries. CTRL+click to lock.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots, waypoints and catenary. CTRL+click to lock.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots and waypoints. CTRL+click to lock.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges. CTRL+click to lock.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas. CTRL+click to lock.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators. CTRL+click to lock.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. CTRL+click to lock.
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

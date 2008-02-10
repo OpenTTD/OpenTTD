@@ -22,11 +22,12 @@ enum TransparencyOption {
 	TO_BUILDINGS,  ///< player buildings - depots, stations, HQ, ...
 	TO_BRIDGES,    ///< bridges
 	TO_STRUCTURES, ///< unmovable structures
+	TO_CATENARY,   ///< catenary
 	TO_LOADING,    ///< loading indicators
 	TO_END,
 };
 
-typedef byte TransparencyOptionBits; ///< transparency option bits
+typedef uint TransparencyOptionBits; ///< transparency option bits
 extern TransparencyOptionBits _transparency_opt;
 extern TransparencyOptionBits _transparency_lock;
 
