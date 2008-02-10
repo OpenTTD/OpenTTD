@@ -409,6 +409,7 @@ enum RailGroundType {
 	RAIL_GROUND_FENCE_HORIZ2 = 11, ///< Grass with a fence at the northern side
 	RAIL_GROUND_ICE_DESERT   = 12, ///< Icy or sandy
 	RAIL_GROUND_WATER        = 13, ///< Grass with a fence and shore or water on the free halftile
+	RAIL_GROUND_HALF_SNOW    = 14, ///< Snow only on higher part of slope (steep or one corner raised)
 };
 
 static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)

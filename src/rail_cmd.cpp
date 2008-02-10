@@ -1698,7 +1698,8 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 		pal = PAL_NONE;
 		switch (rgt) {
 			case RAIL_GROUND_BARREN:     pal = PALETTE_TO_BARE_LAND; break;
-			case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset;  break;
+			case RAIL_GROUND_ICE_DESERT:
+			case RAIL_GROUND_HALF_SNOW:  image += rti->snow_offset;  break; // higher part has snow in this case too
 			default: break;
 		}
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
@@ -1934,12 +1935,62 @@ static void TileLoop_Track(TileIndex tile)
 	}
 
 	switch (_opt.landscape) {
-		case LT_ARCTIC:
-			if (GetTileZ(tile) > GetSnowLine()) {
-				new_ground = RAIL_GROUND_ICE_DESERT;
+		case LT_ARCTIC: {
+			uint z;
+			Slope slope = GetTileSlope(tile, &z);
+			bool half = false;
+
+			/* for non-flat track, use lower part of track
+			 * in other cases, use the highest part with track */
+			if (IsPlainRailTile(tile)) {
+				TrackBits track = GetTrackBits(tile);
+				Foundation f = GetRailFoundation(slope, track);
+
+				switch (f) {
+					case FOUNDATION_NONE:
+						/* no foundation - is the track on the upper side of three corners raised tile? */
+						if (IsSlopeWithThreeCornersRaised(slope)) z += TILE_HEIGHT;
+						break;
+
+					case FOUNDATION_INCLINED_X:
+					case FOUNDATION_INCLINED_Y:
+						/* sloped track - is it on a steep slope? */
+						if (IsSteepSlope(slope)) z += TILE_HEIGHT;
+						break;
+
+					case FOUNDATION_STEEP_LOWER:
+						/* only lower part of steep slope */
+						z += TILE_HEIGHT;
+						break;
+
+					default:
+						/* if it is a steep slope, then there is a track on higher part */
+						if (IsSteepSlope(slope)) z += TILE_HEIGHT;
+						z += TILE_HEIGHT;
+						break;
+				}
+
+				half = IsInsideMM(f, FOUNDATION_STEEP_BOTH, FOUNDATION_HALFTILE_N + 1);
+			} else {
+				/* is the depot on a non-flat tile? */
+				if (slope != SLOPE_FLAT) z += TILE_HEIGHT;
+			}
+
+			/* 'z' is now the lowest part of the highest track bit -
+			 * for sloped track, it is 'z' of lower part
+			 * for two track bits, it is 'z' of higher track bit
+			 * For non-continuous foundations (and STEEP_BOTH), 'half' is set */
+			if (z > GetSnowLine()) {
+				if (half && z - GetSnowLine() == TILE_HEIGHT) {
+					/* track on non-continuous foundation, lower part is not under snow */
+					new_ground = RAIL_GROUND_HALF_SNOW;
+				} else {
+					new_ground = RAIL_GROUND_ICE_DESERT;
+				}
 				goto set_ground;
 			}
 			break;
+			}
 
 		case LT_TROPIC:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
