@@ -1283,6 +1283,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_VAR("sprite_cache_size",SLE_UINT, S, 0, _sprite_cache_size,     4, 1, 64, 0, STR_NULL, NULL),
 	  SDTG_VAR("player_face",    SLE_UINT32, S, 0, _player_face,      0,0,0xFFFFFFFF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_options", SLE_UINT8, S, 0, _transparency_opt, 0, 0,0xFF,0, STR_NULL, NULL),
+	  SDTG_VAR("transparency_locks", SLE_UINT8, S, 0, _transparency_lock, 0, 0,0xFF,0, STR_NULL, NULL),
 	  SDTG_END()
 };
 

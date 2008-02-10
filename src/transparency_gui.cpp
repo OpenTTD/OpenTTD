@@ -12,12 +12,10 @@
 #include "table/strings.h"
 
 TransparencyOptionBits _transparency_opt;
+TransparencyOptionBits _transparency_lock;
 
 enum TransparencyToolbarWidgets{
-	/* Widgets not toggled when pressing the X key */
 	TTW_WIDGET_SIGNS = 3,    ///< Make signs background transparent
-
-	/* Widgets toggled when pressing the X key */
 	TTW_WIDGET_TREES,        ///< Make trees transparent
 	TTW_WIDGET_HOUSES,       ///< Make houses transparent
 	TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
@@ -39,14 +37,23 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 			}
 
 			DrawWindowWidgets(w);
+			for (uint i = TO_SIGNS; i < TO_END; i++) {
+				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[TTW_WIDGET_SIGNS + i].left + 1, w->widget[TTW_WIDGET_SIGNS + i].top + 1);
+			}
 			break;
 
 		case WE_CLICK:
 			if (e->we.click.widget >= TTW_WIDGET_SIGNS) {
-				/* toggle the bit of the transparencies variable when clicking on a widget, and play a sound */
-				ToggleTransparency((TransparencyOption)(e->we.click.widget - TTW_WIDGET_SIGNS));
-				SndPlayFx(SND_15_BEEP);
-				MarkWholeScreenDirty();
+				if (_ctrl_pressed) {
+					/* toggle the bit of the transparencies lock variable */
+					ToggleTransparencyLock((TransparencyOption)(e->we.click.widget - TTW_WIDGET_SIGNS));
+					SetWindowDirty(w);
+				} else {
+					/* toggle the bit of the transparencies variable and play a sound */
+					ToggleTransparency((TransparencyOption)(e->we.click.widget - TTW_WIDGET_SIGNS));
+					SndPlayFx(SND_15_BEEP);
+					MarkWholeScreenDirty();
+				}
 			}
 			break;
 	}

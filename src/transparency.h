@@ -28,6 +28,7 @@ enum TransparencyOption {
 
 typedef byte TransparencyOptionBits; ///< transparency option bits
 extern TransparencyOptionBits _transparency_opt;
+extern TransparencyOptionBits _transparency_lock;
 
 /**
  * Check if the transparency option bit is set
@@ -43,26 +44,33 @@ static inline bool IsTransparencySet(TransparencyOption to)
 /**
  * Toggle the transparency option bit
  *
- * @param to the structure which transparency option is toggle
+ * @param to the transparency option to be toggled
  */
 static inline void ToggleTransparency(TransparencyOption to)
 {
 	ToggleBit(_transparency_opt, to);
 }
 
-/** Toggle all transparency options (except signs) or restore the stored transparencies */
+/**
+ * Toggle the transparency lock bit
+ *
+ * @param to the transparency option to be locked or unlocked
+ */
+static inline void ToggleTransparencyLock(TransparencyOption to)
+{
+	ToggleBit(_transparency_lock, to);
+}
+
+/** Set or clear all non-locked transparency options */
 static inline void ResetRestoreAllTransparency()
 {
-	/* backup of the original transparencies or if all transparencies false toggle them to true */
-	static TransparencyOptionBits trans_opt = ~0;
-
-	if (_transparency_opt == 0) {
-		/* no structure is transparent, so restore the old transparency if present otherwise set all true */
-		_transparency_opt = trans_opt;
+	/* if none of the non-locked options are set */
+	if ((_transparency_opt & ~_transparency_lock) == 0) {
+		/* set all non-locked options */
+		_transparency_opt |= ~_transparency_lock;
 	} else {
-		/* any structure is transparent, so store current transparency settings and reset it */
-		trans_opt = _transparency_opt;
-		_transparency_opt = 0;
+		/* clear all non-locked options */
+		_transparency_opt &= _transparency_lock;
 	}
 
 	MarkWholeScreenDirty();
