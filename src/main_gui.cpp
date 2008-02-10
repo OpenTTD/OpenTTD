@@ -1914,6 +1914,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			case '6' | WKC_CTRL:
 			case '7' | WKC_CTRL:
 			case '8' | WKC_CTRL:
+			case '9' | WKC_CTRL:
 				/* Transparency toggle hot keys */
 				ToggleTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL)));
 				MarkWholeScreenDirty();

@@ -11,8 +11,6 @@
  * Transparency option bits: which position in _transparency_opt stands for which transparency.
  * If you change the order, change the order of the ShowTransparencyToolbar() stuff in transparency_gui.cpp too.
  * If you add or remove an option don't forget to change the transparency 'hot keys' in main_gui.cpp.
- * If you add an option and have more then 8, change the typedef TransparencyOptionBits and
- * the save stuff (e.g. SLE_UINT8 to SLE_UINT16) in settings.cpp .
  */
 enum TransparencyOption {
 	TO_SIGNS = 0,  ///< signs

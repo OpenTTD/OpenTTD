@@ -19,7 +19,7 @@ enum RoadTileType {
 };
 
 static inline RoadTileType GetRoadTileType(TileIndex t)
-	{
+{
 	assert(IsTileType(t, MP_ROAD));
 	return (RoadTileType)GB(_m[t].m5, 6, 2);
 }
