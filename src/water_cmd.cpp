@@ -111,6 +111,12 @@ void SetWaterClassDependingOnSurroundings(TileIndex t)
 	/* Mark tile dirty in all cases */
 	MarkTileDirtyByTile(t);
 
+	if (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) {
+		/* tiles at map borders are always WATER_CLASS_SEA */
+		SetWaterClass(t, WATER_CLASS_SEA);
+		return;
+	}
+
 	bool has_water = false;
 	bool has_canal = false;
 	bool has_river = false;
