@@ -177,8 +177,8 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
 CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	uint bridge_type;
-	RailType railtype;
-	RoadTypes roadtypes;
+	RailType railtype = INVALID_RAILTYPE;
+	RoadTypes roadtypes = ROADTYPES_NONE;
 	uint x;
 	uint y;
 	uint sx;
@@ -197,21 +197,29 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	CommandCost ret;
 	bool replace_bridge = false;
 	uint replaced_bridge_type;
+	TransportType transport_type;
 
 	/* unpack parameters */
 	bridge_type = GB(p2, 0, 8);
 
+	transport_type = (TransportType)GB(p2, 15, 2);
+	/* For now, only TRANSPORT_RAIL and TRANSPORT_ROAD are allowed.
+	 * But let not this stops us for preparing the future */
+	if (transport_type >= TRANSPORT_WATER) return CMD_ERROR;
+
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	/* type of bridge */
-	if (HasBit(p2, 15)) {
-		railtype = INVALID_RAILTYPE; // road bridge
-		roadtypes = (RoadTypes)GB(p2, 8, 3);
-		if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_player, roadtypes)) return CMD_ERROR;
-	} else {
-		if (!ValParamRailtype((RailType)GB(p2, 8, 8))) return CMD_ERROR;
-		railtype = (RailType)GB(p2, 8, 8);
-		roadtypes = ROADTYPES_NONE;
+	switch (transport_type) {
+		case TRANSPORT_ROAD:
+			roadtypes = (RoadTypes)GB(p2, 8, 3);
+			if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_player, roadtypes)) return CMD_ERROR;
+			break;
+
+		case TRANSPORT_RAIL:
+			railtype = (RailType)GB(p2, 8, 8);
+			if (!ValParamRailtype(railtype)) return CMD_ERROR;
+			break;
 	}
 
 	x = TileX(end_tile);
@@ -249,8 +257,6 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end, &z_end);
 
 	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
-
-	TransportType transport_type = railtype == INVALID_RAILTYPE ? TRANSPORT_ROAD : TRANSPORT_RAIL;
 
 	if (IsBridgeTile(tile_start) && IsBridgeTile(tile_end) &&
 			GetOtherBridgeEnd(tile_start) == tile_end &&
@@ -340,12 +346,16 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 		DiagDirection dir = AxisToDiagDir(direction);
 		Owner owner = (replace_bridge && IsTileOwner(tile_start, OWNER_TOWN)) ? OWNER_TOWN : _current_player;
 
-		if (railtype != INVALID_RAILTYPE) {
-			MakeRailBridgeRamp(tile_start, owner, bridge_type, dir, railtype);
-			MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
-		} else {
-			MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir, roadtypes);
-			MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
+		switch (transport_type) {
+			case TRANSPORT_RAIL:
+				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir, railtype);
+				MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
+				break;
+
+			case TRANSPORT_ROAD:
+				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir, roadtypes);
+				MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
+				break;
 		}
 		MarkTileDirtyByTile(tile_start);
 		MarkTileDirtyByTile(tile_end);
@@ -403,7 +413,7 @@ not_valid_below:;
 		}
 	}
 
-	if (flags & DC_EXEC && railtype != INVALID_RAILTYPE) {
+	if (flags & DC_EXEC && transport_type == TRANSPORT_RAIL) {
 		Track track = AxisToTrack(direction);
 		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, _current_player);
 		YapfNotifyTrackLayoutChange(tile_start, track);
