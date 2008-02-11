@@ -202,12 +202,9 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	/* unpack parameters */
 	bridge_type = GB(p2, 0, 8);
 
-	transport_type = (TransportType)GB(p2, 15, 2);
-	/* For now, only TRANSPORT_RAIL and TRANSPORT_ROAD are allowed.
-	 * But let not this stops us for preparing the future */
-	if (transport_type >= TRANSPORT_WATER) return CMD_ERROR;
-
 	if (p1 >= MapSize()) return CMD_ERROR;
+
+	transport_type = (TransportType)GB(p2, 15, 2);
 
 	/* type of bridge */
 	switch (transport_type) {
@@ -220,6 +217,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			railtype = (RailType)GB(p2, 8, 8);
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
+
+		default:
+			/* For now, only TRANSPORT_RAIL and TRANSPORT_ROAD are allowed.
+			 * But let not this stops us for preparing the future */
+			return CMD_ERROR;
 	}
 
 	x = TileX(end_tile);
@@ -355,6 +357,10 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			case TRANSPORT_ROAD:
 				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir, roadtypes);
 				MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
+				break;
+
+			default:
+				NOT_REACHED();
 				break;
 		}
 		MarkTileDirtyByTile(tile_start);
