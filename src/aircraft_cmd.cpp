@@ -1194,7 +1194,7 @@ static bool AircraftController(Vehicle *v)
 
 		v->tile = gp.new_tile;
 		/* If vehicle is in the air, use tile coordinate 0. */
-		// if (amd->flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
+		if (amd->flag & (AMED_TAKEOFF | AMED_SLOWTURN | AMED_LAND)) v->tile = 0;
 
 		/* Adjust Z for land or takeoff? */
 		uint z = v->z_pos;
