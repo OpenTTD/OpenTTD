@@ -921,7 +921,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\code\enum_type.hpp"
+				RelativePath=".\..\src\core\enum_type.hpp"
 				>
 			</File>
 			<File
@@ -1141,7 +1141,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\overflowsafe_type.hpp"
+				RelativePath=".\..\src\core\overflowsafe_type.hpp"
 				>
 			</File>
 			<File

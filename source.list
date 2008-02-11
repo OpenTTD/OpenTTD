@@ -139,7 +139,7 @@ economy_func.h
 economy_type.h
 core/endian_func.hpp
 engine.h
-code/enum_type.hpp
+core/enum_type.hpp
 fileio.h
 fios.h
 fontcache.h
@@ -194,7 +194,7 @@ video/null_v.h
 oldpool.h
 openttd.h
 order.h
-overflowsafe_type.hpp
+core/overflowsafe_type.hpp
 pathfind.h
 player_base.h
 player_face.h
