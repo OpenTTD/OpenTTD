@@ -1,5 +1,6 @@
 # Source Files
 airport.cpp
+core/alloc_func.cpp
 articulated_vehicles.cpp
 autoreplace_cmd.cpp
 aystar.cpp

@@ -6,6 +6,15 @@
 #define ALLOC_FUNC_HPP
 
 /**
+ * Functions to exit badly with an error message.
+ * It has to be linked so the error messages are not
+ * duplicated in each object file making the final
+ * binary needlessly large.
+ */
+void MallocError(size_t size);
+void ReallocError(size_t size);
+
+/**
  * Simplified allocation function that allocates the specified number of
  * elements of the given type. It also explicitly casts it to the requested
  * type.
@@ -25,7 +34,7 @@ template <typename T> FORCEINLINE T* MallocT(size_t num_elements)
 	if (num_elements == 0) return NULL;
 
 	T *t_ptr = (T*)malloc(num_elements * sizeof(T));
-	if (t_ptr == NULL) error("Out of memory. Cannot allocate %i bytes", num_elements * sizeof(T));
+	if (t_ptr == NULL) MallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 
@@ -49,7 +58,7 @@ template <typename T> FORCEINLINE T* CallocT(size_t num_elements)
 	if (num_elements == 0) return NULL;
 
 	T *t_ptr = (T*)calloc(num_elements, sizeof(T));
-	if (t_ptr == NULL) error("Out of memory. Cannot allocate %i bytes", num_elements * sizeof(T));
+	if (t_ptr == NULL) MallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 
@@ -77,7 +86,7 @@ template <typename T> FORCEINLINE T* ReallocT(T *t_ptr, size_t num_elements)
 	}
 
 	t_ptr = (T*)realloc(t_ptr, num_elements * sizeof(T));
-	if (t_ptr == NULL) error("Out of memory. Cannot reallocate %i bytes", num_elements * sizeof(T));
+	if (t_ptr == NULL) ReallocError(num_elements * sizeof(T));
 	return t_ptr;
 }
 

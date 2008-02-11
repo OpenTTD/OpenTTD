@@ -453,6 +453,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\alloc_func.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\articulated_vehicles.cpp"
 				>
 			</File>
@@ -917,7 +921,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\enum_type.hpp"
+				RelativePath=".\..\src\code\enum_type.hpp"
 				>
 			</File>
 			<File
@@ -1137,7 +1141,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\overflowsafe_type.hpp"
+				RelativePath=".\..\src\overflowsafe_type.hpp"
 				>
 			</File>
 			<File
