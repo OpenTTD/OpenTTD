@@ -38,7 +38,7 @@
 #include "table/strings.h"
 #include "table/bridge_land.h"
 
-Bridge _bridge[MAX_BRIDGES];
+BridgeSpec _bridge[MAX_BRIDGES];
 
 /** Reset the data been eventually changed by the grf loaded. */
 void ResetBridges()
@@ -99,7 +99,7 @@ bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 
 static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 {
-	const Bridge *bridge = GetBridgeSpec(index);
+	const BridgeSpec *bridge = GetBridgeSpec(index);
 	assert(table < 7);
 	if (bridge->sprite_table == NULL || bridge->sprite_table[table] == NULL) {
 		return _bridge_sprite_table[index][table];
@@ -153,7 +153,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 
 bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len)
 {
-	const Bridge *b = GetBridgeSpec(bridge_type);
+	const BridgeSpec *b = GetBridgeSpec(bridge_type);
 	uint max; // max possible length of a bridge (with patch 100)
 
 	if (bridge_type >= MAX_BRIDGES) return false;

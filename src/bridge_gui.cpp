@@ -79,7 +79,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 
 			uint y = 15;
 			for (uint i = 0; (i < w->vscroll.cap) && ((i + w->vscroll.pos) < _bridgedata.count); i++) {
-				const Bridge *b = GetBridgeSpec(_bridgedata.indexes[i + w->vscroll.pos]);
+				const BridgeSpec *b = GetBridgeSpec(_bridgedata.indexes[i + w->vscroll.pos]);
 
 				SetDParam(2, _bridgedata.costs[i + w->vscroll.pos]);
 				SetDParam(1, b->speed * 10 / 16);
@@ -191,7 +191,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
 			if (CheckBridge_Stuff(brd_type, bridge_len)) {
 				/* bridge is accepted, add to list */
-				const Bridge *b = GetBridgeSpec(brd_type);
+				const BridgeSpec *b = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
 				_bridgedata.costs[j] = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * b->price) >> 8);

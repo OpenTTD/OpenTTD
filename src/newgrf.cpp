@@ -1177,7 +1177,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	}
 
 	for (int i = 0; i < numinfo; i++) {
-		Bridge *bridge = &_bridge[brid + i];
+		BridgeSpec *bridge = &_bridge[brid + i];
 
 		switch (prop) {
 			case 0x08: // Year of availability

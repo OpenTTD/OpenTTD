@@ -723,7 +723,7 @@ static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 #define MB(y, mnl, mxl, p, mxs, spr, plt, dsc, nrl, nrd) \
 	{y, mnl, mxl, p, mxs, spr, plt, dsc, nrl, nrd, NULL, 0}
 
-const Bridge _orig_bridge[] = {
+const BridgeSpec _orig_bridge[] = {
 /*
 	       year of availablity
 	       |  minimum length

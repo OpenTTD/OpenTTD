@@ -17,7 +17,7 @@ typedef uint BridgeType;
 
 /** Struct containing information about a single bridge type
  */
-struct Bridge {
+struct BridgeSpec {
 	Year avail_year;     ///< the year where it becomes available
 	byte min_length;     ///< the minimum length (not counting start and end tile)
 	byte max_length;     ///< the maximum length (not counting start and end tile)
@@ -32,12 +32,12 @@ struct Bridge {
 	byte flags;          ///< bit 0 set: disable drawing of far pillars.
 };
 
-extern Bridge _bridge[MAX_BRIDGES];
+extern BridgeSpec _bridge[MAX_BRIDGES];
 
 Foundation GetBridgeFoundation(Slope tileh, Axis axis);
 bool HasBridgeFlatRamp(Slope tileh, Axis axis);
 
-static inline const Bridge *GetBridgeSpec(BridgeType i)
+static inline const BridgeSpec *GetBridgeSpec(BridgeType i)
 {
 	assert(i < lengthof(_bridge));
 	return &_bridge[i];
