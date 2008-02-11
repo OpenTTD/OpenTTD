@@ -44,7 +44,7 @@ Bridge _bridge[MAX_BRIDGES];
 void ResetBridges()
 {
 	/* First, free sprite table data */
-	for (uint i = 0; i < MAX_BRIDGES; i++) {
+	for (BridgeType i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != NULL) {
 			for (uint j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
 			free(_bridge[i].sprite_table);
@@ -151,7 +151,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 }
 
-bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
+bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len)
 {
 	const Bridge *b = GetBridgeSpec(bridge_type);
 	uint max; // max possible length of a bridge (with patch 100)
@@ -176,7 +176,7 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len)
  */
 CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	uint bridge_type;
+	BridgeType bridge_type;
 	RailType railtype = INVALID_RAILTYPE;
 	RoadTypes roadtypes = ROADTYPES_NONE;
 	uint x;
@@ -196,7 +196,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 	bool replace_bridge = false;
-	uint replaced_bridge_type;
+	BridgeType replaced_bridge_type;
 	TransportType transport_type;
 
 	/* unpack parameters */
@@ -708,7 +708,7 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
  * @param y Sprite Y position of front pillar.
  * @param z_bridge Absolute height of bridge bottom.
  */
-static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, uint type, int x, int y, int z_bridge)
+static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, BridgeType type, int x, int y, int z_bridge)
 {
 	SpriteID image = psid->sprite;
 	if (image != 0) {
@@ -994,7 +994,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	TileIndex rampsouth;
 	Axis axis;
 	uint piece;
-	uint type;
+	BridgeType type;
 	int x;
 	int y;
 	uint z;

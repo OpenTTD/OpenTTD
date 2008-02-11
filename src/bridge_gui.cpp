@@ -26,7 +26,7 @@ static struct BridgeData {
 	TileIndex start_tile;
 	TileIndex end_tile;
 	uint8 type;
-	uint8 indexes[MAX_BRIDGES];
+	BridgeType indexes[MAX_BRIDGES];
 	Money costs[MAX_BRIDGES];
 
 	BridgeData()
@@ -188,14 +188,14 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
 
 		/* loop for all bridgetypes */
-		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) {
-			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
+		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
+			if (CheckBridge_Stuff(brd_type, bridge_len)) {
 				/* bridge is accepted, add to list */
-				const Bridge *b = GetBridgeSpec(bridge_type);
+				const Bridge *b = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
 				_bridgedata.costs[j] = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * b->price) >> 8);
-				_bridgedata.indexes[j] = bridge_type;
+				_bridgedata.indexes[j] = brd_type;
 				j++;
 			}
 		}

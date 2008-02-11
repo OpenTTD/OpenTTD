@@ -13,6 +13,8 @@ enum {
 	MAX_BRIDGES = 13
 };
 
+typedef uint BridgeType;
+
 /** Struct containing information about a single bridge type
  */
 struct Bridge {
@@ -35,7 +37,7 @@ extern Bridge _bridge[MAX_BRIDGES];
 Foundation GetBridgeFoundation(Slope tileh, Axis axis);
 bool HasBridgeFlatRamp(Slope tileh, Axis axis);
 
-static inline const Bridge *GetBridgeSpec(uint i)
+static inline const Bridge *GetBridgeSpec(BridgeType i)
 {
 	assert(i < lengthof(_bridge));
 	return &_bridge[i];
@@ -43,7 +45,7 @@ static inline const Bridge *GetBridgeSpec(uint i)
 
 void DrawBridgeMiddle(const TileInfo *ti);
 
-bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
+bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len);
 int CalcBridgeLenCostFactor(int x);
 
 void ResetBridges();

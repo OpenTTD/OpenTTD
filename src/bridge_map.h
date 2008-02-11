@@ -8,6 +8,7 @@
 #include "direction_func.h"
 #include "rail_type.h"
 #include "road_map.h"
+#include "bridge.h"
 
 
 /**
@@ -67,7 +68,7 @@ static inline bool IsBridgeAbove(TileIndex t)
  * @pre IsBridgeTile(t)
  * @return The bridge type
  */
-static inline uint GetBridgeType(TileIndex t)
+static inline BridgeType GetBridgeType(TileIndex t)
 {
 	assert(IsBridgeTile(t));
 	return GB(_m[t].m2, 4, 4);
@@ -163,7 +164,7 @@ static inline void SetBridgeMiddle(TileIndex t, Axis a)
  * @param rt         the road or rail type
  * @note this function should not be called directly.
  */
-static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, TransportType tt, uint rt)
+static inline void MakeBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, DiagDirection d, TransportType tt, uint rt)
 {
 	SetTileType(t, MP_TUNNELBRIDGE);
 	SetTileOwner(t, o);
@@ -181,7 +182,7 @@ static inline void MakeBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDir
  * @param d          the direction this ramp must be facing
  * @param r          the road type of the bridge
  */
-static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, RoadTypes r)
+static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, DiagDirection d, RoadTypes r)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_ROAD, r);
 }
@@ -194,7 +195,7 @@ static inline void MakeRoadBridgeRamp(TileIndex t, Owner o, uint bridgetype, Dia
  * @param d          the direction this ramp must be facing
  * @param r          the rail type of the bridge
  */
-static inline void MakeRailBridgeRamp(TileIndex t, Owner o, uint bridgetype, DiagDirection d, RailType r)
+static inline void MakeRailBridgeRamp(TileIndex t, Owner o, BridgeType bridgetype, DiagDirection d, RailType r)
 {
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL, r);
 }
