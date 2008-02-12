@@ -32,6 +32,23 @@ enum GrfMiscBit {
 	GMB_CATENARY_ON_3RD_TRACK  = 5, // Unsupported.
 };
 
+enum GrfSpecFeature {
+	GSF_TRAIN,
+	GSF_ROAD,
+	GSF_SHIP,
+	GSF_AIRCRAFT,
+	GSF_STATION,
+	GSF_CANAL,
+	GSF_BRIDGE,
+	GSF_TOWNHOUSE,
+	GSF_GLOBALVAR,
+	GSF_INDUSTRYTILES,
+	GSF_INDUSTRIES,
+	GSF_CARGOS,
+	GSF_SOUNDFX,
+	GSF_END,
+};
+
 struct GRFLabel {
 	byte label;
 	uint32 nfo_line;

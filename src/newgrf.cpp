@@ -93,23 +93,6 @@ static byte _grf_data_blocks;
 static GrfDataType _grf_data_type;
 
 
-enum grfspec_feature {
-	GSF_TRAIN,
-	GSF_ROAD,
-	GSF_SHIP,
-	GSF_AIRCRAFT,
-	GSF_STATION,
-	GSF_CANAL,
-	GSF_BRIDGE,
-	GSF_TOWNHOUSE,
-	GSF_GLOBALVAR,
-	GSF_INDUSTRYTILES,
-	GSF_INDUSTRIES,
-	GSF_CARGOS,
-	GSF_SOUNDFX,
-};
-
-
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
 static const uint _vehcounts[4] = {
