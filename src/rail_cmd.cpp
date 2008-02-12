@@ -1433,27 +1433,20 @@ static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint i
 		}
 	};
 
-	static const SpriteID SignalBase[2][2][4] = {
-		{    /* Signals on left side */
-			{  0x4FB, 0x1323, 0x1333, 0x1343}, /* light signals */
-			{ 0x1353, 0x1363, 0x1373, 0x1383}  /* semaphores    */
-		}, { /* Signals on right side */
-			{  0x4FB, 0x1323, 0x1333, 0x1343}, /* light signals */
-			{ 0x1446, 0x1456, 0x1466, 0x1476}  /* semaphores    */
-		/*         |       |       |       |     */
-		/*    normal,  entry,   exit,  combo     */
-		}
-	};
-
 	uint x = TileX(tile) * TILE_SIZE + SignalPositions[side][pos].x;
 	uint y = TileY(tile) * TILE_SIZE + SignalPositions[side][pos].y;
 
 	SpriteID sprite;
 
-	if (GetSignalType(tile, track) == SIGTYPE_NORMAL && GetSignalVariant(tile, track) == SIG_ELECTRIC) {
-		sprite = SignalBase[side][GetSignalVariant(tile, track)][GetSignalType(tile, track)] + image + condition;
+	SignalType type       = GetSignalType(tile, track);
+	SignalVariant variant = GetSignalVariant(tile, track);
+
+	if (type == SIGTYPE_NORMAL && variant == SIG_ELECTRIC) {
+		/* Normal electric signals are picked from original sprites. */
+		sprite = SPR_ORIGINAL_SIGNALS_BASE + image + condition;
 	} else {
-		sprite = SPR_SIGNALS_BASE + (GetSignalType(tile, track) - 1) * 16 + GetSignalVariant(tile, track) * 64 + image + condition;
+		/* All other signals are picked from add on sprites. */
+		sprite = SPR_SIGNALS_BASE + (type - 1) * 16 + variant * 64 + image + condition;
 	}
 
 	AddSortableSpriteToDraw(sprite, PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSaveSlopeZ(x, y, track));

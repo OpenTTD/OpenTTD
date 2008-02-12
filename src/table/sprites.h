@@ -263,6 +263,8 @@ enum Sprites {
 	SPR_MONO_SNOW_OFFSET        = 26,
 	SPR_MGLV_SNOW_OFFSET        = 26,
 
+	SPR_ORIGINAL_SIGNALS_BASE   = 1275,
+
 	SPR_RAIL_SINGLE_Y           = 1005,
 	SPR_RAIL_SINGLE_X           = 1006,
 	SPR_RAIL_SINGLE_NORTH       = 1007,
