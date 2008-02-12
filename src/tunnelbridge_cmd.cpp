@@ -1142,8 +1142,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 		td->str = (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ?
 			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
 	} else { //so it must be a bridge
-		const BridgeSpec *brspc = GetBridgeSpec(GetBridgeType(tile));
-		td->str = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL ? brspc->name_rail : brspc->name_road;
+		td->str = GetBridgeSpec(GetBridgeType(tile))->transport_name[GetTunnelBridgeTransportType(tile)];
 	}
 	td->owner = GetTileOwner(tile);
 }

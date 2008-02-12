@@ -1250,14 +1250,10 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				if (newone != STR_UNDEFINED) bridge->material = newone;
 				} break;
 
-			case 0x11: { // description of bridge with rails
+			case 0x11: // description of bridge with rails or roads
+			case 0x12: {
 				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
-				if (newone != STR_UNDEFINED) bridge->name_rail = newone;
-				} break;
-
-			case 0x12: { // description of bridge with roads
-				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
-				if (newone != STR_UNDEFINED) bridge->name_road = newone;
+				if (newone != STR_UNDEFINED) bridge->transport_name[prop - 0x11] = newone;
 				} break;
 
 			default:
