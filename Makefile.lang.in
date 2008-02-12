@@ -44,13 +44,17 @@ string.o: $(SRC_DIR)/string.cpp endian_host.h
 	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
 	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
 
+alloc_func.o: $(SRC_DIR)/core/alloc_func.cpp endian_host.h
+	$(E) '$(STAGE) Compiling $(<:$(SRC_DIR)/%.cpp=%.cpp)'
+	$(Q)$(CXX_BUILD) $(CFLAGS_BUILD) -DSTRGEN -c -o $@ $<
+
 lang/english.txt: $(LANG_DIR)/english.txt
 	$(Q)mkdir -p lang
 	$(Q)cp $(LANG_DIR)/english.txt lang/english.txt
 
-$(STRGEN): string.o strgen.o
+$(STRGEN): alloc_func.o string.o strgen.o
 	$(E) '$(STAGE) Compiling and Linking $@'
-	$(Q)$(CXX_BUILD) string.o strgen.o -o $@
+	$(Q)$(CXX_BUILD) $^ -o $@
 
 table/strings.h: lang/english.txt $(STRGEN)
 	$(E) '$(STAGE) Generating $@'
