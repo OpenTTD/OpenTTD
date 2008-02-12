@@ -37,7 +37,7 @@ CargoPacket::~CargoPacket()
 	this->count = 0;
 }
 
-bool CargoPacket::SameSource(CargoPacket *cp)
+bool CargoPacket::SameSource(const CargoPacket *cp) const
 {
 	return this->source_xy == cp->source_xy && this->days_in_transit == cp->days_in_transit && this->paid_for == cp->paid_for;
 }

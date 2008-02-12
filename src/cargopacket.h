@@ -53,7 +53,7 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 	 * @param cp the cargo packet to compare to
 	 * @return true if and only if days_in_transit and source_xy are equal
 	 */
-	bool SameSource(CargoPacket *cp);
+	bool SameSource(const CargoPacket *cp) const;
 };
 
 /**
