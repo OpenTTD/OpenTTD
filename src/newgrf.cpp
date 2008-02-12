@@ -3089,6 +3089,11 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	 * W cid           cargo ID (sprite group ID) for this type of cargo
 	 * W def-cid       default cargo ID (sprite group ID) */
 
+	if (_cur_grffile->spritegroups == 0) {
+		grfmsg(1, "FeatureMapSpriteGroup: No sprite groups to work on! Skipping");
+		return;
+	}
+
 	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
 
 	uint8 feature = buf[1];
@@ -3099,7 +3104,12 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 	/* If idcount is zero, this is a feature callback */
 	if (idcount == 0) {
-		grfmsg(2, "FeatureMapSpriteGroup: Feature callbacks not implemented yet");
+		byte *bp = &buf[4];
+		uint16 groupid = grf_load_word(&bp);
+
+		grfmsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature %d", feature);
+
+		AddGenericCallback(feature, _cur_grffile, _cur_grffile->spritegroups[groupid]);
 		return;
 	}
 
@@ -3108,11 +3118,6 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 
 	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
 			feature, idcount, cidcount, wagover);
-
-	if (_cur_grffile->spritegroups == 0) {
-		grfmsg(1, "FeatureMapSpriteGroup: No sprite groups to work on! Skipping");
-		return;
-	}
 
 	switch (feature) {
 		case GSF_TRAIN:
@@ -5100,6 +5105,9 @@ static void ResetNewGRFData()
 	UnloadWagonOverrides();
 	UnloadCustomEngineSprites();
 	ResetEngineListOrder();
+
+	/* Reset generic feature callback lists */
+	ResetGenericCallbacks();
 
 	/* Reset price base data */
 	ResetPriceBaseMultipliers();

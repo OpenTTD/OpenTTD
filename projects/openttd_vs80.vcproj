@@ -1072,6 +1072,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\newgrf_generic.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\newgrf_house.h"
 				>
 			</File>
@@ -1945,6 +1949,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\newgrf_engine.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\newgrf_generic.cpp"
 				>
 			</File>
 			<File

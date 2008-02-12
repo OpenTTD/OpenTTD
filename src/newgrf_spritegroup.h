@@ -10,6 +10,7 @@
 #include "newgrf_storage.h"
 #include "core/bitmath_func.hpp"
 #include "gfx_type.h"
+#include "newgrf_generic.h"
 
 /**
  * Gets the value of a so-called newgrf "register".
@@ -236,6 +237,16 @@ struct ResolverObject {
 		struct {
 			const struct CargoSpec *cs;
 		} cargo;
+		struct {
+			CargoID cargo_type;
+			uint8 default_selection;
+			IndustryType src_industry;
+			IndustryType dst_industry;
+			uint8 distance;
+			AIConstructionEvent event;
+			uint8 count;
+			uint8 station_size;
+		} generic;
 	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);

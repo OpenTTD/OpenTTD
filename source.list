@@ -176,6 +176,7 @@ newgrf_cargo.h
 newgrf_commons.h
 newgrf_config.h
 newgrf_engine.h
+newgrf_generic.h
 newgrf_house.h
 newgrf_industries.h
 newgrf_industrytiles.h
@@ -405,6 +406,7 @@ newgrf_cargo.cpp
 newgrf_commons.cpp
 newgrf_config.cpp
 newgrf_engine.cpp
+newgrf_generic.cpp
 newgrf_house.cpp
 newgrf_industries.cpp
 newgrf_industrytiles.cpp
