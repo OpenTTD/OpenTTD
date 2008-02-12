@@ -49,7 +49,7 @@ struct dropdown_d {
 	WindowNumber parent_wnd_num;
 	byte parent_button;
 	DropDownList *list;
-	byte selected_index;
+	int selected_index;
 	byte click_delay;
 	bool drag_mode;
 	int scrolling;
