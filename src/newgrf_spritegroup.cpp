@@ -7,6 +7,7 @@
 #include "variables.h"
 #include "landscape.h"
 #include "oldpool.h"
+#include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "sprite.h"
@@ -81,23 +82,16 @@ TemporaryStorageArray<uint32, 0x110> _temp_store;
 
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
-	/* Return common variables */
+	/* First handle variables common with Action7/9/D */
+	uint32 value;
+	if (GetGlobalVariable(variable, &value)) return variable;
+
+	/* Non-common variable */
 	switch (variable) {
-		case 0x00: return max(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
-		case 0x01: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
-		case 0x02: return _cur_month;
-		case 0x03: return _opt.landscape;
-		case 0x09: return _date_fract;
-		case 0x0A: return _tick_counter;
 		case 0x0C: return object->callback;
 		case 0x10: return object->callback_param1;
-		case 0x11: return 0;
-		case 0x12: return _game_mode;
 		case 0x18: return object->callback_param2;
-		case 0x1A: return UINT_MAX;
-		case 0x1B: return GB(_display_opt, 0, 6);
 		case 0x1C: return object->last_value;
-		case 0x20: return _opt.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
 
 		case 0x7D: return _temp_store.Get(parameter);
 

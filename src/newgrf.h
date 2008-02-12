@@ -126,5 +126,6 @@ void ReloadNewGRFData(); // in openttd.cpp
 void CDECL grfmsg(int severity, const char *str, ...);
 
 bool HasGrfMiscBit(GrfMiscBit bit);
+bool GetGlobalVariable(byte param, uint32 *value);
 
 #endif /* NEWGRF_H */

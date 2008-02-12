@@ -3440,15 +3440,131 @@ static void SkipAct5(byte *buf, int len)
 	grfmsg(3, "SkipAct5: Skipping %d sprites", _skip_sprites);
 }
 
-static uint32 GetParamVal(byte param, uint32 *cond_val)
+/**
+ * Reads a variable common to VarAction2 and Action7/9/D.
+ *
+ * Returns VarAction2 variable 'param' resp. Action7/9/D variable '0x80 + param'.
+ * If a variable is not accessible from all four actions, it is handled in the action specific functions.
+ *
+ * @param param variable number (as for VarAction2, for Action7/9/D you have to subtract 0x80 first).
+ * @param value returns the value of the variable.
+ * @return true iff the variable is known and the value is returned in 'value'.
+ */
+bool GetGlobalVariable(byte param, uint32 *value)
 {
 	switch (param) {
-		case 0x81: // current year
-			return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
+		case 0x00: // current date
+			*value = max(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
+			return true;
 
-		case 0x83: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
-			return _opt.landscape;
+		case 0x01: // current year
+			*value = Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
+			return true;
 
+		case 0x02: // current month
+			*value = _cur_month;
+			return true;
+
+		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
+			*value = _opt.landscape;
+			return true;
+
+		case 0x06: // road traffic side, bit 4 clear=left, set=right
+			*value = _opt.road_side << 4;
+			return true;
+
+		case 0x09: // date fraction
+			*value = _date_fract;
+			return true;
+
+		case 0x0A: // animation counter
+			*value = _tick_counter;
+			return true;
+
+		case 0x0B: { // TTDPatch version
+			uint major    = 2;
+			uint minor    = 6;
+			uint revision = 1; // special case: 2.0.1 is 2.0.10
+			uint build    = 1382;
+			*value = (major << 24) | (minor << 20) | (revision << 16) | build;
+			return true;
+		}
+
+		case 0x0D: // TTD Version, 00=DOS, 01=Windows
+			*value = !_use_dos_palette;
+			return true;
+
+		case 0x0E: // Y-offset for train sprites
+			*value = _traininfo_vehicle_pitch;
+			return true;
+
+		case 0x0F: // Rail track type cost factors
+			*value = 0;
+			SB(*value, 0, 8, _railtype_cost_multiplier[0]); // normal rail
+			if (_patches.disable_elrails) {
+				/* skip elrail multiplier - disabled */
+				SB(*value, 8, 8, _railtype_cost_multiplier[2]); // monorail
+			} else {
+				SB(*value, 8, 8, _railtype_cost_multiplier[1]); // electified railway
+				/* Skip monorail multiplier - no space in result */
+			}
+			SB(*value, 16, 8, _railtype_cost_multiplier[3]); // maglev
+			return true;
+
+		case 0x11: // current rail tool type
+			*value = 0;
+			return true;
+
+		case 0x12: // Game mode
+			*value = _game_mode;
+			return true;
+
+		/* case 0x13: // Tile refresh offset to left    not implemented */
+		/* case 0x14: // Tile refresh offset to right   not implemented */
+		/* case 0x15: // Tile refresh offset upwards    not implemented */
+		/* case 0x16: // Tile refresh offset downwards  not implemented */
+		/* case 0x17: // temperate snow line            not implemented */
+
+		case 0x1A: // Always -1
+			*value = UINT_MAX;
+			return true;
+
+		case 0x1B: // Display options
+			*value = GB(_display_opt, 0, 6);
+			return true;
+
+		case 0x1D: // TTD Platform, 00=TTDPatch, 01=OpenTTD
+			*value = 1;
+			return true;
+
+		case 0x1E: // Miscellaneous GRF features
+			*value = _misc_grf_features;
+			return true;
+
+		/* case 0x1F: // locale dependent settings not implemented */
+
+		case 0x20: // snow line height
+			*value = _opt.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
+			return true;
+
+		case 0x21: { // OpenTTD version
+			extern uint32 _openttd_newgrf_version;
+			*value = _openttd_newgrf_version;
+			return true;
+		}
+
+		default: return false;
+	}
+}
+
+static uint32 GetParamVal(byte param, uint32 *cond_val)
+{
+	/* First handle variable common with VarAction2 */
+	uint32 value;
+	if (GetGlobalVariable(param - 0x80, &value)) return value;
+
+	/* Non-common variable */
+	switch (param) {
 		case 0x84: { // GRF loading stage
 			uint32 res = 0;
 
@@ -3468,42 +3584,10 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 				return param_val;
 			}
 
-		case 0x86: // road traffic side, bit 4 clear=left, set=right
-			return _opt.road_side << 4;
-
 		case 0x88: // GRF ID check
 			return 0;
 
-		case 0x8B: { // TTDPatch version
-			uint major    = 2;
-			uint minor    = 6;
-			uint revision = 1; // special case: 2.0.1 is 2.0.10
-			uint build    = 1382;
-			return (major << 24) | (minor << 20) | (revision << 16) | build;
-		}
-
-		case 0x8D: // TTD Version, 00=DOS, 01=Windows
-			return !_use_dos_palette;
-
-		case 0x8E: // Y-offset for train sprites
-			return _traininfo_vehicle_pitch;
-
-		case 0x92: // Game mode
-			return _game_mode;
-
-		case 0x9A: // Always -1
-			return UINT_MAX;
-
-		case 0x9D: // TTD Platform, 00=TTDPatch, 01=OpenTTD
-			return 1;
-
-		case 0x9E: // Miscellaneous GRF features
-			return _misc_grf_features;
-
-		case 0xA1: { // OpenTTD version
-			extern uint32 _openttd_newgrf_version;
-			return _openttd_newgrf_version;
-		}
+		/* case 0x99: Global ID offest not implemented */
 
 		default:
 			/* GRF Parameter */
@@ -4355,6 +4439,10 @@ static void ParamSet(byte *buf, int len)
 			_misc_grf_features = res;
 			/* Set train list engine width */
 			_traininfo_vehicle_width = HasGrfMiscBit(GMB_TRAIN_WIDTH_32_PIXELS) ? 32 : 29;
+			break;
+
+		case 0x9F: // locale-dependent settings
+			grfmsg(7, "ParamSet: Skipping unimplemented target 0x%02X", target);
 			break;
 
 		default:
