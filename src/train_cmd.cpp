@@ -993,7 +993,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
 
 	{
-		int max_len = _patches.mammoth_trains ? 100 : 9;
+		int max_len = _patches.mammoth_trains ? 100 : 10;
 
 		/* check if all vehicles in the source train are stopped inside a depot. */
 		int src_len = CheckTrainStoppedInDepot(src_head);
