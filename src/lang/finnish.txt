@@ -1039,7 +1039,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ajoneuv
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi globaali tienhakualgor. (NPF, korvaa NTP:n): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Vierekkäiset asemat: {ORANGE}{STRING}
@@ -1192,9 +1191,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Käytä uutta reitinetsijää (YAPF) laivoille: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Käytä uutta reitinetsijää (YAPF) autoille: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Käytä uutta reitinetsijää (YAPF) junille: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto

@@ -1048,7 +1048,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillat kjøp av eksklusive transportrettigheter: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillat pengeoverføring til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Uensartede stasjoner: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global rutesøking (NGR, overstyrer NTK): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat gjennomkjøring av stoppesteder på veier som er eid av byene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillat bygging av nærliggende stasjoner: {ORANGE}{STRING}
@@ -1203,9 +1202,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Noen eller alle av standard vedlikeholdsintervall(ene) under er inkompatible med valgte instillinger! 5-90{NBSP}% og 30-800 dager er gyldige
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Skip skal bruke YAPF: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Kjøretøy skal bruke YAPF: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Tog skal bruke YAPF: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap

@@ -1068,7 +1068,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automob
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Slinkti vaizdą pelei esant prie krašto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nestandartines stoteles: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Globalus kelio radimo algoritmas (NPF, panaikina NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Krovinių svorio daugiklis skirtas imituoti prikrautus traukinius: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Visada leisti statyti mazus oro uotus: {ORANGE}{STRING}
@@ -1173,9 +1172,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Keisti reiksmes
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Klaidingai nurodytas remonto intervalas. Intervalas dienomis: 30-800 d., procentais: 5-90%.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Naudoti YAPF laivams: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Naudoti YAPF masinoms: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Naudoti YAPF traukiniams: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Normalus klimatas
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arktinis klimatas

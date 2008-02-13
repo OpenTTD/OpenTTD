@@ -1036,7 +1036,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vojvetu
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ŝovu fenestron se la muso estas ĉe la rando: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permesu subaĉeti la lokajn estrojn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nekonformaj stacioj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova ĝenerala vojtrovado (NPF, superas NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pezpliigo pro ŝarĝo por imiti pezajn trajnojn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permesu trairaj bushaltejoj sur vojoj urboposedataj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permesu konstrui staciojn apude: {ORANGE}{STRING}
@@ -1163,9 +1162,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Iuj aŭ ĉiuj defaŭltaj prizorgintervaloj ne validas laŭ la agordoj! 5-90% kaj 30-800 tagoj validas
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Uzu YAPF por ŝipoj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Uzu YAPF por vojveturiloj: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Uzu YAPF por trajnoj: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktikeca landaspekto

@@ -1114,7 +1114,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkorm
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Lehessen exkluzív szállítási jogot venni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Lehessen más vállalatoknak pénzt küldeni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvonalkereső (NPF, felülbírálja az NTP-t): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtható állomások engedélyezése városi utakra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
@@ -1269,9 +1268,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Válassz beállítási értéket
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}A lenti alap szervíz intervallum beállítások némelyike/mindegyike inkompatibilis a választott beállítással! Csak 5-90% és 30-800 napig elfogadható.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}YAPF használata hajóknál: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}YAPF használata közutakon: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}YAPF használata vonatokhoz: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :mérsékelt táj
 STR_SUB_ARCTIC_LANDSCAPE                                        :sarkköri táj

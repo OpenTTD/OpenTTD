@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad 
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillad køb af eksklusive transportrettigheder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillad at sende penge til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global ruteplanlægger (NPF, tilsidesætter NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
@@ -1204,9 +1203,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Skift indstillingsværdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nogle eller alle standard service intervaller nedenunder er uforenelige med den valgte opsætning! 5-90% og 30-800 dage er gyldige
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Brug YAPF for skibe: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Brug YAPF for busser: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Brug YAPF for tog: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempereret klima
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktisk klima

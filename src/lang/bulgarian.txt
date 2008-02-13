@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Под�
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Позволи купуване на изклучителни транспортни права: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Позволи изпращане на пари до други компаний: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов глобален навигатор (NPF, отменя NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител към товарите за симулация на тежки влакове: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
@@ -1206,9 +1205,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Промяна стойноста на настройка
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Някои от стойностите за интервал(и) на сервиз са несъвместими с избраните настройки! 5-90% и 30-800 са валидни стойности
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}YAPF за кораби: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}YAPF за автомобили: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}YAPF за влакове: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :умерен климат
 STR_SUB_ARCTIC_LANDSCAPE                                        :Арктичен климат

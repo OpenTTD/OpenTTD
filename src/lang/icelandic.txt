@@ -1029,7 +1029,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Bifrei�
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Færa sjónarhorn þegar músin nálgast brún gluggans: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leyfilegt að múta bæjaryfirvöldum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Órétthyrndar lestarstöðvar leyfðar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nýtt alhliða leiðsögukerfi (NPF, yfirtekur NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Margfalda þyngd farms til að líkja eftir þyngri lestum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leyfa strætóstöðvar á gangstéttum bæja: {ORANGE}{STRING}
 
@@ -1131,9 +1130,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Breyta gildi stillingar
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Einhver eða öll bil milli skoðana hér fyrir neðan eru ósamhæfanleg við valdar stillingar! 5-90% og 30-800 dagar er leyfilegt
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Nota YAPF fyrir skip: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Nota YAPF fyrir bifreiðar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Nota YAPF fyrir lestir: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Temprað landslag
 STR_SUB_ARCTIC_LANDSCAPE                                        :Heimskautalandslag

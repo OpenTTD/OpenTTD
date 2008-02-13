@@ -1149,7 +1149,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba ko
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Luba eksklusiivseid veoõiguseid osta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Luba teistele ettevõtetele raha saata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus trassi otsimise algoritm(NPF asendab NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskuse korrutaja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Luba läbisõidupeatused linnateedel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Luba jaamu lähestikku ehitada: {ORANGE}{STRING}
@@ -1304,9 +1303,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuda seadete väärtusi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Mõni või kõik vaikimisi hooldusperioodid on kõlbmatud! Lubatud on 5-90% või 30-800 päeva
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Kasuta YAPF'i laevadel: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Kasuta YAPF'i autodel: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Kasuta YAPF'i rongidel: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Parasvöötme maastik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktiline maastik

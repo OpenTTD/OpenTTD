@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dopusti
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Dopusti kupovinu ekskluzivnih prijevoznih prava: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Dopusti slanje novca drugim tvrtkama: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neujednačene stanice: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo globalno pronalaženje puteva (NPF, isključuje NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Težinski množitelj za teret za simulaciju teških vlakova: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dopusti prolazne stanice na cestama u vlasti grada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Dopusti izgradnju pridruženih stanica: {ORANGE}{STRING}
@@ -1204,9 +1203,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Promijeni vrijednost postavke
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Neki ili svi od zadanih servisnih intervala ispod nisu kompatibilni s odabranim postavkama! Valjane vrijednosti su 5-90% ili 30-800 dana.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Koristi YAPF za brodove: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Koristi YAPF za cestovna vozila: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Koristi YAPF za vlakove: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Blagi krajolik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Pod-arktički krajolik

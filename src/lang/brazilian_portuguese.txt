@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permtir compra de direitos exclusivos de transporte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir o envio de dinheiro a outras companhias: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo busca de caminho global (NPF, sobrepõe NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
@@ -1206,9 +1205,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Alterar valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para embarcações: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YAPF para automóveis: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para trens: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subártico

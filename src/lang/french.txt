@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permett
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Autoriser l'achat des droits de transports exclusifs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Autoriser l'envoi d'argent aux autres compagnies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvelle recherche de chemin global (NPF, écrase NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poid pour les trains fret (simule des trains lourds): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Autoriser la construction de stations adjacentes: {ORANGE}{STRING}
@@ -1205,9 +1204,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Changer valeur du paramètre
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Un ou plusieurs intervalles de service par défaut ci-dessous sont incompatibles avec le paramètre choisi! 5-90% et 30-800 jours sont valides
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Utiliser YAPF pour les navires: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Utiliser YAPF pour les véhicules routiers: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Utiliser YAPF pour les trains: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :environnement 'Tempéré'
 STR_SUB_ARCTIC_LANDSCAPE                                        :environnement 'Arctique'

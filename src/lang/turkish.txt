@@ -1045,7 +1045,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediy
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin ulaşım haklarını satın alma izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer şirketlere para gönderme izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
@@ -1200,9 +1199,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ayar değerini değiştir
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Bazi servis gecikmeleri aralık dışında: %5-%90 veya 30-800 gün arasında olmalı
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Gemiler için YAPF kullan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Arabalar için YAPF kullan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Trenler için YAPF kullan: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Ilıman iklim
 STR_SUB_ARCTIC_LANDSCAPE                                        :Soğuk iklim

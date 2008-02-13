@@ -1113,7 +1113,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Povolit zakúpenie exkluzívnych dopravných práv: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožnit posielanie penazí ostatným spolocnostiam: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
@@ -1268,9 +1267,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektore alebo vsetky implicitne servisne intervaly su nekompatibilne s vybranym nastavenim. 5-90% a 30-800 dni su platne.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Pouzit YAPF pre lode: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Pouzit YAPF pre vozidla: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Pouzit YAPF pre vlaky: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mierneho pasma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarkticka krajina

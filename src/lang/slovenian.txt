@@ -1090,7 +1090,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dovoli 
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Dovoli nakup ekskluzivnih prevoznih dovoljenj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Dovoli pošiljanje denarja drugim podjetjem: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Neenake postaje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo skupno iskanje poti (NPF, prevlada NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Koeficient teže tovora za simulacijo težkih vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli prehodne postaje na cestah v lasti mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}
@@ -1245,9 +1244,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Spremeni vrednost
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nekatera ali vsa privzeta obdobja servisiranja spodaj niso združljiva z izborom! 5-90% in 30-800 dni je veljavno
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Uporabi YAPF za ladje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Uporabi YAPF za cestna vozila: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Uporabi YAPF za vlake: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Zmerno podnebje
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub arktično podnebje

@@ -1043,7 +1043,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Laattoe
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Laattoe die koop van eksklusief vervoer regte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Laattoe die stuur van geld na ander maatskappye: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ongelyk stasies: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuwe wêreldwyd padvind (NPF, oorbrug NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Gewig vermenivoud vir vrag om swaar treine te simuleer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laattoe skyf-deur pad stop op dorp besit paaie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Laattoe gebou van aangrensend stasies: {ORANGE}{STRING}
@@ -1197,9 +1196,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Verander stel waarde
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Sommige of almal van die verstek diens pouse(s) onder is onversoenbaar met die gekies stel! 5-90% en 30-800 dae is geldig
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Gebruik YAPF vir skepe: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Gebruik YAPF vir pad voertuie: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Gebruik YAPF vir treine: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Magtig landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :Onder-noordpool landskap

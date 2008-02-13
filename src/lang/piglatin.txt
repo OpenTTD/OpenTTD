@@ -1039,7 +1039,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Oadray 
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Anpay indowway enwhay ousemay isway atway ethay edgeway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allowway ibingbray ofway ethay ocallay authorityway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Onuniformnay ationsstay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ewnay obalglay athfindingpay (NPFay, overridesway NTPay): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Eightway ultipliermay orfay eightfray otay imulatesay eavyhay ainstray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allowway ivedray-oughthray oadray opsstay onway owntay ownedway oadsray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Allowway uildingbay adjacentway ationsstay: {ORANGE}{STRING}
@@ -1192,9 +1191,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Omesay orway allway ofway ethay efaultday ervicesay intervalway(say) elowbay areway incompatibleway ithway ethay osenchay ettingsay! 5-90% andway 30-800 aysday areway alidvay
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Useway YAPFay orfay ipsshay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Useway YAPFay orfay oadvehsray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Useway YAPFay orfay ainstray: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Emperatetay andscapelay
 STR_SUB_ARCTIC_LANDSCAPE                                        :Ubsay-arcticway andscapelay

@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Разрешить покупать эксклюзивные трансп. права: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Алгоритм навигации NPF (замена оригинального): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
@@ -1206,9 +1205,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Изменить значение
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые интервалы не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Алгоритм навигации YAPF для кораблей: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Алгоритм навигации YAPF для автотранспорта: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Алгоритм навигации YAPF для поездов: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Умеренный ландшафт
 STR_SUB_ARCTIC_LANDSCAPE                                        :Субарктический ландшафт

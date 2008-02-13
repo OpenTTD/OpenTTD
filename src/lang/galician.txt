@@ -1010,7 +1010,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cola pa
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desplaza-la fiestra cando o ratón esté no borde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti-la chantaxe as autoridades locales: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacións non uniformes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova búsqueda de ruta global (NPF, invalida NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1102,9 +1101,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}¡Algún ou tódolos intervalo(s) de servicio por defecto son incompatibles coa opción elixida! 5-90% e 30-800 días son válidos
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para barcos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YAPF para vehículos de estrada: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para os trens: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :escenario templado
 STR_SUB_ARCTIC_LANDSCAPE                                        :escenario sub-ártico

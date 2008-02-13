@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}향상된 글로벌 경로탐색 (NPF, NTP 우선) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}마을이 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
@@ -1204,9 +1203,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}설정값 변경
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}아래 기본 점검간격의 일부 혹은 전체가 선택된 설정과 맞지 않습니다. 5-90%와 30-800일이 사용 가능합니다.
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}선박에 YAPF 사용 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}자동차에 YAPF 사용 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}열차에 YAPF 사용 : {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :온대 기후
 STR_SUB_ARCTIC_LANDSCAPE                                        :냉대 기후

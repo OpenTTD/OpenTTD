@@ -1046,7 +1046,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow b
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow buying exclusive transport rights: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
@@ -1201,9 +1200,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Change setting value
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Some or all of the default service interval(s) below are incompatible with chosen setting! 5-90% and 30-800 days are valid
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Use YAPF for ships: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Use YAPF for roadvehs: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Use YAPF for trains: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape

@@ -1024,7 +1024,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automob
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Bi'di't logu kad pele ir ta' mala': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Atl'aut viete'jo varas iesta'z'u piekukul'os'anu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ne-uniformas stacijas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Jauna' globa'la' cel'u kars'rutiza'cija (NPF, aizsta'j NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vienme'r atl'aut mazas lidostas: {ORANGE}{STRING}
 
@@ -1114,9 +1113,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Mainīt iestatījuma vērtību
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Daži vai visi apkalpošanas intervāli ir nesavietojami ar izvēlētajiem iestatījumiem! Der 5-90% un 30-800 dienas
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Izmantot YAPF kuģiem: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Izmantot YAPF autotransportam: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Izmantot YAPF vilcieniem: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Mērenais klimats
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktiskais klimats

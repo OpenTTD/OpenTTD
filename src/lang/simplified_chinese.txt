@@ -1035,7 +1035,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}汽车�
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}当鼠标移动到屏幕边缘时移动屏幕：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}允许异形站台：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}新的全局路径搜索 (NPF，替换 NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}根据装载货物的数量模拟超重列车：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}允许在城镇所有的道路上穿过禁行标志 {ORANGE}{STRING}
 
@@ -1153,9 +1152,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}改变设置值
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}下面一个或多个保养周期的值设置不对，应当在 0%-90% 或 30-800 天之内。
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}在船只上应用 YAPF：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}在汽车上应用 YAPF：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}在火车上应用 YAPE：{ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :温带景观
 STR_SUB_ARCTIC_LANDSCAPE                                        :寒带景观

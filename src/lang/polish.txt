@@ -1133,7 +1133,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Pozwól na kupno wyłączności transportowej: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól na wysyłanie pieniędzy do innych firm:: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nowe szukanie drogi (NPF, zastępuje NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę stacji przyległych do stacji przeciwnika (z CTRL): {ORANGE}{STRING}
@@ -1288,9 +1287,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmiana wartości
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektóre lub wszystkie domyślne okresy między serwisowania są sprzeczne z wybranymi! 5-90% i 30-800 dni są poprawne
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Używaj YAPF dla statków: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Używaj YAPF dla samochodów: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Używaj YAPF dla pociągów: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Krajobraz umiarkowany
 STR_SUB_ARCTIC_LANDSCAPE                                        :Krajobraz arktyczny

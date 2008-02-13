@@ -1030,7 +1030,6 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ουρ�
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ανομοιόμορφοι σταθμοί: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Νέο παγκόσμιο σύστημα εύρεσης μονοπατιού (NPF, αγνοεί το NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {ORANGE}{STRING}
 
@@ -1137,9 +1136,6 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Κάποια ή όλα τα προεπιλεγμένα διαστήματα επισκευών παρακάτω δεν είναι συμβατά με την επιλεγμένη ρύθμιση! 5-90% και 30-800 μέρες είναι τα αποδεκτά
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Χρησιμοποίηση YAPF για τα πλοία: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Χρησιμοποίηση YAPF για τα οχήματα: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Χρησιμοποίηση YAPF για τα τρένα: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
 STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
