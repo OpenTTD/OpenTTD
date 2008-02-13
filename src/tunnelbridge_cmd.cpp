@@ -804,6 +804,7 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
 	SpriteID image;
+	DiagDirection tunnelbridge_direction = GetTunnelBridgeDirection(ti->tile);
 
 	if (IsTunnel(ti->tile)) {
 		/* Front view of tunnel bounding boxes:
@@ -823,7 +824,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			{  1,  0, -15, -14,  0, 15, 16,  1, 0, 1, 16, 15 }, // SW
 			{  0,  1, -14, -15, 15,  0,  1, 16, 1, 0, 15, 16 }, // NW
 		};
-		const int *BB_data = _tunnel_BB[GetTunnelBridgeDirection(ti->tile)];
+		const int *BB_data = _tunnel_BB[tunnelbridge_direction];
 
 		bool catenary = false;
 
@@ -835,20 +836,19 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (HasTunnelBridgeSnowOrDesert(ti->tile)) image += 32;
 
-		image += GetTunnelBridgeDirection(ti->tile) * 2;
+		image += tunnelbridge_direction * 2;
 		DrawGroundSprite(image, PAL_NONE);
 		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
-			DiagDirection dir = GetTunnelBridgeDirection(ti->tile);
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
 				static const SpriteID tunnel_sprites[2][4] = { { 28, 78, 79, 27 }, {  5, 76, 77,  4 } };
 
-				DrawGroundSprite(SPR_TRAMWAY_BASE + tunnel_sprites[rts - ROADTYPES_TRAM][dir], PAL_NONE);
+				DrawGroundSprite(SPR_TRAMWAY_BASE + tunnel_sprites[rts - ROADTYPES_TRAM][tunnelbridge_direction], PAL_NONE);
 
 				catenary = true;
 				StartSpriteCombine();
-				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + dir, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
+				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + tunnelbridge_direction, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 			}
 		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
 			DrawCatenary(ti);
@@ -882,10 +882,10 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* as the lower 3 bits are used for other stuff, make sure they are clear */
 		assert( (base_offset & 0x07) == 0x00);
 
-		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(GetTunnelBridgeDirection(ti->tile))));
+		DrawFoundation(ti, GetBridgeFoundation(ti->tileh, DiagDirToAxis(tunnelbridge_direction)));
 
 		/* HACK Wizardry to convert the bridge ramp direction into a sprite offset */
-		base_offset += (6 - GetTunnelBridgeDirection(ti->tile)) % 4;
+		base_offset += (6 - tunnelbridge_direction) % 4;
 
 		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 
@@ -914,7 +914,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
-				uint offset = GetTunnelBridgeDirection(ti->tile);
+				uint offset = tunnelbridge_direction;
 				uint z = ti->z;
 				if (ti->tileh != SLOPE_FLAT) {
 					offset = (offset + 1) & 1;
@@ -1229,16 +1229,15 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 	int z = GetSlopeZ(x, y) - v->z_pos;
 
 	if (abs(z) > 2) return VETSB_CANNOT_ENTER;
+	const DiagDirection dir = GetTunnelBridgeDirection(tile);
 
 	if (IsTunnel(tile)) {
 		byte fc;
-		DiagDirection dir;
 		DiagDirection vdir;
 
 		if (v->type == VEH_TRAIN) {
 			fc = (x & 0xF) + (y << 4);
 
-			dir = GetTunnelBridgeDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
 			if (v->u.rail.track != TRACK_BIT_WORMHOLE && dir == vdir) {
@@ -1266,7 +1265,6 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			}
 		} else if (v->type == VEH_ROAD) {
 			fc = (x & 0xF) + (y << 4);
-			dir = GetTunnelBridgeDirection(tile);
 			vdir = DirToDiagDir(v->direction);
 
 			/* Enter tunnel? */
@@ -1296,7 +1294,6 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			}
 		}
 	} else { // IsBridge(tile)
-		DiagDirection dir;
 
 		if (v->IsPrimaryVehicle()) {
 			/* modify speed of vehicle */
@@ -1306,7 +1303,6 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 			if (v->cur_speed > spd) v->cur_speed = spd;
 		}
 
-		dir = GetTunnelBridgeDirection(tile);
 		if (DirToDiagDir(v->direction) == dir) {
 			switch (dir) {
 				default: NOT_REACHED();
