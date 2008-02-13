@@ -455,13 +455,14 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	DiagDirection direction;
 	Slope start_tileh;
 	Slope end_tileh;
+	TransportType transport_type = (TransportType)GB(p1, 9, 1);
 	uint start_z;
 	uint end_z;
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 
 	_build_tunnel_endtile = 0;
-	if (!HasBit(p1, 9)) {
+	if (transport_type == TRANSPORT_RAIL) {
 		if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
 	} else {
 		const RoadTypes rts = (RoadTypes)GB(p1, 0, 3);
@@ -544,7 +545,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 	cost.AddCost(ret);
 
 	if (flags & DC_EXEC) {
-		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
+		if (transport_type == TRANSPORT_RAIL) {
 			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_player);
@@ -804,6 +805,7 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay)
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
 	SpriteID image;
+	TransportType transport_type = GetTunnelBridgeTransportType(ti->tile);
 	DiagDirection tunnelbridge_direction = GetTunnelBridgeDirection(ti->tile);
 
 	if (IsTunnel(ti->tile)) {
@@ -828,7 +830,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		bool catenary = false;
 
-		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
+		if (transport_type == TRANSPORT_RAIL) {
 			image = GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.tunnel;
 		} else {
 			image = SPR_TUNNEL_ENTRY_REAR_ROAD;
@@ -838,7 +840,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		image += tunnelbridge_direction * 2;
 		DrawGroundSprite(image, PAL_NONE);
-		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
+		if (transport_type == TRANSPORT_ROAD) {
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
@@ -872,7 +874,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		int base_offset;
 		bool ice = HasTunnelBridgeSnowOrDesert(ti->tile);
 
-		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_RAIL) {
+		if (transport_type == TRANSPORT_RAIL) {
 			base_offset = GetRailTypeInfo(GetRailType(ti->tile))->bridge_offset;
 			assert(base_offset != 8); // This one is used for roads
 		} else {
@@ -901,7 +903,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		/* draw ramp */
 
 		/* Draw Trambits as SpriteCombine */
-		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) StartSpriteCombine();
+		if (transport_type == TRANSPORT_ROAD) StartSpriteCombine();
 
 		/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
 		 * it doesn't disappear behind it
@@ -910,7 +912,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			psid->sprite, psid->pal, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 0 : 8, ti->z, IsTransparencySet(TO_BRIDGES)
 		);
 
-		if (GetTunnelBridgeTransportType(ti->tile) == TRANSPORT_ROAD) {
+		if (transport_type == TRANSPORT_ROAD) {
 			RoadTypes rts = GetRoadTypes(ti->tile);
 
 			if (HasBit(rts, ROADTYPE_TRAM)) {
@@ -992,6 +994,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	uint base_offset;
 	TileIndex rampnorth;
 	TileIndex rampsouth;
+	TransportType transport_type;
 	Axis axis;
 	uint piece;
 	BridgeType type;
@@ -1003,6 +1006,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	rampnorth = GetNorthernBridgeEnd(ti->tile);
 	rampsouth = GetSouthernBridgeEnd(ti->tile);
+	transport_type = GetTunnelBridgeTransportType(rampsouth);
 
 	axis = GetBridgeAxis(ti->tile);
 	piece = CalcBridgePiece(
@@ -1011,7 +1015,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	);
 	type = GetBridgeType(rampsouth);
 
-	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_RAIL) {
+	if (transport_type == TRANSPORT_RAIL) {
 		base_offset = GetRailTypeInfo(GetRailType(rampsouth))->bridge_offset;
 	} else {
 		base_offset = 8;
@@ -1029,7 +1033,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
 
 	/* Draw Trambits as SpriteCombine */
-	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_ROAD) StartSpriteCombine();
+	if (transport_type == TRANSPORT_ROAD) StartSpriteCombine();
 
 	/* Draw floor and far part of bridge*/
 	if (axis == AXIS_X) {
@@ -1040,7 +1044,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 	psid++;
 
-	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_ROAD) {
+	if (transport_type == TRANSPORT_ROAD) {
 		RoadTypes rts = GetRoadTypes(rampsouth);
 
 		if (HasBit(rts, ROADTYPE_TRAM)) {
@@ -1064,7 +1068,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	}
 
 	/* Draw TramFront as SpriteCombine */
-	if (GetTunnelBridgeTransportType(rampsouth) == TRANSPORT_ROAD) EndSpriteCombine();
+	if (transport_type == TRANSPORT_ROAD) EndSpriteCombine();
 
 	psid++;
 	if (ti->z + 5 == z) {
@@ -1184,8 +1188,8 @@ static void ClickTile_TunnelBridge(TileIndex tile)
 
 static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode, uint sub_mode)
 {
-	if (GetTunnelBridgeTransportType(tile) != mode) return 0;
-	if (GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0) return 0;
+	TransportType transport_type = GetTunnelBridgeTransportType(tile);
+	if (transport_type != mode || (transport_type == TRANSPORT_ROAD && (GetRoadTypes(tile) & sub_mode) == 0)) return 0;
 	return AxisToTrackBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) * 0x101;
 }
 
