@@ -644,22 +644,10 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 {
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
-	int max_speed_a = 0xFFFF, max_speed_b = 0xFFFF;
 	int r;
-	const Vehicle *ua = va, *ub = vb;
 
 	if (va->type == VEH_TRAIN && vb->type == VEH_TRAIN) {
-		do {
-			if (RailVehInfo(ua->engine_type)->max_speed != 0)
-				max_speed_a = min(max_speed_a, RailVehInfo(ua->engine_type)->max_speed);
-		} while ((ua = ua->Next()) != NULL);
-
-		do {
-			if (RailVehInfo(ub->engine_type)->max_speed != 0)
-				max_speed_b = min(max_speed_b, RailVehInfo(ub->engine_type)->max_speed);
-		} while ((ub = ub->Next()) != NULL);
-
-		r = max_speed_a - max_speed_b;
+		r = va->u.rail.cached_max_speed - vb->u.rail.cached_max_speed;
 	} else {
 		r = va->max_speed - vb->max_speed;
 	}
