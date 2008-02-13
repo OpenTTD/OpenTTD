@@ -328,10 +328,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!HasOrderPoolFree(1)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
-	if (v->type == VEH_SHIP &&
-			IsHumanPlayer(v->owner) &&
-			!_patches.new_pathfinding_all) {
-		// Make sure the new destination is not too far away from the previous
+	if (v->type == VEH_SHIP && IsHumanPlayer(v->owner) && _patches.pathfinder_for_ships != VPF_NPF) {
+		/* Make sure the new destination is not too far away from the previous */
 		const Order *prev = NULL;
 		uint n = 0;
 

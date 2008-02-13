@@ -52,4 +52,12 @@ enum EffectVehicle {
 	EV_BUBBLE          = 9
 };
 
+/** Pathfinding option states */
+enum {
+	VPF_OPF  = 0, ///< The Original PathFinder
+	VPF_NTP  = 0, ///< New Train Pathfinder, replacing OPF for trains
+	VPF_NPF  = 1, ///< New PathFinder
+	VPF_YAPF = 2, ///< Yet Another PathFinder
+};
+
 #endif /* VEHICLE_TYPE_H */

@@ -126,6 +126,10 @@ struct Patches {
 	uint16 servint_aircraft;            ///< service interval for aircraft
 	uint16 servint_ships;               ///< service interval for ships
 
+	uint8 pathfinder_for_trains;        ///< the pathfinder to use for trains
+	uint8 pathfinder_for_roadvehs;      ///< the pathfinder to use for roadvehicles
+	uint8 pathfinder_for_ships;         ///< the pathfinder to use for ships
+
 	bool autorenew;
 	int16 autorenew_months;
 	int32 autorenew_money;

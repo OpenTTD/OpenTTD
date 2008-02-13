@@ -416,10 +416,10 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 {
 	TileIndex tile = v->tile;
 
-	if (_patches.yapf.road_use_yapf) {
+	if (_patches.pathfinder_for_roadvehs == VPF_YAPF) { /* YAPF is being used */
 		Depot* ret = YapfFindNearestRoadDepot(v);
 		return ret;
-	} else if (_patches.new_pathfinding_all) {
+	} else if (_patches.pathfinder_for_roadvehs == VPF_NPF) { /* NPF is being used */
 		NPFFoundTargetData ftd;
 		/* See where we are now */
 		Trackdir trackdir = GetVehicleTrackdir(v);
@@ -431,7 +431,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 			return NULL; /* Target not found */
 		}
 		/* We do not search in two directions here, why should we? We can't reverse right now can we? */
-	} else {
+	} else { /* OPF is being used */
 		RoadFindDepotData rfdd;
 
 		rfdd.owner = v->owner;
@@ -1217,11 +1217,11 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 		return_track(FindFirstBit2x64(trackdirs));
 	}
 
-	if (_patches.yapf.road_use_yapf) {
+	if (_patches.pathfinder_for_roadvehs == VPF_YAPF) { /* YAPF */
 		Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
 		if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
 		return_track(PickRandomBit(trackdirs));
-	} else if (_patches.new_pathfinding_all) {
+	} else if (_patches.pathfinder_for_roadvehs == VPF_NPF) { /* NPF */
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		Trackdir trackdir;
@@ -1243,7 +1243,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 			to the tile closest to our target. */
 			return_track(ftd.best_trackdir);
 		}
-	} else {
+	} else { /* OPF */
 		DiagDirection dir;
 
 		if (IsTileType(desttile, MP_ROAD)) {
@@ -1300,7 +1300,7 @@ found_best_track:;
 static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
 	uint dist;
-	if (_patches.yapf.road_use_yapf) {
+	if (_patches.pathfinder_for_roadvehs == VPF_YAPF) {
 		/* use YAPF */
 		dist = YapfRoadVehDistanceToTile(v, tile);
 	} else {

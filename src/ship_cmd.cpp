@@ -120,7 +120,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 	TileIndex tile;
 	TileIndex tile2 = v->tile;
 
-	if (_patches.new_pathfinding_all) {
+	if (_patches.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
 		NPFFoundTargetData ftd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
@@ -129,7 +129,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 		} else {
 			best_depot = NULL; /* Did not find target */
 		}
-	} else {
+	} else { /* OPF or YAPF */
 		FOR_ALL_DEPOTS(depot) {
 			tile = depot->xy;
 			if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
@@ -527,10 +527,10 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 {
 	assert(enterdir >= 0 && enterdir <= 3);
 
-	if (_patches.yapf.ship_use_yapf) {
+	if (_patches.pathfinder_for_ships == VPF_YAPF) { /* YAPF */
 		Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
 		return (trackdir != INVALID_TRACKDIR) ? TrackdirToTrack(trackdir) : INVALID_TRACK;
-	} else if (_patches.new_pathfinding_all) {
+	} else if (_patches.pathfinder_for_ships == VPF_NPF) { /* NPF */
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		Trackdir trackdir = GetVehicleTrackdir(v);
@@ -549,7 +549,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 		} else {
 			return INVALID_TRACK; /* Already at target, reverse? */
 		}
-	} else {
+	} else { /* OPF */
 		uint tot_dist, dist;
 		Track track;
 		TileIndex tile2;

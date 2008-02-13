@@ -2398,6 +2398,25 @@ bool AfterLoadGame()
 				}
 			}
 		}
+
+		/* Convert old PF settings to new */
+		if (_patches.yapf.rail_use_yapf) {
+			_patches.pathfinder_for_trains = VPF_YAPF;
+		} else {
+			_patches.pathfinder_for_trains = (_patches.new_pathfinding_all ? VPF_NPF : VPF_NTP);
+		}
+
+		if (_patches.yapf.road_use_yapf) {
+			_patches.pathfinder_for_roadvehs = VPF_YAPF;
+		} else {
+			_patches.pathfinder_for_roadvehs = (_patches.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+		}
+
+		if (_patches.yapf.ship_use_yapf) {
+			_patches.pathfinder_for_ships = VPF_YAPF;
+		} else {
+			_patches.pathfinder_for_ships = (_patches.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+		}
 	}
 
 	return InitializeWindowsAndCaches();

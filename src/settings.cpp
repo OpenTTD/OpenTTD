@@ -1400,11 +1400,15 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, mammoth_trains,                0,NN,  true,                    STR_CONFIG_PATCHES_MAMMOTHTRAINS,        NULL),
 	SDT_BOOL(Patches, gotodepot,                     0, 0,  true,                    STR_CONFIG_PATCHES_GOTODEPOT,            NULL),
 	SDT_BOOL(Patches, roadveh_queue,                 0, 0,  true,                    STR_CONFIG_PATCHES_ROADVEH_QUEUE,        NULL),
-	SDT_BOOL(Patches, new_pathfinding_all,           0, 0, false,                    STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL,  NULL),
 
-	SDT_CONDBOOL(Patches, yapf.ship_use_yapf,      28, SL_MAX_VERSION, 0, 0, false,  STR_CONFIG_PATCHES_YAPF_SHIPS,      NULL),
-	SDT_CONDBOOL(Patches, yapf.road_use_yapf,      28, SL_MAX_VERSION, 0, 0,  true,  STR_CONFIG_PATCHES_YAPF_ROAD,       NULL),
-	SDT_CONDBOOL(Patches, yapf.rail_use_yapf,      28, SL_MAX_VERSION, 0, 0,  true,  STR_CONFIG_PATCHES_YAPF_RAIL,       NULL),
+	SDT_CONDBOOL(Patches, new_pathfinding_all, 0,86, 0, 0, false,                    STR_NULL,                                NULL),
+	SDT_CONDBOOL(Patches, yapf.ship_use_yapf, 28,86, 0, 0, false,                    STR_NULL,                                NULL),
+	SDT_CONDBOOL(Patches, yapf.road_use_yapf, 28,86, 0, 0,  true,                    STR_NULL,                                NULL),
+	SDT_CONDBOOL(Patches, yapf.rail_use_yapf, 28,86, 0, 0,  true,                    STR_NULL,                                NULL),
+
+	SDT_CONDVAR(Patches, pathfinder_for_trains,   SLE_UINT8, 87, SL_MAX_VERSION, 0, MS, 2, 0, 2, 1, STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS,  NULL),
+	SDT_CONDVAR(Patches, pathfinder_for_roadvehs, SLE_UINT8, 87, SL_MAX_VERSION, 0, MS, 2, 0, 2, 1, STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH, NULL),
+	SDT_CONDVAR(Patches, pathfinder_for_ships,    SLE_UINT8, 87, SL_MAX_VERSION, 0, MS, 0, 0, 2, 1, STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS,   NULL),
 
 	SDT_BOOL(Patches, train_income_warn,             S, 0,  true,                    STR_CONFIG_PATCHES_WARN_INCOME_LESS,     NULL),
 	 SDT_VAR(Patches, order_review_system,SLE_UINT8, S,MS,     2,     0,       2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,         NULL),

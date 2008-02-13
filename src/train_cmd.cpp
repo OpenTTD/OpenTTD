@@ -2010,10 +2010,10 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		return tfdd;
 	}
 
-	if (_patches.yapf.rail_use_yapf) {
+	if (_patches.pathfinder_for_trains == VPF_YAPF) { /* YAPF is selected */
 		bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
 		tfdd.best_length = found ? max_distance / 2 : -1; // some fake distance or NOT_FOUND
-	} else if (_patches.new_pathfinding_all) {
+	} else if (_patches.pathfinder_for_trains == VPF_NPF) { /* NPF is selected */
 		Vehicle* last = GetLastVehicleInChain(v);
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
@@ -2030,7 +2030,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 			tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
 			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) tfdd.reverse = true;
 		}
-	} else {
+	} else { /* NTP */
 		/* search in the forward direction first. */
 		DiagDirection i = TrainExitDir(v->direction, v->u.rail.track);
 		NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
@@ -2358,14 +2358,14 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	/* quick return in case only one possible track is available */
 	if (KillFirstBit(tracks) == TRACK_BIT_NONE) return FindFirstTrack(tracks);
 
-	if (_patches.yapf.rail_use_yapf) {
+	if (_patches.pathfinder_for_trains == VPF_YAPF) { /* YAPF is selected */
 		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);
 		if (trackdir != INVALID_TRACKDIR) {
 			best_track = TrackdirToTrack(trackdir);
 		} else {
 			best_track = FindFirstTrack(tracks);
 		}
-	} else if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
+	} else if (_patches.pathfinder_for_trains == VPF_NPF) { /* NPF is selected */
 		void* perf = NpfBeginInterval();
 
 		NPFFindStationOrTileData fstd;
@@ -2393,7 +2393,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 
 		int time = NpfEndInterval(perf);
 		DEBUG(yapf, 4, "[NPFT] %d us - %d rounds - %d open - %d closed -- ", time, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
-	} else {
+	} else { /* NTP is selected */
 		void* perf = NpfBeginInterval();
 
 		TrainTrackFollowerData fd;
@@ -2469,9 +2469,9 @@ static bool CheckReverseTrain(Vehicle *v)
 
 	int i = _search_directions[FIND_FIRST_BIT(v->u.rail.track)][DirToDiagDir(v->direction)];
 
-	if (_patches.yapf.rail_use_yapf) {
+	if (_patches.pathfinder_for_trains == VPF_YAPF) { /* YAPF is selected */
 		reverse_best = YapfCheckReverseTrain(v);
-	} else if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
+	} else if (_patches.pathfinder_for_trains == VPF_NPF) { /* NPF if selected for trains */
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		Trackdir trackdir, trackdir_rev;
@@ -2495,7 +2495,7 @@ static bool CheckReverseTrain(Vehicle *v)
 				reverse_best = false;
 			}
 		}
-	} else {
+	} else { /* NTP is selected */
 		int best_track = -1;
 		uint reverse = 0;
 		uint best_bird_dist  = 0;
@@ -3025,7 +3025,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				 * the signal status. */
 				uint32 tracks = ts | (ts >> 8);
 				TrackBits bits = (TrackBits)(tracks & TRACK_BIT_MASK);
-				if ((_patches.new_pathfinding_all || _patches.yapf.rail_use_yapf) && _patches.forbid_90_deg && prev == NULL) {
+				if ((_patches.pathfinder_for_trains != VPF_NTP) && _patches.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
 					bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
@@ -3459,7 +3459,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	/* mask unreachable track bits if we are forbidden to do 90deg turns */
 	TrackBits bits = (TrackBits)((ts | (ts >> 8)) & TRACK_BIT_MASK);
-	if ((_patches.new_pathfinding_all || _patches.yapf.rail_use_yapf) && _patches.forbid_90_deg) {
+	if ((_patches.pathfinder_for_trains != VPF_NTP) && _patches.forbid_90_deg) {
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 	}
 
