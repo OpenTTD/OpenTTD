@@ -170,8 +170,6 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 void Ship::OnNewDay()
 {
-	CommandCost cost(EXPENSES_SHIP_RUN);
-
 	if ((++this->day_counter & 7) == 0)
 		DecreaseVehicleValue(this);
 
@@ -181,10 +179,12 @@ void Ship::OnNewDay()
 
 	CheckOrders(this);
 
-	if (this->vehstatus & VS_STOPPED) return;
+	if (this->running_ticks == 0) return;
 
-	cost.AddCost(GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running / 364);
-	this->profit_this_year -= cost.GetCost() >> 8;
+	CommandCost cost(EXPENSES_SHIP_RUN, GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running * this->running_ticks / (364 * DAY_TICKS));
+
+	this->profit_this_year -= cost.GetCost();
+	this->running_ticks = 0;
 
 	SubtractMoneyFromPlayerFract(this->owner, cost);
 
@@ -781,6 +781,8 @@ static void AgeShipCargo(Vehicle *v)
 
 void Ship::Tick()
 {
+	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+
 	AgeShipCargo(this);
 	ShipController(this);
 }
@@ -842,6 +844,8 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->x_pos = x;
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
+
+		v->running_ticks = 0;
 
 		v->UpdateDeltaXY(v->direction);
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;

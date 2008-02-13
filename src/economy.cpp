@@ -163,11 +163,9 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 				num++;
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */
-					if (min_profit_first == true) {
-						min_profit = v->profit_last_year;
+					if (min_profit_first || min_profit > v->profit_last_year >> 8) {
+						min_profit = v->profit_last_year >> 8;
 						min_profit_first = false;
-					} else if (min_profit > v->profit_last_year) {
-						min_profit = v->profit_last_year;
 					}
 				}
 			}
@@ -1505,7 +1503,7 @@ void VehiclePayment(Vehicle *front_v)
 						cp->days_in_transit,
 						v->cargo_type);
 
-					front_v->profit_this_year += profit;
+					front_v->profit_this_year += profit << 8;
 					virtual_profit   += profit; // accumulate transfer profits for whole vehicle
 					cp->feeder_share += profit; // account for the (virtual) profit already made for the cargo packet
 					cp->paid_for      = true;   // record that the cargo has been paid for to eliminate double counting
@@ -1523,7 +1521,7 @@ void VehiclePayment(Vehicle *front_v)
 	}
 
 	if (route_profit != 0) {
-		front_v->profit_this_year += vehicle_profit;
+		front_v->profit_this_year += vehicle_profit << 8;
 		SubtractMoneyFromPlayer(CommandCost(front_v->GetExpenseType(true), -route_profit));
 
 		if (IsLocalPlayer() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {

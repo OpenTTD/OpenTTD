@@ -321,6 +321,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		u->z_pos = GetSlopeZ(x, y);
 		v->z_pos = u->z_pos + 1;
 
+		v->running_ticks = 0;
+
 //		u->delta_x = u->delta_y = 0;
 
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
@@ -735,11 +737,12 @@ void Aircraft::OnNewDay()
 	AgeVehicle(this);
 	CheckIfAircraftNeedsService(this);
 
-	if (this->vehstatus & VS_STOPPED) return;
+	if (this->running_ticks == 0) return;
 
-	CommandCost cost = CommandCost(EXPENSES_AIRCRAFT_RUN, GetVehicleProperty(this, 0x0E, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running / 364);
+	CommandCost cost(EXPENSES_AIRCRAFT_RUN, GetVehicleProperty(this, 0x0E, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running * this->running_ticks / (364 * DAY_TICKS));
 
-	this->profit_this_year -= cost.GetCost() >> 8;
+	this->profit_this_year -= cost.GetCost();
+	this->running_ticks = 0;
 
 	SubtractMoneyFromPlayerFract(this->owner, cost);
 
@@ -2145,6 +2148,8 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 void Aircraft::Tick()
 {
 	if (!IsNormalAircraft(this)) return;
+
+	if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 
 	if (this->subtype == AIR_HELICOPTER) HelicopterTickHandler(this);
 

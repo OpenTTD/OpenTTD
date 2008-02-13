@@ -735,6 +735,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			v->x_pos = x;
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x, y);
+			v->running_ticks = 0;
 			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 			v->spritenum = rvi->image_index;
@@ -3595,6 +3596,7 @@ void Train::Tick()
 	this->tick_counter++;
 
 	if (IsFrontEngine(this)) {
+		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
 		this->current_order_time++;
 
 		TrainLocoHandler(this, false);
@@ -3665,11 +3667,12 @@ void Train::OnNewDay()
 			if (tile != 0) this->dest_tile = tile;
 		}
 
-		if ((this->vehstatus & VS_STOPPED) == 0) {
+		if (this->running_ticks != 0) {
 			/* running costs */
-			CommandCost cost(EXPENSES_TRAIN_RUN, this->GetRunningCost() / 364);
+			CommandCost cost(EXPENSES_TRAIN_RUN, this->GetRunningCost() * this->running_ticks / (364 * DAY_TICKS));
 
-			this->profit_this_year -= cost.GetCost() >> 8;
+			this->profit_this_year -= cost.GetCost();
+			this->running_ticks = 0;
 
 			SubtractMoneyFromPlayerFract(this->owner, cost);
 

@@ -483,8 +483,8 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 				if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
 
-				SetDParam(0, v->profit_this_year);
-				SetDParam(1, v->profit_last_year);
+				SetDParam(0, v->profit_this_year >> 8);
+				SetDParam(1, v->profit_last_year >> 8);
 				DrawString(x + 19, y2 + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
 
 				if (IsValidGroupID(v->group_id)) {

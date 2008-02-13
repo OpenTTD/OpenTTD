@@ -2797,6 +2797,7 @@ static const SaveLoad _common_veh_desc[] = {
 
 	    SLE_VAR(Vehicle, day_counter,          SLE_UINT8),
 	    SLE_VAR(Vehicle, tick_counter,         SLE_UINT8),
+	SLE_CONDVAR(Vehicle, running_ticks,        SLE_UINT8,                   88, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, cur_order_index,      SLE_UINT8),
 	    SLE_VAR(Vehicle, num_orders,           SLE_UINT8),

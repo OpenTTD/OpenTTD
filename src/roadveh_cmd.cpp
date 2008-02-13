@@ -219,6 +219,8 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->y_pos = y;
 		v->z_pos = GetSlopeZ(x, y);
 
+		v->running_ticks = 0;
+
 		v->u.road.state = RVSB_IN_DEPOT;
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 
@@ -1966,7 +1968,10 @@ void RoadVehicle::Tick()
 {
 	AgeRoadVehCargo(this);
 
-	if (IsRoadVehFront(this)) RoadVehController(this);
+	if (IsRoadVehFront(this)) {
+		if (!(this->vehstatus & VS_STOPPED)) this->running_ticks++;
+		RoadVehController(this);
+	}
 }
 
 static void CheckIfRoadVehNeedsService(Vehicle *v)
@@ -2008,8 +2013,6 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 void RoadVehicle::OnNewDay()
 {
-	CommandCost cost(EXPENSES_ROADVEH_RUN);
-
 	if (!IsRoadVehFront(this)) return;
 
 	if ((++this->day_counter & 7) == 0) DecreaseVehicleValue(this);
@@ -2027,10 +2030,8 @@ void RoadVehicle::OnNewDay()
 		ClearSlot(this);
 	}
 
-	if (this->vehstatus & VS_STOPPED) return;
-
 	/* update destination */
-	if (this->current_order.type == OT_GOTO_STATION && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
+	if (!(this->vehstatus & VS_STOPPED) && this->current_order.type == OT_GOTO_STATION && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
 		Station *st = GetStation(this->current_order.dest);
 		RoadStop *rs = st->GetPrimaryRoadStop(this);
 		RoadStop *best = NULL;
@@ -2088,9 +2089,12 @@ void RoadVehicle::OnNewDay()
 		}
 	}
 
-	cost = CommandCost(EXPENSES_ROADVEH_RUN, RoadVehInfo(this->engine_type)->running_cost * _price.roadveh_running / 364);
+	if (this->running_ticks == 0) return;
 
-	this->profit_this_year -= cost.GetCost() >> 8;
+	CommandCost cost(EXPENSES_ROADVEH_RUN, RoadVehInfo(this->engine_type)->running_cost * _price.roadveh_running * this->running_ticks / (364 * DAY_TICKS));
+
+	this->profit_this_year -= cost.GetCost();
+	this->running_ticks = 0;
 
 	SubtractMoneyFromPlayerFract(this->owner, cost);
 

@@ -249,8 +249,9 @@ public:
 	CargoList cargo;         ///< The cargo this vehicle is carrying
 
 
-	byte day_counter;        // increased by one for each day
-	byte tick_counter;       // increased by one for each tick
+	byte day_counter;        ///< Increased by one for each day
+	byte tick_counter;       ///< Increased by one for each tick
+	byte running_ticks;      ///< Number of ticks this vehicle was not stopped this day
 
 	/* Begin Order-stuff */
 	Order current_order;     ///< The current order (+ status, like: loading)
@@ -291,8 +292,8 @@ public:
 	uint16 load_unload_time_rem;
 	byte vehicle_flags;         // Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
-	Money profit_this_year;
-	Money profit_last_year;
+	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
+	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
 	Money value;
 
 	GroupID group_id;              ///< Index of group Pool array
