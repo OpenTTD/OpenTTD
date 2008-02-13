@@ -2202,7 +2202,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 	if (sound) PlayVehicleSound(u, VSE_TRAIN_EFFECT);
 }
 
-static void TrainPlayLeaveStationSound(const Vehicle* v)
+void Train::PlayLeaveStationSound() const
 {
 	static const SoundFx sfx[] = {
 		SND_04_TRAIN,
@@ -2212,15 +2212,10 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 		SND_41_MAGLEV
 	};
 
-	if (PlayVehicleSound(v, VSE_START)) return;
+	if (PlayVehicleSound(this, VSE_START)) return;
 
-	EngineID engtype = v->engine_type;
-	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], v);
-}
-
-void Train::PlayLeaveStationSound() const
-{
-	TrainPlayLeaveStationSound(this);
+	EngineID engtype = this->engine_type;
+	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], this);
 }
 
 static bool CheckTrainStayInDepot(Vehicle *v)
@@ -2253,7 +2248,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 	VehicleServiceInDepot(v);
 	InvalidateWindowClasses(WC_TRAINS_LIST);
-	TrainPlayLeaveStationSound(v);
+	v->PlayLeaveStationSound();
 
 	v->u.rail.track = TRACK_BIT_X;
 	if (v->direction & 2) v->u.rail.track = TRACK_BIT_Y;
