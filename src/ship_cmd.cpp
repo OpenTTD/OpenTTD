@@ -113,34 +113,32 @@ int Ship::GetImage(Direction direction) const
 
 static const Depot* FindClosestShipDepot(const Vehicle* v)
 {
+	if (_patches.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
+		Trackdir trackdir = GetVehicleTrackdir(v);
+		NPFFoundTargetData ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
+
+		if (ftd.best_bird_dist == 0) return GetDepotByTile(ftd.node.tile); /* Found target */
+
+		return NULL; /* Did not find target */
+	}
+
+	/* OPF or YAPF - find the closest depot */
+
 	const Depot* depot;
 	const Depot* best_depot = NULL;
-	uint dist;
-	uint best_dist = (uint)-1;
-	TileIndex tile;
-	TileIndex tile2 = v->tile;
+	uint best_dist = UINT_MAX;
 
-	if (_patches.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
-		NPFFoundTargetData ftd;
-		Trackdir trackdir = GetVehicleTrackdir(v);
-		ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
-		if (ftd.best_bird_dist == 0) {
-			best_depot = GetDepotByTile(ftd.node.tile); /* Found target */
-		} else {
-			best_depot = NULL; /* Did not find target */
-		}
-	} else { /* OPF or YAPF */
-		FOR_ALL_DEPOTS(depot) {
-			tile = depot->xy;
-			if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
-				dist = DistanceManhattan(tile, tile2);
-				if (dist < best_dist) {
-					best_dist = dist;
-					best_depot = depot;
-				}
+	FOR_ALL_DEPOTS(depot) {
+		TileIndex tile = depot->xy;
+		if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
+			uint dist = DistanceManhattan(tile, v->tile);
+			if (dist < best_dist) {
+				best_dist = dist;
+				best_depot = depot;
 			}
 		}
 	}
+
 	return best_depot;
 }
 
@@ -525,52 +523,52 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
  * direction in which we are entering the tile */
 static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
-	assert(enterdir >= 0 && enterdir <= 3);
+	assert(IsValidDiagDirection(enterdir));
 
-	if (_patches.pathfinder_for_ships == VPF_YAPF) { /* YAPF */
-		Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
-		return (trackdir != INVALID_TRACKDIR) ? TrackdirToTrack(trackdir) : INVALID_TRACK;
-	} else if (_patches.pathfinder_for_ships == VPF_NPF) { /* NPF */
-		NPFFindStationOrTileData fstd;
-		NPFFoundTargetData ftd;
-		Trackdir trackdir = GetVehicleTrackdir(v);
-		assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
+	switch (_patches.pathfinder_for_ships) {
+		case VPF_YAPF: { /* YAPF */
+			Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
+			if (trackdir != INVALID_TRACKDIR) return TrackdirToTrack(trackdir);
+		} break;
 
-		NPFFillWithOrderData(&fstd, v);
+		case VPF_NPF: { /* NPF */
+			NPFFindStationOrTileData fstd;
+			Trackdir trackdir = GetVehicleTrackdir(v);
+			assert(trackdir != INVALID_TRACKDIR); // Check that we are not in a depot
 
-		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPES);
+			NPFFillWithOrderData(&fstd, v);
 
-		if (ftd.best_trackdir != 0xff) {
+			NPFFoundTargetData ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPES);
+
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
-			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
-			we did not find our target, but ftd.best_trackdir contains the direction leading
-			to the tile closest to our target. */
-			return TrackdirToTrack(ftd.best_trackdir); /* TODO: Wrapper function? */
-		} else {
-			return INVALID_TRACK; /* Already at target, reverse? */
-		}
-	} else { /* OPF */
-		uint tot_dist, dist;
-		Track track;
-		TileIndex tile2;
+			 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+			 * we did not find our target, but ftd.best_trackdir contains the direction leading
+			 * to the tile closest to our target. */
+			if (ftd.best_trackdir != 0xff) return TrackdirToTrack(ftd.best_trackdir); /* TODO: Wrapper function? */
+		} break;
 
-		tile2 = TILE_ADD(tile, -TileOffsByDiagDir(enterdir));
-		tot_dist = (uint)-1;
+		default:
+		case VPF_OPF: { /* OPF */
+			TileIndex tile2 = TILE_ADD(tile, -TileOffsByDiagDir(enterdir));
+			Track track;
 
-		/* Let's find out how far it would be if we would reverse first */
-		TrackBits b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagDir(enterdir)] & v->u.ship.state;
-		if (b != 0) {
-			dist = FindShipTrack(v, tile2, ReverseDiagDir(enterdir), b, tile, &track);
-			if (dist != (uint)-1)
-				tot_dist = dist + 1;
-		}
-		/* And if we would not reverse? */
-		dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
-		if (dist > tot_dist)
-			/* We could better reverse */
-			return INVALID_TRACK;
-		return track;
+			/* Let's find out how far it would be if we would reverse first */
+			TrackBits b = GetTileShipTrackStatus(tile2) & _ship_sometracks[ReverseDiagDir(enterdir)] & v->u.ship.state;
+
+			uint distr = UINT_MAX; // distance if we reversed
+			if (b != 0) {
+				distr = FindShipTrack(v, tile2, ReverseDiagDir(enterdir), b, tile, &track);
+				if (distr != UINT_MAX) distr++; // penalty for reversing
+			}
+
+			/* And if we would not reverse? */
+			uint dist = FindShipTrack(v, tile, enterdir, tracks, 0, &track);
+
+			if (dist <= distr) return track;
+		} break;
 	}
+
+	return INVALID_TRACK; /* We could better reverse */
 }
 
 static const Direction _new_vehicle_direction_table[] = {

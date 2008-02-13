@@ -2000,7 +2000,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 
 	TrainFindDepotData tfdd;
 	tfdd.owner = v->owner;
-	tfdd.best_length = (uint)-1;
+	tfdd.best_length = UINT_MAX;
 	tfdd.reverse = false;
 
 	TileIndex tile = v->tile;
@@ -2010,36 +2010,43 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		return tfdd;
 	}
 
-	if (_patches.pathfinder_for_trains == VPF_YAPF) { /* YAPF is selected */
-		bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
-		tfdd.best_length = found ? max_distance / 2 : -1; // some fake distance or NOT_FOUND
-	} else if (_patches.pathfinder_for_trains == VPF_NPF) { /* NPF is selected */
-		Vehicle* last = GetLastVehicleInChain(v);
-		Trackdir trackdir = GetVehicleTrackdir(v);
-		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
+	switch (_patches.pathfinder_for_trains) {
+		case VPF_YAPF: { /* YAPF */
+			bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
+			tfdd.best_length = found ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
+		} break;
 
-		assert(trackdir != INVALID_TRACKDIR);
-		NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
-		if (ftd.best_bird_dist == 0) {
-			/* Found target */
-			tfdd.tile = ftd.node.tile;
-			/* Our caller expects a number of tiles, so we just approximate that
-			 * number by this. It might not be completely what we want, but it will
-			 * work for now :-) We can possibly change this when the old pathfinder
-			 * is removed. */
-			tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
-			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) tfdd.reverse = true;
-		}
-	} else { /* NTP */
-		/* search in the forward direction first. */
-		DiagDirection i = TrainExitDir(v->direction, v->u.rail.track);
-		NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
-		if (tfdd.best_length == (uint)-1){
-			tfdd.reverse = true;
-			/* search in backwards direction */
-			i = TrainExitDir(ReverseDir(v->direction), v->u.rail.track);
+		case VPF_NPF: { /* NPF */
+			Vehicle* last = GetLastVehicleInChain(v);
+			Trackdir trackdir = GetVehicleTrackdir(v);
+			Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
+
+			assert(trackdir != INVALID_TRACKDIR);
+			NPFFoundTargetData ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
+			if (ftd.best_bird_dist == 0) {
+				/* Found target */
+				tfdd.tile = ftd.node.tile;
+				/* Our caller expects a number of tiles, so we just approximate that
+				* number by this. It might not be completely what we want, but it will
+				* work for now :-) We can possibly change this when the old pathfinder
+				* is removed. */
+				tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
+				if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) tfdd.reverse = true;
+			}
+		} break;
+
+		default:
+		case VPF_NTP: { /* NTP */
+			/* search in the forward direction first. */
+			DiagDirection i = TrainExitDir(v->direction, v->u.rail.track);
 			NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
-		}
+			if (tfdd.best_length == UINT_MAX){
+				tfdd.reverse = true;
+				/* search in backwards direction */
+				i = TrainExitDir(ReverseDir(v->direction), v->u.rail.track);
+				NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+			}
+		} break;
 	}
 
 	return tfdd;
@@ -2358,68 +2365,76 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	/* quick return in case only one possible track is available */
 	if (KillFirstBit(tracks) == TRACK_BIT_NONE) return FindFirstTrack(tracks);
 
-	if (_patches.pathfinder_for_trains == VPF_YAPF) { /* YAPF is selected */
-		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);
-		if (trackdir != INVALID_TRACKDIR) {
-			best_track = TrackdirToTrack(trackdir);
-		} else {
-			best_track = FindFirstTrack(tracks);
-		}
-	} else if (_patches.pathfinder_for_trains == VPF_NPF) { /* NPF is selected */
-		void* perf = NpfBeginInterval();
+	switch (_patches.pathfinder_for_trains) {
+		case VPF_YAPF: { /* YAPF */
+			Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);
+			if (trackdir != INVALID_TRACKDIR) {
+				best_track = TrackdirToTrack(trackdir);
+			} else {
+				best_track = FindFirstTrack(tracks);
+			}
+		} break;
 
-		NPFFindStationOrTileData fstd;
-		NPFFillWithOrderData(&fstd, v);
-		/* The enterdir for the new tile, is the exitdir for the old tile */
-		Trackdir trackdir = GetVehicleTrackdir(v);
-		assert(trackdir != 0xff);
+		case VPF_NPF: { /* NPF */
+			void *perf = NpfBeginInterval();
 
-		NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
+			NPFFindStationOrTileData fstd;
+			NPFFillWithOrderData(&fstd, v);
+			/* The enterdir for the new tile, is the exitdir for the old tile */
+			Trackdir trackdir = GetVehicleTrackdir(v);
+			assert(trackdir != INVALID_TRACKDIR);
 
-		if (ftd.best_trackdir == 0xff) {
-			/* We are already at our target. Just do something
-			 * @todo maybe display error?
-			 * @todo: go straight ahead if possible? */
-			best_track = FindFirstTrack(tracks);
-		} else {
-			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
-			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
-			we did not find our target, but ftd.best_trackdir contains the direction leading
-			to the tile closest to our target. */
-			if (ftd.best_bird_dist != 0) path_not_found = true;
-			/* Discard enterdir information, making it a normal track */
-			best_track = TrackdirToTrack(ftd.best_trackdir);
-		}
+			NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
 
-		int time = NpfEndInterval(perf);
-		DEBUG(yapf, 4, "[NPFT] %d us - %d rounds - %d open - %d closed -- ", time, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
-	} else { /* NTP is selected */
-		void* perf = NpfBeginInterval();
+			if (ftd.best_trackdir == INVALID_TRACKDIR) {
+				/* We are already at our target. Just do something
+				 * @todo maybe display error?
+				 * @todo: go straight ahead if possible? */
+				best_track = FindFirstTrack(tracks);
+			} else {
+				/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains
+				 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
+				 * we did not find our target, but ftd.best_trackdir contains the direction leading
+				 * to the tile closest to our target. */
+				if (ftd.best_bird_dist != 0) path_not_found = true;
+				/* Discard enterdir information, making it a normal track */
+				best_track = TrackdirToTrack(ftd.best_trackdir);
+			}
 
-		TrainTrackFollowerData fd;
-		FillWithStationData(&fd, v);
+			int time = NpfEndInterval(perf);
+			DEBUG(yapf, 4, "[NPFT] %d us - %d rounds - %d open - %d closed -- ", time, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
+		} break;
 
-		/* New train pathfinding */
-		fd.best_bird_dist = (uint)-1;
-		fd.best_track_dist = (uint)-1;
-		fd.best_track = INVALID_TRACKDIR;
+		default:
+		case VPF_NTP: { /* NTP */
+			void *perf = NpfBeginInterval();
 
-		NewTrainPathfind(tile - TileOffsByDiagDir(enterdir), v->dest_tile,
-			v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
+			TrainTrackFollowerData fd;
+			FillWithStationData(&fd, v);
 
-		/* check whether the path was found or only 'guessed' */
-		if (fd.best_bird_dist != 0) path_not_found = true;
+			/* New train pathfinding */
+			fd.best_bird_dist = UINT_MAX;
+			fd.best_track_dist = UINT_MAX;
+			fd.best_track = INVALID_TRACKDIR;
 
-		if (fd.best_track == 0xff) {
-			/* blaha */
-			best_track = FindFirstTrack(tracks);
-		} else {
-			best_track = TrackdirToTrack(fd.best_track);
-		}
+			NewTrainPathfind(tile - TileOffsByDiagDir(enterdir), v->dest_tile,
+				v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
-		int time = NpfEndInterval(perf);
-		DEBUG(yapf, 4, "[NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
+			/* check whether the path was found or only 'guessed' */
+			if (fd.best_bird_dist != 0) path_not_found = true;
+
+			if (fd.best_track == INVALID_TRACKDIR) {
+				/* blaha */
+				best_track = FindFirstTrack(tracks);
+			} else {
+				best_track = TrackdirToTrack(fd.best_track);
+			}
+
+			int time = NpfEndInterval(perf);
+			DEBUG(yapf, 4, "[NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
+		} break;
 	}
+
 	/* handle "path not found" state */
 	if (path_not_found) {
 		/* PF didn't find the route */
@@ -2469,81 +2484,87 @@ static bool CheckReverseTrain(Vehicle *v)
 
 	int i = _search_directions[FIND_FIRST_BIT(v->u.rail.track)][DirToDiagDir(v->direction)];
 
-	if (_patches.pathfinder_for_trains == VPF_YAPF) { /* YAPF is selected */
-		reverse_best = YapfCheckReverseTrain(v);
-	} else if (_patches.pathfinder_for_trains == VPF_NPF) { /* NPF if selected for trains */
-		NPFFindStationOrTileData fstd;
-		NPFFoundTargetData ftd;
-		Trackdir trackdir, trackdir_rev;
-		Vehicle* last = GetLastVehicleInChain(v);
+	switch (_patches.pathfinder_for_trains) {
+		case VPF_YAPF: { /* YAPF */
+			reverse_best = YapfCheckReverseTrain(v);
+		} break;
 
-		NPFFillWithOrderData(&fstd, v);
+		case VPF_NPF: { /* NPF */
+			NPFFindStationOrTileData fstd;
+			NPFFoundTargetData ftd;
+			Vehicle* last = GetLastVehicleInChain(v);
 
-		trackdir = GetVehicleTrackdir(v);
-		trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
-		assert(trackdir != 0xff);
-		assert(trackdir_rev != 0xff);
+			NPFFillWithOrderData(&fstd, v);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
-		if (ftd.best_bird_dist != 0) {
-			/* We didn't find anything, just keep on going straight ahead */
-			reverse_best = false;
-		} else {
-			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) {
-				reverse_best = true;
-			} else {
+			Trackdir trackdir = GetVehicleTrackdir(v);
+			Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
+			assert(trackdir != INVALID_TRACKDIR);
+			assert(trackdir_rev != INVALID_TRACKDIR);
+
+			ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, false, last->tile, trackdir_rev, false, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
+			if (ftd.best_bird_dist != 0) {
+				/* We didn't find anything, just keep on going straight ahead */
 				reverse_best = false;
-			}
-		}
-	} else { /* NTP is selected */
-		int best_track = -1;
-		uint reverse = 0;
-		uint best_bird_dist  = 0;
-		uint best_track_dist = 0;
-
-		for (;;) {
-			fd.best_bird_dist = (uint)-1;
-			fd.best_track_dist = (uint)-1;
-
-			NewTrainPathfind(v->tile, v->dest_tile, v->u.rail.compatible_railtypes, (DiagDirection)(reverse ^ i), (NTPEnumProc*)NtpCallbFindStation, &fd);
-
-			if (best_track != -1) {
-				if (best_bird_dist != 0) {
-					if (fd.best_bird_dist != 0) {
-						/* neither reached the destination, pick the one with the smallest bird dist */
-						if (fd.best_bird_dist > best_bird_dist) goto bad;
-						if (fd.best_bird_dist < best_bird_dist) goto good;
-					} else {
-						/* we found the destination for the first time */
-						goto good;
-					}
+			} else {
+				if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) {
+					reverse_best = true;
 				} else {
-					if (fd.best_bird_dist != 0) {
-						/* didn't find destination, but we've found the destination previously */
-						goto bad;
-					} else {
-						/* both old & new reached the destination, compare track length */
-						if (fd.best_track_dist > best_track_dist) goto bad;
-						if (fd.best_track_dist < best_track_dist) goto good;
-					}
+					reverse_best = false;
 				}
-
-				/* if we reach this position, there's two paths of equal value so far.
-				 * pick one randomly. */
-				int r = GB(Random(), 0, 8);
-				if (_pick_track_table[i] == (v->direction & 3)) r += 80;
-				if (_pick_track_table[best_track] == (v->direction & 3)) r -= 80;
-				if (r <= 127) goto bad;
 			}
+		} break;
+
+		default:
+		case VPF_NTP: { /* NTP */
+			int best_track = -1;
+			uint reverse = 0;
+			uint best_bird_dist  = 0;
+			uint best_track_dist = 0;
+
+			for (;;) {
+				fd.best_bird_dist = UINT_MAX;
+				fd.best_track_dist = UINT_MAX;
+
+				NewTrainPathfind(v->tile, v->dest_tile, v->u.rail.compatible_railtypes, (DiagDirection)(reverse ^ i), (NTPEnumProc*)NtpCallbFindStation, &fd);
+
+				if (best_track != -1) {
+					if (best_bird_dist != 0) {
+						if (fd.best_bird_dist != 0) {
+							/* neither reached the destination, pick the one with the smallest bird dist */
+							if (fd.best_bird_dist > best_bird_dist) goto bad;
+							if (fd.best_bird_dist < best_bird_dist) goto good;
+						} else {
+							/* we found the destination for the first time */
+							goto good;
+						}
+					} else {
+						if (fd.best_bird_dist != 0) {
+							/* didn't find destination, but we've found the destination previously */
+							goto bad;
+						} else {
+							/* both old & new reached the destination, compare track length */
+							if (fd.best_track_dist > best_track_dist) goto bad;
+							if (fd.best_track_dist < best_track_dist) goto good;
+						}
+					}
+
+					/* if we reach this position, there's two paths of equal value so far.
+					 * pick one randomly. */
+					int r = GB(Random(), 0, 8);
+					if (_pick_track_table[i] == (v->direction & 3)) r += 80;
+					if (_pick_track_table[best_track] == (v->direction & 3)) r -= 80;
+					if (r <= 127) goto bad;
+				}
 good:;
-			best_track = i;
-			best_bird_dist = fd.best_bird_dist;
-			best_track_dist = fd.best_track_dist;
-			reverse_best = reverse;
+				best_track = i;
+				best_bird_dist = fd.best_bird_dist;
+				best_track_dist = fd.best_track_dist;
+				reverse_best = reverse;
 bad:;
-			if (reverse != 0) break;
-			reverse = 2;
-		}
+				if (reverse != 0) break;
+				reverse = 2;
+			}
+		} break;
 	}
 
 	return reverse_best != 0;
@@ -3025,7 +3046,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				 * the signal status. */
 				uint32 tracks = ts | (ts >> 8);
 				TrackBits bits = (TrackBits)(tracks & TRACK_BIT_MASK);
-				if ((_patches.pathfinder_for_trains != VPF_NTP) && _patches.forbid_90_deg && prev == NULL) {
+				if (_patches.pathfinder_for_trains != VPF_NTP && _patches.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
 					bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
@@ -3459,7 +3480,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	/* mask unreachable track bits if we are forbidden to do 90deg turns */
 	TrackBits bits = (TrackBits)((ts | (ts >> 8)) & TRACK_BIT_MASK);
-	if ((_patches.pathfinder_for_trains != VPF_NTP) && _patches.forbid_90_deg) {
+	if (_patches.pathfinder_for_trains != VPF_NTP && _patches.forbid_90_deg) {
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 	}
 
