@@ -530,6 +530,26 @@ static const StringID _sort_listing[][11] = {{
 	INVALID_STRING_ID
 }};
 
+static int DrawCargoCapacityInfo(int x, int y, EngineID engine, VehicleType type, bool refittable)
+{
+	uint16 *cap = GetCapacityOfArticulatedParts(engine, type);
+
+	for (uint c = 0; c < NUM_CARGO; c++) {
+		if (cap[c] == 0) continue;
+
+		SetDParam(0, c);
+		SetDParam(1, cap[c]);
+		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+		DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
+		y += 10;
+
+		/* Only show as refittable once */
+		refittable = false;
+	}
+
+	return y;
+}
+
 /* Draw rail wagon specific details */
 static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
@@ -615,13 +635,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 	y += 10;
 
 	/* Cargo type + capacity */
-	SetDParam(0, rvi->cargo_type);
-	SetDParam(1, GetEngineProperty(engine_number, 0x0F, rvi->capacity));
-	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
-	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
-	y += 10;
-
-	return y;
+	return DrawCargoCapacityInfo(x, y, engine_number, VEH_ROAD, refittable);
 }
 
 /* Draw ship specific details */
@@ -703,7 +717,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 			uint capacity = GetEngineProperty(engine_number, 0x14, rvi->capacity);
 
-			refitable = (EngInfo(engine_number)->refit_mask != 0) && (capacity > 0);
+			bool refitable = (EngInfo(engine_number)->refit_mask != 0) && (capacity > 0);
 
 			if (rvi->railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
@@ -712,20 +726,18 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			}
 
 			/* Cargo type + capacity, or N/A */
-			if (rvi->capacity == 0) {
+			int new_y = DrawCargoCapacityInfo(x, y, engine_number, VEH_TRAIN, refitable);
+
+			if (new_y == y) {
 				SetDParam(0, CT_INVALID);
 				SetDParam(2, STR_EMPTY);
+				DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
+				y += 10;
 			} else {
-				int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
-
-				SetDParam(0, rvi->cargo_type);
-				SetDParam(1, (capacity * (CountArticulatedParts(engine_number, true) + 1)) << multihead);
-				SetDParam(2, refitable ? STR_9842_REFITTABLE : STR_EMPTY);
+				y = new_y;
 			}
-			DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
-			y += 10;
-		}
 			break;
+		}
 		case VEH_ROAD:
 			y = DrawRoadVehPurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
 			refitable = true;

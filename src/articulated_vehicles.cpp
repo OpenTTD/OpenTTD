@@ -34,6 +34,42 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 	return i - 1;
 }
 
+
+uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
+{
+	static uint16 capacity[NUM_CARGO];
+	memset(capacity, 0, sizeof(capacity));
+
+	if (type == VEH_TRAIN) {
+		const RailVehicleInfo *rvi = RailVehInfo(engine);
+		capacity[rvi->cargo_type] = rvi->capacity;
+		if (rvi->railveh_type == RAILVEH_MULTIHEAD) capacity[rvi->cargo_type] += rvi->capacity;
+	} else if (type == VEH_ROAD) {
+		const RoadVehicleInfo *rvi = RoadVehInfo(engine);
+		capacity[rvi->cargo_type] = rvi->capacity;
+	}
+
+	if (!HasBit(EngInfo(engine)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
+
+	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
+		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
+		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
+
+		EngineID artic_engine = GetFirstEngineOfType(type) + GB(callback, 0, 7);
+
+		if (type == VEH_TRAIN) {
+			const RailVehicleInfo *rvi = RailVehInfo(artic_engine);
+			capacity[rvi->cargo_type] += GetEngineProperty(artic_engine, 0x14, rvi->capacity);
+		} else if (type == VEH_ROAD) {
+			const RoadVehicleInfo *rvi = RoadVehInfo(artic_engine);
+			capacity[rvi->cargo_type] += GetEngineProperty(artic_engine, 0x0F, rvi->capacity);
+		}
+	}
+
+	return capacity;
+}
+
+
 void AddArticulatedParts(Vehicle **vl, VehicleType type)
 {
 	const Vehicle *v = vl[0];
