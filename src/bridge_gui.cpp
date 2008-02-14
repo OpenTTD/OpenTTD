@@ -147,7 +147,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 {
 	DeleteWindowById(WC_BUILD_BRIDGE, 0);
 
-	_bridgedata.type = ((transport_type << 7) | bridge_type) << 8; //prepare the parameter for use only once
+	_bridgedata.type = (transport_type << 15) | (bridge_type << 8); //prepare the parameter for use only once
 	_bridgedata.start_tile = start;
 	_bridgedata.end_tile = end;
 
