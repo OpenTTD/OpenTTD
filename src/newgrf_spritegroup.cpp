@@ -84,7 +84,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 {
 	/* First handle variables common with Action7/9/D */
 	uint32 value;
-	if (GetGlobalVariable(variable, &value)) return variable;
+	if (GetGlobalVariable(variable, &value)) return value;
 
 	/* Non-common variable */
 	switch (variable) {
