@@ -361,7 +361,7 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 	ViewPort *vp = w->viewport;
 
 	if (vp != NULL &&
-	    IsInsideMM(x, vp->left, vp->left + vp->width) &&
+			IsInsideMM(x, vp->left, vp->left + vp->width) &&
 			IsInsideMM(y, vp->top, vp->top + vp->height))
 		return vp;
 
@@ -689,6 +689,7 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 		top  = ps->top  = (pt.y += spr->y_offs);
 		bottom          = (pt.y +  spr->height);
 	}
+
 	if (_draw_bounding_boxes && (image != SPR_EMPTY_BOUNDING_BOX)) {
 		/* Compute maximal extents of sprite and it's bounding box */
 		left   = min(left  , RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x);
@@ -696,9 +697,10 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 		top    = min(top   , RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y);
 		bottom = max(bottom, RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1);
 	}
+
 	/* Do not add the sprite to the viewport, if it is outside */
 	if (left   >= vd->dpi.left + vd->dpi.width ||
-	    right  <= vd->dpi.left ||
+	    right  <= vd->dpi.left                 ||
 	    top    >= vd->dpi.top + vd->dpi.height ||
 	    bottom <= vd->dpi.top) {
 		return;
@@ -1592,6 +1594,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	ViewportSortParentSprites(parent_list);
 	ViewportDrawParentSprites(parent_list);
+
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(parent_list);
 
 	if (vd.first_string != NULL) ViewportDrawStrings(&vd.dpi, vd.first_string);
@@ -1706,6 +1709,7 @@ void UpdateViewportPosition(Window *w)
 		}
 
 		ClampViewportToMap(vp, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
+
 		SetViewportPosition(w, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
 	}
 }

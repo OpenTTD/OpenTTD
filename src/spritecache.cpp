@@ -284,8 +284,9 @@ static uint32 GetSpriteCacheUsage()
 	uint32 tot_size = 0;
 	MemBlock* s;
 
-	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s))
+	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
 		if (!(s->size & S_FREE_MASK)) tot_size += s->size;
+	}
 
 	return tot_size;
 }
@@ -454,6 +455,7 @@ const void *GetRawSprite(SpriteID sprite, bool real_sprite)
 
 	/* Load the sprite, if it is not loaded, yet */
 	if (p == NULL) p = ReadSprite(sc, sprite, real_sprite);
+
 	return p;
 }
 
