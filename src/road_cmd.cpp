@@ -458,6 +458,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					all_bits = GetCrossingRoadBits(tile);
 					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
+					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 					break;
 
 				default:
