@@ -549,7 +549,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			switch (e->we.place.select_proc) {
 				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
-					ShowBuildBridgeWindow(start_tile, end_tile, _cur_railtype);
+					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype);
 					break;
 
 				case DDSP_PLACE_AUTORAIL:
@@ -1577,5 +1577,6 @@ void SetDefaultRailGui()
 		SetWindowDirty(w);
 	}
 }
+
 
 

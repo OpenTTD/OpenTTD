@@ -25,7 +25,7 @@ static struct BridgeData {
 	uint count;
 	TileIndex start_tile;
 	TileIndex end_tile;
-	uint8 type;
+	uint32 type; ///< Data type for the bridge. Bit 16,15 = transport type, 14..8 = road/rail pieces, 7..0 = type of bridge
 	BridgeType indexes[MAX_BRIDGES];
 	Money costs[MAX_BRIDGES];
 
@@ -44,7 +44,7 @@ static void BuildBridge(Window *w, int i)
 {
 	DeleteWindow(w);
 	DoCommandP(_bridgedata.end_tile, _bridgedata.start_tile,
-		_bridgedata.indexes[i] | (_bridgedata.type << 8), CcBuildBridge,
+		_bridgedata.type | _bridgedata.indexes[i], CcBuildBridge,
 		CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 }
 
@@ -143,38 +143,18 @@ static const WindowDesc _build_bridge_desc = {
 	BuildBridgeWndProc
 };
 
-/* Widget definition for the road bridge selection window */
-static const Widget _build_road_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_1803_SELECT_ROAD_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
-{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
-{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
-{   WIDGETS_END},
-};
-
-/* Window definition for the road bridge selection window */
-static const WindowDesc _build_road_bridge_desc = {
-	WDP_AUTO, WDP_AUTO, 200, 102, 200, 102,
-	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
-	_build_road_bridge_widgets,
-	BuildBridgeWndProc
-};
-
-
-void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type)
 {
 	DeleteWindowById(WC_BUILD_BRIDGE, 0);
 
-	_bridgedata.type = bridge_type;
+	_bridgedata.type = ((transport_type << 7) | bridge_type) << 8; //prepare the parameter for use only once
 	_bridgedata.start_tile = start;
 	_bridgedata.end_tile = end;
 
 	/* only query bridge building possibility once, result is the same for all bridges!
 	 * returns CMD_ERROR on failure, and price on success */
 	StringID errmsg = INVALID_STRING_ID;
-	CommandCost ret = DoCommand(end, start, (bridge_type << 8), DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
+	CommandCost ret = DoCommand(end, start, _bridgedata.type, DC_AUTO | DC_QUERY_COST, CMD_BUILD_BRIDGE);
 
 	uint8 j = 0;
 	if (CmdFailed(ret)) {
@@ -204,7 +184,9 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 	}
 
 	if (j != 0) {
-		AllocateWindowDesc((_bridgedata.type & 0x80) ? &_build_road_bridge_desc : &_build_bridge_desc);
+		Window *w = AllocateWindowDesc(&_build_bridge_desc);
+		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly */
+		w->widget[BBSW_CAPTION].data = (transport_type == TRANSPORT_ROAD) ? STR_1803_SELECT_ROAD_BRIDGE : STR_100D_SELECT_RAIL_BRIDGE;
 	} else {
 		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}

@@ -532,7 +532,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			switch (e->we.place.select_proc) {
 				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
-					ShowBuildBridgeWindow(start_tile, end_tile, 0x80 | RoadTypeToRoadTypes(_cur_roadtype));
+					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(_cur_roadtype));
 					break;
 
 				case DDSP_DEMOLISH_AREA:
