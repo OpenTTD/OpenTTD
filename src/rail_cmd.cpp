@@ -356,7 +356,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
-			if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+			if (IsNormalRoad(tile)) {
 				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
 				RoadTypes roadtypes = GetRoadTypes(tile);

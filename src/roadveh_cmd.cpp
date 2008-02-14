@@ -182,7 +182,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
-	if (HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
+	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
 
 	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
@@ -404,8 +404,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdi
 
 	tile += TileOffsByDiagDir(_road_pf_directions[trackdir]);
 
-	if (IsTileType(tile, MP_ROAD) &&
-			GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
+	if (IsRoadDepotTile(tile) &&
 			IsTileOwner(tile, rfdd->owner) &&
 			length < rfdd->best_length) {
 		rfdd->best_length = length;
@@ -550,7 +549,7 @@ CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	if (IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
+	if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile) != DRD_NONE) return CMD_ERROR;
 
 	if (IsTileType(v->tile, MP_TUNNELBRIDGE) && DirToDiagDir(v->direction) == GetTunnelBridgeDirection(v->tile)) return CMD_ERROR;
 
@@ -1159,7 +1158,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
 
 	if (IsTileType(tile, MP_ROAD)) {
-		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->u.road.compatible_roadtypes) == 0)) {
+		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->u.road.compatible_roadtypes) == 0)) {
 			/* Road depot owned by another player or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}
@@ -1251,7 +1250,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 			DiagDirection dir;
 
 			if (IsTileType(desttile, MP_ROAD)) {
-				if (GetRoadTileType(desttile) == ROAD_TILE_DEPOT) {
+				if (IsRoadDepot(desttile)) {
 					dir = GetRoadDepotDirection(desttile);
 					goto do_it;
 				}
@@ -1413,7 +1412,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			diag_dir = GetTunnelBridgeDirection(tile);
-		} else if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
+		} else if (IsRoadDepotTile(tile)) {
 			diag_dir = ReverseDiagDir(GetRoadDepotDirection(tile));
 		}
 
@@ -1582,8 +1581,7 @@ again:
 					case TRACKDIR_RVREV_NW: needed = ROAD_SE; break;
 				}
 				if ((v->Previous() != NULL && v->Previous()->tile == tile) ||
-						(IsRoadVehFront(v) && IsTileType(tile, MP_ROAD) &&
-							GetRoadTileType(tile) == ROAD_TILE_NORMAL && !HasRoadWorks(tile) &&
+						(IsRoadVehFront(v) && IsNormalRoadTile(tile) && !HasRoadWorks(tile) &&
 							(needed & GetRoadBits(tile, ROADTYPE_TRAM)) != ROAD_NONE)) {
 					/*
 					 * Taking the 'big' corner for trams only happens when:
@@ -1614,7 +1612,7 @@ again:
 					v->cur_speed = 0;
 					return false;
 				}
-			} else if (IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_NORMAL && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
+			} else if (IsNormalRoadTile(v->tile) && GetDisallowedRoadDirections(v->tile) != DRD_NONE) {
 				v->cur_speed = 0;
 				return false;
 			} else {
@@ -1757,9 +1755,7 @@ again:
 	/* This vehicle is not in a wormhole and it hasn't entered a new tile. If
 	 * it's on a depot tile, check if it's time to activate the next vehicle in
 	 * the chain yet. */
-	if (v->Next() != NULL &&
-			IsTileType(v->tile, MP_ROAD) && GetRoadTileType(v->tile) == ROAD_TILE_DEPOT) {
-
+	if (v->Next() != NULL && IsRoadDepotTile(v->tile)) {
 		if (v->u.road.frame == v->u.road.cached_veh_length + RVC_DEPOT_START_FRAME) {
 			RoadVehLeaveDepot(v->Next(), false);
 		}

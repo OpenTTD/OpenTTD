@@ -45,7 +45,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 			return IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile)  == RAIL_TILE_DEPOT;
 
 		case TRANSPORT_ROAD:
-			return IsTileType(tile, MP_ROAD)    && GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
+			return IsRoadDepotTile(tile);
 
 		case TRANSPORT_WATER:
 			return IsTileType(tile, MP_WATER)   && GetWaterTileType(tile) == WATER_TILE_DEPOT;
@@ -64,7 +64,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 static inline bool IsDepotTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
-		case MP_ROAD:    return GetRoadTileType(tile)  == ROAD_TILE_DEPOT;
+		case MP_ROAD:    return IsRoadDepot(tile);
 		case MP_WATER:   return GetWaterTileType(tile) == WATER_TILE_DEPOT;
 		case MP_RAILWAY: return GetRailTileType(tile)  == RAIL_TILE_DEPOT;
 		case MP_STATION: return IsHangar(tile);

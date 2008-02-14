@@ -512,7 +512,7 @@ static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
 /** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
 static DiagDirection GetSingleTramBit(TileIndex tile)
 {
-	if (IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+	if (IsNormalRoadTile(tile)) {
 		RoadBits rb = GetRoadBits(tile, ROADTYPE_TRAM);
 		switch (rb) {
 			case ROAD_NW: return DIAGDIR_NW;

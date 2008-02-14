@@ -225,7 +225,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 
 			/* Don't allow road to be removed from the crossing when there is tram;
 			 * we can't draw the crossing without trambits ;) */
-			if (rt == ROADTYPE_ROAD && HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
+			if (rt == ROADTYPE_ROAD && HasTileRoadType(tile, ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
 
 			if (rt == ROADTYPE_ROAD) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
@@ -429,7 +429,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 					all_bits = GetAllRoadBits(tile);
-					if (!HasBit(GetRoadTypes(tile), rt)) break;
+					if (!HasTileRoadType(tile, rt)) break;
 
 					existing = GetRoadBits(tile, rt);
 					RoadBits merged = existing | pieces;
@@ -455,7 +455,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				} break;
 
 				case ROAD_TILE_CROSSING:
-					if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					all_bits = GetCrossingRoadBits(tile);
 					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
 					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
@@ -508,14 +508,14 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
-			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the roadstop when vehicles are already driving on it */
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_TUNNELBRIDGE:
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
-			if (HasBit(GetRoadTypes(tile), rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
 			if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
 			break;
@@ -543,7 +543,7 @@ do_clear:;
 		pieces &= ComplementRoadBits(existing);
 
 		/* Check if new road bits will have the same foundation as other existing road types */
-		if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+		if (IsNormalRoad(tile)) {
 			Slope slope = GetTileSlope(tile, NULL);
 			Foundation found_new = GetRoadFoundation(slope, pieces | existing);
 
@@ -603,7 +603,7 @@ do_clear:;
 				break;
 		}
 
-		if (rt != ROADTYPE_TRAM && IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+		if (rt != ROADTYPE_TRAM && IsNormalRoadTile(tile)) {
 			existing |= pieces;
 			SetDisallowedRoadDirections(tile, (existing == ROAD_X || existing == ROAD_Y) ?
 					GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);
@@ -1090,7 +1090,7 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image, pal);
-			if (HasBit(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
+			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
 				DrawGroundSprite(SPR_TRAMWAY_OVERLAY + (GetCrossingRoadAxis(ti->tile) ^ 1), pal);
 				DrawTramCatenary(ti, GetCrossingRoadBits(ti->tile));
 			}
@@ -1108,7 +1108,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			if (HasBit(GetRoadTypes(ti->tile), ROADTYPE_TRAM)) {
+			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
 				dts =  &_tram_depot[GetRoadDepotDirection(ti->tile)];
 			} else {
 				dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
@@ -1165,7 +1165,7 @@ static uint GetSlopeZ_Road(TileIndex tile, uint x, uint y)
 	Slope tileh = GetTileSlope(tile, &z);
 
 	if (tileh == SLOPE_FLAT) return z;
-	if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+	if (IsNormalRoad(tile)) {
 		Foundation f = GetRoadFoundation(tileh, GetAllRoadBits(tile));
 		z += ApplyFoundationToSlope(f, &tileh);
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
@@ -1176,7 +1176,7 @@ static uint GetSlopeZ_Road(TileIndex tile, uint x, uint y)
 
 static Foundation GetFoundation_Road(TileIndex tile, Slope tileh)
 {
-	if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+	if (IsNormalRoad(tile)) {
 		return GetRoadFoundation(tileh, GetAllRoadBits(tile));
 	} else {
 		return FlatteningFoundation(tileh);
@@ -1229,7 +1229,7 @@ static void TileLoop_Road(TileIndex tile)
 			break;
 	}
 
-	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) return;
+	if (IsRoadDepot(tile)) return;
 
 	const Town* t = ClosestTownFromTile(tile, (uint)-1);
 	if (!HasRoadWorks(tile)) {
@@ -1241,7 +1241,7 @@ static void TileLoop_Road(TileIndex tile)
 			/* Show an animation to indicate road work */
 			if (t->road_build_months != 0 &&
 					(DistanceManhattan(t->xy, tile) < 8 || grp != HZB_TOWN_EDGE) &&
-					GetRoadTileType(tile) == ROAD_TILE_NORMAL && CountBits(GetAllRoadBits(tile)) > 1 ) {
+					IsNormalRoad(tile) && CountBits(GetAllRoadBits(tile)) > 1 ) {
 				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicleOnGround(tile) && Chance16(1, 40)) {
 					StartRoadWorks(tile);
 
@@ -1297,7 +1297,7 @@ static void TileLoop_Road(TileIndex tile)
 
 static void ClickTile_Road(TileIndex tile)
 {
-	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) ShowDepotWindow(tile, VEH_ROAD);
+	if (IsRoadDepot(tile)) ShowDepotWindow(tile, VEH_ROAD);
 }
 
 static const byte _road_trackbits[16] = {
@@ -1402,7 +1402,7 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 
 static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
-	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
+	if (IsRoadDepot(tile)) {
 		if (GetTileOwner(tile) == old_player) {
 			if (new_player == PLAYER_SPECTATOR) {
 				DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
@@ -1415,7 +1415,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 		/* ROADTYPE_ROAD denotes the tile owner, so update it too */
-		if (rt != ROADTYPE_ROAD && !HasBit(GetRoadTypes(tile), rt)) continue;
+		if (rt != ROADTYPE_ROAD && !HasTileRoadType(tile, rt)) continue;
 
 		if (GetRoadOwner(tile, rt) == old_player) {
 			SetRoadOwner(tile, rt, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);

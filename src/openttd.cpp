@@ -2388,7 +2388,7 @@ bool AfterLoadGame()
 					Owner o = GetRoadOwner(t, rt);
 					if (IsValidPlayer(o) && !GetPlayer(o)->is_active) SetRoadOwner(t, rt, OWNER_NONE);
 				}
-				if (GetRoadTileType(t) == ROAD_TILE_CROSSING) {
+				if (IsLevelCrossing(t)) {
 					Owner o = GetTileOwner(t);
 					if (!GetPlayer(o)->is_active) {
 						/* remove leftover rail piece from crossing (from very old savegames) */

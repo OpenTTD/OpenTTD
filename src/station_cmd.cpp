@@ -1333,7 +1333,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
-	bool build_over_road  = is_drive_through && IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL;
+	bool build_over_road  = is_drive_through && IsNormalRoadTile(tile);
 	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 
@@ -1356,7 +1356,6 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Not allowed to build over this road */
 	if (build_over_road) {
 		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
-		if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) return CMD_ERROR;
 
 		RoadTypes cur_rts = GetRoadTypes(tile);
 
@@ -2946,8 +2945,8 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags)
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
 			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
-			case STATION_TRUCK:   return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
-			case STATION_BUS:     return_cmd_error(HasBit(GetRoadTypes(tile), ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
+			case STATION_TRUCK:   return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_CARGO_TRAM_STATION : STR_3047_MUST_DEMOLISH_TRUCK_STATION);
+			case STATION_BUS:     return_cmd_error(HasTileRoadType(tile, ROADTYPE_TRAM) ? STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION : STR_3046_MUST_DEMOLISH_BUS_STATION);
 			case STATION_BUOY:    return_cmd_error(STR_306A_BUOY_IN_THE_WAY);
 			case STATION_DOCK:    return_cmd_error(STR_304D_MUST_DEMOLISH_DOCK_FIRST);
 			case STATION_OILRIG:

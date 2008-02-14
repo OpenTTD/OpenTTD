@@ -44,7 +44,7 @@ struct CFollowTrackT : public FollowTrack_t
 	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
 	FORCEINLINE DiagDirection GetSingleTramBit(TileIndex tile)
 	{
-		if (IsTram() && IsTileType(tile, MP_ROAD) && GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+		if (IsTram() && IsNormalRoadTile(tile)) {
 			RoadBits rb = GetRoadBits(tile, ROADTYPE_TRAM);
 			switch (rb) {
 				case ROAD_NW: return DIAGDIR_NW;

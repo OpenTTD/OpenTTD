@@ -24,6 +24,16 @@ static inline RoadTileType GetRoadTileType(TileIndex t)
 	return (RoadTileType)GB(_m[t].m5, 6, 2);
 }
 
+static inline bool IsNormalRoad(TileIndex t)
+{
+	return GetRoadTileType(t) == ROAD_TILE_NORMAL;
+}
+
+static inline bool IsNormalRoadTile(TileIndex t)
+{
+	return IsTileType(t, MP_ROAD) && IsNormalRoad(t);
+}
+
 static inline bool IsLevelCrossing(TileIndex t)
 {
 	return GetRoadTileType(t) == ROAD_TILE_CROSSING;
@@ -34,9 +44,19 @@ static inline bool IsLevelCrossingTile(TileIndex t)
 	return IsTileType(t, MP_ROAD) && IsLevelCrossing(t);
 }
 
+static inline bool IsRoadDepot(TileIndex t)
+{
+	return GetRoadTileType(t) == ROAD_TILE_DEPOT;
+}
+
+static inline bool IsRoadDepotTile(TileIndex t)
+{
+	return IsTileType(t, MP_ROAD) && IsRoadDepot(t);
+}
+
 static inline RoadBits GetRoadBits(TileIndex t, RoadType rt)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
+	assert(IsNormalRoad(t));
 	switch (rt) {
 		default: NOT_REACHED();
 		case ROADTYPE_ROAD: return (RoadBits)GB(_m[t].m4, 0, 4);
@@ -52,7 +72,7 @@ static inline RoadBits GetAllRoadBits(TileIndex tile)
 
 static inline void SetRoadBits(TileIndex t, RoadBits r, RoadType rt)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL); // XXX incomplete
+	assert(IsNormalRoad(t)); // XXX incomplete
 	switch (rt) {
 		default: NOT_REACHED();
 		case ROADTYPE_ROAD: SB(_m[t].m4, 0, 4, r); break;
@@ -78,6 +98,11 @@ static inline void SetRoadTypes(TileIndex t, RoadTypes rt)
 		assert(IsTileType(t, MP_STATION) || IsTileType(t, MP_TUNNELBRIDGE));
 		SB(_m[t].m3, 0, 2, rt);
 	}
+}
+
+static inline bool HasTileRoadType(TileIndex t, RoadType rt)
+{
+	return HasBit(GetRoadTypes(t), rt);
 }
 
 static inline Owner GetRoadOwner(TileIndex t, RoadType rt)
@@ -159,7 +184,7 @@ DECLARE_ENUM_AS_BIT_SET(DisallowedRoadDirections);
  */
 static inline DisallowedRoadDirections GetDisallowedRoadDirections(TileIndex t)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
+	assert(IsNormalRoad(t));
 	return (DisallowedRoadDirections)GB(_m[t].m5, 4, 2);
 }
 
@@ -170,14 +195,14 @@ static inline DisallowedRoadDirections GetDisallowedRoadDirections(TileIndex t)
  */
 static inline void SetDisallowedRoadDirections(TileIndex t, DisallowedRoadDirections drd)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
+	assert(IsNormalRoad(t));
 	assert(drd < DRD_END);
 	SB(_m[t].m5, 4, 2, drd);
 }
 
 static inline Axis GetCrossingRoadAxis(TileIndex t)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
+	assert(IsLevelCrossing(t));
 	return (Axis)GB(_m[t].m4, 6, 1);
 }
 
@@ -193,13 +218,13 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 
 static inline bool IsCrossingBarred(TileIndex t)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
+	assert(IsLevelCrossing(t));
 	return HasBit(_m[t].m4, 5);
 }
 
 static inline void SetCrossingBarred(TileIndex t, bool barred)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
+	assert(IsLevelCrossing(t));
 	SB(_m[t].m4, 5, 1, barred);
 }
 
@@ -280,7 +305,7 @@ static inline void TerminateRoadWorks(TileIndex t)
 
 static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 {
-	assert(GetRoadTileType(t) == ROAD_TILE_DEPOT);
+	assert(IsRoadDepot(t));
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
