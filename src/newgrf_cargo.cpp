@@ -115,9 +115,7 @@ CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 
 uint8 GetReverseCargoTranslation(CargoID cargo, const GRFFile *grffile)
 {
-	/* Pre-version 7 uses the 'climate dependent' ID, i.e. cargo is the cargo ID */
-	if (grffile->grf_version < 7) return cargo;
-
+	/* Note: All grf versions use CargoBit here. Pre-version 7 do NOT use the 'climate dependent' ID. */
 	const CargoSpec *cs = GetCargo(cargo);
 
 	/* If the GRF contains a translation table (and the cargo is in the table)
