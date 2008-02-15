@@ -2170,7 +2170,7 @@ static void DrawTile_Station(TileInfo *ti)
 			}
 		}
 	} else {
-		SpriteID image = t->ground_sprite;
+		SpriteID image = t->ground.sprite;
 		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 			image += custom_ground_offset;
@@ -2229,11 +2229,11 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 		total_offset = rti->total_offset;
 	}
 
-	SpriteID img = t->ground_sprite;
+	SpriteID img = t->ground.sprite;
 	DrawSprite(img + total_offset, HasBit(img, PALETTE_MODIFIER_COLOR) ? pal : PAL_NONE, x, y);
 
 	if (roadtype == ROADTYPE_TRAM) {
-		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground_sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);
+		DrawSprite(SPR_TRAMWAY_TRAM + (t->ground.sprite == SPR_ROAD_PAVED_STRAIGHT_X ? 1 : 0), PAL_NONE, x, y);
 	}
 
 	const DrawTileSeqStruct *dtss;

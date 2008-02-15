@@ -929,24 +929,24 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					uint seq_count = 0;
 
 					dts->seq = NULL;
-					dts->ground_sprite = grf_load_word(&buf);
-					dts->ground_pal = grf_load_word(&buf);
-					if (dts->ground_sprite == 0) continue;
-					if (HasBit(dts->ground_pal, 15)) {
-						ClrBit(dts->ground_pal, 15);
-						SetBit(dts->ground_sprite, SPRITE_MODIFIER_USE_OFFSET);
+					dts->ground.sprite = grf_load_word(&buf);
+					dts->ground.pal = grf_load_word(&buf);
+					if (dts->ground.sprite == 0) continue;
+					if (HasBit(dts->ground.pal, 15)) {
+						ClrBit(dts->ground.pal, 15);
+						SetBit(dts->ground.sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
-					if (HasBit(dts->ground_pal, 14)) {
-						ClrBit(dts->ground_pal, 14);
-						SetBit(dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
+					if (HasBit(dts->ground.pal, 14)) {
+						ClrBit(dts->ground.pal, 14);
+						SetBit(dts->ground.sprite, SPRITE_MODIFIER_OPAQUE);
 					}
-					if (HasBit(dts->ground_sprite, 15)) {
-						ClrBit(dts->ground_sprite, 15);
-						SetBit(dts->ground_sprite, PALETTE_MODIFIER_COLOR);
+					if (HasBit(dts->ground.sprite, 15)) {
+						ClrBit(dts->ground.sprite, 15);
+						SetBit(dts->ground.sprite, PALETTE_MODIFIER_COLOR);
 					}
-					if (HasBit(dts->ground_sprite, 14)) {
-						ClrBit(dts->ground_sprite, 14);
-						SetBit(dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
+					if (HasBit(dts->ground.sprite, 14)) {
+						ClrBit(dts->ground.sprite, 14);
+						SetBit(dts->ground.sprite, PALETTE_MODIFIER_TRANSPARENT);
 					}
 
 					while (buf < *bufp + len) {
@@ -2652,27 +2652,27 @@ static void NewSpriteGroup(byte *buf, int len)
 					group->g.layout.dts = CallocT<DrawTileSprites>(1);
 
 					/* Groundsprite */
-					group->g.layout.dts->ground_sprite = grf_load_word(&buf);
-					group->g.layout.dts->ground_pal    = grf_load_word(&buf);
+					group->g.layout.dts->ground.sprite = grf_load_word(&buf);
+					group->g.layout.dts->ground.pal    = grf_load_word(&buf);
 					/* Remap transparent/colour modifier bits */
-					if (HasBit(group->g.layout.dts->ground_sprite, 14)) {
-						ClrBit(group->g.layout.dts->ground_sprite, 14);
-						SetBit(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_TRANSPARENT);
+					if (HasBit(group->g.layout.dts->ground.sprite, 14)) {
+						ClrBit(group->g.layout.dts->ground.sprite, 14);
+						SetBit(group->g.layout.dts->ground.sprite, PALETTE_MODIFIER_TRANSPARENT);
 					}
-					if (HasBit(group->g.layout.dts->ground_sprite, 15)) {
-						ClrBit(group->g.layout.dts->ground_sprite, 15);
-						SetBit(group->g.layout.dts->ground_sprite, PALETTE_MODIFIER_COLOR);
+					if (HasBit(group->g.layout.dts->ground.sprite, 15)) {
+						ClrBit(group->g.layout.dts->ground.sprite, 15);
+						SetBit(group->g.layout.dts->ground.sprite, PALETTE_MODIFIER_COLOR);
 					}
-					if (HasBit(group->g.layout.dts->ground_pal, 14)) {
-						ClrBit(group->g.layout.dts->ground_pal, 14);
-						SetBit(group->g.layout.dts->ground_sprite, SPRITE_MODIFIER_OPAQUE);
+					if (HasBit(group->g.layout.dts->ground.pal, 14)) {
+						ClrBit(group->g.layout.dts->ground.pal, 14);
+						SetBit(group->g.layout.dts->ground.sprite, SPRITE_MODIFIER_OPAQUE);
 					}
-					if (HasBit(group->g.layout.dts->ground_pal, 15)) {
+					if (HasBit(group->g.layout.dts->ground.pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
-						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->g.layout.dts->ground_sprite, 0, 14) * sprites;
-						SB(group->g.layout.dts->ground_sprite, 0, SPRITE_WIDTH, sprite);
-						ClrBit(group->g.layout.dts->ground_pal, 15);
+						SpriteID sprite = _cur_grffile->spriteset_start + GB(group->g.layout.dts->ground.sprite, 0, 14) * sprites;
+						SB(group->g.layout.dts->ground.sprite, 0, SPRITE_WIDTH, sprite);
+						ClrBit(group->g.layout.dts->ground.pal, 15);
 					}
 
 					group->g.layout.dts->seq = CallocT<DrawTileSeqStruct>(num_sprites + 1);

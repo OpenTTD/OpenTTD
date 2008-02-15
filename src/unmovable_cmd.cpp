@@ -212,7 +212,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 			t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
-			DrawGroundSprite(t->ground_sprite, palette);
+			DrawGroundSprite(t->ground.sprite, palette);
 
 			foreach_draw_tile_seq(dtss, t->seq) {
 				AddSortableSpriteToDraw(

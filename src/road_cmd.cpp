@@ -1114,7 +1114,7 @@ static void DrawTile_Road(TileInfo *ti)
 				dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
 			}
 
-			DrawGroundSprite(dts->ground_sprite, PAL_NONE);
+			DrawGroundSprite(dts->ground.sprite, PAL_NONE);
 
 			for (dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
 				SpriteID image = dtss->image.sprite;
@@ -1149,7 +1149,7 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	x += 33;
 	y += 17;
 
-	DrawSprite(dts->ground_sprite, PAL_NONE, x, y);
+	DrawSprite(dts->ground.sprite, PAL_NONE, x, y);
 
 	for (dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);

@@ -26,10 +26,10 @@ static const DrawTileSeqStruct _road_depot_NW[] = {
 };
 
 static const DrawTileSprites _road_depot[] = {
-	{ 0xA4A, PAL_NONE, _road_depot_NE },
-	{ 0xA4A, PAL_NONE, _road_depot_SE },
-	{ 0xA4A, PAL_NONE, _road_depot_SW },
-	{ 0xA4A, PAL_NONE, _road_depot_NW }
+	{ {0xA4A, PAL_NONE}, _road_depot_NE },
+	{ {0xA4A, PAL_NONE}, _road_depot_SE },
+	{ {0xA4A, PAL_NONE}, _road_depot_SW },
+	{ {0xA4A, PAL_NONE}, _road_depot_NW }
 };
 
 static const DrawTileSeqStruct _tram_depot_NE[] = {
@@ -55,10 +55,10 @@ static const DrawTileSeqStruct _tram_depot_NW[] = {
 };
 
 static const DrawTileSprites _tram_depot[] = {
-	{ 0xA4A, PAL_NONE, _tram_depot_NE },
-	{ 0xA4A, PAL_NONE, _tram_depot_SE },
-	{ 0xA4A, PAL_NONE, _tram_depot_SW },
-	{ 0xA4A, PAL_NONE, _tram_depot_NW }
+	{ {0xA4A, PAL_NONE}, _tram_depot_NE },
+	{ {0xA4A, PAL_NONE}, _tram_depot_SE },
+	{ {0xA4A, PAL_NONE}, _tram_depot_SW },
+	{ {0xA4A, PAL_NONE}, _tram_depot_NW }
 };
 
 #undef TILE_SEQ_LINE

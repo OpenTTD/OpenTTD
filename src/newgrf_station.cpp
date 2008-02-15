@@ -772,7 +772,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : (uint)axis];
 	}
 
-	image = sprites->ground_sprite;
+	image = sprites->ground.sprite;
 	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
 		image += rti->custom_ground_offset;

@@ -1760,7 +1760,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 			relocation = rti->total_offset;
 
-			image = dts->ground_sprite;
+			image = dts->ground.sprite;
 			if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
 
 			/* adjust ground tile for desert
@@ -1796,7 +1796,7 @@ static void DrawTile_Track(TileInfo *ti)
 				if (dts != NULL && dts->seq != NULL) {
 					relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
-					image = dts->ground_sprite;
+					image = dts->ground.sprite;
 					if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 						image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 						image += rti->custom_ground_offset;
@@ -1811,7 +1811,7 @@ default_waypoint:
 				/* There is no custom layout, fall back to the default graphics */
 				dts = &_waypoint_gfx_table[GetWaypointAxis(ti->tile)];
 				relocation = 0;
-				image = dts->ground_sprite + rti->total_offset;
+				image = dts->ground.sprite + rti->total_offset;
 				if (IsSnowRailGround(ti->tile)) image += rti->snow_offset;
 			}
 		}
@@ -1872,7 +1872,7 @@ static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStr
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
 	const DrawTileSprites* dts = &_depot_gfx_table[dir];
-	SpriteID image = dts->ground_sprite;
+	SpriteID image = dts->ground.sprite;
 	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
 
 	if (image != SPR_FLAT_GRASS_TILE) image += offset;
@@ -1884,7 +1884,7 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
 	const DrawTileSprites* dts = &_waypoint_gfx_table[AXIS_X];
 
-	DrawTileSequence(x, y, dts->ground_sprite + offset, dts->seq, 0);
+	DrawTileSequence(x, y, dts->ground.sprite + offset, dts->seq, 0);
 }
 
 static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)

@@ -70,7 +70,7 @@ static const DrawTileSeqStruct _unmovable_display_datas_18[] = {
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_END
 
-#define TILE_SPRITE_LINE(img, dtss) { img | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, dtss },
+#define TILE_SPRITE_LINE(img, dtss) { {img | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE}, dtss },
 
 static const DrawTileSprites _unmovable_display_datas[] = {
 	TILE_SPRITE_LINE(0xA2B, _unmovable_display_nothing)

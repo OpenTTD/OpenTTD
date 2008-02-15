@@ -993,7 +993,7 @@ static const DrawTileSeqStruct _station_display_datas_0171[] = {
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_LINE_PAL
 
-#define TILE_SPRITE_LINE(img, dtss) { img, PAL_NONE, dtss },
+#define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
 
 static const DrawTileSprites _station_display_datas_rail[] = {
 	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_0)
