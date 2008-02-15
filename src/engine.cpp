@@ -204,7 +204,7 @@ static PlayerID GetBestPlayer(uint8 pp)
 	PlayerID best_player;
 	uint mask = 0;
 
-	for (; pp != 0; pp--) {
+	do {
 		best_hist = -1;
 		best_player = PLAYER_SPECTATOR;
 		FOR_ALL_PLAYERS(p) {
@@ -218,7 +218,7 @@ static PlayerID GetBestPlayer(uint8 pp)
 		if (best_player == PLAYER_SPECTATOR) return PLAYER_SPECTATOR;
 
 		SetBit(mask, best_player);
-	}
+	} while (--p != 0);
 
 	return best_player;
 }
