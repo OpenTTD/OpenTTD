@@ -124,7 +124,7 @@ struct Engine {
 	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
 	byte lifelength;
 	byte flags;
-	PlayerByte preview_player;
+	uint8 preview_player_rank;
 	byte preview_wait;
 	byte player_avail;
 	VehicleType type; ///< type, ie VEH_ROAD, VEH_TRAIN, etc.

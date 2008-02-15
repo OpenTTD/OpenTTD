@@ -1289,7 +1289,7 @@ static const OldChunks engine_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Engine, lifelength ),
 	OCL_SVAR(  OC_UINT8, Engine, flags ),
-	OCL_SVAR(  OC_UINT8, Engine, preview_player ),
+	OCL_SVAR(  OC_UINT8, Engine, preview_player_rank ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
 
 	OCL_NULL( 2 ), ///< Junk

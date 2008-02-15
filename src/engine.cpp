@@ -191,20 +191,20 @@ static void AcceptEnginePreview(EngineID eid, PlayerID player)
 		SetBit(p->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
-	e->preview_player = INVALID_PLAYER;
+	e->preview_player_rank = 0xFF;
 	if (player == _local_player) {
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 }
 
-static PlayerID GetBestPlayer(PlayerID pp)
+static PlayerID GetBestPlayer(uint8 pp)
 {
 	const Player *p;
 	int32 best_hist;
 	PlayerID best_player;
 	uint mask = 0;
 
-	do {
+	for (; pp != 0; pp--) {
 		best_hist = -1;
 		best_player = PLAYER_SPECTATOR;
 		FOR_ALL_PLAYERS(p) {
@@ -218,7 +218,7 @@ static PlayerID GetBestPlayer(PlayerID pp)
 		if (best_player == PLAYER_SPECTATOR) return PLAYER_SPECTATOR;
 
 		SetBit(mask, best_player);
-	} while (pp--, pp != 0);
+	}
 
 	return best_player;
 }
@@ -234,16 +234,16 @@ void EnginesDailyLoop()
 
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
 			if (e->flags & ENGINE_OFFER_WINDOW_OPEN) {
-				if (e->preview_player != 0xFF && !--e->preview_wait) {
+				if (e->preview_player_rank != 0xFF && !--e->preview_wait) {
 					e->flags &= ~ENGINE_OFFER_WINDOW_OPEN;
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
-					e->preview_player++;
+					e->preview_player_rank++;
 				}
-			} else if (e->preview_player != 0xFF) {
-				PlayerID best_player = GetBestPlayer(e->preview_player);
+			} else if (e->preview_player_rank != 0xFF) {
+				PlayerID best_player = GetBestPlayer(e->preview_player_rank);
 
 				if (best_player == PLAYER_SPECTATOR) {
-					e->preview_player = INVALID_PLAYER;
+					e->preview_player_rank = 0xFF;
 					continue;
 				}
 
@@ -273,7 +273,7 @@ CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	if (!IsEngineIndex(p1)) return CMD_ERROR;
 	e = GetEngine(p1);
-	if (GetBestPlayer(e->preview_player) != _current_player) return CMD_ERROR;
+	if (GetBestPlayer(e->preview_player_rank) != _current_player) return CMD_ERROR;
 
 	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_player);
 
@@ -361,7 +361,7 @@ void EnginesMonthlyLoop()
 
 				/* Do not introduce new rail wagons */
 				if (!IsWagon(e - _engines))
-					e->preview_player = (PlayerID)1; // Give to the player with the highest rating.
+					e->preview_player_rank = 1; // Give to the player with the highest rating.
 			}
 		}
 	}
@@ -613,7 +613,7 @@ static const SaveLoad _engine_desc[] = {
 
 	    SLE_VAR(Engine, lifelength,          SLE_UINT8),
 	    SLE_VAR(Engine, flags,               SLE_UINT8),
-	    SLE_VAR(Engine, preview_player,      SLE_UINT8),
+	    SLE_VAR(Engine, preview_player_rank, SLE_UINT8),
 	    SLE_VAR(Engine, preview_wait,        SLE_UINT8),
 	SLE_CONDNULL(1, 0, 44),
 	    SLE_VAR(Engine, player_avail,        SLE_UINT8),
