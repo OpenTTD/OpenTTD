@@ -933,7 +933,13 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 
 	v->subspeed = (t=v->subspeed) + (byte)spd;
 
-	if (!hard_limit && v->cur_speed > speed_limit) speed_limit = v->cur_speed - (v->cur_speed / 48);
+	/* Aircraft's current speed is used twice so that very fast planes are
+	 * forced to slow down rapidly in the short distance needed. The magic
+	 * value 16384 was determined to give similar results to the old speed/48
+	 * method at slower speeds. This also results in less reduction at slow
+	 * speeds to that aircraft do not get to taxi speed straight after
+	 * touchdown. */
+	if (!hard_limit && v->cur_speed > speed_limit) speed_limit = v->cur_speed - max(1, (v->cur_speed * v->cur_speed) / 16384);
 
 	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), speed_limit);
 
