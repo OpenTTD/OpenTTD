@@ -993,198 +993,202 @@ static const DrawTileSeqStruct _station_display_datas_0171[] = {
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_LINE_PAL
 
+#define TILE_SPRITE_LINE(img, dtss) { img, PAL_NONE, dtss },
+
 static const DrawTileSprites _station_display_datas_rail[] = {
-	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_0 },
-	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_1 },
-	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_2 },
-	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_3 },
-	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_4 },
-	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_5 },
-	{ SPR_RAIL_TRACK_X,               PAL_NONE, _station_display_datas_6 },
-	{ SPR_RAIL_TRACK_Y,               PAL_NONE, _station_display_datas_7 },
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_0)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_1)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_2)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_3)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_4)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_5)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_X,               _station_display_datas_6)
+	TILE_SPRITE_LINE(SPR_RAIL_TRACK_Y,               _station_display_datas_7)
 };
 
 static const DrawTileSprites _station_display_datas_airport[] = {
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_9 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_10 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_NS_WEST,    PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_EW_SOUTH,   PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_XING_SOUTH, PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_XING_WEST,  PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_NS_CTR,     PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_XING_EAST,  PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_NS_EAST,    PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_EW_NORTH,   PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_EW_CTR,     PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_TAXIWAY_EW_NORTH,   PAL_NONE, _station_display_datas_21 },
-	{ SPR_AIRPORT_RUNWAY_EXIT_A,      PAL_NONE, _station_display_datas_22 },
-	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_datas_23 },
-	{ SPR_AIRPORT_RUNWAY_EXIT_C,      PAL_NONE, _station_display_datas_24 },
-	{ SPR_AIRPORT_RUNWAY_EXIT_D,      PAL_NONE, _station_display_datas_25 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_26 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_27 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_28 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_29 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_30 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_31 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_32 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_33 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_34 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_35 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_36 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_nothing },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_38 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_39 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_40 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_41 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_42 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_43 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_44 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_45 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_46 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_47 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_48 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_49 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_50 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_51 },
-	{ SPR_AIRFIELD_TERM_A,            PAL_NONE, _station_display_nothing },
-	{ SPR_AIRFIELD_TERM_B,            PAL_NONE, _station_display_nothing },
-	{ SPR_AIRFIELD_TERM_C_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_54 },
-	{ SPR_AIRFIELD_APRON_A,           PAL_NONE, _station_display_datas_55 },
-	{ SPR_AIRFIELD_APRON_B,           PAL_NONE, _station_display_nothing },
-	{ SPR_AIRFIELD_APRON_C,           PAL_NONE, _station_display_nothing },
-	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_58 },
-	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_59 },
-	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_60 },
-	{ SPR_AIRFIELD_APRON_D,           PAL_NONE, _station_display_datas_61 },
-	{ SPR_AIRFIELD_RUNWAY_NEAR_END,   PAL_NONE, _station_display_datas_62 },
-	{ SPR_AIRFIELD_RUNWAY_MIDDLE,     PAL_NONE, _station_display_datas_63 },
-	{ SPR_AIRFIELD_RUNWAY_FAR_END,    PAL_NONE, _station_display_datas_64 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_65 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_66 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_nothing },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_085 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_086 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_087 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_088 },
-	{ SPR_AIRPORT_RUNWAY_EXIT_B,      PAL_NONE, _station_display_datas_089 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_090 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_091 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_092 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_093 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_094 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_095 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_096 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_097 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_098 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_099 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0100 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0101 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0102 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0103 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0104 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0105 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0106 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0107 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0108 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0109 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0110 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0111 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0112 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0113 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0114 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0115 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0116 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0117 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_0118 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_0119 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_0120 },
-	{ SPR_AIRPORT_RUNWAY_END,         PAL_NONE, _station_display_datas_0121 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0122 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0123 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0124 },
-	{ SPR_NSRUNWAY1,                  PAL_NONE, _station_display_datas_0125 },
-	{ SPR_NSRUNWAY_END,               PAL_NONE, _station_display_datas_0126 },
-	{ SPR_NSRUNWAY1,                  PAL_NONE, _station_display_datas_0127 },
-	{ SPR_NSRUNWAY_END,               PAL_NONE, _station_display_datas_0128 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0129 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0130 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0131 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0132 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0133 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0134 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0135 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0136 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0137 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_0138 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_0139 },
-	{ SPR_AIRPORT_AIRCRAFT_STAND,     PAL_NONE, _station_display_datas_0140 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0141 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0142 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0143 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0144 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0145 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0146 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0147 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0148 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0149 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0150 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0151 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0152 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0153 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0154 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0155 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0156 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0157 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0158 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0159 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0160 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0161 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0162 },
-	{ SPR_AIRPORT_APRON,              PAL_NONE, _station_display_datas_0163 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_58 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_59 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_60 },
-	{ SPR_FLAT_GRASS_TILE,            PAL_NONE, _station_display_datas_61 },
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_9)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_10)
+	TILE_SPRITE_LINE(SPR_AIRPORT_AIRCRAFT_STAND,     _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_NS_WEST,    _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_EW_SOUTH,   _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_XING_SOUTH, _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_XING_WEST,  _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_NS_CTR,     _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_XING_EAST,  _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_NS_EAST,    _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_EW_NORTH,   _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_EW_CTR,     _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_TAXIWAY_EW_NORTH,   _station_display_datas_21)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_A,      _station_display_datas_22)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_B,      _station_display_datas_23)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_C,      _station_display_datas_24)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_D,      _station_display_datas_25)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_datas_26)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_27)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_28)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_29)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_30)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_31)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_32)
+	TILE_SPRITE_LINE(SPR_AIRPORT_AIRCRAFT_STAND,     _station_display_datas_33)
+	TILE_SPRITE_LINE(SPR_AIRPORT_AIRCRAFT_STAND,     _station_display_datas_34)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_35)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_36)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_38)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_39)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_40)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_41)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_42)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_43)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_44)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_45)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_46)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_47)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_48)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_49)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_50)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_51)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_TERM_A,            _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_TERM_B,            _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_TERM_C_GROUND | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_54)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_A,           _station_display_datas_55)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_B,           _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_C,           _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_datas_58)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_datas_59)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_datas_60)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_APRON_D,           _station_display_datas_61)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_RUNWAY_NEAR_END,   _station_display_datas_62)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_RUNWAY_MIDDLE,     _station_display_datas_63)
+	TILE_SPRITE_LINE(SPR_AIRFIELD_RUNWAY_FAR_END,    _station_display_datas_64)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_65)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_66)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_B,      _station_display_nothing)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_085)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_086)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_087)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_datas_088)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_EXIT_B,      _station_display_datas_089)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_090)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_091)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_092)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_093)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_094)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_095)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_096)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_097)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_098)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_099)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0100)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0101)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0102)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0103)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0104)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0105)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0106)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0107)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0108)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0109)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0110)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0111)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0112)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0113)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0114)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0115)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0116)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0117)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_datas_0118)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_datas_0119)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_datas_0120)
+	TILE_SPRITE_LINE(SPR_AIRPORT_RUNWAY_END,         _station_display_datas_0121)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0122)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0123)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0124)
+	TILE_SPRITE_LINE(SPR_NSRUNWAY1,                  _station_display_datas_0125)
+	TILE_SPRITE_LINE(SPR_NSRUNWAY_END,               _station_display_datas_0126)
+	TILE_SPRITE_LINE(SPR_NSRUNWAY1,                  _station_display_datas_0127)
+	TILE_SPRITE_LINE(SPR_NSRUNWAY_END,               _station_display_datas_0128)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0129)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0130)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0131)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0132)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0133)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0134)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0135)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0136)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0137)
+	TILE_SPRITE_LINE(SPR_AIRPORT_AIRCRAFT_STAND,     _station_display_datas_0138)
+	TILE_SPRITE_LINE(SPR_AIRPORT_AIRCRAFT_STAND,     _station_display_datas_0139)
+	TILE_SPRITE_LINE(SPR_AIRPORT_AIRCRAFT_STAND,     _station_display_datas_0140)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0141)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0142)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0143)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0144)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0145)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0146)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0147)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0148)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0149)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0150)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0151)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0152)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0153)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0154)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0155)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0156)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0157)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0158)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0159)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0160)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0161)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0162)
+	TILE_SPRITE_LINE(SPR_AIRPORT_APRON,              _station_display_datas_0163)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_58)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_59)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_60)
+	TILE_SPRITE_LINE(SPR_FLAT_GRASS_TILE,            _station_display_datas_61)
 };
 
 static const DrawTileSprites _station_display_datas_truck[] = {
-	{ SPR_TRUCK_STOP_NE_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_67 },
-	{ SPR_TRUCK_STOP_SE_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_68 },
-	{ SPR_TRUCK_STOP_SW_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_69 },
-	{ SPR_TRUCK_STOP_NW_GROUND | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_70 },
-	{ SPR_ROAD_PAVED_STRAIGHT_X,      PAL_NONE, _station_display_datas_0168 },
-	{ SPR_ROAD_PAVED_STRAIGHT_Y,      PAL_NONE, _station_display_datas_0169 },
+	TILE_SPRITE_LINE(SPR_TRUCK_STOP_NE_GROUND | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_67)
+	TILE_SPRITE_LINE(SPR_TRUCK_STOP_SE_GROUND | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_68)
+	TILE_SPRITE_LINE(SPR_TRUCK_STOP_SW_GROUND | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_69)
+	TILE_SPRITE_LINE(SPR_TRUCK_STOP_NW_GROUND | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_70)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_X,      _station_display_datas_0168)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0169)
 };
 
 static const DrawTileSprites _station_display_datas_bus[] = {
-	{ SPR_BUS_STOP_NE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_71 },
-	{ SPR_BUS_STOP_SE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_72 },
-	{ SPR_BUS_STOP_SW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_73 },
-	{ SPR_BUS_STOP_NW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _station_display_datas_74 },
-	{ SPR_ROAD_PAVED_STRAIGHT_X,      PAL_NONE, _station_display_datas_0170 },
-	{ SPR_ROAD_PAVED_STRAIGHT_Y,      PAL_NONE, _station_display_datas_0171 }
+	TILE_SPRITE_LINE(SPR_BUS_STOP_NE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_71)
+	TILE_SPRITE_LINE(SPR_BUS_STOP_SE_GROUND   | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_72)
+	TILE_SPRITE_LINE(SPR_BUS_STOP_SW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_73)
+	TILE_SPRITE_LINE(SPR_BUS_STOP_NW_GROUND   | (1 << PALETTE_MODIFIER_COLOR), _station_display_datas_74)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_X,      _station_display_datas_0170)
+	TILE_SPRITE_LINE(SPR_ROAD_PAVED_STRAIGHT_Y,      _station_display_datas_0171)
 };
 
 static const DrawTileSprites _station_display_datas_oilrig[] = {
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_nothing },
+	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_nothing)
 };
 
 static const DrawTileSprites _station_display_datas_dock[] = {
-	{ SPR_SHORE_BASE + SLOPE_SW,      PAL_NONE, _station_display_datas_76 },
-	{ SPR_SHORE_BASE + SLOPE_NW,      PAL_NONE, _station_display_datas_77 },
-	{ SPR_SHORE_BASE + SLOPE_NE,      PAL_NONE, _station_display_datas_78 },
-	{ SPR_SHORE_BASE + SLOPE_SE,      PAL_NONE, _station_display_datas_79 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_80 },
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_81 },
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SW,      _station_display_datas_76)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NW,      _station_display_datas_77)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_NE,      _station_display_datas_78)
+	TILE_SPRITE_LINE(SPR_SHORE_BASE + SLOPE_SE,      _station_display_datas_79)
+	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_80)
+	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_81)
 };
 
 static const DrawTileSprites _station_display_datas_buoy[] = {
-	{ SPR_FLAT_WATER_TILE,            PAL_NONE, _station_display_datas_82 },
+	TILE_SPRITE_LINE(SPR_FLAT_WATER_TILE,            _station_display_datas_82)
 };
+
+#undef TILE_SPRITE_LINE
 
 static const DrawTileSprites *_station_display_datas[] = {
 	_station_display_datas_rail,

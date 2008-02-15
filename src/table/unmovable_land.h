@@ -70,25 +70,29 @@ static const DrawTileSeqStruct _unmovable_display_datas_18[] = {
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_END
 
+#define TILE_SPRITE_LINE(img, dtss) { img | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, dtss },
+
 static const DrawTileSprites _unmovable_display_datas[] = {
-	{ 0xA2B | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA2C | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA2D | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA2E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA2F | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA30 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA31 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA32 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA33 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_8 },
-	{ 0xA35 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_9 },
-	{ 0xA37 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_10 },
-	{ 0xA39 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA3A | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_12 },
-	{ 0xA3C | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_13 },
-	{ 0xA3E | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_14 },
-	{ 0xA40 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
-	{ 0xA41 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_16 },
-	{ 0xA43 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_17 },
-	{ 0xA45 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_datas_18 },
-	{ 0xA47 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, _unmovable_display_nothing },
+	TILE_SPRITE_LINE(0xA2B, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA2C, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA2D, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA2E, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA2F, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA30, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA31, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA32, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA33, _unmovable_display_datas_8)
+	TILE_SPRITE_LINE(0xA35, _unmovable_display_datas_9)
+	TILE_SPRITE_LINE(0xA37, _unmovable_display_datas_10)
+	TILE_SPRITE_LINE(0xA39, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA3A, _unmovable_display_datas_12)
+	TILE_SPRITE_LINE(0xA3C, _unmovable_display_datas_13)
+	TILE_SPRITE_LINE(0xA3E, _unmovable_display_datas_14)
+	TILE_SPRITE_LINE(0xA40, _unmovable_display_nothing)
+	TILE_SPRITE_LINE(0xA41, _unmovable_display_datas_16)
+	TILE_SPRITE_LINE(0xA43, _unmovable_display_datas_17)
+	TILE_SPRITE_LINE(0xA45, _unmovable_display_datas_18)
+	TILE_SPRITE_LINE(0xA47, _unmovable_display_nothing)
 };
+
+#undef TILE_SPRITE_LINE
