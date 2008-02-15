@@ -599,7 +599,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 			TileXY(rect.min_x, rect.min_y),
 			rect.max_x - rect.min_x + 1,
 			rect.max_y - rect.min_y + 1,
-			_patches.modified_catchment ? FindCatchmentRadius(st) : 4
+			_patches.modified_catchment ? FindCatchmentRadius(st) : CA_UNMODIFIED
 		);
 	} else {
 		memset(accepts, 0, sizeof(accepts));
@@ -2712,7 +2712,7 @@ StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
 		h_prod = 0;
 		w += 8;
 		h += 8;
-		max_rad = 4;
+		max_rad = CA_UNMODIFIED;
 	}
 
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))

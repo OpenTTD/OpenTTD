@@ -243,7 +243,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: w->LowerWidget(_station_show_coverage + 3); break;
 
 	case WE_PAINT: {
-		int rad = (_patches.modified_catchment) ? CA_DOCK : 4;
+		int rad = (_patches.modified_catchment) ? CA_DOCK : CA_UNMODIFIED;
 
 		if (WP(w, def_d).close) return;
 		DrawWindowWidgets(w);

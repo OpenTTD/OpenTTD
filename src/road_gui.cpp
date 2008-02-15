@@ -809,7 +809,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		if (_station_show_coverage) {
-			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : 4;
+			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		} else {
 			SetTileSelectSize(1, 1);

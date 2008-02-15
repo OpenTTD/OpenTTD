@@ -1604,7 +1604,7 @@ static void AiStateWantNewRoute(Player *p)
 
 static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, byte cargo)
 {
-	uint rad = (_patches.modified_catchment) ? CA_TRAIN : 4;
+	uint rad = (_patches.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
 
 	for (; p->mode != 4; p++) {
 		AcceptedCargo values;
@@ -3409,7 +3409,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 		const AirportFTAClass* airport = GetAirport(p->attr);
 		uint w = airport->size_x;
 		uint h = airport->size_y;
-		uint rad = _patches.modified_catchment ? airport->catchment : 4;
+		uint rad = _patches.modified_catchment ? airport->catchment : CA_UNMODIFIED;
 
 		if (cargo & 0x80) {
 			GetProductionAroundTiles(values, tile2, w, h, rad);

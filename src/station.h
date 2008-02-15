@@ -239,6 +239,8 @@ enum CatchmentArea {
 	CA_TRAIN           =  4,
 	CA_DOCK            =  5,
 
+	CA_UNMODIFIED      =  4, ///< Used when _patches.modified_catchment is false
+
 	MAX_CATCHMENT      = 10, ///< Airports have a catchment up to this number.
 };
 

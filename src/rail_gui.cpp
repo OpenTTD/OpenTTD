@@ -818,7 +818,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				SetTileSelectSize(x, y);
 		}
 
-		int rad = (_patches.modified_catchment) ? CA_TRAIN : 4;
+		int rad = (_patches.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
 
 		if (_station_show_coverage)
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
