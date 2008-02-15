@@ -45,6 +45,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "table/railtypes.h"
+#include "table/track_land.h"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
@@ -1397,8 +1398,6 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 			return CMD_ERROR;
 	}
 }
-
-#include "table/track_land.h"
 
 /**
  * Get surface height in point (x,y)

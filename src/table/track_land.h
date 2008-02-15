@@ -50,3 +50,7 @@ static const DrawTileSprites _waypoint_gfx_table[] = {
 	{ SPR_RAIL_TRACK_X, PAL_NONE, _waypoint_gfx_X },
 	{ SPR_RAIL_TRACK_Y, PAL_NONE, _waypoint_gfx_Y }
 };
+
+#undef TILE_SEQ_LINE
+#undef TILE_SEQ_END
+
