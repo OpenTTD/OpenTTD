@@ -61,7 +61,6 @@ static const DrawTileSprites _tram_depot[] = {
 	{ 0xA4A, PAL_NONE, _tram_depot_NW }
 };
 
-#undef TILE_SEQ_BEGIN
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_END
 
