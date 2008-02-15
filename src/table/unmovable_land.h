@@ -15,8 +15,8 @@ static const DrawTileUnmovableStruct _draw_tile_unmovable_data[] = {
 	{0xA2A, 4, 4, 7, 7, 61, 0},
 };
 
-#define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, img, PAL_NONE },
-#define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, 0, 0 }
+#define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
+#define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _unmovable_display_nothing[] = {
 	TILE_SEQ_END()

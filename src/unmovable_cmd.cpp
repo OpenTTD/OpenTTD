@@ -216,7 +216,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			foreach_draw_tile_seq(dtss, t->seq) {
 				AddSortableSpriteToDraw(
-					dtss->image, palette,
+					dtss->image.sprite, palette,
 					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
 					dtss->size_x, dtss->size_y,
 					dtss->size_z, ti->z + dtss->delta_z,

@@ -1,8 +1,8 @@
 /* $Id$ */
 
-#define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, img, PAL_NONE },
-#define TILE_SEQ_LINE_PAL(dx, dy, dz, sx, sy, sz, img, pal) { dx, dy, dz, sx, sy, sz, img, pal },
-#define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, 0, 0 }
+#define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, {img, PAL_NONE} },
+#define TILE_SEQ_LINE_PAL(dx, dy, dz, sx, sy, sz, img, pal) { dx, dy, dz, sx, sy, sz, {img, pal} },
+#define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _station_display_nothing[] = {
 	TILE_SEQ_END()

@@ -1116,8 +1116,8 @@ static void DrawTile_Road(TileInfo *ti)
 
 			DrawGroundSprite(dts->ground_sprite, PAL_NONE);
 
-			for (dtss = dts->seq; dtss->image != 0; dtss++) {
-				SpriteID image = dtss->image;
+			for (dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
+				SpriteID image = dtss->image.sprite;
 				SpriteID pal;
 
 				if (!IsTransparencySet(TO_BUILDINGS) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
@@ -1151,9 +1151,9 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 
 	DrawSprite(dts->ground_sprite, PAL_NONE, x, y);
 
-	for (dtss = dts->seq; dtss->image != 0; dtss++) {
+	for (dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		SpriteID image = dtss->image;
+		SpriteID image = dtss->image.sprite;
 
 		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}

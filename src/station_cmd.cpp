@@ -2190,7 +2190,7 @@ static void DrawTile_Station(TileInfo *ti)
 
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
-		SpriteID image = dtss->image;
+		SpriteID image = dtss->image.sprite;
 		if (relocation == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += total_offset;
 		} else {
@@ -2201,7 +2201,7 @@ static void DrawTile_Station(TileInfo *ti)
 		if (!(!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS)) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
 			pal = palette;
 		} else {
-			pal = dtss->pal;
+			pal = dtss->image.pal;
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
@@ -2239,7 +2239,7 @@ void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, Ro
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		DrawSprite(dtss->image + total_offset, pal, x + pt.x, y + pt.y);
+		DrawSprite(dtss->image.sprite + total_offset, pal, x + pt.x, y + pt.y);
 	}
 }
 

@@ -784,7 +784,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	foreach_draw_tile_seq(seq, sprites->seq) {
 		Point pt;
-		image = seq->image;
+		image = seq->image.sprite;
 		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
 		} else {

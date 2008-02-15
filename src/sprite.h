@@ -30,8 +30,7 @@ struct DrawTileSeqStruct {
 	byte size_x;
 	byte size_y;
 	byte size_z;
-	SpriteID image;
-	SpriteID pal;
+	PalSpriteID image;
 };
 
 struct DrawTileSprites {

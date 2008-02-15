@@ -963,26 +963,26 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						dtss->size_x = grf_load_byte(&buf);
 						dtss->size_y = grf_load_byte(&buf);
 						dtss->size_z = grf_load_byte(&buf);
-						dtss->image = grf_load_word(&buf);
-						dtss->pal = grf_load_word(&buf);
+						dtss->image.sprite = grf_load_word(&buf);
+						dtss->image.pal = grf_load_word(&buf);
 
 						/* Remap flags as ours collide */
-						if (HasBit(dtss->pal, 15)) {
-							ClrBit(dtss->pal, 15);
-							SetBit(dtss->image, SPRITE_MODIFIER_USE_OFFSET);
+						if (HasBit(dtss->image.pal, 15)) {
+							ClrBit(dtss->image.pal, 15);
+							SetBit(dtss->image.sprite, SPRITE_MODIFIER_USE_OFFSET);
 						}
-						if (HasBit(dtss->pal, 14)) {
-							ClrBit(dtss->pal, 14);
-							SetBit(dtss->image, SPRITE_MODIFIER_OPAQUE);
+						if (HasBit(dtss->image.pal, 14)) {
+							ClrBit(dtss->image.pal, 14);
+							SetBit(dtss->image.sprite, SPRITE_MODIFIER_OPAQUE);
 						}
 
-						if (HasBit(dtss->image, 15)) {
-							ClrBit(dtss->image, 15);
-							SetBit(dtss->image, PALETTE_MODIFIER_COLOR);
+						if (HasBit(dtss->image.sprite, 15)) {
+							ClrBit(dtss->image.sprite, 15);
+							SetBit(dtss->image.sprite, PALETTE_MODIFIER_COLOR);
 						}
-						if (HasBit(dtss->image, 14)) {
-							ClrBit(dtss->image, 14);
-							SetBit(dtss->image, PALETTE_MODIFIER_TRANSPARENT);
+						if (HasBit(dtss->image.sprite, 14)) {
+							ClrBit(dtss->image.sprite, 14);
+							SetBit(dtss->image.sprite, PALETTE_MODIFIER_TRANSPARENT);
 						}
 					}
 				}
@@ -2680,29 +2680,29 @@ static void NewSpriteGroup(byte *buf, int len)
 					for (i = 0; i < num_sprites; i++) {
 						DrawTileSeqStruct *seq = (DrawTileSeqStruct*)&group->g.layout.dts->seq[i];
 
-						seq->image = grf_load_word(&buf);
-						seq->pal   = grf_load_word(&buf);
+						seq->image.sprite = grf_load_word(&buf);
+						seq->image.pal   = grf_load_word(&buf);
 						seq->delta_x = grf_load_byte(&buf);
 						seq->delta_y = grf_load_byte(&buf);
 
-						if (HasBit(seq->image, 14)) {
-							ClrBit(seq->image, 14);
-							SetBit(seq->image, PALETTE_MODIFIER_TRANSPARENT);
+						if (HasBit(seq->image.sprite, 14)) {
+							ClrBit(seq->image.sprite, 14);
+							SetBit(seq->image.sprite, PALETTE_MODIFIER_TRANSPARENT);
 						}
-						if (HasBit(seq->image, 15)) {
-							ClrBit(seq->image, 15);
-							SetBit(seq->image, PALETTE_MODIFIER_COLOR);
+						if (HasBit(seq->image.sprite, 15)) {
+							ClrBit(seq->image.sprite, 15);
+							SetBit(seq->image.sprite, PALETTE_MODIFIER_COLOR);
 						}
-						if (HasBit(seq->pal, 14)) {
-							ClrBit(seq->pal, 14);
-							SetBit(seq->image, SPRITE_MODIFIER_OPAQUE);
+						if (HasBit(seq->image.pal, 14)) {
+							ClrBit(seq->image.pal, 14);
+							SetBit(seq->image.sprite, SPRITE_MODIFIER_OPAQUE);
 						}
-						if (HasBit(seq->pal, 15)) {
+						if (HasBit(seq->image.pal, 15)) {
 							/* Bit 31 set means this is a custom sprite, so rewrite it to the
 							 * last spriteset defined. */
-							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image, 0, 14) * sprites;
-							SB(seq->image, 0, SPRITE_WIDTH, sprite);
-							ClrBit(seq->pal, 15);
+							SpriteID sprite = _cur_grffile->spriteset_start + GB(seq->image.sprite, 0, 14) * sprites;
+							SB(seq->image.sprite, 0, SPRITE_WIDTH, sprite);
+							ClrBit(seq->image.pal, 15);
 						}
 
 						if (type > 0) {

@@ -1821,7 +1821,7 @@ default_waypoint:
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 		foreach_draw_tile_seq(dtss, dts->seq) {
-			SpriteID image = dtss->image;
+			SpriteID image = dtss->image.sprite;
 			SpriteID pal;
 
 			/* Unlike stations, our default waypoint has no variation for
@@ -1836,7 +1836,7 @@ default_waypoint:
 			if (!(!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS)) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
 				pal = _drawtile_track_palette;
 			} else {
-				pal = dtss->pal;
+				pal = dtss->image.pal;
 			}
 
 			if ((byte)dtss->delta_z != 0x80) {
@@ -1861,9 +1861,9 @@ static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStr
 	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
 
 	DrawSprite(ground, PAL_NONE, x, y);
-	for (; dtss->image != 0; dtss++) {
+	for (; dtss->image.sprite != 0; dtss++) {
 		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
-		SpriteID image = dtss->image + offset;
+		SpriteID image = dtss->image.sprite + offset;
 
 		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
 	}

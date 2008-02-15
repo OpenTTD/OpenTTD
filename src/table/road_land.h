@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#define TILE_SEQ_LINE(img, pal, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, img, pal },
-#define TILE_SEQ_END() { 0, 0, 0, 0, 0, 0, 0, 0 }
+#define TILE_SEQ_LINE(img, pal, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, {img, pal} },
+#define TILE_SEQ_END() { 0, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _road_depot_NE[] = {
 	TILE_SEQ_LINE(0x584 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 15, 16, 1)
