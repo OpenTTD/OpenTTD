@@ -167,16 +167,14 @@ static void DrawTile_Unmovable(TileInfo *ti)
 	switch (GetUnmovableType(ti->tile)) {
 		case UNMOVABLE_TRANSMITTER:
 		case UNMOVABLE_LIGHTHOUSE: {
-			const DrawTileUnmovableStruct* dtus;
+			const DrawTileSeqStruct* dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 			DrawClearLandTile(ti, 2);
 
-			dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
-
 			AddSortableSpriteToDraw(
-				dtus->image, PAL_NONE, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
-				dtus->width, dtus->height, dtus->z_size, ti->z,
+				dtu->image.sprite, PAL_NONE, ti->x | dtu->delta_x, ti->y | dtu->delta_y,
+				dtu->size_x, dtu->size_y, dtu->size_z, ti->z,
 				IsTransparencySet(TO_STRUCTURES)
 			);
 			break;

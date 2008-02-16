@@ -1,18 +1,9 @@
 /* $Id$ */
 
-struct DrawTileUnmovableStruct {
-	uint16 image;
-	byte subcoord_x;
-	byte subcoord_y;
-	byte width;
-	byte height;
-	byte z_size;
-	byte unused;
-};
 
-static const DrawTileUnmovableStruct _draw_tile_unmovable_data[] = {
-	{0xA29, 7, 7, 2, 2, 70, 0},
-	{0xA2A, 4, 4, 7, 7, 61, 0},
+static const DrawTileSeqStruct _draw_tile_transmitterlighthouse_data[] = {
+	{   7,  7,  0,  2,  2, 70, {SPR_UNMOVABLE_TRANSMITTER, PAL_NONE}},
+	{   4,  4,  0,  7,  7, 61, {SPR_UNMOVABLE_LIGHTHOUSE, PAL_NONE}},
 };
 
 #define TILE_SEQ_LINE(sz, img) { 0, 0, 0, 16, 16, sz, {img, PAL_NONE} },
