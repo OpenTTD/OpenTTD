@@ -613,8 +613,10 @@ static Vehicle* _first_veh_in_depot_list;
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
-	/* we need to set v->leave_depot_instantly as we have no control of it's contents at this time */
-	if (HasBit(v->current_order.flags, OF_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OF_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) {
+	/* We need to set v->leave_depot_instantly as we have no control of it's contents at this time.
+	 * Vehicle should stop in the depot if it was in 'stopping' state - train intered depot while slowing down. */
+	if ((HasBit(v->current_order.flags, OF_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OF_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) ||
+			(v->vehstatus & VS_STOPPED)) {
 		/* we keep the vehicle in the depot since the user ordered it to stay */
 		v->leave_depot_instantly = false;
 	} else {
