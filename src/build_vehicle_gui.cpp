@@ -717,7 +717,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 			uint capacity = GetEngineProperty(engine_number, 0x14, rvi->capacity);
 
-			bool refitable = (EngInfo(engine_number)->refit_mask != 0) && (capacity > 0);
+			refitable = (EngInfo(engine_number)->refit_mask != 0) && (capacity > 0);
 
 			if (rvi->railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
