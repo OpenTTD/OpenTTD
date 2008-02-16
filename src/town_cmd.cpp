@@ -1617,7 +1617,6 @@ HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile)
  * @param random_bits required for newgrf houses
  * @pre house can be built here
  */
-
 static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
 {
 	CommandCost cc = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
@@ -1625,6 +1624,7 @@ static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, 
 
 	MakeHouseTile(tile, tid, counter, stage, type, random_bits);
 }
+
 
 /**
  * Write house information into the map. For houses > 1 tile, all tiles are marked.
@@ -1710,6 +1710,116 @@ static bool CheckFree2x2Area(TileIndex tile, uint z, bool noslope)
 
 
 /**
+ * Checks if current town layout allows building here
+ * @param t town
+ * @param tile tile to check
+ * @return true iff town layout allows building here
+ * @note see layouts
+ */
+static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
+{
+	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
+
+	switch (_patches.town_layout) {
+		case TL_2X2_GRID:
+			if ((grid_pos.x % 3) == 0 || (grid_pos.y % 3) == 0) return false;
+			break;
+
+		case TL_3X3_GRID:
+			if ((grid_pos.x % 4) == 0 || (grid_pos.y % 4) == 0) return false;
+			break;
+
+		default:
+			break;
+	}
+
+	return true;
+}
+
+
+/**
+ * Checks if current town layout allows 2x2 building here
+ * @param t town
+ * @param tile tile to check
+ * @return true iff town layout allows 2x2 building here
+ * @note see layouts
+ */
+static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
+{
+	/* MapSize() is sure dividable by both MapSizeX() and MapSizeY(),
+	 * so to do only one memory access, use MapSize() */
+	uint dx = MapSize() + TileX(t->xy) - TileX(tile);
+	uint dy = MapSize() + TileY(t->xy) - TileY(tile);
+
+	switch (_patches.town_layout) {
+		case TL_2X2_GRID:
+			if ((dx % 3) != 0 || (dy % 3) != 0) return false;
+			break;
+
+		case TL_3X3_GRID:
+			if ((dx % 4) < 2 || (dy % 4) < 2) return false;
+			break;
+
+		default:
+			break;
+	}
+
+	return true;
+}
+
+
+/**
+ * Checks if 1x2 or 2x1 building is allowed here, also takes into account current town layout
+ * Also, tests both building positions that occupy this tile
+ * @param tile tile where the building should be built
+ * @param t town
+ * @param maxz all tiles should have the same height
+ * @param noslope are slopes forbidden?
+ * @param second diagdir from first tile to second tile
+ **/
+static bool CheckTownBuild2House(TileIndex *tile, Town *t, uint maxz, bool noslope, DiagDirection second)
+{
+	/* 'tile' is already checked in BuildTownHouse() - CanBuildHouseHere() and slope test */
+
+	TileIndex tile2 = *tile + TileOffsByDiagDir(second);
+	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, maxz, noslope)) return true;
+
+	tile2 = *tile + TileOffsByDiagDir(ReverseDiagDir(second));
+	if (TownLayoutAllowsHouseHere(t, tile2) && CheckBuildHouseSameZ(tile2, maxz, noslope)) {
+		*tile = tile2;
+		return true;
+	}
+
+	return false;
+}
+
+
+/**
+ * Checks if 2x2 building is allowed here, also takes into account current town layout
+ * Also, tests all four building positions that occupy this tile
+ * @param tile tile where the building should be built
+ * @param t town
+ * @param maxz all tiles should have the same height
+ * @param noslope are slopes forbidden?
+ **/
+static bool CheckTownBuild2x2House(TileIndex *tile, Town *t, uint maxz, bool noslope)
+{
+	TileIndex tile2 = *tile;
+
+	for (DiagDirection d = DIAGDIR_SE;;d++) { // 'd' goes through DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_END
+		if (TownLayoutAllows2x2HouseHere(t, tile2) && CheckFree2x2Area(tile2, maxz, noslope)) {
+			*tile = tile2;
+			return true;
+		}
+		if (d == DIAGDIR_END) break;
+		tile2 += TileOffsByDiagDir(ReverseDiagDir(d)); // go clockwise
+	}
+
+	return false;
+}
+
+
+/**
  * Tries to build a house at this tile
  * @param t town the house will belong to
  * @param tile where the house will be built
@@ -1717,6 +1827,9 @@ static bool CheckFree2x2Area(TileIndex tile, uint z, bool noslope)
  */
 static bool BuildTownHouse(Town *t, TileIndex tile)
 {
+	/* forbidden building here by town layout */
+	if (!TownLayoutAllowsHouseHere(t, tile)) return false;
+
 	/* no house allowed at all, bail out */
 	if (!CanBuildHouseHere(tile, false)) return false;
 
@@ -1806,25 +1919,13 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 		if (noslope && slope != SLOPE_FLAT) continue;
 
 		if (hs->building_flags & TILE_SIZE_2x2) {
-			if (!CheckFree2x2Area(tile, maxz, noslope) &&
-					!CheckFree2x2Area(tile += TileDiffXY(-1,  0), maxz, noslope) &&
-					!CheckFree2x2Area(tile += TileDiffXY( 0, -1), maxz, noslope) &&
-					!CheckFree2x2Area(tile += TileDiffXY( 1,  0), maxz, noslope)) {
-				/* return to the original tile */
-				tile += TileDiffXY(0, 1);
-				continue; /* continue the while() loop */
-			}
+			if (!CheckTownBuild2x2House(&tile, t, maxz, noslope)) continue;
 		} else if (hs->building_flags & TILE_SIZE_2x1) {
-			/* 'tile' is already checked above - CanBuildHouseHere() and slope test */
-			if (!CheckBuildHouseSameZ(tile + TileDiffXY(1, 0), maxz, noslope)) {
-				if (!CheckBuildHouseSameZ(tile + TileDiffXY(-1, 0), maxz, noslope)) continue;
-				tile += TileDiffXY(-1, 0);
-			}
+			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SW)) continue;
 		} else if (hs->building_flags & TILE_SIZE_1x2) {
-			if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, 1), maxz, noslope)) {
-				if (!CheckBuildHouseSameZ(tile + TileDiffXY(0, -1), maxz, noslope)) continue;
-				tile += TileDiffXY(0, -1);
-			}
+			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SE)) continue;
+		} else {
+			/* 1x1 house checks are already done */
 		}
 
 		/* build the house */
