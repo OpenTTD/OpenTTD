@@ -88,7 +88,7 @@ static inline uint32 InteractiveRandomRange(uint16 max) { return _interactive_ra
 static inline bool Chance16I(const uint a, const uint b, const uint32 r)
 {
 	assert(b != 0);
-	return (uint16)r < (uint16)((a << 16) / b);
+	return (uint16)r < (uint16)(((a << 16) + b / 2) / b);
 }
 
 /**
