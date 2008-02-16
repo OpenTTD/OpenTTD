@@ -225,25 +225,24 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 	case WE_DOUBLE_CLICK:
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case TWA_COMMAND_LIST: {
-			const Town *t = GetTown(w->window_number);
-			int y = (e->we.click.pt.y - 0x6B) / 10;
+			case TWA_COMMAND_LIST: {
+				const Town *t = GetTown(w->window_number);
+				int y = (e->we.click.pt.y - 0x6B) / 10;
 
-			if (!IsInsideMM(y, 0, 5)) return;
+				if (!IsInsideMM(y, 0, 5)) return;
 
-			y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
-			if (y >= 0) {
-				WP(w, def_d).data_1 = y;
-				SetWindowDirty(w);
+				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
+				if (y >= 0) {
+					WP(w, def_d).data_1 = y;
+					SetWindowDirty(w);
+				}
+				/* Fall through to clicking in case we are double-clicked */
+				if (e->event != WE_DOUBLE_CLICK || y < 0) break;
 			}
-			/* Fall through to clicking in case we are double-clicked */
-			if (e->event != WE_DOUBLE_CLICK || y < 0) break;
-		}
 
-		case TWA_EXECUTE: {
-			DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w, def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
-			break;
-		}
+			case TWA_EXECUTE:
+				DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w, def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+				break;
 		}
 		break;
 
@@ -320,8 +319,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 			case 10: /* delete town */
 				delete t;
 				break;
-		}
-		break;
+		} break;
 
 	case WE_ON_EDIT_TEXT:
 		if (e->we.edittext.str[0] != '\0') {
@@ -394,6 +392,11 @@ void ShowTownViewWindow(TownID town)
 	}
 }
 
+enum TownDirectoryWidget {
+	TDW_SORTNAME = 3,
+	TDW_SORTPOPULATION,
+	TDW_CENTERTOWN,
+};
 static const Widget _town_directory_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   195,     0,    13, STR_2000_TOWNS,         STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -478,7 +481,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, _num_town_sort);
 
 		DrawWindowWidgets(w);
-		DrawSortButtonState(w, (_town_sort_order <= 1) ? 3 : 4, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
+		DrawSortButtonState(w, (_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
 		{
 			int n = 0;
@@ -505,34 +508,33 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 3: { /* Sort by Name ascending/descending */
-			_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
-			_town_sort_dirty = true;
-			SetWindowDirty(w);
-		} break;
+			case TDW_SORTNAME: { /* Sort by Name ascending/descending */
+				_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
+				_town_sort_dirty = true;
+				SetWindowDirty(w);
+			} break;
 
-		case 4: { /* Sort by Population ascending/descending */
-			_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
-			_town_sort_dirty = true;
-			SetWindowDirty(w);
-		} break;
+			case TDW_SORTPOPULATION: { /* Sort by Population ascending/descending */
+				_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
+				_town_sort_dirty = true;
+				SetWindowDirty(w);
+			} break;
 
-		case 5: { /* Click on Town Matrix */
-			const Town* t;
+			case TDW_CENTERTOWN: { /* Click on Town Matrix */
+				const Town* t;
 
-			uint16 id_v = (e->we.click.pt.y - 28) / 10;
+				uint16 id_v = (e->we.click.pt.y - 28) / 10;
 
-			if (id_v >= w->vscroll.cap) return; // click out of bounds
+				if (id_v >= w->vscroll.cap) return; // click out of bounds
 
-			id_v += w->vscroll.pos;
+				id_v += w->vscroll.pos;
 
-			if (id_v >= _num_town_sort) return; // click out of town bounds
+				if (id_v >= _num_town_sort) return; // click out of town bounds
 
-			t = _town_sort[id_v];
-			assert(t->xy);
-			ScrollMainWindowToTile(t->xy);
-			break;
-		}
+				t = _town_sort[id_v];
+				assert(t->xy);
+				ScrollMainWindowToTile(t->xy);
+			} break;
 		}
 		break;
 
