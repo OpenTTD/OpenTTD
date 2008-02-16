@@ -289,6 +289,26 @@ static uint8 MapDOSColour(uint8 colour)
 	return colour;
 }
 
+/** Map the colour modifiers of TTDPatch to those that Open is using.
+ * @param grf_sprite pointer to the structure been modified
+ */
+static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
+{
+	if (HasBit(grf_sprite->pal, 14)) {
+		ClrBit(grf_sprite->pal, 14);
+		SetBit(grf_sprite->sprite, SPRITE_MODIFIER_OPAQUE);
+	}
+
+	if (HasBit(grf_sprite->sprite, 14)) {
+		ClrBit(grf_sprite->sprite, 14);
+		SetBit(grf_sprite->sprite, PALETTE_MODIFIER_TRANSPARENT);
+	}
+
+	if (HasBit(grf_sprite->sprite, 15)) {
+		ClrBit(grf_sprite->sprite, 15);
+		SetBit(grf_sprite->sprite, PALETTE_MODIFIER_COLOR);
+	}
+}
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
@@ -936,18 +956,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						ClrBit(dts->ground.pal, 15);
 						SetBit(dts->ground.sprite, SPRITE_MODIFIER_USE_OFFSET);
 					}
-					if (HasBit(dts->ground.pal, 14)) {
-						ClrBit(dts->ground.pal, 14);
-						SetBit(dts->ground.sprite, SPRITE_MODIFIER_OPAQUE);
-					}
-					if (HasBit(dts->ground.sprite, 15)) {
-						ClrBit(dts->ground.sprite, 15);
-						SetBit(dts->ground.sprite, PALETTE_MODIFIER_COLOR);
-					}
-					if (HasBit(dts->ground.sprite, 14)) {
-						ClrBit(dts->ground.sprite, 14);
-						SetBit(dts->ground.sprite, PALETTE_MODIFIER_TRANSPARENT);
-					}
+
+					MapSpriteMappingRecolour(&dts->ground);
 
 					while (buf < *bufp + len) {
 						DrawTileSeqStruct *dtss;
@@ -971,19 +981,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 							ClrBit(dtss->image.pal, 15);
 							SetBit(dtss->image.sprite, SPRITE_MODIFIER_USE_OFFSET);
 						}
-						if (HasBit(dtss->image.pal, 14)) {
-							ClrBit(dtss->image.pal, 14);
-							SetBit(dtss->image.sprite, SPRITE_MODIFIER_OPAQUE);
-						}
 
-						if (HasBit(dtss->image.sprite, 15)) {
-							ClrBit(dtss->image.sprite, 15);
-							SetBit(dtss->image.sprite, PALETTE_MODIFIER_COLOR);
-						}
-						if (HasBit(dtss->image.sprite, 14)) {
-							ClrBit(dtss->image.sprite, 14);
-							SetBit(dtss->image.sprite, PALETTE_MODIFIER_TRANSPARENT);
-						}
+						MapSpriteMappingRecolour(&dtss->image);
 					}
 				}
 				break;
@@ -1207,15 +1206,10 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 						SpriteID image = grf_load_word(&buf);
 						SpriteID pal   = grf_load_word(&buf);
 
-						if (HasBit(pal, 15)) {
-							SetBit(image, PALETTE_MODIFIER_TRANSPARENT);
-						}
-
-						/* Clear old color modifer bit */
-						ClrBit(image, 15);
-
 						bridge->sprite_table[tableid][sprite].sprite = image;
 						bridge->sprite_table[tableid][sprite].pal    = pal;
+
+						MapSpriteMappingRecolour(&bridge->sprite_table[tableid][sprite]);
 					}
 				}
 			} break;
@@ -2654,19 +2648,10 @@ static void NewSpriteGroup(byte *buf, int len)
 					/* Groundsprite */
 					group->g.layout.dts->ground.sprite = grf_load_word(&buf);
 					group->g.layout.dts->ground.pal    = grf_load_word(&buf);
+
 					/* Remap transparent/colour modifier bits */
-					if (HasBit(group->g.layout.dts->ground.sprite, 14)) {
-						ClrBit(group->g.layout.dts->ground.sprite, 14);
-						SetBit(group->g.layout.dts->ground.sprite, PALETTE_MODIFIER_TRANSPARENT);
-					}
-					if (HasBit(group->g.layout.dts->ground.sprite, 15)) {
-						ClrBit(group->g.layout.dts->ground.sprite, 15);
-						SetBit(group->g.layout.dts->ground.sprite, PALETTE_MODIFIER_COLOR);
-					}
-					if (HasBit(group->g.layout.dts->ground.pal, 14)) {
-						ClrBit(group->g.layout.dts->ground.pal, 14);
-						SetBit(group->g.layout.dts->ground.sprite, SPRITE_MODIFIER_OPAQUE);
-					}
+					MapSpriteMappingRecolour(&group->g.layout.dts->ground);
+
 					if (HasBit(group->g.layout.dts->ground.pal, 15)) {
 						/* Bit 31 set means this is a custom sprite, so rewrite it to the
 						 * last spriteset defined. */
@@ -2685,18 +2670,8 @@ static void NewSpriteGroup(byte *buf, int len)
 						seq->delta_x = grf_load_byte(&buf);
 						seq->delta_y = grf_load_byte(&buf);
 
-						if (HasBit(seq->image.sprite, 14)) {
-							ClrBit(seq->image.sprite, 14);
-							SetBit(seq->image.sprite, PALETTE_MODIFIER_TRANSPARENT);
-						}
-						if (HasBit(seq->image.sprite, 15)) {
-							ClrBit(seq->image.sprite, 15);
-							SetBit(seq->image.sprite, PALETTE_MODIFIER_COLOR);
-						}
-						if (HasBit(seq->image.pal, 14)) {
-							ClrBit(seq->image.pal, 14);
-							SetBit(seq->image.sprite, SPRITE_MODIFIER_OPAQUE);
-						}
+						MapSpriteMappingRecolour(&seq->image);
+
 						if (HasBit(seq->image.pal, 15)) {
 							/* Bit 31 set means this is a custom sprite, so rewrite it to the
 							 * last spriteset defined. */
