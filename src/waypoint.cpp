@@ -34,10 +34,6 @@
 
 #include "table/strings.h"
 
-enum {
-	MAX_WAYPOINTS_PER_TOWN = 64,
-};
-
 DEFINE_OLD_POOL_GENERIC(Waypoint, Waypoint)
 
 
@@ -81,27 +77,57 @@ void UpdateAllWaypointSigns()
  */
 static void MakeDefaultWaypointName(Waypoint* wp)
 {
-	Waypoint *local_wp;
-	bool used_waypoint[MAX_WAYPOINTS_PER_TOWN];
-	int i;
+	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
+	uint32 next = 0; // first waypoint number in the bitmap
+	WaypointID idx = 0; // index where we will stop
 
 	wp->town_index = ClosestTownFromTile(wp->xy, (uint)-1)->index;
 
-	memset(used_waypoint, 0, sizeof(used_waypoint));
+	/* Find first unused waypoint number belonging to this town. This can never fail,
+	 * as long as there can be at most 65535 waypoints in total.
+	 *
+	 * This does 'n * m' search, but with 32bit 'used' bitmap, it needs at most 'n * (1 + ceil(m / 32))'
+	 * steps (n - number of waypoints in pool, m - number of waypoints near this town).
+	 * Usually, it needs only 'n' steps.
+	 *
+	 * If it wasn't using 'used' and 'idx', it would just search for increasing 'next',
+	 * but this way it is faster */
 
-	/* Find an unused waypoint number belonging to this town */
-	FOR_ALL_WAYPOINTS(local_wp) {
-		if (wp == local_wp) continue;
+	WaypointID cid = 0; // current index, goes to GetWaypointPoolSize()-1, then wraps to 0
+	do {
+		Waypoint *lwp = GetWaypoint(cid);
 
-		if (local_wp->xy && local_wp->name == NULL && local_wp->town_index == wp->town_index)
-			used_waypoint[local_wp->town_cn] = true;
-	}
+		/* check only valid waypoints... */
+ 		if (lwp->IsValid() && wp != lwp) {
+			/* only waypoints with 'generic' name within the same city */
+			if (lwp->name == NULL && lwp->town_index == wp->town_index) {
+				/* if lwp->town_cn < next, uint will overflow to '+inf' */
+				uint i = (uint)lwp->town_cn - next;
 
-	/* Find an empty spot */
-	for (i = 0; used_waypoint[i] && i < MAX_WAYPOINTS_PER_TOWN; i++) {}
+				if (i < 32) {
+					SetBit(used, i); // update bitmap
+					if (i == 0) {
+						/* shift bitmap while the lowest bit is '1';
+						 * increase the base of the bitmap too */
+						do {
+							used >>= 1;
+							next++;
+						} while (HasBit(used, 0));
+						/* when we are at 'idx' again at end of the loop and
+						 * 'next' hasn't changed, then no waypoint had town_cn == next,
+						 * so we can safely use it */
+						idx = cid;
+					}
+				}
+			}
+		}
 
-	wp->name = NULL;
-	wp->town_cn = i;
+		cid++;
+		if (cid == GetWaypointPoolSize()) cid = 0; // wrap to zero...
+	} while (cid != idx);
+
+	wp->town_cn = (uint16)next; // set index...
+	wp->name = NULL; // ... and use generic name
 }
 
 /**
@@ -455,7 +481,8 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
 	SLE_CONDVAR(Waypoint, xy,         SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16,                 12, SL_MAX_VERSION),
-	SLE_CONDVAR(Waypoint, town_cn,    SLE_UINT8,                  12, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, town_cn,    SLE_FILE_U8 | SLE_VAR_U16,  12, 88),
+	SLE_CONDVAR(Waypoint, town_cn,    SLE_UINT16,                 89, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, string,     SLE_STRINGID,                0, 83),
 	SLE_CONDSTR(Waypoint, name,       SLE_STR, 0,                 84, SL_MAX_VERSION),
 	    SLE_VAR(Waypoint, deleted,    SLE_UINT8),

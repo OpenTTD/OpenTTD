@@ -16,7 +16,7 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 	TileIndex xy;      ///< Tile of waypoint
 
 	TownID town_index; ///< Town associated with the waypoint
-	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)
+	uint16 town_cn;    ///< The Nth waypoint for this town (consecutive number)
 	StringID string;   ///< C000-C03F have special meaning in old games
 	char *name;        ///< Custom name. If not set, town + town_cn is used for naming
 
