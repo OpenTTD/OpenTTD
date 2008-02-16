@@ -599,7 +599,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 			TileXY(rect.min_x, rect.min_y),
 			rect.max_x - rect.min_x + 1,
 			rect.max_y - rect.min_y + 1,
-			_patches.modified_catchment ? FindCatchmentRadius(st) : CA_UNMODIFIED
+			_patches.modified_catchment ? FindCatchmentRadius(st) : (uint)CA_UNMODIFIED
 		);
 	} else {
 		memset(accepts, 0, sizeof(accepts));

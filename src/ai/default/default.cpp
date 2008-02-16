@@ -3409,7 +3409,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 		const AirportFTAClass* airport = GetAirport(p->attr);
 		uint w = airport->size_x;
 		uint h = airport->size_y;
-		uint rad = _patches.modified_catchment ? airport->catchment : CA_UNMODIFIED;
+		uint rad = _patches.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
 		if (cargo & 0x80) {
 			GetProductionAroundTiles(values, tile2, w, h, rad);
