@@ -490,6 +490,8 @@ void VideoDriver_SDL::MainLoop()
 			last_cur_ticks = cur_ticks;
 			next_tick = cur_ticks + 30;
 
+			bool old_ctrl_pressed = _ctrl_pressed;
+
 			_ctrl_pressed  = !!(mod & KMOD_CTRL);
 			_shift_pressed = !!(mod & KMOD_SHIFT);
 
@@ -499,6 +501,9 @@ void VideoDriver_SDL::MainLoop()
 				(keys[SDLK_UP]    ? 2 : 0) |
 				(keys[SDLK_RIGHT] ? 4 : 0) |
 				(keys[SDLK_DOWN]  ? 8 : 0);
+
+			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
 			GameLoop();
 
 			_screen.dst_ptr = _sdl_screen->pixels;

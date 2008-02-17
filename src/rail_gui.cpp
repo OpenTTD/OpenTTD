@@ -76,7 +76,7 @@ void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void GenericPlaceRail(TileIndex tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd, CcPlaySound1E,
-		(_remove_button_clicked || _ctrl_pressed) ?
+		_remove_button_clicked ?
 		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) | CMD_NO_WATER :
 		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK) | CMD_NO_WATER
 	);
@@ -277,6 +277,43 @@ enum RailToolbarWidgets {
 	RTW_CONVERT_RAIL,
 };
 
+
+/** Toogles state of the Remove button of Build rail toolbar
+ * @param w window the button belongs to
+ */
+static void ToggleRailButton_Remove(Window *w)
+{
+	w->ToggleWidgetLoweredState(RTW_REMOVE);
+	w->InvalidateWidget(RTW_REMOVE);
+	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
+	SetSelectionRed(_remove_button_clicked);
+
+	// handle station builder
+	if (_remove_button_clicked) {
+		SetTileSelectSize(1, 1);
+	}
+}
+
+/** Updates the Remove button because of Ctrl state change
+ * @param w window the button belongs to
+ * @return true iff the remove buton was changed
+ */
+static bool RailToolbar_CtrlChanged(Window *w)
+{
+	if (w->IsWidgetDisabled(RTW_REMOVE)) return false;
+
+	/* allow ctrl to switch remove mode only for these widgets */
+	for (uint i = RTW_BUILD_NS; i <= RTW_BUILD_WAYPOINT; i++) {
+		if ((i <= RTW_AUTORAIL || i == RTW_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
+			ToggleRailButton_Remove(w);
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
 static void BuildRailClick_N(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, VHM_RECT, PlaceRail_N);
@@ -351,17 +388,8 @@ static void BuildRailClick_Tunnel(Window *w)
 static void BuildRailClick_Remove(Window *w)
 {
 	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
-	SetWindowDirty(w);
+	ToggleRailButton_Remove(w);
 	SndPlayFx(SND_15_BEEP);
-
-	w->ToggleWidgetLoweredState(RTW_REMOVE);
-	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
-	SetSelectionRed(_remove_button_clicked);
-
-	// handle station builder
-	if (_remove_button_clicked) {
-		SetTileSelectSize(1, 1);
-	}
 }
 
 static void BuildRailClick_Convert(Window *w)
@@ -373,7 +401,7 @@ static void BuildRailClick_Convert(Window *w)
 static void DoRailroadTrack(int mode)
 {
 	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4), NULL,
-		(_remove_button_clicked || _ctrl_pressed) ?
+		_remove_button_clicked ?
 		CMD_REMOVE_RAILROAD_TRACK | CMD_NO_WATER | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
 		CMD_BUILD_RAILROAD_TRACK  | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
 	);
@@ -514,6 +542,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			_build_railroad_button_proc[e->we.click.widget - RTW_BUILD_NS](w);
 		}
 		UpdateRemoveWidgetStatus(w, e->we.click.widget);
+		if (_ctrl_pressed) RailToolbar_CtrlChanged(w);
 		break;
 
 	case WE_KEYPRESS:
@@ -523,6 +552,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 				_remove_button_clicked = false;
 				_build_railroad_button_proc[i](w);
 				UpdateRemoveWidgetStatus(w, i + RTW_BUILD_NS);
+				if (_ctrl_pressed) RailToolbar_CtrlChanged(w);
 				break;
 			}
 		}
@@ -606,6 +636,10 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		break;
+
+	case WE_CTRL_CHANGED:
+		if (RailToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
 		break;
 	}
 }

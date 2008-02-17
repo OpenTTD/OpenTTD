@@ -856,6 +856,9 @@ void VideoDriver_Win32::MainLoop()
 			_realtime_tick += cur_ticks - last_cur_ticks;
 			last_cur_ticks = cur_ticks;
 			next_tick = cur_ticks + 30;
+
+			bool old_ctrl_pressed = _ctrl_pressed;
+
 			_ctrl_pressed = _wnd.has_focus && GetAsyncKeyState(VK_CONTROL)<0;
 			_shift_pressed = _wnd.has_focus && GetAsyncKeyState(VK_SHIFT)<0;
 
@@ -869,6 +872,8 @@ void VideoDriver_Win32::MainLoop()
 			} else {
 				_dirkeys = 0;
 			}
+
+			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
 			GameLoop();
 			_cursor.delta.x = _cursor.delta.y = 0;

@@ -668,8 +668,12 @@ void QZ_GameLoop()
 			last_cur_ticks = cur_ticks;
 			next_tick = cur_ticks + 30;
 
+			bool old_ctrl_pressed = _ctrl_pressed;
+
 			_ctrl_pressed = !!(_current_mods & ( _patches.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask));
 			_shift_pressed = !!(_current_mods & NSShiftKeyMask);
+
+			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
 
 			GameLoop();
 

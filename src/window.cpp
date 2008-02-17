@@ -1709,6 +1709,21 @@ void HandleKeypress(uint32 key)
 	}
 }
 
+void HandleCtrlChanged()
+{
+	WindowEvent e;
+
+	e.event = WE_CTRL_CHANGED;
+	e.we.ctrl.cont = true;
+
+	/* Call the event, start with the uppermost window. */
+	for (Window* const *wz = _last_z_window; wz != _z_windows;) {
+		Window *w = *--wz;
+		w->wndproc(w, &e);
+		if (!e.we.ctrl.cont) break;
+	}
+}
+
 extern void UpdateTileSelection();
 extern bool VpHandlePlaceSizingDrag();
 

@@ -255,6 +255,38 @@ enum RoadToolbarWidgets {
 
 typedef void OnButtonClick(Window *w);
 
+
+/** Toogles state of the Remove button of Build road toolbar
+ * @param w window the button belongs to
+ */
+static void ToggleRoadButton_Remove(Window *w)
+{
+	w->ToggleWidgetLoweredState(RTW_REMOVE);
+	w->InvalidateWidget(RTW_REMOVE);
+	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
+	SetSelectionRed(_remove_button_clicked);
+}
+
+/** Updates the Remove button because of Ctrl state change
+ * @param w window the button belongs to
+ * @return true iff the remove buton was changed
+ */
+static bool RoadToolbar_CtrlChanged(Window *w)
+{
+	if (w->IsWidgetDisabled(RTW_REMOVE)) return false;
+
+	/* allow ctrl to switch remove mode only for these widgets */
+	for (uint i = RTW_ROAD_X; i <= RTW_AUTOROAD; i++) {
+		if (w->IsWidgetLowered(i)) {
+			ToggleRoadButton_Remove(w);
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
 /**
  * Function that handles the click on the
  *  X road placement button.
@@ -338,10 +370,8 @@ static void BuildRoadClick_Tunnel(Window *w)
 static void BuildRoadClick_Remove(Window *w)
 {
 	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
-	SetWindowDirty(w);
+	ToggleRoadButton_Remove(w);
 	SndPlayFx(SND_15_BEEP);
-	w->ToggleWidgetLoweredState(RTW_REMOVE);
-	SetSelectionRed(w->IsWidgetLowered(RTW_REMOVE));
 }
 
 /** Array with the handlers of the button-clicks for the road-toolbar */
@@ -446,6 +476,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			_build_road_button_proc[e->we.click.widget - RTW_ROAD_X](w);
 		}
 		UpdateOptionWidgetStatus(w, e->we.click.widget);
+		if (_ctrl_pressed) RoadToolbar_CtrlChanged(w);
 		break;
 
 	case WE_KEYPRESS:
@@ -456,6 +487,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 				_one_way_button_clicked = false;
 				_build_road_button_proc[i](w);
 				UpdateOptionWidgetStatus(w, i + RTW_ROAD_X);
+				if (_ctrl_pressed) RoadToolbar_CtrlChanged(w);
 				break;
 			}
 		}
@@ -567,6 +599,10 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		break;
+
+	case WE_CTRL_CHANGED:
+		if (RoadToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
 		break;
 	}
 }

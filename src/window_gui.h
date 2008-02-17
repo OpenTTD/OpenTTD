@@ -123,6 +123,7 @@ enum WindowEventCodes {
 	WE_MESSAGE,
 	WE_SCROLL,
 	WE_INVALIDATE_DATA,
+	WE_CTRL_CHANGED,
 };
 
 struct WindowEvent {
@@ -192,6 +193,10 @@ struct WindowEvent {
 		struct {
 			int wheel;     ///< how much was 'wheel'd'
 		} wheel;
+
+		struct {
+			bool cont;     ///< continue the search? (default true)
+		} ctrl;
 	} we;
 };
 

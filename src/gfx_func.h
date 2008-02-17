@@ -65,6 +65,7 @@ extern uint16 _cur_resolution[2];
 extern Colour _cur_palette[256];
 
 void HandleKeypress(uint32 key);
+void HandleCtrlChanged();
 void HandleMouseEvents();
 void CSleep(int milliseconds);
 void UpdateWindows();
