@@ -150,7 +150,7 @@ static void PlaceRail_Depot(TileIndex tile)
 
 static void PlaceRail_Waypoint(TileIndex tile)
 {
-	if (_remove_button_clicked || _ctrl_pressed) {
+	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_REMOVE_TRAIN_WAYPOINT));
 	} else {
 		DoCommandP(tile, _cur_waypoint_type, 0, CcPlaySound1E, CMD_BUILD_TRAIN_WAYPOINT | CMD_MSG(STR_CANT_BUILD_TRAIN_WAYPOINT));
@@ -169,7 +169,8 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Station(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_REMOVE_STATION);
+		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_REMOVE_STATION);
+		VpSetPlaceSizingLimit(-1);
 	} else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_patches.station_spread);
@@ -287,11 +288,6 @@ static void ToggleRailButton_Remove(Window *w)
 	w->InvalidateWidget(RTW_REMOVE);
 	_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
-
-	// handle station builder
-	if (_remove_button_clicked) {
-		SetTileSelectSize(1, 1);
-	}
 }
 
 /** Updates the Remove button because of Ctrl state change
@@ -303,8 +299,8 @@ static bool RailToolbar_CtrlChanged(Window *w)
 	if (w->IsWidgetDisabled(RTW_REMOVE)) return false;
 
 	/* allow ctrl to switch remove mode only for these widgets */
-	for (uint i = RTW_BUILD_NS; i <= RTW_BUILD_WAYPOINT; i++) {
-		if ((i <= RTW_AUTORAIL || i == RTW_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
+	for (uint i = RTW_BUILD_NS; i <= RTW_BUILD_STATION; i++) {
+		if ((i <= RTW_AUTORAIL || i >= RTW_BUILD_WAYPOINT) && w->IsWidgetLowered(i)) {
 			ToggleRailButton_Remove(w);
 			return true;
 		}
@@ -390,6 +386,28 @@ static void BuildRailClick_Remove(Window *w)
 	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
 	ToggleRailButton_Remove(w);
 	SndPlayFx(SND_15_BEEP);
+
+	/* handle station builder */
+	if (w->IsWidgetLowered(RTW_BUILD_STATION)) {
+		if (_remove_button_clicked) {
+			/* starting drag & drop remove */
+			if (!_railstation.dragdrop) {
+				SetTileSelectSize(1, 1);
+			} else {
+				VpSetPlaceSizingLimit(-1);
+			}
+		} else {
+			/* starting station build mode */
+			if (!_railstation.dragdrop) {
+				int x = _railstation.numtracks;
+				int y = _railstation.platlength;
+				if (_railstation.orientation == 0) Swap(x, y);
+				SetTileSelectSize(x, y);
+			} else {
+				VpSetPlaceSizingLimit(_patches.station_spread);
+			}
+		}
+	}
 }
 
 static void BuildRailClick_Convert(Window *w)
@@ -594,15 +612,16 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					GUIPlaceProcDragXY(e);
 					break;
 
-				case DDSP_REMOVE_STATION:
-					DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
-					break;
-
 				case DDSP_CONVERT_RAIL:
 					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
 					break;
 
+				case DDSP_REMOVE_STATION:
 				case DDSP_BUILD_STATION:
+					if (_remove_button_clicked) {
+						DoCommandP(end_tile, start_tile, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
+						break;
+					}
 					HandleStationPlacement(start_tile, end_tile);
 					break;
 
@@ -639,7 +658,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CTRL_CHANGED:
-		if (RailToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
+		/* do not toggle Remove button by Ctrl when placing station */
+		if (!w->IsWidgetLowered(RTW_BUILD_STATION) && RailToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
 		break;
 	}
 }
