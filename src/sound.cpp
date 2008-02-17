@@ -209,7 +209,7 @@ void SndCopyToPool()
 	}
 }
 
-static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
+static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, int bottom)
 {
 	Window* const *wz;
 
@@ -219,13 +219,13 @@ static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 		const ViewPort *vp = (*wz)->viewport;
 
 		if (vp != NULL &&
-				IsInsideBS(x, vp->virtual_left, vp->virtual_width) &&
-				IsInsideBS(y, vp->virtual_top, vp->virtual_height)) {
-			int left = (x - vp->virtual_left);
+				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
+				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
+			int screen_x = (left + right) / 2 - vp->virtual_left;
 
 			StartSound(
 				sound,
-				left / max(1, vp->virtual_width / ((PANNING_LEVELS << 1) + 1)) - PANNING_LEVELS,
+				screen_x / max(1, vp->virtual_width / ((PANNING_LEVELS << 1) + 1)) - PANNING_LEVELS,
 				(msf.effect_vol * _vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]) / 256
 			);
 			return;
@@ -238,16 +238,18 @@ void SndPlayTileFx(SoundFx sound, TileIndex tile)
 {
 	/* emits sound from center of the tile */
 	int x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
-	int y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
+	int y = TileY(tile) * TILE_SIZE - TILE_SIZE / 2;
 	Point pt = RemapCoords(x, y, GetSlopeZ(x, y));
-	SndPlayScreenCoordFx(sound, pt.x, pt.y);
+	y += 2 * TILE_SIZE;
+	Point pt2 = RemapCoords(x, y, GetSlopeZ(x, y));
+	SndPlayScreenCoordFx(sound, pt.x, pt2.x, pt.y, pt2.y);
 }
 
 void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
 {
 	SndPlayScreenCoordFx(sound,
-		(v->left_coord + v->right_coord) / 2,
-		(v->top_coord + v->bottom_coord) / 2
+		v->left_coord, v->right_coord,
+		v->top_coord, v->top_coord
 	);
 }
 
