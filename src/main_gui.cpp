@@ -1668,7 +1668,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 {
 	char buf[512];
 	StringID str;
-	const char *s;
+	const char *s, *last;
 	char *d;
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int x;
@@ -1685,19 +1685,22 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 
 	s = buf;
 	d = buffer;
+	last = lastof(buffer);
 
 	for (;;) {
 		WChar c = Utf8Consume(&s);
 		if (c == 0) {
-			*d = '\0';
 			break;
-		} else if (*s == 0x0D) {
+		} else if (c == 0x0D) {
+			if (d + 4 >= last) break;
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d += 4;
 		} else if (IsPrintable(c)) {
+			if (d + Utf8CharLen(c) >= last) break;
 			d += Utf8Encode(d, c);
 		}
 	}
+	*d = '\0';
 
 	if (!FillDrawPixelInfo(&tmp_dpi, 141, 1, width, 11)) return true;
 
