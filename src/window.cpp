@@ -1085,8 +1085,6 @@ static bool HandleDragDrop()
 
 	w = GetCallbackWnd();
 
-	ResetObjectToPlace();
-
 	if (w != NULL) {
 		/* send an event in client coordinates. */
 		e.event = WE_DRAGDROP;
@@ -1095,6 +1093,9 @@ static bool HandleDragDrop()
 		e.we.dragdrop.widget = GetWidgetFromPos(w, e.we.dragdrop.pt.x, e.we.dragdrop.pt.y);
 		w->wndproc(w, &e);
 	}
+
+	ResetObjectToPlace();
+
 	return false;
 }
 

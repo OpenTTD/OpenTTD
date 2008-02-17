@@ -860,8 +860,13 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_ABORT_PLACE_OBJ: {
+			/* abort clone */
 			w->RaiseWidget(DEPOT_WIDGET_CLONE);
 			w->InvalidateWidget(DEPOT_WIDGET_CLONE);
+
+			/* abort drag & drop */
+			WP(w, depot_d).sel = INVALID_VEHICLE;
+			w->InvalidateWidget(DEPOT_WIDGET_MATRIX);
 		} break;
 
 			/* check if a vehicle in a depot was clicked.. */

@@ -761,6 +761,13 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 			}
 			break;
+
+		case WE_ABORT_PLACE_OBJ: // called when new object to place is selected from keyboard
+			/* abort drag & drop */
+			gv->vehicle_sel = INVALID_VEHICLE;
+			w->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
+			break;
+
 	}
 }
 

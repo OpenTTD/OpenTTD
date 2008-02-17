@@ -2847,9 +2847,8 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 {
 	Window *w;
 
-	/* undo clicking on button */
-	if (_thd.place_mode != VHM_NONE) {
-		_thd.place_mode = VHM_NONE;
+	/* undo clicking on button and drag & drop */
+	if (_thd.place_mode != VHM_NONE || _special_mouse_mode == WSM_DRAGDROP) {
 		w = FindWindowById(_thd.window_class, _thd.window_number);
 		if (w != NULL) CallWindowEventNP(w, WE_ABORT_PLACE_OBJ);
 	}
