@@ -663,10 +663,16 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		/* read this value before actual removal of bridge */
 		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
 		Owner owner = GetTileOwner(tile);
+		uint height = GetBridgeHeight(tile);
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
 		for (TileIndex c = tile + delta; c != endtile; c += delta) {
+			/* do not let trees appear from 'nowhere' after removing bridge */
+			if (IsNormalRoadTile(c) && GetRoadside(c) == ROADSIDE_TREES) {
+				uint minz = GetTileMaxZ(c) + 3 * TILE_HEIGHT;
+				if (height < minz) SetRoadside(c, ROADSIDE_PAVED);
+			}
 			ClearBridgeMiddle(c);
 			MarkTileDirtyByTile(c);
 		}

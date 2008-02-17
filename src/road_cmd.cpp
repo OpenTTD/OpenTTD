@@ -1054,6 +1054,16 @@ static void DrawRoadBits(TileInfo* ti)
 	/* Return if full detail is disabled, or we are zoomed fully out. */
 	if (!HasBit(_display_opt, DO_FULL_DETAIL) || _cur_dpi->zoom > ZOOM_LVL_DETAIL) return;
 
+	/* Do not draw details (street lights, trees) under low bridge */
+	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && (roadside == ROADSIDE_TREES || roadside == ROADSIDE_STREET_LIGHTS)) {
+		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
+		uint minz = GetTileMaxZ(ti->tile) + 2 * TILE_HEIGHT;
+
+		if (roadside == ROADSIDE_TREES) minz += TILE_HEIGHT;
+
+		if (height < minz) return;
+	}
+
 	/* Draw extra details. */
 	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
 		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10);
