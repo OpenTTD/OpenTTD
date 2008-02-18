@@ -194,7 +194,7 @@ Function IsCachedVersion(version)
 End Function
 
 Dim version
-version = DetermineSVNVersion
+version = "0.6.0-beta4"
 If Not (IsCachedVersion(version) And FSO.FileExists("../src/rev.cpp") And FSO.FileExists("../src/ottdres.rc")) Then
 	UpdateFiles version
 End If
