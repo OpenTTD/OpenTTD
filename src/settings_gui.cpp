@@ -860,6 +860,7 @@ enum PatchesSelectionWidgets {
 static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 {
 	static Patches *patches_ptr;
+	static int patches_max = 0;
 
 	switch (e->event) {
 		case WE_CREATE: {
@@ -873,6 +874,8 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
 					uint i;
 
+					if (patches_max < page->num) patches_max = page->num;
+
 					page->entries = MallocT<PatchEntry>(page->num);
 					for (i = 0; i != page->num; i++) {
 						uint index;
@@ -885,6 +888,10 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				}
 				first_time = false;
 			}
+
+			/* Resize the window to fit the largest patch tab */
+			ResizeWindowForWidget(w, PATCHSEL_OPTIONSPANEL, 0, patches_max * 11);
+
 			w->LowerWidget(4);
 		} break;
 
@@ -1071,7 +1078,7 @@ static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,                             STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   380, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,    50, 0x0,                             STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL},
@@ -1083,7 +1090,7 @@ static const Widget _patches_selection_widgets[] = {
 };
 
 static const WindowDesc _patches_selection_desc = {
-	WDP_CENTER, WDP_CENTER, 370, 381, 370, 381,
+	WDP_CENTER, WDP_CENTER, 370, 51, 370, 51,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_patches_selection_widgets,
