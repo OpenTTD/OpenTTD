@@ -222,10 +222,12 @@ static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, in
 				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
 				top < vp->virtual_top + vp->virtual_height && bottom > vp->virtual_top) {
 			int screen_x = (left + right) / 2 - vp->virtual_left;
+			int width = (vp->virtual_width == 0 ? 1 : vp->virtual_width);
+			int panning = (screen_x * PANNING_LEVELS * 2) / width - PANNING_LEVELS;
 
 			StartSound(
 				sound,
-				screen_x / max(1, vp->virtual_width / ((PANNING_LEVELS << 1) + 1)) - PANNING_LEVELS,
+				panning,
 				(msf.effect_vol * _vol_factor_by_zoom[vp->zoom - ZOOM_LVL_BEGIN]) / 256
 			);
 			return;
