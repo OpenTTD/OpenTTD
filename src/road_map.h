@@ -206,14 +206,25 @@ static inline Axis GetCrossingRoadAxis(TileIndex t)
 	return (Axis)GB(_m[t].m4, 6, 1);
 }
 
+static inline Axis GetCrossingRailAxis(TileIndex t)
+{
+	assert(IsLevelCrossing(t));
+	return OtherAxis((Axis)GetCrossingRoadAxis(t));
+}
+
 static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 {
 	return GetCrossingRoadAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y;
 }
 
+static inline Track GetCrossingRailTrack(TileIndex tile)
+{
+	return AxisToTrack(GetCrossingRailAxis(tile));
+}
+
 static inline TrackBits GetCrossingRailBits(TileIndex tile)
 {
-	return AxisToTrackBits(OtherAxis(GetCrossingRoadAxis(tile)));
+	return AxisToTrackBits(GetCrossingRailAxis(tile));
 }
 
 static inline bool IsCrossingBarred(TileIndex t)

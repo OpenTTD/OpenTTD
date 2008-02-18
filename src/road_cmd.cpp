@@ -1448,7 +1448,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	if (IsLevelCrossing(tile)) {
 		if (GetTileOwner(tile) == old_player) {
 			if (new_player == PLAYER_SPECTATOR) {
-				DoCommand(tile, 0, AxisToTrack(OtherAxis(GetCrossingRoadAxis(tile))), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
+				DoCommand(tile, 0, GetCrossingRailTrack(tile), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
 			} else {
 				SetTileOwner(tile, new_player);
 			}

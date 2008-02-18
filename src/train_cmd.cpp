@@ -1667,7 +1667,7 @@ static Vehicle *TrainApproachingCrossing(TileIndex tile)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	DiagDirection dir = AxisToDiagDir(OtherAxis(GetCrossingRoadAxis(tile)));
+	DiagDirection dir = AxisToDiagDir(GetCrossingRailAxis(tile));
 	TileIndex tile_from = tile + TileOffsByDiagDir(dir);
 
 	Vehicle *v = (Vehicle *)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);

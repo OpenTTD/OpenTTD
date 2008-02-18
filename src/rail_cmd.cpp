@@ -1313,7 +1313,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				default: // MP_STATION, MP_ROAD
 					if (flags & DC_EXEC) {
-						Track track = (tt == MP_STATION) ? GetRailStationTrack(tile) : AxisToTrack(OtherAxis(GetCrossingRoadAxis(tile)));
+						Track track = ((tt == MP_STATION) ? GetRailStationTrack(tile) : GetCrossingRailTrack(tile));
 						YapfNotifyTrackLayoutChange(tile, track);
 					}
 

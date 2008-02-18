@@ -2393,7 +2393,7 @@ bool AfterLoadGame()
 					if (!GetPlayer(o)->is_active) {
 						/* remove leftover rail piece from crossing (from very old savegames) */
 						_current_player = o;
-						DoCommand(t, 0, AxisToTrack(OtherAxis(GetCrossingRoadAxis(t))), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
+						DoCommand(t, 0, GetCrossingRailTrack(t), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
 					}
 				}
 			}
