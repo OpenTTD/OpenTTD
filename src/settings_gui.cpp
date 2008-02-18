@@ -892,6 +892,9 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			/* Resize the window to fit the largest patch tab */
 			ResizeWindowForWidget(w, PATCHSEL_OPTIONSPANEL, 0, patches_max * 11);
 
+			/* Recentre the window for the new size */
+			w->top = w->top - (patches_max * 11) / 2;
+
 			w->LowerWidget(4);
 		} break;
 
