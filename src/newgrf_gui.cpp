@@ -281,7 +281,7 @@ static void SetupNewGRFState(Window *w)
 {
 	bool disable_all = WP(w, newgrf_d).sel == NULL || !WP(w, newgrf_d).editable;
 
-	w->SetWidgetDisabledState(3, !WP(w, newgrf_d).editable);
+	w->SetWidgetDisabledState(SNGRFS_ADD, !WP(w, newgrf_d).editable);
 	w->SetWidgetsDisabledState(disable_all,
 		SNGRFS_REMOVE,
 		SNGRFS_MOVE_UP,
@@ -530,6 +530,10 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE:
+			if (e->we.sizing.diff.x != 0) {
+				ResizeButtons(w, SNGRFS_ADD, SNGRFS_MOVE_DOWN);
+				ResizeButtons(w, SNGRFS_SET_PARAMETERS, SNGRFS_APPLY_CHANGES);
+			}
 			w->vscroll.cap += e->we.sizing.diff.y / 14;
 			w->widget[SNGRFS_FILE_LIST].data = (w->vscroll.cap << 8) + 1;
 			SetupNewGRFWindow(w);
@@ -545,7 +549,7 @@ static const Widget _newgrf_widgets[] = {
 { WWT_PUSHTXTBTN,  RESIZE_NONE,  3,  10,  79,  16,  27, STR_NEWGRF_ADD,              STR_NEWGRF_ADD_TIP },               // SNGRFS_ADD
 { WWT_PUSHTXTBTN,  RESIZE_NONE,  3,  80, 149,  16,  27, STR_NEWGRF_REMOVE,           STR_NEWGRF_REMOVE_TIP },            // SNGRFS_REMOVE
 { WWT_PUSHTXTBTN,  RESIZE_NONE,  3, 150, 219,  16,  27, STR_NEWGRF_MOVEUP,           STR_NEWGRF_MOVEUP_TIP },            // SNGRFS_MOVE_UP
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3, 220, 289,  16,  27, STR_NEWGRF_MOVEDOWN,         STR_NEWGRF_MOVEDOWN_TIP },          // SNGRFS_MOVE_DOWN
+{ WWT_PUSHTXTBTN, RESIZE_RIGHT,  3, 220, 289,  16,  27, STR_NEWGRF_MOVEDOWN,         STR_NEWGRF_MOVEDOWN_TIP },          // SNGRFS_MOVE_DOWN
 {     WWT_MATRIX,    RESIZE_RB, 10,   0, 287,  30,  99, 0x501,                       STR_NEWGRF_FILE_TIP },              // SNGRFS_FILE_LIST
 {  WWT_SCROLLBAR,   RESIZE_LRB, 10, 288, 299,  30,  99, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
 {      WWT_PANEL,   RESIZE_RTB, 10,   0, 299, 100, 212, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
