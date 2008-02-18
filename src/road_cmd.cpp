@@ -426,7 +426,6 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL: {
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
-					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 					all_bits = GetAllRoadBits(tile);
 					if (!HasTileRoadType(tile, rt)) break;
@@ -443,6 +442,8 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && GetRoadOwner(tile, ROADTYPE_ROAD) == _current_player) {
 							if (crossing) return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 
+							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
 							/* Ignore half built tiles */
 							if (flags & DC_EXEC && rt != ROADTYPE_TRAM && (existing == ROAD_X || existing == ROAD_Y)) {
 								SetDisallowedRoadDirections(tile, GetDisallowedRoadDirections(tile) ^ toggle_drd);
@@ -458,7 +459,6 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					all_bits = GetCrossingRoadBits(tile);
 					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
-					if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 					break;
 
 				default:
@@ -509,8 +509,6 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-			/* Don't allow adding roadtype to the roadstop when vehicles are already driving on it */
-			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_TUNNELBRIDGE:
@@ -559,6 +557,8 @@ do_clear:;
 			}
 		}
 	}
+
+	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	cost.AddCost(CountBits(pieces) * _price.build_road);
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -634,6 +634,8 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 	bool had_success = false;
 	DisallowedRoadDirections drd = DRD_NORTHBOUND;
 
+	_error_message = INVALID_STRING_ID;
+
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	start_tile = p1;
@@ -671,7 +673,6 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 		ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (CmdFailed(ret)) {
 			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
-			_error_message = INVALID_STRING_ID;
 		} else {
 			had_success = true;
 			/* Only pay for the upgrade on one side of the bridges and tunnels */
