@@ -2204,13 +2204,12 @@ static void AiBuildRailConstruct(Player *p)
 		/* Figure out which (rail)bridge type to build
 		 * start with best bridge, then go down to worse and worse bridges
 		 * unnecessary to check for worst bridge (i=0), since AI will always build
-		 * that. AI is so fucked up that fixing this small thing will probably not
-		 * solve a thing
+		 * that.
 		 */
 		for (i = MAX_BRIDGES - 1; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				CommandCost cost = DoCommand(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 5)) break;
+				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
 			}
 		}
 
@@ -3095,12 +3094,11 @@ do_some_terraform:
 		/* Figure out what (road)bridge type to build
 		 * start with best bridge, then go down to worse and worse bridges
 		 * unnecessary to check for worse bridge (i=0), since AI will always build that.
-		 *AI is so fucked up that fixing this small thing will probably not solve a thing
 		 */
-		for (i = 10; i != 0; i--) {
+		for (i = MAX_BRIDGES - 1; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				CommandCost cost = DoCommand(tile, _players_ai[p->index].cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 5)) break;
+				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
 			}
 		}
 
