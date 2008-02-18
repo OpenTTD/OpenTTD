@@ -765,7 +765,11 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 	uint totalsets;
 	uint set;
 
-	if (v == NULL) return group->g.real.loading[0];
+	if (v == NULL) {
+		if (group->g.real.num_loading > 0) return group->g.real.loading[0];
+		if (group->g.real.num_loaded  > 0) return group->g.real.loaded[0];
+		return NULL;
+	}
 
 	bool in_motion = v->First()->current_order.type != OT_LOADING;
 
