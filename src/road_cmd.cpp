@@ -1314,7 +1314,7 @@ static const byte _road_trackbits[16] = {
 	0x0, 0x0, 0x0, 0x10, 0x0, 0x2, 0x8, 0x1A, 0x0, 0x4, 0x1, 0x15, 0x20, 0x26, 0x29, 0x3F,
 };
 
-static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint sub_mode)
+static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 
 	switch (mode) {
@@ -1326,22 +1326,35 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint s
 			if ((GetRoadTypes(tile) & sub_mode) == 0) return 0;
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL: {
-					RoadType rt = (RoadType)FindFirstBit(sub_mode);
 					const uint drd_to_multiplier[DRD_END] = { 0x101, 0x100, 0x1, 0x0 };
+					RoadType rt = (RoadType)FindFirstBit(sub_mode);
+					RoadBits bits = GetRoadBits(tile, rt);
+
+					/* no roadbit at this side of tile, return 0 */
+					if (side != INVALID_DIAGDIR && DiagDirToRoadBits(side) & bits == 0) return 0;
+
 					uint multiplier = drd_to_multiplier[rt == ROADTYPE_TRAM ? DRD_NONE : GetDisallowedRoadDirections(tile)];
-					return HasRoadWorks(tile) ? 0 : _road_trackbits[GetRoadBits(tile, rt)] * multiplier;
+					return HasRoadWorks(tile) ? 0 : _road_trackbits[bits] * multiplier;
 				}
 
 				case ROAD_TILE_CROSSING: {
-					uint32 r = AxisToTrackBits(GetCrossingRoadAxis(tile)) * 0x101;
+					Axis axis = GetCrossingRoadAxis(tile);
 
+					if (side != INVALID_DIAGDIR && axis != DiagDirToAxis(side)) return 0;
+
+					uint32 r = AxisToTrackBits(axis) * 0x101;
 					if (IsCrossingBarred(tile)) r *= 0x10001;
 					return r;
 				}
 
 				default:
-				case ROAD_TILE_DEPOT:
-					return AxisToTrackBits(DiagDirToAxis(GetRoadDepotDirection(tile))) * 0x101;
+				case ROAD_TILE_DEPOT: {
+					DiagDirection dir = GetRoadDepotDirection(tile);
+
+					if (side != INVALID_DIAGDIR && side != dir) return 0;
+
+					return AxisToTrackBits(DiagDirToAxis(dir)) * 0x101;
+				}
 			}
 			break;
 

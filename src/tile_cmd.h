@@ -13,6 +13,7 @@
 #include "strings_type.h"
 #include "date_type.h"
 #include "player_type.h"
+#include "direction_type.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -81,7 +82,7 @@ typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
  * @param sub_mode used to differentiate between different kinds within the mode
  * @return the above mentions track status information
  */
-typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode);
+typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
 typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
@@ -126,7 +127,7 @@ struct TileTypeProcs {
 
 extern const TileTypeProcs * const _tile_type_procs[16];
 
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode);
+uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
 void AnimateTile(TileIndex tile);

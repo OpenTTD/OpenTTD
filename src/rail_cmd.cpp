@@ -2083,17 +2083,14 @@ set_ground:
 }
 
 
-static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode)
+static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	if (mode != TRANSPORT_RAIL) return 0;
 
 	switch (GetRailTileType(tile)) {
 		default: NOT_REACHED();
-		case RAIL_TILE_NORMAL: {
-			TrackBits rails = GetTrackBits(tile);
-			uint32 ret = rails * 0x101;
-			return (rails == TRACK_BIT_CROSS) ? ret | 0x40 : ret;
-		}
+		case RAIL_TILE_NORMAL:
+			return GetTrackBits(tile) * 0x101;
 
 		case RAIL_TILE_SIGNALS: {
 			uint32 ret = GetTrackBits(tile) * 0x101;
@@ -2117,8 +2114,16 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint 
 			return ret;
 		}
 
-		case RAIL_TILE_DEPOT:    return AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(tile))) * 0x101;
-		case RAIL_TILE_WAYPOINT: return GetRailWaypointBits(tile) * 0x101;
+		case RAIL_TILE_DEPOT: {
+			DiagDirection dir = GetRailDepotDirection(tile);
+
+			if (side != INVALID_DIAGDIR && side != dir) return 0;
+
+			return AxisToTrackBits(DiagDirToAxis(dir)) * 0x101;
+		}
+
+		case RAIL_TILE_WAYPOINT:
+			return GetRailWaypointBits(tile) * 0x101;
 	}
 }
 

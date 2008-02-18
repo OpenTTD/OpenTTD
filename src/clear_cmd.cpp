@@ -315,7 +315,7 @@ static void ClickTile_Clear(TileIndex tile)
 	/* not used */
 }
 
-static uint32 GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, uint sub_mode)
+static uint32 GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	return 0;
 }
