@@ -1332,7 +1332,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode, uint s
 					RoadBits bits = GetRoadBits(tile, rt);
 
 					/* no roadbit at this side of tile, return 0 */
-					if (side != INVALID_DIAGDIR && DiagDirToRoadBits(side) & bits == 0) return 0;
+					if (side != INVALID_DIAGDIR && (DiagDirToRoadBits(side) & bits) == 0) return 0;
 
 					uint multiplier = drd_to_multiplier[rt == ROADTYPE_TRAM ? DRD_NONE : GetDisallowedRoadDirections(tile)];
 					return HasRoadWorks(tile) ? 0 : _road_trackbits[bits] * multiplier;
