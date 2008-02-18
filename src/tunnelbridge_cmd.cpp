@@ -33,6 +33,7 @@
 #include "sound_func.h"
 #include "signal_func.h"
 #include "tunnelbridge.h"
+#include "player_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -429,7 +430,7 @@ not_valid_below:;
 	 * It's unnecessary to execute this command every time for every bridge. So it is done only
 	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	 */
-	if (!(flags & DC_QUERY_COST)) {
+	if (!(flags & DC_QUERY_COST) || (IsValidPlayer(_current_player) && GetPlayer(_current_player)->is_ai)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
 		if (IsValidPlayer(_current_player) && !_is_old_ai_player)
