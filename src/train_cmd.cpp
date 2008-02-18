@@ -3040,7 +3040,7 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
-				uint32 ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0) & _reachable_tracks[enterdir];
+				uint32 ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0, ReverseDiagDir(enterdir)) & _reachable_tracks[enterdir];
 
 				/* Combine the from & to directions.
 				 * Now, the lower byte contains the track status, and the byte at bit 16 contains
@@ -3475,7 +3475,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
 	/* Determine the track status on the next tile */
-	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _reachable_tracks[dir];
+	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir)) & _reachable_tracks[dir];
 
 	/* We are sure the train is not entering a depot, it is detected above */
 
@@ -3485,11 +3485,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 	}
 
-	/* no suitable trackbits at all || wrong railtype || not our track ||
-	 *   tunnel/bridge from opposite side || depot from opposite side */
-	if (bits == TRACK_BIT_NONE || !CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner ||
-			(IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(tile) != dir) ||
-			(IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) == dir) ) {
+	/* no suitable trackbits at all || wrong railtype || not our track */
+	if (bits == TRACK_BIT_NONE || !CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner) {
 		return TrainApproachingLineEnd(v, false);
 	}
 
