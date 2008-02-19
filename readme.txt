@@ -285,6 +285,7 @@ The OpenTTD team (in alphabetical order):
   Bjarni Corfitzen (Bjarni)      - MacOSX port, coder and vehicles
   Matthijs Kooijman (blathijs)   - Pathfinder-guru, pool rework
   Loïc Guilloux (glx)            - General coding
+  Christoph Elsenhans (frosch)   - General coding
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
   Jonathan Coome (Maedhros)      - High priest of the newGRF Temple
   Attila Bán (MiHaMiX)           - WebTranslator, Nightlies, Wiki and bugtracker host
