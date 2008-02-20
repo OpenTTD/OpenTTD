@@ -2364,7 +2364,9 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(87)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (!IsTileType(t, MP_VOID) && (TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1)) {
+			/* skip oil rigs at borders! */
+			if ((IsTileType(t, MP_WATER) || IsBuoyTile(t)) &&
+					(TileX(t) == 0 || TileY(t) == 0 || TileX(t) == MapMaxX() - 1 || TileY(t) == MapMaxY() - 1)) {
 				/* Some version 86 savegames have wrong water class at map borders (under buoy, or after removing buoy).
 				 * This conversion has to be done before buoys with invalid owner are removed. */
 				SetWaterClass(t, WATER_CLASS_SEA);
