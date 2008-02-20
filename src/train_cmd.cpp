@@ -3042,7 +3042,7 @@ static void TrainController(Vehicle *v, bool update_image)
 				 * away the bits that aren't reachable. */
 				TrackStatus ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0, ReverseDiagDir(enterdir)) & _reachable_tracks[enterdir];
 				TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
-				TrackdirBits red_signals = TrackStatusToRedSignals(ts);
+				TrackBits red_signals = TrackdirBitsToTrackBits(TrackStatusToRedSignals(ts));
 
 				TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
 				if (_patches.pathfinder_for_trains != VPF_NTP && _patches.forbid_90_deg && prev == NULL) {
