@@ -7,6 +7,7 @@
 #include "settings_type.h"
 #include "debug.h"
 #include "core/bitmath_func.hpp"
+#include "core/math_func.hpp"
 #include "town.h"
 
 /** This function implements the town variables that newGRF defines.
@@ -30,8 +31,8 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		/* Town properties */
 		case 0x80: return t->xy;
 		case 0x81: return GB(t->xy, 8, 8);
-		case 0x82: return t->population;
-		case 0x83: return GB(t->population, 8, 8);
+		case 0x82: return ClampToU16(t->population);
+		case 0x83: return GB(ClampToU16(t->population), 8, 8);
 		case 0x8A: return t->grow_counter;
 		case 0x92: return t->flags12;  // In original game, 0x92 and 0x93 are really one word. Since flags12 is a byte, this is to adjust
 		case 0x93: return 0;
@@ -57,22 +58,22 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		case 0xB2: return t->statues;
 		case 0xB6: return t->num_houses;
 		case 0xB9: return t->growth_rate;
-		case 0xBA: return t->new_max_pass;
-		case 0xBB: return GB(t->new_max_pass, 8, 8);
-		case 0xBC: return t->new_max_mail;
-		case 0xBD: return GB(t->new_max_mail, 8, 8);
-		case 0xBE: return t->new_act_pass;
-		case 0xBF: return GB(t->new_act_pass, 8, 8);
-		case 0xC0: return t->new_act_mail;
-		case 0xC1: return GB(t->new_act_mail, 8, 8);
-		case 0xC2: return t->max_pass;
-		case 0xC3: return GB(t->max_pass, 8, 8);
-		case 0xC4: return t->max_mail;
-		case 0xC5: return GB(t->max_mail, 8, 8);
-		case 0xC6: return t->act_pass;
-		case 0xC7: return GB(t->act_pass, 8, 8);
-		case 0xC8: return t->act_mail;
-		case 0xC9: return GB(t->act_mail, 8, 8);
+		case 0xBA: return ClampToU16(t->new_max_pass);
+		case 0xBB: return GB(ClampToU16(t->new_max_pass), 8, 8);
+		case 0xBC: return ClampToU16(t->new_max_mail);
+		case 0xBD: return GB(ClampToU16(t->new_max_mail), 8, 8);
+		case 0xBE: return ClampToU16(t->new_act_pass);
+		case 0xBF: return GB(ClampToU16(t->new_act_pass), 8, 8);
+		case 0xC0: return ClampToU16(t->new_act_mail);
+		case 0xC1: return GB(ClampToU16(t->new_act_mail), 8, 8);
+		case 0xC2: return ClampToU16(t->max_pass);
+		case 0xC3: return GB(ClampToU16(t->max_pass), 8, 8);
+		case 0xC4: return ClampToU16(t->max_mail);
+		case 0xC5: return GB(ClampToU16(t->max_mail), 8, 8);
+		case 0xC6: return ClampToU16(t->act_pass);
+		case 0xC7: return GB(ClampToU16(t->act_pass), 8, 8);
+		case 0xC8: return ClampToU16(t->act_mail);
+		case 0xC9: return GB(ClampToU16(t->act_mail), 8, 8);
 		case 0xCA: return t->pct_pass_transported;
 		case 0xCB: return t->pct_mail_transported;
 		case 0xCC: return t->new_act_food;

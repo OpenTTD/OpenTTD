@@ -169,6 +169,18 @@ static inline int32 ClampToI32(const int64 a)
 }
 
 /**
+ * Reduce an usigned 64-bit int to an unsigned 16-bit one
+ *
+ * @param a The 64-bit value to clamp
+ * @return The 64-bit value reduced to a 16-bit value
+ * @see ClampU(uint, uint, uint)
+ */
+static inline uint16 ClampToU16(const uint64 a)
+{
+	return min(a, UINT16_MAX);
+}
+
+/**
  * Returns the (absolute) difference between two (scalar) variables
  *
  * @param a The first scalar
