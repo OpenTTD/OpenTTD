@@ -1008,10 +1008,10 @@ struct OvertakeData {
 	const Vehicle* u;
 	const Vehicle* v;
 	TileIndex tile;
-	uint16 tilebits;
+	Trackdir trackdir;
 };
 
-static void* EnumFindVehToOvertake(Vehicle* v, void* data)
+static void* EnumFindVehBlockingOvertake(Vehicle* v, void* data)
 {
 	const OvertakeData* od = (OvertakeData*)data;
 
@@ -1020,22 +1020,29 @@ static void* EnumFindVehToOvertake(Vehicle* v, void* data)
 			v : NULL;
 }
 
-static bool FindRoadVehToOvertake(OvertakeData *od)
+/**
+ * Check if overtaking is possible on a piece of track
+ *
+ * @param od Information about the tile and the involved vehicles
+ * @return true if we have to abort overtaking
+ */
+static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 {
-	uint32 bits;
+	uint32 ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes);
+	TrackdirBits trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+	TrackdirBits red_signals = (TrackdirBits)((ts >> 16) & TRACKDIR_BIT_MASK); // barred level crossing
+	TrackBits trackbits = TrackdirBitsToTrackBits(trackdirbits);
 
-	bits = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes);
-	bits |= bits >> 8;
+	/* Track does not continue along overtaking direction || track has junction || levelcrossing is barred */
+	if (!HasBit(trackdirbits, od->trackdir) || (trackbits & ~TRACK_BIT_CROSS) || (red_signals != TRACKDIR_BIT_NONE)) return true;
 
-	if (!(od->tilebits & bits) || (bits & 0x3C3C) || (bits & 0x3F3F0000))
-		return true;
-	return VehicleFromPos(od->tile, od, EnumFindVehToOvertake) != NULL;
+	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
+	return VehicleFromPos(od->tile, od, EnumFindVehBlockingOvertake) != NULL;
 }
 
 static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 {
 	OvertakeData od;
-	uint16 tt;
 
 	od.v = v;
 	od.u = u;
@@ -1055,32 +1062,31 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	/* For now, articulated road vehicles can't overtake anything. */
 	if (RoadVehHasArticPart(v)) return;
 
+	/* Vehicles are not driving in same direction || direction is not a diagonal direction */
 	if (v->direction != u->direction || !(v->direction & 1)) return;
 
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
 	if (v->u.road.state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
 
-	tt = GetTileTrackStatus(v->tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
-	tt |= tt >> 8;
-	tt &= 0x3F;
+	od.trackdir = DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
-	if ((tt & 3) == 0) return;
-	if ((tt & 0x3C) != 0) return;
-
-	if (tt == 3) tt = (v->direction & 2) ? 2 : 1;
-	od.tilebits = tt;
-
+	/* Are the current and the next tile suitable for overtaking?
+	 *  - Does the track continue along od.trackdir
+	 *  - No junctions
+	 *  - No barred levelcrossing
+	 *  - No other vehicles in the way
+	 */
 	od.tile = v->tile;
-	if (FindRoadVehToOvertake(&od)) return;
+	if (CheckRoadBlockedForOvertaking(&od)) return;
 
 	od.tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
-	if (FindRoadVehToOvertake(&od)) return;
+	if (CheckRoadBlockedForOvertaking(&od)) return;
 
 	if (od.u->cur_speed == 0 || od.u->vehstatus& VS_STOPPED) {
 		v->u.road.overtaking_ctr = 0x11;
 		v->u.road.overtaking = 0x10;
 	} else {
-//		if (FindRoadVehToOvertake(&od)) return;
+//		if (CheckRoadBlockedForOvertaking(&od)) return;
 		v->u.road.overtaking_ctr = 0;
 		v->u.road.overtaking = 0x10;
 	}
