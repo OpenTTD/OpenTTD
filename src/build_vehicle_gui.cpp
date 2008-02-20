@@ -230,8 +230,8 @@ static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	Money va = rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	Money vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	Money va = rvi_a->running_cost * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	Money vb = rvi_b->running_cost * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = ClampToI32(va - vb);
 
 	return _internal_sort_order ? -r : r;
@@ -248,8 +248,8 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 		* Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
 		* Another thing is that both power and running costs should be doubled for multiheaded engines.
 		* Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
-	Money va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / max(1U, (uint)rvi_a->power);
-	Money vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max(1U, (uint)rvi_b->power);
+	Money va = (rvi_a->running_cost * _price.running_rail[rvi_a->running_cost_class]) / max(1U, (uint)rvi_a->power);
+	Money vb = (rvi_b->running_cost * _price.running_rail[rvi_b->running_cost_class]) / max(1U, (uint)rvi_b->power);
 	int r = ClampToI32(vb - va);
 
 	return _internal_sort_order ? -r : r;
@@ -603,7 +603,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	}
 
 	/* Running cost */
-	SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost_base) * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
+	SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost) * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
 	y += 10;
 

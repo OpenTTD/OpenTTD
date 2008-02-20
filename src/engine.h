@@ -36,7 +36,7 @@ struct RailVehicleInfo {
 	uint16 max_speed;
 	uint16 power;
 	uint16 weight;
-	byte running_cost_base;
+	byte running_cost;
 	byte running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
 	byte capacity;

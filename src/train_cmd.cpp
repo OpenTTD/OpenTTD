@@ -3574,7 +3574,7 @@ Money Train::GetRunningCost() const
 	do {
 		const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 
-		byte cost_factor = GetVehicleProperty(v, 0x0D, rvi->running_cost_base);
+		byte cost_factor = GetVehicleProperty(v, 0x0D, rvi->running_cost);
 		if (cost_factor == 0) continue;
 
 		cost += cost_factor * _price.running_rail[rvi->running_cost_class];

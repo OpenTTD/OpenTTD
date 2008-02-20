@@ -126,7 +126,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 	SetDParam(3, rvi->power << multihead);
 	SetDParam(1, rvi->weight << multihead);
 
-	SetDParam(4, rvi->running_cost_base * _price.running_rail[rvi->running_cost_class] >> 8 << multihead);
+	SetDParam(4, rvi->running_cost * _price.running_rail[rvi->running_cost_class] >> 8 << multihead);
 
 	if (rvi->capacity != 0) {
 		SetDParam(5, rvi->cargo_type);
