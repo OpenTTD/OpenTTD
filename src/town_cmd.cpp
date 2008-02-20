@@ -1619,7 +1619,12 @@ HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile)
  */
 static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
 {
-	CommandCost cc = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
+	#if !defined(NDEBUG) || defined(WITH_ASSERT)
+		CommandCost cc =
+	#endif /* !defined(NDEBUG) || defined(WITH_ASSERT) */
+
+	DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
+
 	assert(CmdSucceeded(cc));
 
 	MakeHouseTile(tile, tid, counter, stage, type, random_bits);
