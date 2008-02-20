@@ -3437,9 +3437,9 @@ static TileIndex TrainApproachingCrossingTile(const Vehicle *v)
 	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
-	/* not a crossing || wrong axis || wrong railtype || wrong owner */
+	/* not a crossing || wrong axis || unusable rail (wrong type or owner) */
 	if (!IsLevelCrossingTile(tile) || DiagDirToAxis(dir) == GetCrossingRoadAxis(tile) ||
-			!CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner) {
+			!CheckCompatibleRail(v, tile)) {
 		return INVALID_TILE;
 	}
 
@@ -3485,8 +3485,8 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 	}
 
-	/* no suitable trackbits at all || wrong railtype || not our track */
-	if (bits == TRACK_BIT_NONE || !CheckCompatibleRail(v, tile) || GetTileOwner(tile) != v->owner) {
+	/* no suitable trackbits at all || unusable rail (wrong type or owner) */
+	if (bits == TRACK_BIT_NONE || !CheckCompatibleRail(v, tile)) {
 		return TrainApproachingLineEnd(v, false);
 	}
 
