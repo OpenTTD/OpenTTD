@@ -977,8 +977,8 @@ static void ToolbarOptionsClick(Window *w)
 	if (HasBit(_display_opt, DO_WAYPOINTS))          SetBit(x,  9);
 	if (HasBit(_display_opt, DO_FULL_ANIMATION))     SetBit(x, 10);
 	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, 11);
-	if (IsTransparencySet(TO_HOUSES) && IsTransparencySet(TO_TREES)) SetBit(x, 12);
-	if (IsTransparencySet(TO_SIGNS))                     SetBit(x, 13);
+	if (IsTransparencySet(TO_HOUSES))                SetBit(x, 12);
+	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, 13);
 	WP(w, menu_d).checked_items = x;
 }
 
