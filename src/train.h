@@ -17,12 +17,12 @@
  */
 
 enum TrainSubtype {
-	Train_Front             = 0, ///< Leading engine of a train
-	Train_Articulated_Part  = 1, ///< Articulated part of an engine
-	Train_Wagon             = 2, ///< Wagon
-	Train_Engine            = 3, ///< Engine, that can be front engines, but might be placed behind another engine
-	Train_Free_Wagon        = 4, ///< First in a wagon chain (in depot)
-	Train_Multiheaded       = 5, ///< Engine is a multiheaded
+	TS_FRONT             = 0, ///< Leading engine of a train
+	TS_ARTICULATED_PART  = 1, ///< Articulated part of an engine
+	TS_WAGON             = 2, ///< Wagon
+	TS_ENGINE            = 3, ///< Engine, that can be front engines, but might be placed behind another engine
+	TS_FREE_WAGON        = 4, ///< First in a wagon chain (in depot)
+	TS_MULTIHEADED       = 5, ///< Engine is a multiheaded
 };
 
 
@@ -33,7 +33,7 @@ enum TrainSubtype {
 static inline bool IsFrontEngine(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, Train_Front);
+	return HasBit(v->subtype, TS_FRONT);
 }
 
 /** Set front engine state
@@ -42,7 +42,7 @@ static inline bool IsFrontEngine(const Vehicle *v)
 static inline void SetFrontEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, Train_Front);
+	SetBit(v->subtype, TS_FRONT);
 }
 
 /** Remove the front engine state
@@ -51,7 +51,7 @@ static inline void SetFrontEngine(Vehicle *v)
 static inline void ClearFrontEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, Train_Front);
+	ClrBit(v->subtype, TS_FRONT);
 }
 
 /** Check if a vehicle is an articulated part of an engine
@@ -61,7 +61,7 @@ static inline void ClearFrontEngine(Vehicle *v)
 static inline bool IsArticulatedPart(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, Train_Articulated_Part);
+	return HasBit(v->subtype, TS_ARTICULATED_PART);
 }
 
 /** Set a vehicle to be an articulated part
@@ -70,7 +70,7 @@ static inline bool IsArticulatedPart(const Vehicle *v)
 static inline void SetArticulatedPart(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, Train_Articulated_Part);
+	SetBit(v->subtype, TS_ARTICULATED_PART);
 }
 
 /** Clear a vehicle from being an articulated part
@@ -79,7 +79,7 @@ static inline void SetArticulatedPart(Vehicle *v)
 static inline void ClearArticulatedPart(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, Train_Articulated_Part);
+	ClrBit(v->subtype, TS_ARTICULATED_PART);
 }
 
 /** Check if a vehicle is a wagon
@@ -89,7 +89,7 @@ static inline void ClearArticulatedPart(Vehicle *v)
 static inline bool IsTrainWagon(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, Train_Wagon);
+	return HasBit(v->subtype, TS_WAGON);
 }
 
 /** Set a vehicle to be a wagon
@@ -98,7 +98,7 @@ static inline bool IsTrainWagon(const Vehicle *v)
 static inline void SetTrainWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, Train_Wagon);
+	SetBit(v->subtype, TS_WAGON);
 }
 
 /** Clear wagon property
@@ -107,7 +107,7 @@ static inline void SetTrainWagon(Vehicle *v)
 static inline void ClearTrainWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, Train_Wagon);
+	ClrBit(v->subtype, TS_WAGON);
 }
 
 /** Check if a vehicle is an engine (can be first in a train)
@@ -117,7 +117,7 @@ static inline void ClearTrainWagon(Vehicle *v)
 static inline bool IsTrainEngine(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, Train_Engine);
+	return HasBit(v->subtype, TS_ENGINE);
 }
 
 /** Set engine status
@@ -126,7 +126,7 @@ static inline bool IsTrainEngine(const Vehicle *v)
 static inline void SetTrainEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, Train_Engine);
+	SetBit(v->subtype, TS_ENGINE);
 }
 
 /** Clear engine status
@@ -135,7 +135,7 @@ static inline void SetTrainEngine(Vehicle *v)
 static inline void ClearTrainEngine(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, Train_Engine);
+	ClrBit(v->subtype, TS_ENGINE);
 }
 
 /** Check if a vehicle is a free wagon (got no engine in front of it)
@@ -145,7 +145,7 @@ static inline void ClearTrainEngine(Vehicle *v)
 static inline bool IsFreeWagon(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, Train_Free_Wagon);
+	return HasBit(v->subtype, TS_FREE_WAGON);
 }
 
 /** Set if a vehicle is a free wagon
@@ -154,7 +154,7 @@ static inline bool IsFreeWagon(const Vehicle *v)
 static inline void SetFreeWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, Train_Free_Wagon);
+	SetBit(v->subtype, TS_FREE_WAGON);
 }
 
 /** Clear a vehicle from being a free wagon
@@ -163,7 +163,7 @@ static inline void SetFreeWagon(Vehicle *v)
 static inline void ClearFreeWagon(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, Train_Free_Wagon);
+	ClrBit(v->subtype, TS_FREE_WAGON);
 }
 
 /** Check if a vehicle is a multiheaded engine
@@ -173,7 +173,7 @@ static inline void ClearFreeWagon(Vehicle *v)
 static inline bool IsMultiheaded(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	return HasBit(v->subtype, Train_Multiheaded);
+	return HasBit(v->subtype, TS_MULTIHEADED);
 }
 
 /** Set if a vehicle is a multiheaded engine
@@ -182,7 +182,7 @@ static inline bool IsMultiheaded(const Vehicle *v)
 static inline void SetMultiheaded(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	SetBit(v->subtype, Train_Multiheaded);
+	SetBit(v->subtype, TS_MULTIHEADED);
 }
 
 /** Clear multiheaded engine property
@@ -191,7 +191,7 @@ static inline void SetMultiheaded(Vehicle *v)
 static inline void ClearMultiheaded(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	ClrBit(v->subtype, Train_Multiheaded);
+	ClrBit(v->subtype, TS_MULTIHEADED);
 }
 
 /** Check if an engine has an articulated part.

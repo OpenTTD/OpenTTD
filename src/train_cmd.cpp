@@ -1445,7 +1445,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * up on a new line to be added to the newly built loco. Replace it is.
 				 * Totally braindead cause building a new engine adds all loco-less
 				 * engines to its train anyways */
-				if (p2 == 2 && HasBit(ori_subtype, Train_Front)) {
+				if (p2 == 2 && HasBit(ori_subtype, TS_FRONT)) {
 					Vehicle *tmp;
 					for (v = first; v != NULL; v = tmp) {
 						tmp = GetNextVehicle(v);
