@@ -1544,7 +1544,7 @@ static void UpdateVarsAfterSwap(Vehicle *v)
 	EndVehicleMove(v);
 }
 
-static void SetLastSpeed(Vehicle* v, int spd)
+static inline void SetLastSpeed(Vehicle* v, int spd)
 {
 	int old = v->u.rail.last_speed;
 	if (spd != old) {
@@ -2771,7 +2771,7 @@ static const Direction _new_vehicle_direction_table[11] = {
 	DIR_E , DIR_SE, DIR_S
 };
 
-static Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
+static inline Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_tile)
 {
 	uint offs = (TileY(new_tile) - TileY(old_tile) + 1) * 4 +
 							TileX(new_tile) - TileX(old_tile) + 1;
@@ -2779,7 +2779,7 @@ static Direction GetNewVehicleDirectionByTile(TileIndex new_tile, TileIndex old_
 	return _new_vehicle_direction_table[offs];
 }
 
-static int GetDirectionToVehicle(const Vehicle *v, int x, int y)
+static inline int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 {
 	byte offs;
 
@@ -2802,7 +2802,7 @@ static int GetDirectionToVehicle(const Vehicle *v, int x, int y)
 }
 
 /* Check if the vehicle is compatible with the specified tile */
-static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
+static inline bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 {
 	return
 		IsTileOwner(tile, v->owner) && (
@@ -2826,7 +2826,7 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 };
 
 /** Modify the speed of the vehicle due to a turn */
-static void AffectSpeedByDirChange(Vehicle* v, Direction new_dir)
+static inline void AffectSpeedByDirChange(Vehicle* v, Direction new_dir)
 {
 	if (_patches.realistic_acceleration) return;
 
@@ -2838,7 +2838,7 @@ static void AffectSpeedByDirChange(Vehicle* v, Direction new_dir)
 }
 
 /** Modify the speed of the vehicle due to a change in altitude */
-static void AffectSpeedByZChange(Vehicle *v, byte old_z)
+static inline void AffectSpeedByZChange(Vehicle *v, byte old_z)
 {
 	if (old_z == v->z_pos || _patches.realistic_acceleration) return;
 
