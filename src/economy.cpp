@@ -163,13 +163,15 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 				num++;
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */
-					if (min_profit_first || min_profit > v->profit_last_year >> 8) {
-						min_profit = v->profit_last_year >> 8;
+					if (min_profit_first || min_profit > v->profit_last_year) {
+						min_profit = v->profit_last_year;
 						min_profit_first = false;
 					}
 				}
 			}
 		}
+
+		min_profit >>= 8; // remove the fract part
 
 		_score_part[owner][SCORE_VEHICLES] = num;
 		/* Don't allow negative min_profit to show */

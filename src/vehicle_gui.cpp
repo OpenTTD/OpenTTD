@@ -171,9 +171,9 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	/* draw profit-based colored icons */
 	if (v->age <= 365 * 2) {
 		pal = PALETTE_TO_GREY;
-	} else if (v->profit_last_year < 0) {
+	} else if (v->GetDisplayProfitLastYear() < 0) {
 		pal = PALETTE_TO_RED;
-	} else if (v->profit_last_year >> 8 < 10000) {
+	} else if (v->GetDisplayProfitLastYear() < 10000) {
 		pal = PALETTE_TO_YELLOW;
 	} else {
 		pal = PALETTE_TO_GREEN;
@@ -587,7 +587,7 @@ static int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
 {
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
-	int r = ClampToI32(va->profit_this_year - vb->profit_this_year);
+	int r = ClampToI32(va->GetDisplayProfitThisYear() - vb->GetDisplayProfitThisYear());
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
@@ -598,7 +598,7 @@ static int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
 {
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
-	int r = ClampToI32((va->profit_last_year - vb->profit_last_year) >> 8);
+	int r = ClampToI32(va->GetDisplayProfitLastYear() - vb->GetDisplayProfitLastYear());
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
@@ -983,8 +983,8 @@ static void DrawVehicleListWindow(Window *w)
 		const Vehicle *v = vl->sort_list[i];
 		StringID str;
 
-		SetDParam(0, v->profit_this_year >> 8);
-		SetDParam(1, v->profit_last_year >> 8);
+		SetDParam(0, v->GetDisplayProfitThisYear());
+		SetDParam(1, v->GetDisplayProfitLastYear());
 
 		DrawVehicleImage(v, x + 19, y + 6, INVALID_VEHICLE, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0);
 		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
@@ -1500,8 +1500,8 @@ static void DrawVehicleDetailsWindow(Window *w)
 	}
 
 	/* Draw profit */
-	SetDParam(0, v->profit_this_year >> 8);
-	SetDParam(1, v->profit_last_year >> 8);
+	SetDParam(0, v->GetDisplayProfitThisYear());
+	SetDParam(1, v->GetDisplayProfitLastYear());
 	DrawString(2, 35, _vehicle_translation_table[VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR][v->type], TC_FROMSTRING);
 
 	/* Draw breakdown & reliability */

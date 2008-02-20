@@ -3689,8 +3689,8 @@ void TrainsYearlyLoop()
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
 			/* show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
-			if (_patches.train_income_warn && v->owner == _local_player && v->age >= 730 && v->profit_this_year < 0) {
-				SetDParam(1, v->profit_this_year);
+			if (_patches.train_income_warn && v->owner == _local_player && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
+				SetDParam(1, v->GetDisplayProfitThisYear());
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_UNPROFITABLE,

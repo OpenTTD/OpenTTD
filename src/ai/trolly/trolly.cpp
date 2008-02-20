@@ -1251,7 +1251,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 	if (v->age > 360) {
 		// If both years together are not more than AI_MINIMUM_ROUTE_PROFIT,
 		//  it is not worth the line I guess...
-		if ((v->profit_last_year + v->profit_this_year) >> 8 < AI_MINIMUM_ROUTE_PROFIT ||
+		if (v->profit_last_year + v->profit_this_year < (Money)256 * AI_MINIMUM_ROUTE_PROFIT ||
 				(v->reliability * 100 >> 16) < 40) {
 			// There is a possibility that the route is fucked up...
 			if (v->cargo.DaysInTransit() > AI_VEHICLE_LOST_DAYS) {

@@ -438,6 +438,18 @@ public:
 	Money GetDisplayRunningCost() const { return (this->GetRunningCost() >> 8); }
 
 	/**
+	 * Gets the profit vehicle had this year. It can be sent into SetDParam for string processing.
+	 * @return the vehicle's profit this year
+	 */
+	Money GetDisplayProfitThisYear() const { return (this->profit_this_year >> 8); }
+
+	/**
+	 * Gets the profit vehicle had last year. It can be sent into SetDParam for string processing.
+	 * @return the vehicle's profit last year
+	 */
+	Money GetDisplayProfitLastYear() const { return (this->profit_last_year >> 8); }
+
+	/**
 	 * Set the next vehicle of this vehicle.
 	 * @param next the next vehicle. NULL removes the next vehicle.
 	 */

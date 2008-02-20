@@ -112,8 +112,8 @@ static void AiStateVehLoop(Player *p)
 
 			/* not profitable? */
 			if (v->age >= 730 &&
-					v->profit_last_year >> 8 < _price.station_value * 5 &&
-					v->profit_this_year >> 8 < _price.station_value * 5) {
+					v->profit_last_year < _price.station_value * 5 * 256 &&
+					v->profit_this_year < _price.station_value * 5 * 256) {
 				_players_ai[p->index].state_counter = 0;
 				_players_ai[p->index].state = AIS_SELL_VEHICLE;
 				_players_ai[p->index].cur_veh = v;
