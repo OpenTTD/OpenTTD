@@ -152,8 +152,8 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	if (++tpf->rd.cur_length > 50)
 		return;
 
-	uint32 ts = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
-	TrackBits bits = (TrackBits)((byte)((ts | (ts >> 8)) & _bits_mask[direction]));
+	TrackStatus ts = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
+	TrackBits bits = (TrackBits)(TrackStatusToTrackBits(ts) & _bits_mask[direction]);
 	if (bits == TRACK_BIT_NONE) return;
 
 	assert(TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
@@ -252,11 +252,11 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		}
 	}
 
-	uint32 bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
+	uint32 bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type));
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if (bits != 0 && GetTileTrackStatus(tile_org, TRANSPORT_RAIL, 0) != 0) {
+		if (bits != 0 && TrackStatusToTrackdirBits(GetTileTrackStatus(tile_org, TRANSPORT_RAIL, 0)) != TRACKDIR_BIT_NONE) {
 			if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
 		}
 	}
@@ -682,8 +682,8 @@ start_at:
 			if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) {
 				/* We found a tile which is not a normal railway tile.
 				 * Determine which tracks that exist on this tile. */
-				uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _tpfmode1_and[direction];
-				bits = TrackdirBitsToTrackBits((TrackdirBits)(ts & TRACKDIR_BIT_MASK));
+				TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _tpfmode1_and[direction];
+				bits = TrackStatusToTrackBits(ts);
 
 				/* Check that the tile contains exactly one track */
 				if (bits == 0 || KillFirstBit(bits) != 0) break;

@@ -911,8 +911,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
 	if (tile == INVALID_TILE) return false;
 
 	/* Check for track bits on the new tile */
-	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0);
-	TrackdirBits trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0));
 
 	if (TracksOverlap(TrackdirBitsToTrackBits(trackdirbits))) return false;
 	trackdirbits &= TrackdirReachesTrackdirs(trackdir);
@@ -2083,17 +2082,21 @@ set_ground:
 }
 
 
-static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	if (mode != TRANSPORT_RAIL) return 0;
+
+	TrackBits trackbits = TRACK_BIT_NONE;
+	TrackdirBits red_signals = TRACKDIR_BIT_NONE;
 
 	switch (GetRailTileType(tile)) {
 		default: NOT_REACHED();
 		case RAIL_TILE_NORMAL:
-			return GetTrackBits(tile) * 0x101;
+			trackbits = GetTrackBits(tile);
+			break;
 
 		case RAIL_TILE_SIGNALS: {
-			uint32 ret = GetTrackBits(tile) * 0x101;
+			trackbits = GetTrackBits(tile);
 			byte a = GetPresentSignals(tile);
 			uint b = GetSignalStates(tile);
 
@@ -2106,25 +2109,29 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint 
 			if ((a & 0xC) == 0) b |= 0xC;
 			if ((a & 0x3) == 0) b |= 0x3;
 
-			if ((b & 0x8) == 0) ret |= 0x10070000;
-			if ((b & 0x4) == 0) ret |= 0x07100000;
-			if ((b & 0x2) == 0) ret |= 0x20080000;
-			if ((b & 0x1) == 0) ret |= 0x08200000;
+			if ((b & 0x8) == 0) red_signals |= (TRACKDIR_BIT_LEFT_N | TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E);
+			if ((b & 0x4) == 0) red_signals |= (TRACKDIR_BIT_LEFT_S | TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_UPPER_W);
+			if ((b & 0x2) == 0) red_signals |= (TRACKDIR_BIT_RIGHT_N | TRACKDIR_BIT_LOWER_E);
+			if ((b & 0x1) == 0) red_signals |= (TRACKDIR_BIT_RIGHT_S | TRACKDIR_BIT_LOWER_W);
 
-			return ret;
+			break;
 		}
 
 		case RAIL_TILE_DEPOT: {
 			DiagDirection dir = GetRailDepotDirection(tile);
 
-			if (side != INVALID_DIAGDIR && side != dir) return 0;
+			if (side != INVALID_DIAGDIR && side != dir) break;
 
-			return AxisToTrackBits(DiagDirToAxis(dir)) * 0x101;
+			trackbits = AxisToTrackBits(DiagDirToAxis(dir));
+			break;
 		}
 
 		case RAIL_TILE_WAYPOINT:
-			return GetRailWaypointBits(tile) * 0x101;
+			trackbits = GetRailWaypointBits(tile);
+			break;
 	}
+
+	return CombineTrackStatus(TrackBitsToTrackdirBits(trackbits), red_signals);
 }
 
 static void ClickTile_Track(TileIndex tile)

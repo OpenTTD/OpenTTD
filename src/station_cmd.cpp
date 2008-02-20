@@ -2280,24 +2280,25 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 }
 
 
-static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
+	TrackBits trackbits = TRACK_BIT_NONE;
+
 	switch (mode) {
 		case TRANSPORT_RAIL:
 			if (IsRailwayStation(tile) && !IsStationTileBlocked(tile)) {
-				return TrackToTrackBits(GetRailStationTrack(tile)) * 0x101;
+				trackbits = TrackToTrackBits(GetRailStationTrack(tile));
 			}
 			break;
 
 		case TRANSPORT_WATER:
 			/* buoy is coded as a station, it is always on open water */
 			if (IsBuoy(tile)) {
-				TrackBits ts = TRACK_BIT_ALL;
+				trackbits = TRACK_BIT_ALL;
 				/* remove tracks that connect NE map edge */
-				if (TileX(tile) == 0) ts &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
+				if (TileX(tile) == 0) trackbits &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
 				/* remove tracks that connect NW map edge */
-				if (TileY(tile) == 0) ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
-				return uint32(ts) * 0x101;
+				if (TileY(tile) == 0) trackbits &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
 			}
 			break;
 
@@ -2307,10 +2308,10 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uin
 				Axis axis = DiagDirToAxis(dir);
 
 				if (side != INVALID_DIAGDIR) {
-					if (axis != DiagDirToAxis(side) || (IsStandardRoadStopTile(tile) && dir != side)) return 0;
+					if (axis != DiagDirToAxis(side) || (IsStandardRoadStopTile(tile) && dir != side)) break;
 				}
 
-				return AxisToTrackBits(axis) * 0x101;
+				trackbits = AxisToTrackBits(axis);
 			}
 			break;
 
@@ -2318,7 +2319,7 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode, uin
 			break;
 	}
 
-	return 0;
+	return CombineTrackStatus(TrackBitsToTrackdirBits(trackbits), TRACKDIR_BIT_NONE);
 }
 
 

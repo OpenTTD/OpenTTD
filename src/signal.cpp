@@ -506,7 +506,7 @@ static bool UpdateSignalsInBuffer(Owner owner)
 				/* FALLTHROUGH */
 			case MP_STATION:
 			case MP_ROAD:
-				if ((TrackBits)(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
+				if ((TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
  					/* only add to set when there is some 'interesting' track */
 					_tbdset.Add(tile, dir);
 					_tbdset.Add(tile + TileOffsByDiagDir(dir), ReverseDiagDir(dir));
@@ -517,7 +517,7 @@ static bool UpdateSignalsInBuffer(Owner owner)
 				/* jump to next tile */
 				tile = tile + TileOffsByDiagDir(dir);
 				dir = ReverseDiagDir(dir);
-				if ((TrackBits)(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
+				if ((TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
 					_tbdset.Add(tile, dir);
 					break;
 				}

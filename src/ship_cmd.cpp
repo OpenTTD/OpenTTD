@@ -50,10 +50,9 @@ static const TrackBits _ship_sometracks[4] = {
 	TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_RIGHT, // 0x2A, // DIAGDIR_NW
 };
 
-static TrackBits GetTileShipTrackStatus(TileIndex tile)
+static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
 {
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER, 0);
-	return TrackdirBitsToTrackBits((TrackdirBits)(TRACKDIR_BIT_MASK & (r | r >> 8)));
+	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
 }
 
 void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
@@ -592,10 +591,9 @@ static Direction ShipGetNewDirection(Vehicle *v, int x, int y)
 	return _new_vehicle_direction_table[offs];
 }
 
-static TrackBits GetAvailShipTracks(TileIndex tile, int dir)
+static inline TrackBits GetAvailShipTracks(TileIndex tile, int dir)
 {
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_WATER, 0);
-	return (TrackBits)((r | r >> 8) & _ship_sometracks[dir]);
+	return GetTileShipTrackStatus(tile) & _ship_sometracks[dir];
 }
 
 static const byte _ship_subcoord[4][6][3] = {

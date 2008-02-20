@@ -69,10 +69,9 @@ enum {
 };
 
 
-static TrackBits GetRailTrackStatus(TileIndex tile)
+static inline TrackBits GetRailTrackStatus(TileIndex tile)
 {
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0);
-	return (TrackBits)(byte) (r | r >> 8);
+	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0));
 }
 
 
@@ -2883,7 +2882,7 @@ static bool AiCheckRoadFinished(Player *p)
 	tile = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(dir));
 
 	if (IsRoadStopTile(tile) || IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
-	bits = GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD) & _ai_road_table_and[dir];
+	bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD)) & _ai_road_table_and[dir];
 	if (bits == 0) return false;
 
 	are.best_dist = (uint)-1;

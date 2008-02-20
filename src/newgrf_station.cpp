@@ -291,13 +291,13 @@ static uint32 GetRailContinuationInfo(TileIndex tile)
 	uint i;
 
 	for (i = 0; i < lengthof(x_dir); i++, dir++, diagdir++) {
-		uint32 ts = GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL, 0);
-		if (ts != 0) {
+		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL, 0));
+		if (trackbits != TRACK_BIT_NONE) {
 			/* If there is any track on the tile, set the bit in the second byte */
 			SetBit(res, i + 8);
 
 			/* If any track reaches our exit direction, set the bit in the lower byte */
-			if (ts & DiagdirReachesTracks(*diagdir)) SetBit(res, i);
+			if (trackbits & DiagdirReachesTracks(*diagdir)) SetBit(res, i);
 		}
 	}
 

@@ -268,15 +268,13 @@ public:
 		// our source tile will be the next vehicle tile (should be the given one)
 		TileIndex src_tile = tile;
 		// get available trackdirs on the start tile
-		uint ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
-		TrackdirBits src_trackdirs = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+		TrackdirBits src_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes));
 		// select reachable trackdirs only
 		src_trackdirs &= DiagdirReachesTrackdirs(enterdir);
 
 		// get available trackdirs on the destination tile
 		TileIndex dest_tile = v->dest_tile;
-		uint dest_ts = GetTileTrackStatus(dest_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
-		TrackdirBits dest_trackdirs = (TrackdirBits)(dest_ts & TRACKDIR_BIT_MASK);
+		TrackdirBits dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(dest_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes));
 
 		// set origin and destination nodes
 		Yapf().SetOrigin(src_tile, src_trackdirs);
@@ -320,8 +318,7 @@ public:
 
 		// set destination tile, trackdir
 		//   get available trackdirs on the destination tile
-		uint dest_ts = GetTileTrackStatus(dst_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
-		TrackdirBits dst_td_bits = (TrackdirBits)(dest_ts & TRACKDIR_BIT_MASK);
+		TrackdirBits dst_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(dst_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes));
 		Yapf().SetDestination(dst_tile, dst_td_bits);
 
 		// find the best path
@@ -345,7 +342,7 @@ public:
 		// set origin (tile, trackdir)
 		TileIndex src_tile = v->tile;
 		Trackdir src_td = GetVehicleTrackdir(v);
-		if ((GetTileTrackStatus(src_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes) & TrackdirToTrackdirBits(src_td)) == 0) {
+		if ((TrackStatusToTrackdirBits(GetTileTrackStatus(src_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(src_td)) == 0) {
 			// sometimes the roadveh is not on the road (it resides on non-existing track)
 			// how should we handle that situation?
 			return false;
@@ -438,7 +435,7 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
 	Trackdir trackdir = GetVehicleTrackdir(v);
-	if ((GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes) & TrackdirToTrackdirBits(trackdir)) == 0)
+	if ((TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(trackdir)) == 0)
 		return NULL;
 
 	// handle the case when our vehicle is already in the depot tile

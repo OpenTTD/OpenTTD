@@ -3040,13 +3040,11 @@ static void TrainController(Vehicle *v, bool update_image)
 
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
-				uint32 ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0, ReverseDiagDir(enterdir)) & _reachable_tracks[enterdir];
+				TrackStatus ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0, ReverseDiagDir(enterdir)) & _reachable_tracks[enterdir];
+				TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
+				TrackdirBits red_signals = TrackStatusToRedSignals(ts);
 
-				/* Combine the from & to directions.
-				 * Now, the lower byte contains the track status, and the byte at bit 16 contains
-				 * the signal status. */
-				uint32 tracks = ts | (ts >> 8);
-				TrackBits bits = (TrackBits)(tracks & TRACK_BIT_MASK);
+				TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
 				if (_patches.pathfinder_for_trains != VPF_NTP && _patches.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
@@ -3064,14 +3062,12 @@ static void TrainController(Vehicle *v, bool update_image)
 					/* Currently the locomotive is active. Determine which one of the
 					 * available tracks to choose */
 					chosen_track = TrackToTrackBits(ChooseTrainTrack(v, gp.new_tile, enterdir, bits));
-					assert(chosen_track & tracks);
+					assert(chosen_track & bits);
 
 					/* Check if it's a red signal and that force proceed is not clicked. */
-					if ((tracks >> 16) & chosen_track && v->u.rail.force_proceed == 0) {
-						/* In front of a red signal
-						 * find the first set bit in ts. need to do it in 2 steps, since
-						 * FIND_FIRST_BIT only handles 6 bits at a time. */
-						Trackdir i = FindFirstTrackdir((TrackdirBits)(uint16)ts);
+					if (red_signals & chosen_track && v->u.rail.force_proceed == 0) {
+						/* In front of a red signal */
+						Trackdir i = FindFirstTrackdir(trackdirbits);
 
 						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 							v->cur_speed = 0;
@@ -3475,12 +3471,14 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
 	/* Determine the track status on the next tile */
-	uint32 ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir)) & _reachable_tracks[dir];
+	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir)) & _reachable_tracks[dir];
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
+	TrackdirBits red_signals = TrackStatusToRedSignals(ts);
 
 	/* We are sure the train is not entering a depot, it is detected above */
 
 	/* mask unreachable track bits if we are forbidden to do 90deg turns */
-	TrackBits bits = (TrackBits)((ts | (ts >> 8)) & TRACK_BIT_MASK);
+	TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
 	if (_patches.pathfinder_for_trains != VPF_NTP && _patches.forbid_90_deg) {
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 	}
@@ -3491,7 +3489,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	}
 
 	/* approaching red signal */
-	if ((ts & (ts >> 16)) != 0) return TrainApproachingLineEnd(v, true);
+	if ((trackdirbits & red_signals) != 0) return TrainApproachingLineEnd(v, true);
 
 	/* approaching a rail/road crossing? then make it red */
 	if (IsLevelCrossingTile(tile)) MaybeBarCrossingWithSound(tile);

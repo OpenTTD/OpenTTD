@@ -607,8 +607,7 @@ static bool CanEnterTile(TileIndex tile, DiagDirection dir, TransportType type, 
  */
 static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_trackdir, TransportType type, uint subtype)
 {
-	uint32 ts = GetTileTrackStatus(dst_tile, type, subtype);
-	TrackdirBits trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(dst_tile, type, subtype));
 
 	if (trackdirbits == 0 && type == TRANSPORT_ROAD && HasBit(subtype, ROADTYPE_TRAM)) {
 		/* GetTileTrackStatus() returns 0 for single tram bits.

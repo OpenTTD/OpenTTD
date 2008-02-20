@@ -716,9 +716,8 @@ static void DisasterTick_Submarine(Vehicle *v)
 
 	tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile)) {
-		TrackdirBits r = (TrackdirBits)GetTileTrackStatus(tile, TRANSPORT_WATER, 0);
-
-		if (TrackdirBitsToTrackBits(r) == TRACK_BIT_ALL && !Chance16(1, 90)) {
+		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
+		if (trackbits == TRACK_BIT_ALL && !Chance16(1, 90)) {
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 			SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 			return;

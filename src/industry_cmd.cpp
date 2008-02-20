@@ -815,7 +815,7 @@ static void ClickTile_Industry(TileIndex tile)
 	ShowIndustryViewWindow(GetIndustryIndex(tile));
 }
 
-static uint32 GetTileTrackStatus_Industry(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Industry(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	return 0;
 }

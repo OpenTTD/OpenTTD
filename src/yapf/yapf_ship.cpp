@@ -53,7 +53,7 @@ public:
 		// convert origin trackdir to TrackdirBits
 		TrackdirBits trackdirs = TrackdirToTrackdirBits(trackdir);
 		// get available trackdirs on the destination tile
-		TrackdirBits dest_trackdirs = (TrackdirBits)(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0) & TRACKDIR_BIT_MASK);
+		TrackdirBits dest_trackdirs = TrackStatusToTrackdirBits(GetTileTrackStatus(v->dest_tile, TRANSPORT_WATER, 0));
 
 		// create pathfinder instance
 		Tpf pf;

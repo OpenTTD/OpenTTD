@@ -1104,7 +1104,7 @@ void ConvertGroundTilesIntoWaterTiles()
 	}
 }
 
-static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	static const byte coast_tracks[] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
 
@@ -1127,7 +1127,7 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode, uint 
 		/* NW border: remove tracks that connects NW tile edge */
 		ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
 	}
-	return ts * 0x101;
+	return CombineTrackStatus(TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE);
 }
 
 static void ClickTile_Water(TileIndex tile)

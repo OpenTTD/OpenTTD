@@ -1028,9 +1028,9 @@ static void* EnumFindVehBlockingOvertake(Vehicle* v, void* data)
  */
 static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 {
-	uint32 ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes);
-	TrackdirBits trackdirbits = (TrackdirBits)(ts & TRACKDIR_BIT_MASK);
-	TrackdirBits red_signals = (TrackdirBits)((ts >> 16) & TRACKDIR_BIT_MASK); // barred level crossing
+	TrackStatus ts = GetTileTrackStatus(od->tile, TRANSPORT_ROAD, od->v->u.road.compatible_roadtypes);
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
+	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // barred level crossing
 	TrackBits trackbits = TrackdirBitsToTrackBits(trackdirbits);
 
 	/* Track does not continue along overtaking direction || track has junction || levelcrossing is barred */
@@ -1159,9 +1159,9 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	FindRoadToChooseData frd;
 	Trackdir best_track;
 
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
-	TrackdirBits signal    = (TrackdirBits)GB(r, 16, 16);
-	TrackdirBits trackdirs = (TrackdirBits)GB(r,  0, 16);
+	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes);
+	TrackdirBits red_signals = TrackStatusToRedSignals(ts); // crossing
+	TrackdirBits trackdirs = TrackStatusToTrackdirBits(ts);
 
 	if (IsTileType(tile, MP_ROAD)) {
 		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->u.road.compatible_roadtypes) == 0)) {
@@ -1302,7 +1302,7 @@ do_it:;
 
 found_best_track:;
 
-	if (HasBit(signal, best_track)) return INVALID_TRACKDIR;
+	if (HasBit(red_signals, best_track)) return INVALID_TRACKDIR;
 
 	return best_track;
 }

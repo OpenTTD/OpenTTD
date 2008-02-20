@@ -14,6 +14,7 @@
 #include "date_type.h"
 #include "player_type.h"
 #include "direction_type.h"
+#include "track_type.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {
@@ -60,29 +61,17 @@ typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
 
 /**
  * GetTileTrackStatusProcs return a value that contains the possible tracks
- * that can be taken on a given tile by a given transport. The return value is
- * composed as follows: 0xaabbccdd. ccdd and aabb are bitmasks of trackdirs,
- * where bit n corresponds to trackdir n. ccdd are the trackdirs that are
- * present in the tile (1==present, 0==not present), aabb is the signal
- * status, if applicable (0==green/no signal, 1==red, note that this is
- * reversed from map3/2[tile] for railway signals).
+ * that can be taken on a given tile by a given transport.
+ * The return value contains the existing trackdirs and signal states.
  *
- * The result (let's call it ts) is often used as follows:
- * tracks = (byte)(ts | ts >>8)
- * This effectively converts the present part of the result (ccdd) to a
- * track bitmask, which disregards directions. Normally, this is the same as just
- * doing (byte)ts I think, although I am not really sure
+ * see track_func.h for usage of TrackStatus.
  *
- * A trackdir is combination of a track and a dir, where the lower three bits
- * are a track, the fourth bit is the direction. these give 12 (or 14)
- * possible options: 0-5 and 8-13, so we need 14 bits for a trackdir bitmask
- * above.
  * @param tile     the tile to get the track status from
  * @param mode     the mode of transportation
  * @param sub_mode used to differentiate between different kinds within the mode
- * @return the above mentions track status information
+ * @return the track status information
  */
-typedef uint32 GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
+typedef TrackStatus GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
 typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
@@ -127,7 +116,7 @@ struct TileTypeProcs {
 
 extern const TileTypeProcs * const _tile_type_procs[16];
 
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
+TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
 void AnimateTile(TileIndex tile);

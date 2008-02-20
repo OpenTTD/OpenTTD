@@ -437,16 +437,16 @@ void DoClearSquare(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-/** Returns trackdirbits in lower two bytes and additional info about track status in upper two bytes
+/** Returns information about trackdirs and signal states.
  * If there is any trackbit at 'side', return all trackdirbits.
- * For TRANSPORT_ROAD, return 0 if there is no roadbit (of given subtype) at given side.
+ * For TRANSPORT_ROAD, return no trackbits if there is no roadbit (of given subtype) at given side.
  * @param tile tile to get info about
  * @param mode transport type
  * @param sub_mode for TRANSPORT_ROAD, roadtypes to check
  * @param side side we are entering from, INVALID_DIAGDIR to return all trackbits
  * @return trackdirbits and other info depending on 'mode'
  */
-uint32 GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
+TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode, sub_mode, side);
 }
