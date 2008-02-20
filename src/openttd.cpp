@@ -816,9 +816,9 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subd
 
 		case SL_REINIT:
 			switch (ogm) {
+				default:
 				case GM_MENU:   LoadIntroGame();      break;
 				case GM_EDITOR: MakeNewEditorWorld(); break;
-				default:        MakeNewGame(false);   break;
 			}
 			return false;
 
