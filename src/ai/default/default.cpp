@@ -2197,25 +2197,55 @@ static void AiBuildRailConstruct(Player *p)
 	_players_ai[p->index].cur_tile_a += TileOffsByDiagDir(_players_ai[p->index].cur_dir_a);
 
 	if (arf.best_ptr[0] & 0x80) {
-		int i;
-		int32 bridge_len = GetTunnelBridgeLength(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a);
+		TileIndex t1 = _players_ai[p->index].cur_tile_a;
+		TileIndex t2 = arf.bridge_end_tile;
 
-		/* Figure out which (rail)bridge type to build
-		 * start with best bridge, then go down to worse and worse bridges
-		 * unnecessary to check for worst bridge (i=0), since AI will always build
-		 * that.
-		 */
-		for (i = MAX_BRIDGES - 1; i != 0; i--) {
-			if (CheckBridge_Stuff(i, bridge_len)) {
-				CommandCost cost = DoCommand(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
+		int32 bridge_len = GetTunnelBridgeLength(t1, t2);
+
+		DiagDirection dir = (TileX(t1) == TileX(t2) ? DIAGDIR_SE : DIAGDIR_SW);
+		Track track = AxisToTrack(DiagDirToAxis(dir));
+
+		if (t2 < t1) dir = ReverseDiagDir(dir);
+
+		/* try to build a long rail instead of bridge... */
+		bool fail = false;
+		CommandCost cost;
+		TileIndex t = t1;
+
+		/* try to build one rail on each tile - can't use CMD_BUILD_RAILROAD_TRACK now, it can build one part of track without failing */
+		do {
+			cost = DoCommand(t, _players_ai[p->index].railtype_to_use, track, DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+			/* do not allow building over existing track */
+			if (CmdFailed(cost) || IsTileType(t, MP_RAILWAY)) {
+				fail = true;
+				break;
 			}
+			t += TileOffsByDiagDir(dir);
+		} while (t != t2);
+
+		/* can we build long track? */
+		if (!fail) cost = DoCommand(t1, t2, _players_ai[p->index].railtype_to_use | (track << 4), DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_TRACK);
+
+		if (!fail && CmdSucceeded(cost) && cost.GetCost() <= p->player_money) {
+			DoCommand(t1, t2, _players_ai[p->index].railtype_to_use | (track << 4), DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_BUILD_RAILROAD_TRACK);
+		} else {
+
+			/* Figure out which (rail)bridge type to build
+			 * start with best bridge, then go down to worse and worse bridges
+			 * unnecessary to check for worst bridge (i=0), since AI will always build that. */
+			int i;
+			for (i = MAX_BRIDGES - 1; i != 0; i--) {
+				if (CheckBridge_Stuff(i, bridge_len)) {
+					CommandCost cost = DoCommand(t1, t2, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+					if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
+				}
+			}
+
+			/* Build it */
+			DoCommand(t1, t2, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 		}
 
-		// Build it
-		DoCommand(arf.bridge_end_tile, _players_ai[p->index].cur_tile_a, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
-
-		_players_ai[p->index].cur_tile_a = arf.bridge_end_tile;
+		_players_ai[p->index].cur_tile_a = t2;
 		_players_ai[p->index].state_counter = 0;
 	} else if (arf.best_ptr[0] & 0x40) {
 		// tunnel
@@ -3085,25 +3115,36 @@ do_some_terraform:
 	tile = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(_players_ai[p->index].cur_dir_a));
 
 	if (arf.best_ptr[0] & 0x80) {
-		int i;
-		int32 bridge_len;
-		_players_ai[p->index].cur_tile_a = arf.bridge_end_tile;
-		bridge_len = GetTunnelBridgeLength(tile, _players_ai[p->index].cur_tile_a); // tile
+		TileIndex t1 = tile;
+		TileIndex t2 = arf.bridge_end_tile;
 
-		/* Figure out what (road)bridge type to build
-		 * start with best bridge, then go down to worse and worse bridges
-		 * unnecessary to check for worse bridge (i=0), since AI will always build that.
-		 */
-		for (i = MAX_BRIDGES - 1; i != 0; i--) {
-			if (CheckBridge_Stuff(i, bridge_len)) {
-				CommandCost cost = DoCommand(tile, _players_ai[p->index].cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
+		int32 bridge_len = GetTunnelBridgeLength(t1, t2);
+
+		Axis axis = (TileX(t1) == TileX(t2) ? AXIS_Y : AXIS_X);
+
+		/* try to build a long road instead of bridge - CMD_BUILD_LONG_ROAD has to fail if it couldn't build at least one piece! */
+ 		CommandCost cost = DoCommand(t2, t1, (t2 < t1 ? 1 : 2) | (axis << 2) | (ROADTYPE_ROAD << 3), DC_AUTO | DC_NO_WATER, CMD_BUILD_LONG_ROAD);
+
+		if (CmdSucceeded(cost) && cost.GetCost() <= p->player_money) {
+			DoCommand(t2, t1, (t2 < t1 ? 1 : 2) | (axis << 2) | (ROADTYPE_ROAD << 3), DC_AUTO | DC_EXEC | DC_NO_WATER, CMD_BUILD_LONG_ROAD);
+		} else {
+			int i;
+
+			/* Figure out what (road)bridge type to build
+			 * start with best bridge, then go down to worse and worse bridges
+			 * unnecessary to check for worse bridge (i=0), since AI will always build that */
+			for (i = MAX_BRIDGES - 1; i != 0; i--) {
+				if (CheckBridge_Stuff(i, bridge_len)) {
+					CommandCost cost = DoCommand(t1, t2, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+					if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
+				}
 			}
+
+			/* Build it */
+			DoCommand(t1, t2, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 		}
 
-		// Build it
-		DoCommand(tile, _players_ai[p->index].cur_tile_a, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
-
+		_players_ai[p->index].cur_tile_a = t2;
 		_players_ai[p->index].state_counter = 0;
 	} else if (arf.best_ptr[0] & 0x40) {
 		// tunnel
