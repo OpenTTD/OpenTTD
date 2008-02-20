@@ -16,7 +16,7 @@ enum {
 //supported on all archs)
 
 struct TrackPathFinder;
-typedef bool TPFEnumProc(TileIndex tile, void *data, Trackdir trackdir, uint length, byte *state);
+typedef bool TPFEnumProc(TileIndex tile, void *data, Trackdir trackdir, uint length);
 typedef void TPFAfterProc(TrackPathFinder *tpf);
 
 typedef bool NTPEnumProc(TileIndex tile, void *data, int track, uint length);
@@ -40,7 +40,7 @@ struct TrackPathFinderLink {
 struct RememberData {
 	uint16 cur_length;
 	byte depth;
-	byte pft_var6;
+	Track last_choosen_track;
 };
 
 struct TrackPathFinder {

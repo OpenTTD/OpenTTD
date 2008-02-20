@@ -428,7 +428,7 @@ struct PathFindShip {
 	uint best_length;
 };
 
-static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint length, byte *state)
+static bool ShipTrackFollower(TileIndex tile, PathFindShip *pfs, int track, uint length)
 {
 	/* Found dest? */
 	if (tile == pfs->dest_coords) {

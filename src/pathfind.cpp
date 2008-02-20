@@ -140,7 +140,6 @@ static const byte _otherdir_mask[4] = {
 
 static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
-	uint bits;
 	RememberData rd;
 
 	assert(tpf->tracktype == TRANSPORT_WATER);
@@ -153,43 +152,35 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	if (++tpf->rd.cur_length > 50)
 		return;
 
-	bits = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
-	bits = (byte)((bits | (bits >> 8)) & _bits_mask[direction]);
-	if (bits == 0)
-		return;
+	uint32 ts = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
+	TrackBits bits = (TrackBits)((byte)((ts | (ts >> 8)) & _bits_mask[direction]));
+	if (bits == TRACK_BIT_NONE) return;
 
 	assert(TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
 
-	uint i = 0;
-	/* only one direction */
-	if (KillFirstBit(bits) == 0) {
-		i = FindFirstBit(bits);
-		rd = tpf->rd;
-		goto continue_here;
-	}
-	/* several directions */
+	bool only_one_track = true;
 	do {
-		i = FindFirstBit(bits);
+		Track track = RemoveFirstTrack(&bits);
+		if (bits != TRACK_BIT_NONE) only_one_track = false;
 		rd = tpf->rd;
 
 		/* Change direction 4 times only */
-		if ((byte)i != tpf->rd.pft_var6) {
+		if (!only_one_track && track != tpf->rd.last_choosen_track) {
 			if (++tpf->rd.depth > 4) {
 				tpf->rd = rd;
 				return;
 			}
-			tpf->rd.pft_var6 = (byte)i;
+			tpf->rd.last_choosen_track = track;
 		}
 
-continue_here:
-		tpf->the_dir = (Trackdir)(i + (HasBit(_otherdir_mask[direction], i) ? 8 : 0));
+		tpf->the_dir = (Trackdir)(track + (HasBit(_otherdir_mask[direction], track) ? 8 : 0));
 
-		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, NULL)) {
+		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length)) {
 			TPFMode2(tpf, tile, _tpf_new_direction[tpf->the_dir]);
 		}
 
 		tpf->rd = rd;
-	} while (ClrBit(bits, i) != 0);
+	} while (bits != TRACK_BIT_NONE);
 
 }
 
@@ -289,7 +280,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 				/* make sure we are not leaving from invalid side */
 				if (TPFSetTileBit(tpf, tile, tpf->the_dir) && CanAccessTileInDir(tile, TrackdirToExitdir(tpf->the_dir), tpf->tracktype) &&
-						!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length, &tpf->rd.pft_var6) ) {
+						!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length) ) {
 					TPFMode1(tpf, tile, _tpf_new_direction[tpf->the_dir]);
 				}
 				tpf->rd = rd;
@@ -312,7 +303,7 @@ void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection dire
 
 	tpf.rd.cur_length = 0;
 	tpf.rd.depth = 0;
-	tpf.rd.pft_var6 = 0;
+	tpf.rd.last_choosen_track = INVALID_TRACK;
 
 	tpf.var2 = HasBit(flags, 15) ? 0x43 : 0xFF; // 0x8000
 
@@ -323,8 +314,7 @@ void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection dire
 	tpf.sub_type = sub_type;
 
 	if (HasBit(flags, 11)) {
-		tpf.rd.pft_var6 = 0xFF;
-		tpf.enum_proc(tile, data, INVALID_TRACKDIR, 0, 0);
+		tpf.enum_proc(tile, data, INVALID_TRACKDIR, 0);
 		TPFMode2(&tpf, tile, direction);
 	} else {
 		/* clear the hash_heads */

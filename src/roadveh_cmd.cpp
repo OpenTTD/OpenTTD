@@ -398,7 +398,7 @@ static const DiagDirection _road_pf_directions[] = {
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, INVALID_DIAGDIR, INVALID_DIAGDIR
 };
 
-static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
+static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdir, uint length)
 {
 	RoadFindDepotData* rfdd = (RoadFindDepotData*)data;
 
@@ -1119,7 +1119,7 @@ struct FindRoadToChooseData {
 	uint mindist;
 };
 
-static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir, uint length, byte* state)
+static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir, uint length)
 {
 	FindRoadToChooseData* frd = (FindRoadToChooseData*)data;
 	uint dist = DistanceManhattan(tile, frd->dest);

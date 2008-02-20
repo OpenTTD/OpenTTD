@@ -1902,7 +1902,7 @@ struct AiRailPathFindData {
 	bool flag;
 };
 
-static bool AiEnumFollowTrack(TileIndex tile, AiRailPathFindData *a, int track, uint length, byte *state)
+static bool AiEnumFollowTrack(TileIndex tile, AiRailPathFindData *a, int track, uint length)
 {
 	if (a->flag) return true;
 
@@ -2848,7 +2848,7 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 }
 
 
-static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint length, byte *state)
+static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint length)
 {
 	uint dist = DistanceManhattan(tile, a->dest);
 
