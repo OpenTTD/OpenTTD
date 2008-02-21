@@ -7,6 +7,14 @@
  *  This file contains all the data for vehicles
  */
 
+enum {
+	RC_W = 0xFF, ///< Running cost price index (out of range) of wagons
+	RC_S = 0x2A, ///< Running cost price index of steam
+	RC_D = 0x2B, ///< Running cost price index of diesel
+	RC_E = 0x2C, ///< Running cost price index of electric
+	RC_R = 0x2E, ///< Running cost price index of road vehicles
+};
+
 /** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date
@@ -336,7 +344,7 @@ const EngineInfo _orig_engine_info[] = {
  * @param d max_speed (kph)
  * @param e power (hp)
  * @param f weight
- * @param g running_cost_base
+ * @param g running_cost
  * @param h running_cost_class
  * @param i capacity
  * @param j cargo_type
@@ -363,127 +371,127 @@ const EngineInfo _orig_engine_info[] = {
 #define L RAILTYPE_MAGLEV
 
 const RailVehicleInfo _orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
-	//   image_index  max_speed (kph)      running_cost_base           ai_rank
-	//   |  flags     |        power (hp)  |  running_cost_class       |  railtype
-	//   |  |    base_cost     |    weight |  |   capacity             |  |
-	//   |  |    |    |        |    |      |  |   |  cargo_type        |  |  engclass
-	//   |  |    |    |        |    |      |  |   |  |                 |  |  |
-	RVI( 2, G,   7,  64,     300,  47,    50, S,  0, 0              ,  1, R, S), //   0
-	RVI(19, G,   8,  80,     600,  65,    65, D,  0, 0              ,  4, R, D), //   1
-	RVI( 2, G,  10,  72,     400,  85,    90, S,  0, 0              ,  7, R, S), //   2
-	RVI( 0, G,  15,  96,     900, 130,   130, S,  0, 0              , 19, R, S), //   3
-	RVI( 1, G,  19, 112,    1000, 140,   145, S,  0, 0              , 20, R, S), //   4
-	RVI(12, G,  16, 120,    1400,  95,   125, D,  0, 0              , 30, R, D), //   5
-	RVI(14, G,  20, 152,    2000, 120,   135, D,  0, 0              , 31, R, D), //   6
-	RVI( 3, G,  14,  88,    1100, 145,   130, S,  0, 0              , 19, R, S), //   7
-	RVI( 0, G,  13, 112,    1000, 131,   120, S,  0, 0              , 20, R, S), //   8
-	RVI( 1, G,  19, 128,    1200, 162,   140, S,  0, 0              , 21, R, S), //   9
-	RVI( 0, G,  22, 144,    1600, 170,   130, S,  0, 0              , 22, R, S), //  10
-	RVI( 8, M,  11, 112,   600/2,32/2,  85/2, D, 38, CT_PASSENGERS  , 10, R, D), //  11
-	RVI(10, M,  14, 120,   700/2,38/2,  70/2, D, 40, CT_PASSENGERS  , 11, R, D), //  12
-	RVI( 4, G,  15, 128,    1250,  72,    95, D,  0, 0              , 30, R, D), //  13
-	RVI( 5, G,  17, 144,    1750, 101,   120, D,  0, 0              , 31, R, D), //  14
-	RVI( 4, G,  18, 160,    2580, 112,   140, D,  0, 0              , 32, R, D), //  15
-	RVI(14, G,  23,  96,    4000, 150,   135, D,  0, 0              , 33, R, D), //  16
-	RVI(12, G,  16, 112,    2400, 120,   105, D,  0, 0              , 34, R, D), //  17
-	RVI(13, G,  30, 112,    6600, 207,   155, D,  0, 0              , 35, R, D), //  18
-	RVI(15, G,  18, 104,    1500, 110,   105, D,  0, 0              , 29, R, D), //  19
-	RVI(16, M,  35, 160,  3500/2,95/2, 205/2, D,  0, 0              , 45, R, D), //  20
-	RVI(18, G,  21, 104,    2200, 120,   145, D,  0, 0              , 32, R, D), //  21
-	RVI( 6, M,  20, 200,  4500/2,70/2, 190/2, D,  4, CT_MAIL        , 50, R, D), //  22
-	RVI(20, G,  26, 160,    3600,  84,   180, E,  0, 0              , 40, C, E), //  23
-	RVI(20, G,  30, 176,    5000,  82,   205, E,  0, 0              , 41, C, E), //  24
-	RVI(21, M,  40, 240,  7000/2,90/2, 240/2, E,  0, 0              , 51, C, E), //  25
-	RVI(23, M,  43, 264,  8000/2,95/2, 250/2, E,  0, 0              , 52, C, E), //  26
-	RVI(33, W, 247,   0,       0,  25,     0, 0, 40, CT_PASSENGERS  ,  0, R, A), //  27
-	RVI(35, W, 228,   0,       0,  21,     0, 0, 30, CT_MAIL        ,  0, R, A), //  28
-	RVI(34, W, 176,   0,       0,  18,     0, 0, 30, CT_COAL        ,  0, R, A), //  29
-	RVI(36, W, 200,   0,       0,  24,     0, 0, 30, CT_OIL         ,  0, R, A), //  30
-	RVI(37, W, 192,   0,       0,  20,     0, 0, 25, CT_LIVESTOCK   ,  0, R, A), //  31
-	RVI(38, W, 190,   0,       0,  21,     0, 0, 25, CT_GOODS       ,  0, R, A), //  32
-	RVI(39, W, 182,   0,       0,  19,     0, 0, 30, CT_GRAIN       ,  0, R, A), //  33
-	RVI(40, W, 181,   0,       0,  16,     0, 0, 30, CT_WOOD        ,  0, R, A), //  34
-	RVI(41, W, 179,   0,       0,  19,     0, 0, 30, CT_IRON_ORE    ,  0, R, A), //  35
-	RVI(42, W, 196,   0,       0,  18,     0, 0, 20, CT_STEEL       ,  0, R, A), //  36
-	RVI(43, W, 255,   0,       0,  30,     0, 0, 20, CT_VALUABLES   ,  0, R, A), //  37
-	RVI(44, W, 191,   0,       0,  22,     0, 0, 25, CT_FOOD        ,  0, R, A), //  38
-	RVI(45, W, 196,   0,       0,  18,     0, 0, 20, CT_PAPER       ,  0, R, A), //  39
-	RVI(46, W, 179,   0,       0,  19,     0, 0, 30, CT_COPPER_ORE  ,  0, R, A), //  40
-	RVI(47, W, 199,   0,       0,  25,     0, 0, 25, CT_WATER       ,  0, R, A), //  41
-	RVI(48, W, 182,   0,       0,  18,     0, 0, 25, CT_FRUIT       ,  0, R, A), //  42
-	RVI(49, W, 185,   0,       0,  19,     0, 0, 21, CT_RUBBER      ,  0, R, A), //  43
-	RVI(50, W, 176,   0,       0,  19,     0, 0, 30, CT_SUGAR       ,  0, R, A), //  44
-	RVI(51, W, 178,   0,       0,  20,     0, 0, 30, CT_COTTON_CANDY,  0, R, A), //  45
-	RVI(52, W, 192,   0,       0,  20,     0, 0, 30, CT_TOFFEE      ,  0, R, A), //  46
-	RVI(53, W, 190,   0,       0,  21,     0, 0, 20, CT_BUBBLES     ,  0, R, A), //  47
-	RVI(54, W, 182,   0,       0,  24,     0, 0, 25, CT_COLA        ,  0, R, A), //  48
-	RVI(55, W, 181,   0,       0,  21,     0, 0, 25, CT_CANDY       ,  0, R, A), //  49
-	RVI(56, W, 183,   0,       0,  21,     0, 0, 20, CT_TOYS        ,  0, R, A), //  50
-	RVI(57, W, 196,   0,       0,  18,     0, 0, 22, CT_BATTERIES   ,  0, R, A), //  51
-	RVI(58, W, 193,   0,       0,  18,     0, 0, 25, CT_FIZZY_DRINKS,  0, R, A), //  52
-	RVI(59, W, 191,   0,       0,  18,     0, 0, 30, CT_PLASTIC     ,  0, R, A), //  53
-	RVI(25, G,  52, 304,    9000,  95,   230, E,  0, 0              , 60, O, N), //  54
-	RVI(26, M,  60, 336, 10000/2,85/2, 240/2, E, 25, CT_PASSENGERS  , 62, O, N), //  55
-	RVI(26, G,  53, 320,    5000,  95,   230, E,  0, 0              , 63, O, N), //  56
-	RVI(60, W, 247,   0,       0,  25,     0, 0, 45, CT_PASSENGERS  ,  0, O, A), //  57
-	RVI(62, W, 228,   0,       0,  21,     0, 0, 35, CT_MAIL        ,  0, O, A), //  58
-	RVI(61, W, 176,   0,       0,  18,     0, 0, 35, CT_COAL        ,  0, O, A), //  59
-	RVI(63, W, 200,   0,       0,  24,     0, 0, 35, CT_OIL         ,  0, O, A), //  60
-	RVI(64, W, 192,   0,       0,  20,     0, 0, 30, CT_LIVESTOCK   ,  0, O, A), //  61
-	RVI(65, W, 190,   0,       0,  21,     0, 0, 30, CT_GOODS       ,  0, O, A), //  62
-	RVI(66, W, 182,   0,       0,  19,     0, 0, 35, CT_GRAIN       ,  0, O, A), //  63
-	RVI(67, W, 181,   0,       0,  16,     0, 0, 35, CT_WOOD        ,  0, O, A), //  64
-	RVI(68, W, 179,   0,       0,  19,     0, 0, 35, CT_IRON_ORE    ,  0, O, A), //  65
-	RVI(69, W, 196,   0,       0,  18,     0, 0, 25, CT_STEEL       ,  0, O, A), //  66
-	RVI(70, W, 255,   0,       0,  30,     0, 0, 25, CT_VALUABLES   ,  0, O, A), //  67
-	RVI(71, W, 191,   0,       0,  22,     0, 0, 30, CT_FOOD        ,  0, O, A), //  68
-	RVI(72, W, 196,   0,       0,  18,     0, 0, 25, CT_PAPER       ,  0, O, A), //  69
-	RVI(73, W, 179,   0,       0,  19,     0, 0, 35, CT_COPPER_ORE  ,  0, O, A), //  70
-	RVI(47, W, 199,   0,       0,  25,     0, 0, 30, CT_WATER       ,  0, O, A), //  71
-	RVI(48, W, 182,   0,       0,  18,     0, 0, 30, CT_FRUIT       ,  0, O, A), //  72
-	RVI(49, W, 185,   0,       0,  19,     0, 0, 26, CT_RUBBER      ,  0, O, A), //  73
-	RVI(50, W, 176,   0,       0,  19,     0, 0, 35, CT_SUGAR       ,  0, O, A), //  74
-	RVI(51, W, 178,   0,       0,  20,     0, 0, 35, CT_COTTON_CANDY,  0, O, A), //  75
-	RVI(52, W, 192,   0,       0,  20,     0, 0, 35, CT_TOFFEE      ,  0, O, A), //  76
-	RVI(53, W, 190,   0,       0,  21,     0, 0, 25, CT_BUBBLES     ,  0, O, A), //  77
-	RVI(54, W, 182,   0,       0,  24,     0, 0, 30, CT_COLA        ,  0, O, A), //  78
-	RVI(55, W, 181,   0,       0,  21,     0, 0, 30, CT_CANDY       ,  0, O, A), //  79
-	RVI(56, W, 183,   0,       0,  21,     0, 0, 25, CT_TOYS        ,  0, O, A), //  80
-	RVI(57, W, 196,   0,       0,  18,     0, 0, 27, CT_BATTERIES   ,  0, O, A), //  81
-	RVI(58, W, 193,   0,       0,  18,     0, 0, 30, CT_FIZZY_DRINKS,  0, O, A), //  82
-	RVI(59, W, 191,   0,       0,  18,     0, 0, 35, CT_PLASTIC     ,  0, O, A), //  83
-	RVI(28, G,  70, 400,   10000, 105,   250, E,  0, 0              , 70, L, V), //  84
-	RVI(29, G,  74, 448,   12000, 120,   253, E,  0, 0              , 71, L, V), //  85
-	RVI(30, G,  82, 480,   15000, 130,   254, E,  0, 0              , 72, L, V), //  86
-	RVI(31, M,  95, 640, 20000/2,150/2,255/2, E,  0, 0              , 73, L, V), //  87
-	RVI(28, G,  70, 480,   10000, 120,   250, E,  0, 0              , 74, L, V), //  88
-	RVI(60, W, 247,   0,       0,  25,     0, 0, 47, CT_PASSENGERS  ,  0, L, A), //  89
-	RVI(62, W, 228,   0,       0,  21,     0, 0, 37, CT_MAIL        ,  0, L, A), //  90
-	RVI(61, W, 176,   0,       0,  18,     0, 0, 37, CT_COAL        ,  0, L, A), //  91
-	RVI(63, W, 200,   0,       0,  24,     0, 0, 37, CT_OIL         ,  0, L, A), //  92
-	RVI(64, W, 192,   0,       0,  20,     0, 0, 32, CT_LIVESTOCK   ,  0, L, A), //  93
-	RVI(65, W, 190,   0,       0,  21,     0, 0, 32, CT_GOODS       ,  0, L, A), //  94
-	RVI(66, W, 182,   0,       0,  19,     0, 0, 37, CT_GRAIN       ,  0, L, A), //  95
-	RVI(67, W, 181,   0,       0,  16,     0, 0, 37, CT_WOOD        ,  0, L, A), //  96
-	RVI(68, W, 179,   0,       0,  19,     0, 0, 37, CT_IRON_ORE    ,  0, L, A), //  97
-	RVI(69, W, 196,   0,       0,  18,     0, 0, 27, CT_STEEL       ,  0, L, A), //  98
-	RVI(70, W, 255,   0,       0,  30,     0, 0, 27, CT_VALUABLES   ,  0, L, A), //  99
-	RVI(71, W, 191,   0,       0,  22,     0, 0, 32, CT_FOOD        ,  0, L, A), // 100
-	RVI(72, W, 196,   0,       0,  18,     0, 0, 27, CT_PAPER       ,  0, L, A), // 101
-	RVI(73, W, 179,   0,       0,  19,     0, 0, 37, CT_COPPER_ORE  ,  0, L, A), // 102
-	RVI(47, W, 199,   0,       0,  25,     0, 0, 32, CT_WATER       ,  0, L, A), // 103
-	RVI(48, W, 182,   0,       0,  18,     0, 0, 32, CT_FRUIT       ,  0, L, A), // 104
-	RVI(49, W, 185,   0,       0,  19,     0, 0, 28, CT_RUBBER      ,  0, L, A), // 105
-	RVI(50, W, 176,   0,       0,  19,     0, 0, 37, CT_SUGAR       ,  0, L, A), // 106
-	RVI(51, W, 178,   0,       0,  20,     0, 0, 37, CT_COTTON_CANDY,  0, L, A), // 107
-	RVI(52, W, 192,   0,       0,  20,     0, 0, 37, CT_TOFFEE      ,  0, L, A), // 108
-	RVI(53, W, 190,   0,       0,  21,     0, 0, 27, CT_BUBBLES     ,  0, L, A), // 109
-	RVI(54, W, 182,   0,       0,  24,     0, 0, 32, CT_COLA        ,  0, L, A), // 110
-	RVI(55, W, 181,   0,       0,  21,     0, 0, 32, CT_CANDY       ,  0, L, A), // 111
-	RVI(56, W, 183,   0,       0,  21,     0, 0, 27, CT_TOYS        ,  0, L, A), // 112
-	RVI(57, W, 196,   0,       0,  18,     0, 0, 29, CT_BATTERIES   ,  0, L, A), // 113
-	RVI(58, W, 193,   0,       0,  18,     0, 0, 32, CT_FIZZY_DRINKS,  0, L, A), // 114
-	RVI(59, W, 191,   0,       0,  18,     0, 0, 37, CT_PLASTIC     ,  0, L, A), // 115
+	//   image_index  max_speed (kph)      running_cost                   ai_rank
+	//   |  flags     |        power (hp)  |  running_cost_class          |  railtype
+	//   |  |    base_cost     |    weight |  |      capacity             |  |
+	//   |  |    |    |        |    |      |  |      |  cargo_type        |  |  engclass
+	//   |  |    |    |        |    |      |  |      |  |                 |  |  |
+	RVI( 2, G,   7,  64,     300,  47,    50, RC_S,  0, 0              ,  1, R, S), //   0
+	RVI(19, G,   8,  80,     600,  65,    65, RC_D,  0, 0              ,  4, R, D), //   1
+	RVI( 2, G,  10,  72,     400,  85,    90, RC_S,  0, 0              ,  7, R, S), //   2
+	RVI( 0, G,  15,  96,     900, 130,   130, RC_S,  0, 0              , 19, R, S), //   3
+	RVI( 1, G,  19, 112,    1000, 140,   145, RC_S,  0, 0              , 20, R, S), //   4
+	RVI(12, G,  16, 120,    1400,  95,   125, RC_D,  0, 0              , 30, R, D), //   5
+	RVI(14, G,  20, 152,    2000, 120,   135, RC_D,  0, 0              , 31, R, D), //   6
+	RVI( 3, G,  14,  88,    1100, 145,   130, RC_S,  0, 0              , 19, R, S), //   7
+	RVI( 0, G,  13, 112,    1000, 131,   120, RC_S,  0, 0              , 20, R, S), //   8
+	RVI( 1, G,  19, 128,    1200, 162,   140, RC_S,  0, 0              , 21, R, S), //   9
+	RVI( 0, G,  22, 144,    1600, 170,   130, RC_S,  0, 0              , 22, R, S), //  10
+	RVI( 8, M,  11, 112,   600/2,32/2,  85/2, RC_D, 38, CT_PASSENGERS  , 10, R, D), //  11
+	RVI(10, M,  14, 120,   700/2,38/2,  70/2, RC_D, 40, CT_PASSENGERS  , 11, R, D), //  12
+	RVI( 4, G,  15, 128,    1250,  72,    95, RC_D,  0, 0              , 30, R, D), //  13
+	RVI( 5, G,  17, 144,    1750, 101,   120, RC_D,  0, 0              , 31, R, D), //  14
+	RVI( 4, G,  18, 160,    2580, 112,   140, RC_D,  0, 0              , 32, R, D), //  15
+	RVI(14, G,  23,  96,    4000, 150,   135, RC_D,  0, 0              , 33, R, D), //  16
+	RVI(12, G,  16, 112,    2400, 120,   105, RC_D,  0, 0              , 34, R, D), //  17
+	RVI(13, G,  30, 112,    6600, 207,   155, RC_D,  0, 0              , 35, R, D), //  18
+	RVI(15, G,  18, 104,    1500, 110,   105, RC_D,  0, 0              , 29, R, D), //  19
+	RVI(16, M,  35, 160,  3500/2,95/2, 205/2, RC_D,  0, 0              , 45, R, D), //  20
+	RVI(18, G,  21, 104,    2200, 120,   145, RC_D,  0, 0              , 32, R, D), //  21
+	RVI( 6, M,  20, 200,  4500/2,70/2, 190/2, RC_D,  4, CT_MAIL        , 50, R, D), //  22
+	RVI(20, G,  26, 160,    3600,  84,   180, RC_E,  0, 0              , 40, C, E), //  23
+	RVI(20, G,  30, 176,    5000,  82,   205, RC_E,  0, 0              , 41, C, E), //  24
+	RVI(21, M,  40, 240,  7000/2,90/2, 240/2, RC_E,  0, 0              , 51, C, E), //  25
+	RVI(23, M,  43, 264,  8000/2,95/2, 250/2, RC_E,  0, 0              , 52, C, E), //  26
+	RVI(33, W, 247,   0,       0,  25,     0, RC_W, 40, CT_PASSENGERS  ,  0, R, A), //  27
+	RVI(35, W, 228,   0,       0,  21,     0, RC_W, 30, CT_MAIL        ,  0, R, A), //  28
+	RVI(34, W, 176,   0,       0,  18,     0, RC_W, 30, CT_COAL        ,  0, R, A), //  29
+	RVI(36, W, 200,   0,       0,  24,     0, RC_W, 30, CT_OIL         ,  0, R, A), //  30
+	RVI(37, W, 192,   0,       0,  20,     0, RC_W, 25, CT_LIVESTOCK   ,  0, R, A), //  31
+	RVI(38, W, 190,   0,       0,  21,     0, RC_W, 25, CT_GOODS       ,  0, R, A), //  32
+	RVI(39, W, 182,   0,       0,  19,     0, RC_W, 30, CT_GRAIN       ,  0, R, A), //  33
+	RVI(40, W, 181,   0,       0,  16,     0, RC_W, 30, CT_WOOD        ,  0, R, A), //  34
+	RVI(41, W, 179,   0,       0,  19,     0, RC_W, 30, CT_IRON_ORE    ,  0, R, A), //  35
+	RVI(42, W, 196,   0,       0,  18,     0, RC_W, 20, CT_STEEL       ,  0, R, A), //  36
+	RVI(43, W, 255,   0,       0,  30,     0, RC_W, 20, CT_VALUABLES   ,  0, R, A), //  37
+	RVI(44, W, 191,   0,       0,  22,     0, RC_W, 25, CT_FOOD        ,  0, R, A), //  38
+	RVI(45, W, 196,   0,       0,  18,     0, RC_W, 20, CT_PAPER       ,  0, R, A), //  39
+	RVI(46, W, 179,   0,       0,  19,     0, RC_W, 30, CT_COPPER_ORE  ,  0, R, A), //  40
+	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 25, CT_WATER       ,  0, R, A), //  41
+	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 25, CT_FRUIT       ,  0, R, A), //  42
+	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 21, CT_RUBBER      ,  0, R, A), //  43
+	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 30, CT_SUGAR       ,  0, R, A), //  44
+	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 30, CT_COTTON_CANDY,  0, R, A), //  45
+	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 30, CT_TOFFEE      ,  0, R, A), //  46
+	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 20, CT_BUBBLES     ,  0, R, A), //  47
+	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 25, CT_COLA        ,  0, R, A), //  48
+	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 25, CT_CANDY       ,  0, R, A), //  49
+	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 20, CT_TOYS        ,  0, R, A), //  50
+	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 22, CT_BATTERIES   ,  0, R, A), //  51
+	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 25, CT_FIZZY_DRINKS,  0, R, A), //  52
+	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 30, CT_PLASTIC     ,  0, R, A), //  53
+	RVI(25, G,  52, 304,    9000,  95,   230, RC_E,  0, 0              , 60, O, N), //  54
+	RVI(26, M,  60, 336, 10000/2,85/2, 240/2, RC_E, 25, CT_PASSENGERS  , 62, O, N), //  55
+	RVI(26, G,  53, 320,    5000,  95,   230, RC_E,  0, 0              , 63, O, N), //  56
+	RVI(60, W, 247,   0,       0,  25,     0, RC_W, 45, CT_PASSENGERS  ,  0, O, A), //  57
+	RVI(62, W, 228,   0,       0,  21,     0, RC_W, 35, CT_MAIL        ,  0, O, A), //  58
+	RVI(61, W, 176,   0,       0,  18,     0, RC_W, 35, CT_COAL        ,  0, O, A), //  59
+	RVI(63, W, 200,   0,       0,  24,     0, RC_W, 35, CT_OIL         ,  0, O, A), //  60
+	RVI(64, W, 192,   0,       0,  20,     0, RC_W, 30, CT_LIVESTOCK   ,  0, O, A), //  61
+	RVI(65, W, 190,   0,       0,  21,     0, RC_W, 30, CT_GOODS       ,  0, O, A), //  62
+	RVI(66, W, 182,   0,       0,  19,     0, RC_W, 35, CT_GRAIN       ,  0, O, A), //  63
+	RVI(67, W, 181,   0,       0,  16,     0, RC_W, 35, CT_WOOD        ,  0, O, A), //  64
+	RVI(68, W, 179,   0,       0,  19,     0, RC_W, 35, CT_IRON_ORE    ,  0, O, A), //  65
+	RVI(69, W, 196,   0,       0,  18,     0, RC_W, 25, CT_STEEL       ,  0, O, A), //  66
+	RVI(70, W, 255,   0,       0,  30,     0, RC_W, 25, CT_VALUABLES   ,  0, O, A), //  67
+	RVI(71, W, 191,   0,       0,  22,     0, RC_W, 30, CT_FOOD        ,  0, O, A), //  68
+	RVI(72, W, 196,   0,       0,  18,     0, RC_W, 25, CT_PAPER       ,  0, O, A), //  69
+	RVI(73, W, 179,   0,       0,  19,     0, RC_W, 35, CT_COPPER_ORE  ,  0, O, A), //  70
+	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 30, CT_WATER       ,  0, O, A), //  71
+	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 30, CT_FRUIT       ,  0, O, A), //  72
+	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 26, CT_RUBBER      ,  0, O, A), //  73
+	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 35, CT_SUGAR       ,  0, O, A), //  74
+	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 35, CT_COTTON_CANDY,  0, O, A), //  75
+	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 35, CT_TOFFEE      ,  0, O, A), //  76
+	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 25, CT_BUBBLES     ,  0, O, A), //  77
+	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 30, CT_COLA        ,  0, O, A), //  78
+	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 30, CT_CANDY       ,  0, O, A), //  79
+	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 25, CT_TOYS        ,  0, O, A), //  80
+	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 27, CT_BATTERIES   ,  0, O, A), //  81
+	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 30, CT_FIZZY_DRINKS,  0, O, A), //  82
+	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 35, CT_PLASTIC     ,  0, O, A), //  83
+	RVI(28, G,  70, 400,   10000, 105,   250, RC_E,  0, 0              , 70, L, V), //  84
+	RVI(29, G,  74, 448,   12000, 120,   253, RC_E,  0, 0              , 71, L, V), //  85
+	RVI(30, G,  82, 480,   15000, 130,   254, RC_E,  0, 0              , 72, L, V), //  86
+	RVI(31, M,  95, 640, 20000/2,150/2,255/2, RC_E,  0, 0              , 73, L, V), //  87
+	RVI(28, G,  70, 480,   10000, 120,   250, RC_E,  0, 0              , 74, L, V), //  88
+	RVI(60, W, 247,   0,       0,  25,     0, RC_W, 47, CT_PASSENGERS  ,  0, L, A), //  89
+	RVI(62, W, 228,   0,       0,  21,     0, RC_W, 37, CT_MAIL        ,  0, L, A), //  90
+	RVI(61, W, 176,   0,       0,  18,     0, RC_W, 37, CT_COAL        ,  0, L, A), //  91
+	RVI(63, W, 200,   0,       0,  24,     0, RC_W, 37, CT_OIL         ,  0, L, A), //  92
+	RVI(64, W, 192,   0,       0,  20,     0, RC_W, 32, CT_LIVESTOCK   ,  0, L, A), //  93
+	RVI(65, W, 190,   0,       0,  21,     0, RC_W, 32, CT_GOODS       ,  0, L, A), //  94
+	RVI(66, W, 182,   0,       0,  19,     0, RC_W, 37, CT_GRAIN       ,  0, L, A), //  95
+	RVI(67, W, 181,   0,       0,  16,     0, RC_W, 37, CT_WOOD        ,  0, L, A), //  96
+	RVI(68, W, 179,   0,       0,  19,     0, RC_W, 37, CT_IRON_ORE    ,  0, L, A), //  97
+	RVI(69, W, 196,   0,       0,  18,     0, RC_W, 27, CT_STEEL       ,  0, L, A), //  98
+	RVI(70, W, 255,   0,       0,  30,     0, RC_W, 27, CT_VALUABLES   ,  0, L, A), //  99
+	RVI(71, W, 191,   0,       0,  22,     0, RC_W, 32, CT_FOOD        ,  0, L, A), // 100
+	RVI(72, W, 196,   0,       0,  18,     0, RC_W, 27, CT_PAPER       ,  0, L, A), // 101
+	RVI(73, W, 179,   0,       0,  19,     0, RC_W, 37, CT_COPPER_ORE  ,  0, L, A), // 102
+	RVI(47, W, 199,   0,       0,  25,     0, RC_W, 32, CT_WATER       ,  0, L, A), // 103
+	RVI(48, W, 182,   0,       0,  18,     0, RC_W, 32, CT_FRUIT       ,  0, L, A), // 104
+	RVI(49, W, 185,   0,       0,  19,     0, RC_W, 28, CT_RUBBER      ,  0, L, A), // 105
+	RVI(50, W, 176,   0,       0,  19,     0, RC_W, 37, CT_SUGAR       ,  0, L, A), // 106
+	RVI(51, W, 178,   0,       0,  20,     0, RC_W, 37, CT_COTTON_CANDY,  0, L, A), // 107
+	RVI(52, W, 192,   0,       0,  20,     0, RC_W, 37, CT_TOFFEE      ,  0, L, A), // 108
+	RVI(53, W, 190,   0,       0,  21,     0, RC_W, 27, CT_BUBBLES     ,  0, L, A), // 109
+	RVI(54, W, 182,   0,       0,  24,     0, RC_W, 32, CT_COLA        ,  0, L, A), // 110
+	RVI(55, W, 181,   0,       0,  21,     0, RC_W, 32, CT_CANDY       ,  0, L, A), // 111
+	RVI(56, W, 183,   0,       0,  21,     0, RC_W, 27, CT_TOYS        ,  0, L, A), // 112
+	RVI(57, W, 196,   0,       0,  18,     0, RC_W, 29, CT_BATTERIES   ,  0, L, A), // 113
+	RVI(58, W, 193,   0,       0,  18,     0, RC_W, 32, CT_FIZZY_DRINKS,  0, L, A), // 114
+	RVI(59, W, 191,   0,       0,  18,     0, RC_W, 37, CT_PLASTIC     ,  0, L, A), // 115
 };
 #undef L
 #undef O
@@ -609,7 +617,7 @@ const AircraftVehicleInfo _orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
  * @param f capacity
  * @param g cargo_type
  */
-#define ROV(a, b, c, d, e, f, g) { a, b, c, {d}, e, f, g }
+#define ROV(a, b, c, d, e, f, g) { a, b, c, RC_R, {d}, e, f, g }
 const RoadVehicleInfo _orig_road_vehicle_info[NUM_ROAD_ENGINES] = {
 	//    image_index       sfx                                 max_speed
 	//    |    base_cost    |                                   |   capacity

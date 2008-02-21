@@ -90,6 +90,7 @@ struct RoadVehicleInfo {
 	byte image_index;
 	byte base_cost;
 	byte running_cost;
+	byte running_cost_class;
 	SoundFxByte sfx;
 	byte max_speed;
 	byte capacity;

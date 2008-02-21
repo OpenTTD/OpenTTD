@@ -230,8 +230,8 @@ static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	Money va = rvi_a->running_cost * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	Money vb = rvi_b->running_cost * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	Money va = rvi_a->running_cost * GetPriceByIndex(rvi_a->running_cost_class) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	Money vb = rvi_b->running_cost * GetPriceByIndex(rvi_b->running_cost_class) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = ClampToI32(va - vb);
 
 	return _internal_sort_order ? -r : r;
@@ -248,8 +248,8 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 		* Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
 		* Another thing is that both power and running costs should be doubled for multiheaded engines.
 		* Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
-	Money va = (rvi_a->running_cost * _price.running_rail[rvi_a->running_cost_class]) / max(1U, (uint)rvi_a->power);
-	Money vb = (rvi_b->running_cost * _price.running_rail[rvi_b->running_cost_class]) / max(1U, (uint)rvi_b->power);
+	Money va = (rvi_a->running_cost * GetPriceByIndex(rvi_a->running_cost_class)) / max(1U, (uint)rvi_a->power);
+	Money vb = (rvi_b->running_cost * GetPriceByIndex(rvi_b->running_cost_class)) / max(1U, (uint)rvi_b->power);
 	int r = ClampToI32(vb - va);
 
 	return _internal_sort_order ? -r : r;
@@ -312,9 +312,12 @@ static int CDECL RoadVehEngineSpeedSorter(const void *a, const void *b)
 
 static int CDECL RoadVehEngineRunningCostSorter(const void *a, const void *b)
 {
-	const int va = RoadVehInfo(*(const EngineID*)a)->running_cost;
-	const int vb = RoadVehInfo(*(const EngineID*)b)->running_cost;
-	const int r = va - vb;
+	const RoadVehicleInfo *rvi_a = RoadVehInfo(*(const EngineID*)a);
+	const RoadVehicleInfo *rvi_b = RoadVehInfo(*(const EngineID*)b);
+
+	Money va = rvi_a->running_cost * GetPriceByIndex(rvi_a->running_cost_class);
+	Money vb = rvi_b->running_cost * GetPriceByIndex(rvi_b->running_cost_class);
+	int r = ClampToI32(va - vb);
 
 	if (r == 0) {
 		/* Use EngineID to sort instead since we want consistent sorting */
@@ -574,6 +577,14 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 			y += 10;
 		}
 	}
+
+	/* Running cost */
+	if (rvi->running_cost_class != 0xFF) {
+		SetDParam(0, GetEngineProperty(engine_number, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8);
+		DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
+		y += 10;
+	}
+
 	return y;
 }
 
@@ -603,9 +614,11 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	}
 
 	/* Running cost */
-	SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost) * _price.running_rail[rvi->running_cost_class] >> 8) << multihead);
-	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
-	y += 10;
+	if (rvi->running_cost_class != 0xFF) {
+		SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8) << multihead);
+		DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
+		y += 10;
+	}
 
 	/* Powered wagons power - Powered wagons extra weight */
 	if (rvi->pow_wag_power != 0) {
@@ -630,7 +643,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 	y += 10;
 
 	/* Running cost */
-	SetDParam(0, rvi->running_cost * _price.roadveh_running >> 8);
+	SetDParam(0, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) >> 8);
 	DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
 	y += 10;
 

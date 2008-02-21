@@ -383,14 +383,16 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x0E: { // Running cost base
 				uint32 base = grf_load_dword(&buf);
 
-				switch (base) {
-					case 0x4C30: rvi->running_cost_class = 0; break;
-					case 0x4C36: rvi->running_cost_class = 1; break;
-					case 0x4C3C: rvi->running_cost_class = 2; break;
-					case 0: break; // Used by wagons
-					default:
-						grfmsg(1, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring", base);
-						break;
+				/* These magic numbers are used in GRFs to specify the base cost:
+				 * http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
+				 */
+				if (base == 0) {
+					rvi->running_cost_class = 0xFF;
+				} else if (base < 0x4B34 || base > 0x4C54 || (base - 0x4B34) % 6 != 0) {
+					grfmsg(1, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring", base);
+				} else {
+					/* Convert the magic number to an index into the price data */
+					rvi->running_cost_class = (base - 0x4B34) / 6;
 				}
 			} break;
 
@@ -594,12 +596,23 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi->running_cost = grf_load_byte(&buf);
 				break;
 
-			case 0x0A: // Running cost base
-				/** @todo : I have no idea. --pasky
-				 * I THINK it is used for overriding the base cost of all road vehicle (_price.roadveh_base) --belugas */
-				grf_load_dword(&buf);
-				ret = true;
+			case 0x0A: { // Running cost base
+				uint32 base= grf_load_dword(&buf);
+
+				/* These magic numbers are used in GRFs to specify the base cost:
+				 * http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
+				 */
+				if (base == 0) {
+					rvi->running_cost_class = 0xFF;
+				} else if (base < 0x4B34 || base > 0x4C54 || (base - 0x4B34) % 6 != 0) {
+					grfmsg(1, "RailVehicleChangeInfo: Unsupported running cost base 0x%04X, ignoring", base);
+				} else {
+					/* Convert the magic number to an index into the price data */
+					rvi->running_cost_class = (base - 0x4B34) / 6;
+				}
+
 				break;
+			}
 
 			case 0x0E: { // Sprite ID
 				uint8 spriteid = grf_load_byte(&buf);

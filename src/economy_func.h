@@ -41,4 +41,6 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 void VehiclePayment(Vehicle *front_v);
 void LoadUnloadStation(Station *st);
 
+Money GetPriceByIndex(uint8 index);
+
 #endif /* ECONOMY_FUNC_H */

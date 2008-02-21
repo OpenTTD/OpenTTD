@@ -914,6 +914,15 @@ void StartupEconomy()
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 }
 
+
+Money GetPriceByIndex(uint8 index)
+{
+	if (index > NUM_PRICES) return 0;
+
+	return ((Money*)&_price)[index];
+}
+
+
 Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 {
 	TileIndex tile;
