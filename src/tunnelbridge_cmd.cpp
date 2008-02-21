@@ -257,7 +257,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
 	CommandCost terraform_cost_north = CheckBridgeSlopeNorth(direction, &tileh_start, &z_start);
-	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end, &z_end);
+	CommandCost terraform_cost_south = CheckBridgeSlopeSouth(direction, &tileh_end,   &z_end);
 
 	if (z_start != z_end) return_cmd_error(STR_BRIDGEHEADS_NOT_SAME_HEIGHT);
 
@@ -351,12 +351,12 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
-				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir, railtype);
+				MakeRailBridgeRamp(tile_start, owner, bridge_type, dir,                 railtype);
 				MakeRailBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), railtype);
 				break;
 
 			case TRANSPORT_ROAD:
-				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir, roadtypes);
+				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir,                 roadtypes);
 				MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
 				break;
 
@@ -612,11 +612,11 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 			DoClearSquare(endtile);
 
 			/* cannot use INVALID_DIAGDIR for signal update because the tunnel doesn't exist anymore */
-			AddSideToSignalBuffer(tile, ReverseDiagDir(dir), owner);
-			AddSideToSignalBuffer(endtile, dir, owner);
+			AddSideToSignalBuffer(tile,    ReverseDiagDir(dir), owner);
+			AddSideToSignalBuffer(endtile, dir,                 owner);
 
 			Track track = AxisToTrack(DiagDirToAxis(dir));
-			YapfNotifyTrackLayoutChange(tile, track);
+			YapfNotifyTrackLayoutChange(tile,    track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		} else {
 			DoClearSquare(tile);
@@ -680,11 +680,11 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 
 		if (rail) {
 			/* cannot use INVALID_DIAGDIR for signal update because the bridge doesn't exist anymore */
-			AddSideToSignalBuffer(tile, ReverseDiagDir(direction), owner);
-			AddSideToSignalBuffer(endtile, direction, owner);
+			AddSideToSignalBuffer(tile,    ReverseDiagDir(direction), owner);
+			AddSideToSignalBuffer(endtile, direction,                 owner);
 
 			Track track = AxisToTrack(DiagDirToAxis(direction));
-			YapfNotifyTrackLayoutChange(tile, track);
+			YapfNotifyTrackLayoutChange(tile,    track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		}
 	}
