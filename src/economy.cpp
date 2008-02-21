@@ -846,9 +846,9 @@ static const Money _price_base[NUM_PRICES] = {
 	     55, ///< remove_dock
 	   1600, ///< remove_house
 	     40, ///< remove_road
-	   5600, ///< running_rail[0] railroad
-	   5200, ///< running_rail[1] monorail
-	   4800, ///< running_rail[2] maglev
+	   5600, ///< running_rail[0] steam
+	   5200, ///< running_rail[1] diesel
+	   4800, ///< running_rail[2] electric
 	   9600, ///< aircraft_running
 	   1600, ///< roadveh_running
 	   5600, ///< ship_running
