@@ -25,6 +25,16 @@
 
 #include "table/strings.h"
 
+bool Vehicle::NeedsAutorenewing(const Player *p) const
+{
+	assert(p == GetPlayer(this->owner));
+
+	if (!p->engine_renew) return false;
+	if (this->age - this->max_age < (p->engine_renew_months * 30)) return false;
+
+	return true;
+}
+
 /*
  * move the cargo from one engine to another if possible
  */
@@ -342,8 +352,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			}
 
 			// check if the vehicle should be replaced
-			if (!p->engine_renew ||
-					w->age - w->max_age < (p->engine_renew_months * 30) || // replace if engine is too old
+			if (!w->NeedsAutorenewing(p) || // replace if engine is too old
 					w->max_age == 0) { // rail cars got a max age of 0
 				/* If the vehicle belongs to a group, check if the group is protected from the global autoreplace.
 				   If not, chek if an global auto remplacement is defined */

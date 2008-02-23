@@ -481,6 +481,8 @@ public:
 	 * @return true if there are other vehicles sharing the same order
 	 */
 	inline bool IsOrderListShared() const { return this->next_shared != NULL || this->prev_shared != NULL; };
+
+	bool NeedsAutorenewing(const Player *p) const;
 };
 
 /**
