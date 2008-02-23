@@ -1206,6 +1206,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia impostazione
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alcuni degli intervalli sottostanti sono incompatibili con l'impostazione scelta! Valori ammessi: 5-90% e 30-800 giorni
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder per i treni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(non raccomandato)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(raccomandato)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder per gli automezzi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Originale {RED}(non raccomandato)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(raccomandato)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder per le navi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Originale {BLUE}(raccomandato)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(non raccomandato)
+
 STR_TEMPERATE_LANDSCAPE                                         :Paesaggio 'temperato'
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paesaggio 'sub-artico'
 STR_SUB_TROPICAL_LANDSCAPE                                      :Paesaggio 'sub-tropicale'
@@ -3335,14 +3348,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...quest
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...strada rivolta nella direzione sbagliata
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opzioni trasparenza
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Attiva/disattiva la trasparenza dei nomi delle stazioni
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Attiva/disattiva la trasparenza degli alberi
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Attiva/disattiva la trasparenza degli edifici
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza delle industrie
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi, waypoint e catenarie
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Attiva/disattiva la trasparenza dei ponti
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza di strutture come fari, antenne e altri futuri oggetti decorativi
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Attiva/disattiva la trasparenza degli indicatori di caricamento
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Attiva/disattiva la trasparenza dei nomi delle stazioni. CTRL+clic per bloccare.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Attiva/disattiva la trasparenza degli alberi. CTRL+clic per bloccare.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Attiva/disattiva la trasparenza degli edifici. CTRL+clic per bloccare.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza delle industrie. CTRL+clic per bloccare.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Attiva/disattiva la trasparenza delle strutture edificabili come stazioni, depositi e waypoint. CTRL+clic per bloccare.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Attiva/disattiva la trasparenza dei ponti. CTRL+clic per bloccare.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Attiva/disattiva la trasparenza di strutture come fari e antenne. CTRL+clic per bloccare.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Attiva/disattiva la trasparenza delle catenarie. CTRL+clic per bloccare.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Attiva/disattiva la trasparenza degli indicatori di caricamento. CTRL+clic per bloccare.
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

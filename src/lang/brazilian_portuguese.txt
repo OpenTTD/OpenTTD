@@ -214,7 +214,7 @@ STR_00F3_400M                                                   :{BLACK}{TINYFON
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trens
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Automóveis
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Navios
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Embarcação
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaves
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rotas de Transporte
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mina de Carvão
@@ -372,7 +372,7 @@ STR_SORT_BY_DROPDOWN_NAME                                       :Nome
 STR_SORT_BY_DATE                                                :{BLACK}Data
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Lucros do último ano
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lucros deste ano
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Lucro anual
 STR_SORT_BY_AGE                                                 :Idade
 STR_SORT_BY_RELIABILITY                                         :Confiabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
@@ -467,7 +467,7 @@ STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Exibir r
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Exibir vegetação no mapa
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Exibir propriedades no mapa
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Alternar exibir/ocultar nomes das cidades no mapa
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Lucro deste ano: {CURRENCY} (ano passado: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Lucro anual: {CURRENCY} (último ano: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} ano{P "" s} ({COMMA})
@@ -894,7 +894,7 @@ STR_TOWNNAME_HUNGARIAN                                          :Húngaro
 STR_TOWNNAME_AUSTRIAN                                           :Austríaco
 STR_TOWNNAME_ROMANIAN                                           :Romeno
 STR_TOWNNAME_CZECH                                              :Checo
-STR_TOWNNAME_SWISS                                              :Suiça
+STR_TOWNNAME_SWISS                                              :Suiço
 STR_TOWNNAME_DANISH                                             :Dinamarquês
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
@@ -911,7 +911,7 @@ STR_CURR_CHF                                                    :Franco Suíço 
 STR_CURR_CZK                                                    :Coroa Checa (CZK)
 STR_CURR_DEM                                                    :Marco Alemão (DEM)
 STR_CURR_DKK                                                    :Coroa Dinamarquesa (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
+STR_CURR_ESP                                                    :Peso (ESP)
 STR_CURR_FIM                                                    :Marco Finlandês (FIM)
 STR_CURR_FRF                                                    :Franco (FRF)
 STR_CURR_GRD                                                    :Dracma Grego (GRD)
@@ -926,7 +926,7 @@ STR_CURR_RUR                                                    :Rublo Russo (RU
 STR_CURR_SIT                                                    :Tolar Eslovênio (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
-STR_CURR_SKK                                                    :Koruna Eslovaca (SKK)
+STR_CURR_SKK                                                    :Coroa Eslovaca (SKK)
 STR_CURR_BRR                                                    :Real Brasileiro (BRL)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
@@ -963,8 +963,8 @@ STR_MONTH_OCT                                                   :Outubro
 STR_MONTH_NOV                                                   :Novembro
 STR_MONTH_DEC                                                   :Dezembro
 
-STR_HEADING_FOR_STATION                                         :{LTBLUE}Dirigindo-se para {STATION}
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Dirigindo-se para {STATION}, {VELOCITY}
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Indo para {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Indo para {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Sem ordens
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Sem ordens, {VELOCITY}
 
@@ -1049,7 +1049,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fila de
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o cursor está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permtir compra de direitos exclusivos de transporte: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir o envio de dinheiro a outras companhias: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir o envio de dinheiro a outras empresas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para trens simulando trens pesados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
@@ -1115,12 +1115,12 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automaticamente ao inicar um novo jogo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Desligado
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Própria Compania
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Todas as companias
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Própria empresa
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Todas as empresas
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Usar indicadores de carga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Desligado
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Própria Compania
-STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Todas as Companias
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Própria empresa
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Ativar plano de horário para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Exibir plano de horário em tiques ao invés de dias: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar um jogo): {ORANGE}{STRING}
@@ -1162,7 +1162,7 @@ STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Noticia
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Terminar jogo em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ativar economia regular (alterações menores)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras companhias
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras empresas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticamente constroi semáforos anteriores: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ativar interface de sinais: {ORANGE}{STRING}
@@ -1206,6 +1206,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Alterar valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder para trens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Não recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder para automóveis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Não recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder para embarcações: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Não recomendado)
+
 STR_TEMPERATE_LANDSCAPE                                         :terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subártico
 STR_SUB_TROPICAL_LANDSCAPE                                      :terreno subtropical
@@ -1224,8 +1237,8 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Mudar d
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
 
-STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Dirigindo-se para {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Dirigindo-se para {WAYPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Indo para {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Indo para {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Ir via {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Ir sem parar via {WAYPOINT}
@@ -1395,10 +1408,10 @@ STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divul
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} cliente{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Máximo de clientes:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Escolha o número máximo de clientes. Não é necessário estarem todos preenchidos
-STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} compan{P ia ias}
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} empresa{P "" s}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de empresas:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para uma certa quantia de empresas
-STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectator{P "" es}
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectador{P "" es}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita o servidor para um certa quantia de espectadores
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
@@ -1747,7 +1760,7 @@ STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá 50% extra durante um ano!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá em dobro durante um ano!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o triplo durante um ano!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{}Transporte de {STRING} de {STATION} para {STATION} receberá o quadruplo durante um ano!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsídio concedido a {COMPANY}!{}{} Transporte de {STRING} de {STATION} para {STATION} receberá o quadruplo durante um ano!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}a autoridade local de {TOWN} não permite que outro aeroporto seja construído nesta cidade
 STR_2036_COTTAGES                                               :Casas de campo
 STR_2037_HOUSES                                                 :Casas
@@ -1786,7 +1799,7 @@ STR_2056                                                        :{TINYFONT}{WHIT
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (em construção)
 STR_2059_IGLOO                                                  :Iglú
-STR_205A_TEPEES                                                 :Tepees
+STR_205A_TEPEES                                                 :Ocas
 STR_205B_TEAPOT_HOUSE                                           :Casa-bule
 STR_205C_PIGGY_BANK                                             :Mealheiro
 
@@ -1998,8 +2011,8 @@ STR_4828_PRODUCES                                               :{BLACK}Produz: 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produção no mês passado:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centralizar visualização na localização da indústria
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nova {STRING} em construção em {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nova {STRING} sendo plantada em {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nov{G o a} {STRING} em construção em {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nov{G o a} {STRING} sendo plantada em {TOWN}!
 STR_482F_COST                                                   :{BLACK}Custo: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Impossível construir este tipo de indústria aqui...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...a floresta só pode ser plantada acima do nível de neve
@@ -2243,7 +2256,7 @@ STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Alterar 
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Alterar nome do presidente
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Alterar nome da empresa
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Clique no novo esquema de cor
-STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Aumentar empréstimo
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Pedir empréstimo
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Pagar parte do empréstimo
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Presidente)
 STR_7038_INAUGURATED                                            :{GOLD}Inaugurado: {WHITE}{NUM}
@@ -2568,12 +2581,12 @@ STR_80CD_CS_INC_OIL_TANKER                                      :Petroleiro CS-I
 STR_80CE_MPS_PASSENGER_FERRY                                    :Barco de Passageiros MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Barco de Passageiros FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Hovercraft Bakewell 300
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Barco de Passageiros Chugger-Chug
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Barco de Passageiros Shivershake
-STR_80D3_YATE_CARGO_SHIP                                        :Navio de Bens Yate
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Navio de Bens Bakewell
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Navio de Bens Mightymover
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Navio de Bens Powernaut
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Navio de Passageiros Chugger-Chug
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Navio de Passageiros Shivershake
+STR_80D3_YATE_CARGO_SHIP                                        :Cargueiro Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Cargueiro Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Cargueiro Mightymover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Cargueiro Powernaut
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2655,8 +2668,8 @@ STR_TIMETABLE_STAY_FOR                                          :e ficar durante
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tique{P "" s}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dirigindo-se ao depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dirigindo-se ao depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Indo para o depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Indo para o depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Manutenção no depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Manutenção no depósito de {TOWN}, {VELOCITY}
 
@@ -2764,7 +2777,7 @@ STR_885C_BROKEN_DOWN                                            :{RED}Quebrado
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade Máx.: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Peso: {LTBLUE}{WEIGHT_S} {BLACK}Potência: {LTBLUE}{POWER}{BLACK} Velocidade: {LTBLUE}{VELOCITY} {BLACK}Manutenção.: {LTBLUE}{FORCE}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucro anual: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parado
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Impossível fazer o trem passar o sinal de perigo...
@@ -2788,9 +2801,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de ferrovi
 STR_TRAIN_NO_POWER                                              :{RED}Sem força
 STR_TRAIN_START_NO_CATENARY                                     :Essa linha não tem energia, portanto o trem não parte
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novo {STRING} agora disponível!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G o a} {STRING} agora disponível!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Novo {STRING} agora disponível!  -  {ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nov{G o a} {STRING} agora disponível!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Impossível vender veículo destruído...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Impossível adptar veículo destruído...
@@ -2819,7 +2832,7 @@ STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Impossí
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
 STR_900E_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucro anual: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
@@ -2827,8 +2840,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossível vender automóvel...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossível iniciar/parar automóvel...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automóvel {COMMA} está aguardando na garagem
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Dirigindo-se à garagem de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Dirigindo-se à garagem de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Indo para a garagem de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Indo para a garagem de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenção na garagem de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção na garagem de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Impossível enviar o veículo para a garagem...
@@ -2895,15 +2908,15 @@ STR_980F                                                        :{WHITE}{VEHICLE
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
 STR_9813_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
-STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucro anual: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Impossível iniciar/parar embarcação...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Impossível enviar embarcação para o depósito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaz de encontrar depósito local
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Dirigindo-se ao depósito naval de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Dirigindo-se ao depósito naval {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Indo para o depósito naval de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Indo para o depósito naval {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Manutenção no depósito naval de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção no depósito naval de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Embarcação {COMMA} está aguardando no depósito naval
@@ -2963,12 +2976,12 @@ STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Custo de circulação: {LTBLUE}{CURRENCY}/ano
 STR_A00E_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros deste ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucro anual: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Impossível enviar aeronave para o hangar...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Dirigindo-se ao hangar de {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Dirigindo-se ao hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Indo para o hangar de {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Indo para o hangar de {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Manutenção no Hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Manutenção no Hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronave {COMMA} está aguardando no hangar
@@ -3026,7 +3039,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosão na refinaria de petróleo em {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fábrica destruída em circunstâncias suspeitas em {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}OVNI pousa próximo a {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Afundamento de mina de carvão deixa um rasto de destruição em {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Afundamento da mina de carvão deixa um rasto de destruição em {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Inundações!{}Pelo menos {COMMA} perdidos ou mortos após terríveis inundações!
 
 STR_BRIBE_FAILED                                                :{WHITE}A sua tentativa de suborno foi
@@ -3168,7 +3181,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubs
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tre{P m ns}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Automóve{P l is}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Embarcaç{P ão ões}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave{P "" s}
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição
@@ -3344,6 +3357,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Alternar
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Alternar transparência para construções como estações, depósitos, pontos de controle e eletrificação da ferrovia
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Alternar transparência para pontes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Alternar transparência para estruturas como faróis e antenas, talvez no futuro para efeitos visuais
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Alternar transparência para catenária. CTRL+click para travar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Altera transparência para os indicadores de carga
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3358,20 +3372,20 @@ STR_GROUP_NAME_FORMAT                                           :Agrupar {COMMA}
 STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Todos os trens
 STR_GROUP_ALL_ROADS                                             :Todos os automóveis
-STR_GROUP_ALL_SHIPS                                             :Todos os navios
+STR_GROUP_ALL_SHIPS                                             :Todas as embarcações
 STR_GROUP_ALL_AIRCRAFTS                                         :Todas as aeronaves
 STR_GROUP_DEFAULT_TRAINS                                        :Trens sem grupo
 STR_GROUP_DEFAULT_ROADS                                         :Automóveis sem grupo
-STR_GROUP_DEFAULT_SHIPS                                         :Navios sem grupo
+STR_GROUP_DEFAULT_SHIPS                                         :Embarcações sem grupo
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :Aeronaves sem grupo
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_ADD_SHARED_VEHICLE                                    :Adicionar veículos compartilhados
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Remover todos os veículos
 
-STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trem{P "" s}
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Automóvel{P "" s}
-STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Navio{P "" s}
-STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tre{P m ns}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Automóve{P l is}
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Embarcaç{P ão ões}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave{P "" s}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear um grupo
 STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Substituir Veículos de "{GROUP}"
 

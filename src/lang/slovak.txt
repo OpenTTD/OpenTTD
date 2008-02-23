@@ -1268,6 +1268,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektore alebo vsetky implicitne servisne intervaly su nekompatibilne s vybranym nastavenim. 5-90% a 30-800 dni su platne.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritmus hladania cesty pre vlaky: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(neodporúca sa)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(odporúca sa)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Algoritmus hladania cesty pre automobily: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :pôvodný {RED}(neodporúca sa)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(odporúca sa)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Algoritmus hladania cesty pre lode: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :pôvodný {BLUE}(odporúca sa)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(neodporúca sa)
+
 STR_TEMPERATE_LANDSCAPE                                         :krajina mierneho pasma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarkticka krajina
 STR_SUB_TROPICAL_LANDSCAPE                                      :subtropicka krajina
@@ -3404,6 +3417,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prepnút
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prepnút priehladnost staníc, garáží, tratí, ...
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prepnút priehladnost mostov
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prepnút priehladnost objektov ako sú majáky a antény
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Prepnút priehladnost pre trakcné vedenie. CTRL+klik pre uzamknutie.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Prepnút priehladnost pre ukazovatele nakladania a vykladania
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

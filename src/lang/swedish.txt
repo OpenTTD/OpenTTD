@@ -15,6 +15,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Platt mark krävs
 STR_0008_WAITING                                                :{BLACK}Väntar: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} på väg från {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterar: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterar: {GOLD}
 STR_000E                                                        :
@@ -1202,6 +1203,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ändra inställningsvärde
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Några eller alla av standard serviceintervalls-inställningarna är felaktiga! (5-90% och 30-800 dagar är giltiga inställningar)
+
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempererat landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arktiskt landskap

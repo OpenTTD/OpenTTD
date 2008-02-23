@@ -1204,6 +1204,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}設定を変更します
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}以下のデフォルトの修理間隔は選択した設定に対応していません！５〜９０％もしくは３０〜８００日が使用できます。
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}電車の経路処理アルゴリズム：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP{RED}（すすめない）
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF{BLUE}（おすすめ）
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}道路車両の経路処理アルゴリズム：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :本来{RED}（すすめない）
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF{BLUE}（おすすめ）
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船舶の経路処理アルゴリズム：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :本来{BLUE}（おすすめ）
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF{RED}（すすめない）
+
 STR_TEMPERATE_LANDSCAPE                                         :温帯国
 STR_SUB_ARCTIC_LANDSCAPE                                        :亜寒帯国
 STR_SUB_TROPICAL_LANDSCAPE                                      :亜熱帯国
@@ -3340,6 +3353,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}工業�
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}交通社所有の建物などの透明性を入／切
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}橋の透明性を入／切
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}灯台、送信機などの透明性を入／切
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}懸垂索の透明度を入／切します。CTRL+クリックすると、ロックします。
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}積み降ろしの表示の透明性を切り替え
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

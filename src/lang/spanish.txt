@@ -1205,6 +1205,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambiar valor de la opción
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguno o todos los intervalos de servicio por defecto mostrados son incompatibles con la configuración elegida! 5-90% y 30-800 días son válidos
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder para trenes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(No recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder para vehículos de carretera: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(No recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder para barcos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(No recomendado)
+
 STR_TEMPERATE_LANDSCAPE                                         :Paisaje templado
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paisaje sub-ártico
 STR_SUB_TROPICAL_LANDSCAPE                                      :Paisaje sub-tropical
@@ -3341,6 +3354,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activar 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activar transparencias para construcciones como estaciones, depósitos, puntos de paso, etc.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar transparencias para puentes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Activar transparencia para la catenaria. CTRL+click para bloquear.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Ajustar transparencia para los indicadores de carga
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

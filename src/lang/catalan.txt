@@ -1204,6 +1204,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Canvia el valor de l'adjustament
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns o tots els intervals de manteniment següents són incompatibles amb el valor triat! 5-90% i 30-800 dies són els vàlids
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Cerca de rutes per trens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(No recomanat)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomanat)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Cerca de rutes per vehicles: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(No recomanat)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomanat)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Cerca de rutes per vaixells: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomanat)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recomanat)
+
 STR_TEMPERATE_LANDSCAPE                                         :paisatge temperat
 STR_SUB_ARCTIC_LANDSCAPE                                        :paisatge subàrtic
 STR_SUB_TROPICAL_LANDSCAPE                                      :paisatge subtropical
@@ -3340,6 +3353,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Activa/D
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Activa/Desactiva transparència dels edificis com ara estacions, cotxeres, punts de trobada i catenàries
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activa/Desactiva transparència dels ponts
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activa/Desactiva transparència de les estructures com ara fars i antenes
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Activa/Desactiva la transparència pels indicadors de carregament
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

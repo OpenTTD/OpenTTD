@@ -1205,6 +1205,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Changer valeur du paramètre
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Un ou plusieurs intervalles de service par défaut ci-dessous sont incompatibles avec le paramètre choisi! 5-90% et 30-800 jours sont valides
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Recherche de chemin des trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recommandé)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommandé)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Recherche de chemin des véhicules routiers: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Not recommandé)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recommandé)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Recherche de chemin des navires: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommandé)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommandé)
+
 STR_TEMPERATE_LANDSCAPE                                         :environnement 'Tempéré'
 STR_SUB_ARCTIC_LANDSCAPE                                        :environnement 'Arctique'
 STR_SUB_TROPICAL_LANDSCAPE                                      :environnement 'Tropical'
@@ -1291,8 +1304,8 @@ STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Choisir 
 STR_FAST_FORWARD                                                :{BLACK}Avance rapide du jeu
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des Messages
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Liste des messages récents
-STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Tous sommaires
-STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Tous complets
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Désactiver tout
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Activer tout
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Construire une mine de charbon
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Planter une forêt
@@ -2678,11 +2691,11 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Véhicul
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construire
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Copier Véhicule
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-clic partagera les ordres
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-clic pour partager les ordres
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
 STR_CLONE_TRAIN                                                 :{BLACK}Copier Train
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-clic partagera les ordres
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-clic pour partager les ordres
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
 STR_8820_RENAME                                                 :{BLACK}Renommer
 STR_8823_SKIP                                                   :{BLACK}Suivant
 STR_8824_DELETE                                                 :{BLACK}Supprimer
@@ -2691,7 +2704,7 @@ STR_8826_GO_TO                                                  :{BLACK}Aller à
 STR_8827_FULL_LOAD                                              :{BLACK}Charger
 STR_8828_UNLOAD                                                 :{BLACK}Décharger
 STR_REFIT                                                       :{BLACK}Réaménager
-STR_REFIT_TIP                                                   :{BLACK}Choisir pour quelle cargaison réaménager pour cet ordre. Ctrl-clic  pour retirer l'instruction de réaménagement
+STR_REFIT_TIP                                                   :{BLACK}Choisir pour quelle cargaison réaménager pour cet ordre. Ctrl-clic pour retirer l'instruction de réaménagement
 STR_REFIT_ORDER                                                 :(Réaménager pour {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Horaire
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Basculer vers la vue horaire
@@ -2744,7 +2757,7 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher des informations sur les wagons
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afficher la capacité de chaque wagon
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Afficher la capacité totale du train, par type de cargaison
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner.  Cliquer avec Ctrl déplace la vue sur la station
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sauter l'ordre courant, et enchaîner sur le suivant. Ctrl-clic pour sauter l'ordre sélectionné
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Transformer l'ordre sélectionné en Sans-Arrêt
@@ -2882,8 +2895,8 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Nouveaux navires
 STR_9809_BUILD_SHIP                                             :{BLACK}Construire navire
 STR_CLONE_SHIP                                                  :{BLACK}Copier Navire
-STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-clic partagera les ordres
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
+STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-clic pour partager les ordres
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt. Ctrl-clic pour partager les ordres
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Le navire doit être arrêté au dépôt
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossible de vendre navire...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossible de construire navire...
@@ -2949,8 +2962,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Impossib
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar à {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nouvel aéronef
 STR_CLONE_AIRCRAFT                                              :{BLACK}Copier aéronef
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Effectuer une copie de l'aéronef. Ctrl-clic partagera les ordres
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar. Ctrl-clic partagera les ordres
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Effectuer une copie de l'aéronef. Ctrl-clic pour partager les ordres
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar. Ctrl-clic pour partager les ordres
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nouvel Aéronef
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construire aéronef
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Impossible de construire l'aéronef...
@@ -3334,14 +3347,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...cette
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...mauvaise orientation de la route
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Options de transparence
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparence des noms de station
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparence des arbres
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparence des maisons
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparence des industries
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparence des ponts
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparence des structures telles que phares et antennes
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Basculer la transparence pour les indicateurs de chargement
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Transparence des noms de station. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Transparence des arbres. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Transparence des maisons. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transparence des industries. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparence des éléments constructibles tels que stations, dépôts, points de contrôle et caténaire. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparence des ponts. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparence des caténaires. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour vérouiller.
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

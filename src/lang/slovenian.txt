@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebno je ravno zemljišče
 STR_0008_WAITING                                                :{BLACK}Čaka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} na poti iz {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Sprejema: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Sprejema: {GOLD}
 STR_000E                                                        :
@@ -1244,6 +1245,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Spremeni vrednost
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nekatera ali vsa privzeta obdobja servisiranja spodaj niso združljiva z izborom! 5-90% in 30-800 dni je veljavno
+
 
 STR_TEMPERATE_LANDSCAPE                                         :Zmerno podnebje
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub arktično podnebje
