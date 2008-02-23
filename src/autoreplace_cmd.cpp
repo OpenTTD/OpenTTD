@@ -25,15 +25,6 @@
 
 #include "table/strings.h"
 
-bool Vehicle::NeedsAutorenewing(const Player *p) const
-{
-	assert(p == GetPlayer(this->owner));
-
-	if (!p->engine_renew) return false;
-	if (this->age - this->max_age < (p->engine_renew_months * 30)) return false;
-
-	return true;
-}
 
 /*
  * move the cargo from one engine to another if possible

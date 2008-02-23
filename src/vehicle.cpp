@@ -93,6 +93,24 @@ const uint32 _send_to_depot_proc_table[] = {
 /* Initialize the vehicle-pool */
 DEFINE_OLD_POOL_GENERIC(Vehicle, Vehicle)
 
+/** Function to tell if a vehicle needs to be autorenewed
+ * @param *p The vehicle owner
+ * @return true if the vehicle is old enough for replacement
+ */
+bool Vehicle::NeedsAutorenewing(const Player *p) const
+{
+	/* We can always generate the Player pointer when we have the vehicle.
+	 * However this takes time and since the Player pointer is often present
+	 * when this function is called then it's faster to pass the pointer as an
+	 * argument rather than finding it again. */
+	assert(p == GetPlayer(this->owner));
+
+	if (!p->engine_renew) return false;
+	if (this->age - this->max_age < (p->engine_renew_months * 30)) return false;
+
+	return true;
+}
+
 void VehicleServiceInDepot(Vehicle *v)
 {
 	v->date_of_last_service = _date;
