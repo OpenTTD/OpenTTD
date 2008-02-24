@@ -19,7 +19,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleDevelopmentRegion</key>
         <string>English</string>
         <key>CFBundleDisplayName</key>
-        <string>Open Transport Tycoon</string>
+        <string>OpenTTD</string>
         <key>CFBundleExecutable</key>
         <string>openttd</string>
         <key>CFBundleGetInfoString</key>
