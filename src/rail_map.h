@@ -103,9 +103,9 @@ static inline RailType GetRailType(TileIndex t)
 }
 
 /**
- * Sets the track bits of the given tile
- * @param t the tile to set the track bits of
- * @param r the new track bits for the tile
+ * Sets the rail type of the given tile
+ * @param t the tile to set the rail type of
+ * @param r the new rail type for the tile
  */
 static inline void SetRailType(TileIndex t, RailType r)
 {
@@ -114,9 +114,9 @@ static inline void SetRailType(TileIndex t, RailType r)
 
 
 /**
- * Gets the rail type of the given tile
- * @param t the tile to get the rail type from
- * @return the rail type of the tile
+ * Gets the track bits of the given tile
+ * @param t the tile to get the track bits from
+ * @return the track bits of the tile
  */
 static inline TrackBits GetTrackBits(TileIndex tile)
 {
