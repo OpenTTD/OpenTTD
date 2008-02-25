@@ -474,11 +474,8 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 					CargoID cargos[2] = { CT_INVALID, CT_INVALID };
 
 					gpc(tile, cargos);
-					if (cargos[0] != CT_INVALID) {
-						produced[cargos[0]]++;
-						if (cargos[1] != CT_INVALID) {
-							produced[cargos[1]]++;
-						}
+					for (uint i = 0; i < lengthof(cargos); ++i) {
+						if (cargos[i] != CT_INVALID) produced[cargos[i]]++;
 					}
 				}
 			}
