@@ -352,14 +352,14 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0xA6: return industry->type;
 		case 0xA7: return industry->founder;
 		case 0xA8: return industry->random_color;
-		case 0xA9: return Clamp(0, industry->last_prod_year - ORIGINAL_BASE_YEAR, 255);
+		case 0xA9: return Clamp(industry->last_prod_year - ORIGINAL_BASE_YEAR, 0, 255);
 		case 0xAA: return industry->counter;
 		case 0xAB: return GB(industry->counter, 8, 8);
 		case 0xAC: return industry->was_cargo_delivered;
 
-		case 0xB0: return Clamp(0, industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date when built since 1920 (in days)
+		case 0xB0: return Clamp(industry->construction_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Date when built since 1920 (in days)
 		case 0xB3: return industry->construction_type; // Construction type
-		case 0xB4: return Clamp(0, industry->last_cargo_accepted_at - DAYS_TILL_ORIGINAL_BASE_YEAR, 65535); // Date last cargo accepted since 1920 (in days)
+		case 0xB4: return Clamp(industry->last_cargo_accepted_at - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Date last cargo accepted since 1920 (in days)
 	}
 
 	DEBUG(grf, 1, "Unhandled industry property 0x%X", variable);
