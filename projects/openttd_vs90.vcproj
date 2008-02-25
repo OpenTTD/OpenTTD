@@ -2173,10 +2173,6 @@
 			Name="YAPF"
 			>
 			<File
-				RelativePath=".\..\src\yapf\follow_track.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\yapf\follow_track.hpp"
 				>
 			</File>

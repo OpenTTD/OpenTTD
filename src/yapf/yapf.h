@@ -73,54 +73,6 @@ extern int _aystar_stats_open_size;
 extern int _aystar_stats_closed_size;
 
 
-/** Track followers. They should help whenever any new code will need to walk through
- * tracks, road or water tiles (pathfinders, signal controllers, vehicle controllers).
- * It is an attempt to introduce API that should simplify tasks listed above.
- * If you will need to use it:
- *   1. allocate/declare FollowTrack_t structure;
- *   2. call FollowTrackInit() and provide vehicle (if relevant)
- *   3. call one of 6 FollowTrackXxxx() APIs below
- *   4. check return value (if true then continue else stop)
- *   5. look at FollowTrack_t structure for the result
- *   6. optionally repeat steps 3..5
- *   7. in case of troubles contact KUDr
- */
-
-/** Base struct for track followers. */
-struct FollowTrack_t
-{
-	enum ErrorCode {
-		EC_NONE,
-		EC_OWNER,
-		EC_RAIL_TYPE,
-		EC_90DEG,
-		EC_NO_WAY,
-	};
-
-	const Vehicle*      m_veh;           ///< moving vehicle
-	TileIndex           m_old_tile;      ///< the origin (vehicle moved from) before move
-	Trackdir            m_old_td;        ///< the trackdir (the vehicle was on) before move
-	TileIndex           m_new_tile;      ///< the new tile (the vehicle has entered)
-	TrackdirBits        m_new_td_bits;   ///< the new set of available trackdirs
-	DiagDirection       m_exitdir;       ///< exit direction (leaving the old tile)
-	bool                m_is_tunnel;     ///< last turn passed tunnel
-	bool                m_is_bridge;     ///< last turn passed bridge ramp
-	bool                m_is_station;    ///< last turn passed station
-	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
-	ErrorCode           m_err;
-};
-
-/** Initializes FollowTrack_t structure */
-void FollowTrackInit(FollowTrack_t *This, const Vehicle* v);
-
-/** Main track follower routines */
-bool FollowTrackWater    (FollowTrack_t *This, TileIndex old_tile, Trackdir old_td);
-bool FollowTrackRoad     (FollowTrack_t *This, TileIndex old_tile, Trackdir old_td);
-bool FollowTrackRail     (FollowTrack_t *This, TileIndex old_tile, Trackdir old_td);
-bool FollowTrackWaterNo90(FollowTrack_t *This, TileIndex old_tile, Trackdir old_td);
-bool FollowTrackRoadNo90 (FollowTrack_t *This, TileIndex old_tile, Trackdir old_td);
-bool FollowTrackRailNo90 (FollowTrack_t *This, TileIndex old_tile, Trackdir old_td);
-
 /** Base tile length units */
 enum {
 	YAPF_TILE_LENGTH = 100,
