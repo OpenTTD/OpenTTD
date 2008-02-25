@@ -723,6 +723,12 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
 			w->window_number = to_v->index;
 			SetWindowDirty(w);
 		}
+
+		w = FindWindowById(WC_VEHICLE_TIMETABLE, from_v->index);
+		if (w != NULL) {
+			w->window_number = to_v->index;
+			SetWindowDirty(w);
+		}
 	}
 }
 
