@@ -218,7 +218,7 @@ static PlayerID GetBestPlayer(uint8 pp)
 		if (best_player == PLAYER_SPECTATOR) return PLAYER_SPECTATOR;
 
 		SetBit(mask, best_player);
-	} while (--p != 0);
+	} while (--pp != 0);
 
 	return best_player;
 }
