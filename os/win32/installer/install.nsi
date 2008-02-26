@@ -97,8 +97,6 @@ Section "!OpenTTD" Section1
 	; Overwrite files by default, but don't complain on failure
 	SetOverwrite try
 
-	; Make savegame folder
-	SetOutPath "$INSTDIR\save"
 	; Define root variable relative to installer
 	!define PATH_ROOT "..\..\..\"
 
