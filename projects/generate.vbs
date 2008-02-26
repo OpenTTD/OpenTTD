@@ -71,7 +71,8 @@ Function load_main_data(filename)
 						line = "PNG" Or _
 						line = "WIN32" Or _
 						line = "MSVC" Or _
-						line = "DIRECTMUSIC" _
+						line = "DIRECTMUSIC" Or _
+						line = "NO_THREADS" _
 					) Then skip = skip + 1
 					deep = deep + 1
 				Case "#"
