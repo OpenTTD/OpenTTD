@@ -24,6 +24,7 @@
  */
 
  # define MN(a) {a, PAL_NONE}
+ # define MR(a) {a, PALETTE_TO_STRUCT_RED}
 
 static const PalSpriteID _bridge_sprite_table_2_0[] = {
 	{  0x9C3, PAL_NONE }, {  0x9C7, PAL_NONE }, {  0x9C9, PAL_NONE }, {    0x0, PAL_NONE },
@@ -278,17 +279,6 @@ static const PalSpriteID _bridge_sprite_table_3_6[] = {
 	{ 0x1113, PALETTE_TO_STRUCT_CONCRETE }, { 0x1115, PALETTE_TO_STRUCT_CONCRETE }, { 0x1112, PALETTE_TO_STRUCT_CONCRETE }, { 0x1114, PALETTE_TO_STRUCT_CONCRETE },
 };
 
-static const PalSpriteID _bridge_sprite_table_1_1[] = {
-	{  0x986, PAL_NONE }, {  0x988, PAL_NONE }, {  0x985, PAL_NONE }, {  0x987, PAL_NONE },
-	{  0x98A, PAL_NONE }, {  0x98C, PAL_NONE }, {  0x989, PAL_NONE }, {  0x98B, PAL_NONE },
-	{  0x98E, PALETTE_TO_STRUCT_RED }, {  0x990, PALETTE_TO_STRUCT_RED }, {  0x98D, PALETTE_TO_STRUCT_RED }, {  0x98F, PALETTE_TO_STRUCT_RED },
-	{  0x992, PALETTE_TO_STRUCT_RED }, {  0x994, PALETTE_TO_STRUCT_RED }, {  0x991, PALETTE_TO_STRUCT_RED }, {  0x993, PALETTE_TO_STRUCT_RED },
-	{ 0x10E7, PALETTE_TO_STRUCT_RED }, { 0x10E9, PALETTE_TO_STRUCT_RED }, { 0x10E6, PALETTE_TO_STRUCT_RED }, { 0x10E8, PALETTE_TO_STRUCT_RED },
-	{ 0x10EB, PALETTE_TO_STRUCT_RED }, { 0x10ED, PALETTE_TO_STRUCT_RED }, { 0x10EA, PALETTE_TO_STRUCT_RED }, { 0x10EC, PALETTE_TO_STRUCT_RED },
-	{ 0x110F, PALETTE_TO_STRUCT_RED }, { 0x1111, PALETTE_TO_STRUCT_RED }, { 0x110E, PALETTE_TO_STRUCT_RED }, { 0x1110, PALETTE_TO_STRUCT_RED },
-	{ 0x1113, PALETTE_TO_STRUCT_RED }, { 0x1115, PALETTE_TO_STRUCT_RED }, { 0x1112, PALETTE_TO_STRUCT_RED }, { 0x1114, PALETTE_TO_STRUCT_RED },
-};
-
 static const PalSpriteID _bridge_sprite_table_6_0[] = {
 	{  0x9CD, PAL_NONE }, {  0x9D9, PAL_NONE }, {    0x0, PAL_NONE }, {    0x0, PAL_NONE },
 	{  0x9CE, PAL_NONE }, {  0x9DA, PAL_NONE }, {    0x0, PAL_NONE }, {    0x0, PAL_NONE },
@@ -443,15 +433,26 @@ static const PalSpriteID _bridge_sprite_table_wood_heads[] = {
 	MN( SPR_BTWDN_MGLV_RAMP_X_DOWN ), MN( SPR_BTWDN_MGLV_RAMP_Y_DOWN ), MN( SPR_BTWDN_MGLV_RAMP_X_UP    ), MN( SPR_BTWDN_MGLV_RAMP_Y_UP    ),
 };
 
-static const PalSpriteID _bridge_sprite_table_1_0[] = {
-	{  0x9BD, PALETTE_TO_STRUCT_RED }, { 0x9C1, PALETTE_TO_STRUCT_RED }, {     0x9C9, PAL_NONE }, {    0x0, PAL_NONE },
-	{  0x9BE, PALETTE_TO_STRUCT_RED }, { 0x9C2, PALETTE_TO_STRUCT_RED }, {     0x9CA, PAL_NONE }, {    0x0, PAL_NONE },
-	{  0x9BF, PALETTE_TO_STRUCT_RED }, { 0x9C1, PALETTE_TO_STRUCT_RED }, {     0x9C9, PAL_NONE }, {    0x0, PAL_NONE },
-	{  0x9C0, PALETTE_TO_STRUCT_RED }, { 0x9C2, PALETTE_TO_STRUCT_RED }, {     0x9CA, PAL_NONE }, {    0x0, PAL_NONE },
-	{ 0x10F8, PALETTE_TO_STRUCT_RED }, { 0x9C1, PALETTE_TO_STRUCT_RED }, {     0x9C9, PAL_NONE }, {    0x0, PAL_NONE },
-	{ 0x10F9, PALETTE_TO_STRUCT_RED }, { 0x9C2, PALETTE_TO_STRUCT_RED }, {     0x9CA, PAL_NONE }, {    0x0, PAL_NONE },
-	{ 0x1120, PALETTE_TO_STRUCT_RED }, { 0x9C1, PALETTE_TO_STRUCT_RED }, {     0x9C9, PAL_NONE }, {    0x0, PAL_NONE },
-	{ 0x1121, PALETTE_TO_STRUCT_RED }, { 0x9C2, PALETTE_TO_STRUCT_RED }, {     0x9CA, PAL_NONE }, {    0x0, PAL_NONE },
+static const PalSpriteID _bridge_sprite_table_concrete_middle[] = {
+	MR( SPR_BTCON_RAIL_X ), MR( SPR_BTCON_X_FRONT ), MN( SPR_BTCON_X_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_RAIL_Y ), MR( SPR_BTCON_Y_FRONT ), MN( SPR_BTCON_Y_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_ROAD_X ), MR( SPR_BTCON_X_FRONT ), MN( SPR_BTCON_X_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_ROAD_Y ), MR( SPR_BTCON_Y_FRONT ), MN( SPR_BTCON_Y_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_MONO_X ), MR( SPR_BTCON_X_FRONT ), MN( SPR_BTCON_X_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_MONO_Y ), MR( SPR_BTCON_Y_FRONT ), MN( SPR_BTCON_Y_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_MGLV_X ), MR( SPR_BTCON_X_FRONT ), MN( SPR_BTCON_X_PILLAR ), MN( 0x0 ),
+	MR( SPR_BTCON_MGLV_Y ), MR( SPR_BTCON_Y_FRONT ), MN( SPR_BTCON_Y_PILLAR ), MN( 0x0 ),
+};
+
+static const PalSpriteID _bridge_sprite_table_concrete_heads[] = {
+	MN( SPR_BTGEN_RAIL_X_SLOPE_UP  ), MN( SPR_BTGEN_RAIL_Y_SLOPE_UP  ), MN( SPR_BTGEN_RAIL_X_SLOPE_DOWN ), MN( SPR_BTGEN_RAIL_Y_SLOPE_DOWN ),
+	MN( SPR_BTGEN_RAIL_RAMP_X_DOWN ), MN( SPR_BTGEN_RAIL_RAMP_Y_DOWN ), MN( SPR_BTGEN_RAIL_RAMP_X_UP    ), MN( SPR_BTGEN_RAIL_RAMP_Y_UP    ),
+	MR( SPR_BTGEN_ROAD_X_SLOPE_UP  ), MR( SPR_BTGEN_ROAD_Y_SLOPE_UP  ), MR( SPR_BTGEN_ROAD_X_SLOPE_DOWN ), MR( SPR_BTGEN_ROAD_Y_SLOPE_DOWN ),
+	MR( SPR_BTGEN_ROAD_RAMP_X_DOWN ), MR( SPR_BTGEN_ROAD_RAMP_Y_DOWN ), MR( SPR_BTGEN_ROAD_RAMP_X_UP    ), MR( SPR_BTGEN_ROAD_RAMP_Y_UP    ),
+	MR( SPR_BTGEN_MONO_X_SLOPE_UP  ), MR( SPR_BTGEN_MONO_Y_SLOPE_UP  ), MR( SPR_BTGEN_MONO_X_SLOPE_DOWN ), MR( SPR_BTGEN_MONO_Y_SLOPE_DOWN ),
+	MR( SPR_BTGEN_MONO_RAMP_X_DOWN ), MR( SPR_BTGEN_MONO_RAMP_Y_DOWN ), MR( SPR_BTGEN_MONO_RAMP_X_UP    ), MR( SPR_BTGEN_MONO_RAMP_Y_UP    ),
+	MR( SPR_BTGEN_MGLV_X_SLOPE_UP  ), MR( SPR_BTGEN_MGLV_Y_SLOPE_UP  ), MR( SPR_BTGEN_MGLV_X_SLOPE_DOWN ), MR( SPR_BTGEN_MGLV_Y_SLOPE_DOWN ),
+	MR( SPR_BTGEN_MGLV_RAMP_X_DOWN ), MR( SPR_BTGEN_MGLV_RAMP_Y_DOWN ), MR( SPR_BTGEN_MGLV_RAMP_X_UP    ), MR( SPR_BTGEN_MGLV_RAMP_Y_UP    ),
 };
 
 static const PalSpriteID _bridge_sprite_table_9_0[] = {
@@ -644,14 +645,14 @@ static const PalSpriteID * const _bridge_sprite_table_wood[] = {
 	_bridge_sprite_table_wood_heads,
 };
 
-static const PalSpriteID * const _bridge_sprite_table_1[] = {
-	_bridge_sprite_table_1_0,
-	_bridge_sprite_table_1_0,
-	_bridge_sprite_table_1_0,
-	_bridge_sprite_table_1_0,
-	_bridge_sprite_table_1_0,
-	_bridge_sprite_table_1_0,
-	_bridge_sprite_table_1_1,
+static const PalSpriteID * const _bridge_sprite_table_concrete[] = {
+	_bridge_sprite_table_concrete_middle,
+	_bridge_sprite_table_concrete_middle,
+	_bridge_sprite_table_concrete_middle,
+	_bridge_sprite_table_concrete_middle,
+	_bridge_sprite_table_concrete_middle,
+	_bridge_sprite_table_concrete_middle,
+	_bridge_sprite_table_concrete_heads,
 };
 
 static const PalSpriteID * const _bridge_sprite_table_9[] = {
@@ -696,7 +697,7 @@ static const PalSpriteID * const _bridge_sprite_table_12[] = {
 
 static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
 	_bridge_sprite_table_wood,
-	_bridge_sprite_table_1,
+	_bridge_sprite_table_concrete,
 	_bridge_sprite_table_2,
 	_bridge_sprite_table_3,
 	_bridge_sprite_table_4,
@@ -778,3 +779,4 @@ const BridgeSpec _orig_bridge[] = {
 
 #undef MB
 #undef MN
+#undef MR
