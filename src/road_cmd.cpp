@@ -1065,8 +1065,11 @@ static void DrawRoadBits(TileInfo* ti)
 		if (height < minz) return;
 	}
 
+	/* If there are no road bits, return, as there is nothing left to do */
+	if (CountBits(road) < 2) return;
+
 	/* Draw extra details. */
-	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
+	for (drts = _road_display_table[roadside][road | tram]; drts->image != 0; drts++) {
 		DrawRoadDetail(drts->image, ti, drts->subcoord_x, drts->subcoord_y, 0x10);
 	}
 }
