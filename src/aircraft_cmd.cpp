@@ -924,6 +924,10 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 	uint spd = v->acceleration * 16;
 	byte t;
 
+	/* Adjust speed limits by plane speed factor to prevent taxiing
+	 * and take-off speeds being too low. */
+	speed_limit *= _patches.plane_speed;
+
 	if (v->u.air.cached_max_speed < speed_limit) {
 		if (v->cur_speed < speed_limit) hard_limit = false;
 		speed_limit = v->u.air.cached_max_speed;
@@ -939,7 +943,9 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 	 * method at slower speeds. This also results in less reduction at slow
 	 * speeds to that aircraft do not get to taxi speed straight after
 	 * touchdown. */
-	if (!hard_limit && v->cur_speed > speed_limit) speed_limit = v->cur_speed - max(1, (v->cur_speed * v->cur_speed) / 16384);
+	if (!hard_limit && v->cur_speed > speed_limit) {
+		speed_limit = v->cur_speed - max(1, ((v->cur_speed * v->cur_speed) / 16384) / _patches.plane_speed);
+	}
 
 	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), speed_limit);
 
@@ -952,6 +958,9 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 		if (_patches.vehicle_speed)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
+
+	/* Adjust distance moved by plane speed setting */
+	if (_patches.plane_speed > 1) spd /= _patches.plane_speed;
 
 	if (!(v->direction & 1)) spd = spd * 3 / 4;
 

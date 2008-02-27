@@ -130,6 +130,8 @@ struct Patches {
 	uint8 pathfinder_for_roadvehs;      ///< the pathfinder to use for roadvehicles
 	uint8 pathfinder_for_ships;         ///< the pathfinder to use for ships
 
+	uint8 plane_speed;                  ///< divisor for speed of aircraft
+
 	bool autorenew;
 	int16 autorenew_months;
 	int32 autorenew_money;

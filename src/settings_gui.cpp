@@ -818,6 +818,7 @@ static const char *_patches_vehicles[] = {
 	"wagon_speed_limits",
 	"disable_elrails",
 	"freight_trains",
+	"plane_speed",
 	"timetabling",
 };
 

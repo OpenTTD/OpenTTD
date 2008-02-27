@@ -1432,6 +1432,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDBOOL(Patches, disable_elrails, 38, SL_MAX_VERSION, 0, NN, false,         STR_CONFIG_PATCHES_DISABLE_ELRAILS,      SettingsDisableElrail),
 	SDT_CONDVAR(Patches, freight_trains, SLE_UINT8, 39, SL_MAX_VERSION, 0,NN, 1, 1, 255, 1, STR_CONFIG_PATCHES_FREIGHT_TRAINS, NULL),
 	SDT_CONDBOOL(Patches, timetabling,              67, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_TIMETABLE_ALLOW,      NULL),
+	SDT_CONDVAR(Patches, plane_speed,    SLE_UINT8, 90, SL_MAX_VERSION, 0, 0, 4, 1,   4, 0, STR_CONFIG_PATCHES_PLANE_SPEED,   NULL),
 
 	/***************************************************************************/
 	/* Station section of the GUI-configure patches window */
