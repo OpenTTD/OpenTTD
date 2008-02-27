@@ -933,6 +933,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 
 	/* Save general info */
 	bak->orderindex       = v->cur_order_index;
+	bak->group            = v->group_id;
 	bak->service_interval = v->service_interval;
 	if (v->name != NULL) bak->name = strdup(v->name);
 
@@ -992,13 +993,24 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
 		for (uint i = 0; bak->order[i].IsValid(); i++) {
 			if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL,
-					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
+					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
+			}
+
+			/* Copy timetable */
+			if (!DoCommandP(0, v->index | (i << 16) | (1 << 25),
+					bak->order[i].wait_time << 16 | bak->order[i].travel_time, NULL,
+					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
+				break;
+			}
 		}
 	}
 
 	/* Restore vehicle order-index and service interval */
 	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , NULL, CMD_RESTORE_ORDER_INDEX);
+
+	/* Restore vehicle group */
+	DoCommandP(0, bak->group, v->index, NULL, CMD_ADD_VEHICLE_GROUP);
 }
 
 /** Restore the current order-index of a vehicle and sets service-interval.

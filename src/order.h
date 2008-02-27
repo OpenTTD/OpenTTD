@@ -126,6 +126,7 @@ struct BackuppedOrders {
 
 	VehicleID clone;
 	VehicleOrderID orderindex;
+	GroupID group;
 	Order *order;
 	uint16 service_interval;
 	char *name;

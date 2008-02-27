@@ -134,6 +134,9 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->group_id == g->index && v->type == g->vehicle_type) v->group_id = DEFAULT_GROUP;
 		}
 
+		/* Update backupped orders if needed */
+		if (_backup_orders_data.group == g->index) _backup_orders_data.group = DEFAULT_GROUP;
+
 		/* If we set an autoreplace for the group we delete, remove it. */
 		if (_current_player < MAX_PLAYERS) {
 			Player *p;
