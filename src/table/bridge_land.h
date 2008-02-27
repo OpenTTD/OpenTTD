@@ -694,7 +694,7 @@ static const PalSpriteID * const _bridge_sprite_table_12[] = {
 	_bridge_sprite_table_12_2,
 	_bridge_sprite_table_12_2,
 	_bridge_sprite_table_12_2,
-	_bridge_sprite_table_concrete_heads,
+	_bridge_sprite_table_concrete_suspended_heads,
 };
 
 static const PalSpriteID * const * const _bridge_sprite_table[MAX_BRIDGES] = {
