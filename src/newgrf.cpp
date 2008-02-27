@@ -4091,8 +4091,18 @@ static uint32 GetPatchVariable(uint8 param)
 		/* empty wagon speed increase */
 		case 0x0F: return 0;
 
-		/* plane speed factor */
-		case 0x10: return 4;
+		/* plane speed factor; our patch option is reversed from TTDPatch's,
+		 * the following is good for 1x, 2x and 4x (most common?) and...
+		 * well not really for 3x. */
+		case 0x10:
+			switch (_patches.plane_speed) {
+				default:
+				case 4: return 1;
+				case 3: return 2;
+				case 2: return 2;
+				case 1: return 4;
+			}
+
 
 		/* 2CC colormap base sprite */
 		case 0x11: return SPR_2CCMAP_BASE;
