@@ -26,8 +26,6 @@ byte GetSnowLine(void);
 byte HighestSnowLine(void);
 void ClearSnowLine(void);
 
-bool IsValidTile(TileIndex tile);
-
 uint GetPartialZ(int x, int y, Slope corners);
 uint GetSlopeZ(int x, int y);
 void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2);

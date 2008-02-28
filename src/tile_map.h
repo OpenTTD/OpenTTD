@@ -107,6 +107,17 @@ static inline bool IsTileType(TileIndex tile, TileType type)
 }
 
 /**
+ * Checks if a tile is valid
+ *
+ * @param tile The tile to check
+ * @return True if the tile is on the map and not one of MP_VOID.
+ */
+static inline bool IsValidTile(TileIndex tile)
+{
+	return tile < MapSize() && !IsTileType(tile, MP_VOID);
+}
+
+/**
  * Returns the owner of a tile
  *
  * This function returns the owner of a tile. This cannot used
@@ -115,14 +126,13 @@ static inline bool IsTileType(TileIndex tile, TileType type)
  *
  * @param tile The tile to check
  * @return The owner of the tile
- * @pre tile < MapSize()
- * @pre The type of the tile must not be MP_HOUSE, MP_VOID and MP_INDUSTRY
+ * @pre IsValidTile(tile)
+ * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
  */
 static inline Owner GetTileOwner(TileIndex tile)
 {
-	assert(tile < MapSize());
+	assert(IsValidTile(tile));
 	assert(!IsTileType(tile, MP_HOUSE));
-	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
 	return (Owner)_m[tile].m1;
@@ -136,14 +146,13 @@ static inline Owner GetTileOwner(TileIndex tile)
  *
  * @param tile The tile to change the owner status.
  * @param owner The new owner.
- * @pre tile < MapSize()
- * @pre The type of the tile must not be MP_HOUSE, MP_VOID and MP_INDUSTRY
+ * @pre IsValidTile(tile)
+ * @pre The type of the tile must not be MP_HOUSE and MP_INDUSTRY
  */
 static inline void SetTileOwner(TileIndex tile, Owner owner)
 {
-	assert(tile < MapSize());
+	assert(IsValidTile(tile));
 	assert(!IsTileType(tile, MP_HOUSE));
-	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
 	_m[tile].m1 = owner;
@@ -165,7 +174,7 @@ static inline bool IsTileOwner(TileIndex tile, Owner owner)
  * Set the tropic zone
  * @param tile the tile to set the zone of
  * @param type the new type
- * @pre assert(tile < MapSize());
+ * @pre tile < MapSize()
  */
 static inline void SetTropicZone(TileIndex tile, TropicZone type)
 {
@@ -176,7 +185,7 @@ static inline void SetTropicZone(TileIndex tile, TropicZone type)
 /**
  * Get the tropic zone
  * @param tile the tile to get the zone of
- * @pre assert(tile < MapSize());
+ * @pre tile < MapSize()
  * @return the zone type
  */
 static inline TropicZone GetTropicZone(TileIndex tile)

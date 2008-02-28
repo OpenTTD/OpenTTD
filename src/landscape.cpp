@@ -919,8 +919,3 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng)
 		TileY(a) + (GB(r, 8, 8) * rn * 2 >> 8) - rn
 	));
 }
-
-bool IsValidTile(TileIndex tile)
-{
-	return (tile < MapSizeX() * MapMaxY() && TileX(tile) != MapMaxX());
-}
