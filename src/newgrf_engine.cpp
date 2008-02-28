@@ -512,12 +512,13 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			memset(common_subtypes, 0, sizeof(common_subtypes));
 
 			for (u = v; u != NULL; u = u->Next()) {
+				if (v->type == VEH_TRAIN) user_def_data |= u->u.rail.user_def_data;
+
 				/* Skip empty engines */
 				if (u->cargo_cap == 0) continue;
 
 				cargo_classes |= GetCargo(u->cargo_type)->classes;
 				common_cargos[u->cargo_type]++;
-				if (v->type == VEH_TRAIN) user_def_data |= u->u.rail.user_def_data;
 				common_subtypes[u->cargo_subtype]++;
 			}
 
