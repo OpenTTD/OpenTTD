@@ -2200,10 +2200,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_common.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\yapf\yapf_common.hpp"
 				>
 			</File>

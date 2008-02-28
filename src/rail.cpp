@@ -113,6 +113,40 @@ extern const TrackBits _corner_to_trackbits[] = {
 	TRACK_BIT_LEFT, TRACK_BIT_LOWER, TRACK_BIT_RIGHT, TRACK_BIT_UPPER,
 };
 
+extern const TrackdirBits _uphill_trackdirs[] = {
+	TRACKDIR_BIT_NONE                    , ///<  0 SLOPE_FLAT
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW, ///<  1 SLOPE_W   -> inclined for diagonal track
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_SE, ///<  2 SLOPE_S   -> inclined for diagonal track
+	TRACKDIR_BIT_X_SW                    , ///<  3 SLOPE_SW
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE, ///<  4 SLOPE_E   -> inclined for diagonal track
+	TRACKDIR_BIT_NONE                    , ///<  5 SLOPE_EW
+	TRACKDIR_BIT_Y_SE                    , ///<  6 SLOPE_SE
+	TRACKDIR_BIT_NONE                    , ///<  7 SLOPE_WSE -> leveled
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_NW, ///<  8 SLOPE_N   -> inclined for diagonal track
+	TRACKDIR_BIT_Y_NW                    , ///<  9 SLOPE_NW
+	TRACKDIR_BIT_NONE                    , ///< 10 SLOPE_NS
+	TRACKDIR_BIT_NONE                    , ///< 11 SLOPE_NWS -> leveled
+	TRACKDIR_BIT_X_NE                    , ///< 12 SLOPE_NE
+	TRACKDIR_BIT_NONE                    , ///< 13 SLOPE_ENW -> leveled
+	TRACKDIR_BIT_NONE                    , ///< 14 SLOPE_SEN -> leveled
+	TRACKDIR_BIT_NONE                    , ///< 15 invalid
+	TRACKDIR_BIT_NONE                    , ///< 16 invalid
+	TRACKDIR_BIT_NONE                    , ///< 17 invalid
+	TRACKDIR_BIT_NONE                    , ///< 18 invalid
+	TRACKDIR_BIT_NONE                    , ///< 19 invalid
+	TRACKDIR_BIT_NONE                    , ///< 20 invalid
+	TRACKDIR_BIT_NONE                    , ///< 21 invalid
+	TRACKDIR_BIT_NONE                    , ///< 22 invalid
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_SE, ///< 23 SLOPE_STEEP_S -> inclined for diagonal track
+	TRACKDIR_BIT_NONE                    , ///< 24 invalid
+	TRACKDIR_BIT_NONE                    , ///< 25 invalid
+	TRACKDIR_BIT_NONE                    , ///< 26 invalid
+	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW, ///< 27 SLOPE_STEEP_W -> inclined for diagonal track
+	TRACKDIR_BIT_NONE                    , ///< 28 invalid
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_NW, ///< 29 SLOPE_STEEP_N -> inclined for diagonal track
+	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE, ///< 30 SLOPE_STEEP_E -> inclined for diagonal track
+};
+
 /* The default multiplier for the cost of building different types of railway
  * track, which will be divided by 8. Can be changed by newgrf files. */
 const int _default_railtype_cost_multiplier[RAILTYPE_END] = {

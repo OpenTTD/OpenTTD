@@ -4,8 +4,6 @@
 #define  YAPF_COSTBASE_HPP
 
 struct CYapfCostBase {
-	static const TrackdirBits   c_upwards_slopes[16];
-
 	FORCEINLINE static bool stSlopeCost(TileIndex tile, Trackdir td)
 	{
 		if (IsDiagonalTrackdir(td)) {
@@ -19,8 +17,8 @@ struct CYapfCostBase {
 			} else {
 				// not bridge ramp
 				if (IsTunnelTile(tile)) return false; // tunnel entry/exit doesn't slope
-				uint tile_slope = GetTileSlope(tile, NULL) & 0x0F;
-				if ((c_upwards_slopes[tile_slope] & TrackdirToTrackdirBits(td)) != 0) return true; // slopes uphill => apply penalty
+				Slope tile_slope = GetTileSlope(tile, NULL);
+				return IsUphillTrackdir(tile_slope, td); // slopes uphill => apply penalty
 			}
 		}
 		return false;

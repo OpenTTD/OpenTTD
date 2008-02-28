@@ -540,24 +540,6 @@ static bool NtpCheck(NewTrackPathFinder *tpf, TileIndex tile, uint dir, uint len
 }
 
 
-static const uint16 _is_upwards_slope[15] = {
-	0,                                           ///< no tileh
-	(1 << TRACKDIR_X_SW) | (1 << TRACKDIR_Y_NW), ///< 1
-	(1 << TRACKDIR_X_SW) | (1 << TRACKDIR_Y_SE), ///< 2
-	(1 << TRACKDIR_X_SW),                        ///< 3
-	(1 << TRACKDIR_X_NE) | (1 << TRACKDIR_Y_SE), ///< 4
-	0,                                           ///< 5
-	(1 << TRACKDIR_Y_SE),                        ///< 6
-	0,                                           ///< 7
-	(1 << TRACKDIR_X_NE) | (1 << TRACKDIR_Y_NW), ///< 8,
-	(1 << TRACKDIR_Y_NW),                        ///< 9
-	0,                                           ///< 10
-	0,                                           ///< 11,
-	(1 << TRACKDIR_X_NE),                        ///< 12
-	0,                                           ///< 13
-	0,                                           ///< 14
-};
-
 static uint DistanceMoo(TileIndex t0, TileIndex t1)
 {
 	const uint dx = Delta(TileX(t0), TileX(t1));
@@ -727,9 +709,8 @@ start_at:
 
 			si.cur_length += _length_of_track[track];
 
-			/* Check if this rail is an upwards slope. If it is, then add a penalty.
-			 * Small optimization here.. if (track&7)>1 then it can't be a slope so we avoid calling GetTileSlope */
-			if ((track & 7) <= 1 && (_is_upwards_slope[GetTileSlope(tile, NULL)] & (1 << track)) ) {
+			/* Check if this rail is an upwards slope. If it is, then add a penalty. */
+			if (IsDiagonalTrackdir(track) && IsUphillTrackdir(GetTileSlope(tile, NULL), track)) {
 				// upwards slope. add some penalty.
 				si.cur_length += 4 * DIAG_FACTOR;
 			}

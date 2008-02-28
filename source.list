@@ -472,7 +472,6 @@ yapf/track_dir.hpp
 yapf/yapf.h
 yapf/yapf.hpp
 yapf/yapf_base.hpp
-yapf/yapf_common.cpp
 yapf/yapf_common.hpp
 yapf/yapf_costbase.hpp
 yapf/yapf_costcache.hpp

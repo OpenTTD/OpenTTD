@@ -574,4 +574,20 @@ static inline bool IsStraightRoadTrackdir(Trackdir dir)
 	return (dir & 0x06) == 0;
 }
 
+/**
+ * Checks whether a trackdir on a specific slope is going uphill.
+ *
+ * Valid for rail and road tracks.
+ * Valid for tile-slopes (under foundation) and foundation-slopes (on foundation).
+ *
+ * @param slope The slope of the tile.
+ * @param dir The trackdir of interest.
+ * @return true iff the track goes upwards.
+ */
+static inline bool IsUphillTrackdir(Slope slope, Trackdir dir)
+{
+	extern const TrackdirBits _uphill_trackdirs[];
+	return HasBit(_uphill_trackdirs[RemoveHalftileSlope(slope)], dir);
+}
+
 #endif /* TRACK_FUNC_H */
