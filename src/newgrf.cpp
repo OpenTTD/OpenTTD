@@ -3859,12 +3859,12 @@ static void ScanInfo(byte *buf, int len)
 
 	len -= 6;
 	const char *name = grf_load_string(&buf, len);
-	_cur_grfconfig->name = TranslateTTDPatchCodes(name);
+	_cur_grfconfig->name = TranslateTTDPatchCodes(grfid, name);
 
 	len -= strlen(name) + 1;
 	if (len > 0) {
 		const char *info = grf_load_string(&buf, len);
-		_cur_grfconfig->info = TranslateTTDPatchCodes(info);
+		_cur_grfconfig->info = TranslateTTDPatchCodes(grfid, info);
 	}
 
 	/* GLS_INFOSCAN only looks for the action 8, so we can skip the rest of the file */
@@ -4034,7 +4034,7 @@ static void GRFLoadError(byte *buf, int len)
 		const char *message = grf_load_string(&buf, len);
 		len -= (strlen(message) + 1);
 
-		error->custom_message = TranslateTTDPatchCodes(message);
+		error->custom_message = TranslateTTDPatchCodes(_cur_grffile->grfid, message);
 	} else {
 		error->message = msgstr[message_id];
 	}
@@ -4043,7 +4043,7 @@ static void GRFLoadError(byte *buf, int len)
 		const char *data = grf_load_string(&buf, len);
 		len -= (strlen(data) + 1);
 
-		error->data = TranslateTTDPatchCodes(data);
+		error->data = TranslateTTDPatchCodes(_cur_grffile->grfid, data);
 	}
 
 	/* Only two parameter numbers can be used in the string. */
@@ -4558,7 +4558,7 @@ static void FeatureTownName(byte *buf, int len)
 			if (!check_length(len, 1, "FeatureTownName: style name")) return;
 			const char *name = grf_load_string(&buf, len);
 			len -= strlen(name) + 1;
-			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, TranslateTTDPatchCodes(name));
+			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, TranslateTTDPatchCodes(grfid, name));
 
 			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 
@@ -4611,7 +4611,7 @@ static void FeatureTownName(byte *buf, int len)
 			} else {
 				const char *text = grf_load_string(&buf, len);
 				len -= strlen(text) + 1;
-				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(text);
+				townname->partlist[id][i].parts[j].data.text = TranslateTTDPatchCodes(grfid, text);
 				grfmsg(6, "FeatureTownName: part %d, text %d, '%s' (with probability %d)", i, j, townname->partlist[id][i].parts[j].data.text, prob);
 			}
 			townname->partlist[id][i].parts[j].prob = prob;

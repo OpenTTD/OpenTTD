@@ -2019,7 +2019,6 @@ enum {
  */
 static void ChangeIndustryProduction(Industry *i, bool monthly)
 {
-	extern StringID MapGRFStringID(uint32 grfid, StringID str);
 	StringID str = STR_NULL;
 	bool closeit = false;
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);

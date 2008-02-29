@@ -128,4 +128,6 @@ void CDECL grfmsg(int severity, const char *str, ...);
 bool HasGrfMiscBit(GrfMiscBit bit);
 bool GetGlobalVariable(byte param, uint32 *value);
 
+StringID MapGRFStringID(uint32 grfid, StringID str);
+
 #endif /* NEWGRF_H */

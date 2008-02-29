@@ -192,7 +192,7 @@ static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  ///< by default, english is used.
 
 
-char *TranslateTTDPatchCodes(const char *str)
+char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 {
 	char *tmp = MallocT<char>(strlen(str) * 10 + 1); // Allocate space to allow for expansion
 	char *d = tmp;
@@ -241,7 +241,7 @@ char *TranslateTTDPatchCodes(const char *str)
 				string  = *str++;
 				string |= *str++ << 8;
 				d += Utf8Encode(d, SCC_STRING_ID);
-				d += Utf8Encode(d, string);
+				d += Utf8Encode(d, MapGRFStringID(grfid, string));
 				break;
 			}
 			case 0x82:
@@ -345,7 +345,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
-	translatedtext = TranslateTTDPatchCodes(text_to_add);
+	translatedtext = TranslateTTDPatchCodes(grfid, text_to_add);
 
 	GRFText *newtext = GRFText::New(langid_to_add, translatedtext);
 

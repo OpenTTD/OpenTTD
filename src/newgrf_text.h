@@ -11,7 +11,7 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid);
 const char *GetGRFStringPtr(uint16 stringid);
 void CleanUpStrings();
 void SetCurrentGrfLangID(const char *iso_name);
-char *TranslateTTDPatchCodes(const char *str);
+char *TranslateTTDPatchCodes(uint32 grfid, const char *str);
 
 bool CheckGrfLangID(byte lang_id, byte grf_version);
 
