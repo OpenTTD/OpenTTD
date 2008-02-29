@@ -66,7 +66,7 @@ static inline void ResetRestoreAllTransparency()
 	/* if none of the non-locked options are set */
 	if ((_transparency_opt & ~_transparency_lock) == 0) {
 		/* set all non-locked options */
-		_transparency_opt |= ~_transparency_lock;
+		_transparency_opt |= GB(~_transparency_lock, 0, TO_END);
 	} else {
 		/* clear all non-locked options */
 		_transparency_opt &= _transparency_lock;
