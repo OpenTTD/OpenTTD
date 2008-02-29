@@ -23,7 +23,7 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 	char *name;                             ///< Group Name
 
 	uint16 num_vehicle;                     ///< Number of vehicles wich belong to the group
-	PlayerID owner;                         ///< Group Owner
+	PlayerByte owner;                       ///< Group Owner
 	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
 
 	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
