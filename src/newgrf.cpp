@@ -244,13 +244,24 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 		STR_BAGS,       STR_LITERS,     STR_TONS,       STR_NOTHING,
 		STR_TONS,       STR_NOTHING,    STR_LITERS,     STR_NOTHING
 	};
+
 	/* 0xD0 and 0xDC stand for all the TextIDs in the range
 	 * of 0xD000 (misc graphics texts) and 0xDC00 (misc persistent texts).
 	 * These strings are unique to each grf file, and thus require to be used with the
 	 * grfid in which they are declared */
-	if (GB(str, 8, 8) == 0xD0 || GB(str, 8, 8) == 0xDC) {
-		return GetGRFStringID(grfid, str);
+	switch (GB(str, 8, 8)) {
+		case 0xD0: case 0xD1: case 0xD2: case 0xD3:
+		case 0xDC:
+			return GetGRFStringID(grfid, str);
+
+		case 0xD4: case 0xD5: case 0xD6: case 0xD7:
+			/* Strings embedded via 0x81 have 0x400 added to them (no real
+			 * explanation why...) */
+			return GetGRFStringID(grfid, str - 0x400);
+
+		default: break;
 	}
+
 #define TEXID_TO_STRINGID(begin, end, stringid) if (str >= begin && str <= end) return str + (stringid - begin)
 	/* We have some changes in our cargo strings, resulting in some missing. */
 	TEXID_TO_STRINGID(0x000E, 0x002D, STR_000E);
@@ -3242,6 +3253,9 @@ static void FeatureNewName(byte *buf, int len)
 						break;
 
 					case 0xD0:
+					case 0xD1:
+					case 0xD2:
+					case 0xD3:
 					case 0xDC:
 						AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 						break;
