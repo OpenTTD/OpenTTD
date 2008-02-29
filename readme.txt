@@ -11,6 +11,9 @@ Table of Contents:
  * 2.1 Reporting Bugs
 3.0) Supported Platforms
 4.0) Installing and running OpenTTD
+ * 4.1 (Required) 3rd party files
+ * 4.2 OpenTTD directories
+ * 4.3 Portable Installations (External Media)
 5.0) OpenTTD features
 6.0) Configuration File
 7.0) Compiling
@@ -88,25 +91,100 @@ archive which you have to extract to a directory where you want OpenTTD to
 be installed, or you have downloaded an installer, which will automatically
 extract OpenTTD in the given directory.
 
-Before you run OpenTTD, you need to put the game's datafiles into the data/
-subdirectory. You need the following files from the original version
-of TTD as OpenTTD makes use of the original TTD artwork. The Windows
-installer optionally can copy these files from your Transport Tycoon Deluxe
-CD-ROM.
+OpenTTD looks in multiple locations to find the required data files (described
+in section 4.2). Installing any 3rd party files into a "shared" location has
+the advantage that you only need to do this step once, rather than copying the
+data files into all OpenTTD versions you have.
+Savegames, screenshots, etc are saved relative to the config file (openttd.cfg)
+currently being used. This means that if you use a config file in one of the
+shared directories, savegames will reside in the save/ directory next to the
+openttd.cfg file there.
+If you want savegames and screenshots in the directory where the OpenTTD binary
+resides, simply have your config file in that location. But if you remove this
+config file, savegames will still be in this directory (see notes in section 4.2)
+
+4.1) (Required) 3rd party files:
+---- ---------------------------
+
+Before you run OpenTTD, you need to put the game's datafiles into a data/
+directory which can be located in various places addressed in the following
+section.
+As OpenTTD makes use of the original TTD artwork you will need the files listed
+below, which you can find on a Transport Tycoon Deluxe CD-ROM.
+The Windows installer optionally can copy these files from that CD-ROM.
 
 List of the required files:
-sample.cat
-trg1r.grf
-trgcr.grf
-trghr.grf
-trgir.grf
-trgtr.grf
+	- sample.cat
+	- trg1r.grf
+	- trgcr.grf
+	- trghr.grf
+	- trgir.grf
+	- trgtr.grf
 
-(Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF,
-TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF.
+Alternatively you can use the TTD GRF files from the DOS version:
+	- TRG1.GRF
+	- TRGC.GRF
+	- TRGH.GRF
+	- TRGI.GRF
+	- TRGT.GRF
 
-If you want music you need to copy the gm/ folder from Windows TTD into your
-OpenTTD folder, not your data folder.
+If you want the TTD music, copy the gm/ folder from the Windows version
+of TTD to your OpenTTD folder (not your data folder - also explained in
+the following sections).
+
+Do NOT copy files included with OpenTTD into "shared" directories (explained in
+the following sections) as sooner or later you will run into graphical glitches
+when using other versions of the game.
+
+4.2) OpenTTD directories
+---- -------------------------------
+
+The TTD artwork files listed in the section 4.1 "(Required) 3rd party files"
+can be placed in a few different locations:
+	1. The current working directory (from where you started OpenTTD)
+	2. Your personal directory
+		Windows: C:\Documents and Settings\<username>\My Documents\OpenTTD
+		Mac OSX: ~/Documents/OpenTTD
+		Linux:   ~/.openttd
+	3. The shared directory
+		Windows: C:\Documents and Settings\All Users\Documents\OpenTTD
+		Mac OSX: /Library/Application Support/OpenTTD
+		Linux:   not available
+	4. The binary directory (where the OpenTTD executable is)
+		Windows: C:\Program Files\OpenTTD
+		Linux:   /usr/games
+	5. The installation directory (Linux only)
+		Linux:   /usr/share/games/openttd
+	6. The application bundle (Mac OSX only)
+		It includes the OTTD files (grf+lng) and it will work as long as they aren't touched
+
+Notes:
+	- Linux in the previous list means .deb, but most paths should be similar for others.
+	- The previous search order is also used for newgrfs and openttd.cfg.
+	- If openttd.cfg is not found, then it will be created using the 2, 4, 1, 3, 5 order.
+	- Savegames will be relative to the config file only if there is no save/
+	  directory in paths with higher priority than the config file path, but
+	  autosaves and screenshots will always be relative to the config file.
+
+The prefered setup:
+Place 3rd party files in shared directory (or in personal directory if you don't
+have write access on shared directory) and have your openttd.cfg config file in
+personal directory (where the game will then also place savegames and screenshots).
+
+
+4.3) Portable Installations (External Media):
+---- ----------------------------------------
+
+You can install OpenTTD on external media so you can take it with you, i.e.
+using a USB key, or a USB HDD, etc.
+Create a directory where you shall store the game in (i.e. OpenTTD/).
+Copy the binary (OpenTTD.exe, OpenTTD.app, openttd, etc), data/ and your
+openttd.cfg to this directory.
+You can copy binaries for any operating system into this directory, which will
+allow you to play the game on nearly any computer you can attach the external
+media to.
+As always - additional grf files are stored in the data/ dir (for details,
+again, see section 4.1).
 
 
 5.0) OpenTTD features:
