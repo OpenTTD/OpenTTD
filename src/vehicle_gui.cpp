@@ -561,7 +561,7 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 
 	if (vb != last_vehicle[1]) {
 		last_vehicle[1] = vb;
-		SetDParam(1, vb->index);
+		SetDParam(0, vb->index);
 		GetString(last_name[1], STR_VEHICLE_NAME, lastof(last_name[1]));
 	}
 
