@@ -145,9 +145,16 @@ void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 wi
 	vl->l.flags |= VL_RESORT;
 }
 
+/* cached values for VehicleNameSorter to spare many GetString() calls */
+static const Vehicle *_last_vehicle[2] = { NULL, NULL };
+static char           _last_name[2][64] = { "", "" };
+
 void SortVehicleList(vehiclelist_d *vl)
 {
 	if (!(vl->l.flags & VL_RESORT)) return;
+
+	/* invalidate cached values for name sorter - vehicle names could change */
+	_last_vehicle[0] = _last_vehicle[1] = NULL;
 
 	_internal_sort_order = (vl->l.flags & VL_DESC) != 0;
 	qsort((void*)vl->sort_list, vl->l.list_length, sizeof(vl->sort_list[0]),
@@ -546,26 +553,23 @@ static int CDECL VehicleNumberSorter(const void *a, const void *b)
 
 static int CDECL VehicleNameSorter(const void *a, const void *b)
 {
-	static const Vehicle *last_vehicle[2] = { NULL, NULL };
-	static char           last_name[2][64] = { "", "" };
-
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
 	int r;
 
-	if (va != last_vehicle[0]) {
-		last_vehicle[0] = va;
+	if (va != _last_vehicle[0]) {
+		_last_vehicle[0] = va;
 		SetDParam(0, va->index);
-		GetString(last_name[0], STR_VEHICLE_NAME, lastof(last_name[0]));
+		GetString(_last_name[0], STR_VEHICLE_NAME, lastof(_last_name[0]));
 	}
 
-	if (vb != last_vehicle[1]) {
-		last_vehicle[1] = vb;
+	if (vb != _last_vehicle[1]) {
+		_last_vehicle[1] = vb;
 		SetDParam(0, vb->index);
-		GetString(last_name[1], STR_VEHICLE_NAME, lastof(last_name[1]));
+		GetString(_last_name[1], STR_VEHICLE_NAME, lastof(_last_name[1]));
 	}
 
-	r = strcmp(last_name[0], last_name[1]); // sort by name
+	r = strcmp(_last_name[0], _last_name[1]); // sort by name
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
