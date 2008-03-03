@@ -23,6 +23,8 @@
 #include "vehicle_func.h"
 #include "core/random_func.hpp"
 #include "direction_func.h"
+#include "rail_map.h"
+#include "rail.h"
 
 
 int _traininfo_vehicle_pitch = 0;
@@ -624,12 +626,18 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0xFF: {
 			uint16 modflags = 0;
 
-			/* @todo: There are some other bits that should be implemented:
-			 *   bit 5: Whether the rail vehicle is powered or not (mostly useful for wagons).
-			 *   bit 6: This is an electrically powered rail vehicle which is running on normal rail.
-			 *   bit 8: (Maybe?) Toggled whenever the train reverses.
-			 */
-
+			if (v->type == VEH_TRAIN) {
+				/* @todo: There are some other bits that should be implemented:
+				 *   bit 8: (Maybe?) Toggled whenever the train reverses.
+				 */
+				const Vehicle *u = IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON) ? v->First() : v;
+				RailType railtype = GetRailType(v->tile);
+				bool powered = IsTrainEngine(v) || (IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON));
+				bool has_power = powered && HasPowerOnRail(u->u.rail.railtype, railtype);
+				bool is_electric = powered && u->u.rail.railtype == RAILTYPE_ELECTRIC;
+				if (has_power) SetBit(modflags, 5);
+				if (is_electric && !has_power) SetBit(modflags, 6);
+			}
 			if (HasBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SetBit(modflags, 10);
 
 			return variable == 0xFE ? modflags : GB(modflags, 8, 8);
