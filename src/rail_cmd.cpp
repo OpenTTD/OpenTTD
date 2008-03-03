@@ -360,6 +360,8 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			if (IsNormalRoad(tile)) {
 				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
+				if (GetDisallowedRoadDirections(tile) != DRD_NONE) return_cmd_error(STR_ERR_CROSSING_ON_ONEWAY_ROAD);
+
 				RoadTypes roadtypes = GetRoadTypes(tile);
 				RoadBits road = GetRoadBits(tile, ROADTYPE_ROAD);
 				RoadBits tram = GetRoadBits(tile, ROADTYPE_TRAM);

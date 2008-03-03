@@ -1612,6 +1612,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Too high
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suitable railway track
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railway track first
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Road is one way or blocked
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Railway Construction
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Electrified Railway Construction
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Construction
