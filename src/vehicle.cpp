@@ -2199,6 +2199,8 @@ void VehicleEnterDepot(Vehicle *v)
 			if (!IsFrontEngine(v)) v = v->First();
 			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 			v->load_unload_time_rem = 0;
+			/* Reset reversed flag */
+			for (Vehicle *u = v; u != NULL; u = u->Next()) ClrBit(u->u.rail.flags, VRF_TOGGLE_REVERSE);
 			break;
 
 		case VEH_ROAD:

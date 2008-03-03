@@ -627,16 +627,15 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			uint16 modflags = 0;
 
 			if (v->type == VEH_TRAIN) {
-				/* @todo: There are some other bits that should be implemented:
-				 *   bit 8: (Maybe?) Toggled whenever the train reverses.
-				 */
 				const Vehicle *u = IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON) ? v->First() : v;
 				RailType railtype = GetRailType(v->tile);
 				bool powered = IsTrainEngine(v) || (IsTrainWagon(v) && HasBit(v->vehicle_flags, VRF_POWEREDWAGON));
 				bool has_power = powered && HasPowerOnRail(u->u.rail.railtype, railtype);
 				bool is_electric = powered && u->u.rail.railtype == RAILTYPE_ELECTRIC;
+
 				if (has_power) SetBit(modflags, 5);
 				if (is_electric && !has_power) SetBit(modflags, 6);
+				if (HasBit(v->u.rail.flags, VRF_TOGGLE_REVERSE)) SetBit(modflags, 8);
 			}
 			if (HasBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE)) SetBit(modflags, 10);
 

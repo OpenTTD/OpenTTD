@@ -118,7 +118,7 @@ struct VehicleRail {
 	const struct SpriteGroup *cached_override;
 };
 
-enum {
+enum VehicleRailFlags {
 	VRF_REVERSING         = 0,
 
 	/* used to calculate if train is going up or down */
@@ -136,6 +136,9 @@ enum {
 
 	/* used to mark that electric train engine is allowed to run on normal rail */
 	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
+
+	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed) */
+	VRF_TOGGLE_REVERSE = 7,
 };
 
 struct VehicleAir {

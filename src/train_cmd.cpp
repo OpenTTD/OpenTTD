@@ -1787,7 +1787,10 @@ static void ReverseTrainDirection(Vehicle *v)
 	}
 
 	/* update all images */
-	for (Vehicle *u = v; u != NULL; u = u->Next()) { u->cur_image = u->GetImage(u->direction); }
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
+		ToggleBit(u->u.rail.flags, VRF_TOGGLE_REVERSE);
+		u->cur_image = u->GetImage(u->direction);
+	}
 
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
 
