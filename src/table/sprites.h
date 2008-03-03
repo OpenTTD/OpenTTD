@@ -677,7 +677,7 @@ enum Sprites {
 	SPR_BTSGA_X_FRONT           = 2503,
 	SPR_BTSGA_Y_FRONT           = 2504,
 	SPR_BTSGA_X_PILLAR          = 2505,
-	SPR_BTSGA_Y_PILLAR          = 2606,
+	SPR_BTSGA_Y_PILLAR          = 2506,
 	SPR_BTSGA_MONO_X_REAR       = 4324,
 	SPR_BTSGA_MONO_Y_REAR       = 4325,
 	SPR_BTSGA_MGLV_X_REAR       = 4364,
