@@ -1786,13 +1786,16 @@ static void ReverseTrainDirection(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	/* update all images */
-	for (Vehicle *u = v; u != NULL; u = u->Next()) {
-		ToggleBit(u->u.rail.flags, VRF_TOGGLE_REVERSE);
-		u->cur_image = u->GetImage(u->direction);
-	}
+	/* set reversed flag on all parts */
+	for (Vehicle *u = v; u != NULL; u = u->Next()) ToggleBit(u->u.rail.flags, VRF_TOGGLE_REVERSE);
 
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
+
+	/* recalculate cached data */
+	TrainConsistChanged(v);
+
+	/* update all images */
+	for (Vehicle *u = v; u != NULL; u = u->Next()) u->cur_image = u->GetImage(u->direction);
 
 	/* update crossing we were approaching */
 	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
