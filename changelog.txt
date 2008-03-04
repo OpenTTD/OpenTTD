@@ -1,3 +1,43 @@
+0.6.0-beta5 (2008-03-04)
+------------------------------------------------------------------------
+-Feature: Vehicle variable FE bit 8 (r12331) [FS#1812]
+-Feature: Vehicle variable FE bit 5 and 6 (r12330)
+-Feature: Support loading full range of 0xD0xx NewGRF strings which includes 0xD000 to 0xD3FF (r12316)
+-Feature: Ability to change aircraft speed factor, from so called 'realistic' (matching other vehicles) (1/1) to original TTD speed (1/4) (r12293, r12294)
+-Fix: Don't pause/unpause the game when showing load/save windows when the game is paused due to missing GRFs (r12336) [FS#1733]
+-Fix: Disallow building level crossings over one-way roads as this allowed competitors to remove the one-way state (r12329) [FS#1819]
+-Fix: Wrong Y pillar specified for girder with arch bridge (r12328)
+-Fix: Vehicles could be sorted in a wrong order when a vehicle name changed - cached name was not invalidated  (r12324)
+-Fix: Vehicle sorting by name was broken, it was comparing two the same strings (when caching was not used) (r12323) [FS#1821]
+-Fix: Endian issue when saving/loading group owner  (r12322)
+-Change: Update readme about where openttd looks for files (r12321)
+-Fix: Wrong transparency options could be saved after toggling all (r12320) [FS#1817]
+-Fix: Map string IDs that are embedded from other strings (r12317) [FS#1815]
+-Fix: Include prop 25 data for all train parts, not just those that carry cargo (r12314)
+-Fix: YAPF and NTP did not apply penalty for uphill tracks on steep slopes (r12313)
+-Fix: Restore timetable from backupped orders and add group ID to the backup (r12296) [FS#1549]
+-Fix: Do not draw trees nor lamps between tram tracks  (r12290) [FS#1807]
+-Fix: [Win32] Don't create save dir on install (r12269)
+-Fix: Autoreplace did not update vehicle index for timetable window (r12261) [FS#1805]
+-Fix: GetProductionAroundTiles() may fail if only the second production slot exists (r12258)
+-Fix: Removing the Broken FollowTrack_t (pathfinding) fixed related functions (r12252)  [FS#1801]
+-Fix: Town variables 0x9E to 0xAD (company ratings) returned wrong values (r12247)
+-Fix: Proper usage of Clamp() (r12246)
+-Fix: Typo resulting in no players are given the engine preview offer (r12244)
+-Fix: Mac OSX bundle display name should be 'OpenTTD' (r12234) [FS#1798]
+-Fix: [NewGRF] Support using any base price for rail and road vehicles' running cost, show running cost of wagons if available (r12209)
+-Fix: When loading a savegame fails, don't start creating a new game, just go straight back to the intro screen (r12202)
+-Fix: Force AI to build rail or road instead of bridges if possible, so it doesn't build bridges everywhere (r12200)
+-Fix: "Transparent buildings" now only toggles buildings, so show tick when buildings are transparent [FS#1789] (r12198)
+-Fix: Show correct last year profit when the train had negative income  [FS#1788] (r12197)
+-Fix: There can be oil rigs at map borders, do not set water class for them [FS#1787] (r12195)
+-Fix: Clamp various town variables to 16bit prior to returning the value (r12192)
+-Fix: Do not start overtaking if the RV reaches wrong-way one-way-road in the next tiles (r12191)
+-Fix: YAPF always shows 0ms PF time in debug for debug level 2 [FS#1786] (r12190)
+-Fix: Assert when trying to play tile sound at NW border of map (placing buyos, leveling land) [FS#1784] (r12186)
+-Fix: Wrong operator priority, hopefully harmless (r12185)
+-Fix: Take into account possible loan when AI is deciding which bridge to build, so it won't build wooden bridges everytime (r12184)
+
 0.6.0-beta4 (2008-02-18)
 ------------------------------------------------------------------------
 -Feature: Allow buttons to resize in NewGRF settings window (r12172)

@@ -11,14 +11,13 @@ by the number below on http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version of /trunk.
 
-Bugs for 0.6.0-beta3
+Bugs for 0.6.0-beta5
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
 - 1762	Strange Autoreplace behaviour
 - 1711	Gravel and Clay have no worth
 - 1693	Removing road does not reset owner
-- 1549	Timetable + group ID are not backed up with orders
 - 1495	Long vehicles block multistop station
 - 1487	Ending_year is never written to
 - 1473	Train not going to available platform
