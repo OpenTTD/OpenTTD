@@ -2201,6 +2201,7 @@ void VehicleEnterDepot(Vehicle *v)
 			v->load_unload_time_rem = 0;
 			/* Reset reversed flag */
 			for (Vehicle *u = v; u != NULL; u = u->Next()) ClrBit(u->u.rail.flags, VRF_TOGGLE_REVERSE);
+			TrainConsistChanged(v);
 			break;
 
 		case VEH_ROAD:
