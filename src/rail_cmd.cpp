@@ -369,7 +369,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 					default: break;
 					case ROADTYPES_TRAM:
 						/* Tram crossings must always have road. */
-						SetRoadOwner(tile, ROADTYPE_ROAD, _current_player);
+						if (flags & DC_EXEC) SetRoadOwner(tile, ROADTYPE_ROAD, _current_player);
 						roadtypes |= ROADTYPES_ROAD;
 						break;
 
