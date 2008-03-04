@@ -5853,6 +5853,12 @@ void LoadNewGRF(uint load_index, uint file_index)
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
 	for (GrfLoadingStage stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
+		/* Set activated grfs back to will-be-activated between reservation- and activation-stage.
+		 * This ensures that action7/9 conditions 0x06 - 0x0A work correctly. */
+		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+			if (c->status == GCS_ACTIVATED) c->status = GCS_INITIALISED;
+		}
+
 		uint slot = file_index;
 
 		_cur_stage = stage;
