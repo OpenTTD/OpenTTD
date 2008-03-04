@@ -156,6 +156,6 @@ void OTTD_SendThreadMessage(ThreadMsg msg);
 
 extern byte _game_mode;
 extern bool _exit_game;
-extern byte _pause_game;
+extern int8 _pause_game;
 
 #endif /* OPENTTD_H */

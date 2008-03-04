@@ -314,11 +314,11 @@ CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		_pause_game += (p1 == 0) ? -1 : 1;
 
 		switch (_pause_game) {
-			case (byte)-4:
-			case (byte)-1:
+			case -4:
+			case -1:
 				_pause_game = 0;
 				break;
-			case (byte)-3:
+			case -3:
 				ShowQuery(
 					STR_NEWGRF_UNPAUSE_WARNING_TITLE,
 					STR_NEWGRF_UNPAUSE_WARNING,
