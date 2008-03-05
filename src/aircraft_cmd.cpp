@@ -1105,34 +1105,36 @@ static bool AircraftController(Vehicle *v)
 
 	/* Helicopter landing. */
 	if (amd->flag & AMED_HELI_LOWER) {
-		count = UpdateAircraftSpeed(v);
-		if (count > 0) {
-			if (st->airport_tile == 0) {
-				/* FIXME - AircraftController -> if station no longer exists, do not land
-				 * helicopter will circle until sign disappears, then go to next order
-				 * what to do when it is the only order left, right now it just stays in 1 place */
-				v->u.air.state = FLYING;
-				UpdateAircraftCache(v);
-				AircraftNextAirportPos_and_Order(v);
-				return false;
-			}
+		if (st->airport_tile == 0) {
+			/* FIXME - AircraftController -> if station no longer exists, do not land
+			 * helicopter will circle until sign disappears, then go to next order
+			 * what to do when it is the only order left, right now it just stays in 1 place */
+			v->u.air.state = FLYING;
+			UpdateAircraftCache(v);
+			AircraftNextAirportPos_and_Order(v);
+			return false;
+		}
 
-			/* Vehicle is now at the airport. */
-			v->tile = st->airport_tile;
+		/* Vehicle is now at the airport. */
+		v->tile = st->airport_tile;
 
-			/* Find altitude of landing position. */
-			int z = GetSlopeZ(x, y) + 1 + afc->delta_z;
+		/* Find altitude of landing position. */
+		int z = GetSlopeZ(x, y) + 1 + afc->delta_z;
 
-			if (z == v->z_pos) {
-				Vehicle *u = v->Next()->Next();
+		if (z == v->z_pos) {
+			Vehicle *u = v->Next()->Next();
 
-				/*  Increase speed of rotors. When speed is 80, we've landed. */
-				if (u->cur_speed >= 80) return true;
-				u->cur_speed += 4;
-			} else if (v->z_pos > z) {
-				SetAircraftPosition(v, v->x_pos, v->y_pos, max(v->z_pos - count, z));
-			} else {
-				SetAircraftPosition(v, v->x_pos, v->y_pos, min(v->z_pos + count, z));
+			/*  Increase speed of rotors. When speed is 80, we've landed. */
+			if (u->cur_speed >= 80) return true;
+			u->cur_speed += 4;
+		} else {
+			count = UpdateAircraftSpeed(v);
+			if (count > 0) {
+				if (v->z_pos > z) {
+					SetAircraftPosition(v, v->x_pos, v->y_pos, max(v->z_pos - count, z));
+				} else {
+					SetAircraftPosition(v, v->x_pos, v->y_pos, min(v->z_pos + count, z));
+				}
 			}
 		}
 		return false;
