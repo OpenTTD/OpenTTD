@@ -997,8 +997,8 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 				break;
 			}
 
-			/* Copy timetable */
-			if (!DoCommandP(0, v->index | (i << 16) | (1 << 25),
+			/* Copy timetable if enabled */
+			if (_patches.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
 					bak->order[i].wait_time << 16 | bak->order[i].travel_time, NULL,
 					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
