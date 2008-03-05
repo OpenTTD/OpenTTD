@@ -120,7 +120,7 @@ static uint16 cargo_disallowed[TOTAL_NUM_ENGINES];
 static uint32 _grm_engines[TOTAL_NUM_ENGINES];
 
 /* Contains the GRF ID of the owner of a cargo if it has been reserved */
-static uint32 _grm_cargos[NUM_CARGO];
+static uint32 _grm_cargos[NUM_CARGO * 2];
 
 /** DEBUG() function dedicated to newGRF debugging messages
  * Function is essentialy the same as DEBUG(grf, severity, ...) with the
