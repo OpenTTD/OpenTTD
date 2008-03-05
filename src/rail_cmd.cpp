@@ -1699,35 +1699,51 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 	}
 }
 
+/** Enums holding the offsets from base signal sprite,
+ * according to the side it is representing.
+ * The addtion of 2 per enum is necessary in order to "jump" over the
+ * green state sprite, all signal sprites being in pair,
+ * starting with the off-red state */
+enum {
+	SIGN_TO_SOUTHWEST =  0,
+	SIGN_TO_NORTHEAST =  2,
+	SIGN_TO_SOUTHEAST =  4,
+	SIGN_TO_NORTHWEST =  6,
+	SIGN_TO_EAST      =  8,
+	SIGN_TO_WEST      = 10,
+	SIGN_TO_SOUTH     = 12,
+	SIGN_TO_NORTH     = 14,
+};
+
 static void DrawSignals(TileIndex tile, TrackBits rails)
 {
-#define MAYBE_DRAW_SIGNAL(x,y,z,t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, t, GetSingleSignalState(tile, x), y - 0x4FB, z)
+#define MAYBE_DRAW_SIGNAL(x,y,z,t) if (IsSignalPresent(tile, x)) DrawSingleSignal(tile, t, GetSingleSignalState(tile, x), y, z)
 
 	if (!(rails & TRACK_BIT_Y)) {
 		if (!(rails & TRACK_BIT_X)) {
 			if (rails & TRACK_BIT_LEFT) {
-				MAYBE_DRAW_SIGNAL(2, 0x509, 0, TRACK_LEFT);
-				MAYBE_DRAW_SIGNAL(3, 0x507, 1, TRACK_LEFT);
+				MAYBE_DRAW_SIGNAL(2, SIGN_TO_NORTH, 0, TRACK_LEFT);
+				MAYBE_DRAW_SIGNAL(3, SIGN_TO_SOUTH, 1, TRACK_LEFT);
 			}
 			if (rails & TRACK_BIT_RIGHT) {
-				MAYBE_DRAW_SIGNAL(0, 0x509, 2, TRACK_RIGHT);
-				MAYBE_DRAW_SIGNAL(1, 0x507, 3, TRACK_RIGHT);
+				MAYBE_DRAW_SIGNAL(0, SIGN_TO_NORTH, 2, TRACK_RIGHT);
+				MAYBE_DRAW_SIGNAL(1, SIGN_TO_SOUTH, 3, TRACK_RIGHT);
 			}
 			if (rails & TRACK_BIT_UPPER) {
-				MAYBE_DRAW_SIGNAL(3, 0x505, 4, TRACK_UPPER);
-				MAYBE_DRAW_SIGNAL(2, 0x503, 5, TRACK_UPPER);
+				MAYBE_DRAW_SIGNAL(3, SIGN_TO_WEST, 4, TRACK_UPPER);
+				MAYBE_DRAW_SIGNAL(2, SIGN_TO_EAST, 5, TRACK_UPPER);
 			}
 			if (rails & TRACK_BIT_LOWER) {
-				MAYBE_DRAW_SIGNAL(1, 0x505, 6, TRACK_LOWER);
-				MAYBE_DRAW_SIGNAL(0, 0x503, 7, TRACK_LOWER);
+				MAYBE_DRAW_SIGNAL(1, SIGN_TO_WEST, 6, TRACK_LOWER);
+				MAYBE_DRAW_SIGNAL(0, SIGN_TO_EAST, 7, TRACK_LOWER);
 			}
 		} else {
-			MAYBE_DRAW_SIGNAL(3, 0x4FB, 8, TRACK_X);
-			MAYBE_DRAW_SIGNAL(2, 0x4FD, 9, TRACK_X);
+			MAYBE_DRAW_SIGNAL(3, SIGN_TO_SOUTHWEST, 8, TRACK_X);
+			MAYBE_DRAW_SIGNAL(2, SIGN_TO_NORTHEAST, 9, TRACK_X);
 		}
 	} else {
-		MAYBE_DRAW_SIGNAL(3, 0x4FF, 10, TRACK_Y);
-		MAYBE_DRAW_SIGNAL(2, 0x501, 11, TRACK_Y);
+		MAYBE_DRAW_SIGNAL(3, SIGN_TO_SOUTHEAST, 10, TRACK_Y);
+		MAYBE_DRAW_SIGNAL(2, SIGN_TO_NORTHWEST, 11, TRACK_Y);
 	}
 }
 
