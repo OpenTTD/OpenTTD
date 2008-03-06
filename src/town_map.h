@@ -145,7 +145,7 @@ static inline void SetLiftPosition(TileIndex t, byte pos)
 static inline byte GetHouseAnimationFrame(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return GB(_m[t].m6, 3, 5);
+	return GB(_m[t].m6, 2, 6) | (GB(_m[t].m3, 5, 1) << 6);
 }
 
 /**
@@ -157,7 +157,8 @@ static inline byte GetHouseAnimationFrame(TileIndex t)
 static inline void SetHouseAnimationFrame(TileIndex t, byte frame)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	SB(_m[t].m6, 3, 5, frame);
+	SB(_m[t].m6, 2, 6, GB(frame, 0, 6));
+	SB(_m[t].m3, 5, 1, GB(frame, 6, 1));
 }
 
 /**

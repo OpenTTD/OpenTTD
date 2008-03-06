@@ -646,6 +646,7 @@
        </li>
       </ul>
      <li>m3 bit 6 : bit 8 of house type (m4), allowing 512 different types.</li>
+     <li>m3 bit 5 : bit 6 of current animation frame (see m6)</li>
      <li>m3 bits 4..0 : triggers activated <a href="#newhouses">(newhouses)</a></li>
      <li>m4 : <a href="landscape_externals.html">town building type</a> (with m3[6] bit)</li>
      <li>m5 : see m3 bit 7</li>
@@ -653,8 +654,7 @@
       <ul>
        <li>If <a href="#newhouses">newhouses</a> is activated
         <ul>
-         <li>bits 7..3 : Current animation frame</li>
-         <li>bit 2 : free</li>
+         <li>bits 7..2 : Current animation frame (bits 5..0); bit 6 in m3</li>
         </ul>
        </li>
        <li>Standard behaviour

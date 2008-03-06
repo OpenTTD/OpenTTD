@@ -2431,6 +2431,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(91)) {
+		/* Increase HouseAnimationFrame from 5 to 7 bits */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_HOUSE) && GetHouseType(t) >= NEW_HOUSE_OFFSET) {
+				SetHouseAnimationFrame(t, GB(_m[t].m6, 3, 5));
+			}
+		}
+	}
+
 	return InitializeWindowsAndCaches();
 }
 
