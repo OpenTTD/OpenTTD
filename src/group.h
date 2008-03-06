@@ -12,7 +12,7 @@
 
 enum {
 	ALL_GROUP     = 0xFFFD,
-	DEFAULT_GROUP = 0xFFFE,
+	DEFAULT_GROUP = 0xFFFE, ///< ungrouped vehicles are in this group.
 	INVALID_GROUP = 0xFFFF,
 };
 

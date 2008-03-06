@@ -140,18 +140,9 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	char *vehicle_name = NULL;
 	CargoID replacement_cargo_type;
 
-	/* If the vehicle belongs to a group, check if the group is protected from the global autoreplace.
-	 *  If not, chek if an global auto replacement is defined */
-	new_engine_type = (IsValidGroupID(old_v->group_id) && GetGroup(old_v->group_id)->replace_protection) ?
-			INVALID_ENGINE :
-			EngineReplacementForPlayer(p, old_v->engine_type, ALL_GROUP);
-
-	/* If we don't set new_egnine_type previously, we try to check if an autoreplacement was defined
-	 *  for the group and the engine_type of the vehicle */
-	if (new_engine_type == INVALID_ENGINE && !IsAllGroupID(old_v->group_id)) {
-		new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type, old_v->group_id);
-	}
-
+	/* Check if there is a autoreplacement set for the vehicle */
+	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type, old_v->group_id);
+	/* if not, just renew to the same type */
 	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
 
 	replacement_cargo_type = GetNewCargoTypeForReplace(old_v, new_engine_type);
@@ -345,22 +336,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			// check if the vehicle should be replaced
 			if (!w->NeedsAutorenewing(p) || // replace if engine is too old
 					w->max_age == 0) { // rail cars got a max age of 0
-				/* If the vehicle belongs to a group, check if the group is protected from the global autoreplace.
-				   If not, chek if an global auto remplacement is defined */
-				if (IsValidGroupID(w->group_id)) {
-					if (!EngineHasReplacementForPlayer(p, w->engine_type, w->group_id) && (
-							GetGroup(w->group_id)->replace_protection ||
-							!EngineHasReplacementForPlayer(p, w->engine_type, ALL_GROUP))) {
-						continue;
-					}
-				} else if (IsDefaultGroupID(w->group_id)) {
-					if (!EngineHasReplacementForPlayer(p, w->engine_type, DEFAULT_GROUP) &&
-							!EngineHasReplacementForPlayer(p, w->engine_type, ALL_GROUP)) {
-						continue;
-					}
-				} else if (!EngineHasReplacementForPlayer(p, w->engine_type, ALL_GROUP)) {
-					continue;
-				}
+				if (!EngineHasReplacementForPlayer(p, w->engine_type, w->group_id)) continue;
 			}
 
 			/* Now replace the vehicle */
