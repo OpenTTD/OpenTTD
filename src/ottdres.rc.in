@@ -13,7 +13,7 @@
 #ifdef MSVC
 #include "winres.h"
 #else
-#include "afxres.h"
+#define IDC_STATIC              (-1)     // all static controls
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
