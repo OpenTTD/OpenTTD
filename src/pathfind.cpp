@@ -611,37 +611,22 @@ start_at:
 		/* If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
 		 *   need to find the exit of the tunnel. */
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (IsTunnel(tile)) {
-				if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
-					/* We are not just driving out of the tunnel */
-					if (GetTunnelBridgeDirection(tile) != direction ||
-							GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-						/* We are not driving into the tunnel, or it is an invalid tunnel */
-						continue;
-					}
-					if (!HasBit(tpf->railtypes, GetRailType(tile))) {
-						bits = TRACK_BIT_NONE;
-						break;
-					}
+			if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
+				/* We are not just driving out of the tunnel/bridge */
+				if (GetTunnelBridgeDirection(tile) != direction ||
+						GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
+					/* We are not driving into the tunnel/bridge, or it is an invalid tunnel/bridge */
+					continue;
+				}
+				if (!HasBit(tpf->railtypes, GetRailType(tile))) {
+					bits = TRACK_BIT_NONE;
+					break;
+				}
 
-					TileIndex endtile = GetOtherTunnelEnd(tile);
-					si.cur_length += DIAG_FACTOR * (GetTunnelBridgeLength(tile, endtile) + 1);
-					tile = endtile;
-					/* tile now points to the exit tile of the tunnel */
-				}
-			} else { // IsBridge(tile)
-				TileIndex tile_end;
-				if (GetTunnelBridgeDirection(tile) != ReverseDiagDir(direction)) {
-					/* We are not just leaving the bridge */
-					if (GetTunnelBridgeDirection(tile) != direction ||
-							GetTunnelBridgeTransportType(tile) != tpf->tracktype) {
-						/* Not entering the bridge or not compatible */
-						continue;
-					}
-				}
-				tile_end = GetOtherBridgeEnd(tile);
-				si.cur_length += DIAG_FACTOR * (GetTunnelBridgeLength(tile, tile_end) + 1);
-				tile = tile_end;
+				TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
+				si.cur_length += DIAG_FACTOR * (GetTunnelBridgeLength(tile, endtile) + 1);
+				tile = endtile;
+				/* tile now points to the exit tile of the tunnel/bridge */
 			}
 		}
 
