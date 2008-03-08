@@ -912,7 +912,7 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
  */
 static void DoFloodTile(TileIndex target)
 {
-	if (IsTileType(target, MP_WATER)) return;
+	assert(!IsTileType(target, MP_WATER));
 
 	bool flooded = false; // Will be set to true if something is changed.
 
@@ -1033,6 +1033,8 @@ void TileLoop_Water(TileIndex tile)
 			for (Direction dir = DIR_BEGIN; dir < DIR_END; dir++) {
 				TileIndex dest = AddTileIndexDiffCWrap(tile, TileIndexDiffCByDir(dir));
 				if (dest == INVALID_TILE) continue;
+				/* do not try to flood water tiles - increases performance a lot */
+				if (IsTileType(dest, MP_WATER)) continue;
 
 				uint z_dest;
 				Slope slope_dest = (Slope)(GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP);
