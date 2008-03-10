@@ -198,6 +198,7 @@ struct ResolverObject {
 	CallbackID callback;
 	uint32 callback_param1;
 	uint32 callback_param2;
+	bool procedure_call; ///< true if we are currently resolving a var 0x7E procedure result.
 
 	byte trigger;
 	uint32 last_value;
@@ -254,6 +255,8 @@ struct ResolverObject {
 	void (*SetTriggers)(const struct ResolverObject*, int);
 	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte, bool*);
 	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const SpriteGroup*);
+
+	ResolverObject() : procedure_call(false) { }
 };
 
 

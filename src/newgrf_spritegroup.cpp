@@ -80,6 +80,35 @@ void InitializeSpriteGroupPool()
 TemporaryStorageArray<uint32, 0x110> _temp_store;
 
 
+static inline bool Is8BitCallback(const ResolverObject *object)
+{
+	/* Var 0x7E procedure results are always 15 bit */
+	if (object == NULL | object->procedure_call) return false;
+
+	switch (object->callback) {
+		/* All these functions are 15 bit callbacks */
+		case CBID_VEHICLE_REFIT_CAPACITY:
+		case CBID_HOUSE_COLOUR:
+		case CBID_HOUSE_CARGO_ACCEPTANCE:
+		case CBID_INDUSTRY_LOCATION:
+		case CBID_HOUSE_ACCEPT_CARGO:
+		case CBID_INDTILE_CARGO_ACCEPTANCE:
+		case CBID_INDTILE_ACCEPT_CARGO:
+		case CBID_VEHICLE_COLOUR_MAPPING:
+		case CBID_HOUSE_PRODUCE_CARGO:
+		case CBID_VEHICLE_SOUND_EFFECT:
+		case CBID_VEHICLE_MODIFY_PROPERTY: // depends on queried property
+		case CBID_CARGO_PROFIT_CALC:
+		case CBID_SOUNDS_AMBIENT_EFFECT:
+		case CBID_CARGO_STATION_RATING_CALC:
+			return false;
+
+		/* The rest is a 8 bit callback, which should be truncated properly */
+		default:
+			return true;
+	}
+}
+
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	/* First handle variables common with Action7/9/D */
@@ -174,6 +203,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		bool available = true;
 		if (adjust->variable == 0x7E) {
 			ResolverObject subobject = *object;
+			subobject.procedure_call = true;
 			const SpriteGroup *subgroup = Resolve(adjust->subroutine, &subobject);
 			if (subgroup == NULL || subgroup->type != SGT_CALLBACK) {
 				value = CALLBACK_FAILED;
@@ -204,25 +234,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 	if (group->g.determ.num_ranges == 0) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
 		nvarzero.type = SGT_CALLBACK;
-		switch (object->callback) {
-			/* All these functions are 15 bit callbacks */
-			case CBID_VEHICLE_REFIT_CAPACITY:
-			case CBID_HOUSE_COLOUR:
-			case CBID_HOUSE_CARGO_ACCEPTANCE:
-			case CBID_INDUSTRY_LOCATION:
-			case CBID_INDTILE_CARGO_ACCEPTANCE:
-			case CBID_VEHICLE_COLOUR_MAPPING:
-			case CBID_HOUSE_PRODUCE_CARGO:
-			case CBID_VEHICLE_SOUND_EFFECT:
-			case CBID_SOUNDS_AMBIENT_EFFECT:
-				nvarzero.g.callback.result = GB(value, 0, 15);
-				break;
-
-			/* The rest is a 8 bit callback, which should be truncated properly */
-			default:
-				nvarzero.g.callback.result = GB(value, 0, 8);
-				break;
-		}
+		nvarzero.g.callback.result = GB(value, 0, Is8BitCallback(object) ? 8 : 15);
 		return &nvarzero;
 	}
 
@@ -280,6 +292,14 @@ const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object)
 		case SGT_REAL:          return object->ResolveReal(object, group);
 		case SGT_DETERMINISTIC: return ResolveVariable(group, object);
 		case SGT_RANDOMIZED:    return ResolveRandom(group, object);
+		case SGT_CALLBACK: {
+			if (!Is8BitCallback(object)) return group;
+
+			static SpriteGroup result8bit;
+			result8bit.type = SGT_CALLBACK;
+			result8bit.g.callback.result = GB(group->g.callback.result, 0, 8);
+			return &result8bit;
+		}
 		default:                return group;
 	}
 }

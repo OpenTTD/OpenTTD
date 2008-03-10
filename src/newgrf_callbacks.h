@@ -210,6 +210,11 @@ enum CallbackID {
 
 	/** Customize the output cargo types of a newly build industry. */
 	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C,
+
+	/* ATTENTION:
+	 * When adding new callbacks and their result is 15bit, add them to newgrf_spritegroup.cpp:Is8BitCallback().
+	 * It does not harm to add them there though they are not implemented. But it does harm if they get forgotton.
+	 */
 };
 
 /**
