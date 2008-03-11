@@ -83,7 +83,7 @@ TemporaryStorageArray<uint32, 0x110> _temp_store;
 static inline bool Is8BitCallback(const ResolverObject *object)
 {
 	/* Var 0x7E procedure results are always 15 bit */
-	if (object == NULL | object->procedure_call) return false;
+	if (object == NULL || object->procedure_call) return false;
 
 	switch (object->callback) {
 		/* All these functions are 15 bit callbacks */
@@ -96,6 +96,7 @@ static inline bool Is8BitCallback(const ResolverObject *object)
 		case CBID_INDTILE_ACCEPT_CARGO:
 		case CBID_VEHICLE_COLOUR_MAPPING:
 		case CBID_HOUSE_PRODUCE_CARGO:
+		case CBID_INDTILE_SHAPE_CHECK: // depends on grf version, masked to 8 bit in PerformIndustryTileSlopeCheck() if needed
 		case CBID_VEHICLE_SOUND_EFFECT:
 		case CBID_VEHICLE_MODIFY_PROPERTY: // depends on queried property
 		case CBID_CARGO_PROFIT_CALC:
