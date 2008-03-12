@@ -724,6 +724,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Deniz fe
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Verici koy
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Çöl yap, kaldırmak için CTRL'ye basılı tut
 STR_CREATE_LAKE                                                 :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
+STR_CREATE_RIVER                                                :{BLACK}Irmak oluştur.
 STR_0290_DELETE                                                 :{BLACK}Sil
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
 STR_0292_SAVE_SCENARIO                                          :Kaydet
@@ -933,6 +934,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Görüne
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Tam ekran
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Tam ekran oynamak için bunu isaretleyin
+STR_FULLSCREEN_FAILED                                           :{WHITE}Tam ekran modu başarısız
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekran Çözünürlüğü
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1199,6 +1201,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ayar değerini değiştir
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Bazi servis gecikmeleri aralık dışında: %5-%90 veya 30-800 gün arasında olmalı
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Trenler için yol bulucu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Önerilmez)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Önerilen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Arabalar için yol bulucu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Öntanımlı {RED}(Önerilmez)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Önerilen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Gemiler için yol bulucu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Öntanımlı {BLUE}(Önerilen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Önerilmez)
 
 STR_TEMPERATE_LANDSCAPE                                         :Ilıman iklim
 STR_SUB_ARCTIC_LANDSCAPE                                        :Soğuk iklim
@@ -2328,6 +2343,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Tramvay (Buhar)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Tramvay (Dizel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Tramvay (Elektrik)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Yolcu Vagonu (Monoray)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Yolcu Vagonu (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Yük Vagonu
 STR_LIVERY_BUS                                                  :Otobüs
 STR_LIVERY_TRUCK                                                :Kamyon
@@ -2783,6 +2800,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} artık kullanılabilir!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Hurda araçlar satılamaz...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Yok olmuş araç modifiye edilemez...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Aracın zaman çizelgesi oluşturulamıyor...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Araçlar sadece istasyonlarda bekleyebilir.
@@ -3227,6 +3245,12 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo tür
 STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} hariç hepsi
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Mak. Çekim Gücü: {GOLD}{FORCE}
 
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
+
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Oluştur
@@ -3395,6 +3419,8 @@ STR_FACE_LOAD                                                   :{BLACK}Yükle
 STR_FACE_LOAD_TIP                                               :{BLACK}Tercih edilen yüzü yükle
 STR_FACE_LOAD_DONE                                              :{WHITE}Tercih edilen yüz OpenTTD ayar dosyasından yüklendi.
 STR_FACE_FACECODE                                               :{BLACK}Oyuncu yüzü no.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Oyuncu suratının numarasını göster/değiştir
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Oyuncu suratının numarasını göster/değiştir
 STR_FACE_FACECODE_SET                                           :{WHITE}Surat numarası ayarlandı.
 STR_FACE_FACECODE_ERR                                           :{WHITE}Oyuncu surat numarası ayarlanamadı - 0 ve 4.294.967.295 arasında bir sayı olmalı!
 STR_FACE_SAVE                                                   :{BLACK}Kaydet

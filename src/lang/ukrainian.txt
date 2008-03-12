@@ -723,7 +723,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Заг�
 STR_MESSAGES_ALL                                                :{YELLOW}Відображати повідомлення: відкл. / коротко / повно
 STR_MESSAGE_SOUND                                               :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...дуже далеко від попереднього пункту призначення
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії, що досягли {NUM}{}(рівень {STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії, що досягли {NUM}{}({STRING} рівень)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Бізнесмен
@@ -940,7 +940,7 @@ STR_02E1                                                        :{BLACK}{SKIP}{S
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Виберіть грошову одиницю
 STR_MEASURING_UNITS                                             :{BLACK}Система одиниць виміру
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Вибір системи одиниць виміру
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Виберіть систему одиниць виміру
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Транспорт
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть, по якій стороні їхатиме транспорт
@@ -953,10 +953,10 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Вибе
 STR_02F4_AUTOSAVE                                               :{BLACK}Автозбереження
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Виберіть період автозбереження гри
-STR_02F7_OFF                                                    :Вимкнено
-STR_02F8_EVERY_3_MONTHS                                         :Кожні три місяці
-STR_02F9_EVERY_6_MONTHS                                         :Кожні півроку
-STR_02FA_EVERY_12_MONTHS                                        :Щороку
+STR_02F7_OFF                                                    :вимкнено
+STR_02F8_EVERY_3_MONTHS                                         :кожні три місяці
+STR_02F9_EVERY_6_MONTHS                                         :кожні півроку
+STR_02FA_EVERY_12_MONTHS                                        :щороку
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Почати нову гру
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Продовжити збережену гру
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Створити свій сценарій
@@ -1175,29 +1175,30 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Доз�
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Дозволити передавати гроші іншим компаніям: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднорідні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множник ваги для імітації важких потягів: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Фактор швидкості літаків: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Дозволити безпересадкові зупинки на муніципальних дорогах: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Дозволити будувати суміжні станції: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Будувати малі аеропорти можна завжди: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Повідомляти, коли поїзд загубився {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Повідомляти, якщо поїзд загубився {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :усього транспорту
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Попереджати якщо поїзд приносить збитки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Повідомляти, якщо поїзд приносить збитки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не старіє: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автооновлення старого транспорту
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Автооновлення транспорту через {ORANGE}{STRING}{LTBLUE} міс. до/після макс.віку
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Необхідна сума для автооновлення: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Сума, необхідна для автооновлення: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Тривалість повідомлення про помилку: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Показувати населення міста поруч з назвою: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Невидимі дерева і прозорі будівлі: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Прозорі дерева: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Класичний
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ТерраГен
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс віддаленість від нафтової свердловини {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс. віддаленість від краю для нафтових свердловин {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Висота рівня снігу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Нерівність землі (лише для TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Дуже гладкий
@@ -1215,7 +1216,7 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Рів�
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Включити меню рельєфу до меню будування: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Приєднати меню рельєфу до меню будування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Протилежний напрямок прокрутки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Плавна прокрутка у вікні: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показувати розміри будівництва в підказці: {ORANGE}{STRING}
@@ -1266,7 +1267,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Заб�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заборонити комп'ютеру будувати літаки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Новий тип інтелекту (альфа): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Новий тип інтелекту (альфа-версія): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Включити інтелект при грі в мережі(тестовий): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} дн/%
@@ -1736,6 +1737,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Дуже
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Невідповідний тип колії
 STR_1007_ALREADY_BUILT                                          :{WHITE}...вже побудовано
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Спочатку приберіть колію
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Дорога з одностороннім рухом  або блокована
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Будівництво залізниці
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Будувати електрифіковану колію
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Будівництво монорельса
@@ -2346,14 +2348,14 @@ STR_682C_HILLY                                                  :Горбкув�
 STR_682D_MOUNTAINOUS                                            :Гористий
 STR_682E_STEADY                                                 :Стабільна
 STR_682F_FLUCTUATING                                            :Нестійка
-STR_6830_IMMEDIATE                                              :Відразу
+STR_6830_IMMEDIATE                                              :відразу
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 місяці після гравця
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 місяців після гравця
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 місяців після гравця
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :В кінці лінії, або на станціях
-STR_6835_AT_END_OF_LINE_ONLY                                    :Лише в кінці лінії
-STR_6836_OFF                                                    :ВиКл
-STR_6837_ON                                                     :Вкл
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :в кінці лінії, або на станціях
+STR_6835_AT_END_OF_LINE_ONLY                                    :лише в кінці лінії
+STR_6836_OFF                                                    :відкл.
+STR_6837_ON                                                     :вкл.
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Показати таблицю рекордів
 STR_PERMISSIVE                                                  :Допустиме
 STR_TOLERANT                                                    :Терпиме

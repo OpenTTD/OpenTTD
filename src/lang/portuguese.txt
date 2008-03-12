@@ -1019,7 +1019,7 @@ STR_CONFIG_PATCHES_OFF                                          :Desligado
 STR_CONFIG_PATCHES_ON                                           :Ligado
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostrar velocidade do veículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra em construções, linhas, etc. (auto-declive): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permitir formação de terra em construções (auto-declive): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir remoção de mais estradas, pontes, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
@@ -1050,6 +1050,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinheiro para outras empresas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para simular comboios pesados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Factor de velocidade de aviões: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
 
@@ -1093,7 +1094,7 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manuten
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Suavizar deslocamento da navegação no mapa: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar as medidas nas várias ferramentas de construção: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar medidas nas várias ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
@@ -1121,7 +1122,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Própria empres
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activar plano de horários para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostrar horário em tics em vez dias: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar jogo): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Linha Normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Linha Electrificada
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
@@ -1130,7 +1131,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispon
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferramentas de construção quando não existirem veículos adequeados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferram. de construção se não houver veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Máximo de aeronaves por jogador: {ORANGE}{STRING}
@@ -1204,6 +1205,14 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Alterar valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Sistema de encontrar caminho para comboios: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Não recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Sistema de encontrar caminho para veículos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Não recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomendado)
 
 STR_TEMPERATE_LANDSCAPE                                         :Terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
@@ -2867,7 +2876,7 @@ STR_GO_TO_ROADVEH_DEPOT                                         :Ir para o depó
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenção no depósito de {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reconverter veículo para transportar outro tipo de carga
-STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reconverter veiculo
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reconverter veículo
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reconverter veículo para transportar o tipo de carga seleccionado
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Não é possível reconverter veículo
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccione o tipo de carga para o veículo
@@ -3136,7 +3145,7 @@ STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Barcos
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostrar todos os comboios que têm esta estação nas ordens de serviço
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar todos os veiculos de estrada que têm esta estação nas ordens de serviço
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar todos os veículos de estrada que têm esta estação nas ordens de serviço
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar todos os aviões que têm esta estação nas ordens de serviço
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos os navios de cujo itinerário esta estação faz parte
 

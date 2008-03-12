@@ -1052,6 +1052,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Поз�
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Позволи изпращане на пари до други компаний: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Теглови множител към товарите за симулация на тежки влакове: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Скоростоопределяща: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Преминаване през спирки на градски пътища: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Позвалявай допрени гари: {ORANGE}{STRING}
 
@@ -1613,6 +1614,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Прек
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Неподходящ за употреба релсов път
 STR_1007_ALREADY_BUILT                                          :{WHITE}...вече е построено
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Първо трябва да премахнеш релсовия път
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Пътят е еднопосочен или блокиран
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Конструкции за Двурелсов път
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Строене на електрифицирана ЖП мрежа
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Конструкции за Еднорелсов път
@@ -2768,7 +2770,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Разт
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Времетаблица - кликни върху заповед за да я маркираш.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Промени времетраенето на маркираната заповед
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Изчисти времетраенето на маркираната заповед
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Преправи закъснялата бройка, такаче превозните средства да са на време
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Reset the lateness counter, so the vehicle will be on time
 STR_SERVICE_HINT                                                :{BLACK}Пропусни освен ако е необходим ремонт
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Тегло: {WEIGHT_S}{}Скорост: {VELOCITY}  Мощност: {POWER}{}Разход: {CURRENCY}/г.{}Капацитет: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Развален
@@ -3355,6 +3357,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Изпо
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Използвай прозрачност за сгради като гари, депа, пътни точки и висящи жици
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Използвай прозрачност за мостове
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Активирай прозрачност за висящите. CTRL+клик за фиксиране.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Вклучи прозрачност за товарещи указатели
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

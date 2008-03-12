@@ -1051,6 +1051,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Autoris
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Autoriser l'envoi d'argent aux autres compagnies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gares non uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplier le poid pour les trains fret (simule des trains lourds): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Facteur de vitesse des aéroplanes: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Autoriser la construction de stations adjacentes: {ORANGE}{STRING}
 
@@ -1612,6 +1613,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Trop él
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Aucuns rails convenables
 STR_1007_ALREADY_BUILT                                          :{WHITE}...déjà construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Vous devez d'abord enlever les rails
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}La route est à sens unique ou bloquée
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construction de voie ferrée
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construction de voie ferrée électrifiée
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construction de Monorail

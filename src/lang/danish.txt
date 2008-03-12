@@ -1050,6 +1050,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillad 
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillad at sende penge til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Fly-hastighedsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
 
@@ -1203,6 +1204,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Skift indstillingsværdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nogle eller alle standard service intervaller nedenunder er uforenelige med den valgte opsætning! 5-90% og 30-800 dage er gyldige
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Stifinder til tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikke anbefalet)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalet)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Stifinder til vejkøretøjer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Ikke anbefalet)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalet)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Stifinder til skibe: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Anbefalet)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalet)
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempereret klima
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktisk klima
@@ -1598,6 +1612,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}For høj
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ingen brugbar jernbane
 STR_1007_ALREADY_BUILT                                          :{WHITE}...allerede bygget
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Det er nødvendigt at fjerne jernbaneskinnerne først
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Vejen er ensrettet eller blokeret
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Jernbanekonstruktion
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrisk jernbanekonstruktion
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorailkonstruktion
@@ -3340,6 +3355,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Skift ge
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Skift gennemsigtighed for konstruktioner som stationer, værksteder, kontrolsteder og køreledninger
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skift gennemsigtighed for broer
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner, og måske i fremtiden for øjeguf
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Slå gennemsigtighed til/fra for laste-indikatorer
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

@@ -1050,6 +1050,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permet 
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permet enviar diners a altres companyies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacions no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Factor de velocitat dels avions: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet situar parades en carreteres que són propietat del poble: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permet construir estacions annexes: {ORANGE}{STRING}
 
@@ -1611,6 +1612,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Massa al
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Via de tren no apropiada
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ja construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}S'ha de treure la via primer
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}La carretera és un d'un sol sentit o està bloquejada
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construcció de Ferrocarril
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcció de Ferrocarril Elèctric
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcció de Monorail

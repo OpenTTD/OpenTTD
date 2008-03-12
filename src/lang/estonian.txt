@@ -1150,6 +1150,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Luba ek
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Luba teistele ettevõtetele raha saata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Luba suvalise kujuga jaamad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Raskete rongide simuleerimiseks kasutatav raskuse korrutaja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Lennuki kiiruse tegur: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Luba läbisõidupeatused linnateedel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Luba jaamu lähestikku ehitada: {ORANGE}{STRING}
 
@@ -1711,6 +1712,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Liiga k�
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Sobiv rongitee puudub
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juba ehitatud
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rööbastee tuleb eelnevalt lammutada
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Läbipääsmatu või ühesuunaline maantee
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Rööbasteede ehitamine
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifitseeritud rööbasteede ehitamine
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorelsi ehitamine

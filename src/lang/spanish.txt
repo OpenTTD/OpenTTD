@@ -1051,6 +1051,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Permitir enviar dinero a otras empresas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estaciones no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Carga el multiplicador de peso para simular trenes pesados: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite conducir en paradas sobre carreteras de ciudades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
 
@@ -1150,7 +1151,7 @@ STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Intervalo de despacho por defecto para veh. de carretera: {ORANGE}no
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de despacho por defecto para aeroplanos: {ORANGE}{STRING} días
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de despacho por defecto para aviones: {ORANGE}no
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de despacho por defecto para aeronaves: {ORANGE}no
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de despacho por defecto para barcos: {ORANGE}no
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar servicio cuando las averías están desactivadas: {ORANGE}{STRING}
@@ -1612,6 +1613,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Demasiad
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tramo de vía no apropiado
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ya construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Se debe retirar primero tramo de vía
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Carretera de un solo sentido o bloqueada
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construcción de ferrocarril
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcciòn Línea Eléctrica de Ferrocarril
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcción de monorraíl
@@ -2964,7 +2966,7 @@ STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nueva ae
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar aeronave
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto copiará la aeronave. Control-click compartirá las ordenes
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá una copia de la aeronave. Pulsa este botón y después la aeronave dentro o fuera del hangar. Control-click compartirá las ordenes
-STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuevo avilón
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nueva Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construir aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}No se puede construir aeronave...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aeronave

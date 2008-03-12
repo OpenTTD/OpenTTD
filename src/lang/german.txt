@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
 STR_0008_WAITING                                                :{BLACK}Im Wartezustand:  {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} unterwegs von {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akzeptiert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akzeptiert: {GOLD}
 STR_000E                                                        :
@@ -724,7 +725,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
-STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg.-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal; Bei gedrückter Strg.-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
@@ -1050,6 +1051,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaube
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaube es, anderen Firmen Geld zu schenken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen um schwere Züge zu simulieren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Flugzeug-Geschwindigkeitsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bushaltestellen an städtischen Straßen erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bau angrenzender Stationen erlauben: {ORANGE}{STRING}
 
@@ -1203,6 +1205,18 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Einstellungswert ändern
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Einige oder alle dieser Standardwartungsintervalle sind inkompatibel mit den gewählten Einstellungen! 5-90% und 30-800 Tage sind gültig.
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder für Züge: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(nicht empfohlen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(empfohlen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder für Schiffe: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(empfohlen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(nicht empfohlen)
 
 STR_TEMPERATE_LANDSCAPE                                         :Gemäßigt
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktisch
@@ -1598,6 +1612,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Zu hoch
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Keine geeigneten Gleise
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ist bereits gebaut
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Gleise müssen erst entfernt werden
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Einbahnstraße oder blockierter Weg
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gleis- / Bahnhofsbau
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Bau elektrifizierter Strecken
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienenbahnbau
@@ -3340,6 +3355,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transpar
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung einstellen
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten, einstellen
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg.+klick zum feststellen.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

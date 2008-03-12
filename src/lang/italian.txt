@@ -1052,6 +1052,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Consent
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Consenti l'invio di denaro ad altre compagnie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Moltiplicatore di peso per simulare treni merci pesanti: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Fattore di velocità degli aeromobili: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Consenti fermate passanti sulle strade delle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Consenti la costruzione di stazioni adiacenti: {ORANGE}{STRING}
 
@@ -1613,6 +1614,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Troppo a
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo di binari non adatti
 STR_1007_ALREADY_BUILT                                          :{WHITE}...già costruito
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Bisogna demolire i binari prima
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}La strada è bloccata o a senso unico
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzione ferrovie
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Costruzione ferrovie elettrificate
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione monorotaia
