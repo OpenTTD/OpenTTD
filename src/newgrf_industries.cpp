@@ -25,7 +25,7 @@
 
 #include "table/strings.h"
 
-static Randomizer _industry_creation_randomizer;
+static uint32 _industry_creation_random_bits;
 
 /* Since the industry IDs defined by the GRF file don't necessarily correlate
  * to those used by the game, the IDs used for overriding old industries must be
@@ -469,7 +469,7 @@ uint32 IndustryLocationGetVariable(const ResolverObject *object, byte variable, 
 		case 0x8D: return min(DistanceSquare(industry->town->xy, tile), 65535);
 
 		/* 32 random bits */
-		case 0x8F: return _industry_creation_randomizer.Next();
+		case 0x8F: return _industry_creation_random_bits;
 	}
 
 	/* None of the special ones, so try the general ones */
@@ -494,7 +494,7 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	NewIndustryResolver(&object, tile, &ind, type);
 	object.GetVariable = IndustryLocationGetVariable;
 	object.callback = CBID_INDUSTRY_LOCATION;
-	_industry_creation_randomizer.SetSeed(seed);
+	_industry_creation_random_bits = seed;
 
 	group = Resolve(GetIndustrySpec(type)->grf_prop.spritegroup, &object);
 
