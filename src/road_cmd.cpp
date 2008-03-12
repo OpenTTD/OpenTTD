@@ -414,6 +414,9 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
 
+	/* do not allow building 'zero' road bits, code wouldn't handle it */
+	if (pieces == ROAD_NONE) return CMD_ERROR;
+
 	RoadType rt = (RoadType)GB(p1, 4, 2);
 	if (!IsValidRoadType(rt) || !ValParamRoadType(rt)) return CMD_ERROR;
 
