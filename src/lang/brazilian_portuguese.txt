@@ -2,6 +2,7 @@
 ##ownname Português (BR)
 ##isocode pt_BR
 ##plural 2
+##case m f
 ##gender m f
 
 #
