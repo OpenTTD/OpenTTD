@@ -418,9 +418,11 @@ static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 	switch (clicked_widget) {
 		case RTW_REMOVE:
 			w->RaiseWidget(RTW_ONE_WAY);
+			w->InvalidateWidget(RTW_ONE_WAY);
 			break;
 		case RTW_ONE_WAY:
 			w->RaiseWidget(RTW_REMOVE);
+			w->InvalidateWidget(RTW_REMOVE);
 			break;
 		case RTW_BUS_STATION:
 		case RTW_TRUCK_STATION:
