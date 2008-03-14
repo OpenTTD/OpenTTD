@@ -13,7 +13,7 @@ static struct {
 	HANDLE wait_obj;
 	HANDLE thread;
 	UINT_PTR devid;
-	char start_song[260];
+	char start_song[MAX_PATH];
 } _midi;
 
 static FMusicDriver_Win32 iFMusicDriver_Win32;
