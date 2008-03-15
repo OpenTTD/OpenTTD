@@ -53,6 +53,43 @@ Sub UpdateFiles(version)
 	UpdateFile revision, version, cur_date, "../src/ottdres.rc"
 End Sub
 
+Function ReadRegistryKey(shive, subkey, valuename, architecture)
+	Dim hiveKey, objCtx, objLocator, objServices, objReg, Inparams, Outparams
+
+	' First, get the Registry Provider for the requested architecture
+	Set objCtx = CreateObject("WbemScripting.SWbemNamedValueSet")
+	objCtx.Add "__ProviderArchitecture", architecture ' Must be 64 of 32
+	Set objLocator = CreateObject("Wbemscripting.SWbemLocator")
+	Set objServices = objLocator.ConnectServer("","root\default","","",,,,objCtx)
+	Set objReg = objServices.Get("StdRegProv")
+
+	' Check the hive and give it the right value
+	Select Case shive
+		Case "HKCR", "HKEY_CLASSES_ROOT"
+			hiveKey = &h80000000
+		Case "HKCU", "HKEY_CURRENT_USER"
+			hiveKey = &H80000001
+		Case "HKLM", "HKEY_LOCAL_MACHINE"
+			hiveKey = &h80000002
+		Case "HKU", "HKEY_USERS"
+			hiveKey = &h80000003
+		Case "HKCC", "HKEY_CURRENT_CONFIG"
+			hiveKey = &h80000005
+		Case "HKDD", "HKEY_DYN_DATA" ' Only valid for Windows 95/98
+			hiveKey = &h80000006
+		Case Else
+			MsgBox "Hive not valid (ReadRegistryKey)"
+	End Select
+
+	Set Inparams = objReg.Methods_("GetStringValue").Inparameters
+	Inparams.Hdefkey = hiveKey
+	Inparams.Ssubkeyname = subkey
+	Inparams.Svaluename = valuename
+	Set Outparams = objReg.ExecMethod_("GetStringValue", Inparams,,objCtx)
+
+	ReadRegistryKey = Outparams.SValue
+End Function
+
 Function DetermineSVNVersion()
 	Dim WshShell, version, url, oExec, line
 	Set WshShell = CreateObject("WScript.Shell")
@@ -61,27 +98,35 @@ Function DetermineSVNVersion()
 	' Try TortoiseSVN
 	' Get the directory where TortoiseSVN (should) reside(s)
 	Dim sTortoise
-	sTortoise = WshShell.RegRead("HKLM\SOFTWARE\TortoiseSVN\Directory")
+	' First, try with 32-bit architecture
+	sTortoise = ReadRegistryKey("HKLM", "SOFTWARE\TortoiseSVN", "Directory", 32)
+	If sTortoise = Nothing Then
+		' No 32-bit version of TortoiseSVN installed, try 64-bit version (doesn't hurt on 32-bit machines, it returns nothing or is ignored)
+		sTortoise = ReadRegistryKey("HKLM", "SOFTWARE\TortoiseSVN", "Directory", 64)
+	End If
 
-	Dim file
-	' Write some "magic" to a temporary file so we can acquire the svn revision/state
-	Set file = FSO.CreateTextFile("tsvn_tmp", -1, 0)
-	file.WriteLine "r$WCREV$$WCMODS?M:$"
-	file.WriteLine "$WCURL$"
-	file.Close
-	Set oExec = WshShell.Exec(sTortoise & "\bin\SubWCRev.exe ../src tsvn_tmp tsvn_tmp")
-	' Wait till the application is finished ...
-	Do
-		OExec.StdOut.ReadLine()
-	Loop While Not OExec.StdOut.atEndOfStream
+	' If TortoiseSVN is installed, try to get the revision number
+	If sTortoise <> Nothing Then
+		Dim file
+		' Write some "magic" to a temporary file so we can acquire the svn revision/state
+		Set file = FSO.CreateTextFile("tsvn_tmp", -1, 0)
+		file.WriteLine "r$WCREV$$WCMODS?M:$"
+		file.WriteLine "$WCURL$"
+		file.Close
+		Set oExec = WshShell.Exec(sTortoise & "\bin\SubWCRev.exe ../src tsvn_tmp tsvn_tmp")
+		' Wait till the application is finished ...
+		Do
+			OExec.StdOut.ReadLine()
+		Loop While Not OExec.StdOut.atEndOfStream
 
-	Set file = FSO.OpenTextFile("tsvn_tmp", 1, 0, 0)
-	version = file.ReadLine
-	url = file.ReadLine
-	file.Close
+		Set file = FSO.OpenTextFile("tsvn_tmp", 1, 0, 0)
+		version = file.ReadLine
+		url = file.ReadLine
+		file.Close
 
-	Set file = FSO.GetFile("tsvn_tmp")
-	file.Delete
+		Set file = FSO.GetFile("tsvn_tmp")
+		file.Delete
+	End If
 
 	' Looks like there is no TortoiseSVN installed either. Then we don't know it.
 	If InStr(version, "$") Then
