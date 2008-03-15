@@ -4644,7 +4644,7 @@ static void DefineGotoLabel(byte *buf, int len)
 	} else {
 		/* Attach the label to the end of the list */
 		GRFLabel *l;
-		for (l = _cur_grffile->label; l->next != NULL; l = l->next);
+		for (l = _cur_grffile->label; l->next != NULL; l = l->next) {}
 		l->next = label;
 	}
 

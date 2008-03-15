@@ -970,12 +970,6 @@ make_cflags_and_ldflags() {
 		if [ $cc_version -ge 42 ]; then
 			CFLAGS="$CFLAGS -fno-strict-overflow"
 		fi
-
-		# GCC 4.3+ gives a warning about empty body of
-		# loops and conditions
-		if [ $cc_version -ge 43 ]; then
-			CFLAGS="$CFLAGS -Wno-empty-body"
-		fi
 	fi
 
 	if [ "$os" != "CYGWIN" ] && [ "$os" != "FREEBSD" ] && [ "$os" != "OPENBSD" ] && [ "$os" != "MINGW" ] && [ "$os" != "MORPHOS" ] && [ "$os" != "OSX" ] && [ "$os" != "WINCE" ] && [ "$os" != "PSP" ] && [ "$os" != "OS2" ]; then

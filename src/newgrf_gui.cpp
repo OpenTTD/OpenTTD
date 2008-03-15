@@ -179,7 +179,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 					const GRFConfig *c;
 					uint i = (e->we.click.pt.y - w->widget[ANGRFW_GRF_LIST].top) / 10 + w->vscroll.pos;
 
-					for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--);
+					for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
 					WP(w, newgrf_add_d).sel = c;
 					SetWindowDirty(w);
 					break;
@@ -304,7 +304,7 @@ static void SetupNewGRFWindow(Window *w)
 	const GRFConfig *c;
 	int i;
 
-	for (c = *WP(w, newgrf_d).list, i = 0; c != NULL; c = c->next, i++);
+	for (c = *WP(w, newgrf_d).list, i = 0; c != NULL; c = c->next, i++) {}
 
 	w->vscroll.cap = (w->widget[SNGRFS_FILE_LIST].bottom - w->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
 	SetVScrollCount(w, i);
@@ -327,9 +327,9 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		ReloadNewGRFData();
 
 		/* Show new, updated list */
-		for (c = *nd->list; c != NULL && c != nd->sel; c = c->next, i++);
+		for (c = *nd->list; c != NULL && c != nd->sel; c = c->next, i++) {}
 		CopyGRFConfigList(nd->list, *nd->orig_list, false);
-		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--);
+		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--) {}
 		nd->sel = c;
 
 		SetWindowDirty(w);
@@ -474,7 +474,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					GRFConfig *c;
 					uint i = (e->we.click.pt.y - w->widget[SNGRFS_FILE_LIST].top) / 14 + w->vscroll.pos;
 
-					for (c = *WP(w, newgrf_d).list; c != NULL && i > 0; c = c->next, i--);
+					for (c = *WP(w, newgrf_d).list; c != NULL && i > 0; c = c->next, i--) {}
 					WP(w, newgrf_d).sel = c;
 
 					SetWindowDirty(w);

@@ -105,7 +105,7 @@ StringID GetStationClassName(StationClassID sclass)
 uint GetNumStationClasses()
 {
 	uint i;
-	for (i = 0; i < STAT_CLASS_MAX && _station_classes[i].id != 0; i++);
+	for (i = 0; i < STAT_CLASS_MAX && _station_classes[i].id != 0; i++) {}
 	return i;
 }
 
@@ -724,7 +724,7 @@ void DeallocateSpecFromStation(Station* st, byte specindex)
 
 	/* If this was the highest spec index, reallocate */
 	if (specindex == st->num_specs - 1) {
-		for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--);
+		for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--) {}
 
 		if (st->num_specs > 1) {
 			st->speclist = ReallocT(st->speclist, st->num_specs);

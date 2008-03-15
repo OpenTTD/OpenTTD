@@ -1214,7 +1214,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			{
 				Vehicle *v;
 
-				for (v = src; GetNextVehicle(v) != NULL; v = GetNextVehicle(v));
+				for (v = src; GetNextVehicle(v) != NULL; v = GetNextVehicle(v)) {}
 				GetLastEnginePart(v)->SetNext(dst->Next());
 			}
 			dst->SetNext(src);
@@ -3745,7 +3745,7 @@ void ConnectMultiheadedTrains()
 					}
 
 					Vehicle *w;
-					for (w = u->Next(); w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w));
+					for (w = u->Next(); w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w)) {}
 					if (w != NULL) {
 						/* we found a car to partner with this engine. Now we will make sure it face the right way */
 						if (IsTrainEngine(w)) {

@@ -236,7 +236,7 @@ static IniFile *ini_load(const char *filename)
 	while (fgets(buffer, sizeof(buffer), in)) {
 
 		/* trim whitespace from the left side */
-		for (s = buffer; *s == ' ' || *s == '\t'; s++);
+		for (s = buffer; *s == ' ' || *s == '\t'; s++) {}
 
 		/* trim whitespace from right side. */
 		e = s + strlen(s);
@@ -278,10 +278,10 @@ static IniFile *ini_load(const char *filename)
 			/* find end of keyname */
 			if (*s == '\"') {
 				s++;
-				for (t = s; *t != '\0' && *t != '\"'; t++);
+				for (t = s; *t != '\0' && *t != '\"'; t++) {}
 				if (*t == '\"') *t = ' ';
 			} else {
-				for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++);
+				for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++) {}
 			}
 
 			/* it's an item in an existing group */

@@ -48,7 +48,7 @@ static inline bool StrEmpty(const char *s) { return s == NULL || s[0] == '\0'; }
 static inline int ttd_strnlen(const char *str, int maxlen)
 {
 	const char *t;
-	for (t = str; *t != '\0' && t - str < maxlen; t++);
+	for (t = str; *t != '\0' && t - str < maxlen; t++) {}
 	return t - str;
 }
 
@@ -128,7 +128,7 @@ static inline bool IsUtf8Part(char c)
 static inline char *Utf8PrevChar(const char *s)
 {
 	const char *ret = s;
-	while (IsUtf8Part(*--ret));
+	while (IsUtf8Part(*--ret)) {}
 	return (char*)ret;
 }
 
