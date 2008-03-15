@@ -728,6 +728,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
+		if (e->we.click.widget != NSSW_CONNTYPE_BTN && e->we.click.widget != NSSW_LANGUAGE_BTN) HideDropDownMenu(w);
 		nd->field = e->we.click.widget;
 		switch (e->we.click.widget) {
 		case NSSW_CLOSE:  // Close 'X'
