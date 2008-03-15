@@ -499,7 +499,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK:
-			HideDropDownMenu(w);
+			if (e->we.click.widget != GRP_WIDGET_SORT_BY_DROPDOWN && e->we.click.widget != GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN) HideDropDownMenu(w);
 
 			switch(e->we.click.widget) {
 				case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
