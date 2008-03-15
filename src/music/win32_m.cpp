@@ -46,28 +46,29 @@ void MusicDriver_Win32::SetVolume(byte vol)
 	SetEvent(_midi.wait_obj);
 }
 
-static MCIERROR CDECL MidiSendCommand(const char* cmd, ...)
+static MCIERROR CDECL MidiSendCommand(const TCHAR* cmd, ...)
 {
 	va_list va;
-	char buf[512];
+	TCHAR buf[512];
 
 	va_start(va, cmd);
-	vsnprintf(buf, lengthof(buf), cmd, va);
+	_vsntprintf(buf, lengthof(buf), cmd, va);
 	va_end(va);
-	return mciSendStringA(buf, NULL, 0, 0);
+	return mciSendString(buf, NULL, 0, 0);
 }
 
 static bool MidiIntPlaySong(const char *filename)
 {
-	MidiSendCommand("close all");
-	if (MidiSendCommand("open \"%s\" type sequencer alias song", filename) != 0) return false;
+	MidiSendCommand(_T("close all"));
 
-	return MidiSendCommand("play song from 0") == 0;
+	if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), OTTD2FS(filename)) != 0) return false;
+
+	return MidiSendCommand(_T("play song from 0")) == 0;
 }
 
 static void MidiIntStopSong()
 {
-	MidiSendCommand("close all");
+	MidiSendCommand(_T("close all"));
 }
 
 static void MidiIntSetVolume(int vol)
