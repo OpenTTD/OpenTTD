@@ -61,7 +61,12 @@ static bool MidiIntPlaySong(const char *filename)
 {
 	MidiSendCommand(_T("close all"));
 
-	if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), OTTD2FS(filename)) != 0) return false;
+	if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), OTTD2FS(filename)) != 0) {
+		/* Let's try the "short name" */
+		TCHAR buf[MAX_PATH];
+		if (GetShortPathName(OTTD2FS(filename), buf, MAX_PATH) == 0) return false;
+		if (MidiSendCommand(_T("open \"%s\" type sequencer alias song"), buf) != 0) return false;
+	}
 
 	return MidiSendCommand(_T("play song from 0")) == 0;
 }
