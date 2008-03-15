@@ -467,7 +467,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	}
 }
 
-static void UpdateTrainAcceleration(Vehicle* v)
+void UpdateTrainAcceleration(Vehicle* v)
 {
 	assert(IsFrontEngine(v));
 

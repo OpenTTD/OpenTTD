@@ -1195,6 +1195,17 @@ static int32 EngineRenewMoneyUpdate(int32 p1)
 	return 0;
 }
 
+static int32 RealisticAccelerationChanged(int32 p1)
+{
+	Vehicle *v;
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) UpdateTrainAcceleration(v);
+	}
+
+	return 0;
+}
+
 /**
  * Check for right TownLayout usage in editor mode.
  * The No Road mode is not desirable since towns have to be
@@ -1395,7 +1406,7 @@ const SettingDesc _patch_settings[] = {
 
 	/***************************************************************************/
 	/* Vehicle section of the GUI-configure patches window */
-	SDT_BOOL(Patches, realistic_acceleration,        0, 0, false,                    STR_CONFIG_PATCHES_REALISTICACCEL,       NULL),
+	SDT_BOOL(Patches, realistic_acceleration,        0, 0, false,                    STR_CONFIG_PATCHES_REALISTICACCEL,       RealisticAccelerationChanged),
 	SDT_BOOL(Patches, forbid_90_deg,                 0, 0, false,                    STR_CONFIG_PATCHES_FORBID_90_DEG,        NULL),
 	SDT_BOOL(Patches, mammoth_trains,                0,NN,  true,                    STR_CONFIG_PATCHES_MAMMOTHTRAINS,        NULL),
 	SDT_BOOL(Patches, gotodepot,                     0, 0,  true,                    STR_CONFIG_PATCHES_GOTODEPOT,            NULL),

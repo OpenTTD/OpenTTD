@@ -274,6 +274,7 @@ byte FreightWagonMult(CargoID cargo);
 
 int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped);
 int CheckTrainStoppedInDepot(const Vehicle *v);
+void UpdateTrainAcceleration(Vehicle* v);
 
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
