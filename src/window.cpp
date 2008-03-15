@@ -2175,15 +2175,22 @@ void RelocateAllWindows(int neww, int newh)
 				IConsoleResize(w);
 				continue;
 
-			default:
+			default: {
 				left = w->left;
 				if (left + (w->width >> 1) >= neww) left = neww - w->width;
 				if (left < 0) left = 0;
 
 				top = w->top;
 				if (top + (w->height >> 1) >= newh) top = newh - w->height;
-				if (top < 0) top = 0;
-				break;
+
+				const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
+				if (wt != NULL) {
+					if (top < wt->height) top = wt->height;
+					if (top >= newh) top = newh - 1;
+				} else {
+					if (top < 0) top = 0;
+				}
+			} break;
 		}
 
 		if (w->viewport != NULL) {
