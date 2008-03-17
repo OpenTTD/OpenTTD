@@ -291,7 +291,7 @@ void TrainConsistChanged(Vehicle* v)
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
 	TrainCargoChanged(v);
 
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	if (IsFrontEngine(v)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 }
 
 enum AccelType {
@@ -1248,7 +1248,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			UpdateTrainGroupID(src_head);
 			if (IsFrontEngine(src_head)) {
 				UpdateTrainAcceleration(src_head);
-				InvalidateWindow(WC_VEHICLE_DETAILS, src_head->index);
 				/* Update the refit button and window */
 				InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, VVW_WIDGET_REFIT_VEH);
@@ -1263,7 +1262,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			UpdateTrainGroupID(dst_head);
 			if (IsFrontEngine(dst_head)) {
 				UpdateTrainAcceleration(dst_head);
-				InvalidateWindow(WC_VEHICLE_DETAILS, dst_head->index);
 				/* Update the refit button and window */
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, VVW_WIDGET_REFIT_VEH);
 				InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
@@ -1437,7 +1435,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					TrainConsistChanged(first);
 					UpdateTrainGroupID(first);
 					if (IsFrontEngine(first)) {
-						InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 						InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 						UpdateTrainAcceleration(first);
 					}
@@ -1507,7 +1504,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				TrainConsistChanged(first);
 				UpdateTrainGroupID(first);
 				if (IsFrontEngine(first)) UpdateTrainAcceleration(first);
-				InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 				InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 			}
 		} break;
@@ -3230,7 +3226,6 @@ static void DeleteLastWagon(Vehicle *v)
 	} else {
 		/* Recalculate cached train properties */
 		TrainConsistChanged(first);
-		InvalidateWindow(WC_VEHICLE_DETAILS, first->index);
 		/* Update the depot window if the first vehicle is in depot -
 		 * if v == first, then it is updated in PreDestructor() */
 		if (first->u.rail.track == TRACK_BIT_DEPOT) {
