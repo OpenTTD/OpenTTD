@@ -214,6 +214,9 @@ void TrainConsistChanged(Vehicle* v)
 		/* Reset color map */
 		u->colormap = PAL_NONE;
 
+		/* Set user defined data (must be done before other properties) */
+		u->u.rail.user_def_data = GetVehicleProperty(u, 0x25, rvi_u->user_def_data);
+
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
 		} else {
@@ -269,8 +272,6 @@ void TrainConsistChanged(Vehicle* v)
 			/* Set cargo capacity if we've not been refitted */
 			u->cargo_cap = GetVehicleProperty(u, 0x14, rvi_u->capacity);
 		}
-
-		u->u.rail.user_def_data = GetVehicleProperty(u, 0x25, rvi_u->user_def_data);
 
 		/* check the vehicle length (callback) */
 		uint16 veh_len = CALLBACK_FAILED;
