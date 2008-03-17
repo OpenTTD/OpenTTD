@@ -290,6 +290,8 @@ void TrainConsistChanged(Vehicle* v)
 
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
 	TrainCargoChanged(v);
+
+	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 }
 
 enum AccelType {
