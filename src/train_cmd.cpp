@@ -291,7 +291,10 @@ void TrainConsistChanged(Vehicle* v)
 	/* recalculate cached weights and power too (we do this *after* the rest, so it is known which wagons are powered and need extra weight added) */
 	TrainCargoChanged(v);
 
-	if (IsFrontEngine(v)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	if (IsFrontEngine(v)) {
+		UpdateTrainAcceleration(v);
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	}
 }
 
 enum AccelType {
@@ -792,7 +795,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			}
 
 			TrainConsistChanged(v);
-			UpdateTrainAcceleration(v);
 			UpdateTrainGroupID(v);
 
 			if (!HasBit(p2, 1)) { // check if the cars should be added to the new vehicle
@@ -1247,7 +1249,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			TrainConsistChanged(src_head);
 			UpdateTrainGroupID(src_head);
 			if (IsFrontEngine(src_head)) {
-				UpdateTrainAcceleration(src_head);
 				/* Update the refit button and window */
 				InvalidateWindow(WC_VEHICLE_REFIT, src_head->index);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, src_head->index, VVW_WIDGET_REFIT_VEH);
@@ -1261,7 +1262,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			TrainConsistChanged(dst_head);
 			UpdateTrainGroupID(dst_head);
 			if (IsFrontEngine(dst_head)) {
-				UpdateTrainAcceleration(dst_head);
 				/* Update the refit button and window */
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, dst_head->index, VVW_WIDGET_REFIT_VEH);
 				InvalidateWindow(WC_VEHICLE_REFIT, dst_head->index);
@@ -1434,10 +1434,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					NormaliseTrainConsist(first);
 					TrainConsistChanged(first);
 					UpdateTrainGroupID(first);
-					if (IsFrontEngine(first)) {
-						InvalidateWindow(WC_VEHICLE_REFIT, first->index);
-						UpdateTrainAcceleration(first);
-					}
+					if (IsFrontEngine(first)) InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 				}
 
 
@@ -1503,7 +1500,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				NormaliseTrainConsist(first);
 				TrainConsistChanged(first);
 				UpdateTrainGroupID(first);
-				if (IsFrontEngine(first)) UpdateTrainAcceleration(first);
 				InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 			}
 		} break;
