@@ -1600,7 +1600,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		InitializeGame(IG_DATE_RESET, 256, 256); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		_sl_version = 0;
-		AfterLoadGame();
+		if (!AfterLoadGame()) return SL_REINIT;
 		return SL_OK;
 	}
 
