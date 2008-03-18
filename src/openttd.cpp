@@ -1348,9 +1348,9 @@ bool AfterLoadGame()
 	if (CheckSavegameVersionOldStyle(6, 1)) UpdateSignOwner();
 
 	/* In old version there seems to be a problem that water is owned by
-	    OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
-	    (4.3) version, so I just check when versions are older, and then
-	    walk through the whole map.. */
+	 * OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
+	 * (4.3) version, so I just check when versions are older, and then
+	 * walk through the whole map.. */
 	if (CheckSavegameVersionOldStyle(4, 3)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_WATER) && GetTileOwner(t) >= MAX_PLAYERS) {
@@ -2034,8 +2034,8 @@ bool AfterLoadGame()
 		}
 	}
 
-	/* Check that house ids are still valid. */
-	CheckHouseIDs();
+	/* Check and update house and town values */
+	UpdateHousesAndTowns();
 
 	if (CheckSavegameVersion(43)) {
 		for (TileIndex t = 0; t < map_size; t++) {
@@ -2461,8 +2461,8 @@ void ReloadNewGRFData()
 	/* update station and waypoint graphics */
 	AfterLoadWaypoints();
 	AfterLoadStations();
-	/* check that house ids are still valid */
-	CheckHouseIDs();
+	/* Check and update house and town values */
+	UpdateHousesAndTowns();
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 }

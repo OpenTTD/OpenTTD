@@ -90,7 +90,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	TileIndex xy;
 
 	/* Current population of people and amount of houses. */
-	uint16 num_houses;
+	uint32 num_houses;
 	uint32 population;
 
 	/* Town name */
@@ -320,6 +320,7 @@ void ResetHouses();
 void ClearTownHouse(Town *t, TileIndex tile);
 void AfterLoadTown();
 void UpdateTownMaxPass(Town *t);
+void UpdateTownRadius(Town *t);
 bool CheckIfAuthorityAllows(TileIndex tile);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);

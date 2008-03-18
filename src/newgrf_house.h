@@ -26,7 +26,7 @@ struct HouseClassMapping {
 	uint8  class_id;  ////< The class id within the grf file
 };
 
-void CheckHouseIDs();
+void UpdateHousesAndTowns();
 
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid);
 

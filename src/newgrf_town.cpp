@@ -64,7 +64,7 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		case 0xAD: return GB(t->ratings[7], 8, 8);
 		case 0xAE: return t->have_ratings;
 		case 0xB2: return t->statues;
-		case 0xB6: return t->num_houses;
+		case 0xB6: return ClampToU16(t->num_houses);
 		case 0xB9: return t->growth_rate;
 		case 0xBA: return ClampToU16(t->new_max_pass);
 		case 0xBB: return GB(ClampToU16(t->new_max_pass), 8, 8);

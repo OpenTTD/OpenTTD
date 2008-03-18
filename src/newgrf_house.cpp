@@ -31,13 +31,24 @@ static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 
-void CheckHouseIDs()
+/**
+ * Check and update town and house values.
+ *
+ * Checked are the HouseIDs. Updated are the
+ * town population the number of houses per
+ * town, the town radius and the max passengers
+ * of the town.
+ */
+void UpdateHousesAndTowns()
 {
 	Town *town;
 	InitializeBuildingCounts();
 
-	/* Reset town population */
-	FOR_ALL_TOWNS(town) town->population = 0;
+	/* Reset town population and num_houses */
+	FOR_ALL_TOWNS(town) {
+		town->population = 0;
+		town->num_houses = 0;
+	}
 
 	for (TileIndex t = 0; t < MapSize(); t++) {
 		HouseID house_id;
@@ -51,9 +62,23 @@ void CheckHouseIDs()
 			house_id = _house_mngr.GetSubstituteID(house_id);
 			SetHouseType(t, house_id);
 		}
+
 		town = GetTownByTile(t);
 		IncreaseBuildingCount(town, house_id);
 		if (IsHouseCompleted(t)) town->population += GetHouseSpecs(house_id)->population;
+
+		/* Increase the number of houses for every house tile which
+		 * has a size bit set. Multi tile buildings have got only
+		 * one tile with such a bit set, so there is no problem. */
+		if (GetHouseSpecs(GetHouseType(t))->building_flags & BUILDING_HAS_1_TILE) {
+			town->num_houses++;
+		}
+	}
+
+	/* Update the population and num_house dependant values */
+	FOR_ALL_TOWNS(town) {
+		UpdateTownRadius(town);
+		UpdateTownMaxPass(town);
 	}
 }
 

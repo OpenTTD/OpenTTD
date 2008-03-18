@@ -265,8 +265,6 @@ static void AnimateTile_Town(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static void UpdateTownRadius(Town *t);
-
 /**
  * Determines if a town is close to a tile
  * @param tile TileIndex of the tile to query
@@ -1282,7 +1280,7 @@ static bool GrowTown(Town *t)
 	return false;
 }
 
-static void UpdateTownRadius(Town *t)
+void UpdateTownRadius(Town *t)
 {
 	static const uint16 _town_radius_data[23][5] = {
 		{  4,  0,  0,  0,  0}, // 0
@@ -2074,12 +2072,12 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Called from GUI */
 void ExpandTown(Town *t)
 {
-	int amount, n;
+	uint amount, n;
 
 	_generating_world = true;
 
 	/* The more houses, the faster we grow */
-	amount = RandomRange(t->num_houses / 10) + 3;
+	amount = RandomRange(ClampToU16(t->num_houses / 10)) + 3;
 	t->num_houses += amount;
 	UpdateTownRadius(t);
 
@@ -2564,10 +2562,10 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 6, SL_MAX_VERSION),
 
-	SLE_CONDNULL(2, 0, 2),
-	SLE_CONDNULL(4, 3, 84),
+	SLE_CONDNULL(2, 0, 2),                   ///< population, no longer in use
+	SLE_CONDNULL(4, 3, 84),                  ///< population, no longer in use
+	SLE_CONDNULL(2, 0, 91),                  ///< num_houses, no longer in use
 
-	    SLE_VAR(Town, num_houses,            SLE_UINT16),
 	SLE_CONDVAR(Town, townnamegrfid,         SLE_UINT32, 66, SL_MAX_VERSION),
 	    SLE_VAR(Town, townnametype,          SLE_UINT16),
 	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
@@ -2576,13 +2574,12 @@ static const SaveLoad _town_desc[] = {
 	    SLE_VAR(Town, flags12,               SLE_UINT8),
 	    SLE_VAR(Town, statues,               SLE_UINT8),
 
-	/* sort_index_obsolete was stored here in savegame format 0 - 1 */
-	SLE_CONDNULL(1, 0, 1),
+	SLE_CONDNULL(1, 0, 1),                   ///< sort_index, no longer in use
 
 	    SLE_VAR(Town, have_ratings,          SLE_UINT8),
 	    SLE_ARR(Town, ratings,               SLE_INT16, 8),
 	/* failed bribe attempts are stored since savegame format 4 */
-	SLE_CONDARR(Town, unwanted,              SLE_INT8, 8, 4,SL_MAX_VERSION),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8, 8, 4, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, max_pass,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
 	SLE_CONDVAR(Town, max_mail,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
@@ -2695,10 +2692,6 @@ static void Load_TOWN()
 
 void AfterLoadTown()
 {
-	Town *t;
-	FOR_ALL_TOWNS(t) {
-		UpdateTownRadius(t);
-	}
 	_town_sort_dirty = true;
 }
 
