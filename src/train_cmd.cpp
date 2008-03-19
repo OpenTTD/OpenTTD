@@ -52,7 +52,7 @@
 #include "table/train_cmd.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
-static void TrainController(Vehicle *v, bool update_image);
+static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image);
 static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
@@ -1735,17 +1735,9 @@ static void AdvanceWagons(Vehicle *v, bool before)
 		int differential = last->u.rail.cached_veh_length - base->u.rail.cached_veh_length;
 		if (before) differential *= -1;
 
-		if (differential > 0) {
-			/* disconnect last car to make sure only this subset moves */
-			Vehicle *tempnext = last->Next();
-			last->SetNext(NULL);
-
-			/* do not update images now because the wagons are disconnected
-			 * and that could cause problems with NewGRFs */
-			for (int i = 0; i < differential; i++) TrainController(first, false);
-
-			last->SetNext(tempnext);
-		}
+		/* do not update images now
+		 * negative differential will are handled in the second run */
+		for (int i = 0; i < differential; i++) TrainController(first, last->Next(), false);
 
 		base = first;
 		first = first->Next();
@@ -2993,12 +2985,12 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 	return NULL;
 }
 
-static void TrainController(Vehicle *v, bool update_image)
+static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 {
 	Vehicle *prev;
 
 	/* For every vehicle after and including the given vehicle */
-	for (prev = v->Previous(); v != NULL; prev = v, v = v->Next()) {
+	for (prev = v->Previous(); v != nomove; prev = v, v = v->Next()) {
 		DiagDirection enterdir = DIAGDIR_BEGIN;
 		bool update_signals_crossing = false; // will we update signals or crossing state?
 		BeginVehicleMove(v);
@@ -3554,7 +3546,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		TrainCheckIfLineEnds(v);
 
 		do {
-			TrainController(v, true);
+			TrainController(v, NULL, true);
 			CheckTrainCollision(v);
 			if (v->cur_speed <= 0x100)
 				break;
