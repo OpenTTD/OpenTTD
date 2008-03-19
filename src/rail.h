@@ -181,6 +181,7 @@ void *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
+int TicksToLeaveDepot(const Vehicle *v);
 
 /**
  * Draws overhead wires and pylons for electric railways.

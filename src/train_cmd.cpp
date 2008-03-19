@@ -1716,31 +1716,86 @@ static inline void MaybeBarCrossingWithSound(TileIndex tile)
 
 /**
  * Advances wagons for train reversing, needed for variable length wagons.
- * Needs to be called once before the train is reversed, and once after it.
+ * This one is called before the train is reversed.
  * @param v First vehicle in chain
- * @param before Set to true for the call before reversing, false otherwise
  */
-static void AdvanceWagons(Vehicle *v, bool before)
+static void AdvanceWagonsBeforeSwap(Vehicle *v)
 {
 	Vehicle *base = v;
-	Vehicle *first = base->Next();
+	Vehicle *first = base;                    // first vehicle to move
+	Vehicle *last = GetLastVehicleInChain(v); // last vehicle to move
 	uint length = CountVehiclesInChain(v);
 
 	while (length > 2) {
-		/* find pairwise matching wagon
-		 * start<>end, start+1<>end-1, ... */
-		Vehicle *last = first;
-		for (uint i = length - 3; i > 0; i--) last = last->Next();
+		last = last->Previous();
+		first = first->Next();
 
-		int differential = last->u.rail.cached_veh_length - base->u.rail.cached_veh_length;
-		if (before) differential *= -1;
+		int differential = base->u.rail.cached_veh_length - last->u.rail.cached_veh_length;
 
 		/* do not update images now
-		 * negative differential will are handled in the second run */
+		 * negative differential will be handled in AdvanceWagonsAfterSwap() */
 		for (int i = 0; i < differential; i++) TrainController(first, last->Next(), false);
 
-		base = first;
+		base = first; // == base->Next()
+		length -= 2;
+	}
+}
+
+
+/**
+ * Advances wagons for train reversing, needed for variable length wagons.
+ * This one is called after the train is reversed.
+ * @param v First vehicle in chain
+ */
+static void AdvanceWagonsAfterSwap(Vehicle *v)
+{
+	/* first of all, fix the situation when the train was entering a depot */
+	Vehicle *dep = v; // last vehicle in front of just left depot
+	while (dep->Next() != NULL && (dep->u.rail.track == TRACK_BIT_DEPOT || dep->Next()->u.rail.track != TRACK_BIT_DEPOT)) {
+		dep = dep->Next(); // find first vehicle outside of a depot, with next vehicle inside a depot
+	}
+
+	Vehicle *leave = dep->Next(); // first vehicle in a depot we are leaving now
+
+	if (leave != NULL) {
+		/* 'pull' next wagon out of the depot, so we won't miss it (it could stay in depot forever) */
+		int d = TicksToLeaveDepot(dep);
+
+		if (d <= 0) {
+			leave->vehstatus &= ~VS_HIDDEN; // move it out of the depot
+			leave->u.rail.track = AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(leave->tile)));
+			for (int i = 0; i >= d; i--) TrainController(leave, NULL, false); // maybe move it, and maybe let another wagon leave
+		}
+	} else {
+		dep = NULL; // no vehicle in a depot, so no vehicle leaving a depot
+	}
+
+	Vehicle *base = v;
+	Vehicle *first = base;                    // first vehicle to move
+	Vehicle *last = GetLastVehicleInChain(v); // last vehicle to move
+	uint length = CountVehiclesInChain(v);
+
+	/* we have to make sure all wagons that leave a depot because of train reversing are moved coorectly
+	 * they have already correct spacing, so we have to make sure they are moved how they should */
+	bool nomove = (dep == NULL); // if there is no vehicle leaving a depot, limit the number of wagons moved immediatelly
+
+	while (length > 2) {
+		/* we reached vehicle (originally) in front of a depot, stop now
+		 * (we would move wagons that are alredy moved with new wagon length) */
+		if (base == dep) break;
+
+		/* the last wagon was that one leaving a depot, so do not move it anymore */
+		if (last == dep) nomove = true;
+
+		last = last->Previous();
 		first = first->Next();
+
+		int differential = last->u.rail.cached_veh_length - base->u.rail.cached_veh_length;
+
+		/* do not update images now */
+		for (int i = 0; i < differential; i++) TrainController(first, (nomove ? last->Next() : NULL), false);
+
+		base = first; // == base->Next()
 		length -= 2;
 	}
 }
@@ -1759,7 +1814,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	int r = 0;  ///< number of vehicles - 1
 	for (const Vehicle *u = v; (u = u->Next()) != NULL;) { r++; }
 
-	AdvanceWagons(v, true);
+	AdvanceWagonsBeforeSwap(v);
 
 	/* swap start<>end, start+1<>end-1, ... */
 	int l = 0;
@@ -1767,7 +1822,7 @@ static void ReverseTrainDirection(Vehicle *v)
 		ReverseTrainSwapVeh(v, l++, r--);
 	} while (l <= r);
 
-	AdvanceWagons(v, false);
+	AdvanceWagonsAfterSwap(v);
 
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);

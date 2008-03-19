@@ -2230,6 +2230,29 @@ static const signed char _deltacoord_leaveoffset[8] = {
 	 0,  1,  0, -1  /* y */
 };
 
+
+/** Compute number of ticks when next wagon will leave a depot.
+ * Negative means next wagon should have left depot n ticks before.
+ * @param v vehicle outside (leaving) the depot
+ * @return number of ticks when the next wagon will leave
+ */
+int TicksToLeaveDepot(const Vehicle *v)
+{
+	DiagDirection dir = GetRailDepotDirection(v->tile);
+	int length = v->u.rail.cached_veh_length;
+
+	switch (dir) {
+		case DIAGDIR_NE: return  ((int)(v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) - (length + 1)));
+		case DIAGDIR_SE: return -((int)(v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   + (length + 1)));
+		case DIAGDIR_SW: return -((int)(v->x_pos & 0x0F) - ((_fractcoords_enter[dir] & 0x0F) + (length + 1)));
+		default:
+		case DIAGDIR_NW: return  ((int)(v->y_pos & 0x0F) - ((_fractcoords_enter[dir] >> 4)   - (length + 1)));
+	}
+
+	return 0; // make compilers happy
+}
+
+
 static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 {
 	byte fract_coord;
