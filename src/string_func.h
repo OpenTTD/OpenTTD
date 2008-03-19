@@ -142,7 +142,8 @@ static inline bool IsPrintable(WChar c)
 }
 
 /**
- * Check whether UNICODE character is whitespace or not
+ * Check whether UNICODE character is whitespace or not, i.e. whether
+ * this is a potential line-break character.
  * @param c UNICODE character to check
  * @return a boolean value whether 'c' is a whitespace character or not
  * @see http://www.fileformat.info/info/unicode/category/Zs/list.htm
@@ -151,7 +152,6 @@ static inline bool IsWhitespace(WChar c)
 {
 	return
 	  c == 0x0020 /* SPACE */ ||
-	  c == 0x00A0 /* NO-BREAK SPACE */ ||
 	  c == 0x3000 /* IDEOGRAPHIC SPACE */
 	;
 }
