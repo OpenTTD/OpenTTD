@@ -1051,6 +1051,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}이미 지어진 역에 추가로 역을 증축하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거운 열차를 운행하기 위해 화물에 무게를 가함 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}비행기 속도 인수: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}마을이 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
 
@@ -1612,6 +1613,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}너무 �
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}알맞지 않은 철로입니다.
 STR_1007_ALREADY_BUILT                                          :{WHITE}...이미 지어져있습니다
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}철로를 먼저 제거하십시오
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}도로가 일방통행이거나 막혔습니다
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}철도 건설
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}전기철도 건설
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}모노레일 건설

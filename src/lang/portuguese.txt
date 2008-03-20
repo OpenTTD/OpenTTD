@@ -1213,6 +1213,10 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Sistema
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Não recomendado)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Sistema de encontrar caminho para barcos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Não recomendado)
 
 STR_TEMPERATE_LANDSCAPE                                         :Terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
@@ -1608,6 +1612,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Demasiad
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de linha não apropriado
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Deverá remover a linha férrea primeiro
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Estrada de sentido único ou bloqueada
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construir caminhos-de-ferro
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construir caminhos-de-ferro electrificados
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construir monocarril
@@ -3350,6 +3355,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comutar 
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comutar transparência para edificações como estações, depósitos, pontos-de-passagem e catenárias
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comutar transparência para pontes
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas (talvez, no futuro, para embelezamentos)
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Comutar transparência para catenária. CTRL+clique para fechar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Alterar transparência para indicadores de carga
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

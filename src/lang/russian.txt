@@ -1052,6 +1052,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Разрешить передачу денег другим компаниям: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Станции могут быть произвольной формы: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множитель увеличения веса груза для товарных поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Коэффициент скорости авиатранспорта: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
 
@@ -1205,6 +1206,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Изменить значение
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Некоторые интервалы не совместимы с выбранной установкой. Допускаются значения 5-90% или 30-800 дней
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Алгоритм поиска пути для поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Не рекоменд.)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Рекоменд.)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Алгоритм поиска пути для автотранспорта: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Оригин. {RED}(Не рекоменд.)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Рекоменд.)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Алгоритм поиска путей для кораблей: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Оригин. {BLUE}(Рекоменд.)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Не рекоменд.)
 
 STR_TEMPERATE_LANDSCAPE                                         :Умеренный ландшафт
 STR_SUB_ARCTIC_LANDSCAPE                                        :Субарктический ландшафт
@@ -1600,6 +1614,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Слиш
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Нет подходящих рельсов
 STR_1007_ALREADY_BUILT                                          :{WHITE}...уже построено
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Сначала надо удалить рельсы
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Дорога односторонняя или блокирована
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Железные дороги
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Электрифицированные ж/д
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Монорельс
@@ -3353,6 +3368,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Пере
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Переключить прозрачность зданий, которые можно строить игроком. Например -- станции, депо, точки пути и столбы для электричества.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Переключить прозрачность мостов
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Переключить прозрачность контактной сети. Ctrl-щелчок - запрет изменений.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Переключить прозрачность для индикаторов загрузки
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

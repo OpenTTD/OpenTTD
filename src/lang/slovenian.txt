@@ -1255,6 +1255,10 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Iskalni
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Ni priporočeno)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Priporočeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Logaritem poti za ladje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Priporočen)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ni priporočen)
 
 STR_TEMPERATE_LANDSCAPE                                         :Zmerno podnebje
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub arktično podnebje
@@ -1650,6 +1654,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Previsok
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ni primernih tračnic
 STR_1007_ALREADY_BUILT                                          :{WHITE} ... že zgrajeno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprej odstrani tračnice
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Cesta je enosmerna ali blokirana
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gradnja železnice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrificirana Železnica
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Gradnja enotirne železnice
@@ -3430,6 +3435,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Prozoren
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Prozoren ali navaden pogled ostalih objektov kot so postaje, garaže...
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prozoren ali navaden pogled mostov
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Preklop prosojnosti za pogone. CTRL+klik za zaklepanje.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Preklop na prosojnost za prikaz polnenja
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
