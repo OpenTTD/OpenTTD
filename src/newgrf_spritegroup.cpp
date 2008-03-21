@@ -87,6 +87,7 @@ static inline bool Is8BitCallback(const ResolverObject *object)
 
 	switch (object->callback) {
 		/* All these functions are 15 bit callbacks */
+		case CBID_STATION_SPRITE_LAYOUT:
 		case CBID_VEHICLE_REFIT_CAPACITY:
 		case CBID_HOUSE_COLOUR:
 		case CBID_HOUSE_CARGO_ACCEPTANCE:
