@@ -275,6 +275,10 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 	Town *t = GetTown(w->window_number);
 
 	switch (e->event) {
+	case WE_CREATE:
+		if (t->larger_town) w->widget[1].data = STR_CITY;
+		break;
+
 	case WE_PAINT:
 		/* disable renaming town in network games if you are not the server */
 		w->SetWidgetDisabledState(8, _networking && !_network_server);
