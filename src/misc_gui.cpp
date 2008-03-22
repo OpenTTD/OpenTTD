@@ -1768,10 +1768,17 @@ void SetFiosType(const byte fiostype)
 	}
 }
 
+/**
+ * The 'amount' to cheat with.
+ * This variable is semantically a constant value, but because the cheat
+ * code requires to be able to write to the variable it is not constified.
+ */
+static int32 _money_cheat_amount = 10000000;
+
 static int32 ClickMoneyCheat(int32 p1, int32 p2)
 {
-		DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
-		return true;
+	DoCommandP(0, (uint32)(p2 * _money_cheat_amount), 0, NULL, CMD_MONEY_CHEAT);
+	return _money_cheat_amount;
 }
 
 /**
@@ -1827,38 +1834,24 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 
 typedef int32 CheckButtonClick(int32, int32);
 
-enum ce_flags_long
-{
-	CE_NONE = 0,
-	CE_CLICK = 1 << 0,
-	CE_END = 1 << 1,
-};
-
-/** Define basic enum properties */
-template <> struct EnumPropsT<ce_flags_long> : MakeEnumPropsT<ce_flags_long, byte, CE_NONE, CE_END, CE_END> {};
-typedef TinyEnumT<ce_flags_long> ce_flags;
-
-
 struct CheatEntry {
 	VarType type;          ///< type of selector
-	ce_flags flags;        ///< selector flags
 	StringID str;          ///< string with descriptive text
 	void *variable;        ///< pointer to the variable
 	bool *been_used;       ///< has this cheat been used before?
 	CheckButtonClick *proc;///< procedure
-	int16 min, max;        ///< range for spinbox setting
 };
 
 static const CheatEntry _cheats_ui[] = {
-	{SLE_BOOL, {CE_CLICK}, STR_CHEAT_MONEY,          &_cheats.money.value,           &_cheats.money.been_used,           &ClickMoneyCheat,         0,  0},
-	{SLE_UINT8, {CE_NONE}, STR_CHEAT_CHANGE_PLAYER,  &_local_player,                 &_cheats.switch_player.been_used,   &ClickChangePlayerCheat,  0, 11},
-	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_EXTRA_DYNAMITE, &_cheats.magic_bulldozer.value, &_cheats.magic_bulldozer.been_used, NULL,                     0,  0},
-	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_CROSSINGTUNNELS,&_cheats.crossing_tunnels.value,&_cheats.crossing_tunnels.been_used,NULL,                     0,  0},
-	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_BUILD_IN_PAUSE, &_cheats.build_in_pause.value,  &_cheats.build_in_pause.been_used,  NULL,                     0,  0},
-	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_NO_JETCRASH,    &_cheats.no_jetcrash.value,     &_cheats.no_jetcrash.been_used,     NULL,                     0,  0},
-	{SLE_BOOL,  {CE_NONE}, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
-	{SLE_UINT8, {CE_NONE}, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
-	{SLE_INT32, {CE_NONE}, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
+	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,            &_cheats.money.been_used,            &ClickMoneyCheat        },
+	{SLE_UINT8, STR_CHEAT_CHANGE_PLAYER,   &_local_player,                  &_cheats.switch_player.been_used,    &ClickChangePlayerCheat },
+	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,  &_cheats.magic_bulldozer.been_used,  NULL                    },
+	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value, &_cheats.crossing_tunnels.been_used, NULL                    },
+	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,   &_cheats.build_in_pause.been_used,   NULL                    },
+	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,      &_cheats.no_jetcrash.been_used,      NULL                    },
+	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,       &_cheats.setup_prod.been_used,       NULL                    },
+	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_opt.landscape,                 &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat},
+	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                      &_cheats.change_date.been_used,      &ClickChangeDateCheat   },
 };
 
 
@@ -1873,123 +1866,97 @@ static const Widget _cheat_widgets[] = {
 static void CheatsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int clk = WP(w, def_d).data_1;
-		int x, y;
-		int i;
+		case WE_PAINT: {
+			int clk = WP(w, def_d).data_1;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
+			DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, w->width - 50);
 
-		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, w->width - 50);
+			for (int i = 0, x = 0, y = 45; i != lengthof(_cheats_ui); i++) {
+				const CheatEntry *ce = &_cheats_ui[i];
 
-		x = 0;
-		y = 45;
+				DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, x + 5, y + 2);
 
-		for (i = 0; i != lengthof(_cheats_ui); i++) {
-			const CheatEntry *ce = &_cheats_ui[i];
+				switch (ce->type) {
+					case SLE_BOOL: {
+						bool on = (*(bool*)ce->variable);
 
-			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, x + 5, y + 2);
+						DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : FR_NONE);
+						SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+					} break;
 
-			switch (ce->type) {
-			case SLE_BOOL: {
-				bool on = (*(bool*)ce->variable);
+					default: {
+						int32 val = (int32)ReadValue(ce->variable, ce->type);
+						char buf[512];
 
-				if (ce->flags & CE_CLICK) {
-					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, 0, (clk - (i * 2) == 1) ? FR_LOWERED : FR_NONE);
-					if (i == 0) { // XXX - hack/hack for first element which is increase money. Told ya it's a mess
-						SetDParam(0, 10000000);
-					} else {
-						SetDParam(0, false);
-					}
-				} else {
-					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : FR_NONE);
-					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+						/* Draw [<][>] boxes for settings of an integer-type */
+						DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true, true);
+
+						switch (ce->str) {
+							/* Display date for change date cheat */
+							case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
+
+							/* Draw colored flag for change player cheat */
+							case STR_CHEAT_CHANGE_PLAYER:
+								SetDParam(0, val);
+								GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
+								DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
+								break;
+
+							/* Set correct string for switch climate cheat */
+							case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
+
+							/* Fallthrough */
+							default: SetDParam(0, val);
+						}
+					} break;
 				}
-			} break;
-			default: {
-				int32 val = (int32)ReadValue(ce->variable, ce->type);
-				char buf[512];
 
-				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true, true);
+				DrawString(50, y + 1, ce->str, TC_FROMSTRING);
 
-				switch (ce->str) {
-				/* Display date for change date cheat */
-				case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
-				/* Draw colored flag for change player cheat */
-				case STR_CHEAT_CHANGE_PLAYER:
-					SetDParam(0, val);
-					GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
-					DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
-					break;
-				/* Set correct string for switch climate cheat */
-				case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
-				/* Fallthrough */
-				default: SetDParam(0, val);
-				}
-			} break;
+				y += 12;
 			}
-
-			DrawString(50, y + 1, ce->str, TC_FROMSTRING);
-
-			y += 12;
+			break;
 		}
-		break;
-	}
 
-	case WE_CLICK: {
-			const CheatEntry *ce;
+		case WE_CLICK: {
 			uint btn = (e->we.click.pt.y - 46) / 12;
-			int32 value, oldvalue;
 			uint x = e->we.click.pt.x;
 
-			/* not clicking a button? */
+			/* Not clicking a button? */
 			if (!IsInsideMM(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
 
-			ce = &_cheats_ui[btn];
-			oldvalue = value = (int32)ReadValue(ce->variable, ce->type);
+			const CheatEntry *ce = &_cheats_ui[btn];
+			int value = (int32)ReadValue(ce->variable, ce->type);
+			int oldvalue = value;
 
 			*ce->been_used = true;
 
 			switch (ce->type) {
-			case SLE_BOOL:
-				if (ce->flags & CE_CLICK) WP(w, def_d).data_1 = btn * 2 + 1;
-				value ^= 1;
-				if (ce->proc != NULL) ce->proc(value, 0);
-				break;
-			default: {
-				/* Add a dynamic step-size to the scroller. In a maximum of
-				 * 50-steps you should be able to get from min to max */
-				uint16 step = ((ce->max - ce->min) / 20);
-				if (step == 0) step = 1;
+				case SLE_BOOL:
+					value ^= 1;
+					if (ce->proc != NULL) ce->proc(value, 0);
+					break;
 
-				/* Increase or decrease the value and clamp it to extremes */
-				value += (x >= 30) ? step : -step;
-				value = Clamp(value, ce->min, ce->max);
+				default:
+					/* Take whatever the function returns */
+					value = ce->proc(value + ((x >= 30) ? 1 : -1), (x >= 30) ? 1 : -1);
 
-				/* take whatever the function returns */
-				value = ce->proc(value, (x >= 30) ? 1 : -1);
-
-				if (value != oldvalue) {
-					WP(w, def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
-				}
-			} break;
+					if (value != oldvalue) WP(w, def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
+					break;
 			}
 
-			if (value != oldvalue) {
-				WriteValue(ce->variable, ce->type, (int64)value);
-				SetWindowDirty(w);
-			}
+			if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
 
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 
 			SetWindowDirty(w);
-		}
-		break;
-	case WE_TIMEOUT:
-		WP(w, def_d).data_1 = 0;
-		SetWindowDirty(w);
-		break;
+		} break;
+
+		case WE_TIMEOUT:
+			WP(w, def_d).data_1 = 0;
+			SetWindowDirty(w);
+			break;
 	}
 }
 

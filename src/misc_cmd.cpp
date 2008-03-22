@@ -349,7 +349,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 #ifndef _DEBUG
 	if (_networking) return CMD_ERROR;
 #endif
-	return CommandCost(EXPENSES_OTHER, -(Money)p1);
+	return CommandCost(EXPENSES_OTHER, -(int32)p1);
 }
 
 /** Transfer funds (money) from one player to another.
