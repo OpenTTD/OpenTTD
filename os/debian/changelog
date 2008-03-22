@@ -1,3 +1,9 @@
+openttd (0.7~svn) unstable; urgency=low
+
+  * Unreleased SVN version. Versioned to allow normal upgrades to released versions.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat, 22 Mar 2007 21:07:05 +0100
+
 openttd (0.6.0~beta5) unstable; urgency=low
 
   * New upstream release.

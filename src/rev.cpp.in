@@ -34,7 +34,7 @@ extern const char _openttd_revision[] = "@@VERSION@@";
  * final release will always have a lower version number than the released
  * version, thus making comparisions on specific revisions easy.
  */
-uint32 _openttd_newgrf_version = 0 << 28 | 6 << 24 | 0 << 20 | 0 << 19 | (@@REVISION@@ & ((1 << 19) - 1));
+uint32 _openttd_newgrf_version = 0 << 28 | 7 << 24 | 0 << 20 | 0 << 19 | (@@REVISION@@ & ((1 << 19) - 1));
 
 #ifdef __MORPHOS__
 /**
