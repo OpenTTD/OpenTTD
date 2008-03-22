@@ -1461,7 +1461,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 	};
 	RoadBits required = required_roadbits[dir & 0x07];
 
-	if ((required & GetAnyRoadBits(tile, v->u.road.roadtype)) == ROAD_NONE) {
+	if ((required & GetAnyRoadBits(tile, v->u.road.roadtype, true)) == ROAD_NONE) {
 		dir = INVALID_TRACKDIR;
 	}
 
@@ -1698,7 +1698,7 @@ again:
 		uint turn_around_start_frame = RVC_TURN_AROUND_START_FRAME;
 
 		RoadBits tram;
-		if (v->u.road.roadtype == ROADTYPE_TRAM && CountBits(tram = GetAnyRoadBits(v->tile, ROADTYPE_TRAM)) == 1) {
+		if (v->u.road.roadtype == ROADTYPE_TRAM && CountBits(tram = GetAnyRoadBits(v->tile, ROADTYPE_TRAM, true)) == 1) {
 			/*
 			 * The tram is turning around with one tram 'roadbit'. This means that
 			 * it is using the 'big' corner 'drive data'. However, to support the

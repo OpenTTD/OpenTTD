@@ -328,11 +328,16 @@ static inline DiagDirection GetRoadDepotDirection(TileIndex t)
  * - road tunnels: entrance is treated as road piece
  * - bridge ramps: start of the ramp is treated as road piece
  * - bridge middle parts: bridge itself is ignored
+ *
+ * If straight_tunnel_bridge_entrance is set a ROAD_X or ROAD_Y
+ * for bridge ramps and tunnel entrances is returned depending
+ * on the orientation of the tunnel or bridge.
  * @param tile the tile to get the road bits for
  * @param rt   the road type to get the road bits form
+ * @param stbe whether to return straight road bits for tunnels/bridges.
  * @return the road bits of the given tile
  */
-RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt);
+RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge_entrance = false);
 
 /**
  * Get the accessible track bits for the given tile.

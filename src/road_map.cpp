@@ -14,7 +14,7 @@
 #include "tunnelbridge_map.h"
 
 
-RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt)
+RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt, bool straight_tunnel_bridge_entrance)
 {
 	if (!HasTileRoadType(tile, rt)) return ROAD_NONE;
 
@@ -34,7 +34,9 @@ RoadBits GetAnyRoadBits(TileIndex tile, RoadType rt)
 
 		case MP_TUNNELBRIDGE:
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return ROAD_NONE;
-			return DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
+			return straight_tunnel_bridge_entrance ?
+					AxisToRoadBits(DiagDirToAxis(GetTunnelBridgeDirection(tile))) :
+					DiagDirToRoadBits(ReverseDiagDir(GetTunnelBridgeDirection(tile)));
 
 		default: return ROAD_NONE;
 	}

@@ -115,6 +115,20 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 }
 
 /**
+ * Create the road-part which belongs to the given Axis
+ *
+ * This function returns a RoadBits value which belongs to
+ * the given Axis.
+ *
+ * @param a The Axis
+ * @return The result RoadBits which the selected road-part set
+ */
+static inline RoadBits AxisToRoadBits(Axis a)
+{
+	return a == AXIS_X ? ROAD_X : ROAD_Y;
+}
+
+/**
  * Finds out, whether given player has all given RoadTypes available
  * @param PlayerID ID of player
  * @param rts RoadTypes to test
