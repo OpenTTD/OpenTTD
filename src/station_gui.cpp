@@ -953,7 +953,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case WE_DESTROY: {
 			WindowNumber wno =
-				(w->window_number << 16) | GetStation(w->window_number)->owner;
+				(w->window_number << 16) | VLW_STATION_LIST | GetStation(w->window_number)->owner;
 
 			DeleteWindowById(WC_TRAINS_LIST, wno);
 			DeleteWindowById(WC_ROADVEH_LIST, wno);
