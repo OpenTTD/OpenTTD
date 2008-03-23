@@ -21,6 +21,21 @@
 
 #include "table/strings.h"
 
+enum TimetableViewWindowWidgets {
+	TTV_WIDGET_CLOSEBOX = 0,
+	TTV_CAPTION,
+	TTV_STICKY,
+	TTV_TIMETABLE_PANEL,
+	TTV_SCROLLBAR,
+	TTV_SUMMARY_PANEL,
+	TTV_CHANGE_TIME,
+	TTV_CLEAR_TIME,
+	TTV_RESET_LATENESS,
+	TTV_AUTOFILL,
+	TTV_EMPTY,
+	TTV_RESIZE,
+};
+
 static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 {
 	/*
@@ -57,29 +72,29 @@ static void DrawTimetableWindow(Window *w)
 
 	if (v->owner == _local_player) {
 		if (selected == -1) {
-			w->DisableWidget(6);
-			w->DisableWidget(7);
+			w->DisableWidget(TTV_CHANGE_TIME);
+			w->DisableWidget(TTV_CLEAR_TIME);
 		} else if (selected % 2 == 1) {
-			w->EnableWidget(6);
-			w->EnableWidget(7);
+			w->EnableWidget(TTV_CHANGE_TIME);
+			w->EnableWidget(TTV_CLEAR_TIME);
 		} else {
 			const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
 			bool disable = order == NULL || order->type != OT_GOTO_STATION || (_patches.new_nonstop && (order->flags & OFB_NON_STOP));
 
-			w->SetWidgetDisabledState(6, disable);
-			w->SetWidgetDisabledState(7, disable);
+			w->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
+			w->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
 		}
 
-		w->EnableWidget(8);
-		w->EnableWidget(9);
+		w->EnableWidget(TTV_RESET_LATENESS);
+		w->EnableWidget(TTV_AUTOFILL);
 	} else {
-		w->DisableWidget(6);
-		w->DisableWidget(7);
-		w->DisableWidget(8);
-		w->DisableWidget(9);
+		w->DisableWidget(TTV_CHANGE_TIME);
+		w->DisableWidget(TTV_CLEAR_TIME);
+		w->DisableWidget(TTV_RESET_LATENESS);
+		w->DisableWidget(TTV_AUTOFILL);
 	}
 
-	w->SetWidgetLoweredState(9, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
+	w->SetWidgetLoweredState(TTV_AUTOFILL, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
 	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
@@ -173,7 +188,7 @@ static void DrawTimetableWindow(Window *w)
 		y += 10;
 	}
 
-	y = w->widget[5].top + 1;
+	y = w->widget[TTV_SUMMARY_PANEL].top + 1;
 
 	{
 		uint total_time = 0;
@@ -221,7 +236,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 			const Vehicle *v = GetVehicle(w->window_number);
 
 			switch (we->we.click.widget) {
-				case 3: { /* Main panel. */
+				case TTV_TIMETABLE_PANEL: { /* Main panel. */
 					int selected = GetOrderFromTimetableWndPt(w, we->we.click.pt.y, v);
 
 					if (selected == INVALID_ORDER || selected == WP(w, order_d).sel) {
@@ -233,7 +248,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 					}
 				} break;
 
-				case 6: { /* "Wait For" button. */
+				case TTV_CHANGE_TIME: { /* "Wait For" button. */
 					int selected = WP(w, order_d).sel;
 					VehicleOrderID real = (selected + 1) / 2;
 
@@ -255,16 +270,16 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 					ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, w, CS_NUMERAL);
 				} break;
 
-				case 7: { /* Clear waiting time button. */
+				case TTV_CLEAR_TIME: { /* Clear waiting time button. */
 					uint32 p1 = PackTimetableArgs(v, WP(w, order_d).sel);
 					DoCommandP(0, p1, 0, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 				} break;
 
-				case 8: /* Reset the vehicle's late counter. */
+				case TTV_RESET_LATENESS: /* Reset the vehicle's late counter. */
 					DoCommandP(0, v->index, 0, NULL, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 					break;
 
-				case 9: /* Autofill the timetable. */
+				case TTV_AUTOFILL: /* Autofill the timetable. */
 					DoCommandP(0, v->index, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 					break;
 			}
@@ -287,29 +302,29 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 
 		case WE_RESIZE:
 			/* Update the scroll + matrix */
-			w->vscroll.cap = (w->widget[3].bottom - w->widget[3].top) / 10;
+			w->vscroll.cap = (w->widget[TTV_TIMETABLE_PANEL].bottom - w->widget[TTV_TIMETABLE_PANEL].top) / 10;
 			break;
 
 	}
 }
 
 static const Widget _timetable_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   387,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{  WWT_STICKYBOX,   RESIZE_LR,      14,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // TTV_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   387,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},      // TTV_CAPTION
+	{  WWT_STICKYBOX,   RESIZE_LR,      14,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                    // TTV_STICKY
 
-	{      WWT_PANEL,   RESIZE_RB,      14,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},
-	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{      WWT_PANEL,   RESIZE_RB,      14,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},                // TTV_TIMETABLE_PANEL
+	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},     // TTV_SCROLLBAR
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   399,    96,   117, STR_NULL,                   STR_NULL},
+	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   399,    96,   117, STR_NULL,                   STR_NULL},                             // TTV_SUMMARY_PANEL
 
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   109,   118,   129, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   110,   219,   118,   129, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   220,   337,   118,   129, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   338,   387,   118,   129, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   109,   118,   129, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},      // TTV_CHANGE_TIME
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   110,   219,   118,   129, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},     // TTV_CLEAR_TIME
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   220,   337,   118,   129, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP}, // TTV_RESET_LATENESS
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   338,   387,   118,   129, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},       // TTV_AUTOFILL
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,   388,   387,   118,   129, STR_NULL,                   STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   388,   399,   118,   129, STR_NULL,                   STR_RESIZE_BUTTON},
+	{      WWT_PANEL,   RESIZE_RTB,     14,   388,   387,   118,   129, STR_NULL,                   STR_NULL},                             // TTV_EMPTY
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   388,   399,   118,   129, STR_NULL,                   STR_RESIZE_BUTTON},                    // TTV_RESIZE
 
 	{    WIDGETS_END }
 };
