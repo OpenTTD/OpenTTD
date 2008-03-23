@@ -18,12 +18,16 @@
 #include "network/network.h"
 #include "variables.h"
 #include "strings_func.h"
+#include "sound_func.h"
 #include "economy_func.h"
 #include "core/alloc_func.hpp"
 #include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
+
+extern bool GenerateTowns();
+static int _scengen_town_size = 1; // depress medium-sized towns per default
 
 enum TownAuthorityWidget {
 	TWA_CLOSEBOX = 0,
@@ -571,3 +575,117 @@ void ShowTownDirectory()
 		w->resize.height = w->height - 10 * 6; // minimum of 10 items in the list, each item 10 high
 	}
 }
+
+void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
+{
+	if (success) {
+		SndPlayTileFx(SND_1F_SPLAT, tile);
+		ResetObjectToPlace();
+	}
+}
+
+static void PlaceProc_Town(TileIndex tile)
+{
+	uint32 size = min(_scengen_town_size, (int)TSM_CITY);
+	uint32 mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
+	DoCommandP(tile, size, mode, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
+}
+
+static const Widget _scen_edit_town_gen_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   159,    14,    94, 0x0,                      STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    16,    27, STR_0234_NEW_TOWN,        STR_0235_CONSTRUCT_NEW_TOWN},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    29,    40, STR_023D_RANDOM_TOWN,     STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,    STR_RANDOM_TOWNS_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,    53,    68,    79, STR_02A1_SMALL,           STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    54,   105,    68,    79, STR_02A2_MEDIUM,          STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   106,   157,    68,    79, STR_02A3_LARGE,           STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    81,    92, STR_SCENARIO_EDITOR_CITY, STR_02A4_SELECT_TOWN_SIZE},
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    54,    67, STR_02A5_TOWN_SIZE,       STR_NULL},
+{   WIDGETS_END},
+};
+
+static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+	case WE_PAINT:
+		DrawWindowWidgets(w);
+		break;
+
+	case WE_CREATE:
+		w->LowerWidget(_scengen_town_size + 7);
+		break;
+
+	case WE_CLICK:
+		switch (e->we.click.widget) {
+		case 4: // new town
+			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
+			break;
+		case 5: {// random town
+			Town *t;
+			uint size = min(_scengen_town_size, (int)TSM_CITY);
+			TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
+
+			w->HandleButtonClick(5);
+			_generating_world = true;
+			t = CreateRandomTown(20, mode, size);
+			_generating_world = false;
+
+			if (t == NULL) {
+				ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+			} else {
+				ScrollMainWindowToTile(t->xy);
+			}
+
+			break;
+		}
+		case 6: {// many random towns
+			w->HandleButtonClick(6);
+
+			_generating_world = true;
+			if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+			_generating_world = false;
+			break;
+		}
+
+		case 7: case 8: case 9: case 10:
+			w->RaiseWidget(_scengen_town_size + 7);
+			_scengen_town_size = e->we.click.widget - 7;
+			w->LowerWidget(_scengen_town_size + 7);
+			SetWindowDirty(w);
+			break;
+		}
+		break;
+
+	case WE_TIMEOUT:
+		w->RaiseWidget(5);
+		w->RaiseWidget(6);
+		SetWindowDirty(w);
+		break;
+	case WE_PLACE_OBJ:
+		_place_proc(e->we.place.tile);
+		break;
+	case WE_ABORT_PLACE_OBJ:
+		w->RaiseButtons();
+		w->LowerWidget(_scengen_town_size + 7);
+		SetWindowDirty(w);
+		break;
+	}
+}
+
+static const WindowDesc _scen_edit_town_gen_desc = {
+	WDP_AUTO, WDP_AUTO, 160, 95, 160, 95,
+	WC_SCEN_TOWN_GEN, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
+	_scen_edit_town_gen_widgets,
+	ScenEditTownGenWndProc,
+};
+
+void ShowBuildTownWindow()
+{
+	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
+	AllocateWindowDescFront(&_scen_edit_town_gen_desc, 0);
+}
+

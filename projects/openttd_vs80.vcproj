@@ -1352,6 +1352,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\toolbar_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\track_func.h"
 				>
 			</File>
@@ -1565,6 +1569,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\timetable_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\toolbar_gui.cpp"
 				>
 			</File>
 			<File

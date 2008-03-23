@@ -246,6 +246,7 @@ tile_type.h
 timetable.h
 town.h
 town_type.h
+toolbar_gui.h
 track_func.h
 track_type.h
 train.h
@@ -301,6 +302,7 @@ station_gui.cpp
 subsidy_gui.cpp
 terraform_gui.cpp
 timetable_gui.cpp
+toolbar_gui.cpp
 town_gui.cpp
 train_gui.cpp
 transparency_gui.cpp
