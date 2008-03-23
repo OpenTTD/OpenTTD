@@ -339,6 +339,18 @@ static void FixOldVehicles()
 			ClrBit(v->u.road.state, RVS_IS_STOPPING);
 		}
 
+		/* The subtype should be 0, but it sometimes isn't :( */
+		if (v->type == VEH_ROAD) v->subtype = 0;
+
+		/* Sometimes primary vehicles would have a nothing (invalid) order
+		 * or vehicles that could not have an order would still have a
+		 * (loading) order which causes assertions and the like later on.
+		 */
+		if (!IsPlayerBuildableVehicleType(v) ||
+				(v->IsPrimaryVehicle() && v->current_order.type == OT_NOTHING)) {
+			v->current_order.type = OT_DUMMY;
+		}
+
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
 			/* If a vehicle has the same orders, add the link to eachother
 			 * in both vehicles */
@@ -1223,7 +1235,12 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
-			v->orders = GetOrder(REMAP_ORDER_IDX(_old_order_ptr));
+			uint old_id = REMAP_ORDER_IDX(_old_order_ptr);
+			/* There is a maximum of 5000 orders in old savegames, so *if*
+			 * we go over that limit something is very wrong. In that case
+			 * we just assume there are no orders for the vehicle.
+			 */
+			if (old_id < 5000) v->orders = GetOrder(old_id);
 		}
 		AssignOrder(&v->current_order, UnpackOldOrder(_old_order));
 
