@@ -45,12 +45,11 @@ extern RoadType _last_built_roadtype;
  * the default position is aligned with the left side of the clicked button */
 Point GetToolbarDropdownPos(uint16 parent_button, int width, int height)
 {
-	Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
+	const Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
 	Point pos;
-	pos.x =  w->widget[GB(parent_button, 0, 8)].left;
-	pos.y = -height;
+	pos.x = w->widget[GB(parent_button, 0, 8)].left;
 	pos.x = w->left + Clamp(pos.x, 0, w->width - width);
-	pos.y = w->top + pos.y;
+	pos.y = w->height;
 
 	return pos;
 }

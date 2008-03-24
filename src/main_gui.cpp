@@ -523,14 +523,12 @@ static void UpdatePlayerMenuHeight(Window *w)
 	if (_networking && WP(w, menu_d).main_button == 9) num++;
 
 	if (WP(w, menu_d).item_count != num) {
-		Point pos;
 		WP(w, menu_d).item_count = num;
 		SetWindowDirty(w);
 		num = num * 10 + 2;
 		w->height = num;
 		w->widget[0].bottom = w->widget[0].top + num - 1;
-		pos = GetToolbarDropdownPos(0, w->width, w->height);
-		w->top = pos.y;
+		w->top = GetToolbarDropdownPos(0, w->width, w->height).y;
 		SetWindowDirty(w);
 	}
 }
@@ -686,10 +684,6 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
  * @return Return a pointer to the newly created dropdown window */
  Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask)
 {
-	int width;
-	int height;
-	Point pos;
-
 	assert(disabled_mask == 0 || item_count <= 8);
 	w->LowerWidget(parent_button);
 	w->InvalidateWidget(parent_button);
@@ -697,10 +691,10 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
 	// Extend the dropdown toolbar to the longest string in the list
-	width = max(GetStringListMaxWidth(base_string, item_count) + 6, 140);
-	height = item_count * 10 + 2;
+	int width = max(GetStringListMaxWidth(base_string, item_count) + 6, 140);
+	int height = item_count * 10 + 2;
 
-	pos = GetToolbarDropdownPos(parent_button, width, height);
+	Point pos = GetToolbarDropdownPos(parent_button, width, height);
 
 	w = AllocateWindow(pos.x, pos.y, width, height, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->widget[0].bottom = item_count * 10 + 1;
@@ -722,13 +716,11 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
 
 Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 {
-	Point pos;;
-
 	w->LowerWidget(main_button);
 	w->InvalidateWidget(main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
-	pos = GetToolbarDropdownPos(main_button, 241, 82);
+	Point pos = GetToolbarDropdownPos(main_button, 241, 82);
 	w = AllocateWindow(pos.x, pos.y, 241, 82, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w, menu_d).item_count = 0;
