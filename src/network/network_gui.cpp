@@ -60,7 +60,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
 /* Global to remember sorting after window has been closed */
 static Listing _ng_sorting;
 
-static char _edit_str_buf[150];
+static char _edit_str_net_buf[150];
 static bool _chat_tab_completion_active;
 
 static void ShowNetworkStartServerWindow();
@@ -527,8 +527,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, NGWW_PLAYER, e) == 1) break; // enter pressed
 
 		/* The name is only allowed when it starts with a letter! */
-		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
-			ttd_strlcpy(_network_player_name, _edit_str_buf, lengthof(_network_player_name));
+		if (_edit_str_net_buf[0] != '\0' && _edit_str_net_buf[0] != ' ') {
+			ttd_strlcpy(_network_player_name, _edit_str_net_buf, lengthof(_network_player_name));
 		} else {
 			ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
 		}
@@ -635,9 +635,9 @@ void ShowNetworkGameWindow()
 	if (w != NULL) {
 		querystr_d *querystr = &WP(w, network_ql_d).q;
 
-		ttd_strlcpy(_edit_str_buf, _network_player_name, lengthof(_edit_str_buf));
+		ttd_strlcpy(_edit_str_net_buf, _network_player_name, lengthof(_edit_str_net_buf));
 		querystr->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&querystr->text, _edit_str_buf, lengthof(_edit_str_buf), 120);
+		InitializeTextBuffer(&querystr->text, _edit_str_net_buf, lengthof(_edit_str_net_buf), 120);
 
 		UpdateNetworkGameWindow(true);
 	}
@@ -939,7 +939,7 @@ static void ShowNetworkStartServerWindow()
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
 	w = AllocateWindowDesc(&_network_start_server_window_desc);
-	ttd_strlcpy(_edit_str_buf, _network_server_name, lengthof(_edit_str_buf));
+	ttd_strlcpy(_edit_str_net_buf, _network_server_name, lengthof(_edit_str_net_buf));
 
 	_saveload_mode = SLD_NEW_GAME;
 	BuildFileList();
@@ -947,7 +947,7 @@ static void ShowNetworkStartServerWindow()
 	w->vscroll.count = _fios_num + 1;
 
 	WP(w, network_ql_d).q.afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, network_ql_d).q.text, _edit_str_buf, lengthof(_edit_str_buf), 160);
+	InitializeTextBuffer(&WP(w, network_ql_d).q.text, _edit_str_net_buf, lengthof(_edit_str_net_buf), 160);
 }
 
 static PlayerID NetworkLobbyFindCompanyIndex(byte pos)
@@ -1175,7 +1175,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	w = AllocateWindowDesc(&_network_lobby_window_desc);
 	if (w != NULL) {
 		WP(w, network_ql_d).n.server = ngl;
-		strcpy(_edit_str_buf, "");
+		strcpy(_edit_str_net_buf, "");
 		w->vscroll.cap = 10;
 	}
 }
@@ -1710,7 +1710,7 @@ static char *ChatTabCompletionFindText(char *buf)
  */
 static void ChatTabCompletion(Window *w)
 {
-	static char _chat_tab_completion_buf[lengthof(_edit_str_buf)];
+	static char _chat_tab_completion_buf[lengthof(_edit_str_net_buf)];
 	Textbuf *tb = &WP(w, chatquerystr_d).text;
 	uint len, tb_len;
 	uint item;
@@ -1763,9 +1763,9 @@ static void ChatTabCompletion(Window *w)
 
 			/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
 			if (pre_buf == tb_buf) {
-				snprintf(tb->buf, lengthof(_edit_str_buf), "%s: ", cur_name);
+				snprintf(tb->buf, lengthof(_edit_str_net_buf), "%s: ", cur_name);
 			} else {
-				snprintf(tb->buf, lengthof(_edit_str_buf), "%s %s", pre_buf, cur_name);
+				snprintf(tb->buf, lengthof(_edit_str_net_buf), "%s %s", pre_buf, cur_name);
 			}
 
 			/* Update the textbuffer */
@@ -1811,7 +1811,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		assert(WP(w, chatquerystr_d).dtype < lengthof(chat_captions));
+		assert((uint)WP(w, chatquerystr_d).dtype < lengthof(chat_captions));
 		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, chat_captions[WP(w, chatquerystr_d).dtype], TC_BLACK);
 		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
 	} break;
@@ -1872,7 +1872,7 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
 
-	_edit_str_buf[0] = '\0';
+	_edit_str_net_buf[0] = '\0';
 	_chat_tab_completion_active = false;
 
 	w = AllocateWindowDesc(&_chat_window_desc);
@@ -1881,7 +1881,7 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 	WP(w, chatquerystr_d).dtype   = type;
 	WP(w, chatquerystr_d).dest    = dest;
 	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
+	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_net_buf, lengthof(_edit_str_net_buf), 0);
 }
 
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
@@ -1908,12 +1908,12 @@ static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
 			switch (e->we.click.widget) {
 				case NCPWW_OK: {
 					if (w->IsWidgetLowered(NCPWW_SAVE_AS_DEFAULT_PASSWORD)) {
-						snprintf(_network_default_company_pass, lengthof(_network_default_company_pass), "%s", _edit_str_buf);
+						snprintf(_network_default_company_pass, lengthof(_network_default_company_pass), "%s", _edit_str_net_buf);
 					}
 
 					/* empty password is a '*' because of console argument */
-					if (StrEmpty(_edit_str_buf)) snprintf(_edit_str_buf, lengthof(_edit_str_buf), "*");
-					char *password = _edit_str_buf;
+					if (StrEmpty(_edit_str_net_buf)) snprintf(_edit_str_net_buf, lengthof(_edit_str_net_buf), "*");
+					char *password = _edit_str_net_buf;
 					NetworkChangeCompanyPassword(1, &password);
 				}
 
@@ -1973,10 +1973,10 @@ void ShowNetworkCompanyPasswordWindow()
 {
 	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
-	_edit_str_buf[0] = '\0';
+	_edit_str_net_buf[0] = '\0';
 	Window *w = AllocateWindowDesc(&_ncp_window_desc);
 	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_buf, min(lengthof(_network_default_company_pass), lengthof(_edit_str_buf)), 0);
+	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_net_buf, min(lengthof(_network_default_company_pass), lengthof(_edit_str_net_buf)), 0);
 }
 
 #endif /* ENABLE_NETWORK */
