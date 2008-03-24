@@ -1451,6 +1451,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spanish
 STR_NETWORK_LANG_SWEDISH                                        :Swedish
 STR_NETWORK_LANG_TURKISH                                        :Turkish
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainian
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Croatian
+STR_NETWORK_LANG_CATALAN                                        :Catalan
+STR_NETWORK_LANG_ESTONIAN                                       :Estonian
+STR_NETWORK_LANG_GALICIAN                                       :Galician
+STR_NETWORK_LANG_GREEK                                          :Greek
+STR_NETWORK_LANG_LATVIAN                                        :Latvian
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby

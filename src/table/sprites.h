@@ -201,7 +201,7 @@ enum Sprites {
 
 	/* Flags sprites (in same order as enum NetworkLanguage) */
 	SPR_FLAGS_BASE = SPR_ONEWAY_BASE + ONEWAY_SPRITE_COUNT,
-	FLAGS_SPRITE_COUNT = 29,
+	FLAGS_SPRITE_COUNT = 36,
 
 	/* Not really a sprite, but an empty bounding box. Used to construct bounding boxes, that help sorting the sprites, but do not have a sprite associated. */
 	SPR_EMPTY_BOUNDING_BOX = SPR_FLAGS_BASE + FLAGS_SPRITE_COUNT,

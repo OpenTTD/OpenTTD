@@ -47,7 +47,7 @@ enum {
 	 */
 	NETWORK_MAX_GRF_COUNT         =   55,
 
-	NETWORK_NUM_LANGUAGES         =   29, ///< Number of known languages (to the network protocol) + 1 for 'any'.
+	NETWORK_NUM_LANGUAGES         =   36, ///< Number of known languages (to the network protocol) + 1 for 'any'.
 	/**
 	 * The number of landscapes in OpenTTD.
 	 * This number must be equal to NUM_LANDSCAPE, but as this number is used
