@@ -35,6 +35,7 @@
 #define BTC 15
 
 struct chatquerystr_d : public querystr_d {
+	DestType dtype;
 	int dest;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
@@ -1791,7 +1792,7 @@ static void ChatTabCompletion(Window *w)
 
 /*
  * uses chatquerystr_d WP macro
- * uses chatquerystr_d->caption to store type of chat message (Private/Team/All)
+ * uses chatquerystr_d->dtype to store type of chat message (Private/Team/All)
  */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
@@ -1807,23 +1808,19 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			STR_NETWORK_CHAT_COMPANY_CAPTION,
 			STR_NETWORK_CHAT_CLIENT_CAPTION
 		};
-		StringID msg;
 
 		DrawWindowWidgets(w);
 
-		assert(WP(w, chatquerystr_d).caption < lengthof(chat_captions));
-		msg = chat_captions[WP(w, chatquerystr_d).caption];
-		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, TC_BLACK);
+		assert(WP(w, chatquerystr_d).dtype < lengthof(chat_captions));
+		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, chat_captions[WP(w, chatquerystr_d).dtype], TC_BLACK);
 		DrawEditBox(w, &WP(w, chatquerystr_d), 2);
 	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-			case 3: { /* Send */
-				DestType type = (DestType)WP(w, chatquerystr_d).caption;
-				int dest = WP(w, chatquerystr_d).dest;
-				SendChat(WP(w, chatquerystr_d).text.buf, type, dest);
-			} /* FALLTHROUGH */
+			case 3: /* Send */
+				SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
+			/* FALLTHROUGH */
 			case 0: /* Cancel */ DeleteWindow(w); break;
 		}
 		break;
@@ -1838,11 +1835,9 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		} else {
 			_chat_tab_completion_active = false;
 			switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 2, e)) {
-				case 1: { /* Return */
-				DestType type = (DestType)WP(w, chatquerystr_d).caption;
-				int dest = WP(w, chatquerystr_d).dest;
-				SendChat(WP(w, chatquerystr_d).text.buf, type, dest);
-			} /* FALLTHROUGH */
+				case 1: /* Return */
+					SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
+				/* FALLTHROUGH */
 				case 2: /* Escape */ DeleteWindow(w); break;
 			}
 		}
@@ -1883,7 +1878,7 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 	w = AllocateWindowDesc(&_chat_window_desc);
 
 	w->LowerWidget(2);
-	WP(w, chatquerystr_d).caption = type; // Misuse of caption
+	WP(w, chatquerystr_d).dtype   = type;
 	WP(w, chatquerystr_d).dest    = dest;
 	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
