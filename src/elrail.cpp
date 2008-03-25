@@ -84,7 +84,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 {
 	switch (GetTileType(t)) {
 		case MP_RAILWAY:
-			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (!HasCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			switch (GetRailTileType(t)) {
 				case RAIL_TILE_NORMAL: case RAIL_TILE_SIGNALS:
 					return GetTrackBits(t);
@@ -96,7 +96,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			break;
 
 		case MP_TUNNELBRIDGE:
-			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (!HasCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			if (override != NULL && (IsTunnel(t) || GetTunnelBridgeLength(t, GetOtherBridgeEnd(t)) > 0)) {
 				*override = 1 << GetTunnelBridgeDirection(t);
 			}
@@ -104,12 +104,12 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 
 		case MP_ROAD:
 			if (!IsLevelCrossing(t)) return TRACK_BIT_NONE;
-			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (!HasCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			return GetCrossingRailBits(t);
 
 		case MP_STATION:
 			if (!IsRailwayStation(t)) return TRACK_BIT_NONE;
-			if (GetRailType(t) != RAILTYPE_ELECTRIC) return TRACK_BIT_NONE;
+			if (!HasCatenary(GetRailType(t))) return TRACK_BIT_NONE;
 			if (!IsStationTileElectrifiable(t)) return TRACK_BIT_NONE;
 			return TrackToTrackBits(GetRailStationTrack(t));
 
@@ -179,7 +179,7 @@ void DrawCatenaryOnTunnel(const TileInfo *ti)
 		{ 1, 0, 15, 16 }, // NW
 	};
 
-	if ((GetRailType(ti->tile) != RAILTYPE_ELECTRIC) || _patches.disable_elrails) return;
+	if (!HasCatenary(GetRailType(ti->tile)) || _patches.disable_elrails) return;
 
 	DiagDirection dir = GetTunnelBridgeDirection(ti->tile);
 
@@ -282,7 +282,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		if (IsTileType(neighbour, MP_STATION)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 
 		/* Read the foundataions if they are present, and adjust the tileh */
-		if (trackconfig[TS_NEIGHBOUR] != TRACK_BIT_NONE && IsTileType(neighbour, MP_RAILWAY) && GetRailType(neighbour) == RAILTYPE_ELECTRIC) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
+		if (trackconfig[TS_NEIGHBOUR] != TRACK_BIT_NONE && IsTileType(neighbour, MP_RAILWAY) && HasCatenary(GetRailType(neighbour))) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
 		if (IsBridgeTile(neighbour)) {
 			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetTunnelBridgeDirection(neighbour)));
 		}
@@ -436,7 +436,7 @@ void DrawCatenary(const TileInfo *ti)
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
 		TileIndex head = GetNorthernBridgeEnd(ti->tile);
 
-		if (GetTunnelBridgeTransportType(head) == TRANSPORT_RAIL && GetRailType(head) == RAILTYPE_ELECTRIC) {
+		if (GetTunnelBridgeTransportType(head) == TRANSPORT_RAIL && HasCatenary(GetRailType(head))) {
 			DrawCatenaryOnBridge(ti);
 		}
 	}

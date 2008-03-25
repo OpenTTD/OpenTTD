@@ -1761,7 +1761,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti);
 
-		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+		if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {
@@ -1835,7 +1835,7 @@ default_waypoint:
 
 		DrawGroundSprite(image, PAL_NONE);
 
-		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+		if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
 
 		foreach_draw_tile_seq(dtss, dts->seq) {
 			SpriteID image = dtss->image.sprite;

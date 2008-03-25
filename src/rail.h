@@ -183,6 +183,17 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 int TicksToLeaveDepot(const Vehicle *v);
 
+
+/**
+ * Test if a rail type has catenary
+ * @param rt Rail type to test
+ */
+static inline bool HasCatenary(RailType rt)
+{
+	return rt == RAILTYPE_ELECTRIC;
+}
+
+
 /**
  * Draws overhead wires and pylons for electric railways.
  * @param ti The TileInfo struct of the tile being drawn

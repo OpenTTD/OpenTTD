@@ -2177,7 +2177,7 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 	}
 
-	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
+	if (HasCatenary(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
 	if (HasBit(roadtypes, ROADTYPE_TRAM)) {
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;

@@ -1111,7 +1111,7 @@ static void DrawTile_Road(TileInfo *ti)
 				DrawGroundSprite(SPR_TRAMWAY_OVERLAY + (GetCrossingRoadAxis(ti->tile) ^ 1), pal);
 				DrawTramCatenary(ti, GetCrossingRoadBits(ti->tile));
 			}
-			if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+			if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
 			break;
 		}
 

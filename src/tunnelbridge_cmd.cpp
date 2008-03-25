@@ -859,7 +859,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				StartSpriteCombine();
 				AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + tunnelbridge_direction, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 			}
-		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
+		} else if (HasCatenary(GetRailType(ti->tile))) {
 			DrawCatenary(ti);
 
 			catenary = true;
@@ -935,7 +935,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawBridgeTramBits(ti->x, ti->y, z, offset, HasBit(rts, ROADTYPE_ROAD));
 			}
 			EndSpriteCombine();
-		} else if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) {
+		} else if (HasCatenary(GetRailType(ti->tile))) {
 			DrawCatenary(ti);
 		}
 
@@ -1061,7 +1061,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 			EndSpriteCombine();
 			StartSpriteCombine();
 		}
-	} else if (GetRailType(rampsouth) == RAILTYPE_ELECTRIC) {
+	} else if (HasCatenary(GetRailType(rampsouth))) {
 		DrawCatenary(ti);
 	}
 
