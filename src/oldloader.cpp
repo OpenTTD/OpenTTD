@@ -339,6 +339,18 @@ static void FixOldVehicles()
 			ClrBit(v->u.road.state, RVS_IS_STOPPING);
 		}
 
+		/* The subtype should be 0, but it sometimes isn't :( */
+		if (v->type == VEH_ROAD) v->subtype = 0;
+
+		/* Sometimes primary vehicles would have a nothing (invalid) order
+		 * or vehicles that could not have an order would still have a
+		 * (loading) order which causes assertions and the like later on.
+		 */
+		if (!IsPlayerBuildableVehicleType(v) ||
+				(v->IsPrimaryVehicle() && v->current_order.type == OT_NOTHING)) {
+			v->current_order.type = OT_DUMMY;
+		}
+
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
 			/* If a vehicle has the same orders, add the link to eachother
 			 * in both vehicles */
@@ -1099,17 +1111,15 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 	uint temp = ls->total_read;
 	bool res;
 
-	/* We changed the offset of the vehicle types, so fix it
-	 * Basically v->type -= 0x10; would suffice, but play safely */
 	switch (v->type) {
 		default: NOT_REACHED();
-		case 0x00 /*VEH_INVALID */: v = new (v) InvalidVehicle();  res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
-		case 0x10 /*VEH_TRAIN   */: v = new (v) Train();           res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
-		case 0x11 /*VEH_ROAD    */: v = new (v) RoadVehicle();     res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
-		case 0x12 /*VEH_SHIP    */: v = new (v) Ship();            res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
-		case 0x13 /*VEH_AIRCRAFT*/: v = new (v) Aircraft();        res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
-		case 0x14 /*VEH_SPECIAL */: v = new (v) SpecialVehicle();  res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
-		case 0x15 /*VEH_DISASTER*/: v = new (v) DisasterVehicle(); res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
+		case VEH_INVALID : res = LoadChunk(ls, NULL,           vehicle_empty_chunk);    break;
+		case VEH_TRAIN   : res = LoadChunk(ls, &v->u.rail,     vehicle_train_chunk);    break;
+		case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
+		case VEH_SHIP    : res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
+		case VEH_AIRCRAFT: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
+		case VEH_SPECIAL : res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
+		case VEH_DISASTER: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
 	}
 
 	/* This chunk size should always be 10 bytes */
@@ -1124,7 +1134,6 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 static uint16 _cargo_count;
 
 static const OldChunks vehicle_chunk[] = {
-	OCL_SVAR(  OC_UINT8, Vehicle, type ),
 	OCL_SVAR(  OC_UINT8, Vehicle, subtype ),
 
 	OCL_NULL( 2 ),         ///< Hash, calculated automatically
@@ -1213,7 +1222,18 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 	for (i = 0; i < _old_vehicle_multiplier; i++) {
 		_current_vehicle_id = num * _old_vehicle_multiplier + i;
 
-		Vehicle *v = new (_current_vehicle_id) InvalidVehicle();
+		/* Read the vehicle type and allocate the right vehicle */
+		Vehicle *v;
+		switch (ReadByte(ls)) {
+			default: NOT_REACHED();
+			case 0x00 /*VEH_INVALID */: v = new (_current_vehicle_id) InvalidVehicle();  break;
+			case 0x10 /*VEH_TRAIN   */: v = new (_current_vehicle_id) Train();           break;
+			case 0x11 /*VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
+			case 0x12 /*VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
+			case 0x13 /*VEH_AIRCRAFT*/: v = new (_current_vehicle_id) Aircraft();        break;
+			case 0x14 /*VEH_SPECIAL */: v = new (_current_vehicle_id) SpecialVehicle();  break;
+			case 0x15 /*VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
+		}
 		if (!LoadChunk(ls, v, vehicle_chunk)) return false;
 
 		/* This should be consistent, else we have a big problem... */
@@ -1223,7 +1243,12 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 
 		if (_old_order_ptr != 0 && _old_order_ptr != 0xFFFFFFFF) {
-			v->orders = GetOrder(REMAP_ORDER_IDX(_old_order_ptr));
+			uint old_id = REMAP_ORDER_IDX(_old_order_ptr);
+			/* There is a maximum of 5000 orders in old savegames, so *if*
+			 * we go over that limit something is very wrong. In that case
+			 * we just assume there are no orders for the vehicle.
+			 */
+			if (old_id < 5000) v->orders = GetOrder(old_id);
 		}
 		AssignOrder(&v->current_order, UnpackOldOrder(_old_order));
 
