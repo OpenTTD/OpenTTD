@@ -1716,6 +1716,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}건물을 먼저 제거하십시오!
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (도시)
 STR_2006_POPULATION                                             :{BLACK}인구: {ORANGE}{COMMA}{BLACK}  가구수: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :도시 이름 변경
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}도시 이름을 바꿀 수 없습니다...

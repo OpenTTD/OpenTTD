@@ -1715,6 +1715,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edifici s'ha d'enderrocar primer
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Ciutat)
 STR_2006_POPULATION                                             :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Reanomena Població
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}No es pot reanomenar la població...
