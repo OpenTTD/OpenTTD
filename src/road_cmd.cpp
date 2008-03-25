@@ -47,8 +47,6 @@ Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
 
 bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt)
 {
-	RoadBits present;
-	RoadBits n;
 	*edge_road = true;
 
 	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return true;
@@ -66,8 +64,8 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	if (_cheats.magic_bulldozer.value) return true;
 
 	/* Get a bitmask of which neighbouring roads has a tile */
-	n = ROAD_NONE;
-	present = GetAnyRoadBits(tile, rt);
+	RoadBits n = ROAD_NONE;
+	RoadBits present = GetAnyRoadBits(tile, rt);
 	if (present & ROAD_NE && GetAnyRoadBits(TILE_ADDXY(tile, -1,  0), rt) & ROAD_SW) n |= ROAD_NE;
 	if (present & ROAD_SE && GetAnyRoadBits(TILE_ADDXY(tile,  0,  1), rt) & ROAD_NW) n |= ROAD_SE;
 	if (present & ROAD_SW && GetAnyRoadBits(TILE_ADDXY(tile,  1,  0), rt) & ROAD_NE) n |= ROAD_SW;
@@ -75,13 +73,12 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 
 	/* If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
 	 * then allow it */
-	if ((n & (n - 1)) != 0 && (n & remove) != 0) {
-		Town *t;
+	if (KillFirstBit(n) != ROAD_NONE && (n & remove) != ROAD_NONE) {
 		*edge_road = false;
 		/* you can remove all kind of roads with extra dynamite */
 		if (_patches.extra_dynamite) return true;
 
-		t = ClosestTownFromTile(tile, (uint)-1);
+		const Town *t = ClosestTownFromTile(tile, (uint)-1);
 
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
@@ -179,23 +176,20 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
 			RoadBits present = GetRoadBits(tile, rt);
-			RoadBits c = pieces;
 
 			if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
-			if (GetTileSlope(tile, NULL) != SLOPE_FLAT  &&
-					(present == ROAD_Y || present == ROAD_X)) {
-				c |= (RoadBits)((c & 0xC) >> 2);
-				c |= (RoadBits)((c & 0x3) << 2);
+			if (GetTileSlope(tile, NULL) != SLOPE_FLAT && IsStraightRoad(present)) {
+				pieces |= MirrorRoadBits(pieces);
 			}
 
 			/* limit the bits to delete to the existing bits. */
-			c &= present;
-			if (c == ROAD_NONE) return CMD_ERROR;
+			pieces &= present;
+			if (pieces == ROAD_NONE) return CMD_ERROR;
 
 			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			if (flags & DC_EXEC) {
-				present ^= c;
+				present ^= pieces;
 				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 					if (rts == ROADTYPES_NONE) {
@@ -215,7 +209,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(c) * _price.remove_road);
+			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(pieces) * _price.remove_road);
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -350,6 +344,7 @@ static const RoadBits _valid_tileh_slopes_road[][15] = {
  */
 static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 {
+	/* Proceed steep Slopes first to reduce lookup table size */
 	if (IsSteepSlope(tileh)) {
 		/* Force straight roads. */
 		*pieces |= MirrorRoadBits(*pieces);
@@ -406,7 +401,6 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CommandCost ret;
 	RoadBits existing = ROAD_NONE;
 	RoadBits all_bits = ROAD_NONE;
-	Slope tileh;
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
@@ -422,7 +416,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	DisallowedRoadDirections toggle_drd = (DisallowedRoadDirections)GB(p1, 6, 2);
 
-	tileh = GetTileSlope(tile, NULL);
+	Slope tileh = GetTileSlope(tile, NULL);
 
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
@@ -434,8 +428,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (!HasTileRoadType(tile, rt)) break;
 
 					existing = GetRoadBits(tile, rt);
-					RoadBits merged = existing | pieces;
-					bool crossing = (merged != ROAD_X && merged != ROAD_Y);
+					bool crossing = !IsStraightRoad(existing | pieces);
 					if (rt != ROADTYPE_TRAM && (GetDisallowedRoadDirections(tile) != DRD_NONE || toggle_drd != DRD_NONE) && crossing) {
 						/* Junctions cannot be one-way */
 						return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
@@ -448,7 +441,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 							/* Ignore half built tiles */
-							if (flags & DC_EXEC && rt != ROADTYPE_TRAM && (existing == ROAD_X || existing == ROAD_Y)) {
+							if (flags & DC_EXEC && rt != ROADTYPE_TRAM && IsStraightRoad(existing)) {
 								SetDisallowedRoadDirections(tile, GetDisallowedRoadDirections(tile) ^ toggle_drd);
 								MarkTileDirtyByTile(tile);
 							}
@@ -608,7 +601,7 @@ do_clear:;
 
 		if (rt != ROADTYPE_TRAM && IsNormalRoadTile(tile)) {
 			existing |= pieces;
-			SetDisallowedRoadDirections(tile, (existing == ROAD_X || existing == ROAD_Y) ?
+			SetDisallowedRoadDirections(tile, IsStraightRoad(existing) ?
 					GetDisallowedRoadDirections(tile) ^ toggle_drd : DRD_NONE);
 		}
 
@@ -900,19 +893,28 @@ struct DrawRoadTileStruct {
 
 #include "table/road_land.h"
 
-
+/**
+ * Get the foundationtype of a RoadBits Slope combination
+ *
+ * @param tileh The Slope part
+ * @param bits The RoadBits part
+ * @return The resulting Foundation
+ */
 Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 {
+	/* Flat land and land without a road doesn't require a foundation */
+	if (tileh == SLOPE_FLAT || bits == ROAD_NONE) return FOUNDATION_NONE;
+
 	if (!IsSteepSlope(tileh)) {
-		if ((~_valid_tileh_slopes_road[0][tileh] & bits) == 0) {
+		if ((~_valid_tileh_slopes_road[0][tileh] & bits) == ROAD_NONE) {
 			/* As one can remove a single road piece when in a corner on a foundation as
 			 * it is on a sloped piece of landscape, one creates a state that cannot be
 			 * created directly, but the state itself is still perfectly drawable.
 			 * However, as we do not want this to be build directly, we need to check
 			 * for that situation in here. */
-			return (tileh != 0 && CountBits(bits) == 1) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
+			return (CountBits(bits) == 1) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
 		}
-		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return FOUNDATION_LEVELED;
+		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == ROAD_NONE) return FOUNDATION_LEVELED;
 	}
 
 	return (bits == ROAD_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);

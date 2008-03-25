@@ -65,6 +65,12 @@ static inline RoadBits GetRoadBits(TileIndex t, RoadType rt)
 	}
 }
 
+/**
+ * Get all set RoadBits on the given tile
+ *
+ * @param tile The tile from which we want to get the RoadBits
+ * @return all set RoadBits of the tile
+ */
 static inline RoadBits GetAllRoadBits(TileIndex tile)
 {
 	return GetRoadBits(tile, ROADTYPE_ROAD) | GetRoadBits(tile, ROADTYPE_TRAM) | GetRoadBits(tile, ROADTYPE_HWAY);

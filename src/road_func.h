@@ -101,6 +101,17 @@ static inline RoadBits RotateRoadBits(RoadBits r, DiagDirDiff rot)
 }
 
 /**
+ * Check if we've got a straight road
+ *
+ * @param r The given RoadBits
+ * @return true if we've got a straight road
+ */
+static inline bool IsStraightRoad(RoadBits r)
+{
+	return (r == ROAD_X || r == ROAD_Y);
+}
+
+/**
  * Create the road-part which belongs to the given DiagDirection
  *
  * This function returns a RoadBits value which belongs to
