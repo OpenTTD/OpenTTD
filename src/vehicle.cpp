@@ -1687,24 +1687,28 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 }
 
 /** Autoreplace all vehicles in the depot
+ * Note: this command can make incorrect cost estimations
+ * Luckily the final price can only drop, not increase. This is due to the fact that
+ * estimation can't predict wagon removal so it presumes worst case which is no income from selling wagons.
  * @param tile Tile of the depot where the vehicles are
  * @param flags type of operation
  * @param p1 Type of vehicle
- * @param p2 Unused
+ * @param p2 If bit 0 is set, then either replace all or nothing (instead of replacing until money runs out)
  */
 CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **vl = NULL;
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
-	uint i, x = 0, y = 0, z = 0;
-	CommandCost cost;
+	uint i;
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
+	bool all_or_nothing = HasBit(p2, 0);
 
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
+	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, &vl, &engine_list_length, &engine_count);
 
 
 	for (i = 0; i < engine_count; i++) {
@@ -1715,10 +1719,6 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsInDepot()) continue;
 
-		x = v->x_pos;
-		y = v->y_pos;
-		z = v->z_pos;
-
 		if (stopped) {
 			v->vehstatus |= VS_STOPPED; // Stop the vehicle
 			v->leave_depot_instantly = true;
@@ -1727,24 +1727,25 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 
 		if (CmdSucceeded(ret)) {
 			cost.AddCost(ret);
-			if (!(flags & DC_EXEC)) break;
-			/* There is a problem with autoreplace and newgrf
-			 * It's impossible to tell the length of a train after it's being replaced before it's actually done
-			 * Because of this, we can't estimate costs due to wagon removal and we will have to always return 0 and pay manually
-			 * Since we pay after each vehicle is replaced and MaybeReplaceVehicle() check if the player got enough money
-			 * we should never reach a condition where the player will end up with negative money from doing this */
-			SubtractMoneyFromPlayer(ret);
+		} else {
+			if (all_or_nothing) {
+				/* We failed to replace a vehicle even though we set all or nothing.
+				 * We should never reach this if DC_EXEC is set since then it should
+				 * have failed the estimation guess. */
+				assert(!(flags & DC_EXEC));
+				/* Now we will have to return an error.
+				 * This goto will leave the loop and it's ok to do so because
+				 * there is no point in the rest of the loop. */
+				goto error;
+			}
 		}
 	}
 
 	if (cost.GetCost() == 0) {
+error:
+		/* Either we didn't replace anything or something went wrong.
+		 * Either way we want to return an error and not execute this command. */
 		cost = CMD_ERROR;
-	} else {
-		if (flags & DC_EXEC) {
-			/* Display the cost animation now that DoCommandP() can't do it for us (see previous comments) */
-			if (IsLocalPlayer()) ShowCostOrIncomeAnimation(x, y, z, cost.GetCost());
-		}
-		cost = CommandCost();
 	}
 
 	free(vl);

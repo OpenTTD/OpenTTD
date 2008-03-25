@@ -199,12 +199,21 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 			 */
 			/* Get the vehicle in front of the one we move out */
 			Vehicle *front = old_v->Previous();
-			/* If the vehicle in front is the rear end of a dualheaded engine, then we need to use the one in front of that one */
-			if (IsRearDualheaded(front)) front = front->Previous();
-			/* Now we move the old one out of the train */
-			DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
-			/* Add the new vehicle */
-			DoCommand(0, (front->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			if (front == NULL) {
+				/* It would appear that we have the front wagon of a row of wagons without engines */
+				Vehicle *next = old_v->Next();
+				if (next != NULL) {
+					/* Move the chain to the new front wagon */
+					DoCommand(0, (new_v->index << 16) | next->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				}
+			} else {
+				/* If the vehicle in front is the rear end of a dualheaded engine, then we need to use the one in front of that one */
+				if (IsRearDualheaded(front)) front = front->Previous();
+				/* Now we move the old one out of the train */
+				DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				/* Add the new vehicle */
+				DoCommand(0, (front->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+			}
 		} else {
 			// copy/clone the orders
 			DoCommand(0, (old_v->index << 16) | new_v->index, old_v->IsOrderListShared() ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
