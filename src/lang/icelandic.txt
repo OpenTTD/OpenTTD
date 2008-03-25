@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sléttlendi nauðsynlegt
 STR_0008_WAITING                                                :{BLACK}Bíður: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} frá {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Tekur við: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Tekur við: {GOLD}
 STR_000E                                                        :
@@ -585,7 +586,11 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aðkoma
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aðkoma fyrsta farartækis á stöð andstæðings
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Slys / hamfarir
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Fyrirtækisupplýsingar
+STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Opnun / lokun iðnaða
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Efnahagsbreytingar
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af leikmanni
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Aðrar framleiðslubreytingar
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Ráð / upplýsingar um farartæki leikmanns
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Ný farartæki
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Breyting á viðtöku farms
@@ -721,6 +726,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Setja vi
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Setja sendi
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Afmarkaðu eyðimörk.{}Smelltu og haltu CTRL til að fjarlægja hana
 STR_CREATE_LAKE                                                 :{BLACK}Skilgreina vantssvæði.{}Grafa skipaskurð, nema CTRL sé haldið niðri við sjávarmál, þá flæðir það umhverfið í staðin.
+STR_CREATE_RIVER                                                :{BLACK}Búa til fljót.
 STR_0290_DELETE                                                 :{BLACK}Eyða
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Eyða þessum bæ algjörlega
 STR_0292_SAVE_SCENARIO                                          :Vista kort
@@ -930,6 +936,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Tungumá
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fylla út í skjá
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Smelltu hér til að OpenTTD fylli út í skjáinn
+STR_FULLSCREEN_FAILED                                           :{WHITE}Skjáfyllihamur brást
 
 STR_OPTIONS_RES                                                 :{BLACK}Skjáupplausn
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1027,6 +1034,8 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Verðb�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aðeins afhlaða farmi á stöðvum þar sem er eftirspurn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Leyfa byggingu mjög langra brúa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Skýli má vera á áætlun lesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Fjármögnun nýrra hráefnisiðnaða: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :engin
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Leyfa marga svipaða iðnaði í sama bæ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Má byggja iðnaði af sömu gerð nálægt hvor öðrum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Sýna alltaf fulla dagsetningu á upplýsingaslá: {ORANGE}{STRING}
@@ -2054,7 +2063,7 @@ STR_5028_TUBULAR_ROAD_BRIDGE                                    :Rörabrú, vegu
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Hluturinn er fyrir
-STR_5801_TRANSMITTER                                            :Sendir
+STR_5801_TRANSMITTER                                            :Mastur
 STR_5802_LIGHTHOUSE                                             :Viti
 STR_5803_COMPANY_HEADQUARTERS                                   :Höfuðstöðvar fyritækis
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...höfuðstöðvar fyrirtækis eru fyrir

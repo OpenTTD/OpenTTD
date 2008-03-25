@@ -1115,6 +1115,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Lehesse
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Lehessen más vállalatoknak pénzt küldeni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtható állomások engedélyezése városi utakra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
 
@@ -1515,6 +1516,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spanyol
 STR_NETWORK_LANG_SWEDISH                                        :Svéd
 STR_NETWORK_LANG_TURKISH                                        :Török
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrán
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikai
+STR_NETWORK_LANG_CROATIAN                                       :Horvát
+STR_NETWORK_LANG_CATALAN                                        :Katalán
+STR_NETWORK_LANG_ESTONIAN                                       :Észt
+STR_NETWORK_LANG_GALICIAN                                       :Gall
+STR_NETWORK_LANG_GREEK                                          :Görög
+STR_NETWORK_LANG_LATVIAN                                        :Lett
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék lobby
@@ -1676,6 +1684,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Túl mag
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nincs megfelelő sín
 STR_1007_ALREADY_BUILT                                          :{WHITE}...már van itt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Előbb le kell rombolnod a sínt
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Az út egy irányú vagy blokkolt
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vasútépítés
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektromos-vasút építés
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Egysínű vasút építése
@@ -1778,6 +1787,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Előbb le kell rombolnod az épületet
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Város)
 STR_2006_POPULATION                                             :{BLACK}Lakosság: {ORANGE}{COMMA}{BLACK} Házak: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Város átnevezése
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nem nevezheted át a várost...

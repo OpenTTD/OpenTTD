@@ -1453,6 +1453,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spagnolo
 STR_NETWORK_LANG_SWEDISH                                        :Svedese
 STR_NETWORK_LANG_TURKISH                                        :Turco
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraino
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Croato
+STR_NETWORK_LANG_CATALAN                                        :Catalano
+STR_NETWORK_LANG_ESTONIAN                                       :Èstone
+STR_NETWORK_LANG_GALICIAN                                       :Galiziano
+STR_NETWORK_LANG_GREEK                                          :Greco
+STR_NETWORK_LANG_LATVIAN                                        :Lèttone
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Stanza principale partita multigiocatore
@@ -1717,6 +1724,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edificio deve essere demolito prima
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Metropoli)
 STR_2006_POPULATION                                             :{BLACK}Popolazione: {ORANGE}{COMMA}{BLACK}  Case: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Rinomina città
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Impossibile rinominare la città...

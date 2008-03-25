@@ -1453,6 +1453,13 @@ STR_NETWORK_LANG_SPANISH                                        :Испанск�
 STR_NETWORK_LANG_SWEDISH                                        :Шведский
 STR_NETWORK_LANG_TURKISH                                        :Турецкий
 STR_NETWORK_LANG_UKRAINIAN                                      :Украинский
+STR_NETWORK_LANG_AFRIKAANS                                      :Африканский
+STR_NETWORK_LANG_CROATIAN                                       :Хорватский
+STR_NETWORK_LANG_CATALAN                                        :Каталанский
+STR_NETWORK_LANG_ESTONIAN                                       :Эстонский
+STR_NETWORK_LANG_GALICIAN                                       :Галицийский
+STR_NETWORK_LANG_GREEK                                          :Греческий
+STR_NETWORK_LANG_LATVIAN                                        :Латвийский
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Состояние сетевой игры
@@ -1717,6 +1724,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сначала надо уничтожить здания
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Город)
 STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Зданий: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Переименовать город
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Не могу переименовать город...

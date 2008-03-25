@@ -1451,6 +1451,13 @@ STR_NETWORK_LANG_SPANISH                                        :Espanyol
 STR_NETWORK_LANG_SWEDISH                                        :Suec
 STR_NETWORK_LANG_TURKISH                                        :Turc
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraïnès
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Croat
+STR_NETWORK_LANG_CATALAN                                        :Català
+STR_NETWORK_LANG_ESTONIAN                                       :Estonià
+STR_NETWORK_LANG_GALICIAN                                       :Gallec
+STR_NETWORK_LANG_GREEK                                          :Grec
+STR_NETWORK_LANG_LATVIAN                                        :Letó
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Lobby de partida multijugador
@@ -1715,6 +1722,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'edifici s'ha d'enderrocar primer
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Ciutat)
 STR_2006_POPULATION                                             :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Reanomena Població
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}No es pot reanomenar la població...

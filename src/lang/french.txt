@@ -1452,6 +1452,13 @@ STR_NETWORK_LANG_SPANISH                                        :Espagnol
 STR_NETWORK_LANG_SWEDISH                                        :Suédois
 STR_NETWORK_LANG_TURKISH                                        :Turc
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainien
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Croate
+STR_NETWORK_LANG_CATALAN                                        :Catalan
+STR_NETWORK_LANG_ESTONIAN                                       :Estonien
+STR_NETWORK_LANG_GALICIAN                                       :Galicien
+STR_NETWORK_LANG_GREEK                                          :Grec
+STR_NETWORK_LANG_LATVIAN                                        :Letton
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Préparation de la partie
@@ -1716,6 +1723,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}L'édifice doit d'abord être démolit
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Métropole)
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Maisons: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Renommer Ville
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Impossible de renommer la ville...

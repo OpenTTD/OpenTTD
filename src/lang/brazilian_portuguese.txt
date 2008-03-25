@@ -2,7 +2,6 @@
 ##ownname Português (BR)
 ##isocode pt_BR
 ##plural 2
-##case m f
 ##gender m f
 
 #
@@ -1717,6 +1716,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício deve ser demolido primeiro
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Cidade)
 STR_2006_POPULATION                                             :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Renomear Cidade
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Impossível renomear cidade...
