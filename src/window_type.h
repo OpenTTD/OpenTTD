@@ -90,6 +90,7 @@ enum WindowClass {
 	WC_VEHICLE_TIMETABLE,
 	WC_BUILD_SIGNAL,
 	WC_COMPANY_PASSWORD_WINDOW,
+	WC_OSK,
 };
 
 struct Window;

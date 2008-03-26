@@ -3485,3 +3485,8 @@ STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand 
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen
 ########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :^1234567890ß'€qwertzuiopü+asdfghjklöä#<yxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :°!"§$%&/()=?`@QWERTZUIOPÜ*ASDFGHJKLÖÄ'>YXCVBNM;:_ .
+########

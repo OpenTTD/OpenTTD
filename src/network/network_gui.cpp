@@ -426,6 +426,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		nd->field = e->we.click.widget;
 		switch (e->we.click.widget) {
+		case NGWW_PLAYER:
+			ShowOnScreenKeyboard(w, &WP(w, network_ql_d).q,  NGWW_PLAYER, 0, 0);
+			break;
 		case NGWW_CANCEL: // Cancel button
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;
@@ -574,7 +577,7 @@ static const Widget _network_game_window_widgets[] = {
 {       WWT_TEXT,   RESIZE_NONE,   BGC,     9,    85,    23,    35, STR_NETWORK_CONNECTION,         STR_NULL},
 { WWT_DROPDOWNIN,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO, STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
 
-{      WWT_PANEL,   RESIZE_LR,     BGC,   290,   440,    22,    33, 0x0,                            STR_NETWORK_ENTER_NAME_TIP},       // NGWW_PLAYER
+{    WWT_EDITBOX,   RESIZE_LR,     BGC,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_PLAYER
 
 /* LEFT SIDE */
 { WWT_PUSHTXTBTN,   RESIZE_RIGHT,  BTC,    10,    70,    42,    53, STR_NETWORK_GAME_NAME,          STR_NETWORK_GAME_NAME_TIP},        // NGWW_NAME
@@ -736,7 +739,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		case NSSW_CANCEL: // Cancel button
 			ShowNetworkGameWindow();
 			break;
-
+		case NSSW_GAMENAME:
+			ShowOnScreenKeyboard(w, &WP(w, network_ql_d).q,  NSSW_GAMENAME, 0, 0);
+			break;
 		case NSSW_SETPWD: // Set password button
 			nd->widget_id = NSSW_SETPWD;
 			ShowQueryString(BindCString(_network_server_password), STR_NETWORK_SET_PASSWORD, 20, 250, w, CS_ALPHANUMERAL);
@@ -887,7 +892,7 @@ static const Widget _network_start_server_window_widgets[] = {
 
 /* Set game name and password widgets */
 {       WWT_TEXT,   RESIZE_NONE,   BGC,    10,    90,    22,    34, STR_NETWORK_NEW_GAME_NAME,        STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, 0x0,                              STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
+{    WWT_EDITBOX,   RESIZE_NONE,   BGC,   100,   272,    22,    33, STR_NETWORK_NEW_GAME_NAME_OSKTITLE, STR_NETWORK_NEW_GAME_NAME_TIP},        // NSSW_GAMENAME
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,         STR_NETWORK_PASSWORD_TIP},             // NSSW_SETPWD
 
 /* List of playable scenarios */
@@ -1818,6 +1823,10 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
+			case 2:
+				ShowOnScreenKeyboard(w, &WP(w, chatquerystr_d), 2, 0, 3);
+				break;
+
 			case 3: /* Send */
 				SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
 			/* FALLTHROUGH */
@@ -1851,10 +1860,10 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _chat_window_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,  0, 13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{      WWT_PANEL, RESIZE_RIGHT, 14,  11, 319,  0, 13, 0x0,              STR_NULL}, // background
-{      WWT_PANEL, RESIZE_RIGHT, 14,  75, 257,  1, 12, 0x0,              STR_NULL}, // text box
-{ WWT_PUSHTXTBTN, RESIZE_LR,    14, 258, 319,  1, 12, STR_NETWORK_SEND, STR_NULL}, // send button
+{   WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,  0, 13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
+{      WWT_PANEL, RESIZE_RIGHT, 14,  11, 319,  0, 13, 0x0,                       STR_NULL}, // background
+{    WWT_EDITBOX, RESIZE_RIGHT, 14,  75, 257,  1, 12, STR_NETWORK_CHAT_OSKTITLE, STR_NULL}, // text box
+{ WWT_PUSHTXTBTN, RESIZE_LR,    14, 258, 319,  1, 12, STR_NETWORK_SEND,          STR_NULL}, // send button
 {   WIDGETS_END},
 };
 
@@ -1926,6 +1935,9 @@ static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
 					w->ToggleWidgetLoweredState(NCPWW_SAVE_AS_DEFAULT_PASSWORD);
 					SetWindowDirty(w);
 					break;
+				case NCPWW_PASSWORD:
+					ShowOnScreenKeyboard(w, &WP(w, chatquerystr_d), NCPWW_PASSWORD, 2, 1);
+					break;
 			}
 			break;
 
@@ -1954,7 +1966,7 @@ static const Widget _ncp_window_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 14,  11, 299,  0, 13, STR_COMPANY_PASSWORD_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL, RESIZE_NONE, 14,   0, 299, 14, 50, 0x0,                               STR_NULL},
 {       WWT_TEXT, RESIZE_NONE, 14,   5, 100, 19, 30, STR_COMPANY_PASSWORD,              STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 14, 101, 294, 19, 30, 0x0,                               STR_NULL},
+{    WWT_EDITBOX, RESIZE_NONE, 14, 101, 294, 19, 30, STR_SET_COMPANY_PASSWORD,          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 14, 101, 294, 35, 46, STR_MAKE_DEFAULT_COMPANY_PASSWORD, STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 14,   0, 149, 51, 62, STR_012E_CANCEL,                   STR_COMPANY_PASSWORD_CANCEL},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 14, 150, 299, 51, 62, STR_012F_OK,                       STR_COMPANY_PASSWORD_OK},

@@ -127,7 +127,7 @@ static const Widget _generate_landscape_widgets[] = {
 {   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 130, 141, 0x0,                          STR_NULL}, // Number of industries
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 153, 163, STR_RANDOM_SEED,              STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 15, 114, 207, 152, 163, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
+{    WWT_EDITBOX, RESIZE_NONE, 15, 114, 207, 152, 163, STR_RANDOM_SEED_OSKTITLE,     STR_RANDOM_SEED_HELP}, // Edit box for seed
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 326, 152, 163, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 228, 257, STR_GENERATE,                 STR_NULL}, // Generate button
@@ -181,7 +181,7 @@ static const Widget _heightmap_load_widgets[] = {
 {   WWT_DROPDOWN, RESIZE_NONE, 12, 114, 175, 152, 163, 0x0,                          STR_NULL}, // Number of industries
 
 {       WWT_TEXT, RESIZE_NONE,  0,  12, 110, 175, 185, STR_RANDOM_SEED,              STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 15, 114, 207, 174, 185, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
+{    WWT_EDITBOX, RESIZE_NONE, 15, 114, 207, 174, 185, STR_RANDOM_SEED_OSKTITLE,     STR_RANDOM_SEED_HELP}, // Edit box for seed
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 326, 174, 185, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 196, 225, STR_GENERATE,                 STR_NULL}, // Generate button
@@ -374,8 +374,11 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 
-				case GLAND_GENERATE_BUTTON: // Generate
+				case GLAND_RANDOM_EDITBOX: // edit box for random seed
+					ShowOnScreenKeyboard(w, & _genseed_query, GLAND_RANDOM_EDITBOX, 0, 0);
+					break;
 
+				case GLAND_GENERATE_BUTTON: // Generate
 					UpdatePatches();
 
 					if (_patches.town_layout == TL_NO_ROADS) {

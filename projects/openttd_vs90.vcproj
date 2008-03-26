@@ -1521,6 +1521,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\osk_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\player_gui.cpp"
 				>
 			</File>

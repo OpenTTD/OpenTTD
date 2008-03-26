@@ -1084,6 +1084,8 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 	const Widget *wi = &w->widget[wid];
 	const Textbuf *tb = &string->text;
 
+	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
+
 	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);
 
 	/* Limit the drawing of the string inside the widget boundaries */
@@ -1135,6 +1137,10 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
+				case QUERY_STR_WIDGET_TEXT:
+					ShowOnScreenKeyboard(w, &WP(w, querystr_d), QUERY_STR_WIDGET_TEXT, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
+					break;
+
 				case QUERY_STR_WIDGET_OK:
 		press_ok:;
 					if (qs->orig == NULL || strcmp(qs->text.buf, qs->orig) != 0) {
@@ -1188,7 +1194,7 @@ static const Widget _query_string_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   259,     0,    13, STR_012D,        STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   259,    14,    29, 0x0,             STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,   257,    16,    27, 0x0,             STR_NULL},
+{    WWT_EDITBOX,   RESIZE_NONE,    14,     2,   257,    16,    27, 0x0,             STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   129,    30,    41, STR_012E_CANCEL, STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   259,    30,    41, STR_012F_OK,     STR_NULL},
 {   WIDGETS_END},
@@ -1202,7 +1208,8 @@ static const WindowDesc _query_string_desc = {
 	QueryStringWndProc
 };
 
-static char _edit_str_buf[64];
+char _edit_str_buf[64];
+char _orig_str_buf[lengthof(_edit_str_buf)];
 
 /** Show a query popup window with a textbox in it.
  * @param str StringID for the text shown in the textbox
@@ -1215,7 +1222,6 @@ static char _edit_str_buf[64];
  * @param afilter filters out unwanted character input */
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter)
 {
-	static char orig_str_buf[lengthof(_edit_str_buf)];
 	Window *w;
 	uint realmaxlen = maxlen & ~0x1000;
 
@@ -1233,8 +1239,8 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	if (maxlen & 0x1000) {
 		WP(w, querystr_d).orig = NULL;
 	} else {
-		strecpy(orig_str_buf, _edit_str_buf, lastof(orig_str_buf));
-		WP(w, querystr_d).orig = orig_str_buf;
+		strecpy(_orig_str_buf, _edit_str_buf, lastof(_orig_str_buf));
+		WP(w, querystr_d).orig = _orig_str_buf;
 	}
 
 	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
@@ -1379,7 +1385,7 @@ static const Widget _save_dialog_widgets[] = {
 {      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   150, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   151, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_PANEL,    RESIZE_RTB,    14,     0,   256,   152,   167, 0x0,              STR_NULL},
-{      WWT_PANEL,    RESIZE_RTB,    14,     2,   254,   154,   165, 0x0,              STR_400B_CURRENTLY_SELECTED_NAME},
+{    WWT_EDITBOX,    RESIZE_RTB,    14,     2,   254,   154,   165, STR_SAVE_OSKTITLE,STR_400B_CURRENTLY_SELECTED_NAME},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   168,   179, STR_4003_DELETE,  STR_400C_DELETE_THE_CURRENTLY_SELECTED},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   244,   168,   179, STR_4002_SAVE,    STR_400D_SAVE_THE_CURRENT_GAME_USING},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   168,   179, 0x0,              STR_RESIZE_BUTTON},
@@ -1586,6 +1592,10 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		}
+
+		case 10: // edit box
+			ShowOnScreenKeyboard(w, &WP(w, querystr_d), e->we.click.widget, 0, 0);
+			break;
 
 		case 11: case 12: // Delete, Save game
 			break;

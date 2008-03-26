@@ -499,6 +499,7 @@ enum WindowWidgetTypes {
 	WWT_CLOSEBOX,
 	WWT_DROPDOWN,   ///< Raised drop down list (regular)
 	WWT_DROPDOWNIN, ///< Inset drop down list (used on game options only)
+	WWT_EDITBOX,    ///< a textbox for typing (don't forget to call ShowOnScreenKeyboard() when clicked)
 	WWT_LAST,       ///< Last Item. use WIDGETS_END to fill up padding!!
 
 	WWT_MASK = 0x1F,

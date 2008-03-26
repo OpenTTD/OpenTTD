@@ -290,6 +290,7 @@ network/network_gui.cpp
 newgrf_gui.cpp
 news_gui.cpp
 order_gui.cpp
+osk_gui.cpp
 player_gui.cpp
 rail_gui.cpp
 road_gui.cpp

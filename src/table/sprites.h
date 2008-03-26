@@ -49,7 +49,7 @@ enum Sprites {
 
 	/* Extra graphic spritenumbers */
 	SPR_OPENTTD_BASE     = 4896,
-	OPENTTD_SPRITE_COUNT = 138,
+	OPENTTD_SPRITE_COUNT = 144,
 
 	/* Halftile-selection sprites */
 	SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE,
@@ -72,6 +72,14 @@ enum Sprites {
 	SPR_SHARED_ORDERS_ICON = SPR_OPENTTD_BASE + 50,
 	SPR_PIN_UP             = SPR_OPENTTD_BASE + 51,   // pin icon
 	SPR_PIN_DOWN           = SPR_OPENTTD_BASE + 52,
+
+	/* on screen keyboard icons */
+	SPR_OSK_LEFT           = SPR_OPENTTD_BASE + 138,
+	SPR_OSK_RIGHT          = SPR_OPENTTD_BASE + 139,
+	SPR_OSK_CAPS           = SPR_OPENTTD_BASE + 140,
+	SPR_OSK_SHIFT          = SPR_OPENTTD_BASE + 141,
+	SPR_OSK_BACKSPACE      = SPR_OPENTTD_BASE + 142,
+	SPR_OSK_SPECIAL        = SPR_OPENTTD_BASE + 143,
 
 	/* Clone vehicles stuff */
 	SPR_CLONE_TRAIN    = SPR_OPENTTD_BASE + 106,

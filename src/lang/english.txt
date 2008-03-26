@@ -1352,6 +1352,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multipla
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Player name:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}This is the name other players will identify you by
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Enter your name
 STR_NETWORK_CONNECTION                                          :{BLACK}Connection:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choose between an internet game or a Local Area Network (LAN) game
 
@@ -1395,6 +1396,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start ne
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Game name:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Enter a name for the network game
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Set password
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protect your game with a password if you don't want it to be publicly accessible
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Select a map:
@@ -1556,6 +1558,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enter text for network chat
 STR_NETWORK_NAME_CHANGE                                         :has changed his/her name to
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} The server is restarting...{}Please wait...
@@ -1959,6 +1962,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Select N
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Select scenario (green), pre-set game (blue), or random new game
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generate random new game
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Load Heightmap
+STR_SAVE_OSKTITLE                                               :{BLACK}Enter a name for the savegame
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in the way
@@ -3273,6 +3277,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Change t
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}World generation
 STR_RANDOM_SEED                                                 :{BLACK}Random Seed:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Click to enter a random seed
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Enter a random seed
 STR_LAND_GENERATOR                                              :{BLACK}Land generator:
 STR_TREE_PLACER                                                 :{BLACK}Tree algorithm:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Heightmap rotation:
@@ -3420,6 +3425,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name mus
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Go to next sign
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Go to previous sign
+STR_SIGN_OSKTITLE                                               :{BLACK}Enter a name for the sign
 
 ########
 
@@ -3491,4 +3497,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal C
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase dragging signal density
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

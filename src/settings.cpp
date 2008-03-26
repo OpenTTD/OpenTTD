@@ -49,6 +49,7 @@
 #endif
 #include "spritecache.h"
 #include "transparency.h"
+#include "textbuf_gui.h"
 #include "string_func.h"
 #include "gui.h"
 #include "town.h"
@@ -1295,6 +1296,8 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_VAR("player_face",    SLE_UINT32, S, 0, _player_face,      0,0,0xFFFFFFFF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_options", SLE_UINT, S, 0, _transparency_opt,  0,0,0x1FF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_locks", SLE_UINT, S, 0, _transparency_lock,   0,0,0x1FF,0, STR_NULL, NULL),
+	  SDTG_STR("keyboard",         SLE_STRB, S, 0, _keyboard_opt[0],       NULL,    STR_NULL, NULL),
+	  SDTG_STR("keyboard_caps",    SLE_STRB, S, 0, _keyboard_opt[1],       NULL,    STR_NULL, NULL),
 	  SDTG_END()
 };
 

@@ -164,8 +164,6 @@ struct editsign_d : querystr_d {
 	SignID cur_sign;
 };
 
-static char _edit_str_buf[64];
-
 enum QueryEditSignWidgets {
 	QUERY_EDIT_SIGN_WIDGET_TEXT = 3,
 	QUERY_EDIT_SIGN_WIDGET_OK,
@@ -249,6 +247,10 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 					UpdateSignEditWindow(w, si);
 					break;
 
+				case QUERY_EDIT_SIGN_WIDGET_TEXT:
+					ShowOnScreenKeyboard(w, qs, e->we.click.widget, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
+					break;
+
 				case QUERY_EDIT_SIGN_WIDGET_DELETE:
 					/* Only need to set the buffer to null, the rest is handled as the OK button */
 					DeleteTextBufferAll(&qs->text);
@@ -287,16 +289,16 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _query_sign_edit_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION, RESIZE_NONE,  14,  11, 259,   0,  13, STR_012D,        STR_NULL },
-{    WWT_PANEL, RESIZE_NONE,  14,   0, 259,  14,  29, STR_NULL,        STR_NULL },
-{    WWT_PANEL, RESIZE_NONE,  14,   2, 257,  16,  27, STR_NULL,        STR_NULL },  // Text field
-{  WWT_TEXTBTN, RESIZE_NONE,  14,   0,  60,  30,  41, STR_012F_OK,     STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE,  14,  61, 120,  30,  41, STR_012E_CANCEL, STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE,  14, 121, 180,  30,  41, STR_0290_DELETE, STR_NULL },
-{    WWT_PANEL, RESIZE_NONE,  14, 181, 237,  30,  41, STR_NULL,        STR_NULL },
-{  WWT_TEXTBTN, RESIZE_NONE,  14, 238, 248,  30,  41, STR_6819,        STR_PREVIOUS_SIGN_TOOLTIP },
-{  WWT_TEXTBTN, RESIZE_NONE,  14, 249, 259,  30,  41, STR_681A,        STR_NEXT_SIGN_TOOLTIP },
+{ WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,          STR_018B_CLOSE_WINDOW},
+{  WWT_CAPTION, RESIZE_NONE,  14,  11, 259,   0,  13, STR_012D,          STR_NULL },
+{    WWT_PANEL, RESIZE_NONE,  14,   0, 259,  14,  29, STR_NULL,          STR_NULL },
+{  WWT_EDITBOX, RESIZE_NONE,  14,   2, 257,  16,  27, STR_SIGN_OSKTITLE, STR_NULL },  // Text field
+{  WWT_TEXTBTN, RESIZE_NONE,  14,   0,  60,  30,  41, STR_012F_OK,       STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE,  14,  61, 120,  30,  41, STR_012E_CANCEL,   STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE,  14, 121, 180,  30,  41, STR_0290_DELETE,   STR_NULL },
+{    WWT_PANEL, RESIZE_NONE,  14, 181, 237,  30,  41, STR_NULL,          STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE,  14, 238, 248,  30,  41, STR_6819,          STR_PREVIOUS_SIGN_TOOLTIP },
+{  WWT_TEXTBTN, RESIZE_NONE,  14, 249, 259,  30,  41, STR_681A,          STR_NEXT_SIGN_TOOLTIP },
 { WIDGETS_END },
 };
 

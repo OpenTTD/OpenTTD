@@ -561,6 +561,20 @@ Dimension GetStringBoundingBox(const char *str)
 	return br;
 }
 
+void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
+{
+	FontSize size = FS_NORMAL;
+	byte color = real_color & 0xFF;
+	uint palette = _use_dos_palette ? 1 : 0;
+	int w = GetCharacterWidth(size, c);
+
+	_string_colorremap[1] = _string_colormap[palette][color].text;
+	_string_colorremap[2] = _string_colormap[palette][color].shadow;
+	_color_remap_ptr = _string_colorremap;
+
+	GfxMainBlitter(GetGlyph(size, c), x - w / 2, y, BM_COLOUR_REMAP);
+}
+
 /** Draw a string at the given coordinates with the given colour
  * @param string the string to draw
  * @param x offset from left side of the screen, if negative offset from the right side

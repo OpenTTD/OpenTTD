@@ -7,6 +7,7 @@
 
 #include "window_type.h"
 #include "string_type.h"
+#include "strings_type.h"
 
 struct Textbuf {
 	char *buf;                  ///< buffer in which text is saved
@@ -26,6 +27,8 @@ struct querystr_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
+extern char _edit_str_buf[64];
+extern char _orig_str_buf[lengthof(_edit_str_buf)];
 
 void DrawEditBox(Window *w, querystr_d *string, int wid);
 void HandleEditBox(Window *w, querystr_d *string, int wid);
@@ -42,5 +45,17 @@ void UpdateTextBufferSize(Textbuf *tb);
 
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter);
 void ShowQuery(StringID caption, StringID message, Window *w, void (*callback)(Window*, bool));
+
+/** The number of 'characters' on the on-screen keyboard. */
+static const uint OSK_KEYBOARD_ENTRIES = 50;
+
+/**
+ * The number of characters has to be OSK_KEYBOARD_ENTRIES. However, these
+ * have to be UTF-8 encoded, which means up to 4 bytes per character.
+ * Furthermore the string needs to be '\0'-terminated.
+ */
+extern char _keyboard_opt[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
+
+void ShowOnScreenKeyboard(Window *parent, querystr_d *q, int button, int cancel, int ok);
 
 #endif /* TEXTBUF_GUI_H */

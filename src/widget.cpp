@@ -221,6 +221,10 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
 			break;
 
+		case WWT_EDITBOX:
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
+			break;
+
 		case WWT_TEXTBTN:
 		case WWT_TEXTBTN_2:
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : FR_NONE);
