@@ -11,15 +11,17 @@ by the number below on http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version of /trunk.
 
-Bugs for 0.6.0-beta5
+Bugs for 0.6.0-RC1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+- 1858	Industry legend in small map overwrites buttons
+- 1852	Minor tram reversing glitches
+- 1802	Path with space in configure fails
+- 1793	Inconsistent travel time for fast trains
 - 1762	Strange Autoreplace behaviour
-- 1711	Gravel and Clay have no worth
+- 1752	User input is not checked
 - 1693	Removing road does not reset owner
-- 1495	Long vehicles block multistop station
-- 1487	Ending_year is never written to
 - 1473	Train not going to available platform
 - 1404	Spinner widget interprets one click as many
 - 1264	Autoreplace for multiple NewGRF DMU sets fails
