@@ -92,26 +92,20 @@ static const WindowDesc _land_info_desc = {
 
 static void Place_LandInfo(TileIndex tile)
 {
-	Player *p;
-	Window *w;
-	Town *t;
-	Money old_money;
-	CommandCost costclear;
 	AcceptedCargo ac;
 	TileDesc td;
-	StringID str;
 
 	DeleteWindowById(WC_LAND_INFO, 0);
 
-	w = AllocateWindowDesc(&_land_info_desc);
+	Window *w = AllocateWindowDesc(&_land_info_desc);
 	WP(w, void_d).data = &_landinfo_data;
 
-	p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
-	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+	Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
+	Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
-	old_money = p->player_money;
+	Money old_money = p->player_money;
 	p->player_money = INT64_MAX;
-	costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
+	CommandCost costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
 	p->player_money = old_money;
 
 	/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
@@ -126,7 +120,7 @@ static void Place_LandInfo(TileIndex tile)
 	if (td.owner != OWNER_NONE && td.owner != OWNER_WATER) GetNameOfOwner(td.owner, tile);
 	GetString(_landinfo_data[1], STR_01A7_OWNER, lastof(_landinfo_data[1]));
 
-	str = STR_01A4_COST_TO_CLEAR_N_A;
+	StringID str = STR_01A4_COST_TO_CLEAR_N_A;
 	if (CmdSucceeded(costclear)) {
 		SetDParam(0, costclear.GetCost());
 		str = STR_01A5_COST_TO_CLEAR;
@@ -147,36 +141,33 @@ static void Place_LandInfo(TileIndex tile)
 	}
 	GetString(_landinfo_data[4], STR_01A8_LOCAL_AUTHORITY, lastof(_landinfo_data[4]));
 
-	{
-		char *p = GetString(_landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(_landinfo_data[5]));
-		bool found = false;
+	char *strp = GetString(_landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(_landinfo_data[5]));
+	bool found = false;
 
-		for (CargoID i = 0; i < NUM_CARGO; ++i) {
-			if (ac[i] > 0) {
-				/* Add a comma between each item. */
-				if (found) {
-					*p++ = ',';
-					*p++ = ' ';
-				}
-				found = true;
+	for (CargoID i = 0; i < NUM_CARGO; ++i) {
+		if (ac[i] > 0) {
+			/* Add a comma between each item. */
+			if (found) {
+				*strp++ = ',';
+				*strp++ = ' ';
+			}
+			found = true;
 
-				/* If the accepted value is less than 8, show it in 1/8:ths */
-				if (ac[i] < 8) {
-					SetDParam(0, ac[i]);
-					SetDParam(1, GetCargo(i)->name);
-					p = GetString(p, STR_01D1_8, lastof(_landinfo_data[5]));
-				} else {
-					p = GetString(p, GetCargo(i)->name, lastof(_landinfo_data[5]));
-				}
+			/* If the accepted value is less than 8, show it in 1/8:ths */
+			if (ac[i] < 8) {
+				SetDParam(0, ac[i]);
+				SetDParam(1, GetCargo(i)->name);
+				strp = GetString(strp, STR_01D1_8, lastof(_landinfo_data[5]));
+			} else {
+				strp = GetString(strp, GetCargo(i)->name, lastof(_landinfo_data[5]));
 			}
 		}
-
-		if (!found) _landinfo_data[5][0] = '\0';
 	}
+	if (!found) _landinfo_data[5][0] = '\0';
 
 	if (td.build_date != 0) {
 		SetDParam(0, td.build_date);
-	GetString(_landinfo_data[6], STR_BUILD_DATE, lastof(_landinfo_data[6]));
+		GetString(_landinfo_data[6], STR_BUILD_DATE, lastof(_landinfo_data[6]));
 	} else {
 		_landinfo_data[6][0] = '\0';
 	}
@@ -265,40 +256,41 @@ static const char *credits[] = {
 static void AboutWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: // Set up window counter and start position of scroller
-		WP(w, scroller_d).counter = 5;
-		WP(w, scroller_d).height = w->height - 40;
-		break;
-	case WE_PAINT: {
-		uint i;
-		int y = WP(w, scroller_d).height;
-		DrawWindowWidgets(w);
-
-		/* Show original copyright and revision version */
-		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
-		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING);
-
-		/* Show all scrolling credits */
-		for (i = 0; i < lengthof(credits); i++) {
-			if (y >= 50 && y < (w->height - 40)) {
-				DoDrawString(credits[i], 10, y, TC_BLACK);
-			}
-			y += 10;
-		}
-
-		/* If the last text has scrolled start anew from the start */
-		if (y < 50) WP(w, scroller_d).height = w->height - 40;
-
-		DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", TC_BLACK);
-		DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
-	} break;
-	case WE_TICK: // Timer to scroll the text and adjust the new top
-		if (--WP(w, scroller_d).counter == 0) {
+		case WE_CREATE: // Set up window counter and start position of scroller
 			WP(w, scroller_d).counter = 5;
-			WP(w, scroller_d).height--;
-			SetWindowDirty(w);
-		}
-		break;
+			WP(w, scroller_d).height = w->height - 40;
+			break;
+
+		case WE_PAINT: {
+			int y = WP(w, scroller_d).height;
+			DrawWindowWidgets(w);
+
+			/* Show original copyright and revision version */
+			DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
+			DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING);
+
+			/* Show all scrolling credits */
+			for (uint i = 0; i < lengthof(credits); i++) {
+				if (y >= 50 && y < (w->height - 40)) {
+					DoDrawString(credits[i], 10, y, TC_BLACK);
+				}
+				y += 10;
+			}
+
+			/* If the last text has scrolled start anew from the start */
+			if (y < 50) WP(w, scroller_d).height = w->height - 40;
+
+			DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", TC_BLACK);
+			DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
+		} break;
+
+		case WE_TICK: // Timer to scroll the text and adjust the new top
+			if (--WP(w, scroller_d).counter == 0) {
+				WP(w, scroller_d).counter = 5;
+				WP(w, scroller_d).height--;
+				SetWindowDirty(w);
+			}
+			break;
 	}
 }
 
@@ -343,82 +335,83 @@ static const PalSpriteID _tree_sprites[] = {
 static void BuildTreesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int x,y;
-		int i, count;
+		case WE_PAINT: {
+			int i, count;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		WP(w, tree_d).base = i = _tree_base_by_landscape[_opt.landscape];
-		WP(w, tree_d).count = count = _tree_count_by_landscape[_opt.landscape];
+			WP(w, tree_d).base = i = _tree_base_by_landscape[_opt.landscape];
+			WP(w, tree_d).count = count = _tree_count_by_landscape[_opt.landscape];
 
-		x = 18;
-		y = 54;
-		do {
-			DrawSprite(_tree_sprites[i].sprite, _tree_sprites[i].pal, x, y);
-			x += 35;
-			if (!(++i & 3)) {
-				x -= 35 * 4;
-				y += 47;
+			int x = 18;
+			int y = 54;
+			do {
+				DrawSprite(_tree_sprites[i].sprite, _tree_sprites[i].pal, x, y);
+				x += 35;
+				if (!(++i & 3)) {
+					x -= 35 * 4;
+					y += 47;
+				}
+			} while (--count);
+		} break;
+
+		case WE_CLICK: {
+			int wid = e->we.click.widget;
+
+			switch (wid) {
+			case 0:
+					ResetObjectToPlace();
+					break;
+
+				case 3: case 4: case 5: case 6:
+				case 7: case 8: case 9: case 10:
+				case 11:case 12: case 13: case 14:
+					if (wid - 3 >= WP(w, tree_d).count) break;
+
+					if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, VHM_RECT, NULL)) {
+						_tree_to_plant = WP(w, tree_d).base + wid - 3;
+					}
+					break;
+
+				case 15: // tree of random type.
+					if (HandlePlacePushButton(w, 15, SPR_CURSOR_TREE, VHM_RECT, NULL)) {
+						_tree_to_plant = -1;
+					}
+					break;
+
+				case 16: // place trees randomly over the landscape
+					w->LowerWidget(16);
+					w->flags4 |= 5 << WF_TIMEOUT_SHL;
+					SndPlayFx(SND_15_BEEP);
+					PlaceTreesRandomly();
+					MarkWholeScreenDirty();
+					break;
 			}
-		} while (--count);
-	} break;
+		} break;
 
-	case WE_CLICK: {
-		int wid = e->we.click.widget;
-
-		switch (wid) {
-		case 0:
-			ResetObjectToPlace();
+		case WE_PLACE_OBJ:
+			VpStartPlaceSizing(e->we.place.tile, VPM_X_AND_Y_LIMITED, DDSP_PLANT_TREES);
+			VpSetPlaceSizingLimit(20);
 			break;
 
-		case 3: case 4: case 5: case 6:
-		case 7: case 8: case 9: case 10:
-		case 11:case 12: case 13: case 14:
-			if (wid - 3 >= WP(w, tree_d).count) break;
+		case WE_PLACE_DRAG:
+			VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
+			return;
 
-			if (HandlePlacePushButton(w, wid, SPR_CURSOR_TREE, VHM_RECT, NULL))
-				_tree_to_plant = WP(w, tree_d).base + wid - 3;
+		case WE_PLACE_MOUSEUP:
+			if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_PLANT_TREES) {
+				DoCommandP(e->we.place.tile, _tree_to_plant, e->we.place.starttile, NULL,
+					CMD_PLANT_TREE | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
+			}
 			break;
 
-		case 15: // tree of random type.
-			if (HandlePlacePushButton(w, 15, SPR_CURSOR_TREE, VHM_RECT, NULL))
-				_tree_to_plant = -1;
+		case WE_TIMEOUT:
+			w->RaiseWidget(16);
 			break;
 
-		case 16: // place trees randomly over the landscape
-			w->LowerWidget(16);
-			w->flags4 |= 5 << WF_TIMEOUT_SHL;
-			SndPlayFx(SND_15_BEEP);
-			PlaceTreesRandomly();
-			MarkWholeScreenDirty();
+		case WE_ABORT_PLACE_OBJ:
+			w->RaiseButtons();
 			break;
-		}
-	} break;
-
-	case WE_PLACE_OBJ:
-		VpStartPlaceSizing(e->we.place.tile, VPM_X_AND_Y_LIMITED, DDSP_PLANT_TREES);
-		VpSetPlaceSizingLimit(20);
-		break;
-
-	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-		return;
-
-	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_PLANT_TREES) {
-			DoCommandP(e->we.place.tile, _tree_to_plant, e->we.place.starttile, NULL,
-				CMD_PLANT_TREE | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
-		}
-		break;
-
-	case WE_TIMEOUT:
-		w->RaiseWidget(16);
-		break;
-
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
-		break;
 	}
 }
 
@@ -513,70 +506,72 @@ static const Widget _errmsg_face_widgets[] = {
 static void ErrmsgWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
-		DrawWindowWidgets(w);
-		CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
+		case WE_PAINT:
+			CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
+			DrawWindowWidgets(w);
+			CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
 
-		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
-		 * If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
-		 */
-		SwitchToErrorRefStack();
-		RewindTextRefStack();
+			/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
+			* If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
+			*/
+			SwitchToErrorRefStack();
+			RewindTextRefStack();
 
-		if (!IsWindowOfPrototype(w, _errmsg_face_widgets)) {
-			DrawStringMultiCenter(
-				120,
-				(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15),
-				_errmsg_message_2,
-				w->width - 2);
-			if (_errmsg_message_1 != INVALID_STRING_ID)
+			if (!IsWindowOfPrototype(w, _errmsg_face_widgets)) {
 				DrawStringMultiCenter(
 					120,
-					30,
-					_errmsg_message_1,
+					(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15),
+					_errmsg_message_2,
 					w->width - 2);
-		} else {
-			const Player *p = GetPlayer((PlayerID)GetDParamX(_errmsg_decode_params,2));
-			DrawPlayerFace(p->face, p->player_color, 2, 16);
+				if (_errmsg_message_1 != INVALID_STRING_ID) {
+					DrawStringMultiCenter(
+						120,
+						30,
+						_errmsg_message_1,
+						w->width - 2);
+				}
+			} else {
+				const Player *p = GetPlayer((PlayerID)GetDParamX(_errmsg_decode_params,2));
+				DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-			DrawStringMultiCenter(
-				214,
-				(_errmsg_message_1 == INVALID_STRING_ID ? 65 : 45),
-				_errmsg_message_2,
-				w->width - 2);
-			if (_errmsg_message_1 != INVALID_STRING_ID)
 				DrawStringMultiCenter(
 					214,
-					90,
-					_errmsg_message_1,
+					(_errmsg_message_1 == INVALID_STRING_ID ? 65 : 45),
+					_errmsg_message_2,
 					w->width - 2);
-		}
+				if (_errmsg_message_1 != INVALID_STRING_ID) {
+					DrawStringMultiCenter(
+						214,
+						90,
+						_errmsg_message_1,
+						w->width - 2);
+				}
+			}
 
-		/* Switch back to the normal text ref. stack for NewGRF texts */
-		SwitchToNormalRefStack();
-		break;
+			/* Switch back to the normal text ref. stack for NewGRF texts */
+			SwitchToNormalRefStack();
+			break;
 
-	case WE_MOUSELOOP:
-		if (_right_button_down) DeleteWindow(w);
-		break;
+		case WE_MOUSELOOP:
+			if (_right_button_down) DeleteWindow(w);
+			break;
 
-	case WE_4:
-		if (--_errmsg_duration == 0) DeleteWindow(w);
-		break;
+		case WE_4:
+			if (--_errmsg_duration == 0) DeleteWindow(w);
+			break;
 
-	case WE_DESTROY:
-		SetRedErrorSquare(0);
-		_switch_mode_errorstr = INVALID_STRING_ID;
-		break;
+		case WE_DESTROY:
+			SetRedErrorSquare(0);
+			_switch_mode_errorstr = INVALID_STRING_ID;
+			break;
 
-	case WE_KEYPRESS:
-		if (e->we.keypress.keycode == WKC_SPACE) {
-			/* Don't continue. */
-			e->we.keypress.cont = false;
-			DeleteWindow(w);
-		}
-		break;
+		case WE_KEYPRESS:
+			if (e->we.keypress.keycode == WKC_SPACE) {
+				/* Don't continue. */
+				e->we.keypress.cont = false;
+				DeleteWindow(w);
+			}
+			break;
 	}
 }
 
@@ -588,8 +583,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 
 	DeleteWindowById(WC_ERRMSG, 0);
 
-	//assert(msg_2);
-	if (msg_2 == 0) msg_2 = STR_EMPTY;
+	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
 
 	_errmsg_message_1 = msg_1;
 	_errmsg_message_2 = msg_2;
@@ -598,8 +592,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	if (!_errmsg_duration) return;
 
 	if (_errmsg_message_1 != STR_013B_OWNED_BY || GetDParamX(_errmsg_decode_params,2) >= 8) {
-
-		if ( (x|y) != 0) {
+		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
@@ -617,7 +610,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 		}
 		w = AllocateWindow(pt.x, pt.y, 240, 46, ErrmsgWndProc, WC_ERRMSG, _errmsg_widgets);
 	} else {
-		if ( (x|y) != 0) {
+		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
@@ -699,17 +692,15 @@ static const Widget _tooltips_widgets[] = {
 static void TooltipsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_PAINT: {
-			uint arg;
+		case WE_PAINT:
 			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);
 			GfxFillRect(1, 1, w->width - 2, w->height - 2, 0x44);
 
-			for (arg = 0; arg < WP(w, tooltips_d).paramcount; arg++) {
+			for (uint arg = 0; arg < WP(w, tooltips_d).paramcount; arg++) {
 				SetDParam(arg, WP(w, tooltips_d).params[arg]);
 			}
 			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w, tooltips_d).string_id, w->width - 2);
 			break;
-		}
 
 		case WE_MOUSELOOP:
 			/* We can show tooltips while dragging tools. These are shown as long as
@@ -731,21 +722,16 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
  * added to a tooltip; currently only supports parameters of {NUM} (integer) */
 void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[])
 {
-	char buffer[512];
-	Dimension br;
-	Window *w;
-	uint i;
-	int x, y;
-
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
 	/* We only show measurement tooltips with patch setting on */
 	if (str == STR_NULL || (paramcount != 0 && !_patches.measure_tooltip)) return;
 
-	for (i = 0; i != paramcount; i++) SetDParam(i, params[i]);
+	for (uint i = 0; i != paramcount; i++) SetDParam(i, params[i]);
+	char buffer[512];
 	GetString(buffer, str, lastof(buffer));
 
-	br = GetStringBoundingBox(buffer);
+	Dimension br = GetStringBoundingBox(buffer);
 	br.width += 6; br.height += 4; // increase slightly to have some space around the box
 
 	/* Cut tooltip length to 200 pixels max, wrap to new line if longer */
@@ -757,11 +743,11 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 	/* Correctly position the tooltip position, watch out for window and cursor size
 	 * Clamp value to below main toolbar and above statusbar. If tooltip would
 	 * go below window, flip it so it is shown above the cursor */
-	y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
+	int y = Clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
 	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
-	x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
+	int x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
-	w = AllocateWindow(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
+	Window *w = AllocateWindow(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
 
 	WP(w, tooltips_d).string_id = str;
 	assert(sizeof(WP(w, tooltips_d).params[0]) == sizeof(params[0]));
@@ -863,14 +849,12 @@ void SetHScrollCount(Window *w, int num)
 static void DelChar(Textbuf *tb, bool backspace)
 {
 	WChar c;
-	uint width;
-	size_t len;
 	char *s = tb->buf + tb->caretpos;
 
 	if (backspace) s = Utf8PrevChar(s);
 
-	len = Utf8Decode(&c, s);
-	width = GetCharacterWidth(FS_NORMAL, c);
+	size_t len = Utf8Decode(&c, s);
+	uint width = GetCharacterWidth(FS_NORMAL, c);
 
 	tb->width  -= width;
 	if (backspace) {
@@ -949,35 +933,38 @@ bool InsertTextBufferChar(Textbuf *tb, WChar key)
 bool MoveTextBufferPos(Textbuf *tb, int navmode)
 {
 	switch (navmode) {
-	case WKC_LEFT:
-		if (tb->caretpos != 0) {
-			WChar c;
-			const char *s = Utf8PrevChar(tb->buf + tb->caretpos);
-			Utf8Decode(&c, s);
-			tb->caretpos    = s - tb->buf; // -= (tb->buf + tb->caretpos - s)
-			tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
+		case WKC_LEFT:
+			if (tb->caretpos != 0) {
+				WChar c;
+				const char *s = Utf8PrevChar(tb->buf + tb->caretpos);
+				Utf8Decode(&c, s);
+				tb->caretpos    = s - tb->buf; // -= (tb->buf + tb->caretpos - s)
+				tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
 
+				return true;
+			}
+			break;
+
+		case WKC_RIGHT:
+			if (tb->caretpos < tb->length) {
+				WChar c;
+
+				tb->caretpos   += Utf8Decode(&c, tb->buf + tb->caretpos);
+				tb->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
+
+				return true;
+			}
+			break;
+
+		case WKC_HOME:
+			tb->caretpos = 0;
+			tb->caretxoffs = 0;
 			return true;
-		}
-		break;
-	case WKC_RIGHT:
-		if (tb->caretpos < tb->length) {
-			WChar c;
 
-			tb->caretpos   += Utf8Decode(&c, tb->buf + tb->caretpos);
-			tb->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
-
+		case WKC_END:
+			tb->caretpos = tb->length;
+			tb->caretxoffs = tb->width;
 			return true;
-		}
-		break;
-	case WKC_HOME:
-		tb->caretpos = 0;
-		tb->caretxoffs = 0;
-		return true;
-	case WKC_END:
-		tb->caretpos = tb->length;
-		tb->caretxoffs = tb->width;
-		return true;
 	}
 
 	return false;
@@ -1029,32 +1016,33 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e)
 	e->we.keypress.cont = false;
 
 	switch (e->we.keypress.keycode) {
-	case WKC_ESC: return 2;
-	case WKC_RETURN: case WKC_NUM_ENTER: return 1;
-	case (WKC_CTRL | 'V'):
-		if (InsertTextBufferClipboard(&string->text))
+		case WKC_ESC: return 2;
+
+		case WKC_RETURN: case WKC_NUM_ENTER: return 1;
+
+		case (WKC_CTRL | 'V'):
+			if (InsertTextBufferClipboard(&string->text)) w->InvalidateWidget(wid);
+			break;
+
+		case (WKC_CTRL | 'U'):
+			DeleteTextBufferAll(&string->text);
 			w->InvalidateWidget(wid);
-		break;
-	case (WKC_CTRL | 'U'):
-		DeleteTextBufferAll(&string->text);
-		w->InvalidateWidget(wid);
-		break;
-	case WKC_BACKSPACE: case WKC_DELETE:
-		if (DeleteTextBufferChar(&string->text, e->we.keypress.keycode))
-			w->InvalidateWidget(wid);
-		break;
-	case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-		if (MoveTextBufferPos(&string->text, e->we.keypress.keycode))
-			w->InvalidateWidget(wid);
-		break;
-	default:
-		if (IsValidChar(e->we.keypress.key, string->afilter)) {
-			if (InsertTextBufferChar(&string->text, e->we.keypress.key)) {
-				w->InvalidateWidget(wid);
+			break;
+
+		case WKC_BACKSPACE: case WKC_DELETE:
+			if (DeleteTextBufferChar(&string->text, e->we.keypress.keycode)) w->InvalidateWidget(wid);
+			break;
+
+		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+			if (MoveTextBufferPos(&string->text, e->we.keypress.keycode)) w->InvalidateWidget(wid);
+			break;
+
+		default:
+			if (IsValidChar(e->we.keypress.key, string->afilter)) {
+				if (InsertTextBufferChar(&string->text, e->we.keypress.key)) w->InvalidateWidget(wid);
+			} else { // key wasn't caught. Continue only if standard entry specified
+				e->we.keypress.cont = (string->afilter == CS_ALPHANUMERAL);
 			}
-		} else { // key wasn't caught. Continue only if standard entry specified
-			e->we.keypress.cont = (string->afilter == CS_ALPHANUMERAL);
-		}
 	}
 
 	return 0;
@@ -1090,11 +1078,12 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 
 	/* Limit the drawing of the string inside the widget boundaries */
 	if (!FillDrawPixelInfo(&dpi,
-	      wi->left + 4,
-	      wi->top + 1,
-	      wi->right - wi->left - 4,
-	      wi->bottom - wi->top - 1)
-	) return;
+			wi->left + 4,
+			wi->top + 1,
+			wi->right - wi->left - 4,
+			wi->bottom - wi->top - 1)) {
+		return;
+	}
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &dpi;
@@ -1222,7 +1211,6 @@ char _orig_str_buf[lengthof(_edit_str_buf)];
  * @param afilter filters out unwanted character input */
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter)
 {
-	Window *w;
 	uint realmaxlen = maxlen & ~0x1000;
 
 	assert(realmaxlen < lengthof(_edit_str_buf));
@@ -1230,7 +1218,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	w = AllocateWindowDesc(&_query_string_desc);
+	Window *w = AllocateWindowDesc(&_query_string_desc);
 	w->parent = parent;
 
 	GetString(_edit_str_buf, str, lastof(_edit_str_buf));
@@ -1474,196 +1462,201 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 	static FiosItem o_dir;
 
 	switch (e->event) {
-	case WE_CREATE: // Set up OPENTTD button
-		w->vscroll.cap = 10;
-		w->resize.step_width = 2;
-		w->resize.step_height = 10;
+		case WE_CREATE: // Set up OPENTTD button
+			w->vscroll.cap = 10;
+			w->resize.step_width = 2;
+			w->resize.step_height = 10;
 
-		o_dir.type = FIOS_TYPE_DIRECT;
-		switch (_saveload_mode) {
-			case SLD_SAVE_GAME:
-			case SLD_LOAD_GAME:
-				FioGetDirectory(o_dir.name, lengthof(o_dir.name), SAVE_DIR);
-				break;
+			o_dir.type = FIOS_TYPE_DIRECT;
+			switch (_saveload_mode) {
+				case SLD_SAVE_GAME:
+				case SLD_LOAD_GAME:
+					FioGetDirectory(o_dir.name, lengthof(o_dir.name), SAVE_DIR);
+					break;
 
-			case SLD_SAVE_SCENARIO:
-			case SLD_LOAD_SCENARIO:
-				FioGetDirectory(o_dir.name, lengthof(o_dir.name), SCENARIO_DIR);
-				break;
+				case SLD_SAVE_SCENARIO:
+				case SLD_LOAD_SCENARIO:
+					FioGetDirectory(o_dir.name, lengthof(o_dir.name), SCENARIO_DIR);
+					break;
 
-			case SLD_LOAD_HEIGHTMAP:
-				FioGetDirectory(o_dir.name, lengthof(o_dir.name), HEIGHTMAP_DIR);
-				break;
+				case SLD_LOAD_HEIGHTMAP:
+					FioGetDirectory(o_dir.name, lengthof(o_dir.name), HEIGHTMAP_DIR);
+					break;
 
-			default:
-				ttd_strlcpy(o_dir.name, _personal_dir, lengthof(o_dir.name));
-		}
-		break;
-
-	case WE_PAINT: {
-		int pos;
-		int y;
-
-		SetVScrollCount(w, _fios_num);
-		DrawWindowWidgets(w);
-		DrawFiosTexts(w->width);
-
-		if (_savegame_sort_dirty) {
-			_savegame_sort_dirty = false;
-			MakeSortedSaveGameList();
-		}
-
-		GfxFillRect(w->widget[7].left + 1, w->widget[7].top + 1, w->widget[7].right, w->widget[7].bottom, 0xD7);
-		DrawSortButtonState(w, _savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
-
-		y = w->widget[7].top + 1;
-		for (pos = w->vscroll.pos; pos < _fios_num; pos++) {
-			const FiosItem *item = _fios_list + pos;
-
-			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
-			y += 10;
-			if (y >= w->vscroll.cap * 10 + w->widget[7].top + 1) break;
-		}
-
-		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			DrawEditBox(w, &WP(w, querystr_d), 10);
-		}
-		break;
-	}
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: // Sort save names by name
-			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
-				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
-			_savegame_sort_dirty = true;
-			SetWindowDirty(w);
+				default:
+					ttd_strlcpy(o_dir.name, _personal_dir, lengthof(o_dir.name));
+			}
 			break;
 
-		case 3: // Sort save names by date
-			_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
-				SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
-			_savegame_sort_dirty = true;
-			SetWindowDirty(w);
+		case WE_PAINT: {
+			int pos;
+			int y;
+
+			SetVScrollCount(w, _fios_num);
+			DrawWindowWidgets(w);
+			DrawFiosTexts(w->width);
+
+			if (_savegame_sort_dirty) {
+				_savegame_sort_dirty = false;
+				MakeSortedSaveGameList();
+			}
+
+			GfxFillRect(w->widget[7].left + 1, w->widget[7].top + 1, w->widget[7].right, w->widget[7].bottom, 0xD7);
+			DrawSortButtonState(w, _savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
+
+			y = w->widget[7].top + 1;
+			for (pos = w->vscroll.pos; pos < _fios_num; pos++) {
+				const FiosItem *item = _fios_list + pos;
+
+				DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
+				y += 10;
+				if (y >= w->vscroll.cap * 10 + w->widget[7].top + 1) break;
+			}
+
+			if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+				DrawEditBox(w, &WP(w, querystr_d), 10);
+			}
 			break;
+		}
 
-		case 6: // OpenTTD 'button', jumps to OpenTTD directory
-			FiosBrowseTo(&o_dir);
-			SetWindowDirty(w);
-			BuildFileList();
-			break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case 2: // Sort save names by name
+					_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
+						SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
+					_savegame_sort_dirty = true;
+					SetWindowDirty(w);
+					break;
 
-		case 7: { // Click the listbox
-			int y = (e->we.click.pt.y - w->widget[e->we.click.widget].top - 1) / 10;
-			char *name;
-			const FiosItem *file;
+				case 3: // Sort save names by date
+					_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
+						SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
+					_savegame_sort_dirty = true;
+					SetWindowDirty(w);
+					break;
 
-			if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;
+				case 6: // OpenTTD 'button', jumps to OpenTTD directory
+					FiosBrowseTo(&o_dir);
+					SetWindowDirty(w);
+					BuildFileList();
+					break;
 
-			file = _fios_list + y;
+				case 7: { // Click the listbox
+					int y = (e->we.click.pt.y - w->widget[e->we.click.widget].top - 1) / 10;
+					char *name;
+					const FiosItem *file;
 
-			name = FiosBrowseTo(file);
-			if (name != NULL) {
-				if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
-					_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
+					if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;
 
-					SetFiosType(file->type);
-					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-					ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+					file = _fios_list + y;
 
-					DeleteWindow(w);
-				} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
-					SetFiosType(file->type);
-					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-					ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+					name = FiosBrowseTo(file);
+					if (name != NULL) {
+						if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
+							_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
 
-					DeleteWindow(w);
-					ShowHeightmapLoad();
-				} else {
-					/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
-					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
-					UpdateTextBufferSize(&WP(w, querystr_d).text);
-					w->InvalidateWidget(10);
+							SetFiosType(file->type);
+							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+							ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+
+							DeleteWindow(w);
+						} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
+							SetFiosType(file->type);
+							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+							ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+
+							DeleteWindow(w);
+							ShowHeightmapLoad();
+						} else {
+							/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
+							ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
+							UpdateTextBufferSize(&WP(w, querystr_d).text);
+							w->InvalidateWidget(10);
+						}
+					} else {
+						/* Changed directory, need repaint. */
+						SetWindowDirty(w);
+						BuildFileList();
+					}
+					break;
 				}
-			} else {
-				/* Changed directory, need repaint. */
+
+				case 10: // edit box
+					ShowOnScreenKeyboard(w, &WP(w, querystr_d), e->we.click.widget, 0, 0);
+					break;
+
+				case 11: case 12: // Delete, Save game
+					break;
+			}
+			break;
+
+		case WE_MOUSELOOP:
+			if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+				HandleEditBox(w, &WP(w, querystr_d), 10);
+			}
+			break;
+
+		case WE_KEYPRESS:
+			if (e->we.keypress.keycode == WKC_ESC) {
+				DeleteWindow(w);
+				return;
+			}
+
+			if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) &&
+					HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) { // Press Enter
+				w->HandleButtonClick(12);
+			}
+			break;
+
+		case WE_TIMEOUT:
+			/* This test protects against using widgets 11 and 12 which are only available
+			* in those two saveload mode  */
+			if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) break;
+
+			if (w->IsWidgetLowered(11)) { // Delete button clicked
+				if (!FiosDelete(WP(w, querystr_d).text.buf)) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
+				} else {
+					BuildFileList();
+					/* Reset file name to current date on successful delete */
+					if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
+				}
+
+				UpdateTextBufferSize(&WP(w, querystr_d).text);
 				SetWindowDirty(w);
-				BuildFileList();
+			} else if (w->IsWidgetLowered(12)) { // Save button clicked
+				_switch_mode = SM_SAVE;
+				FiosMakeSavegameName(_file_to_saveload.name, WP(w, querystr_d).text.buf, sizeof(_file_to_saveload.name));
+
+				/* In the editor set up the vehicle engines correctly (date might have changed) */
+				if (_game_mode == GM_EDITOR) StartupEngines();
 			}
 			break;
-		}
 
-		case 10: // edit box
-			ShowOnScreenKeyboard(w, &WP(w, querystr_d), e->we.click.widget, 0, 0);
+		case WE_DESTROY:
+			/* pause is only used in single-player, non-editor mode, non menu mode */
+			if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
+				if (_pause_game >= 0) DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+			}
+			FiosFreeSavegameList();
+			ClrBit(_no_scroll, SCROLL_SAVE);
 			break;
 
-		case 11: case 12: // Delete, Save game
-			break;
-		}
-		break;
-	case WE_MOUSELOOP:
-		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			HandleEditBox(w, &WP(w, querystr_d), 10);
-		}
-		break;
-	case WE_KEYPRESS:
-		if (e->we.keypress.keycode == WKC_ESC) {
-			DeleteWindow(w);
-			return;
-		}
+		case WE_RESIZE: {
+			/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
+			uint diff = e->we.sizing.diff.x / 2;
+			w->widget[2].right += diff;
+			w->widget[3].left  += diff;
+			w->widget[3].right += e->we.sizing.diff.x;
 
-		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) // Press Enter
-					w->HandleButtonClick(12);
-		}
-		break;
-	case WE_TIMEOUT:
-		/* This test protects against using widgets 11 and 12 which are only available
-		 * in those two saveload mode  */
-		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) break;
-
-		if (w->IsWidgetLowered(11)) { // Delete button clicked
-			if (!FiosDelete(WP(w, querystr_d).text.buf)) {
-				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
-			} else {
-				BuildFileList();
-				/* Reset file name to current date on successful delete */
-				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
+			/* Same for widget 11 and 12 in save-dialog */
+			if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+				w->widget[11].right += diff;
+				w->widget[12].left  += diff;
+				w->widget[12].right += e->we.sizing.diff.x;
 			}
 
-			UpdateTextBufferSize(&WP(w, querystr_d).text);
-			SetWindowDirty(w);
-		} else if (w->IsWidgetLowered(12)) { // Save button clicked
-			_switch_mode = SM_SAVE;
-			FiosMakeSavegameName(_file_to_saveload.name, WP(w, querystr_d).text.buf, sizeof(_file_to_saveload.name));
-
-			/* In the editor set up the vehicle engines correctly (date might have changed) */
-			if (_game_mode == GM_EDITOR) StartupEngines();
-		}
-		break;
-	case WE_DESTROY:
-		/* pause is only used in single-player, non-editor mode, non menu mode */
-		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-			if (_pause_game >= 0) DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		}
-		FiosFreeSavegameList();
-		ClrBit(_no_scroll, SCROLL_SAVE);
-		break;
-	case WE_RESIZE: {
-		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
-		uint diff = e->we.sizing.diff.x / 2;
-		w->widget[2].right += diff;
-		w->widget[3].left  += diff;
-		w->widget[3].right += e->we.sizing.diff.x;
-
-		/* Same for widget 11 and 12 in save-dialog */
-		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			w->widget[11].right += diff;
-			w->widget[12].left  += diff;
-			w->widget[12].right += e->we.sizing.diff.x;
-		}
-
-		w->vscroll.cap += e->we.sizing.diff.y / 10;
+			w->vscroll.cap += e->we.sizing.diff.y / 10;
 		} break;
 	}
 }
