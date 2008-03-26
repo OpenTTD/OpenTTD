@@ -23,11 +23,11 @@ uint _sprite_cache_size = 4;
 
 
 struct SpriteCache {
- 	void *ptr;
+	void *ptr;
 	uint32 id;
- 	uint32 file_pos;
+	uint32 file_pos;
 	uint16 file_slot;
- 	int16 lru;
+	int16 lru;
 };
 
 
@@ -338,8 +338,7 @@ static void CompactSpriteCache()
 			assert(!(next->size & S_FREE_MASK));
 
 			/* If the next block is the sentinel block, we can safely return */
-			if (next->size == 0)
-				break;
+			if (next->size == 0) break;
 
 			/* Locate the sprite belonging to the next pointer. */
 			for (i = 0; GetSpriteCache(i)->ptr != next->data; i++) {
