@@ -299,13 +299,21 @@ void GetKeyboardLayout()
 	if (StrEmpty(_keyboard_opt[1])) {
 		GetString(keyboard[1], STR_OSK_KEYBOARD_LAYOUT_CAPS, lastof(keyboard[1]));
 	} else {
-		strncpy(keyboard[0], _keyboard_opt[0], lengthof(keyboard[1]));
+		strncpy(keyboard[1], _keyboard_opt[1], lengthof(keyboard[1]));
 	}
 
 	for (uint j = 0; j < 2; j++) {
 		const char *kbd = keyboard[j];
+		bool ended = false;
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
 			_keyboard[j][i] = Utf8Consume(&kbd);
+
+			/* Be lenient when the last characters are missing (is quite normal) */
+			if (_keyboard[j][i] == '\0' || ended) {
+				ended = true;
+				_keyboard[j][i] = ' ';
+				continue;
+			}
 
 			if (IsPrintable(_keyboard[j][i])) {
 				errormark[j][i] = ' ';
