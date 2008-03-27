@@ -2721,6 +2721,8 @@ STR_REFIT_TIP                                                   :{BLACK}Select w
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Timetable
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Switch to the timetable view
+STR_ORDER_VIEW                                                  :{BLACK}Orders
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Switch to the order view
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - End of Orders - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}

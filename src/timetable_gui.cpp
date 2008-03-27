@@ -24,6 +24,7 @@
 enum TimetableViewWindowWidgets {
 	TTV_WIDGET_CLOSEBOX = 0,
 	TTV_CAPTION,
+	TTV_ORDER_VIEW,
 	TTV_STICKY,
 	TTV_TIMETABLE_PANEL,
 	TTV_SCROLLBAR,
@@ -236,6 +237,10 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 			const Vehicle *v = GetVehicle(w->window_number);
 
 			switch (we->we.click.widget) {
+				case TTV_ORDER_VIEW: /* Order view button */
+					ShowOrdersWindow(v);
+					break;
+
 				case TTV_TIMETABLE_PANEL: { /* Main panel. */
 					int selected = GetOrderFromTimetableWndPt(w, we->we.click.pt.y, v);
 
@@ -310,7 +315,8 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 
 static const Widget _timetable_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // TTV_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   387,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},      // TTV_CAPTION
+	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   326,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},      // TTV_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,      14,   327,   387,     0,    13, STR_ORDER_VIEW,             STR_ORDER_VIEW_TOOLTIP},               // TTV_ORDER_VIEW
 	{  WWT_STICKYBOX,   RESIZE_LR,      14,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                    // TTV_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,      14,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},                // TTV_TIMETABLE_PANEL

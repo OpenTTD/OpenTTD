@@ -2079,7 +2079,11 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 					ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
 					break;
 				case VVW_WIDGET_SHOW_ORDERS: /* show orders */
-					ShowOrdersWindow(v);
+					if (_ctrl_pressed) {
+						ShowTimetableWindow(v);
+					} else {
+						ShowOrdersWindow(v);
+					}
 					break;
 				case VVW_WIDGET_SHOW_DETAILS: /* show details */
 					ShowVehicleDetailsWindow(v);

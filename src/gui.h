@@ -83,6 +83,9 @@ enum {
 	DDSP_PLACE_AUTOROAD,
 };
 
+/* timetable_gui.cpp */
+void ShowTimetableWindow(const Vehicle *v);
+
 /* misc_gui.cpp */
 void PlaceLandBlockInfo();
 void ShowAboutWindow();
