@@ -400,7 +400,32 @@ enum {
 /* Vehicle Resolver Functions */
 static inline const Vehicle *GRV(const ResolverObject *object)
 {
-	return object->scope == VSG_SCOPE_SELF ? object->u.vehicle.self : object->u.vehicle.parent;
+	switch (object->scope) {
+		default: NOT_REACHED();
+		case VSG_SCOPE_SELF: return object->u.vehicle.self;
+		case VSG_SCOPE_PARENT: return object->u.vehicle.parent;
+		case VSG_SCOPE_RELATIVE: {
+			const Vehicle *v;
+			switch (GB(object->count, 6, 2)) {
+				default: NOT_REACHED();
+				case 0x00: // count back (away from the engine), starting at this vehicle
+				case 0x01: // count forward (toward the engine), starting at this vehicle
+					v = object->u.vehicle.self;
+					break;
+				case 0x02: // count back, starting at the engine
+					v = object->u.vehicle.parent;
+					break;
+				case 0x03: // count back, starting at the first vehicle in this chain of vehicles with the same ID, as for vehicle variable 41
+					v = object->u.vehicle.parent;
+					while (v != NULL && v->engine_type != object->u.vehicle.self->engine_type) v = v->Next();
+					break;
+			}
+			uint32 count = GB(object->count, 0, 4);
+			if (count == 0) count = GetRegister(0x100);
+			while (v != NULL && count-- != 0) v = (GB(object->count, 6, 2) == 0x01) ? v->Previous() : v->Next();
+			return v;
+		}
+	}
 }
 
 
@@ -816,6 +841,7 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->last_value      = 0;
 	res->trigger         = 0;
 	res->reseed          = 0;
+	res->count           = 0;
 }
 
 

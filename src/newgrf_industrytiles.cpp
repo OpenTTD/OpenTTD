@@ -170,6 +170,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->last_value      = 0;
 	res->trigger         = 0;
 	res->reseed          = 0;
+	res->count           = 0;
 }
 
 void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_color, byte stage, IndustryGfx gfx)

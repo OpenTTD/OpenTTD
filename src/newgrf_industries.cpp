@@ -410,6 +410,7 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->last_value      = 0;
 	res->trigger         = 0;
 	res->reseed          = 0;
+	res->count           = 0;
 }
 
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)

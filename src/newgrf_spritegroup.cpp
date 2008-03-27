@@ -256,6 +256,7 @@ static inline const SpriteGroup *ResolveRandom(const SpriteGroup *group, Resolve
 	byte index;
 
 	object->scope = group->g.random.var_scope;
+	object->count = group->g.random.count;
 
 	if (object->trigger != 0) {
 		/* Handle triggers */

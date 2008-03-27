@@ -85,6 +85,7 @@ static void NewCanalResolver(ResolverObject *res, TileIndex tile)
 	res->last_value      = 0;
 	res->trigger         = 0;
 	res->reseed          = 0;
+	res->count           = 0;
 }
 
 

@@ -571,6 +571,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->last_value      = 0;
 	res->trigger         = 0;
 	res->reseed          = 0;
+	res->count           = 0;
 }
 
 static const SpriteGroup *ResolveStation(ResolverObject *object)

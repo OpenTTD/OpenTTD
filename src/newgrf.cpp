@@ -2584,12 +2584,18 @@ static void NewSpriteGroup(byte *buf, int len)
 		/* Randomized Sprite Group */
 		case 0x80: // Self scope
 		case 0x83: // Parent scope
+		case 0x84: // Relative scope
 		{
-			if (!check_length(bufend - buf, 7, "NewSpriteGroup (Randomized) (1)")) return;
+			if (!check_length(bufend - buf, HasBit(type, 2) ? 8 : 7, "NewSpriteGroup (Randomized) (1)")) return;
 
 			group = AllocateSpriteGroup();
 			group->type = SGT_RANDOMIZED;
 			group->g.random.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
+
+			if (HasBit(type, 2) && feature <= GSF_AIRCRAFT) {
+				group->g.random.var_scope = VSG_SCOPE_RELATIVE;
+				group->g.random.count = grf_load_byte(&buf);
+			}
 
 			uint8 triggers = grf_load_byte(&buf);
 			group->g.random.triggers       = GB(triggers, 0, 7);

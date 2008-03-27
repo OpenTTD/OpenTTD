@@ -48,6 +48,8 @@ enum VarSpriteGroupScope {
 	VSG_SCOPE_SELF,
 	/* Engine of consists for vehicles, city for stations. */
 	VSG_SCOPE_PARENT,
+	/* Any vehicle in the consist (vehicles only) */
+	VSG_SCOPE_RELATIVE,
 };
 
 enum DeterministicSpriteGroupSize {
@@ -128,6 +130,7 @@ struct RandomizedSpriteGroup {
 
 	RandomizedSpriteGroupCompareMode cmp_mode; ///< Check for these triggers:
 	byte triggers;
+	byte count;
 
 	byte lowest_randbit; ///< Look for this in the per-object randomized bitmask:
 	byte num_groups; ///< must be power of 2
@@ -201,6 +204,7 @@ struct ResolverObject {
 	bool procedure_call; ///< true if we are currently resolving a var 0x7E procedure result.
 
 	byte trigger;
+	byte count;
 	uint32 last_value;
 	uint32 reseed;
 	VarSpriteGroupScope scope;
