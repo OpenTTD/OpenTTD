@@ -1445,7 +1445,7 @@ static void MakeSortedSaveGameList()
 
 static void GenerateFileName()
 {
-	/* Check if we are not a specatator who wants to generate a name..
+	/* Check if we are not a spectator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
 	const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 
