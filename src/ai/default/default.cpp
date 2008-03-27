@@ -2460,7 +2460,7 @@ static EngineID AiFindBestWagon(CargoID cargo, RailType railtype)
 	uint16 best_speed    = 0;
 	uint speed;
 
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const Engine* e = GetEngine(i);
 
