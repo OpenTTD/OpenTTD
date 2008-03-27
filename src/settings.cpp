@@ -1753,6 +1753,36 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname, uint news_d
 	}
 }
 
+/**
+ * Save the version of OpenTTD to the ini file.
+ * @param ini the ini to write to
+ */
+static void SaveVersionInConfig(IniFile *ini)
+{
+	extern const char _openttd_revision[];
+	extern uint32 _openttd_newgrf_version;
+
+	IniGroup *group = ini_getgroup(ini, "version", -1);
+
+	if (group == NULL) return;
+	group->item = NULL;
+	IniItem **item = &group->item;
+
+	char version[9];
+	snprintf(version, lengthof(version), "%08X", _openttd_newgrf_version);
+
+	const char *versions[][2] = {
+		{ "version_string", _openttd_revision },
+		{ "version_number", version }
+	};
+
+	for (uint i = 0; i < lengthof(versions); i++) {
+		*item = ini_item_alloc(group, versions[i][0], strlen(versions[i][0]));
+		(*item)->value = (char*)pool_strdup(&ini->pool, versions[i][1], strlen(versions[i][1]));
+		item = &(*item)->next;
+	}
+}
+
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
 {
@@ -1817,6 +1847,7 @@ void SaveToConfig()
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	NewsDisplaySaveConfig(ini, "news_display", _news_display_opt);
+	SaveVersionInConfig(ini);
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }

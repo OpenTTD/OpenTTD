@@ -235,9 +235,9 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			 * @li on steep slopes
 			 * @li if the bits of the other roadtypes result in another foundation
 			 * @li if build on slopes is disabled */
-			if (IsSteepSlope(tileh) || IsStraightRoad(other) &&
-					(other & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) != ROAD_NONE ||
-					tileh != SLOPE_FLAT && !_patches.build_on_slopes) {
+			if (IsSteepSlope(tileh) || (IsStraightRoad(other) &&
+					(other & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) != ROAD_NONE) ||
+					(tileh != SLOPE_FLAT && !_patches.build_on_slopes)) {
 				pieces |= MirrorRoadBits(pieces);
 			}
 
