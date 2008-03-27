@@ -3555,6 +3555,10 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 		}
 
+		case 0x22: // difficulty level
+			*value = _opt.diff_level;
+			return true;
+
 		default: return false;
 	}
 }
