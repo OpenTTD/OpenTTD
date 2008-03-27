@@ -372,7 +372,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 	RoadBits type_bits = existing | *pieces;
 
 	/* Roads on slopes */
-	if (!_is_old_ai_player && _patches.build_on_slopes && (_invalid_tileh_slopes_road[0][tileh] & (other | type_bits)) == ROAD_NONE) {
+	if (_patches.build_on_slopes && (_invalid_tileh_slopes_road[0][tileh] & (other | type_bits)) == ROAD_NONE) {
 
 		/* If we add leveling we've got to pay for it */
 		if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
@@ -392,7 +392,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existi
 		if (IsSlopeWithOneCornerRaised(tileh)) {
 
 			/* Prevent build on slopes if it isn't allowed */
-			if (!_is_old_ai_player && _patches.build_on_slopes) {
+			if (_patches.build_on_slopes) {
 
 				/* If we add foundation we've got to pay for it */
 				if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
@@ -546,7 +546,7 @@ do_clear:;
 		ret = CheckRoadSlope(tileh, &pieces, existing, other_bits);
 		/* Return an error if we need to build a foundation (ret != 0) but the
 		 * current patch-setting is turned off (or stupid AI@work) */
-		if (CmdFailed(ret) || (ret.GetCost() != 0 && (!_patches.build_on_slopes || _is_old_ai_player))) {
+		if (CmdFailed(ret) || (ret.GetCost() != 0 && !_patches.build_on_slopes)) {
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		}
 		cost.AddCost(ret);
