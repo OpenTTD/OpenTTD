@@ -5373,17 +5373,18 @@ static const CargoLabel *_default_refitmasks[] = {
 static void CalculateRefitMasks()
 {
 	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
+		EngineInfo *ei = &_engine_info[engine];
 		uint32 mask = 0;
 		uint32 not_mask = 0;
 		uint32 xor_mask = 0;
 
-		if (_engine_info[engine].refit_mask != 0) {
+		if (ei->refit_mask != 0) {
 			const GRFFile *file = GetEngineGRF(engine);
 			if (file != NULL && file->cargo_max != 0) {
 				/* Apply cargo translation table to the refit mask */
 				uint num_cargo = min(32, file->cargo_max);
 				for (uint i = 0; i < num_cargo; i++) {
-					if (!HasBit(_engine_info[engine].refit_mask, i)) continue;
+					if (!HasBit(ei->refit_mask, i)) continue;
 
 					CargoID c = GetCargoIDByLabel(file->cargo_list[i]);
 					if (c == CT_INVALID) continue;
@@ -5396,7 +5397,7 @@ static void CalculateRefitMasks()
 					const CargoSpec *cs = GetCargo(c);
 					if (!cs->IsValid()) continue;
 
-					if (HasBit(_engine_info[engine].refit_mask, cs->bitnum)) SetBit(xor_mask, c);
+					if (HasBit(ei->refit_mask, cs->bitnum)) SetBit(xor_mask, c);
 				}
 			}
 		}
@@ -5427,7 +5428,8 @@ static void CalculateRefitMasks()
 				}
 			}
 		}
-		_engine_info[engine].refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
+
+		ei->refit_mask = ((mask & ~not_mask) ^ xor_mask) & _cargo_mask;
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Apparently cargo_type isn't a common property... */
@@ -5437,19 +5439,19 @@ static void CalculateRefitMasks()
 			case VEH_TRAIN: {
 				RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
-				if (rvi->cargo_type == CT_INVALID) _engine_info[engine].climates = 0;
+				if (rvi->cargo_type == CT_INVALID) ei->climates = 0;
 				break;
 			}
 			case VEH_ROAD: {
 				RoadVehicleInfo *rvi = &_road_vehicle_info[engine - ROAD_ENGINES_INDEX];
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
-				if (rvi->cargo_type == CT_INVALID) _engine_info[engine].climates = 0;
+				if (rvi->cargo_type == CT_INVALID) ei->climates = 0;
 				break;
 			}
 			case VEH_SHIP: {
 				ShipVehicleInfo *svi = &_ship_vehicle_info[engine - SHIP_ENGINES_INDEX];
 				if (svi->cargo_type == CT_INVALID) svi->cargo_type = FindFirstRefittableCargo(engine);
-				if (svi->cargo_type == CT_INVALID) _engine_info[engine].climates = 0;
+				if (svi->cargo_type == CT_INVALID) ei->climates = 0;
 				break;
 			}
 		}
