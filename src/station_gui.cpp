@@ -713,6 +713,12 @@ static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
 	} while (--num);
 }
 
+struct stationview_d {
+	uint32 cargo;                 ///< Bitmask of cargo types to expand
+	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(stationview_d));
+
 struct CargoData {
 	CargoID cargo;
 	StationID source;
@@ -740,12 +746,18 @@ static void DrawStationViewWindow(Window *w)
 	int pos;      ///< = w->vscroll.pos
 	StringID str;
 	CargoDataList cargolist;
+	uint32 transfers = 0;
 
 	/* count types of cargos waiting in station */
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (!st->goods[i].cargo.Empty()) {
+		if (st->goods[i].cargo.Empty()) {
+			WP(w, stationview_d).cargo_rows[i] = 0;
+		} else {
 			/* Add an entry for total amount of cargo of this type waiting. */
 			cargolist.push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.Count()));
+
+			/* Set the row for this cargo entry for the expand/hide button */
+			WP(w, stationview_d).cargo_rows[i] = cargolist.size();
 
 			/* Add an entry for each distinct cargo source. */
 			const CargoList::List *packets = st->goods[i].cargo.Packets();
@@ -753,6 +765,12 @@ static void DrawStationViewWindow(Window *w)
 				const CargoPacket *cp = *it;
 				if (cp->source != station_id) {
 					bool added = false;
+
+					/* Enable the expand/hide button for this cargo type */
+					SetBit(transfers, i);
+
+					/* Don't add cargo lines if not expanded */
+					if (!HasBit(WP(w, stationview_d).cargo, i)) break;
 
 					/* Check if we already have this source in the list */
 					for (CargoDataList::iterator jt = cargolist.begin(); jt != cargolist.end(); jt++) {
@@ -807,7 +825,14 @@ static void DrawStationViewWindow(Window *w)
 				DrawCargoIcons(cd->cargo, cd->count, x, y, width);
 				SetDParam(0, cd->cargo);
 				SetDParam(1, cd->count);
-				DrawStringRightAligned(x + width, y, STR_0009, TC_FROMSTRING);
+				if (HasBit(transfers, cd->cargo)) {
+					/* This cargo has transfers waiting so show the expand or shrink 'button' */
+					const char *sym = HasBit(WP(w, stationview_d).cargo, cd->cargo) ? "-" : "+";
+					DrawStringRightAligned(x + width - 8, y, STR_0009, TC_FROMSTRING);
+					DoDrawString(sym, x + width - 6, y, TC_YELLOW);
+				} else {
+					DrawStringRightAligned(x + width, y, STR_0009, TC_FROMSTRING);
+				}
 			} else {
 				SetDParam(0, cd->cargo);
 				SetDParam(1, cd->count);
@@ -870,6 +895,19 @@ static void DrawStationViewWindow(Window *w)
 	}
 }
 
+static void HandleCargoWaitingClick(Window *w, int row)
+{
+	if (row == 0) return;
+
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
+		if (WP(w, stationview_d).cargo_rows[c] == row) {
+			ToggleBit(WP(w, stationview_d).cargo, c);
+			w->InvalidateWidget(SVW_WAITING);
+			break;
+		}
+	}
+}
+
 
 /**
  * Fuction called when any WindowEvent occurs for any StationView window
@@ -886,6 +924,10 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
+				case SVW_WAITING:
+					HandleCargoWaitingClick(w, (e->we.click.pt.y - w->widget[SVW_WAITING].top) / 10 + w->vscroll.pos);
+					break;
+
 				case SVW_LOCATION:
 					ScrollMainWindowToTile(GetStation(w->window_number)->xy);
 					break;
