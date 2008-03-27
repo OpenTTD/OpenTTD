@@ -941,10 +941,8 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 static void DrawTileSelection(const TileInfo *ti)
 {
 	/* Draw a red error square? */
-	if (_thd.redsq != 0 && _thd.redsq == ti->tile) {
-		DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
-		return;
-	}
+	bool is_redsq = _thd.redsq != 0 && _thd.redsq == ti->tile;
+	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
 
 	/* no selection active? */
 	if (_thd.drawstyle == 0) return;
@@ -953,7 +951,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	if (IsInsideBS(ti->x, _thd.pos.x, _thd.size.x) &&
 			IsInsideBS(ti->y, _thd.pos.y, _thd.size.y)) {
 		if (_thd.drawstyle & HT_RECT) {
-			DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
+			if (!is_redsq) DrawTileSelectionRect(ti, _thd.make_square_red ? PALETTE_SEL_TILE_RED : PAL_NONE);
 		} else if (_thd.drawstyle & HT_POINT) {
 			/* Figure out the Z coordinate for the single dot. */
 			byte z = 0;
@@ -994,7 +992,7 @@ static void DrawTileSelection(const TileInfo *ti)
 	}
 
 	/* Check if it's inside the outer area? */
-	if (_thd.outersize.x &&
+	if (!is_redsq && _thd.outersize.x &&
 			_thd.size.x < _thd.size.x + _thd.outersize.x &&
 			IsInsideBS(ti->x, _thd.pos.x + _thd.offs.x, _thd.size.x + _thd.outersize.x) &&
 			IsInsideBS(ti->y, _thd.pos.y + _thd.offs.y, _thd.size.y + _thd.outersize.y)) {
