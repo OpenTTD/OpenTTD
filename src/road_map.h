@@ -66,6 +66,20 @@ static inline RoadBits GetRoadBits(TileIndex t, RoadType rt)
 }
 
 /**
+ * Get all RoadBits set on a tile except from the given RoadType
+ *
+ * @param t The tile from which we want to get the RoadBits
+ * @param rt The RoadType which we exclude from the querry
+ * @return all set RoadBits of the tile which are not from the given RoadType
+ */
+static inline RoadBits GetOtherRoadBits(TileIndex t, RoadType rt)
+{
+	return ((rt == ROADTYPE_ROAD) ? ROAD_NONE : GetRoadBits(t, ROADTYPE_ROAD)) |
+		((rt == ROADTYPE_TRAM) ? ROAD_NONE : GetRoadBits(t, ROADTYPE_TRAM)) |
+		((rt == ROADTYPE_HWAY) ? ROAD_NONE : GetRoadBits(t, ROADTYPE_HWAY));
+}
+
+/**
  * Get all set RoadBits on the given tile
  *
  * @param tile The tile from which we want to get the RoadBits

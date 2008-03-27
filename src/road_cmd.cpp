@@ -43,6 +43,55 @@
 static const uint32 VALID_LEVEL_CROSSING_SLOPES = (M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT));
 #undef M
 
+/* Invalid RoadBits on slopes  */
+static const RoadBits _invalid_tileh_slopes_road[2][15] = {
+	/* The inverse of the mixable RoadBits on a leveled slope */
+	{
+		ROAD_NONE,         // SLOPE_FLAT
+		ROAD_NE | ROAD_SE, // SLOPE_W
+		ROAD_NE | ROAD_NW, // SLOPE_S
+
+		ROAD_NE,           // SLOPE_SW
+		ROAD_NW | ROAD_SW, // SLOPE_E
+		ROAD_NONE,         // SLOPE_EW
+
+		ROAD_NW,           // SLOPE_SE
+		ROAD_NONE,         // SLOPE_WSE
+		ROAD_SE | ROAD_SW, // SLOPE_N
+
+		ROAD_SE,           // SLOPE_NW
+		ROAD_NONE,         // SLOPE_NS
+		ROAD_NONE,         // SLOPE_ENW
+
+		ROAD_SW,           // SLOPE_NE
+		ROAD_NONE,         // SLOPE_SEN
+		ROAD_NONE          // SLOPE_NWS
+	},
+	/* The inverse of the allowed straight roads on a slope
+	 * (with and without a foundation). */
+	{
+		ROAD_NONE, // SLOPE_FLAT
+		ROAD_NONE, // SLOPE_W    Foundation
+		ROAD_NONE, // SLOPE_S    Foundation
+
+		ROAD_Y,    // SLOPE_SW
+		ROAD_NONE, // SLOPE_E    Foundation
+		ROAD_ALL,  // SLOPE_EW
+
+		ROAD_X,    // SLOPE_SE
+		ROAD_ALL,  // SLOPE_WSE
+		ROAD_NONE, // SLOPE_N    Foundation
+
+		ROAD_X,    // SLOPE_NW
+		ROAD_ALL,  // SLOPE_NS
+		ROAD_ALL,  // SLOPE_ENW
+
+		ROAD_Y,    // SLOPE_NE
+		ROAD_ALL,  // SLOPE_SEN
+		ROAD_ALL   // SLOPE_NW
+	}
+};
+
 Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
 
 bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt)
@@ -175,11 +224,20 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_NORMAL: {
+			const Slope tileh = GetTileSlope(tile, NULL);
 			RoadBits present = GetRoadBits(tile, rt);
+			const RoadBits other = GetOtherRoadBits(tile, rt);
+			const Foundation f = GetRoadFoundation(tileh, present);
 
 			if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
-			if (GetTileSlope(tile, NULL) != SLOPE_FLAT && IsStraightRoad(present)) {
+			/* Autocomplete to a straight road
+			 * @li on steep slopes
+			 * @li if the bits of the other roadtypes result in another foundation
+			 * @li if build on slopes is disabled */
+			if (IsSteepSlope(tileh) || IsStraightRoad(other) &&
+					(other & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) != ROAD_NONE ||
+					tileh != SLOPE_FLAT && !_patches.build_on_slopes) {
 				pieces |= MirrorRoadBits(pieces);
 			}
 
@@ -187,9 +245,17 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			pieces &= present;
 			if (pieces == ROAD_NONE) return CMD_ERROR;
 
+			/* Now set present what it will be after the remove */
+			present ^= pieces;
+
+			/* Check for invalid RoadBit combinations on slopes */
+			if (tileh != SLOPE_FLAT && present != ROAD_NONE &&
+					(present & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) == present) {
+				return CMD_ERROR;
+			}
+
 			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			if (flags & DC_EXEC) {
-				present ^= pieces;
 				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 					if (rts == ROADTYPES_NONE) {
@@ -209,7 +275,10 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 					MarkTileDirtyByTile(tile);
 				}
 			}
-			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(pieces) * _price.remove_road);
+
+			/* If we change the foundation we have to pay for it. */
+			return CommandCost(EXPENSES_CONSTRUCTION, CountBits(pieces) * _price.remove_road +
+					((GetRoadFoundation(tileh, present) != f) ? _price.terraform : (Money)0));
 		}
 
 		case ROAD_TILE_CROSSING: {
@@ -262,76 +331,6 @@ CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return RemoveRoad(tile, flags, pieces, rt, true);
 }
 
-
-static const RoadBits _valid_tileh_slopes_road[][15] = {
-	/* set of normal ones */
-	{
-		ROAD_ALL,  // SLOPE_FLAT
-		ROAD_NONE, // SLOPE_W
-		ROAD_NONE, // SLOPE_S
-
-		ROAD_X,    // SLOPE_SW
-		ROAD_NONE, // SLOPE_E
-		ROAD_NONE, // SLOPE_EW
-
-		ROAD_Y,    // SLOPE_SE
-		ROAD_NONE, // SLOPE_WSE
-		ROAD_NONE, // SLOPE_N
-
-		ROAD_Y,    // SLOPE_NW
-		ROAD_NONE, // SLOPE_NS
-		ROAD_NONE, // SLOPE_NE
-
-		ROAD_X,    // SLOPE_ENW
-		ROAD_NONE, // SLOPE_SEN
-		ROAD_NONE  // SLOPE_ELEVATED
-	},
-	/* allowed road for an evenly raised platform */
-	{
-		ROAD_NONE,         // SLOPE_FLAT
-		ROAD_SW | ROAD_NW, // SLOPE_W
-		ROAD_SW | ROAD_SE, // SLOPE_S
-
-		ROAD_Y  | ROAD_SW, // SLOPE_SW
-		ROAD_SE | ROAD_NE, // SLOPE_E
-		ROAD_ALL,          // SLOPE_EW
-
-		ROAD_X  | ROAD_SE, // SLOPE_SE
-		ROAD_ALL,          // SLOPE_WSE
-		ROAD_NW | ROAD_NE, // SLOPE_N
-
-		ROAD_X  | ROAD_NW, // SLOPE_NW
-		ROAD_ALL,          // SLOPE_NS
-		ROAD_ALL,          // SLOPE_NE
-
-		ROAD_Y  | ROAD_NE, // SLOPE_ENW
-		ROAD_ALL,          // SLOPE_SEN
-		ROAD_ALL           // SLOPE_ELEVATED
-	},
-	/* Singe bits on slopes */
-	{
-		ROAD_ALL,          // SLOPE_FLAT
-		ROAD_NE | ROAD_SE, // SLOPE_W
-		ROAD_NE | ROAD_NW, // SLOPE_S
-
-		ROAD_NE,           // SLOPE_SW
-		ROAD_NW | ROAD_SW, // SLOPE_E
-		ROAD_ALL,          // SLOPE_EW
-
-		ROAD_NW,           // SLOPE_SE
-		ROAD_ALL,          // SLOPE_WSE
-		ROAD_SE | ROAD_SW, // SLOPE_N
-
-		ROAD_SE,           // SLOPE_NW
-		ROAD_ALL,          // SLOPE_NS
-		ROAD_ALL,          // SLOPE_NE
-
-		ROAD_SW,           // SLOPE_ENW
-		ROAD_ALL,          // SLOPE_SEN
-		ROAD_ALL,          // SLOPE_ELEVATED
-	},
-};
-
 /**
  * Calculate the costs for roads on slopes
  *  Aside modify the RoadBits to fit on the slopes
@@ -339,50 +338,71 @@ static const RoadBits _valid_tileh_slopes_road[][15] = {
  * @note The RoadBits are modified too!
  * @param tileh The current slope
  * @param pieces The RoadBits we want to add
- * @param existing The existent RoadBits
+ * @param existing The existent RoadBits of the current type
+ * @param other The other existent RoadBits
  * @return The costs for these RoadBits on this slope
  */
-static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
+static CommandCost CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing, RoadBits other)
 {
+	/* Remove already build pieces */
+	CLRBITS(*pieces, existing);
+
+	/* If we can't build anything stop here */
+	if (*pieces == ROAD_NONE) return CMD_ERROR;
+
+	/* All RoadBit combos are valid on flat land */
+	if (tileh == SLOPE_FLAT) return CommandCost();
+
 	/* Proceed steep Slopes first to reduce lookup table size */
 	if (IsSteepSlope(tileh)) {
 		/* Force straight roads. */
 		*pieces |= MirrorRoadBits(*pieces);
 
-		if (existing == ROAD_NONE || existing == *pieces) {
-			if (*pieces == ROAD_X || *pieces == ROAD_Y) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+		/* Use existing as all existing since only straight
+		 * roads are allowed here. */
+		existing |= other;
+
+		if ((existing == ROAD_NONE || existing == *pieces) && IsStraightRoad(*pieces)) {
+			return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 		}
 		return CMD_ERROR;
 	}
 
-	RoadBits road_bits = *pieces | existing;
+	/* Save the merge of all bits of the current type */
+	RoadBits type_bits = existing | *pieces;
 
-	/* Single bits on slopes.
-	 * We check for the roads that need at least 2 bits */
-	if (_patches.build_on_slopes && !_is_old_ai_player &&
-			existing == ROAD_NONE && CountBits(*pieces) == 1 &&
-			(_valid_tileh_slopes_road[2][tileh] & *pieces) == ROAD_NONE) {
-		return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+	/* Roads on slopes */
+	if (!_is_old_ai_player && _patches.build_on_slopes && (_invalid_tileh_slopes_road[0][tileh] & (other | type_bits)) == ROAD_NONE) {
+
+		/* If we add leveling we've got to pay for it */
+		if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+
+		return CommandCost();
 	}
 
-	/* no special foundation */
-	if ((~_valid_tileh_slopes_road[0][tileh] & road_bits) == ROAD_NONE) {
-		/* force that all bits are set when we have slopes */
-		if (tileh != SLOPE_FLAT) *pieces |= _valid_tileh_slopes_road[0][tileh];
-		return CommandCost(); // no extra cost
-	}
-
-	/* foundation is used. Whole tile is leveled up */
-	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == ROAD_NONE) {
-		return CommandCost(EXPENSES_CONSTRUCTION, existing != ROAD_NONE ? (Money)0 : _price.terraform);
-	}
-
-	/* Force straight roads. */
+	/* Autocomplete uphill roads */
 	*pieces |= MirrorRoadBits(*pieces);
+	type_bits = existing | *pieces;
 
-	/* partly leveled up tile, only if there's no road on that tile */
-	if ((existing == ROAD_NONE || existing == *pieces) && IsSlopeWithOneCornerRaised(tileh)) {
-		if (*pieces == ROAD_X || *pieces == ROAD_Y) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+	/* Uphill roads */
+	if (IsStraightRoad(type_bits) && (other == type_bits || other == ROAD_NONE) &&
+			(_invalid_tileh_slopes_road[1][tileh] & (other | type_bits)) == ROAD_NONE) {
+
+		/* Slopes with foundation ? */
+		if (IsSlopeWithOneCornerRaised(tileh)) {
+
+			/* Prevent build on slopes if it isn't allowed */
+			if (!_is_old_ai_player && _patches.build_on_slopes) {
+
+				/* If we add foundation we've got to pay for it */
+				if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+
+				return CommandCost();
+			}
+		} else {
+			if (CountBits(existing) == 1) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
+			return CommandCost();
+		}
 	}
 	return CMD_ERROR;
 }
@@ -400,7 +420,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	CommandCost ret;
 	RoadBits existing = ROAD_NONE;
-	RoadBits all_bits = ROAD_NONE;
+	RoadBits other_bits = ROAD_NONE;
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
@@ -424,7 +444,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				case ROAD_TILE_NORMAL: {
 					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
-					all_bits = GetAllRoadBits(tile);
+					other_bits = GetOtherRoadBits(tile, rt);
 					if (!HasTileRoadType(tile, rt)) break;
 
 					existing = GetRoadBits(tile, rt);
@@ -453,8 +473,8 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				case ROAD_TILE_CROSSING:
 					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-					all_bits = GetCrossingRoadBits(tile);
-					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
+					other_bits = GetCrossingRoadBits(tile);
+					if (pieces & ComplementRoadBits(other_bits)) goto do_clear;
 					break;
 
 				default:
@@ -521,9 +541,9 @@ do_clear:;
 			cost.AddCost(ret);
 	}
 
-	if (all_bits != pieces) {
+	if (other_bits != pieces) {
 		/* Check the foundation/slopes when adding road/tram bits */
-		ret = CheckRoadSlope(tileh, &pieces, all_bits | existing);
+		ret = CheckRoadSlope(tileh, &pieces, existing, other_bits);
 		/* Return an error if we need to build a foundation (ret != 0) but the
 		 * current patch-setting is turned off (or stupid AI@work) */
 		if (CmdFailed(ret) || (ret.GetCost() != 0 && (!_patches.build_on_slopes || _is_old_ai_player))) {
@@ -906,17 +926,16 @@ Foundation GetRoadFoundation(Slope tileh, RoadBits bits)
 	if (tileh == SLOPE_FLAT || bits == ROAD_NONE) return FOUNDATION_NONE;
 
 	if (!IsSteepSlope(tileh)) {
-		if ((~_valid_tileh_slopes_road[0][tileh] & bits) == ROAD_NONE) {
-			/* As one can remove a single road piece when in a corner on a foundation as
-			 * it is on a sloped piece of landscape, one creates a state that cannot be
-			 * created directly, but the state itself is still perfectly drawable.
-			 * However, as we do not want this to be build directly, we need to check
-			 * for that situation in here. */
-			return (CountBits(bits) == 1) ? FOUNDATION_LEVELED : FOUNDATION_NONE;
-		}
-		if ((~_valid_tileh_slopes_road[1][tileh] & bits) == ROAD_NONE) return FOUNDATION_LEVELED;
+		/* Leveled RoadBits on a slope */
+		if ((_invalid_tileh_slopes_road[0][tileh] & bits) == ROAD_NONE) return FOUNDATION_LEVELED;
+
+		/* Straight roads without foundation on a slope */
+		if (!IsSlopeWithOneCornerRaised(tileh) &&
+				(_invalid_tileh_slopes_road[1][tileh] & bits) == ROAD_NONE)
+			return FOUNDATION_NONE;
 	}
 
+	/* Roads on steep Slopes or on Slopes with one corner raised */
 	return (bits == ROAD_X ? FOUNDATION_INCLINED_X : FOUNDATION_INCLINED_Y);
 }
 
@@ -1485,7 +1504,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, 
 				RoadBits bits = GetAllRoadBits(tile);
 				RoadBits bits_copy = bits;
 				/* Check if the slope-road_bits combination is valid at all, i.e. it is save to call GetRoadFoundation(). */
-				if (!CmdFailed(CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE))) {
+				if (!CmdFailed(CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE))) {
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {
 						uint z_old;
