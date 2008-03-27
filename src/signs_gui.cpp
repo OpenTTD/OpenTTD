@@ -163,6 +163,7 @@ void ShowSignList()
 struct editsign_d : querystr_d {
 	SignID cur_sign;
 };
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(editsign_d));
 
 enum QueryEditSignWidgets {
 	QUERY_EDIT_SIGN_WIDGET_TEXT = 3,

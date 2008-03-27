@@ -114,6 +114,7 @@ struct newgrf_add_d {
 	GRFConfig **list;
 	const GRFConfig *sel;
 };
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(newgrf_add_d));
 
 /* Names of the add a newgrf window widgets */
 enum AddNewGRFWindowWidgets {

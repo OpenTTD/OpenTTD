@@ -48,6 +48,7 @@ struct generate_d {
 	uint y;
 	char name[64];
 };
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(generate_d));
 
 extern void SwitchMode(int new_mode);
 
