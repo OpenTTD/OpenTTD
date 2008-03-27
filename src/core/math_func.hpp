@@ -169,7 +169,7 @@ static inline int32 ClampToI32(const int64 a)
 }
 
 /**
- * Reduce an usigned 64-bit int to an unsigned 16-bit one
+ * Reduce an unsigned 64-bit int to an unsigned 16-bit one
  *
  * @param a The 64-bit value to clamp
  * @return The 64-bit value reduced to a 16-bit value
