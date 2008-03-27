@@ -9,13 +9,13 @@ static const DrawTileSeqStruct _road_depot_NE[] = {
 };
 
 static const DrawTileSeqStruct _road_depot_SE[] = {
-	TILE_SEQ_LINE(0x580, PAL_NONE, 0, 0, 1, 16)
+	TILE_SEQ_LINE(0x580 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 0, 1, 16)
 	TILE_SEQ_LINE(0x581 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _road_depot_SW[] = {
-	TILE_SEQ_LINE(0x582, PAL_NONE, 0, 0, 16, 1)
+	TILE_SEQ_LINE(0x582 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 0, 16, 1)
 	TILE_SEQ_LINE(0x583 | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
@@ -38,13 +38,13 @@ static const DrawTileSeqStruct _tram_depot_NE[] = {
 };
 
 static const DrawTileSeqStruct _tram_depot_SE[] = {
-	TILE_SEQ_LINE(SPR_TRAMWAY_BASE + 0x31, PAL_NONE, 0, 0, 1, 16)
+	TILE_SEQ_LINE((SPR_TRAMWAY_BASE + 0x31) | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 0, 1, 16)
 	TILE_SEQ_LINE((SPR_TRAMWAY_BASE + 0x32) | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 15, 0, 1, 16)
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _tram_depot_SW[] = {
-	TILE_SEQ_LINE(SPR_TRAMWAY_BASE + 0x33, PAL_NONE, 0, 0, 16, 1)
+	TILE_SEQ_LINE((SPR_TRAMWAY_BASE + 0x33) | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 0, 16, 1)
 	TILE_SEQ_LINE((SPR_TRAMWAY_BASE + 0x34) | (1 << PALETTE_MODIFIER_COLOR), PAL_NONE, 0, 15, 16, 1)
 	TILE_SEQ_END()
 };
