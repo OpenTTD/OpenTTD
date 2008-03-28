@@ -10,7 +10,6 @@
 
 // Forward declarations of structs.
 struct Waypoint;
-struct Station;
 struct ViewPort;
 struct DrawPixelInfo;
 struct Group;
@@ -22,9 +21,6 @@ typedef uint16 UnitID;
 typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 
 /* IDs used in Pools */
-typedef uint16 StationID;
-static const StationID INVALID_STATION = 0xFFFF;
-typedef uint16 RoadStopID;
 typedef uint16 WaypointID;
 typedef uint16 OrderID;
 typedef uint16 SignID;

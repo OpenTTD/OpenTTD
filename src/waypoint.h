@@ -8,6 +8,7 @@
 #include "oldpool.h"
 #include "rail_map.h"
 #include "command_type.h"
+#include "station_type.h"
 
 struct Waypoint;
 DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)

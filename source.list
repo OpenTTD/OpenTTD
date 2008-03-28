@@ -243,6 +243,7 @@ sprite.h
 spritecache.h
 station.h
 station_gui.h
+station_type.h
 stdafx.h
 string_func.h
 string_type.h

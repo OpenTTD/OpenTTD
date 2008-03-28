@@ -7,6 +7,7 @@
 
 #include "window_gui.h"
 #include "vehicle_type.h"
+#include "station_type.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);

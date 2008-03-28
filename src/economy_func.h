@@ -13,6 +13,7 @@
 #include "town_type.h"
 #include "industry_type.h"
 #include "player_type.h"
+#include "station_type.h"
 
 struct Player;
 

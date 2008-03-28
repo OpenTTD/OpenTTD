@@ -5,6 +5,7 @@
 #ifndef STATION_H
 #define STATION_H
 
+#include "station_type.h"
 #include "airport.h"
 #include "oldpool.h"
 #include "sprite.h"
@@ -16,9 +17,6 @@
 #include "core/geometry_type.hpp"
 #include <list>
 #include <set>
-
-struct Station;
-struct RoadStop;
 
 DECLARE_OLD_POOL(Station, Station, 6, 1000)
 DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
@@ -200,48 +198,6 @@ public:
 	 * @return true if and only is the station exists
 	 */
 	inline bool IsValid() const { return this->xy != 0; }
-};
-
-enum StationType {
-	STATION_RAIL,
-	STATION_AIRPORT,
-	STATION_TRUCK,
-	STATION_BUS,
-	STATION_OILRIG,
-	STATION_DOCK,
-	STATION_BUOY
-};
-
-enum {
-	FACIL_TRAIN      = 0x01,
-	FACIL_TRUCK_STOP = 0x02,
-	FACIL_BUS_STOP   = 0x04,
-	FACIL_AIRPORT    = 0x08,
-	FACIL_DOCK       = 0x10,
-};
-
-enum {
-//	HVOT_PENDING_DELETE = 1 << 0, // not needed anymore
-	HVOT_TRAIN    = 1 << 1,
-	HVOT_BUS      = 1 << 2,
-	HVOT_TRUCK    = 1 << 3,
-	HVOT_AIRCRAFT = 1 << 4,
-	HVOT_SHIP     = 1 << 5,
-	/* This bit is used to mark stations. No, it does not belong here, but what
-	 * can we do? ;-) */
-	HVOT_BUOY     = 1 << 6
-};
-
-enum CatchmentArea {
-	CA_NONE            =  0,
-	CA_BUS             =  3,
-	CA_TRUCK           =  3,
-	CA_TRAIN           =  4,
-	CA_DOCK            =  5,
-
-	CA_UNMODIFIED      =  4, ///< Used when _patches.modified_catchment is false
-
-	MAX_CATCHMENT      = 10, ///< Airports have a catchment up to this number.
 };
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
