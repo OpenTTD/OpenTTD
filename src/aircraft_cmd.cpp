@@ -2132,7 +2132,6 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc)
 static void AircraftEventHandler(Vehicle *v, int loop)
 {
 	v->tick_counter++;
-	v->current_order_time++;
 
 	if (v->vehstatus & VS_CRASHED) {
 		HandleCrashedAircraft(v);
@@ -2168,6 +2167,8 @@ void Aircraft::Tick()
 	if (this->subtype == AIR_HELICOPTER) HelicopterTickHandler(this);
 
 	AgeAircraftCargo(this);
+
+	this->current_order_time++;
 
 	for (uint i = 0; i != 2; i++) {
 		AircraftEventHandler(this, i);
