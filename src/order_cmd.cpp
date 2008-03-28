@@ -25,6 +25,13 @@
 
 #include "table/strings.h"
 
+/* DestinationID must be at least as large as every these below, because it can
+ * be any of them
+ */
+assert_compile(sizeof(DestinationID) >= sizeof(DepotID));
+assert_compile(sizeof(DestinationID) >= sizeof(WaypointID));
+assert_compile(sizeof(DestinationID) >= sizeof(StationID));
+
 TileIndex _backup_orders_tile;
 BackuppedOrders _backup_orders_data;
 

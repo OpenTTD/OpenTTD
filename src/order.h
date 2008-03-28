@@ -12,6 +12,8 @@
 #include "tile_type.h"
 #include "date_type.h"
 
+typedef uint16 DestinationID;
+
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,
 };
