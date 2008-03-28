@@ -13,7 +13,7 @@
 #include "textbuf_gui.h"
 #include "viewport_func.h"
 #include "command_func.h"
-#include "news.h"
+#include "news_func.h"
 #include "town.h"
 #include "console.h"
 #include "signs.h"

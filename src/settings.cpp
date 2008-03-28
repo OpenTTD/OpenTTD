@@ -37,7 +37,7 @@
 #include "genworld.h"
 #include "rail.h"
 #include "train.h"
-#include "news.h"
+#include "news_func.h"
 #include "window_func.h"
 #include "strings_func.h"
 #include "vehicle_func.h"

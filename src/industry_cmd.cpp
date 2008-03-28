@@ -13,7 +13,7 @@
 #include "command_func.h"
 #include "industry.h"
 #include "town.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "variables.h"
 #include "genworld.h"
@@ -1641,7 +1641,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							SetDParam(1, ind->town->index);
 						}
 						AddNewsItem(indspec->new_industry_text,
-								NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
+								NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, DNC_NONE, ind->xy, 0);
 						break;
 					}
 				}
@@ -1860,7 +1860,7 @@ static void MaybeNewIndustry(void)
 		SetDParam(1, ind->town->index);
 	}
 	AddNewsItem(ind_spc->new_industry_text,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, 0), ind->xy, 0);
+		NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, DNC_NONE, ind->xy, 0);
 }
 
 /**
@@ -2003,7 +2003,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	SetDParam(1, ind->index);
 	AddNewsItem(
 		percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, nt, 0),
+		NM_THIN, NF_VIEWPORT | NF_TILE, nt, DNC_NONE,
 		ind->xy + TileDiffXY(1, 1), 0
 	);
 }
@@ -2196,7 +2196,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 		/* and report the news to the user */
 		AddNewsItem(str,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, nt, 0),
+			NM_THIN, NF_VIEWPORT | NF_TILE, nt, DNC_NONE,
 			i->xy + TileDiffXY(1, 1), 0);
 	}
 }

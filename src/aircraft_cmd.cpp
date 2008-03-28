@@ -13,7 +13,7 @@
 #include "depot.h"
 #include "engine.h"
 #include "station.h"
-#include "news.h"
+#include "news_func.h"
 #include "aircraft.h"
 #include "airport.h"
 #include "vehicle_gui.h"
@@ -1465,7 +1465,7 @@ static void CrashAirplane(Vehicle *v)
 
 	SetDParam(1, st->index);
 	AddNewsItem(newsitem,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+		NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
 		v->index,
 		0);
 
@@ -1505,15 +1505,12 @@ static void AircraftEntersTerminal(Vehicle *v)
 
 	/* Check if station was ever visited before */
 	if (!(st->had_vehicle_of_type & HVOT_AIRCRAFT)) {
-		uint32 flags;
-
 		st->had_vehicle_of_type |= HVOT_AIRCRAFT;
 		SetDParam(0, st->index);
 		/* show newsitem of celebrating citizens */
-		flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 		AddNewsItem(
 			STR_A033_CITIZENS_CELEBRATE_FIRST,
-			flags,
+			NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
 			v->index,
 			0);
 	}

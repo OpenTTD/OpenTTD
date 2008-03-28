@@ -10,7 +10,7 @@
 #include "engine.h"
 #include "command_func.h"
 #include "economy_func.h"
-#include "news.h"
+#include "news_func.h"
 #include "variables.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
@@ -182,11 +182,11 @@ StringID GetNewsStringNewVehicleAvail(const NewsItem *ni)
 	return STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE;
 }
 
-void DrawNewsNewVehicleAvail(Window *w)
+void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
 	DrawNewsBorder(w);
 
-	EngineID engine = WP(w, news_d).ni->string_id;
+	EngineID engine = ni->string_id;
 	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));

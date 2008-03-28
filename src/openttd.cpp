@@ -28,7 +28,7 @@
 #include "command_func.h"
 #include "town.h"
 #include "industry.h"
-#include "news.h"
+#include "news_func.h"
 #include "engine.h"
 #include "fileio.h"
 #include "fios.h"

@@ -11,7 +11,7 @@
 #include "command_func.h"
 #include "station.h"
 #include "player_func.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "vehicle_gui.h"
 #include "cargotype.h"
@@ -1135,7 +1135,7 @@ void CheckOrders(const Vehicle* v)
 		SetDParam(0, v->unitnumber);
 		AddNewsItem(
 			message,
-			NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, 0),
+			NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE,
 			v->index,
 			0
 		);

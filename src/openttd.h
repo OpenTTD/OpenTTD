@@ -13,7 +13,6 @@ struct Depot;
 struct Waypoint;
 struct Station;
 struct ViewPort;
-struct NewsItem;
 struct DrawPixelInfo;
 struct Group;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)

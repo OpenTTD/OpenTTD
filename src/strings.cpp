@@ -8,7 +8,6 @@
 #include "namegen.h"
 #include "station.h"
 #include "town.h"
-#include "news.h"
 #include "screenshot.h"
 #include "waypoint.h"
 #include "industry.h"

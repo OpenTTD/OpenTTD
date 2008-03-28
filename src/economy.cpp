@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "currency.h"
 #include "landscape.h"
-#include "news.h"
 #include "player_base.h"
 #include "player_func.h"
 #include "station.h"
@@ -14,6 +13,7 @@
 #include "saveload.h"
 #include "industry.h"
 #include "town.h"
+#include "news_func.h"
 #include "network/network.h"
 #include "engine.h"
 #include "network/network_data.h"
@@ -513,15 +513,15 @@ static void PlayersCheckBankrupt(Player *p)
 
 	switch (p->quarters_of_bankrupcy) {
 		case 2:
-			AddNewsItem( (StringID)(owner | NB_BTROUBLE),
-				NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			AddNewsItem((StringID)(owner | NB_BTROUBLE),
+				NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other players if it wants to take
 		          over when it is a human company? -- TrueLight */
 			if (IsHumanPlayer(owner)) {
-				AddNewsItem( (StringID)(owner | NB_BTROUBLE),
-					NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+				AddNewsItem((StringID)(owner | NB_BTROUBLE),
+					NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
 				break;
 			}
 
@@ -542,7 +542,7 @@ static void PlayersCheckBankrupt(Player *p)
 
 			/* Show bankrupt news */
 			SetDParam(0, p->index);
-			AddNewsItem( (StringID)(owner | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			AddNewsItem((StringID)(owner | NB_BBANKRUPT), NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
 
 			if (IsHumanPlayer(owner)) {
 				/* XXX - If we are in offline mode, leave the player playing. Eg. there
@@ -568,11 +568,10 @@ static void PlayersCheckBankrupt(Player *p)
 	}
 }
 
-void DrawNewsBankrupcy(Window *w)
+void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 {
 	DrawNewsBorder(w);
 
-	const NewsItem *ni = WP(w, news_d).ni;
 	Player *p = GetPlayer((PlayerID)GB(ni->string_id, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
@@ -786,10 +785,10 @@ static void HandleEconomyFluctuations()
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
-		AddNewsItem(STR_7073_WORLD_RECESSION_FINANCIAL, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
+		AddNewsItem(STR_7073_WORLD_RECESSION_FINANCIAL, NM_NORMAL, NF_NONE, NT_ECONOMY, DNC_NONE, 0, 0);
 	} else if (_economy.fluct == -12) {
 		_economy.fluct = GB(Random(), 0, 8) + 312;
-		AddNewsItem(STR_7074_RECESSION_OVER_UPTURN_IN, NEWS_FLAGS(NM_NORMAL,0,NT_ECONOMY,0), 0, 0);
+		AddNewsItem(STR_7074_RECESSION_OVER_UPTURN_IN, NM_NORMAL, NF_NONE, NT_ECONOMY, DNC_NONE, 0, 0);
 	}
 }
 
@@ -1129,14 +1128,14 @@ static void SubsidyMonthlyHandler()
 
 		if (s->age == 12-1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
-			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
+			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 		} else if (s->age == 2*12-1) {
 			st = GetStation(s->to);
 			if (st->owner == _local_player) {
 				pair = SetupSubsidyDecodeParam(s, 1);
-				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
+				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
@@ -1175,7 +1174,7 @@ static void SubsidyMonthlyHandler()
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0), pair.a, pair.b);
+					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
 					modified = true;
 					break;
 				}
@@ -1392,7 +1391,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			SetDParam(0, _current_player);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
-				NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_SUBSIDIES, 0),
+				NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE,
 				pair.a, pair.b
 			);
 
@@ -1829,7 +1828,7 @@ static void DoAcquireCompany(Player *p)
 
 	SetDParam(0, p->index);
 	SetDParam(1, p->bankrupt_value);
-	AddNewsItem( (StringID)(_current_player | NB_BMERGER), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+	AddNewsItem((StringID)(_current_player | NB_BMERGER), NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
 
 	/* original code does this a little bit differently */
 	PlayerID pi = p->index;

@@ -12,7 +12,7 @@
 #include "pathfind.h"
 #include "station_map.h"
 #include "station.h"
-#include "news.h"
+#include "news_func.h"
 #include "engine.h"
 #include "player_func.h"
 #include "player_base.h"
@@ -406,15 +406,12 @@ static void ShipArrivesAt(const Vehicle* v, Station* st)
 {
 	/* Check if station was ever visited before */
 	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {
-		uint32 flags;
-
 		st->had_vehicle_of_type |= HVOT_SHIP;
 
 		SetDParam(0, st->index);
-		flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 		AddNewsItem(
 			STR_9833_CITIZENS_CELEBRATE_FIRST,
-			flags,
+			NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
 			v->index,
 			0);
 	}

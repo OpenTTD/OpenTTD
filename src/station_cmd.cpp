@@ -15,7 +15,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "airport.h"
 #include "sprite.h"
@@ -432,7 +432,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 	}
 
 	SetDParam(0, st->index);
-	AddNewsItem(msg, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT | NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
+	AddNewsItem(msg, NM_SMALL, NF_VIEWPORT | NF_TILE, NT_ACCEPTANCE, DNC_NONE, st->xy, 0);
 }
 
 /**

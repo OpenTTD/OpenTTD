@@ -9,7 +9,7 @@
 #include "player_gui.h"
 #include "town.h"
 #include "station.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "command_func.h"
 #include "network/network.h"
@@ -336,7 +336,7 @@ set_name:;
 
 		if (!IsHumanPlayer(p->index)) {
 			SetDParam(0, t->index);
-			AddNewsItem((StringID)(p->index | NB_BNEWCOMPANY), NEWS_FLAGS(NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY), p->last_build_coordinate, 0);
+			AddNewsItem((StringID)(p->index | NB_BNEWCOMPANY), NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY, p->last_build_coordinate, 0);
 		}
 		return;
 	}
@@ -902,7 +902,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Show the bankrupt news */
 			SetDParam(0, p->index);
-			AddNewsItem( (StringID)(p->index | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			AddNewsItem((StringID)(p->index | NB_BBANKRUPT), NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
 
 			/* Remove the company */
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);

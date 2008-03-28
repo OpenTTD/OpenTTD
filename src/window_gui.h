@@ -392,16 +392,6 @@ struct vp_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 
-struct news_d {
-	uint16 follow_vehicle;
-	int32 scrollpos_x;
-	int32 scrollpos_y;
-	int32 dest_scrollpos_x;
-	int32 dest_scrollpos_y;
-	NewsItem *ni;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
-
 struct highscore_d {
 	uint32 background_img;
 	int8 rank;

@@ -17,7 +17,7 @@
 #include "industry.h"
 #include "station.h"
 #include "player_base.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "gui.h"
 #include "unmovable_map.h"
@@ -2118,7 +2118,7 @@ static void TownActionRoadRebuild(Town* t)
 	SetDParam(1, _current_player);
 
 	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING,
-		NEWS_FLAGS(NM_NORMAL, NF_TILE, NT_GENERAL, 0), t->xy, 0);
+		NM_NORMAL, NF_TILE, NT_GENERAL, DNC_NONE, t->xy, 0);
 }
 
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)

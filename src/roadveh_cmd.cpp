@@ -14,7 +14,7 @@
 #include "engine.h"
 #include "command_func.h"
 #include "station.h"
-#include "news.h"
+#include "news_func.h"
 #include "pathfind.h"
 #include "npf.h"
 #include "player_func.h"
@@ -699,7 +699,7 @@ static void RoadVehCrash(Vehicle *v)
 	AddNewsItem(
 		(pass == 1) ?
 			STR_9031_ROAD_VEHICLE_CRASH_DRIVER : STR_9032_ROAD_VEHICLE_CRASH_DIE,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ACCIDENT, 0),
+		NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
 		v->index,
 		0
 	);
@@ -918,28 +918,22 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
 		/* Check if station was ever visited before */
 		if (!(st->had_vehicle_of_type & HVOT_BUS)) {
-			uint32 flags;
-
 			st->had_vehicle_of_type |= HVOT_BUS;
 			SetDParam(0, st->index);
-			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM,
-				flags,
+				NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
 				v->index,
 				0);
 		}
 	} else {
 		/* Check if station was ever visited before */
 		if (!(st->had_vehicle_of_type & HVOT_TRUCK)) {
-			uint32 flags;
-
 			st->had_vehicle_of_type |= HVOT_TRUCK;
 			SetDParam(0, st->index);
-			flags = (v->owner == _local_player) ? NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) : NEWS_FLAGS(NM_THIN, NF_VIEWPORT|NF_VEHICLE, NT_ARRIVAL_OTHER, 0);
 			AddNewsItem(
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM,
-				flags,
+				NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
 				v->index,
 				0
 			);

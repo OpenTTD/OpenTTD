@@ -4,7 +4,7 @@
 #include "openttd.h"
 #include "roadveh.h"
 #include "ship.h"
-#include "news.h"
+#include "news_func.h"
 #include "player_func.h"
 #include "engine.h"
 #include "debug.h"
@@ -377,7 +377,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 					default: NOT_REACHED(); message = 0; break;
 				}
 
-				AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+				AddNewsItem(message, NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
 			}
 			if (stopped) v->vehstatus &= ~VS_STOPPED;
 			if (display_costs) _current_player = OWNER_NONE;
@@ -408,7 +408,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			if (w == NULL) {
 				// we failed to make the train short enough
 				SetDParam(0, v->unitnumber);
-				AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+				AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
 				break;
 			}
 			temp = w;

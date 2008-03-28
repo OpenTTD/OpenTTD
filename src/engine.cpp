@@ -9,7 +9,7 @@
 #include "player_base.h"
 #include "player_func.h"
 #include "command_func.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "variables.h"
 #include "train.h"
@@ -338,7 +338,7 @@ static void NewVehicleAvailable(Engine *e)
 			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
-	AddNewsItem(index, NEWS_FLAGS(NM_CALLBACK, 0, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL), 0, 0);
+	AddNewsItem(index, NM_CALLBACK, NF_NONE, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL, 0, 0);
 }
 
 void EnginesMonthlyLoop()

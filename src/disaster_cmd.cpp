@@ -24,7 +24,7 @@
 #include "station_map.h"
 #include "command_func.h"
 #include "tile_cmd.h"
-#include "news.h"
+#include "news_func.h"
 #include "station.h"
 #include "waypoint.h"
 #include "town.h"
@@ -233,7 +233,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 				SetDParam(0, GetStationIndex(tile));
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
-					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
+					NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
 					v->index,
 					0);
 			}
@@ -366,7 +366,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 				u->vehstatus |= VS_CRASHED;
 
 				AddNewsItem(STR_B001_ROAD_VEHICLE_DESTROYED,
-					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
+					NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
 					u->index,
 					0);
 			}
@@ -441,7 +441,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0), i->xy, 0);
+			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.dest == 0) {
@@ -514,7 +514,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0), i->xy, 0);
+			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.dest == 0) {
@@ -599,7 +599,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		t = ClosestTownFromTile(v->dest_tile, (uint)-1);
 		SetDParam(0, t->index);
 		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0),
+			NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE,
 			v->tile,
 			0);
 
@@ -977,7 +977,7 @@ static void Disaster_CoalMine_Init()
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
-					NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, 0), i->xy + TileDiffXY(1, 1), 0);
+					NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy + TileDiffXY(1, 1), 0);
 
 				{
 					TileIndex tile = i->xy;

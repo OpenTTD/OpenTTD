@@ -9,7 +9,6 @@
 #include "station_map.h"
 #include "station.h"
 #include "town.h"
-#include "news.h"
 #include "saveload.h"
 #include "player_func.h"
 #include "airport.h"

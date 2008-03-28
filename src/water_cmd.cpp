@@ -13,7 +13,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
-#include "news.h"
+#include "news_func.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "train.h"
@@ -855,7 +855,7 @@ static void FloodVehicle(Vehicle *v)
 
 		SetDParam(0, pass);
 		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
+			NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
 			v->index,
 			0);
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);

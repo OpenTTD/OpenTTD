@@ -17,7 +17,7 @@
 #include "pathfind.h"
 #include "npf.h"
 #include "station.h"
-#include "news.h"
+#include "news_func.h"
 #include "engine.h"
 #include "player_func.h"
 #include "player_base.h"
@@ -2495,7 +2495,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_LOST,
-					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
+					NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE,
 					v->index,
 					0);
 			}
@@ -2765,12 +2765,9 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 	if (!(st->had_vehicle_of_type & HVOT_TRAIN)) {
 		st->had_vehicle_of_type |= HVOT_TRAIN;
 		SetDParam(0, st->index);
-		uint32 flags = v->owner == _local_player ?
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ARRIVAL_PLAYER, 0) :
-			NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ARRIVAL_OTHER,  0);
 		AddNewsItem(
 			STR_8801_CITIZENS_CELEBRATE_FIRST,
-			flags,
+			NM_THIN, NF_VIEWPORT | NF_VEHICLE, v->owner == _local_player ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
 			v->index,
 			0
 		);
@@ -3019,7 +3016,7 @@ static void CheckTrainCollision(Vehicle *v)
 
 	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
-		NEWS_FLAGS(NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, 0),
+		NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
 		v->index,
 		0
 	);
@@ -3739,7 +3736,7 @@ void TrainsYearlyLoop()
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_UNPROFITABLE,
-					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
+					NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE,
 					v->index,
 					0);
 			}

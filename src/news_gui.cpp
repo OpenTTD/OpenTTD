@@ -6,7 +6,7 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport_func.h"
-#include "news.h"
+#include "news_func.h"
 #include "settings_type.h"
 #include "transparency.h"
 #include "strings_func.h"
@@ -60,6 +60,16 @@ static NewsID _current_news = INVALID_NEWS; ///< points to news item that should
 static NewsID _oldest_news = 0;             ///< points to first item in fifo queue
 static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
 
+struct news_d {
+	uint16 follow_vehicle;
+	int32 scrollpos_x;
+	int32 scrollpos_y;
+	int32 dest_scrollpos_x;
+	int32 dest_scrollpos_y;
+	NewsItem *ni;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
+
 /** Forced news item.
  * Users can force an item by accessing the history or "last message".
  * If the message being shown was forced by the user, its index is stored in
@@ -68,8 +78,8 @@ static NewsID _forced_news = INVALID_NEWS;
 
 static byte _total_news = 0; ///< Number of news items in FIFO queue @see _news_items
 
-void DrawNewsNewVehicleAvail(Window *w);
-void DrawNewsBankrupcy(Window *w);
+void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
+void DrawNewsBankrupcy(Window *w, const NewsItem *ni);
 static void MoveToNextItem();
 
 StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
@@ -117,118 +127,118 @@ void DrawNewsBorder(const Window *w)
 static void NewsWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: { // If chatbar is open at creation time, we need to go above it
-		const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
-		w->message.msg = (w1 != NULL) ? w1->height : 0;
-	} break;
-
-	case WE_PAINT: {
-		const NewsItem *ni = WP(w, news_d).ni;
-		ViewPort *vp;
-
-		switch (ni->display_mode) {
-			case NM_NORMAL:
-			case NM_THIN: {
-				DrawNewsBorder(w);
-
-				DrawString(2, 1, STR_00C6, TC_FROMSTRING);
-
-				SetDParam(0, ni->date);
-				DrawStringRightAligned(428, 1, STR_01FF, TC_FROMSTRING);
-
-				if (!(ni->flags & NF_VIEWPORT)) {
-					CopyInDParam(0, ni->params, lengthof(ni->params));
-					DrawStringMultiCenter(215, ni->display_mode == NM_NORMAL ? 76 : 56,
-						ni->string_id, w->width - 4);
-				} else {
-					/* Back up transparency options to draw news view */
-					TransparencyOptionBits to_backup = _transparency_opt;
-					_transparency_opt = 0;
-					DrawWindowViewport(w);
-					_transparency_opt = to_backup;
-
-					/* Shade the viewport into gray, or color*/
-					vp = w->viewport;
-					GfxFillRect(vp->left - w->left, vp->top - w->top,
-						vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1,
-						(ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
-					);
-
-					CopyInDParam(0, ni->params, lengthof(ni->params));
-					DrawStringMultiCenter(w->width / 2, 20, ni->string_id, w->width - 4);
-				}
-				break;
-			}
-
-			case NM_CALLBACK: {
-				_draw_news_callback[ni->callback](w);
-				break;
-			}
-
-			default: {
-				DrawWindowWidgets(w);
-				if (!(ni->flags & NF_VIEWPORT)) {
-					CopyInDParam(0, ni->params, lengthof(ni->params));
-					DrawStringMultiCenter(140, 38, ni->string_id, 276);
-				} else {
-					DrawWindowViewport(w);
-					CopyInDParam(0, ni->params, lengthof(ni->params));
-					DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, w->width - 4);
-				}
-				break;
-			}
-		}
-	} break;
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case 1: {
-			NewsItem *ni = WP(w, news_d).ni;
-			DeleteWindow(w);
-			ni->duration = 0;
-			_forced_news = INVALID_NEWS;
+		case WE_CREATE: { // If chatbar is open at creation time, we need to go above it
+			const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
+			w->message.msg = (w1 != NULL) ? w1->height : 0;
 		} break;
-		case 0: {
-			NewsItem *ni = WP(w, news_d).ni;
-			if (ni->flags & NF_VEHICLE) {
-				Vehicle *v = GetVehicle(ni->data_a);
-				ScrollMainWindowTo(v->x_pos, v->y_pos);
-			} else if (ni->flags & NF_TILE) {
-				if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0)
-					ScrollMainWindowToTile(ni->data_b);
+
+		case WE_PAINT: {
+			const NewsItem *ni = WP(w, news_d).ni;
+			ViewPort *vp;
+
+			switch (ni->display_mode) {
+				case NM_NORMAL:
+				case NM_THIN: {
+					DrawNewsBorder(w);
+
+					DrawString(2, 1, STR_00C6, TC_FROMSTRING);
+
+					SetDParam(0, ni->date);
+					DrawStringRightAligned(428, 1, STR_01FF, TC_FROMSTRING);
+
+					if (!(ni->flags & NF_VIEWPORT)) {
+						CopyInDParam(0, ni->params, lengthof(ni->params));
+						DrawStringMultiCenter(215, ni->display_mode == NM_NORMAL ? 76 : 56,
+							ni->string_id, w->width - 4);
+					} else {
+						/* Back up transparency options to draw news view */
+						TransparencyOptionBits to_backup = _transparency_opt;
+						_transparency_opt = 0;
+						DrawWindowViewport(w);
+						_transparency_opt = to_backup;
+
+						/* Shade the viewport into gray, or color*/
+						vp = w->viewport;
+						GfxFillRect(vp->left - w->left, vp->top - w->top,
+							vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1,
+							(ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
+						);
+
+						CopyInDParam(0, ni->params, lengthof(ni->params));
+						DrawStringMultiCenter(w->width / 2, 20, ni->string_id, w->width - 4);
+					}
+					break;
+				}
+
+				case NM_CALLBACK: {
+					_draw_news_callback[ni->callback](w, ni);
+					break;
+				}
+
+				default: {
+					DrawWindowWidgets(w);
+					if (!(ni->flags & NF_VIEWPORT)) {
+						CopyInDParam(0, ni->params, lengthof(ni->params));
+						DrawStringMultiCenter(140, 38, ni->string_id, 276);
+					} else {
+						DrawWindowViewport(w);
+						CopyInDParam(0, ni->params, lengthof(ni->params));
+						DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, w->width - 4);
+					}
+					break;
+				}
 			}
 		} break;
-		}
-	} break;
 
-	case WE_KEYPRESS:
-		if (e->we.keypress.keycode == WKC_SPACE) {
-			/* Don't continue. */
-			e->we.keypress.cont = false;
-			DeleteWindow(w);
-		}
-		break;
+		case WE_CLICK: {
+			switch (e->we.click.widget) {
+			case 1: {
+				NewsItem *ni = WP(w, news_d).ni;
+				DeleteWindow(w);
+				ni->duration = 0;
+				_forced_news = INVALID_NEWS;
+			} break;
+			case 0: {
+				NewsItem *ni = WP(w, news_d).ni;
+				if (ni->flags & NF_VEHICLE) {
+					Vehicle *v = GetVehicle(ni->data_a);
+					ScrollMainWindowTo(v->x_pos, v->y_pos);
+				} else if (ni->flags & NF_TILE) {
+					if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0)
+						ScrollMainWindowToTile(ni->data_b);
+				}
+			} break;
+			}
+		} break;
 
-	case WE_MESSAGE: // The chatbar has notified us that is was either created or closed
-		switch (e->we.message.msg) {
-			case WE_CREATE: w->message.msg = e->we.message.wparam; break;
-			case WE_DESTROY: w->message.msg = 0; break;
-		}
-		break;
+		case WE_KEYPRESS:
+			if (e->we.keypress.keycode == WKC_SPACE) {
+				/* Don't continue. */
+				e->we.keypress.cont = false;
+				DeleteWindow(w);
+			}
+			break;
 
-	case WE_TICK: { // Scroll up newsmessages from the bottom in steps of 4 pixels
-		int diff;
-		int y = max(w->top - 4, _screen.height - w->height - 12 - w->message.msg);
-		if (y == w->top) return;
+		case WE_MESSAGE: // The chatbar has notified us that is was either created or closed
+			switch (e->we.message.msg) {
+				case WE_CREATE: w->message.msg = e->we.message.wparam; break;
+				case WE_DESTROY: w->message.msg = 0; break;
+			}
+			break;
 
-		if (w->viewport != NULL)
-			w->viewport->top += y - w->top;
+		case WE_TICK: { // Scroll up newsmessages from the bottom in steps of 4 pixels
+			int diff;
+			int y = max(w->top - 4, _screen.height - w->height - 12 - w->message.msg);
+			if (y == w->top) return;
 
-		diff = Delta(w->top, y);
-		w->top = y;
+			if (w->viewport != NULL)
+				w->viewport->top += y - w->top;
 
-		SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);
-	} break;
+			diff = Delta(w->top, y);
+			w->top = y;
+
+			SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);
+		} break;
 	}
 }
 
@@ -254,17 +264,15 @@ static inline NewsID decreaseIndex(NewsID i)
 
 /**
  * Add a new newsitem to be shown.
- * @param string String to display, can have special values based on parameter \a flags
- * @param flags various control bits that will show various news-types. See macro NEWS_FLAGS()
+ * @param string String to display, can have special values based on parameter \a display_mode
+ * @param display_mode, any of the NewsMode enums (NM_)
+ * @param flags any of the NewsFlag enums (NF_)
+ * @param type news category, any of the NewsType enums (NT_)
+ * @param callback news callback function, any of the NewsCallback enums (DNC_)
  * @param data_a news-specific value based on news type
  * @param data_b news-specific value based on news type
- * @note flags exists of 4 byte-sized extra parameters.
- *  -# Bits  0 -  7 display_mode, any of the NewsMode enums (NM_)
- *  -# Bits  8 - 15 news flags, any of the NewsFlags enums (NF_)
- *  -# Bits 16 - 23 news category, any of the NewsType enums (NT_)
- *  -# Bits 24 - 31 news callback function, any of the NewsCallback enums (DNC_)
  *
- * If the display mode is NM_CALLBACK, special news is shown and parameter
+ * @note If the display mode is NM_CALLBACK, special news is shown and parameter
  * \a string has a special meaning.
  *  - For DNC_TRAINAVAIL, DNC_ROADAVAIL, DNC_SHIPAVAIL, DNC_AIRCRAFTAVAIL messages: StringID is
  *    the index of the engine that is shown
@@ -274,11 +282,11 @@ static inline NewsID decreaseIndex(NewsID i)
  *    @see NewsBankrupcy
  *
  * @see NewsMode
- * @see NewsFlags
+ * @see NewsFlag
  * @see NewsType
  * @see NewsCallback
  */
-void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
+void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsType type, NewsCallback callback, uint data_a, uint data_b)
 {
 	NewsID l_news;
 
@@ -306,36 +314,33 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
 
 	/* Add news to _latest_news */
-	{
-		Window *w;
-		NewsItem *ni = &_news_items[_latest_news];
-		memset(ni, 0, sizeof(*ni));
+	NewsItem *ni = &_news_items[_latest_news];
+	memset(ni, 0, sizeof(*ni));
 
-		ni->string_id = string;
-		ni->display_mode = (byte)flags;
-		ni->flags = (byte)(flags >> 8);
+	ni->string_id = string;
+	ni->display_mode = display_mode;
+	ni->flags = flags;
 
-		/* show this news message in color? */
-		if (_cur_year >= _patches.colored_news_year) ni->flags |= NF_INCOLOR;
+	/* show this news message in color? */
+	if (_cur_year >= _patches.colored_news_year) ni->flags |= NF_INCOLOR;
 
-		ni->type = (byte)(flags >> 16);
-		ni->callback = (byte)(flags >> 24);
-		ni->data_a = data_a;
-		ni->data_b = data_b;
-		ni->date = _date;
-		CopyOutDParam(ni->params, 0, lengthof(ni->params));
+	ni->type = type;
+	ni->callback = callback;
+	ni->data_a = data_a;
+	ni->data_b = data_b;
+	ni->date = _date;
+	CopyOutDParam(ni->params, 0, lengthof(ni->params));
 
-		w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-		if (w == NULL) return;
-		SetWindowDirty(w);
-		w->vscroll.count = _total_news;
-	}
+	Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+	if (w == NULL) return;
+	SetWindowDirty(w);
+	w->vscroll.count = _total_news;
 }
 
 
 /**
  * Maximum age of news items.
- * Don't show item if it's older than x days, corresponds with NewsType in news.h
+ * Don't show item if it's older than x days, corresponds with NewsType in news_type.h
  * @see NewsType
  */
 static const byte _news_items_age[NT_END] = {

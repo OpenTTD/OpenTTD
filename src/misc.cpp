@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "currency.h"
 #include "landscape.h"
-#include "news.h"
+#include "news_func.h"
 #include "saveload.h"
 #include "engine.h"
 #include "vehicle_gui.h"
