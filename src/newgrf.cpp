@@ -2592,8 +2592,8 @@ static void NewSpriteGroup(byte *buf, int len)
 			group->type = SGT_RANDOMIZED;
 			group->g.random.var_scope = HasBit(type, 1) ? VSG_SCOPE_PARENT : VSG_SCOPE_SELF;
 
-			if (HasBit(type, 2) && feature <= GSF_AIRCRAFT) {
-				group->g.random.var_scope = VSG_SCOPE_RELATIVE;
+			if (HasBit(type, 2)) {
+				if (feature <= GSF_AIRCRAFT) group->g.random.var_scope = VSG_SCOPE_RELATIVE;
 				group->g.random.count = grf_load_byte(&buf);
 			}
 

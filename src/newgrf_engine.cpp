@@ -405,7 +405,7 @@ static inline const Vehicle *GRV(const ResolverObject *object)
 		case VSG_SCOPE_SELF: return object->u.vehicle.self;
 		case VSG_SCOPE_PARENT: return object->u.vehicle.parent;
 		case VSG_SCOPE_RELATIVE: {
-			const Vehicle *v;
+			const Vehicle *v = NULL;
 			switch (GB(object->count, 6, 2)) {
 				default: NOT_REACHED();
 				case 0x00: // count back (away from the engine), starting at this vehicle
@@ -415,10 +415,17 @@ static inline const Vehicle *GRV(const ResolverObject *object)
 				case 0x02: // count back, starting at the engine
 					v = object->u.vehicle.parent;
 					break;
-				case 0x03: // count back, starting at the first vehicle in this chain of vehicles with the same ID, as for vehicle variable 41
-					v = object->u.vehicle.parent;
-					while (v != NULL && v->engine_type != object->u.vehicle.self->engine_type) v = v->Next();
-					break;
+				case 0x03: { // count back, starting at the first vehicle in this chain of vehicles with the same ID, as for vehicle variable 41
+					const Vehicle *self = object->u.vehicle.self;
+					for (const Vehicle *u = self->First(); u != self; u = u->Next()) {
+						if (u->engine_type != self->engine_type) {
+							v = NULL;
+						} else {
+							if (v == NULL) v = u;
+						}
+					}
+					if (v == NULL) v = self;
+				} break;
 			}
 			uint32 count = GB(object->count, 0, 4);
 			if (count == 0) count = GetRegister(0x100);
