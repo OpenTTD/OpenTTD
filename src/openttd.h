@@ -9,13 +9,11 @@
 #endif
 
 // Forward declarations of structs.
-struct Waypoint;
 typedef byte LandscapeID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 
 /* IDs used in Pools */
-typedef uint16 WaypointID;
 typedef uint16 EngineRenewID;
 
 enum GameModes {

@@ -1348,6 +1348,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\station_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\stdafx.h"
 				>
 			</File>
@@ -1473,6 +1477,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\waypoint.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\waypoint_type.h"
 				>
 			</File>
 			<File

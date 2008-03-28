@@ -5,12 +5,12 @@
 #ifndef WAYPOINT_H
 #define WAYPOINT_H
 
+#include "waypoint_type.h"
 #include "oldpool.h"
 #include "rail_map.h"
 #include "command_type.h"
 #include "station_type.h"
 
-struct Waypoint;
 DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
 
 struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {

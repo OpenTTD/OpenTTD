@@ -278,6 +278,7 @@ vehicle_type.h
 viewport_func.h
 viewport_type.h
 waypoint.h
+waypoint_type.h
 music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
