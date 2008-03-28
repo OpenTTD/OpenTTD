@@ -933,6 +933,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\engine_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\enum_type.hpp"
 				>
 			</File>

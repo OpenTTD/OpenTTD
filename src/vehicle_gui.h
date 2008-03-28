@@ -9,6 +9,7 @@
 #include "vehicle_type.h"
 #include "order_type.h"
 #include "station_type.h"
+#include "engine_type.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);

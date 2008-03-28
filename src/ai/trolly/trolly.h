@@ -7,6 +7,7 @@
 #include "../../player_type.h"
 #include "../../vehicle_type.h"
 #include "../../date_type.h"
+#include "../../engine_type.h"
 
 /*
  * These defines can be altered to change the behavoir of the AI

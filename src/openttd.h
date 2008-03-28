@@ -10,11 +10,7 @@
 
 // Forward declarations of structs.
 typedef byte LandscapeID;
-typedef uint16 EngineID;
 typedef uint16 UnitID;
-
-/* IDs used in Pools */
-typedef uint16 EngineRenewID;
 
 enum GameModes {
 	GM_MENU,

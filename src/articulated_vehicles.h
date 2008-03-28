@@ -6,6 +6,7 @@
 #define ARTICULATED_VEHICLES_H
 
 #include "vehicle_type.h"
+#include "engine_type.h"
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window);
 uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type);
