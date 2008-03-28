@@ -1992,20 +1992,20 @@ STR_4825_TOFFEE_QUARRY                                          :タフィー鉱
 STR_4826_SUGAR_MINE                                             :砂糖鉱山
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}と{STRING}
-STR_4829_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}、{STRING}、{STRING}
+STR_4827_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}{STRING}と{STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}必要な原料：{YELLOW}{STRING}{STRING}、{STRING}{STRING}、{STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}処理待ちの貨物：
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}産物：{YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}産物：{YELLOW}{STRING}、{STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}産物：{YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}産物：{YELLOW}{STRING}{STRING}、{STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}先月の生産量：
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK}（{COMMA}％運送済み）
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK}（{COMMA}％運送済み）
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}主の画面を産業の場所に移動します
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}新しい{STRING}が{TOWN}町に工事中！
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}新しい{STRING}が{TOWN}町に植林中！

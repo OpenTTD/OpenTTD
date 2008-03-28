@@ -1806,19 +1806,19 @@ STR_4825_TOFFEE_QUARRY                                          :Canteira de Tof
 STR_4826_SUGAR_MINE                                             :Mina de Azucre
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Require: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produce: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producción no último mes:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra-la vista principal na situación da industria
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}¡Nova {STRING} en construcción cerca de {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}¡Nova {STRING} cerca de {TOWN}!

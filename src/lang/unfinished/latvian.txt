@@ -1558,14 +1558,14 @@ STR_4824_BUBBLE_GENERATOR                                       :Burbuļu ģener
 STR_4826_SUGAR_MINE                                             :Cukura raktuve
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Nepieciešams: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Krava, kas jāapstrādā:
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcija iepriekšēja mēnesī:

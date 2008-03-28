@@ -1990,20 +1990,20 @@ STR_4825_TOFFEE_QUARRY                                          :Bonbon Madeni
 STR_4826_SUGAR_MINE                                             :Şeker Madeni
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}İstenen: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}İstenen: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}İstenenler: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}İşlenmeyi bekleyen kargo:
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}Üretir: {YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}Üretir: {YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Üretir: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Üretir: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Geçen ayki üretim:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} (%{COMMA} tasindi)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} (%{COMMA} tasindi)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Fabrikaya git
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!

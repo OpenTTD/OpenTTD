@@ -1854,13 +1854,13 @@ STR_4825_TOFFEE_QUARRY                                          :太妃场
 STR_4826_SUGAR_MINE                                             :蔗糖矿
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}上月产量：
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% 已运输)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 已运输)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}将屏幕中心移动到工厂所在的位置
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}新 {STRING} 正在 {TOWN} 加紧建设！
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}新 {STRING} 即将落户 {TOWN}！

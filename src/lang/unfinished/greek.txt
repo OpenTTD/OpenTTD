@@ -1596,13 +1596,13 @@ STR_4825_TOFFEE_QUARRY                                          :Λατομεί�
 STR_4826_SUGAR_MINE                                             :Ορυχείο Ζάχαρης
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Παραγωγή προηγούμενου μήνα:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% μεταφέρθηκαν)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Νέο {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!

@@ -1997,20 +1997,20 @@ STR_4825_TOFFEE_QUARRY                                          :Карамел�
 STR_4826_SUGAR_MINE                                             :Захарна мина
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Нуждае се от: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Товар чакащ до бъде преработен:
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}Произвежда: {YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}Произвежда: {YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Произвежда: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Произвежда: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено миналия месец:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% превозено)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% превозено)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Центриране главния прозорец върху индустрията
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Нова {STRING} се строи близо до {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Нова {STRING} се засажда близо до {TOWN}!

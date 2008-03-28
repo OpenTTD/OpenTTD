@@ -1999,20 +1999,20 @@ STR_4825_TOFFEE_QUARRY                                          :{G=f}Extração
 STR_4826_SUGAR_MINE                                             :{G=f}Mina de Açúcar
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Requer: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Requer: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Requer: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Requer: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Requer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Requer: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Carga aguardando processamento
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}Produz: {YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}Produz: {YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Produz: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produz: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produção no mês passado:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportado)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportado)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centralizar visualização na localização da indústria
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nov{G o a} {STRING} em construção em {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nov{G o a} {STRING} sendo plantada em {TOWN}!

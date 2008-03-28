@@ -1979,20 +1979,20 @@ STR_4825_TOFFEE_QUARRY                                          :Iskop mliječne
 STR_4826_SUGAR_MINE                                             :Rudnik šećera
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Treba: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Treba: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Treba: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Treba: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Treba: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Treba: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Teret koji čeka obradu:
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}Proizvodi: {YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}Proizvodi: {YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Proizvodi: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Prošlomjesečna proizvodnja:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% prevezeno)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% prevezeno)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centriraj glavni pogled na položaj industrije
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Započela je izgradnja nove industrije ( {STRING} ) u blizini grada {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nova {STRING} trenutno se sadi blizu grada {TOWN}!

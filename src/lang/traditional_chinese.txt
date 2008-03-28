@@ -1973,20 +1973,20 @@ STR_4825_TOFFEE_QUARRY                                          :太妃糖礦
 STR_4826_SUGAR_MINE                                             :糖礦
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}囤積的貨物：
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}產出：{YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}產出：{YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}產出：{YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}產出：{YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}上月產量：
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} (運送了 {COMMA}%)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} (運送了 {COMMA}%)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}將主視野帶到工業上方
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}新的 {STRING} 正在 {TOWN} 附近建造中！
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}新的 {STRING} 正在 {TOWN} 附近種植中！

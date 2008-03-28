@@ -1963,20 +1963,20 @@ STR_4825_TOFFEE_QUARRY                                          :Toffeelouhos
 STR_4826_SUGAR_MINE                                             :Sokerikaivos
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}, {STRING}
-STR_4829_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}, {STRING}, {STRING}
+STR_4827_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Tarvitsee: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Rahti odottaa käsittelyä:
-STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}, {STRING}
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Tuottaa: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Tuotto viime kuussa:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}{NBSP}% kuljetettu)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Keskitä päänäkymä teollisuuden sijaintiin.
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
