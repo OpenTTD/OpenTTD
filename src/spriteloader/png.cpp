@@ -9,7 +9,6 @@
 #include "../fileio.h"
 #include "../debug.h"
 #include "../core/alloc_func.hpp"
-#include "../core/endian_func.hpp"
 #include "png.hpp"
 #include <png.h>
 
@@ -126,18 +125,8 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 			color_type = PNG_COLOR_TYPE_RGB;
 		}
 
-#ifdef TTD_LITTLE_ENDIAN
-		png_set_bgr(png_ptr);
-#else
-		if (color_type == PNG_COLOR_TYPE_RGB_ALPHA) png_set_swap_alpha(png_ptr);
-#endif
-
 		if (color_type == PNG_COLOR_TYPE_RGB) {
-#ifdef TTD_LITTLE_ENDIAN
 			png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
-#else
-			png_set_filler(png_ptr, 0xff, PNG_FILLER_BEFORE);
-#endif
 		}
 
 		pixelsize = sizeof(uint32);
@@ -159,16 +148,16 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 		for (uint x = 0; x < info_ptr->width; x++) {
 			if (mask) {
 				if (row_pointer[x * sizeof(uint8)] != 0) {
-					dst[x].b = 0;
-					dst[x].g = 0;
 					dst[x].r = 0;
+					dst[x].g = 0;
+					dst[x].b = 0;
 					/* Alpha channel is used from the original image (to allow transparency in remap colors) */
 					dst[x].m = row_pointer[x * sizeof(uint8)];
 				}
 			} else {
-				dst[x].b = row_pointer[x * sizeof(uint32) + 0];
+				dst[x].r = row_pointer[x * sizeof(uint32) + 0];
 				dst[x].g = row_pointer[x * sizeof(uint32) + 1];
-				dst[x].r = row_pointer[x * sizeof(uint32) + 2];
+				dst[x].b = row_pointer[x * sizeof(uint32) + 2];
 				dst[x].a = row_pointer[x * sizeof(uint32) + 3];
 				dst[x].m = 0;
 			}

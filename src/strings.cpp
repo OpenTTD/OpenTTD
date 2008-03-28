@@ -462,6 +462,12 @@ static int DeterminePluralForm(int64 cnt)
 	 *   Slovenian */
 	case 8:
 		return n % 100 == 1 ? 0 : n % 100 == 2 ? 1 : n % 100 == 3 || n % 100 == 4 ? 2 : 3;
+
+	/* Two forms; singular used for everything ending in 1 but not in 11.
+	 * Used in:
+	 *   Icelandic */
+	case 9:
+		return n % 10 == 1 && n % 100 != 11 ? 0 : 1;
 	}
 }
 

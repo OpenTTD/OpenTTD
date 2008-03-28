@@ -1,7 +1,16 @@
+0.6.0???? (2008-03-??)
+------------------------------------------------------------------------
+- Fix: Timetable times for aircraft were always doubled [FS#1883] (r12477)
+- Fix: Remove broken endian-dependent code and unnecessary rgb to bgr swapping [FS#1880] (r12453)
+- Fix: Do not 'disable' the drawing of autorail overlays when the tile is 'error'-marked (red pulsating selection) [FS#1871] (r12439)
+- Fix: Plural rule for Icelandic was wrong (r12417)
+
+
 0.6.0-RC1 (2008-03-26)
 ------------------------------------------------------------------------
 - Feature: Show whether a town is a "city" in the town description title bar (r12391)
 - Feature: Increase house animation frame number from 32 to 128 (r12347)
+- Fix: Loading of TTD savegames (r12399, r12401)
 - Fix: Vehicle lists related to stations not closed when the station is deleted [FS#1872] (r12393)
 - Fix: Trams failing to turn on bridge heads/tunnel entrances [FS#1851] (r123890)
 - Fix: Train could break apart when reversed while partially in a depot [FS#1841] (r12386, r12384)
@@ -25,7 +34,7 @@
 - Fix: Do not try to flood water tile [FS#1836] (r12350)
 - Fix: NTP skipped junction just after bridge end (r12348)
 - Fix: Remove duplicated and inconsistent code wrt. autoreplace with rules in both vehicles' group and ALL_GROUP [FS#1748, FS#1825] (r12346)
-- Fix: Don't try to restore backupped timetable when timetabling is disabled [FS#1828]  (r12345)
+- Fix: Don't try to restore backupped timetable when timetabling is disabled [FS#1828] (r12345)
 - Fix: Slow helicopters never got the 'chance' to finish the landing routine (r12343)
 - Fix: GRM buffer for cargos was incorrect size [FS#1827] (r12341)
 - Fix: Recalculate cached train data after clearing reversing flag when entering depot (r12339)
@@ -48,7 +57,7 @@
 - Fix: Include prop 25 data for all train parts, not just those that carry cargo (r12314)
 - Fix: YAPF and NTP did not apply penalty for uphill tracks on steep slopes (r12313)
 - Fix: Restore timetable from backupped orders and add group ID to the backup [FS#1549] (r12296)
-- Fix: Do not draw trees nor lamps between tram tracks  (r12290) [FS#1807]
+- Fix: Do not draw trees nor lamps between tram tracks (r12290) [FS#1807]
 - Fix: [Win32] Do not create save dir on install (r12269)
 - Fix: Autoreplace did not update vehicle index for timetable window [FS#1805] (r12261)
 - Fix: GetProductionAroundTiles() may fail if only the second production slot exists (r12258)
@@ -59,7 +68,7 @@
 - Fix: When loading a savegame fails, do not start creating a new game, just go straight back to the intro screen (r12202)
 - Fix: Force AI to build rail or road instead of bridges if possible, so it doesn't build bridges everywhere (r12200)
 - Fix: "Transparent buildings" now only toggles buildings, so show tick when buildings are transparent [FS#1789] (r12198)
-- Fix: Show correct last year profit when the train had negative income  [FS#1788] (r12197)
+- Fix: Show correct last year profit when the train had negative income [FS#1788] (r12197)
 - Fix: There can be oil rigs at map borders, do not set water class for them [FS#1787] (r12195)
 - Fix: Do not start overtaking if the RV reaches wrong-way one-way-road in the next tiles (r12191)
 - Fix: Assert when trying to play tile sound at NW border of map (placing buyos, leveling land) [FS#1784] (r12186)

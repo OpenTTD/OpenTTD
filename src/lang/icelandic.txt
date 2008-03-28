@@ -1,7 +1,7 @@
 ##name Icelandic
 ##ownname Íslenska
 ##isocode is_IS
-##plural 0
+##plural 9
 ##gender karlkyn kvenkyn hvorugkyn
 
 #
