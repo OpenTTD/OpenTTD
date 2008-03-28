@@ -20,6 +20,7 @@
 #include "order.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
+#include "group_type.h"
 
 /** Road vehicle states */
 enum RoadVehicleStates {

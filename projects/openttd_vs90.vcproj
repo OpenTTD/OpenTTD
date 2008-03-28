@@ -981,6 +981,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\group_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\gui.h"
 				>
 			</File>

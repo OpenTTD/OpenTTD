@@ -154,6 +154,7 @@ gfx_type.h
 gfxinit.h
 group.h
 group_gui.h
+group_type.h
 gui.h
 heightmap.h
 industry.h

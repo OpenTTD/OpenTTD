@@ -12,7 +12,6 @@
 struct Waypoint;
 struct ViewPort;
 struct DrawPixelInfo;
-struct Group;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef byte LandscapeID;
 typedef uint16 EngineID;
@@ -24,7 +23,6 @@ typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C
 typedef uint16 WaypointID;
 typedef uint16 OrderID;
 typedef uint16 SignID;
-typedef uint16 GroupID;
 typedef uint16 EngineRenewID;
 
 enum GameModes {

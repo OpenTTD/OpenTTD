@@ -331,19 +331,6 @@ struct tooltips_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
-struct replaceveh_d {
-	byte sel_index[2];
-	EngineID sel_engine[2];
-	uint16 count[2];
-	bool wagon_btnstate; ///< true means engine is selected
-	EngineList list[2];
-	bool update_left;
-	bool update_right;
-	bool init_lists;
-	GroupID sel_group;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
-
 struct depot_d {
 	VehicleID sel;
 	VehicleType type;
@@ -442,20 +429,6 @@ struct vehiclelist_d {
 	list_d l;                   // General list struct
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
-
-struct grouplist_d {
-	const Group **sort_list;
-	list_d l;                   // General list struct
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(grouplist_d));
-
-struct groupveh_d : vehiclelist_d {
-	GroupID group_sel;
-	VehicleID vehicle_sel;
-
-	grouplist_d gl;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(groupveh_d));
 
 /****************** THESE ARE NOT WIDGET TYPES!!!!! *******************/
 enum WindowWidgetBehaviours {

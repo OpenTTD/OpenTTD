@@ -5,18 +5,12 @@
 #ifndef GROUP_H
 #define GROUP_H
 
+#include "group_type.h"
 #include "oldpool.h"
 #include "player_type.h"
 #include "vehicle_type.h"
 #include "engine.h"
 
-enum {
-	ALL_GROUP     = 0xFFFD,
-	DEFAULT_GROUP = 0xFFFE, ///< ungrouped vehicles are in this group.
-	INVALID_GROUP = 0xFFFF,
-};
-
-struct Group;
 DECLARE_OLD_POOL(Group, Group, 5, 2047)
 
 struct Group : PoolItem<Group, GroupID, &_Group_pool> {
