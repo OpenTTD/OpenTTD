@@ -7,6 +7,7 @@
 
 #include "oldpool.h"
 
+typedef uint16 SignID;
 struct Sign;
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 

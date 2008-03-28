@@ -20,7 +20,6 @@ typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C
 
 /* IDs used in Pools */
 typedef uint16 WaypointID;
-typedef uint16 SignID;
 typedef uint16 EngineRenewID;
 
 enum GameModes {
