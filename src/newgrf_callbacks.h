@@ -150,7 +150,7 @@ enum CallbackID {
 	CBID_VEHICLE_MODIFY_PROPERTY         = 0x36,
 
 	/** Called to determine text to display after cargo name */
-	CBID_INDUSTRY_CARGO_SUFFIX           = 0x37, // not implemented
+	CBID_INDUSTRY_CARGO_SUFFIX           = 0x37,
 
 	/** Called to determine more text in the fund industry window */
 	CBID_INDUSTRY_FUND_MORE_TEXT         = 0x38,
