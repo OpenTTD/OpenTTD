@@ -9,6 +9,7 @@
 
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef uint16 OrderID;
+typedef uint16 DestinationID;
 
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,

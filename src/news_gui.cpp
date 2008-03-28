@@ -134,7 +134,6 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 		case WE_PAINT: {
 			const NewsItem *ni = WP(w, news_d).ni;
-			ViewPort *vp;
 
 			switch (ni->display_mode) {
 				case NM_NORMAL:
@@ -158,7 +157,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 						_transparency_opt = to_backup;
 
 						/* Shade the viewport into gray, or color*/
-						vp = w->viewport;
+						ViewPort *vp = w->viewport;
 						GfxFillRect(vp->left - w->left, vp->top - w->top,
 							vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1,
 							(ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
@@ -170,12 +169,11 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 					break;
 				}
 
-				case NM_CALLBACK: {
+				case NM_CALLBACK:
 					_draw_news_callback[ni->callback](w, ni);
 					break;
-				}
 
-				default: {
+				default:
 					DrawWindowWidgets(w);
 					if (!(ni->flags & NF_VIEWPORT)) {
 						CopyInDParam(0, ni->params, lengthof(ni->params));
@@ -186,7 +184,6 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 						DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, w->width - 4);
 					}
 					break;
-				}
 			}
 		} break;
 
@@ -246,7 +243,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
  * Return the correct index in the pseudo-fifo
  * queue and deals with overflows when increasing the index
  */
-static inline NewsID increaseIndex(NewsID i)
+static inline NewsID IncreaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
 	return (i + 1) % MAX_NEWS;
@@ -256,7 +253,7 @@ static inline NewsID increaseIndex(NewsID i)
  * Return the correct index in the pseudo-fifo
  * queue and deals with overflows when decreasing the index
  */
-static inline NewsID decreaseIndex(NewsID i)
+static inline NewsID DecreaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
 	return (i + MAX_NEWS - 1) % MAX_NEWS;
@@ -288,26 +285,25 @@ static inline NewsID decreaseIndex(NewsID i)
  */
 void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsType type, NewsCallback callback, uint data_a, uint data_b)
 {
-	NewsID l_news;
-
 	if (_game_mode == GM_MENU) return;
 
 	/* check the rare case that the oldest (to be overwritten) news item is open */
-	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
+	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news)) {
 		MoveToNextItem();
+	}
 
 	if (_total_news < MAX_NEWS) _total_news++;
 
 	/* Increase _latest_news. If we have no news yet, use _oldest news as an
 	 * index. We cannot use 0 as _oldest_news can jump around due to
 	 * DeleteVehicleNews */
-	l_news = _latest_news;
-	_latest_news = (_latest_news == INVALID_NEWS) ? _oldest_news : increaseIndex(_latest_news);
+	NewsID l_news = _latest_news;
+	_latest_news = (_latest_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_latest_news);
 
 	/* If the fifo-buffer is full, overwrite the oldest entry */
 	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
 		assert(_total_news == MAX_NEWS);
-		_oldest_news = increaseIndex(_oldest_news);
+		_oldest_news = IncreaseIndex(_oldest_news);
 	}
 
 	/*DEBUG(misc, 0, "+cur %3d, old %2d, lat %3d, for %3d, tot %2d",
@@ -466,44 +462,42 @@ static inline void SetNewsDisplayValue(byte item, byte val)
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(NewsItem *ni)
 {
-	Window *w;
-	SoundFx sound;
-	int top;
 	ni->flags &= ~NF_FORCE_BIG;
 	ni->duration = 555;
 
-	sound = _news_sounds[ni->type];
+	SoundFx sound = _news_sounds[ni->type];
 	if (sound != 0) SndPlayFx(sound);
 
-	top = _screen.height;
+	int top = _screen.height;
+	Window *w;
 	switch (ni->display_mode) {
 		case NM_NORMAL:
-		case NM_CALLBACK: {
+		case NM_CALLBACK:
 			_news_type13_desc.top = top;
 			w = AllocateWindowDesc(&_news_type13_desc);
-			if (ni->flags & NF_VIEWPORT)
+			if (ni->flags & NF_VIEWPORT) {
 				AssignWindowViewport(w, 2, 58, 0x1AA, 0x6E,
 					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
+			}
 			break;
-		}
 
-		case NM_THIN: {
+		case NM_THIN:
 			_news_type2_desc.top = top;
 			w = AllocateWindowDesc(&_news_type2_desc);
-			if (ni->flags & NF_VIEWPORT)
+			if (ni->flags & NF_VIEWPORT) {
 				AssignWindowViewport(w, 2, 58, 0x1AA, 0x46,
 					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
+			}
 			break;
-		}
 
-		default: {
+		default:
 			_news_type0_desc.top = top;
 			w = AllocateWindowDesc(&_news_type0_desc);
-			if (ni->flags & NF_VIEWPORT)
+			if (ni->flags & NF_VIEWPORT) {
 				AssignWindowViewport(w, 3, 17, 0x112, 0x2F,
 					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
+			}
 			break;
-		}
 	}
 
 	/*DEBUG(misc, 0, " cur %3d, old %2d, lat %3d, for %3d, tot %2d",
@@ -516,12 +510,10 @@ static void ShowNewspaper(NewsItem *ni)
 /** Show news item in the ticker */
 static void ShowTicker(const NewsItem *ni)
 {
-	Window *w;
-
 	if (_news_ticker_sound) SndPlayFx(SND_16_MORSE);
 
 	_statusbar_news_item = *ni;
-	w = FindWindowById(WC_STATUS_BAR, 0);
+	Window *w = FindWindowById(WC_STATUS_BAR, 0);
 	if (w != NULL) WP(w, def_d).data_1 = 360;
 }
 
@@ -532,16 +524,14 @@ static void ShowTicker(const NewsItem *ni)
  */
 static bool ReadyForNextItem()
 {
-	const Window *w;
 	NewsID item = (_forced_news == INVALID_NEWS) ? _current_news : _forced_news;
-	NewsItem *ni;
 
 	if (item >= MAX_NEWS) return true;
-	ni = &_news_items[item];
+	NewsItem *ni = &_news_items[item];
 
 	/* Ticker message
 	 * Check if the status bar message is still being displayed? */
-	w = FindWindowById(WC_STATUS_BAR, 0);
+	const Window *w = FindWindowById(WC_STATUS_BAR, 0);
 	if (w != NULL && WP(w, const def_d).data_1 > -1280) return false;
 
 	/* Newspaper message, decrement duration counter */
@@ -559,10 +549,8 @@ static void MoveToNextItem()
 
 	/* if we're not at the last item, then move on */
 	if (_current_news != _latest_news) {
-		NewsItem *ni;
-
-		_current_news = (_current_news == INVALID_NEWS) ? _oldest_news : increaseIndex(_current_news);
-		ni = &_news_items[_current_news];
+		_current_news = (_current_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_current_news);
+		NewsItem *ni = &_news_items[_current_news];
 
 		/* check the date, don't show too old items */
 		if (_date - _news_items_age[ni->type] > ni->date) return;
@@ -628,13 +616,13 @@ void ShowLastNewsMessage()
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
 		const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-		ShowNewsMessage((w == NULL || (_current_news == _oldest_news)) ? _current_news : decreaseIndex(_current_news));
+		ShowNewsMessage((w == NULL || (_current_news == _oldest_news)) ? _current_news : DecreaseIndex(_current_news));
 	} else if (_forced_news == _oldest_news) {
 		/* We have reached the oldest news, start anew with the latest */
 		ShowNewsMessage(_latest_news);
 	} else {
 		/* 'Scrolling' through news history show each one in turn */
-		ShowNewsMessage(decreaseIndex(_forced_news));
+		ShowNewsMessage(DecreaseIndex(_forced_news));
 	}
 }
 
@@ -666,8 +654,6 @@ static NewsID getNews(NewsID i)
 static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint maxw)
 {
 	char buffer[512], buffer2[512];
-	const char *ptr;
-	char *dest;
 	StringID str;
 
 	if (ni->display_mode == NM_CALLBACK) {
@@ -680,8 +666,8 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	GetString(buffer, str, lastof(buffer));
 	/* Copy the just gotten string to another buffer to remove any formatting
 	 * from it such as big fonts, etc. */
-	ptr  = buffer;
-	dest = buffer2;
+	const char *ptr = buffer;
+	char *dest = buffer2;
 	WChar c_last = '\0';
 	for (;;) {
 		WChar c = Utf8Consume(&ptr);
@@ -708,46 +694,40 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int y = 19;
-		NewsID p, show;
+		case WE_PAINT: {
+			int y = 19;
 
-		SetVScrollCount(w, _total_news);
-		DrawWindowWidgets(w);
+			SetVScrollCount(w, _total_news);
+			DrawWindowWidgets(w);
 
-		if (_total_news == 0) break;
-		show = min(_total_news, w->vscroll.cap);
+			if (_total_news == 0) break;
+			NewsID show = min(_total_news, w->vscroll.cap);
 
-		for (p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
-			/* get news in correct order */
-			const NewsItem *ni = &_news_items[getNews(p)];
+			for (NewsID p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
+				/* get news in correct order */
+				const NewsItem *ni = &_news_items[getNews(p)];
 
-			SetDParam(0, ni->date);
-			DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
+				SetDParam(0, ni->date);
+				DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
 
-			DrawNewsString(82, y, TC_WHITE, ni, w->width - 95);
-			y += 12;
-		}
-		break;
-	}
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 3: {
-			int y = (e->we.click.pt.y - 19) / 12;
-			NewsID p = getNews(y + w->vscroll.pos);
-
-			if (p == INVALID_NEWS) break;
-
-			ShowNewsMessage(p);
+				DrawNewsString(82, y, TC_WHITE, ni, w->width - 95);
+				y += 12;
+			}
 			break;
 		}
-		}
-		break;
 
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 12;
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 3) {
+				int y = (e->we.click.pt.y - 19) / 12;
+				NewsID p = getNews(y + w->vscroll.pos);
+
+				if (p != INVALID_NEWS) ShowNewsMessage(p);
+			}
+			break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 12;
+			break;
 	}
 }
 
@@ -772,10 +752,8 @@ static const WindowDesc _message_history_desc = {
 /** Display window with news messages history */
 void ShowMessageHistory()
 {
-	Window *w;
-
 	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
-	w = AllocateWindowDesc(&_message_history_desc);
+	Window *w = AllocateWindowDesc(&_message_history_desc);
 
 	if (w != NULL) {
 		w->vscroll.cap = 10;
@@ -827,11 +805,10 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		case WE_CREATE: {
 			uint32 val = _news_display_opt;
 			uint32 all_val;
-			int i;
 
 			/* Set up the initial disabled buttons in the case of 'off' or 'full' */
 			all_val = val & 0x3;
-			for (i = 0; i < NT_END; i++, val >>= 2) {
+			for (int i = 0; i < NT_END; i++, val >>= 2) {
 				SetMessageButtonStates(w, val & 0x3, i);
 				/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
 				if ((val & 0x3) != all_val) all_val = 0;
@@ -842,7 +819,6 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 
 		case WE_PAINT: {
 			uint32 val = _news_display_opt;
-			int i, y;
 
 			if (_news_ticker_sound) w->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
 
@@ -850,7 +826,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			/* Draw the string of each setting on each button. */
-			for (i = 0, y = 26; i < NT_END; i++, y += 12, val >>= 2) {
+			for (int i = 0, y = 26; i < NT_END; i++, y += 12, val >>= 2) {
 				/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
 				 * which will give centered position */
 				DrawStringCentered(51, y + 1, message_opt[val & 0x3], TC_BLACK);
@@ -880,19 +856,18 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 						SetWindowDirty(w);
 					}
 				} break;
-			} break;
+			}
+			break;
 
-		case WE_DROPDOWN_SELECT: { // Select all settings for newsmessages
-			int i;
-
+		case WE_DROPDOWN_SELECT: // Select all settings for newsmessages
 			WP(w, def_d).data_1 = e->we.dropdown.index;
 
-			for (i = 0; i < NT_END; i++) {
+			for (int i = 0; i < NT_END; i++) {
 				SetMessageButtonStates(w, e->we.dropdown.index, i);
 				SetNewsDisplayValue(i, e->we.dropdown.index);
 			}
 			SetWindowDirty(w);
-		} break;
+			break;
 	}
 }
 
@@ -1007,16 +982,12 @@ void ShowMessageOptions()
 
 void DeleteVehicleNews(VehicleID vid, StringID news)
 {
-	NewsID n;
-
-	for (n = _oldest_news; _latest_news != INVALID_NEWS; n = increaseIndex(n)) {
+	for (NewsID n = _oldest_news; _latest_news != INVALID_NEWS; n = IncreaseIndex(n)) {
 		const NewsItem *ni = &_news_items[n];
 
 		if (ni->flags & NF_VEHICLE &&
 				ni->data_a == vid &&
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
-			Window *w;
-
 			/* If we delete a forced news and it is just before the current news
 			 * then we need to advance to the next news (if any) */
 			if (_forced_news == n) MoveToNextItem();
@@ -1039,27 +1010,27 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			 * We also need an update of the current, forced and visible (open window)
 			 * news's as this shifting could change the items they were pointing to */
 			if (_total_news != 0) {
-				w = FindWindowById(WC_NEWS_WINDOW, 0);
+				Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
 				NewsID visible_news = (w != NULL) ? (NewsID)(WP(w, news_d).ni - _news_items) : INVALID_NEWS;
 
-				for (NewsID i = n;; i = decreaseIndex(i)) {
-					_news_items[i] = _news_items[decreaseIndex(i)];
+				for (NewsID i = n;; i = DecreaseIndex(i)) {
+					_news_items[i] = _news_items[DecreaseIndex(i)];
 
 					if (i != _latest_news) {
-						if (i == _current_news) _current_news = increaseIndex(_current_news);
-						if (i == _forced_news) _forced_news = increaseIndex(_forced_news);
-						if (i == visible_news) WP(w, news_d).ni = &_news_items[increaseIndex(visible_news)];
+						if (i == _current_news) _current_news = IncreaseIndex(_current_news);
+						if (i == _forced_news) _forced_news = IncreaseIndex(_forced_news);
+						if (i == visible_news) WP(w, news_d).ni = &_news_items[IncreaseIndex(visible_news)];
 					}
 
 					if (i == _oldest_news) break;
 				}
-				_oldest_news = increaseIndex(_oldest_news);
+				_oldest_news = IncreaseIndex(_oldest_news);
 			}
 
 			/*DEBUG(misc, 0, "-cur %3d, old %2d, lat %3d, for %3d, tot %2d",
 			  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
 
-			w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+			Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
 			if (w != NULL) {
 				SetWindowDirty(w);
 				w->vscroll.count = _total_news;
