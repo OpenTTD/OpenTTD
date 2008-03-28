@@ -682,19 +682,8 @@ static const Widget _station_view_widgets[] = {
 {   WIDGETS_END},
 };
 
-/**
- * Draws icons of wainting cargo in the StationView window
- *
- * @param i type of cargo
- * @param waiting number of wainting units
- * @param x x on-screen coordinate where to start with drawing icons
- * @param y y coordinate
- */
-static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
+SpriteID GetCargoSprite(CargoID i)
 {
-	uint num = min((waiting + 5) / 10, width / 10); // maximum is width / 10 icons so it won't overflow
-	if (num == 0) return;
-
 	const CargoSpec *cs = GetCargo(i);
 	SpriteID sprite;
 
@@ -706,6 +695,24 @@ static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
 	}
 
 	if (sprite == 0) sprite = SPR_CARGO_GOODS;
+
+	return sprite;
+}
+
+/**
+ * Draws icons of waiting cargo in the StationView window
+ *
+ * @param i type of cargo
+ * @param waiting number of waiting units
+ * @param x x on-screen coordinate where to start with drawing icons
+ * @param y y coordinate
+ */
+static void DrawCargoIcons(CargoID i, uint waiting, int x, int y, uint width)
+{
+	uint num = min((waiting + 5) / 10, width / 10); // maximum is width / 10 icons so it won't overflow
+	if (num == 0) return;
+
+	SpriteID sprite = GetCargoSprite(i);
 
 	do {
 		DrawSprite(sprite, PAL_NONE, x, y);

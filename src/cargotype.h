@@ -59,6 +59,8 @@ extern CargoSpec _cargo[NUM_CARGO];
 void SetupCargoForClimate(LandscapeID l);
 /* Retrieve cargo details for the given cargo ID */
 const CargoSpec *GetCargo(CargoID c);
+/* Get the cargo icon for a given cargo ID */
+SpriteID GetCargoSprite(CargoID i);
 /* Get the cargo ID with the cargo label */
 CargoID GetCargoIDByLabel(CargoLabel cl);
 CargoID GetCargoIDByBitnum(uint8 bitnum);
