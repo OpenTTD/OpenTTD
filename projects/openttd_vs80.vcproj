@@ -892,6 +892,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\depot_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\direction_func.h"
 				>
 			</File>

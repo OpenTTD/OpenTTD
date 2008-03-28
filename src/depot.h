@@ -6,13 +6,13 @@
 #define DEPOT_H
 
 #include "direction_type.h"
+#include "depot_type.h"
 #include "oldpool.h"
 #include "road_map.h"
 #include "rail_map.h"
 #include "water_map.h"
 #include "station_map.h"
 
-struct Depot;
 DECLARE_OLD_POOL(Depot, Depot, 3, 8000)
 
 struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {

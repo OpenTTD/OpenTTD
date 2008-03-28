@@ -9,7 +9,6 @@
 #endif
 
 // Forward declarations of structs.
-struct Depot;
 struct Waypoint;
 struct Station;
 struct ViewPort;
@@ -26,7 +25,6 @@ typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C
 typedef uint16 StationID;
 static const StationID INVALID_STATION = 0xFFFF;
 typedef uint16 RoadStopID;
-typedef uint16 DepotID;
 typedef uint16 WaypointID;
 typedef uint16 OrderID;
 typedef uint16 SignID;

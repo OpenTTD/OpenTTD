@@ -131,6 +131,7 @@ debug.h
 video/dedicated_v.h
 ai/default/default.h
 depot.h
+depot_type.h
 direction_func.h
 direction_type.h
 music/dmusic.h

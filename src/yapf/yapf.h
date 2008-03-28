@@ -6,6 +6,7 @@
 #define  YAPF_H
 
 #include "../debug.h"
+#include "../depot_type.h"
 
 /** Finds the best path for given ship.
  * @param v        the ship that needs to find a path
