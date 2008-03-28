@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "currency.h"
-#include "namegen.h"
+#include "namegen_func.h"
 #include "station.h"
 #include "town.h"
 #include "screenshot.h"

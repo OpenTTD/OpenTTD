@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "namegen.h"
+#include "namegen_func.h"
 #include "string_func.h"
 
 #include "table/namegen.h"
