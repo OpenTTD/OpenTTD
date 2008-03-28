@@ -3,6 +3,8 @@
 #ifndef TEXTEFF_HPP
 #define TEXTEFF_HPP
 
+#include "gfx_type.h"
+
 /**
  * Text effect modes.
  */

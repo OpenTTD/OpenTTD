@@ -101,4 +101,6 @@ static inline uint GetVehicleListHeight(VehicleType type)
 /* Unified window procedure */
 void ShowVehicleViewWindow(const Vehicle *v);
 
+Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
+
 #endif /* VEHICLE_GUI_H */

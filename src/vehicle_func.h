@@ -50,8 +50,6 @@ StringID VehicleInTheWayErrMsg(const Vehicle* v);
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_crashed = false);
 Vehicle *GetVehicleTunnelBridge(TileIndex tile, TileIndex endtile);
 
-Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
-
 void DecreaseVehicleValue(Vehicle *v);
 void CheckVehicleBreakdown(Vehicle *v);
 void AgeVehicle(Vehicle *v);

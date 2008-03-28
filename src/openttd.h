@@ -10,8 +10,6 @@
 
 // Forward declarations of structs.
 struct Waypoint;
-struct ViewPort;
-struct DrawPixelInfo;
 typedef byte LandscapeID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
