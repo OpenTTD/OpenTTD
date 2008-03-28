@@ -14,8 +14,6 @@ typedef byte LandscapeID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 
-typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
-
 /* IDs used in Pools */
 typedef uint16 WaypointID;
 typedef uint16 EngineRenewID;

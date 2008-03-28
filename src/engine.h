@@ -263,6 +263,8 @@ static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
 	return &_road_vehicle_info[e - ROAD_ENGINES_INDEX];
 }
 
+typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
+
 /* Engine list manipulators - current implementation is only C wrapper of CBlobT<EngineID> class (helpers.cpp) */
 void EngList_Create(EngineList *el);            ///< Creates engine list
 void EngList_Destroy(EngineList *el);           ///< Deallocate and destroy engine list
