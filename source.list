@@ -206,6 +206,7 @@ video/null_v.h
 oldpool.h
 openttd.h
 order.h
+order_type.h
 core/overflowsafe_type.hpp
 pathfind.h
 player_base.h

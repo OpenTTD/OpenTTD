@@ -361,15 +361,6 @@ struct smallmap_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
 
-struct refit_d {
-	int sel;
-	struct RefitOption *cargo;
-	struct RefitList *list;
-	uint length;
-	VehicleOrderID order;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
-
 struct vp_d {
 	VehicleID follow_vehicle;
 	int32 scrollpos_x;
