@@ -1,12 +1,11 @@
 //Microsoft Developer Studio generated resource script.
 // $Id$
 //
-#define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "resource.h"
+#define APSTUDIO_READONLY_SYMBOLS
 #define APSTUDIO_HIDDEN_SYMBOLS
 #include "windows.h"
 #undef APSTUDIO_HIDDEN_SYMBOLS
