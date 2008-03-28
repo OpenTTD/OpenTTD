@@ -101,6 +101,7 @@ widget.cpp
 window.cpp
 
 # Header Files
+ai/ai.h
 aircraft.h
 airport.h
 airport_movement.h
@@ -128,6 +129,7 @@ date_func.h
 date_type.h
 debug.h
 video/dedicated_v.h
+ai/default/default.h
 depot.h
 direction_func.h
 direction_type.h
@@ -157,10 +159,15 @@ industry.h
 industry_type.h
 landscape.h
 livery.h
+lzoconf.h
+map_func.h
+map_type.h
 core/math_func.hpp
 md5.h
+minilzo.h
 mixer.h
 music.h
+namegen_func.h
 network/network.h
 network/network_client.h
 network/network_data.h
@@ -184,10 +191,12 @@ newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h
 newgrf_storage.h
+newgrf_string_type.h
 newgrf_text.h
 newgrf_town.h
 newgrf_townname.h
-news.h
+news_func.h
+news_type.h
 npf.h
 music/null_m.h
 sound/null_s.h
@@ -215,6 +224,7 @@ road_type.h
 roadveh.h
 saveload.h
 screenshot.h
+sdl.h
 sound/sdl_s.h
 video/sdl_v.h
 settings_func.h
@@ -253,6 +263,7 @@ track_type.h
 train.h
 transparency.h
 transparency_gui.h
+ai/trolly/trolly.h
 tunnelbridge.h
 unmovable.h
 variables.h
@@ -260,15 +271,33 @@ vehicle_base.h
 vehicle_func.h
 vehicle_gui.h
 vehicle_type.h
+viewport_func.h
+viewport_type.h
 waypoint.h
 music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
+water.h
+win32.h
 window_func.h
 window_gui.h
 window_type.h
 zoom_func.h
 zoom_type.h
+#if WIN32
+#else
+music/bemidi.h
+music/extmidi.h
+music/libtimidity.h
+music/os2_m.h
+music/qtmidi.h
+os/macosx/macos.h
+os/macosx/osx_stdafx.h
+os/macosx/splash.h
+sound/cocoa_s.h
+video/cocoa/cocoa_keys.h
+video/cocoa/cocoa_v.h
+#end
 
 # GUI Source Code
 aircraft_gui.cpp
@@ -337,16 +366,20 @@ water_cmd.cpp
 table/ai_rail.h
 table/animcursors.h
 table/autorail.h
+table/bridge_land.h
 table/build_industry.h
 table/cargo_const.h
 table/clear_land.h
+table/control_codes.h
 table/elrail_data.h
 table/engines.h
+table/files.h
 table/genland.h
 table/industry_land.h
 table/landscape_sprite.h
 table/namegen.h
 table/palettes.h
+table/railtypes.h
 table/road_land.h
 table/roadveh_movement.h
 table/sprites.h
@@ -356,6 +389,7 @@ table/town_land.h
 table/track_land.h
 table/train_cmd.h
 table/tree_land.h
+table/unicode.h
 table/unmovable_land.h
 table/water_land.h
 
