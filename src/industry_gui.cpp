@@ -418,7 +418,6 @@ enum IndustryViewWidgets {
 	IVW_INFO,
 	IVW_GOTO,
 	IVW_SPACER,
-	IVW_RESIZE_WIDGET,
 };
 
 /** Information to store about the industry window */
@@ -434,71 +433,10 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(indview_d));
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: {
-		/* Count the number of lines that we need to resize the GUI with */
-		const Industry *i = GetIndustry(w->window_number);
-		const IndustrySpec *ind = GetIndustrySpec(i->type);
-		int lines = -3;
-		bool first = true;
-		bool has_accept = false;
-
-		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] == CT_INVALID) continue;
-				has_accept = true;
-				if (first) {
-					lines++;
-					first = false;
-				}
-				lines++;
-			}
-		} else {
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] == CT_INVALID) continue;
-				has_accept = true;
-				lines++;
-				break;
-			}
-		}
-
-		first = true;
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (i->produced_cargo[j] == CT_INVALID) continue;
-			if (first) {
-				if (has_accept) lines++;
-				lines++;
-				first = false;
-			}
-			lines++;
-		}
-
-		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
-			lines += 2;
-		} else {
-			/* Remove the resizing option from the widgets. Do it before the Hiding since it will be overwritten */
-			for (byte j = IVW_INFO; j <= IVW_RESIZE_WIDGET; j++) {
-				w->widget[j].display_flags = RESIZE_NONE;
-			}
-			/* Hide the resize button and enlarge the spacer so it will take its place */
-			w->HideWidget(IVW_RESIZE_WIDGET);
-			w->widget[IVW_SPACER].right = w->widget[IVW_RESIZE_WIDGET].right;
-		}
-
-		lines *= 10;
-
-		/* Resize the widgets for the new size, given by the addition of cargos */
-		for (byte j = IVW_INFO; j <= IVW_RESIZE_WIDGET; j++) {
-			if (j != IVW_INFO) w->widget[j].top += lines;
-			w->widget[j].bottom += lines;
-		}
-		w->height += lines;
-		w->resize.height += lines;
-	} break;
-
 	case WE_PAINT: {
 		Industry *i = GetIndustry(w->window_number);
 		const IndustrySpec *ind = GetIndustrySpec(i->type);
-		int y = 111;
+		int y = w->widget[IVW_INFO].top + 1;
 		bool first = true;
 		bool has_accept = false;
 
@@ -572,10 +510,17 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 					PrepareTextRefStackUsage(6);
 					/* Use all the available space left from where we stand up to the end of the window */
-					DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, wi->bottom - y);
+					y += DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, -1);
 					StopTextRefStackUsage();
 				}
 			}
+		}
+
+		if (y > w->widget[IVW_INFO].bottom) {
+			SetWindowDirty(w);
+			ResizeWindowForWidget(w, IVW_INFO, 0, y - w->widget[IVW_INFO].top);
+			SetWindowDirty(w);
+			return;
 		}
 
 		DrawWindowViewport(w);
@@ -661,18 +606,17 @@ static const Widget _industry_view_widgets[] = {
 {  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
 {      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
 {      WWT_INSET,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
-{      WWT_PANEL, RESIZE_BOTTOM,     9,     0,   259,   106,   147, 0x0,               STR_NULL},                         // IVW_INFO
-{ WWT_PUSHTXTBTN,     RESIZE_TB,     9,     0,   129,   148,   159, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
-{      WWT_PANEL,     RESIZE_TB,     9,   130,   247,   148,   159, 0x0,               STR_NULL},                         // IVW_SPACER
-{  WWT_RESIZEBOX,     RESIZE_TB,     9,   248,   259,   148,   159, 0x0,               STR_RESIZE_BUTTON},                // IVW_RESIZE_WIDGET
+{      WWT_PANEL, RESIZE_BOTTOM,     9,     0,   259,   106,   107, 0x0,               STR_NULL},                         // IVW_INFO
+{ WWT_PUSHTXTBTN,     RESIZE_TB,     9,     0,   129,   108,   119, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
+{      WWT_PANEL,     RESIZE_TB,     9,   130,   259,   108,   119, 0x0,               STR_NULL},                         // IVW_SPACER
 {   WIDGETS_END},
 };
 
 /** Window definition of the view industy gui */
 static const WindowDesc _industry_view_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 160, 260, 160,
+	WDP_AUTO, WDP_AUTO, 260, 120, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_industry_view_widgets,
 	IndustryViewWndProc
 };
