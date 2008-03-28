@@ -548,6 +548,9 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 	uint num_vehicles = 1 + CountArticulatedParts(engine, false);
 
 	if (!(flags & DC_QUERY_COST)) {
+		/* Check that the wagon can drive on the track in question */
+		if (!IsCompatibleRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+
 		/* Allow for the wagon and the articulated parts, plus one to "terminate" the list. */
 		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
 		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
@@ -702,10 +705,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	const RailVehicleInfo *rvi = RailVehInfo(p1);
 
-	/* Check if depot and new engine uses the same kind of tracks */
-	/* We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
-	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
-
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
 	CommandCost value = EstimateTrainCost(p1, rvi);
@@ -715,6 +714,10 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		CountArticulatedParts(p1, false);
 
 	if (!(flags & DC_QUERY_COST)) {
+		/* Check if depot and new engine uses the same kind of tracks *
+		 * We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
+		if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+
 		/* Allow for the dual-heads and the articulated parts, plus one to "terminate" the list. */
 		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
 		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
