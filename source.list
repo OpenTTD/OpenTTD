@@ -222,6 +222,7 @@ settings_internal.h
 settings_type.h
 ship.h
 signal_func.h
+signal_type.h
 signs.h
 slope_func.h
 slope_type.h

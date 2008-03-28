@@ -10,6 +10,7 @@
 #include "direction_func.h"
 #include "track_func.h"
 #include "tile_map.h"
+#include "signal_type.h"
 
 
 /** Different types of Rail-related tiles */
@@ -201,14 +202,6 @@ static inline WaypointID GetWaypointIndex(TileIndex t)
 	return (WaypointID)_m[t].m2;
 }
 
-/** Type of signal, i.e. how does the signal behave? */
-enum SignalType {
-	SIGTYPE_NORMAL  = 0, ///< normal signal
-	SIGTYPE_ENTRY   = 1, ///< presignal block entry
-	SIGTYPE_EXIT    = 2, ///< presignal block exit
-	SIGTYPE_COMBO   = 3  ///< presignal inter-block
-};
-
 static inline SignalType GetSignalType(TileIndex t, Track track)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
@@ -243,12 +236,6 @@ static inline void CycleSignalSide(TileIndex t, Track track)
 	if (--sig == 0) sig = 3;
 	SB(_m[t].m3, pos, 2, sig);
 }
-
-/** Variant of the signal, i.e. how does the signal look? */
-enum SignalVariant {
-	SIG_ELECTRIC  = 0, ///< Light signal
-	SIG_SEMAPHORE = 1  ///< Old-fashioned semaphore signal
-};
 
 static inline SignalVariant GetSignalVariant(TileIndex t, Track track)
 {

@@ -1256,6 +1256,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\signal_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\signs.h"
 				>
 			</File>
