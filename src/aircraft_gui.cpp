@@ -14,6 +14,7 @@
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "gfx_func.h"
+#include "order_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

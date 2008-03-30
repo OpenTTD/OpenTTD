@@ -18,6 +18,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+#include "order_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

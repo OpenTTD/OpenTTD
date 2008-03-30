@@ -38,6 +38,7 @@
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
 #include "settings_type.h"
+#include "order_func.h"
 
 #include "table/strings.h"
 

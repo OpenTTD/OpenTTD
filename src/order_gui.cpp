@@ -20,7 +20,6 @@
 #include "vehicle_gui.h"
 #include "timetable.h"
 #include "cargotype.h"
-#include "order.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"

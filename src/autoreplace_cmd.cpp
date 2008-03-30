@@ -14,7 +14,6 @@
 #include "aircraft.h"
 #include "cargotype.h"
 #include "group.h"
-#include "order.h"
 #include "strings_func.h"
 #include "command_func.h"
 #include "vehicle_func.h"

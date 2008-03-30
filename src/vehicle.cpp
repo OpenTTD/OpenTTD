@@ -34,7 +34,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "group.h"
-#include "order.h"
+#include "order_func.h"
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "functions.h"

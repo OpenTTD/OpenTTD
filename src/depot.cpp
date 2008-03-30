@@ -7,7 +7,7 @@
 #include "depot.h"
 #include "landscape.h"
 #include "saveload.h"
-#include "order.h"
+#include "order_func.h"
 #include "window_func.h"
 
 #include "table/strings.h"

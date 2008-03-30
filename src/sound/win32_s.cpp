@@ -59,7 +59,7 @@ const char *SoundDriver_Win32::Start(const char* const* parm)
 	wfex.nBlockAlign = (wfex.nChannels * wfex.wBitsPerSample) / 8;
 	wfex.nAvgBytesPerSec = wfex.nSamplesPerSec * wfex.nBlockAlign;
 
-	_bufsize = GetDriverParamInt(parm, "bufsize", 1024);
+	_bufsize = GetDriverParamInt(parm, "bufsize", 2048);
 
 	if (waveOutOpen(&_waveout, WAVE_MAPPER, &wfex, (DWORD_PTR)&waveOutProc, 0, CALLBACK_FUNCTION) != MMSYSERR_NOERROR)
 		return "waveOutOpen failed";

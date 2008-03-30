@@ -17,7 +17,7 @@
 #include "date_type.h"
 #include "player_type.h"
 #include "oldpool.h"
-#include "order.h"
+#include "order_base.h"
 #include "cargopacket.h"
 #include "texteff.hpp"
 #include "group_type.h"

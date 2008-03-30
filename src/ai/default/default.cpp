@@ -32,6 +32,7 @@
 #include "../../settings_type.h"
 #include "default.h"
 #include "../../tunnelbridge.h"
+#include "../../order_func.h"
 
 #include "../../table/ai_rail.h"
 

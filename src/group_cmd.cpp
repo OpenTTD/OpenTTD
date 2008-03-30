@@ -21,6 +21,7 @@
 #include "autoreplace_func.h"
 #include "string_func.h"
 #include "player_func.h"
+#include "order_func.h"
 
 #include "table/strings.h"
 

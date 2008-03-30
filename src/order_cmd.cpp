@@ -4,7 +4,8 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "order.h"
+#include "order_base.h"
+#include "order_func.h"
 #include "airport.h"
 #include "depot.h"
 #include "waypoint.h"

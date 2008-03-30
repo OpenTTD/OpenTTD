@@ -22,6 +22,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "player_func.h"
+#include "order_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

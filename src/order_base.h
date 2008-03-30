@@ -1,18 +1,14 @@
 /* $Id$ */
 
-/** @file order.h */
+/** @file order_base.h */
 
-#ifndef ORDER_H
-#define ORDER_H
+#ifndef ORDER_BASE_H
+#define ORDER_BASE_H
 
 #include "order_type.h"
 #include "oldpool.h"
 #include "core/bitmath_func.hpp"
 #include "cargo_type.h"
-#include "vehicle_type.h"
-#include "tile_type.h"
-#include "date_type.h"
-#include "group_type.h"
 
 DECLARE_OLD_POOL(Order, Order, 6, 1000)
 
@@ -45,21 +41,6 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 	void Free();
 	void FreeChain();
 };
-
-struct BackuppedOrders {
-	BackuppedOrders() : order(NULL), name(NULL) { }
-	~BackuppedOrders() { free(order); free(name); }
-
-	VehicleID clone;
-	VehicleOrderID orderindex;
-	GroupID group;
-	Order *order;
-	uint16 service_interval;
-	char *name;
-};
-
-extern TileIndex _backup_orders_tile;
-extern BackuppedOrders _backup_orders_data;
 
 static inline VehicleOrderID GetMaxOrderIndex()
 {
@@ -131,31 +112,7 @@ static inline Order UnpackOrder(uint32 packed)
 	return order;
 }
 
-/* Functions */
-void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order = &_backup_orders_data);
-void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *order = &_backup_orders_data);
-void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);
-void InvalidateVehicleOrder(const Vehicle *v);
-bool VehicleHasDepotOrders(const Vehicle *v);
-void CheckOrders(const Vehicle*);
-void DeleteVehicleOrders(Vehicle *v);
 void AssignOrder(Order *order, Order data);
-bool CheckForValidOrders(const Vehicle* v);
-
 Order UnpackOldOrder(uint16 packed);
-
-#define MIN_SERVINT_PERCENT  5
-#define MAX_SERVINT_PERCENT 90
-#define MIN_SERVINT_DAYS    30
-#define MAX_SERVINT_DAYS   800
-
-/**
- * Get the service interval domain.
- * Get the new proposed service interval for the vehicle is indeed, clamped
- * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
- * @param index proposed service interval
- * @return service interval
- */
-Date GetServiceIntervalClamped(uint index);
 
 #endif /* ORDER_H */
