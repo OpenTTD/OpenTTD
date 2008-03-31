@@ -10,58 +10,66 @@
 #include "core/config.h"
 #include "core/game.h"
 
-// If this line is enable, every frame will have a sync test
-//  this is not needed in normal games. Normal is like 1 sync in 100
-//  frames. You can enable this if you have a lot of desyncs on a certain
-//  game.
-// Remember: both client and server have to be compiled with this
-//  option enabled to make it to work. If one of the two has it disabled
-//  nothing will happen.
+/**
+ * If this line is enable, every frame will have a sync test
+ *  this is not needed in normal games. Normal is like 1 sync in 100
+ *  frames. You can enable this if you have a lot of desyncs on a certain
+ *  game.
+ * Remember: both client and server have to be compiled with this
+ *  option enabled to make it to work. If one of the two has it disabled
+ *  nothing will happen.
+ */
 //#define ENABLE_NETWORK_SYNC_EVERY_FRAME
 
-// In theory sending 1 of the 2 seeds is enough to check for desyncs
-//   so in theory, this next define can be left off.
+/**
+ * In theory sending 1 of the 2 seeds is enough to check for desyncs
+ *   so in theory, this next define can be left off.
+ */
 //#define NETWORK_SEND_DOUBLE_SEED
 
-// How many clients can we have? Like.. MAX_PLAYERS - 1 is the amount of
-//  players that can really play.. so.. a max of 4 spectators.. gives us..
-//  MAX_PLAYERS + 3
-#define MAX_CLIENTS (MAX_PLAYERS + 3)
 
+enum {
+	/**
+	 * How many clients can we have? Like.. MAX_PLAYERS - 1 is the amount of
+	 *  players that can really play.. so.. a max of 4 spectators.. gives us..
+	 *  MAX_PLAYERS + 3
+	 */
+	MAX_CLIENTS = MAX_PLAYERS + 3,
 
-// Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1
-#define MAX_CLIENT_INFO (MAX_CLIENTS + 1)
+	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1 */
+	MAX_CLIENT_INFO = MAX_CLIENTS + 1,
 
-#define MAX_INTERFACES 9
+	/** Maximum number of internet interfaces supported. */
+	MAX_INTERFACES = 9,
 
-
-// How many vehicle/station types we put over the network
-#define NETWORK_VEHICLE_TYPES 5
-#define NETWORK_STATION_TYPES 5
+	/** How many vehicle/station types we put over the network */
+	NETWORK_VEHICLE_TYPES = 5,
+	NETWORK_STATION_TYPES = 5,
+}
 
 struct NetworkPlayerInfo {
-	char company_name[NETWORK_NAME_LENGTH];         // Company name
-	char password[NETWORK_PASSWORD_LENGTH];         // The password for the player
-	Year inaugurated_year;                          // What year the company started in
-	Money company_value;                            // The company value
-	Money money;                                    // The amount of money the company has
-	Money income;                                   // How much did the company earned last year
-	uint16 performance;                             // What was his performance last month?
-	bool use_password;                              // Is there a password
-	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      // How many vehicles are there of this type?
-	uint16 num_station[NETWORK_STATION_TYPES];      // How many stations are there of this type?
-	char players[NETWORK_PLAYERS_LENGTH];           // The players that control this company (Name1, name2, ..)
-	uint16 months_empty;                            // How many months the company is empty
+	char company_name[NETWORK_NAME_LENGTH];         ///< Company name
+	char password[NETWORK_PASSWORD_LENGTH];         ///< The password for the player
+	Year inaugurated_year;                          ///< What year the company started in
+	Money company_value;                            ///< The company value
+	Money money;                                    ///< The amount of money the company has
+	Money income;                                   ///< How much did the company earned last year
+	uint16 performance;                             ///< What was his performance last month?
+	bool use_password;                              ///< Is there a password
+	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      ///< How many vehicles are there of this type?
+	uint16 num_station[NETWORK_STATION_TYPES];      ///< How many stations are there of this type?
+	char players[NETWORK_PLAYERS_LENGTH];           ///< The players that control this company (Name1, name2, ..)
+	uint16 months_empty;                            ///< How many months the company is empty
 };
 
 struct NetworkClientInfo {
-	uint16 client_index;                            // Index of the client (same as ClientState->index)
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];   // Name of the client
-	byte client_lang;                               // The language of the client
-	PlayerID client_playas;                         // As which player is this client playing (PlayerID)
-	uint32 client_ip;                               // IP-address of the client (so he can be banned)
-	Date join_date;                                 // Gamedate the player has joined
-	char unique_id[NETWORK_UNIQUE_ID_LENGTH];       // Every play sends an unique id so we can indentify him
+	uint16 client_index;                            ///< Index of the client (same as ClientState->index)
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
+	byte client_lang;                               ///< The language of the client
+	PlayerID client_playas;                         ///< As which player is this client playing (PlayerID)
+	uint32 client_ip;                               ///< IP-address of the client (so he can be banned)
+	Date join_date;                                 ///< Gamedate the player has joined
+	char unique_id[NETWORK_UNIQUE_ID_LENGTH];       ///< Every play sends an unique id so we can indentify him
 };
 
 enum NetworkJoinStatus {
@@ -75,7 +83,7 @@ enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO,
 };
 
-/* Language ids for server_lang and client_lang. Do NOT modify the order. */
+/** Language ids for server_lang and client_lang. Do NOT modify the order. */
 enum NetworkLanguage {
 	NETLANG_ANY = 0,
 	NETLANG_ENGLISH,

@@ -141,7 +141,7 @@ widgets/dropdown_type.h
 economy_func.h
 economy_type.h
 core/endian_func.hpp
-engine.h
+engine_func.h
 engine_type.h
 core/enum_type.hpp
 fileio.h
@@ -206,7 +206,8 @@ sound/null_s.h
 video/null_v.h
 oldpool.h
 openttd.h
-order.h
+order_base.h
+order_func.h
 order_type.h
 core/overflowsafe_type.hpp
 pathfind.h
@@ -244,7 +245,8 @@ sound_func.h
 sound_type.h
 sprite.h
 spritecache.h
-station.h
+station_base.h
+station_func.h
 station_gui.h
 station_type.h
 stdafx.h

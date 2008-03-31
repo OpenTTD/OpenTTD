@@ -932,7 +932,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\engine.h"
+				RelativePath=".\..\src\engine_func.h"
 				>
 			</File>
 			<File
@@ -1192,7 +1192,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\order.h"
+				RelativePath=".\..\src\order_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\order_func.h"
 				>
 			</File>
 			<File
@@ -1344,7 +1348,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\station.h"
+				RelativePath=".\..\src\station_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\station_func.h"
 				>
 			</File>
 			<File
