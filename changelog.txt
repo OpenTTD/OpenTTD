@@ -1,5 +1,6 @@
-0.6.0???? (2008-03-??)
+0.6.0 (2008-04-01)
 ------------------------------------------------------------------------
+- Fix: Final formatting of some string codes from NewGRFs was not done correctly [FS#1889] (r12488)
 - Fix: Timetable times for aircraft were always doubled [FS#1883] (r12477)
 - Fix: Remove broken endian-dependent code and unnecessary rgb to bgr swapping [FS#1880] (r12453)
 - Fix: Do not 'disable' the drawing of autorail overlays when the tile is 'error'-marked (red pulsating selection) [FS#1871] (r12439)

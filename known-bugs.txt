@@ -11,10 +11,14 @@ by the number below on http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version of /trunk.
 
-Bugs for 0.6.0-RC1
+Bugs for 0.6.0
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+- 1891	Go to depot for servicing is forgotten
+- 1890	Airplanes copy helipcopters goto heliport order
+- 1885	Almost all unserved industries die in big maps
+- 1868	In depot, cannot move wagon from another line before first wagon in a wagon-only line
 - 1858	Industry legend in small map overwrites buttons
 - 1852	Minor tram reversing glitches
 - 1802	Path with space in configure fails
