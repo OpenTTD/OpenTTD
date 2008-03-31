@@ -21,7 +21,7 @@
 #include "map_func.h"
 #include "date_func.h"
 #include "core/random_func.hpp"
-#include "engine.h"
+#include "engine_func.h"
 #include "settings_type.h"
 #include "newgrf_storage.h"
 #include "water.h"

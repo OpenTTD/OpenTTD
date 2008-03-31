@@ -27,7 +27,7 @@
 #include "../../town.h"
 #include "../../industry.h"
 #include "../../station_base.h"
-#include "../../engine.h"
+#include "../../engine_func.h"
 #include "../../gui.h"
 #include "../../depot.h"
 #include "../../vehicle_base.h"

@@ -11,7 +11,6 @@
 #include "roadveh.h"
 #include "station_map.h"
 #include "timetable.h"
-#include "engine.h"
 #include "command_func.h"
 #include "station_base.h"
 #include "news_func.h"

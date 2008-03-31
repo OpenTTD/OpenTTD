@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "oldpool.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"

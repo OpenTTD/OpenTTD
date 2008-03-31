@@ -34,6 +34,7 @@
 #include "signal_func.h"
 #include "tunnelbridge.h"
 #include "player_base.h"
+#include "engine_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

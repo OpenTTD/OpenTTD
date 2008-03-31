@@ -7,7 +7,7 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "gfx_func.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "command_func.h"
 #include "economy_func.h"
 #include "news_func.h"

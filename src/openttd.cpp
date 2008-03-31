@@ -28,7 +28,6 @@
 #include "town.h"
 #include "industry.h"
 #include "news_func.h"
-#include "engine.h"
 #include "fileio.h"
 #include "fios.h"
 #include "airport.h"

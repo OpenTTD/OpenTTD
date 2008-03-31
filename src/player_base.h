@@ -8,7 +8,7 @@
 #include "road_type.h"
 #include "rail_type.h"
 #include "date_type.h"
-#include "engine.h"
+#include "engine_type.h"
 #include "livery.h"
 #include "autoreplace_type.h"
 #include "economy_type.h"

@@ -8,7 +8,7 @@
 #include "station_map.h"
 #include "station_base.h"
 #include "vehicle_base.h"
-#include "engine.h"
+#include "engine_func.h"
 
 /** An aircraft can be one ot those types */
 enum AircraftSubType {

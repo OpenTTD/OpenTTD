@@ -7,7 +7,6 @@
 #include "aircraft.h"
 #include "debug.h"
 #include "gui.h"
-#include "engine.h"
 #include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"

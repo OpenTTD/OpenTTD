@@ -14,7 +14,6 @@
 #include "town.h"
 #include "news_func.h"
 #include "network/network.h"
-#include "engine.h"
 #include "network/network_data.h"
 #include "variables.h"
 #include "vehicle_gui.h"

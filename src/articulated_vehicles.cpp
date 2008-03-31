@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "articulated_vehicles.h"
-#include "engine.h"
 #include "train.h"
 #include "roadveh.h"
 #include "newgrf_callbacks.h"

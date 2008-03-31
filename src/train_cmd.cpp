@@ -18,7 +18,7 @@
 #include "npf.h"
 #include "station_base.h"
 #include "news_func.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "player_func.h"
 #include "player_base.h"
 #include "depot.h"

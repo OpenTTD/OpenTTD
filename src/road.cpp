@@ -9,7 +9,7 @@
 #include "genworld.h"
 #include "player_func.h"
 #include "player_base.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "settings_type.h"
 #include "date_func.h"
 

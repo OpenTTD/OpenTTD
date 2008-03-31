@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "engine.h"
 #include "player_base.h"
 #include "player_func.h"
 #include "command_func.h"

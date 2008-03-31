@@ -5,7 +5,7 @@
 #ifndef NEWGRF_STATION_H
 #define NEWGRF_STATION_H
 
-#include "engine.h"
+#include "engine_type.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_cargo.h"
 #include "tile_type.h"

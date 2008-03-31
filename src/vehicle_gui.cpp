@@ -6,7 +6,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "player_func.h"
-#include "engine.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"

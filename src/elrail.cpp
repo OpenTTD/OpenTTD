@@ -65,6 +65,7 @@
 #include "vehicle_func.h"
 #include "player_base.h"
 #include "tunnelbridge.h"
+#include "engine_func.h"
 
 #include "table/sprites.h"
 #include "table/elrail_data.h"

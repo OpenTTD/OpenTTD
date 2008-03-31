@@ -19,6 +19,7 @@
 #include "gfx_func.h"
 #include "player_func.h"
 #include "widgets/dropdown_func.h"
+#include "engine_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

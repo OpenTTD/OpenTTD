@@ -8,7 +8,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
-#include "engine.h"
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "train.h"

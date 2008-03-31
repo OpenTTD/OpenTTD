@@ -17,7 +17,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "pathfind.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "town.h"
 #include "sprite.h"
 #include "depot.h"

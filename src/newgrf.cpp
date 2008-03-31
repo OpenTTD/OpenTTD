@@ -9,7 +9,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "fileio.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "spritecache.h"
 #include "sprite.h"
 #include "newgrf.h"

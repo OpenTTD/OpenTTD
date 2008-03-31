@@ -17,7 +17,7 @@
 #include "variables.h"
 #include "functions.h"
 #include "sound_func.h"
-#include "station.h"
+#include "station_base.h"
 #include "unmovable_map.h"
 #include "textbuf_gui.h"
 #include "genworld.h"

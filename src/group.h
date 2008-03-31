@@ -9,7 +9,7 @@
 #include "oldpool.h"
 #include "player_type.h"
 #include "vehicle_type.h"
-#include "engine.h"
+#include "engine_type.h"
 
 DECLARE_OLD_POOL(Group, Group, 5, 2047)
 

@@ -4,7 +4,7 @@
  */
 #include "stdafx.h"
 #include "openttd.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "player_func.h"
 #include "player_gui.h"
 #include "town.h"
@@ -14,7 +14,6 @@
 #include "network/network.h"
 #include "network/network_internal.h"
 #include "variables.h"
-#include "engine.h"
 #include "ai/ai.h"
 #include "player_face.h"
 #include "group.h"

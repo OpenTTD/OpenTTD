@@ -9,7 +9,6 @@
 #include "industry.h"
 #include "player_func.h"
 #include "player_base.h"
-#include "engine.h"
 #include "aircraft.h"
 #include "roadveh.h"
 #include "ship.h"

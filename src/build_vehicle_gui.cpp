@@ -13,7 +13,6 @@
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
-#include "engine.h"
 #include "player_func.h"
 #include "depot.h"
 #include "airport.h"

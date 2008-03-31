@@ -11,7 +11,6 @@
 #include "../../roadveh.h"
 #include "../../station_map.h"
 #include "../../tunnel_map.h"
-#include "../../engine.h"
 #include "../../command_func.h"
 #include "../../town.h"
 #include "../../industry.h"

@@ -9,7 +9,7 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "command_func.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "screenshot.h"
 #include "newgrf.h"
 #include "network/network.h"

@@ -8,7 +8,6 @@
 #include "landscape.h"
 #include "news_func.h"
 #include "saveload.h"
-#include "engine.h"
 #include "vehicle_gui.h"
 #include "variables.h"
 #include "ai/ai.h"

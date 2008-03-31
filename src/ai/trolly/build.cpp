@@ -6,7 +6,7 @@
 #include "../../road_map.h"
 #include "../../command_func.h"
 #include "trolly.h"
-#include "../../engine.h"
+#include "../../engine_func.h"
 #include "../../variables.h"
 #include "../../bridge.h"
 #include "../../vehicle_func.h"

@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "tile_map.h"
-#include "station.h"
+#include "station_type.h"
 #include "gui.h"
 #include "terraform_gui.h"
 #include "window_gui.h"

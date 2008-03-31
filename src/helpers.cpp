@@ -5,7 +5,7 @@
 #include "stdafx.h"
 
 #include "openttd.h"
-#include "engine.h"
+#include "engine_func.h"
 
 #include <new>
 #include "misc/blob.hpp"

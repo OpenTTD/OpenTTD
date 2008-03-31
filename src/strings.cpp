@@ -36,6 +36,7 @@
 #include "fios.h"
 #include "settings_type.h"
 #include "video/video_driver.hpp"
+#include "engine_func.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"

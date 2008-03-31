@@ -6,7 +6,7 @@
 #define SHIP_H
 
 #include "vehicle_base.h"
-#include "engine.h"
+#include "engine_func.h"
 #include "economy_func.h"
 
 void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
