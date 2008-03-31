@@ -16,7 +16,7 @@
 #include "news_func.h"
 #include "town.h"
 #include "console.h"
-#include "signs.h"
+#include "signs_func.h"
 #include "waypoint.h"
 #include "variables.h"
 #include "train.h"

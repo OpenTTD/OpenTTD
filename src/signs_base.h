@@ -1,14 +1,13 @@
 /* $Id$ */
 
-/** @file signs.h */
+/** @file signs_base.h Base class for signs. */
 
-#ifndef SIGNS_H
-#define SIGNS_H
+#ifndef SIGNS_BASE_H
+#define SIGNS_BASE_H
 
+#include "signs_type.h"
 #include "oldpool.h"
 
-typedef uint16 SignID;
-struct Sign;
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
 struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
@@ -29,13 +28,6 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 
 	inline bool IsValid() const { return this->owner != INVALID_PLAYER; }
 };
-
-enum {
-	INVALID_SIGN = 0xFFFF,
-};
-
-extern SignID _new_sign_id;
-
 
 static inline SignID GetMaxSignIndex()
 {
@@ -61,14 +53,4 @@ static inline bool IsValidSignID(uint index)
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1U < GetSignPoolSize()) ? GetSign(ss->index + 1U) : NULL) if (ss->IsValid())
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
-extern bool _sign_sort_dirty;
-
-void UpdateAllSignVirtCoords();
-void PlaceProc_Sign(TileIndex tile);
-
-/* signs_gui.cpp */
-void ShowRenameSignWindow(const Sign *si);
-
-void ShowSignList();
-
-#endif /* SIGNS_H */
+#endif /* SIGNS_BASE_H */

@@ -1317,7 +1317,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\signs.h"
+				RelativePath=".\..\src\signs_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\signs_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\signs_type.h"
 				>
 			</File>
 			<File

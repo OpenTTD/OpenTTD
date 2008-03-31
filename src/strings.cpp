@@ -20,7 +20,7 @@
 #include "group.h"
 #include "debug.h"
 #include "newgrf_townname.h"
-#include "signs.h"
+#include "signs_base.h"
 #include "newgrf_engine.h"
 #include "spritecache.h"
 #include "fontcache.h"

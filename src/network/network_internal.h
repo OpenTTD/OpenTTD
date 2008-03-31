@@ -45,7 +45,7 @@ enum {
 	/** How many vehicle/station types we put over the network */
 	NETWORK_VEHICLE_TYPES = 5,
 	NETWORK_STATION_TYPES = 5,
-}
+};
 
 struct NetworkPlayerInfo {
 	char company_name[NETWORK_NAME_LENGTH];         ///< Company name

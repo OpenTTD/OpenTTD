@@ -13,7 +13,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "command_func.h"
-#include "signs.h"
+#include "signs_func.h"
 #include "variables.h"
 #include "functions.h"
 #include "sound_func.h"

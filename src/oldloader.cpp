@@ -13,7 +13,7 @@
 #include "roadveh.h"
 #include "ship.h"
 #include "train.h"
-#include "signs.h"
+#include "signs_base.h"
 #include "debug.h"
 #include "depot.h"
 #include "newgrf_config.h"
