@@ -642,7 +642,7 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 		case SCC_NEWGRF_PRINT_SIGNED_WORD:
 		case SCC_NEWGRF_PRINT_SIGNED_BYTE:
 		case SCC_NEWGRF_PRINT_UNSIGNED_WORD:
-			return SCC_NUM;
+			return SCC_COMMA;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
 		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:
