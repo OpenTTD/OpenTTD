@@ -129,15 +129,21 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 	TownDrawHouseLift
 };
 
-uint OriginalTileRandomiser(uint x, uint y)
+/**
+ * Calculate a hash value from a tile position
+ *
+ * @param x The X coordinate
+ * @param y The Y coordinate
+ * @return The hash of the tile
+ */
+uint TileHash2Bit(uint x, uint y)
 {
-	uint variant;
-	variant  = x >> 4;
-	variant ^= x >> 6;
-	variant ^= y >> 4;
-	variant -= y >> 6;
-	variant &= 3;
-	return variant;
+	uint hash = x >> 4;
+	hash ^= x >> 6;
+	hash ^= y >> 4;
+	hash -= y >> 6;
+	hash &= 3;
+	return hash;
 }
 
 /**
@@ -175,7 +181,7 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 
 	/* Retrieve pointer to the draw town tile struct */
-	dcts = &_town_draw_tile_data[house_id << 4 | OriginalTileRandomiser(ti->x, ti->y) << 2 | GetHouseBuildingStage(ti->tile)];
+	dcts = &_town_draw_tile_data[house_id << 4 | TileHash2Bit(ti->x, ti->y) << 2 | GetHouseBuildingStage(ti->tile)];
 
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 

@@ -314,7 +314,7 @@ extern const Town **_town_sort;
 extern Town *_cleared_town;
 extern int _cleared_town_rating;
 
-uint OriginalTileRandomiser(uint x, uint y);
+uint TileHash2Bit(uint x, uint y);
 void ResetHouses();
 
 void ClearTownHouse(Town *t, TileIndex tile);

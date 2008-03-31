@@ -216,7 +216,7 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 
 	switch (variable) {
 		/* Construction stage. */
-		case 0x40: return (IsTileType(tile, MP_HOUSE) ? GetHouseBuildingStage(tile) : 0) | OriginalTileRandomiser(TileX(tile), TileY(tile)) << 2;
+		case 0x40: return (IsTileType(tile, MP_HOUSE) ? GetHouseBuildingStage(tile) : 0) | TileHash2Bit(TileX(tile), TileY(tile)) << 2;
 
 		/* Building age. */
 		case 0x41: return Clamp(_cur_year - GetHouseConstructionYear(tile), 0, 0xFF);
@@ -340,7 +340,7 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 						pal = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
 					}
 				} else {
-					pal = hs->random_colour[OriginalTileRandomiser(ti->x, ti->y)] + PALETTE_RECOLOR_START;
+					pal = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOR_START;
 				}
 			}
 		} else {
