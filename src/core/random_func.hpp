@@ -23,10 +23,6 @@
 //#define RANDOM_DEBUG
 
 
-// Enable this to produce higher quality random numbers.
-// Doesn't work with network yet.
-// #define MERSENNE_TWISTER
-
 /**
  * Structure to encapsulate the pseudo random number generators.
  */
