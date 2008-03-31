@@ -11,7 +11,11 @@
 #include "cargopacket.h"
 #include "cargo_type.h"
 #include "town_type.h"
-#include "newgrf_station.h"
+#include "strings_type.h"
+#include "date_type.h"
+#include "vehicle_type.h"
+#include "player_type.h"
+#include "core/geometry_type.hpp"
 #include <list>
 
 DECLARE_OLD_POOL(Station, Station, 6, 1000)

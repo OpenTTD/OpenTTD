@@ -11,7 +11,6 @@
 #include "station_func.h"
 #include "station_base.h"
 #include "rail.h"
-#include "newgrf_station.h"
 
 typedef byte StationGfx;
 

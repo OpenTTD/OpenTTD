@@ -22,6 +22,7 @@
 #include "window_func.h"
 #include "settings_type.h"
 #include "string_func.h"
+#include "newgrf_cargo.h"
 
 #include "table/strings.h"
 

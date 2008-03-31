@@ -10,6 +10,7 @@ typedef uint16 RoadStopID;
 
 struct Station;
 struct RoadStop;
+struct StationSpec;
 
 static const StationID INVALID_STATION = 0xFFFF;
 

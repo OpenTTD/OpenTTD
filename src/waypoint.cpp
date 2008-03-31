@@ -31,6 +31,7 @@
 #include "signal_func.h"
 #include "player_func.h"
 #include "settings_type.h"
+#include "newgrf_station.h"
 
 #include "table/strings.h"
 

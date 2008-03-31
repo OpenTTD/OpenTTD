@@ -25,6 +25,7 @@
 #include "newgrf_house.h"
 #include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_station.h"
 #include "cargotype.h"
 #include "industry.h"
 #include "newgrf_canal.h"

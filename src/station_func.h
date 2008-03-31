@@ -7,6 +7,7 @@
 
 #include "station_type.h"
 #include "sprite.h"
+#include "rail_type.h"
 #include "road_type.h"
 #include "tile_type.h"
 #include "cargo_type.h"
@@ -39,5 +40,12 @@ RoadStop * AllocateRoadStop();
 void ClearSlot(Vehicle *v);
 
 void DeleteOilRig(TileIndex t);
+
+/* Check if a rail station tile is traversable. */
+bool IsStationTileBlocked(TileIndex tile);
+
+/* Check if a rail station tile is electrifiable. */
+bool IsStationTileElectrifiable(TileIndex tile);
+
 
 #endif /* STATION_FUNC_H */

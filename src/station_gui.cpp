@@ -24,6 +24,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "widgets/dropdown_func.h"
+#include "newgrf_cargo.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -7,10 +7,15 @@
 
 #include "town_type.h"
 #include "industry_type.h"
-#include "newgrf_storage.h"
 #include "core/bitmath_func.hpp"
 #include "gfx_type.h"
+#include "engine_type.h"
+#include "tile_type.h"
+
+#include "newgrf_cargo.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_generic.h"
+#include "newgrf_storage.h"
 
 /**
  * Gets the value of a so-called newgrf "register".

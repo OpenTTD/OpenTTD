@@ -6,6 +6,7 @@
 #define NEWGRF_SOUND_H
 
 #include "sound_type.h"
+#include "tile_type.h"
 
 enum VehicleSoundEvent {
 	VSE_START        = 1,

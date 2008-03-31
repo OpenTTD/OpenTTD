@@ -40,6 +40,7 @@
 #include "string_func.h"
 #include "player_gui.h"
 #include "settings_type.h"
+#include "newgrf_cargo.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

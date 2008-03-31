@@ -9,7 +9,7 @@
 #include "newgrf_config.h"
 #include "cargotype.h"
 #include "industry_type.h"
-#include "newgrf_station.h"
+#include "station_type.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,

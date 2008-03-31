@@ -19,6 +19,7 @@
 #include "core/alloc_func.hpp"
 #include "newgrf_storage.h"
 #include "string_func.h"
+#include "date_type.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"
