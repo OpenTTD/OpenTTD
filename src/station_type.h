@@ -23,6 +23,12 @@ enum StationType {
 	STATION_BUOY
 };
 
+/** Types of RoadStops */
+enum RoadStopType {
+	ROADSTOP_BUS,    ///< A standard stop for buses
+	ROADSTOP_TRUCK   ///< A standard stop for trucks
+};
+
 enum {
 	FACIL_TRAIN      = 0x01,
 	FACIL_TRUCK_STOP = 0x02,

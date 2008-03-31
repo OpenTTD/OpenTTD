@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "station.h"
+#include "station_base.h"
 #include "cargopacket.h"
 #include "saveload.h"
 

@@ -7,7 +7,7 @@
 #include "bridge_map.h"
 #include "debug.h"
 #include "station_map.h"
-#include "station.h"
+#include "station_base.h"
 #include "town.h"
 #include "saveload.h"
 #include "player_func.h"
@@ -100,7 +100,7 @@ Station::~Station()
  */
 RoadStop *Station::GetPrimaryRoadStop(const Vehicle *v) const
 {
-	RoadStop *rs = this->GetPrimaryRoadStop(IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK);
+	RoadStop *rs = this->GetPrimaryRoadStop(IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK);
 
 	for (; rs != NULL; rs = rs->next) {
 		/* The vehicle cannot go to this roadstop (different roadtype) */

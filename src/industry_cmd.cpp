@@ -36,6 +36,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "station_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

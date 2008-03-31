@@ -16,7 +16,7 @@
 #include "../console.h"
 #include "../command_func.h"
 #include "../saveload.h"
-#include "../station.h"
+#include "../station_base.h"
 #include "../variables.h"
 #include "../genworld.h"
 #include "../core/alloc_func.hpp"

@@ -8,7 +8,7 @@
 #include "station_map.h"
 #include "gui.h"
 #include "window_gui.h"
-#include "station.h"
+#include "station_base.h"
 #include "town.h"
 #include "command_func.h"
 #include "viewport_func.h"

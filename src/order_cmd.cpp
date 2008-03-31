@@ -10,7 +10,6 @@
 #include "depot.h"
 #include "waypoint.h"
 #include "command_func.h"
-#include "station.h"
 #include "player_func.h"
 #include "news_func.h"
 #include "saveload.h"

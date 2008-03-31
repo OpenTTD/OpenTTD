@@ -12,7 +12,6 @@
 #include "gui.h"
 #include "articulated_vehicles.h"
 #include "textbuf_gui.h"
-#include "station.h"
 #include "command_func.h"
 #include "engine.h"
 #include "player_func.h"

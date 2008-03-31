@@ -5,11 +5,11 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
-#include "station.h"
 #include "town_type.h"
 #include "newgrf_config.h"
 #include "cargotype.h"
 #include "industry_type.h"
+#include "newgrf_station.h"
 
 enum GrfLoadingStage {
 	GLS_FILESCAN,

@@ -10,7 +10,7 @@
 #include "spritecache.h"
 #include "landscape.h"
 #include "viewport_func.h"
-#include "station.h"
+#include "station_base.h"
 #include "town.h"
 #include "signs.h"
 #include "waypoint.h"
@@ -25,6 +25,7 @@
 #include "vehicle_func.h"
 #include "player_func.h"
 #include "settings_type.h"
+#include "station_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

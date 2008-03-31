@@ -13,7 +13,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "command_func.h"
-#include "station.h"
+#include "town_type.h"
 #include "waypoint.h"
 #include "debug.h"
 #include "variables.h"

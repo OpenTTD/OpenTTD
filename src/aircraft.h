@@ -6,6 +6,7 @@
 #define AIRCRAFT_H
 
 #include "station_map.h"
+#include "station_base.h"
 #include "vehicle_base.h"
 #include "engine.h"
 

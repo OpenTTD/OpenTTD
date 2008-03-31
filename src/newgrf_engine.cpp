@@ -10,7 +10,7 @@
 #include "train.h"
 #include "player_func.h"
 #include "player_base.h"
-#include "station.h"
+#include "station_base.h"
 #include "airport.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"

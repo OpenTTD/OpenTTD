@@ -9,7 +9,6 @@
 #include "station_gui.h"
 #include "terraform_gui.h"
 #include "command_func.h"
-#include "station.h"
 #include "airport.h"
 #include "depot.h"
 #include "sound_func.h"

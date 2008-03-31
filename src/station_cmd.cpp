@@ -11,7 +11,6 @@
 #include "tile_cmd.h"
 #include "landscape.h"
 #include "station_map.h"
-#include "station.h"
 #include "viewport_func.h"
 #include "command_func.h"
 #include "town.h"
@@ -71,7 +70,7 @@ bool IsHangar(TileIndex t)
 	return false;
 }
 
-RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
+RoadStop* GetRoadStopByTile(TileIndex tile, RoadStopType type)
 {
 	const Station* st = GetStationByTile(tile);
 
@@ -82,7 +81,7 @@ RoadStop* GetRoadStopByTile(TileIndex tile, RoadStop::Type type)
 }
 
 
-static uint GetNumRoadStopsInStation(const Station* st, RoadStop::Type type)
+static uint GetNumRoadStopsInStation(const Station* st, RoadStopType type)
 {
 	uint num = 0;
 
@@ -1298,7 +1297,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 }
 
 /**
- * @param truck_station Determines whether a stop is RoadStop::BUS or RoadStop::TRUCK
+ * @param truck_station Determines whether a stop is ROADSTOP_BUS or ROADSTOP_TRUCK
  * @param st The Station to do the whole procedure for
  * @return a pointer to where to link a new RoadStop*
  */
@@ -1397,7 +1396,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	AutoPtrT<RoadStop> rs_auto_delete(road_stop);
 
 	if (st != NULL &&
-			GetNumRoadStopsInStation(st, RoadStop::BUS) + GetNumRoadStopsInStation(st, RoadStop::TRUCK) >= RoadStop::LIMIT) {
+			GetNumRoadStopsInStation(st, ROADSTOP_BUS) + GetNumRoadStopsInStation(st, ROADSTOP_TRUCK) >= RoadStop::LIMIT) {
 		return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
 	}
 
@@ -1442,7 +1441,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->rect.BeforeAddTile(tile, StationRect::ADD_TRY);
 
-		RoadStop::Type rs_type = type ? RoadStop::TRUCK : RoadStop::BUS;
+		RoadStopType rs_type = type ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 		if (is_drive_through) {
 			MakeDriveThroughRoadStop(tile, st->owner, st->index, rs_type, rts, (Axis)p1, town_owned_road);
 		} else {
@@ -1488,10 +1487,10 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	RoadStop *cur_stop;
 	if (is_truck) { // truck stop
 		primary_stop = &st->truck_stops;
-		cur_stop = GetRoadStopByTile(tile, RoadStop::TRUCK);
+		cur_stop = GetRoadStopByTile(tile, ROADSTOP_TRUCK);
 	} else {
 		primary_stop = &st->bus_stops;
-		cur_stop = GetRoadStopByTile(tile, RoadStop::BUS);
+		cur_stop = GetRoadStopByTile(tile, ROADSTOP_BUS);
 	}
 
 	assert(cur_stop != NULL);
@@ -2440,7 +2439,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 					if (!rs->IsFreeBay(side)) return VETSB_CANNOT_ENTER;
 
 					/* Check if the vehicle is stopping at this road stop */
-					if (GetRoadStopType(tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK) &&
+					if (GetRoadStopType(tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 							v->current_order.dest == GetStationIndex(tile)) {
 						SetBit(v->u.road.state, RVS_IS_STOPPING);
 						rs->AllocateDriveThroughBay(side);
@@ -2913,7 +2912,7 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 	} else {
 		if (IsDriveThroughStopTile(tile)) {
 			/* Remove the drive-through road stop */
-			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? RoadStop::TRUCK : RoadStop::BUS, DC_EXEC | DC_BANKRUPT, CMD_REMOVE_ROAD_STOP);
+			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? ROADSTOP_TRUCK : ROADSTOP_BUS, DC_EXEC | DC_BANKRUPT, CMD_REMOVE_ROAD_STOP);
 			assert(IsTileType(tile, MP_ROAD));
 			/* Change owner of tile and all roadtypes */
 			ChangeTileOwner(tile, old_player, new_player);

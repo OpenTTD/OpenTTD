@@ -1,22 +1,18 @@
 /* $Id$ */
 
-/** @file station.h */
+/** @file station_base.h Base classes/functions for stations. */
 
-#ifndef STATION_H
-#define STATION_H
+#ifndef STATION_BASE_H
+#define STATION_BASE_H
 
 #include "station_type.h"
 #include "airport.h"
 #include "oldpool.h"
-#include "sprite.h"
-#include "road_type.h"
-#include "newgrf_station.h"
 #include "cargopacket.h"
 #include "cargo_type.h"
 #include "town_type.h"
-#include "core/geometry_type.hpp"
+#include "newgrf_station.h"
 #include <list>
-#include <set>
 
 DECLARE_OLD_POOL(Station, Station, 6, 1000)
 DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
@@ -47,12 +43,6 @@ struct GoodsEntry {
 
 /** A Stop for a Road Vehicle */
 struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
-	/** Types of RoadStops */
-	enum Type {
-		BUS,                                ///< A standard stop for buses
-		TRUCK                               ///< A standard stop for trucks
-	};
-
 	static const int  cDebugCtorLevel =  5;  ///< Debug level on which Contructor / Destructor messages are printed
 	static const uint LIMIT           = 16;  ///< The maximum amount of roadstops that are allowed at a single station
 	static const uint MAX_BAY_COUNT   =  2;  ///< The maximum number of loading bays
@@ -114,9 +104,9 @@ struct StationRect : public Rect {
 
 struct Station : PoolItem<Station, StationID, &_Station_pool> {
 public:
-	RoadStop *GetPrimaryRoadStop(RoadStop::Type type) const
+	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
 	{
-		return type == RoadStop::BUS ? bus_stops : truck_stops;
+		return type == ROADSTOP_BUS ? bus_stops : truck_stops;
 	}
 
 	RoadStop *GetPrimaryRoadStop(const Vehicle *v) const;
@@ -200,16 +190,6 @@ public:
 	inline bool IsValid() const { return this->xy != 0; }
 };
 
-void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
-
-/** A set of stations (\c const \c Station* ) */
-typedef std::set<Station*> StationSet;
-
-StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h);
-
-void ShowStationViewWindow(StationID station);
-void UpdateAllStationVirtCoord();
-
 static inline StationID GetMaxStationIndex()
 {
 	/* TODO - This isn't the real content of the function, but
@@ -241,22 +221,4 @@ static inline bool IsValidStationID(StationID index)
 
 /* End of stuff for ROADSTOPS */
 
-
-void AfterLoadStations();
-void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
-void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
-
-
-const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
-void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
-
-RoadStop * GetRoadStopByTile(TileIndex tile, RoadStop::Type type);
-uint GetNumRoadStops(const Station* st, RoadStop::Type type);
-RoadStop * AllocateRoadStop();
-void ClearSlot(Vehicle *v);
-
-bool HasStationInUse(StationID station, PlayerID player);
-
-void DeleteOilRig(TileIndex t);
-
-#endif /* STATION_H */
+#endif /* STATION_BASE_H */

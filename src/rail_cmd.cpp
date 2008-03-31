@@ -19,7 +19,6 @@
 #include "pathfind.h"
 #include "engine.h"
 #include "town.h"
-#include "station.h"
 #include "sprite.h"
 #include "depot.h"
 #include "waypoint.h"

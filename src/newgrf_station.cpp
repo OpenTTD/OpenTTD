@@ -9,7 +9,7 @@
 #include "landscape.h"
 #include "debug.h"
 #include "sprite.h"
-#include "station.h"
+#include "station_base.h"
 #include "station_map.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"

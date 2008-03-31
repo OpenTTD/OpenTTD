@@ -11,7 +11,6 @@
 #include "fileio.h"
 #include "engine.h"
 #include "spritecache.h"
-#include "station.h"
 #include "sprite.h"
 #include "newgrf.h"
 #include "variables.h"

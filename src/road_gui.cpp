@@ -16,7 +16,6 @@
 #include "road_cmd.h"
 #include "road_map.h"
 #include "station_map.h"
-#include "station.h"
 #include "functions.h"
 #include "window_func.h"
 #include "vehicle_func.h"
@@ -27,7 +26,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static void ShowRVStationPicker(RoadStop::Type rs);
+static void ShowRVStationPicker(RoadStopType rs);
 static void ShowRoadDepotPicker();
 
 static bool _remove_button_clicked;
@@ -215,18 +214,18 @@ static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 static void PlaceRoad_BusStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, RoadStop::BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[RoadStop::BUS]));
+		DoCommandP(tile, 0, ROADSTOP_BUS, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_BUS]));
 	} else {
-		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | RoadStop::BUS, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::BUS]));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_BUS, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_BUS]));
 	}
 }
 
 static void PlaceRoad_TruckStation(TileIndex tile)
 {
 	if (_remove_button_clicked) {
-		DoCommandP(tile, 0, RoadStop::TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[RoadStop::TRUCK]));
+		DoCommandP(tile, 0, ROADSTOP_TRUCK, CcPlaySound1D, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_TRUCK]));
 	} else {
-		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | RoadStop::TRUCK, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[RoadStop::TRUCK]));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_TRUCK, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_TRUCK]));
 	}
 }
 
@@ -334,13 +333,13 @@ static void BuildRoadClick_Depot(Window *w)
 static void BuildRoadClick_BusStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, VHM_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(RoadStop::BUS);
+	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, VHM_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(ROADSTOP_BUS);
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, VHM_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(RoadStop::TRUCK);
+	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, VHM_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(ROADSTOP_TRUCK);
 }
 
 /**
@@ -942,12 +941,12 @@ static const WindowDesc _rv_station_picker_desc = {
 	RoadStationPickerWndProc
 };
 
-static void ShowRVStationPicker(RoadStop::Type rs)
+static void ShowRVStationPicker(RoadStopType rs)
 {
 	Window *w = AllocateWindowDesc(&_rv_station_picker_desc);
 	if (w == NULL) return;
 
-	w->window_class = (rs == RoadStop::BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
+	w->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
 	w->widget[BRSW_CAPTION].data = _road_type_infos[_cur_roadtype].picker_title[rs];
 	for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) w->widget[i].tooltips = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
 }

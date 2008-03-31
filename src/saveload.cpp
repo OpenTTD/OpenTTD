@@ -16,7 +16,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "station.h"
+#include "station_base.h"
 #include "thread.h"
 #include "town.h"
 #include "saveload.h"

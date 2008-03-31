@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "currency.h"
 #include "namegen_func.h"
-#include "station.h"
+#include "station_base.h"
 #include "town.h"
 #include "screenshot.h"
 #include "waypoint.h"

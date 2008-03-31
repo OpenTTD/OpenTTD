@@ -25,7 +25,7 @@
 #include "command_func.h"
 #include "tile_cmd.h"
 #include "news_func.h"
-#include "station.h"
+#include "station_base.h"
 #include "waypoint.h"
 #include "town.h"
 #include "industry.h"

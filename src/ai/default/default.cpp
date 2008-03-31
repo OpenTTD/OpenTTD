@@ -15,7 +15,6 @@
 #include "../../command_func.h"
 #include "../../town.h"
 #include "../../industry.h"
-#include "../../station.h"
 #include "../../pathfind.h"
 #include "../../airport.h"
 #include "../../depot.h"
@@ -2690,10 +2689,10 @@ static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBloc
 		} else if (p->mode == 1) {
 			if (_want_road_truck_station) {
 				// Truck station
-				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | RoadStop::TRUCK, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
+				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | ROADSTOP_TRUCK, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			} else {
 				// Bus station
-				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | RoadStop::BUS, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
+				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | ROADSTOP_BUS, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			}
 clear_town_stuff:;
 

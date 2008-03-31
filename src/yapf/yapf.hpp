@@ -14,7 +14,7 @@
 #include "../bridge_map.h"
 #include "../tunnelbridge_map.h"
 #include "../bridge.h"
-#include "../station.h"
+#include "../station_base.h"
 #include "../station_map.h"
 #include "../tile_cmd.h"
 #include "../landscape.h"

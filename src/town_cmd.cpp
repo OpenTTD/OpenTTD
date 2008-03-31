@@ -15,7 +15,7 @@
 #include "town.h"
 #include "command_func.h"
 #include "industry.h"
-#include "station.h"
+#include "station_base.h"
 #include "player_base.h"
 #include "news_func.h"
 #include "saveload.h"

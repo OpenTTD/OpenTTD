@@ -8,8 +8,10 @@
 #include "rail_map.h"
 #include "road_map.h"
 #include "water_map.h"
-#include "station.h"
+#include "station_func.h"
+#include "station_base.h"
 #include "rail.h"
+#include "newgrf_station.h"
 
 typedef byte StationGfx;
 
@@ -49,10 +51,10 @@ static inline StationType GetStationType(TileIndex t)
 	return (StationType)GB(_m[t].m6, 3, 3);
 }
 
-static inline RoadStop::Type GetRoadStopType(TileIndex t)
+static inline RoadStopType GetRoadStopType(TileIndex t)
 {
 	assert(GetStationType(t) == STATION_TRUCK || GetStationType(t) == STATION_BUS);
-	return GetStationType(t) == STATION_TRUCK ? RoadStop::TRUCK : RoadStop::BUS;
+	return GetStationType(t) == STATION_TRUCK ? ROADSTOP_TRUCK : ROADSTOP_BUS;
 }
 
 static inline StationGfx GetStationGfx(TileIndex t)
@@ -260,15 +262,15 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 	SetRailType(t, rt);
 }
 
-static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, RoadTypes rt, DiagDirection d)
+static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStopType rst, RoadTypes rt, DiagDirection d)
 {
-	MakeStation(t, o, sid, (rst == RoadStop::BUS ? STATION_BUS : STATION_TRUCK), d);
+	MakeStation(t, o, sid, (rst == ROADSTOP_BUS ? STATION_BUS : STATION_TRUCK), d);
 	SetRoadTypes(t, rt);
 }
 
-static inline void MakeDriveThroughRoadStop(TileIndex t, Owner o, StationID sid, RoadStop::Type rst, RoadTypes rt, Axis a, bool on_town_road)
+static inline void MakeDriveThroughRoadStop(TileIndex t, Owner o, StationID sid, RoadStopType rst, RoadTypes rt, Axis a, bool on_town_road)
 {
-	MakeStation(t, o, sid, (rst == RoadStop::BUS ? STATION_BUS : STATION_TRUCK), GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + a);
+	MakeStation(t, o, sid, (rst == ROADSTOP_BUS ? STATION_BUS : STATION_TRUCK), GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET + a);
 	SB(_m[t].m6, 2, 1, on_town_road);
 	SetRoadTypes(t, rt);
 }

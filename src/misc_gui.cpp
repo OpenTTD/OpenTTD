@@ -17,7 +17,7 @@
 #include "textbuf_gui.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "station.h"
+#include "station_func.h"
 #include "command_func.h"
 #include "player_func.h"
 #include "player_base.h"

@@ -5,6 +5,7 @@
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H
 
+#include "oldpool.h"
 #include "economy_type.h"
 #include "tile_type.h"
 #include "station_type.h"

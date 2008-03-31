@@ -7,7 +7,6 @@
 #include "bridge_map.h"
 #include "tile_cmd.h"
 #include "road_map.h"
-#include "station.h"
 #include "tunnel_map.h"
 #include "station_map.h"
 #include "depot.h"

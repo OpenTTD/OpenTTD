@@ -8,7 +8,6 @@
 #include "player_func.h"
 #include "player_gui.h"
 #include "town.h"
-#include "station.h"
 #include "news_func.h"
 #include "saveload.h"
 #include "command_func.h"
@@ -34,6 +33,7 @@
 #include "ai/trolly/trolly.h"
 #include "road_func.h"
 #include "rail.h"
+#include "sprite.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

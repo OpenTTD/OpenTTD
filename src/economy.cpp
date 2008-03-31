@@ -8,7 +8,6 @@
 #include "landscape.h"
 #include "player_base.h"
 #include "player_func.h"
-#include "station.h"
 #include "command_func.h"
 #include "saveload.h"
 #include "industry.h"

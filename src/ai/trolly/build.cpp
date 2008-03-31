@@ -7,7 +7,6 @@
 #include "../../command_func.h"
 #include "trolly.h"
 #include "../../engine.h"
-#include "../../station.h"
 #include "../../variables.h"
 #include "../../bridge.h"
 #include "../../vehicle_func.h"
@@ -44,9 +43,9 @@ CommandCost AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte lengt
 		return AI_DoCommand(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
 
 	if (type == AI_BUS)
-		return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | RoadStop::BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+		return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | ROADSTOP_BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 
-	return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | RoadStop::TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+	return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | ROADSTOP_TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 }
 
 

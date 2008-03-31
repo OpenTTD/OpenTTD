@@ -11,7 +11,6 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "gui.h"
-#include "station.h"
 #include "town.h"
 #include "sprite.h"
 #include "bridge_map.h"

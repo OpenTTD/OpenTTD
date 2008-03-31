@@ -12,7 +12,7 @@
 #include "landscape.h"
 #include "aystar.h"
 #include "pathfind.h"
-#include "station.h"
+#include "station_base.h"
 #include "station_map.h"
 #include "depot.h"
 #include "tunnel_map.h"

@@ -12,7 +12,7 @@
 #include "rail.h"
 #include "bridge_map.h"
 #include "saveload.h"
-#include "station.h"
+#include "station_base.h"
 #include "town.h"
 #include "waypoint.h"
 #include "variables.h"

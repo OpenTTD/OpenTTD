@@ -26,7 +26,7 @@
 #include "trolly.h"
 #include "../../town.h"
 #include "../../industry.h"
-#include "../../station.h"
+#include "../../station_base.h"
 #include "../../engine.h"
 #include "../../gui.h"
 #include "../../depot.h"

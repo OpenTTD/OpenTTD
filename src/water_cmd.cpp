@@ -35,6 +35,8 @@
 #include "settings_type.h"
 #include "clear_map.h"
 #include "tree_map.h"
+#include "station_base.h"
+#include "airport.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

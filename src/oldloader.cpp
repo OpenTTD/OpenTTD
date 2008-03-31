@@ -7,7 +7,6 @@
 #include "station_map.h"
 #include "town.h"
 #include "industry.h"
-#include "station.h"
 #include "player_func.h"
 #include "player_base.h"
 #include "engine.h"
