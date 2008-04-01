@@ -2384,13 +2384,6 @@ static const byte _initial_tile_subcoord[6][4][3] = {
 {{  0, 0, 0 }, { 0, 0, 0 }, { 0, 8, 4 }, { 7, 15, 0 }},
 };
 
-static const uint32 _reachable_tracks[4] = {
-	0x10091009,
-	0x00160016,
-	0x05200520,
-	0x2A002A00,
-};
-
 static const byte _search_directions[6][4] = {
 	{ 0, 9, 2, 9 }, ///< track 1
 	{ 9, 1, 9, 3 }, ///< track 2
@@ -2535,8 +2528,6 @@ static bool CheckReverseTrain(Vehicle *v)
 
 	assert(v->u.rail.track);
 
-	int i = _search_directions[FIND_FIRST_BIT(v->u.rail.track)][DirToDiagDir(v->direction)];
-
 	switch (_patches.pathfinder_for_trains) {
 		case VPF_YAPF: { /* YAPF */
 			reverse_best = YapfCheckReverseTrain(v);
@@ -2569,6 +2560,8 @@ static bool CheckReverseTrain(Vehicle *v)
 
 		default:
 		case VPF_NTP: { /* NTP */
+			int i = _search_directions[FindFirstTrack(v->u.rail.track)][DirToDiagDir(v->direction)];
+
 			int best_track = -1;
 			uint reverse = 0;
 			uint best_bird_dist  = 0;
@@ -2901,17 +2894,13 @@ static inline void AffectSpeedByZChange(Vehicle *v, byte old_z)
 	}
 }
 
-static const DiagDirection _otherside_signal_directions[] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE, INVALID_DIAGDIR, INVALID_DIAGDIR,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
-};
-
 static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
 	if (IsTileType(tile, MP_RAILWAY) &&
 			GetRailTileType(tile) == RAIL_TILE_SIGNALS) {
-		uint i = FindFirstBit2x64(GetTrackBits(tile) * 0x101 & _reachable_tracks[dir]);
-		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i], GetTileOwner(tile));
+		TrackdirBits tracks = TrackBitsToTrackdirBits(GetTrackBits(tile)) & DiagdirReachesTrackdirs(dir);
+		Trackdir trackdir = FindFirstTrackdir(tracks);
+		UpdateSignalsOnSegment(tile, TrackdirToExitdir(trackdir), GetTileOwner(tile));
 	}
 }
 
@@ -3089,9 +3078,11 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 
 				/* Get the status of the tracks in the new tile and mask
 				 * away the bits that aren't reachable. */
-				TrackStatus ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0, ReverseDiagDir(enterdir)) & _reachable_tracks[enterdir];
-				TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
-				TrackBits red_signals = TrackdirBitsToTrackBits(TrackStatusToRedSignals(ts));
+				TrackStatus ts = GetTileTrackStatus(gp.new_tile, TRANSPORT_RAIL, 0, ReverseDiagDir(enterdir));
+				TrackdirBits reachable_trackdirs = DiagdirReachesTrackdirs(enterdir);
+
+				TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts) & reachable_trackdirs;
+				TrackBits red_signals = TrackdirBitsToTrackBits(TrackStatusToRedSignals(ts) & reachable_trackdirs);
 
 				TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
 				if (_patches.pathfinder_for_trains != VPF_NTP && _patches.forbid_90_deg && prev == NULL) {
@@ -3519,9 +3510,11 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
 	/* Determine the track status on the next tile */
-	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir)) & _reachable_tracks[dir];
-	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
-	TrackdirBits red_signals = TrackStatusToRedSignals(ts);
+	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir));
+	TrackdirBits reachable_trackdirs = DiagdirReachesTrackdirs(dir);
+
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts) & reachable_trackdirs;
+	TrackdirBits red_signals = TrackStatusToRedSignals(ts) & reachable_trackdirs;
 
 	/* We are sure the train is not entering a depot, it is detected above */
 
