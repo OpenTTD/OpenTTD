@@ -1951,9 +1951,6 @@ static const byte _ai_table_15[4][8] = {
 	{1, 3, 5, 0, 3, 2, 128 + 3, 67}
 };
 
-static const byte _dir_table_1[] = { 3, 9, 12, 6};
-static const byte _dir_table_2[] = {12, 6,  3, 9};
-
 
 static bool AiIsTileBanned(const Player* p, TileIndex tile, byte val)
 {
@@ -2026,7 +2023,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 	DiagDirection dir2 = (DiagDirection)(p[0] & 3);
 
 	tileh = GetTileSlope(tile, &z);
-	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
+	if (tileh == InclinedSlope(ReverseDiagDir(dir2)) || (tileh == SLOPE_FLAT && z != 0)) {
 		TileIndex tile_new = tile;
 
 		// Allow bridges directly over bottom tiles
@@ -2063,7 +2060,7 @@ static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile,
 {
 	uint z;
 
-	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
+	if (GetTileSlope(tile, &z) == InclinedSlope((DiagDirection)(p[0] & 3)) && z != 0) {
 		CommandCost cost = DoCommand(tile, _players_ai[arf->player->index].railtype_to_use, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
@@ -2137,8 +2134,6 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, DiagDirectio
 	arf->depth--;
 }
 
-
-static const byte _dir_table_3[] = {0x25, 0x2A, 0x19, 0x16};
 
 static void AiBuildRailConstruct(Player *p)
 {
@@ -2268,8 +2263,6 @@ static void AiBuildRailConstruct(Player *p)
 
 static bool AiRemoveTileAndGoForward(Player *p)
 {
-	byte b;
-	int bit;
 	const byte *ptr;
 	TileIndex tile = _players_ai[p->index].cur_tile_a;
 	TileIndex tilenew;
@@ -2298,11 +2291,11 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	}
 
 	// Find the railtype at the position. Quit if no rail there.
-	b = GetRailTrackStatus(tile) & _dir_table_3[_players_ai[p->index].cur_dir_a];
-	if (b == 0) return false;
+	TrackBits bits = GetRailTrackStatus(tile) & DiagdirReachesTracks(ReverseDiagDir(_players_ai[p->index].cur_dir_a));
+	if (bits == TRACK_BIT_NONE) return false;
 
 	// Convert into a bit position that CMD_REMOVE_SINGLE_RAIL expects.
-	bit = FindFirstBit(b);
+	Track track = FindFirstTrack(bits);
 
 	// Then remove and signals if there are any.
 	if (IsTileType(tile, MP_RAILWAY) &&
@@ -2311,12 +2304,12 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	}
 
 	// And also remove the rail.
-	if (CmdFailed(DoCommand(tile, 0, bit, DC_EXEC, CMD_REMOVE_SINGLE_RAIL)))
+	if (CmdFailed(DoCommand(tile, 0, track, DC_EXEC, CMD_REMOVE_SINGLE_RAIL)))
 		return false;
 
 	// Find the direction at the other edge of the rail.
 	ptr = _ai_table_15[ReverseDiagDir(_players_ai[p->index].cur_dir_a)];
-	while (ptr[0] != bit) ptr += 2;
+	while (ptr[0] != track) ptr += 2;
 	_players_ai[p->index].cur_dir_a = ReverseDiagDir((DiagDirection)ptr[1]);
 
 	// And then also switch tile.
@@ -2830,14 +2823,8 @@ struct AiRoadFinder {
 struct AiRoadEnum {
 	TileIndex dest;
 	TileIndex best_tile;
-	int best_track;
+	Trackdir best_track;
 	uint best_dist;
-};
-
-static const DiagDirection _dir_by_track[] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE,
-	DIAGDIR_NE, DIAGDIR_NE,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
 };
 
 static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, DiagDirection dir);
@@ -2876,12 +2863,12 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 }
 
 
-static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint length)
+static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, Trackdir track, uint length)
 {
 	uint dist = DistanceManhattan(tile, a->dest);
 
 	if (dist <= a->best_dist) {
-		TileIndex tile2 = TILE_MASK(tile + TileOffsByDiagDir(_dir_by_track[track]));
+		TileIndex tile2 = TILE_MASK(tile + TileOffsByDiagDir(TrackdirToExitdir(track)));
 
 		if (IsNormalRoadTile(tile2)) {
 			a->best_dist = dist;
@@ -2893,32 +2880,24 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 	return false;
 }
 
-static const uint16 _ai_road_table_and[4] = {
-	0x1009,
-	0x16,
-	0x520,
-	0x2A00,
-};
-
 static bool AiCheckRoadFinished(Player *p)
 {
 	AiRoadEnum are;
 	TileIndex tile;
 	DiagDirection dir = _players_ai[p->index].cur_dir_a;
-	uint32 bits;
 
 	are.dest = _players_ai[p->index].cur_tile_b;
 	tile = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(dir));
 
 	if (IsRoadStopTile(tile) || IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
-	bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD)) & _ai_road_table_and[dir];
-	if (bits == 0) return false;
+	TrackdirBits bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD)) & DiagdirReachesTrackdirs(dir);
+	if (bits == TRACKDIR_BIT_NONE) return false;
 
 	are.best_dist = (uint)-1;
 
-	uint i;
-	FOR_EACH_SET_BIT(i, bits) {
-		FollowTrack(tile, 0x1000 | TRANSPORT_ROAD, ROADTYPES_ROAD, (DiagDirection)_dir_by_track[i], (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
+	while (bits != TRACKDIR_BIT_NONE) {
+		Trackdir trackdir = RemoveFirstTrackdir(&bits);
+		FollowTrack(tile, 0x1000 | TRANSPORT_ROAD, ROADTYPES_ROAD, TrackdirToExitdir(trackdir), (TPFEnumProc*)AiEnumFollowRoad, NULL, &are);
 	}
 
 	if (DistanceManhattan(tile, are.dest) <= are.best_dist) return false;
@@ -2926,7 +2905,7 @@ static bool AiCheckRoadFinished(Player *p)
 	if (are.best_dist == 0) return true;
 
 	_players_ai[p->index].cur_tile_a = are.best_tile;
-	_players_ai[p->index].cur_dir_a = _dir_by_track[are.best_track];
+	_players_ai[p->index].cur_dir_a = TrackdirToExitdir(are.best_track);
 	return false;
 }
 
@@ -2953,7 +2932,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 	DiagDirection dir2 = (DiagDirection)(p[0] & 3);
 
 	tileh = GetTileSlope(tile, &z);
-	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
+	if (tileh == InclinedSlope(ReverseDiagDir(dir2)) || (tileh == SLOPE_FLAT && z != 0)) {
 		TileIndex tile_new = tile;
 
 		// Allow bridges directly over bottom tiles
@@ -2991,7 +2970,7 @@ static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile,
 {
 	uint z;
 
-	if (GetTileSlope(tile, &z) == _dir_table_2[p[0] & 3] && z != 0) {
+	if (GetTileSlope(tile, &z) == InclinedSlope((DiagDirection)(p[0] & 3)) && z != 0) {
 		CommandCost cost = DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 
 		if (CmdSucceeded(cost) && cost.GetCost() <= (arf->player->player_money >> 4)) {
