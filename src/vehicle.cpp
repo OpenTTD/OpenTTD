@@ -767,7 +767,7 @@ static void DoDrawVehicle(const Vehicle *v)
 	}
 
 	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
-		v->sprite_width, v->sprite_height, v->z_height, v->z_pos, (v->vehstatus & VS_SHADOW) != 0);
+		v->x_extent, v->y_extent, v->z_extent, v->z_pos, (v->vehstatus & VS_SHADOW) != 0);
 }
 
 void ViewportAddVehicles(DrawPixelInfo *dpi)
@@ -3234,9 +3234,9 @@ void SpecialVehicle::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs        = 0;
 	this->y_offs        = 0;
-	this->sprite_width  = 1;
-	this->sprite_height = 1;
-	this->z_height      = 1;
+	this->x_extent      = 1;
+	this->y_extent      = 1;
+	this->z_extent      = 1;
 }
 
 void StopAllVehicles()

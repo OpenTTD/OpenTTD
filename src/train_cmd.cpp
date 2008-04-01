@@ -1529,9 +1529,9 @@ void Train::UpdateDeltaXY(Direction direction)
 	uint32 x = _delta_xy_table[direction];
 	this->x_offs        = GB(x,  0, 8);
 	this->y_offs        = GB(x,  8, 8);
-	this->sprite_width  = GB(x, 16, 8);
-	this->sprite_height = GB(x, 24, 8);
-	this->z_height      = 6;
+	this->x_extent      = GB(x, 16, 8);
+	this->y_extent      = GB(x, 24, 8);
+	this->z_extent      = 6;
 }
 
 static void UpdateVarsAfterSwap(Vehicle *v)

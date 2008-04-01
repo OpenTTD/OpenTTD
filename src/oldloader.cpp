@@ -1155,8 +1155,8 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, z_pos ),
 	OCL_SVAR(  OC_UINT8, Vehicle, direction ),
 	OCL_NULL( 2 ),         ///< x_offs and y_offs, calculated automatically
-	OCL_NULL( 2 ),         ///< sprite_width and sprite_height, calculated automatically
-	OCL_NULL( 1 ),         ///< z_height, calculated automatically
+	OCL_NULL( 2 ),         ///< x_extent and y_extent, calculated automatically
+	OCL_NULL( 1 ),         ///< z_extent, calculated automatically
 
 	OCL_SVAR(  OC_UINT8, Vehicle, owner ),
 	OCL_SVAR(   OC_TILE, Vehicle, tile ),

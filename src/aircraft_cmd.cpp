@@ -54,17 +54,17 @@ void Aircraft::UpdateDeltaXY(Direction direction)
 				case FLYING:     x = MKIT(24, 24, -1, -1); break;
 				default:         x = MKIT( 2,  2, -1, -1); break;
 			}
-			this->z_height = 5;
+			this->z_extent = 5;
 			break;
-		case AIR_SHADOW:     this->z_height = 1; x = MKIT(2,  2,  0,  0); break;
-		case AIR_ROTOR:      this->z_height = 1; x = MKIT(2,  2, -1, -1); break;
+		case AIR_SHADOW:     this->z_extent = 1; x = MKIT(2,  2,  0,  0); break;
+		case AIR_ROTOR:      this->z_extent = 1; x = MKIT(2,  2, -1, -1); break;
 	}
 #undef MKIT
 
 	this->x_offs        = GB(x,  0, 8);
 	this->y_offs        = GB(x,  8, 8);
-	this->sprite_width  = GB(x, 16, 8);
-	this->sprite_height = GB(x, 24, 8);
+	this->x_extent      = GB(x, 16, 8);
+	this->y_extent      = GB(x, 24, 8);
 }
 
 

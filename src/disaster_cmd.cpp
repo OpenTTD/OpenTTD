@@ -1061,7 +1061,7 @@ void DisasterVehicle::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs        = -1;
 	this->y_offs        = -1;
-	this->sprite_width  =  2;
-	this->sprite_height =  2;
-	this->z_height      =  5;
+	this->x_extent      =  2;
+	this->y_extent      =  2;
+	this->z_extent      =  5;
 }

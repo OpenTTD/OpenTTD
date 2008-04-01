@@ -223,9 +223,9 @@ public:
 	                         // 0xfd == custom sprite, 0xfe == custom second head sprite
 	                         // 0xff == reserved for another custom sprite
 	uint16 cur_image;        // sprite number for this vehicle
-	byte sprite_width;       // width of vehicle sprite
-	byte sprite_height;      // height of vehicle sprite
-	byte z_height;           // z-height of vehicle sprite
+	byte x_extent;           // x-extent of vehicle bounding box
+	byte y_extent;           // y-extent of vehicle bounding box
+	byte z_extent;           // z-extent of vehicle bounding box
 	int8 x_offs;             // x offset for vehicle sprite
 	int8 y_offs;             // y offset for vehicle sprite
 	EngineID engine_type;
