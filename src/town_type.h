@@ -66,6 +66,8 @@ enum TownLayout {
 	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
 	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
 
+	TL_RANDOM,           ///< Random town layout
+
 	NUM_TLS,             ///< Number of town layouts
 };
 

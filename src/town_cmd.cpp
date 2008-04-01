@@ -107,6 +107,23 @@ Town::~Town()
 	this->xy = 0;
 }
 
+/**
+ * Generate a random town road layout.
+ *
+ * The layout is based on the TileHash.
+ */
+void Town::InitializeLayout()
+{
+	this->layout = (TownLayout)(TileHash(TileX(this->xy), TileY(this->xy)) % NUM_TLS);
+
+	/* Set invalid layouts to valid ones */
+	switch (this->layout) {
+		default: break;
+		case TL_RANDOM: this->layout = TL_ORIGINAL; break;
+		case TL_NO_ROADS: this->layout = TL_BETTER_ROADS; break;
+	}
+}
+
 // Local
 static int _grow_town_result;
 
@@ -128,23 +145,6 @@ typedef void TownDrawTileProc(const TileInfo *ti);
 static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 	TownDrawHouseLift
 };
-
-/**
- * Calculate a hash value from a tile position
- *
- * @param x The X coordinate
- * @param y The Y coordinate
- * @return The hash of the tile
- */
-uint TileHash2Bit(uint x, uint y)
-{
-	uint hash = x >> 4;
-	hash ^= x >> 6;
-	hash ^= y >> 4;
-	hash -= y >> 6;
-	hash &= 3;
-	return hash;
-}
 
 /**
  * Return a random direction
@@ -708,11 +708,12 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 /**
  * Check if a Road is allowed on a given tile
  *
+ * @param t The current town
  * @param tile The target tile
  * @param dir The direction in which we want to extend the town
  * @return true if it is allowed else false
  */
-static bool IsRoadAllowedHere(TileIndex tile, DiagDirection dir)
+static bool IsRoadAllowedHere(Town *t, TileIndex tile, DiagDirection dir)
 {
 	if (TileX(tile) < 2 || TileX(tile) >= MapMaxX() || TileY(tile) < 2 || TileY(tile) >= MapMaxY()) return false;
 
@@ -733,7 +734,7 @@ static bool IsRoadAllowedHere(TileIndex tile, DiagDirection dir)
 		if (cur_slope == SLOPE_FLAT) {
 no_slope:
 			/* Tile has no slope */
-			switch (_patches.town_layout) {
+			switch (t->GetActiveLayout()) {
 				default: NOT_REACHED();
 
 				case TL_ORIGINAL: // Disallow the road if any neighboring tile has a road (distance: 1)
@@ -804,13 +805,13 @@ static void LevelTownLand(TileIndex tile)
  * @return the RoadBit of the current tile regarding
  *  the selected town layout
  */
-static RoadBits GetTownRoadGridElement(Town* t, TileIndex tile, DiagDirection dir)
+static RoadBits GetTownRoadGridElement(Town *t, TileIndex tile, DiagDirection dir)
 {
 	/* align the grid to the downtown */
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile); // Vector from downtown to the tile
 	RoadBits rcmd = ROAD_NONE;
 
-	switch (_patches.town_layout) {
+	switch (t->GetActiveLayout()) {
 		default: NOT_REACHED();
 
 		case TL_2X2_GRID:
@@ -993,7 +994,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		LevelTownLand(tile);
 
 		/* Is a road allowed here? */
-		switch (_patches.town_layout) {
+		switch (t1->GetActiveLayout()) {
 			default: NOT_REACHED();
 
 			case TL_NO_ROADS: /* Disallow Roads */
@@ -1007,7 +1008,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 			case TL_BETTER_ROADS:
 			case TL_ORIGINAL:
-				if (!IsRoadAllowedHere(tile, target_dir)) return;
+				if (!IsRoadAllowedHere(t1, tile, target_dir)) return;
 
 				DiagDirection source_dir = ReverseDiagDir(target_dir);
 
@@ -1016,7 +1017,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 					do target_dir = RandomDiagDir(); while (target_dir == source_dir);
 				}
 
-				if (!IsRoadAllowedHere(TileAddByDiagDir(tile, target_dir), target_dir)) {
+				if (!IsRoadAllowedHere(t1, TileAddByDiagDir(tile, target_dir), target_dir)) {
 					/* A road is not allowed to continue the randomized road,
 					 *  return if the road we're trying to build is curved. */
 					if (target_dir != ReverseDiagDir(source_dir)) return;
@@ -1041,7 +1042,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		 * the fitting RoadBits */
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
-		switch (_patches.town_layout) {
+		switch (t1->GetActiveLayout()) {
 			default: NOT_REACHED();
 
 			case TL_NO_ROADS: /* Disallow Roads */
@@ -1079,7 +1080,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		/* Don't walk into water. */
 		if (IsWaterTile(house_tile)) return;
 
-		switch (_patches.town_layout) {
+		switch (t1->GetActiveLayout()) {
 			default: NOT_REACHED();
 
 			case TL_NO_ROADS:
@@ -1103,7 +1104,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 				 /* Allow a house at the edge. 60% chance or
 				  * always ok if no road allowed. */
 				rcmd = DiagDirToRoadBits(target_dir);
-				allow_house = (!IsRoadAllowedHere(house_tile, target_dir) || Chance16(6, 10));
+				allow_house = (!IsRoadAllowedHere(t1, house_tile, target_dir) || Chance16(6, 10));
 				break;
 		}
 
@@ -1157,7 +1158,7 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 	/* Number of times to search.
 	 * Better roads, 2X2 and 3X3 grid grow quite fast so we give
 	 * them a little handicap. */
-	switch (_patches.town_layout) {
+	switch (t->GetActiveLayout()) {
 		case TL_BETTER_ROADS:
 			_grow_town_result = 10 + t->num_houses * 2 / 9;
 			break;
@@ -1446,6 +1447,8 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 
 	UpdateTownVirtCoord(t);
 	_town_sort_dirty = true;
+
+	t->InitializeLayout();
 
 	/* Random town size. */
 	x = (Random() & 0xF) + 8;
@@ -1736,7 +1739,7 @@ static inline bool TownLayoutAllowsHouseHere(Town *t, TileIndex tile)
 {
 	TileIndexDiffC grid_pos = TileIndexToTileIndexDiffC(t->xy, tile);
 
-	switch (_patches.town_layout) {
+	switch (t->GetActiveLayout()) {
 		case TL_2X2_GRID:
 			if ((grid_pos.x % 3) == 0 || (grid_pos.y % 3) == 0) return false;
 			break;
@@ -1767,7 +1770,7 @@ static inline bool TownLayoutAllows2x2HouseHere(Town *t, TileIndex tile)
 	uint dx = MapSize() + TileX(t->xy) - TileX(tile);
 	uint dy = MapSize() + TileY(t->xy) - TileY(tile);
 
-	switch (_patches.town_layout) {
+	switch (t->GetActiveLayout()) {
 		case TL_2X2_GRID:
 			if ((dx % 3) != 0 || (dy % 3) != 0) return false;
 			break;
@@ -2700,6 +2703,9 @@ static void Load_TOWN()
 void AfterLoadTown()
 {
 	_town_sort_dirty = true;
+
+	Town *t;
+	FOR_ALL_TOWNS(t) t->InitializeLayout();
 }
 
 extern const ChunkHandler _town_chunk_handlers[] = {

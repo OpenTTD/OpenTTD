@@ -6,6 +6,7 @@
 #define TOWN_H
 
 #include "oldpool.h"
+#include "core/bitmath_func.hpp"
 #include "core/random_func.hpp"
 #include "cargo_type.h"
 #include "tile_type.h"
@@ -13,6 +14,7 @@
 #include "town_type.h"
 #include "player_type.h"
 #include "newgrf_string_type.h"
+#include "settings_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
@@ -161,6 +163,9 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	/* NOSAVE: The number of each type of building in the town. */
 	BuildingCounts building_counts;
 
+	/* NOSAVE: The town specific road layout */
+	TownLayout layout;
+
 	/**
 	 * Creates a new town
 	 */
@@ -170,7 +175,20 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	~Town();
 
 	inline bool IsValid() const { return this->xy != 0; }
+
+	void InitializeLayout();
+
+	inline TownLayout GetActiveLayout() const;
 };
+
+/**
+ * Get the current valid layout for the town
+ * @return the active layout for this town
+ */
+inline TownLayout Town::GetActiveLayout() const
+{
+	return (_patches.town_layout == TL_RANDOM) ? this->layout : _patches.town_layout;
+}
 
 struct HouseSpec {
 	/* Standard properties */
@@ -314,7 +332,6 @@ extern const Town **_town_sort;
 extern Town *_cleared_town;
 extern int _cleared_town_rating;
 
-uint TileHash2Bit(uint x, uint y);
 void ResetHouses();
 
 void ClearTownHouse(Town *t, TileIndex tile);
@@ -326,5 +343,35 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
+
+/**
+ * Calculate a hash value from a tile position
+ *
+ * @param x The X coordinate
+ * @param y The Y coordinate
+ * @return The hash of the tile
+ */
+static inline uint TileHash(uint x, uint y)
+{
+	uint hash = x >> 4;
+	hash ^= x >> 6;
+	hash ^= y >> 4;
+	hash -= y >> 6;
+	return hash;
+}
+
+/**
+ * Get the last two bits of the TileHash
+ *  from a tile position.
+ *
+ * @see TileHash()
+ * @param x The X coordinate
+ * @param y The Y coordinate
+ * @return The last two bits from hash of the tile
+ */
+static inline uint TileHash2Bit(uint x, uint y)
+{
+	return GB(TileHash(x, y), 0, 2);
+}
 
 #endif /* TOWN_H */
