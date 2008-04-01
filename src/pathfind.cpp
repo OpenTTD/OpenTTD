@@ -17,6 +17,7 @@
 #include "depot.h"
 #include "tunnelbridge_map.h"
 #include "core/random_func.hpp"
+#include "core/alloc_func.hpp"
 #include "tunnelbridge.h"
 
 /* remember which tiles we have already visited so we don't visit them again. */
@@ -291,39 +292,38 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
-	TrackPathFinder tpf;
+	assert(IsValidDiagDirection(direction));
 
-	assert(direction < 4);
+	SmallStackSafeStackAlloc<TrackPathFinder, 1> tpf;
 
 	/* initialize path finder variables */
-	tpf.userdata = data;
-	tpf.enum_proc = enum_proc;
-	tpf.new_link = tpf.links;
-	tpf.num_links_left = lengthof(tpf.links);
+	tpf->userdata = data;
+	tpf->enum_proc = enum_proc;
+	tpf->new_link = tpf->links;
+	tpf->num_links_left = lengthof(tpf->links);
 
-	tpf.rd.cur_length = 0;
-	tpf.rd.depth = 0;
-	tpf.rd.last_choosen_track = INVALID_TRACK;
+	tpf->rd.cur_length = 0;
+	tpf->rd.depth = 0;
+	tpf->rd.last_choosen_track = INVALID_TRACK;
 
-	tpf.var2 = HasBit(flags, 15) ? 0x43 : 0xFF; // 0x8000
+	tpf->var2 = HasBit(flags, 15) ? 0x43 : 0xFF; // 0x8000
 
-	tpf.disable_tile_hash = HasBit(flags, 12);  // 0x1000
+	tpf->disable_tile_hash = HasBit(flags, 12);  // 0x1000
 
 
-	tpf.tracktype = (TransportType)(flags & 0xFF);
-	tpf.sub_type = sub_type;
+	tpf->tracktype = (TransportType)(flags & 0xFF);
+	tpf->sub_type = sub_type;
 
 	if (HasBit(flags, 11)) {
-		tpf.enum_proc(tile, data, INVALID_TRACKDIR, 0);
-		TPFMode2(&tpf, tile, direction);
+		tpf->enum_proc(tile, data, INVALID_TRACKDIR, 0);
+		TPFMode2(tpf, tile, direction);
 	} else {
 		/* clear the hash_heads */
-		memset(tpf.hash_head, 0, sizeof(tpf.hash_head));
-		TPFMode1(&tpf, tile, direction);
+		memset(tpf->hash_head, 0, sizeof(tpf->hash_head));
+		TPFMode1(tpf, tile, direction);
 	}
 
-	if (after_proc != NULL)
-		after_proc(&tpf);
+	if (after_proc != NULL) after_proc(tpf);
 }
 
 struct StackedItem {
@@ -820,18 +820,18 @@ start_at:
 /** new pathfinder for trains. better and faster. */
 void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
 {
-	NewTrackPathFinder tpf;
+	SmallStackSafeStackAlloc<NewTrackPathFinder, 1> tpf;
 
-	tpf.dest = dest;
-	tpf.userdata = data;
-	tpf.enum_proc = enum_proc;
-	tpf.tracktype = TRANSPORT_RAIL;
-	tpf.railtypes = railtypes;
-	tpf.maxlength = min(_patches.pf_maxlength * 3, 10000);
-	tpf.nstack = 0;
-	tpf.new_link = tpf.links;
-	tpf.num_links_left = lengthof(tpf.links);
-	memset(tpf.hash_head, 0, sizeof(tpf.hash_head));
+	tpf->dest = dest;
+	tpf->userdata = data;
+	tpf->enum_proc = enum_proc;
+	tpf->tracktype = TRANSPORT_RAIL;
+	tpf->railtypes = railtypes;
+	tpf->maxlength = min(_patches.pf_maxlength * 3, 10000);
+	tpf->nstack = 0;
+	tpf->new_link = tpf->links;
+	tpf->num_links_left = lengthof(tpf->links);
+	memset(tpf->hash_head, 0, sizeof(tpf->hash_head));
 
-	NTPEnum(&tpf, tile, direction);
+	NTPEnum(tpf, tile, direction);
 }

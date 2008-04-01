@@ -107,9 +107,11 @@ struct SmallStackSafeStackAlloc {
 #else
 	/** Storing it on the heap */
 	T *data;
+	/** The length (in elements) of data in this allocator. */
+	size_t len;
 
 	/** Allocating the memory */
-	SmallStackSafeStackAlloc() : data(MallocT<T>(length)) {}
+	SmallStackSafeStackAlloc() : data(MallocT<T>(length)), len(length) {}
 	/** And freeing when it goes out of scope */
 	~SmallStackSafeStackAlloc() { free(data); }
 #endif
@@ -118,7 +120,26 @@ struct SmallStackSafeStackAlloc {
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	operator T* () { return data; }
+	inline operator T* () { return data; }
+
+	/**
+	 * Gets a pointer to the data stored in this wrapper.
+	 * @return the pointer.
+	 */
+	inline T* operator -> () { return data; }
+
+	/**
+	 * Gets a pointer to the last data element stored in this wrapper.
+	 * @note needed because endof does not work properly for pointers.
+	 * @return the 'endof' pointer.
+	 */
+	inline T* EndOf() {
+#if !defined(__NDS__)
+		return endof(data);
+#else
+		return &data[len];
+#endif
+	}
 };
 
 #endif /* ALLOC_FUNC_HPP */

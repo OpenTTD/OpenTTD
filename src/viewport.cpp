@@ -27,11 +27,15 @@
 #include "player_func.h"
 #include "settings_type.h"
 #include "station_func.h"
+#include "core/alloc_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
 
-#define VIEWPORT_DRAW_MEM (65536 * 2)
+enum {
+	VIEWPORT_DRAW_MEM = (65536 * 2),
+	PARENT_LIST_SIZE  = 6144,
+};
 
 PlaceProc *_place_proc;
 Point _tile_fract_coords;
@@ -1541,8 +1545,8 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	int y;
 	DrawPixelInfo *old_dpi;
 
-	byte mem[VIEWPORT_DRAW_MEM];
-	ParentSpriteToDraw *parent_list[6144];
+	SmallStackSafeStackAlloc<byte, VIEWPORT_DRAW_MEM> mem;
+	SmallStackSafeStackAlloc<ParentSpriteToDraw*, PARENT_LIST_SIZE> parent_list;
 
 	_cur_vd = &vd;
 
@@ -1566,9 +1570,9 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.dpi.dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(old_dpi->dst_ptr, x - old_dpi->left, y - old_dpi->top);
 
 	vd.parent_list = parent_list;
-	vd.eof_parent_list = endof(parent_list);
+	vd.eof_parent_list = parent_list.EndOf();
 	vd.spritelist_mem = mem;
-	vd.eof_spritelist_mem = endof(mem) - sizeof(LARGEST_SPRITELIST_STRUCT);
+	vd.eof_spritelist_mem = mem.EndOf() - sizeof(LARGEST_SPRITELIST_STRUCT);
 	vd.last_string = &vd.first_string;
 	vd.first_string = NULL;
 	vd.last_tile = &vd.first_tile;
