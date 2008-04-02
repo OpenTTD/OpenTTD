@@ -7,17 +7,19 @@
 
 #include "strings_type.h"
 
-/* GRF config bit flags */
+/** GRF config bit flags */
 enum GCF_Flags {
-	GCF_SYSTEM,    ///< GRF file is an openttd-internal system grf
-	GCF_UNSAFE,    ///< GRF file is unsafe for static usage
-	GCF_STATIC,    ///< GRF file is used statically (can be used in any MP game)
-	GCF_COMPATIBLE,///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
-	GCF_COPY,      ///< The data is copied from a grf in _all_grfs
-	GCF_INIT_ONLY, ///< GRF file is processed up to GLS_INIT
-	GCF_RESERVED,  ///< GRF file passed GLS_RESERVE stage
+	GCF_SYSTEM,     ///< GRF file is an openttd-internal system grf
+	GCF_UNSAFE,     ///< GRF file is unsafe for static usage
+	GCF_STATIC,     ///< GRF file is used statically (can be used in any MP game)
+	GCF_COMPATIBLE, ///< GRF file does not exactly match the requested GRF (different MD5SUM), but grfid matches)
+	GCF_COPY,       ///< The data is copied from a grf in _all_grfs
+	GCF_INIT_ONLY,  ///< GRF file is processed up to GLS_INIT
+	GCF_RESERVED,   ///< GRF file passed GLS_RESERVE stage
+
 };
 
+/** Status of GRF */
 enum GRFStatus {
 	GCS_UNKNOWN,      ///< The status of this grf file is unknown
 	GCS_DISABLED,     ///< GRF file is disabled
@@ -26,53 +28,50 @@ enum GRFStatus {
 	GCS_ACTIVATED     ///< GRF file has been activated
 };
 
+/** Status of post-gameload GRF compatibility check */
 enum GRFListCompatibility{
-	GLC_ALL_GOOD,
-	GLC_COMPATIBLE,
-	GLC_NOT_FOUND
+	GLC_ALL_GOOD,   ///< All GRF needed by game are present
+	GLC_COMPATIBLE, ///< Compatible (eg. the same ID, but different chacksum) GRF found in at least one case
+	GLC_NOT_FOUND   ///< At least one GRF couldn't be found (higher priority than GLC_COMPATIBLE)
 };
 
+/** Basic data to distinguish a GRF. Used in the server list window */
 struct GRFIdentifier {
-	uint32 grfid;
-	uint8 md5sum[16];
+	uint32 grfid;     ///< GRF ID (defined by Action 0x08)
+	uint8 md5sum[16]; ///< MD5 checksum of file to distinguish files with the same GRF ID (eg. newer version of GRF)
 };
 
+/** Information about why GRF had problems during initialisation */
 struct GRFError {
-	char *custom_message;
-	char *data;
-	StringID message;
-	StringID severity;
-	uint8 num_params;
-	uint8 param_number[2];
+	char *custom_message;  ///< Custom message (if present)
+	char *data;            ///< Additional data for message and custom_message
+	StringID message;      ///< Default message
+	StringID severity;     ///< Info / Warning / Error / Fatal
+	uint8 num_params;      ///< Number of additinal parameters for custom_message (0, 1 or 2)
+	uint8 param_number[2]; ///< GRF parameters to show for custom_message
 };
 
+/** Information about GRF, used in the game and (part of it) in savegames */
 struct GRFConfig : public GRFIdentifier {
-	char *filename;
-	char *name;
-	char *info;
-	GRFError *error;
+	char *filename;     ///< Filename - either with or without full path
+	char *name;         ///< NOSAVE: GRF name (Action 0x08)
+	char *info;         ///< NOSAVE: GRF info (author, copyright, ...) (Action 0x08)
+	GRFError *error;    ///< NOSAVE: Error/Warning during GRF loading (Action 0x0B)
 
-	uint8 flags;
-	GRFStatus status;
-	uint32 param[0x80];
-	uint8 num_params;
+	uint8 flags;        ///< NOSAVE: GCF_Flags, bitset
+	GRFStatus status;   ///< NOSAVE: GRFStatus, enum
+	uint32 param[0x80]; ///< GRF parameters
+	uint8 num_params;   ///< Number of used parameters
 
-	struct GRFConfig *next;
+	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
 
 	bool IsOpenTTDBaseGRF() const;
 };
 
-/* First item in list of all scanned NewGRFs */
-extern GRFConfig *_all_grfs;
-
-/* First item in list of current GRF set up */
-extern GRFConfig *_grfconfig;
-
-/* First item in list of default GRF set up */
-extern GRFConfig *_grfconfig_newgame;
-
-/* First item in list of static GRF set up */
-extern GRFConfig *_grfconfig_static;
+extern GRFConfig *_all_grfs;          ///< First item in list of all scanned NewGRFs
+extern GRFConfig *_grfconfig;         ///< First item in list of current GRF set up
+extern GRFConfig *_grfconfig_newgame; ///< First item in list of default GRF set up
+extern GRFConfig *_grfconfig_static;  ///< First item in list of static GRF set up
 
 void ScanNewGRFFiles();
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
