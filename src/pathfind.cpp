@@ -139,7 +139,7 @@ static const byte _otherdir_mask[4] = {
 	0x2A,
 };
 
-static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	RememberData rd;
 
@@ -177,7 +177,7 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		tpf->the_dir = (Trackdir)(track + (HasBit(_otherdir_mask[direction], track) ? 8 : 0));
 
 		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length)) {
-			TPFMode2(tpf, tile, _tpf_new_direction[tpf->the_dir]);
+			TPFModeShip(tpf, tile, _tpf_new_direction[tpf->the_dir]);
 		}
 
 		tpf->rd = rd;
@@ -211,7 +211,7 @@ static inline bool CanAccessTileInDir(TileIndex tile, DiagDirection side, Transp
 
 static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 
-static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void TPFModeNormal(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	const TileIndex tile_org = tile;
 
@@ -264,10 +264,8 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 
 	tpf->rd.cur_length++;
 
-	if ((byte)bits != tpf->var2) {
-		bits &= _tpfmode1_and[direction];
-		bits |= bits >> 8;
-	}
+	bits &= _tpfmode1_and[direction];
+	bits |= bits >> 8;
 	bits &= 0xBF;
 
 	if (bits != 0) {
@@ -282,7 +280,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 				/* make sure we are not leaving from invalid side */
 				if (TPFSetTileBit(tpf, tile, tpf->the_dir) && CanAccessTileInDir(tile, TrackdirToExitdir(tpf->the_dir), tpf->tracktype) &&
 						!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length) ) {
-					TPFMode1(tpf, tile, _tpf_new_direction[tpf->the_dir]);
+					TPFModeNormal(tpf, tile, _tpf_new_direction[tpf->the_dir]);
 				}
 				tpf->rd = rd;
 			} while (bits != 0);
@@ -290,7 +288,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	}
 }
 
-void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
+void FollowTrack(TileIndex tile, PathfindFlags flags, TransportType tt, uint sub_type, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data)
 {
 	assert(IsValidDiagDirection(direction));
 
@@ -306,21 +304,18 @@ void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection dire
 	tpf->rd.depth = 0;
 	tpf->rd.last_choosen_track = INVALID_TRACK;
 
-	tpf->var2 = HasBit(flags, 15) ? 0x43 : 0xFF; // 0x8000
+	tpf->disable_tile_hash = (flags & PATHFIND_FLAGS_DISABLE_TILE_HASH) != 0;
 
-	tpf->disable_tile_hash = HasBit(flags, 12);  // 0x1000
-
-
-	tpf->tracktype = (TransportType)(flags & 0xFF);
+	tpf->tracktype = tt;
 	tpf->sub_type = sub_type;
 
-	if (HasBit(flags, 11)) {
+	if ((flags & PATHFIND_FLAGS_SHIP_MODE) != 0) {
 		tpf->enum_proc(tile, data, INVALID_TRACKDIR, 0);
-		TPFMode2(tpf, tile, direction);
+		TPFModeShip(tpf, tile, direction);
 	} else {
 		/* clear the hash_heads */
 		memset(tpf->hash_head, 0, sizeof(tpf->hash_head));
-		TPFMode1(tpf, tile, direction);
+		TPFModeNormal(tpf, tile, direction);
 	}
 
 	if (after_proc != NULL) after_proc(tpf);

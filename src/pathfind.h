@@ -58,7 +58,6 @@ struct TrackPathFinder {
 	TransportType tracktype;
 	uint sub_type;
 
-	byte var2;
 	bool disable_tile_hash;
 
 	uint16 hash_head[0x400];
@@ -67,7 +66,15 @@ struct TrackPathFinder {
 	TrackPathFinderLink links[0x400]; ///< hopefully, this is enough.
 };
 
-void FollowTrack(TileIndex tile, uint16 flags, uint sub_type, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
+/** Some flags to modify the behaviour of original pathfinder */
+enum PathfindFlags {
+	PATHFIND_FLAGS_NONE              = 0,
+	PATHFIND_FLAGS_SHIP_MODE         = 0x0800, ///< pathfinder with some optimizations for ships, but does not work for other types.
+	PATHFIND_FLAGS_DISABLE_TILE_HASH = 0x1000, ///< do not check for searching in circles
+};
+DECLARE_ENUM_AS_BIT_SET(PathfindFlags)
+
+void FollowTrack(TileIndex tile, PathfindFlags flags, TransportType tt, uint sub_type, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
 void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data);
 
 #endif /* PATHFIND_H */

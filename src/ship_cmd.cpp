@@ -474,7 +474,7 @@ static uint FindShipTrack(Vehicle *v, TileIndex tile, DiagDirection dir, TrackBi
 		pfs.best_bird_dist = (uint)-1;
 		pfs.best_length = (uint)-1;
 
-		FollowTrack(tile, 0x1800 | TRANSPORT_WATER, 0, (DiagDirection)_ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
+		FollowTrack(tile, PATHFIND_FLAGS_SHIP_MODE | PATHFIND_FLAGS_DISABLE_TILE_HASH, TRANSPORT_WATER, 0, (DiagDirection)_ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
 
 		if (best_track != INVALID_TRACK) {
 			if (pfs.best_bird_dist != 0) {
