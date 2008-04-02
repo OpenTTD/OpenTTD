@@ -287,11 +287,11 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			uint z_max = max(max(z_N, z_W), max(z_S, z_E));
 
 			/* Compute tile slope */
-			uint tileh = (z_max > z_min + 1 ? SLOPE_STEEP : SLOPE_FLAT);
-			if (z_W > z_min) tileh += SLOPE_W;
-			if (z_S > z_min) tileh += SLOPE_S;
-			if (z_E > z_min) tileh += SLOPE_E;
-			if (z_N > z_min) tileh += SLOPE_N;
+			Slope tileh = (z_max > z_min + 1 ? SLOPE_STEEP : SLOPE_FLAT);
+			if (z_W > z_min) tileh |= SLOPE_W;
+			if (z_S > z_min) tileh |= SLOPE_S;
+			if (z_E > z_min) tileh |= SLOPE_E;
+			if (z_N > z_min) tileh |= SLOPE_N;
 
 			/* Check if bridge would take damage */
 			if (direction == 1 && MayHaveBridgeAbove(tile) && IsBridgeAbove(tile) &&
@@ -305,7 +305,7 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 			}
 			/* Check tiletype-specific things, and add extra-cost */
-			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO, z_min * TILE_HEIGHT, (Slope) tileh);
+			CommandCost cost = _tile_type_procs[GetTileType(tile)]->terraform_tile_proc(tile, flags | DC_AUTO, z_min * TILE_HEIGHT, tileh);
 			if (CmdFailed(cost)) {
 				_terraform_err_tile = tile;
 				return cost;

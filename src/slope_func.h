@@ -54,7 +54,7 @@ static inline bool IsHalftileSlope(Slope s)
  */
 static inline Slope RemoveHalftileSlope(Slope s)
 {
-	return (Slope)(s & ~SLOPE_HALFTILE_MASK);
+	return s & ~SLOPE_HALFTILE_MASK;
 }
 
 /**
@@ -71,7 +71,7 @@ static inline Slope RemoveHalftileSlope(Slope s)
 static inline Slope ComplementSlope(Slope s)
 {
 	assert(!IsSteepSlope(s) && !IsHalftileSlope(s));
-	return (Slope)(0xF ^ s);
+	return s ^ SLOPE_ELEVATED;
 }
 
 /**
@@ -200,7 +200,7 @@ static inline Slope SlopeWithThreeCornersRaised(Corner corner)
  */
 static inline Slope SteepSlope(Corner corner)
 {
-	return (Slope)(SLOPE_STEEP | SlopeWithThreeCornersRaised(OppositeCorner(corner)));
+	return SLOPE_STEEP | SlopeWithThreeCornersRaised(OppositeCorner(corner));
 }
 
 /**

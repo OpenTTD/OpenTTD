@@ -70,6 +70,7 @@ enum Slope {
 	SLOPE_HALFTILE_E = SLOPE_HALFTILE | (CORNER_E << 6),    ///< the east halftile is leveled (non continuous slope)
 	SLOPE_HALFTILE_N = SLOPE_HALFTILE | (CORNER_N << 6),    ///< the north halftile is leveled (non continuous slope)
 };
+DECLARE_ENUM_AS_BIT_SET(Slope)
 
 
 /**

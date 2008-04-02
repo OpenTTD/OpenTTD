@@ -1040,7 +1040,7 @@ void TileLoop_Water(TileIndex tile)
 				if (IsTileType(dest, MP_WATER)) continue;
 
 				uint z_dest;
-				Slope slope_dest = (Slope)(GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP);
+				Slope slope_dest = GetFoundationSlope(dest, &z_dest) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 				if (z_dest > 0) continue;
 
 				if (!HasBit(_flood_from_dirs[slope_dest], ReverseDir(dir))) continue;
@@ -1050,7 +1050,7 @@ void TileLoop_Water(TileIndex tile)
 			break;
 
 		case FLOOD_DRYUP: {
-			Slope slope_here = (Slope)(GetFoundationSlope(tile, NULL) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP);
+			Slope slope_here = GetFoundationSlope(tile, NULL) & ~SLOPE_HALFTILE_MASK & ~SLOPE_STEEP;
 			uint check_dirs = _flood_from_dirs[slope_here];
 			uint dir;
 			FOR_EACH_SET_BIT(dir, check_dirs) {
@@ -1097,7 +1097,7 @@ void ConvertGroundTilesIntoWaterTiles()
 					uint dir;
 					FOR_EACH_SET_BIT(dir, check_dirs) {
 						TileIndex dest = TILE_ADD(tile, TileOffsByDir((Direction)dir));
-						Slope slope_dest = (Slope)(GetTileSlope(dest, NULL) & ~SLOPE_STEEP);
+						Slope slope_dest = GetTileSlope(dest, NULL) & ~SLOPE_STEEP;
 						if (slope_dest == SLOPE_FLAT || IsSlopeWithOneCornerRaised(slope_dest)) {
 							MakeShore(tile);
 							break;
