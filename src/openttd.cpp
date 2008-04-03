@@ -1963,7 +1963,12 @@ bool AfterLoadGame()
 
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_CLEAR) && IsClearGround(t, CLEAR_FIELDS)) {
+				/* remove fields */
 				MakeClear(t, CLEAR_GRASS, 3);
+			} else if (IsTileType(t, MP_CLEAR) || IsTileType(t, MP_TREES)) {
+				/* remove fences around fields */
+				SetFenceSE(t, 0);
+				SetFenceSW(t, 0);
 			}
 		}
 
