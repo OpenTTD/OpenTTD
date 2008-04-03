@@ -45,9 +45,9 @@ static bool _remove_button_clicked;
 static DiagDirection _build_depot_direction;
 static byte _waypoint_count = 1;
 static byte _cur_waypoint_type;
-static bool _convert_signal_button = false;              ///< convert signal button in the signal GUI pressed
-static SignalVariant _cur_signal_variant = SIG_ELECTRIC; ///< set the signal variant (for signal GUI)
-static SignalType _cur_signal_type = SIGTYPE_NORMAL;     ///< set the signal type (for signal GUI)
+static bool _convert_signal_button;       ///< convert signal button in the signal GUI pressed
+static SignalVariant _cur_signal_variant; ///< set the signal variant (for signal GUI)
+static SignalType _cur_signal_type;       ///< set the signal type (for signal GUI)
 
 static struct {
 	byte orientation;
@@ -1385,14 +1385,9 @@ static const WindowDesc _signal_builder_desc = {
 
 /**
  * Open the signal selection window
- * @pre reset all signal GUI relevant variables
  */
 static void ShowSignalBuilder()
 {
-	_convert_signal_button = false;
-	_cur_signal_variant = _cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
-	_cur_signal_type = SIGTYPE_NORMAL;
-
 	AllocateWindowDesc(&_signal_builder_desc);
 }
 
@@ -1601,7 +1596,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 	MarkWholeScreenDirty();
 }
 
-void SetDefaultRailGui()
+static void SetDefaultRailGui()
 {
 	if (_local_player == PLAYER_SPECTATOR || !IsValidPlayer(_local_player)) return;
 
@@ -1650,5 +1645,36 @@ void SetDefaultRailGui()
 	}
 }
 
+/**
+ * Updates the current signal variant used in the signal GUI
+ * to the one adequate to current year.
+ * @param 0 needed to be called when a patch setting changes
+ * @return success, needed for patch settings
+ */
+int32 ResetSignalVariant(int32 = 0)
+{
+	SignalVariant new_variant = (_cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
+	if (new_variant != _cur_signal_variant) {
+		Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
+		if (w != NULL) {
+			SetWindowDirty(w);
+			w->RaiseWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+		}
+		_cur_signal_variant = new_variant;
+	}
 
+	return 0;
+}
+
+/** Resets the rail GUI - sets default railtype to build
+ * and resets the signal GUI
+ */
+void InitializeRailGUI()
+{
+	SetDefaultRailGui();
+
+	_convert_signal_button = false;
+	_cur_signal_type = SIGTYPE_NORMAL;
+	ResetSignalVariant();
+}

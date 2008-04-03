@@ -41,6 +41,7 @@
 #include "player_gui.h"
 #include "settings_type.h"
 #include "newgrf_cargo.h"
+#include "rail_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1833,6 +1834,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	SetDate(ConvertYMDToDate(_cur_year + p2, ymd.month, ymd.day));
 	EnginesMonthlyLoop();
 	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
+	ResetSignalVariant();
 	return _cur_year;
 }
 

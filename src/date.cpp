@@ -15,6 +15,7 @@
 #include "date_func.h"
 #include "vehicle_base.h"
 #include "debug.h"
+#include "rail_gui.h"
 #ifdef DEBUG_DUMP_COMMANDS
 #include "saveload.h"
 #endif
@@ -281,6 +282,8 @@ void IncreaseDate()
 	AircraftYearlyLoop();
 	ShipsYearlyLoop();
 	if (_network_server) NetworkServerYearlyLoop();
+
+	if (_cur_year == _patches.semaphore_build_before) ResetSignalVariant();
 
 	/* check if we reached end of the game */
 	if (_cur_year == _patches.ending_year) {
