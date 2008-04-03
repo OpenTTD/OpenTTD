@@ -1328,11 +1328,19 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
-					if (_patches.drag_signals_density > 1) _patches.drag_signals_density--;
+					if (_patches.drag_signals_density > 1) {
+						_patches.drag_signals_density--;
+						const Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
+						if (w != NULL) SetWindowDirty(w);
+					}
 					break;
 
 				case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
-					if (_patches.drag_signals_density < 20) _patches.drag_signals_density++;
+					if (_patches.drag_signals_density < 20) {
+						_patches.drag_signals_density++;
+						const Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
+						if (w != NULL) SetWindowDirty(w);
+					}
 					break;
 
 				default: break;
