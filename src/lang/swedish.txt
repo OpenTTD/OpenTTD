@@ -1050,6 +1050,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillåt
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillåt skicka pengar till andra företag: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Hastighetsfaktor för flygplan: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillåt byggande av närliggande stationer: {ORANGE}{STRING}
 
@@ -1204,6 +1205,18 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ändra inställningsvärde
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Några eller alla av standard serviceintervalls-inställningarna är felaktiga! (5-90% och 30-800 dagar är giltiga inställningar)
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vägfinnare för tåg: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ej rekommenderad)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Rekommenderad)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Vägfinnare för vägfordon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Ej rekommenderad)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Rekommenderad)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Vägfinnare för skepp: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Rekommenderad)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ej rekommenderad)
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempererat landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arktiskt landskap
@@ -1339,6 +1352,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Flera sp
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelarnamn:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Namnet som andra spelare kommer se dej som
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Mata in ditt namn
 STR_NETWORK_CONNECTION                                          :{BLACK}Anslutning:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Välj mellan att spela över internet eller det lokala nätverket
 
@@ -1382,6 +1396,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Starta e
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Namn:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Namnet på nätverksspelet kommer att synas för andra spelare i multiplayer menyn
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Mata in ett namn för nätverksspelet
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Bestäm lösenord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Skydda spelet med ett lösenord så att inte andra än dom som har lösenordet kan gå med i spelet
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Välj karta:
@@ -1438,6 +1453,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spansk
 STR_NETWORK_LANG_SWEDISH                                        :Svensk
 STR_NETWORK_LANG_TURKISH                                        :Turkisk
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Kroatiska
+STR_NETWORK_LANG_CATALAN                                        :Katalanska
+STR_NETWORK_LANG_ESTONIAN                                       :Estniska
+STR_NETWORK_LANG_GALICIAN                                       :Galiciska
+STR_NETWORK_LANG_GREEK                                          :Grekiska
+STR_NETWORK_LANG_LATVIAN                                        :Lettiska
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Nätverksspel
@@ -1536,6 +1558,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRIN
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Till {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alla] :
 STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Mata in text för nätverkschat
 STR_NETWORK_NAME_CHANGE                                         :har ändrat sitt namn till
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Servern avslutade sessionen
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Servern startar om...{}Var vänlig vänta...
@@ -1599,6 +1622,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}För hö
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Inget passande järnvägsspår
 STR_1007_ALREADY_BUILT                                          :{WHITE}...redan byggd
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Måste ta bort järnväg först
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Vägen är enkelriktad eller blockerad
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Bygg järnväg
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifierad järnvägskonstruktion
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Bygg monorail
@@ -1701,6 +1725,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Byggnad måste rivas först
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Stad)
 STR_2006_POPULATION                                             :{BLACK}Invånare: {ORANGE}{COMMA}{BLACK}  Hus: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Byt namn på stad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan inte byta namn på stad...
@@ -1937,6 +1962,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Välj ty
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (grön), förbestämt spel (blå), eller slumpmässigt nytt spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Skapa slumpmässigt nytt spel
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Läs höjdkarta
+STR_SAVE_OSKTITLE                                               :{BLACK}Mata in ett namn för detta sparade spel
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} i vägen
@@ -2695,6 +2721,8 @@ STR_REFIT_TIP                                                   :{BLACK}Välj vi
 STR_REFIT_ORDER                                                 :(Anpassa för {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Tidtabell
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Ändra till tidtabellsvy
+STR_ORDER_VIEW                                                  :{BLACK}Order
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Byt till  ordervyn
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på order - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3251,6 +3279,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Ändra s
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generera Värld
 STR_RANDOM_SEED                                                 :{BLACK}Slump-nummer:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klicka för att mata in ett slump-nummer
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Mata in ett slumpmässigt frö
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
 STR_TREE_PLACER                                                 :{BLACK}Träd Algoritm:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation på höjdkarta:
@@ -3341,6 +3370,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Växla g
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Växla genomskinlighet för byggnader såsom stationer, depåer, riktmärken eller kedjelinje
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla genomskinlighet för industrier
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner, kanske i framtiden även ögongodis
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Växla genomskinlighet för kedjebro. CTRL+klick för att låsa.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Växla genomskinlighet för lastningsindikatörer
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3397,6 +3427,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Namnet m
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Åk till nästa skylt
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Åk till föregående skylt
+STR_SIGN_OSKTITLE                                               :{BLACK}Mata in ett namn för skylten
 
 ########
 
@@ -3468,4 +3499,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konverte
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragen signals täthet
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minska dragen signals täthet
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Öka dragen signals täthet
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

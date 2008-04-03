@@ -2,7 +2,6 @@
 ##ownname Português (BR)
 ##isocode pt_BR
 ##plural 2
-##case m f
 ##gender m f
 
 #
@@ -1175,6 +1174,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :padrão
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :melhores estradas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grade 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :random
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1354,6 +1354,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multi-jo
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nome:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Este é o nome pelo qual os outros jogadores irão te identificar
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Coloque seu nome
 STR_NETWORK_CONNECTION                                          :{BLACK}Conexão:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Escolha entre um jogo pela Internet ou pela rede local
 
@@ -1397,6 +1398,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Iniciar 
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome do jogo:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}O nome do jogo será exibido aos outros jogadores no menu de seleção de jogos multi-jogador
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Coloque o nome para o jogo em rede
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir senha
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que seja publicamente acessível
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecionar um mapa:
@@ -1453,6 +1455,13 @@ STR_NETWORK_LANG_SPANISH                                        :Espanhol
 STR_NETWORK_LANG_SWEDISH                                        :Sueco
 STR_NETWORK_LANG_TURKISH                                        :Turco
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
+STR_NETWORK_LANG_AFRIKAANS                                      :Africano
+STR_NETWORK_LANG_CROATIAN                                       :Croata
+STR_NETWORK_LANG_CATALAN                                        :Catalão
+STR_NETWORK_LANG_ESTONIAN                                       :Estoniano
+STR_NETWORK_LANG_GALICIAN                                       :Galego
+STR_NETWORK_LANG_GREEK                                          :Grego
+STR_NETWORK_LANG_LATVIAN                                        :Letão
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera do jogo
@@ -1551,6 +1560,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Coloque o texto para o jogo em rede
 STR_NETWORK_NAME_CHANGE                                         :mudou o nome dele/dela para
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor fechou a sessão
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor está reiniciando...{}Aguarde...
@@ -1956,6 +1966,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecion
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecionar cenário (verde), jogo pré-programado (azul), ou novo jogo aleatório
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Gerar novo jogo aleatório
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Carregar Relevo
+STR_SAVE_OSKTITLE                                               :{BLACK}Coloque o nome para o jogo salvo
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} no caminho
@@ -2714,6 +2725,8 @@ STR_REFIT_TIP                                                   :{BLACK}Selecion
 STR_REFIT_ORDER                                                 :(Adaptar para {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Plano de horário
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Exibe o plano de horário
+STR_ORDER_VIEW                                                  :{BLACK}Ordens
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Alternar para ver as ordens
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3270,6 +3283,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Muda a s
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Geração de mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semente:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Clique para digitar uma semente
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Coloque uma semente randomica
 STR_LAND_GENERATOR                                              :{BLACK}Gerador de terra
 STR_TREE_PLACER                                                 :{BLACK}Algorítimo de árvores
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotação do mapa em relevo:
@@ -3417,6 +3431,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nome dev
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Próxima Placa
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Placa anterior
+STR_SIGN_OSKTITLE                                               :{BLACK}Coloque um nome para a placa
 
 ########
 
@@ -3488,4 +3503,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converte
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade dos sinais ao clicar e arrastar
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir a densidade dos sinais
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar a densidade dos sinais
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

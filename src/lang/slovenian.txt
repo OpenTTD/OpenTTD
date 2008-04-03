@@ -1215,6 +1215,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :privzeto
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :boljše ceste
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :naključno
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozicija glavne orodne vrstice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Levo
@@ -1394,6 +1395,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Več igr
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ime igralca:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}To je ime, po katerem te prepoznajo drugi igralci
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Vpiši tvoje ime
 STR_NETWORK_CONNECTION                                          :{BLACK}Povezava:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Izberi med internetom ali lokalno mrezo (LAN)
 
@@ -1437,6 +1439,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Poženi 
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Ime igre:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Ime bo prikazano drugim igralcem na večigralskem seznamu
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Vpiši ime za mrežno igro
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavi geslo
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zaščiti igro z geslom, če želiš preprečiti dostop nepovabljenim
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Izberi ozemlje:
@@ -1493,6 +1496,13 @@ STR_NETWORK_LANG_SPANISH                                        :Španski
 STR_NETWORK_LANG_SWEDISH                                        :Švedski
 STR_NETWORK_LANG_TURKISH                                        :Turški
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinski
+STR_NETWORK_LANG_AFRIKAANS                                      :Afriški
+STR_NETWORK_LANG_CROATIAN                                       :Hrvaški
+STR_NETWORK_LANG_CATALAN                                        :Katalonski
+STR_NETWORK_LANG_ESTONIAN                                       :Estonski
+STR_NETWORK_LANG_GALICIAN                                       :Galijski
+STR_NETWORK_LANG_GREEK                                          :Grški
+STR_NETWORK_LANG_LATVIAN                                        :Latvijski
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Seje večigralskih iger
@@ -1591,6 +1601,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STR
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsi] :
 STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši tekst za mrežni pogovor
 STR_NETWORK_NAME_CHANGE                                         :je spremenil/a svoje ime v
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Strežnik je zaprl sejo
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Strežnik se zaganja...{}Prosim počakaj...
@@ -1757,6 +1768,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Najprej mora biti stavba porušena
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Mesto)
 STR_2006_POPULATION                                             :{BLACK}Prebivalstvo: {ORANGE}{COMMA}{BLACK}  Število stavb: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Preimenuj mesto
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Ne moreš preimenovati mesta ...
@@ -1994,6 +2006,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Izberi t
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Izberi scenarij (zeleno), prednastavljeno igro (modro) ali naključno novo igro
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Ustvari naključno novo igro
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Naloži višinsko karto
+STR_SAVE_OSKTITLE                                               :{BLACK}Vpiši ime za shranjeno igro
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na poti
@@ -2789,6 +2802,8 @@ STR_REFIT_TIP                                                   :{BLACK}Izberi p
 STR_REFIT_ORDER                                                 :(Predelaj za {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Časovna tabela
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Preklop na pogled časovnih tabel
+STR_ORDER_VIEW                                                  :{BLACK}Ukazi
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Preklop na pogled ukazov
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ukazi)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec ukazov - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3345,6 +3360,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Spremeni
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Ustvarjanje sveta
 STR_RANDOM_SEED                                                 :{BLACK}Naključno seme:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klikni za vnos naključnega semena
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Vpiši naključno seme
 STR_LAND_GENERATOR                                              :{BLACK}Ustvarjalec terena:
 STR_TREE_PLACER                                                 :{BLACK}Algoritem dreves:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Zasuk višinskega zemljevida:
@@ -3492,6 +3508,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Ime mora
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Pojdi na naslednjo oznako
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Pojdi na  predhodno oznako
+STR_SIGN_OSKTITLE                                               :{BLACK}Vpiši ime za znak
 
 ########
 
@@ -3563,4 +3580,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Zamenjav
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gostota vlečnih signalov
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Zmanjšaj gostoto signala za vlečenje
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povečaj gostoto signala za vlečenjeIncrease dragging signal density
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

@@ -1175,6 +1175,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Predefinita
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :Pianta migliorata
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :Griglia 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :Griglia 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :Casuale
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sinistra
@@ -1354,6 +1355,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multigio
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nome giocatore:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Questo è il nome con cui si verrà identificati dagli altri giocatori
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Inserire il nome del giocatore
 STR_NETWORK_CONNECTION                                          :{BLACK}Connessione:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Sceglie fra una partita in Internet o in rete locale (LAN)
 
@@ -1397,6 +1399,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Avvia nu
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome partita:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Il nome della partita sarà mostrato dagli altri giocatori nel menu di selezione delle partite multigiocatore
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Inserire il nome della partita
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Imposta password
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protegge la partita con una password in modo che non sia accessibile pubblicamente
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleziona mappa:
@@ -1456,7 +1459,7 @@ STR_NETWORK_LANG_UKRAINIAN                                      :Ucraino
 STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :Croato
 STR_NETWORK_LANG_CATALAN                                        :Catalano
-STR_NETWORK_LANG_ESTONIAN                                       :Èstone
+STR_NETWORK_LANG_ESTONIAN                                       :Estone
 STR_NETWORK_LANG_GALICIAN                                       :Galiziano
 STR_NETWORK_LANG_GREEK                                          :Greco
 STR_NETWORK_LANG_LATVIAN                                        :Lèttone
@@ -1558,6 +1561,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Tutti] :
 STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Inserire il messaggio
 STR_NETWORK_NAME_CHANGE                                         :ha cambiato il suo nome in
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Il server ha chiuso la sessione
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Il server si sta riavviando...{}Attendere prego...
@@ -1961,6 +1965,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selezion
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleziona uno scenario (verde), una partita pre-impostata (blu), o una nuova partita casuale
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Crea partita casuale
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Carica heightmap
+STR_SAVE_OSKTITLE                                               :{BLACK}Inserire un nome per il salvataggio
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} di mezzo
@@ -2719,6 +2724,8 @@ STR_REFIT_TIP                                                   :{BLACK}Selezion
 STR_REFIT_ORDER                                                 :(Riadatta per {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Orario
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Passa alla visualizzazione della tabella oraria
+STR_ORDER_VIEW                                                  :{BLACK}Ordini
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Passa alla visualizzazione degli ordini
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordini)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fine degli ordini - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3275,6 +3282,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Cambia i
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generazione mondo
 STR_RANDOM_SEED                                                 :{BLACK}Seme casuale:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Fare clic per introdurre un seme casuale
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Inserire un seme casuale
 STR_LAND_GENERATOR                                              :{BLACK}Generatore:
 STR_TREE_PLACER                                                 :{BLACK}Algoritmo alberi:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotazione heightmap:
@@ -3422,6 +3430,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Il nome 
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Va al cartello successivo
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Va al cartello precedente
+STR_SIGN_OSKTITLE                                               :{BLACK}Inserire il nome del cartello
 
 ########
 
@@ -3493,4 +3502,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversi
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumenta la distanza fra i segnali costruiti
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'ìùqwertyuiopè+asdfghjklòà  zxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"£$%&/()=?^QWERTYUIOPé*§ASDFGHJKLç°  ZXCVBNM;:_ .
 ########

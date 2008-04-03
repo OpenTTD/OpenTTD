@@ -1238,6 +1238,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :alapértelmezet
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :jobb utak
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :véletlenszerű
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Balra
@@ -1417,6 +1418,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hálóza
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Játékos neve:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}A többi játékos ilyen nével fog ismerni Téged.
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Add meg a neved
 STR_NETWORK_CONNECTION                                          :{BLACK}Kapcsolat:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Válassz az internetes vagy helyi hálózati játék közül
 
@@ -1460,6 +1462,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Új ját
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Játék neve:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}A játék neve fog megjelenni a többi játékosnak a többjátékos menüben
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Add meg a hálózati játékhoz a neved
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Jelszó beállítása
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Védd le a játékodat jelszóval ha nem akarod hogy mások csatlakozzanak
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Válassz egy térképet:
@@ -1621,6 +1624,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Mindenkinek] :
 STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Add meg a hálózati beszélgetéshez a neved
 STR_NETWORK_NAME_CHANGE                                         :megváltoztatta a nevét erre:
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} A szerver leállította a játékot
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} A szerver újraindul...{}Türelem...
@@ -2024,6 +2028,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Az új j
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Válassz egy pályát (zöld), előre beállított játékot (kék) vagy véletlenszerű új játékot
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Véletlenszerű új játék
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Magasságtérkép betöltése
+STR_SAVE_OSKTITLE                                               :{BLACK}Add meg a játékmentés nevét
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}...{STRING} van az útban
@@ -3593,4 +3598,7 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Szignál
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Automata szignálsűrűség
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Automata szignáltávolság csökkentése
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Automata szignáltávolság növelése
+########
+
+############ on screen keyboard
 ########

@@ -1173,6 +1173,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standaard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betere wegen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :willekeurig
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
@@ -1352,6 +1353,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Netwerks
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelernaam:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dit is de naam waarmee andere spelers je herkennen
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Was is je naam
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbinding:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Kies tussen een internet spel of een lokaal netwerk spel
 
@@ -1395,6 +1397,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start ni
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spelnaam:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}De spelnaam wordt weergegeven aan andere spelers in het multiplayer spelselectie menu
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Geef de naam van het netwerk spel
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Zet wachtwoord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Bescherm je spel met een wachtwoord als je niet wil dat andere mensen meespelen
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecteer een kaart:
@@ -1451,6 +1454,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spaans
 STR_NETWORK_LANG_SWEDISH                                        :Zweeds
 STR_NETWORK_LANG_TURKISH                                        :Turks
 STR_NETWORK_LANG_UKRAINIAN                                      :Oekraïne
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Kroatisch
+STR_NETWORK_LANG_CATALAN                                        :Catalaans
+STR_NETWORK_LANG_ESTONIAN                                       :Ests
+STR_NETWORK_LANG_GALICIAN                                       :Galiciaans
+STR_NETWORK_LANG_GREEK                                          :Grieks
+STR_NETWORK_LANG_LATVIAN                                        :Lets
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer lobby
@@ -1549,6 +1559,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Prive] {STRING
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Prive] Aan {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Iedereen] :
 STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Heef de tekst voor de netwerk-chat
 STR_NETWORK_NAME_CHANGE                                         :heeft zijn naam veranderd in
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} De server heeft de sessie gestopt.
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} De server wordt opnieuw gestart...{}Wacht aub...
@@ -1715,6 +1726,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebouw moet eerst gesloopt worden
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Stad)
 STR_2006_POPULATION                                             :{BLACK}Bevolking: {ORANGE}{COMMA}{BLACK}  Huizen: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Hernoem stad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan stad niet hernoemen...
@@ -1951,6 +1963,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selectee
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecteer scenario (groen), vooraf ingesteld spel (blauw), or willekeurig nieuw spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereer willekeurig nieuw spel
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Laad Hoogtekaart
+STR_SAVE_OSKTITLE                                               :{BLACK}Typ een naam voor het op te slaan spel
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in de weg
@@ -2709,6 +2722,8 @@ STR_REFIT_TIP                                                   :{BLACK}Kies naa
 STR_REFIT_ORDER                                                 :(Ombouwen naar {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Dienstregeling
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Schakel naar de dienstregeling
+STR_ORDER_VIEW                                                  :{BLACK}Orders
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Ga naar het order scherm
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Einde van orders - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3265,6 +3280,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Wijzig h
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wereld maken
 STR_RANDOM_SEED                                                 :{BLACK}Willekeurig getal
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klik voor een willekeurig getal
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Geef een willekeurige seed op
 STR_LAND_GENERATOR                                              :{BLACK}Land generator:
 STR_TREE_PLACER                                                 :{BLACK}Bos algoritme:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Aantal graden hoogtekaart:
@@ -3412,6 +3428,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Naam moe
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ga naar volgende bord
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ga naar vorige bord
+STR_SIGN_OSKTITLE                                               :{BLACK}Heef een naam voor dit bord
 
 ########
 
@@ -3483,4 +3500,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein omb
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein gesleepte sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot gesleepte sein dichtheid
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

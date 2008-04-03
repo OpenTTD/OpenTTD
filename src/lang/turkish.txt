@@ -1035,6 +1035,7 @@ STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Garaja 
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Üretim fabrikalarının yapım yöntemi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :hiçbiri
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :diğer fabrikalar gibi
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :tetkik aramayla
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Bir şehirde birden fazla aynı fabrika olması izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Aynı tür fabrikalar yan yana yapılabilir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
@@ -1048,6 +1049,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Şehrin
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Diğer şirketlere para gönderme izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
 
@@ -1349,6 +1351,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Çok Oyu
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Oyuncu adı:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Oyuncuların görecegi adınızı seçin
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}İsminizi girin
 STR_NETWORK_CONNECTION                                          :{BLACK}Bağlantı:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}İnternet ya da yerel ağ bağlantısı (LAN) oyunundan birini seçin
 
@@ -1392,6 +1395,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Yeni ço
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Oyun adı:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Bu oyun adı diğer oyuncuların server listesinde görünecek
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Ağ oyunu için bir isim girin
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Parola koy
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Erişimi kısıtlamak için oyuna parola koy
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Harita seç:
@@ -1448,6 +1452,13 @@ STR_NETWORK_LANG_SPANISH                                        :İspanyolca
 STR_NETWORK_LANG_SWEDISH                                        :İsveççe
 STR_NETWORK_LANG_TURKISH                                        :Türkçe
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukraynaca
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaanca
+STR_NETWORK_LANG_CROATIAN                                       :Hırvatça
+STR_NETWORK_LANG_CATALAN                                        :Katalanca
+STR_NETWORK_LANG_ESTONIAN                                       :Estonyaca
+STR_NETWORK_LANG_GALICIAN                                       :Galiçyaca
+STR_NETWORK_LANG_GREEK                                          :Yunanca
+STR_NETWORK_LANG_LATVIAN                                        :Letonca
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Çok oyunculu oyun lobisi
@@ -1546,6 +1557,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Herkes] :
 STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Ağ sohbeti için yazı girin
 STR_NETWORK_NAME_CHANGE                                         :ismini değiştirdi:
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Sunucu kapandı
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Sunucu baştan başlatılıyor...{}Lütfen bekleyin...
@@ -1609,6 +1621,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Çok yü
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Uygun ray yok
 STR_1007_ALREADY_BUILT                                          :{WHITE}...zaten yapıldı
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Önce ray kaldırılmalı
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Yol tek yönlü veya kapalı
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Demiryolu Yapımı
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrikli Ray Yapımı
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monoray Yapımı
@@ -1711,6 +1724,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Önce bina yıkılmalı
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Şehir)
 STR_2006_POPULATION                                             :{BLACK}Nüfus: {ORANGE}{COMMA}{BLACK}  Ev: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :İsim değiştir
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}İsim değiştirilemiyor...
@@ -1947,6 +1961,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Yeni oyu
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Senaryo (yeşil), kurulu oyun (mavi) veya yeni oyun seç
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Rastgele haritada oyna
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Yükseklik haritası yükle
+STR_SAVE_OSKTITLE                                               :{BLACK}Kayıtlı oyun için bir isim girin
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}yolda {STRING} var
@@ -3091,6 +3106,7 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} için 
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} önce, {STRING} ondan sonra yüklenmeli.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} sonra, {STRING} ondan önce yüklenmeli.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
@@ -3259,6 +3275,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Harita y
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Harita üretimi
 STR_RANDOM_SEED                                                 :{BLACK}Rastgele Sayı:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Rastgele bir sayı girmek için tıklayın
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Rastgele bir tohum girin
 STR_LAND_GENERATOR                                              :{BLACK}Harita üretici:
 STR_TREE_PLACER                                                 :{BLACK}Ağaç algoritmasi:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Yükseklik haritası döndür:
@@ -3276,6 +3293,7 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Kar yük
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Başlangıç yılını değiştir
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Şehir planlama uyarısı
 STR_HEIGHTMAP_NAME                                              :{BLACK}Yükseklik haritası adı:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Boyut: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Harita oluşturuluyor...
@@ -3464,4 +3482,7 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Buradaki
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sinyal sürükleme yoğunluğu
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Sinyal sürükleme yoğunluğunu azalt
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Sinyal sürükleme yoğunluğunu arttır
+########
+
+############ on screen keyboard
 ########

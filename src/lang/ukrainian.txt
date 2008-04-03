@@ -1477,6 +1477,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Мере
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ім'я гравця:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ім'я, за яким тебе розпізнаватимуть інші гравці
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Введіть ваше ім'я
 STR_NETWORK_CONNECTION                                          :{BLACK}З'єднання:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Виберіть гру через інтернет або через локальну мережу(ЛОМ)
 
@@ -1520,6 +1521,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Ство
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Назва гри:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Назва гри відображатиметься іншим гравцям у меню мережної гри
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Введіть назву мережевої гри
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Встановити пароль
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Захистіть вашу гру паролем, якщо не бажаєте загального доступу
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Виберіть карту:
@@ -1576,6 +1578,13 @@ STR_NETWORK_LANG_SPANISH                                        :Іспансь�
 STR_NETWORK_LANG_SWEDISH                                        :Шведська
 STR_NETWORK_LANG_TURKISH                                        :Турецька
 STR_NETWORK_LANG_UKRAINIAN                                      :Українська
+STR_NETWORK_LANG_AFRIKAANS                                      :Афрікаанс
+STR_NETWORK_LANG_CROATIAN                                       :Хорватська
+STR_NETWORK_LANG_CATALAN                                        :Каталонська
+STR_NETWORK_LANG_ESTONIAN                                       :Естонська
+STR_NETWORK_LANG_GALICIAN                                       :Галісійська
+STR_NETWORK_LANG_GREEK                                          :Грецька
+STR_NETWORK_LANG_LATVIAN                                        :Латвійська
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Мережева гра - кімната
@@ -1674,6 +1683,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Приватн
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Приватно] до {STRING}:{GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
 STR_NETWORK_CHAT_ALL                                            :[Всім] {STRING}:{GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введіть текст для мережевого чату
 STR_NETWORK_NAME_CHANGE                                         :змінив своє ім'я на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрив сеанс
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Перезавантаження сервера...{}Зачекайте...
@@ -2077,6 +2087,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Вибе
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Виберіть сценарій (зелений), встановлена гра (синій), або випадкова нова гра
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерувати випадкову нову гру
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Завантажити ландшафт
+STR_SAVE_OSKTITLE                                               :{BLACK}Введіть назву файла збереженої гри
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на шляху
@@ -2872,6 +2883,8 @@ STR_REFIT_TIP                                                   :{BLACK}Обер
 STR_REFIT_ORDER                                                 :(Переобладнати до {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Розклад
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Переключитись на розклад
+STR_ORDER_VIEW                                                  :{BLACK}Завдання
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Переключитись до вікна завдань
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Накази)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Кінець наказів - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3428,6 +3441,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Змін
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Створення світу
 STR_RANDOM_SEED                                                 :{BLACK}Випадкове число:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Клік для вводу значення
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Введіть випадкове число
 STR_LAND_GENERATOR                                              :{BLACK}Ландшафт:
 STR_TREE_PLACER                                                 :{BLACK}Насадження дерев:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Поворот рельєфу
@@ -3575,6 +3589,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Назв
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Наступне позначення
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Попереднє позначення
+STR_SIGN_OSKTITLE                                               :{BLACK}Введіть назву знака
 
 ########
 
@@ -3646,4 +3661,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Замі
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Частота сигналів при перетаскуванні
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Зменшити частоту сигналів
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Збільшити частоту сигналів
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\йцукенгшщзхїфівапролджє  ячсмитьбю. .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄ  ЯЧСМИТЬБЮ, .
 ########

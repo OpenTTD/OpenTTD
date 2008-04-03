@@ -1174,6 +1174,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :défaut
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :meilleures routes
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grille 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :aléatoire
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position de la barre d'outils principale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :À gauche
@@ -1353,6 +1354,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multijou
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nom du joueur:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ceci est le nom avec lequel les autres joueurs pourront vous identifier
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Entrer votre nom
 STR_NETWORK_CONNECTION                                          :{BLACK}Connexion :
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choisir entre un jeu sur Internet ou sur réseau local
 
@@ -1396,6 +1398,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Commence
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nom de la partie:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Le nom de la partie sera affiché aux autres joueurs dans le menu de sélection de partie multijoueur
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Entrer un nom pour la partie en réseau
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Choisir le mot de passe
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protéger votre partie avec un mot de passe si vous ne souhaitez pas que d'autres l'utilisent
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Choisir une carte:
@@ -1557,6 +1560,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privé] {STRIN
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privé] A {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Tous] :
 STR_NETWORK_CHAT_ALL                                            :[Tous] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Entrer le texte pour le chat
 STR_NETWORK_NAME_CHANGE                                         :a changé son nom pour
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Le serveur a fermé la session
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Le serveur redémarre...{}Veuillez patienter...
@@ -1960,6 +1964,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Choix du
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Choisir un scénario (vert), une partie préparée (bleu), ou une partie aléatoire
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Créer une partie aléatoirement
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Charger une carte d'altitude
+STR_SAVE_OSKTITLE                                               :{BLACK}Entrer un nom pour la sauvegarde
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} présente
@@ -2718,6 +2723,8 @@ STR_REFIT_TIP                                                   :{BLACK}Choisir 
 STR_REFIT_ORDER                                                 :(Réaménager pour {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Horaire
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Basculer vers la vue horaire
+STR_ORDER_VIEW                                                  :{BLACK}Ordres
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Basculer vers la vue ordres
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin des ordres - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3274,6 +3281,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Modifier
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Création du monde
 STR_RANDOM_SEED                                                 :{BLACK}Amorce :
 STR_RANDOM_SEED_HELP                                            :{BLACK}Cliquer pour saisir une amorce
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Entrer une amorce
 STR_LAND_GENERATOR                                              :{BLACK}Générateur :
 STR_TREE_PLACER                                                 :{BLACK}Ajout des arbres :
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation de la carte d'altitude :
@@ -3421,6 +3429,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Le nom d
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Aller au panneau suivant
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Aller au panneau précédent
+STR_SIGN_OSKTITLE                                               :{BLACK}Entrer un nom pour le panneau
 
 ########
 
@@ -3492,4 +3501,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversi
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densité de signal
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Réduire la densité de signal
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Augmenter la densité de signal
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :²&é"'(-è_çà)=azertyuiop^$qsdfghjklmù*wxcvbn,;:!
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :²1234567890°+AZERTYUIOP¨£QSDFGHJKLM%µWXCVBN?./§
 ########

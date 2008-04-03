@@ -1173,6 +1173,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :predeterminat
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :millors carreteres
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :aleatori
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerra
@@ -1352,6 +1353,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multijug
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nom del jugador:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Aquest és el nom amb el que els altres jugadors t'identificaran
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Posa el teu nom
 STR_NETWORK_CONNECTION                                          :{BLACK}Connexió:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Tria entre jugar per internet o jugar en xarxa local
 
@@ -1395,6 +1397,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Inicia u
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nom del joc:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}El nom del joc es mostrarà a altres jugadors en el menú de selecció de joc multijugador
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Posa el nom del joc per xarxa
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Posa una contrasenya
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protegeix el teu joc amb una contrasenya si no vols que d'altre gent el pugui utilitzar
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecciona un mapa:
@@ -1556,6 +1559,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] a {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el text pel xat de xarxa
 STR_NETWORK_NAME_CHANGE                                         :ha canviat el seu nom a
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} El servidor ha tancat la sesió
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El servidor està reiniciant...{}Espera un moment...
@@ -1959,6 +1963,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccio
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecciona l'escenari (verd), joc pre-programat (blau), o el nou joc aleatori
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genera un nou joc aleatori
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Carrega un Mapa d'alçades
+STR_SAVE_OSKTITLE                                               :{BLACK}Posa el nom pel joc desat
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} en el camí
@@ -2717,6 +2722,8 @@ STR_REFIT_TIP                                                   :{BLACK}Seleccio
 STR_REFIT_ORDER                                                 :(Remodela a {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Horari
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Canvia cap a la vista d'horari
+STR_ORDER_VIEW                                                  :{BLACK}Ordres
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Commuta l'ordre de la vista
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fí d'Ordres - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3273,6 +3280,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Canvia e
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generació del món
 STR_RANDOM_SEED                                                 :{BLACK}Nombre aleatori:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Click per introduïr un nombre aleatori
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Posa un valor aleatori
 STR_LAND_GENERATOR                                              :{BLACK}Gen. de terrenys:
 STR_TREE_PLACER                                                 :{BLACK}Algoritme d'arbres:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotació del mapa d'alçades:
@@ -3420,6 +3428,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nom h
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ves a la propera senyal
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ves a la senyal anterior
+STR_SIGN_OSKTITLE                                               :{BLACK}Posa el nom del signe
 
 ########
 
@@ -3491,4 +3500,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversi
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densitat de senyals en arrossegar
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Disminueix la densitat de senyals en arrossegar
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incrementa la densitat de senyals en arrossegar
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

@@ -1416,6 +1416,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hra pre 
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Meno hraca:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Zadajte vaše meno
 STR_NETWORK_CONNECTION                                          :{BLACK}Pripojenie:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vyber si medzi hrou na internete alebo na lokalnej sieti
 
@@ -1459,6 +1460,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Zacat no
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nazov hry:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Nazov hry, ktory uvidia ostatni v zozname sietovych hier
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Zadajte názov sietovej hry
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ochran hru heslom, ak nechcec aby sa pripajali ostatni ludia
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber mapu:
@@ -1515,6 +1517,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spanielsky
 STR_NETWORK_LANG_SWEDISH                                        :Svédsky
 STR_NETWORK_LANG_TURKISH                                        :Turecky
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinsky
+STR_NETWORK_LANG_AFRIKAANS                                      :Africky
+STR_NETWORK_LANG_CROATIAN                                       :Chorvátsky
+STR_NETWORK_LANG_CATALAN                                        :Katalánsky
+STR_NETWORK_LANG_ESTONIAN                                       :Estónsky
+STR_NETWORK_LANG_GALICIAN                                       :Gálsky
+STR_NETWORK_LANG_GREEK                                          :Grécky
+STR_NETWORK_LANG_LATVIAN                                        :Litovsky
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sietova hra - lobby
@@ -1613,6 +1622,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRIN
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všetkým] :
 STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadajte text pre sietový chat
 STR_NETWORK_NAME_CHANGE                                         :si zmenil meno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje ...{}Cakajte prosim ...
@@ -1779,6 +1789,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova sa musi zburat
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Mesto)
 STR_2006_POPULATION                                             :{BLACK}Obyvatelstvo: {ORANGE}{COMMA}{BLACK}  Domov: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Premenovat mesto
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Mesto nemoze byt odstranene ...
@@ -2015,6 +2026,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber ty
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vyber scenar (zeleny), prednastavenu hra (modra), alebo nahodnu hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vygenerovat nahodnu novu hru
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Nahrat výškovú mapu
+STR_SAVE_OSKTITLE                                               :{BLACK}Zadajte názov pre uloženie hry
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} v ceste
@@ -2773,6 +2785,8 @@ STR_REFIT_TIP                                                   :{BLACK}Vyberte 
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}CP
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prepnút na zobrazenie cestovného poriadku
+STR_ORDER_VIEW                                                  :{BLACK}Príkazy
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Prepnút na zobrazenie príkazov
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec prikazov - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3329,6 +3343,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Zmenit n
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Vytvorenie krajiny
 STR_RANDOM_SEED                                                 :{BLACK}Náhodný kód:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kliknite pre zadanie nahodneho kodu
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Zadajte náhodný kód
 STR_LAND_GENERATOR                                              :{BLACK}Generátor krajiny:
 STR_TREE_PLACER                                                 :{BLACK}Generátor stromov:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Orientacia vyskovej mapy:
@@ -3476,6 +3491,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Meno mus
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Prejst na dalsiu znacku
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Prejst na predchádzajúcu znacku
+STR_SIGN_OSKTITLE                                               :{BLACK}Zadajte názov pre popis
 
 ########
 
@@ -3547,4 +3563,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konverzi
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Hustota signálov pri stavbe tahaním
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Znižit hustotu signálov
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit hustotu signálov
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
