@@ -45,9 +45,9 @@ static bool _remove_button_clicked;
 static DiagDirection _build_depot_direction;
 static byte _waypoint_count = 1;
 static byte _cur_waypoint_type;
-static bool _convert_signal_button; // convert signal button in the signal GUI pressed
-static SignalVariant _cur_signal_variant; // set the signal variant (for signal GUI)
-static SignalType _cur_signal_type; // set the signal type (for signal GUI)
+static bool _convert_signal_button = false;              ///< convert signal button in the signal GUI pressed
+static SignalVariant _cur_signal_variant = SIG_ELECTRIC; ///< set the signal variant (for signal GUI)
+static SignalType _cur_signal_type = SIGTYPE_NORMAL;     ///< set the signal type (for signal GUI)
 
 static struct {
 	byte orientation;
@@ -205,17 +205,26 @@ static void GenericPlaceSignals(TileIndex tile)
 		DoCommandP(tile, track, 0, CcPlaySound1E,
 			CMD_REMOVE_SIGNALS | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM));
 	} else {
-		if (!_patches.enable_signal_gui) _cur_signal_variant = _cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC;
+		const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
 
 		/* various bitstuffed elements for CmdBuildSingleSignal() */
 		uint32 p1 = track;
-		SB(p1, 3, 1, _ctrl_pressed);
-		SB(p1, 4, 1, _cur_signal_variant);
-		SB(p1, 5, 2, _patches.enable_signal_gui ? _cur_signal_type : SIGTYPE_NORMAL);
-		SB(p1, 7, 1, _convert_signal_button);
+
+		if (w != NULL) {
+			/* signal GUI is used */
+			SB(p1, 3, 1, _ctrl_pressed);
+			SB(p1, 4, 1, _cur_signal_variant);
+			SB(p1, 5, 2, _cur_signal_type);
+			SB(p1, 7, 1, _convert_signal_button);
+		} else {
+			SB(p1, 3, 1, _ctrl_pressed);
+			SB(p1, 4, 1, (_cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
+			SB(p1, 5, 2, SIGTYPE_NORMAL);
+			SB(p1, 7, 1, 0);
+		}
 
 		DoCommandP(tile, p1, 0, CcPlaySound1E, CMD_BUILD_SIGNALS |
-			CMD_MSG(_convert_signal_button ? STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_1010_CAN_T_BUILD_SIGNALS_HERE));
+			CMD_MSG((w != NULL && _convert_signal_button) ? STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE : STR_1010_CAN_T_BUILD_SIGNALS_HERE));
 	}
 }
 
@@ -364,7 +373,7 @@ static void BuildRailClick_Station(Window *w)
 /** The "build signal"-button proc from BuildRailToolbWndProc() (start ShowSignalBuilder() and/or HandleAutoSignalPlacement()) */
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	if (_patches.enable_signal_gui) {
+	if (_patches.enable_signal_gui != _ctrl_pressed) {
 		if (HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals)) ShowSignalBuilder();
 	} else {
 		HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
@@ -454,11 +463,20 @@ static void HandleAutoSignalPlacement()
 		return;
 	}
 
-	/* XXX Steal ctrl for autosignal function, until we get some GUI */
-	SB(p2,  3, 1, 0);
-	SB(p2,  4, 1, _cur_year < _patches.semaphore_build_before);
-	SB(p2,  6, 1, _ctrl_pressed);
-	SB(p2, 24, 8, _patches.drag_signals_density);
+	const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
+
+	if (w != NULL) {
+		/* signal GUI is used */
+		SB(p2,  3, 1, 0);
+		SB(p2,  4, 1, _cur_signal_variant);
+		SB(p2,  6, 1, _ctrl_pressed);
+		SB(p2, 24, 8, _patches.drag_signals_density);
+	} else {
+		SB(p2,  3, 1, 0);
+		SB(p2,  4, 1, (_cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
+		SB(p2,  6, 1, _ctrl_pressed);
+		SB(p2, 24, 8, _patches.drag_signals_density);
+	}
 
 	/* _patches.drag_signals_density is given as a parameter such that each user
 	 * in a network game can specify his/her own signal density */
