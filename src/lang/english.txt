@@ -1068,7 +1068,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoren
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisible trees: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
@@ -3373,6 +3372,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle t
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas. CTRL+click to lock.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. CTRL+click to lock.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators. CTRL+click to lock.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Set objects invisible instead of transparent
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

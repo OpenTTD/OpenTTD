@@ -434,6 +434,9 @@ void DrawCatenary(const TileInfo *ti)
 {
 	if (_patches.disable_elrails) return;
 
+	/* Do not draw catenary if it is invisible */
+	if (IsInvisibilitySet(TO_CATENARY)) return;
+
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
 		TileIndex head = GetNorthernBridgeEnd(ti->tile);
 

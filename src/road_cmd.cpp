@@ -970,6 +970,9 @@ static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
  */
 void DrawTramCatenary(TileInfo *ti, RoadBits tram)
 {
+	/* Do not draw catenary if it is invisible */
+	if (IsInvisibilitySet(TO_CATENARY)) return;
+
 	/* Don't draw the catenary under a low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_CATENARY)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
@@ -1153,6 +1156,9 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(dts->ground.sprite, PAL_NONE);
+
+			/* End now if buildings are invisible */
+			if (IsInvisibilitySet(TO_BUILDINGS)) break;
 
 			for (dtss = dts->seq; dtss->image.sprite != 0; dtss++) {
 				SpriteID image = dtss->image.sprite;

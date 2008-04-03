@@ -322,6 +322,9 @@ void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte stage, Ho
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) DrawGroundSprite(image, pal);
 
+	/* End now, if houses are invisible */
+	if (IsInvisibilitySet(TO_HOUSES)) return;
+
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		if (GB(dtss->image.sprite, 0, SPRITE_WIDTH) == 0) continue;
 

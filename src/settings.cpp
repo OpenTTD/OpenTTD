@@ -1296,6 +1296,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_VAR("player_face",    SLE_UINT32, S, 0, _player_face,      0,0,0xFFFFFFFF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_options", SLE_UINT, S, 0, _transparency_opt,  0,0,0x1FF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_locks", SLE_UINT, S, 0, _transparency_lock,   0,0,0x1FF,0, STR_NULL, NULL),
+	  SDTG_VAR("invisibility_options", SLE_UINT, S, 0, _invisibility_opt,  0,0, 0xFF,0, STR_NULL, NULL),
 	  SDTG_STR("keyboard",         SLE_STRB, S, 0, _keyboard_opt[0],       NULL,    STR_NULL, NULL),
 	  SDTG_STR("keyboard_caps",    SLE_STRB, S, 0, _keyboard_opt[1],       NULL,    STR_NULL, NULL),
 	  SDTG_END()
@@ -1379,7 +1380,6 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, errmsg_duration,    SLE_UINT8, S, 0,  5, 0, 20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,       NULL),
 	 SDT_VAR(Patches, toolbar_pos,        SLE_UINT8, S,MS,  0, 0,  2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,           v_PositionMainToolbar),
 	 SDT_VAR(Patches, window_snap_radius, SLE_UINT8, S,D0, 10, 1, 32, 0, STR_CONFIG_PATCHES_SNAP_RADIUS,           NULL),
-	SDT_BOOL(Patches, invisible_trees,               S, 0, false,        STR_CONFIG_PATCHES_INVISIBLE_TREES,       RedrawScreen),
 	SDT_BOOL(Patches, population_in_label,           S, 0,  true,        STR_CONFIG_PATCHES_POPULATION_IN_LABEL,   PopulationInLabelActive),
 	 SDT_VAR(Patches, map_x,              SLE_UINT8, S, 0,  8, 6, 11, 0, STR_CONFIG_PATCHES_MAP_X,                 NULL),
 	 SDT_VAR(Patches, map_y,              SLE_UINT8, S, 0,  8, 6, 11, 0, STR_CONFIG_PATCHES_MAP_Y,                 NULL),

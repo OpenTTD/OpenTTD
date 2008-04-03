@@ -1772,7 +1772,12 @@ static void DrawTile_Track(TileInfo *ti)
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 		if (IsRailDepot(ti->tile)) {
-			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
+			if (IsInvisibilitySet(TO_BUILDINGS)) {
+				/* Draw rail instead of depot */
+				dts = &_depot_invisible_gfx_table[GetRailDepotDirection(ti->tile)];
+			} else {
+				dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
+			}
 
 			relocation = rti->total_offset;
 
@@ -1835,6 +1840,9 @@ default_waypoint:
 		DrawGroundSprite(image, PAL_NONE);
 
 		if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
+
+		/* End now if buildings are invisible */
+		if (IsInvisibilitySet(TO_BUILDINGS)) return;
 
 		foreach_draw_tile_seq(dtss, dts->seq) {
 			SpriteID image = dtss->image.sprite;

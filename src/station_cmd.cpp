@@ -2184,6 +2184,9 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
 	}
 
+	/* End now if buildings are invisible */
+	if (IsInvisibilitySet(TO_BUILDINGS)) return;
+
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
 		SpriteID image = dtss->image.sprite;

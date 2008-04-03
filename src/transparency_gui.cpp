@@ -13,6 +13,7 @@
 
 TransparencyOptionBits _transparency_opt;
 TransparencyOptionBits _transparency_lock;
+TransparencyOptionBits _invisibility_opt;
 
 enum TransparencyToolbarWidgets{
 	TTW_WIDGET_SIGNS = 3,    ///< Make signs background transparent
@@ -25,6 +26,9 @@ enum TransparencyToolbarWidgets{
 	TTW_WIDGET_CATENARY,     ///< Make catenary transparent
 	TTW_WIDGET_LOADING,      ///< Make loading indicators transparent
 	TTW_WIDGET_END,          ///< End of toggle buttons
+
+	/* Panel with buttons for invisibility */
+	TTW_BUTTONS = 12,        ///< Panel with 'invisibility' buttons
 };
 
 static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
@@ -41,6 +45,18 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 			for (uint i = TO_SIGNS; i < TO_END; i++) {
 				if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[TTW_WIDGET_SIGNS + i].left + 1, w->widget[TTW_WIDGET_SIGNS + i].top + 1);
 			}
+
+			/* Do not draw button for invisible loading indicators */
+			for (uint i = 0; i < 8; i++) {
+				if (i < TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS) {
+					DrawFrameRect(i * 22, 38, i * 22 + 19, 46, true, HasBit(_invisibility_opt, i) ? FR_LOWERED : FR_NONE);
+				} else if (i == TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS) {
+					DrawFrameRect(i * 22, 38, i * 22 + 41, 46, true, HasBit(_invisibility_opt, i) ? FR_LOWERED : FR_NONE);
+				} else { // i > TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS
+					DrawFrameRect((i + 1) * 22, 38, (i + 1) * 22 + 19, 46, true, HasBit(_invisibility_opt, i) ? FR_LOWERED : FR_NONE);
+				}
+			}
+
 			break;
 
 		case WE_CLICK:
@@ -55,7 +71,23 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 					SndPlayFx(SND_15_BEEP);
 					MarkWholeScreenDirty();
 				}
+			} else if (e->we.click.widget == TTW_BUTTONS) {
+				uint x = e->we.click.pt.x / 22;
+
+				if (x > TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS) x--;
+				if (x > TTW_WIDGET_CATENARY - TTW_WIDGET_SIGNS) break;
+
+				ToggleInvisibility((TransparencyOption)x);
+				SndPlayFx(SND_15_BEEP);
+
+				/* Redraw whole screen only if transparency is set */
+				if (IsTransparencySet((TransparencyOption)x)) {
+					MarkWholeScreenDirty();
+				} else {
+					w->InvalidateWidget(TTW_BUTTONS);
+				}
 			}
+
 			break;
 	}
 }
@@ -77,11 +109,13 @@ static const Widget _transparency_widgets[] = {
 {   WWT_IMGBTN,   RESIZE_NONE,  7, 175, 196,  14,  35, SPR_BUILD_X_ELRAIL,   STR_TRANSPARENT_CATENARY_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  7, 197, 218,  14,  35, SPR_IMG_TRAINLIST,    STR_TRANSPARENT_LOADING_DESC},
 
+{    WWT_PANEL,   RESIZE_NONE,  7,   0, 218,  36,  48, 0x0,                  STR_TRANSPARENT_INVISIBLE_DESC},
+
 {   WIDGETS_END},
 };
 
 static const WindowDesc _transparency_desc = {
-	WDP_ALIGN_TBR, 58+36, 219, 36, 219, 36,
+	WDP_ALIGN_TBR, 58+36, 219, 49, 219, 49,
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_transparency_widgets,

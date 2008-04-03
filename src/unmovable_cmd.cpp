@@ -171,6 +171,8 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 			DrawClearLandTile(ti, 2);
 
+			if (IsInvisibilitySet(TO_STRUCTURES)) break;
+
 			AddSortableSpriteToDraw(
 				dtu->image.sprite, PAL_NONE, ti->x | dtu->delta_x, ti->y | dtu->delta_y,
 				dtu->size_x, dtu->size_y, dtu->size_z, ti->z,
@@ -184,6 +186,8 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, GetFoundation_Unmovable(ti->tile, ti->tileh));
 
 			DrawGroundSprite(SPR_CONCRETE_GROUND, PAL_NONE);
+
+			if (IsInvisibilitySet(TO_STRUCTURES)) break;
 
 			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
 			break;
@@ -210,6 +214,8 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
 			DrawGroundSprite(t->ground.sprite, palette);
+
+			if (IsInvisibilitySet(TO_STRUCTURES)) break;
 
 			foreach_draw_tile_seq(dtss, t->seq) {
 				AddSortableSpriteToDraw(

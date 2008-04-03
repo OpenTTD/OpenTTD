@@ -445,7 +445,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	DrawClearLandFence(ti);
 
 	/* Do not draw trees when the invisible trees patch and transparency tree are set */
-	if (IsTransparencySet(TO_TREES) && _patches.invisible_trees) return;
+	if (IsInvisibilitySet(TO_TREES)) return;
 
 	uint16 tmp = ti->x;
 

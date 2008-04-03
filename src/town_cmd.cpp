@@ -189,6 +189,9 @@ static void DrawTile_Town(TileInfo *ti)
 	pal   = dcts->ground.pal;
 	DrawGroundSprite(image, pal);
 
+	/* If houses are invisible, do not draw the upper part */
+	if (IsInvisibilitySet(TO_HOUSES)) return;
+
 	/* Add a house on top of the ground? */
 	image = dcts->building.sprite;
 	if (image != 0) {

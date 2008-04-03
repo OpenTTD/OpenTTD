@@ -597,6 +597,9 @@ static void DrawWaterStuff(const TileInfo *ti, const WaterDrawTileStruct *wdts,
 	if (image < 4) image += water_base;
 	if (draw_ground) DrawGroundSprite(image, PAL_NONE);
 
+	/* End now if buildings are invisible */
+	if (IsInvisibilitySet(TO_BUILDINGS)) return;
+
 	for (; wdts->delta_x != 0x80; wdts++) {
 		AddSortableSpriteToDraw(wdts->image + base + ((wdts->image < 24) ? locks_base : 0), palette,
 			ti->x + wdts->delta_x, ti->y + wdts->delta_y,

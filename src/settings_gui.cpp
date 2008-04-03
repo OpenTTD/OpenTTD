@@ -712,7 +712,6 @@ static const char *_patches_ui[] = {
 	"toolbar_pos",
 	"measure_tooltip",
 	"window_snap_radius",
-	"invisible_trees",
 	"population_in_label",
 	"link_terraform_toolbar",
 	"liveries",

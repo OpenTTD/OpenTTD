@@ -1067,6 +1067,19 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				MarkWholeScreenDirty();
 				break;
 
+			case '1' | WKC_CTRL | WKC_SHIFT:
+			case '2' | WKC_CTRL | WKC_SHIFT:
+			case '3' | WKC_CTRL | WKC_SHIFT:
+			case '4' | WKC_CTRL | WKC_SHIFT:
+			case '5' | WKC_CTRL | WKC_SHIFT:
+			case '6' | WKC_CTRL | WKC_SHIFT:
+			case '7' | WKC_CTRL | WKC_SHIFT:
+			case '8' | WKC_CTRL | WKC_SHIFT:
+				/* Invisibility toggle hot keys */
+				ToggleInvisibilityWithTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL | WKC_SHIFT)));
+				MarkWholeScreenDirty();
+				break;
+
 			case 'X' | WKC_CTRL:
 				ShowTransparencyToolbar();
 				break;

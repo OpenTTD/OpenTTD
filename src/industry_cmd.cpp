@@ -303,6 +303,9 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	DrawGroundSprite(image, pal);
 
+	/* If industries are transparent and invisible, do not draw the upper part */
+	if (IsInvisibilitySet(TO_INDUSTRIES)) return;
+
 	/* Add industry on top of the ground? */
 	image = dits->building.sprite;
 	if (image != 0) {
