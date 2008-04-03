@@ -1193,7 +1193,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Авт�
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Сума, необхідна для автооновлення: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Тривалість повідомлення про помилку: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Показувати населення міста поруч з назвою: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Прозорі дерева: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Класичний

@@ -1069,7 +1069,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Renovac
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Renovar auto. usando la menor cantidad de dinero: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de esta población en esta etiqueta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árboles invisibles (con edificios transparentes): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generador terreno: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original

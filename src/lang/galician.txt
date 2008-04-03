@@ -1024,7 +1024,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoren
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Diñeiro mínimo necesario para a autorenovación: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duración das mensaxes de error: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra-la poboación da cidade na etiqueta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árbores invisibles (con edificios transparentes): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Xerador de mapas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Orixinal

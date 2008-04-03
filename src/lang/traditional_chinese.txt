@@ -1061,7 +1061,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}當運�
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}自動翻新最低費用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}錯誤訊息顯示時間：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}於標籤顯示市鎮人口：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}選擇半透明建築物時將樹木隱藏：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}地形產生器：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :原版

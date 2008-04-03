@@ -1133,7 +1133,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automat
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automata megújításhoz szükséges minimális pénz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a lakosságot a feliratban: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Láthatatlan fák (átlátszó épületekkel): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Térkép generálás: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Eredeti

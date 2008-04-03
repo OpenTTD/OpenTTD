@@ -1047,7 +1047,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Αυτ�
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Αυτόματη Ανανέωση με τα ελάχιστα απαιτούμενα χρήματα: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Διάρκεια μηνύματος σφάλματος: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Εμφάνιση πληθυσμού πόλης στο όνομα της πόλης: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Αόρατα δέντρα (με διαφανή κτίρια): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Γεννήτρια Γης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Αυθεντικό

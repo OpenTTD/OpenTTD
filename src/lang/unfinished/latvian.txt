@@ -1039,7 +1039,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automa'
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automa'tiski atjaunot minima'lo naudu kas nepiecies'ama atjaunos'anai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Kl'u'das zin'ojuma ilgums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Râdît pilsçtas iedzîvotâju skaitu pie pilsçtas nosaukuma: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neredzami koki (ar caurspi'di'ga'm celtne'm): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Parasts
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis

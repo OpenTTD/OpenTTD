@@ -1054,7 +1054,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Anstata
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimuma mono por anstataŭado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Daŭro de erar-mesaĝo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Montru enloĝantaron en urbnomindikilo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevideblaj arboj (ĉe travideblaj konstruaĵoj): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landgenerilo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Origina

@@ -1069,7 +1069,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Sjálfv
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Lágmarks bankainnistæða fyrir sjálfvirka uppfæringu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Birtingartími villuskilaboða: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Sýna íbúafjölda í bæjarmerki: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ósýnileg tré (með gagnsæjum byggingum): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landslagsmótun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Upphafleg

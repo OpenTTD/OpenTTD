@@ -1069,7 +1069,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Erneuer
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimaler Kontostand für automatisches Erneuern: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl der Stadt im Label: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Unsichtbare Bäume (bei transparenten Gebäuden): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land Generator: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original

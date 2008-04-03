@@ -1084,7 +1084,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automat
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimali suma reikalinga automatiniam atnaujinimui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Klaidos pranešimų rodymo trukmė: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Rodyti miestu gyventoju skaiciu salia pavadinimo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nematomi medziai (kai ijungti permatomi pastatai): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Sausumos kūrimas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Standartinis

@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Itseuud
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Pienin tarvittava rahamäärä itseuudistukseen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Näytä kaupungin asukasluku kaupungin nimessä: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Näkymättömät puut (läpinäkyvillä rakennuksilla): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maa generaattori: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen

@@ -1151,7 +1151,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoodn
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. ilość pieniędzy potrzebna do autoodnowienia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o błędzie: {ORANGE}{STRING} sekund{P a y ""}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaż populację miasta w jego nazwie: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewidoczne drzewa (w trybie przezroczystych budynków): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Oryginalny

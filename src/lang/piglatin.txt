@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoren
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenewway inimummay eedednay oneymay orfay enewray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Urationday ofway errorway essagemay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Owshay owntay opulationpay inway ethay owntay amenay abellay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisibleway eestray (ithway ansparenttray uildingsbay): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Andlay eneratorgay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Originalway

@@ -1067,7 +1067,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automat
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum novca potrebnih za automatsko obnavljanje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Trajanje poruke s greškom: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaži broj stanovnika u oznaci imena grada: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nevidljivo drveće (s prozirnim građevinama): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generator zemlje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Izvorni

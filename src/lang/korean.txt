@@ -1069,7 +1069,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}차량�
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}교체를 위한 자동 교체 최소 요구 자금 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시 : {ORANGE}{STRING}초 동안
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}나무 안보이게 하기 (건물 투명하게 하면서) : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}지형 생성: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :오리지널

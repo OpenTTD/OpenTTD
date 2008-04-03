@@ -1110,7 +1110,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Samoobn
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Samoobnovi najmanj potrebnega denarja za obnovo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Trajanje sporočila o napaki: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Prikaz števila prebivalcev ob imenu mesta: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Prozorna drevesa (ob prozornih zgradbah): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Urejevalnik terena: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original

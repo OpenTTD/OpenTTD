@@ -1168,7 +1168,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Uuenda 
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Iseuuendusele kuluv väikseim summa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Veateate kuvamise kestus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Linna nimesildil näidatakse rahvaarvu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nähtamatud puud (läbipaistvate ehitistega): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Algupärane

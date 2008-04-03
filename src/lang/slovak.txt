@@ -1132,7 +1132,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. mnozstvo penazi pre aut. obnovovanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dlžka zobrazenia chybovej správy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazit pocet obyvatelov mesta v jeho nazve: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generátor uzemia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Povodny

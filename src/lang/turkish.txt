@@ -1067,7 +1067,6 @@ STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Araç �
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Yenileme icin gerekli en az parayı otomatik yenile: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hata mesajı görünme süresi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Şehir nüfusunu isminin yanına yaz: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Görünmez ağaçlar (şeffaf binalarla): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Arazi üretici: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Özgün
