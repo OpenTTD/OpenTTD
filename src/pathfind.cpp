@@ -112,33 +112,6 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 	return true;
 }
 
-static const byte _bits_mask[4] = {
-	0x19,
-	0x16,
-	0x25,
-	0x2A,
-};
-
-static const DiagDirection _tpf_new_direction[14] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW, DIAGDIR_SE,
-	INVALID_DIAGDIR, INVALID_DIAGDIR,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE,
-};
-
-static const DiagDirection _tpf_prev_direction[14] = {
-	DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SE, DIAGDIR_NE, DIAGDIR_SE, DIAGDIR_SW,
-	INVALID_DIAGDIR, INVALID_DIAGDIR,
-	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, DIAGDIR_NW,
-};
-
-
-static const byte _otherdir_mask[4] = {
-	0x10,
-	0,
-	0x5,
-	0x2A,
-};
-
 static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
 	RememberData rd;
@@ -153,8 +126,7 @@ static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection dire
 	if (++tpf->rd.cur_length > 50)
 		return;
 
-	TrackStatus ts = GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type);
-	TrackBits bits = (TrackBits)(TrackStatusToTrackBits(ts) & _bits_mask[direction]);
+	TrackBits bits = TrackStatusToTrackBits(GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type)) & DiagdirReachesTracks(direction);
 	if (bits == TRACK_BIT_NONE) return;
 
 	assert(TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY());
@@ -174,10 +146,10 @@ static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection dire
 			tpf->rd.last_choosen_track = track;
 		}
 
-		tpf->the_dir = (Trackdir)(track + (HasBit(_otherdir_mask[direction], track) ? 8 : 0));
+		tpf->the_dir = TrackEnterdirToTrackdir(track, direction);
 
 		if (!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length)) {
-			TPFModeShip(tpf, tile, _tpf_new_direction[tpf->the_dir]);
+			TPFModeShip(tpf, tile, TrackdirToExitdir(tpf->the_dir));
 		}
 
 		tpf->rd = rd;
@@ -208,8 +180,6 @@ static inline bool CanAccessTileInDir(TileIndex tile, DiagDirection side, Transp
 
 	return true;
 }
-
-static const uint16 _tpfmode1_and[4] = { 0x1009, 0x16, 0x520, 0x2A00 };
 
 static void TPFModeNormal(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
@@ -253,37 +223,35 @@ static void TPFModeNormal(TrackPathFinder* tpf, TileIndex tile, DiagDirection di
 		}
 	}
 
-	uint32 bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type));
+	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, tpf->tracktype, tpf->sub_type));
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
-		if (bits != 0 && TrackStatusToTrackdirBits(GetTileTrackStatus(tile_org, TRANSPORT_RAIL, 0)) != TRACKDIR_BIT_NONE) {
+		if (trackdirbits != TRACKDIR_BIT_NONE && TrackStatusToTrackdirBits(GetTileTrackStatus(tile_org, TRANSPORT_RAIL, 0)) != TRACKDIR_BIT_NONE) {
 			if (GetTileOwner(tile_org) != GetTileOwner(tile)) return;
 		}
 	}
 
 	tpf->rd.cur_length++;
 
-	bits &= _tpfmode1_and[direction];
-	bits |= bits >> 8;
-	bits &= 0xBF;
+	trackdirbits &= DiagdirReachesTrackdirs(direction);
+	TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
 
-	if (bits != 0) {
+	if (bits != TRACK_BIT_NONE) {
 		if (!tpf->disable_tile_hash || (tpf->rd.cur_length <= 64 && (KillFirstBit(bits) == 0 || ++tpf->rd.depth <= 7))) {
 			do {
-				int i = FIND_FIRST_BIT(bits);
-				bits = KillFirstBit(bits);
+				Track track = RemoveFirstTrack(&bits);
 
-				tpf->the_dir = (Trackdir)((_otherdir_mask[direction] & (byte)(1 << i)) ? (i + 8) : i);
+				tpf->the_dir = TrackEnterdirToTrackdir(track, direction);
 				RememberData rd = tpf->rd;
 
 				/* make sure we are not leaving from invalid side */
 				if (TPFSetTileBit(tpf, tile, tpf->the_dir) && CanAccessTileInDir(tile, TrackdirToExitdir(tpf->the_dir), tpf->tracktype) &&
 						!tpf->enum_proc(tile, tpf->userdata, tpf->the_dir, tpf->rd.cur_length) ) {
-					TPFModeNormal(tpf, tile, _tpf_new_direction[tpf->the_dir]);
+					TPFModeNormal(tpf, tile, TrackdirToExitdir(tpf->the_dir));
 				}
 				tpf->rd = rd;
-			} while (bits != 0);
+			} while (bits != TRACK_BIT_NONE);
 		}
 	}
 }
@@ -329,15 +297,6 @@ struct StackedItem {
 	byte depth;
 	byte state;
 	byte first_track;
-};
-
-static const Trackdir _new_trackdir[6][4] = {
-{TRACKDIR_X_NE,    INVALID_TRACKDIR, TRACKDIR_X_SW,    INVALID_TRACKDIR,},
-{INVALID_TRACKDIR, TRACKDIR_Y_SE,    INVALID_TRACKDIR, TRACKDIR_Y_NW,},
-{INVALID_TRACKDIR, TRACKDIR_UPPER_E, TRACKDIR_UPPER_W, INVALID_TRACKDIR,},
-{TRACKDIR_LOWER_E, INVALID_TRACKDIR, INVALID_TRACKDIR, TRACKDIR_LOWER_W,},
-{TRACKDIR_LEFT_N,  TRACKDIR_LEFT_S,  INVALID_TRACKDIR, INVALID_TRACKDIR,},
-{INVALID_TRACKDIR, INVALID_TRACKDIR, TRACKDIR_RIGHT_S, TRACKDIR_RIGHT_N,},
 };
 
 struct HashLink {
@@ -590,7 +549,7 @@ static void NTPEnum(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection direc
 
 			HeapifyDown(tpf);
 			/* Make sure we havn't already visited this tile. */
-		} while (!NtpCheck(tpf, tile, _tpf_prev_direction[si.track], si.cur_length));
+		} while (!NtpCheck(tpf, tile, ReverseDiagDir(TrackdirToExitdir(ReverseTrackdir(si.track))), si.cur_length));
 
 		/* Add the length of this track. */
 		si.cur_length += _length_of_track[si.track];
@@ -600,7 +559,7 @@ callback_and_continue:
 			return;
 
 		assert(si.track <= 13);
-		direction = _tpf_new_direction[si.track];
+		direction = TrackdirToExitdir(si.track);
 
 start_at:
 		/* If the tile is the entry tile of a tunnel, and we're not going out of the tunnel,
@@ -644,8 +603,7 @@ start_at:
 			if (!IsTileType(tile, MP_RAILWAY) || !IsPlainRailTile(tile)) {
 				/* We found a tile which is not a normal railway tile.
 				 * Determine which tracks that exist on this tile. */
-				TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & _tpfmode1_and[direction];
-				bits = TrackStatusToTrackBits(ts);
+				bits = TrackdirBitsToTrackBits(TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTrackdirs(direction));
 
 				/* Check that the tile contains exactly one track */
 				if (bits == 0 || KillFirstBit(bits) != 0) break;
@@ -661,7 +619,7 @@ start_at:
 				 *   bits - bitmask of which track that exist on the tile (exactly one bit is set)
 				 *   direction - which direction are we moving in?
 				 *******************/
-				si.track = _new_trackdir[FIND_FIRST_BIT(bits)][direction];
+				si.track = TrackEnterdirToTrackdir(FindFirstTrack(bits), direction);
 				si.cur_length += _length_of_track[si.track];
 				goto callback_and_continue;
 			}
@@ -684,7 +642,7 @@ start_at:
 			/* If we reach here, the tile has exactly one track, and this
 			 track is reachable = > Rail segment continues */
 
-			track = _new_trackdir[FIND_FIRST_BIT(bits)][direction];
+			track = TrackEnterdirToTrackdir(FindFirstTrack(bits), direction);
 			assert(track != INVALID_TRACKDIR);
 
 			si.cur_length += _length_of_track[track];
@@ -733,7 +691,7 @@ start_at:
 			}
 
 			/* continue with the next track */
-			direction = _tpf_new_direction[track];
+			direction = TrackdirToExitdir(track);
 
 			/* safety check if we're running around chasing our tail... (infinite loop) */
 			if (tile == tile_org) {
@@ -774,7 +732,7 @@ start_at:
 		si.tile = tile;
 		while (bits != TRACK_BIT_NONE) {
 			Track track = RemoveFirstTrack(&bits);
-			si.track = _new_trackdir[track][direction];
+			si.track = TrackEnterdirToTrackdir(track, direction);
 			assert(si.track != 0xFF);
 			si.priority = si.cur_length + estimation;
 
