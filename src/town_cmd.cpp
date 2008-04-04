@@ -2261,14 +2261,21 @@ static void UpdateTownGrowRate(Town *t)
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
 				if (IsValidPlayer(st->owner)) {
-					t->ratings[st->owner] = min((int)RATING_MAXIMUM, t->ratings[st->owner] + RATING_STATION_UP_STEP);
+					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
+					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
 				}
 			} else {
 				if (IsValidPlayer(st->owner)) {
-					t->ratings[st->owner] = max((int)RATING_MINIMUM, t->ratings[st->owner] + RATING_STATION_DOWN_STEP);
+					int new_rating = t->ratings[st->owner] + RATING_STATION_DOWN_STEP;
+					t->ratings[st->owner] = max(new_rating, INT16_MIN);
 				}
 			}
 		}
+	}
+
+	/* clamp all ratings to valid values */
+	for (uint i = 0; i < MAX_PLAYERS; i++) {
+		t->ratings[i] = Clamp(t->ratings[i], RATING_MINIMUM, RATING_MAXIMUM);
 	}
 
 	ClrBit(t->flags12, TOWN_IS_FUNDED);
