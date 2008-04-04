@@ -47,12 +47,17 @@ enum BuildingFlags {
 DECLARE_ENUM_AS_BIT_SET(BuildingFlags)
 
 enum HouseZonesBits {
+	HZB_BEGIN     = 0,
 	HZB_TOWN_EDGE = 0,
 	HZB_TOWN_OUTSKIRT,
 	HZB_TOWN_OUTER_SUBURB,
 	HZB_TOWN_INNER_SUBURB,
 	HZB_TOWN_CENTRE,
+	HZB_END,
 };
+assert_compile(HZB_END == 5);
+
+DECLARE_POSTFIX_INCREMENT(HouseZonesBits)
 
 enum HouseZones {                  ///< Bit  Value       Meaning
 	HZ_NOZNS             = 0x0000,  ///<       0          This is just to get rid of zeros, meaning none
@@ -158,7 +163,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	bool larger_town;
 
 	/* NOSAVE: UpdateTownRadius updates this given the house count. */
-	uint16 radius[5];
+	uint16 radius[HZB_END];
 
 	/* NOSAVE: The number of each type of building in the town. */
 	BuildingCounts building_counts;

@@ -35,11 +35,18 @@ enum {
 
 	RATING_MAXIMUM = RATING_OUTSTANDING,
 
+	RATING_INITIAL = 500, ///< initial rating
+
 	/* RATINGS AFFECTING NUMBERS */
 	RATING_TREE_DOWN_STEP = -35,
 	RATING_TREE_MINIMUM   = RATING_MINIMUM,
 	RATING_TREE_UP_STEP   = 7,
 	RATING_TREE_MAXIMUM   = 220,
+
+	RATING_GROWTH_UP_STEP    =   5, ///< when a town grows, all players have rating increased a bit ...
+	RATING_GROWTH_MAXIMUM    = RATING_MEDIOCRE, ///< ... up to RATING_MEDIOCRE
+	RATING_STATION_UP_STEP   =  12, ///< when a town grows, player gains reputation for all well serviced stations ...
+	RATING_STATION_DOWN_STEP = -15, ///< ... but loses for bad serviced stations
 
 	RATING_TUNNEL_BRIDGE_DOWN_STEP = -250,
 	RATING_TUNNEL_BRIDGE_MINIMUM   = 0,

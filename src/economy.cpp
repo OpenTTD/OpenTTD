@@ -351,7 +351,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		}
 
 		/* Reset the ratings for the old player */
-		t->ratings[old_player] = 500;
+		t->ratings[old_player] = RATING_INITIAL;
 		ClrBit(t->have_ratings, old_player);
 	}
 
