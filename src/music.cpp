@@ -2,6 +2,7 @@
 
 /** @file music.cpp */
 
+#include "stdafx.h"
 #include "music.h"
 
 const SongSpecs origin_songs_specs[NUM_SONGS_AVAILABLE] = {

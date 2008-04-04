@@ -9,7 +9,7 @@
 #define NUM_SONGS_AVAILABLE 22
 
 struct SongSpecs {
-	char filename[256];
+	char filename[MAX_PATH];
 	char song_name[64];
 };
 

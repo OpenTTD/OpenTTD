@@ -1287,7 +1287,7 @@ static inline char *replace_pathsep(char *s) { return s; }
 
 int CDECL main(int argc, char* argv[])
 {
-	char pathbuf[256];
+	char pathbuf[MAX_PATH];
 	const char *src_dir = ".";
 	const char *dest_dir = NULL;
 
