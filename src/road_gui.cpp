@@ -175,7 +175,7 @@ static void PlaceRoad_Tunnel(TileIndex tile)
 static void BuildRoadOutsideStation(TileIndex tile, DiagDirection direction)
 {
 	tile += TileOffsByDiagDir(direction);
-	// if there is a roadpiece just outside of the station entrance, build a connecting route
+	/* if there is a roadpiece just outside of the station entrance, build a connecting route */
 	if (IsNormalRoadTile(tile)) {
 		if (GetRoadBits(tile, _cur_roadtype) != ROAD_NONE) {
 			DoCommandP(tile, _cur_roadtype << 4 | DiagDirToRoadBits(ReverseDiagDir(direction)), 0, NULL, CMD_BUILD_ROAD);
@@ -409,7 +409,7 @@ static const uint16 _road_keycodes[] = {
  * @param w The toolbar window
  * @param clicked_widget The widget which the player clicked just now
  */
-static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
+static void UpdateOptionWidgetStatus(Window *w, RoadToolbarWidgets clicked_widget)
 {
 	/* The remove and the one way button state is driven
 	 * by the other buttons so they don't act on themselfs.
@@ -419,15 +419,18 @@ static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 			w->RaiseWidget(RTW_ONE_WAY);
 			w->InvalidateWidget(RTW_ONE_WAY);
 			break;
+
 		case RTW_ONE_WAY:
 			w->RaiseWidget(RTW_REMOVE);
 			w->InvalidateWidget(RTW_REMOVE);
 			break;
+
 		case RTW_BUS_STATION:
 		case RTW_TRUCK_STATION:
 			w->DisableWidget(RTW_ONE_WAY);
 			w->SetWidgetDisabledState(RTW_REMOVE, !w->IsWidgetLowered(clicked_widget));
 			break;
+
 		case RTW_ROAD_X:
 		case RTW_ROAD_Y:
 		case RTW_AUTOROAD:
@@ -436,6 +439,7 @@ static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 				RTW_ONE_WAY,
 				WIDGET_LIST_END);
 			break;
+
 		default:
 			/* When any other buttons than road/station, raise and
 			 * disable the removal button */
@@ -454,157 +458,162 @@ static void UpdateOptionWidgetStatus(Window *w, int clicked_widget)
 static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE:
-		w->SetWidgetsDisabledState(true,
-			RTW_REMOVE,
-			RTW_ONE_WAY,
-			WIDGET_LIST_END);
-		break;
+		case WE_CREATE:
+			w->SetWidgetsDisabledState(true,
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
+			break;
 
-	case WE_PAINT:
-		w->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
-			RTW_DEPOT,
-			RTW_BUS_STATION,
-			RTW_TRUCK_STATION,
-			WIDGET_LIST_END);
-		DrawWindowWidgets(w);
-		break;
+		case WE_PAINT:
+			w->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_ROAD),
+				RTW_DEPOT,
+				RTW_BUS_STATION,
+				RTW_TRUCK_STATION,
+				WIDGET_LIST_END);
+			DrawWindowWidgets(w);
+			break;
 
-	case WE_CLICK:
-		if (e->we.click.widget >= RTW_ROAD_X) {
-			_remove_button_clicked = false;
-			_one_way_button_clicked = false;
-			_build_road_button_proc[e->we.click.widget - RTW_ROAD_X](w);
-		}
-		UpdateOptionWidgetStatus(w, e->we.click.widget);
-		if (_ctrl_pressed) RoadToolbar_CtrlChanged(w);
-		break;
-
-	case WE_KEYPRESS:
-		for (uint8 i = 0; i != lengthof(_road_keycodes); i++) {
-			if (e->we.keypress.keycode == _road_keycodes[i]) {
-				e->we.keypress.cont = false;
+		case WE_CLICK:
+			if (e->we.click.widget >= RTW_ROAD_X) {
 				_remove_button_clicked = false;
 				_one_way_button_clicked = false;
-				_build_road_button_proc[i](w);
-				UpdateOptionWidgetStatus(w, i + RTW_ROAD_X);
-				if (_ctrl_pressed) RoadToolbar_CtrlChanged(w);
-				break;
+				_build_road_button_proc[e->we.click.widget - RTW_ROAD_X](w);
 			}
-		}
-		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
-		break;
+			UpdateOptionWidgetStatus(w, (RoadToolbarWidgets)e->we.click.widget);
+			if (_ctrl_pressed) RoadToolbar_CtrlChanged(w);
+			break;
 
-	case WE_PLACE_OBJ:
-		_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
-		_one_way_button_clicked = w->IsWidgetLowered(RTW_ONE_WAY);
-		_place_proc(e->we.place.tile);
-		break;
-
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
-		w->SetWidgetsDisabledState(true,
-			RTW_REMOVE,
-			RTW_ONE_WAY,
-			WIDGET_LIST_END);
-		w->InvalidateWidget(RTW_REMOVE);
-		w->InvalidateWidget(RTW_ONE_WAY);
-
-		w = FindWindowById(WC_BUS_STATION, 0);
-		if (w != NULL) WP(w, def_d).close = true;
-		w = FindWindowById(WC_TRUCK_STATION, 0);
-		if (w != NULL) WP(w, def_d).close = true;
-		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w, def_d).close = true;
-		break;
-
-	case WE_PLACE_DRAG:
-		/* Here we update the end tile flags
-		 * of the road placement actions.
-		 * At first we reset the end halfroad
-		 * bits and if needed we set them again. */
-		switch (e->we.place.select_proc) {
-			case DDSP_PLACE_ROAD_X_DIR:
-				_place_road_flag &= ~RF_END_HALFROAD_X;
-				if (e->we.place.pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
-				break;
-
-			case DDSP_PLACE_ROAD_Y_DIR:
-				_place_road_flag &= ~RF_END_HALFROAD_Y;
-				if (e->we.place.pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
-				break;
-
-			case DDSP_PLACE_AUTOROAD:
-				_place_road_flag &= ~(RF_END_HALFROAD_Y | RF_END_HALFROAD_X);
-				if (e->we.place.pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
-				if (e->we.place.pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
-
-				/* For autoroad we need to update the
-				 * direction of the road */
-				if (_thd.size.x > _thd.size.y || (_thd.size.x == _thd.size.y &&
-						( (_tile_fract_coords.x < _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) < 16) ||
-						  (_tile_fract_coords.x > _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) > 16) ))) {
-					/* Set dir = X */
-					_place_road_flag &= ~RF_DIR_Y;
-				} else {
-					/* Set dir = Y */
-					_place_road_flag |= RF_DIR_Y;
+		case WE_KEYPRESS:
+			for (uint i = 0; i != lengthof(_road_keycodes); i++) {
+				if (e->we.keypress.keycode == _road_keycodes[i]) {
+					e->we.keypress.cont = false;
+					_remove_button_clicked = false;
+					_one_way_button_clicked = false;
+					_build_road_button_proc[i](w);
+					UpdateOptionWidgetStatus(w, (RoadToolbarWidgets)(i + RTW_ROAD_X));
+					if (_ctrl_pressed) RoadToolbar_CtrlChanged(w);
+					break;
 				}
+			}
+			MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
+			break;
 
-				break;
-		}
+		case WE_PLACE_OBJ:
+			_remove_button_clicked = w->IsWidgetLowered(RTW_REMOVE);
+			_one_way_button_clicked = w->IsWidgetLowered(RTW_ONE_WAY);
+			_place_proc(e->we.place.tile);
+			break;
 
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-		return;
+		case WE_ABORT_PLACE_OBJ:
+			w->RaiseButtons();
+			w->SetWidgetsDisabledState(true,
+				RTW_REMOVE,
+				RTW_ONE_WAY,
+				WIDGET_LIST_END);
+			w->InvalidateWidget(RTW_REMOVE);
+			w->InvalidateWidget(RTW_ONE_WAY);
 
-	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1) {
-			TileIndex start_tile = e->we.place.starttile;
-			TileIndex end_tile = e->we.place.tile;
+			w = FindWindowById(WC_BUS_STATION, 0);
+			if (w != NULL) WP(w, def_d).close = true;
+			w = FindWindowById(WC_TRUCK_STATION, 0);
+			if (w != NULL) WP(w, def_d).close = true;
+			w = FindWindowById(WC_BUILD_DEPOT, 0);
+			if (w != NULL) WP(w, def_d).close = true;
+			break;
 
+		case WE_PLACE_DRAG:
+			/* Here we update the end tile flags
+			* of the road placement actions.
+			* At first we reset the end halfroad
+			* bits and if needed we set them again. */
 			switch (e->we.place.select_proc) {
-				case DDSP_BUILD_BRIDGE:
-					ResetObjectToPlace();
-					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(_cur_roadtype));
-					break;
-
-				case DDSP_DEMOLISH_AREA:
-					DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-					break;
-
 				case DDSP_PLACE_ROAD_X_DIR:
-				case DDSP_PLACE_ROAD_Y_DIR:
-				case DDSP_PLACE_AUTOROAD:
-					/* Flag description:
-					 * Use the first three bits (0x07) if dir == Y
-					 * else use the last 2 bits (X dir has
-					 * not the 3rd bit set) */
-					_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
+					_place_road_flag &= ~RF_END_HALFROAD_X;
+					if (e->we.place.pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
+					break;
 
-					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5), CcPlaySound1D,
-						(_ctrl_pressed || _remove_button_clicked) ?
-						CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
-						CMD_BUILD_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road));
+				case DDSP_PLACE_ROAD_Y_DIR:
+					_place_road_flag &= ~RF_END_HALFROAD_Y;
+					if (e->we.place.pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
+					break;
+
+				case DDSP_PLACE_AUTOROAD:
+					_place_road_flag &= ~(RF_END_HALFROAD_Y | RF_END_HALFROAD_X);
+					if (e->we.place.pt.y & 8) _place_road_flag |= RF_END_HALFROAD_Y;
+					if (e->we.place.pt.x & 8) _place_road_flag |= RF_END_HALFROAD_X;
+
+					/* For autoroad we need to update the
+					* direction of the road */
+					if (_thd.size.x > _thd.size.y || (_thd.size.x == _thd.size.y &&
+							( (_tile_fract_coords.x < _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) < 16) ||
+							(_tile_fract_coords.x > _tile_fract_coords.y && (_tile_fract_coords.x + _tile_fract_coords.y) > 16) ))) {
+						/* Set dir = X */
+						_place_road_flag &= ~RF_DIR_Y;
+					} else {
+						/* Set dir = Y */
+						_place_road_flag |= RF_DIR_Y;
+					}
+
+					break;
+
+				default:
 					break;
 			}
-		}
-		break;
 
-	case WE_PLACE_PRESIZE: {
-		TileIndex tile = e->we.place.tile;
+			VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
+			return;
 
-		DoCommand(tile, 0x200 | RoadTypeToRoadTypes(_cur_roadtype), 0, DC_AUTO, CMD_BUILD_TUNNEL);
-		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
-		break;
-	}
+		case WE_PLACE_MOUSEUP:
+			if (e->we.place.pt.x != -1) {
+				TileIndex start_tile = e->we.place.starttile;
+				TileIndex end_tile = e->we.place.tile;
 
-	case WE_DESTROY:
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
-		break;
+				switch (e->we.place.select_proc) {
+					case DDSP_BUILD_BRIDGE:
+						ResetObjectToPlace();
+						ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(_cur_roadtype));
+						break;
 
-	case WE_CTRL_CHANGED:
-		if (RoadToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
-		break;
+					case DDSP_DEMOLISH_AREA:
+						DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+						break;
+
+					case DDSP_PLACE_ROAD_X_DIR:
+					case DDSP_PLACE_ROAD_Y_DIR:
+					case DDSP_PLACE_AUTOROAD:
+						/* Flag description:
+						* Use the first three bits (0x07) if dir == Y
+						* else use the last 2 bits (X dir has
+						* not the 3rd bit set) */
+						_place_road_flag = (RoadFlags)((_place_road_flag & RF_DIR_Y) ? (_place_road_flag & 0x07) : (_place_road_flag >> 3));
+
+						DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5), CcPlaySound1D,
+							(_ctrl_pressed || _remove_button_clicked) ?
+							CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
+							CMD_BUILD_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road));
+						break;
+				}
+			}
+			break;
+
+		case WE_PLACE_PRESIZE: {
+			TileIndex tile = e->we.place.tile;
+
+			DoCommand(tile, 0x200 | RoadTypeToRoadTypes(_cur_roadtype), 0, DC_AUTO, CMD_BUILD_TUNNEL);
+			VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
+		} break;
+
+		case WE_DESTROY:
+			if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+			break;
+
+		case WE_CTRL_CHANGED:
+			if (RoadToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
+			break;
+
+		default:
+			break;
 	}
 }
 
@@ -724,39 +733,47 @@ enum BuildRoadDepotWidgets {
 static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE); break;
+		case WE_CREATE:
+			w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
+			break;
 
-	case WE_PAINT:
-		DrawWindowWidgets(w);
+		case WE_PAINT:
+			DrawWindowWidgets(w);
 
-		DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
-		DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
-		DrawRoadDepotSprite( 2, 69, DIAGDIR_SW, _cur_roadtype);
-		DrawRoadDepotSprite( 2, 17, DIAGDIR_NW, _cur_roadtype);
-		break;
+			DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
+			DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
+			DrawRoadDepotSprite( 2, 69, DIAGDIR_SW, _cur_roadtype);
+			DrawRoadDepotSprite( 2, 17, DIAGDIR_NW, _cur_roadtype);
+			break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case BRDW_DEPOT_NW:
-			case BRDW_DEPOT_NE:
-			case BRDW_DEPOT_SW:
-			case BRDW_DEPOT_SE:
-				w->RaiseWidget(_road_depot_orientation + BRDW_DEPOT_NE);
-				_road_depot_orientation = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
-				w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
-				SndPlayFx(SND_15_BEEP);
-				SetWindowDirty(w);
-				break;
-		}
-		break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case BRDW_DEPOT_NW:
+				case BRDW_DEPOT_NE:
+				case BRDW_DEPOT_SW:
+				case BRDW_DEPOT_SE:
+					w->RaiseWidget(_road_depot_orientation + BRDW_DEPOT_NE);
+					_road_depot_orientation = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
+					w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
+					SndPlayFx(SND_15_BEEP);
+					SetWindowDirty(w);
+					break;
 
-	case WE_MOUSELOOP:
-		if (WP(w, def_d).close) DeleteWindow(w);
-		break;
+				default:
+					break;
+			}
+			break;
 
-	case WE_DESTROY:
-		if (!WP(w, def_d).close) ResetObjectToPlace();
-		break;
+		case WE_MOUSELOOP:
+			if (WP(w, def_d).close) DeleteWindow(w);
+			break;
+
+		case WE_DESTROY:
+			if (!WP(w, def_d).close) ResetObjectToPlace();
+			break;
+
+		default:
+			break;
 	}
 }
 
@@ -824,93 +841,99 @@ enum BuildRoadStationWidgets {
 static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE:
-		/* Trams don't have non-drivethrough stations */
-		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
-			_road_station_picker_orientation = DIAGDIR_END;
-		}
-		w->SetWidgetsDisabledState(_cur_roadtype == ROADTYPE_TRAM,
-			BRSW_STATION_NE,
-			BRSW_STATION_SE,
-			BRSW_STATION_SW,
-			BRSW_STATION_NW,
-			WIDGET_LIST_END);
+		case WE_CREATE:
+			/* Trams don't have non-drivethrough stations */
+			if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
+				_road_station_picker_orientation = DIAGDIR_END;
+			}
+			w->SetWidgetsDisabledState(_cur_roadtype == ROADTYPE_TRAM,
+				BRSW_STATION_NE,
+				BRSW_STATION_SE,
+				BRSW_STATION_SW,
+				BRSW_STATION_NW,
+				WIDGET_LIST_END);
 
-		w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-		w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
-		break;
+			w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+			w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
+			break;
 
-	case WE_PAINT: {
-		if (WP(w, def_d).close) return;
+		case WE_PAINT: {
+			if (WP(w, def_d).close) return;
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		if (_station_show_coverage) {
-			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
-			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-		} else {
-			SetTileSelectSize(1, 1);
-		}
+			if (_station_show_coverage) {
+				int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
+				SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+			} else {
+				SetTileSelectSize(1, 1);
+			}
 
-		StationType st = (w->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
+			StationType st = (w->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
 
-		StationPickerDrawSprite(103, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 0);
-		StationPickerDrawSprite(103, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 1);
-		StationPickerDrawSprite( 35, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 2);
-		StationPickerDrawSprite( 35, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 3);
+			StationPickerDrawSprite(103, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 0);
+			StationPickerDrawSprite(103, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 1);
+			StationPickerDrawSprite( 35, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 2);
+			StationPickerDrawSprite( 35, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 3);
 
-		StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
-		StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
+			StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
+			StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
 
-		int text_end = DrawStationCoverageAreaText(2, 146,
-			(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-			3) + 4;
-		if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
-			SetWindowDirty(w);
-			ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
-			SetWindowDirty(w);
-		}
-
-	} break;
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-			case BRSW_STATION_NE:
-			case BRSW_STATION_SE:
-			case BRSW_STATION_SW:
-			case BRSW_STATION_NW:
-			case BRSW_STATION_X:
-			case BRSW_STATION_Y:
-				w->RaiseWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-				_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - BRSW_STATION_NE);
-				w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-				SndPlayFx(SND_15_BEEP);
+			int text_end = DrawStationCoverageAreaText(2, 146,
+				(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
+				3) + 4;
+			if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
 				SetWindowDirty(w);
-				break;
-
-			case BRSW_LT_OFF:
-			case BRSW_LT_ON:
-				w->RaiseWidget(_station_show_coverage + BRSW_LT_OFF);
-				_station_show_coverage = (e->we.click.widget != BRSW_LT_OFF);
-				w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
-				SndPlayFx(SND_15_BEEP);
+				ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
 				SetWindowDirty(w);
-				break;
-		}
-	} break;
+			}
 
-	case WE_MOUSELOOP: {
-		if (WP(w, def_d).close) {
-			DeleteWindow(w);
-			return;
-		}
+		} break;
 
-		CheckRedrawStationCoverage(w);
-	} break;
+		case WE_CLICK: {
+			switch (e->we.click.widget) {
+				case BRSW_STATION_NE:
+				case BRSW_STATION_SE:
+				case BRSW_STATION_SW:
+				case BRSW_STATION_NW:
+				case BRSW_STATION_X:
+				case BRSW_STATION_Y:
+					w->RaiseWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+					_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - BRSW_STATION_NE);
+					w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+					SndPlayFx(SND_15_BEEP);
+					SetWindowDirty(w);
+					break;
 
-	case WE_DESTROY:
-		if (!WP(w, def_d).close) ResetObjectToPlace();
-		break;
+				case BRSW_LT_OFF:
+				case BRSW_LT_ON:
+					w->RaiseWidget(_station_show_coverage + BRSW_LT_OFF);
+					_station_show_coverage = (e->we.click.widget != BRSW_LT_OFF);
+					w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
+					SndPlayFx(SND_15_BEEP);
+					SetWindowDirty(w);
+					break;
+
+				default:
+					break;
+			}
+		} break;
+
+		case WE_MOUSELOOP: {
+			if (WP(w, def_d).close) {
+				DeleteWindow(w);
+				return;
+			}
+
+			CheckRedrawStationCoverage(w);
+		} break;
+
+		case WE_DESTROY:
+			if (!WP(w, def_d).close) ResetObjectToPlace();
+			break;
+
+		default:
+			break;
 	}
 }
 

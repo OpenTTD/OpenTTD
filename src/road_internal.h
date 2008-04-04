@@ -31,6 +31,6 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
  * @param ti   information about the tile (position, slope)
  * @param tram the roadbits to draw the catenary for
  */
-void DrawTramCatenary(TileInfo *ti, RoadBits tram);
+void DrawTramCatenary(const TileInfo *ti, RoadBits tram);
 
 #endif /* ROAD_INTERNAL_H */
