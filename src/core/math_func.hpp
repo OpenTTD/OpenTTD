@@ -177,7 +177,7 @@ static inline int32 ClampToI32(const int64 a)
  */
 static inline uint16 ClampToU16(const uint64 a)
 {
-	return min(a, 0xFFFF);
+	return (uint16)(a <= 0xFFFFU ? a : 0xFFFFU);
 }
 
 /**
