@@ -570,6 +570,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 				TileIndex end_tile = e->we.place.tile;
 
 				switch (e->we.place.select_proc) {
+					default: NOT_REACHED();
 					case DDSP_BUILD_BRIDGE:
 						ResetObjectToPlace();
 						ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(_cur_roadtype));
@@ -887,10 +888,9 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 				ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
 				SetWindowDirty(w);
 			}
-
 		} break;
 
-		case WE_CLICK: {
+		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case BRSW_STATION_NE:
 				case BRSW_STATION_SE:
@@ -917,16 +917,16 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 				default:
 					break;
 			}
-		} break;
+			break;
 
-		case WE_MOUSELOOP: {
+		case WE_MOUSELOOP:
 			if (WP(w, def_d).close) {
 				DeleteWindow(w);
 				return;
 			}
 
 			CheckRedrawStationCoverage(w);
-		} break;
+			break;
 
 		case WE_DESTROY:
 			if (!WP(w, def_d).close) ResetObjectToPlace();
