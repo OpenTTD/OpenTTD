@@ -32,12 +32,15 @@
 		#include <stdint.h>
 	#endif
 #else
-	#define INT64_MAX (9223372036854775807LL)
-	#define INT64_MIN (-INT64_MAX - 1)
-	#define INT32_MAX (2147483647)
-	#define INT32_MIN (-INT32_MAX - 1)
-	#define INT16_MAX (32767)
-	#define INT16_MIN (-INT16_MAX - 1)
+	#define UINT64_MAX (18446744073709551615ULL)
+	#define INT64_MAX  (9223372036854775807LL)
+	#define INT64_MIN  (-INT64_MAX - 1)
+	#define UINT32_MAX (4294967295U)
+	#define INT32_MAX  (2147483647)
+	#define INT32_MIN  (-INT32_MAX - 1)
+	#define UINT16_MAX (65535U)
+	#define INT16_MAX  (32767)
+	#define INT16_MIN  (-INT16_MAX - 1)
 #endif
 
 #include <cstdio>

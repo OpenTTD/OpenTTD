@@ -163,8 +163,8 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
  */
 static inline int32 ClampToI32(const int64 a)
 {
-	if (a <= (int32)0x80000000) return 0x80000000;
-	if (a >= (int32)0x7FFFFFFF) return 0x7FFFFFFF;
+	if (a <= INT32_MIN) return INT32_MIN;
+	if (a >= INT32_MAX) return INT32_MAX;
 	return (int32)a;
 }
 
@@ -177,7 +177,7 @@ static inline int32 ClampToI32(const int64 a)
  */
 static inline uint16 ClampToU16(const uint64 a)
 {
-	return (uint16)(a <= 0xFFFFU ? a : 0xFFFFU);
+	return (uint16)(a <= UINT16_MAX ? a : UINT16_MAX);
 }
 
 /**
