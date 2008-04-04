@@ -2255,7 +2255,7 @@ static void UpdateTownGrowRate(Town *t)
 
 	int n = 0;
 
-	Station *st;
+	const Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (DistanceSquare(st->xy, t->xy) <= t->radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {

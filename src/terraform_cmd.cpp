@@ -35,8 +35,8 @@ struct TerraformerHeightMod {
 };
 
 struct TerraformerState {
-	int modheight_count;                                         ///< amount of entries in "modheight".
-	int tile_table_count;                                        ///< amount of entries in "tile_table".
+	int modheight_count;  ///< amount of entries in "modheight".
+	int tile_table_count; ///< amount of entries in "tile_table".
 
 	/**
 	 * Dirty tiles, i.e.\ at least one corner changed.
@@ -49,7 +49,7 @@ struct TerraformerState {
 	TerraformerHeightMod modheight[TERRAFORMER_MODHEIGHT_SIZE];  ///< Height modifications.
 };
 
-TileIndex _terraform_err_tile;
+TileIndex _terraform_err_tile; ///< first tile we couldn't terraform
 
 /**
  * Gets the TileHeight (height of north corner) of a tile as of current terraforming progress.
@@ -58,12 +58,11 @@ TileIndex _terraform_err_tile;
  * @param tile Tile.
  * @return TileHeight.
  */
-static int TerraformGetHeightOfTile(TerraformerState *ts, TileIndex tile)
+static int TerraformGetHeightOfTile(const TerraformerState *ts, TileIndex tile)
 {
-	TerraformerHeightMod *mod = ts->modheight;
-	int count;
+	const TerraformerHeightMod *mod = ts->modheight;
 
-	for (count = ts->modheight_count; count != 0; count--, mod++) {
+	for (int count = ts->modheight_count; count != 0; count--, mod++) {
 		if (mod->tile == tile) return mod->height;
 	}
 
@@ -85,6 +84,7 @@ static void TerraformSetHeightOfTile(TerraformerState *ts, TileIndex tile, int h
 	 *       But during house- or industry-construction multiple corners can be terraformed at once. */
 	TerraformerHeightMod *mod = ts->modheight;
 	int count = ts->modheight_count;
+
 	while ((count > 0) && (mod->tile != tile)) {
 		mod++;
 		count--;
@@ -110,12 +110,9 @@ static void TerraformSetHeightOfTile(TerraformerState *ts, TileIndex tile, int h
  */
 static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
 {
-	int count;
-	TileIndex *t;
+	int count = ts->tile_table_count;
 
-	count = ts->tile_table_count;
-
-	for (t = ts->tile_table; count != 0; count--, t++) {
+	for (TileIndex *t = ts->tile_table; count != 0; count--, t++) {
 		if (*t == tile) return;
 	}
 
@@ -149,8 +146,6 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
  */
 static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height)
 {
-	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-
 	assert(tile < MapSize());
 
 	/* Check range of destination height */
@@ -183,6 +178,8 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 
 	/* Store the height modification */
 	TerraformSetHeightOfTile(ts, tile, height);
+
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
 
 	/* Increment cost */
 	total_cost.AddCost(_price.terraform);
@@ -228,16 +225,16 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
  */
 CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	TerraformerState ts;
-	CommandCost total_cost(EXPENSES_CONSTRUCTION);
-	int direction = (p2 != 0 ? 1 : -1);
-
-	_terraform_err_tile = 0;
-
-	ts.modheight_count = ts.tile_table_count = 0;
-
 	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
 	if (tile + TileDiffXY(1, 1) >= MapSize()) return CMD_ERROR;
+
+	_terraform_err_tile = INVALID_TILE;
+
+	CommandCost total_cost(EXPENSES_CONSTRUCTION);
+	int direction = (p2 != 0 ? 1 : -1);
+	TerraformerState ts;
+
+	ts.modheight_count = ts.tile_table_count = 0;
 
 	/* Compute the costs and the terraforming result in a model of the landscape */
 	if ((p1 & SLOPE_W) != 0) {
@@ -270,10 +267,9 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check if the terraforming is valid wrt. tunnels, bridges and objects on the surface */
 	{
-		int count;
 		TileIndex *ti = ts.tile_table;
 
-		for (count = ts.tile_table_count; count != 0; count--, ti++) {
+		for (int count = ts.tile_table_count; count != 0; count--, ti++) {
 			TileIndex tile = *ti;
 
 			/* Find new heights of tile corners */
@@ -350,49 +346,41 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	int size_x, size_y;
-	int ex;
-	int ey;
-	int sx, sy;
-	uint h, oldh, curh;
-	CommandCost money;
-	CommandCost ret;
-	CommandCost cost(EXPENSES_CONSTRUCTION);
-
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	/* remember level height */
-	oldh = TileHeight(p1);
+	uint oldh = TileHeight(p1);
 
 	/* compute new height */
-	h = oldh + p2;
+	uint h = oldh + p2;
 
 	/* Check range of destination height */
 	if (h > MAX_TILE_HEIGHT) return_cmd_error((oldh == 0) ? STR_1003_ALREADY_AT_SEA_LEVEL : STR_1004_TOO_HIGH);
 
 	/* make sure sx,sy are smaller than ex,ey */
-	ex = TileX(tile);
-	ey = TileY(tile);
-	sx = TileX(p1);
-	sy = TileY(p1);
+	int ex = TileX(tile);
+	int ey = TileY(tile);
+	int sx = TileX(p1);
+	int sy = TileY(p1);
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
 	tile = TileXY(sx, sy);
 
-	size_x = ex - sx + 1;
-	size_y = ey - sy + 1;
+	int size_x = ex - sx + 1;
+	int size_y = ey - sy + 1;
 
-	money.AddCost(GetAvailableMoneyForCommand());
+	Money money = GetAvailableMoneyForCommand();
+	CommandCost cost(EXPENSES_CONSTRUCTION);
 
 	BEGIN_TILE_LOOP(tile2, size_x, size_y, tile) {
-		curh = TileHeight(tile2);
+		uint curh = TileHeight(tile2);
 		while (curh != h) {
-			ret = DoCommand(tile2, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
+			CommandCost ret = DoCommand(tile2, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND);
 			if (CmdFailed(ret)) break;
 
 			if (flags & DC_EXEC) {
-				money.AddCost(-ret.GetCost());
-				if (money.GetCost() < 0) {
+				money -= ret.GetCost();
+				if (money < 0) {
 					_additional_cash_required = ret.GetCost();
 					return cost;
 				}
