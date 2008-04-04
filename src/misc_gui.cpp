@@ -94,9 +94,6 @@ static const WindowDesc _land_info_desc = {
 
 static void Place_LandInfo(TileIndex tile)
 {
-	AcceptedCargo ac;
-	TileDesc td;
-
 	DeleteWindowById(WC_LAND_INFO, 0);
 
 	Window *w = AllocateWindowDesc(&_land_info_desc);
@@ -111,6 +108,9 @@ static void Place_LandInfo(TileIndex tile)
 	p->player_money = old_money;
 
 	/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
+	TileDesc td;
+	AcceptedCargo ac;
+
 	td.build_date = 0;
 	GetAcceptedCargo(tile, ac);
 	GetTileDesc(tile, &td);
@@ -338,12 +338,10 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
-			int i, count;
-
 			DrawWindowWidgets(w);
 
-			WP(w, tree_d).base = i = _tree_base_by_landscape[_opt.landscape];
-			WP(w, tree_d).count = count = _tree_count_by_landscape[_opt.landscape];
+			int i = WP(w, tree_d).base = _tree_base_by_landscape[_opt.landscape];
+			int count = WP(w, tree_d).count = _tree_count_by_landscape[_opt.landscape];
 
 			int x = 18;
 			int y = 54;
@@ -361,7 +359,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 			int wid = e->we.click.widget;
 
 			switch (wid) {
-			case 0:
+				case 0:
 					ResetObjectToPlace();
 					break;
 
@@ -579,10 +577,6 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 {
-	Window *w;
-	const ViewPort *vp;
-	Point pt;
-
 	DeleteWindowById(WC_ERRMSG, 0);
 
 	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
@@ -592,6 +586,10 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	CopyOutDParam(_errmsg_decode_params, 0, lengthof(_errmsg_decode_params));
 	_errmsg_duration = _patches.errmsg_duration;
 	if (!_errmsg_duration) return;
+
+	Point pt;
+	const ViewPort *vp;
+	Window *w;
 
 	if (_errmsg_message_1 != STR_013B_OWNED_BY || GetDParamX(_errmsg_decode_params,2) >= 8) {
 		if ((x | y) != 0) {
@@ -642,10 +640,9 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 {
-	StringID msg;
 	Point pt = RemapCoords(x,y,z);
+	StringID msg = STR_0801_COST;
 
-	msg = STR_0801_COST;
 	if (cost < 0) {
 		cost = -cost;
 		msg = STR_0803_INCOME;
@@ -765,10 +762,9 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 static int DrawStationCoverageText(const AcceptedCargo accepts,
 	int str_x, int str_y, StationCoverageType sct)
 {
-	char *b = _userstring;
 	bool first = true;
 
-	b = InlineString(b, STR_000D_ACCEPTS);
+	char *b = InlineString(_userstring, STR_000D_ACCEPTS);
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (b >= lastof(_userstring) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
@@ -967,6 +963,9 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 			tb->caretpos = tb->length;
 			tb->caretxoffs = tb->width;
 			return true;
+
+		default:
+			break;
 	}
 
 	return false;
@@ -1069,14 +1068,14 @@ void HandleEditBox(Window *w, querystr_d *string, int wid)
 
 void DrawEditBox(Window *w, querystr_d *string, int wid)
 {
-	DrawPixelInfo dpi, *old_dpi;
-	int delta;
 	const Widget *wi = &w->widget[wid];
-	const Textbuf *tb = &string->text;
 
 	assert((wi->type & WWT_MASK) == WWT_EDITBOX);
 
 	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);
+
+	DrawPixelInfo dpi;
+	int delta;
 
 	/* Limit the drawing of the string inside the widget boundaries */
 	if (!FillDrawPixelInfo(&dpi,
@@ -1087,11 +1086,13 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 		return;
 	}
 
-	old_dpi = _cur_dpi;
+	DrawPixelInfo *old_dpi = _cur_dpi;
 	_cur_dpi = &dpi;
 
 	/* We will take the current widget length as maximum width, with a small
 	 * space reserved at the end for the caret to show */
+	const Textbuf *tb = &string->text;
+
 	delta = (wi->right - wi->left) - tb->width - 10;
 	if (delta > 0) delta = 0;
 
@@ -1425,14 +1426,12 @@ static void MakeSortedSaveGameList()
 {
 	uint sort_start = 0;
 	uint sort_end = 0;
-	uint s_amount;
-	int i;
 
 	/* Directories are always above the files (FIOS_TYPE_DIR)
 	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
 	 * Only sort savegames/scenarios, not directories
 	 */
-	for (i = 0; i < _fios_num; i++) {
+	for (int i = 0; i < _fios_num; i++) {
 		switch (_fios_list[i].type) {
 			case FIOS_TYPE_DIR:    sort_start++; break;
 			case FIOS_TYPE_PARENT: sort_start++; break;
@@ -1440,9 +1439,10 @@ static void MakeSortedSaveGameList()
 		}
 	}
 
-	s_amount = _fios_num - sort_start - sort_end;
-	if (s_amount > 0)
+	uint s_amount = _fios_num - sort_start - sort_end;
+	if (s_amount > 0) {
 		qsort(_fios_list + sort_start, s_amount, sizeof(FiosItem), compare_FiosItems);
+	}
 }
 
 static void GenerateFileName()
@@ -1700,9 +1700,7 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 		STR_LOAD_HEIGHTMAP,
 	};
 
-	Window *w;
 	const WindowDesc *sld = &_save_dialog_desc;
-
 
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 	DeleteWindowById(WC_QUERY_STRING, 0);
@@ -1721,7 +1719,8 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 	}
 
 	assert((uint)mode < lengthof(saveload_captions));
-	w = AllocateWindowDesc(sld);
+
+	Window *w = AllocateWindowDesc(sld);
 	w->widget[1].data = saveload_captions[mode];
 	w->LowerWidget(7);
 

@@ -54,20 +54,20 @@ CommandCost CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p, *pp;
-	byte colour;
+	if (p2 >= 16) return CMD_ERROR; // max 16 colours
+
+	byte colour = p2;
+
 	LiveryScheme scheme = (LiveryScheme)GB(p1, 0, 8);
 	byte state = GB(p1, 8, 2);
 
-	if (p2 >= 16) return CMD_ERROR; // max 16 colours
-	colour = p2;
-
 	if (scheme >= LS_END || state >= 3) return CMD_ERROR;
 
-	p = GetPlayer(_current_player);
+	Player *p = GetPlayer(_current_player);
 
 	/* Ensure no two companies have the same primary colour */
 	if (scheme == LS_DEFAULT && state == 0) {
+		const Player *pp;
 		FOR_ALL_PLAYERS(pp) {
 			if (pp->is_active && pp != p && pp->player_color == colour) return CMD_ERROR;
 		}
@@ -225,14 +225,12 @@ static bool IsUniqueCompanyName(const char *name)
  */
 CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-
 	if (StrEmpty(_cmd_text)) return CMD_ERROR;
 
 	if (!IsUniqueCompanyName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	if (flags & DC_EXEC) {
-		p = GetPlayer(_current_player);
+		Player *p = GetPlayer(_current_player);
 		free(p->name);
 		p->name = strdup(_cmd_text);
 		MarkWholeScreenDirty();
@@ -264,14 +262,12 @@ static bool IsUniquePresidentName(const char *name)
  */
 CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-
 	if (StrEmpty(_cmd_text)) return CMD_ERROR;
 
 	if (!IsUniquePresidentName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	if (flags & DC_EXEC) {
-		p = GetPlayer(_current_player);
+		Player *p = GetPlayer(_current_player);
 		free(p->president_name);
 		p->president_name = strdup(_cmd_text);
 
@@ -409,8 +405,9 @@ CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, ui
 		/* If we are a network-client, update the difficult setting (if it is open).
 		 * Use this instead of just dirtying the window because we need to load in
 		 * the new difficulty settings */
-		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL)
+		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL) {
 			ShowGameDifficulty();
+		}
 	}
 	return CommandCost();
 }
