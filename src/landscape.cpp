@@ -72,7 +72,6 @@ SnowLine *_snow_line = NULL;
  */
 uint ApplyFoundationToSlope(Foundation f, Slope *s)
 {
-
 	if (!IsFoundation(f)) return 0;
 
 	if (IsLeveledFoundation(f)) {
@@ -116,6 +115,13 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
 }
 
 
+/**
+ * Determines height at given coordinate of a slope
+ * @param x x coordinate
+ * @param y y coordinate
+ * @param corners slope to examine
+ * @return height of given point of given slope
+ */
 uint GetPartialZ(int x, int y, Slope corners)
 {
 	if (IsHalftileSlope(corners)) {
@@ -143,91 +149,99 @@ uint GetPartialZ(int x, int y, Slope corners)
 	int z = 0;
 
 	switch (RemoveHalftileSlope(corners)) {
-	case SLOPE_W:
-		if (x - y >= 0)
-			z = (x - y) >> 1;
-		break;
+		case SLOPE_W:
+			if (x - y >= 0) {
+				z = (x - y) >> 1;
+			}
+			break;
 
-	case SLOPE_S:
-		y ^= 0xF;
-		if ( (x - y) >= 0)
-			z = (x - y) >> 1;
-		break;
+		case SLOPE_S:
+			y ^= 0xF;
+			if ((x - y) >= 0) {
+				z = (x - y) >> 1;
+			}
+			break;
 
-	case SLOPE_SW:
-		z = (x >> 1) + 1;
-		break;
+		case SLOPE_SW:
+			z = (x >> 1) + 1;
+			break;
 
-	case SLOPE_E:
-		if (y - x >= 0)
-			z = (y - x) >> 1;
-		break;
+		case SLOPE_E:
+			if (y - x >= 0) {
+				z = (y - x) >> 1;
+			}
+			break;
 
-	case SLOPE_EW:
-	case SLOPE_NS:
-	case SLOPE_ELEVATED:
-		z = 4;
-		break;
+		case SLOPE_EW:
+		case SLOPE_NS:
+		case SLOPE_ELEVATED:
+			z = 4;
+			break;
 
-	case SLOPE_SE:
-		z = (y >> 1) + 1;
-		break;
+		case SLOPE_SE:
+			z = (y >> 1) + 1;
+			break;
 
-	case SLOPE_WSE:
-		z = 8;
-		y ^= 0xF;
-		if (x - y < 0)
-			z += (x - y) >> 1;
-		break;
+		case SLOPE_WSE:
+			z = 8;
+			y ^= 0xF;
+			if (x - y < 0) {
+				z += (x - y) >> 1;
+			}
+			break;
 
-	case SLOPE_N:
-		y ^= 0xF;
-		if (y - x >= 0)
-			z = (y - x) >> 1;
-		break;
+		case SLOPE_N:
+			y ^= 0xF;
+			if (y - x >= 0) {
+				z = (y - x) >> 1;
+			}
+			break;
 
-	case SLOPE_NW:
-		z = (y ^ 0xF) >> 1;
-		break;
+		case SLOPE_NW:
+			z = (y ^ 0xF) >> 1;
+			break;
 
-	case SLOPE_NWS:
-		z = 8;
-		if (x - y < 0)
-			z += (x - y) >> 1;
-		break;
+		case SLOPE_NWS:
+			z = 8;
+			if (x - y < 0) {
+				z += (x - y) >> 1;
+			}
+			break;
 
-	case SLOPE_NE:
-		z = (x ^ 0xF) >> 1;
-		break;
+		case SLOPE_NE:
+			z = (x ^ 0xF) >> 1;
+			break;
 
-	case SLOPE_ENW:
-		z = 8;
-		y ^= 0xF;
-		if (y - x < 0)
-			z += (y - x) >> 1;
-		break;
+		case SLOPE_ENW:
+			z = 8;
+			y ^= 0xF;
+			if (y - x < 0) {
+				z += (y - x) >> 1;
+			}
+			break;
 
-	case SLOPE_SEN:
-		z = 8;
-		if (y - x < 0)
-			z += (y - x) >> 1;
-		break;
+		case SLOPE_SEN:
+			z = 8;
+			if (y - x < 0) {
+				z += (y - x) >> 1;
+			}
+			break;
 
-	case SLOPE_STEEP_S:
-		z = 1 + ((x + y) >> 1);
-		break;
+		case SLOPE_STEEP_S:
+			z = 1 + ((x + y) >> 1);
+			break;
 
-	case SLOPE_STEEP_W:
-		z = 1 + ((x + (y ^ 0xF)) >> 1);
-		break;
+		case SLOPE_STEEP_W:
+			z = 1 + ((x + (y ^ 0xF)) >> 1);
+			break;
 
-	case SLOPE_STEEP_N:
-		z = 1 + (((x ^ 0xF) + (y ^ 0xF)) >> 1);
-		break;
+		case SLOPE_STEEP_N:
+			z = 1 + (((x ^ 0xF) + (y ^ 0xF)) >> 1);
+			break;
 
-	case SLOPE_STEEP_E:
-		z = 1 + (((x ^ 0xF) + y) >> 1);
-		break;
+		case SLOPE_STEEP_E:
+			z = 1 + (((x ^ 0xF) + y) >> 1);
+			break;
 
 		default: break;
 	}
@@ -552,35 +566,29 @@ CommandCost CmdLandscapeClear(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  */
 CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	CommandCost ret, money;
-	CommandCost cost(EXPENSES_CONSTRUCTION);
-	int ex;
-	int ey;
-	int sx, sy;
-	int x, y;
-	bool success = false;
-
 	if (p1 >= MapSize()) return CMD_ERROR;
 
 	/* make sure sx,sy are smaller than ex,ey */
-	ex = TileX(tile);
-	ey = TileY(tile);
-	sx = TileX(p1);
-	sy = TileY(p1);
+	int ex = TileX(tile);
+	int ey = TileY(tile);
+	int sx = TileX(p1);
+	int sy = TileY(p1);
 	if (ex < sx) Swap(ex, sx);
 	if (ey < sy) Swap(ey, sy);
 
-	money.AddCost(GetAvailableMoneyForCommand());
+	Money money = GetAvailableMoneyForCommand();
+	CommandCost cost(EXPENSES_CONSTRUCTION);
+	bool success = false;
 
-	for (x = sx; x <= ex; ++x) {
-		for (y = sy; y <= ey; ++y) {
-			ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	for (int x = sx; x <= ex; ++x) {
+		for (int y = sy; y <= ey; ++y) {
+			CommandCost ret = DoCommand(TileXY(x, y), 0, 0, flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) continue;
 			success = true;
 
 			if (flags & DC_EXEC) {
-				money.AddCost(-ret.GetCost());
-				if (ret.GetCost() > 0 && money.GetCost() < 0) {
+				money -= ret.GetCost();
+				if (ret.GetCost() > 0 && money < 0) {
 					_additional_cash_required = ret.GetCost();
 					return cost;
 				}
@@ -609,13 +617,10 @@ CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 void RunTileLoop()
 {
-	TileIndex tile;
-	uint count;
+	TileIndex tile = _cur_tileloop_tile;
 
-	tile = _cur_tileloop_tile;
-
-	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
-	count = (MapSizeX() / TILELOOP_SIZE) * (MapSizeY() / TILELOOP_SIZE);
+	assert((tile & ~TILELOOP_ASSERTMASK) == 0);
+	uint count = (MapSizeX() / TILELOOP_SIZE) * (MapSizeY() / TILELOOP_SIZE);
 	do {
 		_tile_type_procs[GetTileType(tile)]->tile_loop_proc(tile);
 
@@ -624,12 +629,13 @@ void RunTileLoop()
 		} else {
 			tile = TILE_MASK(tile - TILELOOP_SIZE * (MapSizeX() / TILELOOP_SIZE - 1) + TileDiffXY(0, TILELOOP_SIZE)); /* x would overflow, also increase y */
 		}
-	} while (--count);
-	assert( (tile & ~TILELOOP_ASSERTMASK) == 0);
+	} while (--count != 0);
+	assert((tile & ~TILELOOP_ASSERTMASK) == 0);
 
 	tile += 9;
-	if (tile & TILELOOP_CHKMASK)
+	if (tile & TILELOOP_CHKMASK) {
 		tile = (tile + MapSizeX()) & TILELOOP_ASSERTMASK;
+	}
 	_cur_tileloop_tile = tile;
 }
 
@@ -638,10 +644,10 @@ void InitializeLandscape()
 	uint maxx = MapMaxX();
 	uint maxy = MapMaxY();
 	uint sizex = MapSizeX();
-	uint x;
-	uint y;
 
+	uint y;
 	for (y = 0; y < maxy; y++) {
+		uint x;
 		for (x = 0; x < maxx; x++) {
 			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
 			SetTileHeight(sizex * y + x, 0);
@@ -650,49 +656,38 @@ void InitializeLandscape()
 		}
 		MakeVoid(sizex * y + x);
 	}
-	for (x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
+	for (uint x = 0; x < sizex; x++) MakeVoid(sizex * y + x);
 }
 
 static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
 static const byte _genterrain_tbl_2[5] = {  0,  0,  0,  0, 33 };
 
-static void GenerateTerrain(int type, int flag)
+static void GenerateTerrain(int type, uint flag)
 {
-	uint32 r;
-	uint x;
-	uint y;
-	uint w;
-	uint h;
-	const Sprite* templ;
-	const byte *p;
-	Tile* tile;
-	byte direction;
+	uint32 r = Random();
 
-	r = Random();
-	templ = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
+	const Sprite *templ = GetSprite((((r >> 24) * _genterrain_tbl_1[type]) >> 8) + _genterrain_tbl_2[type] + 4845);
 
-	x = r & MapMaxX();
-	y = (r >> MapLogX()) & MapMaxY();
-
+	uint x = r & MapMaxX();
+	uint y = (r >> MapLogX()) & MapMaxY();
 
 	if (x < 2 || y < 2) return;
 
-	direction = GB(r, 22, 2);
-	if (direction & 1) {
-		w = templ->height;
-		h = templ->width;
-	} else {
-		w = templ->width;
-		h = templ->height;
-	}
-	p = templ->data;
+	DiagDirection direction = (DiagDirection)GB(r, 22, 2);
+	uint w = templ->width;
+	uint h = templ->height;
 
-	if (flag & 4) {
+	if (DiagDirToAxis(direction) == AXIS_Y) Swap(w, h);
+
+	const byte *p = templ->data;
+
+	if ((flag & 4) != 0) {
 		uint xw = x * MapSizeY();
 		uint yw = y * MapSizeX();
 		uint bias = (MapSizeX() + MapSizeY()) * 16;
 
 		switch (flag & 3) {
+			default: NOT_REACHED();
 			case 0:
 				if (xw + yw > MapSize() - bias) return;
 				break;
@@ -714,15 +709,15 @@ static void GenerateTerrain(int type, int flag)
 	if (x + w >= MapMaxX() - 1) return;
 	if (y + h >= MapMaxY() - 1) return;
 
-	tile = &_m[TileXY(x, y)];
+	Tile *tile = &_m[TileXY(x, y)];
 
 	switch (direction) {
-		case 0:
+		default: NOT_REACHED();
+		case DIAGDIR_NE:
 			do {
-				Tile* tile_cur = tile;
-				uint w_cur;
+				Tile *tile_cur = tile;
 
-				for (w_cur = w; w_cur != 0; --w_cur) {
+				for (uint w_cur = w; w_cur != 0; --w_cur) {
 					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur++;
@@ -731,27 +726,25 @@ static void GenerateTerrain(int type, int flag)
 			} while (--h != 0);
 			break;
 
-		case 1:
+		case DIAGDIR_SE:
 			do {
-				Tile* tile_cur = tile;
-				uint h_cur;
+				Tile *tile_cur = tile;
 
-				for (h_cur = h; h_cur != 0; --h_cur) {
+				for (uint h_cur = h; h_cur != 0; --h_cur) {
 					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur += TileDiffXY(0, 1);
 				}
-				tile++;
+				tile += TileDiffXY(1, 0);
 			} while (--w != 0);
 			break;
 
-		case 2:
+		case DIAGDIR_SW:
 			tile += TileDiffXY(w - 1, 0);
 			do {
-				Tile* tile_cur = tile;
-				uint w_cur;
+				Tile *tile_cur = tile;
 
-				for (w_cur = w; w_cur != 0; --w_cur) {
+				for (uint w_cur = w; w_cur != 0; --w_cur) {
 					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur--;
@@ -760,18 +753,17 @@ static void GenerateTerrain(int type, int flag)
 			} while (--h != 0);
 			break;
 
-		case 3:
+		case DIAGDIR_NW:
 			tile += TileDiffXY(0, h - 1);
 			do {
-				Tile* tile_cur = tile;
-				uint h_cur;
+				Tile *tile_cur = tile;
 
-				for (h_cur = h; h_cur != 0; --h_cur) {
+				for (uint h_cur = h; h_cur != 0; --h_cur) {
 					if (*p >= tile_cur->type_height) tile_cur->type_height = *p;
 					p++;
 					tile_cur -= TileDiffXY(0, 1);
 				}
-				tile++;
+				tile += TileDiffXY(1, 0);
 			} while (--w != 0);
 			break;
 	}
@@ -782,12 +774,10 @@ static void GenerateTerrain(int type, int flag)
 
 static void CreateDesertOrRainForest()
 {
-	TileIndex tile;
 	TileIndex update_freq = MapSize() / 4;
 	const TileIndexDiffC *data;
-	uint i;
 
-	for (tile = 0; tile != MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile != MapSize(); ++tile) {
 		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		for (data = _make_desert_or_rainforest_data;
@@ -799,13 +789,13 @@ static void CreateDesertOrRainForest()
 			SetTropicZone(tile, TROPICZONE_DESERT);
 	}
 
-	for (i = 0; i != 256; i++) {
+	for (uint i = 0; i != 256; i++) {
 		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		RunTileLoop();
 	}
 
-	for (tile = 0; tile != MapSize(); ++tile) {
+	for (TileIndex tile = 0; tile != MapSize(); ++tile) {
 		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 		for (data = _make_desert_or_rainforest_data;
@@ -820,10 +810,7 @@ static void CreateDesertOrRainForest()
 
 void GenerateLandscape(byte mode)
 {
-	const int gwp_desert_amount = 4 + 8;
-	uint i;
-	uint flag;
-	uint32 r;
+	static const int gwp_desert_amount = 4 + 8;
 
 	if (mode == GW_HEIGHTMAP) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 1 + gwp_desert_amount : 1);
@@ -834,54 +821,58 @@ void GenerateLandscape(byte mode)
 		GenerateTerrainPerlin();
 	} else {
 		switch (_opt.landscape) {
-			case LT_ARCTIC:
+			case LT_ARCTIC: {
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
 
-				for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i) {
+				uint32 r = Random();
+
+				for (uint i = ScaleByMapSize(GB(r, 0, 7) + 950); i != 0; --i) {
 					GenerateTerrain(2, 0);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
-				r = Random();
-				flag = GB(r, 0, 2) | 4;
-				for (i = ScaleByMapSize(GB(r, 16, 7) + 450); i != 0; --i) {
+				uint flag = GB(r, 7, 2) | 4;
+				for (uint i = ScaleByMapSize(GB(r, 9, 7) + 450); i != 0; --i) {
 					GenerateTerrain(4, flag);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
-				break;
+			} break;
 
-			case LT_TROPIC:
+			case LT_TROPIC: {
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 3 + gwp_desert_amount);
 
-				for (i = ScaleByMapSize((Random() & 0x7F) + 170); i != 0; --i) {
+				uint32 r = Random();
+
+				for (uint i = ScaleByMapSize(GB(r, 0, 7) + 170); i != 0; --i) {
 					GenerateTerrain(0, 0);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
-				r = Random();
-				flag = GB(r, 0, 2) | 4;
-				for (i = ScaleByMapSize(GB(r, 16, 8) + 1700); i != 0; --i) {
+				uint flag = GB(r, 7, 2) | 4;
+				for (uint i = ScaleByMapSize(GB(r, 9, 8) + 1700); i != 0; --i) {
 					GenerateTerrain(0, flag);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
 				flag ^= 2;
 
-				for (i = ScaleByMapSize((Random() & 0x7F) + 410); i != 0; --i) {
+				for (uint i = ScaleByMapSize(GB(r, 17, 7) + 410); i != 0; --i) {
 					GenerateTerrain(3, flag);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
-				break;
+			} break;
 
-			default:
+			default: {
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 1);
 
-				i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
+				uint32 r = Random();
+
+				uint i = ScaleByMapSize(GB(r, 0, 7) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
 					GenerateTerrain(_opt.diff.terrain_type, 0);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
-				break;
+			} break;
 		}
 	}
 
