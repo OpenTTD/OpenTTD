@@ -519,7 +519,7 @@ void NetworkUDPRemoveAdvertise()
 
 	/* check for socket */
 	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(0, 0, false)) return;
+		if (!_udp_master_socket->Listen(_network_server_bind_ip, 0, false)) return;
 	}
 
 	DEBUG(net, 1, "[udp] removing advertise from master server");
@@ -549,7 +549,7 @@ void NetworkUDPAdvertise()
 
 	/* check for socket */
 	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(0, 0, false)) return;
+		if (!_udp_master_socket->Listen(_network_server_bind_ip, 0, false)) return;
 	}
 
 	if (_network_need_advertise) {
