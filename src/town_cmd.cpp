@@ -758,7 +758,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 	TILE_ASSERT(tile);
 
 	CommandCost r = DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-	if (CmdFailed(r) || r.GetCost() >= 126 * 16) return false;
+	if (CmdFailed(r) || r.GetCost() >= (_price.terraform + 2) * 8) return false;
 	DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
 	return true;
 }
