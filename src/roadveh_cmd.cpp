@@ -10,7 +10,6 @@
 #include "road_map.h"
 #include "roadveh.h"
 #include "station_map.h"
-#include "timetable.h"
 #include "command_func.h"
 #include "station_base.h"
 #include "news_func.h"
@@ -755,89 +754,31 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 	}
 }
 
-static void ProcessRoadVehOrder(Vehicle *v)
+TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 {
-	const Order *order;
+	TileIndex dest = INVALID_TILE;
 
-	switch (v->current_order.type) {
-		case OT_GOTO_DEPOT:
-			/* Let a depot order in the orderlist interrupt. */
-			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
-			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
-					!VehicleNeedsService(v)) {
-				UpdateVehicleTimetable(v, true);
-				v->cur_order_index++;
+	const RoadStop *rs = GetStation(station)->GetPrimaryRoadStop(this);
+	if (rs != NULL) {
+		uint mindist = MAX_UVALUE(uint);
+
+		for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
+			uint dist = DistanceManhattan(this->tile, rs->xy);
+
+			if (dist < mindist) {
+				mindist = dist;
+				dest = rs->xy;
 			}
-			break;
-
-		case OT_LOADING:
-		case OT_LEAVESTATION:
-			return;
-
-		default: break;
-	}
-
-	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
-
-	order = GetVehicleOrder(v, v->cur_order_index);
-
-	if (order == NULL) {
-		v->current_order.Free();
-		v->dest_tile = 0;
-		ClearSlot(v);
-		return;
-	}
-
-	if (order->type  == v->current_order.type &&
-			order->flags == v->current_order.flags &&
-			order->dest  == v->current_order.dest) {
-		return;
-	}
-
-	v->current_order = *order;
-
-	switch (order->type) {
-		case OT_GOTO_STATION: {
-			if (order->dest == v->last_station_visited) {
-				v->last_station_visited = INVALID_STATION;
-			}
-
-			const RoadStop *rs = GetStation(order->dest)->GetPrimaryRoadStop(v);
-
-			TileIndex dest = INVALID_TILE;
-			if (rs != NULL) {
-				uint mindist = MAX_UVALUE(uint);
-
-				for (; rs != NULL; rs = rs->GetNextRoadStop(v)) {
-					uint dist = DistanceManhattan(v->tile, rs->xy);
-
-					if (dist < mindist) {
-						mindist = dist;
-						dest = rs->xy;
-					}
-				}
-			}
-
-			if (dest != INVALID_TILE) {
-					v->dest_tile = dest;
-			} else {
-				/* There is no stop left at the station, so don't even TRY to go there */
-				v->cur_order_index++;
-				v->dest_tile = 0;
-			}
-			break;
 		}
-
-		case OT_GOTO_DEPOT:
-			v->dest_tile = GetDepot(order->dest)->xy;
-			break;
-
-		default:
-			v->dest_tile = 0;
-			break;
 	}
 
-	InvalidateVehicleOrder(v);
+	if (dest != INVALID_TILE) {
+		return dest;
+	} else {
+		/* There is no stop left at the station, so don't even TRY to go there */
+		this->cur_order_index++;
+		return 0;
+	}
 }
 
 static void StartRoadVehSound(const Vehicle* v)
@@ -1939,7 +1880,7 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	ProcessRoadVehOrder(v);
+	ProcessOrders(v);
 	v->HandleLoading();
 
 	if (v->current_order.type == OT_LOADING) return;

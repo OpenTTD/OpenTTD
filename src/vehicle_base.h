@@ -488,6 +488,15 @@ public:
 	inline bool IsOrderListShared() const { return this->next_shared != NULL || this->prev_shared != NULL; };
 
 	bool NeedsAutorenewing(const Player *p) const;
+
+	/**
+	 * Determine the location for the station where the vehicle goes to next.
+	 * Things done for example are allocating slots in a road stop or exact
+	 * location of the platform is determined for ships.
+	 * @param station the station to make the next location of the vehicle.
+	 * @return the location (tile) to aim for.
+	 */
+	virtual TileIndex GetOrderStationLocation(StationID station) { return INVALID_TILE; }
 };
 
 /**

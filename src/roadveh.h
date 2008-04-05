@@ -76,6 +76,7 @@ struct RoadVehicle : public Vehicle {
 	bool IsInDepot() const { return this->u.road.state == RVSB_IN_DEPOT; }
 	void Tick();
 	void OnNewDay();
+	TileIndex GetOrderStationLocation(StationID station);
 };
 
 byte GetRoadVehLength(const Vehicle *v);

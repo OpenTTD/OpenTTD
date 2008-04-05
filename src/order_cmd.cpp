@@ -23,6 +23,8 @@
 #include "settings_type.h"
 #include "string_func.h"
 #include "newgrf_cargo.h"
+#include "timetable.h"
+#include "vehicle_func.h"
 
 #include "table/strings.h"
 
@@ -1275,6 +1277,118 @@ Date GetServiceIntervalClamped(uint index)
 	return (_patches.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
+/**
+ * Handle the orders of a vehicle and determine the next place
+ * to go to if needed.
+ * @param v the vehicle to do this for.
+ * @return true *if* the vehicle is eligible for reversing
+ *              (basically only when leaving a station).
+ */
+bool ProcessOrders(Vehicle *v)
+{
+	switch (v->current_order.type) {
+		case OT_GOTO_DEPOT:
+			/* Let a depot order in the orderlist interrupt. */
+			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return false;
+
+			if ((v->current_order.flags & OFB_SERVICE_IF_NEEDED) && !VehicleNeedsService(v)) {
+				UpdateVehicleTimetable(v, true);
+				v->cur_order_index++;
+			}
+			break;
+
+		case OT_LOADING:
+		case OT_LEAVESTATION:
+			return false;
+
+		default: break;
+	}
+
+	/**
+	 * Reversing because of order change is allowed only just after leaving a
+	 * station (and the difficulty setting to allowed, of course)
+	 * this can be detected because only after OT_LEAVESTATION, current_order
+	 * will be reset to nothing. (That also happens if no order, but in that case
+	 * it won't hit the point in code where may_reverse is checked)
+	 */
+	bool may_reverse = v->current_order.type == OT_NOTHING;
+
+	/* Check if we've reached the waypoint? */
+	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
+		UpdateVehicleTimetable(v, true);
+		v->cur_order_index++;
+	}
+
+	/* Check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
+	if (_patches.new_nonstop &&
+			v->current_order.flags & OFB_NON_STOP &&
+			IsTileType(v->tile, MP_STATION) &&
+			v->current_order.dest == GetStationIndex(v->tile)) {
+		UpdateVehicleTimetable(v, true);
+		v->cur_order_index++;
+	}
+
+	/* Get the current order */
+	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
+
+	const Order *order = GetVehicleOrder(v, v->cur_order_index);
+
+	/* If no order, do nothing. */
+	if (order == NULL) {
+		v->current_order.Free();
+		v->dest_tile = 0;
+		if (v->type == VEH_ROAD) ClearSlot(v);
+		return false;
+	}
+
+	/* If it is unchanged, keep it. */
+	if (order->type  == v->current_order.type &&
+			order->flags == v->current_order.flags &&
+			order->dest  == v->current_order.dest &&
+			(v->type != VEH_SHIP || order->type != OT_GOTO_STATION || GetStation(order->dest)->dock_tile != 0)) {
+		return false;
+	}
+
+	/* Otherwise set it, and determine the destination tile. */
+	v->current_order = *order;
+
+	InvalidateVehicleOrder(v);
+	switch (v->type) {
+		default:
+			NOT_REACHED();
+
+		case VEH_ROAD:
+		case VEH_TRAIN:
+			break;
+
+		case VEH_SHIP:
+			InvalidateWindowClasses(v->GetVehicleListWindowClass());
+			break;
+	}
+
+	switch (order->type) {
+		case OT_GOTO_STATION:
+			if (order->dest == v->last_station_visited) {
+				v->last_station_visited = INVALID_STATION;
+			}
+			v->dest_tile = v->GetOrderStationLocation(order->dest);
+			break;
+
+		case OT_GOTO_DEPOT:
+			v->dest_tile = GetDepot(order->dest)->xy;
+			break;
+
+		case OT_GOTO_WAYPOINT:
+			v->dest_tile = GetWaypoint(order->dest)->xy;
+			break;
+
+		default:
+			v->dest_tile = 0;
+			return false;
+	}
+
+	return may_reverse;
+}
 
 /**
  *

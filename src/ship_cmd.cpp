@@ -242,66 +242,15 @@ void Ship::PlayLeaveStationSound() const
 	PlayShipSound(this);
 }
 
-static void ProcessShipOrder(Vehicle *v)
+TileIndex Ship::GetOrderStationLocation(StationID station)
 {
-	const Order *order;
-
-	switch (v->current_order.type) {
-		case OT_GOTO_DEPOT:
-			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
-			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
-					!VehicleNeedsService(v)) {
-				UpdateVehicleTimetable(v, true);
-				v->cur_order_index++;
-			}
-			break;
-
-		case OT_LOADING:
-		case OT_LEAVESTATION:
-			return;
-
-		default: break;
-	}
-
-	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
-
-	order = GetVehicleOrder(v, v->cur_order_index);
-
-	if (order == NULL) {
-		v->current_order.Free();
-		v->dest_tile = 0;
-		return;
-	}
-
-	if (order->type  == v->current_order.type &&
-			order->flags == v->current_order.flags &&
-			order->dest  == v->current_order.dest &&
-			(order->type != OT_GOTO_STATION || GetStation(order->dest)->dock_tile != 0))
-		return;
-
-	v->current_order = *order;
-
-	if (order->type == OT_GOTO_STATION) {
-		const Station *st;
-
-		if (order->dest == v->last_station_visited)
-			v->last_station_visited = INVALID_STATION;
-
-		st = GetStation(order->dest);
-		if (st->dock_tile != 0) {
-			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
-		} else {
-			v->cur_order_index++;
-		}
-	} else if (order->type == OT_GOTO_DEPOT) {
-		v->dest_tile = GetDepot(order->dest)->xy;
+	Station *st = GetStation(station);
+	if (st->dock_tile != 0) {
+		return TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 	} else {
-		v->dest_tile = 0;
+		this->cur_order_index++;
+		return 0;
 	}
-
-	InvalidateVehicleOrder(v);
-
-	InvalidateWindowClasses(WC_SHIPS_LIST);
 }
 
 void Ship::UpdateDeltaXY(Direction direction)
@@ -650,7 +599,7 @@ static void ShipController(Vehicle *v)
 
 	if (v->vehstatus & VS_STOPPED) return;
 
-	ProcessShipOrder(v);
+	ProcessOrders(v);
 	v->HandleLoading();
 
 	if (v->current_order.type == OT_LOADING) return;

@@ -306,6 +306,7 @@ struct Train : public Vehicle {
 	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }
 	void Tick();
 	void OnNewDay();
+	TileIndex GetOrderStationLocation(StationID station);
 };
 
 #endif /* TRAIN_H */

@@ -42,6 +42,7 @@ struct Ship: public Vehicle {
 	bool IsInDepot() const { return this->u.ship.state == 0x80; }
 	void Tick();
 	void OnNewDay();
+	TileIndex GetOrderStationLocation(StationID station);
 };
 
 #endif /* SHIP_H */
