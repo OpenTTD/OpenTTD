@@ -2617,6 +2617,8 @@ bad:;
 
 TileIndex Train::GetOrderStationLocation(StationID station)
 {
+	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
+
 	return GetStation(station)->xy;
 }
 

@@ -244,6 +244,8 @@ void Ship::PlayLeaveStationSound() const
 
 TileIndex Ship::GetOrderStationLocation(StationID station)
 {
+	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
+
 	Station *st = GetStation(station);
 	if (st->dock_tile != 0) {
 		return TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));

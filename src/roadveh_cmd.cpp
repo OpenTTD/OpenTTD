@@ -756,8 +756,9 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 
 TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 {
-	TileIndex dest = INVALID_TILE;
+	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
+	TileIndex dest = INVALID_TILE;
 	const RoadStop *rs = GetStation(station)->GetPrimaryRoadStop(this);
 	if (rs != NULL) {
 		uint mindist = MAX_UVALUE(uint);

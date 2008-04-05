@@ -126,6 +126,7 @@ struct Aircraft : public Vehicle {
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	void Tick();
 	void OnNewDay();
+	TileIndex GetOrderStationLocation(StationID station);
 };
 
 #endif /* AIRCRAFT_H */

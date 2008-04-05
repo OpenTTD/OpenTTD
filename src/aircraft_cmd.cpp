@@ -1361,74 +1361,48 @@ static void HandleAircraftSmoke(Vehicle *v)
 	}
 }
 
-static void ProcessAircraftOrder(Vehicle *v)
+void HandleMissingAircraftOrders(Vehicle *v)
 {
-	switch (v->current_order.type) {
-		case OT_GOTO_DEPOT:
-			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
-			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
-					!VehicleNeedsService(v)) {
-				UpdateVehicleTimetable(v, true);
-				v->cur_order_index++;
-			}
-			break;
+	/*
+	 * We do not have an order. This can be divided into two cases:
+	 * 1) we are heading to an invalid station. In this case we must
+	 *    find another airport to go to. If there is nowhere to go,
+	 *    we will destroy the aircraft as it otherwise will enter
+	 *    the holding pattern for the first airport, which can cause
+	 *    the plane to go into an undefined state when building an
+	 *    airport with the same StationID.
+	 * 2) we are (still) heading to a (still) valid airport, then we
+	 *    can continue going there. This can happen when you are
+	 *    changing the aircraft's orders while in-flight or in for
+	 *    example a depot. However, when we have a current order to
+	 *    go to a depot, we have to keep that order so the aircraft
+	 *    actually stops.
+	 */
+	const Station *st = GetStation(v->u.air.targetairport);
+	if (!st->IsValid() || st->airport_tile == 0) {
+		CommandCost ret;
+		PlayerID old_player = _current_player;
 
-		case OT_LOADING: return;
+		_current_player = v->owner;
+		ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
+		_current_player = old_player;
 
-		default: break;
+		if (CmdFailed(ret)) CrashAirplane(v);
+	} else if (v->current_order.type != OT_GOTO_DEPOT) {
+		v->current_order.Free();
+	}
+}
+
+
+TileIndex Aircraft::GetOrderStationLocation(StationID station)
+{
+	/* Orders are changed in flight, ensure going to the right station. */
+	if (this->u.air.state == FLYING) {
+		AircraftNextAirportPos_and_Order(this);
 	}
 
-	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
-
-	const Order *order = GetVehicleOrder(v, v->cur_order_index);
-
-	if (order == NULL|| (order->type == OT_DUMMY && !CheckForValidOrders(v))) {
-		/*
-		 * We do not have an order. This can be divided into two cases:
-		 * 1) we are heading to an invalid station. In this case we must
-		 *    find another airport to go to. If there is nowhere to go,
-		 *    we will destroy the aircraft as it otherwise will enter
-		 *    the holding pattern for the first airport, which can cause
-		 *    the plane to go into an undefined state when building an
-		 *    airport with the same StationID.
-		 * 2) we are (still) heading to a (still) valid airport, then we
-		 *    can continue going there. This can happen when you are
-		 *    changing the aircraft's orders while in-flight or in for
-		 *    example a depot. However, when we have a current order to
-		 *    go to a depot, we have to keep that order so the aircraft
-		 *    actually stops.
-		 */
-		const Station *st = GetStation(v->u.air.targetairport);
-		if (!st->IsValid() || st->airport_tile == 0) {
-			CommandCost ret;
-			PlayerID old_player = _current_player;
-
-			_current_player = v->owner;
-			ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-			_current_player = old_player;
-
-			if (CmdFailed(ret)) CrashAirplane(v);
-		} else if (v->current_order.type != OT_GOTO_DEPOT) {
-			v->current_order.Free();
-		}
-		return;
-	}
-
-	if (order->type  == v->current_order.type  &&
-			order->flags == v->current_order.flags &&
-			order->dest  == v->current_order.dest)
-		return;
-
-	v->current_order = *order;
-
-	/* orders are changed in flight, ensure going to the right station */
-	if (order->type == OT_GOTO_STATION && v->u.air.state == FLYING) {
-		AircraftNextAirportPos_and_Order(v);
-	}
-
-	InvalidateVehicleOrder(v);
-
-	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+	/* Aircraft do not use dest-tile */
+	return 0;
 }
 
 void Aircraft::MarkDirty()
@@ -2149,7 +2123,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 	}
 
 	HandleAircraftSmoke(v);
-	ProcessAircraftOrder(v);
+	ProcessOrders(v);
 	v->HandleLoading(loop != 0);
 
 	if (v->current_order.type >= OT_LOADING) return;

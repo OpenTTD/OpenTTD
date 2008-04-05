@@ -35,7 +35,6 @@ void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v);
-bool CheckForValidOrders(const Vehicle* v);
 bool ProcessOrders(Vehicle *v);
 
 #define MIN_SERVINT_PERCENT  5

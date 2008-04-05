@@ -1278,6 +1278,22 @@ Date GetServiceIntervalClamped(uint index)
 }
 
 /**
+ *
+ * Check if a vehicle has any valid orders
+ *
+ * @return false if there are no valid orders
+ *
+ */
+static bool CheckForValidOrders(const Vehicle *v)
+{
+	const Order *order;
+
+	FOR_VEHICLE_ORDERS(v, order) if (order->type != OT_DUMMY) return true;
+
+	return false;
+}
+
+/**
  * Handle the orders of a vehicle and determine the next place
  * to go to if needed.
  * @param v the vehicle to do this for.
@@ -1298,8 +1314,11 @@ bool ProcessOrders(Vehicle *v)
 			break;
 
 		case OT_LOADING:
-		case OT_LEAVESTATION:
 			return false;
+
+		case OT_LEAVESTATION:
+			if (v->type != VEH_AIRCRAFT) return false;
+			break;
 
 		default: break;
 	}
@@ -1334,7 +1353,14 @@ bool ProcessOrders(Vehicle *v)
 	const Order *order = GetVehicleOrder(v, v->cur_order_index);
 
 	/* If no order, do nothing. */
-	if (order == NULL) {
+	if (order == NULL || (v->type == VEH_AIRCRAFT && order->type == OT_DUMMY && !CheckForValidOrders(v))) {
+		if (v->type == VEH_AIRCRAFT) {
+			/* Aircraft do something vastly different here, so handle separately */
+			extern void HandleMissingAircraftOrders(Vehicle *v);
+			HandleMissingAircraftOrders(v);
+			return false;
+		}
+
 		v->current_order.Free();
 		v->dest_tile = 0;
 		if (v->type == VEH_ROAD) ClearSlot(v);
@@ -1361,6 +1387,7 @@ bool ProcessOrders(Vehicle *v)
 		case VEH_TRAIN:
 			break;
 
+		case VEH_AIRCRAFT:
 		case VEH_SHIP:
 			InvalidateWindowClasses(v->GetVehicleListWindowClass());
 			break;
@@ -1368,14 +1395,11 @@ bool ProcessOrders(Vehicle *v)
 
 	switch (order->type) {
 		case OT_GOTO_STATION:
-			if (order->dest == v->last_station_visited) {
-				v->last_station_visited = INVALID_STATION;
-			}
 			v->dest_tile = v->GetOrderStationLocation(order->dest);
 			break;
 
 		case OT_GOTO_DEPOT:
-			v->dest_tile = GetDepot(order->dest)->xy;
+			if (v->type != VEH_AIRCRAFT) v->dest_tile = GetDepot(order->dest)->xy;
 			break;
 
 		case OT_GOTO_WAYPOINT:
@@ -1388,22 +1412,6 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	return may_reverse;
-}
-
-/**
- *
- * Check if a vehicle has any valid orders
- *
- * @return false if there are no valid orders
- *
- */
-bool CheckForValidOrders(const Vehicle* v)
-{
-	const Order *order;
-
-	FOR_VEHICLE_ORDERS(v, order) if (order->type != OT_DUMMY) return true;
-
-	return false;
 }
 
 void InitializeOrders()
