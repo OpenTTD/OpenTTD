@@ -1343,6 +1343,7 @@ bool ProcessOrders(Vehicle *v)
 			v->current_order.flags & OFB_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.dest == GetStationIndex(v->tile)) {
+		v->last_station_visited = v->current_order.dest;
 		UpdateVehicleTimetable(v, true);
 		v->cur_order_index++;
 	}
@@ -1412,6 +1413,23 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	return may_reverse;
+}
+
+/**
+ * Check whether the given vehicle should stop at the given station
+ * based on this order and the non-stop settings.
+ * @param v       the vehicle that might be stopping.
+ * @param station the station to stop at.
+ * @return true if the vehicle should stop.
+ */
+bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
+{
+	return
+			v->last_station_visited != station && // Do stop only when we've not just been there
+			type == OT_GOTO_STATION &&            // Do stop only when going to a station
+			/* Finally do stop when the non-stop flag is not set, or when we should stop at
+			 * this station according to the new_nonstop setting. */
+			(!this->flags & OFB_NON_STOP || ((this->dest != station) == _patches.new_nonstop));
 }
 
 void InitializeOrders()

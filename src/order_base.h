@@ -9,6 +9,8 @@
 #include "oldpool.h"
 #include "core/bitmath_func.hpp"
 #include "cargo_type.h"
+#include "station_type.h"
+#include "vehicle_type.h"
 
 DECLARE_OLD_POOL(Order, Order, 6, 1000)
 
@@ -40,6 +42,8 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 
 	void Free();
 	void FreeChain();
+
+	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 };
 
 static inline VehicleOrderID GetMaxOrderIndex()

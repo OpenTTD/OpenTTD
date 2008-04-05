@@ -302,27 +302,6 @@ enum AccelType {
 	AM_BRAKE
 };
 
-static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
-{
-	const Order* o = &v->current_order;
-	StationID sid = GetStationIndex(tile);
-
-	assert(v->type == VEH_TRAIN);
-	/* When does a train drive through a station
-	 * first we deal with the "new nonstop handling" */
-	if (_patches.new_nonstop && o->flags & OFB_NON_STOP && sid == o->dest) {
-		return false;
-	}
-
-	if (v->last_station_visited == sid) return false;
-
-	if (sid != o->dest && (o->flags & OFB_NON_STOP || _patches.new_nonstop)) {
-		return false;
-	}
-
-	return true;
-}
-
 /** new acceleration*/
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
@@ -385,7 +364,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	}
 
 	if (IsTileType(v->tile, MP_STATION) && IsFrontEngine(v)) {
-		if (TrainShouldStop(v, v->tile)) {
+		if (v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) {
 			int station_length = GetStationByTile(v->tile)->GetPlatformLength(v->tile, DirToDiagDir(v->direction));
 
 			int st_max_speed = 120;

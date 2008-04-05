@@ -2399,33 +2399,27 @@ static const byte _enter_station_speedtable[12] = {
 
 static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
+	StationID station_id = GetStationIndex(tile);
+	if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
+
 	if (v->type == VEH_TRAIN) {
 		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDiagDir(DirToDiagDir(v->direction)), tile)) {
-			StationID station_id = GetStationIndex(tile);
+			DiagDirection dir = DirToDiagDir(v->direction);
 
-			if ((!(v->current_order.flags & OFB_NON_STOP) && !_patches.new_nonstop) ||
-					(v->current_order.type == OT_GOTO_STATION && v->current_order.dest == station_id)) {
-				if (!(_patches.new_nonstop && v->current_order.flags & OFB_NON_STOP) &&
-						v->current_order.type != OT_LEAVESTATION &&
-						v->last_station_visited != station_id) {
-					DiagDirection dir = DirToDiagDir(v->direction);
+			x &= 0xF;
+			y &= 0xF;
 
-					x &= 0xF;
-					y &= 0xF;
+			if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
+			if (y == TILE_SIZE / 2) {
+				if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
+				if (x == 12) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); /* enter station */
+				if (x < 12) {
+					uint16 spd;
 
-					if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
-					if (y == TILE_SIZE / 2) {
-						if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
-						if (x == 12) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); /* enter station */
-						if (x < 12) {
-							uint16 spd;
-
-							v->vehstatus |= VS_TRAIN_SLOWING;
-							spd = _enter_station_speedtable[x];
-							if (spd < v->cur_speed) v->cur_speed = spd;
-						}
-					}
+					v->vehstatus |= VS_TRAIN_SLOWING;
+					spd = _enter_station_speedtable[x];
+					if (spd < v->cur_speed) v->cur_speed = spd;
 				}
 			}
 		}
