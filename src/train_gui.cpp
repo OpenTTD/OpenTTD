@@ -98,6 +98,8 @@ void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int cou
 					/* Set the highlight position */
 					highlight_l = WagonLengthToPixels(dx) + 1;
 					highlight_r = WagonLengthToPixels(dx + width) + 1;
+				} else if (_cursor.vehchain && highlight_r != 0) {
+					highlight_r += WagonLengthToPixels(width);
 				}
 			}
 		}

@@ -441,6 +441,7 @@ static void DepotClick(Window *w, int x, int y)
 				WP(w, depot_d).sel = v->index;
 				SetWindowDirty(w);
 				SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, w);
+				_cursor.vehchain = _ctrl_pressed;
 			}
 			}
 			break;
@@ -957,6 +958,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					WP(w, depot_d).sel = INVALID_VEHICLE;
 					SetWindowDirty(w);
 			}
+			_cursor.vehchain = false;
 			break;
 
 		case WE_RESIZE:
@@ -964,6 +966,13 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 			w->hscroll.cap += e->we.sizing.diff.x / (int)w->resize.step_width;
 			w->widget[DEPOT_WIDGET_MATRIX].data = (w->vscroll.cap << 8) + (WP(w, depot_d).type == VEH_TRAIN ? 1 : w->hscroll.cap);
 			ResizeDepotButtons(w);
+			break;
+
+		case WE_CTRL_CHANGED:
+			if (WP(w, depot_d).sel != INVALID_VEHICLE) {
+				_cursor.vehchain = _ctrl_pressed;
+				w->InvalidateWidget(DEPOT_WIDGET_MATRIX);
+			}
 			break;
 	}
 }

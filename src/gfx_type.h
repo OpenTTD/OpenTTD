@@ -130,6 +130,8 @@ struct CursorVars {
 	bool dirty;      ///< the rect occupied by the mouse is dirty (redraw)
 	bool fix_at;     ///< mouse is moving, but cursor is not (used for scrolling)
 	bool in_window;  ///< mouse inside this window, determines drawing logic
+
+	bool vehchain;   ///< vehicle chain is dragged
 };
 
 struct DrawPixelInfo {

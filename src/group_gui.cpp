@@ -575,6 +575,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					if (v->IsValid()) {
 						SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), VHM_DRAG, w);
+						_cursor.vehchain = true;
 					}
 
 					SetWindowDirty(w);
@@ -687,6 +688,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 			}
+			_cursor.vehchain = false;
 			break;
 		}
 

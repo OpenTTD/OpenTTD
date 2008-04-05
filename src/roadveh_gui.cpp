@@ -109,15 +109,29 @@ void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int c
 	 * 0, we draw enough vehicles for 10 standard vehicle lengths. */
 	int max_length = (count == 0) ? 80 : count * 8;
 
-	for (int dx = 0 ; v != NULL && dx < max_length ; dx += v->u.road.cached_veh_length, v = v->Next()) {
-		if (dx + v->u.road.cached_veh_length > 0 && dx <= max_length) {
+	/* Width of highlight box */
+	int highlight_w = 0;
+
+	for (int dx = 0; v != NULL && dx < max_length ; v = v->Next()) {
+		int width = v->u.road.cached_veh_length;
+
+		if (dx + width > 0 && dx <= max_length) {
 			SpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 			DrawSprite(v->GetImage(DIR_W), pal, x + 14 + RoadVehLengthToPixels(dx), y + 6);
 
 			if (v->index == selection) {
-				DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
+				/* Set the highlight position */
+				highlight_w = RoadVehLengthToPixels(width);
+			} else if (_cursor.vehchain && highlight_w != 0) {
+				highlight_w += RoadVehLengthToPixels(width);
 			}
 		}
+
+		dx += width;
+	}
+
+	if (highlight_w != 0) {
+		DrawFrameRect(x - 1, y - 1, x - 1 + highlight_w, y + 12, 15, FR_BORDERONLY);
 	}
 }
 
