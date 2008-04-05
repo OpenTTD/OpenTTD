@@ -3164,7 +3164,7 @@ void Vehicle::BeginLoading()
 
 void Vehicle::LeaveStation()
 {
-	assert(current_order.type == OT_LOADING);
+	assert(current_order.IsType(OT_LOADING));
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
 	if (current_order.flags & OFB_NON_STOP) UpdateVehicleTimetable(this, false);

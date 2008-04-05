@@ -1552,7 +1552,7 @@ void VehiclePayment(Vehicle *front_v)
  */
 static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 {
-	assert(v->current_order.type == OT_LOADING);
+	assert(v->current_order.IsType(OT_LOADING));
 
 	/* We have not waited enough time till the next round of loading/unloading */
 	if (--v->load_unload_time_rem != 0) {
