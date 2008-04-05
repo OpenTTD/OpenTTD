@@ -504,7 +504,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 {
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
-	AssignOrder(new (num) Order(), UnpackOldOrder(_old_order));
+	(new (num) Order())->AssignOrder(UnpackOldOrder(_old_order));
 
 	/* Relink the orders to eachother (in TTD(Patch) the orders for one
 	vehicle are behind eachother, with an invalid order (OT_NOTHING) as indication that
@@ -1248,7 +1248,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			 */
 			if (old_id < 5000) v->orders = GetOrder(old_id);
 		}
-		AssignOrder(&v->current_order, UnpackOldOrder(_old_order));
+		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
 		/* For some reason we need to correct for this */
 		switch (v->spritenum) {

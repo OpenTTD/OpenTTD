@@ -54,6 +54,14 @@ void Order::FreeChain()
 	delete this;
 }
 
+bool Order::Equals(const Order &other) const
+{
+	return
+			this->type  == other.type &&
+			this->flags == other.flags &&
+			this->dest  == other.dest;
+}
+
 static bool HasOrderPoolFree(uint amount)
 {
 	const Order *order;
@@ -157,9 +165,9 @@ static void SwapOrders(Order *order1, Order *order2)
 	Order temp_order;
 
 	temp_order = *order1;
-	AssignOrder(order1, *order2);
+	order1->AssignOrder(*order2);
 	order1->next = order2->next;
-	AssignOrder(order2, temp_order);
+	order2->AssignOrder(temp_order);
 	order2->next = temp_order.next;
 }
 
@@ -169,17 +177,17 @@ static void SwapOrders(Order *order1, Order *order2)
  *   This function makes sure that the index is maintained correctly
  *
  */
-void AssignOrder(Order *order, Order data)
+void Order::AssignOrder(const Order &other)
 {
-	order->type  = data.type;
-	order->flags = data.flags;
-	order->dest  = data.dest;
+	this->type  = other.type;
+	this->flags = other.flags;
+	this->dest  = other.dest;
 
-	order->refit_cargo   = data.refit_cargo;
-	order->refit_subtype = data.refit_subtype;
+	this->refit_cargo   = other.refit_cargo;
+	this->refit_subtype = other.refit_subtype;
 
-	order->wait_time   = data.wait_time;
-	order->travel_time = data.travel_time;
+	this->wait_time   = other.wait_time;
+	this->travel_time = other.travel_time;
 }
 
 
@@ -410,7 +418,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		Vehicle *u;
 		Order *new_o = new Order();
-		AssignOrder(new_o, new_order);
+		new_o->AssignOrder(new_order);
 
 		/* Create new order and link in list */
 		if (v->orders == NULL) {
@@ -905,7 +913,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order_dst = &dst->orders;
 				FOR_VEHICLE_ORDERS(src, order) {
 					*order_dst = new Order();
-					AssignOrder(*order_dst, *order);
+					(*order_dst)->AssignOrder(*order);
 					order_dst = &(*order_dst)->next;
 				}
 
@@ -1172,9 +1180,7 @@ void CheckOrders(const Vehicle* v)
 		if (v->num_orders > 1) {
 			const Order* last = GetLastVehicleOrder(v);
 
-			if (v->orders->type  == last->type &&
-					v->orders->flags == last->flags &&
-					v->orders->dest  == last->dest) {
+			if (v->orders->Equals(*last)) {
 				problem_type = 2;
 			}
 		}
@@ -1415,9 +1421,7 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	/* If it is unchanged, keep it. */
-	if (order->type  == v->current_order.type &&
-			order->flags == v->current_order.flags &&
-			order->dest  == v->current_order.dest &&
+	if (order->Equals(v->current_order) &&
 			(v->type != VEH_SHIP || order->type != OT_GOTO_STATION || GetStation(order->dest)->dock_tile != 0)) {
 		return false;
 	}
@@ -1530,7 +1534,7 @@ static void Load_ORDR()
 
 			for (i = 0; i < len; ++i) {
 				Order *order = new (i) Order();
-				AssignOrder(order, UnpackVersion4Order(orders[i]));
+				order->AssignOrder(UnpackVersion4Order(orders[i]));
 			}
 
 			free(orders);
@@ -1542,7 +1546,7 @@ static void Load_ORDR()
 
 			for (i = 0; i < len; ++i) {
 				Order *order = new (i) Order();
-				AssignOrder(order, UnpackOrder(orders[i]));
+				order->AssignOrder(UnpackOrder(orders[i]));
 			}
 
 			free(orders);

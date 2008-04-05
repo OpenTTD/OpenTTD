@@ -53,6 +53,19 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 	void FreeChain();
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
+
+	/**
+	 * Assign the given order to this one.
+	 * @param other the data to copy (except next pointer).
+	 */
+	void AssignOrder(const Order &other);
+
+	/**
+	 * Does this order have the same type, flags and destination?
+	 * @param other the second order to compare to.
+	 * @return true if the type, flags and destination match.
+	 */
+	bool Equals(const Order &other) const;
 };
 
 static inline VehicleOrderID GetMaxOrderIndex()
@@ -80,6 +93,5 @@ static inline VehicleOrderID GetNumOrders()
 uint32 PackOrder(const Order *order);
 Order UnpackOrder(uint32 packed);
 Order UnpackOldOrder(uint16 packed);
-void AssignOrder(Order *order, Order data);
 
 #endif /* ORDER_H */
