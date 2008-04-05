@@ -40,7 +40,16 @@ struct Order : PoolItem<Order, OrderID, &_Order_pool> {
 	 */
 	inline bool IsValid() const { return this->type != OT_NOTHING; }
 
+	/**
+	 * 'Free' the order
+	 * @note ONLY use on "current_order" vehicle orders!
+	 */
 	void Free();
+
+	/**
+	 * Free a complete order chain.
+	 * @note do not use on "current_order" vehicle orders!
+	 */
 	void FreeChain();
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
@@ -61,62 +70,16 @@ static inline VehicleOrderID GetNumOrders()
 	return GetOrderPoolSize();
 }
 
-inline void Order::Free()
-{
-	this->type  = OT_NOTHING;
-	this->flags = 0;
-	this->dest  = 0;
-	this->next  = NULL;
-}
-
-inline void Order::FreeChain()
-{
-	if (next != NULL) next->FreeChain();
-	delete this;
-}
-
 #define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (order->IsValid())
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 
 
 #define FOR_VEHICLE_ORDERS(v, order) for (order = v->orders; order != NULL; order = order->next)
 
-static inline bool HasOrderPoolFree(uint amount)
-{
-	const Order *order;
-
-	/* There is always room if not all blocks in the pool are reserved */
-	if (_Order_pool.CanAllocateMoreBlocks()) return true;
-
-	FOR_ALL_ORDERS(order) if (!order->IsValid() && --amount == 0) return true;
-
-	return false;
-}
-
-
-/* Pack and unpack routines */
-
-static inline uint32 PackOrder(const Order *order)
-{
-	return order->dest << 16 | order->flags << 8 | order->type;
-}
-
-static inline Order UnpackOrder(uint32 packed)
-{
-	Order order;
-	order.type    = (OrderType)GB(packed,  0,  8);
-	order.flags   = GB(packed,  8,  8);
-	order.dest    = GB(packed, 16, 16);
-	order.next    = NULL;
-	order.index   = 0; // avoid compiler warning
-	order.refit_cargo   = CT_NO_REFIT;
-	order.refit_subtype = 0;
-	order.wait_time     = 0;
-	order.travel_time   = 0;
-	return order;
-}
-
-void AssignOrder(Order *order, Order data);
+/* (Un)pack routines */
+uint32 PackOrder(const Order *order);
+Order UnpackOrder(uint32 packed);
 Order UnpackOldOrder(uint16 packed);
+void AssignOrder(Order *order, Order data);
 
 #endif /* ORDER_H */

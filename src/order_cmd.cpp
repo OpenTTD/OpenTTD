@@ -40,6 +40,52 @@ BackuppedOrders _backup_orders_data;
 
 DEFINE_OLD_POOL_GENERIC(Order, Order)
 
+void Order::Free()
+{
+	this->type  = OT_NOTHING;
+	this->flags = 0;
+	this->dest  = 0;
+	this->next  = NULL;
+}
+
+void Order::FreeChain()
+{
+	if (next != NULL) next->FreeChain();
+	delete this;
+}
+
+static bool HasOrderPoolFree(uint amount)
+{
+	const Order *order;
+
+	/* There is always room if not all blocks in the pool are reserved */
+	if (_Order_pool.CanAllocateMoreBlocks()) return true;
+
+	FOR_ALL_ORDERS(order) if (!order->IsValid() && --amount == 0) return true;
+
+	return false;
+}
+
+uint32 PackOrder(const Order *order)
+{
+	return order->dest << 16 | order->flags << 8 | order->type;
+}
+
+Order UnpackOrder(uint32 packed)
+{
+	Order order;
+	order.type    = (OrderType)GB(packed,  0,  8);
+	order.flags   = GB(packed,  8,  8);
+	order.dest    = GB(packed, 16, 16);
+	order.next    = NULL;
+	order.index   = 0; // avoid compiler warning
+	order.refit_cargo   = CT_NO_REFIT;
+	order.refit_subtype = 0;
+	order.wait_time     = 0;
+	order.travel_time   = 0;
+	return order;
+}
+
 /**
  *
  * Unpacks a order from savegames made with TTD(Patch)
