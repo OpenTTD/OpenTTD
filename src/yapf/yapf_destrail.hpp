@@ -86,7 +86,7 @@ protected:
 public:
 	void SetDestination(Vehicle* v)
 	{
-		switch (v->current_order.type) {
+		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:
 				m_destTile = CalcStationCenterTile(v->current_order.dest);
 				m_dest_station_id = v->current_order.dest;

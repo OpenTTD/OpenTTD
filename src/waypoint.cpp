@@ -236,7 +236,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_TRAIN &&
 					v->First() == v &&
-					v->current_order.type == OT_GOTO_WAYPOINT &&
+					v->current_order.IsType(OT_GOTO_WAYPOINT) &&
 					v->dest_tile == wp->xy) {
 				v->dest_tile = tile;
 			}

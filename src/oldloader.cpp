@@ -345,8 +345,8 @@ static void FixOldVehicles()
 		 * (loading) order which causes assertions and the like later on.
 		 */
 		if (!IsPlayerBuildableVehicleType(v) ||
-				(v->IsPrimaryVehicle() && v->current_order.type == OT_NOTHING)) {
-			v->current_order.type = OT_DUMMY;
+				(v->IsPrimaryVehicle() && v->current_order.IsType(OT_NOTHING))) {
+			v->current_order.MakeDummy();
 		}
 
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {

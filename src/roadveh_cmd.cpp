@@ -476,7 +476,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (v->IsInDepot()) return CMD_ERROR;
 
 	/* If the current orders are already goto-depot */
-	if (v->current_order.type == OT_GOTO_DEPOT) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
@@ -496,8 +496,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 			if (HasBit(v->current_order.flags, OF_PART_OF_ORDERS))
 				v->cur_order_index++;
 
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
@@ -507,14 +506,11 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (dep == NULL) return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
-		if (v->current_order.type == OT_LOADING) v->LeaveStation();
+		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
 		ClearSlot(v);
-		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OFB_NON_STOP;
+		v->current_order.MakeGoToDepot(dep->index, false);
 		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-		v->current_order.refit_cargo = CT_INVALID;
-		v->current_order.dest = dep->index;
 		v->dest_tile = dep->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
@@ -1757,8 +1753,8 @@ again:
 		/* Vehicle is at the stop position (at a bay) in a road stop.
 		 * Note, if vehicle is loading/unloading it has already been handled,
 		 * so if we get here the vehicle has just arrived or is just ready to leave. */
-		if (v->current_order.type != OT_LEAVESTATION &&
-				v->current_order.type != OT_GOTO_DEPOT) {
+		if (!v->current_order.IsType(OT_LEAVESTATION) &&
+				!v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* Vehicle has arrived at a bay in a road stop */
 
 			if (IsDriveThroughStopTile(v->tile)) {
@@ -1795,7 +1791,7 @@ again:
 		}
 
 		/* Vehicle is ready to leave a bay in a road stop */
-		if (v->current_order.type != OT_GOTO_DEPOT) {
+		if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
 			if (rs->IsEntranceBusy()) {
 				/* Road stop entrance is busy, so wait as there is nowhere else to go */
 				v->cur_speed = 0;
@@ -1821,8 +1817,8 @@ again:
 			if (v->dest_tile != v->u.road.slot->xy) {
 				DEBUG(ms, 2, " stop tile 0x%X is not destination tile 0x%X. Multistop desync", v->u.road.slot->xy, v->dest_tile);
 			}
-			if (v->current_order.type != OT_GOTO_STATION) {
-				DEBUG(ms, 2, " current order type (%d) is not OT_GOTO_STATION", v->current_order.type);
+			if (!v->current_order.IsType(OT_GOTO_STATION)) {
+				DEBUG(ms, 2, " current order type (%d) is not OT_GOTO_STATION", v->current_order.GetType());
 			} else {
 				if (v->current_order.dest != st->index)
 					DEBUG(ms, 2, " current station %d is not target station in current_order.station (%d)",
@@ -1884,7 +1880,7 @@ static void RoadVehController(Vehicle *v)
 	ProcessOrders(v);
 	v->HandleLoading();
 
-	if (v->current_order.type == OT_LOADING) return;
+	if (v->current_order.IsType(OT_LOADING)) return;
 
 	if (v->IsInDepot() && RoadVehLeaveDepot(v, true)) return;
 
@@ -1925,26 +1921,23 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	const Depot *depot = FindClosestRoadDepot(v);
 
 	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
-		if (v->current_order.type == OT_GOTO_DEPOT) {
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
 
-	if (v->current_order.type == OT_GOTO_DEPOT &&
+	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
 			v->current_order.flags & OFB_NON_STOP &&
 			!Chance16(1, 20)) {
 		return;
 	}
 
-	if (v->current_order.type == OT_LOADING) v->LeaveStation();
+	if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 	ClearSlot(v);
 
-	v->current_order.type = OT_GOTO_DEPOT;
-	v->current_order.flags = OFB_NON_STOP;
-	v->current_order.dest = depot->index;
+	v->current_order.MakeGoToDepot(depot->index, false);
 	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
@@ -1962,14 +1955,14 @@ void RoadVehicle::OnNewDay()
 	CheckOrders(this);
 
 	/* Current slot has expired */
-	if (this->current_order.type == OT_GOTO_STATION && this->u.road.slot != NULL && this->u.road.slot_age-- == 0) {
+	if (this->current_order.IsType(OT_GOTO_STATION) && this->u.road.slot != NULL && this->u.road.slot_age-- == 0) {
 		DEBUG(ms, 3, "Slot expired for vehicle %d (index %d) at stop 0x%X",
 			this->unitnumber, this->index, this->u.road.slot->xy);
 		ClearSlot(this);
 	}
 
 	/* update destination */
-	if (!(this->vehstatus & VS_STOPPED) && this->current_order.type == OT_GOTO_STATION && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
+	if (!(this->vehstatus & VS_STOPPED) && this->current_order.IsType(OT_GOTO_STATION) && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
 		Station *st = GetStation(this->current_order.dest);
 		RoadStop *rs = st->GetPrimaryRoadStop(this);
 		RoadStop *best = NULL;

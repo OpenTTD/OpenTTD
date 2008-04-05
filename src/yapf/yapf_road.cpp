@@ -84,7 +84,7 @@ public:
 
 			const Vehicle* v = Yapf().GetVehicle();
 			// we have reached the vehicle's destination - segment should end here to avoid target skipping
-			if (v->current_order.type == OT_GOTO_STATION && tile == v->dest_tile) break;
+			if (v->current_order.IsType(OT_GOTO_STATION) && tile == v->dest_tile) break;
 
 			// stop if we have just entered the depot
 			if (IsTileDepotType(tile, TRANSPORT_ROAD) && trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {

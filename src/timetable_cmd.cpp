@@ -69,7 +69,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	bool packed_time = HasBit(p1, 25);
 	bool is_journey = HasBit(p1, 24) || packed_time;
 	if (!is_journey) {
-		if (order->type != OT_GOTO_STATION) return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
+		if (!order->IsType(OT_GOTO_STATION)) return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
 		if (_patches.new_nonstop && (order->flags & OFB_NON_STOP)) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
 	}
 

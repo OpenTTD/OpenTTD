@@ -153,7 +153,7 @@ static void DrawOrdersWindow(Window *w)
 	w->ShowWidget(ORDER_WIDGET_UNLOAD); // Unload
 
 	if (order != NULL) {
-		switch (order->type) {
+		switch (order->GetType()) {
 			case OT_GOTO_STATION:
 				if (!GetStation(order->dest)->IsBuoy()) break;
 				/* Fall-through */
@@ -194,7 +194,7 @@ static void DrawOrdersWindow(Window *w)
 		if (i - w->vscroll.pos < w->vscroll.cap) {
 			SetDParam(1, 6);
 
-			switch (order->type) {
+			switch (order->GetType()) {
 				case OT_DUMMY:
 					SetDParam(1, STR_INVALID_ORDER);
 					SetDParam(2, order->dest);
@@ -272,9 +272,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		case MP_RAILWAY:
 			if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
 				if (IsRailDepot(tile)) {
-					order.type = OT_GOTO_DEPOT;
-					order.flags = OFB_PART_OF_ORDERS;
-					order.dest = GetDepotByTile(tile)->index;
+					order.MakeGoToDepot(GetDepotByTile(tile)->index, true);
 					return order;
 				}
 			}
@@ -282,9 +280,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 		case MP_ROAD:
 			if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
-				order.type = OT_GOTO_DEPOT;
-				order.flags = OFB_PART_OF_ORDERS;
-				order.dest = GetDepotByTile(tile)->index;
+				order.MakeGoToDepot(GetDepotByTile(tile)->index, true);
 				return order;
 			}
 			break;
@@ -292,9 +288,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		case MP_STATION:
 			if (v->type != VEH_AIRCRAFT) break;
 			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
-				order.type = OT_GOTO_DEPOT;
-				order.flags = OFB_PART_OF_ORDERS;
-				order.dest = GetStationIndex(tile);
+				order.MakeGoToDepot(GetStationIndex(tile), true);
 				return order;
 			}
 			break;
@@ -305,9 +299,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 					IsTileOwner(tile, _local_player)) {
 				TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-				order.type = OT_GOTO_DEPOT;
-				order.flags = OFB_PART_OF_ORDERS;
-				order.dest = GetDepotByTile(tile < tile2 ? tile : tile2)->index;
+				order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, true);
 				return order;
 			}
 
@@ -321,9 +313,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_player) &&
 			IsRailWaypoint(tile)) {
-		order.type = OT_GOTO_WAYPOINT;
-		order.flags = 0;
-		order.dest = GetWaypointByTile(tile)->index;
+		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
 		return order;
 	}
 
@@ -339,9 +329,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			(facil=FACIL_BUS_STOP, v->type == VEH_ROAD && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) ||
 			(facil=FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
-				order.type = OT_GOTO_STATION;
-				order.flags = 0;
-				order.dest = st_index;
+				order.MakeGoToStation(st_index);
 				return order;
 			}
 		}
@@ -576,7 +564,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				const Order *ord = GetVehicleOrder(v, sel);
 				TileIndex xy;
 
-				switch (ord->type) {
+				switch (ord->GetType()) {
 					case OT_GOTO_STATION:  xy = GetStation(ord->dest)->xy ; break;
 					case OT_GOTO_DEPOT:    xy = (v->type == VEH_AIRCRAFT) ?  GetStation(ord->dest)->xy : GetDepot(ord->dest)->xy;    break;
 					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->dest)->xy; break;
@@ -691,7 +679,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		int s = OrderGetSel(w);
 
 		if (e->we.click.widget != ORDER_WIDGET_FULL_LOAD) break;
-		if (s == v->num_orders || GetVehicleOrder(v, s)->type != OT_GOTO_DEPOT) {
+		if (s == v->num_orders || !GetVehicleOrder(v, s)->IsType(OT_GOTO_DEPOT)) {
 			GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);
 		} else {
 			GuiShowTooltips(STR_SERVICE_HINT);

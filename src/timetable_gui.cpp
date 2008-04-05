@@ -79,7 +79,7 @@ static void DrawTimetableWindow(Window *w)
 			w->EnableWidget(TTV_CLEAR_TIME);
 		} else {
 			const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
-			bool disable = order == NULL || order->type != OT_GOTO_STATION || (_patches.new_nonstop && (order->flags & OFB_NON_STOP));
+			bool disable = order == NULL || !order->IsType(OT_GOTO_STATION) || (_patches.new_nonstop && (order->flags & OFB_NON_STOP));
 
 			w->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
 			w->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
@@ -113,7 +113,7 @@ static void DrawTimetableWindow(Window *w)
 		if (i % 2 == 0) {
 			SetDParam(2, STR_EMPTY);
 
-			switch (order->type) {
+			switch (order->GetType()) {
 				case OT_DUMMY:
 					SetDParam(0, STR_INVALID_ORDER);
 					break;
@@ -197,7 +197,7 @@ static void DrawTimetableWindow(Window *w)
 		for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
 			total_time += order->travel_time + order->wait_time;
 			if (order->travel_time == 0) complete = false;
-			if (order->wait_time == 0 && order->type == OT_GOTO_STATION && !(_patches.new_nonstop && (order->flags & OFB_NON_STOP))) complete = false;
+			if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(_patches.new_nonstop && (order->flags & OFB_NON_STOP))) complete = false;
 		}
 
 		if (total_time != 0) {

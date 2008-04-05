@@ -917,7 +917,7 @@ void DrawSmallOrderList(const Vehicle *v, int x, int y)
 		if (sel == 0) DrawString(x - 6, y, STR_SMALL_RIGHT_ARROW, TC_BLACK);
 		sel--;
 
-		if (order->type == OT_GOTO_STATION) {
+		if (order->IsType(OT_GOTO_STATION)) {
 			if (v->type == VEH_SHIP && GetStation(order->dest)->IsBuoy()) continue;
 
 			SetDParam(0, order->dest);
@@ -1952,7 +1952,7 @@ static void DrawVehicleViewWindow(Window *w)
 			str = STR_8861_STOPPED;
 		}
 	} else { // vehicle is in a "normal" state, show current order
-		switch (v->current_order.type) {
+		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION: {
 				SetDParam(0, v->current_order.dest);
 				SetDParam(1, v->GetDisplaySpeed());

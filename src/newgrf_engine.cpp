@@ -348,11 +348,11 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 
 		case TERM1:
 		case HELIPAD1:
-			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD1 : AMA_TTDP_LANDING_TO_PAD1;
+			return (v->current_order.IsType(OT_LOADING)) ? AMA_TTDP_ON_PAD1 : AMA_TTDP_LANDING_TO_PAD1;
 
 		case TERM2:
 		case HELIPAD2:
-			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD2 : AMA_TTDP_LANDING_TO_PAD2;
+			return (v->current_order.IsType(OT_LOADING)) ? AMA_TTDP_ON_PAD2 : AMA_TTDP_LANDING_TO_PAD2;
 
 		case TERM3:
 		case TERM4:
@@ -362,7 +362,7 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 		case TERM8:
 		case HELIPAD3:
 		case HELIPAD4:
-			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD3 : AMA_TTDP_LANDING_TO_PAD3;
+			return (v->current_order.IsType(OT_LOADING)) ? AMA_TTDP_ON_PAD3 : AMA_TTDP_LANDING_TO_PAD3;
 
 		case TAKEOFF:      // Moving to takeoff position
 		case STARTTAKEOFF: // Accelerating down runway
@@ -379,7 +379,7 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 		case HELILANDING:
 		case HELIENDLANDING:
 			/* @todo Need to check terminal we're landing to. Is it known yet? */
-			return (v->current_order.type == OT_GOTO_DEPOT) ?
+			return (v->current_order.IsType(OT_GOTO_DEPOT)) ?
 				AMA_TTDP_LANDING_TO_HANGAR : AMA_TTDP_LANDING_TO_PAD1;
 
 		default:
@@ -811,7 +811,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 		return NULL;
 	}
 
-	bool in_motion = v->First()->current_order.type != OT_LOADING;
+	bool in_motion = !v->First()->current_order.IsType(OT_LOADING);
 
 	totalsets = in_motion ? group->g.real.num_loaded : group->g.real.num_loading;
 

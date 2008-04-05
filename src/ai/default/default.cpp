@@ -299,7 +299,7 @@ static EngineID AiChooseShipToReplaceWith(const Player* p, const Vehicle* v)
 
 static void AiHandleGotoDepot(Player *p, int cmd)
 {
-	if (_players_ai[p->index].cur_veh->current_order.type != OT_GOTO_DEPOT)
+	if (!_players_ai[p->index].cur_veh->current_order.IsType(OT_GOTO_DEPOT))
 		DoCommand(0, _players_ai[p->index].cur_veh->index, 0, DC_EXEC, cmd);
 
 	if (++_players_ai[p->index].state_counter <= 1387) {
@@ -307,9 +307,8 @@ static void AiHandleGotoDepot(Player *p, int cmd)
 		return;
 	}
 
-	if (_players_ai[p->index].cur_veh->current_order.type == OT_GOTO_DEPOT) {
-		_players_ai[p->index].cur_veh->current_order.type = OT_DUMMY;
-		_players_ai[p->index].cur_veh->current_order.flags = 0;
+	if (_players_ai[p->index].cur_veh->current_order.IsType(OT_GOTO_DEPOT)) {
+		_players_ai[p->index].cur_veh->current_order.MakeDummy();
 		InvalidateWindow(WC_VEHICLE_VIEW, _players_ai[p->index].cur_veh->index);
 	}
 }
@@ -318,7 +317,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 {
 	if (bak->order == NULL) return;
 
-	for (uint i = 0; bak->order[i].type != OT_NOTHING; i++) {
+	for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}
@@ -2553,9 +2552,7 @@ handle_nocash:
 		);
 		Order order;
 
-		order.type = OT_GOTO_STATION;
-		order.flags = 0;
-		order.dest = AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule);
+		order.MakeGoToStation(AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule));
 
 		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
@@ -3290,9 +3287,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		);
 		Order order;
 
-		order.type = OT_GOTO_STATION;
-		order.flags = 0;
-		order.dest = AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule);
+		order.MakeGoToStation(AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule));
 
 		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
@@ -3571,9 +3566,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 		bool is_pass = (_players_ai[p->index].cargo_type == CT_PASSENGERS || _players_ai[p->index].cargo_type == CT_MAIL);
 		Order order;
 
-		order.type = OT_GOTO_STATION;
-		order.flags = 0;
-		order.dest = AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule);
+		order.MakeGoToStation(AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule));
 
 		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
@@ -3614,7 +3607,7 @@ static void AiStateSellVeh(Player *p)
 		if (v->type == VEH_TRAIN) {
 
 			if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
-				if (v->current_order.type != OT_GOTO_DEPOT)
+				if (!v->current_order.IsType(OT_GOTO_DEPOT))
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_TRAIN_TO_DEPOT);
 				goto going_to_depot;
 			}
@@ -3624,7 +3617,7 @@ static void AiStateSellVeh(Player *p)
 
 		} else if (v->type == VEH_ROAD) {
 			if (!v->IsStoppedInDepot()) {
-				if (v->current_order.type != OT_GOTO_DEPOT)
+				if (!v->current_order.IsType(OT_GOTO_DEPOT))
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_ROADVEH_TO_DEPOT);
 				goto going_to_depot;
 			}
@@ -3632,7 +3625,7 @@ static void AiStateSellVeh(Player *p)
 			DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 		} else if (v->type == VEH_AIRCRAFT) {
 			if (!v->IsStoppedInDepot()) {
-				if (v->current_order.type != OT_GOTO_DEPOT)
+				if (!v->current_order.IsType(OT_GOTO_DEPOT))
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 				goto going_to_depot;
 			}
@@ -3647,9 +3640,8 @@ static void AiStateSellVeh(Player *p)
 going_to_depot:;
 	if (++_players_ai[p->index].state_counter <= 832) return;
 
-	if (v->current_order.type == OT_GOTO_DEPOT) {
-		v->current_order.type = OT_DUMMY;
-		v->current_order.flags = 0;
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
+		v->current_order.MakeDummy();
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 	}
 return_to_loop:;
@@ -3670,7 +3662,7 @@ static void AiStateRemoveStation(Player *p)
 	byte *in_use = MallocT<byte>(GetMaxStationIndex() + 1);
 	memset(in_use, 0, GetMaxStationIndex() + 1);
 	FOR_ALL_ORDERS(ord) {
-		if (ord->type == OT_GOTO_STATION) in_use[ord->dest] = 1;
+		if (ord->IsType(OT_GOTO_STATION)) in_use[ord->dest] = 1;
 	}
 
 	// Go through all stations and delete those that aren't in use

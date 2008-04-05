@@ -120,10 +120,10 @@ void VehicleServiceInDepot(Vehicle *v)
 bool VehicleNeedsService(const Vehicle *v)
 {
 	if (v->vehstatus & (VS_STOPPED | VS_CRASHED))       return false;
-	if (v->current_order.type != OT_GOTO_DEPOT || !(v->current_order.flags & OFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
+	if (!v->current_order.IsType(OT_GOTO_DEPOT) || !(v->current_order.flags & OFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
 		if (_patches.gotodepot && VehicleHasDepotOrders(v)) return false;
-		if (v->current_order.type == OT_LOADING)            return false;
-		if (v->current_order.type == OT_GOTO_DEPOT && v->current_order.flags & OFB_HALT_IN_DEPOT) return false;
+		if (v->current_order.IsType(OT_LOADING))            return false;
+		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.flags & OFB_HALT_IN_DEPOT) return false;
 	}
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
@@ -631,7 +631,7 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* We need to set v->leave_depot_instantly as we have no control of it's contents at this time.
 	 * Vehicle should stop in the depot if it was in 'stopping' state - train intered depot while slowing down. */
-	if ((HasBit(v->current_order.flags, OF_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OF_PART_OF_ORDERS) && v->current_order.type == OT_GOTO_DEPOT) ||
+	if ((HasBit(v->current_order.flags, OF_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OF_PART_OF_ORDERS) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
 			(v->vehstatus & VS_STOPPED)) {
 		/* we keep the vehicle in the depot since the user ordered it to stay */
 		v->leave_depot_instantly = false;
@@ -2033,7 +2033,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->type == OT_GOTO_STATION && order->dest == index) {
+						if (order->IsType(OT_GOTO_STATION) && order->dest == index) {
 							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 50);
 							(*sort_list)[n++] = v;
 							break;
@@ -2077,7 +2077,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->type == OT_GOTO_DEPOT && order->dest == index) {
+						if (order->IsType(OT_GOTO_DEPOT) && order->dest == index) {
 							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 25);
 							(*sort_list)[n++] = v;
 							break;
@@ -2235,14 +2235,13 @@ void VehicleEnterDepot(Vehicle *v)
 
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
-	if (v->current_order.type == OT_GOTO_DEPOT) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		Order t;
 
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
 		t = v->current_order;
-		v->current_order.type = OT_DUMMY;
-		v->current_order.flags = 0;
+		v->current_order.MakeDummy();
 
 		if (t.refit_cargo < NUM_CARGO) {
 			CommandCost cost;
@@ -3054,7 +3053,7 @@ static void Save_VEHS()
 }
 
 /** Will be called when vehicles need to be loaded. */
-static void Load_VEHS()
+void Load_VEHS()
 {
 	int index;
 	Vehicle *v;
@@ -3097,7 +3096,7 @@ static void Load_VEHS()
 		if (CheckSavegameVersion(5)) {
 			/* Convert the current_order.type (which is a mix of type and flags, because
 			 *  in those versions, they both were 4 bits big) to type and flags */
-			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
+			v->current_order.flags = GB(v->current_order.type, 4, 4);
 			v->current_order.type.m_val &= 0x0F;
 		}
 
@@ -3131,7 +3130,7 @@ void Vehicle::BeginLoading()
 {
 	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
 
-	if (this->current_order.type == OT_GOTO_STATION &&
+	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.dest == this->last_station_visited) {
 		/* Arriving at the ordered station.
 		 * Keep the load/unload flags, as we (obviously) still need them. */
@@ -3149,7 +3148,7 @@ void Vehicle::BeginLoading()
 		this->current_order.flags = 0;
 	}
 
-	current_order.type = OT_LOADING;
+	current_order.MakeLoading();
 	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 
 	VehiclePayment(this);
@@ -3170,8 +3169,7 @@ void Vehicle::LeaveStation()
 	/* Only update the timetable if the vehicle was supposed to stop here. */
 	if (current_order.flags & OFB_NON_STOP) UpdateVehicleTimetable(this, false);
 
-	current_order.type = OT_LEAVESTATION;
-	current_order.flags = 0;
+	current_order.MakeLeaveStation();
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
 
 	HideFillingPercent(this->fill_percent_te_id);
@@ -3181,7 +3179,7 @@ void Vehicle::LeaveStation()
 
 void Vehicle::HandleLoading(bool mode)
 {
-	switch (this->current_order.type) {
+	switch (this->current_order.GetType()) {
 		case OT_LOADING: {
 			uint wait_time = max(this->current_order.wait_time - this->lateness_counter, 0);
 

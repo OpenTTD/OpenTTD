@@ -2107,7 +2107,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
-	if (v->current_order.type == OT_GOTO_DEPOT) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
@@ -2126,8 +2126,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				v->cur_order_index++;
 			}
 
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
@@ -2141,14 +2140,11 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (tfdd.best_length == (uint)-1) return_cmd_error(STR_883A_UNABLE_TO_FIND_ROUTE_TO);
 
 	if (flags & DC_EXEC) {
-		if (v->current_order.type == OT_LOADING) v->LeaveStation();
+		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
 		v->dest_tile = tfdd.tile;
-		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OFB_NON_STOP;
+		v->current_order.MakeGoToDepot(GetDepotByTile(tfdd.tile)->index, false);
 		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-		v->current_order.dest = GetDepotByTile(tfdd.tile)->index;
-		v->current_order.refit_cargo = CT_INVALID;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		/* If there is no depot in front, reverse automatically */
 		if (tfdd.reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
@@ -2346,11 +2342,7 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, Tr
 static void FillWithStationData(TrainTrackFollowerData* fd, const Vehicle* v)
 {
 	fd->dest_coords = v->dest_tile;
-	if (v->current_order.type == OT_GOTO_STATION) {
-		fd->station_index = v->current_order.dest;
-	} else {
-		fd->station_index = INVALID_STATION;
-	}
+	fd->station_index = v->current_order.IsType(OT_GOTO_STATION) ? v->current_order.dest : INVALID_STATION;
 }
 
 static const byte _initial_tile_subcoord[6][4][3] = {
@@ -2958,7 +2950,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 						return;
 					}
 
-					if (v->current_order.type == OT_LEAVESTATION) {
+					if (v->current_order.IsType(OT_LEAVESTATION)) {
 						v->current_order.Free();
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 					}
@@ -3470,7 +3462,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 
 	v->HandleLoading(mode);
 
-	if (v->current_order.type == OT_LOADING) return;
+	if (v->current_order.IsType(OT_LOADING)) return;
 
 	if (CheckTrainStayInDepot(v)) return;
 
@@ -3554,12 +3546,11 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	TrainFindDepotData tfdd = FindClosestTrainDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
 	/* Only go to the depot if it is not too far out of our way. */
 	if (tfdd.best_length == (uint)-1 || tfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
-		if (v->current_order.type == OT_GOTO_DEPOT) {
+		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal
 			 * schedule? */
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
@@ -3567,15 +3558,13 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 
 	const Depot* depot = GetDepotByTile(tfdd.tile);
 
-	if (v->current_order.type == OT_GOTO_DEPOT &&
+	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
 			v->current_order.dest != depot->index &&
 			!Chance16(3, 16)) {
 		return;
 	}
 
-	v->current_order.type = OT_GOTO_DEPOT;
-	v->current_order.flags = OFB_NON_STOP;
-	v->current_order.dest = depot->index;
+	v->current_order.MakeGoToDepot(depot->index, false);
 	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
@@ -3593,7 +3582,7 @@ void Train::OnNewDay()
 		CheckOrders(this);
 
 		/* update destination */
-		if (this->current_order.type == OT_GOTO_STATION) {
+		if (this->current_order.IsType(OT_GOTO_STATION)) {
 			TileIndex tile = GetStation(this->current_order.dest)->train_tile;
 			if (tile != 0) this->dest_tile = tile;
 		}

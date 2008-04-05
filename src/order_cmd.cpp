@@ -48,6 +48,46 @@ void Order::Free()
 	this->next  = NULL;
 }
 
+void Order::MakeGoToStation(StationID destination)
+{
+	this->type = OT_GOTO_STATION;
+	this->flags = 0;
+	this->dest = destination;
+}
+
+void Order::MakeGoToDepot(DepotID destination, bool order)
+{
+	this->type = OT_GOTO_DEPOT;
+	this->flags = order ? OFB_PART_OF_ORDERS : OFB_NON_STOP;
+	this->dest = destination;
+	this->refit_cargo = CT_NO_REFIT;
+	this->refit_subtype = 0;
+}
+
+void Order::MakeGoToWaypoint(WaypointID destination)
+{
+	this->type = OT_GOTO_WAYPOINT;
+	this->flags = 0;
+	this->dest = destination;
+}
+
+void Order::MakeLoading()
+{
+	this->type = OT_LOADING;
+}
+
+void Order::MakeLeaveStation()
+{
+	this->type = OT_LEAVESTATION;
+	this->flags = 0;
+}
+
+void Order::MakeDummy()
+{
+	this->type = OT_DUMMY;
+	this->flags = 0;
+}
+
 void Order::FreeChain()
 {
 	if (next != NULL) next->FreeChain();
@@ -128,7 +168,7 @@ Order UnpackOldOrder(uint16 packed)
  * Unpacks a order from savegames with version 4 and lower
  *
  */
-static Order UnpackVersion4Order(uint16 packed)
+Order UnpackVersion4Order(uint16 packed)
 {
 	Order order;
 	order.type  = (OrderType)GB(packed, 0, 4);
@@ -208,7 +248,7 @@ static void DeleteOrderWarnings(const Vehicle* v)
 
 static TileIndex GetOrderLocation(const Order& o)
 {
-	switch (o.type) {
+	switch (o.GetType()) {
 		default: NOT_REACHED();
 		case OT_GOTO_STATION: return GetStation(o.dest)->xy;
 		case OT_GOTO_DEPOT:   return GetDepot(o.dest)->xy;
@@ -241,7 +281,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
-	switch (new_order.type) {
+	switch (new_order.GetType()) {
 		case OT_GOTO_STATION: {
 			const Station *st;
 
@@ -401,7 +441,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * If the order is to be inserted at the beginning of the order list this
 		 * finds the last order in the list. */
 		for (const Order *o = v->orders; o != NULL; o = o->next) {
-			if (o->type == OT_GOTO_STATION || o->type == OT_GOTO_DEPOT) prev = o;
+			if (o->IsType(OT_GOTO_STATION) || o->IsType(OT_GOTO_DEPOT)) prev = o;
 			if (++n == sel_ord && prev != NULL) break;
 		}
 		if (prev != NULL) {
@@ -575,7 +615,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
-			if (sel_ord == u->cur_order_index && u->current_order.type == OT_LOADING &&
+			if (sel_ord == u->cur_order_index && u->current_order.IsType(OT_LOADING) &&
 					HasBit(u->current_order.flags, OF_NON_STOP)) {
 				u->current_order.flags = 0;
 			}
@@ -614,7 +654,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->type == VEH_ROAD) ClearSlot(v);
 
-		if (v->current_order.type == OT_LOADING) {
+		if (v->current_order.IsType(OT_LOADING)) {
 			v->LeaveStation();
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
@@ -745,9 +785,9 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (sel_ord >= v->num_orders) return CMD_ERROR;
 
 	order = GetVehicleOrder(v, sel_ord);
-	if ((order->type != OT_GOTO_STATION  || GetStation(order->dest)->IsBuoy()) &&
-			(order->type != OT_GOTO_DEPOT    || p2 == OF_UNLOAD) &&
-			(order->type != OT_GOTO_WAYPOINT || p2 != OF_NON_STOP)) {
+	if ((!order->IsType(OT_GOTO_STATION)  || GetStation(order->dest)->IsBuoy()) &&
+			(!order->IsType(OT_GOTO_DEPOT)    || p2 == OF_UNLOAD) &&
+			(!order->IsType(OT_GOTO_WAYPOINT) || p2 != OF_NON_STOP)) {
 		return CMD_ERROR;
 	}
 
@@ -755,7 +795,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		switch (p2) {
 		case OF_FULL_LOAD:
 			ToggleBit(order->flags, OF_FULL_LOAD);
-			if (order->type != OT_GOTO_DEPOT) ClrBit(order->flags, OF_UNLOAD);
+			if (!order->IsType(OT_GOTO_DEPOT)) ClrBit(order->flags, OF_UNLOAD);
 			break;
 		case OF_UNLOAD:
 			ToggleBit(order->flags, OF_UNLOAD);
@@ -787,7 +827,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * when this function is called.
 				 */
 				if (sel_ord == u->cur_order_index &&
-						u->current_order.type != OT_GOTO_DEPOT &&
+						!u->current_order.IsType(OT_GOTO_DEPOT) &&
 						HasBit(u->current_order.flags, OF_FULL_LOAD) != HasBit(order->flags, OF_FULL_LOAD)) {
 					ToggleBit(u->current_order.flags, OF_FULL_LOAD);
 				}
@@ -884,7 +924,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				TileIndex required_dst = INVALID_TILE;
 
 				FOR_VEHICLE_ORDERS(src, order) {
-					if (order->type == OT_GOTO_STATION) {
+					if (order->IsType(OT_GOTO_STATION)) {
 						const Station *st = GetStation(order->dest);
 						if (IsCargoInClass(dst->cargo_type, CC_PASSENGERS)) {
 							if (st->bus_stops != NULL) required_dst = st->bus_stops->xy;
@@ -1162,12 +1202,12 @@ void CheckOrders(const Vehicle* v)
 
 		FOR_VEHICLE_ORDERS(v, order) {
 			/* Dummy order? */
-			if (order->type == OT_DUMMY) {
+			if (order->IsType(OT_DUMMY)) {
 				problem_type = 1;
 				break;
 			}
 			/* Does station have a load-bay for this vehicle? */
-			if (order->type == OT_GOTO_STATION) {
+			if (order->IsType(OT_GOTO_STATION)) {
 				const Station* st = GetStation(order->dest);
 				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
@@ -1228,20 +1268,18 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		}
 
 		order = &v->current_order;
-		if ((v->type == VEH_AIRCRAFT && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
+		if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
 				v->current_order.dest == destination) {
-			order->type = OT_DUMMY;
-			order->flags = 0;
+			order->MakeDummy();
 			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		}
 
 		/* Clear the order from the order-list */
 		invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
-			if ((v->type == VEH_AIRCRAFT && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
+			if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
 					order->dest == destination) {
-				order->type = OT_DUMMY;
-				order->flags = 0;
+				order->MakeDummy();
 				invalidate = true;
 			}
 		}
@@ -1263,7 +1301,7 @@ bool VehicleHasDepotOrders(const Vehicle *v)
 	const Order *order;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (order->type == OT_GOTO_DEPOT)
+		if (order->IsType(OT_GOTO_DEPOT))
 			return true;
 	}
 
@@ -1340,7 +1378,7 @@ static bool CheckForValidOrders(const Vehicle *v)
 {
 	const Order *order;
 
-	FOR_VEHICLE_ORDERS(v, order) if (order->type != OT_DUMMY) return true;
+	FOR_VEHICLE_ORDERS(v, order) if (!order->IsType(OT_DUMMY)) return true;
 
 	return false;
 }
@@ -1354,7 +1392,7 @@ static bool CheckForValidOrders(const Vehicle *v)
  */
 bool ProcessOrders(Vehicle *v)
 {
-	switch (v->current_order.type) {
+	switch (v->current_order.GetType()) {
 		case OT_GOTO_DEPOT:
 			/* Let a depot order in the orderlist interrupt. */
 			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return false;
@@ -1382,10 +1420,10 @@ bool ProcessOrders(Vehicle *v)
 	 * will be reset to nothing. (That also happens if no order, but in that case
 	 * it won't hit the point in code where may_reverse is checked)
 	 */
-	bool may_reverse = v->current_order.type == OT_NOTHING;
+	bool may_reverse = v->current_order.IsType(OT_NOTHING);
 
 	/* Check if we've reached the waypoint? */
-	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
+	if (v->current_order.IsType(OT_GOTO_WAYPOINT) && v->tile == v->dest_tile) {
 		UpdateVehicleTimetable(v, true);
 		v->cur_order_index++;
 	}
@@ -1406,7 +1444,7 @@ bool ProcessOrders(Vehicle *v)
 	const Order *order = GetVehicleOrder(v, v->cur_order_index);
 
 	/* If no order, do nothing. */
-	if (order == NULL || (v->type == VEH_AIRCRAFT && order->type == OT_DUMMY && !CheckForValidOrders(v))) {
+	if (order == NULL || (v->type == VEH_AIRCRAFT && order->IsType(OT_DUMMY) && !CheckForValidOrders(v))) {
 		if (v->type == VEH_AIRCRAFT) {
 			/* Aircraft do something vastly different here, so handle separately */
 			extern void HandleMissingAircraftOrders(Vehicle *v);
@@ -1422,7 +1460,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* If it is unchanged, keep it. */
 	if (order->Equals(v->current_order) &&
-			(v->type != VEH_SHIP || order->type != OT_GOTO_STATION || GetStation(order->dest)->dock_tile != 0)) {
+			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->dest)->dock_tile != 0)) {
 		return false;
 	}
 
@@ -1444,7 +1482,7 @@ bool ProcessOrders(Vehicle *v)
 			break;
 	}
 
-	switch (order->type) {
+	switch (order->GetType()) {
 		case OT_GOTO_STATION:
 			v->dest_tile = v->GetOrderStationLocation(order->dest);
 			break;
@@ -1490,6 +1528,7 @@ void InitializeOrders()
 	_backup_orders_tile = 0;
 }
 
+const SaveLoad *GetOrderDescription() {
 static const SaveLoad _order_desc[] = {
 	SLE_VAR(Order, type,  SLE_UINT8),
 	SLE_VAR(Order, flags, SLE_UINT8),
@@ -1505,6 +1544,8 @@ static const SaveLoad _order_desc[] = {
 	SLE_CONDNULL(10, 5, 35),
 	SLE_END()
 };
+	return _order_desc;
+}
 
 static void Save_ORDR()
 {
@@ -1512,7 +1553,7 @@ static void Save_ORDR()
 
 	FOR_ALL_ORDERS(order) {
 		SlSetArrayIndex(order->index);
-		SlObject(order, _order_desc);
+		SlObject(order, GetOrderDescription());
 	}
 }
 
@@ -1565,7 +1606,7 @@ static void Load_ORDR()
 
 		while ((index = SlIterateArray()) != -1) {
 			Order *order = new (index) Order();
-			SlObject(order, _order_desc);
+			SlObject(order, GetOrderDescription());
 		}
 	}
 }

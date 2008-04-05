@@ -1967,7 +1967,7 @@ int WhoCanServiceIndustry(Industry* ind)
 		 */
 		const Order *o;
 		FOR_VEHICLE_ORDERS(v, o) {
-			if (o->type == OT_GOTO_STATION && !HasBit(o->flags, OF_TRANSFER)) {
+			if (o->IsType(OT_GOTO_STATION) && !HasBit(o->flags, OF_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
 				Station *st = GetStation(o->dest);
 				if (!st->IsValid()) continue;

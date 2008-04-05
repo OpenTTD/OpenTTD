@@ -2178,7 +2178,7 @@ bool AfterLoadGame()
 		FOR_ALL_VEHICLES(v) {
 			if ((v->type != VEH_TRAIN || IsFrontEngine(v)) &&  // for all locs
 					!(v->vehstatus & (VS_STOPPED | VS_CRASHED)) && // not stopped or crashed
-					v->current_order.type == OT_LOADING) {         // loading
+					v->current_order.IsType(OT_LOADING)) {         // loading
 				GetStation(v->last_station_visited)->loading_vehicles.push_back(v);
 
 				/* The loading finished flag is *only* set when actually completely
@@ -2195,7 +2195,7 @@ bool AfterLoadGame()
 			for (iter = st->loading_vehicles.begin(); iter != st->loading_vehicles.end();) {
 				Vehicle *v = *iter;
 				iter++;
-				if (v->current_order.type != OT_LOADING) st->loading_vehicles.remove(v);
+				if (!v->current_order.IsType(OT_LOADING)) st->loading_vehicles.remove(v);
 			}
 		}
 	}
@@ -2307,7 +2307,7 @@ bool AfterLoadGame()
 		/* Update go to buoy orders because they are just waypoints */
 		Order *order;
 		FOR_ALL_ORDERS(order) {
-			if (order->type == OT_GOTO_STATION && GetStation(order->dest)->IsBuoy()) {
+			if (order->IsType(OT_GOTO_STATION) && GetStation(order->dest)->IsBuoy()) {
 				order->flags = 0;
 			}
 		}

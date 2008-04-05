@@ -1898,7 +1898,7 @@ bool HasStationInUse(StationID station, PlayerID player)
 		if (player == INVALID_PLAYER || v->owner == player) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_STATION && order->dest == station) {
+				if (order->IsType(OT_GOTO_STATION) && order->dest == station) {
 					return true;
 				}
 			}

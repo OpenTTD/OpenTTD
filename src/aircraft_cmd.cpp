@@ -569,7 +569,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 
 	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || v->IsInDepot()) return CMD_ERROR;
 
-	if (v->current_order.type == OT_GOTO_DEPOT && !(p2 & DEPOT_LOCATE_HANGAR)) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && !(p2 & DEPOT_LOCATE_HANGAR)) {
 		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
@@ -585,8 +585,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of hangar orders
 		if (flags & DC_EXEC) {
 			if (v->current_order.flags & OFB_UNLOAD) v->cur_order_index++;
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	} else {
@@ -604,13 +603,10 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 		}
 
 		if (flags & DC_EXEC) {
-			if (v->current_order.type == OT_LOADING) v->LeaveStation();
+			if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
-			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = OFB_NON_STOP;
+			v->current_order.MakeGoToDepot(next_airport_index, false);
 			if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-			v->current_order.refit_cargo = CT_INVALID;
-			v->current_order.dest = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			if (v->u.air.state == FLYING && !next_airport_has_hangar) {
 				/* The aircraft is now heading for a different hangar than the next in the orders */
@@ -714,12 +710,10 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	if (st->IsValid() && st->airport_tile != 0 && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
-		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OFB_NON_STOP;
+		v->current_order.MakeGoToDepot(INVALID_STATION, false);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-	} else if (v->current_order.type == OT_GOTO_DEPOT) {
-		v->current_order.type = OT_DUMMY;
-		v->current_order.flags = 0;
+	} else if (v->current_order.IsType(OT_GOTO_DEPOT)) {
+		v->current_order.MakeDummy();
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 }
@@ -780,7 +774,7 @@ static void HelicopterTickHandler(Vehicle *v)
 
 	/* if true, helicopter rotors do not rotate. This should only be the case if a helicopter is
 	 * loading/unloading at a terminal or stopped */
-	if (v->current_order.type == OT_LOADING || (v->vehstatus & VS_STOPPED)) {
+	if (v->current_order.IsType(OT_LOADING) || (v->vehstatus & VS_STOPPED)) {
 		if (u->cur_speed != 0) {
 			u->cur_speed++;
 			if (u->cur_speed >= 0x80 && u->u.air.state == HRS_ROTOR_MOVING_3) {
@@ -1388,7 +1382,7 @@ void HandleMissingAircraftOrders(Vehicle *v)
 		_current_player = old_player;
 
 		if (CmdFailed(ret)) CrashAirplane(v);
-	} else if (v->current_order.type != OT_GOTO_DEPOT) {
+	} else if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
 		v->current_order.Free();
 	}
 }
@@ -1471,7 +1465,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 /** we've landed and just arrived at a terminal */
 static void AircraftEntersTerminal(Vehicle *v)
 {
-	if (v->current_order.type == OT_GOTO_DEPOT) return;
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) return;
 
 	Station *st = GetStation(v->u.air.targetairport);
 	v->last_station_visited = v->u.air.targetairport;
@@ -1505,8 +1499,8 @@ static void AircraftLandAirplane(Vehicle *v)
 /** set the right pos when heading to other airports after takeoff */
 static void AircraftNextAirportPos_and_Order(Vehicle *v)
 {
-	if (v->current_order.type == OT_GOTO_STATION ||
-			v->current_order.type == OT_GOTO_DEPOT)
+	if (v->current_order.IsType(OT_GOTO_STATION) ||
+			v->current_order.IsType(OT_GOTO_DEPOT))
 		v->u.air.targetairport = v->current_order.dest;
 
 	const AirportFTAClass *apc = GetStation(v->u.air.targetairport)->Airport();
@@ -1603,13 +1597,13 @@ static void AircraftEventHandler_InHangar(Vehicle *v, const AirportFTAClass *apc
 	}
 
 	/* if we were sent to the depot, stay there */
-	if (v->current_order.type == OT_GOTO_DEPOT && (v->vehstatus & VS_STOPPED)) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT) && (v->vehstatus & VS_STOPPED)) {
 		v->current_order.Free();
 		return;
 	}
 
-	if (v->current_order.type != OT_GOTO_STATION &&
-			v->current_order.type != OT_GOTO_DEPOT)
+	if (!v->current_order.IsType(OT_GOTO_STATION) &&
+			!v->current_order.IsType(OT_GOTO_DEPOT))
 		return;
 
 	/* if the block of the next position is busy, stay put */
@@ -1660,7 +1654,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 	/* airport-road is free. We either have to go to another airport, or to the hangar
 	 * ---> start moving */
 
-	switch (v->current_order.type) {
+	switch (v->current_order.GetType()) {
 		case OT_GOTO_STATION: // ready to fly to another airport
 			/* airplane goto state takeoff, helicopter to helitakeoff */
 			v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
@@ -1786,7 +1780,7 @@ static void AircraftEventHandler_EndLanding(Vehicle *v, const AirportFTAClass *a
 	 * 1. in case all terminals are busy AirportFindFreeTerminal() returns false or
 	 * 2. not going for terminal (but depot, no order),
 	 * --> get out of the way to the hangar. */
-	if (v->current_order.type == OT_GOTO_STATION) {
+	if (v->current_order.IsType(OT_GOTO_STATION)) {
 		if (AirportFindFreeTerminal(v, apc)) return;
 	}
 	v->u.air.state = HANGAR;
@@ -1805,7 +1799,7 @@ static void AircraftEventHandler_HeliEndLanding(Vehicle *v, const AirportFTAClas
 	 * --> else TAKEOFF
 	 * the reason behind this is that if an airport has a terminal, it also has a hangar. Airplanes
 	 * must go to a hangar. */
-	if (v->current_order.type == OT_GOTO_STATION) {
+	if (v->current_order.IsType(OT_GOTO_STATION)) {
 		if (AirportFindFreeHelipad(v, apc)) return;
 	}
 	v->u.air.state = (apc->nof_depots != 0) ? HANGAR : HELITAKEOFF;
@@ -2126,7 +2120,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 	ProcessOrders(v);
 	v->HandleLoading(loop != 0);
 
-	if (v->current_order.type >= OT_LOADING) return;
+	if (v->current_order.IsType(OT_LOADING) || v->current_order.IsType(OT_LEAVESTATION)) return;
 
 	AirportGoToNextPosition(v);
 }

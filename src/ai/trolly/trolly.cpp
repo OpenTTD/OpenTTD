@@ -553,7 +553,7 @@ static bool AiNew_CheckVehicleStation(Player *p, Station *st)
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_STATION && GetStation(order->dest) == st) {
+				if (order->IsType(OT_GOTO_STATION) && GetStation(order->dest) == st) {
 					// This vehicle has this city in its list
 					count++;
 				}
@@ -1184,24 +1184,18 @@ static void AiNew_State_GiveOrders(Player *p)
 	// Very handy for AI, goto depot.. but yeah, it needs to be activated ;)
 	if (_patches.gotodepot) {
 		idx = 0;
-		order.type = OT_GOTO_DEPOT;
-		order.flags = OFB_UNLOAD;
-		order.dest = GetDepotByTile(_players_ainew[p->index].depot_tile)->index;
+		order.MakeGoToDepot(GetDepotByTile(_players_ainew[p->index].depot_tile)->index, true);
 		AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	idx = 0;
-	order.type = OT_GOTO_STATION;
-	order.flags = 0;
-	order.dest = GetStationIndex(_players_ainew[p->index].to_tile);
+	order.MakeGoToStation(GetStationIndex(_players_ainew[p->index].to_tile));
 	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].to_deliver)
 		order.flags |= OFB_FULL_LOAD;
 	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 
 	idx = 0;
-	order.type = OT_GOTO_STATION;
-	order.flags = 0;
-	order.dest = GetStationIndex(_players_ainew[p->index].from_tile);
+	order.MakeGoToStation(GetStationIndex(_players_ainew[p->index].from_tile));
 	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].from_deliver)
 		order.flags |= OFB_FULL_LOAD;
 	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);

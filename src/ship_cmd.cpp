@@ -153,17 +153,14 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	const Depot *depot = FindClosestShipDepot(v);
 
 	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
-		if (v->current_order.type == OT_GOTO_DEPOT) {
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return;
 	}
 
-	v->current_order.type = OT_GOTO_DEPOT;
-	v->current_order.flags = OFB_NON_STOP;
-	v->current_order.dest = depot->index;
+	v->current_order.MakeGoToDepot(depot->index, false);
 	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
@@ -604,7 +601,7 @@ static void ShipController(Vehicle *v)
 	ProcessOrders(v);
 	v->HandleLoading();
 
-	if (v->current_order.type == OT_LOADING) return;
+	if (v->current_order.IsType(OT_LOADING)) return;
 
 	CheckShipLeaveDepot(v);
 
@@ -625,40 +622,38 @@ static void ShipController(Vehicle *v)
 
 			/* A leave station order only needs one tick to get processed, so we can
 			 * always skip ahead. */
-			if (v->current_order.type == OT_LEAVESTATION) {
+			if (v->current_order.IsType(OT_LEAVESTATION)) {
 				v->current_order.Free();
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			} else if (v->dest_tile != 0) {
 				/* We have a target, let's see if we reached it... */
-				if (v->current_order.type == OT_GOTO_STATION &&
+				if (v->current_order.IsType(OT_GOTO_STATION) &&
 						IsBuoyTile(v->dest_tile) &&
 						DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
 					/* We got within 3 tiles of our target buoy, so let's skip to our
 					 * next order */
 					UpdateVehicleTimetable(v, true);
 					v->cur_order_index++;
-					v->current_order.type = OT_DUMMY;
+					v->current_order.MakeDummy();
 					InvalidateVehicleOrder(v);
 				} else {
 					/* Non-buoy orders really need to reach the tile */
 					if (v->dest_tile == gp.new_tile) {
-						if (v->current_order.type == OT_GOTO_DEPOT) {
+						if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 							if ((gp.x & 0xF) == 8 && (gp.y & 0xF) == 8) {
 								VehicleEnterDepot(v);
 								return;
 							}
-						} else if (v->current_order.type == OT_GOTO_STATION) {
-							Station *st;
-
+						} else if (v->current_order.IsType(OT_GOTO_STATION)) {
 							v->last_station_visited = v->current_order.dest;
 
 							/* Process station in the orderlist. */
-							st = GetStation(v->current_order.dest);
+							Station *st = GetStation(v->current_order.dest);
 							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
 								ShipArrivesAt(v, st);
 								v->BeginLoading();
 							} else { // leave stations without docks right aways
-								v->current_order.type = OT_LEAVESTATION;
+								v->current_order.MakeLeaveStation();
 								v->cur_order_index++;
 								InvalidateVehicleOrder(v);
 							}
@@ -947,7 +942,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	if (v->IsInDepot()) return CMD_ERROR;
 
 	/* If the current orders are already goto-depot */
-	if (v->current_order.type == OT_GOTO_DEPOT) {
+	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
@@ -967,8 +962,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			if (HasBit(v->current_order.flags, OF_PART_OF_ORDERS))
 				v->cur_order_index++;
 
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 		return CommandCost();
@@ -978,14 +972,11 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	if (dep == NULL) return_cmd_error(STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
-		if (v->current_order.type == OT_LOADING) v->LeaveStation();
+		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
 		v->dest_tile = dep->xy;
-		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OFB_NON_STOP;
+		v->current_order.MakeGoToDepot(dep->index, false);
 		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
-		v->current_order.refit_cargo = CT_INVALID;
-		v->current_order.dest = dep->index;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
