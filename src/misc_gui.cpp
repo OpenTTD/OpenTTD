@@ -337,6 +337,10 @@ static const PalSpriteID _tree_sprites[] = {
 static void BuildTreesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+		case WE_CREATE:
+			ResetObjectToPlace();
+			break;
+
 		case WE_PAINT: {
 			DrawWindowWidgets(w);
 
