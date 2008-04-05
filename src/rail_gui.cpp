@@ -601,7 +601,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_DRAG: {
 		/* no dragging if you have pressed the convert button */
-		if (_convert_signal_button && w->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
+		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && w->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
 
 		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
