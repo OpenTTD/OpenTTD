@@ -1429,7 +1429,7 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 			type == OT_GOTO_STATION &&            // Do stop only when going to a station
 			/* Finally do stop when the non-stop flag is not set, or when we should stop at
 			 * this station according to the new_nonstop setting. */
-			(!this->flags & OFB_NON_STOP || ((this->dest != station) == _patches.new_nonstop));
+			(!(this->flags & OFB_NON_STOP) || ((this->dest != station) == _patches.new_nonstop));
 }
 
 void InitializeOrders()
