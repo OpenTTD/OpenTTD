@@ -55,13 +55,12 @@ void Order::MakeGoToStation(StationID destination)
 	this->dest = destination;
 }
 
-void Order::MakeGoToDepot(DepotID destination, bool order)
+void Order::MakeGoToDepot(DepotID destination, bool order, CargoID cargo, byte subtype)
 {
 	this->type = OT_GOTO_DEPOT;
 	this->flags = order ? OFB_PART_OF_ORDERS : OFB_NON_STOP;
 	this->dest = destination;
-	this->refit_cargo = CT_NO_REFIT;
-	this->refit_subtype = 0;
+	this->SetRefit(cargo, subtype);
 }
 
 void Order::MakeGoToWaypoint(WaypointID destination)
@@ -86,6 +85,12 @@ void Order::MakeDummy()
 {
 	this->type = OT_DUMMY;
 	this->flags = 0;
+}
+
+void Order::SetRefit(CargoID cargo, byte subtype)
+{
+	this->refit_cargo = cargo;
+	this->refit_subtype = subtype;
 }
 
 void Order::FreeChain()
@@ -1002,8 +1007,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		Vehicle *u;
 
-		order->refit_cargo = cargo;
-		order->refit_subtype = subtype;
+		order->SetRefit(cargo, subtype);
 
 		u = GetFirstVehicleFromSharedList(v);
 		for (; u != NULL; u = u->next_shared) {
@@ -1012,8 +1016,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
 			if (u->cur_order_index == order_number && HasBit(u->current_order.flags, OF_PART_OF_ORDERS)) {
-				u->current_order.refit_cargo = cargo;
-				u->current_order.refit_subtype = subtype;
+				u->current_order.SetRefit(cargo, subtype);
 			}
 		}
 	}

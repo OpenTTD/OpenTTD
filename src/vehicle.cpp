@@ -2243,11 +2243,11 @@ void VehicleEnterDepot(Vehicle *v)
 		t = v->current_order;
 		v->current_order.MakeDummy();
 
-		if (t.refit_cargo < NUM_CARGO) {
+		if (t.IsRefit()) {
 			CommandCost cost;
 
 			_current_player = v->owner;
-			cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, GetCmdRefitVeh(v));
+			cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
 
 			if (CmdFailed(cost)) {
 				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot

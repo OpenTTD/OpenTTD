@@ -225,9 +225,9 @@ static void DrawOrdersWindow(Window *w)
 					if (order->flags & OFB_FULL_LOAD) s++; /* service at */
 
 					SetDParam(1, s);
-					if (order->refit_cargo < NUM_CARGO) {
+					if (order->IsRefit()) {
 						SetDParam(3, STR_REFIT_ORDER);
-						SetDParam(4, GetCargo(order->refit_cargo)->name);
+						SetDParam(4, GetCargo(order->GetRefitCargo())->name);
 					} else {
 						SetDParam(3, STR_EMPTY);
 					}
@@ -263,8 +263,6 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	Order order;
 	order.next  = NULL;
 	order.index = 0;
-	order.refit_cargo   = CT_INVALID;
-	order.refit_subtype = 0;
 
 	// check depot first
 	if (_patches.gotodepot) {

@@ -1987,13 +1987,11 @@ bool AfterLoadGame()
 		Vehicle *v;
 
 		FOR_ALL_ORDERS(order) {
-			order->refit_cargo   = CT_NO_REFIT;
-			order->refit_subtype = CT_NO_REFIT;
+			order->SetRefit(CT_NO_REFIT);
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			v->current_order.refit_cargo   = CT_NO_REFIT;
-			v->current_order.refit_subtype = CT_NO_REFIT;
+			v->current_order.SetRefit(CT_NO_REFIT);
 		}
 	}
 

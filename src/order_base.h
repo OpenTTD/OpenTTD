@@ -31,16 +31,16 @@ private:
 	friend Order UnpackOldOrder(uint16 packed);                          ///< 'Uncompressing' a loaded old order.
 	friend Order UnpackVersion4Order(uint16 packed);                     ///< 'Uncompressing' a loaded ancient order.
 
-	OrderTypeByte type;
+	OrderTypeByte type;   ///< The type of order
+
+	CargoID refit_cargo;  ///< Refit CargoID
+	byte refit_subtype;   ///< Refit subtype
 
 public:
 	Order *next;          ///< Pointer to next order. If NULL, end of list
 
 	uint8  flags;
 	DestinationID dest;   ///< The destionation of the order.
-
-	CargoID refit_cargo; // Refit CargoID
-	byte refit_subtype; // Refit subtype
 
 	uint16 wait_time;    ///< How long in ticks to wait at the destination.
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
@@ -83,8 +83,10 @@ public:
 	 * Makes this order a Go To Depot order.
 	 * @param destination the depot to go to.
 	 * @param order       is this order a 'default' order, or an overriden vehicle order?
+	 * @param cargo       the cargo type to change to.
+	 * @param subtype     the subtype to change to.
 	 */
-	void MakeGoToDepot(DepotID destination, bool order);
+	void MakeGoToDepot(DepotID destination, bool order, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
 
 	/**
 	 * Makes this order a Go To Waypoint order.
@@ -112,6 +114,35 @@ public:
 	 * @note do not use on "current_order" vehicle orders!
 	 */
 	void FreeChain();
+
+	/**
+	 * Is this order a refit order.
+	 * @pre IsType(OT_GOTO_DEPOT)
+	 * @return true if a refit should happen.
+	 */
+	inline bool IsRefit() const { return this->refit_cargo < NUM_CARGO; }
+
+	/**
+	 * Get the cargo to to refit to.
+	 * @pre IsType(OT_GOTO_DEPOT)
+	 * @return the cargo type.
+	 */
+	inline CargoID GetRefitCargo() const { return this->refit_cargo; }
+
+	/**
+	 * Get the cargo subtype to to refit to.
+	 * @pre IsType(OT_GOTO_DEPOT)
+	 * @return the cargo subtype.
+	 */
+	inline byte GetRefitSubtype() const { return this->refit_subtype; }
+
+	/**
+	 * Make this depot order also a refit order.
+	 * @param cargo   the cargo type to change to.
+	 * @param subtype the subtype to change to.
+	 * @pre IsType(OT_GOTO_DEPOT).
+	 */
+	void SetRefit(CargoID cargo, byte subtype = 0);
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 

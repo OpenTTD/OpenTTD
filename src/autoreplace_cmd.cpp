@@ -71,9 +71,9 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID eng
 	}
 
 	FOR_VEHICLE_ORDERS(u, o) {
-		if (!(o->refit_cargo < NUM_CARGO)) continue;
-		if (!CanRefitTo(v->engine_type, o->refit_cargo)) continue;
-		if (!CanRefitTo(engine_type, o->refit_cargo)) return false;
+		if (!o->IsRefit()) continue;
+		if (!CanRefitTo(v->engine_type, o->GetRefitCargo())) continue;
+		if (!CanRefitTo(engine_type, o->GetRefitCargo())) return false;
 	}
 
 	return true;
