@@ -710,7 +710,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	if (st->IsValid() && st->airport_tile != 0 && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
-		v->current_order.MakeGoToDepot(INVALID_STATION, false);
+		v->current_order.MakeGoToDepot(0, false);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	} else if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 		v->current_order.MakeDummy();
