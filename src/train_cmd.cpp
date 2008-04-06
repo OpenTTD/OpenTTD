@@ -2108,13 +2108,14 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
+		bool halt_in_depot = HasBit(v->current_order.GetDepotActionType(), OF_HALT_IN_DEPOT);
+		if (!!(p2 & DEPOT_SERVICE) == halt_in_depot) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
 			if (flags & DC_EXEC) {
-				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
-				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
+				v->current_order.SetDepotOrderType(OFB_MANUAL_ORDER);
+				v->current_order.SetDepotActionType(halt_in_depot ? OFB_NORMAL_ACTION : OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
@@ -2122,9 +2123,9 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
 		if (flags & DC_EXEC) {
-			if (HasBit(v->current_order.flags, OF_PART_OF_ORDERS)) {
-				v->cur_order_index++;
-			}
+			/* If the orders to 'goto depot' are in the orders list (forced servicing),
+			 * then skip to the next order; effectively cancelling this forced service */
+			if (v->current_order.GetDepotOrderType() & OFB_PART_OF_ORDERS) v->cur_order_index++;
 
 			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
@@ -2144,7 +2145,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		v->dest_tile = tfdd.tile;
 		v->current_order.MakeGoToDepot(GetDepotByTile(tfdd.tile)->index, false);
-		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
+		if (!(p2 & DEPOT_SERVICE)) v->current_order.SetDepotActionType(OFB_HALT_IN_DEPOT);
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		/* If there is no depot in front, reverse automatically */
 		if (tfdd.reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);

@@ -52,8 +52,10 @@ enum OrderFlagMasks {
 
 	//Flags for depots:
 	/** The current depot-order was initiated because it was in the vehicle's order list */
+	OFB_MANUAL_ORDER       = 0x0,
 	OFB_PART_OF_ORDERS     = 0x2,
 	/** if OFB_PART_OF_ORDERS is not set, this will cause the vehicle to be stopped in the depot */
+ 	OFB_NORMAL_ACTION      = 0x0,
 	OFB_HALT_IN_DEPOT      = 0x4,
 	/** if OFB_PART_OF_ORDERS is set, this will cause the order only be come active if the vehicle needs servicing */
 	OFB_SERVICE_IF_NEEDED  = 0x4, //used when OFB_PART_OF_ORDERS is set.
@@ -61,6 +63,7 @@ enum OrderFlagMasks {
 	//Common flags
 	/** This causes the vehicle not to stop at intermediate OR the destination station (depending on patch settings)
 	  * @todo make this two different flags */
+	OFB_NO_NON_STOP        = 0x0,
 	OFB_NON_STOP           = 0x8
 };
 

@@ -1969,7 +1969,7 @@ static void DrawVehicleViewWindow(Window *w)
 					SetDParam(0, depot->town_index);
 					SetDParam(1, v->GetDisplaySpeed());
 				}
-				if (HasBit(v->current_order.flags, OF_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OF_PART_OF_ORDERS)) {
+				if (HasBit(v->current_order.GetDepotActionType(), OF_HALT_IN_DEPOT) && !HasBit(v->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
 					str = _heading_for_depot_strings[v->type] + _patches.vehicle_speed;
 				} else {
 					str = _heading_for_depot_service_strings[v->type] + _patches.vehicle_speed;

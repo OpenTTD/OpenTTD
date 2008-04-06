@@ -477,13 +477,14 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		if (!!(p2 & DEPOT_SERVICE) == HasBit(v->current_order.flags, OF_HALT_IN_DEPOT)) {
+		bool halt_in_depot = HasBit(v->current_order.GetDepotActionType(), OF_HALT_IN_DEPOT);
+		if (!!(p2 & DEPOT_SERVICE) == halt_in_depot) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
 			 * Note: the if is (true for requesting service == true for ordered to stop in depot) */
 			if (flags & DC_EXEC) {
-				ClrBit(v->current_order.flags, OF_PART_OF_ORDERS);
-				ToggleBit(v->current_order.flags, OF_HALT_IN_DEPOT);
+				v->current_order.SetDepotOrderType(OFB_MANUAL_ORDER);
+				v->current_order.SetDepotActionType(halt_in_depot ? OFB_NORMAL_ACTION : OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 			}
 			return CommandCost();
@@ -493,8 +494,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
-			if (HasBit(v->current_order.flags, OF_PART_OF_ORDERS))
-				v->cur_order_index++;
+			if (v->current_order.GetDepotOrderType() & OFB_PART_OF_ORDERS) v->cur_order_index++;
 
 			v->current_order.MakeDummy();
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
@@ -510,7 +510,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 		ClearSlot(v);
 		v->current_order.MakeGoToDepot(dep->index, false);
-		if (!(p2 & DEPOT_SERVICE)) SetBit(v->current_order.flags, OF_HALT_IN_DEPOT);
+		if (!(p2 & DEPOT_SERVICE)) v->current_order.SetDepotActionType(OFB_HALT_IN_DEPOT);
 		v->dest_tile = dep->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
@@ -1929,7 +1929,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	}
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			v->current_order.flags & OFB_NON_STOP &&
+			v->current_order.GetNonStopType() & OFB_NON_STOP &&
 			!Chance16(1, 20)) {
 		return;
 	}

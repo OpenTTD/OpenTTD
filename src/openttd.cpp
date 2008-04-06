@@ -2306,7 +2306,8 @@ bool AfterLoadGame()
 		Order *order;
 		FOR_ALL_ORDERS(order) {
 			if (order->IsType(OT_GOTO_STATION) && GetStation(order->GetDestination())->IsBuoy()) {
-				order->flags = 0;
+				order->SetLoadType(0);
+				order->SetUnloadType(0);
 			}
 		}
 

@@ -70,9 +70,10 @@ void Order::MakeGoToWaypoint(WaypointID destination)
 	this->dest = destination;
 }
 
-void Order::MakeLoading()
+void Order::MakeLoading(bool ordered)
 {
 	this->type = OT_LOADING;
+	if (!ordered) this->flags = 0;
 }
 
 void Order::MakeLeaveStation()
@@ -160,7 +161,7 @@ Order UnpackOldOrder(uint16 packed)
 	 * Sanity check
 	 * TTD stores invalid orders as OT_NOTHING with non-zero flags/station
 	 */
-	if (!order.IsValid() && (order.flags != 0 || order.GetDestination() != 0)) {
+	if (!order.IsValid() && (order.GetLoadType() != 0 || order.GetUnloadType() != 0 || order.GetDestination() != 0)) {
 		order.MakeDummy();
 	}
 
@@ -393,8 +394,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]
 			 * non-stop orders (if any) are only valid for trains */
-			switch (new_order.flags) {
-				case 0: break;
+			switch (new_order.GetNonStopType()) {
+				case OFB_NO_NON_STOP: break;
 
 				case OFB_NON_STOP:
 					if (v->type != VEH_TRAIN) return CMD_ERROR;
@@ -595,9 +596,8 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
-			if (sel_ord == u->cur_order_index && u->current_order.IsType(OT_LOADING) &&
-					HasBit(u->current_order.flags, OF_NON_STOP)) {
-				u->current_order.flags = 0;
+			if (sel_ord == u->cur_order_index && u->current_order.IsType(OT_LOADING)) {
+				u->current_order.SetNonStopType(OFB_NO_NON_STOP);
 			}
 
 			/* Update any possible open window of the vehicle */
@@ -634,12 +634,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->type == VEH_ROAD) ClearSlot(v);
 
-		if (v->current_order.IsType(OT_LOADING)) {
-			v->LeaveStation();
-			/* NON-stop flag is misused to see if a train is in a station that is
-			 * on his order list or not */
-			if (HasBit(v->current_order.flags, OF_NON_STOP)) v->current_order.flags = 0;
-		}
+		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
 		InvalidateVehicleOrder(v);
 	}
@@ -808,8 +803,8 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 */
 				if (sel_ord == u->cur_order_index &&
 						!u->current_order.IsType(OT_GOTO_DEPOT) &&
-						HasBit(u->current_order.flags, OF_FULL_LOAD) != HasBit(order->flags, OF_FULL_LOAD)) {
-					ToggleBit(u->current_order.flags, OF_FULL_LOAD);
+						u->current_order.GetLoadType() != order->GetLoadType()) {
+					u->current_order.SetLoadType(order->GetLoadType());
 				}
 				InvalidateVehicleOrder(u);
 			}
@@ -990,7 +985,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateVehicleOrder(u);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
-			if (u->cur_order_index == order_number && HasBit(u->current_order.flags, OF_PART_OF_ORDERS)) {
+			if (u->cur_order_index == order_number && HasBit(u->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
 				u->current_order.SetRefit(cargo, subtype);
 			}
 		}
@@ -1373,9 +1368,9 @@ bool ProcessOrders(Vehicle *v)
 	switch (v->current_order.GetType()) {
 		case OT_GOTO_DEPOT:
 			/* Let a depot order in the orderlist interrupt. */
-			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return false;
+			if (!(v->current_order.GetDepotOrderType() & OFB_PART_OF_ORDERS)) return false;
 
-			if ((v->current_order.flags & OFB_SERVICE_IF_NEEDED) && !VehicleNeedsService(v)) {
+			if ((v->current_order.GetDepotOrderType() & OFB_SERVICE_IF_NEEDED) && !VehicleNeedsService(v)) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}
@@ -1408,7 +1403,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* Check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
 	if (_patches.new_nonstop &&
-			v->current_order.flags & OFB_NON_STOP &&
+			v->current_order.GetNonStopType() & OFB_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 		v->last_station_visited = v->current_order.GetDestination();

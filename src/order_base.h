@@ -36,7 +36,7 @@ private:
 public:
 	Order *next;          ///< Pointer to next order. If NULL, end of list
 
-	uint8  flags;
+	uint8 flags;          ///< 'Sub'type of order
 
 	uint16 wait_time;    ///< How long in ticks to wait at the destination.
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
@@ -98,8 +98,9 @@ public:
 
 	/**
 	 * Makes this order a Loading order.
+	 * @param ordered is this an ordered stop?
 	 */
-	void MakeLoading();
+	void MakeLoading(bool ordered);
 
 	/**
 	 * Makes this order a Leave Station order.
@@ -159,6 +160,28 @@ public:
 	 * @pre IsType(OT_GOTO_DEPOT).
 	 */
 	void SetRefit(CargoID cargo, byte subtype = 0);
+
+	/** How must the consist be loaded? */
+	inline byte GetLoadType() const { return this->flags & OFB_FULL_LOAD; }
+	/** How must the consist be unloaded? */
+	inline byte GetUnloadType() const { return GB(this->flags, 0, 2); }
+	/** Where must we stop? */
+	inline byte GetNonStopType() const { return this->flags & OFB_NON_STOP; }
+	/** What caused us going to the depot? */
+	inline byte GetDepotOrderType() const { return this->flags; }
+	/** What are we going to do when in the depot. */
+	inline byte GetDepotActionType() const { return this->flags; }
+
+	/** Set how the consist must be loaded. */
+	inline void SetLoadType(byte load_type) { SB(this->flags, 2, 1, !!load_type); }
+	/** Set how the consist must be unloaded. */
+	inline void SetUnloadType(byte unload_type) { SB(this->flags, 0, 2, unload_type); }
+	/** Set whether we must stop at stations or not. */
+	inline void SetNonStopType(byte non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
+	/** Set the cause to go to the depot. */
+	inline void SetDepotOrderType(byte depot_order_type) { this->flags = depot_order_type; }
+	/** Set what we are going to do in the depot. */
+	inline void SetDepotActionType(byte depot_service_type) { this->flags = depot_service_type; }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 

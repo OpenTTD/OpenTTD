@@ -120,10 +120,10 @@ void VehicleServiceInDepot(Vehicle *v)
 bool VehicleNeedsService(const Vehicle *v)
 {
 	if (v->vehstatus & (VS_STOPPED | VS_CRASHED))       return false;
-	if (!v->current_order.IsType(OT_GOTO_DEPOT) || !(v->current_order.flags & OFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
+	if (!v->current_order.IsType(OT_GOTO_DEPOT) || !(v->current_order.GetDepotOrderType() & OFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
 		if (_patches.gotodepot && VehicleHasDepotOrders(v)) return false;
 		if (v->current_order.IsType(OT_LOADING))            return false;
-		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.flags & OFB_HALT_IN_DEPOT) return false;
+		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() & OFB_HALT_IN_DEPOT) return false;
 	}
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
@@ -631,7 +631,7 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* We need to set v->leave_depot_instantly as we have no control of it's contents at this time.
 	 * Vehicle should stop in the depot if it was in 'stopping' state - train intered depot while slowing down. */
-	if ((HasBit(v->current_order.flags, OF_HALT_IN_DEPOT) && !HasBit(v->current_order.flags, OF_PART_OF_ORDERS) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
+	if ((HasBit(v->current_order.GetDepotActionType(), OF_HALT_IN_DEPOT) && !HasBit(v->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
 			(v->vehstatus & VS_STOPPED)) {
 		/* we keep the vehicle in the depot since the user ordered it to stay */
 		v->leave_depot_instantly = false;
@@ -2174,7 +2174,7 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
-			loading |= (u->current_order.flags & OFB_UNLOAD) == 0 && st->goods[v->cargo_type].days_since_pickup != 255;
+			loading |= !HasBit(u->current_order.GetUnloadType(), OF_UNLOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
 		}
 	}
@@ -2262,11 +2262,11 @@ void VehicleEnterDepot(Vehicle *v)
 			}
 		}
 
-		if (HasBit(t.flags, OF_PART_OF_ORDERS)) {
+		if (HasBit(t.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
 			/* Part of orders */
 			UpdateVehicleTimetable(v, true);
 			v->cur_order_index++;
-		} else if (HasBit(t.flags, OF_HALT_IN_DEPOT)) {
+		} else if (HasBit(t.GetDepotActionType(), OF_HALT_IN_DEPOT)) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {
@@ -3132,23 +3132,20 @@ void Vehicle::BeginLoading()
 
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
-		/* Arriving at the ordered station.
-		 * Keep the load/unload flags, as we (obviously) still need them. */
-		this->current_order.flags &= OFB_FULL_LOAD | OFB_UNLOAD | OFB_TRANSFER;
-
 		/* Furthermore add the Non Stop flag to mark that this station
 		 * is the actual destination of the vehicle, which is (for example)
 		 * necessary to be known for HandleTrainLoading to determine
 		 * whether the train is lost or not; not marking a train lost
 		 * that arrives at random stations is bad. */
-		this->current_order.flags |= OFB_NON_STOP;
+		this->current_order.SetNonStopType(OFB_NON_STOP);
+
+		current_order.MakeLoading(true);
 		UpdateVehicleTimetable(this, true);
 	} else {
-		/* This is just an unordered intermediate stop */
-		this->current_order.flags = 0;
+		this->current_order.SetNonStopType(OFB_NO_NON_STOP);
+		current_order.MakeLoading(false);
 	}
 
-	current_order.MakeLoading();
 	GetStation(this->last_station_visited)->loading_vehicles.push_back(this);
 
 	VehiclePayment(this);
@@ -3167,7 +3164,7 @@ void Vehicle::LeaveStation()
 	assert(current_order.IsType(OT_LOADING));
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
-	if (current_order.flags & OFB_NON_STOP) UpdateVehicleTimetable(this, false);
+	if (current_order.GetNonStopType() != OFB_NO_NON_STOP) UpdateVehicleTimetable(this, false);
 
 	current_order.MakeLeaveStation();
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
@@ -3193,7 +3190,7 @@ void Vehicle::HandleLoading(bool mode)
 			this->LeaveStation();
 
 			/* If this was not the final order, don't remove it from the list. */
-			if (!(b.flags & OFB_NON_STOP)) return;
+			if (!(b.GetNonStopType() & OFB_NON_STOP)) return;
 			break;
 		}
 

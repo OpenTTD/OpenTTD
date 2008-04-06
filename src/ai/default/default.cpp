@@ -2554,9 +2554,9 @@ handle_nocash:
 
 		order.MakeGoToStation(AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule));
 
-		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
+		if (!is_pass && i == 1) order.SetUnloadType(OFB_UNLOAD);
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
-			order.flags |= OFB_FULL_LOAD;
+			order.SetLoadType(OFB_FULL_LOAD);
 
 		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
@@ -3289,9 +3289,9 @@ static void AiStateBuildRoadVehicles(Player *p)
 
 		order.MakeGoToStation(AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule));
 
-		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
+		if (!is_pass && i == 1) order.SetUnloadType(OFB_UNLOAD);
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
-			order.flags |= OFB_FULL_LOAD;
+			order.SetLoadType(OFB_FULL_LOAD);
 
 		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
@@ -3568,9 +3568,9 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 		order.MakeGoToStation(AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule));
 
-		if (!is_pass && i == 1) order.flags |= OFB_UNLOAD;
+		if (!is_pass && i == 1) order.SetUnloadType(OFB_UNLOAD);
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
-			order.flags |= OFB_FULL_LOAD;
+			order.SetLoadType(OFB_FULL_LOAD);
 
 		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}

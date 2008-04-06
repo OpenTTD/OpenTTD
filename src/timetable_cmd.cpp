@@ -24,7 +24,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 		order->wait_time = time;
 	}
 
-	if (v->cur_order_index == order_number && HasBit(v->current_order.flags, OF_PART_OF_ORDERS)) {
+	if (v->cur_order_index == order_number && HasBit(v->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
 		if (is_journey) {
 			v->current_order.travel_time = time;
 		} else {
@@ -70,7 +70,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	bool is_journey = HasBit(p1, 24) || packed_time;
 	if (!is_journey) {
 		if (!order->IsType(OT_GOTO_STATION)) return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
-		if (_patches.new_nonstop && (order->flags & OFB_NON_STOP)) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
+		if (_patches.new_nonstop && (order->GetNonStopType() & OFB_NON_STOP)) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
 	}
 
 	if (flags & DC_EXEC) {
