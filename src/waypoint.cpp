@@ -32,6 +32,7 @@
 #include "player_func.h"
 #include "settings_type.h"
 #include "newgrf_station.h"
+#include "oldpool_func.h"
 
 #include "table/strings.h"
 

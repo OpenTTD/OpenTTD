@@ -25,6 +25,7 @@
 #include "newgrf_cargo.h"
 #include "timetable.h"
 #include "vehicle_func.h"
+#include "oldpool_func.h"
 
 #include "table/strings.h"
 

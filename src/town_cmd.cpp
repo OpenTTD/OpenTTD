@@ -40,6 +40,7 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "newgrf_cargo.h"
+#include "oldpool_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

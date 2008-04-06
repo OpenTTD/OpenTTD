@@ -260,32 +260,7 @@ struct PoolItem {
 	}
 
 private:
-	/**
-	 * Allocate a pool item; possibly allocate a new block in the pool.
-	 * @param first the first pool item to start searching
-	 * @pre first <= Tpool->GetSize()
-	 * @return the allocated pool item (or NULL when the pool is full).
-	 */
-	static inline T *AllocateSafeRaw(uint &first)
-	{
-		uint last_minus_one = Tpool->GetSize() - 1;
-
-		for (T *t = Tpool->Get(first); t != NULL; t = (t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
-			if (!t->IsValid()) {
-				first = t->index;
-				Tid index = t->index;
-
-				memset(t, 0, Tpool->item_size);
-				t->index = index;
-				return t;
-			}
-		}
-
-		/* Check if we can add a block to the pool */
-		if (Tpool->AddBlockToPool()) return AllocateRaw(first);
-
-		return NULL;
-	}
+	static T *AllocateSafeRaw(uint &first);
 
 protected:
 	/**
@@ -346,7 +321,8 @@ protected:
 #define DEFINE_OLD_POOL_GENERIC(name, type) \
 	OldMemoryPool<type> _##name##_pool( \
 		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
-		PoolNewBlock<type, &_##name##_pool>, PoolCleanBlock<type, &_##name##_pool>);
+		PoolNewBlock<type, &_##name##_pool>, PoolCleanBlock<type, &_##name##_pool>); \
+		template type *PoolItem<type, type##ID, &_##name##_pool>::AllocateSafeRaw(uint &first);
 
 
 #define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \

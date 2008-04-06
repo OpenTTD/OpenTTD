@@ -22,6 +22,7 @@
 #include "string_func.h"
 #include "player_func.h"
 #include "order_func.h"
+#include "oldpool_func.h"
 
 #include "table/strings.h"
 

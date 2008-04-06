@@ -7,6 +7,7 @@
 #include "station_base.h"
 #include "cargopacket.h"
 #include "saveload.h"
+#include "oldpool_func.h"
 
 /* Initialize the cargopacket-pool */
 DEFINE_OLD_POOL_GENERIC(CargoPacket, CargoPacket)

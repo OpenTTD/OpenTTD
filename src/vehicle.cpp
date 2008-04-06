@@ -46,6 +46,7 @@
 #include "autoreplace_gui.h"
 #include "string_func.h"
 #include "settings_type.h"
+#include "oldpool_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

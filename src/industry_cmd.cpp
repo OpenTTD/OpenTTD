@@ -37,6 +37,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "station_base.h"
+#include "oldpool_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
