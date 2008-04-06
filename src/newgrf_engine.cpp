@@ -681,8 +681,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x01: return MapOldSubType(v);
 		case 0x04: return v->index;
 		case 0x05: return GB(v->index, 8, 8);
-		case 0x0A: return PackOrder(&v->current_order);
-		case 0x0B: return GB(PackOrder(&v->current_order), 8, 8);
+		case 0x0A: return v->current_order.Pack();
+		case 0x0B: return GB(v->current_order.Pack(), 8, 8);
 		case 0x0C: return v->num_orders;
 		case 0x0D: return v->cur_order_index;
 		case 0x10: return v->load_unload_time_rem;

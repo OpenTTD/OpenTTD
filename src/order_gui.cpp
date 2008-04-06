@@ -373,7 +373,7 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 	cmd = GetOrderCmdFromTile(v, tile);
 	if (!cmd.IsValid()) return;
 
-	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), PackOrder(&cmd), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
+	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), cmd.Pack(), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
 		if (WP(w, order_d).sel != -1) WP(w,order_d).sel++;
 		ResetObjectToPlace();
 	}

@@ -26,10 +26,6 @@ private:
 	friend const struct SaveLoad *GetVehicleDescription(VehicleType vt); ///< Saving and loading the current order of vehicles.
 	friend void Load_VEHS();                                             ///< Loading of ancient vehicles.
 	friend const struct SaveLoad *GetOrderDescription();                 ///< Saving and loading of orders.
-	friend uint32 PackOrder(const Order *order);                         ///< 'Compressing' an order.
-	friend Order UnpackOrder(uint32 packed);                             ///< 'Uncompressing' an order.
-	friend Order UnpackOldOrder(uint16 packed);                          ///< 'Uncompressing' a loaded old order.
-	friend Order UnpackVersion4Order(uint16 packed);                     ///< 'Uncompressing' a loaded ancient order.
 
 	OrderTypeByte type;   ///< The type of order
 
@@ -47,6 +43,12 @@ public:
 
 	Order() : refit_cargo(CT_NO_REFIT) {}
 	~Order() { this->type = OT_NOTHING; }
+
+	/**
+	 * Create an order based on a packed representation of that order.
+	 * @param packed the packed representation.
+	 */
+	Order(uint32 packed);
 
 	/**
 	 * Check if a Order really exists.
@@ -158,6 +160,14 @@ public:
 	 * @return true if the type, flags and destination match.
 	 */
 	bool Equals(const Order &other) const;
+
+	/**
+	 * Pack this order into a 32 bits integer, or actually only
+	 * the type, flags and destination.
+	 * @return the packed representation.
+	 * @note unpacking is done in the constructor.
+	 */
+	uint32 Pack() const;
 };
 
 static inline VehicleOrderID GetMaxOrderIndex()
@@ -182,8 +192,6 @@ static inline VehicleOrderID GetNumOrders()
 #define FOR_VEHICLE_ORDERS(v, order) for (order = v->orders; order != NULL; order = order->next)
 
 /* (Un)pack routines */
-uint32 PackOrder(const Order *order);
-Order UnpackOrder(uint32 packed);
 Order UnpackOldOrder(uint16 packed);
 
 #endif /* ORDER_H */

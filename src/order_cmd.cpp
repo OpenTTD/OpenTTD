@@ -119,24 +119,32 @@ static bool HasOrderPoolFree(uint amount)
 	return false;
 }
 
-uint32 PackOrder(const Order *order)
+uint32 Order::Pack() const
 {
-	return order->dest << 16 | order->flags << 8 | order->type;
+	return this->dest << 16 | this->flags << 8 | this->type;
 }
 
-Order UnpackOrder(uint32 packed)
+Order::Order(uint32 packed)
 {
-	Order order;
-	order.type    = (OrderType)GB(packed,  0,  8);
-	order.flags   = GB(packed,  8,  8);
-	order.dest    = GB(packed, 16, 16);
-	order.next    = NULL;
-	order.index   = 0; // avoid compiler warning
-	order.refit_cargo   = CT_NO_REFIT;
-	order.refit_subtype = 0;
-	order.wait_time     = 0;
-	order.travel_time   = 0;
-	return order;
+	this->type    = (OrderType)GB(packed,  0,  8);
+	this->flags   = GB(packed,  8,  8);
+	this->dest    = GB(packed, 16, 16);
+	this->next    = NULL;
+	this->index   = 0; // avoid compiler warning
+	this->refit_cargo   = CT_NO_REFIT;
+	this->refit_subtype = 0;
+	this->wait_time     = 0;
+	this->travel_time   = 0;
+}
+
+/**
+ *
+ * Unpacks a order from savegames with version 4 and lower
+ *
+ */
+static Order UnpackVersion4Order(uint16 packed)
+{
+	return Order(GB(packed, 8, 8) << 16 | GB(packed, 4, 4) << 8 | GB(packed, 0, 4));
 }
 
 /**
@@ -146,45 +154,16 @@ Order UnpackOrder(uint32 packed)
  */
 Order UnpackOldOrder(uint16 packed)
 {
-	Order order;
-	order.type    = (OrderType)GB(packed, 0, 4);
-	order.flags   = GB(packed, 4, 4);
-	order.dest    = GB(packed, 8, 8);
-	order.next    = NULL;
+	Order order = UnpackVersion4Order(packed);
 
-	order.refit_cargo   = CT_NO_REFIT;
-	order.refit_subtype = 0;
-	order.wait_time     = 0;
-	order.travel_time   = 0;
-	order.index = 0; // avoid compiler warning
-
-	// Sanity check
-	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
+	/*
+	 * Sanity check
+	 * TTD stores invalid orders as OT_NOTHING with non-zero flags/station
+	 */
 	if (!order.IsValid() && (order.flags != 0 || order.dest != 0)) {
-		order.type = OT_DUMMY;
-		order.flags = 0;
+		order.MakeDummy();
 	}
 
-	return order;
-}
-
-/**
- *
- * Unpacks a order from savegames with version 4 and lower
- *
- */
-Order UnpackVersion4Order(uint16 packed)
-{
-	Order order;
-	order.type  = (OrderType)GB(packed, 0, 4);
-	order.flags = GB(packed, 4, 4);
-	order.dest  = GB(packed, 8, 8);
-	order.next  = NULL;
-	order.index = 0; // avoid compiler warning
-	order.refit_cargo   = CT_NO_REFIT;
-	order.refit_subtype = 0;
-	order.wait_time     = 0;
-	order.travel_time   = 0;
 	return order;
 }
 
@@ -276,7 +255,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	VehicleID veh   = GB(p1,  0, 16);
 	VehicleOrderID sel_ord = GB(p1, 16, 16);
-	Order new_order = UnpackOrder(p2);
+	Order new_order(p2);
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
@@ -1099,7 +1078,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 		 *  in network the commands are queued before send, the second insert always
 		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
 		for (uint i = 0; bak->order[i].IsValid(); i++) {
-			if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL,
+			if (!DoCommandP(0, v->index + (i << 16), bak->order[i].Pack(), NULL,
 					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
 			}
@@ -1589,8 +1568,7 @@ static void Load_ORDR()
 			SlArray(orders, len, SLE_UINT32);
 
 			for (i = 0; i < len; ++i) {
-				Order *order = new (i) Order();
-				order->AssignOrder(UnpackOrder(orders[i]));
+				new (i) Order(orders[i]);
 			}
 
 			free(orders);

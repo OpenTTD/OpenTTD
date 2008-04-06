@@ -1185,20 +1185,20 @@ static void AiNew_State_GiveOrders(Player *p)
 	if (_patches.gotodepot) {
 		idx = 0;
 		order.MakeGoToDepot(GetDepotByTile(_players_ainew[p->index].depot_tile)->index, true);
-		AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+		AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	idx = 0;
 	order.MakeGoToStation(GetStationIndex(_players_ainew[p->index].to_tile));
 	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].to_deliver)
 		order.flags |= OFB_FULL_LOAD;
-	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 
 	idx = 0;
 	order.MakeGoToStation(GetStationIndex(_players_ainew[p->index].from_tile));
 	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].from_deliver)
 		order.flags |= OFB_FULL_LOAD;
-	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 
 	// Start the engines!
 	_players_ainew[p->index].state = AI_STATE_START_VEHICLE;

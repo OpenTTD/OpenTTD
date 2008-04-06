@@ -318,7 +318,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	if (bak->order == NULL) return;
 
 	for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
-		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
+		if (!DoCommandP(0, v->index + (i << 16), bak->order[i].Pack(), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}
 }
@@ -2558,7 +2558,7 @@ handle_nocash:
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OFB_FULL_LOAD;
 
-		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_TRAIN);
@@ -3293,7 +3293,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OFB_FULL_LOAD;
 
-		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
@@ -3572,7 +3572,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 		if (_players_ai[p->index].num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OFB_FULL_LOAD;
 
-		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);

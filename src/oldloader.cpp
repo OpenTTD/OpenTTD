@@ -504,7 +504,7 @@ static bool LoadOldOrder(LoadgameState *ls, int num)
 {
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;
 
-	(new (num) Order())->AssignOrder(UnpackOldOrder(_old_order));
+	new (num) Order(UnpackOldOrder(_old_order));
 
 	/* Relink the orders to eachother (in TTD(Patch) the orders for one
 	vehicle are behind eachother, with an invalid order (OT_NOTHING) as indication that
