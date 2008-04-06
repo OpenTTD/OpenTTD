@@ -91,22 +91,22 @@ static int GetOrderFromOrderWndPt(Window *w, int y, const Vehicle *v)
 	return (sel <= v->num_orders && sel >= 0) ? sel : INVALID_ORDER;
 }
 
-static StringID StationOrderStrings[] = {
-	STR_8806_GO_TO,
-	STR_GO_TO_TRANSFER,
-	STR_8807_GO_TO_UNLOAD,
-	STR_GO_TO_TRANSFER_UNLOAD,
-	STR_8808_GO_TO_LOAD,
-	STR_GO_TO_TRANSFER_LOAD,
-	STR_NULL,
-	STR_NULL,
-	STR_880A_GO_NON_STOP_TO,
-	STR_GO_TO_NON_STOP_TRANSFER,
-	STR_880B_GO_NON_STOP_TO_UNLOAD,
-	STR_GO_TO_NON_STOP_TRANSFER_UNLOAD,
-	STR_880C_GO_NON_STOP_TO_LOAD,
-	STR_GO_TO_NON_STOP_TRANSFER_LOAD,
-	STR_NULL
+static StringID _station_order_strings[][7] = {
+	{
+		STR_8806_GO_TO,
+		STR_GO_TO_TRANSFER,
+		STR_8807_GO_TO_UNLOAD,
+		STR_GO_TO_TRANSFER_UNLOAD,
+		STR_8808_GO_TO_LOAD,
+		STR_GO_TO_TRANSFER_LOAD
+	}, {
+		STR_880A_GO_NON_STOP_TO,
+		STR_GO_TO_NON_STOP_TRANSFER,
+		STR_880B_GO_NON_STOP_TO_UNLOAD,
+		STR_GO_TO_NON_STOP_TRANSFER_UNLOAD,
+		STR_880C_GO_NON_STOP_TO_LOAD,
+		STR_GO_TO_NON_STOP_TRANSFER_LOAD
+	}
 };
 
 static void DrawOrdersWindow(Window *w)
@@ -201,7 +201,7 @@ static void DrawOrdersWindow(Window *w)
 					break;
 
 				case OT_GOTO_STATION:
-					SetDParam(1, StationOrderStrings[order->flags]);
+					SetDParam(1, _station_order_strings[!!order->GetNonStopType()][order->GetLoadType() | order->GetUnloadType()]);
 					SetDParam(2, order->GetDestination());
 					break;
 

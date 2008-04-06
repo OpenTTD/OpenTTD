@@ -302,25 +302,18 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				default: return CMD_ERROR;
 			}
 
+			if (new_order.GetNonStopType() != OFB_NO_NON_STOP && v->type != VEH_TRAIN) return CMD_ERROR;
+
 			/* Order flags can be any of the following for stations:
 			 * [full-load | unload] [+ transfer] [+ non-stop]
 			 * non-stop orders (if any) are only valid for trains */
-			switch (new_order.flags) {
+			switch (new_order.GetLoadType() | new_order.GetUnloadType()) {
 				case 0:
 				case OFB_FULL_LOAD:
 				case OFB_FULL_LOAD | OFB_TRANSFER:
 				case OFB_UNLOAD:
 				case OFB_UNLOAD | OFB_TRANSFER:
 				case OFB_TRANSFER:
-					break;
-
-				case OFB_NON_STOP:
-				case OFB_NON_STOP | OFB_FULL_LOAD:
-				case OFB_NON_STOP | OFB_FULL_LOAD | OFB_TRANSFER:
-				case OFB_NON_STOP | OFB_UNLOAD:
-				case OFB_NON_STOP | OFB_UNLOAD | OFB_TRANSFER:
-				case OFB_NON_STOP | OFB_TRANSFER:
-					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -364,17 +357,14 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
+			if (new_order.GetNonStopType() != OFB_NO_NON_STOP && v->type != VEH_TRAIN) return CMD_ERROR;
+
 			/* Order flags can be any of the following for depots:
 			 * order [+ halt] [+ non-stop]
 			 * non-stop orders (if any) are only valid for trains */
-			switch (new_order.flags) {
+			switch (new_order.GetDepotOrderType() | new_order.GetDepotActionType()) {
 				case OFB_PART_OF_ORDERS:
 				case OFB_PART_OF_ORDERS | OFB_HALT_IN_DEPOT:
-					break;
-
-				case OFB_NON_STOP | OFB_PART_OF_ORDERS:
-				case OFB_NON_STOP | OFB_PART_OF_ORDERS | OFB_HALT_IN_DEPOT:
-					if (v->type != VEH_TRAIN) return CMD_ERROR;
 					break;
 
 				default: return CMD_ERROR;
@@ -768,21 +758,25 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		switch (p2) {
-		case OF_FULL_LOAD:
-			ToggleBit(order->flags, OF_FULL_LOAD);
-			if (!order->IsType(OT_GOTO_DEPOT)) ClrBit(order->flags, OF_UNLOAD);
-			break;
-		case OF_UNLOAD:
-			ToggleBit(order->flags, OF_UNLOAD);
-			ClrBit(order->flags, OF_FULL_LOAD);
-			break;
-		case OF_NON_STOP:
-			ToggleBit(order->flags, OF_NON_STOP);
-			break;
-		case OF_TRANSFER:
-			ToggleBit(order->flags, OF_TRANSFER);
-			break;
-		default: NOT_REACHED();
+			case OF_FULL_LOAD:
+				if (order->IsType(OT_GOTO_DEPOT)) {
+					order->SetDepotOrderType(order->GetDepotOrderType() ^ OFB_SERVICE_IF_NEEDED);
+				} else {
+					order->SetLoadType(order->GetUnloadType() ^ OFB_FULL_LOAD);
+					order->SetUnloadType(order->GetUnloadType() & ~OFB_UNLOAD);
+				}
+				break;
+			case OF_UNLOAD:
+				order->SetUnloadType(order->GetUnloadType() ^ OFB_UNLOAD);
+				order->SetLoadType(0);
+				break;
+			case OF_NON_STOP:
+				order->SetNonStopType(order->GetNonStopType() ^ OFB_NON_STOP);
+				break;
+			case OF_TRANSFER:
+				order->SetUnloadType(order->GetUnloadType() ^ OFB_TRANSFER);
+				break;
+			default: NOT_REACHED();
 		}
 
 		/* Update the windows and full load flags, also for vehicles that share the same order list */

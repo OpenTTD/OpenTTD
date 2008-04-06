@@ -28,6 +28,7 @@ private:
 	friend const struct SaveLoad *GetOrderDescription();                 ///< Saving and loading of orders.
 
 	OrderTypeByte type;   ///< The type of order
+	uint8 flags;          ///< 'Sub'type of order
 	DestinationID dest;   ///< The destination of the order.
 
 	CargoID refit_cargo;  ///< Refit CargoID
@@ -35,8 +36,6 @@ private:
 
 public:
 	Order *next;          ///< Pointer to next order. If NULL, end of list
-
-	uint8 flags;          ///< 'Sub'type of order
 
 	uint16 wait_time;    ///< How long in ticks to wait at the destination.
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
