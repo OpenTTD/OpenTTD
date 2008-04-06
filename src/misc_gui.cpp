@@ -763,12 +763,12 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 }
 
 
-static int DrawStationCoverageText(const AcceptedCargo accepts,
-	int str_x, int str_y, StationCoverageType sct)
+static int DrawStationCoverageText(const AcceptedCargo cargo,
+	int str_x, int str_y, StationCoverageType sct, bool supplies)
 {
 	bool first = true;
 
-	char *b = InlineString(_userstring, STR_000D_ACCEPTS);
+	char *b = InlineString(_userstring, supplies ? STR_SUPPLIES : STR_000D_ACCEPTS);
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		if (b >= lastof(_userstring) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
@@ -778,7 +778,7 @@ static int DrawStationCoverageText(const AcceptedCargo accepts,
 			case SCT_ALL: break;
 			default: NOT_REACHED();
 		}
-		if (accepts[i] >= 8) {
+		if (cargo[i] >= (supplies ? 1 : 8)) {
 			if (first) {
 				first = false;
 			} else {
@@ -801,13 +801,26 @@ static int DrawStationCoverageText(const AcceptedCargo accepts,
 	return DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 
-int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad)
+/**
+ * Calculates and draws the accepted or supplied cargo around the selected tile(s)
+ * @param sx x position where the string is to be drawn
+ * @param sy y position where the string is to be drawn
+ * @param sct which type of cargo is to be displayed (passengers/non-passengers)
+ * @param rad radius around selected tile(s) to be searched
+ * @param supplies if supplied cargos should be drawn, else accepted cargos
+ * @return Returns the y value below the string that was drawn
+ */
+int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad, bool supplies)
 {
 	TileIndex tile = TileVirtXY(_thd.pos.x, _thd.pos.y);
-	AcceptedCargo accepts;
+	AcceptedCargo cargo;
 	if (tile < MapSize()) {
-		GetAcceptanceAroundTiles(accepts, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
-		return sy + DrawStationCoverageText(accepts, sx, sy, sct);
+		if (supplies) {
+			GetProductionAroundTiles(cargo, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
+		} else {
+			GetAcceptanceAroundTiles(cargo, tile, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE , rad);
+		}
+		return sy + DrawStationCoverageText(cargo, sx, sy, sct, supplies);
 	}
 
 	return sy;

@@ -465,12 +465,13 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 
 	for (int yc = y1; yc != y2; yc++) {
 		for (int xc = x1; xc != x2; xc++) {
-			if (!(IsInsideBS(xc, x, w) && IsInsideBS(yc, y, h))) {
-				TileIndex tile = TileXY(xc, yc);
+			TileIndex tile = TileXY(xc, yc);
 
+			if (!IsTileType(tile, MP_STATION)) {
 				GetProducedCargoProc *gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
-					CargoID cargos[2] = { CT_INVALID, CT_INVALID };
+					CargoID cargos[256]; // Required for CBID_HOUSE_PRODUCE_CARGO.
+					memset(cargos, CT_INVALID, 256);
 
 					gpc(tile, cargos);
 					for (uint i = 0; i < lengthof(cargos); ++i) {

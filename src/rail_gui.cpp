@@ -936,8 +936,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(74, 101 + y_offset, STR_3004_PLATFORM_LENGTH, TC_FROMSTRING);
 		DrawStringCentered(74, 141 + y_offset, STR_3066_COVERAGE_AREA_HIGHLIGHT, TC_FROMSTRING);
 
-		int text_end = DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad) + 4;
-		if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
+		int text_end = DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad, false);
+		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
+		if (text_end != w->widget[BRSW_BACKGROUND].bottom) {
 			SetWindowDirty(w);
 			ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
 			SetWindowDirty(w);

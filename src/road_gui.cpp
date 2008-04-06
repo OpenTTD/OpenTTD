@@ -882,7 +882,10 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 			int text_end = DrawStationCoverageAreaText(2, 146,
 				(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-				3) + 4;
+				3, false);
+			text_end = DrawStationCoverageAreaText(2, text_end + 4,
+				(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
+				3, true) + 4;
 			if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
 				SetWindowDirty(w);
 				ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);

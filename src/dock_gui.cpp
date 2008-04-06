@@ -254,8 +254,9 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 			SetTileSelectSize(1, 1);
 		}
 
-		int text_end = DrawStationCoverageAreaText(4, 50, SCT_ALL, rad) + 4;
-		if (text_end > w->widget[2].bottom) {
+		int text_end = DrawStationCoverageAreaText(4, 50, SCT_ALL, rad, false);
+		text_end = DrawStationCoverageAreaText(4, text_end + 4, SCT_ALL, rad, true) + 4;
+		if (text_end != w->widget[2].bottom) {
 			SetWindowDirty(w);
 			ResizeWindowForWidget(w, 2, 0, text_end - w->widget[2].bottom);
 			SetWindowDirty(w);

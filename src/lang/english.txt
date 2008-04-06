@@ -18,6 +18,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} en-route from {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepts: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepts: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Supplies: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passengers
 STR_0010_COAL                                                   :Coal
