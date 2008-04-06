@@ -49,50 +49,82 @@ public:
 	 * @param ret the command to add the cost of.
 	 * @return this class.
 	 */
-	CommandCost AddCost(CommandCost ret);
+	CommandCost AddCost(CommandCost ret)
+	{
+		this->AddCost(ret.cost);
+		if (this->success && !ret.success) {
+			this->message = ret.message;
+			this->success = false;
+		}
+		return *this;
+	}
 
 	/**
 	 * Adds the given cost to the cost of the command.
 	 * @param cost the cost to add
 	 * @return this class.
 	 */
-	CommandCost AddCost(Money cost);
+	CommandCost AddCost(Money cost)
+	{
+		this->cost += cost;
+		return *this;
+	}
 
 	/**
 	 * Multiplies the cost of the command by the given factor.
 	 * @param cost factor to multiply the costs with
 	 * @return this class
 	 */
-	CommandCost MultiplyCost(int factor);
+	CommandCost MultiplyCost(int factor)
+	{
+		this->cost *= factor;
+		return *this;
+	}
 
 	/**
 	 * The costs as made up to this moment
 	 * @return the costs
 	 */
-	Money GetCost() const;
+	Money GetCost() const
+	{
+		return this->cost;
+	}
 
 	/**
 	 * The expense type of the cost
 	 * @return the expense type
 	 */
-	ExpensesType GetExpensesType() const;
+	ExpensesType GetExpensesType() const
+	{
+		return this->expense_type;
+	}
 
 	/**
 	 * Sets the global error message *if* this class has one.
 	 */
-	void SetGlobalErrorMessage() const;
+	void SetGlobalErrorMessage() const
+	{
+		extern StringID _error_message;
+		if (this->message != INVALID_STRING_ID) _error_message = this->message;
+	}
 
 	/**
 	 * Did this command succeed?
 	 * @return true if and only if it succeeded
 	 */
-	bool Succeeded() const;
+	bool Succeeded() const
+	{
+		return this->success;
+	}
 
 	/**
 	 * Did this command fail?
 	 * @return true if and only if it failed
 	 */
-	bool Failed() const;
+	bool Failed() const
+	{
+		return !this->success;
+	}
 };
 
 /**
