@@ -155,7 +155,7 @@ static void DrawOrdersWindow(Window *w)
 	if (order != NULL) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
-				if (!GetStation(order->dest)->IsBuoy()) break;
+				if (!GetStation(order->GetDestination())->IsBuoy()) break;
 				/* Fall-through */
 
 			case OT_GOTO_WAYPOINT:
@@ -197,12 +197,12 @@ static void DrawOrdersWindow(Window *w)
 			switch (order->GetType()) {
 				case OT_DUMMY:
 					SetDParam(1, STR_INVALID_ORDER);
-					SetDParam(2, order->dest);
+					SetDParam(2, order->GetDestination());
 					break;
 
 				case OT_GOTO_STATION:
 					SetDParam(1, StationOrderStrings[order->flags]);
-					SetDParam(2, order->dest);
+					SetDParam(2, order->GetDestination());
 					break;
 
 				case OT_GOTO_DEPOT: {
@@ -210,9 +210,9 @@ static void DrawOrdersWindow(Window *w)
 
 					if (v->type == VEH_AIRCRAFT) {
 						s = STR_GO_TO_AIRPORT_HANGAR;
-						SetDParam(2, order->dest);
+						SetDParam(2, order->GetDestination());
 					} else {
-						SetDParam(2, GetDepot(order->dest)->town_index);
+						SetDParam(2, GetDepot(order->GetDestination())->town_index);
 
 						switch (v->type) {
 							case VEH_TRAIN: s = (order->flags & OFB_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
@@ -236,7 +236,7 @@ static void DrawOrdersWindow(Window *w)
 
 				case OT_GOTO_WAYPOINT:
 					SetDParam(1, (order->flags & OFB_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-					SetDParam(2, order->dest);
+					SetDParam(2, order->GetDestination());
 					break;
 
 				default: break;
@@ -335,7 +335,6 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 	// not found
 	order.Free();
-	order.dest = INVALID_STATION;
 	return order;
 }
 
@@ -563,9 +562,9 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				TileIndex xy;
 
 				switch (ord->GetType()) {
-					case OT_GOTO_STATION:  xy = GetStation(ord->dest)->xy ; break;
-					case OT_GOTO_DEPOT:    xy = (v->type == VEH_AIRCRAFT) ?  GetStation(ord->dest)->xy : GetDepot(ord->dest)->xy;    break;
-					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->dest)->xy; break;
+					case OT_GOTO_STATION:  xy = GetStation(ord->GetDestination())->xy ; break;
+					case OT_GOTO_DEPOT:    xy = (v->type == VEH_AIRCRAFT) ?  GetStation(ord->GetDestination())->xy : GetDepot(ord->GetDestination())->xy;    break;
+					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->GetDestination())->xy; break;
 					default:               xy = 0; break;
 				}
 

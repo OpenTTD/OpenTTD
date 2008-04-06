@@ -553,7 +553,7 @@ static bool AiNew_CheckVehicleStation(Player *p, Station *st)
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->IsType(OT_GOTO_STATION) && GetStation(order->dest) == st) {
+				if (order->IsType(OT_GOTO_STATION) && GetStation(order->GetDestination()) == st) {
 					// This vehicle has this city in its list
 					count++;
 				}

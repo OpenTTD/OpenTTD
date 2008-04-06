@@ -2033,7 +2033,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->IsType(OT_GOTO_STATION) && order->dest == index) {
+						if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == index) {
 							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 50);
 							(*sort_list)[n++] = v;
 							break;
@@ -2077,7 +2077,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->IsType(OT_GOTO_DEPOT) && order->dest == index) {
+						if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == index) {
 							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 25);
 							(*sort_list)[n++] = v;
 							break;
@@ -3131,7 +3131,7 @@ void Vehicle::BeginLoading()
 	assert(IsTileType(tile, MP_STATION) || type == VEH_SHIP);
 
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
-			this->current_order.dest == this->last_station_visited) {
+			this->current_order.GetDestination() == this->last_station_visited) {
 		/* Arriving at the ordered station.
 		 * Keep the load/unload flags, as we (obviously) still need them. */
 		this->current_order.flags &= OFB_FULL_LOAD | OFB_UNLOAD | OFB_TRANSFER;

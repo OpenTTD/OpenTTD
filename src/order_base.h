@@ -28,6 +28,7 @@ private:
 	friend const struct SaveLoad *GetOrderDescription();                 ///< Saving and loading of orders.
 
 	OrderTypeByte type;   ///< The type of order
+	DestinationID dest;   ///< The destination of the order.
 
 	CargoID refit_cargo;  ///< Refit CargoID
 	byte refit_subtype;   ///< Refit subtype
@@ -36,7 +37,6 @@ public:
 	Order *next;          ///< Pointer to next order. If NULL, end of list
 
 	uint8  flags;
-	DestinationID dest;   ///< The destionation of the order.
 
 	uint16 wait_time;    ///< How long in ticks to wait at the destination.
 	uint16 travel_time;  ///< How long in ticks the journey to this destination should take.
@@ -116,6 +116,20 @@ public:
 	 * @note do not use on "current_order" vehicle orders!
 	 */
 	void FreeChain();
+
+	/**
+	 * Gets the destination of this order.
+	 * @pre IsType(OT_GOTO_WAYPOINT) || IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
+	 * @return the destination of the order.
+	 */
+	inline DestinationID GetDestination() const { return this->dest; }
+
+	/**
+	 * Sets the destination of this order.
+	 * @param destination the new destination of the order.
+	 * @pre IsType(OT_GOTO_WAYPOINT) || IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
+	 */
+	inline void SetDestination(DestinationID destination) { this->dest = destination; }
 
 	/**
 	 * Is this order a refit order.

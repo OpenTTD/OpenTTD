@@ -206,29 +206,29 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 	v->tick_counter++;
 
-	if (v->current_order.dest < 2) {
+	if (v->current_order.GetDestination() < 2) {
 		if (HasBit(v->tick_counter, 0)) return;
 
 		GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 
 		SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-		if (v->current_order.dest == 1) {
+		if (v->current_order.GetDestination() == 1) {
 			if (++v->age == 38) {
-				v->current_order.dest = 2;
+				v->current_order.SetDestination(2);
 				v->age = 0;
 			}
 
 			if (GB(v->tick_counter, 0, 3) == 0) CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE);
 
-		} else if (v->current_order.dest == 0) {
+		} else if (v->current_order.GetDestination() == 0) {
 			tile = v->tile;
 
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
 					IsAirport(tile) &&
 					IsHumanPlayer(GetTileOwner(tile))) {
-				v->current_order.dest = 1;
+				v->current_order.SetDestination(1);
 				v->age = 0;
 
 				SetDParam(0, GetStationIndex(tile));
@@ -243,7 +243,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest > 2) {
+	if (v->current_order.GetDestination() > 2) {
 		if (++v->age <= 13320) return;
 
 		tile = v->tile;
@@ -284,7 +284,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->age == 350) {
-		v->current_order.dest = 3;
+		v->current_order.SetDestination(3);
 		v->age = 0;
 	}
 
@@ -312,7 +312,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 
 	v->u.disaster.image_override = (HasBit(++v->tick_counter, 3)) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
-	if (v->current_order.dest == 0) {
+	if (v->current_order.GetDestination() == 0) {
 		/* Fly around randomly */
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
@@ -326,7 +326,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 			v->dest_tile = RandomTile();
 			return;
 		}
-		v->current_order.dest = 1;
+		v->current_order.SetDestination(1);
 
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_ROAD && IsHumanPlayer(u->owner)) {
@@ -405,7 +405,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 {
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.dest == 1 && HasBit(v->tick_counter, 2)) ? SPR_F_15_FIRING : 0;
+		(v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? SPR_F_15_FIRING : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -415,7 +415,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest == 2) {
+	if (v->current_order.GetDestination() == 2) {
 		if (GB(v->tick_counter, 0, 2) == 0) {
 			Industry *i = GetIndustry(v->dest_tile);
 			int x = TileX(i->xy) * TILE_SIZE;
@@ -428,13 +428,13 @@ static void DisasterTick_Airplane(Vehicle *v)
 				GB(r, 12, 4),
 				EV_EXPLOSION_SMALL);
 
-			if (++v->age >= 55) v->current_order.dest = 3;
+			if (++v->age >= 55) v->current_order.SetDestination(3);
 		}
-	} else if (v->current_order.dest == 1) {
+	} else if (v->current_order.GetDestination() == 1) {
 		if (++v->age == 112) {
 			Industry *i;
 
-			v->current_order.dest = 2;
+			v->current_order.SetDestination(2);
 			v->age = 0;
 
 			i = GetIndustry(v->dest_tile);
@@ -444,7 +444,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
-	} else if (v->current_order.dest == 0) {
+	} else if (v->current_order.GetDestination() == 0) {
 		int x, y;
 		TileIndex tile;
 		uint ind;
@@ -461,7 +461,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 		v->dest_tile = ind;
 
 		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) {
-			v->current_order.dest = 1;
+			v->current_order.SetDestination(1);
 			v->age = 0;
 		}
 	}
@@ -478,7 +478,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 {
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.dest == 1 && HasBit(v->tick_counter, 2)) ? SPR_AH_64A_FIRING : 0;
+		(v->current_order.GetDestination() == 1 && HasBit(v->tick_counter, 2)) ? SPR_AH_64A_FIRING : 0;
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -488,7 +488,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest == 2) {
+	if (v->current_order.GetDestination() == 2) {
 		if (GB(v->tick_counter, 0, 2) == 0) {
 			Industry *i = GetIndustry(v->dest_tile);
 			int x = TileX(i->xy) * TILE_SIZE;
@@ -501,13 +501,13 @@ static void DisasterTick_Helicopter(Vehicle *v)
 				GB(r, 12, 4),
 				EV_EXPLOSION_SMALL);
 
-			if (++v->age >= 55) v->current_order.dest = 3;
+			if (++v->age >= 55) v->current_order.SetDestination(3);
 		}
-	} else if (v->current_order.dest == 1) {
+	} else if (v->current_order.GetDestination() == 1) {
 		if (++v->age == 112) {
 			Industry *i;
 
-			v->current_order.dest = 2;
+			v->current_order.SetDestination(2);
 			v->age = 0;
 
 			i = GetIndustry(v->dest_tile);
@@ -517,7 +517,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
-	} else if (v->current_order.dest == 0) {
+	} else if (v->current_order.GetDestination() == 0) {
 		int x, y;
 		TileIndex tile;
 		uint ind;
@@ -534,7 +534,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 		v->dest_tile = ind;
 
 		if (GetIndustrySpec(GetIndustry(ind)->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) {
-			v->current_order.dest = 1;
+			v->current_order.SetDestination(1);
 			v->age = 0;
 		}
 	}
@@ -568,7 +568,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 
 	v->tick_counter++;
 
-	if (v->current_order.dest == 1) {
+	if (v->current_order.GetDestination() == 1) {
 		int x = TileX(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		int y = TileY(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		if (Delta(v->x_pos, x) + Delta(v->y_pos, y) >= 8) {
@@ -585,7 +585,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			return;
 		}
 
-		v->current_order.dest = 2;
+		v->current_order.SetDestination(2);
 
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_TRAIN || u->type == VEH_ROAD) {
@@ -618,7 +618,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		u->SetNext(w);
 		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_Big_Ufo_Destroyer_Shadow);
 		w->vehstatus |= VS_SHADOW;
-	} else if (v->current_order.dest == 0) {
+	} else if (v->current_order.GetDestination() == 0) {
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
 		if (Delta(x, v->x_pos) + Delta(y, v->y_pos) >= TILE_SIZE) {
@@ -632,7 +632,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			v->dest_tile = RandomTile();
 			return;
 		}
-		v->current_order.dest = 1;
+		v->current_order.SetDestination(1);
 
 		tile_org = tile = RandomTile();
 		do {
@@ -669,10 +669,10 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest == 0) {
+	if (v->current_order.GetDestination() == 0) {
 		u = GetVehicle(v->u.disaster.big_ufo_destroyer_target);
 		if (Delta(v->x_pos, u->x_pos) > TILE_SIZE) return;
-		v->current_order.dest = 1;
+		v->current_order.SetDestination(1);
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, u);

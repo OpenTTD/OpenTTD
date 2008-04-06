@@ -2342,7 +2342,7 @@ static bool NtpCallbFindStation(TileIndex tile, TrainTrackFollowerData *ttfd, Tr
 static void FillWithStationData(TrainTrackFollowerData* fd, const Vehicle* v)
 {
 	fd->dest_coords = v->dest_tile;
-	fd->station_index = v->current_order.IsType(OT_GOTO_STATION) ? v->current_order.dest : INVALID_STATION;
+	fd->station_index = v->current_order.IsType(OT_GOTO_STATION) ? v->current_order.GetDestination() : INVALID_STATION;
 }
 
 static const byte _initial_tile_subcoord[6][4][3] = {
@@ -2658,7 +2658,6 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 	}
 
 	v->BeginLoading();
-	v->current_order.dest = 0;
 }
 
 static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
@@ -3559,7 +3558,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	const Depot* depot = GetDepotByTile(tfdd.tile);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			v->current_order.dest != depot->index &&
+			v->current_order.GetDestination() != depot->index &&
 			!Chance16(3, 16)) {
 		return;
 	}
@@ -3583,7 +3582,7 @@ void Train::OnNewDay()
 
 		/* update destination */
 		if (this->current_order.IsType(OT_GOTO_STATION)) {
-			TileIndex tile = GetStation(this->current_order.dest)->train_tile;
+			TileIndex tile = GetStation(this->current_order.GetDestination())->train_tile;
 			if (tile != 0) this->dest_tile = tile;
 		}
 

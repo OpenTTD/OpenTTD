@@ -160,7 +160,7 @@ Order UnpackOldOrder(uint16 packed)
 	 * Sanity check
 	 * TTD stores invalid orders as OT_NOTHING with non-zero flags/station
 	 */
-	if (!order.IsValid() && (order.flags != 0 || order.dest != 0)) {
+	if (!order.IsValid() && (order.flags != 0 || order.GetDestination() != 0)) {
 		order.MakeDummy();
 	}
 
@@ -234,8 +234,8 @@ static TileIndex GetOrderLocation(const Order& o)
 {
 	switch (o.GetType()) {
 		default: NOT_REACHED();
-		case OT_GOTO_STATION: return GetStation(o.dest)->xy;
-		case OT_GOTO_DEPOT:   return GetDepot(o.dest)->xy;
+		case OT_GOTO_STATION: return GetStation(o.GetDestination())->xy;
+		case OT_GOTO_DEPOT:   return GetDepot(o.GetDestination())->xy;
 	}
 }
 
@@ -267,10 +267,9 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	 * and has the correct flags if any */
 	switch (new_order.GetType()) {
 		case OT_GOTO_STATION: {
-			const Station *st;
+			if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
 
-			if (!IsValidStationID(new_order.dest)) return CMD_ERROR;
-			st = GetStation(new_order.dest);
+			const Station *st = GetStation(new_order.GetDestination());
 
 			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) {
 				return CMD_ERROR;
@@ -330,10 +329,9 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case OT_GOTO_DEPOT: {
 			if (v->type == VEH_AIRCRAFT) {
-				const Station* st;
+				if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
 
-				if (!IsValidStationID(new_order.dest)) return CMD_ERROR;
-				st = GetStation(new_order.dest);
+				const Station *st = GetStation(new_order.GetDestination());
 
 				if (!CheckOwnership(st->owner) ||
 						!(st->facilities & FACIL_AIRPORT) ||
@@ -342,10 +340,9 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					return CMD_ERROR;
 				}
 			} else {
-				const Depot* dp;
+				if (!IsValidDepotID(new_order.GetDestination())) return CMD_ERROR;
 
-				if (!IsValidDepotID(new_order.dest)) return CMD_ERROR;
-				dp = GetDepot(new_order.dest);
+				const Depot *dp = GetDepot(new_order.GetDestination());
 
 				if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
 
@@ -385,12 +382,11 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case OT_GOTO_WAYPOINT: {
-			const Waypoint* wp;
 
 			if (v->type != VEH_TRAIN) return CMD_ERROR;
 
-			if (!IsValidWaypointID(new_order.dest)) return CMD_ERROR;
-			wp = GetWaypoint(new_order.dest);
+			if (!IsValidWaypointID(new_order.GetDestination())) return CMD_ERROR;
+			const Waypoint *wp = GetWaypoint(new_order.GetDestination());
 
 			if (!CheckOwnership(GetTileOwner(wp->xy))) return CMD_ERROR;
 
@@ -769,7 +765,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (sel_ord >= v->num_orders) return CMD_ERROR;
 
 	order = GetVehicleOrder(v, sel_ord);
-	if ((!order->IsType(OT_GOTO_STATION)  || GetStation(order->dest)->IsBuoy()) &&
+	if ((!order->IsType(OT_GOTO_STATION)  || GetStation(order->GetDestination())->IsBuoy()) &&
 			(!order->IsType(OT_GOTO_DEPOT)    || p2 == OF_UNLOAD) &&
 			(!order->IsType(OT_GOTO_WAYPOINT) || p2 != OF_NON_STOP)) {
 		return CMD_ERROR;
@@ -909,7 +905,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				FOR_VEHICLE_ORDERS(src, order) {
 					if (order->IsType(OT_GOTO_STATION)) {
-						const Station *st = GetStation(order->dest);
+						const Station *st = GetStation(order->GetDestination());
 						if (IsCargoInClass(dst->cargo_type, CC_PASSENGERS)) {
 							if (st->bus_stops != NULL) required_dst = st->bus_stops->xy;
 						} else {
@@ -1190,7 +1186,7 @@ void CheckOrders(const Vehicle* v)
 			}
 			/* Does station have a load-bay for this vehicle? */
 			if (order->IsType(OT_GOTO_STATION)) {
-				const Station* st = GetStation(order->dest);
+				const Station* st = GetStation(order->GetDestination());
 				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
@@ -1251,7 +1247,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 
 		order = &v->current_order;
 		if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
-				v->current_order.dest == destination) {
+				v->current_order.GetDestination() == destination) {
 			order->MakeDummy();
 			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		}
@@ -1260,7 +1256,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
 			if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
-					order->dest == destination) {
+					order->GetDestination() == destination) {
 				order->MakeDummy();
 				invalidate = true;
 			}
@@ -1414,8 +1410,8 @@ bool ProcessOrders(Vehicle *v)
 	if (_patches.new_nonstop &&
 			v->current_order.flags & OFB_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
-			v->current_order.dest == GetStationIndex(v->tile)) {
-		v->last_station_visited = v->current_order.dest;
+			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
+		v->last_station_visited = v->current_order.GetDestination();
 		UpdateVehicleTimetable(v, true);
 		v->cur_order_index++;
 	}
@@ -1442,7 +1438,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* If it is unchanged, keep it. */
 	if (order->Equals(v->current_order) &&
-			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->dest)->dock_tile != 0)) {
+			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->GetDestination())->dock_tile != 0)) {
 		return false;
 	}
 
@@ -1466,15 +1462,15 @@ bool ProcessOrders(Vehicle *v)
 
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
-			v->dest_tile = v->GetOrderStationLocation(order->dest);
+			v->dest_tile = v->GetOrderStationLocation(order->GetDestination());
 			break;
 
 		case OT_GOTO_DEPOT:
-			if (v->type != VEH_AIRCRAFT) v->dest_tile = GetDepot(order->dest)->xy;
+			if (v->type != VEH_AIRCRAFT) v->dest_tile = GetDepot(order->GetDestination())->xy;
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			v->dest_tile = GetWaypoint(order->dest)->xy;
+			v->dest_tile = GetWaypoint(order->GetDestination())->xy;
 			break;
 
 		default:

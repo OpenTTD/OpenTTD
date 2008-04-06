@@ -918,9 +918,9 @@ void DrawSmallOrderList(const Vehicle *v, int x, int y)
 		sel--;
 
 		if (order->IsType(OT_GOTO_STATION)) {
-			if (v->type == VEH_SHIP && GetStation(order->dest)->IsBuoy()) continue;
+			if (v->type == VEH_SHIP && GetStation(order->GetDestination())->IsBuoy()) continue;
 
-			SetDParam(0, order->dest);
+			SetDParam(0, order->GetDestination());
 			DrawString(x, y, STR_A036, TC_FROMSTRING);
 
 			y += 6;
@@ -1954,7 +1954,7 @@ static void DrawVehicleViewWindow(Window *w)
 	} else { // vehicle is in a "normal" state, show current order
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION: {
-				SetDParam(0, v->current_order.dest);
+				SetDParam(0, v->current_order.GetDestination());
 				SetDParam(1, v->GetDisplaySpeed());
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
@@ -1962,10 +1962,10 @@ static void DrawVehicleViewWindow(Window *w)
 			case OT_GOTO_DEPOT: {
 				if (v->type == VEH_AIRCRAFT) {
 					/* Aircrafts always go to a station, even if you say depot */
-					SetDParam(0, v->current_order.dest);
+					SetDParam(0, v->current_order.GetDestination());
 					SetDParam(1, v->GetDisplaySpeed());
 				} else {
-					Depot *depot = GetDepot(v->current_order.dest);
+					Depot *depot = GetDepot(v->current_order.GetDestination());
 					SetDParam(0, depot->town_index);
 					SetDParam(1, v->GetDisplaySpeed());
 				}
@@ -1982,7 +1982,7 @@ static void DrawVehicleViewWindow(Window *w)
 
 			case OT_GOTO_WAYPOINT: {
 				assert(v->type == VEH_TRAIN);
-				SetDParam(0, v->current_order.dest);
+				SetDParam(0, v->current_order.GetDestination());
 				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
 				SetDParam(1, v->GetDisplaySpeed());
 				break;

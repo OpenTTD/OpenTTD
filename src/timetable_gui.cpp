@@ -120,7 +120,7 @@ static void DrawTimetableWindow(Window *w)
 
 				case OT_GOTO_STATION:
 					SetDParam(0, (order->flags & OFB_NON_STOP) ? STR_880A_GO_NON_STOP_TO : STR_8806_GO_TO);
-					SetDParam(1, order->dest);
+					SetDParam(1, order->GetDestination());
 
 					if (order->wait_time > 0) {
 						SetDParam(2, STR_TIMETABLE_STAY_FOR);
@@ -134,9 +134,9 @@ static void DrawTimetableWindow(Window *w)
 
 					if (v->type == VEH_AIRCRAFT) {
 						string = STR_GO_TO_AIRPORT_HANGAR;
-						SetDParam(1, order->dest);
+						SetDParam(1, order->GetDestination());
 					} else {
-						SetDParam(1, GetDepot(order->dest)->town_index);
+						SetDParam(1, GetDepot(order->GetDestination())->town_index);
 
 						switch (v->type) {
 							case VEH_TRAIN: string = (order->flags & OFB_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
@@ -153,7 +153,7 @@ static void DrawTimetableWindow(Window *w)
 
 				case OT_GOTO_WAYPOINT:
 					SetDParam(0, (order->flags & OFB_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-					SetDParam(1, order->dest);
+					SetDParam(1, order->GetDestination());
 					break;
 
 				default: break;

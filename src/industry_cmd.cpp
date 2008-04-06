@@ -1969,7 +1969,7 @@ int WhoCanServiceIndustry(Industry* ind)
 		FOR_VEHICLE_ORDERS(v, o) {
 			if (o->IsType(OT_GOTO_STATION) && !HasBit(o->flags, OF_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
-				Station *st = GetStation(o->dest);
+				Station *st = GetStation(o->GetDestination());
 				if (!st->IsValid()) continue;
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */

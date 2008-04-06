@@ -2305,7 +2305,7 @@ bool AfterLoadGame()
 		/* Update go to buoy orders because they are just waypoints */
 		Order *order;
 		FOR_ALL_ORDERS(order) {
-			if (order->IsType(OT_GOTO_STATION) && GetStation(order->dest)->IsBuoy()) {
+			if (order->IsType(OT_GOTO_STATION) && GetStation(order->GetDestination())->IsBuoy()) {
 				order->flags = 0;
 			}
 		}

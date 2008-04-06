@@ -1743,7 +1743,7 @@ again:
 	if (IsRoadVehFront(v) && ((IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
 			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
 			(IsInsideMM(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
-			v->current_order.dest == GetStationIndex(v->tile) &&
+			v->current_order.GetDestination() == GetStationIndex(v->tile) &&
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
@@ -1820,9 +1820,9 @@ again:
 			if (!v->current_order.IsType(OT_GOTO_STATION)) {
 				DEBUG(ms, 2, " current order type (%d) is not OT_GOTO_STATION", v->current_order.GetType());
 			} else {
-				if (v->current_order.dest != st->index)
+				if (v->current_order.GetDestination() != st->index)
 					DEBUG(ms, 2, " current station %d is not target station in current_order.station (%d)",
-							st->index, v->current_order.dest);
+							st->index, v->current_order.GetDestination());
 			}
 
 			DEBUG(ms, 2, " force a slot clearing");
@@ -1963,7 +1963,7 @@ void RoadVehicle::OnNewDay()
 
 	/* update destination */
 	if (!(this->vehstatus & VS_STOPPED) && this->current_order.IsType(OT_GOTO_STATION) && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
-		Station *st = GetStation(this->current_order.dest);
+		Station *st = GetStation(this->current_order.GetDestination());
 		RoadStop *rs = st->GetPrimaryRoadStop(this);
 		RoadStop *best = NULL;
 

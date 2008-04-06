@@ -705,7 +705,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 		return;
 	}
 
-	const Station *st = GetStation(v->current_order.dest);
+	const Station *st = GetStation(v->current_order.GetDestination());
 	/* only goto depot if the target airport has terminals (eg. it is airport) */
 	if (st->IsValid() && st->airport_tile != 0 && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
@@ -1054,7 +1054,7 @@ static bool AircraftController(Vehicle *v)
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->u.air.pos >= afc->nofelements) {
 			v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, afc);
-		} else if (v->u.air.targetairport != v->current_order.dest) {
+		} else if (v->u.air.targetairport != v->current_order.GetDestination()) {
 			/* If not possible, just get out of here fast */
 			v->u.air.state = FLYING;
 			UpdateAircraftCache(v);
@@ -1501,7 +1501,7 @@ static void AircraftNextAirportPos_and_Order(Vehicle *v)
 {
 	if (v->current_order.IsType(OT_GOTO_STATION) ||
 			v->current_order.IsType(OT_GOTO_DEPOT))
-		v->u.air.targetairport = v->current_order.dest;
+		v->u.air.targetairport = v->current_order.GetDestination();
 
 	const AirportFTAClass *apc = GetStation(v->u.air.targetairport)->Airport();
 	v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, apc);
@@ -1610,7 +1610,7 @@ static void AircraftEventHandler_InHangar(Vehicle *v, const AirportFTAClass *apc
 	if (AirportHasBlock(v, &apc->layout[v->u.air.pos], apc)) return;
 
 	/* We are already at the target airport, we need to find a terminal */
-	if (v->current_order.dest == v->u.air.targetairport) {
+	if (v->current_order.GetDestination() == v->u.air.targetairport) {
 		/* FindFreeTerminal:
 		 * 1. Find a free terminal, 2. Occupy it, 3. Set the vehicle's state to that terminal */
 		if (v->subtype == AIR_HELICOPTER) {
@@ -1660,7 +1660,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 			v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 			break;
 		case OT_GOTO_DEPOT:   // visit hangar for serivicing, sale, etc.
-			if (v->current_order.dest == v->u.air.targetairport) {
+			if (v->current_order.GetDestination() == v->u.air.targetairport) {
 				v->u.air.state = HANGAR;
 			} else {
 				v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;

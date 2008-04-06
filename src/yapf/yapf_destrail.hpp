@@ -88,16 +88,16 @@ public:
 	{
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:
-				m_destTile = CalcStationCenterTile(v->current_order.dest);
-				m_dest_station_id = v->current_order.dest;
+				m_destTile = CalcStationCenterTile(v->current_order.GetDestination());
+				m_dest_station_id = v->current_order.GetDestination();
 				m_destTrackdirs = INVALID_TRACKDIR_BIT;
 				break;
 
 			case OT_GOTO_WAYPOINT: {
-				Waypoint *wp = GetWaypoint(v->current_order.dest);
+				Waypoint *wp = GetWaypoint(v->current_order.GetDestination());
 				if (wp == NULL) {
 					/* Invalid waypoint in orders! */
-					DEBUG(yapf, 0, "Invalid waypoint in orders == 0x%04X (train %d, player %d)", v->current_order.dest, v->unitnumber, (PlayerID)v->owner);
+					DEBUG(yapf, 0, "Invalid waypoint in orders == 0x%04X (train %d, player %d)", v->current_order.GetDestination(), v->unitnumber, (PlayerID)v->owner);
 					break;
 				}
 				m_destTile = wp->xy;

@@ -645,10 +645,10 @@ static void ShipController(Vehicle *v)
 								return;
 							}
 						} else if (v->current_order.IsType(OT_GOTO_STATION)) {
-							v->last_station_visited = v->current_order.dest;
+							v->last_station_visited = v->current_order.GetDestination();
 
 							/* Process station in the orderlist. */
-							Station *st = GetStation(v->current_order.dest);
+							Station *st = GetStation(v->current_order.GetDestination());
 							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
 								ShipArrivesAt(v, st);
 								v->BeginLoading();

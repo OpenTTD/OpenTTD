@@ -981,9 +981,9 @@ void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v)
 	 * So only for train orders to stations we fill fstd->station_index, for all
 	 * others only dest_coords */
 	if (v->current_order.IsType(OT_GOTO_STATION) && v->type == VEH_TRAIN) {
-		fstd->station_index = v->current_order.dest;
+		fstd->station_index = v->current_order.GetDestination();
 		/* Let's take the closest tile of the station as our target for trains */
-		fstd->dest_coords = CalcClosestStationTile(v->current_order.dest, v->tile);
+		fstd->dest_coords = CalcClosestStationTile(fstd->station_index, v->tile);
 	} else {
 		fstd->dest_coords = v->dest_tile;
 		fstd->station_index = INVALID_STATION;

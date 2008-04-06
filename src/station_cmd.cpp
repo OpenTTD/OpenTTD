@@ -1898,7 +1898,7 @@ bool HasStationInUse(StationID station, PlayerID player)
 		if (player == INVALID_PLAYER || v->owner == player) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->IsType(OT_GOTO_STATION) && order->dest == station) {
+				if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == station) {
 					return true;
 				}
 			}
@@ -2437,7 +2437,7 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 
 					/* Check if the vehicle is stopping at this road stop */
 					if (GetRoadStopType(tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
-							v->current_order.dest == GetStationIndex(tile)) {
+							v->current_order.GetDestination() == GetStationIndex(tile)) {
 						SetBit(v->u.road.state, RVS_IS_STOPPING);
 						rs->AllocateDriveThroughBay(side);
 					}

@@ -263,8 +263,8 @@ static EngineID AiChooseAircraftToReplaceWith(const Player* p, const Vehicle* v)
 
 	FOR_VEHICLE_ORDERS(v, o) {
 		if (!o->IsValid()) continue;
-		if (!IsValidStationID(o->dest)) continue;
-		const Station *st = GetStation(o->dest);
+		if (!IsValidStationID(o->GetDestination())) continue;
+		const Station *st = GetStation(o->GetDestination());
 		if (!(st->facilities & FACIL_AIRPORT)) continue;
 
 		AirportFTAClass::Flags flags = st->Airport()->flags;
@@ -3662,7 +3662,7 @@ static void AiStateRemoveStation(Player *p)
 	byte *in_use = MallocT<byte>(GetMaxStationIndex() + 1);
 	memset(in_use, 0, GetMaxStationIndex() + 1);
 	FOR_ALL_ORDERS(ord) {
-		if (ord->IsType(OT_GOTO_STATION)) in_use[ord->dest] = 1;
+		if (ord->IsType(OT_GOTO_STATION)) in_use[ord->GetDestination()] = 1;
 	}
 
 	// Go through all stations and delete those that aren't in use
