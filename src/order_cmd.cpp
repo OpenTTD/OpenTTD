@@ -146,7 +146,6 @@ Order::Order(uint32 packed)
 	this->flags   = GB(packed,  8,  8);
 	this->dest    = GB(packed, 16, 16);
 	this->next    = NULL;
-	this->index   = 0; // avoid compiler warning
 	this->refit_cargo   = CT_NO_REFIT;
 	this->refit_subtype = 0;
 	this->wait_time     = 0;
