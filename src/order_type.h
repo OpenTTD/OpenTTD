@@ -36,29 +36,31 @@ template <> struct EnumPropsT<OrderType> : MakeEnumPropsT<OrderType, byte, OT_BE
 typedef TinyEnumT<OrderType> OrderTypeByte;
 
 
-/* Order flags -- please use OF instead OF and use HASBIT/SETBIT/CLEARBIT */
+/**
+ * Flags related to the unloading order.
+ */
+enum OrderUnloadFlags {
+	OUF_UNLOAD_IF_POSSIBLE = 0,      ///< Unload all cargo that the station accepts.
+	OUFB_TRANSFER          = 1 << 0, ///< Transfer all cargo onto the platform.
+	OUFB_UNLOAD            = 1 << 1, ///< Force unloading all cargo onto the platform, possibly not getting paid.
+};
 
-/** Order flag masks - these are for direct bit operations */
-enum OrderFlagMasks {
-	//Flags for stations:
-	/** vehicle will transfer cargo (i. e. not deliver to nearby industry/town even if accepted there) */
-	OFB_TRANSFER           = 0x1,
-	/** If OFB_TRANSFER is not set, drop any cargo loaded. If accepted, deliver, otherwise cargo remains at the station.
-      * No new cargo is loaded onto the vehicle whatsoever */
-	OFB_UNLOAD             = 0x2,
-	/** Wait for full load of all vehicles, or of at least one cargo type, depending on patch setting
-	  * @todo make this two different flags */
-	OFB_FULL_LOAD          = 0x4,
+/**
+ * Flags related to the loading order.
+ */
+enum OrderLoadFlags {
+	OLF_LOAD_IF_POSSIBLE = 0,      ///< Load as long as there is cargo that fits in the train.
+	OLFB_FULL_LOAD       = 1 << 2, ///< Full load the complete (or a single cargo) of the consist.
 };
 
 /**
  * Non-stop order flags.
  */
 enum OrderNonStopFlags {
-	ONSF_STOP_EVERYWHERE                  = 0,
-	ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS = 1,
-	ONSF_NO_STOP_AT_DESTINATION_STATION   = 2,
-	ONSF_NO_STOP_AT_ANY_STATION           = 3
+	ONSF_STOP_EVERYWHERE                  = 0, ///< The vehicle will stop at any station it passes and the destination.
+	ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS = 1, ///< The vehicle will not stop at any stations it passes except the destination.
+	ONSF_NO_STOP_AT_DESTINATION_STATION   = 2, ///< The vehicle will stop at any station it passes except the destination.
+	ONSF_NO_STOP_AT_ANY_STATION           = 3, ///< The vehicle will not stop at any stations it passes including the destination.
 };
 
 /**
@@ -78,9 +80,8 @@ enum OrderDepotActionFlags {
 	ODATFB_HALT          = 1 << 2, ///< Service the vehicle and then halt it.
 };
 
-/** Order flags bits - these are for the *BIT macros
- * for descrption of flags, see OrderFlagMasks
- * @see OrderFlagMasks
+/**
+ * Enumeration for the 'flag' to toggle in CmdModifyOrder.
  */
 enum {
 	OF_TRANSFER          = 0,

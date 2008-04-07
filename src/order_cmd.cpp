@@ -322,11 +322,11 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.GetLoadType() | new_order.GetUnloadType()) {
 				case 0:
-				case OFB_FULL_LOAD:
-				case OFB_FULL_LOAD | OFB_TRANSFER:
-				case OFB_UNLOAD:
-				case OFB_UNLOAD | OFB_TRANSFER:
-				case OFB_TRANSFER:
+				case OLFB_FULL_LOAD:
+				case OLFB_FULL_LOAD | OUFB_TRANSFER:
+				case OUFB_UNLOAD:
+				case OUFB_UNLOAD | OUFB_TRANSFER:
+				case OUFB_TRANSFER:
 					break;
 
 				default: return CMD_ERROR;
@@ -766,19 +766,19 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (order->IsType(OT_GOTO_DEPOT)) {
 					order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() ^ ODTFB_SERVICE));
 				} else {
-					order->SetLoadType(order->GetLoadType() ^ OFB_FULL_LOAD);
-					order->SetUnloadType(order->GetUnloadType() & ~OFB_UNLOAD);
+					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() ^ OLFB_FULL_LOAD));
+					order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_UNLOAD));
 				}
 				break;
 			case OF_UNLOAD:
-				order->SetUnloadType(order->GetUnloadType() ^ OFB_UNLOAD);
-				order->SetLoadType(0);
+				order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() ^ OUFB_UNLOAD));
+				order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 				break;
 			case OF_NON_STOP:
 				order->SetNonStopType(order->GetNonStopType() == ONSF_STOP_EVERYWHERE ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_STOP_EVERYWHERE);
 				break;
 			case OF_TRANSFER:
-				order->SetUnloadType(order->GetUnloadType() ^ OFB_TRANSFER);
+				order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() ^ OUFB_TRANSFER));
 				break;
 			default: NOT_REACHED();
 		}

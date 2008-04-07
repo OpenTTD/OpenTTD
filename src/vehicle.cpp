@@ -2175,7 +2175,7 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 		max += v->cargo_cap;
 		if (v->cargo_cap != 0) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
-			loading |= !HasBit(u->current_order.GetUnloadType(), OF_UNLOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
+			loading |= !(u->current_order.GetUnloadType() & OUFB_UNLOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
 		}
 	}

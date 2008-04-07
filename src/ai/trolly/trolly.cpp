@@ -1190,14 +1190,12 @@ static void AiNew_State_GiveOrders(Player *p)
 
 	idx = 0;
 	order.MakeGoToStation(GetStationIndex(_players_ainew[p->index].to_tile));
-	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].to_deliver)
-		order.SetLoadType(OFB_FULL_LOAD);
+	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].to_deliver) order.SetLoadType(OLFB_FULL_LOAD);
 	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 
 	idx = 0;
 	order.MakeGoToStation(GetStationIndex(_players_ainew[p->index].from_tile));
-	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].from_deliver)
-		order.SetLoadType(OFB_FULL_LOAD);
+	if (_players_ainew[p->index].tbt == AI_TRUCK && _players_ainew[p->index].from_deliver) order.SetLoadType(OLFB_FULL_LOAD);
 	AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 
 	// Start the engines!

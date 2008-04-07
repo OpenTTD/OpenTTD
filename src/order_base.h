@@ -161,9 +161,9 @@ public:
 	void SetRefit(CargoID cargo, byte subtype = 0);
 
 	/** How must the consist be loaded? */
-	inline byte GetLoadType() const { return this->flags & OFB_FULL_LOAD; }
+	inline OrderLoadFlags GetLoadType() const { return (OrderLoadFlags)(this->flags & OLFB_FULL_LOAD); }
 	/** How must the consist be unloaded? */
-	inline byte GetUnloadType() const { return GB(this->flags, 0, 2); }
+	inline OrderUnloadFlags GetUnloadType() const { return (OrderUnloadFlags)GB(this->flags, 0, 2); }
 	/** Where must we stop? */
 	OrderNonStopFlags GetNonStopType() const;
 	/** What caused us going to the depot? */
@@ -172,9 +172,9 @@ public:
 	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)this->flags; }
 
 	/** Set how the consist must be loaded. */
-	inline void SetLoadType(byte load_type) { SB(this->flags, 2, 1, !!load_type); }
+	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 2, 1, !!load_type); }
 	/** Set how the consist must be unloaded. */
-	inline void SetUnloadType(byte unload_type) { SB(this->flags, 0, 2, unload_type); }
+	inline void SetUnloadType(OrderUnloadFlags unload_type) { SB(this->flags, 0, 2, unload_type); }
 	/** Set whether we must stop at stations or not. */
 	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
 	/** Set the cause to go to the depot. */

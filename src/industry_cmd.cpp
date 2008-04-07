@@ -1968,13 +1968,13 @@ int WhoCanServiceIndustry(Industry* ind)
 		 */
 		const Order *o;
 		FOR_VEHICLE_ORDERS(v, o) {
-			if (o->IsType(OT_GOTO_STATION) && !HasBit(o->GetUnloadType(), OF_TRANSFER)) {
+			if (o->IsType(OT_GOTO_STATION) && !(o->GetUnloadType() & OUFB_TRANSFER)) {
 				/* Vehicle visits a station to load or unload */
 				Station *st = GetStation(o->GetDestination());
 				if (!st->IsValid()) continue;
 
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
-				if (HasBit(o->GetUnloadType(), OF_UNLOAD) && !c_accepts) break;
+				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
 
 				if (stations.find(st) != stations.end()) {
 					if (v->owner == _local_player) return 2; // Player services industry
