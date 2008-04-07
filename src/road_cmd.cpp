@@ -875,13 +875,14 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 
 			/* Must iterate over the roadtypes in a reverse manner because
 			 * tram tracks must be removed before the road bits. */
-			for (RoadType rt = ROADTYPE_HWAY; rt >= ROADTYPE_ROAD; rt--) {
+			RoadType rt = ROADTYPE_HWAY;
+			do {
 				if (HasBit(rts, rt)) {
 					CommandCost tmp_ret = RemoveRoad(tile, flags, GetCrossingRoadBits(tile), rt, false);
 					if (CmdFailed(tmp_ret)) return tmp_ret;
 					ret.AddCost(tmp_ret);
 				}
-			}
+			} while (rt-- != ROADTYPE_ROAD);
 
 			if (flags & DC_EXEC) {
 				DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
