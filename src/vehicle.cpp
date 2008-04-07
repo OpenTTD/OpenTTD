@@ -3138,12 +3138,12 @@ void Vehicle::BeginLoading()
 		 * necessary to be known for HandleTrainLoading to determine
 		 * whether the train is lost or not; not marking a train lost
 		 * that arrives at random stations is bad. */
-		this->current_order.SetNonStopType(OFB_NON_STOP);
+		this->current_order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 
 		current_order.MakeLoading(true);
 		UpdateVehicleTimetable(this, true);
 	} else {
-		this->current_order.SetNonStopType(OFB_NO_NON_STOP);
+		this->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
 		current_order.MakeLoading(false);
 	}
 
@@ -3165,7 +3165,7 @@ void Vehicle::LeaveStation()
 	assert(current_order.IsType(OT_LOADING));
 
 	/* Only update the timetable if the vehicle was supposed to stop here. */
-	if (current_order.GetNonStopType() != OFB_NO_NON_STOP) UpdateVehicleTimetable(this, false);
+	if (current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
 
 	current_order.MakeLeaveStation();
 	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
@@ -3187,11 +3187,11 @@ void Vehicle::HandleLoading(bool mode)
 
 			this->PlayLeaveStationSound();
 
-			Order b = this->current_order;
+			bool at_destination_station = this->current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE;
 			this->LeaveStation();
 
 			/* If this was not the final order, don't remove it from the list. */
-			if (!(b.GetNonStopType() & OFB_NON_STOP)) return;
+			if (!at_destination_station) return;
 			break;
 		}
 

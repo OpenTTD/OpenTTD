@@ -165,7 +165,7 @@ public:
 	/** How must the consist be unloaded? */
 	inline byte GetUnloadType() const { return GB(this->flags, 0, 2); }
 	/** Where must we stop? */
-	inline byte GetNonStopType() const { return this->flags & OFB_NON_STOP; }
+	OrderNonStopFlags GetNonStopType() const;
 	/** What caused us going to the depot? */
 	inline byte GetDepotOrderType() const { return this->flags; }
 	/** What are we going to do when in the depot. */
@@ -176,7 +176,7 @@ public:
 	/** Set how the consist must be unloaded. */
 	inline void SetUnloadType(byte unload_type) { SB(this->flags, 0, 2, unload_type); }
 	/** Set whether we must stop at stations or not. */
-	inline void SetNonStopType(byte non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
+	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
 	/** Set the cause to go to the depot. */
 	inline void SetDepotOrderType(byte depot_order_type) { this->flags = depot_order_type; }
 	/** Set what we are going to do in the depot. */

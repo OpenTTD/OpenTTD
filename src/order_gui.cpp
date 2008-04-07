@@ -215,7 +215,7 @@ static void DrawOrdersWindow(Window *w)
 						SetDParam(2, GetDepot(order->GetDestination())->town_index);
 
 						switch (v->type) {
-							case VEH_TRAIN: s = (order->GetNonStopType() & OFB_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
+							case VEH_TRAIN: s = (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
 							case VEH_ROAD:  s = STR_GO_TO_ROADVEH_DEPOT; break;
 							case VEH_SHIP:  s = STR_GO_TO_SHIP_DEPOT; break;
 							default: break;
@@ -235,7 +235,7 @@ static void DrawOrdersWindow(Window *w)
 				}
 
 				case OT_GOTO_WAYPOINT:
-					SetDParam(1, (order->GetNonStopType() & OFB_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+					SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(2, order->GetDestination());
 					break;
 

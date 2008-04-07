@@ -79,7 +79,7 @@ static void DrawTimetableWindow(Window *w)
 			w->EnableWidget(TTV_CLEAR_TIME);
 		} else {
 			const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
-			bool disable = order == NULL || !order->IsType(OT_GOTO_STATION) || (_patches.new_nonstop && (order->GetNonStopType() & OFB_NON_STOP));
+			bool disable = order == NULL || !order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION);
 
 			w->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
 			w->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
@@ -119,7 +119,7 @@ static void DrawTimetableWindow(Window *w)
 					break;
 
 				case OT_GOTO_STATION:
-					SetDParam(0, (order->GetNonStopType() & OFB_NON_STOP) ? STR_880A_GO_NON_STOP_TO : STR_8806_GO_TO);
+					SetDParam(0, (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_880A_GO_NON_STOP_TO : STR_8806_GO_TO);
 					SetDParam(1, order->GetDestination());
 
 					if (order->wait_time > 0) {
@@ -139,7 +139,7 @@ static void DrawTimetableWindow(Window *w)
 						SetDParam(1, GetDepot(order->GetDestination())->town_index);
 
 						switch (v->type) {
-							case VEH_TRAIN: string = (order->GetNonStopType() & OFB_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
+							case VEH_TRAIN: string = (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
 							case VEH_ROAD:  string = STR_GO_TO_ROADVEH_DEPOT; break;
 							case VEH_SHIP:  string = STR_GO_TO_SHIP_DEPOT; break;
 							default: break;
@@ -152,7 +152,7 @@ static void DrawTimetableWindow(Window *w)
 				} break;
 
 				case OT_GOTO_WAYPOINT:
-					SetDParam(0, (order->GetNonStopType() & OFB_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+					SetDParam(0, (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(1, order->GetDestination());
 					break;
 
@@ -197,7 +197,7 @@ static void DrawTimetableWindow(Window *w)
 		for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
 			total_time += order->travel_time + order->wait_time;
 			if (order->travel_time == 0) complete = false;
-			if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(_patches.new_nonstop && (order->GetNonStopType() & OFB_NON_STOP))) complete = false;
+			if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
 		}
 
 		if (total_time != 0) {

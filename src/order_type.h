@@ -59,12 +59,16 @@ enum OrderFlagMasks {
 	OFB_HALT_IN_DEPOT      = 0x4,
 	/** if OFB_PART_OF_ORDERS is set, this will cause the order only be come active if the vehicle needs servicing */
 	OFB_SERVICE_IF_NEEDED  = 0x4, //used when OFB_PART_OF_ORDERS is set.
+};
 
-	//Common flags
-	/** This causes the vehicle not to stop at intermediate OR the destination station (depending on patch settings)
-	  * @todo make this two different flags */
-	OFB_NO_NON_STOP        = 0x0,
-	OFB_NON_STOP           = 0x8
+/**
+ * Non-stop order flags.
+ */
+enum OrderNonStopFlags {
+	ONSF_STOP_EVERYWHERE                  = 0,
+	ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS = 1,
+	ONSF_NO_STOP_AT_DESTINATION_STATION   = 2,
+	ONSF_NO_STOP_AT_ANY_STATION           = 3
 };
 
 /** Order flags bits - these are for the *BIT macros

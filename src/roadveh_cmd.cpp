@@ -1929,7 +1929,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 	}
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT) &&
-			v->current_order.GetNonStopType() & OFB_NON_STOP &&
+			v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS &&
 			!Chance16(1, 20)) {
 		return;
 	}

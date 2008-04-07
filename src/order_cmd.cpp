@@ -39,7 +39,16 @@ assert_compile(sizeof(DestinationID) >= sizeof(StationID));
 TileIndex _backup_orders_tile;
 BackuppedOrders _backup_orders_data;
 
-DEFINE_OLD_POOL_GENERIC(Order, Order)
+DEFINE_OLD_POOL_GENERIC(Order, Order);
+
+OrderNonStopFlags Order::GetNonStopType() const
+{
+	return (this->flags & 0x8) ?
+			((!_patches.new_nonstop || !this->IsType(OT_GOTO_STATION)) ?
+					ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS :
+					ONSF_NO_STOP_AT_DESTINATION_STATION) :
+			ONSF_STOP_EVERYWHERE;
+}
 
 void Order::Free()
 {
@@ -59,7 +68,12 @@ void Order::MakeGoToStation(StationID destination)
 void Order::MakeGoToDepot(DepotID destination, bool order, CargoID cargo, byte subtype)
 {
 	this->type = OT_GOTO_DEPOT;
-	this->flags = order ? OFB_PART_OF_ORDERS : OFB_NON_STOP;
+	this->flags = 0;
+	if (order) {
+		this->SetDepotOrderType(OFB_PART_OF_ORDERS);
+	} else {
+		this->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+	}
 	this->dest = destination;
 	this->SetRefit(cargo, subtype);
 }
@@ -303,7 +317,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				default: return CMD_ERROR;
 			}
 
-			if (new_order.GetNonStopType() != OFB_NO_NON_STOP && v->type != VEH_TRAIN) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 
 			/* Order flags can be any of the following for stations:
 			 * [full-load | unload] [+ transfer] [+ non-stop]
@@ -358,7 +372,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
-			if (new_order.GetNonStopType() != OFB_NO_NON_STOP && v->type != VEH_TRAIN) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 
 			/* Order flags can be any of the following for depots:
 			 * order [+ halt] [+ non-stop]
@@ -385,16 +399,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]
 			 * non-stop orders (if any) are only valid for trains */
-			switch (new_order.GetNonStopType()) {
-				case OFB_NO_NON_STOP: break;
-
-				case OFB_NON_STOP:
-					if (v->type != VEH_TRAIN) return CMD_ERROR;
-					break;
-
-				default: return CMD_ERROR;
-			}
-			break;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 		}
 
 		default: return CMD_ERROR;
@@ -588,7 +593,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
 			if (sel_ord == u->cur_order_index && u->current_order.IsType(OT_LOADING)) {
-				u->current_order.SetNonStopType(OFB_NO_NON_STOP);
+				u->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
 			}
 
 			/* Update any possible open window of the vehicle */
@@ -772,7 +777,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order->SetLoadType(0);
 				break;
 			case OF_NON_STOP:
-				order->SetNonStopType(order->GetNonStopType() ^ OFB_NON_STOP);
+				order->SetNonStopType(order->GetNonStopType() == ONSF_STOP_EVERYWHERE ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_STOP_EVERYWHERE);
 				break;
 			case OF_TRANSFER:
 				order->SetUnloadType(order->GetUnloadType() ^ OFB_TRANSFER);
@@ -1396,9 +1401,8 @@ bool ProcessOrders(Vehicle *v)
 		v->cur_order_index++;
 	}
 
-	/* Check if we've reached a non-stop station while TTDPatch nonstop is enabled.. */
-	if (_patches.new_nonstop &&
-			v->current_order.GetNonStopType() & OFB_NON_STOP &&
+	/* Check if we've reached a non-stop station.. */
+	if ((v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 		v->last_station_visited = v->current_order.GetDestination();
@@ -1482,10 +1486,8 @@ bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 {
 	return
 			v->last_station_visited != station && // Do stop only when we've not just been there
-			type == OT_GOTO_STATION &&            // Do stop only when going to a station
-			/* Finally do stop when the non-stop flag is not set, or when we should stop at
-			 * this station according to the new_nonstop setting. */
-			(!(this->flags & OFB_NON_STOP) || ((this->dest != station) == _patches.new_nonstop));
+			/* Finally do stop when there is no non-stop flag set for this type of station. */
+			!(this->GetNonStopType() & ((this->dest == station) ? ONSF_NO_STOP_AT_DESTINATION_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS));
 }
 
 void InitializeOrders()
