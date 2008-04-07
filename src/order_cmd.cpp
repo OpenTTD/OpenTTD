@@ -315,22 +315,15 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				default: return CMD_ERROR;
 			}
 
+			/* Non stop not allowed for non-trains. */
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 
-			/* Order flags can be any of the following for stations:
-			 * [full-load | unload] [+ transfer] [+ non-stop]
-			 * non-stop orders (if any) are only valid for trains */
-			switch (new_order.GetLoadType() | new_order.GetUnloadType()) {
-				case 0:
-				case OLFB_FULL_LOAD:
-				case OLFB_FULL_LOAD | OUFB_TRANSFER:
-				case OUFB_UNLOAD:
-				case OUFB_UNLOAD | OUFB_TRANSFER:
-				case OUFB_TRANSFER:
-					break;
+			/* Full load and unload are mutual exclusive. */
+			if ((new_order.GetLoadType() & OLFB_FULL_LOAD) && (new_order.GetUnloadType() & OUFB_UNLOAD)) return CMD_ERROR;
 
-				default: return CMD_ERROR;
-			}
+			/* Filter invalid load/unload types. */
+			if (new_order.GetLoadType() & ~OLFB_FULL_LOAD) return CMD_ERROR;
+			if (new_order.GetUnloadType() & ~(OUFB_UNLOAD | OUFB_TRANSFER)) return CMD_ERROR;
 			break;
 		}
 
@@ -371,17 +364,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
-
-			/* Order flags can be any of the following for depots:
-			 * order [+ halt] [+ non-stop]
-			 * non-stop orders (if any) are only valid for trains */
-			switch (new_order.GetDepotOrderType() | new_order.GetDepotActionType()) {
-				case ODTFB_PART_OF_ORDERS:
-				case ODTFB_PART_OF_ORDERS | ODATFB_HALT:
-					break;
-
-				default: return CMD_ERROR;
-			}
+			if (new_order.GetDepotOrderType() & ~ODTFB_PART_OF_ORDERS) return CMD_ERROR;
+			if (new_order.GetDepotActionType() & ~ODATFB_HALT) return CMD_ERROR;
 			break;
 		}
 
