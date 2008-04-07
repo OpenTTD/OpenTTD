@@ -313,6 +313,10 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	ShowDropDownList(w, list, selected, button);
 }
 
+/**
+ * Delete the drop-down menu from window \a pw
+ * @param pw Parent window of the drop-down menu window
+ */
 void HideDropDownMenu(Window *pw)
 {
 	Window **wz;

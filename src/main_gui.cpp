@@ -1214,6 +1214,10 @@ void ShowVitalWindows()
 	WP(w, def_d).data_1 = -1280;
 }
 
+/**
+ * Size of the application screen changed.
+ * Adapt the game screen-size, re-allocate the open windows, and repaint everything
+ */
 void GameSizeChanged()
 {
 	_cur_resolution[0] = _screen.width;

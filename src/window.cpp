@@ -22,10 +22,16 @@
 
 #include "table/sprites.h"
 
-/* delta between mouse cursor and upper left corner of dragged window */
+/** delta between mouse cursor and upper left corner of dragged window */
 static Point _drag_delta;
 
 static Window _windows[MAX_NUMBER_OF_WINDOWS];
+
+/**
+ * List of windows opened at the screen.
+ * Uppermost window is at  _z_windows[_last_z_window - 1],
+ * bottom window is at _z_windows[0]
+ */
 Window *_z_windows[lengthof(_windows)];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 
@@ -116,6 +122,13 @@ void Window::HandleButtonClick(byte widget)
 static void StartWindowDrag(Window *w);
 static void StartWindowSizing(Window *w);
 
+/**
+ * Dispatch left mouse-button (possibly double) click in window.
+ * @param w Window to dispatch event in
+ * @param x X coordinate of the click
+ * @param y Y coordinate of the click
+ * @param double_click Was it a double click?
+ */
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
 	WindowEvent e;
@@ -175,6 +188,12 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 	w->wndproc(w, &e);
 }
 
+/**
+ * Dispatch right mouse-button click in window.
+ * @param w Window to dispatch event in
+ * @param x X coordinate of the click
+ * @param y Y coordinate of the click
+ */
 static void DispatchRightClickEvent(Window *w, int x, int y)
 {
 	WindowEvent e;
@@ -197,9 +216,10 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	w->wndproc(w, &e);
 }
 
-/** Dispatch the mousewheel-action to the window which will scroll any
- * compatible scrollbars if the mouse is pointed over the bar or its contents
- * @param *w Window
+/**
+ * Dispatch the mousewheel-action to the window.
+ * The window will scroll any compatible scrollbars if the mouse is pointed over the bar or its contents
+ * @param w Window
  * @param widget the widget where the scrollwheel was used
  * @param wheel scroll up or down
  */
@@ -232,6 +252,14 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 
 static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom);
 
+/**
+ * From a rectangle that needs redrawing, find the windows that intersect with the rectangle.
+ * These windows should be re-painted.
+ * @param left Left edge of the rectangle that should be repainted
+ * @param top Top edge of the rectangle that should be repainted
+ * @param right Right edge of the rectangle that should be repainted
+ * @param bottom Bottom edge of the rectangle that should be repainted
+ */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
 	Window* const *wz;
@@ -249,10 +277,23 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 	}
 }
 
+/**
+ * Generate repaint events for the visible part of window *wz within the rectangle.
+ *
+ * The function goes recursively upwards in the window stack, and splits the rectangle
+ * into multiple pieces at the window edges, so obscured parts are not redrawn.
+ *
+ * @param wz Pointer into window stack, pointing at the window that needs to be repainted
+ * @param left Left edge of the rectangle that should be repainted
+ * @param top Top edge of the rectangle that should be repainted
+ * @param right Right edge of the rectangle that should be repainted
+ * @param bottom Bottom edge of the rectangle that should be repainted
+ *
+ * @todo Swap this function to above DrawOverlappedWindowForAll() to eliminate the forward declaration
+ */
 static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom)
 {
 	Window* const *vz = wz;
-	int x;
 
 	while (++vz != _last_z_window) {
 		const Window *v = *vz;
@@ -261,6 +302,9 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 				bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
+			/* v and rectangle intersect with eeach other */
+			int x;
+
 			if (left < (x = v->left)) {
 				DrawOverlappedWindow(wz, left, top, x, bottom);
 				DrawOverlappedWindow(wz, x, top, right, bottom);
@@ -302,6 +346,12 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 	}
 }
 
+/**
+ * Dispatch an event to a possibly non-existing window.
+ * If the window pointer w is \c NULL, the event is not dispatched
+ * @param w Window to dispatch the event to, may be \c NULL
+ * @param event Event to dispatch
+ */
 void CallWindowEventNP(Window *w, int event)
 {
 	WindowEvent e;
@@ -310,6 +360,11 @@ void CallWindowEventNP(Window *w, int event)
 	w->wndproc(w, &e);
 }
 
+/**
+ * Mark entire window as dirty (in need of re-paint)
+ * @param w Window to redraw
+ * @ingroup dirty
+ */
 void SetWindowDirty(const Window *w)
 {
 	if (w == NULL) return;
@@ -334,12 +389,13 @@ static Window *FindChildWindow(const Window *w)
 /** Find the z-value of a window. A window must already be open
  * or the behaviour is undefined but function should never fail
  * @param w window to query Z Position
- * @return the window that matches it */
+ * @return Pointer into the window-list at the position of \a w
+ */
 Window **FindWindowZPosition(const Window *w)
 {
 	Window **wz;
 
-	for (wz = _z_windows; wz != _last_z_window; wz++) {
+	FOR_ALL_WINDOWS(wz) {
 		if (*wz == w) return wz;
 	}
 
@@ -348,14 +404,15 @@ Window **FindWindowZPosition(const Window *w)
 	return NULL;
 }
 
+/**
+ * Remove window and all its child windows from the window stack
+ */
 void DeleteWindow(Window *w)
 {
-	Window *v;
-	Window **wz;
 	if (w == NULL) return;
 
 	/* Delete any children a window might have in a head-recursive manner */
-	v = FindChildWindow(w);
+	Window *v = FindChildWindow(w);
 	if (v != NULL) DeleteWindow(v);
 
 	if (_thd.place_mode != VHM_NONE &&
@@ -375,12 +432,18 @@ void DeleteWindow(Window *w)
 
 	/* Find the window in the z-array, and effectively remove it
 	 * by moving all windows after it one to the left */
-	wz = FindWindowZPosition(w);
+	Window **wz = FindWindowZPosition(w);
 	if (wz == NULL) return;
 	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
 	_last_z_window--;
 }
 
+/**
+ * Find a window by its class and window number
+ * @param cls Window class
+ * @param number Number of the window within the window class
+ * @return Pointer to the found window, or \c NULL if not available
+ */
 Window *FindWindowById(WindowClass cls, WindowNumber number)
 {
 	Window* const *wz;
@@ -393,11 +456,20 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
 	return NULL;
 }
 
+/**
+ * Delete a window by its class and window number (if it is open).
+ * @param cls Window class
+ * @param number Number of the window within the window class
+ */
 void DeleteWindowById(WindowClass cls, WindowNumber number)
 {
 	DeleteWindow(FindWindowById(cls, number));
 }
 
+/**
+ * Delete all windows of a given class
+ * @param cls Window class of windows to delete
+ */
 void DeleteWindowByClass(WindowClass cls)
 {
 	Window* const *wz;
@@ -625,9 +697,8 @@ static Window *FindFreeWindow()
  * @param window_number number being assigned to the new window
  * @param data the data to be given during the WE_CREATE message
  * @return Window pointer of the newly created window */
-static Window *LocalAllocateWindow(
-							int x, int y, int min_width, int min_height, int def_width, int def_height,
-							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
+static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, int def_width, int def_height,
+				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
 {
 	Window *w = FindFreeWindow();
 
@@ -751,17 +822,13 @@ static Window *LocalAllocateWindow(
  * @param *proc see WindowProc function to call when any messages/updates happen to the window
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
- * @return Window pointer of the newly created window */
-Window *AllocateWindow(
-							int x, int y, int width, int height,
-							WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
+ * @return Window pointer of the newly created window
+ */
+Window *AllocateWindow(int x, int y, int width, int height,
+			WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
 {
 	return LocalAllocateWindow(x, y, width, height, width, height, proc, cls, widget, 0, data);
 }
-
-struct SizeRect {
-	int left,top,width,height;
-};
 
 
 static bool IsGoodAutoPlace1(int left, int top, int width, int height, Point &pos)
@@ -1002,7 +1069,7 @@ void UnInitWindowSystem()
 
 restart_search:
 	/* Delete all windows, reset z-array.
-	 *When we find the window to delete, we need to restart the search
+	 * When we find the window to delete, we need to restart the search
 	 * as deleting this window could cascade in deleting (many) others
 	 * anywhere in the z-array. We call DeleteWindow() so that it can properly
 	 * release own alloc'd memory, which otherwise could result in memleaks */
@@ -1158,12 +1225,15 @@ static bool HandleMouseOver()
 	return true;
 }
 
-/** Update all the widgets of a window based on their resize flags
+/**
+ * Resize the window.
+ * Update all the widgets of a window based on their resize flags
  * Both the areas of the old window and the new sized window are set dirty
  * ensuring proper redrawal.
  * @param w Window to resize
  * @param x delta x-size of changed window (positive if larger, etc.)
- * @param y delta y-size of changed window */
+ * @param y delta y-size of changed window
+ */
 void ResizeWindow(Window *w, int x, int y)
 {
 	Widget *wi;
@@ -1409,6 +1479,10 @@ static bool HandleWindowDragging()
 	return false;
 }
 
+/**
+ * Start window dragging
+ * @param w Window to start dragging
+ */
 static void StartWindowDrag(Window *w)
 {
 	w->flags4 |= WF_DRAGGING;
@@ -1421,6 +1495,10 @@ static void StartWindowDrag(Window *w)
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 }
 
+/**
+ * Start resizing a window
+ * @param w Window to start resizing
+ */
 static void StartWindowSizing(Window *w)
 {
 	w->flags4 |= WF_SIZING;
@@ -1632,11 +1710,10 @@ void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lpar
 }
 
 /** Handle keyboard input.
- * @param key Lower 8 bits contain the ASCII character, the higher
- * 16 bits the keycode */
+ * @param key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
+ */
 void HandleKeypress(uint32 key)
 {
-	Window* const *wz;
 	WindowEvent e;
 	/* Stores if a window with a textfield for typing is open
 	 * If this is the case, keypress events are only passed to windows with text fields and
@@ -1685,7 +1762,7 @@ void HandleKeypress(uint32 key)
 	}
 
 	/* Call the event, start with the uppermost window. */
-	for (wz = _last_z_window; wz != _z_windows;) {
+	for (Window* const *wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
 
 		/* if a query window is open, only call the event for certain window types */
@@ -1709,6 +1786,9 @@ void HandleKeypress(uint32 key)
 	}
 }
 
+/**
+ * State of CONTROL key has changed
+ */
 void HandleCtrlChanged()
 {
 	WindowEvent e;
@@ -1727,8 +1807,18 @@ void HandleCtrlChanged()
 extern void UpdateTileSelection();
 extern bool VpHandlePlaceSizingDrag();
 
+/**
+ * Local counter that is incremented each time an mouse input event is detected.
+ * The counter is used to stop auto-scrolling.
+ * @see HandleAutoscroll()
+ * @see HandleMouseEvents()
+ */
 static int _input_events_this_tick = 0;
 
+/**
+ * If needed and switched on, perform auto scrolling (automatically
+ * moving window contents when mouse is near edge of the window).
+ */
 static void HandleAutoscroll()
 {
 	Window *w;
@@ -1870,6 +1960,9 @@ void MouseLoop(MouseClick click, int mousewheel)
 	}
 }
 
+/**
+ * Handle a mouse event from the video driver
+ */
 void HandleMouseEvents()
 {
 	static int double_click_time = 0;
@@ -1919,12 +2012,18 @@ void HandleMouseEvents()
 	MouseLoop(click, mousewheel);
 }
 
+/**
+ * Regular call from the global game loop
+ */
 void InputLoop()
 {
 	HandleMouseEvents();
 	HandleAutoscroll();
 }
 
+/**
+ * Update the continuously changing contents of the windows, such as the viewports
+ */
 void UpdateWindows()
 {
 	Window* const *wz;
@@ -1959,6 +2058,13 @@ void UpdateWindows()
 }
 
 
+/**
+ * In a window with menu_d custom extension, retrieve the menu item number from a position
+ * @param w Window holding the menu items
+ * @param x X coordinate of the position
+ * @param y Y coordinate of the position
+ * @return Index number of the menu item, or \c -1 if no valid selection under position
+ */
 int GetMenuItemIndex(const Window *w, int x, int y)
 {
 	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
@@ -1972,6 +2078,10 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 	return -1;
 }
 
+/**
+ * Mark window data as invalid (in need of re-computing)
+ * @param w Window with invalid data
+ */
 void InvalidateWindow(WindowClass cls, WindowNumber number)
 {
 	Window* const *wz;
@@ -1982,6 +2092,12 @@ void InvalidateWindow(WindowClass cls, WindowNumber number)
 	}
 }
 
+/*
+ * Mark a particular widget in a particular window as dirty (in need of repainting)
+ * @param cls Window class
+ * @param number Window number in that class
+ * @param widget_index Index number of the widget that needs repainting
+ */
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)
 {
 	Window* const *wz;
@@ -1994,6 +2110,10 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 	}
 }
 
+/*
+ * Mark all windows of a particular class as dirty (in need of repainting)
+ * @param cls Window class
+ */
 void InvalidateWindowClasses(WindowClass cls)
 {
 	Window* const *wz;
@@ -2003,12 +2123,21 @@ void InvalidateWindowClasses(WindowClass cls)
 	}
 }
 
+/**
+ * Mark window data as invalid (in need of re-computing)
+ * @param w Window with invalid data
+ */
 void InvalidateThisWindowData(Window *w)
 {
 	CallWindowEventNP(w, WE_INVALIDATE_DATA);
 	SetWindowDirty(w);
 }
 
+/**
+ * Mark window data the window of a given class and specific window number as invalid (in need of re-computing)
+ * @param cls Window class
+ * @param number Window number within the class
+ */
 void InvalidateWindowData(WindowClass cls, WindowNumber number)
 {
 	Window* const *wz;
@@ -2019,6 +2148,10 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number)
 	}
 }
 
+/**
+ * Mark window data of all windows of a given class as invalid (in need of re-computing)
+ * @param cls Window class
+ */
 void InvalidateWindowClassesData(WindowClass cls)
 {
 	Window* const *wz;
@@ -2028,6 +2161,9 @@ void InvalidateWindowClassesData(WindowClass cls)
 	}
 }
 
+/**
+ * Dispatch WE_TICK event over all windows
+ */
 void CallWindowTickEvent()
 {
 	Window* const *wz;
@@ -2093,6 +2229,11 @@ void HideVitalWindows()
 	DeleteWindowById(WC_STATUS_BAR, 0);
 }
 
+/**
+ * (Re)position main toolbar window at the screen
+ * @param w Window structure of the main toolbar window, may also be \c NULL
+ * @return X coordinate of left edge of the repositioned toolbar window
+ */
 int PositionMainToolbar(Window *w)
 {
 	DEBUG(misc, 5, "Repositioning Main Toolbar...");
@@ -2110,6 +2251,11 @@ int PositionMainToolbar(Window *w)
 	return w->left;
 }
 
+/**
+ * Relocate all windows to fit the new size of the game application screen
+ * @param neww New width of the game application screen
+ * @param newh New height of the game appliction screen
+ */
 void RelocateAllWindows(int neww, int newh)
 {
 	Window* const *wz;

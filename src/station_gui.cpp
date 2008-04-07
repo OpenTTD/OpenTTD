@@ -388,7 +388,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 				assert(st->xy != 0);
 
- 				/* Do not do the complex check HasStationInUse here, it may be even false
+				/* Do not do the complex check HasStationInUse here, it may be even false
 				 * when the order had been removed and the station list hasn't been removed yet */
 				assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
 

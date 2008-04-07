@@ -186,6 +186,10 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlag
 }
 
 
+/**
+ * Paint all widgets of a window.
+ * @param w Window
+ */
 void DrawWindowWidgets(const Window *w)
 {
 	const DrawPixelInfo* dpi = _cur_dpi;
@@ -569,6 +573,7 @@ void ResizeButtons(Window *w, byte left, byte right)
 	}
 }
 
+/** Resize a widget and shuffle other widgets around to fit. */
 void ResizeWindowForWidget(Window *w, int widget, int delta_x, int delta_y)
 {
 	int right  = w->widget[widget].right;

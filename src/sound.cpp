@@ -197,9 +197,7 @@ static const byte _sound_idx[] = {
 
 void SndCopyToPool()
 {
-	uint i;
-
-	for (i = 0; i < _file_count; i++) {
+	for (uint i = 0; i < _file_count; i++) {
 		FileEntry *orig = &_files[_sound_idx[i]];
 		FileEntry *fe = AllocateFileEntry();
 

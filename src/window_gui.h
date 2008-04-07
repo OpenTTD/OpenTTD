@@ -73,6 +73,9 @@ enum {
 	WIDGET_LIST_END = -1, ///< indicate the end of widgets' list for vararg functions
 };
 
+/**
+ * Window widget data structure
+ */
 struct Widget {
 	byte type;                        ///< Widget type, see WindowWidgetTypes
 	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see ResizeFlags
@@ -82,6 +85,9 @@ struct Widget {
 	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
 };
 
+/**
+ * Flags to describe the look of the frame
+ */
 enum FrameFlags {
 	FR_NONE         =  0,
 	FR_TRANSPARENT  =  1 << 0,  ///< Makes the background transparent if set
@@ -92,21 +98,25 @@ enum FrameFlags {
 
 DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 
+/* wiget.cpp */
 void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags);
 
+/**
+ * Available window events
+ */
 enum WindowEventCodes {
-	WE_CREATE,
-	WE_DESTROY,
-	WE_PAINT,
-	WE_KEYPRESS,
-	WE_CLICK,
-	WE_DOUBLE_CLICK,
-	WE_RCLICK,
+	WE_CREATE,       ///< Initialize the Window
+	WE_DESTROY,      ///< Prepare for deletion of the window
+	WE_PAINT,        ///< Repaint the window contents
+	WE_KEYPRESS,     ///< Key pressed
+	WE_CLICK,        ///< Left mouse button click
+	WE_DOUBLE_CLICK, ///< Left mouse button double click
+	WE_RCLICK,       ///< Right mouse button click
 	WE_MOUSEOVER,
 	WE_MOUSELOOP,
 	WE_MOUSEWHEEL,
-	WE_TICK,
-	WE_4,
+	WE_TICK,         ///< Regularly occurring event (about once every 20 seconds orso, 10 days) for slowly changing content (typically list sorting)
+	WE_4,            ///< Regularly occurring event for updating continuously changing window content (other than view ports), or timer expiring
 	WE_TIMEOUT,
 	WE_PLACE_OBJ,
 	WE_ABORT_PLACE_OBJ,
@@ -119,13 +129,17 @@ enum WindowEventCodes {
 	WE_PLACE_MOUSEUP,
 	WE_PLACE_PRESIZE,
 	WE_DROPDOWN_SELECT,
-	WE_RESIZE,
-	WE_MESSAGE,
+	WE_RESIZE,          ///< Request to resize the window, @see WindowEvent.we.resize
+	WE_MESSAGE,         ///< Receipt of a message from another window. @see WindowEvent.we.message, SendWindowMessage(), SendWindowMessageClass()
 	WE_SCROLL,
-	WE_INVALIDATE_DATA,
-	WE_CTRL_CHANGED,
+	WE_INVALIDATE_DATA, ///< Notification that data displayed by the window is obsolete
+	WE_CTRL_CHANGED,    ///< CTRL key has changed state
 };
 
+/**
+ * Data structures for additional data associated with a window event
+ * @see WindowEventCodes
+ */
 struct WindowEvent {
 	byte event;
 	union {
@@ -200,27 +214,40 @@ struct WindowEvent {
 	} we;
 };
 
+/**
+ * High level window description
+ */
 struct WindowDesc {
-	int16 left, top, minimum_width, minimum_height, default_width, default_height;
-	WindowClass cls;
-	WindowClass parent_cls;
-	uint32 flags;
-	const Widget *widgets;
-	WindowProc *proc;
+	int16 left;             ///< Prefered x position of left edge of the window, @see WindowDefaultPosition()
+	int16 top;              ///< Prefered y position of the top of the window, @see WindowDefaultPosition()
+	int16 minimum_width;    ///< Minimal width of the window
+	int16 minimum_height;   ///< Minimal height of the window
+	int16 default_width;    ///< Prefered initial width of the window
+	int16 default_height;   ///< Prefered initial height of the window
+	WindowClass cls;        ///< Class of the window, @see WindowClass
+	WindowClass parent_cls; ///< Class of the parent window, @see WindowClass
+	uint32 flags;           ///< Flags, @see WindowDefaultFlags
+	const Widget *widgets;  ///< List of widgets with their position and size for the window
+	WindowProc *proc;       ///< Window event handler function for the window
 };
 
+/**
+ * Window default widget/window handling flags
+ */
 enum WindowDefaultFlag {
 	WDF_STD_TOOLTIPS    =   1 << 0, ///< use standard routine when displaying tooltips
-	WDF_DEF_WIDGET      =   1 << 1, ///< default widget control for some widgets in the on click event
-	WDF_STD_BTN         =   1 << 2, ///< default handling for close and drag widgets (widget no 0 and 1)
+	WDF_DEF_WIDGET      =   1 << 1, ///< Default widget control for some widgets in the on click event, @see DispatchLeftClickEvent()
+	WDF_STD_BTN         =   1 << 2, ///< Default handling for close and titlebar widgets (widget no 0 and 1)
 
-	WDF_UNCLICK_BUTTONS =   1 << 4, ///< Unclick buttons when the window event times out */
+	WDF_UNCLICK_BUTTONS =   1 << 4, ///< Unclick buttons when the window event times out
 	WDF_STICKY_BUTTON   =   1 << 5, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
-	WDF_RESIZABLE       =   1 << 6, ///< A window can be resized
+	WDF_RESIZABLE       =   1 << 6, ///< Window can be resized
 	WDF_MODAL           =   1 << 7, ///< The window is a modal child of some other window, meaning the parent is 'inactive'
 };
 
-/* can be used as x or y coordinates to cause a specific placement */
+/**
+ * Special values for 'left' and 'top' to cause a specific placement
+ */
 enum WindowDefaultPosition {
 	WDP_AUTO      = -1, ///< Find a place automatically
 	WDP_CENTER    = -2, ///< Center the window (left/right or top/bottom)
@@ -230,46 +257,65 @@ enum WindowDefaultPosition {
 
 #define WP(ptr, str) (*(str*)(ptr)->custom)
 
+/**
+ * Scrollbar data structure
+ */
 struct Scrollbar {
-	uint16 count, cap, pos;
+	uint16 count;  ///< Number of elements in the list
+	uint16 cap;    ///< Number of visible elements of the scroll bar
+	uint16 pos;
 };
 
+/**
+ * Data structure for resizing a window
+ */
 struct ResizeInfo {
-	uint width; ///< Minimum width and height
-	uint height;
-	uint step_width; ///< In how big steps the width and height go
-	uint step_height;
+	uint width;       ///< Minimum allowed width of the window
+	uint height;      ///< Minimum allowed height of the window
+	uint step_width;  ///< Step-size of width resize changes
+	uint step_height; ///< Step-size of height resize changes
 };
 
+/**
+ * Message data structure for messages sent between winodows
+ * @see SendWindowMessageW()
+ */
 struct WindowMessage {
 	int msg;
 	int wparam;
 	int lparam;
 };
 
+/**
+ * Data structure for an opened window
+ */
 struct Window {
-	uint16 flags4;
-	WindowClass window_class;
-	WindowNumber window_number;
+	uint16 flags4;              ///< Window flags, @see WindowFlags
+	WindowClass window_class;   ///< Window class
+	WindowNumber window_number; ///< Window number within the window class
 
-	int left, top;
-	int width, height;
+	int left;   ///< x position of left edge of the window
+	int top;    ///< y position of top edge of the window
+	int width;  ///< width of the window (number of pixels to the right in x direction)
+	int height; ///< Height of the window (number of pixels down in y direction)
 
-	Scrollbar hscroll, vscroll, vscroll2;
-	ResizeInfo resize;
+	Scrollbar hscroll;  ///< Horizontal scroll bar
+	Scrollbar vscroll;  ///< First vertical scroll bar
+	Scrollbar vscroll2; ///< Second vertical scroll bar
+	ResizeInfo resize;  ///< Resize information
 
-	byte caption_color;
+	byte caption_color; ///< Background color of the window caption, contains PlayerID
 
-	WindowProc *wndproc;
-	ViewPort *viewport;
-	const Widget *original_widget;
-	Widget *widget;
-	uint widget_count;
-	uint32 desc_flags;
+	WindowProc *wndproc;   ///< Event handler function for the window
+	ViewPort *viewport;    ///< Pointer to viewport, if present (structure is part of derived class)
+	const Widget *original_widget; ///< Original widget layout, copied from WindowDesc
+	Widget *widget;        ///< Widgets of the window
+	uint widget_count;     ///< Number of widgets of the window
+	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
 
-	WindowMessage message;
-	Window *parent;
-	byte custom[WINDOW_CUSTOM_SIZE];
+	WindowMessage message; ///< Buffer for storing received messages (for communication between different window events)
+	Window *parent;        ///< Parent window
+	byte custom[WINDOW_CUSTOM_SIZE]; ///< Additional data depending on window type
 
 	void HandleButtonClick(byte widget);
 
@@ -429,28 +475,31 @@ enum WindowWidgetBehaviours {
 };
 
 
+/**
+ * Window widget types
+ */
 enum WindowWidgetTypes {
-	WWT_EMPTY,
+	WWT_EMPTY,      ///< Empty widget, place holder to reserve space in widget array
 
-	WWT_PANEL,      ///< simple depressed panel
-	WWT_INSET,      ///< pressed (inset) panel, most commonly used as combo box _text_ area
-	WWT_IMGBTN,     ///< button with image
-	WWT_IMGBTN_2,   ///< button with diff image when clicked
+	WWT_PANEL,      ///< Simple depressed panel
+	WWT_INSET,      ///< Pressed (inset) panel, most commonly used as combo box _text_ area
+	WWT_IMGBTN,     ///< Button with image
+	WWT_IMGBTN_2,   ///< Button with diff image when clicked
 
-	WWT_TEXTBTN,    ///< button with text
-	WWT_TEXTBTN_2,  ///< button with diff text when clicked
-	WWT_LABEL,      ///< centered label
-	WWT_TEXT,       ///< pure simple text
-	WWT_MATRIX,
-	WWT_SCROLLBAR,
-	WWT_FRAME,      ///< frame
-	WWT_CAPTION,
+	WWT_TEXTBTN,    ///< Button with text
+	WWT_TEXTBTN_2,  ///< Button with diff text when clicked
+	WWT_LABEL,      ///< Centered label
+	WWT_TEXT,       ///< Pure simple text
+	WWT_MATRIX,     ///< List of items underneath each other
+	WWT_SCROLLBAR,  ///< Vertical scrollbar
+	WWT_FRAME,      ///< Frame
+	WWT_CAPTION,    ///< Window caption (window title between closebox and stickybox)
 
-	WWT_HSCROLLBAR,
-	WWT_STICKYBOX,
+	WWT_HSCROLLBAR, ///< Horizontal scrollbar
+	WWT_STICKYBOX,  ///< Sticky box (normally at top-right of a window)
 	WWT_SCROLL2BAR, ///< 2nd vertical scrollbar
-	WWT_RESIZEBOX,
-	WWT_CLOSEBOX,
+	WWT_RESIZEBOX,  ///< Resize box (normally at bottom-right of a window)
+	WWT_CLOSEBOX,   ///< Close box (at top-left of a window)
 	WWT_DROPDOWN,   ///< Raised drop down list (regular)
 	WWT_DROPDOWNIN, ///< Inset drop down list (used on game options only)
 	WWT_EDITBOX,    ///< a textbox for typing (don't forget to call ShowOnScreenKeyboard() when clicked)
@@ -465,18 +514,21 @@ enum WindowWidgetTypes {
 
 #define WIDGETS_END WWT_LAST,   RESIZE_NONE,     0,     0,     0,     0,     0, 0, STR_NULL
 
+/**
+ * Window flags
+ */
 enum WindowFlags {
-	WF_TIMEOUT_SHL       = 0,
-	WF_TIMEOUT_MASK      = 7,
-	WF_DRAGGING          = 1 <<  3,
-	WF_SCROLL_UP         = 1 <<  4,
-	WF_SCROLL_DOWN       = 1 <<  5,
-	WF_SCROLL_MIDDLE     = 1 <<  6,
+	WF_TIMEOUT_SHL       = 0,       ///< Window timeout counter shift
+	WF_TIMEOUT_MASK      = 7,       ///< Window timeout counter bit mask (3 bits), @see WF_TIMEOUT_SHL
+	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged
+	WF_SCROLL_UP         = 1 <<  4, ///< Upper scroll button has been pressed, @see ScrollbarClickHandler()
+	WF_SCROLL_DOWN       = 1 <<  5, ///< Lower scroll button has been pressed, @see ScrollbarClickHandler()
+	WF_SCROLL_MIDDLE     = 1 <<  6, ///< Scrollbar scrolling, @see ScrollbarClickHandler()
 	WF_HSCROLL           = 1 <<  7,
 	WF_SIZING            = 1 <<  8,
-	WF_STICKY            = 1 <<  9,
+	WF_STICKY            = 1 <<  9, ///< Window is made sticky by user
 
-	WF_DISABLE_VP_SCROLL = 1 << 10,
+	WF_DISABLE_VP_SCROLL = 1 << 10, ///< Window does not do autoscroll, @see HandleAutoscroll()
 
 	WF_WHITE_BORDER_ONE  = 1 << 11,
 	WF_WHITE_BORDER_MASK = 1 << 12 | WF_WHITE_BORDER_ONE,
@@ -487,11 +539,6 @@ enum WindowFlags {
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent();
 
-/**
- * Marks the window as dirty for repaint.
- *
- * @ingroup dirty
- */
 void SetWindowDirty(const Window *w);
 void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam);
 void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);
@@ -582,16 +629,8 @@ enum SpecialMouseMode {
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 
-/** Evenly distribute some widgets when resizing horizontally (often a button row)
- *  The widgets are presumed to be in a line and numberef from left to right (without gaps)
- * @param w widow to modify
- * @param left The leftmost widget to resize
- * @param right The rightmost widget to resize. Since right side of it is used, remember to set it to RESIZE_RIGHT
- */
 void ResizeButtons(Window *w, byte left, byte right);
 
-/** Resize a widget an shuffle other widgets around to fit.
- */
 void ResizeWindowForWidget(Window *w, int widget, int delta_x, int delta_y);
 
 

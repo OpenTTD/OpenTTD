@@ -28,10 +28,10 @@ CursorVars _cursor;
 bool _ctrl_pressed;   ///< Is Ctrl pressed?
 bool _shift_pressed;  ///< Is Shift pressed?
 byte _fast_forward;
-bool _left_button_down;
-bool _left_button_clicked;
-bool _right_button_down;
-bool _right_button_clicked;
+bool _left_button_down;     ///< Is left mouse button pressed?
+bool _left_button_clicked;  ///< Is left mouse button clicked?
+bool _right_button_down;    ///< Is right mouse button pressed?
+bool _right_button_clicked; ///< Is right mouse button clicked?
 DrawPixelInfo _screen;
 bool _screen_disable_anim = false;   ///< Disable palette animation (important for 32bpp-anim blitter during giant screenshot)
 bool _exit_game;

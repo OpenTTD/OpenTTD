@@ -8,11 +8,6 @@
 #include "window_type.h"
 #include "player_type.h"
 
-/**
- * Marks the window as dirty for repaint.
- *
- * @ingroup dirty
- */
 void SetWindowDirty(const Window *w);
 void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam);
 void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);

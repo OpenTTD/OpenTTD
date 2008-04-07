@@ -10,12 +10,19 @@
 #include "window_type.h"
 #include "tile_type.h"
 
+/**
+ * Data structure for viewport, display of a part of the world
+ */
 struct ViewPort {
-	int left,top;                       // screen coordinates for the viewport
-	int width, height;                  // screen width/height for the viewport
+	int left;    ///< Screen coordinate left egde of the viewport
+	int top;     ///< Screen coordinate top edge of the viewport
+	int width;   ///< Screen width of the viewport
+	int height;  ///< Screen height of the viewport
 
-	int virtual_left, virtual_top;      // virtual coordinates
-	int virtual_width, virtual_height;  // these are just width << zoom, height << zoom
+	int virtual_left;    ///< Virtual left coordinate
+	int virtual_top;     ///< Virtual top coordinate
+	int virtual_width;   ///< width << zoom
+	int virtual_height;  ///< height << zoom
 
 	ZoomLevel zoom;
 };
@@ -58,7 +65,7 @@ enum ViewportHighlightMode {
 	VHM_RAIL    = 5, ///< rail pieces
 };
 
-/* highlighting draw styles */
+/** Highlighting draw styles */
 enum HighLightStyle {
 	HT_NONE   = 0x00,
 	HT_RECT   = 0x80,
