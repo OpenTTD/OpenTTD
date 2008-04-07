@@ -95,6 +95,8 @@ static void DrawSubsidiesWindow(const Window *w)
 	int width = w->width - 13;  // scroll bar = 11 + pixel each side
 	y = 15;
 	x = 1;
+
+	/* Section for drawing the offered subisidies */
 	DrawStringTruncated(x, y, STR_2026_SUBSIDIES_ON_OFFER_FOR, TC_FROMSTRING, width);
 	y += 10;
 	num = 0;
@@ -103,9 +105,11 @@ static void DrawSubsidiesWindow(const Window *w)
 		if (s->cargo_type != CT_INVALID && s->age < 12) {
 			int x2;
 
+			/* Displays the two offered towns */
 			SetupSubsidyDecodeParam(s, 1);
 			x2 = DrawStringTruncated(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING, width);
 
+			/* Displays the deadline before voiding the proposal */
 			SetDParam(0, _date - ymd.day + 384 - s->age * 32);
 			DrawStringTruncated(x2, y, STR_2028_BY, TC_FROMSTRING, width - x2);
 			y += 10;
@@ -118,6 +122,7 @@ static void DrawSubsidiesWindow(const Window *w)
 		y += 10;
 	}
 
+	/* Section for drawing the already granted subisidies */
 	DrawStringTruncated(x, y + 1, STR_202B_SERVICES_ALREADY_SUBSIDISED, TC_FROMSTRING, width);
 	y += 10;
 	num = 0;
@@ -131,9 +136,11 @@ static void DrawSubsidiesWindow(const Window *w)
 			PlayerID player = GetStation(s->to)->owner;
 			SetDParam(3, player);
 
+			/* Displays the two connected stations */
 			xt = DrawStringTruncated(x + 2, y, STR_202C_FROM_TO, TC_FROMSTRING, width - 2);
 
-			if ((xt > 3) && (width - xt) > 9 ) { // do not draw if it will get on the scrollbar or if last drawing did nothing
+			/* Displays the date where the granted subsidy will end */
+			if ((xt > 3) && (width - xt) > 9 ) { // do not draw if previous drawing failed or if it will overlap on scrollbar
 				SetDParam(0, _date - ymd.day + 768 - s->age * 32);
 				DrawStringTruncated(xt, y, STR_202D_UNTIL, TC_FROMSTRING, width - xt);
 			}
@@ -165,8 +172,8 @@ static const Widget _subsidies_list_widgets[] = {
 {    WWT_CAPTION, RESIZE_RIGHT,  13,  11, 307,   0,  13, STR_2025_SUBSIDIES, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX, RESIZE_LR,     13, 308, 319,   0,  13, STR_NULL,           STR_STICKY_BUTTON},
 {      WWT_PANEL, RESIZE_RB,     13,   0, 307,  14, 126, 0x0,                STR_01FD_CLICK_ON_SERVICE_TO_CENTER},
-{  WWT_SCROLLBAR, RESIZE_LRB,    13, 308, 319,  14, 114, 0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
-{  WWT_RESIZEBOX, RESIZE_LRTB,   13, 308, 319, 115, 126, 0x0,                STR_RESIZE_BUTTON},                 // IDW_RESIZE
+{  WWT_SCROLLBAR, RESIZE_LRB,    13, 308, 319,  14, 114, 0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX, RESIZE_LRTB,   13, 308, 319, 115, 126, 0x0,                STR_RESIZE_BUTTON},
 
 {   WIDGETS_END},
 };
