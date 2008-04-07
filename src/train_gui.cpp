@@ -24,12 +24,11 @@
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	Vehicle *v, *found;
-
 	if (!success) return;
 
 	/* find a locomotive in the depot. */
-	found = NULL;
+	Vehicle *found = NULL;
+	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v) &&
 				v->tile == tile &&
@@ -50,11 +49,9 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	const Vehicle *v;
-
 	if (!success) return;
 
-	v = GetVehicle(_new_vehicle_id);
+	const Vehicle *v = GetVehicle(_new_vehicle_id);
 	if (tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v);
@@ -197,8 +194,6 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 		for (;;) {
 			if (--vscroll_pos < 0 && vscroll_pos >= -vscroll_cap) {
 				int dx = 0;
-				int px;
-				int py;
 
 				u = v;
 				do {
@@ -208,8 +203,8 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 					u = u->Next();
 				} while (u != NULL && IsArticulatedPart(u) && u->cargo_cap == 0);
 
-				px = x + WagonLengthToPixels(dx) + 2;
-				py = y + 2;
+				int px = x + WagonLengthToPixels(dx) + 2;
+				int py = y + 2;
 				switch (det_tab) {
 					default: NOT_REACHED();
 					case 0: TrainDetailsCargoTab(   v, px, py); break;

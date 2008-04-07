@@ -10,12 +10,10 @@
 #include "vehicle_base.h"
 
 
-/*
- * enum to handle train subtypes
+/** enum to handle train subtypes
  * Do not access it directly unless you have to. Use the access functions below
  * This is an enum to tell what bit to access as it is a bitmask
  */
-
 enum TrainSubtype {
 	TS_FRONT             = 0, ///< Leading engine of a train
 	TS_ARTICULATED_PART  = 1, ///< Articulated part of an engine
