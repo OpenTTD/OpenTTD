@@ -668,3 +668,14 @@ callb_err:
 	ClearStorageChanges(false);
 	return false;
 }
+
+
+CommandCost CommandCost::AddCost(CommandCost ret)
+{
+	this->AddCost(ret.cost);
+	if (this->success && !ret.success) {
+		this->message = ret.message;
+		this->success = false;
+	}
+	return *this;
+}

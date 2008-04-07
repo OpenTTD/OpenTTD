@@ -49,15 +49,7 @@ public:
 	 * @param ret the command to add the cost of.
 	 * @return this class.
 	 */
-	CommandCost AddCost(CommandCost ret)
-	{
-		this->AddCost(ret.cost);
-		if (this->success && !ret.success) {
-			this->message = ret.message;
-			this->success = false;
-		}
-		return *this;
-	}
+	CommandCost AddCost(CommandCost ret);
 
 	/**
 	 * Adds the given cost to the cost of the command.
