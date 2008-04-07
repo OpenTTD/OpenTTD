@@ -767,7 +767,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (order->IsType(OT_GOTO_DEPOT)) {
 					order->SetDepotOrderType(order->GetDepotOrderType() ^ OFB_SERVICE_IF_NEEDED);
 				} else {
-					order->SetLoadType(order->GetUnloadType() ^ OFB_FULL_LOAD);
+					order->SetLoadType(order->GetLoadType() ^ OFB_FULL_LOAD);
 					order->SetUnloadType(order->GetUnloadType() & ~OFB_UNLOAD);
 				}
 				break;
