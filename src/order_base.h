@@ -178,7 +178,7 @@ public:
 	/** Set whether we must stop at stations or not. */
 	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
 	/** Set the cause to go to the depot. */
-	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { this->flags = depot_order_type; }
+	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { this->flags = depot_order_type == ODTFB_SERVICE ? ODTF_MANUAL : depot_order_type; }
 	/** Set what we are going to do in the depot. */
 	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { this->flags = depot_service_type; }
 
