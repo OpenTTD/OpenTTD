@@ -65,13 +65,12 @@ void Order::MakeGoToStation(StationID destination)
 	this->dest = destination;
 }
 
-void Order::MakeGoToDepot(DepotID destination, bool order, CargoID cargo, byte subtype)
+void Order::MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, CargoID cargo, byte subtype)
 {
 	this->type = OT_GOTO_DEPOT;
 	this->flags = 0;
-	if (order) {
-		this->SetDepotOrderType(OFB_PART_OF_ORDERS);
-	} else {
+	this->SetDepotOrderType(order);
+	if (!(order & ODTFB_PART_OF_ORDERS)) {
 		this->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 	}
 	this->dest = destination;
@@ -377,8 +376,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * order [+ halt] [+ non-stop]
 			 * non-stop orders (if any) are only valid for trains */
 			switch (new_order.GetDepotOrderType() | new_order.GetDepotActionType()) {
-				case OFB_PART_OF_ORDERS:
-				case OFB_PART_OF_ORDERS | OFB_HALT_IN_DEPOT:
+				case ODTFB_PART_OF_ORDERS:
+				case ODTFB_PART_OF_ORDERS | ODATFB_HALT:
 					break;
 
 				default: return CMD_ERROR;
@@ -765,7 +764,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		switch (p2) {
 			case OF_FULL_LOAD:
 				if (order->IsType(OT_GOTO_DEPOT)) {
-					order->SetDepotOrderType(order->GetDepotOrderType() ^ OFB_SERVICE_IF_NEEDED);
+					order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() ^ ODTFB_SERVICE));
 				} else {
 					order->SetLoadType(order->GetLoadType() ^ OFB_FULL_LOAD);
 					order->SetUnloadType(order->GetUnloadType() & ~OFB_UNLOAD);
@@ -984,7 +983,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateVehicleOrder(u);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
-			if (u->cur_order_index == order_number && HasBit(u->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
+			if (u->cur_order_index == order_number && u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
 				u->current_order.SetRefit(cargo, subtype);
 			}
 		}
@@ -1367,9 +1366,9 @@ bool ProcessOrders(Vehicle *v)
 	switch (v->current_order.GetType()) {
 		case OT_GOTO_DEPOT:
 			/* Let a depot order in the orderlist interrupt. */
-			if (!(v->current_order.GetDepotOrderType() & OFB_PART_OF_ORDERS)) return false;
+			if (!(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) return false;
 
-			if ((v->current_order.GetDepotOrderType() & OFB_SERVICE_IF_NEEDED) && !VehicleNeedsService(v)) {
+			if ((v->current_order.GetDepotOrderType() & ODTFB_SERVICE) && !VehicleNeedsService(v)) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}

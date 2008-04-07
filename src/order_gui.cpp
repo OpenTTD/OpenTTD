@@ -222,7 +222,7 @@ static void DrawOrdersWindow(Window *w)
 						}
 					}
 
-					if (order->GetDepotOrderType() & OFB_SERVICE_IF_NEEDED) s++; /* service at */
+					if (order->GetDepotOrderType() & ODTFB_SERVICE) s++; /* service at */
 
 					SetDParam(1, s);
 					if (order->IsRefit()) {
@@ -270,7 +270,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		case MP_RAILWAY:
 			if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
 				if (IsRailDepot(tile)) {
-					order.MakeGoToDepot(GetDepotByTile(tile)->index, true);
+					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
 					return order;
 				}
 			}
@@ -278,7 +278,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 		case MP_ROAD:
 			if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
-				order.MakeGoToDepot(GetDepotByTile(tile)->index, true);
+				order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
 				return order;
 			}
 			break;
@@ -286,7 +286,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		case MP_STATION:
 			if (v->type != VEH_AIRCRAFT) break;
 			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
-				order.MakeGoToDepot(GetStationIndex(tile), true);
+				order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS);
 				return order;
 			}
 			break;
@@ -297,7 +297,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 					IsTileOwner(tile, _local_player)) {
 				TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-				order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, true);
+				order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);
 				return order;
 			}
 

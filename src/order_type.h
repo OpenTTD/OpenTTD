@@ -49,16 +49,6 @@ enum OrderFlagMasks {
 	/** Wait for full load of all vehicles, or of at least one cargo type, depending on patch setting
 	  * @todo make this two different flags */
 	OFB_FULL_LOAD          = 0x4,
-
-	//Flags for depots:
-	/** The current depot-order was initiated because it was in the vehicle's order list */
-	OFB_MANUAL_ORDER       = 0x0,
-	OFB_PART_OF_ORDERS     = 0x2,
-	/** if OFB_PART_OF_ORDERS is not set, this will cause the vehicle to be stopped in the depot */
- 	OFB_NORMAL_ACTION      = 0x0,
-	OFB_HALT_IN_DEPOT      = 0x4,
-	/** if OFB_PART_OF_ORDERS is set, this will cause the order only be come active if the vehicle needs servicing */
-	OFB_SERVICE_IF_NEEDED  = 0x4, //used when OFB_PART_OF_ORDERS is set.
 };
 
 /**
@@ -71,6 +61,23 @@ enum OrderNonStopFlags {
 	ONSF_NO_STOP_AT_ANY_STATION           = 3
 };
 
+/**
+ * Reasons that could cause us to go to the depot.
+ */
+enum OrderDepotTypeFlags {
+	ODTF_MANUAL          = 0,      ///< The player initiated this order manually.
+	ODTFB_SERVICE        = 1 << 2, ///< This depot order is because of the servicing limit.
+	ODTFB_PART_OF_ORDERS = 1 << 1, ///< This depot order is because of a regular order.
+};
+
+/**
+ * Actions that can be performed when the vehicle enters the depot.
+ */
+enum OrderDepotActionFlags {
+	ODATF_SERVICE_ONLY   = 0,      ///< Only service the vehicle.
+	ODATFB_HALT          = 1 << 2, ///< Service the vehicle and then halt it.
+};
+
 /** Order flags bits - these are for the *BIT macros
  * for descrption of flags, see OrderFlagMasks
  * @see OrderFlagMasks
@@ -79,9 +86,6 @@ enum {
 	OF_TRANSFER          = 0,
 	OF_UNLOAD            = 1,
 	OF_FULL_LOAD         = 2,
-	OF_PART_OF_ORDERS    = 1,
-	OF_HALT_IN_DEPOT     = 2,
-	OF_SERVICE_IF_NEEDED = 2,
 	OF_NON_STOP          = 3
 };
 

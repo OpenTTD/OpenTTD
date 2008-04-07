@@ -24,7 +24,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 		order->wait_time = time;
 	}
 
-	if (v->cur_order_index == order_number && HasBit(v->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
+	if (v->cur_order_index == order_number && v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
 		if (is_journey) {
 			v->current_order.travel_time = time;
 		} else {

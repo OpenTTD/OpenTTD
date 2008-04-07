@@ -121,10 +121,10 @@ void VehicleServiceInDepot(Vehicle *v)
 bool VehicleNeedsService(const Vehicle *v)
 {
 	if (v->vehstatus & (VS_STOPPED | VS_CRASHED))       return false;
-	if (!v->current_order.IsType(OT_GOTO_DEPOT) || !(v->current_order.GetDepotOrderType() & OFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
+	if (!v->current_order.IsType(OT_GOTO_DEPOT) || !(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
 		if (_patches.gotodepot && VehicleHasDepotOrders(v)) return false;
 		if (v->current_order.IsType(OT_LOADING))            return false;
-		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() & OFB_HALT_IN_DEPOT) return false;
+		if (v->current_order.IsType(OT_GOTO_DEPOT) && v->current_order.GetDepotActionType() & ODATFB_HALT) return false;
 	}
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
@@ -632,7 +632,7 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* We need to set v->leave_depot_instantly as we have no control of it's contents at this time.
 	 * Vehicle should stop in the depot if it was in 'stopping' state - train intered depot while slowing down. */
-	if ((HasBit(v->current_order.GetDepotActionType(), OF_HALT_IN_DEPOT) && !HasBit(v->current_order.GetDepotOrderType(), OF_PART_OF_ORDERS) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
+	if (((v->current_order.GetDepotActionType() & ODATFB_HALT) && !(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
 			(v->vehstatus & VS_STOPPED)) {
 		/* we keep the vehicle in the depot since the user ordered it to stay */
 		v->leave_depot_instantly = false;
@@ -2263,11 +2263,11 @@ void VehicleEnterDepot(Vehicle *v)
 			}
 		}
 
-		if (HasBit(t.GetDepotOrderType(), OF_PART_OF_ORDERS)) {
+		if (t.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
 			/* Part of orders */
 			UpdateVehicleTimetable(v, true);
 			v->cur_order_index++;
-		} else if (HasBit(t.GetDepotActionType(), OF_HALT_IN_DEPOT)) {
+		} else if (t.GetDepotActionType() & ODATFB_HALT) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_player) {

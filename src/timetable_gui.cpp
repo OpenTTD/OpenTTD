@@ -146,7 +146,7 @@ static void DrawTimetableWindow(Window *w)
 						}
 					}
 
-					if (order->GetDepotOrderType() & OFB_SERVICE_IF_NEEDED) string++; /* service at */
+					if (order->GetDepotOrderType() & ODTFB_SERVICE) string++; /* service at */
 
 					SetDParam(0, string);
 				} break;

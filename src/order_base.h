@@ -87,7 +87,7 @@ public:
 	 * @param cargo       the cargo type to change to.
 	 * @param subtype     the subtype to change to.
 	 */
-	void MakeGoToDepot(DepotID destination, bool order, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
+	void MakeGoToDepot(DepotID destination, OrderDepotTypeFlags order, CargoID cargo = CT_NO_REFIT, byte subtype = 0);
 
 	/**
 	 * Makes this order a Go To Waypoint order.
@@ -167,9 +167,9 @@ public:
 	/** Where must we stop? */
 	OrderNonStopFlags GetNonStopType() const;
 	/** What caused us going to the depot? */
-	inline byte GetDepotOrderType() const { return this->flags; }
+	inline OrderDepotTypeFlags GetDepotOrderType() const { return (OrderDepotTypeFlags)this->flags; }
 	/** What are we going to do when in the depot. */
-	inline byte GetDepotActionType() const { return this->flags; }
+	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)this->flags; }
 
 	/** Set how the consist must be loaded. */
 	inline void SetLoadType(byte load_type) { SB(this->flags, 2, 1, !!load_type); }
@@ -178,9 +178,9 @@ public:
 	/** Set whether we must stop at stations or not. */
 	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
 	/** Set the cause to go to the depot. */
-	inline void SetDepotOrderType(byte depot_order_type) { this->flags = depot_order_type; }
+	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { this->flags = depot_order_type; }
 	/** Set what we are going to do in the depot. */
-	inline void SetDepotActionType(byte depot_service_type) { this->flags = depot_service_type; }
+	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { this->flags = depot_service_type; }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 

@@ -1184,7 +1184,7 @@ static void AiNew_State_GiveOrders(Player *p)
 	// Very handy for AI, goto depot.. but yeah, it needs to be activated ;)
 	if (_patches.gotodepot) {
 		idx = 0;
-		order.MakeGoToDepot(GetDepotByTile(_players_ainew[p->index].depot_tile)->index, true);
+		order.MakeGoToDepot(GetDepotByTile(_players_ainew[p->index].depot_tile)->index, ODTFB_PART_OF_ORDERS);
 		AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
