@@ -382,6 +382,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * [non-stop]
 			 * non-stop orders (if any) are only valid for trains */
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+
+			break;
 		}
 
 		default: return CMD_ERROR;
