@@ -43,11 +43,11 @@ DEFINE_OLD_POOL_GENERIC(Order, Order);
 
 OrderNonStopFlags Order::GetNonStopType() const
 {
-	return (this->flags & 0x8) ?
-			((!_patches.new_nonstop || !this->IsType(OT_GOTO_STATION)) ?
-					ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS :
-					ONSF_NO_STOP_AT_DESTINATION_STATION) :
-			ONSF_STOP_EVERYWHERE;
+	if (_patches.new_nonstop || this->IsType(OT_GOTO_DEPOT)) {
+		return (this->flags & 0x08) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
+	}
+
+	return (this->flags & 0x08) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE;
 }
 
 void Order::Free()
@@ -759,7 +759,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 				break;
 			case OF_NON_STOP:
-				order->SetNonStopType(order->GetNonStopType() == ONSF_STOP_EVERYWHERE ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_STOP_EVERYWHERE);
+				order->SetNonStopType((order->GetNonStopType() == (_patches.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE)) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_STOP_EVERYWHERE);
 				break;
 			case OF_TRANSFER:
 				order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() ^ OUFB_TRANSFER));

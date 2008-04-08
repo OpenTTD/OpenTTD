@@ -201,7 +201,7 @@ static void DrawOrdersWindow(Window *w)
 					break;
 
 				case OT_GOTO_STATION:
-					SetDParam(1, _station_order_strings[!!order->GetNonStopType()][order->GetLoadType() | order->GetUnloadType()]);
+					SetDParam(1, _station_order_strings[!(order->GetNonStopType() == (_patches.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE))][order->GetLoadType() | order->GetUnloadType()]);
 					SetDParam(2, order->GetDestination());
 					break;
 
