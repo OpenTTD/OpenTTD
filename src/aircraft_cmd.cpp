@@ -703,7 +703,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static void CheckIfAircraftNeedsService(Vehicle *v)
 {
-	if (_patches.servint_aircraft == 0 || !VehicleNeedsService(v)) return;
+	if (_patches.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

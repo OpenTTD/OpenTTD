@@ -144,7 +144,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 
 static void CheckIfShipNeedsService(Vehicle *v)
 {
-	if (_patches.servint_ships == 0 || !VehicleNeedsService(v)) return;
+	if (_patches.servint_ships == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

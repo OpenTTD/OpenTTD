@@ -1911,7 +1911,7 @@ void RoadVehicle::Tick()
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->u.road.slot != NULL || _patches.servint_roadveh == 0 || !VehicleNeedsService(v)) return;
+	if (v->u.road.slot != NULL || _patches.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

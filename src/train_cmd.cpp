@@ -3543,7 +3543,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 {
 	static const uint MAX_ACCEPTABLE_DEPOT_DIST = 16;
 
-	if (_patches.servint_trains == 0 || !VehicleNeedsService(v)) return;
+	if (_patches.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

@@ -1352,7 +1352,7 @@ bool ProcessOrders(Vehicle *v)
 			/* Let a depot order in the orderlist interrupt. */
 			if (!(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) return false;
 
-			if ((v->current_order.GetDepotOrderType() & ODTFB_SERVICE) && !VehicleNeedsService(v)) {
+			if ((v->current_order.GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}
