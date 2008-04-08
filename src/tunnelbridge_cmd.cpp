@@ -791,20 +791,28 @@ static void DrawBridgeTramBits(int x, int y, byte z, int offset, bool overlay, b
 	/* The sprites under the vehicles are drawn as SpriteCombine. StartSpriteCombine() has already been called
 	 * The bounding boxes here are the same as for bridge front/roof */
 	if (head || !IsInvisibilitySet(TO_BRIDGES)) {
-		AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, !head && IsTransparencySet(TO_BRIDGES));
+		AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + tram_offsets[overlay][offset], PAL_NONE,
+			x, y, size_x[offset], size_y[offset], 0x28, z,
+			!head && IsTransparencySet(TO_BRIDGES));
 	}
 
 	/* Do not draw catenary if it is set invisible */
-	if (IsInvisibilitySet(TO_CATENARY)) return;
-
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset],  PAL_NONE, x, y, size_x[offset], size_y[offset], 0x28, z, IsTransparencySet(TO_CATENARY));
+	if (!IsInvisibilitySet(TO_CATENARY)) {
+		AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + back_offsets[offset], PAL_NONE,
+			x, y, size_x[offset], size_y[offset], 0x28, z,
+			IsTransparencySet(TO_CATENARY));
+	}
 
 	/* Start a new SpriteCombine for the front part */
 	EndSpriteCombine();
 	StartSpriteCombine();
 
 	/* For sloped sprites the bounding box needs to be higher, as the pylons stop on a higher point */
-	AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE, x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z, IsTransparencySet(TO_CATENARY), front_bb_offset_x[offset], front_bb_offset_y[offset]);
+	if (!IsInvisibilitySet(TO_CATENARY)) {
+		AddSortableSpriteToDraw(SPR_TRAMWAY_BASE + front_offsets[offset], PAL_NONE,
+			x, y, size_x[offset] + front_bb_offset_x[offset], size_y[offset] + front_bb_offset_y[offset], 0x28, z,
+			IsTransparencySet(TO_CATENARY), front_bb_offset_x[offset], front_bb_offset_y[offset]);
+	}
 }
 
 /**
