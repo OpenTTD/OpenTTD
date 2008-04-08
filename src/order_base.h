@@ -169,7 +169,7 @@ public:
 	/** What caused us going to the depot? */
 	inline OrderDepotTypeFlags GetDepotOrderType() const { return (OrderDepotTypeFlags)this->flags; }
 	/** What are we going to do when in the depot. */
-	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)this->flags; }
+	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)(this->flags & ODATFB_HALT); }
 
 	/** Set how the consist must be loaded. */
 	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 2, 1, !!load_type); }

@@ -43,7 +43,7 @@ DEFINE_OLD_POOL_GENERIC(Order, Order);
 
 OrderNonStopFlags Order::GetNonStopType() const
 {
-	if (_patches.new_nonstop || this->IsType(OT_GOTO_DEPOT)) {
+	if (_patches.new_nonstop) {
 		return (this->flags & 0x08) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
 	}
 
@@ -316,7 +316,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* Non stop not allowed for non-trains. */
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			// TODO: implement properly once savegame bump is done. if ((new_order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) != 0 && v->type != VEH_TRAIN) return CMD_ERROR;
 
 			/* Full load and unload are mutual exclusive. */
 			if ((new_order.GetLoadType() & OLFB_FULL_LOAD) && (new_order.GetUnloadType() & OUFB_UNLOAD)) return CMD_ERROR;
@@ -363,7 +363,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			// TODO: implement properly once savegame bump is done. if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 			if (new_order.GetDepotOrderType() & ~ODTFB_PART_OF_ORDERS) return CMD_ERROR;
 			if (new_order.GetDepotActionType() & ~ODATFB_HALT) return CMD_ERROR;
 			break;
@@ -381,7 +381,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]
 			 * non-stop orders (if any) are only valid for trains */
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			// TODO: implement properly once savegame bump is done. if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 
 			break;
 		}
