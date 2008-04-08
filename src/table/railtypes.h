@@ -60,6 +60,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* curve speed advantage (multiplier) */
 		0,
+
+		/* flags */
+		RTFB_NONE,
 	},
 
 	/** Electrified railway */
@@ -116,6 +119,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* curve speed advantage (multiplier) */
 		0,
+
+		/* flags */
+		RTFB_CATENARY,
 	},
 
 	/** Monorail */
@@ -168,6 +174,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* curve speed advantage (multiplier) */
 		1,
+
+		/* flags */
+		RTFB_NONE,
 	},
 
 	/** Maglev */
@@ -220,6 +229,9 @@ RailtypeInfo _railtypes[] = {
 
 		/* curve speed advantage (multiplier) */
 		2,
+
+		/* flags */
+		RTFB_NONE,
 	},
 };
 

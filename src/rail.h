@@ -13,6 +13,16 @@
 #include "economy_func.h"
 #include "tile_cmd.h"
 
+enum RailTypeFlag {
+	RTF_CATENARY = 0,  ///< Set if the rail type should have catenary drawn
+};
+
+enum RailTypeFlags {
+	RTFB_NONE     = 0,
+	RTFB_CATENARY = 1 << RTF_CATENARY,
+};
+DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
+
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
 struct RailtypeInfo {
@@ -93,6 +103,11 @@ struct RailtypeInfo {
 	 * Multiplier for curve maximum speed advantage
 	 */
 	byte curve_speed;
+
+	/**
+	 * Bit mask of rail type flags
+	 */
+	RailTypeFlags flags;
 };
 
 
@@ -190,7 +205,7 @@ int TicksToLeaveDepot(const Vehicle *v);
  */
 static inline bool HasCatenary(RailType rt)
 {
-	return rt == RAILTYPE_ELECTRIC;
+	return HasBit(GetRailTypeInfo(rt)->flags, RTF_CATENARY);
 }
 
 
