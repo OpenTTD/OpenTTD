@@ -810,24 +810,22 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Update the windows and full load flags, also for vehicles that share the same order list */
 		Vehicle *u = GetFirstVehicleFromSharedList(v);
 		DeleteOrderWarnings(u);
-		if (mof == MOF_LOAD || mof == MOF_UNLOAD) {
-			for (; u != NULL; u = u->next_shared) {
-				/* Toggle u->current_order "Full load" flag if it changed.
-				 * However, as the same flag is used for depot orders, check
-				 * whether we are not going to a depot as there are three
-				 * cases where the full load flag can be active and only
-				 * one case where the flag is used for depot orders. In the
-				 * other cases for the OrderTypeByte the flags are not used,
-				 * so do not care and those orders should not be active
-				 * when this function is called.
-				 */
-				if (sel_ord == u->cur_order_index &&
-						(u->current_order.IsType(OT_GOTO_STATION) || u->current_order.IsType(OT_LOADING)) &&
-						u->current_order.GetLoadType() != order->GetLoadType()) {
-					u->current_order.SetLoadType(order->GetLoadType());
-				}
-				InvalidateVehicleOrder(u);
+		for (; u != NULL; u = u->next_shared) {
+			/* Toggle u->current_order "Full load" flag if it changed.
+			 * However, as the same flag is used for depot orders, check
+			 * whether we are not going to a depot as there are three
+			 * cases where the full load flag can be active and only
+			 * one case where the flag is used for depot orders. In the
+			 * other cases for the OrderTypeByte the flags are not used,
+			 * so do not care and those orders should not be active
+			 * when this function is called.
+			 */
+			if (sel_ord == u->cur_order_index &&
+					(u->current_order.IsType(OT_GOTO_STATION) || u->current_order.IsType(OT_LOADING)) &&
+					u->current_order.GetLoadType() != order->GetLoadType()) {
+				u->current_order.SetLoadType(order->GetLoadType());
 			}
+			InvalidateVehicleOrder(u);
 		}
 	}
 
