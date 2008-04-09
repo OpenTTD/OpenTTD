@@ -2693,7 +2693,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK} Raspore
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prebacivanje na pogled rasporeda
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Naredbe)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Kraj naredbi - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servis
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nije moguće izgraditi željezničko vozilo...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Izgrađen: {LTBLUE}{NUM}{BLACK} Vrijednost: {LTBLUE}{CURRENCY}

@@ -2726,7 +2726,6 @@ STR_ORDER_VIEW                                                  :{BLACK}Ordens
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Alternar para ver as ordens
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Manutenção
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Impossível construir veículo ferroviário...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}

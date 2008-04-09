@@ -2711,7 +2711,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Fahrplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zur Fahrplanansicht wechseln
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ende der Aufträge - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Wartung
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Schienenfahrzeug kann nicht gebaut werden...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebaut: {LTBLUE}{NUM}{BLACK}  Wert: {LTBLUE}{CURRENCY}

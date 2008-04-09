@@ -2886,7 +2886,6 @@ STR_ORDER_VIEW                                                  :{BLACK}Завд
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Переключитись до вікна завдань
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Накази)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Кінець наказів - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Техогляд
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Неможливо збудувати поїзд...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}

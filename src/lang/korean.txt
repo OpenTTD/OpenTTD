@@ -2725,7 +2725,6 @@ STR_ORDER_VIEW                                                  :{BLACK}순서
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}순서 보기로 변경
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (경로)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 경로의 끝 - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}점검
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}기차를 생성할 수 없습니다...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}

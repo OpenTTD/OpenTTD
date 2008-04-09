@@ -2721,7 +2721,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Zaman ç
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zaman tablosu görünümüne geç
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Talimatlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Talimatların Sonu - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Bakım
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Tren satın alınamaz...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Tarih: {LTBLUE}{NUM}{BLACK} Değeri: {LTBLUE}{CURRENCY}

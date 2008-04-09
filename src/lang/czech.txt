@@ -2775,7 +2775,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Jízdní
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Přepnout na jízdní řád
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Příkazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec příkazů - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Údržba
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nemohu koupit vagon nebo lokomotivu...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}

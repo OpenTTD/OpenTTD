@@ -797,7 +797,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order->SetUnloadType((OrderUnloadFlags)data);
 				/* Full loading gets disabled when un loading! */
 				if ((data & OUFB_UNLOAD) != 0) {
-					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~OLFB_FULL_LOAD));
+					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~(OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)));
 				}
 				break;
 

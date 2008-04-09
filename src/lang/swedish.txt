@@ -2724,7 +2724,6 @@ STR_ORDER_VIEW                                                  :{BLACK}Order
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Byt till  ordervyn
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på order - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servning
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kan inte bygga järnvägfordon...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}

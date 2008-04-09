@@ -2553,7 +2553,6 @@ STR_REFIT_TIP                                                   :{BLACK}Elektu Å
 STR_REFIT_ORDER                                                 :(Transformu al {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordenoj)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fino de Ordenoj - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Prizorgo
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne povas krei relan veturilon...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Kreite: {LTBLUE}{NUM}{BLACK} Valoro: {LTBLUE}{CURRENCY}

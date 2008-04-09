@@ -44,8 +44,9 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_UNLOAD,
 	ORDER_WIDGET_REFIT,
 	ORDER_WIDGET_TRANSFER,
-	ORDER_WIDGET_SHARED_ORDER_LIST,
+	ORDER_WIDGET_SERVICE,
 	ORDER_WIDGET_RESIZE_BAR,
+	ORDER_WIDGET_SHARED_ORDER_LIST,
 	ORDER_WIDGET_RESIZE,
 };
 
@@ -117,8 +118,6 @@ static void DrawOrdersWindow(Window *w)
 	SetVScrollCount(w, v->num_orders + 1);
 
 	int sel = OrderGetSel(w);
-	SetDParam(2, STR_8827_FULL_LOAD);
-
 	const Order *order = GetVehicleOrder(v, sel);
 
 	if (v->owner == _local_player) {
@@ -137,12 +136,16 @@ static void DrawOrdersWindow(Window *w)
 		/* Disable list of vehicles with the same shared orders if there is no list */
 		w->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders || v->orders == NULL);
 		w->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
+		w->SetWidgetDisabledState(ORDER_WIDGET_SERVICE,   order == NULL); // Refit
 		w->HideWidget(ORDER_WIDGET_REFIT); // Refit
+		w->HideWidget(ORDER_WIDGET_SERVICE); // Service
 	} else {
 		w->DisableWidget(ORDER_WIDGET_TRANSFER);
+		w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
 	}
 
-	w->ShowWidget(ORDER_WIDGET_UNLOAD); // Unload
+	w->ShowWidget(ORDER_WIDGET_UNLOAD);
+	w->ShowWidget(ORDER_WIDGET_TRANSFER);
 
 	if (order != NULL) {
 		switch (order->GetType()) {
@@ -157,12 +160,13 @@ static void DrawOrdersWindow(Window *w)
 				break;
 
 			case OT_GOTO_DEPOT:
-				w->DisableWidget(ORDER_WIDGET_TRANSFER);
+				w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
 
 				/* Remove unload and replace it with refit */
 				w->HideWidget(ORDER_WIDGET_UNLOAD);
 				w->ShowWidget(ORDER_WIDGET_REFIT);
-				SetDParam(2,STR_SERVICE);
+				w->HideWidget(ORDER_WIDGET_TRANSFER);
+				w->ShowWidget(ORDER_WIDGET_SERVICE);
 				break;
 
 			default: // every other orders
@@ -397,11 +401,18 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v)
 	VehicleOrderID sel_ord = OrderGetSel(w);
 	const Order *order = GetVehicleOrder(v, sel_ord);
 
-	if (order->IsType(OT_GOTO_STATION)) {
-		DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | (order->GetLoadType() ^ OLFB_FULL_LOAD) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
-	} else {
-		DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_DEPOT_ACTION, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
-	}
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | ((order->GetLoadType() & OLFB_FULL_LOAD) ^ OLFB_FULL_LOAD) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+}
+
+/**
+ * Handle the click on the service.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
+static void OrderClick_Service(Window *w, const Vehicle *v)
+{
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), MOF_DEPOT_ACTION, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -507,7 +518,8 @@ static OnButtonVehClick* const _order_button_proc[] = {
 	OrderClick_Goto,
 	OrderClick_FullLoad,
 	OrderClick_Unload,
-	OrderClick_Transfer
+	OrderClick_Transfer,
+	OrderClick_Service,
 };
 
 static const uint16 _order_keycodes[] = {
@@ -618,12 +630,17 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				case ORDER_WIDGET_UNLOAD:
 					OrderClick_Unload(w, v);
 					break;
+
 				case ORDER_WIDGET_REFIT:
 					OrderClick_Refit(w, v);
 					break;
 
 				case ORDER_WIDGET_TRANSFER:
 					OrderClick_Transfer(w, v);
+					break;
+
+				case ORDER_WIDGET_SERVICE:
+					OrderClick_Service(w, v);
 					break;
 
 				case ORDER_WIDGET_TIMETABLE_VIEW:
@@ -740,14 +757,14 @@ static const Widget _orders_train_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,    53,   105,    76,    87, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   106,   158,    76,    87, STR_8825_NON_STOP,       STR_8855_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_NON_STOP
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   159,   211,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   212,   264,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   212,   264,    76,    87, STR_8827_FULL_LOAD,      STR_8857_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_FULL_LOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_TRANSFER,            STR_MAKE_THE_HIGHLIGHTED_ORDER},      // ORDER_WIDGET_TRANSFER
-
-	{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   373,   386,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_SERVICE,             STR_NULL},                            // ORDER_WIDGET_SERVICE
 
 	{      WWT_PANEL,   RESIZE_RTB,     14,   387,   386,    76,    87, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+	{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   373,   386,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
 
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   387,   398,    76,    87, 0x0,                     STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
@@ -777,14 +794,14 @@ static const Widget _orders_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,    64,   128,    76,    87, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
 	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   129,   192,    76,    87, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   193,   256,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   193,   256,    76,    87, STR_8827_FULL_LOAD,      STR_8857_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_FULL_LOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_TRANSFER,            STR_MAKE_THE_HIGHLIGHTED_ORDER},      // ORDER_WIDGET_TRANSFER
-
-	{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   384,   397,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_SERVICE,             STR_NULL},                            // ORDER_WIDGET_SERVICE
 
 	{      WWT_PANEL,   RESIZE_RTB,     14,   397,   396,    76,    87, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+	{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   384,   397,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
 
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   398,   409,    76,    87, 0x0,                     STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
@@ -810,18 +827,18 @@ static const Widget _other_orders_widgets[] = {
 
 	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   320,   331,    14,    75, 0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},    // ORDER_WIDGET_SCROLLBAR
 
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SKIP
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_DELETE
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_TRANSFER
-
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SKIP
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_TRANSFER
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE
 
 	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   319,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
+	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
 
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   320,   331,    76,    87, 0x0,                STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},

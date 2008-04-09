@@ -2726,7 +2726,6 @@ STR_ORDER_VIEW                                                  :{BLACK}Сорт
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Промени сортацията
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Заповеди)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Край на Заповедите - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Ремонт
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Не може да купиш ЖП машина...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Купи: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}

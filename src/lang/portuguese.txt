@@ -2710,7 +2710,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Horário
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Mudar para a vista de horário
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Manutenção
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Não é possível construir veículo ferroviário...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}

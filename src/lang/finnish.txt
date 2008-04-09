@@ -2670,7 +2670,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Aikataul
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näytä aikataulu
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (aikataulu)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - aikataulun loppu - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Huolto
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Yksikköä ei voi rakentaa...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}

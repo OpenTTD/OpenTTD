@@ -2825,7 +2825,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Menetren
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Átkapcsolás menetrendi nézetre
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Menetrend vége - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Javítás
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nem veheted meg a vasúti járművet...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK} Vásárlás éve: {LTBLUE}{NUM}{BLACK} Érték: {LTBLUE}{CURRENCY}

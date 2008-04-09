@@ -2690,7 +2690,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Timetabl
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Switch to the timetable view
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - End of Orders - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Service
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Can't build railroad vehicle...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Built: {LTBLUE}{NUM}{BLACK} Value: {LTBLUE}{CURRENCY}

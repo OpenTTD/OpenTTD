@@ -2679,7 +2679,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Rooster
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Skakel na die rooster uitsig
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Opdrae)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Einde van Opdrae - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Diens
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Kan nie spoorweg voertuig bou nie...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}

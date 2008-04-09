@@ -2805,7 +2805,6 @@ STR_ORDER_VIEW                                                  :{BLACK}Ukazi
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Preklop na pogled ukazov
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ukazi)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec ukazov - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servis
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ni mogoče kupiti vozila ...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Zgrajeno: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}

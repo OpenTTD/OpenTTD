@@ -2819,7 +2819,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec poleceń - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Serwis
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nie można wybudować lokomotywy...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Budowa: {LTBLUE}{NUM}{BLACK} Wartość: {LTBLUE}{CURRENCY}

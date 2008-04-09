@@ -2810,7 +2810,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Sõidupl
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näita sõiduplaani
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (käsud)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sihtpunktide lõpp - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Hooldus
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Rööbassõidukit ei saa ehitada...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}

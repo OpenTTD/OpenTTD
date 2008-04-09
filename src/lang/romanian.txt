@@ -2691,7 +2691,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}Orar
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Comuta in modul de vizualizare orar
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Comenzi)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sfârşitul comenzilor - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Service
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nu pot construi vehiculul...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Cumpărat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}

@@ -2486,7 +2486,6 @@ STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_TIMETABLE_VIEW                                              :{BLACK}Táboa de tempo
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordes)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin das Ordes - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servicio
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}No se pode construí-lo vehículo de ferrocarril...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}

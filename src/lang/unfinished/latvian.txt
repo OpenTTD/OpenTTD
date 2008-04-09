@@ -1795,7 +1795,6 @@ STR_8812_EMPTY                                                  :{LTBLUE}Tukšs
 STR_8816                                                        :{BLACK}-
 
 
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Serviss
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo

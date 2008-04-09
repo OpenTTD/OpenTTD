@@ -2725,7 +2725,6 @@ STR_ORDER_VIEW                                                  :{BLACK}Skipanir
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Skipta yfir í skipanasýn
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Skipanir)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Endi skipana - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Skoðun
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Get ekki byggt lest...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Framleitt: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}

@@ -2687,7 +2687,6 @@ STR_TIMETABLE_VIEW                                              :{BLACK}時刻�
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}切換至時刻表檢視模式
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (指令)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 指令結束 - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}維護
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}無法購買鐵道車輛...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   購於：{LTBLUE}{NUM}{BLACK} 價值：{LTBLUE}{CURRENCY}
