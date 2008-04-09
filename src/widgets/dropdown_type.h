@@ -60,7 +60,8 @@ typedef std::list<DropDownListItem *> DropDownList;
  * @param selected The initially selected list item.
  * @param button   The widget within the parent window that is used to determine
  *                 the list's location.
+ * @param width    Override the width determined by the selected widget.
  */
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button);
+void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width = 0);
 
 #endif /* WIDGETS_DROPDOWN_TYPE_H */

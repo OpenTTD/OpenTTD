@@ -201,7 +201,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
+void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width)
 {
 	bool is_dropdown_menu_shown = w->IsWidgetLowered(button);
 
@@ -246,17 +246,19 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 		}
 	}
 
+	if (width == 0) width = wi->right - wi->left + 1;
+
 	Window *dw = AllocateWindow(
 		w->left + wi->left,
 		top,
-		wi->right - wi->left + 1,
+		width,
 		height,
 		DropDownMenuWndProc,
 		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	dw->widget[0].color = wi->color;
-	dw->widget[0].right = wi->right - wi->left;
+	dw->widget[0].right = width + 1;
 	dw->widget[0].bottom = height - 1;
 
 	dw->SetWidgetHiddenState(1, !scroll);
@@ -286,7 +288,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button)
 	WP(dw, dropdown_d).drag_mode        = true;
 }
 
-void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask)
+void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
 {
 	/* Don't create a new list if we're just closing an existing menu */
 	if (w->IsWidgetLowered(button)) {
@@ -310,7 +312,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		return;
 	}
 
-	ShowDropDownList(w, list, selected, button);
+	ShowDropDownList(w, list, selected, button, width);
 }
 
 /**
