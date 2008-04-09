@@ -720,61 +720,97 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
  *                        the order will be inserted before that one
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
- * @param p2 mode to change the order to (always set)
+ * @param p2 various bitstuffed elements
+ *  - p2 = (bit 0 - 1) - what data to modify (@see ModifyOrderFlags)
+ *  - p2 = (bit 2 - 5) - the data to modify
  */
 CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
-	Order *order;
 	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
-	VehicleID veh   = GB(p1,  0, 16);
+	VehicleID veh          = GB(p1,  0, 16);
+	ModifyOrderFlags mof   = (ModifyOrderFlags)GB(p2,  0,  2);
+	uint8 data             = GB(p2,  2,  4);
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
-	if (p2 != OF_FULL_LOAD && p2 != OF_UNLOAD && p2 != OF_NON_STOP && p2 != OF_TRANSFER) return CMD_ERROR;
 
-	v = GetVehicle(veh);
-
+	Vehicle *v = GetVehicle(veh);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
 	if (sel_ord >= v->num_orders) return CMD_ERROR;
 
-	order = GetVehicleOrder(v, sel_ord);
-	if ((!order->IsType(OT_GOTO_STATION)  || GetStation(order->GetDestination())->IsBuoy()) &&
-			(!order->IsType(OT_GOTO_DEPOT)    || p2 == OF_UNLOAD) &&
-			(!order->IsType(OT_GOTO_WAYPOINT) || p2 != OF_NON_STOP)) {
-		return CMD_ERROR;
+	Order *order = GetVehicleOrder(v, sel_ord);
+	switch (order->GetType()) {
+		case OT_GOTO_STATION:
+			if (mof == MOF_DEPOT_ACTION || GetStation(order->GetDestination())->IsBuoy()) return CMD_ERROR;
+			break;
+
+		case OT_GOTO_DEPOT:
+			if (mof == MOF_UNLOAD || mof == MOF_LOAD) return CMD_ERROR;
+			break;
+
+		case OT_GOTO_WAYPOINT:
+			if (mof != MOF_NON_STOP) return CMD_ERROR;
+			break;
+
+		default:
+			return CMD_ERROR;
+	}
+
+	switch (mof) {
+		case MOF_NON_STOP:
+			if (data >= ONSF_END) return CMD_ERROR;
+			if (data == order->GetNonStopType()) return CMD_ERROR;
+			break;
+
+		case MOF_UNLOAD:
+			if ((data & ~(OUFB_UNLOAD | OUFB_TRANSFER)) != 0) return CMD_ERROR;
+			if (data == order->GetUnloadType()) return CMD_ERROR;
+			break;
+
+		case MOF_LOAD:
+			if ((data & ~OLFB_FULL_LOAD) != 0) return CMD_ERROR;
+			if (data == order->GetLoadType()) return CMD_ERROR;
+			break;
+
+		case MOF_DEPOT_ACTION:
+			if (data != 0) return CMD_ERROR;
+			break;
 	}
 
 	if (flags & DC_EXEC) {
-		switch (p2) {
-			case OF_FULL_LOAD:
-				if (order->IsType(OT_GOTO_DEPOT)) {
-					order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() ^ ODTFB_SERVICE));
-				} else {
-					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() ^ OLFB_FULL_LOAD));
+		switch (mof) {
+			case MOF_NON_STOP:
+				order->SetNonStopType((OrderNonStopFlags)data);
+				break;
+
+			case MOF_UNLOAD:
+				order->SetUnloadType((OrderUnloadFlags)data);
+				/* Full loading gets disabled when un loading! */
+				if ((data & OUFB_UNLOAD) != 0) {
+					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~OLFB_FULL_LOAD));
+				}
+				break;
+
+			case MOF_LOAD:
+				order->SetLoadType((OrderLoadFlags)data);
+				/* Unloading gets disabled when full loading! */
+				if ((data & OLFB_FULL_LOAD) != 0) {
 					order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_UNLOAD));
 				}
 				break;
-			case OF_UNLOAD:
-				order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() ^ OUFB_UNLOAD));
-				order->SetLoadType(OLF_LOAD_IF_POSSIBLE);
+
+			case MOF_DEPOT_ACTION:
+				order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() ^ ODTFB_SERVICE));
 				break;
-			case OF_NON_STOP:
-				order->SetNonStopType((order->GetNonStopType() == (_patches.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE)) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_STOP_EVERYWHERE);
-				break;
-			case OF_TRANSFER:
-				order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() ^ OUFB_TRANSFER));
-				break;
+
 			default: NOT_REACHED();
 		}
 
 		/* Update the windows and full load flags, also for vehicles that share the same order list */
-		{
-			Vehicle* u;
-
-			u = GetFirstVehicleFromSharedList(v);
-			DeleteOrderWarnings(u);
+		Vehicle *u = GetFirstVehicleFromSharedList(v);
+		DeleteOrderWarnings(u);
+		if (mof == MOF_LOAD || mof == MOF_UNLOAD) {
 			for (; u != NULL; u = u->next_shared) {
 				/* Toggle u->current_order "Full load" flag if it changed.
 				 * However, as the same flag is used for depot orders, check
@@ -786,7 +822,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * when this function is called.
 				 */
 				if (sel_ord == u->cur_order_index &&
-						!u->current_order.IsType(OT_GOTO_DEPOT) &&
+						(u->current_order.IsType(OT_GOTO_STATION) || u->current_order.IsType(OT_LOADING)) &&
 						u->current_order.GetLoadType() != order->GetLoadType()) {
 					u->current_order.SetLoadType(order->GetLoadType());
 				}

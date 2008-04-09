@@ -404,7 +404,14 @@ static void OrderClick_Goto(Window *w, const Vehicle *v)
  */
 static void OrderClick_FullLoad(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OF_FULL_LOAD, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	VehicleOrderID sel_ord = OrderGetSel(w);
+	const Order *order = GetVehicleOrder(v, sel_ord);
+
+	if (order->IsType(OT_GOTO_STATION)) {
+		DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | (order->GetLoadType() ^ OLFB_FULL_LOAD) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	} else {
+		DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_DEPOT_ACTION, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	}
 }
 
 /**
@@ -415,7 +422,10 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v)
  */
 static void OrderClick_Unload(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OF_UNLOAD,    NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	VehicleOrderID sel_ord = OrderGetSel(w);
+	const Order *order = GetVehicleOrder(v, sel_ord);
+
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (order->GetUnloadType() ^ OUFB_UNLOAD) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -426,7 +436,10 @@ static void OrderClick_Unload(Window *w, const Vehicle *v)
  */
 static void OrderClick_Nonstop(Window *w, const Vehicle *v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), OF_NON_STOP,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	VehicleOrderID sel_ord = OrderGetSel(w);
+	const Order *order = GetVehicleOrder(v, sel_ord);
+
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_NON_STOP | ((order->GetNonStopType() == (_patches.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE)) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_STOP_EVERYWHERE) << 2,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -437,7 +450,10 @@ static void OrderClick_Nonstop(Window *w, const Vehicle *v)
  */
 static void OrderClick_Transfer(Window* w, const Vehicle* v)
 {
-	DoCommandP(v->tile, v->index + (OrderGetSel(w) <<  16), OF_TRANSFER, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	VehicleOrderID sel_ord = OrderGetSel(w);
+	const Order *order = GetVehicleOrder(v, sel_ord);
+
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (order->GetUnloadType() ^ OUFB_TRANSFER) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**

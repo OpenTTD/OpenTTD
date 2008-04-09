@@ -61,6 +61,7 @@ enum OrderNonStopFlags {
 	ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS = 1, ///< The vehicle will not stop at any stations it passes except the destination.
 	ONSF_NO_STOP_AT_DESTINATION_STATION   = 2, ///< The vehicle will stop at any station it passes except the destination.
 	ONSF_NO_STOP_AT_ANY_STATION           = 3, ///< The vehicle will not stop at any stations it passes including the destination.
+	ONSF_END
 };
 
 /**
@@ -81,13 +82,13 @@ enum OrderDepotActionFlags {
 };
 
 /**
- * Enumeration for the 'flag' to toggle in CmdModifyOrder.
+ * Enumeration for the data to set in CmdModifyOrder.
  */
-enum {
-	OF_TRANSFER          = 0,
-	OF_UNLOAD            = 1,
-	OF_FULL_LOAD         = 2,
-	OF_NON_STOP          = 3
+enum ModifyOrderFlags {
+	MOF_NON_STOP,      ///< Passes a OrderNonStopFlags.
+	MOF_UNLOAD,        ///< Passes an OrderUnloadType.
+	MOF_LOAD,          ///< Passes an OrderLoadType
+	MOF_DEPOT_ACTION,  ///< Toggle the 'service' if needed flag.
 };
 
 
