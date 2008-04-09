@@ -157,60 +157,60 @@ static const Widget _player_finances_small_widgets[] = {
 static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		PlayerID player = (PlayerID)w->window_number;
-		const Player *p = GetPlayer(player);
-
-		/* Recheck the size of the window as it might need to be resized due to the local player changing */
-		int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 204);
-		if (w->height != new_height) {
-			/* Make window dirty before and after resizing */
-			SetWindowDirty(w);
-			w->height = new_height;
-			SetWindowDirty(w);
-
-			w->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
-			w->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
-		}
-
-		/* Borrow button only shows when there is any more money to loan */
-		w->SetWidgetDisabledState(PFW_WIDGET_INCREASE_LOAN, p->current_loan == _economy.max_loan);
-
-		/* Repay button only shows when there is any more money to repay */
-		w->SetWidgetDisabledState(PFW_WIDGET_REPAY_LOAN, player != _local_player || p->current_loan == 0);
-
-		SetDParam(0, p->index);
-		SetDParam(1, p->index);
-		SetDParam(2, LOAN_INTERVAL);
-		DrawWindowWidgets(w);
-
-		DrawPlayerEconomyStats(p, (byte)WP(w, def_d).data_1);
-	} break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
-			byte mode = (byte)WP(w, def_d).data_1;
-			bool stickied = !!(w->flags4 & WF_STICKY);
-			int oldtop = w->top;   ///< current top position of the window before closing it
-			int oldleft = w->left; ///< current left position of the window before closing it
+		case WE_PAINT: {
 			PlayerID player = (PlayerID)w->window_number;
+			const Player *p = GetPlayer(player);
 
-			DeleteWindow(w);
-			/* Open up the (toggled size) Finance window at the same position as the previous */
-			DoShowPlayerFinances(player, !HasBit(mode, 0), stickied, oldtop, oldleft);
-		}
-		break;
+			/* Recheck the size of the window as it might need to be resized due to the local player changing */
+			int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 204);
+			if (w->height != new_height) {
+				/* Make window dirty before and after resizing */
+				SetWindowDirty(w);
+				w->height = new_height;
+				SetWindowDirty(w);
 
-		case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
-			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
+				w->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
+				w->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
+			}
+
+			/* Borrow button only shows when there is any more money to loan */
+			w->SetWidgetDisabledState(PFW_WIDGET_INCREASE_LOAN, p->current_loan == _economy.max_loan);
+
+			/* Repay button only shows when there is any more money to repay */
+			w->SetWidgetDisabledState(PFW_WIDGET_REPAY_LOAN, player != _local_player || p->current_loan == 0);
+
+			SetDParam(0, p->index);
+			SetDParam(1, p->index);
+			SetDParam(2, LOAN_INTERVAL);
+			DrawWindowWidgets(w);
+
+			DrawPlayerEconomyStats(p, (byte)WP(w, def_d).data_1);
+		} break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
+					byte mode = (byte)WP(w, def_d).data_1;
+					bool stickied = !!(w->flags4 & WF_STICKY);
+					int oldtop = w->top;   ///< current top position of the window before closing it
+					int oldleft = w->left; ///< current left position of the window before closing it
+					PlayerID player = (PlayerID)w->window_number;
+
+					DeleteWindow(w);
+					/* Open up the (toggled size) Finance window at the same position as the previous */
+					DoShowPlayerFinances(player, !HasBit(mode, 0), stickied, oldtop, oldleft);
+				}
+				break;
+
+				case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
+					DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
+					break;
+
+				case PFW_WIDGET_REPAY_LOAN: /* repay loan */
+					DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
+					break;
+			}
 			break;
-
-		case PFW_WIDGET_REPAY_LOAN: /* repay loan */
-			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
-			break;
-		}
-		break;
 	}
 }
 
@@ -1331,31 +1331,30 @@ void ShowPlayerCompany(PlayerID player)
 static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		Player *p = GetPlayer((PlayerID)w->window_number);
-		SetDParam(0, STR_COMPANY_NAME);
-		SetDParam(1, p->index);
-		DrawWindowWidgets(w);
+		case WE_PAINT: {
+			Player *p = GetPlayer((PlayerID)w->window_number);
+			SetDParam(0, STR_COMPANY_NAME);
+			SetDParam(1, p->index);
+			DrawWindowWidgets(w);
 
-		DrawPlayerFace(p->face, p->player_color, 2, 16);
+			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-		SetDParam(0, p->index);
-		SetDParam(1, p->bankrupt_value);
-		DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
-		break;
-	}
+			SetDParam(0, p->index);
+			SetDParam(1, p->bankrupt_value);
+			DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
+		} break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 3:
-			DeleteWindow(w);
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case 3:
+					DeleteWindow(w);
+					break;
+				case 4: {
+					DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
+					break;
+				}
+			}
 			break;
-		case 4: {
-			DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
-			break;
-		}
-		}
-		break;
 	}
 }
 
@@ -1409,79 +1408,81 @@ extern StringID EndGameGetPerformanceTitleFromValue(uint value);
 static void EndGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		const Player *p;
-		uint x, y;
+		case WE_PAINT: {
+			const Player *p;
+			uint x, y;
 
-		SetupHighScoreEndWindow(w, &x, &y);
+			SetupHighScoreEndWindow(w, &x, &y);
 
-		if (!IsValidPlayer(_local_player)) break;
+			if (!IsValidPlayer(_local_player)) break;
 
-		p = GetPlayer(_local_player);
-		/* We need to get performance from last year because the image is shown
-		 * at the start of the new year when these things have already been copied */
-		if (WP(w, highscore_d).background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
-			SetDParam(0, p->index);
-			SetDParam(1, p->index);
-			SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
-			DrawStringMultiCenter(x + (640 / 2), y + 107, STR_021C_OF_ACHIEVES_STATUS, 640);
-		} else {
-			SetDParam(0, p->index);
-			SetDParam(1, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
-			DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
-		}
-	} break;
-	case WE_CLICK: /* Close the window (and show the highscore window) */
-		DeleteWindow(w);
-		break;
-	case WE_DESTROY: /* Show the highscore window when this one is closed */
-		if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
-		ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
-		break;
+			p = GetPlayer(_local_player);
+			/* We need to get performance from last year because the image is shown
+			 * at the start of the new year when these things have already been copied */
+			if (WP(w, highscore_d).background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
+				SetDParam(0, p->index);
+				SetDParam(1, p->index);
+				SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+				DrawStringMultiCenter(x + (640 / 2), y + 107, STR_021C_OF_ACHIEVES_STATUS, 640);
+			} else {
+				SetDParam(0, p->index);
+				SetDParam(1, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+				DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
+			}
+		} break;
+
+		case WE_CLICK: /* Close the window (and show the highscore window) */
+			DeleteWindow(w);
+			break;
+
+		case WE_DESTROY: /* Show the highscore window when this one is closed */
+			if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
+			ShowHighscoreTable(w->window_number, WP(w, highscore_d).rank);
+			break;
 	}
 }
 
 static void HighScoreWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		const HighScore *hs = _highscore_table[w->window_number];
-		uint x, y;
-		uint8 i;
+		case WE_PAINT: {
+			const HighScore *hs = _highscore_table[w->window_number];
+			uint x, y;
+			uint8 i;
 
-		SetupHighScoreEndWindow(w, &x, &y);
+			SetupHighScoreEndWindow(w, &x, &y);
 
-		SetDParam(0, _patches.ending_year);
-		SetDParam(1, w->window_number + STR_6801_EASY);
-		DrawStringMultiCenter(x + (640 / 2), y + 62, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, 500);
+			SetDParam(0, _patches.ending_year);
+			SetDParam(1, w->window_number + STR_6801_EASY);
+			DrawStringMultiCenter(x + (640 / 2), y + 62, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, 500);
 
-		/* Draw Highscore peepz */
-		for (i = 0; i < lengthof(_highscore_table[0]); i++) {
-			SetDParam(0, i + 1);
-			DrawString(x + 40, y + 140 + (i * 55), STR_0212, TC_BLACK);
+			/* Draw Highscore peepz */
+			for (i = 0; i < lengthof(_highscore_table[0]); i++) {
+				SetDParam(0, i + 1);
+				DrawString(x + 40, y + 140 + (i * 55), STR_0212, TC_BLACK);
 
-			if (hs[i].company[0] != '\0') {
-				TextColour colour = (WP(w, highscore_d).rank == (int8)i) ? TC_RED : TC_BLACK; // draw new highscore in red
+				if (hs[i].company[0] != '\0') {
+					TextColour colour = (WP(w, highscore_d).rank == (int8)i) ? TC_RED : TC_BLACK; // draw new highscore in red
 
-				DoDrawString(hs[i].company, x + 71, y + 140 + (i * 55), colour);
-				SetDParam(0, hs[i].title);
-				SetDParam(1, hs[i].score);
-				DrawString(x + 71, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
+					DoDrawString(hs[i].company, x + 71, y + 140 + (i * 55), colour);
+					SetDParam(0, hs[i].title);
+					SetDParam(1, hs[i].score);
+					DrawString(x + 71, y + 160 + (i * 55), STR_HIGHSCORE_STATS, colour);
+				}
 			}
+		} break;
+
+		case WE_CLICK: /* Onclick to close window, and in destroy event handle the rest */
+			DeleteWindow(w);
+			break;
+
+		case WE_DESTROY: /* Get back all the hidden windows */
+			if (_game_mode != GM_MENU) ShowVitalWindows();
+
+			if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
+			break;
 		}
-	} break;
-
-	case WE_CLICK: /* Onclick to close window, and in destroy event handle the rest */
-		DeleteWindow(w);
-		break;
-
-	case WE_DESTROY: /* Get back all the hidden windows */
-		if (_game_mode != GM_MENU) ShowVitalWindows();
-
-		if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
-		break;
-	}
-	}
+}
 
 static const Widget _highscore_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 16, 0, 640, 0, 480, 0x0, STR_NULL},
