@@ -41,6 +41,12 @@ BackuppedOrders _backup_orders_data;
 
 DEFINE_OLD_POOL_GENERIC(Order, Order);
 
+OrderLoadFlags Order::GetLoadType() const
+{
+	if ((this->flags & OLFB_FULL_LOAD) == 0) return OLF_LOAD_IF_POSSIBLE;
+	return _patches.full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD;
+}
+
 OrderNonStopFlags Order::GetNonStopType() const
 {
 	if (_patches.new_nonstop) {
@@ -322,7 +328,10 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if ((new_order.GetLoadType() & OLFB_FULL_LOAD) && (new_order.GetUnloadType() & OUFB_UNLOAD)) return CMD_ERROR;
 
 			/* Filter invalid load/unload types. */
-			if (new_order.GetLoadType() & ~OLFB_FULL_LOAD) return CMD_ERROR;
+			switch (new_order.GetLoadType()) {
+				case OLF_LOAD_IF_POSSIBLE: case OLFB_FULL_LOAD: case OLF_FULL_LOAD_ANY: break;
+				default: return CMD_ERROR;
+			}
 			if (new_order.GetUnloadType() & ~(OUFB_UNLOAD | OUFB_TRANSFER)) return CMD_ERROR;
 			break;
 		}

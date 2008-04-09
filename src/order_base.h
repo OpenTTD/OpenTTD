@@ -161,7 +161,7 @@ public:
 	void SetRefit(CargoID cargo, byte subtype = 0);
 
 	/** How must the consist be loaded? */
-	inline OrderLoadFlags GetLoadType() const { return (OrderLoadFlags)(this->flags & OLFB_FULL_LOAD); }
+	OrderLoadFlags GetLoadType() const;
 	/** How must the consist be unloaded? */
 	inline OrderUnloadFlags GetUnloadType() const { return (OrderUnloadFlags)GB(this->flags, 0, 2); }
 	/** Where must we stop? */

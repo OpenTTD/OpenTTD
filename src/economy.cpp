@@ -1730,7 +1730,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	} else {
 		bool finished_loading = true;
 		if (v->current_order.GetLoadType() & OLFB_FULL_LOAD) {
-			if (_patches.full_load_any) {
+			if (v->current_order.GetLoadType() == OLF_FULL_LOAD_ANY) {
 				/* if the aircraft carries passengers and is NOT full, then
 				 * continue loading, no matter how much mail is in */
 				if ((v->type == VEH_AIRCRAFT && IsCargoInClass(v->cargo_type, CC_PASSENGERS) && v->cargo_cap != v->cargo.Count()) ||
