@@ -40,8 +40,12 @@ struct facesel_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
-static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
-static void DoSelectPlayerFace(PlayerID player, bool show_big);
+enum {
+	FIRST_GUI_CALL = INT_MAX,  ///< default value to specify thuis is the first call of the resizable gui
+};
+
+static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
+static void DoSelectPlayerFace(PlayerID player, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
@@ -188,10 +192,15 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
 			byte mode = (byte)WP(w, def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
+			int oldtop = w->top;   ///< current top position of the window before closing it
+			int oldleft = w->left; ///< current left position of the window before closing it
 			PlayerID player = (PlayerID)w->window_number;
+
 			DeleteWindow(w);
-			DoShowPlayerFinances(player, !HasBit(mode, 0), stickied);
-		} break;
+			/* Open up the (toggled size) Finance window at the same position as the previous */
+			DoShowPlayerFinances(player, !HasBit(mode, 0), stickied, oldtop, oldleft);
+		}
+		break;
 
 		case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
 			DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
@@ -221,7 +230,18 @@ static const WindowDesc _player_finances_small_desc = {
 	PlayerFinancesWndProc
 };
 
-static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied)
+/**
+ * Open the small/large finance window of the player
+ *
+ * @param player         the player who's finances are requested to be seen
+ * @param show_small     show large or small version opf the window
+ * @param show_stickied  previous "stickyness" of the window
+ * @param top            previous top position of the window
+ * @param left           previous left position of the window
+ *
+ * @pre is player a valid player
+ */
+static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top, int left)
 {
 	if (!IsValidPlayer(player)) return;
 
@@ -229,7 +249,14 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 	if (w != NULL) {
 		w->caption_color = w->window_number;
 		WP(w, def_d).data_1 = show_small;
+
 		if (show_stickied) w->flags4 |= WF_STICKY;
+
+		/* Check if repositioning from default is required */
+		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
+			w->top = top;
+			w->left = left;
+		}
 	}
 }
 
@@ -811,11 +838,15 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			switch (e->we.click.widget) {
 				/* Toggle size, advanced/simple face selection */
 				case PFW_WIDGET_TOGGLE_LARGE_SMALL:
-				case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON:
+				case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
+					int oldtop = w->top;     ///< current top position of the window before closing it
+					int oldleft = w->left;   ///< current top position of the window before closing it
+
 					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
 					DeleteWindow(w);
-					DoSelectPlayerFace((PlayerID)w->window_number, !WP(w, facesel_d).advanced);
-					break;
+					/* Open up the (toggled size) Face selection window at the same position as the previous */
+					DoSelectPlayerFace((PlayerID)w->window_number, !WP(w, facesel_d).advanced, oldtop, oldleft);
+				} break;
 
 				/* Cancel button */
 				case PFW_WIDGET_CANCEL:
@@ -949,10 +980,12 @@ static const WindowDesc _select_player_face_adv_desc = {
  *
  * @param player the player which face shall be edited
  * @param adv    simple or advanced player face selection window
+ * @param top    previous top position of the window
+ * @param left   previous left position of the window
  *
  * @pre is player a valid player
  */
-static void DoSelectPlayerFace(PlayerID player, bool adv)
+static void DoSelectPlayerFace(PlayerID player, bool adv, int top, int left)
 {
 	if (!IsValidPlayer(player)) return;
 
@@ -962,6 +995,12 @@ static void DoSelectPlayerFace(PlayerID player, bool adv)
 		w->caption_color = w->window_number;
 		WP(w, facesel_d).face = GetPlayer((PlayerID)w->window_number)->face;
 		WP(w, facesel_d).advanced = adv;
+
+		/* Check if repositioning from default is required */
+		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
+			w->top = top;
+			w->left = left;
+		}
 	}
 }
 
