@@ -2653,26 +2653,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Подробности)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак на пътя
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Отиди на {STATION}
-STR_GO_TO_TRANSFER                                              :Отиди на {STATION} (Обмени и вземи товар)
-STR_8807_GO_TO_UNLOAD                                           :Отиди на {STATION} (Разтовари)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Отиди на {STATION} (Обмени и не взимай нов товар)
-STR_8808_GO_TO_LOAD                                             :Отиди на {STATION} (Товари)
-STR_GO_TO_TRANSFER_LOAD                                         :Отиди на {STATION} (Обмени и изчакай до пълен товар)
-STR_880A_GO_NON_STOP_TO                                         :Отиди без да спираш на {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Отиди без да спираш на {STATION} (Обмени и вземи товар)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :отиди без да спираш на {STATION} (Разтовари)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Отиди без да спираш на {STATION} (Обмени и не товари)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Отиди без да спираш на {STATION} (Товари)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Отиди без да спираш на {STATION} (Обмени и изчакай до пълен товар)
 STR_GO_TO_TRAIN_DEPOT                                           :Отиди до Влаковото депо на {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонт в {TOWN} влаково депо
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди без да спираш на {TOWN} Влаково депо
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонт без спиране в {TOWN} влаково депо
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Патувай (без разписание)
 STR_TIMETABLE_TRAVEL_FOR                                        :Патувай за {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}

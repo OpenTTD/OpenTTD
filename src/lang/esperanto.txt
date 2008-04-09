@@ -2491,20 +2491,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno okupas la lokon
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Iru al {STATION}
-STR_GO_TO_TRANSFER                                              :Iru al {STATION} (Transigu kaj prenu ŝarĝon)
-STR_8807_GO_TO_UNLOAD                                           :Iru al {STATION} (Deŝarĝu)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Iru al {STATION} (Transigu kaj lasu malplena)
-STR_8808_GO_TO_LOAD                                             :Iru al {STATION} (Ŝarĝu)
-STR_GO_TO_TRANSFER_LOAD                                         :Iru al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
-STR_880A_GO_NON_STOP_TO                                         :Iru senhalte al {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Iru senhalte al {STATION} (Transigu kaj prenu ŝarĝon)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Iru senhalte al {STATION} (Deŝarĝu)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Iru senhalte al {STATION} (Transigu kaj lasu malplena)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Iru senhalte al {STATION} (Ŝarĝu)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Iru senhalte al {STATION} (Transigu kaj atendu ĝis plena ŝarĝo)
 STR_GO_TO_TRAIN_DEPOT                                           :Iru al {TOWN} Trajndeponejo
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Prizorgo ĉe {TOWN} Trajndeponejo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Iru senhalte al {TOWN} Trajndeponejo

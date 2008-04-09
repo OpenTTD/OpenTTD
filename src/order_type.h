@@ -43,6 +43,7 @@ enum OrderUnloadFlags {
 	OUF_UNLOAD_IF_POSSIBLE = 0,      ///< Unload all cargo that the station accepts.
 	OUFB_TRANSFER          = 1 << 0, ///< Transfer all cargo onto the platform.
 	OUFB_UNLOAD            = 1 << 1, ///< Force unloading all cargo onto the platform, possibly not getting paid.
+	OUFB_NO_UNLOAD         = 1 << 2, ///< Totally no unloading will be done.
 };
 
 /**

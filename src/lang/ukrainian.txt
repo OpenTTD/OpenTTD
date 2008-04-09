@@ -2813,26 +2813,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поїзд на шляху
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8806_GO_TO                                                  :Прямувати до {STATION}
-STR_GO_TO_TRANSFER                                              :Прямувати до {STATION} (Пересадити і забрати вантаж)
-STR_8807_GO_TO_UNLOAD                                           :Прямувати до {STATION} (розвантажитися)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Прямувати до {STATION} (Пересадити і залишити вантаж)
-STR_8808_GO_TO_LOAD                                             :Прямувати до {STATION} (Завантажитися)
-STR_GO_TO_TRANSFER_LOAD                                         :Прямувати до {STATION} (Пересадити і завантажити повністю)
-STR_880A_GO_NON_STOP_TO                                         :Прямувати без зупинок до {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Прямувати без зупинок до {STATION} (Пересадити і забрати вантаж)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Прямувати без зупинок до {STATION} (розвантажитися)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Прямувати без зупинок до {STATION} (Пересадити і залишити вантаж)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Прямувати без зупинок до {STATION} (Завантажити)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Прямувати без зупинок до {STATION} (Пересадити і завантажити повністю)
 STR_GO_TO_TRAIN_DEPOT                                           :Прямувати до {TOWN} депо
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонтуватись в {TOWN} депо
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Прямувати без зупинок до {TOWN} депо
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонтуватись без зупинок в {TOWN} депо
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Прямує (не за розкладом)
 STR_TIMETABLE_TRAVEL_FOR                                        :Прямує до {STRING}
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}

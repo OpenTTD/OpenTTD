@@ -2640,26 +2640,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}, 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en camino
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8806_GO_TO                                                  :Ir a {STATION}
-STR_GO_TO_TRANSFER                                              :Ir a {STATION} (Transferir y cargar)
-STR_8807_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Ir a {STATION} (Transferir y dejar vacío)
-STR_8808_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
-STR_GO_TO_TRANSFER_LOAD                                         :Ir a {STATION} (Transferir y esperar a carga completa)
-STR_880A_GO_NON_STOP_TO                                         :Ir sin paradas a {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Ir sin paradas a {STATION} (Transferir y cargar)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ir sin paradas a {STATION} (Descargar)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ir sin paradas a {STATION} (Transferir y dejar vacío)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Ir sin paradas a  {STATION} (Cargar)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ir sin paradas a {STATION} (Transferir y esperar a carga completa)
 STR_GO_TO_TRAIN_DEPOT                                           :Ir al depósito del tren de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito de {TOWN} para mantenimiento
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :y estancia en {STRING}

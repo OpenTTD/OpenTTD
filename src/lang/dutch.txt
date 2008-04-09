@@ -2652,26 +2652,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in de weg
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Ga naar {STATION}
-STR_GO_TO_TRANSFER                                              :Ga naar {STATION} (Overladen en neem goederen)
-STR_8807_GO_TO_UNLOAD                                           :Ga naar {STATION} (Uit laden)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Ga naar {STATION} (Overladen en leeg laten)
-STR_8808_GO_TO_LOAD                                             :Ga naar {STATION} (Laden)
-STR_GO_TO_TRANSFER_LOAD                                         :Ga naar {STATION} (Overladen en wacht tot vol geladen)
-STR_880A_GO_NON_STOP_TO                                         :Ga non-stop naar {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Ga non-stop naar {STATION} (Overladen en neem goederen)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ga non-stop naar {STATION} (Uitladen)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ga non-stop naar {STATION} (Overladen en leeg laten)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Ga non-stop naar {STATION} (Laden)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ga non-stop naar {STATION} (Overladen en wacht tot vol geladen)
 STR_GO_TO_TRAIN_DEPOT                                           :Ga naar {TOWN} Trein Depot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {TOWN} treindepot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ga zonder tussenstop naar {TOWN} Treindepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} treindepot
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}

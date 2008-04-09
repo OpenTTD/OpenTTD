@@ -2652,26 +2652,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} L
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyrir
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Fer til {STATION}
-STR_GO_TO_TRANSFER                                              :Fer til {STATION} (Yfirfæra og ferma)
-STR_8807_GO_TO_UNLOAD                                           :Fer til {STATION} (Afferma)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Fer til {STATION} (Yfirfæra og yfirgefa tóm)
-STR_8808_GO_TO_LOAD                                             :Fer til {STATION} (Fullferma)
-STR_GO_TO_TRANSFER_LOAD                                         :Fer til {STATION} (Yfirfæra og fullferma)
-STR_880A_GO_NON_STOP_TO                                         :Fer viðstöðulaust til {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Fer viðstöðulaust til {STATION} (Yfirfæra og ferma)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Fer viðstöðulaust til {STATION} (Afferma)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Fer viðstöðulaust til {STATION} (Yfirfæra og yfirgefa tóm)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Fer viðstöðulaust til {STATION} (Fullferma)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Fer viðstöðulaust til {STATION} (Yfirfæra og fullferma)
 STR_GO_TO_TRAIN_DEPOT                                           :Fer til {TOWN} Lestaskýli
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Viðgerð í {TOWN} Lestar Byggingu
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fer viðstöðulaust til {TOWN} Lestar Byggingar
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Viðgerð viðstöðulaust í {TOWN} Lestar Byggingu
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og bíða í {STRING}

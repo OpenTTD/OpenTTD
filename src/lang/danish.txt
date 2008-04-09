@@ -2639,26 +2639,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} r
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Gå til {STATION}
-STR_GO_TO_TRANSFER                                              :Gå til {STATION} (Overfør og tag gods)
-STR_8807_GO_TO_UNLOAD                                           :Gå til {STATION} (Aflæs)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Gå til {STATION} (Overfør og efterlad tom)
-STR_8808_GO_TO_LOAD                                             :Gå til {STATION} (Fuld last)
-STR_GO_TO_TRANSFER_LOAD                                         :Gå til {STATION} (Overfør og vent på fuld last)
-STR_880A_GO_NON_STOP_TO                                         :Gå uden stop til {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Gå uden stop til {STATION} (Overfør og tag gods)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Gå uden stop til {STATION} (Aflæs)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Gå uden stop til {STATION} (Overfør og efterlad tom)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Gå uden stop til {STATION} (Fuld last)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Gå uden stop til {STATION} (Overfør og vent på fuld last)
 STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} remise
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} remise
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} remise
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} remise
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}

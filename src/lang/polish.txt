@@ -2748,26 +2748,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Zajezdni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg na drodze
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Idź do {STATION}
-STR_GO_TO_TRANSFER                                              :Idź do {STATION} (Przewieź i weź ładunek)
-STR_8807_GO_TO_UNLOAD                                           :Idź do {STATION} (Wyładunek)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Idź do {STATION} (Przewieź i nie bierz ładunku)
-STR_8808_GO_TO_LOAD                                             :Idź do {STATION} (Załadunek)
-STR_GO_TO_TRANSFER_LOAD                                         :Idź do {STATION} (Przewieź i czekaj na pełen załadunek)
-STR_880A_GO_NON_STOP_TO                                         :Idź bez zatrzymywania do {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Idź bez zatrzymywania do {STATION} (Przewieź i weź ładunek)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Idź bez zatrzymywania do {STATION} (Wyładunek)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Idź bez zatrzymywania do {STATION} (Przewieź i nie bierz ładunku)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Idź bez zatrzymywania do {STATION} (Załadunek)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Idź bez zatrzymywania do {STATION} (Przewieź i czekaj na pełen załadunek)
 STR_GO_TO_TRAIN_DEPOT                                           :Idź do zajezdni w {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zajezdni w {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idź bez zatrzymywania do zajezdni w {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idź bez zatrzymywania do serwisu w zajezdni w {TOWN}
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}

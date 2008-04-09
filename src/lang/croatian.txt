@@ -2622,26 +2622,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Spremiš
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi vlak je stigao na {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Idi do {STATION}
-STR_GO_TO_TRANSFER                                              :Idi do {STATION} (Transferiraj i preuzmi teret)
-STR_8807_GO_TO_UNLOAD                                           :Idi do {STATION} (Istovar)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Go to {STATION} (Transferiraj i otiđi prazan)
-STR_8808_GO_TO_LOAD                                             :Idi do{STATION} (Utovar)
-STR_GO_TO_TRANSFER_LOAD                                         :Idi do {STATION} (Transferiraj i pričekaj puni utovar)
-STR_880A_GO_NON_STOP_TO                                         :Idi neprekidno do {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Idi neprekidno do {STATION} (Transferiraj i preuzmi teret)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Idi neprekidno do {STATION} (Istovar)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Idi neprekidno do {STATION} (Transferiraj i otiđi prazan)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Idi neprekidno do {STATION} (Utovar)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Idi neprekidno do {STATION} (Transferiraj i pričekaj puni utovar)
 STR_GO_TO_TRAIN_DEPOT                                           :Idi u spremište vlakova grada {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiranje u spremištu vlakova grada {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi neprekidno do spremišta vlakova grada {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servisiraj neprekidno u spremištu vlakova grada {TOWN}
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}

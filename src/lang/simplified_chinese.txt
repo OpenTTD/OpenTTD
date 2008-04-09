@@ -2479,26 +2479,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (详细信息)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}指定位置有列车
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :前往 {STATION}
-STR_GO_TO_TRANSFER                                              :前往 {STATION} (转运并装货)
-STR_8807_GO_TO_UNLOAD                                           :前往 {STATION} (全部卸货)
-STR_GO_TO_TRANSFER_UNLOAD                                       :前往 {STATION} (转运且不装货)
-STR_8808_GO_TO_LOAD                                             :前往 {STATION} (等待装满)
-STR_GO_TO_TRANSFER_LOAD                                         :前往 {STATION} (转运并等待装满)
-STR_880A_GO_NON_STOP_TO                                         :前往(不停) {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :前往(不停) {STATION} (转运并装货)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :前往(不停) {STATION} (全部卸货)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :前往(不停) {STATION} (转运且不装货)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :前往(不停) {STATION} (等待装满)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :前往(不停) {STATION} (转运并等待装满)
 STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 车库
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 车库保养
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往(不停) {TOWN} 车库
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :在 {TOWN} 车库保养(不停)
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :旅行 (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :前往 {STRING} 旅行
 STR_TIMETABLE_STAY_FOR                                          :并且在 {STRING} 停留

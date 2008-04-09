@@ -2640,26 +2640,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Z
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Der erste Zug erreicht {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zug ist im Weg
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Fahre nach {STATION}
-STR_GO_TO_TRANSFER                                              :Fahre nach {STATION} (Umladen und beladen)
-STR_8807_GO_TO_UNLOAD                                           :Fahre nach {STATION} (Entladen)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Fahre nach {STATION} (Umladen und leer verlassen)
-STR_8808_GO_TO_LOAD                                             :Fahre nach {STATION} (Beladen)
-STR_GO_TO_TRANSFER_LOAD                                         :Fahre nach {STATION} (Umladen und voll beladen)
-STR_880A_GO_NON_STOP_TO                                         :Fahre ohne Halt nach {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Fahre ohne Halt nach {STATION} (Umladen und beladen)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Fahre ohne Halt nach {STATION} (Entladen)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Fahre nach {STATION} (Umladen und leer verlassen)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Fahre ohne Halt nach {STATION} (Beladen)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Fahre ohne Halt nach {STATION} (Umladen und voll beladen)
 STR_GO_TO_TRAIN_DEPOT                                           :Fahre zum {TOWN} Zugdepot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Wartung bei {TOWN} Zugdepot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fahre ohne Halt zu {TOWN} Zugdepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Wartung (ohne Halt) bei {TOWN} Zugdepot
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Fahren (ohne Fahrplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} lang fahren
 STR_TIMETABLE_STAY_FOR                                          :und {STRING} lang bleiben

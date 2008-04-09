@@ -2654,26 +2654,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Deposito
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo treno arriva a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Treno di mezzo
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Vai a {STATION}
-STR_GO_TO_TRANSFER                                              :Vai a {STATION} (Trasferisci e carica merce)
-STR_8807_GO_TO_UNLOAD                                           :Vai a {STATION} (Scarica)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Vai a {STATION} (Trasferisci e parti vuoto)
-STR_8808_GO_TO_LOAD                                             :Vai a {STATION} (Carica)
-STR_GO_TO_TRANSFER_LOAD                                         :Vai a {STATION} (Trasferisci e aspetta carico completo)
-STR_880A_GO_NON_STOP_TO                                         :Vai non-stop a {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Vai non-stop a {STATION} (Trasferisci e carica merce)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Vai non-stop a {STATION} (Scarica)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Vai non-stop a {STATION} (Trasferisci e parti vuoto)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Vai non-stop a {STATION} (Carica)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Vai non-stop a {STATION} (Trasferisci e aspetta carico completo)
 STR_GO_TO_TRAIN_DEPOT                                           :Vai al Deposito ferroviario di {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenzione al Deposito di {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vai non-stop al Deposito ferroviario di {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenzione non-stop al Deposito di {TOWN}
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia senza orario
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}

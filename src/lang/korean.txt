@@ -2652,26 +2652,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간에 기차가 있습니다
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :{STATION} 행
-STR_GO_TO_TRANSFER                                              :{STATION} 행 (환승시키고 화물 싣기)
-STR_8807_GO_TO_UNLOAD                                           :{STATION} 행 (모두 내림)
-STR_GO_TO_TRANSFER_UNLOAD                                       :{STATION} 행 (환승시키고 화물을 모두 내림)
-STR_8808_GO_TO_LOAD                                             :{STATION} 행 (모두 싣기)
-STR_GO_TO_TRANSFER_LOAD                                         :{STATION} 행 (환승시키고 화물을 가득 실음)
-STR_880A_GO_NON_STOP_TO                                         :{STATION} 급행
-STR_GO_TO_NON_STOP_TRANSFER                                     :{STATION} 급행 (환승시키고 화물 싣기)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :{STATION} 급행 (모두 내림)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :{STATION} 급행 (환승시키고 화물을 모두 내림)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :{STATION} 급행 (모두 싣기)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :{STATION} 급행 (환승시키고 화물을 가득 실음)
 STR_GO_TO_TRAIN_DEPOT                                           :{TOWN} 차량기지행
 STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN} 차량기지행 (점검)
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN} 차량기지 급행
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN} 차량기지 급행 (점검)
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :여행 (시간표 없음)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}로 여행
 STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}에 머무름

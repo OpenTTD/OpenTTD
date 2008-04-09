@@ -2739,26 +2739,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Linna {T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}{STATION} jaama saabus esimene rong!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (üksikasjad)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Mine {STATION}
-STR_GO_TO_TRANSFER                                              :Mine {STATION} (laadi ümber ja võta laadung peale)
-STR_8807_GO_TO_UNLOAD                                           :Mine {STATION} (laadi maha)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Mine {STATION} (laadi ümber ja jäta tühjaks)
-STR_8808_GO_TO_LOAD                                             :Mine {STATION} (laadi)
-STR_GO_TO_TRANSFER_LOAD                                         :Mine {STATION} (laadi ümber ja oota täislaadungit)
-STR_880A_GO_NON_STOP_TO                                         :Sõida läbi {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Sõida läbi {STATION} (laadi maha)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Sõida läbi {STATION} (laadi ümber ja jäta tühjaks)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Sõida läbi {STATION} (laadi)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Sõida läbi {STATION} (laadi ümber ja oota täislaadungit)
 STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {TOWN} rongidepoos
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus linna {TOWN} rongidepoost läbisõidul
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõiduplaanita)
 STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja oota {STRING}

@@ -92,21 +92,20 @@ static int GetOrderFromOrderWndPt(Window *w, int y, const Vehicle *v)
 	return (sel <= v->num_orders && sel >= 0) ? sel : INVALID_ORDER;
 }
 
-static StringID _station_order_strings[][7] = {
+/** Order load types that could be given to station orders. */
+static const StringID _station_load_types[][5] = {
 	{
-		STR_8806_GO_TO,
-		STR_GO_TO_TRANSFER,
-		STR_8807_GO_TO_UNLOAD,
-		STR_GO_TO_TRANSFER_UNLOAD,
-		STR_8808_GO_TO_LOAD,
-		STR_GO_TO_TRANSFER_LOAD
+		STR_EMPTY,
+		STR_ORDER_UNLOAD,
+		STR_ORDER_FULL_LOAD,
+		STR_ORDER_FULL_LOAD_ANY,
+		STR_ORDER_NO_LOAD,
 	}, {
-		STR_880A_GO_NON_STOP_TO,
-		STR_GO_TO_NON_STOP_TRANSFER,
-		STR_880B_GO_NON_STOP_TO_UNLOAD,
-		STR_GO_TO_NON_STOP_TRANSFER_UNLOAD,
-		STR_880C_GO_NON_STOP_TO_LOAD,
-		STR_GO_TO_NON_STOP_TRANSFER_LOAD
+		STR_ORDER_TRANSFER,
+		STR_ORDER_TRANSFER_UNLOAD,
+		STR_ORDER_TRANSFER_FULL_LOAD,
+		STR_ORDER_TRANSFER_FULL_LOAD_ANY,
+		INVALID_STRING_ID,
 	}
 };
 
@@ -197,10 +196,16 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(2, order->GetDestination());
 					break;
 
-				case OT_GOTO_STATION:
-					SetDParam(1, _station_order_strings[!(order->GetNonStopType() == (_patches.new_nonstop ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE))][(order->GetLoadType() & OLFB_FULL_LOAD) | order->GetUnloadType()]);
-					SetDParam(2, order->GetDestination());
-					break;
+				case OT_GOTO_STATION: {
+					OrderLoadFlags load = order->GetLoadType();
+					OrderUnloadFlags unload = order->GetUnloadType();
+
+					SetDParam(1, STR_GO_TO_STATION);
+					SetDParam(2, STR_ORDER_GO_TO + (v->type == VEH_TRAIN ? order->GetNonStopType() : 0));
+					SetDParam(3, order->GetDestination());
+					/* Yes, this is ugly, but... once the savegame bump is done, it'll look a lot better! */
+					SetDParam(4, _station_load_types[unload & OUFB_TRANSFER][((load & 1) | (load >> 1)) + ((unload & ~(OUFB_NO_UNLOAD | OUFB_TRANSFER)) >> 1)]);
+				} break;
 
 				case OT_GOTO_DEPOT: {
 					StringID s = STR_NULL;

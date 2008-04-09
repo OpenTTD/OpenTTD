@@ -2652,26 +2652,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} C
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en el camí
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Ves a {STATION}
-STR_GO_TO_TRANSFER                                              :Ves a {STATION} (Transfereix i agafa càrrega)
-STR_8807_GO_TO_UNLOAD                                           :Ves a {STATION} (Descarrega)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Ves a {STATION} (Transfereix i deixa buit)
-STR_8808_GO_TO_LOAD                                             :Ves a {STATION} (Carrega)
-STR_GO_TO_TRANSFER_LOAD                                         :Ves a {STATION} (Transfereix i espera càrrega completa)
-STR_880A_GO_NON_STOP_TO                                         :Ves sense parar a {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Ves sense parar a {STATION} (Transfereix i agafa càrrega)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ves sense parar a {STATION} (Descarrega)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ves sense parar a {STATION} (Transfereix i deixa buit)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Ves sense parar a {STATION} (Carrega)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ves sense parar a {STATION} (Transfereix i espera càrrega completa)
 STR_GO_TO_TRAIN_DEPOT                                           :Ves al Diposit {TOWN} de Tren
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a cotxeres de {TOWN}.
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ves sense parar a les cotxeres de {TOWN}.
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sense parades a cotxeres de {TOWN}.
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i estigues {STRING}

@@ -2616,26 +2616,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛列車抵達 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (詳細資料)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}前方有列車
-STR_8804                                                        :{SETX 10}{COMMA}：{STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}：{STRING} {STRING}
-STR_8806_GO_TO                                                  :前往 {STATION}
-STR_GO_TO_TRANSFER                                              :前往 {STATION} (轉運，僅載不卸)
-STR_8807_GO_TO_UNLOAD                                           :前往 {STATION} (卸客貨)
-STR_GO_TO_TRANSFER_UNLOAD                                       :前往 {STATION} (轉運，卸客貨清空離站)
-STR_8808_GO_TO_LOAD                                             :前往 {STATION} (滿載)
-STR_GO_TO_TRANSFER_LOAD                                         :前往 {STATION} (轉運，等待滿載)
-STR_880A_GO_NON_STOP_TO                                         :前往 {STATION} 不停靠/中途不停
-STR_GO_TO_NON_STOP_TRANSFER                                     :前往 {STATION} (轉運 [僅載不卸]) 中途不停
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :前往 {STATION} (卸載) 中途不停
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :前往 {STATION} (轉運 [卸載清空離站]) 中途不停
-STR_880C_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} (滿載) 中途不停
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :前往 {STATION} (轉運 [等待滿載]) 中途不停
 STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 機廠
 STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 機廠維護
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往 {TOWN} 機廠 中途不停
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :在 {TOWN} 機廠維護 中途不停
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :漫遊 (無時刻表)
 STR_TIMETABLE_TRAVEL_FOR                                        :通行於 {STRING}
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}

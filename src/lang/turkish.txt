@@ -2650,26 +2650,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaylar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Yolda tren var
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Git: {STATION}
-STR_GO_TO_TRANSFER                                              :Aktar: {STATION} (Kargoyu al)
-STR_8807_GO_TO_UNLOAD                                           :Git: {STATION} (Boşalt)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Aktar: {STATION} (Boş dön)
-STR_8808_GO_TO_LOAD                                             :Git: {STATION} (Doldur)
-STR_GO_TO_TRANSFER_LOAD                                         :Aktar: {STATION} (Tam doldur)
-STR_880A_GO_NON_STOP_TO                                         :Durmadan git: {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Durmadan aktar: {STATION} (Kargoyu al)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Durmadan git: {STATION} (Boşalt)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Durmadan aktar: {STATION} (Boş dön)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Durmadan git: {STATION} (Doldur)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Durmadan aktar: {STATION} (Tam doldur)
 STR_GO_TO_TRAIN_DEPOT                                           :Git: {TOWN} Tren Garı
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakıma git: {TOWN} Tren Garı
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Garı
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakıma git: {TOWN} Tren Garı
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} için gezi
 STR_TIMETABLE_STAY_FOR                                          :{STRING} için bekle

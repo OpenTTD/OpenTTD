@@ -2754,26 +2754,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8806_GO_TO                                                  :Menj {STATION} állomásra
-STR_GO_TO_TRANSFER                                              :Menj {STATION} (odaszállít és felvesz rakományt)
-STR_8807_GO_TO_UNLOAD                                           :Menj {STATION} (lepakol)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Menj {STATION} (odaszállít és üresen továbbmegy)
-STR_8808_GO_TO_LOAD                                             :Menj {STATION} (felpakol)
-STR_GO_TO_TRANSFER_LOAD                                         :Menj {STATION} (odaszállít és teljes rakományra vár)
-STR_880A_GO_NON_STOP_TO                                         :Megállás nélkül menj {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Megállás nélkül menj {STATION} (odaszállít és felvesz rakományt)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Megállás nélkül menj {STATION} (lepakol)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Megállás nélkül menj {STATION} (odaszállít és üresen távozik)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Megállás nélkül menj {STATION} (felpakol)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Megállás nélkül menj {STATION} (odaszállít és teljes rakományra vár)
 STR_GO_TO_TRAIN_DEPOT                                           :Menj {TOWN} jármütelepre
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Javítsd a vonatot a {TOWN}i járműtelepen
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Menj megállás nélkül {TOWN}i járműtelepre
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd a vonatot a {TOWN}i járműtelepen
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Útipont (időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR                                        :Menjen {STRING} állomásra
 STR_TIMETABLE_STAY_FOR                                          :és maradjon {STRING.t}

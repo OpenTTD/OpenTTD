@@ -1773,19 +1773,6 @@ STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helic
 STR_8104_AIRCRAFT                                               :lidmaðîna
 
 ##id 0x8800
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_GO_TO_TRANSFER                                              :Uz {STATION} (Pa'rvest un pan'emt kravu)
-STR_8807_GO_TO_UNLOAD                                           :Uz {STATION} (Nokraut)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Uz {STATION} (Pa'rvest un atsta't tuks'u)
-STR_8808_GO_TO_LOAD                                             :Uz {STATION} (Piekraut)
-STR_GO_TO_TRANSFER_LOAD                                         :Go to {STATION} (Pa'rvest un gaidi't pilnu kravu)
-STR_880A_GO_NON_STOP_TO                                         :Bez pieturam uz {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Bez pieturam uz {STATION} (Pa'rvest un pan'emt kravu)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Bez pieturam uz {STATION} (Nokraut)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Bez pieturam uz {STATION} (Pa'rvest un atsta't tuks'u)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Bez pieturam uz {STATION} (Piekraut)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Bez pieturam uz {STATION} (Pa'rvest un gaidi't pilnu kravu)
 STR_GO_TO_TRAIN_DEPOT                                           :Uz {TOWN} Vilcienu Depo
 
 

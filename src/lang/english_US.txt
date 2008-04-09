@@ -2619,26 +2619,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Go to {STATION}
-STR_GO_TO_TRANSFER                                              :Go to {STATION} (Transfer and take cargo)
-STR_8807_GO_TO_UNLOAD                                           :Go to {STATION} (Unload)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Go to {STATION} (Transfer and leave empty)
-STR_8808_GO_TO_LOAD                                             :Go to {STATION} (Load)
-STR_GO_TO_TRANSFER_LOAD                                         :Go to {STATION} (Transfer and wait for full load)
-STR_880A_GO_NON_STOP_TO                                         :Go non-stop to {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Go non-stop to {STATION} (Transfer and take cargo)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Go non-stop to {STATION} (Unload)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Go non-stop to {STATION} (Transfer and leave empty)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Go non-stop to {STATION} (Load)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Go non-stop to {STATION} (Transfer and wait for full load)
 STR_GO_TO_TRAIN_DEPOT                                           :Go to {TOWN} Train Depot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOWN} Train Depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Train Depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Train Depot
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}

@@ -119,12 +119,16 @@ static void DrawTimetableWindow(Window *w)
 					break;
 
 				case OT_GOTO_STATION:
-					SetDParam(0, (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_880A_GO_NON_STOP_TO : STR_8806_GO_TO);
-					SetDParam(1, order->GetDestination());
+					SetDParam(0, STR_GO_TO_STATION);
+					SetDParam(1, STR_ORDER_GO_TO + order->GetNonStopType());
+					SetDParam(2, order->GetDestination());
+					SetDParam(3, STR_EMPTY);
 
 					if (order->wait_time > 0) {
-						SetDParam(2, STR_TIMETABLE_STAY_FOR);
-						SetTimetableParams(3, 4, order->wait_time);
+						SetDParam(4, STR_TIMETABLE_STAY_FOR);
+						SetTimetableParams(5, 6, order->wait_time);
+					} else {
+						SetDParam(4, STR_EMPTY);
 					}
 
 					break;

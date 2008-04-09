@@ -2610,26 +2610,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} A
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Itizenscay elebratecay . . .{}Irstfay aintray arrivesway atway {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Etailsday)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Aintray inway ethay ayway
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Ogay otay {STATION}
-STR_GO_TO_TRANSFER                                              :Ogay otay {STATION} (Ansfertray andway aketay argocay)
-STR_8807_GO_TO_UNLOAD                                           :Ogay otay {STATION} (Unloadway)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Ogay otay {STATION} (Ansfertray andway eavelay emptyway)
-STR_8808_GO_TO_LOAD                                             :Ogay otay {STATION} (Oadlay)
-STR_GO_TO_TRANSFER_LOAD                                         :Ogay otay {STATION} (Ansfertray andway aitway orfay ullfay oadlay)
-STR_880A_GO_NON_STOP_TO                                         :Ogay onnay-opstay otay {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Ogay onnay-opstay otay {STATION} (Ansfertray andway aketay argocay)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Ogay onnay-opstay otay {STATION} (Unloadway)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Ogay onnay-opstay otay {STATION} (Ansfertray andway eavelay emptyway)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Ogay onnay-opstay otay {STATION} (Oadlay)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Ogay onnay-opstay otay {STATION} (Ansfertray andway aitway orfay ullfay oadlay)
 STR_GO_TO_TRAIN_DEPOT                                           :Ogay otay {TOWN} Aintray Epotday
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Ervicesay atway {TOWN} Aintray Epotday
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ogay onnay-opstay otay {TOWN} Aintray Epotday
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ervicesay onnay-opstay atway {TOWN} Aintray Epotday
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Aveltray (otnay imetabledtay)
 STR_TIMETABLE_TRAVEL_FOR                                        :Aveltray orfay {STRING}
 STR_TIMETABLE_STAY_FOR                                          :andway aystay orfay {STRING}

@@ -2704,26 +2704,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Železni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě je vlak
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Jet do {STATION}
-STR_GO_TO_TRANSFER                                              :Jet do {STATION} (přeložit a naložit jiný náklad)
-STR_8807_GO_TO_UNLOAD                                           :Jet do {STATION} (vyložit)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Jet do {STATION} (přeložit a nenakládat)
-STR_8808_GO_TO_LOAD                                             :Jet do {STATION} (naložit)
-STR_GO_TO_TRANSFER_LOAD                                         :Jet do {STATION} (přeložit a plně naložit jiný náklad)
-STR_880A_GO_NON_STOP_TO                                         :Jet bez zastavení do {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Jet bez zastavení do {STATION} (přeložit a naložit jiný náklad)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Jet bez zastavení do {STATION} (vyložit)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Jet bez zastavení do {STATION} (přeložit a nenakládat)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Jet bez zastavení do {STATION} (naložit)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Jet bez zastavení do {STATION} (přeložit a plně naložit jiný náklad)
 STR_GO_TO_TRAIN_DEPOT                                           :Jet do železničního depa v {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Údržba v železničním depu {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastavení do železničního depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Údržba bez zastavení v železničním depu {TOWN}
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}

@@ -2608,26 +2608,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trein arriveer by {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in die weg
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Gaan na {STATION}
-STR_GO_TO_TRANSFER                                              :Gaan na {STATION} (Oordrag en vat vrag)
-STR_8807_GO_TO_UNLOAD                                           :Gaan na {STATION} (Aflaai)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Gaan na {STATION} (Oordrag en verlaat leeg)
-STR_8808_GO_TO_LOAD                                             :Gaan na {STATION} (Laai)
-STR_GO_TO_TRANSFER_LOAD                                         :Gaan na {STATION} (Oordrag en wag vir volle lading)
-STR_880A_GO_NON_STOP_TO                                         :Gaan deurgaande na {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Gaan deurgaande na {STATION} (Oordra en neem vrag)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Gaan deurgaande na {STATION} (Aflaai)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Gaan deurgaande na {STATION} (Oordra en verlaat leë)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Gaan deurgaande na {STATION} (Laai)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Gaan deurgaande na {STATION} (Oordra en wag vir volle lading)
 STR_GO_TO_TRAIN_DEPOT                                           :Gaan na {TOWN} Trein Depot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Diens by {TOWN} Trein Depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gaan deurgaande na {TOWN} Trein Depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Diens deurgaande by {TOWN} Trein Depot
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie gerooster nie)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en bly vir {STRING}

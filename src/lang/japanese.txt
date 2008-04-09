@@ -2637,26 +2637,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}�
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :{STATION}へ行く
-STR_GO_TO_TRANSFER                                              :{STATION}へ行く（運搬して貨物を積む）
-STR_8807_GO_TO_UNLOAD                                           :{STATION}へ行く（貨物を降ろす）
-STR_GO_TO_TRANSFER_UNLOAD                                       :{STATION}へ行く（運搬して空そのまま次へ行く）
-STR_8808_GO_TO_LOAD                                             :{STATION}へ行く（全負荷）
-STR_GO_TO_TRANSFER_LOAD                                         :{STATION}へ行く（運搬して全負荷まで待つ）
-STR_880A_GO_NON_STOP_TO                                         :{STATION}へ直行で行く
-STR_GO_TO_NON_STOP_TRANSFER                                     :{STATION}へ直行で行く（運搬して貨物を積む）
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :{STATION}へ直行で行く（貨物を降ろす）
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :{STATION}へ直行で行く（運搬して空そのまま次へ行く）
-STR_880C_GO_NON_STOP_TO_LOAD                                    :{STATION}へ直行で行く（全負荷）
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :{STATION}へ直行で行く（運搬して全負荷まで待つ）
 STR_GO_TO_TRAIN_DEPOT                                           :{TOWN}電車庫へ回送
 STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN}電車庫で修理
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送して修理
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :運行（未計画）
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}運行
 STR_TIMETABLE_STAY_FOR                                          :{STRING}停車

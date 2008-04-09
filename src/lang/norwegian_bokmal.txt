@@ -2621,26 +2621,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} t
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i veien
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8806_GO_TO                                                  :Kjør til {STATION}
-STR_GO_TO_TRANSFER                                              :Gå til {STATION} (overfør og ta last)
-STR_8807_GO_TO_UNLOAD                                           :Gå til {STATION} (last av)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Gå til {STATION} (overfør og forlat som tom)
-STR_8808_GO_TO_LOAD                                             :Gå til {STATION} (last)
-STR_GO_TO_TRANSFER_LOAD                                         :Gå til {STATION} (overfør og vent på full last)
-STR_880A_GO_NON_STOP_TO                                         :Gå uten stopp til {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Gå uten stopp til {STATION} (overfør og ta last)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Gå uten stopp til {STATION} (last av)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Gå uten stopp {STATION} (overfør og forlat som tom)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Gå uten stopp til {STATION} (last)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Gå uten stopp til {STATION} (overfør og vent på full last)
 STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} togdepot
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Velikehold ved {TOWN} togstall
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Kjør uten å stoppe til {TOWN} togstall
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Vedlikehold (uten å stoppe) ved {TOWN} togstall
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten tidstabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reise for {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}

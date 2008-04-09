@@ -2732,26 +2732,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v napoto
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
-STR_8806_GO_TO                                                  :Pojdi do {STATION}
-STR_GO_TO_TRANSFER                                              :Pojdi do {STATION} (Pretovori in vzemi tovor)
-STR_8807_GO_TO_UNLOAD                                           :Pojdi do {STATION} (Raztovori)
-STR_GO_TO_TRANSFER_UNLOAD                                       :Pojdi do {STATION} (Pretovori in pusti prazno)
-STR_8808_GO_TO_LOAD                                             :Pojdi do  {STATION} (Naloži)
-STR_GO_TO_TRANSFER_LOAD                                         :Pojdi do {STATION} (Prenesi in počakaj na polno breme)
-STR_880A_GO_NON_STOP_TO                                         :Pojdi brez postanka do {STATION}
-STR_GO_TO_NON_STOP_TRANSFER                                     :Pojdi brez postanka do {STATION} (Prenesi in vzemi tovor)
-STR_880B_GO_NON_STOP_TO_UNLOAD                                  :Pojdi brez postanka do {STATION} (Raztovori)
-STR_GO_TO_NON_STOP_TRANSFER_UNLOAD                              :Pojdi brez postanka do {STATION} (Pretovori in pusti prazno)
-STR_880C_GO_NON_STOP_TO_LOAD                                    :Pojdi brez postanka do {STATION} (Naloži)
-STR_GO_TO_NON_STOP_TRANSFER_LOAD                                :Pojdi brez postanka do {STATION} (Prenesi in počakaj na polno breme)
 STR_GO_TO_TRAIN_DEPOT                                           :Pojdi v {TOWN} železniško garažo
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Na servis v {TOWN} železniško garažo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaže {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non stop na servis v {TOWN} železniško garažo
 
-STR_TIMETABLE_GO_TO                                             :{STRING} {STRING}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez časovnih tabel)
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
