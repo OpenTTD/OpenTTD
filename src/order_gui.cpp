@@ -111,23 +111,15 @@ static StringID _station_order_strings[][7] = {
 
 static void DrawOrdersWindow(Window *w)
 {
-	const Vehicle *v;
-	const Order *order;
-	StringID str;
-	int sel;
-	int y, i;
-	bool shared_orders;
-
-	v = GetVehicle(w->window_number);
-
-	shared_orders = v->IsOrderListShared();
+	const Vehicle *v = GetVehicle(w->window_number);
+	bool shared_orders = v->IsOrderListShared();
 
 	SetVScrollCount(w, v->num_orders + 1);
 
-	sel = OrderGetSel(w);
+	int sel = OrderGetSel(w);
 	SetDParam(2, STR_8827_FULL_LOAD);
 
-	order = GetVehicleOrder(v, sel);
+	const Order *order = GetVehicleOrder(v, sel);
 
 	if (v->owner == _local_player) {
 		/* skip */
@@ -183,10 +175,11 @@ static void DrawOrdersWindow(Window *w)
 	SetDParam(0, v->index);
 	DrawWindowWidgets(w);
 
-	y = 15;
+	int y = 15;
 
-	i = w->vscroll.pos;
+	int i = w->vscroll.pos;
 	order = GetVehicleOrder(v, i);
+	StringID str;
 	while (order != NULL) {
 		str = (v->cur_order_index == i) ? STR_8805 : STR_8804;
 		SetDParam(3, STR_EMPTY);
@@ -222,7 +215,7 @@ static void DrawOrdersWindow(Window *w)
 						}
 					}
 
-					if (order->GetDepotOrderType() & ODTFB_SERVICE) s++; /* service at */
+					if (order->GetDepotOrderType() & ODTFB_SERVICE) s++; // service at
 
 					SetDParam(1, s);
 					if (order->IsRefit()) {
@@ -264,49 +257,49 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	order.next  = NULL;
 	order.index = 0;
 
-	// check depot first
+	/* check depot first */
 	if (_patches.gotodepot) {
 		switch (GetTileType(tile)) {
-		case MP_RAILWAY:
-			if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
-				if (IsRailDepot(tile)) {
+			case MP_RAILWAY:
+				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
+					if (IsRailDepot(tile)) {
+						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+						return order;
+					}
+				}
+				break;
+
+			case MP_ROAD:
+				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
 					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
 					return order;
 				}
-			}
-			break;
+				break;
 
-		case MP_ROAD:
-			if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
-				order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
-				return order;
-			}
-			break;
+			case MP_STATION:
+				if (v->type != VEH_AIRCRAFT) break;
+				if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
+					order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS);
+					return order;
+				}
+				break;
 
-		case MP_STATION:
-			if (v->type != VEH_AIRCRAFT) break;
-			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
-				order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS);
-				return order;
-			}
-			break;
+			case MP_WATER:
+				if (v->type != VEH_SHIP) break;
+				if (IsTileDepotType(tile, TRANSPORT_WATER) &&
+						IsTileOwner(tile, _local_player)) {
+					TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-		case MP_WATER:
-			if (v->type != VEH_SHIP) break;
-			if (IsTileDepotType(tile, TRANSPORT_WATER) &&
-					IsTileOwner(tile, _local_player)) {
-				TileIndex tile2 = GetOtherShipDepotTile(tile);
-
-				order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);
-				return order;
-			}
+					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);
+					return order;
+				}
 
 			default:
 				break;
 		}
 	}
 
-	// check waypoint
+	/* check waypoint */
 	if (IsTileType(tile, MP_RAILWAY) &&
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_player) &&
@@ -321,11 +314,11 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 		if (st->owner == _current_player || st->owner == OWNER_NONE) {
 			byte facil;
-			(facil=FACIL_DOCK, v->type == VEH_SHIP) ||
-			(facil=FACIL_TRAIN, v->type == VEH_TRAIN) ||
-			(facil=FACIL_AIRPORT, v->type == VEH_AIRCRAFT) ||
-			(facil=FACIL_BUS_STOP, v->type == VEH_ROAD && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) ||
-			(facil=FACIL_TRUCK_STOP, 1);
+			(facil = FACIL_DOCK, v->type == VEH_SHIP) ||
+			(facil = FACIL_TRAIN, v->type == VEH_TRAIN) ||
+			(facil = FACIL_AIRPORT, v->type == VEH_AIRCRAFT) ||
+			(facil = FACIL_BUS_STOP, v->type == VEH_ROAD && IsCargoInClass(v->cargo_type, CC_PASSENGERS)) ||
+			(facil = FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st_index);
 				return order;
@@ -333,7 +326,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		}
 	}
 
-	// not found
+	/* not found */
 	order.Free();
 	return order;
 }
@@ -347,8 +340,8 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 		if (!u->IsPrimaryVehicle()) return false;
 	}
 
-	// v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
-	// obviously if you press CTRL on a non-empty orders vehicle you know what you are doing
+	/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
+	 * obviously if you press CTRL on a non-empty orders vehicle you know what you are doing */
 	if (v->num_orders != 0 && _ctrl_pressed == 0) return false;
 
 	if (DoCommandP(v->tile, v->index | (u->index << 16), _ctrl_pressed ? CO_SHARE : CO_COPY, NULL,
@@ -362,14 +355,11 @@ static bool HandleOrderVehClick(const Vehicle *v, const Vehicle *u, Window *w)
 
 static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 {
-	Order cmd;
-	const Vehicle *u;
-
-	// check if we're clicking on a vehicle first.. clone orders in that case.
-	u = CheckMouseOverVehicle();
+	/* check if we're clicking on a vehicle first.. clone orders in that case. */
+	const Vehicle *u = CheckMouseOverVehicle();
 	if (u != NULL && HandleOrderVehClick(v, u, w)) return;
 
-	cmd = GetOrderCmdFromTile(v, tile);
+	const Order cmd = GetOrderCmdFromTile(v, tile);
 	if (!cmd.IsValid()) return;
 
 	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), cmd.Pack(), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
@@ -531,13 +521,15 @@ static const uint16 _order_keycodes[] = {
 
 static void OrdersWndProc(Window *w, WindowEvent *e)
 {
+	const Vehicle *v = GetVehicle(w->window_number);
+
 	switch (e->event) {
 		case WE_CREATE:
 			/* Ensure that the refit and unload buttons always remain at the same location.
 			 * Only one of them can be active at any one time and takes turns on being disabled.
 			 * To ensure that they stay at the same location, we also verify that they behave the same
 			 * when resizing. */
-			if (GetVehicle(w->window_number)->owner == _local_player) { // only the vehicle owner got these buttons
+			if (v->owner == _local_player) { // only the vehicle owner got these buttons
 				assert(w->widget[ORDER_WIDGET_REFIT].left          == w->widget[ORDER_WIDGET_UNLOAD].left);
 				assert(w->widget[ORDER_WIDGET_REFIT].right         == w->widget[ORDER_WIDGET_UNLOAD].right);
 				assert(w->widget[ORDER_WIDGET_REFIT].top           == w->widget[ORDER_WIDGET_UNLOAD].top);
@@ -553,193 +545,182 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 			break;
 
-	case WE_PAINT:
-		DrawOrdersWindow(w);
-		break;
+		case WE_PAINT:
+			DrawOrdersWindow(w);
+			break;
 
-	case WE_CLICK: {
-		const Vehicle *v = GetVehicle(w->window_number);
-		switch (e->we.click.widget) {
-		case ORDER_WIDGET_ORDER_LIST: {
-			ResetObjectToPlace();
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case ORDER_WIDGET_ORDER_LIST: {
+					ResetObjectToPlace();
 
-			int sel = GetOrderFromOrderWndPt(w, e->we.click.pt.y, v);
+					int sel = GetOrderFromOrderWndPt(w, e->we.click.pt.y, v);
 
-			if (sel == INVALID_ORDER) {
-				/* This was a click on an empty part of the orders window, so
-				 * deselect the currently selected order. */
-				WP(w, order_d).sel = -1;
-				SetWindowDirty(w);
-				return;
-			}
-
-			if (_ctrl_pressed && sel < v->num_orders) {
-				const Order *ord = GetVehicleOrder(v, sel);
-				TileIndex xy;
-
-				switch (ord->GetType()) {
-					case OT_GOTO_STATION:  xy = GetStation(ord->GetDestination())->xy ; break;
-					case OT_GOTO_DEPOT:    xy = (v->type == VEH_AIRCRAFT) ?  GetStation(ord->GetDestination())->xy : GetDepot(ord->GetDestination())->xy;    break;
-					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->GetDestination())->xy; break;
-					default:               xy = 0; break;
-				}
-
-				if (xy != 0) ScrollMainWindowToTile(xy);
-				return;
-			} else {
-				if (sel == WP(w, order_d).sel) {
-					/* Deselect clicked order */
-					WP(w, order_d).sel = -1;
-				} else {
-					/* Select clicked order */
-					WP(w, order_d).sel = sel;
-
-					if (v->owner == _local_player) {
-						/* Activate drag and drop */
-						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, w);
+					if (sel == INVALID_ORDER) {
+						/* This was a click on an empty part of the orders window, so
+						* deselect the currently selected order. */
+						WP(w, order_d).sel = -1;
+						SetWindowDirty(w);
+						return;
 					}
-				}
+
+					if (_ctrl_pressed && sel < v->num_orders) {
+						const Order *ord = GetVehicleOrder(v, sel);
+						TileIndex xy;
+
+						switch (ord->GetType()) {
+							case OT_GOTO_STATION:  xy = GetStation(ord->GetDestination())->xy ; break;
+							case OT_GOTO_DEPOT:    xy = (v->type == VEH_AIRCRAFT) ?  GetStation(ord->GetDestination())->xy : GetDepot(ord->GetDestination())->xy;    break;
+							case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->GetDestination())->xy; break;
+							default:               xy = 0; break;
+						}
+
+						if (xy != 0) ScrollMainWindowToTile(xy);
+						return;
+					} else {
+						if (sel == WP(w, order_d).sel) {
+							/* Deselect clicked order */
+							WP(w, order_d).sel = -1;
+						} else {
+							/* Select clicked order */
+							WP(w, order_d).sel = sel;
+
+							if (v->owner == _local_player) {
+								/* Activate drag and drop */
+								SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, w);
+							}
+						}
+					}
+
+					SetWindowDirty(w);
+				} break;
+
+				case ORDER_WIDGET_SKIP:
+					OrderClick_Skip(w, v);
+					break;
+
+				case ORDER_WIDGET_DELETE:
+					OrderClick_Delete(w, v);
+					break;
+
+				case ORDER_WIDGET_NON_STOP:
+					OrderClick_Nonstop(w, v);
+					break;
+
+				case ORDER_WIDGET_GOTO:
+					OrderClick_Goto(w, v);
+					break;
+
+				case ORDER_WIDGET_FULL_LOAD:
+					OrderClick_FullLoad(w, v);
+					break;
+
+				case ORDER_WIDGET_UNLOAD:
+					OrderClick_Unload(w, v);
+					break;
+				case ORDER_WIDGET_REFIT:
+					OrderClick_Refit(w, v);
+					break;
+
+				case ORDER_WIDGET_TRANSFER:
+					OrderClick_Transfer(w, v);
+					break;
+
+				case ORDER_WIDGET_TIMETABLE_VIEW:
+					ShowTimetableWindow(v);
+					break;
+
+				case ORDER_WIDGET_SHARED_ORDER_LIST:
+					ShowVehicleListWindow(v);
+					break;
+			}
+			break;
+
+		case WE_DRAGDROP:
+			switch (e->we.click.widget) {
+				case ORDER_WIDGET_ORDER_LIST: {
+					int from_order = OrderGetSel(w);
+					int to_order = GetOrderFromOrderWndPt(w, e->we.dragdrop.pt.y, v);
+
+					if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > v->num_orders || to_order == INVALID_ORDER || to_order > v->num_orders) &&
+							DoCommandP(v->tile, v->index, from_order | (to_order << 16), NULL, CMD_MOVE_ORDER | CMD_MSG(STR_CAN_T_MOVE_THIS_ORDER))) {
+						WP(w, order_d).sel = -1;
+					}
+
+				} break;
+
+				case ORDER_WIDGET_DELETE:
+					OrderClick_Delete(w, v);
+					break;
 			}
 
-			SetWindowDirty(w);
+			ResetObjectToPlace();
+			break;
+
+		case WE_KEYPRESS:
+			if (v->owner != _local_player) break;
+
+			for (uint i = 0; i < lengthof(_order_keycodes); i++) {
+				if (e->we.keypress.keycode == _order_keycodes[i]) {
+					e->we.keypress.cont = false;
+					/* see if the button is disabled */
+					if (!w->IsWidgetDisabled(i + ORDER_WIDGET_SKIP)) _order_button_proc[i](w, v);
+					break;
+				}
+			}
+			break;
+
+		case WE_RCLICK: {
+			int s = OrderGetSel(w);
+
+			if (e->we.click.widget != ORDER_WIDGET_FULL_LOAD) break;
+			if (s == v->num_orders || !GetVehicleOrder(v, s)->IsType(OT_GOTO_DEPOT)) {
+				GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);
+			} else {
+				GuiShowTooltips(STR_SERVICE_HINT);
+			}
 		} break;
 
-		case ORDER_WIDGET_SKIP:
-			OrderClick_Skip(w, v);
+		case WE_PLACE_OBJ:
+			OrdersPlaceObj(GetVehicle(w->window_number), e->we.place.tile, w);
 			break;
 
-		case ORDER_WIDGET_DELETE:
-			OrderClick_Delete(w, v);
+		case WE_ABORT_PLACE_OBJ:
+			w->RaiseWidget(ORDER_WIDGET_GOTO);
+			w->InvalidateWidget(ORDER_WIDGET_GOTO);
 			break;
 
-		case ORDER_WIDGET_NON_STOP:
-			OrderClick_Nonstop(w, v);
+		/* check if a vehicle in a depot was clicked.. */
+		case WE_MOUSELOOP:
+			v = _place_clicked_vehicle;
+			/*
+			* Check if we clicked on a vehicle
+			* and if the GOTO button of this window is pressed
+			* This is because of all open order windows WE_MOUSELOOP is called
+			* and if you have 3 windows open, and this check is not done
+			* the order is copied to the last open window instead of the
+			* one where GOTO is enabled
+			*/
+			if (v != NULL && w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
+				_place_clicked_vehicle = NULL;
+				HandleOrderVehClick(GetVehicle(w->window_number), v, w);
+			}
 			break;
 
-		case ORDER_WIDGET_GOTO:
-			OrderClick_Goto(w, v);
+		case WE_RESIZE:
+			/* Update the scroll + matrix */
+			w->vscroll.cap = (w->widget[ORDER_WIDGET_ORDER_LIST].bottom - w->widget[ORDER_WIDGET_ORDER_LIST].top) / 10;
 			break;
 
-		case ORDER_WIDGET_FULL_LOAD:
-			OrderClick_FullLoad(w, v);
-			break;
-
-		case ORDER_WIDGET_UNLOAD:
-			OrderClick_Unload(w, v);
-			break;
-		case ORDER_WIDGET_REFIT:
-			OrderClick_Refit(w, v);
-			break;
-
-		case ORDER_WIDGET_TRANSFER:
-			OrderClick_Transfer(w, v);
-			break;
-
-		case ORDER_WIDGET_TIMETABLE_VIEW:
-			ShowTimetableWindow(v);
-			break;
-
-		case ORDER_WIDGET_SHARED_ORDER_LIST:
-			ShowVehicleListWindow(v);
-			break;
-		}
-	} break;
-
-	case WE_DRAGDROP: {
-		const Vehicle *v = GetVehicle(w->window_number);
-
-		switch (e->we.click.widget) {
-			case ORDER_WIDGET_ORDER_LIST: {
-				int from_order = OrderGetSel(w);
-				int to_order = GetOrderFromOrderWndPt(w, e->we.dragdrop.pt.y, v);
-
-				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > v->num_orders || to_order == INVALID_ORDER || to_order > v->num_orders) &&
-						DoCommandP(v->tile, v->index, from_order | (to_order << 16), NULL, CMD_MOVE_ORDER | CMD_MSG(STR_CAN_T_MOVE_THIS_ORDER))) {
-					WP(w, order_d).sel = -1;
+		case WE_TIMEOUT: // handle button unclick ourselves...
+			/* unclick all buttons except for the 'goto' button (ORDER_WIDGET_GOTO), which is 'persistent' */
+			for (uint i = 0; i < w->widget_count; i++) {
+				if (w->IsWidgetLowered(i) && i != ORDER_WIDGET_GOTO) {
+					w->RaiseWidget(i);
+					w->InvalidateWidget(i);
 				}
-
-				break;
 			}
-
-			case ORDER_WIDGET_DELETE:
-				OrderClick_Delete(w, v);
-				break;
-		}
-
-		ResetObjectToPlace();
-		break;
-	}
-
-	case WE_KEYPRESS: {
-		Vehicle *v = GetVehicle(w->window_number);
-		uint i;
-
-		if (v->owner != _local_player) break;
-
-		for (i = 0; i < lengthof(_order_keycodes); i++) {
-			if (e->we.keypress.keycode == _order_keycodes[i]) {
-				e->we.keypress.cont = false;
-				//see if the button is disabled
-				if (!w->IsWidgetDisabled(i + ORDER_WIDGET_SKIP)) _order_button_proc[i](w, v);
-				break;
-			}
-		}
-		break;
-	}
-
-	case WE_RCLICK: {
-		const Vehicle *v = GetVehicle(w->window_number);
-		int s = OrderGetSel(w);
-
-		if (e->we.click.widget != ORDER_WIDGET_FULL_LOAD) break;
-		if (s == v->num_orders || !GetVehicleOrder(v, s)->IsType(OT_GOTO_DEPOT)) {
-			GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);
-		} else {
-			GuiShowTooltips(STR_SERVICE_HINT);
-		}
-	} break;
-
-	case WE_PLACE_OBJ: {
-		OrdersPlaceObj(GetVehicle(w->window_number), e->we.place.tile, w);
-	} break;
-
-	case WE_ABORT_PLACE_OBJ: {
-		w->RaiseWidget(ORDER_WIDGET_GOTO);
-		w->InvalidateWidget(ORDER_WIDGET_GOTO);
-	} break;
-
-	// check if a vehicle in a depot was clicked..
-	case WE_MOUSELOOP: {
-		const Vehicle *v = _place_clicked_vehicle;
-		/*
-		 * Check if we clicked on a vehicle
-		 * and if the GOTO button of this window is pressed
-		 * This is because of all open order windows WE_MOUSELOOP is called
-		 * and if you have 3 windows open, and this check is not done
-		 * the order is copied to the last open window instead of the
-		 * one where GOTO is enabled
-		 */
-		if (v != NULL && w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
-			_place_clicked_vehicle = NULL;
-			HandleOrderVehClick(GetVehicle(w->window_number), v, w);
-		}
-	} break;
-
-	case WE_RESIZE:
-		/* Update the scroll + matrix */
-		w->vscroll.cap = (w->widget[ORDER_WIDGET_ORDER_LIST].bottom - w->widget[ORDER_WIDGET_ORDER_LIST].top) / 10;
-		break;
-
-	case WE_TIMEOUT: { // handle button unclick ourselves...
-		// unclick all buttons except for the 'goto' button (ORDER_WIDGET_GOTO), which is 'persistent'
-		uint i;
-		for (i = 0; i < w->widget_count; i++) {
-			if (w->IsWidgetLowered(i) && i != ORDER_WIDGET_GOTO) {
-				w->RaiseWidget(i);
-				w->InvalidateWidget(i);
-			}
-		}
-	} break;
+			break;
 	}
 }
 
