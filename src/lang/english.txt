@@ -2652,8 +2652,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING3}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING3}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING3} {STRING2}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING3} {STRING2}
 STR_ORDER_GO_TO                                                 :Go to
 STR_ORDER_GO_NON_STOP_TO                                        :Go non-stop to
 STR_ORDER_GO_VIA                                                :Go via

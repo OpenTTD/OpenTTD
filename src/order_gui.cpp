@@ -186,7 +186,7 @@ static void DrawOrdersWindow(Window *w)
 	StringID str;
 	while (order != NULL) {
 		str = (v->cur_order_index == i) ? STR_8805 : STR_8804;
-		SetDParam(3, STR_EMPTY);
+		SetDParam(5, STR_EMPTY);
 
 		if (i - w->vscroll.pos < w->vscroll.cap) {
 			SetDParam(1, 6);
@@ -228,10 +228,8 @@ static void DrawOrdersWindow(Window *w)
 
 					SetDParam(1, s);
 					if (order->IsRefit()) {
-						SetDParam(3, STR_REFIT_ORDER);
-						SetDParam(4, GetCargo(order->GetRefitCargo())->name);
-					} else {
-						SetDParam(3, STR_EMPTY);
+						SetDParam(5, STR_REFIT_ORDER);
+						SetDParam(6, GetCargo(order->GetRefitCargo())->name);
 					}
 					break;
 				}
@@ -656,9 +654,10 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					OrderClick_Delete(w, v, 0);
 					break;
 
-				case ORDER_WIDGET_NON_STOP:
-					ShowDropDownMenu(w, _order_non_stop_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetNonStopType(), ORDER_WIDGET_NON_STOP, 0, 0, 124);
-					break;
+				case ORDER_WIDGET_NON_STOP: {
+					const Order *o = GetVehicleOrder(v, OrderGetSel(w));
+					ShowDropDownMenu(w, _order_non_stop_drowdown, o->GetNonStopType(), ORDER_WIDGET_NON_STOP, 0, o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12), 124);
+				} break;
 
 				case ORDER_WIDGET_GOTO:
 					OrderClick_Goto(w, v, 0);
