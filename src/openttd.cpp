@@ -2452,6 +2452,23 @@ bool AfterLoadGame()
 
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) v->current_order.ConvertFromOldSavegame();
+	} else if (CheckSavegameVersion(94)) {
+		/* Unload and transfer are now mutual exclusive. */
+		Order *order;
+		FOR_ALL_ORDERS(order) {
+			if ((order->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+				order->SetUnloadType(OUFB_TRANSFER);
+				order->SetLoadType(OLFB_NO_LOAD);
+			}
+		}
+
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if ((v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+				v->current_order.SetUnloadType(OUFB_TRANSFER);
+				v->current_order.SetLoadType(OLFB_NO_LOAD);
+			}
+		}
 	}
 
 	return InitializeWindowsAndCaches();

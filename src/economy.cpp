@@ -1637,8 +1637,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			continue;
 		}
 
-		/* Do not pick up goods that we unloaded */
-		if ((u->current_order.GetUnloadType() & OUFB_UNLOAD) || (u->current_order.GetLoadType() & OLFB_NO_LOAD)) continue;
+		/* Do not pick up goods when we have no-load set. */
+		if (u->current_order.GetLoadType() & OLFB_NO_LOAD) continue;
 
 		/* update stats */
 		int t;

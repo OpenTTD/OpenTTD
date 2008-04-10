@@ -174,6 +174,11 @@ void Order::ConvertFromOldSavegame()
 		uint t = ((this->flags & 1) == 0) ? OUF_UNLOAD_IF_POSSIBLE : OUFB_TRANSFER;
 		if ((this->flags & 2) != 0) t |= OUFB_UNLOAD;
 		this->SetUnloadType((OrderUnloadFlags)t);
+
+		if ((this->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+			this->SetUnloadType(OUFB_TRANSFER);
+			this->SetLoadType(OLFB_NO_LOAD);
+		}
 	} else {
 		uint t = ((this->flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
 		if ((this->flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
@@ -820,32 +825,16 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			case MOF_UNLOAD:
 				order->SetUnloadType((OrderUnloadFlags)data);
-				/* Full loading gets disabled when un loading! */
-				if ((data & OUFB_UNLOAD) != 0) {
-					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~(OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)));
-				}
-				if ((data & (OUFB_NO_UNLOAD | OUFB_TRANSFER)) != 0) {
-					if ((order->GetLoadType() & OLFB_NO_LOAD) != 0 && (data & OUFB_TRANSFER) != 0) {
-						order->SetUnloadType((OrderUnloadFlags)(data | OUFB_UNLOAD));
-					}
+				if ((data & OUFB_NO_UNLOAD) != 0 && (order->GetLoadType() & OLFB_NO_LOAD) != 0) {
 					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~OLFB_NO_LOAD));
 				}
 				break;
 
 			case MOF_LOAD:
 				order->SetLoadType((OrderLoadFlags)data);
-				/* Unloading gets disabled when full loading! */
-				if ((data & OLFB_FULL_LOAD) != 0) {
-					order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_UNLOAD));
-				}
-				if ((data & OLFB_NO_LOAD) != 0) {
-					if ((order->GetUnloadType() & OUFB_TRANSFER) != 0) {
-						/* No load + transfer == unload + transfer */
-						order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() | OUFB_UNLOAD));
-						order->SetLoadType((OrderLoadFlags)(data & ~OLFB_NO_LOAD));
-					} else {
-						order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_NO_UNLOAD));
-					}
+				if ((data & OLFB_NO_LOAD) != 0 && (order->GetUnloadType() & OUFB_NO_UNLOAD) != 0) {
+					/* No load + no unload isn't compatible */
+					order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_NO_UNLOAD));
 				}
 				break;
 
