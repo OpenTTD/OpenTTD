@@ -2696,10 +2696,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Hierdoor
 STR_8820_RENAME                                                 :{BLACK}Hernoemen
 STR_8823_SKIP                                                   :{BLACK}Sla over
 STR_8824_DELETE                                                 :{BLACK}Verwijder
-STR_8825_NON_STOP                                               :{BLACK}Non-stop
 STR_8826_GO_TO                                                  :{BLACK}Ga naar
-STR_8827_FULL_LOAD                                              :{BLACK}Vol laden
-STR_8828_UNLOAD                                                 :{BLACK}Uitladen
 STR_REFIT                                                       :{BLACK}Ombouwen
 STR_REFIT_TIP                                                   :{BLACK}Kies naar welk type vracht ombouwen in deze order. Ctrl-klik om ombouw instructie te verwijderen
 STR_REFIT_ORDER                                                 :(Ombouwen naar {STRING})
@@ -2758,10 +2755,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Laat tot
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren. CTRL + klikken gaat naar het station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sla huidige order over, en begin met de volgende. CTRL + klik, begin direct met geselecteerde order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Verwijder de geselecteerde order
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak de geselecteerde order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Voeg een nieuwe order in voor de geselecteerde order, of voeg het toe aan de eind van de lijst
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zorg dat de geselecteerde order het voertuig forceert te wachten voor een volledige belading
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zorg dat de geselecteerde order het voertuig forceert uit te laden
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Dienstregeling - klik op een opdracht om het te selecteren
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander de hoeveelheid tijd die de geselecteerde opdracht mag innemen
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Verwijder de hoeveelheid tijd die de geselecteerde opdracht mag innemen
@@ -2785,8 +2779,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan de richting van de trein niet omdraaien...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem trein voertuig type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan het trein voertuig type niet hernoemen...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Forceer het voertuig goederen te dumpen bij geselecteerde order
-STR_TRANSFER                                                    :{BLACK}Overladen
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
 STR_RESET_LATENESS                                              :{BLACK}Reset teller
 

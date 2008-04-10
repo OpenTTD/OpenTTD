@@ -2798,10 +2798,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ide katt
 STR_8820_RENAME                                                 :{BLACK}Átnevez
 STR_8823_SKIP                                                   :{BLACK}Kihagy
 STR_8824_DELETE                                                 :{BLACK}Töröl
-STR_8825_NON_STOP                                               :{BLACK}Non-stop
 STR_8826_GO_TO                                                  :{BLACK}Új cél
-STR_8827_FULL_LOAD                                              :{BLACK}Telepakol
-STR_8828_UNLOAD                                                 :{BLACK}Lepakol
 STR_REFIT                                                       :{BLACK}Átalakít
 STR_REFIT_TIP                                                   :{BLACK}Válaszd ki minek a szállítására álljunk át. Ctrl+kattintással eltávolítod az átalakítási utasítást.
 STR_REFIT_ORDER                                                 :(Átalakít erre: {STRING})
@@ -2858,10 +2855,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Megmutat
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Menetrend - kattints egy célpontra a kijelöléséhez
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Jelenlegi úticél átugrása, és a következő aktiválása. CTRL + kattintásra a kiválasztott úticélra ugrik
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}A kijelölt célpont törlése
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célpont felé megállás nélkül kell haladni
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Új célpont beillesztése a kijelölt elé vagy a lista végére
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célponton meg kell várni, amíg telerakják a járművet
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelölt célponton le kell pakolni a rakományt
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Menetrend - kijelöléshez kattints egy elemére
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}A kijelölt menetrend-sor végrehajtási idejét változtatja meg
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}A kijelölt menetrendi sorhoz tartozó végrehajtási idő törlése
@@ -2885,8 +2879,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nem fordíthatod meg a vonatot...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Márkanév megváltoztatása
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem változtathatod meg a márkanevet...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}A kiválasztott állomásnál a jármű a rakományt leteszi
-STR_TRANSFER                                                    :{BLACK}Elszállít
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
 STR_RESET_LATENESS                                              :{BLACK}Késés nullázása
 

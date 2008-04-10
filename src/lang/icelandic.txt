@@ -2696,10 +2696,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Þetta b
 STR_8820_RENAME                                                 :{BLACK}Endurnefna
 STR_8823_SKIP                                                   :{BLACK}Sleppa
 STR_8824_DELETE                                                 :{BLACK}Eyða
-STR_8825_NON_STOP                                               :{BLACK}Viðstöðulaust
 STR_8826_GO_TO                                                  :{BLACK}Fara að
-STR_8827_FULL_LOAD                                              :{BLACK}Fullferma
-STR_8828_UNLOAD                                                 :{BLACK} Afferma
 STR_REFIT                                                       :{BLACK}Breyta
 STR_REFIT_TIP                                                   :{BLACK}Veldu farm til að breyta í. CTRL smelltu til að fjarlægja breytiskipun
 STR_REFIT_ORDER                                                 :(Breyta í {STRING})
@@ -2758,10 +2755,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Sýna he
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Áætlun - smelltu til að velja stöð. CTRL + músartakki færir sjónarhorn að stöðinni
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sleppa núverandi skipun og fara í þá næstu. CTRL + smella sleppir valdri skipun
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eyða valdri skipun
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gera valda skipun viðstöðulausa
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Skeyta inn nýrri skipun á undan valdri skipun, eða bæta við á enda listans
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða lest til að bíða eftir fullum farmi í valdri skipun
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða lest til að afferma sig í valdri skipun
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Áætlun - smelltu á skipun til að velja hana.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Breyta tímanum sem valin skipun ætti að taka
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hreinsa tímann fyrir valda skipun
@@ -2785,8 +2779,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Get ekki snúið lest við...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Endurskíra lestargerð
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Get ekki endurskírt lestargerð...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Lætur lestina losa farminn á valinni skipun
-STR_TRANSFER                                                    :{BLACK}Yfirfæra
 STR_CLEAR_TIME                                                  :{BLACK}Hreinsa tíma
 STR_RESET_LATENESS                                              :{BLACK}Endurstilla seinkunnarteljara
 

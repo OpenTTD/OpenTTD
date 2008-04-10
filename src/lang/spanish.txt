@@ -2684,10 +2684,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto con
 STR_8820_RENAME                                                 :{BLACK}Renombrar
 STR_8823_SKIP                                                   :{BLACK}Saltarse
 STR_8824_DELETE                                                 :{BLACK}Borrar
-STR_8825_NON_STOP                                               :{BLACK}Sin parar
 STR_8826_GO_TO                                                  :{BLACK}Ir a
-STR_8827_FULL_LOAD                                              :{BLACK}Carga
-STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_REFIT                                                       :{BLACK}Recargar
 STR_REFIT_TIP                                                   :{BLACK}Selecciona el tipo de carga a recargar en esta orden. Control+click para quitar la orden de recargar
 STR_REFIT_ORDER                                                 :(Recargar en {STRING})
@@ -2744,10 +2741,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostrar 
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de órdenes - click en orden para resaltarla
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saltar orden actual y comenzar la siguiente
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borrar orden resaltada
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer la orden resaltada sin parada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Añadir nueva orden antes de la orden resaltada, o añadirla al final de la lista
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer que en la orden resaltada, el vehículo espere a carga completa
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Hacer que en la orden resaltada, el vehículo espere a descargar completamente
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horarios - pulse en una orden para marcarla.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Cambia la cantidad de tiempo que debe tomar una orden marcada
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Limpiar la cantidad de tiempo para la orden seleccionada
@@ -2771,8 +2765,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se puede revertir la dirección...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renombrar tipo de vehículo
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se puede renombrar tipo de vehículo...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Hacer que la orden marcada fuerce al vehículo a descargar
-STR_TRANSFER                                                    :{BLACK}Transferir
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
 STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
 

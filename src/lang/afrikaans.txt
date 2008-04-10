@@ -2652,10 +2652,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dit sal 
 STR_8820_RENAME                                                 :{BLACK}Hernoem
 STR_8823_SKIP                                                   :{BLACK}Sprong
 STR_8824_DELETE                                                 :{BLACK}Uit vee
-STR_8825_NON_STOP                                               :{BLACK}Deurgaande
 STR_8826_GO_TO                                                  :{BLACK}Gaan Na
-STR_8827_FULL_LOAD                                              :{BLACK}Volle Lading
-STR_8828_UNLOAD                                                 :{BLACK}Aflaai
 STR_REFIT                                                       :{BLACK}Herpas
 STR_REFIT_TIP                                                   :{BLACK}Kies watter vrag tipe te herpas na in die opdraag. CTRL-kliek om herpas instruksie te verwyder
 STR_REFIT_ORDER                                                 :(Herpas na {STRING})
@@ -2712,10 +2709,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Toon tot
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Opdraglys - kliek op 'n opdrag om dit te verlig. CTRL + kliek senter op stasie
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sprong die huidige opdraag, en begin die volgende. CTRL + kliek sprong na verkieste opdrag
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vee uit die verlig opdrag
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die verlig opdrag deurgaande
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Invoeg 'n nuwe opdrag voor die verlig opdrag, of byvoeg na einde van lys
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die verlig opdrag forseer die voertuig om vir 'n volle laai te wag
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak die verlig opdrag forseer die voertuig te aflaai
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rooster - kliek op 'n opdrag om dit te verlig
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Verander die bedrag van tyd die verlig opdrag moes vat
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Skoon die totaal van tyd vir die verlig opdrag
@@ -2739,8 +2733,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan nie rigting van trein omkeer nie...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem trein voertuig tipe
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Trein voertuig tipe kan nie hernoem word nie...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Maak die verlig opdrag forseer die voertuig om sy vrag te stort
-STR_TRANSFER                                                    :{BLACK}Oordra
 STR_CLEAR_TIME                                                  :{BLACK}Reinig Tyd
 STR_RESET_LATENESS                                              :{BLACK}Herstel Laat Teller
 

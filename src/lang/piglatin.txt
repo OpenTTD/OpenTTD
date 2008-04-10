@@ -2654,10 +2654,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Isthay i
 STR_8820_RENAME                                                 :{BLACK}Enameray
 STR_8823_SKIP                                                   :{BLACK}Ipskay
 STR_8824_DELETE                                                 :{BLACK}Eleteday
-STR_8825_NON_STOP                                               :{BLACK}Onnay-Opstay
 STR_8826_GO_TO                                                  :{BLACK}Ogay Otay
-STR_8827_FULL_LOAD                                              :{BLACK}Ullfay Oadlay
-STR_8828_UNLOAD                                                 :{BLACK}Unloadway
 STR_REFIT                                                       :{BLACK}Efitray
 STR_REFIT_TIP                                                   :{BLACK}Electsay atwhay argocay ypetay otay efitray otay inway isthay orderway. Ontrolcay ickclay otay emoveray efitray instructionway
 STR_REFIT_ORDER                                                 :(Efitray otay {STRING})
@@ -2714,10 +2711,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Owshay o
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordersway istlay - ickclay onway anway orderway otay ighlighthay itway. CTRLay + ickclay ollsscray otay ethay ationstay
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Ipskay ethay urrentcay orderway, andway artstay ethay extnay. CTRLay + ickclay ipsskay otay ethay electedsay orderway
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eleteday ethay ighlightedhay orderway
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Akemay ethay ighlightedhay orderway onnay-opstay
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertway away ewnay orderway eforebay ethay ighlightedhay orderway, orway addway otay endway ofway istlay
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Akemay ethay ighlightedhay orderway orcefay ethay ehiclevay otay aitway orfay away ullfay oadlay
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Akemay ethay ighlightedhay orderway orcefay ethay ehiclevay otay unloadway
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Imetabletay - ickclay onway anway orderway otay ighlighthay itway.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Angechay ethay amountway ofway imetay atthay ethay ighlightedhay orderway ouldshay aketay
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Earclay ethay amountway ofway imetay orfay ethay ighlightedhay orderway
@@ -2741,8 +2735,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}An'tcay everseray irectionday ofway aintray...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Enameray aintray ehiclevay ypetay
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}An'tcay enameray aintray ehiclevay ypetay...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Akemay ethay ighlightedhay orderway orcefay ethay ehiclevay otay umpday argocay
-STR_TRANSFER                                                    :{BLACK}Ansfertray
 STR_CLEAR_TIME                                                  :{BLACK}Angechay Imetay
 STR_RESET_LATENESS                                              :{BLACK}Esetray Atelay Ountercay
 

@@ -1788,8 +1788,6 @@ STR_8861_STOPPED                                                :{RED}Stoppets
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Nosaukt vilcienu
 STR_8867_NAME_TRAIN                                             :{BLACK}Nosaukt vilcienu
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Uzsve'rtai pa'velei spiest tansportli'dzekl'im nomest kravu
-STR_TRANSFER                                                    :{BLACK}Tranzi'ts
 
 
 

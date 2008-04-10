@@ -2857,10 +2857,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Буду
 STR_8820_RENAME                                                 :{BLACK}Назва
 STR_8823_SKIP                                                   :{BLACK}Пропуск
 STR_8824_DELETE                                                 :{BLACK}Видалити
-STR_8825_NON_STOP                                               :{BLACK}Беззупн
 STR_8826_GO_TO                                                  :{BLACK}Прямувати
-STR_8827_FULL_LOAD                                              :{BLACK}Повністю
-STR_8828_UNLOAD                                                 :{BLACK}Розвант
 STR_REFIT                                                       :{BLACK}Переобладнати
 STR_REFIT_TIP                                                   :{BLACK}Оберіть на який тип вантажу переобладнати це завдання. Control+клік видалити команду переобладнання
 STR_REFIT_ORDER                                                 :(Переобладнати до {STRING})
@@ -2919,10 +2916,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Пока
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Маршрутний лист - клікніть на завданні для його вибору. CTRL + клік показати станцію
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустити поточний наказ, і виконувати наступний. CTRL + клік переходить до вибраного наказу
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Видалити виділене завдання
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не зупинятися на відміченій станції
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставити новий пункт перед відміченим або додати в кінець
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Чекати повного завантаження на цій станції
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Лише розвантажитися на цій станції
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Розклад - клікніть на наказі, щоб виділити.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Змінити час, впродовж якого має виконуватись наказ
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очистити час для виділеного наказу
@@ -2946,8 +2940,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Неможливо розвернути поїзд...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Перейменувати тип поїзду
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Неможливо перейменувати тип поїзду...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Наказати транспорту примусово відвантажити вантаж
-STR_TRANSFER                                                    :{BLACK}Пересадка
 STR_CLEAR_TIME                                                  :{BLACK}Очистити час
 STR_RESET_LATENESS                                              :{BLACK}Очистити лічильник запізнення
 

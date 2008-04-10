@@ -2783,10 +2783,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}See ehit
 STR_8820_RENAME                                                 :{BLACK}Nime muutmine
 STR_8823_SKIP                                                   :{BLACK}Jäta vahele
 STR_8824_DELETE                                                 :{BLACK}Kustuta
-STR_8825_NON_STOP                                               :{BLACK}Peatusteta
 STR_8826_GO_TO                                                  :{BLACK}Mine
-STR_8827_FULL_LOAD                                              :{BLACK}Laadi täis
-STR_8828_UNLOAD                                                 :{BLACK}Laadi maha
 STR_REFIT                                                       :{BLACK}Taasseadista
 STR_REFIT_TIP                                                   :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
 STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
@@ -2843,10 +2840,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Näita k
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Sihtpunktide nimekiri - vajuta käsul et see valida. CTRL + klik kerib jaama juurde
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Jäta praegune järjestus vahele ja alusta järgmisega. CTRL + klõps jätab vahele kuni valitud järjestuseni
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Kustuta valitud käsk
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Muuda valitud käsk peatuseta sihtpunktiks
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisa uus käsk nimekirja lõppu, või enne valitud käsku
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Käsi valitud sihtpunktis sõiduk täis laadida
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Käsi valitud sihtpunktis sõiduk tühjaks laadida
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Sõiduplaan - esiletõstmiseks klõpsa sihtpunktil
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muuda, kaua esile tõstetud sihtpunkti peale aega peaks kuluma
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Tühista esile tõstetud sihtpunkti ajaperiood
@@ -2870,8 +2864,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ei saa rongi ümber pöörata.
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Muuda rongivaguni tüübinime
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Raudteesõiduki tüübinime ei saa muuta...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Käsi valitud sihtpunktis sõiduki laadung kõrvaldada
-STR_TRANSFER                                                    :{BLACK}Laadi ümber
 STR_CLEAR_TIME                                                  :{BLACK}Tühista aeg
 STR_RESET_LATENESS                                              :{BLACK}Tühista hilinemisloendur
 

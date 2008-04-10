@@ -2529,10 +2529,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ĉi tio 
 STR_8820_RENAME                                                 :{BLACK}Renomu
 STR_8823_SKIP                                                   :{BLACK}Plusaltu
 STR_8824_DELETE                                                 :{BLACK}Forviŝu
-STR_8825_NON_STOP                                               :{BLACK}Senhalte
 STR_8826_GO_TO                                                  :{BLACK}Iru al
-STR_8827_FULL_LOAD                                              :{BLACK}Plenigu
-STR_8828_UNLOAD                                                 :{BLACK}Deŝarĝu
 STR_REFIT                                                       :{BLACK}Transformu
 STR_REFIT_TIP                                                   :{BLACK}Elektu ŝarĝtipon por transformo en ĉi tiu ordeno. CTRL+klako por forigi instrukcion
 STR_REFIT_ORDER                                                 :(Transformu al {STRING})
@@ -2583,10 +2580,7 @@ STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Montru k
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Montru tutan kapablon de trajno, dividite laŭ ŝarĝtipo
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordena listo - alklaku ordenon por elekti. CTRL + klako skrolas al la stacio
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Forviŝu la elektitan ordenon
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Senhaltigu elektitan ordenon
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Enigu novan ordenon antaŭ la elektita ordeno, aŭ aldonu fine de la listo
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon atendi ĝis plena ŝarĝo
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}La elektita ordeno igu la veturilon deŝarĝi
 STR_SERVICE_HINT                                                :{BLACK}Transsaltu ordenon ĝis prizorgo necesos
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosto: {CURRENCY} Pezo: {WEIGHT_S}{}Rapideco: {VELOCITY}  Forto: {POWER}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rompite
@@ -2606,8 +2600,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne povas inversigi direkton de trajno...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomu trajnan veturiltipon
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne povas renomi trajnan veturiltipon...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}La elektita ordeno igu la veturilon demeti la ŝarĝon
-STR_TRANSFER                                                    :{BLACK}Transigu
 
 STR_TRAIN_STOPPING                                              :{RED}Haltiĝas
 STR_TRAIN_STOPPING_VEL                                          :{RED}Haltiĝas, {VELOCITY}

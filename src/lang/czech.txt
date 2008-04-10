@@ -2748,10 +2748,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Vytvoř�
 STR_8820_RENAME                                                 :{BLACK}Přejmenovat
 STR_8823_SKIP                                                   :{BLACK}Přeskočit
 STR_8824_DELETE                                                 :{BLACK}Smazat
-STR_8825_NON_STOP                                               :{BLACK}Nonstop
 STR_8826_GO_TO                                                  :{BLACK}Jet do
-STR_8827_FULL_LOAD                                              :{BLACK}Naložit
-STR_8828_UNLOAD                                                 :{BLACK}Vyložit
 STR_REFIT                                                       :{BLACK}Přestavět
 STR_REFIT_TIP                                                   :{BLACK}Vyber, na který druh nákladu přestavět. CTRL-klik odstraní přestavbu z příkazu.
 STR_REFIT_ORDER                                                 :(Přestavět na {STRING})
@@ -2808,10 +2805,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Ukázat 
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam příkazů - stiskni příkaz pro označení. Kliknutím na příkaz se stisknutým CTRL se nastaví pohled na stanici
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Přeskočit příkaz a jít na další. Pomocí CTRL + kliknutí se přeskočí na vybraný příkaz
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Smazat označený příkaz
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Provést označený příkaz bez zastavení
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vložit nový příkaz před označený příkaz nebo na konec seznamu
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označený příkaz provádět do plného naložení
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označený příkaz vyloží vozidlo
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit čas pro splnění jízdního příkazu
@@ -2835,8 +2829,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nelze obrátit vlak...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Přejmenovat typ železničního vozidla
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu přejmenovat typ železničního vozidla...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}U označeného příkazu vozidlo musí vyložit náklad
-STR_TRANSFER                                                    :{BLACK}Překládka
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
 STR_RESET_LATENESS                                              :{BLACK}Smazat ukazatel zpoždění
 

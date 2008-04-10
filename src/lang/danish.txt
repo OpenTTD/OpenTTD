@@ -2683,10 +2683,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vi
 STR_8820_RENAME                                                 :{BLACK}Omdøb
 STR_8823_SKIP                                                   :{BLACK}Spring over
 STR_8824_DELETE                                                 :{BLACK}Slet
-STR_8825_NON_STOP                                               :{BLACK}Uden stop
 STR_8826_GO_TO                                                  :{BLACK}Gå til
-STR_8827_FULL_LOAD                                              :{BLACK}Fuld last
-STR_8828_UNLOAD                                                 :{BLACK}Aflæs
 STR_REFIT                                                       :{BLACK}Ombyg
 STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
@@ -2743,10 +2740,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Vis tota
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - klik på en ordre for at markere den. CTRL-klik for at centrere skærmen over stationen
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Spring over nuværende ordre og start næste. CTRL + klik springer til den valgte ordre
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slet den markerede ordre
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Lav den markerede ordre til en "uden stop" ordre
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Indsæt en ny ordre før den markerede eller ved slutningen af ordrelisten
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at vente på en fuld last
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den markerede ordre til at tvinge toget til at aflæsse
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Køreplan - klik på en ordre for at markere den.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ændre hvor lang tid den markerede ordre skal tage
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nulstil tiden for den markerede ordre
@@ -2770,8 +2764,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikke vende retningen af toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Omdøb tog-/togvognstypen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikke omdøbe tog-/togvognstypen...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Få den valgte ordre til at tvinge køretøjet til at smide lasten
-STR_TRANSFER                                                    :{BLACK}Overfør
 STR_CLEAR_TIME                                                  :{BLACK}Nulstil tid
 STR_RESET_LATENESS                                              :{BLACK}Nulstil forsinkelse
 

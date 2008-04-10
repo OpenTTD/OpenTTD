@@ -2695,10 +2695,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Det här
 STR_8820_RENAME                                                 :{BLACK}Byt namn på
 STR_8823_SKIP                                                   :{BLACK}Skippa
 STR_8824_DELETE                                                 :{BLACK}Ta bort
-STR_8825_NON_STOP                                               :{BLACK}Non-stop
 STR_8826_GO_TO                                                  :{BLACK}Gå Till
-STR_8827_FULL_LOAD                                              :{BLACK}Lasta
-STR_8828_UNLOAD                                                 :{BLACK}Lasta av
 STR_REFIT                                                       :{BLACK}Anpassa
 STR_REFIT_TIP                                                   :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. CTRL+ klicka för att ta bort anpassningsordern
 STR_REFIT_ORDER                                                 :(Anpassa för {STRING})
@@ -2757,10 +2754,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Visa tå
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlista - klicka på order för att markera det
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hoppa över nuvarande order och starta nästa. CTRL + klick hoppar över till vald order
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Ta bort markerad order
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör markerad order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör markerad order att tvinga fordonet att vänta på full last
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör markerad order att tvinga fordonet att vänta på tom last
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Tidstabell - klicka på en order för att markera den.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ändra tid som den markerade ordern bör ta
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Rensa tiden för markerad order
@@ -2784,8 +2778,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan inte byta tågets riktning...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Byt namn på tågets fordonstyp
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan inte byta namn på tågets fordonstyp...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Gör så att den markerade ordern tvingar fordonet att lasta av
-STR_TRANSFER                                                    :{BLACK}Lasta om
 STR_CLEAR_TIME                                                  :{BLACK}Rensa tid
 STR_RESET_LATENESS                                              :{BLACK}Rensa räknaren för sen ankomst
 

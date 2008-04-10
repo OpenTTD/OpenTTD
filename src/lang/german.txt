@@ -2684,10 +2684,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Baut ein
 STR_8820_RENAME                                                 :{BLACK}Umbenennen
 STR_8823_SKIP                                                   :{BLACK}Überspringen
 STR_8824_DELETE                                                 :{BLACK}Löschen
-STR_8825_NON_STOP                                               :{BLACK}ohne Halt
 STR_8826_GO_TO                                                  :{BLACK}Nach
-STR_8827_FULL_LOAD                                              :{BLACK}Beladen
-STR_8828_UNLOAD                                                 :{BLACK}Entladen
 STR_REFIT                                                       :{BLACK}Umrüsten
 STR_REFIT_TIP                                                   :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
 STR_REFIT_ORDER                                                 :(umrüsten auf {STRING})
@@ -2744,10 +2741,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Frachtü
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Auftragsliste - zum Markieren hier anklicken
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Übergehe den laufenden Auftrag, und starte den nächsten
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Lösche den markierten Auftrag
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Führe den markierten Auftrag ohne Halt durch
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge einen neuen Auftrag vor dem markierten Auftrag ein, oder setze ihn ans Ende der Liste
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Der markierte Auftrag wird nur nach voller Beladung ausgeführt
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim markierten Auftrag wird die volle Entladung veranlasst
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken um sie zu markieren.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zeitrahmen für den markierten Auftrag ändern
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zeitrahmen für den markierten Auftrag löschen
@@ -2771,8 +2765,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Die Zugbewegung kann nicht umgekehrt werden...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zugtyp umbenennen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp kann nicht umbenannt werden...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Beim markierten Eintrag wird die Ladung in den Bahnhof entladen (für späteren Weitertransport)
-STR_TRANSFER                                                    :{BLACK}Umladen
 STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
 STR_RESET_LATENESS                                              :{BLACK}Verspätungszähler zurücksetzen
 

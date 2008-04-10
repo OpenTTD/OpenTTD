@@ -2663,10 +2663,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}This wil
 STR_8820_RENAME                                                 :{BLACK}Rename
 STR_8823_SKIP                                                   :{BLACK}Skip
 STR_8824_DELETE                                                 :{BLACK}Delete
-STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Go To
-STR_8827_FULL_LOAD                                              :{BLACK}Full Load
-STR_8828_UNLOAD                                                 :{BLACK}Unload
 STR_REFIT                                                       :{BLACK}Refit
 STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
@@ -2723,10 +2720,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Show tot
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orders list - click on order to highlight it
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skip the current order, and start the next. CTRL + click skips to the selected order)
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Delete the highlighted order
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insert a new order before the highlighted order, or add to end of list
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to wait for a full load
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to unload
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Timetable - click on an order to highlight it.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Change the amount of time that the highlighted order should take
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Clear the amount of time for the highlighted order
@@ -2750,8 +2744,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Can't reverse direction of train...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename train vehicle type
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Make the highlighted order force the vehicle to dump cargo
-STR_TRANSFER                                                    :{BLACK}Transfer
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
 STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
 

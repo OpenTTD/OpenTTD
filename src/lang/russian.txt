@@ -2704,10 +2704,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Созд
 STR_8820_RENAME                                                 :{BLACK}Переимен.
 STR_8823_SKIP                                                   :{BLACK}Пропуск
 STR_8824_DELETE                                                 :{BLACK}Удалить
-STR_8825_NON_STOP                                               :{BLACK}Без ост.
 STR_8826_GO_TO                                                  :{BLACK}Ехать
-STR_8827_FULL_LOAD                                              :{BLACK}Полный
-STR_8828_UNLOAD                                                 :{BLACK}Без груза
 STR_REFIT                                                       :{BLACK}Переоб.
 STR_REFIT_TIP                                                   :{BLACK}Выберите тип грузов для переоборудования. CTRL+клик - для удаления.
 STR_REFIT_ORDER                                                 :(Переоборуд. для {STRING})
@@ -2764,10 +2761,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Пока
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Показ списка заданий - щелкните для выделения. Если зажать CTRL - обзор станции.
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустить данное задание и начать следующее. CTRL + клик пропускает выделенное задание.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Удалить выделенное задание
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Ехать по выбранному заданию без остановок
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставить новое задание перед выделенным, или в конец списка
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Задать ожидание полной загрузки
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Задать ожидание полной разгрузки
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Расписание - выберите задание.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Изменить время для выделенного задания
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Очистить время в выделенном задании
@@ -2791,8 +2785,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Невозможно развернуть поезд...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Переименовать тип вагона
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Невозможно переименовать тип вагона ...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}По выделенному приказу произойдет принудительная разгрузка транспортного средства
-STR_TRANSFER                                                    :{BLACK}Трансфер
 STR_CLEAR_TIME                                                  :{BLACK}Сбросить Время
 STR_RESET_LATENESS                                              :{BLACK}Сброс счетчика
 

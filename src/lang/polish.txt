@@ -2792,10 +2792,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Spowoduj
 STR_8820_RENAME                                                 :{BLACK}Zmień nazwę
 STR_8823_SKIP                                                   :{BLACK}Pomiń
 STR_8824_DELETE                                                 :{BLACK}Usuń
-STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Idź do
-STR_8827_FULL_LOAD                                              :{BLACK}Załadunek
-STR_8828_UNLOAD                                                 :{BLACK}Wyładunek
 STR_REFIT                                                       :{BLACK}Przebuduj
 STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego ładunku przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
 STR_REFIT_ORDER                                                 :(Przebuduj na {STRING})
@@ -2852,10 +2849,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Pokaż c
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista poleceń - klik na poleceniu aby zaznaczyć. CTRL + klik przenosi do stacji
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Pomiń obecne zadanie, i rozpocznij kolejne. CTRL + klik pomija aż do zaznaczonego zadania
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Usuń podświetlone polecenie
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Zrób z tego polecenia 'non-stop'
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Wstaw nowe polecenie na końcu listy lub przed zaznaczonym poleceniem
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusiło pojazd do czekania na pełny załadunek
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Spraw aby zaznaczone polecenie zmusiło pojazd do wyładunku
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rozkład jazdy - kliknij na zadaniu aby je zaznaczyć.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Zmień ilość czasu którą zaznaczone zadanie powinno zająć
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Usuń ilość czas przeznaczoną na zaznaczone zadanie
@@ -2879,8 +2873,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie można odwrócić kierunku jazdy pociągu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociągu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie można zmienić nazwy typu pojazdu...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Spraw by w zaznaczonym poleceniu pojazd był zmuszony do pozostawienia ładunku dla kolejnego pojazdu
-STR_TRANSFER                                                    :{BLACK}Przewieź
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
 STR_RESET_LATENESS                                              :{BLACK}Wyzeruj spóźnienia
 

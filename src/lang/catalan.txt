@@ -2696,10 +2696,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fa una c
 STR_8820_RENAME                                                 :{BLACK}Reanomena
 STR_8823_SKIP                                                   :{BLACK}Salta
 STR_8824_DELETE                                                 :{BLACK}Esborra
-STR_8825_NON_STOP                                               :{BLACK}No paris
 STR_8826_GO_TO                                                  :{BLACK}Ves a
-STR_8827_FULL_LOAD                                              :{BLACK}Carrega
-STR_8828_UNLOAD                                                 :{BLACK}Descarreg
 STR_REFIT                                                       :{BLACK}Remodela
 STR_REFIT_TIP                                                   :{BLACK}Selecciona quin tipus de càrrega vols remodelar en aquesta ordre. Control + Clic per eliminar l'ordre de remodelar
 STR_REFIT_ORDER                                                 :(Remodela a {STRING})
@@ -2758,10 +2755,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra l
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Llista d'ordres - clica en una per seleccionar-la
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta l'ordre actual, i comença la següent. CTRL + clic salta l'ordre seleccionada
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborra l'ordre seleccionada
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer sense parades l'ordre seleccionada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegeix una nova ordre abans de la seleccionada, o afegeix-la al final de la llista
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obliga en l'ordre seleccionada a descarregar l'element
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horari - clica sobre l'ordre per marcar-la.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Canvia la quantitat de temps que l'ordre marcada hauria de prendre
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Esborra la quantitat de temps de l'ordre marcada
@@ -2785,8 +2779,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No es pot invertir la direcció del tren...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Reanomena el tipus d'element del tren
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es pot reanomenar el tipus d'element del tren...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Fer que l'ordre marcada forci al vehicle a volcar la càrrega
-STR_TRANSFER                                                    :{BLACK}Transf.
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reset. control de retràs
 

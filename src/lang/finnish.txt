@@ -2643,10 +2643,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tämä r
 STR_8820_RENAME                                                 :{BLACK}Nimeä
 STR_8823_SKIP                                                   :{BLACK}Ohita
 STR_8824_DELETE                                                 :{BLACK}Poista
-STR_8825_NON_STOP                                               :{BLACK}Tauotta
 STR_8826_GO_TO                                                  :{BLACK}Mene
-STR_8827_FULL_LOAD                                              :{BLACK}Täysi lasti
-STR_8828_UNLOAD                                                 :{BLACK}Pura lasti
 STR_REFIT                                                       :{BLACK}Sovita
 STR_REFIT_TIP                                                   :{BLACK}Valitse rahdin tyyppi jolla tämä käsky uudistetaan. CTRL+klikkaus poistaa uudistuksen
 STR_REFIT_ORDER                                                 :(Sovita {STRING})
@@ -2703,10 +2700,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Näytä 
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Aikataulu - napsauta määräystä korostaaksesi.
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Ohita nykyinen pysähdys ja aloita seuraava.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Poista korostettu määräys.
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Tee korostetusta pysäkistä pysähtymätön.
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Lisää uusi pysähdys ennen valittua, tai lisää listan viimeiseksi.
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta korostettu pysähdys pakottamaan ajoneuvon odottamaan täyttä lastausta.
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta korostettu pysähdys pakottamaan ajoneuvo odottamaan purkua.
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Aikataulu - valitse rivi
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Aseta kuinka kauan käskyn tulisi kestää
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Nollaa tämän rivin aika
@@ -2730,8 +2724,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Junan suuntaa ei voi kääntää...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nimeä juna(vaunu)n tyyppi uudelleen.
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Pakottaa tyhjentämään rahdin valitulla pysäkillä
-STR_TRANSFER                                                    :{BLACK}Siirrä
 STR_CLEAR_TIME                                                  :{BLACK}Nollaa aika
 STR_RESET_LATENESS                                              :{BLACK}Nollaa myöhästymislaskuri
 

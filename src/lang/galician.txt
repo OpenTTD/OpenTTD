@@ -2464,10 +2464,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esto con
 STR_8820_RENAME                                                 :{BLACK}Renomear
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Borrar
-STR_8825_NON_STOP                                               :{BLACK}Non Parar
 STR_8826_GO_TO                                                  :{BLACK}Ir a
-STR_8827_FULL_LOAD                                              :{BLACK}Cargar
-STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_TIMETABLE_VIEW                                              :{BLACK}Táboa de tempo
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordes)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin das Ordes - -
@@ -2515,10 +2512,7 @@ STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra-l
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra-la capacidade total do tren, dividida por tipos de carga
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de Ordes - Pincha nunha orde para seleccionala
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Borra-la orde seleccionada
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Facer que a orde seleccionada sexa de Non Parar
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertar unha nova orde despois da seleccionada, o insertar unha nova orde ó final da lista
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A orde seleccionada forzará o vehículo a esperar ata que a carga estea completa
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A orde seleccionada forzará o vehículo a descargar
 STR_SERVICE_HINT                                                :{BLACK}saltar esta orde a non ser que sexa necesario o servicio
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Coste de Mantemento: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Roto
@@ -2538,7 +2532,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}No se pode cambia-lo sentido do tren...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomea-lo tipo de vehículo de ferrocarril
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Non se pode renome-lo tipo de vehículo de ferrocarril...
-STR_TRANSFER                                                    :{BLACK}Transferir
 
 STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}

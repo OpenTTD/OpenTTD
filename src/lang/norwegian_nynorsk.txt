@@ -2664,10 +2664,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vi
 STR_8820_RENAME                                                 :{BLACK}Gje nytt namn
 STR_8823_SKIP                                                   :{BLACK}Hopp over
 STR_8824_DELETE                                                 :{BLACK}Slett
-STR_8825_NON_STOP                                               :{BLACK}Utan stopp
 STR_8826_GO_TO                                                  :{BLACK}Køyr til
-STR_8827_FULL_LOAD                                              :{BLACK}Last fullt
-STR_8828_UNLOAD                                                 :{BLACK}Last av
 STR_REFIT                                                       :{BLACK}Bygg om
 STR_REFIT_TIP                                                   :{BLACK}Vel varetypen det skal skiftast til. CTRL-klikk for å fjerne ombyggingsinstruksjonar
 STR_REFIT_ORDER                                                 :(Bygg om til {STRING})
@@ -2724,10 +2721,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Vis tota
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Ordreliste - trykk på ein ordre for å velje han
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Hopp over gjedande ordre, og start neste.  CTRL + klikk hopper til valde ordre
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Slett den valde ordren
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gjer den valde ordren om til ein
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Sett inn ein ordre før den valde ordren, eller i slutten av lista
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Alltid fyll køyretøyet ved den valde stasjonen
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Alltid tøm køyretøyet ved den valde stasjonen
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Rutetabell - klikk på ei ordre for å merka den
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Bytt tida den merka ordra skal bruke
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Fjern tida den merka ordra skal bruke
@@ -2751,8 +2745,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan ikkje snu toget...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Gje tog/vogn nytt namn
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan ikkje gje tog/vogn nytt namn...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Få den merka ordren til å tvinge køyretøyet til å dumpe lasta
-STR_TRANSFER                                                    :{BLACK}Overfør
 STR_CLEAR_TIME                                                  :{BLACK}Fjern Tid
 STR_RESET_LATENESS                                              :{BLACK}Still attende teljaren for forseining
 

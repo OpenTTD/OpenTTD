@@ -2538,10 +2538,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tai paga
 STR_8820_RENAME                                                 :{BLACK}Pervardinti
 STR_8823_SKIP                                                   :{BLACK}Praleisti
 STR_8824_DELETE                                                 :{BLACK}Istrinti
-STR_8825_NON_STOP                                               :{BLACK}Nestoti
 STR_8826_GO_TO                                                  :{BLACK}Vaziuoti
-STR_8827_FULL_LOAD                                              :{BLACK}Pakrauti
-STR_8828_UNLOAD                                                 :{BLACK}Iskrauti
 STR_REFIT                                                       :{BLACK}Naujinti
 STR_REFIT_TIP                                                   :{BLACK}Pasirinkite kurį vagonų tipą kuriuo tipu pakeisti (eilės tvarka). Spragtelėjus laikant VALD (CTRL) nurodymas pašalinamas
 STR_REFIT_ORDER                                                 :(Keisti į {STRING})
@@ -2592,10 +2589,7 @@ STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Rodyti d
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Rodyti bendra traukinio talpos informacija pagal kroviniu tipa
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Nurodymų sąrašas - nurodymas pažymimas ant jo spragtelėjus. Spregtelėjimas laikant VALD (CTRL) nukelia į stotį
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Istrinti pazymeta uzduoti
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Nestoti pazymetoje stoteleje
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Iterpti nauja uzduoti pries pazymeta, arba iterpti saraso pabaigoje
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Pazymetoje stoteleje laukti, kol transporto priemone pilnai pasikraus
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Iskrauti krovini pazymetoje stoteleje
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kaina: {CURRENCY} Svoris: {WEIGHT_S}{}Greitis: {VELOCITY}  Galia: {POWER}{}Eksplotacijos išlaidos: {CURRENCY}/metus{}Talpa: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
@@ -2615,8 +2609,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Traukinio vaziavimo krypties pakeisti negalima...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Pervardinti traukinio tipa
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Neimanoma pervardinti traukinio tipo...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Priversti iškrauti krovinius pažymėta tvarka
-STR_TRANSFER                                                    :{BLACK}Perkelti
 
 STR_TRAIN_STOPPING                                              :{RED}Stabdoma
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas, {VELOCITY}

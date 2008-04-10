@@ -2694,10 +2694,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Tüm vag
 STR_8820_RENAME                                                 :{BLACK}Yeni isim
 STR_8823_SKIP                                                   :{BLACK}Atla
 STR_8824_DELETE                                                 :{BLACK}Sil
-STR_8825_NON_STOP                                               :{BLACK}Durmadan
 STR_8826_GO_TO                                                  :{BLACK}Git
-STR_8827_FULL_LOAD                                              :{BLACK}Doldur
-STR_8828_UNLOAD                                                 :{BLACK}Boşalt
 STR_REFIT                                                       :{BLACK}Modifiye
 STR_REFIT_TIP                                                   :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için CTRL ile tıklayın
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
@@ -2754,10 +2751,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Trenin k
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Talimat listesi - seçmek için komutu tıklayın. CTRL + tıklama istasyona kaydırir
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Şimdiki talimatı atla ve sonrakine geç. CTRL ile tıklanırsa seçili talimata geçilir
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Seçili talimatı sil
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı durmadan yap
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Seçili talimatın önüne ya da listenin sonuna komut ekle
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren dolana kadar beklesin
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili talimatı yaparken tren mutlaka yükünü boşaltsın
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Zaman çizelgesi - işaretlemek için bir talimata tıklayın.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Seçili talimatın harcaması gereken süreyi değiştir
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Seçili talimatın harcaması gereken süreyi sil
@@ -2781,8 +2775,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Tren çevrilemez...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yeniden adlandırılamaz
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandırılamaz...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Seçili talimatta aracı kargoyu boşaltmaya zorla
-STR_TRANSFER                                                    :{BLACK}Aktar
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
 STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
 

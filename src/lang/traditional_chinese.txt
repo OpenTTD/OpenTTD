@@ -2660,10 +2660,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}這將�
 STR_8820_RENAME                                                 :{BLACK}更名
 STR_8823_SKIP                                                   :{BLACK}跳過
 STR_8824_DELETE                                                 :{BLACK}刪除
-STR_8825_NON_STOP                                               :{BLACK}中途不停
 STR_8826_GO_TO                                                  :{BLACK}前往
-STR_8827_FULL_LOAD                                              :{BLACK}滿載
-STR_8828_UNLOAD                                                 :{BLACK}卸載
 STR_REFIT                                                       :{BLACK}改裝
 STR_REFIT_TIP                                                   :{BLACK}選擇這個指令要改裝的酬載種類。按住 CTRL 點選可移除改裝指令
 STR_REFIT_ORDER                                                 :(改裝成 {STRING})
@@ -2720,10 +2717,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}顯示�
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令清單 - 點選指令可選擇。按住 CTRL 點選可跳到車站位置
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳過目前的命令，從下一個開始。CTRL + 左鍵 可直接跳至所選的命令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}刪除選定指令
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}使選定的指令中途不停
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在選定的指令前插入新指令，或在最後新增指令
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令等待載滿
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}讓列車在選定的指令強制卸載
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 點一個命令來標記它。
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改變目前選定命令所需花費的時間
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除目前選定命令所設定的時間
@@ -2747,8 +2741,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}無法到轉列車方向...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重新命名鐵道車輛
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}無法修改鐵道車輛名稱...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}讓列車在選定的指令強制卸載
-STR_TRANSFER                                                    :{BLACK}轉運
 STR_CLEAR_TIME                                                  :{BLACK}清除時刻
 STR_RESET_LATENESS                                              :{BLACK}歸零誤點/慢分
 

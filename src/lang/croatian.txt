@@ -2666,10 +2666,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Ovo će 
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
 STR_8823_SKIP                                                   :{BLACK}Preskoči
 STR_8824_DELETE                                                 :{BLACK}Obriši
-STR_8825_NON_STOP                                               :{BLACK}Neprekidno
 STR_8826_GO_TO                                                  :{BLACK}Idi do
-STR_8827_FULL_LOAD                                              :{BLACK}Puni utovar
-STR_8828_UNLOAD                                                 :{BLACK}Istovar
 STR_REFIT                                                       :{BLACK}Prenamijeni
 STR_REFIT_TIP                                                   :{BLACK}Odaberi vrstu tereta za prenamijenu u ovoj naredbi. CTRL+klik kako bi uklonio naputak za prenamjenu
 STR_REFIT_ORDER                                                 :(Prenamijeni u {STRING})
@@ -2726,10 +2723,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Pokaži 
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Popis naredbi - klikni na naredbu kako bi ju označio. CTRL + klik klizi na stanicu
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutnu naredbu i pokreni slijedeću. CTRL + klik preskače na odabranu naredbu
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Obriši označenu naredbu
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi označenu naredbu da bude non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Umetni novu naredbu prije odabrane naredbe, ili dodaj na kraj liste
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi da odabrana naredba natjera vozilo da čeka na potpuni utovar
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Napravi da označena naredba natjera vozilo na istovar
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Raspored - klikni na naredbu da ju označiš.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Promijeni količinu vremena koju bi označena naredba trebala uzeti
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Obriši potrebno vrijeme za označenu naredbu
@@ -2753,8 +2747,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nije moguće promijeniti smjer vlaka...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj vrstu vagona
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nije moguće preimenovati vrstu vagona...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Napravi da označena naredba prisili vozilo da izbaci teret
-STR_TRANSFER                                                    :{BLACK}Transfer
 STR_CLEAR_TIME                                                  :{BLACK}Obriši vrijeme
 STR_RESET_LATENESS                                              :{BLACK}Poništi Brojač Kašnjenja
 

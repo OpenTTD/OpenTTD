@@ -2683,10 +2683,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esta ac�
 STR_8820_RENAME                                                 :{BLACK}Renomear
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Eliminar
-STR_8825_NON_STOP                                               :{BLACK}Sem parar
 STR_8826_GO_TO                                                  :{BLACK}Ir Para
-STR_8827_FULL_LOAD                                              :{BLACK}Carga
-STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_REFIT                                                       :{BLACK}Converter
 STR_REFIT_TIP                                                   :{BLACK}Seleccionar o tipo de carga a converter nesta ordem. Pressionar Ctrl e botão-esquerdo do rato para remover instrução de conversão
 STR_REFIT_ORDER                                                 :(Converter para {STRING})
@@ -2743,10 +2740,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostrar 
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de ordens - clique numa ordem para a seleccionar
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta a ordem actual, e inicia a próxima. CTRL + clique salta para a ordem seleccionada
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Eliminar a ordem seleccionada
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem seleccionada fará com que o veículo não para noutras estações pelo caminho
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Inserir nova ordem antes da ordem seleccionada, ou adicionar ao fim da lista
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem seleccionada fará com que o veículo espere carregar completamente
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A ordem seleccionada forçará o veículo a descarregar
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horário - clique numa ordem para a seleccionar.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Muda o espaço de tempo que a ordem seleccionada deve durar
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Apagar o tempo que dura a ordem seleccionada
@@ -2770,8 +2764,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Não é possível inverter a direcção do comboio...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomear tipo de veículo ferroviário
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Não é possível renomear tipo de veículo ferroviário...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}A ordem seleccionada forçará o veículo a largar a carga
-STR_TRANSFER                                                    :{BLACK}Transferir
 STR_CLEAR_TIME                                                  :{BLACK}Apagar Tempo
 STR_RESET_LATENESS                                              :{BLACK}Apagar Contad. Atraso
 

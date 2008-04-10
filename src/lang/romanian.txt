@@ -2664,10 +2664,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Acest bu
 STR_8820_RENAME                                                 :{BLACK}Redenumeşte
 STR_8823_SKIP                                                   :{BLACK}Sãri peste
 STR_8824_DELETE                                                 :{BLACK}Şterge
-STR_8825_NON_STOP                                               :{BLACK}Fără oprire
 STR_8826_GO_TO                                                  :{BLACK}Mergi la
-STR_8827_FULL_LOAD                                              :{BLACK}Încarcă 100%
-STR_8828_UNLOAD                                                 :{BLACK}Descarcă
 STR_REFIT                                                       :{BLACK}Rearanjeaza
 STR_REFIT_TIP                                                   :{BLACK}Alege tipul de marfa pentru rearanjare. Control+click pt a anula rearanjarea
 STR_REFIT_ORDER                                                 :(Rearanjeaza in {STRING})
@@ -2724,10 +2721,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Afiseaz�
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Lista de comenzi - clic pe comandã pentru a o selecta
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Renunta la comanta acruala si preia-o pe urmatoarea. CTRL + click face salt la comanda selectata
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Sterge comanda selectatã
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Circulă fără oprire până la destinaţia selectată
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Introdu o comandã înaintea celei selectate sau adaugã o comandã la sfârsitul listei
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã trenul sã astepte la destinatia selectatã pânã la umplerea la capacitate maximã
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã trenul sã descarce marfa la destinatia selectatã
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Orar - click on an order to highlight it.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifica durata de timp alocata pentru comanda selectata
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Elimina durata de timp pentru comanda selectata
@@ -2751,8 +2745,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nu pot schimba sensul de mers al trenului...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenumeste modelul vehiculului feroviar
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu pot redenumi modelul acestui vehicul...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Comanda selectatã forteazã vehiculul sã arunce încãrcãtura
-STR_TRANSFER                                                    :{BLACK}Transferă
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
 STR_RESET_LATENESS                                              :{BLACK}Reinitializeaza contorul de intarziere
 

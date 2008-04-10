@@ -2776,10 +2776,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}To bo zg
 STR_8820_RENAME                                                 :{BLACK}Preimenuj
 STR_8823_SKIP                                                   :{BLACK}Preskoči
 STR_8824_DELETE                                                 :{BLACK}Izbriši
-STR_8825_NON_STOP                                               :{BLACK}Brez postanka
 STR_8826_GO_TO                                                  :{BLACK}Pojdi do
-STR_8827_FULL_LOAD                                              :{BLACK}Naloži polno
-STR_8828_UNLOAD                                                 :{BLACK}Raztovori
 STR_REFIT                                                       :{BLACK}Predelaj
 STR_REFIT_TIP                                                   :{BLACK}Izberi predelavo za vrsto tovora, ki ga želiš. CTRL + klik za odstranitev ukaza predelave
 STR_REFIT_ORDER                                                 :(Predelaj za {STRING})
@@ -2838,10 +2835,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Prikaži
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Seznam navodil - klikni na ukaz, da ga izbereš. CTRL+klik prikaže postajo
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Preskoči trenutni ukaz in začni naslednjega. CTRL + klik preskoči na izbran ukaz
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Zbriši izbran ukaz
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz kot brez-postanka
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vstavi nov ukaz pred izbranega ali pa ga dodaj na koncu seznama
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz, naj vozilo čaka na polno obremenitev
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označi izbran ukaz, naj se vozilo v celoti raztovori
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Časovna tabela - clikni na ukaz za ga označit.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Spremeni čas, ki naj bi ga označeni ukaz porabil
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Počisti čas za označen ukaz
@@ -2865,8 +2859,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ni mogoče spremeniti smeri vlaka ...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj železniško vozilo
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ni mogoče preimenovati železniškega vozila ...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Nastavi označen ukaz, naj prisili vozilo, da se raztovori
-STR_TRANSFER                                                    :{BLACK}Pretovori
 STR_CLEAR_TIME                                                  :{BLACK}Počisti čas
 STR_RESET_LATENESS                                              :{BLACK}Resetiraj  Late Counter
 

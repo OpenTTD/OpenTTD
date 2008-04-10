@@ -2696,10 +2696,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}이 버�
 STR_8820_RENAME                                                 :{BLACK}이름
 STR_8823_SKIP                                                   :{BLACK}건너뛰기
 STR_8824_DELETE                                                 :{BLACK}삭제
-STR_8825_NON_STOP                                               :{BLACK}급행
 STR_8826_GO_TO                                                  :{BLACK}행선지
-STR_8827_FULL_LOAD                                              :{BLACK}모두 싣기
-STR_8828_UNLOAD                                                 :{BLACK}모두 내리기
 STR_REFIT                                                       :{BLACK}개조
 STR_REFIT_TIP                                                   :{BLACK}이 경로에서 어떤 화물을 받을 것인지 선택하십시오. CTRL+클릭은 제거입니다.
 STR_REFIT_ORDER                                                 :({STRING}(으)로 개조)
@@ -2758,10 +2755,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}각 화�
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다.
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}현재 경로를 건너 뜁니다, 그리고 다음 경로를 시작합니다. Ctrl + 클릭은 선택된 경로로 건너 뜁니다.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}선택된 경로를 삭제합니다.
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로를 급행으로 변경합니다.
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새로운 경로를 삽입합니다.
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 가득 싣도록 변경합니다.
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}선택된 경로에서 모든 화물을 전부 내리도록 변경합니다.
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로가 대기하고 있을 시간 변경
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 초기화
@@ -2785,8 +2779,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}열차를 회차시킬 수 없습니다...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}열차 차량 타입 이름 재지정
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}선택된 경로에서 모든 화물을 내려서 쌓아놓도록 변경합니다.
-STR_TRANSFER                                                    :{BLACK}환승
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
 STR_RESET_LATENESS                                              :{BLACK}지연 카운터 초기화
 

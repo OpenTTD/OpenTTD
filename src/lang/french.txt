@@ -2697,10 +2697,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectue
 STR_8820_RENAME                                                 :{BLACK}Renommer
 STR_8823_SKIP                                                   :{BLACK}Suivant
 STR_8824_DELETE                                                 :{BLACK}Supprimer
-STR_8825_NON_STOP                                               :{BLACK}Sans-arrêt
 STR_8826_GO_TO                                                  :{BLACK}Aller à
-STR_8827_FULL_LOAD                                              :{BLACK}Charger
-STR_8828_UNLOAD                                                 :{BLACK}Décharger
 STR_REFIT                                                       :{BLACK}Réaménager
 STR_REFIT_TIP                                                   :{BLACK}Choisir pour quelle cargaison réaménager pour cet ordre. Ctrl-clic pour retirer l'instruction de réaménagement
 STR_REFIT_ORDER                                                 :(Réaménager pour {STRING})
@@ -2759,10 +2756,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Afficher
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner. Ctrl-clic pour déplacer la vue sur la station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sauter l'ordre courant, et enchaîner sur le suivant. Ctrl-clic pour sauter l'ordre sélectionné
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Transformer l'ordre sélectionné en Sans-Arrêt
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insérer un nouvel ordre
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un chargement complet pour l'ordre sélectionné
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à attendre un déchargement complet pour l'ordre sélectionné
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horaire - cliquer sur un ordre pour le séléctionner.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Modifier la durée de l'ordre séléctionné
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Annuler la durée de l'ordre séléctionné
@@ -2786,8 +2780,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Impossible de faire faire demi-tour...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renommer le type de train
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossible de renommer le type de train...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Forcer le véhicule à vider sa cargaison pour l'ordre sélectionné
-STR_TRANSFER                                                    :{BLACK}Transfert
 STR_CLEAR_TIME                                                  :{BLACK}Annuler durée
 STR_RESET_LATENESS                                              :{BLACK}RAZ compteur de retard
 

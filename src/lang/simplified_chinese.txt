@@ -2523,10 +2523,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}复制�
 STR_8820_RENAME                                                 :{BLACK}重命名
 STR_8823_SKIP                                                   :{BLACK}跳过
 STR_8824_DELETE                                                 :{BLACK}删除
-STR_8825_NON_STOP                                               :{BLACK}不停
 STR_8826_GO_TO                                                  :{BLACK}前往
-STR_8827_FULL_LOAD                                              :{BLACK}装货
-STR_8828_UNLOAD                                                 :{BLACK}卸货
 STR_REFIT                                                       :{BLACK}改装
 STR_REFIT_TIP                                                   :{BLACK}选择要在调度计划中改装的货物类型。CTRL+单击可以去掉说明。
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
@@ -2583,10 +2580,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}根据�
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}调度列表 - 单击一个调度指令可以使之高亮化. CTRL + 单击可以将视点移动到相应的车站
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}跳过当前命令并执行下一条命令。CTRL并单击可以跳过选定的命令
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}删除高亮的调度命令
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令铁车在高亮的指令对应的车站不停车
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}在调度列表的结尾或高亮项目的前面增加一条新指令
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮项目对应的车站装满货物
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}命令列车在高亮项目对应的车站卸载货物
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}时间表 - 单击一个命令可以使其高亮。
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}改变高亮选择的命令执行的时间
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}清除高亮选择的命令的执行时间
@@ -2610,8 +2604,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}不能命令列车调头...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重命名车辆的类型
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}不能重命名车辆的类型...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}命令列车在高亮指令对应的车站寄存货物
-STR_TRANSFER                                                    :{BLACK}联运
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
 STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
 

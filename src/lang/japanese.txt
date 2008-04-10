@@ -2681,10 +2681,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}すべ�
 STR_8820_RENAME                                                 :{BLACK}名称を変更
 STR_8823_SKIP                                                   :{BLACK}スキップ
 STR_8824_DELETE                                                 :{BLACK}削除
-STR_8825_NON_STOP                                               :{BLACK}直行便
 STR_8826_GO_TO                                                  :{BLACK}駅を選択
-STR_8827_FULL_LOAD                                              :{BLACK}全負荷
-STR_8828_UNLOAD                                                 :{BLACK}降ろす
 STR_REFIT                                                       :{BLACK}再装備
 STR_REFIT_TIP                                                   :{BLACK}貨物の種類を選択してください。Control+クリックすると、再装備をキャンセルします。
 STR_REFIT_ORDER                                                 :（{STRING}に再装備）
@@ -2741,10 +2738,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}貨物�
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}指令リスト - 指令を選択するにはクリックします
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}実行中の指令をスキップして、次へ移動します。Control クリックすると、選択した指令へ移動します。
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}選択した指令を削除します
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令を「直行便」にします
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}選択した指令の前／リストの終わりに新規指令を挿入します
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に全負荷まで待つことを強制します
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}選択した指令に降ろすことを強制します
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}時刻表 - 指令を選択するにはクリックします。
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}選択した指令の実行時間を変更します
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}選択した指令の実行時間を消去します
@@ -2768,8 +2762,6 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}列車が逆転されられません...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}鉄道車両の名称を変更
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}鉄道車両の名称が変更できません...
-STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}選択した指令に貨物の降ろすことを含みます
-STR_TRANSFER                                                    :{BLACK}運搬
 STR_CLEAR_TIME                                                  :{BLACK}時間を消去
 STR_RESET_LATENESS                                              :{BLACK}遅刻回数をリセット
 
