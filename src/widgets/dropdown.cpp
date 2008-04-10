@@ -258,7 +258,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		_dropdown_menu_widgets);
 
 	dw->widget[0].color = wi->color;
-	dw->widget[0].right = width + 1;
+	dw->widget[0].right = width - 1;
 	dw->widget[0].bottom = height - 1;
 
 	dw->SetWidgetHiddenState(1, !scroll);
