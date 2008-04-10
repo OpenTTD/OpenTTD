@@ -2661,6 +2661,10 @@ STR_ORDER_GO_NON_STOP_VIA                                       :Go non-stop via
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Load if available
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full load all cargo
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full load any cargo
+STR_ORDER_DROP_NO_LOADING                                       :No loading
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Unload if accepted
+STR_ORDER_DROP_UNLOAD                                           :Unload all
+STR_ORDER_DROP_NO_UNLOADING                                     :No unloading
 STR_ORDER_UNLOAD                                                :(Unload)
 STR_ORDER_FULL_LOAD                                             :(Full load)
 STR_ORDER_FULL_LOAD_ANY                                         :(Full load any cargo)

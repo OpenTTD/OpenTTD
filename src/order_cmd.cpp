@@ -796,12 +796,14 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MOF_UNLOAD:
-			if ((data & ~(OUFB_UNLOAD | OUFB_TRANSFER)) != 0) return CMD_ERROR;
+			if ((data & ~(OUFB_UNLOAD | OUFB_TRANSFER | OUFB_NO_UNLOAD)) != 0) return CMD_ERROR;
+			/* Unload and no-unload are mutual exclusive and so are transfer and no unload. */
+			if (data != 0 && ((data & (OUFB_UNLOAD | OUFB_TRANSFER)) != 0) == ((data & OUFB_NO_UNLOAD) != 0)) return CMD_ERROR;
 			if (data == order->GetUnloadType()) return CMD_ERROR;
 			break;
 
 		case MOF_LOAD:
-			if (data > OLF_FULL_LOAD_ANY || data == 1) return CMD_ERROR;
+			if (data > OLFB_NO_LOAD || data == 1) return CMD_ERROR;
 			if (data == order->GetLoadType()) return CMD_ERROR;
 			break;
 
@@ -822,6 +824,12 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if ((data & OUFB_UNLOAD) != 0) {
 					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~(OLFB_FULL_LOAD | OLF_FULL_LOAD_ANY)));
 				}
+				if ((data & (OUFB_NO_UNLOAD | OUFB_TRANSFER)) != 0) {
+					if ((order->GetLoadType() & OLFB_NO_LOAD) != 0 && (data & OUFB_TRANSFER) != 0) {
+						order->SetUnloadType((OrderUnloadFlags)(data | OUFB_UNLOAD));
+					}
+					order->SetLoadType((OrderLoadFlags)(order->GetLoadType() & ~OLFB_NO_LOAD));
+				}
 				break;
 
 			case MOF_LOAD:
@@ -829,6 +837,15 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				/* Unloading gets disabled when full loading! */
 				if ((data & OLFB_FULL_LOAD) != 0) {
 					order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_UNLOAD));
+				}
+				if ((data & OLFB_NO_LOAD) != 0) {
+					if ((order->GetUnloadType() & OUFB_TRANSFER) != 0) {
+						/* No load + transfer == unload + transfer */
+						order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() | OUFB_UNLOAD));
+						order->SetLoadType((OrderLoadFlags)(data & ~OLFB_NO_LOAD));
+					} else {
+						order->SetUnloadType((OrderUnloadFlags)(order->GetUnloadType() & ~OUFB_NO_UNLOAD));
+					}
 				}
 				break;
 

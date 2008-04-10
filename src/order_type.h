@@ -53,6 +53,7 @@ enum OrderLoadFlags {
 	OLF_LOAD_IF_POSSIBLE = 0,      ///< Load as long as there is cargo that fits in the train.
 	OLFB_FULL_LOAD       = 1 << 1, ///< Full load the complete the consist.
 	OLF_FULL_LOAD_ANY    = 3,      ///< Full load the a single cargo of the consist.
+	OLFB_NO_LOAD         = 4,      ///< Do not load anything.
 };
 
 /**

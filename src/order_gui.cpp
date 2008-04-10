@@ -107,6 +107,12 @@ static const StringID _station_load_types[][5] = {
 		STR_ORDER_TRANSFER_FULL_LOAD,
 		STR_ORDER_TRANSFER_FULL_LOAD_ANY,
 		INVALID_STRING_ID,
+	}, {
+		STR_ORDER_NO_UNLOAD,
+		INVALID_STRING_ID,
+		STR_ORDER_NO_UNLOAD_FULL_LOAD,
+		STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY,
+		INVALID_STRING_ID,
 	}
 };
 
@@ -412,7 +418,8 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v, int load_type)
 		switch (order->GetLoadType()) {
 			case OLF_LOAD_IF_POSSIBLE: load_type = OLFB_FULL_LOAD;       break;
 			case OLFB_FULL_LOAD:       load_type = OLF_FULL_LOAD_ANY;    break;
-			case OLF_FULL_LOAD_ANY:    load_type = OLF_LOAD_IF_POSSIBLE; break;
+			case OLF_FULL_LOAD_ANY:    load_type = OLFB_NO_LOAD;         break;
+			case OLFB_NO_LOAD:         load_type = OLF_LOAD_IF_POSSIBLE; break;
 			default: NOT_REACHED();
 		}
 	}
@@ -436,12 +443,24 @@ static void OrderClick_Service(Window *w, const Vehicle *v, int i)
  * @param w current window
  * @param v current vehicle
  */
-static void OrderClick_Unload(Window *w, const Vehicle *v, int i)
+static void OrderClick_Unload(Window *w, const Vehicle *v, int unload_type)
 {
 	VehicleOrderID sel_ord = OrderGetSel(w);
 	const Order *order = GetVehicleOrder(v, sel_ord);
 
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (order->GetUnloadType() ^ OUFB_UNLOAD) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	if (unload_type < 0) {
+		switch (order->GetUnloadType()) {
+			case OUF_UNLOAD_IF_POSSIBLE: unload_type = OUFB_UNLOAD;            break;
+			case OUFB_UNLOAD:            unload_type = OUFB_NO_UNLOAD;         break;
+			case OUFB_NO_UNLOAD:         unload_type = OUF_UNLOAD_IF_POSSIBLE; break;
+			default: NOT_REACHED();
+		}
+	}
+
+	if ((order->GetUnloadType() & OUFB_TRANSFER) != 0 && unload_type != OUFB_NO_UNLOAD) unload_type |= OUFB_TRANSFER;
+	if (order->GetUnloadType() == unload_type) return;
+
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 2), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -477,7 +496,7 @@ static void OrderClick_Transfer(Window *w, const Vehicle *v, int i)
 	VehicleOrderID sel_ord = OrderGetSel(w);
 	const Order *order = GetVehicleOrder(v, sel_ord);
 
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (order->GetUnloadType() ^ OUFB_TRANSFER) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | ((order->GetUnloadType() & ~OUFB_NO_UNLOAD) ^ OUFB_TRANSFER) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -564,8 +583,19 @@ static const StringID _order_non_stop_drowdown[] = {
 
 static const StringID _order_full_load_drowdown[] = {
 	STR_ORDER_DROP_LOAD_IF_POSSIBLE,
+	STR_EMPTY,
 	STR_ORDER_DROP_FULL_LOAD_ALL,
 	STR_ORDER_DROP_FULL_LOAD_ANY,
+	STR_ORDER_DROP_NO_LOADING,
+	INVALID_STRING_ID
+};
+
+static const StringID _order_unload_drowdown[] = {
+	STR_ORDER_DROP_UNLOAD_IF_ACCEPTED,
+	STR_ORDER_DROP_UNLOAD,
+	STR_EMPTY,
+	STR_EMPTY,
+	STR_ORDER_DROP_NO_UNLOADING,
 	INVALID_STRING_ID
 };
 
@@ -664,11 +694,11 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case ORDER_WIDGET_FULL_LOAD:
-					ShowDropDownMenu(w, _order_full_load_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetLoadType() << 2, ORDER_WIDGET_FULL_LOAD, 0, 0, 124);
+					ShowDropDownMenu(w, _order_full_load_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetLoadType(), ORDER_WIDGET_FULL_LOAD, 0, 2, 124);
 					break;
 
 				case ORDER_WIDGET_UNLOAD:
-					OrderClick_Unload(w, v, 0);
+					ShowDropDownMenu(w, _order_unload_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetUnloadType(), ORDER_WIDGET_UNLOAD, 0, 12, 124);
 					break;
 
 				case ORDER_WIDGET_REFIT:
@@ -700,7 +730,11 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case ORDER_WIDGET_FULL_LOAD:
-					OrderClick_FullLoad(w, v, e->we.dropdown.index == 0 ? 0 : e->we.dropdown.index + 1);
+					OrderClick_FullLoad(w, v, e->we.dropdown.index);
+					break;
+
+				case ORDER_WIDGET_UNLOAD:
+					OrderClick_Unload(w, v, e->we.dropdown.index);
 					break;
 			}
 			break;
@@ -810,7 +844,7 @@ static const Widget _orders_train_widgets[] = {
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,    92,    76,    87, STR_8825_NON_STOP,       STR_8855_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_NON_STOP
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   371,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,    93,   185,    76,    87, STR_8827_FULL_LOAD,      STR_8857_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_FULL_LOAD
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   278,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   278,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   278,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   279,   371,    76,    87, STR_TRANSFER,            STR_MAKE_THE_HIGHLIGHTED_ORDER},      // ORDER_WIDGET_TRANSFER
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   279,   371,    76,    87, STR_SERVICE,             STR_MAKE_THE_HIGHLIGHTED_ORDER},      // ORDER_WIDGET_SERVICE
@@ -847,7 +881,7 @@ static const Widget _orders_widgets[] = {
 	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   371,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   123,    76,    87, STR_8827_FULL_LOAD,      STR_8857_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_FULL_LOAD
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   372,    76,    87, STR_TRANSFER,            STR_MAKE_THE_HIGHLIGHTED_ORDER},      // ORDER_WIDGET_TRANSFER
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   372,    76,    87, STR_SERVICE,             STR_NULL},                            // ORDER_WIDGET_SERVICE

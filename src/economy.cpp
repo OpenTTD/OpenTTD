@@ -1473,7 +1473,7 @@ void VehiclePayment(Vehicle *front_v)
 
 	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
 		/* No cargo to unload */
-		if (v->cargo_cap == 0 || v->cargo.Empty()) continue;
+		if (v->cargo_cap == 0 || v->cargo.Empty() || front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) continue;
 
 		/* All cargo has already been paid for, no need to pay again */
 		if (!v->cargo.UnpaidCargo()) {
@@ -1599,7 +1599,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 		GoodsEntry *ge = &st->goods[v->cargo_type];
 
-		if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING)) {
+		if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) && (u->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 			uint cargo_count = v->cargo.Count();
 			uint amount_unloaded = _patches.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
 			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
@@ -1638,7 +1638,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		}
 
 		/* Do not pick up goods that we unloaded */
-		if (u->current_order.GetUnloadType() & OUFB_UNLOAD) continue;
+		if ((u->current_order.GetUnloadType() & OUFB_UNLOAD) || (u->current_order.GetLoadType() & OLFB_NO_LOAD)) continue;
 
 		/* update stats */
 		int t;
