@@ -175,7 +175,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		 */
 		for (i = 0; i < 9; i++) w->SetWidgetDisabledState(i + 7, !HasBit(avail_airports, i));
 
-		// select default the coverage area to 'Off' (16)
+		/* select default the coverage area to 'Off' (16) */
 		airport = GetAirport(_selected_airport_type);
 		SetTileSelectSize(airport->size_x, airport->size_y);
 
@@ -184,8 +184,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawWindowWidgets(w);
-		// strings such as 'Size' and 'Coverage Area'
-		// 'Coverage Area'
+		/* strings such as 'Size' and 'Coverage Area' */
 		int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
 		if (text_end != w->widget[6].bottom) {
