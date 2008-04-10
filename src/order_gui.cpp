@@ -626,7 +626,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_CLICK:
-			HideDropDownMenu(w);
+			if (w->widget[e->we.click.widget].type != WWT_DROPDOWN) HideDropDownMenu(w);
 			switch (e->we.click.widget) {
 				case ORDER_WIDGET_ORDER_LIST: {
 					ResetObjectToPlace();
@@ -765,17 +765,6 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_RCLICK: {
-			int s = OrderGetSel(w);
-
-			if (e->we.click.widget != ORDER_WIDGET_FULL_LOAD) break;
-			if (s == v->num_orders || !GetVehicleOrder(v, s)->IsType(OT_GOTO_DEPOT)) {
-				GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);
-			} else {
-				GuiShowTooltips(STR_SERVICE_HINT);
-			}
-		} break;
-
 		case WE_PLACE_OBJ:
 			OrdersPlaceObj(GetVehicle(w->window_number), e->we.place.tile, w);
 			break;
@@ -838,7 +827,7 @@ static const Widget _orders_train_widgets[] = {
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_8827_FULL_LOAD,      STR_8857_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_FULL_LOAD
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_SERVICE,             STR_MAKE_THE_HIGHLIGHTED_ORDER},      // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
 	{      WWT_PANEL,   RESIZE_RTB,     14,   372,   373,    76,    99, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   372,   385,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
@@ -874,7 +863,7 @@ static const Widget _orders_widgets[] = {
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_8827_FULL_LOAD,      STR_8857_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_FULL_LOAD
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   372,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER}, // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   372,    76,    87, STR_SERVICE,             STR_NULL},                            // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   372,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
 	{      WWT_PANEL,   RESIZE_RTB,     14,   372,   373,    76,    99, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   372,   385,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
