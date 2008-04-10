@@ -209,9 +209,9 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 					_station_show_coverage = (e->we.click.widget != 16);
 					w->SetWidgetLoweredState(16, !_station_show_coverage);
 					w->SetWidgetLoweredState(17, _station_show_coverage);
-				SndPlayFx(SND_15_BEEP);
-				SetWindowDirty(w);
-				break;
+					SndPlayFx(SND_15_BEEP);
+					SetWindowDirty(w);
+					break;
 			}
 		} break;
 
