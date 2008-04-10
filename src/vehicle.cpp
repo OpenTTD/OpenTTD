@@ -3103,7 +3103,7 @@ void Load_VEHS()
 			/* Convert the current_order.type (which is a mix of type and flags, because
 			 *  in those versions, they both were 4 bits big) to type and flags */
 			v->current_order.flags = GB(v->current_order.type, 4, 4);
-			v->current_order.type.m_val &= 0x0F;
+			v->current_order.type &= 0x0F;
 		}
 
 		/* Advanced vehicle lists got added */
@@ -3138,6 +3138,9 @@ void Vehicle::BeginLoading()
 
 	if (this->current_order.IsType(OT_GOTO_STATION) &&
 			this->current_order.GetDestination() == this->last_station_visited) {
+		current_order.MakeLoading(true);
+		UpdateVehicleTimetable(this, true);
+
 		/* Furthermore add the Non Stop flag to mark that this station
 		 * is the actual destination of the vehicle, which is (for example)
 		 * necessary to be known for HandleTrainLoading to determine
@@ -3145,10 +3148,7 @@ void Vehicle::BeginLoading()
 		 * that arrives at random stations is bad. */
 		this->current_order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 
-		current_order.MakeLoading(true);
-		UpdateVehicleTimetable(this, true);
 	} else {
-		this->current_order.SetNonStopType(ONSF_STOP_EVERYWHERE);
 		current_order.MakeLoading(false);
 	}
 

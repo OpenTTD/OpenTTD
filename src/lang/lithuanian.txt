@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Leisti 
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistiska traukiniu akseleracija: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Drausti traukiniams/laivams suktis 90 laips.kampu: {ORANGE}{STRING} {LTBLUE} (reik. NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Leisti sujungti greta pastatytas stoteles: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Palikti stotele, jei nors 1 krovinys pilnai pakrautas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Naudoti patobulinta krovimo algoritma: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Pakrauti tr. priemones paeiliui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infliacija: {ORANGE}{STRING}

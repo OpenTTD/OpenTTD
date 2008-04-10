@@ -1028,7 +1028,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Стр�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реалистично ускоряване на влаковете: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Забрана на влакове и кораби да правят 90 градусови завои: {ORANGE}{STRING} {LTBLUE} (трябва NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Напускане на станцията когато някой товар е пълен, при 'пълно зареждане': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Подобрен алгоритъм за зареждане: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенно зареждане на автомобилите: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфлация: {ORANGE}{STRING}

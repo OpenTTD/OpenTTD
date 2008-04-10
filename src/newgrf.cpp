@@ -5005,8 +5005,8 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x0B)  // enhancedgui
 	                   |                                        (0 << 0x0C)  // newagerating
 	                   |       ((_patches.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
-	                   |         ((_patches.full_load_any ? 1 : 0) << 0x0E)  // fullloadany
-	                   |                                        (1 << 0x0F)  // planespeed - TODO depends on patch when implemented
+	                   |                                        (1 << 0x0E)  // fullloadany
+	                   |                                        (1 << 0x0F)  // planespeed
 	                   |                                        (0 << 0x10)  // moreindustriesperclimate - obsolete
 	                   |                                        (0 << 0x11)  // moretoylandfeatures
 	                   |                                        (1 << 0x12)  // newstations

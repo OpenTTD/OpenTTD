@@ -994,7 +994,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Habilita-la aceleración realista nos trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos facer xiros de 90 graos: {ORANGE}{STRING} {LTBLUE} (require NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Saír se calquera carga está chea,cando 'Carga chea': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflación: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Descarga-la carga só cando haxa demanda: {ORANGE}{STRING}

@@ -62,7 +62,7 @@ struct Patches {
 	bool build_on_slopes;               ///< allow building on slopes
 	bool mammoth_trains;                ///< allow very long trains
 	bool join_stations;                 ///< allow joining of train stations
-	bool full_load_any;                 ///< new full load calculation, any cargo must be full
+	bool sg_full_load_any;              ///< new full load calculation, any cargo must be full read from pre v93 savegames
 	bool improved_load;                 ///< improved loading algorithm
 	bool gradual_loading;               ///< load vehicles gradually
 	byte station_spread;                ///< amount a station may spread
@@ -79,6 +79,7 @@ struct Patches {
 	bool status_long_date;              ///< always show long date in status bar
 	bool signal_side;                   ///< show signals on right side
 	bool show_finances;                 ///< show finances at end of year
+	bool sg_new_nonstop;                ///< ttdpatch compatible nonstop handling read from pre v93 savegames
 	bool new_nonstop;                   ///< ttdpatch compatible nonstop handling
 	bool roadveh_queue;                 ///< buggy road vehicle queueing
 	bool autoscroll;                    ///< scroll when moving mouse to the edge.

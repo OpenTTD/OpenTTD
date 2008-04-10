@@ -27,8 +27,8 @@ private:
 	friend void Load_VEHS();                                             ///< Loading of ancient vehicles.
 	friend const struct SaveLoad *GetOrderDescription();                 ///< Saving and loading of orders.
 
-	OrderTypeByte type;   ///< The type of order
-	uint8 flags;          ///< 'Sub'type of order
+	uint8 type;           ///< The type of order + non-stop flags
+	uint8 flags;          ///< Load/unload types, depot order/action types.
 	DestinationID dest;   ///< The destination of the order.
 
 	CargoID refit_cargo;  ///< Refit CargoID
@@ -60,13 +60,13 @@ public:
 	 * @param type the type to check against.
 	 * @return true if the order matches.
 	 */
-	inline bool IsType(OrderType type) const { return this->type == type; }
+	inline bool IsType(OrderType type) const { return this->GetType() == type; }
 
 	/**
 	 * Get the type of order of this order.
 	 * @return the order type.
 	 */
-	inline OrderType GetType() const { return this->type; }
+	inline OrderType GetType() const { return (OrderType)GB(this->type, 0, 6); }
 
 	/**
 	 * 'Free' the order
@@ -161,26 +161,26 @@ public:
 	void SetRefit(CargoID cargo, byte subtype = 0);
 
 	/** How must the consist be loaded? */
-	OrderLoadFlags GetLoadType() const;
+	inline OrderLoadFlags GetLoadType() const { return (OrderLoadFlags)GB(this->flags, 4, 4); }
 	/** How must the consist be unloaded? */
-	inline OrderUnloadFlags GetUnloadType() const { return (OrderUnloadFlags)GB(this->flags, 0, 2); }
+	inline OrderUnloadFlags GetUnloadType() const { return (OrderUnloadFlags)GB(this->flags, 0, 4); }
 	/** Where must we stop? */
-	OrderNonStopFlags GetNonStopType() const;
+	inline OrderNonStopFlags GetNonStopType() const { return (OrderNonStopFlags)GB(this->type, 6, 2); }
 	/** What caused us going to the depot? */
-	inline OrderDepotTypeFlags GetDepotOrderType() const { return (OrderDepotTypeFlags)this->flags; }
+	inline OrderDepotTypeFlags GetDepotOrderType() const { return (OrderDepotTypeFlags)GB(this->flags, 0, 4); }
 	/** What are we going to do when in the depot. */
-	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)(this->flags & ODATFB_HALT); }
+	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)GB(this->flags, 4, 4); }
 
 	/** Set how the consist must be loaded. */
-	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 2, 1, !!load_type); }
+	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 4, 4, load_type); }
 	/** Set how the consist must be unloaded. */
-	inline void SetUnloadType(OrderUnloadFlags unload_type) { SB(this->flags, 0, 2, unload_type); }
+	inline void SetUnloadType(OrderUnloadFlags unload_type) { SB(this->flags, 0, 4, unload_type); }
 	/** Set whether we must stop at stations or not. */
-	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->flags, 3, 1, !!non_stop_type); }
+	inline void SetNonStopType(OrderNonStopFlags non_stop_type) { SB(this->type, 6, 2, non_stop_type); }
 	/** Set the cause to go to the depot. */
-	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { this->flags = depot_order_type == ODTFB_SERVICE ? ODTF_MANUAL : depot_order_type; }
+	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { SB(this->flags, 0, 4, depot_order_type); }
 	/** Set what we are going to do in the depot. */
-	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { this->flags = depot_service_type; }
+	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 4, 4,  depot_service_type); }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 
@@ -204,6 +204,12 @@ public:
 	 * @note unpacking is done in the constructor.
 	 */
 	uint32 Pack() const;
+
+	/**
+	 * Converts this order from an old savegame's version;
+	 * it moves all bits to the new location.
+	 */
+	void ConvertFromOldSavegame();
 };
 
 static inline VehicleOrderID GetMaxOrderIndex()

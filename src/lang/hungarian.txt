@@ -1091,7 +1091,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriás
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Vonatok valósághű gyorsulása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}A vonatok és a hajók nem tesznek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE} (csak NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Egymás mellé építhető vonatállomások: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Bármelyik rakomány telipakolása esetén induljon a jármű: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}A továbbfejlesztett betöltés használata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}

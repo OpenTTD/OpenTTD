@@ -1026,7 +1026,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}超長�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}列車の現実的な加速を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}列車／船舶が直角で曲げれないようにする：{ORANGE}{STRING}{LTBLUE}（NPF が必要）
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}隣接した駅を一つの駅に統合：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}全負荷が入の場合、何でもの貨物が「全負荷」となるときに出発：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}改良した読み込むアルゴリズムを使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}車両を次第に読み込む：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}インフレ：{ORANGE}{STRING}

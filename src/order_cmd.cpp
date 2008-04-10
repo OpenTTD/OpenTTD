@@ -41,21 +41,6 @@ BackuppedOrders _backup_orders_data;
 
 DEFINE_OLD_POOL_GENERIC(Order, Order);
 
-OrderLoadFlags Order::GetLoadType() const
-{
-	if ((this->flags & OLFB_FULL_LOAD) == 0) return OLF_LOAD_IF_POSSIBLE;
-	return _patches.full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD;
-}
-
-OrderNonStopFlags Order::GetNonStopType() const
-{
-	if (_patches.new_nonstop) {
-		return (this->flags & 0x08) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
-	}
-
-	return (this->flags & 0x08) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE;
-}
-
 void Order::Free()
 {
 	this->type  = OT_NOTHING;
@@ -155,6 +140,45 @@ Order::Order(uint32 packed)
 	this->refit_subtype = 0;
 	this->wait_time     = 0;
 	this->travel_time   = 0;
+}
+
+void Order::ConvertFromOldSavegame()
+{
+	/* First handle non-stop, because those bits are going to be reused. */
+	if (_patches.sg_new_nonstop) {
+		this->SetNonStopType((this->flags & 0x08) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+	} else {
+		this->SetNonStopType((this->flags & 0x08) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+	}
+
+	switch (this->GetType()) {
+		/* Only a few types need the other savegame conversions. */
+		case OT_GOTO_DEPOT: case OT_GOTO_STATION: case OT_LOADING: break;
+		default: return;
+	}
+
+	/* Then the load/depot action flags because those bits are going to be reused too
+	 * and they reuse the non-stop bits. */
+	if (this->GetType() != OT_GOTO_DEPOT) {
+		if ((this->flags & 4) == 0) {
+			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
+		} else {
+			this->SetLoadType(_patches.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
+		}
+	} else {
+		this->SetDepotActionType(((this->flags & 6) == 4) ? ODATFB_HALT : ODATF_SERVICE_ONLY);
+	}
+
+	/* Finally fix the unload/depot type flags. */
+	if (this->GetType() != OT_GOTO_DEPOT) {
+		uint t = ((this->flags & 1) == 0) ? OUF_UNLOAD_IF_POSSIBLE : OUFB_TRANSFER;
+		if ((this->flags & 2) != 0) t |= OUFB_UNLOAD;
+		this->SetUnloadType((OrderUnloadFlags)t);
+	} else {
+		uint t = ((this->flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
+		if ((this->flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
+		this->SetDepotOrderType((OrderDepotTypeFlags)t);
+	}
 }
 
 /**
@@ -322,7 +346,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* Non stop not allowed for non-trains. */
-			// TODO: implement properly once savegame bump is done. if ((new_order.GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) != 0 && v->type != VEH_TRAIN) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 
 			/* Full load and unload are mutual exclusive. */
 			if ((new_order.GetLoadType() & OLFB_FULL_LOAD) && (new_order.GetUnloadType() & OUFB_UNLOAD)) return CMD_ERROR;
@@ -372,7 +396,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
-			// TODO: implement properly once savegame bump is done. if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 			if (new_order.GetDepotOrderType() & ~ODTFB_PART_OF_ORDERS) return CMD_ERROR;
 			if (new_order.GetDepotActionType() & ~ODATFB_HALT) return CMD_ERROR;
 			break;
@@ -390,8 +414,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]
 			 * non-stop orders (if any) are only valid for trains */
-			// TODO: implement properly once savegame bump is done. if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
-
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 			break;
 		}
 
@@ -778,7 +801,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MOF_LOAD:
-			if ((data & ~OLFB_FULL_LOAD) != 0) return CMD_ERROR;
+			if (data > OLF_FULL_LOAD_ANY || data == 1) return CMD_ERROR;
 			if (data == order->GetLoadType()) return CMD_ERROR;
 			break;
 

@@ -1151,7 +1151,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Буд�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реалістичне прискорення поїздів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Поїздам і кораблям не повертати на 90 град.: {ORANGE}{STRING} {LTBLUE} (треба NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Будувати суміжні залізничні станції: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Від'їжджати при повному завантаженні будь-якого вантажу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Використовувати покращений алгоритм завантаження: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Завантажувати поступово: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Інфляція: {ORANGE}{STRING}

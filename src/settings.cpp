@@ -1461,10 +1461,11 @@ const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Station section of the GUI-configure patches window */
 	SDT_BOOL(Patches, join_stations,           0, 0,  true,        STR_CONFIG_PATCHES_JOINSTATIONS,       NULL),
-	SDT_BOOL(Patches, full_load_any,           0,NN,  true,        STR_CONFIG_PATCHES_FULLLOADANY,        NULL),
+	SDT_CONDBOOL(Patches, sg_full_load_any, 0, 92, 0, 0, true,     STR_NULL,                              NULL),
 	SDT_BOOL(Patches, improved_load,           0,NN, false,        STR_CONFIG_PATCHES_IMPROVEDLOAD,       NULL),
 	SDT_BOOL(Patches, selectgoods,             0, 0,  true,        STR_CONFIG_PATCHES_SELECTGOODS,        NULL),
-	SDT_BOOL(Patches, new_nonstop,             0, 0, false,        STR_CONFIG_PATCHES_NEW_NONSTOP,        NULL),
+	SDT_BOOL(Patches, new_nonstop,             S, 0, false,        STR_CONFIG_PATCHES_NEW_NONSTOP,        NULL),
+	SDT_CONDBOOL(Patches, sg_new_nonstop, 0, 92, 0, 0, false,      STR_NULL,                              NULL),
 	SDT_BOOL(Patches, nonuniform_stations,     0,NN,  true,        STR_CONFIG_PATCHES_NONUNIFORM_STATIONS,NULL),
 	 SDT_VAR(Patches, station_spread,SLE_UINT8,0, 0, 12, 4, 64, 0, STR_CONFIG_PATCHES_STATION_SPREAD,     InvalidateStationBuildWindow),
 	SDT_BOOL(Patches, serviceathelipad,        0, 0,  true,        STR_CONFIG_PATCHES_SERVICEATHELIPAD,   NULL),

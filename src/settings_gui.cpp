@@ -748,7 +748,6 @@ static const char *_patches_construction[] = {
 
 static const char *_patches_stations[] = {
 	"join_stations",
-	"full_load_any",
 	"improved_load",
 	"selectgoods",
 	"new_nonstop",

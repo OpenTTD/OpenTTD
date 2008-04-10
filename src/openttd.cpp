@@ -2445,6 +2445,15 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(93)) {
+		/* Rework of orders. */
+		Order *order;
+		FOR_ALL_ORDERS(order) order->ConvertFromOldSavegame();
+
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) v->current_order.ConvertFromOldSavegame();
+	}
+
 	return InitializeWindowsAndCaches();
 }
 

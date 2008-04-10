@@ -41,8 +41,8 @@ typedef TinyEnumT<OrderType> OrderTypeByte;
  */
 enum OrderUnloadFlags {
 	OUF_UNLOAD_IF_POSSIBLE = 0,      ///< Unload all cargo that the station accepts.
-	OUFB_TRANSFER          = 1 << 0, ///< Transfer all cargo onto the platform.
-	OUFB_UNLOAD            = 1 << 1, ///< Force unloading all cargo onto the platform, possibly not getting paid.
+	OUFB_UNLOAD            = 1 << 0, ///< Force unloading all cargo onto the platform, possibly not getting paid.
+	OUFB_TRANSFER          = 1 << 1, ///< Transfer all cargo onto the platform.
 	OUFB_NO_UNLOAD         = 1 << 2, ///< Totally no unloading will be done.
 };
 
@@ -51,8 +51,8 @@ enum OrderUnloadFlags {
  */
 enum OrderLoadFlags {
 	OLF_LOAD_IF_POSSIBLE = 0,      ///< Load as long as there is cargo that fits in the train.
-	OLFB_FULL_LOAD       = 1 << 2, ///< Full load the complete the consist.
-	OLF_FULL_LOAD_ANY    = 5,      ///< Full load the a single cargo of the consist.
+	OLFB_FULL_LOAD       = 1 << 1, ///< Full load the complete the consist.
+	OLF_FULL_LOAD_ANY    = 3,      ///< Full load the a single cargo of the consist.
 };
 
 /**
@@ -71,7 +71,7 @@ enum OrderNonStopFlags {
  */
 enum OrderDepotTypeFlags {
 	ODTF_MANUAL          = 0,      ///< The player initiated this order manually.
-	ODTFB_SERVICE        = 1 << 2, ///< This depot order is because of the servicing limit.
+	ODTFB_SERVICE        = 1 << 0, ///< This depot order is because of the servicing limit.
 	ODTFB_PART_OF_ORDERS = 1 << 1, ///< This depot order is because of a regular order.
 };
 
@@ -80,7 +80,7 @@ enum OrderDepotTypeFlags {
  */
 enum OrderDepotActionFlags {
 	ODATF_SERVICE_ONLY   = 0,      ///< Only service the vehicle.
-	ODATFB_HALT          = 1 << 2, ///< Service the vehicle and then halt it.
+	ODATFB_HALT          = 1 << 0, ///< Service the vehicle and then halt it.
 };
 
 /**

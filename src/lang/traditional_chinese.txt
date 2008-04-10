@@ -1020,7 +1020,6 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}提高�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}真實的列車加速：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列車直角轉向：{ORANGE}{STRING} {LTBLUE} (需要啟用 NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}其中一種貨物滿載，列車即可離開車站：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}使用改善過的載貨演算法：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}逐步載貨：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}通貨膨脹：{ORANGE}{STRING}

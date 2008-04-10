@@ -204,8 +204,7 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(1, STR_GO_TO_STATION);
 					SetDParam(2, STR_ORDER_GO_TO + (v->type == VEH_TRAIN ? order->GetNonStopType() : 0));
 					SetDParam(3, order->GetDestination());
-					/* Yes, this is ugly, but... once the savegame bump is done, it'll look a lot better! */
-					SetDParam(4, _station_load_types[unload & OUFB_TRANSFER][((load & 1) | (load >> 1)) + ((unload & ~(OUFB_NO_UNLOAD | OUFB_TRANSFER)) >> 1)]);
+					SetDParam(4, _station_load_types[unload >> 1][load | (unload & ~(OUFB_TRANSFER | OUFB_NO_UNLOAD))]);
 				} break;
 
 				case OT_GOTO_DEPOT: {
@@ -331,6 +330,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			(facil = FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st_index);
+				if (_patches.new_nonstop && v->type == VEH_TRAIN) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 				return order;
 			}
 		}
@@ -408,9 +408,17 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v, int load_type)
 	VehicleOrderID sel_ord = OrderGetSel(w);
 	const Order *order = GetVehicleOrder(v, sel_ord);
 
-	if (load_type > 0) load_type += 3;
-	if (load_type >= 0 && (order->GetLoadType() & OLFB_FULL_LOAD) == (load_type & OLFB_FULL_LOAD)) return;
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | ((order->GetLoadType() & OLFB_FULL_LOAD) ^ OLFB_FULL_LOAD) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	if (load_type >= 0 && order->GetLoadType() == load_type) return;
+
+	if (load_type < 0) {
+		switch (order->GetLoadType()) {
+			case OLF_LOAD_IF_POSSIBLE: load_type = OLFB_FULL_LOAD;       break;
+			case OLFB_FULL_LOAD:       load_type = OLF_FULL_LOAD_ANY;    break;
+			case OLF_FULL_LOAD_ANY:    load_type = OLF_LOAD_IF_POSSIBLE; break;
+			default: NOT_REACHED();
+		}
+	}
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | (load_type << 2), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -451,7 +459,6 @@ static void OrderClick_Nonstop(Window *w, const Vehicle *v, int non_stop)
 	const Order *order = GetVehicleOrder(v, sel_ord);
 
 	if (order->GetNonStopType() == non_stop) return;
-	if (_patches.new_nonstop && non_stop == ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) non_stop = ONSF_STOP_EVERYWHERE;
 
 	/* Keypress if negative, so 'toggle' to the next */
 	if (non_stop < 0) {
@@ -650,7 +657,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case ORDER_WIDGET_NON_STOP:
-					ShowDropDownMenu(w, _order_non_stop_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetNonStopType(), ORDER_WIDGET_NON_STOP, 0, _patches.new_nonstop ? 5 : 12, 124);
+					ShowDropDownMenu(w, _order_non_stop_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetNonStopType(), ORDER_WIDGET_NON_STOP, 0, 0, 124);
 					break;
 
 				case ORDER_WIDGET_GOTO:
@@ -658,7 +665,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case ORDER_WIDGET_FULL_LOAD:
-					ShowDropDownMenu(w, _order_full_load_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetLoadType() << 2, ORDER_WIDGET_FULL_LOAD, 0, _patches.full_load_any ? 2 : 4, 124);
+					ShowDropDownMenu(w, _order_full_load_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetLoadType() << 2, ORDER_WIDGET_FULL_LOAD, 0, 0, 124);
 					break;
 
 				case ORDER_WIDGET_UNLOAD:
@@ -694,7 +701,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case ORDER_WIDGET_FULL_LOAD:
-					OrderClick_FullLoad(w, v, e->we.dropdown.index);
+					OrderClick_FullLoad(w, v, e->we.dropdown.index == 0 ? 0 : e->we.dropdown.index + 1);
 					break;
 			}
 			break;
