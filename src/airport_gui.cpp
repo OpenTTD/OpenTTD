@@ -72,48 +72,48 @@ static OnButtonClick * const _build_air_button_proc[] = {
 static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		DrawWindowWidgets(w);
-		break;
+		case WE_PAINT:
+			DrawWindowWidgets(w);
+			break;
 
-	case WE_CLICK:
-		if (e->we.click.widget - 3 >= 0)
-			_build_air_button_proc[e->we.click.widget - 3](w);
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget - 3 >= 0)
+				_build_air_button_proc[e->we.click.widget - 3](w);
+			break;
 
-	case WE_KEYPRESS: {
-		switch (e->we.keypress.keycode) {
-			case '1': BuildAirClick_Airport(w); break;
-			case '2': BuildAirClick_Demolish(w); break;
-			default: return;
-		}
-	} break;
+		case WE_KEYPRESS: {
+			switch (e->we.keypress.keycode) {
+				case '1': BuildAirClick_Airport(w); break;
+				case '2': BuildAirClick_Demolish(w); break;
+				default: return;
+			}
+		} break;
 
-	case WE_PLACE_OBJ:
-		_place_proc(e->we.place.tile);
-		break;
+		case WE_PLACE_OBJ:
+			_place_proc(e->we.place.tile);
+			break;
 
-	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-		break;
+		case WE_PLACE_DRAG:
+			VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
+			break;
 
-	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_DEMOLISH_AREA) {
-			DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
-		}
-		break;
+		case WE_PLACE_MOUSEUP:
+			if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_DEMOLISH_AREA) {
+				DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+			}
+			break;
 
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
+		case WE_ABORT_PLACE_OBJ:
+			w->RaiseButtons();
 
-		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != 0)
-			WP(w, def_d).close = true;
-		break;
+			w = FindWindowById(WC_BUILD_STATION, 0);
+			if (w != 0)
+				WP(w, def_d).close = true;
+			break;
 
-	case WE_DESTROY:
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
-		break;
+		case WE_DESTROY:
+			if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+			break;
 	}
 }
 
@@ -147,85 +147,86 @@ void ShowBuildAirToolbar()
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE:
-		w->SetWidgetLoweredState(16, !_station_show_coverage);
-		w->SetWidgetLoweredState(17, _station_show_coverage);
-		w->LowerWidget(_selected_airport_type + 7);
-		break;
-
-	case WE_PAINT: {
-		int i; // airport enabling loop
-		uint32 avail_airports;
-		const AirportFTAClass *airport;
-
-		if (WP(w, def_d).close) return;
-
-		avail_airports = GetValidAirports();
-
-		w->RaiseWidget(_selected_airport_type + 7);
-		if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
-		if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
-		w->LowerWidget(_selected_airport_type + 7);
-
-		/* 'Country Airport' starts at widget 7, and if its bit is set, it is
-		 * available, so take its opposite value to set the disabled state.
-		 * There are 9 buildable airports
-		 * XXX TODO : all airports should be held in arrays, with all relevant data.
-		 * This should be part of newgrf-airports, i suppose
-		 */
-		for (i = 0; i < 9; i++) w->SetWidgetDisabledState(i + 7, !HasBit(avail_airports, i));
-
-		/* select default the coverage area to 'Off' (16) */
-		airport = GetAirport(_selected_airport_type);
-		SetTileSelectSize(airport->size_x, airport->size_y);
-
-		int rad = _patches.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
-
-		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-
-		DrawWindowWidgets(w);
-		/* strings such as 'Size' and 'Coverage Area' */
-		int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
-		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
-		if (text_end != w->widget[6].bottom) {
-			SetWindowDirty(w);
-			ResizeWindowForWidget(w, 6, 0, text_end - w->widget[6].bottom);
-			SetWindowDirty(w);
-		}
-		break;
-	}
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
-			w->RaiseWidget(_selected_airport_type + 7);
-			_selected_airport_type = e->we.click.widget - 7;
-			w->LowerWidget(_selected_airport_type + 7);
-			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
-			break;
-		case 16: case 17:
-			_station_show_coverage = (e->we.click.widget != 16);
+		case WE_CREATE:
 			w->SetWidgetLoweredState(16, !_station_show_coverage);
 			w->SetWidgetLoweredState(17, _station_show_coverage);
-			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->LowerWidget(_selected_airport_type + 7);
+			break;
+
+		case WE_PAINT: {
+			int i; // airport enabling loop
+			uint32 avail_airports;
+			const AirportFTAClass *airport;
+
+			if (WP(w, def_d).close) return;
+
+			avail_airports = GetValidAirports();
+
+			w->RaiseWidget(_selected_airport_type + 7);
+			if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
+			if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
+			w->LowerWidget(_selected_airport_type + 7);
+
+			/* 'Country Airport' starts at widget 7, and if its bit is set, it is
+			 * available, so take its opposite value to set the disabled state.
+			 * There are 9 buildable airports
+			 * XXX TODO : all airports should be held in arrays, with all relevant data.
+			 * This should be part of newgrf-airports, i suppose
+			 */
+			for (i = 0; i < 9; i++) w->SetWidgetDisabledState(i + 7, !HasBit(avail_airports, i));
+
+			/* select default the coverage area to 'Off' (16) */
+			airport = GetAirport(_selected_airport_type);
+			SetTileSelectSize(airport->size_x, airport->size_y);
+
+			int rad = _patches.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+
+			if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+
+			DrawWindowWidgets(w);
+			/* strings such as 'Size' and 'Coverage Area' */
+			int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
+			text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
+			if (text_end != w->widget[6].bottom) {
+				SetWindowDirty(w);
+				ResizeWindowForWidget(w, 6, 0, text_end - w->widget[6].bottom);
+				SetWindowDirty(w);
+			}
 			break;
 		}
-	} break;
 
-	case WE_MOUSELOOP: {
-		if (WP(w, def_d).close) {
-			DeleteWindow(w);
-			return;
-		}
+		case WE_CLICK: {
+			switch (e->we.click.widget) {
+				case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
+					w->RaiseWidget(_selected_airport_type + 7);
+					_selected_airport_type = e->we.click.widget - 7;
+					w->LowerWidget(_selected_airport_type + 7);
+					SndPlayFx(SND_15_BEEP);
+					SetWindowDirty(w);
+					break;
 
-		CheckRedrawStationCoverage(w);
-	} break;
+				case 16: case 17:
+					_station_show_coverage = (e->we.click.widget != 16);
+					w->SetWidgetLoweredState(16, !_station_show_coverage);
+					w->SetWidgetLoweredState(17, _station_show_coverage);
+				SndPlayFx(SND_15_BEEP);
+				SetWindowDirty(w);
+				break;
+			}
+		} break;
 
-	case WE_DESTROY:
-		if (!WP(w, def_d).close) ResetObjectToPlace();
-		break;
+		case WE_MOUSELOOP: {
+			if (WP(w, def_d).close) {
+				DeleteWindow(w);
+				return;
+			}
+
+			CheckRedrawStationCoverage(w);
+		} break;
+
+		case WE_DESTROY:
+			if (!WP(w, def_d).close) ResetObjectToPlace();
+			break;
 	}
 }
 
