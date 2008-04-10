@@ -127,6 +127,32 @@ static const StringID _station_load_types[][5] = {
 	}
 };
 
+static const StringID _order_non_stop_drowdown[] = {
+	STR_ORDER_GO_TO,
+	STR_ORDER_GO_NON_STOP_TO,
+	STR_ORDER_GO_VIA,
+	STR_ORDER_GO_NON_STOP_VIA,
+	INVALID_STRING_ID
+};
+
+static const StringID _order_full_load_drowdown[] = {
+	STR_ORDER_DROP_LOAD_IF_POSSIBLE,
+	STR_EMPTY,
+	STR_ORDER_DROP_FULL_LOAD_ALL,
+	STR_ORDER_DROP_FULL_LOAD_ANY,
+	STR_ORDER_DROP_NO_LOADING,
+	INVALID_STRING_ID
+};
+
+static const StringID _order_unload_drowdown[] = {
+	STR_ORDER_DROP_UNLOAD_IF_ACCEPTED,
+	STR_ORDER_DROP_UNLOAD,
+	STR_ORDER_DROP_TRANSFER,
+	STR_EMPTY,
+	STR_ORDER_DROP_NO_UNLOADING,
+	INVALID_STRING_ID
+};
+
 static void DrawOrdersWindow(Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
@@ -138,6 +164,11 @@ static void DrawOrdersWindow(Window *w)
 	const Order *order = GetVehicleOrder(v, sel);
 
 	if (v->owner == _local_player) {
+		/* Set the strings for the dropdown boxes. */
+		w->widget[ORDER_WIDGET_NON_STOP].data  = _order_non_stop_drowdown[order == NULL ? 0 : order->GetNonStopType()];
+		w->widget[ORDER_WIDGET_FULL_LOAD].data = _order_full_load_drowdown[order == NULL ? 0 : order->GetLoadType()];
+		w->widget[ORDER_WIDGET_UNLOAD].data    = _order_unload_drowdown[order == NULL ? 0 : order->GetUnloadType()];
+
 		/* skip */
 		w->SetWidgetDisabledState(ORDER_WIDGET_SKIP, v->num_orders <= 1);
 
@@ -579,32 +610,6 @@ static const uint16 _order_keycodes[] = {
 	'H', //goto order
 	'J', //full load
 	'K'  //unload
-};
-
-static const StringID _order_non_stop_drowdown[] = {
-	STR_ORDER_GO_TO,
-	STR_ORDER_GO_NON_STOP_TO,
-	STR_ORDER_GO_VIA,
-	STR_ORDER_GO_NON_STOP_VIA,
-	INVALID_STRING_ID
-};
-
-static const StringID _order_full_load_drowdown[] = {
-	STR_ORDER_DROP_LOAD_IF_POSSIBLE,
-	STR_EMPTY,
-	STR_ORDER_DROP_FULL_LOAD_ALL,
-	STR_ORDER_DROP_FULL_LOAD_ANY,
-	STR_ORDER_DROP_NO_LOADING,
-	INVALID_STRING_ID
-};
-
-static const StringID _order_unload_drowdown[] = {
-	STR_ORDER_DROP_UNLOAD_IF_ACCEPTED,
-	STR_ORDER_DROP_UNLOAD,
-	STR_ORDER_DROP_TRANSFER,
-	STR_EMPTY,
-	STR_ORDER_DROP_NO_UNLOADING,
-	INVALID_STRING_ID
 };
 
 static void OrdersWndProc(Window *w, WindowEvent *e)
