@@ -147,8 +147,8 @@ static void DrawOrdersWindow(Window *w)
 
 		/* non-stop only for trains */
 		w->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP,  v->type != VEH_TRAIN || order == NULL);
-		w->SetWidgetDisabledState(ORDER_WIDGET_FULL_LOAD, order == NULL); // full load
-		w->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD,    order == NULL); // unload
+		w->SetWidgetDisabledState(ORDER_WIDGET_FULL_LOAD, order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // full load
+		w->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD,    order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // unload
 		/* Disable list of vehicles with the same shared orders if there is no list */
 		w->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders || v->orders == NULL);
 		w->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
@@ -218,7 +218,7 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(1, STR_GO_TO_STATION);
 					SetDParam(2, STR_ORDER_GO_TO + (v->type == VEH_TRAIN ? order->GetNonStopType() : 0));
 					SetDParam(3, order->GetDestination());
-					SetDParam(4, _station_load_types[unload][load]);
+					SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
 				} break;
 
 				case OT_GOTO_DEPOT: {
