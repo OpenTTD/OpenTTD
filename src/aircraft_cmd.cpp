@@ -80,7 +80,7 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *apc);
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc);
 static void CrashAirplane(Vehicle *v);
 
-static void AircraftNextAirportPos_and_Order(Vehicle *v);
+void AircraftNextAirportPos_and_Order(Vehicle *v);
 static byte GetAircraftFlyingAltitude(const Vehicle *v);
 
 static const SpriteID _aircraft_sprite[] = {
@@ -586,59 +586,9 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_AIRCRAFT || !CheckOwnership(v->owner) || v->IsInDepot()) return CMD_ERROR;
+	if (v->type != VEH_AIRCRAFT) return CMD_ERROR;
 
-	if (v->current_order.IsType(OT_GOTO_DEPOT) && !(p2 & DEPOT_LOCATE_HANGAR)) {
-		bool halt_in_depot = v->current_order.GetDepotActionType() & ODATFB_HALT;
-		if (!!(p2 & DEPOT_SERVICE) == halt_in_depot) {
-			/* We called with a different DEPOT_SERVICE setting.
-			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
-			 * Note: the if is (true for requesting service == true for ordered to stop in hangar) */
-			if (flags & DC_EXEC) {
-				v->current_order.SetDepotOrderType(ODTF_MANUAL);
-				v->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-			}
-			return CommandCost();
-		}
-
-		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of hangar orders
-		if (flags & DC_EXEC) {
-			/* If the orders to 'goto depot' are in the orders list (forced servicing),
-			 * then skip to the next order; effectively cancelling this forced service */
-			if (v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) v->cur_order_index++;
-
-			v->current_order.MakeDummy();
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		}
-	} else {
-		bool next_airport_has_hangar = true;
-		StationID next_airport_index = v->u.air.targetairport;
-		const Station *st = GetStation(next_airport_index);
-		/* If the station is not a valid airport or if it has no hangars */
-		if (!st->IsValid() || st->airport_tile == 0 || st->Airport()->nof_depots == 0) {
-			/* the aircraft has to search for a hangar on its own */
-			StationID station = FindNearestHangar(v);
-
-			next_airport_has_hangar = false;
-			if (station == INVALID_STATION) return CMD_ERROR;
-			next_airport_index = station;
-		}
-
-		if (flags & DC_EXEC) {
-			if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
-
-			v->current_order.MakeGoToDepot(next_airport_index, ODTF_MANUAL);
-			if (!(p2 & DEPOT_SERVICE)) v->current_order.SetDepotActionType(ODATFB_HALT);
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-			if (v->u.air.state == FLYING && !next_airport_has_hangar) {
-				/* The aircraft is now heading for a different hangar than the next in the orders */
-				AircraftNextAirportPos_and_Order(v);
-			}
-		}
-	}
-
-	return CommandCost();
+	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
 
 
@@ -1520,7 +1470,7 @@ static void AircraftLandAirplane(Vehicle *v)
 
 
 /** set the right pos when heading to other airports after takeoff */
-static void AircraftNextAirportPos_and_Order(Vehicle *v)
+void AircraftNextAirportPos_and_Order(Vehicle *v)
 {
 	if (v->current_order.IsType(OT_GOTO_STATION) ||
 			v->current_order.IsType(OT_GOTO_DEPOT))

@@ -3209,6 +3209,71 @@ void Vehicle::HandleLoading(bool mode)
 	InvalidateVehicleOrder(this);
 }
 
+CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
+{
+	if (!CheckOwnership(this->owner)) return CMD_ERROR;
+	if (this->vehstatus & VS_CRASHED) return CMD_ERROR;
+	if (this->IsInDepot()) return CMD_ERROR;
+
+	if (this->current_order.IsType(OT_GOTO_DEPOT)) {
+		bool halt_in_depot = this->current_order.GetDepotActionType() & ODATFB_HALT;
+		if (!!(command & DEPOT_SERVICE) == halt_in_depot) {
+			/* We called with a different DEPOT_SERVICE setting.
+			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
+			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
+			if (flags & DC_EXEC) {
+				this->current_order.SetDepotOrderType(ODTF_MANUAL);
+				this->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+			}
+			return CommandCost();
+		}
+
+		if (command & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
+		if (flags & DC_EXEC) {
+			/* If the orders to 'goto depot' are in the orders list (forced servicing),
+			 * then skip to the next order; effectively cancelling this forced service */
+			if (this->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) this->cur_order_index++;
+
+			this->current_order.MakeDummy();
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+		}
+		return CommandCost();
+	}
+
+	/* check if at a standstill (not stopped only) in a depot
+	 * the check is down here to make it possible to alter stop/service for trains entering the depot */
+	if (this->type == VEH_TRAIN && IsTileDepotType(this->tile, TRANSPORT_RAIL) && this->cur_speed == 0) return CMD_ERROR;
+
+	TileIndex location;
+	DestinationID destination;
+	bool reverse;
+	static const StringID no_depot[] = {STR_883A_UNABLE_TO_FIND_ROUTE_TO, STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT, STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT, STR_A012_CAN_T_SEND_AIRCRAFT_TO};
+	if (!this->FindClosestDepot	(&location, &destination, &reverse)) return_cmd_error(no_depot[this->type]);
+
+	if (flags & DC_EXEC) {
+		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
+
+		this->dest_tile = location;
+		this->current_order.MakeGoToDepot(destination, ODTF_MANUAL);
+		if (!(command & DEPOT_SERVICE)) this->current_order.SetDepotActionType(ODATFB_HALT);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
+
+		/* If there is no depot in front, reverse automatically (trains only) */
+		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+
+		if (this->type == VEH_AIRCRAFT && this->u.air.state == FLYING && this->u.air.targetairport != destination) {
+				/* The aircraft is now heading for a different hangar than the next in the orders */
+				extern void AircraftNextAirportPos_and_Order(Vehicle *v);
+				AircraftNextAirportPos_and_Order(this);
+			}
+
+	}
+
+	return CommandCost();
+
+}
+
 void Vehicle::SetNext(Vehicle *next)
 {
 	if (this->next != NULL) {

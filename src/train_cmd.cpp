@@ -2116,55 +2116,9 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_TRAIN) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
-
-	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		bool halt_in_depot = v->current_order.GetDepotActionType() & ODATFB_HALT;
-		if (!!(p2 & DEPOT_SERVICE) == halt_in_depot) {
-			/* We called with a different DEPOT_SERVICE setting.
-			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
-			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
-			if (flags & DC_EXEC) {
-				v->current_order.SetDepotOrderType(ODTF_MANUAL);
-				v->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-			}
-			return CommandCost();
-		}
-
-		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
-		if (flags & DC_EXEC) {
-			/* If the orders to 'goto depot' are in the orders list (forced servicing),
-			 * then skip to the next order; effectively cancelling this forced service */
-			if (v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) v->cur_order_index++;
-
-			v->current_order.MakeDummy();
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		}
-		return CommandCost();
-	}
-
-	/* check if at a standstill (not stopped only) in a depot
-	 * the check is down here to make it possible to alter stop/service for trains entering the depot */
-	if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && v->cur_speed == 0) return CMD_ERROR;
-
-	TrainFindDepotData tfdd = FindClosestTrainDepot(v, 0);
-	if (tfdd.best_length == (uint)-1) return_cmd_error(STR_883A_UNABLE_TO_FIND_ROUTE_TO);
-
-	if (flags & DC_EXEC) {
-		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
-
-		v->dest_tile = tfdd.tile;
-		v->current_order.MakeGoToDepot(GetDepotByTile(tfdd.tile)->index, ODTF_MANUAL);
-		if (!(p2 & DEPOT_SERVICE)) v->current_order.SetDepotActionType(ODATFB_HALT);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		/* If there is no depot in front, reverse automatically */
-		if (tfdd.reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
-	}
-
-	return CommandCost();
+	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
 
 

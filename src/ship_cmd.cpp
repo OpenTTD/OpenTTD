@@ -934,9 +934,6 @@ bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, boo
  */
 CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
-	const Depot *dep;
-
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
@@ -945,54 +942,11 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
-	v = GetVehicle(p1);
+	Vehicle *v = GetVehicle(p1);
 
-	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_SHIP) return CMD_ERROR;
 
-	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
-
-	if (v->IsInDepot()) return CMD_ERROR;
-
-	/* If the current orders are already goto-depot */
-	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		bool halt_in_depot = v->current_order.GetDepotActionType() & ODATFB_HALT;
-		if (!!(p2 & DEPOT_SERVICE) == halt_in_depot) {
-			/* We called with a different DEPOT_SERVICE setting.
-			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
-			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
-			if (flags & DC_EXEC) {
-				v->current_order.SetDepotOrderType(ODTF_MANUAL);
-				v->current_order.SetDepotActionType(halt_in_depot ? ODATF_SERVICE_ONLY : ODATFB_HALT);
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-			}
-			return CommandCost();
-		}
-
-		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
-		if (flags & DC_EXEC) {
-			/* If the orders to 'goto depot' are in the orders list (forced servicing),
-			 * then skip to the next order; effectively cancelling this forced service */
-			if (v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) v->cur_order_index++;
-
-			v->current_order.MakeDummy();
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		}
-		return CommandCost();
-	}
-
-	dep = FindClosestShipDepot(v);
-	if (dep == NULL) return_cmd_error(STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT);
-
-	if (flags & DC_EXEC) {
-		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
-
-		v->dest_tile = dep->xy;
-		v->current_order.MakeGoToDepot(dep->index, ODTF_MANUAL);
-		if (!(p2 & DEPOT_SERVICE)) v->current_order.SetDepotActionType(ODATFB_HALT);
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-	}
-
-	return CommandCost();
+	return v->SendToDepot(flags, (DepotCommand)(p2 & DEPOT_COMMAND_MASK));
 }
 
 

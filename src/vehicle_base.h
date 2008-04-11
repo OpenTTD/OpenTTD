@@ -522,6 +522,14 @@ public:
 	 * @return true if a depot could be found.
 	 */
 	virtual bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) { return false; }
+
+	/**
+	 * Send this vehicle to the depot using the given command(s).
+	 * @param flags   the command flags (like execute and such).
+	 * @param command the command to execute.
+	 * @return the cost of the depot action.
+	 */
+	CommandCost SendToDepot(uint32 flags, DepotCommand command);
 };
 
 /**
