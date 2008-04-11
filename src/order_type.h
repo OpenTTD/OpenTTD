@@ -82,6 +82,7 @@ enum OrderDepotTypeFlags {
 enum OrderDepotActionFlags {
 	ODATF_SERVICE_ONLY   = 0,      ///< Only service the vehicle.
 	ODATFB_HALT          = 1 << 0, ///< Service the vehicle and then halt it.
+	ODATFB_NEAREST_DEPOT = 1 << 1, ///< Send the vehicle to the nearest depot.
 };
 
 /**

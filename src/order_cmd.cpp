@@ -366,44 +366,48 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case OT_GOTO_DEPOT: {
-			if (v->type == VEH_AIRCRAFT) {
-				if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
+			if (new_order.GetDepotActionType() != ODATFB_NEAREST_DEPOT) {
+				if (v->type == VEH_AIRCRAFT) {
+					if (!IsValidStationID(new_order.GetDestination())) return CMD_ERROR;
 
-				const Station *st = GetStation(new_order.GetDestination());
+					const Station *st = GetStation(new_order.GetDestination());
 
-				if (!CheckOwnership(st->owner) ||
-						!(st->facilities & FACIL_AIRPORT) ||
-						st->Airport()->nof_depots == 0 ||
-						!CanAircraftUseStation(v->engine_type, st)) {
-					return CMD_ERROR;
+					if (!CheckOwnership(st->owner) ||
+							!(st->facilities & FACIL_AIRPORT) ||
+							st->Airport()->nof_depots == 0 ||
+							!CanAircraftUseStation(v->engine_type, st)) {
+						return CMD_ERROR;
+					}
+				} else {
+					if (!IsValidDepotID(new_order.GetDestination())) return CMD_ERROR;
+
+					const Depot *dp = GetDepot(new_order.GetDestination());
+
+					if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
+
+					switch (v->type) {
+						case VEH_TRAIN:
+							if (!IsTileDepotType(dp->xy, TRANSPORT_RAIL)) return CMD_ERROR;
+							break;
+
+						case VEH_ROAD:
+							if (!IsTileDepotType(dp->xy, TRANSPORT_ROAD)) return CMD_ERROR;
+							break;
+
+						case VEH_SHIP:
+							if (!IsTileDepotType(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
+							break;
+
+						default: return CMD_ERROR;
+					}
 				}
 			} else {
-				if (!IsValidDepotID(new_order.GetDestination())) return CMD_ERROR;
-
-				const Depot *dp = GetDepot(new_order.GetDestination());
-
-				if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
-
-				switch (v->type) {
-					case VEH_TRAIN:
-						if (!IsTileDepotType(dp->xy, TRANSPORT_RAIL)) return CMD_ERROR;
-						break;
-
-					case VEH_ROAD:
-						if (!IsTileDepotType(dp->xy, TRANSPORT_ROAD)) return CMD_ERROR;
-						break;
-
-					case VEH_SHIP:
-						if (!IsTileDepotType(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
-						break;
-
-					default: return CMD_ERROR;
-				}
+				if (!IsPlayerBuildableVehicleType(v)) return CMD_ERROR;
 			}
 
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
 			if (new_order.GetDepotOrderType() & ~ODTFB_PART_OF_ORDERS) return CMD_ERROR;
-			if (new_order.GetDepotActionType() & ~ODATFB_HALT) return CMD_ERROR;
+			if (new_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT) return CMD_ERROR;
 			break;
 		}
 
@@ -1516,7 +1520,31 @@ bool ProcessOrders(Vehicle *v)
 			break;
 
 		case OT_GOTO_DEPOT:
-			if (v->type != VEH_AIRCRAFT) v->dest_tile = GetDepot(order->GetDestination())->xy;
+			if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+				/* We need to search for the nearest depot (hangar). */
+				TileIndex location;
+				DestinationID destination;
+				bool reverse;
+
+				if (v->FindClosestDepot(&location, &destination, &reverse)) {
+					v->dest_tile = location;
+					v->current_order.MakeGoToDepot(destination, ODTFB_PART_OF_ORDERS);
+
+					/* If there is no depot in front, reverse automatically (trains only) */
+					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+
+					if (v->type == VEH_AIRCRAFT && v->u.air.state == FLYING && v->u.air.targetairport != destination) {
+						/* The aircraft is now heading for a different hangar than the next in the orders */
+						extern void AircraftNextAirportPos_and_Order(Vehicle *v);
+						AircraftNextAirportPos_and_Order(v);
+					}
+				} else {
+					UpdateVehicleTimetable(v, true);
+					v->cur_order_index++;
+				}
+			} else if (v->type != VEH_AIRCRAFT) {
+				v->dest_tile = GetDepot(order->GetDestination())->xy;
+			}
 			break;
 
 		case OT_GOTO_WAYPOINT:

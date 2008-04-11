@@ -41,6 +41,7 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_DELETE,
 	ORDER_WIDGET_NON_STOP,
 	ORDER_WIDGET_GOTO,
+	ORDER_WIDGET_GOTO_DROPDOWN,
 	ORDER_WIDGET_FULL_LOAD,
 	ORDER_WIDGET_UNLOAD,
 	ORDER_WIDGET_REFIT,
@@ -153,6 +154,18 @@ static const StringID _order_unload_drowdown[] = {
 	INVALID_STRING_ID
 };
 
+static const StringID _order_goto_dropdown[] = {
+	STR_ORDER_GO_TO,
+	STR_ORDER_GO_TO_NEAREST_DEPOT,
+	INVALID_STRING_ID
+};
+
+static const StringID _order_goto_dropdown_aircraft[] = {
+	STR_ORDER_GO_TO,
+	STR_ORDER_GO_TO_NEAREST_HANGAR,
+	INVALID_STRING_ID
+};
+
 static void DrawOrdersWindow(Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
@@ -252,11 +265,22 @@ static void DrawOrdersWindow(Window *w)
 
 				case OT_GOTO_DEPOT:
 					if (v->type == VEH_AIRCRAFT) {
-						SetDParam(1, STR_GO_TO_HANGAR);
-						SetDParam(3, order->GetDestination());
+						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+							SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
+							SetDParam(3, STR_ORDER_NEAREST_HANGAR);
+						} else {
+							SetDParam(1, STR_GO_TO_HANGAR);
+							SetDParam(3, order->GetDestination());
+						}
+						SetDParam(4, STR_EMPTY);
 					} else {
-						SetDParam(1, STR_GO_TO_DEPOT);
-						SetDParam(3, GetDepot(order->GetDestination())->town_index);
+						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+							SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
+							SetDParam(3, STR_ORDER_NEAREST_DEPOT);
+						} else {
+							SetDParam(1, STR_GO_TO_DEPOT);
+							SetDParam(3, GetDepot(order->GetDestination())->town_index);
+						}
 
 						switch (v->type) {
 							case VEH_TRAIN: SetDParam(4, STR_ORDER_TRAIN_DEPOT); break;
@@ -473,6 +497,23 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v, int load_type)
 static void OrderClick_Service(Window *w, const Vehicle *v, int i)
 {
 	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), MOF_DEPOT_ACTION, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+}
+
+/**
+ * Handle the click on the service in nearest depot button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
+static void OrderClick_NearestDepot(Window *w, const Vehicle *v, int i)
+{
+	Order order;
+	order.next = NULL;
+	order.index = 0;
+	order.MakeGoToDepot(0, ODTFB_PART_OF_ORDERS);
+	order.SetDepotActionType(ODATFB_NEAREST_DEPOT);
+
+	DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), order.Pack(), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER));
 }
 
 /**
@@ -693,6 +734,10 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					OrderClick_Goto(w, v, 0);
 					break;
 
+				case ORDER_WIDGET_GOTO_DROPDOWN:
+					ShowDropDownMenu(w, v->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, 0, ORDER_WIDGET_GOTO, 0, 0, w->widget[ORDER_WIDGET_GOTO_DROPDOWN].right - w->widget[ORDER_WIDGET_GOTO].left);
+					break;
+
 				case ORDER_WIDGET_FULL_LOAD:
 					ShowDropDownMenu(w, _order_full_load_drowdown, GetVehicleOrder(v, OrderGetSel(w))->GetLoadType(), ORDER_WIDGET_FULL_LOAD, 0, 2);
 					break;
@@ -732,6 +777,13 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				case ORDER_WIDGET_UNLOAD:
 					OrderClick_Unload(w, v, e->we.dropdown.index);
 					break;
+
+				case ORDER_WIDGET_GOTO:
+					switch (e->we.dropdown.index) {
+						case 0: OrderClick_Goto(w, v, 0); break;
+						case 1: OrderClick_NearestDepot(w, v, 0); break;
+						default: NOT_REACHED();
+					}
 			}
 			break;
 
@@ -827,7 +879,8 @@ static const Widget _orders_train_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   123,    88,    99, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    88,    99, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   123,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_NON_STOP},          // ORDER_WIDGET_NON_STOP
-	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   371,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   360,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
@@ -863,7 +916,8 @@ static const Widget _orders_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   123,    88,    99, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    88,    99, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
 	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP
-	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   371,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   360,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   372,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
@@ -900,6 +954,7 @@ static const Widget _other_orders_widgets[] = {
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_DELETE
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT

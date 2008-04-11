@@ -2685,12 +2685,18 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change t
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behaviour of the highlighted order
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :Insert an advanced order
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
+STR_ORDER_NEAREST_DEPOT                                         :the nearest
+STR_ORDER_NEAREST_HANGAR                                        :the nearest Hangar
 STR_ORDER_SERVICE_AT                                            :Service at
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Service non-stop at
 STR_ORDER_TRAIN_DEPOT                                           :Train Depot
 STR_ORDER_ROAD_DEPOT                                            :Road Vehicle Depot
 STR_ORDER_SHIP_DEPOT                                            :Ship Depot
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_TIMETABLE_GO_TO                                             :{STRING3} {STRING2}
