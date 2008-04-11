@@ -2684,10 +2684,14 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Change t
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change the loading behaviour of the highlighted order
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behaviour of the highlighted order
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
-STR_GO_TO_TRAIN_DEPOT                                           :Go to {TOWN} Train Depot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOWN} Train Depot
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Train Depot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Train Depot
+
+STR_ORDER_SERVICE_AT                                            :Service at
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Service non-stop at
+STR_ORDER_TRAIN_DEPOT                                           :Train Depot
+STR_ORDER_ROAD_DEPOT                                            :Road Vehicle Depot
+STR_ORDER_SHIP_DEPOT                                            :Ship Depot
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_TIMETABLE_GO_TO                                             :{STRING3} {STRING2}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
@@ -2900,8 +2904,6 @@ STR_9034_RENAME                                                 :{BLACK}Rename
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Rename road vehicle type
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Rename road vehicle type
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Can't rename road vehicle type...
-STR_GO_TO_ROADVEH_DEPOT                                         :Go to {TOWN} Road Vehicle Depot
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service at {TOWN} Road Vehicle Depot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Refit road vehicle to carry a different cargo type
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Refit road vehicle
@@ -2977,8 +2979,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select ca
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{CARGO}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Can't refit ship...
 STR_9842_REFITTABLE                                             :(refittable)
-STR_GO_TO_SHIP_DEPOT                                            :Go to {TOWN} Ship Depot
-SERVICE_AT_SHIP_DEPOT                                           :Service at {TOWN} Ship Depot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Airports
@@ -3049,8 +3049,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Refit ai
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{STRING1}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Can't refit aircraft...
-STR_GO_TO_AIRPORT_HANGAR                                        :Go to {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Service at {STATION} Hangar
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Timetable)
 

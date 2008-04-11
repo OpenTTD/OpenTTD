@@ -2615,10 +2615,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛列車抵達 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (詳細資料)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}前方有列車
-STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 機廠
-STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 機廠維護
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往 {TOWN} 機廠 中途不停
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :在 {TOWN} 機廠維護 中途不停
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :漫遊 (無時刻表)
 STR_TIMETABLE_TRAVEL_FOR                                        :通行於 {STRING}
@@ -2827,8 +2823,6 @@ STR_9034_RENAME                                                 :{BLACK}更名
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}為車輛類型更名
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}為車輛類型更名
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}無法為車輛類型更名...
-STR_GO_TO_ROADVEH_DEPOT                                         :前往 {TOWN} 車庫
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :在 {TOWN} 車庫維護
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}改裝車輛以運送不同的酬載
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}改裝車輛
@@ -2904,8 +2898,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}選擇要
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新容量：{GOLD}{CARGO}{}{BLACK}改裝費用：{GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}無法改裝船舶...
 STR_9842_REFITTABLE                                             :(可改裝)
-STR_GO_TO_SHIP_DEPOT                                            :前往 {TOWN} 船塢
-SERVICE_AT_SHIP_DEPOT                                           :在{TOWN}船塢進行維修
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}機場
@@ -2976,8 +2968,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}改裝�
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}選擇要運送的酬載種類：
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新容量：{GOLD}{STRING}{}{BLACK}改裝費用：{GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}無法改裝飛機...
-STR_GO_TO_AIRPORT_HANGAR                                        :前往 {STATION} 機棚
-SERVICE_AT_AIRPORT_HANGAR                                       :在{STATION}機棚進行檢修
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (時刻表)
 

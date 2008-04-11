@@ -2609,10 +2609,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} A
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Itizenscay elebratecay . . .{}Irstfay aintray arrivesway atway {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Etailsday)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Aintray inway ethay ayway
-STR_GO_TO_TRAIN_DEPOT                                           :Ogay otay {TOWN} Aintray Epotday
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Ervicesay atway {TOWN} Aintray Epotday
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ogay onnay-opstay otay {TOWN} Aintray Epotday
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ervicesay onnay-opstay atway {TOWN} Aintray Epotday
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Aveltray (otnay imetabledtay)
 STR_TIMETABLE_TRAVEL_FOR                                        :Aveltray orfay {STRING}
@@ -2822,8 +2818,6 @@ STR_9034_RENAME                                                 :{BLACK}Enameray
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Enameray oadray ehiclevay ypetay
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Enameray oadray ehiclevay ypetay
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}An'tcay enameray oadray ehiclevay ypetay...
-STR_GO_TO_ROADVEH_DEPOT                                         :Ogay otay {TOWN} Oadray Ehiclevay Epotday
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ervicesay atway {TOWN} Oadray Ehiclevay Epotday
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Efitray oadray ehiclevay otay arrycay away ifferentday argocay ypetay
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Efitray oadray ehiclevay
@@ -2899,8 +2893,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Electsay 
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ewnay apacitycay: {GOLD}{CARGO}{}{BLACK}Ostcay ofway efitray: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}An'tcay efitray ipshay...
 STR_9842_REFITTABLE                                             :(efittableray)
-STR_GO_TO_SHIP_DEPOT                                            :Ogay otay {TOWN} Ipshay Epotday
-SERVICE_AT_SHIP_DEPOT                                           :Ervicesay atway {TOWN} Ipshay Epotday
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Airportsway
@@ -2971,8 +2963,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Efitray 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Electsay argocay ypetay otay arrycay:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ewnay apacitycay: {GOLD}{STRING}{}{BLACK}Ostcay ofway efitray: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}An'tcay efitray aircraftway...
-STR_GO_TO_AIRPORT_HANGAR                                        :Ogay otay {STATION} Angarhay
-SERVICE_AT_AIRPORT_HANGAR                                       :Ervicesay atway {STATION} Angarhay
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Imetabletay)
 

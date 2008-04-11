@@ -1942,11 +1942,9 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 ##id 0x9800
 
-SERVICE_AT_SHIP_DEPOT                                           :Επισκευή στη Λιμεναποθήκη της πόλης {TOWN}
 
 ##id 0xA000
 
-SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευή στο υπόστεγο {STATION}
 
 ##id 0xB000
 

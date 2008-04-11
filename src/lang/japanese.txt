@@ -2636,10 +2636,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}�
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
-STR_GO_TO_TRAIN_DEPOT                                           :{TOWN}電車庫へ回送
-STR_SERVICE_AT_TRAIN_DEPOT                                      :{TOWN}電車庫で修理
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :{TOWN}電車庫へ直行で回送して修理
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :運行（未計画）
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}運行
@@ -2849,8 +2845,6 @@ STR_9034_RENAME                                                 :{BLACK}名称�
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}道路車両の名称を変更
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}道路車両の名称を変更
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}道路車両の名称が変更できません...
-STR_GO_TO_ROADVEH_DEPOT                                         :{TOWN}車庫へ回送
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :{TOWN}車庫で修理
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}他の貨物の種類を運送するに道路車両を再装備します
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}道路車両を再装備
@@ -2926,8 +2920,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}運送す
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}再装備後の容量：{GOLD}{CARGO}{}{BLACK}再装備の価格：{GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}船舶が再装備できません...
 STR_9842_REFITTABLE                                             :（再装備可）
-STR_GO_TO_SHIP_DEPOT                                            :{TOWN}造船所へ行く
-SERVICE_AT_SHIP_DEPOT                                           :{TOWN}の造船所でサービスします
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}空港
@@ -2998,8 +2990,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}選択�
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}運送する貨物種類を選択：
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}再装備後の容量：{GOLD}{STRING}{}{BLACK}再装備価格：{GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}飛行機が再装備できません...
-STR_GO_TO_AIRPORT_HANGAR                                        :{STATION}格納庫へ行く
-SERVICE_AT_AIRPORT_HANGAR                                       : {STATION}のハンガーでサービスします
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE}（時刻表）
 

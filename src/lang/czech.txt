@@ -2703,10 +2703,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Železni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě je vlak
-STR_GO_TO_TRAIN_DEPOT                                           :Jet do železničního depa v {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Údržba v železničním depu {TOWN}
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastavení do železničního depa {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Údržba bez zastavení v železničním depu {TOWN}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
@@ -2916,8 +2912,6 @@ STR_9034_RENAME                                                 :{BLACK}Přejmen
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Přejmenovat typ silničního vozidla
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Přejmenovat typ silničního vozidla
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nelze přejmenovat typ silničního vozidla...
-STR_GO_TO_ROADVEH_DEPOT                                         :Jet do garáže {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Údržba v garáži {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Přestavět silniční vozidlo, aby mohlo vozit jiný druh nákladu
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Přestavět silniční vozidlo
@@ -2993,8 +2987,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Zvolit dr
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{CARGO}{}{BLACK}Cena přestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nelze přestavět loď...
 STR_9842_REFITTABLE                                             :(lze přestavět)
-STR_GO_TO_SHIP_DEPOT                                            :Zajet do lodního depa {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Údržba v lodním depu {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Letiště
@@ -3065,8 +3057,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Přestav
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Zvolit typ nákladu pro prevážení:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Cena přestavby: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nelze přestavět letadlo...
-STR_GO_TO_AIRPORT_HANGAR                                        :Poslat do hangáru {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Údržba v hangáru {STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Jízdní řád)
 

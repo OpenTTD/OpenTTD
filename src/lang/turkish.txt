@@ -2649,10 +2649,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaylar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Yolda tren var
-STR_GO_TO_TRAIN_DEPOT                                           :Git: {TOWN} Tren Garı
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakıma git: {TOWN} Tren Garı
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Garı
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakıma git: {TOWN} Tren Garı
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} için gezi
@@ -2862,8 +2858,6 @@ STR_9034_RENAME                                                 :{BLACK}İsim
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Araç türünü yeniden adlandır
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Araç türünü yeniden adlandır
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Araç türü yeniden adlandırılamıyor...
-STR_GO_TO_ROADVEH_DEPOT                                         :Garaja git: {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servise git: {TOWN} Garaji
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Kamyonu başka türde kargo taşıyabilmesi için modifiye et
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Kamyonu modifiye et
@@ -2939,8 +2933,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kapasite: {GOLD}{CARGO}{}{BLACK}Modifiye fiyatı: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Modifiye edilemez...
 STR_9842_REFITTABLE                                             :(modifiyeli)
-STR_GO_TO_SHIP_DEPOT                                            :Git: {TOWN} Tersanesi
-SERVICE_AT_SHIP_DEPOT                                           :Servis: {TOWN} Tersanesi
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Havalimanları
@@ -3011,8 +3003,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seçili 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak kargoyu seçin:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kapasite: {GOLD}{STRING}{}{BLACK}Modifiye fiyatı: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Modifiye edilemez...
-STR_GO_TO_AIRPORT_HANGAR                                        :{STATION} Hangarına git
-SERVICE_AT_AIRPORT_HANGAR                                       :Servis: {STATION} Hangarı
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Zaman çizelgesi)
 

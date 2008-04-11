@@ -2650,10 +2650,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} t
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vägen
-STR_GO_TO_TRAIN_DEPOT                                           :Åk till {TOWN}s tågdepå
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Servning vid {TOWN} tågdepå
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Åk non-stop till {TOWN}s tågdepå
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servning non-stop {TOWN} tågdepå
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Avres (Inte tillagd i tidtabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Res till {STRING}
@@ -2865,8 +2861,6 @@ STR_9034_RENAME                                                 :{BLACK}Byt namn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Byt namn på vägfordon typ
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Byt namn på vägfordon typ
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan inte byta namn på vägfordon typ...
-STR_GO_TO_ROADVEH_DEPOT                                         :Gå till {TOWN} vägfordonsdepå
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servning vid {TOWN} vägfordonsdepå Depot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Anpassa vägfordon till att bära en annan sorts last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Anpassa Vägfordon
@@ -2942,8 +2936,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj god
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan inte anpassa skepp...
 STR_9842_REFITTABLE                                             :(anpassningsbart)
-STR_GO_TO_SHIP_DEPOT                                            :Åk till {TOWN}s båtdepå
-SERVICE_AT_SHIP_DEPOT                                           :Service vid {TOWN} båtdepå
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flygplatser
@@ -3014,8 +3006,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Kostnad av anpassning: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan inte anpassa flygplan...
-STR_GO_TO_AIRPORT_HANGAR                                        :Gå till {STATION}s hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Service vid {STATION} hangar
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tidtabell)
 

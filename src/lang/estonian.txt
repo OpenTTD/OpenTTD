@@ -2738,10 +2738,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Linna {T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}{STATION} jaama saabus esimene rong!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (üksikasjad)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
-STR_GO_TO_TRAIN_DEPOT                                           :Mine linna {TOWN} rongidepoosse
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Hoolda linna {TOWN} rongidepoos
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi linna {TOWN} rongidepoo
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus linna {TOWN} rongidepoost läbisõidul
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Sõitmine (sõiduplaanita)
 STR_TIMETABLE_TRAVEL_FOR                                        :Sõida {STRING}
@@ -2951,8 +2947,6 @@ STR_9034_RENAME                                                 :{BLACK}Nime muu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Muuda mootorsõiduki tüübinime
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Muuda mootorsõiduki tüübinime
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Mootorsõiduki tüübinime ei saa muuta...
-STR_GO_TO_ROADVEH_DEPOT                                         :Mine linna {TOWN} garaaži
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Hoolda linna {TOWN} mootorsõidukidepoos
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Seadista mootorsõidukit kandmaks teist tüüpi veost
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Muuda mootorsõiduki seadistust
@@ -3028,8 +3022,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kaub
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus kandevõime: {GOLD}{CARGO}{}{BLACK}Laeva ümberseadistamise hind: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ei saa laeva ümber seadistada...
 STR_9842_REFITTABLE                                             :(ümberseadistatav)
-STR_GO_TO_SHIP_DEPOT                                            :Mine {TOWN} paadikuuri
-SERVICE_AT_SHIP_DEPOT                                           :Hooldus {TOWN} laevaangaaris
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lennuväljad
@@ -3100,8 +3092,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seadista
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kaubatüüp, mida kanda:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus kandevõime: {GOLD}{STRING}{}{BLACK}Ümberseadistamise hind: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ei saa lennukit ümber seadistada...
-STR_GO_TO_AIRPORT_HANGAR                                        :Mine {STATION} angaari
-SERVICE_AT_AIRPORT_HANGAR                                       :Hooldus {STATION} angaaris
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Sõiduplaan)
 

@@ -2621,10 +2621,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Spremiš
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi vlak je stigao na {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
-STR_GO_TO_TRAIN_DEPOT                                           :Idi u spremište vlakova grada {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Servisiranje u spremištu vlakova grada {TOWN}
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi neprekidno do spremišta vlakova grada {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servisiraj neprekidno u spremištu vlakova grada {TOWN}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
@@ -2834,8 +2830,6 @@ STR_9034_RENAME                                                 :{BLACK}Preimenu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Preimenuj vrstu cestovnog vozila
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Preimenuj vrstu cestovnog vozila
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nije moguće preimenovati vrstu cestovnog vozila...
-STR_GO_TO_ROADVEH_DEPOT                                         :Idi prema spremištu cestovnih vozila grada {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servisiranje u spremištu cestovnih vozila grada {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prenamijeni cestovno vozilo  za prijevoz neke druge vrste tereta
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prenamijeni cestovno vozilo
@@ -2911,8 +2905,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Odaberi v
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova nosivost: {GOLD}{CARGO}{}{BLACK}Cijena prenamjene: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nije moguće prenamijeniti brod...
 STR_9842_REFITTABLE                                             :(prenamjenjiv)
-STR_GO_TO_SHIP_DEPOT                                            :Idi u spremište brodova grada {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Servis u spremištu brodova grada {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Zračne luke
@@ -2983,8 +2975,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prenamij
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Odaberi vrstu tereta za prijevoz:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova nosivost: {GOLD}{STRING}{}{BLACK}Trošak prenamjene: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nije moguće prenamijeniti zrakoplov...
-STR_GO_TO_AIRPORT_HANGAR                                        :Idi u hangar stanice {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Servisiranje u hangaru stanice {STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Raspored)
 

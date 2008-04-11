@@ -2619,10 +2619,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Depoul {
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetăţenii sărbătoresc {}sosirea primului tren la {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în drum
-STR_GO_TO_TRAIN_DEPOT                                           :Mergi la depoul {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depoul {TOWN}
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi fără oprire la Depoul {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non-stop pt. service la Depoul {TOWN}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
 STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
@@ -2832,8 +2828,6 @@ STR_9034_RENAME                                                 :{BLACK}Redenume
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Redenumeste modelul de autovehicul
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Redenumeste modelul autovehiculului
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nu pot redenumi modelul acestui autovehicul...
-STR_GO_TO_ROADVEH_DEPOT                                         :Mergi la Autobaza {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service la Autobaza {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Adapteaza autovehiculul pentru o incarcatura diferita
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Adaptare autovehicul
@@ -2909,8 +2903,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege tip
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{CARGO}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nu pot schimba tipul navei...
 STR_9842_REFITTABLE                                             :(suportã alte mãrfuri)
-STR_GO_TO_SHIP_DEPOT                                            :Mergi la Santierul Naval {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Întreţinere la şantierul naval {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Airoporturi
@@ -2981,8 +2973,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Schimbã
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege marfa de transportat:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nu pot schimba tipul de încãrcãturã...
-STR_GO_TO_AIRPORT_HANGAR                                        :Mergi la Hangarul {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Întreţinere la hangarul {STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Orar)
 

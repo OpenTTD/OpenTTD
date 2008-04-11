@@ -2620,10 +2620,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} t
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggerne jubler . . .{}Første tog ankommer {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i veien
-STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} togdepot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Velikehold ved {TOWN} togstall
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Kjør uten å stoppe til {TOWN} togstall
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Vedlikehold (uten å stoppe) ved {TOWN} togstall
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten tidstabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reise for {STRING}
@@ -2833,8 +2829,6 @@ STR_9034_RENAME                                                 :{BLACK}Endre na
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endre navnet til kjøretøytypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endre navnet til kjøretøytypen
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke endre navnet til kjøretøytypen...
-STR_GO_TO_ROADVEH_DEPOT                                         :Kjør til {TOWN} garasje
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Vedlikehold ved {TOWN} garasje
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om kjøretøyet til å ta en annen type last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Bygg om bil
@@ -2910,8 +2904,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Velg vare
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapasitet: {GOLD}{CARGO}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke bygge om skip...
 STR_9842_REFITTABLE                                             :(ombyggbart)
-STR_GO_TO_SHIP_DEPOT                                            :Seil til {TOWN} skipsdepot
-SERVICE_AT_SHIP_DEPOT                                           :Vedlikehold ved {TOWN} skipsdepot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flyplasser
@@ -2982,8 +2974,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Bygg om 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Velg varetype:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapasitet: {GOLD}{STRING}{}{BLACK}Kostnad for ombygging: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke bygge om flyet...
-STR_GO_TO_AIRPORT_HANGAR                                        :Fly til {STATION} hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Vedlikehold ved {STATION} hangar
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tidstabell)
 

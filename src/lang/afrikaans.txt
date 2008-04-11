@@ -2607,10 +2607,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trein arriveer by {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in die weg
-STR_GO_TO_TRAIN_DEPOT                                           :Gaan na {TOWN} Trein Depot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Diens by {TOWN} Trein Depot
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gaan deurgaande na {TOWN} Trein Depot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Diens deurgaande by {TOWN} Trein Depot
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie gerooster nie)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
@@ -2819,8 +2815,6 @@ STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem pad voertuig tipe
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem pad voertuig tipe
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Pad voertuig tipe kan nie hernoem word nie...
-STR_GO_TO_ROADVEH_DEPOT                                         :Gaan na {TOWN} Pad Voertuig Depot
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Diens by {TOWN} Pad Voertuig Depot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Herpas pad voertuig om 'n ander vrag tipe te ontvoer
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Herpas pad voertuig
@@ -2896,8 +2890,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Kies vrag
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuwe kapasiteit: {GOLD}{CARGO}{}{BLACK}Herstelkoste: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Skip kan nie herstel word nie...
 STR_9842_REFITTABLE                                             :(herstelbaar)
-STR_GO_TO_SHIP_DEPOT                                            :Gaan na {TOWN} Skip Depot
-SERVICE_AT_SHIP_DEPOT                                           :Diens by {TOWN} Skip Depot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lughawe
@@ -2968,8 +2960,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Herstel 
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Kies vrag tipe om te ontvoer:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuwe kapasiteit: {GOLD}{STRING}{}{BLACK}Herstelkoste: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Vliegtuig kan nie herstel word nie...
-STR_GO_TO_AIRPORT_HANGAR                                        :Gaan na {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Diens by {STATION} Hangar
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rooster)
 

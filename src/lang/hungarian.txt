@@ -2753,10 +2753,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
-STR_GO_TO_TRAIN_DEPOT                                           :Menj {TOWN} jármütelepre
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Javítsd a vonatot a {TOWN}i járműtelepen
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Menj megállás nélkül {TOWN}i járműtelepre
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd a vonatot a {TOWN}i járműtelepen
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Útipont (időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR                                        :Menjen {STRING} állomásra
@@ -2966,8 +2962,6 @@ STR_9034_RENAME                                                 :{BLACK}Átnevez
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}A közúti jármű márkanevének megváltoztatása
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Márkanév megváltoztatása
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nem változtathatod meg a márkanevet...
-STR_GO_TO_ROADVEH_DEPOT                                         :Menj a  {TOWN}i garázsba
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Javítsd a járművet a {TOWN}i garázsban
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Teherautó átalakítása hogy mást is tudjon szállítani
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Teherautó átalakítása
@@ -3043,8 +3037,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakí
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{CARGO}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nem alakíthatod át a hajót...
 STR_9842_REFITTABLE                                             :(átalakítható)
-STR_GO_TO_SHIP_DEPOT                                            :Menj a {TOWN}i kikötőbe
-SERVICE_AT_SHIP_DEPOT                                           :Javítás a(z) {TOWN} hajókikötőben
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Repterek
@@ -3115,8 +3107,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}A repül
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakítás, hogy szállíthasson:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{STRING}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alakíthatod át a repülőgépet...
-STR_GO_TO_AIRPORT_HANGAR                                        :Menj a {STATION} repülőtér hangárjába
-SERVICE_AT_AIRPORT_HANGAR                                       :Javítás a(z) {STATION} hangárban
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Menetrendesítve)
 

@@ -2731,10 +2731,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v napoto
-STR_GO_TO_TRAIN_DEPOT                                           :Pojdi v {TOWN} železniško garažo
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Na servis v {TOWN} železniško garažo
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do garaže {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non stop na servis v {TOWN} železniško garažo
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez časovnih tabel)
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
@@ -2946,8 +2942,6 @@ STR_9034_RENAME                                                 :{BLACK}Preimenu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Preimenuj cestno vozilo
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Preimenuj cestno vozilo
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ni mogoče preimenovati cestnega vozila ...
-STR_GO_TO_ROADVEH_DEPOT                                         :Pojdi v garažo v mestu {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Na servis v {TOWN} cestno garažo
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Predelaj vozilo za prevoz druge vrste tovora
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Predelaj cestno vozilo
@@ -3023,8 +3017,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Izberi ti
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova zmogljivost: {GOLD}{CARGO}{}{BLACK}Cena predelave: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ni mogoče preurediti ladje ...
 STR_9842_REFITTABLE                                             :(spremenljivo)
-STR_GO_TO_SHIP_DEPOT                                            :Pojdi v {TOWN} ladijsko garažo
-SERVICE_AT_SHIP_DEPOT                                           :Na servis v {TOWN} dok
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Letališča
@@ -3095,8 +3087,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Predelaj
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Izberi tip tovora:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova zmogljivost: {GOLD}{STRING}{}{BLACK}Cena predelave: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ni mogoča predelava letala ...
-STR_GO_TO_AIRPORT_HANGAR                                        :Pojdi v {STATION} hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Na servisiranje v {STATION} Hangar
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Časovna tabela)
 

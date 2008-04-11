@@ -2714,10 +2714,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy vlak dorazil do stanice {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v ceste
-STR_GO_TO_TRAIN_DEPOT                                           :Chod do depa {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Opravit v {TOWN} Vlakovom Depe
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Chod bez zastavenia do depa {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez zastavenia v depe {TOWN}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
 STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
@@ -2929,8 +2925,6 @@ STR_9034_RENAME                                                 :{BLACK}Premenov
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Premenovat typ automobilu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Premenovat typ automobilu
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nemozno premenovat typ automobilu ...
-STR_GO_TO_ROADVEH_DEPOT                                         :Chod do {TOWN} garaze
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Opravit v {TOWN} garazi
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prestavat vozidlo na prepravu ineho druhu nakladu
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prestavat vozidlo
@@ -3006,8 +3000,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{CARGO}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prestavat lod...
 STR_9842_REFITTABLE                                             :(mozna prestavba)
-STR_GO_TO_SHIP_DEPOT                                            :Chod do {TOWN} Lodenice
-SERVICE_AT_SHIP_DEPOT                                           :Opravit v {TOWN} lodenici
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Letiska
@@ -3078,8 +3070,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prestava
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat typ noveho nakladu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Náklady na prestavbu: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
-STR_GO_TO_AIRPORT_HANGAR                                        :Chod do {STATION} Hangaru
-SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STATION} hangári
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Cestovný poriadok)
 

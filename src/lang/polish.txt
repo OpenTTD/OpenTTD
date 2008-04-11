@@ -2747,10 +2747,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Zajezdni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg na drodze
-STR_GO_TO_TRAIN_DEPOT                                           :Idź do zajezdni w {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zajezdni w {TOWN}
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idź bez zatrzymywania do zajezdni w {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idź bez zatrzymywania do serwisu w zajezdni w {TOWN}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
@@ -2960,8 +2956,6 @@ STR_9034_RENAME                                                 :{BLACK}Zmień n
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Zmień nazwę typu samochodu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Zmień nazwę typu samochodu
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nie można zmienić nazwy typu samochodu...
-STR_GO_TO_ROADVEH_DEPOT                                         :Idź do zajezdni sam. w {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w zajezdni sam. w {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa samochodu do przewozu innego typu ładunku
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Przebudowa samochodu
@@ -3037,8 +3031,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz t
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemność: {GOLD}{CARGO}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nie można przebudować statku...
 STR_9842_REFITTABLE                                             :(przebudowalny)
-STR_GO_TO_SHIP_DEPOT                                            :Idź do stoczni w {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Serwisuj w stoczni w {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lotniska
@@ -3109,8 +3101,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudu
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ładunku do przewozu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemność: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie można przebudować samolotu...
-STR_GO_TO_AIRPORT_HANGAR                                        :Idź do hangaru na {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Serwisuj w hangarze na {STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Rozkład jazdy)
 

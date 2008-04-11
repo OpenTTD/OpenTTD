@@ -2651,10 +2651,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} L
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyrir
-STR_GO_TO_TRAIN_DEPOT                                           :Fer til {TOWN} Lestaskýli
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Viðgerð í {TOWN} Lestar Byggingu
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fer viðstöðulaust til {TOWN} Lestar Byggingar
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Viðgerð viðstöðulaust í {TOWN} Lestar Byggingu
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
@@ -2866,8 +2862,6 @@ STR_9034_RENAME                                                 :{BLACK}Endurnef
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endurnefna tegund bifreiðar
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endurnefna tegund bifreiðar
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE} Get ekki endurnefnat tegund bifreiðar...
-STR_GO_TO_ROADVEH_DEPOT                                         :Fara í {TOWN} bifreiðaskýli
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Skoða í  {TOWN} bifreiðaskýli
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Breyta bifreið svo hún flytji annan farm
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Breyta bifreið
@@ -2943,8 +2937,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu far
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{CARGO}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Get ekki breytt skipi...
 STR_9842_REFITTABLE                                             :(breytanlegt)
-STR_GO_TO_SHIP_DEPOT                                            :Fara í {TOWN} Skipaskýli
-SERVICE_AT_SHIP_DEPOT                                           :Skoða í {TOWN} Skipaskýli
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flugvellir
@@ -3015,8 +3007,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Breyta f
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Get ekki breytt flugvél...
-STR_GO_TO_AIRPORT_HANGAR                                        :Fara í {STATION} flugskýli
-SERVICE_AT_AIRPORT_HANGAR                                       :Skoða í {STATION} flugskýli
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Áætlun)
 

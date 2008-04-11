@@ -2478,10 +2478,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (详细信息)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}指定位置有列车
-STR_GO_TO_TRAIN_DEPOT                                           :前往 {TOWN} 车库
-STR_SERVICE_AT_TRAIN_DEPOT                                      :在 {TOWN} 车库保养
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往(不停) {TOWN} 车库
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :在 {TOWN} 车库保养(不停)
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :旅行 (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :前往 {STRING} 旅行
@@ -2685,8 +2681,6 @@ STR_9034_RENAME                                                 :{BLACK}重命�
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}重命名汽车型号
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}重命名汽车型号
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}不能重命名汽车型号……
-STR_GO_TO_ROADVEH_DEPOT                                         :前往 {TOWN} 车库
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :在 {TOWN} 车库进行保养
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}改装汽车以装载其他货物
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}改装汽车
@@ -2762,8 +2756,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}选择要
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新的装载能力：{GOLD}{CARGO}{}{BLACK}改装费用：{GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}不能改装船只……
 STR_9842_REFITTABLE                                             :(可改装)
-STR_GO_TO_SHIP_DEPOT                                            :前往 {TOWN} 船坞
-SERVICE_AT_SHIP_DEPOT                                           :在 {TOWN} 船坞保养
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}机场
@@ -2834,8 +2826,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}改装�
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}选择要运输的货物类型：
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新的装载能力：{GOLD}{STRING}{}{BLACK}改装费用：{GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}不能改装飞机……
-STR_GO_TO_AIRPORT_HANGAR                                        :前往 {STATION} 机库
-SERVICE_AT_AIRPORT_HANGAR                                       :在 {STATION} 机库保养
 
 
 ##id 0xB000

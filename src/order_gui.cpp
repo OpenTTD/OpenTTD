@@ -234,8 +234,6 @@ static void DrawOrdersWindow(Window *w)
 		SetDParam(5, STR_EMPTY);
 
 		if (i - w->vscroll.pos < w->vscroll.cap) {
-			SetDParam(1, 6);
-
 			switch (order->GetType()) {
 				case OT_DUMMY:
 					SetDParam(1, STR_INVALID_ORDER);
@@ -252,39 +250,40 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
 				} break;
 
-				case OT_GOTO_DEPOT: {
-					StringID s = STR_NULL;
-
+				case OT_GOTO_DEPOT:
 					if (v->type == VEH_AIRCRAFT) {
-						s = STR_GO_TO_AIRPORT_HANGAR;
-						SetDParam(2, order->GetDestination());
+						SetDParam(1, STR_GO_TO_HANGAR);
+						SetDParam(3, order->GetDestination());
 					} else {
-						SetDParam(2, GetDepot(order->GetDestination())->town_index);
+						SetDParam(1, STR_GO_TO_DEPOT);
+						SetDParam(3, GetDepot(order->GetDestination())->town_index);
 
 						switch (v->type) {
-							case VEH_TRAIN: s = (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
-							case VEH_ROAD:  s = STR_GO_TO_ROADVEH_DEPOT; break;
-							case VEH_SHIP:  s = STR_GO_TO_SHIP_DEPOT; break;
-							default: break;
+							case VEH_TRAIN: SetDParam(4, STR_ORDER_TRAIN_DEPOT); break;
+							case VEH_ROAD:  SetDParam(4, STR_ORDER_ROAD_DEPOT); break;
+							case VEH_SHIP:  SetDParam(4, STR_ORDER_SHIP_DEPOT); break;
+							default: NOT_REACHED();
 						}
 					}
 
-					if (order->GetDepotOrderType() & ODTFB_SERVICE) s++; // service at
+					if (order->GetDepotOrderType() & ODTFB_SERVICE) {
+						SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT);
+					} else {
+						SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
+					}
 
-					SetDParam(1, s);
 					if (order->IsRefit()) {
 						SetDParam(5, STR_REFIT_ORDER);
 						SetDParam(6, GetCargo(order->GetRefitCargo())->name);
 					}
 					break;
-				}
 
 				case OT_GOTO_WAYPOINT:
 					SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(2, order->GetDestination());
 					break;
 
-				default: break;
+				default: NOT_REACHED();
 			}
 
 			SetDParam(0, i + 1);

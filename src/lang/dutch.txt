@@ -2651,10 +2651,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in de weg
-STR_GO_TO_TRAIN_DEPOT                                           :Ga naar {TOWN} Trein Depot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {TOWN} treindepot
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ga zonder tussenstop naar {TOWN} Treindepot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} treindepot
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
@@ -2866,8 +2862,6 @@ STR_9034_RENAME                                                 :{BLACK}Hernoem
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem wegvoertuigtype
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem wegvoertuigtype
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuigtype niet hernoemen...
-STR_GO_TO_ROADVEH_DEPOT                                         :Ga naar {TOWN} Wegvoertuig Depot
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Repareren in {TOWN} wagendepot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Verbouw het wegvoertuig om een andere lading the vervoeren
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Verbouw wegvoertuig
@@ -2943,8 +2937,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nieuwe capaciteit: {GOLD}{CARGO}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan schip niet ombouwen...
 STR_9842_REFITTABLE                                             :(ombouwbaar)
-STR_GO_TO_SHIP_DEPOT                                            :Ga naar {TOWN} Scheepswerf
-SERVICE_AT_SHIP_DEPOT                                           :Reparatie in {TOWN} Scheepswerf
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Vliegvelden
@@ -3015,8 +3007,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Bouw vli
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer goederentype om te vervoeren:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nieuwe capaciteit: {GOLD}{STRING}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet ombouwen...
-STR_GO_TO_AIRPORT_HANGAR                                        :Ga naar {STATION} hanger
-SERVICE_AT_AIRPORT_HANGAR                                       :Reparatie bij {STATION} hanger
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Dienstregeling)
 

@@ -1772,7 +1772,6 @@ STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helic
 STR_8104_AIRCRAFT                                               :lidmaðîna
 
 ##id 0x8800
-STR_GO_TO_TRAIN_DEPOT                                           :Uz {TOWN} Vilcienu Depo
 
 
 
@@ -1799,7 +1798,6 @@ STR_9012_CAPACITY                                               :{BLACK}Capacit�
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 
 STR_9034_RENAME                                                 :{BLACK}Pârsaukt
-STR_GO_TO_ROADVEH_DEPOT                                         :Dodas uz {TOWN} ceļa mašīnu depo
 
 
 ##id 0x9800
@@ -1821,7 +1819,6 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maksimā
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzbûvet jauno kuìi
 
 STR_9836_RENAME                                                 :{BLACK}Pârsaukt
-SERVICE_AT_SHIP_DEPOT                                           :Apkalpošana {TOWN} kuģubūvētavā
 
 ##id 0xA000
 STR_A00A                                                        :{WHITE}{VEHICLE}
@@ -1829,8 +1826,6 @@ STR_A00A                                                        :{WHITE}{VEHICLE
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lidmaðînas avârija!{}Lidmaðînai pietrûka degviela, {COMMA} nogalinâti!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Pârsaukt
-STR_GO_TO_AIRPORT_HANGAR                                        :Uz {STATION} Angâru
-SERVICE_AT_AIRPORT_HANGAR                                       :Apkalpošana {STATION} angārā
 
 
 ##id 0xB000

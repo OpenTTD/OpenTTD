@@ -2490,10 +2490,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno okupas la lokon
-STR_GO_TO_TRAIN_DEPOT                                           :Iru al {TOWN} Trajndeponejo
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Prizorgo ĉe {TOWN} Trajndeponejo
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Iru senhalte al {TOWN} Trajndeponejo
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Prizorgo senhalte ĉe {TOWN} Trajndeponejo
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Irante al {TOWN} Trajndeponejo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Irante al {TOWN} Trajndeponejo, {VELOCITY}
@@ -2666,8 +2662,6 @@ STR_9034_RENAME                                                 :{BLACK}Renomu
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomu vojveturilan tipon
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomu vojveturilan tipon
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ne povas renomi vojveturilan tipon...
-STR_GO_TO_ROADVEH_DEPOT                                         :Iru al {TOWN} Vojveturila Deponejo
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Prizorgo ĉe {TOWN} Vojveturila Deponejo
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Transformu vojveturilon por porti alian ŝarĝon
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Transformu vojveturilon
@@ -2743,8 +2737,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elektu ŝ
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapablo: {GOLD}{CARGO}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ne povas transformi ŝipon...
 STR_9842_REFITTABLE                                             :(transformebla)
-STR_GO_TO_SHIP_DEPOT                                            :Iru al {TOWN} Ŝipdeponejo
-SERVICE_AT_SHIP_DEPOT                                           :Prizorgo en la ŝipdeponejo de {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flughavenoj
@@ -2815,8 +2807,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Transfor
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elektu ŝarĝtipon por porti:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapablo: {GOLD}{STRING}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ne povas reformi aviadilon...
-STR_GO_TO_AIRPORT_HANGAR                                        :Iru al {STATION} Hangaro
-SERVICE_AT_AIRPORT_HANGAR                                       :Prizorgo en la hangaro de {STATION}
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zepelina katastrofo en {STATION}!

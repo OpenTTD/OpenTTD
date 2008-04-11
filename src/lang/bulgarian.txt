@@ -2652,10 +2652,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Подробности)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак на пътя
-STR_GO_TO_TRAIN_DEPOT                                           :Отиди до Влаковото депо на {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонт в {TOWN} влаково депо
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди без да спираш на {TOWN} Влаково депо
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонт без спиране в {TOWN} влаково депо
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Патувай (без разписание)
 STR_TIMETABLE_TRAVEL_FOR                                        :Патувай за {STRING}
@@ -2867,8 +2863,6 @@ STR_9034_RENAME                                                 :{BLACK}Преи
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Преименувай МПС-то
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Преименувай МПС-то
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Не може да преименуваш МПС-то...
-STR_GO_TO_ROADVEH_DEPOT                                         :Отиди  в {TOWN} МПС-депото
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ремонт в {TOWN} гараж
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Преоборудване автомобила за друг товар
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Проборудване на автомобила
@@ -2944,8 +2938,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избе�
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нов капацитет: {GOLD}{CARGO}{}{BLACK}Цена за преустройство: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Не може да преустрои кораб...
 STR_9842_REFITTABLE                                             :(преустроим)
-STR_GO_TO_SHIP_DEPOT                                            :Отиди до Корабното депо до {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Сервиз на {TOWN} док
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Летища
@@ -3016,8 +3008,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Преу
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избор тип товар за превозване:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова вместимост: {GOLD}{STRING}{}{BLACK}Цена на преустройството: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да се преустрои самолета...
-STR_GO_TO_AIRPORT_HANGAR                                        :Отиди до Хангара на летище {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Сервиз в {STATION} хангар
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Разписание)
 

@@ -133,27 +133,28 @@ static void DrawTimetableWindow(Window *w)
 
 					break;
 
-				case OT_GOTO_DEPOT: {
-					StringID string = STR_EMPTY;
-
+				case OT_GOTO_DEPOT:
 					if (v->type == VEH_AIRCRAFT) {
-						string = STR_GO_TO_AIRPORT_HANGAR;
-						SetDParam(1, order->GetDestination());
+						SetDParam(0, STR_GO_TO_HANGAR);
+						SetDParam(2, order->GetDestination());
 					} else {
-						SetDParam(1, GetDepot(order->GetDestination())->town_index);
+						SetDParam(0, STR_GO_TO_DEPOT);
+						SetDParam(2, GetDepot(order->GetDestination())->town_index);
 
 						switch (v->type) {
-							case VEH_TRAIN: string = (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
-							case VEH_ROAD:  string = STR_GO_TO_ROADVEH_DEPOT; break;
-							case VEH_SHIP:  string = STR_GO_TO_SHIP_DEPOT; break;
-							default: break;
+							case VEH_TRAIN: SetDParam(3, STR_ORDER_TRAIN_DEPOT); break;
+							case VEH_ROAD:  SetDParam(3, STR_ORDER_ROAD_DEPOT); break;
+							case VEH_SHIP:  SetDParam(3, STR_ORDER_SHIP_DEPOT); break;
+							default: NOT_REACHED();
 						}
 					}
 
-					if (order->GetDepotOrderType() & ODTFB_SERVICE) string++; /* service at */
-
-					SetDParam(0, string);
-				} break;
+					if (order->GetDepotOrderType() & ODTFB_SERVICE) {
+						SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT);
+					} else {
+						SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
+					}
+					break;
 
 				case OT_GOTO_WAYPOINT:
 					SetDParam(0, (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);

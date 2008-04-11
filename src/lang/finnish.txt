@@ -2598,10 +2598,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}: 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle ({STATION})!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on tiellä.
-STR_GO_TO_TRAIN_DEPOT                                           :Mene kaupungin {TOWN} veturitalliin
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Huolto veturitallilla ({TOWN})
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mene pysähtymättä veturitalliin ({TOWN})
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pysähtymättä veturitallilla ({TOWN})
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
@@ -2808,8 +2804,6 @@ STR_9034_RENAME                                                 :{BLACK}Nimeä
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Nimeä ajoneuvon tyyppi uudelleen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Nimeä ajoneuvon tyyppi uudelleen
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ajoneuvotyyppiä ei voi uudelleennimetä...
-STR_GO_TO_ROADVEH_DEPOT                                         :Aseta kohteeksi huoltoasema, {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Huolto, kohteena huoltoasema, {TOWN}
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Muuta ajoneuvo rahtaamaan muuta rahtityyppiä.
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Korjaa ajoneuvo.
@@ -2885,8 +2879,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse k
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Laivaa ei voi sovittaa...
 STR_9842_REFITTABLE                                             :(sovitettava)
-STR_GO_TO_SHIP_DEPOT                                            :Aseta kohteeksi telakka, {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Huolto, kohteena telakka, {TOWN}
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lentokentät
@@ -2957,8 +2949,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Sovita l
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi sovittaa...
-STR_GO_TO_AIRPORT_HANGAR                                        :Aseta kohteeksi lentokonehalli, {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Huolto, kohteena lentokonehalli, {STATION}
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Aikataulu)
 

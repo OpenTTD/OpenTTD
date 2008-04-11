@@ -2639,10 +2639,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}, 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en camino
-STR_GO_TO_TRAIN_DEPOT                                           :Ir al depósito del tren de {TOWN}
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito de {TOWN} para mantenimiento
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
@@ -2852,8 +2848,6 @@ STR_9034_RENAME                                                 :{BLACK}Renombra
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renombrar tipo de vehículo
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renombrar tipo de vehículo
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No se puede renombrar tipo de vehículo....
-STR_GO_TO_ROADVEH_DEPOT                                         :Ir al depósito de {TOWN}
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ir al depósito de {TOWN} para mantenimiento
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reparar vehículo de carretera para transportar otro tipo de cargas
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reparar vehículo de carretera
@@ -2929,8 +2923,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccion
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nueva capacidad: {GOLD}{CARGO}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}No se puede reformar barco...
 STR_9842_REFITTABLE                                             :(reformable)
-STR_GO_TO_SHIP_DEPOT                                            :Ir al astillero de {TOWN}
-SERVICE_AT_SHIP_DEPOT                                           :Ir al astillero de {TOWN} para mantenimiento
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeropuertos
@@ -3001,8 +2993,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reformar
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elige tipo de carga para llevar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nueva capacidad: {GOLD}{STRING}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No se puede reformar aeronave...
-STR_GO_TO_AIRPORT_HANGAR                                        :Ir al hangar de {STATION}
-SERVICE_AT_AIRPORT_HANGAR                                       :Ir al hangar de {STATION} para mantenimiento
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horarios)
 

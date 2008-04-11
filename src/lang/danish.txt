@@ -2638,10 +2638,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} r
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
-STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} remise
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} remise
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} remise
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} remise
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
@@ -2851,8 +2847,6 @@ STR_9034_RENAME                                                 :{BLACK}Omdøb
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb køretøjstypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb køretøjstypen
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke omdøbe køretøjstypen...
-STR_GO_TO_ROADVEH_DEPOT                                         :Gå til {TOWN} værksted
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} værksted
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg vejkøretøj til at laste en anden type last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Ombyg lastbil
@@ -2928,8 +2922,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(kan ombygges)
-STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} skibsdok
-SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} skibsdok
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lufthavne
@@ -3000,8 +2992,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ombyg fl
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den type last der skal flyves med:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Ombygningspris: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke ombygge fly...
-STR_GO_TO_AIRPORT_HANGAR                                        :Flyv til {STATION} hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Service i {STATION} hangar
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Køreplan)
 

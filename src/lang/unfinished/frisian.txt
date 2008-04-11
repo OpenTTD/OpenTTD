@@ -1229,11 +1229,9 @@ STR_704C_KEY                                                    :{BLACK}Kaai
 
 ##id 0x9800
 
-SERVICE_AT_SHIP_DEPOT                                           :Underhâld yn {TOWN} Skipswerf
 
 ##id 0xA000
 
-SERVICE_AT_AIRPORT_HANGAR                                       :Underhâld yn {STATION} Hangar
 
 ##id 0xB000
 

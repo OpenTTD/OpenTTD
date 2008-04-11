@@ -2651,10 +2651,6 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} C
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en el camí
-STR_GO_TO_TRAIN_DEPOT                                           :Ves al Diposit {TOWN} de Tren
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a cotxeres de {TOWN}.
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ves sense parar a les cotxeres de {TOWN}.
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sense parades a cotxeres de {TOWN}.
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
@@ -2866,8 +2862,6 @@ STR_9034_RENAME                                                 :{BLACK}Reanomen
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Reanomena tipus d'automòbil
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Reanomena tipus d'automòbil
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No es pot reanomenar tipus d'automòbil
-STR_GO_TO_ROADVEH_DEPOT                                         :Ves a la cotxera de {TOWN}.
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manteniment a la cotxera de {TOWN}.
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Remodela vehicle de carretera per dur un tipus diferent de càrrega
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Remodela vehicle de carretera
@@ -2943,8 +2937,6 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccion
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{CARGO}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}No es pot remodelar el vaixell...
 STR_9842_REFITTABLE                                             :(remodelable)
-STR_GO_TO_SHIP_DEPOT                                            :Ves a la drassana de {TOWN}.
-SERVICE_AT_SHIP_DEPOT                                           :Manteniment a drassana de {TOWN}.
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeroports
@@ -3015,8 +3007,6 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodela
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona el tipus de càrrega a transportar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{STRING}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No es pot remodelar l'avió...
-STR_GO_TO_AIRPORT_HANGAR                                        :Ves a l'hangar de {STATION}.
-SERVICE_AT_AIRPORT_HANGAR                                       :Manteniment en l'hangar de {STATION}.
 
 STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Horari)
 
