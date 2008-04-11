@@ -446,6 +446,18 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 	return NULL; /* Target not found */
 }
 
+bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+{
+	const Depot *depot = FindClosestRoadDepot(this);
+
+	if (depot == NULL) return false;
+
+	if (location    != NULL) *location    = depot->xy;
+	if (destination != NULL) *destination = depot->index;
+
+	return true;
+}
+
 /** Send a road vehicle to the depot.
  * @param tile unused
  * @param flags operation to perform

@@ -47,6 +47,10 @@ static inline bool RoadVehHasArticPart(const Vehicle *v)
 
 void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
+byte GetRoadVehLength(const Vehicle *v);
+
+void RoadVehUpdateCache(Vehicle *v);
+
 
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
@@ -77,10 +81,7 @@ struct RoadVehicle : public Vehicle {
 	void Tick();
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
+	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };
-
-byte GetRoadVehLength(const Vehicle *v);
-
-void RoadVehUpdateCache(Vehicle *v);
 
 #endif /* ROADVEH_H */

@@ -2084,6 +2084,18 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 	return tfdd;
 }
 
+bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+{
+	TrainFindDepotData tfdd = FindClosestTrainDepot(this, 0);
+	if (tfdd.best_length == (uint)-1) return false;
+
+	if (location    != NULL) *location    = tfdd.tile;
+	if (destination != NULL) *destination = GetDepotByTile(tfdd.tile)->index;
+	if (reverse     != NULL) *reverse     = tfdd.reverse;
+
+	return true;
+}
+
 /** Send a train to a depot
  * @param tile unused
  * @param flags type of operation

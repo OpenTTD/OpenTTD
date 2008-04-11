@@ -912,6 +912,18 @@ CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return CommandCost();
 }
 
+bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+{
+	const Depot *depot = FindClosestShipDepot(this);
+
+	if (depot == NULL) return false;
+
+	if (location    != NULL) *location    = depot->xy;
+	if (destination != NULL) *destination = depot->index;
+
+	return true;
+}
+
 /** Send a ship to the depot.
  * @param tile unused
  * @param flags type of operation

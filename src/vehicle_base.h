@@ -512,6 +512,16 @@ public:
 	 * @return the location (tile) to aim for.
 	 */
 	virtual TileIndex GetOrderStationLocation(StationID station) { return INVALID_TILE; }
+
+	/**
+	 * Find the closest depot for this vehicle and tell us the location,
+	 * DestinationID and whether we should reverse.
+	 * @param location    where do we go to?
+	 * @param destination what hangar do we go to?
+	 * @param reverse     should the vehicle be reversed?
+	 * @return true if a depot could be found.
+	 */
+	virtual bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse) { return false; }
 };
 
 /**

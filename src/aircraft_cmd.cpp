@@ -546,6 +546,25 @@ CommandCost CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32
 	return CommandCost();
 }
 
+bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
+{
+	const Station *st = GetStation(this->u.air.targetairport);
+	/* If the station is not a valid airport or if it has no hangars */
+	if (!st->IsValid() || st->airport_tile == 0 || st->Airport()->nof_depots == 0) {
+		/* the aircraft has to search for a hangar on its own */
+		StationID station = FindNearestHangar(this);
+
+		if (station == INVALID_STATION) return false;
+
+		st = GetStation(station);
+	}
+
+	if (location    != NULL) *location    = st->xy;
+	if (destination != NULL) *destination = st->index;
+
+	return true;
+}
+
 /** Send an aircraft to the hangar.
  * @param tile unused
  * @param flags for command type

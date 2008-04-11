@@ -305,6 +305,7 @@ struct Train : public Vehicle {
 	void Tick();
 	void OnNewDay();
 	TileIndex GetOrderStationLocation(StationID station);
+	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };
 
 #endif /* TRAIN_H */
