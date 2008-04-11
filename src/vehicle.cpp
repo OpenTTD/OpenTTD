@@ -222,13 +222,13 @@ Vehicle *GetVehicleTunnelBridge(TileIndex tile, TileIndex endtile)
 }
 
 
-static void UpdateVehiclePosHash(Vehicle* v, int x, int y);
+static void UpdateVehiclePosHash(Vehicle *v, int x, int y);
 
 void VehiclePositionChanged(Vehicle *v)
 {
 	int img = v->cur_image;
 	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
-	const Sprite* spr = GetSprite(img);
+	const Sprite *spr = GetSprite(img);
 
 	pt.x += spr->x_offs;
 	pt.y += spr->y_offs;
@@ -462,7 +462,7 @@ static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 
 static Vehicle *_vehicle_position_hash[0x1000];
 
-static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
+static void UpdateVehiclePosHash(Vehicle *v, int x, int y)
 {
 	UpdateNewVehiclePosHash(v, x == INVALID_COORD);
 
@@ -764,13 +764,9 @@ CommandCost GetRefitCost(EngineID engine_type)
 static void DoDrawVehicle(const Vehicle *v)
 {
 	SpriteID image = v->cur_image;
-	SpriteID pal;
+	SpriteID pal = PAL_NONE;
 
-	if (v->vehstatus & VS_DEFPAL) {
-		pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-	} else {
-		pal = PAL_NONE;
-	}
+	if (v->vehstatus & VS_DEFPAL) pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 
 	AddSortableSpriteToDraw(image, pal, v->x_pos + v->x_offs, v->y_pos + v->y_offs,
 		v->x_extent, v->y_extent, v->z_extent, v->z_pos, (v->vehstatus & VS_SHADOW) != 0);
@@ -1298,11 +1294,9 @@ static void BubbleTick(Vehicle *v)
 	 *  multiplayer!! (that is: in ToyLand)
 	 */
 	uint et;
-	const BubbleMovement *b;
 
 	v->progress++;
-	if ((v->progress & 3) != 0)
-		return;
+	if ((v->progress & 3) != 0) return;
 
 	BeginVehicleMove(v);
 
@@ -1323,7 +1317,7 @@ static void BubbleTick(Vehicle *v)
 		et = v->engine_type + 1;
 	}
 
-	b = &_bubble_movement[v->spritenum - 1][et];
+	const BubbleMovement *b = &_bubble_movement[v->spritenum - 1][et];
 
 	if (b->y == 4 && b->x == 0) {
 		EndVehicleMove(v);
@@ -1394,9 +1388,7 @@ static EffectTickProc * const _effect_tick_procs[] = {
 
 Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 {
-	Vehicle *v;
-
-	v = new SpecialVehicle();
+	Vehicle *v = new SpecialVehicle();
 	if (v != NULL) {
 		v->subtype = type;
 		v->x_pos = x;
@@ -1437,9 +1429,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	Vehicle *found = NULL, *v;
 	uint dist, best_dist = (uint)-1;
 
-	if ( (uint)(x -= vp->left) >= (uint)vp->width ||
-			 (uint)(y -= vp->top) >= (uint)vp->height)
-				return NULL;
+	if ((uint)(x -= vp->left) >= (uint)vp->width || (uint)(y -= vp->top) >= (uint)vp->height) return NULL;
 
 	x = ScaleByZoom(x, vp->zoom) + vp->virtual_left;
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
@@ -1450,8 +1440,8 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 				y >= v->top_coord && y <= v->bottom_coord) {
 
 			dist = max(
-				abs( ((v->left_coord + v->right_coord)>>1) - x ),
-				abs( ((v->top_coord + v->bottom_coord)>>1) - y )
+				abs(((v->left_coord + v->right_coord) >> 1) - x),
+				abs(((v->top_coord + v->bottom_coord) >> 1) - y)
 			);
 
 			if (dist < best_dist) {
@@ -1494,8 +1484,6 @@ static const byte _breakdown_chance[64] = {
 void CheckVehicleBreakdown(Vehicle *v)
 {
 	int rel, rel_old;
-	uint32 r;
-	int chance;
 
 	/* decrease reliability */
 	v->reliability = rel = max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
@@ -1507,10 +1495,10 @@ void CheckVehicleBreakdown(Vehicle *v)
 		return;
 	}
 
-	r = Random();
+	uint32 r = Random();
 
 	/* increase chance of failure */
-	chance = v->breakdown_chance + 1;
+	int chance = v->breakdown_chance + 1;
 	if (Chance16I(1,25,r)) chance += 25;
 	v->breakdown_chance = min(255, chance);
 
@@ -1585,7 +1573,6 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
 	CommandCost return_value = CMD_ERROR;
-	uint i;
 	uint stop_command;
 	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
 	bool start_stop = HasBit(p2, 5);
@@ -1609,9 +1596,8 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 		BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
 	}
 
-	for (i = 0; i < engine_count; i++) {
+	for (uint i = 0; i < engine_count; i++) {
 		const Vehicle *v = vl[i];
-		CommandCost ret;
 
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
 
@@ -1623,7 +1609,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 			}
 		}
 
-		ret = DoCommand(tile, v->index, 0, flags, stop_command);
+		CommandCost ret = DoCommand(tile, v->index, 0, flags, stop_command);
 
 		if (CmdSucceeded(ret)) {
 			return_value = CommandCost();
@@ -1653,7 +1639,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 	uint16 wagon_count = 0;
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
-	uint i, sell_command, total_number_vehicles;
+	uint  sell_command, total_number_vehicles;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
 	switch (vehicle_type) {
@@ -1669,9 +1655,8 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 						                      &wagons,  &wagon_list_length,  &wagon_count);
 
 	total_number_vehicles = engine_count + wagon_count;
-	for (i = 0; i < total_number_vehicles; i++) {
+	for (uint i = 0; i < total_number_vehicles; i++) {
 		const Vehicle *v;
-		CommandCost ret;
 
 		if (i < engine_count) {
 			v = engines[i];
@@ -1679,7 +1664,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 			v = wagons[i - engine_count];
 		}
 
-		ret = DoCommand(tile, v->index, 1, flags, sell_command);
+		CommandCost ret = DoCommand(tile, v->index, 1, flags, sell_command);
 
 		if (CmdSucceeded(ret)) cost.AddCost(ret);
 	}
@@ -1704,7 +1689,6 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	Vehicle **vl = NULL;
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
-	uint i;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 	bool all_or_nothing = HasBit(p2, 0);
@@ -1714,11 +1698,9 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, &vl, &engine_list_length, &engine_count);
 
-
-	for (i = 0; i < engine_count; i++) {
+	for (uint i = 0; i < engine_count; i++) {
 		Vehicle *v = vl[i];
 		bool stopped = !(v->vehstatus & VS_STOPPED);
-		CommandCost ret;
 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsInDepot()) continue;
@@ -1727,7 +1709,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 			v->vehstatus |= VS_STOPPED; // Stop the vehicle
 			v->leave_depot_instantly = true;
 		}
-		ret = MaybeReplaceVehicle(v, !(flags & DC_EXEC), false);
+		CommandCost ret = MaybeReplaceVehicle(v, !(flags & DC_EXEC), false);
 
 		if (CmdSucceeded(ret)) {
 			cost.AddCost(ret);
@@ -1764,18 +1746,16 @@ error:
  */
 CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v_front, *v;
-	Vehicle *w_front, *w, *w_rear;
-	CommandCost cost, total_cost(EXPENSES_NEW_VEHICLES);
+	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 	uint32 build_argument = 2;
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
-	v = GetVehicle(p1);
-	v_front = v;
-	w = NULL;
-	w_front = NULL;
-	w_rear = NULL;
 
+	Vehicle *v = GetVehicle(p1);
+	Vehicle *v_front = v;
+	Vehicle *w = NULL;
+	Vehicle *w_front = NULL;
+	Vehicle *w_rear = NULL;
 
 	/*
 	 * v_front is the front engine in the original vehicle
@@ -1809,7 +1789,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			continue;
 		}
 
-		cost = DoCommand(tile, v->engine_type, build_argument, flags, GetCmdBuildVeh(v));
+		CommandCost cost = DoCommand(tile, v->engine_type, build_argument, flags, GetCmdBuildVeh(v));
 		build_argument = 3; // ensure that we only assign a number to the first engine
 
 		if (CmdFailed(cost)) return cost;
@@ -1870,7 +1850,7 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				assert(w != NULL);
 
 				if (w->cargo_type != v->cargo_type || w->cargo_subtype != v->cargo_subtype) {
-					cost = DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8) | 1U << 16 , flags, GetCmdRefitVeh(v));
+					CommandCost cost = DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8) | 1U << 16 , flags, GetCmdRefitVeh(v));
 					if (CmdSucceeded(cost)) total_cost.AddCost(cost);
 				}
 
@@ -2012,21 +1992,21 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 }
 
 /**
-* @param sort_list list to store the list in. Either NULL or the length length_of_array tells
-* @param length_of_array informs the length allocated for sort_list. This is not the same as the number of vehicles in the list. Needs to be 0 when sort_list is NULL
-* @param type type of vehicle
-* @param owner PlayerID of owner to generate a list for
-* @param index This parameter has different meanings depending on window_type
-    <ul>
-      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
-      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
-      <li>VLW_STANDARD: not used<li>
-      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
-      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
-    </ul>
-* @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
-* @return the number of vehicles added to the list
-*/
+ * @param sort_list list to store the list in. Either NULL or the length length_of_array tells
+ * @param length_of_array informs the length allocated for sort_list. This is not the same as the number of vehicles in the list. Needs to be 0 when sort_list is NULL
+ * @param type type of vehicle
+ * @param owner PlayerID of owner to generate a list for
+ * @param index This parameter has different meanings depending on window_type
+ *    <ul>
+ *      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
+ *      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
+ *      <li>VLW_STANDARD: not used<li>
+ *      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
+ *      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
+ *    </ul>
+ * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
+ * @return the number of vehicles added to the list
+ */
 uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
 {
 	uint n = 0;
@@ -2070,7 +2050,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->owner == owner && v->IsPrimaryVehicle()) {
 					/* TODO find a better estimate on the total number of vehicles for current player */
-					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles()/4);
+					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles() / 4);
 					(*sort_list)[n++] = v;
 				}
 			}
@@ -2120,7 +2100,8 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 	return n;
 }
 
-/** send all vehicles of type to depots
+/**
+ * Send all vehicles of type to depots
  * @param type type of vehicle
  * @param flags the flags used for DoCommand()
  * @param service should the vehicles only get service in the depots
@@ -2131,13 +2112,12 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
 	const Vehicle **sort_list = NULL;
-	uint n, i;
 	uint16 array_length = 0;
 
-	n = GenerateVehicleSortList(&sort_list, &array_length, type, owner, id, vlw_flag);
+	uint n = GenerateVehicleSortList(&sort_list, &array_length, type, owner, id, vlw_flag);
 
 	/* Send all the vehicles to a depot */
-	for (i = 0; i < n; i++) {
+	for (uint i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
 		CommandCost ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, GetCmdSendToDepot(type));
 
@@ -2185,9 +2165,13 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 		}
 	}
 
-	if (unloading == 0 && loading)          *color = STR_PERCENT_UP;
-	else if (cars == unloading || !loading) *color = STR_PERCENT_DOWN;
-	else                                    *color = STR_PERCENT_UP_DOWN;
+	if (unloading == 0 && loading) {
+		*color = STR_PERCENT_UP;
+	} else if (cars == unloading || !loading) {
+		*color = STR_PERCENT_DOWN;
+	} else {
+		*color = STR_PERCENT_UP_DOWN;
+	}
 
 	/* Train without capacity */
 	if (max == 0) return 100;
@@ -2242,18 +2226,14 @@ void VehicleEnterDepot(Vehicle *v)
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
 	if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-		Order t;
-
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
-		t = v->current_order;
+		Order t = v->current_order;
 		v->current_order.MakeDummy();
 
 		if (t.IsRefit()) {
-			CommandCost cost;
-
 			_current_player = v->owner;
-			cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
+			CommandCost cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
 
 			if (CmdFailed(cost)) {
 				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot
@@ -2335,11 +2315,9 @@ static bool IsUniqueVehicleName(const char *name)
  */
 CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v;
-
 	if (!IsValidVehicleID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
 
-	v = GetVehicle(p1);
+	Vehicle *v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -2364,12 +2342,11 @@ CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle* v;
 	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
 
 	if (serv_int != p2 || !IsValidVehicleID(p1)) return CMD_ERROR;
 
-	v = GetVehicle(p1);
+	Vehicle *v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
@@ -2452,15 +2429,13 @@ static const Direction _new_direction_table[] = {
 	DIR_E , DIR_SE, DIR_S
 };
 
-Direction GetDirectionTowards(const Vehicle* v, int x, int y)
+Direction GetDirectionTowards(const Vehicle *v, int x, int y)
 {
-	Direction dir;
-	DirDiff dirdiff;
 	int i = 0;
 
 	if (y >= v->y_pos) {
-		if (y != v->y_pos) i+=3;
-		i+=3;
+		if (y != v->y_pos) i += 3;
+		i += 3;
 	}
 
 	if (x >= v->x_pos) {
@@ -2468,14 +2443,14 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y)
 		i++;
 	}
 
-	dir = v->direction;
+	Direction dir = v->direction;
 
-	dirdiff = DirDifference(_new_direction_table[i], dir);
+	DirDiff dirdiff = DirDifference(_new_direction_table[i], dir);
 	if (dirdiff == DIRDIFF_SAME) return dir;
 	return ChangeDir(dir, dirdiff > DIRDIFF_REVERSE ? DIRDIFF_45LEFT : DIRDIFF_45RIGHT);
 }
 
-Trackdir GetVehicleTrackdir(const Vehicle* v)
+Trackdir GetVehicleTrackdir(const Vehicle *v)
 {
 	if (v->vehstatus & VS_CRASHED) return INVALID_TRACKDIR;
 
@@ -2527,7 +2502,7 @@ uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 
 UnitID GetFreeUnitNumber(VehicleType type)
 {
-	UnitID unit, max = 0;
+	UnitID max = 0;
 	const Vehicle *u;
 	static bool *cache = NULL;
 	static UnitID gmax = 0;
@@ -2564,7 +2539,8 @@ UnitID GetFreeUnitNumber(VehicleType type)
 	}
 
 	/* Find the first unused unit number */
-	for (unit = 1; unit <= max; unit++) {
+	UnitID unit = 1;
+	for (; unit <= max; unit++) {
 		if (!cache[unit]) break;
 	}
 
@@ -2598,7 +2574,6 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 
 	/* We can build vehicle infrastructure when we may build the vehicle type */
 	if (max > 0) {
-
 		/* Can we actually build the vehicle type? */
 		EngineID e;
 		FOR_ALL_ENGINEIDS_OF_TYPE(e, type) {
@@ -3249,7 +3224,7 @@ CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
 	DestinationID destination;
 	bool reverse;
 	static const StringID no_depot[] = {STR_883A_UNABLE_TO_FIND_ROUTE_TO, STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT, STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT, STR_A012_CAN_T_SEND_AIRCRAFT_TO};
-	if (!this->FindClosestDepot	(&location, &destination, &reverse)) return_cmd_error(no_depot[this->type]);
+	if (!this->FindClosestDepot(&location, &destination, &reverse)) return_cmd_error(no_depot[this->type]);
 
 	if (flags & DC_EXEC) {
 		if (this->current_order.IsType(OT_LOADING)) this->LeaveStation();
@@ -3263,11 +3238,10 @@ CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
 		if (this->type == VEH_TRAIN && reverse) DoCommand(this->tile, this->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
 
 		if (this->type == VEH_AIRCRAFT && this->u.air.state == FLYING && this->u.air.targetairport != destination) {
-				/* The aircraft is now heading for a different hangar than the next in the orders */
-				extern void AircraftNextAirportPos_and_Order(Vehicle *v);
-				AircraftNextAirportPos_and_Order(this);
-			}
-
+			/* The aircraft is now heading for a different hangar than the next in the orders */
+			extern void AircraftNextAirportPos_and_Order(Vehicle *v);
+			AircraftNextAirportPos_and_Order(this);
+		}
 	}
 
 	return CommandCost();
