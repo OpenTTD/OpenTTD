@@ -13,7 +13,7 @@ enum {MAX_HELIPADS  =   4};
 enum {MAX_ELEMENTS  = 255};
 enum {MAX_HEADINGS  =  22};
 
-// Airport types
+/* Airport types */
 enum {
 	AT_SMALL         =   0,
 	AT_LARGE         =   1,
@@ -69,7 +69,7 @@ enum {
 };
 
 /* Movement Blocks on Airports */
-// blocks (eg_airport_flags)
+/* blocks (eg_airport_flags) */
 static const uint64
 	TERM1_block              = 1ULL <<  0,
 	TERM2_block              = 1ULL <<  1,
@@ -96,7 +96,7 @@ static const uint64
 	TERM_GROUP2_EXIT2_block  = 1ULL << 20,
 	PRE_HELIPAD_block        = 1ULL << 21,
 
-// blocks for new airports
+/* blocks for new airports */
 	TERM7_block              = 1ULL << 22,
 	TERM8_block              = 1ULL << 23,
 	TERM9_block              = 1ULL << 24,
@@ -107,10 +107,10 @@ static const uint64
 	OUT_WAY2_block           = 1ULL << 27,
 	IN_WAY2_block            = 1ULL << 28,
 	RUNWAY_IN2_block         = 1ULL << 29,
-	RUNWAY_OUT2_block        = 1ULL << 10,   // note re-uses TAXIWAY_BUSY
-	HELIPAD_GROUP_block      = 1ULL << 13,   // note re-uses AIRPORT_ENTRANCE
+	RUNWAY_OUT2_block        = 1ULL << 10,   ///< note re-uses TAXIWAY_BUSY
+	HELIPAD_GROUP_block      = 1ULL << 13,   ///< note re-uses AIRPORT_ENTRANCE
 	OUT_WAY_block2           = 1ULL << 31,
-// end of new blocks
+/* end of new blocks */
 
 	NOTHING_block            = 1ULL << 30;
 
@@ -123,7 +123,7 @@ struct AirportMovingData {
 
 struct AirportFTAbuildup;
 
-// Finite sTate mAchine --> FTA
+/** Finite sTate mAchine --> FTA */
 struct AirportFTAClass {
 	public:
 		enum Flags {
@@ -157,30 +157,30 @@ struct AirportFTAClass {
 		}
 
 	const AirportMovingData *moving_data;
-	struct AirportFTA *layout;            // state machine for airport
+	struct AirportFTA *layout;            ///< state machine for airport
 	const byte *terminals;
 	const byte *helipads;
-	const TileIndexDiffC *airport_depots; // gives the position of the depots on the airports
+	const TileIndexDiffC *airport_depots; ///< gives the position of the depots on the airports
 	Flags flags;
-	byte nof_depots;                      // number of depots this airport has
-	byte nofelements;                     // number of positions the airport consists of
+	byte nof_depots;                      ///< number of depots this airport has
+	byte nofelements;                     ///< number of positions the airport consists of
 	const byte *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
 	byte size_x;
 	byte size_y;
-	byte delta_z;                         // Z adjustment for helicopter pads
+	byte delta_z;                         ///< Z adjustment for helicopter pads
 	byte catchment;
 };
 
 DECLARE_ENUM_AS_BIT_SET(AirportFTAClass::Flags)
 
 
-// internal structure used in openttd - Finite sTate mAchine --> FTA
+/** internal structure used in openttd - Finite sTate mAchine --> FTA */
 struct AirportFTA {
-	AirportFTA *next;        // possible extra movement choices from this position
-	uint64 block;            // 64 bit blocks (st->airport_flags), should be enough for the most complex airports
-	byte position;           // the position that an airplane is at
-	byte next_position;      // next position from this position
-	byte heading;            // heading (current orders), guiding an airplane to its target on an airport
+	AirportFTA *next;        ///< possible extra movement choices from this position
+	uint64 block;            ///< 64 bit blocks (st->airport_flags), should be enough for the most complex airports
+	byte position;           ///< the position that an airplane is at
+	byte next_position;      ///< next position from this position
+	byte heading;            ///< heading (current orders), guiding an airplane to its target on an airport
 };
 
 void InitializeAirports();
