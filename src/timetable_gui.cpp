@@ -36,11 +36,16 @@ enum TimetableViewWindowWidgets {
 	TTV_RESIZE,
 };
 
+struct timetable_d {
+	int sel;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(timetable_d));
+
 static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 {
 	/*
 	 * Calculation description:
-	 * 15 = 14 (w->widget[ORDER_WIDGET_ORDER_LIST].top) + 1 (frame-line)
+	 * 15 = 14 (w->widget[TTV_ORDER_VIEW].top) + 1 (frame-line)
 	 * 10 = order text hight
 	 */
 	int sel = (y - 15) / 10;
@@ -66,7 +71,7 @@ static inline void SetTimetableParams(int param1, int param2, uint32 time)
 static void DrawTimetableWindow(Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
-	int selected = WP(w, order_d).sel;
+	int selected = WP(w, timetable_d).sel;
 
 	SetVScrollCount(w, v->num_orders * 2);
 
@@ -259,17 +264,17 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 				case TTV_TIMETABLE_PANEL: { /* Main panel. */
 					int selected = GetOrderFromTimetableWndPt(w, we->we.click.pt.y, v);
 
-					if (selected == INVALID_ORDER || selected == WP(w, order_d).sel) {
+					if (selected == INVALID_ORDER || selected == WP(w, timetable_d).sel) {
 						/* Deselect clicked order */
-						WP(w, order_d).sel = -1;
+						WP(w, timetable_d).sel = -1;
 					} else {
 						/* Select clicked order */
-						WP(w, order_d).sel = selected;
+						WP(w, timetable_d).sel = selected;
 					}
 				} break;
 
 				case TTV_CHANGE_TIME: { /* "Wait For" button. */
-					int selected = WP(w, order_d).sel;
+					int selected = WP(w, timetable_d).sel;
 					VehicleOrderID real = (selected + 1) / 2;
 
 					if (real >= v->num_orders) real = 0;
@@ -291,7 +296,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 				} break;
 
 				case TTV_CLEAR_TIME: { /* Clear waiting time button. */
-					uint32 p1 = PackTimetableArgs(v, WP(w, order_d).sel);
+					uint32 p1 = PackTimetableArgs(v, WP(w, timetable_d).sel);
 					DoCommandP(0, p1, 0, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 				} break;
 
@@ -310,7 +315,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 		case WE_ON_EDIT_TEXT: {
 			const Vehicle *v = GetVehicle(w->window_number);
 
-			uint32 p1 = PackTimetableArgs(v, WP(w, order_d).sel);
+			uint32 p1 = PackTimetableArgs(v, WP(w, timetable_d).sel);
 
 			uint64 time = StrEmpty(we->we.edittext.str) ? 0 : strtoul(we->we.edittext.str, NULL, 10);
 			if (!_patches.timetable_in_ticks) time *= DAY_TICKS;
@@ -366,6 +371,6 @@ void ShowTimetableWindow(const Vehicle *v)
 		w->caption_color = v->owner;
 		w->vscroll.cap = 8;
 		w->resize.step_height = 10;
-		WP(w, order_d).sel = -1;
+		WP(w, timetable_d).sel = -1;
 	}
 }

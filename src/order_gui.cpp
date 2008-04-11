@@ -51,6 +51,11 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_RESIZE,
 };
 
+struct order_d {
+	int sel;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(order_d));
+
 /**
  * Return the memorised selected order.
  *

@@ -390,11 +390,6 @@ struct depot_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
 
-struct order_d {
-	int sel;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(order_d));
-
 struct vehicledetails_d {
 	byte tab;
 };
