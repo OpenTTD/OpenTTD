@@ -27,6 +27,8 @@
 #include "player_func.h"
 #include "newgrf_cargo.h"
 #include "widgets/dropdown_func.h"
+#include "textbuf_gui.h"
+#include "string_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -46,13 +48,23 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_UNLOAD,
 	ORDER_WIDGET_REFIT,
 	ORDER_WIDGET_SERVICE,
+	ORDER_WIDGET_COND_VARIABLE,
+	ORDER_WIDGET_COND_COMPARATOR,
+	ORDER_WIDGET_COND_VALUE,
 	ORDER_WIDGET_RESIZE_BAR,
 	ORDER_WIDGET_SHARED_ORDER_LIST,
 	ORDER_WIDGET_RESIZE,
 };
 
+/** Under what reason are we using the PlaceObject functionality? */
+enum OrderPlaceObjectState {
+	OPOS_GOTO,
+	OPOS_CONDITIONAL,
+};
+
 struct order_d {
 	int sel;
+	OrderPlaceObjectState goto_type;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(order_d));
 
@@ -89,7 +101,7 @@ static int GetOrderFromOrderWndPt(Window *w, int y, const Vehicle *v)
 	 * 15 = 14 (w->widget[ORDER_WIDGET_ORDER_LIST].top) + 1 (frame-line)
 	 * 10 = order text hight
 	 */
-	int sel = (y - 15) / 10;
+	int sel = (y - w->widget[ORDER_WIDGET_ORDER_LIST].top - 1) / 10;
 
 	if ((uint)sel >= w->vscroll.cap) return INVALID_ORDER;
 
@@ -162,14 +174,41 @@ static const StringID _order_unload_drowdown[] = {
 static const StringID _order_goto_dropdown[] = {
 	STR_ORDER_GO_TO,
 	STR_ORDER_GO_TO_NEAREST_DEPOT,
+	STR_ORDER_CONDITIONAL,
 	INVALID_STRING_ID
 };
 
 static const StringID _order_goto_dropdown_aircraft[] = {
 	STR_ORDER_GO_TO,
 	STR_ORDER_GO_TO_NEAREST_HANGAR,
+	STR_ORDER_CONDITIONAL,
 	INVALID_STRING_ID
 };
+
+static const StringID _order_conditional_variable[] = {
+	STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE,
+	STR_ORDER_CONDITIONAL_RELIABILITY,
+	STR_ORDER_CONDITIONAL_MAX_SPEED,
+	STR_ORDER_CONDITIONAL_AGE,
+	STR_ORDER_CONDITIONAL_REQUIRES_SERVICE,
+	INVALID_STRING_ID,
+};
+
+static const StringID _order_conditional_condition[] = {
+	STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS,
+	STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS,
+	STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN,
+	STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS,
+	STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN,
+	STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS,
+	STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE,
+	STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE,
+	INVALID_STRING_ID,
+};
+
+extern uint ConvertSpeedToDisplaySpeed(uint speed);
+extern uint ConvertDisplaySpeedToSpeed(uint speed);
+
 
 static void DrawOrdersWindow(Window *w)
 {
@@ -183,9 +222,11 @@ static void DrawOrdersWindow(Window *w)
 
 	if (v->owner == _local_player) {
 		/* Set the strings for the dropdown boxes. */
-		w->widget[ORDER_WIDGET_NON_STOP].data  = _order_non_stop_drowdown[order == NULL ? 0 : order->GetNonStopType()];
-		w->widget[ORDER_WIDGET_FULL_LOAD].data = _order_full_load_drowdown[order == NULL ? 0 : order->GetLoadType()];
-		w->widget[ORDER_WIDGET_UNLOAD].data    = _order_unload_drowdown[order == NULL ? 0 : order->GetUnloadType()];
+		w->widget[ORDER_WIDGET_NON_STOP].data        = _order_non_stop_drowdown[order == NULL ? 0 : order->GetNonStopType()];
+		w->widget[ORDER_WIDGET_FULL_LOAD].data       = _order_full_load_drowdown[order == NULL ? 0 : order->GetLoadType()];
+		w->widget[ORDER_WIDGET_UNLOAD].data          = _order_unload_drowdown[order == NULL ? 0 : order->GetUnloadType()];
+		w->widget[ORDER_WIDGET_COND_VARIABLE].data   = _order_conditional_variable[order == NULL ? 0 : order->GetConditionVariable()];
+		w->widget[ORDER_WIDGET_COND_COMPARATOR].data = _order_conditional_condition[order == NULL ? 0 : order->GetConditionComparator()];
 
 		/* skip */
 		w->SetWidgetDisabledState(ORDER_WIDGET_SKIP, v->num_orders <= 1);
@@ -204,10 +245,13 @@ static void DrawOrdersWindow(Window *w)
 		w->SetWidgetDisabledState(ORDER_WIDGET_SERVICE,   order == NULL); // Refit
 		w->HideWidget(ORDER_WIDGET_REFIT); // Refit
 		w->HideWidget(ORDER_WIDGET_SERVICE); // Service
-	} else {
-		w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
+
+		w->HideWidget(ORDER_WIDGET_COND_VARIABLE);
+		w->HideWidget(ORDER_WIDGET_COND_COMPARATOR);
+		w->HideWidget(ORDER_WIDGET_COND_VALUE);
 	}
 
+	w->ShowWidget(ORDER_WIDGET_NON_STOP);
 	w->ShowWidget(ORDER_WIDGET_UNLOAD);
 	w->ShowWidget(ORDER_WIDGET_FULL_LOAD);
 
@@ -232,6 +276,22 @@ static void DrawOrdersWindow(Window *w)
 				w->ShowWidget(ORDER_WIDGET_SERVICE);
 				break;
 
+			case OT_CONDITIONAL: {
+				w->HideWidget(ORDER_WIDGET_NON_STOP);
+				w->HideWidget(ORDER_WIDGET_UNLOAD);
+				w->HideWidget(ORDER_WIDGET_FULL_LOAD);
+				w->ShowWidget(ORDER_WIDGET_COND_VARIABLE);
+				w->ShowWidget(ORDER_WIDGET_COND_COMPARATOR);
+				w->ShowWidget(ORDER_WIDGET_COND_VALUE);
+
+				OrderConditionVariable ocv = order->GetConditionVariable();
+				w->SetWidgetDisabledState(ORDER_WIDGET_COND_VALUE, ocv == OCV_REQUIRES_SERVICE);
+
+				uint value = order->GetConditionValue();
+				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+				SetDParam(1, value);
+			} break;
+
 			default: // every other orders
 				w->DisableWidget(ORDER_WIDGET_NON_STOP);
 				w->DisableWidget(ORDER_WIDGET_FULL_LOAD);
@@ -249,7 +309,7 @@ static void DrawOrdersWindow(Window *w)
 	StringID str;
 	while (order != NULL) {
 		str = (v->cur_order_index == i) ? STR_8805 : STR_8804;
-		SetDParam(5, STR_EMPTY);
+		SetDParam(6, STR_EMPTY);
 
 		if (i - w->vscroll.pos < w->vscroll.cap) {
 			switch (order->GetType()) {
@@ -302,8 +362,8 @@ static void DrawOrdersWindow(Window *w)
 					}
 
 					if (order->IsRefit()) {
-						SetDParam(5, STR_REFIT_ORDER);
-						SetDParam(6, GetCargo(order->GetRefitCargo())->name);
+						SetDParam(6, STR_REFIT_ORDER);
+						SetDParam(7, GetCargo(order->GetRefitCargo())->name);
 					}
 					break;
 
@@ -311,6 +371,18 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(2, order->GetDestination());
 					break;
+
+				case OT_CONDITIONAL: {
+					OrderConditionComparator occ = order->GetConditionComparator();
+					SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+					SetDParam(2, order->GetConditionSkipToOrder() + 1);
+					SetDParam(3, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
+					SetDParam(4, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
+
+					uint value = order->GetConditionValue();
+					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+					SetDParam(5, value);
+				} break;
 
 				default: NOT_REACHED();
 			}
@@ -462,6 +534,7 @@ static void OrderClick_Goto(Window *w, const Vehicle *v, int i)
 	if (w->IsWidgetLowered(ORDER_WIDGET_GOTO)) {
 		_place_clicked_vehicle = NULL;
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, VHM_RECT, w);
+		WP(w, order_d).goto_type = OPOS_GOTO;
 	} else {
 		ResetObjectToPlace();
 	}
@@ -490,7 +563,7 @@ static void OrderClick_FullLoad(Window *w, const Vehicle *v, int load_type)
 			default: NOT_REACHED();
 		}
 	}
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | (load_type << 2), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_LOAD | (load_type << 4), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -522,6 +595,20 @@ static void OrderClick_NearestDepot(Window *w, const Vehicle *v, int i)
 }
 
 /**
+ * Handle the click on the conditional order button.
+ *
+ * @param w current window
+ * @param v current vehicle
+ */
+static void OrderClick_Conditional(Window *w, const Vehicle *v, int i)
+{
+	w->InvalidateWidget(ORDER_WIDGET_GOTO);
+	w->LowerWidget(ORDER_WIDGET_GOTO);
+	SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, PAL_NONE, VHM_RECT, w);
+	WP(w, order_d).goto_type = OPOS_CONDITIONAL;
+}
+
+/**
  * Handle the click on the unload button.
  *
  * @param w current window
@@ -544,7 +631,7 @@ static void OrderClick_Unload(Window *w, const Vehicle *v, int unload_type)
 		}
 	}
 
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 2), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -566,7 +653,7 @@ static void OrderClick_Nonstop(Window *w, const Vehicle *v, int non_stop)
 		non_stop = (order->GetNonStopType() + 1) % ONSF_END;
 	}
 
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 2,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -580,7 +667,7 @@ static void OrderClick_Transfer(Window *w, const Vehicle *v, int i)
 	VehicleOrderID sel_ord = OrderGetSel(w);
 	const Order *order = GetVehicleOrder(v, sel_ord);
 
-	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | ((order->GetUnloadType() & ~OUFB_NO_UNLOAD) ^ OUFB_TRANSFER) << 2, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+	DoCommandP(v->tile, v->index + (sel_ord << 16), MOF_UNLOAD | ((order->GetUnloadType() & ~OUFB_NO_UNLOAD) ^ OUFB_TRANSFER) << 4, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 }
 
 /**
@@ -763,9 +850,47 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 					ShowTimetableWindow(v);
 					break;
 
+				case ORDER_WIDGET_COND_VARIABLE:
+					ShowDropDownMenu(w, _order_conditional_variable, GetVehicleOrder(v, OrderGetSel(w))->GetConditionVariable(), ORDER_WIDGET_COND_VARIABLE, 0, 0);
+					break;
+
+				case ORDER_WIDGET_COND_COMPARATOR: {
+					const Order *o = GetVehicleOrder(v, OrderGetSel(w));
+					ShowDropDownMenu(w, _order_conditional_condition, o->GetConditionComparator(), ORDER_WIDGET_COND_COMPARATOR, 0, (o->GetConditionVariable() == OCV_REQUIRES_SERVICE) ? 0x3F : 0xC0);
+				} break;
+
+				case ORDER_WIDGET_COND_VALUE: {
+					const Order *order = GetVehicleOrder(v, OrderGetSel(w));
+					uint value = order->GetConditionValue();
+					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+					SetDParam(0, value);
+					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_ORDER_CONDITIONAL_VALUE_CAPT, 5, 100, w, CS_NUMERAL);
+				} break;
+
 				case ORDER_WIDGET_SHARED_ORDER_LIST:
 					ShowVehicleListWindow(v);
 					break;
+			}
+			break;
+
+		case WE_ON_EDIT_TEXT:
+			if (!StrEmpty(e->we.edittext.str)) {
+				VehicleOrderID sel = OrderGetSel(w);
+				uint value = atoi(e->we.edittext.str);
+
+				switch (GetVehicleOrder(v, sel)->GetConditionVariable()) {
+					case OCV_MAX_SPEED:
+						value = ConvertDisplaySpeedToSpeed(value);
+						break;
+
+					case OCV_RELIABILITY:
+					case OCV_LOAD_PERCENTAGE:
+						value = Clamp(value, 0, 100);
+
+					default:
+						break;
+				}
+				DoCommandP(v->tile, v->index + (sel << 16), MOF_COND_VALUE | Clamp(value, 0, 2047) << 4, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 			}
 			break;
 
@@ -785,10 +910,24 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 				case ORDER_WIDGET_GOTO:
 					switch (e->we.dropdown.index) {
-						case 0: OrderClick_Goto(w, v, 0); break;
+						case 0:
+							w->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
+							OrderClick_Goto(w, v, 0);
+							break;
+
 						case 1: OrderClick_NearestDepot(w, v, 0); break;
+						case 2: OrderClick_Conditional(w, v, 0); break;
 						default: NOT_REACHED();
 					}
+					break;
+
+				case ORDER_WIDGET_COND_VARIABLE:
+					DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), MOF_COND_VARIABLE | e->we.dropdown.index << 4,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+					break;
+
+				case ORDER_WIDGET_COND_COMPARATOR:
+					DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), MOF_COND_COMPARATOR | e->we.dropdown.index << 4,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+					break;
 			}
 			break;
 
@@ -827,10 +966,29 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PLACE_OBJ:
-			OrdersPlaceObj(GetVehicle(w->window_number), e->we.place.tile, w);
+			if (WP(w, order_d).goto_type == OPOS_GOTO) {
+				OrdersPlaceObj(GetVehicle(w->window_number), e->we.place.tile, w);
+			}
 			break;
 
 		case WE_ABORT_PLACE_OBJ:
+			if (WP(w, order_d).goto_type == OPOS_CONDITIONAL) {
+				WP(w, order_d).goto_type = OPOS_GOTO;
+				if (_cursor.pos.x >= (w->left + w->widget[ORDER_WIDGET_ORDER_LIST].left) &&
+						_cursor.pos.y >= (w->top  + w->widget[ORDER_WIDGET_ORDER_LIST].top) &&
+						_cursor.pos.x <= (w->left + w->widget[ORDER_WIDGET_ORDER_LIST].right) &&
+						_cursor.pos.y <= (w->top  + w->widget[ORDER_WIDGET_ORDER_LIST].bottom)) {
+					int order_id = GetOrderFromOrderWndPt(w, _cursor.pos.y - w->top, v);
+					if (order_id != INVALID_ORDER) {
+						Order order;
+						order.next = NULL;
+						order.index = 0;
+						order.MakeConditional(order_id);
+
+						DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), order.Pack(), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER));
+					}
+				}
+			}
 			w->RaiseWidget(ORDER_WIDGET_GOTO);
 			w->InvalidateWidget(ORDER_WIDGET_GOTO);
 			break;
@@ -891,6 +1049,10 @@ static const Widget _orders_train_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   123,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,   STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
+
 	{      WWT_PANEL,   RESIZE_RTB,     14,   372,   373,    76,    99, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   372,   385,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
 
@@ -924,9 +1086,13 @@ static const Widget _orders_widgets[] = {
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,   360,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
 	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   372,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   372,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
+
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   123,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_CONDITIONAL_VALUE,   STR_ORDER_CONDITIONAL_VALUE_TOOLTIP},      // ORDER_WIDGET_COND_VALUE
 
 	{      WWT_PANEL,   RESIZE_RTB,     14,   372,   373,    76,    99, 0x0,                     STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   372,   385,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP}, // ORDER_WIDGET_SHARED_ORDER_LIST
@@ -965,10 +1131,14 @@ static const Widget _other_orders_widgets[] = {
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE
 
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_VARIABLE
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_COMPARATOR
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_VALUE
+
 	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   373,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   374,   385,    88,    99, 0x0,                STR_RESIZE_BUTTON},              // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   374,   385,    88,    99, 0x0,                STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 

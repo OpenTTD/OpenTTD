@@ -27,6 +27,7 @@ enum OrderType {
 	OT_LEAVESTATION  = 4,
 	OT_DUMMY         = 5,
 	OT_GOTO_WAYPOINT = 6,
+	OT_CONDITIONAL   = 7,
 	OT_END
 };
 
@@ -86,13 +87,45 @@ enum OrderDepotActionFlags {
 };
 
 /**
+ * Variables (of a vehicle) to 'cause' skipping on.
+ */
+enum OrderConditionVariable {
+	OCV_LOAD_PERCENTAGE,  ///< Skip based on the amount of load
+	OCV_RELIABILITY,      ///< Skip based on the reliability
+	OCV_MAX_SPEED,        ///< Skip based on the maximum speed
+	OCV_AGE,              ///< Skip based on the age
+	OCV_REQUIRES_SERVICE, ///< Skip when the vehicle requires service
+	OCV_END
+};
+
+/**
+ * Comparator for the skip reasoning.
+ */
+enum OrderConditionComparator {
+	OCC_EQUALS,      ///< Skip if both values are equal
+	OCC_NOT_EQUALS,  ///< Skip if both values are not equal
+	OCC_LESS_THAN,   ///< Skip if the value is less than the limit
+	OCC_LESS_EQUALS, ///< Skip if the value is less or equal to the limit
+	OCC_MORE_THAN,   ///< Skip if the value is more than the limit
+	OCC_MORE_EQUALS, ///< Skip if the value is more or equal to the limit
+	OCC_IS_TRUE,     ///< Skip if the variable is true
+	OCC_IS_FALSE,    ///< Skip if the variable is false
+	OCC_END
+};
+
+
+/**
  * Enumeration for the data to set in CmdModifyOrder.
  */
 enum ModifyOrderFlags {
-	MOF_NON_STOP,      ///< Passes a OrderNonStopFlags.
-	MOF_UNLOAD,        ///< Passes an OrderUnloadType.
-	MOF_LOAD,          ///< Passes an OrderLoadType
-	MOF_DEPOT_ACTION,  ///< Toggle the 'service' if needed flag.
+	MOF_NON_STOP,        ///< Passes a OrderNonStopFlags.
+	MOF_UNLOAD,          ///< Passes an OrderUnloadType.
+	MOF_LOAD,            ///< Passes an OrderLoadType
+	MOF_DEPOT_ACTION,    ///< Toggle the 'service' if needed flag.
+	MOF_COND_VARIABLE,   ///< A conditional variable changes.
+	MOF_COND_COMPARATOR, ///< A comparator changes.
+	MOF_COND_VALUE,      ///< The value to set the condition to.
+	MOF_END
 };
 
 

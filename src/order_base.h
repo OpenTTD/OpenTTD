@@ -66,7 +66,7 @@ public:
 	 * Get the type of order of this order.
 	 * @return the order type.
 	 */
-	inline OrderType GetType() const { return (OrderType)GB(this->type, 0, 6); }
+	inline OrderType GetType() const { return (OrderType)GB(this->type, 0, 4); }
 
 	/**
 	 * 'Free' the order
@@ -110,6 +110,12 @@ public:
 	 * Makes this order a Dummy order.
 	 */
 	void MakeDummy();
+
+	/**
+	 * Makes this order an conditional order.
+	 * @param order the order to jump to.
+	 */
+	void MakeConditional(VehicleOrderID order);
 
 	/**
 	 * Free a complete order chain.
@@ -170,6 +176,14 @@ public:
 	inline OrderDepotTypeFlags GetDepotOrderType() const { return (OrderDepotTypeFlags)GB(this->flags, 0, 4); }
 	/** What are we going to do when in the depot. */
 	inline OrderDepotActionFlags GetDepotActionType() const { return (OrderDepotActionFlags)GB(this->flags, 4, 4); }
+	/** What variable do we have to compare? */
+	inline OrderConditionVariable GetConditionVariable() const { return (OrderConditionVariable)GB(this->dest, 11, 5); }
+	/** What is the comparator to use? */
+	inline OrderConditionComparator GetConditionComparator() const { return (OrderConditionComparator)GB(this->type, 5, 3); }
+	/** Get the order to skip to. */
+	inline VehicleOrderID GetConditionSkipToOrder() const { return this->flags; }
+	/** Get the value to base the skip on. */
+	inline uint16 GetConditionValue() const { return GB(this->dest, 0, 11); }
 
 	/** Set how the consist must be loaded. */
 	inline void SetLoadType(OrderLoadFlags load_type) { SB(this->flags, 4, 4, load_type); }
@@ -180,7 +194,15 @@ public:
 	/** Set the cause to go to the depot. */
 	inline void SetDepotOrderType(OrderDepotTypeFlags depot_order_type) { SB(this->flags, 0, 4, depot_order_type); }
 	/** Set what we are going to do in the depot. */
-	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 4, 4,  depot_service_type); }
+	inline void SetDepotActionType(OrderDepotActionFlags depot_service_type) { SB(this->flags, 4, 4, depot_service_type); }
+	/** Set variable we have to compare. */
+	inline void SetConditionVariable(OrderConditionVariable condition_variable) { SB(this->dest, 11, 5, condition_variable); }
+	/** Set the comparator to use. */
+	inline void SetConditionComparator(OrderConditionComparator condition_comparator) { SB(this->type, 5, 3, condition_comparator); }
+	/** Get the order to skip to. */
+	inline void SetConditionSkipToOrder(VehicleOrderID order_id) { this->flags = order_id; }
+	/** Set the value to base the skip on. */
+	inline void SetConditionValue(uint16 value) { SB(this->dest, 0, 11, value); }
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 

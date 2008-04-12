@@ -116,7 +116,7 @@ static void DrawTimetableWindow(Window *w)
 		if (i - w->vscroll.pos >= w->vscroll.cap) break;
 
 		if (i % 2 == 0) {
-			SetDParam(2, STR_EMPTY);
+			SetDParam(5, STR_EMPTY);
 
 			switch (order->GetType()) {
 				case OT_DUMMY:
@@ -130,8 +130,8 @@ static void DrawTimetableWindow(Window *w)
 					SetDParam(3, STR_EMPTY);
 
 					if (order->wait_time > 0) {
-						SetDParam(4, STR_TIMETABLE_STAY_FOR);
-						SetTimetableParams(5, 6, order->wait_time);
+						SetDParam(5, STR_TIMETABLE_STAY_FOR);
+						SetTimetableParams(6, 7, order->wait_time);
 					} else {
 						SetDParam(4, STR_EMPTY);
 					}
@@ -177,6 +177,20 @@ static void DrawTimetableWindow(Window *w)
 					SetDParam(0, (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(1, order->GetDestination());
 					break;
+
+
+				case OT_CONDITIONAL: {
+					extern uint ConvertSpeedToDisplaySpeed(uint speed);
+					OrderConditionComparator occ = order->GetConditionComparator();
+					SetDParam(0, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+					SetDParam(1, order->GetConditionSkipToOrder() + 1);
+					SetDParam(2, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
+					SetDParam(3, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
+
+					uint value = order->GetConditionValue();
+					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+					SetDParam(4, value);
+				} break;
 
 				default: break;
 			}

@@ -2652,8 +2652,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING3} {STRING2}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING3} {STRING2}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING4} {STRING2}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING4} {STRING2}
 STR_ORDER_GO_TO                                                 :Go to
 STR_ORDER_GO_NON_STOP_TO                                        :Go non-stop to
 STR_ORDER_GO_VIA                                                :Go via
@@ -2685,7 +2685,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change t
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behaviour of the highlighted order
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
-STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :Insert an advanced order
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Insert an advanced order
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
 STR_ORDER_NEAREST_DEPOT                                         :the nearest
@@ -2699,7 +2699,29 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
-STR_TIMETABLE_GO_TO                                             :{STRING3} {STRING2}
+STR_ORDER_CONDITIONAL                                           :Conditional order jump
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to compare the vehicle data to the given value
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}The value to compare the vehicle data against
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Enter value to compare against
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Load percentage
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
+STR_ORDER_CONDITIONAL_AGE                                       :Vehicle age (years)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requires service
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is not equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is less than
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is less or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is more than
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is true
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is false
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_NUM                                             :Jump to order {COMMA} when {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Jump to order {COMMA} when {STRING} {STRING}
+
+STR_TIMETABLE_GO_TO                                             :{STRING4} {STRING2}
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING1}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING1}

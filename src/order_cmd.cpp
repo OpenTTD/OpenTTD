@@ -93,6 +93,13 @@ void Order::MakeDummy()
 	this->flags = 0;
 }
 
+void Order::MakeConditional(VehicleOrderID order)
+{
+	this->type = OT_CONDITIONAL;
+	this->flags = 0;
+	this->dest = order;
+}
+
 void Order::SetRefit(CargoID cargo, byte subtype)
 {
 	this->refit_cargo = cargo;
@@ -427,6 +434,14 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 		}
 
+		case OT_CONDITIONAL: {
+			if (!IsPlayerBuildableVehicleType(v)) return CMD_ERROR;
+
+			VehicleOrderID skip_to = new_order.GetConditionSkipToOrder();
+			if (skip_to >= v->num_orders) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) return CMD_ERROR;
+		} break;
+
 		default: return CMD_ERROR;
 	}
 
@@ -510,6 +525,22 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u);
+		}
+
+		/* As we insert an order, the order to skip to will be 'wrong'. */
+		VehicleOrderID cur_order_id = 0;
+		Order *order;
+		FOR_VEHICLE_ORDERS(v, order) {
+			if (order->IsType(OT_CONDITIONAL)) {
+				VehicleOrderID order_id = order->GetConditionSkipToOrder();
+				if (order_id >= sel_ord) {
+					order->SetConditionSkipToOrder(order_id + 1);
+				}
+				if (order_id == cur_order_id) {
+					order->SetConditionSkipToOrder((order_id + 1) % v->num_orders);
+				}
+			}
+			cur_order_id++;
 		}
 
 		/* Make sure to rebuild the whole list */
@@ -623,6 +654,21 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u);
+		}
+
+		/* As we delete an order, the order to skip to will be 'wrong'. */
+		VehicleOrderID cur_order_id = 0;
+		FOR_VEHICLE_ORDERS(v, order) {
+			if (order->IsType(OT_CONDITIONAL)) {
+				VehicleOrderID order_id = order->GetConditionSkipToOrder();
+				if (order_id >= sel_ord) {
+					order->SetConditionSkipToOrder(max(order_id - 1, 0));
+				}
+				if (order_id == cur_order_id) {
+					order->SetConditionSkipToOrder((order_id + 1) % v->num_orders);
+				}
+			}
+			cur_order_id++;
 		}
 
 		RebuildVehicleLists();
@@ -746,6 +792,22 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateVehicleOrder(u);
 		}
 
+		/* As we move an order, the order to skip to will be 'wrong'. */
+		Order *order;
+		FOR_VEHICLE_ORDERS(v, order) {
+			if (order->IsType(OT_CONDITIONAL)) {
+				VehicleOrderID order_id = order->GetConditionSkipToOrder();
+				if (order_id == moving_order) {
+					order_id = target_order;
+				} else if(order_id > moving_order && order_id <= target_order) {
+					order_id--;
+				} else if(order_id < moving_order && order_id >= target_order) {
+					order_id++;
+				}
+				order->SetConditionSkipToOrder(order_id);
+			}
+		}
+
 		/* Make sure to rebuild the whole list */
 		RebuildVehicleLists();
 	}
@@ -762,16 +824,17 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *                        the order will be inserted before that one
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 various bitstuffed elements
- *  - p2 = (bit 0 - 1) - what data to modify (@see ModifyOrderFlags)
- *  - p2 = (bit 2 - 5) - the data to modify
+ *  - p2 = (bit 0 -  3) - what data to modify (@see ModifyOrderFlags)
+ *  - p2 = (bit 4 - 15) - the data to modify
  */
 CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh          = GB(p1,  0, 16);
-	ModifyOrderFlags mof   = (ModifyOrderFlags)GB(p2,  0,  2);
-	uint8 data             = GB(p2,  2,  4);
+	ModifyOrderFlags mof   = (ModifyOrderFlags)GB(p2,  0,  4);
+	uint16 data             = GB(p2, 4, 11);
 
+	if (mof >= MOF_END) return CMD_ERROR;
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(veh);
@@ -783,15 +846,19 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Order *order = GetVehicleOrder(v, sel_ord);
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
-			if (mof == MOF_DEPOT_ACTION || GetStation(order->GetDestination())->IsBuoy()) return CMD_ERROR;
+			if (mof == MOF_COND_VARIABLE || mof == MOF_COND_COMPARATOR || mof == MOF_DEPOT_ACTION || mof == MOF_COND_VALUE || GetStation(order->GetDestination())->IsBuoy()) return CMD_ERROR;
 			break;
 
 		case OT_GOTO_DEPOT:
-			if (mof == MOF_UNLOAD || mof == MOF_LOAD) return CMD_ERROR;
+			if (mof != MOF_NON_STOP && mof != MOF_DEPOT_ACTION) return CMD_ERROR;
 			break;
 
 		case OT_GOTO_WAYPOINT:
 			if (mof != MOF_NON_STOP) return CMD_ERROR;
+			break;
+
+		case OT_CONDITIONAL:
+			if (mof != MOF_COND_VARIABLE && mof != MOF_COND_COMPARATOR && mof != MOF_COND_VALUE) return CMD_ERROR;
 			break;
 
 		default:
@@ -799,6 +866,8 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	switch (mof) {
+		default: NOT_REACHED();
+
 		case MOF_NON_STOP:
 			if (data >= ONSF_END) return CMD_ERROR;
 			if (data == order->GetNonStopType()) return CMD_ERROR;
@@ -818,6 +887,36 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MOF_DEPOT_ACTION:
 			if (data != 0) return CMD_ERROR;
+			break;
+
+		case MOF_COND_VARIABLE:
+			if (data >= OCV_END) return CMD_ERROR;
+			break;
+
+		case MOF_COND_COMPARATOR:
+			if (data >= OCC_END) return CMD_ERROR;
+			switch (order->GetConditionVariable()) {
+				case OCV_REQUIRES_SERVICE:
+					if (data != OCC_IS_TRUE && data != OCC_IS_FALSE) return CMD_ERROR;
+					break;
+
+				default:
+					if (data == OCC_IS_TRUE || data == OCC_IS_FALSE) return CMD_ERROR;
+					break;
+			}
+			break;
+
+		case MOF_COND_VALUE:
+			switch (order->GetConditionVariable()) {
+				case OCV_LOAD_PERCENTAGE:
+				case OCV_RELIABILITY:
+					if (data > 100) return CMD_ERROR;
+					break;
+
+				default:
+					if (data > 2047) return CMD_ERROR;
+					break;
+			}
 			break;
 	}
 
@@ -844,6 +943,33 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			case MOF_DEPOT_ACTION:
 				order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() ^ ODTFB_SERVICE));
+				break;
+
+			case MOF_COND_VARIABLE: {
+				order->SetConditionVariable((OrderConditionVariable)data);
+
+				OrderConditionComparator occ = order->GetConditionComparator();
+				switch (order->GetConditionVariable()) {
+					case OCV_REQUIRES_SERVICE:
+						if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) order->SetConditionComparator(OCC_IS_TRUE);
+						break;
+
+					case OCV_LOAD_PERCENTAGE:
+					case OCV_RELIABILITY:
+						if (order->GetConditionValue() > 100) order->SetConditionValue(100);
+						/* FALL THROUGH */
+					default:
+						if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) order->SetConditionComparator(OCC_EQUALS);
+						break;
+				}
+			} break;
+
+			case MOF_COND_COMPARATOR:
+				order->SetConditionComparator((OrderConditionComparator)data);
+				break;
+
+			case MOF_COND_VALUE:
+				order->SetConditionValue(data);
 				break;
 
 			default: NOT_REACHED();
@@ -1417,6 +1543,24 @@ static bool CheckForValidOrders(const Vehicle *v)
 }
 
 /**
+ * Compare the variable and value based on the given comparator.
+ */
+static bool OrderConditionCompare(OrderConditionComparator occ, int variable, int value)
+{
+	switch (occ) {
+		case OCC_EQUALS:      return variable == value;
+		case OCC_NOT_EQUALS:  return variable != value;
+		case OCC_LESS_THAN:   return variable <  value;
+		case OCC_LESS_EQUALS: return variable <= value;
+		case OCC_MORE_THAN:   return variable >  value;
+		case OCC_MORE_EQUALS: return variable >= value;
+		case OCC_IS_TRUE:     return variable != 0;
+		case OCC_IS_FALSE:    return variable == 0;
+		default: NOT_REACHED();
+	}
+}
+
+/**
  * Handle the orders of a vehicle and determine the next place
  * to go to if needed.
  * @param v the vehicle to do this for.
@@ -1550,6 +1694,27 @@ bool ProcessOrders(Vehicle *v)
 		case OT_GOTO_WAYPOINT:
 			v->dest_tile = GetWaypoint(order->GetDestination())->xy;
 			break;
+
+		case OT_CONDITIONAL: {
+			bool skip_order = false;
+			OrderConditionComparator occ = order->GetConditionComparator();
+			uint16 value = order->GetConditionValue();
+
+			switch (order->GetConditionVariable()) {
+				case OCV_LOAD_PERCENTAGE:  skip_order = OrderConditionCompare(occ, CalcPercentVehicleFilled(v, NULL), value); break;
+				case OCV_RELIABILITY:      skip_order = OrderConditionCompare(occ, v->reliability * 100 >> 16,        value); break;
+				case OCV_MAX_SPEED:        skip_order = OrderConditionCompare(occ, v->GetDisplayMaxSpeed(),           value); break;
+				case OCV_AGE:              skip_order = OrderConditionCompare(occ, v->age / 366,                      value); break;
+				case OCV_REQUIRES_SERVICE: skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
+				default: NOT_REACHED();
+			}
+			UpdateVehicleTimetable(v, true);
+			if (skip_order) {
+				v->cur_order_index = order->GetConditionSkipToOrder();
+			} else {
+				v->cur_order_index++;
+			}
+		} return false;
 
 		default:
 			v->dest_tile = 0;
