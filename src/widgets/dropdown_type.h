@@ -18,6 +18,7 @@ public:
 	DropDownListItem(int result, bool masked) : result(result), masked(masked) {}
 	virtual ~DropDownListItem() {}
 	virtual StringID String() const;
+	virtual uint Height(uint width) const;
 };
 
 /**

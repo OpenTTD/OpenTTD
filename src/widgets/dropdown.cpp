@@ -20,6 +20,11 @@ StringID DropDownListItem::String() const
 	return STR_NULL;
 }
 
+uint DropDownListItem::Height(uint width) const
+{
+	return 10;
+}
+
 StringID DropDownListStringItem::String() const
 {
 	return this->string;
@@ -66,20 +71,25 @@ static int GetDropDownItem(const Window *w)
 {
 	if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) < 0) return -1;
 
-	int y = _cursor.pos.y - w->top - 2 + w->vscroll.pos * 10;
-	if (y < 0) return -1;
+	int y     = _cursor.pos.y - w->top - 2;
+	int width = w->widget[0].right - 3;
+	int pos   = w->vscroll.pos;
 
-	uint selected_row = y / 10;
 	const DropDownList *list = WP(w, dropdown_d).list;
 
-	if (selected_row >= list->size()) return -1;
+	for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
+		/* Skip items that are scrolled up */
+		if (--pos >= 0) continue;
 
-	for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it, selected_row--) {
-		if (selected_row == 0) {
-			const DropDownListItem *item = *it;
+		const DropDownListItem *item = *it;
+		int item_height = item->Height(width);
+
+		if (y < item_height) {
 			if (item->masked || item->String() == STR_NULL) return -1;
 			return item->result;
 		}
+
+		y -= item_height;
 	}
 
 	return -1;
@@ -92,24 +102,30 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			int x = 1;
-			int y = 2 - w->vscroll.pos * 10;
+			int y = 2;
 
 			int sel    = WP(w, dropdown_d).selected_index;
 			int width  = w->widget[0].right - 3;
-			int height = w->widget[0].bottom - 3;
+			int height = w->widget[0].bottom;
+			int pos    = w->vscroll.pos;
 
 			DropDownList *list = WP(w, dropdown_d).list;
 
 			for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
-				if (y >= 0 && y <= height) {
-					const DropDownListItem *item = *it;
+				const DropDownListItem *item = *it;
+				int item_height = item->Height(width);
+
+				/* Skip items that are scrolled up */
+				if (--pos >= 0) continue;
+
+				if (y + item_height < height) {
 					if (item->String() != STR_NULL) {
-						if (sel == item->result) GfxFillRect(x + 1, y, x + width, y + 9, 0);
+						if (sel == item->result) GfxFillRect(x + 1, y, x + width, y + item_height - 1, 0);
 
 						DrawStringTruncated(x + 2, y, item->String(), sel == item->result ? TC_WHITE : TC_BLACK, x + width);
 
 						if (item->masked) {
-							GfxFillRect(x, y, x + width, y + 9,
+							GfxFillRect(x, y, x + width, y + item_height - 1,
 								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[w->widget[0].color][5]
 							);
 						}
@@ -121,7 +137,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 						GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);
 					}
 				}
-				y += 10;
+				y += item_height;
 			}
 		} break;
 
@@ -221,7 +237,17 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	/* The preferred position is just below the dropdown calling widget */
 	int top = w->top + wi->bottom + 1;
-	int height = list->size() * 10 + 4;
+
+	/* Total length of list */
+	int list_height = 0;
+
+	for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
+		DropDownListItem *item = *it;
+		list_height += item->Height(width);
+	}
+
+	/* Height of window visible */
+	int height = list_height;
 
 	/* Check if the status bar is visible, as we don't want to draw over it */
 	Window *w3 = FindWindowById(WC_STATUS_BAR, 0);
@@ -230,18 +256,19 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	bool scroll = false;
 
 	/* Check if the dropdown will fully fit below the widget */
-	if (top + height >= screen_bottom) {
+	if (top + height + 4 >= screen_bottom) {
 		w3 = FindWindowById(WC_MAIN_TOOLBAR, 0);
 		int screen_top = w3 == NULL ? 0 : w3->top + w3->height;
 
 		/* If not, check if it will fit above the widget */
 		if (w->top + wi->top - height > screen_top) {
-			top = w->top + wi->top - height;
+			top = w->top + wi->top - height - 4;
 		} else {
 			/* ... and lastly if it won't, enable the scroll bar and fit the
 			 * list in below the widget */
-			int rows = (screen_bottom - 4 - top) / 10;
-			height = rows * 10 + 4;
+			int avg_height = list_height / list->size();
+			int rows = (screen_bottom - 4 - top) / avg_height;
+			height = rows * avg_height;
 			scroll = true;
 		}
 	}
@@ -252,14 +279,14 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		w->left + wi->left,
 		top,
 		width,
-		height,
+		height + 4,
 		DropDownMenuWndProc,
 		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	dw->widget[0].color = wi->color;
 	dw->widget[0].right = width - 1;
-	dw->widget[0].bottom = height - 1;
+	dw->widget[0].bottom = height + 3;
 
 	dw->SetWidgetHiddenState(1, !scroll);
 
@@ -269,10 +296,11 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		dw->widget[1].color  = wi->color;
 		dw->widget[1].right  = dw->widget[0].right;
 		dw->widget[1].left   = dw->widget[1].right - 11;
-		dw->widget[1].bottom = height - 1;
+		dw->widget[1].bottom = dw->widget[0].bottom;
 		dw->widget[0].right -= 12;
 
-		dw->vscroll.cap   = (height - 4) / 10;
+		/* Capacity is the average number of items visible */
+		dw->vscroll.cap   = height * list->size() / list_height;
 		dw->vscroll.count = list->size();
 	}
 
