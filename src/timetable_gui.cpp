@@ -139,22 +139,23 @@ static void DrawTimetableWindow(Window *w)
 					break;
 
 				case OT_GOTO_DEPOT:
+					SetDParam(4, STR_EMPTY);
 					if (v->type == VEH_AIRCRAFT) {
 						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-							SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
-							SetDParam(3, STR_ORDER_NEAREST_HANGAR);
+							SetDParam(0, STR_GO_TO_NEAREST_DEPOT);
+							SetDParam(2, STR_ORDER_NEAREST_HANGAR);
 						} else {
-							SetDParam(1, STR_GO_TO_HANGAR);
-							SetDParam(3, order->GetDestination());
+							SetDParam(0, STR_GO_TO_HANGAR);
+							SetDParam(2, order->GetDestination());
 						}
-						SetDParam(4, STR_EMPTY);
+						SetDParam(3, STR_EMPTY);
 					} else {
 						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-							SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
-							SetDParam(3, STR_ORDER_NEAREST_DEPOT);
+							SetDParam(0, STR_GO_TO_NEAREST_DEPOT);
+							SetDParam(2, STR_ORDER_NEAREST_DEPOT);
 						} else {
-							SetDParam(1, STR_GO_TO_DEPOT);
-							SetDParam(3, GetDepot(order->GetDestination())->town_index);
+							SetDParam(0, STR_GO_TO_DEPOT);
+							SetDParam(2, GetDepot(order->GetDestination())->town_index);
 						}
 
 						switch (v->type) {
