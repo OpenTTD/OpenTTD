@@ -1144,7 +1144,7 @@ static const Widget _other_orders_widgets[] = {
 	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   373,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_RESIZE_BAR
 	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SHARED_ORDER_LIST
 
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   374,   385,    88,    99, 0x0,                STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   374,   385,    76,    87, 0x0,                STR_RESIZE_BUTTON},                   // ORDER_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
 
