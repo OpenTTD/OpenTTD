@@ -96,8 +96,8 @@ void Order::MakeDummy()
 void Order::MakeConditional(VehicleOrderID order)
 {
 	this->type = OT_CONDITIONAL;
-	this->flags = 0;
-	this->dest = order;
+	this->flags = order;
+	this->dest = 0;
 }
 
 void Order::SetRefit(CargoID cargo, byte subtype)
