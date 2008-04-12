@@ -95,6 +95,7 @@ enum OrderConditionVariable {
 	OCV_MAX_SPEED,        ///< Skip based on the maximum speed
 	OCV_AGE,              ///< Skip based on the age
 	OCV_REQUIRES_SERVICE, ///< Skip when the vehicle requires service
+	OCV_UNCONDITIONALLY,  ///< Always skip
 	OCV_END
 };
 

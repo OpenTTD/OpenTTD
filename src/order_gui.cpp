@@ -191,6 +191,7 @@ static const StringID _order_conditional_variable[] = {
 	STR_ORDER_CONDITIONAL_MAX_SPEED,
 	STR_ORDER_CONDITIONAL_AGE,
 	STR_ORDER_CONDITIONAL_REQUIRES_SERVICE,
+	STR_ORDER_CONDITIONAL_UNCONDITIONALLY,
 	INVALID_STRING_ID,
 };
 
@@ -285,7 +286,8 @@ static void DrawOrdersWindow(Window *w)
 				w->ShowWidget(ORDER_WIDGET_COND_VALUE);
 
 				OrderConditionVariable ocv = order->GetConditionVariable();
-				w->SetWidgetDisabledState(ORDER_WIDGET_COND_VALUE, ocv == OCV_REQUIRES_SERVICE);
+				w->SetWidgetDisabledState(ORDER_WIDGET_COND_COMPARATOR, ocv == OCV_UNCONDITIONALLY);
+				w->SetWidgetDisabledState(ORDER_WIDGET_COND_VALUE, ocv == OCV_REQUIRES_SERVICE || ocv == OCV_UNCONDITIONALLY);
 
 				uint value = order->GetConditionValue();
 				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
@@ -372,17 +374,21 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(2, order->GetDestination());
 					break;
 
-				case OT_CONDITIONAL: {
-					OrderConditionComparator occ = order->GetConditionComparator();
-					SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+				case OT_CONDITIONAL:
 					SetDParam(2, order->GetConditionSkipToOrder() + 1);
-					SetDParam(3, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
-					SetDParam(4, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
+					if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
+						SetDParam(1, STR_CONDITIONAL_UNCONDITIONAL);
+					} else {
+						OrderConditionComparator occ = order->GetConditionComparator();
+						SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+						SetDParam(3, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
+						SetDParam(4, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
 
-					uint value = order->GetConditionValue();
-					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
-					SetDParam(5, value);
-				} break;
+						uint value = order->GetConditionValue();
+						if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+						SetDParam(5, value);
+					}
+					break;
 
 				default: NOT_REACHED();
 			}

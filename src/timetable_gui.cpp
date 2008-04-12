@@ -179,18 +179,22 @@ static void DrawTimetableWindow(Window *w)
 					break;
 
 
-				case OT_CONDITIONAL: {
-					extern uint ConvertSpeedToDisplaySpeed(uint speed);
-					OrderConditionComparator occ = order->GetConditionComparator();
-					SetDParam(0, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+				case OT_CONDITIONAL:
 					SetDParam(1, order->GetConditionSkipToOrder() + 1);
-					SetDParam(2, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
-					SetDParam(3, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
+					if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
+						SetDParam(0, STR_CONDITIONAL_UNCONDITIONAL);
+					} else {
+						extern uint ConvertSpeedToDisplaySpeed(uint speed);
+						OrderConditionComparator occ = order->GetConditionComparator();
+						SetDParam(0, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+						SetDParam(2, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
+						SetDParam(3, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
 
-					uint value = order->GetConditionValue();
-					if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
-					SetDParam(4, value);
-				} break;
+						uint value = order->GetConditionValue();
+						if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+						SetDParam(4, value);
+					}
+					break;
 
 				default: break;
 			}

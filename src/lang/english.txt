@@ -2709,6 +2709,7 @@ STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
 STR_ORDER_CONDITIONAL_AGE                                       :Vehicle age (years)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requires service
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Always
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is not equal to
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is less than
@@ -2718,6 +2719,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more or equa
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is true
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is false
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Jump to order {COMMA}
 STR_CONDITIONAL_NUM                                             :Jump to order {COMMA} when {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Jump to order {COMMA} when {STRING} {STRING}
 

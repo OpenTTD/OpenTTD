@@ -896,6 +896,8 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MOF_COND_COMPARATOR:
 			if (data >= OCC_END) return CMD_ERROR;
 			switch (order->GetConditionVariable()) {
+				case OCV_UNCONDITIONALLY: return CMD_ERROR;
+
 				case OCV_REQUIRES_SERVICE:
 					if (data != OCC_IS_TRUE && data != OCC_IS_FALSE) return CMD_ERROR;
 					break;
@@ -908,6 +910,8 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MOF_COND_VALUE:
 			switch (order->GetConditionVariable()) {
+				case OCV_UNCONDITIONALLY: return CMD_ERROR;
+
 				case OCV_LOAD_PERCENTAGE:
 				case OCV_RELIABILITY:
 					if (data > 100) return CMD_ERROR;
@@ -950,6 +954,11 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				OrderConditionComparator occ = order->GetConditionComparator();
 				switch (order->GetConditionVariable()) {
+					case OCV_UNCONDITIONALLY:
+						order->SetConditionComparator(OCC_EQUALS);
+						order->SetConditionValue(0);
+						break;
+
 					case OCV_REQUIRES_SERVICE:
 						if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) order->SetConditionComparator(OCC_IS_TRUE);
 						break;
@@ -1706,6 +1715,7 @@ bool ProcessOrders(Vehicle *v)
 				case OCV_MAX_SPEED:        skip_order = OrderConditionCompare(occ, v->GetDisplayMaxSpeed(),           value); break;
 				case OCV_AGE:              skip_order = OrderConditionCompare(occ, v->age / 366,                      value); break;
 				case OCV_REQUIRES_SERVICE: skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
+				case OCV_UNCONDITIONALLY:  skip_order = true; break;
 				default: NOT_REACHED();
 			}
 			UpdateVehicleTimetable(v, true);
