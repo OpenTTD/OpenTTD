@@ -2150,13 +2150,13 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 	bool loading = false;
 
 	const Vehicle *u = v;
-	const Station *st = GetStation(v->last_station_visited);
+	const Station *st = v->last_station_visited != INVALID_STATION ? GetStation(v->last_station_visited) : NULL;
 
 	/* Count up max and used */
 	for (; v != NULL; v = v->Next()) {
 		count += v->cargo.Count();
 		max += v->cargo_cap;
-		if (v->cargo_cap != 0) {
+		if (v->cargo_cap != 0 && color != NULL) {
 			unloading += HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) ? 1 : 0;
 			loading |= !(u->current_order.GetUnloadType() & OUFB_UNLOAD) && st->goods[v->cargo_type].days_since_pickup != 255;
 			cars++;
