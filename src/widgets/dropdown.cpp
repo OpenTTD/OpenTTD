@@ -36,6 +36,11 @@ StringID DropDownListParamStringItem::String() const
 	return this->string;
 }
 
+void DropDownListItem::Draw(int x, int y, uint width, uint height, bool sel) const
+{
+	DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, x + width);
+}
+
 /**
  * Delete all items of a drop down list and the list itself
  * @param list List to delete.
@@ -122,7 +127,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 					if (item->String() != STR_NULL) {
 						if (sel == item->result) GfxFillRect(x + 1, y, x + width, y + item_height - 1, 0);
 
-						DrawStringTruncated(x + 2, y, item->String(), sel == item->result ? TC_WHITE : TC_BLACK, x + width);
+						item->Draw(x, y, width, 10, sel == item->result);
 
 						if (item->masked) {
 							GfxFillRect(x, y, x + width, y + item_height - 1,

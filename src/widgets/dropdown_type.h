@@ -19,6 +19,7 @@ public:
 	virtual ~DropDownListItem() {}
 	virtual StringID String() const;
 	virtual uint Height(uint width) const;
+	virtual void Draw(int x, int y, uint width, uint height, bool sel) const;
 };
 
 /**
