@@ -1644,7 +1644,7 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	/* If it is unchanged, keep it. */
-	if (order->Equals(v->current_order) &&
+	if (order->Equals(v->current_order) && v->dest_tile != 0 &&
 			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->GetDestination())->dock_tile != 0)) {
 		return false;
 	}
