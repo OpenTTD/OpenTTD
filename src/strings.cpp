@@ -536,6 +536,26 @@ static const Units units[] = {
 	},
 };
 
+/**
+ * Convert the given (internal) speed to the display speed.
+ * @param speed the speed to convert
+ * @return the converted speed.
+ */
+uint ConvertSpeedToDisplaySpeed(uint speed)
+{
+ return (speed * units[_opt_ptr->units].s_m) >> units[_opt_ptr->units].s_s;
+}
+
+/**
+ * Convert the given display speed to the (internal) speed.
+ * @param speed the speed to convert
+ * @return the converted speed.
+ */
+uint ConvertDisplaySpeedToSpeed(uint speed)
+{
+	return ((speed << units[_opt_ptr->units].s_s) + units[_opt_ptr->units].s_m / 2) / units[_opt_ptr->units].s_m;
+}
+
 static char* FormatString(char* buff, const char* str, const int64* argv, uint casei, const char* last)
 {
 	extern const char _openttd_revision[];
@@ -581,7 +601,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			case SCC_VELOCITY: {// {VELOCITY}
 				int64 args[1];
 				assert(_opt_ptr->units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt_ptr->units].s_m >> units[_opt_ptr->units].s_s;
+				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv));
 				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].velocity), args, modifier >> 24, last);
 				modifier = 0;
 				break;
