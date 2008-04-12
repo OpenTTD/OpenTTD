@@ -2149,8 +2149,6 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 	int unloading = 0;
 	bool loading = false;
 
-	assert(color != NULL);
-
 	const Vehicle *u = v;
 	const Station *st = GetStation(v->last_station_visited);
 
@@ -2165,12 +2163,14 @@ uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
 		}
 	}
 
-	if (unloading == 0 && loading) {
-		*color = STR_PERCENT_UP;
-	} else if (cars == unloading || !loading) {
-		*color = STR_PERCENT_DOWN;
-	} else {
-		*color = STR_PERCENT_UP_DOWN;
+	if (color != NULL) {
+		if (unloading == 0 && loading) {
+			*color = STR_PERCENT_UP;
+		} else if (cars == unloading || !loading) {
+			*color = STR_PERCENT_DOWN;
+		} else {
+			*color = STR_PERCENT_UP_DOWN;
+		}
 	}
 
 	/* Train without capacity */
