@@ -29,6 +29,7 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "widgets/dropdown_func.h"
+#include "widgets/dropdown_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -283,7 +284,6 @@ static const StringID _colour_dropdown[] = {
 	STR_00DE_BROWN,
 	STR_00DF_GREY,
 	STR_00E0_WHITE,
-	INVALID_STRING_ID
 };
 
 /* Association of liveries to livery classes */
@@ -324,6 +324,29 @@ enum PlayerLiveryWindowWidgets {
 	PLW_WIDGET_MATRIX,
 };
 
+class DropDownListColourItem : public DropDownListItem {
+public:
+	DropDownListColourItem(int result, bool masked) : DropDownListItem(result, masked) {}
+
+	virtual ~DropDownListColourItem() {}
+
+	virtual StringID String() const
+	{
+		return _colour_dropdown[this->result];
+	}
+
+	virtual uint Height(uint width) const
+	{
+		return 14;
+	}
+
+	virtual void Draw(int x, int y, uint width, uint height, bool sel) const
+	{
+		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOR_START + this->result, x + 16, y + 7);
+		DrawStringTruncated(x + 32, y + 3, this->String(), sel ? TC_WHITE : TC_BLACK, x + width - 30);
+	}
+};
+
 static void ShowColourDropDownMenu(Window *w, uint32 widget)
 {
 	uint32 used_colours = 0;
@@ -345,7 +368,12 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 	if (scheme == LS_END) scheme = LS_DEFAULT;
 	livery = &GetPlayer((PlayerID)w->window_number)->livery[scheme];
 
-	ShowDropDownMenu(w, _colour_dropdown, widget == PLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget, used_colours, 0);
+	DropDownList *list = new DropDownList();
+	for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
+		list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
+	}
+
+	ShowDropDownList(w, list, widget == PLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
 }
 
 static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
