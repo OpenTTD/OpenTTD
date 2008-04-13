@@ -144,13 +144,30 @@ void ShowBuildAirToolbar()
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
+enum {
+	BAW_BOTTOMPANEL = 10,
+	BAW_SMALL_AIRPORT,
+	BAW_CITY_AIRPORT,
+	BAW_HELIPORT,
+	BAW_METRO_AIRPORT,
+	BAW_STR_INTERNATIONAL_AIRPORT,
+	BAW_COMMUTER_AIRPORT,
+	BAW_HELIDEPOT,
+	BAW_STR_INTERCONTINENTAL_AIRPORT,
+	BAW_HELISTATION,
+	BAW_LAST_AIRPORT = BAW_HELISTATION,
+	BAW_AIRPORT_COUNT = BAW_LAST_AIRPORT - BAW_SMALL_AIRPORT,
+	BAW_BTN_DONTHILIGHT = BAW_LAST_AIRPORT + 1,
+	BAW_BTN_DOHILIGHT,
+};
+
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			w->SetWidgetLoweredState(16, !_station_show_coverage);
-			w->SetWidgetLoweredState(17, _station_show_coverage);
-			w->LowerWidget(_selected_airport_type + 7);
+			w->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
+			w->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
+			w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 			break;
 
 		case WE_PAINT: {
@@ -162,18 +179,18 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 			avail_airports = GetValidAirports();
 
-			w->RaiseWidget(_selected_airport_type + 7);
+			w->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 			if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
 			if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
-			w->LowerWidget(_selected_airport_type + 7);
+			w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 
-			/* 'Country Airport' starts at widget 7, and if its bit is set, it is
+			/* 'Country Airport' starts at widget BAW_SMALL_AIRPORT, and if its bit is set, it is
 			 * available, so take its opposite value to set the disabled state.
 			 * There are 9 buildable airports
 			 * XXX TODO : all airports should be held in arrays, with all relevant data.
 			 * This should be part of newgrf-airports, i suppose
 			 */
-			for (i = 0; i < 9; i++) w->SetWidgetDisabledState(i + 7, !HasBit(avail_airports, i));
+			for (i = 0; i < BAW_AIRPORT_COUNT; i++) w->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !HasBit(avail_airports, i));
 
 			/* select default the coverage area to 'Off' (16) */
 			airport = GetAirport(_selected_airport_type);
@@ -187,9 +204,9 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			/* strings such as 'Size' and 'Coverage Area' */
 			int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
 			text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
-			if (text_end != w->widget[6].bottom) {
+			if (text_end != w->widget[BAW_BOTTOMPANEL].bottom) {
 				SetWindowDirty(w);
-				ResizeWindowForWidget(w, 6, 0, text_end - w->widget[6].bottom);
+				ResizeWindowForWidget(w, BAW_BOTTOMPANEL, 0, text_end - w->widget[BAW_BOTTOMPANEL].bottom);
 				SetWindowDirty(w);
 			}
 			break;
@@ -197,18 +214,20 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
-				case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
-					w->RaiseWidget(_selected_airport_type + 7);
-					_selected_airport_type = e->we.click.widget - 7;
-					w->LowerWidget(_selected_airport_type + 7);
+				case BAW_SMALL_AIRPORT: case BAW_CITY_AIRPORT: case BAW_HELIPORT: case BAW_METRO_AIRPORT:
+				case BAW_STR_INTERNATIONAL_AIRPORT: case BAW_COMMUTER_AIRPORT: case BAW_HELIDEPOT:
+				case BAW_STR_INTERCONTINENTAL_AIRPORT: case BAW_HELISTATION:
+					w->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+					_selected_airport_type = e->we.click.widget - BAW_SMALL_AIRPORT;
+					w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 					SndPlayFx(SND_15_BEEP);
 					SetWindowDirty(w);
 					break;
 
-				case 16: case 17:
-					_station_show_coverage = (e->we.click.widget != 16);
-					w->SetWidgetLoweredState(16, !_station_show_coverage);
-					w->SetWidgetLoweredState(17, _station_show_coverage);
+				case BAW_BTN_DONTHILIGHT: case BAW_BTN_DOHILIGHT:
+					_station_show_coverage = (e->we.click.widget != BAW_BTN_DONTHILIGHT);
+					w->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
+					w->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
 					SndPlayFx(SND_15_BEEP);
 					SetWindowDirty(w);
 					break;
@@ -234,10 +253,14 @@ static const Widget _build_airport_picker_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3001_AIRPORT_SELECTION,       STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,    52, 0x0,                              STR_NULL},
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    14,    27, STR_SMALL_AIRPORTS,               STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    53,    89, 0x0,                              STR_NULL},
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    52,    65, STR_LARGE_AIRPORTS,               STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    90,   127, 0x0,                              STR_NULL},
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    90,   103, STR_HUB_AIRPORTS,                 STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,   128,   177, 0x0,                              STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,   178,   239, 0x0,                              STR_NULL},
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,   128,   141, STR_HELIPORTS,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,   178,   239, 0x0,                              STR_NULL}, // bottom general box
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   145,    27,    38, STR_SMALL_AIRPORT,                STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   145,    65,    76, STR_CITY_AIRPORT,                 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   145,   141,   152, STR_HELIPORT,                     STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
@@ -249,10 +272,6 @@ static const Widget _build_airport_picker_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   145,   153,   164, STR_HELISTATION,                  STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   191,   202, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   191,   202, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},
-{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    14,    27, STR_SMALL_AIRPORTS,               STR_NULL},
-{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    52,    65, STR_LARGE_AIRPORTS,               STR_NULL},
-{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    90,   103, STR_HUB_AIRPORTS,                 STR_NULL},
-{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,   128,   141, STR_HELIPORTS,                    STR_NULL},
 {      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,   178,   191, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},
 {   WIDGETS_END},
 };
