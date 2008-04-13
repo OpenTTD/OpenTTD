@@ -1990,7 +1990,7 @@ static void DrawVehicleViewWindow(Window *w)
 
 			case OT_LEAVESTATION:
 				if (v->type != VEH_AIRCRAFT) {
-					str = STR_882F_LOADING_UNLOADING;
+					str = STR_LEAVING;
 					break;
 				}
 				/* fall-through if aircraft. Does this even happen? */
