@@ -998,6 +998,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			if (_total_news == 0) {
 				assert(_latest_news == _oldest_news);
 				_latest_news = INVALID_NEWS;
+				_current_news = INVALID_NEWS;
 			}
 
 			/* Since we only imitate a FIFO removing an arbitrary element does need
