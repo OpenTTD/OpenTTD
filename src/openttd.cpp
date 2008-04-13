@@ -2451,7 +2451,12 @@ bool AfterLoadGame()
 		FOR_ALL_ORDERS(order) order->ConvertFromOldSavegame();
 
 		Vehicle *v;
-		FOR_ALL_VEHICLES(v) v->current_order.ConvertFromOldSavegame();
+		FOR_ALL_VEHICLES(v) {
+			v->current_order.ConvertFromOldSavegame();
+			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->prev_shared == NULL) {
+				FOR_VEHICLE_ORDERS(v, order) order->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+			}
+		}
 	} else if (CheckSavegameVersion(94)) {
 		/* Unload and transfer are now mutual exclusive. */
 		Order *order;

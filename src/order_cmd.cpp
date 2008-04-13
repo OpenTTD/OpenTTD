@@ -358,7 +358,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* Non stop not allowed for non-trains. */
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
 
 			/* Full load and unload are mutual exclusive. */
 			if ((new_order.GetLoadType() & OLFB_FULL_LOAD) && (new_order.GetUnloadType() & OUFB_UNLOAD)) return CMD_ERROR;
@@ -412,7 +412,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (!IsPlayerBuildableVehicleType(v)) return CMD_ERROR;
 			}
 
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN) return CMD_ERROR;
+			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
 			if (new_order.GetDepotOrderType() & ~ODTFB_PART_OF_ORDERS) return CMD_ERROR;
 			if (new_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT) return CMD_ERROR;
 			break;
@@ -869,6 +869,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		default: NOT_REACHED();
 
 		case MOF_NON_STOP:
+			if (v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
 			if (data >= ONSF_END) return CMD_ERROR;
 			if (data == order->GetNonStopType()) return CMD_ERROR;
 			break;

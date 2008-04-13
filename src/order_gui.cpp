@@ -237,7 +237,7 @@ static void DrawOrdersWindow(Window *w)
 				(uint)v->num_orders + ((shared_orders || v->num_orders != 0) ? 1 : 0) <= (uint)WP(w, order_d).sel);
 
 		/* non-stop only for trains */
-		w->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP,  v->type != VEH_TRAIN || order == NULL);
+		w->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP,  (v->type != VEH_TRAIN && v->type != VEH_ROAD) || order == NULL);
 		w->SetWidgetDisabledState(ORDER_WIDGET_FULL_LOAD, order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // full load
 		w->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD,    order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // unload
 		/* Disable list of vehicles with the same shared orders if there is no list */
@@ -325,7 +325,7 @@ static void DrawOrdersWindow(Window *w)
 					OrderUnloadFlags unload = order->GetUnloadType();
 
 					SetDParam(1, STR_GO_TO_STATION);
-					SetDParam(2, STR_ORDER_GO_TO + (v->type == VEH_TRAIN ? order->GetNonStopType() : 0));
+					SetDParam(2, STR_ORDER_GO_TO + ((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? order->GetNonStopType() : 0));
 					SetDParam(3, order->GetDestination());
 					SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
 				} break;
@@ -431,6 +431,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			case MP_ROAD:
 				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
 					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+					if (_patches.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					return order;
 				}
 				break;
@@ -481,7 +482,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			(facil = FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st_index);
-				if (_patches.new_nonstop && v->type == VEH_TRAIN) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+				if (_patches.new_nonstop && (v->type == VEH_TRAIN || v->type == VEH_ROAD)) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 				return order;
 			}
 		}
@@ -1169,7 +1170,7 @@ void ShowOrdersWindow(const Vehicle *v)
 	if (v->owner != _local_player) {
 		w = AllocateWindowDescFront(&_other_orders_desc, veh);
 	} else {
-		w = AllocateWindowDescFront((v->type == VEH_TRAIN) ? &_orders_train_desc : &_orders_desc, veh);
+		w = AllocateWindowDescFront((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? &_orders_train_desc : &_orders_desc, veh);
 	}
 
 	if (w != NULL) {

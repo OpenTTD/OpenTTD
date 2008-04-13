@@ -2406,9 +2406,9 @@ static const byte _enter_station_speedtable[12] = {
 static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	StationID station_id = GetStationIndex(tile);
-	if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
 
 	if (v->type == VEH_TRAIN) {
+		if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
 		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
 				!IsCompatibleTrainStationTile(tile + TileOffsByDiagDir(DirToDiagDir(v->direction)), tile)) {
 			DiagDirection dir = DirToDiagDir(v->direction);
@@ -2436,6 +2436,8 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 				RoadStop *rs = GetRoadStopByTile(tile, GetRoadStopType(tile));
 
 				if (IsDriveThroughStopTile(tile)) {
+					if (!v->current_order.ShouldStopAtStation(v, station_id)) return VETSB_CONTINUE;
+
 					/* Vehicles entering a drive-through stop from the 'normal' side use first bay (bay 0). */
 					byte side = ((DirToDiagDir(v->direction) == ReverseDiagDir(GetRoadStopDir(tile))) == (v->u.road.overtaking == 0)) ? 0 : 1;
 

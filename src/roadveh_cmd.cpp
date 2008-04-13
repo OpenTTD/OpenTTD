@@ -1708,7 +1708,7 @@ again:
 	if (IsRoadVehFront(v) && ((IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
 			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
 			(IsInsideMM(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
-			v->current_order.GetDestination() == GetStationIndex(v->tile) &&
+			v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
@@ -1718,8 +1718,7 @@ again:
 		/* Vehicle is at the stop position (at a bay) in a road stop.
 		 * Note, if vehicle is loading/unloading it has already been handled,
 		 * so if we get here the vehicle has just arrived or is just ready to leave. */
-		if (!v->current_order.IsType(OT_LEAVESTATION) &&
-				!v->current_order.IsType(OT_GOTO_DEPOT)) {
+		if (!v->current_order.IsType(OT_LEAVESTATION)) {
 			/* Vehicle has arrived at a bay in a road stop */
 
 			if (IsDriveThroughStopTile(v->tile)) {
@@ -1747,10 +1746,15 @@ again:
 
 			rs->SetEntranceBusy(false);
 
-			v->last_station_visited = GetStationIndex(v->tile);
+			v->last_station_visited = st->index;
 
-			RoadVehArrivesAt(v, st);
-			v->BeginLoading();
+			if (IsDriveThroughStopTile(v->tile) || v->current_order.GetDestination() == st->index) {
+				RoadVehArrivesAt(v, st);
+				v->BeginLoading();
+			} else {
+				v->current_order.MakeLeaveStation();
+				InvalidateVehicleOrder(v);
+			}
 
 			return false;
 		}
@@ -1805,6 +1809,8 @@ again:
 		v->cur_speed = 0;
 		return false;
 	}
+
+	if (v->current_order.IsType(OT_LEAVESTATION) && IsDriveThroughStopTile(v->tile)) v->current_order.Free();
 
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
