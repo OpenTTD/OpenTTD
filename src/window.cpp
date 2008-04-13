@@ -250,33 +250,6 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 	}
 }
 
-static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom);
-
-/**
- * From a rectangle that needs redrawing, find the windows that intersect with the rectangle.
- * These windows should be re-painted.
- * @param left Left edge of the rectangle that should be repainted
- * @param top Top edge of the rectangle that should be repainted
- * @param right Right edge of the rectangle that should be repainted
- * @param bottom Bottom edge of the rectangle that should be repainted
- */
-void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
-{
-	Window* const *wz;
-	DrawPixelInfo bk;
-	_cur_dpi = &bk;
-
-	FOR_ALL_WINDOWS(wz) {
-		const Window *w = *wz;
-		if (right > w->left &&
-				bottom > w->top &&
-				left < w->left + w->width &&
-				top < w->top + w->height) {
-			DrawOverlappedWindow(wz, left, top, right, bottom);
-		}
-	}
-}
-
 /**
  * Generate repaint events for the visible part of window *wz within the rectangle.
  *
@@ -288,8 +261,6 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
  * @param top Top edge of the rectangle that should be repainted
  * @param right Right edge of the rectangle that should be repainted
  * @param bottom Bottom edge of the rectangle that should be repainted
- *
- * @todo Swap this function to above DrawOverlappedWindowForAll() to eliminate the forward declaration
  */
 static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom)
 {
@@ -333,16 +304,39 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 		}
 	}
 
-	{
-		DrawPixelInfo *dp = _cur_dpi;
-		dp->width = right - left;
-		dp->height = bottom - top;
-		dp->left = left - (*wz)->left;
-		dp->top = top - (*wz)->top;
-		dp->pitch = _screen.pitch;
-		dp->dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
-		dp->zoom = ZOOM_LVL_NORMAL;
-		CallWindowEventNP(*wz, WE_PAINT);
+	DrawPixelInfo *dp = _cur_dpi;
+	dp->width = right - left;
+	dp->height = bottom - top;
+	dp->left = left - (*wz)->left;
+	dp->top = top - (*wz)->top;
+	dp->pitch = _screen.pitch;
+	dp->dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
+	dp->zoom = ZOOM_LVL_NORMAL;
+	CallWindowEventNP(*wz, WE_PAINT);
+}
+
+/**
+ * From a rectangle that needs redrawing, find the windows that intersect with the rectangle.
+ * These windows should be re-painted.
+ * @param left Left edge of the rectangle that should be repainted
+ * @param top Top edge of the rectangle that should be repainted
+ * @param right Right edge of the rectangle that should be repainted
+ * @param bottom Bottom edge of the rectangle that should be repainted
+ */
+void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
+{
+	Window* const *wz;
+	DrawPixelInfo bk;
+	_cur_dpi = &bk;
+
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
+		if (right > w->left &&
+				bottom > w->top &&
+				left < w->left + w->width &&
+				top < w->top + w->height) {
+			DrawOverlappedWindow(wz, left, top, right, bottom);
+		}
 	}
 }
 
