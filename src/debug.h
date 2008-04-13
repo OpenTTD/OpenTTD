@@ -103,7 +103,13 @@ void CDECL ShowInfoF(const char *str, ...);
 #ifdef DEBUG_DUMP_COMMANDS
 	void CDECL DebugDumpCommands(const char *s, ...);
 #else /* DEBUG_DUMP_COMMANDS */
-	static inline void DebugDumpCommands(const char *s, ...) {}
+	/* when defined as an empty function with variable argument list,
+	 * it can't be inlined - so define it as an empty macro */
+	#if defined(__GNUC__) && (__GNUC__ < 3)
+		#define DebugDumpCommands(s, args...)
+	#else
+		#define DebugDumpCommands(s, ...)
+	#endif
 #endif /* DEBUG_DUMP_COMMANDS */
 
 #endif /* DEBUG_H */
