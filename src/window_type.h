@@ -7,6 +7,9 @@
 
 #include "core/enum_type.hpp"
 
+/**
+ * Window classes
+ */
 enum WindowClass {
 	WC_NONE,
 	WC_MAIN_WINDOW = WC_NONE,

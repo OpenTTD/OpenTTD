@@ -307,7 +307,7 @@ struct Window {
 	byte caption_color; ///< Background color of the window caption, contains PlayerID
 
 	WindowProc *wndproc;   ///< Event handler function for the window
-	ViewPort *viewport;    ///< Pointer to viewport, if present (structure is part of derived class)
+	ViewPort *viewport;    ///< Pointer to viewport, if present
 	const Widget *original_widget; ///< Original widget layout, copied from WindowDesc
 	Widget *widget;        ///< Widgets of the window
 	uint widget_count;     ///< Number of widgets of the window

@@ -22,8 +22,7 @@
 
 #include "table/sprites.h"
 
-/** delta between mouse cursor and upper left corner of dragged window */
-static Point _drag_delta;
+static Point _drag_delta; //< delta between mouse cursor and upper left corner of dragged window
 
 static Window _windows[MAX_NUMBER_OF_WINDOWS];
 
@@ -1047,6 +1046,9 @@ Window *FindWindowFromPt(int x, int y)
 	return NULL;
 }
 
+/**
+ * (re)initialize the windowing system
+ */
 void InitWindowSystem()
 {
 	IConsoleClose();
@@ -1057,6 +1059,9 @@ void InitWindowSystem()
 	_no_scroll = 0;
 }
 
+/**
+ * Close down the windowing system
+ */
 void UnInitWindowSystem()
 {
 	Window **wz;
@@ -1075,6 +1080,9 @@ restart_search:
 	assert(_last_z_window == _z_windows);
 }
 
+/**
+ * Reset the windowing system, by means of shutting it down followed by re-initialization
+ */
 void ResetWindowSystem()
 {
 	UnInitWindowSystem();
