@@ -25,14 +25,12 @@
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
 static Window *_mouseover_last_w = NULL; ///< Window of the last MOUSEOVER event
 
-static Window _windows[MAX_NUMBER_OF_WINDOWS];
-
 /**
  * List of windows opened at the screen.
  * Uppermost window is at  _z_windows[_last_z_window - 1],
  * bottom window is at _z_windows[0]
  */
-Window *_z_windows[lengthof(_windows)];
+Window *_z_windows[MAX_NUMBER_OF_WINDOWS];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 
 Point _cursorpos_drag_start;
@@ -433,6 +431,8 @@ void DeleteWindow(Window *w)
 	if (wz == NULL) return;
 	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
 	_last_z_window--;
+
+	delete w;
 }
 
 /**
@@ -655,28 +655,6 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 	}
 }
 
-static Window *FindFreeWindow()
-{
-	Window *w;
-
-	for (w = _windows; w < endof(_windows); w++) {
-		Window* const *wz;
-		bool window_in_use = false;
-
-		FOR_ALL_WINDOWS(wz) {
-			if (*wz == w) {
-				window_in_use = true;
-				break;
-			}
-		}
-
-		if (!window_in_use) return w;
-	}
-
-	assert(_last_z_window == endof(_z_windows));
-	return NULL;
-}
-
 /** Open a new window.
  * This function is called from AllocateWindow() or AllocateWindowDesc()
  * See descriptions for those functions for usage
@@ -697,17 +675,18 @@ static Window *FindFreeWindow()
 static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, int def_width, int def_height,
 				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
 {
-	Window *w = FindFreeWindow();
+	Window *w;
 
 	/* We have run out of windows, close one and use that as the place for our new one */
-	if (w == NULL) {
+	if (_last_z_window == endof(_z_windows)) {
 		w = FindDeletableWindow();
 		if (w == NULL) w = ForceFindDeletableWindow();
 		DeleteWindow(w);
 	}
 
+	w = new Window;
+
 	/* Set up window properties */
-	memset(w, 0, sizeof(*w));
 	w->window_class = cls;
 	w->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
 	w->caption_color = 0xFF;
@@ -1057,7 +1036,6 @@ void InitWindowSystem()
 {
 	IConsoleClose();
 
-	memset(&_windows, 0, sizeof(_windows));
 	_last_z_window = _z_windows;
 	InitViewports();
 	_no_scroll = 0;

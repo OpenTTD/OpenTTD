@@ -10,6 +10,7 @@
 #include "viewport_type.h"
 #include "player_type.h"
 #include "strings_type.h"
+#include "core/alloc_type.hpp"
 
 /**
  * The maximum number of windows that can be opened.
@@ -289,7 +290,7 @@ struct WindowMessage {
 /**
  * Data structure for an opened window
  */
-struct Window {
+struct Window : ZeroedMemoryAllocator {
 	uint16 flags4;              ///< Window flags, @see WindowFlags
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class

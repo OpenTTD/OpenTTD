@@ -27,7 +27,7 @@
 #include "player_func.h"
 #include "settings_type.h"
 #include "station_func.h"
-#include "core/alloc_func.hpp"
+#include "core/alloc_type.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"

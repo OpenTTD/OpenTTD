@@ -106,6 +106,7 @@ aircraft.h
 airport.h
 airport_movement.h
 core/alloc_func.hpp
+core/alloc_type.hpp
 articulated_vehicles.h
 autoreplace_base.h
 autoreplace_func.h

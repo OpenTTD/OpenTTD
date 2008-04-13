@@ -17,7 +17,7 @@
 #include "depot.h"
 #include "tunnelbridge_map.h"
 #include "core/random_func.hpp"
-#include "core/alloc_func.hpp"
+#include "core/alloc_type.hpp"
 #include "tunnelbridge.h"
 
 /* remember which tiles we have already visited so we don't visit them again. */
