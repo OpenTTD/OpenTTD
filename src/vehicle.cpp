@@ -137,7 +137,7 @@ bool Vehicle::NeedsAutomaticServicing() const
 {
 	if (_patches.gotodepot && VehicleHasDepotOrders(this)) return false;
 	if (this->current_order.IsType(OT_LOADING))            return false;
-	if (this->current_order.IsType(OT_GOTO_DEPOT) && this->current_order.GetDepotActionType() & ODATFB_HALT) return false;
+	if (this->current_order.IsType(OT_GOTO_DEPOT) && this->current_order.GetDepotOrderType() != ODTFB_SERVICE) return false;
 	return NeedsServicing();
 }
 
