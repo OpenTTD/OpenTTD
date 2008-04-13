@@ -778,7 +778,7 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 			case SCT_ALL: break;
 			default: NOT_REACHED();
 		}
-		if (cargo[i] >= (supplies ? 1 : 8)) {
+		if (cargo[i] >= (supplies ? 1U : 8U)) {
 			if (first) {
 				first = false;
 			} else {
