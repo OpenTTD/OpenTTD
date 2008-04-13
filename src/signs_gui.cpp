@@ -68,63 +68,49 @@ static void GlobalSortSignList()
 static void SignListWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int y = 16; // offset from top of widget
+		case WE_PAINT: {
+			if (_sign_sort_dirty) GlobalSortSignList();
 
-		if (_sign_sort_dirty)
-			GlobalSortSignList();
+			SetVScrollCount(w, _num_sign_sort);
 
-		SetVScrollCount(w, _num_sign_sort);
+			SetDParam(0, w->vscroll.count);
+			DrawWindowWidgets(w);
 
-		SetDParam(0, w->vscroll.count);
-		DrawWindowWidgets(w);
-
-		/* No signs? */
-		if (w->vscroll.count == 0) {
-			DrawString(2, y, STR_304A_NONE, TC_FROMSTRING);
-			return;
-		}
-
-		{
-			uint16 i;
+			/* No signs? */
+			int y = 16; // offset from top of widget
+			if (w->vscroll.count == 0) {
+				DrawString(2, y, STR_304A_NONE, TC_FROMSTRING);
+				return;
+			}
 
 			/* Start drawing the signs */
-			for (i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
+			for (uint16 i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
 				const Sign *si = _sign_sort[i];
 
-				if (si->owner != OWNER_NONE)
-					DrawPlayerIcon(si->owner, 4, y + 1);
+				if (si->owner != OWNER_NONE) DrawPlayerIcon(si->owner, 4, y + 1);
 
 				SetDParam(0, si->index);
 				DrawString(22, y, STR_SIGN_NAME, TC_YELLOW);
 				y += 10;
 			}
-		}
-	} break;
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case 3: {
-			uint32 id_v = (e->we.click.pt.y - 15) / 10;
-			const Sign *si;
-
-			if (id_v >= w->vscroll.cap)
-				return;
-
-			id_v += w->vscroll.pos;
-
-			if (id_v >= w->vscroll.count)
-				return;
-
-			si = _sign_sort[id_v];
-			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 		} break;
-		}
-	} break;
 
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 10;
-		break;
+		case WE_CLICK:
+			if (e->we.click.widget == 3) {
+				uint32 id_v = (e->we.click.pt.y - 15) / 10;
+
+				if (id_v >= w->vscroll.cap) return;
+				id_v += w->vscroll.pos;
+				if (id_v >= w->vscroll.count) return;
+
+				const Sign *si = _sign_sort[id_v];
+				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
+			}
+			break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 10;
+			break;
 	}
 }
 
@@ -149,9 +135,7 @@ static const WindowDesc _sign_list_desc = {
 
 void ShowSignList()
 {
-	Window *w;
-
-	w = AllocateWindowDescFront(&_sign_list_desc, 0);
+	Window *w = AllocateWindowDescFront(&_sign_list_desc, 0);
 	if (w != NULL) {
 		w->vscroll.cap = 12;
 		w->resize.step_height = 10;
@@ -159,8 +143,7 @@ void ShowSignList()
 	}
 }
 
-/* Edit sign window stuff */
-
+/** Edit sign window stuff */
 struct editsign_d : querystr_d {
 	SignID cur_sign;
 };
@@ -314,13 +297,11 @@ static const WindowDesc _query_sign_edit_desc = {
 
 void ShowRenameSignWindow(const Sign *si)
 {
-	Window *w;
-
 	/* Delete all other edit windows and the save window */
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	w = AllocateWindowDesc(&_query_sign_edit_desc);
+	Window *w = AllocateWindowDesc(&_query_sign_edit_desc);
 
 	WP(w, editsign_d).caption = STR_280B_EDIT_SIGN_TEXT;
 	WP(w, editsign_d).afilter = CS_ALPHANUMERAL;
@@ -328,6 +309,3 @@ void ShowRenameSignWindow(const Sign *si)
 
 	UpdateSignEditWindow(w, si);
 }
-
-
-
