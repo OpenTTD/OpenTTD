@@ -422,6 +422,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
 					if (IsRailDepot(tile)) {
 						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+						if (_patches.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 						return order;
 					}
 				}
@@ -463,6 +464,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			IsTileOwner(tile, _local_player) &&
 			IsRailWaypoint(tile)) {
 		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
+		if (_patches.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 		return order;
 	}
 
