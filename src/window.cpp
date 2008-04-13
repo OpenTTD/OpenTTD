@@ -22,7 +22,8 @@
 
 #include "table/sprites.h"
 
-static Point _drag_delta; //< delta between mouse cursor and upper left corner of dragged window
+static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
+static Window *_mouseover_last_w = NULL; ///< Window of the last MOUSEOVER event
 
 static Window _windows[MAX_NUMBER_OF_WINDOWS];
 
@@ -422,6 +423,9 @@ void DeleteWindow(Window *w)
 	w->widget = NULL;
 	w->widget_count = 0;
 	w->parent = NULL;
+
+	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
+	if (_mouseover_last_w == w) _mouseover_last_w = NULL;
 
 	/* Find the window in the z-array, and effectively remove it
 	 * by moving all windows after it one to the left */
@@ -1197,20 +1201,21 @@ static bool HandlePopupMenu()
 
 static bool HandleMouseOver()
 {
-	Window *w;
 	WindowEvent e;
-	static Window *last_w = NULL;
 
-	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
 	/* We changed window, put a MOUSEOVER event to the last window */
-	if (last_w != NULL && last_w != w) {
+	if (_mouseover_last_w != NULL && _mouseover_last_w != w) {
+		/* Reset mouse-over coordinates of previous window */
 		e.event = WE_MOUSEOVER;
 		e.we.mouseover.pt.x = -1;
 		e.we.mouseover.pt.y = -1;
-		if (last_w->wndproc) last_w->wndproc(last_w, &e);
+		if (_mouseover_last_w->wndproc != NULL) _mouseover_last_w->wndproc(_mouseover_last_w, &e);
 	}
-	last_w = w;
+
+	/* _mouseover_last_w will get reset when the window is deleted, see DeleteWindow() */
+	_mouseover_last_w = w;
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
