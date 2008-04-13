@@ -150,7 +150,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_roa
  * @param rt roadtype to remove
  * @param crossing_check should we check if there is a tram track when we are removing road from crossing?
  */
-static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, RoadType rt, bool crossing_check)
+static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, RoadType rt, bool crossing_check, bool town_check = true)
 {
 	/* cost for removing inner/edge -roads */
 	static const uint16 road_remove_cost[2] = {50, 18};
@@ -188,7 +188,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
-	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
+	if (town_check && !CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
@@ -254,7 +254,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 				return CMD_ERROR;
 			}
 
-			ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+			if (town_check) ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			if (flags & DC_EXEC) {
 				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
@@ -291,7 +291,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			if (rt == ROADTYPE_ROAD && HasTileRoadType(tile, ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
 
 			if (rt == ROADTYPE_ROAD) {
-				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+				if (town_check) ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			}
 
 			if (flags & DC_EXEC) {
@@ -768,7 +768,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
 						_additional_cash_required = DoCommand(end_tile, start_tile, p2, flags & ~DC_EXEC, CMD_REMOVE_LONG_ROAD).GetCost();
 						return cost;
 					}
-					RemoveRoad(tile, flags, bits, rt, true);
+					RemoveRoad(tile, flags, bits, rt, true, false);
 				}
 				cost.AddCost(ret);
 			}
