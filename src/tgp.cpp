@@ -683,14 +683,6 @@ static inline int perlin_landXY(uint x, uint y)
 }
 
 
-/* The following decimals are the octave power modifiers for the Perlin noise */
-static const double _perlin_p_values[][7] = {    // perlin frequency per power
-	{ 0.35, 0.35, 0.35, 0.35, 0.35, 0.25, 0.539 }, ///< Very smooth
-	{ 0.45, 0.55, 0.45, 0.45, 0.35, 0.25, 0.89  }, ///< Smooth
-	{ 0.85, 0.80, 0.70, 0.45, 0.45, 0.35, 1.825 }, ///< Rough 1.825
-	{ 0.95, 0.85, 0.80, 0.55, 0.55, 0.45, 2.245 }  //< Very Rough 2.25
-};
-
 /**
  * The Perlin Noise calculation using large primes
  * The initial number is adjusted by two values; the generation_seed, and the
