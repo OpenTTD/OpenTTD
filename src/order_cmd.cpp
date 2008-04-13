@@ -216,9 +216,7 @@ Order UnpackOldOrder(uint16 packed)
 	 * Sanity check
 	 * TTD stores invalid orders as OT_NOTHING with non-zero flags/station
 	 */
-	if (!order.IsValid() && (order.GetLoadType() != 0 || order.GetUnloadType() != 0 || order.GetDestination() != 0)) {
-		order.MakeDummy();
-	}
+	if (!order.IsValid() && packed != 0) order.MakeDummy();
 
 	return order;
 }

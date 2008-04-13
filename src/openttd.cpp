@@ -2301,6 +2301,40 @@ bool AfterLoadGame()
 		}
 	}
 
+
+	if (CheckSavegameVersion(93)) {
+		/* Rework of orders. */
+		Order *order;
+		FOR_ALL_ORDERS(order) order->ConvertFromOldSavegame();
+
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->orders != NULL && !v->orders->IsValid()) v->orders = NULL;
+
+			v->current_order.ConvertFromOldSavegame();
+			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->prev_shared == NULL) {
+				FOR_VEHICLE_ORDERS(v, order) order->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+			}
+		}
+	} else if (CheckSavegameVersion(94)) {
+		/* Unload and transfer are now mutual exclusive. */
+		Order *order;
+		FOR_ALL_ORDERS(order) {
+			if ((order->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+				order->SetUnloadType(OUFB_TRANSFER);
+				order->SetLoadType(OLFB_NO_LOAD);
+			}
+		}
+
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if ((v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+				v->current_order.SetUnloadType(OUFB_TRANSFER);
+				v->current_order.SetLoadType(OLFB_NO_LOAD);
+			}
+		}
+	}
+
 	if (CheckSavegameVersion(84)) {
 		/* Update go to buoy orders because they are just waypoints */
 		Order *order;
@@ -2441,37 +2475,6 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsTileType(t, MP_HOUSE) && GetHouseType(t) >= NEW_HOUSE_OFFSET) {
 				SetHouseAnimationFrame(t, GB(_m[t].m6, 3, 5));
-			}
-		}
-	}
-
-	if (CheckSavegameVersion(93)) {
-		/* Rework of orders. */
-		Order *order;
-		FOR_ALL_ORDERS(order) order->ConvertFromOldSavegame();
-
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			v->current_order.ConvertFromOldSavegame();
-			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->prev_shared == NULL) {
-				FOR_VEHICLE_ORDERS(v, order) order->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
-			}
-		}
-	} else if (CheckSavegameVersion(94)) {
-		/* Unload and transfer are now mutual exclusive. */
-		Order *order;
-		FOR_ALL_ORDERS(order) {
-			if ((order->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
-				order->SetUnloadType(OUFB_TRANSFER);
-				order->SetLoadType(OLFB_NO_LOAD);
-			}
-		}
-
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if ((v->current_order.GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
-				v->current_order.SetUnloadType(OUFB_TRANSFER);
-				v->current_order.SetLoadType(OLFB_NO_LOAD);
 			}
 		}
 	}
