@@ -2563,7 +2563,14 @@ TileIndex Train::GetOrderStationLocation(StationID station)
 {
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
-	return GetStation(station)->xy;
+	const Station *st = GetStation(station);
+	if (!(st->facilities & FACIL_TRAIN)) {
+		/* The destination station has no trainstation tiles. */
+		this->cur_order_index++;
+		return 0;
+	}
+
+	return st->xy;
 }
 
 void Train::MarkDirty()
