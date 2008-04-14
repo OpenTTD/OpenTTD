@@ -1363,6 +1363,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Name of the game
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Language, server version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Click a game from the list to select it
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}The server you joined last time:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Click to select the server you played last time
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Search network for a server

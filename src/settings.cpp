@@ -1339,6 +1339,8 @@ static const SettingDescGlobVarList _network_settings[] = {
 	  SDTG_VAR("min_players",          SLE_UINT8, S, 0, _network_min_players,               0, 0, 10,   0, STR_NULL, NULL),
 	SDTG_OMANY("server_lang",          SLE_UINT8, S, 0, _network_game_info.server_lang,     0, 35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
 	 SDTG_BOOL("reload_cfg",                      S, 0, _network_reload_cfg,           false,              STR_NULL, NULL),
+	  SDTG_STR("last_host",             SLE_STRB, S, 0, _network_last_host,            "0.0.0.0",          STR_NULL, NULL),
+	  SDTG_VAR("last_port",           SLE_UINT16, S, 0, _network_last_port,            0, 0, UINT16_MAX, 0, STR_NULL ,NULL),
 	  SDTG_END()
 };
 #endif /* ENABLE_NETWORK */

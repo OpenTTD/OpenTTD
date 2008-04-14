@@ -233,6 +233,9 @@ enum NetworkGameWindowWidgets {
 	NGWW_MATRIX,        ///< Panel with list of games
 	NGWW_SCROLLBAR,     ///< Scrollbar of matrix
 
+	NGWW_LASTJOINED_LABEL, ///< Label "Last joined server:"
+	NGWW_LASTJOINED,    ///< Info about the last joined server
+
 	NGWW_DETAILS,       ///< Panel with game details
 	NGWW_JOIN,          ///< 'Join game' button
 	NGWW_REFRESH,       ///< 'Refresh server' button
@@ -243,6 +246,39 @@ enum NetworkGameWindowWidgets {
 	NGWW_START,         ///< 'Start server' button
 	NGWW_CANCEL,        ///< 'Cancel' button
 };
+
+/**
+ * Draw a single server line.
+ * @param cur_item  the server to draw.
+ * @param y         from where to draw?
+ * @param highlight does the line need to be highlighted?
+ */
+static void DrawServerLine(const Window *w, const NetworkGameList *cur_item, uint y, bool highlight)
+{
+	/* show highlighted item with a different colour */
+	if (highlight) GfxFillRect(w->widget[NGWW_NAME].left + 1, y - 2, w->widget[NGWW_INFO].right - 1, y + 9, 10);
+
+	SetDParamStr(0, cur_item->info.server_name);
+	DrawStringTruncated(w->widget[NGWW_NAME].left + 5, y, STR_02BD, TC_BLACK, w->widget[NGWW_NAME].right - w->widget[NGWW_NAME].left - 5);
+
+	SetDParam(0, cur_item->info.clients_on);
+	SetDParam(1, cur_item->info.clients_max);
+	SetDParam(2, cur_item->info.companies_on);
+	SetDParam(3, cur_item->info.companies_max);
+	DrawStringCentered(w->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
+
+	/* only draw icons if the server is online */
+	if (cur_item->online) {
+		/* draw a lock if the server is password protected */
+		if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[NGWW_INFO].left + 5, y - 1);
+
+		/* draw red or green icon, depending on compatibility with server */
+		DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[NGWW_INFO].left + 15, y);
+
+		/* draw flag according to server language */
+		DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, w->widget[NGWW_INFO].left + 25, y);
+	}
+}
 
 /**
  * Handler of actions done in the NetworkStartServer window
@@ -261,7 +297,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_CREATE: // Focus input box
-			w->vscroll.cap = 13;
+			w->vscroll.cap = 11;
 			w->resize.step_height = NET_PRC__SIZE_OF_ROW;
 
 			nd->field = NGWW_PLAYER;
@@ -314,7 +350,6 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
 			int32 n = 0;
 			int32 pos = w->vscroll.pos;
-			uint max_name_width = w->widget[NGWW_NAME].right - w->widget[NGWW_NAME].left - 5;
 			const NetworkGameList *cur_item = _network_game_list;
 
 			while (pos > 0 && cur_item != NULL) {
@@ -323,34 +358,16 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			}
 
 			while (cur_item != NULL) {
-				/* show highlighted item with a different colour */
-				if (cur_item == sel) GfxFillRect(w->widget[NGWW_NAME].left + 1, y - 2, w->widget[NGWW_INFO].right - 1, y + 9, 10);
-
-				SetDParamStr(0, cur_item->info.server_name);
-				DrawStringTruncated(w->widget[NGWW_NAME].left + 5, y, STR_02BD, TC_BLACK, max_name_width);
-
-				SetDParam(0, cur_item->info.clients_on);
-				SetDParam(1, cur_item->info.clients_max);
-				SetDParam(2, cur_item->info.companies_on);
-				SetDParam(3, cur_item->info.companies_max);
-				DrawStringCentered(w->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
-
-				/* only draw icons if the server is online */
-				if (cur_item->online) {
-					/* draw a lock if the server is password protected */
-					if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[NGWW_INFO].left + 5, y - 1);
-
-					/* draw red or green icon, depending on compatibility with server */
-					DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[NGWW_INFO].left + 15, y);
-
-					/* draw flag according to server language */
-					DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, w->widget[NGWW_INFO].left + 25, y);
-				}
+				DrawServerLine(w, cur_item, y, cur_item == sel);
 
 				cur_item = cur_item->next;
 				y += NET_PRC__SIZE_OF_ROW;
 				if (++n == w->vscroll.cap) break; // max number of games in the window
 			}
+
+			const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
+			/* Draw the last joined server, if any */
+			if (last_joined != NULL) DrawServerLine(w, last_joined, y = w->widget[NGWW_LASTJOINED].top + 3, last_joined == sel);
 
 			/* Draw the right menu */
 			GfxFillRect(w->widget[NGWW_DETAILS].left + 1, 43, w->widget[NGWW_DETAILS].right - 1, 92, 157);
@@ -465,6 +482,14 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 
 					nd->server = cur_item;
 					SetWindowDirty(w);
+				} break;
+
+				case NGWW_LASTJOINED: {
+					NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
+					if (last_joined != NULL) {
+						nd->server = last_joined;
+						SetWindowDirty(w);
+					}
 				} break;
 
 				case NGWW_FIND: // Find server automatically
@@ -597,8 +622,10 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,    71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,      STR_NETWORK_CLIENTS_CAPTION_TIP},  // NGWW_CLIENTS
 { WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,   151,   190,    42,    53, STR_EMPTY,                        STR_NETWORK_INFO_ICONS_TIP},       // NGWW_INFO
 
-{     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   236, (11 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_LRB,    BGC,   191,   202,    42,   236, 0x0,                              STR_0190_SCROLL_BAR_SCROLLS_LIST}, // NGWW_SCROLLBAR
+{     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   208, (11 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
+{  WWT_SCROLLBAR,   RESIZE_LRB,    BGC,   191,   202,    42,   208, 0x0,                              STR_0190_SCROLL_BAR_SCROLLS_LIST}, // NGWW_SCROLLBAR
+{       WWT_TEXT,   RESIZE_RTB,    BGC,    10,   190,   211,   222, STR_NETWORK_LAST_JOINED_SERVER,   STR_NULL},                         // NGWW_LASTJOINED_LABEL
+{      WWT_PANEL,   RESIZE_RTB,    BGC,    10,   190,   223,   236, 0x0,                              STR_NETWORK_CLICK_TO_SELECT_LAST}, // NGWW_LASTJOINED
 
 /* RIGHT SIDE */
 {      WWT_PANEL,   RESIZE_LRB,    BGC,   210,   440,    42,   236, 0x0,                              STR_NULL},                         // NGWW_DETAILS

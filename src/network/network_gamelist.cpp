@@ -25,6 +25,8 @@ NetworkGameList *_network_game_list = NULL;
  * @return a point to the newly added or already existing item */
 NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 {
+	if (ip == 0) return NULL;
+
 	NetworkGameList *item, *prev_item;
 
 	prev_item = NULL;
