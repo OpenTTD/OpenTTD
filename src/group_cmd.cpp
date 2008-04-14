@@ -39,7 +39,7 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 		/* Decrease the num engines of EngineID i of the old group if it's not the default one */
 		if (!IsDefaultGroupID(old_g) && IsValidGroupID(old_g)) GetGroup(old_g)->num_engines[i]--;
 
-		/* Increase the num engines of EngineID i of the new group if it's not the new one */
+		/* Increase the num engines of EngineID i of the new group if it's not the default one */
 		if (!IsDefaultGroupID(new_g) && IsValidGroupID(new_g)) GetGroup(new_g)->num_engines[i]++;
 	}
 }
