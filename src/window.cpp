@@ -2316,7 +2316,7 @@ void RelocateAllWindows(int neww, int newh)
 
 				const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
 				if (wt != NULL) {
-					if (top < wt->height) top = wt->height;
+					if (top < wt->height && wt->left < (w->left + w->width) && (wt->left + wt->width) > w->left) top = wt->height;
 					if (top >= newh) top = newh - 1;
 				} else {
 					if (top < 0) top = 0;
