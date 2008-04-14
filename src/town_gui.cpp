@@ -142,117 +142,118 @@ static int GetNthSetBit(uint32 bits, int n)
 static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		const Town *t = GetTown(w->window_number);
-		int numact;
-		uint buttons = GetMaskOfTownActions(&numact, _local_player, t);
+		case WE_PAINT: {
+			const Town *t = GetTown(w->window_number);
+			int numact;
+			uint buttons = GetMaskOfTownActions(&numact, _local_player, t);
 
-		SetVScrollCount(w, numact + 1);
+			SetVScrollCount(w, numact + 1);
 
-		if (WP(w, def_d).data_1 != -1 && !HasBit(buttons, WP(w,def_d).data_1))
-			WP(w, def_d).data_1 = -1;
+			if (WP(w, def_d).data_1 != -1 && !HasBit(buttons, WP(w,def_d).data_1))
+				WP(w, def_d).data_1 = -1;
 
-		w->SetWidgetDisabledState(6, WP(w, def_d).data_1 == -1);
+			w->SetWidgetDisabledState(6, WP(w, def_d).data_1 == -1);
 
-		{
-			int y;
-			const Player *p;
-			int r;
-			StringID str;
+			{
+				int y;
+				const Player *p;
+				int r;
+				StringID str;
 
-			SetDParam(0, w->window_number);
-			DrawWindowWidgets(w);
+				SetDParam(0, w->window_number);
+				DrawWindowWidgets(w);
 
-			DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
+				DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
 
-			/* Draw list of players */
-			y = 25;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active && (HasBit(t->have_ratings, p->index) || t->exclusivity == p->index)) {
-					DrawPlayerIcon(p->index, 2, y);
+				/* Draw list of players */
+				y = 25;
+				FOR_ALL_PLAYERS(p) {
+					if (p->is_active && (HasBit(t->have_ratings, p->index) || t->exclusivity == p->index)) {
+						DrawPlayerIcon(p->index, 2, y);
 
-					SetDParam(0, p->index);
-					SetDParam(1, p->index);
+						SetDParam(0, p->index);
+						SetDParam(1, p->index);
 
-					r = t->ratings[p->index];
-					(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
-					(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
-					(str++,                    r <= RATING_POOR)      || // Poor
-					(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
-					(str++,                    r <= RATING_GOOD)      || // Good
-					(str++,                    r <= RATING_VERYGOOD)  || // Very Good
-					(str++,                    r <= RATING_EXCELLENT) || // Excellent
-					(str++,                    true);                    // Outstanding
+						r = t->ratings[p->index];
+						(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
+						(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
+						(str++,                    r <= RATING_POOR)      || // Poor
+						(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
+						(str++,                    r <= RATING_GOOD)      || // Good
+						(str++,                    r <= RATING_VERYGOOD)  || // Very Good
+						(str++,                    r <= RATING_EXCELLENT) || // Excellent
+						(str++,                    true);                    // Outstanding
 
-					SetDParam(2, str);
-					if (t->exclusivity == p->index) { // red icon for player with exclusive rights
-						DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
+						SetDParam(2, str);
+						if (t->exclusivity == p->index) { // red icon for player with exclusive rights
+							DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
+						}
+
+						DrawString(28, y, STR_2024, TC_FROMSTRING);
+						y += 10;
 					}
+				}
+			}
 
-					DrawString(28, y, STR_2024, TC_FROMSTRING);
+			/* Draw actions list */
+			{
+				int y = 107, i;
+				int pos = w->vscroll.pos;
+
+				if (--pos < 0) {
+					DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
 					y += 10;
 				}
-			}
-		}
 
-		/* Draw actions list */
-		{
-			int y = 107, i;
-			int pos = w->vscroll.pos;
+				for (i = 0; buttons; i++, buttons >>= 1) {
+					if (pos <= -5) break; ///< Draw only the 5 fitting lines
 
-			if (--pos < 0) {
-				DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
-				y += 10;
-			}
-			for (i = 0; buttons; i++, buttons >>= 1) {
-				if (pos <= -5) break; ///< Draw only the 5 fitting lines
-
-				if ((buttons & 1) && --pos < 0) {
-					DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
-					y += 10;
+					if ((buttons & 1) && --pos < 0) {
+						DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
+						y += 10;
+					}
 				}
 			}
-		}
 
-		{
-			int i = WP(w, def_d).data_1;
+			{
+				int i = WP(w, def_d).data_1;
 
-			if (i != -1) {
-				SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
-				SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
-				DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
-			}
-		}
-
-	} break;
-
-	case WE_DOUBLE_CLICK:
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case TWA_COMMAND_LIST: {
-				const Town *t = GetTown(w->window_number);
-				int y = (e->we.click.pt.y - 0x6B) / 10;
-
-				if (!IsInsideMM(y, 0, 5)) return;
-
-				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
-				if (y >= 0) {
-					WP(w, def_d).data_1 = y;
-					SetWindowDirty(w);
+				if (i != -1) {
+					SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
+					SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
+					DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
 				}
-				/* Fall through to clicking in case we are double-clicked */
-				if (e->event != WE_DOUBLE_CLICK || y < 0) break;
 			}
 
-			case TWA_EXECUTE:
-				DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w, def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
-				break;
-		}
-		break;
+		} break;
 
-	case WE_4:
-		SetWindowDirty(w);
-		break;
+		case WE_DOUBLE_CLICK:
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case TWA_COMMAND_LIST: {
+					const Town *t = GetTown(w->window_number);
+					int y = (e->we.click.pt.y - 0x6B) / 10;
+
+					if (!IsInsideMM(y, 0, 5)) return;
+
+					y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
+					if (y >= 0) {
+						WP(w, def_d).data_1 = y;
+						SetWindowDirty(w);
+					}
+					/* Fall through to clicking in case we are double-clicked */
+					if (e->event != WE_DOUBLE_CLICK || y < 0) break;
+				}
+
+				case TWA_EXECUTE:
+					DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w, def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+					break;
+			}
+			break;
+
+		case WE_4:
+			SetWindowDirty(w);
+			break;
 	}
 }
 
@@ -279,63 +280,63 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 	Town *t = GetTown(w->window_number);
 
 	switch (e->event) {
-	case WE_CREATE:
-		if (t->larger_town) w->widget[1].data = STR_CITY;
-		break;
+		case WE_CREATE:
+			if (t->larger_town) w->widget[1].data = STR_CITY;
+			break;
 
-	case WE_PAINT:
-		/* disable renaming town in network games if you are not the server */
-		w->SetWidgetDisabledState(8, _networking && !_network_server);
+		case WE_PAINT:
+			/* disable renaming town in network games if you are not the server */
+			w->SetWidgetDisabledState(8, _networking && !_network_server);
 
-		SetDParam(0, t->index);
-		DrawWindowWidgets(w);
+			SetDParam(0, t->index);
+			DrawWindowWidgets(w);
 
-		SetDParam(0, t->population);
-		SetDParam(1, t->num_houses);
-		DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
+			SetDParam(0, t->population);
+			SetDParam(1, t->num_houses);
+			DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
 
-		SetDParam(0, t->act_pass);
-		SetDParam(1, t->max_pass);
-		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
+			SetDParam(0, t->act_pass);
+			SetDParam(1, t->max_pass);
+			DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
 
-		SetDParam(0, t->act_mail);
-		SetDParam(1, t->max_mail);
-		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
+			SetDParam(0, t->act_mail);
+			SetDParam(1, t->max_mail);
+			DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
-		DrawWindowViewport(w);
-		break;
+			DrawWindowViewport(w);
+			break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case 6: /* scroll to location */
-				ScrollMainWindowToTile(t->xy);
-				break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case 6: /* scroll to location */
+					ScrollMainWindowToTile(t->xy);
+					break;
 
-			case 7: /* town authority */
-				ShowTownAuthorityWindow(w->window_number);
-				break;
+				case 7: /* town authority */
+					ShowTownAuthorityWindow(w->window_number);
+					break;
 
-			case 8: /* rename */
-				SetDParam(0, w->window_number);
-				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w, CS_ALPHANUMERAL);
-				break;
+				case 8: /* rename */
+					SetDParam(0, w->window_number);
+					ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w, CS_ALPHANUMERAL);
+					break;
 
-			case 9: /* expand town */
-				ExpandTown(t);
-				break;
+				case 9: /* expand town */
+					ExpandTown(t);
+					break;
 
-			case 10: /* delete town */
-				delete t;
-				break;
-		} break;
+				case 10: /* delete town */
+					delete t;
+					break;
+			} break;
 
-	case WE_ON_EDIT_TEXT:
-		if (e->we.edittext.str[0] != '\0') {
-			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, w->window_number, 0, NULL,
-				CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
-		}
-		break;
+		case WE_ON_EDIT_TEXT:
+			if (e->we.edittext.str[0] != '\0') {
+				_cmd_text = e->we.edittext.str;
+				DoCommandP(0, w->window_number, 0, NULL,
+					CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
+			}
+			break;
 	}
 }
 
@@ -480,79 +481,79 @@ static void MakeSortedTownList()
 static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		if (_town_sort_dirty) {
-			_town_sort_dirty = false;
-			MakeSortedTownList();
-		}
-
-		SetVScrollCount(w, _num_town_sort);
-
-		DrawWindowWidgets(w);
-		DrawSortButtonState(w, (_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
-
-		{
-			int n = 0;
-			uint16 i = w->vscroll.pos;
-			int y = 28;
-
-			while (i < _num_town_sort) {
-				const Town* t = _town_sort[i];
-
-				assert(t->xy);
-
-				SetDParam(0, t->index);
-				SetDParam(1, t->population);
-				DrawString(2, y, STR_2057, TC_FROMSTRING);
-
-				y += 10;
-				i++;
-				if (++n == w->vscroll.cap) break; // max number of towns in 1 window
+		case WE_PAINT: {
+			if (_town_sort_dirty) {
+				_town_sort_dirty = false;
+				MakeSortedTownList();
 			}
-			SetDParam(0, GetWorldPopulation());
-			DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
-		}
-	} break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case TDW_SORTNAME: { /* Sort by Name ascending/descending */
-				_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
-				_town_sort_dirty = true;
-				SetWindowDirty(w);
-			} break;
+			SetVScrollCount(w, _num_town_sort);
 
-			case TDW_SORTPOPULATION: { /* Sort by Population ascending/descending */
-				_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
-				_town_sort_dirty = true;
-				SetWindowDirty(w);
-			} break;
+			DrawWindowWidgets(w);
+			DrawSortButtonState(w, (_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
-			case TDW_CENTERTOWN: { /* Click on Town Matrix */
-				const Town* t;
+			{
+				int n = 0;
+				uint16 i = w->vscroll.pos;
+				int y = 28;
 
-				uint16 id_v = (e->we.click.pt.y - 28) / 10;
+				while (i < _num_town_sort) {
+					const Town* t = _town_sort[i];
 
-				if (id_v >= w->vscroll.cap) return; // click out of bounds
+					assert(t->xy);
 
-				id_v += w->vscroll.pos;
+					SetDParam(0, t->index);
+					SetDParam(1, t->population);
+					DrawString(2, y, STR_2057, TC_FROMSTRING);
 
-				if (id_v >= _num_town_sort) return; // click out of town bounds
+					y += 10;
+					i++;
+					if (++n == w->vscroll.cap) break; // max number of towns in 1 window
+				}
+				SetDParam(0, GetWorldPopulation());
+				DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
+			}
+		} break;
 
-				t = _town_sort[id_v];
-				assert(t->xy);
-				ScrollMainWindowToTile(t->xy);
-			} break;
-		}
-		break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case TDW_SORTNAME: /* Sort by Name ascending/descending */
+					_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
+					_town_sort_dirty = true;
+					SetWindowDirty(w);
+					break;
 
-	case WE_4:
-		SetWindowDirty(w);
-		break;
+				case TDW_SORTPOPULATION: /* Sort by Population ascending/descending */
+					_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
+					_town_sort_dirty = true;
+					SetWindowDirty(w);
+					break;
 
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 10;
-		break;
+				case TDW_CENTERTOWN: { /* Click on Town Matrix */
+					const Town* t;
+
+					uint16 id_v = (e->we.click.pt.y - 28) / 10;
+
+					if (id_v >= w->vscroll.cap) return; // click out of bounds
+
+					id_v += w->vscroll.pos;
+
+					if (id_v >= _num_town_sort) return; // click out of town bounds
+
+					t = _town_sort[id_v];
+					assert(t->xy);
+					ScrollMainWindowToTile(t->xy);
+				} break;
+			}
+			break;
+
+		case WE_4:
+			SetWindowDirty(w);
+			break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 10;
+			break;
 	}
 }
 
@@ -610,68 +611,68 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		DrawWindowWidgets(w);
-		break;
-
-	case WE_CREATE:
-		w->LowerWidget(_scengen_town_size + 7);
-		break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 4: // new town
-			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
+		case WE_PAINT:
+			DrawWindowWidgets(w);
 			break;
-		case 5: {// random town
-			Town *t;
-			uint size = min(_scengen_town_size, (int)TSM_CITY);
-			TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
 
-			w->HandleButtonClick(5);
-			_generating_world = true;
-			t = CreateRandomTown(20, mode, size);
-			_generating_world = false;
-
-			if (t == NULL) {
-				ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-			} else {
-				ScrollMainWindowToTile(t->xy);
-			}
-
+		case WE_CREATE:
+			w->LowerWidget(_scengen_town_size + 7);
 			break;
-		}
-		case 6: {// many random towns
-			w->HandleButtonClick(6);
 
-			_generating_world = true;
-			if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-			_generating_world = false;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case 4: // new town
+					HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
+					break;
+
+				case 5: {// random town
+					Town *t;
+					uint size = min(_scengen_town_size, (int)TSM_CITY);
+					TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
+
+					w->HandleButtonClick(5);
+					_generating_world = true;
+					t = CreateRandomTown(20, mode, size);
+					_generating_world = false;
+
+					if (t == NULL) {
+						ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+					} else {
+						ScrollMainWindowToTile(t->xy);
+					}
+				} break;
+
+				case 6: // many random towns
+					w->HandleButtonClick(6);
+
+					_generating_world = true;
+					if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+					_generating_world = false;
+					break;
+
+				case 7: case 8: case 9: case 10:
+					w->RaiseWidget(_scengen_town_size + 7);
+					_scengen_town_size = e->we.click.widget - 7;
+					w->LowerWidget(_scengen_town_size + 7);
+					SetWindowDirty(w);
+					break;
+			} break;
+
+		case WE_TIMEOUT:
+			w->RaiseWidget(5);
+			w->RaiseWidget(6);
+			SetWindowDirty(w);
 			break;
-		}
 
-		case 7: case 8: case 9: case 10:
-			w->RaiseWidget(_scengen_town_size + 7);
-			_scengen_town_size = e->we.click.widget - 7;
+		case WE_PLACE_OBJ:
+			_place_proc(e->we.place.tile);
+			break;
+
+		case WE_ABORT_PLACE_OBJ:
+			w->RaiseButtons();
 			w->LowerWidget(_scengen_town_size + 7);
 			SetWindowDirty(w);
 			break;
-		}
-		break;
-
-	case WE_TIMEOUT:
-		w->RaiseWidget(5);
-		w->RaiseWidget(6);
-		SetWindowDirty(w);
-		break;
-	case WE_PLACE_OBJ:
-		_place_proc(e->we.place.tile);
-		break;
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
-		w->LowerWidget(_scengen_town_size + 7);
-		SetWindowDirty(w);
-		break;
 	}
 }
 
