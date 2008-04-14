@@ -275,18 +275,28 @@ static void ShowTownAuthorityWindow(uint town)
 	}
 }
 
+
+enum TownViewWidget {
+	TVW_CAPTION = 1,
+	TVW_CENTERVIEW = 6,
+	TVW_SHOWAUTORITY,
+	TVW_CHANGENAME,
+	TVW_EXPAND,
+	TVW_DELETE,
+};
+
 static void TownViewWndProc(Window *w, WindowEvent *e)
 {
 	Town *t = GetTown(w->window_number);
 
 	switch (e->event) {
 		case WE_CREATE:
-			if (t->larger_town) w->widget[1].data = STR_CITY;
+			if (t->larger_town) w->widget[TVW_CAPTION].data = STR_CITY;
 			break;
 
 		case WE_PAINT:
 			/* disable renaming town in network games if you are not the server */
-			w->SetWidgetDisabledState(8, _networking && !_network_server);
+			w->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
 
 			SetDParam(0, t->index);
 			DrawWindowWidgets(w);
@@ -308,24 +318,24 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case 6: /* scroll to location */
+				case TVW_CENTERVIEW: /* scroll to location */
 					ScrollMainWindowToTile(t->xy);
 					break;
 
-				case 7: /* town authority */
+				case TVW_SHOWAUTORITY: /* town authority */
 					ShowTownAuthorityWindow(w->window_number);
 					break;
 
-				case 8: /* rename */
+				case TVW_CHANGENAME: /* rename */
 					SetDParam(0, w->window_number);
 					ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w, CS_ALPHANUMERAL);
 					break;
 
-				case 9: /* expand town */
+				case TVW_EXPAND: /* expand town - only available on Scenario editor */
 					ExpandTown(t);
 					break;
 
-				case 10: /* delete town */
+				case TVW_DELETE: /* delete town - only available on Scenario editor */
 					delete t;
 					break;
 			} break;
@@ -592,6 +602,16 @@ static void PlaceProc_Town(TileIndex tile)
 	DoCommandP(tile, size, mode, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
 }
 
+enum TownScenarioEditorWidget {
+	TSEW_NEWTOWN = 4,
+	TSEW_RANDOMTOWN,
+	TSEW_MANYRANDOMTOWNS,
+	TSEW_SMALLTOWN,
+	TSEW_MEDIUMTOWN,
+	TSEW_LARGETOWN,
+	TSEW_CITY,
+};
+
 static const Widget _scen_edit_town_gen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -616,21 +636,21 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_CREATE:
-			w->LowerWidget(_scengen_town_size + 7);
+			w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
 			break;
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case 4: // new town
-					HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
+				case TSEW_NEWTOWN:
+					HandlePlacePushButton(w, TSEW_NEWTOWN, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
 					break;
 
-				case 5: {// random town
+				case TSEW_RANDOMTOWN: {
 					Town *t;
 					uint size = min(_scengen_town_size, (int)TSM_CITY);
 					TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
 
-					w->HandleButtonClick(5);
+					w->HandleButtonClick(TSEW_RANDOMTOWN);
 					_generating_world = true;
 					t = CreateRandomTown(20, mode, size);
 					_generating_world = false;
@@ -642,25 +662,25 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case 6: // many random towns
-					w->HandleButtonClick(6);
+				case TSEW_MANYRANDOMTOWNS:
+					w->HandleButtonClick(TSEW_MANYRANDOMTOWNS);
 
 					_generating_world = true;
 					if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 					_generating_world = false;
 					break;
 
-				case 7: case 8: case 9: case 10:
-					w->RaiseWidget(_scengen_town_size + 7);
-					_scengen_town_size = e->we.click.widget - 7;
-					w->LowerWidget(_scengen_town_size + 7);
+				case TSEW_SMALLTOWN: case TSEW_MEDIUMTOWN: case TSEW_LARGETOWN: case TSEW_CITY:
+					w->RaiseWidget(_scengen_town_size + TSEW_SMALLTOWN);
+					_scengen_town_size = e->we.click.widget - TSEW_SMALLTOWN;
+					w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
 					SetWindowDirty(w);
 					break;
 			} break;
 
 		case WE_TIMEOUT:
-			w->RaiseWidget(5);
-			w->RaiseWidget(6);
+			w->RaiseWidget(TSEW_RANDOMTOWN);
+			w->RaiseWidget(TSEW_MANYRANDOMTOWNS);
 			SetWindowDirty(w);
 			break;
 
@@ -670,7 +690,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseButtons();
-			w->LowerWidget(_scengen_town_size + 7);
+			w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
 			SetWindowDirty(w);
 			break;
 	}
