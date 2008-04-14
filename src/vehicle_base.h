@@ -139,7 +139,7 @@ enum VehicleRailFlags {
 	/* used to mark that electric train engine is allowed to run on normal rail */
 	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
 
-	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed) */
+	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only) */
 	VRF_TOGGLE_REVERSE = 7,
 };
 

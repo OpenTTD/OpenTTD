@@ -1811,8 +1811,7 @@ static void ReverseTrainDirection(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	/* set reversed flag on all parts */
-	for (Vehicle *u = v; u != NULL; u = u->Next()) ToggleBit(u->u.rail.flags, VRF_TOGGLE_REVERSE);
+	ToggleBit(v->u.rail.flags, VRF_TOGGLE_REVERSE);
 
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
 
