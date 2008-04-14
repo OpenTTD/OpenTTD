@@ -211,6 +211,105 @@ extern uint ConvertSpeedToDisplaySpeed(uint speed);
 extern uint ConvertDisplaySpeedToSpeed(uint speed);
 
 
+void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable)
+{
+	StringID str = (v->cur_order_index == order_index) ? STR_8805 : STR_8804;
+	SetDParam(6, STR_EMPTY);
+
+	switch (order->GetType()) {
+		case OT_DUMMY:
+			SetDParam(1, STR_INVALID_ORDER);
+			SetDParam(2, order->GetDestination());
+			break;
+
+		case OT_GOTO_STATION: {
+			OrderLoadFlags load = order->GetLoadType();
+			OrderUnloadFlags unload = order->GetUnloadType();
+
+			SetDParam(1, STR_GO_TO_STATION);
+			SetDParam(2, STR_ORDER_GO_TO + ((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? order->GetNonStopType() : 0));
+			SetDParam(3, order->GetDestination());
+
+			if (timetable) {
+				SetDParam(4, STR_EMPTY);
+
+				if (order->wait_time > 0) {
+					SetDParam(6, STR_TIMETABLE_STAY_FOR);
+					SetTimetableParams(7, 8, order->wait_time);
+				}
+			} else {
+				SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
+			}
+		} break;
+
+		case OT_GOTO_DEPOT:
+			if (v->type == VEH_AIRCRAFT) {
+				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+					SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
+					SetDParam(3, STR_ORDER_NEAREST_HANGAR);
+				} else {
+					SetDParam(1, STR_GO_TO_HANGAR);
+					SetDParam(3, order->GetDestination());
+				}
+				SetDParam(4, STR_EMPTY);
+			} else {
+				if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+					SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
+					SetDParam(3, STR_ORDER_NEAREST_DEPOT);
+				} else {
+					SetDParam(1, STR_GO_TO_DEPOT);
+					SetDParam(3, GetDepot(order->GetDestination())->town_index);
+				}
+
+				switch (v->type) {
+					case VEH_TRAIN: SetDParam(4, STR_ORDER_TRAIN_DEPOT); break;
+					case VEH_ROAD:  SetDParam(4, STR_ORDER_ROAD_DEPOT); break;
+					case VEH_SHIP:  SetDParam(4, STR_ORDER_SHIP_DEPOT); break;
+					default: NOT_REACHED();
+				}
+			}
+
+			if (order->GetDepotOrderType() & ODTFB_SERVICE) {
+				SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT);
+			} else {
+				SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
+			}
+
+			if (!timetable && order->IsRefit()) {
+				SetDParam(6, STR_REFIT_ORDER);
+				SetDParam(7, GetCargo(order->GetRefitCargo())->name);
+			}
+			break;
+
+		case OT_GOTO_WAYPOINT:
+			SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
+			SetDParam(2, order->GetDestination());
+			break;
+
+		case OT_CONDITIONAL:
+			SetDParam(2, order->GetConditionSkipToOrder() + 1);
+			if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
+				SetDParam(1, STR_CONDITIONAL_UNCONDITIONAL);
+			} else {
+				OrderConditionComparator occ = order->GetConditionComparator();
+				SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
+				SetDParam(3, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
+				SetDParam(4, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
+
+				uint value = order->GetConditionValue();
+				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
+				SetDParam(5, value);
+			}
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	SetDParam(0, order_index + 1);
+	DrawString(2, y, str, selected ? TC_WHITE : TC_BLACK);
+}
+
+
 static void DrawOrdersWindow(Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
@@ -310,94 +409,11 @@ static void DrawOrdersWindow(Window *w)
 	order = GetVehicleOrder(v, i);
 	StringID str;
 	while (order != NULL) {
-		str = (v->cur_order_index == i) ? STR_8805 : STR_8804;
-		SetDParam(6, STR_EMPTY);
+		/* Don't draw anything if it extends past the end of the window. */
+		if (i - w->vscroll.pos >= w->vscroll.cap) break;
 
-		if (i - w->vscroll.pos < w->vscroll.cap) {
-			switch (order->GetType()) {
-				case OT_DUMMY:
-					SetDParam(1, STR_INVALID_ORDER);
-					SetDParam(2, order->GetDestination());
-					break;
-
-				case OT_GOTO_STATION: {
-					OrderLoadFlags load = order->GetLoadType();
-					OrderUnloadFlags unload = order->GetUnloadType();
-
-					SetDParam(1, STR_GO_TO_STATION);
-					SetDParam(2, STR_ORDER_GO_TO + ((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? order->GetNonStopType() : 0));
-					SetDParam(3, order->GetDestination());
-					SetDParam(4, (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) ? STR_EMPTY : _station_load_types[unload][load]);
-				} break;
-
-				case OT_GOTO_DEPOT:
-					if (v->type == VEH_AIRCRAFT) {
-						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-							SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
-							SetDParam(3, STR_ORDER_NEAREST_HANGAR);
-						} else {
-							SetDParam(1, STR_GO_TO_HANGAR);
-							SetDParam(3, order->GetDestination());
-						}
-						SetDParam(4, STR_EMPTY);
-					} else {
-						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-							SetDParam(1, STR_GO_TO_NEAREST_DEPOT);
-							SetDParam(3, STR_ORDER_NEAREST_DEPOT);
-						} else {
-							SetDParam(1, STR_GO_TO_DEPOT);
-							SetDParam(3, GetDepot(order->GetDestination())->town_index);
-						}
-
-						switch (v->type) {
-							case VEH_TRAIN: SetDParam(4, STR_ORDER_TRAIN_DEPOT); break;
-							case VEH_ROAD:  SetDParam(4, STR_ORDER_ROAD_DEPOT); break;
-							case VEH_SHIP:  SetDParam(4, STR_ORDER_SHIP_DEPOT); break;
-							default: NOT_REACHED();
-						}
-					}
-
-					if (order->GetDepotOrderType() & ODTFB_SERVICE) {
-						SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT);
-					} else {
-						SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
-					}
-
-					if (order->IsRefit()) {
-						SetDParam(6, STR_REFIT_ORDER);
-						SetDParam(7, GetCargo(order->GetRefitCargo())->name);
-					}
-					break;
-
-				case OT_GOTO_WAYPOINT:
-					SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-					SetDParam(2, order->GetDestination());
-					break;
-
-				case OT_CONDITIONAL:
-					SetDParam(2, order->GetConditionSkipToOrder() + 1);
-					if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
-						SetDParam(1, STR_CONDITIONAL_UNCONDITIONAL);
-					} else {
-						OrderConditionComparator occ = order->GetConditionComparator();
-						SetDParam(1, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
-						SetDParam(3, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
-						SetDParam(4, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
-
-						uint value = order->GetConditionValue();
-						if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
-						SetDParam(5, value);
-					}
-					break;
-
-				default: NOT_REACHED();
-			}
-
-			SetDParam(0, i + 1);
-			DrawString(2, y, str, (i == WP(w, order_d).sel) ? TC_WHITE : TC_BLACK);
-
-			y += 10;
-		}
+		DrawOrderString(v, order, i, y, i == WP(w, order_d).sel, false);
+		y += 10;
 
 		i++;
 		order = order->next;

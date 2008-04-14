@@ -16,6 +16,7 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+#include "order_func.h"
 #include "settings_type.h"
 
 #include "table/strings.h"
@@ -57,7 +58,7 @@ static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
 	return (sel <= v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
 }
 
-static inline void SetTimetableParams(int param1, int param2, uint32 time)
+void SetTimetableParams(int param1, int param2, uint32 time)
 {
 	if (_patches.timetable_in_ticks) {
 		SetDParam(param1, STR_TIMETABLE_TICKS);
@@ -116,90 +117,7 @@ static void DrawTimetableWindow(Window *w)
 		if (i - w->vscroll.pos >= w->vscroll.cap) break;
 
 		if (i % 2 == 0) {
-			SetDParam(5, STR_EMPTY);
-
-			switch (order->GetType()) {
-				case OT_DUMMY:
-					SetDParam(0, STR_INVALID_ORDER);
-					break;
-
-				case OT_GOTO_STATION:
-					SetDParam(0, STR_GO_TO_STATION);
-					SetDParam(1, STR_ORDER_GO_TO + order->GetNonStopType());
-					SetDParam(2, order->GetDestination());
-					SetDParam(3, STR_EMPTY);
-
-					if (order->wait_time > 0) {
-						SetDParam(5, STR_TIMETABLE_STAY_FOR);
-						SetTimetableParams(6, 7, order->wait_time);
-					} else {
-						SetDParam(4, STR_EMPTY);
-					}
-
-					break;
-
-				case OT_GOTO_DEPOT:
-					SetDParam(4, STR_EMPTY);
-					if (v->type == VEH_AIRCRAFT) {
-						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-							SetDParam(0, STR_GO_TO_NEAREST_DEPOT);
-							SetDParam(2, STR_ORDER_NEAREST_HANGAR);
-						} else {
-							SetDParam(0, STR_GO_TO_HANGAR);
-							SetDParam(2, order->GetDestination());
-						}
-						SetDParam(3, STR_EMPTY);
-					} else {
-						if (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-							SetDParam(0, STR_GO_TO_NEAREST_DEPOT);
-							SetDParam(2, STR_ORDER_NEAREST_DEPOT);
-						} else {
-							SetDParam(0, STR_GO_TO_DEPOT);
-							SetDParam(2, GetDepot(order->GetDestination())->town_index);
-						}
-
-						switch (v->type) {
-							case VEH_TRAIN: SetDParam(3, STR_ORDER_TRAIN_DEPOT); break;
-							case VEH_ROAD:  SetDParam(3, STR_ORDER_ROAD_DEPOT); break;
-							case VEH_SHIP:  SetDParam(3, STR_ORDER_SHIP_DEPOT); break;
-							default: NOT_REACHED();
-						}
-					}
-
-					if (order->GetDepotOrderType() & ODTFB_SERVICE) {
-						SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_SERVICE_NON_STOP_AT : STR_ORDER_SERVICE_AT);
-					} else {
-						SetDParam(1, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
-					}
-					break;
-
-				case OT_GOTO_WAYPOINT:
-					SetDParam(0, (order->GetNonStopType() != ONSF_STOP_EVERYWHERE) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-					SetDParam(1, order->GetDestination());
-					break;
-
-
-				case OT_CONDITIONAL:
-					SetDParam(1, order->GetConditionSkipToOrder() + 1);
-					if (order->GetConditionVariable() == OCV_UNCONDITIONALLY) {
-						SetDParam(0, STR_CONDITIONAL_UNCONDITIONAL);
-					} else {
-						extern uint ConvertSpeedToDisplaySpeed(uint speed);
-						OrderConditionComparator occ = order->GetConditionComparator();
-						SetDParam(0, (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) ? STR_CONDITIONAL_TRUE_FALSE : STR_CONDITIONAL_NUM);
-						SetDParam(2, STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE + order->GetConditionVariable());
-						SetDParam(3, STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS + occ);
-
-						uint value = order->GetConditionValue();
-						if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
-						SetDParam(4, value);
-					}
-					break;
-
-				default: break;
-			}
-
-			DrawString(2, y, STR_TIMETABLE_GO_TO, (i == selected) ? TC_WHITE : TC_BLACK);
+			DrawOrderString(v, order, order_id, y, i == selected, true);
 
 			order_id++;
 
@@ -219,7 +137,7 @@ static void DrawTimetableWindow(Window *w)
 				string = STR_TIMETABLE_TRAVEL_FOR;
 			}
 
-			DrawString(12, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
+			DrawString(22, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
 
 			if (final_order) break;
 		}
