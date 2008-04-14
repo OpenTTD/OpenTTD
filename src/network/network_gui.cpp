@@ -218,22 +218,27 @@ static void SortNetworkGameList(network_ql_d *nqld)
 
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
 enum NetworkGameWindowWidgets {
-	NGWW_CLOSE    = 0,  ///< Close 'X' button
-	NGWW_CONN_BTN = 4,  ///< 'Connection' droplist button
-	NGWW_PLAYER   = 5,  ///< Panel with editbox to set player name
+	NGWW_CLOSE,         ///< Close 'X' button
+	NGWW_CAPTION,       ///< Caption of the window
+	NGWW_RESIZE,        ///< Resize button
 
-	NGWW_NAME     = 6,  ///< 'Name' button
+	NGWW_CONNECTION,    ///< Label in from of connection droplist
+	NGWW_CONN_BTN,      ///< 'Connection' droplist button
+	NGWW_PLAYER,        ///< Panel with editbox to set player name
+
+	NGWW_NAME,          ///< 'Name' button
 	NGWW_CLIENTS,       ///< 'Clients' button
 	NGWW_INFO,          ///< Third button in the game list panel
 
-	NGWW_MATRIX   = 9,  ///< Panel with list of games
+	NGWW_MATRIX,        ///< Panel with list of games
+	NGWW_SCROLLBAR,     ///< Scrollbar of matrix
 
-	NGWW_DETAILS  = 11, ///< Panel with game details
-	NGWW_JOIN     = 12, ///< 'Join game' button
-	NGWW_REFRESH  = 13, ///< 'Refresh server' button
-	NGWW_NEWGRF   = 14, ///< 'NewGRF Settings' button
+	NGWW_DETAILS,       ///< Panel with game details
+	NGWW_JOIN,          ///< 'Join game' button
+	NGWW_REFRESH,       ///< 'Refresh server' button
+	NGWW_NEWGRF,        ///< 'NewGRF Settings' button
 
-	NGWW_FIND     = 15, ///< 'Find server' button
+	NGWW_FIND,          ///< 'Find server' button
 	NGWW_ADD,           ///< 'Add server' button
 	NGWW_START,         ///< 'Start server' button
 	NGWW_CANCEL,        ///< 'Cancel' button
@@ -579,10 +584,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_game_window_widgets[] = {
 /* TOP */
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},            // NGWW_CLOSE
-{    WWT_CAPTION,   RESIZE_RIGHT,  BGC,    11,   449,     0,    13, STR_NETWORK_MULTIPLAYER,          STR_NULL},
-{      WWT_PANEL,   RESIZE_RB,     BGC,     0,   449,    14,   263, 0x0,                              STR_NULL},
+{    WWT_CAPTION,   RESIZE_RIGHT,  BGC,    11,   449,     0,    13, STR_NETWORK_MULTIPLAYER,          STR_NULL},                         // NGWW_CAPTION
+{      WWT_PANEL,   RESIZE_RB,     BGC,     0,   449,    14,   263, 0x0,                              STR_NULL},                         // NGWW_RESIZE
 
-{       WWT_TEXT,   RESIZE_NONE,   BGC,     9,    85,    23,    35, STR_NETWORK_CONNECTION,           STR_NULL},
+{       WWT_TEXT,   RESIZE_NONE,   BGC,     9,    85,    23,    35, STR_NETWORK_CONNECTION,           STR_NULL},                         // NGWW_CONNECTION
 { WWT_DROPDOWNIN,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
 
 {    WWT_EDITBOX,   RESIZE_LR,     BGC,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_PLAYER
@@ -592,8 +597,8 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,    71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,      STR_NETWORK_CLIENTS_CAPTION_TIP},  // NGWW_CLIENTS
 { WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,   151,   190,    42,    53, STR_EMPTY,                        STR_NETWORK_INFO_ICONS_TIP},       // NGWW_INFO
 
-{     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   236, (13 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
-{  WWT_SCROLLBAR,   RESIZE_LRB,    BGC,   191,   202,    42,   236, 0x0,                              STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   236, (11 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
+{  WWT_SCROLLBAR,   RESIZE_LRB,    BGC,   191,   202,    42,   236, 0x0,                              STR_0190_SCROLL_BAR_SCROLLS_LIST}, // NGWW_SCROLLBAR
 
 /* RIGHT SIDE */
 {      WWT_PANEL,   RESIZE_LRB,    BGC,   210,   440,    42,   236, 0x0,                              STR_NULL},                         // NGWW_DETAILS
