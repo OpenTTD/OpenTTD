@@ -5,16 +5,6 @@
 #ifndef GENWORLD_H
 #define GENWORLD_H
 
-/* If OTTDThread isn't defined, define it to a void, but make sure to undefine
- *  it after this include. This makes including genworld.h easier, as you
- *  don't need to include thread.h before it, while it stays possible to
- *  include it after it, and still work.
- */
-#ifndef OTTDThread
-#define TEMPORARY_OTTDTHREAD_DEFINITION
-#define OTTDThread void
-#endif
-
 #include "player_type.h"
 
 /*
@@ -43,13 +33,8 @@ struct gw_info {
 	uint size_y;           ///< Y-size of the map
 	gw_done_proc *proc;    ///< Proc that is called when done (can be NULL)
 	gw_abort_proc *abortp; ///< Proc that is called when aborting (can be NULL)
-	OTTDThread *thread;    ///< The thread we are in (can be NULL)
+	class ThreadObject *thread; ///< The thread we are in (can be NULL)
 };
-
-#ifdef TEMPORARY_OTTDTHREAD_DEFINITION
-#undef OTTDThread
-#undef TEMPORARY_OTTDTHREAD_DEFINITION
-#endif
 
 enum gwp_class {
 	GWP_MAP_INIT,    ///< Initialize/allocate the map, start economy

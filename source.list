@@ -77,7 +77,21 @@ string.cpp
 strings.cpp
 texteff.cpp
 tgp.cpp
-thread.cpp
+#if HAVE_THREAD
+	#if WIN32
+		thread_win32.cpp
+		fiber_win32.cpp
+	#else
+		#if OS2
+			thread_os2.cpp
+		#else
+			thread_pthread.cpp
+		#end
+		fiber_thread.cpp
+	#end
+#else
+	thread_none.cpp
+#end
 tile_map.cpp
 #if WIN32
 #else
@@ -145,6 +159,7 @@ core/endian_func.hpp
 engine_func.h
 engine_type.h
 core/enum_type.hpp
+fiber.hpp
 fileio.h
 fios.h
 fontcache.h
@@ -493,6 +508,7 @@ misc/autocopyptr.hpp
 misc/autoptr.hpp
 misc/binaryheap.hpp
 misc/blob.hpp
+misc/countedobj.cpp
 misc/countedptr.hpp
 misc/crc32.hpp
 misc/dbg_helpers.cpp

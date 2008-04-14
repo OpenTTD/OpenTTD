@@ -84,7 +84,7 @@ bool IsGenerateWorldThreaded()
 /**
  * The internal, real, generate function.
  */
-static void *_GenerateWorld(void *arg)
+static void * CDECL _GenerateWorld(void *arg)
 {
 	_generating_world = true;
 	if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
@@ -194,7 +194,7 @@ void WaitTillGeneratedWorld()
 {
 	if (_gw.thread == NULL) return;
 	_gw.quit_thread = true;
-	OTTDJoinThread((OTTDThread*)_gw.thread);
+	_gw.thread->Join();
 	_gw.thread   = NULL;
 	_gw.threaded = false;
 }
@@ -228,6 +228,8 @@ void HandleGeneratingWorldAbortion()
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
+
+	ThreadObject *thread = _gw.thread;
 	_gw.active   = false;
 	_gw.thread   = NULL;
 	_gw.proc     = NULL;
@@ -237,7 +239,7 @@ void HandleGeneratingWorldAbortion()
 	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
 
-	OTTDExitThread();
+	thread->Exit();
 }
 
 /**
@@ -282,7 +284,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	SetupColorsAndInitialWindow();
 
 	if (_network_dedicated ||
-	    (_gw.thread = OTTDCreateThread(&_GenerateWorld, NULL)) == NULL) {
+	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL)) == NULL) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_GenerateWorld(NULL);

@@ -736,7 +736,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\thread.cpp"
+				RelativePath=".\..\src\thread_win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\fiber_win32.cpp"
 				>
 			</File>
 			<File
@@ -789,6 +793,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\core\alloc_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\alloc_type.hpp"
 				>
 			</File>
 			<File
@@ -941,6 +949,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\core\enum_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\fiber.hpp"
 				>
 			</File>
 			<File
@@ -2229,6 +2241,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\misc\blob.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\misc\countedobj.cpp"
 				>
 			</File>
 			<File

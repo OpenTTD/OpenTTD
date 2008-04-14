@@ -72,7 +72,7 @@ Function load_main_data(filename)
 						line = "WIN32" Or _
 						line = "MSVC" Or _
 						line = "DIRECTMUSIC" Or _
-						line = "NO_THREADS" _
+						line = "HAVE_THREAD" _
 					) Then skip = skip + 1
 					deep = deep + 1
 				Case "#"

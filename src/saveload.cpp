@@ -1499,7 +1499,7 @@ void SaveFileError()
 	SaveFileDone();
 }
 
-static OTTDThread* save_thread;
+static ThreadObject *save_thread;
 
 /** We have written the whole game into memory, _Savegame_pool, now find
  * and appropiate compressor and start writing to file.
@@ -1561,7 +1561,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	}
 }
 
-static void* SaveFileToDiskThread(void *arg)
+static void * CDECL SaveFileToDiskThread(void *arg)
 {
 	SaveFileToDisk(true);
 	return NULL;
@@ -1569,7 +1569,9 @@ static void* SaveFileToDiskThread(void *arg)
 
 void WaitTillSaved()
 {
-	OTTDJoinThread(save_thread);
+	if (save_thread == NULL) return;
+
+	save_thread->Join();
 	save_thread = NULL;
 }
 
@@ -1641,7 +1643,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 			SaveFileStart();
 			if (_network_server ||
-						(save_thread = OTTDCreateThread(&SaveFileToDiskThread, NULL)) == NULL) {
+						(save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL)) == NULL) {
 				if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 				SaveOrLoadResult result = SaveFileToDisk(false);
