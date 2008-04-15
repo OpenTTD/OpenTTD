@@ -1301,7 +1301,7 @@ static bool GrowTown(Town *t)
 
 void UpdateTownRadius(Town *t)
 {
-	static const uint16 _town_radius_data[23][5] = {
+	static const uint16 _town_squared_town_zone_radius_data[23][5] = {
 		{  4,  0,  0,  0,  0}, // 0
 		{ 16,  0,  0,  0,  0},
 		{ 25,  0,  0,  0,  0},
@@ -1328,19 +1328,17 @@ void UpdateTownRadius(Town *t)
 	};
 
 	if (t->num_houses < 92) {
-		memcpy(t->radius, _town_radius_data[t->num_houses / 4], sizeof(t->radius));
+		memcpy(t->squared_town_zone_radius, _town_squared_town_zone_radius_data[t->num_houses / 4], sizeof(t->squared_town_zone_radius));
 	} else {
 		int mass = t->num_houses / 8;
-		/* At least very roughly extrapolate. Empirical numbers dancing between
-		 * overwhelming by cottages and skyscrapers outskirts. */
-		t->radius[0] = mass * mass;
-		/* Actually we are proportional to sqrt() but that's right because
-		 * we are covering an area. */
-		t->radius[1] = mass * 7;
-		t->radius[2] = 0;
-		t->radius[3] = mass * 4;
-		t->radius[4] = mass * 3;
-		//debug("%d (->%d): %d %d %d %d\n", t->num_houses, mass, t->radius[0], t->radius[1], t->radius[3], t->radius[4]);
+		/* Actually we are proportional to sqrt() but that's right because we are covering an area.
+		 * The offsets are to make sure the radii do not decrease in size when going from the table
+		 * to the calculated value.*/
+		t->squared_town_zone_radius[0] = mass * 15 - 40;
+		t->squared_town_zone_radius[1] = mass * 9 - 15;
+		t->squared_town_zone_radius[2] = 0;
+		t->squared_town_zone_radius[3] = mass * 5 - 5;
+		t->squared_town_zone_radius[4] = mass * 3 + 5;
 	}
 }
 
@@ -1603,8 +1601,8 @@ bool GenerateTowns()
 
 
 /** Returns the bit corresponding to the town zone of the specified tile
- * @param t Town on which radius is to be found
- * @param tile TileIndex where radius needs to be found
+ * @param t Town on which town zone is to be found
+ * @param tile TileIndex where town zone needs to be found
  * @return the bit position of the given zone, as defined in HouseZones
  */
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
@@ -1615,7 +1613,7 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
 
 	HouseZonesBits smallest = HZB_TOWN_EDGE;
 	for (HouseZonesBits i = HZB_BEGIN; i < HZB_END; i++) {
-		if (dist < t->radius[i]) smallest = i;
+		if (dist < t->squared_town_zone_radius[i]) smallest = i;
 	}
 
 	return smallest;
@@ -2298,7 +2296,7 @@ static void UpdateTownGrowRate(Town *t)
 
 	const Station *st;
 	FOR_ALL_STATIONS(st) {
-		if (DistanceSquare(st->xy, t->xy) <= t->radius[0]) {
+		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
 				if (IsValidPlayer(st->owner)) {

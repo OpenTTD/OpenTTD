@@ -36,16 +36,16 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 		case 0x8A: return t->grow_counter;
 		case 0x92: return t->flags12;  // In original game, 0x92 and 0x93 are really one word. Since flags12 is a byte, this is to adjust
 		case 0x93: return 0;
-		case 0x94: return t->radius[0];
-		case 0x95: return GB(t->radius[0], 8, 8);
-		case 0x96: return t->radius[1];
-		case 0x97: return GB(t->radius[1], 8, 8);
-		case 0x98: return t->radius[2];
-		case 0x99: return GB(t->radius[2], 8, 8);
-		case 0x9A: return t->radius[3];
-		case 0x9B: return GB(t->radius[3], 8, 8);
-		case 0x9C: return t->radius[4];
-		case 0x9D: return GB(t->radius[4], 8, 8);
+		case 0x94: return ClampToU16(t->squared_town_zone_radius[0]);
+		case 0x95: return GB(ClampToU16(t->squared_town_zone_radius[0]), 8, 8);
+		case 0x96: return ClampToU16(t->squared_town_zone_radius[1]);
+		case 0x97: return GB(ClampToU16(t->squared_town_zone_radius[1]), 8, 8);
+		case 0x98: return ClampToU16(t->squared_town_zone_radius[2]);
+		case 0x99: return GB(ClampToU16(t->squared_town_zone_radius[2]), 8, 8);
+		case 0x9A: return ClampToU16(t->squared_town_zone_radius[3]);
+		case 0x9B: return GB(ClampToU16(t->squared_town_zone_radius[3]), 8, 8);
+		case 0x9C: return ClampToU16(t->squared_town_zone_radius[4]);
+		case 0x9D: return GB(ClampToU16(t->squared_town_zone_radius[4]), 8, 8);
 		case 0x9E: return t->ratings[0];
 		case 0x9F: return GB(t->ratings[0], 8, 8);
 		case 0xA0: return t->ratings[1];

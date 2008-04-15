@@ -163,7 +163,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	bool larger_town;
 
 	/* NOSAVE: UpdateTownRadius updates this given the house count. */
-	uint16 radius[HZB_END];
+	uint32 squared_town_zone_radius[HZB_END];
 
 	/* NOSAVE: The number of each type of building in the town. */
 	BuildingCounts building_counts;
