@@ -1992,6 +1992,33 @@ static void DoClearTownHouseHelper(TileIndex tile)
 	DeleteAnimatedTile(tile);
 }
 
+/**
+ * Determines if a given HouseID is part of a multitile house.
+ * The given ID is set to the ID of the north tile and the TileDiff to the north tile is returned.
+ *
+ * @param house Is changed to the HouseID of the north tile of the same house
+ * @return TileDiff from the tile of the given HouseID to the north tile
+ */
+static TileIndex GetHouseNorthPart(HouseID &house)
+{
+	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
+		if (GetHouseSpecs(house - 1)->building_flags & TILE_SIZE_2x1) {
+			house--;
+			return TileDiffXY(-1, 0);
+		} else if (GetHouseSpecs(house - 1)->building_flags & BUILDING_2_TILES_Y) {
+			house--;
+			return TileDiffXY(0, -1);
+		} else if (GetHouseSpecs(house - 2)->building_flags & BUILDING_HAS_4_TILES) {
+			house -= 2;
+			return TileDiffXY(-1, 0);
+		} else if (GetHouseSpecs(house - 3)->building_flags & BUILDING_HAS_4_TILES) {
+			house -= 3;
+			return TileDiffXY(-1, -1);
+		}
+	}
+	return 0;
+}
+
 void ClearTownHouse(Town *t, TileIndex tile)
 {
 	assert(IsTileType(tile, MP_HOUSE));
@@ -1999,21 +2026,7 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	HouseID house = GetHouseType(tile);
 
 	/* need to align the tile to point to the upper left corner of the house */
-	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
-		if (GetHouseSpecs(house-1)->building_flags & TILE_SIZE_2x1) {
-			house--;
-			tile += TileDiffXY(-1, 0);
-		} else if (GetHouseSpecs(house-1)->building_flags & BUILDING_2_TILES_Y) {
-			house--;
-			tile += TileDiffXY(0, -1);
-		} else if (GetHouseSpecs(house-2)->building_flags & BUILDING_HAS_4_TILES) {
-			house-=2;
-			tile += TileDiffXY(-1, 0);
-		} else if (GetHouseSpecs(house-3)->building_flags & BUILDING_HAS_4_TILES) {
-			house-=3;
-			tile += TileDiffXY(-1, -1);
-		}
-	}
+	tile += GetHouseNorthPart(house); // modifies house to the ID of the north tile
 
 	const HouseSpec *hs = GetHouseSpecs(house);
 
@@ -2536,6 +2549,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, 
 {
 	if (AutoslopeEnabled()) {
 		HouseID house = GetHouseType(tile);
+		GetHouseNorthPart(house); // modifies house to the ID of the north tile
 		const HouseSpec *hs = GetHouseSpecs(house);
 
 		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
