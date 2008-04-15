@@ -1614,7 +1614,7 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	/* Check if we've reached a non-stop station.. */
-	if ((v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
+	if (v->current_order.IsType(OT_GOTO_STATION) && (v->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) &&
 			IsTileType(v->tile, MP_STATION) &&
 			v->current_order.GetDestination() == GetStationIndex(v->tile)) {
 		v->last_station_visited = v->current_order.GetDestination();
@@ -1742,10 +1742,11 @@ bool ProcessOrders(Vehicle *v)
  */
 bool Order::ShouldStopAtStation(const Vehicle *v, StationID station) const
 {
+	bool is_dest_station = this->IsType(OT_GOTO_STATION) && this->dest == station;
 	return
 			v->last_station_visited != station && // Do stop only when we've not just been there
 			/* Finally do stop when there is no non-stop flag set for this type of station. */
-			!(this->GetNonStopType() & ((this->dest == station) ? ONSF_NO_STOP_AT_DESTINATION_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS));
+			!(this->GetNonStopType() & (is_dest_station ? ONSF_NO_STOP_AT_DESTINATION_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS));
 }
 
 void InitializeOrders()
