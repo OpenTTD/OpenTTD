@@ -1301,7 +1301,7 @@ static bool GrowTown(Town *t)
 
 void UpdateTownRadius(Town *t)
 {
-	static const uint16 _town_squared_town_zone_radius_data[23][5] = {
+	static const uint32 _town_squared_town_zone_radius_data[23][5] = {
 		{  4,  0,  0,  0,  0}, // 0
 		{ 16,  0,  0,  0,  0},
 		{ 25,  0,  0,  0,  0},
