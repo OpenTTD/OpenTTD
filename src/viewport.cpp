@@ -1337,10 +1337,13 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 
 static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 {
-	for (; *psd != NULL; psd++) {
+	while (*psd != NULL) {
 		ParentSpriteToDraw *ps = *psd;
 
-		if (ps->comparison_done) continue;
+		if (ps->comparison_done) {
+			psd++;
+			continue;
+		}
 
 		ps->comparison_done = true;
 
