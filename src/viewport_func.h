@@ -34,7 +34,7 @@ void OffsetGroundSprite(int x, int y);
 void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub = NULL);
 void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub = NULL);
 void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent = false, int bb_offset_x = 0, int bb_offset_y = 0, int bb_offset_z = 0, const SubSprite *sub = NULL);
-void *AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2);
+void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, uint16 color = 0, uint16 width = 0);
 void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent = false, const SubSprite *sub = NULL);
 
 

@@ -29,6 +29,8 @@
 #include "station_func.h"
 #include "core/alloc_type.hpp"
 
+#include <vector>
+
 #include "table/sprites.h"
 #include "table/strings.h"
 
@@ -77,7 +79,6 @@ assert_compile(lengthof(_viewports) < sizeof(_active_viewports) * 8);
 struct StringSpriteToDraw {
 	uint16 string;
 	uint16 color;
-	StringSpriteToDraw *next;
 	int32 x;
 	int32 y;
 	uint64 params[2];
@@ -128,7 +129,6 @@ struct ParentSpriteToDraw {
 /* Quick hack to know how much memory to reserve when allocating from the spritelist
  * to prevent a buffer overflow. */
 #define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
-assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(StringSpriteToDraw));
 assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(TileSpriteToDraw));
 assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ChildScreenSpriteToDraw));
 assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ParentSpriteToDraw));
@@ -141,13 +141,16 @@ enum FoundationPart {
 	FOUNDATION_PART_END
 };
 
+typedef std::vector<StringSpriteToDraw> StringSpriteToDrawVector;
+
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
 
 	byte *spritelist_mem;
 	const byte *eof_spritelist_mem;
 
-	StringSpriteToDraw **last_string, *first_string;
+	StringSpriteToDrawVector string_sprites_to_draw;
+
 	TileSpriteToDraw **last_tile, *first_tile;
 
 	ChildScreenSpriteToDraw **last_child;
@@ -795,31 +798,18 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 }
 
 /* Returns a StringSpriteToDraw */
-void *AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2)
+void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, uint16 color, uint16 width)
 {
-	ViewportDrawer *vd = _cur_vd;
-	StringSpriteToDraw *ss;
+	StringSpriteToDraw ss;
+	ss.string = string;
+	ss.x = x;
+	ss.y = y;
+	ss.params[0] = params_1;
+	ss.params[1] = params_2;
+	ss.width = width;
+	ss.color = color;
 
-	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(sprite, 0, "Out of sprite memory");
-		return NULL;
-	}
-	ss = (StringSpriteToDraw*)vd->spritelist_mem;
-
-	vd->spritelist_mem += sizeof(StringSpriteToDraw);
-
-	ss->string = string;
-	ss->next = NULL;
-	ss->x = x;
-	ss->y = y;
-	ss->params[0] = params_1;
-	ss->params[1] = params_2;
-	ss->width = 0;
-
-	*vd->last_string = ss;
-	vd->last_string = &ss->next;
-
-	return ss;
+	_cur_vd->string_sprites_to_draw.push_back(ss);
 }
 
 
@@ -1145,13 +1135,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 static void AddStation(const Station *st, StringID str, uint16 width)
 {
-	StringSpriteToDraw *sstd;
-
-	sstd = (StringSpriteToDraw*)AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities);
-	if (sstd != NULL) {
-		sstd->color = (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _player_colors[st->owner];
-		sstd->width = width;
-	}
+	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _player_colors[st->owner], width);
 }
 
 
@@ -1215,13 +1199,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 
 static void AddSign(const Sign *si, StringID str, uint16 width)
 {
-	StringSpriteToDraw *sstd;
-
-	sstd = (StringSpriteToDraw*)AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->index, 0);
-	if (sstd != NULL) {
-		sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
-		sstd->width = width;
-	}
+	AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->index, 0, (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner], width);
 }
 
 
@@ -1285,13 +1263,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 
 static void AddWaypoint(const Waypoint *wp, StringID str, uint16 width)
 {
-	StringSpriteToDraw *sstd;
-
-	sstd = (StringSpriteToDraw*)AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0);
-	if (sstd != NULL) {
-		sstd->color = (wp->deleted ? 0xE : 11);
-		sstd->width = width;
-	}
+	AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0, (wp->deleted ? 0xE : 11), width);
 }
 
 
@@ -1475,7 +1447,7 @@ static void ViewportDrawBoundingBoxes(ParentSpriteToDraw *psd[])
 	}
 }
 
-static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss)
+static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVector *sstdv)
 {
 	DrawPixelInfo dp;
 	ZoomLevel zoom;
@@ -1491,15 +1463,12 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 	dp.width  = UnScaleByZoom(dp.width,  zoom);
 	dp.height = UnScaleByZoom(dp.height, zoom);
 
-	do {
+	for (StringSpriteToDrawVector::const_iterator ss = sstdv->begin(); ss != sstdv->end(); ss++) {
 		uint16 colour;
 
 		if (ss->width != 0) {
 			/* Do not draw signs nor station names if they are set invisible */
-			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_2806) {
-				ss = ss->next;
-				continue;
-			}
+			if (IsInvisibilitySet(TO_SIGNS) && ss->string != STR_2806) continue;
 
 			int x = UnScaleByZoom(ss->x, zoom) - 1;
 			int y = UnScaleByZoom(ss->y, zoom) - 1;
@@ -1538,9 +1507,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
 			ss->string, colour
 		);
-
-		ss = ss->next;
-	} while (ss != NULL);
+	};
 }
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom)
@@ -1579,8 +1546,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.eof_parent_list = parent_list.EndOf();
 	vd.spritelist_mem = mem;
 	vd.eof_spritelist_mem = mem.EndOf() - sizeof(LARGEST_SPRITELIST_STRUCT);
-	vd.last_string = &vd.first_string;
-	vd.first_string = NULL;
 	vd.last_tile = &vd.first_tile;
 	vd.first_tile = NULL;
 
@@ -1607,7 +1572,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(parent_list);
 
-	if (vd.first_string != NULL) ViewportDrawStrings(&vd.dpi, vd.first_string);
+	if (!vd.string_sprites_to_draw.empty()) ViewportDrawStrings(&vd.dpi, &vd.string_sprites_to_draw);
 
 	_cur_dpi = old_dpi;
 }
