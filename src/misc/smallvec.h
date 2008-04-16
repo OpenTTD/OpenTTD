@@ -49,6 +49,16 @@ template <typename T, uint S> struct SmallVector {
 	{
 		return &data[items];
 	}
+
+	const T *Get(size_t index) const
+	{
+		return &data[index];
+	}
+
+	T *Get(size_t index)
+	{
+		return &data[index];
+	}
 };
 
 #endif /* SMALLVEC_H */

@@ -33,11 +33,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-enum {
-	VIEWPORT_DRAW_MEM = (65536 * 2),
-	PARENT_LIST_SIZE  = 6144,
-};
-
 PlaceProc *_place_proc;
 Point _tile_fract_coords;
 ZoomLevel _saved_scrollpos_zoom;
@@ -120,15 +115,10 @@ struct ParentSpriteToDraw {
 	int zmin;                       ///< minimal world Z coordinate of bounding box
 	int zmax;                       ///< maximal world Z coordinate of bounding box
 
-	ChildScreenSpriteToDraw *child; ///< head of child list;
+	int first_child;                ///< the first child to draw.
+	int last_child;                 ///< the last sprite to draw.
 	bool comparison_done;           ///< Used during sprite sorting: true if sprite has been compared with all other sprites
 };
-
-/* Quick hack to know how much memory to reserve when allocating from the spritelist
- * to prevent a buffer overflow. */
-#define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
-assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ChildScreenSpriteToDraw));
-assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ParentSpriteToDraw));
 
 /* Enumeration of multi-part foundations */
 enum FoundationPart {
@@ -142,26 +132,25 @@ typedef SmallVector<TileSpriteToDraw, 64> TileSpriteToDrawVector;
 typedef SmallVector<StringSpriteToDraw, 4> StringSpriteToDrawVector;
 typedef SmallVector<ParentSpriteToDraw, 64> ParentSpriteToDrawVector;
 typedef SmallVector<ParentSpriteToDraw*, 64> ParentSpriteToSortVector;
+typedef SmallVector<ChildScreenSpriteToDraw, 16> ChildScreenSpriteToDrawVector;
 
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
-
-	byte *spritelist_mem;
-	const byte *eof_spritelist_mem;
 
 	StringSpriteToDrawVector string_sprites_to_draw;
 	TileSpriteToDrawVector tile_sprites_to_draw;
 	ParentSpriteToDrawVector parent_sprites_to_draw;
 	ParentSpriteToSortVector parent_sprites_to_sort;
+	ChildScreenSpriteToDrawVector child_screen_sprites_to_draw;
 
-	ChildScreenSpriteToDraw **last_child;
+	int *last_child;
 
 	byte combine_sprites;
 
-	int foundation[FOUNDATION_PART_END];                                   ///< Foundation sprites (index into parent_sprites_to_draw).
-	FoundationPart foundation_part;                                        ///< Currently active foundation for ground sprite drawing.
-	ChildScreenSpriteToDraw **last_foundation_child[FOUNDATION_PART_END];  ///< Tail of ChildSprite list of the foundations.
-	Point foundation_offset[FOUNDATION_PART_END];                          ///< Pixeloffset for ground sprites on the foundations.
+	int foundation[FOUNDATION_PART_END];             ///< Foundation sprites (index into parent_sprites_to_draw).
+	FoundationPart foundation_part;                  ///< Currently active foundation for ground sprite drawing.
+	int *last_foundation_child[FOUNDATION_PART_END]; ///< Tail of ChildSprite list of the foundations. (index into child_screen_sprites_to_draw)
+	Point foundation_offset[FOUNDATION_PART_END];    ///< Pixeloffset for ground sprites on the foundations.
 };
 
 static ViewportDrawer *_cur_vd;
@@ -517,7 +506,7 @@ static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSp
 	Point offs = vd->foundation_offset[foundation_part];
 
 	/* Change the active ChildSprite list to the one of the foundation */
-	ChildScreenSpriteToDraw **old_child = vd->last_child;
+	int *old_child = vd->last_child;
 	vd->last_child = vd->last_foundation_child[foundation_part];
 
 	AddChildSpriteScreen(image, pal, offs.x + extra_offs_x, offs.y + extra_offs_y, false, sub);
@@ -648,12 +637,6 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 
 	vd->last_child = NULL;
 
-	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(sprite, 0, "Out of sprite memory");
-		return;
-	}
-
-
 	Point pt = RemapCoords(x, y, z);
 	int tmp_left, tmp_top, tmp_x = pt.x, tmp_y = pt.y;
 
@@ -707,9 +690,10 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	ps->zmax = z + max(bb_offset_z, dz) - 1;
 
 	ps->comparison_done = false;
-	ps->child = NULL;
+	ps->first_child = vd->child_screen_sprites_to_draw.items;
+	ps->last_child  = vd->child_screen_sprites_to_draw.items;
 
-	vd->last_child = &ps->child;
+	vd->last_child = &ps->last_child;
 
 	if (vd->combine_sprites == 1) vd->combine_sprites = 2;
 }
@@ -737,9 +721,11 @@ void EndSpriteCombine()
 void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool transparent, const SubSprite *sub)
 {
 	ViewportDrawer *vd = _cur_vd;
-	ChildScreenSpriteToDraw *cs;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
+
+	/* If the ParentSprite was clipped by the viewport bounds, do not draw the ChildSprites either */
+	if (vd->last_child == NULL) return;
 
 	/* make the sprites transparent with the right palette */
 	if (transparent) {
@@ -747,30 +733,17 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(sprite, 0, "Out of sprite memory");
-		return;
-	}
-	cs = (ChildScreenSpriteToDraw*)vd->spritelist_mem;
-
-	/* If the ParentSprite was clipped by the viewport bounds, do not draw the ChildSprites either */
-	if (vd->last_child == NULL) return;
-
-	vd->spritelist_mem += sizeof(ChildScreenSpriteToDraw);
-
 	/* Append the sprite to the active ChildSprite list.
 	 * If the active ParentSprite is a foundation, update last_foundation_child as well. */
-	*vd->last_child = cs;
-	if (vd->last_foundation_child[0] == vd->last_child) vd->last_foundation_child[0] = &cs->next;
-	if (vd->last_foundation_child[1] == vd->last_child) vd->last_foundation_child[1] = &cs->next;
-	vd->last_child = &cs->next;
-
+	ChildScreenSpriteToDraw *cs = vd->child_screen_sprites_to_draw.Append();
 	cs->image = image;
 	cs->pal = pal;
 	cs->sub = sub;
 	cs->x = x;
 	cs->y = y;
 	cs->next = NULL;
+
+	*vd->last_child = vd->child_screen_sprites_to_draw.items;
 }
 
 /* Returns a StringSpriteToDraw */
@@ -1387,14 +1360,15 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 	}
 }
 
-static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd)
+static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const ChildScreenSpriteToDrawVector *csstdv)
 {
 	const ParentSpriteToDraw * const *psd_end = psd->End();
 	for (const ParentSpriteToDraw * const *it = psd->Begin(); it != psd_end; it++) {
 		const ParentSpriteToDraw *ps = *it;
 		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSprite(ps->image, ps->pal, ps->x, ps->y, ps->sub);
 
-		for (const ChildScreenSpriteToDraw *cs = ps->child; cs != NULL; cs = cs->next) {
+		const ChildScreenSpriteToDraw *last = csstdv->Get(ps->last_child);
+		for (const ChildScreenSpriteToDraw *cs = csstdv->Get(ps->first_child); cs != last; cs++) {
 			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
 		}
 	}
@@ -1493,8 +1467,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	int y;
 	DrawPixelInfo *old_dpi;
 
-	SmallStackSafeStackAlloc<byte, VIEWPORT_DRAW_MEM> mem;
-
 	_cur_vd = &vd;
 
 	old_dpi = _cur_dpi;
@@ -1510,14 +1482,12 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.dpi.left = left & mask;
 	vd.dpi.top = top & mask;
 	vd.dpi.pitch = old_dpi->pitch;
+	vd.last_child = NULL;
 
 	x = UnScaleByZoom(vd.dpi.left - (vp->virtual_left & mask), vp->zoom) + vp->left;
 	y = UnScaleByZoom(vd.dpi.top - (vp->virtual_top & mask), vp->zoom) + vp->top;
 
 	vd.dpi.dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(old_dpi->dst_ptr, x - old_dpi->left, y - old_dpi->top);
-
-	vd.spritelist_mem = mem;
-	vd.eof_spritelist_mem = mem.EndOf() - sizeof(LARGEST_SPRITELIST_STRUCT);
 
 	ViewportAddLandscape();
 	ViewportAddVehicles(&vd.dpi);
@@ -1535,7 +1505,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	}
 
 	ViewportSortParentSprites(&vd.parent_sprites_to_sort);
-	ViewportDrawParentSprites(&vd.parent_sprites_to_sort);
+	ViewportDrawParentSprites(&vd.parent_sprites_to_sort, &vd.child_screen_sprites_to_draw);
 
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(&vd.parent_sprites_to_sort);
 
