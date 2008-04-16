@@ -140,6 +140,8 @@ enum FoundationPart {
 
 typedef SmallVector<TileSpriteToDraw, 64> TileSpriteToDrawVector;
 typedef SmallVector<StringSpriteToDraw, 4> StringSpriteToDrawVector;
+typedef SmallVector<ParentSpriteToDraw, 64> ParentSpriteToDrawVector;
+typedef SmallVector<ParentSpriteToDraw*, 64> ParentSpriteToSortVector;
 
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
@@ -149,15 +151,14 @@ struct ViewportDrawer {
 
 	StringSpriteToDrawVector string_sprites_to_draw;
 	TileSpriteToDrawVector tile_sprites_to_draw;
+	ParentSpriteToDrawVector parent_sprites_to_draw;
+	ParentSpriteToSortVector parent_sprites_to_sort;
 
 	ChildScreenSpriteToDraw **last_child;
 
-	ParentSpriteToDraw **parent_list;
-	ParentSpriteToDraw * const *eof_parent_list;
-
 	byte combine_sprites;
 
-	ParentSpriteToDraw *foundation[FOUNDATION_PART_END];                   ///< Foundation sprites.
+	int foundation[FOUNDATION_PART_END];                                   ///< Foundation sprites (index into parent_sprites_to_draw).
 	FoundationPart foundation_part;                                        ///< Currently active foundation for ground sprite drawing.
 	ChildScreenSpriteToDraw **last_foundation_child[FOUNDATION_PART_END];  ///< Tail of ChildSprite list of the foundations.
 	Point foundation_offset[FOUNDATION_PART_END];                          ///< Pixeloffset for ground sprites on the foundations.
@@ -512,7 +513,7 @@ static void AddChildSpriteToFoundation(SpriteID image, SpriteID pal, const SubSp
 {
 	ViewportDrawer *vd = _cur_vd;
 	assert(IsInsideMM(foundation_part, 0, FOUNDATION_PART_END));
-	assert(vd->foundation[foundation_part] != NULL);
+	assert(vd->foundation[foundation_part] != -1);
 	Point offs = vd->foundation_offset[foundation_part];
 
 	/* Change the active ChildSprite list to the one of the foundation */
@@ -539,7 +540,7 @@ void DrawGroundSprite(SpriteID image, SpriteID pal, const SubSprite *sub)
 	/* Switch to first foundation part, if no foundation was drawn */
 	if (vd->foundation_part == FOUNDATION_PART_NONE) vd->foundation_part = FOUNDATION_PART_NORMAL;
 
-	if (vd->foundation[vd->foundation_part] != NULL) {
+	if (vd->foundation[vd->foundation_part] != -1) {
 		AddChildSpriteToFoundation(image, pal, sub, vd->foundation_part, 0, 0);
 	} else {
 		DrawGroundSpriteAt(image, pal, _cur_ti->x, _cur_ti->y, _cur_ti->z, sub);
@@ -569,7 +570,7 @@ void OffsetGroundSprite(int x, int y)
 	}
 
 	/* vd->last_child == NULL if foundation sprite was clipped by the viewport bounds */
-	if (vd->last_child != NULL) vd->foundation[vd->foundation_part] = vd->parent_list[-1];
+	if (vd->last_child != NULL) vd->foundation[vd->foundation_part] = vd->parent_sprites_to_draw.items - 1;
 
 	vd->foundation_offset[vd->foundation_part].x = x;
 	vd->foundation_offset[vd->foundation_part].y = y;
@@ -599,7 +600,8 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
 			pt.y + spr->y_offs + spr->height <= vd->dpi.top)
 		return;
 
-	AddChildSpriteScreen(image, pal, pt.x - vd->parent_list[-1]->left, pt.y - vd->parent_list[-1]->top, false, sub);
+	const ParentSpriteToDraw *pstd = vd->parent_sprites_to_draw.End() - 1;
+	AddChildSpriteScreen(image, pal, pt.x - pstd->left, pt.y - pstd->top, false, sub);
 }
 
 /** Draw a (transparent) sprite at given coordinates with a given bounding box.
@@ -629,8 +631,6 @@ static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z
 void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, int h, int dz, int z, bool transparent, int bb_offset_x, int bb_offset_y, int bb_offset_z, const SubSprite *sub)
 {
 	ViewportDrawer *vd = _cur_vd;
-	ParentSpriteToDraw *ps;
-	Point pt;
 	int32 left, right, top, bottom;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
@@ -652,34 +652,22 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 		DEBUG(sprite, 0, "Out of sprite memory");
 		return;
 	}
-	ps = (ParentSpriteToDraw*)vd->spritelist_mem;
 
-	if (vd->parent_list >= vd->eof_parent_list) {
-		/* This can happen rarely, mostly when you zoom out completely
-		 *  and have a lot of stuff that moves (and is added to the
-		 *  sort-list, this function). To solve it, increase
-		 *  parent_list somewhere below to a higher number.
-		 * This can not really hurt you, it just gives some black
-		 *  spots on the screen ;) */
-		DEBUG(sprite, 0, "Out of sprite memory (parent_list)");
-		return;
-	}
 
-	pt = RemapCoords(x, y, z);
-	ps->x = pt.x;
-	ps->y = pt.y;
+	Point pt = RemapCoords(x, y, z);
+	int tmp_left, tmp_top, tmp_x = pt.x, tmp_y = pt.y;
 
 	/* Compute screen extents of sprite */
 	if (image == SPR_EMPTY_BOUNDING_BOX) {
-		left = ps->left = RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x;
+		left = tmp_left = RemapCoords(x + w          , y + bb_offset_y, z + bb_offset_z).x;
 		right           = RemapCoords(x + bb_offset_x, y + h          , z + bb_offset_z).x + 1;
-		top  = ps->top  = RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y;
+		top  = tmp_top  = RemapCoords(x + bb_offset_x, y + bb_offset_y, z + dz         ).y;
 		bottom          = RemapCoords(x + w          , y + h          , z + bb_offset_z).y + 1;
 	} else {
 		const Sprite *spr = GetSprite(image & SPRITE_MASK);
-		left = ps->left = (pt.x += spr->x_offs);
+		left = tmp_left = (pt.x += spr->x_offs);
 		right           = (pt.x +  spr->width );
-		top  = ps->top  = (pt.y += spr->y_offs);
+		top  = tmp_top  = (pt.y += spr->y_offs);
 		bottom          = (pt.y +  spr->height);
 	}
 
@@ -699,7 +687,12 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 		return;
 	}
 
-	vd->spritelist_mem += sizeof(ParentSpriteToDraw);
+	ParentSpriteToDraw *ps = vd->parent_sprites_to_draw.Append();
+	ps->x = tmp_x;
+	ps->y = tmp_y;
+
+	ps->left = tmp_left;
+	ps->top  = tmp_top;
 
 	ps->image = image;
 	ps->pal = pal;
@@ -715,9 +708,8 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 
 	ps->comparison_done = false;
 	ps->child = NULL;
-	vd->last_child = &ps->child;
 
-	*vd->parent_list++ = ps;
+	vd->last_child = &ps->child;
 
 	if (vd->combine_sprites == 1) vd->combine_sprites = 2;
 }
@@ -809,7 +801,7 @@ void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 para
 static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti, int z_offset, FoundationPart foundation_part)
 {
 	/* FIXME: This is not totally valid for some autorail highlights, that extent over the edges of the tile. */
-	if (_cur_vd->foundation[foundation_part] == NULL) {
+	if (_cur_vd->foundation[foundation_part] == -1) {
 		/* draw on real ground */
 		DrawGroundSpriteAt(image, pal, ti->x, ti->y, ti->z + z_offset);
 	} else {
@@ -1033,8 +1025,8 @@ static void ViewportAddLandscape()
 			x_cur -= 0x10;
 
 			vd->foundation_part = FOUNDATION_PART_NONE;
-			vd->foundation[0] = NULL;
-			vd->foundation[1] = NULL;
+			vd->foundation[0] = -1;
+			vd->foundation[1] = -1;
 			vd->last_foundation_child[0] = NULL;
 			vd->last_foundation_child[1] = NULL;
 
@@ -1335,9 +1327,11 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 	}
 }
 
-static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
+static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
-	while (*psd != NULL) {
+	ParentSpriteToDraw **psdvend = psdv->End();
+	ParentSpriteToDraw **psd = psdv->Begin();
+	while (psd != psdvend) {
 		ParentSpriteToDraw *ps = *psd;
 
 		if (ps->comparison_done) {
@@ -1347,7 +1341,7 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 
 		ps->comparison_done = true;
 
-		for (ParentSpriteToDraw **psd2 = psd + 1; *psd2 != NULL; psd2++) {
+		for (ParentSpriteToDraw **psd2 = psd + 1; psd2 != psdvend; psd2++) {
 			ParentSpriteToDraw *ps2 = *psd2;
 
 			if (ps2->comparison_done) continue;
@@ -1383,7 +1377,7 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 			/* Swap the two sprites ps and ps2 using bubble-sort algorithm. */
 			ParentSpriteToDraw **psd3 = psd;
 			do {
-				ParentSpriteToDraw* temp = *psd3;
+				ParentSpriteToDraw *temp = *psd3;
 				*psd3 = ps2;
 				ps2 = temp;
 
@@ -1393,15 +1387,14 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 	}
 }
 
-static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
+static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd)
 {
-	for (; *psd != NULL; psd++) {
-		const ParentSpriteToDraw* ps = *psd;
-		const ChildScreenSpriteToDraw* cs;
-
+	const ParentSpriteToDraw * const *psd_end = psd->End();
+	for (const ParentSpriteToDraw * const *it = psd->Begin(); it != psd_end; it++) {
+		const ParentSpriteToDraw *ps = *it;
 		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSprite(ps->image, ps->pal, ps->x, ps->y, ps->sub);
 
-		for (cs = ps->child; cs != NULL; cs = cs->next) {
+		for (const ChildScreenSpriteToDraw *cs = ps->child; cs != NULL; cs = cs->next) {
 			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
 		}
 	}
@@ -1411,10 +1404,11 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
  * Draws the bounding boxes of all ParentSprites
  * @param psd Array of ParentSprites
  */
-static void ViewportDrawBoundingBoxes(ParentSpriteToDraw *psd[])
+static void ViewportDrawBoundingBoxes(const ParentSpriteToSortVector *psd)
 {
-	for (; *psd != NULL; psd++) {
-		const ParentSpriteToDraw* ps = *psd;
+	const ParentSpriteToDraw * const *psd_end = psd->End();
+	for (const ParentSpriteToDraw * const *it = psd->Begin(); it != psd_end; it++) {
+		const ParentSpriteToDraw *ps = *it;
 		Point pt1 = RemapCoords(ps->xmax + 1, ps->ymax + 1, ps->zmax + 1); // top front corner
 		Point pt2 = RemapCoords(ps->xmin    , ps->ymax + 1, ps->zmax + 1); // top left corner
 		Point pt3 = RemapCoords(ps->xmax + 1, ps->ymin    , ps->zmax + 1); // top right corner
@@ -1500,7 +1494,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	DrawPixelInfo *old_dpi;
 
 	SmallStackSafeStackAlloc<byte, VIEWPORT_DRAW_MEM> mem;
-	SmallStackSafeStackAlloc<ParentSpriteToDraw*, PARENT_LIST_SIZE> parent_list;
 
 	_cur_vd = &vd;
 
@@ -1523,8 +1516,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	vd.dpi.dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(old_dpi->dst_ptr, x - old_dpi->left, y - old_dpi->top);
 
-	vd.parent_list = parent_list;
-	vd.eof_parent_list = parent_list.EndOf();
 	vd.spritelist_mem = mem;
 	vd.eof_spritelist_mem = mem.EndOf() - sizeof(LARGEST_SPRITELIST_STRUCT);
 
@@ -1537,19 +1528,16 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportAddSigns(&vd.dpi);
 	ViewportAddWaypoints(&vd.dpi);
 
-	/* This assert should never happen (because the length of the parent_list
-	 *  is checked) */
-	assert(vd.parent_list <= endof(parent_list));
-
 	if (vd.tile_sprites_to_draw.items != 0) ViewportDrawTileSprites(&vd.tile_sprites_to_draw);
 
-	/* null terminate parent sprite list */
-	*vd.parent_list = NULL;
+	for (ParentSpriteToDraw *it = vd.parent_sprites_to_draw.Begin(); it != vd.parent_sprites_to_draw.End(); it++) {
+		*vd.parent_sprites_to_sort.Append() = it;
+	}
 
-	ViewportSortParentSprites(parent_list);
-	ViewportDrawParentSprites(parent_list);
+	ViewportSortParentSprites(&vd.parent_sprites_to_sort);
+	ViewportDrawParentSprites(&vd.parent_sprites_to_sort);
 
-	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(parent_list);
+	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(&vd.parent_sprites_to_sort);
 
 	if (vd.string_sprites_to_draw.items != 0) ViewportDrawStrings(&vd.dpi, &vd.string_sprites_to_draw);
 

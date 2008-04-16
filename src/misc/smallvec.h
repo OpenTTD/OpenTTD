@@ -35,7 +35,17 @@ template <typename T, uint S> struct SmallVector {
 		return data;
 	}
 
+	T *Begin()
+	{
+		return data;
+	}
+
 	const T *End() const
+	{
+		return &data[items];
+	}
+
+	T *End()
 	{
 		return &data[items];
 	}
