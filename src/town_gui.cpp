@@ -278,6 +278,7 @@ static void ShowTownAuthorityWindow(uint town)
 
 enum TownViewWidget {
 	TVW_CAPTION = 1,
+	TVW_STICKY,
 	TVW_CENTERVIEW = 6,
 	TVW_SHOWAUTORITY,
 	TVW_CHANGENAME,
@@ -290,9 +291,22 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 	Town *t = GetTown(w->window_number);
 
 	switch (e->event) {
-		case WE_CREATE:
+		case WE_CREATE: {
+			bool ingame = _game_mode != GM_EDITOR;
 			if (t->larger_town) w->widget[TVW_CAPTION].data = STR_CITY;
-			break;
+			w->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
+			w->SetWidgetHiddenState(TVW_EXPAND, ingame);  // hide expand button on game mode
+			w->SetWidgetHiddenState(TVW_SHOWAUTORITY, !ingame); // hide autority button on editor mode
+
+			if (ingame) {
+				/* resize caption bar */
+				w->widget[TVW_CAPTION].right = w->widget[TVW_STICKY].left -1;
+				/* move the rename from top on scenario to bottom in game */
+				w->widget[TVW_CHANGENAME].top = w->widget[TVW_EXPAND].top;
+				w->widget[TVW_CHANGENAME].bottom = w->widget[TVW_EXPAND].bottom;
+				w->widget[TVW_CHANGENAME].right = w->widget[TVW_STICKY].right;
+			}
+		} break;
 
 		case WE_PAINT:
 			/* disable renaming town in network games if you are not the server */
@@ -353,14 +367,16 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 
 static const Widget _town_view_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   247,     0,    13, STR_2005,                 STR_018C_WINDOW_TITLE_DRAG_THIS},
+{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   172,     0,    13, STR_2005,                 STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    13,   248,   259,     0,    13, 0x0,                      STR_STICKY_BUTTON},
 {      WWT_PANEL,   RESIZE_NONE,    13,     0,   259,    14,   105, 0x0,                      STR_NULL},
 {      WWT_INSET,   RESIZE_NONE,    13,     2,   257,    16,   103, 0x0,                      STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,    13,     0,   259,   106,   137, 0x0,                      STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    85,   138,   149, STR_00E4_LOCATION,        STR_200B_CENTER_THE_MAIN_VIEW_ON},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    86,   171,   138,   149, STR_2020_LOCAL_AUTHORITY, STR_2021_SHOW_INFORMATION_ON_LOCAL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   172,   259,   138,   149, STR_0130_RENAME,          STR_200C_CHANGE_TOWN_NAME},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   172,   247,     0,    13, STR_0130_RENAME,          STR_200C_CHANGE_TOWN_NAME},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    86,   171,   138,   149, STR_023C_EXPAND,          STR_023B_INCREASE_SIZE_OF_TOWN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   172,   259,   138,   149, STR_0290_DELETE,          STR_0291_DELETE_THIS_TOWN_COMPLETELY},
 {   WIDGETS_END},
 };
 
@@ -372,38 +388,11 @@ static const WindowDesc _town_view_desc = {
 	TownViewWndProc
 };
 
-static const Widget _town_view_scen_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    13,    11,   172,     0,    13, STR_2005,          STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    13,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   259,    14,   105, 0x0,               STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,    13,     2,   257,    16,   103, 0x0,               STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,   259,   106,   137, 0x0,               STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,    85,   138,   149, STR_00E4_LOCATION, STR_200B_CENTER_THE_MAIN_VIEW_ON},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   173,   247,     0,    13, STR_0130_RENAME,   STR_200C_CHANGE_TOWN_NAME},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,    86,   171,   138,   149, STR_023C_EXPAND,   STR_023B_INCREASE_SIZE_OF_TOWN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   172,   259,   138,   149, STR_0290_DELETE,   STR_0291_DELETE_THIS_TOWN_COMPLETELY},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _town_view_scen_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 150, 260, 150,
-	WC_TOWN_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_town_view_scen_widgets,
-	TownViewWndProc
-};
-
 void ShowTownViewWindow(TownID town)
 {
 	Window *w;
 
-	if (_game_mode != GM_EDITOR) {
-		w = AllocateWindowDescFront(&_town_view_desc, town);
-	} else {
-		w = AllocateWindowDescFront(&_town_view_scen_desc, town);
-	}
+	w = AllocateWindowDescFront(&_town_view_desc, town);
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
