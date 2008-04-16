@@ -28,8 +28,7 @@
 #include "settings_type.h"
 #include "station_func.h"
 #include "core/alloc_type.hpp"
-
-#include <vector>
+#include "misc/smallvec.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -139,8 +138,8 @@ enum FoundationPart {
 	FOUNDATION_PART_END
 };
 
-typedef std::vector<TileSpriteToDraw> TileSpriteToDrawVector;
-typedef std::vector<StringSpriteToDraw> StringSpriteToDrawVector;
+typedef SmallVector<TileSpriteToDraw, 64> TileSpriteToDrawVector;
+typedef SmallVector<StringSpriteToDraw, 4> StringSpriteToDrawVector;
 
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
@@ -488,15 +487,13 @@ void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, 
 {
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
-	TileSpriteToDraw ts;
-	ts.image = image;
-	ts.pal = pal;
-	ts.sub = sub;
-	ts.x = x;
-	ts.y = y;
-	ts.z = z;
-
-	_cur_vd->tile_sprites_to_draw.push_back(ts);
+	TileSpriteToDraw *ts = _cur_vd->tile_sprites_to_draw.Append();
+	ts->image = image;
+	ts->pal = pal;
+	ts->sub = sub;
+	ts->x = x;
+	ts->y = y;
+	ts->z = z;
 }
 
 /**
@@ -787,16 +784,14 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 /* Returns a StringSpriteToDraw */
 void AddStringToDraw(int x, int y, StringID string, uint64 params_1, uint64 params_2, uint16 color, uint16 width)
 {
-	StringSpriteToDraw ss;
-	ss.string = string;
-	ss.x = x;
-	ss.y = y;
-	ss.params[0] = params_1;
-	ss.params[1] = params_2;
-	ss.width = width;
-	ss.color = color;
-
-	_cur_vd->string_sprites_to_draw.push_back(ss);
+	StringSpriteToDraw *ss = _cur_vd->string_sprites_to_draw.Append();
+	ss->string = string;
+	ss->x = x;
+	ss->y = y;
+	ss->params[0] = params_1;
+	ss->params[1] = params_2;
+	ss->width = width;
+	ss->color = color;
 }
 
 
@@ -1333,7 +1328,8 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 
 static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 {
-	for (TileSpriteToDrawVector::const_iterator ts = tstdv->begin(); ts != tstdv->end(); ts++) {
+	const TileSpriteToDraw *tsend = tstdv->End();
+	for (const TileSpriteToDraw *ts = tstdv->Begin(); ts != tsend; ++ts) {
 		Point pt = RemapCoords(ts->x, ts->y, ts->z);
 		DrawSprite(ts->image, ts->pal, pt.x, pt.y, ts->sub);
 	}
@@ -1444,7 +1440,8 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 	dp.width  = UnScaleByZoom(dp.width,  zoom);
 	dp.height = UnScaleByZoom(dp.height, zoom);
 
-	for (StringSpriteToDrawVector::const_iterator ss = sstdv->begin(); ss != sstdv->end(); ss++) {
+	const StringSpriteToDraw *ssend = sstdv->End();
+	for (const StringSpriteToDraw *ss = sstdv->Begin(); ss != ssend; ++ss) {
 		uint16 colour;
 
 		if (ss->width != 0) {
@@ -1541,7 +1538,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	 *  is checked) */
 	assert(vd.parent_list <= endof(parent_list));
 
-	if (!vd.tile_sprites_to_draw.empty()) ViewportDrawTileSprites(&vd.tile_sprites_to_draw);
+	if (vd.tile_sprites_to_draw.items != 0) ViewportDrawTileSprites(&vd.tile_sprites_to_draw);
 
 	/* null terminate parent sprite list */
 	*vd.parent_list = NULL;
@@ -1551,7 +1548,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(parent_list);
 
-	if (!vd.string_sprites_to_draw.empty()) ViewportDrawStrings(&vd.dpi, &vd.string_sprites_to_draw);
+	if (vd.string_sprites_to_draw.items != 0) ViewportDrawStrings(&vd.dpi, &vd.string_sprites_to_draw);
 
 	_cur_dpi = old_dpi;
 }

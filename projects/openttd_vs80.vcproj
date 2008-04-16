@@ -2272,6 +2272,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\misc\smallveh.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\misc\str.hpp"
 				>
 			</File>
