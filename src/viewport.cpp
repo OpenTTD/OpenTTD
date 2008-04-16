@@ -89,7 +89,6 @@ struct TileSpriteToDraw {
 	SpriteID image;
 	SpriteID pal;
 	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
-	TileSpriteToDraw *next;
 	int32 x;
 	int32 y;
 	byte z;
@@ -129,7 +128,6 @@ struct ParentSpriteToDraw {
 /* Quick hack to know how much memory to reserve when allocating from the spritelist
  * to prevent a buffer overflow. */
 #define LARGEST_SPRITELIST_STRUCT ParentSpriteToDraw
-assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(TileSpriteToDraw));
 assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ChildScreenSpriteToDraw));
 assert_compile(sizeof(LARGEST_SPRITELIST_STRUCT) >= sizeof(ParentSpriteToDraw));
 
@@ -141,6 +139,7 @@ enum FoundationPart {
 	FOUNDATION_PART_END
 };
 
+typedef std::vector<TileSpriteToDraw> TileSpriteToDrawVector;
 typedef std::vector<StringSpriteToDraw> StringSpriteToDrawVector;
 
 struct ViewportDrawer {
@@ -150,8 +149,7 @@ struct ViewportDrawer {
 	const byte *eof_spritelist_mem;
 
 	StringSpriteToDrawVector string_sprites_to_draw;
-
-	TileSpriteToDraw **last_tile, *first_tile;
+	TileSpriteToDrawVector tile_sprites_to_draw;
 
 	ChildScreenSpriteToDraw **last_child;
 
@@ -488,28 +486,17 @@ void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte 
  */
 void DrawGroundSpriteAt(SpriteID image, SpriteID pal, int32 x, int32 y, byte z, const SubSprite *sub)
 {
-	ViewportDrawer *vd = _cur_vd;
-	TileSpriteToDraw *ts;
-
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
 
-	if (vd->spritelist_mem >= vd->eof_spritelist_mem) {
-		DEBUG(sprite, 0, "Out of sprite memory");
-		return;
-	}
-	ts = (TileSpriteToDraw*)vd->spritelist_mem;
+	TileSpriteToDraw ts;
+	ts.image = image;
+	ts.pal = pal;
+	ts.sub = sub;
+	ts.x = x;
+	ts.y = y;
+	ts.z = z;
 
-	vd->spritelist_mem += sizeof(TileSpriteToDraw);
-
-	ts->image = image;
-	ts->pal = pal;
-	ts->sub = sub;
-	ts->next = NULL;
-	ts->x = x;
-	ts->y = y;
-	ts->z = z;
-	*vd->last_tile = ts;
-	vd->last_tile = &ts->next;
+	_cur_vd->tile_sprites_to_draw.push_back(ts);
 }
 
 /**
@@ -1344,13 +1331,12 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 }
 
 
-static void ViewportDrawTileSprites(TileSpriteToDraw *ts)
+static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 {
-	do {
+	for (TileSpriteToDrawVector::const_iterator ts = tstdv->begin(); ts != tstdv->end(); ts++) {
 		Point pt = RemapCoords(ts->x, ts->y, ts->z);
 		DrawSprite(ts->image, ts->pal, pt.x, pt.y, ts->sub);
-		ts = ts->next;
-	} while (ts != NULL);
+	}
 }
 
 static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
@@ -1507,7 +1493,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDrawVect
 			UnScaleByZoom(ss->x, zoom), UnScaleByZoom(ss->y, zoom) - (ss->width & 0x8000 ? 2 : 0),
 			ss->string, colour
 		);
-	};
+	}
 }
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom)
@@ -1546,8 +1532,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	vd.eof_parent_list = parent_list.EndOf();
 	vd.spritelist_mem = mem;
 	vd.eof_spritelist_mem = mem.EndOf() - sizeof(LARGEST_SPRITELIST_STRUCT);
-	vd.last_tile = &vd.first_tile;
-	vd.first_tile = NULL;
 
 	ViewportAddLandscape();
 	ViewportAddVehicles(&vd.dpi);
@@ -1562,7 +1546,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	 *  is checked) */
 	assert(vd.parent_list <= endof(parent_list));
 
-	if (vd.first_tile != NULL) ViewportDrawTileSprites(vd.first_tile);
+	if (!vd.tile_sprites_to_draw.empty()) ViewportDrawTileSprites(&vd.tile_sprites_to_draw);
 
 	/* null terminate parent sprite list */
 	*vd.parent_list = NULL;
