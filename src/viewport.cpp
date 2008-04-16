@@ -1341,60 +1341,55 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 
 static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 {
-	while (*psd != NULL) {
-		ParentSpriteToDraw* ps = *psd;
+	for (; *psd != NULL; psd++) {
+		ParentSpriteToDraw *ps = *psd;
 
-		if (!ps->comparison_done) {
-			ParentSpriteToDraw** psd2 = psd;
+		if (ps->comparison_done) continue;
 
-			ps->comparison_done = true;
+		ps->comparison_done = true;
 
-			while (*++psd2 != NULL) {
-				ParentSpriteToDraw* ps2 = *psd2;
-				ParentSpriteToDraw** psd3;
+		for (ParentSpriteToDraw **psd2 = psd + 1; *psd2 != NULL; psd2++) {
+			ParentSpriteToDraw *ps2 = *psd2;
 
-				if (ps2->comparison_done) continue;
+			if (ps2->comparison_done) continue;
 
-				/* Decide which comparator to use, based on whether the bounding
-				 * boxes overlap
+			/* Decide which comparator to use, based on whether the bounding
+			 * boxes overlap
+			 */
+			if (ps->xmax >= ps2->xmin && ps->xmin <= ps2->xmax && // overlap in X?
+					ps->ymax >= ps2->ymin && ps->ymin <= ps2->ymax && // overlap in Y?
+					ps->zmax >= ps2->zmin && ps->zmin <= ps2->zmax) { // overlap in Z?
+				/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
+				 * the screen and with higher Z elevation, are drawn in front.
+				 * Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
+				 * i.e. X=(left+right)/2, etc.
+				 * However, since we only care about order, don't actually divide / 2
 				 */
-				if (ps->xmax >= ps2->xmin && ps->xmin <= ps2->xmax && // overlap in X?
-						ps->ymax >= ps2->ymin && ps->ymin <= ps2->ymax && // overlap in Y?
-						ps->zmax >= ps2->zmin && ps->zmin <= ps2->zmax) { // overlap in Z?
-					/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
-					 * the screen and with higher Z elevation, are drawn in front.
-					 * Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
-					 * i.e. X=(left+right)/2, etc.
-					 * However, since we only care about order, don't actually divide / 2
-					 */
-					if (ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax <=
-							ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax) {
-						continue;
-					}
-				} else {
-					/* We only change the order, if it is definite.
-					 * I.e. every single order of X, Y, Z says ps2 is behind ps or they overlap.
-					 * That is: If one partial order says ps behind ps2, do not change the order.
-					 */
-					if (ps->xmax < ps2->xmin ||
-							ps->ymax < ps2->ymin ||
-							ps->zmax < ps2->zmin) {
-						continue;
-					}
+				if (ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax <=
+						ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax) {
+					continue;
 				}
-
-				/* Swap the two sprites ps and ps2 using bubble-sort algorithm. */
-				psd3 = psd;
-				do {
-					ParentSpriteToDraw* temp = *psd3;
-					*psd3 = ps2;
-					ps2 = temp;
-
-					psd3++;
-				} while (psd3 <= psd2);
+			} else {
+				/* We only change the order, if it is definite.
+				 * I.e. every single order of X, Y, Z says ps2 is behind ps or they overlap.
+				 * That is: If one partial order says ps behind ps2, do not change the order.
+				 */
+				if (ps->xmax < ps2->xmin ||
+						ps->ymax < ps2->ymin ||
+						ps->zmax < ps2->zmin) {
+					continue;
+				}
 			}
-		} else {
-			psd++;
+
+			/* Swap the two sprites ps and ps2 using bubble-sort algorithm. */
+			ParentSpriteToDraw **psd3 = psd;
+			do {
+				ParentSpriteToDraw* temp = *psd3;
+				*psd3 = ps2;
+				ps2 = temp;
+
+				psd3++;
+			} while (psd3 <= psd2);
 		}
 	}
 }
