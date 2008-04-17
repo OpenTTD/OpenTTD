@@ -68,6 +68,18 @@ static inline void SetStationGfx(TileIndex t, StationGfx gfx)
 	_m[t].m5 = gfx;
 }
 
+static inline uint8 GetStationAnimationFrame(TileIndex t)
+{
+	assert(IsTileType(t, MP_STATION));
+	return _me[t].m7;
+}
+
+static inline void SetStationAnimationFrame(TileIndex t, uint8 frame)
+{
+	assert(IsTileType(t, MP_STATION));
+	_me[t].m7 = frame;
+}
+
 static inline bool IsRailwayStation(TileIndex t)
 {
 	return GetStationType(t) == STATION_RAIL;
