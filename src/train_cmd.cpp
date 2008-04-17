@@ -678,7 +678,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	/* Check if the train is actually being built in a depot belonging
 	 * to the player. Doesn't matter if only the cost is queried */
 	if (!(flags & DC_QUERY_COST)) {
-		if (!IsTileDepotType(tile, TRANSPORT_RAIL)) return CMD_ERROR;
+		if (!IsDepotTypeTile(tile, TRANSPORT_RAIL)) return CMD_ERROR;
 		if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 	}
 
@@ -806,7 +806,7 @@ int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
 	TileIndex tile = v->tile;
 
 	/* check if stopped in a depot */
-	if (!IsTileDepotType(tile, TRANSPORT_RAIL) || v->cur_speed != 0) return -1;
+	if (!IsDepotTypeTile(tile, TRANSPORT_RAIL) || v->cur_speed != 0) return -1;
 
 	int count = 0;
 	for (; v != NULL; v = v->Next()) {
@@ -1787,7 +1787,7 @@ static void AdvanceWagonsAfterSwap(Vehicle *v)
 
 static void ReverseTrainDirection(Vehicle *v)
 {
-	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
+	if (IsDepotTypeTile(v->tile, TRANSPORT_RAIL)) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
@@ -1807,7 +1807,7 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	AdvanceWagonsAfterSwap(v);
 
-	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
+	if (IsDepotTypeTile(v->tile, TRANSPORT_RAIL)) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
@@ -2035,7 +2035,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 	tfdd.reverse = false;
 
 	TileIndex tile = v->tile;
-	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+	if (IsDepotTypeTile(tile, TRANSPORT_RAIL)) {
 		tfdd.tile = tile;
 		tfdd.best_length = 0;
 		return tfdd;
@@ -2154,7 +2154,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle *v)
 		}
 
 		/* No smoke in depots or tunnels */
-		if (IsTileDepotType(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile)) continue;
+		if (IsDepotTypeTile(v->tile, TRANSPORT_RAIL) || IsTunnelTile(v->tile)) continue;
 
 		/* No sparks for electric vehicles on nonelectrified tracks */
 		if (!HasPowerOnRail(v->u.rail.railtype, GetTileRailType(v->tile))) continue;
@@ -3149,7 +3149,7 @@ static void DeleteLastWagon(Vehicle *v)
 	if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile);
 
 	/* Update signals */
-	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsTileDepotType(tile, TRANSPORT_RAIL)) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsDepotTypeTile(tile, TRANSPORT_RAIL)) {
 		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR, owner);
 	} else {
 		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)), owner);
@@ -3311,7 +3311,7 @@ static bool TrainCanLeaveTile(const Vehicle *v)
 	}
 
 	/* entering a depot? */
-	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+	if (IsDepotTypeTile(tile, TRANSPORT_RAIL)) {
 		DiagDirection dir = ReverseDiagDir(GetRailDepotDirection(tile));
 		if (DiagDirToDir(dir) == v->direction) return false;
 	}

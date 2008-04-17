@@ -1254,7 +1254,7 @@ static void AiNew_CheckVehicle(Player *p, Vehicle *v)
 
 			// We are already sending him back
 			if (AiNew_GetSpecialVehicleFlag(p, v) & AI_VEHICLEFLAG_SELL) {
-				if (v->type == VEH_ROAD && IsTileDepotType(v->tile, TRANSPORT_ROAD) &&
+				if (v->type == VEH_ROAD && IsDepotTypeTile(v->tile, TRANSPORT_ROAD) &&
 						(v->vehstatus&VS_STOPPED)) {
 					// We are at the depot, sell the vehicle
 					AI_DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);

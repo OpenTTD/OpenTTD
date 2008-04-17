@@ -196,7 +196,7 @@ protected:
 		}
 
 		// road depots can be also left in one direction only
-		if (IsRoadTT() && IsTileDepotType(m_old_tile, TT())) {
+		if (IsRoadTT() && IsDepotTypeTile(m_old_tile, TT())) {
 			DiagDirection exitdir = GetRoadDepotDirection(m_old_tile);
 			if (exitdir != m_exitdir) {
 				m_err = EC_NO_WAY;
@@ -226,7 +226,7 @@ protected:
 		}
 
 		// road and rail depots can also be entered from one direction only
-		if (IsRoadTT() && IsTileDepotType(m_new_tile, TT())) {
+		if (IsRoadTT() && IsDepotTypeTile(m_new_tile, TT())) {
 			DiagDirection exitdir = GetRoadDepotDirection(m_new_tile);
 			if (ReverseDiagDir(exitdir) != m_exitdir) {
 				m_err = EC_NO_WAY;
@@ -238,7 +238,7 @@ protected:
 				return false;
 			}
 		}
-		if (IsRailTT() && IsTileDepotType(m_new_tile, TT())) {
+		if (IsRailTT() && IsDepotTypeTile(m_new_tile, TT())) {
 			DiagDirection exitdir = GetRailDepotDirection(m_new_tile);
 			if (ReverseDiagDir(exitdir) != m_exitdir) {
 				m_err = EC_NO_WAY;
@@ -305,7 +305,7 @@ protected:
 	FORCEINLINE bool ForcedReverse()
 	{
 		// rail and road depots cause reversing
-		if (!IsWaterTT() && IsTileDepotType(m_old_tile, TT())) {
+		if (!IsWaterTT() && IsDepotTypeTile(m_old_tile, TT())) {
 			DiagDirection exitdir = IsRailTT() ? GetRailDepotDirection(m_old_tile) : GetRoadDepotDirection(m_old_tile);
 			if (exitdir != m_exitdir) {
 				// reverse

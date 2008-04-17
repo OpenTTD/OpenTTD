@@ -231,14 +231,14 @@ static void NPFMarkTile(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			/* DEBUG: mark visited tiles by mowing the grass under them ;-) */
-			if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
+			if (!IsDepotTypeTile(tile, TRANSPORT_RAIL)) {
 				SetRailGroundType(tile, RAIL_GROUND_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
 		case MP_ROAD:
-			if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
+			if (!IsDepotTypeTile(tile, TRANSPORT_ROAD)) {
 				SetRoadside(tile, ROADSIDE_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
@@ -397,7 +397,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	 *      curves should be taken into account, as this affects the speed limit. */
 
 	/* Check for reverse in depot */
-	if (IsTileDepotType(tile, TRANSPORT_RAIL) && as->EndNodeCheck(as, &new_node) != AYSTAR_FOUND_END_NODE) {
+	if (IsDepotTypeTile(tile, TRANSPORT_RAIL) && as->EndNodeCheck(as, &new_node) != AYSTAR_FOUND_END_NODE) {
 		/* Penalise any depot tile that is not the last tile in the path. This
 		 * _should_ penalise every occurence of reversing in a depot (and only
 		 * that) */
@@ -417,7 +417,7 @@ static int32 NPFFindDepot(AyStar* as, OpenListNode *current)
 {
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
 	 * since checking the cache not that much faster than the actual check */
-	return IsTileDepotType(current->path.node.tile, (TransportType)as->user_data[NPF_TYPE]) ?
+	return IsDepotTypeTile(current->path.node.tile, (TransportType)as->user_data[NPF_TYPE]) ?
 		AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
 
@@ -466,7 +466,7 @@ static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection en
 {
 	if (IsTileType(tile, MP_RAILWAY) ||           /* Rail tile (also rail depot) */
 			IsRailwayStationTile(tile) ||               /* Rail station tile */
-			IsTileDepotType(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
+			IsDepotTypeTile(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
 			IsStandardRoadStopTile(tile)) { /* Road station tile (but not drive-through stops) */
 		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
 	}
@@ -499,7 +499,7 @@ static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection en
  */
 static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
 {
-	assert(IsTileDepotType(tile, type));
+	assert(IsDepotTypeTile(tile, type));
 
 	switch (type) {
 		case TRANSPORT_RAIL:  return GetRailDepotDirection(tile);
@@ -537,7 +537,7 @@ static DiagDirection GetSingleTramBit(TileIndex tile)
  */
 static DiagDirection GetTileSingleEntry(TileIndex tile, TransportType type, uint subtype)
 {
-	if (type != TRANSPORT_WATER && IsTileDepotType(tile, type)) return GetDepotDirection(tile, type);
+	if (type != TRANSPORT_WATER && IsDepotTypeTile(tile, type)) return GetDepotDirection(tile, type);
 
 	if (type == TRANSPORT_ROAD) {
 		if (IsStandardRoadStopTile(tile)) return GetRoadStopDir(tile);
@@ -879,7 +879,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	FOR_ALL_DEPOTS(depot) {
 		/* Check if this is really a valid depot, it is of the needed type and
 		 * owner */
-		if (IsTileDepotType(depot->xy, type) && IsTileOwner(depot->xy, owner))
+		if (IsDepotTypeTile(depot->xy, type) && IsTileOwner(depot->xy, owner))
 			/* If so, let's add it to the queue, sorted by distance */
 			depots.push(&depots, depot, DistanceManhattan(tile, depot->xy));
 	}

@@ -36,23 +36,20 @@ void ShowDepotWindow(TileIndex tile, VehicleType type);
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
 
 /**
- * Check if a tile is a depot of the given type.
+ * Check if a tile is a depot and it is a depot of the given type.
  */
-static inline bool IsTileDepotType(TileIndex tile, TransportType type)
+static inline bool IsDepotTypeTile(TileIndex tile, TransportType type)
 {
 	switch (type) {
+		default: NOT_REACHED();
 		case TRANSPORT_RAIL:
-			return IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile)  == RAIL_TILE_DEPOT;
+			return IsRailDepotTile(tile);
 
 		case TRANSPORT_ROAD:
 			return IsRoadDepotTile(tile);
 
 		case TRANSPORT_WATER:
-			return IsTileType(tile, MP_WATER)   && GetWaterTileType(tile) == WATER_TILE_DEPOT;
-
-		default:
-			NOT_REACHED();
-			return false;
+			return IsShipDepotTile(tile);
 	}
 }
 
@@ -63,13 +60,7 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
  */
 static inline bool IsDepotTile(TileIndex tile)
 {
-	switch (GetTileType(tile)) {
-		case MP_ROAD:    return IsRoadDepot(tile);
-		case MP_WATER:   return GetWaterTileType(tile) == WATER_TILE_DEPOT;
-		case MP_RAILWAY: return GetRailTileType(tile)  == RAIL_TILE_DEPOT;
-		case MP_STATION: return IsHangar(tile);
-		default:         return false;
-	}
+	return IsRailDepotTile(tile) || IsRoadDepotTile(tile) || IsShipDepotTile(tile) || IsHangarTile(tile);
 }
 
 /**

@@ -130,7 +130,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 
 	FOR_ALL_DEPOTS(depot) {
 		TileIndex tile = depot->xy;
-		if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
+		if (IsDepotTypeTile(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
 			uint dist = DistanceManhattan(tile, v->tile);
 			if (dist < best_dist) {
 				best_dist = dist;
@@ -762,7 +762,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
-	if (!IsTileDepotType(tile, TRANSPORT_WATER)) return CMD_ERROR;
+	if (!IsDepotTypeTile(tile, TRANSPORT_WATER)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);

@@ -462,7 +462,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 			case MP_WATER:
 				if (v->type != VEH_SHIP) break;
-				if (IsTileDepotType(tile, TRANSPORT_WATER) &&
+				if (IsDepotTypeTile(tile, TRANSPORT_WATER) &&
 						IsTileOwner(tile, _local_player)) {
 					TileIndex tile2 = GetOtherShipDepotTile(tile);
 

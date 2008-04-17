@@ -1,4 +1,3 @@
-
 /* $Id$ */
 
 /** @file smallmap_gui.cpp */

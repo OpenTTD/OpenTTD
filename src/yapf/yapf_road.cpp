@@ -87,7 +87,7 @@ public:
 			if (v->current_order.IsType(OT_GOTO_STATION) && tile == v->dest_tile) break;
 
 			// stop if we have just entered the depot
-			if (IsTileDepotType(tile, TRANSPORT_ROAD) && trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
+			if (IsDepotTypeTile(tile, TRANSPORT_ROAD) && trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
 				// next time we will reverse and leave the depot
 				break;
 			}
@@ -148,7 +148,7 @@ public:
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
-		bool bDest = IsTileDepotType(n.m_segment_last_tile, TRANSPORT_ROAD);
+		bool bDest = IsDepotTypeTile(n.m_segment_last_tile, TRANSPORT_ROAD);
 		return bDest;
 	}
 
@@ -370,7 +370,7 @@ public:
 		// get found depot tile
 		Node *n = Yapf().GetBestNode();
 		TileIndex depot_tile = n->m_segment_last_tile;
-		assert(IsTileDepotType(depot_tile, TRANSPORT_ROAD));
+		assert(IsDepotTypeTile(depot_tile, TRANSPORT_ROAD));
 		Depot* ret = GetDepotByTile(depot_tile);
 		return ret;
 	}
@@ -439,7 +439,7 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 		return NULL;
 
 	// handle the case when our vehicle is already in the depot tile
-	if (IsTileType(tile, MP_ROAD) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
+	if (IsTileType(tile, MP_ROAD) && IsDepotTypeTile(tile, TRANSPORT_ROAD)) {
 		// only what we need to return is the Depot*
 		return GetDepotByTile(tile);
 	}

@@ -43,7 +43,7 @@ public:
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
-		bool bDest = IsTileDepotType(tile, TRANSPORT_RAIL);
+		bool bDest = IsDepotTypeTile(tile, TRANSPORT_RAIL);
 		return bDest;
 	}
 

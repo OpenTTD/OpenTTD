@@ -392,15 +392,15 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 					switch (v->type) {
 						case VEH_TRAIN:
-							if (!IsTileDepotType(dp->xy, TRANSPORT_RAIL)) return CMD_ERROR;
+							if (!IsDepotTypeTile(dp->xy, TRANSPORT_RAIL)) return CMD_ERROR;
 							break;
 
 						case VEH_ROAD:
-							if (!IsTileDepotType(dp->xy, TRANSPORT_ROAD)) return CMD_ERROR;
+							if (!IsDepotTypeTile(dp->xy, TRANSPORT_ROAD)) return CMD_ERROR;
 							break;
 
 						case VEH_SHIP:
-							if (!IsTileDepotType(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
+							if (!IsDepotTypeTile(dp->xy, TRANSPORT_WATER)) return CMD_ERROR;
 							break;
 
 						default: return CMD_ERROR;

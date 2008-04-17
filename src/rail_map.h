@@ -72,7 +72,18 @@ static inline void SetHasSignals(TileIndex tile, bool signals)
 }
 
 /**
- * Is this tile a rail depot?
+ * Is this rail tile a rail waypoint?
+ * @param t the tile to get the information from
+ * @pre IsTileType(t, MP_RAILWAY)
+ * @return true if and only if the tile is a rail waypoint
+ */
+static inline bool IsRailWaypoint(TileIndex t)
+{
+	return GetRailTileType(t) == RAIL_TILE_WAYPOINT;
+}
+
+/**
+ * Is this rail tile a rail depot?
  * @param t the tile to get the information from
  * @pre IsTileType(t, MP_RAILWAY)
  * @return true if and only if the tile is a rail depot
@@ -83,16 +94,15 @@ static inline bool IsRailDepot(TileIndex t)
 }
 
 /**
- * Is this tile a rail waypoint?
+ * Is this tile rail tile and a rail depot?
  * @param t the tile to get the information from
  * @pre IsTileType(t, MP_RAILWAY)
- * @return true if and only if the tile is a rail waypoint
+ * @return true if and only if the tile is a rail depot
  */
-static inline bool IsRailWaypoint(TileIndex t)
+static inline bool IsRailDepotTile(TileIndex t)
 {
-	return GetRailTileType(t) == RAIL_TILE_WAYPOINT;
+	return IsTileType(t, MP_RAILWAY) && IsRailDepot(t);
 }
-
 
 /**
  * Gets the rail type of the given tile

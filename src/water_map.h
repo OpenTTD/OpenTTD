@@ -96,6 +96,11 @@ static inline TileIndex IsShipDepot(TileIndex t)
 	return IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END);
 }
 
+static inline TileIndex IsShipDepotTile(TileIndex t)
+{
+	return IsTileType(t, MP_WATER) && IsShipDepot(t);
+}
+
 static inline Axis GetShipDepotAxis(TileIndex t)
 {
 	return (Axis)GB(_m[t].m5, 1, 1);

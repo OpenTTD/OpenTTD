@@ -2268,7 +2268,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int
 	int length;
 
 	/* this routine applies only to trains in depot tiles */
-	if (v->type != VEH_TRAIN || !IsTileDepotType(tile, TRANSPORT_RAIL)) return VETSB_CONTINUE;
+	if (v->type != VEH_TRAIN || !IsDepotTypeTile(tile, TRANSPORT_RAIL)) return VETSB_CONTINUE;
 
 	/* depot direction */
 	dir = GetRailDepotDirection(tile);

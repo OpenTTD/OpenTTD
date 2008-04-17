@@ -3217,7 +3217,7 @@ CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
 
 	/* check if at a standstill (not stopped only) in a depot
 	 * the check is down here to make it possible to alter stop/service for trains entering the depot */
-	if (this->type == VEH_TRAIN && IsTileDepotType(this->tile, TRANSPORT_RAIL) && this->cur_speed == 0) return CMD_ERROR;
+	if (this->type == VEH_TRAIN && IsDepotTypeTile(this->tile, TRANSPORT_RAIL) && this->cur_speed == 0) return CMD_ERROR;
 
 	TileIndex location;
 	DestinationID destination;

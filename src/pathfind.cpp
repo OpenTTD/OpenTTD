@@ -170,10 +170,10 @@ static inline bool CanAccessTileInDir(TileIndex tile, DiagDirection side, Transp
 {
 	if (tracktype == TRANSPORT_RAIL) {
 		/* depot from wrong side */
-		if (IsTileDepotType(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) != side) return false;
+		if (IsDepotTypeTile(tile, TRANSPORT_RAIL) && GetRailDepotDirection(tile) != side) return false;
 	} else if (tracktype == TRANSPORT_ROAD) {
 		/* depot from wrong side */
-		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != side) return false;
+		if (IsDepotTypeTile(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != side) return false;
 		/* non-driverthrough road station from wrong side */
 		if (IsStandardRoadStopTile(tile) && GetRoadStopDir(tile) != side) return false;
 	}
