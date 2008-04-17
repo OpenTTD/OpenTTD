@@ -60,7 +60,7 @@ static NewsID _current_news = INVALID_NEWS; ///< points to news item that should
 static NewsID _oldest_news = 0;             ///< points to first item in fifo queue
 static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
 
-struct news_d {
+struct news_d : vp_d {
 	uint16 follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
