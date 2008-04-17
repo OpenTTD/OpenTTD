@@ -86,85 +86,89 @@ bool IsGenerateWorldThreaded()
  */
 static void * CDECL _GenerateWorld(void *arg)
 {
-	_generating_world = true;
-	if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
-	/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
-	if (_patches.generation_seed == GENERATE_NEW_SEED) _patches.generation_seed = _patches_newgame.generation_seed = InteractiveRandom();
-	_random.SetSeed(_patches.generation_seed);
-	SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
+	try {
+		_generating_world = true;
+		if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
+		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
+		if (_patches.generation_seed == GENERATE_NEW_SEED) _patches.generation_seed = _patches_newgame.generation_seed = InteractiveRandom();
+		_random.SetSeed(_patches.generation_seed);
+		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
+		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
-	IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
-	/* Must start economy early because of the costs. */
-	StartupEconomy();
+		IncreaseGeneratingWorldProgress(GWP_MAP_INIT);
+		/* Must start economy early because of the costs. */
+		StartupEconomy();
 
-	/* Don't generate landscape items when in the scenario editor. */
-	if (_gw.mode == GW_EMPTY) {
-		SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
+		/* Don't generate landscape items when in the scenario editor. */
+		if (_gw.mode == GW_EMPTY) {
+			SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
 
-		/* Make the map the height of the patch setting */
-		if (_game_mode != GM_MENU) FlatEmptyWorld(_patches.se_flat_world_height);
+			/* Make the map the height of the patch setting */
+			if (_game_mode != GM_MENU) FlatEmptyWorld(_patches.se_flat_world_height);
 
-		ConvertGroundTilesIntoWaterTiles();
-		IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
-	} else {
-		GenerateLandscape(_gw.mode);
-		GenerateClearTile();
+			ConvertGroundTilesIntoWaterTiles();
+			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
+		} else {
+			GenerateLandscape(_gw.mode);
+			GenerateClearTile();
 
-		/* only generate towns, tree and industries in newgame mode. */
-		if (_game_mode != GM_EDITOR) {
-			GenerateTowns();
-			GenerateIndustries();
-			GenerateUnmovables();
-			GenerateTrees();
+			/* only generate towns, tree and industries in newgame mode. */
+			if (_game_mode != GM_EDITOR) {
+				GenerateTowns();
+				GenerateIndustries();
+				GenerateUnmovables();
+				GenerateTrees();
+			}
 		}
-	}
 
-	ClearStorageChanges(true);
+		ClearStorageChanges(true);
 
-	/* These are probably pointless when inside the scenario editor. */
-	SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
-	StartupPlayers();
-	IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
-	StartupEngines();
-	IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
-	StartupDisasters();
-	_generating_world = false;
+		/* These are probably pointless when inside the scenario editor. */
+		SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
+		StartupPlayers();
+		IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
+		StartupEngines();
+		IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
+		StartupDisasters();
+		_generating_world = false;
 
-	/* No need to run the tile loop in the scenario editor. */
-	if (_gw.mode != GW_EMPTY) {
-		uint i;
+		/* No need to run the tile loop in the scenario editor. */
+		if (_gw.mode != GW_EMPTY) {
+			uint i;
 
-		SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
-		for (i = 0; i < 0x500; i++) {
-			RunTileLoop();
-			IncreaseGeneratingWorldProgress(GWP_RUNTILELOOP);
+			SetGeneratingWorldProgress(GWP_RUNTILELOOP, 0x500);
+			for (i = 0; i < 0x500; i++) {
+				RunTileLoop();
+				IncreaseGeneratingWorldProgress(GWP_RUNTILELOOP);
+			}
 		}
+
+		ResetObjectToPlace();
+		SetLocalPlayer(_gw.lp);
+
+		SetGeneratingWorldProgress(GWP_GAME_START, 1);
+		/* Call any callback */
+		if (_gw.proc != NULL) _gw.proc();
+		IncreaseGeneratingWorldProgress(GWP_GAME_START);
+
+		if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+		/* Show all vital windows again, because we have hidden them */
+		if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
+		_gw.active   = false;
+		_gw.thread   = NULL;
+		_gw.proc     = NULL;
+		_gw.threaded = false;
+
+		DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
+		MarkWholeScreenDirty();
+
+		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
+
+		if (_patches.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+	} catch (...) {
+		_generating_world = false;
+		throw;
 	}
-
-	ResetObjectToPlace();
-	SetLocalPlayer(_gw.lp);
-
-	SetGeneratingWorldProgress(GWP_GAME_START, 1);
-	/* Call any callback */
-	if (_gw.proc != NULL) _gw.proc();
-	IncreaseGeneratingWorldProgress(GWP_GAME_START);
-
-	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
-	/* Show all vital windows again, because we have hidden them */
-	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
-	_gw.active   = false;
-	_gw.thread   = NULL;
-	_gw.proc     = NULL;
-	_gw.threaded = false;
-
-	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
-	MarkWholeScreenDirty();
-
-	if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
-
-	if (_patches.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-
 	return NULL;
 }
 
