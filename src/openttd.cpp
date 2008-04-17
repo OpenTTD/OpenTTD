@@ -1874,7 +1874,7 @@ bool AfterLoadGame()
 					}
 
 					/* Clear PBS reservation on track */
-					if (!IsDepotTypeTile(t, TRANSPORT_RAIL)) {
+					if (!IsRailDepotTile(t)) {
 						SB(_m[t].m4, 4, 4, 0);
 					} else {
 						ClrBit(_m[t].m3, 6);

@@ -462,8 +462,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 			case MP_WATER:
 				if (v->type != VEH_SHIP) break;
-				if (IsDepotTypeTile(tile, TRANSPORT_WATER) &&
-						IsTileOwner(tile, _local_player)) {
+				if (IsShipDepot(tile) && IsTileOwner(tile, _local_player)) {
 					TileIndex tile2 = GetOtherShipDepotTile(tile);
 
 					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);

@@ -45,7 +45,7 @@ static bool IsRoad(TileIndex tile)
 {
 	return
 		// MP_ROAD, but not a road depot?
-		(IsTileType(tile, MP_ROAD) && !IsDepotTypeTile(tile, TRANSPORT_ROAD)) ||
+		(IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile)) ||
 		(IsTileType(tile, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD);
 }
 

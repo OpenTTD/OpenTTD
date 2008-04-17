@@ -178,7 +178,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
-	if (!IsDepotTypeTile(tile, TRANSPORT_ROAD)) return CMD_ERROR;
+	if (!IsRoadDepotTile(tile)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
@@ -340,7 +340,7 @@ static bool CheckRoadVehInDepotStopped(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
 
-	if (!IsDepotTypeTile(tile, TRANSPORT_ROAD)) return false;
+	if (!IsRoadDepotTile(tile)) return false;
 	if (IsRoadVehFront(v) && !(v->vehstatus & VS_STOPPED)) return false;
 
 	for (; v != NULL; v = v->Next()) {

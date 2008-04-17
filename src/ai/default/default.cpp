@@ -330,7 +330,7 @@ static void AiHandleReplaceTrain(Player *p)
 	EngineID veh;
 
 	// wait until the vehicle reaches the depot.
-	if (!IsDepotTypeTile(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
+	if (!IsRailDepotTile(v->tile) || v->u.rail.track != TRACK_BIT_DEPOT || !(v->vehstatus & VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_TRAIN_TO_DEPOT);
 		return;
 	}
@@ -2886,7 +2886,7 @@ static bool AiCheckRoadFinished(Player *p)
 	are.dest = _players_ai[p->index].cur_tile_b;
 	tile = TILE_MASK(_players_ai[p->index].cur_tile_a + TileOffsByDiagDir(dir));
 
-	if (IsRoadStopTile(tile) || IsDepotTypeTile(tile, TRANSPORT_ROAD)) return false;
+	if (IsRoadStopTile(tile) || IsRoadDepotTile(tile)) return false;
 	TrackdirBits bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD)) & DiagdirReachesTrackdirs(dir);
 	if (bits == TRACKDIR_BIT_NONE) return false;
 
@@ -3606,7 +3606,7 @@ static void AiStateSellVeh(Player *p)
 	if (v->owner == _current_player) {
 		if (v->type == VEH_TRAIN) {
 
-			if (!IsDepotTypeTile(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
+			if (!IsRailDepotTile(v->tile) || v->u.rail.track != TRACK_BIT_DEPOT || !(v->vehstatus & VS_STOPPED)) {
 				if (!v->current_order.IsType(OT_GOTO_DEPOT))
 					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_TRAIN_TO_DEPOT);
 				goto going_to_depot;

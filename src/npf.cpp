@@ -231,14 +231,14 @@ static void NPFMarkTile(TileIndex tile)
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			/* DEBUG: mark visited tiles by mowing the grass under them ;-) */
-			if (!IsDepotTypeTile(tile, TRANSPORT_RAIL)) {
+			if (!IsRailDepot(tile)) {
 				SetRailGroundType(tile, RAIL_GROUND_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
 			break;
 
 		case MP_ROAD:
-			if (!IsDepotTypeTile(tile, TRANSPORT_ROAD)) {
+			if (!IsRoadDepot(tile)) {
 				SetRoadside(tile, ROADSIDE_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
@@ -397,7 +397,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	 *      curves should be taken into account, as this affects the speed limit. */
 
 	/* Check for reverse in depot */
-	if (IsDepotTypeTile(tile, TRANSPORT_RAIL) && as->EndNodeCheck(as, &new_node) != AYSTAR_FOUND_END_NODE) {
+	if (IsRailDepotTile(tile) && as->EndNodeCheck(as, &new_node) != AYSTAR_FOUND_END_NODE) {
 		/* Penalise any depot tile that is not the last tile in the path. This
 		 * _should_ penalise every occurence of reversing in a depot (and only
 		 * that) */
@@ -464,9 +464,9 @@ static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
  */
 static bool CanEnterTileOwnerCheck(Owner owner, TileIndex tile, DiagDirection enterdir)
 {
-	if (IsTileType(tile, MP_RAILWAY) ||           /* Rail tile (also rail depot) */
-			IsRailwayStationTile(tile) ||               /* Rail station tile */
-			IsDepotTypeTile(tile, TRANSPORT_ROAD) ||  /* Road depot tile */
+	if (IsTileType(tile, MP_RAILWAY) ||             /* Rail tile (also rail depot) */
+			IsRailwayStationTile(tile) ||   /* Rail station tile */
+			IsRoadDepotTile(tile) ||        /* Road depot tile */
 			IsStandardRoadStopTile(tile)) { /* Road station tile (but not drive-through stops) */
 		return IsTileOwner(tile, owner); /* You need to own these tiles entirely to use them */
 	}
