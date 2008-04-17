@@ -94,15 +94,14 @@ const StringID _station_sort_listing[] = {
 };
 
 static char _bufcache[64];
-static const Station* _last_station;
+static const Station *_last_station;
 static int _internal_sort_order;
 
 static int CDECL StationNameSorter(const void *a, const void *b)
 {
-	const Station* st1 = *(const Station**)a;
-	const Station* st2 = *(const Station**)b;
+	const Station *st1 = *(const Station**)a;
+	const Station *st2 = *(const Station**)b;
 	char buf1[64];
-	int r;
 
 	SetDParam(0, st1->index);
 	GetString(buf1, STR_STATION, lastof(buf1));
@@ -113,24 +112,24 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 		GetString(_bufcache, STR_STATION, lastof(_bufcache));
 	}
 
-	r = strcmp(buf1, _bufcache); // sort by name
+	int r = strcmp(buf1, _bufcache); // sort by name
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
 static int CDECL StationTypeSorter(const void *a, const void *b)
 {
-	const Station* st1 = *(const Station**)a;
-	const Station* st2 = *(const Station**)b;
+	const Station *st1 = *(const Station**)a;
+	const Station *st2 = *(const Station**)b;
 	return (_internal_sort_order & 1) ? st2->facilities - st1->facilities : st1->facilities - st2->facilities;
 }
 
-static const uint32 _cargo_filter_max = ~0;
+static const uint32 _cargo_filter_max = UINT32_MAX;
 static uint32 _cargo_filter = _cargo_filter_max;
 
 static int CDECL StationWaitingSorter(const void *a, const void *b)
 {
-	const Station* st1 = *(const Station**)a;
-	const Station* st2 = *(const Station**)b;
+	const Station *st1 = *(const Station**)a;
+	const Station *st2 = *(const Station**)b;
 	Money sum1 = 0, sum2 = 0;
 
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
@@ -152,8 +151,8 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
  */
 static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 {
-	const Station* st1 = *(const Station**)a;
-	const Station* st2 = *(const Station**)b;
+	const Station *st1 = *(const Station**)a;
+	const Station *st2 = *(const Station**)b;
 	byte maxr1 = 0;
 	byte maxr2 = 0;
 
@@ -176,7 +175,7 @@ DECLARE_ENUM_AS_BIT_SET(StationListFlags);
 
 /** Information about station list */
 struct plstations_d {
-	const Station** sort_list; ///< Pointer to list of stations
+	const Station **sort_list; ///< Pointer to list of stations
 	uint16 list_length;        ///< Number of stations in list
 	uint16 resort_timer;       ///< Tick counter to resort the list
 	byte sort_type;            ///< Sort type - name, waiting, ...
@@ -189,7 +188,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
  */
 void RebuildStationLists()
 {
-	Window* const *wz;
+	Window *const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
@@ -205,7 +204,7 @@ void RebuildStationLists()
  */
 void ResortStationLists()
 {
-	Window* const *wz;
+	Window *const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
@@ -225,7 +224,7 @@ void ResortStationLists()
  * @param cargo_filter bitmap of cargo types to include
  * @param include_empty whether we should include stations without waiting cargo
  */
-static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
+static void BuildStationsList(plstations_d *sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
 {
 	uint n = 0;
 	const Station *st;
@@ -233,7 +232,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	if (!(sl->flags & SL_REBUILD)) return;
 
 	/* Create array for sorting */
-	const Station** station_sort = MallocT<const Station*>(GetMaxStationIndex() + 1);
+	const Station **station_sort = MallocT<const Station*>(GetMaxStationIndex() + 1);
 
 	DEBUG(misc, 3, "Building station list for player %d", owner);
 
@@ -277,7 +276,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
  */
 static void SortStationsList(plstations_d *sl)
 {
-	static StationSortListingTypeFunction* const _station_sorter[] = {
+	static StationSortListingTypeFunction *const _station_sorter[] = {
 		&StationNameSorter,
 		&StationTypeSorter,
 		&StationWaitingSorter,
@@ -749,10 +748,7 @@ typedef std::list<CargoData> CargoDataList;
 static void DrawStationViewWindow(Window *w)
 {
 	StationID station_id = w->window_number;
-	const Station* st = GetStation(station_id);
-	int x, y;     ///< coordinates used for printing waiting/accepted/rating of cargo
-	int pos;      ///< = w->vscroll.pos
-	StringID str;
+	const Station *st = GetStation(station_id);
 	CargoDataList cargolist;
 	uint32 transfers = 0;
 
@@ -808,12 +804,14 @@ static void DrawStationViewWindow(Window *w)
 	SetDParam(1, st->facilities);
 	DrawWindowWidgets(w);
 
-	x = 2;
-	y = 15;
-	pos = w->vscroll.pos;
+	int x = 2;  ///< coordinates used for printing waiting/accepted/rating of cargo
+	int y = 15;
+	int pos = w->vscroll.pos; ///< = w->vscroll.pos
 
 	uint width = w->widget[SVW_WAITING].right - w->widget[SVW_WAITING].left - 4;
 	int maxrows = w->vscroll.cap;
+
+	StringID str;
 
 	if (--pos < 0) {
 		str = STR_00D0_NOTHING;
