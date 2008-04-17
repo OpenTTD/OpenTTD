@@ -420,9 +420,16 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			if (!HasBit(_svc.valid, 5)) { _svc.v49 = GetPlatformInfoHelper(tile, false, true, false); SetBit(_svc.valid, 5); }
 			return _svc.v49;
 
+		case 0x4A: // Animation frame of tile
+			return GetStationAnimationFrame(tile);
+
 		/* Variables which use the parameter */
 		/* Variables 0x60 to 0x65 are handled separately below */
-		case 0x67: { // Land info of nearby tiles
+		case 0x66: // Animation frame of nearby tile
+			if (parameter != 0) tile = GetNearbyTile(parameter, tile);
+			return st->TileBelongsToRailStation(tile) ? GetStationAnimationFrame(tile) : UINT_MAX;
+
+		case 0x67: { // Land info of nearby tile
 			Axis axis = GetRailStationAxis(tile);
 
 			if (parameter != 0) tile = GetNearbyTile(parameter, tile); // only perform if it is required
