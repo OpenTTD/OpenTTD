@@ -58,9 +58,9 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status
 		/* draw categories */
 		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING);
-		for (i = 0; i != 13; i++)
+		for (i = 0; i != EXPENSES_END; i++)
 			DrawString(2, 27 + i * 10, STR_7011_CONSTRUCTION + i, TC_FROMSTRING);
-		DrawStringRightAligned(111, 27 + 10 * 13 + 2, STR_7020_TOTAL, TC_FROMSTRING);
+		DrawStringRightAligned(111, 27 + 10 * EXPENSES_END + 2, STR_7020_TOTAL, TC_FROMSTRING);
 
 		/* draw the price columns */
 		year = _cur_year - 2;
@@ -72,7 +72,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 				SetDParam(0, year);
 				DrawStringRightAlignedUnderline(x, 15, STR_7010, TC_FROMSTRING);
 				sum = 0;
-				for (i = 0; i != 13; i++) {
+				for (i = 0; i != EXPENSES_END; i++) {
 					/* draw one row in the price column */
 					cost = (*tbl)[i];
 					if (cost != 0) {
@@ -88,16 +88,16 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
 				SetDParam(0, sum);
-				DrawStringRightAligned(x, 27 + 13 * 10 + 2, str, TC_FROMSTRING);
+				DrawStringRightAligned(x, 27 + EXPENSES_END * 10 + 2, str, TC_FROMSTRING);
 
-				GfxFillRect(x - 75, 27 + 10 * 13, x, 27 + 10 * 13, 215);
+				GfxFillRect(x - 75, 27 + 10 * EXPENSES_END, x, 27 + 10 * EXPENSES_END, 215);
 				x += 95;
 			}
 			year++;
 			tbl--;
 		} while (--j != 0);
 
-		y = 171;
+		y = 27 + 10 * EXPENSES_END + 14;
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam(0, _economy.max_loan);
@@ -135,10 +135,10 @@ static const Widget _player_finances_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
 {  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,                    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,                    STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202,   204,   215, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406,   204,   215, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,    14, 39 +10 * EXPENSES_END, 0x0,    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406, 40 + 10 * EXPENSES_END, 73 + 10 * EXPENSES_END, 0x0, STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202, 74 + 10 * EXPENSES_END, 85 + 10 * EXPENSES_END, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406, 74 + 10 * EXPENSES_END, 85 + 10 * EXPENSES_END, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
@@ -163,7 +163,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			const Player *p = GetPlayer(player);
 
 			/* Recheck the size of the window as it might need to be resized due to the local player changing */
-			int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 204);
+			int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 74 + 10 * EXPENSES_END);
 			if (w->height != new_height) {
 				/* Make window dirty before and after resizing */
 				SetWindowDirty(w);
@@ -216,7 +216,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _player_finances_desc = {
-	WDP_AUTO, WDP_AUTO, 407, 216, 407, 216,
+	WDP_AUTO, WDP_AUTO, 407, 86 + 10 * EXPENSES_END, 407, 86 + 10 * EXPENSES_END,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_widgets,
