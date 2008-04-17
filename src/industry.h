@@ -15,7 +15,6 @@
 #include "date_type.h"
 #include "town_type.h"
 #include "industry_type.h"
-#include "newgrf_string_type.h"
 
 enum {
 	INVALID_INDUSTRY       = 0xFFFF,
@@ -174,12 +173,12 @@ struct IndustrySpec {
 	byte climate_availability;            ///< Bitmask, giving landscape enums as bit position
 	IndustryBehaviour behaviour;           ///< How this industry will behave, and how others entities can use it
 	byte map_colour;                      ///< colour used for the small map
-	GRFMappedStringID name;               ///< Displayed name of the industry
-	GRFMappedStringID new_industry_text;  ///< Message appearing when the industry is built
-	GRFMappedStringID closure_text;       ///< Message appearing when the industry closes
-	GRFMappedStringID production_up_text; ///< Message appearing when the industry's production is increasing
-	GRFMappedStringID production_down_text; ///< Message appearing when the industry's production is decreasing
-	GRFMappedStringID station_name;       ///< Default name for nearby station
+	StringID name;                        ///< Displayed name of the industry
+	StringID new_industry_text;           ///< Message appearing when the industry is built
+	StringID closure_text;                ///< Message appearing when the industry closes
+	StringID production_up_text;          ///< Message appearing when the industry's production is increasing
+	StringID production_down_text;        ///< Message appearing when the industry's production is decreasing
+	StringID station_name;                ///< Default name for nearby station
 	byte appear_ingame[NUM_LANDSCAPE];    ///< Probability of appearance in game
 	byte appear_creation[NUM_LANDSCAPE];  ///< Probability of appearance during map creation
 	uint8 number_of_sounds;               ///< Number of sounds available in the sounds array

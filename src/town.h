@@ -13,8 +13,8 @@
 #include "date_type.h"
 #include "town_type.h"
 #include "player_type.h"
-#include "newgrf_string_type.h"
 #include "settings_type.h"
+#include "strings_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
@@ -201,7 +201,7 @@ struct HouseSpec {
 	Year max_date;                     ///< last year it can be built
 	byte population;                   ///< population (Zero on other tiles in multi tile house.)
 	byte removal_cost;                 ///< cost multiplier for removing it
-	GRFMappedStringID building_name;   ///< building name
+	StringID building_name;            ///< building name
 	uint16 remove_rating_decrease;     ///< rating decrease if removed
 	byte mail_generation;              ///< mail generation multiplier (tile based, as the acceptances below)
 	byte cargo_acceptance[3];          ///< acceptance level for the cargo slots

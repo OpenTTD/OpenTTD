@@ -3,7 +3,7 @@
 /* Table of all default cargo types */
 
 #define MK(bt, label, c, e, f, g, h, fr, te, ks1, ks2, ks3, ks4, ks5, l, m) \
-          {bt, label, 0, c, c, e, f, {g, h}, fr, te, 0, 0, GRFMappedStringID(ks1, 0), GRFMappedStringID(ks2, 0), GRFMappedStringID(ks3, 0), GRFMappedStringID(ks4, 0), GRFMappedStringID(ks5, 0), l, m, NULL}
+          {bt, label, 0, c, c, e, f, {g, h}, fr, te, 0, 0, ks1, ks2, ks3, ks4, ks5, l, m, NULL}
 static const CargoSpec _default_cargo[] = {
 	MK(  0, 'PASS', 152,  1, 3185,  0,  24, false, TE_PASSENGERS,
 		STR_000F_PASSENGERS,     STR_002F_PASSENGER,      STR_PASSENGERS, STR_QUANTITY_PASSENGERS,   STR_ABBREV_PASSENGERS,
