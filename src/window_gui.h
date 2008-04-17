@@ -409,6 +409,7 @@ struct vp_d {
 	int32 scrollpos_y;
 	int32 dest_scrollpos_x;
 	int32 dest_scrollpos_y;
+	ViewPort vp_data;          ///< Screen position and zoom of the viewport
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 

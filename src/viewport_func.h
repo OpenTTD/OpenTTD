@@ -12,7 +12,6 @@
 
 void SetSelectionRed(bool);
 
-void InitViewports();
 void DeleteWindowViewport(Window *w);
 void AssignWindowViewport(Window *w, int x, int y, int width, int height, uint32 follow_flags, ZoomLevel zoom);
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);

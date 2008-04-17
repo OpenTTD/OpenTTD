@@ -1,6 +1,22 @@
 /* $Id$ */
 
-/** @file viewport.cpp */
+/** @file viewport.cpp
+ *
+ * \verbatim
+ * The in-game coordinate system looks like this *
+ *                                               *
+ *                    ^ Z                        *
+ *                    |                          *
+ *                    |                          *
+ *                    |                          *
+ *                    |                          *
+ *                 /     \                       *
+ *              /           \                    *
+ *           /                 \                 *
+ *        /                       \              *
+ *   X <                             > Y         *
+ * \endverbatim
+ */
 
 #include "stdafx.h"
 #include "openttd.h"
@@ -36,39 +52,6 @@
 PlaceProc *_place_proc;
 Point _tile_fract_coords;
 ZoomLevel _saved_scrollpos_zoom;
-
-/**
- * The maximum number of viewports depends on the maximum number
- * of windows. Technically is could be the maximum number of
- * windows, but there is always at least one window that does
- * not need a viewport. Not having 'support' for that viewport
- * saves some time and memory.
- * For the introduction GUI and create game GUIs there is no
- * need for more than one viewport, however in the normal game
- * and scenario editor one can make a lot of viewports. For the
- * normal game one always has a main toolbar and a status bar,
- * however the statusbar does not exist on the scenario editor.
- *
- * This means that we can only safely assume that there is one
- * window without viewport.
- */
-static ViewPort _viewports[MAX_NUMBER_OF_WINDOWS - 1];
-static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not
-assert_compile(lengthof(_viewports) < sizeof(_active_viewports) * 8);
-
-/* The in-game coordiante system looks like this *
- *                                               *
- *                    ^ Z                        *
- *                    |                          *
- *                    |                          *
- *                    |                          *
- *                    |                          *
- *                 /     \                       *
- *              /           \                    *
- *           /                 \                 *
- *        /                       \              *
- *   X <                             > Y         *
- */
 
 struct StringSpriteToDraw {
 	uint16 string;
@@ -168,15 +151,8 @@ static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 	return p;
 }
 
-void InitViewports()
-{
-	memset(_viewports, 0, sizeof(_viewports));
-	_active_viewports = 0;
-}
-
 void DeleteWindowViewport(Window *w)
 {
-	ClrBit(_active_viewports, w->viewport - _viewports);
 	w->viewport->width = 0;
 	w->viewport = NULL;
 }
@@ -184,15 +160,9 @@ void DeleteWindowViewport(Window *w)
 void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, ZoomLevel zoom)
 {
-	ViewPort *vp;
-	Point pt;
-	uint32 bit;
+	assert(w->viewport == NULL);
 
-	for (vp = _viewports, bit = 0; ; vp++, bit++) {
-		assert(vp != endof(_viewports));
-		if (vp->width == 0) break;
-	}
-	SetBit(_active_viewports, bit);
+	ViewPort *vp = &(WP(w, vp_d).vp_data);
 
 	vp->left = x + w->left;
 	vp->top = y + w->top;
@@ -203,6 +173,8 @@ void AssignWindowViewport(Window *w, int x, int y,
 
 	vp->virtual_width = ScaleByZoom(width, zoom);
 	vp->virtual_height = ScaleByZoom(height, zoom);
+
+	Point pt;
 
 	if (follow_flags & 0x80000000) {
 		const Vehicle *veh;
@@ -1651,14 +1623,15 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 
 void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
-	const ViewPort *vp = _viewports;
-	uint32 act = _active_viewports;
-	do {
-		if (act & 1) {
+	Window **wz;
+
+	FOR_ALL_WINDOWS(wz) {
+		ViewPort *vp = (*wz)->viewport;
+		if (vp != NULL) {
 			assert(vp->width != 0);
 			MarkViewportDirty(vp, left, top, right, bottom);
 		}
-	} while (vp++,act>>=1);
+	}
 }
 
 void MarkTileDirtyByTile(TileIndex tile)

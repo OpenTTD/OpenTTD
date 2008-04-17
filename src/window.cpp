@@ -1037,7 +1037,6 @@ void InitWindowSystem()
 	IConsoleClose();
 
 	_last_z_window = _z_windows;
-	InitViewports();
 	_no_scroll = 0;
 }
 
