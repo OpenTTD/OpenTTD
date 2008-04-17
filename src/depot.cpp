@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "depot.h"
+#include "depot_base.h"
 #include "landscape.h"
 #include "saveload.h"
 #include "order_func.h"

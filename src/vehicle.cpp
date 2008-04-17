@@ -19,7 +19,6 @@
 #include "player_func.h"
 #include "debug.h"
 #include "vehicle_gui.h"
-#include "depot.h"
 #include "rail_type.h"
 #include "train.h"
 #include "aircraft.h"
@@ -47,6 +46,7 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "oldpool_func.h"
+#include "depot_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

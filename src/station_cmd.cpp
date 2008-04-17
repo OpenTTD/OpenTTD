@@ -18,7 +18,6 @@
 #include "saveload.h"
 #include "airport.h"
 #include "sprite.h"
-#include "depot.h"
 #include "train.h"
 #include "roadveh.h"
 #include "water_map.h"

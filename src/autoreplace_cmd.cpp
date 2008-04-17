@@ -8,7 +8,6 @@
 #include "player_func.h"
 #include "debug.h"
 #include "vehicle_gui.h"
-#include "depot.h"
 #include "train.h"
 #include "aircraft.h"
 #include "cargotype.h"

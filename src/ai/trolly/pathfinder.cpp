@@ -6,7 +6,6 @@
 #include "../../debug.h"
 #include "../../command_func.h"
 #include "trolly.h"
-#include "../../depot.h"
 #include "../../tunnel_map.h"
 #include "../../bridge.h"
 #include "../../tunnelbridge_map.h"

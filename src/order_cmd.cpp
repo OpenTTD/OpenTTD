@@ -7,7 +7,7 @@
 #include "order_base.h"
 #include "order_func.h"
 #include "airport.h"
-#include "depot.h"
+#include "order_base.h"
 #include "waypoint.h"
 #include "command_func.h"
 #include "player_func.h"
@@ -26,6 +26,7 @@
 #include "timetable.h"
 #include "vehicle_func.h"
 #include "oldpool_func.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 

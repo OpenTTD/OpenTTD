@@ -9,7 +9,6 @@
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
-#include "depot.h"
 #include "train.h"
 #include "group.h"
 #include "debug.h"

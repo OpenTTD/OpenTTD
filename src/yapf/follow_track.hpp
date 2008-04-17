@@ -6,7 +6,7 @@
 #define  FOLLOW_TRACK_HPP
 
 #include "yapf.hpp"
-
+#include "../depot_map.h"
 
 /** Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport

@@ -15,7 +15,7 @@
 #include "train.h"
 #include "signs_base.h"
 #include "debug.h"
-#include "depot.h"
+#include "depot_base.h"
 #include "newgrf_config.h"
 #include "ai/ai.h"
 #include "ai/default/default.h"

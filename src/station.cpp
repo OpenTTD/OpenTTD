@@ -13,7 +13,6 @@
 #include "player_func.h"
 #include "airport.h"
 #include "sprite.h"
-#include "depot.h"
 #include "train.h"
 #include "water_map.h"
 #include "industry_map.h"

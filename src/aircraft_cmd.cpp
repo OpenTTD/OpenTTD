@@ -10,7 +10,7 @@
 #include "landscape.h"
 #include "station_map.h"
 #include "timetable.h"
-#include "depot.h"
+#include "depot_func.h"
 #include "news_func.h"
 #include "aircraft.h"
 #include "airport.h"

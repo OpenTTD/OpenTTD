@@ -21,7 +21,7 @@
 #include "ship.h"
 #include "aircraft.h"
 #include "roadveh.h"
-#include "depot.h"
+#include "depot_base.h"
 #include "cargotype.h"
 #include "group.h"
 #include "group_gui.h"
@@ -35,6 +35,7 @@
 #include "settings_type.h"
 #include "widgets/dropdown_func.h"
 #include "order_func.h"
+#include "depot_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

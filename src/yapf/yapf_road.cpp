@@ -3,6 +3,7 @@
 /** @file yapf_road.cpp */
 
 #include "../stdafx.h"
+#include "../depot_base.h"
 
 #include "yapf.hpp"
 #include "yapf_node_road.hpp"

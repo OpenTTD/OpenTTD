@@ -10,7 +10,6 @@
 #include "window_gui.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "depot.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"

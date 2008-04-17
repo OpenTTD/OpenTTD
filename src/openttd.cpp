@@ -46,7 +46,6 @@
 #include "network/network.h"
 #include "signs_base.h"
 #include "signs_func.h"
-#include "depot.h"
 #include "waypoint.h"
 #include "ai/ai.h"
 #include "train.h"

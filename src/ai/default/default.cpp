@@ -16,7 +16,6 @@
 #include "../../industry.h"
 #include "../../pathfind.h"
 #include "../../airport.h"
-#include "../../depot.h"
 #include "../../variables.h"
 #include "../../bridge.h"
 #include "../../date_func.h"

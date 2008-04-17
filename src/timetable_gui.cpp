@@ -10,7 +10,6 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "cargotype.h"
-#include "depot.h"
 #include "strings_func.h"
 #include "vehicle_base.h"
 #include "string_func.h"

@@ -13,7 +13,7 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "command_func.h"
-#include "depot.h"
+#include "depot_base.h"
 #include "vehicle_gui.h"
 #include "station_map.h"
 #include "newgrf_engine.h"
@@ -23,6 +23,7 @@
 #include "vehicle_func.h"
 #include "player_func.h"
 #include "order_func.h"
+#include "depot_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

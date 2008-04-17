@@ -41,6 +41,9 @@
 #include "string_func.h"
 #include "newgrf_cargo.h"
 #include "oldpool_func.h"
+#include "sprite.h"
+#include "economy_func.h"
+#include "station_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

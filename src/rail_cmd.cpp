@@ -20,7 +20,8 @@
 #include "engine_func.h"
 #include "town.h"
 #include "sprite.h"
-#include "depot.h"
+#include "depot_base.h"
+#include "depot_func.h"
 #include "waypoint.h"
 #include "rail.h"
 #include "newgrf.h"
@@ -40,6 +41,8 @@
 #include "sound_func.h"
 #include "signal_func.h"
 #include "tunnelbridge.h"
+#include "station_map.h"
+#include "water_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -24,6 +24,8 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "player_gui.h"
+#include "station_type.h"
+#include "economy_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

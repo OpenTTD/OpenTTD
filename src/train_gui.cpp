@@ -10,7 +10,6 @@
 #include "gfx_func.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
-#include "depot.h"
 #include "train.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"

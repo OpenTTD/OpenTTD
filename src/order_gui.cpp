@@ -13,7 +13,7 @@
 #include "command_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "depot.h"
+#include "depot_base.h"
 #include "waypoint.h"
 #include "train.h"
 #include "water_map.h"
@@ -29,6 +29,7 @@
 #include "widgets/dropdown_func.h"
 #include "textbuf_gui.h"
 #include "string_func.h"
+#include "depot_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
