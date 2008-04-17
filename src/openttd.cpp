@@ -57,6 +57,7 @@
 #include "strings_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "cheat_func.h"
 
 #include "newgrf.h"
 #include "newgrf_config.h"

@@ -104,8 +104,6 @@ void SetVScrollCount(Window *w, int num);
 void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
 
-void ShowCheatWindow();
-
 void BuildFileList();
 void SetFiosType(const byte fiostype);
 

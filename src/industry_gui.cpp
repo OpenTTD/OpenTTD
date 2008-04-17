@@ -14,6 +14,7 @@
 #include "industry.h"
 #include "town.h"
 #include "variables.h"
+#include "cheat_func.h"
 #include "cargotype.h"
 #include "newgrf.h"
 #include "newgrf_callbacks.h"

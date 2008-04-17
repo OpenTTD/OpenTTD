@@ -44,6 +44,7 @@
 #include "sprite.h"
 #include "economy_func.h"
 #include "station_func.h"
+#include "cheat_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

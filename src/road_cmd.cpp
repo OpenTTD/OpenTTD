@@ -35,6 +35,7 @@
 #include "sound_func.h"
 #include "road_func.h"
 #include "tunnelbridge.h"
+#include "cheat_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

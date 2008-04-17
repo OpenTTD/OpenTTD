@@ -28,6 +28,7 @@
 #include "toolbar_gui.h"
 #include "vehicle_base.h"
 #include "gfx_func.h"
+#include "cheat_func.h"
 
 #include "network/network.h"
 

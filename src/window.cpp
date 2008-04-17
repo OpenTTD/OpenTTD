@@ -19,6 +19,7 @@
 #include "map_func.h"
 #include "vehicle_base.h"
 #include "settings_type.h"
+#include "cheat_func.h"
 
 #include "table/sprites.h"
 

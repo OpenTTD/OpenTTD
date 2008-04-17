@@ -9,6 +9,8 @@ bmp.cpp
 callback_table.cpp
 cargopacket.cpp
 cargotype.cpp
+cheat.cpp
+cheat_gui.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
@@ -139,13 +141,17 @@ cmd_helper.h
 command_func.h
 command_type.h
 console.h
+cheat_func.h
+cheat_type.h
 currency.h
 date_func.h
 date_type.h
 debug.h
 video/dedicated_v.h
 ai/default/default.h
-depot.h
+depot_base.h
+depot_func.h
+depot_map.h
 depot_type.h
 direction_func.h
 direction_type.h

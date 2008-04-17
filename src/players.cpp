@@ -14,6 +14,7 @@
 #include "network/network.h"
 #include "network/network_internal.h"
 #include "variables.h"
+#include "cheat_func.h"
 #include "ai/ai.h"
 #include "player_face.h"
 #include "group.h"
@@ -954,19 +955,6 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 	value = minu(value / 64, lengthof(_endgame_perf_titles) - 1);
 
 	return _endgame_perf_titles[value];
-}
-
-/** Return true if any cheat has been used, false otherwise */
-static bool CheatHasBeenUsed()
-{
-	const Cheat* cht = (Cheat*)&_cheats;
-	const Cheat* cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
-
-	for (; cht != cht_last; cht++) {
-		if (cht->been_used) return true;
-	}
-
-	return false;
 }
 
 /** Save the highscore for the player */

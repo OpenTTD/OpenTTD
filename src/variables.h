@@ -39,31 +39,6 @@ VARDEF byte _trees_tick_ctr;
 VARDEF int _saved_scrollpos_x;
 VARDEF int _saved_scrollpos_y;
 
-struct Cheat {
-	bool been_used; // has this cheat been used before?
-	bool value;     // tells if the bool cheat is active or not
-};
-
-
-/* WARNING! Do _not_ remove entries in Cheats struct or change the order
- * of the existing ones! Would break downward compatibility.
- * Only add new entries at the end of the struct! */
-
-struct Cheats {
-	Cheat magic_bulldozer;  // dynamite industries, unmovables
-	Cheat switch_player;    // change to another player
-	Cheat money;            // get rich
-	Cheat crossing_tunnels; // allow tunnels that cross each other
-	Cheat build_in_pause;   // build while in pause mode
-	Cheat no_jetcrash;      // no jet will crash on small airports anymore
-	Cheat switch_climate;
-	Cheat change_date;      // changes date ingame
-	Cheat setup_prod;       // setup raw-material production in game
-	Cheat dummy;            // empty cheat (enable running el-engines on normal rail)
-};
-
-VARDEF Cheats _cheats;
-
 /* NOSAVE: Used in palette animations only, not really important. */
 VARDEF int _palette_animation_counter;
 

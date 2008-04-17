@@ -10,6 +10,7 @@
 #include "saveload.h"
 #include "vehicle_gui.h"
 #include "variables.h"
+#include "cheat_func.h"
 #include "ai/ai.h"
 #include "newgrf_house.h"
 #include "cargotype.h"
@@ -50,7 +51,7 @@ void InitializeStations();
 void InitializeCargoPackets();
 static void InitializeNameMgr();
 void InitializePlayers();
-static void InitializeCheats();
+void InitializeCheats();
 void InitializeNPF();
 
 void InitializeGame(int mode, uint size_x, uint size_y)
@@ -114,12 +115,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 bool IsCustomName(StringID id)
 {
 	return GB(id, 11, 5) == 15;
-}
-
-
-static void InitializeCheats()
-{
-	memset(&_cheats, 0, sizeof(Cheats));
 }
 
 
@@ -464,31 +459,6 @@ static void Save_MAP7()
 	}
 }
 
-static void Save_CHTS()
-{
-	byte count = sizeof(_cheats)/sizeof(Cheat);
-	Cheat* cht = (Cheat*) &_cheats;
-	Cheat* cht_last = &cht[count];
-
-	SlSetLength(count * 2);
-	for (; cht != cht_last; cht++) {
-		SlWriteByte(cht->been_used);
-		SlWriteByte(cht->value);
-	}
-}
-
-static void Load_CHTS()
-{
-	Cheat* cht = (Cheat*)&_cheats;
-	uint count = SlGetFieldLength() / 2;
-
-	for (uint i = 0; i < count; i++) {
-		cht[i].been_used = (SlReadByte() != 0);
-		cht[i].value     = (SlReadByte() != 0);
-	}
-}
-
-
 extern const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'MAPS', Save_MAPS,     Load_MAPS,     CH_RIFF },
 	{ 'MAPT', Save_MAPT,     Load_MAPT,     CH_RIFF },
@@ -502,6 +472,5 @@ extern const ChunkHandler _misc_chunk_handlers[] = {
 
 	{ 'NAME', NULL,          Load_NAME,     CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},
-	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF},
-	{ 'CHTS', Save_CHTS,     Load_CHTS,     CH_RIFF | CH_LAST}
+	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF | CH_LAST},
 };

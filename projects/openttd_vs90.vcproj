@@ -489,6 +489,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\cheat.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\cheat_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\command.cpp"
 				>
 			</File>
@@ -869,6 +877,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\cheat_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\cheat_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\currency.h"
 				>
 			</File>
@@ -893,7 +909,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\depot.h"
+				RelativePath=".\..\src\depot_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\depot_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\depot_map.h"
 				>
 			</File>
 			<File

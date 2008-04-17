@@ -16,6 +16,7 @@
 #include "news_func.h"
 #include "saveload.h"
 #include "variables.h"
+#include "cheat_func.h"
 #include "genworld.h"
 #include "water_map.h"
 #include "tree_map.h"
