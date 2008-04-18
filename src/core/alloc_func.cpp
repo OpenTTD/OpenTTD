@@ -9,7 +9,7 @@
  * Function to exit with an error message after malloc() or calloc() have failed
  * @param size number of bytes we tried to allocate
  */
-void MallocError(size_t size)
+void NORETURN MallocError(size_t size)
 {
 	error("Out of memory. Cannot allocate %i bytes", size);
 }
@@ -18,7 +18,7 @@ void MallocError(size_t size)
  * Function to exit with an error message after realloc() have failed
  * @param size number of bytes we tried to allocate
  */
-void ReallocError(size_t size)
+void NORETURN ReallocError(size_t size)
 {
 	error("Out of memory. Cannot reallocate %i bytes", size);
 }

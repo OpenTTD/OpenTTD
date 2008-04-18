@@ -11,8 +11,8 @@
  * duplicated in each object file making the final
  * binary needlessly large.
  */
-void MallocError(size_t size);
-void ReallocError(size_t size);
+void NORETURN MallocError(size_t size);
+void NORETURN ReallocError(size_t size);
 
 /**
  * Simplified allocation function that allocates the specified number of
