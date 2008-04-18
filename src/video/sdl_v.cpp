@@ -127,8 +127,7 @@ static void GetVideoModes()
 		for (i = 0; modes[i]; i++) {
 			int w = modes[i]->w;
 			int h = modes[i]->h;
-			if (IsInsideMM(w, 640, MAX_SCREEN_WIDTH + 1) &&
-					IsInsideMM(h, 480, MAX_SCREEN_HEIGHT + 1)) {
+			if (w >= 640 && h >= 480) {
 				int j;
 				for (j = 0; j < n; j++) {
 					if (_resolutions[j][0] == w && _resolutions[j][1] == h) break;
@@ -419,8 +418,8 @@ static int PollEvent()
 			break;
 
 		case SDL_VIDEORESIZE: {
-			int w = Clamp(ev.resize.w, 64, MAX_SCREEN_WIDTH);
-			int h = Clamp(ev.resize.h, 64, MAX_SCREEN_HEIGHT);
+			int w = max(ev.resize.w, 64);
+			int h = max(ev.resize.h, 64);
 			ChangeResInGame(w, h);
 			break;
 		}

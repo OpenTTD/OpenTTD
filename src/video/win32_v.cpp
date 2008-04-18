@@ -545,8 +545,8 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 			w = r->right - r->left - (r2.right - r2.left);
 			h = r->bottom - r->top - (r2.bottom - r2.top);
-			w = Clamp(w, 64, MAX_SCREEN_WIDTH);
-			h = Clamp(h, 64, MAX_SCREEN_HEIGHT);
+			w = max(w, 64);
+			h = max(h, 64);
 			SetRect(&r2, 0, 0, w, h);
 
 			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
@@ -677,8 +677,8 @@ static bool AllocateDibSection(int w, int h)
 	HDC dc;
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
-	w = Clamp(w, 64, MAX_SCREEN_WIDTH);
-	h = Clamp(h, 64, MAX_SCREEN_HEIGHT);
+	w = max(w, 64);
+	h = max(h, 64);
 
 	if (bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
 
@@ -737,8 +737,8 @@ static void FindResolutions()
 	 * Doesn't really matter since we don't pass a string anyways, but still
 	 * a letdown */
 	for (i = 0; EnumDisplaySettingsA(NULL, i, &dm) != 0; i++) {
-		if (dm.dmBitsPerPel == BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() && IsInsideMM(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
-				IsInsideMM(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)) {
+		if (dm.dmBitsPerPel == BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() &&
+				dm.dmPelsWidth >= 640 && dm.dmPelsHeight >= 480) {
 			uint j;
 
 			for (j = 0; j < n; j++) {
@@ -787,9 +787,9 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 	_wnd.height_org = _cur_resolution[1];
 
 	AllocateDibSection(_cur_resolution[0], _cur_resolution[1]);
-	MarkWholeScreenDirty();
-
 	MakeWindow(_fullscreen);
+
+	MarkWholeScreenDirty();
 
 	return NULL;
 }

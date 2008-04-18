@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "core/math_func.hpp"
 #include "settings_type.h"
+#include "core/alloc_func.hpp"
 
 #include "table/palettes.h"
 #include "table/sprites.h"
@@ -67,9 +68,9 @@ static byte _string_colorremap[3];
 enum {
 	DIRTY_BLOCK_HEIGHT   = 8,
 	DIRTY_BLOCK_WIDTH    = 64,
-	DIRTY_BYTES_PER_LINE = MAX_SCREEN_WIDTH / DIRTY_BLOCK_WIDTH,
 };
-static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / DIRTY_BLOCK_HEIGHT];
+static uint _dirty_bytes_per_line = 0;
+static byte *_dirty_blocks = NULL;
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -934,6 +935,9 @@ byte GetCharacterWidth(FontSize size, WChar key)
 
 void ScreenSizeChanged()
 {
+	_dirty_bytes_per_line = (_screen.width + DIRTY_BLOCK_WIDTH - 1) / DIRTY_BLOCK_WIDTH;
+	_dirty_blocks = ReallocT<byte>(_dirty_blocks, _dirty_bytes_per_line * ((_screen.height + DIRTY_BLOCK_HEIGHT - 1) / DIRTY_BLOCK_HEIGHT));
+
 	/* check the dirty rect */
 	if (_invalid_rect.right >= _screen.width) _invalid_rect.right = _screen.width;
 	if (_invalid_rect.bottom >= _screen.height) _invalid_rect.bottom = _screen.height;
@@ -1059,7 +1063,7 @@ void DrawDirtyBlocks()
 				/* First try coalescing downwards */
 				do {
 					*p = 0;
-					p += DIRTY_BYTES_PER_LINE;
+					p += _dirty_bytes_per_line;
 					bottom += DIRTY_BLOCK_HEIGHT;
 				} while (bottom != h && *p != 0);
 
@@ -1074,7 +1078,7 @@ void DrawDirtyBlocks()
 					/* Check if a full line of dirty flags is set. */
 					do {
 						if (!*p2) goto no_more_coalesc;
-						p2 += DIRTY_BYTES_PER_LINE;
+						p2 += _dirty_bytes_per_line;
 					} while (--h != 0);
 
 					/* Wohoo, can combine it one step to the right!
@@ -1085,7 +1089,7 @@ void DrawDirtyBlocks()
 					p2 = p;
 					do {
 						*p2 = 0;
-						p2 += DIRTY_BYTES_PER_LINE;
+						p2 += _dirty_bytes_per_line;
 					} while (--h != 0);
 				}
 				no_more_coalesc:
@@ -1104,7 +1108,7 @@ void DrawDirtyBlocks()
 
 			}
 		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
-	} while (b += -(w / DIRTY_BLOCK_WIDTH) + DIRTY_BYTES_PER_LINE, (y += DIRTY_BLOCK_HEIGHT) != h);
+	} while (b += -(w / DIRTY_BLOCK_WIDTH) + _dirty_bytes_per_line, (y += DIRTY_BLOCK_HEIGHT) != h);
 
 	_invalid_rect.left = w;
 	_invalid_rect.top = h;
@@ -1154,7 +1158,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	left /= DIRTY_BLOCK_WIDTH;
 	top  /= DIRTY_BLOCK_HEIGHT;
 
-	b = _dirty_blocks + top * DIRTY_BYTES_PER_LINE + left;
+	b = _dirty_blocks + top * _dirty_bytes_per_line + left;
 
 	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
 	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
@@ -1166,7 +1170,7 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 
 		do b[--i] = 0xFF; while (i);
 
-		b += DIRTY_BYTES_PER_LINE;
+		b += _dirty_bytes_per_line;
 	} while (--height != 0);
 }
 

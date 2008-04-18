@@ -97,11 +97,6 @@ enum {
 
 extern byte _savegame_sort_order;
 
-enum {
-	MAX_SCREEN_WIDTH  = 2048,
-	MAX_SCREEN_HEIGHT = 1200,
-};
-
 /* In certain windows you navigate with the arrow keys. Do not scroll the
  * gameview when here. Bitencoded variable that only allows scrolling if all
  * elements are zero */
