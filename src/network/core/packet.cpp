@@ -11,10 +11,6 @@
 
 #include "packet.h"
 
-
-/* Do not want to include functions.h and all required headers */
-extern void NORETURN CDECL error(const char *str, ...);
-
 /**
  * Create a packet that is used to read from a network socket
  * @param cs the socket handler associated with the socket we are reading from

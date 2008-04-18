@@ -309,13 +309,7 @@ assert_compile(sizeof(uint8)  == 1);
 	#define CloseConnection OTTD_CloseConnection
 #endif /* __APPLE__ */
 
-#if !defined(STRGEN)
-	/* In strgen error is not fatal and returns */
-	void NORETURN CDECL error(const char *str, ...);
-#else
-	void CDECL error(const char *str, ...);
-#endif
-
+void NORETURN CDECL error(const char *str, ...);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 
 #if defined(MORPHOS) || defined(__NDS__)
