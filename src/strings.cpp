@@ -1195,7 +1195,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, 
 	}
 
 	/* town name? */
-	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST-SPECSTR_TOWNNAME_START + 1)) {
+	if (IsInsideMM(ind - 6, 0, SPECSTR_TOWNNAME_LAST - SPECSTR_TOWNNAME_START + 1)) {
 		buff = GetSpecialTownNameString(buff, ind - 6, GetInt32(&argv), last);
 		return strecpy(buff, " Transport", last);
 	}

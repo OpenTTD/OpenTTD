@@ -46,7 +46,7 @@ extern RoadType _last_built_roadtype;
  * the default position is aligned with the left side of the clicked button */
 Point GetToolbarDropdownPos(uint16 parent_button, int width, int height)
 {
-	const Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
+	const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	Point pos;
 	pos.x = w->widget[GB(parent_button, 0, 8)].left;
 	pos.x = w->left + Clamp(pos.x, 0, w->width - width);
@@ -175,7 +175,7 @@ static void ToolbarZoomInClick(Window *w)
 
 static void ToolbarZoomOutClick(Window *w)
 {
-	if (DoZoomInOutWindow(ZOOM_OUT,FindWindowById(WC_MAIN_WINDOW, 0))) {
+	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
 		w->HandleButtonClick(18);
 		SndPlayFx(SND_15_BEEP);
 	}
@@ -387,8 +387,8 @@ void MainToolbarWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_PAINT:
 			/* Draw brown-red toolbar bg. */
-			GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
-			GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB2);
+			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			/* If spectator, disable all construction buttons
 			* ie : Build road, rail, ships, airports and landscaping
@@ -599,8 +599,8 @@ void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetDisabledState(7, _patches_newgame.starting_year >= MAX_YEAR);
 
 			/* Draw brown-red toolbar bg. */
-			GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
-			GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB2);
+			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
 			DrawWindowWidgets(w);
 
@@ -667,7 +667,7 @@ void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 		case WE_RESIZE: {
 			/* There are 15 buttons plus some spacings if the space allows it.
-			* Furthermore there are two panels of which one is non-essential
+			* Furthermore there are two panels of which one is non - essential
 			* and that one can be removed is the space is too small. */
 			uint buttons_width;
 			uint spacing;

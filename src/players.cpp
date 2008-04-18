@@ -314,7 +314,7 @@ static void GenerateCompanyName(Player *p)
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
-	if (IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST+1)) {
+	if (IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_PLAYERNAME_START;
 		strp = t->townnameparts;
 
@@ -353,7 +353,7 @@ bad_town_name:;
 	}
 }
 
-#define COLOR_SWAP(i,j) do { byte t=colors[i];colors[i]=colors[j];colors[j]=t; } while(0)
+#define COLOR_SWAP(i, j) do { byte t = colors[i];colors[i] = colors[j];colors[j] = t; } while(0)
 
 static const byte _color_sort[16] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
 static const byte _color_similar_1[16] = {8, 6, 255, 12,  255, 0, 1, 1, 0, 13,  11,  10, 3,   9,  15, 14};
@@ -362,7 +362,7 @@ static const byte _color_similar_2[16] = {5, 7, 255, 255, 255, 8, 7, 6, 5, 12, 2
 static byte GeneratePlayerColor()
 {
 	byte colors[16], pcolor, t2;
-	int i,j,n;
+	int i, j, n;
 	uint32 r;
 	Player *p;
 
@@ -389,14 +389,14 @@ static byte GeneratePlayerColor()
 	/* Move the colors that look similar to each player's color to the side */
 	FOR_ALL_PLAYERS(p) if (p->is_active) {
 		pcolor = p->player_color;
-		for (i=0; i!=16; i++) if (colors[i] == pcolor) {
+		for (i = 0; i != 16; i++) if (colors[i] == pcolor) {
 			colors[i] = 0xFF;
 
 			t2 = _color_similar_1[pcolor];
 			if (t2 == 0xFF) break;
-			for (i=0; i!=15; i++) {
+			for (i = 0; i != 15; i++) {
 				if (colors[i] == t2) {
-					do COLOR_SWAP(i,i+1); while (++i != 15);
+					do COLOR_SWAP(i, i + 1); while (++i != 15);
 					break;
 				}
 			}
@@ -721,7 +721,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, id_g, flags);
 			} else {
-				cost = RemoveEngineReplacementForPlayer(p, old_engine_type,id_g, flags);
+				cost = RemoveEngineReplacementForPlayer(p, old_engine_type, id_g, flags);
 			}
 
 			if (IsLocalPlayer()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
@@ -1089,8 +1089,8 @@ static const SaveLoad _player_desc[] = {
 	    SLE_VAR(Player, name_1,          SLE_STRINGID),
 	SLE_CONDSTR(Player, name,            SLE_STR, 0,                       84, SL_MAX_VERSION),
 
-	    SLE_VAR(Player, president_name_1,SLE_UINT16),
-	    SLE_VAR(Player, president_name_2,SLE_UINT32),
+	    SLE_VAR(Player, president_name_1, SLE_UINT16),
+	    SLE_VAR(Player, president_name_2, SLE_UINT32),
 	SLE_CONDSTR(Player, president_name,  SLE_STR, 0,                       84, SL_MAX_VERSION),
 
 	    SLE_VAR(Player, face,            SLE_UINT32),

@@ -104,7 +104,7 @@ public:
 	}
 
 	/**
-	* Make a colour grey-based.
+	* Make a colour grey - based.
 	* @param colour the colour to make grey.
 	* @return the new colour, now grey.
 	*/

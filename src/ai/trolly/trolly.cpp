@@ -796,7 +796,7 @@ static void AiNew_State_FindDepot(Player *p)
 
 	_players_ainew[p->index].depot_tile = 0;
 
-	for (i=2;i<_players_ainew[p->index].path_info.route_length-2;i++) {
+	for (i = 2; i < _players_ainew[p->index].path_info.route_length - 2; i++) {
 		tile = _players_ainew[p->index].path_info.route[i];
 		for (j = DIAGDIR_BEGIN; j < DIAGDIR_END; j++) {
 			TileIndex t = tile + TileOffsByDiagDir(j);
@@ -819,9 +819,9 @@ static void AiNew_State_FindDepot(Player *p)
 	while (i > 1 && i < _players_ainew[p->index].path_info.route_length - 2) {
 		i += g;
 		g *= -1;
-		(g < 0?g--:g++);
+		(g < 0 ? g-- : g++);
 
-		if (_players_ainew[p->index].path_info.route_extra[i] != 0 || _players_ainew[p->index].path_info.route_extra[i+1] != 0) {
+		if (_players_ainew[p->index].path_info.route_extra[i] != 0 || _players_ainew[p->index].path_info.route_extra[i + 1] != 0) {
 			// Bridge or tunnel.. we can't place a depot there
 			continue;
 		}
@@ -949,7 +949,7 @@ static void AiNew_State_VerifyRoute(Player *p)
 	_players_ainew[p->index].cur_veh = 0;
 
 	// Check how much it it going to cost us..
-	for (i=0;i<res;i++) {
+	for (i = 0; i < res; i++) {
 		_players_ainew[p->index].new_cost += AiNew_Build_Vehicle(p, 0, DC_QUERY_COST).GetCost();
 	}
 

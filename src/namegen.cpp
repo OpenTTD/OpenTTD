@@ -305,7 +305,7 @@ static byte MakeFinnishTownName(char *buf, uint32 seed, const char *last)
 		uint sel = SeedChance(2,
 			lengthof(name_finnish_1) + lengthof(name_finnish_2), seed);
 		if (sel >= lengthof(name_finnish_1)) {
-			strecat(buf, name_finnish_2[sel-lengthof(name_finnish_1)], last);
+			strecat(buf, name_finnish_2[sel - lengthof(name_finnish_1)], last);
 		} else {
 			strecat(buf, name_finnish_1[sel], last);
 		}

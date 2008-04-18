@@ -64,7 +64,7 @@ static StringID *BuildDynamicDropdown(StringID base, int num)
 {
 	static StringID buf[32 + 1];
 	StringID *p = buf;
-	while (--num>=0) *p++ = base++;
+	while (--num >= 0) *p++ = base++;
 	*p = INVALID_STRING_ID;
 	return buf;
 }
@@ -308,7 +308,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case GAMEOPT_RESOLUTION_BTN: /* Change resolution */
-					if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0],_resolutions[e->we.dropdown.index][1]))
+					if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0], _resolutions[e->we.dropdown.index][1]))
 						SetWindowDirty(w);
 					break;
 
@@ -340,7 +340,7 @@ CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		_opt_ptr->road_side = p1;
-		InvalidateWindow(WC_GAME_OPTIONS,0);
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 	return CommandCost();
 }
@@ -1059,7 +1059,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 		case WE_ON_EDIT_TEXT:
 			if (e->we.edittext.str != NULL) {
-				const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w,def_d).data_3];
+				const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w, def_d).data_3];
 				const SettingDesc *sd = pe->setting;
 				int32 value = atoi(e->we.edittext.str);
 

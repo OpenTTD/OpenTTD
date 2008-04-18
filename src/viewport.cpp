@@ -1015,7 +1015,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 				if (bottom > t->sign.top &&
 						top    < t->sign.top + 24 &&
 						right  > t->sign.left &&
-						left   < t->sign.left + t->sign.width_1*2) {
+						left   < t->sign.left + t->sign.width_1 * 2) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
 						_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
 						t->index, t->population);
@@ -1082,7 +1082,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 				if (bottom > st->sign.top &&
 						top    < st->sign.top + 24 &&
 						right  > st->sign.left &&
-						left   < st->sign.left + st->sign.width_1*2) {
+						left   < st->sign.left + st->sign.width_1 * 2) {
 					AddStation(st, STR_305C_0, st->sign.width_1);
 				}
 			}
@@ -1210,7 +1210,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 				if (bottom > wp->sign.top &&
 						top    < wp->sign.top + 24 &&
 						right  > wp->sign.left &&
-						left   < wp->sign.left + wp->sign.width_1*2) {
+						left   < wp->sign.left + wp->sign.width_1 * 2) {
 					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
 				}
 			}

@@ -42,7 +42,7 @@ typedef void WindowProc(Window *w, WindowEvent *e);
     Now the window will only change in height in steps of 10.
    You can also give a minimum width and height. The default value is
     the default height/width of the window itself. You can change this
-    AFTER window-creation, with:
+    AFTER window - creation, with:
      w->resize.width or w->resize.height.
    That was all.. good luck, and enjoy :) -- TrueLight */
 

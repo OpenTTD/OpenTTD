@@ -149,7 +149,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 			SetVScrollCount(w, numact + 1);
 
-			if (WP(w, def_d).data_1 != -1 && !HasBit(buttons, WP(w,def_d).data_1))
+			if (WP(w, def_d).data_1 != -1 && !HasBit(buttons, WP(w, def_d).data_1))
 				WP(w, def_d).data_1 = -1;
 
 			w->SetWidgetDisabledState(6, WP(w, def_d).data_1 == -1);

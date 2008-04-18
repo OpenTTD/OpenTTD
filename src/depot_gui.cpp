@@ -205,7 +205,7 @@ static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
 	DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
 
 	SetDParam(0, v->unitnumber);
-	DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
+	DrawString(x, y + 2, (uint16)(v->max_age - 366) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
 }
 
 static void DrawDepotWindow(Window *w)

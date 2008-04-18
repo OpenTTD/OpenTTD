@@ -2507,7 +2507,7 @@ static void UpdateStationRating(Station *st)
 
 			{
 				int b = ge->last_speed;
-				if ((b-=85) >= 0)
+				if ((b -= 85) >= 0)
 					rating += b >> 2;
 			}
 
@@ -3065,15 +3065,15 @@ extern const TileTypeProcs _tile_type_station_procs = {
 };
 
 static const SaveLoad _roadstop_desc[] = {
-	SLE_VAR(RoadStop,xy,           SLE_UINT32),
+	SLE_VAR(RoadStop, xy,           SLE_UINT32),
 	SLE_CONDNULL(1, 0, 44),
-	SLE_VAR(RoadStop,status,       SLE_UINT8),
+	SLE_VAR(RoadStop, status,       SLE_UINT8),
 	/* Index was saved in some versions, but this is not needed */
 	SLE_CONDNULL(4, 0, 8),
 	SLE_CONDNULL(2, 0, 44),
 	SLE_CONDNULL(1, 0, 25),
 
-	SLE_REF(RoadStop,next,         REF_ROADSTOPS),
+	SLE_REF(RoadStop, next,         REF_ROADSTOPS),
 	SLE_CONDNULL(2, 0, 44),
 
 	SLE_CONDNULL(4, 0, 24),

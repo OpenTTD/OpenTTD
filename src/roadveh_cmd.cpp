@@ -1293,7 +1293,7 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 
 	v->cur_image = v->GetImage(v->direction);
 	v->UpdateDeltaXY(v->direction);
-	SetRoadVehPosition(v,x,y);
+	SetRoadVehPosition(v, x, y);
 
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 
@@ -1390,7 +1390,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	Direction new_dir;
 	Direction old_dir;
 	RoadDriveEntry rd;
-	int x,y;
+	int x, y;
 	uint32 r;
 
 	if (v->u.road.overtaking != 0)  {
@@ -1431,7 +1431,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 			/* Vehicle has just entered a bridge or tunnel */
 			v->cur_image = v->GetImage(v->direction);
 			v->UpdateDeltaXY(v->direction);
-			SetRoadVehPosition(v,gp.x,gp.y);
+			SetRoadVehPosition(v, gp.x, gp.y);
 			return true;
 		}
 

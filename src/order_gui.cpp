@@ -541,7 +541,7 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 	if (!cmd.IsValid()) return;
 
 	if (DoCommandP(v->tile, v->index + (OrderGetSel(w) << 16), cmd.Pack(), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
-		if (WP(w, order_d).sel != -1) WP(w,order_d).sel++;
+		if (WP(w, order_d).sel != -1) WP(w, order_d).sel++;
 		ResetObjectToPlace();
 	}
 }
@@ -1087,7 +1087,7 @@ static const Widget _orders_train_widgets[] = {
 
 static const WindowDesc _orders_train_desc = {
 	WDP_AUTO, WDP_AUTO, 386, 100, 386, 100,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
+	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_train_widgets,
 	OrdersWndProc
@@ -1128,7 +1128,7 @@ static const Widget _orders_widgets[] = {
 
 static const WindowDesc _orders_desc = {
 	WDP_AUTO, WDP_AUTO, 386, 100, 386, 100,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
+	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_widgets,
 	OrdersWndProc
@@ -1169,7 +1169,7 @@ static const Widget _other_orders_widgets[] = {
 
 static const WindowDesc _other_orders_desc = {
 	WDP_AUTO, WDP_AUTO, 386, 88, 386, 88,
-	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
+	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_other_orders_widgets,
 	OrdersWndProc

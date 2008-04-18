@@ -1437,7 +1437,7 @@ extern void DrawShipDetails(const Vehicle *v, int x, int y);
 extern void DrawAircraftDetails(const Vehicle *v, int x, int y);
 
 /**
-* Draw the details for the given vehicle at the position (x,y) of the Details windows
+* Draw the details for the given vehicle at the position (x, y) of the Details windows
 *
 * @param v current vehicle
 * @param x The x coordinate

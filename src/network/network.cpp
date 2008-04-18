@@ -391,7 +391,7 @@ static void NetworkFindIPs()
 			uint32 netmask;
 
 			fields = sscanf(*output, "%u: %hhu.%hhu.%hhu.%hhu, netmask %hhu.%hhu.%hhu.%hhu%n",
-												&n, &i1,&i2,&i3,&i4, &j1,&j2,&j3,&j4, &read);
+												&n, &i1, &i2, &i3, &i4, &j1, &j2, &j3, &j4, &read);
 			read += 1;
 			if (fields != 9) {
 				break;

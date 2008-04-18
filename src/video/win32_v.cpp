@@ -308,7 +308,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_PAINT: {
 			PAINTSTRUCT ps;
-			HDC dc,dc2;
+			HDC dc, dc2;
 			HBITMAP old_bmp;
 			HPALETTE old_palette;
 

@@ -86,7 +86,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 
 		default: NOT_REACHED();
 	}
-	if (pos <= mi+9) {
+	if (pos <= mi + 9) {
 		/* Pressing the upper button? */
 		w->flags4 |= WF_SCROLL_UP;
 		if (_scroller_click_timeout == 0) {

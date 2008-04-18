@@ -158,7 +158,7 @@ CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION,- _price.clear_roughland * 2);
+	return CommandCost(EXPENSES_CONSTRUCTION, - _price.clear_roughland * 2);
 }
 
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);

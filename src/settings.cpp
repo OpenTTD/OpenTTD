@@ -83,7 +83,7 @@ static void pool_free(SettingsMemoryPool **pool);
 static bool IsSignedVarMemType(VarType vt);
 
 struct SettingsMemoryPool {
-	uint pos,size;
+	uint pos, size;
 	SettingsMemoryPool *next;
 	byte mem[1];
 };
@@ -242,7 +242,7 @@ static IniFile *ini_load(const char *filename)
 
 		/* trim whitespace from right side. */
 		e = s + strlen(s);
-		while (e > s && ((c=e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
+		while (e > s && ((c = e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
 		*e = '\0';
 
 		/* skip comments and empty lines */
@@ -253,7 +253,7 @@ static IniFile *ini_load(const char *filename)
 			/* add to comment */
 			if (ns > a) {
 				a = max(a, 128U);
-				do a*=2; while (a < ns);
+				do a *= 2; while (a < ns);
 				comment = ReallocT(comment, comment_alloc = a);
 			}
 			pos = comment_size;

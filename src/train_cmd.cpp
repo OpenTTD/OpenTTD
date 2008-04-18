@@ -1304,7 +1304,7 @@ CommandCost CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p2 the selling mode
  * - p2 = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
  * - p2 = 1: sell the vehicle and all vehicles following it in the chain
-             if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
+ *           if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
  * - p2 = 2: when selling attached locos, rearrange all vehicles after it to separate lines;
  *           all wagons of the same type will go on the same line. Used by the AI currently
  */
@@ -3207,7 +3207,7 @@ static void HandleCrashedTrain(Vehicle *v)
 
 	if (state <= 240 && !(v->tick_counter & 3)) ChangeTrainDirRandomly(v);
 
-	if (state >= 4440 && !(v->tick_counter&0x1F)) {
+	if (state >= 4440 && !(v->tick_counter & 0x1F)) {
 		DeleteLastWagon(v);
 		InvalidateWindow(WC_REPLACE_VEHICLE, (v->group_id << 16) | VEH_TRAIN);
 	}

@@ -66,7 +66,7 @@ struct MakeEnumPropsT {
 /** In some cases we use byte or uint16 to store values that are defined as enum. It is
 	*  necessary in order to control the sizeof() such values. Some compilers make enum
 	*  the same size as int (4 or 8 bytes instead of 1 or 2). As a consequence the strict
-	*  compiler type-checking causes errors like:
+	*  compiler type - checking causes errors like:
 	*     'HasPowerOnRail' : cannot convert parameter 1 from 'byte' to 'RailType' when
 	*  u->u.rail.railtype is passed as argument or type RailType. In such cases it is better
 	*  to teach the compiler that u->u.rail.railtype is to be treated as RailType. */

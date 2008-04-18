@@ -219,7 +219,7 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 				case QUERY_EDIT_SIGN_WIDGET_NEXT:
 					if (_sign_sort_dirty) GlobalSortSignList();
 					sign_index = _sign_sort[0]->index;
-					for (uint i = 0; i < _num_sign_sort-1; i++) {
+					for (uint i = 0; i < _num_sign_sort - 1; i++) {
 						if (qs->cur_sign == _sign_sort[i]->index) {
 							sign_index = _sign_sort[i + 1]->index;
 							break;
