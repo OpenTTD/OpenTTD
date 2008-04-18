@@ -835,11 +835,9 @@ static void ChimneySmokeTick(Vehicle *v)
 	if (v->progress > 0) {
 		v->progress--;
 	} else {
-		TileIndex tile;
-
 		BeginVehicleMove(v);
 
-		tile = TileVirtXY(v->x_pos, v->y_pos);
+		TileIndex tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (!IsTileType(tile, MP_INDUSTRY)) {
 			EndVehicleMove(v);
 			delete v;
@@ -1487,10 +1485,10 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* decrease reliability */
 	v->reliability = rel = max((rel_old = v->reliability) - v->reliability_spd_dec, 0);
-	if ((rel_old >> 8) != (rel >> 8))
-		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+	if ((rel_old >> 8) != (rel >> 8)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	if (v->breakdown_ctr != 0 || v->vehstatus & VS_STOPPED ||
+			_opt.diff.vehicle_breakdowns < 1 ||
 			v->cur_speed < 5 || _game_mode == GM_MENU) {
 		return;
 	}
@@ -1499,15 +1497,12 @@ void CheckVehicleBreakdown(Vehicle *v)
 
 	/* increase chance of failure */
 	int chance = v->breakdown_chance + 1;
-	if (Chance16I(1,25,r)) chance += 25;
+	if (Chance16I(1, 25, r)) chance += 25;
 	v->breakdown_chance = min(255, chance);
 
 	/* calculate reliability value to use in comparison */
 	rel = v->reliability;
 	if (v->type == VEH_SHIP) rel += 0x6666;
-
-	/* disabled breakdowns? */
-	if (_opt.diff.vehicle_breakdowns < 1) return;
 
 	/* reduced breakdowns? */
 	if (_opt.diff.vehicle_breakdowns == 1) rel += 0x6666;
