@@ -216,7 +216,6 @@ newgrf_sound.h
 newgrf_spritegroup.h
 newgrf_station.h
 newgrf_storage.h
-newgrf_string_type.h
 newgrf_text.h
 newgrf_town.h
 newgrf_townname.h
@@ -521,7 +520,7 @@ misc/dbg_helpers.cpp
 misc/dbg_helpers.h
 misc/fixedsizearray.hpp
 misc/hashtable.hpp
-misc/smallveh.h
+misc/smallvec.h
 misc/str.hpp
 misc/strapi.hpp
 

@@ -1177,10 +1177,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\newgrf_string_type.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\newgrf_text.h"
 				>
 			</File>
@@ -2293,7 +2289,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\misc\smallveh.h"
+				RelativePath=".\..\src\misc\smallvec.h"
 				>
 			</File>
 			<File
