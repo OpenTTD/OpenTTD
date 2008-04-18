@@ -725,6 +725,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\statusbar_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\string.cpp"
 				>
 			</File>
@@ -1190,6 +1194,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\news_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\news_gui.h"
 				>
 			</File>
 			<File

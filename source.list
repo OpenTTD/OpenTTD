@@ -75,6 +75,7 @@ signs.cpp
 sound.cpp
 spritecache.cpp
 station.cpp
+statusbar_gui.cpp
 string.cpp
 strings.cpp
 texteff.cpp
@@ -220,6 +221,7 @@ newgrf_text.h
 newgrf_town.h
 newgrf_townname.h
 news_func.h
+news_gui.h
 news_type.h
 npf.h
 music/null_m.h

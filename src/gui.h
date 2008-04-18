@@ -34,11 +34,6 @@ void ShowCargoPaymentRates();
 void ShowCompanyLeagueTable();
 void ShowPerformanceRatingDetail();
 
-/* news_gui.cpp */
-void ShowLastNewsMessage();
-void ShowMessageOptions();
-void ShowMessageHistory();
-
 /* train_gui.cpp */
 void ShowOrdersWindow(const Vehicle *v);
 
