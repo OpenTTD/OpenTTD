@@ -218,180 +218,160 @@ extern void UpdateAllStationVirtCoord();
 
 static void MainWindowWndProc(Window *w, WindowEvent *e)
 {
-	int off_x;
-
 	switch (e->event) {
-	case WE_PAINT:
-		DrawWindowViewport(w);
-		if (_game_mode == GM_MENU) {
-			off_x = _screen.width / 2;
+		case WE_PAINT:
+			DrawWindowViewport(w);
+			if (_game_mode == GM_MENU) {
+				int off_x = _screen.width / 2;
 
-			DrawSprite(SPR_OTTD_O, PAL_NONE, off_x - 120, 50);
-			DrawSprite(SPR_OTTD_P, PAL_NONE, off_x -  86, 50);
-			DrawSprite(SPR_OTTD_E, PAL_NONE, off_x -  53, 50);
-			DrawSprite(SPR_OTTD_N, PAL_NONE, off_x -  22, 50);
+				DrawSprite(SPR_OTTD_O, PAL_NONE, off_x - 120, 50);
+				DrawSprite(SPR_OTTD_P, PAL_NONE, off_x -  86, 50);
+				DrawSprite(SPR_OTTD_E, PAL_NONE, off_x -  53, 50);
+				DrawSprite(SPR_OTTD_N, PAL_NONE, off_x -  22, 50);
 
-			DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  34, 50);
-			DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  65, 50);
-			DrawSprite(SPR_OTTD_D, PAL_NONE, off_x +  96, 50);
-
-			/*
-			DrawSprite(SPR_OTTD_R, off_x + 119, 50);
-			DrawSprite(SPR_OTTD_A, off_x + 148, 50);
-			DrawSprite(SPR_OTTD_N, off_x + 181, 50);
-			DrawSprite(SPR_OTTD_S, off_x + 215, 50);
-			DrawSprite(SPR_OTTD_P, off_x + 246, 50);
-			DrawSprite(SPR_OTTD_O, off_x + 275, 50);
-			DrawSprite(SPR_OTTD_R, off_x + 307, 50);
-			DrawSprite(SPR_OTTD_T, off_x + 337, 50);
-
-			DrawSprite(SPR_OTTD_T, off_x + 390, 50);
-			DrawSprite(SPR_OTTD_Y, off_x + 417, 50);
-			DrawSprite(SPR_OTTD_C, off_x + 447, 50);
-			DrawSprite(SPR_OTTD_O, off_x + 478, 50);
-			DrawSprite(SPR_OTTD_O, off_x + 509, 50);
-			DrawSprite(SPR_OTTD_N, off_x + 541, 50);
-			*/
-		}
-		break;
-
-	case WE_KEYPRESS:
-		switch (e->we.keypress.keycode) {
-			case 'Q' | WKC_CTRL:
-			case 'Q' | WKC_META:
-				HandleExitGameRequest();
-				break;
-		}
-
-		/* Disable all key shortcuts, except quit shortcuts when
-		 * generating the world, otherwise they create threading
-		 * problem during the generating, resulting in random
-		 * assertions that are hard to trigger and debug */
-		if (IsGeneratingWorld()) break;
-
-		if (e->we.keypress.keycode == WKC_BACKQUOTE) {
-			IConsoleSwitch();
-			e->we.keypress.cont = false;
+				DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  34, 50);
+				DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  65, 50);
+				DrawSprite(SPR_OTTD_D, PAL_NONE, off_x +  96, 50);
+			}
 			break;
-		}
 
-		if (e->we.keypress.keycode == ('B' | WKC_CTRL)) {
-			e->we.keypress.cont = false;
-			_draw_bounding_boxes = !_draw_bounding_boxes;
-			MarkWholeScreenDirty();
-			break;
-		}
+		case WE_KEYPRESS:
+			switch (e->we.keypress.keycode) {
+				case 'Q' | WKC_CTRL:
+				case 'Q' | WKC_META:
+					HandleExitGameRequest();
+					break;
+			}
 
-		if (_game_mode == GM_MENU) break;
+			/* Disable all key shortcuts, except quit shortcuts when
+			* generating the world, otherwise they create threading
+			* problem during the generating, resulting in random
+			* assertions that are hard to trigger and debug */
+			if (IsGeneratingWorld()) break;
 
-		switch (e->we.keypress.keycode) {
-			case 'C':
-			case 'Z': {
-				Point pt = GetTileBelowCursor();
-				if (pt.x != -1) {
-					if (e->we.keypress.keycode == 'Z') MaxZoomInOut(ZOOM_IN, w);
-					ScrollMainWindowTo(pt.x, pt.y);
-				}
+			if (e->we.keypress.keycode == WKC_BACKQUOTE) {
+				IConsoleSwitch();
+				e->we.keypress.cont = false;
 				break;
 			}
 
-			case WKC_ESC: ResetObjectToPlace(); break;
-			case WKC_DELETE: DeleteNonVitalWindows(); break;
-			case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
-			case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
+			if (e->we.keypress.keycode == ('B' | WKC_CTRL)) {
+				e->we.keypress.cont = false;
+				_draw_bounding_boxes = !_draw_bounding_boxes;
+				MarkWholeScreenDirty();
+				break;
+			}
+
+			if (_game_mode == GM_MENU) break;
+
+			switch (e->we.keypress.keycode) {
+				case 'C':
+				case 'Z': {
+					Point pt = GetTileBelowCursor();
+					if (pt.x != -1) {
+						if (e->we.keypress.keycode == 'Z') MaxZoomInOut(ZOOM_IN, w);
+						ScrollMainWindowTo(pt.x, pt.y);
+					}
+					break;
+				}
+
+				case WKC_ESC: ResetObjectToPlace(); break;
+				case WKC_DELETE: DeleteNonVitalWindows(); break;
+				case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
+				case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
 
 #if defined(_DEBUG)
-			case '0' | WKC_ALT: // Crash the game
-				*(byte*)0 = 0;
-				break;
+				case '0' | WKC_ALT: // Crash the game
+					*(byte*)0 = 0;
+					break;
 
-			case '1' | WKC_ALT: // Gimme money
-				/* Server can not cheat in advertise mode either! */
-				if (!_networking || !_network_server || !_network_advertise)
-					DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
-				break;
+				case '1' | WKC_ALT: // Gimme money
+					/* Server can not cheat in advertise mode either! */
+					if (!_networking || !_network_server || !_network_advertise)
+						DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
+					break;
 
-			case '2' | WKC_ALT: // Update the coordinates of all station signs
-				UpdateAllStationVirtCoord();
-				break;
+				case '2' | WKC_ALT: // Update the coordinates of all station signs
+					UpdateAllStationVirtCoord();
+					break;
 #endif
 
-			case '1' | WKC_CTRL:
-			case '2' | WKC_CTRL:
-			case '3' | WKC_CTRL:
-			case '4' | WKC_CTRL:
-			case '5' | WKC_CTRL:
-			case '6' | WKC_CTRL:
-			case '7' | WKC_CTRL:
-			case '8' | WKC_CTRL:
-			case '9' | WKC_CTRL:
-				/* Transparency toggle hot keys */
-				ToggleTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL)));
-				MarkWholeScreenDirty();
-				break;
+				case '1' | WKC_CTRL:
+				case '2' | WKC_CTRL:
+				case '3' | WKC_CTRL:
+				case '4' | WKC_CTRL:
+				case '5' | WKC_CTRL:
+				case '6' | WKC_CTRL:
+				case '7' | WKC_CTRL:
+				case '8' | WKC_CTRL:
+				case '9' | WKC_CTRL:
+					/* Transparency toggle hot keys */
+					ToggleTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL)));
+					MarkWholeScreenDirty();
+					break;
 
-			case '1' | WKC_CTRL | WKC_SHIFT:
-			case '2' | WKC_CTRL | WKC_SHIFT:
-			case '3' | WKC_CTRL | WKC_SHIFT:
-			case '4' | WKC_CTRL | WKC_SHIFT:
-			case '5' | WKC_CTRL | WKC_SHIFT:
-			case '6' | WKC_CTRL | WKC_SHIFT:
-			case '7' | WKC_CTRL | WKC_SHIFT:
-			case '8' | WKC_CTRL | WKC_SHIFT:
-				/* Invisibility toggle hot keys */
-				ToggleInvisibilityWithTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL | WKC_SHIFT)));
-				MarkWholeScreenDirty();
-				break;
+				case '1' | WKC_CTRL | WKC_SHIFT:
+				case '2' | WKC_CTRL | WKC_SHIFT:
+				case '3' | WKC_CTRL | WKC_SHIFT:
+				case '4' | WKC_CTRL | WKC_SHIFT:
+				case '5' | WKC_CTRL | WKC_SHIFT:
+				case '6' | WKC_CTRL | WKC_SHIFT:
+				case '7' | WKC_CTRL | WKC_SHIFT:
+				case '8' | WKC_CTRL | WKC_SHIFT:
+					/* Invisibility toggle hot keys */
+					ToggleInvisibilityWithTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL | WKC_SHIFT)));
+					MarkWholeScreenDirty();
+					break;
 
-			case 'X' | WKC_CTRL:
-				ShowTransparencyToolbar();
-				break;
+				case 'X' | WKC_CTRL:
+					ShowTransparencyToolbar();
+					break;
 
-			case 'X':
-				ResetRestoreAllTransparency();
-				break;
+				case 'X':
+					ResetRestoreAllTransparency();
+					break;
 
 #ifdef ENABLE_NETWORK
-			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
-				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
-					bool teamchat = false;
+				case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
+					if (_networking) {
+						const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+						bool teamchat = false;
 
-					if (cio == NULL) break;
+						if (cio == NULL) break;
 
-					/* Only players actually playing can speak to team. Eg spectators cannot */
-					if (_patches.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
-						const NetworkClientInfo *ci;
-						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-							if (ci->client_playas == cio->client_playas && ci != cio) {
-								teamchat = true;
-								break;
+						/* Only players actually playing can speak to team. Eg spectators cannot */
+						if (_patches.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
+							const NetworkClientInfo *ci;
+							FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+								if (ci->client_playas == cio->client_playas && ci != cio) {
+									teamchat = true;
+									break;
+								}
 							}
 						}
+
+						ShowNetworkChatQueryWindow(teamchat ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
 					}
+					break;
 
-					ShowNetworkChatQueryWindow(teamchat ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
-				}
-				break;
+				case WKC_SHIFT | WKC_RETURN: case WKC_SHIFT | 'T': // send text message to all players
+					if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+					break;
 
-			case WKC_SHIFT | WKC_RETURN: case WKC_SHIFT | 'T': // send text message to all players
-				if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
-				break;
+				case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
+					if (_networking) {
+						const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+						if (cio == NULL) break;
 
-			case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
-				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
-					if (cio == NULL) break;
-
-					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);
-				}
-				break;
+						ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);
+					}
+					break;
 #endif
 
-			default: return;
-		}
-		e->we.keypress.cont = false;
-		break;
+				default: return;
+			}
+			e->we.keypress.cont = false;
+			break;
 
 		case WE_SCROLL: {
 			ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
@@ -423,21 +403,17 @@ void ShowSelectGameWindow();
 
 void SetupColorsAndInitialWindow()
 {
-	uint i;
-	Window *w;
-	int width, height;
-
-	for (i = 0; i != 16; i++) {
+	for (uint i = 0; i != 16; i++) {
 		const byte *b = GetNonSprite(PALETTE_RECOLOR_START + i);
 
 		assert(b);
 		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
 	}
 
-	width = _screen.width;
-	height = _screen.height;
+	int width = _screen.width;
+	int height = _screen.height;
 
-	w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
+	Window *w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 	AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 
 	/* XXX: these are not done */
