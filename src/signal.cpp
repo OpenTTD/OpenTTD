@@ -422,11 +422,11 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 			/* train in the segment */
 			newstate = SIGNAL_STATE_RED;
 		} else {
- 			/* is it a bidir combo? - then do not count its other signal direction as exit */
+			/* is it a bidir combo? - then do not count its other signal direction as exit */
 			if (sig == SIGTYPE_COMBO && HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir))) {
 				/* at least one more exit */
 				if (flags & SF_EXIT2 &&
- 						/* no green exit */
+						/* no green exit */
 						(!(flags & SF_GREEN) ||
 						/* only one green exit, and it is this one - so all other exits are red */
 						(!(flags & SF_GREEN2) && GetSignalStateByTrackdir(tile, ReverseTrackdir(trackdir)) == SIGNAL_STATE_GREEN))) {
@@ -507,7 +507,7 @@ static bool UpdateSignalsInBuffer(Owner owner)
 			case MP_STATION:
 			case MP_ROAD:
 				if ((TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_RAIL, 0)) & _enterdir_to_trackbits[dir]) != TRACK_BIT_NONE) {
- 					/* only add to set when there is some 'interesting' track */
+					/* only add to set when there is some 'interesting' track */
 					_tbdset.Add(tile, dir);
 					_tbdset.Add(tile + TileOffsByDiagDir(dir), ReverseDiagDir(dir));
 					break;

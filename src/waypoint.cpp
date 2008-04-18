@@ -100,7 +100,7 @@ static void MakeDefaultWaypointName(Waypoint* wp)
 		Waypoint *lwp = GetWaypoint(cid);
 
 		/* check only valid waypoints... */
- 		if (lwp->IsValid() && wp != lwp) {
+		if (lwp->IsValid() && wp != lwp) {
 			/* only waypoints with 'generic' name within the same city */
 			if (lwp->name == NULL && lwp->town_index == wp->town_index) {
 				/* if lwp->town_cn < next, uint will overflow to '+inf' */

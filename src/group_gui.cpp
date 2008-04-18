@@ -206,7 +206,7 @@ static void CreateVehicleGroupWindow(Window *w)
 	w->widget[GRP_WIDGET_LIST_VEHICLE].data = (w->vscroll2.cap << 8) + 1;
 
 	switch (gv->vehicle_type) {
-		default: NOT_REACHED(); break;
+		default: NOT_REACHED();
 		case VEH_TRAIN:    gv->_sorting = &_sorting.train;    break;
 		case VEH_ROAD:     gv->_sorting = &_sorting.roadveh;  break;
 		case VEH_SHIP:     gv->_sorting = &_sorting.ship;     break;
@@ -217,11 +217,11 @@ static void CreateVehicleGroupWindow(Window *w)
 	gv->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
 	gv->l.sort_type = gv->_sorting->criteria;
 	gv->l.flags = VL_REBUILD | (gv->_sorting->order ? VL_DESC : VL_NONE);
-	gv->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
+	gv->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
 	gl->sort_list = NULL;
 	gl->l.flags = VL_REBUILD | VL_NONE;
-	gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
+	gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
 	gv->group_sel = ALL_GROUP;
 	gv->vehicle_sel = INVALID_VEHICLE;
@@ -398,7 +398,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 						w->widget[GRP_WIDGET_CAPTION].data =  STR_A009_AIRCRAFT;
 						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_AIRCRAFT;
 						break;
-					default: NOT_REACHED(); break;
+					default: NOT_REACHED();
 				}
 			} else {
 				const Group *g = GetGroup(gv->group_sel);
@@ -423,7 +423,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 						w->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_AIRCRAFTS_CAPTION;
 						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_AIRCRAFT : SPR_GROUP_REPLACE_OFF_AIRCRAFT;
 						break;
-					default: NOT_REACHED(); break;
+					default: NOT_REACHED();
 				}
 			}
 
@@ -453,7 +453,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					str_all_veh = STR_GROUP_ALL_AIRCRAFTS;
 					str_no_group_veh = STR_GROUP_DEFAULT_AIRCRAFTS;
 					break;
-				default: NOT_REACHED(); break;
+				default: NOT_REACHED();
 			}
 			DrawString(10, y1, str_all_veh, IsAllGroupID(gv->group_sel) ? TC_WHITE : TC_BLACK);
 
@@ -600,7 +600,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					SetDParam(0, g->index);
 					ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, 31, 150, w, CS_ALPHANUMERAL);
-				}	break;
+				} break;
 
 
 				case GRP_WIDGET_AVAILABLE_VEHICLES:

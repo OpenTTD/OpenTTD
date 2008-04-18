@@ -435,13 +435,13 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 }
 
 /**
-* Get a list of the cargo types being produced around the tile (in a rectangle).
-* @param produced: Destination array of produced cargo
-* @param tile: Center of the search area
-* @param w: Width of the center
-* @param h: Height of the center
-* @param rad: Radius of the search area
-*/
+ * Get a list of the cargo types being produced around the tile (in a rectangle).
+ * @param produced: Destination array of produced cargo
+ * @param tile: Center of the search area
+ * @param w: Width of the center
+ * @param h: Height of the center
+ * @param rad: Radius of the search area
+ */
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
 {
@@ -484,13 +484,13 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 }
 
 /**
-* Get a list of the cargo types that are accepted around the tile.
-* @param accepts: Destination array of accepted cargo
-* @param tile: Center of the search area
-* @param w: Width of the center
-* @param h: Height of the center
-* @param rad: Radius of the rectangular search area
-*/
+ * Get a list of the cargo types that are accepted around the tile.
+ * @param accepts: Destination array of accepted cargo
+ * @param tile: Center of the search area
+ * @param w: Width of the center
+ * @param h: Height of the center
+ * @param rad: Radius of the rectangular search area
+ */
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
 {
@@ -1188,7 +1188,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
- 		 */
+		 */
 		if (!_patches.nonuniform_stations) return_cmd_error(STR_NONUNIFORM_STATIONS_DISALLOWED);
 
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
@@ -2770,10 +2770,10 @@ StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
 
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 {
-	Station *st1 = NULL;	// Station with best rating
-	Station *st2 = NULL;	// Second best station
-	uint best_rating1 = 0;	// rating of st1
-	uint best_rating2 = 0;	// rating of st2
+	Station *st1 = NULL;   // Station with best rating
+	Station *st2 = NULL;   // Second best station
+	uint best_rating1 = 0; // rating of st1
+	uint best_rating2 = 0; // rating of st2
 
 	StationSet all_stations = FindStationsAroundIndustryTile(tile, w, h);
 	for (StationSet::iterator st_iter = all_stations.begin(); st_iter != all_stations.end(); ++st_iter) {

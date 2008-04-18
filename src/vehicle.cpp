@@ -2074,7 +2074,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 			break;
 		}
 
- 		case VLW_GROUP_LIST:
+		case VLW_GROUP_LIST:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->IsPrimaryVehicle() &&
 						v->owner == owner && v->group_id == index) {

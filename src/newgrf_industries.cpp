@@ -287,7 +287,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Distance of nearest industry of given type */
 		case 0x64: return GetClosestIndustry(tile, MapNewGRFIndustryType(parameter, indspec->grf_prop.grffile->grfid), industry);
 		/* Get town zone and Manhattan distance of closest town */
- 		case 0x65: return GetTownRadiusGroup(industry->town, tile) << 16 | min(DistanceManhattan(tile, industry->town->xy), 0xFFFF);
+		case 0x65: return GetTownRadiusGroup(industry->town, tile) << 16 | min(DistanceManhattan(tile, industry->town->xy), 0xFFFF);
 		/* Get square of Euclidian distance of closes town */
 		case 0x66: return GetTownRadiusGroup(industry->town, tile) << 16 | min(DistanceSquare(tile, industry->town->xy), 0xFFFF);
 

@@ -1064,7 +1064,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 			case TL_3X3_GRID:
 			case TL_2X2_GRID:
-			 	rcmd = GetTownRoadGridElement(t1, tile, target_dir);
+				rcmd = GetTownRoadGridElement(t1, tile, target_dir);
 				break;
 
 			case TL_BETTER_ROADS:

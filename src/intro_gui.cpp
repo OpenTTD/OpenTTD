@@ -106,7 +106,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 					}
 					break;
 
-				case SGI_TEMPERATE_LANDSCAPE:	case SGI_ARCTIC_LANDSCAPE:
+				case SGI_TEMPERATE_LANDSCAPE: case SGI_ARCTIC_LANDSCAPE:
 				case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
 					w->RaiseWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
 					SetNewLandscapeType(e->we.click.widget - SGI_TEMPERATE_LANDSCAPE);

@@ -3097,7 +3097,7 @@ do_some_terraform:
 		Axis axis = (TileX(t1) == TileX(t2) ? AXIS_Y : AXIS_X);
 
 		/* try to build a long road instead of bridge - CMD_BUILD_LONG_ROAD has to fail if it couldn't build at least one piece! */
- 		CommandCost cost = DoCommand(t2, t1, (t2 < t1 ? 1 : 2) | (axis << 2) | (ROADTYPE_ROAD << 3), DC_AUTO | DC_NO_WATER, CMD_BUILD_LONG_ROAD);
+		CommandCost cost = DoCommand(t2, t1, (t2 < t1 ? 1 : 2) | (axis << 2) | (ROADTYPE_ROAD << 3), DC_AUTO | DC_NO_WATER, CMD_BUILD_LONG_ROAD);
 
 		if (CmdSucceeded(cost) && cost.GetCost() <= p->player_money) {
 			DoCommand(t2, t1, (t2 < t1 ? 1 : 2) | (axis << 2) | (ROADTYPE_ROAD << 3), DC_AUTO | DC_EXEC | DC_NO_WATER, CMD_BUILD_LONG_ROAD);

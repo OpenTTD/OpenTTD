@@ -1021,7 +1021,7 @@ void GetCurrentDirectoryW(int length, wchar_t *path)
 char *getcwd(char *buf, size_t size)
 {
 #if defined(WINCE)
- 	TCHAR path[MAX_PATH];
+	TCHAR path[MAX_PATH];
 	GetModuleFileName(NULL, path, MAX_PATH);
 	convert_from_fs(path, buf, size);
 	/* GetModuleFileName returns dir with file, so remove everything behind latest '\\' */

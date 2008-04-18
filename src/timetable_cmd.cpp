@@ -160,15 +160,15 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 	if (!_patches.timetabling) return;
 
 	/* Make sure the timetable only starts when the vehicle reaches the first
- 	 * order, not when travelling from the depot to the first station. */
- 	if (v->cur_order_index == 0 && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
- 		SetBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
- 		return;
- 	}
+	 * order, not when travelling from the depot to the first station. */
+	if (v->cur_order_index == 0 && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
+		SetBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
+		return;
+	}
 
 	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
- 	if (HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) {
+	if (HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) {
 		if (timetabled == 0) {
 			/* Round the time taken up to the nearest day, as this will avoid
 			 * confusion for people who are timetabling in days, and can be
@@ -182,7 +182,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 			 * assume that autofill is finished and turn it off again. */
 			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 		}
- 	}
+	}
 
 	/* Vehicles will wait at stations if they arrive early even if they are not
 	 * timetabled to wait there, so make sure the lateness counter is updated

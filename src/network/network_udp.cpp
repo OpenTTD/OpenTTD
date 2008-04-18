@@ -293,7 +293,7 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 
 		for (c = item->info.grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_NOT_FOUND) item->info.compatible = false;
- 			if (c->status != GCS_NOT_FOUND || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
+			if (c->status != GCS_NOT_FOUND || strcmp(c->name, UNKNOWN_GRF_NAME_PLACEHOLDER) != 0) continue;
 			in_request[in_request_count] = c;
 			in_request_count++;
 		}
