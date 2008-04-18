@@ -44,7 +44,6 @@ void InitializeRoadGui();
 void InitializeAirportGui();
 void InitializeDockGui();
 void InitializeIndustries();
-void InitializeMainGui();
 void InitializeTowns();
 void InitializeTrees();
 void InitializeSigns();
@@ -93,7 +92,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeCargoPackets();
 	InitializeIndustries();
 	InitializeBuildingCounts();
-	InitializeMainGui();
 
 	InitializeNameMgr();
 	InitializeVehiclesGuiList();

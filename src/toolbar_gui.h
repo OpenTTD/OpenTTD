@@ -7,7 +7,6 @@
 
 #include "window_type.h"
 
-Point GetToolbarDropdownPos(uint16 parent_button, int width, int height);
 Window *AllocateToolbar();
 
 #endif /*TOOLBAR_GUI_H*/

@@ -17,8 +17,6 @@ void CcPlaySound10(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void HandleOnEditText(const char *str);
 void InitializeGUI();
-Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray);
-Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask);
 
 /* settings_gui.cpp */
 void ShowGameOptions();
