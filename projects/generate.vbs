@@ -46,6 +46,85 @@ Sub safety_check(filename)
 	file.Close
 End Sub
 
+Sub get_files(srcdir, dir, list)
+	Dim file, filename
+	Dim rekeep, reskip
+
+	' pattern for files to keep
+	Set rekeep = New RegExp
+	rekeep.Pattern = "\.h"
+	rekeep.Global = True
+
+	' pattern for files to exclude
+	Set reskip = New RegExp
+	reskip.Pattern = "\.svn|\.hpp\.sq"
+	reskip.Global = True
+
+	For Each file in dir.Files
+		filename = Replace(file.path, srcdir, "") ' Remove */src/
+		filename = Replace(filename, "\", "/") ' Replace separators
+		If rekeep.Test(filename) And Not reskip.Test(filename) Then
+			list.Add filename, filename
+		End If
+	Next
+End Sub
+
+Sub get_dir_files(srcdir, dir, list)
+	Dim folder
+	' Get files
+	get_files srcdir, dir, list
+
+	' Recurse in subfolders
+	For Each folder in dir.SubFolders
+		get_dir_files srcdir, folder, list
+	Next
+End Sub
+
+Sub headers_check(filename, dir)
+	Dim source_list_headers, src_dir_headers, regexp, line, file, str
+
+	' Define regexp for source.list parsing
+	Set regexp = New RegExp
+	regexp.Pattern = "\.h"
+	regexp.Global = True
+
+	' Parse source.list and store headers in a dictionary
+	Set source_list_headers = CreateObject("Scripting.Dictionary")
+	Set file = FSO.OpenTextFile(filename, 1, 0, 0)
+	While Not file.AtEndOfStream
+		line = Replace(file.ReadLine, Chr(9), "") ' Remove tabs
+		If Len(line) > 0 And regexp.Test(line) And line <> "../objs/langs/table/strings.h" Then
+			source_list_headers.Add line, line
+		End If
+	Wend
+	file.Close()
+
+	' Get header files in /src/
+	Set src_dir_headers = CreateObject("Scripting.Dictionary")
+	get_dir_files dir, FSO.GetFolder(dir), src_dir_headers
+
+	' Finding files in source.list but not in /src/
+	For Each line In source_list_headers
+		If Not src_dir_headers.Exists(line) Then
+			str = str & "< " & line & vbCrLf
+		End If
+	Next
+
+	' Finding files in /src/ but not in source.list
+	For Each line In src_dir_headers
+		If Not source_list_headers.Exists(line) Then
+			str = str & "> " & line & vbCrLf
+		End If
+	Next
+
+	' Display the missing files if any
+	If str <> "" Then
+		str = "The following headers are missing in source.list and not in /src/ or vice versa." _
+		& vbCrLf & str
+		WScript.Echo str
+	End If
+End Sub
+
 Function load_main_data(filename)
 	Dim res, file, line, deep, skip, first_time
 	res = ""
@@ -171,6 +250,7 @@ If Not FSO.FileExists(ROOT_DIR & "/source.list") Then
 End If
 
 safety_check ROOT_DIR & "/source.list"
+headers_check ROOT_DIR & "/source.list", ROOT_DIR & "\src\" ' Backslashes needed for DoFiles
 
 Dim openttd
 openttd = load_main_data(ROOT_DIR &"/source.list")
