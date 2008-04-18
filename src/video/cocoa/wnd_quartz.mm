@@ -175,7 +175,8 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 			CMCloseProfile(sysProfile);
 		}
 
-		assert(colorSpace != NULL);
+		if (colorSpace == NULL)
+			error("Could not get system colour space. You might need to recalibrate your monitor.");
 	}
 
 	return colorSpace;
