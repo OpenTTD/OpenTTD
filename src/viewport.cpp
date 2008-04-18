@@ -140,6 +140,7 @@ static ViewportDrawer _vd;
 
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
+bool _draw_bounding_boxes = false;
 
 extern void SmallMapCenterOnCurrentPos(Window *w);
 
