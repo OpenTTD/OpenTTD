@@ -91,12 +91,12 @@ static inline TileIndex GetOtherShipDepotTile(TileIndex t)
 	return t + (HasBit(_m[t].m5, 0) ? -1 : 1) * (HasBit(_m[t].m5, 1) ? TileDiffXY(0, 1) : TileDiffXY(1, 0));
 }
 
-static inline TileIndex IsShipDepot(TileIndex t)
+static inline bool IsShipDepot(TileIndex t)
 {
 	return IsInsideMM(_m[t].m5, DEPOT_NORTH, DEPOT_END);
 }
 
-static inline TileIndex IsShipDepotTile(TileIndex t)
+static inline bool IsShipDepotTile(TileIndex t)
 {
 	return IsTileType(t, MP_WATER) && IsShipDepot(t);
 }
