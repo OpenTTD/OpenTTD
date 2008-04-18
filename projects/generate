@@ -55,6 +55,15 @@ safety_check() {
 	done
 }
 
+grep '\.h' "$ROOT_DIR/source.list" | grep -v '../objs/langs/table/strings.h' | sort > tmp.headers.source.list
+find "$ROOT_DIR/src" -iname "*.h*" -and -not -iname "*svn*" -and -not -iname "*.hpp.sq" | sed "s@$ROOT_DIR/src/@@" | sort > tmp.headers.src
+if [ -n "`diff tmp.headers.source.list tmp.headers.src`" ]; then
+	echo "The following headers are missing in source.list and not in /src/ or vice versa."
+	diff tmp.headers.source.list tmp.headers.src | grep '[<>]' | sort
+	echo ""
+fi
+rm tmp.headers.*
+
 load_main_data() {
 	# Read the source.list and process it
 	RES="`cat $1 | tr '\r' '\n' | awk '
