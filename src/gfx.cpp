@@ -64,8 +64,12 @@ static Rect _invalid_rect;
 static const byte *_color_remap_ptr;
 static byte _string_colorremap[3];
 
-#define DIRTY_BYTES_PER_LINE (MAX_SCREEN_WIDTH / 64)
-static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
+enum {
+	DIRTY_BLOCK_HEIGHT   = 8,
+	DIRTY_BLOCK_WIDTH    = 64,
+	DIRTY_BYTES_PER_LINE = MAX_SCREEN_WIDTH / DIRTY_BLOCK_WIDTH,
+};
+static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / DIRTY_BLOCK_HEIGHT];
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -1033,8 +1037,8 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 void DrawDirtyBlocks()
 {
 	byte *b = _dirty_blocks;
-	const int w = Align(_screen.width, 64);
-	const int h = Align(_screen.height, 8);
+	const int w = Align(_screen.width,  DIRTY_BLOCK_WIDTH);
+	const int h = Align(_screen.height, DIRTY_BLOCK_HEIGHT);
 	int x;
 	int y;
 
@@ -1047,7 +1051,7 @@ void DrawDirtyBlocks()
 			if (*b != 0) {
 				int left;
 				int top;
-				int right = x + 64;
+				int right = x + DIRTY_BLOCK_WIDTH;
 				int bottom = y;
 				byte *p = b;
 				int h2;
@@ -1056,11 +1060,11 @@ void DrawDirtyBlocks()
 				do {
 					*p = 0;
 					p += DIRTY_BYTES_PER_LINE;
-					bottom += 8;
+					bottom += DIRTY_BLOCK_HEIGHT;
 				} while (bottom != h && *p != 0);
 
 				/* Try coalescing to the right too. */
-				h2 = (bottom - y) >> 3;
+				h2 = (bottom - y) / DIRTY_BLOCK_HEIGHT;
 				assert(h2 > 0);
 				p = b;
 
@@ -1075,7 +1079,7 @@ void DrawDirtyBlocks()
 
 					/* Wohoo, can combine it one step to the right!
 					 * Do that, and clear the bits. */
-					right += 64;
+					right += DIRTY_BLOCK_WIDTH;
 
 					h = h2;
 					p2 = p;
@@ -1099,8 +1103,8 @@ void DrawDirtyBlocks()
 				}
 
 			}
-		} while (b++, (x += 64) != w);
-	} while (b += -(w >> 6) + DIRTY_BYTES_PER_LINE, (y += 8) != h);
+		} while (b++, (x += DIRTY_BLOCK_WIDTH) != w);
+	} while (b += -(w / DIRTY_BLOCK_WIDTH) + DIRTY_BYTES_PER_LINE, (y += DIRTY_BLOCK_HEIGHT) != h);
 
 	_invalid_rect.left = w;
 	_invalid_rect.top = h;
@@ -1147,13 +1151,13 @@ void SetDirtyBlocks(int left, int top, int right, int bottom)
 	if (right  > _invalid_rect.right ) _invalid_rect.right  = right;
 	if (bottom > _invalid_rect.bottom) _invalid_rect.bottom = bottom;
 
-	left >>= 6;
-	top  >>= 3;
+	left /= DIRTY_BLOCK_WIDTH;
+	top  /= DIRTY_BLOCK_HEIGHT;
 
 	b = _dirty_blocks + top * DIRTY_BYTES_PER_LINE + left;
 
-	width  = ((right  - 1) >> 6) - left + 1;
-	height = ((bottom - 1) >> 3) - top  + 1;
+	width  = ((right  - 1) / DIRTY_BLOCK_WIDTH)  - left + 1;
+	height = ((bottom - 1) / DIRTY_BLOCK_HEIGHT) - top  + 1;
 
 	assert(width > 0 && height > 0);
 
