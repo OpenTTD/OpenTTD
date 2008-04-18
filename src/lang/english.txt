@@ -378,6 +378,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity 
 STR_SORT_BY_MAX_SPEED                                           :Maximum speed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Value
+STR_SORT_BY_LENGTH                                              :Length
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
 STR_SORT_BY_RATING_MAX                                          :Cargo rating

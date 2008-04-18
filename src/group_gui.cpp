@@ -523,7 +523,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-					ShowDropDownMenu(w, _vehicle_sort_listing, gv->l.sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, 0);
+					ShowDropDownMenu(w, _vehicle_sort_listing, gv->l.sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (gv->vehicle_type == VEH_TRAIN || gv->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 					return;
 
 				case GRP_WIDGET_ALL_VEHICLES: // All vehicles button

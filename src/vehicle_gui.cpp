@@ -72,6 +72,7 @@ static VehicleSortListingTypeFunction VehicleReliabilitySorter;
 static VehicleSortListingTypeFunction VehicleMaxSpeedSorter;
 static VehicleSortListingTypeFunction VehicleModelSorter;
 static VehicleSortListingTypeFunction VehicleValueSorter;
+static VehicleSortListingTypeFunction VehicleLengthSorter;
 
 static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleNumberSorter,
@@ -84,6 +85,7 @@ static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleMaxSpeedSorter,
 	&VehicleModelSorter,
 	&VehicleValueSorter,
+	&VehicleLengthSorter,
 };
 
 const StringID _vehicle_sort_listing[] = {
@@ -97,6 +99,7 @@ const StringID _vehicle_sort_listing[] = {
 	STR_SORT_BY_MAX_SPEED,
 	STR_SORT_BY_MODEL,
 	STR_SORT_BY_VALUE,
+	STR_SORT_BY_LENGTH,
 	INVALID_STRING_ID
 };
 
@@ -698,6 +701,30 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
+static int CDECL VehicleLengthSorter(const void *a, const void *b)
+{
+	const Vehicle *va = *(const Vehicle**)a;
+	const Vehicle *vb = *(const Vehicle**)b;
+	int r = 0;
+
+	switch (va->type) {
+		case VEH_TRAIN:
+			r = va->u.rail.cached_total_length - vb->u.rail.cached_total_length;
+			break;
+
+		case VEH_ROAD:
+			for (const Vehicle *u = va; u != NULL; u = u->Next()) r += u->u.road.cached_veh_length;
+			for (const Vehicle *u = vb; u != NULL; u = u->Next()) r -= u->u.road.cached_veh_length;
+			break;
+
+		default: NOT_REACHED();
+	}
+
+	VEHICLEUNITNUMBERSORTER(r, va, vb);
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
 void InitializeGUI()
 {
 	memset(&_sorting, 0, sizeof(_sorting));
@@ -1061,7 +1088,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 				case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
-					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, 0);
+					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, (vl->vehicle_type == VEH_TRAIN || vl->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 					return;
 				case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
 					uint32 id_v = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / w->resize.step_height;
