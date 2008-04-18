@@ -15,6 +15,8 @@ const char *VideoDriver_Null::Start(const char* const *parm)
 	this->ticks = GetDriverParamInt(parm, "ticks", 1000);
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
+	ScreenSizeChanged();
+
 	/* Do not render, nor blit */
 	DEBUG(misc, 1, "Forcing blitter 'null'...");
 	BlitterFactoryBase::SelectBlitter("null");
