@@ -84,6 +84,8 @@
 
 #include "table/strings.h"
 
+StringID _switch_mode_errorstr;
+
 void CallLandscapeTick();
 void IncreaseDate();
 void DoPaletteAnimations();

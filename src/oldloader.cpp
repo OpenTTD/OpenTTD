@@ -1473,6 +1473,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 	return !ls->failed;
 }
 
+extern TileIndex _cur_tileloop_tile;
 static uint32 _old_cur_town_ctr;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( 0 ),

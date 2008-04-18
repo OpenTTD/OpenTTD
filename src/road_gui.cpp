@@ -22,6 +22,7 @@
 #include "sound_func.h"
 #include "player_func.h"
 #include "settings_type.h"
+#include "tunnelbridge.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

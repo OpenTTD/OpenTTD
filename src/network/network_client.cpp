@@ -328,6 +328,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *
 // **********
 
 extern bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir);
+extern StringID _switch_mode_errorstr;
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_FULL)
 {

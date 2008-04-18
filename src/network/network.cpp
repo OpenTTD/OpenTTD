@@ -224,6 +224,7 @@ uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs)
 static void NetworkError(StringID error_string)
 {
 	_switch_mode = SM_MENU;
+	extern StringID _switch_mode_errorstr;
 	_switch_mode_errorstr = error_string;
 }
 

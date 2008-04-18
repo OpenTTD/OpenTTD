@@ -5,17 +5,11 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
-#include "tile_type.h"
-#include "strings_type.h"
-
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 
 /* Skip aging of cargo? */
 VARDEF byte _age_cargo_skip_counter;
-
-/* Position in tile loop */
-VARDEF TileIndex _cur_tileloop_tile;
 
 /* Also save scrollpos_x, scrollpos_y and zoom */
 VARDEF uint16 _disaster_delay;
@@ -57,12 +51,10 @@ VARDEF int _caret_timer;
 VARDEF bool _rightclick_emulate;
 
 /* IN/OUT parameters to commands */
-VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
 
 /* Used when switching from the intro menu. */
 VARDEF byte _switch_mode;
-VARDEF StringID _switch_mode_errorstr;
 
 VARDEF char _savegame_format[8];
 

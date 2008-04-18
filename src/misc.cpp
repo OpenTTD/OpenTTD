@@ -31,6 +31,7 @@
 #include "table/sprites.h"
 
 char _name_array[512][32];
+extern TileIndex _cur_tileloop_tile;
 
 void InitializeVehicles();
 void InitializeWaypoints();

@@ -610,6 +610,7 @@ CommandCost CmdClearArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
+TileIndex _cur_tileloop_tile;
 #define TILELOOP_BITS 4
 #define TILELOOP_SIZE (1 << TILELOOP_BITS)
 #define TILELOOP_ASSERTMASK ((TILELOOP_SIZE - 1) + ((TILELOOP_SIZE - 1) << MapLogX()))

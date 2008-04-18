@@ -567,6 +567,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 
 		case WE_DESTROY:
 			SetRedErrorSquare(0);
+			extern StringID _switch_mode_errorstr;
 			_switch_mode_errorstr = INVALID_STRING_ID;
 			break;
 

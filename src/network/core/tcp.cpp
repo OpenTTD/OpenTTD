@@ -75,6 +75,7 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
 	if (!_network_server && _networking) {
 		_switch_mode = SM_MENU;
 		_networking = false;
+		extern StringID _switch_mode_errorstr;
 		_switch_mode_errorstr = STR_NETWORK_ERR_LOSTCONNECTION;
 
 		return NETWORK_RECV_STATUS_CONN_LOST;

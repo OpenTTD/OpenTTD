@@ -29,6 +29,7 @@
 #include "settings_type.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
+#include "tunnelbridge.h"
 
 #include "bridge_map.h"
 #include "rail_map.h"

@@ -44,6 +44,7 @@
 #include "table/bridge_land.h"
 
 BridgeSpec _bridge[MAX_BRIDGES];
+TileIndex _build_tunnel_endtile;
 
 /** Reset the data been eventually changed by the grf loaded. */
 void ResetBridges()
