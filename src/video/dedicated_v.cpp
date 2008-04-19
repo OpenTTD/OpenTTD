@@ -140,6 +140,7 @@ const char *VideoDriver_Dedicated::Start(const char * const *parm)
 
 	_screen.width = _screen.pitch = _cur_resolution[0];
 	_screen.height = _cur_resolution[1];
+	ScreenSizeChanged();
 
 	SetDebugString("net=6");
 
