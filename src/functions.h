@@ -33,10 +33,6 @@ void PlaceTreesRandomly();
 
 void InitializeLandscapeVariables(bool only_constants);
 
-/* misc.cpp */
-bool IsCustomName(StringID id);
-char *CopyFromOldName(StringID id);
-
 /* misc functions */
 /**
  * Mark a tile given by its coordinate dirty for repaint.
@@ -68,10 +64,7 @@ void AskExitToGameMenu();
 
 void RedrawAutosave();
 
-StringID RemapOldStringID(StringID s);
-
 void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
-
 
 /* callback from drivers that is called if the game size changes dynamically */
 void GameSizeChanged();

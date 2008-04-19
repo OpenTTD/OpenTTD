@@ -23,14 +23,12 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "texteff.hpp"
-#include "string_func.h"
 #include "gfx_func.h"
 #include "core/alloc_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
 
-char _name_array[512][32];
 extern TileIndex _cur_tileloop_tile;
 
 void InitializeVehicles();
@@ -49,10 +47,10 @@ void InitializeTrees();
 void InitializeSigns();
 void InitializeStations();
 void InitializeCargoPackets();
-static void InitializeNameMgr();
 void InitializePlayers();
 void InitializeCheats();
 void InitializeNPF();
+void InitializeOldNames();
 
 void InitializeGame(int mode, uint size_x, uint size_y)
 {
@@ -93,7 +91,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeIndustries();
 	InitializeBuildingCounts();
 
-	InitializeNameMgr();
+	InitializeOldNames();
 	InitializeVehiclesGuiList();
 	InitializeTrains();
 	InitializeNPF();
@@ -111,60 +109,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	ResetObjectToPlace();
 }
 
-bool IsCustomName(StringID id)
-{
-	return GB(id, 11, 5) == 15;
-}
-
-
-static void InitializeNameMgr()
-{
-	memset(_name_array, 0, sizeof(_name_array));
-}
-
-/* Copy and convert old custom names to UTF-8 */
-char *CopyFromOldName(StringID id)
-{
-	if (!IsCustomName(id)) return NULL;
-
-	if (CheckSavegameVersion(37)) {
-		/* Old names were 32 characters long, so 128 characters should be
-		 * plenty to allow for expansion when converted to UTF-8. */
-		char tmp[128];
-		const char *strfrom = _name_array[GB(id, 0, 9)];
-		char *strto = tmp;
-
-		for (; *strfrom != '\0'; strfrom++) {
-			WChar c = (byte)*strfrom;
-
-			/* Map from non-ISO8859-15 characters to UTF-8. */
-			switch (c) {
-				case 0xA4: c = 0x20AC; break; // Euro
-				case 0xA6: c = 0x0160; break; // S with caron
-				case 0xA8: c = 0x0161; break; // s with caron
-				case 0xB4: c = 0x017D; break; // Z with caron
-				case 0xB8: c = 0x017E; break; // z with caron
-				case 0xBC: c = 0x0152; break; // OE ligature
-				case 0xBD: c = 0x0153; break; // oe ligature
-				case 0xBE: c = 0x0178; break; // Y with diaresis
-				default: break;
-			}
-
-			/* Check character will fit into our buffer. */
-			if (strto + Utf8CharLen(c) > lastof(tmp)) break;
-
-			strto += Utf8Encode(strto, c);
-		}
-
-		/* Terminate the new string and copy it back to the name array */
-		*strto = '\0';
-
-		return strdup(tmp);
-	} else {
-		/* Name will already be in UTF-8. */
-		return strdup(_name_array[GB(id, 0, 9)]);
-	}
-}
 
 /* Calculate constants that depend on the landscape type. */
 void InitializeLandscapeVariables(bool only_constants)
@@ -174,15 +118,6 @@ void InitializeLandscapeVariables(bool only_constants)
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
 		_cargo_payment_rates[i] = GetCargo(i)->initial_payment;
 		_cargo_payment_rates_frac[i] = 0;
-	}
-}
-
-static void Load_NAME()
-{
-	int index;
-
-	while ((index = SlIterateArray()) != -1) {
-		SlArray(_name_array[index], SlGetFieldLength(), SLE_UINT8);
 	}
 }
 
@@ -469,7 +404,6 @@ extern const ChunkHandler _misc_chunk_handlers[] = {
 	{ 'MAPE', Save_MAP6,     Load_MAP6,     CH_RIFF },
 	{ 'MAP7', Save_MAP7,     Load_MAP7,     CH_RIFF },
 
-	{ 'NAME', NULL,          Load_NAME,     CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},
 	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF | CH_LAST},
 };

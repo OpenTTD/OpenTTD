@@ -91,6 +91,7 @@ void IncreaseDate();
 void DoPaletteAnimations();
 void MusicLoop();
 void ResetMusic();
+void ResetOldNames();
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
@@ -1389,6 +1390,9 @@ bool AfterLoadGame()
 			wp->string = STR_EMPTY;
 		}
 	}
+
+	/* From this point the old names array is cleared. */
+	ResetOldNames();
 
 	/* convert road side to my format. */
 	if (_opt.road_side) _opt.road_side = 1;

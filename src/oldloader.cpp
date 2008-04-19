@@ -24,6 +24,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "variables.h"
+#include "strings_func.h"
 
 #include "table/strings.h"
 
@@ -83,6 +84,12 @@ enum OldChunkType {
 	OC_UINT32    = OC_VAR_U32  | OC_FILE_U32,
 
 	OC_TILE      = OC_VAR_U32  | OC_FILE_U16,
+
+	/**
+	 * Dereference the pointer once before writing to it,
+	 * so we do not have to use big static arrays.
+	 */
+	OC_DEREFERENCE_POINTER = 1 << 31,
 
 	OC_END       = 0 ///< End of the whole chunk, all 32bits set to zero
 };
@@ -201,10 +208,10 @@ static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 	byte *base_ptr = (byte*)base;
 
 	while (chunk->type != OC_END) {
-		byte* ptr = (byte*)chunk->ptr;
-		uint i;
+		byte *ptr = (byte*)chunk->ptr;
+		if ((chunk->type & OC_DEREFERENCE_POINTER) != 0) ptr = *(byte**)ptr;
 
-		for (i = 0; i < chunk->amount; i++) {
+		for (uint i = 0; i < chunk->amount; i++) {
 			if (ls->failed) return false;
 
 			/* Handle simple types */
@@ -391,7 +398,7 @@ static void FixOldVehicles()
 
 extern TileIndex *_animated_tile_list;
 extern uint _animated_tile_count;
-extern char _name_array[512][32];
+extern char *_old_name_array;
 
 static byte   _old_vehicle_multiplier;
 static uint8  _old_map3[OLD_MAP_SIZE * 2];
@@ -1521,7 +1528,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_ASSERT( 0x6F0F2 ),
 
-	OCL_VAR (  OC_UINT8, 32 * 500, &_name_array[0] ),
+	OCL_VAR (  OC_UINT8 | OC_DEREFERENCE_POINTER, 32 * 500, &_old_name_array ),
 
 	OCL_NULL( 0x2000 ),            ///< Old hash-table, no longer in use
 
