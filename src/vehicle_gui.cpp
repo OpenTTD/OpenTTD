@@ -35,7 +35,6 @@
 #include "settings_type.h"
 #include "widgets/dropdown_func.h"
 #include "order_func.h"
-#include "depot_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -103,7 +102,11 @@ const StringID _vehicle_sort_listing[] = {
 	INVALID_STRING_ID
 };
 
-void RebuildVehicleLists()
+/**
+ * Set sort list flag for all vehicle list windows
+ * @param sl_flag Sort list flag to set
+ */
+static void SetVehicleListsFlag(SortListFlags sl_flag)
 {
 	Window* const *wz;
 
@@ -115,7 +118,7 @@ void RebuildVehicleLists()
 			case WC_ROADVEH_LIST:
 			case WC_SHIPS_LIST:
 			case WC_AIRCRAFT_LIST:
-				WP(w, vehiclelist_d).l.flags |= VL_REBUILD;
+				WP(w, vehiclelist_d).l.flags |= sl_flag;
 				SetWindowDirty(w);
 				break;
 
@@ -124,25 +127,20 @@ void RebuildVehicleLists()
 	}
 }
 
+/**
+ * Rebuild all vehicle list windows
+ */
+void RebuildVehicleLists()
+{
+	SetVehicleListsFlag(VL_REBUILD);
+}
+
+/**
+ * Resort all vehicle list windows
+ */
 void ResortVehicleLists()
 {
-	Window* const *wz;
-
-	FOR_ALL_WINDOWS(wz) {
-		Window *w = *wz;
-
-		switch (w->window_class) {
-			case WC_TRAINS_LIST:
-			case WC_ROADVEH_LIST:
-			case WC_SHIPS_LIST:
-			case WC_AIRCRAFT_LIST:
-				WP(w, vehiclelist_d).l.flags |= VL_RESORT;
-				SetWindowDirty(w);
-				break;
-
-			default: break;
-		}
-	}
+	SetVehicleListsFlag(VL_RESORT);
 }
 
 void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 window_type)
