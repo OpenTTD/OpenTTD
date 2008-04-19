@@ -962,8 +962,8 @@ struct TileArea {
 				Axis axis = GetRailStationAxis(tile);
 				TileIndexDiff delta = TileOffsByDiagDir(AxisToDiagDir(axis));
 
-				for (end = tile; IsRailwayStationTile(end + delta) && IsCompatibleTrainStationTile(tile, end + delta); end += delta);
-				for (start = tile; IsRailwayStationTile(start - delta) && IsCompatibleTrainStationTile(tile, start - delta); start -= delta);
+				for (end = tile; IsRailwayStationTile(end + delta) && IsCompatibleTrainStationTile(tile, end + delta); end += delta) { /* Nothing */ }
+				for (start = tile; IsRailwayStationTile(start - delta) && IsCompatibleTrainStationTile(tile, start - delta); start -= delta) { /* Nothing */ }
 
 				this->tile = start;
 				this->w = TileX(end) - TileX(start) + 1;
