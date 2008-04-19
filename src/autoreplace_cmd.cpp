@@ -289,6 +289,42 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 	return cost;
 }
 
+/** Removes wagons from a train until it get a certain length
+ * @param v The vehicle
+ * @param old_total_length The wanted max length
+ * @return The profit from selling the wagons
+ */
+static CommandCost WagonRemoval(Vehicle *v, uint16 old_total_length)
+{
+	if (v->type != VEH_TRAIN) return CommandCost();
+	Vehicle *front = v;
+
+	CommandCost cost = CommandCost();
+
+	while (front->u.rail.cached_total_length > old_total_length) {
+		/* the train is too long. We will remove cars one by one from the start of the train until it's short enough */
+		while (v != NULL && RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON) {
+			/* We move backwards in the train until we find a wagon */
+			v = GetNextVehicle(v);
+		}
+
+		if (v == NULL) {
+			/* We sold all the wagons and the train is still not short enough */
+			SetDParam(0, front->unitnumber);
+			AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, front->index, 0);
+			return cost;
+		}
+
+		/* We found a wagon we can sell */
+		Vehicle *temp = v;
+		v = GetNextVehicle(v);
+		DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE); // remove the wagon from the train
+		MoveVehicleCargo(front, temp); // move the cargo back on the train
+		cost.AddCost(DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON)); // sell the wagon
+	}
+	return cost;
+}
+
 /** Get the EngineID of the replacement for a vehicle
  * @param v The vehicle to find a replacement for
  * @param p The vehicle's owner (it's faster to forward the pointer than refinding it)
@@ -422,29 +458,11 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 	}
 
 	if (flags & DC_EXEC && CmdSucceeded(cost)) {
-		/* If setting is on to try not to exceed the old length of the train with the replacement */
 		if (v->type == VEH_TRAIN && p->renew_keep_length) {
-			Vehicle *temp;
-			w = v;
-
-			while (v->u.rail.cached_total_length > old_total_length) {
-				// the train is too long. We will remove cars one by one from the start of the train until it's short enough
-				while (w != NULL && RailVehInfo(w->engine_type)->railveh_type != RAILVEH_WAGON) {
-					w = GetNextVehicle(w);
-				}
-				if (w == NULL) {
-					// we failed to make the train short enough
-					SetDParam(0, v->unitnumber);
-					AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
-					break;
-				}
-				temp = w;
-				w = GetNextVehicle(w);
-				DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
-				MoveVehicleCargo(v, temp);
-				cost.AddCost(DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON));
-			}
+			/* Remove wagons until the wanted length is reached */
+			cost.AddCost(WagonRemoval(v, old_total_length));
 		}
+
 		if (display_costs && IsLocalPlayer()) {
 			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
 		}
