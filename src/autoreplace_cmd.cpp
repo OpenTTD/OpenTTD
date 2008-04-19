@@ -117,30 +117,25 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 	return CT_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
 }
 
-/* Replaces a vehicle (used to be called autorenew)
+/** Replaces a vehicle (used to be called autorenew)
  * This function is only called from MaybeReplaceVehicle()
  * Must be called with _current_player set to the owner of the vehicle
  * @param w Vehicle to replace
  * @param flags is the flags to use when calling DoCommand(). Mainly DC_EXEC counts
+ * @param p The vehicle owner (faster than refinding the pointer)
+ * @param new_engine_type The EngineID to replace to
  * @return value is cost of the replacement or CMD_ERROR
  */
-static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
+static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, const Player *p, EngineID new_engine_type)
 {
 	CommandCost cost;
 	CommandCost sell_value;
 	Vehicle *old_v = *w;
-	const Player *p = GetPlayer(old_v->owner);
-	EngineID new_engine_type;
 	const UnitID cached_unitnumber = old_v->unitnumber;
 	bool new_front = false;
 	Vehicle *new_v = NULL;
 	char *vehicle_name = NULL;
 	CargoID replacement_cargo_type;
-
-	/* Check if there is a autoreplacement set for the vehicle */
-	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type, old_v->group_id);
-	/* if not, just renew to the same type */
-	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
 
 	replacement_cargo_type = GetNewCargoTypeForReplace(old_v, new_engine_type);
 
@@ -292,6 +287,32 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
 	return cost;
 }
 
+/** Get the EngineID of the replacement for a vehicle
+ * @param v The vehicle to find a replacement for
+ * @param p The vehicle's owner (it's faster to forward the pointer than refinding it)
+ * @return the EngineID of the replacement. INVALID_ENGINE if no buildable replacement is found
+ */
+static EngineID GetNewEngineType(const Vehicle *v, const Player *p)
+{
+	if (v->type == VEH_TRAIN && IsRearDualheaded(v)) {
+		/* we build the rear ends of multiheaded trains with the front ones */
+		return INVALID_ENGINE;
+	}
+
+	EngineID e = EngineReplacementForPlayer(p, v->engine_type, v->group_id);
+
+	if (e != INVALID_ENGINE && IsEngineBuildable(e, v->type, _current_player)) {
+		return e;
+	}
+
+	if (v->NeedsAutorenewing(p) && // replace if engine is too old
+	    IsEngineBuildable(v->engine_type, v->type, _current_player)) { // engine can still be build
+		return v->engine_type;
+	}
+
+	return INVALID_ENGINE;
+}
+
 /** replaces a vehicle if it's set for autoreplace or is too old
  * (used to be called autorenew)
  * @param v The vehicle to replace
@@ -348,19 +369,11 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 		cost = CommandCost(EXPENSES_NEW_VEHICLES);
 		w = v;
 		do {
-			if (w->type == VEH_TRAIN && IsRearDualheaded(w)) {
-				/* we build the rear ends of multiheaded trains with the front ones */
-				continue;
-			}
-
-			// check if the vehicle should be replaced
-			if (!w->NeedsAutorenewing(p) || // replace if engine is too old
-					w->max_age == 0) { // rail cars got a max age of 0
-				if (!EngineHasReplacementForPlayer(p, w->engine_type, w->group_id)) continue;
-			}
+			EngineID new_engine = GetNewEngineType(w, p);
+			if (new_engine == INVALID_ENGINE) continue;
 
 			/* Now replace the vehicle */
-			cost.AddCost(ReplaceVehicle(&w, flags, cost.GetCost()));
+			cost.AddCost(ReplaceVehicle(&w, flags, cost.GetCost(), p, new_engine));
 
 			if (flags & DC_EXEC &&
 					(w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {

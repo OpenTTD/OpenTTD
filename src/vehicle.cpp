@@ -106,6 +106,7 @@ bool Vehicle::NeedsAutorenewing(const Player *p) const
 
 	if (!p->engine_renew) return false;
 	if (this->age - this->max_age < (p->engine_renew_months * 30)) return false;
+	if (this->age == 0) return false; // rail cars don't age and lacks a max age
 
 	return true;
 }
