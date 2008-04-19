@@ -87,6 +87,32 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 	throw std::exception();
 }
 
+typedef void (*AsyncSaveFinishProc)();
+static AsyncSaveFinishProc _async_save_finish = NULL;
+
+/**
+ * Called by save thread to tell we finished saving.
+ */
+static void SetAsyncSaveFinish(AsyncSaveFinishProc proc)
+{
+	if (_exit_game) return;
+	while (_async_save_finish != NULL) CSleep(10);
+
+	_async_save_finish = proc;
+}
+
+/**
+ * Handle async save finishes.
+ */
+void ProcessAsyncSaveFinish()
+{
+	if (_async_save_finish == NULL) return;
+
+	_async_save_finish();
+
+	_async_save_finish = NULL;
+}
+
 /**
  * Fill the input buffer by reading from the file with the given reader
  */
@@ -1457,7 +1483,7 @@ static inline SaveOrLoadResult AbortSaveLoad()
 /** Update the gui accordingly when starting saving
  * and set locks on saveload. Also turn off fast-forward cause with that
  * saving takes Aaaaages */
-void SaveFileStart()
+static void SaveFileStart()
 {
 	_ts.ff_state = _fast_forward;
 	_fast_forward = 0;
@@ -1469,7 +1495,7 @@ void SaveFileStart()
 
 /** Update the gui accordingly when saving is done and release locks
  * on saveload */
-void SaveFileDone()
+static void SaveFileDone()
 {
 	_fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
@@ -1496,7 +1522,7 @@ const char *GetSaveLoadErrorString()
 }
 
 /** Show a gui message when saving has failed */
-void SaveFileError()
+static void SaveFileError()
 {
 	SetDParamStr(0, GetSaveLoadErrorString());
 	ShowErrorMessage(STR_012D, STR_NULL, 0, 0);
@@ -1545,7 +1571,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 		fclose(_sl.fh);
 
-		if (threaded) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_DONE);
+		if (threaded) SetAsyncSaveFinish(SaveFileDone);
 
 		return SL_OK;
 	}
@@ -1557,7 +1583,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		fprintf(stderr, GetSaveLoadErrorString());
 
 		if (threaded) {
-			OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
+			SetAsyncSaveFinish(SaveFileError);
 		} else {
 			SaveFileError();
 		}

@@ -1,4 +1,5 @@
 /* $Id$ */
+
 /** @file openttd.h */
 
 #ifndef OPENTTD_H
@@ -107,17 +108,6 @@ enum {
 	SCROLL_CHAT = 4,
 };
 extern byte _no_scroll;
-
-/** To have a concurrently running thread interface with the main program, use
- * the OTTD_SendThreadMessage() function. Actions to perform upon the message are handled
- * in the ProcessSentMessage() function */
-enum ThreadMsg {
-	MSG_OTTD_NO_MESSAGE,
-	MSG_OTTD_SAVETHREAD_DONE,
-	MSG_OTTD_SAVETHREAD_ERROR,
-};
-
-void OTTD_SendThreadMessage(ThreadMsg msg);
 
 extern byte _game_mode;
 extern bool _exit_game;

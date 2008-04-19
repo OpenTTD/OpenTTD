@@ -319,7 +319,4 @@ void SlArray(void *array, uint length, VarType conv);
 void SlObject(void *object, const SaveLoad *sld);
 bool SlObjectMember(void *object, const SaveLoad *sld);
 
-void SaveFileStart();
-void SaveFileDone();
-void SaveFileError();
 #endif /* SAVELOAD_H */

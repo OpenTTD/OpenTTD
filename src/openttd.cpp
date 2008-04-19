@@ -92,6 +92,7 @@ void DoPaletteAnimations();
 void MusicLoop();
 void ResetMusic();
 void ResetOldNames();
+void ProcessAsyncSaveFinish();
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
@@ -645,39 +646,6 @@ void HandleExitGameRequest()
 	}
 }
 
-
-/** Mutex so that only one thread can communicate with the main program
- * at any given time */
-static ThreadMsg _message = MSG_OTTD_NO_MESSAGE;
-
-static inline void OTTD_ReleaseMutex() {_message = MSG_OTTD_NO_MESSAGE;}
-static inline ThreadMsg OTTD_PollThreadEvent() {return _message;}
-
-/** Called by running thread to execute some action in the main game.
- * It will stall as long as the mutex is not freed (handled) by the game */
-void OTTD_SendThreadMessage(ThreadMsg msg)
-{
-	if (_exit_game) return;
-	while (_message != MSG_OTTD_NO_MESSAGE) CSleep(10);
-
-	_message = msg;
-}
-
-
-/** Handle the user-messages sent to us
- * @param message message sent
- */
-static void ProcessSentMessage(ThreadMsg message)
-{
-	switch (message) {
-		case MSG_OTTD_SAVETHREAD_DONE:  SaveFileDone(); break;
-		case MSG_OTTD_SAVETHREAD_ERROR: SaveFileError(); break;
-		default: NOT_REACHED();
-	}
-
-	OTTD_ReleaseMutex(); // release mutex so that other threads, messages can be handled
-}
-
 static void ShowScreenshotResult(bool b)
 {
 	if (b) {
@@ -1095,9 +1063,7 @@ static void HandleKeyScrolling()
 
 void GameLoop()
 {
-	ThreadMsg message;
-
-	if ((message = OTTD_PollThreadEvent()) != 0) ProcessSentMessage(message);
+	ProcessAsyncSaveFinish();
 
 	/* autosave game? */
 	if (_do_autosave) {
