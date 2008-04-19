@@ -401,7 +401,7 @@ extern uint _animated_tile_count;
 extern char *_old_name_array;
 
 static byte   _old_vehicle_multiplier;
-static uint8  _old_map3[OLD_MAP_SIZE * 2];
+static uint8  *_old_map3;
 static bool   _new_ttdpatch_format;
 static uint32 _old_town_index;
 static uint16 _old_string_id;
@@ -1608,8 +1608,10 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	DEBUG(oldloader, 3, "Reading main chunk...");
 	/* Load the biggest chunk */
+	_old_map3 = MallocT<byte>(OLD_MAP_SIZE * 2);
 	if (!LoadChunk(ls, NULL, main_chunk)) {
 		DEBUG(oldloader, 0, "Loading failed");
+		free(_old_map3);
 		return false;
 	}
 	DEBUG(oldloader, 3, "Done, converting game data...");
@@ -1675,6 +1677,8 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
+
+	free(_old_map3);
 
 	return true;
 }
