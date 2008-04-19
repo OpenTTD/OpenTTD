@@ -296,17 +296,37 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost)
  * (used to be called autorenew)
  * @param v The vehicle to replace
  * if the vehicle is a train, v needs to be the front engine
- * @param check Checks if the replace is valid. No action is done at all
- * @param display_costs If set, a cost animation is shown (only if check is false)
- * @return CMD_ERROR if something went wrong. Otherwise the price of the replace
+ * @param flags
+ * @param display_costs If set, a cost animation is shown (only if DC_EXEC is set)
+ *        This bool also takes autorenew money into consideration
+ * @return the costs, the success bool and sometimes an error message
  */
-CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
+CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 {
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
-	byte flags = 0;
-	CommandCost cost, temp_cost;
-	bool stopped;
+	CommandCost cost;
+	bool stopped = false;
+
+	/* We only want "real" vehicle types. */
+	assert(IsPlayerBuildableVehicleType(v));
+
+	/* Ensure that this bool is cleared. */
+	assert(!v->leave_depot_instantly);
+
+	/* We can't sell if the current player don't own the vehicle. */
+	assert(v->owner == _current_player);
+
+	if (!v->IsInDepot()) {
+		/* The vehicle should be inside the depot */
+		switch (v->type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:    return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED); break;
+			case VEH_ROAD:     return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);     break;
+			case VEH_SHIP:     return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);    break;
+			case VEH_AIRCRAFT: return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);   break;
+		}
+	}
 
 	/* Remember the length in case we need to trim train later on
 	 * If it's not a train, the value is unused
@@ -317,20 +337,14 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 		-1
 	);
 
+	if (!(v->vehstatus & VS_STOPPED)) {
+		/* The vehicle is moving so we better stop it before we might alter consist or sell it */
+		v->vehstatus |= VS_STOPPED;
+		/* Remember that we stopped the vehicle */
+		stopped = true;
+	}
 
-	_current_player = v->owner;
-
-	assert(IsPlayerBuildableVehicleType(v));
-
-	assert(v->vehstatus & VS_STOPPED); // the vehicle should have been stopped in VehicleEnteredDepotThisTick() if needed
-
-	/* Remember the flag v->leave_depot_instantly because if we replace the vehicle, the vehicle holding this flag will be sold
-	 * If it is set, then we only stopped the vehicle to replace it (if needed) and we will need to start it again.
-	 * We also need to reset the flag since it should remain false except from when the vehicle enters a depot until autoreplace is handled in the same tick */
-	stopped = v->leave_depot_instantly;
-	v->leave_depot_instantly = false;
-
-	for (;;) {
+	{
 		cost = CommandCost(EXPENSES_NEW_VEHICLES);
 		w = v;
 		do {
@@ -346,9 +360,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 			}
 
 			/* Now replace the vehicle */
-			temp_cost = ReplaceVehicle(&w, flags, cost.GetCost());
-
-			if (CmdFailed(temp_cost)) break; // replace failed for some reason. Leave the vehicle alone
+			cost.AddCost(ReplaceVehicle(&w, flags, cost.GetCost()));
 
 			if (flags & DC_EXEC &&
 					(w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {
@@ -358,11 +370,26 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 				 */
 				v = w;
 			}
-			cost.AddCost(temp_cost);
 		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
-		if (!(flags & DC_EXEC) && (p->player_money < (cost.GetCost() + p->engine_renew_money) || cost.GetCost() == 0)) {
-			if (!check && p->player_money < (cost.GetCost() + p->engine_renew_money) && ( _local_player == v->owner ) && cost.GetCost() != 0) {
+		if (flags & DC_QUERY_COST || cost.GetCost() == 0) {
+			/* We didn't do anything during the replace so we will just exit here */
+			if (stopped) v->vehstatus &= ~VS_STOPPED;
+			return cost;
+		}
+
+		if (display_costs && !(flags & DC_EXEC)) {
+			/* We want to ensure that we will not get below p->engine_renew_money.
+			 * We will not actually pay this amount. It's for display and checks only. */
+			cost.AddCost((Money)p->engine_renew_money);
+			if (CmdSucceeded(cost) && GetAvailableMoneyForCommand() < cost.GetCost()) {
+				/* We don't have enough money so we will set cost to failed */
+				cost.AddCost(CMD_ERROR);
+			}
+		}
+
+		if (display_costs && CmdFailed(cost)) {
+			if (GetAvailableMoneyForCommand() < cost.GetCost() && IsLocalPlayer()) {
 				StringID message;
 				SetDParam(0, v->unitnumber);
 				switch (v->type) {
@@ -376,50 +403,40 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 
 				AddNewsItem(message, NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
 			}
-			if (stopped) v->vehstatus &= ~VS_STOPPED;
-			if (display_costs) _current_player = OWNER_NONE;
-			return CMD_ERROR;
 		}
-
-		if (flags & DC_EXEC) {
-			break; // we are done replacing since the loop ran once with DC_EXEC
-		} else if (check) {
-			/* It's a test only and we know that we can do this
-			 * NOTE: payment for wagon removal is NOT included in this price */
-			return cost;
-		}
-		// now we redo the loop, but this time we actually do stuff since we know that we can do it
-		flags |= DC_EXEC;
 	}
 
-	/* If setting is on to try not to exceed the old length of the train with the replacement */
-	if (v->type == VEH_TRAIN && p->renew_keep_length) {
-		Vehicle *temp;
-		w = v;
+	if (flags & DC_EXEC && CmdSucceeded(cost)) {
+		/* If setting is on to try not to exceed the old length of the train with the replacement */
+		if (v->type == VEH_TRAIN && p->renew_keep_length) {
+			Vehicle *temp;
+			w = v;
 
-		while (v->u.rail.cached_total_length > old_total_length) {
-			// the train is too long. We will remove cars one by one from the start of the train until it's short enough
-			while (w != NULL && RailVehInfo(w->engine_type)->railveh_type != RAILVEH_WAGON) {
+			while (v->u.rail.cached_total_length > old_total_length) {
+				// the train is too long. We will remove cars one by one from the start of the train until it's short enough
+				while (w != NULL && RailVehInfo(w->engine_type)->railveh_type != RAILVEH_WAGON) {
+					w = GetNextVehicle(w);
+				}
+				if (w == NULL) {
+					// we failed to make the train short enough
+					SetDParam(0, v->unitnumber);
+					AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
+					break;
+				}
+				temp = w;
 				w = GetNextVehicle(w);
+				DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				MoveVehicleCargo(v, temp);
+				cost.AddCost(DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON));
 			}
-			if (w == NULL) {
-				// we failed to make the train short enough
-				SetDParam(0, v->unitnumber);
-				AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
-				break;
-			}
-			temp = w;
-			w = GetNextVehicle(w);
-			DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
-			MoveVehicleCargo(v, temp);
-			cost.AddCost(DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON));
+		}
+		if (display_costs && IsLocalPlayer()) {
+			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
 		}
 	}
 
+	/* Start the vehicle if we stopped it earlier */
 	if (stopped) v->vehstatus &= ~VS_STOPPED;
-	if (display_costs) {
-		if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
-		_current_player = OWNER_NONE;
-	}
+
 	return cost;
 }

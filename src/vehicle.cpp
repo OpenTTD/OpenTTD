@@ -691,11 +691,32 @@ void CallVehicleTicks()
 
 	/* now we handle all the vehicles that entered a depot this tick */
 	v = _first_veh_in_depot_list;
-	while (v != NULL) {
-		Vehicle *w = v->depot_list;
-		v->depot_list = NULL; // it should always be NULL at the end of each tick
-		MaybeReplaceVehicle(v, false, true);
-		v = w;
+	if (v != NULL) {
+		while (v != NULL) {
+			/* Autoreplace needs the current player set as the vehicle owner */
+			_current_player = v->owner;
+
+			/* Buffer v->depot_list and clear it.
+			 * Autoreplace might clear this so it has to be buffered. */
+			Vehicle *w = v->depot_list;
+			v->depot_list = NULL; // it should always be NULL at the end of each tick
+
+			/* Start vehicle if we stopped them in VehicleEnteredDepotThisTick()
+			 * We need to stop them between VehicleEnteredDepotThisTick() and here or we risk that
+			 * they are already leaving the depot again before being replaced. */
+			if (v->leave_depot_instantly) {
+				v->leave_depot_instantly = false;
+				v->vehstatus &= ~VS_STOPPED;
+			}
+
+			CommandCost cost = MaybeReplaceVehicle(v, 0, true);
+			if (CmdSucceeded(cost) && cost.GetCost() != 0) {
+				/* Looks like we can replace this vehicle so we go ahead and do so */
+				MaybeReplaceVehicle(v, DC_EXEC, true);
+			}
+			v = w;
+		}
+		_current_player = OWNER_NONE;
 	}
 }
 
@@ -1695,16 +1716,11 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 
 	for (uint i = 0; i < engine_count; i++) {
 		Vehicle *v = vl[i];
-		bool stopped = !(v->vehstatus & VS_STOPPED);
 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsInDepot()) continue;
 
-		if (stopped) {
-			v->vehstatus |= VS_STOPPED; // Stop the vehicle
-			v->leave_depot_instantly = true;
-		}
-		CommandCost ret = MaybeReplaceVehicle(v, !(flags & DC_EXEC), false);
+		CommandCost ret = MaybeReplaceVehicle(v, flags, false);
 
 		if (CmdSucceeded(ret)) {
 			cost.AddCost(ret);

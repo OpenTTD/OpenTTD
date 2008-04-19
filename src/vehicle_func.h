@@ -71,7 +71,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
 void VehicleEnterDepot(Vehicle *v);
 
-CommandCost MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
+CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs);
 bool CanBuildVehicleInfrastructure(VehicleType type);
 
 void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2);
