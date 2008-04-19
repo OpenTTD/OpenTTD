@@ -1667,7 +1667,7 @@ static uint NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 	for (item = group->item; item != NULL; item = item->next) {
 		int news_item = -1;
 		for (int i = 0; i < NT_END; i++) {
-			if (strcasecmp(item->name, _news_display_name[i]) == 0) {
+			if (strcasecmp(item->name, _news_type_data[i].name) == 0) {
 				news_item = i;
 				break;
 			}
@@ -1760,7 +1760,7 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname, uint news_d
 
 		value = (v == 0 ? "off" : (v == 1 ? "summarized" : "full"));
 
-		*item = ini_item_alloc(group, _news_display_name[i], strlen(_news_display_name[i]));
+		*item = ini_item_alloc(group, _news_type_data[i].name, strlen(_news_type_data[i].name));
 		(*item)->value = (char*)pool_strdup(&ini->pool, value, strlen(value));
 		item = &(*item)->next;
 	}

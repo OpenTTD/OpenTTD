@@ -8,6 +8,7 @@
 #include "window_type.h"
 #include "date_type.h"
 #include "strings_type.h"
+#include "sound_type.h"
 
 /**
  * Type of news.
@@ -73,6 +74,15 @@ enum NewsBankrupcy {
 	NB_BMERGER     = (2 << 4), ///< Company has been bought by another company
 	NB_BBANKRUPT   = (3 << 4), ///< Company has gone bankrupt
 	NB_BNEWCOMPANY = (4 << 4), ///< A new company has been started
+};
+
+/**
+ * Per-NewsType data
+ */
+struct NewsTypeData {
+	const char *const name; ///< Name
+	const byte age;         ///< Maximum age of news items (in days)
+	const SoundFx sound;    ///< Sound
 };
 
 struct NewsItem {

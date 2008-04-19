@@ -335,25 +335,24 @@ void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsTyp
 
 
 /**
- * Maximum age of news items.
- * Don't show item if it's older than x days, corresponds with NewsType in news_type.h
- * @see NewsType
+ * Per-NewsType data
  */
-static const byte _news_items_age[NT_END] = {
-	60,  ///< NT_ARRIVAL_PLAYER
-	60,  ///< NT_ARRIVAL_OTHER
-	90,  ///< NT_ACCIDENT
-	60,  ///< NT_COMPANY_INFO
-	90,  ///< NT_OPENCLOSE
-	30,  ///< NT_ECONOMY
-	30,  ///< NT_INDUSTRY_PLAYER
-	30,  ///< NT_INDUSTRY_OTHER
-	30,  ///< NT_INDUSTRY_NOBODY
-	150, ///< NT_ADVICE
-	30,  ///< NT_NEW_VEHICLES
-	90,  ///< NT_ACCEPTANCE
-	180, ///< NT_SUBSIDIES
-	60   ///< NT_GENERAL
+const NewsTypeData _news_type_data[NT_END] = {
+	/* name,              age, sound           */
+	{ "arrival_player",    60, SND_1D_APPLAUSE },  ///< NT_ARRIVAL_PLAYER
+	{ "arrival_other",     60, SND_1D_APPLAUSE },  ///< NT_ARRIVAL_OTHER
+	{ "accident",          90, SND_BEGIN       },  ///< NT_ACCIDENT
+	{ "company_info",      60, SND_BEGIN       },  ///< NT_COMPANY_INFO
+	{ "openclose",         90, SND_BEGIN       },  ///< NT_OPENCLOSE
+	{ "economy",           30, SND_BEGIN       },  ///< NT_ECONOMY
+	{ "production_player", 30, SND_BEGIN       },  ///< NT_INDUSTRY_PLAYER
+	{ "production_other",  30, SND_BEGIN       },  ///< NT_INDUSTRY_OTHER
+	{ "production_nobody", 30, SND_BEGIN       },  ///< NT_INDUSTRY_NOBODY
+	{ "advice",           150, SND_BEGIN       },  ///< NT_ADVICE
+	{ "new_vehicles",      30, SND_1E_OOOOH    },  ///< NT_NEW_VEHICLES
+	{ "acceptance",        90, SND_BEGIN       },  ///< NT_ACCEPTANCE
+	{ "subsidies",        180, SND_BEGIN       },  ///< NT_SUBSIDIES
+	{ "general",           60, SND_BEGIN       },  ///< NT_GENERAL
 };
 
 
@@ -401,39 +400,6 @@ static WindowDesc _news_type0_desc = {
 	NewsWindowProc
 };
 
-static const SoundFx _news_sounds[NT_END] = {
-	SND_1D_APPLAUSE, ///< NT_ARRIVAL_PLAYER
-	SND_1D_APPLAUSE, ///< NT_ARRIVAL_OTHER
-	SND_BEGIN,       ///< NT_ACCIDENT
-	SND_BEGIN,       ///< NT_COMPANY_INFO
-	SND_BEGIN,       ///< NT_OPENCLOSE
-	SND_BEGIN,       ///< NT_ECONOMY
-	SND_BEGIN,       ///< NT_INDUSTRY_PLAYER
-	SND_BEGIN,       ///< NT_INDUSTRY_OTHER
-	SND_BEGIN,       ///< NT_INDUSTRY_NOBODY
-	SND_BEGIN,       ///< NT_ADVICE
-	SND_1E_OOOOH,    ///< NT_NEW_VEHICLES
-	SND_BEGIN,       ///< NT_ACCEPTANCE
-	SND_BEGIN,       ///< NT_SUBSIDIES
-	SND_BEGIN,       ///< NT_GENERAL
-};
-
-const char *_news_display_name[NT_END] = {
-	"arrival_player",
-	"arrival_other",
-	"accident",
-	"company_info",
-	"openclose",
-	"economy",
-	"production_player",
-	"production_other",
-	"production_nobody",
-	"advice",
-	"new_vehicles",
-	"acceptance",
-	"subsidies",
-	"general",
-};
 
 /**
  * Get the value of an item of the news-display settings. This is
@@ -465,7 +431,7 @@ static void ShowNewspaper(NewsItem *ni)
 	ni->flags &= ~NF_FORCE_BIG;
 	ni->duration = 555;
 
-	SoundFx sound = _news_sounds[ni->type];
+	SoundFx sound = _news_type_data[ni->type].sound;
 	if (sound != 0) SndPlayFx(sound);
 
 	int top = _screen.height;
@@ -553,7 +519,7 @@ static void MoveToNextItem()
 		NewsItem *ni = &_news_items[_current_news];
 
 		/* check the date, don't show too old items */
-		if (_date - _news_items_age[ni->type] > ni->date) return;
+		if (_date - _news_type_data[ni->type].age > ni->date) return;
 
 		switch (GetNewsDisplayValue(ni->type)) {
 			default: NOT_REACHED();
