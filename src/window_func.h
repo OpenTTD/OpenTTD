@@ -32,7 +32,6 @@ void DeleteNonVitalWindows();
 void DeleteAllNonVitalWindows();
 void HideVitalWindows();
 void ShowVitalWindows();
-Window **FindWindowZPosition(const Window *w);
 
 void InvalidateWindow(WindowClass cls, WindowNumber number);
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index);

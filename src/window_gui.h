@@ -549,15 +549,9 @@ Window *FindWindowFromPt(int x, int y);
 
 bool IsWindowOfPrototype(const Window *w, const Widget *widget);
 void AssignWidgetToWindow(Window *w, const Widget *widget);
-Window *AllocateWindow(
-							int x,
-							int y,
-							int width,
-							int height,
-							WindowProc *proc,
-							WindowClass cls,
-							const Widget *widget,
-							void *data = NULL);
+Window *AllocateWindow(int x, int y, int width, int height,
+			WindowProc *proc, WindowClass cls, const Widget *widget,
+			void *data = NULL);
 
 Window *AllocateWindowDesc(const WindowDesc *desc, void *data = NULL);
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL);
@@ -594,12 +588,6 @@ enum SortButtonState {
 void DrawSortButtonState(const Window *w, int widget, SortButtonState state);
 
 
-Window *GetCallbackWnd();
-void DeleteNonVitalWindows();
-void DeleteAllNonVitalWindows();
-void HideVitalWindows();
-void ShowVitalWindows();
-Window **FindWindowZPosition(const Window *w);
 
 /* window.cpp */
 extern Window *_z_windows[];
@@ -623,6 +611,13 @@ enum SpecialMouseMode {
 	WSM_SIZING   = 2,
 	WSM_PRESIZE  = 3,
 };
+
+Window *GetCallbackWnd();
+void DeleteNonVitalWindows();
+void DeleteAllNonVitalWindows();
+void HideVitalWindows();
+void ShowVitalWindows();
+Window **FindWindowZPosition(const Window *w);
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 

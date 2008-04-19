@@ -625,11 +625,11 @@ static Window *ForceFindDeletableWindow()
 {
 	Window* const *wz;
 
-	for (wz = _z_windows;; wz++) {
+	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
-		assert(wz < _last_z_window);
 		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w)) return w;
 	}
+	NOT_REACHED();
 }
 
 bool IsWindowOfPrototype(const Window *w, const Widget *widget)
@@ -1021,9 +1021,7 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void 
  * @return a pointer to the found window if any, NULL otherwise */
 Window *FindWindowFromPt(int x, int y)
 {
-	Window* const *wz;
-
-	for (wz = _last_z_window; wz != _z_windows;) {
+	for (Window * const *wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
 		if (IsInsideBS(x, w->left, w->width) && IsInsideBS(y, w->top, w->height)) {
 			return w;
@@ -1041,6 +1039,7 @@ void InitWindowSystem()
 	IConsoleClose();
 
 	_last_z_window = _z_windows;
+	_mouseover_last_w = NULL;
 	_no_scroll = 0;
 }
 
@@ -1607,8 +1606,7 @@ static bool HandleViewportScroll()
 static bool MaybeBringWindowToFront(const Window *w)
 {
 	bool bring_to_front = false;
-	Window* const *wz;
-	Window* const *uz;
+	Window * const *wz;
 
 	if (w->window_class == WC_MAIN_WINDOW ||
 			IsVitalWindow(w) ||
@@ -1618,7 +1616,7 @@ static bool MaybeBringWindowToFront(const Window *w)
 	}
 
 	wz = FindWindowZPosition(w);
-	for (uz = wz; ++uz != _last_z_window;) {
+	for (Window * const *uz = wz; ++uz != _last_z_window;) {
 		Window *u = *uz;
 
 		/* A modal child will prevent the activation of the parent window */
@@ -1792,9 +1790,6 @@ void HandleCtrlChanged()
 	}
 }
 
-extern void UpdateTileSelection();
-extern bool VpHandlePlaceSizingDrag();
-
 /**
  * Local counter that is incremented each time an mouse input event is detected.
  * The counter is used to stop auto-scrolling.
@@ -1854,6 +1849,9 @@ enum MouseClick {
 	MAX_OFFSET_DOUBLE_CLICK = 5,     ///< How much the mouse is allowed to move to call it a double click
 	TIME_BETWEEN_DOUBLE_CLICK = 500, ///< Time between 2 left clicks before it becoming a double click, in ms
 };
+
+extern void UpdateTileSelection();
+extern bool VpHandlePlaceSizingDrag();
 
 void MouseLoop(MouseClick click, int mousewheel)
 {
@@ -2155,13 +2153,17 @@ void InvalidateWindowClassesData(WindowClass cls)
  */
 void CallWindowTickEvent()
 {
-	Window* const *wz;
-
-	for (wz = _last_z_window; wz != _z_windows;) {
+	for (Window * const *wz = _last_z_window; wz != _z_windows;) {
 		CallWindowEventNP(*--wz, WE_TICK);
 	}
 }
 
+/**
+ * Try to delete a non-vital window.
+ * Non-vital windows are windows other than the game selection, main toolbar,
+ * status bar, toolbar menu, and tooltip windows. Stickied windows are also
+ * considered vital.
+ */
 void DeleteNonVitalWindows()
 {
 	Window* const *wz;
