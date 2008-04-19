@@ -1318,6 +1318,8 @@ const char *GetCurrentLocale(const char *param)
 
 	return getenv("LANG");
 }
+#else
+const char *GetCurrentLocale(const char *param);
 #endif /* !(defined(WIN32) || defined(__APPLE__)) */
 
 int CDECL StringIDSorter(const void *a, const void *b)

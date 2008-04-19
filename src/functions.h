@@ -68,7 +68,6 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
 
 /* callback from drivers that is called if the game size changes dynamically */
 void GameSizeChanged();
-const char *GetCurrentLocale(const char *param);
 
 int ttd_main(int argc, char* argv[]);
 void HandleExitGameRequest();
