@@ -26,6 +26,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
+#include "newgrf_station.h"
 #include "unmovable.h"
 #include "cargotype.h"
 #include "player_face.h"
@@ -1690,6 +1691,8 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			st->time_since_load = 0;
 			st->last_vehicle_type = v->type;
+
+			StationAnimationTrigger(st, st->xy, STAT_ANIM_CARGO_TAKEN, v->cargo_type);
 
 			unloading_time += cap;
 

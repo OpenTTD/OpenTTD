@@ -159,6 +159,7 @@ public:
 
 	uint16 random_bits;
 	byte waiting_triggers;
+	uint8 cached_anim_triggers; ///< Combined animation trigger bitmask, used to determine if trigger processing should happen.
 
 	StationRect rect; ///< Station spread out rectangle (not saved) maintained by StationRect_xxx() functions
 

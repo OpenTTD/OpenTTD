@@ -1038,6 +1038,12 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 		st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TRY);
 
+		if (statspec != NULL) {
+			/* Include this station spec's animation trigger bitmask
+			 * in the station's cached copy. */
+			st->cached_anim_triggers |= statspec->anim_triggers;
+		}
+
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
 
@@ -1054,6 +1060,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p2, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
+				SetStationAnimationFrame(tile, 0);
 
 				if (statspec != NULL) {
 					/* Use a fixed axis for GetPlatformInfo as our platforms / numtracks are always the right way around */
@@ -1062,6 +1069,9 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 					/* As the station is not yet completely finished, the station does not yet exist. */
 					uint16 callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, platinfo, 0, statspec, NULL, tile);
 					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, (callback & ~1) + axis);
+
+					/* Trigger station animation -- after building? */
+					StationAnimationTrigger(st, tile, STAT_ANIM_BUILT);
 				}
 
 				tile += tile_delta;
@@ -1283,6 +1293,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 		free(st->speclist);
 		st->num_specs = 0;
 		st->speclist  = NULL;
+		st->cached_anim_triggers = 0;
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 		UpdateStationVirtCoordDirty(st);
@@ -2368,6 +2379,11 @@ static void AnimateTile_Station(TileIndex tile)
 		{ GFX_WINDSACK_INTERCON_FIRST,   GFX_WINDSACK_INTERCON_LAST,   1 }
 	};
 
+	if (IsRailwayStation(tile)) {
+		AnimateStationTile(tile);
+		return;
+	}
+
 	StationGfx gfx = GetStationGfx(tile);
 
 	for (const AnimData *i = data; i != endof(data); i++) {
@@ -2614,7 +2630,16 @@ void OnTick_Station()
 	if (IsValidStationID(i)) StationHandleBigTick(GetStation(i));
 
 	Station *st;
-	FOR_ALL_STATIONS(st) StationHandleSmallTick(st);
+	FOR_ALL_STATIONS(st) {
+		StationHandleSmallTick(st);
+
+		/* Run 250 tick interval trigger for station animation.
+		 * Station index is included so that triggers are not all done
+		 * at the same time. */
+		if ((_tick_counter + st->index) % 250 == 0) {
+			StationAnimationTrigger(st, st->xy, STAT_ANIM_250_TICKS);
+		}
+	}
 }
 
 void StationMonthlyLoop()
@@ -2645,6 +2670,8 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 {
 	st->goods[type].cargo.Append(new CargoPacket(st->index, amount));
 	SetBit(st->goods[type].acceptance_pickup, GoodsEntry::PICKUP);
+
+	StationAnimationTrigger(st, st->xy, STAT_ANIM_NEW_CARGO, type);
 
 	InvalidateWindow(WC_STATION_VIEW, st->index);
 	st->MarkTilesDirty(true);
@@ -3008,6 +3035,8 @@ void AfterLoadStations()
 		}
 
 		for (CargoID c = 0; c < NUM_CARGO; c++) st->goods[c].cargo.InvalidateCache();
+
+		StationUpdateAnimTriggers(st);
 	}
 }
 

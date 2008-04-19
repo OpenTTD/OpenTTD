@@ -740,8 +740,12 @@ void DeallocateSpecFromStation(Station* st, byte specindex)
 			free(st->speclist);
 			st->num_specs = 0;
 			st->speclist  = NULL;
+			st->cached_anim_triggers = 0;
+			return;
 		}
 	}
+
+	StationUpdateAnimTriggers(st);
 }
 
 /** Draw representation of a station tile for GUI purposes.
@@ -852,4 +856,179 @@ bool IsStationTileElectrifiable(TileIndex tile)
 		statspec == NULL ||
 		HasBit(statspec->pylons, GetStationGfx(tile)) ||
 		!HasBit(statspec->wires, GetStationGfx(tile));
+}
+
+void AnimateStationTile(TileIndex tile)
+{
+	const StationSpec *ss = GetStationSpec(tile);
+	if (ss == NULL) return;
+
+	const Station *st = GetStationByTile(tile);
+
+	uint8 animation_speed = ss->anim_speed;
+
+	if (HasBit(ss->callbackmask, CBM_STATION_ANIMATION_SPEED)) {
+		uint16 callback = GetStationCallback(CBID_STATION_ANIMATION_SPEED, 0, 0, ss, st, tile);
+		if (callback != CALLBACK_FAILED) animation_speed = Clamp(callback & 0xFF, 0, 16);
+	}
+
+	if (_tick_counter % (1 << animation_speed) != 0) return;
+
+	uint8 frame      = GetStationAnimationFrame(tile);
+	uint8 num_frames = ss->anim_frames;
+
+	bool frame_set_by_callback = false;
+
+	if (HasBit(ss->callbackmask, CBM_STATION_ANIMATION_NEXT_FRAME)) {
+		uint32 param = HasBit(ss->flags, 2) ? Random() : 0;
+		uint16 callback = GetStationCallback(CBID_STATION_ANIM_NEXT_FRAME, param, 0, ss, st, tile);
+
+		if (callback != CALLBACK_FAILED) {
+			frame_set_by_callback = true;
+
+			switch (callback & 0xFF) {
+				case 0xFF:
+					DeleteAnimatedTile(tile);
+					break;
+
+				case 0xFE:
+					frame_set_by_callback = false;
+					break;
+
+				default:
+					frame = callback & 0xFF;
+					break;
+			}
+		}
+	}
+
+	if (!frame_set_by_callback) {
+		if (frame < num_frames) {
+			frame++;
+		} else if (frame == num_frames && HasBit(ss->anim_status, 0)) {
+			/* This animation loops, so start again from the beginning */
+			frame = 0;
+		} else {
+			/* This animation doesn't loop, so stay here */
+			DeleteAnimatedTile(tile);
+		}
+	}
+
+	SetStationAnimationFrame(tile, frame);
+	MarkTileDirtyByTile(tile);
+}
+
+
+static void ChangeStationAnimationFrame(const StationSpec *ss, const Station *st, TileIndex tile, uint16 random_bits, StatAnimTrigger trigger, CargoID cargo_type)
+{
+	uint16 callback = GetStationCallback(CBID_STATION_ANIM_START_STOP, (random_bits << 16) | Random(), (uint8)trigger | (cargo_type << 8), ss, st, tile);
+	if (callback == CALLBACK_FAILED) return;
+
+	switch (callback & 0xFF) {
+		case 0xFD: /* Do nothing. */         break;
+		case 0xFE: AddAnimatedTile(tile);    break;
+		case 0xFF: DeleteAnimatedTile(tile); break;
+		default:
+			SetStationAnimationFrame(tile, callback);
+			AddAnimatedTile(tile);
+			break;
+	}
+}
+
+enum TriggerArea {
+	TA_TILE,
+	TA_PLATFORM,
+	TA_WHOLE,
+};
+
+struct TileArea {
+	TileIndex tile;
+	uint8 w;
+	uint8 h;
+
+	TileArea(const Station *st, TileIndex tile, TriggerArea ta)
+	{
+		switch (ta) {
+			default: NOT_REACHED();
+
+			case TA_TILE:
+				this->tile = tile;
+				this->w    = 1;
+				this->h    = 1;
+				break;
+
+			case TA_PLATFORM: {
+				TileIndex start, end;
+				Axis axis = GetRailStationAxis(tile);
+				TileIndexDiff delta = TileOffsByDiagDir(AxisToDiagDir(axis));
+
+				for (end = tile; IsRailwayStationTile(end + delta) && IsCompatibleTrainStationTile(tile, end + delta); end += delta);
+				for (start = tile; IsRailwayStationTile(start - delta) && IsCompatibleTrainStationTile(tile, start - delta); start -= delta);
+
+				this->tile = start;
+				this->w = TileX(end) - TileX(start) + 1;
+				this->h = TileY(end) - TileY(start) + 1;
+				break;
+			}
+
+			case TA_WHOLE:
+				this->tile = st->train_tile;
+				this->w    = st->trainst_w + 1;
+				this->h    = st->trainst_h + 1;
+				break;
+		}
+	}
+};
+
+void StationAnimationTrigger(const Station *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type)
+{
+	/* List of coverage areas for each animation trigger */
+	static const TriggerArea tas[] = {
+		TA_TILE, TA_WHOLE, TA_WHOLE, TA_PLATFORM, TA_PLATFORM, TA_PLATFORM, TA_WHOLE
+	};
+
+	/* Get Station if it wasn't supplied */
+	if (st == NULL) st = GetStationByTile(tile);
+
+	/* Check the cached animation trigger bitmask to see if we need
+	 * to bother with any further processing. */
+	if (!HasBit(st->cached_anim_triggers, trigger)) return;
+
+	uint16 random_bits = Random();
+	TileArea area = TileArea(st, tile, tas[trigger]);
+
+	for (uint y = 0; y < area.h; y++) {
+		for (uint x = 0; x < area.w; x++) {
+			if (st->TileBelongsToRailStation(area.tile)) {
+				const StationSpec *ss = GetStationSpec(area.tile);
+				if (ss != NULL && HasBit(ss->anim_triggers, trigger)) {
+					CargoID cargo;
+					if (cargo_type == CT_INVALID) {
+						cargo = CT_INVALID;
+					} else {
+						cargo = GetReverseCargoTranslation(cargo_type, ss->grffile);
+					}
+					ChangeStationAnimationFrame(ss, st, area.tile, random_bits, trigger, cargo);
+				}
+			}
+			area.tile += TileDiffXY(1, 0);
+		}
+		area.tile += TileDiffXY(-area.w, 1);
+	}
+}
+
+/**
+ * Update the cached animation trigger bitmask for a station.
+ * @param st Station to update.
+ */
+void StationUpdateAnimTriggers(Station *st)
+{
+	st->cached_anim_triggers = 0;
+
+	/* Combine animation trigger bitmask for all station specs
+	 * of this station. */
+	for (uint i = 0; i < st->num_specs; i++) {
+		const StationSpec *ss = st->speclist[i].spec;
+		if (ss != NULL) st->cached_anim_triggers |= ss->anim_triggers;
+	}
 }

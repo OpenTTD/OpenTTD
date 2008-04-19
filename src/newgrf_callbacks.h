@@ -173,13 +173,13 @@ enum CallbackID {
 	/* There are no callbacks 0x3E - 0x13F */
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_STATION_ANIM_START_STOP         = 0x140, // not implemented
+	CBID_STATION_ANIM_START_STOP         = 0x140,
 
 	/** Called to determine station tile next animation frame. */
-	CBID_STATION_ANIM_NEXT_FRAME         = 0x141, // not implemented
+	CBID_STATION_ANIM_NEXT_FRAME         = 0x141,
 
 	/** Called to indicate how long the current animation frame should last. */
-	CBID_STATION_ANIMATION_SPEED         = 0x142, // not implemented
+	CBID_STATION_ANIMATION_SPEED         = 0x142,
 
 	/** Called to determine whether a town building can be destroyed. */
 	CBID_HOUSE_DENY_DESTRUCTION          = 0x143,

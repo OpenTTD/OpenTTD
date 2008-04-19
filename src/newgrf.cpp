@@ -1120,19 +1120,17 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				statspec->blocked = grf_load_byte(&buf);
 				break;
 
-			case 0x16: // @todo Animation info
-				grf_load_word(&buf);
-				ret = true;
+			case 0x16: // Animation info
+				statspec->anim_frames = grf_load_byte(&buf);
+				statspec->anim_status = grf_load_byte(&buf);
 				break;
 
-			case 0x17: // @todo Animation speed
-				grf_load_byte(&buf);
-				ret = true;
+			case 0x17: // Animation speed
+				statspec->anim_speed = grf_load_byte(&buf);
 				break;
 
-			case 0x18: // @todo Animation triggers
-				grf_load_word(&buf);
-				ret = true;
+			case 0x18: // Animation triggers
+				statspec->anim_triggers = grf_load_word(&buf);
 				break;
 
 			default:

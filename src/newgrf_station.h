@@ -83,6 +83,11 @@ struct StationSpec {
 	StationLayout **layouts;
 	bool copied_layouts;
 
+	uint8  anim_frames;
+	uint8  anim_status;
+	uint8  anim_speed;
+	uint16 anim_triggers;
+
 	/**
 	 * NUM_CARGO real cargo plus three pseudo cargo sprite groups.
 	 * Used for obtaining the sprite offset of custom sprites, and for
@@ -131,5 +136,19 @@ void DeallocateSpecFromStation(Station* st, byte specindex);
 
 /* Draw representation of a station tile for GUI purposes. */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station);
+
+enum StatAnimTrigger {
+	STAT_ANIM_BUILT,
+	STAT_ANIM_NEW_CARGO,
+	STAT_ANIM_CARGO_TAKEN,
+	STAT_ANIM_TRAIN_ARRIVES,
+	STAT_ANIM_TRAIN_DEPARTS,
+	STAT_ANIM_TRAIN_LOADS,
+	STAT_ANIM_250_TICKS,
+};
+
+void AnimateStationTile(TileIndex tile);
+void StationAnimationTrigger(const Station *st, TileIndex tile, StatAnimTrigger trigger, CargoID cargo_type = CT_INVALID);
+void StationUpdateAnimTriggers(Station *st);
 
 #endif /* NEWGRF_STATION_H */
