@@ -1751,7 +1751,7 @@ void ShowVehicleViewWindow(const Vehicle *v)
 
 	if (w != NULL) {
 		w->caption_color = v->owner;
-		AssignWindowViewport(w, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
+		InitializeWindowViewport(w, VV_VIEWPORT_X, VV_VIEWPORT_Y, VV_INITIAL_VIEWPORT_WIDTH,
 												 (v->type == VEH_TRAIN) ? VV_INITIAL_VIEWPORT_HEIGHT_TRAIN : VV_INITIAL_VIEWPORT_HEIGHT,
 												 w->window_number | (1 << 31), _vehicle_view_zoom_levels[v->type]);
 	}

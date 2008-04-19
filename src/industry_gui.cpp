@@ -631,7 +631,7 @@ void ShowIndustryViewWindow(int industry)
 		WP(w, indview_d).editbox_line = 0;
 		WP(w, indview_d).clicked_line = 0;
 		WP(w, indview_d).clicked_button = 0;
-		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+		InitializeWindowViewport(w, 3, 17, 254, 86, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
 	}
 }
 

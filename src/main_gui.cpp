@@ -412,7 +412,7 @@ void SetupColorsAndInitialWindow()
 	int height = _screen.height;
 
 	Window *w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-	AssignWindowViewport(w, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
+	InitializeWindowViewport(w, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 
 	/* XXX: these are not done */
 	switch (_game_mode) {

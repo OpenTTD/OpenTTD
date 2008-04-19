@@ -1110,7 +1110,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: // Disable zoom in button
 		/* New viewport start at (zero,zero) */
-		AssignWindowViewport(w, 3, 17, w->widget[4].right - w->widget[4].left - 1, w->widget[4].bottom - w->widget[4].top - 1, 0, ZOOM_LVL_VIEWPORT);
+		InitializeWindowViewport(w, 3, 17, w->widget[4].right - w->widget[4].left - 1, w->widget[4].bottom - w->widget[4].top - 1, 0, ZOOM_LVL_VIEWPORT);
 
 		w->DisableWidget(5);
 		break;

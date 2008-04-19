@@ -396,7 +396,7 @@ void ShowTownViewWindow(TownID town)
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		AssignWindowViewport(w, 3, 17, 0xFE, 0x56, GetTown(town)->xy, ZOOM_LVL_TOWN);
+		InitializeWindowViewport(w, 3, 17, 254, 86, GetTown(town)->xy, ZOOM_LVL_TOWN);
 	}
 }
 

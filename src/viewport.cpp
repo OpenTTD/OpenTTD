@@ -170,7 +170,7 @@ void DeleteWindowViewport(Window *w)
  *        - If bit 31 is clear, it is a tile position.
  * @param zoom Zoomlevel to display
  */
-void AssignWindowViewport(Window *w, int x, int y,
+void InitializeWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, ZoomLevel zoom)
 {
 	assert(w->viewport == NULL);
