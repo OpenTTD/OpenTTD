@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file autoreplace_cmd.cpp Deals with autoreplace execution but not the setup */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "roadveh.h"
