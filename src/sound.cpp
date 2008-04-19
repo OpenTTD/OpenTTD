@@ -207,6 +207,14 @@ void SndCopyToPool()
 	}
 }
 
+/**
+ * Decide 'where' (between left and right speaker) to play the sound effect.
+ * @param sound Sound effect to play
+ * @param left   Left edge of virtual coordinates where the sound is produced
+ * @param right  Right edge of virtual coordinates where the sound is produced
+ * @param top    Top edge of virtual coordinates where the sound is produced
+ * @param bottom Bottom edge of virtual coordinates where the sound is produced
+ */
 static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, int bottom)
 {
 	Window* const *wz;
@@ -231,7 +239,6 @@ static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, in
 			return;
 		}
 	}
-
 }
 
 void SndPlayTileFx(SoundFx sound, TileIndex tile)

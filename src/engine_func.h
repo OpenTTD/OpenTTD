@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file engine.h */
+/** @file engine_func.h */
 
 #ifndef ENGINE_H
 #define ENGINE_H

@@ -184,19 +184,28 @@ struct plstations_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
 /**
- * Set the 'SL_REBUILD' flag for all station lists
+ * Set the station sort flag for all station-list windows.
+ * @param sl_flag Sort list flag to set for all station-list windows
  */
-void RebuildStationLists()
+static void SetStationListsFlag(StationListFlags sl_flag)
 {
 	Window *const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 		if (w->window_class == WC_STATION_LIST) {
-			WP(w, plstations_d).flags |= SL_REBUILD;
+			WP(w, plstations_d).flags |= sl_flag;
 			SetWindowDirty(w);
 		}
 	}
+}
+
+/**
+ * Set the 'SL_REBUILD' flag for all station lists
+ */
+void RebuildStationLists()
+{
+	SetStationListsFlag(SL_REBUILD);
 }
 
 /**
@@ -204,15 +213,7 @@ void RebuildStationLists()
  */
 void ResortStationLists()
 {
-	Window *const *wz;
-
-	FOR_ALL_WINDOWS(wz) {
-		Window *w = *wz;
-		if (w->window_class == WC_STATION_LIST) {
-			WP(w, plstations_d).flags |= SL_RESORT;
-			SetWindowDirty(w);
-		}
-	}
+	SetStationListsFlag(SL_RESORT);
 }
 
 /**

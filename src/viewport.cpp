@@ -158,6 +158,18 @@ void DeleteWindowViewport(Window *w)
 	w->viewport = NULL;
 }
 
+/**
+ * Initialize viewport of the window for use.
+ * @param w Window to use/display the viewport in
+ * @param x Offset of left edge of viewport with respect to left edge window \a w
+ * @param y Offset of top edge of viewport with respect to top edge window \a w
+ * @param width Width of the viewport
+ * @param height Height of the viewport
+ * @param follow_flags Flags controlling the viewport.
+ *        - If bit 31 is set, the lower 16 bits are the vehicle that the viewport should follow.
+ *        - If bit 31 is clear, it is a tile position.
+ * @param zoom Zoomlevel to display
+ */
 void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, ZoomLevel zoom)
 {
@@ -324,7 +336,14 @@ static void SetViewportPosition(Window *w, int x, int y)
 	}
 }
 
-
+/**
+ * Is a xy position inside the viewport of the window?
+ * @param w Window to examine its viewport
+ * @param x X coordinate of the xy position
+ * @param y Y coordinate of the xy position
+ * @return Pointer to the viewport if the xy position is in the viewport of the window,
+ *         otherwise \c NULL is returned.
+ */
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 {
 	ViewPort *vp = w->viewport;
@@ -1591,11 +1610,12 @@ void UpdateViewportPosition(Window *w)
 }
 
 /**
- * Marks a viewport as dirty for repaint.
- *
- * @param vp The viewport to mark as dirty
- * @todo documents the missing parameters @c left, @c top, @c right and @c bottom
- * @todo detailed description missing
+ * Marks a viewport as dirty for repaint if it displays (a part of) the area the needs to be repainted.
+ * @param vp     The viewport to mark as dirty
+ * @param left   Left edge of area to repaint
+ * @param top    Top edge of area to repaint
+ * @param right  Right edge of area to repaint
+ * @param bottom Bottom edge of area to repaint
  * @ingroup dirty
  */
 static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, int bottom)
@@ -1622,6 +1642,14 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 	);
 }
 
+/**
+ * Mark all viewports that display an area as dirty (in need of repaint).
+ * @param left   Left edge of area to repaint
+ * @param top    Top edge of area to repaint
+ * @param right  Right edge of area to repaint
+ * @param bottom Bottom edge of area to repaint
+ * @ingroup dirty
+ */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
 	Window **wz;

@@ -1108,7 +1108,7 @@ static const Widget _extra_view_port_widgets[] = {
 static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: /* Disable zoom in button */
+	case WE_CREATE: // Disable zoom in button
 		/* New viewport start at (zero,zero) */
 		AssignWindowViewport(w, 3, 17, w->widget[4].right - w->widget[4].left - 1, w->widget[4].bottom - w->widget[4].top - 1, 0, ZOOM_LVL_VIEWPORT);
 
@@ -1116,7 +1116,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PAINT:
-		// set the number in the title bar
+		/* set the number in the title bar */
 		SetDParam(0, w->window_number + 1);
 
 		DrawWindowWidgets(w);
@@ -1128,7 +1128,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			case 5: DoZoomInOutWindow(ZOOM_IN,  w); break;
 			case 6: DoZoomInOutWindow(ZOOM_OUT, w); break;
 
-		case 7: { /* location button (move main view to same spot as this view) 'Paste Location' */
+		case 7: { // location button (move main view to same spot as this view) 'Paste Location'
 			Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			int x = WP(w, vp_d).scrollpos_x; // Where is the main looking at
 			int y = WP(w, vp_d).scrollpos_y;
@@ -1138,7 +1138,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 			WP(w2, vp_d).dest_scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
 
-		case 8: { /* inverse location button (move this view to same spot as main view) 'Copy Location' */
+		case 8: { // inverse location button (move this view to same spot as main view) 'Copy Location'
 			const Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			int x = WP(w2, const vp_d).scrollpos_x;
 			int y = WP(w2, const vp_d).scrollpos_y;

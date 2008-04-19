@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file zoom_func.hpp */
+/** @file zoom_func.h */
 
 #ifndef ZOOM_FUNC_H
 #define ZOOM_FUNC_H

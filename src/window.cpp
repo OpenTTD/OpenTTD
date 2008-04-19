@@ -303,6 +303,7 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 		}
 	}
 
+	/* Setup blitter, and dispatch a repaint event to window *wz */
 	DrawPixelInfo *dp = _cur_dpi;
 	dp->width = right - left;
 	dp->height = bottom - top;
@@ -334,6 +335,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 				bottom > w->top &&
 				left < w->left + w->width &&
 				top < w->top + w->height) {
+			/* Window w intersects with the rectangle => needs repaint */
 			DrawOverlappedWindow(wz, left, top, right, bottom);
 		}
 	}
@@ -398,7 +400,8 @@ Window **FindWindowZPosition(const Window *w)
 }
 
 /**
- * Remove window and all its child windows from the window stack
+ * Remove window and all its child windows from the window stack.
+ * @param w Window to delete
  */
 void DeleteWindow(Window *w)
 {
@@ -2064,8 +2067,9 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 }
 
 /**
- * Mark window data as invalid (in need of re-computing)
- * @param w Window with invalid data
+ * Mark window as dirty (in need of repainting)
+ * @param cls Window class
+ * @param number Window number in that class
  */
 void InvalidateWindow(WindowClass cls, WindowNumber number)
 {
@@ -2077,7 +2081,7 @@ void InvalidateWindow(WindowClass cls, WindowNumber number)
 	}
 }
 
-/*
+/**
  * Mark a particular widget in a particular window as dirty (in need of repainting)
  * @param cls Window class
  * @param number Window number in that class
@@ -2095,7 +2099,7 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 	}
 }
 
-/*
+/**
  * Mark all windows of a particular class as dirty (in need of repainting)
  * @param cls Window class
  */
@@ -2119,7 +2123,7 @@ void InvalidateThisWindowData(Window *w)
 }
 
 /**
- * Mark window data the window of a given class and specific window number as invalid (in need of re-computing)
+ * Mark window data of the window of a given class and specific window number as invalid (in need of re-computing)
  * @param cls Window class
  * @param number Window number within the class
  */
