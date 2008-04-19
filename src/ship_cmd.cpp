@@ -594,7 +594,7 @@ static void ShipController(Vehicle *v)
 			HandleBrokenShip(v);
 			return;
 		}
-		v->breakdown_ctr--;
+		if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
 	}
 
 	if (v->vehstatus & VS_STOPPED) return;

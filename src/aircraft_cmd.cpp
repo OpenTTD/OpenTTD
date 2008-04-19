@@ -2086,7 +2086,7 @@ static void AircraftEventHandler(Vehicle *v, int loop)
 		if (v->breakdown_ctr <= 2) {
 			HandleBrokenAircraft(v);
 		} else {
-			v->breakdown_ctr--;
+			if (!v->current_order.IsType(OT_LOADING)) v->breakdown_ctr--;
 		}
 	}
 
