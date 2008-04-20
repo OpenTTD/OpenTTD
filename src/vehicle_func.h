@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @vehicle.h Functions related to vehicles. */
+/** @file vehicle.h Functions related to vehicles. */
 
 #ifndef VEHICLE_FUNC_H
 #define VEHICLE_FUNC_H
@@ -171,13 +171,9 @@ static inline uint32 GetCmdSendToDepot(const BaseVehicle *v)
 bool EnsureNoVehicleOnGround(TileIndex tile);
 void StopAllVehicles();
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type);
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type);
-Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type);
-
 extern VehicleID _vehicle_id_ctr_day;
 extern Vehicle *_place_clicked_vehicle;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
 
-#endif /* VEHICLE_H */
+#endif /* VEHICLE_FUNC_H */

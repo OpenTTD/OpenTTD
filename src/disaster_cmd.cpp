@@ -39,6 +39,7 @@
 #include "vehicle_func.h"
 #include "vehicle_base.h"
 #include "sound_func.h"
+#include "effectvehicle_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

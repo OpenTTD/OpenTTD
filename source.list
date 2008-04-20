@@ -23,6 +23,7 @@ depot.cpp
 driver.cpp
 widgets/dropdown.cpp
 economy.cpp
+effectvehicle.cpp
 elrail.cpp
 engine.cpp
 fileio.cpp
@@ -164,6 +165,8 @@ widgets/dropdown_func.h
 widgets/dropdown_type.h
 economy_func.h
 economy_type.h
+effectvehicle_func.h
+effectvehicle_base.h
 core/endian_func.hpp
 engine_func.h
 engine_type.h

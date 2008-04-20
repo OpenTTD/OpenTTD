@@ -460,6 +460,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\animated_tile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\articulated_vehicles.cpp"
 				>
 			</File>
@@ -541,6 +545,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\economy.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\effectvehicle.cpp"
 				>
 			</File>
 			<File
@@ -812,6 +820,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\animated_tile_func.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\articulated_vehicles.h"
 				>
 			</File>
@@ -961,6 +973,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\economy_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\effectvehicle_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\effectvehicle_base.h"
 				>
 			</File>
 			<File

@@ -40,6 +40,7 @@
 #include "station_base.h"
 #include "oldpool_func.h"
 #include "animated_tile_func.h"
+#include "effectvehicle_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -621,7 +622,7 @@ static void AnimateTile_Industry(TileIndex tile)
 	}
 }
 
-static void CreateIndustryEffectSmoke(TileIndex tile)
+static void CreateChimneySmoke(TileIndex tile)
 {
 	uint x = TileX(tile) * TILE_SIZE;
 	uint y = TileY(tile) * TILE_SIZE;
@@ -658,7 +659,7 @@ static void MakeIndustryTileBigger(TileIndex tile)
 
 	switch (gfx) {
 	case GFX_POWERPLANT_CHIMNEY:
-		CreateIndustryEffectSmoke(tile);
+		CreateChimneySmoke(tile);
 		break;
 
 	case GFX_OILRIG_1:
@@ -685,10 +686,10 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 {
 	int dir;
 	Vehicle *v;
-	static const int8 _tileloop_ind_case_161[12] = {
-		11,   0, -4, -14,
-		-4, -10, -4,   1,
-		49,  59, 60,  65,
+	static const int8 _bubble_spawn_location[3][4] = {
+		{ 11,   0, -4, -14 },
+		{ -4, -10, -4,   1 },
+		{ 49,  59, 60,  65 },
 	};
 
 	SndPlayTileFx(SND_2E_EXTRACT_AND_POP, tile);
@@ -696,9 +697,9 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 	dir = Random() & 3;
 
 	v = CreateEffectVehicleAbove(
-		TileX(tile) * TILE_SIZE + _tileloop_ind_case_161[dir + 0],
-		TileY(tile) * TILE_SIZE + _tileloop_ind_case_161[dir + 4],
-		_tileloop_ind_case_161[dir + 8],
+		TileX(tile) * TILE_SIZE + _bubble_spawn_location[0][dir],
+		TileY(tile) * TILE_SIZE + _bubble_spawn_location[1][dir],
+		_bubble_spawn_location[2][dir],
 		EV_BUBBLE
 	);
 

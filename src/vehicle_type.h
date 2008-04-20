@@ -38,20 +38,6 @@ struct BaseVehicle
 
 static const VehicleID INVALID_VEHICLE = 0xFFFF;
 
-/* Effect vehicle types */
-enum EffectVehicleType {
-	EV_CHIMNEY_SMOKE   = 0,
-	EV_STEAM_SMOKE     = 1,
-	EV_DIESEL_SMOKE    = 2,
-	EV_ELECTRIC_SPARK  = 3,
-	EV_SMOKE           = 4,
-	EV_EXPLOSION_LARGE = 5,
-	EV_BREAKDOWN_SMOKE = 6,
-	EV_EXPLOSION_SMALL = 7,
-	EV_BULLDOZER       = 8,
-	EV_BUBBLE          = 9
-};
-
 /** Pathfinding option states */
 enum {
 	VPF_OPF  = 0, ///< The Original PathFinder

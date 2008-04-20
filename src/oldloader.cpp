@@ -25,6 +25,7 @@
 #include "vehicle_func.h"
 #include "variables.h"
 #include "strings_func.h"
+#include "effectvehicle_base.h"
 
 #include "table/strings.h"
 
