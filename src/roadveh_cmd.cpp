@@ -704,7 +704,7 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
-			if (u != NULL) u->u.special.animation_state = v->breakdown_delay * 2;
+			if (u != NULL) u->u.effect.animation_state = v->breakdown_delay * 2;
 		}
 	}
 

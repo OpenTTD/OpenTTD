@@ -1086,9 +1086,9 @@ static const OldChunks vehicle_air_chunk[] = {
 	OCL_END()
 };
 
-static const OldChunks vehicle_special_chunk[] = {
-	OCL_SVAR( OC_UINT16, VehicleSpecial, animation_state ),
-	OCL_SVAR(  OC_UINT8, VehicleSpecial, animation_substate ),
+static const OldChunks vehicle_effect_chunk[] = {
+	OCL_SVAR( OC_UINT16, VehicleEffect, animation_state ),
+	OCL_SVAR(  OC_UINT8, VehicleEffect, animation_substate ),
 
 	OCL_NULL( 7 ), // Junk
 
@@ -1123,7 +1123,7 @@ static bool LoadOldVehicleUnion(LoadgameState *ls, int num)
 		case VEH_ROAD    : res = LoadChunk(ls, &v->u.road,     vehicle_road_chunk);     break;
 		case VEH_SHIP    : res = LoadChunk(ls, &v->u.ship,     vehicle_ship_chunk);     break;
 		case VEH_AIRCRAFT: res = LoadChunk(ls, &v->u.air,      vehicle_air_chunk);      break;
-		case VEH_SPECIAL : res = LoadChunk(ls, &v->u.special,  vehicle_special_chunk);  break;
+		case VEH_EFFECT  : res = LoadChunk(ls, &v->u.effect,   vehicle_effect_chunk);   break;
 		case VEH_DISASTER: res = LoadChunk(ls, &v->u.disaster, vehicle_disaster_chunk); break;
 	}
 
@@ -1236,7 +1236,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			case 0x11 /*VEH_ROAD    */: v = new (_current_vehicle_id) RoadVehicle();     break;
 			case 0x12 /*VEH_SHIP    */: v = new (_current_vehicle_id) Ship();            break;
 			case 0x13 /*VEH_AIRCRAFT*/: v = new (_current_vehicle_id) Aircraft();        break;
-			case 0x14 /*VEH_SPECIAL */: v = new (_current_vehicle_id) SpecialVehicle();  break;
+			case 0x14 /*VEH_EFFECT  */: v = new (_current_vehicle_id) EffectVehicle();   break;
 			case 0x15 /*VEH_DISASTER*/: v = new (_current_vehicle_id) DisasterVehicle(); break;
 		}
 		if (!LoadChunk(ls, v, vehicle_chunk)) return false;
@@ -1270,7 +1270,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		v->name = CopyFromOldName(_old_string_id);
 
 		/* Vehicle-subtype is different in TTD(Patch) */
-		if (v->type == VEH_SPECIAL) v->subtype = v->subtype >> 1;
+		if (v->type == VEH_EFFECT) v->subtype = v->subtype >> 1;
 
 		if (_cargo_count != 0) {
 			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);

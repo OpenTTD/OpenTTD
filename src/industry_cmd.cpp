@@ -702,7 +702,7 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 		EV_BUBBLE
 	);
 
-	if (v != NULL) v->u.special.animation_substate = dir;
+	if (v != NULL) v->u.effect.animation_substate = dir;
 }
 
 static void TileLoop_Industry(TileIndex tile)

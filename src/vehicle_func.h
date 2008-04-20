@@ -171,9 +171,9 @@ static inline uint32 GetCmdSendToDepot(const BaseVehicle *v)
 bool EnsureNoVehicleOnGround(TileIndex tile);
 void StopAllVehicles();
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type);
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type);
-Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicle type);
+Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type);
+Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type);
+Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type);
 
 extern VehicleID _vehicle_id_ctr_day;
 extern Vehicle *_place_clicked_vehicle;

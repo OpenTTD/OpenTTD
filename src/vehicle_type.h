@@ -14,7 +14,7 @@ enum VehicleType {
 	VEH_ROAD,
 	VEH_SHIP,
 	VEH_AIRCRAFT,
-	VEH_SPECIAL,
+	VEH_EFFECT,
 	VEH_DISASTER,
 	VEH_END,
 	VEH_INVALID = 0xFF,
@@ -39,7 +39,7 @@ struct BaseVehicle
 static const VehicleID INVALID_VEHICLE = 0xFFFF;
 
 /* Effect vehicle types */
-enum EffectVehicle {
+enum EffectVehicleType {
 	EV_CHIMNEY_SMOKE   = 0,
 	EV_STEAM_SMOKE     = 1,
 	EV_DIESEL_SMOKE    = 2,

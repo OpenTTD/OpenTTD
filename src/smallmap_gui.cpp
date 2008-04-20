@@ -682,7 +682,7 @@ skip_column:
 		byte color;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type != VEH_SPECIAL &&
+			if (v->type != VEH_EFFECT &&
 					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 				/* Remap into flat coordinates. */
 				Point pt = RemapCoords(

@@ -169,7 +169,7 @@ struct VehicleRoad {
 	RoadTypes compatible_roadtypes;
 };
 
-struct VehicleSpecial {
+struct VehicleEffect {
 	uint16 animation_state;
 	byte animation_substate;
 };
@@ -313,7 +313,7 @@ public:
 		VehicleRail rail;
 		VehicleAir air;
 		VehicleRoad road;
-		VehicleSpecial special;
+		VehicleEffect effect;
 		VehicleDisaster disaster;
 		VehicleShip ship;
 	} u;
@@ -547,12 +547,12 @@ public:
  *  - bulldozer (road works)
  *  - bubbles (industry)
  */
-struct SpecialVehicle : public Vehicle {
+struct EffectVehicle : public Vehicle {
 	/** Initializes the Vehicle to a special vehicle */
-	SpecialVehicle() { this->type = VEH_SPECIAL; }
+	EffectVehicle() { this->type = VEH_EFFECT; }
 
 	/** We want to 'destruct' the right class. */
-	virtual ~SpecialVehicle() {}
+	virtual ~EffectVehicle() {}
 
 	const char *GetTypeString() const { return "special vehicle"; }
 	void UpdateDeltaXY(Direction direction);

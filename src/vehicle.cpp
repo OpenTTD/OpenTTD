@@ -1044,8 +1044,8 @@ static void BreakdownSmokeTick(Vehicle *v)
 		EndVehicleMove(v);
 	}
 
-	v->u.special.animation_state--;
-	if (v->u.special.animation_state == 0) {
+	v->u.effect.animation_state--;
+	if (v->u.effect.animation_state == 0) {
 		BeginVehicleMove(v);
 		EndVehicleMove(v);
 		delete v;
@@ -1078,8 +1078,8 @@ static void BulldozerInit(Vehicle *v)
 {
 	v->cur_image = SPR_BULLDOZER_NE;
 	v->progress = 0;
-	v->u.special.animation_state = 0;
-	v->u.special.animation_substate = 0;
+	v->u.effect.animation_state = 0;
+	v->u.effect.animation_substate = 0;
 }
 
 struct BulldozerMovement {
@@ -1125,7 +1125,7 @@ static void BulldozerTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
-		const BulldozerMovement* b = &_bulldozer_movement[v->u.special.animation_state];
+		const BulldozerMovement* b = &_bulldozer_movement[v->u.effect.animation_state];
 
 		BeginVehicleMove(v);
 
@@ -1134,11 +1134,11 @@ static void BulldozerTick(Vehicle *v)
 		v->x_pos += _inc_by_dir[b->direction].x;
 		v->y_pos += _inc_by_dir[b->direction].y;
 
-		v->u.special.animation_substate++;
-		if (v->u.special.animation_substate >= b->duration) {
-			v->u.special.animation_substate = 0;
-			v->u.special.animation_state++;
-			if (v->u.special.animation_state == lengthof(_bulldozer_movement)) {
+		v->u.effect.animation_substate++;
+		if (v->u.effect.animation_substate >= b->duration) {
+			v->u.effect.animation_substate = 0;
+			v->u.effect.animation_state++;
+			if (v->u.effect.animation_state == lengthof(_bulldozer_movement)) {
 				EndVehicleMove(v);
 				delete v;
 				return;
@@ -1328,7 +1328,7 @@ static void BubbleTick(Vehicle *v)
 			EndVehicleMove(v);
 			return;
 		}
-		if (v->u.special.animation_substate != 0) {
+		if (v->u.effect.animation_substate != 0) {
 			v->spritenum = GB(InteractiveRandom(), 0, 2) + 1;
 		} else {
 			v->spritenum = 6;
@@ -1407,9 +1407,9 @@ static EffectTickProc * const _effect_tick_procs[] = {
 };
 
 
-Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
+Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 {
-	Vehicle *v = new SpecialVehicle();
+	Vehicle *v = new EffectVehicle();
 	if (v != NULL) {
 		v->subtype = type;
 		v->x_pos = x;
@@ -1428,19 +1428,19 @@ Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicle type)
 	return v;
 }
 
-Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicle type)
+Vehicle *CreateEffectVehicleAbove(int x, int y, int z, EffectVehicleType type)
 {
 	int safe_x = Clamp(x, 0, MapMaxX() * TILE_SIZE);
 	int safe_y = Clamp(y, 0, MapMaxY() * TILE_SIZE);
 	return CreateEffectVehicle(x, y, GetSlopeZ(safe_x, safe_y) + z, type);
 }
 
-Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicle type)
+Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVehicleType type)
 {
 	return CreateEffectVehicle(v->x_pos + x, v->y_pos + y, v->z_pos + z, type);
 }
 
-void SpecialVehicle::Tick()
+void EffectVehicle::Tick()
 {
 	_effect_tick_procs[this->subtype](this);
 }
@@ -2498,7 +2498,7 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 			/* Vehicle is turning around, get the direction from vehicle's direction */
 			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
 
-		/* case VEH_AIRCRAFT: case VEH_SPECIAL: case VEH_DISASTER: */
+		/* case VEH_AIRCRAFT: case VEH_EFFECT: case VEH_DISASTER: */
 		default: return INVALID_TRACKDIR;
 	}
 }
@@ -2955,7 +2955,7 @@ static const SaveLoad _aircraft_desc[] = {
 };
 
 static const SaveLoad _special_desc[] = {
-	SLE_WRITEBYTE(Vehicle, type, VEH_SPECIAL),
+	SLE_WRITEBYTE(Vehicle, type, VEH_EFFECT),
 
 	    SLE_VAR(Vehicle, subtype,       SLE_UINT8),
 
@@ -2973,8 +2973,8 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VAR(Vehicle, progress,      SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
 
-	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, animation_state),    SLE_UINT16),
-	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleSpecial, animation_substate), SLE_UINT8),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleEffect, animation_state),    SLE_UINT16),
+	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleEffect, animation_substate), SLE_UINT8),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
@@ -3062,7 +3062,7 @@ void Load_VEHS()
 			case VEH_ROAD:     v = new (index) RoadVehicle();     break;
 			case VEH_SHIP:     v = new (index) Ship();            break;
 			case VEH_AIRCRAFT: v = new (index) Aircraft();        break;
-			case VEH_SPECIAL:  v = new (index) SpecialVehicle();  break;
+			case VEH_EFFECT:   v = new (index) EffectVehicle();   break;
 			case VEH_DISASTER: v = new (index) DisasterVehicle(); break;
 			case VEH_INVALID:  v = new (index) InvalidVehicle();  break;
 			default: NOT_REACHED();
@@ -3282,7 +3282,7 @@ void Vehicle::SetNext(Vehicle *next)
 	}
 }
 
-void SpecialVehicle::UpdateDeltaXY(Direction direction)
+void EffectVehicle::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs        = 0;
 	this->y_offs        = 0;
