@@ -58,6 +58,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "cheat_func.h"
+#include "animated_tile_func.h"
 
 #include "newgrf.h"
 #include "newgrf_config.h"

@@ -9,6 +9,7 @@
 #include "date_func.h"
 #include "tile_map.h"
 #include "functions.h"
+#include "animated_tile_func.h"
 
 /**
  * Get the index of which town this house/street is attached to.

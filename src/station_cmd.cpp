@@ -42,6 +42,7 @@
 #include "string_func.h"
 #include "signal_func.h"
 #include "oldpool_func.h"
+#include "animated_tile_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

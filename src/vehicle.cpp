@@ -47,6 +47,7 @@
 #include "settings_type.h"
 #include "oldpool_func.h"
 #include "depot_map.h"
+#include "animated_tile_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -22,12 +22,6 @@ void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
 
-/* texteff.cpp */
-void AddAnimatedTile(TileIndex tile);
-void DeleteAnimatedTile(TileIndex tile);
-void AnimateAnimatedTiles();
-void InitializeAnimatedTiles();
-
 /* misc_cmd.cpp */
 void PlaceTreesRandomly();
 

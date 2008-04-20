@@ -22,6 +22,7 @@
 #include "gfx_func.h"
 #include "date_func.h"
 #include "player_func.h"
+#include "animated_tile_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
