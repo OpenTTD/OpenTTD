@@ -6,10 +6,8 @@
 #define TOWN_MAP_H
 
 #include "town.h"
-#include "date_func.h"
+#include "date_type.h"
 #include "tile_map.h"
-#include "functions.h"
-#include "animated_tile_func.h"
 
 /**
  * Get the index of which town this house/street is attached to.
@@ -114,7 +112,6 @@ static inline byte GetLiftDestination(TileIndex t)
 static inline void HaltLift(TileIndex t)
 {
 	SB(_me[t].m7, 0, 4, 0);
-	DeleteAnimatedTile(t);
 }
 
 /**
@@ -207,9 +204,6 @@ static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte sta
 	_m[t].m5 = IsHouseCompleted(t) ? 0 : (stage << 3 | counter);
 	SetHouseAnimationFrame(t, 0);
 	_me[t].m7 = GetHouseSpecs(type)->processing_time;
-
-	if (GetHouseSpecs(type)->building_flags & BUILDING_IS_ANIMATED) AddAnimatedTile(t);
-	MarkTileDirtyByTile(t);
 }
 
 /**
@@ -267,8 +261,19 @@ static inline void IncHouseConstructionTick(TileIndex t)
 		/* House is now completed.
 		 * Store the year of construction as well, for newgrf house purpose */
 		SetHouseCompleted(t, true);
-		_m[t].m5 = Clamp(_cur_year - ORIGINAL_BASE_YEAR, 0, 0xFF);
 	}
+}
+
+/**
+ * Set the year that this house was constructed (between 1920 and 2175).
+ * @param t the tile of this house
+ * @param year the year to set
+ * @pre IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)
+ */
+static inline void SetHouseConstructionYear(TileIndex t, Year year)
+{
+	assert(IsTileType(t, MP_HOUSE) && IsHouseCompleted(t));
+	_m[t].m5 = Clamp(year - ORIGINAL_BASE_YEAR, 0, 0xFF);
 }
 
 /**

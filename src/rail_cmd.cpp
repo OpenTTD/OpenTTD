@@ -43,6 +43,7 @@
 #include "tunnelbridge.h"
 #include "station_map.h"
 #include "water_map.h"
+#include "functions.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

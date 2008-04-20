@@ -45,6 +45,9 @@
 #include "economy_func.h"
 #include "station_func.h"
 #include "cheat_func.h"
+#include "functions.h"
+#include "animated_tile_func.h"
+#include "date_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -268,7 +271,10 @@ static void AnimateTile_Town(TileIndex tile)
 	pos += (pos < dest) ? 1 : -1;
 	SetLiftPosition(tile, pos);
 
-	if (pos == dest) HaltLift(tile);
+	if (pos == dest) {
+		HaltLift(tile);
+		DeleteAnimatedTile(tile);
+	}
 
 	MarkTileDirtyByTile(tile);
 }
@@ -385,6 +391,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 		/* Now that construction is complete, we can add the population of the
 		 * building to the town. */
 		ChangePopulation(GetTownByTile(tile), GetHouseSpecs(GetHouseType(tile))->population);
+		SetHouseConstructionYear(tile, _cur_year);
 	}
 	MarkTileDirtyByTile(tile);
 }
@@ -1644,6 +1651,9 @@ static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, 
 	assert(CmdSucceeded(cc));
 
 	MakeHouseTile(tile, tid, counter, stage, type, random_bits);
+	if (GetHouseSpecs(type)->building_flags & BUILDING_IS_ANIMATED) AddAnimatedTile(tile);
+
+	MarkTileDirtyByTile(tile);
 }
 
 

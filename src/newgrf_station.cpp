@@ -23,6 +23,7 @@
 #include "date_func.h"
 #include "player_func.h"
 #include "animated_tile_func.h"
+#include "functions.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
