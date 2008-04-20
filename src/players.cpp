@@ -670,6 +670,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			}
 			break;
 		case 1:
+			if (Clamp((int16)p2, -12, 12) != (int16)p2) return CMD_ERROR;
 			if (p->engine_renew_months == (int16)p2)
 				return CMD_ERROR;
 
@@ -682,6 +683,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			}
 			break;
 		case 2:
+			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
 			if (p->engine_renew_money == (uint32)p2)
 				return CMD_ERROR;
 
@@ -730,6 +732,8 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 
 		case 4:
+			if (Clamp((int16)GB(p1, 16, 16), -12, 12) != (int16)GB(p1, 16, 16)) return CMD_ERROR;
+			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
 			if (flags & DC_EXEC) {
 				p->engine_renew = HasBit(p1, 15);
 				p->engine_renew_months = (int16)GB(p1, 16, 16);
