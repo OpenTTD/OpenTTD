@@ -191,14 +191,16 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
 {
 	const AircraftVehicleInfo* avi = AircraftVehInfo(engine);
 	int spritenum = avi->image_index;
-	SpriteID sprite = (6 + _aircraft_sprite[spritenum]);
+	SpriteID sprite = 0;
 
 	if (is_custom_sprite(spritenum)) {
 		sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite == 0) {
 			spritenum = _orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
-			sprite = (6 + _aircraft_sprite[spritenum]);
 		}
+	}
+	if (sprite == 0) {
+		sprite = 6 + _aircraft_sprite[spritenum];
 	}
 
 	DrawSprite(sprite, pal, x, y);
