@@ -1,6 +1,7 @@
 # Source Files
 airport.cpp
 core/alloc_func.cpp
+animated_tile.cpp
 articulated_vehicles.cpp
 autoreplace_cmd.cpp
 aystar.cpp
@@ -124,6 +125,7 @@ airport.h
 airport_movement.h
 core/alloc_func.hpp
 core/alloc_type.hpp
+animated_tile_func.h
 articulated_vehicles.h
 autoreplace_base.h
 autoreplace_func.h
