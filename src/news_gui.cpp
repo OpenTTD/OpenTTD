@@ -53,7 +53,6 @@ typedef byte NewsID;
 #define INVALID_NEWS 255
 
 NewsItem _statusbar_news_item;
-uint32 _news_display_opt;
 bool _news_ticker_sound;
 static NewsItem _news_items[MAX_NEWS];      ///< The news FIFO queue
 static NewsID _current_news = INVALID_NEWS; ///< points to news item that should be shown next
@@ -337,22 +336,22 @@ void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsTyp
 /**
  * Per-NewsType data
  */
-const NewsTypeData _news_type_data[NT_END] = {
-	/* name,              age, sound           */
-	{ "arrival_player",    60, SND_1D_APPLAUSE },  ///< NT_ARRIVAL_PLAYER
-	{ "arrival_other",     60, SND_1D_APPLAUSE },  ///< NT_ARRIVAL_OTHER
-	{ "accident",          90, SND_BEGIN       },  ///< NT_ACCIDENT
-	{ "company_info",      60, SND_BEGIN       },  ///< NT_COMPANY_INFO
-	{ "openclose",         90, SND_BEGIN       },  ///< NT_OPENCLOSE
-	{ "economy",           30, SND_BEGIN       },  ///< NT_ECONOMY
-	{ "production_player", 30, SND_BEGIN       },  ///< NT_INDUSTRY_PLAYER
-	{ "production_other",  30, SND_BEGIN       },  ///< NT_INDUSTRY_OTHER
-	{ "production_nobody", 30, SND_BEGIN       },  ///< NT_INDUSTRY_NOBODY
-	{ "advice",           150, SND_BEGIN       },  ///< NT_ADVICE
-	{ "new_vehicles",      30, SND_1E_OOOOH    },  ///< NT_NEW_VEHICLES
-	{ "acceptance",        90, SND_BEGIN       },  ///< NT_ACCEPTANCE
-	{ "subsidies",        180, SND_BEGIN       },  ///< NT_SUBSIDIES
-	{ "general",           60, SND_BEGIN       },  ///< NT_GENERAL
+NewsTypeData _news_type_data[NT_END] = {
+	/* name,              age, sound,           display */
+	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_PLAYER
+	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
+	{ "accident",          90, SND_BEGIN,       ND_FULL },  ///< NT_ACCIDENT
+	{ "company_info",      60, SND_BEGIN,       ND_FULL },  ///< NT_COMPANY_INFO
+	{ "openclose",         90, SND_BEGIN,       ND_FULL },  ///< NT_OPENCLOSE
+	{ "economy",           30, SND_BEGIN,       ND_FULL },  ///< NT_ECONOMY
+	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_PLAYER
+	{ "production_other",  30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OTHER
+	{ "production_nobody", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_NOBODY
+	{ "advice",           150, SND_BEGIN,       ND_FULL },  ///< NT_ADVICE
+	{ "new_vehicles",      30, SND_1E_OOOOH,    ND_FULL },  ///< NT_NEW_VEHICLES
+	{ "acceptance",        90, SND_BEGIN,       ND_FULL },  ///< NT_ACCEPTANCE
+	{ "subsidies",        180, SND_BEGIN,       ND_FULL },  ///< NT_SUBSIDIES
+	{ "general",           60, SND_BEGIN,       ND_FULL },  ///< NT_GENERAL
 };
 
 
@@ -400,30 +399,6 @@ static WindowDesc _news_type0_desc = {
 	NewsWindowProc
 };
 
-
-/**
- * Get the value of an item of the news-display settings. This is
- * a little tricky since on/off/summary must use 2 bits to store the value
- * @param item the item whose value is requested
- * @return return the found value which is between 0-2
- */
-static inline byte GetNewsDisplayValue(byte item)
-{
-	assert(item < NT_END && GB(_news_display_opt, item * 2, 2) <= 2);
-	return GB(_news_display_opt, item * 2, 2);
-}
-
-/**
- * Set the value of an item in the news-display settings. This is
- * a little tricky since on/off/summary must use 2 bits to store the value
- * @param item the item whose value is being set
- * @param val new value
- */
-static inline void SetNewsDisplayValue(byte item, byte val)
-{
-	assert(item < NT_END && val <= 2);
-	SB(_news_display_opt, item * 2, 2, val);
-}
 
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(NewsItem *ni)
@@ -521,9 +496,9 @@ static void MoveToNextItem()
 		/* check the date, don't show too old items */
 		if (_date - _news_type_data[ni->type].age > ni->date) return;
 
-		switch (GetNewsDisplayValue(ni->type)) {
+		switch (_news_type_data[ni->type].display) {
 			default: NOT_REACHED();
-			case 0: { // Off - show nothing only a small reminder in the status bar
+			case ND_OFF: { // Off - show nothing only a small reminder in the status bar
 				Window *w = FindWindowById(WC_STATUS_BAR, 0);
 
 				if (w != NULL) {
@@ -533,14 +508,14 @@ static void MoveToNextItem()
 				break;
 			}
 
-			case 1: // Summary - show ticker, but if forced big, cascade to full
+			case ND_SUMMARY: // Summary - show ticker, but if forced big, cascade to full
 				if (!(ni->flags & NF_FORCE_BIG)) {
 					ShowTicker(ni);
 					break;
 				}
 				/* Fallthrough */
 
-			case 2: // Full - show newspaper
+			case ND_FULL: // Full - show newspaper
 				ShowNewspaper(ni);
 				break;
 		}
@@ -769,33 +744,30 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 	/* WP(w, def_d).data_1 stores state of the ALL on/off/summary button */
 	switch (e->event) {
 		case WE_CREATE: {
-			uint32 val = _news_display_opt;
-			uint32 all_val;
+			NewsDisplay all_val;
 
 			/* Set up the initial disabled buttons in the case of 'off' or 'full' */
-			all_val = val & 0x3;
-			for (int i = 0; i < NT_END; i++, val >>= 2) {
-				SetMessageButtonStates(w, val & 0x3, i);
+			all_val = _news_type_data[0].display;
+			for (int i = 0; i < NT_END; i++) {
+				SetMessageButtonStates(w, _news_type_data[i].display, i);
 				/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
-				if ((val & 0x3) != all_val) all_val = 0;
+				if (_news_type_data[i].display != all_val) all_val = ND_OFF;
 			}
 			/* If all values are the same value, the ALL-button will take over this value */
 			WP(w, def_d).data_1 = all_val;
 		} break;
 
 		case WE_PAINT: {
-			uint32 val = _news_display_opt;
-
 			if (_news_ticker_sound) w->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
 
 			w->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = message_opt[WP(w, def_d).data_1];
 			DrawWindowWidgets(w);
 
 			/* Draw the string of each setting on each button. */
-			for (int i = 0, y = 26; i < NT_END; i++, y += 12, val >>= 2) {
+			for (int i = 0, y = 26; i < NT_END; i++, y += 12) {
 				/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
 				 * which will give centered position */
-				DrawStringCentered(51, y + 1, message_opt[val & 0x3], TC_BLACK);
+				DrawStringCentered(51, y + 1, message_opt[_news_type_data[i].display], TC_BLACK);
 			}
 		} break;
 
@@ -815,10 +787,10 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 					int wid = e->we.click.widget - WIDGET_NEWSOPT_START_OPTION;
 					if (wid >= 0 && wid < (NB_WIDG_PER_SETTING * NT_END)) {
 						int element = wid / NB_WIDG_PER_SETTING;
-						byte val = (GetNewsDisplayValue(element) + ((wid % NB_WIDG_PER_SETTING) ? 1 : -1)) % 3;
+						byte val = (_news_type_data[element].display + ((wid % NB_WIDG_PER_SETTING) ? 1 : -1)) % 3;
 
 						SetMessageButtonStates(w, val, element);
-						SetNewsDisplayValue(element, val);
+						_news_type_data[element].display = (NewsDisplay)val;
 						SetWindowDirty(w);
 					}
 				} break;
@@ -830,7 +802,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 
 			for (int i = 0; i < NT_END; i++) {
 				SetMessageButtonStates(w, e->we.dropdown.index, i);
-				SetNewsDisplayValue(i, e->we.dropdown.index);
+				_news_type_data[i].display = (NewsDisplay)e->we.dropdown.index;
 			}
 			SetWindowDirty(w);
 			break;

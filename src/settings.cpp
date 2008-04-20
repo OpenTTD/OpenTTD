@@ -1654,15 +1654,13 @@ static const SettingDesc _currency_settings[] = {
 #undef NO
 #undef CR
 
-static uint NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
+static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
 	IniItem *item;
-	/* By default, set everything to full (0xAAAAAAAA = 1010101010101010) */
-	uint res = 0xAAAAAAAA;
 
-	/* If no group exists, return everything full */
-	if (group == NULL) return res;
+	/* If no group exists, return */
+	if (group == NULL) return;
 
 	for (item = group->item; item != NULL; item = item->next) {
 		int news_item = -1;
@@ -1678,18 +1676,16 @@ static uint NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 		}
 
 		if (strcasecmp(item->value, "full") == 0) {
-			SB(res, news_item * 2, 2, 2);
+			_news_type_data[news_item].display = ND_FULL;
 		} else if (strcasecmp(item->value, "off") == 0) {
-			SB(res, news_item * 2, 2, 0);
+			_news_type_data[news_item].display = ND_OFF;
 		} else if (strcasecmp(item->value, "summarized") == 0) {
-			SB(res, news_item * 2, 2, 1);
+			_news_type_data[news_item].display = ND_SUMMARY;
 		} else {
 			DEBUG(misc, 0, "Invalid display value: %s", item->value);
 			continue;
 		}
 	}
-
-	return res;
 }
 
 /* Load a GRF configuration from the given group name */
@@ -1745,7 +1741,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 	return first;
 }
 
-static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname, uint news_display)
+static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini_getgroup(ini, grpname, -1);
 	IniItem **item;
@@ -1756,9 +1752,9 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname, uint news_d
 
 	for (int i = 0; i < NT_END; i++) {
 		const char *value;
-		int v = GB(news_display, i * 2, 2);
+		int v = _news_type_data[i].display;
 
-		value = (v == 0 ? "off" : (v == 1 ? "summarized" : "full"));
+		value = (v == ND_OFF ? "off" : (v == ND_SUMMARY ? "summarized" : "full"));
 
 		*item = ini_item_alloc(group, _news_type_data[i].name, strlen(_news_type_data[i].name));
 		(*item)->value = (char*)pool_strdup(&ini->pool, value, strlen(value));
@@ -1847,7 +1843,7 @@ void LoadFromConfig()
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
-	_news_display_opt  = NewsDisplayLoadConfig(ini, "news_display");
+	NewsDisplayLoadConfig(ini, "news_display");
 	CheckDifficultyLevels();
 	ini_free(ini);
 }
@@ -1859,7 +1855,7 @@ void SaveToConfig()
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
-	NewsDisplaySaveConfig(ini, "news_display", _news_display_opt);
+	NewsDisplaySaveConfig(ini, "news_display");
 	SaveVersionInConfig(ini);
 	ini_save(_config_file, ini);
 	ini_free(ini);

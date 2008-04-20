@@ -14,10 +14,9 @@ void DrawNewsBorder(const Window *w);
 void InitNewsItemStructs();
 
 extern NewsItem _statusbar_news_item;
-extern uint32 _news_display_opt;
 extern bool _news_ticker_sound;
 
-extern const NewsTypeData _news_type_data[NT_END];
+extern NewsTypeData _news_type_data[NT_END];
 
 /**
  * Delete a news item type about a vehicle
