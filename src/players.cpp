@@ -652,14 +652,12 @@ static void DeletePlayerStuff(PlayerID pi)
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
 	if (!IsValidPlayer(_current_player)) return CMD_ERROR;
 
-	p = GetPlayer(_current_player);
+	Player *p = GetPlayer(_current_player);
 	switch (GB(p1, 0, 3)) {
 		case 0:
-			if (p->engine_renew == HasBit(p2, 0))
-				return CMD_ERROR;
+			if (p->engine_renew == HasBit(p2, 0)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				p->engine_renew = HasBit(p2, 0);
@@ -669,10 +667,10 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				}
 			}
 			break;
+
 		case 1:
 			if (Clamp((int16)p2, -12, 12) != (int16)p2) return CMD_ERROR;
-			if (p->engine_renew_months == (int16)p2)
-				return CMD_ERROR;
+			if (p->engine_renew_months == (int16)p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				p->engine_renew_months = (int16)p2;
@@ -682,19 +680,20 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				}
 			}
 			break;
+
 		case 2:
 			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
-			if (p->engine_renew_money == (uint32)p2)
-				return CMD_ERROR;
+			if (p->engine_renew_money == p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew_money = (uint32)p2;
+				p->engine_renew_money = p2;
 				if (IsLocalPlayer()) {
 					_patches.autorenew_money = p->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
 			break;
+
 		case 3: {
 			EngineID old_engine_type = GB(p2, 0, 16);
 			EngineID new_engine_type = GB(p2, 16, 16);
@@ -705,21 +704,19 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (new_engine_type != INVALID_ENGINE) {
 				/* First we make sure that it's a valid type the user requested
 				 * check that it's an engine that is in the engine array */
-				if (!IsEngineIndex(new_engine_type))
-					return CMD_ERROR;
+				if (!IsEngineIndex(new_engine_type)) return CMD_ERROR;
 
 				/* check that the new vehicle type is the same as the original one */
-				if (GetEngine(old_engine_type)->type != GetEngine(new_engine_type)->type)
-					return CMD_ERROR;
+				if (GetEngine(old_engine_type)->type != GetEngine(new_engine_type)->type) return CMD_ERROR;
 
 				/* make sure that we do not replace a plane with a helicopter or vise versa */
 				if (GetEngine(new_engine_type)->type == VEH_AIRCRAFT &&
-						(AircraftVehInfo(old_engine_type)->subtype & AIR_CTOL) != (AircraftVehInfo(new_engine_type)->subtype & AIR_CTOL))
+						(AircraftVehInfo(old_engine_type)->subtype & AIR_CTOL) != (AircraftVehInfo(new_engine_type)->subtype & AIR_CTOL)) {
 					return CMD_ERROR;
+				}
 
 				/* make sure that the player can actually buy the new engine */
-				if (!HasBit(GetEngine(new_engine_type)->player_avail, _current_player))
-					return CMD_ERROR;
+				if (!HasBit(GetEngine(new_engine_type)->player_avail, _current_player)) return CMD_ERROR;
 
 				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, id_g, flags);
 			} else {
@@ -734,10 +731,11 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		case 4:
 			if (Clamp((int16)GB(p1, 16, 16), -12, 12) != (int16)GB(p1, 16, 16)) return CMD_ERROR;
 			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
+
 			if (flags & DC_EXEC) {
 				p->engine_renew = HasBit(p1, 15);
 				p->engine_renew_months = (int16)GB(p1, 16, 16);
-				p->engine_renew_money = (uint32)p2;
+				p->engine_renew_money = p2;
 
 				if (IsLocalPlayer()) {
 					_patches.autorenew = p->engine_renew;
@@ -747,9 +745,9 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				}
 			}
 			break;
+
 		case 5:
-			if (p->renew_keep_length == HasBit(p2, 0))
-				return CMD_ERROR;
+			if (p->renew_keep_length == HasBit(p2, 0)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				p->renew_keep_length = HasBit(p2, 0);
@@ -758,8 +756,8 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				}
 			}
 		break;
-
 	}
+
 	return CommandCost();
 }
 
