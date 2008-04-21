@@ -206,6 +206,8 @@ void CSleep(int milliseconds)
 #include "debug.h"
 #include "string_func.h"
 
+const char *GetCurrentLocale(const char *param);
+
 #define INTERNALCODE "UTF-8"
 
 /** Try and try to decipher the current locale from environmental
