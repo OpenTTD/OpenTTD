@@ -58,20 +58,23 @@ static inline TrackBits GetTileShipTrackStatus(TileIndex tile)
 	return TrackStatusToTrackBits(GetTileTrackStatus(tile, TRANSPORT_WATER, 0));
 }
 
-void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
+static SpriteID GetShipIcon(EngineID engine)
 {
-	int spritenum = ShipVehInfo(engine)->image_index;
+	uint8 spritenum = ShipVehInfo(engine)->image_index;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleIcon(engine, DIR_W);
+		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
+		if (sprite != 0) return sprite;
 
-		if (sprite != 0) {
-			DrawSprite(sprite, pal, x, y);
-			return;
-		}
 		spritenum = _orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
 	}
-	DrawSprite(6 + _ship_sprites[spritenum], pal, x, y);
+
+	return 6 + _ship_sprites[spritenum];
+}
+
+void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
+{
+	DrawSprite(GetShipIcon(engine), pal, x, y);
 }
 
 /** Get the size of the sprite of a ship sprite heading west (used for lists)
@@ -81,35 +84,23 @@ void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
  */
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height)
 {
-	SpriteID spritenum = ShipVehInfo(engine)->image_index;
-	SpriteID custom_sprite = 0;
-
-	if (is_custom_sprite(spritenum)) {
-		custom_sprite = GetCustomVehicleIcon(engine, DIR_W);
-		spritenum = _orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
-	}
-	if (custom_sprite == 0) {
-		spritenum = 6 + _ship_sprites[spritenum];
-	} else {
-		spritenum = custom_sprite;
-	}
-
-	const Sprite *spr = GetSprite(spritenum);
+	const Sprite *spr = GetSprite(GetShipIcon(engine));
 
 	width  = spr->width;
 	height = spr->height;
 }
 
-int Ship::GetImage(Direction direction) const
+SpriteID Ship::GetImage(Direction direction) const
 {
-	int spritenum = this->spritenum;
+	uint8 spritenum = this->spritenum;
 
 	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleSprite(this, direction);
-
+		SpriteID sprite = GetCustomVehicleSprite(this, direction);
 		if (sprite != 0) return sprite;
+
 		spritenum = _orig_ship_vehicle_info[this->engine_type - SHIP_ENGINES_INDEX].image_index;
 	}
+
 	return _ship_sprites[spritenum] + direction;
 }
 

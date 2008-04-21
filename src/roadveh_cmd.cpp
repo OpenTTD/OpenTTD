@@ -94,36 +94,42 @@ static const Trackdir _roadveh_depot_exit_trackdir[DIAGDIR_END] = {
 	TRACKDIR_X_NE, TRACKDIR_Y_SE, TRACKDIR_X_SW, TRACKDIR_Y_NW
 };
 
-int RoadVehicle::GetImage(Direction direction) const
+static SpriteID GetRoadVehIcon(EngineID engine)
 {
-	int img = this->spritenum;
-	int image;
+	uint8 spritenum = RoadVehInfo(engine)->image_index;
 
-	if (is_custom_sprite(img)) {
-		image = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
-		if (image != 0) return image;
-		img = _orig_road_vehicle_info[this->engine_type - ROAD_ENGINES_INDEX].image_index;
+	if (is_custom_sprite(spritenum)) {
+		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
+		if (sprite != 0) return sprite;
+
+		spritenum = _orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
 	}
 
-	image = direction + _roadveh_images[img];
-	if (this->cargo.Count() >= this->cargo_cap / 2U) image += _roadveh_full_adder[img];
-	return image;
+	return 6 + _roadveh_images[spritenum];
+}
+
+SpriteID RoadVehicle::GetImage(Direction direction) const
+{
+	uint8 spritenum = this->spritenum;
+	SpriteID sprite;
+
+	if (is_custom_sprite(spritenum)) {
+		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
+		if (sprite != 0) return sprite;
+
+		spritenum = _orig_road_vehicle_info[this->engine_type - ROAD_ENGINES_INDEX].image_index;
+	}
+
+	sprite = direction + _roadveh_images[spritenum];
+
+	if (this->cargo.Count() >= this->cargo_cap / 2U) sprite += _roadveh_full_adder[spritenum];
+
+	return sprite;
 }
 
 void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 {
-	int spritenum = RoadVehInfo(engine)->image_index;
-
-	if (is_custom_sprite(spritenum)) {
-		int sprite = GetCustomVehicleIcon(engine, DIR_W);
-
-		if (sprite != 0) {
-			DrawSprite(sprite, pal, x, y);
-			return;
-		}
-		spritenum = _orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
-	}
-	DrawSprite(6 + _roadveh_images[spritenum], pal, x, y);
+	DrawSprite(GetRoadVehIcon(engine), pal, x, y);
 }
 
 static CommandCost EstimateRoadVehCost(EngineID engine_type)

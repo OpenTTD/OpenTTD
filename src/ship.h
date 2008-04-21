@@ -35,7 +35,7 @@ struct Ship: public Vehicle {
 	WindowClass GetVehicleListWindowClass() const { return WC_SHIPS_LIST; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return true; }
-	int GetImage(Direction direction) const;
+	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
 	Money GetRunningCost() const { return ShipVehInfo(this->engine_type)->running_cost * _price.ship_running; }

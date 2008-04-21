@@ -390,7 +390,7 @@ public:
 	 * @param direction the direction the vehicle is facing
 	 * @return the sprite for the given vehicle in the given direction
 	 */
-	virtual int GetImage(Direction direction) const { return 0; }
+	virtual SpriteID GetImage(Direction direction) const { return 0; }
 
 	/**
 	 * Gets the speed in mph that can be sent into SetDParam for string processing.

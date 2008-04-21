@@ -296,7 +296,7 @@ struct Train : public Vehicle {
 	WindowClass GetVehicleListWindowClass() const { return WC_TRAINS_LIST; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
-	int GetImage(Direction direction) const;
+	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->u.rail.last_speed * 10 / 16; }
 	int GetDisplayMaxSpeed() const { return this->u.rail.cached_max_speed * 10 / 16; }
 	Money GetRunningCost() const;

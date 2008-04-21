@@ -467,59 +467,61 @@ void UpdateTrainAcceleration(Vehicle *v)
 	v->acceleration = Clamp(power / weight * 4, 1, 255);
 }
 
-int Train::GetImage(Direction direction) const
+SpriteID Train::GetImage(Direction direction) const
 {
-	int img = this->spritenum;
-	int base;
+	uint8 spritenum = this->spritenum;
+	SpriteID sprite;
 
 	if (HasBit(this->u.rail.flags, VRF_REVERSE_DIRECTION)) direction = ReverseDir(direction);
 
-	if (is_custom_sprite(img)) {
-		base = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(img)));
-		if (base != 0) return base;
-		img = _orig_rail_vehicle_info[this->engine_type].image_index;
+	if (is_custom_sprite(spritenum)) {
+		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
+		if (sprite != 0) return sprite;
+
+		spritenum = _orig_rail_vehicle_info[this->engine_type].image_index;
 	}
 
-	base = _engine_sprite_base[img] + ((direction + _engine_sprite_add[img]) & _engine_sprite_and[img]);
+	sprite = _engine_sprite_base[spritenum] + ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]);
 
-	if (this->cargo.Count() >= this->cargo_cap / 2U) base += _wagon_full_adder[img];
-	return base;
+	if (this->cargo.Count() >= this->cargo_cap / 2U) sprite += _wagon_full_adder[spritenum];
+
+	return sprite;
+}
+
+static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
+{
+	Direction dir = rear_head ? DIR_E : DIR_W;
+	uint8 spritenum = RailVehInfo(engine)->image_index;
+
+	if (is_custom_sprite(spritenum)) {
+		SpriteID sprite = GetCustomVehicleIcon(engine, dir);
+		if (sprite != 0) {
+			y += _traininfo_vehicle_pitch; // TODO Make this per-GRF
+			return sprite;
+		}
+
+		spritenum = _orig_rail_vehicle_info[engine].image_index;
+	}
+
+	if (rear_head) spritenum++;
+
+	return ((6 + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]) + _engine_sprite_base[spritenum];
 }
 
 void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 {
-	const RailVehicleInfo *rvi = RailVehInfo(engine);
+	if (RailVehInfo(engine)->railveh_type == RAILVEH_MULTIHEAD) {
+		int yf = y;
+		int yr = y;
 
-	int img = rvi->image_index;
-	SpriteID image = 0;
-
-	if (is_custom_sprite(img)) {
-		image = GetCustomVehicleIcon(engine, DIR_W);
-		if (image == 0) {
-			img = _orig_rail_vehicle_info[engine].image_index;
-		} else {
-			y += _traininfo_vehicle_pitch;
-		}
+		SpriteID spritef = GetRailIcon(engine, false, yf);
+		SpriteID spriter = GetRailIcon(engine, true, yr);
+		DrawSprite(spritef, pal, x - 14, yf);
+		DrawSprite(spriter, pal, x + 15, yr);
+	} else {
+		SpriteID sprite = GetRailIcon(engine, false, y);
+		DrawSprite(sprite, pal, x, y);
 	}
-	if (image == 0) {
-		image = (6 & _engine_sprite_and[img]) + _engine_sprite_base[img];
-	}
-
-	if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
-		DrawSprite(image, pal, x - 14, y);
-		x += 15;
-		image = 0;
-		if (is_custom_sprite(img)) {
-			image = GetCustomVehicleIcon(engine, DIR_E);
-			if (image == 0) img = _orig_rail_vehicle_info[engine].image_index;
-		}
-		if (image == 0) {
-			image =
-				((6 + _engine_sprite_add[img + 1]) & _engine_sprite_and[img + 1]) +
-				_engine_sprite_base[img + 1];
-		}
-	}
-	DrawSprite(image, pal, x, y);
 }
 
 static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
