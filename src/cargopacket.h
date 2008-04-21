@@ -22,13 +22,13 @@ DECLARE_OLD_POOL(CargoPacket, CargoPacket, 10, 1000)
  * Container for cargo from the same location and time
  */
 struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
-	StationID source;       ///< The station where the cargo came from first
+	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo
 	TileIndex source_xy;    ///< The origin of the cargo (first station in feeder chain)
 	TileIndex loaded_at_xy; ///< Location where this cargo has been loaded into the vehicle
+	StationID source;       ///< The station where the cargo came from first
 
 	uint16 count;           ///< The amount of cargo in this packet
 	byte days_in_transit;   ///< Amount of days this packet has been in transit
-	Money feeder_share;     ///< Value of feeder pickup to be paid for on delivery of cargo
 	bool paid_for;          ///< Have we been paid for this cargo packet?
 
 	/**
