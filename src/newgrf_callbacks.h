@@ -28,193 +28,188 @@ enum CallbackID {
 
 	/** Powered wagons, if the result is lower as 0x40 then the wagon is powered
 	 * @todo : interpret the rest of the result, aka "visual effects". */
-	CBID_TRAIN_WAGON_POWER               = 0x10,
+	CBID_TRAIN_WAGON_POWER               = 0x10, // 8 bit callback
 
 	/** Vehicle length, returns the amount of 1/8's the vehicle is shorter for trains and RVs. */
 	CBID_VEHICLE_LENGTH                  = 0x11,
 
 	/** Determine the amount of cargo to load per unit of time when using gradual loading. */
-	CBID_VEHICLE_LOAD_AMOUNT             = 0x12,
+	CBID_VEHICLE_LOAD_AMOUNT             = 0x12, // 8 bit callback
 
 	/** Determine whether a newstation should be made available to build. */
-	CBID_STATION_AVAILABILITY            = 0x13,
+	CBID_STATION_AVAILABILITY            = 0x13, // 8 bit callback
 
 	/** Choose a sprite layout to draw, instead of the standard 0-7 range. */
 	CBID_STATION_SPRITE_LAYOUT           = 0x14,
 
 	/** Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	 * the cargo we are refitting to, returns the new cargo capacity. */
-	CBID_VEHICLE_REFIT_CAPACITY          = 0x15,
+	CBID_VEHICLE_REFIT_CAPACITY          = 0x15, // 15 bit callback
 
 	/** Builds articulated engines for trains and RVs. */
-	CBID_VEHICLE_ARTIC_ENGINE            = 0x16,
+	CBID_VEHICLE_ARTIC_ENGINE            = 0x16, // 8 bit callback
 
 	/** Determine whether the house can be built on the specified tile. */
-	CBID_HOUSE_ALLOW_CONSTRUCTION        = 0x17,
+	CBID_HOUSE_ALLOW_CONSTRUCTION        = 0x17, // 8 bit callback
 
 	/** AI construction/purchase selection */
-	CBID_GENERIC_AI_PURCHASE_SELECTION   = 0x18, // not implemented
+	CBID_GENERIC_AI_PURCHASE_SELECTION   = 0x18, // 8 bit callback, not implemented
 
 	/** Determine the cargo "suffixes" for each refit possibility of a cargo. */
 	CBID_VEHICLE_CARGO_SUFFIX            = 0x19,
 
 	/** Determine the next animation frame for a house. */
-	CBID_HOUSE_ANIMATION_NEXT_FRAME      = 0x1A,
+	CBID_HOUSE_ANIMATION_NEXT_FRAME      = 0x1A, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_HOUSE_ANIMATION_START_STOP      = 0x1B,
+	CBID_HOUSE_ANIMATION_START_STOP      = 0x1B, // 15 bit callback
 
 	/** Called whenever the construction state of a house changes. */
-	CBID_HOUSE_CONSTRUCTION_STATE_CHANGE = 0x1C,
+	CBID_HOUSE_CONSTRUCTION_STATE_CHANGE = 0x1C, // 15 bit callback
 
 	/** Determine whether a wagon can be attached to an already existing train. */
 	CBID_TRAIN_ALLOW_WAGON_ATTACH        = 0x1D,
 
 	/** Called to determine the colour of a town building. */
-	CBID_HOUSE_COLOUR                    = 0x1E,
+	CBID_HOUSE_COLOUR                    = 0x1E, // 15 bit callback
 
 	/** Called to decide how much cargo a town building can accept. */
-	CBID_HOUSE_CARGO_ACCEPTANCE          = 0x1F,
+	CBID_HOUSE_CARGO_ACCEPTANCE          = 0x1F, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
-	CBID_HOUSE_ANIMATION_SPEED           = 0x20,
+	CBID_HOUSE_ANIMATION_SPEED           = 0x20, // 8 bit callback
 
 	/** Called periodically to determine if a house should be destroyed. */
-	CBID_HOUSE_DESTRUCTION               = 0x21,
+	CBID_HOUSE_DESTRUCTION               = 0x21, // 8 bit callback
 
 	/** Called to determine if the given industry type is available */
-	CBID_INDUSTRY_AVAILABLE              = 0x22,
+	CBID_INDUSTRY_AVAILABLE              = 0x22, // 15 bit callback
 
 	/** This callback is called from vehicle purchase lists. It returns a value to be
 	 * used as a custom string ID in the 0xD000 range. */
 	CBID_VEHICLE_ADDITIONAL_TEXT         = 0x23,
 
 	/** Called when building a station to customize the tile layout */
-	CBID_STATION_TILE_LAYOUT             = 0x24,
+	CBID_STATION_TILE_LAYOUT             = 0x24, // 15 bit callback
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_INDTILE_ANIM_START_STOP         = 0x25,
+	CBID_INDTILE_ANIM_START_STOP         = 0x25, // 15 bit callback
 
 	/** Called to determine industry tile next animation frame. */
-	CBID_INDTILE_ANIM_NEXT_FRAME         = 0x26,
+	CBID_INDTILE_ANIM_NEXT_FRAME         = 0x26, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
-	CBID_INDTILE_ANIMATION_SPEED         = 0x27,
+	CBID_INDTILE_ANIMATION_SPEED         = 0x27, // 8 bit callback
 
 	/** Called to determine if the given industry can be built on specific area. */
-	CBID_INDUSTRY_LOCATION               = 0x28,
+	CBID_INDUSTRY_LOCATION               = 0x28, // 15 bit callback
 
 	/** Called on production changes, so it can be adjusted. */
-	CBID_INDUSTRY_PRODUCTION_CHANGE      = 0x29,
+	CBID_INDUSTRY_PRODUCTION_CHANGE      = 0x29, // 15 bit callback
 
 	/** Called to determine which cargoes a town building should accept. */
-	CBID_HOUSE_ACCEPT_CARGO              = 0x2A,
+	CBID_HOUSE_ACCEPT_CARGO              = 0x2A, // 15 bit callback
 
 	/** Called to query the cargo acceptance of the industry tile */
-	CBID_INDTILE_CARGO_ACCEPTANCE        = 0x2B,
+	CBID_INDTILE_CARGO_ACCEPTANCE        = 0x2B, // 15 bit callback
 
 	/** Called to determine which cargoes an industry should accept. */
-	CBID_INDTILE_ACCEPT_CARGO            = 0x2C,
+	CBID_INDTILE_ACCEPT_CARGO            = 0x2C, // 15 bit callback
 
 	/** Called to determine if a specific colour map should be used for a vehicle
 	 * instead of the default livery. */
-	CBID_VEHICLE_COLOUR_MAPPING          = 0x2D,
+	CBID_VEHICLE_COLOUR_MAPPING          = 0x2D, // 15 bit callback
 
 	/** Called to determine how much cargo a town building produces. */
-	CBID_HOUSE_PRODUCE_CARGO             = 0x2E,
+	CBID_HOUSE_PRODUCE_CARGO             = 0x2E, // 15 bit callback
 
 	/** Called to determine if the given industry tile can be built on specific tile. */
-	CBID_INDTILE_SHAPE_CHECK             = 0x2F,
+	CBID_INDTILE_SHAPE_CHECK             = 0x2F, // 15 bit callback
 
 	/** Called to determine the type (if any) of foundation to draw for industry tile. */
-	CBID_INDUSTRY_DRAW_FOUNDATIONS       = 0x30,
+	CBID_INDUSTRY_DRAW_FOUNDATIONS       = 0x30, // 15 bit callback
 
 	/** Called when the player (or AI) tries to start or stop a vehicle. Mainly
 	 * used for preventing a vehicle from leaving the depot. */
-	CBID_VEHICLE_START_STOP_CHECK        = 0x31,
+	CBID_VEHICLE_START_STOP_CHECK        = 0x31, // 15 bit callback, but 0xFF test is done with 8 bit
 
 	/** Called for every vehicle every 32 days (not all on same date though). */
-	CBID_VEHICLE_32DAY_CALLBACK          = 0x32,
+	CBID_VEHICLE_32DAY_CALLBACK          = 0x32, // 2 bit callback
 
 	/** Called to play a special sound effect */
-	CBID_VEHICLE_SOUND_EFFECT            = 0x33,
+	CBID_VEHICLE_SOUND_EFFECT            = 0x33, // 15 bit callback
 
 	/** Return the vehicles this given vehicle can be "upgraded" to. */
-	CBID_VEHICLE_AUTOREPLACE_SELECTION   = 0x34,
+	CBID_VEHICLE_AUTOREPLACE_SELECTION   = 0x34, // 15 bit callback
 
 	/** Called monthly on production changes, so it can be adjusted more frequently */
-	CBID_INDUSTRY_MONTHLYPROD_CHANGE     = 0x35,
+	CBID_INDUSTRY_MONTHLYPROD_CHANGE     = 0x35, // 15 bit callback
 
 	/** Called to modify various vehicle properties. Callback parameter 1
 	 * specifies the property index, as used in Action 0, to change. */
-	CBID_VEHICLE_MODIFY_PROPERTY         = 0x36,
+	CBID_VEHICLE_MODIFY_PROPERTY         = 0x36, // 8/15 bit depends on queried property
 
 	/** Called to determine text to display after cargo name */
-	CBID_INDUSTRY_CARGO_SUFFIX           = 0x37,
+	CBID_INDUSTRY_CARGO_SUFFIX           = 0x37, // 15 bit callback, but 0xFF test is done with 8 bit
 
 	/** Called to determine more text in the fund industry window */
-	CBID_INDUSTRY_FUND_MORE_TEXT         = 0x38,
+	CBID_INDUSTRY_FUND_MORE_TEXT         = 0x38, // 15 bit callback
 
 	/** Called to calculate the income of delivered cargo */
-	CBID_CARGO_PROFIT_CALC               = 0x39,
+	CBID_CARGO_PROFIT_CALC               = 0x39, // 15 bit callback
 
 	/** Called to determine more text in the industry window */
-	CBID_INDUSTRY_WINDOW_MORE_TEXT       = 0x3A,
+	CBID_INDUSTRY_WINDOW_MORE_TEXT       = 0x3A, // 15 bit callback
 
 	/** Called to determine industry special effects */
-	CBID_INDUSTRY_SPECIAL_EFFECT         = 0x3B,
+	CBID_INDUSTRY_SPECIAL_EFFECT         = 0x3B, // 15 bit callback
 
 	/** Called to determine if industry can alter the ground below industry tile */
-	CBID_INDUSTRY_AUTOSLOPE              = 0x3C,
+	CBID_INDUSTRY_AUTOSLOPE              = 0x3C, // 15 bit callback
 
 	/** Called to determine if the industry can still accept or refuse more cargo arrival */
-	CBID_INDUSTRY_REFUSE_CARGO           = 0x3D,
+	CBID_INDUSTRY_REFUSE_CARGO           = 0x3D, // 15 bit callback
 
 	/* There are no callbacks 0x3E - 0x13F */
 
 	/** Called for periodically starting or stopping the animation. */
-	CBID_STATION_ANIM_START_STOP         = 0x140,
+	CBID_STATION_ANIM_START_STOP         = 0x140, // 15 bit callback
 
 	/** Called to determine station tile next animation frame. */
-	CBID_STATION_ANIM_NEXT_FRAME         = 0x141,
+	CBID_STATION_ANIM_NEXT_FRAME         = 0x141, // 15 bit callback
 
 	/** Called to indicate how long the current animation frame should last. */
-	CBID_STATION_ANIMATION_SPEED         = 0x142,
+	CBID_STATION_ANIMATION_SPEED         = 0x142, // 8 bit callback
 
 	/** Called to determine whether a town building can be destroyed. */
-	CBID_HOUSE_DENY_DESTRUCTION          = 0x143,
+	CBID_HOUSE_DENY_DESTRUCTION          = 0x143, // 15 bit callback
 
 	/** Select an ambient sound to play for a given type of tile. */
-	CBID_SOUNDS_AMBIENT_EFFECT           = 0x144, // not implemented
+	CBID_SOUNDS_AMBIENT_EFFECT           = 0x144, // 15 bit callback, not implemented
 
 	/** Called to calculate part of a station rating. */
-	CBID_CARGO_STATION_RATING_CALC       = 0x145,
+	CBID_CARGO_STATION_RATING_CALC       = 0x145, // 15 bit callback, not implemented
 
 	/** Allow signal sprites to be replaced dynamically. */
-	CBID_NEW_SIGNALS_SPRITE_DRAW         = 0x146, // not implemented
+	CBID_NEW_SIGNALS_SPRITE_DRAW         = 0x146, // 15 bit callback, not implemented
 
 	/** Add an offset to the default sprite numbers to show another sprite. */
-	CBID_CANALS_SPRITE_OFFSET            = 0x147, // not implemented
+	CBID_CANALS_SPRITE_OFFSET            = 0x147, // 15 bit callback, not implemented
 
 	/** Called when a cargo type specified in property 20 is accepted. */
-	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // not implemented
+	CBID_HOUSE_WATCHED_CARGO_ACCEPTED    = 0x148, // 15 bit callback, not implemented
 
 	/** Callback done for each tile of a station to check the slope. */
-	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // not implemented
+	CBID_STATION_LAND_SLOPE_CHECK        = 0x149, // 15 bit callback, not implemented
 
 	/** Called to determine the color of an industry. */
-	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A,
+	CBID_INDUSTRY_DECIDE_COLOUR          = 0x14A, // 4 bit callback
 
 	/** Customize the input cargo types of a newly build industry. */
-	CBID_INDUSTRY_INPUT_CARGO_TYPES      = 0x14B,
+	CBID_INDUSTRY_INPUT_CARGO_TYPES      = 0x14B, // 8 bit callback
 
 	/** Customize the output cargo types of a newly build industry. */
-	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C,
-
-	/* ATTENTION:
-	 * When adding new callbacks and their result is 15bit, add them to newgrf_spritegroup.cpp:Is8BitCallback().
-	 * It does not harm to add them there though they are not implemented. But it does harm if they get forgotton.
-	 */
+	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C, // 8 bit callback
 };
 
 /**
