@@ -78,20 +78,27 @@ enum VehicleFlags {
 };
 
 struct VehicleRail {
+	/* Link between the two ends of a multiheaded engine */
+	Vehicle *other_multiheaded_part;
+
+	/* Cached wagon override spritegroup */
+	const struct SpriteGroup *cached_override;
+
 	uint16 last_speed; // NOSAVE: only used in UI
 	uint16 crash_anim_pos;
 
 	/* cached values, recalculated on load and each time a vehicle is added to/removed from the consist. */
-	uint16 cached_max_speed;  // max speed of the consist. (minimum of the max speed of all vehicles in the consist)
-	uint32 cached_power;      // total power of the consist.
-	bool cached_tilt;         // train can tilt; feature provides a bonus in curves
-	uint8 cached_veh_length;  // length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
+	uint32 cached_power;        ///< total power of the consist.
+	uint16 cached_max_speed;    ///< max speed of the consist. (minimum of the max speed of all vehicles in the consist)
 	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
+	uint8 cached_veh_length;    ///< length of this vehicle in units of 1/8 of normal length, cached because this can be set by a callback
+	bool cached_tilt;           ///< train can tilt; feature provides a bonus in curves
 
 	/* cached values, recalculated when the cargo on a train changes (in addition to the conditions above) */
-	uint32 cached_weight;     // total weight of the consist.
-	uint32 cached_veh_weight; // weight of the vehicle.
-	uint32 cached_max_te;     // max tractive effort of consist
+	uint32 cached_weight;     ///< total weight of the consist.
+	uint32 cached_veh_weight; ///< weight of the vehicle.
+	uint32 cached_max_te;     ///< max tractive effort of consist
+
 	/**
 	 * Position/type of visual effect.
 	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
@@ -106,18 +113,11 @@ struct VehicleRail {
 	 * 0xffff == not in train */
 	EngineID first_engine;
 
+	byte flags;
 	TrackBitsByte track;
 	byte force_proceed;
 	RailTypeByte railtype;
 	RailTypes compatible_railtypes;
-
-	byte flags;
-
-	/* Link between the two ends of a multiheaded engine */
-	Vehicle *other_multiheaded_part;
-
-	/* Cached wagon override spritegroup */
-	const struct SpriteGroup *cached_override;
 };
 
 enum VehicleRailFlags {
@@ -193,32 +193,64 @@ struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
 
 struct Vehicle : PoolItem<Vehicle, VehicleID, &_Vehicle_pool>, BaseVehicle {
-	byte subtype;            // subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
-
 private:
-	Vehicle *next;           // pointer to the next vehicle in the chain
-	Vehicle *previous;       // NOSAVE: pointer to the previous vehicle in the chain
-	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
+	Vehicle *next;           ///< pointer to the next vehicle in the chain
+	Vehicle *previous;       ///< NOSAVE: pointer to the previous vehicle in the chain
+	Vehicle *first;          ///< NOSAVE: pointer to the first vehicle in the chain
 public:
-	friend const SaveLoad *GetVehicleDescription(VehicleType vt); // So we can use private/protected variables in the saveload code
-	friend void AfterLoadVehicles(bool clear_te_id);              // So we can set the previous and first pointers while loading
-	friend bool LoadOldVehicle(LoadgameState *ls, int num);       // So we can set the proper next pointer while loading
+	friend const SaveLoad *GetVehicleDescription(VehicleType vt); ///< So we can use private/protected variables in the saveload code
+	friend void AfterLoadVehicles(bool clear_te_id);              ///< So we can set the previous and first pointers while loading
+	friend bool LoadOldVehicle(LoadgameState *ls, int num);       ///< So we can set the proper next pointer while loading
 
-	Vehicle *depot_list;     // NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
+	Vehicle *depot_list;     ///< NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
 	char *name;              ///< Name of vehicle
 
-	UnitID unitnumber;       // unit number, for display purposes only
-	PlayerByte owner;        // which player owns the vehicle?
+	TileIndex tile;          ///< Current tile index
+	TileIndex dest_tile;     ///< Heading for this tile
 
-	TileIndex tile;          // Current tile index
-	TileIndex dest_tile;     // Heading for this tile
+	Vehicle *next_shared;    ///< If not NULL, this points to the next vehicle that shared the order
+	Vehicle *prev_shared;    ///< If not NULL, this points to the prev vehicle that shared the order
+
+	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
+	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
+	Money value;
+
+	/* Used for timetabling. */
+	uint32 current_order_time;     ///< How many ticks have passed since this order started.
+	int32 lateness_counter;        ///< How many ticks late (or early if negative) this vehicle is.
+
+	/* Boundaries for the current position in the world and a next hash link.
+	 * NOSAVE: All of those can be updated with VehiclePositionChanged() */
+	int32 left_coord;
+	int32 top_coord;
+	int32 right_coord;
+	int32 bottom_coord;
+	Vehicle *next_hash;
+	Vehicle *next_new_hash;
+	Vehicle **old_new_hash;
+
+	SpriteID colormap; // NOSAVE: cached color mapping
+
+	/* Related to age and service time */
+	Year build_year;
+	Date age;     // Age in days
+	Date max_age; // Maximum age
+	Date date_of_last_service;
+	Date service_interval;
+	uint16 reliability;
+	uint16 reliability_spd_dec;
+	byte breakdown_ctr;
+	byte breakdown_delay;
+	byte breakdowns_since_last_service;
+	byte breakdown_chance;
 
 	int32 x_pos;             // coordinates
 	int32 y_pos;
 	byte z_pos;
 	DirectionByte direction; // facing
 
+	PlayerByte owner;        // which player owns the vehicle?
 	byte spritenum;          // currently displayed sprite index
 	                         // 0xfd == custom sprite, 0xfe == custom second head sprite
 	                         // 0xff == reserved for another custom sprite
@@ -231,83 +263,47 @@ public:
 	EngineID engine_type;
 
 	TextEffectID fill_percent_te_id; // a text-effect id to a loading indicator object
+	UnitID unitnumber;       // unit number, for display purposes only
+
+	uint16 max_speed;        ///< maximum speed
+	uint16 cur_speed;        ///< current speed
+	byte subspeed;           ///< fractional speed
+	byte acceleration;       ///< used by train & aircraft
+	uint32 motion_counter;
+	byte progress;
 
 	/* for randomized variational spritegroups
 	 * bitmask used to resolve them; parts of it get reseeded when triggers
 	 * of corresponding spritegroups get matched */
 	byte random_bits;
-	byte waiting_triggers;   // triggers to be yet matched
+	byte waiting_triggers;   ///< triggers to be yet matched
 
-	uint16 max_speed;        // maximum speed
-	uint16 cur_speed;        // current speed
-	byte subspeed;           // fractional speed
-	byte acceleration;       // used by train & aircraft
-	byte progress;
-	uint32 motion_counter;
-
-	byte vehstatus;          // Status
 	StationID last_station_visited;
 
-	CargoID cargo_type;      // type of cargo this vehicle is carrying
-	uint16 cargo_cap;        // total capacity
+	CargoID cargo_type;      ///< type of cargo this vehicle is carrying
 	byte cargo_subtype;      ///< Used for livery refits (NewGRF variations)
+	uint16 cargo_cap;        ///< total capacity
 	CargoList cargo;         ///< The cargo this vehicle is carrying
-
 
 	byte day_counter;        ///< Increased by one for each day
 	byte tick_counter;       ///< Increased by one for each tick
 	byte running_ticks;      ///< Number of ticks this vehicle was not stopped this day
 
-	/* Begin Order-stuff */
-	Order current_order;     ///< The current order (+ status, like: loading)
+	byte vehstatus;                 ///< Status
+	Order current_order;            ///< The current order (+ status, like: loading)
+	VehicleOrderID num_orders;      ///< How many orders there are in the list
 	VehicleOrderID cur_order_index; ///< The index to the current order
 
-	Order *orders;           ///< Pointer to the first order for this vehicle
-	VehicleOrderID num_orders;      ///< How many orders there are in the list
+	Order *orders;                  ///< Pointer to the first order for this vehicle
 
-	Vehicle *next_shared;    ///< If not NULL, this points to the next vehicle that shared the order
-	Vehicle *prev_shared;    ///< If not NULL, this points to the prev vehicle that shared the order
-	/* End Order-stuff */
+	bool leave_depot_instantly;     ///< NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
-	/* Boundaries for the current position in the world and a next hash link.
-	 * NOSAVE: All of those can be updated with VehiclePositionChanged() */
-	int32 left_coord;
-	int32 top_coord;
-	int32 right_coord;
-	int32 bottom_coord;
-	Vehicle *next_hash;
-	Vehicle *next_new_hash;
-	Vehicle **old_new_hash;
-
-	/* Related to age and service time */
-	Date age;     // Age in days
-	Date max_age; // Maximum age
-	Date date_of_last_service;
-	Date service_interval;
-	uint16 reliability;
-	uint16 reliability_spd_dec;
-	byte breakdown_ctr;
-	byte breakdown_delay;
-	byte breakdowns_since_last_service;
-	byte breakdown_chance;
-	Year build_year;
-
-	bool leave_depot_instantly; // NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
-
+	byte vehicle_flags;             ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 	uint16 load_unload_time_rem;
-	byte vehicle_flags;         // Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 
-	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
-	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
-	Money value;
+	GroupID group_id;               ///< Index of group Pool array
 
-	GroupID group_id;              ///< Index of group Pool array
-
-	/* Used for timetabling. */
-	uint32 current_order_time;     ///< How many ticks have passed since this order started.
-	int32 lateness_counter;        ///< How many ticks late (or early if negative) this vehicle is.
-
-	SpriteID colormap; // NOSAVE: cached color mapping
+	byte subtype;                   ///< subtype (Filled with values from EffectVehicles/TrainSubTypes/AircraftSubTypes)
 
 	union {
 		VehicleRail rail;
