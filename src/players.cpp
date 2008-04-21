@@ -1109,7 +1109,8 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDVAR(Player, avail_railtypes,       SLE_UINT8,                   0, 57),
 	    SLE_VAR(Player, block_preview,         SLE_UINT8),
 
-	    SLE_VAR(Player, cargo_types,           SLE_UINT16),
+	SLE_CONDVAR(Player, cargo_types,           SLE_FILE_U16 | SLE_VAR_U32,  0, 93),
+	SLE_CONDVAR(Player, cargo_types,           SLE_UINT32,                 94, SL_MAX_VERSION),
 	SLE_CONDVAR(Player, location_of_house,     SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
 	SLE_CONDVAR(Player, location_of_house,     SLE_UINT32,                  6, SL_MAX_VERSION),
 	SLE_CONDVAR(Player, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),

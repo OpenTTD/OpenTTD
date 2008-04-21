@@ -966,7 +966,7 @@ static const OldChunks player_chunk[] = {
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_I64, Player, bankrupt_value ),
 	OCL_SVAR( OC_UINT16, Player, bankrupt_timeout ),
 
-	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Player, cargo_types ),
+	OCL_SVAR( OC_UINT32, Player, cargo_types ),
 
 	OCL_CHUNK( 3, OldPlayerYearly ),
 	OCL_CHUNK( 1, OldPlayerEconomy ),

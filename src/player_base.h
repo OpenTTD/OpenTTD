@@ -44,7 +44,7 @@ struct Player {
 	byte block_preview;
 	PlayerByte index;
 
-	uint16 cargo_types; ///< which cargo types were transported the last year
+	uint32 cargo_types; ///< which cargo types were transported the last year
 
 	TileIndex location_of_house;
 	TileIndex last_build_coordinate;
