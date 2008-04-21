@@ -69,9 +69,11 @@ bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event)
 	return true;
 }
 
-bool PlayHouseSound(uint16 sound_id, TileIndex tile)
+bool PlayTileSound(const GRFFile *file, uint16 sound_id, TileIndex tile)
 {
-	if (sound_id < GetNumOriginalSounds()) {
+	if (sound_id >= GetNumOriginalSounds()) sound_id += file->sound_offset - GetNumOriginalSounds();
+
+	if (sound_id < GetNumSounds()) {
 		SndPlayTileFx((SoundFx)sound_id, tile);
 		return true;
 	}

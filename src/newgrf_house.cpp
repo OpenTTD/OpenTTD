@@ -430,7 +430,7 @@ void AnimateNewHouseTile(TileIndex tile)
 
 			/* If the lower 7 bits of the upper byte of the callback
 			 * result are not empty, it is a sound effect. */
-			if (GB(callback_res, 8, 7) != 0) PlayHouseSound(GB(callback_res, 8, 7), tile);
+			if (GB(callback_res, 8, 7) != 0) PlayTileSound(hs->grffile, GB(callback_res, 8, 7), tile);
 		}
 	}
 
@@ -450,7 +450,7 @@ void AnimateNewHouseTile(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-void ChangeHouseAnimationFrame(TileIndex tile, uint16 callback_result)
+void ChangeHouseAnimationFrame(const GRFFile *file, TileIndex tile, uint16 callback_result)
 {
 	switch (callback_result & 0xFF) {
 		case 0xFD: /* Do nothing. */         break;
@@ -463,7 +463,7 @@ void ChangeHouseAnimationFrame(TileIndex tile, uint16 callback_result)
 	}
 	/* If the lower 7 bits of the upper byte of the callback
 	 * result are not empty, it is a sound effect. */
-	if (GB(callback_result, 8, 7) != 0) PlayHouseSound(GB(callback_result, 8, 7), tile);
+	if (GB(callback_result, 8, 7) != 0) PlayTileSound(file, GB(callback_result, 8, 7), tile);
 }
 
 bool CanDeleteHouse(TileIndex tile)
@@ -491,7 +491,7 @@ static void AnimationControl(TileIndex tile, uint16 random_bits)
 		uint32 param = (hs->extra_flags & SYNCHRONISED_CALLBACK_1B) ? (GB(Random(), 0, 16) | random_bits << 16) : Random();
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_ANIMATION_START_STOP, param, 0, GetHouseType(tile), GetTownByTile(tile), tile);
 
-		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
+		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grffile, tile, callback_res);
 	}
 }
 

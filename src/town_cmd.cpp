@@ -381,16 +381,18 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	IncHouseConstructionTick(tile);
 	if (GetHouseConstructionTick(tile) != 0) return;
 
+	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+
 	/* Check and/or  */
-	if (HasBit(GetHouseSpecs(GetHouseType(tile))->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
+	if (HasBit(hs->callback_mask, CBM_HOUSE_CONSTRUCTION_STATE_CHANGE)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_CONSTRUCTION_STATE_CHANGE, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
-		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(tile, callback_res);
+		if (callback_res != CALLBACK_FAILED) ChangeHouseAnimationFrame(hs->grffile, tile, callback_res);
 	}
 
 	if (IsHouseCompleted(tile)) {
 		/* Now that construction is complete, we can add the population of the
 		 * building to the town. */
-		ChangePopulation(GetTownByTile(tile), GetHouseSpecs(GetHouseType(tile))->population);
+		ChangePopulation(GetTownByTile(tile), hs->population);
 		SetHouseConstructionYear(tile, _cur_year);
 	}
 	MarkTileDirtyByTile(tile);

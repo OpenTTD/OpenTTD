@@ -15,6 +15,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
+#include "newgrf_sound.h"
 #include "newgrf_text.h"
 #include "industry_map.h"
 #include "clear_map.h"
@@ -337,6 +338,10 @@ void AnimateNewIndustryTile(TileIndex tile)
 					frame = callback_res & 0xFF;
 					break;
 			}
+
+			/* If the lower 7 bits of the upper byte of the callback
+			 * result are not empty, it is a sound effect. */
+			if (GB(callback_res, 8, 7) != 0) PlayTileSound(itspec->grf_prop.grffile, GB(callback_res, 8, 7), tile);
 		}
 	}
 
@@ -356,7 +361,7 @@ void AnimateNewIndustryTile(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-static void ChangeIndustryTileAnimationFrame(TileIndex tile, IndustryAnimationTrigger iat, uint32 random_bits, IndustryGfx gfx, Industry *ind)
+static void ChangeIndustryTileAnimationFrame(const IndustryTileSpec *itspec, TileIndex tile, IndustryAnimationTrigger iat, uint32 random_bits, IndustryGfx gfx, Industry *ind)
 {
 	uint16 callback_res = GetIndustryTileCallback(CBID_INDTILE_ANIM_START_STOP, random_bits, iat, gfx, ind, tile);
 	if (callback_res == CALLBACK_FAILED) return;
@@ -370,6 +375,10 @@ static void ChangeIndustryTileAnimationFrame(TileIndex tile, IndustryAnimationTr
 			AddAnimatedTile(tile);
 			break;
 	}
+
+	/* If the lower 7 bits of the upper byte of the callback
+	 * result are not empty, it is a sound effect. */
+	if (GB(callback_res, 8, 7) != 0) PlayTileSound(itspec->grf_prop.grffile, GB(callback_res, 8, 7), tile);
 }
 
 bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat, uint32 random)
@@ -380,7 +389,7 @@ bool StartStopIndustryTileAnimation(TileIndex tile, IndustryAnimationTrigger iat
 	if (!HasBit(itspec->animation_triggers, iat)) return false;
 
 	Industry *ind = GetIndustryByTile(tile);
-	ChangeIndustryTileAnimationFrame(tile, iat, random, gfx, ind);
+	ChangeIndustryTileAnimationFrame(itspec, tile, iat, random, gfx, ind);
 	return true;
 }
 

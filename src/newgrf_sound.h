@@ -26,6 +26,6 @@ void InitializeSoundPool();
 FileEntry *GetSound(uint index);
 uint GetNumSounds();
 bool PlayVehicleSound(const Vehicle *v, VehicleSoundEvent event);
-bool PlayHouseSound(uint16 sound_id, TileIndex tile);
+bool PlayTileSound(const struct GRFFile *file, uint16 sound_id, TileIndex tile);
 
 #endif /* NEWGRF_SOUND_H */

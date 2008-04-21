@@ -16,6 +16,7 @@
 #include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_sound.h"
 #include "cargotype.h"
 #include "town_map.h"
 #include "newgrf_town.h"
@@ -901,6 +902,10 @@ void AnimateStationTile(TileIndex tile)
 					frame = callback & 0xFF;
 					break;
 			}
+
+			/* If the lower 7 bits of the upper byte of the callback
+			 * result are not empty, it is a sound effect. */
+			if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grffile, GB(callback, 8, 7), tile);
 		}
 	}
 
@@ -935,6 +940,10 @@ static void ChangeStationAnimationFrame(const StationSpec *ss, const Station *st
 			AddAnimatedTile(tile);
 			break;
 	}
+
+	/* If the lower 7 bits of the upper byte of the callback
+	 * result are not empty, it is a sound effect. */
+	if (GB(callback, 8, 7) != 0) PlayTileSound(ss->grffile, GB(callback, 8, 7), tile);
 }
 
 enum TriggerArea {

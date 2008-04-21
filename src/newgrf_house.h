@@ -36,7 +36,7 @@ void DecreaseBuildingCount(Town *t, HouseID house_id);
 
 void DrawNewHouseTile(TileInfo *ti, HouseID house_id);
 void AnimateNewHouseTile(TileIndex tile);
-void ChangeHouseAnimationFrame(TileIndex tile, uint16 callback_result);
+void ChangeHouseAnimationFrame(const struct GRFFile *file, TileIndex tile, uint16 callback_result);
 
 uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile);
 
