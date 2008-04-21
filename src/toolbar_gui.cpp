@@ -1417,8 +1417,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 
 Window *AllocateToolbar()
 {
-	/* Clean old GUI values */
-	_last_built_railtype = RAILTYPE_RAIL;
+	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
 	_last_built_roadtype = ROADTYPE_ROAD;
 
 	Window *w = AllocateWindowDesc((_game_mode != GM_EDITOR) ? &_toolb_normal_desc : &_toolb_scen_desc);
