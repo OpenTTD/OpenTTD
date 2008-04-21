@@ -25,7 +25,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 	uint i;
 	for (i = 1; i < MAX_UVALUE(EngineID); i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, v);
-		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
+		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 	}
 
 	delete v;
@@ -52,7 +52,7 @@ uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 
 	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
-		if (callback == CALLBACK_FAILED || callback == 0xFF) break;
+		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 
 		EngineID artic_engine = GetFirstEngineOfType(type) + GB(callback, 0, 7);
 
@@ -78,7 +78,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);
-		if (callback == CALLBACK_FAILED || callback == 0xFF) return;
+		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return;
 
 		/* Attempt to use pre-allocated vehicles until they run out. This can happen
 		 * if the callback returns different values depending on the cargo type. */

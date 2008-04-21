@@ -527,7 +527,7 @@ bool NewHouseTileLoop(TileIndex tile)
 	/* Check callback 21, which determines if a house should be destroyed. */
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DESTRUCTION)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DESTRUCTION, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);
-		if (callback_res != CALLBACK_FAILED && callback_res > 0) {
+		if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) > 0) {
 			ClearTownHouse(GetTownByTile(tile), tile);
 			return false;
 		}

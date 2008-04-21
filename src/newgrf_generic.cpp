@@ -176,5 +176,7 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 	object.u.generic.count             = count;
 	object.u.generic.station_size      = station_size;
 
-	return GetGenericCallbackResult(feature, &object, file);
+	uint16 callback = GetGenericCallbackResult(feature, &object, file);
+	if (callback != CALLBACK_FAILED) callback = GB(callback, 0, 8);
+	return callback;
 }

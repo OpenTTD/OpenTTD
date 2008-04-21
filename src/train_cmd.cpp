@@ -240,7 +240,7 @@ void TrainConsistChanged(Vehicle *v)
 			if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
 				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
-				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
+				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = GB(callback, 0, 8);
 			}
 
 			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
