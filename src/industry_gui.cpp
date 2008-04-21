@@ -78,8 +78,8 @@ static StringID GetCargoSuffix(uint cargo, Industry *ind, IndustryType ind_type,
 {
 	if (HasBit(indspec->callback_flags, CBM_IND_CARGO_SUFFIX)) {
 		bool fund = ind == NULL;
-		uint8 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, ((!fund) ? 1 << 8 : 0) | cargo, ind, ind_type, (!fund) ? ind->xy : INVALID_TILE);
-		if (callback != 0xFF) return GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback);
+		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, ((!fund) ? 1 << 8 : 0) | cargo, ind, ind_type, (!fund) ? ind->xy : INVALID_TILE);
+		if (GB(callback, 0, 8) != 0xFF) return GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback);
 	}
 	return STR_EMPTY;
 }
