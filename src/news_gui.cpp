@@ -16,6 +16,7 @@
 #include "sound_func.h"
 #include "string_func.h"
 #include "widgets/dropdown_func.h"
+#include "map_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -45,8 +46,6 @@
  * \endverbatim
  */
 
-/** Number of news items in the FIFO queue */
-#define MAX_NEWS 30
 #define NB_WIDG_PER_SETTING 4
 
 typedef byte NewsID;
@@ -54,7 +53,8 @@ typedef byte NewsID;
 
 NewsItem _statusbar_news_item;
 bool _news_ticker_sound;
-static NewsItem _news_items[MAX_NEWS];      ///< The news FIFO queue
+static NewsItem *_news_items = NULL;        ///< The news FIFO queue
+static uint _max_news_items = 0;            ///< size of news FIFO queue
 static NewsID _current_news = INVALID_NEWS; ///< points to news item that should be shown next
 static NewsID _oldest_news = 0;             ///< points to first item in fifo queue
 static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
@@ -75,7 +75,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
  * _forced_news. Otherwise, \a _forced_news variable is INVALID_NEWS. */
 static NewsID _forced_news = INVALID_NEWS;
 
-static byte _total_news = 0; ///< Number of news items in FIFO queue @see _news_items
+static uint _total_news = 0; ///< Number of news items in FIFO queue @see _news_items
 
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
 void DrawNewsBankrupcy(Window *w, const NewsItem *ni);
@@ -98,7 +98,9 @@ GetNewsStringCallbackProc * const _get_news_string_callback[] = {
 /** Initialize the news-items data structures */
 void InitNewsItemStructs()
 {
-	memset(_news_items, 0, sizeof(_news_items));
+	free(_news_items);
+	_max_news_items = max(ScaleByMapSize(30), 30U);
+	_news_items = CallocT<NewsItem>(_max_news_items);
 	_current_news = INVALID_NEWS;
 	_oldest_news = 0;
 	_latest_news = INVALID_NEWS;
@@ -245,7 +247,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 static inline NewsID IncreaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
-	return (i + 1) % MAX_NEWS;
+	return (i + 1) % _max_news_items;
 }
 
 /**
@@ -255,7 +257,7 @@ static inline NewsID IncreaseIndex(NewsID i)
 static inline NewsID DecreaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
-	return (i + MAX_NEWS - 1) % MAX_NEWS;
+	return (i + _max_news_items - 1) % _max_news_items;
 }
 
 /**
@@ -287,11 +289,11 @@ void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsTyp
 	if (_game_mode == GM_MENU) return;
 
 	/* check the rare case that the oldest (to be overwritten) news item is open */
-	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news)) {
+	if (_total_news == _max_news_items && (_oldest_news == _current_news || _oldest_news == _forced_news)) {
 		MoveToNextItem();
 	}
 
-	if (_total_news < MAX_NEWS) _total_news++;
+	if (_total_news < _max_news_items) _total_news++;
 
 	/* Increase _latest_news. If we have no news yet, use _oldest news as an
 	 * index. We cannot use 0 as _oldest_news can jump around due to
@@ -301,7 +303,7 @@ void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsTyp
 
 	/* If the fifo-buffer is full, overwrite the oldest entry */
 	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
-		assert(_total_news == MAX_NEWS);
+		assert(_total_news == _max_news_items);
 		_oldest_news = IncreaseIndex(_oldest_news);
 	}
 
@@ -467,7 +469,7 @@ static bool ReadyForNextItem()
 {
 	NewsID item = (_forced_news == INVALID_NEWS) ? _current_news : _forced_news;
 
-	if (item >= MAX_NEWS) return true;
+	if (item >= _max_news_items) return true;
 	NewsItem *ni = &_news_items[item];
 
 	/* Ticker message
@@ -575,12 +577,12 @@ static NewsID getNews(NewsID i)
 	if (i >= _total_news) return INVALID_NEWS;
 
 	if (_latest_news < i) {
-		i = _latest_news + MAX_NEWS - i;
+		i = _latest_news + _max_news_items - i;
 	} else {
 		i = _latest_news - i;
 	}
 
-	i %= MAX_NEWS;
+	i %= _max_news_items;
 	return i;
 }
 
