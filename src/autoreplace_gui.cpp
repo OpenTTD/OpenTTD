@@ -51,16 +51,20 @@ static const StringID _rail_types_list[] = {
 };
 
 enum ReplaceVehicleWindowWidgets {
-	RVW_WIDGET_LEFT_DETAILS = 3,
-	RVW_WIDGET_START_REPLACE,
-	RVW_WIDGET_INFO_TAB,
-	RVW_WIDGET_STOP_REPLACE,
-	RVW_WIDGET_LEFT_MATRIX,
+	RVW_WIDGET_LEFT_MATRIX = 3,
 	RVW_WIDGET_LEFT_SCROLLBAR,
 	RVW_WIDGET_RIGHT_MATRIX,
 	RVW_WIDGET_RIGHT_SCROLLBAR,
+	RVW_WIDGET_LEFT_DETAILS,
 	RVW_WIDGET_RIGHT_DETAILS,
 
+	/* Button row */
+	RVW_WIDGET_START_REPLACE,
+	RVW_WIDGET_INFO_TAB,
+	RVW_WIDGET_STOP_REPLACE,
+	RVW_WIDGET_RESIZE,
+
+	/* Train only widgets */
 	RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
 	RVW_WIDGET_TRAIN_FLUFF_LEFT,
 	RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
@@ -258,7 +262,7 @@ static void GenerateLists(Window *w)
 }
 
 
-void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, bool show_count, GroupID selected_group);
+void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
 
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
@@ -354,7 +358,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, EngList_Count(&list));
 
 				/* Do the actual drawing */
-				DrawEngineList((VehicleType)w->window_number, w->widget[widget].left + 2, w->widget[widget].top + 1, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0, selected_group);
+				DrawEngineList((VehicleType)w->window_number, w->widget[widget].left + 2, w->widget[widget].top + 1, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0 ? w->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
 
 				/* Also draw the details if an engine is selected */
 				if (WP(w, replaceveh_d).sel_engine[i] != INVALID_ENGINE) {
@@ -439,12 +443,29 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_RESIZE:
+		{
 			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
 			w->vscroll2.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 
-			w->widget[RVW_WIDGET_LEFT_MATRIX].data  = (w->vscroll.cap  << 8) + 1;
-			w->widget[RVW_WIDGET_RIGHT_MATRIX].data = (w->vscroll2.cap << 8) + 1;
-			break;
+			Widget *widget = w->widget;
+
+			widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (w->vscroll2.cap << 8) + 1;
+
+			if (e->we.sizing.diff.x != 0) {
+				/* We changed the width of the window so we have to resize the lists.
+				 * Because ResizeButtons() makes each widget the same size it can't be used on the lists
+				 * because then the lists would have the same size as the scrollbars.
+				 * Instead we use it on the detail panels.
+				 * Afterwards we use the new location of the detail panels (the middle of the window)
+				 * to place the lists.
+				 * This way the lists will have equal size while keeping the width of the scrollbars unchanged. */
+				ResizeButtons(w, RVW_WIDGET_LEFT_DETAILS, RVW_WIDGET_RIGHT_DETAILS);
+				widget[RVW_WIDGET_RIGHT_MATRIX].left    = widget[RVW_WIDGET_RIGHT_DETAILS].left;
+				widget[RVW_WIDGET_LEFT_SCROLLBAR].right = widget[RVW_WIDGET_LEFT_DETAILS].right;
+				widget[RVW_WIDGET_LEFT_SCROLLBAR].left  = widget[RVW_WIDGET_LEFT_SCROLLBAR].right - 11;
+				widget[RVW_WIDGET_LEFT_MATRIX].right    = widget[RVW_WIDGET_LEFT_SCROLLBAR].left - 1;
+			}
+		} break;
 
 		case WE_INVALIDATE_DATA:
 			if (_rebuild_left_list) WP(w, replaceveh_d).update_left = true;
@@ -459,115 +480,91 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static const Widget _replace_rail_vehicle_widgets[] = {
+static const Widget _replace_vehicle_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   227, 0x0,                             STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   240,   251, STR_REPLACE_VEHICLES_START,      STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   316,   228,   239, 0x0,                             STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   240,   251, STR_REPLACE_VEHICLES_STOP,       STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,                           STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   443,    14,   125, 0x801,                           STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   125, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   227, 0x0,                             STR_NULL},
-// train specific stuff
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   228,   239, STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP},  // widget 12
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   240,   251, 0x0,                             STR_NULL},
-{   WWT_DROPDOWN,     RESIZE_TB,    14,   154,   289,   240,   251, 0x0,                             STR_REPLACE_HELP_RAILTYPE},
-{      WWT_PANEL,     RESIZE_TB,    14,   290,   305,   240,   251, 0x0,                             STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   317,   455,   228,   239, STR_REPLACE_REMOVE_WAGON,        STR_REPLACE_REMOVE_WAGON_HELP},
-// end of train specific stuff
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   240,   251, STR_NULL,                        STR_RESIZE_BUTTON},
-{   WIDGETS_END},
-};
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},
 
-static const Widget _replace_road_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, STR_NULL,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   217, 0x0,                         STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   218,   229, STR_REPLACE_VEHICLES_START,  STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   305,   218,   229, 0x0,                         STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   218,   229, STR_REPLACE_VEHICLES_STOP,   STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,                       STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   443,    14,   125, 0x801,                       STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   125, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   217, 0x0,                         STR_NULL},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   218,   229, STR_NULL,                    STR_RESIZE_BUTTON},
-{   WIDGETS_END},
-};
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,    13, 0x1,                             STR_REPLACE_HELP_LEFT_ARRAY},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX,    RESIZE_LRB,    14,   228,   443,    14,    13, 0x1,                             STR_REPLACE_HELP_RIGHT_ARRAY},
+{ WWT_SCROLL2BAR,    RESIZE_LRB,    14,   444,   455,    14,    13, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,    14,   105, 0x0,                             STR_NULL},
+{      WWT_PANEL,    RESIZE_RTB,    14,   228,   455,    14,   105, 0x0,                             STR_NULL},
 
-static const Widget _replace_ship_aircraft_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, STR_NULL,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   110,   201, 0x0,                         STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   202,   213, STR_REPLACE_VEHICLES_START,  STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   305,   202,   213, 0x0,                         STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   202,   213, STR_REPLACE_VEHICLES_STOP,   STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   109, 0x401,                       STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   109, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   443,    14,   109, 0x401,                       STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   109, STR_NULL,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   110,   201, 0x0,                         STR_NULL},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   202,   213, STR_NULL,                    STR_RESIZE_BUTTON},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   106,   117, STR_REPLACE_VEHICLES_START,      STR_REPLACE_HELP_START_BUTTON},
+{      WWT_PANEL,    RESIZE_RTB,    14,   139,   305,   106,   117, 0x0,                             STR_REPLACE_HELP_REPLACE_INFO_TAB},
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   306,   443,   106,   117, STR_REPLACE_VEHICLES_STOP,       STR_REPLACE_HELP_STOP_BUTTON},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   444,   455,   106,   117, STR_NULL,                        STR_RESIZE_BUTTON},
+
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   128,   139, STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP},
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   128,   139, 0x0,                             STR_NULL},
+{   WWT_DROPDOWN,    RESIZE_RTB,    14,   154,   289,   128,   139, 0x0,                             STR_REPLACE_HELP_RAILTYPE},
+{      WWT_PANEL,   RESIZE_LRTB,    14,   290,   305,   128,   139, 0x0,                             STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   306,   443,   128,   139, STR_REPLACE_REMOVE_WAGON,        STR_REPLACE_REMOVE_WAGON_HELP},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _replace_rail_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 456, 252, 456, 252,
+	WDP_AUTO, WDP_AUTO, 456, 140, 456, 140,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_replace_rail_vehicle_widgets,
+	_replace_vehicle_widgets,
 	ReplaceVehicleWndProc
 };
 
-static const WindowDesc _replace_road_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 456, 230, 456, 230,
+static const WindowDesc _replace_vehicle_desc = {
+	WDP_AUTO, WDP_AUTO, 456, 118, 456, 118,
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_replace_road_vehicle_widgets,
-	ReplaceVehicleWndProc
-};
-
-static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 456, 214, 456, 214,
-	WC_REPLACE_VEHICLE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_replace_ship_aircraft_vehicle_widgets,
+	_replace_vehicle_widgets,
 	ReplaceVehicleWndProc
 };
 
 
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
-	Window *w;
-
 	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
+	Window *w = vehicletype == VEH_TRAIN ? AllocateWindowDescFront(&_replace_rail_vehicle_desc, VEH_TRAIN)
+										 : AllocateWindowDescFront(&_replace_vehicle_desc, vehicletype);
 
-	switch (vehicletype) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:
-			w = AllocateWindowDescFront(&_replace_rail_vehicle_desc, vehicletype);
-			w->vscroll.cap  = 8;
-			w->resize.step_height = 14;
-			WP(w, replaceveh_d).wagon_btnstate = true;
-			break;
-		case VEH_ROAD:
-			w = AllocateWindowDescFront(&_replace_road_vehicle_desc, vehicletype);
-			w->vscroll.cap  = 8;
-			w->resize.step_height = 14;
-			break;
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront(&_replace_ship_aircraft_vehicle_desc, vehicletype);
-			w->vscroll.cap  = 4;
-			w->resize.step_height = 24;
-			break;
+	w->resize.step_height = GetVehicleListHeight(vehicletype);
+	w->vscroll.cap = w->resize.step_height == 14 ? 8 : 4;
+
+	Widget *widget = w->widget;
+	widget[RVW_WIDGET_LEFT_MATRIX].data = widget[RVW_WIDGET_RIGHT_MATRIX].data = (w->vscroll.cap << 8) + 1;
+
+	if (vehicletype == VEH_TRAIN) {
+		WP(w, replaceveh_d).wagon_btnstate = true;
+		/* The train window is bigger so we will move some of the widgets to fit the new size.
+		 * We will start by moving the resize button to the lower right corner.                 */
+		widget[RVW_WIDGET_RESIZE].top         = widget[RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE].top;
+		widget[RVW_WIDGET_RESIZE].bottom      = widget[RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE].bottom;
+		widget[RVW_WIDGET_STOP_REPLACE].right = widget[RVW_WIDGET_RESIZE].right;
+
+		/* The detail panel is one line taller for trains so we will move some of the widgets one line (10 pixels) down. */
+		widget[RVW_WIDGET_LEFT_DETAILS].bottom  += 10;
+		widget[RVW_WIDGET_RIGHT_DETAILS].bottom += 10;
+		for (int i = RVW_WIDGET_START_REPLACE; i < RVW_WIDGET_RESIZE; i++) {
+			widget[i].top    += 10;
+			widget[i].bottom += 10;
+		}
+	} else {
+		/* Since it's not a train we will hide the train only widgets. */
+		w->SetWidgetsHiddenState(true,
+								 RVW_WIDGET_TRAIN_ENGINEWAGON_TOGGLE,
+								 RVW_WIDGET_TRAIN_FLUFF_LEFT,
+								 RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN,
+								 RVW_WIDGET_TRAIN_FLUFF_RIGHT,
+								 RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
+								 WIDGET_LIST_END);
 	}
+
+	ResizeWindow(w, 0, w->resize.step_height * w->vscroll.cap);
+
+	/* Set the minimum window size to the current window size */
+	w->resize.width  = w->width;
+	w->resize.height = w->height;
 
 	w->caption_color = _local_player;
 	WP(w, replaceveh_d).sel_group = id_g;
