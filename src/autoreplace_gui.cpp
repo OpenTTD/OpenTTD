@@ -460,26 +460,26 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _replace_rail_vehicle_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, STR_NULL,       STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   227, 0x0,            STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   240,   251, STR_REPLACE_VEHICLES_START, STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   316,   228,   239, 0x0,            STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   240,   251, STR_REPLACE_VEHICLES_STOP,  STR_REPLACE_HELP_STOP_BUTTON},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,          STR_REPLACE_HELP_LEFT_ARRAY},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, STR_NULL,       STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   443,    14,   125, 0x801,          STR_REPLACE_HELP_RIGHT_ARRAY},
-{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   125, STR_NULL,       STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   227, 0x0,            STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, STR_NULL,                        STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   227, 0x0,                             STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   240,   251, STR_REPLACE_VEHICLES_START,      STR_REPLACE_HELP_START_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   316,   228,   239, 0x0,                             STR_REPLACE_HELP_REPLACE_INFO_TAB},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   240,   251, STR_REPLACE_VEHICLES_STOP,       STR_REPLACE_HELP_STOP_BUTTON},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,                           STR_REPLACE_HELP_LEFT_ARRAY},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   443,    14,   125, 0x801,                           STR_REPLACE_HELP_RIGHT_ARRAY},
+{ WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   125, STR_NULL,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   126,   227, 0x0,                             STR_NULL},
 // train specific stuff
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   228,   239, STR_REPLACE_ENGINE_WAGON_SELECT,       STR_REPLACE_ENGINE_WAGON_SELECT_HELP},  // widget 12
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   240,   251, 0x0,            STR_NULL},
-{   WWT_DROPDOWN,     RESIZE_TB,    14,   154,   289,   240,   251, 0x0,            STR_REPLACE_HELP_RAILTYPE},
-{      WWT_PANEL,     RESIZE_TB,    14,   290,   305,   240,   251, 0x0,            STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   317,   455,   228,   239, STR_REPLACE_REMOVE_WAGON,       STR_REPLACE_REMOVE_WAGON_HELP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   228,   239, STR_REPLACE_ENGINE_WAGON_SELECT, STR_REPLACE_ENGINE_WAGON_SELECT_HELP},  // widget 12
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   153,   240,   251, 0x0,                             STR_NULL},
+{   WWT_DROPDOWN,     RESIZE_TB,    14,   154,   289,   240,   251, 0x0,                             STR_REPLACE_HELP_RAILTYPE},
+{      WWT_PANEL,     RESIZE_TB,    14,   290,   305,   240,   251, 0x0,                             STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   317,   455,   228,   239, STR_REPLACE_REMOVE_WAGON,        STR_REPLACE_REMOVE_WAGON_HELP},
 // end of train specific stuff
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   240,   251, STR_NULL,       STR_RESIZE_BUTTON},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   240,   251, STR_NULL,                        STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
