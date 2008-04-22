@@ -115,8 +115,13 @@ enum {
 	MAX_STATIONS = 256,
 };
 
-static uint16 cargo_allowed[TOTAL_NUM_ENGINES];
-static uint16 cargo_disallowed[TOTAL_NUM_ENGINES];
+/* Temporary data used when loading only */
+struct GRFTempEngineData {
+	uint16 cargo_allowed;
+	uint16 cargo_disallowed;
+};
+
+static GRFTempEngineData *_gted;
 
 /* Contains the GRF ID of the owner of a vehicle if it has been reserved */
 static uint32 _grm_engines[TOTAL_NUM_ENGINES];
@@ -573,11 +578,11 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x28: // Cargo classes allowed
-				cargo_allowed[engine + i] = grf_load_word(&buf);
+				_gted[engine + i].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x29: // Cargo classes disallowed
-				cargo_disallowed[engine + i] = grf_load_word(&buf);
+				_gted[engine + i].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x2A: // Long format introduction date (days since year 0)
@@ -703,11 +708,11 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x1D: // Cargo classes allowed
-				cargo_allowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+				_gted[ROAD_ENGINES_INDEX + engine + i].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x1E: // Cargo classes disallowed
-				cargo_disallowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+				_gted[ROAD_ENGINES_INDEX + engine + i].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x1F: // Long format introduction date (days since year 0)
@@ -809,11 +814,11 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x18: // Cargo classes allowed
-				cargo_allowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+				_gted[SHIP_ENGINES_INDEX + engine + i].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				cargo_disallowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+				_gted[SHIP_ENGINES_INDEX + engine + i].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -913,11 +918,11 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				break;
 
 			case 0x18: // Cargo classes allowed
-				cargo_allowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+				_gted[AIRCRAFT_ENGINES_INDEX + engine + i].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				cargo_disallowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+				_gted[AIRCRAFT_ENGINES_INDEX + engine + i].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -5218,9 +5223,8 @@ static void ResetNewGRFData()
 	/* Copy/reset original bridge info data */
 	ResetBridges();
 
-	/* Reset refit/cargo class data */
-	memset(&cargo_allowed, 0, sizeof(cargo_allowed));
-	memset(&cargo_disallowed, 0, sizeof(cargo_disallowed));
+	/* Allocate temporary refit/cargo class data */
+	_gted = CallocT<GRFTempEngineData>(TOTAL_NUM_ENGINES);
 
 	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));
@@ -5423,12 +5427,12 @@ static void CalculateRefitMasks()
 			}
 		}
 
-		if (cargo_allowed[engine] != 0) {
+		if (_gted[engine].cargo_allowed != 0) {
 			/* Build up the list of cargo types from the set cargo classes. */
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
 				const CargoSpec *cs = GetCargo(i);
-				if (cargo_allowed[engine]    & cs->classes) SetBit(mask,     i);
-				if (cargo_disallowed[engine] & cs->classes) SetBit(not_mask, i);
+				if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     i);
+				if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, i);
 			}
 		} else {
 			/* Don't apply default refit mask to wagons or engines with no capacity */
@@ -5849,6 +5853,9 @@ static void AfterLoadGRFs()
 
 	/* Load old shore sprites in new position, if they were replaced by ActionA */
 	ActivateOldShore();
+
+	/* Deallocate temporary loading data */
+	free(_gted);
 }
 
 void LoadNewGRF(uint load_index, uint file_index)
