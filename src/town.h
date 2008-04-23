@@ -124,7 +124,6 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	PlayerByte exclusivity;      ///< which player has exslusivity
 	uint8 exclusive_counter;     ///< months till the exclusivity expires
 	int16 ratings[MAX_PLAYERS];
-	int16 test_rating;
 
 	/* Maximum amount of passengers and mail that can be transported. */
 	uint32 max_pass;
