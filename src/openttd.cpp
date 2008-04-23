@@ -2415,13 +2415,13 @@ bool AfterLoadGame()
 		}
 
 		/* Convert old PF settings to new */
-		if (_patches.yapf.rail_use_yapf) {
+		if (_patches.yapf.rail_use_yapf || CheckSavegameVersion(28)) {
 			_patches.pathfinder_for_trains = VPF_YAPF;
 		} else {
 			_patches.pathfinder_for_trains = (_patches.new_pathfinding_all ? VPF_NPF : VPF_NTP);
 		}
 
-		if (_patches.yapf.road_use_yapf) {
+		if (_patches.yapf.road_use_yapf || CheckSavegameVersion(28)) {
 			_patches.pathfinder_for_roadvehs = VPF_YAPF;
 		} else {
 			_patches.pathfinder_for_roadvehs = (_patches.new_pathfinding_all ? VPF_NPF : VPF_OPF);
