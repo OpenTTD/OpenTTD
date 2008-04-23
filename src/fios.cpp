@@ -111,11 +111,15 @@ char *FiosBrowseTo(const FiosItem *item)
 	char *path = _fios_path;
 
 	switch (item->type) {
+		case FIOS_TYPE_DRIVE:
 #if defined(WINCE)
-		case FIOS_TYPE_DRIVE: sprintf(path, PATHSEP ""); break;
+			sprintf(path, PATHSEP "");
 #elif defined(WIN32) || defined(__OS2__)
-		case FIOS_TYPE_DRIVE: sprintf(path, "%c:" PATHSEP, item->title[0]); break;
+			sprintf(path, "%c:" PATHSEP, item->title[0]);
 #endif
+		/* Fallthrough */
+		case FIOS_TYPE_INVALID:
+			break;
 
 		case FIOS_TYPE_PARENT: {
 			/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
@@ -152,10 +156,6 @@ char *FiosBrowseTo(const FiosItem *item)
 			snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
 			return str_buffr;
 		}
-
-		case FIOS_TYPE_DRIVE:
-		case FIOS_TYPE_INVALID:
-			break;
 	}
 
 	return NULL;
