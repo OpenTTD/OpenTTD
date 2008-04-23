@@ -43,6 +43,7 @@
 #include "station_map.h"
 #include "water_map.h"
 #include "functions.h"
+#include "oldpool_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

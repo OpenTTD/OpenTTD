@@ -37,6 +37,7 @@
 #include "cheat_func.h"
 #include "functions.h"
 #include "effectvehicle_func.h"
+#include "oldpool_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

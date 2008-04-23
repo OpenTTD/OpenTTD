@@ -516,8 +516,6 @@ water_map.h
 
 # Misc
 misc/array.hpp
-misc/autocopyptr.hpp
-misc/autoptr.hpp
 misc/binaryheap.hpp
 misc/blob.hpp
 misc/countedobj.cpp

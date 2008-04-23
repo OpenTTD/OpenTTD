@@ -2276,14 +2276,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\misc\autocopyptr.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\misc\autoptr.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\misc\binaryheap.hpp"
 				>
 			</File>

@@ -676,7 +676,7 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 {
 	uint i;
 
-	if (statspec == NULL) return 0;
+	if (statspec == NULL || st == NULL) return 0;
 
 	/* Check if this spec has already been allocated */
 	for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
