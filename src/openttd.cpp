@@ -968,6 +968,54 @@ void StateGameLoop()
 		CallWindowTickEvent();
 		NewsLoop();
 	} else {
+#ifdef DEBUG_DUMP_COMMANDS
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v != v->First()) continue;
+
+			switch (v->type) {
+				case VEH_ROAD: {
+					extern byte GetRoadVehLength(const Vehicle *v);
+					if (GetRoadVehLength(v) != v->u.road.cached_veh_length) {
+						printf("cache mismatch: vehicle %i, player %i, unit number %i wagon %i\n", v->index, (int)v->owner, v->unitnumberlength);
+					}
+				} break;
+
+				case VEH_TRAIN: {
+					uint length = 0;
+					for (Vehicle *u = v; u != NULL; u = u->Next()) length++;
+
+					VehicleRail *wagons = MallocT<VehicleRail>(length);
+					length = 0;
+					for (Vehicle *u = v; u != NULL; u = u->Next()) wagons[length++] = u->u.rail;
+
+					TrainConsistChanged(v);
+
+					length = 0;
+					for (Vehicle *u = v; u != NULL; u = u->Next()) {
+						if (memcmp(&wagons[length], &u->u.rail, sizeof(VehicleRail)) != 0) {
+							printf("cache mismatch: vehicle %i, player %i, unit number %i wagon %i\n", v->index, (int)v->owner, v->unitnumberlength);
+						}
+						length++;
+					}
+
+					free(wagons);
+				} break;
+
+				case VEH_AIRCRAFT: {
+					uint speed = v->u.air.cached_max_speed;
+					UpdateAircraftCache(v);
+					if (speed != v->u.air.cached_max_speed) {
+						printf("cache mismatch: vehicle %i, player %i, unit number %i wagon %i\n", v->index, (int)v->owner, v->unitnumberlength);
+					}
+				} break;
+
+				default:
+					break;
+			}
+		}
+#endif
+
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
 		PlayerID p = _current_player;
