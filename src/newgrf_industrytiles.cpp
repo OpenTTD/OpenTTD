@@ -417,6 +417,8 @@ static void DoTriggerIndustryTile(TileIndex tile, IndustryTileTrigger trigger, I
 	IndustryGfx gfx = GetIndustryGfx(tile);
 	const IndustryTileSpec *itspec = GetIndustryTileSpec(gfx);
 
+	if (itspec->grf_prop.spritegroup == NULL) return;
+
 	NewIndustryTileResolver(&object, gfx, tile, ind);
 
 	object.callback = CBID_RANDOM_TRIGGER;

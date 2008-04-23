@@ -1033,6 +1033,9 @@ static void ProduceIndustryGoods(Industry *i)
 
 			if (cut) ChopLumberMillTrees(i);
 		}
+
+		TriggerIndustry(i, INDUSTRY_TRIGGER_INDUSTRY_TICK);
+		StartStopIndustryTileAnimation(i, IAT_INDUSTRY_TICK);
 	}
 }
 
@@ -1054,8 +1057,6 @@ void OnTick_Industry()
 	if (_game_mode == GM_EDITOR) return;
 
 	FOR_ALL_INDUSTRIES(i) {
-		TriggerIndustry(i, INDUSTRY_TRIGGER_INDUSTRY_TICK);
-		StartStopIndustryTileAnimation(i, IAT_INDUSTRY_TICK);
 		ProduceIndustryGoods(i);
 	}
 }

@@ -547,6 +547,8 @@ static void DoTriggerHouse(TileIndex tile, HouseTrigger trigger, byte base_rando
 	HouseID hid = GetHouseType(tile);
 	HouseSpec *hs = GetHouseSpecs(hid);
 
+	if (hs->spritegroup == NULL) return;
+
 	NewHouseResolver(&object, hid, tile, GetTownByTile(tile));
 
 	object.callback = CBID_RANDOM_TRIGGER;
