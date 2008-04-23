@@ -217,8 +217,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	byte OverridePCP = 0;
 	byte PPPpreferred[DIAGDIR_END];
 	byte PPPallowed[DIAGDIR_END];
-	DiagDirection i;
-	Track t;
 
 	/* Find which rail bits are present, and select the override points.
 	 * We don't draw a pylon:
@@ -232,10 +230,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
-	for (i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
+	for (DiagDirection i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		Foundation foundation = FOUNDATION_NONE;
-		int k;
+		byte elevation = GetPCPElevation(ti->tile, i);
 
 		/* Here's one of the main headaches. GetTileSlope does not correct for possibly
 		 * existing foundataions, so we do have to do that manually later on.*/
@@ -245,7 +243,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		/* If the neighboured tile does not smoothly connect to the current tile (because of a foundation),
 		 * we have to draw all pillars on the current tile. */
-		if (GetPCPElevation(ti->tile, i) != GetPCPElevation(neighbour, ReverseDiagDir(i))) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		if (elevation != GetPCPElevation(neighbour, ReverseDiagDir(i))) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
 
 		isflat[TS_NEIGHBOUR] = ((trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
@@ -254,7 +252,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		/* We cycle through all the existing tracks at a PCP and see what
 		 * PPPs we want to have, or may not have at all */
-		for (k = 0; k < NUM_TRACKS_AT_PCP; k++) {
+		for (uint k = 0; k < NUM_TRACKS_AT_PCP; k++) {
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
 			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
 			    IsBridgeTile(neighbour) &&
@@ -276,8 +274,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 
 		/* Deactivate all PPPs if PCP is not used */
-		PPPpreferred[i] *= HasBit(PCPstatus, i);
-		PPPallowed[i] *= HasBit(PCPstatus, i);
+		if (!HasBit(PCPstatus, i)) {
+			PPPpreferred[i] = 0;
+			PPPallowed[i] = 0;
+		}
 
 		/* A station is always "flat", so adjust the tileh accordingly */
 		if (IsTileType(neighbour, MP_STATION)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
@@ -290,8 +290,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		ApplyFoundationToSlope(foundation, &tileh[TS_NEIGHBOUR]);
 
-	/* Half tile slopes coincide only with horizontal/vertical track.
-	 * Faking a flat slope results in the correct sprites on positions. */
+		/* Half tile slopes coincide only with horizontal/vertical track.
+		 * Faking a flat slope results in the correct sprites on positions. */
 		if (IsHalftileSlope(tileh[TS_NEIGHBOUR])) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 
 		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
@@ -300,8 +300,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		 * Delete the PCP if this is the case. */
 		/* Level means that the slope is the same, or the track is flat */
 		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (isflat[TS_HOME] && isflat[TS_NEIGHBOUR])) {
-			for (k = 0; k < NUM_IGNORE_GROUPS; k++)
+			for (uint k = 0; k < NUM_IGNORE_GROUPS; k++) {
 				if (PPPpreferred[i] == IgnoredPCP[k][tlg][i]) ClrBit(PCPstatus, i);
+			}
 		}
 
 		/* Now decide where we draw our pylons. First try the preferred PPPs, but they may not exist.
@@ -321,7 +322,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 
 		if (PPPallowed[i] != 0 && HasBit(PCPstatus, i) && !HasBit(OverridePCP, i)) {
-			for (k = 0; k < DIR_END; k++) {
+			for (Direction k = DIR_BEGIN; k < DIR_END; k++) {
 				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
 
 				if (HasBit(PPPallowed[i], temp)) {
@@ -336,8 +337,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 					}
 
 					AddSortableSpriteToDraw(pylon_sprites[temp], PAL_NONE, x, y, 1, 1, BB_HEIGHT_UNDER_BRIDGE,
-							GetPCPElevation(ti->tile, i),
-							IsTransparencySet(TO_CATENARY), -1, -1);
+						elevation, IsTransparencySet(TO_CATENARY), -1, -1);
+
 					break; /* We already have drawn a pylon, bail out */
 				}
 			}
@@ -352,7 +353,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 
 	/* Drawing of pylons is finished, now draw the wires */
-	for (t = TRACK_BEGIN; t < TRACK_END; t++) {
+	for (Track t = TRACK_BEGIN; t < TRACK_END; t++) {
 		if (HasBit(trackconfig[TS_HOME], t)) {
 			if (IsTunnelTile(ti->tile)) break; // drawn together with tunnel-roof (see DrawCatenaryOnTunnel())
 			byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
