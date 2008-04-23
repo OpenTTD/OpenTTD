@@ -108,50 +108,50 @@ StringID FiosGetDescText(const char **path, uint32 *total_free)
  * @return a string if we have given a file as a target, otherwise NULL */
 char *FiosBrowseTo(const FiosItem *item)
 {
-	char *s;
 	char *path = _fios_path;
 
 	switch (item->type) {
 #if defined(WINCE)
-	case FIOS_TYPE_DRIVE: sprintf(path, PATHSEP ""); break;
+		case FIOS_TYPE_DRIVE: sprintf(path, PATHSEP ""); break;
 #elif defined(WIN32) || defined(__OS2__)
-	case FIOS_TYPE_DRIVE: sprintf(path, "%c:" PATHSEP, item->title[0]); break;
+		case FIOS_TYPE_DRIVE: sprintf(path, "%c:" PATHSEP, item->title[0]); break;
 #endif
 
-	case FIOS_TYPE_PARENT:
-		/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
-		s = strrchr(path, PATHSEPCHAR);
-		if (s != NULL && s != path) {
-			s[0] = '\0'; // Remove last path separator character, so we can go up one level.
-		}
-		s = strrchr(path, PATHSEPCHAR);
-		if (s != NULL) s[1] = '\0'; // go up a directory
+		case FIOS_TYPE_PARENT: {
+			/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
+			char *s = strrchr(path, PATHSEPCHAR);
+			if (s != NULL && s != path) {
+				s[0] = '\0'; // Remove last path separator character, so we can go up one level.
+			}
+			s = strrchr(path, PATHSEPCHAR);
+			if (s != NULL) s[1] = '\0'; // go up a directory
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
-		/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
-		else if ((s = strrchr(path, ':')) != NULL) s[1] = '\0';
+			/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
+			else if ((s = strrchr(path, ':')) != NULL) s[1] = '\0';
 #endif
-		break;
+			break;
+		}
 
-	case FIOS_TYPE_DIR:
-		strcat(path, item->name);
-		strcat(path, PATHSEP);
-		break;
+		case FIOS_TYPE_DIR:
+			strcat(path, item->name);
+			strcat(path, PATHSEP);
+			break;
 
-	case FIOS_TYPE_DIRECT:
-		sprintf(path, "%s", item->name);
-		break;
+		case FIOS_TYPE_DIRECT:
+			sprintf(path, "%s", item->name);
+			break;
 
-	case FIOS_TYPE_FILE:
-	case FIOS_TYPE_OLDFILE:
-	case FIOS_TYPE_SCENARIO:
-	case FIOS_TYPE_OLD_SCENARIO:
-	case FIOS_TYPE_PNG:
-	case FIOS_TYPE_BMP:
-	{
-		static char str_buffr[512];
-		snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
-		return str_buffr;
-	}
+		case FIOS_TYPE_FILE:
+		case FIOS_TYPE_OLDFILE:
+		case FIOS_TYPE_SCENARIO:
+		case FIOS_TYPE_OLD_SCENARIO:
+		case FIOS_TYPE_PNG:
+		case FIOS_TYPE_BMP:
+		{
+			static char str_buffr[512];
+			snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
+			return str_buffr;
+		}
 	}
 
 	return NULL;
