@@ -26,7 +26,6 @@
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_callbacks.h"
-#include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "transparency.h"
 #include "water.h"
@@ -1592,17 +1591,19 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
 	if (!CheckSuitableIndustryPos(tile)) return NULL;
 
-	Industry *i = new Industry(tile);
-	if (i == NULL) return NULL;
-	AutoPtrT<Industry> i_auto_delete = i;
+	if (!Industry::CanAllocateItem()) return NULL;
 
 	if (flags & DC_EXEC) {
+		Industry *i = new Industry(tile);
 		if (!custom_shape_check) CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
 		DoCreateNewIndustry(i, tile, type, it, itspec_index, t, OWNER_NONE);
-		i_auto_delete.Detach();
+
+		return i;
 	}
 
-	return i;
+	/* We need to return a non-NULL pointer to tell we have created an industry.
+	 * However, we haven't created a real one (no DC_EXEC), so return a fake one. */
+	return GetIndustry(0);
 }
 
 /** Build/Fund an industry

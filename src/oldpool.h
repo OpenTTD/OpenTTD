@@ -292,6 +292,18 @@ protected:
 	{
 		return Tpool->CleaningPool();
 	}
+
+public:
+	/**
+	 * Check whether we can allocate an item in this pool. This to prevent the
+	 * need to actually construct the object and then destructing it again,
+	 * which could be *very* costly.
+	 * @return true if and only if at least ONE item can be allocated.
+	 */
+	static inline bool CanAllocateItem()
+	{
+		return AllocateRaw() != NULL;
+	}
 };
 
 

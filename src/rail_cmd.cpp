@@ -30,7 +30,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "train.h"
-#include "misc/autoptr.hpp"
 #include "variables.h"
 #include "autoslope.h"
 #include "transparency.h"
@@ -766,12 +765,10 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	Depot *d = new Depot(tile);
-
-	if (d == NULL) return CMD_ERROR;
-	AutoPtrT<Depot> d_auto_delete = d;
+	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		Depot *d = new Depot(tile);
 		MakeRailDepot(tile, _current_player, dir, (RailType)p1);
 		MarkTileDirtyByTile(tile);
 
@@ -779,7 +776,6 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_player);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
-		d_auto_delete.Detach();
 	}
 
 	return cost.AddCost(_price.build_train_depot);

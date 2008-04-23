@@ -11,7 +11,6 @@
 #include "saveload.h"
 #include "command_func.h"
 #include "variables.h"
-#include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "zoom_func.h"
@@ -99,12 +98,11 @@ static void MarkSignDirty(Sign *si)
 CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Try to locate a new sign */
-	Sign *si = new Sign(_current_player);
-	if (si == NULL) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
-	AutoPtrT<Sign> s_auto_delete = si;
+	if (!Sign::CanAllocateItem()) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
+		Sign *si = new Sign(_current_player);
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
 
@@ -117,7 +115,6 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		_sign_sort_dirty = true;
 		_new_sign_id = si->index;
 		_total_signs++;
-		s_auto_delete.Detach();
 	}
 
 	return CommandCost();

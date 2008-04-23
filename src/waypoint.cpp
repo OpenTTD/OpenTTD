@@ -18,7 +18,6 @@
 #include "variables.h"
 #include "yapf/yapf.h"
 #include "newgrf.h"
-#include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "functions.h"
@@ -191,7 +190,6 @@ void AfterLoadWaypoints()
 CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
-	AutoPtrT<Waypoint> wp_auto_delete;
 	Slope tileh;
 	Axis axis;
 
@@ -219,35 +217,35 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
 	wp = FindDeletedWaypointCloseTo(tile);
-	if (wp == NULL) {
-		wp = new Waypoint(tile);
-		if (wp == NULL) return CMD_ERROR;
-
-		wp_auto_delete = wp;
-
-		wp->town_index = INVALID_TOWN;
-		wp->name = NULL;
-		wp->town_cn = 0;
-	} else if (flags & DC_EXEC) {
-		/* Move existing (recently deleted) waypoint to the new location */
-
-		/* First we update the destination for all vehicles that
-		 * have the old waypoint in their orders. */
-		Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN &&
-					v->First() == v &&
-					v->current_order.IsType(OT_GOTO_WAYPOINT) &&
-					v->dest_tile == wp->xy) {
-				v->dest_tile = tile;
-			}
-		}
-
-		RedrawWaypointSign(wp);
-		wp->xy = tile;
-	}
+	if (wp == NULL && !Waypoint::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		if (wp == NULL) {
+			wp = new Waypoint(tile);
+			if (wp == NULL) return CMD_ERROR;
+
+			wp->town_index = INVALID_TOWN;
+			wp->name = NULL;
+			wp->town_cn = 0;
+		} else {
+			/* Move existing (recently deleted) waypoint to the new location */
+
+			/* First we update the destination for all vehicles that
+			* have the old waypoint in their orders. */
+			Vehicle *v;
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == VEH_TRAIN &&
+						v->First() == v &&
+						v->current_order.IsType(OT_GOTO_WAYPOINT) &&
+						v->dest_tile == wp->xy) {
+					v->dest_tile = tile;
+				}
+			}
+
+			RedrawWaypointSign(wp);
+			wp->xy = tile;
+		}
+
 		const StationSpec* statspec;
 
 		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
@@ -274,7 +272,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		UpdateWaypointSign(wp);
 		RedrawWaypointSign(wp);
 		YapfNotifyTrackLayoutChange(tile, AxisToTrack(axis));
-		wp_auto_delete.Detach();
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_train_depot);

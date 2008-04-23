@@ -31,7 +31,6 @@
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
-#include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "waypoint.h"
 #include "transparency.h"
@@ -1538,16 +1537,14 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	/* Allocate town struct */
-	Town *t = new Town(tile);
-	if (t == NULL) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
-	AutoPtrT<Town> t_auto_delete = t;
+	if (!Town::CanAllocateItem()) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	/* Create the town */
 	if (flags & DC_EXEC) {
+		Town *t = new Town(tile);
 		_generating_world = true;
 		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
 		_generating_world = false;
-		t_auto_delete.Detach();
 	}
 	return CommandCost();
 }
