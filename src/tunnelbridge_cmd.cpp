@@ -886,8 +886,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 			}
 		} else if (!IsInvisibilitySet(TO_CATENARY) && HasCatenary(GetRailType(ti->tile))) {
-			DrawCatenary(ti);
-
 			catenary = true;
 			StartSpriteCombine();
 			DrawCatenaryOnTunnel(ti);
@@ -1089,7 +1087,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 			StartSpriteCombine();
 		}
 	} else if (HasCatenary(GetRailType(rampsouth))) {
-		DrawCatenary(ti);
+		DrawCatenaryOnBridge(ti);
 	}
 
 	/* draw roof, the component of the bridge which is logically between the vehicle and the camera */

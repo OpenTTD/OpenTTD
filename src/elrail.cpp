@@ -377,8 +377,13 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	}
 }
 
-static void DrawCatenaryOnBridge(const TileInfo *ti)
+void DrawCatenaryOnBridge(const TileInfo *ti)
 {
+	if (_patches.disable_elrails) return;
+
+	/* Do not draw catenary if it is invisible */
+	if (IsInvisibilitySet(TO_CATENARY)) return;
+
 	TileIndex end = GetSouthernBridgeEnd(ti->tile);
 	TileIndex start = GetOtherBridgeEnd(end);
 
@@ -436,14 +441,6 @@ void DrawCatenary(const TileInfo *ti)
 
 	/* Do not draw catenary if it is invisible */
 	if (IsInvisibilitySet(TO_CATENARY)) return;
-
-	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
-		TileIndex head = GetNorthernBridgeEnd(ti->tile);
-
-		if (GetTunnelBridgeTransportType(head) == TRANSPORT_RAIL && HasCatenary(GetRailType(head))) {
-			DrawCatenaryOnBridge(ti);
-		}
-	}
 
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:

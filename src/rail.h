@@ -216,6 +216,7 @@ static inline bool HasCatenary(RailType rt)
  */
 void DrawCatenary(const TileInfo *ti);
 void DrawCatenaryOnTunnel(const TileInfo *ti);
+void DrawCatenaryOnBridge(const TileInfo *ti);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
