@@ -152,6 +152,10 @@ char *FiosBrowseTo(const FiosItem *item)
 			snprintf(str_buffr, lengthof(str_buffr), "%s%s", path, item->name);
 			return str_buffr;
 		}
+
+		case FIOS_TYPE_DRIVE:
+		case FIOS_TYPE_INVALID:
+			break;
 	}
 
 	return NULL;
@@ -208,13 +212,13 @@ bool FileExists(const char *filename)
 #endif
 }
 
-typedef byte fios_getlist_callback_proc(int mode, const char *filename, const char *ext, char *title);
+typedef FiosType fios_getlist_callback_proc(SaveLoadDialogMode mode, const char *filename, const char *ext, char *title);
 
 /** Create a list of the files in a directory, according to some arbitrary rule.
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
  *  @param callback_proc The function that is called where you need to do the filtering.
  *  @return Return the list of files. */
-static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_proc)
+static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_proc *callback_proc)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -277,7 +281,7 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 			if ((t = strrchr(d_name, '.')) == NULL) continue;
 			fios_title[0] = '\0'; // reset the title;
 
-			byte type = callback_proc(mode, d_name, t, fios_title);
+			FiosType type = callback_proc(mode, d_name, t, fios_title);
 			if (type != FIOS_TYPE_INVALID) {
 				fios = FiosAlloc();
 				fios->mtime = sb.st_mtime;
@@ -313,7 +317,7 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
  * @see FiosGetFileList
  * @see FiosGetSavegameList
  */
-static byte FiosGetSavegameListCallback(int mode, const char *file, const char *ext, char *title)
+static FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
 {
 	/* Show savegame files
 	 * .SAV OpenTTD saved game
@@ -339,16 +343,16 @@ static byte FiosGetSavegameListCallback(int mode, const char *file, const char *
  * @return A pointer to an array of FiosItem representing all the files to be shown in the save/load dialog.
  * @see FiosGetFileList
  */
-FiosItem *FiosGetSavegameList(int mode)
+FiosItem *FiosGetSavegameList(SaveLoadDialogMode mode)
 {
-	static char *_fios_save_path = NULL;
+	static char *fios_save_path = NULL;
 
-	if (_fios_save_path == NULL) {
-		_fios_save_path = MallocT<char>(MAX_PATH);
-		FioGetDirectory(_fios_save_path, MAX_PATH, SAVE_DIR);
+	if (fios_save_path == NULL) {
+		fios_save_path = MallocT<char>(MAX_PATH);
+		FioGetDirectory(fios_save_path, MAX_PATH, SAVE_DIR);
 	}
 
-	_fios_path = _fios_save_path;
+	_fios_path = fios_save_path;
 
 	return FiosGetFileList(mode, &FiosGetSavegameListCallback);
 }
@@ -363,7 +367,7 @@ FiosItem *FiosGetSavegameList(int mode)
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static byte FiosGetScenarioListCallback(int mode, const char *file, const char *ext, char *title)
+static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -387,22 +391,22 @@ static byte FiosGetScenarioListCallback(int mode, const char *file, const char *
  * @return A pointer to an array of FiosItem representing all the files to be shown in the save/load dialog.
  * @see FiosGetFileList
  */
-FiosItem *FiosGetScenarioList(int mode)
+FiosItem *FiosGetScenarioList(SaveLoadDialogMode mode)
 {
-	static char *_fios_scn_path = NULL;
+	static char *fios_scn_path = NULL;
 
 	/* Copy the default path on first run or on 'New Game' */
-	if (_fios_scn_path == NULL) {
-		_fios_scn_path = MallocT<char>(MAX_PATH);
-		FioGetDirectory(_fios_scn_path, MAX_PATH, SCENARIO_DIR);
+	if (fios_scn_path == NULL) {
+		fios_scn_path = MallocT<char>(MAX_PATH);
+		FioGetDirectory(fios_scn_path, MAX_PATH, SCENARIO_DIR);
 	}
 
-	_fios_path = _fios_scn_path;
+	_fios_path = fios_scn_path;
 
 	return FiosGetFileList(mode, &FiosGetScenarioListCallback);
 }
 
-static byte FiosGetHeightmapListCallback(int mode, const char *file, const char *ext, char *title)
+static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
@@ -419,16 +423,16 @@ static byte FiosGetHeightmapListCallback(int mode, const char *file, const char 
 }
 
 /* Get a list of Heightmaps */
-FiosItem *FiosGetHeightmapList(int mode)
+FiosItem *FiosGetHeightmapList(SaveLoadDialogMode mode)
 {
-	static char *_fios_hmap_path = NULL;
+	static char *fios_hmap_path = NULL;
 
-	if (_fios_hmap_path == NULL) {
-		_fios_hmap_path = MallocT<char>(MAX_PATH);
-		FioGetDirectory(_fios_hmap_path, MAX_PATH, HEIGHTMAP_DIR);
+	if (fios_hmap_path == NULL) {
+		fios_hmap_path = MallocT<char>(MAX_PATH);
+		FioGetDirectory(fios_hmap_path, MAX_PATH, HEIGHTMAP_DIR);
 	}
 
-	_fios_path = _fios_hmap_path;
+	_fios_path = fios_hmap_path;
 
 	return FiosGetFileList(mode, &FiosGetHeightmapListCallback);
 }

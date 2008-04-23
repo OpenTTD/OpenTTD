@@ -1455,6 +1455,7 @@ static void MakeSortedSaveGameList()
 			case FIOS_TYPE_DIR:    sort_start++; break;
 			case FIOS_TYPE_PARENT: sort_start++; break;
 			case FIOS_TYPE_DRIVE:  sort_end++;   break;
+			default: break;
 		}
 	}
 
