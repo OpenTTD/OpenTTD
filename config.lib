@@ -419,10 +419,10 @@ check_params() {
 
 	detect_awk
 
+	detect_os
+
 	check_build
 	check_host
-
-	detect_os
 
 # We might enable universal builds always on OSX targets.. but currently we don't
 #	if [ "$enable_universal" = "1" ]  && [ "$os" != "OSX" ]; then
@@ -1347,13 +1347,26 @@ check_compiler() {
 }
 
 check_build() {
-	check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CC" "gcc" "cc" "0" "-dumpmachine"
+	if [ "$os" = "FREEBSD" ]; then
+		# FreeBSD's C compiler does not support dump machine.
+		# However, removing C support is not possible because PSP must be linked with the C compiler.
+		check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CXX" "g++" "c++" "0" "-dumpmachine"
+	else
+		check_compiler "build system type" "cc_build" "$build" "$cc_build" "$CC" "gcc" "cc" "0" "-dumpmachine"
+	fi
 }
 
 check_host() {
 	# By default the host is the build
 	if [ -z "$host" ]; then host="$build"; fi
-	check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
+
+	if [ "$os" = "FREEBSD" ]; then
+		# FreeBSD's C compiler does not support dump machine.
+		# However, removing C support is not possible because PSP must be linked with the C compiler.
+		check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CXX" "g++" "c++" "0" "-dumpmachine"
+	else
+		check_compiler "host system type" "cc_host" "$host" "$cc_host" "$CC" "gcc" "cc" "0" "-dumpmachine"
+	fi
 }
 
 check_cxx_build() {
