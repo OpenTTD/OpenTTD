@@ -97,7 +97,7 @@ static inline bool Is8BitCallback(const ResolverObject *object)
 		case CBID_INDTILE_ACCEPT_CARGO:
 		case CBID_VEHICLE_COLOUR_MAPPING:
 		case CBID_HOUSE_PRODUCE_CARGO:
-		case CBID_INDTILE_SHAPE_CHECK: // depends on grf version, masked to 8 bit in PerformIndustryTileSlopeCheck() if needed
+		case CBID_INDTILE_SHAPE_CHECK:
 		case CBID_VEHICLE_SOUND_EFFECT:
 		case CBID_VEHICLE_MODIFY_PROPERTY: // depends on queried property
 		case CBID_CARGO_PROFIT_CALC:

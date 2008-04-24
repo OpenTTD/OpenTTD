@@ -767,7 +767,7 @@ static bool TerraformTownTile(TileIndex tile, int edges, int dir)
 	TILE_ASSERT(tile);
 
 	r = DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER, CMD_TERRAFORM_LAND);
-	if (CmdFailed(r) || r.GetCost() >= 126 * 16) return false;
+	if (CmdFailed(r) || r.GetCost() >= (_price.terraform + 2) * 8) return false;
 	DoCommand(tile, edges, dir, DC_AUTO | DC_NO_WATER | DC_EXEC, CMD_TERRAFORM_LAND);
 	return true;
 }
@@ -1975,6 +1975,33 @@ static void DoClearTownHouseHelper(TileIndex tile)
 	DeleteAnimatedTile(tile);
 }
 
+/**
+ * Determines if a given HouseID is part of a multitile house.
+ * The given ID is set to the ID of the north tile and the TileDiff to the north tile is returned.
+ *
+ * @param house Is changed to the HouseID of the north tile of the same house
+ * @return TileDiff from the tile of the given HouseID to the north tile
+ */
+static TileIndex GetHouseNorthPart(HouseID &house)
+{
+	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
+		if (GetHouseSpecs(house - 1)->building_flags & TILE_SIZE_2x1) {
+			house--;
+			return TileDiffXY(-1, 0);
+		} else if (GetHouseSpecs(house - 1)->building_flags & BUILDING_2_TILES_Y) {
+			house--;
+			return TileDiffXY(0, -1);
+		} else if (GetHouseSpecs(house - 2)->building_flags & BUILDING_HAS_4_TILES) {
+			house -= 2;
+			return TileDiffXY(-1, 0);
+		} else if (GetHouseSpecs(house - 3)->building_flags & BUILDING_HAS_4_TILES) {
+			house -= 3;
+			return TileDiffXY(-1, -1);
+		}
+	}
+	return 0;
+}
+
 void ClearTownHouse(Town *t, TileIndex tile)
 {
 	HouseID house = GetHouseType(tile);
@@ -1984,21 +2011,7 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	assert(IsTileType(tile, MP_HOUSE));
 
 	/* need to align the tile to point to the upper left corner of the house */
-	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
-		if (GetHouseSpecs(house-1)->building_flags & TILE_SIZE_2x1) {
-			house--;
-			tile += TileDiffXY(-1, 0);
-		} else if (GetHouseSpecs(house-1)->building_flags & BUILDING_2_TILES_Y) {
-			house--;
-			tile += TileDiffXY(0, -1);
-		} else if (GetHouseSpecs(house-2)->building_flags & BUILDING_HAS_4_TILES) {
-			house-=2;
-			tile += TileDiffXY(-1, 0);
-		} else if (GetHouseSpecs(house-3)->building_flags & BUILDING_HAS_4_TILES) {
-			house-=3;
-			tile += TileDiffXY(-1, -1);
-		}
-	}
+	tile += GetHouseNorthPart(house); // modifies house to the ID of the north tile
 
 	hs = GetHouseSpecs(house);
 
@@ -2284,13 +2297,22 @@ static void UpdateTownGrowRate(Town *t)
 		if (DistanceSquare(st->xy, t->xy) <= t->radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
-				if (IsValidPlayer(st->owner) && t->ratings[st->owner] <= 1000-12)
-					t->ratings[st->owner] += 12;
+				if (IsValidPlayer(st->owner)) {
+					int new_rating = t->ratings[st->owner] + 12;
+					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
+				}
 			} else {
-				if (IsValidPlayer(st->owner) && t->ratings[st->owner] >= -1000+15)
-					t->ratings[st->owner] -= 15;
+				if (IsValidPlayer(st->owner)) {
+					int new_rating = t->ratings[st->owner] - 15;
+					t->ratings[st->owner] = max(new_rating, INT16_MIN);
+				}
 			}
 		}
+	}
+
+	/* clamp all ratings to valid values */
+	for (uint i = 0; i < MAX_PLAYERS; i++) {
+		t->ratings[i] = Clamp(t->ratings[i], -1000, 1000);
 	}
 
 	ClrBit(t->flags12, TOWN_IS_FUNDED);
@@ -2536,7 +2558,8 @@ static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, 
 {
 	if (AutoslopeEnabled()) {
 		HouseID house = GetHouseType(tile);
-		HouseSpec *hs = GetHouseSpecs(house);
+		GetHouseNorthPart(house); // modifies house to the ID of the north tile
+		const HouseSpec *hs = GetHouseSpecs(house);
 
 		/* Here we differ from TTDP by checking TILE_NOT_SLOPED */
 		if (((hs->building_flags & TILE_NOT_SLOPED) == 0) && !IsSteepSlope(tileh_new) &&

@@ -275,7 +275,7 @@ bool PerformIndustryTileSlopeCheck(TileIndex ind_base_tile, TileIndex ind_tile, 
 		return !IsSlopeRefused(GetTileSlope(ind_tile, NULL), its->slopes_refused);
 	}
 	if (its->grf_prop.grffile->grf_version < 7) {
-		return (callback_res & 0xFF) != 0; // mask to 8 bit callback result
+		return callback_res != 0;
 	}
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
