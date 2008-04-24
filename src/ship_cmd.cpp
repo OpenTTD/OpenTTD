@@ -282,26 +282,22 @@ static const TileIndexDiffC _ship_leave_depot_offs[] = {
 
 static void CheckShipLeaveDepot(Vehicle *v)
 {
-	TileIndex tile;
-	Axis axis;
-	uint m;
-
 	if (!v->IsInDepot()) return;
 
-	tile = v->tile;
-	axis = GetShipDepotAxis(tile);
+	TileIndex tile = v->tile;
+	Axis axis = GetShipDepotAxis(tile);
 
-	/* Check first side */
+	/* Check first (north) side */
 	if (_ship_sometracks[axis] & GetTileShipTrackStatus(TILE_ADD(tile, ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
-		m = (axis == AXIS_X) ? 0x101 : 0x207;
-	/* Check second side */
+		v->direction = ReverseDir(AxisToDirection(axis));
+	/* Check second (south) side */
 	} else if (_ship_sometracks[axis + 2] & GetTileShipTrackStatus(TILE_ADD(tile, -2 * ToTileIndexDiff(_ship_leave_depot_offs[axis])))) {
-		m = (axis == AXIS_X) ? 0x105 : 0x203;
+		v->direction = AxisToDirection(axis);
 	} else {
 		return;
 	}
-	v->direction    = (Direction)GB(m, 0, 8);
-	v->u.ship.state = (TrackBits)GB(m, 8, 8);
+
+	v->u.ship.state = AxisToTrackBits(axis);
 	v->vehstatus &= ~VS_HIDDEN;
 
 	v->cur_speed = 0;
