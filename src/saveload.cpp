@@ -76,13 +76,24 @@ static struct {
 
 enum NeedLengthValues {NL_NONE = 0, NL_WANTLENGTH = 1, NL_CALCLENGTH = 2};
 
+/** Error handler, calls longjmp to simulate an exception.
+ * @todo this was used to have a central place to handle errors, but it is
+ * pretty ugly, and seriously interferes with any multithreaded approaches */
+static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
+{
+	_sl.error_str = string;
+	free(_sl.extra_msg);
+	_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
+	throw std::exception();
+}
+
 /**
  * Fill the input buffer by reading from the file with the given reader
  */
 static void SlReadFill()
 {
 	uint len = _sl.read_bytes();
-	assert(len != 0);
+	if (len == 0) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected end of chunk");
 
 	_sl.bufp = _sl.buf;
 	_sl.bufe = _sl.buf + len;
@@ -135,17 +146,6 @@ static void SlWriteFill()
 	 * to start reading in more data */
 	_sl.bufp = _sl.buf;
 	_sl.bufe = _sl.buf + _sl.bufsize;
-}
-
-/** Error handler, calls longjmp to simulate an exception.
- * @todo this was used to have a central place to handle errors, but it is
- * pretty ugly, and seriously interferes with any multithreaded approaches */
-static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
-{
-	_sl.error_str = string;
-	free(_sl.extra_msg);
-	_sl.extra_msg = (extra_msg == NULL) ? NULL : strdup(extra_msg);
-	throw std::exception();
 }
 
 /** Read in a single byte from file. If the temporary buffer is full,
@@ -1524,7 +1524,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 			uint i;
 			uint count = 1 << Savegame_POOL_BLOCK_SIZE_BITS;
 
-			assert(_ts.count == _sl.offs_base);
+			if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
 			for (i = 0; i != _Savegame_pool.GetBlockCount() - 1; i++) {
 				_sl.buf = _Savegame_pool.blocks[i];
 				fmt->writer(count);
@@ -1537,7 +1537,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		}
 
 		fmt->uninit_write();
-		assert(_ts.count == _sl.offs_base);
+		if (_ts.count != _sl.offs_base) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected size of chunk");
 		GetSavegameFormat("memory")->uninit_write(); // clean the memorypool
 		fclose(_sl.fh);
 

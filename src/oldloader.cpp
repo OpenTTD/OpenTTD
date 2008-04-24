@@ -1694,6 +1694,12 @@ bool LoadOldSaveGame(const char *file)
 
 	fclose(ls.file);
 
+	/* Some old TTDP savegames could have buoys at tile 0
+	 * (without assigned station struct)
+	 * MakeWater() can be used as long as sea has the same
+	 * format as old savegames (eg. everything is zeroed) */
+	MakeWater(0);
+
 	_pause_game = 2;
 
 	return true;

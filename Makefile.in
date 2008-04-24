@@ -22,7 +22,6 @@ INSTALL_DIR = !!INSTALL_DIR!!
 INSTALL_BINARY_DIR = "$(INSTALL_DIR)/"!!BINARY_DIR!!
 INSTALL_ICON_DIR = "$(INSTALL_DIR)/"!!ICON_DIR!!
 INSTALL_DATA_DIR = "$(INSTALL_DIR)/"!!DATA_DIR!!
-INSTALL_PERSONAL_DIR = !!PERSONAL_DIR!!
 TTD = !!TTD!!
 TTDS = $(SRC_DIRS:%=%/$(TTD))
 OS = !!OS!!
@@ -271,10 +270,5 @@ install: bundle
 	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(INSTALL_DATA_DIR)/docs"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/media/"* "$(INSTALL_ICON_DIR)"
-ifdef INSTALL_PERSONAL_DIR
-	$(Q)mkdir -p ~/"$(INSTALL_PERSONAL_DIR)"
-	$(Q)cp -R "$(BUNDLE_DIR)/scenario" ~/"$(INSTALL_PERSONAL_DIR)"
-else
 	$(Q)cp -R "$(BUNDLE_DIR)/scenario" "$(INSTALL_DATA_DIR)"
-endif # INSTALL_PERSONAL_DIR
 endif # OSXAPP
