@@ -57,7 +57,6 @@ void UnloadWagonOverrides();
 void UnloadCustomEngineSprites();
 
 void ResetEngineListOrder();
-EngineID GetRailVehAtPosition(EngineID pos);
 uint16 ListPositionOfEngine(EngineID engine);
 void AlterRailVehListOrder(EngineID engine, EngineID target);
 

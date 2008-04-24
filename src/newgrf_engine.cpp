@@ -1100,18 +1100,6 @@ void ResetEngineListOrder()
 }
 
 /**
- * Get the EngineID at position pos.
- * Used when drawing a(n unsorted) list of engines.
- * @param pos List position/
- * @return The EngineID at the requested position.
- */
-EngineID GetRailVehAtPosition(EngineID pos)
-{
-	if (pos < NUM_TRAIN_ENGINES) return _engine_list_order[pos];
-	return pos;
-}
-
-/**
  * Get the list position of an engine.
  * Used when sorting a list of engines.
  * @param engine ID of the engine.
