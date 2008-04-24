@@ -52,12 +52,12 @@ Sub get_files(srcdir, dir, list)
 
 	' pattern for files to keep
 	Set rekeep = New RegExp
-	rekeep.Pattern = "\.h"
+	rekeep.Pattern = "\.h(pp)?$"
 	rekeep.Global = True
 
 	' pattern for files to exclude
 	Set reskip = New RegExp
-	reskip.Pattern = "\.svn|\.hpp\.sq"
+	reskip.Pattern = "\.svn"
 	reskip.Global = True
 
 	For Each file in dir.Files
