@@ -982,7 +982,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		if (flags & DC_EXEC) {
 			st = new Station();
 
-			st->town = ClosestTownFromTile(tile_org, (uint)-1);
+			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
 			GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
 
 			if (IsValidPlayer(_current_player)) {
@@ -1406,7 +1406,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			st = new Station();
 
-			st->town = ClosestTownFromTile(tile, (uint)-1);
+			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			GenerateStationName(st, tile, STATIONNAMING_ROAD);
 
 			if (IsValidPlayer(_current_player)) {
@@ -1541,7 +1541,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		/* Rebuild the drive throuhg road stop. As a road stop can only be
 		 * removed by the owner of the roadstop, _current_player is the
 		 * owner of the road stop. */
-		MakeRoadNormal(tile, road_bits, rts, is_towns_road ? ClosestTownFromTile(tile, (uint)-1)->index : 0,
+		MakeRoadNormal(tile, road_bits, rts, is_towns_road ? ClosestTownFromTile(tile, UINT_MAX)->index : 0,
 				is_towns_road ? OWNER_TOWN : _current_player, _current_player, _current_player);
 	}
 
@@ -1831,7 +1831,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		Station *st = new Station();
 
-		st->town = ClosestTownFromTile(tile, (uint)-1);
+		st->town = ClosestTownFromTile(tile, UINT_MAX);
 		GenerateStationName(st, tile, STATIONNAMING_BUOY);
 
 		if (IsValidPlayer(_current_player)) {
@@ -1991,7 +1991,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			st = new Station();
 
-			st->town = ClosestTownFromTile(tile, (uint)-1);
+			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			GenerateStationName(st, tile, STATIONNAMING_DOCK);
 
 			if (IsValidPlayer(_current_player)) {
@@ -2830,7 +2830,7 @@ void BuildOilRig(TileIndex tile)
 		return;
 	}
 
-	st->town = ClosestTownFromTile(tile, (uint)-1);
+	st->town = ClosestTownFromTile(tile, UINT_MAX);
 	st->sign.width_1 = 0;
 
 	GenerateStationName(st, tile, STATIONNAMING_OILRIG);
