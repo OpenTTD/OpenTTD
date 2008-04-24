@@ -583,7 +583,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_DRAG: {
 		/* no dragging if you have pressed the convert button */
-		if (_convert_signal_button && w->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
+		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && w->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
 
 		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
 		return;
@@ -1310,11 +1310,19 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
-					if (_patches.drag_signals_density > 1) _patches.drag_signals_density--;
+					if (_patches.drag_signals_density > 1) {
+						_patches.drag_signals_density--;
+						const Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
+						if (w != NULL) SetWindowDirty(w);
+					}
 					break;
 
 				case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
-					if (_patches.drag_signals_density < 20) _patches.drag_signals_density++;
+					if (_patches.drag_signals_density < 20) {
+						_patches.drag_signals_density++;
+						const Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
+						if (w != NULL) SetWindowDirty(w);
+					}
 					break;
 
 				default: break;

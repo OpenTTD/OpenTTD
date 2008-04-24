@@ -2151,10 +2151,14 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 
 		SpriteID pal;
-		if (!(!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS)) && HasBit(image, PALETTE_MODIFIER_COLOR)) {
-			pal = palette;
+		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
+			if (dtss->image.pal > 0) {
+				pal = dtss->image.pal;
+			} else {
+				pal = palette;
+			}
 		} else {
-			pal = dtss->image.pal;
+			pal = PAL_NONE;
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
