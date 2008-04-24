@@ -200,11 +200,23 @@ void TrainConsistChanged(Vehicle* v)
 		/* Check the v->first cache. */
 		assert(u->First() == v);
 
-		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
-
 		/* update the 'first engine' */
 		u->u.rail.first_engine = v == u ? INVALID_ENGINE : first_engine;
 		u->u.rail.railtype = rvi_u->railtype;
+
+		/* Set user defined data to its default value */
+		u->u.rail.user_def_data = rvi_u->user_def_data;
+	}
+
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
+		/* Update user defined data (must be done before other properties) */
+		u->u.rail.user_def_data = GetVehicleProperty(u, 0x25, u->u.rail.user_def_data);
+	}
+
+	for (Vehicle *u = v; u != NULL; u = u->Next()) {
+		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
+
+		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
 
 		if (IsTrainEngine(u)) first_engine = u->engine_type;
 
@@ -213,9 +225,6 @@ void TrainConsistChanged(Vehicle* v)
 
 		/* Reset color map */
 		u->colormap = PAL_NONE;
-
-		/* Set user defined data (must be done before other properties) */
-		u->u.rail.user_def_data = GetVehicleProperty(u, 0x25, rvi_u->user_def_data);
 
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;

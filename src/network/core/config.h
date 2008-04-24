@@ -38,14 +38,9 @@ enum {
 	/**
 	 * Maximum number of GRFs that can be sent.
 	 * This value is related to number of handles (files) OpenTTD can open.
-	 * This is currently 64 and about 10 are currently used when OpenTTD loads
-	 * without any NewGRFs. Therefore one can only load about 55 NewGRFs, so
-	 * this is not a limit, but rather a way to easily check whether the limit
-	 * imposed by the handle count is reached. Secondly it isn't possible to
-	 * send much more GRF IDs + MD5sums in the PACKET_UDP_SERVER_RESPONSE, due
-	 * to the limited size of UDP packets.
+	 * This is currently 64. Two are used for configuration and sound.
 	 */
-	NETWORK_MAX_GRF_COUNT         =   55,
+	NETWORK_MAX_GRF_COUNT         =   62,
 
 	NETWORK_NUM_LANGUAGES         =   29, ///< Number of known languages (to the network protocol) + 1 for 'any'.
 	/**
