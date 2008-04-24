@@ -2231,8 +2231,6 @@ void Train::PlayLeaveStationSound() const
 		SND_41_MAGLEV
 	};
 
-	if (IsTileType(this->tile, MP_STATION)) StationAnimationTrigger(NULL, this->tile, STAT_ANIM_TRAIN_DEPARTS);
-
 	if (PlayVehicleSound(this, VSE_START)) return;
 
 	EngineID engtype = this->engine_type;

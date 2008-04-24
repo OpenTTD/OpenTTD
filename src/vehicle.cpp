@@ -30,6 +30,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
+#include "newgrf_station.h"
 #include "group.h"
 #include "order_func.h"
 #include "strings_func.h"
@@ -2562,10 +2563,14 @@ void Vehicle::LeaveStation()
 	if (current_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) UpdateVehicleTimetable(this, false);
 
 	current_order.MakeLeaveStation();
-	GetStation(this->last_station_visited)->loading_vehicles.remove(this);
+	Station *st = GetStation(this->last_station_visited);
+	st->loading_vehicles.remove(this);
 
 	HideFillingPercent(this->fill_percent_te_id);
 	this->fill_percent_te_id = INVALID_TE_ID;
+
+	/* Trigger station animation for trains only */
+	if (this->type == VEH_TRAIN && IsTileType(this->tile, MP_STATION)) StationAnimationTrigger(st, this->tile, STAT_ANIM_TRAIN_DEPARTS);
 }
 
 
