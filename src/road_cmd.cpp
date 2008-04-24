@@ -22,7 +22,6 @@
 #include "newgrf.h"
 #include "station_map.h"
 #include "tunnel_map.h"
-#include "misc/autoptr.hpp"
 #include "variables.h"
 #include "autoslope.h"
 #include "transparency.h"
@@ -805,16 +804,14 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
-	Depot *dep = new Depot(tile);
-	if (dep == NULL) return CMD_ERROR;
-	AutoPtrT<Depot> d_auto_delete = dep;
+	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		Depot *dep = new Depot(tile);
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		MakeRoadDepot(tile, _current_player, dir, rt);
 		MarkTileDirtyByTile(tile);
-		d_auto_delete.Detach();
 	}
 	return cost.AddCost(_price.build_road_depot);
 }

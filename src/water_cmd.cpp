@@ -23,7 +23,6 @@
 #include "industry_map.h"
 #include "newgrf.h"
 #include "newgrf_canal.h"
-#include "misc/autoptr.hpp"
 #include "transparency.h"
 #include "strings_func.h"
 #include "functions.h"
@@ -196,18 +195,16 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	ret = DoCommand(tile2, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
-	Depot *depot = new Depot(tile);
-	if (depot == NULL) return CMD_ERROR;
-	AutoPtrT<Depot> d_auto_delete = depot;
+	if (!Depot::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		Depot *depot = new Depot(tile);
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, wc1);
 		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
-		d_auto_delete.Detach();
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_ship_depot);

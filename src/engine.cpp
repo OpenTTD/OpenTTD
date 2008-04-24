@@ -16,7 +16,6 @@
 #include "aircraft.h"
 #include "newgrf_cargo.h"
 #include "group.h"
-#include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "functions.h"
@@ -516,19 +515,15 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 		return CommandCost();
 	}
 
-	er = new EngineRenew(old_engine, new_engine);
-	if (er == NULL) return CMD_ERROR;
-	AutoPtrT<EngineRenew> er_auto_delete = er;
-
+	if (!EngineRenew::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		er = new EngineRenew(old_engine, new_engine);
 		er->group_id = group;
 
 		/* Insert before the first element */
 		er->next = (EngineRenew *)(*erl);
 		*erl = (EngineRenewList)er;
-
-		er_auto_delete.Detach();
 	}
 
 	return CommandCost();

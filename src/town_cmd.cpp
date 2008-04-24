@@ -31,7 +31,6 @@
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
-#include "misc/autoptr.hpp"
 #include "autoslope.h"
 #include "waypoint.h"
 #include "transparency.h"
@@ -43,6 +42,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "table/town_land.h"
+
+#include <map>
 
 uint _total_towns;
 HouseSpec _house_specs[HOUSE_MAX];
@@ -1508,16 +1509,14 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	/* Allocate town struct */
-	Town *t = new Town(tile);
-	if (t == NULL) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
-	AutoPtrT<Town> t_auto_delete = t;
+	if (!Town::CanAllocateItem()) return_cmd_error(STR_023A_TOO_MANY_TOWNS);
 
 	/* Create the town */
 	if (flags & DC_EXEC) {
+		Town *t = new Town(tile);
 		_generating_world = true;
 		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
 		_generating_world = false;
-		t_auto_delete.Detach();
 	}
 	return CommandCost();
 }
@@ -2410,14 +2409,14 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 }
 
 static bool _town_rating_test = false;
+std::map<const Town *, int> _town_test_ratings;
 
 void SetTownRatingTestMode(bool mode)
 {
 	static int ref_count = 0;
 	if (mode) {
 		if (ref_count == 0) {
-			Town *t;
-			FOR_ALL_TOWNS(t) t->test_rating = t->ratings[_current_player];
+			_town_test_ratings.empty();
 		}
 		ref_count++;
 	} else {
@@ -2427,10 +2426,19 @@ void SetTownRatingTestMode(bool mode)
 	_town_rating_test = !(ref_count == 0);
 }
 
+static int GetRating(const Town *t)
+{
+	if (_town_rating_test) {
+		std::map<const Town *, int>::iterator it = _town_test_ratings.find(t);
+		if (it != _town_test_ratings.end()) {
+			return (*it).second;
+		}
+	}
+	return t->ratings[_current_player];
+}
+
 void ChangeTownRating(Town *t, int add, int max)
 {
-	int rating;
-
 	/* if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff */
 	if (t == NULL ||
 			!IsValidPlayer(_current_player) ||
@@ -2440,8 +2448,7 @@ void ChangeTownRating(Town *t, int add, int max)
 
 	SetBit(t->have_ratings, _current_player);
 
-	rating = _town_rating_test ? t->test_rating : t->ratings[_current_player];
-
+	int rating = GetRating(t);
 	if (add < 0) {
 		if (rating > max) {
 			rating += add;
@@ -2454,7 +2461,7 @@ void ChangeTownRating(Town *t, int add, int max)
 		}
 	}
 	if (_town_rating_test) {
-		t->test_rating = rating;
+		_town_test_ratings[t] = rating;
 	} else {
 		t->ratings[_current_player] = rating;
 	}
@@ -2482,7 +2489,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type)
 	 */
 	modemod = _default_rating_settings[_opt.diff.town_council_tolerance][type];
 
-	if ((_town_rating_test ? t->test_rating : t->ratings[_current_player]) < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
+	if (GetRating(t) < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
 		SetDParam(0, t->index);
 		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 		return false;

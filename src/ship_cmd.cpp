@@ -27,7 +27,6 @@
 #include "newgrf_text.h"
 #include "newgrf_sound.h"
 #include "spritecache.h"
-#include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"

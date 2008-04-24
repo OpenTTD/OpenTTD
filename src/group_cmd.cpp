@@ -12,7 +12,6 @@
 #include "train.h"
 #include "aircraft.h"
 #include "vehicle_gui.h"
-#include "misc/autoptr.hpp"
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
@@ -92,20 +91,14 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	VehicleType vt = (VehicleType)p1;
 	if (!IsPlayerBuildableVehicleType(vt)) return CMD_ERROR;
 
-	AutoPtrT<Group> g_auto_delete;
-
-	Group *g = new Group(_current_player);
-	if (g == NULL) return CMD_ERROR;
-
-	g_auto_delete = g;
+	if (!Group::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
+		Group *g = new Group(_current_player);
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 
 		InvalidateWindowData(GetWCForVT(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
-
-		g_auto_delete.Detach();
 	}
 
 	return CommandCost();

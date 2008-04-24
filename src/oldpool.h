@@ -317,6 +317,28 @@ protected:
 	{
 		return Tpool->CleaningPool();
 	}
+
+public:
+	/**
+	 * Check whether we can allocate an item in this pool. This to prevent the
+	 * need to actually construct the object and then destructing it again,
+	 * which could be *very* costly.
+	 * @return true if and only if at least ONE item can be allocated.
+	 */
+	static inline bool CanAllocateItem()
+	{
+		uint last_minus_one = Tpool->GetSize() - 1;
+
+		for (T *t = Tpool->Get(Tpool->first_free_index); t != NULL; t = (t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
+			if (!t->IsValid()) return true;
+			Tpool->first_free_index = t->index;
+		}
+
+		/* Check if we can add a block to the pool */
+		if (Tpool->AddBlockToPool()) return CanAllocateItem();
+
+		return false;
+	}
 };
 
 

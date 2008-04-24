@@ -27,7 +27,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
-#include "misc/autoptr.hpp"
 #include "road_type.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
 #include "cargotype.h"
@@ -239,7 +238,7 @@ enum StationNaming {
 	STATIONNAMING_HELIPORT,
 };
 
-static bool GenerateStationName(Station *st, TileIndex tile, int flag)
+static void GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
 		0,                                      /* 0 */
@@ -344,7 +343,6 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 
 done:
 	st->string_id = found + STR_SV_STNAME;
-	return true;
 }
 #undef M
 
@@ -966,10 +964,6 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	/* See if there is a deleted station close to us. */
 	if (st == NULL) st = GetClosestStationFromTile(tile_org);
 
-	/* In case of new station if DC_EXEC is NOT set we still need to create the station
-	 * to test if everything is OK. In this case we need to delete it before return. */
-	AutoPtrT<Station> st_auto_delete;
-
 	if (st != NULL) {
 		/* Reuse an existing station. */
 		if (st->owner != _current_player)
@@ -987,17 +981,17 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		if (!st->rect.BeforeAddRect(tile_org, w_org, h_org, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
 		/* allocate and initialize new station */
-		st = new Station(tile_org);
-		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
-		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-		st_auto_delete = st;
+		if (flags & DC_EXEC) {
+			st = new Station();
 
-		st->town = ClosestTownFromTile(tile_org, (uint)-1);
-		if (!GenerateStationName(st, tile_org, STATIONNAMING_RAIL)) return CMD_ERROR;
+			st->town = ClosestTownFromTile(tile_org, (uint)-1);
+			GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
 
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SetBit(st->town->have_ratings, _current_player);
+			if (IsValidPlayer(_current_player)) {
+				SetBit(st->town->have_ratings, _current_player);
+			}
 		}
 	}
 
@@ -1082,8 +1076,6 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
-		/* success, so don't delete the new station */
-		st_auto_delete.Detach();
 	}
 
 	return cost;
@@ -1388,22 +1380,12 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	/* give us a road stop in the list, and check if something went wrong */
-	RoadStop *road_stop = new RoadStop(tile);
-	if (road_stop == NULL) {
-		return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
-	}
-
-	/* ensure that in case of error (or no DC_EXEC) the new road stop gets deleted upon return */
-	AutoPtrT<RoadStop> rs_auto_delete(road_stop);
+	if (!RoadStop::CanAllocateItem()) return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
 
 	if (st != NULL &&
 			GetNumRoadStopsInStation(st, RoadStop::BUS) + GetNumRoadStopsInStation(st, RoadStop::TRUCK) >= RoadStop::LIMIT) {
 		return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
 	}
-
-	/* In case of new station if DC_EXEC is NOT set we still need to create the station
-	 * to test if everything is OK. In this case we need to delete it before return. */
-	AutoPtrT<Station> st_auto_delete;
 
 	if (st != NULL) {
 		if (st->owner != _current_player) {
@@ -1413,26 +1395,25 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!st->rect.BeforeAddTile(tile, StationRect::ADD_TEST)) return CMD_ERROR;
 	} else {
 		/* allocate and initialize new station */
-		st = new Station(tile);
-		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
-		/* ensure that in case of error (or no DC_EXEC) the new station gets deleted upon return */
-		st_auto_delete = st;
+		if (flags & DC_EXEC) {
+			st = new Station();
 
+			st->town = ClosestTownFromTile(tile, (uint)-1);
+			GenerateStationName(st, tile, STATIONNAMING_ROAD);
 
-		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
-		if (!GenerateStationName(st, tile, STATIONNAMING_ROAD)) return CMD_ERROR;
-
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SetBit(t->have_ratings, _current_player);
+			if (IsValidPlayer(_current_player)) {
+				SetBit(st->town->have_ratings, _current_player);
+			}
+			st->sign.width_1 = 0;
 		}
-
-		st->sign.width_1 = 0;
 	}
 
 	cost.AddCost((type) ? _price.build_truck_station : _price.build_bus_station);
 
 	if (flags & DC_EXEC) {
+		RoadStop *road_stop = new RoadStop(tile);
 		/* Insert into linked list of RoadStops */
 		RoadStop **currstop = FindRoadStopSpot(type, st);
 		*currstop = road_stop;
@@ -1454,9 +1435,6 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
-		/* success, so don't delete the new station and the new road stop */
-		st_auto_delete.Detach();
-		rs_auto_delete.Detach();
 	}
 	return cost;
 }
@@ -1711,10 +1689,6 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	/* In case of new station if DC_EXEC is NOT set we still need to create the station
-	 * to test if everything is OK. In this case we need to delete it before return. */
-	AutoPtrT<Station> st_auto_delete;
-
 	if (st != NULL) {
 		if (st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
@@ -1727,24 +1701,18 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		airport_upgrade = false;
 
 		/* allocate and initialize new station */
-		st = new Station(tile);
-		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
-		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-		st_auto_delete = st;
+		if (flags & DC_EXEC) {
+			st = new Station();
 
-		st->town = t;
+			st->town = ClosestTownFromTile(tile, (uint)-1);
+			GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SetBit(t->have_ratings, _current_player);
-		}
-
-		st->sign.width_1 = 0;
-
-		/* If only helicopters may use the airport generate a helicopter related (5)
-		 * station name, otherwise generate a normal airport name (1) */
-		if (!GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT)) {
-			return CMD_ERROR;
+			if (IsValidPlayer(_current_player)) {
+				SetBit(st->town->have_ratings, _current_player);
+			}
+			st->sign.width_1 = 0;
 		}
 	}
 
@@ -1781,8 +1749,6 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
-		/* success, so don't delete the new station */
-		st_auto_delete.Detach();
 	}
 
 	return cost;
@@ -1851,18 +1817,18 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (GetTileSlope(tile, NULL) != SLOPE_FLAT) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
 	/* allocate and initialize new station */
-	Station *st = new Station(tile);
-	if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
-
-	/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-	AutoPtrT<Station> st_auto_delete(st);
-
-	st->town = ClosestTownFromTile(tile, (uint)-1);
-	st->sign.width_1 = 0;
-
-	if (!GenerateStationName(st, tile, STATIONNAMING_BUOY)) return CMD_ERROR;
+	if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
+		Station *st = new Station();
+
+		st->town = ClosestTownFromTile(tile, (uint)-1);
+		GenerateStationName(st, tile, STATIONNAMING_BUOY);
+
+		if (IsValidPlayer(_current_player)) {
+			SetBit(st->town->have_ratings, _current_player);
+		}
+		st->sign.width_1 = 0;
 		st->dock_tile = tile;
 		st->facilities |= FACIL_DOCK;
 		/* Buoys are marked in the Station struct by this flag. Yes, it is this
@@ -1879,8 +1845,6 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
-		/* success, so don't delete the new station */
-		st_auto_delete.Detach();
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
@@ -2006,10 +1970,6 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Find a station close to us */
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
-	/* In case of new station if DC_EXEC is NOT set we still need to create the station
-	 * to test if everything is OK. In this case we need to delete it before return. */
-	AutoPtrT<Station> st_auto_delete;
-
 	if (st != NULL) {
 		if (st->owner != _current_player)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
@@ -2019,21 +1979,19 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
 		/* allocate and initialize new station */
-		st = new Station(tile);
-		if (st == NULL) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
+		/* allocate and initialize new station */
+		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
-		/* ensure that in case of error (or no DC_EXEC) the station gets deleted upon return */
-		st_auto_delete = st;
+		if (flags & DC_EXEC) {
+			st = new Station();
 
-		Town *t = st->town = ClosestTownFromTile(tile, (uint)-1);
+			st->town = ClosestTownFromTile(tile, (uint)-1);
+			GenerateStationName(st, tile, STATIONNAMING_DOCK);
 
-		if (IsValidPlayer(_current_player) && (flags & DC_EXEC) != 0) {
-			SetBit(t->have_ratings, _current_player);
+			if (IsValidPlayer(_current_player)) {
+				SetBit(st->town->have_ratings, _current_player);
+			}
 		}
-
-		st->sign.width_1 = 0;
-
-		if (!GenerateStationName(st, tile, STATIONNAMING_DOCK)) return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {
@@ -2049,8 +2007,6 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
-		/* success, so don't delete the new station */
-		st_auto_delete.Detach();
 	}
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.build_dock);
 }
@@ -2848,11 +2804,7 @@ void BuildOilRig(TileIndex tile)
 	st->town = ClosestTownFromTile(tile, (uint)-1);
 	st->sign.width_1 = 0;
 
-	if (!GenerateStationName(st, tile, STATIONNAMING_OILRIG)) {
-		DEBUG(misc, 0, "Can't allocate station-name for oilrig at 0x%X, reverting to oilrig only", tile);
-		delete st;
-		return;
-	}
+	GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 
 	MakeOilrig(tile, st->index);
 
