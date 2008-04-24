@@ -1714,7 +1714,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			st = new Station();
 
-			st->town = ClosestTownFromTile(tile, (uint)-1);
+			st->town = t;
 			GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
 			if (IsValidPlayer(_current_player)) {
