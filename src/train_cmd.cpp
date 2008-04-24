@@ -246,7 +246,7 @@ void TrainConsistChanged(Vehicle* v)
 			if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
 				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
-				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
+				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = GB(callback, 0, 8);
 			}
 
 			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
@@ -1302,7 +1302,7 @@ CommandCost CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	/* Check if this train can be started/stopped. The callback will fail or
 	 * return 0xFF if it can. */
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && callback != 0xFF) {
+	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF) {
 		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
 		return_cmd_error(error);
 	}

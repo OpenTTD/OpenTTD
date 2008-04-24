@@ -932,7 +932,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
 				if (statspec != NULL && statspec->name != 0) {
-					if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+					if (HasBit(statspec->callbackmask, CBM_STATION_AVAIL) && GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
 						GfxFillRect(8, y - 2, 127, y + 10, (1 << PALETTE_MODIFIER_GREYOUT));
 					}
 
@@ -1077,7 +1077,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			statspec = GetCustomStationSpec(_railstation.station_class, y);
 			if (statspec != NULL &&
 				HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
-				GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
+				GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
 			_railstation.station_type = y;
 
@@ -1495,7 +1495,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 
 				if (statspec != NULL &&
 						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
-						GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) {
 					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, (1 << PALETTE_MODIFIER_GREYOUT));
 				}
 			}
@@ -1515,7 +1515,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);
 				if (statspec != NULL &&
 						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
-						GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
+						GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
 
 				_cur_waypoint_type = type;
 				SndPlayFx(SND_15_BEEP);

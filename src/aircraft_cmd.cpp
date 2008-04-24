@@ -529,7 +529,7 @@ CommandCost CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32
 	/* Check if this aircraft can be started/stopped. The callback will fail or
 	 * return 0xFF if it can. */
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && callback != 0xFF) {
+	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF) {
 		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
 		return_cmd_error(error);
 	}

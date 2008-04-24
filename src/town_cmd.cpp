@@ -1905,7 +1905,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 			if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
 				uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
-				if (callback_res != CALLBACK_FAILED && callback_res == 0) continue;
+				if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) == 0) continue;
 			}
 		}
 
