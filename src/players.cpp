@@ -353,70 +353,78 @@ bad_town_name:;
 	}
 }
 
-#define COLOR_SWAP(i, j) do { byte t = colors[i];colors[i] = colors[j];colors[j] = t; } while(0)
+static const byte _colour_sort[COLOUR_END] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
+static const Colours _similar_colour[COLOUR_END][2] = {
+	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_DARK_BLUE
+	{ COLOUR_GREEN,      COLOUR_DARK_GREEN }, // COLOUR_PALE_GREEN
+	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_PINK
+	{ COLOUR_ORANGE,     INVALID_COLOUR    }, // COLOUR_YELLOW
+	{ INVALID_COLOUR,    INVALID_COLOUR    }, // COLOUR_RED
+	{ COLOUR_DARK_BLUE,  COLOUR_BLUE       }, // COLOUR_LIGHT_BLUE
+	{ COLOUR_PALE_GREEN, COLOUR_DARK_GREEN }, // COLOUR_GREEN
+	{ COLOUR_PALE_GREEN, COLOUR_GREEN      }, // COLOUR_DARK_GREEN
+	{ COLOUR_BLUE,       COLOUR_LIGHT_BLUE }, // COLOUR_BLUE
+	{ COLOUR_BROWN,      COLOUR_ORANGE     }, // COLOUR_CREAM
+	{ COLOUR_PURPLE,     INVALID_COLOUR    }, // COLOUR_MAUVE
+	{ COLOUR_MAUVE,      INVALID_COLOUR    }, // COLOUR_PURPLE
+	{ COLOUR_YELLOW,     COLOUR_CREAM      }, // COLOUR_ORANGE
+	{ COLOUR_CREAM,      INVALID_COLOUR    }, // COLOUR_BROWN
+	{ COLOUR_WHITE,      INVALID_COLOUR    }, // COLOUR_GREY
+	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
+};
 
-static const byte _color_sort[16] = {2, 2, 3, 2, 3, 2, 3, 2, 3, 2, 2, 2, 3, 1, 1, 1};
-static const byte _color_similar_1[16] = {8, 6, 255, 12,  255, 0, 1, 1, 0, 13,  11,  10, 3,   9,  15, 14};
-static const byte _color_similar_2[16] = {5, 7, 255, 255, 255, 8, 7, 6, 5, 12, 255, 255, 9, 255, 255, 255};
-
-static byte GeneratePlayerColor()
+static byte GeneratePlayerColour()
 {
-	byte colors[16], pcolor, t2;
-	int i, j, n;
-	uint32 r;
-	Player *p;
+	Colours colours[COLOUR_END];
 
 	/* Initialize array */
-	for (i = 0; i != 16; i++) colors[i] = i;
+	for (uint i = 0; i < COLOUR_END; i++) colours[i] = (Colours)i;
 
 	/* And randomize it */
-	n = 100;
-	do {
-		r = Random();
-		COLOR_SWAP(GB(r, 0, 4), GB(r, 4, 4));
-	} while (--n);
+	for (uint i = 0; i < 100; i++) {
+		uint r = Random();
+		Swap(colours[GB(r, 0, 4)], colours[GB(r, 4, 4)]);
+	}
 
 	/* Bubble sort it according to the values in table 1 */
-	i = 16;
-	do {
-		for (j = 0; j != 15; j++) {
-			if (_color_sort[colors[j]] < _color_sort[colors[j + 1]]) {
-				COLOR_SWAP(j, j + 1);
+	for (uint i = 0; i < COLOUR_END; i++) {
+		for (uint j = 1; j < COLOUR_END; j++) {
+			if (_colour_sort[colours[j - 1]] < _colour_sort[colours[j]]) {
+				Swap(colours[j - 1], colours[j]);
 			}
 		}
-	} while (--i);
+	};
 
 	/* Move the colors that look similar to each player's color to the side */
-	FOR_ALL_PLAYERS(p) if (p->is_active) {
-		pcolor = p->player_color;
-		for (i = 0; i != 16; i++) if (colors[i] == pcolor) {
-			colors[i] = 0xFF;
+	Player *p;
+	FOR_ALL_PLAYERS(p) {
+		if (!p->is_active) continue;
 
-			t2 = _color_similar_1[pcolor];
-			if (t2 == 0xFF) break;
-			for (i = 0; i != 15; i++) {
-				if (colors[i] == t2) {
-					do COLOR_SWAP(i, i + 1); while (++i != 15);
-					break;
-				}
-			}
+		Colours pcolour = (Colours)p->player_color;
 
-			t2 = _color_similar_2[pcolor];
-			if (t2 == 0xFF) break;
-			for (i = 0; i != 15; i++) {
-				if (colors[i] == t2) {
-					do COLOR_SWAP(i, i + 1); while (++i != 15);
-					break;
-				}
+		for (uint i = 0; i < COLOUR_END; i++) {
+			if (colours[i] == pcolour) {
+				colours[i] = INVALID_COLOUR;
+				break;
 			}
-			break;
+		}
+
+		for (uint j = 0; j < 2; j++) {
+			Colours similar = _similar_colour[pcolour][j];
+			if (similar == INVALID_COLOUR) break;
+
+			for (uint i = 1; i < COLOUR_END; i++) {
+				if (colours[i - 1] == similar) Swap(colours[i - 1], colours[i]);
+			}
 		}
 	}
 
 	/* Return the first available color */
-	for (i = 0;; i++) {
-		if (colors[i] != 0xFF) return colors[i];
+	for (uint i = 0; i < COLOUR_END; i++) {
+		if (colours[i] != INVALID_COLOUR) return colours[i];
 	}
+
+	NOT_REACHED();
 }
 
 static void GeneratePresidentName(Player *p)
@@ -487,7 +495,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	if (p == NULL) return NULL;
 
 	/* Make a color */
-	p->player_color = GeneratePlayerColor();
+	p->player_color = GeneratePlayerColour();
 	ResetPlayerLivery(p);
 	_player_colors[p->index] = p->player_color;
 	p->name_1 = STR_SV_UNNAMED;

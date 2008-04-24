@@ -164,7 +164,7 @@ struct SubSprite {
 	int left, top, right, bottom;
 };
 
-enum {
+enum Colours {
 	COLOUR_DARK_BLUE,
 	COLOUR_PALE_GREEN,
 	COLOUR_PINK,
@@ -180,7 +180,9 @@ enum {
 	COLOUR_ORANGE,
 	COLOUR_BROWN,
 	COLOUR_GREY,
-	COLOUR_WHITE
+	COLOUR_WHITE,
+	COLOUR_END,
+	INVALID_COLOUR = 0xFF
 };
 
 /** Colour of the strings, see _string_colormap in table/palettes.h or docs/ottd-colourtext-palette.png */
