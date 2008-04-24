@@ -790,7 +790,8 @@ static void ProcessRoadVehOrder(Vehicle *v)
 
 	if (order->type  == v->current_order.type &&
 			order->flags == v->current_order.flags &&
-			order->dest  == v->current_order.dest) {
+			order->dest  == v->current_order.dest &&
+			v->dest_tile != 0) {
 		return;
 	}
 
@@ -1940,7 +1941,7 @@ static void RoadVehController(Vehicle *v)
 			HandleBrokenRoadVeh(v);
 			return;
 		}
-		v->breakdown_ctr--;
+		if (!v->current_order.type == OT_LOADING) v->breakdown_ctr--;
 	}
 
 	if (v->vehstatus & VS_STOPPED) return;
