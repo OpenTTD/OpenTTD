@@ -1663,7 +1663,7 @@ bool ProcessOrders(Vehicle *v)
 
 		case VEH_AIRCRAFT:
 		case VEH_SHIP:
-			InvalidateWindowClasses(v->GetVehicleListWindowClass());
+			InvalidateWindowClasses(GetWindowClassForVehicleType(v->type));
 			break;
 	}
 

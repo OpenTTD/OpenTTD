@@ -2546,7 +2546,7 @@ void Vehicle::BeginLoading()
 
 	VehiclePayment(this);
 
-	InvalidateWindow(this->GetVehicleListWindowClass(), this->owner);
+	InvalidateWindow(GetWindowClassForVehicleType(this->type), this->owner);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, this->index, VVW_WIDGET_START_STOP_VEH);
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindow(WC_STATION_VIEW, this->last_station_visited);

@@ -71,7 +71,6 @@ struct RoadVehicle : public Vehicle {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
-	WindowClass GetVehicleListWindowClass() const { return WC_ROADVEH_LIST; }
 	bool IsPrimaryVehicle() const { return IsRoadVehFront(this); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }

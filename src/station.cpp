@@ -21,6 +21,7 @@
 #include "yapf/yapf.h"
 #include "cargotype.h"
 #include "roadveh.h"
+#include "window_type.h"
 #include "station_gui.h"
 #include "zoom_func.h"
 #include "functions.h"

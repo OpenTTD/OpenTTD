@@ -117,7 +117,6 @@ struct Aircraft : public Vehicle {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_AIRCRAFT_INC : EXPENSES_AIRCRAFT_RUN; }
-	WindowClass GetVehicleListWindowClass() const { return WC_AIRCRAFT_LIST; }
 	bool IsPrimaryVehicle() const { return IsNormalAircraft(this); }
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }

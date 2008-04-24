@@ -293,7 +293,6 @@ struct Train : public Vehicle {
 	void MarkDirty();
 	void UpdateDeltaXY(Direction direction);
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_TRAIN_INC : EXPENSES_TRAIN_RUN; }
-	WindowClass GetVehicleListWindowClass() const { return WC_TRAINS_LIST; }
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
 	SpriteID GetImage(Direction direction) const;

@@ -11,7 +11,6 @@
 #include "road_type.h"
 #include "cargo_type.h"
 #include "direction_type.h"
-#include "window_type.h"
 #include "gfx_type.h"
 #include "command_type.h"
 #include "date_type.h"
@@ -369,11 +368,6 @@ public:
 	 * @param income whether this is income or (running) expenses of the vehicle
 	 */
 	virtual ExpensesType GetExpenseType(bool income) const { return EXPENSES_OTHER; }
-
-	/**
-	 * Invalidates the vehicle list window of this type of vehicle
-	 */
-	virtual WindowClass GetVehicleListWindowClass() const { return WC_NONE; }
 
 	/**
 	 * Play the sound associated with leaving the station

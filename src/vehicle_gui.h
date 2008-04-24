@@ -99,6 +99,22 @@ static inline uint GetVehicleListHeight(VehicleType type)
 	return (type == VEH_TRAIN || type == VEH_ROAD) ? 14 : 24;
 }
 
+/** Get WindowClass for vehicle list of given vehicle type
+ * @param vt vehicle type to check
+ * @return corresponding window class
+ * @note works only for player buildable vehicle types
+ */
+static inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
+{
+	switch (vt) {
+		default: NOT_REACHED();
+		case VEH_TRAIN:    return WC_TRAINS_LIST;
+		case VEH_ROAD:     return WC_ROADVEH_LIST;
+		case VEH_SHIP:     return WC_SHIPS_LIST;
+		case VEH_AIRCRAFT: return WC_AIRCRAFT_LIST;
+	}
+}
+
 /* Unified window procedure */
 void ShowVehicleViewWindow(const Vehicle *v);
 
