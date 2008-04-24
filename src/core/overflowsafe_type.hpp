@@ -139,9 +139,9 @@ template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MA
 template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator / (uint  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
 
 /* Sometimes we got byte operator OverflowSafeInt instead of vice versa. Handle that properly */
-template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator + (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator - (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return -b + a; }
-template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator * (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b * a; }
+template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator + (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b + (uint)a; }
+template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator - (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return -b + (uint)a; }
+template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator * (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return b * (uint)a; }
 template <class T, int64 T_MAX, int64 T_MIN> FORCEINLINE OverflowSafeInt<T, T_MAX, T_MIN> operator / (byte  a, OverflowSafeInt<T, T_MAX, T_MIN> b) { return (OverflowSafeInt<T, T_MAX, T_MIN>)a / (int)b; }
 
 typedef OverflowSafeInt<int64, INT64_MAX, INT64_MIN> OverflowSafeInt64;
