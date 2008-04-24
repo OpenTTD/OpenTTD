@@ -20,6 +20,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} з {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Приймає: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Приймає: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Постачає: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :пасажири
 STR_000F_PASSENGERS.r                                           :пасажирів
@@ -1070,7 +1071,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Форм
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Виберіть формат для створення копій екрану
 
-STR_AUTOSAVE_1_MONTH                                            :Щомісяця
+STR_AUTOSAVE_1_MONTH                                            :щомісяця
 STR_AUTOSAVE_FAILED                                             :{WHITE}Помилка автозбереження
 
 STR_MONTH_JAN                                                   :Січень
@@ -1127,7 +1128,7 @@ STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Кора
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Літак {COMMA} не має завдань
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Літак {COMMA} має пустий наказ
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Літак {COMMA} має подвійні накази
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Літак {COMMA} має в наказі невірну станцію
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Літак {COMMA} має в маршруті невірну станцію
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Помилка автооновлення поїзда {COMMA} (бракує коштів)
@@ -1296,6 +1297,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :стандар�
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :кращі дороги
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :сітка 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :сітка 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :випадково
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положення головного меню: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Ліворуч
@@ -1486,6 +1488,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Назв
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Назва гри
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Мова, версія сервера, та інше.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Натисніть на гру із списку, щоб вибрати її
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Сервер, до якого під'єднувались востаннє
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Натисніть, щоб вибрати сервер, на якому ви грали востаннє
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Знайти сервер
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Пошук мережі для сервера
@@ -1856,8 +1860,8 @@ STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Влад
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Назви міст - вкажіть на місто і воно з'явиться в центрі екрану
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Показати в центрі екрану
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Змінити назву міста
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Пасажирів за місяць: {ORANGE}{COMMA}{BLACK} Найбільше: {ORANGE}{COMMA}
-STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Пошти за місяць: {ORANGE}{COMMA}{BLACK} Найбільше: {ORANGE}{COMMA}
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Пасажирів за місяць: {ORANGE}{COMMA}{BLACK} найбільше: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Пошти за місяць: {ORANGE}{COMMA}{BLACK} найбільше: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Великий офіс
 STR_2010_OFFICE_BLOCK                                           :Офісний район
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Будинки
@@ -1877,15 +1881,15 @@ STR_201E_STADIUM                                                :Стадіон
 STR_201F_OLD_HOUSES                                             :Старі будинки
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Місцева влада
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Інформація про місцеву владу
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} місцева влада
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} - місцева влада
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейтинги компаній:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидії
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Пропонуються субсидії:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Пропонуються субсидії:
 STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STRING} до {STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}немає
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Призначені субсидії:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Призначені субсидії:
 STR_202C_FROM_TO                                                :{ORANGE}Перевезення {STRING.r} з {STATION} до {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, по {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Субсидію відмінено:{}{}Перевезення {STRING.r} з {STRING} до {STRING}.
@@ -2313,8 +2317,8 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Кіл�
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Конкуренти починають через: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Кількість міст: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Кількість підприємств: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Початковий кредит: {ORANGE}{CURRENCY}
-STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Відсотки за кредит: {ORANGE}{COMMA}%
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Початкова позика: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Відсоткова ставка: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Транспортні витрати: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Швидкість будівництва конкурентів: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Досвідченість конкурентів: {ORANGE}{STRING}
@@ -2375,7 +2379,7 @@ STR_HOSTILE                                                     :Вороже
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_PLAYER                                                 :(Гравець {COMMA})
-STR_7004_NEW_FACE                                               :{BLACK}Нове лице
+STR_7004_NEW_FACE                                               :{BLACK}Нове обличчя
 STR_7005_COLOR_SCHEME                                           :{BLACK}Колір
 STR_7006_COLOR_SCHEME                                           :{GOLD}Колір:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Новий колір
@@ -2399,35 +2403,35 @@ STR_7018_TRAIN_INCOME                                           :{GOLD}Дохі�
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Дохід, автомобілі
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Дохід, літаки
 STR_701B_SHIP_INCOME                                            :{GOLD}Дохід, кораблі
-STR_701C_LOAN_INTEREST                                          :{GOLD}Відсотки за кредит
+STR_701C_LOAN_INTEREST                                          :{GOLD}Відсотки за позикою
 STR_701D_OTHER                                                  :{GOLD}Інше
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
-STR_7020_TOTAL                                                  :{WHITE}Всього:
+STR_7020_TOTAL                                                  :{WHITE}Підсумок:
 STR_7021                                                        :{COMPANY} {COMPANYNUM}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графік доходів
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графік прибутку від виробництва
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графік операційного прибутку
 STR_7026_BANK_BALANCE                                           :{WHITE}Рахунок
-STR_7027_LOAN                                                   :{WHITE}Взято в кредит
-STR_MAX_LOAN                                                    :{WHITE}Макс. кредит:  {BLACK}{CURRENCY}
+STR_7027_LOAN                                                   :{WHITE}Позика
+STR_MAX_LOAN                                                    :{WHITE}Макс. позика:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Позичити {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Повернути {SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...найбільший дозволений розмір кредиту {CURRENCY}
-STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Неможливо взяти кредит...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...кредит вже оплачено
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...найбільший дозволений розмір позики {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Неможливо взяти ще позику...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...позика вже повернута
 STR_702E_REQUIRED                                               :{WHITE}...потрібно {CURRENCY}
-STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Неможливо виплатити кредит...
-STR_INSUFFICIENT_FUNDS                                          :{WHITE}Неможливо передати гроші, які взяли в кредит з банку...
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Вибір нового лиця керівника
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Неможливо повернути позику...
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}Неможливо передати гроші, позичені у банку...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Вибрати нове обличчя керівника
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Зміна кольору транспорту компанії
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Зміна імені керівника
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Зміна назви компанії
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Натисніть на колір, який вам до вподоби
-STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Взяти кредит
-STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Виплатити частину кредиту
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Збільшити розмір позики
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Повернути частину позики
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Керівник)
 STR_7038_INAUGURATED                                            :{GOLD}Засновано у: {WHITE}{NUM} році
 STR_7039_VEHICLES                                               :{GOLD}Транспорт:
@@ -2436,19 +2440,19 @@ STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} 
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} літак{P "" и ів}
 STR_SHIPS                                                       :{WHITE}{COMMA} кораб{P ель лі ів}
 STR_7042_NONE                                                   :{WHITE}Нема
-STR_7043_FACE_SELECTION                                         :{WHITE}Вибір лиця
+STR_7043_FACE_SELECTION                                         :{WHITE}Вибір обличчя
 STR_7044_MALE                                                   :{BLACK}Чоловік
 STR_7045_FEMALE                                                 :{BLACK}Жінка
-STR_7046_NEW_FACE                                               :{BLACK}Нове лице
-STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Відмінити вибір нового лиця
-STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Підтвердити вибір нового лиця
-STR_7049_SELECT_MALE_FACES                                      :{BLACK}Вибір чоловічого лиця
-STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Вибір жіночого лиця
-STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Генерувати випадкове нове лице
+STR_7046_NEW_FACE                                               :{BLACK}Нове обличчя
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Відмінити вибір нового обличчя
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Підтвердити вибір нового обличчя
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Вибрати чоловіче обличчя
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Вибрати жіноче обличчя
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Генерувати нове випадкове обличчя
 STR_704C_KEY                                                    :{BLACK}Ключ
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Показ ключа до графіків
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ключ до графіків компанії
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Натисніть для вкл/викл окремого графіку компанії
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Натисніть тут для вкл./відкл. графіку окремої компанії
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Доставка одиниці вантажу
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Рейтинг продуктивності компанії (найбільший рейтинг=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Вартість компанії
@@ -2812,6 +2816,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поїзд на шляху
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Прямувати до
+STR_ORDER_GO_NON_STOP_TO                                        :Прямувати без зупинок до
+STR_ORDER_GO_VIA                                                :Прямувати через
+STR_ORDER_GO_NON_STOP_VIA                                       :Прямувати без зупинок через
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Завантажитись при нагоді
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Повністю завантажити всі вантажі
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Повністю завантажити будь-який вид вантажу
+STR_ORDER_DROP_NO_LOADING                                       :Не завантажуватись
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Розвантажитись, якщо приймають
+STR_ORDER_DROP_UNLOAD                                           :Розвантажити все
+STR_ORDER_DROP_TRANSFER                                         :Передати
+STR_ORDER_DROP_NO_UNLOADING                                     :Не розвантажуватись
+STR_ORDER_FULL_LOAD                                             :(Завантажити все)
+STR_ORDER_FULL_LOAD_ANY                                         :(Повністю завантажити будь-який вид вантажу)
+STR_ORDER_NO_LOAD                                               :(Не завантажуватись)
+STR_ORDER_UNLOAD                                                :(Розвантажити)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Розвантажитись і чекати повного завантаження)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Розвантажитись і чекати повного завантаження будь-якого виду)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Розвантажитись і залишитись пустим)
+STR_ORDER_TRANSFER                                              :(Передати і взяти вантаж)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Передати і чекати повного завантаження)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Передати і чекати повного завантаження будь-якого виду)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Передати і залишитись пустим)
+STR_ORDER_NO_UNLOAD                                             :(Не розвантажуватись і взяти вантаж)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не розвантажуватись і чекати повного завантаження)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не розвантажуватись і чекати повного завантаження будь-якого виду)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Змінити поведінку зупинки виділеного пункту
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Змінити поведінку завантаження виділеного пункту
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Змінити поведінку розвантаження виділеного пункту
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Додати складний наказ
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Прямувати до найближчого депо
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Прямувати до найближчого ангару
+STR_ORDER_NEAREST_DEPOT                                         :найближчому
+STR_ORDER_NEAREST_HANGAR                                        :найближчому ангарі
+STR_ORDER_SERVICE_AT                                            :Техогляд у
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Техогляд без зупинки у
+STR_ORDER_TRAIN_DEPOT                                           :Залізничне депо
+STR_ORDER_ROAD_DEPOT                                            :Автомобільне депо
+STR_ORDER_SHIP_DEPOT                                            :Док
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Ангар
+
+STR_ORDER_CONDITIONAL                                           :Зміна наказу з умовою
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Як порівнювати дані транспорту з заданим значенням
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Значення, з яким порівнювати дані транспорту
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Введіть значення для порівняння
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент завантаження
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Надійність
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. швидкість
+STR_ORDER_CONDITIONAL_AGE                                       :Вік транспорту (роки)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Потребує техогляду
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Завжди
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :дорівнює
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :не дорівнює
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :менше ніж
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :менше або дорівнює
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :більше ніж
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :більше або дорівнює
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :- так
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :- ні
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Перейти до наказу {COMMA}
+STR_CONDITIONAL_NUM                                             :Перейти до наказу {COMMA}, якщо {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Перейти до наказу {COMMA}, якщо {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Прямує (не за розкладом)
 STR_TIMETABLE_TRAVEL_FOR                                        :Прямує до {STRING}
@@ -2869,6 +2943,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Завантажуюся/Розвантажуюся
+STR_LEAVING                                                     :{LTBLUE}Відправляється
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Неможливо відправити поїзд в депо...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Немає місця для наказів
@@ -3200,7 +3275,7 @@ STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Дост
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Вантаж:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Кошти:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Кредит:
-STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Всього:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Підсумок:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Загальна кількість транспорту
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Загальна кількість станцій.
@@ -3210,7 +3285,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Найб
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Кількість одиниць вантажу, доставлених за останні 4 квартали
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Кількість видів вантажу, доставлених за останній квартал
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Сума коштів на рахунку компанії
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума кредиту, що надано компанії
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума позики, наданої компанії
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількість балів
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Налаштування NewGRF
@@ -3473,7 +3548,7 @@ STR_HELIPORTS                                                   :{BLACK}Гелі
 ############ Tooltip measurment
 
 STR_MEASURE_LENGTH                                              :{BLACK}Довжина: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Область: {NUM} x {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Ділянка: {NUM} x {NUM}
 STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Довжина: {NUM}{}Різниця висот: {NUM} м
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Ділянка: {NUM} x {NUM}{}Різниця висот: {NUM} м
 
@@ -3498,6 +3573,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Пере
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключити прозорість для споруд, таких як маяки та антени. CTRL+click - запам'ятати
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Переключити прозорість для ЛЕП. CTRL+click - запам'ятати
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Змінити прозорість індикаторів завантаження. CTRL+click - запам'ятати
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Зробити об'єкти невидимими, а не прозорими
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3601,8 +3677,8 @@ STR_FACE_MOUSTACHE                                              :Вуса:
 STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Змінити губи або вуса
 STR_FACE_CHIN                                                   :Підборіддя:
 STR_FACE_CHIN_TIP                                               :{BLACK}Змінити підборіддя
-STR_FACE_JACKET                                                 :Жакет:
-STR_FACE_JACKET_TIP                                             :{BLACK}Змінити жакет
+STR_FACE_JACKET                                                 :Піджак:
+STR_FACE_JACKET_TIP                                             :{BLACK}Змінити піджак
 STR_FACE_COLLAR                                                 :Комір
 STR_FACE_COLLAR_TIP                                             :{BLACK}Змінити комір
 STR_FACE_TIE                                                    :Краватка:

@@ -18,6 +18,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} en ruta des de {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepta: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepta: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Provisions: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passatgers
 STR_0010_COAL                                                   :Carbó
@@ -377,6 +378,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capac. total pe
 STR_SORT_BY_MAX_SPEED                                           :Veloc. Màxima
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_LENGTH                                              :Llargada
 STR_SORT_BY_FACILITY                                            :Tipus de estació
 STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
 STR_SORT_BY_RATING_MAX                                          :Rati de càrrega
@@ -1362,6 +1364,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nom
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nom del joc
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Idioma, versió de servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Clica en un joc de la llista per triar-lo
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}El servidor en el que has entrat per darrera vegada:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Clica per seleccionar al servidor en el que has jugat per darrera vegada:
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Busca servidor
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Cercant un servidor a la xarxa
@@ -2651,6 +2655,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} C
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{} Arribada del 1er. tren a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalls)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en el camí
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Ves a
+STR_ORDER_GO_NON_STOP_TO                                        :Ves sense parar a
+STR_ORDER_GO_VIA                                                :Ves via
+STR_ORDER_GO_NON_STOP_VIA                                       :Ves sense parar via
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carrega si està disponible
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carrega del tot totes les càrregues
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carrega del tot qualsevol càrrega
+STR_ORDER_DROP_NO_LOADING                                       :No carreguis
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarrega si s'accepta
+STR_ORDER_DROP_UNLOAD                                           :Descarrega tot
+STR_ORDER_DROP_TRANSFER                                         :Transfereix
+STR_ORDER_DROP_NO_UNLOADING                                     :No descarreguis
+STR_ORDER_FULL_LOAD                                             :(Càrrega completa)
+STR_ORDER_FULL_LOAD_ANY                                         :(Càrrega completa de qualsevol càrrega)
+STR_ORDER_NO_LOAD                                               :(No carregar)
+STR_ORDER_UNLOAD                                                :(Descarrega i agafa la càrrega)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarrega i espera carregar del tot)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarrega i espera una càrrega completa qualsevol)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarrega i deixa buit)
+STR_ORDER_TRANSFER                                              :(Transfereix i agafa càrrega)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfereix i espera una càrrega completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfereix i espera qualsevol càrrega completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfereix i deixa buit)
+STR_ORDER_NO_UNLOAD                                             :(No descarreguis i agafa càrrega)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descarreguis i espera carregar del tot)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descarreguis i espera carregar del tot de qualsevol càrrega)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Canvia el comportament de parada de l'ordre remarcada
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Canvia el comportament de càrrega de l'ordre remarcada
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Canvia el comportament de descàrrega de l'ordre remarcada
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Insereix una ordre avançada
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ves al dipòsit més proper
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ves a l'hangar més proper
+STR_ORDER_NEAREST_DEPOT                                         :el més proper
+STR_ORDER_NEAREST_HANGAR                                        :l'hangar més proper
+STR_ORDER_SERVICE_AT                                            :Revisió a
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Revisió sense parar a
+STR_ORDER_TRAIN_DEPOT                                           :Cotxeres de tren
+STR_ORDER_ROAD_DEPOT                                            :Cotxera de Vehicles
+STR_ORDER_SHIP_DEPOT                                            :Drassanes
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
+STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dades del vehicle on basar el salt a
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Com comparar les dades del vehicle al valor donat
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}El valor amb el que comparar de les dades del vehicle
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introdueix el valor amb el que comparar
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentatge de càrrega
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilitat
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocitat màxima
+STR_ORDER_CONDITIONAL_AGE                                       :Antiguitat del vehicle (anys)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessita revisió
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :és igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :no és igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :és més petit que
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :és més petit o igual que
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :és més gran que
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :és més gran o igual que
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :és verdader
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :és fals
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :salta a l'ordre {COMMA}
+STR_CONDITIONAL_NUM                                             :Salta a l'ordre {COMMA} quan {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Salta a l'ordre {COMMA} quan {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viatge (fora d'horari)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viatge a {STRING}
@@ -2708,6 +2782,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Carregant / Descarregant
+STR_LEAVING                                                     :{LTBLUE}Deixant
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren s'ha de parar dins de la cotxera
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}No pots enviar el tren a cotxeres...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No hi ha més espai per ordres
@@ -3337,6 +3412,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activa/D
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activa/Desactiva transparència de les estructures com ara fars i antenes
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Commuta la transparència de la catenària. CTRL+clic per bloquejar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Activa/Desactiva la transparència pels indicadors de carregament
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Mostra els objectes invisibles enlloc de transparents
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

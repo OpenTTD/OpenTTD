@@ -20,6 +20,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} транзитом из {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Принимаются: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Принимаются: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Принимает: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Пассажиры
 STR_0010_COAL                                                   :Уголь
@@ -1173,6 +1174,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :старый а
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :улучшенный алгоритм
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :решёткой 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :решёткой 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :случайно
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :слева
@@ -1352,6 +1354,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Сете
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Имя игрока:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Это имя, под которым вы представитесь другим игрокам
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Введите ваше имя
 STR_NETWORK_CONNECTION                                          :{BLACK}Соединение:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Искать сервера в локальной сети, или в Интернете
 
@@ -1362,6 +1365,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Назв
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Название игры
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Язык, версия сервера и т.п.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Выберите игру из списка
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Последний сервер, к которому вы подключались:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Нажмите для выбора последнего сервера
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Обновить
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Обновить список серверов, которые сейчас есть в сети
@@ -1395,6 +1400,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Запу
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Название игры:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Название игры, которое игроки увидят в меню выбора сетевой игры
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Введите ваше имя для сетевой игры
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Установить пароль
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Защитите вашу игру паролем, если вы не хотите, чтобы к ней могли подключиться все желающие
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Выбор карты:
@@ -1556,6 +1562,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Лично] {S
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] к {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всем] :
 STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введите текст для сетевого сообщения
 STR_NETWORK_NAME_CHANGE                                         :изменил свое имя на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрыл сессию
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сервер перезапускается...{}Пожалуйста, подождите...
@@ -1959,6 +1966,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Выбр
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Выбрать сценарий(зеленый), предустановленную новую игру (синий) или случайную новую игру
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Сгенерировать случайную карту
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Загруз. ЛАНДШАФТ
+STR_SAVE_OSKTITLE                                               :{BLACK}Введите имя сохраняемой игры
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на пути
@@ -2659,6 +2667,74 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Депо
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд мешает
+STR_ORDER_GO_TO                                                 :Идти на
+STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановки на
+STR_ORDER_GO_VIA                                                :Идти через
+STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановки через
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Погрузить если доступно
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Полная загрузка всего груза
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Полная загрузка любым грузом
+STR_ORDER_DROP_NO_LOADING                                       :Не грузиться
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Разгузиться если груз принимается
+STR_ORDER_DROP_UNLOAD                                           :Выгрузить все
+STR_ORDER_DROP_TRANSFER                                         :Передать
+STR_ORDER_DROP_NO_UNLOADING                                     :Не разгружаться
+STR_ORDER_FULL_LOAD                                             :(Полн. погрузка)
+STR_ORDER_FULL_LOAD_ANY                                         :(Полная погрузка любым грузом)
+STR_ORDER_NO_LOAD                                               :(Не грузиться)
+STR_ORDER_UNLOAD                                                :(Разгрузка)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Разгрузиться и ждать полной загрузки)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Разгрузиться и ждать полной загрузки любым грузом)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Разгрузиться и уйти пустым)
+STR_ORDER_TRANSFER                                              :(Передать и забрать груз)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Передать и ждать полной загрузки)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Передать и ждать полной загрузки любым грузом)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Передать и уйти пустым)
+STR_ORDER_NO_UNLOAD                                             :(Не разгружаться и забрать груз)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Не разгружаться и ждать полной загрузки)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Не разгружать и ждать полной загрузки любым грузом)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Изменить способ остановки для выделенного задания
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Изменить способ погрузки для выделенного задания
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Изменить способ разгрузки для выделенного задания
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Добавить расширенное задание
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Идти к ближайшему депо
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Идти к ближайшему ангару
+STR_ORDER_NEAREST_DEPOT                                         :ближайший
+STR_ORDER_NEAREST_HANGAR                                        :ближайший ангар
+STR_ORDER_SERVICE_AT                                            :Обслуживание в
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Обслуживание без остановки в
+STR_ORDER_TRAIN_DEPOT                                           :Депо
+STR_ORDER_ROAD_DEPOT                                            :Гараже
+STR_ORDER_SHIP_DEPOT                                            :Доке
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} Ангар ({STATION})
+
+STR_ORDER_CONDITIONAL                                           :Условный переход к заданию
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данные транспорта для перехода
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Как сравнивать данные транспорта с заданным значением
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Значение для сравнения с данными транспорта
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Введите значение для сравнения
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент погрузки
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Надежность
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Макс. скорость
+STR_ORDER_CONDITIONAL_AGE                                       :Возраст (лет)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Требуется обслуживание
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Всегда
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         : равно
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     : не равно
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      : Меньше чем
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :меньше или равно чем
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :больше чем
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :больше или равно чем
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :истина
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ложь
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Перейти к заданию {COMMA}
+STR_CONDITIONAL_NUM                                             :Перейти к заданию {COMMA} когда {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Перейти к заданию {COMMA} когда {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Путешествует (не учитывается)
 STR_TIMETABLE_TRAVEL_FOR                                        :Идти до {STRING}
@@ -2706,6 +2782,8 @@ STR_REFIT_TIP                                                   :{BLACK}Выбе
 STR_REFIT_ORDER                                                 :(Переоборуд. для {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Расписание
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Просмотр расписания
+STR_ORDER_VIEW                                                  :{BLACK}Задания
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Переключиться на просмотр заданий
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Задания)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Конец заданий - -
 STR_SERVICE                                                     :{BLACK}Обслуж.
@@ -2714,6 +2792,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Стоимость: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Разгрузка/Погрузка
+STR_LEAVING                                                     :{LTBLUE}Отъезжает
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поезд должен быть остановлен в депо
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Невозможно отправить поезд в депо...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Нет больше места для заданий
@@ -3250,6 +3329,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Изме
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Создание мира
 STR_RANDOM_SEED                                                 :{BLACK}Начальное число:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Ландшафт генерируется псевдослучайно, число - опорная точка в последовательности случайных чисел.
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Введите случайное число
 STR_LAND_GENERATOR                                              :{BLACK}Генератор ландш.:
 STR_TREE_PLACER                                                 :{BLACK}Генератор лесов:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Поворот РЕЛЬЕФА:
@@ -3342,6 +3422,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Пере
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Переключить прозрачность зданий, вроде антенн и маяков.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Переключить прозрачность контактной сети. Ctrl-щелчок - запрет изменений.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Переключить прозрачность для индикаторов загрузки
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Сделать объекты не прозрачными а невидимыми
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3397,6 +3478,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Имя �
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}К следующему знаку
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}К предыдущему знаку
+STR_SIGN_OSKTITLE                                               :{BLACK}Введите название знака
 
 ########
 
@@ -3468,4 +3550,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Изме
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Плотность расстановки сигналов при протягивании.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Уменьшить плотность сигналов при протягивании
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Увеличить плотность сигналов при протягивании
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

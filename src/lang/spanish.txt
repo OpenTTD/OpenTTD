@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} en ruta desde {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acepta: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Acepta: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Provisiones: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasajeros
 STR_0010_COAL                                                   :Carbón
@@ -1020,7 +1021,7 @@ STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Sí
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostrar velocidad del vehículo en la barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permitir la construcción en cuestas y orillas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permitir pendientes bajo construcciones, carreteras, etc. (autopendiente): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permitir pendientes bajo carreteras, etc. (autopendiente): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permitir tamaño del área de captación más realista: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir demoler más propiedades de poblaciones: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir la construcción de trenes muy largos: {ORANGE}{STRING}
@@ -1172,6 +1173,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defecto
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :mejores carreteras
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :aleatorio
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Izquierda
@@ -1188,7 +1190,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Muy rápida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporción de ciudades que crecerán el doble de rápido: {ORANGE}1 de {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporción de ciudades que crecerán el doble de rápido: {ORANGE}Ninguna
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador inicial tamaño de ciudad: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Quitar elementos absurdos de la carretera durante su construcción
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Quitar absurdos de la carretera durante su construcción
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcción
@@ -1351,6 +1353,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multijug
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nombre del Jugador:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Este es el nombre con el que otros jugadores le identificarán
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Introduce tu nombre
 STR_NETWORK_CONNECTION                                          :{BLACK}Conexión:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Seleccione entre un juego en Internet o en una Red de Área Local
 
@@ -1394,6 +1397,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Empezar 
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nombre del juego:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}El nombre del juego será mostrado a otros jugadores en el menu de selección de juego multijugador
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Introduce un nombre para el juego en red
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Establecer contraseña
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteje tu juego con una contraseña si no quieres que otras personas se unan a él
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Selecciona mapa:
@@ -1450,6 +1454,13 @@ STR_NETWORK_LANG_SPANISH                                        :Español
 STR_NETWORK_LANG_SWEDISH                                        :Sueco
 STR_NETWORK_LANG_TURKISH                                        :Turco
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
+STR_NETWORK_LANG_AFRIKAANS                                      :Africano
+STR_NETWORK_LANG_CROATIAN                                       :Croata
+STR_NETWORK_LANG_CATALAN                                        :Catalán
+STR_NETWORK_LANG_ESTONIAN                                       :Estonio
+STR_NETWORK_LANG_GALICIAN                                       :Gallego
+STR_NETWORK_LANG_GREEK                                          :Griego
+STR_NETWORK_LANG_LATVIAN                                        :Letón
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de estar del juego multijugador
@@ -1548,6 +1559,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] a {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduce el texto para el chat en red
 STR_NETWORK_NAME_CHANGE                                         :ha cambiado su nombre a
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} El servidor ha cerrado la sesión
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Se está reiniciando el servidor...{}Espere por favor...
@@ -1714,6 +1726,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}El edificio debe demolerse primero
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (City)
 STR_2006_POPULATION                                             :{BLACK}Habitantes: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Renombrar población
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}No se puede renombrar población...
@@ -1950,6 +1963,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccio
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleccione escenario (verde), juegos preestablecidos-set (azul), o juego al azar
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generar juego nuevo al azar
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Cargar Mapas de altura
+STR_SAVE_OSKTITLE                                               :{BLACK}Introduce un nombre para el juego guardado
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} en medio
@@ -2639,6 +2653,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}, 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en camino
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Ir a
+STR_ORDER_GO_NON_STOP_TO                                        :Ir sin paradas a
+STR_ORDER_GO_VIA                                                :Ir vía
+STR_ORDER_GO_NON_STOP_VIA                                       :Ir sin paradas vía
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Cargar si está disponible
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de todas las cargas
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carga completa de cualquier carga
+STR_ORDER_DROP_NO_LOADING                                       :Sin carga
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descargar si es aceptado
+STR_ORDER_DROP_UNLOAD                                           :Descargar todo
+STR_ORDER_DROP_TRANSFER                                         :Transferir
+STR_ORDER_DROP_NO_UNLOADING                                     :No descargar
+STR_ORDER_FULL_LOAD                                             :(Carga completa)
+STR_ORDER_FULL_LOAD_ANY                                         :(Carga completa cualquier carga)
+STR_ORDER_NO_LOAD                                               :(Sin carga)
+STR_ORDER_UNLOAD                                                :(Descargar y tomar carga)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descargar y esperar a carga completa)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descargar y esperar a cualquier carga completa)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Descargar y dejar vacío)
+STR_ORDER_TRANSFER                                              :(Transferir y tomar carga)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir y esperar a carga completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferior y esperar a cualquier carga completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir y dejar vacío)
+STR_ORDER_NO_UNLOAD                                             :(No descargar y tomar carga)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No descargar y esperar a carga completa)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No descargar y esperar a cualquier carga completa)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambiar el comportamiento de parada en la orden seleccionada
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Cambiar el comportamiento de carga en la orden seleccionada
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambiar el comportamiento de descarga en la orden seleccionada
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Introducir una orden avanzada
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir al depósito más cercano
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir al hangar más cercano
+STR_ORDER_NEAREST_DEPOT                                         :el más cercano
+STR_ORDER_NEAREST_HANGAR                                        :el hangar más cercano
+STR_ORDER_SERVICE_AT                                            :Servicio en
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Servicio sin parada en
+STR_ORDER_TRAIN_DEPOT                                           :Depósito de tren
+STR_ORDER_ROAD_DEPOT                                            :Depósito de vehículo de carretera
+STR_ORDER_SHIP_DEPOT                                            :Depósito de barcos
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
+STR_ORDER_CONDITIONAL                                           :Salto de orden condicional
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos del vehículo para saltarse
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar los datos del vehículo al valor dado
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}El valor a comparar de los datos del vehículo contra
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduce el valor a comparar
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Porcentaje de carga
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidad
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidad Máxima
+STR_ORDER_CONDITIONAL_AGE                                       :Edad del vehículo (años)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requiere servicio
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Siempre
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :es igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :no es igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :es menos de
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :es menos o igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :es más de
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :es más o igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :es verdadero
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :es falso
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Saltar a orden {COMMA}
+STR_CONDITIONAL_NUM                                             :Saltar a orden {COMMA} cuando {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Saltar a orden{COMMA} cuando {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
@@ -2686,6 +2770,8 @@ STR_REFIT_TIP                                                   :{BLACK}Seleccio
 STR_REFIT_ORDER                                                 :(Recargar en {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Horarios
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Cambiar a la vista de horarios
+STR_ORDER_VIEW                                                  :{BLACK}Ordenes
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Cambiar a la vista de ordenes
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Órdenes)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin de pedidos - -
 STR_SERVICE                                                     :{BLACK}Servicio
@@ -2694,6 +2780,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Cargando / Descargando
+STR_LEAVING                                                     :{LTBLUE}Abandonando
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}El tren debe pararse dentro del depósito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}No se puede enviar el tren al depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No hay más lugar para pedidos
@@ -3230,6 +3317,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Cambiar 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generación de mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pulsa para introducir la semilla aleatoria
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Introducir una semilla aleatoria
 STR_LAND_GENERATOR                                              :{BLACK}Generador terreno:
 STR_TREE_PLACER                                                 :{BLACK}Algoritmo árboles:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotación mapa de alturas:
@@ -3322,6 +3410,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Activar 
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Activar transparencias para estructuras como faros, antenas, etc.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Activar transparencia para la catenaria. CTRL+click para bloquear.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Ajustar transparencia para los indicadores de carga
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Poner objetos invisibles en vez de transparentes
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3377,6 +3466,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}El nombr
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ir a la siguiente señal
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ir a la señal anterior
+STR_SIGN_OSKTITLE                                               :{BLACK}Introduce un nombre para la señal
 
 ########
 
@@ -3448,4 +3538,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converti
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Arrastrar densidad de señales
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrementar arrastre de intensidad de señales
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incrementar arrastre de intensidad de señales
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

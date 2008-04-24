@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} na poti iz {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Sprejema: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Sprejema: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Dobavlja: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Potniki
 STR_000F_PASSENGERS.t                                           :Potnike
@@ -419,6 +420,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Skupna zmogljiv
 STR_SORT_BY_MAX_SPEED                                           :Največja hitrost
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrednost
+STR_SORT_BY_LENGTH                                              :Dolžina
 STR_SORT_BY_FACILITY                                            :Tip postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
 STR_SORT_BY_RATING_MAX                                          :Ocene tovora
@@ -1404,6 +1406,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Ime
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Ime igre
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jezik, različica strežnika, itd.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klikni na igro v seznamu, da jo izbereš
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Zadnjič obiskani strežnik:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klikni za izbiro zadnjič obiskanega strežnika
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Najdi strežnik
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Poišči strežnik na mreži
@@ -2731,6 +2735,75 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v napoto
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Pojdi do
+STR_ORDER_GO_NON_STOP_TO                                        :Pojdi non-stop do
+STR_ORDER_GO_VIA                                                :Pojdi preko
+STR_ORDER_GO_NON_STOP_VIA                                       :Pojdi non-stop preko
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Napolni, če je na voljo
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Napolni ves tovor
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Napolni kakršenkoli tovor
+STR_ORDER_DROP_NO_LOADING                                       :Brez polnjenja
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Razloži, če je sprejeto
+STR_ORDER_DROP_UNLOAD                                           :Razloži vse
+STR_ORDER_DROP_TRANSFER                                         :Pretovori
+STR_ORDER_DROP_NO_UNLOADING                                     :Ne razloži
+STR_ORDER_FULL_LOAD                                             :(Napolni)
+STR_ORDER_FULL_LOAD_ANY                                         :(Napolni katerikoli tovor)
+STR_ORDER_NO_LOAD                                               :(Brez polnjenja)
+STR_ORDER_UNLOAD                                                :(Razloži in vzemi tovor)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Razloži in počakaj na polno)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Razloži in počakaj na polno česarkoli)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Razloži in pusti prazno)
+STR_ORDER_TRANSFER                                              :(Pretovori in vzemi tovor)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Pretovori in počakaj na polno)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Pretovori in počakaj na polno česarkoli)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Pretovori in pusti prazno)
+STR_ORDER_NO_UNLOAD                                             :(Ne razloži in vzemi tovor)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ne razloži in počakaj na polno)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ne razloži in počakaj na polno česarkoli)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Spremeni način ustavljanja za označen ukaz
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Spremeni način polnjenja označenega ukaza
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Spremeni način praznjenja označenega ukaza
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pojdi v najbližjo garažo
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Pojdi v najbližji hangar
+STR_ORDER_NEAREST_DEPOT                                         :najbližjo
+STR_ORDER_NEAREST_HANGAR                                        :najbližji hangar
+STR_ORDER_SERVICE_AT                                            :Na servis v
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Na servis non-stop v
+STR_ORDER_TRAIN_DEPOT                                           :Železniška garaža
+STR_ORDER_ROAD_DEPOT                                            :Cestna garaža
+STR_ORDER_SHIP_DEPOT                                            :Ladijska garaža
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} hangar
+
+STR_ORDER_CONDITIONAL                                           :Pogojni preskok ukaza
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Podatki vozila na osnovni preskok
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kako primerjati podatke vozila na podano vrednost
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Primerjalna vrednost za podatke vozila
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Vnesi primerjalno vrednost
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procenti polnjenja
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Zanesljivost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Najvišja hitrost
+STR_ORDER_CONDITIONAL_AGE                                       :Starost (leta)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Potrebuje servis
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vedno
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je enaka
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ni enaka kot
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :je manjša kot
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :je manjša ali enaka kot
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :je večja kot
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :je večja ali enaka kot
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :dejavno
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :nedejavno
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Skoči na ukaz {COMMA}
+STR_CONDITIONAL_NUM                                             :Skoči na ukaz {COMMA}, ko je {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Skoči na ukaz {COMMA}, ko je {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez časovnih tabel)
 STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
@@ -2788,6 +2861,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Natovarjanje / Raztovarjanje
+STR_LEAVING                                                     :{LTBLUE}Zapušča
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti ustavljen v garaži
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlaka ni mogoče poslati v garažo ...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni več prostora za ukaze
@@ -3417,6 +3491,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prozoren
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prozoren ali navaden pogled struktur kot so antene, svetilniki...
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Preklop prosojnosti za pogone. CTRL+klik za zaklepanje.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Preklop na prosojnost za prikaz polnenja
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Nastavi predmete nevidne namesto prosojne
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

@@ -20,6 +20,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} на път от {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Приема: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Приема: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Запаси: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Пътници
 STR_0010_COAL                                                   :Въглища
@@ -379,6 +380,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Обща вме
 STR_SORT_BY_MAX_SPEED                                           :Максимална скорост
 STR_SORT_BY_MODEL                                               :Модел
 STR_SORT_BY_VALUE                                               :Цена
+STR_SORT_BY_LENGTH                                              :Дължина
 STR_SORT_BY_FACILITY                                            :Вид на гарата
 STR_SORT_BY_WAITING                                             :Цена на чакащият товар
 STR_SORT_BY_RATING_MAX                                          :Рейтинг на товара
@@ -1173,6 +1175,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :без определено
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Позиция на лента за инструменти: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Ляво
@@ -2652,6 +2655,61 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Подробности)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак на пътя
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Отиди до
+STR_ORDER_GO_NON_STOP_TO                                        :Отиди без спиране до
+STR_ORDER_GO_VIA                                                :Отиди чрез
+STR_ORDER_GO_NON_STOP_VIA                                       :Отиди без спиране чрез
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Натовари ако е вазможно
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Напълно нотовари всичкиат товар
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Напълно нотовари какъвто и да е товар
+STR_ORDER_DROP_NO_LOADING                                       :Ненатаваряй
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Разтовари ако позволено
+STR_ORDER_DROP_UNLOAD                                           :Разтовари взичко
+STR_ORDER_DROP_TRANSFER                                         :Смени
+STR_ORDER_DROP_NO_UNLOADING                                     :Неразтаваряй
+STR_ORDER_FULL_LOAD                                             :(Напълно натовари)
+STR_ORDER_FULL_LOAD_ANY                                         :(Напълно натовари какъвто и да е товар)
+STR_ORDER_NO_LOAD                                               :(Ненатоваряй)
+STR_ORDER_UNLOAD                                                :(Ненатоваряй и вземи товар)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Разтовари и чакай за пълен товар)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Разтовари и чакай за какъвто и да е пълен товар)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Разтовари и потегли празен)
+STR_ORDER_TRANSFER                                              :(Смени и вземи товар)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Смени и чакай за пълен товар)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Смени и чакай за какъвто и да е пълен товар)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Смени и потегли празен)
+STR_ORDER_NO_UNLOAD                                             :(Неразтоваряй и вземи товар)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Неразтоваряй и чакай за пълен товар)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Неразтоваряй и чакай за какъвто и да е пълен товар)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Промени начинат на спиране на осветената заповед
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Промени начинат на натоваряне на осветената заповед
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Промени начинат на разтоваряне на осветената заповед
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Отиди до най-близкото депо
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Отиди до най-близкият хангар
+STR_ORDER_NEAREST_DEPOT                                         :най-близкото депо
+STR_ORDER_NEAREST_HANGAR                                        :най-близкият хангар
+STR_ORDER_TRAIN_DEPOT                                           :Депо за влакове
+STR_ORDER_ROAD_DEPOT                                            :Депо за пътни превозни средства
+STR_ORDER_SHIP_DEPOT                                            :Депо за кораби
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} хангар
+
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Максимална скорост
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Винаги
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :е равно на
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :не е равно на
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :е по-малко от
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :е по-малко или равно на
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :е повече от
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :е повече или равно на
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :е правилно
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :е неправилно
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Патувай (без разписание)
 STR_TIMETABLE_TRAVEL_FOR                                        :Патувай за {STRING}
@@ -2709,6 +2767,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Цена: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Товарене/ Разтоварване
+STR_LEAVING                                                     :{LTBLUE}Напуска
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Влакът трябва да бъде спрян в депото
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Не може да пратиш влака в депото...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Няма повече място за още заповеди
@@ -3338,6 +3397,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Изпо
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Използвай прозрачност за сгради като фарове и антени, може би в бъдеще за украси
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Активирай прозрачност за висящите. CTRL+клик за фиксиране.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Вклучи прозрачност за товарещи указатели
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Направи обектите невидими вместо прозрачни
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

@@ -20,6 +20,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} na cestě z{NBSP}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Přijímá: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Přijímá: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Poskytuje: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :cestující
 STR_000F_PASSENGERS.big                                         :Cestující
@@ -231,7 +232,7 @@ STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
-STR_00D0_NOTHING                                                :Nic
+STR_00D0_NOTHING                                                :nic
 STR_00D1_DARK_BLUE                                              :Tmavomodrá
 STR_00D2_PALE_GREEN                                             :Světlezelená
 STR_00D3_PINK                                                   :Růžová
@@ -435,6 +436,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :celkové kapaci
 STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
 STR_SORT_BY_MODEL                                               :modelu
 STR_SORT_BY_VALUE                                               :hodnoty
+STR_SORT_BY_LENGTH                                              :délky
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING                                             :množství čekajícího nákladu
 STR_SORT_BY_RATING_MAX                                          :hodnocení přepravy
@@ -976,7 +978,7 @@ STR_CURR_ISK                                                    :Islandská koru
 STR_CURR_ITL                                                    :Italská lira (ITL)
 STR_CURR_NLG                                                    :Holandský gulden (NLG)
 STR_CURR_NOK                                                    :Norská koruna (NOK)
-STR_CURR_PLN                                                    :Polský złotý (PLN)
+STR_CURR_PLN                                                    :Polský zlotý (PLN)
 STR_CURR_ROL                                                    :Rumunský lei (ROL)
 STR_CURR_RUR                                                    :Ruský rubl (RUR)
 STR_CURR_SIT                                                    :Slovinský tolar (SIT)
@@ -1019,8 +1021,8 @@ STR_MONTH_OCT                                                   :Říjen
 STR_MONTH_NOV                                                   :Listopad
 STR_MONTH_DEC                                                   :Prosinec
 
-STR_HEADING_FOR_STATION                                         :{LTBLUE}Mířím do {STATION}
-STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Mířím do {STATION}, {VELOCITY}
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Míří do {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Míří do {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Bez příkazů
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Bez příkazů, {VELOCITY}
 
@@ -1229,6 +1231,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :původní
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :mřížka 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :náhodně
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Umístění hlavní lišty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vlevo
@@ -1292,8 +1295,8 @@ STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Změnit
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Změnit datum: {ORANGE}{DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit změnu produkce průmyslu: {ORANGE}{STRING}
 
-STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Mířím do {WAYPOINT}
-STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Mířím do {WAYPOINT}, {VELOCITY}
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Míří do {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Míří do {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :Jet přes {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Jet bez zastávky přes {WAYPOINT}
@@ -1408,6 +1411,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multipla
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Jméno hráče:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Podle tohoto jména tě ostatní hráči poznají
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Zadej své jméno
 STR_NETWORK_CONNECTION                                          :{BLACK}Připojení:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vyber si mezi hrou na internetu nebo v místní síti
 
@@ -1418,6 +1422,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Název
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Název hry
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jazyk, verze serveru, atd.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Hru vybereš kliknutím do seznamu
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Naposledy navštívený server:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Kliknutím vybereš server, kde jsi hrál(a) naposledy
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Najít server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Hledat server v síti
@@ -1451,6 +1457,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Začít 
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Jméno hry:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Jméno hry se zobrazí ostatním hráčům v menu, kde si vybírají sitovou hru
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Zadej jméno této síťové hry
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber mapu:
@@ -1478,35 +1485,42 @@ STR_NETWORK_LOAD_GAME                                           :{BLACK}Nahrát 
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Pokračovat ve dříve uložené hře pro více hráčů (ujisti se, že se připojuješ na správného hráče)
 
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ANY                                            :Jakýkoli
-STR_NETWORK_LANG_ENGLISH                                        :Angličtina
-STR_NETWORK_LANG_GERMAN                                         :Němčina
-STR_NETWORK_LANG_FRENCH                                         :Francouzština
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazilská portugalština
-STR_NETWORK_LANG_BULGARIAN                                      :Bulharština
-STR_NETWORK_LANG_CHINESE                                        :Čínština
-STR_NETWORK_LANG_CZECH                                          :Čeština
-STR_NETWORK_LANG_DANISH                                         :Dánština
-STR_NETWORK_LANG_DUTCH                                          :Nizozemština
-STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
-STR_NETWORK_LANG_FINNISH                                        :Finština
-STR_NETWORK_LANG_HUNGARIAN                                      :Maďarština
-STR_NETWORK_LANG_ICELANDIC                                      :Islandština
-STR_NETWORK_LANG_ITALIAN                                        :Italština
-STR_NETWORK_LANG_JAPANESE                                       :Japonština
-STR_NETWORK_LANG_KOREAN                                         :Korejština
-STR_NETWORK_LANG_LITHUANIAN                                     :Litevština
-STR_NETWORK_LANG_NORWEGIAN                                      :Norština
-STR_NETWORK_LANG_POLISH                                         :Polština
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugalština
-STR_NETWORK_LANG_ROMANIAN                                       :Rumunština
-STR_NETWORK_LANG_RUSSIAN                                        :Ruština
-STR_NETWORK_LANG_SLOVAK                                         :Slovenština
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovinština
-STR_NETWORK_LANG_SPANISH                                        :Španělština
-STR_NETWORK_LANG_SWEDISH                                        :Švédština
-STR_NETWORK_LANG_TURKISH                                        :Turečtina
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinština
+STR_NETWORK_LANG_ANY                                            :jakýkoli
+STR_NETWORK_LANG_ENGLISH                                        :angličtina
+STR_NETWORK_LANG_GERMAN                                         :němčina
+STR_NETWORK_LANG_FRENCH                                         :francouzština
+STR_NETWORK_LANG_BRAZILIAN                                      :brazilská portugalština
+STR_NETWORK_LANG_BULGARIAN                                      :bulharština
+STR_NETWORK_LANG_CHINESE                                        :čínština
+STR_NETWORK_LANG_CZECH                                          :čeština
+STR_NETWORK_LANG_DANISH                                         :dánština
+STR_NETWORK_LANG_DUTCH                                          :nizozemština
+STR_NETWORK_LANG_ESPERANTO                                      :esperanto
+STR_NETWORK_LANG_FINNISH                                        :finština
+STR_NETWORK_LANG_HUNGARIAN                                      :maďarština
+STR_NETWORK_LANG_ICELANDIC                                      :islandština
+STR_NETWORK_LANG_ITALIAN                                        :italština
+STR_NETWORK_LANG_JAPANESE                                       :japonština
+STR_NETWORK_LANG_KOREAN                                         :korejština
+STR_NETWORK_LANG_LITHUANIAN                                     :litevština
+STR_NETWORK_LANG_NORWEGIAN                                      :norština
+STR_NETWORK_LANG_POLISH                                         :polština
+STR_NETWORK_LANG_PORTUGUESE                                     :portugalština
+STR_NETWORK_LANG_ROMANIAN                                       :rumunština
+STR_NETWORK_LANG_RUSSIAN                                        :ruština
+STR_NETWORK_LANG_SLOVAK                                         :slovenština
+STR_NETWORK_LANG_SLOVENIAN                                      :slovinština
+STR_NETWORK_LANG_SPANISH                                        :španělština
+STR_NETWORK_LANG_SWEDISH                                        :švédština
+STR_NETWORK_LANG_TURKISH                                        :turečtina
+STR_NETWORK_LANG_UKRAINIAN                                      :ukrajinština
+STR_NETWORK_LANG_AFRIKAANS                                      :afrikánština
+STR_NETWORK_LANG_CROATIAN                                       :chorvatština
+STR_NETWORK_LANG_CATALAN                                        :katalánština
+STR_NETWORK_LANG_ESTONIAN                                       :estonština
+STR_NETWORK_LANG_GALICIAN                                       :galicijština
+STR_NETWORK_LANG_GREEK                                          :řečtina
+STR_NETWORK_LANG_LATVIAN                                        :lotyština
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Vstupní místnost do multiplayerové hry
@@ -1605,6 +1619,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Osobní] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Osobní] pro {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všichni] :
 STR_NETWORK_CHAT_ALL                                            :[Všichni] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadej zprávu
 STR_NETWORK_NAME_CHANGE                                         :si změnil jméno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Server ukončil relaci
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Server se restartuje...{}Počkejte prosím...
@@ -1746,7 +1761,7 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit
 STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Postavit tramvajový most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit silniční tunel
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Postavit tramvajový tunel
-STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Povolit / zakázat jednosměrné silnice
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Stavět / nestavět jednosměrné silnice
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Přepnout stavba / odstranění silnice
 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Výběr orientace garáže
@@ -2008,6 +2023,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Zvolit n
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Zvolit scénář (zelená), přednastavenou hru (modrá), nebo novou náhodnou hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vytvořit novou náhodnou hru
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Nahrát výškovou mapu
+STR_SAVE_OSKTITLE                                               :{BLACK}Zadej jméno pro uloženou hru
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} v cestě
@@ -2322,8 +2338,8 @@ STR_AIRCRAFT                                                    :{WHITE}{COMMA} 
 STR_SHIPS                                                       :{WHITE}{COMMA} lo{P ď dě dí}
 STR_7042_NONE                                                   :{WHITE}Nic
 STR_7043_FACE_SELECTION                                         :{WHITE}Volba tváře
-STR_7044_MALE                                                   :{BLACK}Mužské
-STR_7045_FEMALE                                                 :{BLACK}Ženské
+STR_7044_MALE                                                   :{BLACK}Mužská
+STR_7045_FEMALE                                                 :{BLACK}Ženská
 STR_7046_NEW_FACE                                               :{BLACK}Nový obličej
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Zrušit volbu nového obličeje
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Potvrdit výběr obličeje
@@ -2703,6 +2719,52 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Železni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě je vlak
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Jet do
+STR_ORDER_GO_NON_STOP_TO                                        :Jet bez zastavení do
+STR_ORDER_GO_VIA                                                :Jet přes
+STR_ORDER_GO_NON_STOP_VIA                                       :Jet bez zastavení přes
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Pokud možno naložit
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plně naložit vším
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plně naložit čímkoli
+STR_ORDER_DROP_NO_LOADING                                       :Nenakládat
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Vyložit vyžadovaný náklad
+STR_ORDER_DROP_UNLOAD                                           :Vyložit vše
+STR_ORDER_DROP_TRANSFER                                         :Přeložit
+STR_ORDER_DROP_NO_UNLOADING                                     :Nevykládat
+STR_ORDER_FULL_LOAD                                             :(plně naložit)
+STR_ORDER_FULL_LOAD_ANY                                         :(plně naložit cokoli)
+STR_ORDER_NO_LOAD                                               :(nenakládat)
+STR_ORDER_UNLOAD                                                :(vyložit a hned naložit)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(vyložit a plně naložit)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(vyložit a plně naložit čímkoli)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(vyložit a nechat prázdné)
+STR_ORDER_TRANSFER                                              :(přeložit a hned naložit)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(přeložit a plně naložit)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(přeložit a plně naložit čímkoli)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(přeložit a nechat prázdné)
+STR_ORDER_NO_UNLOAD                                             :(nevykládat a hned naložit)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(nevykládat a plně naložit)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nevykládat a plně naložit čímkoli)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ovlivnit zastavení u vybraného příkazu
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ovlivnit nakládání u vybraného příkazu
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ovlivnit vykládání u vybraného příkazu
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jet do nejbližšího depa
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Jet do nejbližšího hangáru
+STR_ORDER_NEAREST_DEPOT                                         :nebližšího
+STR_ORDER_NEAREST_HANGAR                                        :nejbližší hangár
+STR_ORDER_SERVICE_AT                                            :Údržba v
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Údržba bez zastavení v
+STR_ORDER_TRAIN_DEPOT                                           :železničním depu
+STR_ORDER_ROAD_DEPOT                                            :silničním depu
+STR_ORDER_SHIP_DEPOT                                            :lodním depu
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} hangár
+
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
@@ -2750,6 +2812,8 @@ STR_REFIT_TIP                                                   :{BLACK}Vyber, n
 STR_REFIT_ORDER                                                 :(Přestavět na {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Jízdní řád
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Přepnout na jízdní řád
+STR_ORDER_VIEW                                                  :{BLACK}Příkazy
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Přepnout na zobrazení příkazů
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Příkazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec příkazů - -
 STR_SERVICE                                                     :{BLACK}Údržba
@@ -2758,6 +2822,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Nakládání / vykládání
+STR_LEAVING                                                     :{LTBLUE}Odjíždí
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí stát v depu
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nelze poslat vlak do depa...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nedostatek prostoru na příkazy
@@ -2865,7 +2930,7 @@ STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemohu k
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Stáří: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} ročně
 STR_900E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok): {CURRENCY})
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Příjem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupen: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
@@ -2873,8 +2938,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... mus�
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silniční vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silniční vozidlo...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Silniční vozidlo {COMMA} čeká v garáži
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Mířím do garáže {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Mířím do garáže {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Míří do garáže {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Míří do garáže {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Údržba v silničním depu {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Údržba v silničním depu {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemohu poslat silniční vozidlo do garáže...
@@ -2947,7 +3012,7 @@ STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze ro
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat loď do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Jedu do depa {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Mířím do depa {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Míří do depa {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Údržba v lodním depu {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Údržba v lodním depu {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Loď {COMMA} čeká v depu
@@ -3294,6 +3359,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Vytvoři
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Tvorba krajiny
 STR_RANDOM_SEED                                                 :{BLACK}Náhodné číslo:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Zde můžeš zadat seed
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Zadej náhodné číslo
 STR_LAND_GENERATOR                                              :{BLACK}Generátor krajiny:
 STR_TREE_PLACER                                                 :{BLACK}Sázení stromů:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Otočení výškové mapy:
@@ -3386,6 +3452,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Změna p
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Změna průhlednosti staveb jako majáků, vysílačů a doplňků (v budoucnosti). Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Přepnout průhlednost pro ukazatele naložení. Nastavení se zamkne CTRL+kliknutím.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekty budou neviditelné, ne průhledné
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3441,6 +3508,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Jméno m
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Na další signál
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na předešlý signál
+STR_SIGN_OSKTITLE                                               :{BLACK}Zadej název pro značku
 
 ########
 
@@ -3512,4 +3580,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Změna s
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě signálů tažením
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi signály
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi signály
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :"+ěščřžýáíé=-\qwertyuiopú)asdfghjklů'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~1234567890_+|QWERTYUIOP/(}}ASDFGHJKL:!  ZXCVBNM?:_ .
 ########

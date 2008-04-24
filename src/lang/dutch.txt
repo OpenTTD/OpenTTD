@@ -18,6 +18,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} opweg van {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepteert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepteert: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Bied aan: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passagiers
 STR_0010_COAL                                                   :Kolen
@@ -377,6 +378,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capaciteit per 
 STR_SORT_BY_MAX_SPEED                                           :Maximale snelheid
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
+STR_SORT_BY_LENGTH                                              :Lengte
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waarde van wachtende vracht
 STR_SORT_BY_RATING_MAX                                          :Vracht waardering
@@ -1362,6 +1364,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Naam
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Naam van het spel
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Taal, serverversie, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klik op een spel uit de lijst om deze te selecteren
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}De server waarmee je het laatste verbonden was:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klik om de server te selecteren waar je het laatste op hebt gespeeld
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Server zoeken
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Zoeken naar een netwerkserver
@@ -2651,6 +2655,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in de weg
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Ga naar
+STR_ORDER_GO_NON_STOP_TO                                        :Ga non-stop naar
+STR_ORDER_GO_VIA                                                :Ga via
+STR_ORDER_GO_NON_STOP_VIA                                       :Ga non-stop via
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden wanneer beschikbaar
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Volledig laden
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Volledig en stoort vracht laden
+STR_ORDER_DROP_NO_LOADING                                       :Niet laden
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Ontladen wanneeer geaccepteerd
+STR_ORDER_DROP_UNLOAD                                           :Alles ontladen
+STR_ORDER_DROP_TRANSFER                                         :Transfer
+STR_ORDER_DROP_NO_UNLOADING                                     :Niet ontladen
+STR_ORDER_FULL_LOAD                                             :(Volledig laden)
+STR_ORDER_FULL_LOAD_ANY                                         :(Volledig laden een soort vracht)
+STR_ORDER_NO_LOAD                                               :(Niet laden)
+STR_ORDER_UNLOAD                                                :(Ontladen en vracht meenemen)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Ontladen en wacht tot volledig vol)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Ontladen en wacht tot een soort vracht vol)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Ontladen en vertrek leeg)
+STR_ORDER_TRANSFER                                              :(Transfer en neem vracht mee)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer en wacht tot volledig vol)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer en wacht tot een soort vol)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer en vertrek leeg)
+STR_ORDER_NO_UNLOAD                                             :(Niet ontladen en neem vracht mee)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Niet ontladen en wacht tot volledig vol)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Niet ontladen en wacht tot een soort vol)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Verander het stop-gedrag van de geselecteerde order
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Verander het laad/gedrag van d geselecteerde order
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander het ontlaad/gedrag van de geselecteerde order
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Voeg een geadvanceerde order toe
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde  hangaar
+STR_ORDER_NEAREST_DEPOT                                         :Het dichtstbijzijnde
+STR_ORDER_NEAREST_HANGAR                                        :De dichtstbijzijnde hangaar
+STR_ORDER_SERVICE_AT                                            :Onderhoud bij
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Onderhoud non-stop bij
+STR_ORDER_TRAIN_DEPOT                                           :Trein Depot
+STR_ORDER_ROAD_DEPOT                                            :Wagen Depot
+STR_ORDER_SHIP_DEPOT                                            :Schip dok
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangaar
+
+STR_ORDER_CONDITIONAL                                           :Conditionele order sprong
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig info voor basis springen wanneer
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Op welke manier vergelijken van de voertuiginfo bij de opgegeven waarde
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}De waarde waartegen het voertuig wordt vergeleken
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Geef waarde voor de vergelijking
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laad percentage
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Betrouwbaarheid
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum snelheid
+STR_ORDER_CONDITIONAL_AGE                                       :Voertuigleeftijd (jaren)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Heeft onderhoud nodig
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altijd
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is gelijk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is niet gelijjk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is minder dan
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is minder of gelijk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is meer dan
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is meer of gelijk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is waar
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is niet waar
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Spring naar order {COMMA}
+STR_CONDITIONAL_NUM                                             :Spring naar order {COMMA} wanneer {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Spring naar order {COMMA} wanneer {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
@@ -2708,6 +2782,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Waarde: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}In- en uitladen
+STR_LEAVING                                                     :{LTBLUE}Vertrekt van
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trein moet gestopt zijn in depot
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan trein niet naar depot sturen...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Geen ruimte meer voor orders
@@ -3337,6 +3412,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel d
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Doorzichtigheid voor bovenleiding. CTRL+klik voor onthouden.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Schakel tussen doorzichtigheid voor laad indicatoren
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Zet object op onzichtbaar in plaats van doorzichtig
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

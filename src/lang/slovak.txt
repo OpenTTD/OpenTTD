@@ -20,6 +20,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} na ceste z {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Prijíma: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prijíma: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Dodáva: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Cestujúcich
 STR_000F_PASSENGERS.g                                           :cestujucich
@@ -1235,6 +1236,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :štandardná
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :zdokonalená
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :bloky 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :bloky 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :náhodne
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozícia hlavného menu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vlavo
@@ -2715,6 +2717,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v ceste
 
+
+
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Cesta (neurcený cas)
 STR_TIMETABLE_TRAVEL_FOR                                        :Cesta do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}
@@ -3400,6 +3404,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Prepnút
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Prepnút priehladnost objektov ako sú majáky a antény
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Prepnút priehladnost pre trakcné vedenie. CTRL+klik pre uzamknutie.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Prepnút priehladnost pre ukazovatele nakladania a vykladania
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Nastavit objekty neviditelné namiesto priehladných
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

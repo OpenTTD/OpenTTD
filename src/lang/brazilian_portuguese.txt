@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} vindo de {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Aceita: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Aceita: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Suprimentos: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :{G=m}Passageiros
 STR_0010_COAL                                                   :{G=m}Carvão
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade tota
 STR_SORT_BY_MAX_SPEED                                           :Velocidade máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_LENGTH                                              :Tamanho
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga aguardando
 STR_SORT_BY_RATING_MAX                                          :Taxa de Carga
@@ -1162,7 +1164,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Termina
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ativar economia regular (alterações menores)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite comprar ações de outras empresas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticamente constroi semáforos anteriores: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir sinaleiros até: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ativar interface de sinais: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}O layout de cidade "sem mais estradas" não é válido no editor
@@ -1363,6 +1365,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nome do jogo
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Idioma, versão do servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Clique num jogo da lista para o selecionar
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}O servidor que você entrou última vez:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Clique para selecionar o servidor que você jogou da última vez
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Localizar servidor
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pesquisar por um servidor na rede
@@ -1817,6 +1821,8 @@ STR_205C_PIGGY_BANK                                             :Mealheiro
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{1:STRING} de {0:TOWN}
+STR_INDUSTRY_FORMAT.f                                           :{G=f}{1:STRING} de {0:TOWN}
+STR_INDUSTRY_FORMAT.m                                           :{G=m}{1:STRING} de {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -2652,6 +2658,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Depósit
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro trem chega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no caminho
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Vá para
+STR_ORDER_GO_NON_STOP_TO                                        :Vá não parando para
+STR_ORDER_GO_VIA                                                :Vá via
+STR_ORDER_GO_NON_STOP_VIA                                       :Vá não parando via
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full load all cargo
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carregar completamente qualquer carga
+STR_ORDER_DROP_NO_LOADING                                       :Não carregando
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceito
+STR_ORDER_DROP_UNLOAD                                           :Descarregar tudo
+STR_ORDER_DROP_TRANSFER                                         :Transferir
+STR_ORDER_DROP_NO_UNLOADING                                     :Não descarregar
+STR_ORDER_FULL_LOAD                                             :(Carregar totalmente)
+STR_ORDER_FULL_LOAD_ANY                                         :(Carregar totalmente qualquer carga)
+STR_ORDER_NO_LOAD                                               :(Não carregando)
+STR_ORDER_UNLOAD                                                :(Descarregar e carregar)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarregar e aguardar carga completa)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarregar e aguardar por qualquer tipo de carga completa)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarregar e sair vazio)
+STR_ORDER_TRANSFER                                              :(Transferir e carregar)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir e aguardar por carga completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e aguardar por qualquer tipo de carga completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e sair vazio)
+STR_ORDER_NO_UNLOAD                                             :(Não descarregar e carregar)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aguardar carga completa)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar por qualquer tipo de carga completa)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Altera a instrução de paradas da ordem selecionada
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Altera a instrução de carregamento da ordem selecionada
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Altera a instrução de descargas da ordem selecionada
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Inserir ordem avançada
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para depósito mais próximo
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para hangar mais próximo
+STR_ORDER_NEAREST_DEPOT                                         :mais próximo
+STR_ORDER_NEAREST_HANGAR                                        :hangar mais próximo
+STR_ORDER_SERVICE_AT                                            :Manutenção no
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenção sem parada no
+STR_ORDER_TRAIN_DEPOT                                           :Deósito de Trem
+STR_ORDER_ROAD_DEPOT                                            :Depósito de Veículos
+STR_ORDER_SHIP_DEPOT                                            :Depósito de Navios
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
+STR_ORDER_CONDITIONAL                                           :Pulo de ordem condicional
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados do veículo no qual se basear para pular ordem
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comprarar os dados do veículo com o valor fornecido
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}O valor a comparar com os dados do veículo
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Digite o valor a ser comparado
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentual carregado
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Confiabilidade
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máxima
+STR_ORDER_CONDITIONAL_AGE                                       :Idade (anos)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Necessia de manutenção
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é não igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :é menor que
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :é menor ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :é maior que
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :é maior ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :é verdadeiro
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :é falso
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Saltar para a ordem {COMMA}
+STR_CONDITIONAL_NUM                                             :Saltar para a ordem {COMMA} quando {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Saltar para a ordem {COMMA} quando {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não progamado)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
@@ -2709,6 +2785,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Carregando / descarregando
+STR_LEAVING                                                     :{LTBLUE}Saindo
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}O trem deve estar parado dentro do depósito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Impossível enviar o trem para o depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Não há espaço para mais ordens
@@ -3338,6 +3415,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Alternar
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Alternar transparência para estruturas como faróis e antenas, talvez no futuro para efeitos visuais
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Alternar transparência para catenária. CTRL+click para travar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Altera transparência para os indicadores de carga
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Definir objetos invisíveis ao invés de transparente
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3453,7 +3531,7 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Alterar 
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Seleção de Sinais
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Impossível converter sinais aqui...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para manter trens de colidirem nas malhas ferroviárias com mais de um trem.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinais padrão (semáforos){}Sinais são necessários para impedir trens de colidirem nas malhas ferroviárias com mais de um trem.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinal de Entrada (semáforo){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.

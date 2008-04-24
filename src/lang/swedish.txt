@@ -18,6 +18,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} på väg från {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterar: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterar: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Leverar: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passagerare
 STR_0010_COAL                                                   :Kol
@@ -1171,6 +1172,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bättre vägar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 rutnät
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :slumpmässig
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position av verktygsraden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vänster
@@ -2650,6 +2652,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} t
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vägen
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Åk till
+STR_ORDER_GO_NON_STOP_TO                                        :Åk non-stop till
+STR_ORDER_GO_VIA                                                :Åk via
+STR_ORDER_GO_NON_STOP_VIA                                       :Åk non-stop via
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lasta om möjligt
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full last alla frakttyper
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last någon frakttyp
+STR_ORDER_DROP_NO_LOADING                                       :Lasta ej
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Lasta av om accepterat
+STR_ORDER_DROP_UNLOAD                                           :Lasta av allt
+STR_ORDER_DROP_TRANSFER                                         :Överför
+STR_ORDER_DROP_NO_UNLOADING                                     :Ej avlastning
+STR_ORDER_FULL_LOAD                                             :(Full last)
+STR_ORDER_FULL_LOAD_ANY                                         :(Full last någon frakttyp)
+STR_ORDER_NO_LOAD                                               :(Ingen lastning)
+STR_ORDER_UNLOAD                                                :(Lasta av och lasta frakt)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Lasta av och vänta på full last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Lasta av och vänta på någon full last)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Ladda av och lämna tom)
+STR_ORDER_TRANSFER                                              :(Överför och lasta frakt)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Överför och vänta på full last)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Överför och vänta på någon full frakttyp)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Överför och lämna tom)
+STR_ORDER_NO_UNLOAD                                             :(Lasta ej av men lasta på)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ladda ej av men vänta på full last)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ladda ej av men vänta på full last av någon frakttyp)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ändra stoppbeteende för markerad order
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ändra lastningsbeteende för markerad order
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändra avlastningsbeteende på markerad order
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Lägg till avancerad order
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Åk till närmsta depå
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Åk till närmsta hangar
+STR_ORDER_NEAREST_DEPOT                                         :närmsta
+STR_ORDER_NEAREST_HANGAR                                        :närmaste hangar
+STR_ORDER_SERVICE_AT                                            :Service vid
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Service non-stop vid
+STR_ORDER_TRAIN_DEPOT                                           :Tågdepå
+STR_ORDER_ROAD_DEPOT                                            :Vägfordonsdepå
+STR_ORDER_SHIP_DEPOT                                            :Skeppsdepå
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
+STR_ORDER_CONDITIONAL                                           :Conditional order jump
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fordonsdata att basera hoppning på
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How-to: Jämför fordonsdata med givet värde
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Värde att jämföra fordonsdata mot
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv in värde att jämföra mot
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Laddningsprocent
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Tillförlitlighet
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Toppfart
+STR_ORDER_CONDITIONAL_AGE                                       :Fordonsålder (år)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Behöver service
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltid
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :samma som
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ej samma som
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mindre än
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mindre eller lika mycket som
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :mer än
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :mer eller lika mycket som
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :sant
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :falskt
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Skippa till order {COMMA}
+STR_CONDITIONAL_NUM                                             :Skippa till order {COMMA} när {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Skippa till order {COMMA} när {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Avres (Inte tillagd i tidtabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :Res till {STRING}
@@ -3336,6 +3408,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Växla g
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Växla genomskinlighet för byggnader såsom fyrar och antenner, kanske i framtiden även ögongodis
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Växla genomskinlighet för kedjebro. CTRL+klick för att låsa.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Växla genomskinlighet för lastningsindikatörer
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Gör object osynliga istället för genomskinliga
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

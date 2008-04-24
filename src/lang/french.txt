@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} venant de {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepte: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepte: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Fournit: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passagers
 STR_0010_COAL                                                   :Charbon
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacité total
 STR_SORT_BY_MAX_SPEED                                           :Vitesse maximum
 STR_SORT_BY_MODEL                                               :Modèle
 STR_SORT_BY_VALUE                                               :Valeur
+STR_SORT_BY_LENGTH                                              :Longueur
 STR_SORT_BY_FACILITY                                            :Type de station
 STR_SORT_BY_WAITING                                             :Marchandise en attente
 STR_SORT_BY_RATING_MAX                                          :Notation
@@ -1239,8 +1241,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permett
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}En route pour {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_WAYPOINT                                              :Passant par {WAYPOINT}
-STR_GO_NON_STOP_TO_WAYPOINT                                     :Aller sans-arrêt via {WAYPOINT}
+STR_GO_TO_WAYPOINT                                              :Passer par {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Passer sans arrêt par {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Point de contrôle {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Point de contrôle {TOWN} #{COMMA}
@@ -1363,6 +1365,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nom
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nom de la partie
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Langue, version du serveur, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Cliquer sur une partie de la liste pour la sélectionner
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Le dernier serveur utilisé:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Cliquer pour choisir le dernier serveur utilisé
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Trouver un serveur
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Cherche sur le réseau un serveur
@@ -2652,6 +2656,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent{}l'arrivée du premier train à {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Détails)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train présent
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Aller à
+STR_ORDER_GO_NON_STOP_TO                                        :Aller sans arrêt à
+STR_ORDER_GO_VIA                                                :Passer par
+STR_ORDER_GO_NON_STOP_VIA                                       :Passer sans arrêt par
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Charger si possible
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Chargement complet
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Chargement complet par un seul type
+STR_ORDER_DROP_NO_LOADING                                       :Pas de chargement
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Décharger si accepté
+STR_ORDER_DROP_UNLOAD                                           :Décharger tout
+STR_ORDER_DROP_TRANSFER                                         :Transférer
+STR_ORDER_DROP_NO_UNLOADING                                     :Pas de déchargement
+STR_ORDER_FULL_LOAD                                             :(Charger complètement)
+STR_ORDER_FULL_LOAD_ANY                                         :(Charger complètement par un seul type)
+STR_ORDER_NO_LOAD                                               :(Pas de chargement)
+STR_ORDER_UNLOAD                                                :(Décharger)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Décharger et attendre pleine charge)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Décharger et attendre pleine charge par un seul type)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Décharger et laisser vide)
+STR_ORDER_TRANSFER                                              :(Transférer et charger)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transférer et attendre pleine charge)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transférer et attendre pleine charge par un seul type)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transférer et laisser vide)
+STR_ORDER_NO_UNLOAD                                             :(Charger sans décharger)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Attendre pleine charge sans décharger)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Attendre pleine charge par un type sans décharger)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Modifier le comportement d'arrêt de l'ordre sélectionné
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Modifier le comportement de chargement de l'ordre sélectionné
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Modifier le comportement de déchargement de l'ordre sélectionné
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Insérer un ordre avancé
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Aller au dépôt le plus proche
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Aller au hangar le plus proche
+STR_ORDER_NEAREST_DEPOT                                         :le plus proche
+STR_ORDER_NEAREST_HANGAR                                        :hangar le plus proche
+STR_ORDER_SERVICE_AT                                            :Entretien au
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Entretien sans arrêt au
+STR_ORDER_TRAIN_DEPOT                                           :dépôt ferroviaire
+STR_ORDER_ROAD_DEPOT                                            :dépôt routier
+STR_ORDER_SHIP_DEPOT                                            :dépôt naval
+STR_GO_TO_DEPOT                                                 :{STRING} {2:STRING} de {1:TOWN}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {2:STRING} {1:STRING}
+STR_GO_TO_HANGAR                                                :{STRING} hangar de {STATION}
+
+STR_ORDER_CONDITIONAL                                           :Saut conditionnel d'ordre
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Données du véhicule servant de base au saut
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Comment comparer les données du véhicule à la valeur donnée
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}La valeur à comparer aux données du véhicule
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Entrer la valeur à comparer
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Pourcentage de chargement
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilité
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Vitesse maximum
+STR_ORDER_CONDITIONAL_AGE                                       :Âge du véhicule (années)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Entretien nécessaire
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Toujours
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :est égal à
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :n'est pas égal à
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :est inférieur à
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :est inférieur ou égal à
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :est supérieur à
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :est supérieur ou égal à
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :est vrai
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :est faux
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Sauter à l'ordre {COMMA}
+STR_CONDITIONAL_NUM                                             :Sauter à l'ordre {COMMA} quand {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Sauter à l'ordre {COMMA} quand {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Voyager (sans horaires)
 STR_TIMETABLE_TRAVEL_FOR                                        :Voyager pendant {STRING}
@@ -2709,6 +2783,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valeur: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Chargement/déchargement
+STR_LEAVING                                                     :{LTBLUE}Départ
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Le train doit être stoppé dans un dépôt
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Impossible d'envoyer le train au dépôt...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Plus de places pour les ordres
@@ -3338,6 +3413,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transpar
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparence des structures telles que phares et antennes. Ctrl-clic pour vérouiller.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparence des caténaires. Ctrl-clic pour vérouiller.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparence pour les indicateurs de chargement. Ctrl-clic pour vérouiller.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Basculer transparence/invisibilité
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

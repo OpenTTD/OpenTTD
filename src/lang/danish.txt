@@ -377,6 +377,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet
 STR_SORT_BY_MAX_SPEED                                           :Tophastighed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Værdi
+STR_SORT_BY_LENGTH                                              :Længde
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
 STR_SORT_BY_RATING_MAX                                          :Fragtbedømmelse
@@ -1171,6 +1172,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bedre veje
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 gitter
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 gitter
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :tilfældig
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Placering af værktøjslinje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Venstre
@@ -1350,6 +1352,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Netværk
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spiller navn:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dette er det navn, som andre spillere vil kende dig ved
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Indtast dit navn
 STR_NETWORK_CONNECTION                                          :{BLACK}Forbindelse:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vælg mellem et internet baseret eller et lokalnet baseret spil
 
@@ -1449,6 +1452,10 @@ STR_NETWORK_LANG_SPANISH                                        :Spansk
 STR_NETWORK_LANG_SWEDISH                                        :Svensk
 STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
+STR_NETWORK_LANG_CROATIAN                                       :Kroatisk
+STR_NETWORK_LANG_GALICIAN                                       :Galicisk
+STR_NETWORK_LANG_GREEK                                          :Græsk
+STR_NETWORK_LANG_LATVIAN                                        :Lettisk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Netværksspils lobby
@@ -1713,6 +1720,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Det er nødvendigt at nedrive bygningen først
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (by)
 STR_2006_POPULATION                                             :{BLACK}Indbyggere: {ORANGE}{COMMA}{BLACK}  Huse: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Omdøb byen
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan ikke omdøbe byen...
@@ -2638,6 +2646,41 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} r
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Gå til
+STR_ORDER_GO_NON_STOP_TO                                        :Gå uden stop til
+STR_ORDER_GO_VIA                                                :Gå via
+STR_ORDER_GO_NON_STOP_VIA                                       :Gå uden stop via
+STR_ORDER_DROP_UNLOAD                                           :Aflæs alt
+STR_ORDER_DROP_TRANSFER                                         :Overfør
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og efterlad tom)
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmeste depot
+STR_ORDER_NEAREST_DEPOT                                         :det nærmeste
+STR_ORDER_NEAREST_HANGAR                                        :den nærmeste hangar
+STR_ORDER_TRAIN_DEPOT                                           :Remise
+STR_ORDER_ROAD_DEPOT                                            :Værksted
+STR_ORDER_SHIP_DEPOT                                            :Skibsdok
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} hangar
+
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålidelighed
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tophastighed
+STR_ORDER_CONDITIONAL_AGE                                       :Køretøjets alder (år)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Kræver service
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altid
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :er lig med
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :er ikke lig med
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :er mindre end
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :er mindre eller lig med
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :er større end
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :er større eller lig med
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er sand
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er falsk
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
@@ -2685,6 +2728,7 @@ STR_REFIT_TIP                                                   :{BLACK}Vælg hv
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Køreplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Skift til køreplan-visning
+STR_ORDER_VIEW                                                  :{BLACK}Ordrer
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordrer)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på ordrer - -
 STR_SERVICE                                                     :{BLACK}Service
@@ -2693,6 +2737,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Værdi: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Læsser / Aflæsser
+STR_LEAVING                                                     :{LTBLUE}Forlader
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan ikke sende toget til remise...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ikke mere plads til ordrer
@@ -3376,6 +3421,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Navnet s
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Gå til næste skilt
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Gå til forrige skilt
+STR_SIGN_OSKTITLE                                               :{BLACK}Indtast et navn for skiltet
 
 ########
 
@@ -3447,4 +3493,9 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalko
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Træk-og-slip signaltæthed
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Formindsk træk-og-slip signaltæthed
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Forøg træk-og-slip signaltæthed
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########

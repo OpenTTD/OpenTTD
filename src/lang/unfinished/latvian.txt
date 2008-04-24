@@ -11,11 +11,11 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Ārpus kartes robežām
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Pārāk tuvu kartes malai
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - nepieciešami {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietiek naudas - nepieciešams {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jābūt plakanai
-STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING.a}
+STR_0008_WAITING                                                :{BLACK}Gaida: {WHITE}{STRING.a}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000C_ACCEPTS                                                :{BLACK}Pieņem: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Pieņem: {GOLD}
@@ -24,58 +24,58 @@ STR_000F_PASSENGERS                                             :Pasažieri
 STR_0010_COAL                                                   :Ogles
 STR_0011_MAIL                                                   :Pasts
 STR_0012_OIL                                                    :Nafta
-STR_0013_LIVESTOCK                                              :Liellopus
+STR_0013_LIVESTOCK                                              :Mājlopi
 STR_0014_GOODS                                                  :Preces
-STR_0015_GRAIN                                                  :Graudus
-STR_0016_WOOD                                                   :Kokmateria'lus
-STR_0017_IRON_ORE                                               :Dzelzs ru'du
-STR_0018_STEEL                                                  :Te'raudu
-STR_0019_VALUABLES                                              :Ve'rtspapi'ri
-STR_001A_COPPER_ORE                                             :Vara ru'da
-STR_001B_MAIZE                                                  :Kukuru'za
-STR_001C_FRUIT                                                  :Augl'i
+STR_0015_GRAIN                                                  :Graudi
+STR_0016_WOOD                                                   :Koksne
+STR_0017_IRON_ORE                                               :Dzelzsrūda
+STR_0018_STEEL                                                  :Tērauds
+STR_0019_VALUABLES                                              :Vērtslietas
+STR_001A_COPPER_ORE                                             :Vara rūda
+STR_001B_MAIZE                                                  :Kukurūza
+STR_001C_FRUIT                                                  :Augļi
 STR_001D_DIAMONDS                                               :Dimanti
-STR_001E_FOOD                                                   :Pa'rtika
-STR_001F_PAPER                                                  :Papi'rs
+STR_001E_FOOD                                                   :Pārtika
+STR_001F_PAPER                                                  :Papīrs
 STR_0020_GOLD                                                   :Zelts
-STR_0021_WATER                                                  :U'dens
-STR_0022_WHEAT                                                  :Kvies'i
-STR_0023_RUBBER                                                 :Gumija
+STR_0021_WATER                                                  :Ūdens
+STR_0022_WHEAT                                                  :Kvieši
+STR_0023_RUBBER                                                 :Kaučuks
 STR_0024_SUGAR                                                  :Cukurs
-STR_0025_TOYS                                                   :Rotal'lietas
+STR_0025_TOYS                                                   :Rotaļlietas
 STR_0026_CANDY                                                  :Saldumi
 STR_0027_COLA                                                   :Kola
 STR_0028_COTTON_CANDY                                           :Cukurvate
-STR_0029_BUBBLES                                                :Burbul'i
-STR_002A_TOFFEE                                                 :Cukurpla'ksnes
+STR_0029_BUBBLES                                                :Burbuļi
+STR_002A_TOFFEE                                                 :Īriss
 STR_002B_BATTERIES                                              :Baterijas
 STR_002C_PLASTIC                                                :Plastmasa
-STR_002D_FIZZY_DRINKS                                           :Burbul'u'den'i
+STR_002D_FIZZY_DRINKS                                           :Limonāde
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Pasaz'ieris
-STR_0030_COAL                                                   :Ogle
+STR_002F_PASSENGER                                              :Pasažieris
+STR_0030_COAL                                                   :Ogles
 STR_0031_MAIL                                                   :Pasts
 STR_0032_OIL                                                    :Nafta
-STR_0033_LIVESTOCK                                              :Liellopi
+STR_0033_LIVESTOCK                                              :Mājlopi
 STR_0034_GOODS                                                  :Preces
 STR_0035_GRAIN                                                  :Graudi
-STR_0036_WOOD                                                   :Kokmaterea'li
-STR_0037_IRON_ORE                                               :Dzelzs ru'da
-STR_0038_STEEL                                                  :Te'rauds
-STR_0039_VALUABLES                                              :Ve'rtspapi'ri
-STR_003A_COPPER_ORE                                             :Vara ru'da
-STR_003B_MAIZE                                                  :Kukuru'za
-STR_003C_FRUIT                                                  :Augl'i
-STR_003D_DIAMOND                                                :Dimanti
-STR_003E_FOOD                                                   :Pa'rtika
-STR_003F_PAPER                                                  :papi'rs
+STR_0036_WOOD                                                   :Koksne
+STR_0037_IRON_ORE                                               :Dzelzsrūda
+STR_0038_STEEL                                                  :Tērauds
+STR_0039_VALUABLES                                              :Vērtslietas
+STR_003A_COPPER_ORE                                             :Vara rūda
+STR_003B_MAIZE                                                  :Kukurūza
+STR_003C_FRUIT                                                  :Augļi
+STR_003D_DIAMOND                                                :Dimants
+STR_003E_FOOD                                                   :Pārtika
+STR_003F_PAPER                                                  :Papīrs
 STR_0040_GOLD                                                   :Zelts
-STR_0041_WATER                                                  :U'dens
-STR_0042_WHEAT                                                  :Kvies'i
-STR_0043_RUBBER                                                 :Gumija
+STR_0041_WATER                                                  :Ūdens
+STR_0042_WHEAT                                                  :Kvieši
+STR_0043_RUBBER                                                 :Kaučuks
 STR_0044_SUGAR                                                  :Cukurs
-STR_0045_TOY                                                    :Rotal'lieta
-STR_0046_CANDY                                                  :Saldumi
+STR_0045_TOY                                                    :Rotaļlieta
+STR_0046_CANDY                                                  :Saldums
 STR_0047_COLA                                                   :Kola
 STR_0048_COTTON_CANDY                                           :Cukurvate
 STR_0049_BUBBLE                                                 :Burbulis
@@ -1112,6 +1112,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Mainīt iestatījuma vērtību
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Daži vai visi apkalpošanas intervāli ir nesavietojami ar izvēlētajiem iestatījumiem! Der 5-90% un 30-800 dienas
 
+
 STR_TEMPERATE_LANDSCAPE                                         :Mērenais klimats
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktiskais klimats
 STR_SUB_TROPICAL_LANDSCAPE                                      :Subtropiskais klimats
@@ -1705,8 +1706,23 @@ STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Ele
 STR_8036_X2001_ELECTRIC                                         :'X2001' (Electric)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Electric)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Pasažieru Vagons
 STR_803A_MAIL_VAN                                               :Pasta Vagons
-STR_8048_FRUIT_TRUCK                                            :Fruktu Vagons
+STR_803B_COAL_CAR                                               :Ogļu Platforma
+STR_803C_OIL_TANKER                                             :Naftas Cisterna
+STR_803D_LIVESTOCK_VAN                                          :Mājlopu Vagons
+STR_803E_GOODS_VAN                                              :Preču Vagons
+STR_803F_GRAIN_HOPPER                                           :Graudu Vagons
+STR_8040_WOOD_TRUCK                                             :Kokmateriālu Platforma
+STR_8041_IRON_ORE_HOPPER                                        :Dzelzsrūdas Vagons
+STR_8042_STEEL_TRUCK                                            :Tērauda Platforma
+STR_8043_ARMORED_VAN                                            :Bruņots Vagons
+STR_8044_FOOD_VAN                                               :Pārtikas Vagons
+STR_8045_PAPER_TRUCK                                            :Papīra Platforma
+STR_8046_COPPER_ORE_HOPPER                                      :Vara Rūdas Vagonete
+STR_8047_WATER_TANKER                                           :Ūdens Cisterna
+STR_8048_FRUIT_TRUCK                                            :Augļu Platforma
+STR_8049_RUBBER_TRUCK                                           :Gumijas Platforma
 STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Electric)
 STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Electric)
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Electric)
@@ -1776,10 +1792,21 @@ STR_8104_AIRCRAFT                                               :lidmaðîna
 
 
 
+
+
 STR_8812_EMPTY                                                  :{LTBLUE}Tukšs
 STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vilciens ir pārāk garš
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vilcienus ir iespējams pārveidot tikai tad, kad tie ir apstādināti depo
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Jauni Dzelzceļa Satiksmes Līdzekļi
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Jauni Elektriskā Dzelzceļa Satiksmes Līdzekļi
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Jauni Viensliežu Dzelzeļa Satiksmes Līdzekļi
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Jauni Magnētiskā Dzelzceļa Satiksmes Līdzekļi
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Dzelzceļa Satiksmes Līdzekļi
 
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Būvēt Satiksmes Līdzekli
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonēt Satiksmes Līdzekli
 STR_SERVICE                                                     :{BLACK}Serviss
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
@@ -1911,6 +1938,9 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {G
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA} pasaz'ieru, {COMMA} pasta somas
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Sva'rs: {GOLD}+{WEIGHT_S}t
 
+########### For showing numbers in widgets
+
+
 ########### String for New Landscape Generator
 
 
@@ -1941,4 +1971,10 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-va
 
 
 ############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
 ########
