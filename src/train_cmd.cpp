@@ -3570,7 +3570,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 			HandleBrokenTrain(v);
 			return;
 		}
-		if (!v->current_order.type == OT_LOADING) v->breakdown_ctr--;
+		if (v->current_order.type != OT_LOADING) v->breakdown_ctr--;
 	}
 
 	if (HasBit(v->u.rail.flags, VRF_REVERSING) && v->cur_speed == 0) {
