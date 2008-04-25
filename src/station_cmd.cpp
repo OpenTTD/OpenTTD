@@ -238,7 +238,7 @@ enum StationNaming {
 	STATIONNAMING_HELIPORT,
 };
 
-static void GenerateStationName(Station *st, TileIndex tile, int flag)
+static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
 		0,                                      /* 0 */
@@ -252,53 +252,42 @@ static void GenerateStationName(Station *st, TileIndex tile, int flag)
 	const Town *t = st->town;
 	uint32 free_names = UINT32_MAX;
 
-	{
-		const Station *s;
-
-		FOR_ALL_STATIONS(s) {
-			if (s != st && s->town == t) {
-				uint str = M(s->string_id);
-				if (str <= 0x20) {
-					if (str == M(STR_SV_STNAME_FOREST)) {
-						str = M(STR_SV_STNAME_WOODS);
-					}
-					ClrBit(free_names, str);
+	const Station *s;
+	FOR_ALL_STATIONS(s) {
+		if (s != st && s->town == t) {
+			uint str = M(s->string_id);
+			if (str <= 0x20) {
+				if (str == M(STR_SV_STNAME_FOREST)) {
+					str = M(STR_SV_STNAME_WOODS);
 				}
+				ClrBit(free_names, str);
 			}
 		}
 	}
 
 	/* check default names */
 	uint32 tmp = free_names & _gen_station_name_bits[flag];
-	int found;
-	if (tmp != 0) {
-		found = FindFirstBit(tmp);
-		goto done;
-	}
+	if (tmp != 0) return STR_SV_STNAME + FindFirstBit(tmp);
 
 	/* check mine? */
 	if (HasBit(free_names, M(STR_SV_STNAME_MINES))) {
 		if (CountMapSquareAround(tile, CMSAMine) >= 2) {
-			found = M(STR_SV_STNAME_MINES);
-			goto done;
+			return STR_SV_STNAME_MINES;
 		}
 	}
 
 	/* check close enough to town to get central as name? */
 	if (DistanceMax(tile, t->xy) < 8) {
-		found = M(STR_SV_STNAME);
-		if (HasBit(free_names, M(STR_SV_STNAME))) goto done;
+		if (HasBit(free_names, M(STR_SV_STNAME))) return STR_SV_STNAME;
 
-		found = M(STR_SV_STNAME_CENTRAL);
-		if (HasBit(free_names, M(STR_SV_STNAME_CENTRAL))) goto done;
+		if (HasBit(free_names, M(STR_SV_STNAME_CENTRAL))) return STR_SV_STNAME_CENTRAL;
 	}
 
 	/* Check lakeside */
 	if (HasBit(free_names, M(STR_SV_STNAME_LAKESIDE)) &&
 			DistanceFromEdge(tile) < 20 &&
 			CountMapSquareAround(tile, CMSAWater) >= 5) {
-		found = M(STR_SV_STNAME_LAKESIDE);
-		goto done;
+		return STR_SV_STNAME_LAKESIDE;
 	}
 
 	/* Check woods */
@@ -306,43 +295,32 @@ static void GenerateStationName(Station *st, TileIndex tile, int flag)
 				CountMapSquareAround(tile, CMSATree) >= 8 ||
 				CountMapSquareAround(tile, CMSAForest) >= 2)
 			) {
-		found = _opt.landscape == LT_TROPIC ?
-			M(STR_SV_STNAME_FOREST) : M(STR_SV_STNAME_WOODS);
-		goto done;
+		return _opt.landscape == LT_TROPIC ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
 	}
 
 	/* check elevation compared to town */
-	{
-		uint z = GetTileZ(tile);
-		uint z2 = GetTileZ(t->xy);
-		if (z < z2) {
-			found = M(STR_SV_STNAME_VALLEY);
-			if (HasBit(free_names, M(STR_SV_STNAME_VALLEY))) goto done;
-		} else if (z > z2) {
-			found = M(STR_SV_STNAME_HEIGHTS);
-			if (HasBit(free_names, M(STR_SV_STNAME_HEIGHTS))) goto done;
-		}
+	uint z = GetTileZ(tile);
+	uint z2 = GetTileZ(t->xy);
+	if (z < z2) {
+		if (HasBit(free_names, M(STR_SV_STNAME_VALLEY))) return STR_SV_STNAME_VALLEY;
+	} else if (z > z2) {
+		if (HasBit(free_names, M(STR_SV_STNAME_HEIGHTS))) return STR_SV_STNAME_HEIGHTS;
 	}
 
 	/* check direction compared to town */
-	{
-		static const int8 _direction_and_table[] = {
-			~( (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_EAST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
-			~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
-			~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_EAST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
-			~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_EAST)) ),
-		};
+	static const int8 _direction_and_table[] = {
+		~( (1 << M(STR_SV_STNAME_WEST))  | (1 << M(STR_SV_STNAME_EAST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
+		~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
+		~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_EAST)) | (1 << M(STR_SV_STNAME_NORTH)) ),
+		~( (1 << M(STR_SV_STNAME_SOUTH)) | (1 << M(STR_SV_STNAME_WEST)) | (1 << M(STR_SV_STNAME_EAST)) ),
+	};
 
-		free_names &= _direction_and_table[
-			(TileX(tile) < TileX(t->xy)) +
-			(TileY(tile) < TileY(t->xy)) * 2];
-	}
+	free_names &= _direction_and_table[
+		(TileX(tile) < TileX(t->xy)) +
+		(TileY(tile) < TileY(t->xy)) * 2];
 
 	tmp = free_names & ((1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 6) | (1 << 7) | (1 << 12) | (1 << 26) | (1 << 27) | (1 << 28) | (1 << 29) | (1 << 30));
-	found = (tmp == 0) ? M(STR_SV_STNAME_FALLBACK) : FindFirstBit(tmp);
-
-done:
-	st->string_id = found + STR_SV_STNAME;
+	return (tmp == 0) ? STR_SV_STNAME_FALLBACK : (STR_SV_STNAME + FindFirstBit(tmp));
 }
 #undef M
 
@@ -524,22 +502,15 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	}
 }
 
-struct ottd_Rectangle {
-	uint min_x;
-	uint min_y;
-	uint max_x;
-	uint max_y;
-};
-
-static inline void MergePoint(ottd_Rectangle *rect, TileIndex tile)
+static inline void MergePoint(Rect *rect, TileIndex tile)
 {
-	uint x = TileX(tile);
-	uint y = TileY(tile);
+	int x = TileX(tile);
+	int y = TileY(tile);
 
-	if (rect->min_x > x) rect->min_x = x;
-	if (rect->min_y > y) rect->min_y = y;
-	if (rect->max_x < x) rect->max_x = x;
-	if (rect->max_y < y) rect->max_y = y;
+	if (rect->left   > x) rect->left   = x;
+	if (rect->bottom > y) rect->bottom = y;
+	if (rect->right  < x) rect->right  = x;
+	if (rect->top    < y) rect->top    = y;
 }
 
 /** Update the acceptance for a station.
@@ -551,11 +522,11 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	/* Don't update acceptance for a buoy */
 	if (st->IsBuoy()) return;
 
-	ottd_Rectangle rect;
-	rect.min_x = MapSizeX();
-	rect.min_y = MapSizeY();
-	rect.max_x = 0;
-	rect.max_y = 0;
+	Rect rect;
+	rect.left   = MapSizeX();
+	rect.bottom = MapSizeY();
+	rect.right  = 0;
+	rect.top    = 0;
 
 	/* old accepted goods types */
 	uint old_acc = GetAcceptanceMask(st);
@@ -585,12 +556,12 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 	/* And retrieve the acceptance. */
 	AcceptedCargo accepts;
-	if (rect.max_x >= rect.min_x) {
+	if (rect.right >= rect.left) {
 		GetAcceptanceAroundTiles(
 			accepts,
-			TileXY(rect.min_x, rect.min_y),
-			rect.max_x - rect.min_x + 1,
-			rect.max_y - rect.min_y + 1,
+			TileXY(rect.left, rect.bottom),
+			rect.right - rect.left   + 1,
+			rect.top   - rect.bottom + 1,
 			_patches.modified_catchment ? FindCatchmentRadius(st) : (uint)CA_UNMODIFIED
 		);
 	} else {
@@ -983,7 +954,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 			st = new Station();
 
 			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
-			GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
+			st->string_id = GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
 
 			if (IsValidPlayer(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
@@ -1407,7 +1378,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st = new Station();
 
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
-			GenerateStationName(st, tile, STATIONNAMING_ROAD);
+			st->string_id = GenerateStationName(st, tile, STATIONNAMING_ROAD);
 
 			if (IsValidPlayer(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
@@ -1715,7 +1686,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st = new Station();
 
 			st->town = t;
-			GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
+			st->string_id = GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
 			if (IsValidPlayer(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
@@ -1832,7 +1803,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Station *st = new Station();
 
 		st->town = ClosestTownFromTile(tile, UINT_MAX);
-		GenerateStationName(st, tile, STATIONNAMING_BUOY);
+		st->string_id = GenerateStationName(st, tile, STATIONNAMING_BUOY);
 
 		if (IsValidPlayer(_current_player)) {
 			SetBit(st->town->have_ratings, _current_player);
@@ -1992,7 +1963,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st = new Station();
 
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
-			GenerateStationName(st, tile, STATIONNAMING_DOCK);
+			st->string_id = GenerateStationName(st, tile, STATIONNAMING_DOCK);
 
 			if (IsValidPlayer(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
@@ -2479,8 +2450,8 @@ static void UpdateStationRating(Station *st)
 			int rating = 0;
 
 			{
-				int b = ge->last_speed;
-				if ((b -= 85) >= 0)
+				int b = ge->last_speed - 85;
+				if (b >= 0)
 					rating += b >> 2;
 			}
 
@@ -2833,7 +2804,7 @@ void BuildOilRig(TileIndex tile)
 	st->town = ClosestTownFromTile(tile, UINT_MAX);
 	st->sign.width_1 = 0;
 
-	GenerateStationName(st, tile, STATIONNAMING_OILRIG);
+	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 
 	MakeOilrig(tile, st->index);
 
