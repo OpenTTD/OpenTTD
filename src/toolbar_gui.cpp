@@ -314,10 +314,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 	int dis = ~0;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == veh && v->IsPrimaryVehicle()) {
-			ClrBit(dis, v->owner);
-			break;
-		}
+		if (v->type == veh && v->IsPrimaryVehicle()) ClrBit(dis, v->owner);
 	}
 	PopupMainPlayerToolbMenu(w, 13 + veh, dis);
 }
