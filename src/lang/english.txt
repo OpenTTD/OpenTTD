@@ -3129,6 +3129,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Missing 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without tram support. All trams have been removed.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:

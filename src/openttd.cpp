@@ -2440,6 +2440,21 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(62)) {
+		/* Remove all trams from savegames without tram support.
+		 * There would be trams without tram track under causing crashes sooner or later. */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_ROAD && v->First() == v &&
+					HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM)) {
+				if (_switch_mode_errorstr == INVALID_STRING_ID || _switch_mode_errorstr == STR_NEWGRF_COMPATIBLE_LOAD_WARNING) {
+					_switch_mode_errorstr = STR_LOADGAME_REMOVED_TRAMS;
+				}
+				delete v;
+			}
+		}
+	}
+
 	return InitializeWindowsAndCaches();
 }
 

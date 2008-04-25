@@ -1809,8 +1809,6 @@ STR_205C_PIGGY_BANK                                             :Mealheiro
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{1:STRING} de {0:TOWN}
-STR_INDUSTRY_FORMAT.f                                           :{G=f}{1:STRING} de {0:TOWN}
-STR_INDUSTRY_FORMAT.m                                           :{G=m}{1:STRING} de {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
