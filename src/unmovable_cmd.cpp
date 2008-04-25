@@ -41,7 +41,7 @@
  */
 static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 {
-	Player* p = GetPlayer(pid);
+	Player *p = GetPlayer(pid);
 
 	if (flags & DC_EXEC) {
 		TileIndex t = p->location_of_house;
@@ -153,7 +153,6 @@ CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
 
-
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
@@ -169,7 +168,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 	switch (GetUnmovableType(ti->tile)) {
 		case UNMOVABLE_TRANSMITTER:
 		case UNMOVABLE_LIGHTHOUSE: {
-			const DrawTileSeqStruct* dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];
+			const DrawTileSeqStruct *dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 			DrawClearLandTile(ti, 2);
@@ -206,20 +205,17 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			break;
 
 		default: {
-			const DrawTileSeqStruct* dtss;
-			const DrawTileSprites* t;
-			SpriteID palette;
-
 			assert(IsCompanyHQ(ti->tile));
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
+			SpriteID palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
+			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
 			DrawGroundSprite(t->ground.sprite, palette);
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;
 
+			const DrawTileSeqStruct *dtss;
 			foreach_draw_tile_seq(dtss, t->seq) {
 				AddSortableSpriteToDraw(
 					dtss->image.sprite, palette,
@@ -286,14 +282,13 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 
 static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 {
-	uint level; // HQ level (depends on company performance) in the range 1..5.
-
 	if (!IsCompanyHQ(tile)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
 
-	level = GetCompanyHQSize(tile) + 1;
+	/* HQ level (depends on company performance) in the range 1..5. */
+	uint level = GetCompanyHQSize(tile) + 1;
 
 	/* Top town building generates 10, so to make HQ interesting, the top
 	 * type makes 20. */
@@ -326,18 +321,16 @@ static void AnimateTile_Unmovable(TileIndex tile)
 
 static void TileLoop_Unmovable(TileIndex tile)
 {
-	uint level; // HQ level (depends on company performance) in the range 1..5.
-	uint32 r;
-
 	if (!IsCompanyHQ(tile)) return;
 
 	/* HQ accepts passenger and mail; but we have to divide the values
 	 * between 4 tiles it occupies! */
 
-	level = GetCompanyHQSize(tile) + 1;
+	/* HQ level (depends on company performance) in the range 1..5. */
+	uint level = GetCompanyHQSize(tile) + 1;
 	assert(level < 6);
 
-	r = Random();
+	uint r = Random();
 	/* Top town buildings generate 250, so the top HQ type makes 256. */
 	if (GB(r, 0, 8) < (256 / 4 / (6 - level))) {
 		uint amt = GB(r, 0, 8) / 8 / 4 + 1;
@@ -381,54 +374,42 @@ static bool IsRadioTowerNearby(TileIndex tile)
 
 void GenerateUnmovables()
 {
-	int i, li, j, loop_count;
-	TileIndex tile;
-	uint h;
-	uint maxx;
-	uint maxy;
-
 	if (_opt.landscape == LT_TOYLAND) return;
 
 	/* add radio tower */
-	i = ScaleByMapSize(1000);
-	j = ScaleByMapSize(15); // maximum number of radio towers on the map
-	li = ScaleByMapSize1D((Random() & 3) + 7);
-	SetGeneratingWorldProgress(GWP_UNMOVABLE, j + li);
+	int radiotowser_to_build = ScaleByMapSize(15); // maximum number of radio towers on the map
+	int lighthouses_to_build = _opt.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
+	SetGeneratingWorldProgress(GWP_UNMOVABLE, radiotowser_to_build + lighthouses_to_build);
 
-	do {
-		tile = RandomTile();
+	for (uint i = ScaleByMapSize(1000); i != 0; i--) {
+		TileIndex tile = RandomTile();
+
+		uint h;
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4 && !IsBridgeAbove(tile)) {
 			if (IsRadioTowerNearby(tile)) continue;
+
 			MakeTransmitter(tile);
 			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
-			if (--j == 0) break;
+			if (--radiotowser_to_build == 0) break;
 		}
-	} while (--i);
+	}
 
 	if (_opt.landscape == LT_TROPIC) return;
 
 	/* add lighthouses */
-	i = li;
-	maxx = MapMaxX();
-	maxy = MapMaxY();
-	loop_count = 0;
-	do {
-		uint32 r;
-		DiagDirection dir;
-		int perimeter;
-
-restart:
-		/* Avoid infinite loops */
-		if (++loop_count > 1000) break;
-
-		r = Random();
+	uint maxx = MapMaxX();
+	uint maxy = MapMaxY();
+	for (int loop_count = 0; loop_count < 1000 && lighthouses_to_build != 0; loop_count++) {
+		uint r = Random();
 
 		/* Scatter the lighthouses more evenly around the perimeter */
-		perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
+		int perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
+		DiagDirection dir;
 		for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
 			perimeter -= (DiagDirToAxis(dir) == AXIS_X) ? maxx : maxy;
 		}
 
+		TileIndex tile;
 		switch (dir) {
 			default:
 			case DIAGDIR_NE: tile = TileXY(maxx,     r % maxy); break;
@@ -436,17 +417,19 @@ restart:
 			case DIAGDIR_SW: tile = TileXY(0,        r % maxy); break;
 			case DIAGDIR_NW: tile = TileXY(r % maxx, maxy);     break;
 		}
-		j = 20;
-		do {
-			if (--j == 0) goto restart;
+
+		for (int j = 0; j < 20; j++) {
+			uint h;
+			if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)) {
+				MakeLighthouse(tile);
+				IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
+				lighthouses_to_build--;
+				assert(tile == TILE_MASK(tile));
+				break;
+			}
 			tile = TILE_MASK(tile + TileOffsByDiagDir(dir));
-		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)));
-
-		assert(tile == TILE_MASK(tile));
-
-		MakeLighthouse(tile);
-		IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
-	} while (--i);
+		}
+	}
 }
 
 static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, PlayerID new_player)
