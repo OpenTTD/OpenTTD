@@ -1036,6 +1036,8 @@ STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Leyfa b
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Skýli má vera á áætlun lesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Fjármögnun nýrra hráefnisiðnaða: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :engin
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :eins og annarra iðnaða
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :með jarðefnisleit
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Leyfa marga svipaða iðnaði í sama bæ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Má byggja iðnaði af sömu gerð nálægt hvor öðrum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Sýna alltaf fulla dagsetningu á upplýsingaslá: {ORANGE}{STRING}
@@ -1049,6 +1051,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Heimila
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Heimila peningagreiðslur til annarra fyrirtækja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Órétthyrndar lestarstöðvar leyfðar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Margfalda þyngd farms til að líkja eftir þyngri lestum: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Hraðastuðull flugvéla: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leyfa strætóstöðvar á gangstéttum bæja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Heimila sambyggingu stöðva: {ORANGE}{STRING}
 
@@ -1104,6 +1107,9 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Skruna á korti
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Engin
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Hraði skrunhjóls á korti: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Hægrismellshermun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-smella
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-smella
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Setja leik á bið þegar nýr leikur er hafinn: {ORANGE}{STRING}
@@ -1126,6 +1132,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Fyrsta möguleg
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Síðasta mögulega
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest notuð
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Sýna byggingarvalmynd þegar engin viðeigandi farartæki eru fáanleg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Lestir á leikmann mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Bifreiðir á leikmann mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Flugvélar á leikmann mest: {ORANGE}{STRING}
@@ -1298,8 +1305,8 @@ STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Veldu te
 STR_FAST_FORWARD                                                :{BLACK}Spóla leikinn áfram
 STR_MESSAGE_HISTORY                                             :{WHITE}Saga skilaboða
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Listi yfir nýlegar fréttir
-STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Óvirkja allt
-STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Virkja allt
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Fela allt
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Sýna allt
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Grafa Kolanámu
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Gróðursetja Skóg
@@ -1709,6 +1716,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Verður að eyða byggingu fyrst
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Borg)
 STR_2006_POPULATION                                             :{BLACK}Íbúafjöldi: {ORANGE}{COMMA}{BLACK}  Hús: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Endurskíra bæ
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Get ekki endurskírt bæ...
@@ -3337,6 +3345,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Millifæra gjaldeyri: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...vegurinn er í eigu bæjar
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...vegurinn snýr í ranga átt
 

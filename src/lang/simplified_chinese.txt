@@ -1333,12 +1333,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}设置�
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
 STR_NETWORK_SELECT_MAP                                          :{BLACK}选择地图：
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}选择你要玩的地图
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}玩家数目：
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）
 STR_NETWORK_LAN                                                 :局域网
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :局域网 / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}玩家数目：
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}公司数量：
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}限制服务器上可以创建的公司数量
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}旁观数量：

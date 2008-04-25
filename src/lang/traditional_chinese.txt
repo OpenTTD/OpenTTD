@@ -344,7 +344,7 @@ STR_0155_INCOME_GRAPH                                           :收入圖表
 STR_0156_DELIVERED_CARGO_GRAPH                                  :運載報表
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :業績歷史圖表
 STR_0158_COMPANY_VALUE_GRAPH                                    :公司市值圖表
-STR_0159_CARGO_PAYMENT_RATES                                    :貨物收費圖表
+STR_0159_CARGO_PAYMENT_RATES                                    :公定運費報表
 STR_015A_COMPANY_LEAGUE_TABLE                                   :公司排行榜
 STR_PERFORMANCE_DETAIL_MENU                                     :詳細營運評比
 ############ range for menu ends
@@ -435,8 +435,8 @@ STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示�
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的公車/貨車
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的船隻
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}顯示公司擁有的飛機
-STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}拉近視域
-STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}拉遠視域
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}拉近場景
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}拉遠場景
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}興建路軌設施
 STR_0182_BUILD_ROADS                                            :{BLACK}興建道路設施
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}興建碼頭設施
@@ -471,7 +471,7 @@ STR_AGE                                                         :{COMMA} 年 ({C
 STR_AGE_RED                                                     :{RED}{COMMA} 年 ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :車輛
+STR_019C_ROAD_VEHICLE                                           :公車/貨車
 STR_019D_AIRCRAFT                                               :飛機
 STR_019E_SHIP                                                   :船隻
 STR_019F_TRAIN                                                  :列車
@@ -586,6 +586,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}意外 
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司資訊
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}工業開張/倒閉消息
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}經濟氣候變化
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}工業提供給玩家的產量變更
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}工業提供給競爭者的產量變更
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}其他工業產量變更
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}給玩家的載具的建議或資訊
 STR_020C_NEW_VEHICLES                                           :{YELLOW}新載具
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}接收貨物的改動
@@ -721,6 +724,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}建立�
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}建立發射站
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}定義沙漠區。{}請按住 CTRL 移除
 STR_CREATE_LAKE                                                 :{BLACK}劃出湖泊範圍。{}開鑿運河。在海平面上按 CTRL 鍵則會淹沒週遭土地
+STR_CREATE_RIVER                                                :{BLACK}劃出河流範圍
 STR_0290_DELETE                                                 :{BLACK}刪除
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}完全移除這個市鎮
 STR_0292_SAVE_SCENARIO                                          :儲存場景
@@ -930,6 +934,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}介面�
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}全螢幕
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}勾選即可以全螢幕玩 OpenTTD
+STR_FULLSCREEN_FAILED                                           :{WHITE}無法切換全螢幕模式
 
 STR_OPTIONS_RES                                                 :{BLACK}螢幕解析度
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1044,6 +1049,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}允許�
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}允許資金流通給其他公司：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}不規則形狀車站：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}貨物重量系數，以模擬較重列車：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}飛機速度比例：{ORANGE}{STRING} 分之一
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}可在鎮內興建路邊車站：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}容許興建相鄰車站： {ORANGE}{STRING}
 
@@ -1198,6 +1204,18 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}改變設定值
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}以下預設檢修期與揀選項目不相容! 合法設定為 5-90% 或 30-800 日
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}列車的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不建議)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(建議)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}車輛的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :預設 {RED}(不建議)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(建議)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}船隻的路徑搜尋方式：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :預設 {BLUE}(建議)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(不建議)
 STR_TEMPERATE_LANDSCAPE                                         :溫帶
 STR_SUB_ARCTIC_LANDSCAPE                                        :亞北極帶
 STR_SUB_TROPICAL_LANDSCAPE                                      :亞熱帶
@@ -1592,6 +1610,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}太高
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}沒有適合的鐵路軌道
 STR_1007_ALREADY_BUILT                                          :{WHITE}...已經建了
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}必須先移除鐵道
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}道路是單行道或被阻擋
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}鋪設鐵道
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}建造電氣化鐵道
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}鋪設單軌
@@ -1694,6 +1713,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}必須先摧毀建物
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (城市)
 STR_2006_POPULATION                                             :{BLACK}人口：{ORANGE}{COMMA}{BLACK}  房屋：{ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :修改城鎮名稱
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}無法修改城鎮名稱...
@@ -2326,6 +2346,8 @@ STR_LIVERY_EMU                                                  :電聯車
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :乘客車廂 (蒸氣)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :乘客車廂 (柴油)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :乘客車廂 (電力)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :客車廂 (單軌)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客車廂 (磁浮)
 STR_LIVERY_FREIGHT_WAGON                                        :貨車廂
 STR_LIVERY_BUS                                                  :公車
 STR_LIVERY_TRUCK                                                :貨卡車

@@ -770,6 +770,7 @@ STR_02C4_GAME_OPTIONS                                           :Ludaj opcioj
 STR_02C6_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
 STR_MENU_CONFIG_PATCHES                                         :Agordu flikojn
 STR_NEWGRF_SETTINGS                                             :Agordoj de NewGRF
+STR_TRANSPARENCY_OPTIONS                                        :Ebloj por travidebleco
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Staciaj nomoj montriĝas
@@ -797,7 +798,6 @@ STR_02DD_SUBSIDIES                                              :Subvencioj
 STR_02DE_MAP_OF_WORLD                                           :Mondomapo
 STR_EXTRA_VIEW_PORT                                             :Plia videjo
 STR_SIGN_LIST                                                   :Afiŝa listo
-STR_TRANSPARENCY_OPTIONS                                        :Ebloj por travidebleco
 STR_02DF_TOWN_DIRECTORY                                         :Urbaro
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
@@ -1343,12 +1343,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Agordu p
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Elektu mapon:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kiun mapon vi volas ludi?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
 STR_NETWORK_LAN                                                 :Loka reto
 STR_NETWORK_INTERNET                                            :Interreto
 STR_NETWORK_LAN_INTERNET                                        :Loka reto / Interreto
 STR_NETWORK_INTERNET_ADVERTISE                                  :Interreto (reklamu)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Kompania maksimumo:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limu la servilon al certa kvanto da kompanioj
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Spektanta maksimumo:

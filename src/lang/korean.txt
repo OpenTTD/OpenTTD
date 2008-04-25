@@ -1302,7 +1302,7 @@ STR_STATION_DRAG_DROP                                           :{BLACK}드래�
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}표시할 역의 종류를 선택합니다
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}건설할 역의 종류를 선택합니다
 
-STR_FAST_FORWARD                                                :{BLACK}게임 빨리감기
+STR_FAST_FORWARD                                                :{BLACK}게임 고속 진행
 STR_MESSAGE_HISTORY                                             :{WHITE}메시지 기록
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}최근 뉴스 메시지의 기록입니다
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}모두 사용 안함
@@ -2941,7 +2941,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}선박 �
 STR_9831_NAME_SHIP                                              :{WHITE}선박 이름 지정
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}선박의 이름을 바꿀 수 없습니다...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}웨이포인트로 사용할 부이를  which can be used as a waypoint
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}웨이포인트로 사용할 부이를 설치합니다.
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}여기에 부이를 설치할 수 없습니다...
 STR_9836_RENAME                                                 :{BLACK}이름 지정
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}선박 타입의 이름 지정
@@ -3396,7 +3396,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}이 구�
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}이 그룹에 차량을 추가할 수 없습니다.
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}이 구릅에 공유된 차량을 추가할 수 없습니다.
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 땅을 클릭하면 이 그룹의 모든 차량을 나열
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭하신 그룹에 속한 차량을 모두 나열합니다
 STR_GROUP_CREATE_TIP                                            :{BLACK}그룹 만들기
 STR_GROUP_DELETE_TIP                                            :{BLACK}선택한 그룹 삭제
 STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기

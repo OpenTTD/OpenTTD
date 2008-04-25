@@ -1779,6 +1779,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova sa musi zburat
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Mesto)
 STR_2006_POPULATION                                             :{BLACK}Obyvatelstvo: {ORANGE}{COMMA}{BLACK}  Domov: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Premenovat mesto
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Mesto nemoze byt odstranene ...
