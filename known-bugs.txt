@@ -11,10 +11,12 @@ by the number below on http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version of /trunk.
 
-Bugs for 0.6.0
+Bugs for 0.6.1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+- 1944	Road vehicles not picking empty drivethrough platform
+- 1923	Unique names not always enforced
 - 1891	Go to depot for servicing is forgotten
 - 1890	Airplanes copy helipcopters goto heliport order
 - 1885	Almost all unserved industries die in big maps

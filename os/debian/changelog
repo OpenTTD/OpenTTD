@@ -1,3 +1,9 @@
+openttd (0.6.1~RC1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat, 26 Apr 2008 22:55:00 +0200
+
 openttd (0.6.0) unstable; urgency=low
 
   * New upstream release.

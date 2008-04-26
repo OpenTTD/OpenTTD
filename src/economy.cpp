@@ -45,6 +45,7 @@
 #include "rail_map.h"
 #include "signal_func.h"
 #include "gfx_func.h"
+#include "autoreplace_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -453,6 +454,19 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 		/* update signals in buffer */
 		UpdateSignalsInBuffer();
+	}
+
+	/* In all cases clear replace engine rules.
+	 * Even if it was copied, it could interfere with new owner's rules */
+	RemoveAllEngineReplacementForPlayer(GetPlayer(old_player));
+
+	if (new_player == PLAYER_SPECTATOR) {
+		RemoveAllGroupsForPlayer(old_player);
+	} else {
+		Group *g;
+		FOR_ALL_GROUPS(g) {
+			if (g->owner == old_player) g->owner = new_player;
+		}
 	}
 
 	/* Change color of existing windows */

@@ -453,6 +453,8 @@ static Player *AllocatePlayer()
 	/* Find a free slot */
 	FOR_ALL_PLAYERS(p) {
 		if (!p->is_active) {
+			free(p->name);
+			free(p->president_name);
 			PlayerID i = p->index;
 			memset(p, 0, sizeof(Player));
 			memset(&_players_ai[i], 0, sizeof(PlayerAI));
@@ -912,9 +914,6 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
 			p->is_active = false;
 		}
-		RemoveAllEngineReplacementForPlayer(p);
-		RemoveAllGroupsForPlayer(p->index);
-
 	} break;
 
 	case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
