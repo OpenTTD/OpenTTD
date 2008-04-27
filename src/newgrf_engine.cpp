@@ -724,7 +724,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x45: return v->unitnumber;
 		case 0x46: return v->engine_type;
 		case 0x47: return GB(v->engine_type, 8, 8);
-		case 0x48: return v->spritenum;
+		case 0x48:
+			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
+			return HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
+
 		case 0x49: return v->day_counter;
 		case 0x4A: return v->breakdowns_since_last_service;
 		case 0x4B: return v->breakdown_ctr;
