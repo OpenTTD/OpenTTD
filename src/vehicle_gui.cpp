@@ -731,40 +731,39 @@ void InitializeGUI()
 /** Assigns an already open vehicle window to a new vehicle.
  * Assigns an already open vehicle window to a new vehicle. If the vehicle got
  * any sub window open (orders and so on) it will change owner too.
- * @param *from_v the current owner of the window
- * @param *to_v the new owner of the window
+ * @param from_index the current owner of the window
+ * @param to_index the new owner of the window
  */
-void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
+void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 {
-	Window *w;
+	Window *w = FindWindowById(WC_VEHICLE_VIEW, from_index);
 
-	w = FindWindowById(WC_VEHICLE_VIEW, from_v->index);
 	if (w != NULL) {
-		w->window_number = to_v->index;
-		WP(w, vp_d).follow_vehicle = to_v->index;
+		w->window_number = to_index;
+		WP(w, vp_d).follow_vehicle = to_index;
 		SetWindowDirty(w);
 
-		w = FindWindowById(WC_VEHICLE_ORDERS, from_v->index);
+		w = FindWindowById(WC_VEHICLE_ORDERS, from_index);
 		if (w != NULL) {
-			w->window_number = to_v->index;
+			w->window_number = to_index;
 			SetWindowDirty(w);
 		}
 
-		w = FindWindowById(WC_VEHICLE_REFIT, from_v->index);
+		w = FindWindowById(WC_VEHICLE_REFIT, from_index);
 		if (w != NULL) {
-			w->window_number = to_v->index;
+			w->window_number = to_index;
 			SetWindowDirty(w);
 		}
 
-		w = FindWindowById(WC_VEHICLE_DETAILS, from_v->index);
+		w = FindWindowById(WC_VEHICLE_DETAILS, from_index);
 		if (w != NULL) {
-			w->window_number = to_v->index;
+			w->window_number = to_index;
 			SetWindowDirty(w);
 		}
 
-		w = FindWindowById(WC_VEHICLE_TIMETABLE, from_v->index);
+		w = FindWindowById(WC_VEHICLE_TIMETABLE, from_index);
 		if (w != NULL) {
-			w->window_number = to_v->index;
+			w->window_number = to_index;
 			SetWindowDirty(w);
 		}
 	}
