@@ -542,16 +542,12 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 * fact will trigger an assertion failure. --pasky
 	 * CMD_CLONE_VEHICLE: Both building new vehicles and refitting them can be
 	 * influenced by newgrf callbacks, which makes it impossible to accurately
-	 * estimate the cost of cloning a vehicle.
-	 * CMD_DEPOT_MASS_AUTOREPLACE: we can't predict wagon removal so
-	 * the test will not include income from any sold wagons.
-	 * This means that the costs can sometimes be lower than estimated. */
+	 * estimate the cost of cloning a vehicle. */
 	notest =
 		(cmd & 0xFF) == CMD_CLEAR_AREA ||
 		(cmd & 0xFF) == CMD_LEVEL_LAND ||
 		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD ||
-		(cmd & 0xFF) == CMD_CLONE_VEHICLE    ||
-		(cmd & 0xFF) == CMD_DEPOT_MASS_AUTOREPLACE;
+		(cmd & 0xFF) == CMD_CLONE_VEHICLE;
 
 	_docommand_recursive = 1;
 

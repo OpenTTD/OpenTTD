@@ -28,6 +28,7 @@ extern BackuppedOrders _backup_orders_data;
 
 void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order = &_backup_orders_data);
 void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *order = &_backup_orders_data);
+void RestoreVehicleOrdersBruteForce(Vehicle *v, const BackuppedOrders *bak);
 
 /* Functions */
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);

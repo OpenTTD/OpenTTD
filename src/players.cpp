@@ -208,6 +208,24 @@ bool CheckPlayerHasMoney(CommandCost cost)
 	return true;
 }
 
+/** Backs up current economic data for a player
+ */
+PlayerMoneyBackup::PlayerMoneyBackup(Player *player)
+{
+	p = player;
+	memcpy(backup_yearly_expenses, p->yearly_expenses, EXPENSES_END * sizeof(Money));
+	backup_cur_economy = p->cur_economy;
+}
+
+/** Restore the economic data from last backup
+ * This should only be used right after Player::BackupEconomy()
+ */
+void PlayerMoneyBackup::Restore()
+{
+	memcpy(p->yearly_expenses, backup_yearly_expenses, EXPENSES_END * sizeof(Money));
+	p->cur_economy = backup_cur_economy;
+}
+
 static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
 {
 	if (cost.GetCost() == 0) return;

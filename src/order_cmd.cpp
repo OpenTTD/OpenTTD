@@ -1233,7 +1233,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 
 		/* Copy the orders */
 		FOR_VEHICLE_ORDERS(v, order) {
-			*dest = *order;
+			memcpy(dest, order, sizeof(Order));
 			dest++;
 		}
 		/* End the list with an empty order */
@@ -1283,6 +1283,42 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 
 	/* Restore vehicle group */
 	DoCommandP(0, bak->group, v->index, NULL, CMD_ADD_VEHICLE_GROUP);
+}
+
+/** Restores vehicle orders that was previously backed up by BackupVehicleOrders()
+ * This will restore to the point where it was at the time of the backup meaning
+ * it will presume the same order indexes can be used.
+ * This is needed when restoring a backed up vehicle
+ * @param v The vehicle that should gain the orders
+ * @param bak the backup of the orders
+ */
+void RestoreVehicleOrdersBruteForce(Vehicle *v, const BackuppedOrders *bak)
+{
+	if (bak->name != NULL) {
+		/* Restore the name. */
+		v->name = strdup(bak->name);
+	}
+
+	/* If we had shared orders, recover that */
+	if (bak->clone != INVALID_VEHICLE) {
+		/* We will place it at the same location in the linked list as it previously was. */
+		if (v->prev_shared != NULL) {
+			assert(v->prev_shared->next_shared == v->next_shared);
+			v->prev_shared->next_shared = v;
+		}
+		if (v->next_shared != NULL) {
+			assert(v->next_shared->prev_shared == v->prev_shared);
+			v->next_shared->prev_shared = v;
+		}
+	} else {
+		/* Restore the orders at the indexes they originally were. */
+		for (Order *order = bak->order; order->IsValid(); order++) {
+			Order *dst = GetOrder(order->index);
+			/* Since we are restoring something we removed a moment ago all the orders should be free. */
+			assert(!dst->IsValid());
+			memcpy(dst, order, sizeof(Order));
+		}
+	}
 }
 
 /** Restore the current order-index of a vehicle and sets service-interval.

@@ -73,6 +73,18 @@ struct Player {
 	uint16 num_engines[TOTAL_NUM_ENGINES]; ///< caches the number of engines of each type the player owns (no need to save this)
 };
 
+struct PlayerMoneyBackup {
+private:
+	Money backup_yearly_expenses[EXPENSES_END];
+	PlayerEconomyEntry backup_cur_economy;
+	Player *p;
+
+public:
+	PlayerMoneyBackup(Player *player);
+
+	void Restore();
+};
+
 extern Player _players[MAX_PLAYERS];
 #define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
 

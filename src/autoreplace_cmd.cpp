@@ -206,7 +206,11 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 				/* Now we move the old one out of the train */
 				DoCommand(0, (INVALID_VEHICLE << 16) | old_v->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 				/* Add the new vehicle */
-				DoCommand(0, (front->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				CommandCost tmp_move = DoCommand(0, (front->index << 16) | new_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+				if (CmdFailed(tmp_move)) {
+					cost.AddCost(tmp_move);
+					DoCommand(0, new_v->index, 1, DC_EXEC, GetCmdSellVeh(VEH_TRAIN));
+				}
 			}
 		} else {
 			// copy/clone the orders
@@ -232,7 +236,11 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 				}
 
 				if (temp_v != NULL) {
-					DoCommand(0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+					CommandCost tmp_move = DoCommand(0, (new_v->index << 16) | temp_v->index, 1, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
+					if (CmdFailed(tmp_move)) {
+						cost.AddCost(tmp_move);
+						DoCommand(0, temp_v->index, 1, DC_EXEC, GetCmdSellVeh(VEH_TRAIN));
+					}
 				}
 			}
 		}
@@ -363,9 +371,10 @@ static EngineID GetNewEngineType(const Vehicle *v, const Player *p)
 CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 {
 	Vehicle *w;
-	const Player *p = GetPlayer(v->owner);
+	Player *p = GetPlayer(v->owner);
 	CommandCost cost;
 	bool stopped = false;
+	BackuppedVehicle backup(true);
 
 	/* We only want "real" vehicle types. */
 	assert(IsPlayerBuildableVehicleType(v));
@@ -410,11 +419,14 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 			EngineID new_engine = GetNewEngineType(w, p);
 			if (new_engine == INVALID_ENGINE) continue;
 
+			if (!backup.ContainsBackup()) {
+				/* We are going to try to replace a vehicle but we don't have any backup so we will make one. */
+				backup.Backup(v, p);
+			}
 			/* Now replace the vehicle */
-			cost.AddCost(ReplaceVehicle(&w, flags, cost.GetCost(), p, new_engine));
+			cost.AddCost(ReplaceVehicle(&w, DC_EXEC, cost.GetCost(), p, new_engine));
 
-			if (flags & DC_EXEC &&
-					(w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {
+			if (w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE) {
 				/* now we bought a new engine and sold the old one. We need to fix the
 				 * pointers in order to avoid pointing to the old one for trains: these
 				 * pointers should point to the front engine and not the cars
@@ -423,18 +435,26 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 			}
 		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
+		if (v->type == VEH_TRAIN && p->renew_keep_length) {
+			/* Remove wagons until the wanted length is reached */
+			cost.AddCost(WagonRemoval(v, old_total_length));
+		}
+
 		if (flags & DC_QUERY_COST || cost.GetCost() == 0) {
 			/* We didn't do anything during the replace so we will just exit here */
+			v = backup.Restore(v);
 			if (stopped) v->vehstatus &= ~VS_STOPPED;
 			return cost;
 		}
 
-		if (display_costs && !(flags & DC_EXEC)) {
+		if (display_costs) {
 			/* We want to ensure that we will not get below p->engine_renew_money.
 			 * We will not actually pay this amount. It's for display and checks only. */
-			cost.AddCost((Money)p->engine_renew_money);
-			if (CmdSucceeded(cost) && GetAvailableMoneyForCommand() < cost.GetCost()) {
+			CommandCost tmp = cost;
+			tmp.AddCost((Money)p->engine_renew_money);
+			if (CmdSucceeded(tmp) && GetAvailableMoneyForCommand() < tmp.GetCost()) {
 				/* We don't have enough money so we will set cost to failed */
+				cost.AddCost((Money)p->engine_renew_money);
 				cost.AddCost(CMD_ERROR);
 			}
 		}
@@ -457,15 +477,12 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 		}
 	}
 
-	if (flags & DC_EXEC && CmdSucceeded(cost)) {
-		if (v->type == VEH_TRAIN && p->renew_keep_length) {
-			/* Remove wagons until the wanted length is reached */
-			cost.AddCost(WagonRemoval(v, old_total_length));
-		}
+	if (display_costs && IsLocalPlayer() && (flags & DC_EXEC) && CmdSucceeded(cost)) {
+		ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
+	}
 
-		if (display_costs && IsLocalPlayer()) {
-			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
-		}
+	if (!(flags & DC_EXEC) || CmdFailed(cost)) {
+		v = backup.Restore(v);
 	}
 
 	/* Start the vehicle if we stopped it earlier */

@@ -712,12 +712,7 @@ void CallVehicleTicks()
 				v->leave_depot_instantly = false;
 				v->vehstatus &= ~VS_STOPPED;
 			}
-
-			CommandCost cost = MaybeReplaceVehicle(v, 0, true);
-			if (CmdSucceeded(cost) && cost.GetCost() != 0) {
-				/* Looks like we can replace this vehicle so we go ahead and do so */
-				MaybeReplaceVehicle(v, DC_EXEC, true);
-			}
+			MaybeReplaceVehicle(v, DC_EXEC, true);
 			v = w;
 		}
 		_current_player = OWNER_NONE;
@@ -2687,6 +2682,87 @@ void Vehicle::SetNext(Vehicle *next)
 			v->first = this->first;
 		}
 	}
+}
+
+/** Backs up a chain of vehicles
+ * @return a pointer to the chain
+ */
+Vehicle* Vehicle::BackupVehicle() const
+{
+	int length = CountVehiclesInChain(this);
+
+	Vehicle *list = MallocT<Vehicle>(length);
+	Vehicle *copy = list; // store the pointer so we have something to return later
+
+	const Vehicle *original = this;
+
+	for (; 0 < length; original = original->next, copy++, length--) {
+		memcpy(copy, original, sizeof(Vehicle));
+	}
+	return list;
+}
+
+/** Restore a backed up row of vehicles
+ * @return a pointer to the first vehicle in chain
+ */
+Vehicle* Vehicle::RestoreBackupVehicle()
+{
+	Vehicle *backup = this;
+
+	Player *p = GetPlayer(backup->owner);
+
+	while (true) {
+		Vehicle *dest = GetVehicle(backup->index);
+		/* The vehicle should be free since we are restoring something we just sold. */
+		assert(!dest->IsValid());
+		memcpy(dest, backup, sizeof(Vehicle));
+
+		/* We decreased the engine count when we sold the engines so we will increase it again. */
+		if (IsEngineCountable(backup)) p->num_engines[backup->engine_type]++;
+
+		Vehicle *dummy = dest;
+		dest->old_new_hash = &dummy;
+		dest->left_coord = INVALID_COORD;
+		UpdateVehiclePosHash(dest, INVALID_COORD, 0);
+
+		if (backup->next == NULL) break;
+		backup++;
+	}
+	return GetVehicle(this->index);
+}
+
+/** Restores a backed up vehicle
+ * @param *v A vehicle we should sell and take the windows from (NULL for not using this)
+ * @return The vehicle we restored (front for trains) or v if we didn't have anything to restore
+ */
+Vehicle *BackuppedVehicle::Restore(Vehicle *v)
+{
+	if (!ContainsBackup()) return v;
+	if (v != NULL) {
+		ChangeVehicleViewWindow(v, INVALID_VEHICLE);
+		DoCommand(0, v->index, 1, DC_EXEC, GetCmdSellVeh(v));
+	}
+	v = this->vehicles->RestoreBackupVehicle();
+	ChangeVehicleViewWindow(INVALID_VEHICLE, v);
+	if (orders != NULL) RestoreVehicleOrdersBruteForce(v, orders);
+	if (economy != NULL) economy->Restore();
+	return v;
+}
+
+/** Backs up a vehicle
+ * This should never be called when the object already contains a backup
+ * @param v the vehicle to backup
+ * @param p If it's set to the vehicle's owner then economy is backed up. If NULL then economy backup will be skipped.
+ */
+void BackuppedVehicle::Backup(const Vehicle *v, Player *p)
+{
+	assert(!ContainsBackup());
+	if (p != NULL) {
+		assert(p->index == v->owner);
+		economy = new PlayerMoneyBackup(p);
+	}
+	vehicles = v->BackupVehicle();
+	if (orders != NULL) BackupVehicleOrders(v, orders);
 }
 
 void StopAllVehicles()

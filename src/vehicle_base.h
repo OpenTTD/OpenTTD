@@ -14,6 +14,7 @@
 #include "gfx_type.h"
 #include "command_type.h"
 #include "date_type.h"
+#include "player_base.h"
 #include "player_type.h"
 #include "oldpool.h"
 #include "order_base.h"
@@ -21,6 +22,7 @@
 #include "texteff.hpp"
 #include "group_type.h"
 #include "engine_type.h"
+#include "order_func.h"
 
 /** Road vehicle states */
 enum RoadVehicleStates {
@@ -520,6 +522,9 @@ public:
 	 * @return the cost of the depot action.
 	 */
 	CommandCost SendToDepot(uint32 flags, DepotCommand command);
+
+	Vehicle* BackupVehicle() const;
+	Vehicle* RestoreBackupVehicle();
 };
 
 /**
@@ -648,5 +653,22 @@ static inline Vehicle *GetFirstVehicleFromSharedList(const Vehicle *v)
 Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 void CheckVehicle32Day(Vehicle *v);
+
+struct BackuppedVehicle {
+private:
+	Vehicle *vehicles;
+	BackuppedOrders *orders;
+	PlayerMoneyBackup *economy;
+
+public:
+	BackuppedVehicle(bool include_orders) : vehicles(NULL), economy(NULL) {
+		orders = include_orders ? new BackuppedOrders() : NULL;
+	}
+	~BackuppedVehicle() { free(vehicles); delete orders; delete economy; }
+
+	void Backup(const Vehicle *v, Player *p = NULL);
+	Vehicle *Restore(Vehicle *v);
+	bool ContainsBackup() { return vehicles != NULL; }
+};
 
 #endif /* VEHICLE_BASE_H */
