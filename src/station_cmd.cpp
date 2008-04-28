@@ -951,7 +951,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
-			st = new Station();
+			st = new Station(tile_org);
 
 			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
@@ -1375,7 +1375,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
-			st = new Station();
+			st = new Station(tile);
 
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_ROAD);
@@ -1683,7 +1683,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
-			st = new Station();
+			st = new Station(tile);
 
 			st->town = t;
 			st->string_id = GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
@@ -1800,7 +1800,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 	if (flags & DC_EXEC) {
-		Station *st = new Station();
+		Station *st = new Station(tile);
 
 		st->town = ClosestTownFromTile(tile, UINT_MAX);
 		st->string_id = GenerateStationName(st, tile, STATIONNAMING_BUOY);
@@ -1960,7 +1960,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!Station::CanAllocateItem()) return_cmd_error(STR_3008_TOO_MANY_STATIONS_LOADING);
 
 		if (flags & DC_EXEC) {
-			st = new Station();
+			st = new Station(tile);
 
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_DOCK);
@@ -2794,7 +2794,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 
 void BuildOilRig(TileIndex tile)
 {
-	Station *st = new Station();
+	Station *st = new Station(tile);
 
 	if (st == NULL) {
 		DEBUG(misc, 0, "Can't allocate station for oilrig at 0x%X, reverting to oilrig only", tile);
