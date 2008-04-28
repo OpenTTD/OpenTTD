@@ -63,7 +63,9 @@ public:
 
 	/* virtual */ bool IsRunning()
 	{
-		return m_thr != 0;
+		int sval;
+		sem_getvalue(&m_sem_stop, &sval);
+		return sval == 0;
 	}
 
 	/* virtual */ bool WaitForStop()
