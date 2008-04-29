@@ -101,10 +101,11 @@ extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 extern void InitializeRailGUI();
 
-/* TODO: usrerror() for errors which are not of an internal nature but
- * caused by the user, i.e. missing files or fatal configuration errors.
- * Post-0.4.0 since Celestar doesn't want this in SVN before. --pasky */
-
+/**
+ * Error handling for fatal errors.
+ * @param s the string to print.
+ * @note Does NEVER return.
+ */
 void CDECL error(const char *s, ...)
 {
 	va_list va;
@@ -121,6 +122,10 @@ void CDECL error(const char *s, ...)
 	exit(1);
 }
 
+/**
+ * Shows some information on the console/a popup box depending on the OS.
+ * @param str the text to show.
+ */
 void CDECL ShowInfoF(const char *str, ...)
 {
 	va_list va;
@@ -131,13 +136,16 @@ void CDECL ShowInfoF(const char *str, ...)
 	ShowInfo(buf);
 }
 
-
+/** The current revision of OpenTTD */
 extern const char _openttd_revision[];
-static void showhelp()
-{
-	char buf[4096], *p;
 
-	p = buf;
+/**
+ * Show the help message when someone passed a wrong parameter.
+ */
+static void ShowHelp()
+{
+	char buf[4096];
+	char *p = buf;
 
 	p += snprintf(p, lengthof(buf), "OpenTTD %s\n", _openttd_revision);
 	p = strecpy(p,
@@ -253,7 +261,12 @@ md_continue_here:;
 	}
 }
 
-
+/**
+ * Extract the resolution from the given string and store
+ * it in the 'res' parameter.
+ * @param res variable to store the resolution in.
+ * @param s   the string to decompose.
+ */
 static void ParseResolution(int res[2], const char *s)
 {
 	const char *t = strchr(s, 'x');
@@ -430,7 +443,7 @@ int ttd_main(int argc, char *argv[])
 		case 'x': save_config = false; break;
 		case -2:
 		case 'h':
-			showhelp();
+			ShowHelp();
 			return 0;
 		}
 	}
@@ -778,7 +791,8 @@ static void StartScenario()
  * @param filename file to be loaded
  * @param mode mode of loading, either SL_LOAD or SL_OLD_LOAD
  * @param newgm switch to this mode of loading fails due to some unknown error
- * @param subdir default directory to look for filename, set to 0 if not needed */
+ * @param subdir default directory to look for filename, set to 0 if not needed
+ */
 bool SafeSaveOrLoad(const char *filename, int mode, int newgm, Subdirectory subdir)
 {
 	byte ogm = _game_mode;
@@ -839,103 +853,103 @@ void SwitchMode(int new_mode)
 #endif /* ENABLE_NETWORK */
 
 	switch (new_mode) {
-	case SM_EDITOR: /* Switch to scenario editor */
-		MakeNewEditorWorld();
-		break;
+		case SM_EDITOR: /* Switch to scenario editor */
+			MakeNewEditorWorld();
+			break;
 
-	case SM_NEWGAME: /* New Game --> 'Random game' */
-#ifdef ENABLE_NETWORK
-		if (_network_server) {
-			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
-		}
-#endif /* ENABLE_NETWORK */
-		MakeNewGame(false);
-		break;
-
-	case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
-#ifdef ENABLE_NETWORK
-		if (_network_server) {
-			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded scenario)", _file_to_saveload.title);
-		}
-#endif /* ENABLE_NETWORK */
-		StartScenario();
-		break;
-
-	case SM_LOAD: { /* Load game, Play Scenario */
-		_opt_ptr = &_opt;
-		ResetGRFConfig(true);
-		ResetWindowSystem();
-
-		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
-			LoadIntroGame();
-			SetDParamStr(0, GetSaveLoadErrorString());
-			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
-		} else {
-			/* Update the local player for a loaded game. It is either always
-			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
-			SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : PLAYER_FIRST);
-			/* Decrease pause counter (was increased from opening load dialog) */
-			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		case SM_NEWGAME: /* New Game --> 'Random game' */
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
+				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
 			}
 #endif /* ENABLE_NETWORK */
-		}
-		break;
-	}
+			MakeNewGame(false);
+			break;
 
-	case SM_START_HEIGHTMAP: /* Load a heightmap and start a new game from it */
+		case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
 #ifdef ENABLE_NETWORK
-		if (_network_server) {
-			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
-		}
+			if (_network_server) {
+				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded scenario)", _file_to_saveload.title);
+			}
 #endif /* ENABLE_NETWORK */
-		MakeNewGame(true);
-		break;
+			StartScenario();
+			break;
 
-	case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
-		SetLocalPlayer(OWNER_NONE);
-
-		GenerateWorld(GW_HEIGHTMAP, 1 << _patches.map_x, 1 << _patches.map_y);
-		MarkWholeScreenDirty();
-		break;
-
-	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
-		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
+		case SM_LOAD: { /* Load game, Play Scenario */
 			_opt_ptr = &_opt;
+			ResetGRFConfig(true);
+			ResetWindowSystem();
 
+			if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
+				LoadIntroGame();
+				SetDParamStr(0, GetSaveLoadErrorString());
+				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
+			} else {
+				/* Update the local player for a loaded game. It is either always
+				* player #1 (eg 0) or in the case of a dedicated server a spectator */
+				SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : PLAYER_FIRST);
+				/* Decrease pause counter (was increased from opening load dialog) */
+				DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+#ifdef ENABLE_NETWORK
+				if (_network_server) {
+					snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);
+				}
+#endif /* ENABLE_NETWORK */
+			}
+			break;
+		}
+
+		case SM_START_HEIGHTMAP: /* Load a heightmap and start a new game from it */
+#ifdef ENABLE_NETWORK
+			if (_network_server) {
+				snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
+			}
+#endif /* ENABLE_NETWORK */
+			MakeNewGame(true);
+			break;
+
+		case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
 			SetLocalPlayer(OWNER_NONE);
-			_patches_newgame.starting_year = _cur_year;
-		} else {
-			SetDParamStr(0, GetSaveLoadErrorString());
-			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
+
+			GenerateWorld(GW_HEIGHTMAP, 1 << _patches.map_x, 1 << _patches.map_y);
+			MarkWholeScreenDirty();
+			break;
+
+		case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
+			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
+				_opt_ptr = &_opt;
+
+				SetLocalPlayer(OWNER_NONE);
+				_patches_newgame.starting_year = _cur_year;
+			} else {
+				SetDParamStr(0, GetSaveLoadErrorString());
+				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
+			}
+			break;
 		}
-		break;
-	}
 
-	case SM_MENU: /* Switch to game intro menu */
-		LoadIntroGame();
-		break;
+		case SM_MENU: /* Switch to game intro menu */
+			LoadIntroGame();
+			break;
 
-	case SM_SAVE: /* Save game */
-		/* Make network saved games on pause compatible to singleplayer */
-		if (_networking && _pause_game == 1) _pause_game = 2;
-		if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
-			SetDParamStr(0, GetSaveLoadErrorString());
-			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
-		} else {
-			DeleteWindowById(WC_SAVELOAD, 0);
-		}
-		if (_networking && _pause_game == 2) _pause_game = 1;
-		break;
+		case SM_SAVE: /* Save game */
+			/* Make network saved games on pause compatible to singleplayer */
+			if (_networking && _pause_game == 1) _pause_game = 2;
+			if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
+				SetDParamStr(0, GetSaveLoadErrorString());
+				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
+			} else {
+				DeleteWindowById(WC_SAVELOAD, 0);
+			}
+			if (_networking && _pause_game == 2) _pause_game = 1;
+			break;
 
-	case SM_GENRANDLAND: /* Generate random land within scenario editor */
-		SetLocalPlayer(OWNER_NONE);
-		GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
-		/* XXX: set date */
-		MarkWholeScreenDirty();
-		break;
+		case SM_GENRANDLAND: /* Generate random land within scenario editor */
+			SetLocalPlayer(OWNER_NONE);
+			GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
+			/* XXX: set date */
+			MarkWholeScreenDirty();
+			break;
 	}
 
 	if (_switch_mode_errorstr != INVALID_STRING_ID) {
@@ -944,10 +958,11 @@ void SwitchMode(int new_mode)
 }
 
 
-/* State controlling game loop.
- * The state must not be changed from anywhere
- * but here.
- * That check is enforced in DoCommand. */
+/**
+ * State controlling game loop.
+ * The state must not be changed from anywhere but here.
+ * That check is enforced in DoCommand.
+ */
 void StateGameLoop()
 {
 	/* dont execute the state loop during pause */
@@ -1044,8 +1059,7 @@ static void DoAutosave()
 
 #if defined(PSP)
 	/* Autosaving in networking is too time expensive for the PSP */
-	if (_networking)
-		return;
+	if (_networking) return;
 #endif /* PSP */
 
 	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
@@ -1061,8 +1075,9 @@ static void DoAutosave()
 	}
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
-	if (SaveOrLoad(buf, SL_SAVE, AUTOSAVE_DIR) != SL_OK)
+	if (SaveOrLoad(buf, SL_SAVE, AUTOSAVE_DIR) != SL_OK) {
 		ShowErrorMessage(INVALID_STRING_ID, STR_AUTOSAVE_FAILED, 0, 0);
+	}
 }
 
 static void ScrollMainViewport(int x, int y)
@@ -1075,6 +1090,7 @@ static void ScrollMainViewport(int x, int y)
 		WP(w, vp_d).dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
 	}
 }
+
 /**
  * Describes all the different arrow key combinations the game allows
  * when it is in scrolling mode.
@@ -1189,9 +1205,7 @@ void BeforeSaveGame()
 
 static void ConvertTownOwner()
 {
-	TileIndex tile;
-
-	for (tile = 0; tile != MapSize(); tile++) {
+	for (TileIndex tile = 0; tile != MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
 				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m4, 7)) {
