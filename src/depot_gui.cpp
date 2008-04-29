@@ -653,17 +653,17 @@ static void ResizeDefaultWindowSizeForRoadVehicles()
 
 static void ResizeDefaultWindowSize(VehicleType type)
 {
-	EngineID engine;
 	uint max_width  = 0;
 	uint max_height = 0;
 
-	FOR_ALL_ENGINEIDS_OF_TYPE(engine, type) {
+	EngineID eid;
+	FOR_ALL_ENGINEIDS_OF_TYPE(eid, type) {
 		uint x, y;
 
 		switch (type) {
 			default: NOT_REACHED();
-			case VEH_SHIP:     GetShipSpriteSize(    engine, x, y); break;
-			case VEH_AIRCRAFT: GetAircraftSpriteSize(engine, x, y); break;
+			case VEH_SHIP:     GetShipSpriteSize(    eid, x, y); break;
+			case VEH_AIRCRAFT: GetAircraftSpriteSize(eid, x, y); break;
 		}
 		if (x > max_width)  max_width  = x;
 		if (y > max_height) max_height = y;

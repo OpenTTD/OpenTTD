@@ -202,14 +202,14 @@ RailTypes GetPlayerRailtypes(PlayerID p)
 {
 	RailTypes rt = RAILTYPES_NONE;
 
-	EngineID i;
-	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_TRAIN) {
-		const Engine* e = GetEngine(i);
-		const EngineInfo *ei = EngInfo(i);
+	EngineID eid;
+	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_TRAIN) {
+		const Engine* e = GetEngine(eid);
+		const EngineInfo *ei = EngInfo(eid);
 
 		if (HasBit(ei->climates, _opt.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
-			const RailVehicleInfo *rvi = RailVehInfo(i);
+			const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);

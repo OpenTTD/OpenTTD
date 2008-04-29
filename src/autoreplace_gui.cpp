@@ -191,7 +191,6 @@ static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b)
  */
 static void GenerateReplaceVehList(Window *w, bool draw_left)
 {
-	EngineID e;
 	EngineID selected_engine = INVALID_ENGINE;
 	VehicleType type = (VehicleType)w->window_number;
 	byte i = draw_left ? 0 : 1;
@@ -199,27 +198,28 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 	EngineList *list = &WP(w, replaceveh_d).list[i];
 	EngList_RemoveAll(list);
 
-	FOR_ALL_ENGINEIDS_OF_TYPE(e, type) {
-		if (type == VEH_TRAIN && !GenerateReplaceRailList(e, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
+	EngineID eid;
+	FOR_ALL_ENGINEIDS_OF_TYPE(eid, type) {
+		if (type == VEH_TRAIN && !GenerateReplaceRailList(eid, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
 
 		if (draw_left) {
 			const GroupID selected_group = WP(w, replaceveh_d).sel_group;
-			const uint num_engines = GetGroupNumEngines(_local_player, selected_group, e);
+			const uint num_engines = GetGroupNumEngines(_local_player, selected_group, eid);
 
 			/* Skip drawing the engines we don't have any of and haven't set for replacement */
-			if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), e, selected_group) == INVALID_ENGINE) continue;
+			if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), eid, selected_group) == INVALID_ENGINE) continue;
 		} else {
 			/* This is for engines we can replace to and they should depend on what we selected to replace from */
-			if (!IsEngineBuildable(e, type, _local_player)) continue; // we need to be able to build the engine
-			if (!EnginesGotCargoInCommon(e, WP(w, replaceveh_d).sel_engine[0])) continue; // the engines needs to be able to carry the same cargo
+			if (!IsEngineBuildable(eid, type, _local_player)) continue; // we need to be able to build the engine
+			if (!EnginesGotCargoInCommon(eid, WP(w, replaceveh_d).sel_engine[0])) continue; // the engines needs to be able to carry the same cargo
 
 			/* Road vehicles can't be replaced by trams and vice-versa */
-			if (type == VEH_ROAD && HasBit(EngInfo(WP(w, replaceveh_d).sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HasBit(EngInfo(e)->misc_flags, EF_ROAD_TRAM)) continue;
-			if (e == WP(w, replaceveh_d).sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
+			if (type == VEH_ROAD && HasBit(EngInfo(WP(w, replaceveh_d).sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM)) continue;
+			if (eid == WP(w, replaceveh_d).sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
 		}
 
-		EngList_Add(list, e);
-		if (e == WP(w, replaceveh_d).sel_engine[i]) selected_engine = e; // The selected engine is still in the list
+		EngList_Add(list, eid);
+		if (eid == WP(w, replaceveh_d).sel_engine[i]) selected_engine = eid; // The selected engine is still in the list
 	}
 	WP(w, replaceveh_d).sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
 	if (type == VEH_TRAIN) EngList_Sort(list, &TrainEngineNumberSorter);
