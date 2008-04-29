@@ -2300,7 +2300,7 @@ static void UpdateTownGrowRate(Town *t)
 	/* Increase player ratings if they're low */
 	const Player *p;
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) {
+		if (p->is_active && t->ratings[p->index] < RATING_GROWTH_MAXIMUM) {
 			t->ratings[p->index] = min((int)RATING_GROWTH_MAXIMUM, t->ratings[p->index] + RATING_GROWTH_UP_STEP);
 		}
 	}
