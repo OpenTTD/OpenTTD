@@ -233,7 +233,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			const RoadBits other = GetOtherRoadBits(tile, rt);
 			const Foundation f = GetRoadFoundation(tileh, present);
 
-			if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+			if (HasRoadWorks(tile) && _current_player != OWNER_WATER) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
 			/* Autocomplete to a straight road
 			 * @li on steep slopes
@@ -260,6 +260,16 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 
 			if (town_check) ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			if (flags & DC_EXEC) {
+				if (HasRoadWorks(tile)) {
+					/* flooding tile with road works, don't forget to remove the effect vehicle too */
+					assert(_current_player == OWNER_WATER);
+					Vehicle *v;
+					FOR_ALL_VEHICLES(v) {
+						if (v->type == VEH_EFFECT && TileVirtXY(v->x_pos, v->y_pos) == tile) {
+							delete v;
+						}
+					}
+				}
 				if (present == ROAD_NONE) {
 					RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 					if (rts == ROADTYPES_NONE) {
