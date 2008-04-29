@@ -29,6 +29,7 @@
 #include "../../industry.h"
 #include "../../station_base.h"
 #include "../../engine_func.h"
+#include "../../engine_base.h"
 #include "../../gui.h"
 #include "../../depot_base.h"
 #include "../../vehicle_base.h"

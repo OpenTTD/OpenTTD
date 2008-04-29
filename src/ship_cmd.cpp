@@ -14,6 +14,7 @@
 #include "station_base.h"
 #include "news_func.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "player_func.h"
 #include "player_base.h"
 #include "npf.h"
@@ -65,7 +66,7 @@ static SpriteID GetShipIcon(EngineID engine)
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = _orig_ship_vehicle_info[engine - SHIP_ENGINES_INDEX].image_index;
+		spritenum = GetEngine(engine)->image_index;
 	}
 
 	return 6 + _ship_sprites[spritenum];
@@ -97,7 +98,7 @@ SpriteID Ship::GetImage(Direction direction) const
 		SpriteID sprite = GetCustomVehicleSprite(this, direction);
 		if (sprite != 0) return sprite;
 
-		spritenum = _orig_ship_vehicle_info[this->engine_type - SHIP_ENGINES_INDEX].image_index;
+		spritenum = GetEngine(this->engine_type)->image_index;
 	}
 
 	return _ship_sprites[spritenum] + direction;

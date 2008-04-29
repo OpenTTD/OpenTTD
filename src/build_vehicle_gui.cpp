@@ -800,9 +800,10 @@ static void GenerateBuildTrainList(Window *w)
 	 * Also check to see if the previously selected engine is still available,
 	 * and if not, reset selection to INVALID_ENGINE. This could be the case
 	 * when engines become obsolete and are removed */
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_TRAIN) {
-		const RailVehicleInfo *rvi = RailVehInfo(eid);
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		EngineID eid = e->index;
+		const RailVehicleInfo *rvi = &e->u.rail;
 
 		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, bv->filter.railtype)) continue;
 		if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
@@ -839,8 +840,9 @@ static void GenerateBuildRoadVehList(Window *w)
 
 	EngList_RemoveAll(&bv->eng_list);
 
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_ROAD) {
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		EngineID eid = e->index;
 		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
 		if (!HasBit(bv->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
 		EngList_Add(&bv->eng_list, eid);
@@ -858,8 +860,9 @@ static void GenerateBuildShipList(Window *w)
 
 	EngList_RemoveAll(&bv->eng_list);
 
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_SHIP) {
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
+		EngineID eid = e->index;
 		if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
 		EngList_Add(&bv->eng_list, eid);
 
@@ -880,8 +883,9 @@ static void GenerateBuildAircraftList(Window *w)
 	 * Also check to see if the previously selected plane is still available,
 	 * and if not, reset selection to INVALID_ENGINE. This could be the case
 	 * when planes become obsolete and are removed */
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_AIRCRAFT) {
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
+		EngineID eid = e->index;
 		if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
 		/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 		if (w->window_number > VEH_END && !CanAircraftUseStation(eid, w->window_number)) continue;

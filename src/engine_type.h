@@ -18,6 +18,8 @@ typedef uint16 EngineID;
 typedef uint16 EngineRenewID;
 typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 
+struct Engine;
+
 enum RailVehicleTypes {
 	RAILVEH_SINGLEHEAD,  ///< indicates a "standalone" locomotive
 	RAILVEH_MULTIHEAD,   ///< indicates a combination of two locomotives
@@ -119,22 +121,6 @@ struct EngineInfo {
 	StringID string_id; ///< Default name of engine
 };
 
-struct Engine {
-	char *name;         ///< Custom name of engine
-	Date intro_date;
-	Date age;
-	uint16 reliability;
-	uint16 reliability_spd_dec;
-	uint16 reliability_start, reliability_max, reliability_final;
-	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
-	byte lifelength;
-	byte flags;
-	uint8 preview_player_rank;
-	byte preview_wait;
-	byte player_avail;
-	VehicleType type; ///< type, ie VEH_ROAD, VEH_TRAIN, etc.
-};
-
 /**
  * EngineInfo.misc_flags is a bitmask, with the following values
  */
@@ -159,19 +145,5 @@ enum {
 };
 
 static const EngineID INVALID_ENGINE = 0xFFFF;
-
-enum {
-	NUM_NORMAL_RAIL_ENGINES = 54,
-	NUM_MONORAIL_ENGINES    = 30,
-	NUM_MAGLEV_ENGINES      = 32,
-	NUM_TRAIN_ENGINES       = NUM_NORMAL_RAIL_ENGINES + NUM_MONORAIL_ENGINES + NUM_MAGLEV_ENGINES,
-	NUM_ROAD_ENGINES        = 88,
-	NUM_SHIP_ENGINES        = 11,
-	NUM_AIRCRAFT_ENGINES    = 41,
-	TOTAL_NUM_ENGINES       = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES + NUM_AIRCRAFT_ENGINES,
-	AIRCRAFT_ENGINES_INDEX  = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES + NUM_SHIP_ENGINES,
-	SHIP_ENGINES_INDEX      = NUM_TRAIN_ENGINES + NUM_ROAD_ENGINES,
-	ROAD_ENGINES_INDEX      = NUM_TRAIN_ENGINES,
-};
 
 #endif /* ENGINE_TYPE_H */

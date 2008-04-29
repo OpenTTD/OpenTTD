@@ -35,6 +35,7 @@
 #include "tunnelbridge.h"
 #include "player_base.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "economy_func.h"
 #include "rail.h"
 #include "cheat_func.h"

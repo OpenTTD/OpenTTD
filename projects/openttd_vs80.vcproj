@@ -988,6 +988,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\engine_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\engine_func.h"
 				>
 			</File>

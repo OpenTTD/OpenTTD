@@ -14,6 +14,7 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "engine_func.h"
+#include "engine_base.h"
 
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
@@ -202,14 +203,13 @@ RailTypes GetPlayerRailtypes(PlayerID p)
 {
 	RailTypes rt = RAILTYPES_NONE;
 
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_TRAIN) {
-		const Engine* e = GetEngine(eid);
-		const EngineInfo *ei = EngInfo(eid);
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _opt.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
-			const RailVehicleInfo *rvi = RailVehInfo(eid);
+			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				assert(rvi->railtype < RAILTYPE_END);

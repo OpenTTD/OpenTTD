@@ -11,6 +11,19 @@
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 
+static EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id)
+{
+	const Engine *e = NULL;
+	FOR_ALL_ENGINES(e) {
+		if (e->grffile != file) continue;
+		if (e->type != type) continue;
+		if (e->internal_id != internal_id) continue;
+
+		return e->index;
+	}
+
+	return INVALID_ENGINE;
+}
 
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
@@ -54,7 +67,7 @@ uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 
-		EngineID artic_engine = GetFirstEngineOfType(type) + GB(callback, 0, 7);
+		EngineID artic_engine = GetNewEngineID(GetEngineGRF(engine), type, GB(callback, 0, 7));
 
 		if (type == VEH_TRAIN) {
 			const RailVehicleInfo *rvi = RailVehInfo(artic_engine);
@@ -88,7 +101,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 		Vehicle *previous = u;
 		u = u->Next();
 
-		EngineID engine_type = GetFirstEngineOfType(type) + GB(callback, 0, 7);
+		EngineID engine_type = GetNewEngineID(GetEngineGRF(v->engine_type), type, GB(callback, 0, 7));
 		bool flip_image = HasBit(callback, 7);
 
 		/* get common values from first engine */

@@ -656,8 +656,9 @@ static void ResizeDefaultWindowSize(VehicleType type)
 	uint max_width  = 0;
 	uint max_height = 0;
 
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, type) {
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, type) {
+		EngineID eid = e->index;
 		uint x, y;
 
 		switch (type) {

@@ -168,6 +168,7 @@ economy_type.h
 effectvehicle_func.h
 effectvehicle_base.h
 core/endian_func.hpp
+engine_base.h
 engine_func.h
 engine_type.h
 core/enum_type.hpp

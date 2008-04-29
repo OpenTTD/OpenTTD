@@ -102,7 +102,7 @@ static SpriteID GetRoadVehIcon(EngineID engine)
 		SpriteID sprite = GetCustomVehicleIcon(engine, DIR_W);
 		if (sprite != 0) return sprite;
 
-		spritenum = _orig_road_vehicle_info[engine - ROAD_ENGINES_INDEX].image_index;
+		spritenum = GetEngine(engine)->image_index;
 	}
 
 	return 6 + _roadveh_images[spritenum];
@@ -117,7 +117,7 @@ SpriteID RoadVehicle::GetImage(Direction direction) const
 		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
 		if (sprite != 0) return sprite;
 
-		spritenum = _orig_road_vehicle_info[this->engine_type - ROAD_ENGINES_INDEX].image_index;
+		spritenum = GetEngine(this->engine_type)->image_index;
 	}
 
 	sprite = direction + _roadveh_images[spritenum];

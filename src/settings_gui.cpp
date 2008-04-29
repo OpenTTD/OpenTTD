@@ -819,6 +819,7 @@ static const char *_patches_vehicles[] = {
 	"freight_trains",
 	"plane_speed",
 	"timetabling",
+	"dynamic_engines",
 };
 
 struct PatchEntry {

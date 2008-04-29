@@ -137,11 +137,11 @@ static EngineID AiChooseTrainToBuild(RailType railtype, Money money, byte flag, 
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	byte best_veh_score = 0;
-	EngineID i;
+	const Engine *e;
 
-	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_TRAIN) {
-		const RailVehicleInfo *rvi = RailVehInfo(i);
-		const Engine* e = GetEngine(i);
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		EngineID i = e->index;
+		const RailVehicleInfo *rvi = &e->u.rail;
 
 		if (!IsCompatibleRail(rvi->railtype, railtype) ||
 				rvi->railveh_type == RAILVEH_WAGON ||
@@ -168,11 +168,11 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, Money money, TileIndex til
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_rating = 0;
-	EngineID i;
+	const Engine *e;
 
-	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_ROAD) {
-		const RoadVehicleInfo *rvi = RoadVehInfo(i);
-		const Engine* e = GetEngine(i);
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		EngineID i = e->index;
+		const RoadVehicleInfo *rvi = &e->u.road;
 
 		if (!HasBit(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
@@ -209,16 +209,17 @@ static EngineID AiChooseAircraftToBuild(Money money, byte forbidden)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	Money best_veh_cost = 0;
-	EngineID i;
+	const Engine *e;
 
-	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_AIRCRAFT) {
-		const Engine* e = GetEngine(i);
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
+		EngineID i = e->index;
+		const AircraftVehicleInfo *avi = &e->u.air;
 
 		if (!HasBit(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
 		}
 
-		if ((AircraftVehInfo(i)->subtype & forbidden) != 0) continue;
+		if ((avi->subtype & forbidden) != 0) continue;
 
 		CommandCost ret = DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
 		if (CmdSucceeded(ret) && ret.GetCost() <= money && ret.GetCost() >= best_veh_cost) {
@@ -2445,14 +2446,14 @@ static StationID AiGetStationIdByDef(TileIndex tile, int id)
 static EngineID AiFindBestWagon(CargoID cargo, RailType railtype)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
-	EngineID i;
 	uint16 best_capacity = 0;
 	uint16 best_speed    = 0;
 	uint speed;
+	const Engine *e;
 
-	FOR_ALL_ENGINEIDS_OF_TYPE(i, VEH_TRAIN) {
-		const RailVehicleInfo *rvi = RailVehInfo(i);
-		const Engine* e = GetEngine(i);
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		EngineID i = e->index;
+		const RailVehicleInfo *rvi = &e->u.rail;
 
 		if (!IsCompatibleRail(rvi->railtype, railtype) ||
 				rvi->railveh_type != RAILVEH_WAGON ||

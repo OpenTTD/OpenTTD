@@ -18,6 +18,7 @@
 #include "station_base.h"
 #include "news_func.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "player_func.h"
 #include "player_base.h"
 #include "depot_base.h"
@@ -487,7 +488,7 @@ SpriteID Train::GetImage(Direction direction) const
 		sprite = GetCustomVehicleSprite(this, (Direction)(direction + 4 * IS_CUSTOM_SECONDHEAD_SPRITE(spritenum)));
 		if (sprite != 0) return sprite;
 
-		spritenum = _orig_rail_vehicle_info[this->engine_type].image_index;
+		spritenum = GetEngine(this->engine_type)->image_index;
 	}
 
 	sprite = _engine_sprite_base[spritenum] + ((direction + _engine_sprite_add[spritenum]) & _engine_sprite_and[spritenum]);
@@ -509,7 +510,7 @@ static SpriteID GetRailIcon(EngineID engine, bool rear_head, int &y)
 			return sprite;
 		}
 
-		spritenum = _orig_rail_vehicle_info[engine].image_index;
+		spritenum = GetEngine(engine)->image_index;
 	}
 
 	if (rear_head) spritenum++;

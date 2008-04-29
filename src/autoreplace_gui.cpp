@@ -20,6 +20,7 @@
 #include "player_func.h"
 #include "widgets/dropdown_func.h"
 #include "engine_func.h"
+#include "engine_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -198,8 +199,9 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 	EngineList *list = &WP(w, replaceveh_d).list[i];
 	EngList_RemoveAll(list);
 
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, type) {
+	const Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, type) {
+		EngineID eid = e->index;
 		if (type == VEH_TRAIN && !GenerateReplaceRailList(eid, draw_left, WP(w, replaceveh_d).wagon_btnstate)) continue; // special rules for trains
 
 		if (draw_left) {
@@ -214,7 +216,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 			if (!EnginesGotCargoInCommon(eid, WP(w, replaceveh_d).sel_engine[0])) continue; // the engines needs to be able to carry the same cargo
 
 			/* Road vehicles can't be replaced by trams and vice-versa */
-			if (type == VEH_ROAD && HasBit(EngInfo(WP(w, replaceveh_d).sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM)) continue;
+			if (type == VEH_ROAD && HasBit(EngInfo(WP(w, replaceveh_d).sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) continue;
 			if (eid == WP(w, replaceveh_d).sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
 		}
 

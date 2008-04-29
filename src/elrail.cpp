@@ -66,6 +66,7 @@
 #include "player_base.h"
 #include "tunnelbridge.h"
 #include "engine_func.h"
+#include "engine_base.h"
 
 #include "table/sprites.h"
 #include "table/elrail_data.h"
@@ -480,9 +481,9 @@ int32 SettingsDisableElrail(int32 p1)
 	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
 
 	/* walk through all train engines */
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_TRAIN) {
-		RailVehicleInfo *rv_info = &_rail_vehicle_info[eid];
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		RailVehicleInfo *rv_info = &e->u.rail;
 		/* if it is an electric rail engine and its railtype is the wrong one */
 		if (rv_info->engclass == 2 && rv_info->railtype == old_railtype) {
 			/* change it to the proper one */

@@ -17,6 +17,7 @@
 #include "settings_type.h"
 #include "order_func.h"
 #include "engine_func.h"
+#include "engine_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

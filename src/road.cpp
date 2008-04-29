@@ -10,6 +10,7 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "settings_type.h"
 #include "date_func.h"
 
@@ -96,10 +97,9 @@ RoadTypes GetPlayerRoadtypes(PlayerID p)
 {
 	RoadTypes rt = ROADTYPES_NONE;
 
-	EngineID eid;
-	FOR_ALL_ENGINEIDS_OF_TYPE(eid, VEH_ROAD) {
-		const Engine* e = GetEngine(eid);
-		const EngineInfo *ei = EngInfo(eid);
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _opt.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {

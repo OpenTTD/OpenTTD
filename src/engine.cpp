@@ -14,6 +14,7 @@
 #include "train.h"
 #include "aircraft.h"
 #include "newgrf_cargo.h"
+#include "newgrf_engine.h"
 #include "group.h"
 #include "strings_func.h"
 #include "gfx_func.h"
@@ -25,43 +26,103 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "oldpool_func.h"
+#include "core/alloc_func.hpp"
+#include "map"
 
 #include "table/strings.h"
 #include "table/engines.h"
 
-Engine _engines[TOTAL_NUM_ENGINES];
-EngineInfo _engine_info[TOTAL_NUM_ENGINES];
-RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
-ShipVehicleInfo _ship_vehicle_info[NUM_SHIP_ENGINES];
-AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
-RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
+DEFINE_OLD_POOL_GENERIC(Engine, Engine)
 
 enum {
 	YEAR_ENGINE_AGING_STOPS = 2050,
 };
 
 
+/** Number of engines of each vehicle type in original engine data */
+const uint8 _engine_counts[4] = {
+	lengthof(_orig_rail_vehicle_info),
+	lengthof(_orig_road_vehicle_info),
+	lengthof(_orig_ship_vehicle_info),
+	lengthof(_orig_aircraft_vehicle_info),
+};
+
+/** Offset of the first engine of each vehicle type in original engine data */
+const uint8 _engine_offsets[4] = {
+	0,
+	lengthof(_orig_rail_vehicle_info),
+	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info),
+	lengthof(_orig_rail_vehicle_info) + lengthof(_orig_road_vehicle_info) + lengthof(_orig_ship_vehicle_info),
+};
+
+Engine::Engine() :
+	name(NULL),
+	overrides_count(0),
+	overrides(NULL)
+{
+}
+
+Engine::Engine(VehicleType type, EngineID base)
+{
+	this->type = type;
+	this->internal_id = base;
+	this->list_position = base;
+
+	/* Check if this base engine is within the original engine data range */
+	if (base >= _engine_counts[type]) {
+		/* Mark engine as valid anyway */
+		this->info.climates = 0x80;
+		return;
+	}
+
+	/* Copy the original engine info for this slot */
+	this->info = _orig_engine_info[_engine_offsets[type] + base];
+
+	/* Copy the original engine data for this slot */
+	switch (type) {
+		default: NOT_REACHED();
+
+		case VEH_TRAIN:
+			this->u.rail = _orig_rail_vehicle_info[base];
+			this->image_index = this->u.rail.image_index;
+			this->info.string_id = STR_8000_KIRBY_PAUL_TANK_STEAM + base;
+			break;
+
+		case VEH_ROAD:
+			this->u.road = _orig_road_vehicle_info[base];
+			this->image_index = this->u.road.image_index;
+			this->info.string_id = STR_8074_MPS_REGAL_BUS + base;
+			break;
+
+		case VEH_SHIP:
+			this->u.ship = _orig_ship_vehicle_info[base];
+			this->image_index = this->u.ship.image_index;
+			this->info.string_id = STR_80CC_MPS_OIL_TANKER + base;
+			break;
+
+		case VEH_AIRCRAFT:
+			this->u.air = _orig_aircraft_vehicle_info[base];
+			this->image_index = this->u.air.image_index;
+			this->info.string_id = STR_80D7_SAMPSON_U52 + base;
+			break;
+	}
+}
+
+Engine::~Engine()
+{
+	UnloadWagonOverrides(this);
+	free(this->name);
+}
+
 void SetupEngines()
 {
-	/* Copy original static engine data */
-	memcpy(&_engine_info, &_orig_engine_info, sizeof(_orig_engine_info));
-	memcpy(&_rail_vehicle_info, &_orig_rail_vehicle_info, sizeof(_orig_rail_vehicle_info));
-	memcpy(&_ship_vehicle_info, &_orig_ship_vehicle_info, sizeof(_orig_ship_vehicle_info));
-	memcpy(&_aircraft_vehicle_info, &_orig_aircraft_vehicle_info, sizeof(_orig_aircraft_vehicle_info));
-	memcpy(&_road_vehicle_info, &_orig_road_vehicle_info, sizeof(_orig_road_vehicle_info));
+	_Engine_pool.CleanPool();
+	_Engine_pool.AddBlockToPool();
 
-	/* Add type to engines */
-	Engine* e = _engines;
-	do e->type = VEH_TRAIN;    while (++e < &_engines[ROAD_ENGINES_INDEX]);
-	do e->type = VEH_ROAD;     while (++e < &_engines[SHIP_ENGINES_INDEX]);
-	do e->type = VEH_SHIP;     while (++e < &_engines[AIRCRAFT_ENGINES_INDEX]);
-	do e->type = VEH_AIRCRAFT; while (++e < &_engines[TOTAL_NUM_ENGINES]);
-
-	/* Set up default engine names */
-	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
-		EngineInfo *ei = &_engine_info[engine];
-		ei->string_id = STR_8000_KIRBY_PAUL_TANK_STEAM + engine;
-	}
+	for (uint i = 0; i < lengthof(_orig_rail_vehicle_info); i++) new Engine(VEH_TRAIN, i);
+	for (uint i = 0; i < lengthof(_orig_road_vehicle_info); i++) new Engine(VEH_ROAD, i);
+	for (uint i = 0; i < lengthof(_orig_ship_vehicle_info); i++) new Engine(VEH_SHIP, i);
+	for (uint i = 0; i < lengthof(_orig_aircraft_vehicle_info); i++) new Engine(VEH_AIRCRAFT, i);
 }
 
 
@@ -90,7 +151,7 @@ static void CalcEngineReliability(Engine *e)
 
 	/* Check for early retirement */
 	if (e->player_avail != 0 && !_patches.never_expire_vehicles) {
-		int retire_early = EngInfo(e - _engines)->retire_early;
+		int retire_early = e->info.retire_early;
 		uint retire_early_max_age = max(0, e->duration_phase_1 + e->duration_phase_2 - retire_early * 12);
 		if (retire_early != 0 && age >= retire_early_max_age) {
 			/* Early retirement is enabled and we're past the date... */
@@ -124,11 +185,11 @@ static void CalcEngineReliability(Engine *e)
 void StartupEngines()
 {
 	Engine *e;
-	const EngineInfo *ei;
 	/* Aging of vehicles stops, so account for that when starting late */
 	const Date aging_date = min(_date, ConvertYMDToDate(YEAR_ENGINE_AGING_STOPS, 0, 1));
 
-	for (e = _engines, ei = _engine_info; e != endof(_engines); e++, ei++) {
+	FOR_ALL_ENGINES(e) {
+		const EngineInfo *ei = &e->info;
 		uint32 r;
 
 		e->age = 0;
@@ -224,13 +285,11 @@ static PlayerID GetBestPlayer(uint8 pp)
 
 void EnginesDailyLoop()
 {
-	EngineID i;
-
 	if (_cur_year >= YEAR_ENGINE_AGING_STOPS) return;
 
-	for (i = 0; i != lengthof(_engines); i++) {
-		Engine *e = &_engines[i];
-
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		EngineID i = e->index;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
 			if (e->flags & ENGINE_OFFER_WINDOW_OPEN) {
 				if (e->preview_player_rank != 0xFF && !--e->preview_wait) {
@@ -282,14 +341,15 @@ CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32
 /* Determine if an engine type is a wagon (and not a loco) */
 static bool IsWagon(EngineID index)
 {
-	return index < NUM_TRAIN_ENGINES && RailVehInfo(index)->railveh_type == RAILVEH_WAGON;
+	const Engine *e = GetEngine(index);
+	return e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON;
 }
 
 static void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;
 	Player *p;
-	EngineID index = e - _engines;
+	EngineID index = e->index;
 
 	/* In case the player didn't build the vehicle during the intro period,
 	 * prevent that player from getting future intro periods for a while. */
@@ -326,7 +386,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	if (e->type == VEH_TRAIN) {
 		/* maybe make another rail type available */
-		RailType railtype = RailVehInfo(index)->railtype;
+		RailType railtype = e->u.rail.railtype;
 		assert(railtype < RAILTYPE_END);
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) SetBit(p->avail_railtypes, railtype);
@@ -334,7 +394,7 @@ static void NewVehicleAvailable(Engine *e)
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(EngInfo(index)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
 	AddNewsItem(index, NM_CALLBACK, NF_NONE, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL, 0, 0);
@@ -359,7 +419,7 @@ void EnginesMonthlyLoop()
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
 
 				/* Do not introduce new rail wagons */
-				if (!IsWagon(e - _engines))
+				if (!IsWagon(e->index))
 					e->preview_player_rank = 1; // Give to the player with the highest rating.
 			}
 		}
@@ -370,8 +430,9 @@ static bool IsUniqueEngineName(const char *name)
 {
 	char buf[512];
 
-	for (EngineID i = 0; i < TOTAL_NUM_ENGINES; i++) {
-		SetDParam(0, i);
+	const Engine *e;
+	FOR_ALL_ENGINES(e) {
+		SetDParam(0, e->index);
 		GetString(buf, STR_ENGINE_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
 	}
@@ -620,32 +681,77 @@ static const SaveLoad _engine_desc[] = {
 	SLE_END()
 };
 
+static std::map<EngineID, Engine> _temp_engine;
+
+Engine *GetTempDataEngine(EngineID index)
+{
+	return &_temp_engine[index];
+}
+
 static void Save_ENGN()
 {
-	uint i;
-
-	for (i = 0; i != lengthof(_engines); i++) {
-		SlSetArrayIndex(i);
-		SlObject(&_engines[i], _engine_desc);
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		SlSetArrayIndex(e->index);
+		SlObject(e, _engine_desc);
 	}
 }
 
 static void Load_ENGN()
 {
+	/* As engine data is loaded before engines are initialized we need to load
+	 * this information into a temporary array. This is then copied into the
+	 * engine pool after processing NewGRFs by CopyTempEngineData(). */
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		SlObject(GetEngine(index), _engine_desc);
+		Engine *e = GetTempDataEngine(index);
+		SlObject(e, _engine_desc);
 	}
+}
+
+/**
+ * Copy data from temporary engine array into the real engine pool.
+ */
+void CopyTempEngineData()
+{
+	Engine *e;
+	FOR_ALL_ENGINES(e) {
+		if (e->index >= _temp_engine.size()) break;
+
+		const Engine *se = GetTempDataEngine(e->index);
+		e->intro_date          = se->intro_date;
+		e->age                 = se->age;
+		e->reliability         = se->reliability;
+		e->reliability_spd_dec = se->reliability_spd_dec;
+		e->reliability_start   = se->reliability_start;
+		e->reliability_max     = se->reliability_max;
+		e->reliability_final   = se->reliability_final;
+		e->duration_phase_1    = se->duration_phase_1;
+		e->duration_phase_2    = se->duration_phase_2;
+		e->duration_phase_3    = se->duration_phase_3;
+		e->lifelength          = se->lifelength;
+		e->flags               = se->flags;
+		e->preview_player_rank = se->preview_player_rank;
+		e->preview_wait        = se->preview_wait;
+		e->player_avail        = se->player_avail;
+		if (se->name != NULL) e->name = strdup(se->name);
+	}
+
+	/* Get rid of temporary data */
+	_temp_engine.clear();
 }
 
 static void Load_ENGS()
 {
-	StringID names[TOTAL_NUM_ENGINES];
+	/* Load old separate String ID list into a temporary array. This
+	 * was always 256 entries. */
+	StringID names[256];
 
 	SlArray(names, lengthof(names), SLE_STRINGID);
 
+	/* Copy each string into the temporary engine array. */
 	for (EngineID engine = 0; engine < lengthof(names); engine++) {
-		Engine *e = GetEngine(engine);
+		Engine *e = GetTempDataEngine(engine);
 		e->name = CopyFromOldName(names[engine]);
 	}
 }
@@ -661,10 +767,4 @@ void InitializeEngines()
 	/* Clean the engine renew pool and create 1 block in it */
 	_EngineRenew_pool.CleanPool();
 	_EngineRenew_pool.AddBlockToPool();
-
-	Engine *e;
-	FOR_ALL_ENGINES(e) {
-		free(e->name);
-		e->name = NULL;
-	}
 }

@@ -53,11 +53,10 @@ enum VehicleTrigger {
 };
 void TriggerVehicle(Vehicle *veh, VehicleTrigger trigger);
 
-void UnloadWagonOverrides();
-void UnloadCustomEngineSprites();
+void UnloadWagonOverrides(Engine *e);
 
-void ResetEngineListOrder();
-uint16 ListPositionOfEngine(EngineID engine);
+uint ListPositionOfEngine(EngineID engine);
 void AlterRailVehListOrder(EngineID engine, EngineID target);
+void CommitRailVehListOrderChanges();
 
 #endif /* NEWGRF_ENGINE_H */

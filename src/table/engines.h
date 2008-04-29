@@ -69,7 +69,7 @@ enum {
 #define A 2
 #define S 4
 #define Y 8
-const EngineInfo _orig_engine_info[] = {
+static const EngineInfo _orig_engine_info[] = {
 	MK(  1827,  20,  15,  30, T      ), /*   0 Kirby Paul Tank (Steam) */
 	MK( 12784,  20,  22,  30,   A|S  ), /*   1 MJS 250 (Diesel) */
 	MK(  9497,  20,  20,  50,       Y), /*   2 Ploddyphut Choo-Choo */
@@ -370,7 +370,7 @@ const EngineInfo _orig_engine_info[] = {
 #define O RAILTYPE_MONO
 #define L RAILTYPE_MAGLEV
 
-const RailVehicleInfo _orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
+static const RailVehicleInfo _orig_rail_vehicle_info[] = {
 	//   image_index  max_speed (kph)      running_cost                   ai_rank
 	//   |  flags     |        power (hp)  |  running_cost_class          |  railtype
 	//   |  |    base_cost     |    weight |  |      capacity             |  |
@@ -519,7 +519,7 @@ const RailVehicleInfo _orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
  * @param h refittable
  */
 #define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, {g}, h }
-const ShipVehicleInfo _orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
+static const ShipVehicleInfo _orig_ship_vehicle_info[] = {
 	//   image_index  cargo_type     cargo_amount                 refittable
 	//   |    base_cost |              |    running_cost          |
 	//   |    |    max_speed           |    |  sfx                |
@@ -554,7 +554,7 @@ const ShipVehicleInfo _orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
 #define H AIR_HELI
 #define P AIR_CTOL
 #define J AIR_CTOL | AIR_FAST
-const AircraftVehicleInfo _orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
+static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
 	//    image_index         sfx                         acceleration
 	//    |   base_cost       |                           |   max_speed
 	//    |   |    running_cost                           |   |    mail_capacity
@@ -618,7 +618,7 @@ const AircraftVehicleInfo _orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
  * @param g cargo_type
  */
 #define ROV(a, b, c, d, e, f, g) { a, b, c, RC_R, {d}, e, f, g }
-const RoadVehicleInfo _orig_road_vehicle_info[NUM_ROAD_ENGINES] = {
+static const RoadVehicleInfo _orig_road_vehicle_info[] = {
 	//    image_index       sfx                                 max_speed
 	//    |    base_cost    |                                   |   capacity
 	//    |    |    running_cost                                |   |  cargo_type

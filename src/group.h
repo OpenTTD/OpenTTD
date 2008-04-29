@@ -21,7 +21,7 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
 
 	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
-	uint16 num_engines[TOTAL_NUM_ENGINES];  ///< Caches the number of engines of each type the player owns (no need to save this)
+	uint16 *num_engines;                    ///< Caches the number of engines of each type the player owns (no need to save this)
 
 	Group(PlayerID owner = INVALID_PLAYER);
 	virtual ~Group();

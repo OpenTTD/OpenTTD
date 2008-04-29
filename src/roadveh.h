@@ -7,6 +7,7 @@
 
 #include "vehicle_base.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "economy_func.h"
 
 enum RoadVehicleSubType {

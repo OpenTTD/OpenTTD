@@ -305,6 +305,7 @@ static void UnInitializeGame()
 	_Order_pool.CleanPool();
 	_Group_pool.CleanPool();
 	_CargoPacket_pool.CleanPool();
+	_Engine_pool.CleanPool();
 
 	free((void*)_town_sort);
 	free((void*)_industry_sort);
@@ -1332,6 +1333,8 @@ static bool InitializeWindowsAndCaches()
 	/* Recalculate */
 	Group *g;
 	FOR_ALL_GROUPS(g) {
+		g->num_engines = CallocT<uint16>(GetEnginePoolSize());
+
 		const Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (!IsEngineCountable(v)) continue;
@@ -1354,6 +1357,9 @@ static bool InitializeWindowsAndCaches()
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
 		if (_file_to_saveload.filetype == FT_SCENARIO && players[i]->inaugurated_year != MIN_YEAR)
 			players[i]->inaugurated_year = _cur_year;
+
+		free(players[i]->num_engines);
+		players[i]->num_engines = CallocT<uint16>(GetEnginePoolSize());
 	}
 
 	FOR_ALL_VEHICLES(v) {
@@ -1444,9 +1450,15 @@ bool AfterLoadGame()
 	 * must be done before loading sprites as some newgrfs check it */
 	SetDate(_date);
 
+	/* Force dynamic engines off when loading older savegames */
+	if (CheckSavegameVersion(95)) _patches.dynamic_engines = 0;
+
 	/* Load the sprites */
 	GfxLoadSprites();
 	LoadStringWidthTable();
+
+	/* Copy temporary data to Engine pool */
+	CopyTempEngineData();
 
 	/* Connect front and rear engines of multiheaded trains and converts
 	 * subtype to the new format */

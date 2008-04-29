@@ -70,7 +70,7 @@ struct Player {
 	bool renew_keep_length;
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
-	uint16 num_engines[TOTAL_NUM_ENGINES]; ///< caches the number of engines of each type the player owns (no need to save this)
+	uint16 *num_engines; ///< caches the number of engines of each type the player owns (no need to save this)
 };
 
 struct PlayerMoneyBackup {

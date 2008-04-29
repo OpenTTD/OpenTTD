@@ -1985,9 +1985,9 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	/* We can build vehicle infrastructure when we may build the vehicle type */
 	if (max > 0) {
 		/* Can we actually build the vehicle type? */
-		EngineID eid;
-		FOR_ALL_ENGINEIDS_OF_TYPE(eid, type) {
-			if (HasBit(GetEngine(eid)->player_avail, _local_player)) return true;
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, type) {
+			if (HasBit(e->player_avail, _local_player)) return true;
 		}
 		return false;
 	}

@@ -37,6 +37,7 @@
 #include "settings_type.h"
 #include "video/video_driver.hpp"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "saveload.h"
 
 #include "table/strings.h"
@@ -934,7 +935,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				if (e->name != NULL) {
 					buff = strecpy(buff, e->name, last);
 				} else {
-					buff = GetStringWithArgs(buff, EngInfo(engine)->string_id, NULL, last);
+					buff = GetStringWithArgs(buff, e->info.string_id, NULL, last);
 				}
 				break;
 			}

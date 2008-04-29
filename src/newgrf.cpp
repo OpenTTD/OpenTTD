@@ -10,6 +10,7 @@
 #include "debug.h"
 #include "fileio.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "spritecache.h"
 #include "sprite.h"
 #include "newgrf.h"
@@ -45,6 +46,7 @@
 #include "player_base.h"
 #include "settings_type.h"
 #include "map_func.h"
+#include <map>
 
 #include <map>
 
@@ -97,20 +99,6 @@ static GrfDataType _grf_data_type;
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
-static const uint _vehcounts[4] = {
-	/* GSF_TRAIN */    NUM_TRAIN_ENGINES,
-	/* GSF_ROAD */     NUM_ROAD_ENGINES,
-	/* GSF_SHIP */     NUM_SHIP_ENGINES,
-	/* GSF_AIRCRAFT */ NUM_AIRCRAFT_ENGINES
-};
-
-static const uint _vehshifts[4] = {
-	/* GSF_TRAIN */    0,
-	/* GSF_ROAD */     ROAD_ENGINES_INDEX,
-	/* GSF_SHIP */     SHIP_ENGINES_INDEX,
-	/* GSF_AIRCRAFT */ AIRCRAFT_ENGINES_INDEX,
-};
-
 enum {
 	MAX_STATIONS = 256,
 };
@@ -123,8 +111,10 @@ struct GRFTempEngineData {
 
 static GRFTempEngineData *_gted;
 
-/* Contains the GRF ID of the owner of a vehicle if it has been reserved */
-static uint32 _grm_engines[TOTAL_NUM_ENGINES];
+/* Contains the GRF ID of the owner of a vehicle if it has been reserved.
+ * GRM for vehicles is only used if dynamic engine allocation is disabled,
+ * so 256 is the number of original engines. */
+static uint32 _grm_engines[256];
 
 /* Contains the GRF ID of the owner of a cargo if it has been reserved */
 static uint32 _grm_cargos[NUM_CARGO * 2];
@@ -310,6 +300,65 @@ static uint8 MapDOSColour(uint8 colour)
 	return colour;
 }
 
+static std::map<uint32, uint32> _grf_id_overrides;
+
+static void SetNewGRFOverride(uint32 source_grfid, uint32 target_grfid)
+{
+	_grf_id_overrides[source_grfid] = target_grfid;
+	grfmsg(5, "SetNewGRFOverride: Added override of 0x%X to 0x%X", BSWAP32(source_grfid), BSWAP32(target_grfid));
+}
+
+static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 internal_id)
+{
+	/* Hack for add-on GRFs that need to modify another GRF's engines. This lets
+	 * them use the same engine slots. */
+	const GRFFile *grf_match = NULL;
+	if (_patches.dynamic_engines) {
+		uint32 override = _grf_id_overrides[file->grfid];
+		if (override != 0) {
+			grf_match = GetFileByGRFID(override);
+			if (grf_match == NULL) {
+				grfmsg(5, "Tried mapping from GRFID %x to %x but target is not loaded", BSWAP32(file->grfid), BSWAP32(override));
+			} else {
+				grfmsg(5, "Mapping from GRFID %x to %x", BSWAP32(file->grfid), BSWAP32(override));
+			}
+		}
+	}
+
+	/* Check if this vehicle is already defined... */
+	Engine *e = NULL;
+	FOR_ALL_ENGINES(e) {
+		if (_patches.dynamic_engines && e->grffile != NULL && e->grffile != file && e->grffile != grf_match) continue;
+		if (e->type != type) continue;
+		if (e->internal_id != internal_id) continue;
+
+		if (e->grffile == NULL) {
+			e->grffile = file;
+			grfmsg(5, "Replaced engine at index %d for GRFID %x, type %d, index %d", e->index, BSWAP32(file->grfid), type, internal_id);
+		}
+		return e;
+	}
+
+	uint engine_pool_size = GetEnginePoolSize();
+
+	/* ... it's not, so create a new one based off an existing engine */
+	e = new Engine(type, internal_id);
+	e->grffile = file;
+
+	if (engine_pool_size != GetEnginePoolSize()) {
+		/* Resize temporary engine data ... */
+		_gted = ReallocT(_gted, GetEnginePoolSize());
+
+		/* and blank the new block. */
+		size_t len = (GetEnginePoolSize() - engine_pool_size) * sizeof(*_gted);
+		memset(_gted + engine_pool_size, 0, len);
+	}
+
+	grfmsg(5, "Created new engine at index %d for GRFID %x, type %d, index %d", e->index, BSWAP32(file->grfid), type, internal_id);
+
+	return e;
+}
+
 /** Map the colour modifiers of TTDPatch to those that Open is using.
  * @param grf_sprite pointer to the structure been modified
  */
@@ -333,18 +382,15 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
-static void dewagonize(int condition, int engine)
+static void dewagonize(int condition, Engine *e)
 {
-	EngineInfo *ei = &_engine_info[engine];
-	RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
-
 	if (condition != 0) {
-		ei->unk2 &= ~0x80;
-		if (rvi->railveh_type == RAILVEH_WAGON)
-			rvi->railveh_type = RAILVEH_SINGLEHEAD;
+		e->info.unk2 &= ~0x80;
+		if (e->u.rail.railveh_type == RAILVEH_WAGON)
+			e->u.rail.railveh_type = RAILVEH_SINGLEHEAD;
 	} else {
-		ei->unk2 |= 0x80;
-		rvi->railveh_type = RAILVEH_WAGON;
+		e->info.unk2 |= 0x80;
+		e->u.rail.railveh_type = RAILVEH_WAGON;
 	}
 }
 
@@ -354,8 +400,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	for (int i = 0; i < numinfo; i++) {
-		EngineInfo *ei       = &_engine_info[engine + i];
-		RailVehicleInfo *rvi = &_rail_vehicle_info[engine + i];
+		Engine *e = GetNewEngine(_cur_grffile, VEH_TRAIN, engine + i);
+		EngineInfo *ei = &e->info;
+		RailVehicleInfo *rvi = &e->u.rail;
 
 		switch (prop) {
 			case 0x05: { // Track type
@@ -390,7 +437,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				if (rvi->railveh_type == RAILVEH_MULTIHEAD) power /= 2;
 
 				rvi->power = power;
-				dewagonize(power, engine + i);
+				dewagonize(power, e);
 			} break;
 
 			case 0x0D: { // Running cost factor
@@ -505,15 +552,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi->engclass = engclass;
 			} break;
 
-			case 0x1A: { // Alter purchase list sort order
-				EngineID pos = grf_load_byte(&buf);
-
-				if (pos < NUM_TRAIN_ENGINES) {
-					AlterRailVehListOrder(engine + i, pos);
-				} else {
-					grfmsg(2, "RailVehicleChangeInfo: Invalid train engine ID %d, ignoring", pos);
-				}
-			} break;
+			case 0x1A: // Alter purchase list sort order
+				AlterRailVehListOrder(e->index, grf_load_byte(&buf));
+				break;
 
 			case 0x1B: // Powered wagons power bonus
 				rvi->pow_wag_power = grf_load_word(&buf);
@@ -578,11 +619,11 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x28: // Cargo classes allowed
-				_gted[engine + i].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x29: // Cargo classes disallowed
-				_gted[engine + i].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x2A: // Long format introduction date (days since year 0)
@@ -605,8 +646,9 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	for (int i = 0; i < numinfo; i++) {
-		EngineInfo *ei       = &_engine_info[ROAD_ENGINES_INDEX + engine + i];
-		RoadVehicleInfo *rvi = &_road_vehicle_info[engine + i];
+		Engine *e = GetNewEngine(_cur_grffile, VEH_ROAD, engine + i);
+		EngineInfo *ei = &e->info;
+		RoadVehicleInfo *rvi = &e->u.road;
 
 		switch (prop) {
 			case 0x08: // Speed (1 unit is 0.5 kmh)
@@ -708,11 +750,11 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x1D: // Cargo classes allowed
-				_gted[ROAD_ENGINES_INDEX + engine + i].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x1E: // Cargo classes disallowed
-				_gted[ROAD_ENGINES_INDEX + engine + i].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x1F: // Long format introduction date (days since year 0)
@@ -735,8 +777,9 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	bool ret = false;
 
 	for (int i = 0; i < numinfo; i++) {
-		EngineInfo *ei       = &_engine_info[SHIP_ENGINES_INDEX + engine + i];
-		ShipVehicleInfo *svi = &_ship_vehicle_info[engine + i];
+		Engine *e = GetNewEngine(_cur_grffile, VEH_SHIP, engine + i);
+		EngineInfo *ei = &e->info;
+		ShipVehicleInfo *svi = &e->u.ship;
 
 		switch (prop) {
 			case 0x08: { // Sprite ID
@@ -814,11 +857,11 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x18: // Cargo classes allowed
-				_gted[SHIP_ENGINES_INDEX + engine + i].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				_gted[SHIP_ENGINES_INDEX + engine + i].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -841,8 +884,9 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 	bool ret = false;
 
 	for (int i = 0; i < numinfo; i++) {
-		EngineInfo *ei           = &_engine_info[AIRCRAFT_ENGINES_INDEX + engine + i];
-		AircraftVehicleInfo *avi = &_aircraft_vehicle_info[engine + i];
+		Engine *e = GetNewEngine(_cur_grffile, VEH_AIRCRAFT, engine + i);
+		EngineInfo *ei = &e->info;
+		AircraftVehicleInfo *avi = &e->u.air;
 
 		switch (prop) {
 			case 0x08: { // Sprite ID
@@ -918,11 +962,11 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				break;
 
 			case 0x18: // Cargo classes allowed
-				_gted[AIRCRAFT_ENGINES_INDEX + engine + i].cargo_allowed = grf_load_word(&buf);
+				_gted[e->index].cargo_allowed = grf_load_word(&buf);
 				break;
 
 			case 0x19: // Cargo classes disallowed
-				_gted[AIRCRAFT_ENGINES_INDEX + engine + i].cargo_disallowed = grf_load_word(&buf);
+				_gted[e->index].cargo_disallowed = grf_load_word(&buf);
 				break;
 
 			case 0x1A: // Long format introduction date (days since year 0)
@@ -1604,6 +1648,12 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				}
 				break;
 
+			case 0x11: // GRF match for engine allocation
+				/* This is loaded during the reservation stage, so just skip it here. */
+				/* Each entry is 8 bytes. */
+				buf += 8;
+				break;
+
 			default:
 				ret = true;
 				break;
@@ -2211,13 +2261,6 @@ static void FeatureChangeInfo(byte *buf, int len)
 		return;
 	}
 
-	if (feature <= GSF_AIRCRAFT) {
-		if (engine + numinfo > _vehcounts[feature]) {
-			grfmsg(0, "FeatureChangeInfo: Last engine ID %d out of bounds (max %d), skipping", engine + numinfo, _vehcounts[feature]);
-			return;
-		}
-	}
-
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
 		bool ignoring = false;
@@ -2230,7 +2273,8 @@ static void FeatureChangeInfo(byte *buf, int len)
 				bool handled = true;
 
 				for (uint i = 0; i < numinfo; i++) {
-					EngineInfo *ei = &_engine_info[engine + _vehshifts[feature] + i];
+					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, engine + i);
+					EngineInfo *ei = &e->info;
 
 					/* Common properties for vehicles */
 					switch (prop) {
@@ -2252,6 +2296,8 @@ static void FeatureChangeInfo(byte *buf, int len)
 
 						case 0x06: // Climates available
 							ei->climates = grf_load_byte(&buf);
+							// XXX sometimes a grf wants hidden vehicles :o
+							if (ei->climates == 0) ei->climates = 0x80;
 							break;
 
 						case 0x07: // Loading speed
@@ -2343,6 +2389,14 @@ static void ReserveChangeInfo(byte *buf, int len)
 						for (uint i = 0; i < numinfo; i++) {
 							CargoLabel cl = grf_load_dword(&buf);
 							_cur_grffile->cargo_list[i] = BSWAP32(cl);
+						}
+						break;
+
+					case 0x11: // GRF match for engine allocation
+						for (uint i = 0; i < numinfo; i++) {
+							uint32 s = grf_load_dword(&buf);
+							uint32 t = grf_load_dword(&buf);
+							SetNewGRFOverride(s, t);
 						}
 						break;
 				}
@@ -2857,13 +2911,8 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 
 	for (uint i = 0; i < idcount; i++) {
 		uint8 engine_id = buf[3 + i];
-		uint8 engine = engine_id + _vehshifts[feature];
+		EngineID engine = GetNewEngine(_cur_grffile, (VehicleType)feature, engine_id)->index;
 		byte *bp = &buf[4 + idcount];
-
-		if (engine_id > _vehcounts[feature]) {
-			grfmsg(0, "Id %u for feature 0x%02X is out of bounds", engine_id, feature);
-			return;
-		}
 
 		grfmsg(7, "VehicleMapSpriteGroup: [%d] Engine %d...", i, engine);
 
@@ -2897,7 +2946,7 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 		grfmsg(8, "-- Default group id 0x%04X", groupid);
 
 		for (uint i = 0; i < idcount; i++) {
-			uint8 engine = buf[3 + i] + _vehshifts[feature];
+			EngineID engine = GetNewEngine(_cur_grffile, (VehicleType)feature, buf[3 + i])->index;
 
 			/* Don't tell me you don't love duplicated code! */
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
@@ -3213,9 +3262,6 @@ static void FeatureNewName(byte *buf, int len)
 
 	ClrBit(lang, 7);
 
-	if (feature <= GSF_AIRCRAFT && id < _vehcounts[feature]) {
-		id += _vehshifts[feature];
-	}
 	uint16 endid = id + num;
 
 	grfmsg(6, "FeatureNewName: About to rename engines %d..%d (feature %d) in language 0x%02X",
@@ -3236,10 +3282,10 @@ static void FeatureNewName(byte *buf, int len)
 			case GSF_ROAD:
 			case GSF_SHIP:
 			case GSF_AIRCRAFT:
-				if (id < TOTAL_NUM_ENGINES) {
-					StringID string = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_8000_KIRBY_PAUL_TANK_STEAM + id);
-					EngineInfo *ei = &_engine_info[id];
-					ei->string_id = string;
+				if (id < GetEnginePoolSize()) {
+					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, id);
+					StringID string = AddGRFString(_cur_grffile->grfid, e->index, lang, new_scheme, name, e->info.string_id);
+					e->info.string_id = string;
 				} else {
 					AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
 				}
@@ -4303,8 +4349,22 @@ static void ParamSet(byte *buf, int len)
 						case 0x01: // Road Vehicles
 						case 0x02: // Ships
 						case 0x03: // Aircraft
-							src1 = PerformGRM(&_grm_engines[_vehshifts[feature]], _vehcounts[feature], count, op, target, "vehicles");
-							if (_skip_sprites == -1) return;
+							if (!_patches.dynamic_engines) {
+								src1 = PerformGRM(&_grm_engines[_engine_offsets[feature]], _engine_counts[feature], count, op, target, "vehicles");
+								if (_skip_sprites == -1) return;
+							} else {
+								// GRM does not apply for dynamic engine allocation.
+								switch (op) {
+									case 2:
+									case 3:
+										src1 = _cur_grffile->param[target];
+										break;
+
+									default:
+										src1 = 0;
+										break;
+								}
+							}
 							break;
 
 						case 0x08: // General sprites
@@ -5068,6 +5128,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (0 << 0x15)  // enhancetunnels
 	                   |                                        (1 << 0x16)  // shortrvs
 	                   |                                        (1 << 0x17)  // articulatedrvs
+	                   |       ((_patches.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
 	                   |                                        (1 << 0x1E); // variablerunningcosts
 }
 
@@ -5224,16 +5285,11 @@ static void ResetNewGRFData()
 	ResetBridges();
 
 	/* Allocate temporary refit/cargo class data */
-	_gted = CallocT<GRFTempEngineData>(TOTAL_NUM_ENGINES);
+	_gted = CallocT<GRFTempEngineData>(GetEnginePoolSize());
 
 	/* Reset GRM reservations */
 	memset(&_grm_engines, 0, sizeof(_grm_engines));
 	memset(&_grm_cargos, 0, sizeof(_grm_cargos));
-
-	/* Unload sprite group data */
-	UnloadWagonOverrides();
-	UnloadCustomEngineSprites();
-	ResetEngineListOrder();
 
 	/* Reset generic feature callback lists */
 	ResetGenericCallbacks();
@@ -5283,6 +5339,9 @@ static void ResetNewGRFData()
 	_loaded_newgrf_features.has_newhouses     = false;
 	_loaded_newgrf_features.has_newindustries = false;
 	_loaded_newgrf_features.shore             = SHORE_REPLACE_NONE;
+
+	/* Clear all GRF overrides */
+	_grf_id_overrides.clear();
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
@@ -5397,14 +5456,17 @@ static const CargoLabel *_default_refitmasks[] = {
  */
 static void CalculateRefitMasks()
 {
-	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
-		EngineInfo *ei = &_engine_info[engine];
+	Engine *e;
+
+	FOR_ALL_ENGINES(e) {
+		EngineID engine = e->index;
+		EngineInfo *ei = &e->info;
 		uint32 mask = 0;
 		uint32 not_mask = 0;
 		uint32 xor_mask = 0;
 
 		if (ei->refit_mask != 0) {
-			const GRFFile *file = GetEngineGRF(engine);
+			const GRFFile *file = e->grffile;
 			if (file != NULL && file->cargo_max != 0) {
 				/* Apply cargo translation table to the refit mask */
 				uint num_cargo = min(32, file->cargo_max);
@@ -5434,15 +5496,10 @@ static void CalculateRefitMasks()
 				if (_gted[engine].cargo_allowed    & cs->classes) SetBit(mask,     i);
 				if (_gted[engine].cargo_disallowed & cs->classes) SetBit(not_mask, i);
 			}
-		} else {
+		} else if (xor_mask == 0) {
 			/* Don't apply default refit mask to wagons or engines with no capacity */
-			if (xor_mask == 0 && (
-						GetEngine(engine)->type != VEH_TRAIN || (
-							RailVehInfo(engine)->capacity != 0 &&
-							RailVehInfo(engine)->railveh_type != RAILVEH_WAGON
-						)
-					)) {
-				const CargoLabel *cl = _default_refitmasks[GetEngine(engine)->type];
+			if (e->type != VEH_TRAIN || (e->u.rail.capacity != 0 && e->u.rail.railveh_type != RAILVEH_WAGON)) {
+				const CargoLabel *cl = _default_refitmasks[e->type];
 				for (uint i = 0;; i++) {
 					if (cl[i] == 0) break;
 
@@ -5458,25 +5515,25 @@ static void CalculateRefitMasks()
 
 		/* Check if this engine's cargo type is valid. If not, set to the first refittable
 		 * cargo type. Apparently cargo_type isn't a common property... */
-		switch (GetEngine(engine)->type) {
+		switch (e->type) {
 			default: NOT_REACHED();
 			case VEH_AIRCRAFT: break;
 			case VEH_TRAIN: {
-				RailVehicleInfo *rvi = &_rail_vehicle_info[engine];
+				RailVehicleInfo *rvi = &e->u.rail;
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
-				if (rvi->cargo_type == CT_INVALID) ei->climates = 0;
+				if (rvi->cargo_type == CT_INVALID) ei->climates = 0x80;
 				break;
 			}
 			case VEH_ROAD: {
-				RoadVehicleInfo *rvi = &_road_vehicle_info[engine - ROAD_ENGINES_INDEX];
+				RoadVehicleInfo *rvi = &e->u.road;
 				if (rvi->cargo_type == CT_INVALID) rvi->cargo_type = FindFirstRefittableCargo(engine);
-				if (rvi->cargo_type == CT_INVALID) ei->climates = 0;
+				if (rvi->cargo_type == CT_INVALID) ei->climates = 0x80;
 				break;
 			}
 			case VEH_SHIP: {
-				ShipVehicleInfo *svi = &_ship_vehicle_info[engine - SHIP_ENGINES_INDEX];
+				ShipVehicleInfo *svi = &e->u.ship;
 				if (svi->cargo_type == CT_INVALID) svi->cargo_type = FindFirstRefittableCargo(engine);
-				if (svi->cargo_type == CT_INVALID) ei->climates = 0;
+				if (svi->cargo_type == CT_INVALID) ei->climates = 0x80;
 				break;
 			}
 		}
@@ -5850,6 +5907,9 @@ static void AfterLoadGRFs()
 
 	/* Update the townname generators list */
 	InitGRFTownGeneratorNames();
+
+	/* Run all queued vehicle list order changes */
+	CommitRailVehListOrderChanges();
 
 	/* Load old shore sprites in new position, if they were replaced by ActionA */
 	ActivateOldShore();

@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "player_func.h"
 #include "player_gui.h"
 #include "town.h"
@@ -26,6 +27,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "sound_func.h"
+#include "core/alloc_func.hpp"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
@@ -548,7 +550,8 @@ Player *DoStartupNewPlayer(bool is_ai)
 	if (is_ai && (!_networking || _network_server) && _ai.enabled)
 		AI_StartNewAI(p->index);
 
-	memset(p->num_engines, 0, sizeof(p->num_engines));
+	free(p->num_engines);
+	p->num_engines = CallocT<uint16>(GetEnginePoolSize());
 
 	return p;
 }

@@ -18,6 +18,7 @@
 #include "command_func.h"
 #include "pathfind.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "town.h"
 #include "sprite.h"
 #include "depot_base.h"

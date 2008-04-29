@@ -7,6 +7,7 @@
 #include "variables.h"
 #include "debug.h"
 #include "engine_func.h"
+#include "engine_base.h"
 #include "train.h"
 #include "player_func.h"
 #include "player_base.h"
@@ -25,6 +26,8 @@
 #include "direction_func.h"
 #include "rail_map.h"
 #include "rail.h"
+#include "settings_type.h"
+#include <map>
 
 
 int _traininfo_vehicle_pitch = 0;
@@ -37,29 +40,17 @@ struct WagonOverride {
 	const SpriteGroup *group;
 };
 
-struct WagonOverrides {
-	uint overrides_count;
-	WagonOverride *overrides;
-};
-
-static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
-
 void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, EngineID *train_id, uint trains)
 {
-	WagonOverrides *wos;
+	Engine *e = GetEngine(engine);
 	WagonOverride *wo;
 
-	assert(engine < TOTAL_NUM_ENGINES);
 	assert(cargo < NUM_CARGO + 2); // Include CT_DEFAULT and CT_PURCHASE pseudo cargos.
 
-	wos = &_engine_wagon_overrides[engine];
-	wos->overrides_count++;
-	wos->overrides = ReallocT(wos->overrides, wos->overrides_count);
+	e->overrides_count++;
+	e->overrides = ReallocT(e->overrides, e->overrides_count);
 
-	wo = &wos->overrides[wos->overrides_count - 1];
-	/* FIXME: If we are replacing an override, release original SpriteGroup
-	 * to prevent leaks. But first we need to refcount the SpriteGroup.
-	 * --pasky */
+	wo = &e->overrides[e->overrides_count - 1];
 	wo->group = group;
 	wo->cargo = cargo;
 	wo->trains = trains;
@@ -69,15 +60,15 @@ void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *
 
 const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, EngineID overriding_engine)
 {
-	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
+	const Engine *e = GetEngine(engine);
 
 	/* XXX: This could turn out to be a timesink on profiles. We could
 	 * always just dedicate 65535 bytes for an [engine][train] trampoline
 	 * for O(1). Or O(logMlogN) and searching binary tree or smt. like
 	 * that. --pasky */
 
-	for (uint i = 0; i < wos->overrides_count; i++) {
-		const WagonOverride *wo = &wos->overrides[i];
+	for (uint i = 0; i < e->overrides_count; i++) {
+		const WagonOverride *wo = &e->overrides[i];
 
 		if (wo->cargo != cargo && wo->cargo != CT_DEFAULT) continue;
 
@@ -91,43 +82,29 @@ const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, Eng
 /**
  * Unload all wagon override sprite groups.
  */
-void UnloadWagonOverrides()
+void UnloadWagonOverrides(Engine *e)
 {
-	for (EngineID engine = 0; engine < TOTAL_NUM_ENGINES; engine++) {
-		WagonOverrides *wos = &_engine_wagon_overrides[engine];
-		for (uint i = 0; i < wos->overrides_count; i++) {
-			WagonOverride *wo = &wos->overrides[i];
-			free(wo->train_id);
-		}
-		free(wos->overrides);
-		wos->overrides_count = 0;
-		wos->overrides = NULL;
+	for (uint i = 0; i < e->overrides_count; i++) {
+		WagonOverride *wo = &e->overrides[i];
+		free(wo->train_id);
 	}
+	free(e->overrides);
+	e->overrides_count = 0;
+	e->overrides = NULL;
 }
 
-/* Space for NUM_CARGO real cargos and 2 pseudo cargos, CT_DEFAULT and CT_PURCHASE */
-static const SpriteGroup *_engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CARGO + 2];
-static const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
-	assert(engine < lengthof(_engine_custom_sprites));
-	assert(cargo < lengthof(*_engine_custom_sprites));
+	Engine *e = GetEngine(engine);
+	assert(cargo < lengthof(e->group));
 
-	if (_engine_custom_sprites[engine][cargo] != NULL) {
+	if (e->group[cargo] != NULL) {
 		grfmsg(6, "SetCustomEngineSprites: engine %d cargo %d already has group -- replacing", engine, cargo);
 	}
-	_engine_custom_sprites[engine][cargo] = group;
+	e->group[cargo] = group;
 }
 
-/**
- * Unload all engine sprite groups.
- */
-void UnloadCustomEngineSprites()
-{
-	memset(_engine_custom_sprites, 0, sizeof(_engine_custom_sprites));
-	memset(_engine_grf, 0, sizeof(_engine_grf));
-}
 
 /**
  * Tie a GRFFile entry to an engine, to allow us to retrieve GRF parameters
@@ -137,8 +114,8 @@ void UnloadCustomEngineSprites()
  */
 void SetEngineGRF(EngineID engine, const GRFFile *file)
 {
-	assert(engine < TOTAL_NUM_ENGINES);
-	_engine_grf[engine] = file;
+	Engine *e = GetEngine(engine);
+	e->grffile = file;
 }
 
 
@@ -149,8 +126,7 @@ void SetEngineGRF(EngineID engine, const GRFFile *file)
  */
 const GRFFile *GetEngineGRF(EngineID engine)
 {
-	assert(engine < TOTAL_NUM_ENGINES);
-	return _engine_grf[engine];
+	return GetEngine(engine)->grffile;
 }
 
 
@@ -161,8 +137,7 @@ const GRFFile *GetEngineGRF(EngineID engine)
  */
 uint32 GetEngineGRFID(EngineID engine)
 {
-	assert(engine < TOTAL_NUM_ENGINES);
-	return _engine_grf[engine]->grfid;
+	return GetEngineGRF(engine)->grfid;
 }
 
 
@@ -468,6 +443,7 @@ static uint32 GetGRFParameter(EngineID engine_type, byte parameter)
 {
 	const GRFFile *file = GetEngineGRF(engine_type);
 
+	if (file == NULL) return 0;
 	if (parameter >= file->param_end) return 0;
 	return file->param[parameter];
 }
@@ -643,12 +619,13 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance
-			if (v->type != VEH_TRAIN) return v->engine_type == parameter;
+			//EngineID engine = GetNewEngineID(GetEngineGRF(v->engine_type), v->type, parameter);
+			if (v->type != VEH_TRAIN) return GetEngine(v->engine_type)->internal_id == parameter;
 
 			{
 				uint count = 0;
 				for (; v != NULL; v = v->Next()) {
-					if (v->engine_type == parameter) count++;
+					if (GetEngine(v->engine_type)->internal_id == parameter) count++;
 				}
 				return count;
 			}
@@ -723,8 +700,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x43: return GB(v->max_age, 8, 8);
 		case 0x44: return Clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
-		case 0x46: return v->engine_type;
-		case 0x47: return GB(v->engine_type, 8, 8);
+		case 0x46: return GetEngine(v->engine_type)->internal_id;
+		case 0x47: return GB(GetEngine(v->engine_type)->internal_id, 8, 8);
 		case 0x48:
 			if (v->type != VEH_TRAIN || v->spritenum != 0xFD) return v->spritenum;
 			return HasBit(v->u.rail.flags, VRF_REVERSE_DIRECTION) ? 0xFE : 0xFD;
@@ -883,11 +860,13 @@ static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *
 		}
 	}
 
-	group = _engine_custom_sprites[engine][cargo];
+	const Engine *e = GetEngine(engine);
+
+	group = e->group[cargo];
 	if (group != NULL) return group;
 
 	/* Fall back to the default set if the selected cargo type is not defined */
-	return _engine_custom_sprites[engine][CT_DEFAULT];
+	return e->group[CT_DEFAULT];
 }
 
 
@@ -907,14 +886,14 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 
 SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view)
 {
+	const Engine *e = GetEngine(engine);
 	const SpriteGroup *group;
 	ResolverObject object;
 
-	assert(engine >= AIRCRAFT_ENGINES_INDEX);
-	assert(engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES);
+	assert(e->type == VEH_AIRCRAFT);
 
 	/* Only valid for helicopters */
-	assert(!(AircraftVehInfo(engine)->subtype & AIR_CTOL));
+	assert(!(e->u.air.subtype & AIR_CTOL));
 
 	NewVehicleResolver(&object, engine, v);
 
@@ -1090,18 +1069,6 @@ void TriggerVehicle(Vehicle *v, VehicleTrigger trigger)
 
 /* Functions for changing the order of vehicle purchase lists
  * This is currently only implemented for rail vehicles. */
-static EngineID _engine_list_order[NUM_TRAIN_ENGINES];
-static byte _engine_list_position[NUM_TRAIN_ENGINES];
-
-void ResetEngineListOrder()
-{
-	EngineID i;
-
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-		_engine_list_order[i] = i;
-		_engine_list_position[i] = i;
-	}
-}
 
 /**
  * Get the list position of an engine.
@@ -1109,36 +1076,72 @@ void ResetEngineListOrder()
  * @param engine ID of the engine.
  * @return The list position of the engine.
  */
-uint16 ListPositionOfEngine(EngineID engine)
+uint ListPositionOfEngine(EngineID engine)
 {
-	if (engine < NUM_TRAIN_ENGINES) return _engine_list_position[engine];
-	return engine;
+	const Engine *e = GetEngine(engine);
+	if (e->grffile == NULL) return e->list_position;
+
+	/* Crude sorting to group by GRF ID */
+	return (e->grffile->grfid * 256) + e->list_position;
 }
+
+struct ListOrderChange {
+	EngineID engine;
+	EngineID target;
+};
+
+static std::list<ListOrderChange> _list_order_changes;
 
 void AlterRailVehListOrder(EngineID engine, EngineID target)
 {
-	EngineID i;
-	bool moving = false;
+	/* Add the list order change to a queue */
+	ListOrderChange loc;
+	loc.engine = engine;
+	loc.target = target;
+	_list_order_changes.push_back(loc);
+}
 
-	if (engine == target) return;
+void CommitRailVehListOrderChanges()
+{
+	/* List position to Engine map */
+	typedef std::map<uint16, Engine*> ListPositionMap;
+	ListPositionMap lptr_map;
 
-	/* First, remove our ID from the list. */
-	for (i = 0; i < NUM_TRAIN_ENGINES - 1; i++) {
-		if (_engine_list_order[i] == engine) moving = true;
-		if (moving) _engine_list_order[i] = _engine_list_order[i + 1];
-	}
+	std::list<ListOrderChange>::iterator it;
+	for (it = _list_order_changes.begin(); it != _list_order_changes.end(); ++it) {
+		EngineID engine = it->engine;
+		EngineID target = it->target;
 
-	/* Now, insert it again, before the target engine. */
-	for (i = NUM_TRAIN_ENGINES - 1; i > 0; i--) {
-		_engine_list_order[i] = _engine_list_order[i - 1];
-		if (_engine_list_order[i] == target) {
-			_engine_list_order[i - 1] = engine;
-			break;
+		if (engine == target) continue;
+
+		Engine *source_e = GetEngine(engine);
+		Engine *target_e = NULL;
+
+		/* Populate map with current list positions */
+		Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+			if (!_patches.dynamic_engines || e->grffile == source_e->grffile) {
+				if (e->internal_id == target) target_e = e;
+				lptr_map[e->list_position] = e;
+			}
 		}
+
+		/* Get the target position, if it exists */
+		if (target_e != NULL) {
+			uint16 target_position = target_e->list_position;
+
+			bool moving = false;
+			for (ListPositionMap::iterator it = lptr_map.begin(); it != lptr_map.end(); ++it) {
+				if (it->first == target_position) moving = true;
+				if (moving) it->second->list_position++;
+			}
+
+			source_e->list_position = target_position;
+		}
+
+		lptr_map.clear();
 	}
 
-	/* Update the engine list position (a reverse of engine list order) */
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-		_engine_list_position[_engine_list_order[i]] = i;
-	}
+	/* Clear out the queue */
+	_list_order_changes.clear();
 }

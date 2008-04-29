@@ -232,6 +232,8 @@ struct Patches {
 	bool give_money;             ///< allow giving other players money
 
 	bool enable_signal_gui;      ///< Show the signal GUI when the signal button is pressed
+
+	bool dynamic_engines;    ///< Enable dynamic allocation of engine data
 };
 
 extern Patches _patches;

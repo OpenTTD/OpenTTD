@@ -22,6 +22,7 @@
 #include "player_func.h"
 #include "order_func.h"
 #include "oldpool_func.h"
+#include "core/alloc_func.hpp"
 
 #include "table/strings.h"
 
@@ -50,12 +51,14 @@ DEFINE_OLD_POOL_GENERIC(Group, Group)
 Group::Group(PlayerID owner)
 {
 	this->owner = owner;
+	this->num_engines = CallocT<uint16>(GetEnginePoolSize());
 }
 
 Group::~Group()
 {
 	free(this->name);
 	this->owner = INVALID_PLAYER;
+	free(this->num_engines);
 }
 
 bool Group::IsValid() const
