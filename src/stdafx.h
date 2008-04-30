@@ -76,7 +76,7 @@
 	#include <SupportDefs.h>
 #endif
 
-#if defined(SUNOS)
+#if defined(SUNOS) || defined(HPUX)
 	#include <alloca.h>
 #endif
 
