@@ -11,20 +11,6 @@
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 
-static EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id)
-{
-	const Engine *e = NULL;
-	FOR_ALL_ENGINES(e) {
-		if (e->grffile != file) continue;
-		if (e->type != type) continue;
-		if (e->internal_id != internal_id) continue;
-
-		return e->index;
-	}
-
-	return INVALID_ENGINE;
-}
-
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
 	if (!HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;

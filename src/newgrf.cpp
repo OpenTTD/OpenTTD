@@ -359,6 +359,28 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	return e;
 }
 
+EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id)
+{
+	extern uint32 GetNewGRFOverride(uint32 grfid);
+
+	const GRFFile *grf_match = NULL;
+	if (_patches.dynamic_engines) {
+		uint32 override = _grf_id_overrides[file->grfid];
+		if (override != 0) grf_match = GetFileByGRFID(override);
+	}
+
+	const Engine *e = NULL;
+	FOR_ALL_ENGINES(e) {
+		if (_patches.dynamic_engines && e->grffile != file && (grf_match == NULL || e->grffile != grf_match)) continue;
+		if (e->type != type) continue;
+		if (e->internal_id != internal_id) continue;
+
+		return e->index;
+	}
+
+	return INVALID_ENGINE;
+}
+
 /** Map the colour modifiers of TTDPatch to those that Open is using.
  * @param grf_sprite pointer to the structure been modified
  */

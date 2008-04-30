@@ -59,4 +59,6 @@ uint ListPositionOfEngine(EngineID engine);
 void AlterRailVehListOrder(EngineID engine, EngineID target);
 void CommitRailVehListOrderChanges();
 
+EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_id);
+
 #endif /* NEWGRF_ENGINE_H */
