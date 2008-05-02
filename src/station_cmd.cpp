@@ -1630,41 +1630,38 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	Town *t = ClosestTownFromTile(tile, UINT_MAX);
-
-	/* Check if local auth refuses a new airport */
-	{
-		uint num = 0;
-		const Station *st;
-		FOR_ALL_STATIONS(st) {
-			if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
-		}
-		if (num >= 2) {
-			SetDParam(0, t->index);
-			return_cmd_error(STR_2035_LOCAL_AUTHORITY_REFUSES);
-		}
-	}
-
 	const AirportFTAClass *afc = GetAirport(p1);
 	int w = afc->size_x;
 	int h = afc->size_y;
-
-	CommandCost cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
-	if (CmdFailed(cost)) return cost;
-
 	Station *st = NULL;
-
-	if (!_patches.adjacent_stations || !HasBit(p2, 0)) {
-		st = GetStationAround(tile, w, h, INVALID_STATION);
-		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
-	}
-
-	/* Find a station close to us */
-	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	if (w > _patches.station_spread || h > _patches.station_spread) {
 		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 		return CMD_ERROR;
 	}
+
+	CommandCost cost = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
+	if (CmdFailed(cost)) return cost;
+
+	/* Check if local auth refuses a new airport */
+	uint num = 0;
+	FOR_ALL_STATIONS(st) {
+		if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
+	}
+	if (num >= 2) {
+		SetDParam(0, t->index);
+		return_cmd_error(STR_2035_LOCAL_AUTHORITY_REFUSES);
+	}
+
+	if (!_patches.adjacent_stations || !HasBit(p2, 0)) {
+		st = GetStationAround(tile, w, h, INVALID_STATION);
+		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
+	} else {
+		st = NULL;
+	}
+
+	/* Find a station close to us */
+	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	if (st != NULL) {
 		if (st->owner != _current_player) {
