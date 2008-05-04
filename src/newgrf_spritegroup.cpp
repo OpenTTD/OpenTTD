@@ -204,6 +204,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 
 	if (group->g.determ.num_ranges == 0) {
 		/* nvar == 0 is a special case -- we turn our value into a callback result */
+		if (value != CALLBACK_FAILED) value = GB(value, 0, 15);
 		nvarzero.type = SGT_CALLBACK;
 		nvarzero.g.callback.result = value;
 		return &nvarzero;
