@@ -315,7 +315,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 	f = fopen(buf, mode);
 #if !defined(WIN32)
 	if (f == NULL) {
-		strtolower(buf + strlen(_searchpaths[sp]) - 1);
+		strtolower(buf + ((subdir == NO_DIRECTORY) ? 0 : strlen(_searchpaths[sp]) - 1));
 		f = fopen(buf, mode);
 	}
 #endif
