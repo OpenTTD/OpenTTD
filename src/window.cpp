@@ -416,15 +416,27 @@ void DeleteWindow(Window *w)
 {
 	if (w == NULL) return;
 
-	/* Delete any children a window might have in a head-recursive manner */
-	Window *v = FindChildWindow(w);
-	if (v != NULL) DeleteWindow(v);
-
 	if (_thd.place_mode != VHM_NONE &&
 			_thd.window_class == w->window_class &&
 			_thd.window_number == w->window_number) {
 		ResetObjectToPlace();
 	}
+
+	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
+	if (_mouseover_last_w == w) _mouseover_last_w = NULL;
+
+	/* Find the window in the z-array, and effectively remove it
+	 * by moving all windows after it one to the left. This must be
+	 * done before removing the child so we cannot cause recursion
+	 * between the deletion of the parent and the child. */
+	Window **wz = FindWindowZPosition(w);
+	if (wz == NULL) return;
+	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
+	_last_z_window--;
+
+	/* Delete any children a window might have in a head-recursive manner */
+	Window *v = FindChildWindow(w);
+	if (v != NULL) DeleteWindow(v);
 
 	CallWindowEventNP(w, WE_DESTROY);
 	if (w->viewport != NULL) DeleteWindowViewport(w);
@@ -434,16 +446,6 @@ void DeleteWindow(Window *w)
 	w->widget = NULL;
 	w->widget_count = 0;
 	w->parent = NULL;
-
-	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
-	if (_mouseover_last_w == w) _mouseover_last_w = NULL;
-
-	/* Find the window in the z-array, and effectively remove it
-	 * by moving all windows after it one to the left */
-	Window **wz = FindWindowZPosition(w);
-	if (wz == NULL) return;
-	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
-	_last_z_window--;
 
 	delete w;
 }
