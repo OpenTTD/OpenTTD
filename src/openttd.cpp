@@ -60,6 +60,7 @@
 #include "cheat_func.h"
 #include "animated_tile_func.h"
 #include "functions.h"
+#include "rev.h"
 
 #include "newgrf.h"
 #include "newgrf_config.h"
@@ -135,9 +136,6 @@ void CDECL ShowInfoF(const char *str, ...)
 	va_end(va);
 	ShowInfo(buf);
 }
-
-/** The current revision of OpenTTD */
-extern const char _openttd_revision[];
 
 /**
  * Show the help message when someone passed a wrong parameter.

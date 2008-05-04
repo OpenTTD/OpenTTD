@@ -9,6 +9,7 @@
 #include "../gfx_func.h"
 #include "../sdl.h"
 #include "../variables.h"
+#include "../rev.h"
 #include "../blitter/factory.hpp"
 #include "../network/network.h"
 #include "../core/math_func.hpp"
@@ -186,7 +187,6 @@ static void GetAvailableVideoMode(int *w, int *h)
 
 static bool CreateMainSurface(int w, int h)
 {
-	extern const char _openttd_revision[];
 	SDL_Surface *newscreen, *icon;
 	char caption[50];
 	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();

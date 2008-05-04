@@ -9,6 +9,7 @@
 #include "gfx_func.h"
 #include "textbuf_gui.h"
 #include "fileio.h"
+#include "rev.h"
 #include <windows.h>
 #include <winnt.h>
 #include <wininet.h>
@@ -460,7 +461,6 @@ extern bool CloseConsoleLogIfActive();
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
-	extern const char _openttd_revision[];
 	char *output;
 	static bool had_exception = false;
 

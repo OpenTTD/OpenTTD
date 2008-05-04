@@ -18,6 +18,7 @@
 #include "window_func.h"
 #include "string_func.h"
 #include "gfx_func.h"
+#include "rev.h"
 
 #include "table/strings.h"
 
@@ -223,7 +224,6 @@ static const WindowDesc _iconsole_window_desc = {
 
 void IConsoleInit()
 {
-	extern const char _openttd_revision[];
 	_iconsole_output_file = NULL;
 	_icolour_def  =  1;
 	_icolour_err  =  3;

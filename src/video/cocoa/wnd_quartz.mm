@@ -39,6 +39,7 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
+#include "../../rev.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "../../core/math_func.hpp"
@@ -408,9 +409,6 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 }
 
 @end
-
-
-extern const char _openttd_revision[];
 
 
 void WindowQuartzSubdriver::GetDeviceInfo()

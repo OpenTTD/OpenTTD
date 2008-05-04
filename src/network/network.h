@@ -31,9 +31,6 @@ static inline void NetworkShutDown() {}
 
 #endif /* ENABLE_NETWORK */
 
-/** What is the revision of OpenTTD. */
-extern const char _openttd_revision[];
-
 /** As which player do we play? */
 extern PlayerID _network_playas;
 

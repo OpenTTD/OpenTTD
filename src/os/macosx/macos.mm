@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include "../../stdafx.h"
 #include "../../core/bitmath_func.hpp"
+#include "../../rev.h"
 
 #ifndef CPU_SUBTYPE_POWERPC_970
 #define CPU_SUBTYPE_POWERPC_970 ((cpu_subtype_t) 100)
@@ -33,7 +34,6 @@ static char *GetOSString()
 	char OS[20];
 	char newgrf[125];
 	long sysVersion;
-	extern const char _openttd_revision[];
 
 	// get the hardware info
 	host_basic_info_data_t hostInfo;

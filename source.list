@@ -251,6 +251,7 @@ rail.h
 rail_gui.h
 rail_type.h
 core/random_func.hpp
+rev.h
 road_cmd.h
 road_func.h
 road_gui.h

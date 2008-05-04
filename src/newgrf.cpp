@@ -34,6 +34,7 @@
 #include "newgrf_townname.h"
 #include "newgrf_industries.h"
 #include "gfxinit.h"
+#include "rev.h"
 #include "fios.h"
 #include "rail.h"
 #include "strings_func.h"
@@ -3643,11 +3644,9 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			*value = _opt.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
 			return true;
 
-		case 0x21: { // OpenTTD version
-			extern uint32 _openttd_newgrf_version;
+		case 0x21: // OpenTTD version
 			*value = _openttd_newgrf_version;
 			return true;
-		}
 
 		case 0x22: // difficulty level
 			*value = _opt.diff_level;

@@ -39,6 +39,7 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
+#include "../../rev.h"
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "../../core/math_func.hpp"
@@ -329,10 +330,6 @@ static bool _resize_icon[] = {
 	0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0,
 	1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0
 };
-
-
-
-extern const char _openttd_revision[];
 
 
 void WindowQuickdrawSubdriver::GetDeviceInfo()

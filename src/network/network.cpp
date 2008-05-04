@@ -31,6 +31,7 @@
 #include "../string_func.h"
 #include "../player_func.h"
 #include "../settings_type.h"
+#include "../rev.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
 #endif /* DEBUG_DUMP_COMMANDS */
@@ -1470,7 +1471,6 @@ void NetworkShutDown()
  */
 bool IsNetworkCompatibleVersion(const char *other)
 {
-	extern const char _openttd_revision[];
 	return strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
 }
 

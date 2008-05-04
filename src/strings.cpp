@@ -27,6 +27,7 @@
 #include "gui.h"
 #include "strings_func.h"
 #include "functions.h"
+#include "rev.h"
 #include "core/endian_func.hpp"
 #include "date_func.h"
 #include "vehicle_base.h"
@@ -560,7 +561,6 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
 
 static char* FormatString(char* buff, const char* str, const int64* argv, uint casei, const char* last)
 {
-	extern const char _openttd_revision[];
 	WChar b;
 	const int64 *argv_orig = argv;
 	uint modifier = 0;

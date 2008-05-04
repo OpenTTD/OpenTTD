@@ -1317,6 +1317,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\rev.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\road_cmd.h"
 				>
 			</File>
