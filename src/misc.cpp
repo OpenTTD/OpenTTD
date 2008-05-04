@@ -68,6 +68,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 
 	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
 		SetDate(ConvertYMDToDate(_patches.starting_year, 0, 1));
+		InitializeOldNames();
 	}
 
 	InitializeEngines();
@@ -92,7 +93,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeIndustries();
 	InitializeBuildingCounts();
 
-	InitializeOldNames();
 	InitializeVehiclesGuiList();
 	InitializeTrains();
 	InitializeNPF();
