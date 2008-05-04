@@ -232,8 +232,8 @@ void ShowBuildDocksToolbar()
 {
 	if (!IsValidPlayer(_current_player)) return;
 
-	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-	Window *w = AllocateWindowDesc(&_build_docks_toolbar_desc);
+	DeleteWindowByClass(WC_BUILD_TOOLBAR);
+	Window *w = AllocateWindowDescFront(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 

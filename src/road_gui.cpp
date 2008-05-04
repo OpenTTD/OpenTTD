@@ -682,8 +682,8 @@ void ShowBuildRoadToolbar(RoadType roadtype)
 	if (!IsValidPlayer(_current_player)) return;
 	_cur_roadtype = roadtype;
 
-	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-	Window *w = AllocateWindowDesc(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc);
+	DeleteWindowByClass(WC_BUILD_TOOLBAR);
+	Window *w = AllocateWindowDescFront(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 

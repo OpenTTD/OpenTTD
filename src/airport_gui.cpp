@@ -139,8 +139,8 @@ void ShowBuildAirToolbar()
 {
 	if (!IsValidPlayer(_current_player)) return;
 
-	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
-	Window *w = AllocateWindowDescFront(&_air_toolbar_desc, 0);
+	DeleteWindowByClass(WC_BUILD_TOOLBAR);
+	Window *w = AllocateWindowDescFront(&_air_toolbar_desc, TRANSPORT_AIR);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 

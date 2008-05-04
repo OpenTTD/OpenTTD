@@ -748,10 +748,10 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	if (!ValParamRailtype(railtype)) return;
 
 	// don't recreate the window if we're clicking on a button and the window exists.
-	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, 0)) || w->wndproc != BuildRailToolbWndProc) {
-		DeleteWindowById(WC_BUILD_TOOLBAR, 0);
+	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
+		DeleteWindowByClass(WC_BUILD_TOOLBAR);
 		_cur_railtype = railtype;
-		w = AllocateWindowDesc(&_build_rail_desc);
+		w = AllocateWindowDescFront(&_build_rail_desc, TRANSPORT_RAIL);
 		SetupRailToolbar(railtype, w);
 	}
 
@@ -1597,8 +1597,8 @@ void ReinitGuiAfterToggleElrail(bool disable)
 	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
 		Window *w;
 		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
-		w = FindWindowById(WC_BUILD_TOOLBAR, 0);
-		if (w != NULL && w->wndproc == BuildRailToolbWndProc) {
+		w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
+		if (w != NULL) {
 			SetupRailToolbar(_cur_railtype, w);
 			SetWindowDirty(w);
 		}
@@ -1648,8 +1648,8 @@ static void SetDefaultRailGui()
 	}
 
 	_last_built_railtype = _cur_railtype = rt;
-	Window *w = FindWindowById(WC_BUILD_TOOLBAR, 0);
-	if (w != NULL && w->wndproc == BuildRailToolbWndProc) {
+	Window *w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
+	if (w != NULL) {
 		SetupRailToolbar(_cur_railtype, w);
 		SetWindowDirty(w);
 	}
