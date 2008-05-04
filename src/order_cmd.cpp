@@ -364,10 +364,13 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Filter invalid load/unload types. */
 			switch (new_order.GetLoadType()) {
-				case OLF_LOAD_IF_POSSIBLE: case OLFB_FULL_LOAD: case OLF_FULL_LOAD_ANY: break;
+				case OLF_LOAD_IF_POSSIBLE: case OLFB_FULL_LOAD: case OLF_FULL_LOAD_ANY: case OLFB_NO_LOAD: break;
 				default: return CMD_ERROR;
 			}
-			if (new_order.GetUnloadType() & ~(OUFB_UNLOAD | OUFB_TRANSFER)) return CMD_ERROR;
+			switch (new_order.GetUnloadType()) {
+				case OUF_UNLOAD_IF_POSSIBLE: case OUFB_UNLOAD: case OUFB_TRANSFER: case OUFB_NO_UNLOAD: break;
+				default: return CMD_ERROR;
+			}
 			break;
 		}
 
