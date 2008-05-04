@@ -916,15 +916,14 @@ restart:
 }
 
 /**
- * Set the x and y coordinates of a new window.
+ * Compute the position of the top-left corner of a new window that is opened.
  *
  * @param *desc         The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @param data          arbitrary data that is send with the WE_CREATE message
  *
- * @return see Window pointer of the newly created window
+ * @return Coordinate of the top-left corner of the new window
  */
-static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number, void *data)
+static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
 {
 	Point pt;
 	Window *w;
@@ -954,8 +953,7 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 				pt.x = FindWindowById(WC_MAIN_TOOLBAR, 0)->left;
 				break;
 			case WDP_AUTO: /* Find a good automatic position for the window */
-				pt = GetAutoPlacePosition(desc->default_width, desc->default_height);
-				goto allocate_window;
+				return GetAutoPlacePosition(desc->default_width, desc->default_height);
 			case WDP_CENTER: /* Centre the window horizontally */
 				pt.x = (_screen.width - desc->default_width) / 2;
 				break;
@@ -981,9 +979,24 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 		}
 	}
 
-allocate_window:
-	w = LocalAllocateWindow(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number, data);
+	return pt;
+}
+
+/**
+ * Set the positions of a new window from a WindowDesc and open it.
+ *
+ * @param *desc         The pointer to the WindowDesc to be created
+ * @param window_number the window number of the new window
+ * @param data          arbitrary data that is send with the WE_CREATE message
+ *
+ * @return Window pointer of the newly created window
+ */
+static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number, void *data)
+{
+	Point pt = LocalGetWindowPlacement(desc, window_number);
+	Window *w = LocalAllocateWindow(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number, data);
 	w->desc_flags = desc->flags;
+
 	return w;
 }
 
