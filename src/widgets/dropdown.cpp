@@ -179,7 +179,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 				e.event = WE_DROPDOWN_SELECT;
 				e.we.dropdown.button = WP(w, dropdown_d).parent_button;
 				e.we.dropdown.index  = WP(w, dropdown_d).selected_index;
-				w2->wndproc(w2, &e);
+				w2->HandleWindowEvent(&e);
 				DeleteWindow(w);
 				return;
 			}

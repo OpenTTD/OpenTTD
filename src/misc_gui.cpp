@@ -1164,7 +1164,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 							WindowEvent e;
 							e.event = WE_ON_EDIT_TEXT;
 							e.we.edittext.str = qs->text.buf;
-							parent->wndproc(parent, &e);
+							parent->HandleWindowEvent(&e);
 						} else {
 							HandleOnEditText(qs->text.buf);
 						}
@@ -1194,7 +1194,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 
 				qs->handled = true;
 				e.event = WE_ON_EDIT_TEXT_CANCEL;
-				parent->wndproc(parent, &e);
+				parent->HandleWindowEvent(&e);
 			}
 			ClrBit(_no_scroll, SCROLL_EDIT);
 			break;

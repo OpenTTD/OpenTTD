@@ -47,6 +47,15 @@ bool _popup_menu_active;
 byte _special_mouse_mode;
 
 
+/**
+ * Call the window event handler for handling event \a e
+ * @param e Window event to handle
+ */
+void Window::HandleWindowEvent(WindowEvent *e)
+{
+	if (wndproc != NULL) wndproc(this, e);
+}
+
 void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 {
 	va_list wdg_list;
@@ -184,7 +193,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		}
 	}
 
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 }
 
 /**
@@ -212,7 +221,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	e.event = WE_RCLICK;
 	e.we.click.pt.x = x;
 	e.we.click.pt.y = y;
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 }
 
 /**
@@ -352,7 +361,7 @@ void CallWindowEventNP(Window *w, int event)
 	WindowEvent e;
 
 	e.event = event;
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 }
 
 /**
@@ -688,7 +697,7 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 		DeleteWindow(w);
 	}
 
-	w = new Window;
+	w = new Window(proc);
 
 	/* Set up window properties */
 	w->window_class = cls;
@@ -698,7 +707,6 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 	w->top = y;
 	w->width = min_width;
 	w->height = min_height;
-	w->wndproc = proc;
 	AssignWidgetToWindow(w, widget);
 	w->resize.width = min_width;
 	w->resize.height = min_height;
@@ -734,7 +742,7 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 	WindowEvent e;
 	e.event = WE_CREATE;
 	e.we.create.data = data;
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 
 	/* Try to make windows smaller when our window is too small.
 	 * w->(width|height) is normally the same as min_(width|height),
@@ -766,7 +774,7 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 		e.we.sizing.size.y = w->height;
 		e.we.sizing.diff.x = enlarge_x;
 		e.we.sizing.diff.y = enlarge_y;
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 	}
 
 	int nx = w->left;
@@ -1144,7 +1152,7 @@ static void HandlePlacePresize()
 	}
 	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
 	e.event = WE_PLACE_PRESIZE;
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 }
 
 static bool HandleDragDrop()
@@ -1164,7 +1172,7 @@ static bool HandleDragDrop()
 		e.we.dragdrop.pt.x = _cursor.pos.x - w->left;
 		e.we.dragdrop.pt.y = _cursor.pos.y - w->top;
 		e.we.dragdrop.widget = GetWidgetFromPos(w, e.we.dragdrop.pt.x, e.we.dragdrop.pt.y);
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 	}
 
 	ResetObjectToPlace();
@@ -1194,7 +1202,7 @@ static bool HandlePopupMenu()
 		e.we.popupmenu.pt = _cursor.pos;
 	}
 
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 
 	return false;
 }
@@ -1211,7 +1219,7 @@ static bool HandleMouseOver()
 		e.event = WE_MOUSEOVER;
 		e.we.mouseover.pt.x = -1;
 		e.we.mouseover.pt.y = -1;
-		if (_mouseover_last_w->wndproc != NULL) _mouseover_last_w->wndproc(_mouseover_last_w, &e);
+		_mouseover_last_w->HandleWindowEvent(&e);
 	}
 
 	/* _mouseover_last_w will get reset when the window is deleted, see DeleteWindow() */
@@ -1225,7 +1233,7 @@ static bool HandleMouseOver()
 		if (w->widget != NULL) {
 			e.we.mouseover.widget = GetWidgetFromPos(w, e.we.mouseover.pt.x, e.we.mouseover.pt.y);
 		}
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 	}
 
 	/* Mouseover never stops execution */
@@ -1477,7 +1485,7 @@ static bool HandleWindowDragging()
 			e.we.sizing.size.y = y + w->height;
 			e.we.sizing.diff.x = x;
 			e.we.sizing.diff.y = y;
-			w->wndproc(w, &e);
+			w->HandleWindowEvent(&e);
 			return false;
 		}
 	}
@@ -1608,7 +1616,7 @@ static bool HandleViewportScroll()
 
 	/* Create a scroll-event and send it to the window */
 	e.event = WE_SCROLL;
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
@@ -1683,7 +1691,7 @@ static void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
 	e.we.message.wparam = wparam;
 	e.we.message.lparam = lparam;
 
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 }
 
 /** Send a message from one window to another. The receiving window is found by
@@ -1781,14 +1789,14 @@ void HandleKeypress(uint32 key)
 				w->window_class != WC_COMPANY_PASSWORD_WINDOW) {
 			continue;
 		}
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 		if (!e.we.keypress.cont) break;
 	}
 
 	if (e.we.keypress.cont) {
 		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 		/* When there is no toolbar w is null, check for that */
-		if (w != NULL) w->wndproc(w, &e);
+		if (w != NULL) w->HandleWindowEvent(&e);
 	}
 }
 
@@ -1805,7 +1813,7 @@ void HandleCtrlChanged()
 	/* Call the event, start with the uppermost window. */
 	for (Window* const *wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 		if (!e.we.ctrl.cont) break;
 	}
 }
@@ -1912,7 +1920,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 			/* Send WE_MOUSEWHEEL event to window */
 			e.event = WE_MOUSEWHEEL;
 			e.we.wheel.wheel = mousewheel;
-			w->wndproc(w, &e);
+			w->HandleWindowEvent(&e);
 		}
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
@@ -2297,7 +2305,7 @@ void RelocateAllWindows(int neww, int newh)
 					e.we.sizing.size.y = w->height;
 					e.we.sizing.diff.x = neww - w->width;
 					e.we.sizing.diff.y = 0;
-					w->wndproc(w, &e);
+					w->HandleWindowEvent(&e);
 				}
 
 				top = w->top;

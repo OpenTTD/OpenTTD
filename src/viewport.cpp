@@ -2061,7 +2061,7 @@ void PlaceObject()
 		e.event = WE_PLACE_OBJ;
 		e.we.place.pt = pt;
 		e.we.place.tile = TileVirtXY(pt.x, pt.y);
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 	}
 }
 
@@ -2712,7 +2712,7 @@ bool VpHandlePlaceSizingDrag()
 	if (_left_button_down) {
 		e.event = WE_PLACE_DRAG;
 		e.we.place.pt = GetTileBelowCursor();
-		w->wndproc(w, &e);
+		w->HandleWindowEvent(&e);
 		return false;
 	}
 
@@ -2737,7 +2737,7 @@ bool VpHandlePlaceSizingDrag()
 	e.we.place.pt = _thd.selend;
 	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
 	e.we.place.starttile = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
-	w->wndproc(w, &e);
+	w->HandleWindowEvent(&e);
 
 	return false;
 }

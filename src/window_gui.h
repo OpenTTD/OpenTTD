@@ -291,6 +291,12 @@ struct WindowMessage {
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
+private:
+	WindowProc *wndproc;   ///< Event handler function for the window. Do not use directly, call HandleWindowEvent() instead.
+
+public:
+	Window(WindowProc *proc) : wndproc(proc) {}
+
 	uint16 flags4;              ///< Window flags, @see WindowFlags
 	WindowClass window_class;   ///< Window class
 	WindowNumber window_number; ///< Window number within the window class
@@ -307,7 +313,6 @@ struct Window : ZeroedMemoryAllocator {
 
 	byte caption_color; ///< Background color of the window caption, contains PlayerID
 
-	WindowProc *wndproc;   ///< Event handler function for the window
 	ViewPort *viewport;    ///< Pointer to viewport, if present
 	const Widget *original_widget; ///< Original widget layout, copied from WindowDesc
 	Widget *widget;        ///< Widgets of the window
@@ -339,6 +344,8 @@ struct Window : ZeroedMemoryAllocator {
 	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
 	void InvalidateWidget(byte widget_index) const;
+
+	virtual void HandleWindowEvent(WindowEvent *e);
 };
 
 struct menu_d {

@@ -161,7 +161,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 							WindowEvent e;
 							e.event = WE_CLICK;
 							e.we.click.widget = WP(w, osk_d).ok_btn;
-							parent->wndproc(parent, &e);
+							parent->HandleWindowEvent(&e);
 						}
 					}
 					DeleteWindow(w);
@@ -173,7 +173,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 						WindowEvent e;
 						e.event = WE_CLICK;
 						e.we.click.widget = WP(w, osk_d).cancel_btn;
-						parent->wndproc(parent, &e);
+						parent->HandleWindowEvent(&e);
 					} else { // or reset to original string
 						strcpy(qs->text.buf, WP(w, osk_d).orig);
 						UpdateTextBufferSize(&qs->text);
