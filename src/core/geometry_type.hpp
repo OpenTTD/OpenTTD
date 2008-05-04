@@ -17,16 +17,19 @@
 #endif /* __APPLE__ */
 
 
+/** Coordinates of a point in 2D */
 struct Point {
 	int x;
 	int y;
 };
 
+/** Dimensions (a width and height) of a rectangle in 2D */
 struct Dimension {
 	int width;
 	int height;
 };
 
+/** Specification of a rectangle with absolute coordinates of all edges */
 struct Rect {
 	int left;
 	int top;
@@ -34,6 +37,10 @@ struct Rect {
 	int bottom;
 };
 
+/**
+ * Specification of a rectangle with an absolute top-left coordinate and a
+ * (relative) width/height
+ */
 struct PointDimension {
 	int x;
 	int y;
@@ -41,6 +48,7 @@ struct PointDimension {
 	int height;
 };
 
+/** A pair of two integers */
 struct Pair {
 	int a;
 	int b;
