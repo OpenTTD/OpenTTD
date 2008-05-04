@@ -273,3 +273,15 @@ void CargoList::InvalidateCache()
 	days_in_transit = dit / count;
 	source = (*packets.begin())->source;
 }
+
+/** Restore an array of cargo packets  from a backup
+ * The end of the row should be marked by an invalid packet
+ */
+void CargoPacket::RestoreBackup() const
+{
+	for (const CargoPacket *cargo = this; cargo->IsValid(); cargo++) {
+		CargoPacket *dest = GetCargoPacket(cargo->index);
+		assert(!dest->IsValid());
+		memcpy(dest, cargo, sizeof(CargoPacket));
+	}
+}

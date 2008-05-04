@@ -442,7 +442,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 
 		if (flags & DC_QUERY_COST || cost.GetCost() == 0) {
 			/* We didn't do anything during the replace so we will just exit here */
-			v = backup.Restore(v);
+			v = backup.Restore(v, p);
 			if (stopped) v->vehstatus &= ~VS_STOPPED;
 			return cost;
 		}
@@ -482,7 +482,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 	}
 
 	if (!(flags & DC_EXEC) || CmdFailed(cost)) {
-		v = backup.Restore(v);
+		v = backup.Restore(v, p);
 	}
 
 	/* Start the vehicle if we stopped it earlier */

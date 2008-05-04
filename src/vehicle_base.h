@@ -522,9 +522,6 @@ public:
 	 * @return the cost of the depot action.
 	 */
 	CommandCost SendToDepot(uint32 flags, DepotCommand command);
-
-	Vehicle* BackupVehicle() const;
-	Vehicle* RestoreBackupVehicle();
 };
 
 /**
@@ -659,15 +656,19 @@ private:
 	Vehicle *vehicles;
 	BackuppedOrders *orders;
 	PlayerMoneyBackup *economy;
+	CargoPacket *cargo_packets;
+
+	void BackupVehicle(Vehicle *v);
+	Vehicle* RestoreBackupVehicle(Vehicle *v, Player *p);
 
 public:
-	BackuppedVehicle(bool include_orders) : vehicles(NULL), economy(NULL) {
+	BackuppedVehicle(bool include_orders) : vehicles(NULL), economy(NULL), cargo_packets(NULL) {
 		orders = include_orders ? new BackuppedOrders() : NULL;
 	}
-	~BackuppedVehicle() { free(vehicles); delete orders; delete economy; }
+	~BackuppedVehicle() { free(vehicles); delete orders; delete economy; free(cargo_packets); }
 
-	void Backup(const Vehicle *v, Player *p = NULL);
-	Vehicle *Restore(Vehicle *v);
+	void Backup(Vehicle *v, Player *p = NULL);
+	Vehicle *Restore(Vehicle *v, Player *p);
 	bool ContainsBackup() { return vehicles != NULL; }
 };
 

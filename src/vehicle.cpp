@@ -2685,31 +2685,66 @@ void Vehicle::SetNext(Vehicle *next)
 }
 
 /** Backs up a chain of vehicles
- * @return a pointer to the chain
+ * @param v The vehicle to back up
  */
-Vehicle* Vehicle::BackupVehicle() const
+void BackuppedVehicle::BackupVehicle(Vehicle *v)
 {
-	int length = CountVehiclesInChain(this);
+	int length = CountVehiclesInChain(v);
 
-	Vehicle *list = MallocT<Vehicle>(length);
-	Vehicle *copy = list; // store the pointer so we have something to return later
-
-	const Vehicle *original = this;
-
-	for (; 0 < length; original = original->next, copy++, length--) {
-		memcpy(copy, original, sizeof(Vehicle));
+	uint cargo_packages_count = 1;
+	for (const Vehicle *v_count = v; v_count != NULL; v_count=v_count->Next()) {
+		/* Now we count how many cargo packets we need to store.
+		 * We started with an offset by one because we also need an end of array marker. */
+		cargo_packages_count += v_count->cargo.packets.size();
 	}
-	return list;
+
+	vehicles = MallocT<Vehicle>(length);
+	cargo_packets = MallocT<CargoPacket>(cargo_packages_count);
+
+	/* Now we make some pointers to iterate over the arrays. */
+	Vehicle *copy = vehicles;
+	CargoPacket *cargo = cargo_packets;
+
+	Vehicle *original = v;
+
+	for (; 0 < length; original = original->Next(), copy++, length--) {
+		/* First we need to copy the vehicle itself.
+		 * However there is an issue as the cargo list isn't copied.
+		 * To avoid restoring invalid pointers we start by swapping the cargo list with an empty one. */
+		CargoList::List empty_packets;
+		original->cargo.packets.swap(empty_packets);
+		memcpy(copy, original, sizeof(Vehicle));
+
+		/* No need to do anything else if the cargo list is empty.
+		 * It really doesn't matter if we swap an empty list with an empty list. */
+		if (original->cargo.Empty()) continue;
+
+		/* And now we swap the cargo lists back. The vehicle now has it's cargo again. */
+		original->cargo.packets.swap(empty_packets);
+
+		/* The vehicle contains some cargo so we will back up the cargo as well.
+		 * We only need to store the packets and not which vehicle they came from.
+		 * We will still be able to put them together with the right vehicle when restoring. */
+		const CargoList::List *packets = original->cargo.Packets();
+		for (CargoList::List::const_iterator it = packets->begin(); it != packets->end(); it++) {
+			memcpy(cargo, (*it), sizeof(CargoPacket));
+			cargo++;
+		}
+	}
+	/* We should end with a 0 packet so restoring can detect the end of the array. */
+	memset(cargo, 0, sizeof(CargoPacket));
 }
 
 /** Restore a backed up row of vehicles
- * @return a pointer to the first vehicle in chain
+ * @param *v The array of vehicles to restore
+ * @param *p The owner of the vehicle
  */
-Vehicle* Vehicle::RestoreBackupVehicle()
+Vehicle* BackuppedVehicle::RestoreBackupVehicle(Vehicle *v, Player *p)
 {
-	Vehicle *backup = this;
+	Vehicle *backup = v;
+	CargoPacket *cargo = cargo_packets;
 
-	Player *p = GetPlayer(backup->owner);
+	assert(v->owner == p->index);
 
 	while (true) {
 		Vehicle *dest = GetVehicle(backup->index);
@@ -2720,32 +2755,54 @@ Vehicle* Vehicle::RestoreBackupVehicle()
 		/* We decreased the engine count when we sold the engines so we will increase it again. */
 		if (IsEngineCountable(backup)) p->num_engines[backup->engine_type]++;
 
+		/* Update hash. */
 		Vehicle *dummy = dest;
 		dest->old_new_hash = &dummy;
 		dest->left_coord = INVALID_COORD;
 		UpdateVehiclePosHash(dest, INVALID_COORD, 0);
 
-		if (backup->next == NULL) break;
+		if (!dest->cargo.Empty()) {
+			/* The vehicle in question contains some cargo.
+			 * However we lost the list so we will have to recreate it.
+			 * We know that the packets are stored in the same order as the vehicles so
+			 * the one cargo_packets points to and maybe some following ones belongs to
+			 * the current vehicle.
+			 * Now all we have to do is to add the packets to a list and keep track of how
+			 * much cargo we restore and once we reached the cached cargo hold we recovered
+			 * everything for this vehicle. */
+			uint cargo_count = 0;
+			for(; cargo_count < dest->cargo.Count(); cargo++) {
+				dest->cargo.packets.push_back(GetCargoPacket(cargo->index));
+				cargo_count += cargo->count;
+			}
+			/* This design should always end up with the right amount of cargo. */
+			assert(cargo_count == dest->cargo.Count());
+		}
+
+		if (backup->Next() == NULL) break;
 		backup++;
 	}
-	return GetVehicle(this->index);
+	return GetVehicle(v->index);
 }
 
 /** Restores a backed up vehicle
  * @param *v A vehicle we should sell and take the windows from (NULL for not using this)
+ * @param *p The owner of the vehicle
  * @return The vehicle we restored (front for trains) or v if we didn't have anything to restore
  */
-Vehicle *BackuppedVehicle::Restore(Vehicle *v)
+Vehicle *BackuppedVehicle::Restore(Vehicle *v, Player *p)
 {
 	if (!ContainsBackup()) return v;
 	if (v != NULL) {
 		ChangeVehicleViewWindow(v, INVALID_VEHICLE);
 		DoCommand(0, v->index, 1, DC_EXEC, GetCmdSellVeh(v));
 	}
-	v = this->vehicles->RestoreBackupVehicle();
+	v = RestoreBackupVehicle(this->vehicles, p);
 	ChangeVehicleViewWindow(INVALID_VEHICLE, v);
 	if (orders != NULL) RestoreVehicleOrdersBruteForce(v, orders);
 	if (economy != NULL) economy->Restore();
+	/* If we stored cargo as well then we should restore it. */
+	cargo_packets->RestoreBackup();
 	return v;
 }
 
@@ -2754,14 +2811,14 @@ Vehicle *BackuppedVehicle::Restore(Vehicle *v)
  * @param v the vehicle to backup
  * @param p If it's set to the vehicle's owner then economy is backed up. If NULL then economy backup will be skipped.
  */
-void BackuppedVehicle::Backup(const Vehicle *v, Player *p)
+void BackuppedVehicle::Backup(Vehicle *v, Player *p)
 {
 	assert(!ContainsBackup());
 	if (p != NULL) {
 		assert(p->index == v->owner);
 		economy = new PlayerMoneyBackup(p);
 	}
-	vehicles = v->BackupVehicle();
+	BackupVehicle(v);
 	if (orders != NULL) BackupVehicleOrders(v, orders);
 }
 

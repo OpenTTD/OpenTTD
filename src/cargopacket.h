@@ -11,6 +11,8 @@
 #include "station_type.h"
 #include <list>
 
+struct BackuppedVehicle;
+
 typedef uint32 CargoPacketID;
 struct CargoPacket;
 
@@ -56,6 +58,8 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 	 * @return true if and only if days_in_transit and source_xy are equal
 	 */
 	bool SameSource(const CargoPacket *cp) const;
+
+	void RestoreBackup() const;
 };
 
 /**
@@ -99,6 +103,7 @@ private:
 	uint days_in_transit; ///< Cache for the number of days in transit
 
 public:
+	friend struct BackuppedVehicle;
 	friend void SaveLoad_STNS(Station *st);
 
 	/** Create the cargo list */
