@@ -104,6 +104,8 @@ public:
 		pthread_join(m_thr, &ret);
 		m_thr = 0;
 
+		delete this;
+
 		return ret;
 	}
 
@@ -136,16 +138,22 @@ private:
 		/* The new thread stops here so the calling thread can complete pthread_create() call */
 		sem_wait(&m_sem_start);
 
+		/* Did this thread die naturally/via exit, or did it join? */
+		bool exit = false;
+
 		/* Call the proc of the creator to continue this thread */
 		try {
 			m_proc(m_param);
 		} catch (...) {
+			exit = true;
 		}
 
 		/* Notify threads waiting for our completion */
 		sem_post(&m_sem_stop);
 
-		return NULL;
+		if (exit) delete this;
+
+		pthread_exit(NULL);
 	}
 };
 
