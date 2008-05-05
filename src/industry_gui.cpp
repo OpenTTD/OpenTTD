@@ -434,164 +434,165 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(indview_d));
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		Industry *i = GetIndustry(w->window_number);
-		const IndustrySpec *ind = GetIndustrySpec(i->type);
-		int y = w->widget[IVW_INFO].top + 1;
-		bool first = true;
-		bool has_accept = false;
+		case WE_PAINT: {
+			Industry *i = GetIndustry(w->window_number);
+			const IndustrySpec *ind = GetIndustrySpec(i->type);
+			int y = w->widget[IVW_INFO].top + 1;
+			bool first = true;
+			bool has_accept = false;
 
-		SetDParam(0, w->window_number);
-		DrawWindowWidgets(w);
+			SetDParam(0, w->window_number);
+			DrawWindowWidgets(w);
 
-		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] == CT_INVALID) continue;
-				has_accept = true;
-				if (first) {
-					DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
+			if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+				for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+					if (i->accepts_cargo[j] == CT_INVALID) continue;
+					has_accept = true;
+					if (first) {
+						DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
+						y += 10;
+						first = false;
+					}
+					SetDParam(0, i->accepts_cargo[j]);
+					SetDParam(1, i->incoming_cargo_waiting[j]);
+					SetDParam(2, GetCargoSuffix(j, i, i->type, ind));
+					DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
 					y += 10;
+				}
+			} else {
+				StringID str = STR_4827_REQUIRES;
+				byte p = 0;
+				for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+					if (i->accepts_cargo[j] == CT_INVALID) continue;
+					has_accept = true;
+					if (p > 0) str++;
+					SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
+					SetDParam(p++, GetCargoSuffix(j, i, i->type, ind));
+				}
+				if (has_accept) {
+					DrawString(2, y, str, TC_FROMSTRING);
+					y += 10;
+				}
+			}
+
+			first = true;
+			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+				if (i->produced_cargo[j] == CT_INVALID) continue;
+				if (first) {
+					if (has_accept) y += 10;
+					DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING);
+					y += 10;
+					WP(w, indview_d).production_offset_y = y;
 					first = false;
 				}
-				SetDParam(0, i->accepts_cargo[j]);
-				SetDParam(1, i->incoming_cargo_waiting[j]);
-				SetDParam(2, GetCargoSuffix(j, i, i->type, ind));
-				DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
+
+				SetDParam(0, i->produced_cargo[j]);
+				SetDParam(1, i->last_month_production[j]);
+				SetDParam(2, GetCargoSuffix(j + 3, i, i->type, ind));
+
+				SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
+				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, TC_FROMSTRING);
+				/* Let's put out those buttons.. */
+				if (IsProductionAlterable(i)) {
+					DrawArrowButtons(5, y, 3, (WP(w, indview_d).clicked_line == j + 1) ? WP(w, indview_d).clicked_button : 0,
+							!isProductionMinimum(i, j), !isProductionMaximum(i, j));
+				}
 				y += 10;
 			}
-		} else {
-			StringID str = STR_4827_REQUIRES;
-			byte p = 0;
-			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-				if (i->accepts_cargo[j] == CT_INVALID) continue;
-				has_accept = true;
-				if (p > 0) str++;
-				SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
-				SetDParam(p++, GetCargoSuffix(j, i, i->type, ind));
-			}
-			if (has_accept) {
-				DrawString(2, y, str, TC_FROMSTRING);
-				y += 10;
-			}
-		}
 
-		first = true;
-		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-			if (i->produced_cargo[j] == CT_INVALID) continue;
-			if (first) {
-				if (has_accept) y += 10;
-				DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING);
-				y += 10;
-				WP(w, indview_d).production_offset_y = y;
-				first = false;
-			}
+			/* Get the extra message for the GUI */
+			if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
+				uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
+				if (callback_res != CALLBACK_FAILED) {
+					StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
+					if (message != STR_NULL && message != STR_UNDEFINED) {
+						const Widget *wi = &w->widget[IVW_INFO];
+						y += 10;
 
-			SetDParam(0, i->produced_cargo[j]);
-			SetDParam(1, i->last_month_production[j]);
-			SetDParam(2, GetCargoSuffix(j + 3, i, i->type, ind));
-
-			SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
-			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, TC_FROMSTRING);
-			/* Let's put out those buttons.. */
-			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(5, y, 3, (WP(w, indview_d).clicked_line == j + 1) ? WP(w, indview_d).clicked_button : 0,
-						!isProductionMinimum(i, j), !isProductionMaximum(i, j));
-			}
-			y += 10;
-		}
-
-		/* Get the extra message for the GUI */
-		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
-			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
-			if (callback_res != CALLBACK_FAILED) {
-				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
-				if (message != STR_NULL && message != STR_UNDEFINED) {
-					const Widget *wi = &w->widget[IVW_INFO];
-					y += 10;
-
-					PrepareTextRefStackUsage(6);
-					/* Use all the available space left from where we stand up to the end of the window */
-					y += DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, -1);
-					StopTextRefStackUsage();
+						PrepareTextRefStackUsage(6);
+						/* Use all the available space left from where we stand up to the end of the window */
+						y += DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, -1);
+						StopTextRefStackUsage();
+					}
 				}
 			}
-		}
 
-		if (y > w->widget[IVW_INFO].bottom) {
-			SetWindowDirty(w);
-			ResizeWindowForWidget(w, IVW_INFO, 0, y - w->widget[IVW_INFO].top);
-			SetWindowDirty(w);
-			return;
-		}
+			if (y > w->widget[IVW_INFO].bottom) {
+				SetWindowDirty(w);
+				ResizeWindowForWidget(w, IVW_INFO, 0, y - w->widget[IVW_INFO].top);
+				SetWindowDirty(w);
+				return;
+			}
 
-		DrawWindowViewport(w);
-	} break;
+			DrawWindowViewport(w);
+		} break;
 
-	case WE_CLICK: {
-		Industry *i;
+		case WE_CLICK: {
+			Industry *i;
 
-		switch (e->we.click.widget) {
-		case IVW_INFO: {
-			int line, x;
+			switch (e->we.click.widget) {
+				case IVW_INFO: {
+					int line, x;
 
-			i = GetIndustry(w->window_number);
+					i = GetIndustry(w->window_number);
 
-			/* We should work if needed.. */
-			if (!IsProductionAlterable(i)) return;
-			x = e->we.click.pt.x;
-			line = (e->we.click.pt.y - WP(w, indview_d).production_offset_y) / 10;
-			if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
-				if (IsInsideMM(x, 5, 25) ) {
-					/* Clicked buttons, decrease or increase production */
-					if (x < 15) {
-						if (isProductionMinimum(i, line)) return;
-						i->production_rate[line] = max(i->production_rate[line] / 2, 0);
+					/* We should work if needed.. */
+					if (!IsProductionAlterable(i)) return;
+					x = e->we.click.pt.x;
+					line = (e->we.click.pt.y - WP(w, indview_d).production_offset_y) / 10;
+					if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
+						if (IsInsideMM(x, 5, 25) ) {
+							/* Clicked buttons, decrease or increase production */
+							if (x < 15) {
+								if (isProductionMinimum(i, line)) return;
+								i->production_rate[line] = max(i->production_rate[line] / 2, 0);
+							} else {
+								/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
+								int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
+								if (isProductionMaximum(i, line)) return;
+								i->production_rate[line] = minu(new_prod, 255);
+							}
+
+							UpdateIndustryProduction(i);
+							SetWindowDirty(w);
+							w->flags4 |= 5 << WF_TIMEOUT_SHL;
+							WP(w, indview_d).clicked_line = line + 1;
+							WP(w, indview_d).clicked_button = (x < 15 ? 1 : 2);
+						} else if (IsInsideMM(x, 34, 160)) {
+							/* clicked the text */
+							WP(w, indview_d).editbox_line = line;
+							SetDParam(0, i->production_rate[line] * 8);
+							ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
+						}
+					}
+				} break;
+
+				case IVW_GOTO:
+					i = GetIndustry(w->window_number);
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
 					} else {
-						/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
-						int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
-						if (isProductionMaximum(i, line)) return;
-						i->production_rate[line] = minu(new_prod, 255);
+						ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
 					}
 
-					UpdateIndustryProduction(i);
-					SetWindowDirty(w);
-					w->flags4 |= 5 << WF_TIMEOUT_SHL;
-					WP(w, indview_d).clicked_line = line + 1;
-					WP(w, indview_d).clicked_button = (x < 15 ? 1 : 2);
-				} else if (IsInsideMM(x, 34, 160)) {
-					/* clicked the text */
-					WP(w, indview_d).editbox_line = line;
-					SetDParam(0, i->production_rate[line] * 8);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
-				}
-			}
-		} break;
-		case IVW_GOTO:
-			i = GetIndustry(w->window_number);
-			if (_ctrl_pressed) {
-				ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
-			} else {
-				ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
-			}
+			} break;
 		} break;
 
-		}
-		break;
-	case WE_TIMEOUT:
-		WP(w, indview_d).clicked_line = 0;
-		WP(w, indview_d).clicked_button = 0;
-		SetWindowDirty(w);
-		break;
-
-	case WE_ON_EDIT_TEXT:
-		if (e->we.edittext.str[0] != '\0') {
-			Industry* i = GetIndustry(w->window_number);
-			int line = WP(w, indview_d).editbox_line;
-
-			i->production_rate[line] = ClampU(atoi(e->we.edittext.str), 0, 255);
-			UpdateIndustryProduction(i);
+		case WE_TIMEOUT:
+			WP(w, indview_d).clicked_line = 0;
+			WP(w, indview_d).clicked_button = 0;
 			SetWindowDirty(w);
-		}
+			break;
+
+		case WE_ON_EDIT_TEXT:
+			if (e->we.edittext.str[0] != '\0') {
+				Industry* i = GetIndustry(w->window_number);
+				int line = WP(w, indview_d).editbox_line;
+
+				i->production_rate[line] = ClampU(atoi(e->we.edittext.str), 0, 255);
+				UpdateIndustryProduction(i);
+				SetWindowDirty(w);
+			}
 	}
 }
 
@@ -784,96 +785,96 @@ static void MakeSortedIndustryList()
 static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		if (_industry_sort_dirty) {
-			_industry_sort_dirty = false;
-			MakeSortedIndustryList();
-		}
-
-		SetVScrollCount(w, _num_industry_sort);
-
-		DrawWindowWidgets(w);
-		DrawSortButtonState(w, IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
-
-		uint p = w->vscroll.pos;
-		int n = 0;
-
-		while (p < _num_industry_sort) {
-			const Industry* i = _industry_sort[p];
-
-			SetDParam(0, i->index);
-			if (i->produced_cargo[0] != CT_INVALID) {
-				SetDParam(1, i->produced_cargo[0]);
-				SetDParam(2, i->last_month_production[0]);
-
-				if (i->produced_cargo[1] != CT_INVALID) {
-					SetDParam(3, i->produced_cargo[1]);
-					SetDParam(4, i->last_month_production[1]);
-					SetDParam(5, i->last_month_pct_transported[0] * 100 >> 8);
-					SetDParam(6, i->last_month_pct_transported[1] * 100 >> 8);
-					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, TC_FROMSTRING);
-				} else {
-					SetDParam(3, i->last_month_pct_transported[0] * 100 >> 8);
-					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, TC_FROMSTRING);
-				}
-			} else {
-				DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_NOPROD, TC_FROMSTRING);
+		case WE_PAINT: {
+			if (_industry_sort_dirty) {
+				_industry_sort_dirty = false;
+				MakeSortedIndustryList();
 			}
-			p++;
-			if (++n == w->vscroll.cap) break;
-		}
-	} break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case IDW_SORTBYNAME: {
-				_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
-				_industry_sort_dirty = true;
-				SetWindowDirty(w);
-			} break;
+			SetVScrollCount(w, _num_industry_sort);
 
-			case IDW_SORTBYTYPE: {
-				_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
-				_industry_sort_dirty = true;
-				SetWindowDirty(w);
-			} break;
+			DrawWindowWidgets(w);
+			DrawSortButtonState(w, IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
-			case IDW_SORTBYPROD: {
-				_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
-				_industry_sort_dirty = true;
-				SetWindowDirty(w);
-			} break;
+			uint p = w->vscroll.pos;
+			int n = 0;
 
-			case IDW_SORTBYTRANSPORT: {
-				_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
-				_industry_sort_dirty = true;
-				SetWindowDirty(w);
-			} break;
+			while (p < _num_industry_sort) {
+				const Industry* i = _industry_sort[p];
 
-			case IDW_INDUSRTY_LIST: {
-				int y = (e->we.click.pt.y - 28) / 10;
-				uint16 p;
+				SetDParam(0, i->index);
+				if (i->produced_cargo[0] != CT_INVALID) {
+					SetDParam(1, i->produced_cargo[0]);
+					SetDParam(2, i->last_month_production[0]);
 
-				if (!IsInsideMM(y, 0, w->vscroll.cap)) return;
-				p = y + w->vscroll.pos;
-				if (p < _num_industry_sort) {
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(_industry_sort[p]->xy);
+					if (i->produced_cargo[1] != CT_INVALID) {
+						SetDParam(3, i->produced_cargo[1]);
+						SetDParam(4, i->last_month_production[1]);
+						SetDParam(5, i->last_month_pct_transported[0] * 100 >> 8);
+						SetDParam(6, i->last_month_pct_transported[1] * 100 >> 8);
+						DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, TC_FROMSTRING);
 					} else {
-						ScrollMainWindowToTile(_industry_sort[p]->xy);
+						SetDParam(3, i->last_month_pct_transported[0] * 100 >> 8);
+						DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, TC_FROMSTRING);
 					}
+				} else {
+					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_NOPROD, TC_FROMSTRING);
 				}
-			} break;
-		}
-		break;
+				p++;
+				if (++n == w->vscroll.cap) break;
+			}
+		} break;
 
-	case WE_4:
-		SetWindowDirty(w);
-		break;
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case IDW_SORTBYNAME: {
+					_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
+					_industry_sort_dirty = true;
+					SetWindowDirty(w);
+				} break;
 
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 10;
-		break;
+				case IDW_SORTBYTYPE: {
+					_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
+					_industry_sort_dirty = true;
+					SetWindowDirty(w);
+				} break;
+
+				case IDW_SORTBYPROD: {
+					_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
+					_industry_sort_dirty = true;
+					SetWindowDirty(w);
+				} break;
+
+				case IDW_SORTBYTRANSPORT: {
+					_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
+					_industry_sort_dirty = true;
+					SetWindowDirty(w);
+				} break;
+
+				case IDW_INDUSRTY_LIST: {
+					int y = (e->we.click.pt.y - 28) / 10;
+					uint16 p;
+
+					if (!IsInsideMM(y, 0, w->vscroll.cap)) return;
+					p = y + w->vscroll.pos;
+					if (p < _num_industry_sort) {
+						if (_ctrl_pressed) {
+							ShowExtraViewPortWindow(_industry_sort[p]->xy);
+						} else {
+							ScrollMainWindowToTile(_industry_sort[p]->xy);
+						}
+					}
+				} break;
+			}
+			break;
+
+		case WE_4:
+			SetWindowDirty(w);
+			break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 10;
+			break;
 	}
 }
 
