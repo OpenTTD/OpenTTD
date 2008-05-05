@@ -45,7 +45,7 @@ static Fio _fio;
 /* Get current position in file */
 uint32 FioGetPos()
 {
-	return _fio.pos + (_fio.buffer - _fio.buffer_start) - FIO_BUFFER_SIZE;
+	return _fio.pos + (_fio.buffer - _fio.buffer_end);
 }
 
 const char *FioGetFilename(uint8 slot)
@@ -92,7 +92,11 @@ byte FioReadByte()
 {
 	if (_fio.buffer == _fio.buffer_end) {
 		_fio.buffer = _fio.buffer_start;
-		_fio.pos += fread(_fio.buffer, 1, FIO_BUFFER_SIZE, _fio.cur_fh);
+		size_t size = fread(_fio.buffer, 1, FIO_BUFFER_SIZE, _fio.cur_fh);
+		_fio.pos += size;
+		_fio.buffer_end = _fio.buffer_start + size;
+
+		if (size == 0) return 0;
 	}
 	return *_fio.buffer++;
 }
