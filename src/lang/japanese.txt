@@ -1325,8 +1325,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}タフ�
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}砂糖鉱山を建設します
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}産業
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}）{YELLOW}（{COMMA}％が運送済み）
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}／{CARGO}）{YELLOW}（{COMMA}％／{COMMA}％が運送済み）
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}）{YELLOW}（{COMMA}％が運送済み）
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK}（{CARGO}{STRING}／{CARGO}{STRING}）{YELLOW}（{COMMA}％／{COMMA}％が運送済み）
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...他の産業に近すぎます。

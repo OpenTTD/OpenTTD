@@ -1327,8 +1327,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}태피 �
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}설탕 광산을 건설합니다.
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}산업시설
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}%가 운반됨)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}%가 운반됨)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...다른 산업시설과 너무 가깝습니다.

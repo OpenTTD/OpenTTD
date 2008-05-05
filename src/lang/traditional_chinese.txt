@@ -1327,8 +1327,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}出資�
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}建造砂糖礦
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}工業
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} (已運輸 {COMMA}%)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} (已運輸 {COMMA}%/{COMMA}%)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (已運輸 {COMMA}%)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (已運輸 {COMMA}%/{COMMA}%)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...太接近另一個工業

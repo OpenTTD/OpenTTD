@@ -1325,8 +1325,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Bonbon M
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Şeker Madeni Kur
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikalar
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} (%{COMMA} tasindi)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...başka bir fabrikaya çok yakın
