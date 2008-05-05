@@ -28,6 +28,13 @@ enum SaveOrLoadMode {
 	SL_BMP      =  4,
 };
 
+enum SavegameType {
+	SGT_TTD,    ///< TTD  savegame (can be detected incorrectly)
+	SGT_TTDP1,  ///< TTDP savegame ( -//- ) (data at NW border)
+	SGT_TTDP2,  ///< TTDP savegame in new format (data at SE border)
+	SGT_OTTD    ///< OTTD savegame
+};
+
 void SetSaveLoadError(uint16 str);
 const char *GetSaveLoadErrorString();
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb);

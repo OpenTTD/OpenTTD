@@ -35,6 +35,10 @@
 #include "table/strings.h"
 
 extern const uint16 SAVEGAME_VERSION = 95;
+
+SavegameType _savegame_type; ///< type of savegame we are loading
+
+uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
@@ -1632,6 +1636,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		InitializeGame(IG_DATE_RESET, 256, 256); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		_sl_version = 0;
+		_sl_minor_version = 0;
 		if (!AfterLoadGame()) return SL_REINIT;
 		return SL_OK;
 	}
@@ -1746,6 +1751,8 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			SlLoadChunks();
 			fmt->uninit_read();
 			fclose(_sl.fh);
+
+			_savegame_type = SGT_OTTD;
 
 			/* After loading fix up savegame for any internal changes that
 			 * might've occured since then. If it fails, load back the old game */

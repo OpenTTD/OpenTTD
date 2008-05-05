@@ -24,6 +24,7 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "variables.h"
+#include "saveload.h"
 #include "strings_func.h"
 #include "effectvehicle_base.h"
 
@@ -110,6 +111,9 @@ struct OldChunks {
 
 /* If it fails, check lines above.. */
 assert_compile(sizeof(TileIndex) == 4);
+
+extern SavegameType _savegame_type;
+extern uint32 _ttdp_version;
 
 static uint32 _bump_assert_value;
 static bool   _read_ttdpatch_flags;
@@ -295,6 +299,9 @@ static void InitLoading(LoadgameState *ls)
 
 	_bump_assert_value = 0;
 
+	_savegame_type   = SGT_TTD;
+	_ttdp_version    = 0;
+
 	_read_ttdpatch_flags = false;
 }
 
@@ -403,7 +410,6 @@ extern char *_old_name_array;
 
 static byte   _old_vehicle_multiplier;
 static uint8  *_old_map3;
-static bool   _new_ttdpatch_format;
 static uint32 _old_town_index;
 static uint16 _old_string_id;
 static uint16 _old_string_id_2;
@@ -411,8 +417,6 @@ static uint16 _old_extra_chunk_nums;
 
 static void ReadTTDPatchFlags()
 {
-	int i;
-
 	if (_read_ttdpatch_flags) return;
 
 	_read_ttdpatch_flags = true;
@@ -430,16 +434,20 @@ static void ReadTTDPatchFlags()
 	1 vehicle   == 128 bytes */
 	_bump_assert_value = (_old_vehicle_multiplier - 1) * 850 * 128;
 
-	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
-	_new_ttdpatch_format = (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0);
+	for (uint i = 0; i < 17; i++) { // check tile 0, too
+		if (_old_map3[i] != 0) _savegame_type = SGT_TTDP1;
+	}
 
-	_old_extra_chunk_nums = _old_map3[_new_ttdpatch_format ? 0x1FFFE : 0x2];
+	/* Check if we have a modern TTDPatch savegame (has extra data all around) */
+	if (memcmp(&_old_map3[0x1FFFA], "TTDp", 4) == 0) _savegame_type = SGT_TTDP2;
+
+	_old_extra_chunk_nums = _old_map3[_savegame_type == SGT_TTDP2 ? 0x1FFFE : 0x2];
 
 	/* Clean the misused places */
-	for (i = 0;       i < 17;      i++) _old_map3[i] = 0;
-	for (i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
+	for (uint i = 0;       i < 17;      i++) _old_map3[i] = 0;
+	for (uint i = 0x1FE00; i < 0x20000; i++) _old_map3[i] = 0;
 
-	if (_new_ttdpatch_format) DEBUG(oldloader, 2, "Found TTDPatch game");
+	if (_savegame_type == SGT_TTDP2) DEBUG(oldloader, 2, "Found TTDPatch game");
 
 	DEBUG(oldloader, 3, "Vehicle-multiplier is set to %d (%d vehicles)", _old_vehicle_multiplier, _old_vehicle_multiplier * 850);
 }
@@ -1465,12 +1473,12 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 			} break;
 
 			/* TTDPatch version and configuration */
-			case 0x3: {
-				uint32 ttdpv = ReadUint32(ls);
-				DEBUG(oldloader, 3, "Game saved with TTDPatch version %d.%d.%d r%d", GB(ttdpv, 24, 8), GB(ttdpv, 20, 4), GB(ttdpv, 16, 4), GB(ttdpv, 0, 16));
+			case 0x3:
+				_ttdp_version = ReadUint32(ls);
+				DEBUG(oldloader, 3, "Game saved with TTDPatch version %d.%d.%d r%d",
+					GB(_ttdp_version, 24, 8), GB(_ttdp_version, 20, 4), GB(_ttdp_version, 16, 4), GB(_ttdp_version, 0, 16));
 				len -= 4;
 				while (len-- != 0) ReadByte(ls); // skip the configuration
-			} break;
 
 			default:
 				DEBUG(oldloader, 4, "Skipping unknown extra chunk %X", id);
@@ -1706,7 +1714,7 @@ bool LoadOldSaveGame(const char *file)
 
 	fclose(ls.file);
 
-	/* Some old TTDP savegames could have buoys at tile 0
+	/* Some old TTD(Patch) savegames could have buoys at tile 0
 	 * (without assigned station struct)
 	 * MakeWater() can be used as long as sea has the same
 	 * format as old savegames (eg. everything is zeroed) */
