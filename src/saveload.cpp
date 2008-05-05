@@ -1114,7 +1114,7 @@ static uint ReadNoComp()
 
 static void WriteNoComp(uint size)
 {
-	fwrite(_sl.buf, 1, size, _sl.fh);
+	if (fwrite(_sl.buf, 1, size, _sl.fh) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
 
 static bool InitNoComp()

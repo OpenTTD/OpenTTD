@@ -595,7 +595,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	if (maptype == MAP_PACKET_NORMAL) {
 		// We are still receiving data, put it to the file
-		fwrite(p->buffer + p->pos, 1, p->size - p->pos, file_pointer);
+		if (fwrite(p->buffer + p->pos, 1, p->size - p->pos, file_pointer) != p->size - p->pos) {
+			_switch_mode_errorstr = STR_NETWORK_ERR_SAVEGAMEERROR;
+			return NETWORK_RECV_STATUS_SAVEGAME;
+		}
 
 		_network_join_kbytes = ftell(file_pointer) / 1024;
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);

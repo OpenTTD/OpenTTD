@@ -91,8 +91,8 @@ void FioSeekToFile(uint8 slot, uint32 pos)
 byte FioReadByte()
 {
 	if (_fio.buffer == _fio.buffer_end) {
-		_fio.pos += FIO_BUFFER_SIZE;
-		fread(_fio.buffer = _fio.buffer_start, 1, FIO_BUFFER_SIZE, _fio.cur_fh);
+		_fio.buffer = _fio.buffer_start;
+		_fio.pos += fread(_fio.buffer, 1, FIO_BUFFER_SIZE, _fio.cur_fh);
 	}
 	return *_fio.buffer++;
 }
@@ -124,8 +124,7 @@ uint32 FioReadDword()
 void FioReadBlock(void *ptr, uint size)
 {
 	FioSeekTo(FioGetPos(), SEEK_SET);
-	_fio.pos += size;
-	fread(ptr, 1, size, _fio.cur_fh);
+	_fio.pos += fread(ptr, 1, size, _fio.cur_fh);
 }
 
 static inline void FioCloseFile(int slot)
@@ -430,7 +429,7 @@ char *BuildWithFullPath(const char *dir)
 
 	/* Add absolute path */
 	if (s == NULL || dest != s) {
-		getcwd(dest, MAX_PATH);
+		if (getcwd(dest, MAX_PATH) == NULL) *dest = '\0';
 		AppendPathSeparator(dest, MAX_PATH);
 		ttd_strlcat(dest, dir, MAX_PATH);
 	}
@@ -484,8 +483,7 @@ static bool TarListAddFile(const char *filename)
 	memset(&empty[0], 0, sizeof(empty));
 
 	while (!feof(f)) {
-		fread(&th, 1, 512, f);
-		pos += 512;
+		pos += fread(&th, 1, 512, f);
 
 		/* Check if we have the new tar-format (ustar) or the old one (a lot of zeros after 'link' field) */
 		if (strncmp(th.magic, "ustar", 5) != 0 && memcmp(&th.magic, &empty[0], 512 - offsetof(TarHeader, magic)) != 0) {
@@ -629,7 +627,7 @@ void ChangeWorkingDirectory(const char *exe)
 	char *s = strrchr(exe, PATHSEPCHAR);
 	if (s != NULL) {
 		*s = '\0';
-		chdir(exe);
+		if (chdir(exe) != 0) DEBUG(misc, 0, "Directory with the binary does not exist?");
 		*s = PATHSEPCHAR;
 	}
 #ifdef WITH_COCOA
@@ -671,14 +669,14 @@ void DetermineBasePaths(const char *exe)
 #if defined(__MORPHOS__) || defined(__AMIGA__)
 	_searchpaths[SP_WORKING_DIR] = NULL;
 #else
-	getcwd(tmp, MAX_PATH);
+	if (getcwd(tmp, MAX_PATH) == NULL) *tmp = '\0';
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_WORKING_DIR] = strdup(tmp);
 #endif
 
 	/* Change the working directory to that one of the executable */
 	ChangeWorkingDirectory((char*)exe);
-	getcwd(tmp, MAX_PATH);
+	if (getcwd(tmp, MAX_PATH) == NULL) *tmp = '\0';
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_BINARY_DIR] = strdup(tmp);
 
