@@ -206,8 +206,15 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 						Vehicle *v = GetVehicle(ni->data_a);
 						ScrollMainWindowTo(v->x_pos, v->y_pos);
 					} else if (ni->flags & NF_TILE) {
-						if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0) {
-							ScrollMainWindowToTile(ni->data_b);
+						if (_ctrl_pressed) {
+							ShowExtraViewPortWindow(ni->data_a);
+							if (ni->data_b != 0) {
+								ShowExtraViewPortWindow(ni->data_b);
+							}
+						} else {
+							if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0) {
+								ScrollMainWindowToTile(ni->data_b);
+							}
 						}
 					}
 					break;

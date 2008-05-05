@@ -422,7 +422,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					const Station *st = sl->sort_list[id_v];
 					/* do not check HasStationInUse - it is slow and may be invalid */
 					assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
-					ScrollMainWindowToTile(st->xy);
+
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(st->xy);
+					} else {
+						ScrollMainWindowToTile(st->xy);
+					}
 					break;
 				}
 
@@ -936,7 +941,11 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case SVW_LOCATION:
-					ScrollMainWindowToTile(GetStation(w->window_number)->xy);
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(GetStation(w->window_number)->xy);
+					} else {
+						ScrollMainWindowToTile(GetStation(w->window_number)->xy);
+					}
 					break;
 
 				case SVW_RATINGS:

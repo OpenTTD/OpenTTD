@@ -819,7 +819,13 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					}
 						break;
 
-				case DEPOT_WIDGET_LOCATION: ScrollMainWindowToTile(w->window_number); break;
+				case DEPOT_WIDGET_LOCATION:
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(w->window_number);
+					} else {
+						ScrollMainWindowToTile(w->window_number);
+					}
+					break;
 
 				case DEPOT_WIDGET_STOP_ALL:
 				case DEPOT_WIDGET_START_ALL:

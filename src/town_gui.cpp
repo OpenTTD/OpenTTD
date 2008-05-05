@@ -333,7 +333,11 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case TVW_CENTERVIEW: /* scroll to location */
-					ScrollMainWindowToTile(t->xy);
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(t->xy);
+					} else {
+						ScrollMainWindowToTile(t->xy);
+					}
 					break;
 
 				case TVW_SHOWAUTORITY: /* town authority */
@@ -541,7 +545,11 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 					t = _town_sort[id_v];
 					assert(t->xy);
-					ScrollMainWindowToTile(t->xy);
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(t->xy);
+					} else {
+						ScrollMainWindowToTile(t->xy);
+					}
 				} break;
 			}
 			break;

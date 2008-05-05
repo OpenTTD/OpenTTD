@@ -568,7 +568,11 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		} break;
 		case IVW_GOTO:
 			i = GetIndustry(w->window_number);
-			ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
+			if (_ctrl_pressed) {
+				ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
+			} else {
+				ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
+			}
 		} break;
 
 		}
@@ -853,7 +857,11 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 				if (!IsInsideMM(y, 0, w->vscroll.cap)) return;
 				p = y + w->vscroll.pos;
 				if (p < _num_industry_sort) {
-					ScrollMainWindowToTile(_industry_sort[p]->xy);
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(_industry_sort[p]->xy);
+					} else {
+						ScrollMainWindowToTile(_industry_sort[p]->xy);
+					}
 				}
 			} break;
 		}

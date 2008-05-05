@@ -1191,25 +1191,30 @@ static const WindowDesc _extra_view_port_desc = {
 	ExtraViewPortWndProc
 };
 
-void ShowExtraViewPortWindow()
+void ShowExtraViewPortWindow(TileIndex tile)
 {
-	Window *w, *v;
 	int i = 0;
 
 	/* find next free window number for extra viewport */
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
-	w = AllocateWindowDescFront(&_extra_view_port_desc, i);
+	Window *w = AllocateWindowDescFront(&_extra_view_port_desc, i);
 	if (w != NULL) {
-		int x, y;
-		/* the main window with the main view */
-		v = FindWindowById(WC_MAIN_WINDOW, 0);
+		Point pt;
 
-		/* center on same place as main window (zoom is maximum, no adjustment needed) */
-		x = WP(v, vp_d).scrollpos_x;
-		y = WP(v, vp_d).scrollpos_y;
-		WP(w, vp_d).scrollpos_x = x + (v->viewport->virtual_width  - (w->widget[4].right - w->widget[4].left) - 1) / 2;
-		WP(w, vp_d).scrollpos_y = y + (v->viewport->virtual_height - (w->widget[4].bottom - w->widget[4].top) - 1) / 2;
+		if (tile == INVALID_TILE) {
+			/* the main window with the main view */
+			const Window *v = FindWindowById(WC_MAIN_WINDOW, 0);
+
+			/* center on same place as main window (zoom is maximum, no adjustment needed) */
+			pt.x = WP(v, vp_d).scrollpos_x + v->viewport->virtual_height / 2;
+			pt.y = WP(v, vp_d).scrollpos_y + v->viewport->virtual_height / 2;
+		} else {
+			pt = RemapCoords(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, TileHeight(tile));
+		}
+
+		WP(w, vp_d).scrollpos_x = pt.x - ((w->widget[4].right - w->widget[4].left) - 1) / 2;
+		WP(w, vp_d).scrollpos_y = pt.y - ((w->widget[4].bottom - w->widget[4].top) - 1) / 2;
 		WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
 		WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
 	}

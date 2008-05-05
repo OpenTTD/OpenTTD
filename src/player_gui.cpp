@@ -1270,7 +1270,11 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 						w->LowerWidget(PCW_WIDGET_BUILD_VIEW_HQ);
 						w->InvalidateWidget(PCW_WIDGET_BUILD_VIEW_HQ);
 					} else {
-						ScrollMainWindowToTile(tile);
+						if (_ctrl_pressed) {
+							ShowExtraViewPortWindow(tile);
+						} else {
+							ScrollMainWindowToTile(tile);
+						}
 					}
 					break;
 				}
