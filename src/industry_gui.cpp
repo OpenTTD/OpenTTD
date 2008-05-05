@@ -796,31 +796,35 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 			DrawSortButtonState(w, IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
-			uint p = w->vscroll.pos;
+			uint pos = w->vscroll.pos;
 			int n = 0;
 
-			while (p < _num_industry_sort) {
-				const Industry* i = _industry_sort[p];
+			while (pos < _num_industry_sort) {
+				const Industry* i = _industry_sort[pos];
+				byte p = 0;
 
-				SetDParam(0, i->index);
-				if (i->produced_cargo[0] != CT_INVALID) {
-					SetDParam(1, i->produced_cargo[0]);
-					SetDParam(2, i->last_month_production[0]);
+				/* Industry name */
+				SetDParam(p++, i->index);
 
-					if (i->produced_cargo[1] != CT_INVALID) {
-						SetDParam(3, i->produced_cargo[1]);
-						SetDParam(4, i->last_month_production[1]);
-						SetDParam(5, i->last_month_pct_transported[0] * 100 >> 8);
-						SetDParam(6, i->last_month_pct_transported[1] * 100 >> 8);
-						DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_TWO, TC_FROMSTRING);
-					} else {
-						SetDParam(3, i->last_month_pct_transported[0] * 100 >> 8);
-						DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM, TC_FROMSTRING);
-					}
-				} else {
-					DrawString(4, 28 + n * 10, STR_INDUSTRYDIR_ITEM_NOPROD, TC_FROMSTRING);
+				/* Industry productions */
+				for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+					if (i->produced_cargo[j] == CT_INVALID) continue;
+					SetDParam(p++, i->produced_cargo[j]);
+					SetDParam(p++, i->last_month_production[j]);
 				}
-				p++;
+
+				/* Transported productions */
+				for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+					if (i->produced_cargo[j] == CT_INVALID) continue;
+					SetDParam(p++, i->last_month_pct_transported[j] * 100 >> 8);
+				}
+
+				/* Drawing the right string */
+				StringID str = STR_INDUSTRYDIR_ITEM_NOPROD;
+				if (p != 1) str = (p == 4) ? STR_INDUSTRYDIR_ITEM : STR_INDUSTRYDIR_ITEM_TWO;
+				DrawString(4, 28 + n * 10, str, TC_FROMSTRING);
+
+				pos++;
 				if (++n == w->vscroll.cap) break;
 			}
 		} break;
