@@ -131,7 +131,8 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 		case WE_CREATE: { // If chatbar is open at creation time, we need to go above it
 			const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
 			w->message.msg = (w1 != NULL) ? w1->height : 0;
-		} break;
+			break;
+		}
 
 		case WE_PAINT: {
 			const NewsItem *ni = WP(w, news_d).ni;
@@ -186,28 +187,33 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 					}
 					break;
 			}
-		} break;
+			break;
+		}
 
-		case WE_CLICK: {
+		case WE_CLICK:
 			switch (e->we.click.widget) {
-			case 1: {
-				NewsItem *ni = WP(w, news_d).ni;
-				DeleteWindow(w);
-				ni->duration = 0;
-				_forced_news = INVALID_NEWS;
-			} break;
-			case 0: {
-				NewsItem *ni = WP(w, news_d).ni;
-				if (ni->flags & NF_VEHICLE) {
-					Vehicle *v = GetVehicle(ni->data_a);
-					ScrollMainWindowTo(v->x_pos, v->y_pos);
-				} else if (ni->flags & NF_TILE) {
-					if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0)
-						ScrollMainWindowToTile(ni->data_b);
+				case 1: {
+					NewsItem *ni = WP(w, news_d).ni;
+					DeleteWindow(w);
+					ni->duration = 0;
+					_forced_news = INVALID_NEWS;
+					break;
 				}
-			} break;
+
+				case 0: {
+					NewsItem *ni = WP(w, news_d).ni;
+					if (ni->flags & NF_VEHICLE) {
+						Vehicle *v = GetVehicle(ni->data_a);
+						ScrollMainWindowTo(v->x_pos, v->y_pos);
+					} else if (ni->flags & NF_TILE) {
+						if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0) {
+							ScrollMainWindowToTile(ni->data_b);
+						}
+					}
+					break;
+				}
 			}
-		} break;
+			break;
 
 		case WE_KEYPRESS:
 			if (e->we.keypress.keycode == WKC_SPACE) {
@@ -225,18 +231,19 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_TICK: { // Scroll up newsmessages from the bottom in steps of 4 pixels
-			int diff;
 			int y = max(w->top - 4, _screen.height - w->height - 12 - w->message.msg);
 			if (y == w->top) return;
 
-			if (w->viewport != NULL)
+			if (w->viewport != NULL) {
 				w->viewport->top += y - w->top;
+			}
 
-			diff = Delta(w->top, y);
+			int diff = Delta(w->top, y);
 			w->top = y;
 
 			SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);
-		} break;
+			break;
+		}
 	}
 }
 
@@ -698,15 +705,15 @@ void ShowMessageHistory()
 	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
 	Window *w = AllocateWindowDesc(&_message_history_desc);
 
-	if (w != NULL) {
-		w->vscroll.cap = 10;
-		w->vscroll.count = _total_news;
-		w->resize.step_height = 12;
-		w->resize.height = w->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
-		w->resize.step_width = 1;
-		w->resize.width = 200; // can't make window any smaller than 200 pixel
-		SetWindowDirty(w);
-	}
+	if (w == NULL) return;
+
+	w->vscroll.cap = 10;
+	w->vscroll.count = _total_news;
+	w->resize.step_height = 12;
+	w->resize.height = w->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
+	w->resize.step_width = 1;
+	w->resize.width = 200; // can't make window any smaller than 200 pixel
+	SetWindowDirty(w);
 }
 
 
@@ -757,9 +764,10 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			}
 			/* If all values are the same value, the ALL-button will take over this value */
 			WP(w, def_d).data_1 = all_val;
-		} break;
+			break;
+		}
 
-		case WE_PAINT: {
+		case WE_PAINT:
 			if (_news_ticker_sound) w->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
 
 			w->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = message_opt[WP(w, def_d).data_1];
@@ -771,7 +779,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 				 * which will give centered position */
 				DrawStringCentered(51, y + 1, message_opt[_news_type_data[i].display], TC_BLACK);
 			}
-		} break;
+			break;
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
@@ -795,7 +803,8 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 						_news_type_data[element].display = (NewsDisplay)val;
 						SetWindowDirty(w);
 					}
-				} break;
+					break;
+				}
 			}
 			break;
 
