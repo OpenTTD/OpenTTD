@@ -1479,6 +1479,7 @@ static bool LoadTTDPatchExtraChunks(LoadgameState *ls, int num)
 					GB(_ttdp_version, 24, 8), GB(_ttdp_version, 20, 4), GB(_ttdp_version, 16, 4), GB(_ttdp_version, 0, 16));
 				len -= 4;
 				while (len-- != 0) ReadByte(ls); // skip the configuration
+				break;
 
 			default:
 				DEBUG(oldloader, 4, "Skipping unknown extra chunk %X", id);
