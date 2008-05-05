@@ -61,6 +61,11 @@ static struct IndustryData {
 assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.text));
 assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.enabled));
 
+enum CargoSuffixType {
+	CST_FUND,
+	CST_VIEW,
+};
+
 /**
  * Gets the string to display after the cargo name (using callback 37)
  * @param cargo the cargo for which the suffix is requested
@@ -69,16 +74,16 @@ assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.enabled));
  * - 02 - third accepted cargo type
  * - 03 - first produced cargo type
  * - 04 - second produced cargo type
+ * @param cst the cargo suffix type (for which window is it requested)
  * @param ind the industry (NULL if in fund window)
  * @param ind_type the industry type
  * @param indspec the industry spec
  * @return the string to display
  */
-static StringID GetCargoSuffix(uint cargo, Industry *ind, IndustryType ind_type, const IndustrySpec *indspec)
+static StringID GetCargoSuffix(uint cargo, CargoSuffixType cst, Industry *ind, IndustryType ind_type, const IndustrySpec *indspec)
 {
 	if (HasBit(indspec->callback_flags, CBM_IND_CARGO_SUFFIX)) {
-		bool fund = ind == NULL;
-		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, ((!fund) ? 1 << 8 : 0) | cargo, ind, ind_type, (!fund) ? ind->xy : INVALID_TILE);
+		uint16 callback = GetIndustryCallback(CBID_INDUSTRY_CARGO_SUFFIX, 0, (cst << 8) | cargo, ind, ind_type, (cst != CST_FUND) ? ind->xy : INVALID_TILE);
 		if (GB(callback, 0, 8) != 0xFF) return GetGRFStringID(indspec->grf_prop.grffile->grfid, 0xD000 + callback);
 	}
 	return STR_EMPTY;
@@ -208,7 +213,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				if (indsp->accepts_cargo[j] == CT_INVALID) continue;
 				if (p > 0) str++;
 				SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
-				SetDParam(p++, GetCargoSuffix(j, NULL, WP(w, fnd_d).select, indsp));
+				SetDParam(p++, GetCargoSuffix(j, CST_FUND, NULL, WP(w, fnd_d).select, indsp));
 			}
 			DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
 			y_str += 11;
@@ -222,7 +227,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 				if (indsp->produced_cargo[j] == CT_INVALID) continue;
 				if (p > 0) str++;
 				SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
-				SetDParam(p++, GetCargoSuffix(j + 3, NULL, WP(w, fnd_d).select, indsp));
+				SetDParam(p++, GetCargoSuffix(j + 3, CST_FUND, NULL, WP(w, fnd_d).select, indsp));
 			}
 			DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
 			y_str += 11;
@@ -455,7 +460,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					}
 					SetDParam(0, i->accepts_cargo[j]);
 					SetDParam(1, i->incoming_cargo_waiting[j]);
-					SetDParam(2, GetCargoSuffix(j, i, i->type, ind));
+					SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
 					DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
 					y += 10;
 				}
@@ -467,7 +472,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					has_accept = true;
 					if (p > 0) str++;
 					SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
-					SetDParam(p++, GetCargoSuffix(j, i, i->type, ind));
+					SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
 				}
 				if (has_accept) {
 					DrawString(2, y, str, TC_FROMSTRING);
@@ -488,7 +493,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 				SetDParam(0, i->produced_cargo[j]);
 				SetDParam(1, i->last_month_production[j]);
-				SetDParam(2, GetCargoSuffix(j + 3, i, i->type, ind));
+				SetDParam(2, GetCargoSuffix(j + 3, CST_VIEW, i, i->type, ind));
 
 				SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, TC_FROMSTRING);
