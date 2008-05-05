@@ -64,6 +64,7 @@ assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.enabled));
 enum CargoSuffixType {
 	CST_FUND,
 	CST_VIEW,
+	CST_DIR,
 };
 
 /**
@@ -806,6 +807,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 			while (pos < _num_industry_sort) {
 				const Industry* i = _industry_sort[pos];
+				const IndustrySpec *indsp = GetIndustrySpec(i->type);
 				byte p = 0;
 
 				/* Industry name */
@@ -816,6 +818,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 					if (i->produced_cargo[j] == CT_INVALID) continue;
 					SetDParam(p++, i->produced_cargo[j]);
 					SetDParam(p++, i->last_month_production[j]);
+					SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, (Industry*)i, i->type, indsp));
 				}
 
 				/* Transported productions */
@@ -826,7 +829,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 				/* Drawing the right string */
 				StringID str = STR_INDUSTRYDIR_ITEM_NOPROD;
-				if (p != 1) str = (p == 4) ? STR_INDUSTRYDIR_ITEM : STR_INDUSTRYDIR_ITEM_TWO;
+				if (p != 1) str = (p == 5) ? STR_INDUSTRYDIR_ITEM : STR_INDUSTRYDIR_ITEM_TWO;
 				DrawString(4, 28 + n * 10, str, TC_FROMSTRING);
 
 				pos++;
