@@ -49,8 +49,6 @@
 #include "map_func.h"
 #include <map>
 
-#include <map>
-
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "table/town_land.h"
