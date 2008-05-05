@@ -994,7 +994,7 @@ void StateGameLoop()
 				case VEH_ROAD: {
 					extern byte GetRoadVehLength(const Vehicle *v);
 					if (GetRoadVehLength(v) != v->u.road.cached_veh_length) {
-						printf("cache mismatch: vehicle %i, player %i, unit number %i wagon %i\n", v->index, (int)v->owner, v->unitnumberlength);
+						printf("cache mismatch: vehicle %i, player %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 					}
 				} break;
 
@@ -1011,7 +1011,7 @@ void StateGameLoop()
 					length = 0;
 					for (Vehicle *u = v; u != NULL; u = u->Next()) {
 						if (memcmp(&wagons[length], &u->u.rail, sizeof(VehicleRail)) != 0) {
-							printf("cache mismatch: vehicle %i, player %i, unit number %i wagon %i\n", v->index, (int)v->owner, v->unitnumberlength);
+							printf("cache mismatch: vehicle %i, player %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
 						}
 						length++;
 					}
@@ -1023,7 +1023,7 @@ void StateGameLoop()
 					uint speed = v->u.air.cached_max_speed;
 					UpdateAircraftCache(v);
 					if (speed != v->u.air.cached_max_speed) {
-						printf("cache mismatch: vehicle %i, player %i, unit number %i wagon %i\n", v->index, (int)v->owner, v->unitnumberlength);
+						printf("cache mismatch: vehicle %i, player %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 					}
 				} break;
 
