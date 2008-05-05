@@ -118,6 +118,20 @@ static uint32 _grm_engines[256];
 /* Contains the GRF ID of the owner of a cargo if it has been reserved */
 static uint32 _grm_cargos[NUM_CARGO * 2];
 
+struct GRMSpriteEntry {
+	uint32 grfid;
+	uint32 nfoline;
+
+	GRMSpriteEntry(uint32 grfid, uint32 nfoline) : grfid(grfid), nfoline(nfoline) { }
+
+	bool operator<(const GRMSpriteEntry &other) const
+	{
+		return this->grfid < other.grfid || (this->grfid == other.grfid && this->nfoline < other.nfoline);
+	}
+};
+
+static std::map<GRMSpriteEntry, SpriteID> _grm_sprites;
+
 /** DEBUG() function dedicated to newGRF debugging messages
  * Function is essentialy the same as DEBUG(grf, severity, ...) with the
  * addition of file:line information when parsing grf files.
@@ -4355,14 +4369,32 @@ static void ParamSet(byte *buf, int len)
 				src1 = GetPatchVariable(src1);
 			} else {
 				/* GRF Resource Management */
-				if (_cur_stage != GLS_ACTIVATION) {
-					/* Ignore GRM during initialization */
-					src1 = 0;
-				} else {
-					uint8  op      = src1;
-					uint8  feature = GB(data, 8, 8);
-					uint16 count   = GB(data, 16, 16);
+				uint8  op      = src1;
+				uint8  feature = GB(data, 8, 8);
+				uint16 count   = GB(data, 16, 16);
 
+				if (_cur_stage == GLS_RESERVE) {
+					if (feature == 0x08) {
+						/* General sprites */
+						if (op == 0) {
+							/* Check if the allocated sprites will fit below the original sprite limit */
+							if (_cur_spriteid + count >= 16384) {
+								grfmsg(0, "ParamSet: GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
+								_cur_grfconfig->status = GCS_DISABLED;
+
+								_skip_sprites = -1;
+								return;
+							}
+
+							/* Reserve space at the current sprite ID */
+							grfmsg(4, "ParamSet: GRM: Allocated %d sprites at %d", count, _cur_spriteid);
+							_grm_sprites[GRMSpriteEntry(_cur_grffile->grfid, _nfo_line)] = _cur_spriteid;
+							_cur_spriteid += count;
+						}
+					}
+					/* Ignore GRM result during reservation */
+					src1 = 0;
+				} else if (_cur_stage == GLS_ACTIVATION) {
 					switch (feature) {
 						case 0x00: // Trains
 						case 0x01: // Road Vehicles
@@ -4389,18 +4421,9 @@ static void ParamSet(byte *buf, int len)
 						case 0x08: // General sprites
 							switch (op) {
 								case 0:
-									/* Check if the allocated sprites will fit below the original sprite limit */
-									if (_cur_spriteid + count >= 16384) {
-										grfmsg(0, "ParamSet: GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
-										_cur_grfconfig->status = GCS_DISABLED;
-
-										_skip_sprites = -1;
-										return;
-									}
-
-									/* 'Reserve' space at the current sprite ID */
-									src1 = _cur_spriteid;
-									_cur_spriteid += count;
+									/* Return space reserved during reservation stage */
+									src1 = _grm_sprites[GRMSpriteEntry(_cur_grffile->grfid, _nfo_line)];
+									grfmsg(4, "ParamSet: GRM: Using pre-allocated sprites at %d", src1);
 									break;
 
 								case 1:
@@ -4421,6 +4444,9 @@ static void ParamSet(byte *buf, int len)
 
 						default: grfmsg(1, "ParamSet: GRM: Unsupported feature 0x%X", feature); return;
 					}
+				} else {
+					/* Ignore GRM during initialization */
+					src1 = 0;
 				}
 			}
 		} else {
@@ -5935,6 +5961,7 @@ static void AfterLoadGRFs()
 
 	/* Deallocate temporary loading data */
 	free(_gted);
+	_grm_sprites.clear();
 }
 
 void LoadNewGRF(uint load_index, uint file_index)
@@ -5954,6 +5981,8 @@ void LoadNewGRF(uint load_index, uint file_index)
 		if (c->status != GCS_NOT_FOUND) c->status = GCS_UNKNOWN;
 	}
 
+	_cur_spriteid = load_index;
+
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
@@ -5967,7 +5996,6 @@ void LoadNewGRF(uint load_index, uint file_index)
 		uint slot = file_index;
 
 		_cur_stage = stage;
-		_cur_spriteid = load_index;
 		for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
 			if (c->status == GCS_DISABLED || c->status == GCS_NOT_FOUND) continue;
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
