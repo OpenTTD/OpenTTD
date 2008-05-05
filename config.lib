@@ -934,7 +934,7 @@ make_cflags_and_ldflags() {
 		fi
 
 		if [ $cc_version -ge 30 ]; then
-			CFLAGS="$CFLAGS -W -Wno-unused-parameter"
+			CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
 		fi
 
 		if [ $cc_version -ge 34 ]; then

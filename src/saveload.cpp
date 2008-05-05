@@ -1580,7 +1580,7 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
 		ShowInfo(GetSaveLoadErrorString());
-		fprintf(stderr, GetSaveLoadErrorString());
+		DEBUG(sl, 0, GetSaveLoadErrorString());
 
 		if (threaded) {
 			SetAsyncSaveFinish(SaveFileError);

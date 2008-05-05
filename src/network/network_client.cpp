@@ -82,10 +82,10 @@ void HashCurrentCompanyPassword()
 	if (StrEmpty(_network_player_info[_local_player].password)) return;
 
 	_password_game_seed = _patches.generation_seed;
-	snprintf(_password_server_unique_id, sizeof(_password_server_unique_id), _network_unique_id);
+	ttd_strlcpy(_password_server_unique_id, _network_unique_id, sizeof(_password_server_unique_id));
 
 	const char *new_pw = GenerateCompanyPasswordHash(_network_player_info[_local_player].password);
-	snprintf(_network_player_info[_local_player].password, sizeof(_network_player_info[_local_player].password), new_pw);
+	ttd_strlcpy(_network_player_info[_local_player].password, new_pw, sizeof(_network_player_info[_local_player].password));
 }
 
 
