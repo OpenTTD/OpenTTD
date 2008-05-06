@@ -36,6 +36,7 @@
 #include "road_func.h"
 #include "rail.h"
 #include "sprite.h"
+#include "debug.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1072,12 +1073,16 @@ void SaveToHighScore()
 		for (i = 0; i < LAST_HS_ITEM; i++) { // don't save network highscores
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				/* First character is a command character, so strlen will fail on that */
-				byte length = min(sizeof(hs->company), (hs->company[0] == '\0') ? 0 : (int)strlen(&hs->company[1]) + 1);
+				byte length = min(sizeof(hs->company), StrEmpty(hs->company) ? 0 : (int)strlen(&hs->company[1]) + 1);
 
-				fwrite(&length, sizeof(length), 1, fp); // write away string length
-				fwrite(hs->company, length, 1, fp);
-				fwrite(&hs->score, sizeof(hs->score), 1, fp);
-				fwrite("", 2, 1, fp); // XXX - placeholder for hs->title, not saved anymore; compatibility
+				if (fwrite(&length, sizeof(length), 1, fp)       != 1 || // write away string length
+						fwrite(hs->company, length, 1, fp)           >  1 || // Yes... could be 0 bytes too
+						fwrite(&hs->score, sizeof(hs->score), 1, fp) != 1 ||
+						fwrite("  ", 2, 1, fp)                       != 1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
+					DEBUG(misc, 1, "Could not save highscore.");
+					i = LAST_HS_ITEM;
+					break;
+				}
 			}
 		}
 		fclose(fp);
@@ -1098,11 +1103,15 @@ void LoadFromHighScore()
 		for (i = 0; i < LAST_HS_ITEM; i++) { // don't load network highscores
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				byte length;
-				fread(&length, sizeof(length), 1, fp);
-
-				fread(hs->company, 1, length, fp);
-				fread(&hs->score, sizeof(hs->score), 1, fp);
-				fseek(fp, 2, SEEK_CUR); // XXX - placeholder for hs->title, not saved anymore; compatibility
+				if (fread(&length, sizeof(length), 1, fp)       !=  1 ||
+						fread(hs->company, length, 1, fp)           >   1 || // Yes... could be 0 bytes too
+						fread(&hs->score, sizeof(hs->score), 1, fp) !=  1 ||
+						fseek(fp, 2, SEEK_CUR)                      == -1) { // XXX - placeholder for hs->title, not saved anymore; compatibility
+					DEBUG(misc, 1, "Highscore corrupted");
+					i = LAST_HS_ITEM;
+					break;
+				}
+				*lastof(hs->company) = '\0';
 				hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 			}
 		}
