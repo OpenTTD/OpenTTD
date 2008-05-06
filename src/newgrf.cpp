@@ -118,19 +118,19 @@ static uint32 _grm_engines[256];
 /* Contains the GRF ID of the owner of a cargo if it has been reserved */
 static uint32 _grm_cargos[NUM_CARGO * 2];
 
-struct GRMSpriteEntry {
+struct GRFLocation {
 	uint32 grfid;
 	uint32 nfoline;
 
-	GRMSpriteEntry(uint32 grfid, uint32 nfoline) : grfid(grfid), nfoline(nfoline) { }
+	GRFLocation(uint32 grfid, uint32 nfoline) : grfid(grfid), nfoline(nfoline) { }
 
-	bool operator<(const GRMSpriteEntry &other) const
+	bool operator<(const GRFLocation &other) const
 	{
 		return this->grfid < other.grfid || (this->grfid == other.grfid && this->nfoline < other.nfoline);
 	}
 };
 
-static std::map<GRMSpriteEntry, SpriteID> _grm_sprites;
+static std::map<GRFLocation, SpriteID> _grm_sprites;
 
 /** DEBUG() function dedicated to newGRF debugging messages
  * Function is essentialy the same as DEBUG(grf, severity, ...) with the
@@ -4388,7 +4388,7 @@ static void ParamSet(byte *buf, int len)
 
 							/* Reserve space at the current sprite ID */
 							grfmsg(4, "ParamSet: GRM: Allocated %d sprites at %d", count, _cur_spriteid);
-							_grm_sprites[GRMSpriteEntry(_cur_grffile->grfid, _nfo_line)] = _cur_spriteid;
+							_grm_sprites[GRFLocation(_cur_grffile->grfid, _nfo_line)] = _cur_spriteid;
 							_cur_spriteid += count;
 						}
 					}
@@ -4422,7 +4422,7 @@ static void ParamSet(byte *buf, int len)
 							switch (op) {
 								case 0:
 									/* Return space reserved during reservation stage */
-									src1 = _grm_sprites[GRMSpriteEntry(_cur_grffile->grfid, _nfo_line)];
+									src1 = _grm_sprites[GRFLocation(_cur_grffile->grfid, _nfo_line)];
 									grfmsg(4, "ParamSet: GRM: Using pre-allocated sprites at %d", src1);
 									break;
 
