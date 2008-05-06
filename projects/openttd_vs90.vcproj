@@ -2389,10 +2389,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\track_dir.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\yapf\yapf.h"
 				>
 			</File>

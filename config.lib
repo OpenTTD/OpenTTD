@@ -882,7 +882,7 @@ make_cflags_and_ldflags() {
 
 		# Each debug level reduces the optimalization by a bit
 		if [ $enable_debug -ge 1 ]; then
-			CFLAGS="$CFLAGS -g -D_DEBUG"
+			CFLAGS="$CFLAGS -g -D_DEBUG -D_FORTIFY_SOURCE=2"
 			if [ "$os" = "PSP" ]; then
 				CFLAGS="$CFLAGS -G0"
 			fi

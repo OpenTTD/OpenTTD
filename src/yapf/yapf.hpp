@@ -3,10 +3,7 @@
 #ifndef  YAPF_HPP
 #define  YAPF_HPP
 
-
-
-#include "track_dir.hpp"
-
+#include "../openttd.h"
 #include "../vehicle_base.h"
 #include "../road_map.h"
 #include "../tunnel_map.h"

@@ -547,7 +547,6 @@ network/core/udp.h
 # YAPF
 yapf/follow_track.hpp
 yapf/nodelist.hpp
-yapf/track_dir.hpp
 yapf/yapf.h
 yapf/yapf.hpp
 yapf/yapf_base.hpp
