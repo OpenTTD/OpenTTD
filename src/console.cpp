@@ -107,8 +107,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		case WE_MOUSELOOP:
-			if (HandleCaret(&_iconsole_cmdline))
-				SetWindowDirty(w);
+			if (HandleCaret(&_iconsole_cmdline)) w->SetDirty();
 			break;
 		case WE_DESTROY:
 			_iconsole_mode = ICONSOLE_CLOSED;
@@ -118,11 +117,11 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			switch (e->we.keypress.keycode) {
 				case WKC_UP:
 					IConsoleHistoryNavigate(+1);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_DOWN:
 					IConsoleHistoryNavigate(-1);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_SHIFT | WKC_PAGEUP:
 					if (iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0) {
@@ -130,7 +129,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					} else {
 						iconsole_scroll -= (w->height / ICON_LINE_HEIGHT) - 1;
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_SHIFT | WKC_PAGEDOWN:
 					if (iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
@@ -138,7 +137,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					} else {
 						iconsole_scroll += (w->height / ICON_LINE_HEIGHT) - 1;
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_SHIFT | WKC_UP:
 					if (iconsole_scroll <= 0) {
@@ -146,7 +145,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					} else {
 						--iconsole_scroll;
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_SHIFT | WKC_DOWN:
 					if (iconsole_scroll >= ICON_BUFFER) {
@@ -154,7 +153,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					} else {
 						++iconsole_scroll;
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_BACKQUOTE:
 					IConsoleSwitch();
@@ -174,7 +173,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 				case (WKC_CTRL | 'V'):
 					if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
 						IConsoleResetHistoryPos();
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 				case (WKC_CTRL | 'L'):
@@ -182,18 +181,18 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					break;
 				case (WKC_CTRL | 'U'):
 					DeleteTextBufferAll(&_iconsole_cmdline);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case WKC_BACKSPACE: case WKC_DELETE:
 					if (DeleteTextBufferChar(&_iconsole_cmdline, e->we.keypress.keycode)) {
 						IConsoleResetHistoryPos();
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 				case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
 					if (MoveTextBufferPos(&_iconsole_cmdline, e->we.keypress.keycode)) {
 						IConsoleResetHistoryPos();
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 				default:
@@ -201,7 +200,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 						iconsole_scroll = ICON_BUFFER;
 						InsertTextBufferChar(&_iconsole_cmdline, e->we.keypress.key);
 						IConsoleResetHistoryPos();
-						SetWindowDirty(w);
+						w->SetDirty();
 					} else {
 						e->we.keypress.cont = true;
 					}

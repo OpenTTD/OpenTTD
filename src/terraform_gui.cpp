@@ -310,7 +310,7 @@ void ShowTerraformToolbar(Window *link)
 		w->top = 22;
 		link->left = w->left - link->width;
 
-		SetWindowDirty(link);
+		link->SetDirty();
 	}
 }
 
@@ -609,7 +609,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 					_terraform_size = size;
 
 					SndPlayFx(SND_15_BEEP);
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 				case 15: // gen random land
 					w->HandleButtonClick(15);
@@ -662,7 +662,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseButtons();
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 	}
 }

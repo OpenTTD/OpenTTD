@@ -195,7 +195,7 @@ static void SetStationListsFlag(StationListFlags sl_flag)
 		Window *w = *wz;
 		if (w->window_class == WC_STATION_LIST) {
 			WP(w, plstations_d).flags |= sl_flag;
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 	}
 }
@@ -449,7 +449,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					}
 					w->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 					sl->flags |= SL_REBUILD;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case SLW_FACILALL:
@@ -460,7 +460,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 					facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 					sl->flags |= SL_REBUILD;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case SLW_CARGOALL: {
@@ -476,7 +476,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					_cargo_filter = _cargo_mask;
 					include_empty = true;
 					sl->flags |= SL_REBUILD;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -486,7 +486,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					sl->flags |= SL_RESORT;
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
 					w->LowerWidget(SLW_SORTBY);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case SLW_SORTDROPBTN: // select sorting criteria dropdown menu
@@ -509,7 +509,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					}
 					sl->flags |= SL_REBUILD;
 					w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				default:
@@ -540,7 +540,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 						}
 						sl->flags |= SL_REBUILD;
 						w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 			}
@@ -553,7 +553,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				station_sort.criteria = sl->sort_type;
 				sl->flags |= SL_RESORT;
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_TICK:
@@ -562,13 +562,13 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
 				sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				sl->flags |= SL_REBUILD;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 
 		case WE_TIMEOUT:
 			w->RaiseWidget(SLW_SORTBY);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_RESIZE:
@@ -949,7 +949,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case SVW_RATINGS:
-					SetWindowDirty(w);
+					w->SetDirty();
 
 					if (w->widget[SVW_RATINGS].data == STR_3032_RATINGS) {
 						/* Switch to ratings view */
@@ -963,7 +963,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 						ResizeWindowForWidget(w, SVW_ACCEPTLIST, 0, -100);
 					}
 
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case SVW_RENAME:

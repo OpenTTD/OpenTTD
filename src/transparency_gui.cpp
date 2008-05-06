@@ -66,7 +66,7 @@ static void TransparencyToolbWndProc(Window *w, WindowEvent *e)
 				if (_ctrl_pressed) {
 					/* toggle the bit of the transparencies lock variable */
 					ToggleTransparencyLock((TransparencyOption)(e->we.click.widget - TTW_WIDGET_SIGNS));
-					SetWindowDirty(w);
+					w->SetDirty();
 				} else {
 					/* toggle the bit of the transparencies variable and play a sound */
 					ToggleTransparency((TransparencyOption)(e->we.click.widget - TTW_WIDGET_SIGNS));

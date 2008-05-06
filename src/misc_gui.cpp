@@ -291,7 +291,7 @@ static void AboutWindowProc(Window *w, WindowEvent *e)
 			if (--WP(w, scroller_d).counter == 0) {
 				WP(w, scroller_d).counter = 5;
 				WP(w, scroller_d).height--;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 	}
@@ -1547,19 +1547,19 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
 						SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
 					_savegame_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case 3: // Sort save names by date
 					_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
 						SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
 					_savegame_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case 6: // OpenTTD 'button', jumps to OpenTTD directory
 					FiosBrowseTo(&o_dir);
-					SetWindowDirty(w);
+					w->SetDirty();
 					BuildFileList();
 					break;
 
@@ -1597,7 +1597,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 						}
 					} else {
 						/* Changed directory, need repaint. */
-						SetWindowDirty(w);
+						w->SetDirty();
 						BuildFileList();
 					}
 					break;
@@ -1645,7 +1645,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 				}
 
 				UpdateTextBufferSize(&WP(w, querystr_d).text);
-				SetWindowDirty(w);
+				w->SetDirty();
 			} else if (w->IsWidgetLowered(12)) { // Save button clicked
 				_switch_mode = SM_SAVE;
 				FiosMakeSavegameName(_file_to_saveload.name, WP(w, querystr_d).text.buf, sizeof(_file_to_saveload.name));

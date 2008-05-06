@@ -799,7 +799,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 						/* This was a click on an empty part of the orders window, so
 						* deselect the currently selected order. */
 						WP(w, order_d).sel = -1;
-						SetWindowDirty(w);
+						w->SetDirty();
 						return;
 					}
 
@@ -831,7 +831,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 						}
 					}
 
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case ORDER_WIDGET_SKIP:

@@ -372,7 +372,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					_patches_newgame.generation_seed = InteractiveRandom();
 					snprintf(_genseed_buffer, lengthof(_genseed_buffer), "%u", _patches_newgame.generation_seed);
 					UpdateTextBufferSize(&_genseed_query.text);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case GLAND_RANDOM_EDITBOX: // edit box for random seed
@@ -408,7 +408,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					/* Don't allow too fast scrolling */
 					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 						w->HandleButtonClick(e->we.click.widget);
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - GLAND_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
 					}
@@ -426,7 +426,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					/* Don't allow too fast scrolling */
 					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 						w->HandleButtonClick(e->we.click.widget);
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						_patches_newgame.snow_line_height = Clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
 					}
@@ -520,7 +520,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					DoCommandP(0, 13, _opt_newgame.diff.quantity_sea_lakes, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 					break;
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_ON_EDIT_TEXT:
@@ -539,7 +539,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 						break;
 				}
 
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 	}
@@ -697,7 +697,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 					/* Don't allow too fast scrolling */
 					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 						w->HandleButtonClick(e->we.click.widget);
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
 					}
@@ -715,7 +715,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 					/* Don't allow too fast scrolling */
 					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 						w->HandleButtonClick(e->we.click.widget);
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						_patches_newgame.se_flat_world_height = Clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
 					}
@@ -735,7 +735,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 				case CSCEN_MAPSIZE_X_PULLDOWN: _patches_newgame.map_x = e->we.dropdown.index; break;
 				case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = e->we.dropdown.index; break;
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_ON_EDIT_TEXT:
@@ -754,7 +754,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 						break;
 				}
 
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 	}
@@ -865,7 +865,7 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 			SetDParam(1, _tp.total);
 			DrawStringCentered(90, 58, STR_GENERATION_PROGRESS, TC_FROMSTRING);
 
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 	}
 }

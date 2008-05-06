@@ -1211,9 +1211,7 @@ static int32 RealisticAccelerationChanged(int32 p1)
 
 static int32 DragSignalsDensityChanged(int32)
 {
-	const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
-
-	if (w != NULL) SetWindowDirty(w);
+	SetWindowDirty(FindWindowById(WC_BUILD_SIGNAL, 0));
 
 	return 0;
 }

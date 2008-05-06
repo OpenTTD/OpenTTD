@@ -103,7 +103,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighl
 	if (w->IsWidgetDisabled(widget)) return false;
 
 	SndPlayFx(SND_15_BEEP);
-	SetWindowDirty(w);
+	w->SetDirty();
 
 	if (w->IsWidgetLowered(widget)) {
 		ResetObjectToPlace();
@@ -187,7 +187,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 		vp->virtual_left = WP(w, vp_d).scrollpos_x;
 		vp->virtual_top = WP(w, vp_d).scrollpos_y;
 	}
-	SetWindowDirty(w);
+	w->SetDirty();
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
 	SendWindowMessageClass(w->window_class, how, w->window_number, 0);
 	return true;

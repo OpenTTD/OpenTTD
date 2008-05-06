@@ -248,7 +248,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 						ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
 					}
 					w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
@@ -296,7 +296,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 				case GAMEOPT_AUTOSAVE_BTN: /* Autosave options */
 					_opt.autosave = _opt_newgame.autosave = e->we.dropdown.index;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case GAMEOPT_LANG_BTN: /* Change interface language */
@@ -309,12 +309,12 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 
 				case GAMEOPT_RESOLUTION_BTN: /* Change resolution */
 					if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0], _resolutions[e->we.dropdown.index][1]))
-						SetWindowDirty(w);
+						w->SetDirty();
 					break;
 
 				case GAMEOPT_SCREENSHOT_BTN: /* Change screenshot format */
 					SetScreenshotFormat(e->we.dropdown.index);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 			}
 			break;
@@ -615,7 +615,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 					w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 					SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
 					w->LowerWidget(GDW_LVL_CUSTOM);
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case GDW_LVL_EASY:
@@ -626,7 +626,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 					w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
 					SetDifficultyLevel(e->we.click.widget - GDW_LVL_EASY, &_opt_mod_temp);
 					w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case GDW_HIGHSCORE: // Highscore Table
@@ -659,7 +659,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			if (diffic_d->timeout != 0) {
 				diffic_d->timeout--;
 				if (diffic_d->timeout == 0) diffic_d->clicked_button = NO_SETTINGS_BUTTON;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 	}
@@ -1027,7 +1027,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 						if (value != oldvalue) {
 							SetPatchValue(page->entries[btn].index, patches_ptr, value);
-							SetWindowDirty(w);
+							w->SetDirty();
 						}
 					} else {
 						/* only open editbox for types that its sensible for */
@@ -1048,14 +1048,14 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 					WP(w, def_d).data_1 = e->we.click.widget - PATCHSEL_INTERFACE;
 					w->LowerWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
 					DeleteWindowById(WC_QUERY_STRING, 0);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 			}
 			break;
 
 		case WE_TIMEOUT:
 			WP(w, def_d).data_2 = 0;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_ON_EDIT_TEXT:
@@ -1068,7 +1068,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
 				SetPatchValue(pe->index, patches_ptr, value);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 
@@ -1267,7 +1267,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			}
 
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
-			SetWindowDirty(w);
+			w->SetDirty();
 		} break;
 
 		case WE_ON_EDIT_TEXT: {
@@ -1303,7 +1303,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 		case WE_TIMEOUT:
 			WP(w, def_d).data_1 = 0;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_DESTROY:

@@ -304,7 +304,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 			ToggleBit(_legend_excluded_players, e->we.click.widget - 3);
 			w->ToggleWidgetLoweredState(e->we.click.widget);
-			SetWindowDirty(w);
+			w->SetDirty();
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);
 			InvalidateWindow(WC_DELIVERED_CARGO, 0);
@@ -783,7 +783,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 			if (e->we.click.widget >= 3) {
 				ToggleBit(_legend_excluded_cargo, e->we.click.widget - 3);
 				w->ToggleWidgetLoweredState(e->we.click.widget);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 	}
@@ -840,7 +840,7 @@ void ShowCargoPaymentRates()
 		if (!HasBit(_legend_excluded_cargo, i)) w->LowerWidget(i + 3);
 	}
 
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 /************************/
@@ -955,7 +955,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					/* Raise and disable the widget for the previous selection. */
 					w->RaiseWidget(_performance_rating_detail_player + 13);
 					w->DisableWidget(_performance_rating_detail_player + 13);
-					SetWindowDirty(w);
+					w->SetDirty();
 
 					_performance_rating_detail_player = INVALID_PLAYER;
 				}
@@ -964,7 +964,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					if (GetPlayer(i)->is_active) {
 						/* Lower the widget corresponding to this player. */
 						w->LowerWidget(i + 13);
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						_performance_rating_detail_player = i;
 						break;
@@ -984,7 +984,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 						w->DisableWidget(i + 13);
 
 						/* We need a repaint */
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					continue;
 				}
@@ -994,7 +994,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					/* New player! Yippie :p */
 					w->EnableWidget(i + 13);
 					/* We need a repaint */
-					SetWindowDirty(w);
+					w->SetDirty();
 				}
 
 				x = (i == _performance_rating_detail_player) ? 1 : 0;
@@ -1077,7 +1077,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					w->RaiseWidget(_performance_rating_detail_player + 13);
 					_performance_rating_detail_player = (PlayerID)(e->we.click.widget - 13);
 					w->LowerWidget(_performance_rating_detail_player + 13);
-					SetWindowDirty(w);
+					w->SetDirty();
 				}
 			}
 			break;
@@ -1099,7 +1099,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			w->custom[1] = 5;
 
 			if (_performance_rating_detail_player != INVALID_PLAYER) w->LowerWidget(_performance_rating_detail_player + 13);
-			SetWindowDirty(w);
+			w->SetDirty();
 
 			break;
 		}
@@ -1118,7 +1118,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 						/* Skip if player is not active */
 						if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 				}
 			}
 

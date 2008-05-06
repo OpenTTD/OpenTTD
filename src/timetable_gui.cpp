@@ -245,7 +245,7 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 					break;
 			}
 
-			SetWindowDirty(w);
+			w->SetDirty();
 		} break;
 
 		case WE_ON_EDIT_TEXT: {

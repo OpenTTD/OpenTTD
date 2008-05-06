@@ -205,9 +205,9 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
 			text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
 			if (text_end != w->widget[BAW_BOTTOMPANEL].bottom) {
-				SetWindowDirty(w);
+				w->SetDirty();
 				ResizeWindowForWidget(w, BAW_BOTTOMPANEL, 0, text_end - w->widget[BAW_BOTTOMPANEL].bottom);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 		}
@@ -221,7 +221,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 					_selected_airport_type = e->we.click.widget - BAW_SMALL_AIRPORT;
 					w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 					SndPlayFx(SND_15_BEEP);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case BAW_BTN_DONTHILIGHT: case BAW_BTN_DOHILIGHT:
@@ -229,7 +229,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 					w->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
 					w->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
 					SndPlayFx(SND_15_BEEP);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 			}
 		} break;

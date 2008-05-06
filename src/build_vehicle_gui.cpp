@@ -1011,9 +1011,9 @@ static void DrawBuildVehicleWindow(Window *w)
 		int text_end = DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
 
 		if (text_end > wi->bottom) {
-			SetWindowDirty(w);
+			w->SetDirty();
 			ResizeWindowForWidget(w, BUILD_VEHICLE_WIDGET_PANEL, 0, text_end - wi->bottom);
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 	}
 
@@ -1029,14 +1029,14 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 			bv->descending_sort_order ^= true;
 			_last_sort_order[bv->vehicle_type] = bv->descending_sort_order;
 			bv->regenerate_list = true;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case BUILD_VEHICLE_WIDGET_LIST: {
 			uint i = (e->we.click.pt.y - w->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(bv->vehicle_type) + w->vscroll.pos;
 			uint num_items = EngList_Count(&bv->eng_list);
 			bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 		}
 
@@ -1108,7 +1108,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_INVALIDATE_DATA:
 			bv->regenerate_list = true;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_DESTROY:
@@ -1157,7 +1157,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 				_last_sort_criteria[bv->vehicle_type] = bv->sort_criteria;
 				bv->regenerate_list = true;
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_RESIZE:

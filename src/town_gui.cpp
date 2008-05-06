@@ -239,7 +239,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
 					if (y >= 0) {
 						WP(w, def_d).data_1 = y;
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					/* Fall through to clicking in case we are double-clicked */
 					if (e->event != WE_DOUBLE_CLICK || y < 0) break;
@@ -252,7 +252,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_4:
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 	}
 }
@@ -523,13 +523,13 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 				case TDW_SORTNAME: /* Sort by Name ascending/descending */
 					_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
 					_town_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case TDW_SORTPOPULATION: /* Sort by Population ascending/descending */
 					_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
 					_town_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case TDW_CENTERTOWN: { /* Click on Town Matrix */
@@ -555,7 +555,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_4:
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_RESIZE:
@@ -671,14 +671,14 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 					w->RaiseWidget(_scengen_town_size + TSEW_SMALLTOWN);
 					_scengen_town_size = e->we.click.widget - TSEW_SMALLTOWN;
 					w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 			} break;
 
 		case WE_TIMEOUT:
 			w->RaiseWidget(TSEW_RANDOMTOWN);
 			w->RaiseWidget(TSEW_MANYRANDOMTOWNS);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_PLACE_OBJ:
@@ -688,7 +688,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseButtons();
 			w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 	}
 }

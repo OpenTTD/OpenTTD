@@ -166,9 +166,9 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 			int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 74 + 10 * EXPENSES_END);
 			if (w->height != new_height) {
 				/* Make window dirty before and after resizing */
-				SetWindowDirty(w);
+				w->SetDirty();
 				w->height = new_height;
-				SetWindowDirty(w);
+				w->SetDirty();
 
 				w->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
 				w->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
@@ -488,7 +488,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					} else {
 						WP(w, livery_d).sel = 1 << j;
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 			}
@@ -892,7 +892,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 					*pf = _player_face;
 					ScaleAllPlayerFaceBits(*pf);
 					ShowErrorMessage(INVALID_STRING_ID, STR_FACE_LOAD_DONE, 0, 0);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				/* 'Player face number' button, view and/or set player face number */
@@ -912,13 +912,13 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 				case PFW_WIDGET_FEMALE:
 					SetPlayerFaceBits(*pf, PFV_GENDER, ge, e->we.click.widget - PFW_WIDGET_MALE);
 					ScaleAllPlayerFaceBits(*pf);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				/* Randomize face button */
 				case PFW_WIDGET_RANDOM_NEW_FACE:
 					RandomPlayerFaceBits(*pf, ge, WP(w, facesel_d).advanced);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				/* Toggle ethnicity (european/african) button */
@@ -926,7 +926,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 				case PFW_WIDGET_ETHNICITY_AFR:
 					SetPlayerFaceBits(*pf, PFV_ETHNICITY, ge, e->we.click.widget - PFW_WIDGET_ETHNICITY_EUR);
 					ScaleAllPlayerFaceBits(*pf);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				default:
@@ -965,7 +965,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 							IncreasePlayerFaceBits(*pf, pfv, ge, (((e->we.click.widget - PFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
 						}
 
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 			}
@@ -977,7 +977,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 				*pf = strtoul(e->we.edittext.str, NULL, 10);
 				ScaleAllPlayerFaceBits(*pf);
 				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_SET, 0, 0);
-				SetWindowDirty(w);
+				w->SetDirty();
 			} else {
 				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_ERR, 0, 0);
 			}
@@ -1304,7 +1304,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 		case WE_MOUSELOOP:
 			/* redraw the window every now and then */
-			if ((++w->vscroll.pos & 0x1F) == 0) SetWindowDirty(w);
+			if ((++w->vscroll.pos & 0x1F) == 0) w->SetDirty();
 			break;
 
 		case WE_PLACE_OBJ:

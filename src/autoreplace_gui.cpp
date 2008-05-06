@@ -368,9 +368,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					int text_end = DrawVehiclePurchaseInfo(wi->left + 2, wi->top + 1, wi->right - wi->left - 2, WP(w, replaceveh_d).sel_engine[i]);
 
 					if (text_end > wi->bottom) {
-						SetWindowDirty(w);
+						w->SetDirty();
 						ResizeWindowForWidget(w, i == 0 ? RVW_WIDGET_LEFT_DETAILS : RVW_WIDGET_RIGHT_DETAILS, 0, text_end - wi->bottom);
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 				}
 			}
@@ -383,7 +383,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
 					WP(w, replaceveh_d).update_left = true;
 					WP(w, replaceveh_d).init_lists  = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: /* Railtype selection dropdown menu */
@@ -422,7 +422,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 							WP(w, replaceveh_d).update_right = true;
 							WP(w, replaceveh_d).init_lists   = true;
 						}
-						SetWindowDirty(w);
+						w->SetDirty();
 						}
 					break;
 					}
@@ -441,7 +441,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			WP(w, replaceveh_d).update_left  = true;
 			WP(w, replaceveh_d).update_right = true;
 			WP(w, replaceveh_d).init_lists   = true;
-			SetWindowDirty(w);
+			w->SetDirty();
 		} break;
 
 		case WE_RESIZE:
@@ -472,7 +472,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		case WE_INVALIDATE_DATA:
 			if (_rebuild_left_list) WP(w, replaceveh_d).update_left = true;
 			if (_rebuild_right_list) WP(w, replaceveh_d).update_right = true;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_DESTROY:

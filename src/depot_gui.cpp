@@ -440,7 +440,7 @@ static void DepotClick(Window *w, int x, int y)
 				int image = v->GetImage(DIR_W);
 
 				WP(w, depot_d).sel = v->index;
-				SetWindowDirty(w);
+				w->SetDirty();
 				SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, w);
 				_cursor.vehchain = _ctrl_pressed;
 			}
@@ -903,7 +903,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					VehicleID sel = WP(w, depot_d).sel;
 
 					WP(w, depot_d).sel = INVALID_VEHICLE;
-					SetWindowDirty(w);
+					w->SetDirty();
 
 					if (WP(w, depot_d).type == VEH_TRAIN) {
 						GetDepotVehiclePtData gdvp;
@@ -940,7 +940,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 						v = GetVehicle(WP(w, depot_d).sel);
 						WP(w, depot_d).sel = INVALID_VEHICLE;
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						sell_cmd = (v->type == VEH_TRAIN && (e->we.click.widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
 
@@ -964,7 +964,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					break;
 				default:
 					WP(w, depot_d).sel = INVALID_VEHICLE;
-					SetWindowDirty(w);
+					w->SetDirty();
 			}
 			_cursor.vehchain = false;
 			break;

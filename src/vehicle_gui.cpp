@@ -119,7 +119,7 @@ static void SetVehicleListsFlag(SortListFlags sl_flag)
 			case WC_SHIPS_LIST:
 			case WC_AIRCRAFT_LIST:
 				WP(w, vehiclelist_d).l.flags |= sl_flag;
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 
 			default: break;
@@ -381,7 +381,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					int y = e->we.click.pt.y - w->widget[3].top;
 					if (y >= 0) {
 						WP(w, refit_d).sel = (y / (int)w->resize.step_height) + w->vscroll.pos;
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 				} break;
 				case 6: // refit button
@@ -741,30 +741,30 @@ void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 	if (w != NULL) {
 		w->window_number = to_index;
 		WP(w, vp_d).follow_vehicle = to_index;
-		SetWindowDirty(w);
+		w->SetDirty();
 
 		w = FindWindowById(WC_VEHICLE_ORDERS, from_index);
 		if (w != NULL) {
 			w->window_number = to_index;
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 
 		w = FindWindowById(WC_VEHICLE_REFIT, from_index);
 		if (w != NULL) {
 			w->window_number = to_index;
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 
 		w = FindWindowById(WC_VEHICLE_DETAILS, from_index);
 		if (w != NULL) {
 			w->window_number = to_index;
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 
 		w = FindWindowById(WC_VEHICLE_TIMETABLE, from_index);
 		if (w != NULL) {
 			w->window_number = to_index;
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 	}
 }
@@ -1082,7 +1082,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					vl->l.flags |= VL_RESORT;
 
 					vl->_sorting->order = !!(vl->l.flags & VL_DESC);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
 					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, (vl->vehicle_type == VEH_TRAIN || vl->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
@@ -1169,7 +1169,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					break;
 				default: NOT_REACHED();
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_DESTROY:
@@ -1185,7 +1185,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 				DEBUG(misc, 3, "Periodic resort %d list player %d at station %d", vl->vehicle_type, owner, station);
 				vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				vl->l.flags |= VL_RESORT;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 
@@ -1634,7 +1634,7 @@ static void VehicleDetailsWndProc(Window *w, WindowEvent *e)
 						WIDGET_LIST_END);
 
 					WP(w, vehicledetails_d).tab = e->we.click.widget - VLD_WIDGET_DETAILS_CARGO_CARRIED;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 			}
 		} break;
@@ -2168,7 +2168,7 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 					w->SetWidgetHiddenState( VVW_WIDGET_REFIT_VEH, !veh_stopped); // refit
 					w->SetWidgetHiddenState(VVW_WIDGET_TURN_AROUND, veh_stopped);  // force turn around
 				}
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 		} break;
 	}

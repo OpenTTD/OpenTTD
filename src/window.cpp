@@ -252,7 +252,7 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 			int pos = Clamp(sb->pos + wheel, 0, sb->count - sb->cap);
 			if (pos != sb->pos) {
 				sb->pos = pos;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 		}
 	}
@@ -564,7 +564,7 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 	if (w != NULL) {
 		w->flags4 |= WF_WHITE_BORDER_MASK;
 		BringWindowToFront(w);
-		SetWindowDirty(w);
+		w->SetDirty();
 	}
 
 	return w;
@@ -602,7 +602,7 @@ static void BringWindowToFront(const Window *w)
 	memmove(wz, wz + 1, (byte*)vz - (byte*)wz);
 	*vz = tempz;
 
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 /** We have run out of windows, so find a suitable candidate for replacement.
@@ -795,7 +795,7 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 	w->left = nx;
 	w->top = ny;
 
-	SetWindowDirty(w);
+	w->SetDirty();
 
 	return w;
 }
@@ -1117,7 +1117,7 @@ static void DecreaseWindowCounters()
 		/* Unclick scrollbar buttons if they are pressed. */
 		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
 			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 		CallWindowEventNP(w, WE_MOUSELOOP);
 	}
@@ -1259,7 +1259,7 @@ void ResizeWindow(Window *w, int x, int y)
 
 	if (x == 0 && y == 0) return;
 
-	SetWindowDirty(w);
+	w->SetDirty();
 	for (wi = w->widget; wi->type != WWT_LAST; wi++) {
 		/* Isolate the resizing flags */
 		byte rsizeflag = GB(wi->display_flags, 0, 4);
@@ -1292,7 +1292,7 @@ void ResizeWindow(Window *w, int x, int y)
 	if (resize_width)  w->width  += x;
 	if (resize_height) w->height += y;
 
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 static bool _dragging_window;
@@ -1321,7 +1321,7 @@ static bool HandleWindowDragging()
 				break;
 			}
 
-			SetWindowDirty(w);
+			w->SetDirty();
 
 			x = _cursor.pos.x + _drag_delta.x;
 			y = _cursor.pos.y + _drag_delta.y;
@@ -1442,7 +1442,7 @@ static bool HandleWindowDragging()
 			w->left = nx;
 			w->top  = ny;
 
-			SetWindowDirty(w);
+			w->SetDirty();
 			return false;
 		} else if (w->flags4 & WF_SIZING) {
 			WindowEvent e;
@@ -1451,7 +1451,7 @@ static bool HandleWindowDragging()
 			/* Stop the sizing if the left mouse button was released */
 			if (!_left_button_down) {
 				w->flags4 &= ~WF_SIZING;
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 			}
 
@@ -1547,7 +1547,7 @@ static bool HandleScrollbarScrolling()
 			/* Abort if no button is clicked any more. */
 			if (!_left_button_down) {
 				w->flags4 &= ~WF_SCROLL_MIDDLE;
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 			}
 
@@ -1566,7 +1566,7 @@ static bool HandleScrollbarScrolling()
 			pos = min(max(0, i + _scrollbar_start_pos) * sb->count / _scrollbar_size, max(0, sb->count - sb->cap));
 			if (pos != sb->pos) {
 				sb->pos = pos;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			return false;
 		}
@@ -1652,7 +1652,7 @@ static bool MaybeBringWindowToFront(const Window *w)
 		/* A modal child will prevent the activation of the parent window */
 		if (u->parent == w && (u->desc_flags & WDF_MODAL)) {
 			u->flags4 |= WF_WHITE_BORDER_MASK;
-			SetWindowDirty(u);
+			u->SetDirty();
 			return false;
 		}
 
@@ -2059,7 +2059,7 @@ void UpdateWindows()
 		if (w->flags4 & WF_WHITE_BORDER_MASK) {
 			w->flags4 -= WF_WHITE_BORDER_ONE;
 
-			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) SetWindowDirty(w);
+			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) w->SetDirty();
 		}
 	}
 
@@ -2105,7 +2105,7 @@ void InvalidateWindow(WindowClass cls, WindowNumber number)
 
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
-		if (w->window_class == cls && w->window_number == number) SetWindowDirty(w);
+		if (w->window_class == cls && w->window_number == number) w->SetDirty();
 	}
 }
 
@@ -2136,7 +2136,7 @@ void InvalidateWindowClasses(WindowClass cls)
 	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
-		if ((*wz)->window_class == cls) SetWindowDirty(*wz);
+		if ((*wz)->window_class == cls) (*wz)->SetDirty();
 	}
 }
 
@@ -2147,7 +2147,7 @@ void InvalidateWindowClasses(WindowClass cls)
 void InvalidateThisWindowData(Window *w)
 {
 	CallWindowEventNP(w, WE_INVALIDATE_DATA);
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 /**

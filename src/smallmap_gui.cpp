@@ -785,7 +785,7 @@ void SmallMapCenterOnCurrentPos(Window *w)
 	y  = ((vp->virtual_height - (w->widget[SM_WIDGET_MAP].bottom - w->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
 	WP(w, smallmap_d).scroll_x = (y - x) & ~0xF;
 	WP(w, smallmap_d).scroll_y = (x + y) & ~0xF;
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 enum {
@@ -879,7 +879,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					WP(w2, vp_d).dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
 					WP(w2, vp_d).dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case SM_WIDGET_CONTOUR:    // Show land contours
@@ -892,14 +892,14 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					_smallmap_type = e->we.click.widget - SM_WIDGET_CONTOUR;
 					w->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
 
-					SetWindowDirty(w);
+					w->SetDirty();
 					SndPlayFx(SND_15_BEEP);
 					break;
 
 				case SM_WIDGET_CENTERMAP: // Center the smallmap again
 					SmallMapCenterOnCurrentPos(w);
 
-					SetWindowDirty(w);
+					w->SetDirty();
 					SndPlayFx(SND_15_BEEP);
 					break;
 
@@ -907,7 +907,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					w->ToggleWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME);
 					_smallmap_show_towns = w->IsWidgetLowered(SM_WIDGET_TOGGLETOWNNAME);
 
-					SetWindowDirty(w);
+					w->SetDirty();
 					SndPlayFx(SND_15_BEEP);
 					break;
 
@@ -939,7 +939,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 						/* Raise the two buttons "all", as we have done a specific choice */
 						w->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
 						w->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 
@@ -950,7 +950,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					/* toggle appeareance indicating the choice */
 					w->LowerWidget(SM_WIDGET_ENABLEINDUSTRIES);
 					w->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case SM_WIDGET_DISABLEINDUSTRIES: // disable all industries
@@ -960,7 +960,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					/* toggle appeareance indicating the choice */
 					w->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
 					w->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 			break;
@@ -976,7 +976,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 		case WE_MOUSELOOP:
 			/* update the window every now and then */
-			if ((++w->vscroll.pos & 0x1F) == 0) SetWindowDirty(w);
+			if ((++w->vscroll.pos & 0x1F) == 0) w->SetDirty();
 			break;
 
 		case WE_SCROLL: {
@@ -1037,7 +1037,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			WP(w, smallmap_d).scroll_y = y;
 			WP(w, smallmap_d).subscroll = sub;
 
-			SetWindowDirty(w);
+			w->SetDirty();
 		} break;
 	}
 }

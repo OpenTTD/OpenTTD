@@ -520,7 +520,7 @@ static void ToolbarScenDateBackward(Window *w)
 	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		w->HandleButtonClick(6);
-		SetWindowDirty(w);
+		w->SetDirty();
 
 		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year - 1, MIN_YEAR, MAX_YEAR);
 		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
@@ -533,7 +533,7 @@ static void ToolbarScenDateForward(Window *w)
 	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		w->HandleButtonClick(7);
-		SetWindowDirty(w);
+		w->SetDirty();
 
 		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + 1, MIN_YEAR, MAX_YEAR);
 		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
@@ -721,7 +721,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseWidget(25);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_MOUSELOOP:
@@ -927,7 +927,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseWidget(25);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_RESIZE: {
@@ -999,12 +999,12 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		case WE_MOUSELOOP:
 			if (w->IsWidgetLowered(0) != !!_pause_game) {
 				w->ToggleWidgetLoweredState(0);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 
 			if (w->IsWidgetLowered(1) != !!_fast_forward) {
 				w->ToggleWidgetLoweredState(1);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 
@@ -1128,7 +1128,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		case WE_DESTROY: {
 				Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
 				v->RaiseWidget(WP(w, menu_d).main_button);
-				SetWindowDirty(v);
+				w->SetDirty();
 				return;
 			}
 
@@ -1157,7 +1157,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 			if (index == -1 || index == WP(w, menu_d).sel_index) return;
 
 			WP(w, menu_d).sel_index = index;
-			SetWindowDirty(w);
+			w->SetDirty();
 			return;
 		}
 	}
@@ -1269,12 +1269,12 @@ static void UpdatePlayerMenuHeight(Window *w)
 
 	if (WP(w, menu_d).item_count != num) {
 		WP(w, menu_d).item_count = num;
-		SetWindowDirty(w);
+		w->SetDirty();
 		num = num * 10 + 2;
 		w->height = num;
 		w->widget[0].bottom = w->widget[0].top + num - 1;
 		w->top = GetToolbarDropdownPos(0, w->width, w->height).y;
-		SetWindowDirty(w);
+		w->SetDirty();
 	}
 }
 
@@ -1325,7 +1325,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		case WE_DESTROY: {
 			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
 			v->RaiseWidget(WP(w, menu_d).main_button);
-			SetWindowDirty(v);
+			w->SetDirty();
 			return;
 		}
 
@@ -1371,7 +1371,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 			if (index == -1 || index == WP(w, menu_d).sel_index) return;
 
 			WP(w, menu_d).sel_index = index;
-			SetWindowDirty(w);
+			w->SetDirty();
 			return;
 		}
 	}

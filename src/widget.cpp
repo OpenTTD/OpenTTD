@@ -123,7 +123,7 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
 		}
 	}
 
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 /** Returns the index for the widget located at the given position

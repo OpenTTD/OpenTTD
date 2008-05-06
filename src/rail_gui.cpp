@@ -940,9 +940,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		int text_end = DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
 		if (text_end != w->widget[BRSW_BACKGROUND].bottom) {
-			SetWindowDirty(w);
+			w->SetDirty();
 			ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 
 		if (newstations) {
@@ -974,7 +974,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			_railstation.orientation = e->we.click.widget - BRSW_PLATFORM_DIR_X;
 			w->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case BRSW_PLATFORM_NUM_1:
@@ -1005,7 +1005,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 		}
 
@@ -1037,7 +1037,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 		}
 
@@ -1069,7 +1069,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetLoweredState(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN, !_railstation.dragdrop);
 			w->SetWidgetLoweredState(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN, !_railstation.dragdrop);
 			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->SetDirty();
 		} break;
 
 		case BRSW_HIGHLIGHT_OFF:
@@ -1078,7 +1078,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
 			w->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case BRSW_NEWST_DROPDOWN:
@@ -1104,7 +1104,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			CheckSelectedSize(w, statspec);
 
 			SndPlayFx(SND_15_BEEP);
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 		}
 		}
@@ -1123,7 +1123,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		}
 
 		SndPlayFx(SND_15_BEEP);
-		SetWindowDirty(w);
+		w->SetDirty();
 		break;
 
 	case WE_MOUSELOOP:
@@ -1332,23 +1332,21 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 				case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
 					if (_patches.drag_signals_density > 1) {
 						_patches.drag_signals_density--;
-						const Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
-						if (w != NULL) SetWindowDirty(w);
+						SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
 					}
 					break;
 
 				case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
 					if (_patches.drag_signals_density < 20) {
 						_patches.drag_signals_density++;
-						const Window *w = FindWindowById(WC_GAME_OPTIONS, 0);
-						if (w != NULL) SetWindowDirty(w);
+						SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
 					}
 					break;
 
 				default: break;
 			}
 
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_MOUSELOOP:
@@ -1437,7 +1435,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 				_build_depot_direction = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
 				w->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
 				SndPlayFx(SND_15_BEEP);
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 		}
 		break;
@@ -1534,7 +1532,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 
 				_cur_waypoint_type = type;
 				SndPlayFx(SND_15_BEEP);
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 			}
 		}
@@ -1600,7 +1598,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 		w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
 		if (w != NULL) {
 			SetupRailToolbar(_cur_railtype, w);
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 	}
 	MarkWholeScreenDirty();
@@ -1651,7 +1649,7 @@ static void SetDefaultRailGui()
 	Window *w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL);
 	if (w != NULL) {
 		SetupRailToolbar(_cur_railtype, w);
-		SetWindowDirty(w);
+		w->SetDirty();
 	}
 }
 
@@ -1668,7 +1666,7 @@ int32 ResetSignalVariant(int32 = 0)
 	if (new_variant != _cur_signal_variant) {
 		Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
 		if (w != NULL) {
-			SetWindowDirty(w);
+			w->SetDirty();
 			w->RaiseWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
 		}
 		_cur_signal_variant = new_variant;

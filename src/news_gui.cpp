@@ -345,7 +345,7 @@ void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsTyp
 
 	Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
 	if (w == NULL) return;
-	SetWindowDirty(w);
+	w->SetDirty();
 	w->vscroll.count = _total_news;
 }
 
@@ -520,7 +520,7 @@ static void MoveToNextItem()
 
 				if (w != NULL) {
 					WP(w, def_d).data_2 = 91;
-					SetWindowDirty(w);
+					w->SetDirty();
 				}
 				break;
 			}
@@ -721,7 +721,7 @@ void ShowMessageHistory()
 	w->resize.height = w->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
 	w->resize.step_width = 1;
 	w->resize.width = 200; // can't make window any smaller than 200 pixel
-	SetWindowDirty(w);
+	w->SetDirty();
 }
 
 
@@ -809,7 +809,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 
 						SetMessageButtonStates(w, val, element);
 						_news_type_data[element].display = (NewsDisplay)val;
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 				}
@@ -823,7 +823,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 				SetMessageButtonStates(w, e->we.dropdown.index, i);
 				_news_type_data[i].display = (NewsDisplay)e->we.dropdown.index;
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 	}
 }
@@ -990,7 +990,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 
 			Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
 			if (w != NULL) {
-				SetWindowDirty(w);
+				w->SetDirty();
 				w->vscroll.count = _total_news;
 			}
 		}

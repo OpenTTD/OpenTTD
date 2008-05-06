@@ -256,7 +256,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 				if (p[i] == 0) {
 					p[i] = y + 1;
 					p[i + 1] = 0;
-					SetWindowDirty(w);
+					w->SetDirty();
 					SelectSongToPlay();
 					break;
 				}
@@ -276,13 +276,13 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 				p[i] = p[i + 1];
 				}
 
-			SetWindowDirty(w);
+			w->SetDirty();
 			SelectSongToPlay();
 		} break;
 
 		case 11: // clear
 			_playlists[msf.playlist][0] = 0;
-			SetWindowDirty(w);
+			w->SetDirty();
 			StopMusic();
 			SelectSongToPlay();
 			break;
@@ -295,7 +295,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 
 		case 5: case 6: case 7: case 8: case 9: case 10: /* set playlist */
 			msf.playlist = e->we.click.widget - 5;
-			SetWindowDirty(w);
+			w->SetDirty();
 			InvalidateWindow(WC_MUSIC_WINDOW, 0);
 			StopMusic();
 			SelectSongToPlay();
@@ -440,7 +440,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 				*vol = new_vol;
 				if (vol == &msf.music_vol)
 					MusicVolumeChanged(new_vol);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 
 			_left_button_clicked = false;
@@ -455,7 +455,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 12: case 13: case 14: case 15: case 16: case 17: // playlist
 			msf.playlist = e->we.click.widget - 12;
-			SetWindowDirty(w);
+			w->SetDirty();
 			InvalidateWindow(WC_MUSIC_TRACK_SELECTION, 0);
 			StopMusic();
 			SelectSongToPlay();

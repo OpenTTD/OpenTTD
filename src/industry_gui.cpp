@@ -269,7 +269,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 						WP(w, fnd_d).select = _fund_gui.index[WP(w, fnd_d).index];
 						indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
 
-						SetWindowDirty(w);
+						w->SetDirty();
 
 						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
 								WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
@@ -357,7 +357,7 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 					/* Only if result does match the previous state would it require a redraw. */
 					if (call_back_result != _fund_gui.enabled[WP(w, fnd_d).index]) {
 						_fund_gui.enabled[WP(w, fnd_d).index] = call_back_result;
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 				}
 			}
@@ -524,9 +524,9 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			}
 
 			if (y > w->widget[IVW_INFO].bottom) {
-				SetWindowDirty(w);
+				w->SetDirty();
 				ResizeWindowForWidget(w, IVW_INFO, 0, y - w->widget[IVW_INFO].top);
-				SetWindowDirty(w);
+				w->SetDirty();
 				return;
 			}
 
@@ -560,7 +560,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 							}
 
 							UpdateIndustryProduction(i);
-							SetWindowDirty(w);
+							w->SetDirty();
 							w->flags4 |= 5 << WF_TIMEOUT_SHL;
 							WP(w, indview_d).clicked_line = line + 1;
 							WP(w, indview_d).clicked_button = (x < 15 ? 1 : 2);
@@ -587,7 +587,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		case WE_TIMEOUT:
 			WP(w, indview_d).clicked_line = 0;
 			WP(w, indview_d).clicked_button = 0;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_ON_EDIT_TEXT:
@@ -597,7 +597,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 				i->production_rate[line] = ClampU(atoi(e->we.edittext.str), 0, 255);
 				UpdateIndustryProduction(i);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 	}
 }
@@ -842,25 +842,25 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 				case IDW_SORTBYNAME: {
 					_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
 					_industry_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case IDW_SORTBYTYPE: {
 					_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
 					_industry_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case IDW_SORTBYPROD: {
 					_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
 					_industry_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case IDW_SORTBYTRANSPORT: {
 					_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
 					_industry_sort_dirty = true;
-					SetWindowDirty(w);
+					w->SetDirty();
 				} break;
 
 				case IDW_INDUSRTY_LIST: {
@@ -881,7 +881,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_4:
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_RESIZE:
@@ -907,6 +907,6 @@ void ShowIndustryDirectory()
 		w->vscroll.cap = 16;
 		w->resize.height = w->height - 6 * 10; // minimum 10 items
 		w->resize.step_height = 10;
-		SetWindowDirty(w);
+		w->SetDirty();
 	}
 }

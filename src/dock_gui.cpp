@@ -257,9 +257,9 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 		int text_end = DrawStationCoverageAreaText(4, 50, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(4, text_end + 4, SCT_ALL, rad, true) + 4;
 		if (text_end != w->widget[2].bottom) {
-			SetWindowDirty(w);
+			w->SetDirty();
 			ResizeWindowForWidget(w, 2, 0, text_end - w->widget[2].bottom);
-			SetWindowDirty(w);
+			w->SetDirty();
 		}
 
 		break;
@@ -273,7 +273,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 				_station_show_coverage = (e->we.click.widget != 3);
 				w->LowerWidget(_station_show_coverage + 3);
 				SndPlayFx(SND_15_BEEP);
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 		}
 		break;
@@ -348,7 +348,7 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 			w->LowerWidget(_ship_depot_direction + 3);
 			SndPlayFx(SND_15_BEEP);
 			UpdateDocksDirection();
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 		}
 	} break;

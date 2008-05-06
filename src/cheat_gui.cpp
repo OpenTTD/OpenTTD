@@ -207,12 +207,12 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 
-			SetWindowDirty(w);
+			w->SetDirty();
 		} break;
 
 		case WE_TIMEOUT:
 			WP(w, def_d).data_1 = 0;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 	}
 }

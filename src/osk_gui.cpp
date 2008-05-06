@@ -113,7 +113,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 				if (HasBit(_keystate, KEYS_SHIFT)) {
 					ToggleBit(_keystate, KEYS_SHIFT);
 					w->widget[OSK_WIDGET_SHIFT].color = HasBit(_keystate, KEYS_SHIFT) ? 15 : 14;
-					SetWindowDirty(w);
+					w->SetDirty();
 				}
 				break;
 			}
@@ -133,12 +133,12 @@ static void OskWndProc(Window *w, WindowEvent *e)
 
 				case OSK_WIDGET_CAPS:
 					ToggleBit(_keystate, KEYS_CAPS);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case OSK_WIDGET_SHIFT:
 					ToggleBit(_keystate, KEYS_SHIFT);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case OSK_WIDGET_SPACE:

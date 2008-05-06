@@ -114,7 +114,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 
 		case WE_MESSAGE:
 			w->message.msg = e->we.message.msg;
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_CLICK:

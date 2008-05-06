@@ -352,7 +352,7 @@ static void BuildRoadClick_TruckStation(Window *w)
 static void BuildRoadClick_OneWay(Window *w)
 {
 	if (w->IsWidgetDisabled(RTW_ONE_WAY)) return;
-	SetWindowDirty(w);
+	w->SetDirty();
 	w->ToggleWidgetLoweredState(RTW_ONE_WAY);
 	SetSelectionRed(false);
 }
@@ -758,7 +758,7 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 					_road_depot_orientation = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
 					w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
 					SndPlayFx(SND_15_BEEP);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				default:
@@ -888,9 +888,9 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 				(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
 				3, true) + 4;
 			if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
-				SetWindowDirty(w);
+				w->SetDirty();
 				ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 		} break;
 
@@ -906,7 +906,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 					_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - BRSW_STATION_NE);
 					w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
 					SndPlayFx(SND_15_BEEP);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case BRSW_LT_OFF:
@@ -915,7 +915,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 					_station_show_coverage = (e->we.click.widget != BRSW_LT_OFF);
 					w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
 					SndPlayFx(SND_15_BEEP);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				default:

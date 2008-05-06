@@ -317,7 +317,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				gv->group_sel = ALL_GROUP;
 				HideDropDownMenu(w);
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_CREATE:
@@ -519,7 +519,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					gv->l.flags |= VL_RESORT;
 
 					gv->_sorting->order = !!(gv->l.flags & VL_DESC);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 
 				case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
@@ -530,7 +530,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					if (!IsAllGroupID(gv->group_sel)) {
 						gv->group_sel = ALL_GROUP;
 						gv->l.flags |= VL_REBUILD;
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 
@@ -538,7 +538,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					if (!IsDefaultGroupID(gv->group_sel)) {
 						gv->group_sel = DEFAULT_GROUP;
 						gv->l.flags |= VL_REBUILD;
-						SetWindowDirty(w);
+						w->SetDirty();
 					}
 					break;
 
@@ -554,7 +554,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 					gv->group_sel = gl->sort_list[id_g]->index;;
 
 					gv->l.flags |= VL_REBUILD;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -577,7 +577,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 						_cursor.vehchain = true;
 					}
 
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -640,7 +640,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					gv->vehicle_sel = INVALID_VEHICLE;
 
-					SetWindowDirty(w);
+					w->SetDirty();
 
 					break;
 
@@ -650,7 +650,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					gv->vehicle_sel = INVALID_VEHICLE;
 
-					SetWindowDirty(w);
+					w->SetDirty();
 
 					if (id_g >= w->vscroll.cap) return;
 
@@ -670,7 +670,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					gv->vehicle_sel = INVALID_VEHICLE;
 
-					SetWindowDirty(w);
+					w->SetDirty();
 
 					if (id_v >= w->vscroll2.cap) return; // click out of bounds
 
@@ -752,7 +752,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				default: NOT_REACHED();
 			}
 
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 
@@ -767,12 +767,12 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			if (--gv->l.resort_timer == 0) {
 				gv->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				gv->l.flags |= VL_RESORT;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			if (--gl->l.resort_timer == 0) {
 				gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				gl->l.flags |= VL_RESORT;
-				SetWindowDirty(w);
+				w->SetDirty();
 			}
 			break;
 

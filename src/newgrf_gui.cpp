@@ -182,7 +182,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 
 					for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
 					WP(w, newgrf_add_d).sel = c;
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -218,7 +218,7 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 				case ANGRFW_RESCAN: // Rescan list
 					WP(w, newgrf_add_d).sel = NULL;
 					ScanNewGRFFiles();
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 			}
 			break;
@@ -333,7 +333,7 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--) {}
 		nd->sel = c;
 
-		SetWindowDirty(w);
+		w->SetDirty();
 	}
 }
 
@@ -435,7 +435,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 
 					WP(w, newgrf_d).sel = newsel;
 					SetupNewGRFWindow(w);
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -451,7 +451,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 							break;
 						}
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -467,7 +467,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 							break;
 						}
 					}
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -478,7 +478,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					for (c = *WP(w, newgrf_d).list; c != NULL && i > 0; c = c->next, i--) {}
 					WP(w, newgrf_d).sel = c;
 
-					SetWindowDirty(w);
+					w->SetDirty();
 					break;
 				}
 
@@ -517,7 +517,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 				/* parse_intlist returns -1 on error */
 				if (c->num_params == (byte)-1) c->num_params = 0;
 			}
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_DESTROY:
