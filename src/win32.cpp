@@ -36,10 +36,6 @@
 
 static bool _has_console;
 
-#if defined(__MINGW32__)
-	#include <stdint.h>
-#endif
-
 static bool cursor_visible = true;
 
 bool MyShowCursor(bool show)
@@ -934,15 +930,6 @@ void ShowInfo(const char *str)
 		MyShowCursor(old);
 	}
 }
-
-#ifdef __MINGW32__
-	/* _set_error_mode() constants&function (do not exist in mingw headers) */
-	#define _OUT_TO_DEFAULT      0
-	#define _OUT_TO_STDERR       1
-	#define _OUT_TO_MSGBOX       2
-	#define _REPORT_ERRMODE      3
-	int _set_error_mode(int);
-#endif
 
 #if defined(WINCE)
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
