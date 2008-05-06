@@ -494,6 +494,8 @@ void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually)
 
 	// Clear item in gamelist
 	item = NetworkGameListAddItem(inet_addr(inet_ntoa(out_addr.sin_addr)), ntohs(out_addr.sin_port));
+	if (item == NULL) return;
+
 	if (StrEmpty(item->info.server_name)) {
 		memset(&item->info, 0, sizeof(item->info));
 		ttd_strlcpy(item->info.server_name, host, lengthof(item->info.server_name));
