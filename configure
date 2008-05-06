@@ -92,6 +92,7 @@ SRCS="`< $ROOT_DIR/source.list tr '\r' '\n' | $awk '
 		if ($0 == "BEOS"        && "'$os'" != "BEOS")              { next; }
 		if ($0 == "WIN32"       && "'$os'" != "MINGW" &&
 		                "'$os'" != "CYGWIN" && "'$os'" != "MSVC" ) { next; }
+		if ($0 == "MORPHOS"     && "'$os'" != "MORPHOS")           { next; }
 		if ($0 == "WINCE"       && "'$os'" != "WINCE")             { next; }
 		if ($0 == "MSVC"        && "'$os'" != "MSVC")              { next; }
 		if ($0 == "DIRECTMUSIC" && "'$with_direct_music'" == "0")  { next; }
