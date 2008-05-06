@@ -342,7 +342,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case 0: DeleteWindow(w); break;
+				case 0: delete w; break;
 
 				case GLAND_TEMPERATE:
 				case GLAND_ARCTIC:

@@ -172,7 +172,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 		case WE_MOUSELOOP: {
 			Window *w2 = FindWindowById(WP(w, dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 == NULL) {
-				DeleteWindow(w);
+				delete w;
 				return;
 			}
 
@@ -182,7 +182,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 				e.we.dropdown.button = WP(w, dropdown_d).parent_button;
 				e.we.dropdown.index  = WP(w, dropdown_d).selected_index;
 				w2->HandleWindowEvent(&e);
-				DeleteWindow(w);
+				delete w;
 				return;
 			}
 
@@ -362,7 +362,7 @@ void HideDropDownMenu(Window *pw)
 
 		if (pw->window_class == WP(*wz, dropdown_d).parent_wnd_class &&
 				pw->window_number == WP(*wz, dropdown_d).parent_wnd_num) {
-			DeleteWindow(*wz);
+			delete *wz;
 			break;
 		}
 	}

@@ -96,7 +96,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 				DoCommandP(0, w->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
 				/* Fallthrough */
 			case 3:
-				DeleteWindow(w);
+				delete w;
 				break;
 		}
 		break;

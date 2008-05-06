@@ -42,7 +42,7 @@ void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void BuildBridge(Window *w, int i)
 {
-	DeleteWindow(w);
+	delete w;
 	DoCommandP(_bridgedata.end_tile, _bridgedata.start_tile,
 		_bridgedata.type | _bridgedata.indexes[i], CcBuildBridge,
 		CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));

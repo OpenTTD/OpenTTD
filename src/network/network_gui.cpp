@@ -869,7 +869,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
 							ttd_strlcpy(_file_to_saveload.title, nd->map->title, sizeof(_file_to_saveload.title));
 
-							DeleteWindow(w);
+							delete w;
 							SwitchMode(SM_START_SCENARIO);
 						}
 					}
@@ -879,7 +879,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 					_is_network_server = true;
 					/* XXX - WC_NETWORK_WINDOW (this window) should stay, but if it stays, it gets
 					* copied all the elements of 'load game' and upon closing that, it segfaults */
-					DeleteWindow(w);
+					delete w;
 					ShowSaveLoadDialog(SLD_LOAD_GAME);
 					break;
 			}
@@ -1672,7 +1672,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			if (e->we.click.widget == 2) { //Disconnect button
 				NetworkDisconnect();
-				DeleteWindow(w);
+				delete w;
 				SwitchMode(SM_MENU);
 				ShowNetworkGameWindow();
 			}
@@ -1891,7 +1891,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 				case 3: /* Send */
 					SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
 				/* FALLTHROUGH */
-				case 0: /* Cancel */ DeleteWindow(w); break;
+				case 0: /* Cancel */ delete w; break;
 			}
 			break;
 
@@ -1908,7 +1908,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 					case 1: /* Return */
 						SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
 					/* FALLTHROUGH */
-					case 2: /* Escape */ DeleteWindow(w); break;
+					case 2: /* Escape */ delete w; break;
 				}
 			}
 			break;
@@ -1987,7 +1987,7 @@ static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
 
 				/* FALL THROUGH */
 				case NCPWW_CANCEL:
-					DeleteWindow(w);
+					delete w;
 					break;
 
 				case NCPWW_SAVE_AS_DEFAULT_PASSWORD:
@@ -2013,7 +2013,7 @@ static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case 2: // Escape
-					DeleteWindow(w);
+					delete w;
 					break;
 			}
 			break;

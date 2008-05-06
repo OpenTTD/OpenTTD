@@ -280,7 +280,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP:
 		if (WP(w, def_d).close) {
-			DeleteWindow(w);
+			delete w;
 			return;
 		}
 
@@ -354,7 +354,7 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MOUSELOOP:
-		if (WP(w, def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) delete w;
 		break;
 
 	case WE_DESTROY:

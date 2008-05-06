@@ -642,7 +642,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 							DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 					}
 					DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					DeleteWindow(w);
+					delete w;
 					/* If we are in the editor, we should reload the economy.
 					 * This way when you load a game, the max loan and interest rate
 					 * are loaded correctly. */
@@ -651,7 +651,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 				}
 
 				case GDW_CANCEL: // Cancel button - close window, abandon changes
-					DeleteWindow(w);
+					delete w;
 					break;
 			} break;
 

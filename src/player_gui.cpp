@@ -197,7 +197,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 					int oldleft = w->left; ///< current left position of the window before closing it
 					PlayerID player = (PlayerID)w->window_number;
 
-					DeleteWindow(w);
+					delete w;
 					/* Open up the (toggled size) Finance window at the same position as the previous */
 					DoShowPlayerFinances(player, !HasBit(mode, 0), stickied, oldtop, oldleft);
 				}
@@ -871,20 +871,20 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 					int oldleft = w->left;   ///< current top position of the window before closing it
 
 					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
-					DeleteWindow(w);
+					delete w;
 					/* Open up the (toggled size) Face selection window at the same position as the previous */
 					DoSelectPlayerFace((PlayerID)w->window_number, !WP(w, facesel_d).advanced, oldtop, oldleft);
 				} break;
 
 				/* Cancel button */
 				case PFW_WIDGET_CANCEL:
-					DeleteWindow(w);
+					delete w;
 					break;
 
 				/* OK button */
 				case PFW_WIDGET_ACCEPT:
 					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
-					DeleteWindow(w);
+					delete w;
 					break;
 
 				/* Load button */
@@ -1379,7 +1379,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case 3:
-					DeleteWindow(w);
+					delete w;
 					break;
 				case 4: {
 					DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
@@ -1464,7 +1464,7 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_CLICK: /* Close the window (and show the highscore window) */
-			DeleteWindow(w);
+			delete w;
 			break;
 
 		case WE_DESTROY: /* Show the highscore window when this one is closed */
@@ -1505,7 +1505,7 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_CLICK: /* Onclick to close window, and in destroy event handle the rest */
-			DeleteWindow(w);
+			delete w;
 			break;
 
 		case WE_DESTROY: /* Get back all the hidden windows */

@@ -558,11 +558,11 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_MOUSELOOP:
-			if (_right_button_down) DeleteWindow(w);
+			if (_right_button_down) delete w;
 			break;
 
 		case WE_4:
-			if (--_errmsg_duration == 0) DeleteWindow(w);
+			if (--_errmsg_duration == 0) delete w;
 			break;
 
 		case WE_DESTROY:
@@ -575,7 +575,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 			if (e->we.keypress.keycode == WKC_SPACE) {
 				/* Don't continue. */
 				e->we.keypress.cont = false;
-				DeleteWindow(w);
+				delete w;
 			}
 			break;
 	}
@@ -711,9 +711,9 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 			/* We can show tooltips while dragging tools. These are shown as long as
 			 * we are dragging the tool. Normal tooltips work with rmb */
 			if (WP(w, tooltips_d).paramcount == 0 ) {
-				if (!_right_button_down) DeleteWindow(w);
+				if (!_right_button_down) delete w;
 			} else {
-				if (!_left_button_down) DeleteWindow(w);
+				if (!_left_button_down) delete w;
 			}
 
 			break;
@@ -1171,7 +1171,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 					}
 					/* Fallthrough */
 				case QUERY_STR_WIDGET_CANCEL:
-					DeleteWindow(w);
+					delete w;
 					break;
 			}
 			break;
@@ -1183,7 +1183,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		case WE_KEYPRESS:
 			switch (HandleEditBoxKey(w, qs, QUERY_STR_WIDGET_TEXT, e)) {
 				case 1: goto press_ok; // Enter pressed, confirms change
-				case 2: DeleteWindow(w); break; // ESC pressed, closes window, abandons changes
+				case 2: delete w; break; // ESC pressed, closes window, abandons changes
 			}
 			break;
 
@@ -1296,7 +1296,7 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 					if (q->proc != NULL) q->proc(w->parent, true);
 					/* Fallthrough */
 				case QUERY_WIDGET_NO:
-					DeleteWindow(w);
+					delete w;
 					break;
 				}
 			break;
@@ -1310,7 +1310,7 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 					/* Fallthrough */
 				case WKC_ESC:
 					e->we.keypress.cont = false;
-					DeleteWindow(w);
+					delete w;
 					break;
 			}
 			break;
@@ -1581,13 +1581,13 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
 							ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
 
-							DeleteWindow(w);
+							delete w;
 						} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
 							SetFiosType(file->type);
 							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
 							ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
 
-							DeleteWindow(w);
+							delete w;
 							ShowHeightmapLoad();
 						} else {
 							/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
@@ -1620,7 +1620,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 		case WE_KEYPRESS:
 			if (e->we.keypress.keycode == WKC_ESC) {
-				DeleteWindow(w);
+				delete w;
 				return;
 			}
 

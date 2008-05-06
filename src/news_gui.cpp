@@ -195,7 +195,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			switch (e->we.click.widget) {
 				case 1: {
 					NewsItem *ni = WP(w, news_d).ni;
-					DeleteWindow(w);
+					delete w;
 					ni->duration = 0;
 					_forced_news = INVALID_NEWS;
 					break;
@@ -227,7 +227,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			if (e->we.keypress.keycode == WKC_SPACE) {
 				/* Don't continue. */
 				e->we.keypress.cont = false;
-				DeleteWindow(w);
+				delete w;
 			}
 			break;
 

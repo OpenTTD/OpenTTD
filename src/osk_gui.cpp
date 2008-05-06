@@ -164,7 +164,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 							parent->HandleWindowEvent(&e);
 						}
 					}
-					DeleteWindow(w);
+					delete w;
 					break;
 
 				case OSK_WIDGET_CANCEL:
@@ -179,7 +179,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 						UpdateTextBufferSize(&qs->text);
 						MoveTextBufferPos(&qs->text, WKC_END);
 					}
-					DeleteWindow(w);
+					delete w;
 					break;
 			}
 			/* make sure that the parent window's textbox also gets updated */

@@ -236,7 +236,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 		case WE_MOUSELOOP: {
 			if (WP(w, def_d).close) {
-				DeleteWindow(w);
+				delete w;
 				return;
 			}
 

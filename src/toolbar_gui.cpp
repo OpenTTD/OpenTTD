@@ -1142,7 +1142,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 			}
 
 			int action_id = WP(w, menu_d).action_id;
-			DeleteWindow(w);
+			delete w;
 
 			if (index >= 0) {
 				assert((uint)index <= lengthof(_menu_clicked_procs));
@@ -1347,7 +1347,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 					index = WP(w, menu_d).sel_index;
 			}
 
-			DeleteWindow(w);
+			delete w;
 
 			if (index >= 0) {
 				assert(index >= 0 && index < 30);

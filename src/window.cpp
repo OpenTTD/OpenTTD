@@ -170,7 +170,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 
 		if (w->desc_flags & WDF_STD_BTN) {
 			if (e.we.click.widget == 0) { /* 'X' */
-				DeleteWindow(w);
+				delete w;
 				return;
 			}
 
@@ -369,10 +369,19 @@ void CallWindowEventNP(Window *w, int event)
  * @param w Window to redraw
  * @ingroup dirty
  */
+void Window::SetDirty() const
+{
+	SetDirtyBlocks(this->left, this->top, this->left + this->width, this->top + this->height);
+}
+
+/**
+ * Mark entire window as dirty (in need of re-paint)
+ * @param w Window to redraw
+ * @ingroup dirty
+ */
 void SetWindowDirty(const Window *w)
 {
-	if (w == NULL) return;
-	SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
+	if (w != NULL) w->SetDirty();
 }
 
 /** Find the Window whose parent pointer points to this window
@@ -410,44 +419,35 @@ Window **FindWindowZPosition(const Window *w)
 
 /**
  * Remove window and all its child windows from the window stack.
- * @param w Window to delete
  */
-void DeleteWindow(Window *w)
+Window::~Window()
 {
-	if (w == NULL) return;
-
 	if (_thd.place_mode != VHM_NONE &&
-			_thd.window_class == w->window_class &&
-			_thd.window_number == w->window_number) {
+			_thd.window_class == this->window_class &&
+			_thd.window_number == this->window_number) {
 		ResetObjectToPlace();
 	}
 
 	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
-	if (_mouseover_last_w == w) _mouseover_last_w = NULL;
+	if (_mouseover_last_w == this) _mouseover_last_w = NULL;
 
 	/* Find the window in the z-array, and effectively remove it
 	 * by moving all windows after it one to the left. This must be
 	 * done before removing the child so we cannot cause recursion
 	 * between the deletion of the parent and the child. */
-	Window **wz = FindWindowZPosition(w);
+	Window **wz = FindWindowZPosition(this);
 	if (wz == NULL) return;
 	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
 	_last_z_window--;
 
 	/* Delete any children a window might have in a head-recursive manner */
-	Window *v = FindChildWindow(w);
-	if (v != NULL) DeleteWindow(v);
+	delete FindChildWindow(this);
 
-	CallWindowEventNP(w, WE_DESTROY);
-	if (w->viewport != NULL) DeleteWindowViewport(w);
+	CallWindowEventNP(this, WE_DESTROY);
+	if (this->viewport != NULL) DeleteWindowViewport(this);
 
-	SetWindowDirty(w);
-	free(w->widget);
-	w->widget = NULL;
-	w->widget_count = 0;
-	w->parent = NULL;
-
-	delete w;
+	this->SetDirty();
+	free(this->widget);
 }
 
 /**
@@ -475,7 +475,7 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
  */
 void DeleteWindowById(WindowClass cls, WindowNumber number)
 {
-	DeleteWindow(FindWindowById(cls, number));
+	delete FindWindowById(cls, number);
 }
 
 /**
@@ -493,7 +493,7 @@ restart_search:
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 		if (w->window_class == cls) {
-			DeleteWindow(w);
+			delete w;
 			goto restart_search;
 		}
 	}
@@ -514,7 +514,7 @@ restart_search:
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 		if (w->caption_color == id) {
-			DeleteWindow(w);
+			delete w;
 			goto restart_search;
 		}
 	}
@@ -696,7 +696,7 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 	if (_last_z_window == endof(_z_windows)) {
 		w = FindDeletableWindow();
 		if (w == NULL) w = ForceFindDeletableWindow();
-		DeleteWindow(w);
+		delete w;
 	}
 
 	w = new Window(proc);
@@ -1087,7 +1087,7 @@ restart_search:
 	 * anywhere in the z-array. We call DeleteWindow() so that it can properly
 	 * release own alloc'd memory, which otherwise could result in memleaks */
 	FOR_ALL_WINDOWS(wz) {
-		DeleteWindow(*wz);
+		delete *wz;
 		goto restart_search;
 	}
 
@@ -2212,7 +2212,7 @@ restart_search:
 				w->window_class != WC_TOOLTIPS &&
 				(w->flags4 & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
 
-			DeleteWindow(w);
+			delete w;
 			goto restart_search;
 		}
 	}
@@ -2236,7 +2236,7 @@ restart_search:
 	 * anywhere in the z-array */
 	FOR_ALL_WINDOWS(wz) {
 		if ((*wz)->flags4 & WF_STICKY) {
-			DeleteWindow(*wz);
+			delete *wz;
 			goto restart_search;
 		}
 	}

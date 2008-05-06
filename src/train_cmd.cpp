@@ -1347,8 +1347,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {
-			w = FindWindowById(WC_VEHICLE_VIEW, first->index);
-			if (w != NULL) DeleteWindow(w);
+			delete FindWindowById(WC_VEHICLE_VIEW, first->index);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		RebuildVehicleLists();

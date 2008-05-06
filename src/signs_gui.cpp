@@ -246,7 +246,7 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 					/* FALL THROUGH */
 
 				case QUERY_EDIT_SIGN_WIDGET_CANCEL:
-					DeleteWindow(w);
+					delete w;
 					break;
 			}
 			break;
@@ -258,7 +258,7 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 					/* FALL THROUGH */
 
 				case 2: // ESC pressed, closes window, abandons changes
-					DeleteWindow(w);
+					delete w;
 					break;
 			}
 			break;

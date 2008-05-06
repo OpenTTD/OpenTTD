@@ -1128,7 +1128,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP:
 		if (WP(w, def_d).close) {
-			DeleteWindow(w);
+			delete w;
 			return;
 		}
 		CheckRedrawStationCoverage(w);
@@ -1352,7 +1352,7 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_MOUSELOOP:
-			if (WP(w, def_d).close) DeleteWindow(w);
+			if (WP(w, def_d).close) delete w;
 			return;
 
 		case WE_DESTROY:
@@ -1443,7 +1443,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP:
-		if (WP(w, def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) delete w;
 		return;
 
 	case WE_DESTROY:
@@ -1542,7 +1542,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_MOUSELOOP:
-		if (WP(w, def_d).close) DeleteWindow(w);
+		if (WP(w, def_d).close) delete w;
 		break;
 
 	case WE_DESTROY:

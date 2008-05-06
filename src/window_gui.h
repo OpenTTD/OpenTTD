@@ -296,6 +296,7 @@ private:
 
 public:
 	Window(WindowProc *proc) : wndproc(proc) {}
+	virtual ~Window();
 
 	uint16 flags4;              ///< Window flags, @see WindowFlags
 	WindowClass window_class;   ///< Window class
@@ -344,6 +345,8 @@ public:
 	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
 	void InvalidateWidget(byte widget_index) const;
+
+	void SetDirty() const;
 
 	virtual void HandleWindowEvent(WindowEvent *e);
 };
@@ -548,7 +551,6 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int
 void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
-void DeleteWindow(Window *w);
 void DeletePlayerWindows(PlayerID pi);
 void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);

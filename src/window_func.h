@@ -13,7 +13,6 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int
 void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
-void DeleteWindow(Window *w);
 void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
 
 void ResizeWindow(Window *w, int x, int y);
