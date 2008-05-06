@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file group_gui.cpp */
+/** @file group_gui.cpp GUI for the group window. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file tree_land.h Sprites to use and how to display them for tree tiles. */
+
 #ifndef TREE_LAND_H
 #define TREE_LAND_H
 

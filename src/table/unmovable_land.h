@@ -1,5 +1,6 @@
 /* $Id$ */
 
+/** @file unmovable_land.h Sprites to use and how to display them for unmovable tiles. */
 
 static const DrawTileSeqStruct _draw_tile_transmitterlighthouse_data[] = {
 	{   7,  7,  0,  2,  2, 70, {SPR_UNMOVABLE_TRANSMITTER, PAL_NONE}},

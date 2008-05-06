@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file train.h */
+/** @file train.h Base for the train class. */
 
 #ifndef TRAIN_H
 #define TRAIN_H

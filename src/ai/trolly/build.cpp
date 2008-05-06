@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file build.cpp Building support for the trolly AI. */
+
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../debug.h"

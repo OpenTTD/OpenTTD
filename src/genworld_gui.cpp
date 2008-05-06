@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file genworld_gui.cpp */
+/** @file genworld_gui.cpp GUI to configure and show progress during map generation. */
 
 #include "stdafx.h"
 #include "openttd.h"

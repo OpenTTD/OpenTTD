@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file namegen.cpp */
+/** @file namegen.cpp Town name generators. */
 
 #include "stdafx.h"
 #include "openttd.h"

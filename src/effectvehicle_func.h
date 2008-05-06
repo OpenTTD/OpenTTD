@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file effectvehicle.h Functions related to effect vehicles. */
+/** @file effectvehicle_func.h Functions related to effect vehicles. */
 
 #ifndef EFFECTVEHICLE_FUNC_H
 #define EFFECTVEHICLE_FUNC_H

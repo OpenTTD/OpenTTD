@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file pathfind.cpp */
+/** @file pathfind.cpp Implementation of the oldest supported pathfinder. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 32bpp_simple.hpp */
+/** @file 32bpp_simple.hpp Simple 32 bpp blitter. */
 
 #ifndef BLITTER_32BPP_SIMPLE_HPP
 #define BLITTER_32BPP_SIMPLE_HPP

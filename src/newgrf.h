@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf.h */
+/** @file newgrf.h Base for the NewGRF implementation. */
 
 #ifndef NEWGRF_H
 #define NEWGRF_H

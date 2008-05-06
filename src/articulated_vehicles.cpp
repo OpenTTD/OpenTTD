@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file articulated_vehicles.cpp */
+/** @file articulated_vehicles.cpp Implementation of articulated vehicles. */
 
 #include "stdafx.h"
 #include "openttd.h"

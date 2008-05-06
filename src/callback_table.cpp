@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file callback_table.cpp */
+/** @file callback_table.cpp All command callbacks. */
 
 #include "stdafx.h"
 #include "openttd.h"

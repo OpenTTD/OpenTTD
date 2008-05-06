@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32_v.cpp Implementation of the Windows (GDI) video driver. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../gfx_func.h"

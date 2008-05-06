@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file splash.cpp Splash screen support for OSX. */
+
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../variables.h"

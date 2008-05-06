@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_ship.cpp */
+/** @file yapf_ship.cpp Implementation of YAPF for ships. */
 
 #include "../stdafx.h"
 

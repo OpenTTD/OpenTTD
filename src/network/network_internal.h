@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_internal.h Variables and function used internally. */
+
 #ifndef NETWORK_INTERNAL_H
 #define NETWORK_INTERNAL_H
 

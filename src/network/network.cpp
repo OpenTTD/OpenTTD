@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network.cpp Base functions for networking support. */
+
 #include "../stdafx.h"
 #include "network_data.h"
 

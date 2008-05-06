@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file helpers.cpp */
+/** @file helpers.cpp Some not-so-generic helper functions. */
 
 #include "stdafx.h"
 

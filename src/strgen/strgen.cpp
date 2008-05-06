@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file strgen.cpp Tool to create computer readable (stand-alone) translation files. */
+
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"

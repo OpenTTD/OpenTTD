@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file palettes.h The colour translation of the GRF palettes. */
+
 #define M(r, g, b) { r, g, b }
 static const Colour _palettes[][256] = {
 	/* palette 1 (TTD Windows) */

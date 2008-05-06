@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file economy.cpp */
+/** @file economy.cpp Handling of the economy. */
 
 #include "stdafx.h"
 #include "openttd.h"

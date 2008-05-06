@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_engine.cpp */
+/** @file newgrf_engine.cpp NewGRF handling of engines. */
 
 #include "stdafx.h"
 #include "openttd.h"

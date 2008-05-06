@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file openttd.h */
+/** @file openttd.h Some generic types. */
 
 #ifndef OPENTTD_H
 #define OPENTTD_H

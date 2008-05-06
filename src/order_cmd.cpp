@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file order_cmd.cpp */
+/** @file order_cmd.cpp Handling of orders. */
 
 #include "stdafx.h"
 #include "openttd.h"

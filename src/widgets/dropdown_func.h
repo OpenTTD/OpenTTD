@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dropdown_func.h Functions related to the drop down widget. */
+
 #ifndef WIDGETS_DROPDOWN_FUNC_H
 #define WIDGETS_DROPDOWN_FUNC_H
 

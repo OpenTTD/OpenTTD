@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tunnel_map.cpp */
+/** @file tunnel_map.cpp Map accessors for tunnels. */
 
 #include "stdafx.h"
 #include "openttd.h"

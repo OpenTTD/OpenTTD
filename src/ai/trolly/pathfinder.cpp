@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file pathfinder.cpp Pathfinder support for the trolly AI. */
+
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../bridge_map.h"

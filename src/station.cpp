@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file station.cpp */
+/** @file station.cpp Implementation of the station base class. */
 
 #include "stdafx.h"
 #include "openttd.h"

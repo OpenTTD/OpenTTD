@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file road_land.h Sprite constructs for road depots. */
+
 #define TILE_SEQ_LINE(img, pal, dx, dy, sx, sy) { dx, dy, 0, sx, sy, 20, {img, pal} },
 #define TILE_SEQ_END() { 0, 0, 0, 0, 0, 0, {0, 0} }
 

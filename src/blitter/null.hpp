@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file null.hpp */
+/** @file null.hpp The blitter that doesn't blit. */
 
 #ifndef BLITTER_NULL_HPP
 #define BLITTER_NULL_HPP

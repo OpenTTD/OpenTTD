@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_gui.cpp */
+/** @file newgrf_gui.cpp GUI to change NewGRF settings. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file road_map.cpp */
+/** @file road_map.cpp Complex road accessors. */
 
 #include "stdafx.h"
 #include "openttd.h"

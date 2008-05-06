@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sdl_v.h Base of the SDL video driver. */
+
 #ifndef VIDEO_SDL_H
 #define VIDEO_SDL_H
 

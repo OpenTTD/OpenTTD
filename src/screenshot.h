@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file screenshot.h */
+/** @file screenshot.h Functions to make screenshots. */
 
 #ifndef SCREENSHOT_H
 #define SCREENSHOT_H

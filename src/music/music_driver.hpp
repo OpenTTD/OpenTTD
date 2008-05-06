@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file music_driver.hpp Base for all music playback. */
+
 #ifndef MUSIC_MUSIC_DRIVER_HPP
 #define MUSIC_MUSIC_DRIVER_HPP
 

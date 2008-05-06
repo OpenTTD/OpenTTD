@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file gfx.cpp */
+/** @file gfx.cpp Handling of drawing text and other gfx related stuff. */
 
 #include "stdafx.h"
 #include "openttd.h"

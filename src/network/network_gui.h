@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_gui.h GUIs related to networking. */
+
 #ifndef NETWORK_GUI_H
 #define NETWORK_GUI_H
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_data.cpp Command handling over network connections. */
+
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"

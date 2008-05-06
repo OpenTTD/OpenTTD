@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file null_v.cpp The videio driver that doesn't blit. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../gfx_func.h"

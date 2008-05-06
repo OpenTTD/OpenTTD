@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file saveload.h */
+/** @file saveload.h Functions/types related to saving and loading games. */
 
 #ifndef SAVELOAD_H
 #define SAVELOAD_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file graph_gui.cpp */
+/** @file graph_gui.cpp GUI that shows performance graphs. */
 
 #include "stdafx.h"
 #include "openttd.h"

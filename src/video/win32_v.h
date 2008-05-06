@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32_v.h Base of the Windows video driver. */
+
 #ifndef VIDEO_WIN32_H
 #define VIDEO_WIN32_H
 

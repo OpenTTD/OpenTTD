@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file vehicle.cpp */
+/** @file effectvehicle.cpp Implementation of everything generic to vehicles. */
 
 #include "stdafx.h"
 #include "openttd.h"

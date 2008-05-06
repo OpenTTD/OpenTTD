@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file cocoa_v.h The Cocoa video driver. */
+
 #ifndef VIDEO_COCOA_H
 #define VIDEO_COCOA_H
 

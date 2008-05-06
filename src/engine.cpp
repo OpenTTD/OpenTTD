@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file engine.cpp */
+/** @file engine.cpp Base for all engine handling. */
 
 #include "stdafx.h"
 #include "openttd.h"

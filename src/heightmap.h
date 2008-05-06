@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file heightmap.h */
+/** @file heightmap.h Functions related to creating heightmaps from files. */
 
 #ifndef HEIGHTMAP_H
 #define HEIGHTMAP_H

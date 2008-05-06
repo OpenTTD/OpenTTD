@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file extmidi.h Base support for playing music via an external application. */
+
 #ifndef MUSIC_EXTERNAL_H
 #define MUSIC_EXTERNAL_H
 

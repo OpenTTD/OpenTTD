@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_canal.h Handling of NewGRF canals. */
+
 #ifndef NEWGRF_CANAL_H
 #define NEWGRF_CANAL_H
 

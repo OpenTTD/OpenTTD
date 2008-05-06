@@ -1,8 +1,5 @@
 /* $Id$ */
 
-#ifndef SPRITES_H
-#define SPRITES_H
-
 /** @file sprites.h
  * This file contails all sprite-related enums and defines. These consist mainly of
  * the sprite numbers and a bunch of masks and macros to handle sprites and to get
@@ -31,6 +28,9 @@
  *
  * @todo Split the "Sprites" enum into smaller chunks and document them
  */
+
+#ifndef SPRITES_H
+#define SPRITES_H
 
 #include "../gfx_type.h"
 

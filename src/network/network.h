@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network.h Basic functions/variables used all over the place. */
+
 #ifndef NETWORK_H
 #define NETWORK_H
 

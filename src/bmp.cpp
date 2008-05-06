@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bmp.cpp */
+/** @file bmp.cpp Read and write support for bmps. */
 
 #include "stdafx.h"
 #include "bmp.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_canal.cpp Implementation of NewGRF canals. */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"

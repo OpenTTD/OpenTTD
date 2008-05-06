@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file grf.cpp */
+/** @file grf.cpp Reading graphics data from (New)GRF files. */
 
 #include "../stdafx.h"
 #include "../gfx_func.h"

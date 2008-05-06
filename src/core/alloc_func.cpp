@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file alloc_func.cpp functions to 'handle' memory allocation errors */
+/** @file alloc_func.cpp Functions to 'handle' memory allocation errors */
 
 #include "../stdafx.h"
 #include "alloc_func.hpp"

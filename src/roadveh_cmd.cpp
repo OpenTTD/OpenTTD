@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file roadveh_cmd.cpp */
+/** @file roadveh_cmd.cpp Handling of road vehicles. */
 
 #include "stdafx.h"
 #include "openttd.h"

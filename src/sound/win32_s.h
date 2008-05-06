@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32_s.h Base for Windows sound handling. */
+
 #ifndef SOUND_WIN32_H
 #define SOUND_WIN32_H
 

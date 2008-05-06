@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file autoslope.h */
+/** @file autoslope.h Functions related to autoslope. */
 
 #ifndef AUTOSLOPE_H
 #define AUTOSLOPE_H

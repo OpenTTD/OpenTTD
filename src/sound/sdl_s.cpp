@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sdl_s.cpp Playing sound via SDL. */
+
 #ifdef WITH_SDL
 
 #include "../stdafx.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_industries.h */
+/** @file newgrf_industries.h Functions for NewGRF industries. */
 
 #ifndef NEWGRF_INDUSTRIES_H
 #define NEWGRF_INDUSTRIES_H

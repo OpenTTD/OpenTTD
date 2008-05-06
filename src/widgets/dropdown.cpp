@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dropdown.cpp Implementation of the dropdown widget. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../strings_type.h"

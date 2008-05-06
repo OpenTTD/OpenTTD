@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file osx_stdafx.h OSX is different on some places. */
+
 #ifndef MACOS_STDAFX_H
 #define MACOS_STDAFX_H
 

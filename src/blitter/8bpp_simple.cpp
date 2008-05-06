@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_simple.cpp */
+/** @file 8bpp_simple.cpp Implementation of the simple 8 bpp blitter. */
 
 #include "../stdafx.h"
 #include "../zoom_func.h"

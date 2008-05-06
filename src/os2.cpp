@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file os2.cpp */
+/** @file os2.cpp OS2 related OS support. */
 
 #include "stdafx.h"
 #include "openttd.h"

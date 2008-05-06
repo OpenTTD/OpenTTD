@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32_s.cpp Handling of sound for Windows. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../driver.h"

@@ -1,7 +1,7 @@
 /* $Id$ */
 
-/** @file players.cpp
- */
+/** @file players.cpp Handling of players. */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine_func.h"

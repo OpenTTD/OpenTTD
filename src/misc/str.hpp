@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file str.hpp */
+/** @file str.hpp String formating? */
 
 #ifndef  STR_HPP
 #define  STR_HPP

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file road.cpp Generic road related functions. */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "rail_map.h"

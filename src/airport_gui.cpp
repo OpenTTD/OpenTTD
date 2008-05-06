@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file airport_gui.cpp */
+/** @file airport_gui.cpp The GUI for airports. */
 
 #include "stdafx.h"
 #include "openttd.h"

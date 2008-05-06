@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file vehicle_gui.cpp */
+/** @file vehicle_gui.cpp The base GUI for all vehicles. */
 
 #include "stdafx.h"
 #include "openttd.h"

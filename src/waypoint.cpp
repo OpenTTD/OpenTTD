@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file waypoint.cpp */
+/** @file waypoint.cpp Handling of waypoints. */
 
 #include "stdafx.h"
 #include "openttd.h"

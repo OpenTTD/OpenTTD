@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file factory.hpp Factory to 'query' all available blitters. */
+
 #ifndef BLITTER_FACTORY_HPP
 #define BLITTER_FACTORY_HPP
 

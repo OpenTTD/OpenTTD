@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file town_cmd.cpp */
+/** @file town_cmd.cpp Handling of town tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

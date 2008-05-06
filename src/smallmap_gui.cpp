@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file smallmap_gui.cpp */
+/** @file smallmap_gui.cpp GUI that shows a small map of the world with metadata like owner or height. */
 
 #include "stdafx.h"
 #include "openttd.h"

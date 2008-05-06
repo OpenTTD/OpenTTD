@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file road_cmd.cpp */
+/** @file road_cmd.cpp Commands related to road tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

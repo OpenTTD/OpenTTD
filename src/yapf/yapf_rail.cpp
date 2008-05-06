@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_rail.cpp */
+/** @file yapf_rail.cpp The rail pathfinding. */
 
 #include "../stdafx.h"
 

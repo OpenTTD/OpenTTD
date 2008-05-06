@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf.cpp */
+/** @file newgrf.cpp Base of all NewGRF support. */
 
 #include "stdafx.h"
 

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sound_driver.hpp Base for all sound drivers. */
+
 #ifndef SOUND_SOUND_DRIVER_HPP
 #define SOUND_SOUND_DRIVER_HPP
 

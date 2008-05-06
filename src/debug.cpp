@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file debug.cpp */
+/** @file debug.cpp Handling of printing debug messages. */
 
 #include "stdafx.h"
 #include <stdio.h>

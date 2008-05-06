@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file cocoa_s.h Base for Cocoa sound handling. */
+
 #ifndef SOUND_COCOA_H
 #define SOUND_COCOA_H
 

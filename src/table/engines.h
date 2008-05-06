@@ -1,11 +1,11 @@
 /* $Id$ */
 
-#ifndef ENGINES_H
-#define ENGINES_H
-
 /** @file table/engines.h
  *  This file contains all the data for vehicles
  */
+
+#ifndef ENGINES_H
+#define ENGINES_H
 
 enum {
 	RC_W = 0xFF, ///< Running cost price index (out of range) of wagons

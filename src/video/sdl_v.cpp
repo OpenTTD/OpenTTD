@@ -1,9 +1,10 @@
 /* $Id$ */
 
-#include "../stdafx.h"
+/** @file sdl_v.cpp Implementation of the SDL video driver. */
 
 #ifdef WITH_SDL
 
+#include "../stdafx.h"
 #include "../openttd.h"
 #include "../debug.h"
 #include "../gfx_func.h"

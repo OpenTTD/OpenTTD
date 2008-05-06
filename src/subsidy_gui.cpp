@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file subsidy_gui.cpp */
+/** @file subsidy_gui.cpp GUI for subsidies. */
 
 #include "stdafx.h"
 #include "openttd.h"

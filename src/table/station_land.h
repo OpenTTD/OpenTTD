@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file station_land.h Sprites to use and how to display them for station tiles. */
+
 #define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, {img, PAL_NONE} },
 #define TILE_SEQ_LINE_PAL(dx, dy, dz, sx, sy, sz, img, pal) { dx, dy, dz, sx, sy, sz, {img, pal} },
 #define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, {0, 0} }

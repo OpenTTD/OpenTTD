@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file water_land.h Sprites to use and how to display them for water tiles (depots/shiplifts). */
+
 struct WaterDrawTileStruct {
 	byte delta_x;
 	byte delta_y;

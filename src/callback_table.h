@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file callback_table.h  */
+/** @file callback_table.h Table with all command callbacks. */
 
 #ifndef CALLBACK_TABLE_H
 #define CALLBACK_TABLE_H

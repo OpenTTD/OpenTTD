@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ai.cpp Base for all AIs. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../variables.h"

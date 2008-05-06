@@ -1,6 +1,9 @@
 /* $Id$ */
 
+/** @file oldpool_func.h Functions related to the old pool. */
+
 #ifndef OLDPOOL_FUNC_H
+#define OLDPOOL_FUNC_H
 
 #include "oldpool.h"
 

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file rail.cpp */
+/** @file rail.cpp Implementation of rail specific functions. */
 
 #include "stdafx.h"
 #include "openttd.h"

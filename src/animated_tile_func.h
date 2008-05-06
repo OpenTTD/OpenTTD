@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file animated_tile.h Tile animation! */
+/** @file animated_tile_func.h Tile animation! */
 
 #ifndef ANIMATED_TILE_H
 #define ANIMATED_TILE_H

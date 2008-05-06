@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file map_func.h */
+/** @file map_func.h Functions related to maps. */
 
 #ifndef MAP_FUNC_H
 #define MAP_FUNC_H

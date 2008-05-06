@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file engine_gui.cpp */
+/** @file engine_gui.cpp GUI to show engine related information. */
 
 #include "stdafx.h"
 #include "openttd.h"

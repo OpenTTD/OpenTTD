@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file video_driver.hpp Base of all video drivers. */
+
 #ifndef VIDEO_VIDEO_DRIVER_HPP
 #define VIDEO_VIDEO_DRIVER_HPP
 

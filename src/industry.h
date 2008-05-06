@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file industry.h */
+/** @file industry.h Base of all industries. */
 
 #ifndef INDUSTRY_H
 #define INDUSTRY_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file transparency.h */
+/** @file transparency.h Functions related to transparency. */
 
 #ifndef TRANSPARENCY_H
 #define TRANSPARENCY_H

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file qtmidi.h Base of music playback via the QuickTime driver. */
+
 #ifndef MUSIC_MACOSX_QUICKTIME_H
 #define MUSIC_MACOSX_QUICKTIME_H
 

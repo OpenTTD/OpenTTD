@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file water_cmd.cpp */
+/** @file water_cmd.cpp Handling of water tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

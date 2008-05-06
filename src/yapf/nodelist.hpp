@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file nodelist.hpp */
+/** @file nodelist.hpp List of nodes used for the A-star pathfinder. */
 
 #ifndef  NODELIST_HPP
 #define  NODELIST_HPP

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file depot.h Base for all depots (except hangars) */
+/** @file depot_base.h Base for all depots (except hangars) */
 
 #ifndef DEPOT_BASE_H
 #define DEPOT_BASE_H

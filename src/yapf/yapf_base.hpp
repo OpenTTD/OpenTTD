@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_base.hpp */
+/** @file yapf_base.hpp Base classes for YAPF. */
 
 #ifndef  YAPF_BASE_HPP
 #define  YAPF_BASE_HPP

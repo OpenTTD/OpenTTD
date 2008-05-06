@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file thread.h */
+/** @file thread.h Base of all threads. */
 
 #ifndef THREAD_H
 #define THREAD_H

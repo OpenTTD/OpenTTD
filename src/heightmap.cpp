@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file heightmap.cpp */
+/** @file heightmap.cpp Creating of maps from heightmaps. */
 
 #include "stdafx.h"
 #include "openttd.h"

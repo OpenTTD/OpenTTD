@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_house.h */
+/** @file newgrf_house.h Functions related to NewGRF houses. */
 
 #ifndef NEWGRF_HOUSE_H
 #define NEWGRF_HOUSE_H

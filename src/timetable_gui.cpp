@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file timetable_gui.cpp */
+/** @file timetable_gui.cpp GUI for time tabling. */
 
 #include "stdafx.h"
 #include "openttd.h"

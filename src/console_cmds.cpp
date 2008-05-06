@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file console_cmds.cpp */
+/** @file console_cmds.cpp Implementation of the console hooks. */
 
 #include "stdafx.h"
 #include "openttd.h"

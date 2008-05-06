@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file depot.cpp */
+/** @file depot.cpp Handling of depots. */
 
 #include "stdafx.h"
 #include "openttd.h"

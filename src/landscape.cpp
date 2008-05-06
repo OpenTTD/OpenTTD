@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file landscape.cpp Functions related to the landscape (slopes etc.). */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"

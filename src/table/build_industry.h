@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file build_industry.h */
+/** @file build_industry.h Tables with default industry layouts and behaviours. */
 
 #ifndef BUILD_INDUSTRY_H
 #define BUILD_INDUSTRY_H

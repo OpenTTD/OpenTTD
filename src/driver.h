@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file driver.h */
+/** @file driver.h Base for all drivers (video, sound, music, etc). */
 
 #ifndef DRIVER_H
 #define DRIVER_H

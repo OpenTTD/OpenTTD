@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file genworld.h */
+/** @file genworld.h Functions related to world/map generation. */
 
 #ifndef GENWORLD_H
 #define GENWORLD_H

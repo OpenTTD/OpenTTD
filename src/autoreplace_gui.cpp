@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file autoreplace_gui.cpp */
+/** @file autoreplace_gui.cpp GUI for autoreplace handling. */
 
 #include "stdafx.h"
 #include "openttd.h"

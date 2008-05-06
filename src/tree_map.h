@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tree_map.h */
+/** @file tree_map.h Map accessors for tree tiles. */
 
 #ifndef TREE_MAP_H
 #define TREE_MAP_H

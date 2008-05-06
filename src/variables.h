@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file variables.h */
+/** @file variables.h Messing file that will cease to exist some time in the future. */
 
 #ifndef VARIABLES_H
 #define VARIABLES_H

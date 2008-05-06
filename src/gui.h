@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file gui.h */
+/** @file gui.h GUI functions that shouldn't be here. */
 
 #ifndef GUI_H
 #define GUI_H

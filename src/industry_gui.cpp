@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file industry_gui.cpp */
+/** @file industry_gui.cpp GUIs related to industries. */
 
 #include "stdafx.h"
 #include "openttd.h"

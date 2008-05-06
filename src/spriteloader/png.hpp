@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file png.hpp */
+/** @file png.hpp Base for reading files from PNG. */
 
 #ifndef SPRITELOADER_PNG_HPP
 #define SPRITELOADER_PNG_HPP

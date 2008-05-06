@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file vehicle.h Functions related to vehicles. */
+/** @file vehicle_func.h Functions related to vehicles. */
 
 #ifndef VEHICLE_FUNC_H
 #define VEHICLE_FUNC_H

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file sdl_s.h Base fo playing sound via SDL. */
+
 #ifndef SOUND_SDL_H
 #define SOUND_SDL_H
 

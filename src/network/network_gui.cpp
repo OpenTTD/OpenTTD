@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_gui.cpp Implementation of the Network related GUIs. */
+
 #ifdef ENABLE_NETWORK
 #include "../stdafx.h"
 #include "../openttd.h"

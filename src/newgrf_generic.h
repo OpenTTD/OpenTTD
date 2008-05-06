@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_generic.h Functions related to generic callbacks. */
+
 #ifndef NEWGRF_GENERIC_H
 #define NEWGRF_GENERIC_H
 

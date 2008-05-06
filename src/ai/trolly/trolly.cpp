@@ -1,6 +1,8 @@
 /* $Id$ */
 
-/*
+/**
+ * @file trolly.cpp Implementation of the trolly AI.
+ *
  * This AI was created as a direct reaction to the big demand for some good AIs
  * in OTTD. Too bad it never left alpha-stage, and it is considered dead in its
  * current form.

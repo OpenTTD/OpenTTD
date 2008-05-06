@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_server.h Server part of the network protocol. */
+
 #ifndef NETWORK_SERVER_H
 #define NETWORK_SERVER_H
 

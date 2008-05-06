@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bitmath_func.cpp */
+/** @file bitmath_func.cpp Functions related to bit mathematics. */
 
 #include "../stdafx.h"
 #include "bitmath_func.hpp"

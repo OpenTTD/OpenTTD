@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file road_map.h */
+/** @file road_map.h Map accessors for roads. */
 
 #ifndef ROAD_MAP_H
 #define ROAD_MAP_H

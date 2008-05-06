@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file town.h */
+/** @file town.h Base of the town class. */
 
 #ifndef TOWN_H
 #define TOWN_H

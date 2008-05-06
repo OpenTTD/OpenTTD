@@ -1,5 +1,6 @@
 /* $Id$ */
 
+/** @file news_gui.cpp GUI functions related to news messages. */
 
 #include "stdafx.h"
 #include "openttd.h"

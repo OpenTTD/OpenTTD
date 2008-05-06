@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file road_cmd.h */
+/** @file road_cmd.h Road related functions. */
 
 #ifndef ROAD_CMD_H
 #define ROAD_CMD_H

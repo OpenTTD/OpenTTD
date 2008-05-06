@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file waypoint.h */
+/** @file waypoint.h Base of waypoints. */
 
 #ifndef WAYPOINT_H
 #define WAYPOINT_H

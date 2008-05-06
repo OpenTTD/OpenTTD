@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file aystar.cpp */
+/** @file aystar.cpp Implementation of A*. */
 
 /*
  * This file has the core function for AyStar

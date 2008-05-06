@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file oldloader.cpp */
+/** @file oldloader.cpp Loading of old TTD(patch) savegames. */
 
 #include "stdafx.h"
 #include "openttd.h"

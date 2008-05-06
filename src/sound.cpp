@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file sound.cpp */
+/** @file sound.cpp Handling of playing sounds. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file spriteloader.hpp */
+/** @file spriteloader.hpp Base for loading sprites. */
 
 #ifndef SPRITELOADER_HPP
 #define SPRITELOADER_HPP

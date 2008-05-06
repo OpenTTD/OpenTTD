@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file os2_m.h Base for OS2 music playback. */
+
 #ifndef MUSIC_OS2_H
 #define MUSIC_OS2_H
 

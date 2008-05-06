@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file pathfind.h */
+/** @file pathfind.h The oldest pathfinder that's supported. */
 
 #ifndef PATHFIND_H
 #define PATHFIND_H

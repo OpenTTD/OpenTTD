@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file npf.cpp */
+/** @file npf.cpp Implementation of the NPF pathfinder. */
 
 #include "stdafx.h"
 #include "openttd.h"

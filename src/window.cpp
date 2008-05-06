@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file window.cpp windowing system, widgets and events */
+/** @file window.cpp Windowing system, widgets and events */
 
 #include "stdafx.h"
 #include <stdarg.h>

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file main_gui.cpp */
+/** @file statusbar_gui.cpp The GUI for the bottom status bar. */
 
 #include "stdafx.h"
 #include "openttd.h"

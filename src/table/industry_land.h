@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file industry_land.h */
+/** @file industry_land.h Information about the behaviour of the default industry tiles. */
 
 /**
  * This is used to gather some data about animation

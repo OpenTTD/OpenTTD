@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file 32bpp_simple.cpp Implementation of the simple 32 bpp blitter. */
+
 #include "../stdafx.h"
 #include "../gfx_func.h"
 #include "../zoom_func.h"

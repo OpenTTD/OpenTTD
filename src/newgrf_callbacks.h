@@ -1,11 +1,9 @@
 /* $Id$ */
 
-/** @file newgrf_callbacks.h
- */
+/** @file newgrf_callbacks.h Callbacks that NewGRFs could implement. */
 
 #ifndef NEWGRF_CALLBACKS_H
 #define NEWGRF_CALLBACKS_H
-
 
 /**
  * List of implemented NewGRF callbacks.

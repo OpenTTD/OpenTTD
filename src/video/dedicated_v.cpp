@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dedicated_v.cpp Dedicated server video 'driver'. */
+
 #include "../stdafx.h"
 
 #ifdef ENABLE_NETWORK

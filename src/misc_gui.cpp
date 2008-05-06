@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file misc_gui.cpp */
+/** @file misc_gui.cpp GUIs for a number of misc windows. */
 
 #include "stdafx.h"
 #include "openttd.h"

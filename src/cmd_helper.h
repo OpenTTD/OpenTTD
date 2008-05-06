@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file cmd_helper.h Helper functions to extract data from command parameters. */
+
 #ifndef CMD_HELPER_H
 #define CMD_HELPER_H
 

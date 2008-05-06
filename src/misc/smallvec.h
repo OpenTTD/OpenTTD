@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/* @file smallvec.h */
+/** @file smallvec.h Simple vector class that allows allocating an item without the need to copy data needlessly. */
 
 #ifndef SMALLVEC_H
 #define SMALLVEC_H

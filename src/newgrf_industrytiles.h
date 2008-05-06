@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_industrytiles.h */
+/** @file newgrf_industrytiles.h NewGRF handling of industry tiles. */
 
 #ifndef NEWGRF_INDUSTRYTILES_H
 #define NEWGRF_INDUSTRYTILES_H

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file 32bpp_anim.cpp Implementation of the optimized 32 bpp blitter with animation support. */
+
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
 #include "../gfx_func.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file libtimidity.cpp Playing music via the timidity library. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../sound_type.h"

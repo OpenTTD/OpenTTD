@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file 32bpp_base.cpp Implementation of base for 32 bpp blitters. */
+
 #include "../stdafx.h"
 #include "../gfx_func.h"
 #include "32bpp_base.hpp"

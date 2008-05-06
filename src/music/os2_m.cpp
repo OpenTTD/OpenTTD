@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file os2_m.cpp Music playback on OS/2. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "os2_m.h"

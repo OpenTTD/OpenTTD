@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file gfxinit.h */
+/** @file gfxinit.h Functions related to the graphics initialization. */
 
 #ifndef GFXINIT_H
 #define GFXINIT_H

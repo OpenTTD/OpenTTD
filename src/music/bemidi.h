@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file bemidi.h Base of BeOS Midi support. */
+
 #ifndef MUSIC_BEMIDI_H
 #define MUSIC_BEMIDI_H
 

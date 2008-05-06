@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tunnel_map.h */
+/** @file tunnel_map.h Map accessors for tunnels. */
 
 #ifndef TUNNEL_MAP_H
 #define TUNNEL_MAP_H

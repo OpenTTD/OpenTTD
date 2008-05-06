@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_debug.cpp */
+/** @file 8bpp_debug.cpp Implementation of 8 bpp debug blitter. */
 
 #include "../stdafx.h"
 #include "../zoom_func.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 32bpp_anim.hpp */
+/** @file 32bpp_anim.hpp A 32 bpp blitter with animation support. */
 
 #ifndef BLITTER_32BPP_ANIM_HPP
 #define BLITTER_32BPP_ANIM_HPP

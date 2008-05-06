@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file dmusic.cpp */
+/** @file dmusic.cpp Playing music via DirectMusic. */
 
 #ifdef WIN32_ENABLE_DIRECTMUSIC_SUPPORT
 

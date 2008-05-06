@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file md5.cpp */
+/** @file md5.cpp Creating MD5 checksums of files. */
 
 /*
   Copyright (C) 1999, 2000, 2002 Aladdin Enterprises.  All rights reserved.

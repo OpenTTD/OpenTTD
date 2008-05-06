@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file splash.h Functions to support splash screens for OSX. */
+
 #ifndef SPLASH_H
 #define SPLASH_H
 

@@ -1,12 +1,13 @@
 /* $Id$ */
-#ifndef NEWGRF_TOWNNAME_H
-#define NEWGRF_TOWNNAME_H
-
-#include "strings_type.h"
 
 /** @file newgrf_townname.h
  * Header of Action 0F "universal holder" structure and functions
  */
+
+#ifndef NEWGRF_TOWNNAME_H
+#define NEWGRF_TOWNNAME_H
+
+#include "strings_type.h"
 
 struct NamePart {
 	byte prob;     ///< The relative probablity of the following name to appear in the bottom 7 bits.

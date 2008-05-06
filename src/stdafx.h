@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file stdafx.h */
+/** @file stdafx.h Definition of base types and functions in a cross-platform compatible way. */
 
 #ifndef STDAFX_H
 #define STDAFX_H

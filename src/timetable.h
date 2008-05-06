@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file timetable.h */
+/** @file timetable.h Functions related to time tabling. */
 
 #ifndef TIMETABLE_H
 #define TIMETABLE_H

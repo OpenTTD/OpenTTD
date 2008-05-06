@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file fontcache.h Functions to read fonts from files and cache them. */
+
 #ifndef FONTCACHE_H
 #define FONTCACHE_H
 

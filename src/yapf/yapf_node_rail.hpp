@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_node_rail.hpp */
+/** @file yapf_node_rail.hpp Node tailored for rail pathfinding. */
 
 #ifndef  YAPF_NODE_RAIL_HPP
 #define  YAPF_NODE_RAIL_HPP

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file signs.cpp */
+/** @file signs.cpp Handling of signs. */
 
 #include "stdafx.h"
 #include "openttd.h"

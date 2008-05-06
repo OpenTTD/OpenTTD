@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file extmidi.cpp Playing music via an external player. */
+
 #ifndef __MORPHOS__
 #include "../stdafx.h"
 #include "../openttd.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file default.cpp The original AI. */
+
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../aircraft.h"

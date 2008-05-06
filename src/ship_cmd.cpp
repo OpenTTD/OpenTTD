@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file ship_cmd.cpp */
+/** @file ship_cmd.cpp Handling of ships. */
 
 #include "stdafx.h"
 #include "openttd.h"

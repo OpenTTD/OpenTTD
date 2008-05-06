@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file landscape.h */
+/** @file landscape.h Functions related to OTTD's landscape. */
 
 #ifndef LANDSCAPE_H
 #define LANDSCAPE_H

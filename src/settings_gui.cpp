@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file settings_gui.cpp */
+/** @file settings_gui.cpp GUI for settings. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file ship_gui.cpp */
+/** @file ship_gui.cpp GUI for ships. */
 
 #include "stdafx.h"
 #include "openttd.h"

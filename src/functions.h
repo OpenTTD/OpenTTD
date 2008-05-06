@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file functions.h */
+/** @file functions.h Some generic functions that actually shouldn't be here. */
 
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H

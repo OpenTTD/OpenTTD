@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dedicated_v.h Base for the dedicated video driver. */
+
 #ifndef VIDEO_DEDICATED_H
 #define VIDEO_DEDICATED_H
 

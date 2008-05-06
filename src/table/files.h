@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file files.h MD5 checksum information and names of the original and extra data files. */
+
 /*
 	MD5 sums of graphics files
 

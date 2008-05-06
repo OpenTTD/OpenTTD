@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file cargotype.h */
+/** @file cargotype.h Types/functions related to cargos. */
 
 #ifndef CARGOTYPE_H
 #define CARGOTYPE_H

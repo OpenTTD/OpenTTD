@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file vehicle.cpp */
+/** @file vehicle.cpp Base implementations of all vehicles. */
 
 #include "stdafx.h"
 #include "openttd.h"

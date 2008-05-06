@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file null_s.h Base for the sound of silence. */
+
 #ifndef SOUND_NULL_H
 #define SOUND_NULL_H
 

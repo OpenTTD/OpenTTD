@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_debug.hpp */
+/** @file 8bpp_debug.hpp A 8 bpp blitter that uses random colours to show the drawn sprites. */
 
 #ifndef BLITTER_8BPP_DEBUG_HPP
 #define BLITTER_8BPP_DEBUG_HPP

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/* Table of all default cargo types */
+/** @file cargo_const.h Table of all default cargo types */
 
 #define MK(bt, label, c, e, f, g, h, fr, te, ks1, ks2, ks3, ks4, ks5, l, m) \
           {bt, label, 0, c, c, e, f, {g, h}, fr, te, 0, 0, ks1, ks2, ks3, ks4, ks5, l, m, NULL}

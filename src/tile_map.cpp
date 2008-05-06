@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tile_map.cpp */
+/** @file tile_map.cpp Global tile accessors. */
 
 #include "stdafx.h"
 #include "openttd.h"

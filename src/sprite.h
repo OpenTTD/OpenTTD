@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file sprite.h */
+/** @file sprite.h Base for drawing complex sprites. */
 
 #ifndef SPRITE_H
 #define SPRITE_H

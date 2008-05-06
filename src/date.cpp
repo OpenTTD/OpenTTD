@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file date.cpp */
+/** @file date.cpp Handling of dates in our native format and transforming them to something human readable. */
 
 #include "stdafx.h"
 #include "openttd.h"

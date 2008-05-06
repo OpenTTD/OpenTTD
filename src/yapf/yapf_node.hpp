@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_node.hpp */
+/** @file yapf_node.hpp Node in the pathfinder's graph. */
 
 #ifndef  YAPF_NODE_HPP
 #define  YAPF_NODE_HPP

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file oldpool.cpp */
+/** @file oldpool.cpp Implementation of the old pool. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file base.hpp Base for all blitters. */
+
 #ifndef BLITTER_BASE_HPP
 #define BLITTER_BASE_HPP
 

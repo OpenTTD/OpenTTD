@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 32bpp_optimized.hpp */
+/** @file 32bpp_optimized.hpp Optimized 32 bpp blitter. */
 
 #ifndef BLITTER_32BPP_OPTIMIZED_HPP
 #define BLITTER_32BPP_OPTIMIZED_HPP

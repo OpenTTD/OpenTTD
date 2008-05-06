@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_road.cpp */
+/** @file yapf_road.cpp The road pathfinding. */
 
 #include "../stdafx.h"
 #include "../depot_base.h"

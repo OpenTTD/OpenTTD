@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bitmath_func.hpp */
+/** @file bitmath_func.hpp Functions related to bit mathematics. */
 
 #ifndef BITMATH_FUNC_HPP
 #define BITMATH_FUNC_HPP

@@ -1,6 +1,7 @@
 /* $Id$ */
 
-/** @file dbg_helpers.cpp */
+/** @file dbg_helpers.cpp Helpers for outputting debug information. */
+
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../direction_type.h"

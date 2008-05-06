@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file order_base.h */
+/** @file order_base.h Base class for orders. */
 
 #ifndef ORDER_BASE_H
 #define ORDER_BASE_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file grf.hpp */
+/** @file grf.hpp Base for reading sprites from (New)GRFs. */
 
 #ifndef SPRITELOADER_GRF_HPP
 #define SPRITELOADER_GRF_HPP

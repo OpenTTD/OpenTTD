@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32_m.h Base for Windows music playback. */
+
 #ifndef MUSIC_WIN32_H
 #define MUSIC_WIN32_H
 

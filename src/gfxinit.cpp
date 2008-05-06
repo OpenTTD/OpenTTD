@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file gfxinit.cpp */
+/** @file gfxinit.cpp Initializing of the (GRF) graphics. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file md5.h */
+/** @file md5.h Functions to create MD5 checksums. */
 
 /*
   Copyright (C) 1999, 2002 Aladdin Enterprises.  All rights reserved.

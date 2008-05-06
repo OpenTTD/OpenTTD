@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file newgrf_generic.cpp Handling of generic feature callbacks. */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"

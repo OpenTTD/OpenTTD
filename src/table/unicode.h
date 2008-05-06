@@ -1,5 +1,6 @@
 /* $Id$ */
 
+/** @file unicode.h Character mapping for using Unicode characters in OTTD. */
 
 struct DefaultUnicodeMapping {
 	WChar code; ///< Unicode value

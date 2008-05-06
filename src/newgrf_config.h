@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_config.h */
+/** @file newgrf_config.h Functions to find and configure NewGRFs. */
 
 #ifndef NEWGRF_CONFIG_H
 #define NEWGRF_CONFIG_H

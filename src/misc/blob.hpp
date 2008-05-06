@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file blob.hpp */
+/** @file blob.hpp Support for storing random binary data. */
 
 #ifndef BLOB_HPP
 #define BLOB_HPP

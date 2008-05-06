@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file misc.cpp */
+/** @file cheat.cpp Handling (loading/saving/initializing) of cheats. */
 
 #include "stdafx.h"
 #include "saveload.h"

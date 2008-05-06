@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file binaryheap.hpp */
+/** @file binaryheap.hpp Binary heap implementation. */
 
 #ifndef  BINARYHEAP_HPP
 #define  BINARYHEAP_HPP

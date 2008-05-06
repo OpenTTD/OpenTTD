@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file unix.cpp */
+/** @file unix.cpp Implementation of Unix specific file handling. */
 
 #include "stdafx.h"
 #include "openttd.h"

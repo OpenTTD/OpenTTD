@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file screenshot.cpp The creation of screenshots! */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file fiber.hpp */
+/** @file fiber.hpp Base for all fiber related classes. */
 
 #ifndef FIBER_HPP
 #define FIBER_HPP

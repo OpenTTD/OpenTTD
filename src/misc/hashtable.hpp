@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file hashtable.hpp */
+/** @file hashtable.hpp Hash table support. */
 
 #ifndef  HASHTABLE_HPP
 #define  HASHTABLE_HPP

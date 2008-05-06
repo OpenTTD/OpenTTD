@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file dummy_land.cpp */
+/** @file dummy_land.cpp Handling of void (or dummy) tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

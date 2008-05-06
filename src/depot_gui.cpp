@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file depot_gui.cpp */
+/** @file depot_gui.cpp The GUI for depots. */
 
 #include "stdafx.h"
 #include "openttd.h"

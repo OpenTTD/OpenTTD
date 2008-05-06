@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file vehicle_gui.h */
+/** @file vehicle_gui.h Functions related to the vehicle's GUIs. */
 
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file train_gui.cpp */
+/** @file train_gui.cpp GUI for trains. */
 
 #include "stdafx.h"
 #include "openttd.h"

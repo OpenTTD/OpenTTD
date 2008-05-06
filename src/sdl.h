@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file sdl.h */
+/** @file sdl.h SDL support. */
 
 #ifndef SDL_H
 #define SDL_H

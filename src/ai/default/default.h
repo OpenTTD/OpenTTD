@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file default.h The original AI. */
+
 #ifndef DEFAULT_H
 #define DEFAULT_H
 

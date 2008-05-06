@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_optimized.cpp */
+/** @file 8bpp_optimized.cpp Implementation of the optimized 8 bpp blitter. */
 
 #include "../stdafx.h"
 #include "../zoom_func.h"

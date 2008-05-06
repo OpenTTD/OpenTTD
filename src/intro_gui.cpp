@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file intro_gui.cpp */
+/** @file intro_gui.cpp The main menu GUI. */
 
 #include "stdafx.h"
 #include "openttd.h"

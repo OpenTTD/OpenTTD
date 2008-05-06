@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file png.cpp */
+/** @file png.cpp Reading sprites from png files. */
 
 #ifdef WITH_PNG
 

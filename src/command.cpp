@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file command.cpp */
+/** @file command.cpp Handling of commands. */
 
 #include "stdafx.h"
 #include "openttd.h"

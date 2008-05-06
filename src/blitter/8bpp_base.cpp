@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file 8bpp_base.cpp Implementation of the base for all 8 bpp blitters. */
+
 #include "../stdafx.h"
 #include "../gfx_func.h"
 #include "8bpp_base.hpp"

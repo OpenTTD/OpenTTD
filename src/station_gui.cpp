@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file station_gui.cpp */
+/** @file station_gui.cpp The GUI for stations. */
 
 #include "stdafx.h"
 #include "openttd.h"

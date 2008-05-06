@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file npf.h */
+/** @file npf.h New A* pathfinder. */
 
 #ifndef NPF_H
 #define NPF_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file train_cmd.cpp */
+/** @file train_cmd.cpp Handling of trains. */
 
 #include "stdafx.h"
 #include "openttd.h"

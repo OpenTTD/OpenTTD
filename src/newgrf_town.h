@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_town.h */
+/** @file newgrf_town.h Functions to handle the town part of NewGRF towns. */
 
 #ifndef NEWGRF_TOWN_H
 #define NEWGRF_TOWN_H

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file namegen.h Town name generator stuff. */
+/** @file namegen_func.h Town name generator stuff. */
 
 #ifndef NAMEGEN_H
 #define NAMEGEN_H

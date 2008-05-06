@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file rail_cmd.cpp */
+/** @file rail_cmd.cpp Handling of rail tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

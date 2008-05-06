@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file currency.cpp **/
+/** @file currency.cpp Support for different currencies. */
 
 #include "stdafx.h"
 #include "openttd.h"

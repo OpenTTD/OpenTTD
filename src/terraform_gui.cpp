@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file terraform_gui.cpp */
+/** @file terraform_gui.cpp GUI related to terraforming the map. */
 
 #include "stdafx.h"
 #include "openttd.h"

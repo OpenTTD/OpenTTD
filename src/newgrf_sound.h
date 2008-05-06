@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_sound.h */
+/** @file newgrf_sound.h Functions related to NewGRF provided sounds. */
 
 #ifndef NEWGRF_SOUND_H
 #define NEWGRF_SOUND_H

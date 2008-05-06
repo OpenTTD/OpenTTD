@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file rail.h */
+/** @file rail.h Rail specific functions. */
 
 #ifndef RAIL_H
 #define RAIL_H

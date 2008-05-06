@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_config.cpp */
+/** @file newgrf_config.cpp Finding NewGRFs and configuring them. */
 
 #include "stdafx.h"
 #include "openttd.h"

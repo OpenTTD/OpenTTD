@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file livery.h */
+/** @file livery.h Functions/types related to livery colours. */
 
 #ifndef LIVERY_H
 #define LIVERY_H

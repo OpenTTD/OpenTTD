@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file water_map.h */
+/** @file water_map.h Map accessors for water tiles. */
 
 #ifndef WATER_MAP_H
 #define WATER_MAP_H

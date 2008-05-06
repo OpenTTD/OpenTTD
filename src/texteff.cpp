@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file texteff.cpp */
+/** @file texteff.cpp Handling of text effects. */
 
 #include "stdafx.h"
 #include "openttd.h"

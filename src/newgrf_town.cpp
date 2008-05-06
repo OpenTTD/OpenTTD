@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_town.cpp */
+/** @file newgrf_town.cpp Implementation of the town part of NewGRF houses. */
 
 #include "stdafx.h"
 #include "openttd.h"

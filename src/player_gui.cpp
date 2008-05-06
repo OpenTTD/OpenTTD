@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file player_gui.cpp */
+/** @file player_gui.cpp Player related GUIs. */
 
 #include "stdafx.h"
 #include "openttd.h"

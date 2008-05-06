@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file timetable_cmd.cpp */
+/** @file timetable_cmd.cpp Commands related to time tabling. */
 
 #include "stdafx.h"
 #include "openttd.h"

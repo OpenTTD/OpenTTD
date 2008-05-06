@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file tree_cmd.cpp */
+/** @file tree_cmd.cpp Handling of tree tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

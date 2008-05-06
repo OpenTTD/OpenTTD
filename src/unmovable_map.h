@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file unmovable_map.h */
+/** @file unmovable_map.h Map accessors for unmovable tiles. */
 
 #ifndef UNMOVABLE_MAP_H
 #define UNMOVABLE_MAP_H

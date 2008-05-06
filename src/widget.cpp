@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file widget.cpp */
+/** @file widget.cpp Handling of the default/simple widgets. */
 
 #include "stdafx.h"
 #include "openttd.h"

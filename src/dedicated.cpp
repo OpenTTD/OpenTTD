@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file dedicated.cpp */
+/** @file dedicated.cpp Forking support for dedicated servers. */
 
 #include "stdafx.h"
 

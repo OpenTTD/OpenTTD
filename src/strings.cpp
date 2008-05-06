@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file strings.cpp */
+/** @file strings.cpp Handling of translated strings. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_industries.cpp */
+/** @file newgrf_industries.cpp Handling of NewGRF industries. */
 
 #include "stdafx.h"
 #include "openttd.h"

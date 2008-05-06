@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file win32_m.cpp Music playback for Windows. */
+
 #include "../stdafx.h"
 #include "win32_m.h"
 #include <windows.h>

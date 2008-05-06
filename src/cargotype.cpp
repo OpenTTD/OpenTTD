@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file cargotype.cpp */
+/** @file cargotype.cpp Implementation of cargos. */
 
 #include "stdafx.h"
 #include "openttd.h"

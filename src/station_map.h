@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file station_map.h */
+/** @file station_map.h Maps accessors for stations. */
 
 #ifndef STATION_MAP_H
 #define STATION_MAP_H

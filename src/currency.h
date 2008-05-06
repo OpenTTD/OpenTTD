@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file currency.h */
+/** @file currency.h Functions to handle different currencies. */
 
 #ifndef CURRENCY_H
 #define CURRENCY_H

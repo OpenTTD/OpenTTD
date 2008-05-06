@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file main_gui.cpp */
+/** @file main_gui.cpp Handling of the main viewport. */
 
 #include "stdafx.h"
 #include "openttd.h"

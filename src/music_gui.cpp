@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file music_gui.cpp */
+/** @file music_gui.cpp GUI for the music playback. */
 
 #include "stdafx.h"
 #include "openttd.h"

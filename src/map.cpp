@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file map.cpp */
+/** @file map.cpp Base functions related to the map and distances on them. */
 
 #include "stdafx.h"
 #include "debug.h"

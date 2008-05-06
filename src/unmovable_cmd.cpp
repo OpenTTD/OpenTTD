@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file unmovable_cmd.cpp */
+/** @file unmovable_cmd.cpp Handling of unmovable tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

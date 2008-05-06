@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file dropdown_type.h Types related to the drop down widget. */
+
 #ifndef WIDGETS_DROPDOWN_TYPE_H
 #define WIDGETS_DROPDOWN_TYPE_H
 

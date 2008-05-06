@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file endian_func.hpp */
+/** @file endian_func.hpp Function to handling different endian machines. */
 
 #ifndef ENDIAN_FUNC_H
 #define ENDIAN_FUNC_H

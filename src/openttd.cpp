@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file openttd.cpp */
+/** @file openttd.cpp Functions related to starting OpenTTD. */
 
 #include "stdafx.h"
 

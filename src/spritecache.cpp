@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file spritecache.cpp */
+/** @file spritecache.cpp Caching of sprites. */
 
 #include "stdafx.h"
 #include "openttd.h"

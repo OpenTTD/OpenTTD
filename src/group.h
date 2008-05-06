@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file group.h */
+/** @file group.h Base class from groups. */
 
 #ifndef GROUP_H
 #define GROUP_H

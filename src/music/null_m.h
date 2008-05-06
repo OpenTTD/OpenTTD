@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file null_m.h Base for the silent music playback. */
+
 #ifndef MUSIC_NULL_H
 #define MUSIC_NULL_H
 

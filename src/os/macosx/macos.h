@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file macos.h Functions related to MacOS support. */
+
 #ifndef MACOS_H
 #define MACOS_H
 

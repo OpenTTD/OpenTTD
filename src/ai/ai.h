@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ai.h Base functions for all AIs. */
+
 #ifndef AI_H
 #define AI_H
 

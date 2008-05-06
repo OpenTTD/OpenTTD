@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_costrail.hpp */
+/** @file yapf_costrail.hpp Cost determination for rails. */
 
 #ifndef  YAPF_COSTRAIL_HPP
 #define  YAPF_COSTRAIL_HPP

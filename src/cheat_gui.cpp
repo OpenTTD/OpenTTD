@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file misc_gui.cpp */
+/** @file cheat_gui.cpp GUI related to cheating. */
 
 #include "stdafx.h"
 #include "openttd.h"

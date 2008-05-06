@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file queue.cpp */
+/** @file queue.cpp Implementation of the Queue/Hash. */
 
 #include "stdafx.h"
 #include "openttd.h"

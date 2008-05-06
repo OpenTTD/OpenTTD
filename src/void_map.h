@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file void_map.h */
+/** @file void_map.h Map accessors for void tiles. */
 
 #ifndef VOID_MAP_H
 #define VOID_MAP_H

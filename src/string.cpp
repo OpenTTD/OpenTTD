@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file string.cpp */
+/** @file string.cpp Handling of C-type strings (char*). */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file array.hpp */
+/** @file array.hpp Array without an explicit maximum size. */
 
 #ifndef  ARRAY_HPP
 #define  ARRAY_HPP

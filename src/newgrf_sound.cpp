@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_sound.cpp */
+/** @file newgrf_sound.cpp Handling NewGRF provided sounds. */
 
 #include "stdafx.h"
 #include "openttd.h"

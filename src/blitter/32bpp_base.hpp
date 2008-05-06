@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 32bpp_base.hpp */
+/** @file 32bpp_base.hpp Base for all 32 bits blitters. */
 
 #ifndef BLITTER_32BPP_BASE_HPP
 #define BLITTER_32BPP_BASE_HPP

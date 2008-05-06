@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file clear_land.h Tables with sprites for clear land and fences. */
+
 static const SpriteID _landscape_clear_sprites[8] = {
 	0xFA0,
 	0xFB3,

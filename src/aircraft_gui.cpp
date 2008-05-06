@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file aircraft_gui.cpp */
+/** @file aircraft_gui.cpp The GUI of aircraft. */
 
 #include "stdafx.h"
 #include "openttd.h"

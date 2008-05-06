@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_base.hpp */
+/** @file 8bpp_base.hpp Base for all 8 bpp blitters. */
 
 #ifndef BLITTER_8BPP_BASE_HPP
 #define BLITTER_8BPP_BASE_HPP

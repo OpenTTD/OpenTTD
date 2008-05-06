@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file cocoa_keys.h Mappings of Cocoa keys. */
+
 #ifndef COCOA_KEYS_H
 #define COCOA_KEYS_H
 

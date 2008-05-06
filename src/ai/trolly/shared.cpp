@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file shared.cpp Shared functions for the trolly AI. */
+
 #include "../../stdafx.h"
 #include "../../openttd.h"
 #include "../../debug.h"

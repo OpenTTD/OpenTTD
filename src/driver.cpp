@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file driver.cpp */
+/** @file driver.cpp Base for all driver handling. */
 
 #include "stdafx.h"
 #include "openttd.h"

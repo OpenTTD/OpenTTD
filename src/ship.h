@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file ship.h */
+/** @file ship.h Base for ships. */
 
 #ifndef SHIP_H
 #define SHIP_H

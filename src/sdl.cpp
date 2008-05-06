@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file sdl.cpp */
+/** @file sdl.cpp Implementation of SDL support. */
 
 #include "stdafx.h"
 

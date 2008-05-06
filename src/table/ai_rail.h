@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file ai_rail.h Tables that the default AI uses to build tracks/stations. */
+
 struct AiDefaultBlockData {
 	byte mode;
 	DiagDirection attr;

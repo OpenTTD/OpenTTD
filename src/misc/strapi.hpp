@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file strapi.hpp */
+/** @file strapi.hpp More string formatting? */
 
 #ifndef  STRAPI_HPP
 #define  STRAPI_HPP

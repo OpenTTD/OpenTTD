@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file trolly.h Functions/defines related to the trolly AI. */
+
 #ifndef AI_TROLLY_H
 #define AI_TROLLY_H
 

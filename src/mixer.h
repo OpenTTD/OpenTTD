@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file mixer.h */
+/** @file mixer.h Functions to mix sound samples. */
 
 #ifndef MIXER_H
 #define MIXER_H

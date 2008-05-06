@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file oldpool.h */
+/** @file oldpool.h Base for the old pool. */
 
 #ifndef OLDPOOL_H
 #define OLDPOOL_H

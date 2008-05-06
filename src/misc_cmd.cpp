@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file misc_cmd.cpp */
+/** @file misc_cmd.cpp Some misc functions that are better fitted in other files, but never got moved there... */
 
 #include "stdafx.h"
 #include "openttd.h"

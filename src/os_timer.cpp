@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file os_timer.cpp */
+/** @file os_timer.cpp OS/compiler dependant real time tick sampling. */
 
 #include "stdafx.h"
 

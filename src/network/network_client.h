@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_client.h Client part of the network protocol. */
+
 #ifndef NETWORK_CLIENT_H
 #define NETWORK_CLIENT_H
 

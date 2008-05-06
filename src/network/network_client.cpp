@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_client.cpp Client part of the network protocol. */
+
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"

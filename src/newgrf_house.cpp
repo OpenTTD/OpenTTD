@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_house.cpp */
+/** @file newgrf_house.cpp Implementation of NewGRF houses. */
 
 #include "stdafx.h"
 #include "openttd.h"

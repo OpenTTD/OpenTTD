@@ -1,4 +1,3 @@
-
 /* $Id$ */
 
 /** @file alloc_type.hpp Helper types related to the allocation of memory */

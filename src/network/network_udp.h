@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file network_udp.h Sending and receiving UDP messages. */
+
 #ifndef NETWORK_UDP_H
 #define NETWORK_UDP_H
 

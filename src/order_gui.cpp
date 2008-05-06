@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file order_gui.cpp */
+/** @file order_gui.cpp GUI related to orders. */
 
 #include "stdafx.h"
 #include "openttd.h"

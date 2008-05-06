@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file landscape_sprite.h Offsets of sprites to replace for non-temperate landscapes. */
+
 enum {
 	END  = 0xFFFF
 };

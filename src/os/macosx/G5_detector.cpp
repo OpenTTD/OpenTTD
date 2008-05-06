@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file G5_detector.cpp Detection for G5 machines (PowerPC). */
+
 #include <mach/mach.h>
 #include <mach/mach_host.h>
 #include <mach/host_info.h>

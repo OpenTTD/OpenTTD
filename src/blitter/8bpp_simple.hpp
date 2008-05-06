@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file 8bpp_simple.hpp */
+/** @file 8bpp_simple.hpp Simple (and slow) 8 bpp blitter. */
 
 #ifndef BLITTER_8BPP_SIMPLE_HPP
 #define BLITTER_8BPP_SIMPLE_HPP

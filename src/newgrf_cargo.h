@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_cargo.h */
+/** @file newgrf_cargo.h Cargo support for NewGRFs. */
 
 #ifndef NEWGRF_CARGO_H
 #define NEWGRF_CARGO_H

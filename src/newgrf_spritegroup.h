@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_spritegroup.h */
+/** @file newgrf_spritegroup.h Action 2 handling. */
 
 #ifndef NEWGRF_SPRITEGROUP_H
 #define NEWGRF_SPRITEGROUP_H

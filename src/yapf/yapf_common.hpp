@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_common.hpp */
+/** @file yapf_common.hpp Commonly used classes for YAPF. */
 
 #ifndef  YAPF_COMMON_HPP
 #define  YAPF_COMMON_HPP

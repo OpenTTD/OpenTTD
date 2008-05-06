@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file debug.h */
+/** @file debug.h Functions related to debugging. */
 
 #ifndef DEBUG_H
 #define DEBUG_H

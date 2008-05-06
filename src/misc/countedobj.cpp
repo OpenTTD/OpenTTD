@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file countedobj.cpp Support for reference counted objects. */
+
 #include "../stdafx.h"
 
 #include "countedptr.hpp"

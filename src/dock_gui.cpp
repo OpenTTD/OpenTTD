@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file dock_gui.cpp */
+/** @file dock_gui.cpp GUI to create amazing water objects. */
 
 #include "stdafx.h"
 #include "openttd.h"

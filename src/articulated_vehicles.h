@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file articulated_vehicles.h */
+/** @file articulated_vehicles.h Functions related to articulated vehicles. */
 
 #ifndef ARTICULATED_VEHICLES_H
 #define ARTICULATED_VEHICLES_H

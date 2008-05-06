@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file console.cpp */
+/** @file console.cpp Handling of the in-game console. */
 
 #include "stdafx.h"
 #include "openttd.h"

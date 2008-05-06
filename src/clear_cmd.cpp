@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file clear_cmd.cpp */
+/** @file clear_cmd.cpp Commands related to clear tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file null_v.h Base of the video driver that doesn't blit. */
+
 #ifndef VIDEO_NULL_H
 #define VIDEO_NULL_H
 

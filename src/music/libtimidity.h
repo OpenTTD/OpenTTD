@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file libtimidity.h Base for LibTimidity music playback. */
+
 #ifndef MUSIC_LIBTIMIDITY_H
 #define MUSIC_LIBTIMIDITY_H
 

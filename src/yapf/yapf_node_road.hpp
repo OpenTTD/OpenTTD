@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_node_road.hpp */
+/** @file yapf_node_road.hpp Node tailored for road pathfinding. */
 
 #ifndef  YAPF_NODE_ROAD_HPP
 #define  YAPF_NODE_ROAD_HPP

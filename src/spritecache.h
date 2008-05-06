@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file spritecache.h */
+/** @file spritecache.h Functions to cache sprites in memory. */
 
 #ifndef SPRITECACHE_H
 #define SPRITECACHE_H

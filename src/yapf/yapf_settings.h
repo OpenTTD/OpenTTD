@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_settings.h */
+/** @file yapf_settings.h Penalty settings for YAPF. */
 
 #if !defined(YAPF_SETTINGS_H) || defined(YS_DEF)
 

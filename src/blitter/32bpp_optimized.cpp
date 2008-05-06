@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file 32bpp_optimized.cpp Implementation of the optimized 32 bpp blitter. */
+
 #include "../stdafx.h"
 #include "../zoom_func.h"
 #include "../gfx_func.h"

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file autorail.h Highlight/sprite information for autorail. */
+
 /* Rail selection types (directions):
  *  / \    / \    / \    / \   / \   / \
  * /  /\  /\  \  /===\  /   \ /|  \ /  |\

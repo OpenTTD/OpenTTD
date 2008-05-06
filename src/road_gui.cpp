@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file road_gui.cpp */
+/** @file road_gui.cpp GUI for building roads. */
 
 #include "stdafx.h"
 #include "openttd.h"

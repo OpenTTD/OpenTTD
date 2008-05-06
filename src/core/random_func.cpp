@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file random_func.cpp */
+/** @file random_func.cpp Implementation of the pseudo random generator. */
 
 #include "../stdafx.h"
 #include "random_func.hpp"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file crc32.hpp */
+/** @file crc32.hpp Cyclic reduncancy check support. */
 
 #ifndef  CRC32_HPP
 #define  CRC32_HPP

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file cocoa_s.cpp Sound driver for cocoa. */
+
 /*****************************************************************************
  *                             Cocoa sound driver                            *
  * Known things left to do:                                                  *

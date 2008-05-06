@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file queue.h */
+/** @file queue.h Simple Queue/Hash implementations. */
 
 #ifndef QUEUE_H
 #define QUEUE_H

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file transparency_gui.cpp The transparency GUI. */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "gui.h"

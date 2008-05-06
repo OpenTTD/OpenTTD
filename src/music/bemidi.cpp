@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bemidi.cpp */
+/** @file bemidi.cpp Support for BeOS midi. */
 
 #include "../stdafx.h"
 #include "../openttd.h"

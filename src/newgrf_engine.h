@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_engine.h */
+/** @file newgrf_engine.h Functions for NewGRF engines. */
 
 #ifndef NEWGRF_ENGINE_H
 #define NEWGRF_ENGINE_H

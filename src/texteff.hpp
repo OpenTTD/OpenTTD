@@ -1,5 +1,7 @@
 /* $Id$ */
 
+/** @file texteff.hpp Functions related to text effects. */
+
 #ifndef TEXTEFF_HPP
 #define TEXTEFF_HPP
 

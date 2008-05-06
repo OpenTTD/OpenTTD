@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file bmp.h */
+/** @file bmp.h Read and write support for bmps. */
 
 #ifndef BMP_H
 #define BMP_H

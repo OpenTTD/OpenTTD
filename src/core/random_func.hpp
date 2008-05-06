@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file random_func.hpp */
+/** @file random_func.hpp Pseudo random number generator. */
 
 #ifndef RANDOM_FUNC_HPP
 #define RANDOM_FUNC_HPP

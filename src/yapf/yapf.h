@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf.h */
+/** @file yapf.h Entry point for OpenTTD to YAPF. */
 
 #ifndef  YAPF_H
 #define  YAPF_H

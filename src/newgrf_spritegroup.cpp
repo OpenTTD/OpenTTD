@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_spritegroup.cpp */
+/** @file newgrf_spritegroup.cpp Handling of primarily NewGRF action 2. */
 
 #include "stdafx.h"
 #include "openttd.h"

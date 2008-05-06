@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file airport.cpp */
+/** @file airport.cpp Functions related to airports. */
 
 #include "stdafx.h"
 #include "openttd.h"

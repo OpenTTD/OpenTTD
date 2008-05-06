@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_destrail.hpp */
+/** @file yapf_destrail.hpp Determining the destination for rail vehicles. */
 
 #ifndef  YAPF_DESTRAIL_HPP
 #define  YAPF_DESTRAIL_HPP

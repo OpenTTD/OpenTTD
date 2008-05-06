@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file station_cmd.cpp */
+/** @file station_cmd.cpp Handling of station tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

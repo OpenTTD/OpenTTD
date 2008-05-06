@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file industry_cmd.cpp */
+/** @file industry_cmd.cpp Handling of industry tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

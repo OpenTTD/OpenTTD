@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file town_gui.cpp */
+/** @file town_gui.cpp GUI for towns. */
 
 #include "stdafx.h"
 #include "openttd.h"

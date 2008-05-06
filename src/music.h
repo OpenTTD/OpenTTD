@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file music.h */
+/** @file music.h Base for the music handling. */
 
 #ifndef MUSIC_H
 #define MUSIC_H

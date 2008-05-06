@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file cargopacket.h */
+/** @file cargopacket.h Base class for cargo packets. */
 
 #ifndef CARGOPACKET_H
 #define CARGOPACKET_H

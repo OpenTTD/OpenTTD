@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file fontcache.cpp */
+/** @file fontcache.cpp Cache for characters from fonts. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file dbg_helpers.h */
+/** @file dbg_helpers.h Functions to be used for debug printings. */
 
 #ifndef DBG_HELPERS
 #define DBG_HELPERS

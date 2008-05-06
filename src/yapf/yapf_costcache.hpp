@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file yapf_costcache.hpp */
+/** @file yapf_costcache.hpp Caching of segment costs. */
 
 #ifndef  YAPF_COSTCACHE_HPP
 #define  YAPF_COSTCACHE_HPP

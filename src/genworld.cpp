@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file genworld.cpp */
+/** @file genworld.cpp Functions to generate a map. */
 
 #include "stdafx.h"
 #include "openttd.h"

@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file newgrf_industrytiles.cpp */
+/** @file newgrf_industrytiles.cpp NewGRF handling of industry tiles. */
 
 #include "stdafx.h"
 #include "openttd.h"

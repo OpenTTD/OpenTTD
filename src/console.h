@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file console.h */
+/** @file console.h In-game console. */
 
 #ifndef CONSOLE_H
 #define CONSOLE_H

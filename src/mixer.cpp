@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file mixer.cpp*/
+/** @file mixer.cpp Mixing of sound samples. */
 
 #include "stdafx.h"
 #include "openttd.h"
