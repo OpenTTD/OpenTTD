@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file dmusic.h Base of playing music via DirectMusic.
+/** @file dmusic.h Base of playing music via DirectMusic. */
 
 #ifndef MUSIC_DMUSIC_H
 #define MUSIC_DMUSIC_H
