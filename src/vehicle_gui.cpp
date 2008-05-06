@@ -35,6 +35,7 @@
 #include "settings_type.h"
 #include "widgets/dropdown_func.h"
 #include "order_func.h"
+#include "timetable.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

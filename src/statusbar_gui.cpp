@@ -17,6 +17,7 @@
 #include "player_gui.h"
 #include "window_gui.h"
 #include "variables.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

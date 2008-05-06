@@ -15,6 +15,8 @@
 #include "../network/network.h"
 #include "../core/math_func.hpp"
 #include "../core/random_func.hpp"
+#include "../functions.h"
+#include "../texteff.hpp"
 #include "sdl_v.h"
 #include <SDL.h>
 

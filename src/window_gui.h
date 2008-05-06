@@ -546,13 +546,6 @@ enum WindowFlags {
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent();
 
-void SetWindowDirty(const Window *w);
-void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam);
-void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam);
-
-Window *FindWindowById(WindowClass cls, WindowNumber number);
-void DeletePlayerWindows(PlayerID pi);
-void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
 
@@ -566,15 +559,8 @@ Window *AllocateWindowDesc(const WindowDesc *desc, void *data = NULL);
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL);
 
 void DrawWindowViewport(const Window *w);
-void ResizeWindow(Window *w, int x, int y);
 
-void InitWindowSystem();
-void UnInitWindowSystem();
-void ResetWindowSystem();
 int GetMenuItemIndex(const Window *w, int x, int y);
-void InputLoop();
-void InvalidateThisWindowData(Window *w);
-void InvalidateWindowData(WindowClass cls, WindowNumber number);
 void RelocateAllWindows(int neww, int newh);
 
 /* misc_gui.cpp */
@@ -622,10 +608,6 @@ enum SpecialMouseMode {
 };
 
 Window *GetCallbackWnd();
-void DeleteNonVitalWindows();
-void DeleteAllNonVitalWindows();
-void HideVitalWindows();
-void ShowVitalWindows();
 Window **FindWindowZPosition(const Window *w);
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);

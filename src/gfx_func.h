@@ -70,10 +70,8 @@ void HandleMouseEvents();
 void CSleep(int milliseconds);
 void UpdateWindows();
 
-void DrawChatMessage();
 void DrawMouseCursor();
 void ScreenSizeChanged();
-void HandleExitGameRequest();
 void GameSizeChanged();
 void UndrawMouseCursor();
 
@@ -142,9 +140,6 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);
 void SetMouseCursor(SpriteID sprite, SpriteID pal);
 void SetAnimatedMouseCursor(const AnimCursor *table);
 void CursorTick();
-void DrawMouseCursor();
-void ScreenSizeChanged();
-void UndrawMouseCursor();
 bool ChangeResInGame(int w, int h);
 void SortResolutions(int count);
 bool ToggleFullScreen(bool fs);

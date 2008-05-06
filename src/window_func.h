@@ -25,7 +25,6 @@ void SetupColorsAndInitialWindow();
 void InputLoop();
 void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
-void RelocateAllWindows(int neww, int newh);
 
 void DeleteNonVitalWindows();
 void DeleteAllNonVitalWindows();

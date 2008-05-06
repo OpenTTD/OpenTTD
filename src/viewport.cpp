@@ -45,6 +45,7 @@
 #include "station_func.h"
 #include "core/alloc_type.hpp"
 #include "misc/smallvec.h"
+#include "window_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

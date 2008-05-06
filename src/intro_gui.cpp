@@ -18,6 +18,7 @@
 #include "fios.h"
 #include "gfx_func.h"
 #include "settings_type.h"
+#include "functions.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -614,8 +614,6 @@ void OnTick_Players()
 		MaybeStartNewPlayer();
 }
 
-extern void ShowPlayerFinances(PlayerID player);
-
 void PlayersYearlyLoop()
 {
 	Player *p;

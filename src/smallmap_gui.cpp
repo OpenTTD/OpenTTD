@@ -27,6 +27,7 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "settings_type.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
