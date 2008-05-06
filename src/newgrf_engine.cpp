@@ -886,7 +886,10 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 
 SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view)
 {
+	#if !defined(NDEBUG) || defined(WITH_ASSERT)
 	const Engine *e = GetEngine(engine);
+	#endif /* !defined(NDEBUG) || defined(WITH_ASSERT) */
+
 	const SpriteGroup *group;
 	ResolverObject object;
 
