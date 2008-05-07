@@ -15,6 +15,7 @@
 #include "player_type.h"
 #include "direction_type.h"
 #include "track_type.h"
+#include "openttd.h"
 
 /** The returned bits of VehicleEnterTile. */
 enum VehicleEnterTileStatus {

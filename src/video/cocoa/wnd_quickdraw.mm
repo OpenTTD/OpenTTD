@@ -44,6 +44,7 @@
 #include "cocoa_v.h"
 #include "../../core/math_func.hpp"
 #include "../../gfx_func.h"
+#include "../../functions.h"
 
 #undef Rect
 

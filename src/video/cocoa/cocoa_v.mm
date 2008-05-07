@@ -62,6 +62,7 @@ extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
 #include "../../blitter/factory.hpp"
 #include "../../fileio.h"
 #include "../../gfx_func.h"
+#include "../../functions.h"
 
 
 @interface OTTDMain : NSObject
