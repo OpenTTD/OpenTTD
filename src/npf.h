@@ -13,6 +13,7 @@
 #include "tile_type.h"
 #include "track_type.h"
 #include "core/bitmath_func.hpp"
+#include "transport_type.h"
 
 /* mowing grass */
 enum {

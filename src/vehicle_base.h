@@ -23,6 +23,7 @@
 #include "group_type.h"
 #include "engine_type.h"
 #include "order_func.h"
+#include "transport_type.h"
 
 /** Road vehicle states */
 enum RoadVehicleStates {

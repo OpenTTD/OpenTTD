@@ -194,6 +194,7 @@ heightmap.h
 industry.h
 industry_type.h
 landscape.h
+landscape_type.h
 livery.h
 lzoconf.h
 map_func.h
@@ -307,6 +308,7 @@ track_type.h
 train.h
 transparency.h
 transparency_gui.h
+transport_type.h
 ai/trolly/trolly.h
 tunnelbridge.h
 unmovable.h

@@ -23,6 +23,7 @@
 #include "genworld.h"
 #include "settings_type.h"
 #include "tree_map.h"
+#include "landscape_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

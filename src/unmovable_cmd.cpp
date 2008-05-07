@@ -27,6 +27,7 @@
 #include "station_type.h"
 #include "economy_func.h"
 #include "cheat_func.h"
+#include "landscape_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

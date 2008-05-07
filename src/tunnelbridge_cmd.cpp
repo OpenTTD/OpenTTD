@@ -39,6 +39,7 @@
 #include "economy_func.h"
 #include "rail.h"
 #include "cheat_func.h"
+#include "landscape_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

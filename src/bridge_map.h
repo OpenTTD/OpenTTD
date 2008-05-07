@@ -7,9 +7,9 @@
 
 #include "direction_func.h"
 #include "rail_type.h"
+#include "transport_type.h"
 #include "road_map.h"
 #include "bridge.h"
-
 
 /**
  * Checks if this is a bridge, instead of a tunnel

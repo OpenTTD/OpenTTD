@@ -13,6 +13,7 @@
 #include "command_type.h"
 #include "vehicle_type.h"
 #include "engine_type.h"
+#include "transport_type.h"
 
 #define is_custom_sprite(x) (x >= 0xFD)
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)

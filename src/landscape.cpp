@@ -27,6 +27,7 @@
 #include "settings_type.h"
 #include "water.h"
 #include "effectvehicle_func.h"
+#include "landscape_type.h"
 
 #include "table/sprites.h"
 

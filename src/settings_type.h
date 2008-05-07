@@ -8,6 +8,7 @@
 #include "yapf/yapf_settings.h"
 #include "date_type.h"
 #include "town_type.h"
+#include "transport_type.h"
 
 #define GAME_DIFFICULTY_NUM 18
 

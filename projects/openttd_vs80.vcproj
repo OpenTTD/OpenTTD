@@ -1076,6 +1076,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\landscape_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\livery.h"
 				>
 			</File>
@@ -1525,6 +1529,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\transparency_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\transport_type.h"
 				>
 			</File>
 			<File

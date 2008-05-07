@@ -33,6 +33,7 @@
 #include "../string_func.h"
 #include "../player_func.h"
 #include "../settings_type.h"
+#include "../landscape_type.h"
 #include "../rev.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"

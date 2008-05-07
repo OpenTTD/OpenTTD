@@ -18,6 +18,7 @@
 #include "core/math_func.hpp"
 #include "settings_type.h"
 #include "core/alloc_func.hpp"
+#include "landscape_type.h"
 
 #include "table/palettes.h"
 #include "table/sprites.h"

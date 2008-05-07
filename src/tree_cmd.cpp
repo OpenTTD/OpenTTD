@@ -22,6 +22,7 @@
 #include "settings_type.h"
 #include "water_map.h"
 #include "water.h"
+#include "landscape_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

@@ -9,10 +9,6 @@
 #define VARDEF extern
 #endif
 
-// Forward declarations of structs.
-typedef byte LandscapeID;
-typedef uint16 UnitID;
-
 enum GameModes {
 	GM_MENU,
 	GM_NORMAL,
@@ -48,22 +44,6 @@ enum InitializeGameModes {
 	IG_DATE_RESET = 1,  /* Reset the date when initializing a game */
 };
 
-enum TransportType {
-	/* These constants are for now linked to the representation of bridges
-	 * and tunnels, so they can be used by GetTileTrackStatus_TunnelBridge.
-	 * In an ideal world, these constants would be used everywhere when
-	 * accessing tunnels and bridges. For now, you should just not change
-	 * the values for road and rail.
-	 */
-	TRANSPORT_BEGIN = 0,
-	TRANSPORT_RAIL = TRANSPORT_BEGIN,
-	TRANSPORT_ROAD,
-	TRANSPORT_WATER,
-	TRANSPORT_AIR,
-	TRANSPORT_END,
-	INVALID_TRANSPORT = 0xff,
-};
-
 /* Display Options */
 enum {
 	DO_SHOW_TOWN_NAMES    = 0,
@@ -72,16 +52,6 @@ enum {
 	DO_FULL_ANIMATION     = 3,
 	DO_FULL_DETAIL        = 5,
 	DO_WAYPOINTS          = 6,
-};
-
-/* Landscape types */
-enum {
-	LT_TEMPERATE  = 0,
-	LT_ARCTIC     = 1,
-	LT_TROPIC     = 2,
-	LT_TOYLAND    = 3,
-
-	NUM_LANDSCAPE = 4,
 };
 
 struct ViewportSign {

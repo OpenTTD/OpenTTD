@@ -28,6 +28,7 @@
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "core/random_func.hpp"
+#include "landscape_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

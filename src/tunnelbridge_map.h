@@ -10,6 +10,7 @@
 #include "tile_map.h"
 #include "bridge_map.h"
 #include "tunnel_map.h"
+#include "transport_type.h"
 
 
 /**
