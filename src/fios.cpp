@@ -18,7 +18,6 @@
 
 #ifdef WIN32
 # include <tchar.h>
-# include <io.h>
 # define access _taccess
 # define unlink _tunlink
 #else

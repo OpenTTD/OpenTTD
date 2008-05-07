@@ -18,10 +18,6 @@
 #include "fios.h"
 #include <sys/stat.h>
 
-#ifdef WIN32
-# include <io.h>
-#endif /* WIN32 */
-
 
 GRFConfig *_all_grfs;
 GRFConfig *_grfconfig;
