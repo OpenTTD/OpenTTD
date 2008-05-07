@@ -1129,7 +1129,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		case WE_DESTROY: {
 				Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
 				v->RaiseWidget(WP(w, menu_d).main_button);
-				w->SetDirty();
+				v->SetDirty();
 				return;
 			}
 
