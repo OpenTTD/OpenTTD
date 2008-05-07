@@ -101,9 +101,7 @@ void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
 
 void Window::RaiseButtons()
 {
-	uint i;
-
-	for (i = 0; i < this->widget_count; i++) {
+	for (uint i = 0; i < this->widget_count; i++) {
 		if (this->IsWidgetLowered(i)) {
 			this->RaiseWidget(i);
 			this->InvalidateWidget(i);
@@ -141,8 +139,6 @@ static void StartWindowSizing(Window *w);
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
 	WindowEvent e;
-	const Widget *wi;
-
 	e.we.click.pt.x = x;
 	e.we.click.pt.y = y;
 	e.event = double_click ? WE_DOUBLE_CLICK : WE_CLICK;
@@ -154,7 +150,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 		/* don't allow any interaction if the button has been disabled */
 		if (w->IsWidgetDisabled(e.we.click.widget)) return;
 
-		wi = &w->widget[e.we.click.widget];
+		const Widget *wi = &w->widget[e.we.click.widget];
 
 		if (wi->type & WWB_MASK) {
 			/* special widget handling for buttons*/
@@ -210,8 +206,7 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 	/* default tooltips handler? */
 	if (w->desc_flags & WDF_STD_TOOLTIPS) {
 		e.we.click.widget = GetWidgetFromPos(w, x, y);
-		if (e.we.click.widget < 0)
-			return; // exit if clicked outside of widgets
+		if (e.we.click.widget < 0) return; // exit if clicked outside of widgets
 
 		if (w->widget[e.we.click.widget].tooltips != 0) {
 			GuiShowTooltips(w->widget[e.we.click.widget].tooltips);
@@ -234,18 +229,16 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
  */
 static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 {
-	const Widget *wi1, *wi2;
-	Scrollbar *sb;
-
 	if (widget < 0) return;
 
-	wi1 = &w->widget[widget];
-	wi2 = &w->widget[widget + 1];
+	const Widget *wi1 = &w->widget[widget];
+	const Widget *wi2 = &w->widget[widget + 1];
 
 	/* The listbox can only scroll if scrolling was done on the scrollbar itself,
 	 * or on the listbox (and the next item is (must be) the scrollbar)
 	 * XXX - should be rewritten as a widget-dependent scroller but that's
 	 * not happening until someone rewrites the whole widget-code */
+	Scrollbar *sb;
 	if ((sb = &w->vscroll,  wi1->type == WWT_SCROLLBAR)  || (sb = &w->vscroll2, wi1->type == WWT_SCROLL2BAR)  ||
 			(sb = &w->vscroll2, wi2->type == WWT_SCROLL2BAR) || (sb = &w->vscroll, wi2->type == WWT_SCROLLBAR) ) {
 
@@ -536,18 +529,24 @@ void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 
-		if (w->caption_color != old_player)      continue;
-		if (w->window_class == WC_PLAYER_COLOR)  continue;
-		if (w->window_class == WC_FINANCES)      continue;
-		if (w->window_class == WC_STATION_LIST)  continue;
-		if (w->window_class == WC_TRAINS_LIST)   continue;
-		if (w->window_class == WC_ROADVEH_LIST)  continue;
-		if (w->window_class == WC_SHIPS_LIST)    continue;
-		if (w->window_class == WC_AIRCRAFT_LIST) continue;
-		if (w->window_class == WC_BUY_COMPANY)   continue;
-		if (w->window_class == WC_COMPANY)       continue;
+		if (w->caption_color != old_player) continue;
 
-		w->caption_color = new_player;
+		switch (w->window_class) {
+			case WC_PLAYER_COLOR:
+			case WC_FINANCES:
+			case WC_STATION_LIST:
+			case WC_TRAINS_LIST:
+			case WC_ROADVEH_LIST:
+			case WC_SHIPS_LIST:
+			case WC_AIRCRAFT_LIST:
+			case WC_BUY_COMPANY:
+			case WC_COMPANY:
+				continue;
+
+			default:
+				w->caption_color = new_player;
+				break;
+		}
 	}
 }
 
@@ -573,8 +572,16 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 
 static inline bool IsVitalWindow(const Window *w)
 {
-	WindowClass wc = w->window_class;
-	return (wc == WC_MAIN_TOOLBAR || wc == WC_STATUS_BAR || wc == WC_NEWS_WINDOW || wc == WC_SEND_NETWORK_MSG);
+	switch (w->window_class) {
+		case WC_MAIN_TOOLBAR:
+		case WC_STATUS_BAR:
+		case WC_NEWS_WINDOW:
+		case WC_SEND_NETWORK_MSG:
+			return true;
+
+		default:
+			return false;
+	}
 }
 
 /** On clicking on a window, make it the frontmost window of all. However
@@ -587,7 +594,6 @@ static inline bool IsVitalWindow(const Window *w)
  */
 static void BringWindowToFront(const Window *w)
 {
-	Window *tempz;
 	Window **wz = FindWindowZPosition(w);
 	Window **vz = _last_z_window;
 
@@ -599,7 +605,7 @@ static void BringWindowToFront(const Window *w)
 	if (wz == vz) return; // window is already in the right position
 	assert(wz < vz);
 
-	tempz = *wz;
+	Window *tempz = *wz;
 	memmove(wz, wz + 1, (byte*)vz - (byte*)wz);
 	*vz = tempz;
 
@@ -658,9 +664,8 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 
 	if (widget != NULL) {
 		uint index = 1;
-		const Widget *wi;
 
-		for (wi = widget; wi->type != WWT_LAST; wi++) index++;
+		for (const Widget *wi = widget; wi->type != WWT_LAST; wi++) index++;
 
 		w->widget = ReallocT(w->widget, index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
@@ -829,8 +834,7 @@ static bool IsGoodAutoPlace1(int left, int top, int width, int height, Point &po
 	int right  = width + left;
 	int bottom = height + top;
 
-	if (left < 0 || top < 22 || right > _screen.width || bottom > _screen.height)
-		return false;
+	if (left < 0 || top < 22 || right > _screen.width || bottom > _screen.height) return false;
 
 	/* Make sure it is not obscured by any window. */
 	FOR_ALL_WINDOWS(wz) {
@@ -1038,11 +1042,8 @@ Window *AllocateWindowDesc(const WindowDesc *desc, void *data)
  */
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data)
 {
-	Window *w;
-
 	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
-	w = LocalAllocateWindowDesc(desc, window_number, data);
-	return w;
+	return LocalAllocateWindowDesc(desc, window_number, data);
 }
 
 /** Do a search for a window at specific coordinates. For this we start
@@ -1079,20 +1080,7 @@ void InitWindowSystem()
  */
 void UnInitWindowSystem()
 {
-	Window **wz;
-
-restart_search:
-	/* Delete all windows, reset z-array.
-	 * When we find the window to delete, we need to restart the search
-	 * as deleting this window could cascade in deleting (many) others
-	 * anywhere in the z-array. We call DeleteWindow() so that it can properly
-	 * release own alloc'd memory, which otherwise could result in memleaks */
-	FOR_ALL_WINDOWS(wz) {
-		delete *wz;
-		goto restart_search;
-	}
-
-	assert(_last_z_window == _z_windows);
+	while (_last_z_window != _z_windows) delete _z_windows[0];
 }
 
 /**
@@ -1110,11 +1098,10 @@ void ResetWindowSystem()
 
 static void DecreaseWindowCounters()
 {
-	Window *w;
 	Window* const *wz;
 
 	for (wz = _last_z_window; wz != _z_windows;) {
-		w = *--wz;
+		Window *w = *--wz;
 		/* Unclick scrollbar buttons if they are pressed. */
 		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
 			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
@@ -1124,9 +1111,9 @@ static void DecreaseWindowCounters()
 	}
 
 	for (wz = _last_z_window; wz != _z_windows;) {
-		w = *--wz;
+		Window *w = *--wz;
 
-		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
+		if (w->flags4 & WF_TIMEOUT_MASK && !(--w->flags4 & WF_TIMEOUT_MASK)) {
 			CallWindowEventNP(w, WE_TIMEOUT);
 			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons();
 		}
@@ -1140,14 +1127,12 @@ Window *GetCallbackWnd()
 
 static void HandlePlacePresize()
 {
-	Window *w;
-	WindowEvent e;
-
 	if (_special_mouse_mode != WSM_PRESIZE) return;
 
-	w = GetCallbackWnd();
+	Window *w = GetCallbackWnd();
 	if (w == NULL) return;
 
+	WindowEvent e;
 	e.we.place.pt = GetTileBelowCursor();
 	if (e.we.place.pt.x == -1) {
 		_thd.selend.x = -1;
@@ -1160,17 +1145,14 @@ static void HandlePlacePresize()
 
 static bool HandleDragDrop()
 {
-	Window *w;
-	WindowEvent e;
-
 	if (_special_mouse_mode != WSM_DRAGDROP) return true;
-
 	if (_left_button_down) return false;
 
-	w = GetCallbackWnd();
+	Window *w = GetCallbackWnd();
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
+		WindowEvent e;
 		e.event = WE_DRAGDROP;
 		e.we.dragdrop.pt.x = _cursor.pos.x - w->left;
 		e.we.dragdrop.pt.y = _cursor.pos.y - w->top;
@@ -1185,17 +1167,15 @@ static bool HandleDragDrop()
 
 static bool HandlePopupMenu()
 {
-	Window *w;
-	WindowEvent e;
-
 	if (!_popup_menu_active) return true;
 
-	w = FindWindowById(WC_TOOLBAR_MENU, 0);
+	Window *w = FindWindowById(WC_TOOLBAR_MENU, 0);
 	if (w == NULL) {
 		_popup_menu_active = false;
 		return false;
 	}
 
+	WindowEvent e;
 	if (_left_button_down) {
 		e.event = WE_POPUPMENU_OVER;
 		e.we.popupmenu.pt = _cursor.pos;
@@ -1212,13 +1192,12 @@ static bool HandlePopupMenu()
 
 static bool HandleMouseOver()
 {
-	WindowEvent e;
-
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
 	/* We changed window, put a MOUSEOVER event to the last window */
 	if (_mouseover_last_w != NULL && _mouseover_last_w != w) {
 		/* Reset mouse-over coordinates of previous window */
+		WindowEvent e;
 		e.event = WE_MOUSEOVER;
 		e.we.mouseover.pt.x = -1;
 		e.we.mouseover.pt.y = -1;
@@ -1230,6 +1209,7 @@ static bool HandleMouseOver()
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
+		WindowEvent e;
 		e.event = WE_MOUSEOVER;
 		e.we.mouseover.pt.x = _cursor.pos.x - w->left;
 		e.we.mouseover.pt.y = _cursor.pos.y - w->top;
@@ -1254,14 +1234,13 @@ static bool HandleMouseOver()
  */
 void ResizeWindow(Window *w, int x, int y)
 {
-	Widget *wi;
 	bool resize_height = false;
 	bool resize_width = false;
 
 	if (x == 0 && y == 0) return;
 
 	w->SetDirty();
-	for (wi = w->widget; wi->type != WWT_LAST; wi++) {
+	for (Widget *wi = w->widget; wi->type != WWT_LAST; wi++) {
 		/* Isolate the resizing flags */
 		byte rsizeflag = GB(wi->display_flags, 0, 4);
 
@@ -1310,11 +1289,6 @@ static bool HandleWindowDragging()
 
 		if (w->flags4 & WF_DRAGGING) {
 			const Widget *t = &w->widget[1]; // the title bar ... ugh
-			const Window *v;
-			int x;
-			int y;
-			int nx;
-			int ny;
 
 			/* Stop the dragging if the left mouse button was released */
 			if (!_left_button_down) {
@@ -1324,10 +1298,10 @@ static bool HandleWindowDragging()
 
 			w->SetDirty();
 
-			x = _cursor.pos.x + _drag_delta.x;
-			y = _cursor.pos.y + _drag_delta.y;
-			nx = x;
-			ny = y;
+			int x = _cursor.pos.x + _drag_delta.x;
+			int y = _cursor.pos.y + _drag_delta.y;
+			int nx = x;
+			int ny = y;
 
 			if (_patches.window_snap_radius != 0) {
 				Window* const *vz;
@@ -1413,7 +1387,7 @@ static bool HandleWindowDragging()
 			ny = Clamp(ny, 0, _screen.height - 13);
 
 			/* Make sure the title bar isn't hidden by behind the main tool bar */
-			v = FindWindowById(WC_MAIN_TOOLBAR, 0);
+			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
 			if (v != NULL) {
 				int v_bottom = v->top + v->height;
 				int v_right = v->left + v->width;
@@ -1533,9 +1507,6 @@ static void StartWindowSizing(Window *w)
 static bool HandleScrollbarScrolling()
 {
 	Window* const *wz;
-	int i;
-	int pos;
-	Scrollbar *sb;
 
 	/* Get out quickly if no item is being scrolled */
 	if (!_scrolling_scrollbar) return true;
@@ -1552,6 +1523,9 @@ static bool HandleScrollbarScrolling()
 				break;
 			}
 
+			int i;
+			Scrollbar *sb;
+
 			if (w->flags4 & WF_HSCROLL) {
 				sb = &w->hscroll;
 				i = _cursor.pos.x - _cursorpos_drag_start.x;
@@ -1564,7 +1538,7 @@ static bool HandleScrollbarScrolling()
 			}
 
 			/* Find the item we want to move to and make sure it's inside bounds. */
-			pos = min(max(0, i + _scrollbar_start_pos) * sb->count / _scrollbar_size, max(0, sb->count - sb->cap));
+			int pos = min(max(0, i + _scrollbar_start_pos) * sb->count / _scrollbar_size, max(0, sb->count - sb->cap));
 			if (pos != sb->pos) {
 				sb->pos = pos;
 				w->SetDirty();
@@ -1580,13 +1554,12 @@ static bool HandleScrollbarScrolling()
 static bool HandleViewportScroll()
 {
 	WindowEvent e;
-	Window *w;
 
 	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 
 	if (!_scrolling_viewport) return true;
 
-	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
 	if (!(_right_button_down || scrollwheel_scrolling) || w == NULL) {
 		_cursor.fix_at = false;
@@ -1637,7 +1610,6 @@ static bool HandleViewportScroll()
 static bool MaybeBringWindowToFront(const Window *w)
 {
 	bool bring_to_front = false;
-	Window * const *wz;
 
 	if (w->window_class == WC_MAIN_WINDOW ||
 			IsVitalWindow(w) ||
@@ -1646,7 +1618,7 @@ static bool MaybeBringWindowToFront(const Window *w)
 		return true;
 	}
 
-	wz = FindWindowZPosition(w);
+	Window * const *wz = FindWindowZPosition(w);
 	for (Window * const *uz = wz; ++uz != _last_z_window;) {
 		Window *u = *uz;
 
@@ -1835,11 +1807,6 @@ static int _input_events_this_tick = 0;
  */
 static void HandleAutoscroll()
 {
-	Window *w;
-	ViewPort *vp;
-	int x = _cursor.pos.x;
-	int y = _cursor.pos.y;
-
 	if (_input_events_this_tick != 0) {
 		/* HandleAutoscroll is called only once per GameLoop() - so we can clear the counter here */
 		_input_events_this_tick = 0;
@@ -1848,12 +1815,15 @@ static void HandleAutoscroll()
 	}
 
 	if (_patches.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
-		w = FindWindowFromPt(x, y);
+		int x = _cursor.pos.x;
+		int y = _cursor.pos.y;
+		Window *w = FindWindowFromPt(x, y);
 		if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
-		vp = IsPtInWindowViewport(w, x, y);
+		ViewPort *vp = IsPtInWindowViewport(w, x, y);
 		if (vp != NULL) {
 			x -= vp->left;
 			y -= vp->top;
+
 			/* here allows scrolling in both x and y axis */
 #define scrollspeed 3
 			if (x - 15 < 0) {
@@ -1886,11 +1856,6 @@ extern bool VpHandlePlaceSizingDrag();
 
 void MouseLoop(MouseClick click, int mousewheel)
 {
-	int x,y;
-	Window *w;
-	ViewPort *vp;
-	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
-
 	DecreaseWindowCounters();
 	HandlePlacePresize();
 	UpdateTileSelection();
@@ -1902,15 +1867,16 @@ void MouseLoop(MouseClick click, int mousewheel)
 	if (!HandleViewportScroll())     return;
 	if (!HandleMouseOver())          return;
 
-	x = _cursor.pos.x;
-	y = _cursor.pos.y;
-
+	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
-	w = FindWindowFromPt(x, y);
+	int x = _cursor.pos.x;
+	int y = _cursor.pos.y;
+	Window *w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
+
 	if (!MaybeBringWindowToFront(w)) return;
-	vp = IsPtInWindowViewport(w, x, y);
+	ViewPort *vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu of in generating world */
 	if (vp != NULL && (_game_mode == GM_MENU || IsGeneratingWorld())) return;
@@ -1985,8 +1951,6 @@ void HandleMouseEvents()
 	static int double_click_time = 0;
 	static int double_click_x = 0;
 	static int double_click_y = 0;
-	MouseClick click;
-	int mousewheel;
 
 	/*
 	 * During the generation of the world, there might be
@@ -2000,7 +1964,7 @@ void HandleMouseEvents()
 	if (!IsGeneratingWorld()) _current_player = _local_player;
 
 	/* Mouse event? */
-	click = MC_NONE;
+	MouseClick click = MC_NONE;
 	if (_left_button_down && !_left_button_clicked) {
 		click = MC_LEFT;
 		if (double_click_time != 0 && _realtime_tick - double_click_time   < TIME_BETWEEN_DOUBLE_CLICK &&
@@ -2019,7 +1983,7 @@ void HandleMouseEvents()
 		_input_events_this_tick++;
 	}
 
-	mousewheel = 0;
+	int mousewheel = 0;
 	if (_cursor.wheel) {
 		mousewheel = _cursor.wheel;
 		_cursor.wheel = 0;
