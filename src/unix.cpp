@@ -106,99 +106,6 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 	return ent->d_name[0] == '.';
 }
 
-void ShowInfo(const char *str)
-{
-	fprintf(stderr, "%s\n", str);
-}
-
-void ShowOSErrorBox(const char *buf)
-{
-#if defined(__APPLE__)
-	/* this creates an NSAlertPanel with the contents of 'buf'
-	 * this is the native and nicest way to do this on OSX */
-	ShowMacDialog( buf, "See readme for more info\nMost likely you are missing files from the original TTD", "Quit" );
-#else
-	/* all systems, but OSX */
-	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
-#endif
-}
-
-#ifdef WITH_COCOA
-void cocoaSetupAutoreleasePool();
-void cocoaReleaseAutoreleasePool();
-#endif
-
-int CDECL main(int argc, char* argv[])
-{
-	int ret;
-
-#ifdef WITH_COCOA
-	cocoaSetupAutoreleasePool();
-	/* This is passed if we are launched by double-clicking */
-	if (argc >= 2 && strncmp(argv[1], "-psn", 4) == 0) {
-		argv[1] = NULL;
-		argc = 1;
-	}
-#endif
-
-	SetRandomSeed(time(NULL));
-
-	signal(SIGPIPE, SIG_IGN);
-
-	ret = ttd_main(argc, argv);
-
-#ifdef WITH_COCOA
-	cocoaReleaseAutoreleasePool();
-#endif
-
-	return ret;
-}
-
-bool InsertTextBufferClipboard(Textbuf *tb)
-{
-	return false;
-}
-
-
-/* multi os compatible sleep function */
-
-#ifdef __AMIGA__
-/* usleep() implementation */
-#	include <devices/timer.h>
-#	include <dos/dos.h>
-
-	extern struct Device      *TimerBase    = NULL;
-	extern struct MsgPort     *TimerPort    = NULL;
-	extern struct timerequest *TimerRequest = NULL;
-#endif // __AMIGA__
-
-void CSleep(int milliseconds)
-{
-	#if defined(PSP)
-		sceKernelDelayThread(milliseconds * 1000);
-	#elif defined(__BEOS__)
-		snooze(milliseconds * 1000);
-	#elif defined(__AMIGA__)
-	{
-		ULONG signals;
-		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
-
-		/* send IORequest */
-		TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
-		TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
-		TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
-		SendIO((struct IORequest *)TimerRequest);
-
-		if (!((signals = Wait(TimerSigBit | SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
-			AbortIO((struct IORequest *)TimerRequest);
-		}
-		WaitIO((struct IORequest *)TimerRequest);
-	}
-	#else
-		usleep(milliseconds * 1000);
-	#endif
-}
-
 #ifdef WITH_ICONV
 
 #include <iconv.h>
@@ -301,3 +208,96 @@ const char *FS2OTTD(const char *name)
 const char *FS2OTTD(const char *name) {return name;}
 const char *OTTD2FS(const char *name) {return name;}
 #endif /* WITH_ICONV */
+
+void ShowInfo(const char *str)
+{
+	fprintf(stderr, "%s\n", str);
+}
+
+void ShowOSErrorBox(const char *buf)
+{
+#if defined(__APPLE__)
+	/* this creates an NSAlertPanel with the contents of 'buf'
+	 * this is the native and nicest way to do this on OSX */
+	ShowMacDialog( buf, "See readme for more info\nMost likely you are missing files from the original TTD", "Quit" );
+#else
+	/* all systems, but OSX */
+	fprintf(stderr, "\033[1;31mError: %s\033[0;39m\n", buf);
+#endif
+}
+
+#ifdef WITH_COCOA
+void cocoaSetupAutoreleasePool();
+void cocoaReleaseAutoreleasePool();
+#endif
+
+int CDECL main(int argc, char* argv[])
+{
+	int ret;
+
+#ifdef WITH_COCOA
+	cocoaSetupAutoreleasePool();
+	/* This is passed if we are launched by double-clicking */
+	if (argc >= 2 && strncmp(argv[1], "-psn", 4) == 0) {
+		argv[1] = NULL;
+		argc = 1;
+	}
+#endif
+
+	SetRandomSeed(time(NULL));
+
+	signal(SIGPIPE, SIG_IGN);
+
+	ret = ttd_main(argc, argv);
+
+#ifdef WITH_COCOA
+	cocoaReleaseAutoreleasePool();
+#endif
+
+	return ret;
+}
+
+bool InsertTextBufferClipboard(Textbuf *tb)
+{
+	return false;
+}
+
+
+/* multi os compatible sleep function */
+
+#ifdef __AMIGA__
+/* usleep() implementation */
+#	include <devices/timer.h>
+#	include <dos/dos.h>
+
+	extern struct Device      *TimerBase    = NULL;
+	extern struct MsgPort     *TimerPort    = NULL;
+	extern struct timerequest *TimerRequest = NULL;
+#endif // __AMIGA__
+
+void CSleep(int milliseconds)
+{
+	#if defined(PSP)
+		sceKernelDelayThread(milliseconds * 1000);
+	#elif defined(__BEOS__)
+		snooze(milliseconds * 1000);
+	#elif defined(__AMIGA__)
+	{
+		ULONG signals;
+		ULONG TimerSigBit = 1 << TimerPort->mp_SigBit;
+
+		/* send IORequest */
+		TimerRequest->tr_node.io_Command = TR_ADDREQUEST;
+		TimerRequest->tr_time.tv_secs    = (milliseconds * 1000) / 1000000;
+		TimerRequest->tr_time.tv_micro   = (milliseconds * 1000) % 1000000;
+		SendIO((struct IORequest *)TimerRequest);
+
+		if (!((signals = Wait(TimerSigBit | SIGBREAKF_CTRL_C)) & TimerSigBit) ) {
+			AbortIO((struct IORequest *)TimerRequest);
+		}
+		WaitIO((struct IORequest *)TimerRequest);
+	}
+	#else
+		usleep(milliseconds * 1000);
+	#endif
+}
