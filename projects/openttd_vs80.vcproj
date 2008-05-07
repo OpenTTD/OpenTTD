@@ -588,10 +588,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\helpers.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\landscape.cpp"
 				>
 			</File>

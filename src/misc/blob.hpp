@@ -373,7 +373,7 @@ public:
 	}
 
 	/** Check the validity of item index (only in debug mode) */
-	FORCEINLINE void CheckIdx(bsize_t idx)
+	FORCEINLINE void CheckIdx(bsize_t idx) const
 	{
 		assert(idx >= 0); assert(idx < Size());
 	}
@@ -400,7 +400,8 @@ public:
 	/** Return pointer to the idx-th data item - const version */
 	FORCEINLINE const Titem* Data(bsize_t idx) const
 	{
-		CheckIdx(idx); return (Data() + idx);
+		CheckIdx(idx);
+		return (Data() + idx);
 	}
 
 	/** Return number of items in the Blob */

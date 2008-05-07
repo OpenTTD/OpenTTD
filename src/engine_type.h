@@ -14,9 +14,11 @@
 #include "player_type.h"
 #include "strings_type.h"
 
+#include <vector>
+
 typedef uint16 EngineID;
 typedef uint16 EngineRenewID;
-typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
+typedef std::vector<EngineID> EngineList; ///< engine list type
 
 struct Engine;
 

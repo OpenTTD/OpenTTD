@@ -794,7 +794,7 @@ static void GenerateBuildTrainList(Window *w)
 
 	bv->filter.railtype = (w->window_number <= VEH_END) ? RAILTYPE_END : GetRailType(w->window_number);
 
-	EngList_RemoveAll(&bv->eng_list);
+	bv->eng_list.clear();
 
 	/* Make list of all available train engines and wagons.
 	 * Also check to see if the previously selected engine is still available,
@@ -808,7 +808,7 @@ static void GenerateBuildTrainList(Window *w)
 		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, bv->filter.railtype)) continue;
 		if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
 
-		EngList_Add(&bv->eng_list, eid);
+		bv->eng_list.push_back(eid);
 		if (rvi->railveh_type != RAILVEH_WAGON) {
 			num_engines++;
 		} else {
@@ -838,14 +838,14 @@ static void GenerateBuildRoadVehList(Window *w)
 	EngineID sel_id = INVALID_ENGINE;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	EngList_RemoveAll(&bv->eng_list);
+	bv->eng_list.clear();
 
 	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
 		EngineID eid = e->index;
 		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
 		if (!HasBit(bv->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
-		EngList_Add(&bv->eng_list, eid);
+		bv->eng_list.push_back(eid);
 
 		if (eid == bv->sel_engine) sel_id = eid;
 	}
@@ -858,13 +858,13 @@ static void GenerateBuildShipList(Window *w)
 	EngineID sel_id = INVALID_ENGINE;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	EngList_RemoveAll(&bv->eng_list);
+	bv->eng_list.clear();
 
 	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
 		EngineID eid = e->index;
 		if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
-		EngList_Add(&bv->eng_list, eid);
+		bv->eng_list.push_back(eid);
 
 		if (eid == bv->sel_engine) sel_id = eid;
 	}
@@ -877,7 +877,7 @@ static void GenerateBuildAircraftList(Window *w)
 	EngineID sel_id = INVALID_ENGINE;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	EngList_RemoveAll(&bv->eng_list);
+	bv->eng_list.clear();
 
 	/* Make list of all available planes.
 	 * Also check to see if the previously selected plane is still available,
@@ -890,7 +890,7 @@ static void GenerateBuildAircraftList(Window *w)
 		/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 		if (w->window_number > VEH_END && !CanAircraftUseStation(eid, w->window_number)) continue;
 
-		EngList_Add(&bv->eng_list, eid);
+		bv->eng_list.push_back(eid);
 		if (eid == bv->sel_engine) sel_id = eid;
 	}
 
@@ -947,7 +947,7 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 	byte x_offset = 0;
 	byte y_offset = 0;
 
-	assert(max <= EngList_Count(&eng_list));
+	assert(max <= eng_list.size());
 
 	switch (type) {
 		case VEH_TRAIN:
@@ -992,11 +992,11 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 static void DrawBuildVehicleWindow(Window *w)
 {
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
-	uint max = min(w->vscroll.pos + w->vscroll.cap, EngList_Count(&bv->eng_list));
+	uint max = min(w->vscroll.pos + w->vscroll.cap, bv->eng_list.size());
 
 	w->SetWidgetDisabledState(BUILD_VEHICLE_WIDGET_BUILD, w->window_number <= VEH_END);
 
-	SetVScrollCount(w, EngList_Count(&bv->eng_list));
+	SetVScrollCount(w, bv->eng_list.size());
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
 
 	/* Set text of sort by dropdown */
@@ -1034,7 +1034,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 
 		case BUILD_VEHICLE_WIDGET_LIST: {
 			uint i = (e->we.click.pt.y - w->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(bv->vehicle_type) + w->vscroll.pos;
-			uint num_items = EngList_Count(&bv->eng_list);
+			uint num_items = bv->eng_list.size();
 			bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
 			w->SetDirty();
 			break;
@@ -1112,7 +1112,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			EngList_Destroy(&bv->eng_list);
+			bv->eng_list.~EngineList(); // call destructor explicitly
 			break;
 
 		case WE_PAINT:
@@ -1199,7 +1199,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 	w->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_player;
 
 	bv = &WP(w, buildvehicle_d);
-	EngList_Create(&bv->eng_list);
+	new (&bv->eng_list) EngineList();
 	bv->sel_engine      = INVALID_ENGINE;
 
 	bv->regenerate_list = false;
@@ -1226,5 +1226,5 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 
 	GenerateBuildList(w); // generate the list, since we need it in the next line
 	/* Select the first engine in the list as default when opening the window */
-	if (EngList_Count(&bv->eng_list) > 0) bv->sel_engine = bv->eng_list[0];
+	if (bv->eng_list.size() > 0) bv->sel_engine = bv->eng_list[0];
 }

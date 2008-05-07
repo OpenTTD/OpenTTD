@@ -33,7 +33,6 @@ genworld.cpp
 gfx.cpp
 gfxinit.cpp
 heightmap.cpp
-helpers.cpp
 landscape.cpp
 map.cpp
 md5.cpp

@@ -197,7 +197,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 	byte i = draw_left ? 0 : 1;
 
 	EngineList *list = &WP(w, replaceveh_d).list[i];
-	EngList_RemoveAll(list);
+	list->clear();
 
 	const Engine *e;
 	FOR_ALL_ENGINES_OF_TYPE(e, type) {
@@ -220,7 +220,7 @@ static void GenerateReplaceVehList(Window *w, bool draw_left)
 			if (eid == WP(w, replaceveh_d).sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
 		}
 
-		EngList_Add(list, eid);
+		list->push_back(eid);
 		if (eid == WP(w, replaceveh_d).sel_engine[i]) selected_engine = eid; // The selected engine is still in the list
 	}
 	WP(w, replaceveh_d).sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
@@ -237,8 +237,8 @@ static void GenerateLists(Window *w)
 	if (WP(w, replaceveh_d).update_left == true) {
 		/* We need to rebuild the left list */
 		GenerateReplaceVehList(w, true);
-		SetVScrollCount(w, EngList_Count(&WP(w, replaceveh_d).list[0]));
-		if (WP(w, replaceveh_d).init_lists && WP(w, replaceveh_d).sel_engine[0] == INVALID_ENGINE && EngList_Count(&WP(w, replaceveh_d).list[0]) != 0) {
+		SetVScrollCount(w, WP(w, replaceveh_d).list[0].size());
+		if (WP(w, replaceveh_d).init_lists && WP(w, replaceveh_d).sel_engine[0] == INVALID_ENGINE && WP(w, replaceveh_d).list[0].size() != 0) {
 			WP(w, replaceveh_d).sel_engine[0] = WP(w, replaceveh_d).list[0][0];
 		}
 	}
@@ -247,12 +247,12 @@ static void GenerateLists(Window *w)
 		/* Either we got a request to rebuild the right list or the left list selected a different engine */
 		if (WP(w, replaceveh_d).sel_engine[0] == INVALID_ENGINE) {
 			/* Always empty the right list when nothing is selected in the left list */
-			EngList_RemoveAll(&WP(w, replaceveh_d).list[1]);
+			WP(w, replaceveh_d).list[1].clear();
 			WP(w, replaceveh_d).sel_engine[1] = INVALID_ENGINE;
 		} else {
 			GenerateReplaceVehList(w, false);
-			SetVScroll2Count(w, EngList_Count(&WP(w, replaceveh_d).list[1]));
-			if (WP(w, replaceveh_d).init_lists && WP(w, replaceveh_d).sel_engine[1] == INVALID_ENGINE && EngList_Count(&WP(w, replaceveh_d).list[1]) != 0) {
+			SetVScroll2Count(w, WP(w, replaceveh_d).list[1].size());
+			if (WP(w, replaceveh_d).init_lists && WP(w, replaceveh_d).sel_engine[1] == INVALID_ENGINE && WP(w, replaceveh_d).list[1].size() != 0) {
 				WP(w, replaceveh_d).sel_engine[1] = WP(w, replaceveh_d).list[1][0];
 			}
 		}
@@ -279,8 +279,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_CREATE:
 			WP(w, replaceveh_d).wagon_btnstate = true; // start with locomotives (all other vehicles will not read this bool)
-			EngList_Create(&WP(w, replaceveh_d).list[0]);
-			EngList_Create(&WP(w, replaceveh_d).list[1]);
+			new (&WP(w, replaceveh_d).list[0]) EngineList();
+			new (&WP(w, replaceveh_d).list[1]) EngineList();
 			WP(w, replaceveh_d).update_left   = true;
 			WP(w, replaceveh_d).update_right  = true;
 			WP(w, replaceveh_d).init_lists    = true;
@@ -357,7 +357,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				uint widget     = (i == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
 				EngineList list = WP(w, replaceveh_d).list[i]; // which list to draw
 				EngineID start  = i == 0 ? w->vscroll.pos : w->vscroll2.pos; // what is the offset for the start (scrolling)
-				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, EngList_Count(&list));
+				EngineID end    = min((i == 0 ? w->vscroll.cap : w->vscroll2.cap) + start, list.size());
 
 				/* Do the actual drawing */
 				DrawEngineList((VehicleType)w->window_number, w->widget[widget].left + 2, w->widget[widget].top + 1, list, start, end, WP(w, replaceveh_d).sel_engine[i], i == 0 ? w->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
@@ -411,7 +411,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					uint16 click_scroll_pos = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? w->vscroll.pos : w->vscroll2.pos;
 					uint16 click_scroll_cap = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? w->vscroll.cap : w->vscroll2.cap;
 					byte click_side         = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
-					uint16 engine_count     = EngList_Count(&WP(w, replaceveh_d).list[click_side]);
+					uint16 engine_count     = WP(w, replaceveh_d).list[click_side].size();
 
 					if (i < click_scroll_cap) {
 						i += click_scroll_pos;
@@ -476,8 +476,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			EngList_RemoveAll(&WP(w, replaceveh_d).list[0]);
-			EngList_RemoveAll(&WP(w, replaceveh_d).list[1]);
+			WP(w, replaceveh_d).list[0].~EngineList(); // call destructor explicitly
+			WP(w, replaceveh_d).list[1].~EngineList();
 		break;
 	}
 }

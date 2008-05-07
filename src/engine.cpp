@@ -114,6 +114,28 @@ Engine::~Engine()
 	free(this->name);
 }
 
+/** Sort all items using qsort() and given 'CompareItems' function
+ * @param el list to be sorted
+ * @param compare function for evaluation of the quicksort
+ */
+void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
+{
+	qsort(&((*el)[0]), el->size(), sizeof(EngineID), compare);
+}
+
+/** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
+ * @param el list to be sorted
+ * @param compare function for evaluation of the quicksort
+ * @param begin start of sorting
+ * @param num_items count of items to be sorted
+ */
+void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
+{
+	assert(begin <= (uint)el->size());
+	assert(begin + num_items <= (uint)el->size());
+	qsort(&((*el)[begin]), num_items, sizeof(EngineID), compare);
+}
+
 void SetupEngines()
 {
 	_Engine_pool.CleanPool();
