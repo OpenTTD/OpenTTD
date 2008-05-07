@@ -22,6 +22,7 @@
 #include "economy_func.h"
 #include "core/alloc_func.hpp"
 #include "settings_type.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

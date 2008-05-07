@@ -9,6 +9,8 @@
 #include "viewport_type.h"
 #include "vehicle_type.h"
 #include "strings_type.h"
+#include "window_type.h"
+#include "tile_type.h"
 
 void SetSelectionRed(bool);
 
@@ -17,6 +19,7 @@ void InitializeWindowViewport(Window *w, int x, int y, int width, int height, ui
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
 Point GetTileBelowCursor();
 void UpdateViewportPosition(Window *w);
+void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
 
 bool DoZoomInOutWindow(int how, Window *w);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
@@ -53,19 +56,7 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process
 void VpSetPresizeRange(TileIndex from, TileIndex to);
 void VpSetPlaceSizingLimit(int limit);
 
-typedef void PlaceProc(TileIndex tile);
-void PlaceProc_DemolishArea(TileIndex tile);
-void PlaceProc_LevelLand(TileIndex tile);
-void PlaceProc_BuyLand(TileIndex tile);
-bool GUIPlaceProcDragXY(const WindowEvent *e);
-
-/* common button handler */
-bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc);
-
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
-
-void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w);
-void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num);
 
 void ResetObjectToPlace();
 
@@ -74,8 +65,6 @@ bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);
 bool ScrollMainWindowTo(int x, int y, bool instant = false);
 
-extern PlaceProc *_place_proc;
 extern Point _tile_fract_coords;
-extern TileHighlightData _thd;
 
 #endif /* VIEWPORT_FUNC_H */

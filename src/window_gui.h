@@ -6,11 +6,14 @@
 #define WINDOW_GUI_H
 
 #include "core/bitmath_func.hpp"
+#include "core/geometry_type.hpp"
 #include "vehicle_type.h"
 #include "viewport_type.h"
 #include "player_type.h"
 #include "strings_type.h"
 #include "core/alloc_type.hpp"
+#include "window_type.h"
+#include "tile_type.h"
 
 /**
  * The maximum number of windows that can be opened.

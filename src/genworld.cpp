@@ -25,6 +25,7 @@
 #include "settings_type.h"
 #include "newgrf_storage.h"
 #include "water.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 

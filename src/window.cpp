@@ -21,6 +21,7 @@
 #include "settings_type.h"
 #include "cheat_func.h"
 #include "window_func.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 

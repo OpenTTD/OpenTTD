@@ -23,6 +23,7 @@
 #include "player_func.h"
 #include "settings_type.h"
 #include "tunnelbridge.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -24,6 +24,7 @@
 #include "player_func.h"
 #include "order_func.h"
 #include "depot_base.h"
+#include "tilehighlight_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

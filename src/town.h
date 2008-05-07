@@ -15,6 +15,7 @@
 #include "player_type.h"
 #include "settings_type.h"
 #include "strings_type.h"
+#include "viewport_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,

@@ -23,6 +23,7 @@
 #include "player_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
+#include "tilehighlight_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

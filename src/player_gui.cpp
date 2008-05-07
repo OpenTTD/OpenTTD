@@ -30,6 +30,7 @@
 #include "settings_type.h"
 #include "widgets/dropdown_func.h"
 #include "widgets/dropdown_type.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

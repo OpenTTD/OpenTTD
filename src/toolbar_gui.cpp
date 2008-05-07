@@ -37,6 +37,7 @@
 #include "functions.h"
 #include "console.h"
 #include "news_gui.h"
+#include "tilehighlight_func.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"

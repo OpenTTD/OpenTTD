@@ -26,6 +26,7 @@
 #include "gfx_func.h"
 #include "core/alloc_type.hpp"
 #include "animated_tile_func.h"
+#include "tilehighlight_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

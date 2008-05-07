@@ -20,6 +20,7 @@
 #include "gfx_func.h"
 #include "player_func.h"
 #include "slope_func.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

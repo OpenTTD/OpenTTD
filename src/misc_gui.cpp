@@ -43,6 +43,7 @@
 #include "settings_type.h"
 #include "newgrf_cargo.h"
 #include "rail_gui.h"
+#include "tilehighlight_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

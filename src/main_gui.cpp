@@ -30,6 +30,7 @@
 #include "settings_type.h"
 #include "toolbar_gui.h"
 #include "variables.h"
+#include "tilehighlight_func.h"
 
 #include "network/network.h"
 #include "network/network_data.h"
