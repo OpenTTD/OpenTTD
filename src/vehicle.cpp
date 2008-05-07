@@ -2746,6 +2746,10 @@ Vehicle* BackuppedVehicle::RestoreBackupVehicle(Vehicle *v, Player *p)
 
 	assert(v->owner == p->index);
 
+	/* Cache the result of the vehicle type check since it will not change
+	 * and we need this check once for every run though the loop. */
+	bool is_road_veh = v->type == VEH_ROAD;
+
 	while (true) {
 		Vehicle *dest = GetVehicle(backup->index);
 		/* The vehicle should be free since we are restoring something we just sold. */
@@ -2760,6 +2764,12 @@ Vehicle* BackuppedVehicle::RestoreBackupVehicle(Vehicle *v, Player *p)
 		dest->old_new_hash = &dummy;
 		dest->left_coord = INVALID_COORD;
 		UpdateVehiclePosHash(dest, INVALID_COORD, 0);
+
+		if (is_road_veh) {
+			/* Removed the slot in the road vehicles as the slot is gone.
+			 * We don't want a pointer to a slot that's gone.              */
+			dest->u.road.slot = NULL;
+		}
 
 		if (!dest->cargo.Empty()) {
 			/* The vehicle in question contains some cargo.
