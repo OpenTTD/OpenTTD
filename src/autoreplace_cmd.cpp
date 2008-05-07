@@ -244,11 +244,13 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 				}
 			}
 		}
-		/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
-		MoveVehicleCargo(new_v->type == VEH_TRAIN ? new_v->First() : new_v, old_v);
+		if (CmdSucceeded(cost)) {
+			/* We are done setting up the new vehicle. Now we move the cargo from the old one to the new one */
+			MoveVehicleCargo(new_v->type == VEH_TRAIN ? new_v->First() : new_v, old_v);
 
-		// Get the name of the old vehicle if it has a custom name.
-		if (old_v->name != NULL) vehicle_name = strdup(old_v->name);
+			/* Get the name of the old vehicle if it has a custom name. */
+			if (old_v->name != NULL) vehicle_name = strdup(old_v->name);
+		}
 	} else { // flags & DC_EXEC not set
 		CommandCost tmp_move;
 
@@ -281,6 +283,8 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 
 	/* sell the engine/ find out how much you get for the old engine (income is returned as negative cost) */
 	cost.AddCost(DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v)));
+
+	if (CmdFailed(cost)) return cost;
 
 	if (new_front) {
 		/* now we assign the old unitnumber to the new vehicle */
@@ -426,16 +430,16 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 			/* Now replace the vehicle */
 			cost.AddCost(ReplaceVehicle(&w, DC_EXEC, cost.GetCost(), p, new_engine));
 
-			if (w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE) {
+			if (CmdSucceeded(cost) && (w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {
 				/* now we bought a new engine and sold the old one. We need to fix the
 				 * pointers in order to avoid pointing to the old one for trains: these
 				 * pointers should point to the front engine and not the cars
 				 */
 				v = w;
 			}
-		} while (w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
+		} while (CmdSucceeded(cost) && w->type == VEH_TRAIN && (w = GetNextVehicle(w)) != NULL);
 
-		if (v->type == VEH_TRAIN && p->renew_keep_length) {
+		if (CmdSucceeded(cost) && v->type == VEH_TRAIN && p->renew_keep_length) {
 			/* Remove wagons until the wanted length is reached */
 			cost.AddCost(WagonRemoval(v, old_total_length));
 		}
