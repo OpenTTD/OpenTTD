@@ -1931,9 +1931,14 @@ void MouseLoop(MouseClick click, int mousewheel)
 		}
 	} else {
 		switch (click) {
-			case MC_DOUBLE_LEFT: DispatchLeftClickEvent(w, x - w->left, y - w->top, true);
-				/* fallthough, and also give a single-click for backwards compatible */
-			case MC_LEFT: DispatchLeftClickEvent(w, x - w->left, y - w->top, false); break;
+			case MC_DOUBLE_LEFT:
+				DispatchLeftClickEvent(w, x - w->left, y - w->top, true);
+				if (_mouseover_last_w == NULL) break; // The window got removed.
+				/* fallthough, and also give a single-click for backwards compatibility */
+			case MC_LEFT:
+				DispatchLeftClickEvent(w, x - w->left, y - w->top, false);
+				break;
+
 			default:
 				if (!scrollwheel_scrolling || w == NULL || w->window_class != WC_SMALLMAP) break;
 				/* We try to use the scrollwheel to scroll since we didn't touch any of the buttons.
