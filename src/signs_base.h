@@ -6,6 +6,7 @@
 #define SIGNS_BASE_H
 
 #include "signs_type.h"
+#include "viewport_type.h"
 #include "oldpool.h"
 
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)

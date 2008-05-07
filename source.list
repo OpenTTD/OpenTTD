@@ -299,6 +299,8 @@ tgp.h
 thread.h
 tile_cmd.h
 tile_type.h
+tilehighlight_func.h
+tilehighlight_type.h
 timetable.h
 town.h
 town_type.h

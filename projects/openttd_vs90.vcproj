@@ -1493,6 +1493,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tilehighlight_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\tilehighlight_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\timetable.h"
 				>
 			</File>

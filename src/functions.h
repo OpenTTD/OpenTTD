@@ -58,8 +58,6 @@ void AskExitToGameMenu();
 
 void RedrawAutosave();
 
-void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
-
 int ttd_main(int argc, char* argv[]);
 void HandleExitGameRequest();
 

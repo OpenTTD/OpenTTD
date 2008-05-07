@@ -11,6 +11,7 @@
 #include "command_type.h"
 #include "station_type.h"
 #include "town_type.h"
+#include "viewport_type.h"
 
 DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
 

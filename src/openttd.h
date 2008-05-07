@@ -54,12 +54,6 @@ enum {
 	DO_WAYPOINTS          = 6,
 };
 
-struct ViewportSign {
-	int32 left;
-	int32 top;
-	byte width_1, width_2;
-};
-
 enum {
 	SORT_ASCENDING  = 0,
 	SORT_DESCENDING = 1,

@@ -32,6 +32,7 @@
 #include "settings_type.h"
 #include "newgrf_station.h"
 #include "oldpool_func.h"
+#include "viewport_func.h"
 
 #include "table/strings.h"
 

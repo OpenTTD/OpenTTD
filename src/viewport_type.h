@@ -24,6 +24,12 @@ struct ViewPort {
 	ZoomLevel zoom;
 };
 
+struct ViewportSign {
+	int32 left;
+	int32 top;
+	byte width_1, width_2;
+};
+
 enum {
 	ZOOM_IN   = 0,
 	ZOOM_OUT  = 1,
