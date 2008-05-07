@@ -921,7 +921,7 @@ make_cflags_and_ldflags() {
 		if [ $cc_version -ge 29 ]; then
 			CFLAGS="$CFLAGS -Wall -Wno-multichar -Wsign-compare -Wundef"
 			CFLAGS="$CFLAGS -Wwrite-strings -Wpointer-arith"
-			CFLAGS="$CFLAGS -Wno-uninitialized -Wredundant-decls"
+			CFLAGS="$CFLAGS -Wno-uninitialized"
 
 			CC_CFLAGS="$CC_CFLAGS -Wstrict-prototypes"
 		fi
@@ -935,6 +935,7 @@ make_cflags_and_ldflags() {
 
 		if [ $cc_version -ge 30 ]; then
 			CFLAGS="$CFLAGS -W -Wno-unused-parameter -Wformat=2"
+			CFLAGS="$CFLAGS -Wredundant-decls"
 		fi
 
 		if [ $cc_version -ge 34 ]; then
