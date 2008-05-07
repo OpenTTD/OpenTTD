@@ -18,6 +18,9 @@
 
 #ifdef WIN32
 # include <tchar.h>
+# ifndef UNICODE
+#  include <io.h>
+# endif
 # define access _taccess
 # define unlink _tunlink
 #else
