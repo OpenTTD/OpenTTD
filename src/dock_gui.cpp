@@ -58,11 +58,6 @@ static void PlaceDocks_Buoy(TileIndex tile)
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_BUOY | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE));
 }
 
-static void PlaceDocks_DemolishArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
-}
-
 static void PlaceDocks_BuildCanal(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_CREATE_WATER);
@@ -96,7 +91,7 @@ static void BuildDocksClick_Lock(Window *w)
 
 static void BuildDocksClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceDocks_DemolishArea);
+	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void BuildDocksClick_Depot(Window *w)

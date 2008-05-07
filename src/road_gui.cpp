@@ -230,11 +230,6 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 	}
 }
 
-static void PlaceRoad_DemolishArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
-}
-
 /** Enum referring to the widgets of the build road toolbar */
 enum RoadToolbarWidgets {
 	RTW_CLOSEBOX = 0,
@@ -322,7 +317,7 @@ static void BuildRoadClick_AutoRoad(Window *w)
 
 static void BuildRoadClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceRoad_DemolishArea);
+	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void BuildRoadClick_Depot(Window *w)

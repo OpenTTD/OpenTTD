@@ -40,11 +40,6 @@ static void PlaceAirport(TileIndex tile)
 	DoCommandP(tile, _selected_airport_type, _ctrl_pressed, CcBuildAirport, CMD_BUILD_AIRPORT | CMD_NO_WATER | CMD_MSG(STR_A001_CAN_T_BUILD_AIRPORT_HERE));
 }
 
-static void PlaceAir_DemolishArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
-}
-
 
 enum {
 	ATW_AIRPORT  = 3,
@@ -59,7 +54,7 @@ static void BuildAirClick_Airport(Window *w)
 
 static void BuildAirClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceAir_DemolishArea);
+	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
 
