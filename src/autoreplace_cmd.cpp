@@ -427,10 +427,14 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 				/* We are going to try to replace a vehicle but we don't have any backup so we will make one. */
 				backup.Backup(v, p);
 			}
-			/* Now replace the vehicle */
+			/* Now replace the vehicle.
+			 * First we need to cache if it's the front vehicle as we need to update the v pointer if it is.
+			 * If the replacement fails then we can't trust the data in the vehicle hence the reason to cache the result. */
+			bool IsFront = w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE;
+
 			cost.AddCost(ReplaceVehicle(&w, DC_EXEC, cost.GetCost(), p, new_engine));
 
-			if (CmdSucceeded(cost) && (w->type != VEH_TRAIN || w->u.rail.first_engine == INVALID_ENGINE)) {
+			if (IsFront) {
 				/* now we bought a new engine and sold the old one. We need to fix the
 				 * pointers in order to avoid pointing to the old one for trains: these
 				 * pointers should point to the front engine and not the cars
