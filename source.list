@@ -3,7 +3,6 @@ airport.cpp
 core/alloc_func.cpp
 animated_tile.cpp
 articulated_vehicles.cpp
-autoreplace_cmd.cpp
 aystar.cpp
 core/bitmath_func.cpp
 bmp.cpp
@@ -11,7 +10,6 @@ callback_table.cpp
 cargopacket.cpp
 cargotype.cpp
 cheat.cpp
-cheat_gui.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
@@ -76,7 +74,6 @@ signs.cpp
 sound.cpp
 spritecache.cpp
 station.cpp
-statusbar_gui.cpp
 string.cpp
 strings.cpp
 texteff.cpp
@@ -353,6 +350,7 @@ airport_gui.cpp
 autoreplace_gui.cpp
 bridge_gui.cpp
 build_vehicle_gui.cpp
+cheat_gui.cpp
 depot_gui.cpp
 dock_gui.cpp
 engine_gui.cpp
@@ -378,6 +376,7 @@ ship_gui.cpp
 signs_gui.cpp
 smallmap_gui.cpp
 station_gui.cpp
+statusbar_gui.cpp
 subsidy_gui.cpp
 terraform_gui.cpp
 timetable_gui.cpp
@@ -387,8 +386,9 @@ train_gui.cpp
 transparency_gui.cpp
 vehicle_gui.cpp
 
-# Landscape
+# Command handlers
 aircraft_cmd.cpp
+autoreplace_cmd.cpp
 clear_cmd.cpp
 disaster_cmd.cpp
 dummy_land.cpp

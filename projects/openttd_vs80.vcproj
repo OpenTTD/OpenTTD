@@ -468,10 +468,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\autoreplace_cmd.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\aystar.cpp"
 				>
 			</File>
@@ -497,10 +493,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\cheat.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\cheat_gui.cpp"
 				>
 			</File>
 			<File
@@ -729,10 +721,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\station.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\statusbar_gui.cpp"
 				>
 			</File>
 			<File
@@ -1652,6 +1640,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\cheat_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\depot_gui.cpp"
 				>
 			</File>
@@ -1752,6 +1744,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\statusbar_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\subsidy_gui.cpp"
 				>
 			</File>
@@ -1785,10 +1781,14 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Landscape"
+			Name="Command handlers"
 			>
 			<File
 				RelativePath=".\..\src\aircraft_cmd.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\autoreplace_cmd.cpp"
 				>
 			</File>
 			<File
