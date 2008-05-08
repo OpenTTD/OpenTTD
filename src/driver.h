@@ -43,7 +43,7 @@ private:
 
 	static Drivers &GetDrivers()
 	{
-		static Drivers &s_drivers = *new Drivers();
+		static Drivers s_drivers;
 		return s_drivers;
 	}
 
@@ -67,7 +67,23 @@ public:
 		name(NULL)
 	{}
 
-	virtual ~DriverFactoryBase() { if (this->name != NULL) GetDrivers().erase(this->name); free(this->name); }
+	/** Frees memory used for this->name
+	 */
+	virtual ~DriverFactoryBase() {
+		if (this->name == NULL) return;
+		GetDrivers().erase(this->name);
+		free(this->name);
+	}
+
+	/** Shuts down all active drivers
+	 */
+	static void ShutdownDrivers()
+	{
+		for (Driver::Type dt = Driver::DT_BEGIN; dt < Driver::DT_END; dt++) {
+			Driver *driver = *GetActiveDriver(dt);
+			if (driver != NULL) driver->Stop();
+		}
+	}
 
 	static const Driver *SelectDriver(const char *name, Driver::Type type);
 	static char *GetDriversInfo(char *p, const char *last);

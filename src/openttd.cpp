@@ -288,8 +288,20 @@ static void InitializeDynamicVariables()
 }
 
 
-static void UnInitializeGame()
+/** Unitializes drivers, frees allocated memory, cleans pools, ...
+ * Generally, prepares the game for shutting down
+ */
+static void ShutdownGame()
 {
+	/* stop the AI */
+	AI_Uninitialize();
+
+	IConsoleFree();
+
+	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
+
+	DriverFactoryBase::ShutdownDrivers();
+
 	UnInitWindowSystem();
 
 	/* Uninitialize airport state machines */
@@ -310,6 +322,9 @@ static void UnInitializeGame()
 	free((void*)_industry_sort);
 
 	free(_config_file);
+
+	/* Close all and any open filehandles */
+	FioCloseAll();
 }
 
 static void LoadIntroGame()
@@ -623,13 +638,6 @@ int ttd_main(int argc, char *argv[])
 	_video_driver->MainLoop();
 
 	WaitTillSaved();
-	IConsoleFree();
-
-	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
-
-	_video_driver->Stop();
-	_music_driver->Stop();
-	_sound_driver->Stop();
 
 	/* only save config if we have to */
 	if (save_config) {
@@ -637,14 +645,8 @@ int ttd_main(int argc, char *argv[])
 		SaveToHighScore();
 	}
 
-	/* Reset windowing system and free config file */
-	UnInitializeGame();
-
-	/* stop the AI */
-	AI_Uninitialize();
-
-	/* Close all and any open filehandles */
-	FioCloseAll();
+	/* Reset windowing system, stop drivers, free used memory, ... */
+	ShutdownGame();
 
 	return 0;
 }
