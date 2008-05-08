@@ -209,11 +209,11 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 					} else if (ni->flags & NF_TILE) {
 						if (_ctrl_pressed) {
 							ShowExtraViewPortWindow(ni->data_a);
-							if (ni->data_b != 0) {
+							if (ni->flags & NF_TILE2) {
 								ShowExtraViewPortWindow(ni->data_b);
 							}
 						} else {
-							if (!ScrollMainWindowToTile(ni->data_a) && ni->data_b != 0) {
+							if (!ScrollMainWindowToTile(ni->data_a) && ni->flags & NF_TILE2) {
 								ScrollMainWindowToTile(ni->data_b);
 							}
 						}

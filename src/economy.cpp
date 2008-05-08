@@ -1142,14 +1142,14 @@ static void SubsidyMonthlyHandler()
 
 		if (s->age == 12-1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
-			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
+			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 		} else if (s->age == 2*12-1) {
 			st = GetStation(s->to);
 			if (st->owner == _local_player) {
 				pair = SetupSubsidyDecodeParam(s, 1);
-				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
+				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
@@ -1188,7 +1188,7 @@ static void SubsidyMonthlyHandler()
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
+					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
 					modified = true;
 					break;
 				}
@@ -1405,7 +1405,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			SetDParam(0, _current_player);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
-				NM_NORMAL, NF_TILE, NT_SUBSIDIES, DNC_NONE,
+				NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE,
 				pair.a, pair.b
 			);
 

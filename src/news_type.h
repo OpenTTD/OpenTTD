@@ -48,10 +48,11 @@ enum NewsMode {
 enum NewsFlag {
 	NF_NONE      = 0,        ///< No flag is set.
 	NF_VIEWPORT  = (1 << 1), ///< Does the news message have a viewport? (ingame picture of happening)
-	NF_TILE      = (1 << 2), ///< When clicked on the news message scroll to a given tile? Tile is in data_a/data_b
+	NF_TILE      = (1 << 2), ///< When clicked on the news message scroll to a given tile? Tile is in data_a
 	NF_VEHICLE   = (1 << 3), ///< When clicked on the message scroll to the vehicle? VehicleID is in data_a
 	NF_FORCE_BIG = (1 << 4), ///< Force the appearance of a news message if it has already been shown (internal)
 	NF_INCOLOR   = (1 << 5), ///< Show the newsmessage in colour, otherwise it defaults to black & white
+	NF_TILE2     = (1 << 6), ///< There is a second tile to scroll to; tile is in data_b
 };
 DECLARE_ENUM_AS_BIT_SET(NewsFlag);
 
