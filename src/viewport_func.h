@@ -51,11 +51,6 @@ void SetTileSelectBigSize(int ox, int oy, int sx, int sy);
 
 Vehicle *CheckMouseOverVehicle();
 
-void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method);
-void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process);
-void VpSetPresizeRange(TileIndex from, TileIndex to);
-void VpSetPlaceSizingLimit(int limit);
-
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
 
 void ResetObjectToPlace();

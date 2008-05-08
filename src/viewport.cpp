@@ -2228,7 +2228,7 @@ void UpdateTileSelection()
 }
 
 /** highlighting tiles while only going over them with the mouse */
-void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, byte process)
+void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDragDropSelectionProcess process)
 {
 	_thd.select_method = method;
 	_thd.select_proc   = process;

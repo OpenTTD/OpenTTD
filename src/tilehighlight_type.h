@@ -69,7 +69,7 @@ struct TileHighlightData {
 	WindowNumber window_number;
 
 	ViewportPlaceMethod select_method;
-	byte select_proc;
+	ViewportDragDropSelectionProcess select_proc;
 
 	TileIndex redsq;
 };

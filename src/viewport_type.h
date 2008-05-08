@@ -58,4 +58,33 @@ enum ViewportPlaceMethod {
 	VPM_SIGNALDIRS      = 6, ///< similiar to VMP_RAILDIRS, but with different cursor
 };
 
+/** Drag and drop selection process, or, what to do with an area of land when
+ * you've selected it. */
+enum ViewportDragDropSelectionProcess {
+	DDSP_DEMOLISH_AREA,
+	DDSP_RAISE_AND_LEVEL_AREA,
+	DDSP_LOWER_AND_LEVEL_AREA,
+	DDSP_LEVEL_AREA,
+	DDSP_CREATE_DESERT,
+	DDSP_CREATE_ROCKS,
+	DDSP_CREATE_WATER,
+	DDSP_CREATE_RIVER,
+	DDSP_PLANT_TREES,
+	DDSP_BUILD_BRIDGE,
+
+	/* Rail specific actions */
+	DDSP_PLACE_RAIL_NE,
+	DDSP_PLACE_RAIL_NW,
+	DDSP_PLACE_AUTORAIL,
+	DDSP_BUILD_SIGNALS,
+	DDSP_BUILD_STATION,
+	DDSP_REMOVE_STATION,
+	DDSP_CONVERT_RAIL,
+
+	/* Road specific actions */
+	DDSP_PLACE_ROAD_X_DIR,
+	DDSP_PLACE_ROAD_Y_DIR,
+	DDSP_PLACE_AUTOROAD,
+};
+
 #endif /* VIEWPORT_TYPE_H */
