@@ -135,7 +135,7 @@ static const WindowDesc _sign_list_desc = {
 
 void ShowSignList()
 {
-	Window *w = AllocateWindowDescFront(&_sign_list_desc, 0);
+	Window *w = AllocateWindowDescFront<Window>(&_sign_list_desc, 0);
 	if (w != NULL) {
 		w->vscroll.cap = 12;
 		w->resize.step_height = 10;

@@ -114,7 +114,7 @@ static const WindowDesc _engine_preview_desc = {
 
 void ShowEnginePreviewWindow(EngineID engine)
 {
-	AllocateWindowDescFront(&_engine_preview_desc, engine);
+	AllocateWindowDescFront<Window>(&_engine_preview_desc, engine);
 }
 
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)

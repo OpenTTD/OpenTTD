@@ -304,7 +304,7 @@ static const WindowDesc _terraform_desc = {
 void ShowTerraformToolbar(Window *link)
 {
 	if (!IsValidPlayer(_current_player)) return;
-	Window *w = AllocateWindowDescFront(&_terraform_desc, 0);
+	Window *w = AllocateWindowDescFront<Window>(&_terraform_desc, 0);
 	if (w != NULL && link != NULL) {
 		/* Align the terraform toolbar under the main toolbar and put the linked
 		 * toolbar to left of it
@@ -679,5 +679,5 @@ static const WindowDesc _scen_edit_land_gen_desc = {
 
 void ShowEditorTerraformToolbar()
 {
-	AllocateWindowDescFront(&_scen_edit_land_gen_desc, 0);
+	AllocateWindowDescFront<Window>(&_scen_edit_land_gen_desc, 0);
 }

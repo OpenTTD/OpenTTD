@@ -811,7 +811,7 @@ void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
 
 	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | player;
 	DeleteWindowById(wc, num);
-	Window *w = AllocateWindowDescFront(&_group_desc, num);
+	Window *w = AllocateWindowDescFront<Window>(&_group_desc, num);
 	if (w == NULL) return;
 
 	w->window_class = wc;

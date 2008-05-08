@@ -679,7 +679,7 @@ void ShowBuildRoadToolbar(RoadType roadtype)
 	_cur_roadtype = roadtype;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
-	Window *w = AllocateWindowDescFront(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
+	Window *w = AllocateWindowDescFront<Window>(roadtype == ROADTYPE_ROAD ? &_build_road_desc : &_build_tramway_desc, TRANSPORT_ROAD);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
@@ -714,7 +714,7 @@ static const WindowDesc _build_road_scen_desc = {
 void ShowBuildRoadScenToolbar()
 {
 	_cur_roadtype = ROADTYPE_ROAD;
-	AllocateWindowDescFront(&_build_road_scen_desc, 0);
+	AllocateWindowDescFront<Window>(&_build_road_scen_desc, 0);
 }
 
 /** Enum referring to the widgets of the build road depot window */

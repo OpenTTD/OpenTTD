@@ -620,7 +620,7 @@ void ShowPlayerStations(PlayerID player)
 {
 	if (!IsValidPlayer(player)) return;
 
-	Window *w = AllocateWindowDescFront(&_player_stations_desc, player);
+	Window *w = AllocateWindowDescFront<Window>(&_player_stations_desc, player);
 	if (w == NULL) return;
 
 	w->caption_color = (byte)w->window_number;
@@ -1043,7 +1043,7 @@ static const WindowDesc _station_view_desc = {
  */
 void ShowStationViewWindow(StationID station)
 {
-	Window *w = AllocateWindowDescFront(&_station_view_desc, station);
+	Window *w = AllocateWindowDescFront<Window>(&_station_view_desc, station);
 	if (w == NULL) return;
 
 	PlayerID owner = GetStation(w->window_number)->owner;

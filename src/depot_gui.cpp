@@ -997,13 +997,13 @@ void ShowDepotWindow(TileIndex tile, VehicleType type)
 	switch (type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:
-			w = AllocateWindowDescFront(&_train_depot_desc, tile); break;
+			w = AllocateWindowDescFront<Window>(&_train_depot_desc, tile); break;
 		case VEH_ROAD:
-			w = AllocateWindowDescFront(&_road_depot_desc, tile); break;
+			w = AllocateWindowDescFront<Window>(&_road_depot_desc, tile); break;
 		case VEH_SHIP:
-			w = AllocateWindowDescFront(&_ship_depot_desc, tile); break;
+			w = AllocateWindowDescFront<Window>(&_ship_depot_desc, tile); break;
 		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront(&_aircraft_depot_desc, tile); break;
+			w = AllocateWindowDescFront<Window>(&_aircraft_depot_desc, tile); break;
 	}
 
 	if (w != NULL) {

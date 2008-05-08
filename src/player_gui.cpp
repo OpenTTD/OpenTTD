@@ -247,7 +247,7 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 {
 	if (!IsValidPlayer(player)) return;
 
-	Window *w = AllocateWindowDescFront(show_small ? &_player_finances_small_desc : &_player_finances_desc, player);
+	Window *w = AllocateWindowDescFront<Window>(show_small ? &_player_finances_small_desc : &_player_finances_desc, player);
 	if (w != NULL) {
 		w->caption_color = w->window_number;
 		WP(w, def_d).data_1 = show_small;
@@ -1018,7 +1018,7 @@ static void DoSelectPlayerFace(PlayerID player, bool adv, int top, int left)
 {
 	if (!IsValidPlayer(player)) return;
 
-	Window *w = AllocateWindowDescFront(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player); // simple or advanced window
+	Window *w = AllocateWindowDescFront<Window>(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player); // simple or advanced window
 
 	if (w != NULL) {
 		w->caption_color = w->window_number;
@@ -1235,7 +1235,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace((PlayerID)w->window_number, false); break;
 
 				case PCW_WIDGET_COLOR_SCHEME: {
-					Window *wf = AllocateWindowDescFront(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
+					Window *wf = AllocateWindowDescFront<Window>(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
 					if (wf != NULL) {
 						wf->caption_color = wf->window_number;
 						WP(wf, livery_d).livery_class = LC_OTHER;
@@ -1355,7 +1355,7 @@ void ShowPlayerCompany(PlayerID player)
 
 	if (!IsValidPlayer(player)) return;
 
-	w = AllocateWindowDescFront(&_player_company_desc, player);
+	w = AllocateWindowDescFront<Window>(&_player_company_desc, player);
 	if (w != NULL) w->caption_color = w->window_number;
 }
 
@@ -1411,7 +1411,7 @@ static const WindowDesc _buy_company_desc = {
 
 void ShowBuyCompanyDialog(uint player)
 {
-	AllocateWindowDescFront(&_buy_company_desc, player);
+	AllocateWindowDescFront<Window>(&_buy_company_desc, player);
 }
 
 /********** HIGHSCORE and ENDGAME windows */

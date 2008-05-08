@@ -268,7 +268,7 @@ static const WindowDesc _town_authority_desc = {
 
 static void ShowTownAuthorityWindow(uint town)
 {
-	Window *w = AllocateWindowDescFront(&_town_authority_desc, town);
+	Window *w = AllocateWindowDescFront<Window>(&_town_authority_desc, town);
 
 	if (w != NULL) {
 		w->vscroll.cap = 5;
@@ -397,7 +397,7 @@ void ShowTownViewWindow(TownID town)
 {
 	Window *w;
 
-	w = AllocateWindowDescFront(&_town_view_desc, town);
+	w = AllocateWindowDescFront<Window>(&_town_view_desc, town);
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
@@ -576,7 +576,7 @@ static const WindowDesc _town_directory_desc = {
 
 void ShowTownDirectory()
 {
-	Window *w = AllocateWindowDescFront(&_town_directory_desc, 0);
+	Window *w = AllocateWindowDescFront<Window>(&_town_directory_desc, 0);
 
 	if (w != NULL) {
 		w->vscroll.cap = 16;
@@ -705,6 +705,6 @@ static const WindowDesc _scen_edit_town_gen_desc = {
 void ShowBuildTownWindow()
 {
 	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront(&_scen_edit_town_gen_desc, 0);
+	AllocateWindowDescFront<Window>(&_scen_edit_town_gen_desc, 0);
 }
 

@@ -197,5 +197,5 @@ static const WindowDesc _subsidies_list_desc = {
 
 void ShowSubsidiesList()
 {
-	AllocateWindowDescFront(&_subsidies_list_desc, 0);
+	AllocateWindowDescFront<Window>(&_subsidies_list_desc, 0);
 }

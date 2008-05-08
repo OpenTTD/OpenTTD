@@ -301,7 +301,7 @@ static const WindowDesc _timetable_desc = {
 
 void ShowTimetableWindow(const Vehicle *v)
 {
-	Window *w = AllocateWindowDescFront(&_timetable_desc, v->index);
+	Window *w = AllocateWindowDescFront<Window>(&_timetable_desc, v->index);
 
 	if (w != NULL) {
 		w->caption_color = v->owner;

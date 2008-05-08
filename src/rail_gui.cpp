@@ -752,7 +752,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
 		DeleteWindowByClass(WC_BUILD_TOOLBAR);
 		_cur_railtype = railtype;
-		w = AllocateWindowDescFront(&_build_rail_desc, TRANSPORT_RAIL);
+		w = AllocateWindowDescFront<Window>(&_build_rail_desc, TRANSPORT_RAIL);
 		SetupRailToolbar(railtype, w);
 	}
 

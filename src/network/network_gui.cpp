@@ -1617,7 +1617,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 
 void ShowClientList()
 {
-	AllocateWindowDescFront(&_client_list_desc, 0);
+	AllocateWindowDescFront<Window>(&_client_list_desc, 0);
 }
 
 

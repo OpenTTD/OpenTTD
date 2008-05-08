@@ -1185,9 +1185,9 @@ void ShowOrdersWindow(const Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
 	if (v->owner != _local_player) {
-		w = AllocateWindowDescFront(&_other_orders_desc, veh);
+		w = AllocateWindowDescFront<Window>(&_other_orders_desc, veh);
 	} else {
-		w = AllocateWindowDescFront((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? &_orders_train_desc : &_orders_desc, veh);
+		w = AllocateWindowDescFront<Window>((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? &_orders_train_desc : &_orders_desc, veh);
 	}
 
 	if (w != NULL) {

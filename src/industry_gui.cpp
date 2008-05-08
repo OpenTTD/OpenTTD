@@ -395,7 +395,7 @@ static const WindowDesc _build_industry_dynamic_desc = {
 void ShowBuildIndustryWindow()
 {
 	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront(&_build_industry_dynamic_desc, 0);
+	AllocateWindowDescFront<Window>(&_build_industry_dynamic_desc, 0);
 }
 
 static void UpdateIndustryProduction(Industry *i);
@@ -636,7 +636,7 @@ static const WindowDesc _industry_view_desc = {
 
 void ShowIndustryViewWindow(int industry)
 {
-	Window *w = AllocateWindowDescFront(&_industry_view_desc, industry);
+	Window *w = AllocateWindowDescFront<Window>(&_industry_view_desc, industry);
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
@@ -902,7 +902,7 @@ static const WindowDesc _industry_directory_desc = {
 
 void ShowIndustryDirectory()
 {
-	Window *w = AllocateWindowDescFront(&_industry_directory_desc, 0);
+	Window *w = AllocateWindowDescFront<Window>(&_industry_directory_desc, 0);
 
 	if (w != NULL) {
 		w->vscroll.cap = 16;

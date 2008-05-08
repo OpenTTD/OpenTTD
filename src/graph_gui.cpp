@@ -339,7 +339,7 @@ static const WindowDesc _graph_legend_desc = {
 
 static void ShowGraphLegend()
 {
-	AllocateWindowDescFront(&_graph_legend_desc, 0);
+	AllocateWindowDescFront<Window>(&_graph_legend_desc, 0);
 }
 
 /********************/
@@ -438,7 +438,7 @@ static const WindowDesc _operating_profit_desc = {
 
 void ShowOperatingProfitGraph()
 {
-	if (AllocateWindowDescFront(&_operating_profit_desc, 0)) {
+	if (AllocateWindowDescFront<Window>(&_operating_profit_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	}
 }
@@ -506,7 +506,7 @@ static const WindowDesc _income_graph_desc = {
 
 void ShowIncomeGraph()
 {
-	if (AllocateWindowDescFront(&_income_graph_desc, 0)) {
+	if (AllocateWindowDescFront<Window>(&_income_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	}
 }
@@ -573,7 +573,7 @@ static const WindowDesc _delivered_cargo_graph_desc = {
 
 void ShowDeliveredCargoGraph()
 {
-	if (AllocateWindowDescFront(&_delivered_cargo_graph_desc, 0)) {
+	if (AllocateWindowDescFront<Window>(&_delivered_cargo_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	}
 }
@@ -642,7 +642,7 @@ static const WindowDesc _performance_history_desc = {
 
 void ShowPerformanceHistoryGraph()
 {
-	if (AllocateWindowDescFront(&_performance_history_desc, 0)) {
+	if (AllocateWindowDescFront<Window>(&_performance_history_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	}
 }
@@ -709,7 +709,7 @@ static const WindowDesc _company_value_graph_desc = {
 
 void ShowCompanyValueGraph()
 {
-	if (AllocateWindowDescFront(&_company_value_graph_desc, 0)) {
+	if (AllocateWindowDescFront<Window>(&_company_value_graph_desc, 0)) {
 		InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	}
 }
@@ -807,7 +807,7 @@ static const WindowDesc _cargo_payment_rates_desc = {
 
 void ShowCargoPaymentRates()
 {
-	Window *w = AllocateWindowDescFront(&_cargo_payment_rates_desc, 0);
+	Window *w = AllocateWindowDescFront<Window>(&_cargo_payment_rates_desc, 0);
 	if (w == NULL) return;
 
 	/* Count the number of active cargo types */
@@ -928,7 +928,7 @@ static const WindowDesc _company_league_desc = {
 
 void ShowCompanyLeagueTable()
 {
-	AllocateWindowDescFront(&_company_league_desc, 0);
+	AllocateWindowDescFront<Window>(&_company_league_desc, 0);
 }
 
 /*****************************/
@@ -1163,5 +1163,5 @@ static const WindowDesc _performance_rating_detail_desc = {
 
 void ShowPerformanceRatingDetail()
 {
-	AllocateWindowDescFront(&_performance_rating_detail_desc, 0);
+	AllocateWindowDescFront<Window>(&_performance_rating_detail_desc, 0);
 }

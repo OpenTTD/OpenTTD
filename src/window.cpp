@@ -1012,19 +1012,6 @@ Window::Window(const WindowDesc *desc, void *data, WindowNumber window_number)
 	this->desc_flags = desc->flags;
 }
 
-/**
- * Open a new window.
- * @param *desc The pointer to the WindowDesc to be created
- * @param window_number the window number of the new window
- * @param data arbitrary data that is send with the WE_CREATE message
- * @return see Window pointer of the newly created window
- */
-Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data)
-{
-	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
-	return new Window(desc, data, window_number);
-}
-
 /** Do a search for a window at specific coordinates. For this we start
  * at the topmost window, obviously and work our way down to the bottom
  * @param x position x to query

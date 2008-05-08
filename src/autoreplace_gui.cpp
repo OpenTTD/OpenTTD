@@ -527,8 +527,8 @@ static const WindowDesc _replace_vehicle_desc = {
 void ShowReplaceGroupVehicleWindow(GroupID id_g, VehicleType vehicletype)
 {
 	DeleteWindowById(WC_REPLACE_VEHICLE, vehicletype);
-	Window *w = vehicletype == VEH_TRAIN ? AllocateWindowDescFront(&_replace_rail_vehicle_desc, VEH_TRAIN)
-										 : AllocateWindowDescFront(&_replace_vehicle_desc, vehicletype);
+	Window *w = vehicletype == VEH_TRAIN ? AllocateWindowDescFront<Window>(&_replace_rail_vehicle_desc, VEH_TRAIN)
+										 : AllocateWindowDescFront<Window>(&_replace_vehicle_desc, vehicletype);
 
 	w->resize.step_height = GetVehicleListHeight(vehicletype);
 	w->vscroll.cap = w->resize.step_height == 14 ? 8 : 4;

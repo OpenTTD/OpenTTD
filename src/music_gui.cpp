@@ -334,7 +334,7 @@ static const WindowDesc _music_track_selection_desc = {
 
 static void ShowMusicTrackSelection()
 {
-	AllocateWindowDescFront(&_music_track_selection_desc, 0);
+	AllocateWindowDescFront<Window>(&_music_track_selection_desc, 0);
 }
 
 static void MusicWindowWndProc(Window *w, WindowEvent *e)
@@ -502,5 +502,5 @@ static const WindowDesc _music_window_desc = {
 
 void ShowMusicWindow()
 {
-	AllocateWindowDescFront(&_music_window_desc, 0);
+	AllocateWindowDescFront<Window>(&_music_window_desc, 0);
 }

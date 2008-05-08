@@ -451,7 +451,7 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
 
-	w = AllocateWindowDescFront(&_vehicle_refit_desc, v->index);
+	w = AllocateWindowDescFront<Window>(&_vehicle_refit_desc, v->index);
 	WP(w, refit_d).order = order;
 
 	if (w != NULL) {
@@ -1244,18 +1244,18 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 	switch (vehicle_type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:
-			w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
+			w = AllocateWindowDescFront<Window>(&_player_vehicle_list_train_desc, num);
 			if (w != NULL) ResizeWindow(w, 65, 38);
 			break;
 		case VEH_ROAD:
-			w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num);
+			w = AllocateWindowDescFront<Window>(&_player_vehicle_list_road_veh_desc, num);
 			if (w != NULL) ResizeWindow(w, 0, 38);
 			break;
 		case VEH_SHIP:
-			w = AllocateWindowDescFront(&_player_vehicle_list_ship_desc, num);
+			w = AllocateWindowDescFront<Window>(&_player_vehicle_list_ship_desc, num);
 			break;
 		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num);
+			w = AllocateWindowDescFront<Window>(&_player_vehicle_list_aircraft_desc, num);
 			break;
 	}
 
@@ -1671,7 +1671,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
 	DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
-	AllocateWindowDescFront(&_vehicle_details_desc, v->index);
+	AllocateWindowDescFront<Window>(&_vehicle_details_desc, v->index);
 }
 
 
@@ -1747,7 +1747,7 @@ static const int VV_INITIAL_VIEWPORT_HEIGHT_TRAIN = 102;
 /** Shows the vehicle view window of the given vehicle. */
 void ShowVehicleViewWindow(const Vehicle *v)
 {
-	Window *w = AllocateWindowDescFront((v->type == VEH_TRAIN) ? &_train_view_desc : &_vehicle_view_desc, v->index);
+	Window *w = AllocateWindowDescFront<Window>((v->type == VEH_TRAIN) ? &_train_view_desc : &_vehicle_view_desc, v->index);
 
 	if (w != NULL) {
 		w->caption_color = v->owner;

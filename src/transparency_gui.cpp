@@ -126,5 +126,5 @@ static const WindowDesc _transparency_desc = {
 
 void ShowTransparencyToolbar(void)
 {
-	AllocateWindowDescFront(&_transparency_desc, 0);
+	AllocateWindowDescFront<Window>(&_transparency_desc, 0);
 }

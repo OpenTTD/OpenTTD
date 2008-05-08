@@ -561,7 +561,19 @@ Window *FindWindowFromPt(int x, int y);
 bool IsWindowOfPrototype(const Window *w, const Widget *widget);
 void AssignWidgetToWindow(Window *w, const Widget *widget);
 
-Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL);
+/**
+ * Open a new window.
+ * @param *desc The pointer to the WindowDesc to be created
+ * @param window_number the window number of the new window
+ * @param data arbitrary data that is send with the WE_CREATE message
+ * @return see Window pointer of the newly created window
+ */
+template <typename Wcls>
+Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL)
+{
+	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
+	return new Wcls(desc, data, window_number);
+}
 
 void DrawWindowViewport(const Window *w);
 

@@ -577,7 +577,7 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 		if (!GetHeightmapDimensions(_file_to_saveload.name, &x, &y)) return;
 	}
 
-	Window *w = AllocateWindowDescFront((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
+	Window *w = AllocateWindowDescFront<Window>((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
 
 	if (w == NULL) return;
 
@@ -802,7 +802,7 @@ static const WindowDesc _create_scenario_desc = {
 void ShowCreateScenario()
 {
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
-	AllocateWindowDescFront(&_create_scenario_desc, GLWP_SCENARIO);
+	AllocateWindowDescFront<Window>(&_create_scenario_desc, GLWP_SCENARIO);
 }
 
 
@@ -896,7 +896,7 @@ void PrepareGenerateWorldProgress()
  */
 void ShowGenerateWorldProgress()
 {
-	AllocateWindowDescFront(&_show_terrain_progress_desc, 0);
+	AllocateWindowDescFront<Window>(&_show_terrain_progress_desc, 0);
 }
 
 static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total)

@@ -482,12 +482,12 @@ static const WindowDesc _build_trees_scen_desc = {
 void ShowBuildTreesToolbar()
 {
 	if (!IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront(&_build_trees_desc, 0);
+	AllocateWindowDescFront<Window>(&_build_trees_desc, 0);
 }
 
 void ShowBuildTreesScenToolbar()
 {
-	AllocateWindowDescFront(&_build_trees_scen_desc, 0);
+	AllocateWindowDescFront<Window>(&_build_trees_scen_desc, 0);
 }
 
 static uint64 _errmsg_decode_params[20];

@@ -1055,7 +1055,7 @@ void ShowSmallMap()
 {
 	Window *w;
 
-	w = AllocateWindowDescFront(&_smallmap_desc, 0);
+	w = AllocateWindowDescFront<Window>(&_smallmap_desc, 0);
 	if (w == NULL) return;
 
 	/* Resize the window to fit industries list */
@@ -1199,7 +1199,7 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	/* find next free window number for extra viewport */
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
-	Window *w = AllocateWindowDescFront(&_extra_view_port_desc, i);
+	Window *w = AllocateWindowDescFront<Window>(&_extra_view_port_desc, i);
 	if (w != NULL) {
 		Point pt;
 

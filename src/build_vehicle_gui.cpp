@@ -1192,7 +1192,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, num);
 
-	w = AllocateWindowDescFront(&_build_vehicle_desc, num, &type);
+	w = AllocateWindowDescFront<Window>(&_build_vehicle_desc, num, &type);
 
 	if (w == NULL) return;
 
