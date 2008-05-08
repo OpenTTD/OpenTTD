@@ -411,7 +411,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					uint16 click_scroll_pos = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? w->vscroll.pos : w->vscroll2.pos;
 					uint16 click_scroll_cap = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? w->vscroll.cap : w->vscroll2.cap;
 					byte click_side         = e->we.click.widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
-					uint16 engine_count     = WP(w, replaceveh_d).list[click_side].size();
+					size_t engine_count     = WP(w, replaceveh_d).list[click_side].size();
 
 					if (i < click_scroll_cap) {
 						i += click_scroll_pos;

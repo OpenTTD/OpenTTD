@@ -1029,7 +1029,7 @@ lzo_uint do_compress	 ( const lzo_byte *in , lzo_uint  in_len,
 		{
 		register const lzo_byte *m_pos;
 		lzo_moff_t m_off;
-		lzo_uint m_len;
+		lzo_ptrdiff_t m_len;
 		lzo_uint dindex;
 
 		DINDEX1(dindex,ip);

@@ -531,7 +531,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
 static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
 {
 	if (ptr == NULL) return 0;
-	return minu(strlen(ptr), length - 1);
+	return min(strlen(ptr), length - 1);
 }
 
 /** Calculate the gross length of the string that it
@@ -911,7 +911,7 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 static void SlLoadChunk(const ChunkHandler *ch)
 {
 	byte m = SlReadByte();
-	size_t len;
+	uint32 len;
 	uint32 endoffs;
 
 	_sl.block_mode = m;
@@ -1204,9 +1204,9 @@ static uint ReadZlib()
 	_z.avail_out = 4096;
 
 	do {
-		/* read more bytes from the file?*/
+		/* read more bytes from the file? */
 		if (_z.avail_in == 0) {
-			_z.avail_in = fread(_z.next_in = _sl.buf + 4096, 1, 4096, _sl.fh);
+			_z.avail_in = (uint)fread(_z.next_in = _sl.buf + 4096, 1, 4096, _sl.fh);
 		}
 
 		/* inflate the data */

@@ -1090,7 +1090,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	const char *ptr;
 
 	WChar c;
-	uint16 width, length;
+	size_t width, length;
 
 	if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
 		OpenClipboard(NULL);
@@ -1123,7 +1123,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		if (!IsPrintable(c)) break;
 
 		size_t len = Utf8CharLen(c);
-		if (tb->length + length >= tb->maxlength - (uint16)len) break;
+		if (tb->length + length >= tb->maxlength - len) break;
 
 		byte charwidth = GetCharacterWidth(FS_NORMAL, c);
 		if (tb->maxwidth != 0 && width + tb->width + charwidth > tb->maxwidth) break;
@@ -1253,7 +1253,7 @@ const TCHAR *OTTD2FS(const char *name)
  * @return pointer to utf8_buf. If conversion fails the string is of zero-length */
 char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
 {
-	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, buflen, NULL, NULL);
+	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, (int)buflen, NULL, NULL);
 	if (len == 0) {
 		DEBUG(misc, 0, "[utf8] W2M error converting wide-string. Errno %d", GetLastError());
 		utf8_buf[0] = '\0';
@@ -1272,7 +1272,7 @@ char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
  * @return pointer to utf16_buf. If conversion fails the string is of zero-length */
 wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
 {
-	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, utf16_buf, buflen);
+	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, utf16_buf, (int)buflen);
 	if (len == 0) {
 		DEBUG(misc, 0, "[utf8] M2W error converting '%s'. Errno %d", name, GetLastError());
 		utf16_buf[0] = '\0';

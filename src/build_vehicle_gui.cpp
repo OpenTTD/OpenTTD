@@ -1034,7 +1034,7 @@ static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
 
 		case BUILD_VEHICLE_WIDGET_LIST: {
 			uint i = (e->we.click.pt.y - w->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(bv->vehicle_type) + w->vscroll.pos;
-			uint num_items = bv->eng_list.size();
+			size_t num_items = bv->eng_list.size();
 			bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
 			w->SetDirty();
 			break;
