@@ -706,7 +706,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static void CheckIfAircraftNeedsService(Vehicle *v)
 {
-	if (_patches.servint_aircraft == 0 || !VehicleNeedsService(v)) return;
+	if (_patches.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
@@ -1370,7 +1370,7 @@ static void ProcessAircraftOrder(Vehicle *v)
 		case OT_GOTO_DEPOT:
 			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
 			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
-					!VehicleNeedsService(v)) {
+					!v->NeedsServicing()) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}

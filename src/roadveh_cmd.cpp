@@ -761,7 +761,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 			/* Let a depot order in the orderlist interrupt. */
 			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return;
 			if (v->current_order.flags & OFB_SERVICE_IF_NEEDED &&
-					!VehicleNeedsService(v)) {
+					!v->NeedsServicing()) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}
@@ -1977,7 +1977,7 @@ void RoadVehicle::Tick()
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->u.road.slot != NULL || _patches.servint_roadveh == 0 || !VehicleNeedsService(v)) return;
+	if (v->u.road.slot != NULL || _patches.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

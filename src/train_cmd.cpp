@@ -2634,7 +2634,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 		case OT_GOTO_DEPOT:
 			if (!(v->current_order.flags & OFB_PART_OF_ORDERS)) return false;
 			if ((v->current_order.flags & OFB_SERVICE_IF_NEEDED) &&
-					!VehicleNeedsService(v)) {
+					!v->NeedsServicing()) {
 				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}
@@ -3527,7 +3527,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	TileIndex tile = v->tile + TileOffsByDiagDir(dir);
 
 	/* Determine the track status on the next tile */
-	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir)) & _reachable_tracks[dir];
+;	TrackStatus ts = GetTileTrackStatus(tile, TRANSPORT_RAIL, 0, ReverseDiagDir(dir)) & _reachable_tracks[dir];
 	TrackdirBits trackdirbits = TrackStatusToTrackdirBits(ts);
 	TrackdirBits red_signals = TrackStatusToRedSignals(ts);
 
@@ -3665,7 +3665,7 @@ void Train::Tick()
 
 static void CheckIfTrainNeedsService(Vehicle *v)
 {
-	if (_patches.servint_trains == 0 || !VehicleNeedsService(v)) return;
+	if (_patches.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

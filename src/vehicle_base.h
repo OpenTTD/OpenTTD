@@ -486,6 +486,21 @@ public:
 	inline bool IsOrderListShared() const { return this->next_shared != NULL || this->prev_shared != NULL; };
 
 	bool NeedsAutorenewing(const Player *p) const;
+
+	/**
+	 * Check if the vehicle needs to go to a depot in near future (if a opportunity presents itself) for service or replacement.
+	 *
+	 * @see NeedsAutomaticServicing()
+	 * @return true if the vehicle should go to a depot if a opportunity presents itself.
+	 */
+	bool NeedsServicing() const;
+
+	/**
+	 * Checks if the current order should be interupted for a service-in-depot-order.
+	 * @see NeedsServicing()
+	 * @return true if the current order should be interupted.
+	 */
+	bool NeedsAutomaticServicing() const;
 };
 
 /**

@@ -119,22 +119,27 @@ void VehicleServiceInDepot(Vehicle *v)
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
-bool VehicleNeedsService(const Vehicle *v)
+bool Vehicle::NeedsServicing() const
 {
-	if (v->vehstatus & (VS_STOPPED | VS_CRASHED))       return false;
-	if (v->current_order.type != OT_GOTO_DEPOT || !(v->current_order.flags & OFB_PART_OF_ORDERS)) { // Don't interfere with a depot visit by the order list
-		if (_patches.gotodepot && VehicleHasDepotOrders(v)) return false;
-		if (v->current_order.type == OT_LOADING)            return false;
-		if (v->current_order.type == OT_GOTO_DEPOT && v->current_order.flags & OFB_HALT_IN_DEPOT) return false;
-	}
+	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
 
 	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
-		return EngineHasReplacementForPlayer(GetPlayer(v->owner), v->engine_type, v->group_id);  /* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off */
+		/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
+		 * Note: If servicing is enabled, we postpone replacement till next service. */
+		return EngineHasReplacementForPlayer(GetPlayer(this->owner), this->engine_type, this->group_id);
 	}
 
 	return _patches.servint_ispercent ?
-		(v->reliability < GetEngine(v->engine_type)->reliability * (100 - v->service_interval) / 100) :
-		(v->date_of_last_service + v->service_interval < _date);
+		(this->reliability < GetEngine(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
+		(this->date_of_last_service + this->service_interval < _date);
+}
+
+bool Vehicle::NeedsAutomaticServicing() const
+{
+	if (_patches.gotodepot && VehicleHasDepotOrders(this)) return false;
+	if (this->current_order.type == OT_LOADING)            return false;
+	if (this->current_order.type == OT_GOTO_DEPOT && this->current_order.flags & OFB_HALT_IN_DEPOT) return false;
+	return NeedsServicing();
 }
 
 StringID VehicleInTheWayErrMsg(const Vehicle* v)
