@@ -96,7 +96,7 @@ static byte _grf_data_blocks;
 static GrfDataType _grf_data_type;
 
 
-typedef void (*SpecialSpriteHandler)(byte *buf, int len);
+typedef void (*SpecialSpriteHandler)(byte *buf, size_t len);
 
 enum {
 	MAX_STATIONS = 256,
@@ -152,7 +152,7 @@ void CDECL grfmsg(int severity, const char *str, ...)
 	DEBUG(grf, severity, "[%s:%d] %s", _cur_grfconfig->filename, _nfo_line, buf);
 }
 
-static inline bool check_length(int real, int wanted, const char *str)
+static inline bool check_length(size_t real, size_t wanted, const char *str)
 {
 	if (real >= wanted) return true;
 	grfmsg(0, "%s: Invalid pseudo sprite length %d (expected %d)!", str, real, wanted);
@@ -2248,7 +2248,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 }
 
 /* Action 0x00 */
-static void FeatureChangeInfo(byte *buf, int len)
+static void FeatureChangeInfo(byte *buf, size_t len)
 {
 	byte *bufend = buf + len;
 
@@ -2363,7 +2363,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 }
 
 /* Action 0x00 (GLS_SAFETYSCAN) */
-static void SafeChangeInfo(byte *buf, int len)
+static void SafeChangeInfo(byte *buf, size_t len)
 {
 	if (!check_length(len, 6, "SafeChangeInfo")) return;
 	buf++;
@@ -2386,7 +2386,7 @@ static void SafeChangeInfo(byte *buf, int len)
 }
 
 /* Action 0x00 (GLS_RESERVE) */
-static void ReserveChangeInfo(byte *buf, int len)
+static void ReserveChangeInfo(byte *buf, size_t len)
 {
 	byte *bufend = buf + len;
 
@@ -2482,7 +2482,7 @@ static const SpriteGroup* NewResultSpriteGroup(SpriteID sprite, byte num_sprites
 }
 
 /* Action 0x01 */
-static void NewSpriteSet(byte *buf, int len)
+static void NewSpriteSet(byte *buf, size_t len)
 {
 	/* <01> <feature> <num-sets> <num-ent>
 	 *
@@ -2518,7 +2518,7 @@ static void NewSpriteSet(byte *buf, int len)
 }
 
 /* Action 0x01 (SKIP) */
-static void SkipAct1(byte *buf, int len)
+static void SkipAct1(byte *buf, size_t len)
 {
 	if (!check_length(len, 4, "SkipAct1")) return;
 	buf++;
@@ -2577,7 +2577,7 @@ static const SpriteGroup* CreateGroupFromGroupID(byte feature, byte setid, byte 
 }
 
 /* Action 0x02 */
-static void NewSpriteGroup(byte *buf, int len)
+static void NewSpriteGroup(byte *buf, size_t len)
 {
 	/* <02> <feature> <set-id> <type/num-entries> <feature-specific-data...>
 	 *
@@ -3182,7 +3182,7 @@ static void CargoMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 
 
 /* Action 0x03 */
-static void FeatureMapSpriteGroup(byte *buf, int len)
+static void FeatureMapSpriteGroup(byte *buf, size_t len)
 {
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
 	 * id-list    := [<id>] [id-list]
@@ -3267,7 +3267,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 }
 
 /* Action 0x04 */
-static void FeatureNewName(byte *buf, int len)
+static void FeatureNewName(byte *buf, size_t len)
 {
 	/* <04> <veh-type> <language-id> <num-veh> <offset> <data...>
 	 *
@@ -3421,7 +3421,7 @@ static uint16 SanitizeSpriteOffset(uint16& num, uint16 offset, int max_sprites, 
 }
 
 /* Action 0x05 */
-static void GraphicsNew(byte *buf, int len)
+static void GraphicsNew(byte *buf, size_t len)
 {
 	/* <05> <graphics-type> <num-sprites> <other data...>
 	 *
@@ -3535,7 +3535,7 @@ static void GraphicsNew(byte *buf, int len)
 }
 
 /* Action 0x05 (SKIP) */
-static void SkipAct5(byte *buf, int len)
+static void SkipAct5(byte *buf, size_t len)
 {
 	if (!check_length(len, 2, "SkipAct5")) return;
 	buf++;
@@ -3711,7 +3711,7 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 }
 
 /* Action 0x06 */
-static void CfgApply(byte *buf, int len)
+static void CfgApply(byte *buf, size_t len)
 {
 	/* <06> <param-num> <param-size> <offset> ... <FF>
 	 *
@@ -3799,7 +3799,7 @@ static void CfgApply(byte *buf, int len)
 
 /* Action 0x07 */
 /* Action 0x09 */
-static void SkipIf(byte *buf, int len)
+static void SkipIf(byte *buf, size_t len)
 {
 	/* <07/09> <param-num> <param-size> <condition-type> <value> <num-sprites>
 	 *
@@ -3954,7 +3954,7 @@ static void SkipIf(byte *buf, int len)
 
 
 /* Action 0x08 (GLS_FILESCAN) */
-static void ScanInfo(byte *buf, int len)
+static void ScanInfo(byte *buf, size_t len)
 {
 	if (!check_length(len, 8, "Info")) return;
 	buf++;
@@ -3981,7 +3981,7 @@ static void ScanInfo(byte *buf, int len)
 }
 
 /* Action 0x08 */
-static void GRFInfo(byte *buf, int len)
+static void GRFInfo(byte *buf, size_t len)
 {
 	/* <08> <version> <grf-id> <name> <info>
 	 *
@@ -4005,7 +4005,7 @@ static void GRFInfo(byte *buf, int len)
 }
 
 /* Action 0x0A */
-static void SpriteReplace(byte *buf, int len)
+static void SpriteReplace(byte *buf, size_t len)
 {
 	/* <0A> <num-sets> <set1> [<set2> ...]
 	 * <set>: <num-sprites> <first-sprite>
@@ -4041,7 +4041,7 @@ static void SpriteReplace(byte *buf, int len)
 }
 
 /* Action 0x0A (SKIP) */
-static void SkipActA(byte *buf, int len)
+static void SkipActA(byte *buf, size_t len)
 {
 	buf++;
 	uint8 num_sets = grf_load_byte(&buf);
@@ -4057,7 +4057,7 @@ static void SkipActA(byte *buf, int len)
 }
 
 /* Action 0x0B */
-static void GRFLoadError(byte *buf, int len)
+static void GRFLoadError(byte *buf, size_t len)
 {
 	/* <0B> <severity> <language-id> <message-id> [<message...> 00] [<data...>] 00 [<parnum>]
 	 *
@@ -4167,7 +4167,7 @@ static void GRFLoadError(byte *buf, int len)
 }
 
 /* Action 0x0C */
-static void GRFComment(byte *buf, int len)
+static void GRFComment(byte *buf, size_t len)
 {
 	/* <0C> [<ignored...>]
 	 *
@@ -4175,13 +4175,13 @@ static void GRFComment(byte *buf, int len)
 
 	if (len == 1) return;
 
-	int text_len = len - 1;
+	size_t text_len = len - 1;
 	const char *text = (const char*)(buf + 1);
 	grfmsg(2, "GRFComment: %.*s", text_len, text);
 }
 
 /* Action 0x0D (GLS_SAFETYSCAN) */
-static void SafeParamSet(byte *buf, int len)
+static void SafeParamSet(byte *buf, size_t len)
 {
 	if (!check_length(len, 5, "SafeParamSet")) return;
 	buf++;
@@ -4313,7 +4313,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 
 
 /* Action 0x0D */
-static void ParamSet(byte *buf, int len)
+static void ParamSet(byte *buf, size_t len)
 {
 	/* <0D> <target> <operation> <source1> <source2> [<data>]
 	 *
@@ -4604,7 +4604,7 @@ static void ParamSet(byte *buf, int len)
 }
 
 /* Action 0x0E (GLS_SAFETYSCAN) */
-static void SafeGRFInhibit(byte *buf, int len)
+static void SafeGRFInhibit(byte *buf, size_t len)
 {
 	/* <0E> <num> <grfids...>
 	 *
@@ -4632,7 +4632,7 @@ static void SafeGRFInhibit(byte *buf, int len)
 }
 
 /* Action 0x0E */
-static void GRFInhibit(byte *buf, int len)
+static void GRFInhibit(byte *buf, size_t len)
 {
 	/* <0E> <num> <grfids...>
 	 *
@@ -4657,7 +4657,7 @@ static void GRFInhibit(byte *buf, int len)
 }
 
 /* Action 0x0F */
-static void FeatureTownName(byte *buf, int len)
+static void FeatureTownName(byte *buf, size_t len)
 {
 	/* <0F> <id> <style-name> <num-parts> <parts>
 	 *
@@ -4757,7 +4757,7 @@ static void FeatureTownName(byte *buf, int len)
 }
 
 /* Action 0x10 */
-static void DefineGotoLabel(byte *buf, int len)
+static void DefineGotoLabel(byte *buf, size_t len)
 {
 	/* <10> <label> [<comment>]
 	 *
@@ -4787,7 +4787,7 @@ static void DefineGotoLabel(byte *buf, int len)
 }
 
 /* Action 0x11 */
-static void GRFSound(byte *buf, int len)
+static void GRFSound(byte *buf, size_t len)
 {
 	/* <11> <num>
 	 *
@@ -4804,7 +4804,7 @@ static void GRFSound(byte *buf, int len)
 }
 
 /* Action 0x11 (SKIP) */
-static void SkipAct11(byte *buf, int len)
+static void SkipAct11(byte *buf, size_t len)
 {
 	/* <11> <num>
 	 *
@@ -4930,7 +4930,7 @@ static void LoadGRFSound(byte *buf, int len)
 }
 
 /* Action 0x12 */
-static void LoadFontGlyph(byte *buf, int len)
+static void LoadFontGlyph(byte *buf, size_t len)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
 	 *
@@ -4962,7 +4962,7 @@ static void LoadFontGlyph(byte *buf, int len)
 }
 
 /* Action 0x12 (SKIP) */
-static void SkipAct12(byte *buf, int len)
+static void SkipAct12(byte *buf, size_t len)
 {
 	/* <12> <num_def> <font_size> <num_char> <base_char>
 	 *
@@ -4992,7 +4992,7 @@ static void SkipAct12(byte *buf, int len)
 }
 
 /* Action 0x13 */
-static void TranslateGRFStrings(byte *buf, int len)
+static void TranslateGRFStrings(byte *buf, size_t len)
 {
 	/* <13> <grfid> <num-ent> <offset> <text...>
 	 *
@@ -5086,7 +5086,7 @@ static void GRFDataBlock(byte *buf, int len)
 
 
 /* Used during safety scan on unsafe actions */
-static void GRFUnsafe(byte *buf, int len)
+static void GRFUnsafe(byte *buf, size_t len)
 {
 	SetBit(_cur_grfconfig->flags, GCF_UNSAFE);
 

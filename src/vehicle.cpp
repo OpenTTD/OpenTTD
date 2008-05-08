@@ -2691,7 +2691,7 @@ void BackuppedVehicle::BackupVehicle(Vehicle *v)
 {
 	int length = CountVehiclesInChain(v);
 
-	uint cargo_packages_count = 1;
+	size_t cargo_packages_count = 1;
 	for (const Vehicle *v_count = v; v_count != NULL; v_count=v_count->Next()) {
 		/* Now we count how many cargo packets we need to store.
 		 * We started with an offset by one because we also need an end of array marker. */

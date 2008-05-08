@@ -206,16 +206,15 @@ static char *PrintModuleList(char *output)
 		HMODULE modules[100];
 		DWORD needed;
 		BOOL res;
-		int count, i;
 
 		HANDLE proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
 		if (proc != NULL) {
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
 			CloseHandle(proc);
 			if (res) {
-				count = min(needed / sizeof(HMODULE), lengthof(modules));
+				size_t count = min(needed / sizeof(HMODULE), lengthof(modules));
 
-				for (i = 0; i != count; i++) output = PrintModuleInfo(output, modules[i]);
+				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, modules[i]);
 				return output;
 			}
 		}

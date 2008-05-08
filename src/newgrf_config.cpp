@@ -309,7 +309,7 @@ static bool ScanPathAddGrf(const char *filename)
 }
 
 /* Scan a path for NewGRFs */
-static uint ScanPath(const char *path, int basepath_length)
+static uint ScanPath(const char *path, size_t basepath_length)
 {
 	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 

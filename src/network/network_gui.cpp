@@ -1778,7 +1778,7 @@ static void ChatTabCompletion(Window *w)
 {
 	static char _chat_tab_completion_buf[lengthof(_edit_str_net_buf)];
 	Textbuf *tb = &WP(w, chatquerystr_d).text;
-	uint len, tb_len;
+	size_t len, tb_len;
 	uint item;
 	char *tb_buf, *pre_buf;
 	const char *cur_name;
@@ -1799,8 +1799,8 @@ static void ChatTabCompletion(Window *w)
 			/* We are pressing TAB again on the same name, is there an other name
 			 *  that starts with this? */
 			if (!second_scan) {
-				uint offset;
-				uint length;
+				size_t offset;
+				size_t length;
 
 				/* If we are completing at the begin of the line, skip the ': ' we added */
 				if (tb_buf == pre_buf) {

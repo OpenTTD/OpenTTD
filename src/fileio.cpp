@@ -27,7 +27,7 @@
 
 struct Fio {
 	byte *buffer, *buffer_end;             ///< position pointer in local buffer and last valid byte of buffer
-	uint32 pos;                            ///< current (system) position in file
+	size_t pos;                            ///< current (system) position in file
 	FILE *cur_fh;                          ///< current file handle
 	const char *filename;                  ///< current filename
 	FILE *handles[MAX_FILE_SLOTS];         ///< array of file handles we can have open
@@ -125,7 +125,7 @@ uint32 FioReadDword()
 	return (FioReadWord() << 16) | b;
 }
 
-void FioReadBlock(void *ptr, uint size)
+void FioReadBlock(void *ptr, size_t size)
 {
 	FioSeekTo(FioGetPos(), SEEK_SET);
 	_fio.pos += fread(ptr, 1, size, _fio.cur_fh);
@@ -480,7 +480,7 @@ static bool TarListAddFile(const char *filename)
 	TarHeader th;
 	char buf[sizeof(th.name) + 1], *end;
 	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
-	int num = 0, pos = 0;
+	size_t num = 0, pos = 0;
 
 	/* Make a char of 512 empty bytes */
 	char empty[512];
@@ -499,7 +499,7 @@ static bool TarListAddFile(const char *filename)
 		}
 
 		name[0] = '\0';
-		int len = 0;
+		size_t len = 0;
 
 		/* The prefix contains the directory-name */
 		if (th.prefix[0] != '\0') {
@@ -550,7 +550,7 @@ static bool TarListAddFile(const char *filename)
 	return true;
 }
 
-static int ScanPathForTarFiles(const char *path, int basepath_length)
+static int ScanPathForTarFiles(const char *path, size_t basepath_length)
 {
 	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 

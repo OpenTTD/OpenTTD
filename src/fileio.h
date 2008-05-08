@@ -18,7 +18,7 @@ uint16 FioReadWord();
 uint32 FioReadDword();
 void FioCloseAll();
 void FioOpenFile(int slot, const char *filename);
-void FioReadBlock(void *ptr, uint size);
+void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
 void FioCreateDirectory(const char *filename);
 
@@ -70,8 +70,8 @@ struct TarListEntry {
 };
 struct TarFileListEntry {
 	TarListEntry *tar;
-	int size;
-	int position;
+	size_t size;
+	size_t position;
 };
 typedef std::map<std::string, TarListEntry *> TarList;
 typedef std::map<std::string, TarFileListEntry> TarFileList;

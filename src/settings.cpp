@@ -78,18 +78,18 @@ typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc);
 
 static void pool_init(SettingsMemoryPool **pool);
-static void *pool_alloc(SettingsMemoryPool **pool, uint size);
-static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, uint size);
+static void *pool_alloc(SettingsMemoryPool **pool, size_t size);
+static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, size_t size);
 static void pool_free(SettingsMemoryPool **pool);
 static bool IsSignedVarMemType(VarType vt);
 
 struct SettingsMemoryPool {
-	uint pos, size;
+	size_t pos, size;
 	SettingsMemoryPool *next;
 	byte mem[1];
 };
 
-static SettingsMemoryPool *pool_new(uint minsize)
+static SettingsMemoryPool *pool_new(size_t minsize)
 {
 	SettingsMemoryPool *p;
 	if (minsize < 4096 - 12) minsize = 4096 - 12;
@@ -106,9 +106,9 @@ static void pool_init(SettingsMemoryPool **pool)
 	*pool = pool_new(0);
 }
 
-static void *pool_alloc(SettingsMemoryPool **pool, uint size)
+static void *pool_alloc(SettingsMemoryPool **pool, size_t size)
 {
-	uint pos;
+	size_t pos;
 	SettingsMemoryPool *p = *pool;
 
 	size = Align(size, sizeof(void*));
@@ -129,7 +129,7 @@ static void *pool_alloc(SettingsMemoryPool **pool, uint size)
 	return p->mem + pos;
 }
 
-static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, uint size)
+static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, size_t size)
 {
 	byte *p = (byte*)pool_alloc(pool, size + 1);
 	p[size] = 0;
@@ -186,7 +186,7 @@ static IniFile *ini_alloc()
 }
 
 /** allocate an ini group object */
-static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
+static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, size_t len)
 {
 	IniGroup *grp = (IniGroup*)pool_alloc(&ini->pool, sizeof(IniGroup));
 	grp->ini = ini;
@@ -205,7 +205,7 @@ static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, int len)
 	return grp;
 }
 
-static IniItem *ini_item_alloc(IniGroup *group, const char *name, int len)
+static IniItem *ini_item_alloc(IniGroup *group, const char *name, size_t len)
 {
 	IniItem *item = (IniItem*)pool_alloc(&group->ini->pool, sizeof(IniItem));
 	item->name = (char*)pool_strdup(&group->ini->pool, name, len);
@@ -324,7 +324,7 @@ static IniFile *ini_load(const char *filename)
 }
 
 /** lookup a group or make a new one */
-static IniGroup *ini_getgroup(IniFile *ini, const char *name, int len)
+static IniGroup *ini_getgroup(IniFile *ini, const char *name, size_t len)
 {
 	IniGroup *group;
 
@@ -345,7 +345,7 @@ static IniGroup *ini_getgroup(IniFile *ini, const char *name, int len)
 static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 {
 	IniItem *item;
-	uint len = strlen(name);
+	size_t len = strlen(name);
 
 	for (item = group->item; item; item = item->next)
 		if (strcmp(item->name, name) == 0) return item;
@@ -404,7 +404,7 @@ static void ini_free(IniFile *ini)
  * @param one the current value of the setting for which a value needs found
  * @param onelen force calculation of the *one parameter
  * @return the integer index of the full-list, or -1 if not found */
-static int lookup_oneofmany(const char *many, const char *one, int onelen)
+static int lookup_oneofmany(const char *many, const char *one, size_t onelen)
 {
 	const char *s;
 	int idx;

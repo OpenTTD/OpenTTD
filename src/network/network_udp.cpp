@@ -205,7 +205,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 
 	const GRFConfig *in_reply[NETWORK_MAX_GRF_COUNT];
 	uint8 in_reply_count = 0;
-	uint packet_len = 0;
+	size_t packet_len = 0;
 
 	DEBUG(net, 6, "[udp] newgrf data request from %s:%d", inet_ntoa(client_addr->sin_addr), ntohs(client_addr->sin_port));
 

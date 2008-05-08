@@ -61,7 +61,7 @@ static SpriteCache *AllocateSpriteCache(uint index)
 
 
 struct MemBlock {
-	uint32 size;
+	size_t size;
 	byte data[VARARRAY_SIZE];
 };
 
