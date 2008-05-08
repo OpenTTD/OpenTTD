@@ -229,5 +229,5 @@ static const WindowDesc _cheats_desc = {
 void ShowCheatWindow()
 {
 	DeleteWindowById(WC_CHEATS, 0);
-	AllocateWindowDesc(&_cheats_desc);
+	new Window(&_cheats_desc);
 }

@@ -1230,7 +1230,7 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 
 	Point pos = GetToolbarDropdownPos(parent_button, width, height);
 
-	w = AllocateWindow(pos.x, pos.y, width, height, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
+	w = new Window(pos.x, pos.y, width, height, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->widget[0].bottom = item_count * 10 + 1;
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 
@@ -1390,7 +1390,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	Point pos = GetToolbarDropdownPos(main_button, 241, 82);
-	w = AllocateWindow(pos.x, pos.y, 241, 82, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
+	w = new Window(pos.x, pos.y, 241, 82, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w, menu_d).item_count = 0;
 	WP(w, menu_d).sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
@@ -1418,7 +1418,7 @@ Window *AllocateToolbar()
 	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
 	_last_built_roadtype = ROADTYPE_ROAD;
 
-	Window *w = AllocateWindowDesc((_game_mode != GM_EDITOR) ? &_toolb_normal_desc : &_toolb_scen_desc);
+	Window *w = new Window((_game_mode != GM_EDITOR) ? &_toolb_normal_desc : &_toolb_scen_desc);
 	if (w == NULL) return NULL;
 
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);

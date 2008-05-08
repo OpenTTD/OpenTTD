@@ -412,7 +412,7 @@ void SetupColorsAndInitialWindow()
 	int width = _screen.width;
 	int height = _screen.height;
 
-	Window *w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
+	Window *w = new Window(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 	InitializeWindowViewport(w, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 
 	/* XXX: these are not done */

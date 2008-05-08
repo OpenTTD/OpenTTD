@@ -1552,7 +1552,7 @@ void ShowHighscoreTable(int difficulty, int8 ranking)
 	if (_game_mode != GM_MENU) HideVitalWindows();
 
 	DeleteWindowByClass(WC_HIGHSCORE);
-	w = AllocateWindowDesc(&_highscore_desc);
+	w = new Window(&_highscore_desc);
 
 	if (w != NULL) {
 		MarkWholeScreenDirty();
@@ -1575,7 +1575,7 @@ void ShowEndGameChart()
 
 	HideVitalWindows();
 	DeleteWindowByClass(WC_ENDSCREEN);
-	w = AllocateWindowDesc(&_endgame_desc);
+	w = new Window(&_endgame_desc);
 
 	if (w != NULL) {
 		MarkWholeScreenDirty();

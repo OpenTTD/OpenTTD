@@ -98,7 +98,7 @@ static void Place_LandInfo(TileIndex tile)
 {
 	DeleteWindowById(WC_LAND_INFO, 0);
 
-	Window *w = AllocateWindowDesc(&_land_info_desc);
+	Window *w = new Window(&_land_info_desc);
 	WP(w, void_d).data = &_landinfo_data;
 
 	Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
@@ -318,7 +318,7 @@ static const WindowDesc _about_desc = {
 void ShowAboutWindow()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	AllocateWindowDesc(&_about_desc);
+	new Window(&_about_desc);
 }
 
 static int _tree_to_plant;
@@ -615,7 +615,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 240) >> 1;
 			pt.y = (_screen.height - 46) >> 1;
 		}
-		w = AllocateWindow(pt.x, pt.y, 240, 46, ErrmsgWndProc, WC_ERRMSG, _errmsg_widgets);
+		w = new Window(pt.x, pt.y, 240, 46, ErrmsgWndProc, WC_ERRMSG, _errmsg_widgets);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -626,7 +626,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;
 		}
-		w = AllocateWindow(pt.x, pt.y, 334, 137, ErrmsgWndProc, WC_ERRMSG, _errmsg_face_widgets);
+		w = new Window(pt.x, pt.y, 334, 137, ErrmsgWndProc, WC_ERRMSG, _errmsg_face_widgets);
 	}
 
 	w->desc_flags = WDF_STD_BTN | WDF_DEF_WIDGET;
@@ -753,7 +753,7 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
 	int x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
-	Window *w = AllocateWindow(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
+	Window *w = new Window(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
 
 	WP(w, tooltips_d).string_id = str;
 	assert(sizeof(WP(w, tooltips_d).params[0]) == sizeof(params[0]));
@@ -1241,7 +1241,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	Window *w = AllocateWindowDesc(&_query_string_desc);
+	Window *w = new Window(&_query_string_desc);
 	w->parent = parent;
 
 	GetString(_edit_str_buf, str, lastof(_edit_str_buf));
@@ -1353,7 +1353,7 @@ static const WindowDesc _query_desc = {
  * @param callback callback function pointer to set in the window descriptor*/
 void ShowQuery(StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool))
 {
-	Window *w = AllocateWindowDesc(&_query_desc);
+	Window *w = new Window(&_query_desc);
 	if (w == NULL) return;
 
 	if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
@@ -1741,7 +1741,7 @@ void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 
 	assert((uint)mode < lengthof(saveload_captions));
 
-	Window *w = AllocateWindowDesc(sld);
+	Window *w = new Window(sld);
 	w->widget[1].data = saveload_captions[mode];
 	w->LowerWidget(7);
 

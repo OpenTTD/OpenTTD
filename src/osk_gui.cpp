@@ -349,7 +349,7 @@ void ShowOnScreenKeyboard(Window *parent, querystr_d *q, int button, int cancel,
 {
 	DeleteWindowById(WC_OSK, 0);
 
-	Window *w = AllocateWindowDesc(&_osk_desc);
+	Window *w = new Window(&_osk_desc);
 
 	w->parent = parent;
 	assert(parent != NULL);

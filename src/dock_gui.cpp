@@ -309,7 +309,7 @@ static const WindowDesc _build_dock_station_desc = {
 
 static void ShowBuildDockStationPicker()
 {
-	AllocateWindowDesc(&_build_dock_station_desc);
+	new Window(&_build_dock_station_desc);
 }
 
 static void UpdateDocksDirection()
@@ -379,7 +379,7 @@ static const WindowDesc _build_docks_depot_desc = {
 
 static void ShowBuildDocksDepotPicker()
 {
-	AllocateWindowDesc(&_build_docks_depot_desc);
+	new Window(&_build_docks_depot_desc);
 	UpdateDocksDirection();
 }
 

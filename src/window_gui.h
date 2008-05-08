@@ -297,8 +297,14 @@ struct Window : ZeroedMemoryAllocator {
 private:
 	WindowProc *wndproc;   ///< Event handler function for the window. Do not use directly, call HandleWindowEvent() instead.
 
+protected:
+	void Initialize(int x, int y, int min_width, int min_height, int def_width, int def_height,
+			WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data);
+
 public:
-	Window(WindowProc *proc) : wndproc(proc) {}
+	Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget, void *data = NULL);
+	Window(const WindowDesc *desc, void *data = NULL, WindowNumber number = 0);
+
 	virtual ~Window();
 
 	uint16 flags4;              ///< Window flags, @see WindowFlags
@@ -554,11 +560,7 @@ Window *FindWindowFromPt(int x, int y);
 
 bool IsWindowOfPrototype(const Window *w, const Widget *widget);
 void AssignWidgetToWindow(Window *w, const Widget *widget);
-Window *AllocateWindow(int x, int y, int width, int height,
-			WindowProc *proc, WindowClass cls, const Widget *widget,
-			void *data = NULL);
 
-Window *AllocateWindowDesc(const WindowDesc *desc, void *data = NULL);
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL);
 
 void DrawWindowViewport(const Window *w);

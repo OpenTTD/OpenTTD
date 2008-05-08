@@ -301,7 +301,7 @@ void ShowRenameSignWindow(const Sign *si)
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	Window *w = AllocateWindowDesc(&_query_sign_edit_desc);
+	Window *w = new Window(&_query_sign_edit_desc);
 
 	WP(w, editsign_d).caption = STR_280B_EDIT_SIGN_TEXT;
 	WP(w, editsign_d).afilter = CS_ALPHANUMERAL;

@@ -318,7 +318,7 @@ void IConsoleSwitch()
 {
 	switch (_iconsole_mode) {
 		case ICONSOLE_CLOSED: {
-			Window *w = AllocateWindowDesc(&_iconsole_window_desc);
+			Window *w = new Window(&_iconsole_window_desc);
 			w->height = _screen.height / 3;
 			w->width = _screen.width;
 			_iconsole_mode = ICONSOLE_OPENED;

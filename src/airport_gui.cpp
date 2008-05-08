@@ -282,7 +282,7 @@ static const WindowDesc _build_airport_desc = {
 
 static void ShowBuildAirportPicker()
 {
-	AllocateWindowDesc(&_build_airport_desc);
+	new Window(&_build_airport_desc);
 }
 
 void InitializeAirportGui()

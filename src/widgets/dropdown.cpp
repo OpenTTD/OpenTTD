@@ -282,7 +282,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	if (width == 0) width = wi->right - wi->left + 1;
 
-	Window *dw = AllocateWindow(
+	Window *dw = new Window(
 		w->left + wi->left,
 		top,
 		width,

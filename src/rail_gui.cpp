@@ -1226,10 +1226,10 @@ static void ShowStationBuilder()
 {
 	Window *w;
 	if (GetNumStationClasses() <= 2 && GetNumCustomStations(STAT_CLASS_DFLT) == 1) {
-		w = AllocateWindowDesc(&_station_builder_desc);
+		w = new Window(&_station_builder_desc);
 		_railstation.newstations = false;
 	} else {
-		w = AllocateWindowDesc(&_newstation_builder_desc);
+		w = new Window(&_newstation_builder_desc);
 		_railstation.newstations = true;
 		_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
@@ -1397,7 +1397,7 @@ static const WindowDesc _signal_builder_desc = {
  */
 static void ShowSignalBuilder()
 {
-	AllocateWindowDesc(&_signal_builder_desc);
+	new Window(&_signal_builder_desc);
 }
 
 /** Enum referring to the widgets of the build rail depot window */
@@ -1473,7 +1473,7 @@ static const WindowDesc _build_depot_desc = {
 
 static void ShowBuildTrainDepotPicker()
 {
-	AllocateWindowDesc(&_build_depot_desc);
+	new Window(&_build_depot_desc);
 }
 
 /** Enum referring to the widgets of the build NewGRF rail waypoint window */
@@ -1576,7 +1576,7 @@ static const WindowDesc _build_waypoint_desc = {
 
 static void ShowBuildWaypointPicker()
 {
-	Window *w = AllocateWindowDesc(&_build_waypoint_desc);
+	Window *w = new Window(&_build_waypoint_desc);
 	w->hscroll.cap = 5;
 	w->hscroll.count = _waypoint_count;
 }

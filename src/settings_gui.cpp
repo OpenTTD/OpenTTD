@@ -389,7 +389,7 @@ static const WindowDesc _game_options_desc = {
 void ShowGameOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	AllocateWindowDesc(&_game_options_desc);
+	new Window(&_game_options_desc);
 }
 
 struct GameSettingData {
@@ -698,7 +698,7 @@ void ShowGameDifficulty()
 	/* Copy current settings (ingame or in intro) to temporary holding place
 	 * change that when setting stuff, copy back on clicking 'OK' */
 	_opt_mod_temp = *_opt_ptr;
-	AllocateWindowDesc(&_game_difficulty_desc);
+	new Window(&_game_difficulty_desc);
 }
 
 static const char *_patches_ui[] = {
@@ -1104,7 +1104,7 @@ static const WindowDesc _patches_selection_desc = {
 void ShowPatchesSelection()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	AllocateWindowDesc(&_patches_selection_desc);
+	new Window(&_patches_selection_desc);
 }
 
 
@@ -1334,5 +1334,5 @@ static void ShowCustCurrency()
 	_str_separator[1] = '\0';
 
 	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
-	AllocateWindowDesc(&_cust_currency_desc);
+	new Window(&_cust_currency_desc);
 }

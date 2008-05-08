@@ -408,7 +408,7 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					Window *w;
 
 					DeleteWindowByClass(WC_SAVELOAD);
-					w = AllocateWindowDesc(&_newgrf_add_dlg_desc);
+					w = new Window(&_newgrf_add_dlg_desc);
 					w->resize.step_height = 10;
 
 					WP(w, newgrf_add_d).list = list;
@@ -582,7 +582,7 @@ void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFC
 	Window *w;
 
 	DeleteWindowByClass(WC_GAME_OPTIONS);
-	w = AllocateWindowDesc(&_newgrf_desc);
+	w = new Window(&_newgrf_desc);
 	if (w == NULL) return;
 
 	w->resize.step_height = 14;

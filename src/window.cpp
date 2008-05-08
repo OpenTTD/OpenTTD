@@ -677,10 +677,10 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 	}
 }
 
-/** Open a new window.
- * This function is called from AllocateWindow() or AllocateWindowDesc()
+/**
+ * Initializes a new Window.
+ * This function is called the constructors.
  * See descriptions for those functions for usage
- * See AllocateWindow() for description of arguments.
  * Only addition here is window_number, which is the window_number being assigned to the new window
  * @param x offset in pixels from the left of the screen
  * @param y offset in pixels from the top of the screen
@@ -694,71 +694,65 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
  * @param window_number number being assigned to the new window
  * @param data the data to be given during the WE_CREATE message
  * @return Window pointer of the newly created window */
-static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, int def_width, int def_height,
+void Window::Initialize(int x, int y, int min_width, int min_height, int def_width, int def_height,
 				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
 {
-	Window *w;
-
 	/* We have run out of windows, close one and use that as the place for our new one */
 	if (_last_z_window == endof(_z_windows)) {
-		w = FindDeletableWindow();
+		Window *w = FindDeletableWindow();
 		if (w == NULL) w = ForceFindDeletableWindow();
 		delete w;
 	}
 
-	w = new Window(proc);
-
 	/* Set up window properties */
-	w->window_class = cls;
-	w->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
-	w->caption_color = 0xFF;
-	w->left = x;
-	w->top = y;
-	w->width = min_width;
-	w->height = min_height;
-	AssignWidgetToWindow(w, widget);
-	w->resize.width = min_width;
-	w->resize.height = min_height;
-	w->resize.step_width = 1;
-	w->resize.step_height = 1;
-	w->window_number = window_number;
+	this->window_class = cls;
+	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
+	this->caption_color = 0xFF;
+	this->left = x;
+	this->top = y;
+	this->width = min_width;
+	this->height = min_height;
+	this->wndproc = proc;
+	AssignWidgetToWindow(this, widget);
+	this->resize.width = min_width;
+	this->resize.height = min_height;
+	this->resize.step_width = 1;
+	this->resize.step_height = 1;
+	this->window_number = window_number;
 
-	{
-		Window **wz = _last_z_window;
+	/* Hacky way of specifying always-on-top windows. These windows are
+		* always above other windows because they are moved below them.
+		* status-bar is above news-window because it has been created earlier.
+		* Also, as the chat-window is excluded from this, it will always be
+		* the last window, thus always on top.
+		* XXX - Yes, ugly, probably needs something like w->always_on_top flag
+		* to implement correctly, but even then you need some kind of distinction
+		* between on-top of chat/news and status windows, because these conflict */
+	Window **wz = _last_z_window;
+	if (wz != _z_windows && this->window_class != WC_SEND_NETWORK_MSG && this->window_class != WC_HIGHSCORE && this->window_class != WC_ENDSCREEN) {
+		if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) wz--;
+		if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) wz--;
+		if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) wz--;
+		if (FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL) wz--;
 
-		/* Hacky way of specifying always-on-top windows. These windows are
-		 * always above other windows because they are moved below them.
-		 * status-bar is above news-window because it has been created earlier.
-		 * Also, as the chat-window is excluded from this, it will always be
-		 * the last window, thus always on top.
-		 * XXX - Yes, ugly, probably needs something like w->always_on_top flag
-		 * to implement correctly, but even then you need some kind of distinction
-		 * between on-top of chat/news and status windows, because these conflict */
-		if (wz != _z_windows && w->window_class != WC_SEND_NETWORK_MSG && w->window_class != WC_HIGHSCORE && w->window_class != WC_ENDSCREEN) {
-			if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) wz--;
-			if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) wz--;
-			if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) wz--;
-			if (FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL) wz--;
-
-			assert(wz >= _z_windows);
-			if (wz != _last_z_window) memmove(wz + 1, wz, (byte*)_last_z_window - (byte*)wz);
-		}
-
-		*wz = w;
-		_last_z_window++;
+		assert(wz >= _z_windows);
+		if (wz != _last_z_window) memmove(wz + 1, wz, (byte*)_last_z_window - (byte*)wz);
 	}
+
+	*wz = this;
+	_last_z_window++;
 
 	WindowEvent e;
 	e.event = WE_CREATE;
 	e.we.create.data = data;
-	w->HandleWindowEvent(&e);
+	this->HandleWindowEvent(&e);
 
 	/* Try to make windows smaller when our window is too small.
 	 * w->(width|height) is normally the same as min_(width|height),
 	 * but this way the GUIs can be made a little more dynamic;
 	 * one can use the same spec for multiple windows and those
 	 * can then determine the real minimum size of the window. */
-	if (w->width != def_width || w->height != def_height) {
+	if (this->width != def_width || this->height != def_height) {
 		/* Think about the overlapping toolbars when determining the minimum window size */
 		int free_height = _screen.height;
 		const Window *wt = FindWindowById(WC_STATUS_BAR, 0);
@@ -766,45 +760,43 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
 		wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
 		if (wt != NULL) free_height -= wt->height;
 
-		int enlarge_x = max(min(def_width  - w->width,  _screen.width - w->width),  0);
-		int enlarge_y = max(min(def_height - w->height, free_height   - w->height), 0);
+		int enlarge_x = max(min(def_width  - this->width,  _screen.width - this->width),  0);
+		int enlarge_y = max(min(def_height - this->height, free_height   - this->height), 0);
 
 		/* X and Y has to go by step.. calculate it.
 		 * The cast to int is necessary else x/y are implicitly casted to
 		 * unsigned int, which won't work. */
-		if (w->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)w->resize.step_width;
-		if (w->resize.step_height > 1) enlarge_y -= enlarge_y % (int)w->resize.step_height;
+		if (this->resize.step_width  > 1) enlarge_x -= enlarge_x % (int)this->resize.step_width;
+		if (this->resize.step_height > 1) enlarge_y -= enlarge_y % (int)this->resize.step_height;
 
-		ResizeWindow(w, enlarge_x, enlarge_y);
+		ResizeWindow(this, enlarge_x, enlarge_y);
 
 		WindowEvent e;
 		e.event = WE_RESIZE;
-		e.we.sizing.size.x = w->width;
-		e.we.sizing.size.y = w->height;
+		e.we.sizing.size.x = this->width;
+		e.we.sizing.size.y = this->height;
 		e.we.sizing.diff.x = enlarge_x;
 		e.we.sizing.diff.y = enlarge_y;
-		w->HandleWindowEvent(&e);
+		this->HandleWindowEvent(&e);
 	}
 
-	int nx = w->left;
-	int ny = w->top;
+	int nx = this->left;
+	int ny = this->top;
 
-	if (nx + w->width > _screen.width) nx -= (nx + w->width - _screen.width);
+	if (nx + this->width > _screen.width) nx -= (nx + this->width - _screen.width);
 
 	const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	ny = max(ny, (wt == NULL || w == wt || y == 0) ? 0 : wt->height);
+	ny = max(ny, (wt == NULL || this == wt || y == 0) ? 0 : wt->height);
 	nx = max(nx, 0);
 
-	if (w->viewport != NULL) {
-		w->viewport->left += nx - w->left;
-		w->viewport->top  += ny - w->top;
+	if (this->viewport != NULL) {
+		this->viewport->left += nx - this->left;
+		this->viewport->top  += ny - this->top;
 	}
-	w->left = nx;
-	w->top = ny;
+	this->left = nx;
+	this->top = ny;
 
-	w->SetDirty();
-
-	return w;
+	this->SetDirty();
 }
 
 /**
@@ -821,10 +813,9 @@ static Window *LocalAllocateWindow(int x, int y, int min_width, int min_height, 
  * @param *widget see Widget pointer to the window layout and various elements
  * @return Window pointer of the newly created window
  */
-Window *AllocateWindow(int x, int y, int width, int height,
-			WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
+Window::Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
 {
-	return LocalAllocateWindow(x, y, width, height, width, height, proc, cls, widget, 0, data);
+	this->Initialize(x, y, width, height, width, height, proc, cls, widget, 0, data);
 }
 
 
@@ -1014,24 +1005,11 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
  *
  * @return Window pointer of the newly created window
  */
-static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number, void *data)
+Window::Window(const WindowDesc *desc, void *data, WindowNumber window_number)
 {
 	Point pt = LocalGetWindowPlacement(desc, window_number);
-	Window *w = LocalAllocateWindow(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number, data);
-	w->desc_flags = desc->flags;
-
-	return w;
-}
-
-/**
- * Open a new window.
- * @param *desc The pointer to the WindowDesc to be created
- * @param data arbitrary data that is send with the WE_CREATE message
- * @return Window pointer of the newly created window
- */
-Window *AllocateWindowDesc(const WindowDesc *desc, void *data)
-{
-	return LocalAllocateWindowDesc(desc, 0, data);
+	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number, data);
+	this->desc_flags = desc->flags;
 }
 
 /**
@@ -1044,7 +1022,7 @@ Window *AllocateWindowDesc(const WindowDesc *desc, void *data)
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data)
 {
 	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
-	return LocalAllocateWindowDesc(desc, window_number, data);
+	return new Window(desc, data, window_number);
 }
 
 /** Do a search for a window at specific coordinates. For this we start

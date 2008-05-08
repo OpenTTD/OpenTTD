@@ -133,7 +133,7 @@ static const WindowDesc _select_game_desc = {
 
 void ShowSelectGameWindow()
 {
-	AllocateWindowDesc(&_select_game_desc);
+	new Window(&_select_game_desc);
 }
 
 static void AskExitGameCallback(Window *w, bool confirmed)

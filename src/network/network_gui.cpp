@@ -675,7 +675,7 @@ void ShowNetworkGameWindow()
 		_ng_sorting.order = 0;    // sort ascending by default
 	}
 
-	Window *w = AllocateWindowDesc(&_network_game_window_desc);
+	Window *w = new Window(&_network_game_window_desc);
 	if (w != NULL) {
 		querystr_d *querystr = &WP(w, network_ql_d).q;
 
@@ -992,7 +992,7 @@ static void ShowNetworkStartServerWindow()
 {
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-	Window *w = AllocateWindowDesc(&_network_start_server_window_desc);
+	Window *w = new Window(&_network_start_server_window_desc);
 	ttd_strlcpy(_edit_str_net_buf, _network_server_name, lengthof(_edit_str_net_buf));
 
 	_saveload_mode = SLD_NEW_GAME;
@@ -1228,7 +1228,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
 	NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
 
-	Window *w = AllocateWindowDesc(&_network_lobby_window_desc);
+	Window *w = new Window(&_network_lobby_window_desc);
 	if (w != NULL) {
 		WP(w, network_ql_d).n.server = ngl;
 		strcpy(_edit_str_net_buf, "");
@@ -1471,7 +1471,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	int h = ClientListPopupHeight();
 
 	/* Allocate the popup */
-	w = AllocateWindow(x, y, 150, h + 1, ClientListPopupWndProc, WC_TOOLBAR_MENU, _client_list_popup_widgets);
+	w = new Window(x, y, 150, h + 1, ClientListPopupWndProc, WC_TOOLBAR_MENU, _client_list_popup_widgets);
 	w->widget[0].bottom = w->widget[0].top + h;
 	w->widget[0].right = w->widget[0].left + 150;
 
@@ -1708,7 +1708,7 @@ static const WindowDesc _network_join_status_window_desc = {
 void ShowJoinStatusWindow()
 {
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-	Window *w = AllocateWindowDesc(&_network_join_status_window_desc);
+	Window *w = new Window(&_network_join_status_window_desc);
 	/* Parent the status window to the lobby */
 	if (w != NULL) w->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
 }
@@ -1943,7 +1943,7 @@ void ShowNetworkChatQueryWindow(DestType type, int dest)
 	_edit_str_net_buf[0] = '\0';
 	_chat_tab_completion_active = false;
 
-	Window *w = AllocateWindowDesc(&_chat_window_desc);
+	Window *w = new Window(&_chat_window_desc);
 
 	w->LowerWidget(2);
 	WP(w, chatquerystr_d).dtype   = type;
@@ -2045,7 +2045,7 @@ void ShowNetworkCompanyPasswordWindow()
 	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
 	_edit_str_net_buf[0] = '\0';
-	Window *w = AllocateWindowDesc(&_ncp_window_desc);
+	Window *w = new Window(&_ncp_window_desc);
 	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
 	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_net_buf, min(lengthof(_network_default_company_pass), lengthof(_edit_str_net_buf)), 0);
 }

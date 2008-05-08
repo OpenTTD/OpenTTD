@@ -184,7 +184,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	}
 
 	if (j != 0) {
-		Window *w = AllocateWindowDesc(&_build_bridge_desc);
+		Window *w = new Window(&_build_bridge_desc);
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly */
 		w->widget[BBSW_CAPTION].data = (transport_type == TRANSPORT_ROAD) ? STR_1803_SELECT_ROAD_BRIDGE : STR_100D_SELECT_RAIL_BRIDGE;
 	} else {

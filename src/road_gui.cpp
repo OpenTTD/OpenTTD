@@ -817,7 +817,7 @@ static const WindowDesc _build_tram_depot_desc = {
 
 static void ShowRoadDepotPicker()
 {
-	AllocateWindowDesc(_cur_roadtype == ROADTYPE_ROAD ? &_build_road_depot_desc : &_build_tram_depot_desc);
+	new Window(_cur_roadtype == ROADTYPE_ROAD ? &_build_road_depot_desc : &_build_tram_depot_desc);
 }
 
 /** Enum referring to the widgets of the build road station window */
@@ -966,7 +966,7 @@ static const WindowDesc _rv_station_picker_desc = {
 
 static void ShowRVStationPicker(RoadStopType rs)
 {
-	Window *w = AllocateWindowDesc(&_rv_station_picker_desc);
+	Window *w = new Window(&_rv_station_picker_desc);
 	if (w == NULL) return;
 
 	w->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;

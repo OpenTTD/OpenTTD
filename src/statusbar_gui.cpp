@@ -163,7 +163,7 @@ static WindowDesc _main_status_desc = {
 void ShowStatusBar()
 {
 	_main_status_desc.top = _screen.height - 12;
-	Window *w = AllocateWindowDesc(&_main_status_desc);
+	Window *w = new Window(&_main_status_desc);
 	if (w != NULL) {
 		CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 		WP(w, def_d).data_1 = -1280;
