@@ -12,8 +12,6 @@
 
 typedef void PlaceProc(TileIndex tile);
 void PlaceProc_DemolishArea(TileIndex tile);
-void PlaceProc_LevelLand(TileIndex tile);
-void PlaceProc_BuyLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *e);
 
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc);

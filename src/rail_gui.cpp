@@ -251,11 +251,6 @@ static void PlaceRail_Tunnel(TileIndex tile)
 		CMD_BUILD_TUNNEL | CMD_MSG(STR_5016_CAN_T_BUILD_TUNNEL_HERE));
 }
 
-void PlaceProc_BuyLand(TileIndex tile)
-{
-	DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_PURCHASE_LAND_AREA | CMD_NO_WATER | CMD_MSG(STR_5806_CAN_T_PURCHASE_THIS_LAND));
-}
-
 static void PlaceRail_ConvertRail(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_RAIL);

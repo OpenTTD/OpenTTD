@@ -159,6 +159,11 @@ static const uint16 _terraform_keycodes[] = {
 	'O',
 };
 
+static void PlaceProc_BuyLand(TileIndex tile)
+{
+	DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_PURCHASE_LAND_AREA | CMD_NO_WATER | CMD_MSG(STR_5806_CAN_T_PURCHASE_THIS_LAND));
+}
+
 void PlaceProc_DemolishArea(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_DEMOLISH_AREA);
@@ -174,7 +179,7 @@ static void PlaceProc_LowerLand(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LOWER_AND_LEVEL_AREA);
 }
 
-void PlaceProc_LevelLand(TileIndex tile)
+static void PlaceProc_LevelLand(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 }
