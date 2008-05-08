@@ -53,6 +53,7 @@
 #include "textbuf_gui.h"
 #include "string_func.h"
 #include "rail_gui.h"
+#include "elrail_func.h"
 #include "gui.h"
 #include "town.h"
 #include "video/video_driver.hpp"

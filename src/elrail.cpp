@@ -67,6 +67,7 @@
 #include "player_base.h"
 #include "tunnelbridge.h"
 #include "engine_func.h"
+#include "elrail_func.h"
 #include "engine_base.h"
 
 #include "table/sprites.h"
@@ -181,8 +182,6 @@ void DrawCatenaryOnTunnel(const TileInfo *ti)
 		{ 0, 1, 16, 15 }, // SW
 		{ 1, 0, 15, 16 }, // NW
 	};
-
-	if (!HasCatenary(GetRailType(ti->tile)) || _patches.disable_elrails) return;
 
 	DiagDirection dir = GetTunnelBridgeDirection(ti->tile);
 
@@ -382,11 +381,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 void DrawCatenaryOnBridge(const TileInfo *ti)
 {
-	if (_patches.disable_elrails) return;
-
-	/* Do not draw catenary if it is invisible */
-	if (IsInvisibilitySet(TO_CATENARY)) return;
-
 	TileIndex end = GetSouthernBridgeEnd(ti->tile);
 	TileIndex start = GetOtherBridgeEnd(end);
 
@@ -440,11 +434,6 @@ void DrawCatenaryOnBridge(const TileInfo *ti)
 
 void DrawCatenary(const TileInfo *ti)
 {
-	if (_patches.disable_elrails) return;
-
-	/* Do not draw catenary if it is invisible */
-	if (IsInvisibilitySet(TO_CATENARY)) return;
-
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
 			if (IsRailDepot(ti->tile)) {

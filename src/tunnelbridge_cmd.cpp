@@ -39,6 +39,7 @@
 #include "economy_func.h"
 #include "rail.h"
 #include "cheat_func.h"
+#include "elrail_func.h"
 #include "landscape_type.h"
 
 #include "table/sprites.h"
@@ -887,7 +888,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 					AddSortableSpriteToDraw(SPR_TRAMWAY_TUNNEL_WIRES + tunnelbridge_direction, PAL_NONE, ti->x, ti->y, BB_data[10], BB_data[11], TILE_HEIGHT, ti->z, IsTransparencySet(TO_CATENARY), BB_data[8], BB_data[9], BB_Z_SEPARATOR);
 				}
 			}
-		} else if (!IsInvisibilitySet(TO_CATENARY) && HasCatenary(GetRailType(ti->tile))) {
+		} else if (HasCatenaryDrawn(GetRailType(ti->tile))) {
 			catenary = true;
 			StartSpriteCombine();
 			DrawCatenaryOnTunnel(ti);
@@ -960,7 +961,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawBridgeTramBits(ti->x, ti->y, z, offset, HasBit(rts, ROADTYPE_ROAD), true);
 			}
 			EndSpriteCombine();
-		} else if (HasCatenary(GetRailType(ti->tile))) {
+		} else if (HasCatenaryDrawn(GetRailType(ti->tile))) {
 			DrawCatenary(ti);
 		}
 
@@ -1088,7 +1089,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 			EndSpriteCombine();
 			StartSpriteCombine();
 		}
-	} else if (HasCatenary(GetRailType(rampsouth))) {
+	} else if (HasCatenaryDrawn(GetRailType(rampsouth))) {
 		DrawCatenaryOnBridge(ti);
 	}
 

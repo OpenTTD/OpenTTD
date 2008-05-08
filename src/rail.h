@@ -11,7 +11,7 @@
 #include "gfx_type.h"
 #include "core/bitmath_func.hpp"
 #include "economy_func.h"
-#include "tile_cmd.h"
+#include "slope_type.h"
 
 enum RailTypeFlag {
 	RTF_CATENARY = 0,  ///< Set if the rail type should have catenary drawn
@@ -198,29 +198,8 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 int TicksToLeaveDepot(const Vehicle *v);
 
-
-/**
- * Test if a rail type has catenary
- * @param rt Rail type to test
- */
-static inline bool HasCatenary(RailType rt)
-{
-	return HasBit(GetRailTypeInfo(rt)->flags, RTF_CATENARY);
-}
-
-
-/**
- * Draws overhead wires and pylons for electric railways.
- * @param ti The TileInfo struct of the tile being drawn
- * @see DrawCatenaryRailway
- */
-void DrawCatenary(const TileInfo *ti);
-void DrawCatenaryOnTunnel(const TileInfo *ti);
-void DrawCatenaryOnBridge(const TileInfo *ti);
-
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
-int32 SettingsDisableElrail(int32 p1); ///< _patches.disable_elrail callback
 
 /**
  * Finds out if a Player has a certain railtype available

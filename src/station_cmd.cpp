@@ -42,6 +42,7 @@
 #include "signal_func.h"
 #include "oldpool_func.h"
 #include "animated_tile_func.h"
+#include "elrail_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -2106,7 +2107,7 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 	}
 
-	if (IsRailwayStation(ti->tile) && HasCatenary(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
+	if (IsRailwayStation(ti->tile) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
 	if (HasBit(roadtypes, ROADTYPE_TRAM)) {
 		Axis axis = GetRoadStopDir(ti->tile) == DIAGDIR_NE ? AXIS_X : AXIS_Y;

@@ -968,6 +968,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\elrail_func.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\endian_func.hpp"
 				>
 			</File>

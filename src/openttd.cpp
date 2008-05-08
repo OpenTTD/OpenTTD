@@ -60,6 +60,7 @@
 #include "cheat_func.h"
 #include "animated_tile_func.h"
 #include "functions.h"
+#include "elrail_func.h"
 #include "rev.h"
 
 #include "newgrf.h"

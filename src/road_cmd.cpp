@@ -37,6 +37,7 @@
 #include "cheat_func.h"
 #include "functions.h"
 #include "effectvehicle_func.h"
+#include "elrail_func.h"
 #include "oldpool_func.h"
 
 #include "table/sprites.h"
@@ -1139,7 +1140,7 @@ static void DrawTile_Road(TileInfo *ti)
 				DrawGroundSprite(SPR_TRAMWAY_OVERLAY + (GetCrossingRoadAxis(ti->tile) ^ 1), pal);
 				DrawTramCatenary(ti, GetCrossingRoadBits(ti->tile));
 			}
-			if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
+			if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 			break;
 		}
 

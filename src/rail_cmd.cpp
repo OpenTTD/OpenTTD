@@ -44,6 +44,7 @@
 #include "station_map.h"
 #include "water_map.h"
 #include "functions.h"
+#include "elrail_func.h"
 #include "oldpool_func.h"
 
 #include "table/sprites.h"
@@ -1762,7 +1763,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (HasBit(_display_opt, DO_FULL_DETAIL)) DrawTrackDetails(ti);
 
-		if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
+		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {
@@ -1841,7 +1842,7 @@ default_waypoint:
 
 		DrawGroundSprite(image, PAL_NONE);
 
-		if (HasCatenary(GetRailType(ti->tile))) DrawCatenary(ti);
+		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
 		/* End now if buildings are invisible */
 		if (IsInvisibilitySet(TO_BUILDINGS)) return;

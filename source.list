@@ -167,6 +167,7 @@ economy_func.h
 economy_type.h
 effectvehicle_func.h
 effectvehicle_base.h
+elrail_func.h
 core/endian_func.hpp
 engine_base.h
 engine_func.h
