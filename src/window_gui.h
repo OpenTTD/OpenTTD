@@ -379,18 +379,6 @@ struct def_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));
 
-struct void_d {
-	void *data;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(void_d));
-
-struct tooltips_d {
-	StringID string_id;
-	byte paramcount;
-	uint64 params[5];
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
-
 struct depot_d {
 	VehicleID sel;
 	VehicleType type;
@@ -404,18 +392,6 @@ struct depot_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
 
-struct vehicledetails_d {
-	byte tab;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehicledetails_d));
-
-struct smallmap_d {
-	int32 scroll_x;
-	int32 scroll_y;
-	int32 subscroll;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
-
 struct vp_d {
 	VehicleID follow_vehicle;
 	int32 scrollpos_x;
@@ -425,18 +401,6 @@ struct vp_d {
 	ViewPort vp_data;          ///< Screen position and zoom of the viewport
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
-
-struct highscore_d {
-	uint32 background_img;
-	int8 rank;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(highscore_d));
-
-struct scroller_d {
-	int height;
-	uint16 counter;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 enum SortListFlags {
 	VL_NONE    = 0,      ///< no sort
@@ -460,13 +424,6 @@ struct list_d {
 	uint16 resort_timer; ///< resort list after a given amount of ticks if set
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(list_d));
-
-struct message_d {
-	int msg;
-	int wparam;
-	int lparam;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(message_d));
 
 struct vehiclelist_d {
 	const Vehicle** sort_list;  // List of vehicles (sorted)

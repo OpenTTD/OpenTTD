@@ -42,6 +42,12 @@ struct facesel_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
+struct highscore_d {
+	uint32 background_img;
+	int8 rank;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(highscore_d));
+
 enum {
 	FIRST_GUI_CALL = INT_MAX,  ///< default value to specify thuis is the first call of the resizable gui
 };

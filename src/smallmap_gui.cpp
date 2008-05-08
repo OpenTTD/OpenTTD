@@ -32,6 +32,13 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
+struct smallmap_d {
+	int32 scroll_x;
+	int32 scroll_y;
+	int32 subscroll;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
+
 static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   337,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},

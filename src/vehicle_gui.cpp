@@ -40,6 +40,11 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+struct vehicledetails_d {
+	byte tab;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehicledetails_d));
+
 struct refit_d {
 	int sel;
 	struct RefitOption *cargo;

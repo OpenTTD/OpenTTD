@@ -97,8 +97,7 @@ static void Place_LandInfo(TileIndex tile)
 {
 	DeleteWindowById(WC_LAND_INFO, 0);
 
-	Window *w = new Window(&_land_info_desc);
-	WP(w, void_d).data = &_landinfo_data;
+	new Window(&_land_info_desc);
 
 	Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 	Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
@@ -201,6 +200,12 @@ void PlaceLandBlockInfo()
 		SetObjectToPlace(SPR_CURSOR_QUERY, PAL_NONE, VHM_RECT, WC_MAIN_TOOLBAR, 0);
 	}
 }
+
+struct scroller_d {
+	int height;
+	uint16 counter;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
 
 static const char *credits[] = {
 	/*************************************************************************
@@ -518,6 +523,13 @@ void HideFillingPercent(TextEffectID te_id)
 {
 	if (te_id != INVALID_TE_ID) RemoveTextEffect(te_id);
 }
+
+struct tooltips_d {
+	StringID string_id;
+	byte paramcount;
+	uint64 params[5];
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
 static const Widget _tooltips_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   199,     0,    31, 0x0, STR_NULL},
