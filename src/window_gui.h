@@ -577,7 +577,6 @@ Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *d
 
 void DrawWindowViewport(const Window *w);
 
-int GetMenuItemIndex(const Window *w, int x, int y);
 void RelocateAllWindows(int neww, int newh);
 
 /* misc_gui.cpp */

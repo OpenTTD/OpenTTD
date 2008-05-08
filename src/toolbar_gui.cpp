@@ -77,6 +77,26 @@ static Point GetToolbarDropdownPos(uint16 parent_button, int width, int height)
 	return pos;
 }
 
+/**
+ * In a window with menu_d custom extension, retrieve the menu item number from a position
+ * @param w Window holding the menu items
+ * @param x X coordinate of the position
+ * @param y Y coordinate of the position
+ * @return Index number of the menu item, or \c -1 if no valid selection under position
+ */
+static int GetMenuItemIndex(const Window *w, int x, int y)
+{
+	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
+		y /= 10;
+
+		if (y < WP(w, const menu_d).item_count &&
+				!HasBit(WP(w, const menu_d).disabled_items, y)) {
+			return y;
+		}
+	}
+	return -1;
+}
+
 /* --- Pausing --- */
 
 static void ToolbarPauseClick(Window *w)
