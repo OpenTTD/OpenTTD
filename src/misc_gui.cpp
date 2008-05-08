@@ -56,28 +56,6 @@ SaveLoadDialogMode _saveload_mode;
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
-enum {
-	LAND_INFO_LINES          =   7,
-	LAND_INFO_LINE_BUFF_SIZE = 512,
-};
-
-static char _landinfo_data[LAND_INFO_LINES][LAND_INFO_LINE_BUFF_SIZE];
-
-static void LandInfoWndProc(Window *w, WindowEvent *e)
-{
-	if (e->event == WE_PAINT) {
-		DrawWindowWidgets(w);
-
-		DoDrawStringCentered(140, 16, _landinfo_data[0], TC_LIGHT_BLUE);
-		DoDrawStringCentered(140, 27, _landinfo_data[1], TC_FROMSTRING);
-		DoDrawStringCentered(140, 38, _landinfo_data[2], TC_FROMSTRING);
-		DoDrawStringCentered(140, 49, _landinfo_data[3], TC_FROMSTRING);
-		DoDrawStringCentered(140, 60, _landinfo_data[4], TC_FROMSTRING);
-		if (_landinfo_data[5][0] != '\0') DrawStringMultiCenter(140, 76, BindCString(_landinfo_data[5]), w->width - 4);
-		if (_landinfo_data[6][0] != '\0') DoDrawStringCentered(140, 71, _landinfo_data[6], TC_FROMSTRING);
-	}
-}
-
 static const Widget _land_info_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -90,105 +68,131 @@ static const WindowDesc _land_info_desc = {
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_land_info_widgets,
-	LandInfoWndProc
+	NULL
 };
 
-static void Place_LandInfo(TileIndex tile)
-{
-	DeleteWindowById(WC_LAND_INFO, 0);
+class LandInfoWindow : public Window {
+	enum {
+		LAND_INFO_LINES          =   7,
+		LAND_INFO_LINE_BUFF_SIZE = 512,
+	};
 
-	new Window(&_land_info_desc);
+public:
+	char landinfo_data[LAND_INFO_LINES][LAND_INFO_LINE_BUFF_SIZE];
 
-	Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
-	Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+	virtual void HandleWindowEvent(WindowEvent *e)
+	{
+		if (e->event != WE_PAINT) return;
 
-	Money old_money = p->player_money;
-	p->player_money = INT64_MAX;
-	CommandCost costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
-	p->player_money = old_money;
+		DrawWindowWidgets(this);
 
-	/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
-	TileDesc td;
-	AcceptedCargo ac;
-
-	td.build_date = 0;
-	GetAcceptedCargo(tile, ac);
-	GetTileDesc(tile, &td);
-
-	SetDParam(0, td.dparam[0]);
-	GetString(_landinfo_data[0], td.str, lastof(_landinfo_data[0]));
-
-	SetDParam(0, STR_01A6_N_A);
-	if (td.owner != OWNER_NONE && td.owner != OWNER_WATER) GetNameOfOwner(td.owner, tile);
-	GetString(_landinfo_data[1], STR_01A7_OWNER, lastof(_landinfo_data[1]));
-
-	StringID str = STR_01A4_COST_TO_CLEAR_N_A;
-	if (CmdSucceeded(costclear)) {
-		SetDParam(0, costclear.GetCost());
-		str = STR_01A5_COST_TO_CLEAR;
+		DoDrawStringCentered(140, 16, this->landinfo_data[0], TC_LIGHT_BLUE);
+		DoDrawStringCentered(140, 27, this->landinfo_data[1], TC_FROMSTRING);
+		DoDrawStringCentered(140, 38, this->landinfo_data[2], TC_FROMSTRING);
+		DoDrawStringCentered(140, 49, this->landinfo_data[3], TC_FROMSTRING);
+		DoDrawStringCentered(140, 60, this->landinfo_data[4], TC_FROMSTRING);
+		if (!StrEmpty(this->landinfo_data[5])) DrawStringMultiCenter(140, 76, BindCString(this->landinfo_data[5]), this->width - 4);
+		if (!StrEmpty(this->landinfo_data[6])) DoDrawStringCentered(140, 71, this->landinfo_data[6], TC_FROMSTRING);
 	}
-	GetString(_landinfo_data[2], str, lastof(_landinfo_data[2]));
 
-	snprintf(_userstring, lengthof(_userstring), "0x%.4X", tile);
-	SetDParam(0, TileX(tile));
-	SetDParam(1, TileY(tile));
-	SetDParam(2, TileHeight(tile));
-	SetDParam(3, STR_SPEC_USERSTRING);
-	GetString(_landinfo_data[3], STR_LANDINFO_COORDS, lastof(_landinfo_data[3]));
+	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
+		Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
+		Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
-	SetDParam(0, STR_01A9_NONE);
-	if (t != NULL && t->IsValid()) {
-		SetDParam(0, STR_TOWN);
-		SetDParam(1, t->index);
-	}
-	GetString(_landinfo_data[4], STR_01A8_LOCAL_AUTHORITY, lastof(_landinfo_data[4]));
+		Money old_money = p->player_money;
+		p->player_money = INT64_MAX;
+		CommandCost costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
+		p->player_money = old_money;
 
-	char *strp = GetString(_landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(_landinfo_data[5]));
-	bool found = false;
+		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
+		TileDesc td;
+		AcceptedCargo ac;
 
-	for (CargoID i = 0; i < NUM_CARGO; ++i) {
-		if (ac[i] > 0) {
-			/* Add a comma between each item. */
-			if (found) {
-				*strp++ = ',';
-				*strp++ = ' ';
-			}
-			found = true;
+		td.build_date = 0;
+		GetAcceptedCargo(tile, ac);
+		GetTileDesc(tile, &td);
 
-			/* If the accepted value is less than 8, show it in 1/8:ths */
-			if (ac[i] < 8) {
-				SetDParam(0, ac[i]);
-				SetDParam(1, GetCargo(i)->name);
-				strp = GetString(strp, STR_01D1_8, lastof(_landinfo_data[5]));
-			} else {
-				strp = GetString(strp, GetCargo(i)->name, lastof(_landinfo_data[5]));
+		SetDParam(0, td.dparam[0]);
+		GetString(this->landinfo_data[0], td.str, lastof(this->landinfo_data[0]));
+
+		SetDParam(0, STR_01A6_N_A);
+		if (td.owner != OWNER_NONE && td.owner != OWNER_WATER) GetNameOfOwner(td.owner, tile);
+		GetString(this->landinfo_data[1], STR_01A7_OWNER, lastof(this->landinfo_data[1]));
+
+		StringID str = STR_01A4_COST_TO_CLEAR_N_A;
+		if (CmdSucceeded(costclear)) {
+			SetDParam(0, costclear.GetCost());
+			str = STR_01A5_COST_TO_CLEAR;
+		}
+		GetString(this->landinfo_data[2], str, lastof(this->landinfo_data[2]));
+
+		snprintf(_userstring, lengthof(_userstring), "0x%.4X", tile);
+		SetDParam(0, TileX(tile));
+		SetDParam(1, TileY(tile));
+		SetDParam(2, TileHeight(tile));
+		SetDParam(3, STR_SPEC_USERSTRING);
+		GetString(this->landinfo_data[3], STR_LANDINFO_COORDS, lastof(this->landinfo_data[3]));
+
+		SetDParam(0, STR_01A9_NONE);
+		if (t != NULL && t->IsValid()) {
+			SetDParam(0, STR_TOWN);
+			SetDParam(1, t->index);
+		}
+		GetString(this->landinfo_data[4], STR_01A8_LOCAL_AUTHORITY, lastof(this->landinfo_data[4]));
+
+		char *strp = GetString(this->landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(this->landinfo_data[5]));
+		bool found = false;
+
+		for (CargoID i = 0; i < NUM_CARGO; ++i) {
+			if (ac[i] > 0) {
+				/* Add a comma between each item. */
+				if (found) {
+					*strp++ = ',';
+					*strp++ = ' ';
+				}
+				found = true;
+
+				/* If the accepted value is less than 8, show it in 1/8:ths */
+				if (ac[i] < 8) {
+					SetDParam(0, ac[i]);
+					SetDParam(1, GetCargo(i)->name);
+					strp = GetString(strp, STR_01D1_8, lastof(this->landinfo_data[5]));
+				} else {
+					strp = GetString(strp, GetCargo(i)->name, lastof(this->landinfo_data[5]));
+				}
 			}
 		}
-	}
-	if (!found) _landinfo_data[5][0] = '\0';
+		if (!found) this->landinfo_data[5][0] = '\0';
 
-	if (td.build_date != 0) {
-		SetDParam(0, td.build_date);
-		GetString(_landinfo_data[6], STR_BUILD_DATE, lastof(_landinfo_data[6]));
-	} else {
-		_landinfo_data[6][0] = '\0';
-	}
+		if (td.build_date != 0) {
+			SetDParam(0, td.build_date);
+			GetString(this->landinfo_data[6], STR_BUILD_DATE, lastof(this->landinfo_data[6]));
+		} else {
+			this->landinfo_data[6][0] = '\0';
+		}
 
 #if defined(_DEBUG)
 #	define LANDINFOD_LEVEL 0
 #else
 #	define LANDINFOD_LEVEL 1
 #endif
-	DEBUG(misc, LANDINFOD_LEVEL, "TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
-	DEBUG(misc, LANDINFOD_LEVEL, "type_height  = %#x", _m[tile].type_height);
-	DEBUG(misc, LANDINFOD_LEVEL, "m1           = %#x", _m[tile].m1);
-	DEBUG(misc, LANDINFOD_LEVEL, "m2           = %#x", _m[tile].m2);
-	DEBUG(misc, LANDINFOD_LEVEL, "m3           = %#x", _m[tile].m3);
-	DEBUG(misc, LANDINFOD_LEVEL, "m4           = %#x", _m[tile].m4);
-	DEBUG(misc, LANDINFOD_LEVEL, "m5           = %#x", _m[tile].m5);
-	DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
-	DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
+		DEBUG(misc, LANDINFOD_LEVEL, "TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
+		DEBUG(misc, LANDINFOD_LEVEL, "type_height  = %#x", _m[tile].type_height);
+		DEBUG(misc, LANDINFOD_LEVEL, "m1           = %#x", _m[tile].m1);
+		DEBUG(misc, LANDINFOD_LEVEL, "m2           = %#x", _m[tile].m2);
+		DEBUG(misc, LANDINFOD_LEVEL, "m3           = %#x", _m[tile].m3);
+		DEBUG(misc, LANDINFOD_LEVEL, "m4           = %#x", _m[tile].m4);
+		DEBUG(misc, LANDINFOD_LEVEL, "m5           = %#x", _m[tile].m5);
+		DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
+		DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
 #undef LANDINFOD_LEVEL
+	}
+};
+
+static void Place_LandInfo(TileIndex tile)
+{
+	DeleteWindowById(WC_LAND_INFO, 0);
+	new LandInfoWindow(tile);
 }
 
 void PlaceLandBlockInfo()
