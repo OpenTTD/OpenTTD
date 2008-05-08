@@ -324,11 +324,11 @@ static IniFile *ini_load(const char *filename)
 }
 
 /** lookup a group or make a new one */
-static IniGroup *ini_getgroup(IniFile *ini, const char *name, size_t len)
+static IniGroup *ini_getgroup(IniFile *ini, const char *name, size_t len = 0)
 {
 	IniGroup *group;
 
-	if (len == -1) len = strlen(name);
+	if (len == 0) len = strlen(name);
 
 	/* does it exist already? */
 	for (group = ini->group; group; group = group->next)
@@ -404,12 +404,12 @@ static void ini_free(IniFile *ini)
  * @param one the current value of the setting for which a value needs found
  * @param onelen force calculation of the *one parameter
  * @return the integer index of the full-list, or -1 if not found */
-static int lookup_oneofmany(const char *many, const char *one, size_t onelen)
+static int lookup_oneofmany(const char *many, const char *one, size_t onelen = 0)
 {
 	const char *s;
 	int idx;
 
-	if (onelen == -1) onelen = strlen(one);
+	if (onelen == 0) onelen = strlen(one);
 
 	/* check if it's an integer */
 	if (*one >= '0' && *one <= '9')
@@ -420,7 +420,7 @@ static int lookup_oneofmany(const char *many, const char *one, size_t onelen)
 		/* find end of item */
 		s = many;
 		while (*s != '|' && *s != 0) s++;
-		if (s - many == onelen && !memcmp(one, many, onelen)) return idx;
+		if ((size_t)(s - many) == onelen && !memcmp(one, many, onelen)) return idx;
 		if (*s == 0) return -1;
 		many = s + 1;
 		idx++;
@@ -615,7 +615,7 @@ static const void *string_to_val(const SettingDescBase *desc, const char *str)
 		return (void*)val;
 	}
 	case SDT_ONEOFMANY: {
-		long r = lookup_oneofmany(desc->many, str, -1);
+		long r = lookup_oneofmany(desc->many, str);
 		/* if the first attempt of conversion from string to the appropriate value fails,
 		 * look if we have defined a converter from old value to new value. */
 		if (r == -1 && desc->proc_cnvt != NULL) r = desc->proc_cnvt(str);
@@ -705,7 +705,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group;
-	IniGroup *group_def = ini_getgroup(ini, grpname, -1);
+	IniGroup *group_def = ini_getgroup(ini, grpname);
 	IniItem *item;
 	const void *p;
 	void *ptr;
@@ -800,7 +800,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			group = ini_getgroup(ini, sdb->name, s - sdb->name);
 			s++;
 		} else {
-			if (group_def == NULL) group_def = ini_getgroup(ini, grpname, -1);
+			if (group_def == NULL) group_def = ini_getgroup(ini, grpname);
 			s = sdb->name;
 			group = group_def;
 		}
@@ -895,7 +895,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * inside the list */
 static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
-	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniGroup *group = ini_getgroup(ini, grpname);
 	IniItem *item;
 	const char *entry;
 	uint i, j;
@@ -923,7 +923,7 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
  * @param proc callback function that can will provide the source data if defined */
 static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
-	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniGroup *group = ini_getgroup(ini, grpname);
 	IniItem *item = NULL;
 	const char *entry;
 	uint i;
@@ -1242,7 +1242,7 @@ static int32 CheckTownLayout(int32 p1)
 static int32 ConvertLandscape(const char *value)
 {
 	/* try with the old values */
-	return lookup_oneofmany("normal|hilly|desert|candy", value, -1);
+	return lookup_oneofmany("normal|hilly|desert|candy", value);
 }
 
 /* End - Callback Functions */
@@ -1656,7 +1656,7 @@ static const SettingDesc _currency_settings[] = {
 
 static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 {
-	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniGroup *group = ini_getgroup(ini, grpname);
 	IniItem *item;
 
 	/* If no group exists, return */
@@ -1691,7 +1691,7 @@ static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 /* Load a GRF configuration from the given group name */
 static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_static)
 {
-	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniGroup *group = ini_getgroup(ini, grpname);
 	IniItem *item;
 	GRFConfig *first = NULL;
 	GRFConfig **curr = &first;
@@ -1743,7 +1743,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 
 static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 {
-	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniGroup *group = ini_getgroup(ini, grpname);
 	IniItem **item;
 
 	if (group == NULL) return;
@@ -1768,7 +1768,7 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
  */
 static void SaveVersionInConfig(IniFile *ini)
 {
-	IniGroup *group = ini_getgroup(ini, "version", -1);
+	IniGroup *group = ini_getgroup(ini, "version");
 
 	if (group == NULL) return;
 	group->item = NULL;
@@ -1792,7 +1792,7 @@ static void SaveVersionInConfig(IniFile *ini)
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
 {
-	IniGroup *group = ini_getgroup(ini, grpname, -1);
+	IniGroup *group = ini_getgroup(ini, grpname);
 	IniItem **item;
 	const GRFConfig *c;
 
