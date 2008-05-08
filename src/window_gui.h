@@ -384,12 +384,6 @@ struct void_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(void_d));
 
-struct tree_d {
-	uint16 base;
-	uint16 count;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tree_d));
-
 struct tooltips_d {
 	StringID string_id;
 	byte paramcount;

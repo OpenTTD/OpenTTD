@@ -53,8 +53,6 @@ Vehicle *CheckMouseOverVehicle();
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom);
 
-void ResetObjectToPlace();
-
 bool ScrollWindowTo(int x, int y, Window *w, bool instant = false);
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant = false);

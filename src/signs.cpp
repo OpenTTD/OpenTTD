@@ -13,6 +13,7 @@
 #include "variables.h"
 #include "strings_func.h"
 #include "viewport_func.h"
+#include "tilehighlight_func.h"
 #include "zoom_func.h"
 #include "functions.h"
 #include "window_func.h"

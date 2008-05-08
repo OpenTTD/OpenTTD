@@ -22,9 +22,6 @@ void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
 
-/* misc_cmd.cpp */
-void PlaceTreesRandomly();
-
 void InitializeLandscapeVariables(bool only_constants);
 
 /* misc functions */

@@ -384,6 +384,7 @@ toolbar_gui.cpp
 town_gui.cpp
 train_gui.cpp
 transparency_gui.cpp
+tree_gui.cpp
 vehicle_gui.cpp
 
 # Command handlers

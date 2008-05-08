@@ -12,7 +12,7 @@
 #include "string_func.h"
 #include "strings_func.h"
 #include "player_base.h"
-#include "viewport_func.h"
+#include "tilehighlight_func.h"
 #include "news_gui.h"
 #include "player_gui.h"
 #include "window_gui.h"

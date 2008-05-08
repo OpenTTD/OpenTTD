@@ -1776,6 +1776,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tree_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\vehicle_gui.cpp"
 				>
 			</File>
