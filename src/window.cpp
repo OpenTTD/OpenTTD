@@ -44,7 +44,6 @@ byte _scroller_click_timeout;
 
 bool _scrolling_scrollbar;
 bool _scrolling_viewport;
-bool _popup_menu_active;
 
 byte _special_mouse_mode;
 
@@ -1131,31 +1130,6 @@ static bool HandleDragDrop()
 	return false;
 }
 
-static bool HandlePopupMenu()
-{
-	if (!_popup_menu_active) return true;
-
-	Window *w = FindWindowById(WC_TOOLBAR_MENU, 0);
-	if (w == NULL) {
-		_popup_menu_active = false;
-		return false;
-	}
-
-	WindowEvent e;
-	if (_left_button_down) {
-		e.event = WE_POPUPMENU_OVER;
-		e.we.popupmenu.pt = _cursor.pos;
-	} else {
-		_popup_menu_active = false;
-		e.event = WE_POPUPMENU_SELECT;
-		e.we.popupmenu.pt = _cursor.pos;
-	}
-
-	w->HandleWindowEvent(&e);
-
-	return false;
-}
-
 static bool HandleMouseOver()
 {
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
@@ -1827,7 +1801,6 @@ void MouseLoop(MouseClick click, int mousewheel)
 	UpdateTileSelection();
 	if (!VpHandlePlaceSizingDrag())  return;
 	if (!HandleDragDrop())           return;
-	if (!HandlePopupMenu())          return;
 	if (!HandleWindowDragging())     return;
 	if (!HandleScrollbarScrolling()) return;
 	if (!HandleViewportScroll())     return;

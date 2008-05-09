@@ -84,8 +84,11 @@ static Point GetToolbarDropdownPos(uint16 parent_button, int width, int height)
  * @param y Y coordinate of the position
  * @return Index number of the menu item, or \c -1 if no valid selection under position
  */
-static int GetMenuItemIndex(const Window *w, int x, int y)
+static int GetMenuItemIndex(const Window *w)
 {
+	int x = _cursor.pos.x;
+	int y = _cursor.pos.y;
+
 	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
 		y /= 10;
 
@@ -1153,34 +1156,30 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 				return;
 			}
 
-		case WE_POPUPMENU_SELECT: {
-			int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
+		case WE_MOUSELOOP: {
+			int index = GetMenuItemIndex(w);
 
-			if (index < 0) {
-				Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-				if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w, menu_d).main_button)
-					index = WP(w, menu_d).sel_index;
+			if (_left_button_down) {
+				if (index == -1 || index == WP(w, menu_d).sel_index) return;
+
+				WP(w, menu_d).sel_index = index;
+				w->SetDirty();
+			} else {
+				if (index < 0) {
+					Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
+					if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == WP(w, menu_d).main_button)
+						index = WP(w, menu_d).sel_index;
+				}
+
+				int action_id = WP(w, menu_d).action_id;
+				delete w;
+
+				if (index >= 0) {
+					assert((uint)index <= lengthof(_menu_clicked_procs));
+					_menu_clicked_procs[action_id](index);
+				}
 			}
-
-			int action_id = WP(w, menu_d).action_id;
-			delete w;
-
-			if (index >= 0) {
-				assert((uint)index <= lengthof(_menu_clicked_procs));
-				_menu_clicked_procs[action_id](index);
-			}
-
 		} break;
-
-		case WE_POPUPMENU_OVER: {
-			int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
-
-			if (index == -1 || index == WP(w, menu_d).sel_index) return;
-
-			WP(w, menu_d).sel_index = index;
-			w->SetDirty();
-			return;
-		}
 	}
 }
 
@@ -1261,8 +1260,6 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 	WP(w, menu_d).string_id = base_string;
 	WP(w, menu_d).checked_items = 0;
 	WP(w, menu_d).disabled_items = disabled_mask;
-
-	_popup_menu_active = true;
 
 	SndPlayFx(SND_15_BEEP);
 	return w;
@@ -1350,51 +1347,48 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 			return;
 		}
 
-		case WE_POPUPMENU_SELECT: {
-			int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
-			int action_id = WP(w, menu_d).action_id;
+		case WE_MOUSELOOP: {
+			int index = GetMenuItemIndex(w);
 
-			/* We have a new entry at the top of the list of menu 9 when networking
-			*  so keep that in count */
-			if (_networking && WP(w, menu_d).main_button == 9) {
-				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
+			if (_left_button_down) {
+				UpdatePlayerMenuHeight(w);
+				/* We have a new entry at the top of the list of menu 9 when networking
+				 * so keep that in count */
+				if (_networking && WP(w, menu_d).main_button == 9) {
+					if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
+				} else {
+					index = GetPlayerIndexFromMenu(index);
+				}
+
+				if (index == -1 || index == WP(w, menu_d).sel_index) return;
+
+				WP(w, menu_d).sel_index = index;
+				w->SetDirty();
 			} else {
-				index = GetPlayerIndexFromMenu(index);
-			}
+				int action_id = WP(w, menu_d).action_id;
 
-			if (index < 0) {
-				Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-				if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w, menu_d).main_button)
-					index = WP(w, menu_d).sel_index;
-			}
+				/* We have a new entry at the top of the list of menu 9 when networking
+				 * so keep that in count */
+				if (_networking && WP(w, menu_d).main_button == 9) {
+					if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
+				} else {
+					index = GetPlayerIndexFromMenu(index);
+				}
 
-			delete w;
+				if (index < 0) {
+					Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
+					if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == WP(w, menu_d).main_button)
+						index = WP(w, menu_d).sel_index;
+				}
 
-			if (index >= 0) {
-				assert(index >= 0 && index < 30);
-				_menu_clicked_procs[action_id](index);
+				delete w;
+
+				if (index >= 0) {
+					assert(index >= 0 && index < 30);
+					_menu_clicked_procs[action_id](index);
+				}
 			}
 		} break;
-
-		case WE_POPUPMENU_OVER: {
-			int index;
-			UpdatePlayerMenuHeight(w);
-			index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
-
-			/* We have a new entry at the top of the list of menu 9 when networking
-			* so keep that in count */
-			if (_networking && WP(w, menu_d).main_button == 9) {
-				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
-			} else {
-				index = GetPlayerIndexFromMenu(index);
-			}
-
-			if (index == -1 || index == WP(w, menu_d).sel_index) return;
-
-			WP(w, menu_d).sel_index = index;
-			w->SetDirty();
-			return;
-		}
 	}
 }
 
@@ -1426,7 +1420,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 	WP(w, menu_d).main_button = main_button;
 	WP(w, menu_d).checked_items = gray;
 	WP(w, menu_d).disabled_items = 0;
-	_popup_menu_active = true;
+
 	SndPlayFx(SND_15_BEEP);
 	return w;
 }

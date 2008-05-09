@@ -126,8 +126,6 @@ enum WindowEventCodes {
 	WE_ABORT_PLACE_OBJ,
 	WE_ON_EDIT_TEXT,
 	WE_ON_EDIT_TEXT_CANCEL,
-	WE_POPUPMENU_SELECT,
-	WE_POPUPMENU_OVER,
 	WE_DRAGDROP,
 	WE_PLACE_DRAG,
 	WE_PLACE_MOUSEUP,
@@ -177,10 +175,6 @@ struct WindowEvent {
 		struct {
 			char *str;
 		} edittext;
-
-		struct {
-			Point pt;
-		} popupmenu;
 
 		struct {
 			int button;
@@ -563,7 +557,6 @@ extern byte _scroller_click_timeout;
 
 extern bool _scrolling_scrollbar;
 extern bool _scrolling_viewport;
-extern bool _popup_menu_active;
 
 extern byte _special_mouse_mode;
 enum SpecialMouseMode {

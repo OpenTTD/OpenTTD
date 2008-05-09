@@ -1480,8 +1480,6 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	// Save our client
 	WP(w, menu_d).main_button = client_no;
 	WP(w, menu_d).sel_index = 0;
-	// We are a popup
-	_popup_menu_active = true;
 
 	return w;
 }
@@ -1513,25 +1511,22 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case WE_POPUPMENU_SELECT: {
+		case WE_MOUSELOOP: {
 			/* We selected an action */
-			int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
+			int index = (_cursor.pos.y - w->top) / CLNWND_ROWSIZE;
 
-			if (index >= 0 && e->we.popupmenu.pt.y >= w->top) {
-				HandleClientListPopupClick(index, WP(w, menu_d).main_button);
+			if (_left_button_down) {
+				if (index == -1 || index == WP(w, menu_d).sel_index) return;
+
+				WP(w, menu_d).sel_index = index;
+				SetWindowDirty(w);
+			} else {
+				if (index >= 0 && _cursor.pos.y >= w->top) {
+					HandleClientListPopupClick(index, WP(w, menu_d).main_button);
+				}
+
+				DeleteWindowById(WC_TOOLBAR_MENU, 0);
 			}
-
-			DeleteWindowById(WC_TOOLBAR_MENU, 0);
-		} break;
-
-		case WE_POPUPMENU_OVER: {
-			/* Our mouse hoovers over an action? Select it! */
-			int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
-
-			if (index == -1 || index == WP(w, menu_d).sel_index) return;
-
-			WP(w, menu_d).sel_index = index;
-			SetWindowDirty(w);
 		} break;
 	}
 }
