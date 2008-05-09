@@ -2157,7 +2157,7 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 			DeleteWindowById(WC_VEHICLE_TIMETABLE, w->window_number);
 			break;
 
-		case WE_MOUSELOOP: {
+		case WE_TICK: {
 			const Vehicle *v = GetVehicle(w->window_number);
 			bool veh_stopped = v->IsStoppedInDepot();
 

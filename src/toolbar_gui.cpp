@@ -745,7 +745,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 			w->SetDirty();
 			break;
 
-		case WE_MOUSELOOP:
+		case WE_TICK:
 			if (w->IsWidgetLowered(0) != !!_pause_game) {
 				w->ToggleWidgetLoweredState(0);
 				w->InvalidateWidget(0);
@@ -1017,7 +1017,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case WE_MOUSELOOP:
+		case WE_TICK:
 			if (w->IsWidgetLowered(0) != !!_pause_game) {
 				w->ToggleWidgetLoweredState(0);
 				w->SetDirty();

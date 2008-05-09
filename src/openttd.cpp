@@ -97,6 +97,7 @@ void MusicLoop();
 void ResetMusic();
 void ResetOldNames();
 void ProcessAsyncSaveFinish();
+void CallWindowTickEvent();
 
 extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);

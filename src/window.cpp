@@ -1984,7 +1984,7 @@ void UpdateWindows()
 
 	if (t >= 100) {
 		for (wz = _last_z_window; wz != _z_windows;) {
-			CallWindowEventNP(*--wz, WE_4);
+			CallWindowEventNP(*--wz, WE_100_TICKS);
 		}
 		t = 0;
 	}

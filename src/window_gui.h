@@ -117,10 +117,10 @@ enum WindowEventCodes {
 	WE_DOUBLE_CLICK, ///< Left mouse button double click
 	WE_RCLICK,       ///< Right mouse button click
 	WE_MOUSEOVER,
-	WE_MOUSELOOP,
 	WE_MOUSEWHEEL,
-	WE_TICK,         ///< Regularly occurring event (about once every 20 seconds orso, 10 days) for slowly changing content (typically list sorting)
-	WE_4,            ///< Regularly occurring event for updating continuously changing window content (other than view ports), or timer expiring
+	WE_MOUSELOOP,    ///< Event for each mouse event in the game (at least once every game tick)
+	WE_TICK,         ///< Regularly occurring event (every game tick)
+	WE_100_TICKS,    ///< Regularly occurring event (every 100 game ticks, approximatelly 3 seconds)
 	WE_TIMEOUT,
 	WE_PLACE_OBJ,
 	WE_ABORT_PLACE_OBJ,
@@ -504,7 +504,6 @@ enum WindowFlags {
 
 /* window.cpp */
 void CallWindowEventNP(Window *w, int event);
-void CallWindowTickEvent();
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);

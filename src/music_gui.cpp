@@ -463,7 +463,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_MOUSELOOP:
+	case WE_TICK:
 		InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 7);
 		break;
 	}

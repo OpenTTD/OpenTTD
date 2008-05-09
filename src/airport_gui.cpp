@@ -230,7 +230,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case WE_MOUSELOOP: {
+		case WE_TICK: {
 			if (WP(w, def_d).close) {
 				delete w;
 				return;

@@ -252,7 +252,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_4:
+		case WE_100_TICKS:
 			w->SetDirty();
 			break;
 	}
@@ -555,7 +555,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_4:
+		case WE_100_TICKS:
 			w->SetDirty();
 			break;
 

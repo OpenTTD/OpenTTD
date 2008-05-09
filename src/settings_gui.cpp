@@ -655,7 +655,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 					break;
 			} break;
 
-		case WE_MOUSELOOP: /* Handle the visual 'clicking' of the buttons */
+		case WE_TICK: /* Handle the visual 'clicking' of the buttons */
 			if (diffic_d->timeout != 0) {
 				diffic_d->timeout--;
 				if (diffic_d->timeout == 0) diffic_d->clicked_button = NO_SETTINGS_BUTTON;

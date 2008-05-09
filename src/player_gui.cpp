@@ -1309,7 +1309,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MOUSELOOP:
+		case WE_TICK:
 			/* redraw the window every now and then */
 			if ((++w->vscroll.pos & 0x1F) == 0) w->SetDirty();
 			break;

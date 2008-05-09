@@ -762,7 +762,7 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MOUSELOOP:
+		case WE_TICK:
 			if (WP(w, def_d).close) delete w;
 			break;
 
@@ -919,7 +919,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MOUSELOOP:
+		case WE_TICK:
 			if (WP(w, def_d).close) {
 				delete w;
 				return;

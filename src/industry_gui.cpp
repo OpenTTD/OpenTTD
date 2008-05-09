@@ -881,7 +881,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_4:
+		case WE_100_TICKS:
 			w->SetDirty();
 			break;
 

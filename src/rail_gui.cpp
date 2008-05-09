@@ -1122,7 +1122,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		w->SetDirty();
 		break;
 
-	case WE_MOUSELOOP:
+	case WE_TICK:
 		if (WP(w, def_d).close) {
 			delete w;
 			return;
@@ -1345,7 +1345,7 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 			w->SetDirty();
 			break;
 
-		case WE_MOUSELOOP:
+		case WE_TICK:
 			if (WP(w, def_d).close) delete w;
 			return;
 
@@ -1436,7 +1436,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_MOUSELOOP:
+	case WE_TICK:
 		if (WP(w, def_d).close) delete w;
 		return;
 
@@ -1535,7 +1535,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 
-	case WE_MOUSELOOP:
+	case WE_TICK:
 		if (WP(w, def_d).close) delete w;
 		break;
 

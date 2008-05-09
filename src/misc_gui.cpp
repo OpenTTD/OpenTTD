@@ -401,7 +401,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 			if (_right_button_down) delete w;
 			break;
 
-		case WE_4:
+		case WE_100_TICKS:
 			if (--_errmsg_duration == 0) delete w;
 			break;
 
