@@ -32,37 +32,6 @@
 
 bool _ignore_restrictions;
 
-/** Names of the widgets of the dynamic place industries gui */
-enum DynamicPlaceIndustriesWidgets {
-	DPIW_CLOSEBOX = 0,
-	DPIW_CAPTION,
-	DPIW_MATRIX_WIDGET,
-	DPIW_SCROLLBAR,
-	DPIW_INFOPANEL,
-	DPIW_FUND_WIDGET,
-	DPIW_RESIZE_WIDGET,
-};
-
-/** Attached struct to the window extended data */
-struct fnd_d {
-	int index;             ///< index of the element in the matrix
-	IndustryType select;   ///< industry corresponding to the above index
-	uint16 callback_timer; ///< timer counter for callback eventual verification
-	bool timer_enabled;    ///< timer can be used
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(fnd_d));
-
-/** Helper struct holding the available industries for current situation */
-static struct IndustryData {
-	uint16 count;                               ///< How many industries are loaded
-	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
-	StringID text[NUM_INDUSTRYTYPES + 1];       ///< Text coming from CBM_IND_FUND_MORE_TEXT (if ever)
-	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
-} _fund_gui;
-
-assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.text));
-assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.enabled));
-
 enum CargoSuffixType {
 	CST_FUND,
 	CST_VIEW,
@@ -92,288 +61,19 @@ static StringID GetCargoSuffix(uint cargo, CargoSuffixType cst, Industry *ind, I
 	return STR_EMPTY;
 }
 
-static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE: {
-			IndustryType ind;
-			const IndustrySpec *indsp;
-
-			/* Shorten the window to the equivalant of the additionnal purchase
-			 * info coming from the callback.  SO it will only be available to tis full
-			 * height when newindistries are loaded */
-			if (!_loaded_newgrf_features.has_newindustries) {
-				w->widget[DPIW_INFOPANEL].bottom -= 44;
-				w->widget[DPIW_FUND_WIDGET].bottom -= 44;
-				w->widget[DPIW_FUND_WIDGET].top -= 44;
-				w->widget[DPIW_RESIZE_WIDGET].bottom -= 44;
-				w->widget[DPIW_RESIZE_WIDGET].top -= 44;
-				w->resize.height = w->height -= 44;
-			}
-
-			WP(w, fnd_d).timer_enabled = _loaded_newgrf_features.has_newindustries;
-
-			/* Initilialize structures */
-			_fund_gui.count = 0;
-
-			for (uint i = 0; i < lengthof(_fund_gui.index); i++) {
-				_fund_gui.index[i]   = 0xFF;
-				_fund_gui.text[i]    = STR_NULL;
-				_fund_gui.enabled[i] = false;
-			}
-
-			w->vscroll.cap = 8; // rows in grid, same in scroller
-			w->resize.step_height = 13;
-
-			if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
-				_fund_gui.index[_fund_gui.count] = INVALID_INDUSTRYTYPE;
-				_fund_gui.count++;
-				WP(w, fnd_d).timer_enabled = false;
-			}
-
-			/* Fill the _fund_gui structure with industries.
-			 * The tests performed after the enabled allow to load the industries
-			 * In the same way they are inserted by grf (if any)
-			 */
-			for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
-				indsp = GetIndustrySpec(ind);
-				if (indsp->enabled){
-					/* Rule is that editor mode loads all industries.
-					 * In game mode, all non raw industries are loaded too
-					 * and raw ones are loaded only when setting allows it */
-					if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) continue;
-					_fund_gui.index[_fund_gui.count] = ind;
-					_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
-					_fund_gui.count++;
-				}
-			}
-
-			/* first indutry type is selected.
-			 * I'll be damned if there are none available ;) */
-			WP(w, fnd_d).index = 0;
-			WP(w, fnd_d).select = _fund_gui.index[0];
-			WP(w, fnd_d).callback_timer = DAY_TICKS;
-		} break;
-
-		case WE_PAINT: {
-			const IndustrySpec *indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
-			int x_str = w->widget[DPIW_INFOPANEL].left + 3;
-			int y_str = w->widget[DPIW_INFOPANEL].top + 3;
-			const Widget *wi = &w->widget[DPIW_INFOPANEL];
-			int max_width = wi->right - wi->left - 4;
-
-			/* Raw industries might be prospected. Show this fact by changing the string
-			 * In Editor, you just build, while ingame, or you fund or you prospect */
-			if (_game_mode == GM_EDITOR) {
-				/* We've chosen many random industries but no industries have been specified */
-				if (indsp == NULL) _fund_gui.enabled[WP(w, fnd_d).index] = _opt.diff.number_industries != 0;
-				w->widget[DPIW_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
-			} else {
-				w->widget[DPIW_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
-			}
-			w->SetWidgetDisabledState(DPIW_FUND_WIDGET, !_fund_gui.enabled[WP(w, fnd_d).index]);
-
-			SetVScrollCount(w, _fund_gui.count);
-
-			DrawWindowWidgets(w);
-
-			/* and now with the matrix painting */
-			for (byte i = 0; i < w->vscroll.cap && ((i + w->vscroll.pos) < _fund_gui.count); i++) {
-				int offset = i * 13;
-				int x = 3;
-				int y = 16;
-				bool selected = WP(w, fnd_d).index == i + w->vscroll.pos;
-
-				if (_fund_gui.index[i + w->vscroll.pos] == INVALID_INDUSTRYTYPE) {
-					DrawStringTruncated(20, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE, max_width - 25);
-					continue;
-				}
-				const IndustrySpec *indsp = GetIndustrySpec(_fund_gui.index[i + w->vscroll.pos]);
-
-				/* Draw the name of the industry in white is selected, otherwise, in orange */
-				DrawStringTruncated(20, y + offset, indsp->name, selected ? TC_WHITE : TC_ORANGE, max_width - 25);
-				GfxFillRect(x,     y + 1 + offset,  x + 10, y + 7 + offset, selected ? 15 : 0);
-				GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
-			}
-
-			if (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
-				DrawStringMultiLine(x_str, y_str, STR_RANDOM_INDUSTRIES_TIP, max_width, wi->bottom - wi->top - 40);
-				break;
-			}
-
-			if (_game_mode != GM_EDITOR) {
-				SetDParam(0, indsp->GetConstructionCost());
-				DrawStringTruncated(x_str, y_str, STR_482F_COST, TC_FROMSTRING, max_width);
-				y_str += 11;
-			}
-
-			/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
-			StringID str = STR_4827_REQUIRES;
-			byte p = 0;
-			SetDParam(0, STR_00D0_NOTHING);
-			SetDParam(1, STR_EMPTY);
-			for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
-				if (indsp->accepts_cargo[j] == CT_INVALID) continue;
-				if (p > 0) str++;
-				SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
-				SetDParam(p++, GetCargoSuffix(j, CST_FUND, NULL, WP(w, fnd_d).select, indsp));
-			}
-			DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
-			y_str += 11;
-
-			/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
-			str = STR_4827_PRODUCES;
-			p = 0;
-			SetDParam(0, STR_00D0_NOTHING);
-			SetDParam(1, STR_EMPTY);
-			for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-				if (indsp->produced_cargo[j] == CT_INVALID) continue;
-				if (p > 0) str++;
-				SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
-				SetDParam(p++, GetCargoSuffix(j + 3, CST_FUND, NULL, WP(w, fnd_d).select, indsp));
-			}
-			DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
-			y_str += 11;
-
-			/* Get the additional purchase info text, if it has not already been */
-			if (_fund_gui.text[WP(w, fnd_d).index] == STR_NULL) {   // Have i been called already?
-				if (HasBit(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
-					uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, WP(w, fnd_d).select, INVALID_TILE);
-					if (callback_res != CALLBACK_FAILED) {  // Did it failed?
-						StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
-						_fund_gui.text[WP(w, fnd_d).index] = newtxt;   // Store it for further usage
-					}
-				}
-			}
-
-			/* Draw the Additional purchase text, provided by newgrf callback, if any.
-			 * Otherwhise, will print Nothing */
-			str = _fund_gui.text[WP(w, fnd_d).index];
-			if (str != STR_NULL && str != STR_UNDEFINED) {
-				SetDParam(0, str);
-				DrawStringMultiLine(x_str, y_str, STR_JUST_STRING, max_width, wi->bottom - wi->top - 40);
-			}
-		} break;
-
-		case WE_DOUBLE_CLICK:
-			if (e->we.click.widget != DPIW_MATRIX_WIDGET) break;
-			e->we.click.widget = DPIW_FUND_WIDGET;
-			/* Fall through */
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case DPIW_MATRIX_WIDGET: {
-					const IndustrySpec *indsp;
-					int y = (e->we.click.pt.y - w->widget[DPIW_MATRIX_WIDGET].top) / 13 + w->vscroll.pos ;
-
-					if (y >= 0 && y < _fund_gui.count) { // Is it within the boundaries of available data?
-						WP(w, fnd_d).index = y;
-						WP(w, fnd_d).select = _fund_gui.index[WP(w, fnd_d).index];
-						indsp = (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(WP(w, fnd_d).select);
-
-						w->SetDirty();
-
-						if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
-								WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
-							/* Reset the button state if going to prospecting or "build many industries" */
-							w->RaiseButtons();
-							ResetObjectToPlace();
-						}
-					}
-				} break;
-
-				case DPIW_FUND_WIDGET: {
-					if (WP(w, fnd_d).select == INVALID_INDUSTRYTYPE) {
-						w->HandleButtonClick(DPIW_FUND_WIDGET);
-
-						if (GetNumTowns() == 0) {
-							ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
-						} else {
-							extern void GenerateIndustries();
-							_generating_world = true;
-							GenerateIndustries();
-							_generating_world = false;
-						}
-					} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(WP(w, fnd_d).select)->IsRawIndustry()) {
-						DoCommandP(0, WP(w, fnd_d).select, InteractiveRandom(), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-						w->HandleButtonClick(DPIW_FUND_WIDGET);
-					} else {
-						HandlePlacePushButton(w, DPIW_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
-					}
-				} break;
-			}
-			break;
-
-		case WE_RESIZE: {
-			/* Adjust the number of items in the matrix depending of the rezise */
-			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
-			w->widget[DPIW_MATRIX_WIDGET].data = (w->vscroll.cap << 8) + 1;
-		} break;
-
-		case WE_PLACE_OBJ: {
-			bool success = true;
-			/* We do not need to protect ourselves against "Random Many Industries" in this mode */
-			const IndustrySpec *indsp = GetIndustrySpec(WP(w, fnd_d).select);
-			uint32 seed = InteractiveRandom();
-
-			if (_game_mode == GM_EDITOR) {
-				/* Show error if no town exists at all */
-				if (GetNumTowns() == 0) {
-					SetDParam(0, indsp->name);
-					ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
-					return;
-				}
-
-				_current_player = OWNER_NONE;
-				_generating_world = true;
-				_ignore_restrictions = true;
-				success = DoCommandP(e->we.place.tile, (InteractiveRandomRange(indsp->num_table) << 16) | WP(w, fnd_d).select, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-				if (!success) {
-					SetDParam(0, indsp->name);
-					ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
-				}
-
-				_ignore_restrictions = false;
-				_generating_world = false;
-			} else {
-				success = DoCommandP(e->we.place.tile, (InteractiveRandomRange(indsp->num_table) << 16) | WP(w, fnd_d).select, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
-			}
-
-			/* If an industry has been built, just reset the cursor and the system */
-			if (success) ResetObjectToPlace();
-		} break;
-
-		case WE_TICK:
-			if (_pause_game != 0) break;
-			if (!WP(w, fnd_d).timer_enabled) break;
-			if (--WP(w, fnd_d).callback_timer == 0) {
-				/* We have just passed another day.
-				 * See if we need to update availability of currently selected industry */
-				WP(w, fnd_d).callback_timer = DAY_TICKS;  //restart counter
-
-				const IndustrySpec *indsp = GetIndustrySpec(WP(w, fnd_d).select);
-
-				if (indsp->enabled) {
-					bool call_back_result = CheckIfCallBackAllowsAvailability(WP(w, fnd_d).select, IACT_USERCREATION);
-
-					/* Only if result does match the previous state would it require a redraw. */
-					if (call_back_result != _fund_gui.enabled[WP(w, fnd_d).index]) {
-						_fund_gui.enabled[WP(w, fnd_d).index] = call_back_result;
-						w->SetDirty();
-					}
-				}
-			}
-			break;
-
-		case WE_TIMEOUT:
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseButtons();
-			break;
-	}
-}
+/** Names of the widgets of the dynamic place industries gui */
+enum DynamicPlaceIndustriesWidgets {
+	DPIW_CLOSEBOX = 0,
+	DPIW_CAPTION,
+	DPIW_MATRIX_WIDGET,
+	DPIW_SCROLLBAR,
+	DPIW_INFOPANEL,
+	DPIW_FUND_WIDGET,
+	DPIW_RESIZE_WIDGET,
+};
 
 /** Widget definition of the dynamic place industries gui */
-static const Widget _build_dynamic_industry_widgets[] = {
+static const Widget _build_industry_widgets[] = {
 {   WWT_CLOSEBOX,    RESIZE_NONE,    7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},            // DPIW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_RIGHT,    7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},  // DPIW_CAPTION
 {     WWT_MATRIX,      RESIZE_RB,    7,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},      // DPIW_MATRIX_WIDGET
@@ -385,18 +85,318 @@ static const Widget _build_dynamic_industry_widgets[] = {
 };
 
 /** Window definition of the dynamic place industries gui */
-static const WindowDesc _build_industry_dynamic_desc = {
+static const WindowDesc _build_industry_desc = {
 	WDP_AUTO, WDP_AUTO, 170, 212, 170, 212,
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
-	_build_dynamic_industry_widgets,
-	BuildDynamicIndustryWndProc,
+	_build_industry_widgets,
+	NULL,
+};
+
+class BuildIndustryWindow : public Window {
+	int selected_index;                         ///< index of the element in the matrix
+	IndustryType selected_type;                 ///< industry corresponding to the above index
+	uint16 callback_timer;                      ///< timer counter for callback eventual verification
+	bool timer_enabled;                         ///< timer can be used
+	uint16 count;                               ///< How many industries are loaded
+	IndustryType index[NUM_INDUSTRYTYPES + 1];  ///< Type of industry, in the order it was loaded
+	StringID text[NUM_INDUSTRYTYPES + 1];       ///< Text coming from CBM_IND_FUND_MORE_TEXT (if ever)
+	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
+
+public:
+	BuildIndustryWindow() : Window(&_build_industry_desc)
+	{
+		IndustryType ind;
+		const IndustrySpec *indsp;
+
+		/* Shorten the window to the equivalant of the additionnal purchase
+		 * info coming from the callback.  SO it will only be available to tis full
+		 * height when newindistries are loaded */
+		if (!_loaded_newgrf_features.has_newindustries) {
+			this->widget[DPIW_INFOPANEL].bottom -= 44;
+			this->widget[DPIW_FUND_WIDGET].bottom -= 44;
+			this->widget[DPIW_FUND_WIDGET].top -= 44;
+			this->widget[DPIW_RESIZE_WIDGET].bottom -= 44;
+			this->widget[DPIW_RESIZE_WIDGET].top -= 44;
+			this->resize.height = this->height -= 44;
+		}
+
+		this->timer_enabled = _loaded_newgrf_features.has_newindustries;
+
+		/* Initialize structures */
+		this->count = 0;
+
+		for (uint i = 0; i < lengthof(this->index); i++) {
+			this->index[i]   = 0xFF;
+			this->text[i]    = STR_NULL;
+			this->enabled[i] = false;
+		}
+
+		this->vscroll.cap = 8; // rows in grid, same in scroller
+		this->resize.step_height = 13;
+
+		if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
+			this->index[this->count] = INVALID_INDUSTRYTYPE;
+			this->count++;
+			this->timer_enabled = false;
+		}
+
+		/* Fill the _fund_gui structure with industries.
+		 * The tests performed after the enabled allow to load the industries
+		 * In the same way they are inserted by grf (if any)
+		 */
+		for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
+			indsp = GetIndustrySpec(ind);
+			if (indsp->enabled){
+				/* Rule is that editor mode loads all industries.
+				 * In game mode, all non raw industries are loaded too
+				 * and raw ones are loaded only when setting allows it */
+				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) continue;
+				this->index[this->count] = ind;
+				this->enabled[this->count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
+				this->count++;
+			}
+		}
+
+		/* first indutry type is selected.
+		 * I'll be damned if there are none available ;) */
+		this->selected_index = 0;
+		this->selected_type = this->index[0];
+		this->callback_timer = DAY_TICKS;
+	}
+
+	virtual void OnPaint()
+	{
+		const IndustrySpec *indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
+		int x_str = this->widget[DPIW_INFOPANEL].left + 3;
+		int y_str = this->widget[DPIW_INFOPANEL].top + 3;
+		const Widget *wi = &this->widget[DPIW_INFOPANEL];
+		int max_width = wi->right - wi->left - 4;
+
+		/* Raw industries might be prospected. Show this fact by changing the string
+		 * In Editor, you just build, while ingame, or you fund or you prospect */
+		if (_game_mode == GM_EDITOR) {
+			/* We've chosen many random industries but no industries have been specified */
+			if (indsp == NULL) this->enabled[this->selected_index] = _opt.diff.number_industries != 0;
+			this->widget[DPIW_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
+		} else {
+			this->widget[DPIW_FUND_WIDGET].data = (_patches.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
+		}
+		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
+
+		SetVScrollCount(this, this->count);
+
+		DrawWindowWidgets(this);
+
+		/* and now with the matrix painting */
+		for (byte i = 0; i < this->vscroll.cap && ((i + this->vscroll.pos) < this->count); i++) {
+			int offset = i * 13;
+			int x = 3;
+			int y = 16;
+			bool selected = this->selected_index == i + this->vscroll.pos;
+
+			if (this->index[i + this->vscroll.pos] == INVALID_INDUSTRYTYPE) {
+				DrawStringTruncated(20, y + offset, STR_MANY_RANDOM_INDUSTRIES, selected ? TC_WHITE : TC_ORANGE, max_width - 25);
+				continue;
+			}
+			const IndustrySpec *indsp = GetIndustrySpec(this->index[i + this->vscroll.pos]);
+
+			/* Draw the name of the industry in white is selected, otherwise, in orange */
+			DrawStringTruncated(20, y + offset, indsp->name, selected ? TC_WHITE : TC_ORANGE, max_width - 25);
+			GfxFillRect(x,     y + 1 + offset,  x + 10, y + 7 + offset, selected ? 15 : 0);
+			GfxFillRect(x + 1, y + 2 + offset,  x +  9, y + 6 + offset, indsp->map_colour);
+		}
+
+		if (this->selected_type == INVALID_INDUSTRYTYPE) {
+			DrawStringMultiLine(x_str, y_str, STR_RANDOM_INDUSTRIES_TIP, max_width, wi->bottom - wi->top - 40);
+			return;
+		}
+
+		if (_game_mode != GM_EDITOR) {
+			SetDParam(0, indsp->GetConstructionCost());
+			DrawStringTruncated(x_str, y_str, STR_482F_COST, TC_FROMSTRING, max_width);
+			y_str += 11;
+		}
+
+		/* Draw the accepted cargos, if any. Otherwhise, will print "Nothing" */
+		StringID str = STR_4827_REQUIRES;
+		byte p = 0;
+		SetDParam(0, STR_00D0_NOTHING);
+		SetDParam(1, STR_EMPTY);
+		for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
+			if (indsp->accepts_cargo[j] == CT_INVALID) continue;
+			if (p > 0) str++;
+			SetDParam(p++, GetCargo(indsp->accepts_cargo[j])->name);
+			SetDParam(p++, GetCargoSuffix(j, CST_FUND, NULL, this->selected_type, indsp));
+		}
+		DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
+		y_str += 11;
+
+		/* Draw the produced cargos, if any. Otherwhise, will print "Nothing" */
+		str = STR_4827_PRODUCES;
+		p = 0;
+		SetDParam(0, STR_00D0_NOTHING);
+		SetDParam(1, STR_EMPTY);
+		for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
+			if (indsp->produced_cargo[j] == CT_INVALID) continue;
+			if (p > 0) str++;
+			SetDParam(p++, GetCargo(indsp->produced_cargo[j])->name);
+			SetDParam(p++, GetCargoSuffix(j + 3, CST_FUND, NULL, this->selected_type, indsp));
+		}
+		DrawStringTruncated(x_str, y_str, str, TC_FROMSTRING, max_width);
+		y_str += 11;
+
+		/* Get the additional purchase info text, if it has not already been */
+		if (this->text[this->selected_index] == STR_NULL) {   // Have i been called already?
+			if (HasBit(indsp->callback_flags, CBM_IND_FUND_MORE_TEXT)) {          // No. Can it be called?
+				uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_FUND_MORE_TEXT, 0, 0, NULL, this->selected_type, INVALID_TILE);
+				if (callback_res != CALLBACK_FAILED) {  // Did it failed?
+					StringID newtxt = GetGRFStringID(indsp->grf_prop.grffile->grfid, 0xD000 + callback_res);  // No. here's the new string
+					this->text[this->selected_index] = newtxt;   // Store it for further usage
+				}
+			}
+		}
+
+		/* Draw the Additional purchase text, provided by newgrf callback, if any.
+		 * Otherwhise, will print Nothing */
+		str = this->text[this->selected_index];
+		if (str != STR_NULL && str != STR_UNDEFINED) {
+			SetDParam(0, str);
+			DrawStringMultiLine(x_str, y_str, STR_JUST_STRING, max_width, wi->bottom - wi->top - 40);
+		}
+	}
+
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget != DPIW_MATRIX_WIDGET) return;
+		this->OnClick(pt, DPIW_FUND_WIDGET);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case DPIW_MATRIX_WIDGET: {
+				const IndustrySpec *indsp;
+				int y = (pt.y - this->widget[DPIW_MATRIX_WIDGET].top) / 13 + this->vscroll.pos ;
+
+				if (y >= 0 && y < count) { // Is it within the boundaries of available data?
+					this->selected_index = y;
+					this->selected_type = this->index[y];
+					indsp = (this->selected_type == INVALID_INDUSTRYTYPE) ? NULL : GetIndustrySpec(this->selected_type);
+
+					this->SetDirty();
+
+					if ((_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
+							this->selected_type == INVALID_INDUSTRYTYPE) {
+						/* Reset the button state if going to prospecting or "build many industries" */
+						this->RaiseButtons();
+						ResetObjectToPlace();
+					}
+				}
+			} break;
+
+			case DPIW_FUND_WIDGET: {
+				if (this->selected_type == INVALID_INDUSTRYTYPE) {
+					this->HandleButtonClick(DPIW_FUND_WIDGET);
+
+					if (GetNumTowns() == 0) {
+						ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_CAN_T_GENERATE_INDUSTRIES, 0, 0);
+					} else {
+						extern void GenerateIndustries();
+						_generating_world = true;
+						GenerateIndustries();
+						_generating_world = false;
+					}
+				} else if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
+					DoCommandP(0, this->selected_type, InteractiveRandom(), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+					this->HandleButtonClick(DPIW_FUND_WIDGET);
+				} else {
+					HandlePlacePushButton(this, DPIW_FUND_WIDGET, SPR_CURSOR_INDUSTRY, VHM_RECT, NULL);
+				}
+			} break;
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		/* Adjust the number of items in the matrix depending of the rezise */
+		this->vscroll.cap  += delta.y / (int)this->resize.step_height;
+		this->widget[DPIW_MATRIX_WIDGET].data = (this->vscroll.cap << 8) + 1;
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		bool success = true;
+		/* We do not need to protect ourselves against "Random Many Industries" in this mode */
+		const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
+		uint32 seed = InteractiveRandom();
+
+		if (_game_mode == GM_EDITOR) {
+			/* Show error if no town exists at all */
+			if (GetNumTowns() == 0) {
+				SetDParam(0, indsp->name);
+				ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, pt.x, pt.y);
+				return;
+			}
+
+			_current_player = OWNER_NONE;
+			_generating_world = true;
+			_ignore_restrictions = true;
+			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+			if (!success) {
+				SetDParam(0, indsp->name);
+				ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, pt.x, pt.y);
+			}
+
+			_ignore_restrictions = false;
+			_generating_world = false;
+		} else {
+			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
+		}
+
+		/* If an industry has been built, just reset the cursor and the system */
+		if (success) ResetObjectToPlace();
+	}
+
+	virtual void OnTick()
+	{
+		if (_pause_game != 0) return;
+		if (!this->timer_enabled) return;
+		if (--this->callback_timer == 0) {
+			/* We have just passed another day.
+			 * See if we need to update availability of currently selected industry */
+			this->callback_timer = DAY_TICKS;  //restart counter
+
+			const IndustrySpec *indsp = GetIndustrySpec(this->selected_type);
+
+			if (indsp->enabled) {
+				bool call_back_result = CheckIfCallBackAllowsAvailability(this->selected_type, IACT_USERCREATION);
+
+				/* Only if result does match the previous state would it require a redraw. */
+				if (call_back_result != this->enabled[this->selected_index]) {
+					this->enabled[this->selected_index] = call_back_result;
+					this->SetDirty();
+				}
+			}
+		}
+	}
+
+	virtual void OnTimeout()
+	{
+		this->RaiseButtons();
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+	}
 };
 
 void ShowBuildIndustryWindow()
 {
 	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront<Window>(&_build_industry_dynamic_desc, 0);
+	if (BringWindowToFrontById(WC_BUILD_INDUSTRY, 0)) return;
+	new BuildIndustryWindow();
 }
 
 static void UpdateIndustryProduction(Industry *i);
