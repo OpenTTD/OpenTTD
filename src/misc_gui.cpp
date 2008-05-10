@@ -80,7 +80,7 @@ class LandInfoWindow : public Window {
 public:
 	char landinfo_data[LAND_INFO_LINES][LAND_INFO_LINE_BUFF_SIZE];
 
-	virtual void HandlePaintEvent()
+	virtual void OnPaint()
 	{
 		DrawWindowWidgets(this);
 
