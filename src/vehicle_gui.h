@@ -14,7 +14,6 @@
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
-void InitializeVehiclesGuiList();
 
 /* sorter stuff */
 void RebuildVehicleLists();

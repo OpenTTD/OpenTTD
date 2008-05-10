@@ -94,7 +94,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeIndustries();
 	InitializeBuildingCounts();
 
-	InitializeVehiclesGuiList();
 	InitializeTrains();
 	InitializeNPF();
 
