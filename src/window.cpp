@@ -849,9 +849,17 @@ bool IsWindowOfPrototype(const Window *w, const Widget *widget)
 	return (w->original_widget == widget);
 }
 
-/** Copies 'widget' to 'w->widget' to allow for resizable windows
+/**
+ * Assign widgets to a new window by initialising its widget pointers, and by
+ * copying the widget array \a widget to \c w->widget to allow for resizable
+ * windows.
  * @param w Window on which to attach the widget array
- * @param widget pointer of widget array to fill the window with */
+ * @param widget pointer of widget array to fill the window with
+ *
+ * @post \c w->widget points to allocated memory and contains the copied widget array except for the terminating widget,
+ *       \c w->original_widget points to the original widgets,
+ *       \c w->widget_count contains number of widgets in the allocated memory.
+ */
 void AssignWidgetToWindow(Window *w, const Widget *widget)
 {
 	w->original_widget = widget;
@@ -861,7 +869,7 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 
 		for (const Widget *wi = widget; wi->type != WWT_LAST; wi++) index++;
 
-		w->widget = ReallocT(w->widget, index);
+		w->widget = MallocT<Widget>(index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
 		w->widget_count = index - 1;
 	} else {
