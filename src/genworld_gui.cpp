@@ -525,7 +525,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str != NULL) {
+			if (!StrEmpty(e->we.edittext.str)) {
 				int32 value = atoi(e->we.edittext.str);
 
 				switch (WP(w, generate_d).widget_id) {
@@ -740,7 +740,7 @@ static void CreateScenarioWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str != NULL) {
+			if (!StrEmpty(e->we.edittext.str)) {
 				int32 value = atoi(e->we.edittext.str);
 
 				switch (WP(w, generate_d).widget_id) {

@@ -1040,7 +1040,8 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 				Window *parent = w->parent;
 
 				qs->handled = true;
-				e.event = WE_ON_EDIT_TEXT_CANCEL;
+				e.event = WE_ON_EDIT_TEXT;
+				e.we.edittext.str = NULL;
 				parent->HandleWindowEvent(&e);
 			}
 			ClrBit(_no_scroll, SCROLL_EDIT);

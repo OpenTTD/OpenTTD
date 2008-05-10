@@ -249,6 +249,8 @@ static void TimetableWndProc(Window *w, WindowEvent *we)
 		} break;
 
 		case WE_ON_EDIT_TEXT: {
+			if (we->we.edittext.str == NULL) break;
+
 			const Vehicle *v = GetVehicle(w->window_number);
 
 			uint32 p1 = PackTimetableArgs(v, WP(w, timetable_d).sel);

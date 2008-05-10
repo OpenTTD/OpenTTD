@@ -25,6 +25,7 @@
 #include "player_func.h"
 #include "settings_type.h"
 #include "tilehighlight_func.h"
+#include "string_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -592,7 +593,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str[0] != '\0') {
+			if (!StrEmpty(e->we.edittext.str)) {
 				Industry* i = GetIndustry(w->window_number);
 				int line = WP(w, indview_d).editbox_line;
 

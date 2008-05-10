@@ -23,6 +23,7 @@
 #include "core/alloc_func.hpp"
 #include "settings_type.h"
 #include "tilehighlight_func.h"
+#include "string_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -360,7 +361,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 			} break;
 
 		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str[0] != '\0') {
+			if (!StrEmpty(e->we.edittext.str)) {
 				_cmd_text = e->we.edittext.str;
 				DoCommandP(0, w->window_number, 0, NULL,
 					CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));

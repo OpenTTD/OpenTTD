@@ -579,8 +579,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			NetworkAddServer(e->we.edittext.str);
-			NetworkRebuildHostList();
+			if (!StrEmpty(e->we.edittext.str)) {
+				NetworkAddServer(e->we.edittext.str);
+				NetworkRebuildHostList();
+			}
 			break;
 
 		case WE_RESIZE: {
@@ -917,7 +919,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 			if (nd->widget_id == NSSW_SETPWD) {
 				ttd_strlcpy(_network_server_password, e->we.edittext.str, lengthof(_network_server_password));
-				_network_game_info.use_password = (_network_server_password[0] != '\0');
+				_network_game_info.use_password = !StrEmpty(_network_server_password);
 			} else {
 				int32 value = atoi(e->we.edittext.str);
 				w->InvalidateWidget(nd->widget_id);
@@ -1673,15 +1675,14 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-			/* If the server asks for a password, we need to fill it in */
-			case WE_ON_EDIT_TEXT_CANCEL:
+		case WE_ON_EDIT_TEXT:
+			if (StrEmpty(e->we.edittext.str)) {
 				NetworkDisconnect();
 				ShowNetworkGameWindow();
-				break;
-
-			case WE_ON_EDIT_TEXT:
+			} else {
 				SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, e->we.edittext.str);
-				break;
+			}
+			break;
 	}
 }
 

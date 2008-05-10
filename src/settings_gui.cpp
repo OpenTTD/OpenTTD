@@ -1059,7 +1059,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str != NULL) {
+			if (!StrEmpty(e->we.edittext.str)) {
 				const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w, def_d).data_3];
 				const SettingDesc *sd = pe->setting;
 				int32 value = atoi(e->we.edittext.str);
@@ -1271,6 +1271,8 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_ON_EDIT_TEXT: {
+			if (e->we.edittext.str == NULL) break;
+
 			const char *b = e->we.edittext.str;
 
 			switch (WP(w, def_d).data_2) {
@@ -1279,7 +1281,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case CUSTCURR_SEPARATOR: /* Thousands seperator */
-					_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
+					_custom_currency.separator = StrEmpty(b) ? ' ' : b[0];
 					ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
 					break;
 

@@ -27,6 +27,7 @@
 #include "settings_type.h"
 #include "gfx_func.h"
 #include "widgets/dropdown_func.h"
+#include "string_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1136,7 +1137,7 @@ static void NewVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT: {
-			if (e->we.edittext.str[0] != '\0') {
+			if (!StrEmpty(e->we.edittext.str)) {
 				StringID str = STR_NULL;
 				_cmd_text = e->we.edittext.str;
 				switch (bv->vehicle_type) {

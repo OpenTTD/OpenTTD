@@ -979,6 +979,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
+			if (e->we.edittext.str == NULL) break;
 			/* Set a new player face number */
 			if (!StrEmpty(e->we.edittext.str)) {
 				*pf = strtoul(e->we.edittext.str, NULL, 10);
@@ -1331,7 +1332,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			if (StrEmpty(e->we.edittext.str)) return;
+			if (StrEmpty(e->we.edittext.str)) break;
 
 			_cmd_text = e->we.edittext.str;
 			switch (WP(w, def_d).byte_1) {

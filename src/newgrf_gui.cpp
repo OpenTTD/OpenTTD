@@ -516,8 +516,9 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 
 				/* parse_intlist returns -1 on error */
 				if (c->num_params == (byte)-1) c->num_params = 0;
+
+				w->SetDirty();
 			}
-			w->SetDirty();
 			break;
 
 		case WE_DESTROY:
