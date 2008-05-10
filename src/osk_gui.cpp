@@ -166,12 +166,13 @@ static void OskWndProc(Window *w, WindowEvent *e)
 				case OSK_WIDGET_CANCEL:
 					if (WP(w, osk_d).cancel_btn != 0) { // pass a cancel event to the parent window
 						w->parent->OnClick(e->we.click.pt, WP(w, osk_d).cancel_btn);
+						/* Window gets deleted when the parent window removes itself. */
 					} else { // or reset to original string
 						strcpy(qs->text.buf, WP(w, osk_d).orig);
 						UpdateTextBufferSize(&qs->text);
 						MoveTextBufferPos(&qs->text, WKC_END);
+						delete w;
 					}
-					delete w;
 					break;
 			}
 			/* make sure that the parent window's textbox also gets updated */
