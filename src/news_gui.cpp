@@ -62,6 +62,7 @@ static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo que
 
 struct news_d : vp_d {
 	uint16 follow_vehicle;
+	uint16 chat_height;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 	int32 dest_scrollpos_x;
@@ -131,7 +132,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_CREATE: { // If chatbar is open at creation time, we need to go above it
 			const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
-			w->message.msg = (w1 != NULL) ? w1->height : 0;
+			WP(w, news_d).chat_height = (w1 != NULL) ? w1->height : 0;
 			break;
 		}
 
@@ -231,15 +232,12 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MESSAGE: // The chatbar has notified us that is was either created or closed
-			switch (e->we.message.msg) {
-				case WE_CREATE: w->message.msg = e->we.message.wparam; break;
-				case WE_DESTROY: w->message.msg = 0; break;
-			}
+		case WE_INVALIDATE_DATA: // The chatbar has notified us that is was either created or closed
+			WP(w, news_d).chat_height = e->we.invalidate.data;
 			break;
 
 		case WE_TICK: { // Scroll up newsmessages from the bottom in steps of 4 pixels
-			int y = max(w->top - 4, _screen.height - w->height - 12 - w->message.msg);
+			int y = max(w->top - 4, _screen.height - w->height - 12 - WP(w, news_d).chat_height);
 			if (y == w->top) return;
 
 			if (w->viewport != NULL) {

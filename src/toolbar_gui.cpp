@@ -796,7 +796,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MESSAGE:
+		case WE_INVALIDATE_DATA:
 			if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
 			break;
 	}
@@ -1032,7 +1032,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MESSAGE:
+		case WE_INVALIDATE_DATA:
 			HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 9, 10);
 			break;
 	}

@@ -190,7 +190,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 	}
 	w->SetDirty();
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
-	SendWindowMessageClass(w->window_class, how, w->window_number, 0);
+	InvalidateThisWindowData(w);
 	return true;
 }
 
@@ -390,9 +390,9 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
 			break;
 
-		case WE_MESSAGE:
+		case WE_INVALIDATE_DATA:
 			/* Forward the message to the appropiate toolbar (ingame or scenario editor) */
-			SendWindowMessage(WC_MAIN_TOOLBAR, 0, e->we.message.msg, e->we.message.wparam, e->we.message.lparam);
+			InvalidateWindowData(WC_MAIN_TOOLBAR, 0, e->we.invalidate.data);
 			break;
 	}
 }

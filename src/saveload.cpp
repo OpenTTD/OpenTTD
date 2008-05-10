@@ -1493,7 +1493,7 @@ static void SaveFileStart()
 	_fast_forward = 0;
 	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 
-	SendWindowMessage(WC_STATUS_BAR, 0, true, 0, 0);
+	InvalidateWindowData(WC_STATUS_BAR, 0, true);
 	_ts.saveinprogress = true;
 }
 
@@ -1504,7 +1504,7 @@ static void SaveFileDone()
 	_fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 
-	SendWindowMessage(WC_STATUS_BAR, 0, false, 0, 0);
+	InvalidateWindowData(WC_STATUS_BAR, 0, false);
 	_ts.saveinprogress = false;
 }
 

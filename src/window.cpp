@@ -1591,53 +1591,6 @@ static bool MaybeBringWindowToFront(const Window *w)
 	return true;
 }
 
-/** Send a message from one window to another. The receiving window is found by
- * @param w Window pointer pointing to the other window
- * @param msg Specifies the message to be sent
- * @param wparam Specifies additional message-specific information
- * @param lparam Specifies additional message-specific information
- */
-static void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
-{
-	WindowEvent e;
-
-	e.event             = WE_MESSAGE;
-	e.we.message.msg    = msg;
-	e.we.message.wparam = wparam;
-	e.we.message.lparam = lparam;
-
-	w->HandleWindowEvent(&e);
-}
-
-/** Send a message from one window to another. The receiving window is found by
- * @param wnd_class see WindowClass class AND
- * @param wnd_num see WindowNumber number, mostly 0
- * @param msg Specifies the message to be sent
- * @param wparam Specifies additional message-specific information
- * @param lparam Specifies additional message-specific information
- */
-void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, int msg, int wparam, int lparam)
-{
-	Window *w = FindWindowById(wnd_class, wnd_num);
-	if (w != NULL) SendWindowMessageW(w, msg, wparam, lparam);
-}
-
-/** Send a message from one window to another. The message will be sent
- * to ALL windows of the windowclass specified in the first parameter
- * @param wnd_class see WindowClass class
- * @param msg Specifies the message to be sent
- * @param wparam Specifies additional message-specific information
- * @param lparam Specifies additional message-specific information
- */
-void SendWindowMessageClass(WindowClass wnd_class, int msg, int wparam, int lparam)
-{
-	Window* const *wz;
-
-	FOR_ALL_WINDOWS(wz) {
-		if ((*wz)->window_class == wnd_class) SendWindowMessageW(*wz, msg, wparam, lparam);
-	}
-}
-
 /** Handle keyboard input.
  * @param key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
  */
@@ -2032,9 +1985,14 @@ void InvalidateWindowClasses(WindowClass cls)
  * Mark window data as invalid (in need of re-computing)
  * @param w Window with invalid data
  */
-void InvalidateThisWindowData(Window *w)
+void InvalidateThisWindowData(Window *w, int data)
 {
-	CallWindowEventNP(w, WE_INVALIDATE_DATA);
+	WindowEvent e;
+
+	e.event = WE_INVALIDATE_DATA;
+	e.we.invalidate.data = data;
+
+	w->HandleWindowEvent(&e);
 	w->SetDirty();
 }
 
@@ -2043,13 +2001,13 @@ void InvalidateThisWindowData(Window *w)
  * @param cls Window class
  * @param number Window number within the class
  */
-void InvalidateWindowData(WindowClass cls, WindowNumber number)
+void InvalidateWindowData(WindowClass cls, WindowNumber number, int data)
 {
 	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
-		if (w->window_class == cls && w->window_number == number) InvalidateThisWindowData(w);
+		if (w->window_class == cls && w->window_number == number) InvalidateThisWindowData(w, data);
 	}
 }
 
@@ -2057,12 +2015,12 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number)
  * Mark window data of all windows of a given class as invalid (in need of re-computing)
  * @param cls Window class
  */
-void InvalidateWindowClassesData(WindowClass cls)
+void InvalidateWindowClassesData(WindowClass cls, int data)
 {
 	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
-		if ((*wz)->window_class == cls) InvalidateThisWindowData(*wz);
+		if ((*wz)->window_class == cls) InvalidateThisWindowData(*wz, data);
 	}
 }
 

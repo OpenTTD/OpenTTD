@@ -106,7 +106,7 @@ enum {
  * @param unselect unselect the currently selected item */
 void UpdateNetworkGameWindow(bool unselect)
 {
-	SendWindowMessage(WC_NETWORK_WINDOW, 0, unselect, 0, 0);
+	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect);
 }
 
 static bool _internal_sort_order; // Used for Qsort order-flipping
@@ -549,8 +549,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			if (nd->field == NGWW_PLAYER) HandleEditBox(w, &WP(w, network_ql_d).q, NGWW_PLAYER);
 			break;
 
-		case WE_MESSAGE:
-			if (e->we.message.msg != 0) nd->server = NULL;
+		case WE_INVALIDATE_DATA:
+			if (e->we.invalidate.data != 0) nd->server = NULL;
 			ld->flags |= VL_REBUILD;
 			SetWindowDirty(w);
 			break;
@@ -1183,7 +1183,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_MESSAGE:
+		case WE_INVALIDATE_DATA:
 			SetWindowDirty(w);
 			break;
 	}
@@ -1860,7 +1860,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			SendWindowMessage(WC_NEWS_WINDOW, 0, WE_CREATE, w->height, 0);
+			InvalidateWindowData(WC_NEWS_WINDOW, 0, w->height);
 			SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 			break;
 
@@ -1910,7 +1910,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
+			InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
 			ClrBit(_no_scroll, SCROLL_CHAT);
 			break;
 	}

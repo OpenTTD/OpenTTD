@@ -131,7 +131,6 @@ enum WindowEventCodes {
 	WE_PLACE_PRESIZE,
 	WE_DROPDOWN_SELECT,
 	WE_RESIZE,          ///< Request to resize the window, @see WindowEvent.we.resize
-	WE_MESSAGE,         ///< Receipt of a message from another window. @see WindowEvent.we.message, SendWindowMessage(), SendWindowMessageClass()
 	WE_SCROLL,
 	WE_INVALIDATE_DATA, ///< Notification that data displayed by the window is obsolete
 	WE_CTRL_CHANGED,    ///< CTRL key has changed state
@@ -192,10 +191,8 @@ struct WindowEvent {
 		} keypress;
 
 		struct {
-			int msg;      ///< message to be sent
-			int wparam;   ///< additional message-specific information
-			int lparam;   ///< additional message-specific information
-		} message;
+			int data;
+		} invalidate;
 
 		struct {
 			Point delta;   ///< delta position against position of last call
@@ -274,16 +271,6 @@ struct ResizeInfo {
 };
 
 /**
- * Message data structure for messages sent between winodows
- * @see SendWindowMessageW()
- */
-struct WindowMessage {
-	int msg;
-	int wparam;
-	int lparam;
-};
-
-/**
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
@@ -322,7 +309,6 @@ public:
 	uint widget_count;     ///< Number of widgets of the window
 	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
 
-	WindowMessage message; ///< Buffer for storing received messages (for communication between different window events)
 	Window *parent;        ///< Parent window
 	byte custom[WINDOW_CUSTOM_SIZE]; ///< Additional data depending on window type
 

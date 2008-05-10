@@ -86,7 +86,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Draw status bar */
-			if (w->message.msg) { // true when saving is active
+			if (WP(w, def_d).data_3) { // true when saving is active
 				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING);
 			} else if (_do_autosave) {
 				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
@@ -113,9 +113,8 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, w->widget[1].right - 11, 2);
 		} break;
 
-		case WE_MESSAGE:
-			w->message.msg = e->we.message.msg;
-			w->SetDirty();
+		case WE_INVALIDATE_DATA:
+			WP(w, def_d).data_3 = e->we.invalidate.data;
 			break;
 
 		case WE_CLICK:
