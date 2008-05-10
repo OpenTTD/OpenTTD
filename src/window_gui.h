@@ -652,7 +652,6 @@ Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
 
 bool IsWindowOfPrototype(const Window *w, const Widget *widget);
-void AssignWidgetToWindow(Window *w, const Widget *widget);
 
 /**
  * Open a new window.

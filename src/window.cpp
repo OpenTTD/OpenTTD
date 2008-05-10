@@ -860,7 +860,7 @@ bool IsWindowOfPrototype(const Window *w, const Widget *widget)
  *       \c w->original_widget points to the original widgets,
  *       \c w->widget_count contains number of widgets in the allocated memory.
  */
-void AssignWidgetToWindow(Window *w, const Widget *widget)
+static void AssignWidgetToWindow(Window *w, const Widget *widget)
 {
 	w->original_widget = widget;
 
