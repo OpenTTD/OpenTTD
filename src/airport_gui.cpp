@@ -95,7 +95,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 
 		case WE_PLACE_MOUSEUP:
 			if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_DEMOLISH_AREA) {
-				DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+				GUIPlaceProcDragXY(e);
 			}
 			break;
 

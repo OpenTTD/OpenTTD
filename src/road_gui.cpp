@@ -574,7 +574,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 						break;
 
 					case DDSP_DEMOLISH_AREA:
-						DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+						GUIPlaceProcDragXY(e);
 						break;
 
 					case DDSP_PLACE_ROAD_X_DIR:
