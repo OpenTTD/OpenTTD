@@ -2057,14 +2057,7 @@ void PlaceObject()
 	_tile_fract_coords.y = pt.y & 0xF;
 
 	w = GetCallbackWnd();
-	if (w != NULL) {
-		WindowEvent e;
-
-		e.event = WE_PLACE_OBJ;
-		e.we.place.pt = pt;
-		e.we.place.tile = TileVirtXY(pt.x, pt.y);
-		w->HandleWindowEvent(&e);
-	}
+	if (w != NULL) w->OnPlaceObject(pt, TileVirtXY(pt.x, pt.y));
 }
 
 
@@ -2695,16 +2688,10 @@ calc_heightdiff_single_direction:;
 /** while dragging */
 bool VpHandlePlaceSizingDrag()
 {
-	Window *w;
-	WindowEvent e;
-
 	if (_special_mouse_mode != WSM_SIZING) return true;
 
-	e.we.place.select_method = _thd.select_method;
-	e.we.place.select_proc   = _thd.select_proc;
-
 	/* stop drag mode if the window has been closed */
-	w = FindWindowById(_thd.window_class, _thd.window_number);
+	Window *w = FindWindowById(_thd.window_class, _thd.window_number);
 	if (w == NULL) {
 		ResetObjectToPlace();
 		return false;
@@ -2712,9 +2699,7 @@ bool VpHandlePlaceSizingDrag()
 
 	/* while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() ) */
 	if (_left_button_down) {
-		e.event = WE_PLACE_DRAG;
-		e.we.place.pt = GetTileBelowCursor();
-		w->HandleWindowEvent(&e);
+		w->OnPlaceDrag(_thd.select_method, _thd.select_proc, GetTileBelowCursor());
 		return false;
 	}
 
@@ -2723,7 +2708,7 @@ bool VpHandlePlaceSizingDrag()
 	_special_mouse_mode = WSM_NONE;
 	if (_thd.next_drawstyle == HT_RECT) {
 		_thd.place_mode = VHM_RECT;
-	} else if (e.we.place.select_method == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
+	} else if (_thd.select_method == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
 		_thd.place_mode = VHM_RECT;
 	} else if (_thd.next_drawstyle & HT_LINE) {
 		_thd.place_mode = VHM_RAIL;
@@ -2734,12 +2719,7 @@ bool VpHandlePlaceSizingDrag()
 	}
 	SetTileSelectSize(1, 1);
 
-	/* and call the mouseup event. */
-	e.event = WE_PLACE_MOUSEUP;
-	e.we.place.pt = _thd.selend;
-	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
-	e.we.place.starttile = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
-	w->HandleWindowEvent(&e);
+	w->OnPlaceMouseUp(_thd.select_method, _thd.select_proc, _thd.selend, TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y));
 
 	return false;
 }
@@ -2758,7 +2738,7 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 	/* undo clicking on button and drag & drop */
 	if (_thd.place_mode != VHM_NONE || _special_mouse_mode == WSM_DRAGDROP) {
 		w = FindWindowById(_thd.window_class, _thd.window_number);
-		if (w != NULL) CallWindowEventNP(w, WE_ABORT_PLACE_OBJ);
+		if (w != NULL) w->OnPlaceObjectAbort();
 	}
 
 	SetTileSelectSize(1, 1);

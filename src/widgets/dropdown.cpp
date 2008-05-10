@@ -177,11 +177,7 @@ static void DropDownMenuWndProc(Window *w, WindowEvent *e)
 			}
 
 			if (WP(w, dropdown_d).click_delay != 0 && --WP(w,dropdown_d).click_delay == 0) {
-				WindowEvent e;
-				e.event = WE_DROPDOWN_SELECT;
-				e.we.dropdown.button = WP(w, dropdown_d).parent_button;
-				e.we.dropdown.index  = WP(w, dropdown_d).selected_index;
-				w2->HandleWindowEvent(&e);
+				w2->OnDropdownSelect(WP(w, dropdown_d).parent_button, WP(w, dropdown_d).selected_index);
 				delete w;
 				return;
 			}

@@ -157,11 +157,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 					if (qs->orig == NULL || strcmp(qs->text.buf, qs->orig) != 0) {
 						/* pass information by simulating a button press on parent window */
 						if (WP(w, osk_d).ok_btn != 0) {
-							Window *parent = w->parent;
-							WindowEvent e;
-							e.event = WE_CLICK;
-							e.we.click.widget = WP(w, osk_d).ok_btn;
-							parent->HandleWindowEvent(&e);
+							w->parent->OnClick(e->we.click.pt, WP(w, osk_d).ok_btn);
 						}
 					}
 					delete w;
@@ -169,11 +165,7 @@ static void OskWndProc(Window *w, WindowEvent *e)
 
 				case OSK_WIDGET_CANCEL:
 					if (WP(w, osk_d).cancel_btn != 0) { // pass a cancel event to the parent window
-						Window *parent = w->parent;
-						WindowEvent e;
-						e.event = WE_CLICK;
-						e.we.click.widget = WP(w, osk_d).cancel_btn;
-						parent->HandleWindowEvent(&e);
+						w->parent->OnClick(e->we.click.pt, WP(w, osk_d).cancel_btn);
 					} else { // or reset to original string
 						strcpy(qs->text.buf, WP(w, osk_d).orig);
 						UpdateTextBufferSize(&qs->text);

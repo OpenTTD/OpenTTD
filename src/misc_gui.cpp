@@ -80,10 +80,8 @@ class LandInfoWindow : public Window {
 public:
 	char landinfo_data[LAND_INFO_LINES][LAND_INFO_LINE_BUFF_SIZE];
 
-	virtual void HandleWindowEvent(WindowEvent *e)
+	virtual void HandlePaintEvent()
 	{
-		if (e->event != WE_PAINT) return;
-
 		DrawWindowWidgets(this);
 
 		DoDrawStringCentered(140, 16, this->landinfo_data[0], TC_LIGHT_BLUE);
@@ -1008,10 +1006,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 						/* If the parent is NULL, the editbox is handled by general function
 						 * HandleOnEditText */
 						if (parent != NULL) {
-							WindowEvent e;
-							e.event = WE_ON_EDIT_TEXT;
-							e.we.edittext.str = qs->text.buf;
-							parent->HandleWindowEvent(&e);
+							parent->OnQueryTextFinished(qs->text.buf);
 						} else {
 							HandleOnEditText(qs->text.buf);
 						}
@@ -1036,17 +1031,12 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 
 		case WE_DESTROY: // Call cancellation of query, if we have not handled it before
 			if (!qs->handled && w->parent != NULL) {
-				WindowEvent e;
-				Window *parent = w->parent;
-
 				qs->handled = true;
-				e.event = WE_ON_EDIT_TEXT;
-				e.we.edittext.str = NULL;
-				parent->HandleWindowEvent(&e);
+				w->parent->OnQueryTextFinished(NULL);
 			}
 			ClrBit(_no_scroll, SCROLL_EDIT);
 			break;
-		}
+	}
 }
 
 static const Widget _query_string_widgets[] = {

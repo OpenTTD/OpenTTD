@@ -49,13 +49,219 @@ byte _special_mouse_mode;
 
 
 /**
- * Call the window event handler for handling event \a e
+ * Call the window event handler for handling event \a e.
+ * This is a temporary helper functions that will be removed
+ * once all windows that still rely on WindowEvent and
+ * WindowEventCodes have been rewritten to use the 'OnXXX'
+ * event handlers.
  * @param e Window event to handle
  */
 void Window::HandleWindowEvent(WindowEvent *e)
 {
 	if (wndproc != NULL) wndproc(this, e);
 }
+
+void Window::OnPaint()
+{
+	WindowEvent e;
+	e.event = WE_PAINT;
+	this->HandleWindowEvent(&e);
+}
+
+bool Window::OnKeyPress(uint16 key, uint16 keycode)
+{
+	WindowEvent e;
+	e.event = WE_KEYPRESS;
+	e.we.keypress.key     = key;
+	e.we.keypress.keycode = keycode;
+	e.we.keypress.cont    = true;
+	this->HandleWindowEvent(&e);
+
+	return e.we.keypress.cont;
+}
+
+bool Window::OnCTRLStateChange()
+{
+	WindowEvent e;
+	e.event = WE_CTRL_CHANGED;
+	e.we.ctrl.cont = true;
+	this->HandleWindowEvent(&e);
+
+	return e.we.ctrl.cont;
+}
+
+void Window::OnClick(Point pt, int widget)
+{
+	WindowEvent e;
+	e.event = WE_CLICK;
+	e.we.click.pt     = pt;
+	e.we.click.widget = widget;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnDoubleClick(Point pt, int widget)
+{
+	WindowEvent e;
+	e.event = WE_DOUBLE_CLICK;
+	e.we.click.pt     = pt;
+	e.we.click.widget = widget;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnRightClick(Point pt, int widget)
+{
+	WindowEvent e;
+	e.event = WE_RCLICK;
+	e.we.click.pt     = pt;
+	e.we.click.widget = widget;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnDragDrop(Point pt, int widget)
+{
+	WindowEvent e;
+	e.event = WE_DRAGDROP;
+	e.we.click.pt     = pt;
+	e.we.click.widget = widget;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnScroll(Point delta)
+{
+	WindowEvent e;
+	e.event = WE_SCROLL;
+	e.we.scroll.delta = delta;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnMouseOver(Point pt, int widget)
+{
+	WindowEvent e;
+	e.event = WE_MOUSEOVER;
+	e.we.click.pt     = pt;
+	e.we.click.widget = widget;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnMouseWheel(int wheel)
+{
+	WindowEvent e;
+	e.event = WE_MOUSEWHEEL;
+	e.we.wheel.wheel = wheel;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnMouseLoop()
+{
+	WindowEvent e;
+	e.event = WE_MOUSELOOP;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnTick()
+{
+	WindowEvent e;
+	e.event = WE_TICK;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnHundredthTick()
+{
+	WindowEvent e;
+	e.event = WE_100_TICKS;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnTimeout()
+{
+	WindowEvent e;
+	e.event = WE_TIMEOUT;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnResize(Point new_size, Point delta)
+{
+	WindowEvent e;
+	e.event = WE_RESIZE;
+	e.we.sizing.size = new_size;
+	e.we.sizing.diff = delta;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnDropdownSelect(int widget, int index)
+{
+	WindowEvent e;
+	e.event = WE_DROPDOWN_SELECT;
+	e.we.dropdown.button = widget;
+	e.we.dropdown.index  = index;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnQueryTextFinished(char *str)
+{
+	WindowEvent e;
+	e.event = WE_ON_EDIT_TEXT;
+	e.we.edittext.str = str;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnInvalidateData(int data)
+{
+	WindowEvent e;
+	e.event = WE_INVALIDATE_DATA;
+	e.we.invalidate.data = data;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnPlaceObject(Point pt, TileIndex tile)
+{
+	WindowEvent e;
+	e.event = WE_PLACE_OBJ;
+	e.we.place.pt   = pt;
+	e.we.place.tile = tile;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnPlaceObjectAbort()
+{
+	WindowEvent e;
+	e.event = WE_ABORT_PLACE_OBJ;
+	this->HandleWindowEvent(&e);
+}
+
+
+void Window::OnPlaceDrag(ViewportPlaceMethod select_method, byte select_proc, Point pt)
+{
+	WindowEvent e;
+	e.event = WE_PLACE_DRAG;
+	e.we.place.select_method = select_method;
+	e.we.place.select_proc   = select_proc;
+	e.we.place.pt            = pt;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnPlaceMouseUp(ViewportPlaceMethod select_method, byte select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+{
+	WindowEvent e;
+	e.event = WE_PLACE_MOUSEUP;
+	e.we.place.select_method = select_method;
+	e.we.place.select_proc   = select_proc;
+	e.we.place.pt            = pt;
+	e.we.place.tile          = end_tile;
+	e.we.place.starttile     = start_tile;
+	this->HandleWindowEvent(&e);
+}
+
+void Window::OnPlacePresize(Point pt, TileIndex tile)
+{
+	WindowEvent e;
+	e.event = WE_PLACE_PRESIZE;
+	e.we.place.pt   = pt;
+	e.we.place.tile = tile;
+	this->HandleWindowEvent(&e);
+}
+
+
 
 void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 {
@@ -138,19 +344,15 @@ static void StartWindowSizing(Window *w);
  */
 static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 {
-	WindowEvent e;
-	e.we.click.pt.x = x;
-	e.we.click.pt.y = y;
-	e.event = double_click ? WE_DOUBLE_CLICK : WE_CLICK;
-
+	int widget = 0;
 	if (w->desc_flags & WDF_DEF_WIDGET) {
-		e.we.click.widget = GetWidgetFromPos(w, x, y);
-		if (e.we.click.widget < 0) return; // exit if clicked outside of widgets
+		widget = GetWidgetFromPos(w, x, y);
+		if (widget < 0) return; // exit if clicked outside of widgets
 
 		/* don't allow any interaction if the button has been disabled */
-		if (w->IsWidgetDisabled(e.we.click.widget)) return;
+		if (w->IsWidgetDisabled(widget)) return;
 
-		const Widget *wi = &w->widget[e.we.click.widget];
+		const Widget *wi = &w->widget[widget];
 
 		if (wi->type & WWB_MASK) {
 			/* special widget handling for buttons*/
@@ -158,20 +360,20 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 				case WWT_PANEL   | WWB_PUSHBUTTON: /* WWT_PUSHBTN */
 				case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
 				case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
-					w->HandleButtonClick(e.we.click.widget);
+					w->HandleButtonClick(widget);
 					break;
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
-			ScrollbarClickHandler(w, wi, e.we.click.pt.x, e.we.click.pt.y);
+			ScrollbarClickHandler(w, wi, x, y);
 		}
 
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (e.we.click.widget == 0) { /* 'X' */
+			if (widget == 0) { /* 'X' */
 				delete w;
 				return;
 			}
 
-			if (e.we.click.widget == 1) { /* 'Title bar' */
+			if (widget == 1) { /* 'Title bar' */
 				StartWindowDrag(w);
 				return;
 			}
@@ -179,18 +381,24 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 
 		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
 			StartWindowSizing(w);
-			w->InvalidateWidget(e.we.click.widget);
+			w->InvalidateWidget(widget);
 			return;
 		}
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
 			w->flags4 ^= WF_STICKY;
-			w->InvalidateWidget(e.we.click.widget);
+			w->InvalidateWidget(widget);
 			return;
 		}
 	}
 
-	w->HandleWindowEvent(&e);
+	Point pt = { x, y };
+
+	if (double_click) {
+		w->OnDoubleClick(pt, widget);
+	} else {
+		w->OnClick(pt, widget);
+	}
 }
 
 /**
@@ -201,23 +409,21 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
  */
 static void DispatchRightClickEvent(Window *w, int x, int y)
 {
-	WindowEvent e;
+	int widget = 0;
 
 	/* default tooltips handler? */
 	if (w->desc_flags & WDF_STD_TOOLTIPS) {
-		e.we.click.widget = GetWidgetFromPos(w, x, y);
-		if (e.we.click.widget < 0) return; // exit if clicked outside of widgets
+		widget = GetWidgetFromPos(w, x, y);
+		if (widget < 0) return; // exit if clicked outside of widgets
 
-		if (w->widget[e.we.click.widget].tooltips != 0) {
-			GuiShowTooltips(w->widget[e.we.click.widget].tooltips);
+		if (w->widget[widget].tooltips != 0) {
+			GuiShowTooltips(w->widget[widget].tooltips);
 			return;
 		}
 	}
 
-	e.event = WE_RCLICK;
-	e.we.click.pt.x = x;
-	e.we.click.pt.y = y;
-	w->HandleWindowEvent(&e);
+	Point pt = { x, y };
+	w->OnRightClick(pt, widget);
 }
 
 /**
@@ -315,7 +521,7 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 	dp->pitch = _screen.pitch;
 	dp->dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
 	dp->zoom = ZOOM_LVL_NORMAL;
-	CallWindowEventNP(*wz, WE_PAINT);
+	(*wz)->OnPaint();
 }
 
 /**
@@ -342,20 +548,6 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 			DrawOverlappedWindow(wz, left, top, right, bottom);
 		}
 	}
-}
-
-/**
- * Dispatch an event to a possibly non-existing window.
- * If the window pointer w is \c NULL, the event is not dispatched
- * @param w Window to dispatch the event to, may be \c NULL
- * @param event Event to dispatch
- */
-void CallWindowEventNP(Window *w, int event)
-{
-	WindowEvent e;
-
-	e.event = event;
-	w->HandleWindowEvent(&e);
 }
 
 /**
@@ -437,7 +629,9 @@ Window::~Window()
 	/* Delete any children a window might have in a head-recursive manner */
 	delete FindChildWindow(this);
 
-	CallWindowEventNP(this, WE_DESTROY);
+	WindowEvent e;
+	e.event = WE_DESTROY;
+	this->HandleWindowEvent(&e);
 	if (this->viewport != NULL) DeleteWindowViewport(this);
 
 	this->SetDirty();
@@ -770,13 +964,13 @@ void Window::Initialize(int x, int y, int min_width, int min_height, int def_wid
 
 		ResizeWindow(this, enlarge_x, enlarge_y);
 
-		WindowEvent e;
-		e.event = WE_RESIZE;
-		e.we.sizing.size.x = this->width;
-		e.we.sizing.size.y = this->height;
-		e.we.sizing.diff.x = enlarge_x;
-		e.we.sizing.diff.y = enlarge_y;
-		this->HandleWindowEvent(&e);
+		Point size;
+		Point diff;
+		size.x = this->width;
+		size.y = this->height;
+		diff.x = enlarge_x;
+		diff.y = enlarge_y;
+		this->OnResize(size, diff);
 	}
 
 	int nx = this->left;
@@ -1072,14 +1266,14 @@ static void DecreaseWindowCounters()
 			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
 			w->SetDirty();
 		}
-		CallWindowEventNP(w, WE_MOUSELOOP);
+		w->OnMouseLoop();
 	}
 
 	for (wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
 
 		if (w->flags4 & WF_TIMEOUT_MASK && !(--w->flags4 & WF_TIMEOUT_MASK)) {
-			CallWindowEventNP(w, WE_TIMEOUT);
+			w->OnTimeout();
 			if (w->desc_flags & WDF_UNCLICK_BUTTONS) w->RaiseButtons();
 		}
 	}
@@ -1097,15 +1291,13 @@ static void HandlePlacePresize()
 	Window *w = GetCallbackWnd();
 	if (w == NULL) return;
 
-	WindowEvent e;
-	e.we.place.pt = GetTileBelowCursor();
-	if (e.we.place.pt.x == -1) {
+	Point pt = GetTileBelowCursor();
+	if (pt.x == -1) {
 		_thd.selend.x = -1;
 		return;
 	}
-	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
-	e.event = WE_PLACE_PRESIZE;
-	w->HandleWindowEvent(&e);
+
+	w->OnPlacePresize(pt, TileVirtXY(pt.x, pt.y));
 }
 
 static bool HandleDragDrop()
@@ -1117,12 +1309,10 @@ static bool HandleDragDrop()
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
-		WindowEvent e;
-		e.event = WE_DRAGDROP;
-		e.we.dragdrop.pt.x = _cursor.pos.x - w->left;
-		e.we.dragdrop.pt.y = _cursor.pos.y - w->top;
-		e.we.dragdrop.widget = GetWidgetFromPos(w, e.we.dragdrop.pt.x, e.we.dragdrop.pt.y);
-		w->HandleWindowEvent(&e);
+		Point pt;
+		pt.x = _cursor.pos.x - w->left;
+		pt.y = _cursor.pos.y - w->top;
+		w->OnDragDrop(pt, GetWidgetFromPos(w, pt.x, pt.y));
 	}
 
 	ResetObjectToPlace();
@@ -1137,11 +1327,8 @@ static bool HandleMouseOver()
 	/* We changed window, put a MOUSEOVER event to the last window */
 	if (_mouseover_last_w != NULL && _mouseover_last_w != w) {
 		/* Reset mouse-over coordinates of previous window */
-		WindowEvent e;
-		e.event = WE_MOUSEOVER;
-		e.we.mouseover.pt.x = -1;
-		e.we.mouseover.pt.y = -1;
-		_mouseover_last_w->HandleWindowEvent(&e);
+		Point pt = { -1, -1 };
+		_mouseover_last_w->OnMouseOver(pt, 0);
 	}
 
 	/* _mouseover_last_w will get reset when the window is deleted, see DeleteWindow() */
@@ -1149,14 +1336,12 @@ static bool HandleMouseOver()
 
 	if (w != NULL) {
 		/* send an event in client coordinates. */
-		WindowEvent e;
-		e.event = WE_MOUSEOVER;
-		e.we.mouseover.pt.x = _cursor.pos.x - w->left;
-		e.we.mouseover.pt.y = _cursor.pos.y - w->top;
+		Point pt = { _cursor.pos.x - w->left, _cursor.pos.y - w->top };
+		int widget = 0;
 		if (w->widget != NULL) {
-			e.we.mouseover.widget = GetWidgetFromPos(w, e.we.mouseover.pt.x, e.we.mouseover.pt.y);
+			widget = GetWidgetFromPos(w, pt.x, pt.y);
 		}
-		w->HandleWindowEvent(&e);
+		w->OnMouseOver(pt, widget);
 	}
 
 	/* Mouseover never stops execution */
@@ -1360,7 +1545,6 @@ static bool HandleWindowDragging()
 			w->SetDirty();
 			return false;
 		} else if (w->flags4 & WF_SIZING) {
-			WindowEvent e;
 			int x, y;
 
 			/* Stop the sizing if the left mouse button was released */
@@ -1397,12 +1581,13 @@ static bool HandleWindowDragging()
 			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
 			ResizeWindow(w, x, y);
 
-			e.event = WE_RESIZE;
-			e.we.sizing.size.x = x + w->width;
-			e.we.sizing.size.y = y + w->height;
-			e.we.sizing.diff.x = x;
-			e.we.sizing.diff.y = y;
-			w->HandleWindowEvent(&e);
+			Point size;
+			Point diff;
+			size.x = x + w->width;
+			size.y = y + w->height;
+			diff.x = x;
+			diff.y = y;
+			w->OnResize(size, diff);
 			return false;
 		}
 	}
@@ -1493,8 +1678,6 @@ static bool HandleScrollbarScrolling()
 
 static bool HandleViewportScroll()
 {
-	WindowEvent e;
-
 	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 
 	if (!_scrolling_viewport) return true;
@@ -1514,25 +1697,25 @@ static bool HandleViewportScroll()
 		return true;
 	}
 
+	Point delta;
 	if (_patches.reverse_scroll) {
-		e.we.scroll.delta.x = -_cursor.delta.x;
-		e.we.scroll.delta.y = -_cursor.delta.y;
+		delta.x = -_cursor.delta.x;
+		delta.y = -_cursor.delta.y;
 	} else {
-		e.we.scroll.delta.x = _cursor.delta.x;
-		e.we.scroll.delta.y = _cursor.delta.y;
+		delta.x = _cursor.delta.x;
+		delta.y = _cursor.delta.y;
 	}
 
 	if (scrollwheel_scrolling) {
 		/* We are using scrollwheels for scrolling */
-		e.we.scroll.delta.x = _cursor.h_wheel;
-		e.we.scroll.delta.y = _cursor.v_wheel;
+		delta.x = _cursor.h_wheel;
+		delta.y = _cursor.v_wheel;
 		_cursor.v_wheel = 0;
 		_cursor.h_wheel = 0;
 	}
 
 	/* Create a scroll-event and send it to the window */
-	e.event = WE_SCROLL;
-	w->HandleWindowEvent(&e);
+	w->OnScroll(delta);
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
@@ -1592,11 +1775,10 @@ static bool MaybeBringWindowToFront(const Window *w)
 }
 
 /** Handle keyboard input.
- * @param key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
+ * @param raw_key Lower 8 bits contain the ASCII character, the higher 16 bits the keycode
  */
-void HandleKeypress(uint32 key)
+void HandleKeypress(uint32 raw_key)
 {
-	WindowEvent e;
 	/* Stores if a window with a textfield for typing is open
 	 * If this is the case, keypress events are only passed to windows with text fields and
 	 * to thein this main toolbar. */
@@ -1614,10 +1796,8 @@ void HandleKeypress(uint32 key)
 	if (!IsGeneratingWorld()) _current_player = _local_player;
 
 	/* Setup event */
-	e.event = WE_KEYPRESS;
-	e.we.keypress.key     = GB(key,  0, 16);
-	e.we.keypress.keycode = GB(key, 16, 16);
-	e.we.keypress.cont = true;
+	uint16 key     = GB(raw_key,  0, 16);
+	uint16 keycode = GB(raw_key, 16, 16);
 
 	/*
 	 * The Unicode standard defines an area called the private use area. Code points in this
@@ -1626,12 +1806,12 @@ void HandleKeypress(uint32 key)
 	 * on a system running OS X. We don't want these keys to show up in text fields and such,
 	 * and thus we have to clear the unicode character when we encounter such a key.
 	 */
-	if (e.we.keypress.key >= 0xE000 && e.we.keypress.key <= 0xF8FF) e.we.keypress.key = 0;
+	if (key >= 0xE000 && key <= 0xF8FF) key = 0;
 
 	/*
 	 * If both key and keycode is zero, we don't bother to process the event.
 	 */
-	if (e.we.keypress.key == 0 && e.we.keypress.keycode == 0) return;
+	if (key == 0 && keycode == 0) return;
 
 	/* check if we have a query string window open before allowing hotkeys */
 	if (FindWindowById(WC_QUERY_STRING,            0) != NULL ||
@@ -1657,15 +1837,13 @@ void HandleKeypress(uint32 key)
 				w->window_class != WC_COMPANY_PASSWORD_WINDOW) {
 			continue;
 		}
-		w->HandleWindowEvent(&e);
-		if (!e.we.keypress.cont) break;
+		;
+		if (!w->OnKeyPress(key, keycode)) return;
 	}
 
-	if (e.we.keypress.cont) {
-		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		/* When there is no toolbar w is null, check for that */
-		if (w != NULL) w->HandleWindowEvent(&e);
-	}
+	Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+	/* When there is no toolbar w is null, check for that */
+	if (w != NULL) w->OnKeyPress(key, keycode);
 }
 
 /**
@@ -1673,16 +1851,10 @@ void HandleKeypress(uint32 key)
  */
 void HandleCtrlChanged()
 {
-	WindowEvent e;
-
-	e.event = WE_CTRL_CHANGED;
-	e.we.ctrl.cont = true;
-
 	/* Call the event, start with the uppermost window. */
 	for (Window* const *wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
-		w->HandleWindowEvent(&e);
-		if (!e.we.ctrl.cont) break;
+		if (!w->OnCTRLStateChange()) break;
 	}
 }
 
@@ -1775,13 +1947,8 @@ void MouseLoop(MouseClick click, int mousewheel)
 
 	if (mousewheel != 0) {
 		if (_patches.scrollwheel_scrolling == 0) {
-			/* Scrollwheel is in zoom mode. Make the zoom event. */
-			WindowEvent e;
-
 			/* Send WE_MOUSEWHEEL event to window */
-			e.event = WE_MOUSEWHEEL;
-			e.we.wheel.wheel = mousewheel;
-			w->HandleWindowEvent(&e);
+			w->OnMouseWheel(mousewheel);
 		}
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
@@ -1910,7 +2077,7 @@ void UpdateWindows()
 
 	if (t >= 100) {
 		for (wz = _last_z_window; wz != _z_windows;) {
-			CallWindowEventNP(*--wz, WE_100_TICKS);
+			(*--wz)->OnHundredthTick();
 		}
 		t = 0;
 	}
@@ -1987,12 +2154,7 @@ void InvalidateWindowClasses(WindowClass cls)
  */
 void InvalidateThisWindowData(Window *w, int data)
 {
-	WindowEvent e;
-
-	e.event = WE_INVALIDATE_DATA;
-	e.we.invalidate.data = data;
-
-	w->HandleWindowEvent(&e);
+	w->OnInvalidateData(data);
 	w->SetDirty();
 }
 
@@ -2030,7 +2192,7 @@ void InvalidateWindowClassesData(WindowClass cls, int data)
 void CallWindowTickEvent()
 {
 	for (Window * const *wz = _last_z_window; wz != _z_windows;) {
-		CallWindowEventNP(*--wz, WE_TICK);
+		(*--wz)->OnTick();
 	}
 }
 
@@ -2147,13 +2309,13 @@ void RelocateAllWindows(int neww, int newh)
 				if (neww - w->width != 0) {
 					ResizeWindow(w, min(neww, 640) - w->width, 0);
 
-					WindowEvent e;
-					e.event = WE_RESIZE;
-					e.we.sizing.size.x = w->width;
-					e.we.sizing.size.y = w->height;
-					e.we.sizing.diff.x = neww - w->width;
-					e.we.sizing.diff.y = 0;
-					w->HandleWindowEvent(&e);
+					Point size;
+					Point delta;
+					size.x = w->width;
+					size.y = w->height;
+					delta.x = neww - w->width;
+					delta.y = 0;
+					w->OnResize(size, delta);
 				}
 
 				top = w->top;

@@ -276,6 +276,7 @@ struct ResizeInfo {
 struct Window : ZeroedMemoryAllocator {
 private:
 	WindowProc *wndproc;   ///< Event handler function for the window. Do not use directly, call HandleWindowEvent() instead.
+	void HandleWindowEvent(WindowEvent *e);
 
 protected:
 	void Initialize(int x, int y, int min_width, int min_height, int def_width, int def_height,
@@ -336,7 +337,173 @@ public:
 
 	void SetDirty() const;
 
-	virtual void HandleWindowEvent(WindowEvent *e);
+	/*** Event handling ***/
+
+	/**
+	 * This window is currently being repainted.
+	 */
+	virtual void OnPaint();
+
+
+	/**
+	 * A key has been pressed.
+	 * @param key     the Unicode value of the key.
+	 * @param keycode the untranslated key code including shift state.
+	 * @return true if the key press has been handled and no other
+	 *         window should receive the event.
+	 */
+	virtual bool OnKeyPress(uint16 key, uint16 keycode);
+
+	/**
+	 * The state of the control key has changed
+	 * @return true if the change has been handled and no other
+	 *         window should receive the event.
+	 */
+	virtual bool OnCTRLStateChange();
+
+
+	/**
+	 * A click with the left mouse button has been made on the window.
+	 * @param pt     the point inside the window that has been clicked.
+	 * @param widget the clicked widget.
+	 */
+	virtual void OnClick(Point pt, int widget);
+
+	/**
+	 * A double click with the left mouse button has been made on the window.
+	 * @param pt     the point inside the window that has been clicked.
+	 * @param widget the clicked widget.
+	 */
+	virtual void OnDoubleClick(Point pt, int widget);
+
+	/**
+	 * A click with the right mouse button has been made on the window.
+	 * @param pt     the point inside the window that has been clicked.
+	 * @param widget the clicked widget.
+	 */
+	virtual void OnRightClick(Point pt, int widget);
+
+	/**
+	 * A dragged 'object' has been released.
+	 * @param pt     the point inside the window where the release took place.
+	 * @param widget the widget where the release took place.
+	 */
+	virtual void OnDragDrop(Point pt, int widget);
+
+	/**
+	 * Handle the request for (viewport) scrolling.
+	 * @param delta the amount the viewport must be scrolled.
+	 */
+	virtual void OnScroll(Point delta);
+
+	/**
+	 * The mouse is currently moving over the window or has just moved outside
+	 * of the window. In the latter case pt is (-1, -1).
+	 * @param pt     the point inside the window that the mouse hovers over.
+	 * @param widget the widget the mouse hovers over.
+	 */
+	virtual void OnMouseOver(Point pt, int widget);
+
+	/**
+	 * The mouse wheel has been turned.
+	 * @param wheel the amount of movement of the mouse wheel.
+	 */
+	virtual void OnMouseWheel(int wheel);
+
+
+	/**
+	 * Called for every mouse loop run, which is at least once per (game) tick.
+	 */
+	virtual void OnMouseLoop();
+
+	/**
+	 * Called once per (game) tick.
+	 */
+	virtual void OnTick();
+
+	/**
+	 * Called once every 100 (game) ticks.
+	 */
+	virtual void OnHundredthTick();
+
+	/**
+	 * Called when this window's timeout has been reached.
+	 */
+	virtual void OnTimeout();
+
+
+	/**
+	 * Called when the window got resized.
+	 * @param new_size the new size of the window.
+	 * @param delta    the amount of which the window size changed.
+	 */
+	virtual void OnResize(Point new_size, Point delta);
+
+	/**
+	 * A dropdown option associated to this window has been selected.
+	 * @param widget the widget (button) that the dropdown is associated with.
+	 * @param index  the element in the dropdown that is selected.
+	 */
+	virtual void OnDropdownSelect(int widget, int index);
+
+	/**
+	 * The query window opened from this window has closed.
+	 * @param str the new value of the string or NULL if the window
+	 *            was cancelled.
+	 */
+	virtual void OnQueryTextFinished(char *str);
+
+	/**
+	 * Some data on this window has become invalid.
+	 * @param data information about the changed data.
+	 */
+	virtual void OnInvalidateData(int data = 0);
+
+
+	/**
+	 * The user clicked some place on the map when a tile highlight mode
+	 * has been set.
+	 * @param pt   the exact point on the map that has been clicked.
+	 * @param tile the tile on the map that has been clicked.
+	 */
+	virtual void OnPlaceObject(Point pt, TileIndex tile);
+
+	/**
+	 * The user cancelled a tile highlight mode that has been set.
+	 */
+	virtual void OnPlaceObjectAbort();
+
+
+	/**
+	 * The user is dragging over the map when the tile highlight mode
+	 * has been set.
+	 * @param select_method the method of selection (allowed directions)
+	 * @param select_proc   what will be created when the drag is over.
+	 * @param pt            the exact point on the map where the mouse is.
+	 */
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, byte select_proc, Point pt);
+
+	/**
+	 * The user has dragged over the map when the tile highlight mode
+	 * has been set.
+	 * @param select_method the method of selection (allowed directions)
+	 * @param select_proc   what should be created.
+	 * @param pt            the exact point on the map where the mouse was released.
+	 * @param start_tile    the begin tile of the drag.
+	 * @param end_tile      the end tile of the drag.
+	 */
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, byte select_proc, Point pt, TileIndex start_tile, TileIndex end_tile);
+
+	/**
+	 * The user moves over the map when a tile highlight mode has been set
+	 * when the special mouse mode has been set to 'PRESIZE' mode. An
+	 * example of this is the tile highlight for dock building.
+	 * @param pt   the exact point on the map where the mouse is.
+	 * @param tile the tile on the map where the mouse is.
+	 */
+	virtual void OnPlacePresize(Point pt, TileIndex tile);
+
+	/*** End of the event handling ***/
 };
 
 struct menu_d {
@@ -480,9 +647,6 @@ enum WindowFlags {
 	WF_WHITE_BORDER_MASK = 1 << 12 | WF_WHITE_BORDER_ONE,
 	WF_SCROLL2           = 1 << 13,
 };
-
-/* window.cpp */
-void CallWindowEventNP(Window *w, int event);
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
