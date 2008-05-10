@@ -40,9 +40,6 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
 static RailType _railtype_selected_in_replace_gui;
 
-static bool _rebuild_left_list;
-static bool _rebuild_right_list;
-
 static const StringID _rail_types_list[] = {
 	STR_RAIL_VEHICLES,
 	STR_ELRAIL_VEHICLES,
@@ -99,19 +96,14 @@ void InitializeVehiclesGuiList()
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
 	Player *p = GetPlayer(_local_player);
-	VehicleType type = GetEngine(e)->type;
 	uint num_engines = GetGroupNumEngines(_local_player, id_g, e);
 
 	if (num_engines == 0 || p->num_engines[e] == 0) {
 		/* We don't have any of this engine type.
 		 * Either we just sold the last one, we build a new one or we stopped replacing it.
 		 * In all cases, we need to update the left list */
-		_rebuild_left_list = true;
-	} else {
-		_rebuild_left_list = false;
+		InvalidateWindowData(WC_REPLACE_VEHICLE, GetEngine(e)->type, true);
 	}
-	_rebuild_right_list = false;
-	InvalidateWindowData(WC_REPLACE_VEHICLE, type);
 }
 
 /** When an engine is made buildable or is removed from being buildable, add/remove it from the build/autoreplace lists
@@ -119,9 +111,7 @@ void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
  */
 void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 {
-	_rebuild_left_list = false; // left list is only for the vehicles the player owns and is not related to being buildable
-	_rebuild_right_list = true;
-	InvalidateWindowData(WC_REPLACE_VEHICLE, type); // Update the autoreplace window
+	InvalidateWindowData(WC_REPLACE_VEHICLE, type, false); // Update the autoreplace window
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 }
 
@@ -470,9 +460,11 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_INVALIDATE_DATA:
-			if (_rebuild_left_list) WP(w, replaceveh_d).update_left = true;
-			if (_rebuild_right_list) WP(w, replaceveh_d).update_right = true;
-			w->SetDirty();
+			if (e->we.invalidate.data == true) {
+				WP(w, replaceveh_d).update_left = true;
+			} else {
+				WP(w, replaceveh_d).update_right = true;
+			}
 			break;
 
 		case WE_DESTROY:
