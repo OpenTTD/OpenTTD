@@ -427,6 +427,7 @@ enum IndustryViewWidgets {
 	IVW_INFO,
 	IVW_GOTO,
 	IVW_SPACER,
+	IVW_RESIZE,
 };
 
 /** Information to store about the industry window */
@@ -457,14 +458,14 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					if (i->accepts_cargo[j] == CT_INVALID) continue;
 					has_accept = true;
 					if (first) {
-						DrawString(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING);
+						DrawStringTruncated(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING, w->widget[IVW_INFO].right - 2);
 						y += 10;
 						first = false;
 					}
 					SetDParam(0, i->accepts_cargo[j]);
 					SetDParam(1, i->incoming_cargo_waiting[j]);
 					SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
-					DrawString(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING);
+					DrawStringTruncated(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING, w->widget[IVW_INFO].right - 4);
 					y += 10;
 				}
 			} else {
@@ -478,7 +479,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
 				}
 				if (has_accept) {
-					DrawString(2, y, str, TC_FROMSTRING);
+					DrawStringTruncated(2, y, str, TC_FROMSTRING, w->widget[IVW_INFO].right - 2);
 					y += 10;
 				}
 			}
@@ -488,7 +489,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				if (i->produced_cargo[j] == CT_INVALID) continue;
 				if (first) {
 					if (has_accept) y += 10;
-					DrawString(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING);
+					DrawStringTruncated(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING, w->widget[IVW_INFO].right - 2);
 					y += 10;
 					WP(w, indview_d).production_offset_y = y;
 					first = false;
@@ -499,7 +500,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				SetDParam(2, GetCargoSuffix(j + 3, CST_VIEW, i, i->type, ind));
 
 				SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
-				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), y, STR_482B_TRANSPORTED, TC_FROMSTRING);
+				uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
+				DrawStringTruncated(x, y, STR_482B_TRANSPORTED, TC_FROMSTRING, w->widget[IVW_INFO].right - x);
 				/* Let's put out those buttons.. */
 				if (IsProductionAlterable(i)) {
 					DrawArrowButtons(5, y, 3, (WP(w, indview_d).clicked_line == j + 1) ? WP(w, indview_d).clicked_button : 0,
@@ -592,6 +594,16 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			w->SetDirty();
 			break;
 
+		case WE_RESIZE:
+			w->viewport->width           += e->we.sizing.diff.x;
+			w->viewport->height          += e->we.sizing.diff.y;
+			w->viewport->virtual_width   += e->we.sizing.diff.x;
+			w->viewport->virtual_height  += e->we.sizing.diff.y;
+			WP(w, vp_d).dest_scrollpos_x -= e->we.sizing.diff.x;
+			WP(w, vp_d).dest_scrollpos_y -= e->we.sizing.diff.y;
+			UpdateViewportPosition(w);
+			break;
+
 		case WE_ON_EDIT_TEXT:
 			if (!StrEmpty(e->we.edittext.str)) {
 				Industry* i = GetIndustry(w->window_number);
@@ -616,13 +628,14 @@ static void UpdateIndustryProduction(Industry *i)
 /** Widget definition of the view industy gui */
 static const Widget _industry_view_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     9,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // IVW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     9,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},  // IVW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
-{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
-{      WWT_INSET,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
-{      WWT_PANEL, RESIZE_BOTTOM,     9,     0,   259,   106,   107, 0x0,               STR_NULL},                         // IVW_INFO
+{    WWT_CAPTION,  RESIZE_RIGHT,     9,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},  // IVW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
+{      WWT_PANEL,     RESIZE_RB,     9,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
+{      WWT_INSET,     RESIZE_RB,     9,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
+{      WWT_PANEL,    RESIZE_RTB,     9,     0,   259,   106,   107, 0x0,               STR_NULL},                         // IVW_INFO
 { WWT_PUSHTXTBTN,     RESIZE_TB,     9,     0,   129,   108,   119, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
-{      WWT_PANEL,     RESIZE_TB,     9,   130,   259,   108,   119, 0x0,               STR_NULL},                         // IVW_SPACER
+{      WWT_PANEL,    RESIZE_RTB,     9,   130,   247,   108,   119, 0x0,               STR_NULL},                         // IVW_SPACER
+{  WWT_RESIZEBOX,   RESIZE_LRTB,     9,   248,   259,   108,   119, 0x0,               STR_RESIZE_BUTTON},                // IVW_RESIZE
 {   WIDGETS_END},
 };
 
@@ -630,7 +643,7 @@ static const Widget _industry_view_widgets[] = {
 static const WindowDesc _industry_view_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 120, 260, 120,
 	WC_INDUSTRY_VIEW, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_view_widgets,
 	IndustryViewWndProc
 };
