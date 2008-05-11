@@ -32,13 +32,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-struct smallmap_d {
-	int32 scroll_x;
-	int32 scroll_y;
-	int32 subscroll;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
-
 static const Widget _smallmap_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   337,     0,    13, STR_00B0_MAP,            STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -561,539 +554,536 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_RESIZEBOX,
 };
 
-enum SmallMapType {
-	SMT_CONTOUR,
-	SMT_VEHICLES,
-	SMT_INDUSTRY,
-	SMT_OWNER = 5,
-};
-
-/**
- * Draws the small map.
- *
- * Basically, the small map is draw column of pixels by column of pixels. The pixels
- * are drawn directly into the screen buffer. The final map is drawn in multiple passes.
- * The passes are:
- * <ol><li>The colors of tiles in the different modes.</li>
- * <li>Town names (optional)</li></ol>
- *
- * @param dpi pointer to pixel to write onto
- * @param w pointer to Window struct
- * @param type type of map requested (vegetation, owners, routes, etc)
- * @param show_towns true if the town names should be displayed, false if not.
- */
-static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_towns)
+class SmallMapWindow : public Window
 {
-	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
-	DrawPixelInfo *old_dpi;
-	int dx,dy, x, y, x2, y2;
-	void *ptr;
-	int tile_x;
-	int tile_y;
-	ViewPort *vp;
+	enum SmallMapType {
+		SMT_CONTOUR,
+		SMT_VEHICLES,
+		SMT_INDUSTRY,
+		SMT_OWNER = 5,
+	};
 
-	old_dpi = _cur_dpi;
-	_cur_dpi = dpi;
+	enum {
+		BASE_NB_PER_COLUMN = 6,
+	};
 
-	/* clear it */
-	GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, 0);
+	int32 scroll_x;
+	int32 scroll_y;
+	int32 subscroll;
 
-	/* setup owner table */
-	if (type == SMT_OWNER) {
-		const Player *p;
+public:
+	/**
+	 * Draws the small map.
+	 *
+	 * Basically, the small map is draw column of pixels by column of pixels. The pixels
+	 * are drawn directly into the screen buffer. The final map is drawn in multiple passes.
+	 * The passes are:
+	 * <ol><li>The colors of tiles in the different modes.</li>
+	 * <li>Town names (optional)</li></ol>
+	 *
+	 * @param dpi pointer to pixel to write onto
+	 * @param w pointer to Window struct
+	 * @param type type of map requested (vegetation, owners, routes, etc)
+	 * @param show_towns true if the town names should be displayed, false if not.
+	 */
+	void DrawSmallMap(DrawPixelInfo *dpi, int type, bool show_towns)
+	{
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+		DrawPixelInfo *old_dpi;
+		int dx,dy, x, y, x2, y2;
+		void *ptr;
+		int tile_x;
+		int tile_y;
+		ViewPort *vp;
 
-		/* fill with some special colors */
-		_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
-		_owner_colors[OWNER_NONE] = MKCOLOR(0x54545454);
-		_owner_colors[OWNER_WATER] = MKCOLOR(0xCACACACA);
-		_owner_colors[OWNER_END]   = MKCOLOR(0x20202020); /* industry */
+		old_dpi = _cur_dpi;
+		_cur_dpi = dpi;
 
-		/* now fill with the player colors */
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				_owner_colors[p->index] =
-					_colour_gradient[p->player_color][5] * 0x01010101;
+		/* clear it */
+		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, 0);
+
+		/* setup owner table */
+		if (type == SMT_OWNER) {
+			const Player *p;
+
+			/* fill with some special colors */
+			_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
+			_owner_colors[OWNER_NONE] = MKCOLOR(0x54545454);
+			_owner_colors[OWNER_WATER] = MKCOLOR(0xCACACACA);
+			_owner_colors[OWNER_END]   = MKCOLOR(0x20202020); /* industry */
+
+			/* now fill with the player colors */
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					_owner_colors[p->index] =
+						_colour_gradient[p->player_color][5] * 0x01010101;
+				}
 			}
 		}
-	}
 
-	tile_x = WP(w, smallmap_d).scroll_x / TILE_SIZE;
-	tile_y = WP(w, smallmap_d).scroll_y / TILE_SIZE;
+		tile_x = this->scroll_x / TILE_SIZE;
+		tile_y = this->scroll_y / TILE_SIZE;
 
-	dx = dpi->left + WP(w, smallmap_d).subscroll;
-	tile_x -= dx / 4;
-	tile_y += dx / 4;
-	dx &= 3;
+		dx = dpi->left + this->subscroll;
+		tile_x -= dx / 4;
+		tile_y += dx / 4;
+		dx &= 3;
 
-	dy = dpi->top;
-	tile_x += dy / 2;
-	tile_y += dy / 2;
+		dy = dpi->top;
+		tile_x += dy / 2;
+		tile_y += dy / 2;
 
-	if (dy & 1) {
-		tile_x++;
-		dx += 2;
-		if (dx > 3) {
-			dx -= 4;
-			tile_x--;
-			tile_y++;
-		}
-	}
-
-	ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
-	x = - dx - 4;
-	y = 0;
-
-	for (;;) {
-		uint32 mask = 0xFFFFFFFF;
-		int reps;
-		int t;
-
-		/* distance from left edge */
-		if (x < 0) {
-			if (x < -3) goto skip_column;
-			/* mask to use at the left edge */
-			mask = _smallmap_mask_left[x + 3];
+		if (dy & 1) {
+			tile_x++;
+			dx += 2;
+			if (dx > 3) {
+				dx -= 4;
+				tile_x--;
+				tile_y++;
+			}
 		}
 
-		/* distance from right edge */
-		t = dpi->width - x;
-		if (t < 4) {
-			if (t <= 0) break; /* exit loop */
-			/* mask to use at the right edge */
-			mask &= _smallmap_mask_right[t - 1];
+		ptr = blitter->MoveTo(dpi->dst_ptr, -dx - 4, 0);
+		x = - dx - 4;
+		y = 0;
+
+		for (;;) {
+			uint32 mask = 0xFFFFFFFF;
+			int reps;
+			int t;
+
+			/* distance from left edge */
+			if (x < 0) {
+				if (x < -3) goto skip_column;
+				/* mask to use at the left edge */
+				mask = _smallmap_mask_left[x + 3];
+			}
+
+			/* distance from right edge */
+			t = dpi->width - x;
+			if (t < 4) {
+				if (t <= 0) break; /* exit loop */
+				/* mask to use at the right edge */
+				mask &= _smallmap_mask_right[t - 1];
+			}
+
+			/* number of lines */
+			reps = (dpi->height - y + 1) / 2;
+			if (reps > 0) {
+				DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[type]);
+			}
+
+	skip_column:
+			if (y == 0) {
+				tile_y++;
+				y++;
+				ptr = blitter->MoveTo(ptr, 0, 1);
+			} else {
+				tile_x--;
+				y--;
+				ptr = blitter->MoveTo(ptr, 0, -1);
+			}
+			ptr = blitter->MoveTo(ptr, 2, 0);
+			x += 2;
 		}
 
-		/* number of lines */
-		reps = (dpi->height - y + 1) / 2;
-		if (reps > 0) {
-			DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[type]);
+		/* draw vehicles? */
+		if (type == SMT_CONTOUR || type == SMT_VEHICLES) {
+			Vehicle *v;
+			bool skip;
+			byte color;
+
+			FOR_ALL_VEHICLES(v) {
+				if (v->type != VEH_EFFECT &&
+						(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
+					/* Remap into flat coordinates. */
+					Point pt = RemapCoords(
+						v->x_pos / TILE_SIZE - this->scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
+						v->y_pos / TILE_SIZE - this->scroll_y / TILE_SIZE, //    dtto
+						0);
+					x = pt.x;
+					y = pt.y;
+
+					/* Check if y is out of bounds? */
+					y -= dpi->top;
+					if (!IsInsideMM(y, 0, dpi->height)) continue;
+
+					/* Default is to draw both pixels. */
+					skip = false;
+
+					/* Offset X coordinate */
+					x -= this->subscroll + 3 + dpi->left;
+
+					if (x < 0) {
+						/* if x+1 is 0, that means we're on the very left edge,
+						 *  and should thus only draw a single pixel */
+						if (++x != 0) continue;
+						skip = true;
+					} else if (x >= dpi->width - 1) {
+						/* Check if we're at the very right edge, and if so draw only a single pixel */
+						if (x != dpi->width - 1) continue;
+						skip = true;
+					}
+
+					/* Calculate pointer to pixel and the color */
+					color = (type == SMT_VEHICLES) ? _vehicle_type_colors[v->type] : 0xF;
+
+					/* And draw either one or two pixels depending on clipping */
+					blitter->SetPixel(dpi->dst_ptr, x, y, color);
+					if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, color);
+				}
+			}
 		}
 
-skip_column:
-		if (y == 0) {
-			tile_y++;
-			y++;
-			ptr = blitter->MoveTo(ptr, 0, 1);
-		} else {
-			tile_x--;
-			y--;
-			ptr = blitter->MoveTo(ptr, 0, -1);
-		}
-		ptr = blitter->MoveTo(ptr, 2, 0);
-		x += 2;
-	}
+		if (show_towns) {
+			const Town *t;
 
-	/* draw vehicles? */
-	if (type == SMT_CONTOUR || type == SMT_VEHICLES) {
-		Vehicle *v;
-		bool skip;
-		byte color;
-
-		FOR_ALL_VEHICLES(v) {
-			if (v->type != VEH_EFFECT &&
-					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
-				/* Remap into flat coordinates. */
+			FOR_ALL_TOWNS(t) {
+				/* Remap the town coordinate */
 				Point pt = RemapCoords(
-					v->x_pos / TILE_SIZE - WP(w, smallmap_d).scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
-					v->y_pos / TILE_SIZE - WP(w, smallmap_d).scroll_y / TILE_SIZE, //    dtto
+					(int)(TileX(t->xy) * TILE_SIZE - this->scroll_x) / TILE_SIZE,
+					(int)(TileY(t->xy) * TILE_SIZE - this->scroll_y) / TILE_SIZE,
 					0);
-				x = pt.x;
+				x = pt.x - this->subscroll + 3 - (t->sign.width_2 >> 1);
 				y = pt.y;
 
-				/* Check if y is out of bounds? */
-				y -= dpi->top;
-				if (!IsInsideMM(y, 0, dpi->height)) continue;
-
-				/* Default is to draw both pixels. */
-				skip = false;
-
-				/* Offset X coordinate */
-				x -= WP(w, smallmap_d).subscroll + 3 + dpi->left;
-
-				if (x < 0) {
-					/* if x+1 is 0, that means we're on the very left edge,
-					 *  and should thus only draw a single pixel */
-					if (++x != 0) continue;
-					skip = true;
-				} else if (x >= dpi->width - 1) {
-					/* Check if we're at the very right edge, and if so draw only a single pixel */
-					if (x != dpi->width - 1) continue;
-					skip = true;
+				/* Check if the town sign is within bounds */
+				if (x + t->sign.width_2 > dpi->left &&
+						x < dpi->left + dpi->width &&
+						y + 6 > dpi->top &&
+						y < dpi->top + dpi->height) {
+					/* And draw it. */
+					SetDParam(0, t->index);
+					DrawString(x, y, STR_2056, TC_WHITE);
 				}
-
-				/* Calculate pointer to pixel and the color */
-				color = (type == SMT_VEHICLES) ? _vehicle_type_colors[v->type] : 0xF;
-
-				/* And draw either one or two pixels depending on clipping */
-				blitter->SetPixel(dpi->dst_ptr, x, y, color);
-				if (!skip) blitter->SetPixel(dpi->dst_ptr, x + 1, y, color);
 			}
 		}
-	}
 
-	if (show_towns) {
-		const Town *t;
+		/* Draw map indicators */
+		{
+			Point pt;
 
-		FOR_ALL_TOWNS(t) {
-			/* Remap the town coordinate */
-			Point pt = RemapCoords(
-				(int)(TileX(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_x) / TILE_SIZE,
-				(int)(TileY(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_y) / TILE_SIZE,
-				0);
-			x = pt.x - WP(w, smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
-			y = pt.y;
+			/* Find main viewport. */
+			vp = FindWindowById(WC_MAIN_WINDOW,0)->viewport;
 
-			/* Check if the town sign is within bounds */
-			if (x + t->sign.width_2 > dpi->left &&
-					x < dpi->left + dpi->width &&
-					y + 6 > dpi->top &&
-					y < dpi->top + dpi->height) {
-				/* And draw it. */
-				SetDParam(0, t->index);
-				DrawString(x, y, STR_2056, TC_WHITE);
-			}
+			pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
+
+			x = vp->virtual_left - pt.x;
+			y = vp->virtual_top - pt.y;
+			x2 = (x + vp->virtual_width) / TILE_SIZE;
+			y2 = (y + vp->virtual_height) / TILE_SIZE;
+			x /= TILE_SIZE;
+			y /= TILE_SIZE;
+
+			x -= this->subscroll;
+			x2 -= this->subscroll;
+
+			DrawVertMapIndicator(x, y, x, y2);
+			DrawVertMapIndicator(x2, y, x2, y2);
+
+			DrawHorizMapIndicator(x, y, x2, y);
+			DrawHorizMapIndicator(x, y2, x2, y2);
 		}
+		_cur_dpi = old_dpi;
 	}
 
-	/* Draw map indicators */
+	void SmallMapCenterOnCurrentPos()
 	{
-		Point pt;
+		int x, y;
+		ViewPort *vp;
+		vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
-		/* Find main viewport. */
-		vp = FindWindowById(WC_MAIN_WINDOW,0)->viewport;
-
-		pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w, smallmap_d).scroll_y, 0);
-
-		x = vp->virtual_left - pt.x;
-		y = vp->virtual_top - pt.y;
-		x2 = (x + vp->virtual_width) / TILE_SIZE;
-		y2 = (y + vp->virtual_height) / TILE_SIZE;
-		x /= TILE_SIZE;
-		y /= TILE_SIZE;
-
-		x -= WP(w, smallmap_d).subscroll;
-		x2 -= WP(w, smallmap_d).subscroll;
-
-		DrawVertMapIndicator(x, y, x, y2);
-		DrawVertMapIndicator(x2, y, x2, y2);
-
-		DrawHorizMapIndicator(x, y, x2, y);
-		DrawHorizMapIndicator(x, y2, x2, y2);
+		x  = ((vp->virtual_width  - (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
+		y  = ((vp->virtual_height - (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
+		this->scroll_x = (y - x) & ~0xF;
+		this->scroll_y = (x + y) & ~0xF;
+		this->SetDirty();
 	}
-	_cur_dpi = old_dpi;
-}
 
-void SmallMapCenterOnCurrentPos(Window *w)
-{
-	int x, y;
-	ViewPort *vp;
-	vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+	SmallMapWindow(const WindowDesc *desc, void *data, int window_number) : Window(desc, data, window_number)
+	{
+		/* Resize the window to fit industries list */
+		if (_industries_per_column > BASE_NB_PER_COLUMN) {
+			uint diff = ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1;
 
-	x  = ((vp->virtual_width  - (w->widget[SM_WIDGET_MAP].right  - w->widget[SM_WIDGET_MAP].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
-	y  = ((vp->virtual_height - (w->widget[SM_WIDGET_MAP].bottom - w->widget[SM_WIDGET_MAP].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
-	WP(w, smallmap_d).scroll_x = (y - x) & ~0xF;
-	WP(w, smallmap_d).scroll_y = (x + y) & ~0xF;
-	w->SetDirty();
-}
+			this->height = this->height + diff;
 
-enum {
-	BASE_NB_PER_COLUMN = 6,
-};
+			Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
+			wi->bottom = wi->bottom + diff;
 
-static void SmallMapWindowProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			const LegendAndColour *tbl;
-			int x, y, y_org;
-			uint diff;
-			DrawPixelInfo new_dpi;
+			wi = &this->widget[SM_WIDGET_BUTTONSPANEL]; // filler panel under smallmap buttons
+			wi->bottom = wi->bottom + diff - 1;
 
-			/* Hide Enable all/Disable all buttons if is not industry type small map*/
-			w->SetWidgetHiddenState(SM_WIDGET_ENABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
-			w->SetWidgetHiddenState(SM_WIDGET_DISABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
+			/* Change widget position
+			 * - footer panel
+			 * - enable all industry
+			 * - disable all industry
+			 * - resize window button
+			 */
+			for (uint i = SM_WIDGET_BOTTOMPANEL; i <= SM_WIDGET_RESIZEBOX; i++) {
+				wi           = &this->widget[i];
+				wi->top      = wi->top + diff;
+				wi->bottom   = wi->bottom + diff;
+			}
+		}
 
-			/* draw the window */
-			SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
-			DrawWindowWidgets(w);
+		this->LowerWidget(_smallmap_type + SMT_OWNER);
+		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
 
-			tbl = _legend_table[_smallmap_type];
+		this->SmallMapCenterOnCurrentPos();
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-			/* difference in window size */
-			diff = (_industries_per_column > BASE_NB_PER_COLUMN) ? ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1 : 0;
+	virtual void OnPaint()
+	{
+		const LegendAndColour *tbl;
+		int x, y, y_org;
+		uint diff;
+		DrawPixelInfo new_dpi;
 
-			x = 4;
-			y_org = w->height - 44 - 11 - diff;
-			y = y_org;
+		/* Hide Enable all/Disable all buttons if is not industry type small map*/
+		this->SetWidgetHiddenState(SM_WIDGET_ENABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
+		this->SetWidgetHiddenState(SM_WIDGET_DISABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
 
-			for (;;) {
+		/* draw the window */
+		SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
+		DrawWindowWidgets(this);
 
-				if (_smallmap_type == SMT_INDUSTRY) {
-					/* Industry name must be formated, since it's not in tiny font in the specs.
-					 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
-					SetDParam(0, tbl->legend);
-					assert(tbl->type < NUM_INDUSTRYTYPES);
-					SetDParam(1, _industry_counts[tbl->type]);
-					if (!tbl->show_on_map) {
-						/* Simply draw the string, not the black border of the legend color.
-						 * This will enforce the idea of the disabled item */
-						DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
-					} else {
-						DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
-						GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend color
-					}
+		tbl = _legend_table[_smallmap_type];
+
+		/* difference in window size */
+		diff = (_industries_per_column > BASE_NB_PER_COLUMN) ? ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1 : 0;
+
+		x = 4;
+		y_org = this->height - 44 - 11 - diff;
+		y = y_org;
+
+		for (;;) {
+			if (_smallmap_type == SMT_INDUSTRY) {
+				/* Industry name must be formated, since it's not in tiny font in the specs.
+				 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
+				SetDParam(0, tbl->legend);
+				assert(tbl->type < NUM_INDUSTRYTYPES);
+				SetDParam(1, _industry_counts[tbl->type]);
+				if (!tbl->show_on_map) {
+					/* Simply draw the string, not the black border of the legend color.
+					 * This will enforce the idea of the disabled item */
+					DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_GREY);
 				} else {
-					/* Anything that is not an industry is using normal process */
-					GfxFillRect(x, y + 1, x + 8, y + 5, 0);
-					DrawString(x + 11, y, tbl->legend, TC_FROMSTRING);
+					DrawString(x + 11, y, STR_SMALLMAP_INDUSTRY, TC_BLACK);
+					GfxFillRect(x, y + 1, x + 8, y + 5, 0); // outer border of the legend color
 				}
-				GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend color
-
-				tbl += 1;
-				y += 6;
-
-				if (tbl->end) { // end of the list
-					break;
-				} else if (tbl->col_break) {
-					/*  break asked, continue at top, 123 pixels (one "row") to the right */
-					x += 123;
-					y = y_org;
-				}
+			} else {
+				/* Anything that is not an industry is using normal process */
+				GfxFillRect(x, y + 1, x + 8, y + 5, 0);
+				DrawString(x + 11, y, tbl->legend, TC_FROMSTRING);
 			}
+			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend color
 
-			if (!FillDrawPixelInfo(&new_dpi, 3, 17, w->width - 28 + 22, w->height - 64 - 11 - diff))
-				return;
+			tbl += 1;
+			y += 6;
 
-			DrawSmallMap(&new_dpi, w, _smallmap_type, _smallmap_show_towns);
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case SM_WIDGET_MAP: { // Map window
-					Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-					Point pt;
-
-					/*
-					 * XXX: scrolling with the left mouse button is done by subsequently
-					 * clicking with the left mouse button; clicking once centers the
-					 * large map at the selected point. So by unclicking the left mouse
-					 * button here, it gets reclicked during the next inputloop, which
-					 * would make it look like the mouse is being dragged, while it is
-					 * actually being (virtually) clicked every inputloop.
-					 */
-					_left_button_clicked = false;
-
-					pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
-					w2->viewport->dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
-					w2->viewport->dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
-
-					w->SetDirty();
-				} break;
-
-				case SM_WIDGET_CONTOUR:    // Show land contours
-				case SM_WIDGET_VEHICLES:   // Show vehicles
-				case SM_WIDGET_INDUSTRIES: // Show industries
-				case SM_WIDGET_ROUTES:     // Show transport routes
-				case SM_WIDGET_VEGETATION: // Show vegetation
-				case SM_WIDGET_OWNERS:     // Show land owners
-					w->RaiseWidget(_smallmap_type + SM_WIDGET_CONTOUR);
-					_smallmap_type = e->we.click.widget - SM_WIDGET_CONTOUR;
-					w->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
-
-					w->SetDirty();
-					SndPlayFx(SND_15_BEEP);
-					break;
-
-				case SM_WIDGET_CENTERMAP: // Center the smallmap again
-					SmallMapCenterOnCurrentPos(w);
-
-					w->SetDirty();
-					SndPlayFx(SND_15_BEEP);
-					break;
-
-				case SM_WIDGET_TOGGLETOWNNAME: // Toggle town names
-					w->ToggleWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME);
-					_smallmap_show_towns = w->IsWidgetLowered(SM_WIDGET_TOGGLETOWNNAME);
-
-					w->SetDirty();
-					SndPlayFx(SND_15_BEEP);
-					break;
-
-				case SM_WIDGET_LEGEND: // Legend
-					/* if industry type small map*/
-					if (_smallmap_type == SMT_INDUSTRY) {
-						/* if click on industries label, find right industry type and enable/disable it */
-						Widget *wi = &w->widget[SM_WIDGET_LEGEND]; // label panel
-						uint column = (e->we.click.pt.x - 4) / 123;
-						uint line = (e->we.click.pt.y - wi->top - 2) / 6;
-						uint free = _smallmap_industry_count % 3;
-
-						if (column <= 3) {
-							/* check if click is on industry label*/
-							uint industry_pos = 0;
-							for (uint i = 0; i <= column; i++) {
-								uint diff = (free > 0) ? 1 : 0;
-								uint max_column_lines = _industries_per_column + diff;
-
-								if (i < column) industry_pos = industry_pos + _industries_per_column + diff;
-
-								if (i == column && line <= max_column_lines - 1) {
-									industry_pos = industry_pos + line;
-									_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
-								}
-								if( free > 0) free--;
-							}
-						}
-						/* Raise the two buttons "all", as we have done a specific choice */
-						w->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
-						w->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
-						w->SetDirty();
-					}
-					break;
-
-				case SM_WIDGET_ENABLEINDUSTRIES: // Enable all industries
-					for (int i = 0; i != _smallmap_industry_count; i++) {
-						_legend_from_industries[i].show_on_map = true;
-					}
-					/* toggle appeareance indicating the choice */
-					w->LowerWidget(SM_WIDGET_ENABLEINDUSTRIES);
-					w->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
-					w->SetDirty();
-					break;
-
-				case SM_WIDGET_DISABLEINDUSTRIES: // disable all industries
-					for (int i = 0; i != _smallmap_industry_count; i++) {
-						_legend_from_industries[i].show_on_map = false;
-					}
-					/* toggle appeareance indicating the choice */
-					w->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
-					w->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
-					w->SetDirty();
-					break;
-				}
-			break;
-
-		case WE_RCLICK:
-			if (e->we.click.widget == SM_WIDGET_MAP) {
-				if (_scrolling_viewport) return;
-				_scrolling_viewport = true;
-				_cursor.delta.x = 0;
-				_cursor.delta.y = 0;
+			if (tbl->end) { // end of the list
+				break;
+			} else if (tbl->col_break) {
+				/*  break asked, continue at top, 123 pixels (one "row") to the right */
+				x += 123;
+				y = y_org;
 			}
-			break;
+		}
 
-		case WE_TICK:
-			/* update the window every now and then */
-			if ((++w->vscroll.pos & 0x1F) == 0) w->SetDirty();
-			break;
+		if (!FillDrawPixelInfo(&new_dpi, 3, 17, this->width - 28 + 22, this->height - 64 - 11 - diff)) return;
 
-		case WE_SCROLL: {
-			int x;
-			int y;
-			int sub;
-			int hx;
-			int hy;
-			int hvx;
-			int hvy;
-
-			_cursor.fix_at = true;
-
-			x = WP(w, smallmap_d).scroll_x;
-			y = WP(w, smallmap_d).scroll_y;
-
-			sub = WP(w, smallmap_d).subscroll + e->we.scroll.delta.x;
-
-			x -= (sub >> 2) << 4;
-			y += (sub >> 2) << 4;
-			sub &= 3;
-
-			x += (e->we.scroll.delta.y >> 1) << 4;
-			y += (e->we.scroll.delta.y >> 1) << 4;
-
-			if (e->we.scroll.delta.y & 1) {
-				x += TILE_SIZE;
-				sub += 2;
-				if (sub > 3) {
-					sub -= 4;
-					x -= TILE_SIZE;
-					y += TILE_SIZE;
-				}
-			}
-
-			hx = (w->widget[SM_WIDGET_MAP].right  - w->widget[SM_WIDGET_MAP].left) / 2;
-			hy = (w->widget[SM_WIDGET_MAP].bottom - w->widget[SM_WIDGET_MAP].top ) / 2;
-			hvx = hx * -4 + hy * 8;
-			hvy = hx *  4 + hy * 8;
-			if (x < -hvx) {
-				x = -hvx;
-				sub = 0;
-			}
-			if (x > (int)MapMaxX() * TILE_SIZE - hvx) {
-				x = MapMaxX() * TILE_SIZE - hvx;
-				sub = 0;
-			}
-			if (y < -hvy) {
-				y = -hvy;
-				sub = 0;
-			}
-			if (y > (int)MapMaxY() * TILE_SIZE - hvy) {
-				y = MapMaxY() * TILE_SIZE - hvy;
-				sub = 0;
-			}
-
-			WP(w, smallmap_d).scroll_x = x;
-			WP(w, smallmap_d).scroll_y = y;
-			WP(w, smallmap_d).subscroll = sub;
-
-			w->SetDirty();
-		} break;
+		this->DrawSmallMap(&new_dpi, _smallmap_type, _smallmap_show_towns);
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case SM_WIDGET_MAP: { // Map window
+				/*
+				 * XXX: scrolling with the left mouse button is done by subsequently
+				 * clicking with the left mouse button; clicking once centers the
+				 * large map at the selected point. So by unclicking the left mouse
+				 * button here, it gets reclicked during the next inputloop, which
+				 * would make it look like the mouse is being dragged, while it is
+				 * actually being (virtually) clicked every inputloop.
+				 */
+				_left_button_clicked = false;
+
+				Point pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
+				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				w->viewport->dest_scrollpos_x = pt.x + ((_cursor.pos.x - this->left + 2) << 4) - (w->viewport->virtual_width >> 1);
+				w->viewport->dest_scrollpos_y = pt.y + ((_cursor.pos.y - this->top - 16) << 4) - (w->viewport->virtual_height >> 1);
+
+				this->SetDirty();
+			} break;
+
+			case SM_WIDGET_CONTOUR:    // Show land contours
+			case SM_WIDGET_VEHICLES:   // Show vehicles
+			case SM_WIDGET_INDUSTRIES: // Show industries
+			case SM_WIDGET_ROUTES:     // Show transport routes
+			case SM_WIDGET_VEGETATION: // Show vegetation
+			case SM_WIDGET_OWNERS:     // Show land owners
+				this->RaiseWidget(_smallmap_type + SM_WIDGET_CONTOUR);
+				_smallmap_type = widget - SM_WIDGET_CONTOUR;
+				this->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
+
+				this->SetDirty();
+				SndPlayFx(SND_15_BEEP);
+				break;
+
+			case SM_WIDGET_CENTERMAP: // Center the smallmap again
+				this->SmallMapCenterOnCurrentPos();
+
+				this->SetDirty();
+				SndPlayFx(SND_15_BEEP);
+				break;
+
+			case SM_WIDGET_TOGGLETOWNNAME: // Toggle town names
+				this->ToggleWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME);
+				_smallmap_show_towns = this->IsWidgetLowered(SM_WIDGET_TOGGLETOWNNAME);
+
+				this->SetDirty();
+				SndPlayFx(SND_15_BEEP);
+				break;
+
+			case SM_WIDGET_LEGEND: // Legend
+				/* if industry type small map*/
+				if (_smallmap_type == SMT_INDUSTRY) {
+					/* if click on industries label, find right industry type and enable/disable it */
+					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
+					uint column = (pt.x - 4) / 123;
+					uint line = (pt.y - wi->top - 2) / 6;
+					uint free = _smallmap_industry_count % 3;
+
+					if (column <= 3) {
+						/* check if click is on industry label*/
+						uint industry_pos = 0;
+						for (uint i = 0; i <= column; i++) {
+							uint diff = (free > 0) ? 1 : 0;
+							uint max_column_lines = _industries_per_column + diff;
+
+							if (i < column) industry_pos = industry_pos + _industries_per_column + diff;
+
+							if (i == column && line <= max_column_lines - 1) {
+								industry_pos = industry_pos + line;
+								_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
+							}
+							if( free > 0) free--;
+						}
+					}
+					/* Raise the two buttons "all", as we have done a specific choice */
+					this->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
+					this->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
+					this->SetDirty();
+				}
+				break;
+
+			case SM_WIDGET_ENABLEINDUSTRIES: // Enable all industries
+				for (int i = 0; i != _smallmap_industry_count; i++) {
+					_legend_from_industries[i].show_on_map = true;
+				}
+				/* toggle appeareance indicating the choice */
+				this->LowerWidget(SM_WIDGET_ENABLEINDUSTRIES);
+				this->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
+				this->SetDirty();
+				break;
+
+			case SM_WIDGET_DISABLEINDUSTRIES: // disable all industries
+				for (int i = 0; i != _smallmap_industry_count; i++) {
+					_legend_from_industries[i].show_on_map = false;
+				}
+				/* toggle appeareance indicating the choice */
+				this->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
+				this->LowerWidget(SM_WIDGET_DISABLEINDUSTRIES);
+				this->SetDirty();
+				break;
+		}
+	}
+
+	virtual void OnRightClick(Point pt, int widget)
+	{
+		if (widget == SM_WIDGET_MAP) {
+			if (_scrolling_viewport) return;
+			_scrolling_viewport = true;
+			_cursor.delta.x = 0;
+			_cursor.delta.y = 0;
+		}
+	}
+
+	virtual void OnTick()
+	{
+		/* update the window every now and then */
+		if ((++this->vscroll.pos & 0x1F) == 0) this->SetDirty();
+	}
+
+	virtual void OnScroll(Point delta)
+	{
+		_cursor.fix_at = true;
+
+		int x = this->scroll_x;
+		int y = this->scroll_y;
+
+		int sub = this->subscroll + delta.x;
+
+		x -= (sub >> 2) << 4;
+		y += (sub >> 2) << 4;
+		sub &= 3;
+
+		x += (delta.y >> 1) << 4;
+		y += (delta.y >> 1) << 4;
+
+		if (delta.y & 1) {
+			x += TILE_SIZE;
+			sub += 2;
+			if (sub > 3) {
+				sub -= 4;
+				x -= TILE_SIZE;
+				y += TILE_SIZE;
+			}
+		}
+
+		int hx = (this->widget[SM_WIDGET_MAP].right  - this->widget[SM_WIDGET_MAP].left) / 2;
+		int hy = (this->widget[SM_WIDGET_MAP].bottom - this->widget[SM_WIDGET_MAP].top ) / 2;
+		int hvx = hx * -4 + hy * 8;
+		int hvy = hx *  4 + hy * 8;
+		if (x < -hvx) {
+			x = -hvx;
+			sub = 0;
+		}
+		if (x > (int)MapMaxX() * TILE_SIZE - hvx) {
+			x = MapMaxX() * TILE_SIZE - hvx;
+			sub = 0;
+		}
+		if (y < -hvy) {
+			y = -hvy;
+			sub = 0;
+		}
+		if (y > (int)MapMaxY() * TILE_SIZE - hvy) {
+			y = MapMaxY() * TILE_SIZE - hvy;
+			sub = 0;
+		}
+
+		this->scroll_x = x;
+		this->scroll_y = y;
+		this->subscroll = sub;
+
+		this->SetDirty();
+	}
+};
 
 static const WindowDesc _smallmap_desc = {
 	WDP_AUTO, WDP_AUTO, 350, 214, 446, 314,
 	WC_SMALLMAP, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_smallmap_widgets,
-	SmallMapWindowProc
+	NULL
 };
 
 void ShowSmallMap()
 {
-	Window *w;
-
-	w = AllocateWindowDescFront<Window>(&_smallmap_desc, 0);
-	if (w == NULL) return;
-
-	/* Resize the window to fit industries list */
-	if (_industries_per_column > BASE_NB_PER_COLUMN) {
-		uint diff = ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1;
-
-		w->height = w->height + diff;
-
-		Widget *wi = &w->widget[SM_WIDGET_LEGEND]; // label panel
-		wi->bottom = wi->bottom + diff;
-
-		wi = &w->widget[SM_WIDGET_BUTTONSPANEL]; // filler panel under smallmap buttons
-		wi->bottom = wi->bottom + diff - 1;
-
-		/* Change widget position
-		 * - footer panel
-		 * - enable all industry
-		 * - disable all industry
-		 * - resize window button
-		 */
-		for (uint i = SM_WIDGET_BOTTOMPANEL; i <= SM_WIDGET_RESIZEBOX; i++) {
-			wi           = &w->widget[i];
-			wi->top      = wi->top + diff;
-			wi->bottom   = wi->bottom + diff;
-		}
-	}
-
-	w->LowerWidget(_smallmap_type + SMT_OWNER);
-	w->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
-
-	SmallMapCenterOnCurrentPos(w);
+	AllocateWindowDescFront<SmallMapWindow>(&_smallmap_desc, 0);
 }
 
 /* Extra ViewPort Window Stuff */
@@ -1224,4 +1214,20 @@ void ShowExtraViewPortWindow(TileIndex tile)
 		w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
 		w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
 	}
+}
+
+bool ScrollMainWindowTo(int x, int y, bool instant)
+{
+	bool res = ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0), instant);
+
+	/* If a user scrolls to a tile (via what way what so ever) and already is on
+	 *  that tile (e.g.: pressed twice), move the smallmap to that location,
+	 *  so you directly see where you are on the smallmap. */
+
+	if (res) return res;
+
+	SmallMapWindow *w = dynamic_cast<SmallMapWindow*>(FindWindowById(WC_SMALLMAP, 0));
+	if (w != NULL) w->SmallMapCenterOnCurrentPos();
+
+	return res;
 }

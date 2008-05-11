@@ -144,8 +144,6 @@ TileHighlightData _thd;
 static TileInfo *_cur_ti;
 bool _draw_bounding_boxes = false;
 
-extern void SmallMapCenterOnCurrentPos(Window *w);
-
 static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 {
 	Point p = RemapCoords(x, y, z);
@@ -2078,27 +2076,6 @@ bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 	w->viewport->dest_scrollpos_y = pt.y;
 	return true;
 }
-
-
-bool ScrollMainWindowTo(int x, int y, bool instant)
-{
-	Window *w;
-	bool res = ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0), instant);
-
-	/* If a user scrolls to a tile (via what way what so ever) and already is on
-	 *  that tile (e.g.: pressed twice), move the smallmap to that location,
-	 *  so you directly see where you are on the smallmap. */
-
-	if (res) return res;
-
-	w = FindWindowById(WC_SMALLMAP, 0);
-	if (w == NULL) return res;
-
-	SmallMapCenterOnCurrentPos(w);
-
-	return res;
-}
-
 
 bool ScrollMainWindowToTile(TileIndex tile, bool instant)
 {
