@@ -529,44 +529,55 @@ void HideFillingPercent(TextEffectID te_id)
 	if (te_id != INVALID_TE_ID) RemoveTextEffect(te_id);
 }
 
-struct tooltips_d {
-	StringID string_id;
-	byte paramcount;
-	uint64 params[5];
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
-
 static const Widget _tooltips_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   199,     0,    31, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
-
-static void TooltipsWndProc(Window *w, WindowEvent *e)
+struct TooltipsWindow : public Window
 {
-	switch (e->event) {
-		case WE_PAINT:
-			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);
-			GfxFillRect(1, 1, w->width - 2, w->height - 2, 0x44);
+	StringID string_id;
+	byte paramcount;
+	uint64 params[5];
 
-			for (uint arg = 0; arg < WP(w, tooltips_d).paramcount; arg++) {
-				SetDParam(arg, WP(w, tooltips_d).params[arg]);
-			}
-			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w, tooltips_d).string_id, w->width - 2);
-			break;
+	TooltipsWindow(int x, int y, int width, int height, const Widget *widget,
+								 StringID str, uint paramcount, const uint64 params[]) :
+			Window(x, y, width, height, NULL, WC_TOOLTIPS, widget)
+	{
+		this->string_id = str;
+		assert(sizeof(this->params[0]) == sizeof(params[0]));
+		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
+		this->paramcount = paramcount;
 
-		case WE_MOUSELOOP:
-			/* We can show tooltips while dragging tools. These are shown as long as
-			 * we are dragging the tool. Normal tooltips work with rmb */
-			if (WP(w, tooltips_d).paramcount == 0 ) {
-				if (!_right_button_down) delete w;
-			} else {
-				if (!_left_button_down) delete w;
-			}
+		this->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
+		this->widget[0].right = width;
+		this->widget[0].bottom = height;
 
-			break;
+		FindWindowPlacementAndResize(width, height);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0);
+		GfxFillRect(1, 1, this->width - 2, this->height - 2, 0x44);
+
+		for (uint arg = 0; arg < this->paramcount; arg++) {
+			SetDParam(arg, this->params[arg]);
+		}
+		DrawStringMultiCenter((this->width >> 1), (this->height >> 1) - 5, this->string_id, this->width - 2);
+	}
+
+	virtual void OnMouseLoop()
+	{
+		/* We can show tooltips while dragging tools. These are shown as long as
+		 * we are dragging the tool. Normal tooltips work with rmb */
+		if (this->paramcount == 0 ) {
+			if (!_right_button_down) delete this;
+		} else {
+			if (!_left_button_down) delete this;
+		}
+	}
+};
 
 /** Shows a tooltip
  * @param str String to be displayed
@@ -600,16 +611,7 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
 	int x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
-	Window *w = new Window(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
-
-	WP(w, tooltips_d).string_id = str;
-	assert(sizeof(WP(w, tooltips_d).params[0]) == sizeof(params[0]));
-	memcpy(WP(w, tooltips_d).params, params, sizeof(WP(w, tooltips_d).params[0]) * paramcount);
-	WP(w, tooltips_d).paramcount = paramcount;
-
-	w->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
-	w->widget[0].right = br.width;
-	w->widget[0].bottom = br.height;
+	new TooltipsWindow(x, y, br.width, br.height, _tooltips_widgets, str, paramcount, params);
 }
 
 
