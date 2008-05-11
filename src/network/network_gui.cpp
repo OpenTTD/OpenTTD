@@ -1635,7 +1635,6 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			if (e->we.click.widget == 2) { //Disconnect button
 				NetworkDisconnect();
-				delete w;
 				SwitchMode(SM_MENU);
 				ShowNetworkGameWindow();
 			}
