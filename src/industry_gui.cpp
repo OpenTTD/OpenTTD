@@ -433,7 +433,7 @@ enum IndustryViewWidgets {
 };
 
 /** Information to store about the industry window */
-struct indview_d : public vp_d {
+struct indview_d {
 	byte editbox_line;        ///< The line clicked to open the edit box
 	byte clicked_line;        ///< The line of the button that has been clicked
 	byte clicked_button;      ///< The button that has been clicked (to raise)
@@ -601,8 +601,8 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			w->viewport->height          += e->we.sizing.diff.y;
 			w->viewport->virtual_width   += e->we.sizing.diff.x;
 			w->viewport->virtual_height  += e->we.sizing.diff.y;
-			WP(w, vp_d).dest_scrollpos_x -= e->we.sizing.diff.x;
-			WP(w, vp_d).dest_scrollpos_y -= e->we.sizing.diff.y;
+			w->viewport->dest_scrollpos_x -= e->we.sizing.diff.x;
+			w->viewport->dest_scrollpos_y -= e->we.sizing.diff.y;
 			UpdateViewportPosition(w);
 			break;
 

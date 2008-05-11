@@ -884,8 +884,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					_left_button_clicked = false;
 
 					pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
-					WP(w2, vp_d).dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
-					WP(w2, vp_d).dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
+					w2->viewport->dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
+					w2->viewport->dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 
 					w->SetDirty();
 				} break;
@@ -1138,21 +1138,21 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 
 		case 7: { // location button (move main view to same spot as this view) 'Paste Location'
 			Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-			int x = WP(w, vp_d).scrollpos_x; // Where is the main looking at
-			int y = WP(w, vp_d).scrollpos_y;
+			int x = w->viewport->scrollpos_x; // Where is the main looking at
+			int y = w->viewport->scrollpos_y;
 
 			/* set this view to same location. Based on the center, adjusting for zoom */
-			WP(w2, vp_d).dest_scrollpos_x =  x - (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
-			WP(w2, vp_d).dest_scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
+			w2->viewport->dest_scrollpos_x =  x - (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
+			w2->viewport->dest_scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
 
 		case 8: { // inverse location button (move this view to same spot as main view) 'Copy Location'
 			const Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-			int x = WP(w2, const vp_d).scrollpos_x;
-			int y = WP(w2, const vp_d).scrollpos_y;
+			int x = w2->viewport->scrollpos_x;
+			int y = w2->viewport->scrollpos_y;
 
-			WP(w, vp_d).dest_scrollpos_x =  x + (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
-			WP(w, vp_d).dest_scrollpos_y =  y + (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
+			w->viewport->dest_scrollpos_x =  x + (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
+			w->viewport->dest_scrollpos_y =  y + (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
 		} break;
 		}
 		break;
@@ -1172,10 +1172,10 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 				_scrolling_viewport = false;
 			}
 
-			WP(w, vp_d).scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
-			WP(w, vp_d).scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
-			WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
-			WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
+			w->viewport->scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
+			w->viewport->scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
+			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
+			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
 		} break;
 
 		case WE_MOUSEWHEEL:
@@ -1213,15 +1213,15 @@ void ShowExtraViewPortWindow(TileIndex tile)
 			const Window *v = FindWindowById(WC_MAIN_WINDOW, 0);
 
 			/* center on same place as main window (zoom is maximum, no adjustment needed) */
-			pt.x = WP(v, vp_d).scrollpos_x + v->viewport->virtual_height / 2;
-			pt.y = WP(v, vp_d).scrollpos_y + v->viewport->virtual_height / 2;
+			pt.x = v->viewport->scrollpos_x + v->viewport->virtual_height / 2;
+			pt.y = v->viewport->scrollpos_y + v->viewport->virtual_height / 2;
 		} else {
 			pt = RemapCoords(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, TileHeight(tile));
 		}
 
-		WP(w, vp_d).scrollpos_x = pt.x - ((w->widget[4].right - w->widget[4].left) - 1) / 2;
-		WP(w, vp_d).scrollpos_y = pt.y - ((w->widget[4].bottom - w->widget[4].top) - 1) / 2;
-		WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
-		WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
+		w->viewport->scrollpos_x = pt.x - ((w->widget[4].right - w->widget[4].left) - 1) / 2;
+		w->viewport->scrollpos_y = pt.y - ((w->widget[4].bottom - w->widget[4].top) - 1) / 2;
+		w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
+		w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
 	}
 }

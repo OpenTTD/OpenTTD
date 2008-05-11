@@ -156,7 +156,7 @@ static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 
 void DeleteWindowViewport(Window *w)
 {
-	w->viewport->width = 0;
+	free(w->viewport);
 	w->viewport = NULL;
 }
 
@@ -177,7 +177,7 @@ void InitializeWindowViewport(Window *w, int x, int y,
 {
 	assert(w->viewport == NULL);
 
-	ViewPort *vp = &(WP(w, vp_d).vp_data);
+	ViewportData *vp = CallocT<ViewportData>(1);
 
 	vp->left = x + w->left;
 	vp->top = y + w->top;
@@ -194,21 +194,21 @@ void InitializeWindowViewport(Window *w, int x, int y,
 	if (follow_flags & 0x80000000) {
 		const Vehicle *veh;
 
-		WP(w, vp_d).follow_vehicle = (VehicleID)(follow_flags & 0xFFFF);
-		veh = GetVehicle(WP(w, vp_d).follow_vehicle);
+		vp->follow_vehicle = (VehicleID)(follow_flags & 0xFFFF);
+		veh = GetVehicle(vp->follow_vehicle);
 		pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 	} else {
 		uint x = TileX(follow_flags) * TILE_SIZE;
 		uint y = TileY(follow_flags) * TILE_SIZE;
 
-		WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
+		vp->follow_vehicle = INVALID_VEHICLE;
 		pt = MapXYZToViewport(vp, x, y, GetSlopeZ(x, y));
 	}
 
-	WP(w, vp_d).scrollpos_x = pt.x;
-	WP(w, vp_d).scrollpos_y = pt.y;
-	WP(w, vp_d).dest_scrollpos_x = pt.x;
-	WP(w, vp_d).dest_scrollpos_y = pt.y;
+	vp->scrollpos_x = pt.x;
+	vp->scrollpos_y = pt.y;
+	vp->dest_scrollpos_x = pt.x;
+	vp->dest_scrollpos_y = pt.y;
 
 	w->viewport = vp;
 	vp->virtual_left = 0;//pt.x;
@@ -426,9 +426,7 @@ Point GetTileBelowCursor()
 Point GetTileZoomCenterWindow(bool in, Window * w)
 {
 	int x, y;
-	ViewPort * vp;
-
-	vp = w->viewport;
+	ViewPort *vp = w->viewport;
 
 	if (in) {
 		x = ((_cursor.pos.x - vp->left) >> 1) + (vp->width >> 2);
@@ -1581,33 +1579,33 @@ void UpdateViewportPosition(Window *w)
 {
 	const ViewPort *vp = w->viewport;
 
-	if (WP(w, vp_d).follow_vehicle != INVALID_VEHICLE) {
-		const Vehicle* veh = GetVehicle(WP(w, vp_d).follow_vehicle);
+	if (w->viewport->follow_vehicle != INVALID_VEHICLE) {
+		const Vehicle* veh = GetVehicle(w->viewport->follow_vehicle);
 		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {
 		/* Ensure the destination location is within the map */
-		ClampViewportToMap(vp, WP(w, vp_d).dest_scrollpos_x, WP(w, vp_d).dest_scrollpos_y);
+		ClampViewportToMap(vp, w->viewport->dest_scrollpos_x, w->viewport->dest_scrollpos_y);
 
-		int delta_x = WP(w, vp_d).dest_scrollpos_x - WP(w, vp_d).scrollpos_x;
-		int delta_y = WP(w, vp_d).dest_scrollpos_y - WP(w, vp_d).scrollpos_y;
+		int delta_x = w->viewport->dest_scrollpos_x - w->viewport->scrollpos_x;
+		int delta_y = w->viewport->dest_scrollpos_y - w->viewport->scrollpos_y;
 
 		if (delta_x != 0 || delta_y != 0) {
 			if (_patches.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512);
 				/* Not at our desired positon yet... */
-				WP(w, vp_d).scrollpos_x += Clamp(delta_x / 4, -max_scroll, max_scroll);
-				WP(w, vp_d).scrollpos_y += Clamp(delta_y / 4, -max_scroll, max_scroll);
+				w->viewport->scrollpos_x += Clamp(delta_x / 4, -max_scroll, max_scroll);
+				w->viewport->scrollpos_y += Clamp(delta_y / 4, -max_scroll, max_scroll);
 			} else {
-				WP(w, vp_d).scrollpos_x = WP(w, vp_d).dest_scrollpos_x;
-				WP(w, vp_d).scrollpos_y = WP(w, vp_d).dest_scrollpos_y;
+				w->viewport->scrollpos_x = w->viewport->dest_scrollpos_x;
+				w->viewport->scrollpos_y = w->viewport->dest_scrollpos_y;
 			}
 		}
 
-		ClampViewportToMap(vp, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
+		ClampViewportToMap(vp, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
 
-		SetViewportPosition(w, WP(w, vp_d).scrollpos_x, WP(w, vp_d).scrollpos_y);
+		SetViewportPosition(w, w->viewport->scrollpos_x, w->viewport->scrollpos_y);
 	}
 }
 
@@ -2066,18 +2064,18 @@ bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
 	Point pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(Clamp(x, 0, MapSizeX()), Clamp(y, 0, MapSizeY())));
-	WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
+	w->viewport->follow_vehicle = INVALID_VEHICLE;
 
-	if (WP(w, vp_d).dest_scrollpos_x == pt.x && WP(w, vp_d).dest_scrollpos_y == pt.y)
+	if (w->viewport->dest_scrollpos_x == pt.x && w->viewport->dest_scrollpos_y == pt.y)
 		return false;
 
 	if (instant) {
-		WP(w, vp_d).scrollpos_x = pt.x;
-		WP(w, vp_d).scrollpos_y = pt.y;
+		w->viewport->scrollpos_x = pt.x;
+		w->viewport->scrollpos_y = pt.y;
 	}
 
-	WP(w, vp_d).dest_scrollpos_x = pt.x;
-	WP(w, vp_d).dest_scrollpos_y = pt.y;
+	w->viewport->dest_scrollpos_x = pt.x;
+	w->viewport->dest_scrollpos_y = pt.y;
 	return true;
 }
 

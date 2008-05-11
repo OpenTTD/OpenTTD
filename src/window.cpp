@@ -1713,9 +1713,9 @@ static bool HandleViewportScroll()
 		return true;
 	}
 
-	if (WP(w, vp_d).follow_vehicle != INVALID_VEHICLE && w == FindWindowById(WC_MAIN_WINDOW, 0)) {
+	if (w == FindWindowById(WC_MAIN_WINDOW, 0) && w->viewport->follow_vehicle != INVALID_VEHICLE) {
 		/* If the main window is following a vehicle, then first let go of it! */
-		const Vehicle *veh = GetVehicle(WP(w, vp_d).follow_vehicle);
+		const Vehicle *veh = GetVehicle(w->viewport->follow_vehicle);
 		ScrollMainWindowTo(veh->x_pos, veh->y_pos, true); /* This also resets follow_vehicle */
 		return true;
 	}
@@ -1915,14 +1915,14 @@ static void HandleAutoscroll()
 			/* here allows scrolling in both x and y axis */
 #define scrollspeed 3
 			if (x - 15 < 0) {
-				WP(w, vp_d).dest_scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
+				w->viewport->dest_scrollpos_x += ScaleByZoom((x - 15) * scrollspeed, vp->zoom);
 			} else if (15 - (vp->width - x) > 0) {
-				WP(w, vp_d).dest_scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
+				w->viewport->dest_scrollpos_x += ScaleByZoom((15 - (vp->width - x)) * scrollspeed, vp->zoom);
 			}
 			if (y - 15 < 0) {
-				WP(w, vp_d).dest_scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
+				w->viewport->dest_scrollpos_y += ScaleByZoom((y - 15) * scrollspeed, vp->zoom);
 			} else if (15 - (vp->height - y) > 0) {
-				WP(w, vp_d).dest_scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
+				w->viewport->dest_scrollpos_y += ScaleByZoom((15 - (vp->height - y)) * scrollspeed, vp->zoom);
 			}
 #undef scrollspeed
 		}

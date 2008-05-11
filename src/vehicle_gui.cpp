@@ -738,7 +738,7 @@ void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 
 	if (w != NULL) {
 		w->window_number = to_index;
-		WP(w, vp_d).follow_vehicle = to_index;
+		w->viewport->follow_vehicle = to_index;
 		w->SetDirty();
 
 		w = FindWindowById(WC_VEHICLE_ORDERS, from_index);
@@ -2091,7 +2091,7 @@ static void VehicleViewWndProc(Window *w, WindowEvent *e)
 					const Window *mainwindow = FindWindowById(WC_MAIN_WINDOW, 0);
 					/* code to allow the main window to 'follow' the vehicle if the ctrl key is pressed */
 					if (_ctrl_pressed && mainwindow->viewport->zoom == ZOOM_LVL_NORMAL) {
-						WP(mainwindow, vp_d).follow_vehicle = v->index;
+						mainwindow->viewport->follow_vehicle = v->index;
 					} else {
 						ScrollMainWindowTo(v->x_pos, v->y_pos);
 					}

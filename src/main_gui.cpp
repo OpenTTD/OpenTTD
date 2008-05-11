@@ -166,27 +166,27 @@ bool DoZoomInOutWindow(int how, Window *w)
 			vp->virtual_width >>= 1;
 			vp->virtual_height >>= 1;
 
-			WP(w, vp_d).scrollpos_x += vp->virtual_width >> 1;
-			WP(w, vp_d).scrollpos_y += vp->virtual_height >> 1;
-			WP(w, vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
-			WP(w, vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
+			w->viewport->scrollpos_x += vp->virtual_width >> 1;
+			w->viewport->scrollpos_y += vp->virtual_height >> 1;
+			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
+			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
 			break;
 		case ZOOM_OUT:
 			if (vp->zoom == ZOOM_LVL_MAX) return false;
 			vp->zoom = (ZoomLevel)((int)vp->zoom + 1);
 
-			WP(w, vp_d).scrollpos_x -= vp->virtual_width >> 1;
-			WP(w, vp_d).scrollpos_y -= vp->virtual_height >> 1;
-			WP(w, vp_d).dest_scrollpos_x = WP(w,vp_d).scrollpos_x;
-			WP(w, vp_d).dest_scrollpos_y = WP(w,vp_d).scrollpos_y;
+			w->viewport->scrollpos_x -= vp->virtual_width >> 1;
+			w->viewport->scrollpos_y -= vp->virtual_height >> 1;
+			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
+			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
 
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
 			break;
 	}
 	if (vp != NULL) { // the vp can be null when how == ZOOM_NONE
-		vp->virtual_left = WP(w, vp_d).scrollpos_x;
-		vp->virtual_top = WP(w, vp_d).scrollpos_y;
+		vp->virtual_left = w->viewport->scrollpos_x;
+		vp->virtual_top = w->viewport->scrollpos_y;
 	}
 	w->SetDirty();
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
@@ -380,10 +380,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				_scrolling_viewport = false;
 			}
 
-			WP(w, vp_d).scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
-			WP(w, vp_d).scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
-			WP(w, vp_d).dest_scrollpos_x = WP(w, vp_d).scrollpos_x;
-			WP(w, vp_d).dest_scrollpos_y = WP(w, vp_d).scrollpos_y;
+			w->viewport->scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
+			w->viewport->scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
+			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
+			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
 		} break;
 
 		case WE_MOUSEWHEEL:

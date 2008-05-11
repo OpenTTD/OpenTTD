@@ -271,6 +271,17 @@ struct ResizeInfo {
 };
 
 /**
+ * Data structure for a window viewport
+ */
+struct ViewportData : ViewPort {
+	VehicleID follow_vehicle;
+	int32 scrollpos_x;
+	int32 scrollpos_y;
+	int32 dest_scrollpos_x;
+	int32 dest_scrollpos_y;
+};
+
+	/**
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
@@ -306,7 +317,7 @@ public:
 
 	byte caption_color; ///< Background color of the window caption, contains PlayerID
 
-	ViewPort *viewport;    ///< Pointer to viewport, if present
+	ViewportData *viewport;      ///< Pointer to viewport data, if present
 	const Widget *original_widget; ///< Original widget layout, copied from WindowDesc
 	Widget *widget;        ///< Widgets of the window
 	uint widget_count;     ///< Number of widgets of the window
@@ -539,16 +550,6 @@ struct depot_d {
 	Vehicle **wagon_list;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
-
-struct vp_d {
-	VehicleID follow_vehicle;
-	int32 scrollpos_x;
-	int32 scrollpos_y;
-	int32 dest_scrollpos_x;
-	int32 dest_scrollpos_y;
-	ViewPort vp_data;          ///< Screen position and zoom of the viewport
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 
 enum SortListFlags {
 	VL_NONE    = 0,      ///< no sort
