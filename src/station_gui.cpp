@@ -165,8 +165,7 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
 }
 
-typedef GUIList<const Station*> plstations_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
+typedef GUIList<const Station*> GUIStationList;
 
 /**
  * Set the station sort flag for all station-list windows.
@@ -179,7 +178,7 @@ static void SetStationListsFlag(SortListFlags sl_flag)
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 		if (w->window_class == WC_STATION_LIST) {
-			WP(w, plstations_d).flags |= sl_flag;
+			dynamic_cast<GUIStationList*>(w)->flags |= sl_flag;
 			w->SetDirty();
 		}
 	}
@@ -210,7 +209,7 @@ void ResortStationLists()
  * @param cargo_filter bitmap of cargo types to include
  * @param include_empty whether we should include stations without waiting cargo
  */
-static void BuildStationsList(plstations_d *sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
+static void BuildStationsList(GUIStationList *sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
 {
 	uint n = 0;
 	const Station *st;
@@ -260,7 +259,7 @@ static void BuildStationsList(plstations_d *sl, PlayerID owner, byte facilities,
  *
  * @param sl pointer to plstations_d (station list and flags)
  */
-static void SortStationsList(plstations_d *sl)
+static void SortStationsList(GUIStationList *sl)
 {
 	static StationSortListingTypeFunction *const _station_sorter[] = {
 		&StationNameSorter,
@@ -280,287 +279,340 @@ static void SortStationsList(plstations_d *sl)
 }
 
 /**
- * Fuction called when any WindowEvent occurs for PlayerStations window
- *
- * @param w pointer to the PlayerStations window
- * @param e pointer to window event
+ * The list of stations per player.
  */
-static void PlayerStationsWndProc(Window *w, WindowEvent *e)
+struct PlayerStationsWindow : public Window, public GUIStationList
 {
-	const PlayerID owner = (PlayerID)w->window_number;
-	static byte facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-	static Listing station_sort = {0, 0};
-	static bool include_empty = true;
+	static Listing station_sort;
+	static byte facilities;
+	static bool include_empty;
 
-	plstations_d *sl = &WP(w, plstations_d);
+	PlayerStationsWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	{
+		this->caption_color = (byte)this->window_number;
+		this->vscroll.cap = 12;
+		this->resize.step_height = 10;
+		this->resize.height = this->height - 10 * 7; // minimum if 5 in the list
 
-	switch (e->event) {
-		case WE_CREATE:
-			if (_cargo_filter == _cargo_filter_max) _cargo_filter = _cargo_mask;
-
-			for (uint i = 0; i < 5; i++) {
-				if (HasBit(facilities, i)) w->LowerWidget(i + SLW_TRAIN);
-			}
-			w->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-			w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
-			w->SetWidgetLoweredState(SLW_NOCARGOWAITING, include_empty);
-
-			sl->sort_list = NULL;
-			sl->flags = VL_REBUILD;
-			sl->sort_type = station_sort.criteria;
-			if (station_sort.order) sl->flags |= VL_DESC;
-
-			/* set up resort timer */
-			sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			break;
-
-		case WE_PAINT: {
-			BuildStationsList(sl, owner, facilities, _cargo_filter, include_empty);
-			SortStationsList(sl);
-
-			SetVScrollCount(w, sl->list_length);
-
-			/* draw widgets, with player's name in the caption */
-			SetDParam(0, owner);
-			SetDParam(1, w->vscroll.count);
-
-			/* Set text of sort by dropdown */
-			w->widget[SLW_SORTDROPBTN].data = _station_sort_listing[sl->sort_type];
-
-			DrawWindowWidgets(w);
-
-			/* draw arrow pointing up/down for ascending/descending sorting */
-			DrawSortButtonState(w, SLW_SORTBY, sl->flags & VL_DESC ? SBS_DOWN : SBS_UP);
-
-			int cg_ofst;
-			int x = 89;
-			int y = 14;
-			int xb = 2; ///< offset from left of widget
-
-			uint i = 0;
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				const CargoSpec *cs = GetCargo(c);
-				if (!cs->IsValid()) continue;
-
-				cg_ofst = HasBit(_cargo_filter, c) ? 2 : 1;
-				GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
-				DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK);
-				x += 14;
-				i++;
-			}
-
-			x += 6;
-			cg_ofst = w->IsWidgetLowered(SLW_NOCARGOWAITING) ? 2 : 1;
-			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_NONE, TC_BLACK);
-			x += 14;
-			cg_ofst = w->IsWidgetLowered(SLW_CARGOALL) ? 2 : 1;
-			DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
-
-			cg_ofst = w->IsWidgetLowered(SLW_FACILALL) ? 2 : 1;
-			DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
-
-			if (w->vscroll.count == 0) { // player has no stations
-				DrawString(xb, 40, STR_304A_NONE, TC_FROMSTRING);
-				return;
-			}
-
-			int max = min(w->vscroll.pos + w->vscroll.cap, sl->list_length);
-			y = 40; // start of the list-widget
-
-			for (int i = w->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
-				const Station *st = sl->sort_list[i];
-				int x;
-
-				assert(st->xy != 0);
-
-				/* Do not do the complex check HasStationInUse here, it may be even false
-				 * when the order had been removed and the station list hasn't been removed yet */
-				assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
-
-				SetDParam(0, st->index);
-				SetDParam(1, st->facilities);
-				x = DrawString(xb, y, STR_3049_0, TC_FROMSTRING) + 5;
-
-				/* show cargo waiting and station ratings */
-				for (CargoID j = 0; j < NUM_CARGO; j++) {
-					if (!st->goods[j].cargo.Empty()) {
-						StationsWndShowStationRating(x, y, j, st->goods[j].cargo.Count(), st->goods[j].rating);
-						x += 20;
-					}
-				}
-				y += 10;
-			}
-			break;
+		/* Add cargo filter buttons */
+		uint num_active = 0;
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			if (GetCargo(c)->IsValid()) num_active++;
 		}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case SLW_LIST: {
-					uint32 id_v = (e->we.click.pt.y - 41) / 10;
+		this->widget_count += num_active;
+		this->widget = ReallocT(this->widget, this->widget_count + 1);
+		this->widget[this->widget_count].type = WWT_LAST;
 
-					if (id_v >= w->vscroll.cap) return; // click out of bounds
+		uint i = 0;
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			if (!GetCargo(c)->IsValid()) continue;
 
-					id_v += w->vscroll.pos;
+			Widget *wi = &this->widget[SLW_CARGOSTART + i];
+			wi->type     = WWT_PANEL;
+			wi->display_flags = RESIZE_NONE;
+			wi->color    = 14;
+			wi->left     = 89 + i * 14;
+			wi->right    = wi->left + 13;
+			wi->top      = 14;
+			wi->bottom   = 24;
+			wi->data     = 0;
+			wi->tooltips = STR_USE_CTRL_TO_SELECT_MORE;
 
-					if (id_v >= sl->list_length) return; // click out of list bound
+			if (HasBit(_cargo_filter, c)) this->LowerWidget(SLW_CARGOSTART + i);
+			i++;
+		}
 
-					const Station *st = sl->sort_list[id_v];
-					/* do not check HasStationInUse - it is slow and may be invalid */
-					assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
+		this->widget[SLW_NOCARGOWAITING].left += num_active * 14;
+		this->widget[SLW_NOCARGOWAITING].right += num_active * 14;
+		this->widget[SLW_CARGOALL].left += num_active * 14;
+		this->widget[SLW_CARGOALL].right += num_active * 14;
+		this->widget[SLW_PAN_RIGHT].left += num_active * 14;
 
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(st->xy);
-					} else {
-						ScrollMainWindowToTile(st->xy);
-					}
-					break;
+		if (num_active > 15) {
+			/* Resize and fix the minimum width, if necessary */
+			ResizeWindow(this, (num_active - 15) * 14, 0);
+			this->resize.width = this->width;
+		}
+
+		if (_cargo_filter == _cargo_filter_max) _cargo_filter = _cargo_mask;
+
+		for (uint i = 0; i < 5; i++) {
+			if (HasBit(facilities, i)) this->LowerWidget(i + SLW_TRAIN);
+		}
+		this->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+		this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+		this->SetWidgetLoweredState(SLW_NOCARGOWAITING, include_empty);
+
+		this->sort_list = NULL;
+		this->flags = VL_REBUILD;
+		this->sort_type = station_sort.criteria;
+		if (station_sort.order) this->flags |= VL_DESC;
+
+		/* set up resort timer */
+		this->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+	}
+
+	virtual void OnPaint()
+	{
+		PlayerID owner = (PlayerID)this->window_number;
+
+		BuildStationsList(this, owner, facilities, _cargo_filter, include_empty);
+		SortStationsList(this);
+
+		SetVScrollCount(this, this->list_length);
+
+		/* draw widgets, with player's name in the caption */
+		SetDParam(0, owner);
+		SetDParam(1, this->vscroll.count);
+
+		/* Set text of sort by dropdown */
+		this->widget[SLW_SORTDROPBTN].data = _station_sort_listing[this->sort_type];
+
+		DrawWindowWidgets(this);
+
+		/* draw arrow pointing up/down for ascending/descending sorting */
+		DrawSortButtonState(this, SLW_SORTBY, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
+
+		int cg_ofst;
+		int x = 89;
+		int y = 14;
+		int xb = 2; ///< offset from left of widget
+
+		uint i = 0;
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			const CargoSpec *cs = GetCargo(c);
+			if (!cs->IsValid()) continue;
+
+			cg_ofst = HasBit(_cargo_filter, c) ? 2 : 1;
+			GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
+			DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK);
+			x += 14;
+			i++;
+		}
+
+		x += 6;
+		cg_ofst = this->IsWidgetLowered(SLW_NOCARGOWAITING) ? 2 : 1;
+		DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_NONE, TC_BLACK);
+		x += 14;
+		cg_ofst = this->IsWidgetLowered(SLW_CARGOALL) ? 2 : 1;
+		DrawStringCentered(x + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
+
+		cg_ofst = this->IsWidgetLowered(SLW_FACILALL) ? 2 : 1;
+		DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
+
+		if (this->vscroll.count == 0) { // player has no stations
+			DrawString(xb, 40, STR_304A_NONE, TC_FROMSTRING);
+			return;
+		}
+
+		int max = min(this->vscroll.pos + this->vscroll.cap, this->list_length);
+		y = 40; // start of the list-widget
+
+		for (int i = this->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
+			const Station *st = this->sort_list[i];
+			int x;
+
+			assert(st->xy != 0);
+
+			/* Do not do the complex check HasStationInUse here, it may be even false
+				* when the order had been removed and the station list hasn't been removed yet */
+			assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
+
+			SetDParam(0, st->index);
+			SetDParam(1, st->facilities);
+			x = DrawString(xb, y, STR_3049_0, TC_FROMSTRING) + 5;
+
+			/* show cargo waiting and station ratings */
+			for (CargoID j = 0; j < NUM_CARGO; j++) {
+				if (!st->goods[j].cargo.Empty()) {
+					StationsWndShowStationRating(x, y, j, st->goods[j].cargo.Count(), st->goods[j].rating);
+					x += 20;
 				}
+			}
+			y += 10;
+		}
+	}
 
-				case SLW_TRAIN:
-				case SLW_TRUCK:
-				case SLW_BUS:
-				case SLW_AIRPLANE:
-				case SLW_SHIP:
-					if (_ctrl_pressed) {
-						ToggleBit(facilities, e->we.click.widget - SLW_TRAIN);
-						w->ToggleWidgetLoweredState(e->we.click.widget);
-					} else {
-						uint i;
-						FOR_EACH_SET_BIT(i, facilities) {
-							w->RaiseWidget(i + SLW_TRAIN);
-						}
-						SetBit(facilities, e->we.click.widget - SLW_TRAIN);
-						w->LowerWidget(e->we.click.widget);
+	virtual void OnClick(Point pt, int widget)
+	{
+		PlayerID owner = (PlayerID)this->window_number;
+
+		switch (widget) {
+			case SLW_LIST: {
+				uint32 id_v = (pt.y - 41) / 10;
+
+				if (id_v >= this->vscroll.cap) return; // click out of bounds
+
+				id_v += this->vscroll.pos;
+
+				if (id_v >= this->list_length) return; // click out of list bound
+
+				const Station *st = this->sort_list[id_v];
+				/* do not check HasStationInUse - it is slow and may be invalid */
+				assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
+
+				if (_ctrl_pressed) {
+					ShowExtraViewPortWindow(st->xy);
+				} else {
+					ScrollMainWindowToTile(st->xy);
+				}
+				break;
+			}
+
+			case SLW_TRAIN:
+			case SLW_TRUCK:
+			case SLW_BUS:
+			case SLW_AIRPLANE:
+			case SLW_SHIP:
+				if (_ctrl_pressed) {
+					ToggleBit(facilities, widget - SLW_TRAIN);
+					this->ToggleWidgetLoweredState(widget);
+				} else {
+					uint i;
+					FOR_EACH_SET_BIT(i, facilities) {
+						this->RaiseWidget(i + SLW_TRAIN);
 					}
-					w->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-					sl->flags |= VL_REBUILD;
-					w->SetDirty();
-					break;
+					SetBit(facilities, widget - SLW_TRAIN);
+					this->LowerWidget(widget);
+				}
+				this->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+				this->flags |= VL_REBUILD;
+				this->SetDirty();
+				break;
 
-				case SLW_FACILALL:
-					for (uint i = 0; i < 5; i++) {
-						w->LowerWidget(i + SLW_TRAIN);
+			case SLW_FACILALL:
+				for (uint i = 0; i < 5; i++) {
+					this->LowerWidget(i + SLW_TRAIN);
+				}
+				this->LowerWidget(SLW_FACILALL);
+
+				facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
+				this->flags |= VL_REBUILD;
+				this->SetDirty();
+				break;
+
+			case SLW_CARGOALL: {
+				uint i = 0;
+				for (CargoID c = 0; c < NUM_CARGO; c++) {
+					if (!GetCargo(c)->IsValid()) continue;
+					this->LowerWidget(i + SLW_CARGOSTART);
+					i++;
+				}
+				this->LowerWidget(SLW_NOCARGOWAITING);
+				this->LowerWidget(SLW_CARGOALL);
+
+				_cargo_filter = _cargo_mask;
+				include_empty = true;
+				this->flags |= VL_REBUILD;
+				this->SetDirty();
+				break;
+			}
+
+			case SLW_SORTBY: // flip sorting method asc/desc
+				this->flags ^= VL_DESC; //DESC-flag
+				station_sort.order = HasBit(this->flags, 0);
+				this->flags |= VL_RESORT;
+				this->flags4 |= 5 << WF_TIMEOUT_SHL;
+				this->LowerWidget(SLW_SORTBY);
+				this->SetDirty();
+				break;
+
+			case SLW_SORTDROPBTN: // select sorting criteria dropdown menu
+				ShowDropDownMenu(this, _station_sort_listing, this->sort_type, SLW_SORTDROPBTN, 0, 0);
+				break;
+
+			case SLW_NOCARGOWAITING:
+				if (_ctrl_pressed) {
+					include_empty = !include_empty;
+					this->ToggleWidgetLoweredState(SLW_NOCARGOWAITING);
+				} else {
+					for (uint i = SLW_CARGOSTART; i < this->widget_count; i++) {
+						this->RaiseWidget(i);
 					}
-					w->LowerWidget(SLW_FACILALL);
 
-					facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-					sl->flags |= VL_REBUILD;
-					w->SetDirty();
-					break;
+					_cargo_filter = 0;
+					include_empty = true;
 
-				case SLW_CARGOALL: {
-					uint i = 0;
-					for (CargoID c = 0; c < NUM_CARGO; c++) {
+					this->LowerWidget(SLW_NOCARGOWAITING);
+				}
+				this->flags |= VL_REBUILD;
+				this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+				this->SetDirty();
+				break;
+
+			default:
+				if (widget >= SLW_CARGOSTART) { // change cargo_filter
+					/* Determine the selected cargo type */
+					CargoID c;
+					int i = 0;
+					for (c = 0; c < NUM_CARGO; c++) {
 						if (!GetCargo(c)->IsValid()) continue;
-						w->LowerWidget(i + SLW_CARGOSTART);
+						if (widget - SLW_CARGOSTART == i) break;
 						i++;
 					}
-					w->LowerWidget(SLW_NOCARGOWAITING);
-					w->LowerWidget(SLW_CARGOALL);
 
-					_cargo_filter = _cargo_mask;
-					include_empty = true;
-					sl->flags |= VL_REBUILD;
-					w->SetDirty();
-					break;
-				}
-
-				case SLW_SORTBY: // flip sorting method asc/desc
-					sl->flags ^= VL_DESC; //DESC-flag
-					station_sort.order = HasBit(sl->flags, 0);
-					sl->flags |= VL_RESORT;
-					w->flags4 |= 5 << WF_TIMEOUT_SHL;
-					w->LowerWidget(SLW_SORTBY);
-					w->SetDirty();
-					break;
-
-				case SLW_SORTDROPBTN: // select sorting criteria dropdown menu
-					ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, SLW_SORTDROPBTN, 0, 0);
-					break;
-
-				case SLW_NOCARGOWAITING:
 					if (_ctrl_pressed) {
-						include_empty = !include_empty;
-						w->ToggleWidgetLoweredState(SLW_NOCARGOWAITING);
+						ToggleBit(_cargo_filter, c);
+						this->ToggleWidgetLoweredState(widget);
 					} else {
-						for (uint i = SLW_CARGOSTART; i < w->widget_count; i++) {
-							w->RaiseWidget(i);
+						for (uint i = SLW_CARGOSTART; i < this->widget_count; i++) {
+							this->RaiseWidget(i);
 						}
+						this->RaiseWidget(SLW_NOCARGOWAITING);
 
 						_cargo_filter = 0;
-						include_empty = true;
+						include_empty = false;
 
-						w->LowerWidget(SLW_NOCARGOWAITING);
+						SetBit(_cargo_filter, c);
+						this->LowerWidget(widget);
 					}
-					sl->flags |= VL_REBUILD;
-					w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
-					w->SetDirty();
-					break;
-
-				default:
-					if (e->we.click.widget >= SLW_CARGOSTART) { // change cargo_filter
-						/* Determine the selected cargo type */
-						CargoID c;
-						int i = 0;
-						for (c = 0; c < NUM_CARGO; c++) {
-							if (!GetCargo(c)->IsValid()) continue;
-							if (e->we.click.widget - SLW_CARGOSTART == i) break;
-							i++;
-						}
-
-						if (_ctrl_pressed) {
-							ToggleBit(_cargo_filter, c);
-							w->ToggleWidgetLoweredState(e->we.click.widget);
-						} else {
-							for (uint i = SLW_CARGOSTART; i < w->widget_count; i++) {
-								w->RaiseWidget(i);
-							}
-							w->RaiseWidget(SLW_NOCARGOWAITING);
-
-							_cargo_filter = 0;
-							include_empty = false;
-
-							SetBit(_cargo_filter, c);
-							w->LowerWidget(e->we.click.widget);
-						}
-						sl->flags |= VL_REBUILD;
-						w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
-						w->SetDirty();
-					}
-					break;
-			}
-			break;
-
-		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
-			if (sl->sort_type != e->we.dropdown.index) {
-				/* value has changed -> resort */
-				sl->sort_type = e->we.dropdown.index;
-				station_sort.criteria = sl->sort_type;
-				sl->flags |= VL_RESORT;
-			}
-			w->SetDirty();
-			break;
-
-		case WE_TICK:
-			if (_pause_game != 0) break;
-			if (--sl->resort_timer == 0) {
-				DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
-				sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				sl->flags |= VL_REBUILD;
-				w->SetDirty();
-			}
-			break;
-
-		case WE_TIMEOUT:
-			w->RaiseWidget(SLW_SORTBY);
-			w->SetDirty();
-			break;
-
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / 10;
-			break;
+					this->flags |= VL_REBUILD;
+					this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+					this->SetDirty();
+				}
+				break;
+		}
 	}
-}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (this->sort_type != index) {
+			/* value has changed -> resort */
+			this->sort_type = index;
+			station_sort.criteria = this->sort_type;
+			this->flags |= VL_RESORT;
+		}
+		this->SetDirty();
+	}
+
+	virtual void OnTick()
+	{
+		if (_pause_game != 0) return;
+		if (--this->resort_timer == 0) {
+			DEBUG(misc, 3, "Periodic rebuild station list player %d", this->window_number);
+			this->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+			this->flags |= VL_REBUILD;
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnTimeout()
+	{
+		this->RaiseWidget(SLW_SORTBY);
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / 10;
+	}
+};
+
+Listing PlayerStationsWindow::station_sort = {0, 0};
+byte PlayerStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
+bool PlayerStationsWindow::include_empty = true;
+
 
 static const Widget _player_stations_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // SLW_CLOSEBOX
@@ -593,7 +645,7 @@ static const WindowDesc _player_stations_desc = {
 	WC_STATION_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_stations_widgets,
-	PlayerStationsWndProc
+	NULL
 };
 
 /**
@@ -605,54 +657,7 @@ void ShowPlayerStations(PlayerID player)
 {
 	if (!IsValidPlayer(player)) return;
 
-	Window *w = AllocateWindowDescFront<Window>(&_player_stations_desc, player);
-	if (w == NULL) return;
-
-	w->caption_color = (byte)w->window_number;
-	w->vscroll.cap = 12;
-	w->resize.step_height = 10;
-	w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
-
-	/* Add cargo filter buttons */
-	uint num_active = 0;
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		if (GetCargo(c)->IsValid()) num_active++;
-	}
-
-	w->widget_count += num_active;
-	w->widget = ReallocT(w->widget, w->widget_count + 1);
-	w->widget[w->widget_count].type = WWT_LAST;
-
-	uint i = 0;
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		if (!GetCargo(c)->IsValid()) continue;
-
-		Widget *wi = &w->widget[SLW_CARGOSTART + i];
-		wi->type     = WWT_PANEL;
-		wi->display_flags = RESIZE_NONE;
-		wi->color    = 14;
-		wi->left     = 89 + i * 14;
-		wi->right    = wi->left + 13;
-		wi->top      = 14;
-		wi->bottom   = 24;
-		wi->data     = 0;
-		wi->tooltips = STR_USE_CTRL_TO_SELECT_MORE;
-
-		if (HasBit(_cargo_filter, c)) w->LowerWidget(SLW_CARGOSTART + i);
-		i++;
-	}
-
-	w->widget[SLW_NOCARGOWAITING].left += num_active * 14;
-	w->widget[SLW_NOCARGOWAITING].right += num_active * 14;
-	w->widget[SLW_CARGOALL].left += num_active * 14;
-	w->widget[SLW_CARGOALL].right += num_active * 14;
-	w->widget[SLW_PAN_RIGHT].left += num_active * 14;
-
-	if (num_active > 15) {
-		/* Resize and fix the minimum width, if necessary */
-		ResizeWindow(w, (num_active - 15) * 14, 0);
-		w->resize.width = w->width;
-	}
+	AllocateWindowDescFront<PlayerStationsWindow>(&_player_stations_desc, player);
 }
 
 static const Widget _station_view_widgets[] = {
