@@ -43,7 +43,6 @@ struct chatquerystr_d : public querystr_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
 
 struct network_d {
-	PlayerID company;        // select company in network lobby
 	byte field;              // select text-field in start-server and game-listing
 	byte widget_id;          ///< The widget that has the pop-up input menu
 	NetworkGameList *server; // selected server in lobby and game-listing
@@ -1030,164 +1029,155 @@ enum NetworkLobbyWindowWidgets {
 	NLWW_CANCEL   = 12, ///< 'Cancel' button
 };
 
-/**
- * Handler of actions done in the NetworkLobby window
- *
- * @param w pointer to the Window structure
- * @param e pointer to window event
- * @note    uses network_d WP macro
- * @see     struct _network_lobby_window_widgets
- * @see     enum NetworkLobbyWindowWidgets
- */
-static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
-{
-	network_d *nd = &WP(w, network_d);
+struct NetworkLobbyWindow : public Window {
+	PlayerID company;        ///< Select company
+	NetworkGameList *server; ///< Selected server
 
-	switch (e->event) {
-		case WE_CREATE:
-			nd->company = INVALID_PLAYER;
-			break;
-
-		case WE_PAINT: {
-			const NetworkGameInfo *gi = &nd->server->info;
-			int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
-
-			/* Join button is disabled when no company is selected */
-			w->SetWidgetDisabledState(NLWW_JOIN, nd->company == INVALID_PLAYER);
-			/* Cannot start new company if there are too many */
-			w->SetWidgetDisabledState(NLWW_NEW, gi->companies_on >= gi->companies_max);
-			/* Cannot spectate if there are too many spectators */
-			w->SetWidgetDisabledState(NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
-
-			/* Draw window widgets */
-			SetDParamStr(0, gi->server_name);
-			DrawWindowWidgets(w);
-
-			/* Draw company list */
-			pos = w->vscroll.pos;
-			while (pos < gi->companies_on) {
-				byte company = NetworkLobbyFindCompanyIndex(pos);
-				bool income = false;
-				if (nd->company == company)
-					GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
-
-				DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
-				if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
-
-				/* If the company's income was positive puts a green dot else a red dot */
-				if (_network_player_info[company].income >= 0) income = true;
-				DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
-
-				pos++;
-				y += NET_PRC__SIZE_OF_ROW;
-				if (pos >= w->vscroll.cap) break;
-			}
-
-			/* Draw info about selected company when it is selected in the left window */
-			GfxFillRect(174, 39, 403, 75, 157);
-			DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
-			if (nd->company != INVALID_PLAYER) {
-				const uint x = 183;
-				const uint trunc_width = w->widget[NLWW_DETAILS].right - x;
-				y = 80;
-
-				SetDParam(0, nd->server->info.clients_on);
-				SetDParam(1, nd->server->info.clients_max);
-				SetDParam(2, nd->server->info.companies_on);
-				SetDParam(3, nd->server->info.companies_max);
-				DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
-				y += 10;
-
-				SetDParamStr(0, _network_player_info[nd->company].company_name);
-				DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, TC_GOLD, trunc_width);
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].inaugurated_year);
-				DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].company_value);
-				DrawString(x, y, STR_NETWORK_VALUE, TC_GOLD); // company value
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].money);
-				DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].income);
-				DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].performance);
-				DrawString(x, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].num_vehicle[0]);
-				SetDParam(1, _network_player_info[nd->company].num_vehicle[1]);
-				SetDParam(2, _network_player_info[nd->company].num_vehicle[2]);
-				SetDParam(3, _network_player_info[nd->company].num_vehicle[3]);
-				SetDParam(4, _network_player_info[nd->company].num_vehicle[4]);
-				DrawString(x, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
-				y += 10;
-
-				SetDParam(0, _network_player_info[nd->company].num_station[0]);
-				SetDParam(1, _network_player_info[nd->company].num_station[1]);
-				SetDParam(2, _network_player_info[nd->company].num_station[2]);
-				SetDParam(3, _network_player_info[nd->company].num_station[3]);
-				SetDParam(4, _network_player_info[nd->company].num_station[4]);
-				DrawString(x, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
-				y += 10;
-
-				SetDParamStr(0, _network_player_info[nd->company].players);
-				DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, TC_GOLD, trunc_width); // players
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case NLWW_CLOSE:    // Close 'X'
-				case NLWW_CANCEL:   // Cancel button
-					ShowNetworkGameWindow();
-					break;
-
-				case NLWW_MATRIX: { // Company list
-					uint32 id_v = (e->we.click.pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
-
-					if (id_v >= w->vscroll.cap) break;
-
-					id_v += w->vscroll.pos;
-					nd->company = (id_v >= nd->server->info.companies_on) ? INVALID_PLAYER : NetworkLobbyFindCompanyIndex(id_v);
-					SetWindowDirty(w);
-				} break;
-
-				case NLWW_JOIN:     // Join company
-					/* Button can be clicked only when it is enabled */
-					_network_playas = nd->company;
-					NetworkClientConnectGame(_network_last_host, _network_last_port);
-					break;
-
-				case NLWW_NEW:      // New company
-					_network_playas = PLAYER_NEW_COMPANY;
-					NetworkClientConnectGame(_network_last_host, _network_last_port);
-					break;
-
-				case NLWW_SPECTATE: // Spectate game
-					_network_playas = PLAYER_SPECTATOR;
-					NetworkClientConnectGame(_network_last_host, _network_last_port);
-					break;
-
-				case NLWW_REFRESH:  // Refresh
-					NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
-					NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
-					break;
-			}
-			break;
-
-		case WE_INVALIDATE_DATA:
-			SetWindowDirty(w);
-			break;
+	NetworkLobbyWindow(const WindowDesc *desc, NetworkGameList *ngl) :
+			Window(desc), company(INVALID_PLAYER), server(ngl)
+	{
+		strcpy(_edit_str_net_buf, "");
+		this->vscroll.cap = 10;
 	}
-}
+
+	virtual void OnPaint()
+	{
+		const NetworkGameInfo *gi = &this->server->info;
+		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
+
+		/* Join button is disabled when no company is selected */
+		this->SetWidgetDisabledState(NLWW_JOIN, this->company == INVALID_PLAYER);
+		/* Cannot start new company if there are too many */
+		this->SetWidgetDisabledState(NLWW_NEW, gi->companies_on >= gi->companies_max);
+		/* Cannot spectate if there are too many spectators */
+		this->SetWidgetDisabledState(NLWW_SPECTATE, gi->spectators_on >= gi->spectators_max);
+
+		/* Draw window widgets */
+		SetDParamStr(0, gi->server_name);
+		DrawWindowWidgets(this);
+
+		/* Draw company list */
+		pos = this->vscroll.pos;
+		while (pos < gi->companies_on) {
+			byte company = NetworkLobbyFindCompanyIndex(pos);
+			bool income = false;
+			if (this->company == company) {
+				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
+			}
+
+			DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
+			if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
+
+			/* If the company's income was positive puts a green dot else a red dot */
+			if (_network_player_info[company].income >= 0) income = true;
+			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
+
+			pos++;
+			y += NET_PRC__SIZE_OF_ROW;
+			if (pos >= this->vscroll.cap) break;
+		}
+
+		/* Draw info about selected company when it is selected in the left window */
+		GfxFillRect(174, 39, 403, 75, 157);
+		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
+		if (this->company != INVALID_PLAYER) {
+			const uint x = 183;
+			const uint trunc_width = this->widget[NLWW_DETAILS].right - x;
+			y = 80;
+
+			SetDParam(0, gi->clients_on);
+			SetDParam(1, gi->clients_max);
+			SetDParam(2, gi->companies_on);
+			SetDParam(3, gi->companies_max);
+			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
+			y += 10;
+
+			SetDParamStr(0, _network_player_info[this->company].company_name);
+			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, TC_GOLD, trunc_width);
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].inaugurated_year);
+			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].company_value);
+			DrawString(x, y, STR_NETWORK_VALUE, TC_GOLD); // company value
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].money);
+			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].income);
+			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].performance);
+			DrawString(x, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].num_vehicle[0]);
+			SetDParam(1, _network_player_info[this->company].num_vehicle[1]);
+			SetDParam(2, _network_player_info[this->company].num_vehicle[2]);
+			SetDParam(3, _network_player_info[this->company].num_vehicle[3]);
+			SetDParam(4, _network_player_info[this->company].num_vehicle[4]);
+			DrawString(x, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
+			y += 10;
+
+			SetDParam(0, _network_player_info[this->company].num_station[0]);
+			SetDParam(1, _network_player_info[this->company].num_station[1]);
+			SetDParam(2, _network_player_info[this->company].num_station[2]);
+			SetDParam(3, _network_player_info[this->company].num_station[3]);
+			SetDParam(4, _network_player_info[this->company].num_station[4]);
+			DrawString(x, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
+			y += 10;
+
+			SetDParamStr(0, _network_player_info[this->company].players);
+			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, TC_GOLD, trunc_width); // players
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case NLWW_CLOSE:    // Close 'X'
+			case NLWW_CANCEL:   // Cancel button
+				ShowNetworkGameWindow();
+				break;
+
+			case NLWW_MATRIX: { // Company list
+				uint32 id_v = (pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
+
+				if (id_v >= this->vscroll.cap) break;
+
+				id_v += this->vscroll.pos;
+				this->company = (id_v >= this->server->info.companies_on) ? INVALID_PLAYER : NetworkLobbyFindCompanyIndex(id_v);
+				this->SetDirty();
+			} break;
+
+			case NLWW_JOIN:     // Join company
+				/* Button can be clicked only when it is enabled */
+				_network_playas = this->company;
+				NetworkClientConnectGame(_network_last_host, _network_last_port);
+				break;
+
+			case NLWW_NEW:      // New company
+				_network_playas = PLAYER_NEW_COMPANY;
+				NetworkClientConnectGame(_network_last_host, _network_last_port);
+				break;
+
+			case NLWW_SPECTATE: // Spectate game
+				_network_playas = PLAYER_SPECTATOR;
+				NetworkClientConnectGame(_network_last_host, _network_last_port);
+				break;
+
+			case NLWW_REFRESH:  // Refresh
+				NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
+				NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
+				break;
+		}
+	}
+};
 
 static const Widget _network_lobby_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW },           // NLWW_CLOSE
@@ -1218,7 +1208,7 @@ static const WindowDesc _network_lobby_window_desc = {
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_lobby_window_widgets,
-	NetworkLobbyWindowWndProc,
+	NULL,
 };
 
 /* Show the networklobbywindow with the selected server
@@ -1230,12 +1220,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
 	NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
 
-	Window *w = new Window(&_network_lobby_window_desc);
-	if (w != NULL) {
-		WP(w, network_ql_d).n.server = ngl;
-		strcpy(_edit_str_net_buf, "");
-		w->vscroll.cap = 10;
-	}
+	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
 }
 
 // The window below gives information about the connected clients
