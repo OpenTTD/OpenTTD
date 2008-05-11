@@ -56,7 +56,13 @@ static void DeleteDropDownList(DropDownList *list)
 	delete list;
 }
 
-struct dropdown_d {
+static const Widget _dropdown_menu_widgets[] = {
+{      WWT_PANEL,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WIDGETS_END},
+};
+
+struct DropdownWindow : Window {
 	WindowClass parent_wnd_class;
 	WindowNumber parent_wnd_num;
 	byte parent_button;
@@ -65,160 +71,157 @@ struct dropdown_d {
 	byte click_delay;
 	bool drag_mode;
 	int scrolling;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 
-static const Widget _dropdown_menu_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
-{  WWT_SCROLLBAR,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
-};
+	DropdownWindow(int x, int y, int width, int height, const Widget *widget) : Window(x, y, width, height, NULL, WC_DROPDOWN_MENU, widget)
+	{
+	}
 
-static int GetDropDownItem(const Window *w)
-{
-	if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) < 0) return -1;
-
-	int y     = _cursor.pos.y - w->top - 2;
-	int width = w->widget[0].right - 3;
-	int pos   = w->vscroll.pos;
-
-	const DropDownList *list = WP(w, dropdown_d).list;
-
-	for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
-		/* Skip items that are scrolled up */
-		if (--pos >= 0) continue;
-
-		const DropDownListItem *item = *it;
-		int item_height = item->Height(width);
-
-		if (y < item_height) {
-			if (item->masked || item->String() == STR_NULL) return -1;
-			return item->result;
+	~DropdownWindow()
+	{
+		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
+		if (w2 != NULL) {
+			w2->RaiseWidget(this->parent_button);
+			w2->InvalidateWidget(this->parent_button);
 		}
 
-		y -= item_height;
+		DeleteDropDownList(this->list);
 	}
 
-	return -1;
-}
+	int GetDropDownItem()
+	{
+		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return -1;
 
-static void DropDownMenuWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			DrawWindowWidgets(w);
+		int y     = _cursor.pos.y - this->top - 2;
+		int width = this->widget[0].right - 3;
+		int pos   = this->vscroll.pos;
 
-			int x = 1;
-			int y = 2;
+		const DropDownList *list = this->list;
 
-			int sel    = WP(w, dropdown_d).selected_index;
-			int width  = w->widget[0].right - 3;
-			int height = w->widget[0].bottom;
-			int pos    = w->vscroll.pos;
+		for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
+			/* Skip items that are scrolled up */
+			if (--pos >= 0) continue;
 
-			DropDownList *list = WP(w, dropdown_d).list;
+			const DropDownListItem *item = *it;
+			int item_height = item->Height(width);
 
-			for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
-				const DropDownListItem *item = *it;
-				int item_height = item->Height(width);
+			if (y < item_height) {
+				if (item->masked || item->String() == STR_NULL) return -1;
+				return item->result;
+			}
 
-				/* Skip items that are scrolled up */
-				if (--pos >= 0) continue;
+			y -= item_height;
+		}
 
-				if (y + item_height < height) {
-					if (item->String() != STR_NULL) {
-						if (sel == item->result) GfxFillRect(x + 1, y, x + width, y + item_height - 1, 0);
+		return -1;
+	}
 
-						item->Draw(x, y, width, 10, sel == item->result);
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
 
-						if (item->masked) {
-							GfxFillRect(x, y, x + width, y + item_height - 1,
-								(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[w->widget[0].color][5]
-							);
-						}
-					} else {
-						int c1 = _colour_gradient[w->widget[0].color][3];
-						int c2 = _colour_gradient[w->widget[0].color][7];
+		int x = 1;
+		int y = 2;
 
-						GfxFillRect(x + 1, y + 3, x + w->width - 5, y + 3, c1);
-						GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);
+		int sel    = this->selected_index;
+		int width  = this->widget[0].right - 3;
+		int height = this->widget[0].bottom;
+		int pos    = this->vscroll.pos;
+
+		DropDownList *list = this->list;
+
+		for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
+			const DropDownListItem *item = *it;
+			int item_height = item->Height(width);
+
+			/* Skip items that are scrolled up */
+			if (--pos >= 0) continue;
+
+			if (y + item_height < height) {
+				if (item->String() != STR_NULL) {
+					if (sel == item->result) GfxFillRect(x + 1, y, x + width, y + item_height - 1, 0);
+
+					item->Draw(x, y, width, 10, sel == item->result);
+
+					if (item->masked) {
+						GfxFillRect(x, y, x + width, y + item_height - 1,
+							(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[this->widget[0].color][5]
+						);
 					}
-				}
-				y += item_height;
-			}
-		} break;
-
-		case WE_CLICK: {
-			if (e->we.click.widget != 0) break;
-			int item = GetDropDownItem(w);
-			if (item >= 0) {
-				WP(w, dropdown_d).click_delay = 4;
-				WP(w, dropdown_d).selected_index = item;
-				SetWindowDirty(w);
-			}
-		} break;
-
-		case WE_TICK:
-			if (WP(w, dropdown_d).scrolling == -1) {
-				w->vscroll.pos = max(0, w->vscroll.pos - 1);
-				SetWindowDirty(w);
-			} else if (WP(w, dropdown_d).scrolling == 1) {
-				w->vscroll.pos = min(w->vscroll.count - w->vscroll.cap, w->vscroll.pos + 1);
-				SetWindowDirty(w);
-			}
-			WP(w, dropdown_d).scrolling = 0;
-			break;
-
-		case WE_MOUSELOOP: {
-			Window *w2 = FindWindowById(WP(w, dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
-			if (w2 == NULL) {
-				delete w;
-				return;
-			}
-
-			if (WP(w, dropdown_d).click_delay != 0 && --WP(w,dropdown_d).click_delay == 0) {
-				w2->OnDropdownSelect(WP(w, dropdown_d).parent_button, WP(w, dropdown_d).selected_index);
-				delete w;
-				return;
-			}
-
-			if (WP(w, dropdown_d).drag_mode) {
-				int item = GetDropDownItem(w);
-
-				if (!_left_button_clicked) {
-					WP(w, dropdown_d).drag_mode = false;
-					if (item < 0) return;
-					WP(w, dropdown_d).click_delay = 2;
 				} else {
-					if (_cursor.pos.y <= w->top + 2) {
-						/* Cursor is above the list, set scroll up */
-						WP(w, dropdown_d).scrolling = -1;
-						return;
-					} else if (_cursor.pos.y >= w->top + w->height - 2) {
-						/* Cursor is below list, set scroll down */
-						WP(w, dropdown_d).scrolling = 1;
-						return;
-					}
+					int c1 = _colour_gradient[this->widget[0].color][3];
+					int c2 = _colour_gradient[this->widget[0].color][7];
 
-					if (item < 0) return;
+					GfxFillRect(x + 1, y + 3, x + this->width - 5, y + 3, c1);
+					GfxFillRect(x + 1, y + 4, x + this->width - 5, y + 4, c2);
+				}
+			}
+			y += item_height;
+		}
+	};
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget != 0) return;
+		int item = GetDropDownItem();
+		if (item >= 0) {
+			this->click_delay = 4;
+			this->selected_index = item;
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnTick()
+	{
+		if (this->scrolling == -1) {
+			this->vscroll.pos = max(0, this->vscroll.pos - 1);
+			this->SetDirty();
+		} else if (this->scrolling == 1) {
+			this->vscroll.pos = min(this->vscroll.count - this->vscroll.cap, this->vscroll.pos + 1);
+			this->SetDirty();
+		}
+		this->scrolling = 0;
+	}
+
+	virtual void OnMouseLoop()
+	{
+		Window *w2 = FindWindowById(this->parent_wnd_class, this->parent_wnd_num);
+		if (w2 == NULL) {
+			delete this;
+			return;
+		}
+
+		if (this->click_delay != 0 && --this->click_delay == 0) {
+			w2->OnDropdownSelect(this->parent_button, this->selected_index);
+			delete this;
+			return;
+		}
+
+		if (this->drag_mode) {
+			int item = GetDropDownItem();
+
+			if (!_left_button_clicked) {
+				this->drag_mode = false;
+				if (item < 0) return;
+				this->click_delay = 2;
+			} else {
+				if (_cursor.pos.y <= this->top + 2) {
+					/* Cursor is above the list, set scroll up */
+					this->scrolling = -1;
+					return;
+				} else if (_cursor.pos.y >= this->top + this->height - 2) {
+					/* Cursor is below list, set scroll down */
+					this->scrolling = 1;
+					return;
 				}
 
-				WP(w, dropdown_d).selected_index = item;
-				SetWindowDirty(w);
-			}
-		} break;
-
-		case WE_DESTROY: {
-			Window *w2 = FindWindowById(WP(w, dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
-			if (w2 != NULL) {
-				w2->RaiseWidget(WP(w, dropdown_d).parent_button);
-				w2->InvalidateWidget(WP(w, dropdown_d).parent_button);
+				if (item < 0) return;
 			}
 
-			DeleteDropDownList(WP(w, dropdown_d).list);
-		} break;
+			this->selected_index = item;
+			this->SetDirty();
+		}
 	}
-}
+};
 
 void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width)
 {
@@ -278,13 +281,11 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 	if (width == 0) width = wi->right - wi->left + 1;
 
-	Window *dw = new Window(
+	DropdownWindow *dw = new DropdownWindow(
 		w->left + wi->left,
 		top,
 		width,
 		height + 4,
-		DropDownMenuWndProc,
-		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	dw->widget[0].color = wi->color;
@@ -310,13 +311,13 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	dw->desc_flags = WDF_DEF_WIDGET;
 	dw->flags4 &= ~WF_WHITE_BORDER_MASK;
 
-	WP(dw, dropdown_d).parent_wnd_class = w->window_class;
-	WP(dw, dropdown_d).parent_wnd_num   = w->window_number;
-	WP(dw, dropdown_d).parent_button    = button;
-	WP(dw, dropdown_d).list             = list;
-	WP(dw, dropdown_d).selected_index   = selected;
-	WP(dw, dropdown_d).click_delay      = 0;
-	WP(dw, dropdown_d).drag_mode        = true;
+	dw->parent_wnd_class = w->window_class;
+	dw->parent_wnd_num   = w->window_number;
+	dw->parent_button    = button;
+	dw->list             = list;
+	dw->selected_index   = selected;
+	dw->click_delay      = 0;
+	dw->drag_mode        = true;
 }
 
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
@@ -356,9 +357,10 @@ void HideDropDownMenu(Window *pw)
 	FOR_ALL_WINDOWS(wz) {
 		if ((*wz)->window_class != WC_DROPDOWN_MENU) continue;
 
-		if (pw->window_class == WP(*wz, dropdown_d).parent_wnd_class &&
-				pw->window_number == WP(*wz, dropdown_d).parent_wnd_num) {
-			delete *wz;
+		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(*wz);
+		if (pw->window_class == dw->parent_wnd_class &&
+				pw->window_number == dw->parent_wnd_num) {
+			delete dw;
 			break;
 		}
 	}
