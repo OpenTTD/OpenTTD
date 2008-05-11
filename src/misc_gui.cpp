@@ -1104,63 +1104,76 @@ enum QueryWidgets {
 	QUERY_WIDGET_YES
 };
 
-
-struct query_d {
+/**
+ * Window used for asking the user a YES/NO question.
+ */
+struct QueryWindow : public Window {
 	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
 	uint64 params[10];           ///< local copy of _decode_parameters
 	StringID message;            ///< message shown for query window
-	bool calledback;             ///< has callback been executed already (internal usage for WE_DESTROY event)
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(query_d));
 
+	QueryWindow(const WindowDesc *desc, StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool)) : Window(desc)
+	{
+		if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
+		this->parent = parent;
+		this->left = parent->left + (parent->width / 2) - (this->width / 2);
+		this->top = parent->top + (parent->height / 2) - (this->height / 2);
 
-static void QueryWndProc(Window *w, WindowEvent *e)
-{
-	query_d *q = &WP(w, query_d);
-
-	switch (e->event) {
-		case WE_PAINT:
-			CopyInDParam(0, q->params, lengthof(q->params));
-			DrawWindowWidgets(w);
-			CopyInDParam(0, q->params, lengthof(q->params));
-
-			DrawStringMultiCenter(w->width / 2, (w->height / 2) - 10, q->message, w->width - 2);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case QUERY_WIDGET_YES:
-					q->calledback = true;
-					if (q->proc != NULL) q->proc(w->parent, true);
-					/* Fallthrough */
-				case QUERY_WIDGET_NO:
-					delete w;
-					break;
-				}
-			break;
-
-		case WE_KEYPRESS: // ESC closes the window, Enter confirms the action
-			switch (e->we.keypress.keycode) {
-				case WKC_RETURN:
-				case WKC_NUM_ENTER:
-					q->calledback = true;
-					if (q->proc != NULL) q->proc(w->parent, true);
-					/* Fallthrough */
-				case WKC_ESC:
-					e->we.keypress.cont = false;
-					delete w;
-					break;
-			}
-			break;
-
-		case WE_DESTROY: // Call callback function (if any) on window close if not yet called
-			if (!q->calledback && q->proc != NULL) {
-				q->calledback = true;
-				q->proc(w->parent, false);
-			}
-			break;
+		/* Create a backup of the variadic arguments to strings because it will be
+		* overridden pretty often. We will copy these back for drawing */
+		CopyOutDParam(this->params, 0, lengthof(this->params));
+		this->widget[QUERY_WIDGET_CAPTION].data = caption;
+		this->message    = message;
+		this->proc       = callback;
 	}
-}
+
+	~QueryWindow()
+	{
+		if (this->proc != NULL) this->proc(this->parent, false);
+	}
+
+	virtual void OnPaint()
+	{
+		CopyInDParam(0, this->params, lengthof(this->params));
+		DrawWindowWidgets(this);
+		CopyInDParam(0, this->params, lengthof(this->params));
+
+		DrawStringMultiCenter(this->width / 2, (this->height / 2) - 10, this->message, this->width - 2);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case QUERY_WIDGET_YES:
+				if (this->proc != NULL) {
+					this->proc(this->parent, true);
+					this->proc = NULL;
+				}
+				/* Fallthrough */
+			case QUERY_WIDGET_NO:
+				delete this;
+				break;
+		}
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		/* ESC closes the window, Enter confirms the action */
+		switch (keycode) {
+			case WKC_RETURN:
+			case WKC_NUM_ENTER:
+				if (this->proc != NULL) {
+					this->proc(this->parent, true);
+					this->proc = NULL;
+				}
+				/* Fallthrough */
+			case WKC_ESC:
+				delete this;
+				return false;
+		}
+		return true;
+	}
+};
 
 
 static const Widget _query_widgets[] = {
@@ -1177,7 +1190,7 @@ static const WindowDesc _query_desc = {
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
 	_query_widgets,
-	QueryWndProc
+	NULL
 };
 
 /** Show a modal confirmation window with standard 'yes' and 'no' buttons
@@ -1190,21 +1203,7 @@ static const WindowDesc _query_desc = {
  * @param callback callback function pointer to set in the window descriptor*/
 void ShowQuery(StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool))
 {
-	Window *w = new Window(&_query_desc);
-	if (w == NULL) return;
-
-	if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
-	w->parent = parent;
-	w->left = parent->left + (parent->width / 2) - (w->width / 2);
-	w->top = parent->top + (parent->height / 2) - (w->height / 2);
-
-	/* Create a backup of the variadic arguments to strings because it will be
-	 * overridden pretty often. We will copy these back for drawing */
-	CopyOutDParam(WP(w, query_d).params, 0, lengthof(WP(w, query_d).params));
-	w->widget[QUERY_WIDGET_CAPTION].data = caption;
-	WP(w, query_d).message    = message;
-	WP(w, query_d).proc       = callback;
-	WP(w, query_d).calledback = false;
+	new QueryWindow(&_query_desc, caption, message, parent, callback);
 }
 
 
