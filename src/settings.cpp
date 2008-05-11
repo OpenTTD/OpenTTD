@@ -1147,6 +1147,14 @@ static int32 InvalidateStationBuildWindow(int32 p1)
 	return 0;
 }
 
+static int32 CloseSignalGUI(int32 p1)
+{
+	if (p1 == 0) {
+		DeleteWindowByClass(WC_BUILD_SIGNAL);
+	}
+	return 0;
+}
+
 static int32 UpdateConsists(int32 p1)
 {
 	Vehicle *v;
@@ -1414,7 +1422,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, longbridges,                   0,NN,  true,        STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
 	SDT_BOOL(Patches, signal_side,                   N,NN,  true,        STR_CONFIG_PATCHES_SIGNALSIDE,          RedrawScreen),
 	SDT_BOOL(Patches, always_small_airport,          0,NN, false,        STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
-	SDT_BOOL(Patches, enable_signal_gui,             S, 0, false,        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,   NULL),
+	SDT_BOOL(Patches, enable_signal_gui,             S, 0, false,        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,   CloseSignalGUI),
 	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1, 20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,DragSignalsDensityChanged),
 	 SDT_VAR(Patches, semaphore_build_before,SLE_INT32, S, NC, 1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
 	SDT_CONDVAR(Patches, town_layout, SLE_UINT8, 59, SL_MAX_VERSION, 0, MS, TL_ORIGINAL, TL_NO_ROADS, NUM_TLS - 1, 1, STR_CONFIG_PATCHES_TOWN_LAYOUT, CheckTownLayout),
