@@ -165,30 +165,14 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
 }
 
-/** Flags for station list */
-enum StationListFlags {
-	SL_ORDER   = 1 << 0, ///< Order - ascending (=0), descending (=1)
-	SL_RESORT  = 1 << 1, ///< Resort the list
-	SL_REBUILD = 1 << 2, ///< Rebuild the list
-};
-
-DECLARE_ENUM_AS_BIT_SET(StationListFlags);
-
-/** Information about station list */
-struct plstations_d {
-	const Station **sort_list; ///< Pointer to list of stations
-	uint16 list_length;        ///< Number of stations in list
-	uint16 resort_timer;       ///< Tick counter to resort the list
-	byte sort_type;            ///< Sort type - name, waiting, ...
-	byte flags;                ///< Flags - SL_ORDER, SL_RESORT, SL_REBUILD
-};
+typedef GUIList<const Station*> plstations_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
 /**
  * Set the station sort flag for all station-list windows.
  * @param sl_flag Sort list flag to set for all station-list windows
  */
-static void SetStationListsFlag(StationListFlags sl_flag)
+static void SetStationListsFlag(SortListFlags sl_flag)
 {
 	Window *const *wz;
 
@@ -202,23 +186,23 @@ static void SetStationListsFlag(StationListFlags sl_flag)
 }
 
 /**
- * Set the 'SL_REBUILD' flag for all station lists
+ * Set the 'VL_REBUILD' flag for all station lists
  */
 void RebuildStationLists()
 {
-	SetStationListsFlag(SL_REBUILD);
+	SetStationListsFlag(VL_REBUILD);
 }
 
 /**
- * Set the 'SL_RESORT' flag for all station lists
+ * Set the 'VL_RESORT' flag for all station lists
  */
 void ResortStationLists()
 {
-	SetStationListsFlag(SL_RESORT);
+	SetStationListsFlag(VL_RESORT);
 }
 
 /**
- * Rebuild station list if the SL_REBUILD flag is set
+ * Rebuild station list if the VL_REBUILD flag is set
  *
  * @param sl pointer to plstations_d (station list and flags)
  * @param owner player whose stations are to be in list
@@ -231,7 +215,7 @@ static void BuildStationsList(plstations_d *sl, PlayerID owner, byte facilities,
 	uint n = 0;
 	const Station *st;
 
-	if (!(sl->flags & SL_REBUILD)) return;
+	if (!(sl->flags & VL_REBUILD)) return;
 
 	/* Create array for sorting */
 	const Station **station_sort = MallocT<const Station*>(GetMaxStationIndex() + 1);
@@ -265,14 +249,14 @@ static void BuildStationsList(plstations_d *sl, PlayerID owner, byte facilities,
 
 	for (uint i = 0; i < n; ++i) sl->sort_list[i] = station_sort[i];
 
-	sl->flags &= ~SL_REBUILD;
-	sl->flags |= SL_RESORT;
+	sl->flags &= ~VL_REBUILD;
+	sl->flags |= VL_RESORT;
 	free((void*)station_sort);
 }
 
 
 /**
- * Sort station list if the SL_RESORT flag is set
+ * Sort station list if the VL_RESORT flag is set
  *
  * @param sl pointer to plstations_d (station list and flags)
  */
@@ -285,14 +269,14 @@ static void SortStationsList(plstations_d *sl)
 		&StationRatingMaxSorter
 	};
 
-	if (!(sl->flags & SL_RESORT)) return;
+	if (!(sl->flags & VL_RESORT)) return;
 
-	_internal_sort_order = sl->flags & SL_ORDER;
+	_internal_sort_order = sl->flags & VL_DESC;
 	_last_station = NULL; // used for "cache" in namesorting
 	qsort((void*)sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), _station_sorter[sl->sort_type]);
 
 	sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-	sl->flags &= ~SL_RESORT;
+	sl->flags &= ~VL_RESORT;
 }
 
 /**
@@ -322,9 +306,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetLoweredState(SLW_NOCARGOWAITING, include_empty);
 
 			sl->sort_list = NULL;
-			sl->flags = SL_REBUILD;
+			sl->flags = VL_REBUILD;
 			sl->sort_type = station_sort.criteria;
-			if (station_sort.order) sl->flags |= SL_ORDER;
+			if (station_sort.order) sl->flags |= VL_DESC;
 
 			/* set up resort timer */
 			sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
@@ -346,7 +330,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			DrawWindowWidgets(w);
 
 			/* draw arrow pointing up/down for ascending/descending sorting */
-			DrawSortButtonState(w, SLW_SORTBY, sl->flags & SL_ORDER ? SBS_DOWN : SBS_UP);
+			DrawSortButtonState(w, SLW_SORTBY, sl->flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 			int cg_ofst;
 			int x = 89;
@@ -449,7 +433,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 						w->LowerWidget(e->we.click.widget);
 					}
 					w->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-					sl->flags |= SL_REBUILD;
+					sl->flags |= VL_REBUILD;
 					w->SetDirty();
 					break;
 
@@ -460,7 +444,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					w->LowerWidget(SLW_FACILALL);
 
 					facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-					sl->flags |= SL_REBUILD;
+					sl->flags |= VL_REBUILD;
 					w->SetDirty();
 					break;
 
@@ -476,15 +460,15 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 					_cargo_filter = _cargo_mask;
 					include_empty = true;
-					sl->flags |= SL_REBUILD;
+					sl->flags |= VL_REBUILD;
 					w->SetDirty();
 					break;
 				}
 
 				case SLW_SORTBY: // flip sorting method asc/desc
-					sl->flags ^= SL_ORDER; //DESC-flag
+					sl->flags ^= VL_DESC; //DESC-flag
 					station_sort.order = HasBit(sl->flags, 0);
-					sl->flags |= SL_RESORT;
+					sl->flags |= VL_RESORT;
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
 					w->LowerWidget(SLW_SORTBY);
 					w->SetDirty();
@@ -508,7 +492,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 						w->LowerWidget(SLW_NOCARGOWAITING);
 					}
-					sl->flags |= SL_REBUILD;
+					sl->flags |= VL_REBUILD;
 					w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
 					w->SetDirty();
 					break;
@@ -539,7 +523,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 							SetBit(_cargo_filter, c);
 							w->LowerWidget(e->we.click.widget);
 						}
-						sl->flags |= SL_REBUILD;
+						sl->flags |= VL_REBUILD;
 						w->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
 						w->SetDirty();
 					}
@@ -552,7 +536,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				/* value has changed -> resort */
 				sl->sort_type = e->we.dropdown.index;
 				station_sort.criteria = sl->sort_type;
-				sl->flags |= SL_RESORT;
+				sl->flags |= VL_RESORT;
 			}
 			w->SetDirty();
 			break;
@@ -562,7 +546,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			if (--sl->resort_timer == 0) {
 				DEBUG(misc, 3, "Periodic rebuild station list player %d", owner);
 				sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				sl->flags |= SL_REBUILD;
+				sl->flags |= VL_REBUILD;
 				w->SetDirty();
 			}
 			break;
