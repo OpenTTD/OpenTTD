@@ -63,8 +63,6 @@ static inline bool ValidVLWFlags(uint16 flags)
 	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST || flags == VLW_GROUP_LIST);
 }
 
-void PlayerVehWndProc(Window *w, struct WindowEvent *e);
-
 int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number);
 
 void DrawTrainImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip);
@@ -134,7 +132,7 @@ Vehicle *CheckClickOnVehicle(const struct ViewPort *vp, int x, int y);
 
 typedef GUIList<const Vehicle*> GUIVehicleList;
 
-struct vehiclelist_d {
+struct VehicleListBase {
 	GUIVehicleList vehicles;  ///< The list of vehicles
 	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
 	VehicleType vehicle_type; ///< The vehicle type that is sorted
@@ -152,7 +150,7 @@ extern Sorting _sorting;
 /* sorter stuff */
 void RebuildVehicleLists();
 void ResortVehicleLists();
-void SortVehicleList(vehiclelist_d *vl);
-void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 window_type);
+void SortVehicleList(VehicleListBase *vl);
+void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 window_type);
 
 #endif /* VEHICLE_GUI_H */

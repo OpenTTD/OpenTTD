@@ -30,16 +30,6 @@
 
 typedef GUIList<const Group*> GUIGroupList;
 
-struct groupveh_d : vehiclelist_d {
-	GroupID group_sel;
-	VehicleID vehicle_sel;
-
-	GUIGroupList groups;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(groupveh_d));
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
-
-
 static void BuildGroupList(GUIGroupList *gl, PlayerID owner, VehicleType vehicle_type)
 {
 	uint n = 0;
@@ -132,6 +122,35 @@ enum GroupListWidgets {
 	GRP_WIDGET_RESIZE,
 };
 
+enum GroupActionListFunction {
+	GALF_REPLACE,
+	GALF_SERVICE,
+	GALF_DEPOT,
+	GALF_ADD_SHARED,
+	GALF_REMOVE_ALL,
+};
+
+/**
+ * Update/redraw the group action dropdown
+ * @param w   the window the dropdown belongs to
+ * @param gid the currently selected group in the window
+ */
+static void ShowGroupActionDropdown(Window *w, GroupID gid)
+{
+	DropDownList *list = new DropDownList();
+
+	list->push_back(new DropDownListStringItem(STR_REPLACE_VEHICLES,    GALF_REPLACE, false));
+	list->push_back(new DropDownListStringItem(STR_SEND_FOR_SERVICING,  GALF_SERVICE, false));
+	list->push_back(new DropDownListStringItem(STR_SEND_TRAIN_TO_DEPOT, GALF_DEPOT,   false));
+
+	if (IsValidGroupID(gid)) {
+		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE,  GALF_ADD_SHARED, false));
+		list->push_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, GALF_REMOVE_ALL, false));
+	}
+
+	ShowDropDownList(w, list, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
+}
+
 
 static const Widget _group_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
@@ -163,617 +182,575 @@ static const Widget _group_widgets[] = {
 };
 
 
-static void CreateVehicleGroupWindow(Window *w)
-{
-	const PlayerID owner = (PlayerID)GB(w->window_number, 0, 8);
-	groupveh_d     *gv = &WP(w, groupveh_d);
-	GUIVehicleList *vl = &gv->vehicles;
-	GUIGroupList   *gl = &gv->groups;
+struct VehicleGroupWindow : public Window, public VehicleListBase {
+	GroupID group_sel;
+	VehicleID vehicle_sel;
+	GUIGroupList groups;
 
-	w->caption_color = owner;
-	w->hscroll.cap = 224;
-	w->resize.step_width = 1;
+	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, NULL, window_number)
+	{
+		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
 
-	switch (gv->vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:
-		case VEH_ROAD:
-			w->vscroll.cap = 9;
-			w->vscroll2.cap = 6;
-			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-			break;
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			w->vscroll.cap = 9;
-			w->vscroll2.cap = 4;
-			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG2;
-			break;
+		this->caption_color = owner;
+		this->hscroll.cap = 224;
+		this->resize.step_width = 1;
+
+		switch (this->vehicle_type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:
+			case VEH_ROAD:
+				this->vscroll.cap = 9;
+				this->vscroll2.cap = 6;
+				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+				break;
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				this->vscroll.cap = 9;
+				this->vscroll2.cap = 4;
+				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG2;
+				break;
+		}
+
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll2.cap << 8) + 1;
+
+		switch (this->vehicle_type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:    this->sorting = &_sorting.train;    break;
+			case VEH_ROAD:     this->sorting = &_sorting.roadveh;  break;
+			case VEH_SHIP:     this->sorting = &_sorting.ship;     break;
+			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
+		}
+
+		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
+
+		this->vehicles.sort_list = NULL;
+		this->vehicles.sort_type = this->sorting->criteria;
+		this->vehicles.flags = VL_REBUILD | (this->sorting->order ? VL_DESC : VL_NONE);
+		this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+
+		this->groups.sort_list = NULL;
+		this->groups.flags = VL_REBUILD | VL_NONE;
+		this->groups.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+
+		this->group_sel = ALL_GROUP;
+		this->vehicle_sel = INVALID_VEHICLE;
+
+		switch (this->vehicle_type) {
+			case VEH_TRAIN:
+				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
+				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS;
+
+				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_TRAIN;
+				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_TRAIN;
+				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_TRAIN;
+				break;
+
+			case VEH_ROAD:
+				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_901A_ROAD_VEHICLES_CLICK_ON;
+				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
+
+				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_ROADVEH;
+				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_ROADVEH;
+				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_ROADVEH;
+				break;
+
+			case VEH_SHIP:
+				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
+				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_SHIPS;
+
+				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_SHIP;
+				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_SHIP;
+				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_SHIP;
+				break;
+
+			case VEH_AIRCRAFT:
+				this->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
+				this->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_AIRCRAFT;
+
+				this->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_AIRCRAFT;
+				this->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_AIRCRAFT;
+				this->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_AIRCRAFT;
+				break;
+
+			default: NOT_REACHED();
+		}
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
-	w->widget[GRP_WIDGET_LIST_GROUP].data = (w->vscroll.cap << 8) + 1;
-	w->widget[GRP_WIDGET_LIST_VEHICLE].data = (w->vscroll2.cap << 8) + 1;
-
-	switch (gv->vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:    gv->sorting = &_sorting.train;    break;
-		case VEH_ROAD:     gv->sorting = &_sorting.roadveh;  break;
-		case VEH_SHIP:     gv->sorting = &_sorting.ship;     break;
-		case VEH_AIRCRAFT: gv->sorting = &_sorting.aircraft; break;
+	~VehicleGroupWindow()
+	{
+		free((void*)this->vehicles.sort_list);
+		free((void*)this->groups.sort_list);
 	}
 
-	gv->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
-
-	vl->sort_list = NULL;
-	vl->sort_type = gv->sorting->criteria;
-	vl->flags = VL_REBUILD | (gv->sorting->order ? VL_DESC : VL_NONE);
-	vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
-
-	gl->sort_list = NULL;
-	gl->flags = VL_REBUILD | VL_NONE;
-	gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
-
-	gv->group_sel = ALL_GROUP;
-	gv->vehicle_sel = INVALID_VEHICLE;
-
-	switch (gv->vehicle_type) {
-		case VEH_TRAIN:
-			w->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
-			w->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_TRAINS;
-
-			w->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_TRAIN;
-			w->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_TRAIN;
-			w->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_TRAIN;
-			break;
-
-		case VEH_ROAD:
-			w->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_901A_ROAD_VEHICLES_CLICK_ON;
-			w->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_ROAD_VEHICLES;
-
-			w->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_ROADVEH;
-			w->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_ROADVEH;
-			w->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_ROADVEH;
-			break;
-
-		case VEH_SHIP:
-			w->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
-			w->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_SHIPS;
-
-			w->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_SHIP;
-			w->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_SHIP;
-			w->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_SHIP;
-			break;
-
-		case VEH_AIRCRAFT:
-			w->widget[GRP_WIDGET_LIST_VEHICLE].tooltips = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
-			w->widget[GRP_WIDGET_AVAILABLE_VEHICLES].data = STR_AVAILABLE_AIRCRAFT;
-
-			w->widget[GRP_WIDGET_CREATE_GROUP].data = SPR_GROUP_CREATE_AIRCRAFT;
-			w->widget[GRP_WIDGET_RENAME_GROUP].data = SPR_GROUP_RENAME_AIRCRAFT;
-			w->widget[GRP_WIDGET_DELETE_GROUP].data = SPR_GROUP_DELETE_AIRCRAFT;
-			break;
-
-		default: NOT_REACHED();
-	}
-}
-
-enum GroupActionListFunction {
-	GALF_REPLACE,
-	GALF_SERVICE,
-	GALF_DEPOT,
-	GALF_ADD_SHARED,
-	GALF_REMOVE_ALL,
-};
-
-/**
- * Update/redraw the group action dropdown
- * @param w   the window the dropdown belongs to
- * @param gid the currently selected group in the window
- */
-static void ShowGroupActionDropdown(Window *w, GroupID gid)
-{
-	DropDownList *list = new DropDownList();
-
-	list->push_back(new DropDownListStringItem(STR_REPLACE_VEHICLES,    GALF_REPLACE, false));
-	list->push_back(new DropDownListStringItem(STR_SEND_FOR_SERVICING,  GALF_SERVICE, false));
-	list->push_back(new DropDownListStringItem(STR_SEND_TRAIN_TO_DEPOT, GALF_DEPOT,   false));
-
-	if (IsValidGroupID(gid)) {
-		list->push_back(new DropDownListStringItem(STR_GROUP_ADD_SHARED_VEHICLE,  GALF_ADD_SHARED, false));
-		list->push_back(new DropDownListStringItem(STR_GROUP_REMOVE_ALL_VEHICLES, GALF_REMOVE_ALL, false));
+	virtual void OnInvalidateData(int data)
+	{
+		this->vehicles.flags |= VL_REBUILD;
+		this->groups.flags |= VL_REBUILD;
+		if (!(IsAllGroupID(this->group_sel) || IsDefaultGroupID(this->group_sel) || IsValidGroupID(this->group_sel))) {
+			this->group_sel = ALL_GROUP;
+			HideDropDownMenu(this);
+		}
+		this->SetDirty();
 	}
 
-	ShowDropDownList(w, list, 0, GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
-}
+	virtual void OnPaint()
+	{
+		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
+		int x = 203;
+		int y2 = PLY_WND_PRC__OFFSET_TOP_WIDGET;
+		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
+		int max;
+		int i;
 
-/**
- * bitmask for w->window_number
- * 0-7   PlayerID (owner)
- * 11-15 vehicle type
- **/
-static void GroupWndProc(Window *w, WindowEvent *e)
-{
-	const PlayerID owner = (PlayerID)GB(w->window_number, 0, 8);
-	groupveh_d     *gv = &WP(w, groupveh_d);
-	GUIVehicleList *vl = &gv->vehicles;
-	GUIGroupList   *gl = &gv->groups;
-
-	gv->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
-
-	switch(e->event) {
-		case WE_INVALIDATE_DATA:
-			vl->flags |= VL_REBUILD;
-			gl->flags |= VL_REBUILD;
-			if (!(IsAllGroupID(gv->group_sel) || IsDefaultGroupID(gv->group_sel) || IsValidGroupID(gv->group_sel))) {
-				gv->group_sel = ALL_GROUP;
-				HideDropDownMenu(w);
-			}
-			w->SetDirty();
-			break;
-
-		case WE_CREATE:
-			CreateVehicleGroupWindow(w);
-			break;
-
-		case WE_PAINT: {
-			int x = 203;
-			int y2 = PLY_WND_PRC__OFFSET_TOP_WIDGET;
-			int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
-			int max;
-			int i;
-
-			/* If we select the all vehicles, gv->list will contain all vehicles of the player
-			 * else gv->list will contain all vehicles which belong to the selected group */
-			BuildVehicleList(gv, owner, gv->group_sel, IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
-			SortVehicleList(gv);
+		/* If we select the all vehicles, this->list will contain all vehicles of the player
+			* else this->list will contain all vehicles which belong to the selected group */
+		BuildVehicleList(this, owner, this->group_sel, IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
+		SortVehicleList(this);
 
 
-			BuildGroupList(gl, owner, gv->vehicle_type);
-			SortGroupList(gl);
+		BuildGroupList(&this->groups, owner, this->vehicle_type);
+		SortGroupList(&this->groups);
 
-			SetVScrollCount(w, gl->list_length);
-			SetVScroll2Count(w, vl->list_length);
+		SetVScrollCount(this, this->groups.list_length);
+		SetVScroll2Count(this, this->vehicles.list_length);
 
-			/* The drop down menu is out, *but* it may not be used, retract it. */
-			if (vl->list_length == 0 && w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
-				w->RaiseWidget(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
-				HideDropDownMenu(w);
-			}
+		/* The drop down menu is out, *but* it may not be used, retract it. */
+		if (this->vehicles.list_length == 0 && this->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
+			this->RaiseWidget(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
+			HideDropDownMenu(this);
+		}
 
-			/* Disable all lists management button when the list is empty */
-			w->SetWidgetsDisabledState(vl->list_length == 0 || _local_player != owner,
-					GRP_WIDGET_STOP_ALL,
-					GRP_WIDGET_START_ALL,
-					GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
-					WIDGET_LIST_END);
+		/* Disable all lists management button when the list is empty */
+		this->SetWidgetsDisabledState(this->vehicles.list_length == 0 || _local_player != owner,
+				GRP_WIDGET_STOP_ALL,
+				GRP_WIDGET_START_ALL,
+				GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
+				WIDGET_LIST_END);
 
-			/* Disable the group specific function when we select the default group or all vehicles */
-			w->SetWidgetsDisabledState(IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel) || _local_player != owner,
-					GRP_WIDGET_DELETE_GROUP,
-					GRP_WIDGET_RENAME_GROUP,
-					GRP_WIDGET_REPLACE_PROTECTION,
-					WIDGET_LIST_END);
+		/* Disable the group specific function when we select the default group or all vehicles */
+		this->SetWidgetsDisabledState(IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel) || _local_player != owner,
+				GRP_WIDGET_DELETE_GROUP,
+				GRP_WIDGET_RENAME_GROUP,
+				GRP_WIDGET_REPLACE_PROTECTION,
+				WIDGET_LIST_END);
 
-			/* Disable remaining buttons for non-local player
-			 * Needed while changing _local_player, eg. by cheats
-			 * All procedures (eg. move vehicle to another group)
-			 *  verify, whether you are the owner of the vehicle,
-			 *  so it doesn't have to be disabled
-			 */
-			w->SetWidgetsDisabledState(_local_player != owner,
-					GRP_WIDGET_CREATE_GROUP,
-					GRP_WIDGET_AVAILABLE_VEHICLES,
-					WIDGET_LIST_END);
+		/* Disable remaining buttons for non-local player
+			* Needed while changing _local_player, eg. by cheats
+			* All procedures (eg. move vehicle to another group)
+			*  verify, whether you are the owner of the vehicle,
+			*  so it doesn't have to be disabled
+			*/
+		this->SetWidgetsDisabledState(_local_player != owner,
+				GRP_WIDGET_CREATE_GROUP,
+				GRP_WIDGET_AVAILABLE_VEHICLES,
+				WIDGET_LIST_END);
 
 
-			/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
-			   We list all vehicles or ungrouped vehicles */
-			if (IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel)) {
-				SetDParam(0, owner);
-				SetDParam(1, vl->list_length);
+		/* If selected_group == DEFAULT_GROUP || ALL_GROUP, draw the standard caption
+				We list all vehicles or ungrouped vehicles */
+		if (IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel)) {
+			SetDParam(0, owner);
+			SetDParam(1, this->vehicles.list_length);
 
-				switch (gv->vehicle_type) {
-					case VEH_TRAIN:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_881B_TRAINS;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN;
-						break;
-					case VEH_ROAD:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_9001_ROAD_VEHICLES;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_ROADVEH;
-						break;
-					case VEH_SHIP:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_9805_SHIPS;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_SHIP;
-						break;
-					case VEH_AIRCRAFT:
-						w->widget[GRP_WIDGET_CAPTION].data =  STR_A009_AIRCRAFT;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_AIRCRAFT;
-						break;
-					default: NOT_REACHED();
-				}
-			} else {
-				const Group *g = GetGroup(gv->group_sel);
-
-				SetDParam(0, g->index);
-				SetDParam(1, g->num_vehicle);
-
-				switch (gv->vehicle_type) {
-					case VEH_TRAIN:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_TRAINS_CAPTION;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_TRAIN : SPR_GROUP_REPLACE_OFF_TRAIN;
-						break;
-					case VEH_ROAD:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_ROADVEH_CAPTION;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_ROADVEH : SPR_GROUP_REPLACE_OFF_ROADVEH;
-						break;
-					case VEH_SHIP:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_SHIPS_CAPTION;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_SHIP : SPR_GROUP_REPLACE_OFF_SHIP;
-						break;
-					case VEH_AIRCRAFT:
-						w->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_AIRCRAFTS_CAPTION;
-						w->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_AIRCRAFT : SPR_GROUP_REPLACE_OFF_AIRCRAFT;
-						break;
-					default: NOT_REACHED();
-				}
-			}
-
-			/* Set text of sort by dropdown */
-			w->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[vl->sort_type];
-
-			DrawWindowWidgets(w);
-
-			/* Draw Matrix Group
-			 * The selected group is drawn in white */
-			StringID str_all_veh, str_no_group_veh;
-
-			switch (gv->vehicle_type) {
+			switch (this->vehicle_type) {
 				case VEH_TRAIN:
-					str_all_veh = STR_GROUP_ALL_TRAINS;
-					str_no_group_veh = STR_GROUP_DEFAULT_TRAINS;
+					this->widget[GRP_WIDGET_CAPTION].data = STR_881B_TRAINS;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_TRAIN;
 					break;
 				case VEH_ROAD:
-					str_all_veh = STR_GROUP_ALL_ROADS;
-					str_no_group_veh = STR_GROUP_DEFAULT_ROADS;
+					this->widget[GRP_WIDGET_CAPTION].data = STR_9001_ROAD_VEHICLES;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_ROADVEH;
 					break;
 				case VEH_SHIP:
-					str_all_veh = STR_GROUP_ALL_SHIPS;
-					str_no_group_veh = STR_GROUP_DEFAULT_SHIPS;
+					this->widget[GRP_WIDGET_CAPTION].data = STR_9805_SHIPS;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_SHIP;
 					break;
 				case VEH_AIRCRAFT:
-					str_all_veh = STR_GROUP_ALL_AIRCRAFTS;
-					str_no_group_veh = STR_GROUP_DEFAULT_AIRCRAFTS;
+					this->widget[GRP_WIDGET_CAPTION].data =  STR_A009_AIRCRAFT;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = SPR_GROUP_REPLACE_OFF_AIRCRAFT;
 					break;
 				default: NOT_REACHED();
 			}
-			DrawString(10, y1, str_all_veh, IsAllGroupID(gv->group_sel) ? TC_WHITE : TC_BLACK);
+		} else {
+			const Group *g = GetGroup(this->group_sel);
 
-			y1 += 13;
+			SetDParam(0, g->index);
+			SetDParam(1, g->num_vehicle);
 
-			DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(gv->group_sel) ? TC_WHITE : TC_BLACK);
-
-			max = min(w->vscroll.pos + w->vscroll.cap, gl->list_length);
-			for (i = w->vscroll.pos ; i < max ; ++i) {
-				const Group *g = gl->sort_list[i];
-
-				assert(g->owner == owner);
-
-				y1 += PLY_WND_PRC__SIZE_OF_ROW_TINY;
-
-				/* draw the selected group in white, else we draw it in black */
-				SetDParam(0, g->index);
-				DrawString(10, y1, STR_GROUP_NAME, (gv->group_sel == g->index) ? TC_WHITE : TC_BLACK);
-
-				/* draw the number of vehicles of the group */
-				SetDParam(0, g->num_vehicle);
-				DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (gv->group_sel == g->index) ? TC_WHITE : TC_BLACK);
-			}
-
-			DrawSortButtonState(w, GRP_WIDGET_SORT_BY_ORDER, vl->flags & VL_DESC ? SBS_DOWN : SBS_UP);
-
-			/* Draw Matrix Vehicle according to the vehicle list built before */
-			max = min(w->vscroll2.pos + w->vscroll2.cap, vl->list_length);
-			for (i = w->vscroll2.pos ; i < max ; ++i) {
-				const Vehicle* v = vl->sort_list[i];
-
-				assert(v->type == gv->vehicle_type && v->owner == owner);
-
-				DrawVehicleImage(v, x + 19, y2 + 6, gv->vehicle_sel, w->hscroll.cap, 0);
-				DrawVehicleProfitButton(v, x, y2 + 13);
-
-				SetDParam(0, v->unitnumber);
-				DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), TC_FROMSTRING);
-
-				if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
-
-				SetDParam(0, v->GetDisplayProfitThisYear());
-				SetDParam(1, v->GetDisplayProfitLastYear());
-				DrawString(x + 19, y2 + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
-
-				if (IsValidGroupID(v->group_id)) {
-					SetDParam(0, v->group_id);
-					DrawString(x + 19, y2, STR_GROUP_TINY_NAME, TC_BLACK);
-				}
-
-				y2 += w->resize.step_height;
-			}
-
-			break;
-		}
-
-		case WE_CLICK:
-			if (e->we.click.widget != GRP_WIDGET_SORT_BY_DROPDOWN && e->we.click.widget != GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN) HideDropDownMenu(w);
-
-			switch(e->we.click.widget) {
-				case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
-					vl->flags ^= VL_DESC;
-					vl->flags |= VL_RESORT;
-
-					gv->sorting->order = !!(vl->flags & VL_DESC);
-					w->SetDirty();
+			switch (this->vehicle_type) {
+				case VEH_TRAIN:
+					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_TRAINS_CAPTION;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_TRAIN : SPR_GROUP_REPLACE_OFF_TRAIN;
 					break;
-
-				case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-					ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (gv->vehicle_type == VEH_TRAIN || gv->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
-					return;
-
-				case GRP_WIDGET_ALL_VEHICLES: // All vehicles button
-					if (!IsAllGroupID(gv->group_sel)) {
-						gv->group_sel = ALL_GROUP;
-						vl->flags |= VL_REBUILD;
-						w->SetDirty();
-					}
+				case VEH_ROAD:
+					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_ROADVEH_CAPTION;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_ROADVEH : SPR_GROUP_REPLACE_OFF_ROADVEH;
 					break;
-
-				case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles button
-					if (!IsDefaultGroupID(gv->group_sel)) {
-						gv->group_sel = DEFAULT_GROUP;
-						vl->flags |= VL_REBUILD;
-						w->SetDirty();
-					}
+				case VEH_SHIP:
+					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_SHIPS_CAPTION;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_SHIP : SPR_GROUP_REPLACE_OFF_SHIP;
 					break;
-
-				case GRP_WIDGET_LIST_GROUP: { // Matrix Group
-					uint16 id_g = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
-
-					if (id_g >= w->vscroll.cap) return;
-
-					id_g += w->vscroll.pos;
-
-					if (id_g >= gl->list_length) return;
-
-					gv->group_sel = gl->sort_list[id_g]->index;;
-
-					vl->flags |= VL_REBUILD;
-					w->SetDirty();
+				case VEH_AIRCRAFT:
+					this->widget[GRP_WIDGET_CAPTION].data = STR_GROUP_AIRCRAFTS_CAPTION;
+					this->widget[GRP_WIDGET_REPLACE_PROTECTION].data = (g->replace_protection) ? SPR_GROUP_REPLACE_ON_AIRCRAFT : SPR_GROUP_REPLACE_OFF_AIRCRAFT;
 					break;
-				}
-
-				case GRP_WIDGET_LIST_VEHICLE: { // Matrix Vehicle
-					uint32 id_v = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)w->resize.step_height;
-					const Vehicle *v;
-
-					if (id_v >= w->vscroll2.cap) return; // click out of bounds
-
-					id_v += w->vscroll2.pos;
-
-					if (id_v >= vl->list_length) return; // click out of list bound
-
-					v = vl->sort_list[id_v];
-
-					gv->vehicle_sel = v->index;
-
-					if (v->IsValid()) {
-						SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), VHM_DRAG, w);
-						_cursor.vehchain = true;
-					}
-
-					w->SetDirty();
-					break;
-				}
-
-				case GRP_WIDGET_CREATE_GROUP: // Create a new group
-					DoCommandP(0, gv->vehicle_type, 0, NULL, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE));
-					break;
-
-				case GRP_WIDGET_DELETE_GROUP: { // Delete the selected group
-					GroupID group = gv->group_sel;
-					gv->group_sel = ALL_GROUP;
-
-					DoCommandP(0, group, 0, NULL, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
-					break;
-				}
-
-				case GRP_WIDGET_RENAME_GROUP: { // Rename the selected roup
-					assert(IsValidGroupID(gv->group_sel));
-
-					const Group *g = GetGroup(gv->group_sel);
-
-					SetDParam(0, g->index);
-					ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, 31, 150, w, CS_ALPHANUMERAL);
-				} break;
-
-
-				case GRP_WIDGET_AVAILABLE_VEHICLES:
-					ShowBuildVehicleWindow(0, gv->vehicle_type);
-					break;
-
-				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-					ShowGroupActionDropdown(w, gv->group_sel);
-					break;
-
-				case GRP_WIDGET_START_ALL:
-				case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list
-					DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
-														| (1 << 6)
-														| (e->we.click.widget == GRP_WIDGET_START_ALL ? (1 << 5) : 0)
-														| gv->vehicle_type, NULL, CMD_MASS_START_STOP);
-
-					break;
-				}
-
-				case GRP_WIDGET_REPLACE_PROTECTION:
-					if (IsValidGroupID(gv->group_sel)) {
-						const Group *g = GetGroup(gv->group_sel);
-
-						DoCommandP(0, gv->group_sel, !g->replace_protection, NULL, CMD_SET_GROUP_REPLACE_PROTECTION);
-					}
-					break;
-			}
-
-			break;
-
-		case WE_DRAGDROP: {
-			switch (e->we.click.widget) {
-				case GRP_WIDGET_ALL_VEHICLES: // All vehicles
-				case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles
-					DoCommandP(0, DEFAULT_GROUP, gv->vehicle_sel, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
-
-					gv->vehicle_sel = INVALID_VEHICLE;
-
-					w->SetDirty();
-
-					break;
-
-				case GRP_WIDGET_LIST_GROUP: { // Maxtrix group
-					uint16 id_g = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
-					const VehicleID vindex = gv->vehicle_sel;
-
-					gv->vehicle_sel = INVALID_VEHICLE;
-
-					w->SetDirty();
-
-					if (id_g >= w->vscroll.cap) return;
-
-					id_g += w->vscroll.pos;
-
-					if (id_g >= gl->list_length) return;
-
-					DoCommandP(0, gl->sort_list[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
-
-					break;
-				}
-
-				case GRP_WIDGET_LIST_VEHICLE: { // Maxtrix vehicle
-					uint32 id_v = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)w->resize.step_height;
-					const Vehicle *v;
-					const VehicleID vindex = gv->vehicle_sel;
-
-					gv->vehicle_sel = INVALID_VEHICLE;
-
-					w->SetDirty();
-
-					if (id_v >= w->vscroll2.cap) return; // click out of bounds
-
-					id_v += w->vscroll2.pos;
-
-					if (id_v >= vl->list_length) return; // click out of list bound
-
-					v = vl->sort_list[id_v];
-
-					if (vindex == v->index) {
-						ShowVehicleViewWindow(v);
-					}
-
-					break;
-				}
-			}
-			_cursor.vehchain = false;
-			break;
-		}
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				_cmd_text = e->we.edittext.str;
-
-				DoCommandP(0, gv->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME));
-			}
-			break;
-
-		case WE_RESIZE:
-			w->hscroll.cap += e->we.sizing.diff.x;
-			w->vscroll.cap += e->we.sizing.diff.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
-			w->vscroll2.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
-
-			w->widget[GRP_WIDGET_LIST_GROUP].data = (w->vscroll.cap << 8) + 1;
-			w->widget[GRP_WIDGET_LIST_VEHICLE].data = (w->vscroll2.cap << 8) + 1;
-			break;
-
-
-		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
-			switch (e->we.dropdown.button) {
-				case GRP_WIDGET_SORT_BY_DROPDOWN:
-					if (vl->sort_type != e->we.dropdown.index) {
-						vl->flags |= VL_RESORT;
-						vl->sort_type = e->we.dropdown.index;
-						gv->sorting->criteria = vl->sort_type;
-					}
-					break;
-
-				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-					assert(vl->list_length != 0);
-
-					switch (e->we.dropdown.index) {
-						case GALF_REPLACE: // Replace window
-							ShowReplaceGroupVehicleWindow(gv->group_sel, gv->vehicle_type);
-							break;
-						case GALF_SERVICE: // Send for servicing
-							DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
-										| DEPOT_MASS_SEND
-										| DEPOT_SERVICE, NULL, GetCmdSendToDepot(gv->vehicle_type));
-							break;
-						case GALF_DEPOT: // Send to Depots
-							DoCommandP(0, gv->group_sel, ((IsAllGroupID(gv->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
-										| DEPOT_MASS_SEND, NULL, GetCmdSendToDepot(gv->vehicle_type));
-							break;
-						case GALF_ADD_SHARED: // Add shared Vehicles
-							assert(IsValidGroupID(gv->group_sel));
-
-							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
-							break;
-						case GALF_REMOVE_ALL: // Remove all Vehicles from the selected group
-							assert(IsValidGroupID(gv->group_sel));
-
-							DoCommandP(0, gv->group_sel, gv->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
-							break;
-						default: NOT_REACHED();
-					}
-					break;
-
 				default: NOT_REACHED();
 			}
+		}
 
-			w->SetDirty();
-			break;
+		/* Set text of sort by dropdown */
+		this->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[this->vehicles.sort_type];
 
+		DrawWindowWidgets(this);
 
-		case WE_DESTROY:
-			free((void*)vl->sort_list);
-			free((void*)gl->sort_list);
-			break;
+		/* Draw Matrix Group
+			* The selected group is drawn in white */
+		StringID str_all_veh, str_no_group_veh;
 
+		switch (this->vehicle_type) {
+			case VEH_TRAIN:
+				str_all_veh = STR_GROUP_ALL_TRAINS;
+				str_no_group_veh = STR_GROUP_DEFAULT_TRAINS;
+				break;
+			case VEH_ROAD:
+				str_all_veh = STR_GROUP_ALL_ROADS;
+				str_no_group_veh = STR_GROUP_DEFAULT_ROADS;
+				break;
+			case VEH_SHIP:
+				str_all_veh = STR_GROUP_ALL_SHIPS;
+				str_no_group_veh = STR_GROUP_DEFAULT_SHIPS;
+				break;
+			case VEH_AIRCRAFT:
+				str_all_veh = STR_GROUP_ALL_AIRCRAFTS;
+				str_no_group_veh = STR_GROUP_DEFAULT_AIRCRAFTS;
+				break;
+			default: NOT_REACHED();
+		}
+		DrawString(10, y1, str_all_veh, IsAllGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
-		case WE_TICK: // resort the lists every 20 seconds orso (10 days)
-			if (_pause_game != 0) break;
-			if (--vl->resort_timer == 0) {
-				vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				vl->flags |= VL_RESORT;
-				w->SetDirty();
+		y1 += 13;
+
+		DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
+
+		max = min(this->vscroll.pos + this->vscroll.cap, this->groups.list_length);
+		for (i = this->vscroll.pos ; i < max ; ++i) {
+			const Group *g = this->groups.sort_list[i];
+
+			assert(g->owner == owner);
+
+			y1 += PLY_WND_PRC__SIZE_OF_ROW_TINY;
+
+			/* draw the selected group in white, else we draw it in black */
+			SetDParam(0, g->index);
+			DrawString(10, y1, STR_GROUP_NAME, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
+
+			/* draw the number of vehicles of the group */
+			SetDParam(0, g->num_vehicle);
+			DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
+		}
+
+		DrawSortButtonState(this, GRP_WIDGET_SORT_BY_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+
+		/* Draw Matrix Vehicle according to the vehicle list built before */
+		max = min(this->vscroll2.pos + this->vscroll2.cap, this->vehicles.list_length);
+		for (i = this->vscroll2.pos ; i < max ; ++i) {
+			const Vehicle* v = this->vehicles.sort_list[i];
+
+			assert(v->type == this->vehicle_type && v->owner == owner);
+
+			DrawVehicleImage(v, x + 19, y2 + 6, this->vehicle_sel, this->hscroll.cap, 0);
+			DrawVehicleProfitButton(v, x, y2 + 13);
+
+			SetDParam(0, v->unitnumber);
+			DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), TC_FROMSTRING);
+
+			if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
+
+			SetDParam(0, v->GetDisplayProfitThisYear());
+			SetDParam(1, v->GetDisplayProfitLastYear());
+			DrawString(x + 19, y2 + this->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
+
+			if (IsValidGroupID(v->group_id)) {
+				SetDParam(0, v->group_id);
+				DrawString(x + 19, y2, STR_GROUP_TINY_NAME, TC_BLACK);
 			}
-			if (--gl->resort_timer == 0) {
-				gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				gl->flags |= VL_RESORT;
-				w->SetDirty();
-			}
-			break;
 
-		case WE_ABORT_PLACE_OBJ: // called when new object to place is selected from keyboard
-			/* abort drag & drop */
-			gv->vehicle_sel = INVALID_VEHICLE;
-			w->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
-			break;
-
+			y2 += this->resize.step_height;
+		}
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget != GRP_WIDGET_SORT_BY_DROPDOWN && widget != GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN) HideDropDownMenu(this);
+
+		switch(widget) {
+			case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
+				this->vehicles.flags ^= VL_DESC;
+				this->vehicles.flags |= VL_RESORT;
+
+				this->sorting->order = !!(this->vehicles.flags & VL_DESC);
+				this->SetDirty();
+				break;
+
+			case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
+				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+				return;
+
+			case GRP_WIDGET_ALL_VEHICLES: // All vehicles button
+				if (!IsAllGroupID(this->group_sel)) {
+					this->group_sel = ALL_GROUP;
+					this->vehicles.flags |= VL_REBUILD;
+					this->SetDirty();
+				}
+				break;
+
+			case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles button
+				if (!IsDefaultGroupID(this->group_sel)) {
+					this->group_sel = DEFAULT_GROUP;
+					this->vehicles.flags |= VL_REBUILD;
+					this->SetDirty();
+				}
+				break;
+
+			case GRP_WIDGET_LIST_GROUP: { // Matrix Group
+				uint16 id_g = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
+
+				if (id_g >= this->vscroll.cap) return;
+
+				id_g += this->vscroll.pos;
+
+				if (id_g >= this->groups.list_length) return;
+
+				this->group_sel = this->groups.sort_list[id_g]->index;;
+
+				this->vehicles.flags |= VL_REBUILD;
+				this->SetDirty();
+				break;
+			}
+
+			case GRP_WIDGET_LIST_VEHICLE: { // Matrix Vehicle
+				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)this->resize.step_height;
+				const Vehicle *v;
+
+				if (id_v >= this->vscroll2.cap) return; // click out of bounds
+
+				id_v += this->vscroll2.pos;
+
+				if (id_v >= this->vehicles.list_length) return; // click out of list bound
+
+				v = this->vehicles.sort_list[id_v];
+
+				this->vehicle_sel = v->index;
+
+				if (v->IsValid()) {
+					SetObjectToPlaceWnd(v->GetImage(DIR_W), GetVehiclePalette(v), VHM_DRAG, this);
+					_cursor.vehchain = true;
+				}
+
+				this->SetDirty();
+				break;
+			}
+
+			case GRP_WIDGET_CREATE_GROUP: // Create a new group
+				DoCommandP(0, this->vehicle_type, 0, NULL, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE));
+				break;
+
+			case GRP_WIDGET_DELETE_GROUP: { // Delete the selected group
+				GroupID group = this->group_sel;
+				this->group_sel = ALL_GROUP;
+
+				DoCommandP(0, group, 0, NULL, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
+				break;
+			}
+
+			case GRP_WIDGET_RENAME_GROUP: { // Rename the selected roup
+				assert(IsValidGroupID(this->group_sel));
+
+				const Group *g = GetGroup(this->group_sel);
+
+				SetDParam(0, g->index);
+				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, 31, 150, this, CS_ALPHANUMERAL);
+			} break;
+
+
+			case GRP_WIDGET_AVAILABLE_VEHICLES:
+				ShowBuildVehicleWindow(0, this->vehicle_type);
+				break;
+
+			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
+				ShowGroupActionDropdown(this, this->group_sel);
+				break;
+
+			case GRP_WIDGET_START_ALL:
+			case GRP_WIDGET_STOP_ALL: { // Start/stop all vehicles of the list
+				DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+													| (1 << 6)
+													| (widget == GRP_WIDGET_START_ALL ? (1 << 5) : 0)
+													| this->vehicle_type, NULL, CMD_MASS_START_STOP);
+
+				break;
+			}
+
+			case GRP_WIDGET_REPLACE_PROTECTION:
+				if (IsValidGroupID(this->group_sel)) {
+					const Group *g = GetGroup(this->group_sel);
+
+					DoCommandP(0, this->group_sel, !g->replace_protection, NULL, CMD_SET_GROUP_REPLACE_PROTECTION);
+				}
+				break;
+		}
+	}
+
+	virtual void OnDragDrop(Point pt, int widget)
+	{
+		switch (widget) {
+			case GRP_WIDGET_ALL_VEHICLES: // All vehicles
+			case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles
+				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+
+				this->vehicle_sel = INVALID_VEHICLE;
+
+				this->SetDirty();
+
+				break;
+
+			case GRP_WIDGET_LIST_GROUP: { // Maxtrix group
+				uint16 id_g = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
+				const VehicleID vindex = this->vehicle_sel;
+
+				this->vehicle_sel = INVALID_VEHICLE;
+
+				this->SetDirty();
+
+				if (id_g >= this->vscroll.cap) return;
+
+				id_g += this->vscroll.pos;
+
+				if (id_g >= this->groups.list_length) return;
+
+				DoCommandP(0, this->groups.sort_list[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+
+				break;
+			}
+
+			case GRP_WIDGET_LIST_VEHICLE: { // Maxtrix vehicle
+				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)this->resize.step_height;
+				const Vehicle *v;
+				const VehicleID vindex = this->vehicle_sel;
+
+				this->vehicle_sel = INVALID_VEHICLE;
+
+				this->SetDirty();
+
+				if (id_v >= this->vscroll2.cap) return; // click out of bounds
+
+				id_v += this->vscroll2.pos;
+
+				if (id_v >= this->vehicles.list_length) return; // click out of list bound
+
+				v = this->vehicles.sort_list[id_v];
+
+				if (vindex == v->index) {
+					ShowVehicleViewWindow(v);
+				}
+
+				break;
+			}
+		}
+		_cursor.vehchain = false;
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			_cmd_text = str;
+
+			DoCommandP(0, this->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME));
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->hscroll.cap += delta.x;
+		this->vscroll.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
+		this->vscroll2.cap += delta.y / (int)this->resize.step_height;
+
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll2.cap << 8) + 1;
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case GRP_WIDGET_SORT_BY_DROPDOWN:
+				if (this->vehicles.sort_type != index) {
+					this->vehicles.flags |= VL_RESORT;
+					this->vehicles.sort_type = index;
+					this->sorting->criteria = this->vehicles.sort_type;
+				}
+				break;
+
+			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
+				assert(this->vehicles.list_length != 0);
+
+				switch (index) {
+					case GALF_REPLACE: // Replace window
+						ShowReplaceGroupVehicleWindow(this->group_sel, this->vehicle_type);
+						break;
+					case GALF_SERVICE: // Send for servicing
+						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+									| DEPOT_MASS_SEND
+									| DEPOT_SERVICE, NULL, GetCmdSendToDepot(this->vehicle_type));
+						break;
+					case GALF_DEPOT: // Send to Depots
+						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
+									| DEPOT_MASS_SEND, NULL, GetCmdSendToDepot(this->vehicle_type));
+						break;
+					case GALF_ADD_SHARED: // Add shared Vehicles
+						assert(IsValidGroupID(this->group_sel));
+
+						DoCommandP(0, this->group_sel, this->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
+						break;
+					case GALF_REMOVE_ALL: // Remove all Vehicles from the selected group
+						assert(IsValidGroupID(this->group_sel));
+
+						DoCommandP(0, this->group_sel, this->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
+						break;
+					default: NOT_REACHED();
+				}
+				break;
+
+			default: NOT_REACHED();
+		}
+
+		this->SetDirty();
+	}
+
+	virtual void OnTick()
+	{
+		if (_pause_game != 0) return;
+		if (--this->vehicles.resort_timer == 0) {
+			this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+			this->vehicles.flags |= VL_RESORT;
+			this->SetDirty();
+		}
+		if (--this->groups.resort_timer == 0) {
+			this->groups.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+			this->groups.flags |= VL_RESORT;
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+			/* abort drag & drop */
+			this->vehicle_sel = INVALID_VEHICLE;
+			this->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
+	}
+};
 
 
 static const WindowDesc _group_desc = {
@@ -781,7 +758,7 @@ static const WindowDesc _group_desc = {
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_group_widgets,
-	GroupWndProc
+	NULL
 };
 
 void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
@@ -800,8 +777,6 @@ void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
 
 	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | player;
 	DeleteWindowById(wc, num);
-	Window *w = AllocateWindowDescFront<Window>(&_group_desc, num);
-	if (w == NULL) return;
-
+	Window *w = new VehicleGroupWindow(&_group_desc, num);
 	w->window_class = wc;
 }
