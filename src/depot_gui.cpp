@@ -100,6 +100,20 @@ static const Widget _depot_widgets[] = {
 	{   WIDGETS_END},
 };
 
+
+struct depot_d {
+	VehicleID sel;
+	VehicleType type;
+	bool generate_list;
+	uint16 engine_list_length;
+	uint16 wagon_list_length;
+	uint16 engine_count;
+	uint16 wagon_count;
+	Vehicle **vehicle_list;
+	Vehicle **wagon_list;
+};
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
+
 static void DepotWndProc(Window *w, WindowEvent *e);
 
 static const WindowDesc _train_depot_desc = {

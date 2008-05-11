@@ -538,19 +538,6 @@ struct def_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));
 
-struct depot_d {
-	VehicleID sel;
-	VehicleType type;
-	bool generate_list;
-	uint16 engine_list_length;
-	uint16 wagon_list_length;
-	uint16 engine_count;
-	uint16 wagon_count;
-	Vehicle **vehicle_list;
-	Vehicle **wagon_list;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
-
 enum SortListFlags {
 	VL_NONE    = 0,      ///< no sort
 	VL_DESC    = 1 << 0, ///< sort descending or ascending
