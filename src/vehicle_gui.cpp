@@ -54,15 +54,7 @@ struct refit_d {
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 
-struct Sorting {
-	Listing aircraft;
-	Listing roadveh;
-	Listing ship;
-	Listing train;
-};
-
-static Sorting _sorting;
-
+Sorting _sorting;
 static bool   _internal_sort_order;     // descending/ascending
 
 typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
@@ -124,7 +116,7 @@ static void SetVehicleListsFlag(SortListFlags sl_flag)
 			case WC_ROADVEH_LIST:
 			case WC_SHIPS_LIST:
 			case WC_AIRCRAFT_LIST:
-				WP(w, vehiclelist_d).l.flags |= sl_flag;
+				WP(w, vehiclelist_d).vehicles.flags |= sl_flag;
 				w->SetDirty();
 				break;
 
@@ -151,14 +143,14 @@ void ResortVehicleLists()
 
 void BuildVehicleList(vehiclelist_d *vl, PlayerID owner, uint16 index, uint16 window_type)
 {
-	if (!(vl->l.flags & VL_REBUILD)) return;
+	if (!(vl->vehicles.flags & VL_REBUILD)) return;
 
 	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, index);
 
-	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, index, window_type);
+	vl->vehicles.list_length = GenerateVehicleSortList(&vl->vehicles.sort_list, &vl->vehicles.list_length, vl->vehicle_type, owner, index, window_type);
 
-	vl->l.flags &= ~VL_REBUILD;
-	vl->l.flags |= VL_RESORT;
+	vl->vehicles.flags &= ~VL_REBUILD;
+	vl->vehicles.flags |= VL_RESORT;
 }
 
 /* cached values for VehicleNameSorter to spare many GetString() calls */
@@ -167,17 +159,17 @@ static char           _last_name[2][64] = { "", "" };
 
 void SortVehicleList(vehiclelist_d *vl)
 {
-	if (!(vl->l.flags & VL_RESORT)) return;
+	if (!(vl->vehicles.flags & VL_RESORT)) return;
 
 	/* invalidate cached values for name sorter - vehicle names could change */
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
 
-	_internal_sort_order = (vl->l.flags & VL_DESC) != 0;
-	qsort((void*)vl->sort_list, vl->l.list_length, sizeof(vl->sort_list[0]),
-		_vehicle_sorter[vl->l.sort_type]);
+	_internal_sort_order = (vl->vehicles.flags & VL_DESC) != 0;
+	qsort((void*)vl->vehicles.sort_list, vl->vehicles.list_length, sizeof(vl->vehicles.sort_list[0]),
+		_vehicle_sorter[vl->vehicles.sort_type]);
 
-	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-	vl->l.flags &= ~VL_RESORT;
+	vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+	vl->vehicles.flags &= ~VL_RESORT;
 }
 
 void DepotSortList(Vehicle **v, uint16 length)
@@ -822,8 +814,8 @@ static void CreateVehicleListWindow(Window *w)
 	PlayerID player = (PlayerID)GB(w->window_number, 0, 8);
 
 	vl->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
-	vl->length_of_sort_list = 0;
-	vl->sort_list = NULL;
+	vl->vehicles.list_length = 0;
+	vl->vehicles.sort_list = NULL;
 	w->caption_color = player;
 
 	/* Hide the widgets that we will not use in this window
@@ -924,17 +916,16 @@ static void CreateVehicleListWindow(Window *w)
 		* point to the correct global _sorting struct so we are freed
 		* from having conditionals during window operation */
 	switch (vl->vehicle_type) {
-		case VEH_TRAIN:    vl->_sorting = &_sorting.train; break;
-		case VEH_ROAD:     vl->_sorting = &_sorting.roadveh; break;
-		case VEH_SHIP:     vl->_sorting = &_sorting.ship; break;
-		case VEH_AIRCRAFT: vl->_sorting = &_sorting.aircraft; break;
+		case VEH_TRAIN:    vl->sorting = &_sorting.train; break;
+		case VEH_ROAD:     vl->sorting = &_sorting.roadveh; break;
+		case VEH_SHIP:     vl->sorting = &_sorting.ship; break;
+		case VEH_AIRCRAFT: vl->sorting = &_sorting.aircraft; break;
 		default: NOT_REACHED(); break;
 	}
 
-	vl->l.flags = VL_REBUILD | (vl->_sorting->order ? VL_DESC : VL_NONE);
-	vl->l.sort_type = vl->_sorting->criteria;
-	vl->sort_list = NULL;
-	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+	vl->vehicles.flags = VL_REBUILD | (vl->sorting->order ? VL_DESC : VL_NONE);
+	vl->vehicles.sort_type = vl->sorting->criteria;
+	vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 }
 
 void DrawSmallOrderList(const Vehicle *v, int x, int y)
@@ -973,12 +964,12 @@ static void DrawVehicleListWindow(Window *w)
 
 	BuildVehicleList(vl, owner, index, window_type);
 	SortVehicleList(vl);
-	SetVScrollCount(w, vl->l.list_length);
+	SetVScrollCount(w, vl->vehicles.list_length);
 
 	/* draw the widgets */
 	switch (window_type) {
 		case VLW_SHARED_ORDERS: /* Shared Orders */
-			if (vl->l.list_length == 0) {
+			if (vl->vehicles.list_length == 0) {
 				/* We can't open this window without vehicles using this order
 				 * and we should close the window when deleting the order      */
 				NOT_REACHED();
@@ -1014,7 +1005,7 @@ static void DrawVehicleListWindow(Window *w)
 		default: NOT_REACHED(); break;
 	}
 
-	w->SetWidgetsDisabledState(vl->l.list_length == 0,
+	w->SetWidgetsDisabledState(vl->vehicles.list_length == 0,
 		VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 		VLW_WIDGET_STOP_ALL,
 		VLW_WIDGET_START_ALL,
@@ -1023,13 +1014,13 @@ static void DrawVehicleListWindow(Window *w)
 	DrawWindowWidgets(w);
 
 	/* draw sorting criteria string */
-	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], TC_BLACK);
+	DrawString(85, 15, _vehicle_sort_listing[vl->vehicles.sort_type], TC_BLACK);
 	/* draw arrow pointing up/down for ascending/descending sorting */
-	DrawSortButtonState(w, VLW_WIDGET_SORT_ORDER, vl->l.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+	DrawSortButtonState(w, VLW_WIDGET_SORT_ORDER, vl->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
-	max = min(w->vscroll.pos + w->vscroll.cap, vl->l.list_length);
+	max = min(w->vscroll.pos + w->vscroll.cap, vl->vehicles.list_length);
 	for (i = w->vscroll.pos; i < max; ++i) {
-		const Vehicle *v = vl->sort_list[i];
+		const Vehicle *v = vl->vehicles.sort_list[i];
 		StringID str;
 
 		SetDParam(0, v->GetDisplayProfitThisYear());
@@ -1084,14 +1075,14 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
 				case VLW_WIDGET_SORT_ORDER: /* Flip sorting method ascending/descending */
-					vl->l.flags ^= VL_DESC;
-					vl->l.flags |= VL_RESORT;
+					vl->vehicles.flags ^= VL_DESC;
+					vl->vehicles.flags |= VL_RESORT;
 
-					vl->_sorting->order = !!(vl->l.flags & VL_DESC);
+					vl->sorting->order = !!(vl->vehicles.flags & VL_DESC);
 					w->SetDirty();
 					break;
 				case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
-					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, (vl->vehicle_type == VEH_TRAIN || vl->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+					ShowDropDownMenu(w, _vehicle_sort_listing, vl->vehicles.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, (vl->vehicle_type == VEH_TRAIN || vl->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 					return;
 				case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
 					uint32 id_v = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / w->resize.step_height;
@@ -1101,9 +1092,9 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 					id_v += w->vscroll.pos;
 
-					if (id_v >= vl->l.list_length) return; // click out of list bound
+					if (id_v >= vl->vehicles.list_length) return; // click out of list bound
 
-					v = vl->sort_list[id_v];
+					v = vl->vehicles.sort_list[id_v];
 
 					ShowVehicleViewWindow(v);
 				} break;
@@ -1143,15 +1134,15 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			switch (e->we.dropdown.button) {
 				case VLW_WIDGET_SORT_BY_PULLDOWN:
-					if (vl->l.sort_type != e->we.dropdown.index) {
+					if (vl->vehicles.sort_type != e->we.dropdown.index) {
 						/* value has changed -> resort */
-						vl->l.flags |= VL_RESORT;
-						vl->l.sort_type = e->we.dropdown.index;
-						vl->_sorting->criteria = vl->l.sort_type;
+						vl->vehicles.flags |= VL_RESORT;
+						vl->vehicles.sort_type = e->we.dropdown.index;
+						vl->sorting->criteria = vl->vehicles.sort_type;
 					}
 					break;
 				case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-					assert(vl->l.list_length != 0);
+					assert(vl->vehicles.list_length != 0);
 
 					switch (e->we.dropdown.index) {
 						case 0: /* Replace window */
@@ -1179,18 +1170,18 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			free((void*)vl->sort_list);
+			free((void*)vl->vehicles.sort_list);
 			break;
 
 		case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
 			if (_pause_game != 0) break;
-			if (--vl->l.resort_timer == 0) {
+			if (--vl->vehicles.resort_timer == 0) {
 				StationID station = ((w->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(w->window_number, 16, 16) : INVALID_STATION;
 				PlayerID owner = (PlayerID)w->caption_color;
 
 				DEBUG(misc, 3, "Periodic resort %d list player %d at station %d", vl->vehicle_type, owner, station);
-				vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				vl->l.flags |= VL_RESORT;
+				vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+				vl->vehicles.flags |= VL_RESORT;
 				w->SetDirty();
 			}
 			break;

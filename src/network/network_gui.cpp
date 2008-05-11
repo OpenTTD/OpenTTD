@@ -168,11 +168,12 @@ enum NetworkGameWindowWidgets {
 	NGWW_CANCEL,        ///< 'Cancel' button
 };
 
+typedef GUIList<NetworkGameList*> GUIGameServerList;
+
 struct NetworkGameWindow : public QueryStringBaseWindow {
 	byte field;                  ///< selected text-field
 	NetworkGameList *server;     ///< selected server
-	NetworkGameList **sort_list; ///< list of games (sorted)
-	list_d ld;                   ///< accompanying list-administration
+	GUIGameServerList servers;   ///< list with game servers.
 
 	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
 	{
@@ -188,16 +189,16 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		this->field = NGWW_PLAYER;
 		this->server = NULL;
 
-		this->sort_list = NULL;
-		this->ld.flags = VL_REBUILD | (_ng_sorting.order ? VL_DESC : VL_NONE);
-		this->ld.sort_type = _ng_sorting.criteria;
+		this->servers.sort_list = NULL;
+		this->servers.flags = VL_REBUILD | (_ng_sorting.order ? VL_DESC : VL_NONE);
+		this->servers.sort_type = _ng_sorting.criteria;
 
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~NetworkGameWindow()
 	{
-		free(this->sort_list);
+		free(this->servers.sort_list);
 	}
 
 	/**
@@ -209,23 +210,23 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		NetworkGameList *ngl_temp;
 		uint n = 0;
 
-		if (!(this->ld.flags & VL_REBUILD)) return;
+		if (!(this->servers.flags & VL_REBUILD)) return;
 
 		/* Count the number of games in the list */
 		for (ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) n++;
 		if (n == 0) return;
 
 		/* Create temporary array of games to use for listing */
-		this->sort_list = ReallocT(this->sort_list, n);
-		this->ld.list_length = n;
+		this->servers.sort_list = ReallocT(this->servers.sort_list, n);
+		this->servers.list_length = n;
 
 		for (n = 0, ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) {
-			this->sort_list[n++] = ngl_temp;
+			this->servers.sort_list[n++] = ngl_temp;
 		}
 
 		/* Force resort */
-		this->ld.flags &= ~VL_REBUILD;
-		this->ld.flags |= VL_RESORT;
+		this->servers.flags &= ~VL_REBUILD;
+		this->servers.flags |= VL_RESORT;
 	}
 
 	void SortNetworkGameList()
@@ -239,23 +240,23 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		NetworkGameList *item;
 		uint i;
 
-		if (!(this->ld.flags & VL_RESORT)) return;
-		if (this->ld.list_length == 0) return;
+		if (!(this->servers.flags & VL_RESORT)) return;
+		if (this->servers.list_length == 0) return;
 
-		_internal_sort_order = !!(this->ld.flags & VL_DESC);
-		qsort(this->sort_list, this->ld.list_length, sizeof(this->sort_list[0]), ngame_sorter[this->ld.sort_type]);
+		_internal_sort_order = !!(this->servers.flags & VL_DESC);
+		qsort(this->servers.sort_list, this->servers.list_length, sizeof(this->servers.sort_list[0]), ngame_sorter[this->servers.sort_type]);
 
 		/* After sorting ngl->sort_list contains the sorted items. Put these back
 		 * into the original list. Basically nothing has changed, we are only
 		 * shuffling the ->next pointers */
-		_network_game_list = this->sort_list[0];
-		for (item = _network_game_list, i = 1; i != this->ld.list_length; i++) {
-			item->next = this->sort_list[i];
+		_network_game_list = this->servers.sort_list[0];
+		for (item = _network_game_list, i = 1; i != this->servers.list_length; i++) {
+			item->next = this->servers.sort_list[i];
 			item = item->next;
 		}
 		item->next = NULL;
 
-		this->ld.flags &= ~VL_RESORT;
+		this->servers.flags &= ~VL_RESORT;
 	}
 
 	/**
@@ -294,13 +295,13 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 	virtual void OnPaint()
 	{
 		const NetworkGameList *sel = this->server;
-		const SortButtonState arrow = (this->ld.flags & VL_DESC) ? SBS_DOWN : SBS_UP;
+		const SortButtonState arrow = (this->servers.flags & VL_DESC) ? SBS_DOWN : SBS_UP;
 
-		if (this->ld.flags & VL_REBUILD) {
+		if (this->servers.flags & VL_REBUILD) {
 			this->BuildNetworkGameList();
-			SetVScrollCount(this, this->ld.list_length);
+			SetVScrollCount(this, this->servers.list_length);
 		}
-		if (this->ld.flags & VL_RESORT) this->SortNetworkGameList();
+		if (this->servers.flags & VL_RESORT) this->SortNetworkGameList();
 
 		/* 'Refresh' button invisible if no server selected */
 		this->SetWidgetDisabledState(NGWW_REFRESH, sel == NULL);
@@ -325,7 +326,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		DrawString(this->widget[NGWW_PLAYER].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
 
 		/* Sort based on widgets: name, clients, compatibility */
-		switch (this->ld.sort_type) {
+		switch (this->servers.sort_type) {
 			case NGWW_NAME    - NGWW_NAME: DrawSortButtonState(this, NGWW_NAME,    arrow); break;
 			case NGWW_CLIENTS - NGWW_NAME: DrawSortButtonState(this, NGWW_CLIENTS, arrow); break;
 			case NGWW_INFO    - NGWW_NAME: DrawSortButtonState(this, NGWW_INFO,    arrow); break;
@@ -446,12 +447,12 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 			case NGWW_NAME: // Sort by name
 			case NGWW_CLIENTS: // Sort by connected clients
 			case NGWW_INFO: // Connectivity (green dot)
-				if (this->ld.sort_type == widget - NGWW_NAME) this->ld.flags ^= VL_DESC;
-				this->ld.flags |= VL_RESORT;
-				this->ld.sort_type = widget - NGWW_NAME;
+				if (this->servers.sort_type == widget - NGWW_NAME) this->servers.flags ^= VL_DESC;
+				this->servers.flags |= VL_RESORT;
+				this->servers.sort_type = widget - NGWW_NAME;
 
-				_ng_sorting.order = !!(this->ld.flags & VL_DESC);
-				_ng_sorting.criteria = this->ld.sort_type;
+				_ng_sorting.order = !!(this->servers.flags & VL_DESC);
+				_ng_sorting.criteria = this->servers.sort_type;
 				this->SetDirty();
 				break;
 
@@ -537,7 +538,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 	virtual void OnInvalidateData(int data)
 	{
 		if (data != 0) this->server = NULL;
-		this->ld.flags |= VL_REBUILD;
+		this->servers.flags |= VL_REBUILD;
 		this->SetDirty();
 	}
 
@@ -580,7 +581,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 
 		this->widget[NGWW_MATRIX].data = (this->vscroll.cap << 8) + 1;
 
-		SetVScrollCount(this, this->ld.list_length);
+		SetVScrollCount(this, this->servers.list_length);
 
 		int widget_width = this->widget[NGWW_FIND].right - this->widget[NGWW_FIND].left;
 		int space = (this->width - 4 * widget_width - 25) / 3;

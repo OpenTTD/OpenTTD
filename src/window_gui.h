@@ -557,7 +557,6 @@ enum SortListFlags {
 	VL_REBUILD = 1 << 2, ///< create sort-listing to use for qsort and friends
 	VL_END     = 1 << 3,
 };
-
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
 struct Listing {
@@ -565,22 +564,14 @@ struct Listing {
 	byte criteria; ///< Sorting criteria
 };
 
-struct list_d {
-	uint16 list_length;  ///< length of the list being sorted
-	byte sort_type;      ///< what criteria to sort on
+template <typename T>
+struct GUIList {
+	T* sort_list;        ///< The items to sort.
 	SortListFlags flags; ///< used to control sorting/resorting/etc.
+	uint16 list_length;  ///< length of the list being sorted
 	uint16 resort_timer; ///< resort list after a given amount of ticks if set
+	byte sort_type;      ///< what criteria to sort on
 };
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(list_d));
-
-struct vehiclelist_d {
-	const Vehicle** sort_list;  // List of vehicles (sorted)
-	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
-	uint16 length_of_sort_list; // Keeps track of how many vehicle pointers sort list got space for
-	VehicleType vehicle_type;   // The vehicle type that is sorted
-	list_d l;                   // General list struct
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
 /****************** THESE ARE NOT WIDGET TYPES!!!!! *******************/
 enum WindowWidgetBehaviours {

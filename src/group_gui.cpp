@@ -28,53 +28,39 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-struct grouplist_d {
-	const Group **sort_list;
-	list_d l;                   // General list struct
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(grouplist_d));
+typedef GUIList<const Group*> GUIGroupList;
 
 struct groupveh_d : vehiclelist_d {
 	GroupID group_sel;
 	VehicleID vehicle_sel;
 
-	grouplist_d gl;
+	GUIGroupList groups;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(groupveh_d));
-
-struct Sorting {
-	Listing aircraft;
-	Listing roadveh;
-	Listing ship;
-	Listing train;
-};
-
-static Sorting _sorting;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
 
-static void BuildGroupList(grouplist_d* gl, PlayerID owner, VehicleType vehicle_type)
+static void BuildGroupList(GUIGroupList *gl, PlayerID owner, VehicleType vehicle_type)
 {
-	const Group** list;
-	const Group *g;
 	uint n = 0;
 
-	if (!(gl->l.flags & VL_REBUILD)) return;
+	if (!(gl->flags & VL_REBUILD)) return;
 
-	list = MallocT<const Group*>(GetGroupArraySize());
+	const Group **list = MallocT<const Group*>(GetGroupArraySize());
 
+	const Group *g;
 	FOR_ALL_GROUPS(g) {
 		if (g->owner == owner && g->vehicle_type == vehicle_type) list[n++] = g;
 	}
 
-	free((void*)gl->sort_list);
-	gl->sort_list = MallocT<const Group *>(n);
-	gl->l.list_length = n;
+	gl->sort_list = ReallocT(gl->sort_list, n);
+	gl->list_length = n;
 
 	for (uint i = 0; i < n; ++i) gl->sort_list[i] = list[i];
-	free((void*)list);
+	free(list);
 
-	gl->l.flags &= ~VL_REBUILD;
-	gl->l.flags |= VL_RESORT;
+	gl->flags &= ~VL_REBUILD;
+	gl->flags |= VL_RESORT;
 }
 
 
@@ -107,14 +93,14 @@ static int CDECL GroupNameSorter(const void *a, const void *b)
 }
 
 
-static void SortGroupList(grouplist_d *gl)
+static void SortGroupList(GUIGroupList *gl)
 {
-	if (!(gl->l.flags & VL_RESORT)) return;
+	if (!(gl->flags & VL_RESORT)) return;
 
-	qsort((void*)gl->sort_list, gl->l.list_length, sizeof(gl->sort_list[0]), GroupNameSorter);
+	qsort((void*)gl->sort_list, gl->list_length, sizeof(gl->sort_list[0]), GroupNameSorter);
 
-	gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-	gl->l.flags &= ~VL_RESORT;
+	gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+	gl->flags &= ~VL_RESORT;
 }
 
 
@@ -180,8 +166,9 @@ static const Widget _group_widgets[] = {
 static void CreateVehicleGroupWindow(Window *w)
 {
 	const PlayerID owner = (PlayerID)GB(w->window_number, 0, 8);
-	groupveh_d *gv = &WP(w, groupveh_d);
-	grouplist_d *gl = &WP(w, groupveh_d).gl;
+	groupveh_d     *gv = &WP(w, groupveh_d);
+	GUIVehicleList *vl = &gv->vehicles;
+	GUIGroupList   *gl = &gv->groups;
 
 	w->caption_color = owner;
 	w->hscroll.cap = 224;
@@ -208,21 +195,22 @@ static void CreateVehicleGroupWindow(Window *w)
 
 	switch (gv->vehicle_type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:    gv->_sorting = &_sorting.train;    break;
-		case VEH_ROAD:     gv->_sorting = &_sorting.roadveh;  break;
-		case VEH_SHIP:     gv->_sorting = &_sorting.ship;     break;
-		case VEH_AIRCRAFT: gv->_sorting = &_sorting.aircraft; break;
+		case VEH_TRAIN:    gv->sorting = &_sorting.train;    break;
+		case VEH_ROAD:     gv->sorting = &_sorting.roadveh;  break;
+		case VEH_SHIP:     gv->sorting = &_sorting.ship;     break;
+		case VEH_AIRCRAFT: gv->sorting = &_sorting.aircraft; break;
 	}
 
-	gv->sort_list = NULL;
 	gv->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
-	gv->l.sort_type = gv->_sorting->criteria;
-	gv->l.flags = VL_REBUILD | (gv->_sorting->order ? VL_DESC : VL_NONE);
-	gv->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+
+	vl->sort_list = NULL;
+	vl->sort_type = gv->sorting->criteria;
+	vl->flags = VL_REBUILD | (gv->sorting->order ? VL_DESC : VL_NONE);
+	vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
 	gl->sort_list = NULL;
-	gl->l.flags = VL_REBUILD | VL_NONE;
-	gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+	gl->flags = VL_REBUILD | VL_NONE;
+	gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
 	gv->group_sel = ALL_GROUP;
 	gv->vehicle_sel = INVALID_VEHICLE;
@@ -305,15 +293,16 @@ static void ShowGroupActionDropdown(Window *w, GroupID gid)
 static void GroupWndProc(Window *w, WindowEvent *e)
 {
 	const PlayerID owner = (PlayerID)GB(w->window_number, 0, 8);
-	groupveh_d *gv = &WP(w, groupveh_d);
-	grouplist_d *gl = &WP(w, groupveh_d).gl;
+	groupveh_d     *gv = &WP(w, groupveh_d);
+	GUIVehicleList *vl = &gv->vehicles;
+	GUIGroupList   *gl = &gv->groups;
 
 	gv->vehicle_type = (VehicleType)GB(w->window_number, 11, 5);
 
 	switch(e->event) {
 		case WE_INVALIDATE_DATA:
-			gv->l.flags |= VL_REBUILD;
-			gl->l.flags |= VL_REBUILD;
+			vl->flags |= VL_REBUILD;
+			gl->flags |= VL_REBUILD;
 			if (!(IsAllGroupID(gv->group_sel) || IsDefaultGroupID(gv->group_sel) || IsValidGroupID(gv->group_sel))) {
 				gv->group_sel = ALL_GROUP;
 				HideDropDownMenu(w);
@@ -341,17 +330,17 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			BuildGroupList(gl, owner, gv->vehicle_type);
 			SortGroupList(gl);
 
-			SetVScrollCount(w, gl->l.list_length);
-			SetVScroll2Count(w, gv->l.list_length);
+			SetVScrollCount(w, gl->list_length);
+			SetVScroll2Count(w, vl->list_length);
 
 			/* The drop down menu is out, *but* it may not be used, retract it. */
-			if (gv->l.list_length == 0 && w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
+			if (vl->list_length == 0 && w->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
 				w->RaiseWidget(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 				HideDropDownMenu(w);
 			}
 
 			/* Disable all lists management button when the list is empty */
-			w->SetWidgetsDisabledState(gv->l.list_length == 0 || _local_player != owner,
+			w->SetWidgetsDisabledState(vl->list_length == 0 || _local_player != owner,
 					GRP_WIDGET_STOP_ALL,
 					GRP_WIDGET_START_ALL,
 					GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
@@ -380,7 +369,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			   We list all vehicles or ungrouped vehicles */
 			if (IsDefaultGroupID(gv->group_sel) || IsAllGroupID(gv->group_sel)) {
 				SetDParam(0, owner);
-				SetDParam(1, gv->l.list_length);
+				SetDParam(1, vl->list_length);
 
 				switch (gv->vehicle_type) {
 					case VEH_TRAIN:
@@ -429,7 +418,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Set text of sort by dropdown */
-			w->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[gv->l.sort_type];
+			w->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[vl->sort_type];
 
 			DrawWindowWidgets(w);
 
@@ -462,7 +451,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 			DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(gv->group_sel) ? TC_WHITE : TC_BLACK);
 
-			max = min(w->vscroll.pos + w->vscroll.cap, gl->l.list_length);
+			max = min(w->vscroll.pos + w->vscroll.cap, gl->list_length);
 			for (i = w->vscroll.pos ; i < max ; ++i) {
 				const Group *g = gl->sort_list[i];
 
@@ -479,12 +468,12 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (gv->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 			}
 
-			DrawSortButtonState(w, GRP_WIDGET_SORT_BY_ORDER, gv->l.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+			DrawSortButtonState(w, GRP_WIDGET_SORT_BY_ORDER, vl->flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 			/* Draw Matrix Vehicle according to the vehicle list built before */
-			max = min(w->vscroll2.pos + w->vscroll2.cap, gv->l.list_length);
+			max = min(w->vscroll2.pos + w->vscroll2.cap, vl->list_length);
 			for (i = w->vscroll2.pos ; i < max ; ++i) {
-				const Vehicle* v = gv->sort_list[i];
+				const Vehicle* v = vl->sort_list[i];
 
 				assert(v->type == gv->vehicle_type && v->owner == owner);
 
@@ -516,21 +505,21 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 			switch(e->we.click.widget) {
 				case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
-					gv->l.flags ^= VL_DESC;
-					gv->l.flags |= VL_RESORT;
+					vl->flags ^= VL_DESC;
+					vl->flags |= VL_RESORT;
 
-					gv->_sorting->order = !!(gv->l.flags & VL_DESC);
+					gv->sorting->order = !!(vl->flags & VL_DESC);
 					w->SetDirty();
 					break;
 
 				case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-					ShowDropDownMenu(w, _vehicle_sort_listing, gv->l.sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (gv->vehicle_type == VEH_TRAIN || gv->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+					ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (gv->vehicle_type == VEH_TRAIN || gv->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 					return;
 
 				case GRP_WIDGET_ALL_VEHICLES: // All vehicles button
 					if (!IsAllGroupID(gv->group_sel)) {
 						gv->group_sel = ALL_GROUP;
-						gv->l.flags |= VL_REBUILD;
+						vl->flags |= VL_REBUILD;
 						w->SetDirty();
 					}
 					break;
@@ -538,7 +527,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 				case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles button
 					if (!IsDefaultGroupID(gv->group_sel)) {
 						gv->group_sel = DEFAULT_GROUP;
-						gv->l.flags |= VL_REBUILD;
+						vl->flags |= VL_REBUILD;
 						w->SetDirty();
 					}
 					break;
@@ -550,11 +539,11 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					id_g += w->vscroll.pos;
 
-					if (id_g >= gl->l.list_length) return;
+					if (id_g >= gl->list_length) return;
 
 					gv->group_sel = gl->sort_list[id_g]->index;;
 
-					gv->l.flags |= VL_REBUILD;
+					vl->flags |= VL_REBUILD;
 					w->SetDirty();
 					break;
 				}
@@ -567,9 +556,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					id_v += w->vscroll2.pos;
 
-					if (id_v >= gv->l.list_length) return; // click out of list bound
+					if (id_v >= vl->list_length) return; // click out of list bound
 
-					v = gv->sort_list[id_v];
+					v = vl->sort_list[id_v];
 
 					gv->vehicle_sel = v->index;
 
@@ -657,7 +646,7 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					id_g += w->vscroll.pos;
 
-					if (id_g >= gl->l.list_length) return;
+					if (id_g >= gl->list_length) return;
 
 					DoCommandP(0, gl->sort_list[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
@@ -677,9 +666,9 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 					id_v += w->vscroll2.pos;
 
-					if (id_v >= gv->l.list_length) return; // click out of list bound
+					if (id_v >= vl->list_length) return; // click out of list bound
 
-					v = gv->sort_list[id_v];
+					v = vl->sort_list[id_v];
 
 					if (vindex == v->index) {
 						ShowVehicleViewWindow(v);
@@ -713,15 +702,15 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
 			switch (e->we.dropdown.button) {
 				case GRP_WIDGET_SORT_BY_DROPDOWN:
-					if (gv->l.sort_type != e->we.dropdown.index) {
-						gv->l.flags |= VL_RESORT;
-						gv->l.sort_type = e->we.dropdown.index;
-						gv->_sorting->criteria = gv->l.sort_type;
+					if (vl->sort_type != e->we.dropdown.index) {
+						vl->flags |= VL_RESORT;
+						vl->sort_type = e->we.dropdown.index;
+						gv->sorting->criteria = vl->sort_type;
 					}
 					break;
 
 				case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-					assert(gv->l.list_length != 0);
+					assert(vl->list_length != 0);
 
 					switch (e->we.dropdown.index) {
 						case GALF_REPLACE: // Replace window
@@ -758,21 +747,21 @@ static void GroupWndProc(Window *w, WindowEvent *e)
 
 
 		case WE_DESTROY:
-			free((void*)gv->sort_list);
+			free((void*)vl->sort_list);
 			free((void*)gl->sort_list);
 			break;
 
 
 		case WE_TICK: // resort the lists every 20 seconds orso (10 days)
 			if (_pause_game != 0) break;
-			if (--gv->l.resort_timer == 0) {
-				gv->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				gv->l.flags |= VL_RESORT;
+			if (--vl->resort_timer == 0) {
+				vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+				vl->flags |= VL_RESORT;
 				w->SetDirty();
 			}
-			if (--gl->l.resort_timer == 0) {
-				gl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-				gl->l.flags |= VL_RESORT;
+			if (--gl->resort_timer == 0) {
+				gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+				gl->flags |= VL_RESORT;
 				w->SetDirty();
 			}
 			break;
