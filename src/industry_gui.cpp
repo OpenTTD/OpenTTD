@@ -432,191 +432,201 @@ enum IndustryViewWidgets {
 	IVW_RESIZE,
 };
 
-/** Information to store about the industry window */
-struct indview_d {
+class IndustryViewWindow : public Window
+{
 	byte editbox_line;        ///< The line clicked to open the edit box
 	byte clicked_line;        ///< The line of the button that has been clicked
 	byte clicked_button;      ///< The button that has been clicked (to raise)
 	byte production_offset_y; ///< The offset of the production texts/buttons
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(indview_d));
 
+public:
+	IndustryViewWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	{
+		this->flags4 |= WF_DISABLE_VP_SCROLL;
+		this->editbox_line = 0;
+		this->clicked_line = 0;
+		this->clicked_button = 0;
+		InitializeWindowViewport(this, 3, 17, 254, 86, GetIndustry(window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-static void IndustryViewWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			Industry *i = GetIndustry(w->window_number);
-			const IndustrySpec *ind = GetIndustrySpec(i->type);
-			int y = w->widget[IVW_INFO].top + 1;
-			bool first = true;
-			bool has_accept = false;
+	virtual void OnPaint()
+	{
+		Industry *i = GetIndustry(this->window_number);
+		const IndustrySpec *ind = GetIndustrySpec(i->type);
+		int y = this->widget[IVW_INFO].top + 1;
+		bool first = true;
+		bool has_accept = false;
 
-			SetDParam(0, w->window_number);
-			DrawWindowWidgets(w);
+		SetDParam(0, this->window_number);
+		DrawWindowWidgets(this);
 
-			if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
-				for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-					if (i->accepts_cargo[j] == CT_INVALID) continue;
-					has_accept = true;
-					if (first) {
-						DrawStringTruncated(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING, w->widget[IVW_INFO].right - 2);
-						y += 10;
-						first = false;
-					}
-					SetDParam(0, i->accepts_cargo[j]);
-					SetDParam(1, i->incoming_cargo_waiting[j]);
-					SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
-					DrawStringTruncated(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING, w->widget[IVW_INFO].right - 4);
-					y += 10;
-				}
-			} else {
-				StringID str = STR_4827_REQUIRES;
-				byte p = 0;
-				for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
-					if (i->accepts_cargo[j] == CT_INVALID) continue;
-					has_accept = true;
-					if (p > 0) str++;
-					SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
-					SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
-				}
-				if (has_accept) {
-					DrawStringTruncated(2, y, str, TC_FROMSTRING, w->widget[IVW_INFO].right - 2);
-					y += 10;
-				}
-			}
-
-			first = true;
-			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-				if (i->produced_cargo[j] == CT_INVALID) continue;
+		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] == CT_INVALID) continue;
+				has_accept = true;
 				if (first) {
-					if (has_accept) y += 10;
-					DrawStringTruncated(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING, w->widget[IVW_INFO].right - 2);
+					DrawStringTruncated(2, y, STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING, TC_FROMSTRING, this->widget[IVW_INFO].right - 2);
 					y += 10;
-					WP(w, indview_d).production_offset_y = y;
 					first = false;
 				}
-
-				SetDParam(0, i->produced_cargo[j]);
-				SetDParam(1, i->last_month_production[j]);
-				SetDParam(2, GetCargoSuffix(j + 3, CST_VIEW, i, i->type, ind));
-
-				SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
-				uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
-				DrawStringTruncated(x, y, STR_482B_TRANSPORTED, TC_FROMSTRING, w->widget[IVW_INFO].right - x);
-				/* Let's put out those buttons.. */
-				if (IsProductionAlterable(i)) {
-					DrawArrowButtons(5, y, 3, (WP(w, indview_d).clicked_line == j + 1) ? WP(w, indview_d).clicked_button : 0,
-							!IsProductionMinimum(i, j), !IsProductionMaximum(i, j));
-				}
+				SetDParam(0, i->accepts_cargo[j]);
+				SetDParam(1, i->incoming_cargo_waiting[j]);
+				SetDParam(2, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
+				DrawStringTruncated(4, y, STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO, TC_FROMSTRING, this->widget[IVW_INFO].right - 4);
 				y += 10;
 			}
+		} else {
+			StringID str = STR_4827_REQUIRES;
+			byte p = 0;
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] == CT_INVALID) continue;
+				has_accept = true;
+				if (p > 0) str++;
+				SetDParam(p++, GetCargo(i->accepts_cargo[j])->name);
+				SetDParam(p++, GetCargoSuffix(j, CST_VIEW, i, i->type, ind));
+			}
+			if (has_accept) {
+				DrawStringTruncated(2, y, str, TC_FROMSTRING, this->widget[IVW_INFO].right - 2);
+				y += 10;
+			}
+		}
 
-			/* Get the extra message for the GUI */
-			if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
-				uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
-				if (callback_res != CALLBACK_FAILED) {
-					StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
-					if (message != STR_NULL && message != STR_UNDEFINED) {
-						const Widget *wi = &w->widget[IVW_INFO];
-						y += 10;
+		first = true;
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] == CT_INVALID) continue;
+			if (first) {
+				if (has_accept) y += 10;
+				DrawStringTruncated(2, y, STR_482A_PRODUCTION_LAST_MONTH, TC_FROMSTRING, this->widget[IVW_INFO].right - 2);
+				y += 10;
+				this->production_offset_y = y;
+				first = false;
+			}
 
-						PrepareTextRefStackUsage(6);
-						/* Use all the available space left from where we stand up to the end of the window */
-						y += DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, -1);
-						StopTextRefStackUsage();
-					}
+			SetDParam(0, i->produced_cargo[j]);
+			SetDParam(1, i->last_month_production[j]);
+			SetDParam(2, GetCargoSuffix(j + 3, CST_VIEW, i, i->type, ind));
+
+			SetDParam(3, i->last_month_pct_transported[j] * 100 >> 8);
+			uint x = 4 + (IsProductionAlterable(i) ? 30 : 0);
+			DrawStringTruncated(x, y, STR_482B_TRANSPORTED, TC_FROMSTRING, this->widget[IVW_INFO].right - x);
+			/* Let's put out those buttons.. */
+			if (IsProductionAlterable(i)) {
+				DrawArrowButtons(5, y, 3, (this->clicked_line == j + 1) ? this->clicked_button : 0,
+						!IsProductionMinimum(i, j), !IsProductionMaximum(i, j));
+			}
+			y += 10;
+		}
+
+		/* Get the extra message for the GUI */
+		if (HasBit(ind->callback_flags, CBM_IND_WINDOW_MORE_TEXT)) {
+			uint16 callback_res = GetIndustryCallback(CBID_INDUSTRY_WINDOW_MORE_TEXT, 0, 0, i, i->type, i->xy);
+			if (callback_res != CALLBACK_FAILED) {
+				StringID message = GetGRFStringID(ind->grf_prop.grffile->grfid, 0xD000 + callback_res);
+				if (message != STR_NULL && message != STR_UNDEFINED) {
+					const Widget *wi = &this->widget[IVW_INFO];
+					y += 10;
+
+					PrepareTextRefStackUsage(6);
+					/* Use all the available space left from where we stand up to the end of the window */
+					y += DrawStringMultiLine(2, y, message, wi->right - wi->left - 4, -1);
+					StopTextRefStackUsage();
 				}
 			}
+		}
 
-			if (y > w->widget[IVW_INFO].bottom) {
-				w->SetDirty();
-				ResizeWindowForWidget(w, IVW_INFO, 0, y - w->widget[IVW_INFO].top);
-				w->SetDirty();
-				return;
-			}
+		if (y > this->widget[IVW_INFO].bottom) {
+			this->SetDirty();
+			ResizeWindowForWidget(this, IVW_INFO, 0, y - this->widget[IVW_INFO].top);
+			this->SetDirty();
+			return;
+		}
 
-			DrawWindowViewport(w);
-		} break;
-
-		case WE_CLICK: {
-			Industry *i;
-
-			switch (e->we.click.widget) {
-				case IVW_INFO: {
-					int line, x;
-
-					i = GetIndustry(w->window_number);
-
-					/* We should work if needed.. */
-					if (!IsProductionAlterable(i)) return;
-					x = e->we.click.pt.x;
-					line = (e->we.click.pt.y - WP(w, indview_d).production_offset_y) / 10;
-					if (e->we.click.pt.y >= WP(w, indview_d).production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
-						if (IsInsideMM(x, 5, 25) ) {
-							/* Clicked buttons, decrease or increase production */
-							if (x < 15) {
-								if (IsProductionMinimum(i, line)) return;
-								i->production_rate[line] = max(i->production_rate[line] / 2, 0);
-							} else {
-								/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
-								int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
-								if (IsProductionMaximum(i, line)) return;
-								i->production_rate[line] = minu(new_prod, 255);
-							}
-
-							UpdateIndustryProduction(i);
-							w->SetDirty();
-							w->flags4 |= 5 << WF_TIMEOUT_SHL;
-							WP(w, indview_d).clicked_line = line + 1;
-							WP(w, indview_d).clicked_button = (x < 15 ? 1 : 2);
-						} else if (IsInsideMM(x, 34, 160)) {
-							/* clicked the text */
-							WP(w, indview_d).editbox_line = line;
-							SetDParam(0, i->production_rate[line] * 8);
-							ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, w, CS_ALPHANUMERAL);
-						}
-					}
-				} break;
-
-				case IVW_GOTO:
-					i = GetIndustry(w->window_number);
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
-					} else {
-						ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
-					}
-
-			} break;
-		} break;
-
-		case WE_TIMEOUT:
-			WP(w, indview_d).clicked_line = 0;
-			WP(w, indview_d).clicked_button = 0;
-			w->SetDirty();
-			break;
-
-		case WE_RESIZE:
-			w->viewport->width           += e->we.sizing.diff.x;
-			w->viewport->height          += e->we.sizing.diff.y;
-			w->viewport->virtual_width   += e->we.sizing.diff.x;
-			w->viewport->virtual_height  += e->we.sizing.diff.y;
-			w->viewport->dest_scrollpos_x -= e->we.sizing.diff.x;
-			w->viewport->dest_scrollpos_y -= e->we.sizing.diff.y;
-			UpdateViewportPosition(w);
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				Industry* i = GetIndustry(w->window_number);
-				int line = WP(w, indview_d).editbox_line;
-
-				i->production_rate[line] = ClampU(atoi(e->we.edittext.str), 0, 255);
-				UpdateIndustryProduction(i);
-				w->SetDirty();
-			}
+		DrawWindowViewport(this);
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		Industry *i;
+
+		switch (widget) {
+			case IVW_INFO: {
+				int line, x;
+
+				i = GetIndustry(this->window_number);
+
+				/* We should work if needed.. */
+				if (!IsProductionAlterable(i)) return;
+				x = pt.x;
+				line = (pt.y - this->production_offset_y) / 10;
+				if (pt.y >= this->production_offset_y && IsInsideMM(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
+					if (IsInsideMM(x, 5, 25) ) {
+						/* Clicked buttons, decrease or increase production */
+						if (x < 15) {
+							if (IsProductionMinimum(i, line)) return;
+							i->production_rate[line] = max(i->production_rate[line] / 2, 0);
+						} else {
+							/* a zero production industry is unlikely to give anything but zero, so push it a little bit */
+							int new_prod = i->production_rate[line] == 0 ? 1 : i->production_rate[line] * 2;
+							if (IsProductionMaximum(i, line)) return;
+							i->production_rate[line] = minu(new_prod, 255);
+						}
+
+						UpdateIndustryProduction(i);
+						this->SetDirty();
+						this->flags4 |= 5 << WF_TIMEOUT_SHL;
+						this->clicked_line = line + 1;
+						this->clicked_button = (x < 15 ? 1 : 2);
+					} else if (IsInsideMM(x, 34, 160)) {
+						/* clicked the text */
+						this->editbox_line = line;
+						SetDParam(0, i->production_rate[line] * 8);
+						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_GAME_PRODUCTION, 10, 100, this, CS_ALPHANUMERAL);
+					}
+				}
+			} break;
+
+			case IVW_GOTO:
+				i = GetIndustry(this->window_number);
+				if (_ctrl_pressed) {
+					ShowExtraViewPortWindow(i->xy + TileDiffXY(1, 1));
+				} else {
+					ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
+				}
+				break;
+		}
+	}
+
+	virtual void OnTimeout()
+	{
+		this->clicked_line = 0;
+		this->clicked_button = 0;
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->viewport->width            += delta.x;
+		this->viewport->height           += delta.y;
+		this->viewport->virtual_width    += delta.x;
+		this->viewport->virtual_height   += delta.y;
+		this->viewport->dest_scrollpos_x -= delta.x;
+		this->viewport->dest_scrollpos_y -= delta.y;
+		UpdateViewportPosition(this);
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (StrEmpty(str)) return;
+
+		Industry* i = GetIndustry(this->window_number);
+		int line = this->editbox_line;
+
+		i->production_rate[line] = ClampU(atoi(str), 0, 255);
+		UpdateIndustryProduction(i);
+		this->SetDirty();
+	}
+};
 
 static void UpdateIndustryProduction(Industry *i)
 {
@@ -647,20 +657,12 @@ static const WindowDesc _industry_view_desc = {
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_view_widgets,
-	IndustryViewWndProc
+	NULL
 };
 
 void ShowIndustryViewWindow(int industry)
 {
-	Window *w = AllocateWindowDescFront<Window>(&_industry_view_desc, industry);
-
-	if (w != NULL) {
-		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		WP(w, indview_d).editbox_line = 0;
-		WP(w, indview_d).clicked_line = 0;
-		WP(w, indview_d).clicked_button = 0;
-		InitializeWindowViewport(w, 3, 17, 254, 86, GetIndustry(w->window_number)->xy + TileDiffXY(1, 1), ZOOM_LVL_INDUSTRY);
-	}
+	AllocateWindowDescFront<IndustryViewWindow>(&_industry_view_desc, industry);
 }
 
 /** Names of the widgets of the industry directory gui */
