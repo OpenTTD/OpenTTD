@@ -301,6 +301,8 @@ public:
 		this->caption_color = _local_player;
 		this->sel_group = id_g;
 		this->vscroll2.cap = this->vscroll.cap;   // these two are always the same
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

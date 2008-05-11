@@ -1038,6 +1038,8 @@ struct NetworkLobbyWindow : public Window {
 	{
 		strcpy(_edit_str_net_buf, "");
 		this->vscroll.cap = 10;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

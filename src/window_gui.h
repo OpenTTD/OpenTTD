@@ -279,8 +279,10 @@ private:
 	void HandleWindowEvent(WindowEvent *e);
 
 protected:
-	void Initialize(int x, int y, int min_width, int min_height, int def_width, int def_height,
+	void Initialize(int x, int y, int min_width, int min_height,
 			WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data);
+	void FindWindowPlacementAndResize(int def_width, int def_height);
+	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
 public:
 	Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget, void *data = NULL);

@@ -184,6 +184,8 @@ public:
 		DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
 		DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
 #undef LANDINFOD_LEVEL
+
+		this->FindWindowPlacementAndResize(&_land_info_desc);
 	}
 };
 
@@ -1125,6 +1127,8 @@ struct QueryWindow : public Window {
 		this->widget[QUERY_WIDGET_CAPTION].data = caption;
 		this->message    = message;
 		this->proc       = callback;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~QueryWindow()

@@ -887,15 +887,13 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
  * @param y offset in pixels from the top of the screen
  * @param min_width minimum width in pixels of the window
  * @param min_height minimum height in pixels of the window
- * @param def_width default width in pixels of the window
- * @param def_height default height in pixels of the window
  * @param *proc see WindowProc function to call when any messages/updates happen to the window
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
  * @param window_number number being assigned to the new window
  * @param data the data to be given during the WE_CREATE message
  * @return Window pointer of the newly created window */
-void Window::Initialize(int x, int y, int min_width, int min_height, int def_width, int def_height,
+void Window::Initialize(int x, int y, int min_width, int min_height,
 				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
 {
 	/* We have run out of windows, close one and use that as the place for our new one */
@@ -947,7 +945,15 @@ void Window::Initialize(int x, int y, int min_width, int min_height, int def_wid
 	e.event = WE_CREATE;
 	e.we.create.data = data;
 	this->HandleWindowEvent(&e);
+}
 
+/**
+ * Find a nice spot for this window and resize it towards the default size.
+ * @param def_width default width in pixels of the window
+ * @param def_height default height in pixels of the window
+ */
+void Window::FindWindowPlacementAndResize(int def_width, int def_height)
+{
 	/* Try to make windows smaller when our window is too small.
 	 * w->(width|height) is normally the same as min_(width|height),
 	 * but this way the GUIs can be made a little more dynamic;
@@ -987,7 +993,7 @@ void Window::Initialize(int x, int y, int min_width, int min_height, int def_wid
 	if (nx + this->width > _screen.width) nx -= (nx + this->width - _screen.width);
 
 	const Window *wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	ny = max(ny, (wt == NULL || this == wt || y == 0) ? 0 : wt->height);
+	ny = max(ny, (wt == NULL || this == wt || this->top == 0) ? 0 : wt->height);
 	nx = max(nx, 0);
 
 	if (this->viewport != NULL) {
@@ -998,6 +1004,11 @@ void Window::Initialize(int x, int y, int min_width, int min_height, int def_wid
 	this->top = ny;
 
 	this->SetDirty();
+}
+
+void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
+{
+	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
 }
 
 /**
@@ -1016,7 +1027,9 @@ void Window::Initialize(int x, int y, int min_width, int min_height, int def_wid
  */
 Window::Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
 {
-	this->Initialize(x, y, width, height, width, height, proc, cls, widget, 0, data);
+	this->Initialize(x, y, width, height, proc, cls, widget, 0, data);
+
+	if (proc != NULL) this->FindWindowPlacementAndResize(width, height);
 }
 
 
@@ -1209,8 +1222,10 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
 Window::Window(const WindowDesc *desc, void *data, WindowNumber window_number)
 {
 	Point pt = LocalGetWindowPlacement(desc, window_number);
-	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->default_width, desc->default_height, desc->proc, desc->cls, desc->widgets, window_number, data);
+	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->proc, desc->cls, desc->widgets, window_number, data);
 	this->desc_flags = desc->flags;
+
+	if (desc->proc != NULL) this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
 }
 
 /** Do a search for a window at specific coordinates. For this we start

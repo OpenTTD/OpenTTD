@@ -163,6 +163,8 @@ public:
 		this->selected_index = 0;
 		this->selected_type = this->index[0];
 		this->callback_timer = DAY_TICKS;
+
+		this->FindWindowPlacementAndResize(&_build_industry_desc);
 	}
 
 	virtual void OnPaint()
