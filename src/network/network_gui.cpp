@@ -37,24 +37,6 @@
 #define BGC 5
 #define BTC 15
 
-/*
-struct network_d {
-	byte field;              // select text-field in start-server and game-listing
-	byte widget_id;          ///< The widget that has the pop-up input menu
-	byte field;              // select text-field in start-server and game-listing
-	NetworkGameList *server; // selected server in lobby and game-listing
-	FiosItem *map;           // selected map in start-server
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_d));
-
-struct network_ql_d {
-	network_d n;                 // see above; general stuff
-	querystr_d q;                // text-input in start-server and game-listing
-	list_d l;                    // accompanying list-administration
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
-*/
-
 /* Global to remember sorting after window has been closed */
 static Listing _ng_sorting;
 

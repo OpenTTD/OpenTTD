@@ -61,12 +61,7 @@ static NewsID _oldest_news = 0;             ///< points to first item in fifo qu
 static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
 
 struct news_d : vp_d {
-	uint16 follow_vehicle;
 	uint16 chat_height;
-	int32 scrollpos_x;
-	int32 scrollpos_y;
-	int32 dest_scrollpos_x;
-	int32 dest_scrollpos_y;
 	NewsItem *ni;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
