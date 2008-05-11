@@ -29,6 +29,7 @@
 #include "widgets/dropdown_func.h"
 #include "core/random_func.hpp"
 #include "landscape_type.h"
+#include "querystring_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -42,14 +43,6 @@ enum glwp_modes {
 	GLWP_SCENARIO,
 	GLWP_END
 };
-
-struct generate_d {
-	uint widget_id;
-	uint x;
-	uint y;
-	char name[64];
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(generate_d));
 
 extern void SwitchMode(int new_mode);
 
@@ -244,314 +237,324 @@ static DropDownList *BuildMapsizeDropDown()
 	return list;
 }
 
-static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
-{
-	static const StringID elevations[]  = {STR_682A_VERY_FLAT, STR_682B_FLAT, STR_682C_HILLY, STR_682D_MOUNTAINOUS, INVALID_STRING_ID};
-	static const StringID sea_lakes[]   = {STR_VERY_LOW, STR_6820_LOW, STR_6821_MEDIUM, STR_6822_HIGH, INVALID_STRING_ID};
-	static const StringID smoothness[]  = {STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
-	static const StringID tree_placer[] = {STR_CONFIG_PATCHES_TREE_PLACER_NONE, STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL, STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
-	static const StringID rotation[]    = {STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
-	static const StringID landscape[]   = {STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL, STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
-	static const StringID num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
-	static const StringID num_inds[]    = {STR_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
+static const StringID _elevations[]  = {STR_682A_VERY_FLAT, STR_682B_FLAT, STR_682C_HILLY, STR_682D_MOUNTAINOUS, INVALID_STRING_ID};
+static const StringID _sea_lakes[]   = {STR_VERY_LOW, STR_6820_LOW, STR_6821_MEDIUM, STR_6822_HIGH, INVALID_STRING_ID};
+static const StringID _smoothness[]  = {STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH, STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH, INVALID_STRING_ID};
+static const StringID _tree_placer[] = {STR_CONFIG_PATCHES_TREE_PLACER_NONE, STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL, STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED, INVALID_STRING_ID};
+static const StringID _rotation[]    = {STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE, INVALID_STRING_ID};
+static const StringID _landscape[]   = {STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL, STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
+static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
+static const StringID _num_inds[]    = {STR_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 
-	/* Data used for the generate seed edit box */
-	static querystr_d _genseed_query;
-	static char _genseed_buffer[11];
+struct GenerateLandscapeWindow : public QueryStringBaseWindow {
+	uint widget_id;
+	uint x;
+	uint y;
+	char name[64];
+	glwp_modes mode;
 
-	glwp_modes mode = (glwp_modes)w->window_number;
+	GenerateLandscapeWindow(const WindowDesc *desc, void *data = NULL, WindowNumber number = 0) : QueryStringBaseWindow(desc, NULL, number)
+	{
+		this->LowerWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
 
-	switch (e->event) {
-		case WE_CREATE:
-			w->LowerWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
+		snprintf(this->edit_str_buf, sizeof(this->edit_str_buf), "%u", _patches_newgame.generation_seed);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
+		this->caption = STR_NULL;
+		this->afilter = CS_NUMERAL;
 
-			snprintf(_genseed_buffer, sizeof(_genseed_buffer), "%u", _patches_newgame.generation_seed);
-			InitializeTextBuffer(&_genseed_query.text, _genseed_buffer, lengthof(_genseed_buffer), 120);
-			_genseed_query.caption = STR_NULL;
-			_genseed_query.afilter = CS_NUMERAL;
-			break;
+		this->mode = (glwp_modes)this->window_number;
 
-		case WE_PAINT:
-			/* You can't select smoothness if not terragenesis */
-			if (mode == GLWP_GENERATE) {
-				w->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _patches_newgame.land_generator == 0);
-			}
-			/* Disable snowline if not hilly */
-			w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_ARCTIC);
-			/* Disable town, industry and trees in SE */
-			w->SetWidgetDisabledState(GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
-			w->SetWidgetDisabledState(GLAND_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
-			w->SetWidgetDisabledState(GLAND_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
-
-			w->SetWidgetDisabledState(GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
-			w->SetWidgetDisabledState(GLAND_START_DATE_UP,   _patches_newgame.starting_year >= MAX_YEAR);
-			w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_ARCTIC);
-			w->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= MAX_SNOWLINE_HEIGHT || _opt_newgame.landscape != LT_ARCTIC);
-
-			w->SetWidgetLoweredState(GLAND_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
-			w->SetWidgetLoweredState(GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
-			w->SetWidgetLoweredState(GLAND_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
-			w->SetWidgetLoweredState(GLAND_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
-
-			if (_game_mode == GM_EDITOR) {
-				w->widget[GLAND_TOWN_PULLDOWN].data     = STR_6836_OFF;
-				w->widget[GLAND_INDUSTRY_PULLDOWN].data = STR_6836_OFF;
-			} else {
-				w->widget[GLAND_TOWN_PULLDOWN].data     = num_towns[_opt_newgame.diff.number_towns];
-				w->widget[GLAND_INDUSTRY_PULLDOWN].data = num_inds[_opt_newgame.diff.number_industries];
-			}
-
-			if (mode == GLWP_GENERATE) {
-				w->widget[GLAND_LANDSCAPE_PULLDOWN].data  = landscape[_patches_newgame.land_generator];
-				w->widget[GLAND_TREE_PULLDOWN].data       = tree_placer[_patches_newgame.tree_placer];
-				w->widget[GLAND_TERRAIN_PULLDOWN].data    = elevations[_opt_newgame.diff.terrain_type];
-				w->widget[GLAND_WATER_PULLDOWN].data      = sea_lakes[_opt_newgame.diff.quantity_sea_lakes];
-				w->widget[GLAND_SMOOTHNESS_PULLDOWN].data = smoothness[_patches_newgame.tgen_smoothness];
-			} else {
-				w->widget[GLAND_TREE_PULLDOWN].data               = tree_placer[_patches_newgame.tree_placer];
-				w->widget[GLAND_HEIGHTMAP_ROTATION_PULLDOWN].data = rotation[_patches_newgame.heightmap_rotation];
-			}
-
-			/* Set parameters for widget text that requires them. */
-			SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1)); // GLAND_START_DATE_TEXT
-			SetDParam(1, 1 << _patches_newgame.map_x); // GLAND_MAPSIZE_X_PULLDOWN
-			SetDParam(2, 1 << _patches_newgame.map_y); // GLAND_MAPSIZE_Y_PULLDOWN
-			SetDParam(3, _patches_newgame.snow_line_height); // GLAND_SNOW_LEVEL_TEXT
-
-			DrawWindowWidgets(w);
-
-			DrawEditBox(w, &_genseed_query, GLAND_RANDOM_EDITBOX);
-
-			if (mode != GLWP_GENERATE) {
-				char buffer[512];
-
-				if (_patches_newgame.heightmap_rotation == HM_CLOCKWISE) {
-					SetDParam(0, WP(w, generate_d).y);
-					SetDParam(1, WP(w, generate_d).x);
-				} else {
-					SetDParam(0, WP(w, generate_d).x);
-					SetDParam(1, WP(w, generate_d).y);
-				}
-				GetString(buffer, STR_HEIGHTMAP_SIZE, lastof(buffer));
-				DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, TC_BLACK);
-
-				DrawString( 12,  91, STR_HEIGHTMAP_NAME, TC_BLACK);
-				SetDParamStr(0, WP(w, generate_d).name);
-				DrawStringTruncated(114,  91, STR_ORANGE, TC_BLACK, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
-			}
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 0: delete w; break;
-
-				case GLAND_TEMPERATE:
-				case GLAND_ARCTIC:
-				case GLAND_TROPICAL:
-				case GLAND_TOYLAND:
-					w->RaiseWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
-					SetNewLandscapeType(e->we.click.widget - GLAND_TEMPERATE);
-					break;
-
-				case GLAND_MAPSIZE_X_PULLDOWN: // Mapsize X
-					ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_x, GLAND_MAPSIZE_X_PULLDOWN);
-					break;
-
-				case GLAND_MAPSIZE_Y_PULLDOWN: // Mapsize Y
-					ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_y, GLAND_MAPSIZE_Y_PULLDOWN);
-					break;
-
-				case GLAND_TOWN_PULLDOWN: // Number of towns
-					ShowDropDownMenu(w, num_towns, _opt_newgame.diff.number_towns, GLAND_TOWN_PULLDOWN, 0, 0);
-					break;
-
-				case GLAND_INDUSTRY_PULLDOWN: // Number of industries
-					ShowDropDownMenu(w, num_inds, _opt_newgame.diff.number_industries, GLAND_INDUSTRY_PULLDOWN, 0, 0);
-					break;
-
-				case GLAND_RANDOM_BUTTON: // Random seed
-					_patches_newgame.generation_seed = InteractiveRandom();
-					snprintf(_genseed_buffer, lengthof(_genseed_buffer), "%u", _patches_newgame.generation_seed);
-					UpdateTextBufferSize(&_genseed_query.text);
-					w->SetDirty();
-					break;
-
-				case GLAND_RANDOM_EDITBOX: // edit box for random seed
-					ShowOnScreenKeyboard(w, & _genseed_query, GLAND_RANDOM_EDITBOX, 0, 0);
-					break;
-
-				case GLAND_GENERATE_BUTTON: // Generate
-					UpdatePatches();
-
-					if (_patches.town_layout == TL_NO_ROADS) {
-						ShowQuery(
-							STR_TOWN_LAYOUT_WARNING_CAPTION,
-							STR_TOWN_LAYOUT_WARNING_MESSAGE,
-							w,
-							LandscapeGenerationCallback);
-					} else if (mode == GLWP_HEIGHTMAP &&
-							(WP(w, generate_d).x * 2 < (1U << _patches_newgame.map_x) ||
-							WP(w, generate_d).x / 2 > (1U << _patches_newgame.map_x) ||
-							WP(w, generate_d).y * 2 < (1U << _patches_newgame.map_y) ||
-							WP(w, generate_d).y / 2 > (1U << _patches_newgame.map_y))) {
-						ShowQuery(
-							STR_HEIGHTMAP_SCALE_WARNING_CAPTION,
-							STR_HEIGHTMAP_SCALE_WARNING_MESSAGE,
-							w,
-							LandscapeGenerationCallback);
-					} else {
-						StartGeneratingLandscape(mode);
-					}
-					break;
-
-				case GLAND_START_DATE_DOWN:
-				case GLAND_START_DATE_UP: // Year buttons
-					/* Don't allow too fast scrolling */
-					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-						w->HandleButtonClick(e->we.click.widget);
-						w->SetDirty();
-
-						_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - GLAND_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
-					}
-					_left_button_clicked = false;
-					break;
-
-				case GLAND_START_DATE_TEXT: // Year text
-					WP(w, generate_d).widget_id = GLAND_START_DATE_TEXT;
-					SetDParam(0, _patches_newgame.starting_year);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
-					break;
-
-				case GLAND_SNOW_LEVEL_DOWN:
-				case GLAND_SNOW_LEVEL_UP: // Snow line buttons
-					/* Don't allow too fast scrolling */
-					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-						w->HandleButtonClick(e->we.click.widget);
-						w->SetDirty();
-
-						_patches_newgame.snow_line_height = Clamp(_patches_newgame.snow_line_height + e->we.click.widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
-					}
-					_left_button_clicked = false;
-					break;
-
-				case GLAND_SNOW_LEVEL_TEXT: // Snow line text
-					WP(w, generate_d).widget_id = GLAND_SNOW_LEVEL_TEXT;
-					SetDParam(0, _patches_newgame.snow_line_height);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
-					break;
-
-				case GLAND_TREE_PULLDOWN: // Tree placer
-					ShowDropDownMenu(w, tree_placer, _patches_newgame.tree_placer, GLAND_TREE_PULLDOWN, 0, 0);
-					break;
-
-				case GLAND_LANDSCAPE_PULLDOWN: // Landscape generator OR Heightmap rotation
-				/* case GLAND_HEIGHTMAP_ROTATION_TEXT: case GLAND_HEIGHTMAP_ROTATION_PULLDOWN:*/
-					if (mode == GLWP_HEIGHTMAP) {
-						ShowDropDownMenu(w, rotation, _patches_newgame.heightmap_rotation, GLAND_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
-					} else {
-						ShowDropDownMenu(w, landscape, _patches_newgame.land_generator, GLAND_LANDSCAPE_PULLDOWN, 0, 0);
-					}
-					break;
-
-				case GLAND_TERRAIN_PULLDOWN: // Terrain type
-					ShowDropDownMenu(w, elevations, _opt_newgame.diff.terrain_type, GLAND_TERRAIN_PULLDOWN, 0, 0);
-					break;
-
-				case GLAND_WATER_PULLDOWN: // Water quantity
-					ShowDropDownMenu(w, sea_lakes, _opt_newgame.diff.quantity_sea_lakes, GLAND_WATER_PULLDOWN, 0, 0);
-					break;
-
-				case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
-					ShowDropDownMenu(w, smoothness, _patches_newgame.tgen_smoothness, GLAND_SMOOTHNESS_PULLDOWN, 0, 0);
-					break;
-			}
-			break;
-
-		case WE_MOUSELOOP:
-			HandleEditBox(w, &_genseed_query, GLAND_RANDOM_EDITBOX);
-			break;
-
-		case WE_KEYPRESS:
-			HandleEditBoxKey(w, &_genseed_query, GLAND_RANDOM_EDITBOX, e);
-			/* the seed is unsigned, therefore atoi cannot be used.
-			 * As 2^32 - 1 (MAX_UVALUE(uint32)) is a 'magic' value
-			 * (use random seed) it should not be possible to be
-			 * entered into the input field; the generate seed
-			 * button can be used instead. */
-			_patches_newgame.generation_seed = minu(strtoul(_genseed_buffer, NULL, sizeof(_genseed_buffer) - 1), MAX_UVALUE(uint32) - 1);
-			break;
-
-		case WE_DROPDOWN_SELECT:
-			switch (e->we.dropdown.button) {
-				case GLAND_MAPSIZE_X_PULLDOWN:  _patches_newgame.map_x = e->we.dropdown.index; break;
-				case GLAND_MAPSIZE_Y_PULLDOWN:  _patches_newgame.map_y = e->we.dropdown.index; break;
-				case GLAND_TREE_PULLDOWN:       _patches_newgame.tree_placer = e->we.dropdown.index; break;
-				case GLAND_SMOOTHNESS_PULLDOWN: _patches_newgame.tgen_smoothness = e->we.dropdown.index;  break;
-
-				case GLAND_TOWN_PULLDOWN:
-					_opt_newgame.diff.number_towns = e->we.dropdown.index;
-					if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-					DoCommandP(0, 2, _opt_newgame.diff.number_towns, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					break;
-
-				case GLAND_INDUSTRY_PULLDOWN:
-					_opt_newgame.diff.number_industries = e->we.dropdown.index;
-					if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-					DoCommandP(0, 3, _opt_newgame.diff.number_industries, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					break;
-
-				case GLAND_LANDSCAPE_PULLDOWN:
-				/* case GLAND_HEIGHTMAP_PULLDOWN: */
-					if (mode == GLWP_HEIGHTMAP) {
-						_patches_newgame.heightmap_rotation = e->we.dropdown.index;
-					} else {
-						_patches_newgame.land_generator = e->we.dropdown.index;
-					}
-					break;
-
-				case GLAND_TERRAIN_PULLDOWN:
-					_opt_newgame.diff.terrain_type = e->we.dropdown.index;
-					if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-					DoCommandP(0, 12, _opt_newgame.diff.terrain_type, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					break;
-
-				case GLAND_WATER_PULLDOWN:
-					_opt_newgame.diff.quantity_sea_lakes = e->we.dropdown.index;
-					if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-					DoCommandP(0, 13, _opt_newgame.diff.quantity_sea_lakes, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					break;
-			}
-			w->SetDirty();
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				int32 value = atoi(e->we.edittext.str);
-
-				switch (WP(w, generate_d).widget_id) {
-					case GLAND_START_DATE_TEXT:
-						w->InvalidateWidget(GLAND_START_DATE_TEXT);
-						_patches_newgame.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
-						break;
-
-					case GLAND_SNOW_LEVEL_TEXT:
-						w->InvalidateWidget(GLAND_SNOW_LEVEL_TEXT);
-						_patches_newgame.snow_line_height = Clamp(value, 2, MAX_SNOWLINE_HEIGHT);
-						break;
-				}
-
-				w->SetDirty();
-			}
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		/* You can't select smoothness if not terragenesis */
+		if (mode == GLWP_GENERATE) {
+			this->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _patches_newgame.land_generator == 0);
+		}
+		/* Disable snowline if not hilly */
+		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _opt_newgame.landscape != LT_ARCTIC);
+		/* Disable town, industry and trees in SE */
+		this->SetWidgetDisabledState(GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
+		this->SetWidgetDisabledState(GLAND_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
+		this->SetWidgetDisabledState(GLAND_TREE_PULLDOWN,     _game_mode == GM_EDITOR);
+
+		this->SetWidgetDisabledState(GLAND_START_DATE_DOWN, _patches_newgame.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(GLAND_START_DATE_UP,   _patches_newgame.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_ARCTIC);
+		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _patches_newgame.snow_line_height >= MAX_SNOWLINE_HEIGHT || _opt_newgame.landscape != LT_ARCTIC);
+
+		this->SetWidgetLoweredState(GLAND_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(GLAND_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(GLAND_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(GLAND_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
+
+		if (_game_mode == GM_EDITOR) {
+			this->widget[GLAND_TOWN_PULLDOWN].data     = STR_6836_OFF;
+			this->widget[GLAND_INDUSTRY_PULLDOWN].data = STR_6836_OFF;
+		} else {
+			this->widget[GLAND_TOWN_PULLDOWN].data     = _num_towns[_opt_newgame.diff.number_towns];
+			this->widget[GLAND_INDUSTRY_PULLDOWN].data = _num_inds[_opt_newgame.diff.number_industries];
+		}
+
+		if (mode == GLWP_GENERATE) {
+			this->widget[GLAND_LANDSCAPE_PULLDOWN].data  = _landscape[_patches_newgame.land_generator];
+			this->widget[GLAND_TREE_PULLDOWN].data       = _tree_placer[_patches_newgame.tree_placer];
+			this->widget[GLAND_TERRAIN_PULLDOWN].data    = _elevations[_opt_newgame.diff.terrain_type];
+			this->widget[GLAND_WATER_PULLDOWN].data      = _sea_lakes[_opt_newgame.diff.quantity_sea_lakes];
+			this->widget[GLAND_SMOOTHNESS_PULLDOWN].data = _smoothness[_patches_newgame.tgen_smoothness];
+		} else {
+			this->widget[GLAND_TREE_PULLDOWN].data               = _tree_placer[_patches_newgame.tree_placer];
+			this->widget[GLAND_HEIGHTMAP_ROTATION_PULLDOWN].data = _rotation[_patches_newgame.heightmap_rotation];
+		}
+
+		/* Set parameters for widget text that requires them. */
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1)); // GLAND_START_DATE_TEXT
+		SetDParam(1, 1 << _patches_newgame.map_x); // GLAND_MAPSIZE_X_PULLDOWN
+		SetDParam(2, 1 << _patches_newgame.map_y); // GLAND_MAPSIZE_Y_PULLDOWN
+		SetDParam(3, _patches_newgame.snow_line_height); // GLAND_SNOW_LEVEL_TEXT
+
+		DrawWindowWidgets(this);
+
+		this->DrawEditBox(GLAND_RANDOM_EDITBOX);
+
+		if (mode != GLWP_GENERATE) {
+			char buffer[512];
+
+			if (_patches_newgame.heightmap_rotation == HM_CLOCKWISE) {
+				SetDParam(0, this->y);
+				SetDParam(1, this->x);
+			} else {
+				SetDParam(0, this->x);
+				SetDParam(1, this->y);
+			}
+			GetString(buffer, STR_HEIGHTMAP_SIZE, lastof(buffer));
+			DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, TC_BLACK);
+
+			DrawString( 12,  91, STR_HEIGHTMAP_NAME, TC_BLACK);
+			SetDParamStr(0, this->name);
+			DrawStringTruncated(114,  91, STR_ORANGE, TC_BLACK, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 0: delete this; break;
+
+			case GLAND_TEMPERATE:
+			case GLAND_ARCTIC:
+			case GLAND_TROPICAL:
+			case GLAND_TOYLAND:
+				this->RaiseWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
+				SetNewLandscapeType(widget - GLAND_TEMPERATE);
+				break;
+
+			case GLAND_MAPSIZE_X_PULLDOWN: // Mapsize X
+				ShowDropDownList(this, BuildMapsizeDropDown(), _patches_newgame.map_x, GLAND_MAPSIZE_X_PULLDOWN);
+				break;
+
+			case GLAND_MAPSIZE_Y_PULLDOWN: // Mapsize Y
+				ShowDropDownList(this, BuildMapsizeDropDown(), _patches_newgame.map_y, GLAND_MAPSIZE_Y_PULLDOWN);
+				break;
+
+			case GLAND_TOWN_PULLDOWN: // Number of towns
+				ShowDropDownMenu(this, _num_towns, _opt_newgame.diff.number_towns, GLAND_TOWN_PULLDOWN, 0, 0);
+				break;
+
+			case GLAND_INDUSTRY_PULLDOWN: // Number of industries
+				ShowDropDownMenu(this, _num_inds, _opt_newgame.diff.number_industries, GLAND_INDUSTRY_PULLDOWN, 0, 0);
+				break;
+
+			case GLAND_RANDOM_BUTTON: // Random seed
+				_patches_newgame.generation_seed = InteractiveRandom();
+				snprintf(this->edit_str_buf, lengthof(this->edit_str_buf), "%u", _patches_newgame.generation_seed);
+				UpdateTextBufferSize(&this->text);
+				this->SetDirty();
+				break;
+
+			case GLAND_RANDOM_EDITBOX: // edit box for random seed
+				ShowOnScreenKeyboard(this, GLAND_RANDOM_EDITBOX, 0, 0);
+				break;
+
+			case GLAND_GENERATE_BUTTON: // Generate
+				UpdatePatches();
+
+				if (_patches.town_layout == TL_NO_ROADS) {
+					ShowQuery(
+						STR_TOWN_LAYOUT_WARNING_CAPTION,
+						STR_TOWN_LAYOUT_WARNING_MESSAGE,
+						this,
+						LandscapeGenerationCallback);
+				} else if (mode == GLWP_HEIGHTMAP &&
+						(this->x * 2 < (1U << _patches_newgame.map_x) ||
+						this->x / 2 > (1U << _patches_newgame.map_x) ||
+						this->y * 2 < (1U << _patches_newgame.map_y) ||
+						this->y / 2 > (1U << _patches_newgame.map_y))) {
+					ShowQuery(
+						STR_HEIGHTMAP_SCALE_WARNING_CAPTION,
+						STR_HEIGHTMAP_SCALE_WARNING_MESSAGE,
+						this,
+						LandscapeGenerationCallback);
+				} else {
+					StartGeneratingLandscape(mode);
+				}
+				break;
+
+			case GLAND_START_DATE_DOWN:
+			case GLAND_START_DATE_UP: // Year buttons
+				/* Don't allow too fast scrolling */
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+					this->HandleButtonClick(widget);
+					this->SetDirty();
+
+					_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + widget - GLAND_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
+				}
+				_left_button_clicked = false;
+				break;
+
+			case GLAND_START_DATE_TEXT: // Year text
+				this->widget_id = GLAND_START_DATE_TEXT;
+				SetDParam(0, _patches_newgame.starting_year);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL);
+				break;
+
+			case GLAND_SNOW_LEVEL_DOWN:
+			case GLAND_SNOW_LEVEL_UP: // Snow line buttons
+				/* Don't allow too fast scrolling */
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+					this->HandleButtonClick(widget);
+					this->SetDirty();
+
+					_patches_newgame.snow_line_height = Clamp(_patches_newgame.snow_line_height + widget - GLAND_SNOW_LEVEL_TEXT, 2, MAX_SNOWLINE_HEIGHT);
+				}
+				_left_button_clicked = false;
+				break;
+
+			case GLAND_SNOW_LEVEL_TEXT: // Snow line text
+				this->widget_id = GLAND_SNOW_LEVEL_TEXT;
+				SetDParam(0, _patches_newgame.snow_line_height);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL);
+				break;
+
+			case GLAND_TREE_PULLDOWN: // Tree placer
+				ShowDropDownMenu(this, _tree_placer, _patches_newgame.tree_placer, GLAND_TREE_PULLDOWN, 0, 0);
+				break;
+
+			case GLAND_LANDSCAPE_PULLDOWN: // Landscape generator OR Heightmap rotation
+			/* case GLAND_HEIGHTMAP_ROTATION_TEXT: case GLAND_HEIGHTMAP_ROTATION_PULLDOWN:*/
+				if (mode == GLWP_HEIGHTMAP) {
+					ShowDropDownMenu(this, _rotation, _patches_newgame.heightmap_rotation, GLAND_HEIGHTMAP_ROTATION_PULLDOWN, 0, 0);
+				} else {
+					ShowDropDownMenu(this, _landscape, _patches_newgame.land_generator, GLAND_LANDSCAPE_PULLDOWN, 0, 0);
+				}
+				break;
+
+			case GLAND_TERRAIN_PULLDOWN: // Terrain type
+				ShowDropDownMenu(this, _elevations, _opt_newgame.diff.terrain_type, GLAND_TERRAIN_PULLDOWN, 0, 0);
+				break;
+
+			case GLAND_WATER_PULLDOWN: // Water quantity
+				ShowDropDownMenu(this, _sea_lakes, _opt_newgame.diff.quantity_sea_lakes, GLAND_WATER_PULLDOWN, 0, 0);
+				break;
+
+			case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
+				ShowDropDownMenu(this, _smoothness, _patches_newgame.tgen_smoothness, GLAND_SMOOTHNESS_PULLDOWN, 0, 0);
+				break;
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(GLAND_RANDOM_EDITBOX);
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont;
+		this->HandleEditBoxKey(GLAND_RANDOM_EDITBOX, key, keycode, cont);
+		/* the seed is unsigned, therefore atoi cannot be used.
+			* As 2^32 - 1 (MAX_UVALUE(uint32)) is a 'magic' value
+			* (use random seed) it should not be possible to be
+			* entered into the input field; the generate seed
+			* button can be used instead. */
+		_patches_newgame.generation_seed = minu(strtoul(this->edit_str_buf, NULL, sizeof(this->edit_str_buf) - 1), MAX_UVALUE(uint32) - 1);
+		return cont;
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case GLAND_MAPSIZE_X_PULLDOWN:  _patches_newgame.map_x = index; break;
+			case GLAND_MAPSIZE_Y_PULLDOWN:  _patches_newgame.map_y = index; break;
+			case GLAND_TREE_PULLDOWN:       _patches_newgame.tree_placer = index; break;
+			case GLAND_SMOOTHNESS_PULLDOWN: _patches_newgame.tgen_smoothness = index;  break;
+
+			case GLAND_TOWN_PULLDOWN:
+				_opt_newgame.diff.number_towns = index;
+				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+				DoCommandP(0, 2, _opt_newgame.diff.number_towns, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				break;
+
+			case GLAND_INDUSTRY_PULLDOWN:
+				_opt_newgame.diff.number_industries = index;
+				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+				DoCommandP(0, 3, _opt_newgame.diff.number_industries, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				break;
+
+			case GLAND_LANDSCAPE_PULLDOWN:
+			/* case GLAND_HEIGHTMAP_PULLDOWN: */
+				if (mode == GLWP_HEIGHTMAP) {
+					_patches_newgame.heightmap_rotation = index;
+				} else {
+					_patches_newgame.land_generator = index;
+				}
+				break;
+
+			case GLAND_TERRAIN_PULLDOWN:
+				_opt_newgame.diff.terrain_type = index;
+				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+				DoCommandP(0, 12, _opt_newgame.diff.terrain_type, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				break;
+
+			case GLAND_WATER_PULLDOWN:
+				_opt_newgame.diff.quantity_sea_lakes = index;
+				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+				DoCommandP(0, 13, _opt_newgame.diff.quantity_sea_lakes, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				break;
+		}
+		this->SetDirty();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			int32 value = atoi(str);
+
+			switch (this->widget_id) {
+				case GLAND_START_DATE_TEXT:
+					this->InvalidateWidget(GLAND_START_DATE_TEXT);
+					_patches_newgame.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+					break;
+
+				case GLAND_SNOW_LEVEL_TEXT:
+					this->InvalidateWidget(GLAND_SNOW_LEVEL_TEXT);
+					_patches_newgame.snow_line_height = Clamp(value, 2, MAX_SNOWLINE_HEIGHT);
+					break;
+			}
+
+			this->SetDirty();
+		}
+	}
+};
 
 static const WindowDesc _generate_landscape_desc = {
 	WDP_CENTER, WDP_CENTER, 338, 268, 338, 268,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_generate_landscape_widgets,
-	GenerateLandscapeWndProc,
+	NULL,
 };
 
 static const WindowDesc _heightmap_load_desc = {
@@ -559,7 +562,7 @@ static const WindowDesc _heightmap_load_desc = {
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_heightmap_load_widgets,
-	GenerateLandscapeWndProc,
+	NULL,
 };
 
 static void _ShowGenerateLandscape(glwp_modes mode)
@@ -577,14 +580,12 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 		if (!GetHeightmapDimensions(_file_to_saveload.name, &x, &y)) return;
 	}
 
-	Window *w = AllocateWindowDescFront<Window>((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
-
-	if (w == NULL) return;
+	GenerateLandscapeWindow *w = AllocateWindowDescFront<GenerateLandscapeWindow>((mode == GLWP_HEIGHTMAP) ? &_heightmap_load_desc : &_generate_landscape_desc, mode);
 
 	if (mode == GLWP_HEIGHTMAP) {
-		WP(w, generate_d).x = x;
-		WP(w, generate_d).y = y;
-		strecpy(WP(w, generate_d).name, _file_to_saveload.title, lastof(WP(w, generate_d).name));
+		w->x = x;
+		w->y = y;
+		strecpy(w->name, _file_to_saveload.title, lastof(w->name));
 	}
 
 	InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
@@ -639,127 +640,131 @@ enum CreateScenarioWindowWidgets {
 };
 
 
-static void CreateScenarioWndProc(Window *w, WindowEvent *e)
+struct CreateScenarioWindow : public Window
 {
-	switch (e->event) {
-		case WE_CREATE:
-			w->LowerWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
-			break;
+	uint widget_id;
 
-		case WE_PAINT:
-			w->SetWidgetDisabledState(CSCEN_START_DATE_DOWN,       _patches_newgame.starting_year <= MIN_YEAR);
-			w->SetWidgetDisabledState(CSCEN_START_DATE_UP,         _patches_newgame.starting_year >= MAX_YEAR);
-			w->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
-			w->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= MAX_TILE_HEIGHT);
-
-			w->SetWidgetLoweredState(CSCEN_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
-			w->SetWidgetLoweredState(CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
-			w->SetWidgetLoweredState(CSCEN_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
-			w->SetWidgetLoweredState(CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
-
-			/* Set parameters for widget text that requires them */
-			SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1)); // CSCEN_START_DATE_TEXT
-			SetDParam(1, 1 << _patches_newgame.map_x); // CSCEN_MAPSIZE_X_PULLDOWN
-			SetDParam(2, 1 << _patches_newgame.map_y); // CSCEN_MAPSIZE_Y_PULLDOWN
-			SetDParam(3, _patches_newgame.se_flat_world_height); // CSCEN_FLAT_LAND_HEIGHT_TEXT
-
-			DrawWindowWidgets(w);
-
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case CSCEN_TEMPERATE:
-				case CSCEN_ARCTIC:
-				case CSCEN_TROPICAL:
-				case CSCEN_TOYLAND:
-					w->RaiseWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
-					SetNewLandscapeType(e->we.click.widget - CSCEN_TEMPERATE);
-					break;
-
-				case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X
-					ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_x, CSCEN_MAPSIZE_X_PULLDOWN);
-					break;
-
-				case CSCEN_MAPSIZE_Y_PULLDOWN: // Mapsize Y
-					ShowDropDownList(w, BuildMapsizeDropDown(), _patches_newgame.map_y, CSCEN_MAPSIZE_Y_PULLDOWN);
-					break;
-
-				case CSCEN_EMPTY_WORLD: // Empty world / flat world
-					StartGeneratingLandscape(GLWP_SCENARIO);
-					break;
-
-				case CSCEN_RANDOM_WORLD: // Generate
-					ShowGenerateLandscape();
-					break;
-
-				case CSCEN_START_DATE_DOWN:
-				case CSCEN_START_DATE_UP: // Year buttons
-					/* Don't allow too fast scrolling */
-					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-						w->HandleButtonClick(e->we.click.widget);
-						w->SetDirty();
-
-						_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + e->we.click.widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
-					}
-					_left_button_clicked = false;
-					break;
-
-				case CSCEN_START_DATE_TEXT: // Year text
-					WP(w, generate_d).widget_id = CSCEN_START_DATE_TEXT;
-					SetDParam(0, _patches_newgame.starting_year);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, w, CS_NUMERAL);
-					break;
-
-				case CSCEN_FLAT_LAND_HEIGHT_DOWN:
-				case CSCEN_FLAT_LAND_HEIGHT_UP: // Height level buttons
-					/* Don't allow too fast scrolling */
-					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-						w->HandleButtonClick(e->we.click.widget);
-						w->SetDirty();
-
-						_patches_newgame.se_flat_world_height = Clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
-					}
-					_left_button_clicked = false;
-					break;
-
-				case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
-					WP(w, generate_d).widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
-					SetDParam(0, _patches_newgame.se_flat_world_height);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, w, CS_NUMERAL);
-					break;
-			}
-			break;
-
-		case WE_DROPDOWN_SELECT:
-			switch (e->we.dropdown.button) {
-				case CSCEN_MAPSIZE_X_PULLDOWN: _patches_newgame.map_x = e->we.dropdown.index; break;
-				case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = e->we.dropdown.index; break;
-			}
-			w->SetDirty();
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				int32 value = atoi(e->we.edittext.str);
-
-				switch (WP(w, generate_d).widget_id) {
-					case CSCEN_START_DATE_TEXT:
-						w->InvalidateWidget(CSCEN_START_DATE_TEXT);
-						_patches_newgame.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
-						break;
-
-					case CSCEN_FLAT_LAND_HEIGHT_TEXT:
-						w->InvalidateWidget(CSCEN_FLAT_LAND_HEIGHT_TEXT);
-						_patches_newgame.se_flat_world_height = Clamp(value, 0, MAX_TILE_HEIGHT);
-						break;
-				}
-
-				w->SetDirty();
-			}
-			break;
+	CreateScenarioWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, NULL, window_number)
+	{
+		this->LowerWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		this->SetWidgetDisabledState(CSCEN_START_DATE_DOWN,       _patches_newgame.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(CSCEN_START_DATE_UP,         _patches_newgame.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_DOWN, _patches_newgame.se_flat_world_height <= 0);
+		this->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_UP,   _patches_newgame.se_flat_world_height >= MAX_TILE_HEIGHT);
+
+		this->SetWidgetLoweredState(CSCEN_TEMPERATE, _opt_newgame.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(CSCEN_ARCTIC,    _opt_newgame.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(CSCEN_TROPICAL,  _opt_newgame.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(CSCEN_TOYLAND,   _opt_newgame.landscape == LT_TOYLAND);
+
+		/* Set parameters for widget text that requires them */
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1)); // CSCEN_START_DATE_TEXT
+		SetDParam(1, 1 << _patches_newgame.map_x); // CSCEN_MAPSIZE_X_PULLDOWN
+		SetDParam(2, 1 << _patches_newgame.map_y); // CSCEN_MAPSIZE_Y_PULLDOWN
+		SetDParam(3, _patches_newgame.se_flat_world_height); // CSCEN_FLAT_LAND_HEIGHT_TEXT
+
+		DrawWindowWidgets(this);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case CSCEN_TEMPERATE:
+			case CSCEN_ARCTIC:
+			case CSCEN_TROPICAL:
+			case CSCEN_TOYLAND:
+				this->RaiseWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
+				SetNewLandscapeType(widget - CSCEN_TEMPERATE);
+				break;
+
+			case CSCEN_MAPSIZE_X_PULLDOWN: // Mapsize X
+				ShowDropDownList(this, BuildMapsizeDropDown(), _patches_newgame.map_x, CSCEN_MAPSIZE_X_PULLDOWN);
+				break;
+
+			case CSCEN_MAPSIZE_Y_PULLDOWN: // Mapsize Y
+				ShowDropDownList(this, BuildMapsizeDropDown(), _patches_newgame.map_y, CSCEN_MAPSIZE_Y_PULLDOWN);
+				break;
+
+			case CSCEN_EMPTY_WORLD: // Empty world / flat world
+				StartGeneratingLandscape(GLWP_SCENARIO);
+				break;
+
+			case CSCEN_RANDOM_WORLD: // Generate
+				ShowGenerateLandscape();
+				break;
+
+			case CSCEN_START_DATE_DOWN:
+			case CSCEN_START_DATE_UP: // Year buttons
+				/* Don't allow too fast scrolling */
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+					this->HandleButtonClick(widget);
+					this->SetDirty();
+
+					_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + widget - CSCEN_START_DATE_TEXT, MIN_YEAR, MAX_YEAR);
+				}
+				_left_button_clicked = false;
+				break;
+
+			case CSCEN_START_DATE_TEXT: // Year text
+				this->widget_id = CSCEN_START_DATE_TEXT;
+				SetDParam(0, _patches_newgame.starting_year);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL);
+				break;
+
+			case CSCEN_FLAT_LAND_HEIGHT_DOWN:
+			case CSCEN_FLAT_LAND_HEIGHT_UP: // Height level buttons
+				/* Don't allow too fast scrolling */
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+					this->HandleButtonClick(widget);
+					this->SetDirty();
+
+					_patches_newgame.se_flat_world_height = Clamp(_patches_newgame.se_flat_world_height + widget - CSCEN_FLAT_LAND_HEIGHT_TEXT, 0, MAX_TILE_HEIGHT);
+				}
+				_left_button_clicked = false;
+				break;
+
+			case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
+				this->widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
+				SetDParam(0, _patches_newgame.se_flat_world_height);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL);
+				break;
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case CSCEN_MAPSIZE_X_PULLDOWN: _patches_newgame.map_x = index; break;
+			case CSCEN_MAPSIZE_Y_PULLDOWN: _patches_newgame.map_y = index; break;
+		}
+		this->SetDirty();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			int32 value = atoi(str);
+
+			switch (this->widget_id) {
+				case CSCEN_START_DATE_TEXT:
+					this->InvalidateWidget(CSCEN_START_DATE_TEXT);
+					_patches_newgame.starting_year = Clamp(value, MIN_YEAR, MAX_YEAR);
+					break;
+
+				case CSCEN_FLAT_LAND_HEIGHT_TEXT:
+					this->InvalidateWidget(CSCEN_FLAT_LAND_HEIGHT_TEXT);
+					_patches_newgame.se_flat_world_height = Clamp(value, 0, MAX_TILE_HEIGHT);
+					break;
+			}
+
+			this->SetDirty();
+		}
+	}
+};
 
 static const Widget _create_scenario_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
@@ -796,13 +801,13 @@ static const WindowDesc _create_scenario_desc = {
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_create_scenario_widgets,
-	CreateScenarioWndProc,
+	NULL,
 };
 
 void ShowCreateScenario()
 {
 	DeleteWindowByClass(WC_GENERATE_LANDSCAPE);
-	AllocateWindowDescFront<Window>(&_create_scenario_desc, GLWP_SCENARIO);
+	new CreateScenarioWindow(&_create_scenario_desc, GLWP_SCENARIO);
 }
 
 

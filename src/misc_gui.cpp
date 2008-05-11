@@ -44,6 +44,7 @@
 #include "newgrf_cargo.h"
 #include "rail_gui.h"
 #include "tilehighlight_func.h"
+#include "querystring_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -878,43 +879,6 @@ void UpdateTextBufferSize(Textbuf *tb)
 	tb->caretxoffs = tb->width;
 }
 
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e)
-{
-	e->we.keypress.cont = false;
-
-	switch (e->we.keypress.keycode) {
-		case WKC_ESC: return 2;
-
-		case WKC_RETURN: case WKC_NUM_ENTER: return 1;
-
-		case (WKC_CTRL | 'V'):
-			if (InsertTextBufferClipboard(&string->text)) w->InvalidateWidget(wid);
-			break;
-
-		case (WKC_CTRL | 'U'):
-			DeleteTextBufferAll(&string->text);
-			w->InvalidateWidget(wid);
-			break;
-
-		case WKC_BACKSPACE: case WKC_DELETE:
-			if (DeleteTextBufferChar(&string->text, e->we.keypress.keycode)) w->InvalidateWidget(wid);
-			break;
-
-		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-			if (MoveTextBufferPos(&string->text, e->we.keypress.keycode)) w->InvalidateWidget(wid);
-			break;
-
-		default:
-			if (IsValidChar(e->we.keypress.key, string->afilter)) {
-				if (InsertTextBufferChar(&string->text, e->we.keypress.key)) w->InvalidateWidget(wid);
-			} else { // key wasn't caught. Continue only if standard entry specified
-				e->we.keypress.cont = (string->afilter == CS_ALPHANUMERAL);
-			}
-	}
-
-	return 0;
-}
-
 bool HandleCaret(Textbuf *tb)
 {
 	/* caret changed? */
@@ -927,12 +891,49 @@ bool HandleCaret(Textbuf *tb)
 	return false;
 }
 
-void HandleEditBox(Window *w, querystr_d *string, int wid)
+int QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, bool &cont)
 {
-	if (HandleCaret(&string->text)) w->InvalidateWidget(wid);
+	cont = false;
+
+	switch (keycode) {
+		case WKC_ESC: return 2;
+
+		case WKC_RETURN: case WKC_NUM_ENTER: return 1;
+
+		case (WKC_CTRL | 'V'):
+			if (InsertTextBufferClipboard(&this->text)) w->InvalidateWidget(wid);
+			break;
+
+		case (WKC_CTRL | 'U'):
+			DeleteTextBufferAll(&this->text);
+			w->InvalidateWidget(wid);
+			break;
+
+		case WKC_BACKSPACE: case WKC_DELETE:
+			if (DeleteTextBufferChar(&this->text, keycode)) w->InvalidateWidget(wid);
+			break;
+
+		case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+			if (MoveTextBufferPos(&this->text, keycode)) w->InvalidateWidget(wid);
+			break;
+
+		default:
+			if (IsValidChar(key, this->afilter)) {
+				if (InsertTextBufferChar(&this->text, key)) w->InvalidateWidget(wid);
+			} else { // key wasn't caught. Continue only if standard entry specified
+				cont = (this->afilter == CS_ALPHANUMERAL);
+			}
+	}
+
+	return 0;
 }
 
-void DrawEditBox(Window *w, querystr_d *string, int wid)
+void QueryString::HandleEditBox(Window *w, int wid)
+{
+	if (HandleCaret(&this->text)) w->InvalidateWidget(wid);
+}
+
+void QueryString::DrawEditBox(Window *w, int wid)
 {
 	const Widget *wi = &w->widget[wid];
 
@@ -957,7 +958,7 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 
 	/* We will take the current widget length as maximum width, with a small
 	 * space reserved at the end for the caret to show */
-	const Textbuf *tb = &string->text;
+	const Textbuf *tb = &this->text;
 
 	delta = (wi->right - wi->left) - tb->width - 10;
 	if (delta > 0) delta = 0;
@@ -970,6 +971,21 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 	_cur_dpi = old_dpi;
 }
 
+int QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, bool &cont)
+{
+	return this->QueryString::HandleEditBoxKey(this, wid, key, keycode, cont);
+}
+
+void QueryStringBaseWindow::HandleEditBox(int wid)
+{
+	this->QueryString::HandleEditBox(this, wid);
+}
+
+void QueryStringBaseWindow::DrawEditBox(int wid)
+{
+	this->QueryString::DrawEditBox(this, wid);
+}
+
 enum QueryStringWidgets {
 	QUERY_STR_WIDGET_TEXT = 3,
 	QUERY_STR_WIDGET_CANCEL,
@@ -977,69 +993,79 @@ enum QueryStringWidgets {
 };
 
 
-static void QueryStringWndProc(Window *w, WindowEvent *e)
+struct QueryStringWindow : public QueryStringBaseWindow
 {
-	querystr_d *qs = &WP(w, querystr_d);
+	Window *parent;
 
-	switch (e->event) {
-		case WE_CREATE:
-			SetBit(_no_scroll, SCROLL_EDIT);
-			break;
+	QueryStringWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(desc), parent(parent)
+	{
+		SetBit(_no_scroll, SCROLL_EDIT);
 
-		case WE_PAINT:
-			SetDParam(0, qs->caption);
-			DrawWindowWidgets(w);
-
-			DrawEditBox(w, qs, QUERY_STR_WIDGET_TEXT);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case QUERY_STR_WIDGET_TEXT:
-					ShowOnScreenKeyboard(w, &WP(w, querystr_d), QUERY_STR_WIDGET_TEXT, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
-					break;
-
-				case QUERY_STR_WIDGET_OK:
-		press_ok:;
-					if (qs->orig == NULL || strcmp(qs->text.buf, qs->orig) != 0) {
-						Window *parent = w->parent;
-						qs->handled = true;
-
-						/* If the parent is NULL, the editbox is handled by general function
-						 * HandleOnEditText */
-						if (parent != NULL) {
-							parent->OnQueryTextFinished(qs->text.buf);
-						} else {
-							HandleOnEditText(qs->text.buf);
-						}
-					}
-					/* Fallthrough */
-				case QUERY_STR_WIDGET_CANCEL:
-					delete w;
-					break;
-			}
-			break;
-
-		case WE_MOUSELOOP:
-			HandleEditBox(w, qs, QUERY_STR_WIDGET_TEXT);
-			break;
-
-		case WE_KEYPRESS:
-			switch (HandleEditBoxKey(w, qs, QUERY_STR_WIDGET_TEXT, e)) {
-				case 1: goto press_ok; // Enter pressed, confirms change
-				case 2: delete w; break; // ESC pressed, closes window, abandons changes
-			}
-			break;
-
-		case WE_DESTROY: // Call cancellation of query, if we have not handled it before
-			if (!qs->handled && w->parent != NULL) {
-				qs->handled = true;
-				w->parent->OnQueryTextFinished(NULL);
-			}
-			ClrBit(_no_scroll, SCROLL_EDIT);
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		SetDParam(0, this->caption);
+		DrawWindowWidgets(this);
+
+		this->DrawEditBox(QUERY_STR_WIDGET_TEXT);
+	}
+
+	void OnOk()
+	{
+		if (this->orig == NULL || strcmp(this->text.buf, this->orig) != 0) {
+			/* If the parent is NULL, the editbox is handled by general function
+				* HandleOnEditText */
+			if (this->parent != NULL) {
+				this->parent->OnQueryTextFinished(this->text.buf);
+			} else {
+				HandleOnEditText(this->text.buf);
+			}
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case QUERY_STR_WIDGET_TEXT:
+				ShowOnScreenKeyboard(this, QUERY_STR_WIDGET_TEXT, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
+				break;
+
+			case QUERY_STR_WIDGET_OK:
+				this->OnOk();
+				/* Fallthrough */
+			case QUERY_STR_WIDGET_CANCEL:
+				delete this;
+				break;
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(QUERY_STR_WIDGET_TEXT);
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont;
+		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, cont)) {
+			case 1: this->OnOk(); // Enter pressed, confirms change
+			/* FALL THROUGH */
+			case 2: delete this; break; // ESC pressed, closes window, abandons changes
+		}
+		return cont;
+	}
+
+	~QueryStringWindow()
+	{
+		if (!this->handled && this->parent != NULL) {
+			this->handled = true;
+			this->parent->OnQueryTextFinished(NULL);
+		}
+		ClrBit(_no_scroll, SCROLL_EDIT);
+	}
+};
 
 static const Widget _query_string_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
@@ -1056,11 +1082,8 @@ static const WindowDesc _query_string_desc = {
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_string_widgets,
-	QueryStringWndProc
+	NULL
 };
-
-char _edit_str_buf[64];
-char _orig_str_buf[lengthof(_edit_str_buf)];
 
 /** Show a query popup window with a textbox in it.
  * @param str StringID for the text shown in the textbox
@@ -1075,28 +1098,27 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 {
 	uint realmaxlen = maxlen & ~0x1000;
 
-	assert(realmaxlen < lengthof(_edit_str_buf));
-
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	Window *w = new Window(&_query_string_desc);
-	w->parent = parent;
+	QueryStringWindow *w = new QueryStringWindow(&_query_string_desc, parent);
 
-	GetString(_edit_str_buf, str, lastof(_edit_str_buf));
-	_edit_str_buf[realmaxlen - 1] = '\0';
+	assert(realmaxlen < lengthof(w->edit_str_buf));
+
+	GetString(w->edit_str_buf, str, lastof(w->edit_str_buf));
+	w->edit_str_buf[realmaxlen - 1] = '\0';
 
 	if (maxlen & 0x1000) {
-		WP(w, querystr_d).orig = NULL;
+		w->orig = NULL;
 	} else {
-		strecpy(_orig_str_buf, _edit_str_buf, lastof(_orig_str_buf));
-		WP(w, querystr_d).orig = _orig_str_buf;
+		strecpy(w->orig_str_buf, w->edit_str_buf, lastof(w->orig_str_buf));
+		w->orig = w->orig_str_buf;
 	}
 
 	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
-	WP(w, querystr_d).caption = caption;
-	WP(w, querystr_d).afilter = afilter;
-	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, realmaxlen, maxwidth);
+	w->caption = caption;
+	w->afilter = afilter;
+	InitializeTextBuffer(&w->text, w->edit_str_buf, realmaxlen, maxwidth);
 }
 
 
@@ -1306,230 +1328,276 @@ static void MakeSortedSaveGameList()
 	}
 }
 
-static void GenerateFileName()
-{
-	/* Check if we are not a spectator who wants to generate a name..
-	    Let's use the name of player #0 for now. */
-	const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
-
-	SetDParam(0, p->index);
-	SetDParam(1, _date);
-	GetString(_edit_str_buf, STR_4004, lastof(_edit_str_buf));
-	SanitizeFilename(_edit_str_buf);
-}
-
 extern void StartupEngines();
 
-static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
-{
-	static FiosItem o_dir;
+struct SaveLoadWindow : public QueryStringBaseWindow {
+	FiosItem o_dir;
 
-	switch (e->event) {
-		case WE_CREATE: // Set up OPENTTD button
-			w->vscroll.cap = 10;
-			w->resize.step_width = 2;
-			w->resize.step_height = 10;
+	void GenerateFileName()
+	{
+		/* Check if we are not a spectator who wants to generate a name..
+				Let's use the name of player #0 for now. */
+		const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
 
-			o_dir.type = FIOS_TYPE_DIRECT;
-			switch (_saveload_mode) {
-				case SLD_SAVE_GAME:
-				case SLD_LOAD_GAME:
-					FioGetDirectory(o_dir.name, lengthof(o_dir.name), SAVE_DIR);
-					break;
+		SetDParam(0, p->index);
+		SetDParam(1, _date);
+		GetString(this->edit_str_buf, STR_4004, lastof(this->edit_str_buf));
+		SanitizeFilename(this->edit_str_buf);
+	}
 
-				case SLD_SAVE_SCENARIO:
-				case SLD_LOAD_SCENARIO:
-					FioGetDirectory(o_dir.name, lengthof(o_dir.name), SCENARIO_DIR);
-					break;
+	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(desc)
+	{
+		static const StringID saveload_captions[] = {
+			STR_4001_LOAD_GAME,
+			STR_0298_LOAD_SCENARIO,
+			STR_4000_SAVE_GAME,
+			STR_0299_SAVE_SCENARIO,
+			STR_LOAD_HEIGHTMAP,
+		};
 
-				case SLD_LOAD_HEIGHTMAP:
-					FioGetDirectory(o_dir.name, lengthof(o_dir.name), HEIGHTMAP_DIR);
-					break;
+		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
+		SetBit(_no_scroll, SCROLL_SAVE);
 
-				default:
-					ttd_strlcpy(o_dir.name, _personal_dir, lengthof(o_dir.name));
-			}
-			break;
-
-		case WE_PAINT: {
-			int pos;
-			int y;
-
-			SetVScrollCount(w, _fios_num);
-			DrawWindowWidgets(w);
-			DrawFiosTexts(w->width);
-
-			if (_savegame_sort_dirty) {
-				_savegame_sort_dirty = false;
-				MakeSortedSaveGameList();
-			}
-
-			GfxFillRect(w->widget[7].left + 1, w->widget[7].top + 1, w->widget[7].right, w->widget[7].bottom, 0xD7);
-			DrawSortButtonState(w, _savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
-
-			y = w->widget[7].top + 1;
-			for (pos = w->vscroll.pos; pos < _fios_num; pos++) {
-				const FiosItem *item = _fios_list + pos;
-
-				DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
-				y += 10;
-				if (y >= w->vscroll.cap * 10 + w->widget[7].top + 1) break;
-			}
-
-			if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-				DrawEditBox(w, &WP(w, querystr_d), 10);
-			}
-			break;
+		/* Use an array to define what will be the current file type being handled
+		 * by current file mode */
+		switch (mode) {
+			case SLD_SAVE_GAME:     this->GenerateFileName(); break;
+			case SLD_SAVE_SCENARIO: strcpy(this->edit_str_buf, "UNNAMED"); break;
+			default:                break;
 		}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 2: // Sort save names by name
-					_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
-						SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
-					_savegame_sort_dirty = true;
-					w->SetDirty();
-					break;
+		assert((uint)mode < lengthof(saveload_captions));
 
-				case 3: // Sort save names by date
-					_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
-						SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
-					_savegame_sort_dirty = true;
-					w->SetDirty();
-					break;
+		this->widget[1].data = saveload_captions[mode];
+		this->LowerWidget(7);
 
-				case 6: // OpenTTD 'button', jumps to OpenTTD directory
-					FiosBrowseTo(&o_dir);
-					w->SetDirty();
-					BuildFileList();
-					break;
+		this->afilter = CS_ALPHANUMERAL;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 240);
 
-				case 7: { // Click the listbox
-					int y = (e->we.click.pt.y - w->widget[e->we.click.widget].top - 1) / 10;
-					char *name;
-					const FiosItem *file;
+		/* pause is only used in single-player, non-editor mode, non-menu mode. It
+		* will be unpaused in the WE_DESTROY event handler. */
+		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
+			if (_pause_game >= 0) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		}
 
-					if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;
+		BuildFileList();
 
-					file = _fios_list + y;
+		ResetObjectToPlace();
 
-					name = FiosBrowseTo(file);
-					if (name != NULL) {
-						if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
-							_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
+		o_dir.type = FIOS_TYPE_DIRECT;
+		switch (_saveload_mode) {
+			case SLD_SAVE_GAME:
+			case SLD_LOAD_GAME:
+				FioGetDirectory(o_dir.name, lengthof(o_dir.name), SAVE_DIR);
+				break;
 
-							SetFiosType(file->type);
-							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-							ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+			case SLD_SAVE_SCENARIO:
+			case SLD_LOAD_SCENARIO:
+				FioGetDirectory(o_dir.name, lengthof(o_dir.name), SCENARIO_DIR);
+				break;
 
-							delete w;
-						} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
-							SetFiosType(file->type);
-							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-							ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+			case SLD_LOAD_HEIGHTMAP:
+				FioGetDirectory(o_dir.name, lengthof(o_dir.name), HEIGHTMAP_DIR);
+				break;
 
-							delete w;
-							ShowHeightmapLoad();
-						} else {
-							/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
-							ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
-							UpdateTextBufferSize(&WP(w, querystr_d).text);
-							w->InvalidateWidget(10);
-						}
-					} else {
-						/* Changed directory, need repaint. */
-						w->SetDirty();
-						BuildFileList();
-					}
-					break;
-				}
+			default:
+				ttd_strlcpy(o_dir.name, _personal_dir, lengthof(o_dir.name));
+		}
 
-				case 10: // edit box
-					ShowOnScreenKeyboard(w, &WP(w, querystr_d), e->we.click.widget, 0, 0);
-					break;
+		this->vscroll.cap = 10;
+		this->resize.step_width = 2;
+		this->resize.step_height = 10;
 
-				case 11: case 12: // Delete, Save game
-					break;
-			}
-			break;
-
-		case WE_MOUSELOOP:
-			if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-				HandleEditBox(w, &WP(w, querystr_d), 10);
-			}
-			break;
-
-		case WE_KEYPRESS:
-			if (e->we.keypress.keycode == WKC_ESC) {
-				delete w;
-				return;
-			}
-
-			if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) &&
-					HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) { // Press Enter
-				w->HandleButtonClick(12);
-			}
-			break;
-
-		case WE_TIMEOUT:
-			/* This test protects against using widgets 11 and 12 which are only available
-			* in those two saveload mode  */
-			if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) break;
-
-			if (w->IsWidgetLowered(11)) { // Delete button clicked
-				if (!FiosDelete(WP(w, querystr_d).text.buf)) {
-					ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
-				} else {
-					BuildFileList();
-					/* Reset file name to current date on successful delete */
-					if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
-				}
-
-				UpdateTextBufferSize(&WP(w, querystr_d).text);
-				w->SetDirty();
-			} else if (w->IsWidgetLowered(12)) { // Save button clicked
-				_switch_mode = SM_SAVE;
-				FiosMakeSavegameName(_file_to_saveload.name, WP(w, querystr_d).text.buf, sizeof(_file_to_saveload.name));
-
-				/* In the editor set up the vehicle engines correctly (date might have changed) */
-				if (_game_mode == GM_EDITOR) StartupEngines();
-			}
-			break;
-
-		case WE_DESTROY:
-			/* pause is only used in single-player, non-editor mode, non menu mode */
-			if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-				if (_pause_game >= 0) DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-			}
-			FiosFreeSavegameList();
-			ClrBit(_no_scroll, SCROLL_SAVE);
-			break;
-
-		case WE_RESIZE: {
-			/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
-			uint diff = e->we.sizing.diff.x / 2;
-			w->widget[2].right += diff;
-			w->widget[3].left  += diff;
-			w->widget[3].right += e->we.sizing.diff.x;
-
-			/* Same for widget 11 and 12 in save-dialog */
-			if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-				w->widget[11].right += diff;
-				w->widget[12].left  += diff;
-				w->widget[12].right += e->we.sizing.diff.x;
-			}
-
-			w->vscroll.cap += e->we.sizing.diff.y / 10;
-		} break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual ~SaveLoadWindow()
+	{
+		/* pause is only used in single-player, non-editor mode, non menu mode */
+		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
+			if (_pause_game >= 0) DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		}
+		FiosFreeSavegameList();
+		ClrBit(_no_scroll, SCROLL_SAVE);
+	}
+
+	virtual void OnPaint()
+	{
+		int pos;
+		int y;
+
+		SetVScrollCount(this, _fios_num);
+		DrawWindowWidgets(this);
+		DrawFiosTexts(this->width);
+
+		if (_savegame_sort_dirty) {
+			_savegame_sort_dirty = false;
+			MakeSortedSaveGameList();
+		}
+
+		GfxFillRect(this->widget[7].left + 1, this->widget[7].top + 1, this->widget[7].right, this->widget[7].bottom, 0xD7);
+		DrawSortButtonState(this, _savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
+
+		y = this->widget[7].top + 1;
+		for (pos = this->vscroll.pos; pos < _fios_num; pos++) {
+			const FiosItem *item = _fios_list + pos;
+
+			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], this->width - 18);
+			y += 10;
+			if (y >= this->vscroll.cap * 10 + this->widget[7].top + 1) break;
+		}
+
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			this->DrawEditBox(10);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 2: // Sort save names by name
+				_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
+					SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
+				_savegame_sort_dirty = true;
+				this->SetDirty();
+				break;
+
+			case 3: // Sort save names by date
+				_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
+					SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
+				_savegame_sort_dirty = true;
+				this->SetDirty();
+				break;
+
+			case 6: // OpenTTD 'button', jumps to OpenTTD directory
+				FiosBrowseTo(&o_dir);
+				this->SetDirty();
+				BuildFileList();
+				break;
+
+			case 7: { // Click the listbox
+				int y = (pt.y - this->widget[widget].top - 1) / 10;
+				char *name;
+				const FiosItem *file;
+
+				if (y < 0 || (y += this->vscroll.pos) >= this->vscroll.count) return;
+
+				file = _fios_list + y;
+
+				name = FiosBrowseTo(file);
+				if (name != NULL) {
+					if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
+						_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
+
+						SetFiosType(file->type);
+						ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+						ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+
+						delete this;
+					} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
+						SetFiosType(file->type);
+						ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+						ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+
+						delete this;
+						ShowHeightmapLoad();
+					} else {
+						/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
+						ttd_strlcpy(this->text.buf, file->title, this->text.maxlength);
+						UpdateTextBufferSize(&this->text);
+						this->InvalidateWidget(10);
+					}
+				} else {
+					/* Changed directory, need repaint. */
+					this->SetDirty();
+					BuildFileList();
+				}
+				break;
+			}
+
+			case 10: // edit box
+				ShowOnScreenKeyboard(this, widget, 0, 0);
+				break;
+
+			case 11: case 12: // Delete, Save game
+				break;
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			this->HandleEditBox(10);
+		}
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		if (keycode == WKC_ESC) {
+			delete this;
+			return false;
+		}
+
+		bool cont = true;
+		if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) &&
+				this->HandleEditBoxKey(10, key, keycode, cont) == 1) { // Press Enter
+			this->HandleButtonClick(12);
+		}
+
+		return cont;
+	}
+
+	virtual void OnTimeout()
+	{
+		/* This test protects against using widgets 11 and 12 which are only available
+		 * in those two saveload mode  */
+		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) return;
+
+		if (this->IsWidgetLowered(11)) { // Delete button clicked
+			if (!FiosDelete(this->text.buf)) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
+			} else {
+				BuildFileList();
+				/* Reset file name to current date on successful delete */
+				if (_saveload_mode == SLD_SAVE_GAME) GenerateFileName();
+			}
+
+			UpdateTextBufferSize(&this->text);
+			this->SetDirty();
+		} else if (this->IsWidgetLowered(12)) { // Save button clicked
+			_switch_mode = SM_SAVE;
+			FiosMakeSavegameName(_file_to_saveload.name, this->text.buf, sizeof(_file_to_saveload.name));
+
+			/* In the editor set up the vehicle engines correctly (date might have changed) */
+			if (_game_mode == GM_EDITOR) StartupEngines();
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
+		uint diff = delta.x / 2;
+		this->widget[2].right += diff;
+		this->widget[3].left  += diff;
+		this->widget[3].right += delta.x;
+
+		/* Same for widget 11 and 12 in save-dialog */
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			this->widget[11].right += diff;
+			this->widget[12].left  += diff;
+			this->widget[12].right += delta.x;
+		}
+
+		this->vscroll.cap += delta.y / 10;
+	}
+};
 
 static const WindowDesc _load_dialog_desc = {
 	WDP_CENTER, WDP_CENTER, 257, 154, 257, 294,
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_load_dialog_widgets,
-	SaveLoadDlgWndProc,
+	NULL,
 };
 
 static const WindowDesc _save_dialog_desc = {
@@ -1537,7 +1605,7 @@ static const WindowDesc _save_dialog_desc = {
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_save_dialog_widgets,
-	SaveLoadDlgWndProc,
+	NULL,
 };
 
 /** These values are used to convert the file/operations mode into a corresponding file type.
@@ -1553,50 +1621,22 @@ static const FileType _file_modetotype[] = {
 
 void ShowSaveLoadDialog(SaveLoadDialogMode mode)
 {
-	static const StringID saveload_captions[] = {
-		STR_4001_LOAD_GAME,
-		STR_0298_LOAD_SCENARIO,
-		STR_4000_SAVE_GAME,
-		STR_0299_SAVE_SCENARIO,
-		STR_LOAD_HEIGHTMAP,
-	};
-
-	const WindowDesc *sld = &_save_dialog_desc;
-
-	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	_saveload_mode = mode;
-	SetBit(_no_scroll, SCROLL_SAVE);
-
-	/* Use an array to define what will be the current file type being handled
-	 * by current file mode */
-	_file_to_saveload.filetype = _file_modetotype[mode];
+	const WindowDesc *sld;
 	switch (mode) {
-		case SLD_SAVE_GAME:     GenerateFileName(); break;
-		case SLD_SAVE_SCENARIO: strcpy(_edit_str_buf, "UNNAMED"); break;
-		default:                sld = &_load_dialog_desc; break;
+		case SLD_SAVE_GAME:
+		case SLD_SAVE_SCENARIO:
+			sld = &_save_dialog_desc; break;
+		default:
+			sld = &_load_dialog_desc; break;
 	}
 
-	assert((uint)mode < lengthof(saveload_captions));
+	_saveload_mode = mode;
+	_file_to_saveload.filetype = _file_modetotype[mode];
 
-	Window *w = new Window(sld);
-	w->widget[1].data = saveload_captions[mode];
-	w->LowerWidget(7);
-
-	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 240);
-
-	/* pause is only used in single-player, non-editor mode, non-menu mode. It
-	 * will be unpaused in the WE_DESTROY event handler. */
-	if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
-		if (_pause_game >= 0) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-	}
-
-	BuildFileList();
-
-	ResetObjectToPlace();
+	new SaveLoadWindow(sld, mode);
 }
 
 void RedrawAutosave()

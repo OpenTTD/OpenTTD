@@ -29,6 +29,7 @@
 #include "../player_func.h"
 #include "../settings_type.h"
 #include "../widgets/dropdown_func.h"
+#include "../querystring_gui.h"
 
 #include "table/strings.h"
 #include "../table/sprites.h"
@@ -36,15 +37,11 @@
 #define BGC 5
 #define BTC 15
 
-struct chatquerystr_d : public querystr_d {
-	DestType dtype;
-	int dest;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(chatquerystr_d));
-
+/*
 struct network_d {
 	byte field;              // select text-field in start-server and game-listing
 	byte widget_id;          ///< The widget that has the pop-up input menu
+	byte field;              // select text-field in start-server and game-listing
 	NetworkGameList *server; // selected server in lobby and game-listing
 	FiosItem *map;           // selected map in start-server
 };
@@ -53,15 +50,14 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_d));
 struct network_ql_d {
 	network_d n;                 // see above; general stuff
 	querystr_d q;                // text-input in start-server and game-listing
-	NetworkGameList **sort_list; // list of games (sorted)
 	list_d l;                    // accompanying list-administration
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
+*/
 
 /* Global to remember sorting after window has been closed */
 static Listing _ng_sorting;
 
-static char _edit_str_net_buf[150];
 static bool _chat_tab_completion_active;
 
 static void ShowNetworkStartServerWindow();
@@ -159,64 +155,6 @@ static int CDECL NGameAllowedSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-/** (Re)build the network game list as its amount has changed because
- * an item has been added or deleted for example
- * @param ngl list_d struct that contains all necessary information for sorting */
-static void BuildNetworkGameList(network_ql_d *nqld)
-{
-	NetworkGameList *ngl_temp;
-	uint n = 0;
-
-	if (!(nqld->l.flags & VL_REBUILD)) return;
-
-	/* Count the number of games in the list */
-	for (ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) n++;
-	if (n == 0) return;
-
-	/* Create temporary array of games to use for listing */
-	free(nqld->sort_list);
-	nqld->sort_list = MallocT<NetworkGameList*>(n);
-	nqld->l.list_length = n;
-
-	for (n = 0, ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) {
-		nqld->sort_list[n++] = ngl_temp;
-	}
-
-	/* Force resort */
-	nqld->l.flags &= ~VL_REBUILD;
-	nqld->l.flags |= VL_RESORT;
-}
-
-static void SortNetworkGameList(network_ql_d *nqld)
-{
-	static NGameNameSortFunction * const ngame_sorter[] = {
-		&NGameNameSorter,
-		&NGameClientSorter,
-		&NGameAllowedSorter
-	};
-
-	NetworkGameList *item;
-	uint i;
-
-	if (!(nqld->l.flags & VL_RESORT)) return;
-	if (nqld->l.list_length == 0) return;
-
-	_internal_sort_order = !!(nqld->l.flags & VL_DESC);
-	qsort(nqld->sort_list, nqld->l.list_length, sizeof(nqld->sort_list[0]), ngame_sorter[nqld->l.sort_type]);
-
-	/* After sorting ngl->sort_list contains the sorted items. Put these back
-	 * into the original list. Basically nothing has changed, we are only
-	 * shuffling the ->next pointers */
-	_network_game_list = nqld->sort_list[0];
-	for (item = _network_game_list, i = 1; i != nqld->l.list_length; i++) {
-		item->next = nqld->sort_list[i];
-		item = item->next;
-	}
-	item->next = NULL;
-
-	nqld->l.flags &= ~VL_RESORT;
-}
-
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
 enum NetworkGameWindowWidgets {
 	NGWW_CLOSE,         ///< Close 'X' button
@@ -248,366 +186,432 @@ enum NetworkGameWindowWidgets {
 	NGWW_CANCEL,        ///< 'Cancel' button
 };
 
-/**
- * Draw a single server line.
- * @param cur_item  the server to draw.
- * @param y         from where to draw?
- * @param highlight does the line need to be highlighted?
- */
-static void DrawServerLine(const Window *w, const NetworkGameList *cur_item, uint y, bool highlight)
-{
-	/* show highlighted item with a different colour */
-	if (highlight) GfxFillRect(w->widget[NGWW_NAME].left + 1, y - 2, w->widget[NGWW_INFO].right - 1, y + 9, 10);
+struct NetworkGameWindow : public QueryStringBaseWindow {
+	byte field;                  ///< selected text-field
+	NetworkGameList *server;     ///< selected server
+	NetworkGameList **sort_list; ///< list of games (sorted)
+	list_d ld;                   ///< accompanying list-administration
 
-	SetDParamStr(0, cur_item->info.server_name);
-	DrawStringTruncated(w->widget[NGWW_NAME].left + 5, y, STR_02BD, TC_BLACK, w->widget[NGWW_NAME].right - w->widget[NGWW_NAME].left - 5);
+	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	{
+		ttd_strlcpy(this->edit_str_buf, _network_player_name, lengthof(this->edit_str_buf));
+		this->afilter = CS_ALPHANUMERAL;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
 
-	SetDParam(0, cur_item->info.clients_on);
-	SetDParam(1, cur_item->info.clients_max);
-	SetDParam(2, cur_item->info.companies_on);
-	SetDParam(3, cur_item->info.companies_max);
-	DrawStringCentered(w->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
+		UpdateNetworkGameWindow(true);
 
-	/* only draw icons if the server is online */
-	if (cur_item->online) {
-		/* draw a lock if the server is password protected */
-		if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, w->widget[NGWW_INFO].left + 5, y - 1);
+		this->vscroll.cap = 11;
+		this->resize.step_height = NET_PRC__SIZE_OF_ROW;
 
-		/* draw red or green icon, depending on compatibility with server */
-		DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), w->widget[NGWW_INFO].left + 15, y);
+		this->field = NGWW_PLAYER;
+		this->server = NULL;
 
-		/* draw flag according to server language */
-		DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, w->widget[NGWW_INFO].left + 25, y);
+		this->sort_list = NULL;
+		this->ld.flags = VL_REBUILD | (_ng_sorting.order ? VL_DESC : VL_NONE);
+		this->ld.sort_type = _ng_sorting.criteria;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
 
-/**
- * Handler of actions done in the NetworkStartServer window
- *
- * @param w pointer to the Window structure
- * @param e pointer to window event
- * @note    Uses network_ql_d (network_d, querystr_d and list_d) WP macro
- * @see     struct _network_game_window_widgets
- * @see     enum NetworkGameWindowWidgets
- */
+	~NetworkGameWindow()
+	{
+		free(this->sort_list);
+	}
 
-static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
-{
-	network_d *nd = &WP(w, network_ql_d).n;
-	list_d *ld = &WP(w, network_ql_d).l;
+	/**
+	 * (Re)build the network game list as its amount has changed because
+	 * an item has been added or deleted for example
+	 */
+	void BuildNetworkGameList()
+	{
+		NetworkGameList *ngl_temp;
+		uint n = 0;
 
-	switch (e->event) {
-		case WE_CREATE: // Focus input box
-			w->vscroll.cap = 11;
-			w->resize.step_height = NET_PRC__SIZE_OF_ROW;
+		if (!(this->ld.flags & VL_REBUILD)) return;
 
-			nd->field = NGWW_PLAYER;
-			nd->server = NULL;
+		/* Count the number of games in the list */
+		for (ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) n++;
+		if (n == 0) return;
 
-			WP(w, network_ql_d).sort_list = NULL;
-			ld->flags = VL_REBUILD | (_ng_sorting.order ? VL_DESC : VL_NONE);
-			ld->sort_type = _ng_sorting.criteria;
-			break;
+		/* Create temporary array of games to use for listing */
+		this->sort_list = ReallocT(this->sort_list, n);
+		this->ld.list_length = n;
 
-		case WE_PAINT: {
-			const NetworkGameList *sel = nd->server;
-			const SortButtonState arrow = (ld->flags & VL_DESC) ? SBS_DOWN : SBS_UP;
+		for (n = 0, ngl_temp = _network_game_list; ngl_temp != NULL; ngl_temp = ngl_temp->next) {
+			this->sort_list[n++] = ngl_temp;
+		}
 
-			if (ld->flags & VL_REBUILD) {
-				BuildNetworkGameList(&WP(w, network_ql_d));
-				SetVScrollCount(w, ld->list_length);
+		/* Force resort */
+		this->ld.flags &= ~VL_REBUILD;
+		this->ld.flags |= VL_RESORT;
+	}
+
+	void SortNetworkGameList()
+	{
+		static NGameNameSortFunction * const ngame_sorter[] = {
+			&NGameNameSorter,
+			&NGameClientSorter,
+			&NGameAllowedSorter
+		};
+
+		NetworkGameList *item;
+		uint i;
+
+		if (!(this->ld.flags & VL_RESORT)) return;
+		if (this->ld.list_length == 0) return;
+
+		_internal_sort_order = !!(this->ld.flags & VL_DESC);
+		qsort(this->sort_list, this->ld.list_length, sizeof(this->sort_list[0]), ngame_sorter[this->ld.sort_type]);
+
+		/* After sorting ngl->sort_list contains the sorted items. Put these back
+		 * into the original list. Basically nothing has changed, we are only
+		 * shuffling the ->next pointers */
+		_network_game_list = this->sort_list[0];
+		for (item = _network_game_list, i = 1; i != this->ld.list_length; i++) {
+			item->next = this->sort_list[i];
+			item = item->next;
+		}
+		item->next = NULL;
+
+		this->ld.flags &= ~VL_RESORT;
+	}
+
+	/**
+	 * Draw a single server line.
+	 * @param cur_item  the server to draw.
+	 * @param y         from where to draw?
+	 * @param highlight does the line need to be highlighted?
+	 */
+	void DrawServerLine(const NetworkGameList *cur_item, uint y, bool highlight)
+	{
+		/* show highlighted item with a different colour */
+		if (highlight) GfxFillRect(this->widget[NGWW_NAME].left + 1, y - 2, this->widget[NGWW_INFO].right - 1, y + 9, 10);
+
+		SetDParamStr(0, cur_item->info.server_name);
+		DrawStringTruncated(this->widget[NGWW_NAME].left + 5, y, STR_02BD, TC_BLACK, this->widget[NGWW_NAME].right - this->widget[NGWW_NAME].left - 5);
+
+		SetDParam(0, cur_item->info.clients_on);
+		SetDParam(1, cur_item->info.clients_max);
+		SetDParam(2, cur_item->info.companies_on);
+		SetDParam(3, cur_item->info.companies_max);
+		DrawStringCentered(this->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
+
+		/* only draw icons if the server is online */
+		if (cur_item->online) {
+			/* draw a lock if the server is password protected */
+			if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, this->widget[NGWW_INFO].left + 5, y - 1);
+
+			/* draw red or green icon, depending on compatibility with server */
+			DrawSprite(SPR_BLOT, (cur_item->info.compatible ? PALETTE_TO_GREEN : (cur_item->info.version_compatible ? PALETTE_TO_YELLOW : PALETTE_TO_RED)), this->widget[NGWW_INFO].left + 15, y);
+
+			/* draw flag according to server language */
+			DrawSprite(SPR_FLAGS_BASE + cur_item->info.server_lang, PAL_NONE, this->widget[NGWW_INFO].left + 25, y);
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		const NetworkGameList *sel = this->server;
+		const SortButtonState arrow = (this->ld.flags & VL_DESC) ? SBS_DOWN : SBS_UP;
+
+		if (this->ld.flags & VL_REBUILD) {
+			this->BuildNetworkGameList();
+			SetVScrollCount(this, this->ld.list_length);
+		}
+		if (this->ld.flags & VL_RESORT) this->SortNetworkGameList();
+
+		/* 'Refresh' button invisible if no server selected */
+		this->SetWidgetDisabledState(NGWW_REFRESH, sel == NULL);
+		/* 'Join' button disabling conditions */
+		this->SetWidgetDisabledState(NGWW_JOIN, sel == NULL || // no Selected Server
+				!sel->online || // Server offline
+				sel->info.clients_on >= sel->info.clients_max || // Server full
+				!sel->info.compatible); // Revision mismatch
+
+		/* 'NewGRF Settings' button invisible if no NewGRF is used */
+		this->SetWidgetHiddenState(NGWW_NEWGRF, sel == NULL ||
+				!sel->online ||
+				sel->info.grfconfig == NULL);
+
+		SetDParam(0, 0x00);
+		SetDParam(1, _lan_internet_types_dropdown[_network_lan_internet]);
+		DrawWindowWidgets(this);
+
+		/* Edit box to set player name */
+		this->DrawEditBox(NGWW_PLAYER);
+
+		DrawString(this->widget[NGWW_PLAYER].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
+
+		/* Sort based on widgets: name, clients, compatibility */
+		switch (this->ld.sort_type) {
+			case NGWW_NAME    - NGWW_NAME: DrawSortButtonState(this, NGWW_NAME,    arrow); break;
+			case NGWW_CLIENTS - NGWW_NAME: DrawSortButtonState(this, NGWW_CLIENTS, arrow); break;
+			case NGWW_INFO    - NGWW_NAME: DrawSortButtonState(this, NGWW_INFO,    arrow); break;
+		}
+
+		uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
+		int32 n = 0;
+		int32 pos = this->vscroll.pos;
+		const NetworkGameList *cur_item = _network_game_list;
+
+		while (pos > 0 && cur_item != NULL) {
+			pos--;
+			cur_item = cur_item->next;
+		}
+
+		while (cur_item != NULL) {
+			this->DrawServerLine(cur_item, y, cur_item == sel);
+
+			cur_item = cur_item->next;
+			y += NET_PRC__SIZE_OF_ROW;
+			if (++n == this->vscroll.cap) break; // max number of games in the window
+		}
+
+		const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
+		/* Draw the last joined server, if any */
+		if (last_joined != NULL) this->DrawServerLine(last_joined, y = this->widget[NGWW_LASTJOINED].top + 3, last_joined == sel);
+
+		/* Draw the right menu */
+		GfxFillRect(this->widget[NGWW_DETAILS].left + 1, 43, this->widget[NGWW_DETAILS].right - 1, 92, 157);
+		if (sel == NULL) {
+			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
+		} else if (!sel->online) {
+			SetDParamStr(0, sel->info.server_name);
+			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 68, STR_ORANGE, TC_FROMSTRING); // game name
+
+			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
+		} else { // show game info
+			uint16 y = 100;
+			const uint16 x = this->widget[NGWW_DETAILS].left + 5;
+
+			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
+
+
+			SetDParamStr(0, sel->info.server_name);
+			DrawStringCenteredTruncated(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, STR_ORANGE, TC_BLACK); // game name
+
+			SetDParamStr(0, sel->info.map_name);
+			DrawStringCenteredTruncated(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, STR_02BD, TC_BLACK); // map name
+
+			SetDParam(0, sel->info.clients_on);
+			SetDParam(1, sel->info.clients_max);
+			SetDParam(2, sel->info.companies_on);
+			SetDParam(3, sel->info.companies_max);
+			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
+			y += 10;
+
+			SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
+			DrawString(x, y, STR_NETWORK_LANGUAGE, TC_GOLD); // server language
+			y += 10;
+
+			SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
+			DrawString(x, y, STR_NETWORK_TILESET, TC_GOLD); // tileset
+			y += 10;
+
+			SetDParam(0, sel->info.map_width);
+			SetDParam(1, sel->info.map_height);
+			DrawString(x, y, STR_NETWORK_MAP_SIZE, TC_GOLD); // map size
+			y += 10;
+
+			SetDParamStr(0, sel->info.server_revision);
+			DrawString(x, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
+			y += 10;
+
+			SetDParamStr(0, sel->info.hostname);
+			SetDParam(1, sel->port);
+			DrawString(x, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
+			y += 10;
+
+			SetDParam(0, sel->info.start_date);
+			DrawString(x, y, STR_NETWORK_START_DATE, TC_GOLD); // start date
+			y += 10;
+
+			SetDParam(0, sel->info.game_date);
+			DrawString(x, y, STR_NETWORK_CURRENT_DATE, TC_GOLD); // current date
+			y += 10;
+
+			y += 2;
+
+			if (!sel->info.compatible) {
+				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
+			} else if (sel->info.clients_on == sel->info.clients_max) {
+				/* Show: server full, when clients_on == clients_max */
+				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
+			} else if (sel->info.use_password) {
+				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
 			}
-			if (ld->flags & VL_RESORT) SortNetworkGameList(&WP(w, network_ql_d));
 
-			/* 'Refresh' button invisible if no server selected */
-			w->SetWidgetDisabledState(NGWW_REFRESH, sel == NULL);
-			/* 'Join' button disabling conditions */
-			w->SetWidgetDisabledState(NGWW_JOIN, sel == NULL || // no Selected Server
-					!sel->online || // Server offline
-					sel->info.clients_on >= sel->info.clients_max || // Server full
-					!sel->info.compatible); // Revision mismatch
+			y += 10;
+		}
+	}
 
-			/* 'NewGRF Settings' button invisible if no NewGRF is used */
-			w->SetWidgetHiddenState(NGWW_NEWGRF, sel == NULL ||
-					!sel->online ||
-					sel->info.grfconfig == NULL);
+	virtual void OnClick(Point pt, int widget)
+	{
+		this->field = widget;
+		switch (widget) {
+			case NGWW_PLAYER:
+				ShowOnScreenKeyboard(this, NGWW_PLAYER, 0, 0);
+				break;
 
-			SetDParam(0, 0x00);
-			SetDParam(1, _lan_internet_types_dropdown[_network_lan_internet]);
-			DrawWindowWidgets(w);
+			case NGWW_CANCEL: // Cancel button
+				DeleteWindowById(WC_NETWORK_WINDOW, 0);
+				break;
 
-			/* Edit box to set player name */
-			DrawEditBox(w, &WP(w, network_ql_d).q, NGWW_PLAYER);
+			case NGWW_CONN_BTN: // 'Connection' droplist
+				ShowDropDownMenu(this, _lan_internet_types_dropdown, _network_lan_internet, NGWW_CONN_BTN, 0, 0); // do it for widget NSSW_CONN_BTN
+				break;
 
-			DrawString(w->widget[NGWW_PLAYER].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
+			case NGWW_NAME: // Sort by name
+			case NGWW_CLIENTS: // Sort by connected clients
+			case NGWW_INFO: // Connectivity (green dot)
+				if (this->ld.sort_type == widget - NGWW_NAME) this->ld.flags ^= VL_DESC;
+				this->ld.flags |= VL_RESORT;
+				this->ld.sort_type = widget - NGWW_NAME;
 
-			/* Sort based on widgets: name, clients, compatibility */
-			switch (ld->sort_type) {
-				case NGWW_NAME    - NGWW_NAME: DrawSortButtonState(w, NGWW_NAME,    arrow); break;
-				case NGWW_CLIENTS - NGWW_NAME: DrawSortButtonState(w, NGWW_CLIENTS, arrow); break;
-				case NGWW_INFO    - NGWW_NAME: DrawSortButtonState(w, NGWW_INFO,    arrow); break;
-			}
+				_ng_sorting.order = !!(this->ld.flags & VL_DESC);
+				_ng_sorting.criteria = this->ld.sort_type;
+				this->SetDirty();
+				break;
 
-			uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
-			int32 n = 0;
-			int32 pos = w->vscroll.pos;
-			const NetworkGameList *cur_item = _network_game_list;
+			case NGWW_MATRIX: { // Matrix to show networkgames
+				NetworkGameList *cur_item;
+				uint32 id_v = (pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
-			while (pos > 0 && cur_item != NULL) {
-				pos--;
-				cur_item = cur_item->next;
-			}
+				if (id_v >= this->vscroll.cap) return; // click out of bounds
+				id_v += this->vscroll.pos;
 
-			while (cur_item != NULL) {
-				DrawServerLine(w, cur_item, y, cur_item == sel);
+				cur_item = _network_game_list;
+				for (; id_v > 0 && cur_item != NULL; id_v--) cur_item = cur_item->next;
 
-				cur_item = cur_item->next;
-				y += NET_PRC__SIZE_OF_ROW;
-				if (++n == w->vscroll.cap) break; // max number of games in the window
-			}
+				this->server = cur_item;
+				this->SetDirty();
+			} break;
 
-			const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
-			/* Draw the last joined server, if any */
-			if (last_joined != NULL) DrawServerLine(w, last_joined, y = w->widget[NGWW_LASTJOINED].top + 3, last_joined == sel);
-
-			/* Draw the right menu */
-			GfxFillRect(w->widget[NGWW_DETAILS].left + 1, 43, w->widget[NGWW_DETAILS].right - 1, 92, 157);
-			if (sel == NULL) {
-				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
-			} else if (!sel->online) {
-				SetDParamStr(0, sel->info.server_name);
-				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 68, STR_ORANGE, TC_FROMSTRING); // game name
-
-				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
-			} else { // show game info
-				uint16 y = 100;
-				const uint16 x = w->widget[NGWW_DETAILS].left + 5;
-
-				DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, 48, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
-
-
-				SetDParamStr(0, sel->info.server_name);
-				DrawStringCenteredTruncated(w->widget[NGWW_DETAILS].left, w->widget[NGWW_DETAILS].right, 62, STR_ORANGE, TC_BLACK); // game name
-
-				SetDParamStr(0, sel->info.map_name);
-				DrawStringCenteredTruncated(w->widget[NGWW_DETAILS].left, w->widget[NGWW_DETAILS].right, 74, STR_02BD, TC_BLACK); // map name
-
-				SetDParam(0, sel->info.clients_on);
-				SetDParam(1, sel->info.clients_max);
-				SetDParam(2, sel->info.companies_on);
-				SetDParam(3, sel->info.companies_max);
-				DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
-				y += 10;
-
-				SetDParam(0, STR_NETWORK_LANG_ANY + sel->info.server_lang);
-				DrawString(x, y, STR_NETWORK_LANGUAGE, TC_GOLD); // server language
-				y += 10;
-
-				SetDParam(0, STR_TEMPERATE_LANDSCAPE + sel->info.map_set);
-				DrawString(x, y, STR_NETWORK_TILESET, TC_GOLD); // tileset
-				y += 10;
-
-				SetDParam(0, sel->info.map_width);
-				SetDParam(1, sel->info.map_height);
-				DrawString(x, y, STR_NETWORK_MAP_SIZE, TC_GOLD); // map size
-				y += 10;
-
-				SetDParamStr(0, sel->info.server_revision);
-				DrawString(x, y, STR_NETWORK_SERVER_VERSION, TC_GOLD); // server version
-				y += 10;
-
-				SetDParamStr(0, sel->info.hostname);
-				SetDParam(1, sel->port);
-				DrawString(x, y, STR_NETWORK_SERVER_ADDRESS, TC_GOLD); // server address
-				y += 10;
-
-				SetDParam(0, sel->info.start_date);
-				DrawString(x, y, STR_NETWORK_START_DATE, TC_GOLD); // start date
-				y += 10;
-
-				SetDParam(0, sel->info.game_date);
-				DrawString(x, y, STR_NETWORK_CURRENT_DATE, TC_GOLD); // current date
-				y += 10;
-
-				y += 2;
-
-				if (!sel->info.compatible) {
-					DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
-				} else if (sel->info.clients_on == sel->info.clients_max) {
-					/* Show: server full, when clients_on == clients_max */
-					DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
-				} else if (sel->info.use_password) {
-					DrawStringCentered(w->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
+			case NGWW_LASTJOINED: {
+				NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
+				if (last_joined != NULL) {
+					this->server = last_joined;
+					this->SetDirty();
 				}
+			} break;
 
-				y += 10;
-			}
-		} break;
-
-		case WE_CLICK:
-			nd->field = e->we.click.widget;
-			switch (e->we.click.widget) {
-				case NGWW_PLAYER:
-					ShowOnScreenKeyboard(w, &WP(w, network_ql_d).q,  NGWW_PLAYER, 0, 0);
-					break;
-
-				case NGWW_CANCEL: // Cancel button
-					DeleteWindowById(WC_NETWORK_WINDOW, 0);
-					break;
-
-				case NGWW_CONN_BTN: // 'Connection' droplist
-					ShowDropDownMenu(w, _lan_internet_types_dropdown, _network_lan_internet, NGWW_CONN_BTN, 0, 0); // do it for widget NSSW_CONN_BTN
-					break;
-
-				case NGWW_NAME: // Sort by name
-				case NGWW_CLIENTS: // Sort by connected clients
-				case NGWW_INFO: // Connectivity (green dot)
-					if (ld->sort_type == e->we.click.widget - NGWW_NAME) ld->flags ^= VL_DESC;
-					ld->flags |= VL_RESORT;
-					ld->sort_type = e->we.click.widget - NGWW_NAME;
-
-					_ng_sorting.order = !!(ld->flags & VL_DESC);
-					_ng_sorting.criteria = ld->sort_type;
-					SetWindowDirty(w);
-					break;
-
-				case NGWW_MATRIX: { // Matrix to show networkgames
-					NetworkGameList *cur_item;
-					uint32 id_v = (e->we.click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
-
-					if (id_v >= w->vscroll.cap) return; // click out of bounds
-					id_v += w->vscroll.pos;
-
-					cur_item = _network_game_list;
-					for (; id_v > 0 && cur_item != NULL; id_v--) cur_item = cur_item->next;
-
-					nd->server = cur_item;
-					SetWindowDirty(w);
-				} break;
-
-				case NGWW_LASTJOINED: {
-					NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
-					if (last_joined != NULL) {
-						nd->server = last_joined;
-						SetWindowDirty(w);
-					}
-				} break;
-
-				case NGWW_FIND: // Find server automatically
-					switch (_network_lan_internet) {
-						case 0: NetworkUDPSearchGame(); break;
-						case 1: NetworkUDPQueryMasterServer(); break;
-					}
-					break;
-
-				case NGWW_ADD: // Add a server
-					ShowQueryString(
-						BindCString(_network_default_ip),
-						STR_NETWORK_ENTER_IP,
-						31 | 0x1000,  // maximum number of characters OR
-						250, // characters up to this width pixels, whichever is satisfied first
-						w, CS_ALPHANUMERAL);
-					break;
-
-				case NGWW_START: // Start server
-					ShowNetworkStartServerWindow();
-					break;
-
-				case NGWW_JOIN: // Join Game
-					if (nd->server != NULL) {
-						snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&nd->server->ip));
-						_network_last_port = nd->server->port;
-						ShowNetworkLobbyWindow(nd->server);
-					}
-					break;
-
-				case NGWW_REFRESH: // Refresh
-					if (nd->server != NULL) NetworkUDPQueryServer(nd->server->info.hostname, nd->server->port);
-					break;
-
-				case NGWW_NEWGRF: // NewGRF Settings
-					if (nd->server != NULL) ShowNewGRFSettings(false, false, false, &nd->server->info.grfconfig);
-					break;
-			}
-			break;
-
-		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
-			switch (e->we.dropdown.button) {
-				case NGWW_CONN_BTN:
-					_network_lan_internet = e->we.dropdown.index;
-					break;
-
-				default:
-					NOT_REACHED();
-			}
-
-			SetWindowDirty(w);
-			break;
-
-		case WE_MOUSELOOP:
-			if (nd->field == NGWW_PLAYER) HandleEditBox(w, &WP(w, network_ql_d).q, NGWW_PLAYER);
-			break;
-
-		case WE_INVALIDATE_DATA:
-			if (e->we.invalidate.data != 0) nd->server = NULL;
-			ld->flags |= VL_REBUILD;
-			SetWindowDirty(w);
-			break;
-
-		case WE_KEYPRESS:
-			if (nd->field != NGWW_PLAYER) {
-				if (nd->server != NULL) {
-					if (e->we.keypress.keycode == WKC_DELETE) { // Press 'delete' to remove servers
-						NetworkGameListRemoveItem(nd->server);
-						NetworkRebuildHostList();
-						nd->server = NULL;
-					}
+			case NGWW_FIND: // Find server automatically
+				switch (_network_lan_internet) {
+					case 0: NetworkUDPSearchGame(); break;
+					case 1: NetworkUDPQueryMasterServer(); break;
 				}
 				break;
-			}
 
-			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, NGWW_PLAYER, e) == 1) break; // enter pressed
+			case NGWW_ADD: // Add a server
+				ShowQueryString(
+					BindCString(_network_default_ip),
+					STR_NETWORK_ENTER_IP,
+					31 | 0x1000,  // maximum number of characters OR
+					250, // characters up to this width pixels, whichever is satisfied first
+					this, CS_ALPHANUMERAL);
+				break;
 
-			/* The name is only allowed when it starts with a letter! */
-			if (_edit_str_net_buf[0] != '\0' && _edit_str_net_buf[0] != ' ') {
-				ttd_strlcpy(_network_player_name, _edit_str_net_buf, lengthof(_network_player_name));
-			} else {
-				ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
-			}
+			case NGWW_START: // Start server
+				ShowNetworkStartServerWindow();
+				break;
 
-			break;
+			case NGWW_JOIN: // Join Game
+				if (this->server != NULL) {
+					snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&this->server->ip));
+					_network_last_port = this->server->port;
+					ShowNetworkLobbyWindow(this->server);
+				}
+				break;
 
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				NetworkAddServer(e->we.edittext.str);
-				NetworkRebuildHostList();
-			}
-			break;
+			case NGWW_REFRESH: // Refresh
+				if (this->server != NULL) NetworkUDPQueryServer(this->server->info.hostname, this->server->port);
+				break;
 
-		case WE_RESIZE: {
-			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
-
-			w->widget[NGWW_MATRIX].data = (w->vscroll.cap << 8) + 1;
-
-			SetVScrollCount(w, ld->list_length);
-
-			int widget_width = w->widget[NGWW_FIND].right - w->widget[NGWW_FIND].left;
-			int space = (w->width - 4 * widget_width - 25) / 3;
-
-			int offset = 10;
-			for (uint i = 0; i < 4; i++) {
-				w->widget[NGWW_FIND + i].left  = offset;
-				offset += widget_width;
-				w->widget[NGWW_FIND + i].right = offset;
-				offset += space;
-			}
-		} break;
-
-		case WE_DESTROY: // Nicely clean up the sort-list
-			free(WP(w, network_ql_d).sort_list);
-			break;
+			case NGWW_NEWGRF: // NewGRF Settings
+				if (this->server != NULL) ShowNewGRFSettings(false, false, false, &this->server->info.grfconfig);
+				break;
+		}
 	}
-}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case NGWW_CONN_BTN:
+				_network_lan_internet = index;
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+
+		this->SetDirty();
+	}
+
+	virtual void OnMouseLoop()
+	{
+		if (this->field == NGWW_PLAYER) this->HandleEditBox(NGWW_PLAYER);
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (data != 0) this->server = NULL;
+		this->ld.flags |= VL_REBUILD;
+		this->SetDirty();
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont = true;
+		if (this->field != NGWW_PLAYER) {
+			if (this->server != NULL) {
+				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
+					NetworkGameListRemoveItem(this->server);
+					NetworkRebuildHostList();
+					this->server = NULL;
+				}
+			}
+			return cont;
+		}
+
+		if (this->HandleEditBoxKey(NGWW_PLAYER, keycode, key, cont) == 1) return cont; // enter pressed
+
+		/* The name is only allowed when it starts with a letter! */
+		if (StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
+			ttd_strlcpy(_network_player_name, this->edit_str_buf, lengthof(_network_player_name));
+		} else {
+			ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
+		}
+		return cont;
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			NetworkAddServer(str);
+			NetworkRebuildHostList();
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+
+		this->widget[NGWW_MATRIX].data = (this->vscroll.cap << 8) + 1;
+
+		SetVScrollCount(this, this->ld.list_length);
+
+		int widget_width = this->widget[NGWW_FIND].right - this->widget[NGWW_FIND].left;
+		int space = (this->width - 4 * widget_width - 25) / 3;
+
+		int offset = 10;
+		for (uint i = 0; i < 4; i++) {
+			this->widget[NGWW_FIND + i].left  = offset;
+			offset += widget_width;
+			this->widget[NGWW_FIND + i].right = offset;
+			offset += space;
+		}
+	}
+};
 
 static const Widget _network_game_window_widgets[] = {
 /* TOP */
@@ -654,7 +658,7 @@ static const WindowDesc _network_game_window_desc = {
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_network_game_window_widgets,
-	NetworkGameWindowWndProc,
+	NULL,
 };
 
 void ShowNetworkGameWindow()
@@ -676,16 +680,7 @@ void ShowNetworkGameWindow()
 		_ng_sorting.order = 0;    // sort ascending by default
 	}
 
-	Window *w = new Window(&_network_game_window_desc);
-	if (w != NULL) {
-		querystr_d *querystr = &WP(w, network_ql_d).q;
-
-		ttd_strlcpy(_edit_str_net_buf, _network_player_name, lengthof(_edit_str_net_buf));
-		querystr->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&querystr->text, _edit_str_net_buf, lengthof(_edit_str_net_buf), 120);
-
-		UpdateNetworkGameWindow(true);
-	}
+	new NetworkGameWindow(&_network_game_window_desc);
 }
 
 enum {
@@ -715,225 +710,237 @@ enum NetworkStartServerWidgets {
 	NSSW_CANCEL          = 27,   ///< 'Cancel' button
 };
 
-/**
- * Handler of actions done in the NetworkStartServer window
- *
- * @param w pointer to the Window structure
- * @param e pointer to window event
- * @note    Uses network_ql_d (network_d, querystr_d and list_d) WP macro
- * @see     struct _network_start_server_window_widgets
- * @see     enum NetworkStartServerWidgets
- */
-static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
-{
-	network_d *nd = &WP(w, network_ql_d).n;
+struct NetworkStartServerWindow : public QueryStringBaseWindow {
+	byte field;                  ///< Selected text-field
+	FiosItem *map;               ///< Selected map
+	byte widget_id;              ///< The widget that has the pop-up input menu
 
-	switch (e->event) {
-		case WE_CREATE: // focus input box
-			nd->field = NSSW_GAMENAME;
-			_network_game_info.use_password = (_network_server_password[0] != '\0');
-			break;
+	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	{
+		ttd_strlcpy(this->edit_str_buf, _network_server_name, lengthof(this->edit_str_buf));
 
-		case WE_PAINT: {
-			int y = NSSWND_START, pos;
-			const FiosItem *item;
+		_saveload_mode = SLD_NEW_GAME;
+		BuildFileList();
+		this->vscroll.cap = 12;
+		this->vscroll.count = _fios_num + 1;
 
-			/* draw basic widgets */
-			SetDParam(1, _connection_types_dropdown[_network_advertise]);
-			SetDParam(2, _network_game_info.clients_max);
-			SetDParam(3, _network_game_info.companies_max);
-			SetDParam(4, _network_game_info.spectators_max);
-			SetDParam(5, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
-			DrawWindowWidgets(w);
+		this->afilter = CS_ALPHANUMERAL;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 160);
 
-			/* editbox to set game name */
-			DrawEditBox(w, &WP(w, network_ql_d).q, NSSW_GAMENAME);
+		this->field = NSSW_GAMENAME;
+		_network_game_info.use_password = !StrEmpty(_network_server_password);
 
-			/* if password is set, draw red '*' next to 'Set password' button */
-			if (_network_game_info.use_password) DoDrawString("*", 408, 23, TC_RED);
-
-			/* draw list of maps */
-			GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
-
-			pos = w->vscroll.pos;
-			while (pos < _fios_num + 1) {
-				item = _fios_list + pos - 1;
-				if (item == nd->map || (pos == 0 && nd->map == NULL))
-					GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
-
-				if (pos == 0) {
-					DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
-				} else {
-					DoDrawString(item->title, 14, y, _fios_colors[item->type] );
-				}
-				pos++;
-				y += NSSWND_ROWSIZE;
-
-				if (y >= w->vscroll.cap * NSSWND_ROWSIZE + NSSWND_START) break;
-			}
-		} break;
-
-		case WE_CLICK:
-			if (e->we.click.widget != NSSW_CONNTYPE_BTN && e->we.click.widget != NSSW_LANGUAGE_BTN) HideDropDownMenu(w);
-			nd->field = e->we.click.widget;
-			switch (e->we.click.widget) {
-				case NSSW_CLOSE:  // Close 'X'
-				case NSSW_CANCEL: // Cancel button
-					ShowNetworkGameWindow();
-					break;
-
-				case NSSW_GAMENAME:
-					ShowOnScreenKeyboard(w, &WP(w, network_ql_d).q,  NSSW_GAMENAME, 0, 0);
-					break;
-
-				case NSSW_SETPWD: // Set password button
-					nd->widget_id = NSSW_SETPWD;
-					ShowQueryString(BindCString(_network_server_password), STR_NETWORK_SET_PASSWORD, 20, 250, w, CS_ALPHANUMERAL);
-					break;
-
-				case NSSW_SELMAP: { // Select map
-					int y = (e->we.click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
-
-					y += w->vscroll.pos;
-					if (y >= w->vscroll.count) return;
-
-					nd->map = (y == 0) ? NULL : _fios_list + y - 1;
-					SetWindowDirty(w);
-				} break;
-
-				case NSSW_CONNTYPE_BTN: // Connection type
-					ShowDropDownMenu(w, _connection_types_dropdown, _network_advertise, NSSW_CONNTYPE_BTN, 0, 0); // do it for widget NSSW_CONNTYPE_BTN
-					break;
-
-				case NSSW_CLIENTS_BTND:    case NSSW_CLIENTS_BTNU:    // Click on up/down button for number of clients
-				case NSSW_COMPANIES_BTND:  case NSSW_COMPANIES_BTNU:  // Click on up/down button for number of companies
-				case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU: // Click on up/down button for number of spectators
-					/* Don't allow too fast scrolling */
-					if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-						w->HandleButtonClick(e->we.click.widget);
-						SetWindowDirty(w);
-						switch (e->we.click.widget) {
-							default: NOT_REACHED();
-							case NSSW_CLIENTS_BTND: case NSSW_CLIENTS_BTNU:
-								_network_game_info.clients_max    = Clamp(_network_game_info.clients_max    + e->we.click.widget - NSSW_CLIENTS_TXT,    2, MAX_CLIENTS);
-								break;
-							case NSSW_COMPANIES_BTND: case NSSW_COMPANIES_BTNU:
-								_network_game_info.companies_max  = Clamp(_network_game_info.companies_max  + e->we.click.widget - NSSW_COMPANIES_TXT,  1, MAX_PLAYERS);
-								break;
-							case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU:
-								_network_game_info.spectators_max = Clamp(_network_game_info.spectators_max + e->we.click.widget - NSSW_SPECTATORS_TXT, 0, MAX_CLIENTS);
-								break;
-						}
-					}
-					_left_button_clicked = false;
-					break;
-
-				case NSSW_CLIENTS_TXT:    // Click on number of players
-					nd->widget_id = NSSW_CLIENTS_TXT;
-					SetDParam(0, _network_game_info.clients_max);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_CLIENTS,    3, 50, w, CS_NUMERAL);
-					break;
-
-				case NSSW_COMPANIES_TXT:  // Click on number of companies
-					nd->widget_id = NSSW_COMPANIES_TXT;
-					SetDParam(0, _network_game_info.companies_max);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, w, CS_NUMERAL);
-					break;
-
-				case NSSW_SPECTATORS_TXT: // Click on number of spectators
-					nd->widget_id = NSSW_SPECTATORS_TXT;
-					SetDParam(0, _network_game_info.spectators_max);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_SPECTATORS, 3, 50, w, CS_NUMERAL);
-					break;
-
-				case NSSW_LANGUAGE_BTN: { // Language
-					uint sel = 0;
-					for (uint i = 0; i < lengthof(_language_dropdown) - 1; i++) {
-						if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _network_game_info.server_lang) {
-							sel = i;
-							break;
-						}
-					}
-					ShowDropDownMenu(w, _language_dropdown, sel, NSSW_LANGUAGE_BTN, 0, 0);
-				} break;
-
-				case NSSW_START: // Start game
-					_is_network_server = true;
-
-					if (nd->map == NULL) { // start random new game
-						ShowGenerateLandscape();
-					} else { // load a scenario
-						char *name = FiosBrowseTo(nd->map);
-						if (name != NULL) {
-							SetFiosType(nd->map->type);
-							_file_to_saveload.filetype = FT_SCENARIO;
-							ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-							ttd_strlcpy(_file_to_saveload.title, nd->map->title, sizeof(_file_to_saveload.title));
-
-							delete w;
-							SwitchMode(SM_START_SCENARIO);
-						}
-					}
-					break;
-
-				case NSSW_LOAD: // Load game
-					_is_network_server = true;
-					/* XXX - WC_NETWORK_WINDOW (this window) should stay, but if it stays, it gets
-					* copied all the elements of 'load game' and upon closing that, it segfaults */
-					delete w;
-					ShowSaveLoadDialog(SLD_LOAD_GAME);
-					break;
-			}
-			break;
-
-		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
-			switch (e->we.dropdown.button) {
-				case NSSW_CONNTYPE_BTN:
-					_network_advertise = (e->we.dropdown.index != 0);
-					break;
-				case NSSW_LANGUAGE_BTN:
-					_network_game_info.server_lang = _language_dropdown[e->we.dropdown.index] - STR_NETWORK_LANG_ANY;
-					break;
-				default:
-					NOT_REACHED();
-			}
-
-			SetWindowDirty(w);
-			break;
-
-		case WE_MOUSELOOP:
-			if (nd->field == NSSW_GAMENAME) HandleEditBox(w, &WP(w, network_ql_d).q, NSSW_GAMENAME);
-			break;
-
-		case WE_KEYPRESS:
-			if (nd->field == NSSW_GAMENAME) {
-				if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, NSSW_GAMENAME, e) == 1) break; // enter pressed
-
-				ttd_strlcpy(_network_server_name, WP(w, network_ql_d).q.text.buf, sizeof(_network_server_name));
-			}
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str == NULL) break;
-
-			if (nd->widget_id == NSSW_SETPWD) {
-				ttd_strlcpy(_network_server_password, e->we.edittext.str, lengthof(_network_server_password));
-				_network_game_info.use_password = !StrEmpty(_network_server_password);
-			} else {
-				int32 value = atoi(e->we.edittext.str);
-				w->InvalidateWidget(nd->widget_id);
-				switch (nd->widget_id) {
-					default: NOT_REACHED();
-					case NSSW_CLIENTS_TXT:    _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;
-					case NSSW_COMPANIES_TXT:  _network_game_info.companies_max  = Clamp(value, 1, MAX_PLAYERS); break;
-					case NSSW_SPECTATORS_TXT: _network_game_info.spectators_max = Clamp(value, 0, MAX_CLIENTS); break;
-				}
-			}
-
-			SetWindowDirty(w);
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		int y = NSSWND_START, pos;
+		const FiosItem *item;
+
+		/* draw basic widgets */
+		SetDParam(1, _connection_types_dropdown[_network_advertise]);
+		SetDParam(2, _network_game_info.clients_max);
+		SetDParam(3, _network_game_info.companies_max);
+		SetDParam(4, _network_game_info.spectators_max);
+		SetDParam(5, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
+		DrawWindowWidgets(this);
+
+		/* editbox to set game name */
+		this->DrawEditBox(NSSW_GAMENAME);
+
+		/* if password is set, draw red '*' next to 'Set password' button */
+		if (_network_game_info.use_password) DoDrawString("*", 408, 23, TC_RED);
+
+		/* draw list of maps */
+		GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
+
+		pos = this->vscroll.pos;
+		while (pos < _fios_num + 1) {
+			item = _fios_list + pos - 1;
+			if (item == this->map || (pos == 0 && this->map == NULL))
+				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
+
+			if (pos == 0) {
+				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, TC_DARK_GREEN);
+			} else {
+				DoDrawString(item->title, 14, y, _fios_colors[item->type] );
+			}
+			pos++;
+			y += NSSWND_ROWSIZE;
+
+			if (y >= this->vscroll.cap * NSSWND_ROWSIZE + NSSWND_START) break;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget != NSSW_CONNTYPE_BTN && widget != NSSW_LANGUAGE_BTN) HideDropDownMenu(this);
+		this->field = widget;
+		switch (widget) {
+			case NSSW_CLOSE:  // Close 'X'
+			case NSSW_CANCEL: // Cancel button
+				ShowNetworkGameWindow();
+				break;
+
+			case NSSW_GAMENAME:
+				ShowOnScreenKeyboard(this, NSSW_GAMENAME, 0, 0);
+				break;
+
+			case NSSW_SETPWD: // Set password button
+				this->widget_id = NSSW_SETPWD;
+				ShowQueryString(BindCString(_network_server_password), STR_NETWORK_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL);
+				break;
+
+			case NSSW_SELMAP: { // Select map
+				int y = (pt.y - NSSWND_START) / NSSWND_ROWSIZE;
+
+				y += this->vscroll.pos;
+				if (y >= this->vscroll.count) return;
+
+				this->map = (y == 0) ? NULL : _fios_list + y - 1;
+				this->SetDirty();
+			} break;
+
+			case NSSW_CONNTYPE_BTN: // Connection type
+				ShowDropDownMenu(this, _connection_types_dropdown, _network_advertise, NSSW_CONNTYPE_BTN, 0, 0); // do it for widget NSSW_CONNTYPE_BTN
+				break;
+
+			case NSSW_CLIENTS_BTND:    case NSSW_CLIENTS_BTNU:    // Click on up/down button for number of clients
+			case NSSW_COMPANIES_BTND:  case NSSW_COMPANIES_BTNU:  // Click on up/down button for number of companies
+			case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU: // Click on up/down button for number of spectators
+				/* Don't allow too fast scrolling */
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+					this->HandleButtonClick(widget);
+					this->SetDirty();
+					switch (widget) {
+						default: NOT_REACHED();
+						case NSSW_CLIENTS_BTND: case NSSW_CLIENTS_BTNU:
+							_network_game_info.clients_max    = Clamp(_network_game_info.clients_max    + widget - NSSW_CLIENTS_TXT,    2, MAX_CLIENTS);
+							break;
+						case NSSW_COMPANIES_BTND: case NSSW_COMPANIES_BTNU:
+							_network_game_info.companies_max  = Clamp(_network_game_info.companies_max  + widget - NSSW_COMPANIES_TXT,  1, MAX_PLAYERS);
+							break;
+						case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU:
+							_network_game_info.spectators_max = Clamp(_network_game_info.spectators_max + widget - NSSW_SPECTATORS_TXT, 0, MAX_CLIENTS);
+							break;
+					}
+				}
+				_left_button_clicked = false;
+				break;
+
+			case NSSW_CLIENTS_TXT:    // Click on number of players
+				this->widget_id = NSSW_CLIENTS_TXT;
+				SetDParam(0, _network_game_info.clients_max);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_CLIENTS,    3, 50, this, CS_NUMERAL);
+				break;
+
+			case NSSW_COMPANIES_TXT:  // Click on number of companies
+				this->widget_id = NSSW_COMPANIES_TXT;
+				SetDParam(0, _network_game_info.companies_max);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL);
+				break;
+
+			case NSSW_SPECTATORS_TXT: // Click on number of spectators
+				this->widget_id = NSSW_SPECTATORS_TXT;
+				SetDParam(0, _network_game_info.spectators_max);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_SPECTATORS, 3, 50, this, CS_NUMERAL);
+				break;
+
+			case NSSW_LANGUAGE_BTN: { // Language
+				uint sel = 0;
+				for (uint i = 0; i < lengthof(_language_dropdown) - 1; i++) {
+					if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _network_game_info.server_lang) {
+						sel = i;
+						break;
+					}
+				}
+				ShowDropDownMenu(this, _language_dropdown, sel, NSSW_LANGUAGE_BTN, 0, 0);
+			} break;
+
+			case NSSW_START: // Start game
+				_is_network_server = true;
+
+				if (this->map == NULL) { // start random new game
+					ShowGenerateLandscape();
+				} else { // load a scenario
+					char *name = FiosBrowseTo(this->map);
+					if (name != NULL) {
+						SetFiosType(this->map->type);
+						_file_to_saveload.filetype = FT_SCENARIO;
+						ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+						ttd_strlcpy(_file_to_saveload.title, this->map->title, sizeof(_file_to_saveload.title));
+
+						delete this;
+						SwitchMode(SM_START_SCENARIO);
+					}
+				}
+				break;
+
+			case NSSW_LOAD: // Load game
+				_is_network_server = true;
+				/* XXX - WC_NETWORK_WINDOW (this window) should stay, but if it stays, it gets
+				* copied all the elements of 'load game' and upon closing that, it segfaults */
+				delete this;
+				ShowSaveLoadDialog(SLD_LOAD_GAME);
+				break;
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case NSSW_CONNTYPE_BTN:
+				_network_advertise = (index != 0);
+				break;
+			case NSSW_LANGUAGE_BTN:
+				_network_game_info.server_lang = _language_dropdown[index] - STR_NETWORK_LANG_ANY;
+				break;
+			default:
+				NOT_REACHED();
+		}
+
+		this->SetDirty();
+	}
+
+	virtual void OnMouseLoop()
+	{
+		if (this->field == NSSW_GAMENAME) this->HandleEditBox(NSSW_GAMENAME);
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont = true;
+		if (this->field == NSSW_GAMENAME) {
+			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, cont) == 1) return cont; // enter pressed
+
+			ttd_strlcpy(_network_server_name, this->text.buf, sizeof(_network_server_name));
+		}
+
+		return cont;
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (str == NULL) return;
+
+		if (this->widget_id == NSSW_SETPWD) {
+			ttd_strlcpy(_network_server_password, str, lengthof(_network_server_password));
+			_network_game_info.use_password = !StrEmpty(_network_server_password);
+		} else {
+			int32 value = atoi(str);
+			this->InvalidateWidget(this->widget_id);
+			switch (this->widget_id) {
+				default: NOT_REACHED();
+				case NSSW_CLIENTS_TXT:    _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;
+				case NSSW_COMPANIES_TXT:  _network_game_info.companies_max  = Clamp(value, 1, MAX_PLAYERS); break;
+				case NSSW_SPECTATORS_TXT: _network_game_info.spectators_max = Clamp(value, 0, MAX_CLIENTS); break;
+			}
+		}
+
+		this->SetDirty();
+	}
+};
 
 static const Widget _network_start_server_window_widgets[] = {
 /* Window decoration and background panel */
@@ -986,23 +993,14 @@ static const WindowDesc _network_start_server_window_desc = {
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_start_server_window_widgets,
-	NetworkStartServerWindowWndProc,
+	NULL,
 };
 
 static void ShowNetworkStartServerWindow()
 {
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-	Window *w = new Window(&_network_start_server_window_desc);
-	ttd_strlcpy(_edit_str_net_buf, _network_server_name, lengthof(_edit_str_net_buf));
-
-	_saveload_mode = SLD_NEW_GAME;
-	BuildFileList();
-	w->vscroll.cap = 12;
-	w->vscroll.count = _fios_num + 1;
-
-	WP(w, network_ql_d).q.afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, network_ql_d).q.text, _edit_str_net_buf, lengthof(_edit_str_net_buf), 160);
+	new NetworkStartServerWindow(&_network_start_server_window_desc);
 }
 
 static PlayerID NetworkLobbyFindCompanyIndex(byte pos)
@@ -1036,7 +1034,6 @@ struct NetworkLobbyWindow : public Window {
 	NetworkLobbyWindow(const WindowDesc *desc, NetworkGameList *ngl) :
 			Window(desc), company(INVALID_PLAYER), server(ngl)
 	{
-		strcpy(_edit_str_net_buf, "");
 		this->vscroll.cap = 10;
 
 		this->FindWindowPlacementAndResize(desc);
@@ -1370,10 +1367,10 @@ static bool CheckClientListHeight(Window *w)
 	/* If height is changed */
 	if (w->height != CLNWND_OFFSET + num + 1) {
 		// XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1)
-		SetWindowDirty(w);
+		w->SetDirty();
 		w->widget[3].bottom = w->widget[3].top + num + 2;
 		w->height = CLNWND_OFFSET + num + 1;
-		SetWindowDirty(w);
+		w->SetDirty();
 		return false;
 	}
 	return true;
@@ -1508,7 +1505,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 				if (index == -1 || index == WP(w, menu_d).sel_index) return;
 
 				WP(w, menu_d).sel_index = index;
-				SetWindowDirty(w);
+				w->SetDirty();
 			} else {
 				if (index >= 0 && _cursor.pos.y >= w->top) {
 					HandleClientListPopupClick(index, WP(w, menu_d).main_button);
@@ -1573,7 +1570,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 			if (e->we.mouseover.pt.y == -1) {
 				_selected_clientlist_y = 0;
 				_selected_clientlist_item = 255;
-				SetWindowDirty(w);
+				w->SetDirty();
 				break;
 			}
 			/* It did not change.. no update! */
@@ -1588,7 +1585,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 			}
 
 			/* Repaint */
-			SetWindowDirty(w);
+			w->SetDirty();
 			break;
 
 		case WE_DESTROY: case WE_CREATE:
@@ -1706,202 +1703,217 @@ static void SendChat(const char *buf, DestType type, int dest)
 	}
 }
 
-/**
- * Find the next item of the list of things that can be auto-completed.
- * @param item The current indexed item to return. This function can, and most
- *     likely will, alter item, to skip empty items in the arrays.
- * @return Returns the char that matched to the index.
- */
-static const char *ChatTabCompletionNextItem(uint *item)
-{
-	static char chat_tab_temp_buffer[64];
 
-	/* First, try clients */
-	if (*item < MAX_CLIENT_INFO) {
-		/* Skip inactive clients */
-		while (_network_client_info[*item].client_index == NETWORK_EMPTY_INDEX && *item < MAX_CLIENT_INFO) (*item)++;
-		if (*item < MAX_CLIENT_INFO) return _network_client_info[*item].client_name;
-	}
+struct NetworkChatWindow : public QueryStringBaseWindow {
+	DestType dtype;
+	int dest;
 
-	/* Then, try townnames */
-	/* Not that the following assumes all town indices are adjacent, ie no
-	 * towns have been deleted. */
-	if (*item <= (uint)MAX_CLIENT_INFO + GetMaxTownIndex()) {
-		const Town *t;
+	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(desc)
+	{
+		this->LowerWidget(2);
+		this->dtype   = type;
+		this->dest    = dest;
+		this->afilter = CS_ALPHANUMERAL;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 0);
 
-		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
-			/* Get the town-name via the string-system */
-			SetDParam(0, t->index);
-			GetString(chat_tab_temp_buffer, STR_TOWN, lastof(chat_tab_temp_buffer));
-			return &chat_tab_temp_buffer[0];
-		}
-	}
+		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
+		SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 
-	return NULL;
-}
-
-/**
- * Find what text to complete. It scans for a space from the left and marks
- *  the word right from that as to complete. It also writes a \0 at the
- *  position of the space (if any). If nothing found, buf is returned.
- */
-static char *ChatTabCompletionFindText(char *buf)
-{
-	char *p = strrchr(buf, ' ');
-	if (p == NULL) return buf;
-
-	*p = '\0';
-	return p + 1;
-}
-
-/**
- * See if we can auto-complete the current text of the user.
- */
-static void ChatTabCompletion(Window *w)
-{
-	static char _chat_tab_completion_buf[lengthof(_edit_str_net_buf)];
-	Textbuf *tb = &WP(w, chatquerystr_d).text;
-	size_t len, tb_len;
-	uint item;
-	char *tb_buf, *pre_buf;
-	const char *cur_name;
-	bool second_scan = false;
-
-	item = 0;
-
-	/* Copy the buffer so we can modify it without damaging the real data */
-	pre_buf = (_chat_tab_completion_active) ? strdup(_chat_tab_completion_buf) : strdup(tb->buf);
-
-	tb_buf  = ChatTabCompletionFindText(pre_buf);
-	tb_len  = strlen(tb_buf);
-
-	while ((cur_name = ChatTabCompletionNextItem(&item)) != NULL) {
-		item++;
-
-		if (_chat_tab_completion_active) {
-			/* We are pressing TAB again on the same name, is there an other name
-			 *  that starts with this? */
-			if (!second_scan) {
-				size_t offset;
-				size_t length;
-
-				/* If we are completing at the begin of the line, skip the ': ' we added */
-				if (tb_buf == pre_buf) {
-					offset = 0;
-					length = tb->length - 2;
-				} else {
-					/* Else, find the place we are completing at */
-					offset = strlen(pre_buf) + 1;
-					length = tb->length - offset;
-				}
-
-				/* Compare if we have a match */
-				if (strlen(cur_name) == length && strncmp(cur_name, tb->buf + offset, length) == 0) second_scan = true;
-
-				continue;
-			}
-
-			/* Now any match we make on _chat_tab_completion_buf after this, is perfect */
-		}
-
-		len = strlen(cur_name);
-		if (tb_len < len && strncasecmp(cur_name, tb_buf, tb_len) == 0) {
-			/* Save the data it was before completion */
-			if (!second_scan) snprintf(_chat_tab_completion_buf, lengthof(_chat_tab_completion_buf), "%s", tb->buf);
-			_chat_tab_completion_active = true;
-
-			/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
-			if (pre_buf == tb_buf) {
-				snprintf(tb->buf, lengthof(_edit_str_net_buf), "%s: ", cur_name);
-			} else {
-				snprintf(tb->buf, lengthof(_edit_str_net_buf), "%s %s", pre_buf, cur_name);
-			}
-
-			/* Update the textbuffer */
-			UpdateTextBufferSize(&WP(w, chatquerystr_d).text);
-
-			SetWindowDirty(w);
-			free(pre_buf);
-			return;
-		}
-	}
-
-	if (second_scan) {
-		/* We walked all posibilities, and the user presses tab again.. revert to original text */
-		strcpy(tb->buf, _chat_tab_completion_buf);
 		_chat_tab_completion_active = false;
 
-		/* Update the textbuffer */
-		UpdateTextBufferSize(&WP(w, chatquerystr_d).text);
-
-		SetWindowDirty(w);
+		this->FindWindowPlacementAndResize(desc);
 	}
-	free(pre_buf);
-}
 
-/*
- * uses chatquerystr_d WP macro
- * uses chatquerystr_d->dtype to store type of chat message (Private/Team/All)
- */
-static void ChatWindowWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			InvalidateWindowData(WC_NEWS_WINDOW, 0, w->height);
-			SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
-			break;
+	~NetworkChatWindow ()
+	{
+		InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
+		ClrBit(_no_scroll, SCROLL_CHAT);
+	}
 
-		case WE_PAINT: {
-			static const StringID chat_captions[] = {
-				STR_NETWORK_CHAT_ALL_CAPTION,
-				STR_NETWORK_CHAT_COMPANY_CAPTION,
-				STR_NETWORK_CHAT_CLIENT_CAPTION
-			};
+	/**
+	 * Find the next item of the list of things that can be auto-completed.
+	 * @param item The current indexed item to return. This function can, and most
+	 *     likely will, alter item, to skip empty items in the arrays.
+	 * @return Returns the char that matched to the index.
+	 */
+	const char *ChatTabCompletionNextItem(uint *item)
+	{
+		static char chat_tab_temp_buffer[64];
 
-			DrawWindowWidgets(w);
+		/* First, try clients */
+		if (*item < MAX_CLIENT_INFO) {
+			/* Skip inactive clients */
+			while (_network_client_info[*item].client_index == NETWORK_EMPTY_INDEX && *item < MAX_CLIENT_INFO) (*item)++;
+			if (*item < MAX_CLIENT_INFO) return _network_client_info[*item].client_name;
+		}
 
-			assert((uint)WP(w, chatquerystr_d).dtype < lengthof(chat_captions));
-			DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, chat_captions[WP(w, chatquerystr_d).dtype], TC_BLACK);
-			DrawEditBox(w, &WP(w, chatquerystr_d), 2);
-		} break;
+		/* Then, try townnames */
+		/* Not that the following assumes all town indices are adjacent, ie no
+		* towns have been deleted. */
+		if (*item <= (uint)MAX_CLIENT_INFO + GetMaxTownIndex()) {
+			const Town *t;
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 2:
-					ShowOnScreenKeyboard(w, &WP(w, chatquerystr_d), 2, 0, 3);
-					break;
-
-				case 3: /* Send */
-					SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
-				/* FALLTHROUGH */
-				case 0: /* Cancel */ delete w; break;
+			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
+				/* Get the town-name via the string-system */
+				SetDParam(0, t->index);
+				GetString(chat_tab_temp_buffer, STR_TOWN, lastof(chat_tab_temp_buffer));
+				return &chat_tab_temp_buffer[0];
 			}
-			break;
+		}
 
-		case WE_MOUSELOOP:
-			HandleEditBox(w, &WP(w, chatquerystr_d), 2);
-			break;
+		return NULL;
+	}
 
-		case WE_KEYPRESS:
-			if (e->we.keypress.keycode == WKC_TAB) {
-				ChatTabCompletion(w);
-			} else {
-				_chat_tab_completion_active = false;
-				switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 2, e)) {
-					case 1: /* Return */
-						SendChat(WP(w, chatquerystr_d).text.buf, WP(w, chatquerystr_d).dtype, WP(w, chatquerystr_d).dest);
-					/* FALLTHROUGH */
-					case 2: /* Escape */ delete w; break;
+	/**
+	 * Find what text to complete. It scans for a space from the left and marks
+	 *  the word right from that as to complete. It also writes a \0 at the
+	 *  position of the space (if any). If nothing found, buf is returned.
+	 */
+	static char *ChatTabCompletionFindText(char *buf)
+	{
+		char *p = strrchr(buf, ' ');
+		if (p == NULL) return buf;
+
+		*p = '\0';
+		return p + 1;
+	}
+
+	/**
+	 * See if we can auto-complete the current text of the user.
+	 */
+	void ChatTabCompletion()
+	{
+		static char _chat_tab_completion_buf[lengthof(this->edit_str_buf)];
+		Textbuf *tb = &this->text;
+		size_t len, tb_len;
+		uint item;
+		char *tb_buf, *pre_buf;
+		const char *cur_name;
+		bool second_scan = false;
+
+		item = 0;
+
+		/* Copy the buffer so we can modify it without damaging the real data */
+		pre_buf = (_chat_tab_completion_active) ? strdup(_chat_tab_completion_buf) : strdup(tb->buf);
+
+		tb_buf  = ChatTabCompletionFindText(pre_buf);
+		tb_len  = strlen(tb_buf);
+
+		while ((cur_name = ChatTabCompletionNextItem(&item)) != NULL) {
+			item++;
+
+			if (_chat_tab_completion_active) {
+				/* We are pressing TAB again on the same name, is there an other name
+				*  that starts with this? */
+				if (!second_scan) {
+					size_t offset;
+					size_t length;
+
+					/* If we are completing at the begin of the line, skip the ': ' we added */
+					if (tb_buf == pre_buf) {
+						offset = 0;
+						length = tb->length - 2;
+					} else {
+						/* Else, find the place we are completing at */
+						offset = strlen(pre_buf) + 1;
+						length = tb->length - offset;
+					}
+
+					/* Compare if we have a match */
+					if (strlen(cur_name) == length && strncmp(cur_name, tb->buf + offset, length) == 0) second_scan = true;
+
+					continue;
 				}
-			}
-			break;
 
-		case WE_DESTROY:
-			InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
-			ClrBit(_no_scroll, SCROLL_CHAT);
-			break;
+				/* Now any match we make on _chat_tab_completion_buf after this, is perfect */
+			}
+
+			len = strlen(cur_name);
+			if (tb_len < len && strncasecmp(cur_name, tb_buf, tb_len) == 0) {
+				/* Save the data it was before completion */
+				if (!second_scan) snprintf(_chat_tab_completion_buf, lengthof(_chat_tab_completion_buf), "%s", tb->buf);
+				_chat_tab_completion_active = true;
+
+				/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
+				if (pre_buf == tb_buf) {
+					snprintf(tb->buf, lengthof(this->edit_str_buf), "%s: ", cur_name);
+				} else {
+					snprintf(tb->buf, lengthof(this->edit_str_buf), "%s %s", pre_buf, cur_name);
+				}
+
+				/* Update the textbuffer */
+				UpdateTextBufferSize(&this->text);
+
+				this->SetDirty();
+				free(pre_buf);
+				return;
+			}
+		}
+
+		if (second_scan) {
+			/* We walked all posibilities, and the user presses tab again.. revert to original text */
+			strcpy(tb->buf, _chat_tab_completion_buf);
+			_chat_tab_completion_active = false;
+
+			/* Update the textbuffer */
+			UpdateTextBufferSize(&this->text);
+
+			this->SetDirty();
+		}
+		free(pre_buf);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		static const StringID chat_captions[] = {
+			STR_NETWORK_CHAT_ALL_CAPTION,
+			STR_NETWORK_CHAT_COMPANY_CAPTION,
+			STR_NETWORK_CHAT_CLIENT_CAPTION
+		};
+
+		DrawWindowWidgets(this);
+
+		assert((uint)this->dtype < lengthof(chat_captions));
+		DrawStringRightAligned(this->widget[2].left - 2, this->widget[2].top + 1, chat_captions[this->dtype], TC_BLACK);
+		this->DrawEditBox(2);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 2:
+				ShowOnScreenKeyboard(this, 2, 0, 3);
+				break;
+
+			case 3: /* Send */
+				SendChat(this->text.buf, this->dtype, this->dest);
+			/* FALLTHROUGH */
+			case 0: /* Cancel */ delete this; break;
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(2);
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont = true;
+		if (keycode == WKC_TAB) {
+			ChatTabCompletion();
+		} else {
+			_chat_tab_completion_active = false;
+			switch (this->HandleEditBoxKey(2, key, keycode, cont)) {
+				case 1: /* Return */
+					SendChat(this->text.buf, this->dtype, this->dest);
+				/* FALLTHROUGH */
+				case 2: /* Escape */ delete this; break;
+			}
+		}
+		return cont;
+	}
+};
 
 static const Widget _chat_window_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,  0, 13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
@@ -1916,23 +1928,13 @@ static const WindowDesc _chat_window_desc = {
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_chat_window_widgets,
-	ChatWindowWndProc
+	NULL
 };
 
 void ShowNetworkChatQueryWindow(DestType type, int dest)
 {
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
-
-	_edit_str_net_buf[0] = '\0';
-	_chat_tab_completion_active = false;
-
-	Window *w = new Window(&_chat_window_desc);
-
-	w->LowerWidget(2);
-	WP(w, chatquerystr_d).dtype   = type;
-	WP(w, chatquerystr_d).dest    = dest;
-	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_net_buf, lengthof(_edit_str_net_buf), 0);
+	new NetworkChatWindow (&_chat_window_desc, type, dest);
 }
 
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
@@ -1947,61 +1949,75 @@ enum NetworkCompanyPasswordWindowWidgets {
 	NCPWW_OK,                       ///< Safe the password etc.
 };
 
-static void NetworkCompanyPasswordWindowWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			DrawWindowWidgets(w);
-			DrawEditBox(w, &WP(w, chatquerystr_d), 4);
-			break;
+struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
+	NetworkCompanyPasswordWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	{
+		this->afilter = CS_ALPHANUMERAL;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, min(lengthof(_network_default_company_pass), lengthof(this->edit_str_buf)), 0);
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case NCPWW_OK: {
-					if (w->IsWidgetLowered(NCPWW_SAVE_AS_DEFAULT_PASSWORD)) {
-						snprintf(_network_default_company_pass, lengthof(_network_default_company_pass), "%s", _edit_str_net_buf);
-					}
-
-					/* empty password is a '*' because of console argument */
-					if (StrEmpty(_edit_str_net_buf)) snprintf(_edit_str_net_buf, lengthof(_edit_str_net_buf), "*");
-					char *password = _edit_str_net_buf;
-					NetworkChangeCompanyPassword(1, &password);
-				}
-
-				/* FALL THROUGH */
-				case NCPWW_CANCEL:
-					delete w;
-					break;
-
-				case NCPWW_SAVE_AS_DEFAULT_PASSWORD:
-					w->ToggleWidgetLoweredState(NCPWW_SAVE_AS_DEFAULT_PASSWORD);
-					SetWindowDirty(w);
-					break;
-				case NCPWW_PASSWORD:
-					ShowOnScreenKeyboard(w, &WP(w, chatquerystr_d), NCPWW_PASSWORD, 2, 1);
-					break;
-			}
-			break;
-
-		case WE_MOUSELOOP:
-			HandleEditBox(w, &WP(w, chatquerystr_d), 4);
-			break;
-
-		case WE_KEYPRESS:
-			switch (HandleEditBoxKey(w, &WP(w, chatquerystr_d), 4, e)) {
-				case 1: // Return
-					e->event = WE_CLICK;
-					e->we.click.widget = NCPWW_OK;
-					NetworkCompanyPasswordWindowWndProc(w, e);
-					break;
-
-				case 2: // Escape
-					delete w;
-					break;
-			}
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	void OnOk()
+	{
+		if (this->IsWidgetLowered(NCPWW_SAVE_AS_DEFAULT_PASSWORD)) {
+			snprintf(_network_default_company_pass, lengthof(_network_default_company_pass), "%s", this->edit_str_buf);
+		}
+
+		/* empty password is a '*' because of console argument */
+		if (StrEmpty(this->edit_str_buf)) snprintf(this->edit_str_buf, lengthof(this->edit_str_buf), "*");
+		char *password = this->edit_str_buf;
+		NetworkChangeCompanyPassword(1, &password);
+	}
+
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
+		this->DrawEditBox(4);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case NCPWW_OK:
+				this->OnOk();
+
+			/* FALL THROUGH */
+			case NCPWW_CANCEL:
+				delete this;
+				break;
+
+			case NCPWW_SAVE_AS_DEFAULT_PASSWORD:
+				this->ToggleWidgetLoweredState(NCPWW_SAVE_AS_DEFAULT_PASSWORD);
+				this->SetDirty();
+				break;
+
+			case NCPWW_PASSWORD:
+				ShowOnScreenKeyboard(this, NCPWW_PASSWORD, 2, 1);
+				break;
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(4);
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont;
+		switch (this->HandleEditBoxKey(4, key, keycode, cont)) {
+			case 1: // Return
+				this->OnOk();
+				/* FALL THROUGH */
+
+			case 2: // Escape
+				delete this;
+				break;
+		}
+		return cont;
+	}
+};
 
 static const Widget _ncp_window_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
@@ -2020,17 +2036,14 @@ static const WindowDesc _ncp_window_desc = {
 	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_ncp_window_widgets,
-	NetworkCompanyPasswordWindowWndProc
+	NULL
 };
 
 void ShowNetworkCompanyPasswordWindow()
 {
 	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
-	_edit_str_net_buf[0] = '\0';
-	Window *w = new Window(&_ncp_window_desc);
-	WP(w, chatquerystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, chatquerystr_d).text, _edit_str_net_buf, min(lengthof(_network_default_company_pass), lengthof(_edit_str_net_buf)), 0);
+	new NetworkCompanyPasswordWindow(&_ncp_window_desc);
 }
 
 #endif /* ENABLE_NETWORK */

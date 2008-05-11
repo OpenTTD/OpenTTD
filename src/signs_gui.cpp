@@ -19,6 +19,7 @@
 #include "map_func.h"
 #include "gfx_func.h"
 #include "viewport_func.h"
+#include "querystring_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -143,11 +144,11 @@ void ShowSignList()
 	}
 }
 
-/** Edit sign window stuff */
-struct editsign_d : querystr_d {
-	SignID cur_sign;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(editsign_d));
+static void RenameSign(SignID index, const char *text)
+{
+	_cmd_text = text;
+	DoCommandP(0, index, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
+}
 
 enum QueryEditSignWidgets {
 	QUERY_EDIT_SIGN_WIDGET_TEXT = 3,
@@ -158,120 +159,122 @@ enum QueryEditSignWidgets {
 	QUERY_EDIT_SIGN_WIDGET_NEXT,
 };
 
-static void UpdateSignEditWindow(Window *w, const Sign *si)
-{
-	/* Display an empty string when the sign hasnt been edited yet */
-	if (si->name != NULL) {
-		SetDParam(0, si->index);
-		GetString(_edit_str_buf, STR_SIGN_NAME, lastof(_edit_str_buf));
-	} else {
-		GetString(_edit_str_buf, STR_EMPTY, lastof(_edit_str_buf));
+struct SignWindow : QueryStringBaseWindow {
+	SignID cur_sign;
+
+	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(desc)
+	{
+		SetBit(_no_scroll, SCROLL_EDIT);
+		this->caption = STR_280B_EDIT_SIGN_TEXT;
+		this->afilter = CS_ALPHANUMERAL;
+		this->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+
+		UpdateSignEditWindow(si);
 	}
-	_edit_str_buf[lengthof(_edit_str_buf) - 1] = '\0';
 
-	WP(w, editsign_d).cur_sign = si->index;
-	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, 31, 255); // Allow 31 characters (including \0)
-
-	w->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
-}
-
-static void RenameSign(SignID index, const char *text)
-{
-	_cmd_text = text;
-	DoCommandP(0, index, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
-}
-
-static void QuerySignEditWndProc(Window *w, WindowEvent *e)
-{
-	editsign_d *qs = &WP(w, editsign_d);
-	Sign       *si;
-	uint       sign_index = 0;
-
-	switch (e->event) {
-		case WE_CREATE:
-			SetBit(_no_scroll, SCROLL_EDIT);
-			break;
-
-		case WE_PAINT:
-			SetDParam(0, qs->caption);
-			DrawWindowWidgets(w);
-			DrawEditBox(w, qs, QUERY_EDIT_SIGN_WIDGET_TEXT);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case QUERY_EDIT_SIGN_WIDGET_PREVIOUS:
-					if (_sign_sort_dirty) GlobalSortSignList();
-					sign_index = _sign_sort[_num_sign_sort - 1]->index;
-					for (uint i = 1; i < _num_sign_sort; i++) {
-						if (qs->cur_sign == _sign_sort[i]->index) {
-							sign_index = _sign_sort[i - 1]->index;
-							break;
-						}
-					}
-					si = GetSign(sign_index);
-
-					/* Scroll to sign and reopen window */
-					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-					UpdateSignEditWindow(w, si);
-					break;
-
-				case QUERY_EDIT_SIGN_WIDGET_NEXT:
-					if (_sign_sort_dirty) GlobalSortSignList();
-					sign_index = _sign_sort[0]->index;
-					for (uint i = 0; i < _num_sign_sort - 1; i++) {
-						if (qs->cur_sign == _sign_sort[i]->index) {
-							sign_index = _sign_sort[i + 1]->index;
-							break;
-						}
-					}
-					si = GetSign(sign_index);
-
-					/* Scroll to sign and reopen window */
-					ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-					UpdateSignEditWindow(w, si);
-					break;
-
-				case QUERY_EDIT_SIGN_WIDGET_TEXT:
-					ShowOnScreenKeyboard(w, qs, e->we.click.widget, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
-					break;
-
-				case QUERY_EDIT_SIGN_WIDGET_DELETE:
-					/* Only need to set the buffer to null, the rest is handled as the OK button */
-					DeleteTextBufferAll(&qs->text);
-					/* FALL THROUGH */
-
-				case QUERY_EDIT_SIGN_WIDGET_OK:
-					RenameSign(qs->cur_sign, qs->text.buf);
-					/* FALL THROUGH */
-
-				case QUERY_EDIT_SIGN_WIDGET_CANCEL:
-					delete w;
-					break;
-			}
-			break;
-
-		case WE_KEYPRESS:
-			switch (HandleEditBoxKey(w, qs, QUERY_EDIT_SIGN_WIDGET_TEXT, e)) {
-				case 1: // Enter pressed, confirms change
-					RenameSign(qs->cur_sign, qs->text.buf);
-					/* FALL THROUGH */
-
-				case 2: // ESC pressed, closes window, abandons changes
-					delete w;
-					break;
-			}
-			break;
-
-		case WE_MOUSELOOP:
-			HandleEditBox(w, qs, QUERY_EDIT_SIGN_WIDGET_TEXT);
-			break;
-
-		case WE_DESTROY:
-			ClrBit(_no_scroll, SCROLL_EDIT);
-			break;
+	~SignWindow()
+	{
+		ClrBit(_no_scroll, SCROLL_EDIT);
 	}
-}
+
+	void UpdateSignEditWindow(const Sign *si)
+	{
+		/* Display an empty string when the sign hasnt been edited yet */
+		if (si->name != NULL) {
+			SetDParam(0, si->index);
+			GetString(this->edit_str_buf, STR_SIGN_NAME, lastof(this->edit_str_buf));
+		} else {
+			GetString(this->edit_str_buf, STR_EMPTY, lastof(this->edit_str_buf));
+		}
+		this->edit_str_buf[lengthof(this->edit_str_buf) - 1] = '\0';
+
+		this->cur_sign = si->index;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, 31, 255); // Allow 31 characters (including \0)
+
+		this->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
+	}
+
+	virtual void OnPaint()
+	{
+		SetDParam(0, this->caption);
+		DrawWindowWidgets(this);
+		this->DrawEditBox(QUERY_EDIT_SIGN_WIDGET_TEXT);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case QUERY_EDIT_SIGN_WIDGET_PREVIOUS: {
+				if (_sign_sort_dirty) GlobalSortSignList();
+				SignID sign_index = _sign_sort[_num_sign_sort - 1]->index;
+				for (uint i = 1; i < _num_sign_sort; i++) {
+					if (this->cur_sign == _sign_sort[i]->index) {
+						sign_index = _sign_sort[i - 1]->index;
+						break;
+					}
+				}
+				const Sign *si = GetSign(sign_index);
+
+				/* Scroll to sign and reopen window */
+				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
+				UpdateSignEditWindow(si);
+			} break;
+
+			case QUERY_EDIT_SIGN_WIDGET_NEXT: {
+				if (_sign_sort_dirty) GlobalSortSignList();
+				SignID sign_index = _sign_sort[0]->index;
+				for (uint i = 0; i < _num_sign_sort - 1; i++) {
+					if (this->cur_sign == _sign_sort[i]->index) {
+						sign_index = _sign_sort[i + 1]->index;
+						break;
+					}
+				}
+				const Sign *si = GetSign(sign_index);
+
+				/* Scroll to sign and reopen window */
+				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
+				UpdateSignEditWindow(si);
+			} break;
+
+			case QUERY_EDIT_SIGN_WIDGET_TEXT:
+				ShowOnScreenKeyboard(this, widget, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
+				break;
+
+			case QUERY_EDIT_SIGN_WIDGET_DELETE:
+				/* Only need to set the buffer to null, the rest is handled as the OK button */
+				DeleteTextBufferAll(&this->text);
+				/* FALL THROUGH */
+
+			case QUERY_EDIT_SIGN_WIDGET_OK:
+				RenameSign(this->cur_sign, this->text.buf);
+				/* FALL THROUGH */
+
+			case QUERY_EDIT_SIGN_WIDGET_CANCEL:
+				delete this;
+				break;
+		}
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		bool cont = true;
+		switch (this->HandleEditBoxKey(QUERY_EDIT_SIGN_WIDGET_TEXT, key, keycode, cont)) {
+			case 1: // Enter pressed, confirms change
+				RenameSign(this->cur_sign, this->text.buf);
+				/* FALL THROUGH */
+
+			case 2: // ESC pressed, closes window, abandons changes
+				delete this;
+				break;
+		}
+		return cont;
+	}
+
+	virtual void OnMouseLoop()
+	{
+		this->HandleEditBox(QUERY_EDIT_SIGN_WIDGET_TEXT);
+	}
+};
 
 static const Widget _query_sign_edit_widgets[] = {
 { WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,          STR_018B_CLOSE_WINDOW},
@@ -292,7 +295,7 @@ static const WindowDesc _query_sign_edit_desc = {
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_sign_edit_widgets,
-	QuerySignEditWndProc
+	NULL
 };
 
 void ShowRenameSignWindow(const Sign *si)
@@ -301,11 +304,5 @@ void ShowRenameSignWindow(const Sign *si)
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	Window *w = new Window(&_query_sign_edit_desc);
-
-	WP(w, editsign_d).caption = STR_280B_EDIT_SIGN_TEXT;
-	WP(w, editsign_d).afilter = CS_ALPHANUMERAL;
-	w->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
-
-	UpdateSignEditWindow(w, si);
+	new SignWindow(&_query_sign_edit_desc, si);
 }

@@ -18,21 +18,6 @@ struct Textbuf {
 	uint16 caretxoffs;          ///< the current position of the caret in pixels
 };
 
-struct querystr_d {
-	StringID caption;
-	Textbuf text;
-	const char *orig;
-	CharSetFilter afilter;
-	bool handled;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
-
-extern char _edit_str_buf[64];
-extern char _orig_str_buf[lengthof(_edit_str_buf)];
-
-void DrawEditBox(Window *w, querystr_d *string, int wid);
-void HandleEditBox(Window *w, querystr_d *string, int wid);
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we);
 bool HandleCaret(Textbuf *tb);
 
 void DeleteTextBufferAll(Textbuf *tb);
@@ -55,7 +40,5 @@ static const uint OSK_KEYBOARD_ENTRIES = 50;
  * Furthermore the string needs to be '\0'-terminated.
  */
 extern char _keyboard_opt[2][OSK_KEYBOARD_ENTRIES * 4 + 1];
-
-void ShowOnScreenKeyboard(Window *parent, querystr_d *q, int button, int cancel, int ok);
 
 #endif /* TEXTBUF_GUI_H */
