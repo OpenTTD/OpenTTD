@@ -1103,88 +1103,129 @@ static const Widget _extra_view_port_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
+class ExtraViewportWindow : public Window
 {
-	switch (e->event) {
-	case WE_CREATE: // Disable zoom in button
+	enum ExtraViewportWindowWidgets {
+		EVW_CLOSE,
+		EVW_CAPTION,
+		EVW_STICKY,
+		EVW_BACKGROUND,
+		EVW_VIEWPORT,
+		EVW_ZOOMIN,
+		EVW_ZOOMOUT,
+		EVW_MAIN_TO_VIEW,
+		EVW_VIEW_TO_MAIN,
+		EVW_SPACER1,
+		EVW_SPACER2,
+		EVW_RESIZE,
+	};
+
+public:
+	ExtraViewportWindow(const WindowDesc *desc, void *data, int window_number) : Window(desc, data, window_number)
+	{
 		/* New viewport start at (zero,zero) */
-		InitializeWindowViewport(w, 3, 17, w->widget[4].right - w->widget[4].left - 1, w->widget[4].bottom - w->widget[4].top - 1, 0, ZOOM_LVL_VIEWPORT);
+		InitializeWindowViewport(this, 3, 17, this->widget[EVW_VIEWPORT].right - this->widget[EVW_VIEWPORT].left - 1, this->widget[EVW_VIEWPORT].bottom - this->widget[EVW_VIEWPORT].top - 1, 0, ZOOM_LVL_VIEWPORT);
 
-		w->DisableWidget(5);
-		break;
+		this->DisableWidget(EVW_ZOOMIN);
+		this->FindWindowPlacementAndResize(desc);
 
-	case WE_PAINT:
-		/* set the number in the title bar */
-		SetDParam(0, w->window_number + 1);
+		Point pt;
+		TileIndex tile = *(TileIndex*)data;
+		if (tile == INVALID_TILE) {
+			/* the main window with the main view */
+			const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
-		DrawWindowWidgets(w);
-		DrawWindowViewport(w);
-		break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case 5: DoZoomInOutWindow(ZOOM_IN,  w); break;
-			case 6: DoZoomInOutWindow(ZOOM_OUT, w); break;
-
-		case 7: { // location button (move main view to same spot as this view) 'Paste Location'
-			Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-			int x = w->viewport->scrollpos_x; // Where is the main looking at
-			int y = w->viewport->scrollpos_y;
-
-			/* set this view to same location. Based on the center, adjusting for zoom */
-			w2->viewport->dest_scrollpos_x =  x - (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
-			w2->viewport->dest_scrollpos_y =  y - (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
-		} break;
-
-		case 8: { // inverse location button (move this view to same spot as main view) 'Copy Location'
-			const Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-			int x = w2->viewport->scrollpos_x;
-			int y = w2->viewport->scrollpos_y;
-
-			w->viewport->dest_scrollpos_x =  x + (w2->viewport->virtual_width -  w->viewport->virtual_width) / 2;
-			w->viewport->dest_scrollpos_y =  y + (w2->viewport->virtual_height - w->viewport->virtual_height) / 2;
-		} break;
+			/* center on same place as main window (zoom is maximum, no adjustment needed) */
+			pt.x = w->viewport->scrollpos_x + w->viewport->virtual_height / 2;
+			pt.y = w->viewport->scrollpos_y + w->viewport->virtual_height / 2;
+		} else {
+			pt = RemapCoords(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, TileHeight(tile));
 		}
-		break;
 
-	case WE_RESIZE:
-		w->viewport->width          += e->we.sizing.diff.x;
-		w->viewport->height         += e->we.sizing.diff.y;
-		w->viewport->virtual_width  += e->we.sizing.diff.x;
-		w->viewport->virtual_height += e->we.sizing.diff.y;
-		break;
+		this->viewport->scrollpos_x = pt.x - ((this->widget[EVW_VIEWPORT].right - this->widget[EVW_VIEWPORT].left) - 1) / 2;
+		this->viewport->scrollpos_y = pt.y - ((this->widget[EVW_VIEWPORT].bottom - this->widget[EVW_VIEWPORT].top) - 1) / 2;
+		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
+		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
 
-		case WE_SCROLL: {
-			ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
-
-			if (vp == NULL) {
-				_cursor.fix_at = false;
-				_scrolling_viewport = false;
-			}
-
-			w->viewport->scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
-			w->viewport->scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
-			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
-			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
-		} break;
-
-		case WE_MOUSEWHEEL:
-			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
-			break;
-
-		case WE_INVALIDATE_DATA:
-			/* Only handle zoom message if intended for us (msg ZOOM_IN/ZOOM_OUT) */
-			HandleZoomMessage(w, w->viewport, 5, 6);
-			break;
 	}
-}
+
+	virtual void OnPaint()
+	{
+		/* set the number in the title bar */
+		SetDParam(0, this->window_number + 1);
+
+		DrawWindowWidgets(this);
+		DrawWindowViewport(this);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case EVW_ZOOMIN: DoZoomInOutWindow(ZOOM_IN,  this); break;
+			case EVW_ZOOMOUT: DoZoomInOutWindow(ZOOM_OUT, this); break;
+
+			case EVW_MAIN_TO_VIEW: { // location button (move main view to same spot as this view) 'Paste Location'
+				Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				int x = this->viewport->scrollpos_x; // Where is the main looking at
+				int y = this->viewport->scrollpos_y;
+
+				/* set this view to same location. Based on the center, adjusting for zoom */
+				w->viewport->dest_scrollpos_x =  x - (w->viewport->virtual_width -  this->viewport->virtual_width) / 2;
+				w->viewport->dest_scrollpos_y =  y - (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
+			} break;
+
+			case EVW_VIEW_TO_MAIN: { // inverse location button (move this view to same spot as main view) 'Copy Location'
+				const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+				int x = w->viewport->scrollpos_x;
+				int y = w->viewport->scrollpos_y;
+
+				this->viewport->dest_scrollpos_x =  x + (w->viewport->virtual_width -  this->viewport->virtual_width) / 2;
+				this->viewport->dest_scrollpos_y =  y + (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
+			} break;
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->viewport->width          += delta.x;
+		this->viewport->height         += delta.y;
+		this->viewport->virtual_width  += delta.x;
+		this->viewport->virtual_height += delta.y;
+	}
+
+	virtual void OnScroll(Point delta)
+	{
+		ViewPort *vp = IsPtInWindowViewport(this, _cursor.pos.x, _cursor.pos.y);
+
+		if (vp == NULL) {
+			_cursor.fix_at = false;
+			_scrolling_viewport = false;
+		}
+
+		this->viewport->scrollpos_x += ScaleByZoom(delta.x, vp->zoom);
+		this->viewport->scrollpos_y += ScaleByZoom(delta.y, vp->zoom);
+		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
+		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+	}
+
+	virtual void OnMouseWheel(int wheel)
+	{
+		ZoomInOrOutToCursorWindow(wheel < 0, this);
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		/* Only handle zoom message if intended for us (msg ZOOM_IN/ZOOM_OUT) */
+		HandleZoomMessage(this, this->viewport, EVW_ZOOMIN, EVW_ZOOMOUT);
+	}
+};
 
 static const WindowDesc _extra_view_port_desc = {
 	WDP_AUTO, WDP_AUTO, 300, 68, 300, 268,
 	WC_EXTRA_VIEW_PORT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_extra_view_port_widgets,
-	ExtraViewPortWndProc
+	NULL
 };
 
 void ShowExtraViewPortWindow(TileIndex tile)
@@ -1194,26 +1235,7 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	/* find next free window number for extra viewport */
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
-	Window *w = AllocateWindowDescFront<Window>(&_extra_view_port_desc, i);
-	if (w != NULL) {
-		Point pt;
-
-		if (tile == INVALID_TILE) {
-			/* the main window with the main view */
-			const Window *v = FindWindowById(WC_MAIN_WINDOW, 0);
-
-			/* center on same place as main window (zoom is maximum, no adjustment needed) */
-			pt.x = v->viewport->scrollpos_x + v->viewport->virtual_height / 2;
-			pt.y = v->viewport->scrollpos_y + v->viewport->virtual_height / 2;
-		} else {
-			pt = RemapCoords(TileX(tile) * TILE_SIZE + TILE_SIZE / 2, TileY(tile) * TILE_SIZE + TILE_SIZE / 2, TileHeight(tile));
-		}
-
-		w->viewport->scrollpos_x = pt.x - ((w->widget[4].right - w->widget[4].left) - 1) / 2;
-		w->viewport->scrollpos_y = pt.y - ((w->widget[4].bottom - w->widget[4].top) - 1) / 2;
-		w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
-		w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
-	}
+	AllocateWindowDescFront<ExtraViewportWindow>(&_extra_view_port_desc, i, &tile);
 }
 
 bool ScrollMainWindowTo(int x, int y, bool instant)
