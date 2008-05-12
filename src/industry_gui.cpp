@@ -103,14 +103,60 @@ class BuildIndustryWindow : public Window {
 	StringID text[NUM_INDUSTRYTYPES + 1];       ///< Text coming from CBM_IND_FUND_MORE_TEXT (if ever)
 	bool enabled[NUM_INDUSTRYTYPES + 1];        ///< availability state, coming from CBID_INDUSTRY_AVAILABLE (if ever)
 
-public:
-	BuildIndustryWindow() : Window(&_build_industry_desc)
+	void SetupArrays()
 	{
 		IndustryType ind;
 		const IndustrySpec *indsp;
 
+		this->count = 0;
+
+		for (uint i = 0; i < lengthof(this->index); i++) {
+			this->index[i]   = INVALID_INDUSTRYTYPE;
+			this->text[i]    = STR_NULL;
+			this->enabled[i] = false;
+		}
+
+		if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
+			this->index[this->count] = INVALID_INDUSTRYTYPE;
+			this->count++;
+			this->timer_enabled = false;
+		}
+		/* Fill the arrays with industries.
+		 * The tests performed after the enabled allow to load the industries
+		 * In the same way they are inserted by grf (if any)
+		 */
+		for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
+			indsp = GetIndustrySpec(ind);
+			if (indsp->enabled){
+				/* Rule is that editor mode loads all industries.
+				 * In game mode, all non raw industries are loaded too
+				 * and raw ones are loaded only when setting allows it */
+				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) {
+					/* Unselect if the industry is no longer in the list */
+					if (this->selected_type == ind) this->selected_index = -1;
+					continue;
+				}
+				this->index[this->count] = ind;
+				this->enabled[this->count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
+				/* Keep the selection to the correct line */
+				if (this->selected_type == ind) this->selected_index = this->count;
+				this->count++;
+			}
+		}
+
+		/* first indutry type is selected if the current selection is invalid.
+		 * I'll be damned if there are none available ;) */
+		if (this->selected_index == -1) {
+			this->selected_index = 0;
+			this->selected_type = this->index[0];
+		}
+	}
+
+public:
+	BuildIndustryWindow() : Window(&_build_industry_desc)
+	{
 		/* Shorten the window to the equivalant of the additionnal purchase
-		 * info coming from the callback.  SO it will only be available to tis full
+		 * info coming from the callback.  SO it will only be available to its full
 		 * height when newindistries are loaded */
 		if (!_loaded_newgrf_features.has_newindustries) {
 			this->widget[DPIW_INFOPANEL].bottom -= 44;
@@ -123,45 +169,15 @@ public:
 
 		this->timer_enabled = _loaded_newgrf_features.has_newindustries;
 
-		/* Initialize structures */
-		this->count = 0;
-
-		for (uint i = 0; i < lengthof(this->index); i++) {
-			this->index[i]   = 0xFF;
-			this->text[i]    = STR_NULL;
-			this->enabled[i] = false;
-		}
-
 		this->vscroll.cap = 8; // rows in grid, same in scroller
 		this->resize.step_height = 13;
 
-		if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
-			this->index[this->count] = INVALID_INDUSTRYTYPE;
-			this->count++;
-			this->timer_enabled = false;
-		}
+		this->selected_index = -1;
+		this->selected_type = INVALID_INDUSTRYTYPE;
 
-		/* Fill the _fund_gui structure with industries.
-		 * The tests performed after the enabled allow to load the industries
-		 * In the same way they are inserted by grf (if any)
-		 */
-		for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
-			indsp = GetIndustrySpec(ind);
-			if (indsp->enabled){
-				/* Rule is that editor mode loads all industries.
-				 * In game mode, all non raw industries are loaded too
-				 * and raw ones are loaded only when setting allows it */
-				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) continue;
-				this->index[this->count] = ind;
-				this->enabled[this->count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
-				this->count++;
-			}
-		}
+		/* Initialize arrays */
+		this->SetupArrays();
 
-		/* first indutry type is selected.
-		 * I'll be damned if there are none available ;) */
-		this->selected_index = 0;
-		this->selected_type = this->index[0];
 		this->callback_timer = DAY_TICKS;
 
 		this->FindWindowPlacementAndResize(&_build_industry_desc);
@@ -391,6 +407,12 @@ public:
 	virtual void OnPlaceObjectAbort()
 	{
 		this->RaiseButtons();
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		this->SetupArrays();
+		this->SetDirty();
 	}
 };
 
