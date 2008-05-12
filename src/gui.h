@@ -52,7 +52,6 @@ void ShowHeightmapLoad();
 void PlaceLandBlockInfo();
 void ShowAboutWindow();
 void ShowBuildTreesToolbar();
-void ShowBuildTreesScenToolbar();
 void ShowTownDirectory();
 void ShowIndustryDirectory();
 void ShowSubsidiesList();

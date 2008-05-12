@@ -621,7 +621,7 @@ static void ToolbarScenPlantTrees(Window *w)
 {
 	w->HandleButtonClick(15);
 	SndPlayFx(SND_15_BEEP);
-	ShowBuildTreesScenToolbar();
+	ShowBuildTreesToolbar();
 }
 
 static void ToolbarScenPlaceSign(Window *w)
