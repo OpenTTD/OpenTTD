@@ -35,13 +35,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-/* player face selection window */
-struct facesel_d {
-	PlayerFace face; // player face bits
-	bool advanced;   // advance player face selection window
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
-
 struct highscore_d {
 	uint32 background_img;
 	int8 rank;
@@ -608,62 +601,6 @@ void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
 	}
 }
 
-/**
- * Names of the widgets. Keep them in the same order as in the widget array.
- * Do not change the order of the widgets from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R,
- * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
- */
-enum PlayerFaceWindowWidgets {
-	PFW_WIDGET_CLOSEBOX = 0,
-	PFW_WIDGET_CAPTION,
-	PFW_WIDGET_TOGGLE_LARGE_SMALL,
-	PFW_WIDGET_SELECT_FACE,
-	PFW_WIDGET_CANCEL,
-	PFW_WIDGET_ACCEPT,
-	PFW_WIDGET_MALE,
-	PFW_WIDGET_FEMALE,
-	PFW_WIDGET_RANDOM_NEW_FACE,
-	PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
-	/* from here is the advanced player face selection window */
-	PFW_WIDGET_LOAD,
-	PFW_WIDGET_FACECODE,
-	PFW_WIDGET_SAVE,
-	PFW_WIDGET_ETHNICITY_EUR,
-	PFW_WIDGET_ETHNICITY_AFR,
-	PFW_WIDGET_HAS_MOUSTACHE_EARRING,
-	PFW_WIDGET_HAS_GLASSES,
-	PFW_WIDGET_EYECOLOUR_L,
-	PFW_WIDGET_EYECOLOUR,
-	PFW_WIDGET_EYECOLOUR_R,
-	PFW_WIDGET_CHIN_L,
-	PFW_WIDGET_CHIN,
-	PFW_WIDGET_CHIN_R,
-	PFW_WIDGET_EYEBROWS_L,
-	PFW_WIDGET_EYEBROWS,
-	PFW_WIDGET_EYEBROWS_R,
-	PFW_WIDGET_LIPS_MOUSTACHE_L,
-	PFW_WIDGET_LIPS_MOUSTACHE,
-	PFW_WIDGET_LIPS_MOUSTACHE_R,
-	PFW_WIDGET_NOSE_L,
-	PFW_WIDGET_NOSE,
-	PFW_WIDGET_NOSE_R,
-	PFW_WIDGET_HAIR_L,
-	PFW_WIDGET_HAIR,
-	PFW_WIDGET_HAIR_R,
-	PFW_WIDGET_JACKET_L,
-	PFW_WIDGET_JACKET,
-	PFW_WIDGET_JACKET_R,
-	PFW_WIDGET_COLLAR_L,
-	PFW_WIDGET_COLLAR,
-	PFW_WIDGET_COLLAR_R,
-	PFW_WIDGET_TIE_EARRING_L,
-	PFW_WIDGET_TIE_EARRING,
-	PFW_WIDGET_TIE_EARRING_R,
-	PFW_WIDGET_GLASSES_L,
-	PFW_WIDGET_GLASSES,
-	PFW_WIDGET_GLASSES_R,
-};
-
 /** Widget description for the normal/simple player face selection dialog */
 static const Widget _select_player_face_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // PFW_WIDGET_CLOSEBOX
@@ -731,267 +668,350 @@ static const Widget _select_player_face_adv_widgets[] = {
 {   WIDGETS_END},
 };
 
-/**
- * Draw dynamic a label to the left of the button and a value in the button
- *
- * @param w              Window on which the widget is located
- * @param widget_index   index of this widget in the window
- * @param str            the label which will be draw
- * @param val            the value which will be draw
- * @param is_bool_widget is it a bool button
- */
-void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8 val, bool is_bool_widget)
+class SelectPlayerFaceWindow : public Window
 {
-	/* Write the label in gold (0x2) to the left of the button. */
-	DrawStringRightAligned(w->widget[widget_index].left - (is_bool_widget ? 5 : 14), w->widget[widget_index].top + 1, str, TC_GOLD);
+	PlayerFace face; // player face bits
+	bool advanced;   // advance player face selection window
 
-	if (!w->IsWidgetDisabled(widget_index)) {
-		if (is_bool_widget) {
-			/* if it a bool button write yes or no */
-			str = (val != 0) ? STR_FACE_YES : STR_FACE_NO;
-		} else {
-			/* else write the value + 1 */
-			SetDParam(0, val + 1);
-			str = STR_JUST_INT;
+	GenderEthnicity ge;
+	bool is_female;
+	bool is_moust_male;
+
+	/**
+	 * Names of the widgets. Keep them in the same order as in the widget array.
+	 * Do not change the order of the widgets from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R,
+	 * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
+	 */
+	enum PlayerFaceWindowWidgets {
+		PFW_WIDGET_CLOSEBOX = 0,
+		PFW_WIDGET_CAPTION,
+		PFW_WIDGET_TOGGLE_LARGE_SMALL,
+		PFW_WIDGET_SELECT_FACE,
+		PFW_WIDGET_CANCEL,
+		PFW_WIDGET_ACCEPT,
+		PFW_WIDGET_MALE,
+		PFW_WIDGET_FEMALE,
+		PFW_WIDGET_RANDOM_NEW_FACE,
+		PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
+		/* from here is the advanced player face selection window */
+		PFW_WIDGET_LOAD,
+		PFW_WIDGET_FACECODE,
+		PFW_WIDGET_SAVE,
+		PFW_WIDGET_ETHNICITY_EUR,
+		PFW_WIDGET_ETHNICITY_AFR,
+		PFW_WIDGET_HAS_MOUSTACHE_EARRING,
+		PFW_WIDGET_HAS_GLASSES,
+		PFW_WIDGET_EYECOLOUR_L,
+		PFW_WIDGET_EYECOLOUR,
+		PFW_WIDGET_EYECOLOUR_R,
+		PFW_WIDGET_CHIN_L,
+		PFW_WIDGET_CHIN,
+		PFW_WIDGET_CHIN_R,
+		PFW_WIDGET_EYEBROWS_L,
+		PFW_WIDGET_EYEBROWS,
+		PFW_WIDGET_EYEBROWS_R,
+		PFW_WIDGET_LIPS_MOUSTACHE_L,
+		PFW_WIDGET_LIPS_MOUSTACHE,
+		PFW_WIDGET_LIPS_MOUSTACHE_R,
+		PFW_WIDGET_NOSE_L,
+		PFW_WIDGET_NOSE,
+		PFW_WIDGET_NOSE_R,
+		PFW_WIDGET_HAIR_L,
+		PFW_WIDGET_HAIR,
+		PFW_WIDGET_HAIR_R,
+		PFW_WIDGET_JACKET_L,
+		PFW_WIDGET_JACKET,
+		PFW_WIDGET_JACKET_R,
+		PFW_WIDGET_COLLAR_L,
+		PFW_WIDGET_COLLAR,
+		PFW_WIDGET_COLLAR_R,
+		PFW_WIDGET_TIE_EARRING_L,
+		PFW_WIDGET_TIE_EARRING,
+		PFW_WIDGET_TIE_EARRING_R,
+		PFW_WIDGET_GLASSES_L,
+		PFW_WIDGET_GLASSES,
+		PFW_WIDGET_GLASSES_R,
+	};
+	/**
+	 * Draw dynamic a label to the left of the button and a value in the button
+	 *
+	 * @param widget_index   index of this widget in the window
+	 * @param str            the label which will be draw
+	 * @param val            the value which will be draw
+	 * @param is_bool_widget is it a bool button
+	 */
+	void DrawFaceStringLabel(byte widget_index, StringID str, uint8 val, bool is_bool_widget)
+	{
+		/* Write the label in gold (0x2) to the left of the button. */
+		DrawStringRightAligned(this->widget[widget_index].left - (is_bool_widget ? 5 : 14), this->widget[widget_index].top + 1, str, TC_GOLD);
+
+		if (!this->IsWidgetDisabled(widget_index)) {
+			if (is_bool_widget) {
+				/* if it a bool button write yes or no */
+				str = (val != 0) ? STR_FACE_YES : STR_FACE_NO;
+			} else {
+				/* else write the value + 1 */
+				SetDParam(0, val + 1);
+				str = STR_JUST_INT;
+			}
+
+			/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
+			DrawStringCentered(this->widget[widget_index].left + (this->widget[widget_index].right - this->widget[widget_index].left) / 2 +
+				this->IsWidgetLowered(widget_index), this->widget[widget_index].top + 1 + this->IsWidgetLowered(widget_index), str, TC_WHITE);
+		}
+	}
+
+	void UpdateData()
+	{
+		this->ge = (GenderEthnicity)GB(this->face, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // get the gender and ethnicity
+		this->is_female = HasBit(this->ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
+		this->is_moust_male = !is_female && GetPlayerFaceBits(this->face, PFV_HAS_MOUSTACHE, this->ge) != 0; // is a male face with moustache
+	}
+
+public:
+	SelectPlayerFaceWindow(const WindowDesc *desc, void *data, WindowNumber number) : Window(desc, data, number)
+	{
+		this->FindWindowPlacementAndResize(desc);
+		this->caption_color = this->window_number;
+		this->face = GetPlayer((PlayerID)this->window_number)->face;
+		this->advanced = *(bool*)data;
+
+		this->UpdateData();
+
+		/* Check if repositioning from default is required */
+		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
+			this->top = top;
+			this->left = left;
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		/* lower the non-selected gender button */
+		this->SetWidgetLoweredState(PFW_WIDGET_MALE,  !this->is_female);
+		this->SetWidgetLoweredState(PFW_WIDGET_FEMALE, this->is_female);
+
+		/* advanced player face selection window */
+		if (this->advanced) {
+			/* lower the non-selected ethnicity button */
+			this->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
+			this->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
+
+
+			/* Disable dynamically the widgets which PlayerFaceVariable has less than 2 options
+			* (or in other words you haven't any choice).
+			* If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
+
+			/* Eye colour buttons */
+			this->SetWidgetsDisabledState(_pf_info[PFV_EYE_COLOUR].valid_values[this->ge] < 2,
+				PFW_WIDGET_EYECOLOUR, PFW_WIDGET_EYECOLOUR_L, PFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
+
+			/* Chin buttons */
+			this->SetWidgetsDisabledState(_pf_info[PFV_CHIN].valid_values[this->ge] < 2,
+				PFW_WIDGET_CHIN, PFW_WIDGET_CHIN_L, PFW_WIDGET_CHIN_R, WIDGET_LIST_END);
+
+			/* Eyebrows buttons */
+			this->SetWidgetsDisabledState(_pf_info[PFV_EYEBROWS].valid_values[this->ge] < 2,
+				PFW_WIDGET_EYEBROWS, PFW_WIDGET_EYEBROWS_L, PFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
+
+			/* Lips or (if it a male face with a moustache) moustache buttons */
+			this->SetWidgetsDisabledState(_pf_info[this->is_moust_male ? PFV_MOUSTACHE : PFV_LIPS].valid_values[this->ge] < 2,
+				PFW_WIDGET_LIPS_MOUSTACHE, PFW_WIDGET_LIPS_MOUSTACHE_L, PFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
+
+			/* Nose buttons | male faces with moustache haven't any nose options */
+			this->SetWidgetsDisabledState(_pf_info[PFV_NOSE].valid_values[this->ge] < 2 || this->is_moust_male,
+				PFW_WIDGET_NOSE, PFW_WIDGET_NOSE_L, PFW_WIDGET_NOSE_R, WIDGET_LIST_END);
+
+			/* Hair buttons */
+			this->SetWidgetsDisabledState(_pf_info[PFV_HAIR].valid_values[this->ge] < 2,
+				PFW_WIDGET_HAIR, PFW_WIDGET_HAIR_L, PFW_WIDGET_HAIR_R, WIDGET_LIST_END);
+
+			/* Jacket buttons */
+			this->SetWidgetsDisabledState(_pf_info[PFV_JACKET].valid_values[this->ge] < 2,
+				PFW_WIDGET_JACKET, PFW_WIDGET_JACKET_L, PFW_WIDGET_JACKET_R, WIDGET_LIST_END);
+
+			/* Collar buttons */
+			this->SetWidgetsDisabledState(_pf_info[PFV_COLLAR].valid_values[this->ge] < 2,
+				PFW_WIDGET_COLLAR, PFW_WIDGET_COLLAR_L, PFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
+
+			/* Tie/earring buttons | female faces without earring haven't any earring options */
+			this->SetWidgetsDisabledState(_pf_info[PFV_TIE_EARRING].valid_values[this->ge] < 2 ||
+					(this->is_female && GetPlayerFaceBits(this->face, PFV_HAS_TIE_EARRING, this->ge) == 0),
+				PFW_WIDGET_TIE_EARRING, PFW_WIDGET_TIE_EARRING_L, PFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
+
+			/* Glasses buttons | faces without glasses haven't any glasses options */
+			this->SetWidgetsDisabledState(_pf_info[PFV_GLASSES].valid_values[this->ge] < 2 || GetPlayerFaceBits(this->face, PFV_HAS_GLASSES, this->ge) == 0,
+				PFW_WIDGET_GLASSES, PFW_WIDGET_GLASSES_L, PFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
 		}
 
-		/* Draw the value/bool in white (0xC). If the button clicked adds 1px to x and y text coordinates (IsWindowWidgetLowered()). */
-		DrawStringCentered(w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 +
-			w->IsWidgetLowered(widget_index), w->widget[widget_index].top + 1 + w->IsWidgetLowered(widget_index), str, TC_WHITE);
-	}
-}
+		DrawWindowWidgets(this);
 
-/**
- * Player face selection window event definition
- *
- * @param w window pointer
- * @param e event been triggered
- */
-static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
-{
-	PlayerFace *pf = &WP(w, facesel_d).face; // pointer to the player face bits
-	GenderEthnicity ge = (GenderEthnicity)GB(*pf, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // get the gender and ethnicity
-	bool is_female = HasBit(ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
-	bool is_moust_male = !is_female && GetPlayerFaceBits(*pf, PFV_HAS_MOUSTACHE, ge) != 0; // is a male face with moustache
-
-	switch (e->event) {
-		case WE_PAINT:
-			/* lower the non-selected gender button */
-			w->SetWidgetLoweredState(PFW_WIDGET_MALE,  !is_female);
-			w->SetWidgetLoweredState(PFW_WIDGET_FEMALE, is_female);
-
-			/* advanced player face selection window */
-			if (WP(w, facesel_d).advanced) {
-				/* lower the non-selected ethnicity button */
-				w->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_EUR, !HasBit(ge, ETHNICITY_BLACK));
-				w->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_AFR,  HasBit(ge, ETHNICITY_BLACK));
-
-
-				/* Disable dynamically the widgets which PlayerFaceVariable has less than 2 options
-				* (or in other words you haven't any choice).
-				* If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
-
-				/* Eye colour buttons */
-				w->SetWidgetsDisabledState(_pf_info[PFV_EYE_COLOUR].valid_values[ge] < 2,
-					PFW_WIDGET_EYECOLOUR, PFW_WIDGET_EYECOLOUR_L, PFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
-
-				/* Chin buttons */
-				w->SetWidgetsDisabledState(_pf_info[PFV_CHIN].valid_values[ge] < 2,
-					PFW_WIDGET_CHIN, PFW_WIDGET_CHIN_L, PFW_WIDGET_CHIN_R, WIDGET_LIST_END);
-
-				/* Eyebrows buttons */
-				w->SetWidgetsDisabledState(_pf_info[PFV_EYEBROWS].valid_values[ge] < 2,
-					PFW_WIDGET_EYEBROWS, PFW_WIDGET_EYEBROWS_L, PFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
-
-				/* Lips or (if it a male face with a moustache) moustache buttons */
-				w->SetWidgetsDisabledState(_pf_info[is_moust_male ? PFV_MOUSTACHE : PFV_LIPS].valid_values[ge] < 2,
-					PFW_WIDGET_LIPS_MOUSTACHE, PFW_WIDGET_LIPS_MOUSTACHE_L, PFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
-
-				/* Nose buttons | male faces with moustache haven't any nose options */
-				w->SetWidgetsDisabledState(_pf_info[PFV_NOSE].valid_values[ge] < 2 || is_moust_male,
-					PFW_WIDGET_NOSE, PFW_WIDGET_NOSE_L, PFW_WIDGET_NOSE_R, WIDGET_LIST_END);
-
-				/* Hair buttons */
-				w->SetWidgetsDisabledState(_pf_info[PFV_HAIR].valid_values[ge] < 2,
-					PFW_WIDGET_HAIR, PFW_WIDGET_HAIR_L, PFW_WIDGET_HAIR_R, WIDGET_LIST_END);
-
-				/* Jacket buttons */
-				w->SetWidgetsDisabledState(_pf_info[PFV_JACKET].valid_values[ge] < 2,
-					PFW_WIDGET_JACKET, PFW_WIDGET_JACKET_L, PFW_WIDGET_JACKET_R, WIDGET_LIST_END);
-
-				/* Collar buttons */
-				w->SetWidgetsDisabledState(_pf_info[PFV_COLLAR].valid_values[ge] < 2,
-					PFW_WIDGET_COLLAR, PFW_WIDGET_COLLAR_L, PFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
-
-				/* Tie/earring buttons | female faces without earring haven't any earring options */
-				w->SetWidgetsDisabledState(_pf_info[PFV_TIE_EARRING].valid_values[ge] < 2 ||
-						(is_female && GetPlayerFaceBits(*pf, PFV_HAS_TIE_EARRING, ge) == 0),
-					PFW_WIDGET_TIE_EARRING, PFW_WIDGET_TIE_EARRING_L, PFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
-
-				/* Glasses buttons | faces without glasses haven't any glasses options */
-				w->SetWidgetsDisabledState(_pf_info[PFV_GLASSES].valid_values[ge] < 2 || GetPlayerFaceBits(*pf, PFV_HAS_GLASSES, ge) == 0,
-					PFW_WIDGET_GLASSES, PFW_WIDGET_GLASSES_L, PFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
-			}
-
-			DrawWindowWidgets(w);
-
-			/* Draw dynamic button value and labels for the advanced player face selection window */
-			if (WP(w, facesel_d).advanced) {
-				if (is_female) {
-					/* Only for female faces */
-					DrawFaceStringLabel(w, PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_EARRING,   GetPlayerFaceBits(*pf, PFV_HAS_TIE_EARRING, ge), true );
-					DrawFaceStringLabel(w, PFW_WIDGET_TIE_EARRING,           STR_FACE_EARRING,   GetPlayerFaceBits(*pf, PFV_TIE_EARRING,     ge), false);
-				} else {
-					/* Only for male faces */
-					DrawFaceStringLabel(w, PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_MOUSTACHE, GetPlayerFaceBits(*pf, PFV_HAS_MOUSTACHE,   ge), true );
-					DrawFaceStringLabel(w, PFW_WIDGET_TIE_EARRING,           STR_FACE_TIE,       GetPlayerFaceBits(*pf, PFV_TIE_EARRING,     ge), false);
-				}
-				if (is_moust_male) {
-					/* Only for male faces with moustache */
-					DrawFaceStringLabel(w, PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_MOUSTACHE, GetPlayerFaceBits(*pf, PFV_MOUSTACHE,       ge), false);
-				} else {
-					/* Only for female faces or male faces without moustache */
-					DrawFaceStringLabel(w, PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_LIPS,      GetPlayerFaceBits(*pf, PFV_LIPS,            ge), false);
-				}
-				/* For all faces */
-				DrawFaceStringLabel(w, PFW_WIDGET_HAS_GLASSES,           STR_FACE_GLASSES,     GetPlayerFaceBits(*pf, PFV_HAS_GLASSES,     ge), true );
-				DrawFaceStringLabel(w, PFW_WIDGET_HAIR,                  STR_FACE_HAIR,        GetPlayerFaceBits(*pf, PFV_HAIR,            ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_EYEBROWS,              STR_FACE_EYEBROWS,    GetPlayerFaceBits(*pf, PFV_EYEBROWS,        ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_EYECOLOUR,             STR_FACE_EYECOLOUR,   GetPlayerFaceBits(*pf, PFV_EYE_COLOUR,      ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_GLASSES,               STR_FACE_GLASSES,     GetPlayerFaceBits(*pf, PFV_GLASSES,         ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_NOSE,                  STR_FACE_NOSE,        GetPlayerFaceBits(*pf, PFV_NOSE,            ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_CHIN,                  STR_FACE_CHIN,        GetPlayerFaceBits(*pf, PFV_CHIN,            ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_JACKET,                STR_FACE_JACKET,      GetPlayerFaceBits(*pf, PFV_JACKET,          ge), false);
-				DrawFaceStringLabel(w, PFW_WIDGET_COLLAR,                STR_FACE_COLLAR,      GetPlayerFaceBits(*pf, PFV_COLLAR,          ge), false);
-			}
-
-			/* Draw the player face picture */
-			DrawPlayerFace(*pf, GetPlayer((PlayerID)w->window_number)->player_color, 2, 16);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				/* Toggle size, advanced/simple face selection */
-				case PFW_WIDGET_TOGGLE_LARGE_SMALL:
-				case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
-					int oldtop = w->top;     ///< current top position of the window before closing it
-					int oldleft = w->left;   ///< current top position of the window before closing it
-
-					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
-					delete w;
-					/* Open up the (toggled size) Face selection window at the same position as the previous */
-					DoSelectPlayerFace((PlayerID)w->window_number, !WP(w, facesel_d).advanced, oldtop, oldleft);
-				} break;
-
-				/* Cancel button */
-				case PFW_WIDGET_CANCEL:
-					delete w;
-					break;
-
-				/* OK button */
-				case PFW_WIDGET_ACCEPT:
-					DoCommandP(0, 0, *pf, NULL, CMD_SET_PLAYER_FACE);
-					delete w;
-					break;
-
-				/* Load button */
-				case PFW_WIDGET_LOAD:
-					*pf = _player_face;
-					ScaleAllPlayerFaceBits(*pf);
-					ShowErrorMessage(INVALID_STRING_ID, STR_FACE_LOAD_DONE, 0, 0);
-					w->SetDirty();
-					break;
-
-				/* 'Player face number' button, view and/or set player face number */
-				case PFW_WIDGET_FACECODE:
-					SetDParam(0, *pf);
-					ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, w, CS_NUMERAL);
-					break;
-
-				/* Save button */
-				case PFW_WIDGET_SAVE:
-					_player_face = *pf;
-					ShowErrorMessage(INVALID_STRING_ID, STR_FACE_SAVE_DONE, 0, 0);
-					break;
-
-				/* Toggle gender (male/female) button */
-				case PFW_WIDGET_MALE:
-				case PFW_WIDGET_FEMALE:
-					SetPlayerFaceBits(*pf, PFV_GENDER, ge, e->we.click.widget - PFW_WIDGET_MALE);
-					ScaleAllPlayerFaceBits(*pf);
-					w->SetDirty();
-					break;
-
-				/* Randomize face button */
-				case PFW_WIDGET_RANDOM_NEW_FACE:
-					RandomPlayerFaceBits(*pf, ge, WP(w, facesel_d).advanced);
-					w->SetDirty();
-					break;
-
-				/* Toggle ethnicity (european/african) button */
-				case PFW_WIDGET_ETHNICITY_EUR:
-				case PFW_WIDGET_ETHNICITY_AFR:
-					SetPlayerFaceBits(*pf, PFV_ETHNICITY, ge, e->we.click.widget - PFW_WIDGET_ETHNICITY_EUR);
-					ScaleAllPlayerFaceBits(*pf);
-					w->SetDirty();
-					break;
-
-				default:
-					/* For all buttons from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R is the same function.
-					* Therefor is this combined function.
-					* First it checks which PlayerFaceVariable will be change and then
-					* a: invert the value for boolean variables
-					* or b: it checks inside of IncreasePlayerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
-					if (WP(w, facesel_d).advanced && e->we.click.widget >= PFW_WIDGET_HAS_MOUSTACHE_EARRING && e->we.click.widget <= PFW_WIDGET_GLASSES_R) {
-						PlayerFaceVariable pfv; // which PlayerFaceVariable shall be edited
-
-						if (e->we.click.widget < PFW_WIDGET_EYECOLOUR_L) { // Bool buttons
-							switch (e->we.click.widget - PFW_WIDGET_HAS_MOUSTACHE_EARRING) {
-								default: NOT_REACHED();
-								case 0: pfv = is_female ? PFV_HAS_TIE_EARRING : PFV_HAS_MOUSTACHE; break; // Has earring/moustache button
-								case 1: pfv = PFV_HAS_GLASSES; break; // Has glasses button
-							}
-							SetPlayerFaceBits(*pf, pfv, ge, !GetPlayerFaceBits(*pf, pfv, ge));
-							ScaleAllPlayerFaceBits(*pf);
-
-						} else { // Value buttons
-							switch ((e->we.click.widget - PFW_WIDGET_EYECOLOUR_L) / 3) {
-								default: NOT_REACHED();
-								case 0: pfv = PFV_EYE_COLOUR; break;  // Eye colour buttons
-								case 1: pfv = PFV_CHIN; break;        // Chin buttons
-								case 2: pfv = PFV_EYEBROWS; break;    // Eyebrows buttons
-								case 3: pfv = is_moust_male ? PFV_MOUSTACHE : PFV_LIPS; break; // Moustache or lips buttons
-								case 4: pfv = PFV_NOSE; break;        // Nose buttons
-								case 5: pfv = PFV_HAIR; break;        // Hair buttons
-								case 6: pfv = PFV_JACKET; break;      // Jacket buttons
-								case 7: pfv = PFV_COLLAR; break;      // Collar buttons
-								case 8: pfv = PFV_TIE_EARRING; break; // Tie/earring buttons
-								case 9: pfv = PFV_GLASSES; break;     // Glasses buttons
-							}
-							/* 0 == left (_L), 1 == middle or 2 == right (_R) - button click */
-							IncreasePlayerFaceBits(*pf, pfv, ge, (((e->we.click.widget - PFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
-						}
-
-						w->SetDirty();
-					}
-					break;
-			}
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str == NULL) break;
-			/* Set a new player face number */
-			if (!StrEmpty(e->we.edittext.str)) {
-				*pf = strtoul(e->we.edittext.str, NULL, 10);
-				ScaleAllPlayerFaceBits(*pf);
-				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_SET, 0, 0);
-				w->SetDirty();
+		/* Draw dynamic button value and labels for the advanced player face selection window */
+		if (this->advanced) {
+			if (this->is_female) {
+				/* Only for female faces */
+				this->DrawFaceStringLabel(PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_EARRING,   GetPlayerFaceBits(this->face, PFV_HAS_TIE_EARRING, this->ge), true );
+				this->DrawFaceStringLabel(PFW_WIDGET_TIE_EARRING,           STR_FACE_EARRING,   GetPlayerFaceBits(this->face, PFV_TIE_EARRING,     this->ge), false);
 			} else {
-				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_ERR, 0, 0);
+				/* Only for male faces */
+				this->DrawFaceStringLabel(PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_MOUSTACHE, GetPlayerFaceBits(this->face, PFV_HAS_MOUSTACHE,   this->ge), true );
+				this->DrawFaceStringLabel(PFW_WIDGET_TIE_EARRING,           STR_FACE_TIE,       GetPlayerFaceBits(this->face, PFV_TIE_EARRING,     this->ge), false);
 			}
-			break;
+			if (this->is_moust_male) {
+				/* Only for male faces with moustache */
+				this->DrawFaceStringLabel(PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_MOUSTACHE, GetPlayerFaceBits(this->face, PFV_MOUSTACHE,       this->ge), false);
+			} else {
+				/* Only for female faces or male faces without moustache */
+				this->DrawFaceStringLabel(PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_LIPS,      GetPlayerFaceBits(this->face, PFV_LIPS,            this->ge), false);
+			}
+			/* For all faces */
+			this->DrawFaceStringLabel(PFW_WIDGET_HAS_GLASSES,           STR_FACE_GLASSES,     GetPlayerFaceBits(this->face, PFV_HAS_GLASSES,     this->ge), true );
+			this->DrawFaceStringLabel(PFW_WIDGET_HAIR,                  STR_FACE_HAIR,        GetPlayerFaceBits(this->face, PFV_HAIR,            this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_EYEBROWS,              STR_FACE_EYEBROWS,    GetPlayerFaceBits(this->face, PFV_EYEBROWS,        this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_EYECOLOUR,             STR_FACE_EYECOLOUR,   GetPlayerFaceBits(this->face, PFV_EYE_COLOUR,      this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_GLASSES,               STR_FACE_GLASSES,     GetPlayerFaceBits(this->face, PFV_GLASSES,         this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_NOSE,                  STR_FACE_NOSE,        GetPlayerFaceBits(this->face, PFV_NOSE,            this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_CHIN,                  STR_FACE_CHIN,        GetPlayerFaceBits(this->face, PFV_CHIN,            this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_JACKET,                STR_FACE_JACKET,      GetPlayerFaceBits(this->face, PFV_JACKET,          this->ge), false);
+			this->DrawFaceStringLabel(PFW_WIDGET_COLLAR,                STR_FACE_COLLAR,      GetPlayerFaceBits(this->face, PFV_COLLAR,          this->ge), false);
+		}
+
+		/* Draw the player face picture */
+		DrawPlayerFace(this->face, GetPlayer((PlayerID)this->window_number)->player_color, 2, 16);
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			/* Toggle size, advanced/simple face selection */
+			case PFW_WIDGET_TOGGLE_LARGE_SMALL:
+			case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
+				int oldtop = this->top;     ///< current top position of the window before closing it
+				int oldleft = this->left;   ///< current top position of the window before closing it
+				PlayerID player = (PlayerID)this->window_number;
+				bool adv = !this->advanced;
+
+				DoCommandP(0, 0, this->face, NULL, CMD_SET_PLAYER_FACE);
+
+				delete this;
+
+				/* Open up the (toggled size) Face selection window at the same position as the previous */
+				DoSelectPlayerFace(player, adv, oldtop, oldleft);
+			} break;
+
+
+			/* OK button */
+			case PFW_WIDGET_ACCEPT:
+				DoCommandP(0, 0, this->face, NULL, CMD_SET_PLAYER_FACE);
+				/* Fall-Through */
+
+			/* Cancel button */
+			case PFW_WIDGET_CANCEL:
+				delete this;
+				break;
+
+			/* Load button */
+			case PFW_WIDGET_LOAD:
+				this->face = _player_face;
+				ScaleAllPlayerFaceBits(this->face);
+				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_LOAD_DONE, 0, 0);
+				this->UpdateData();
+				this->SetDirty();
+				break;
+
+			/* 'Player face number' button, view and/or set player face number */
+			case PFW_WIDGET_FACECODE:
+				SetDParam(0, this->face);
+				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, this, CS_NUMERAL);
+				break;
+
+			/* Save button */
+			case PFW_WIDGET_SAVE:
+				_player_face = this->face;
+				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_SAVE_DONE, 0, 0);
+				break;
+
+			/* Toggle gender (male/female) button */
+			case PFW_WIDGET_MALE:
+			case PFW_WIDGET_FEMALE:
+				SetPlayerFaceBits(this->face, PFV_GENDER, this->ge, widget - PFW_WIDGET_MALE);
+				ScaleAllPlayerFaceBits(this->face);
+				this->UpdateData();
+				this->SetDirty();
+				break;
+
+			/* Randomize face button */
+			case PFW_WIDGET_RANDOM_NEW_FACE:
+				RandomPlayerFaceBits(this->face, this->ge, this->advanced);
+				this->UpdateData();
+				this->SetDirty();
+				break;
+
+			/* Toggle ethnicity (european/african) button */
+			case PFW_WIDGET_ETHNICITY_EUR:
+			case PFW_WIDGET_ETHNICITY_AFR:
+				SetPlayerFaceBits(this->face, PFV_ETHNICITY, this->ge, widget - PFW_WIDGET_ETHNICITY_EUR);
+				ScaleAllPlayerFaceBits(this->face);
+				this->UpdateData();
+				this->SetDirty();
+				break;
+
+			default:
+				/* For all buttons from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R is the same function.
+				* Therefor is this combined function.
+				* First it checks which PlayerFaceVariable will be change and then
+				* a: invert the value for boolean variables
+				* or b: it checks inside of IncreasePlayerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
+				if (this->advanced && widget >= PFW_WIDGET_HAS_MOUSTACHE_EARRING && widget <= PFW_WIDGET_GLASSES_R) {
+					PlayerFaceVariable pfv; // which PlayerFaceVariable shall be edited
+
+					if (widget < PFW_WIDGET_EYECOLOUR_L) { // Bool buttons
+						switch (widget - PFW_WIDGET_HAS_MOUSTACHE_EARRING) {
+							default: NOT_REACHED();
+							case 0: pfv = this->is_female ? PFV_HAS_TIE_EARRING : PFV_HAS_MOUSTACHE; break; // Has earring/moustache button
+							case 1: pfv = PFV_HAS_GLASSES; break; // Has glasses button
+						}
+						SetPlayerFaceBits(this->face, pfv, this->ge, !GetPlayerFaceBits(this->face, pfv, this->ge));
+						ScaleAllPlayerFaceBits(this->face);
+					} else { // Value buttons
+						switch ((widget - PFW_WIDGET_EYECOLOUR_L) / 3) {
+							default: NOT_REACHED();
+							case 0: pfv = PFV_EYE_COLOUR; break;  // Eye colour buttons
+							case 1: pfv = PFV_CHIN; break;        // Chin buttons
+							case 2: pfv = PFV_EYEBROWS; break;    // Eyebrows buttons
+							case 3: pfv = this->is_moust_male ? PFV_MOUSTACHE : PFV_LIPS; break; // Moustache or lips buttons
+							case 4: pfv = PFV_NOSE; break;        // Nose buttons
+							case 5: pfv = PFV_HAIR; break;        // Hair buttons
+							case 6: pfv = PFV_JACKET; break;      // Jacket buttons
+							case 7: pfv = PFV_COLLAR; break;      // Collar buttons
+							case 8: pfv = PFV_TIE_EARRING; break; // Tie/earring buttons
+							case 9: pfv = PFV_GLASSES; break;     // Glasses buttons
+						}
+						/* 0 == left (_L), 1 == middle or 2 == right (_R) - button click */
+						IncreasePlayerFaceBits(this->face, pfv, this->ge, (((widget - PFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
+					}
+					this->UpdateData();
+					this->SetDirty();
+				}
+				break;
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (str == NULL) return;
+		/* Set a new player face number */
+		if (!StrEmpty(str)) {
+			this->face = strtoul(str, NULL, 10);
+			ScaleAllPlayerFaceBits(this->face);
+			ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_SET, 0, 0);
+			this->UpdateData();
+			this->SetDirty();
+		} else {
+			ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_ERR, 0, 0);
+		}
+	}
+};
 
 /** normal/simple player face selection window description */
 static const WindowDesc _select_player_face_desc = {
@@ -999,7 +1019,7 @@ static const WindowDesc _select_player_face_desc = {
 	WC_PLAYER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_widgets,
-	SelectPlayerFaceWndProc
+	NULL
 };
 
 /** advanced player face selection window description */
@@ -1008,7 +1028,7 @@ static const WindowDesc _select_player_face_adv_desc = {
 	WC_PLAYER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_adv_widgets,
-	SelectPlayerFaceWndProc
+	NULL
 };
 
 /**
@@ -1025,19 +1045,7 @@ static void DoSelectPlayerFace(PlayerID player, bool adv, int top, int left)
 {
 	if (!IsValidPlayer(player)) return;
 
-	Window *w = AllocateWindowDescFront<Window>(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player); // simple or advanced window
-
-	if (w != NULL) {
-		w->caption_color = w->window_number;
-		WP(w, facesel_d).face = GetPlayer((PlayerID)w->window_number)->face;
-		WP(w, facesel_d).advanced = adv;
-
-		/* Check if repositioning from default is required */
-		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
-			w->top = top;
-			w->left = left;
-		}
-	}
+	AllocateWindowDescFront<SelectPlayerFaceWindow>(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player, &adv); // simple or advanced window
 }
 
 
