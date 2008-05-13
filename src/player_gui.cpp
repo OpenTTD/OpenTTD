@@ -769,11 +769,11 @@ class SelectPlayerFaceWindow : public Window
 	}
 
 public:
-	SelectPlayerFaceWindow(const WindowDesc *desc, bool advanced) : Window(desc, 0)
+	SelectPlayerFaceWindow(const WindowDesc *desc, PlayerID player, bool advanced) : Window(desc, player)
 	{
 		this->FindWindowPlacementAndResize(desc);
 		this->caption_color = this->window_number;
-		this->face = GetPlayer((PlayerID)this->window_number)->face;
+		this->face = GetPlayer(player)->face;
 		this->advanced = advanced;
 
 		this->UpdateData();
@@ -1045,8 +1045,8 @@ static void DoSelectPlayerFace(PlayerID player, bool adv, int top, int left)
 {
 	if (!IsValidPlayer(player)) return;
 
-	if (BringWindowToFrontById(WC_PLAYER_FACE, 0)) return;
-	return SelectPlayerFaceWindow(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player, adv); // simple or advanced window
+	if (BringWindowToFrontById(WC_PLAYER_FACE, player)) return;
+	new SelectPlayerFaceWindow(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player, adv); // simple or advanced window
 }
 
 
