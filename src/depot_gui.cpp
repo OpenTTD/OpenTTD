@@ -503,7 +503,7 @@ struct DepotWindow : Window {
 
 	void DepotClick(int x, int y)
 	{
-		GetDepotVehiclePtData gdvp;
+		GetDepotVehiclePtData gdvp = { NULL, NULL };
 		Vehicle *v = NULL;
 		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(x, y, &v, &gdvp);
 
