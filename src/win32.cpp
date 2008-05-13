@@ -61,7 +61,7 @@ bool LoadLibraryList(Function proc[], const char *dll)
 		for (;;) {
 			FARPROC p;
 
-			while (*dll++ != '\0');
+			while (*dll++ != '\0') { /* Nothing */ }
 			if (*dll == '\0') break;
 #if defined(WINCE)
 			p = GetProcAddress(lib, MB_TO_WIDE(dll));
@@ -796,7 +796,7 @@ void FiosGetDrives()
 		fios->mtime = 0;
 		snprintf(fios->name, lengthof(fios->name),  "%c:", s[0] & 0xFF);
 		ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
-		while (*s++ != '\0');
+		while (*s++ != '\0') { /* Nothing */ }
 	}
 #endif
 }
