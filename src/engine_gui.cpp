@@ -19,7 +19,7 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static StringID GetEngineCategoryName(EngineID engine)
+StringID GetEngineCategoryName(EngineID engine)
 {
 	switch (GetEngine(engine)->type) {
 		default: NOT_REACHED();
@@ -174,20 +174,11 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 
-
-StringID GetNewsStringNewVehicleAvail(const NewsItem *ni)
-{
-	EngineID engine = ni->string_id;
-	SetDParam(0, GetEngineCategoryName(engine));
-	SetDParam(1, engine);
-	return STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE;
-}
-
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
 	DrawNewsBorder(w);
 
-	EngineID engine = ni->string_id;
+	EngineID engine = ni->data_a;
 	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
 	SetDParam(0, GetEngineCategoryName(engine));

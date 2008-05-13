@@ -78,18 +78,9 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
 void DrawNewsBankrupcy(Window *w, const NewsItem *ni);
 static void MoveToNextItem();
 
-StringID GetNewsStringNewVehicleAvail(const NewsItem *ni);
-StringID GetNewsStringBankrupcy(const NewsItem *ni);
-
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
 	DrawNewsNewVehicleAvail,  ///< DNC_VEHICLEAVAIL
 	DrawNewsBankrupcy,        ///< DNC_BANKRUPCY
-};
-
-extern GetNewsStringCallbackProc * const _get_news_string_callback[];
-GetNewsStringCallbackProc * const _get_news_string_callback[] = {
-	GetNewsStringNewVehicleAvail,  ///< DNC_VEHICLEAVAIL
-	GetNewsStringBankrupcy,        ///< DNC_BANKRUPCY
 };
 
 /** Initialize the news-items data structures */
@@ -607,12 +598,8 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	char buffer[512], buffer2[512];
 	StringID str;
 
-	if (ni->display_mode == NM_CALLBACK) {
-		str = _get_news_string_callback[ni->callback](ni);
-	} else {
-		CopyInDParam(0, ni->params, lengthof(ni->params));
-		str = ni->string_id;
-	}
+	CopyInDParam(0, ni->params, lengthof(ni->params));
+	str = ni->string_id;
 
 	GetString(buffer, str, lastof(buffer));
 	/* Copy the just gotten string to another buffer to remove any formatting

@@ -527,15 +527,21 @@ static void PlayersCheckBankrupt(Player *p)
 
 	switch (p->quarters_of_bankrupcy) {
 		case 2:
-			AddNewsItem((StringID)(owner | NB_BTROUBLE),
-				NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
+			SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
+			SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
+			SetDParam(2, owner);
+			AddNewsItem(STR_02B6,
+				NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, owner | NB_BTROUBLE);
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other players if it wants to take
 		          over when it is a human company? -- TrueLight */
 			if (IsHumanPlayer(owner)) {
-				AddNewsItem((StringID)(owner | NB_BTROUBLE),
-					NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
+				SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
+				SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
+				SetDParam(2, owner);
+				AddNewsItem(STR_02B6,
+					NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, owner | NB_BTROUBLE);
 				break;
 			}
 
@@ -555,8 +561,10 @@ static void PlayersCheckBankrupt(Player *p)
 			DeletePlayerWindows(owner);
 
 			/* Show bankrupt news */
-			SetDParam(0, p->index);
-			AddNewsItem((StringID)(owner | NB_BBANKRUPT), NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
+			SetDParam(0, STR_705C_BANKRUPT);
+			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
+			SetDParam(2, p->index);
+			AddNewsItem(STR_02B6, NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, owner | NB_BBANKRUPT);
 
 			if (IsHumanPlayer(owner)) {
 				/* XXX - If we are in offline mode, leave the player playing. Eg. there
@@ -586,7 +594,7 @@ void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 {
 	DrawNewsBorder(w);
 
-	Player *p = GetPlayer((PlayerID)GB(ni->string_id, 0, 4));
+	Player *p = GetPlayer((PlayerID)GB(ni->data_b, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 
@@ -594,7 +602,7 @@ void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 
 	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
 
-	switch (ni->string_id & 0xF0) {
+	switch (ni->data_b & 0xF0) {
 	case NB_BTROUBLE:
 		DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING);
 
@@ -609,19 +617,19 @@ void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 
 	case NB_BMERGER:
 		DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING);
-		SetDParam(0, ni->params[0]);
+		SetDParam(0, ni->params[2]);
 		SetDParam(1, p->index);
-		SetDParam(2, ni->params[1]);
+		SetDParam(2, ni->params[4]);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
-			ni->params[1] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR,
+			ni->params[4] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR,
 			w->width - 101);
 		break;
 
 	case NB_BBANKRUPT:
 		DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, TC_FROMSTRING);
-		SetDParam(0, ni->params[0]);
+		SetDParam(0, p->index);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -632,7 +640,7 @@ void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 	case NB_BNEWCOMPANY:
 		DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING);
 		SetDParam(0, p->index);
-		SetDParam(1, ni->params[0]);
+		SetDParam(1, ni->params[3]);
 		DrawStringMultiCenter(
 			((w->width - 101) >> 1) + 98,
 			90,
@@ -640,39 +648,6 @@ void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 			w->width - 101);
 		break;
 
-	default:
-		NOT_REACHED();
-	}
-}
-
-StringID GetNewsStringBankrupcy(const NewsItem *ni)
-{
-	const Player *p = GetPlayer((PlayerID)GB(ni->string_id, 0, 4));
-
-	switch (ni->string_id & 0xF0) {
-	case NB_BTROUBLE:
-		SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
-		SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
-		SetDParam(2, p->index);
-		return STR_02B6;
-	case NB_BMERGER:
-		SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
-		SetDParam(1, ni->params[1] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
-		SetDParam(2, ni->params[0]);
-		SetDParam(3, p->index);
-		SetDParam(4, ni->params[1]);
-		return STR_02B6;
-	case NB_BBANKRUPT:
-		SetDParam(0, STR_705C_BANKRUPT);
-		SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-		SetDParam(2, ni->params[0]);
-		return STR_02B6;
-	case NB_BNEWCOMPANY:
-		SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
-		SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
-		SetDParam(2, p->index);
-		SetDParam(3, ni->params[0]);
-		return STR_02B6;
 	default:
 		NOT_REACHED();
 	}
@@ -1842,9 +1817,12 @@ static void DoAcquireCompany(Player *p)
 	int i;
 	Money value;
 
-	SetDParam(0, p->index);
-	SetDParam(1, p->bankrupt_value);
-	AddNewsItem((StringID)(_current_player | NB_BMERGER), NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, 0);
+	SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
+	SetDParam(1, p->bankrupt_value == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
+	SetDParam(2, p->index);
+	SetDParam(3, _current_player);
+	SetDParam(4, p->bankrupt_value);
+	AddNewsItem(STR_02B6, NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, _current_player | NB_BMERGER);
 
 	/* original code does this a little bit differently */
 	PlayerID pi = p->index;

@@ -97,7 +97,7 @@ struct NewsTypeData {
 };
 
 struct NewsItem {
-	StringID string_id;    ///< Message text (sometimes also used for storing other info)
+	StringID string_id;    ///< Message text
 	uint16 duration;       ///< Remaining time for showing this news message
 	Date date;             ///< Date of the news
 	NewsFlag flags;        ///< NewsFlags bits @see NewsFlag
@@ -105,14 +105,13 @@ struct NewsItem {
 	NewsType type;         ///< News category @see NewsType
 	NewsCallback callback; ///< Call-back function
 
-	uint data_a;           ///< Reference to tile or vehicle
-	uint data_b;           ///< Reference to second tile or vehicle
+	uint data_a;           ///< Custom data 1 (usually tile or vehicle)
+	uint data_b;           ///< Custom data 2
 
 	uint64 params[10];
 };
 
 typedef bool ValidationProc(uint data_a, uint data_b);
 typedef void DrawNewsCallbackProc(Window *w, const NewsItem *ni);
-typedef StringID GetNewsStringCallbackProc(const NewsItem *ni);
 
 #endif /* NEWS_TYPE_H */

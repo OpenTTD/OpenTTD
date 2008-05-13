@@ -367,6 +367,8 @@ static bool IsWagon(EngineID index)
 	return e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON;
 }
 
+StringID GetEngineCategoryName(EngineID engine);
+
 static void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;
@@ -419,7 +421,10 @@ static void NewVehicleAvailable(Engine *e)
 			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}
-	AddNewsItem(index, NM_CALLBACK, NF_NONE, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL, 0, 0);
+
+	SetDParam(0, GetEngineCategoryName(index));
+	SetDParam(1, index);
+	AddNewsItem(STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NM_CALLBACK, NF_NONE, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL, index, 0);
 }
 
 void EnginesMonthlyLoop()

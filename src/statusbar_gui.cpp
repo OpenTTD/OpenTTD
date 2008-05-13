@@ -22,17 +22,10 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-extern GetNewsStringCallbackProc * const _get_news_string_callback[];
-
 static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 {
-	StringID str;
-	if (ni->display_mode == NM_CALLBACK) {
-		str = _get_news_string_callback[ni->callback](ni);
-	} else {
-		CopyInDParam(0, ni->params, lengthof(ni->params));
-		str = ni->string_id;
-	}
+	CopyInDParam(0, ni->params, lengthof(ni->params));
+	StringID str = ni->string_id;
 
 	char buf[512];
 	GetString(buf, str, lastof(buf));
