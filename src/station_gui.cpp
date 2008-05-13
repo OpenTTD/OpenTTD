@@ -287,7 +287,7 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 	static byte facilities;
 	static bool include_empty;
 
-	PlayerStationsWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	PlayerStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->caption_color = (byte)this->window_number;
 		this->vscroll.cap = 12;
@@ -737,7 +737,7 @@ struct StationViewWindow : public Window {
 	uint32 cargo;                 ///< Bitmask of cargo types to expand
 	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
 
-	StationViewWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		PlayerID owner = GetStation(window_number)->owner;
 		if (owner != OWNER_NONE) this->caption_color = owner;

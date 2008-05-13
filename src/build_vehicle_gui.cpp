@@ -807,7 +807,7 @@ struct BuildVehicleWindow : Window {
 	EngineID rename_engine;
 	EngineList eng_list;
 
-	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, NULL, tile == 0 ? (int)type : tile)
+	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, tile == 0 ? (int)type : tile)
 	{
 		this->vehicle_type = type;
 		int vlh = GetVehicleListHeight(this->vehicle_type);

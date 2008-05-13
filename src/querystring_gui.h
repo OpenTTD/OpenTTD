@@ -24,7 +24,7 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	char edit_str_buf[64];
 	char orig_str_buf[64];
 
-	QueryStringBaseWindow(const WindowDesc *desc, void *data = NULL, WindowNumber window_number = 0) : Window(desc, data, window_number)
+	QueryStringBaseWindow(const WindowDesc *desc, WindowNumber window_number = 0) : Window(desc, window_number)
 	{
 	}
 

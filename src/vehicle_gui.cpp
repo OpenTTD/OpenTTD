@@ -841,7 +841,7 @@ void DrawSmallOrderList(const Vehicle *v, int x, int y)
  */
 struct VehicleListWindow : public Window, public VehicleListBase {
 
-	VehicleListWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		uint16 window_type = this->window_number & VLW_MASK;
 		PlayerID player = (PlayerID)GB(this->window_number, 0, 8);

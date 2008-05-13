@@ -253,7 +253,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	char name[64];
 	glwp_modes mode;
 
-	GenerateLandscapeWindow(const WindowDesc *desc, void *data = NULL, WindowNumber number = 0) : QueryStringBaseWindow(desc, NULL, number)
+	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : QueryStringBaseWindow(desc, number)
 	{
 		this->LowerWidget(_opt_newgame.landscape + GLAND_TEMPERATE);
 
@@ -644,7 +644,7 @@ struct CreateScenarioWindow : public Window
 {
 	uint widget_id;
 
-	CreateScenarioWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, NULL, window_number)
+	CreateScenarioWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->LowerWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
 	}

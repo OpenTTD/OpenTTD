@@ -187,7 +187,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 	VehicleID vehicle_sel;
 	GUIGroupList groups;
 
-	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, NULL, window_number)
+	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
 

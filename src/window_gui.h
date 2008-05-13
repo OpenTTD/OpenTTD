@@ -144,10 +144,6 @@ struct WindowEvent {
 	byte event;
 	union {
 		struct {
-			void *data;
-		} create;
-
-		struct {
 			Point pt;
 			int widget;
 		} click;
@@ -291,13 +287,13 @@ private:
 
 protected:
 	void Initialize(int x, int y, int min_width, int min_height,
-			WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data);
+			WindowProc *proc, WindowClass cls, const Widget *widget, int window_number);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
 public:
-	Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget, void *data = NULL);
-	Window(const WindowDesc *desc, void *data = NULL, WindowNumber number = 0);
+	Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget);
+	Window(const WindowDesc *desc, WindowNumber number = 0);
 
 	virtual ~Window();
 
@@ -642,10 +638,10 @@ bool IsWindowOfPrototype(const Window *w, const Widget *widget);
  * @return see Window pointer of the newly created window
  */
 template <typename Wcls>
-Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number, void *data = NULL)
+Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 {
 	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
-	return new Wcls(desc, data, window_number);
+	return new Wcls(desc, window_number);
 }
 
 void DrawWindowViewport(const Window *w);

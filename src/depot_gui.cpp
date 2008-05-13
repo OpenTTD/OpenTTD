@@ -252,7 +252,7 @@ struct DepotWindow : Window {
 	Vehicle **vehicle_list;
 	Vehicle **wagon_list;
 
-	DepotWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	DepotWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->sel = INVALID_VEHICLE;
 		this->vehicle_list  = NULL;

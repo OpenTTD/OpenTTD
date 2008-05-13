@@ -462,7 +462,7 @@ class IndustryViewWindow : public Window
 	byte production_offset_y; ///< The offset of the production texts/buttons
 
 public:
-	IndustryViewWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	IndustryViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 		this->editbox_line = 0;

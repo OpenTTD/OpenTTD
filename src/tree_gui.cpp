@@ -45,7 +45,7 @@ class BuildTreesWindow : public Window
 	};
 
 public:
-	BuildTreesWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	BuildTreesWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		if (_game_mode != GM_EDITOR) {
 			this->HideWidget(BTW_MANY_RANDOM);

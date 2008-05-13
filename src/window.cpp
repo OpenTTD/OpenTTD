@@ -891,10 +891,10 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
  * @param window_number number being assigned to the new window
- * @param data the data to be given during the WE_CREATE message
- * @return Window pointer of the newly created window */
+ * @return Window pointer of the newly created window
+ */
 void Window::Initialize(int x, int y, int min_width, int min_height,
-				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number, void *data)
+				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
 {
 	/* We have run out of windows, close one and use that as the place for our new one */
 	if (_last_z_window == endof(_z_windows)) {
@@ -943,7 +943,6 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 
 	WindowEvent e;
 	e.event = WE_CREATE;
-	e.we.create.data = data;
 	this->HandleWindowEvent(&e);
 }
 
@@ -1025,9 +1024,9 @@ void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
  * @param *widget see Widget pointer to the window layout and various elements
  * @return Window pointer of the newly created window
  */
-Window::Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget, void *data)
+Window::Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget)
 {
-	this->Initialize(x, y, width, height, proc, cls, widget, 0, data);
+	this->Initialize(x, y, width, height, proc, cls, widget, 0);
 
 	if (proc != NULL) this->FindWindowPlacementAndResize(width, height);
 }
@@ -1215,14 +1214,13 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
  *
  * @param *desc         The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @param data          arbitrary data that is send with the WE_CREATE message
  *
  * @return Window pointer of the newly created window
  */
-Window::Window(const WindowDesc *desc, void *data, WindowNumber window_number)
+Window::Window(const WindowDesc *desc, WindowNumber window_number)
 {
 	Point pt = LocalGetWindowPlacement(desc, window_number);
-	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->proc, desc->cls, desc->widgets, window_number, data);
+	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->proc, desc->cls, desc->widgets, window_number);
 	this->desc_flags = desc->flags;
 
 	if (desc->proc != NULL) this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);

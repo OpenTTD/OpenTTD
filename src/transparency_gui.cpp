@@ -36,7 +36,7 @@ class TransparenciesWindow : public Window
 	};
 
 public:
-	TransparenciesWindow(const WindowDesc *desc, void *data, int window_number) : Window(desc, data, window_number)
+	TransparenciesWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}

@@ -800,7 +800,7 @@ public:
 		this->SetDirty();
 	}
 
-	SmallMapWindow(const WindowDesc *desc, void *data, int window_number) : Window(desc, data, window_number)
+	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number)
 	{
 		/* Resize the window to fit industries list */
 		if (_industries_per_column > BASE_NB_PER_COLUMN) {
@@ -1121,7 +1121,7 @@ class ExtraViewportWindow : public Window
 	};
 
 public:
-	ExtraViewportWindow(const WindowDesc *desc, void *data, int window_number) : Window(desc, data, window_number)
+	ExtraViewportWindow(const WindowDesc *desc, int window_number, TileIndex tile) : Window(desc, window_number)
 	{
 		/* New viewport start at (zero,zero) */
 		InitializeWindowViewport(this, 3, 17, this->widget[EVW_VIEWPORT].right - this->widget[EVW_VIEWPORT].left - 1, this->widget[EVW_VIEWPORT].bottom - this->widget[EVW_VIEWPORT].top - 1, 0, ZOOM_LVL_VIEWPORT);
@@ -1130,7 +1130,6 @@ public:
 		this->FindWindowPlacementAndResize(desc);
 
 		Point pt;
-		TileIndex tile = *(TileIndex*)data;
 		if (tile == INVALID_TILE) {
 			/* the main window with the main view */
 			const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
@@ -1235,7 +1234,7 @@ void ShowExtraViewPortWindow(TileIndex tile)
 	/* find next free window number for extra viewport */
 	while (FindWindowById(WC_EXTRA_VIEW_PORT, i) != NULL) i++;
 
-	AllocateWindowDescFront<ExtraViewportWindow>(&_extra_view_port_desc, i, &tile);
+	new ExtraViewportWindow(&_extra_view_port_desc, i, tile);
 }
 
 bool ScrollMainWindowTo(int x, int y, bool instant)
