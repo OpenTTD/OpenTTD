@@ -436,8 +436,6 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		PlayerID owner = (PlayerID)this->window_number;
-
 		switch (widget) {
 			case SLW_LIST: {
 				uint32 id_v = (pt.y - 41) / 10;
@@ -450,7 +448,7 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 				const Station *st = this->sort_list[id_v];
 				/* do not check HasStationInUse - it is slow and may be invalid */
-				assert(st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy()));
+				assert(st->owner == (PlayerID)this->window_number || (st->owner == OWNER_NONE && !st->IsBuoy()));
 
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(st->xy);
