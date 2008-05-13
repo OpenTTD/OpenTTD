@@ -214,188 +214,194 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 extern void UpdateAllStationVirtCoord();
 
-static void MainWindowWndProc(Window *w, WindowEvent *e)
+struct MainWindow : Window
 {
-	switch (e->event) {
-		case WE_PAINT:
-			DrawWindowViewport(w);
-			if (_game_mode == GM_MENU) {
-				int off_x = _screen.width / 2;
+	MainWindow(int width, int height) : Window(0, 0, width, height, NULL, WC_MAIN_WINDOW, NULL)
+	{
+		InitializeWindowViewport(this, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
+	}
 
-				DrawSprite(SPR_OTTD_O, PAL_NONE, off_x - 120, 50);
-				DrawSprite(SPR_OTTD_P, PAL_NONE, off_x -  86, 50);
-				DrawSprite(SPR_OTTD_E, PAL_NONE, off_x -  53, 50);
-				DrawSprite(SPR_OTTD_N, PAL_NONE, off_x -  22, 50);
+	virtual void OnPaint()
+	{
+		DrawWindowViewport(this);
+		if (_game_mode == GM_MENU) {
+			int off_x = _screen.width / 2;
 
-				DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  34, 50);
-				DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  65, 50);
-				DrawSprite(SPR_OTTD_D, PAL_NONE, off_x +  96, 50);
-			}
-			break;
+			DrawSprite(SPR_OTTD_O, PAL_NONE, off_x - 120, 50);
+			DrawSprite(SPR_OTTD_P, PAL_NONE, off_x -  86, 50);
+			DrawSprite(SPR_OTTD_E, PAL_NONE, off_x -  53, 50);
+			DrawSprite(SPR_OTTD_N, PAL_NONE, off_x -  22, 50);
 
-		case WE_KEYPRESS:
-			switch (e->we.keypress.keycode) {
-				case 'Q' | WKC_CTRL:
-				case 'Q' | WKC_META:
-					HandleExitGameRequest();
-					break;
-			}
+			DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  34, 50);
+			DrawSprite(SPR_OTTD_T, PAL_NONE, off_x +  65, 50);
+			DrawSprite(SPR_OTTD_D, PAL_NONE, off_x +  96, 50);
+		}
+	}
 
-			/* Disable all key shortcuts, except quit shortcuts when
-			* generating the world, otherwise they create threading
-			* problem during the generating, resulting in random
-			* assertions that are hard to trigger and debug */
-			if (IsGeneratingWorld()) break;
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case 'Q' | WKC_CTRL:
+			case 'Q' | WKC_META:
+				HandleExitGameRequest();
+				return true;
+		}
 
-			if (e->we.keypress.keycode == WKC_BACKQUOTE) {
-				IConsoleSwitch();
-				e->we.keypress.cont = false;
-				break;
-			}
+		/* Disable all key shortcuts, except quit shortcuts when
+		* generating the world, otherwise they create threading
+		* problem during the generating, resulting in random
+		* assertions that are hard to trigger and debug */
+		if (IsGeneratingWorld()) return true;
 
-			if (e->we.keypress.keycode == ('B' | WKC_CTRL)) {
-				e->we.keypress.cont = false;
-				extern bool _draw_bounding_boxes;
-				_draw_bounding_boxes = !_draw_bounding_boxes;
-				MarkWholeScreenDirty();
-				break;
-			}
+		if (keycode == WKC_BACKQUOTE) {
+			IConsoleSwitch();
+			return false;
+		}
 
-			if (_game_mode == GM_MENU) break;
+		if (keycode == ('B' | WKC_CTRL)) {
+			extern bool _draw_bounding_boxes;
+			_draw_bounding_boxes = !_draw_bounding_boxes;
+			MarkWholeScreenDirty();
+			return false;
+		}
 
-			switch (e->we.keypress.keycode) {
-				case 'C':
-				case 'Z': {
-					Point pt = GetTileBelowCursor();
-					if (pt.x != -1) {
-						if (e->we.keypress.keycode == 'Z') MaxZoomInOut(ZOOM_IN, w);
-						ScrollMainWindowTo(pt.x, pt.y);
-					}
-					break;
+		if (_game_mode == GM_MENU) return true;
+
+		switch (keycode) {
+			case 'C':
+			case 'Z': {
+				Point pt = GetTileBelowCursor();
+				if (pt.x != -1) {
+					if (keycode == 'Z') MaxZoomInOut(ZOOM_IN, this);
+					ScrollMainWindowTo(pt.x, pt.y);
 				}
+				break;
+			}
 
-				case WKC_ESC: ResetObjectToPlace(); break;
-				case WKC_DELETE: DeleteNonVitalWindows(); break;
-				case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
-				case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
+			case WKC_ESC: ResetObjectToPlace(); break;
+			case WKC_DELETE: DeleteNonVitalWindows(); break;
+			case WKC_DELETE | WKC_SHIFT: DeleteAllNonVitalWindows(); break;
+			case 'R' | WKC_CTRL: MarkWholeScreenDirty(); break;
 
 #if defined(_DEBUG)
-				case '0' | WKC_ALT: // Crash the game
-					*(byte*)0 = 0;
-					break;
+			case '0' | WKC_ALT: // Crash the game
+				*(byte*)0 = 0;
+				break;
 
-				case '1' | WKC_ALT: // Gimme money
-					/* Server can not cheat in advertise mode either! */
-					if (!_networking || !_network_server || !_network_advertise)
-						DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
-					break;
+			case '1' | WKC_ALT: // Gimme money
+				/* Server can not cheat in advertise mode either! */
+				if (!_networking || !_network_server || !_network_advertise)
+					DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
+				break;
 
-				case '2' | WKC_ALT: // Update the coordinates of all station signs
-					UpdateAllStationVirtCoord();
-					break;
+			case '2' | WKC_ALT: // Update the coordinates of all station signs
+				UpdateAllStationVirtCoord();
+				break;
 #endif
 
-				case '1' | WKC_CTRL:
-				case '2' | WKC_CTRL:
-				case '3' | WKC_CTRL:
-				case '4' | WKC_CTRL:
-				case '5' | WKC_CTRL:
-				case '6' | WKC_CTRL:
-				case '7' | WKC_CTRL:
-				case '8' | WKC_CTRL:
-				case '9' | WKC_CTRL:
-					/* Transparency toggle hot keys */
-					ToggleTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL)));
-					MarkWholeScreenDirty();
-					break;
+			case '1' | WKC_CTRL:
+			case '2' | WKC_CTRL:
+			case '3' | WKC_CTRL:
+			case '4' | WKC_CTRL:
+			case '5' | WKC_CTRL:
+			case '6' | WKC_CTRL:
+			case '7' | WKC_CTRL:
+			case '8' | WKC_CTRL:
+			case '9' | WKC_CTRL:
+				/* Transparency toggle hot keys */
+				ToggleTransparency((TransparencyOption)(keycode - ('1' | WKC_CTRL)));
+				MarkWholeScreenDirty();
+				break;
 
-				case '1' | WKC_CTRL | WKC_SHIFT:
-				case '2' | WKC_CTRL | WKC_SHIFT:
-				case '3' | WKC_CTRL | WKC_SHIFT:
-				case '4' | WKC_CTRL | WKC_SHIFT:
-				case '5' | WKC_CTRL | WKC_SHIFT:
-				case '6' | WKC_CTRL | WKC_SHIFT:
-				case '7' | WKC_CTRL | WKC_SHIFT:
-				case '8' | WKC_CTRL | WKC_SHIFT:
-					/* Invisibility toggle hot keys */
-					ToggleInvisibilityWithTransparency((TransparencyOption)(e->we.keypress.keycode - ('1' | WKC_CTRL | WKC_SHIFT)));
-					MarkWholeScreenDirty();
-					break;
+			case '1' | WKC_CTRL | WKC_SHIFT:
+			case '2' | WKC_CTRL | WKC_SHIFT:
+			case '3' | WKC_CTRL | WKC_SHIFT:
+			case '4' | WKC_CTRL | WKC_SHIFT:
+			case '5' | WKC_CTRL | WKC_SHIFT:
+			case '6' | WKC_CTRL | WKC_SHIFT:
+			case '7' | WKC_CTRL | WKC_SHIFT:
+			case '8' | WKC_CTRL | WKC_SHIFT:
+				/* Invisibility toggle hot keys */
+				ToggleInvisibilityWithTransparency((TransparencyOption)(keycode - ('1' | WKC_CTRL | WKC_SHIFT)));
+				MarkWholeScreenDirty();
+				break;
 
-				case 'X' | WKC_CTRL:
-					ShowTransparencyToolbar();
-					break;
+			case 'X' | WKC_CTRL:
+				ShowTransparencyToolbar();
+				break;
 
-				case 'X':
-					ResetRestoreAllTransparency();
-					break;
+			case 'X':
+				ResetRestoreAllTransparency();
+				break;
 
 #ifdef ENABLE_NETWORK
-				case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
-					if (_networking) {
-						const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
-						bool teamchat = false;
+			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
+				if (_networking) {
+					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					bool teamchat = false;
 
-						if (cio == NULL) break;
+					if (cio == NULL) break;
 
-						/* Only players actually playing can speak to team. Eg spectators cannot */
-						if (_patches.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
-							const NetworkClientInfo *ci;
-							FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-								if (ci->client_playas == cio->client_playas && ci != cio) {
-									teamchat = true;
-									break;
-								}
+					/* Only players actually playing can speak to team. Eg spectators cannot */
+					if (_patches.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
+						const NetworkClientInfo *ci;
+						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+							if (ci->client_playas == cio->client_playas && ci != cio) {
+								teamchat = true;
+								break;
 							}
 						}
-
-						ShowNetworkChatQueryWindow(teamchat ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
 					}
-					break;
 
-				case WKC_SHIFT | WKC_RETURN: case WKC_SHIFT | 'T': // send text message to all players
-					if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
-					break;
+					ShowNetworkChatQueryWindow(teamchat ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
+				}
+				break;
 
-				case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
-					if (_networking) {
-						const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
-						if (cio == NULL) break;
+			case WKC_SHIFT | WKC_RETURN: case WKC_SHIFT | 'T': // send text message to all players
+				if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+				break;
 
-						ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);
-					}
-					break;
+			case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
+				if (_networking) {
+					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					if (cio == NULL) break;
+
+					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);
+				}
+				break;
 #endif
 
-				default: return;
-			}
-			e->we.keypress.cont = false;
-			break;
-
-		case WE_SCROLL: {
-			ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
-
-			if (vp == NULL) {
-				_cursor.fix_at = false;
-				_scrolling_viewport = false;
-			}
-
-			w->viewport->scrollpos_x += ScaleByZoom(e->we.scroll.delta.x, vp->zoom);
-			w->viewport->scrollpos_y += ScaleByZoom(e->we.scroll.delta.y, vp->zoom);
-			w->viewport->dest_scrollpos_x = w->viewport->scrollpos_x;
-			w->viewport->dest_scrollpos_y = w->viewport->scrollpos_y;
-		} break;
-
-		case WE_MOUSEWHEEL:
-			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
-			break;
-
-		case WE_INVALIDATE_DATA:
-			/* Forward the message to the appropiate toolbar (ingame or scenario editor) */
-			InvalidateWindowData(WC_MAIN_TOOLBAR, 0, e->we.invalidate.data);
-			break;
+			default: return true;
+		}
+		return false;
 	}
-}
+
+	virtual void OnScroll(Point delta)
+	{
+		ViewPort *vp = IsPtInWindowViewport(this, _cursor.pos.x, _cursor.pos.y);
+
+		if (vp == NULL) {
+			_cursor.fix_at = false;
+			_scrolling_viewport = false;
+		}
+
+		this->viewport->scrollpos_x += ScaleByZoom(delta.x, vp->zoom);
+		this->viewport->scrollpos_y += ScaleByZoom(delta.y, vp->zoom);
+		this->viewport->dest_scrollpos_x = this->viewport->scrollpos_x;
+		this->viewport->dest_scrollpos_y = this->viewport->scrollpos_y;
+	};
+
+	virtual void OnMouseWheel(int wheel)
+	{
+		ZoomInOrOutToCursorWindow(wheel < 0, this);
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		/* Forward the message to the appropiate toolbar (ingame or scenario editor) */
+		InvalidateWindowData(WC_MAIN_TOOLBAR, 0, data);
+	}
+};
 
 
 void ShowSelectGameWindow();
@@ -409,11 +415,7 @@ void SetupColorsAndInitialWindow()
 		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
 	}
 
-	int width = _screen.width;
-	int height = _screen.height;
-
-	Window *w = new Window(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
-	InitializeWindowViewport(w, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
+	new MainWindow(_screen.width, _screen.height);
 
 	/* XXX: these are not done */
 	switch (_game_mode) {
