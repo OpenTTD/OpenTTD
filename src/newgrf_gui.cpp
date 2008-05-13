@@ -109,121 +109,126 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 }
 
 
-/* Dialogue for adding NewGRF files to the selection */
-struct newgrf_add_d {
+/**
+ * Window for adding NewGRF files
+ */
+struct NewGRFAddWindow : public Window {
+	/* Names of the add a newgrf window widgets */
+	enum AddNewGRFWindowWidgets {
+		ANGRFW_CLOSEBOX = 0,
+		ANGRFW_CAPTION,
+		ANGRFW_BACKGROUND,
+		ANGRFW_GRF_LIST,
+		ANGRFW_SCROLLBAR,
+		ANGRFW_GRF_INFO,
+		ANGRFW_ADD,
+		ANGRFW_RESCAN,
+		ANGRFW_RESIZE,
+	};
+
 	GRFConfig **list;
 	const GRFConfig *sel;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(newgrf_add_d));
 
-/* Names of the add a newgrf window widgets */
-enum AddNewGRFWindowWidgets {
-	ANGRFW_CLOSEBOX = 0,
-	ANGRFW_CAPTION,
-	ANGRFW_BACKGROUND,
-	ANGRFW_GRF_LIST,
-	ANGRFW_SCROLLBAR,
-	ANGRFW_GRF_INFO,
-	ANGRFW_ADD,
-	ANGRFW_RESCAN,
-	ANGRFW_RESIZE,
-};
+	NewGRFAddWindow(const WindowDesc *desc, GRFConfig **list) : Window(desc, 0)
+	{
+		this->list = list;
+		this->resize.step_height = 10;
 
-static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			const GRFConfig *c;
-			const Widget *wl = &w->widget[ANGRFW_GRF_LIST];
-			int n = 0;
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-			/* Count the number of GRFs */
-			for (c = _all_grfs; c != NULL; c = c->next) n++;
+	virtual void OnPaint()
+	{
+		const GRFConfig *c;
+		const Widget *wl = &this->widget[ANGRFW_GRF_LIST];
+		int n = 0;
 
-			w->vscroll.cap = (wl->bottom - wl->top) / 10;
-			SetVScrollCount(w, n);
+		/* Count the number of GRFs */
+		for (c = _all_grfs; c != NULL; c = c->next) n++;
 
-			w->SetWidgetDisabledState(ANGRFW_ADD, WP(w, newgrf_add_d).sel == NULL || WP(w, newgrf_add_d).sel->IsOpenTTDBaseGRF());
-			DrawWindowWidgets(w);
+		this->vscroll.cap = (wl->bottom - wl->top) / 10;
+		SetVScrollCount(this, n);
 
-			GfxFillRect(wl->left + 1, wl->top + 1, wl->right, wl->bottom, 0xD7);
+		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
+		DrawWindowWidgets(this);
 
-			uint y = wl->top + 1;
-			for (c = _all_grfs, n = 0; c != NULL && n < (w->vscroll.pos + w->vscroll.cap); c = c->next, n++) {
-				if (n >= w->vscroll.pos) {
-					bool h = c == WP(w, newgrf_add_d).sel;
-					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+		GfxFillRect(wl->left + 1, wl->top + 1, wl->right, wl->bottom, 0xD7);
 
-					/* Draw selection background */
-					if (h) GfxFillRect(3, y, w->width - 15, y + 9, 156);
-					DoDrawStringTruncated(text, 4, y, h ? TC_WHITE : TC_ORANGE, w->width - 18);
-					y += 10;
-				}
+		uint y = wl->top + 1;
+		for (c = _all_grfs, n = 0; c != NULL && n < (this->vscroll.pos + this->vscroll.cap); c = c->next, n++) {
+			if (n >= this->vscroll.pos) {
+				bool h = c == this->sel;
+				const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+
+				/* Draw selection background */
+				if (h) GfxFillRect(3, y, this->width - 15, y + 9, 156);
+				DoDrawStringTruncated(text, 4, y, h ? TC_WHITE : TC_ORANGE, this->width - 18);
+				y += 10;
 			}
-
-			if (WP(w, newgrf_add_d).sel != NULL) {
-				const Widget *wi = &w->widget[ANGRFW_GRF_INFO];
-				ShowNewGRFInfo(WP(w, newgrf_add_d).sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, false);
-			}
-			break;
 		}
 
-		case WE_DOUBLE_CLICK:
-			if (e->we.click.widget != ANGRFW_GRF_LIST) break;
-			e->we.click.widget = ANGRFW_ADD;
-			/* Fall through */
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case ANGRFW_GRF_LIST: {
-					/* Get row... */
-					const GRFConfig *c;
-					uint i = (e->we.click.pt.y - w->widget[ANGRFW_GRF_LIST].top) / 10 + w->vscroll.pos;
-
-					for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
-					WP(w, newgrf_add_d).sel = c;
-					w->SetDirty();
-					break;
-				}
-
-				case ANGRFW_ADD: // Add selection to list
-					if (WP(w, newgrf_add_d).sel != NULL) {
-						const GRFConfig *src = WP(w, newgrf_add_d).sel;
-						GRFConfig **list;
-
-						/* Find last entry in the list, checking for duplicate grfid on the way */
-						for (list = WP(w, newgrf_add_d).list; *list != NULL; list = &(*list)->next) {
-							if ((*list)->grfid == src->grfid) {
-								ShowErrorMessage(INVALID_STRING_ID, STR_NEWGRF_DUPLICATE_GRFID, 0, 0);
-								return;
-							}
-						}
-
-						/* Copy GRF details from scanned list */
-						GRFConfig *c = CallocT<GRFConfig>(1);
-						*c = *src;
-						c->filename = strdup(src->filename);
-						if (src->name      != NULL) c->name      = strdup(src->name);
-						if (src->info      != NULL) c->info      = strdup(src->info);
-						c->next = NULL;
-
-						/* Append GRF config to configuration list */
-						*list = c;
-
-						DeleteWindowByClass(WC_SAVELOAD);
-						InvalidateWindowData(WC_GAME_OPTIONS, 0);
-					}
-					break;
-
-				case ANGRFW_RESCAN: // Rescan list
-					WP(w, newgrf_add_d).sel = NULL;
-					ScanNewGRFFiles();
-					w->SetDirty();
-					break;
-			}
-			break;
+		if (this->sel != NULL) {
+			const Widget *wi = &this->widget[ANGRFW_GRF_INFO];
+			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, false);
+		}
 	}
-}
+
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget == ANGRFW_GRF_LIST) this->OnClick(pt, ANGRFW_ADD);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case ANGRFW_GRF_LIST: {
+				/* Get row... */
+				const GRFConfig *c;
+				uint i = (pt.y - this->widget[ANGRFW_GRF_LIST].top) / 10 + this->vscroll.pos;
+
+				for (c = _all_grfs; c != NULL && i > 0; c = c->next, i--) {}
+				this->sel = c;
+				this->SetDirty();
+				break;
+			}
+
+			case ANGRFW_ADD: // Add selection to list
+				if (this->sel != NULL) {
+					const GRFConfig *src = this->sel;
+					GRFConfig **list;
+
+					/* Find last entry in the list, checking for duplicate grfid on the way */
+					for (list = this->list; *list != NULL; list = &(*list)->next) {
+						if ((*list)->grfid == src->grfid) {
+							ShowErrorMessage(INVALID_STRING_ID, STR_NEWGRF_DUPLICATE_GRFID, 0, 0);
+							return;
+						}
+					}
+
+					/* Copy GRF details from scanned list */
+					GRFConfig *c = CallocT<GRFConfig>(1);
+					*c = *src;
+					c->filename = strdup(src->filename);
+					if (src->name      != NULL) c->name      = strdup(src->name);
+					if (src->info      != NULL) c->info      = strdup(src->info);
+					c->next = NULL;
+
+					/* Append GRF config to configuration list */
+					*list = c;
+
+					DeleteWindowByClass(WC_SAVELOAD);
+					InvalidateWindowData(WC_GAME_OPTIONS, 0);
+				}
+				break;
+
+			case ANGRFW_RESCAN: // Rescan list
+				this->sel = NULL;
+				ScanNewGRFFiles();
+				this->SetDirty();
+				break;
+		}
+	}
+};
 
 /* Widget definition for the add a newgrf window */
 static const Widget _newgrf_add_dlg_widgets[] = {
@@ -245,303 +250,283 @@ static const WindowDesc _newgrf_add_dlg_desc = {
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_add_dlg_widgets,
-	NewGRFAddDlgWndProc,
+	NULL,
 };
 
 
-/* 'NewGRF Settings' dialogue */
-struct newgrf_d {
+static void NewGRFConfirmationCallback(Window *w, bool confirmed);
+
+/**
+ * Window for showing NewGRF files
+ */
+struct NewGRFWindow : public Window {
+	/* Names of the manage newgrfs window widgets */
+	enum ShowNewGRFStateWidgets {
+		SNGRFS_CLOSEBOX = 0,
+		SNGRFS_CAPTION,
+		SNGRFS_BACKGROUND,
+		SNGRFS_ADD,
+		SNGRFS_REMOVE,
+		SNGRFS_MOVE_UP,
+		SNGRFS_MOVE_DOWN,
+		SNGRFS_FILE_LIST,
+		SNGRFS_SCROLLBAR,
+		SNGRFS_NEWGRF_INFO,
+		SNGRFS_SET_PARAMETERS,
+		SNGRFS_APPLY_CHANGES,
+		SNGRFS_RESIZE,
+	};
+
 	GRFConfig **orig_list; ///< grf list the window is shown with
-	GRFConfig **list;      ///< temporary grf list to which changes are made
+	GRFConfig *list;       ///< temporary grf list to which changes are made
 	GRFConfig *sel;        ///< selected grf item
 	bool editable;         ///< is the window editable
 	bool show_params;      ///< are the grf-parameters shown in the info-panel
 	bool execute;          ///< on pressing 'apply changes' are grf changes applied immediately, or only list is updated
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(newgrf_d));
 
+	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool exec_changes, GRFConfig **config) : Window(desc, 0)
+	{
+		this->resize.step_height = 14;
+		this->sel         = NULL;
+		this->list        = NULL;
+		this->orig_list   = config;
+		this->editable    = editable;
+		this->execute     = exec_changes;
+		this->show_params = show_params;
 
-/* Names of the manage newgrfs window widgets */
-enum ShowNewGRFStateWidgets {
-	SNGRFS_CLOSEBOX = 0,
-	SNGRFS_CAPTION,
-	SNGRFS_BACKGROUND,
-	SNGRFS_ADD,
-	SNGRFS_REMOVE,
-	SNGRFS_MOVE_UP,
-	SNGRFS_MOVE_DOWN,
-	SNGRFS_FILE_LIST,
-	SNGRFS_SCROLLBAR,
-	SNGRFS_NEWGRF_INFO,
-	SNGRFS_SET_PARAMETERS,
-	SNGRFS_APPLY_CHANGES,
-	SNGRFS_RESIZE,
-};
+		CopyGRFConfigList(&this->list, *config, false);
 
-static void SetupNewGRFState(Window *w)
-{
-	bool disable_all = WP(w, newgrf_d).sel == NULL || !WP(w, newgrf_d).editable;
-
-	w->SetWidgetDisabledState(SNGRFS_ADD, !WP(w, newgrf_d).editable);
-	w->SetWidgetsDisabledState(disable_all,
-		SNGRFS_REMOVE,
-		SNGRFS_MOVE_UP,
-		SNGRFS_MOVE_DOWN,
-		WIDGET_LIST_END
-	);
-	w->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !WP(w, newgrf_d).show_params || disable_all);
-
-	if (!disable_all) {
-		/* All widgets are now enabled, so disable widgets we can't use */
-		if (WP(w, newgrf_d).sel == *WP(w, newgrf_d).list) w->DisableWidget(SNGRFS_MOVE_UP);
-		if (WP(w, newgrf_d).sel->next == NULL) w->DisableWidget(SNGRFS_MOVE_DOWN);
-		if (WP(w, newgrf_d).sel->IsOpenTTDBaseGRF()) w->DisableWidget(SNGRFS_REMOVE);
+		this->FindWindowPlacementAndResize(desc);
+		this->SetupNewGRFWindow();
 	}
-}
 
-
-static void SetupNewGRFWindow(Window *w)
-{
-	const GRFConfig *c;
-	int i;
-
-	for (c = *WP(w, newgrf_d).list, i = 0; c != NULL; c = c->next, i++) {}
-
-	w->vscroll.cap = (w->widget[SNGRFS_FILE_LIST].bottom - w->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
-	SetVScrollCount(w, i);
-	w->SetWidgetDisabledState(SNGRFS_APPLY_CHANGES, !WP(w, newgrf_d).editable);
-}
-
-
-/** Callback function for the newgrf 'apply changes' confirmation window
- * @param w Window which is calling this callback
- * @param confirmed boolean value, true when yes was clicked, false otherwise
- */
-static void NewGRFConfirmationCallback(Window *w, bool confirmed)
-{
-	if (confirmed) {
-		newgrf_d *nd = &WP(w, newgrf_d);
-		GRFConfig *c;
-		int i = 0;
-
-		CopyGRFConfigList(nd->orig_list, *nd->list, false);
-		ReloadNewGRFData();
-
-		/* Show new, updated list */
-		for (c = *nd->list; c != NULL && c != nd->sel; c = c->next, i++) {}
-		CopyGRFConfigList(nd->list, *nd->orig_list, false);
-		for (c = *nd->list; c != NULL && i > 0; c = c->next, i--) {}
-		nd->sel = c;
-
-		w->SetDirty();
-	}
-}
-
-
-static void NewGRFWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			const GRFConfig *c;
-			int i, y;
-
-			SetupNewGRFState(w);
-
-			DrawWindowWidgets(w);
-
-			/* Draw NewGRF list */
-			y = w->widget[SNGRFS_FILE_LIST].top;
-			for (c = *WP(w, newgrf_d).list, i = 0; c != NULL; c = c->next, i++) {
-				if (i >= w->vscroll.pos && i < w->vscroll.pos + w->vscroll.cap) {
-					const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
-					SpriteID pal;
-					byte txtoffset;
-
-					/* Pick a colour */
-					switch (c->status) {
-						case GCS_NOT_FOUND:
-						case GCS_DISABLED:
-							pal = PALETTE_TO_RED;
-							break;
-						case GCS_ACTIVATED:
-							pal = PALETTE_TO_GREEN;
-							break;
-						default:
-							pal = PALETTE_TO_BLUE;
-							break;
-					}
-
-					/* Do not show a "not-failure" colour when it actually failed to load */
-					if (pal != PALETTE_TO_RED) {
-						if (HasBit(c->flags, GCF_STATIC)) {
-							pal = PALETTE_TO_GREY;
-						} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
-							pal = PALETTE_TO_ORANGE;
-						}
-					}
-
-					DrawSprite(SPR_SQUARE, pal, 5, y + 2);
-					if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, 20, y + 2);
-					txtoffset = c->error != NULL ? 35 : 25;
-					DoDrawStringTruncated(text, txtoffset, y + 3, WP(w, newgrf_d).sel == c ? TC_WHITE : TC_BLACK, w->width - txtoffset - 10);
-					y += 14;
-				}
-			}
-
-			if (WP(w, newgrf_d).sel != NULL) {
-				/* Draw NewGRF file info */
-				const Widget *wi = &w->widget[SNGRFS_NEWGRF_INFO];
-				ShowNewGRFInfo(WP(w, newgrf_d).sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, WP(w, newgrf_d).show_params);
-			}
-
-			break;
+	~NewGRFWindow()
+	{
+		if (!this->execute) {
+			CopyGRFConfigList(this->orig_list, this->list, true);
+			ResetGRFConfig(false);
+			ReloadNewGRFData();
 		}
 
-		case WE_INVALIDATE_DATA:
-			SetupNewGRFWindow(w);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case SNGRFS_ADD: { // Add GRF
-					GRFConfig **list = WP(w, newgrf_d).list;
-					Window *w;
-
-					DeleteWindowByClass(WC_SAVELOAD);
-					w = new Window(&_newgrf_add_dlg_desc);
-					w->resize.step_height = 10;
-
-					WP(w, newgrf_add_d).list = list;
-					break;
-				}
-
-				case SNGRFS_REMOVE: { // Remove GRF
-					GRFConfig **pc, *c, *newsel;
-
-					/* Choose the next GRF file to be the selected file */
-					newsel = WP(w, newgrf_d).sel->next;
-
-					for (pc = WP(w, newgrf_d).list; (c = *pc) != NULL; pc = &c->next) {
-						/* If the new selection is empty (i.e. we're deleting the last item
-						 * in the list, pick the file just before the selected file */
-						if (newsel == NULL && c->next == WP(w, newgrf_d).sel) newsel = c;
-
-						if (c == WP(w, newgrf_d).sel) {
-							*pc = c->next;
-							free(c);
-							break;
-						}
-					}
-
-					WP(w, newgrf_d).sel = newsel;
-					SetupNewGRFWindow(w);
-					w->SetDirty();
-					break;
-				}
-
-				case SNGRFS_MOVE_UP: { // Move GRF up
-					GRFConfig **pc, *c;
-					if (WP(w, newgrf_d).sel == NULL) break;
-
-					for (pc = WP(w, newgrf_d).list; (c = *pc) != NULL; pc = &c->next) {
-						if (c->next == WP(w, newgrf_d).sel) {
-							c->next = WP(w, newgrf_d).sel->next;
-							WP(w, newgrf_d).sel->next = c;
-							*pc = WP(w, newgrf_d).sel;
-							break;
-						}
-					}
-					w->SetDirty();
-					break;
-				}
-
-				case SNGRFS_MOVE_DOWN: { // Move GRF down
-					GRFConfig **pc, *c;
-					if (WP(w, newgrf_d).sel == NULL) break;
-
-					for (pc = WP(w, newgrf_d).list; (c = *pc) != NULL; pc = &c->next) {
-						if (c == WP(w, newgrf_d).sel) {
-							*pc = c->next;
-							c->next = c->next->next;
-							(*pc)->next = c;
-							break;
-						}
-					}
-					w->SetDirty();
-					break;
-				}
-
-				case SNGRFS_FILE_LIST: { // Select a GRF
-					GRFConfig *c;
-					uint i = (e->we.click.pt.y - w->widget[SNGRFS_FILE_LIST].top) / 14 + w->vscroll.pos;
-
-					for (c = *WP(w, newgrf_d).list; c != NULL && i > 0; c = c->next, i--) {}
-					WP(w, newgrf_d).sel = c;
-
-					w->SetDirty();
-					break;
-				}
-
-				case SNGRFS_APPLY_CHANGES: // Apply changes made to GRF list
-					if (WP(w, newgrf_d).execute) {
-						ShowQuery(
-							STR_POPUP_CAUTION_CAPTION,
-							STR_NEWGRF_CONFIRMATION_TEXT,
-							w,
-							NewGRFConfirmationCallback
-						);
-					} else {
-						CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list, true);
-						ResetGRFConfig(false);
-						ReloadNewGRFData();
-					}
-					break;
-
-				case SNGRFS_SET_PARAMETERS: { // Edit parameters
-					char buff[512];
-					if (WP(w, newgrf_d).sel == NULL) break;
-
-					GRFBuildParamList(buff, WP(w, newgrf_d).sel, lastof(buff));
-					ShowQueryString(BindCString(buff), STR_NEWGRF_PARAMETER_QUERY, 63, 250, w, CS_ALPHANUMERAL);
-					break;
-				}
-			}
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (e->we.edittext.str != NULL) {
-				/* Parse our new "int list" */
-				GRFConfig *c = WP(w, newgrf_d).sel;
-				c->num_params = parse_intlist(e->we.edittext.str, (int*)c->param, lengthof(c->param));
-
-				/* parse_intlist returns -1 on error */
-				if (c->num_params == (byte)-1) c->num_params = 0;
-
-				w->SetDirty();
-			}
-			break;
-
-		case WE_DESTROY:
-			if (!WP(w, newgrf_d).execute) {
-				CopyGRFConfigList(WP(w, newgrf_d).orig_list, *WP(w, newgrf_d).list, true);
-				ResetGRFConfig(false);
-				ReloadNewGRFData();
-			}
-			/* Remove the temporary copy of grf-list used in window */
-			ClearGRFConfigList(WP(w, newgrf_d).list);
-			break;
-
-		case WE_RESIZE:
-			if (e->we.sizing.diff.x != 0) {
-				ResizeButtons(w, SNGRFS_ADD, SNGRFS_MOVE_DOWN);
-				ResizeButtons(w, SNGRFS_SET_PARAMETERS, SNGRFS_APPLY_CHANGES);
-			}
-			w->vscroll.cap += e->we.sizing.diff.y / 14;
-			w->widget[SNGRFS_FILE_LIST].data = (w->vscroll.cap << 8) + 1;
-			SetupNewGRFWindow(w);
-			break;
+		/* Remove the temporary copy of grf-list used in window */
+		ClearGRFConfigList(&this->list);
 	}
-}
+
+	void SetupNewGRFWindow()
+	{
+		const GRFConfig *c;
+		int i;
+
+		for (c = this->list, i = 0; c != NULL; c = c->next, i++) {}
+
+		this->vscroll.cap = (this->widget[SNGRFS_FILE_LIST].bottom - this->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
+		SetVScrollCount(this, i);
+
+		this->SetWidgetDisabledState(SNGRFS_ADD, !this->editable);
+		this->SetWidgetDisabledState(SNGRFS_APPLY_CHANGES, !this->editable);
+	}
+
+	virtual void OnPaint()
+	{
+		bool disable_all = this->sel == NULL || !this->editable;
+
+		this->SetWidgetsDisabledState(disable_all,
+			SNGRFS_REMOVE,
+			SNGRFS_MOVE_UP,
+			SNGRFS_MOVE_DOWN,
+			WIDGET_LIST_END
+		);
+		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all);
+
+		if (!disable_all) {
+			/* All widgets are now enabled, so disable widgets we can't use */
+			if (this->sel == this->list)       this->DisableWidget(SNGRFS_MOVE_UP);
+			if (this->sel->next == NULL)       this->DisableWidget(SNGRFS_MOVE_DOWN);
+			if (this->sel->IsOpenTTDBaseGRF()) this->DisableWidget(SNGRFS_REMOVE);
+		}
+
+		DrawWindowWidgets(this);
+
+		/* Draw NewGRF list */
+		int y = this->widget[SNGRFS_FILE_LIST].top;
+		int i = 0;
+		for (const GRFConfig *c = this->list; c != NULL; c = c->next, i++) {
+			if (i >= this->vscroll.pos && i < this->vscroll.pos + this->vscroll.cap) {
+				const char *text = (c->name != NULL && !StrEmpty(c->name)) ? c->name : c->filename;
+				SpriteID pal;
+				byte txtoffset;
+
+				/* Pick a colour */
+				switch (c->status) {
+					case GCS_NOT_FOUND:
+					case GCS_DISABLED:
+						pal = PALETTE_TO_RED;
+						break;
+					case GCS_ACTIVATED:
+						pal = PALETTE_TO_GREEN;
+						break;
+					default:
+						pal = PALETTE_TO_BLUE;
+						break;
+				}
+
+				/* Do not show a "not-failure" colour when it actually failed to load */
+				if (pal != PALETTE_TO_RED) {
+					if (HasBit(c->flags, GCF_STATIC)) {
+						pal = PALETTE_TO_GREY;
+					} else if (HasBit(c->flags, GCF_COMPATIBLE)) {
+						pal = PALETTE_TO_ORANGE;
+					}
+				}
+
+				DrawSprite(SPR_SQUARE, pal, 5, y + 2);
+				if (c->error != NULL) DrawSprite(SPR_WARNING_SIGN, 0, 20, y + 2);
+				txtoffset = c->error != NULL ? 35 : 25;
+				DoDrawStringTruncated(text, txtoffset, y + 3, this->sel == c ? TC_WHITE : TC_BLACK, this->width - txtoffset - 10);
+				y += 14;
+			}
+		}
+
+		if (this->sel != NULL) {
+			/* Draw NewGRF file info */
+			const Widget *wi = &this->widget[SNGRFS_NEWGRF_INFO];
+			ShowNewGRFInfo(this->sel, wi->left + 2, wi->top + 2, wi->right - wi->left - 2, wi->bottom, this->show_params);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case SNGRFS_ADD: // Add GRF
+				DeleteWindowByClass(WC_SAVELOAD);
+				new NewGRFAddWindow(&_newgrf_add_dlg_desc, &this->list);
+				break;
+
+			case SNGRFS_REMOVE: { // Remove GRF
+				GRFConfig **pc, *c, *newsel;
+
+				/* Choose the next GRF file to be the selected file */
+				newsel = this->sel->next;
+
+				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next) {
+					/* If the new selection is empty (i.e. we're deleting the last item
+					 * in the list, pick the file just before the selected file */
+					if (newsel == NULL && c->next == this->sel) newsel = c;
+
+					if (c == this->sel) {
+						*pc = c->next;
+						free(c);
+						break;
+					}
+				}
+
+				this->sel = newsel;
+				this->SetupNewGRFWindow();
+				this->SetDirty();
+				break;
+			}
+
+			case SNGRFS_MOVE_UP: { // Move GRF up
+				GRFConfig **pc, *c;
+				if (this->sel == NULL) break;
+
+				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next) {
+					if (c->next == this->sel) {
+						c->next = this->sel->next;
+						this->sel->next = c;
+						*pc = this->sel;
+						break;
+					}
+				}
+				this->SetDirty();
+				break;
+			}
+
+			case SNGRFS_MOVE_DOWN: { // Move GRF down
+				GRFConfig **pc, *c;
+				if (this->sel == NULL) break;
+
+				for (pc = &this->list; (c = *pc) != NULL; pc = &c->next) {
+					if (c == this->sel) {
+						*pc = c->next;
+						c->next = c->next->next;
+						(*pc)->next = c;
+						break;
+					}
+				}
+				this->SetDirty();
+				break;
+			}
+
+			case SNGRFS_FILE_LIST: { // Select a GRF
+				GRFConfig *c;
+				uint i = (pt.y - this->widget[SNGRFS_FILE_LIST].top) / 14 + this->vscroll.pos;
+
+				for (c = this->list; c != NULL && i > 0; c = c->next, i--) {}
+				this->sel = c;
+
+				this->SetDirty();
+				break;
+			}
+
+			case SNGRFS_APPLY_CHANGES: // Apply changes made to GRF list
+				if (this->execute) {
+					ShowQuery(
+						STR_POPUP_CAUTION_CAPTION,
+						STR_NEWGRF_CONFIRMATION_TEXT,
+						this,
+						NewGRFConfirmationCallback
+					);
+				} else {
+					CopyGRFConfigList(this->orig_list, this->list, true);
+					ResetGRFConfig(false);
+					ReloadNewGRFData();
+				}
+				break;
+
+			case SNGRFS_SET_PARAMETERS: { // Edit parameters
+				if (this->sel == NULL) break;
+
+				char buff[512];
+				GRFBuildParamList(buff, this->sel, lastof(buff));
+				ShowQueryString(BindCString(buff), STR_NEWGRF_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL);
+				break;
+			}
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (str == NULL) return;
+
+		/* Parse our new "int list" */
+		GRFConfig *c = this->sel;
+		c->num_params = parse_intlist(str, (int*)c->param, lengthof(c->param));
+
+		/* parse_intlist returns -1 on error */
+		if (c->num_params == (byte)-1) c->num_params = 0;
+
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		if (delta.x != 0) {
+			ResizeButtons(this, SNGRFS_ADD, SNGRFS_MOVE_DOWN);
+			ResizeButtons(this, SNGRFS_SET_PARAMETERS, SNGRFS_APPLY_CHANGES);
+		}
+
+		this->vscroll.cap += delta.y / 14;
+		this->widget[SNGRFS_FILE_LIST].data = (this->vscroll.cap << 8) + 1;
+
+		this->SetupNewGRFWindow();
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		this->SetupNewGRFWindow();
+	}
+};
 
 /* Widget definition of the manage newgrfs window */
 static const Widget _newgrf_widgets[] = {
@@ -567,8 +552,33 @@ static const WindowDesc _newgrf_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,
-	NewGRFWndProc,
+	NULL,
 };
+
+/** Callback function for the newgrf 'apply changes' confirmation window
+ * @param w Window which is calling this callback
+ * @param confirmed boolean value, true when yes was clicked, false otherwise
+ */
+static void NewGRFConfirmationCallback(Window *w, bool confirmed)
+{
+	if (confirmed) {
+		NewGRFWindow *nw = dynamic_cast<NewGRFWindow*>(w);
+		GRFConfig *c;
+		int i = 0;
+
+		CopyGRFConfigList(nw->orig_list, nw->list, false);
+		ReloadNewGRFData();
+
+		/* Show new, updated list */
+		for (c = nw->list; c != NULL && c != nw->sel; c = c->next, i++) {}
+		CopyGRFConfigList(&nw->list, *nw->orig_list, false);
+		for (c = nw->list; c != NULL && i > 0; c = c->next, i--) {}
+		nw->sel = c;
+
+		w->SetDirty();
+	}
+}
+
 
 
 /** Setup the NewGRF gui
@@ -579,23 +589,6 @@ static const WindowDesc _newgrf_desc = {
  * @param config pointer to a linked-list of grfconfig's that will be shown */
 void ShowNewGRFSettings(bool editable, bool show_params, bool exec_changes, GRFConfig **config)
 {
-	static GRFConfig *local = NULL;
-	Window *w;
-
 	DeleteWindowByClass(WC_GAME_OPTIONS);
-	w = new Window(&_newgrf_desc);
-	if (w == NULL) return;
-
-	w->resize.step_height = 14;
-	CopyGRFConfigList(&local, *config, false);
-
-	/* Clear selections */
-	WP(w, newgrf_d).sel         = NULL;
-	WP(w, newgrf_d).list        = &local;
-	WP(w, newgrf_d).orig_list   = config;
-	WP(w, newgrf_d).editable    = editable;
-	WP(w, newgrf_d).execute     = exec_changes;
-	WP(w, newgrf_d).show_params = show_params;
-
-	SetupNewGRFWindow(w);
+	new NewGRFWindow(&_newgrf_desc, editable, show_params, exec_changes, config);
 }
