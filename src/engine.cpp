@@ -27,6 +27,7 @@
 #include "settings_type.h"
 #include "oldpool_func.h"
 #include "core/alloc_func.hpp"
+#include "vehicle_func.h"
 #include "map"
 
 #include "table/strings.h"
@@ -138,6 +139,42 @@ void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint 
 	assert(begin <= (uint)el->size());
 	assert(begin + num_items <= (uint)el->size());
 	qsort(&((*el)[begin]), num_items, sizeof(EngineID), compare);
+}
+
+void SetCachedEngineCounts()
+{
+	uint engines = GetEnginePoolSize();
+
+	/* Set up the engine count for all players */
+	Player *p;
+	FOR_ALL_PLAYERS(p) {
+		free(p->num_engines);
+		p->num_engines = CallocT<EngineID>(engines);
+	}
+
+	/* Recalculate */
+	Group *g;
+	FOR_ALL_GROUPS(g) {
+		free(g->num_engines);
+		g->num_engines = CallocT<EngineID>(engines);
+	}
+
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (!IsEngineCountable(v)) continue;
+
+		assert(v->engine_type < engines);
+
+		GetPlayer(v->owner)->num_engines[v->engine_type]++;
+
+		if (v->group_id == DEFAULT_GROUP) continue;
+
+		g = GetGroup(v->group_id);
+		assert(v->type == g->vehicle_type);
+		assert(v->owner == g->owner);
+
+		g->num_engines[v->engine_type]++;
+	}
 }
 
 void SetupEngines()

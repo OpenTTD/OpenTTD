@@ -1335,42 +1335,17 @@ static bool InitializeWindowsAndCaches()
 	UpdateAllTownVirtCoords();
 	UpdateAllWaypointSigns();
 
-	/* Recalculate */
-	Group *g;
-	FOR_ALL_GROUPS(g) {
-		g->num_engines = CallocT<uint16>(GetEnginePoolSize());
-
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (!IsEngineCountable(v)) continue;
-
-			if (v->group_id != g->index || v->type != g->vehicle_type || v->owner != g->owner) continue;
-
-			g->num_engines[v->engine_type]++;
-		}
-	}
-
-	/* Set up the engine count for all players */
-	Player *players[MAX_PLAYERS];
-	const Vehicle *v;
-
-	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-		players[i] = GetPlayer(i);
-
+	Player *p;
+	FOR_ALL_PLAYERS(p) {
 		/* For each player, verify (while loading a scenario) that the inauguration date is the current year and set it
 		 * accordingly if it is not the case.  No need to set it on players that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
-		if (_file_to_saveload.filetype == FT_SCENARIO && players[i]->inaugurated_year != MIN_YEAR)
-			players[i]->inaugurated_year = _cur_year;
-
-		free(players[i]->num_engines);
-		players[i]->num_engines = CallocT<uint16>(GetEnginePoolSize());
+		if (_file_to_saveload.filetype == FT_SCENARIO && p->inaugurated_year != MIN_YEAR) {
+			p->inaugurated_year = _cur_year;
+		}
 	}
 
-	FOR_ALL_VEHICLES(v) {
-		if (!IsEngineCountable(v)) continue;
-		players[v->owner]->num_engines[v->engine_type]++;
-	}
+	SetCachedEngineCounts();
 
 	return true;
 }

@@ -27,6 +27,7 @@ void DeleteCustomEngineNames();
 
 bool IsEngineBuildable(EngineID engine, VehicleType type, PlayerID player);
 CargoID GetEngineCargoType(EngineID engine);
+void SetCachedEngineCounts();
 
 typedef int CDECL EngList_SortTypeFunction(const void*, const void*); ///< argument type for EngList_Sort()
 void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare);  ///< qsort of the engine list
