@@ -190,6 +190,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
+		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
 
 		this->caption_color = owner;
 		this->hscroll.cap = 224;
@@ -221,8 +222,6 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 			case VEH_SHIP:     this->sorting = &_sorting.ship;     break;
 			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
 		}
-
-		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
 
 		this->vehicles.sort_list = NULL;
 		this->vehicles.sort_type = this->sorting->criteria;
