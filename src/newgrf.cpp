@@ -466,22 +466,14 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				rvi->max_speed = speed;
 			} break;
 
-			case 0x0B: { // Power
-				uint16 power = grf_load_word(&buf);
+			case 0x0B: // Power
+				rvi->power = grf_load_word(&buf);
+				dewagonize(rvi->power, e);
+				break;
 
-				if (rvi->railveh_type == RAILVEH_MULTIHEAD) power /= 2;
-
-				rvi->power = power;
-				dewagonize(power, e);
-			} break;
-
-			case 0x0D: { // Running cost factor
-				uint8 runcostfact = grf_load_byte(&buf);
-
-				if (rvi->railveh_type == RAILVEH_MULTIHEAD) runcostfact /= 2;
-
-				rvi->running_cost = runcostfact;
-			} break;
+			case 0x0D: // Running cost factor
+				rvi->running_cost = grf_load_byte(&buf);
+				break;
 
 			case 0x0E: { // Running cost base
 				uint32 base = grf_load_dword(&buf);
@@ -513,18 +505,8 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				uint8 dual = grf_load_byte(&buf);
 
 				if (dual != 0) {
-					if (rvi->railveh_type != RAILVEH_MULTIHEAD) {
-						// adjust power and running cost if needed
-						rvi->power /= 2;
-						rvi->running_cost /= 2;
-					}
 					rvi->railveh_type = RAILVEH_MULTIHEAD;
 				} else {
-					if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
-						// adjust power and running cost if needed
-						rvi->power *= 2;
-						rvi->running_cost *= 2;
-					}
 					rvi->railveh_type = rvi->power == 0 ?
 						RAILVEH_WAGON : RAILVEH_SINGLEHEAD;
 				}
