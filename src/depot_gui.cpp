@@ -101,27 +101,12 @@ static const Widget _depot_widgets[] = {
 };
 
 
-struct depot_d {
-	VehicleID sel;
-	VehicleType type;
-	bool generate_list;
-	uint16 engine_list_length;
-	uint16 wagon_list_length;
-	uint16 engine_count;
-	uint16 wagon_count;
-	Vehicle **vehicle_list;
-	Vehicle **wagon_list;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(depot_d));
-
-static void DepotWndProc(Window *w, WindowEvent *e);
-
 static const WindowDesc _train_depot_desc = {
 	WDP_AUTO, WDP_AUTO, 36, 27, 36, 27,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	DepotWndProc
+	NULL
 };
 
 static const WindowDesc _road_depot_desc = {
@@ -129,7 +114,7 @@ static const WindowDesc _road_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	DepotWndProc
+	NULL
 };
 
 static const WindowDesc _ship_depot_desc = {
@@ -137,7 +122,7 @@ static const WindowDesc _ship_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	DepotWndProc
+	NULL
 };
 
 static const WindowDesc _aircraft_depot_desc = {
@@ -145,10 +130,11 @@ static const WindowDesc _aircraft_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	DepotWndProc
+	NULL
 };
 
 extern int WagonLengthToPixels(int len);
+extern void DepotSortList(Vehicle **v, uint16 length);
 
 /**
  * This is the Callback method after the cloning attempt of a vehicle
@@ -164,247 +150,6 @@ void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	Vehicle *v = GetVehicle(_new_vehicle_id);
 
 	ShowVehicleViewWindow(v);
-}
-
-static void DepotSellAllConfirmationCallback(Window *w, bool confirmed)
-{
-	if (confirmed) {
-		TileIndex tile = w->window_number;
-		byte vehtype = WP(w, depot_d).type;
-		DoCommandP(tile, vehtype, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
-	}
-}
-
-const Sprite *GetAircraftSprite(EngineID engine);
-
-/** Draw a vehicle in the depot window in the box with the top left corner at x,y
- * @param *w Window to draw in
- * @param *v Vehicle to draw
- * @param x Left side of the box to draw in
- * @param y Top of the box to draw in
- */
-static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
-{
-	byte diff_x = 0, diff_y = 0;
-
-	int sprite_y = y + w->resize.step_height - GetVehicleListHeight(v->type);
-
-	switch (v->type) {
-		case VEH_TRAIN:
-			DrawTrainImage(v, x + 21, sprite_y, WP(w, depot_d).sel, w->hscroll.cap + 4, w->hscroll.pos);
-
-			/* Number of wagons relative to a standard length wagon (rounded up) */
-			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
-			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
-			break;
-
-		case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, WP(w, depot_d).sel, 1); break;
-		case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, WP(w, depot_d).sel); break;
-		case VEH_AIRCRAFT: {
-			const Sprite *spr = GetSprite(v->GetImage(DIR_W));
-			DrawAircraftImage(v, x + 12,
-							  y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
-							  WP(w, depot_d).sel);
-		} break;
-		default: NOT_REACHED();
-	}
-
-	if (w->resize.step_height == 14) {
-		/* VEH_TRAIN and VEH_ROAD, which are low */
-		diff_x = 15;
-	} else {
-		/* VEH_SHIP and VEH_AIRCRAFT, which are tall */
-		diff_y = 12;
-	}
-
-	DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
-
-	SetDParam(0, v->unitnumber);
-	DrawString(x, y + 2, (uint16)(v->max_age - 366) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
-}
-
-static void DrawDepotWindow(Window *w)
-{
-	Vehicle **vl = WP(w, depot_d).vehicle_list;
-	TileIndex tile = w->window_number;
-	int x, y, i, maxval;
-	uint16 hnum;
-	uint16 num = WP(w, depot_d).engine_count;
-
-	/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
-	uint16 rows_in_display   = w->widget[DEPOT_WIDGET_MATRIX].data >> 8;
-	uint16 boxes_in_each_row = w->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
-
-	/* setup disabled buttons */
-	w->SetWidgetsDisabledState(!IsTileOwner(tile, _local_player),
-		DEPOT_WIDGET_STOP_ALL,
-		DEPOT_WIDGET_START_ALL,
-		DEPOT_WIDGET_SELL,
-		DEPOT_WIDGET_SELL_CHAIN,
-		DEPOT_WIDGET_SELL_ALL,
-		DEPOT_WIDGET_BUILD,
-		DEPOT_WIDGET_CLONE,
-		DEPOT_WIDGET_AUTOREPLACE,
-		WIDGET_LIST_END);
-
-	/* determine amount of items for scroller */
-	if (WP(w, depot_d).type == VEH_TRAIN) {
-		hnum = 8;
-		for (num = 0; num < WP(w, depot_d).engine_count; num++) {
-			const Vehicle *v = vl[num];
-			hnum = max(hnum, v->u.rail.cached_total_length);
-		}
-		/* Always have 1 empty row, so people can change the setting of the train */
-		SetVScrollCount(w, WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count + 1);
-		SetHScrollCount(w, WagonLengthToPixels(hnum));
-	} else {
-		SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
-	}
-
-	/* locate the depot struct */
-	if (WP(w, depot_d).type == VEH_AIRCRAFT) {
-		SetDParam(0, GetStationIndex(tile)); // Airport name
-	} else {
-		Depot *depot = GetDepotByTile(tile);
-		assert(depot != NULL);
-
-		SetDParam(0, depot->town_index);
-	}
-
-	DrawWindowWidgets(w);
-
-	num = w->vscroll.pos * boxes_in_each_row;
-	maxval = min(WP(w, depot_d).engine_count, num + (rows_in_display * boxes_in_each_row));
-
-	for (x = 2, y = 15; num < maxval; y += w->resize.step_height, x = 2) { // Draw the rows
-		byte i;
-
-		for (i = 0; i < boxes_in_each_row && num < maxval; i++, num++, x += w->resize.step_width) {
-			/* Draw all vehicles in the current row */
-			const Vehicle *v = vl[num];
-			DrawVehicleInDepot(w, v, x, y);
-		}
-	}
-
-	maxval = min(WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count, (w->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
-
-	/* draw the train wagons, that do not have an engine in front */
-	for (; num < maxval; num++, y += 14) {
-		const Vehicle *v = WP(w, depot_d).wagon_list[num - WP(w, depot_d).engine_count];
-		const Vehicle *u;
-
-		DrawTrainImage(v, x + 50, y, WP(w, depot_d).sel, w->hscroll.cap - 29, 0);
-		DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
-
-		/*Draw the train counter */
-		i = 0;
-		u = v;
-		do i++; while ((u = u->Next()) != NULL); // Determine length of train
-		SetDParam(0, i);                      // Set the counter
-		DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
-	}
-}
-
-struct GetDepotVehiclePtData {
-	Vehicle *head;
-	Vehicle *wagon;
-};
-
-enum DepotGUIAction {
-	MODE_ERROR,
-	MODE_DRAG_VEHICLE,
-	MODE_SHOW_VEHICLE,
-	MODE_START_STOP,
-};
-
-static DepotGUIAction GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh, GetDepotVehiclePtData *d)
-{
-	Vehicle **vl = WP(w, depot_d).vehicle_list;
-	uint xt, row, xm = 0, ym = 0;
-	int pos, skip = 0;
-	uint16 boxes_in_each_row = w->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
-
-	if (WP(w, depot_d).type == VEH_TRAIN) {
-		xt = 0;
-		x -= 23;
-	} else {
-		xt = x / w->resize.step_width;
-		xm = x % w->resize.step_width;
-		if (xt >= w->hscroll.cap) return MODE_ERROR;
-
-		ym = (y - 14) % w->resize.step_height;
-	}
-
-	row = (y - 14) / w->resize.step_height;
-	if (row >= w->vscroll.cap) return MODE_ERROR;
-
-	pos = ((row + w->vscroll.pos) * boxes_in_each_row) + xt;
-
-	if (WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count <= pos) {
-		if (WP(w, depot_d).type == VEH_TRAIN) {
-			d->head  = NULL;
-			d->wagon = NULL;
-			return MODE_DRAG_VEHICLE;
-		} else {
-			return MODE_ERROR; // empty block, so no vehicle is selected
-		}
-	}
-
-	if (WP(w, depot_d).engine_count > pos) {
-		*veh = vl[pos];
-		skip = w->hscroll.pos;
-	} else {
-		vl = WP(w, depot_d).wagon_list;
-		pos -= WP(w, depot_d).engine_count;
-		*veh = vl[pos];
-		/* free wagons don't have an initial loco. */
-		x -= _traininfo_vehicle_width;
-	}
-
-	switch (WP(w, depot_d).type) {
-		case VEH_TRAIN: {
-			Vehicle *v = *veh;
-			d->head = d->wagon = v;
-
-			/* either pressed the flag or the number, but only when it's a loco */
-			if (x < 0 && IsFrontEngine(v)) return (x >= -10) ? MODE_START_STOP : MODE_SHOW_VEHICLE;
-
-			skip = (skip * 8) / _traininfo_vehicle_width;
-			x = (x * 8) / _traininfo_vehicle_width;
-
-			/* Skip vehicles that are scrolled off the list */
-			x += skip;
-
-			/* find the vehicle in this row that was clicked */
-			while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->Next();
-
-			/* if an articulated part was selected, find its parent */
-			while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
-
-			d->wagon = v;
-
-			return MODE_DRAG_VEHICLE;
-			}
-			break;
-
-		case VEH_ROAD:
-			if (xm >= 24) return MODE_DRAG_VEHICLE;
-			if (xm <= 16) return MODE_SHOW_VEHICLE;
-			break;
-
-		case VEH_SHIP:
-			if (xm >= 19) return MODE_DRAG_VEHICLE;
-			if (ym <= 10) return MODE_SHOW_VEHICLE;
-			break;
-
-		case VEH_AIRCRAFT:
-			if (xm >= 12) return MODE_DRAG_VEHICLE;
-			if (ym <= 12) return MODE_SHOW_VEHICLE;
-			break;
-
-		default: NOT_REACHED();
-	}
-	return MODE_START_STOP;
 }
 
 static void TrainDepotMoveVehicle(Vehicle *wagon, VehicleID sel, Vehicle *head)
@@ -426,220 +171,6 @@ static void TrainDepotMoveVehicle(Vehicle *wagon, VehicleID sel, Vehicle *head)
 
 	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, NULL, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_8837_CAN_T_MOVE_VEHICLE));
 }
-
-static void DepotClick(Window *w, int x, int y)
-{
-	GetDepotVehiclePtData gdvp;
-	Vehicle *v = NULL;
-	DepotGUIAction mode = GetVehicleFromDepotWndPt(w, x, y, &v, &gdvp);
-
-	/* share / copy orders */
-	if (_thd.place_mode != VHM_NONE && mode != MODE_ERROR) {
-		_place_clicked_vehicle = (WP(w, depot_d).type == VEH_TRAIN ? gdvp.head : v);
-		return;
-	}
-
-	if (WP(w, depot_d).type == VEH_TRAIN) v = gdvp.wagon;
-
-	switch (mode) {
-		case MODE_ERROR: // invalid
-			return;
-
-		case MODE_DRAG_VEHICLE: { // start dragging of vehicle
-			VehicleID sel = WP(w, depot_d).sel;
-
-			if (WP(w, depot_d).type == VEH_TRAIN && sel != INVALID_VEHICLE) {
-				WP(w, depot_d).sel = INVALID_VEHICLE;
-				TrainDepotMoveVehicle(v, sel, gdvp.head);
-			} else if (v != NULL) {
-				int image = v->GetImage(DIR_W);
-
-				WP(w, depot_d).sel = v->index;
-				w->SetDirty();
-				SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, w);
-				_cursor.vehchain = _ctrl_pressed;
-			}
-			}
-			break;
-
-		case MODE_SHOW_VEHICLE: // show info window
-			ShowVehicleViewWindow(v);
-			break;
-
-		case MODE_START_STOP: { // click start/stop flag
-			uint command;
-
-			switch (WP(w, depot_d).type) {
-				case VEH_TRAIN:    command = CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN);          break;
-				case VEH_ROAD:     command = CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE); break;
-				case VEH_SHIP:     command = CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP);            break;
-				case VEH_AIRCRAFT: command = CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT);    break;
-				default: NOT_REACHED(); command = 0;
-			}
-			DoCommandP(v->tile, v->index, 0, NULL, command);
-			}
-			break;
-
-		default: NOT_REACHED();
-	}
-}
-
-/**
- * Clones a vehicle
- * @param *v is the original vehicle to clone
- * @param *w is the window of the depot where the clone is build
- */
-static void HandleCloneVehClick(const Vehicle *v, const Window *w)
-{
-	uint error_str;
-
-	if (v == NULL) return;
-
-	if (!v->IsPrimaryVehicle()) {
-		v = v->First();
-		/* Do nothing when clicking on a train in depot with no loc attached */
-		if (v->type == VEH_TRAIN && !IsFrontEngine(v)) return;
-	}
-
-	switch (v->type) {
-		case VEH_TRAIN:    error_str = CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE); break;
-		case VEH_ROAD:     error_str = CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE);     break;
-		case VEH_SHIP:     error_str = CMD_MSG(STR_980D_CAN_T_BUILD_SHIP);             break;
-		case VEH_AIRCRAFT: error_str = CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT);         break;
-		default: return;
-	}
-
-	DoCommandP(w->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | error_str);
-
-	ResetObjectToPlace();
-}
-
-static void ClonePlaceObj(const Window *w)
-{
-	const Vehicle *v = CheckMouseOverVehicle();
-
-	if (v != NULL) HandleCloneVehClick(v, w);
-}
-
-static void ResizeDepotButtons(Window *w)
-{
-	ResizeButtons(w, DEPOT_WIDGET_BUILD, DEPOT_WIDGET_LOCATION);
-
-	if (WP(w, depot_d).type == VEH_TRAIN) {
-		/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.
-		* This way it will stay the same even if DEPOT_WIDGET_SELL_CHAIN is resized for some reason                                                  */
-		w->widget[DEPOT_WIDGET_SELL_CHAIN].top    = ((w->widget[DEPOT_WIDGET_SELL_CHAIN].bottom - w->widget[DEPOT_WIDGET_SELL].top) / 2) + w->widget[DEPOT_WIDGET_SELL].top;
-		w->widget[DEPOT_WIDGET_SELL].bottom     = w->widget[DEPOT_WIDGET_SELL_CHAIN].top - 1;
-	}
-}
-
-/* Function to set up vehicle specific sprites and strings
- * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
- * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the widget array
- */
-static void SetupStringsForDepotWindow(Window *w, VehicleType type)
-{
-	switch (type) {
-		default: NOT_REACHED();
-
-		case VEH_TRAIN:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_8800_TRAIN_DEPOT;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_8815_NEW_VEHICLES;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_8840_BUILD_NEW_TRAIN_VEHICLE;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_TRAIN;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_TRAIN_DEPOT_INFO;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_8842_CENTER_MAIN_VIEW_ON_TRAIN;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_TRAIN_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_TRAIN;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_TRAIN;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_TRAIN;
-			break;
-
-		case VEH_ROAD:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9003_ROAD_VEHICLE_DEPOT;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9024_DRAG_ROAD_VEHICLE_TO_HERE;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_9022_VEHICLES_CLICK_ON_VEHICLE;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9004_NEW_VEHICLES;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9023_BUILD_NEW_ROAD_VEHICLE;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_ROAD_VEHICLE;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_ROAD_VEHICLE_DEPOT_INFO;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9025_CENTER_MAIN_VIEW_ON_ROAD;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_ROADVEH_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_ROADVEH;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_ROADVEH;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_ROADVEH;
-			break;
-
-		case VEH_SHIP:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9803_SHIP_DEPOT;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9821_DRAG_SHIP_TO_HERE_TO_SELL;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9804_NEW_SHIPS;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9820_BUILD_NEW_SHIP;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_SHIP;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_SHIP_DEPOT_INFO;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9822_CENTER_MAIN_VIEW_ON_SHIP;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_SHIP_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_SHIP;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_SHIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_SHIP;
-			break;
-
-		case VEH_AIRCRAFT:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_A002_AIRCRAFT_HANGAR;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_HANGAR_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_A023_DRAG_AIRCRAFT_TO_HERE_TO;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_A003_NEW_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_A022_BUILD_NEW_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_A024_CENTER_MAIN_VIEW_ON_HANGAR;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_AIRCRAFT;
-			break;
-	}
-}
-
 
 /* Array to hold the block sizes
  * First part is the vehicle type, while the last is 0 = x, 1 = y */
@@ -707,296 +238,746 @@ void InitDepotWindowBlockSizes()
 	ResizeDefaultWindowSize(VEH_AIRCRAFT);
 }
 
-static void CreateDepotListWindow(Window *w, VehicleType type)
-{
-	WP(w, depot_d).type = type;
-	_backup_orders_tile = 0;
+static void DepotSellAllConfirmationCallback(Window *w, bool confirmed);
+const Sprite *GetAircraftSprite(EngineID engine);
 
-	assert(IsPlayerBuildableVehicleType(type)); // ensure that we make the call with a valid type
+struct DepotWindow : Window {
+	VehicleID sel;
+	VehicleType type;
+	bool generate_list;
+	uint16 engine_list_length;
+	uint16 wagon_list_length;
+	uint16 engine_count;
+	uint16 wagon_count;
+	Vehicle **vehicle_list;
+	Vehicle **wagon_list;
 
-	/* Resize the window according to the vehicle type */
+	DepotWindow(const WindowDesc *desc, void *data, WindowNumber window_number) : Window(desc, data, window_number)
+	{
+		this->sel = INVALID_VEHICLE;
+		this->vehicle_list  = NULL;
+		this->wagon_list    = NULL;
+		this->engine_count  = 0;
+		this->wagon_count   = 0;
+		this->generate_list = true;
 
-	/* Set the number of blocks in each direction */
-	w->vscroll.cap = _resize_cap[type][0];
-	w->hscroll.cap = _resize_cap[type][1];
-
-	/* Set the block size */
-	w->resize.step_width  = _block_sizes[type][0];
-	w->resize.step_height = _block_sizes[type][1];
-
-	/* Enlarge the window to fit with the selected number of blocks of the selected size */
-	ResizeWindow(w,
-				 _block_sizes[type][0] * w->hscroll.cap,
-				 _block_sizes[type][1] * w->vscroll.cap);
-
-	if (type == VEH_TRAIN) {
-		/* Make space for the horizontal scrollbar vertically, and the unit
-		 * number, flag, and length counter horizontally. */
-		ResizeWindow(w, 36, 12);
-		/* substract the newly added space from the matrix since it was meant for the scrollbar */
-		w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
+		this->FindWindowPlacementAndResize(desc);
 	}
 
-	/* Set the minimum window size to the current window size */
-	w->resize.width  = w->width;
-	w->resize.height = w->height;
+	~DepotWindow()
+	{
+		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
+		free((void*)this->vehicle_list);
+		free((void*)this->wagon_list);
+	}
 
-	SetupStringsForDepotWindow(w, type);
+	/** Draw a vehicle in the depot window in the box with the top left corner at x,y
+	* @param *w Window to draw in
+	* @param *v Vehicle to draw
+	* @param x Left side of the box to draw in
+	* @param y Top of the box to draw in
+	*/
+	void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
+	{
+		byte diff_x = 0, diff_y = 0;
 
-	w->widget[DEPOT_WIDGET_MATRIX].data =
-		(w->vscroll.cap * 0x100) // number of rows to draw on the background
-		+ (type == VEH_TRAIN ? 1 : w->hscroll.cap); // number of boxes in each row. Trains always have just one
+		int sprite_y = y + this->resize.step_height - GetVehicleListHeight(v->type);
 
+		switch (v->type) {
+			case VEH_TRAIN:
+				DrawTrainImage(v, x + 21, sprite_y, this->sel, this->hscroll.cap + 4, this->hscroll.pos);
 
-	w->SetWidgetsHiddenState(type != VEH_TRAIN,
-		DEPOT_WIDGET_H_SCROLL,
-		DEPOT_WIDGET_SELL_CHAIN,
-		WIDGET_LIST_END);
+				/* Number of wagons relative to a standard length wagon (rounded up) */
+				SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
+				DrawStringRightAligned(this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
+				break;
 
-	ResizeDepotButtons(w);
-}
+			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, 1); break;
+			case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, this->sel); break;
+			case VEH_AIRCRAFT: {
+				const Sprite *spr = GetSprite(v->GetImage(DIR_W));
+				DrawAircraftImage(v, x + 12,
+									y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
+									this->sel);
+			} break;
+			default: NOT_REACHED();
+		}
 
-void DepotSortList(Vehicle **v, uint16 length);
+		if (this->resize.step_height == 14) {
+			/* VEH_TRAIN and VEH_ROAD, which are low */
+			diff_x = 15;
+		} else {
+			/* VEH_SHIP and VEH_AIRCRAFT, which are tall */
+			diff_y = 12;
+		}
 
-static void DepotWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			WP(w, depot_d).sel = INVALID_VEHICLE;
-			WP(w, depot_d).vehicle_list  = NULL;
-			WP(w, depot_d).wagon_list    = NULL;
-			WP(w, depot_d).engine_count  = 0;
-			WP(w, depot_d).wagon_count   = 0;
-			WP(w, depot_d).generate_list = true;
-			break;
+		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, x + diff_x, y + diff_y);
 
-		case WE_INVALIDATE_DATA:
-			WP(w, depot_d).generate_list = true;
-			break;
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y + 2, (uint16)(v->max_age - 366) >= v->age ? STR_00E2 : STR_00E3, TC_FROMSTRING);
+	}
 
-		case WE_PAINT:
-			if (WP(w, depot_d).generate_list) {
-				/* Generate the vehicle list
-				 * It's ok to use the wagon pointers for non-trains as they will be ignored */
-				BuildDepotVehicleList(WP(w, depot_d).type, w->window_number,
-					&WP(w, depot_d).vehicle_list, &WP(w, depot_d).engine_list_length, &WP(w, depot_d).engine_count,
-					&WP(w, depot_d).wagon_list,   &WP(w, depot_d).wagon_list_length,  &WP(w, depot_d).wagon_count);
-				WP(w, depot_d).generate_list = false;
-				DepotSortList(WP(w, depot_d).vehicle_list, WP(w, depot_d).engine_count);
-//#ifndef NDEBUG
-#if 0
-/* We disabled this check for now, but will keep it to quickly make this test again later (if we change some code) */
+	void DrawDepotWindow(Window *w)
+	{
+		Vehicle **vl = this->vehicle_list;
+		TileIndex tile = this->window_number;
+		int x, y, i, maxval;
+		uint16 hnum;
+		uint16 num = this->engine_count;
+
+		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
+		uint16 rows_in_display   = this->widget[DEPOT_WIDGET_MATRIX].data >> 8;
+		uint16 boxes_in_each_row = this->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
+
+		/* setup disabled buttons */
+		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_player),
+			DEPOT_WIDGET_STOP_ALL,
+			DEPOT_WIDGET_START_ALL,
+			DEPOT_WIDGET_SELL,
+			DEPOT_WIDGET_SELL_CHAIN,
+			DEPOT_WIDGET_SELL_ALL,
+			DEPOT_WIDGET_BUILD,
+			DEPOT_WIDGET_CLONE,
+			DEPOT_WIDGET_AUTOREPLACE,
+			WIDGET_LIST_END);
+
+		/* determine amount of items for scroller */
+		if (this->type == VEH_TRAIN) {
+			hnum = 8;
+			for (num = 0; num < this->engine_count; num++) {
+				const Vehicle *v = vl[num];
+				hnum = max(hnum, v->u.rail.cached_total_length);
+			}
+			/* Always have 1 empty row, so people can change the setting of the train */
+			SetVScrollCount(w, this->engine_count + this->wagon_count + 1);
+			SetHScrollCount(w, WagonLengthToPixels(hnum));
+		} else {
+			SetVScrollCount(w, (num + this->hscroll.cap - 1) / this->hscroll.cap);
+		}
+
+		/* locate the depot struct */
+		if (this->type == VEH_AIRCRAFT) {
+			SetDParam(0, GetStationIndex(tile)); // Airport name
+		} else {
+			Depot *depot = GetDepotByTile(tile);
+			assert(depot != NULL);
+
+			SetDParam(0, depot->town_index);
+		}
+
+		DrawWindowWidgets(w);
+
+		num = this->vscroll.pos * boxes_in_each_row;
+		maxval = min(this->engine_count, num + (rows_in_display * boxes_in_each_row));
+
+		for (x = 2, y = 15; num < maxval; y += this->resize.step_height, x = 2) { // Draw the rows
+			byte i;
+
+			for (i = 0; i < boxes_in_each_row && num < maxval; i++, num++, x += this->resize.step_width) {
+				/* Draw all vehicles in the current row */
+				const Vehicle *v = vl[num];
+				DrawVehicleInDepot(w, v, x, y);
+			}
+		}
+
+		maxval = min(this->engine_count + this->wagon_count, (this->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
+
+		/* draw the train wagons, that do not have an engine in front */
+		for (; num < maxval; num++, y += 14) {
+			const Vehicle *v = this->wagon_list[num - this->engine_count];
+			const Vehicle *u;
+
+			DrawTrainImage(v, x + 50, y, this->sel, this->hscroll.cap - 29, 0);
+			DrawString(x, y + 2, STR_8816, TC_FROMSTRING);
+
+			/*Draw the train counter */
+			i = 0;
+			u = v;
+			do i++; while ((u = u->Next()) != NULL); // Determine length of train
+			SetDParam(0, i);                      // Set the counter
+			DrawStringRightAligned(this->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, TC_FROMSTRING); // Draw the counter
+		}
+	}
+
+	struct GetDepotVehiclePtData {
+		Vehicle *head;
+		Vehicle *wagon;
+	};
+
+	enum DepotGUIAction {
+		MODE_ERROR,
+		MODE_DRAG_VEHICLE,
+		MODE_SHOW_VEHICLE,
+		MODE_START_STOP,
+	};
+
+	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, Vehicle **veh, GetDepotVehiclePtData *d) const
+	{
+		Vehicle **vl = this->vehicle_list;
+		uint xt, row, xm = 0, ym = 0;
+		int pos, skip = 0;
+		uint16 boxes_in_each_row = this->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
+
+		if (this->type == VEH_TRAIN) {
+			xt = 0;
+			x -= 23;
+		} else {
+			xt = x / this->resize.step_width;
+			xm = x % this->resize.step_width;
+			if (xt >= this->hscroll.cap) return MODE_ERROR;
+
+			ym = (y - 14) % this->resize.step_height;
+		}
+
+		row = (y - 14) / this->resize.step_height;
+		if (row >= this->vscroll.cap) return MODE_ERROR;
+
+		pos = ((row + this->vscroll.pos) * boxes_in_each_row) + xt;
+
+		if (this->engine_count + this->wagon_count <= pos) {
+			if (this->type == VEH_TRAIN) {
+				d->head  = NULL;
+				d->wagon = NULL;
+				return MODE_DRAG_VEHICLE;
 			} else {
-				/* Here we got a piece of code, that only checks if we got a different number of vehicles in the depot list and the number of vehicles actually being in the depot.
-				 * IF they aren't the same, then WE_INVALIDATE_DATA should have been called somewhere, but it wasn't and we got a bug
-				 * Since this is a time consuming check and not nice to memory fragmentation, it may not stay for long, but it's a good way to check this
-				 * We can turn it on/off by switching between #ifndef NDEBUG and #if 0 */
-				Vehicle **engines = NULL, **wagons = NULL;
-				uint16 engine_count = 0, engine_length = 0;
-				uint16 wagon_count  = 0, wagon_length  = 0;
-				BuildDepotVehicleList(WP(w, depot_d).type, w->window_number, &engines, &engine_length, &engine_count,
-									  &wagons,  &wagon_length,  &wagon_count);
-
-				assert(engine_count == WP(w, depot_d).engine_count);
-				assert(wagon_count == WP(w, depot_d).wagon_count);
-				free((void*)engines);
-				free((void*)wagons);
-#endif
+				return MODE_ERROR; // empty block, so no vehicle is selected
 			}
-			DrawDepotWindow(w);
-			break;
+		}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case DEPOT_WIDGET_MATRIX: // List
-					DepotClick(w, e->we.click.pt.x, e->we.click.pt.y);
-					break;
+		if (this->engine_count > pos) {
+			*veh = vl[pos];
+			skip = this->hscroll.pos;
+		} else {
+			vl = this->wagon_list;
+			pos -= this->engine_count;
+			*veh = vl[pos];
+			/* free wagons don't have an initial loco. */
+			x -= _traininfo_vehicle_width;
+		}
 
-				case DEPOT_WIDGET_BUILD: // Build vehicle
+		switch (this->type) {
+			case VEH_TRAIN: {
+				Vehicle *v = *veh;
+				d->head = d->wagon = v;
+
+				/* either pressed the flag or the number, but only when it's a loco */
+				if (x < 0 && IsFrontEngine(v)) return (x >= -10) ? MODE_START_STOP : MODE_SHOW_VEHICLE;
+
+				skip = (skip * 8) / _traininfo_vehicle_width;
+				x = (x * 8) / _traininfo_vehicle_width;
+
+				/* Skip vehicles that are scrolled off the list */
+				x += skip;
+
+				/* find the vehicle in this row that was clicked */
+				while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->Next();
+
+				/* if an articulated part was selected, find its parent */
+				while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
+
+				d->wagon = v;
+
+				return MODE_DRAG_VEHICLE;
+				}
+				break;
+
+			case VEH_ROAD:
+				if (xm >= 24) return MODE_DRAG_VEHICLE;
+				if (xm <= 16) return MODE_SHOW_VEHICLE;
+				break;
+
+			case VEH_SHIP:
+				if (xm >= 19) return MODE_DRAG_VEHICLE;
+				if (ym <= 10) return MODE_SHOW_VEHICLE;
+				break;
+
+			case VEH_AIRCRAFT:
+				if (xm >= 12) return MODE_DRAG_VEHICLE;
+				if (ym <= 12) return MODE_SHOW_VEHICLE;
+				break;
+
+			default: NOT_REACHED();
+		}
+		return MODE_START_STOP;
+	}
+
+	void DepotClick(int x, int y)
+	{
+		GetDepotVehiclePtData gdvp;
+		Vehicle *v = NULL;
+		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(x, y, &v, &gdvp);
+
+		/* share / copy orders */
+		if (_thd.place_mode != VHM_NONE && mode != MODE_ERROR) {
+			_place_clicked_vehicle = (this->type == VEH_TRAIN ? gdvp.head : v);
+			return;
+		}
+
+		if (this->type == VEH_TRAIN) v = gdvp.wagon;
+
+		switch (mode) {
+			case MODE_ERROR: // invalid
+				return;
+
+			case MODE_DRAG_VEHICLE: { // start dragging of vehicle
+				VehicleID sel = this->sel;
+
+				if (this->type == VEH_TRAIN && sel != INVALID_VEHICLE) {
+					this->sel = INVALID_VEHICLE;
+					TrainDepotMoveVehicle(v, sel, gdvp.head);
+				} else if (v != NULL) {
+					int image = v->GetImage(DIR_W);
+
+					this->sel = v->index;
+					this->SetDirty();
+					SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, this);
+					_cursor.vehchain = _ctrl_pressed;
+				}
+			} break;
+
+			case MODE_SHOW_VEHICLE: // show info window
+				ShowVehicleViewWindow(v);
+				break;
+
+			case MODE_START_STOP: { // click start/stop flag
+				uint command;
+
+				switch (this->type) {
+					case VEH_TRAIN:    command = CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN);          break;
+					case VEH_ROAD:     command = CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE); break;
+					case VEH_SHIP:     command = CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP);            break;
+					case VEH_AIRCRAFT: command = CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT);    break;
+					default: NOT_REACHED(); command = 0;
+				}
+				DoCommandP(v->tile, v->index, 0, NULL, command);
+			} break;
+
+			default: NOT_REACHED();
+		}
+	}
+
+	/**
+	* Clones a vehicle
+	* @param *v is the original vehicle to clone
+	* @param *w is the window of the depot where the clone is build
+	*/
+	void HandleCloneVehClick(const Vehicle *v, const Window *w)
+	{
+		uint error_str;
+
+		if (v == NULL) return;
+
+		if (!v->IsPrimaryVehicle()) {
+			v = v->First();
+			/* Do nothing when clicking on a train in depot with no loc attached */
+			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) return;
+		}
+
+		switch (v->type) {
+			case VEH_TRAIN:    error_str = CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE); break;
+			case VEH_ROAD:     error_str = CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE);     break;
+			case VEH_SHIP:     error_str = CMD_MSG(STR_980D_CAN_T_BUILD_SHIP);             break;
+			case VEH_AIRCRAFT: error_str = CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT);         break;
+			default: return;
+		}
+
+		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | error_str);
+
+		ResetObjectToPlace();
+	}
+
+	void ResizeDepotButtons(Window *w)
+	{
+		ResizeButtons(w, DEPOT_WIDGET_BUILD, DEPOT_WIDGET_LOCATION);
+
+		if (this->type == VEH_TRAIN) {
+			/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.
+			* This way it will stay the same even if DEPOT_WIDGET_SELL_CHAIN is resized for some reason                                                  */
+			this->widget[DEPOT_WIDGET_SELL_CHAIN].top    = ((this->widget[DEPOT_WIDGET_SELL_CHAIN].bottom - this->widget[DEPOT_WIDGET_SELL].top) / 2) + this->widget[DEPOT_WIDGET_SELL].top;
+			this->widget[DEPOT_WIDGET_SELL].bottom     = this->widget[DEPOT_WIDGET_SELL_CHAIN].top - 1;
+		}
+	}
+
+	/* Function to set up vehicle specific sprites and strings
+	 * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
+	 * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the widget array
+	 */
+	void SetupStringsForDepotWindow(VehicleType type)
+	{
+		switch (type) {
+			default: NOT_REACHED();
+
+			case VEH_TRAIN:
+				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_8800_TRAIN_DEPOT;
+				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;
+				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_TRAIN_TIP;
+				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE;
+				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
+				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR;
+
+				this->widget[DEPOT_WIDGET_BUILD].data        = STR_8815_NEW_VEHICLES;
+				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_8840_BUILD_NEW_TRAIN_VEHICLE;
+				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_TRAIN;
+				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_TRAIN_DEPOT_INFO;
+
+				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_8842_CENTER_MAIN_VIEW_ON_TRAIN;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_TRAIN_TIP;
+
+				/* Sprites */
+				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_TRAIN;
+				this->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_TRAIN;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_TRAIN;
+				break;
+
+			case VEH_ROAD:
+				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_9003_ROAD_VEHICLE_DEPOT;
+				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_ROADVEH_TIP;
+				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_ROADVEH_TIP;
+				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9024_DRAG_ROAD_VEHICLE_TO_HERE;
+				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
+				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_9022_VEHICLES_CLICK_ON_VEHICLE;
+
+				this->widget[DEPOT_WIDGET_BUILD].data        = STR_9004_NEW_VEHICLES;
+				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9023_BUILD_NEW_ROAD_VEHICLE;
+				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_ROAD_VEHICLE;
+				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_ROAD_VEHICLE_DEPOT_INFO;
+
+				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9025_CENTER_MAIN_VIEW_ON_ROAD;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_ROADVEH_TIP;
+
+				/* Sprites */
+				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_ROADVEH;
+				this->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_ROADVEH;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_ROADVEH;
+				break;
+
+			case VEH_SHIP:
+				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_9803_SHIP_DEPOT;
+				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_SHIP_TIP;
+				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_SHIP_TIP;
+				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9821_DRAG_SHIP_TO_HERE_TO_SELL;
+				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
+				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;
+
+				this->widget[DEPOT_WIDGET_BUILD].data        = STR_9804_NEW_SHIPS;
+				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9820_BUILD_NEW_SHIP;
+				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_SHIP;
+				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_SHIP_DEPOT_INFO;
+
+				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9822_CENTER_MAIN_VIEW_ON_SHIP;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_SHIP_TIP;
+
+				/* Sprites */
+				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_SHIP;
+				this->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_SHIP;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_SHIP;
+				break;
+
+			case VEH_AIRCRAFT:
+				this->widget[DEPOT_WIDGET_CAPTION].data      = STR_A002_AIRCRAFT_HANGAR;
+				this->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TIP;
+				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_HANGAR_TIP;
+				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_A023_DRAG_AIRCRAFT_TO_HERE_TO;
+				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
+				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;
+
+				this->widget[DEPOT_WIDGET_BUILD].data        = STR_A003_NEW_AIRCRAFT;
+				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_A022_BUILD_NEW_AIRCRAFT;
+				this->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
+				this->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
+
+				this->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_A024_CENTER_MAIN_VIEW_ON_HANGAR;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
+				this->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP;
+
+				/* Sprites */
+				this->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_AIRCRAFT;
+				this->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_AIRCRAFT;
+				this->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_AIRCRAFT;
+				break;
+		}
+	}
+
+	void CreateDepotListWindow(VehicleType type)
+	{
+		this->type = type;
+		_backup_orders_tile = 0;
+
+		assert(IsPlayerBuildableVehicleType(type)); // ensure that we make the call with a valid type
+
+		/* Resize the window according to the vehicle type */
+
+		/* Set the number of blocks in each direction */
+		this->vscroll.cap = _resize_cap[type][0];
+		this->hscroll.cap = _resize_cap[type][1];
+
+		/* Set the block size */
+		this->resize.step_width  = _block_sizes[type][0];
+		this->resize.step_height = _block_sizes[type][1];
+
+		/* Enlarge the window to fit with the selected number of blocks of the selected size */
+		ResizeWindow(this,
+					_block_sizes[type][0] * this->hscroll.cap,
+					_block_sizes[type][1] * this->vscroll.cap);
+
+		if (type == VEH_TRAIN) {
+			/* Make space for the horizontal scrollbar vertically, and the unit
+			 * number, flag, and length counter horizontally. */
+			ResizeWindow(this, 36, 12);
+			/* substract the newly added space from the matrix since it was meant for the scrollbar */
+			this->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
+		}
+
+		/* Set the minimum window size to the current window size */
+		this->resize.width  = this->width;
+		this->resize.height = this->height;
+
+		this->SetupStringsForDepotWindow(type);
+
+		this->widget[DEPOT_WIDGET_MATRIX].data =
+			(this->vscroll.cap * 0x100) // number of rows to draw on the background
+			+ (type == VEH_TRAIN ? 1 : this->hscroll.cap); // number of boxes in each row. Trains always have just one
+
+
+		this->SetWidgetsHiddenState(type != VEH_TRAIN,
+			DEPOT_WIDGET_H_SCROLL,
+			DEPOT_WIDGET_SELL_CHAIN,
+			WIDGET_LIST_END);
+
+		ResizeDepotButtons(this);
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		this->generate_list = true;
+	}
+
+	virtual void OnPaint()
+	{
+		if (this->generate_list) {
+			/* Generate the vehicle list
+			 * It's ok to use the wagon pointers for non-trains as they will be ignored */
+			BuildDepotVehicleList(this->type, this->window_number,
+				&this->vehicle_list, &this->engine_list_length, &this->engine_count,
+				&this->wagon_list,   &this->wagon_list_length,  &this->wagon_count);
+			this->generate_list = false;
+			DepotSortList(this->vehicle_list, this->engine_count);
+		}
+		DrawDepotWindow(this);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case DEPOT_WIDGET_MATRIX: // List
+				this->DepotClick(pt.x, pt.y);
+				break;
+
+			case DEPOT_WIDGET_BUILD: // Build vehicle
+				ResetObjectToPlace();
+				ShowBuildVehicleWindow(this->window_number, this->type);
+				break;
+
+			case DEPOT_WIDGET_CLONE: // Clone button
+				this->InvalidateWidget(DEPOT_WIDGET_CLONE);
+				this->ToggleWidgetLoweredState(DEPOT_WIDGET_CLONE);
+
+				if (this->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
+					static const CursorID clone_icons[] = {
+						SPR_CURSOR_CLONE_TRAIN, SPR_CURSOR_CLONE_ROADVEH,
+						SPR_CURSOR_CLONE_SHIP, SPR_CURSOR_CLONE_AIRPLANE
+					};
+
+					_place_clicked_vehicle = NULL;
+					SetObjectToPlaceWnd(clone_icons[this->type], PAL_NONE, VHM_RECT, this);
+				} else {
 					ResetObjectToPlace();
-					ShowBuildVehicleWindow(w->window_number, WP(w, depot_d).type);
+				}
 					break;
 
-				case DEPOT_WIDGET_CLONE: // Clone button
-					w->InvalidateWidget(DEPOT_WIDGET_CLONE);
-					w->ToggleWidgetLoweredState(DEPOT_WIDGET_CLONE);
+			case DEPOT_WIDGET_LOCATION:
+				if (_ctrl_pressed) {
+					ShowExtraViewPortWindow(this->window_number);
+				} else {
+					ScrollMainWindowToTile(this->window_number);
+				}
+				break;
 
-					if (w->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
-						static const CursorID clone_icons[] = {
-							SPR_CURSOR_CLONE_TRAIN, SPR_CURSOR_CLONE_ROADVEH,
-							SPR_CURSOR_CLONE_SHIP, SPR_CURSOR_CLONE_AIRPLANE
-						};
+			case DEPOT_WIDGET_STOP_ALL:
+			case DEPOT_WIDGET_START_ALL:
+				DoCommandP(this->window_number, 0, this->type | (widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), NULL, CMD_MASS_START_STOP);
+				break;
 
-						_place_clicked_vehicle = NULL;
-						SetObjectToPlaceWnd(clone_icons[WP(w, depot_d).type], PAL_NONE, VHM_RECT, w);
-					} else {
-						ResetObjectToPlace();
+			case DEPOT_WIDGET_SELL_ALL:
+				/* Only open the confimation window if there are anything to sell */
+				if (this->engine_count != 0 || this->wagon_count != 0) {
+					static const StringID confirm_captions[] = {
+						STR_8800_TRAIN_DEPOT,
+						STR_9003_ROAD_VEHICLE_DEPOT,
+						STR_9803_SHIP_DEPOT,
+						STR_A002_AIRCRAFT_HANGAR
+					};
+					TileIndex tile = this->window_number;
+					byte vehtype = this->type;
+
+					SetDParam(0, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotByTile(tile)->town_index);
+					ShowQuery(
+						confirm_captions[vehtype],
+						STR_DEPOT_SELL_CONFIRMATION_TEXT,
+						this,
+						DepotSellAllConfirmationCallback
+					);
+				}
+				break;
+
+			case DEPOT_WIDGET_VEHICLE_LIST:
+				ShowVehicleListWindow(GetTileOwner(this->window_number), this->type, (TileIndex)this->window_number);
+				break;
+
+			case DEPOT_WIDGET_AUTOREPLACE:
+				DoCommandP(this->window_number, this->type, 0, NULL, CMD_DEPOT_MASS_AUTOREPLACE);
+				break;
+
+		}
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		const Vehicle *v = CheckMouseOverVehicle();
+
+		if (v != NULL) HandleCloneVehClick(v, this);
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		/* abort clone */
+		this->RaiseWidget(DEPOT_WIDGET_CLONE);
+		this->InvalidateWidget(DEPOT_WIDGET_CLONE);
+
+		/* abort drag & drop */
+		this->sel = INVALID_VEHICLE;
+		this->InvalidateWidget(DEPOT_WIDGET_MATRIX);
+	};
+
+	/* check if a vehicle in a depot was clicked.. */
+	virtual void OnMouseLoop()
+	{
+		const Vehicle *v = _place_clicked_vehicle;
+
+		/* since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button */
+		if (v != NULL && this->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
+			_place_clicked_vehicle = NULL;
+			HandleCloneVehClick(v, this);
+		}
+	}
+
+	virtual void OnDragDrop(Point pt, int widget)
+	{
+		switch (widget) {
+			case DEPOT_WIDGET_MATRIX: {
+				Vehicle *v;
+				VehicleID sel = this->sel;
+
+				this->sel = INVALID_VEHICLE;
+				this->SetDirty();
+
+				if (this->type == VEH_TRAIN) {
+					GetDepotVehiclePtData gdvp;
+
+					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
+						sel != INVALID_VEHICLE) {
+						if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
+							DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
+						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
+							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
+						} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
+							ShowVehicleViewWindow(gdvp.head);
+						}
 					}
-						break;
+				} else if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, NULL) == MODE_DRAG_VEHICLE &&
+					v != NULL &&
+					sel == v->index) {
+					ShowVehicleViewWindow(v);
+				}
+			} break;
 
-				case DEPOT_WIDGET_LOCATION:
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(w->window_number);
-					} else {
-						ScrollMainWindowToTile(w->window_number);
-					}
-					break;
-
-				case DEPOT_WIDGET_STOP_ALL:
-				case DEPOT_WIDGET_START_ALL:
-					DoCommandP(w->window_number, 0, WP(w, depot_d).type | (e->we.click.widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), NULL, CMD_MASS_START_STOP);
-					break;
-
-				case DEPOT_WIDGET_SELL_ALL:
-					/* Only open the confimation window if there are anything to sell */
-					if (WP(w, depot_d).engine_count != 0 || WP(w, depot_d).wagon_count != 0) {
-						static const StringID confirm_captions[] = {
-							STR_8800_TRAIN_DEPOT,
-							STR_9003_ROAD_VEHICLE_DEPOT,
-							STR_9803_SHIP_DEPOT,
-							STR_A002_AIRCRAFT_HANGAR
-						};
-						TileIndex tile = w->window_number;
-						byte vehtype = WP(w, depot_d).type;
-
-						SetDParam(0, (vehtype == VEH_AIRCRAFT) ? GetStationIndex(tile) : GetDepotByTile(tile)->town_index);
-						ShowQuery(
-							confirm_captions[vehtype],
-							STR_DEPOT_SELL_CONFIRMATION_TEXT,
-							w,
-							DepotSellAllConfirmationCallback
-						);
-					}
-					break;
-
-				case DEPOT_WIDGET_VEHICLE_LIST:
-					ShowVehicleListWindow(GetTileOwner(w->window_number), WP(w, depot_d).type, (TileIndex)w->window_number);
-					break;
-
-				case DEPOT_WIDGET_AUTOREPLACE:
-					DoCommandP(w->window_number, WP(w, depot_d).type, 0, NULL, CMD_DEPOT_MASS_AUTOREPLACE);
-					break;
-
-			}
-			break;
-
-		case WE_PLACE_OBJ: {
-			ClonePlaceObj(w);
-		} break;
-
-		case WE_ABORT_PLACE_OBJ: {
-			/* abort clone */
-			w->RaiseWidget(DEPOT_WIDGET_CLONE);
-			w->InvalidateWidget(DEPOT_WIDGET_CLONE);
-
-			/* abort drag & drop */
-			WP(w, depot_d).sel = INVALID_VEHICLE;
-			w->InvalidateWidget(DEPOT_WIDGET_MATRIX);
-		} break;
-
-			/* check if a vehicle in a depot was clicked.. */
-		case WE_MOUSELOOP: {
-			const Vehicle *v = _place_clicked_vehicle;
-
-			/* since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button */
-			if (v != NULL && w->IsWidgetLowered(DEPOT_WIDGET_CLONE)) {
-				_place_clicked_vehicle = NULL;
-				HandleCloneVehClick(v, w);
-			}
-		} break;
-
-		case WE_DESTROY:
-			DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
-			free((void*)WP(w, depot_d).vehicle_list);
-			free((void*)WP(w, depot_d).wagon_list);
-			break;
-
-		case WE_DRAGDROP:
-			switch (e->we.click.widget) {
-				case DEPOT_WIDGET_MATRIX: {
+			case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
+				if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL) &&
+					this->sel != INVALID_VEHICLE) {
 					Vehicle *v;
-					VehicleID sel = WP(w, depot_d).sel;
+					uint command;
+					int sell_cmd;
+					bool is_engine;
 
-					WP(w, depot_d).sel = INVALID_VEHICLE;
-					w->SetDirty();
+					if (this->IsWidgetDisabled(widget)) return;
+					if (this->sel == INVALID_VEHICLE) return;
 
-					if (WP(w, depot_d).type == VEH_TRAIN) {
-						GetDepotVehiclePtData gdvp;
+					this->HandleButtonClick(widget);
 
-						if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
-							sel != INVALID_VEHICLE) {
-							if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
-								DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
-							} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
-								TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
-							} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
-								ShowVehicleViewWindow(gdvp.head);
-							}
-						}
-					} else if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, NULL) == MODE_DRAG_VEHICLE &&
-						v != NULL &&
-						sel == v->index) {
-						ShowVehicleViewWindow(v);
+					v = GetVehicle(this->sel);
+					this->sel = INVALID_VEHICLE;
+					this->SetDirty();
+
+					sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
+
+					is_engine = (!(v->type == VEH_TRAIN && !IsFrontEngine(v)));
+
+					if (is_engine) {
+						_backup_orders_tile = v->tile;
+						BackupVehicleOrders(v);
 					}
-				} break;
 
-				case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
-					if (!w->IsWidgetDisabled(DEPOT_WIDGET_SELL) &&
-						WP(w, depot_d).sel != INVALID_VEHICLE) {
-						Vehicle *v;
-						uint command;
-						int sell_cmd;
-						bool is_engine;
-
-						if (w->IsWidgetDisabled(e->we.click.widget)) return;
-						if (WP(w, depot_d).sel == INVALID_VEHICLE) return;
-
-						w->HandleButtonClick(e->we.click.widget);
-
-						v = GetVehicle(WP(w, depot_d).sel);
-						WP(w, depot_d).sel = INVALID_VEHICLE;
-						w->SetDirty();
-
-						sell_cmd = (v->type == VEH_TRAIN && (e->we.click.widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
-
-						is_engine = (!(v->type == VEH_TRAIN && !IsFrontEngine(v)));
-
-						if (is_engine) {
-							_backup_orders_tile = v->tile;
-							BackupVehicleOrders(v);
-						}
-
-						switch (v->type) {
-							case VEH_TRAIN:    command = CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE); break;
-							case VEH_ROAD:     command = CMD_SELL_ROAD_VEH | CMD_MSG(STR_9014_CAN_T_SELL_ROAD_VEHICLE);       break;
-							case VEH_SHIP:     command = CMD_SELL_SHIP | CMD_MSG(STR_980C_CAN_T_SELL_SHIP);                   break;
-							case VEH_AIRCRAFT: command = CMD_SELL_AIRCRAFT | CMD_MSG(STR_A01C_CAN_T_SELL_AIRCRAFT);           break;
-							default: NOT_REACHED(); command = 0;
-						}
-
-						if (!DoCommandP(v->tile, v->index, sell_cmd, NULL, command) && is_engine) _backup_orders_tile = 0;
+					switch (v->type) {
+						case VEH_TRAIN:    command = CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE); break;
+						case VEH_ROAD:     command = CMD_SELL_ROAD_VEH | CMD_MSG(STR_9014_CAN_T_SELL_ROAD_VEHICLE);       break;
+						case VEH_SHIP:     command = CMD_SELL_SHIP | CMD_MSG(STR_980C_CAN_T_SELL_SHIP);                   break;
+						case VEH_AIRCRAFT: command = CMD_SELL_AIRCRAFT | CMD_MSG(STR_A01C_CAN_T_SELL_AIRCRAFT);           break;
+						default: NOT_REACHED(); command = 0;
 					}
-					break;
-				default:
-					WP(w, depot_d).sel = INVALID_VEHICLE;
-					w->SetDirty();
-			}
-			_cursor.vehchain = false;
-			break;
 
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
-			w->hscroll.cap += e->we.sizing.diff.x / (int)w->resize.step_width;
-			w->widget[DEPOT_WIDGET_MATRIX].data = (w->vscroll.cap << 8) + (WP(w, depot_d).type == VEH_TRAIN ? 1 : w->hscroll.cap);
-			ResizeDepotButtons(w);
-			break;
+					if (!DoCommandP(v->tile, v->index, sell_cmd, NULL, command) && is_engine) _backup_orders_tile = 0;
+				}
+				break;
+			default:
+				this->sel = INVALID_VEHICLE;
+				this->SetDirty();
+		}
+		_cursor.vehchain = false;
+	}
 
-		case WE_CTRL_CHANGED:
-			if (WP(w, depot_d).sel != INVALID_VEHICLE) {
-				_cursor.vehchain = _ctrl_pressed;
-				w->InvalidateWidget(DEPOT_WIDGET_MATRIX);
-			}
-			break;
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		this->hscroll.cap += delta.x / (int)this->resize.step_width;
+		this->widget[DEPOT_WIDGET_MATRIX].data = (this->vscroll.cap << 8) + (this->type == VEH_TRAIN ? 1 : this->hscroll.cap);
+		ResizeDepotButtons(this);
+	}
+
+	virtual bool OnCTRLStateChange()
+	{
+		if (this->sel != INVALID_VEHICLE) {
+			_cursor.vehchain = _ctrl_pressed;
+			this->InvalidateWidget(DEPOT_WIDGET_MATRIX);
+		}
+
+		return true;
+	}
+};
+
+static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
+{
+	if (confirmed) {
+		DepotWindow *w = (DepotWindow*)win;
+		TileIndex tile = w->window_number;
+		byte vehtype = w->type;
+		DoCommandP(tile, vehtype, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
 	}
 }
 
@@ -1006,24 +987,22 @@ static void DepotWndProc(Window *w, WindowEvent *e)
  */
 void ShowDepotWindow(TileIndex tile, VehicleType type)
 {
-	Window *w;
+	DepotWindow *w;
 
 	switch (type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:
-			w = AllocateWindowDescFront<Window>(&_train_depot_desc, tile); break;
+			w = AllocateWindowDescFront<DepotWindow>(&_train_depot_desc, tile); break;
 		case VEH_ROAD:
-			w = AllocateWindowDescFront<Window>(&_road_depot_desc, tile); break;
+			w = AllocateWindowDescFront<DepotWindow>(&_road_depot_desc, tile); break;
 		case VEH_SHIP:
-			w = AllocateWindowDescFront<Window>(&_ship_depot_desc, tile); break;
+			w = AllocateWindowDescFront<DepotWindow>(&_ship_depot_desc, tile); break;
 		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront<Window>(&_aircraft_depot_desc, tile); break;
+			w = AllocateWindowDescFront<DepotWindow>(&_aircraft_depot_desc, tile); break;
 	}
 
-	if (w != NULL) {
-		w->caption_color = GetTileOwner(tile);
-		CreateDepotListWindow(w, type);
-	}
+	w->caption_color = GetTileOwner(tile);
+	w->CreateDepotListWindow(type);
 }
 
 /** Removes the highlight of a vehicle in a depot window
@@ -1031,15 +1010,16 @@ void ShowDepotWindow(TileIndex tile, VehicleType type)
  */
 void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 {
-	Window *w;
+	DepotWindow *w;
 
 	/* If we haven't got any vehicles on the mouse pointer, we haven't got any highlighted in any depots either
-	 * If that is the case, we can skip looping though the windows and save time                                */
+	 * If that is the case, we can skip looping though the windows and save time
+	 */
 	if (_special_mouse_mode != WSM_DRAGDROP) return;
 
-	w = FindWindowById(WC_VEHICLE_DEPOT, v->tile);
+	w = dynamic_cast<DepotWindow*>(FindWindowById(WC_VEHICLE_DEPOT, v->tile));
 	if (w != NULL) {
-		WP(w, depot_d).sel = INVALID_VEHICLE;
+		w->sel = INVALID_VEHICLE;
 		ResetObjectToPlace();
 	}
 }
