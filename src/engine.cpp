@@ -120,7 +120,11 @@ Engine::~Engine()
  */
 void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
 {
-	qsort(&((*el)[0]), el->size(), sizeof(EngineID), compare);
+	size_t size = el->size();
+	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
+	 * generally, do not sort if there are less than 2 items */
+	if (size < 2) return;
+	qsort(&(el->at(0)), size, sizeof(EngineID), compare);
 }
 
 /** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
