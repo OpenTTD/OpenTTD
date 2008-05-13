@@ -87,9 +87,9 @@ struct DropdownWindow : Window {
 		DeleteDropDownList(this->list);
 	}
 
-	int GetDropDownItem()
+	bool GetDropDownItem(int &value)
 	{
-		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return -1;
+		if (GetWidgetFromPos(this, _cursor.pos.x - this->left, _cursor.pos.y - this->top) < 0) return false;
 
 		int y     = _cursor.pos.y - this->top - 2;
 		int width = this->widget[0].right - 3;
@@ -105,14 +105,15 @@ struct DropdownWindow : Window {
 			int item_height = item->Height(width);
 
 			if (y < item_height) {
-				if (item->masked || item->String() == STR_NULL) return -1;
-				return item->result;
+				if (item->masked || item->String() == STR_NULL) return false;
+				value = item->result;
+				return true;
 			}
 
 			y -= item_height;
 		}
 
-		return -1;
+		return false;
 	}
 
 	virtual void OnPaint()
@@ -162,8 +163,8 @@ struct DropdownWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget != 0) return;
-		int item = GetDropDownItem();
-		if (item >= 0) {
+		int item;
+		if (this->GetDropDownItem(item)) {
 			this->click_delay = 4;
 			this->selected_index = item;
 			this->SetDirty();
@@ -197,11 +198,11 @@ struct DropdownWindow : Window {
 		}
 
 		if (this->drag_mode) {
-			int item = GetDropDownItem();
+			int item;
 
 			if (!_left_button_clicked) {
 				this->drag_mode = false;
-				if (item < 0) return;
+				if (!this->GetDropDownItem(item)) return;
 				this->click_delay = 2;
 			} else {
 				if (_cursor.pos.y <= this->top + 2) {
@@ -214,7 +215,7 @@ struct DropdownWindow : Window {
 					return;
 				}
 
-				if (item < 0) return;
+				if (!this->GetDropDownItem(item)) return;
 			}
 
 			this->selected_index = item;
