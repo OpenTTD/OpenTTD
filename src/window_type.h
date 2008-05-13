@@ -103,8 +103,8 @@ typedef int32 WindowNumber;
 /**
  * You cannot 100% reliably calculate the biggest custom struct as
  * the number of pointers in it and alignment will have a huge impact.
- * 96 is the largest window-size for 64-bit machines currently.
+ * 32 is the largest window-size for 64-bit machines currently.
  */
-#define WINDOW_CUSTOM_SIZE 96
+#define WINDOW_CUSTOM_SIZE 32
 
 #endif /* WINDOW_TYPE_H */

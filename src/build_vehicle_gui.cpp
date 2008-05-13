@@ -32,23 +32,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-struct buildvehicle_d {
-	VehicleType vehicle_type;
-	union {
-		RailTypeByte railtype;
-		AirportFTAClass::Flags flags;
-		RoadTypes roadtypes;
-	} filter;
-	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
-	bool descending_sort_order;
-	byte sort_criteria;
-	bool regenerate_list;
-	EngineID sel_engine;
-	EngineID rename_engine;
-	EngineList eng_list;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildvehicle_d));
-
 enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_CLOSEBOX = 0,
 	BUILD_VEHICLE_WIDGET_CAPTION,
@@ -78,52 +61,7 @@ static const Widget _build_vehicle_widgets[] = {
 	{   WIDGETS_END},
 };
 
-/* Setup widget strings to fit the different types of vehicles */
-static void SetupWindowStrings(Window *w, VehicleType type)
-{
-	switch (type) {
-		default: NOT_REACHED();
-
-		case VEH_TRAIN:
-			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_JUST_STRING;
-			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_881F_BUILD_VEHICLE;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_8820_RENAME;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_8845_RENAME_TRAIN_VEHICLE_TYPE;
-			break;
-
-		case VEH_ROAD:
-			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9006_NEW_ROAD_VEHICLES;
-			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9007_BUILD_VEHICLE;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9027_BUILD_THE_HIGHLIGHTED_ROAD;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9034_RENAME;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9035_RENAME_ROAD_VEHICLE_TYPE;
-			break;
-
-		case VEH_SHIP:
-			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9808_NEW_SHIPS;
-			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9826_BUILD_THE_HIGHLIGHTED_SHIP;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9836_RENAME;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9837_RENAME_SHIP_TYPE;
-			break;
-
-		case VEH_AIRCRAFT:
-			w->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_A005_NEW_AIRCRAFT;
-			w->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_A006_BUILD_AIRCRAFT;
-			w->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_A037_RENAME;
-			w->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_A038_RENAME_AIRCRAFT_TYPE;
-			break;
-	}
-}
-
 static bool _internal_sort_order; // descending/ascending
-
 static byte _last_sort_criteria[]    = {0, 0, 0, 0};
 static bool _last_sort_order[]       = {false, false, false, false};
 
@@ -785,143 +723,6 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	return y;
 }
 
-/* Figure out what train EngineIDs to put in the list */
-static void GenerateBuildTrainList(Window *w)
-{
-	EngineID sel_id = INVALID_ENGINE;
-	int num_engines = 0;
-	int num_wagons  = 0;
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
-
-	bv->filter.railtype = (w->window_number <= VEH_END) ? RAILTYPE_END : GetRailType(w->window_number);
-
-	bv->eng_list.clear();
-
-	/* Make list of all available train engines and wagons.
-	 * Also check to see if the previously selected engine is still available,
-	 * and if not, reset selection to INVALID_ENGINE. This could be the case
-	 * when engines become obsolete and are removed */
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-		EngineID eid = e->index;
-		const RailVehicleInfo *rvi = &e->u.rail;
-
-		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, bv->filter.railtype)) continue;
-		if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
-
-		bv->eng_list.push_back(eid);
-		if (rvi->railveh_type != RAILVEH_WAGON) {
-			num_engines++;
-		} else {
-			num_wagons++;
-		}
-
-		if (eid == bv->sel_engine) sel_id = eid;
-	}
-
-	bv->sel_engine = sel_id;
-
-	/* make engines first, and then wagons, sorted by ListPositionOfEngine() */
-	_internal_sort_order = false;
-	EngList_Sort(&bv->eng_list, TrainEnginesThenWagonsSorter);
-
-	/* and then sort engines */
-	_internal_sort_order = bv->descending_sort_order;
-	EngList_SortPartial(&bv->eng_list, _sorter[0][bv->sort_criteria], 0, num_engines);
-
-	/* and finally sort wagons */
-	EngList_SortPartial(&bv->eng_list, _sorter[0][bv->sort_criteria], num_engines, num_wagons);
-}
-
-/* Figure out what road vehicle EngineIDs to put in the list */
-static void GenerateBuildRoadVehList(Window *w)
-{
-	EngineID sel_id = INVALID_ENGINE;
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
-
-	bv->eng_list.clear();
-
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
-		EngineID eid = e->index;
-		if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
-		if (!HasBit(bv->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
-		bv->eng_list.push_back(eid);
-
-		if (eid == bv->sel_engine) sel_id = eid;
-	}
-	bv->sel_engine = sel_id;
-}
-
-/* Figure out what ship EngineIDs to put in the list */
-static void GenerateBuildShipList(Window *w)
-{
-	EngineID sel_id = INVALID_ENGINE;
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
-
-	bv->eng_list.clear();
-
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
-		EngineID eid = e->index;
-		if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
-		bv->eng_list.push_back(eid);
-
-		if (eid == bv->sel_engine) sel_id = eid;
-	}
-	bv->sel_engine = sel_id;
-}
-
-/* Figure out what aircraft EngineIDs to put in the list */
-static void GenerateBuildAircraftList(Window *w)
-{
-	EngineID sel_id = INVALID_ENGINE;
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
-
-	bv->eng_list.clear();
-
-	/* Make list of all available planes.
-	 * Also check to see if the previously selected plane is still available,
-	 * and if not, reset selection to INVALID_ENGINE. This could be the case
-	 * when planes become obsolete and are removed */
-	const Engine *e;
-	FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
-		EngineID eid = e->index;
-		if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
-		/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
-		if (w->window_number > VEH_END && !CanAircraftUseStation(eid, w->window_number)) continue;
-
-		bv->eng_list.push_back(eid);
-		if (eid == bv->sel_engine) sel_id = eid;
-	}
-
-	bv->sel_engine = sel_id;
-}
-
-/* Generate the list of vehicles */
-static void GenerateBuildList(Window *w)
-{
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
-
-	switch (bv->vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:
-			GenerateBuildTrainList(w);
-			return; // trains should not reach the last sorting
-		case VEH_ROAD:
-			GenerateBuildRoadVehList(w);
-			break;
-		case VEH_SHIP:
-			GenerateBuildShipList(w);
-			break;
-		case VEH_AIRCRAFT:
-			GenerateBuildAircraftList(w);
-			break;
-	}
-	_internal_sort_order = bv->descending_sort_order;
-	EngList_Sort(&bv->eng_list, _sorter[bv->vehicle_type][bv->sort_criteria]);
-}
-
 static void DrawVehicleEngine(VehicleType type, int x, int y, EngineID engine, SpriteID pal)
 {
 	switch (type) {
@@ -990,199 +791,401 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 	}
 }
 
-static void DrawBuildVehicleWindow(Window *w)
-{
-	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
-	uint max = min(w->vscroll.pos + w->vscroll.cap, bv->eng_list.size());
 
-	w->SetWidgetDisabledState(BUILD_VEHICLE_WIDGET_BUILD, w->window_number <= VEH_END);
+struct BuildVehicleWindow : Window {
+	VehicleType vehicle_type;
+	union {
+		RailTypeByte railtype;
+		AirportFTAClass::Flags flags;
+		RoadTypes roadtypes;
+	} filter;
+	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
+	bool descending_sort_order;
+	byte sort_criteria;
+	bool regenerate_list;
+	EngineID sel_engine;
+	EngineID rename_engine;
+	EngineList eng_list;
 
-	SetVScrollCount(w, bv->eng_list.size());
-	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
+	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, NULL, tile == 0 ? (int)type : tile)
+	{
+		this->vehicle_type = type;
+		int vlh = GetVehicleListHeight(this->vehicle_type);
 
-	/* Set text of sort by dropdown */
-	w->widget[BUILD_VEHICLE_WIDGET_SORT_DROPDOWN].data = _sort_listing[bv->vehicle_type][bv->sort_criteria];
+		ResizeWindow(this, 0, vlh - 14);
+		this->resize.step_height = vlh;
+		this->vscroll.cap = 1;
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = 0x101;
 
-	DrawWindowWidgets(w);
+		this->resize.width  = this->width;
+		this->resize.height = this->height;
 
-	DrawEngineList(bv->vehicle_type, w->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, w->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, bv->eng_list, w->vscroll.pos, max, bv->sel_engine, 0, DEFAULT_GROUP);
+		this->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_player;
 
-	if (bv->sel_engine != INVALID_ENGINE) {
-		const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
-		int text_end = DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, bv->sel_engine);
+		this->sel_engine      = INVALID_ENGINE;
+		this->regenerate_list = false;
 
-		if (text_end > wi->bottom) {
-			w->SetDirty();
-			ResizeWindowForWidget(w, BUILD_VEHICLE_WIDGET_PANEL, 0, text_end - wi->bottom);
-			w->SetDirty();
+		this->sort_criteria         = _last_sort_criteria[type];
+		this->descending_sort_order = _last_sort_order[type];
+
+		switch (type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:
+				this->filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
+				break;
+			case VEH_ROAD:
+				this->filter.roadtypes = (tile == 0) ? ROADTYPES_ALL : GetRoadTypes(tile);
+			case VEH_SHIP:
+				break;
+			case VEH_AIRCRAFT:
+				this->filter.flags =
+					tile == 0 ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
+				break;
+		}
+		this->SetupWindowStrings(type);
+		ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
+
+		this->GenerateBuildList(); // generate the list, since we need it in the next line
+		/* Select the first engine in the list as default when opening the window */
+		if (this->eng_list.size() > 0) this->sel_engine = this->eng_list[0];
+
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	/* Setup widget strings to fit the different types of vehicles */
+	void SetupWindowStrings(VehicleType type)
+	{
+		switch (type) {
+			default: NOT_REACHED();
+
+			case VEH_TRAIN:
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_JUST_STRING;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_881F_BUILD_VEHICLE;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_8820_RENAME;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_8845_RENAME_TRAIN_VEHICLE_TYPE;
+				break;
+
+			case VEH_ROAD:
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9006_NEW_ROAD_VEHICLES;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9007_BUILD_VEHICLE;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9027_BUILD_THE_HIGHLIGHTED_ROAD;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9034_RENAME;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9035_RENAME_ROAD_VEHICLE_TYPE;
+				break;
+
+			case VEH_SHIP:
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9808_NEW_SHIPS;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9826_BUILD_THE_HIGHLIGHTED_SHIP;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_9836_RENAME;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_9837_RENAME_SHIP_TYPE;
+				break;
+
+			case VEH_AIRCRAFT:
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_A005_NEW_AIRCRAFT;
+				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_A006_BUILD_AIRCRAFT;
+				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].data     = STR_A037_RENAME;
+				this->widget[BUILD_VEHICLE_WIDGET_RENAME].tooltips = STR_A038_RENAME_AIRCRAFT_TYPE;
+				break;
 		}
 	}
 
-	DrawSortButtonState(w, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING, bv->descending_sort_order ? SBS_DOWN : SBS_UP);
-}
+	/* Figure out what train EngineIDs to put in the list */
+	void GenerateBuildTrainList()
+	{
+		EngineID sel_id = INVALID_ENGINE;
+		int num_engines = 0;
+		int num_wagons  = 0;
 
-static void BuildVehicleClickEvent(Window *w, WindowEvent *e)
-{
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
+		this->filter.railtype = (this->window_number <= VEH_END) ? RAILTYPE_END : GetRailType(this->window_number);
 
-	switch (e->we.click.widget) {
-		case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
-			bv->descending_sort_order ^= true;
-			_last_sort_order[bv->vehicle_type] = bv->descending_sort_order;
-			bv->regenerate_list = true;
-			w->SetDirty();
-			break;
+		this->eng_list.clear();
 
-		case BUILD_VEHICLE_WIDGET_LIST: {
-			uint i = (e->we.click.pt.y - w->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(bv->vehicle_type) + w->vscroll.pos;
-			size_t num_items = bv->eng_list.size();
-			bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
-			w->SetDirty();
-			break;
+		/* Make list of all available train engines and wagons.
+		* Also check to see if the previously selected engine is still available,
+		* and if not, reset selection to INVALID_ENGINE. This could be the case
+		* when engines become obsolete and are removed */
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+			EngineID eid = e->index;
+			const RailVehicleInfo *rvi = &e->u.rail;
+
+			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
+			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
+
+			this->eng_list.push_back(eid);
+			if (rvi->railveh_type != RAILVEH_WAGON) {
+				num_engines++;
+			} else {
+				num_wagons++;
+			}
+
+			if (eid == this->sel_engine) sel_id = eid;
 		}
 
-		case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
-			ShowDropDownMenu(w, _sort_listing[bv->vehicle_type], bv->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
-			break;
+		this->sel_engine = sel_id;
 
-		case BUILD_VEHICLE_WIDGET_BUILD: {
-			EngineID sel_eng = bv->sel_engine;
-			if (sel_eng != INVALID_ENGINE) {
-				switch (bv->vehicle_type) {
-					default: NOT_REACHED();
-					case VEH_TRAIN:
-						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco,
-								   CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
-						break;
-					case VEH_ROAD:
-						DoCommandP(w->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
-						break;
-					case VEH_SHIP:
-						DoCommandP(w->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
-						break;
-					case VEH_AIRCRAFT:
-						DoCommandP(w->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
-						break;
-				}
-			}
-			break;
+		/* make engines first, and then wagons, sorted by ListPositionOfEngine() */
+		_internal_sort_order = false;
+		EngList_Sort(&this->eng_list, TrainEnginesThenWagonsSorter);
+
+		/* and then sort engines */
+		_internal_sort_order = this->descending_sort_order;
+		EngList_SortPartial(&this->eng_list, _sorter[0][this->sort_criteria], 0, num_engines);
+
+		/* and finally sort wagons */
+		EngList_SortPartial(&this->eng_list, _sorter[0][this->sort_criteria], num_engines, num_wagons);
+	}
+
+	/* Figure out what road vehicle EngineIDs to put in the list */
+	void GenerateBuildRoadVehList()
+	{
+		EngineID sel_id = INVALID_ENGINE;
+
+		this->eng_list.clear();
+
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+			EngineID eid = e->index;
+			if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
+			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
+			this->eng_list.push_back(eid);
+
+			if (eid == this->sel_engine) sel_id = eid;
+		}
+		this->sel_engine = sel_id;
+	}
+
+	/* Figure out what ship EngineIDs to put in the list */
+	void GenerateBuildShipList()
+	{
+		EngineID sel_id = INVALID_ENGINE;
+		this->eng_list.clear();
+
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
+			EngineID eid = e->index;
+			if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
+			this->eng_list.push_back(eid);
+
+			if (eid == this->sel_engine) sel_id = eid;
+		}
+		this->sel_engine = sel_id;
+	}
+
+	/* Figure out what aircraft EngineIDs to put in the list */
+	void GenerateBuildAircraftList()
+	{
+		EngineID sel_id = INVALID_ENGINE;
+
+		this->eng_list.clear();
+
+		/* Make list of all available planes.
+		* Also check to see if the previously selected plane is still available,
+		* and if not, reset selection to INVALID_ENGINE. This could be the case
+		* when planes become obsolete and are removed */
+		const Engine *e;
+		FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
+			EngineID eid = e->index;
+			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
+			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
+			if (this->window_number > VEH_END && !CanAircraftUseStation(eid, this->window_number)) continue;
+
+			this->eng_list.push_back(eid);
+			if (eid == this->sel_engine) sel_id = eid;
 		}
 
-		case BUILD_VEHICLE_WIDGET_RENAME: {
-			EngineID sel_eng = bv->sel_engine;
-			if (sel_eng != INVALID_ENGINE) {
-				StringID str = STR_NULL;
+		this->sel_engine = sel_id;
+	}
 
-				bv->rename_engine = sel_eng;
-				switch (bv->vehicle_type) {
-					default: NOT_REACHED();
-					case VEH_TRAIN:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
-					case VEH_ROAD:     str = STR_9036_RENAME_ROAD_VEHICLE_TYPE;  break;
-					case VEH_SHIP:     str = STR_9838_RENAME_SHIP_TYPE;          break;
-					case VEH_AIRCRAFT: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
-				}
-				SetDParam(0, sel_eng);
-				ShowQueryString(STR_ENGINE_NAME, str, 31, 160, w, CS_ALPHANUMERAL);
+	/* Generate the list of vehicles */
+	void GenerateBuildList()
+	{
+		switch (this->vehicle_type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:
+				this->GenerateBuildTrainList();
+				return; // trains should not reach the last sorting
+			case VEH_ROAD:
+				this->GenerateBuildRoadVehList();
+				break;
+			case VEH_SHIP:
+				this->GenerateBuildShipList();
+				break;
+			case VEH_AIRCRAFT:
+				this->GenerateBuildAircraftList();
+				break;
+		}
+		_internal_sort_order = this->descending_sort_order;
+		EngList_Sort(&this->eng_list, _sorter[this->vehicle_type][this->sort_criteria]);
+	}
+
+	void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
+				this->descending_sort_order ^= true;
+				_last_sort_order[this->vehicle_type] = this->descending_sort_order;
+				this->regenerate_list = true;
+				this->SetDirty();
+				break;
+
+			case BUILD_VEHICLE_WIDGET_LIST: {
+				uint i = (pt.y - this->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(this->vehicle_type) + this->vscroll.pos;
+				size_t num_items = this->eng_list.size();
+				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
+				this->SetDirty();
+				break;
 			}
-			break;
+
+			case BUILD_VEHICLE_WIDGET_SORT_DROPDOWN: // Select sorting criteria dropdown menu
+				ShowDropDownMenu(this, _sort_listing[this->vehicle_type], this->sort_criteria, BUILD_VEHICLE_WIDGET_SORT_DROPDOWN, 0, 0);
+				break;
+
+			case BUILD_VEHICLE_WIDGET_BUILD: {
+				EngineID sel_eng = this->sel_engine;
+				if (sel_eng != INVALID_ENGINE) {
+					switch (this->vehicle_type) {
+						default: NOT_REACHED();
+						case VEH_TRAIN:
+							DoCommandP(this->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco,
+										CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+							break;
+						case VEH_ROAD:
+							DoCommandP(this->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
+							break;
+						case VEH_SHIP:
+							DoCommandP(this->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
+							break;
+						case VEH_AIRCRAFT:
+							DoCommandP(this->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
+							break;
+					}
+				}
+				break;
+			}
+
+			case BUILD_VEHICLE_WIDGET_RENAME: {
+				EngineID sel_eng = this->sel_engine;
+				if (sel_eng != INVALID_ENGINE) {
+					StringID str = STR_NULL;
+
+					this->rename_engine = sel_eng;
+					switch (this->vehicle_type) {
+						default: NOT_REACHED();
+						case VEH_TRAIN:    str = STR_886A_RENAME_TRAIN_VEHICLE_TYPE; break;
+						case VEH_ROAD:     str = STR_9036_RENAME_ROAD_VEHICLE_TYPE;  break;
+						case VEH_SHIP:     str = STR_9838_RENAME_SHIP_TYPE;          break;
+						case VEH_AIRCRAFT: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
+					}
+					SetDParam(0, sel_eng);
+					ShowQueryString(STR_ENGINE_NAME, str, 31, 160, this, CS_ALPHANUMERAL);
+				}
+				break;
+			}
 		}
 	}
-}
 
-static void NewVehicleWndProc(Window *w, WindowEvent *e)
-{
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
+	virtual void OnInvalidateData(int data)
+	{
+		this->regenerate_list = true;
+	}
 
-	switch (e->event) {
-		case WE_CREATE: {
-			bv->vehicle_type = *(VehicleType*)e->we.create.data;
-			int vlh = GetVehicleListHeight(bv->vehicle_type);
-
-			ResizeWindow(w, 0, vlh - 14);
-			w->resize.step_height = vlh;
-			w->vscroll.cap = 1;
-			w->widget[BUILD_VEHICLE_WIDGET_LIST].data = 0x101;
-
-			w->resize.width  = w->width;
-			w->resize.height = w->height;
-		} break;
-
-		case WE_INVALIDATE_DATA:
-			bv->regenerate_list = true;
-			w->SetDirty();
-			break;
-
-		case WE_DESTROY:
-			bv->eng_list.~EngineList(); // call destructor explicitly
-			break;
-
-		case WE_PAINT:
-			if (bv->regenerate_list) {
-				bv->regenerate_list = false;
-				GenerateBuildList(w);
-			}
-			DrawBuildVehicleWindow(w);
-			break;
-
-		case WE_CLICK:
-			BuildVehicleClickEvent(w, e);
-			break;
-
-		case WE_DOUBLE_CLICK:
-			if (e->we.click.widget == BUILD_VEHICLE_WIDGET_LIST) {
-				/* When double clicking, we want to buy a vehicle */
-				e->we.click.widget = BUILD_VEHICLE_WIDGET_BUILD;
-				BuildVehicleClickEvent(w, e);
-			}
-			break;
-
-		case WE_ON_EDIT_TEXT: {
-			if (!StrEmpty(e->we.edittext.str)) {
-				StringID str = STR_NULL;
-				_cmd_text = e->we.edittext.str;
-				switch (bv->vehicle_type) {
-					default: NOT_REACHED();
-					case VEH_TRAIN:    str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
-					case VEH_ROAD:     str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
-					case VEH_SHIP:     str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
-					case VEH_AIRCRAFT: str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
-				}
-				DoCommandP(0, bv->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(str));
-			}
-			break;
+	virtual void OnPaint()
+	{
+		if (this->regenerate_list) {
+			this->regenerate_list = false;
+			this->GenerateBuildList();
 		}
 
-		case WE_DROPDOWN_SELECT: // we have selected a dropdown item in the list
-			if (bv->sort_criteria != e->we.dropdown.index) {
-				bv->sort_criteria = e->we.dropdown.index;
-				_last_sort_criteria[bv->vehicle_type] = bv->sort_criteria;
-				bv->regenerate_list = true;
+		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.size());
+
+		this->SetWidgetDisabledState(BUILD_VEHICLE_WIDGET_BUILD, this->window_number <= VEH_END);
+
+		SetVScrollCount(this, this->eng_list.size());
+		SetDParam(0, this->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
+
+		/* Set text of sort by dropdown */
+		this->widget[BUILD_VEHICLE_WIDGET_SORT_DROPDOWN].data = _sort_listing[this->vehicle_type][this->sort_criteria];
+
+		DrawWindowWidgets(this);
+
+		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, this->eng_list, this->vscroll.pos, max, this->sel_engine, 0, DEFAULT_GROUP);
+
+		if (this->sel_engine != INVALID_ENGINE) {
+			const Widget *wi = &this->widget[BUILD_VEHICLE_WIDGET_PANEL];
+			int text_end = DrawVehiclePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, this->sel_engine);
+
+			if (text_end > wi->bottom) {
+				this->SetDirty();
+				ResizeWindowForWidget(this, BUILD_VEHICLE_WIDGET_PANEL, 0, text_end - wi->bottom);
+				this->SetDirty();
 			}
-			w->SetDirty();
-			break;
+		}
 
-		case WE_RESIZE:
-			if (e->we.sizing.diff.x != 0) ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
-			if (e->we.sizing.diff.y == 0) break;
-
-			w->vscroll.cap += e->we.sizing.diff.y / (int)GetVehicleListHeight(bv->vehicle_type);
-			w->widget[BUILD_VEHICLE_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
-			break;
+		DrawSortButtonState(this, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
 	}
-}
+
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget == BUILD_VEHICLE_WIDGET_LIST) {
+			/* When double clicking, we want to buy a vehicle */
+			this->OnClick(pt, BUILD_VEHICLE_WIDGET_BUILD);
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			StringID err_str = STR_NULL;
+			_cmd_text = str;
+			switch (this->vehicle_type) {
+				default: NOT_REACHED();
+				case VEH_TRAIN:    err_str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
+				case VEH_ROAD:     err_str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
+				case VEH_SHIP:     err_str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
+				case VEH_AIRCRAFT: err_str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
+			}
+			DoCommandP(0, this->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(err_str));
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (this->sort_criteria != index) {
+			this->sort_criteria = index;
+			_last_sort_criteria[this->vehicle_type] = this->sort_criteria;
+			this->regenerate_list = true;
+		}
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		if (delta.x != 0) ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
+		if (delta.y == 0) return;
+
+		this->vscroll.cap += delta.y / (int)GetVehicleListHeight(this->vehicle_type);
+		this->widget[BUILD_VEHICLE_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+	}
+};
 
 static const WindowDesc _build_vehicle_desc = {
 	WDP_AUTO, WDP_AUTO, 240, 174, 240, 256,
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,
-	NewVehicleWndProc
+	NULL
 };
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 {
-	buildvehicle_d *bv;
-	Window *w;
 	/* We want to be able to open both Available Train as Available Ships,
 	 *  so if tile == 0 (Available XXX Window), use 'type' as unique number.
 	 *  As it always is a low value, it won't collide with any real tile
@@ -1193,39 +1196,5 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, num);
 
-	w = AllocateWindowDescFront<Window>(&_build_vehicle_desc, num, &type);
-
-	if (w == NULL) return;
-
-	w->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_player;
-
-	bv = &WP(w, buildvehicle_d);
-	new (&bv->eng_list) EngineList();
-	bv->sel_engine      = INVALID_ENGINE;
-
-	bv->regenerate_list = false;
-
-	bv->sort_criteria         = _last_sort_criteria[type];
-	bv->descending_sort_order = _last_sort_order[type];
-
-	switch (type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:
-			WP(w, buildvehicle_d).filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
-			break;
-		case VEH_ROAD:
-			WP(w, buildvehicle_d).filter.roadtypes = (tile == 0) ? ROADTYPES_ALL : GetRoadTypes(tile);
-		case VEH_SHIP:
-			break;
-		case VEH_AIRCRAFT:
-			bv->filter.flags =
-				tile == 0 ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
-			break;
-	}
-	SetupWindowStrings(w, type);
-	ResizeButtons(w, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
-
-	GenerateBuildList(w); // generate the list, since we need it in the next line
-	/* Select the first engine in the list as default when opening the window */
-	if (bv->eng_list.size() > 0) bv->sel_engine = bv->eng_list[0];
+	new BuildVehicleWindow(&_build_vehicle_desc, tile, type);
 }
