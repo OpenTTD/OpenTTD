@@ -2425,9 +2425,7 @@ bool AfterLoadGame()
 
 			/* Move river flag and update canals to use water class */
 			if (IsTileType(t, MP_WATER)) {
-				if (_m[t].m5 == 2) {
-					MakeRiver(t, Random());
-				} else {
+				if (GetWaterClass(t) != WATER_CLASS_RIVER) {
 					if (IsWater(t)) {
 						Owner o = GetTileOwner(t);
 						if (o == OWNER_WATER) {
