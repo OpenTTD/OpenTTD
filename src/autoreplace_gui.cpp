@@ -249,7 +249,7 @@ class ReplaceVehicleWindow : public Window {
 	}
 
 public:
-	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window(desc, window_number)
+	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window(desc, vehicletype)
 	{
 		this->wagon_btnstate = true; // start with locomotives (all other vehicles will not read this bool)
 		new (&this->list[0]) EngineList();
