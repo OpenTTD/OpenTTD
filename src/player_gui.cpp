@@ -287,41 +287,13 @@ static const StringID _colour_dropdown[] = {
 };
 
 /* Association of liveries to livery classes */
-static const LiveryClass livery_class[LS_END] = {
+static const LiveryClass _livery_class[LS_END] = {
 	LC_OTHER,
 	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
 	LC_ROAD, LC_ROAD,
 	LC_SHIP, LC_SHIP,
 	LC_AIRCRAFT, LC_AIRCRAFT, LC_AIRCRAFT,
 	LC_ROAD, LC_ROAD,
-};
-
-/* Number of liveries in each class, used to determine the height of the livery window */
-static const byte livery_height[] = {
-	1,
-	13,
-	4,
-	2,
-	3,
-};
-
-struct livery_d {
-	uint32 sel;
-	LiveryClass livery_class;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(livery_d));
-
-
-enum PlayerLiveryWindowWidgets {
-	PLW_WIDGET_CLASS_GENERAL = 2,
-	PLW_WIDGET_CLASS_RAIL,
-	PLW_WIDGET_CLASS_ROAD,
-	PLW_WIDGET_CLASS_SHIP,
-	PLW_WIDGET_CLASS_AIRCRAFT,
-
-	PLW_WIDGET_PRI_COL_DROPDOWN = 9,
-	PLW_WIDGET_SEC_COL_DROPDOWN,
-	PLW_WIDGET_MATRIX,
 };
 
 class DropDownListColourItem : public DropDownListItem {
@@ -347,166 +319,195 @@ public:
 	}
 };
 
-static void ShowColourDropDownMenu(Window *w, uint32 widget)
-{
-	uint32 used_colours = 0;
-	const Livery *livery;
-	LiveryScheme scheme;
+struct SelectPlayerLiveryWindow : public Window {
+private:
+	uint32 sel;
+	LiveryClass livery_class;
 
-	/* Disallow other player colours for the primary colour */
-	if (HasBit(WP(w, livery_d).sel, LS_DEFAULT) && widget == PLW_WIDGET_PRI_COL_DROPDOWN) {
-		const Player *p;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->index != _local_player) SetBit(used_colours, p->player_color);
+	enum PlayerLiveryWindowWidgets {
+		PLW_WIDGET_CLOSE,
+		PLW_WIDGET_CAPTION,
+		PLW_WIDGET_CLASS_GENERAL,
+		PLW_WIDGET_CLASS_RAIL,
+		PLW_WIDGET_CLASS_ROAD,
+		PLW_WIDGET_CLASS_SHIP,
+		PLW_WIDGET_CLASS_AIRCRAFT,
+		PLW_WIDGET_SPACER_CLASS,
+		PLW_WIDGET_SPACER_DROPDOWN,
+		PLW_WIDGET_PRI_COL_DROPDOWN,
+		PLW_WIDGET_SEC_COL_DROPDOWN,
+		PLW_WIDGET_MATRIX,
+	};
+
+	void ShowColourDropDownMenu(uint32 widget)
+	{
+		uint32 used_colours = 0;
+		const Livery *livery;
+		LiveryScheme scheme;
+
+		/* Disallow other player colours for the primary colour */
+		if (HasBit(this->sel, LS_DEFAULT) && widget == PLW_WIDGET_PRI_COL_DROPDOWN) {
+			const Player *p;
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active && p->index != _local_player) SetBit(used_colours, p->player_color);
+			}
+		}
+
+		/* Get the first selected livery to use as the default dropdown item */
+		for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
+			if (HasBit(this->sel, scheme)) break;
+		}
+		if (scheme == LS_END) scheme = LS_DEFAULT;
+		livery = &GetPlayer((PlayerID)this->window_number)->livery[scheme];
+
+		DropDownList *list = new DropDownList();
+		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
+			list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
+		}
+
+		ShowDropDownList(this, list, widget == PLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
+	}
+
+public:
+	SelectPlayerLiveryWindow(const WindowDesc *desc, PlayerID player) : Window(desc, player)
+	{
+		this->caption_color = player;
+		this->livery_class = LC_OTHER;
+		this->sel = 1;
+		this->LowerWidget(PLW_WIDGET_CLASS_GENERAL);
+		if (!_loaded_newgrf_features.has_2CC) {
+			this->HideWidget(PLW_WIDGET_SEC_COL_DROPDOWN);
+		}
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void OnPaint()
+	{
+		const Player *p = GetPlayer((PlayerID)this->window_number);
+		LiveryScheme scheme = LS_DEFAULT;
+		int y = 51;
+
+		/* Disable dropdown controls if no scheme is selected */
+		this->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_DROPDOWN, this->sel == 0);
+
+		if (this->sel != 0) {
+			for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
+				if (HasBit(this->sel, scheme)) break;
+			}
+			if (scheme == LS_END) scheme = LS_DEFAULT;
+		}
+
+		SetDParam(0, STR_00D1_DARK_BLUE + p->livery[scheme].colour1);
+		SetDParam(1, STR_00D1_DARK_BLUE + p->livery[scheme].colour2);
+
+		DrawWindowWidgets(this);
+
+		for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+			if (_livery_class[scheme] == this->livery_class) {
+				bool sel = HasBit(this->sel, scheme) != 0;
+
+				if (scheme != LS_DEFAULT) {
+					DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
+				}
+
+				DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
+
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
+				DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
+
+				if (_loaded_newgrf_features.has_2CC) {
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
+					DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
+				}
+
+				y += 14;
+			}
 		}
 	}
 
-	/* Get the first selected livery to use as the default dropdown item */
-	for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		if (HasBit(WP(w, livery_d).sel, scheme)) break;
-	}
-	if (scheme == LS_END) scheme = LS_DEFAULT;
-	livery = &GetPlayer((PlayerID)w->window_number)->livery[scheme];
+	virtual void OnClick(Point pt, int widget)
+	{
+		/* Number of liveries in each class, used to determine the height of the livery window */
+		static const byte livery_height[] = {
+			1,
+			13,
+			4,
+			2,
+			3,
+		};
 
-	DropDownList *list = new DropDownList();
-	for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
-		list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
-	}
+		switch (widget) {
+			/* Livery Class buttons */
+			case PLW_WIDGET_CLASS_GENERAL:
+			case PLW_WIDGET_CLASS_RAIL:
+			case PLW_WIDGET_CLASS_ROAD:
+			case PLW_WIDGET_CLASS_SHIP:
+			case PLW_WIDGET_CLASS_AIRCRAFT: {
+				LiveryScheme scheme;
 
-	ShowDropDownList(w, list, widget == PLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
-}
+				this->RaiseWidget(this->livery_class + PLW_WIDGET_CLASS_GENERAL);
+				this->livery_class = (LiveryClass)(widget - PLW_WIDGET_CLASS_GENERAL);
+				this->sel = 0;
+				this->LowerWidget(this->livery_class + PLW_WIDGET_CLASS_GENERAL);
 
-static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			w->LowerWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
-			if (!_loaded_newgrf_features.has_2CC) {
-				w->HideWidget(PLW_WIDGET_SEC_COL_DROPDOWN);
-			}
-			break;
-
-		case WE_PAINT: {
-			const Player *p = GetPlayer((PlayerID)w->window_number);
-			LiveryScheme scheme = LS_DEFAULT;
-			int y = 51;
-
-			/* Disable dropdown controls if no scheme is selected */
-			w->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_DROPDOWN, (WP(w, livery_d).sel == 0));
-			w->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_DROPDOWN, (WP(w, livery_d).sel == 0));
-
-			if (!(WP(w, livery_d).sel == 0)) {
-				for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-					if (HasBit(WP(w, livery_d).sel, scheme)) break;
+				/* Select the first item in the list */
+				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+					if (_livery_class[scheme] == this->livery_class) {
+						this->sel = 1 << scheme;
+						break;
+					}
 				}
-				if (scheme == LS_END) scheme = LS_DEFAULT;
+				this->height = 49 + livery_height[this->livery_class] * 14;
+				this->widget[PLW_WIDGET_MATRIX].bottom = this->height - 1;
+				this->widget[PLW_WIDGET_MATRIX].data = livery_height[this->livery_class] << 8 | 1;
+				MarkWholeScreenDirty();
+				break;
 			}
 
-			SetDParam(0, STR_00D1_DARK_BLUE + p->livery[scheme].colour1);
-			SetDParam(1, STR_00D1_DARK_BLUE + p->livery[scheme].colour2);
+			case PLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
+				ShowColourDropDownMenu(PLW_WIDGET_PRI_COL_DROPDOWN);
+				break;
 
-			DrawWindowWidgets(w);
+			case PLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
+				ShowColourDropDownMenu(PLW_WIDGET_SEC_COL_DROPDOWN);
+				break;
 
-			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (livery_class[scheme] == WP(w, livery_d).livery_class) {
-					bool sel = HasBit(WP(w, livery_d).sel, scheme) != 0;
+			case PLW_WIDGET_MATRIX: {
+				LiveryScheme scheme;
+				LiveryScheme j = (LiveryScheme)((pt.y - 48) / 14);
 
-					if (scheme != LS_DEFAULT) {
-						DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
-					}
-
-					DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
-
-					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
-					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
-
-					if (_loaded_newgrf_features.has_2CC) {
-						DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
-						DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
-					}
-
-					y += 14;
+				for (scheme = LS_BEGIN; scheme <= j; scheme++) {
+					if (_livery_class[scheme] != this->livery_class) j++;
+					if (scheme >= LS_END) return;
 				}
+				if (j >= LS_END) return;
+
+				/* If clicking on the left edge, toggle using the livery */
+				if (pt.x < 10) {
+					DoCommandP(0, j | (2 << 8), !GetPlayer((PlayerID)this->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
+				}
+
+				if (_ctrl_pressed) {
+					ToggleBit(this->sel, j);
+				} else {
+					this->sel = 1 << j;
+				}
+				this->SetDirty();
+				break;
 			}
-			break;
-		}
-
-		case WE_CLICK: {
-			switch (e->we.click.widget) {
-				/* Livery Class buttons */
-				case PLW_WIDGET_CLASS_GENERAL:
-				case PLW_WIDGET_CLASS_RAIL:
-				case PLW_WIDGET_CLASS_ROAD:
-				case PLW_WIDGET_CLASS_SHIP:
-				case PLW_WIDGET_CLASS_AIRCRAFT: {
-					LiveryScheme scheme;
-
-					w->RaiseWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
-					WP(w, livery_d).livery_class = (LiveryClass)(e->we.click.widget - PLW_WIDGET_CLASS_GENERAL);
-					WP(w, livery_d).sel = 0;
-					w->LowerWidget(WP(w, livery_d).livery_class + PLW_WIDGET_CLASS_GENERAL);
-
-					/* Select the first item in the list */
-					for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-						if (livery_class[scheme] == WP(w, livery_d).livery_class) {
-							WP(w, livery_d).sel = 1 << scheme;
-							break;
-						}
-					}
-					w->height = 49 + livery_height[WP(w, livery_d).livery_class] * 14;
-					w->widget[PLW_WIDGET_MATRIX].bottom = w->height - 1;
-					w->widget[PLW_WIDGET_MATRIX].data = livery_height[WP(w, livery_d).livery_class] << 8 | 1;
-					MarkWholeScreenDirty();
-					break;
-				}
-
-				case PLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
-					ShowColourDropDownMenu(w, PLW_WIDGET_PRI_COL_DROPDOWN);
-					break;
-
-				case PLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
-					ShowColourDropDownMenu(w, PLW_WIDGET_SEC_COL_DROPDOWN);
-					break;
-
-				case PLW_WIDGET_MATRIX: {
-					LiveryScheme scheme;
-					LiveryScheme j = (LiveryScheme)((e->we.click.pt.y - 48) / 14);
-
-					for (scheme = LS_BEGIN; scheme <= j; scheme++) {
-						if (livery_class[scheme] != WP(w, livery_d).livery_class) j++;
-						if (scheme >= LS_END) return;
-					}
-					if (j >= LS_END) return;
-
-					/* If clicking on the left edge, toggle using the livery */
-					if (e->we.click.pt.x < 10) {
-						DoCommandP(0, j | (2 << 8), !GetPlayer((PlayerID)w->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
-					}
-
-					if (_ctrl_pressed) {
-						ToggleBit(WP(w, livery_d).sel, j);
-					} else {
-						WP(w, livery_d).sel = 1 << j;
-					}
-					w->SetDirty();
-					break;
-				}
-			}
-			break;
-		}
-
-		case WE_DROPDOWN_SELECT: {
-			LiveryScheme scheme;
-
-			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-				if (HasBit(WP(w, livery_d).sel, scheme)) {
-					DoCommandP(0, scheme | (e->we.dropdown.button == PLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), e->we.dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
-				}
-			}
-			break;
 		}
 	}
-}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+			if (HasBit(this->sel, scheme)) {
+				DoCommandP(0, scheme | (widget == PLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, NULL, CMD_SET_PLAYER_COLOR);
+			}
+		}
+	}
+};
 
 static const Widget _select_player_livery_2cc_widgets[] = {
 { WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
@@ -529,7 +530,7 @@ static const WindowDesc _select_player_livery_2cc_desc = {
 	WC_PLAYER_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_2cc_widgets,
-	SelectPlayerLiveryWndProc
+	NULL
 };
 
 
@@ -554,7 +555,7 @@ static const WindowDesc _select_player_livery_desc = {
 	WC_PLAYER_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_widgets,
-	SelectPlayerLiveryWndProc
+	NULL
 };
 
 /**
@@ -1250,16 +1251,10 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			switch (e->we.click.widget) {
 				case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace((PlayerID)w->window_number, false); break;
 
-				case PCW_WIDGET_COLOR_SCHEME: {
-					Window *wf = AllocateWindowDescFront<Window>(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
-					if (wf != NULL) {
-						wf->caption_color = wf->window_number;
-						WP(wf, livery_d).livery_class = LC_OTHER;
-						WP(wf, livery_d).sel = 1;
-						wf->LowerWidget(2);
-					}
+				case PCW_WIDGET_COLOR_SCHEME:
+					if (BringWindowToFrontById(WC_PLAYER_COLOR, w->window_number)) break;
+					new SelectPlayerLiveryWindow(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, (PlayerID)w->window_number);
 					break;
-				}
 
 				case PCW_WIDGET_PRESIDENT_NAME: {
 					const Player *p = GetPlayer((PlayerID)w->window_number);
