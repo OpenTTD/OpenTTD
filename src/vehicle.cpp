@@ -1552,7 +1552,7 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
  * @param color The string to show depending on if we are unloading or loading
  * @return A percentage of how full the Vehicle is.
  */
-uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color)
+uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *color)
 {
 	int count = 0;
 	int max = 0;

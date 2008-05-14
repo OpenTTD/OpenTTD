@@ -31,7 +31,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
-uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color);
+uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *color);
 
 void InitializeTrains();
 byte VehicleRandomBits();
