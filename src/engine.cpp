@@ -141,6 +141,9 @@ void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint 
 	qsort(&((*el)[begin]), num_items, sizeof(EngineID), compare);
 }
 
+
+/** Sets cached values in Player::num_vehicles and Group::num_vehicles
+ */
 void SetCachedEngineCounts()
 {
 	uint engines = GetEnginePoolSize();

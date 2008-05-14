@@ -2538,6 +2538,7 @@ void ReloadNewGRFData()
 	ResetVehiclePosHash();
 	AfterLoadVehicles(false);
 	StartupEngines();
+	SetCachedEngineCounts();
 	/* update station and waypoint graphics */
 	AfterLoadWaypoints();
 	AfterLoadStations();
