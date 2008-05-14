@@ -125,7 +125,7 @@ void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
 	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
 	 * generally, do not sort if there are less than 2 items */
 	if (size < 2) return;
-	qsort(&(el->at(0)), size, sizeof(EngineID), compare);
+	qsort(&((*el)[0]), size, sizeof(EngineID), compare); // MorphOS doesn't know vector::at(int) ...
 }
 
 /** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
