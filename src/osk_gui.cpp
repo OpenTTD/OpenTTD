@@ -129,6 +129,8 @@ struct OskWindow : public Window {
 			return;
 		}
 
+		bool delete_this = false;
+
 		switch (widget) {
 			case OSK_WIDGET_BACKSPACE:
 				if (DeleteTextBufferChar(&this->qs->text, WKC_BACKSPACE)) this->InvalidateWidget(OSK_WIDGET_TEXT);
@@ -171,7 +173,7 @@ struct OskWindow : public Window {
 						this->parent->OnClick(pt, this->ok_btn);
 					}
 				}
-				delete this;
+				delete_this = true;
 				break;
 
 			case OSK_WIDGET_CANCEL:
@@ -182,12 +184,13 @@ struct OskWindow : public Window {
 					strcpy(qs->text.buf, this->orig_str_buf);
 					UpdateTextBufferSize(&qs->text);
 					MoveTextBufferPos(&qs->text, WKC_END);
-					delete this;
+					delete_this = true;
 				}
 				break;
 		}
 		/* make sure that the parent window's textbox also gets updated */
 		if (this->parent != NULL) this->parent->InvalidateWidget(this->text_btn);
+		if (delete_this) delete this;
 	}
 
 	virtual void OnMouseLoop()
