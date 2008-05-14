@@ -375,9 +375,7 @@ public:
 		this->livery_class = LC_OTHER;
 		this->sel = 1;
 		this->LowerWidget(PLW_WIDGET_CLASS_GENERAL);
-		if (!_loaded_newgrf_features.has_2CC) {
-			this->HideWidget(PLW_WIDGET_SEC_COL_DROPDOWN);
-		}
+		this->OnInvalidateData(_loaded_newgrf_features.has_2CC);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -416,7 +414,7 @@ public:
 				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
 				DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
 
-				if (_loaded_newgrf_features.has_2CC) {
+				if (!this->IsWidgetHidden(PLW_WIDGET_SEC_COL_DROPDOWN)) {
 					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
 					DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
 				}
@@ -507,9 +505,25 @@ public:
 			}
 		}
 	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		static bool has2cc = true;
+
+		if (has2cc == !!data) return;
+
+		has2cc = !!data;
+
+		int r = this->widget[has2cc ? PLW_WIDGET_SEC_COL_DROPDOWN : PLW_WIDGET_PRI_COL_DROPDOWN].right;
+		this->SetWidgetHiddenState(PLW_WIDGET_SEC_COL_DROPDOWN, !has2cc);
+		this->widget[PLW_WIDGET_CAPTION].right = r;
+		this->widget[PLW_WIDGET_SPACER_CLASS].right = r;
+		this->widget[PLW_WIDGET_MATRIX].right = r;
+		this->width = r + 1;
+	}
 };
 
-static const Widget _select_player_livery_2cc_widgets[] = {
+static const Widget _select_player_livery_widgets[] = {
 { WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
 {  WWT_CAPTION, RESIZE_NONE, 14,  11, 399,   0,  13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
 {   WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,   STR_LIVERY_GENERAL_TIP },
@@ -525,33 +539,8 @@ static const Widget _select_player_livery_2cc_widgets[] = {
 { WIDGETS_END },
 };
 
-static const WindowDesc _select_player_livery_2cc_desc = {
-	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
-	WC_PLAYER_COLOR, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_select_player_livery_2cc_widgets,
-	NULL
-};
-
-
-static const Widget _select_player_livery_widgets[] = {
-{ WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
-{  WWT_CAPTION, RESIZE_NONE, 14,  11, 274,   0,  13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
-{   WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,   STR_LIVERY_GENERAL_TIP },
-{   WWT_IMGBTN, RESIZE_NONE, 14,  22,  43,  14,  35, SPR_IMG_TRAINLIST,         STR_LIVERY_TRAIN_TIP },
-{   WWT_IMGBTN, RESIZE_NONE, 14,  44,  65,  14,  35, SPR_IMG_TRUCKLIST,         STR_LIVERY_ROADVEH_TIP },
-{   WWT_IMGBTN, RESIZE_NONE, 14,  66,  87,  14,  35, SPR_IMG_SHIPLIST,          STR_LIVERY_SHIP_TIP },
-{   WWT_IMGBTN, RESIZE_NONE, 14,  88, 109,  14,  35, SPR_IMG_AIRPLANESLIST,     STR_LIVERY_AIRCRAFT_TIP },
-{    WWT_PANEL, RESIZE_NONE, 14, 110, 274,  14,  35, 0x0,                       STR_NULL },
-{    WWT_PANEL, RESIZE_NONE, 14,   0, 149,  36,  47, 0x0,                       STR_NULL },
-{ WWT_DROPDOWN, RESIZE_NONE, 14, 150, 274,  36,  47, STR_02BD,                  STR_LIVERY_PRIMARY_TIP },
-{ WWT_DROPDOWN, RESIZE_NONE, 14, 275, 275,  36,  47, STR_02E1,                  STR_LIVERY_SECONDARY_TIP },
-{   WWT_MATRIX, RESIZE_NONE, 14,   0, 274,  48,  48 + 1 * 14, (1 << 8) | 1,     STR_LIVERY_PANEL_TIP },
-{ WIDGETS_END },
-};
-
 static const WindowDesc _select_player_livery_desc = {
-	WDP_AUTO, WDP_AUTO, 275, 49 + 1 * 14, 275, 49 + 1 * 14,
+	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
 	WC_PLAYER_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_widgets,
@@ -1253,7 +1242,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 				case PCW_WIDGET_COLOR_SCHEME:
 					if (BringWindowToFrontById(WC_PLAYER_COLOR, w->window_number)) break;
-					new SelectPlayerLiveryWindow(_loaded_newgrf_features.has_2CC ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, (PlayerID)w->window_number);
+					new SelectPlayerLiveryWindow(&_select_player_livery_desc, (PlayerID)w->window_number);
 					break;
 
 				case PCW_WIDGET_PRESIDENT_NAME: {

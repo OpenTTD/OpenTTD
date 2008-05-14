@@ -2544,6 +2544,8 @@ void ReloadNewGRFData()
 	AfterLoadStations();
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
+	/* Update livery selection windows */
+	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) InvalidateWindowData(WC_PLAYER_COLOR, i, _loaded_newgrf_features.has_2CC);
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 }
