@@ -889,7 +889,7 @@ struct DepotWindow : Window {
 				this->SetDirty();
 
 				if (this->type == VEH_TRAIN) {
-					GetDepotVehiclePtData gdvp;
+					GetDepotVehiclePtData gdvp = { NULL, NULL };
 
 					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
 						sel != INVALID_VEHICLE) {
