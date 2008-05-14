@@ -1021,6 +1021,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			} else {
 				HandleOnEditText(this->text.buf);
 			}
+			this->handled = true;
 		}
 	}
 
