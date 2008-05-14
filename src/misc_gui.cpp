@@ -206,107 +206,6 @@ void PlaceLandBlockInfo()
 	}
 }
 
-struct scroller_d {
-	int height;
-	uint16 counter;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(scroller_d));
-
-static const char *credits[] = {
-	/*************************************************************************
-	 *                      maximum length of string which fits in window   -^*/
-	"Original design by Chris Sawyer",
-	"Original graphics by Simon Foster",
-	"",
-	"The OpenTTD team (in alphabetical order):",
-	"  Jean-Francois Claeys (Belugas) - GUI, newindustries and more",
-	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles",
-	"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
-	"  Loïc Guilloux (glx) - General coding",
-	"  Christoph Elsenhans (frosch) - General coding",
-	"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;)",
-	"  Jonathan Coome (Maedhros) - High priest of the newGRF Temple",
-	"  Attila Bán (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
-	"  Owen Rudge (orudge) - Forum host, OS/2 port",
-	"  Peter Nelson (peter1138) - Spiritual descendant from newGRF gods",
-	"  Remko Bijker (Rubidium) - Lead coder and way more",
-	"  Benedikt Brüggemeier (skidd13) - Bug fixer and code reworker",
-	"  Zdenek Sojka (SmatZ) - Bug finder and fixer",
-	"",
-	"Inactive Developers:",
-	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
-	"  Tamás Faragó (Darkvater) - Ex-Lead coder",
-	"  Christoph Mallon (Tron) - Programmer, code correctness police",
-	"",
-	"Retired Developers:",
-	"  Ludvig Strigeus (ludde) - OpenTTD author, main coder (0.1 - 0.3.3)",
-	"  Serge Paquet (vurlix) - Assistant project manager, coder (0.1 - 0.3.3)",
-	"  Dominik Scherer (dominik81) - Lead programmer, GUI expert (0.3.0 - 0.3.6)",
-	"  Patric Stout (TrueLight) - Programmer, webhoster (0.3 - pre0.6)",
-	"",
-	"Special thanks go out to:",
-	"  Josef Drexler - For his great work on TTDPatch",
-	"  Marcin Grzegorczyk - For his documentation of TTD internals",
-	"  Petr Baudis (pasky) - Many patches, newGRF support",
-	"  Stefan Meißner (sign_de) - For his work on the console",
-	"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with",
-	"  Cian Duffy (MYOB) - BeOS port / manual writing",
-	"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
-	"  Richard Kempton (richK) - additional airports, initial TGP implementation",
-	"",
-	"  Michael Blunck - Pre-Signals and Semaphores © 2003",
-	"  George - Canal/Lock graphics © 2003-2004",
-	"  David Dallaston - Tram tracks",
-	"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
-	"  All Translators - Who made OpenTTD a truly international game",
-	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
-	"",
-	"",
-	"And last but not least:",
-	"  Chris Sawyer - For an amazing game!"
-};
-
-static void AboutWindowProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE: // Set up window counter and start position of scroller
-			WP(w, scroller_d).counter = 5;
-			WP(w, scroller_d).height = w->height - 40;
-			break;
-
-		case WE_PAINT: {
-			int y = WP(w, scroller_d).height;
-			DrawWindowWidgets(w);
-
-			/* Show original copyright and revision version */
-			DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
-			DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING);
-
-			/* Show all scrolling credits */
-			for (uint i = 0; i < lengthof(credits); i++) {
-				if (y >= 50 && y < (w->height - 40)) {
-					DoDrawString(credits[i], 10, y, TC_BLACK);
-				}
-				y += 10;
-			}
-
-			/* If the last text has scrolled start anew from the start */
-			if (y < 50) WP(w, scroller_d).height = w->height - 40;
-
-			DoDrawStringCentered(210, w->height - 25, "Website: http://www.openttd.org", TC_BLACK);
-			DrawStringCentered(210, w->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
-		} break;
-
-		case WE_TICK: // Timer to scroll the text and adjust the new top
-			if (--WP(w, scroller_d).counter == 0) {
-				WP(w, scroller_d).counter = 5;
-				WP(w, scroller_d).height--;
-				w->SetDirty();
-			}
-			break;
-	}
-}
-
 static const Widget _about_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   419,     0,    13, STR_015B_OPENTTD, STR_NULL},
@@ -320,14 +219,113 @@ static const WindowDesc _about_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_about_widgets,
-	AboutWindowProc
+	NULL
 };
 
+struct AboutWindow : public Window {
+	int scroll_height;
+	uint16 counter;
+
+	AboutWindow() : Window(&_about_desc)
+	{
+		this->counter = 5;
+		this->scroll_height = this->height - 40;
+		this->FindWindowPlacementAndResize(&_about_desc);
+	}
+
+	virtual void OnPaint()
+	{
+		static const char *credits[] = {
+			/*************************************************************************
+			 *                      maximum length of string which fits in window   -^*/
+			"Original design by Chris Sawyer",
+			"Original graphics by Simon Foster",
+			"",
+			"The OpenTTD team (in alphabetical order):",
+			"  Jean-Francois Claeys (Belugas) - GUI, newindustries and more",
+			"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder and vehicles",
+			"  Matthijs Kooijman (blathijs) - Pathfinder-guru, pool rework",
+			"  Loïc Guilloux (glx) - General coding",
+			"  Christoph Elsenhans (frosch) - General coding",
+			"  Jaroslav Mazanec (KUDr) - YAPG (Yet Another Pathfinder God) ;)",
+			"  Jonathan Coome (Maedhros) - High priest of the newGRF Temple",
+			"  Attila Bán (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
+			"  Owen Rudge (orudge) - Forum host, OS/2 port",
+			"  Peter Nelson (peter1138) - Spiritual descendant from newGRF gods",
+			"  Remko Bijker (Rubidium) - Lead coder and way more",
+			"  Benedikt Brüggemeier (skidd13) - Bug fixer and code reworker",
+			"  Zdenek Sojka (SmatZ) - Bug finder and fixer",
+			"",
+			"Inactive Developers:",
+			"  Victor Fischer (Celestar) - Programming everywhere you need him to",
+			"  Tamás Faragó (Darkvater) - Ex-Lead coder",
+			"  Christoph Mallon (Tron) - Programmer, code correctness police",
+			"",
+			"Retired Developers:",
+			"  Ludvig Strigeus (ludde) - OpenTTD author, main coder (0.1 - 0.3.3)",
+			"  Serge Paquet (vurlix) - Assistant project manager, coder (0.1 - 0.3.3)",
+			"  Dominik Scherer (dominik81) - Lead programmer, GUI expert (0.3.0 - 0.3.6)",
+			"  Patric Stout (TrueLight) - Programmer, webhoster (0.3 - pre0.6)",
+			"",
+			"Special thanks go out to:",
+			"  Josef Drexler - For his great work on TTDPatch",
+			"  Marcin Grzegorczyk - For his documentation of TTD internals",
+			"  Petr Baudis (pasky) - Many patches, newGRF support",
+			"  Stefan Meißner (sign_de) - For his work on the console",
+			"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with",
+			"  Cian Duffy (MYOB) - BeOS port / manual writing",
+			"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
+			"  Richard Kempton (richK) - additional airports, initial TGP implementation",
+			"",
+			"  Michael Blunck - Pre-Signals and Semaphores © 2003",
+			"  George - Canal/Lock graphics © 2003-2004",
+			"  David Dallaston - Tram tracks",
+			"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
+			"  All Translators - Who made OpenTTD a truly international game",
+			"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
+			"",
+			"",
+			"And last but not least:",
+			"  Chris Sawyer - For an amazing game!"
+		};
+
+		DrawWindowWidgets(this);
+
+		/* Show original copyright and revision version */
+		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
+		DrawStringCentered(210, 17 + 10, STR_00B7_VERSION, TC_FROMSTRING);
+
+		int y = this->scroll_height;
+
+		/* Show all scrolling credits */
+		for (uint i = 0; i < lengthof(credits); i++) {
+			if (y >= 50 && y < (this->height - 40)) {
+				DoDrawString(credits[i], 10, y, TC_BLACK);
+			}
+			y += 10;
+		}
+
+		/* If the last text has scrolled start a new from the start */
+		if (y < 50) this->scroll_height = this->height - 40;
+
+		DoDrawStringCentered(210, this->height - 25, "Website: http://www.openttd.org", TC_BLACK);
+		DrawStringCentered(210, this->height - 15, STR_00BA_COPYRIGHT_OPENTTD, TC_FROMSTRING);
+	}
+
+	virtual void OnTick()
+	{
+		if (--this->counter == 0) {
+			this->counter = 5;
+			this->scroll_height--;
+			this->SetDirty();
+		}
+	}
+};
 
 void ShowAboutWindow()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	new Window(&_about_desc);
+	new AboutWindow();
 }
 
 static uint64 _errmsg_decode_params[20];
