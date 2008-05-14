@@ -468,12 +468,12 @@ static inline void ResetSets()
  * @return false iff presignal entry would be green (needed for trains leaving depot)
  * @pre IsValidPlayer(owner)
  */
-static bool UpdateSignalsInBuffer(Owner owner)
+static SigSegState UpdateSignalsInBuffer(Owner owner)
 {
 	assert(IsValidPlayer(owner));
 
 	bool first = true;  // first block?
-	bool state = false; // value to return
+	SigSegState state = SIGSEG_FREE; // value to return
 
 	TileIndex tile;
 	DiagDirection dir;
@@ -532,7 +532,10 @@ static bool UpdateSignalsInBuffer(Owner owner)
 
 		if (first) {
 			first = false;
-			state = (flags & SF_TRAIN) || (flags & SF_EXIT && !(flags & SF_GREEN)) || (flags & SF_FULL); // true iff train CAN'T leave the depot
+			if ((flags & SF_TRAIN) || (flags & SF_EXIT && !(flags & SF_GREEN)) || (flags & SF_FULL)) {
+				/* SIGSEG_FREE is set by default */
+				state = SIGSEG_FULL;
+			}
 		}
 
 		/* do not do anything when some buffer was full */
@@ -629,7 +632,7 @@ void AddSideToSignalBuffer(TileIndex tile, DiagDirection side, Owner owner)
  * @param owner owner whose signals we will update
  * @return false iff train can leave depot
  */
-bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner)
+SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner)
 {
 	assert(_globset.IsEmpty());
 	_globset.Add(tile, side);

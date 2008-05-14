@@ -2262,7 +2262,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
-		if (UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner)) {
+		if (UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner) == SIGSEG_FULL) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
 		}

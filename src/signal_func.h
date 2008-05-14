@@ -41,7 +41,13 @@ static inline byte SignalOnTrack(Track track)
 	return _signal_on_track[track];
 }
 
-bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner);
+/** State of the signal segment */
+enum SigSegState {
+	SIGSEG_FREE,    ///< Free and has no pre-signal exits or at least one green exit
+	SIGSEG_FULL,    ///< Occupied by a train
+};
+
+SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner);
 void SetSignalsOnBothDir(TileIndex tile, Track track, Owner owner);
 void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner);
 void AddSideToSignalBuffer(TileIndex tile, DiagDirection side, Owner owner);
