@@ -1764,7 +1764,7 @@ static void AdvanceWagonsAfterSwap(Vehicle *v)
 
 		if (d <= 0) {
 			leave->vehstatus &= ~VS_HIDDEN; // move it out of the depot
-			leave->u.rail.track = AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(leave->tile)));
+			leave->u.rail.track = TrackToTrackBits(GetRailDepotTrack(leave->tile));
 			for (int i = 0; i >= d; i--) TrainController(leave, NULL, false); // maybe move it, and maybe let another wagon leave
 		}
 	} else {

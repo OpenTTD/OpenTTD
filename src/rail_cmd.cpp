@@ -778,7 +778,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_player);
-		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
+		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
 
 	return cost.AddCost(_price.build_train_depot);
@@ -1247,7 +1247,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						case RAIL_TILE_WAYPOINT:
 							if (flags & DC_EXEC) {
 								/* notify YAPF about the track layout change */
-								YapfNotifyTrackLayoutChange(tile, AxisToTrack(GetWaypointAxis(tile)));
+								YapfNotifyTrackLayoutChange(tile, GetRailWaypointTrack(tile));
 							}
 							cost.AddCost(RailConvertCost(type, totype));
 							break;
@@ -1255,7 +1255,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						case RAIL_TILE_DEPOT:
 							if (flags & DC_EXEC) {
 								/* notify YAPF about the track layout change */
-								YapfNotifyTrackLayoutChange(tile, AxisToTrack(DiagDirToAxis(GetRailDepotDirection(tile))));
+								YapfNotifyTrackLayoutChange(tile, GetRailDepotTrack(tile));
 
 								/* Update build vehicle window related to this depot */
 								InvalidateWindowData(WC_VEHICLE_DEPOT, tile);
@@ -1296,7 +1296,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
 						VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
 
-						Track track = AxisToTrack(DiagDirToAxis(GetTunnelBridgeDirection(tile)));
+						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 
 						YapfNotifyTrackLayoutChange(tile, track);
 						YapfNotifyTrackLayoutChange(endtile, track);
@@ -1345,7 +1345,7 @@ static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 		DoClearSquare(tile);
 		delete GetDepotByTile(tile);
 		AddSideToSignalBuffer(tile, dir, owner);
-		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
+		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);
@@ -2150,7 +2150,7 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 
 			if (side != INVALID_DIAGDIR && side != dir) break;
 
-			trackbits = AxisToTrackBits(DiagDirToAxis(dir));
+			trackbits = DiagDirToDiagTrackBits(dir);
 			break;
 		}
 

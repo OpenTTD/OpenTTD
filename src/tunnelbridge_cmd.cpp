@@ -494,7 +494,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 	delta = TileOffsByDiagDir(direction);
 	DiagDirection tunnel_in_way_dir;
-	if (OtherAxis(DiagDirToAxis(direction)) == AXIS_X) {
+	if (DiagDirToAxis(direction) == AXIS_Y) {
 		tunnel_in_way_dir = (TileX(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SW : DIAGDIR_NE;
 	} else {
 		tunnel_in_way_dir = (TileY(start_tile) < (MapMaxX() / 2)) ? DIAGDIR_SE : DIAGDIR_NW;
@@ -558,7 +558,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
 			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_player);
-			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
+			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
 			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 3));
 			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 3));
@@ -623,7 +623,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 			AddSideToSignalBuffer(tile,    ReverseDiagDir(dir), owner);
 			AddSideToSignalBuffer(endtile, dir,                 owner);
 
-			Track track = AxisToTrack(DiagDirToAxis(dir));
+			Track track = DiagDirToDiagTrack(dir);
 			YapfNotifyTrackLayoutChange(tile,    track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		} else {
@@ -691,7 +691,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 			AddSideToSignalBuffer(tile,    ReverseDiagDir(direction), owner);
 			AddSideToSignalBuffer(endtile, direction,                 owner);
 
-			Track track = AxisToTrack(DiagDirToAxis(direction));
+			Track track = DiagDirToDiagTrack(direction);
 			YapfNotifyTrackLayoutChange(tile,    track);
 			YapfNotifyTrackLayoutChange(endtile, track);
 		}
@@ -1233,7 +1233,7 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 
 	DiagDirection dir = GetTunnelBridgeDirection(tile);
 	if (side != INVALID_DIAGDIR && side != ReverseDiagDir(dir)) return 0;
-	return CombineTrackStatus(TrackBitsToTrackdirBits(AxisToTrackBits(DiagDirToAxis(dir))), TRACKDIR_BIT_NONE);
+	return CombineTrackStatus(TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE);
 }
 
 static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, PlayerID new_player)

@@ -24,8 +24,6 @@ static inline Track AxisToTrack(Axis a)
 	return (Track)a;
 }
 
-
-
 /**
  * Maps a Track to the corresponding TrackBits value
  * @param track the track to convert
@@ -277,7 +275,7 @@ static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits)
  * Converts TrackBits to TrackdirBits while allowing both directions.
  *
  * @param bits The TrackBits
- * @return The TrackDirBits containing of bits in both directions.
+ * @return The TrackdirBits containing of bits in both directions.
  */
 static inline TrackdirBits TrackBitsToTrackdirBits(TrackBits bits)
 {
@@ -436,13 +434,35 @@ static inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir)
 }
 
 /**
+ * Maps a (4-way) direction to the diagonal track incidating with that diagdir
+ *
+ * @param diagdir The direction
+ * @return The resulting Track
+ */
+static inline Track DiagDirToDiagTrack(DiagDirection diagdir)
+{
+	return (Track)(diagdir & 1);
+}
+
+/**
+ * Maps a (4-way) direction to the diagonal track bits incidating with that diagdir
+ *
+ * @param diagdir The direction
+ * @return The resulting TrackBits
+ */
+static inline TrackBits DiagDirToDiagTrackBits(DiagDirection diagdir)
+{
+	return TrackToTrackBits(DiagDirToDiagTrack(diagdir));
+}
+
+/**
  * Maps a (4-way) direction to the diagonal trackdir that runs in that
  * direction.
  *
  * @param diagdir The direction
  * @return The resulting Trackdir direction
  */
-static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir)
+static inline Trackdir DiagDirToDiagTrackdir(DiagDirection diagdir)
 {
 	extern const Trackdir _dir_to_diag_trackdir[DIAGDIR_END];
 	return _dir_to_diag_trackdir[diagdir];

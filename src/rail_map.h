@@ -168,6 +168,17 @@ static inline DiagDirection GetRailDepotDirection(TileIndex t)
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
+/**
+ * Returns the track of a depot, ignoring direction
+ * @pre IsRailDepotTile(t)
+ * @param t the tile to get the depot track from
+ * @return the track of the depot
+ */
+static inline Track GetRailDepotTrack(TileIndex t)
+{
+	return DiagDirToDiagTrack(GetRailDepotDirection(t));
+}
+
 
 /**
  * Returns the axis of the waypoint

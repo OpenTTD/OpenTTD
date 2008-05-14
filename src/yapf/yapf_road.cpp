@@ -88,7 +88,7 @@ public:
 			if (v->current_order.IsType(OT_GOTO_STATION) && tile == v->dest_tile) break;
 
 			// stop if we have just entered the depot
-			if (IsRoadDepotTile(tile) && trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
+			if (IsRoadDepotTile(tile) && trackdir == DiagDirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
 				// next time we will reverse and leave the depot
 				break;
 			}
@@ -264,7 +264,7 @@ public:
 		// handle special case - when next tile is destination tile
 		if (tile == v->dest_tile) {
 			// choose diagonal trackdir reachable from enterdir
-			return (Trackdir)DiagdirToDiagTrackdir(enterdir);
+			return DiagDirToDiagTrackdir(enterdir);
 		}
 		// our source tile will be the next vehicle tile (should be the given one)
 		TileIndex src_tile = tile;

@@ -970,7 +970,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	/* Check if vehicle is in a road stop, depot, tunnel or bridge or not on a straight road */
 	if (v->u.road.state >= RVSB_IN_ROAD_STOP || !IsStraightRoadTrackdir((Trackdir)(v->u.road.state & RVSB_TRACKDIR_MASK))) return;
 
-	od.trackdir = DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
+	od.trackdir = DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
 	/* Are the current and the next tile suitable for overtaking?
 	 *  - Does the track continue along od.trackdir
@@ -1135,7 +1135,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 			NPFFindStationOrTileData fstd;
 
 			NPFFillWithOrderData(&fstd, v);
-			Trackdir trackdir = DiagdirToDiagTrackdir(enterdir);
+			Trackdir trackdir = DiagDirToDiagTrackdir(enterdir);
 			//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
 			NPFFoundTargetData ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_ROAD, v->u.road.compatible_roadtypes, v->owner, INVALID_RAILTYPES);
@@ -1325,7 +1325,7 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 		}
 
 		if (diag_dir == INVALID_DIAGDIR) return INVALID_TRACKDIR;
-		dir = DiagdirToDiagTrackdir(diag_dir);
+		dir = DiagDirToDiagTrackdir(diag_dir);
 	} else {
 		if (already_reversed && prev->tile != tile) {
 			/*

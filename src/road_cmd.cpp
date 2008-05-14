@@ -1391,7 +1391,7 @@ static TrackStatus GetTileTrackStatus_Road(TileIndex tile, TransportType mode, u
 
 					if (side != INVALID_DIAGDIR && side != dir) break;
 
-					trackdirbits = TrackBitsToTrackdirBits(AxisToTrackBits(DiagDirToAxis(dir)));
+					trackdirbits = TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir));
 					break;
 				}
 			}

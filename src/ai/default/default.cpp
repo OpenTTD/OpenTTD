@@ -2198,7 +2198,7 @@ static void AiBuildRailConstruct(Player *p)
 		int32 bridge_len = GetTunnelBridgeLength(t1, t2);
 
 		DiagDirection dir = (TileX(t1) == TileX(t2) ? DIAGDIR_SE : DIAGDIR_SW);
-		Track track = AxisToTrack(DiagDirToAxis(dir));
+		Track track = DiagDirToDiagTrack(dir);
 
 		if (t2 < t1) dir = ReverseDiagDir(dir);
 

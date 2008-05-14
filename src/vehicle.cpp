@@ -1867,34 +1867,34 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 	switch (v->type) {
 		case VEH_TRAIN:
 			if (v->u.rail.track == TRACK_BIT_DEPOT) // We'll assume the train is facing outwards
-				return DiagdirToDiagTrackdir(GetRailDepotDirection(v->tile)); // Train in depot
+				return DiagDirToDiagTrackdir(GetRailDepotDirection(v->tile)); // Train in depot
 
 			if (v->u.rail.track == TRACK_BIT_WORMHOLE) // train in tunnel, so just use his direction and assume a diagonal track
-				return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
+				return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
 
 		case VEH_SHIP:
 			if (v->IsInDepot())
 				// We'll assume the ship is facing outwards
-				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
+				return DiagDirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
 
 		case VEH_ROAD:
 			if (v->IsInDepot()) // We'll assume the road vehicle is facing outwards
-				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
+				return DiagDirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
 			if (IsStandardRoadStopTile(v->tile)) // We'll assume the road vehicle is facing outwards
-				return DiagdirToDiagTrackdir(GetRoadStopDir(v->tile)); // Road vehicle in a station
+				return DiagDirToDiagTrackdir(GetRoadStopDir(v->tile)); // Road vehicle in a station
 
-			if (IsDriveThroughStopTile(v->tile)) return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
+			if (IsDriveThroughStopTile(v->tile)) return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			/* If vehicle's state is a valid track direction (vehicle is not turning around) return it */
 			if (!IsReversingRoadTrackdir((Trackdir)v->u.road.state)) return (Trackdir)v->u.road.state;
 
 			/* Vehicle is turning around, get the direction from vehicle's direction */
-			return DiagdirToDiagTrackdir(DirToDiagDir(v->direction));
+			return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
 		/* case VEH_AIRCRAFT: case VEH_EFFECT: case VEH_DISASTER: */
 		default: return INVALID_TRACKDIR;
