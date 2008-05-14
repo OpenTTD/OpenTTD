@@ -248,6 +248,7 @@ player_face.h
 player_func.h
 player_gui.h
 player_type.h
+querystring_gui.h
 queue.h
 rail.h
 rail_gui.h

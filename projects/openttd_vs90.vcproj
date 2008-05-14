@@ -745,6 +745,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\thread_none.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\tile_map.cpp"
 				>
 			</File>
@@ -1286,6 +1290,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\player_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\querystring_gui.h"
 				>
 			</File>
 			<File
