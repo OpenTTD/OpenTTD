@@ -171,6 +171,8 @@ struct OskWindow : public Window {
 					/* pass information by simulating a button press on parent window */
 					if (this->ok_btn != 0) {
 						this->parent->OnClick(pt, this->ok_btn);
+						/* Window gets deleted when the parent window removes itself. */
+						return;
 					}
 				}
 				delete_this = true;
@@ -180,6 +182,7 @@ struct OskWindow : public Window {
 				if (this->cancel_btn != 0) { // pass a cancel event to the parent window
 					this->parent->OnClick(pt, this->cancel_btn);
 					/* Window gets deleted when the parent window removes itself. */
+					return;
 				} else { // or reset to original string
 					strcpy(qs->text.buf, this->orig_str_buf);
 					UpdateTextBufferSize(&qs->text);
