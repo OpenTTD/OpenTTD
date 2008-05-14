@@ -90,7 +90,7 @@ tgp.cpp
 				thread_morphos.cpp
 			#else
 				thread_pthread.cpp
-			#endif
+			#end
 		#end
 		fiber_thread.cpp
 	#end

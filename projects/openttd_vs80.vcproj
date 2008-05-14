@@ -748,10 +748,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\thread_none.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\tile_map.cpp"
 				>
 			</File>
