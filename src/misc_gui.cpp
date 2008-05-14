@@ -997,10 +997,9 @@ enum QueryStringWidgets {
 
 struct QueryStringWindow : public QueryStringBaseWindow
 {
-	Window *parent;
-
-	QueryStringWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(desc), parent(parent)
+	QueryStringWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(desc)
 	{
+		this->parent = parent;
 		SetBit(_no_scroll, SCROLL_EDIT);
 
 		this->FindWindowPlacementAndResize(desc);
