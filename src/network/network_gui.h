@@ -5,6 +5,8 @@
 #ifndef NETWORK_GUI_H
 #define NETWORK_GUI_H
 
+#include "../window_type.h"
+
 #ifdef ENABLE_NETWORK
 
 #include "network_data.h"
@@ -15,7 +17,7 @@ void ShowNetworkChatQueryWindow(DestType type, int dest);
 void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();
 void ShowClientList();
-void ShowNetworkCompanyPasswordWindow();
+void ShowNetworkCompanyPasswordWindow(Window *parent);
 
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */
@@ -23,7 +25,7 @@ void ShowNetworkCompanyPasswordWindow();
 static inline void ShowNetworkChatQueryWindow(byte desttype, int dest) {}
 static inline void ShowClientList() {}
 static inline void ShowNetworkGameWindow() {}
-static inline void ShowNetworkCompanyPasswordWindow() {}
+static inline void ShowNetworkCompanyPasswordWindow(Window *parent) {}
 
 #endif /* ENABLE_NETWORK */
 

@@ -46,7 +46,7 @@ enum {
 };
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
-static void DoSelectPlayerFace(PlayerID player, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
+static void DoSelectPlayerFace(Window *parent, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
@@ -759,11 +759,12 @@ class SelectPlayerFaceWindow : public Window
 	}
 
 public:
-	SelectPlayerFaceWindow(const WindowDesc *desc, PlayerID player, bool advanced) : Window(desc, player)
+	SelectPlayerFaceWindow(const WindowDesc *desc, Window *parent, bool advanced) : Window(desc, parent->window_number)
 	{
+		this->parent = parent;
 		this->FindWindowPlacementAndResize(desc);
 		this->caption_color = this->window_number;
-		this->face = GetPlayer(player)->face;
+		this->face = GetPlayer((PlayerID)this->window_number)->face;
 		this->advanced = advanced;
 
 		this->UpdateData();
@@ -876,17 +877,18 @@ public:
 			/* Toggle size, advanced/simple face selection */
 			case PFW_WIDGET_TOGGLE_LARGE_SMALL:
 			case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
+				DoCommandP(0, 0, this->face, NULL, CMD_SET_PLAYER_FACE);
+
+				/* Backup some data before deletion */
 				int oldtop = this->top;     ///< current top position of the window before closing it
 				int oldleft = this->left;   ///< current top position of the window before closing it
-				PlayerID player = (PlayerID)this->window_number;
 				bool adv = !this->advanced;
-
-				DoCommandP(0, 0, this->face, NULL, CMD_SET_PLAYER_FACE);
+				Window *parent = this->parent;
 
 				delete this;
 
 				/* Open up the (toggled size) Face selection window at the same position as the previous */
-				DoSelectPlayerFace(player, adv, oldtop, oldleft);
+				DoSelectPlayerFace(parent, adv, oldtop, oldleft);
 			} break;
 
 
@@ -1031,12 +1033,12 @@ static const WindowDesc _select_player_face_adv_desc = {
  *
  * @pre is player a valid player
  */
-static void DoSelectPlayerFace(PlayerID player, bool adv, int top, int left)
+static void DoSelectPlayerFace(Window *parent, bool adv, int top, int left)
 {
-	if (!IsValidPlayer(player)) return;
+	if (!IsValidPlayer((PlayerID)parent->window_number)) return;
 
-	if (BringWindowToFrontById(WC_PLAYER_FACE, player)) return;
-	new SelectPlayerFaceWindow(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, player, adv); // simple or advanced window
+	if (BringWindowToFrontById(WC_PLAYER_FACE, parent->window_number)) return;
+	new SelectPlayerFaceWindow(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, parent, adv); // simple or advanced window
 }
 
 
@@ -1173,12 +1175,6 @@ struct PlayerCompanyWindow : Window
 		this->caption_color = this->window_number;
 	}
 
-	~PlayerCompanyWindow()
-	{
-		DeleteWindowById(WC_PLAYER_FACE, this->window_number);
-		if (this->window_number == _local_player) DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
-	}
-
 	virtual void OnPaint()
 	{
 		const Player *p = GetPlayer((PlayerID)this->window_number);
@@ -1250,7 +1246,7 @@ struct PlayerCompanyWindow : Window
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace((PlayerID)this->window_number, false); break;
+			case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace(this, false); break;
 
 			case PCW_WIDGET_COLOR_SCHEME:
 				if (BringWindowToFrontById(WC_PLAYER_COLOR, this->window_number)) break;
@@ -1304,7 +1300,7 @@ struct PlayerCompanyWindow : Window
 
 #ifdef ENABLE_NETWORK
 			case PCW_WIDGET_COMPANY_PASSWORD:
-				if (this->window_number == _local_player) ShowNetworkCompanyPasswordWindow();
+				if (this->window_number == _local_player) ShowNetworkCompanyPasswordWindow(this);
 				break;
 #endif /* ENABLE_NETWORK */
 		}

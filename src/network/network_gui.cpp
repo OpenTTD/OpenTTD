@@ -1932,8 +1932,9 @@ enum NetworkCompanyPasswordWindowWidgets {
 };
 
 struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
-	NetworkCompanyPasswordWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(desc)
 	{
+		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, min(lengthof(_network_default_company_pass), lengthof(this->edit_str_buf)), 0);
 
@@ -2021,11 +2022,11 @@ static const WindowDesc _ncp_window_desc = {
 	NULL
 };
 
-void ShowNetworkCompanyPasswordWindow()
+void ShowNetworkCompanyPasswordWindow(Window *parent)
 {
 	DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
 
-	new NetworkCompanyPasswordWindow(&_ncp_window_desc);
+	new NetworkCompanyPasswordWindow(&_ncp_window_desc, parent);
 }
 
 #endif /* ENABLE_NETWORK */
