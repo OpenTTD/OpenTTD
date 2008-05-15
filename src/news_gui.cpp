@@ -60,12 +60,6 @@ static NewsID _current_news = INVALID_NEWS; ///< points to news item that should
 static NewsID _oldest_news = 0;             ///< points to first item in fifo queue
 static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
 
-struct news_d {
-	uint16 chat_height;
-	NewsItem *ni;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
-
 /** Forced news item.
  * Users can force an item by accessing the history or "last message".
  * If the message being shown was forced by the user, its index is stored in
@@ -73,10 +67,12 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(news_d));
 static NewsID _forced_news = INVALID_NEWS;
 
 static uint _total_news = 0; ///< Number of news items in FIFO queue @see _news_items
+static void MoveToNextItem();
 
+
+typedef void DrawNewsCallbackProc(struct Window *w, const NewsItem *ni);
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
 void DrawNewsBankrupcy(Window *w, const NewsItem *ni);
-static void MoveToNextItem();
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
 	DrawNewsNewVehicleAvail,  ///< DNC_VEHICLEAVAIL
@@ -131,149 +127,154 @@ void InitNewsItemStructs()
 	_total_news = 0;
 }
 
-void DrawNewsBorder(const Window *w)
-{
-	int left = 0;
-	int right = w->width - 1;
-	int top = 0;
-	int bottom = w->height - 1;
+struct NewsWindow : Window {
+	uint16 chat_height;
+	NewsItem *ni;
 
-	GfxFillRect(left, top, right, bottom, 0xF);
+	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(desc), ni(ni)
+	{
+		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
+		this->chat_height = (w != NULL) ? w->height : 0;
 
-	GfxFillRect(left, top, left, bottom, 0xD7);
-	GfxFillRect(right, top, right, bottom, 0xD7);
-	GfxFillRect(left, top, right, top, 0xD7);
-	GfxFillRect(left, bottom, right, bottom, 0xD7);
+		this->ni = &_news_items[_forced_news == INVALID_NEWS ? _current_news : _forced_news];
+		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
-	DrawString(left + 2, top + 1, STR_00C6, TC_FROMSTRING);
-}
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-static void NewsWindowProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE: { // If chatbar is open at creation time, we need to go above it
-			const Window *w1 = FindWindowById(WC_SEND_NETWORK_MSG, 0);
-			WP(w, news_d).chat_height = (w1 != NULL) ? w1->height : 0;
-			break;
-		}
+	void DrawNewsBorder()
+	{
+		int left = 0;
+		int right = this->width - 1;
+		int top = 0;
+		int bottom = this->height - 1;
 
-		case WE_PAINT: {
-			const NewsItem *ni = WP(w, news_d).ni;
-			const NewsMode display_mode = _news_subtype_data[ni->subtype].display_mode;
+		GfxFillRect(left, top, right, bottom, 0xF);
 
-			switch (display_mode) {
-				case NM_NORMAL:
-				case NM_THIN: {
-					DrawNewsBorder(w);
+		GfxFillRect(left, top, left, bottom, 0xD7);
+		GfxFillRect(right, top, right, bottom, 0xD7);
+		GfxFillRect(left, top, right, top, 0xD7);
+		GfxFillRect(left, bottom, right, bottom, 0xD7);
 
-					DrawString(2, 1, STR_00C6, TC_FROMSTRING);
+		DrawString(left + 2, top + 1, STR_00C6, TC_FROMSTRING);
+	}
 
-					SetDParam(0, ni->date);
-					DrawStringRightAligned(428, 1, STR_01FF, TC_FROMSTRING);
+	virtual void OnPaint()
+	{
+		const NewsMode display_mode = _news_subtype_data[this->ni->subtype].display_mode;
 
-					if (!(ni->flags & NF_VIEWPORT)) {
-						CopyInDParam(0, ni->params, lengthof(ni->params));
-						DrawStringMultiCenter(215, display_mode == NM_NORMAL ? 76 : 56,
-							ni->string_id, w->width - 4);
-					} else {
-						/* Back up transparency options to draw news view */
-						TransparencyOptionBits to_backup = _transparency_opt;
-						_transparency_opt = 0;
-						DrawWindowViewport(w);
-						_transparency_opt = to_backup;
+		switch (display_mode) {
+			case NM_NORMAL:
+			case NM_THIN: {
+				this->DrawNewsBorder();
 
-						/* Shade the viewport into gray, or color*/
-						ViewPort *vp = w->viewport;
-						GfxFillRect(vp->left - w->left, vp->top - w->top,
-							vp->left - w->left + vp->width - 1, vp->top - w->top + vp->height - 1,
-							(ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
-						);
+				DrawString(2, 1, STR_00C6, TC_FROMSTRING);
 
-						CopyInDParam(0, ni->params, lengthof(ni->params));
-						DrawStringMultiCenter(w->width / 2, 20, ni->string_id, w->width - 4);
-					}
-					break;
+				SetDParam(0, this->ni->date);
+				DrawStringRightAligned(428, 1, STR_01FF, TC_FROMSTRING);
+
+				if (!(this->ni->flags & NF_VIEWPORT)) {
+					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+					DrawStringMultiCenter(215, display_mode == NM_NORMAL ? 76 : 56,
+						this->ni->string_id, this->width - 4);
+				} else {
+					/* Back up transparency options to draw news view */
+					TransparencyOptionBits to_backup = _transparency_opt;
+					_transparency_opt = 0;
+					DrawWindowViewport(this);
+					_transparency_opt = to_backup;
+
+					/* Shade the viewport into gray, or color*/
+					ViewPort *vp = this->viewport;
+					GfxFillRect(vp->left - this->left, vp->top - this->top,
+						vp->left - this->left + vp->width - 1, vp->top - this->top + vp->height - 1,
+						(this->ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
+					);
+
+					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+					DrawStringMultiCenter(this->width / 2, 20, this->ni->string_id, this->width - 4);
 				}
-
-				case NM_CALLBACK:
-					_draw_news_callback[_news_subtype_data[ni->subtype].callback](w, ni);
-					break;
-
-				default:
-					DrawWindowWidgets(w);
-					if (!(ni->flags & NF_VIEWPORT)) {
-						CopyInDParam(0, ni->params, lengthof(ni->params));
-						DrawStringMultiCenter(140, 38, ni->string_id, 276);
-					} else {
-						DrawWindowViewport(w);
-						CopyInDParam(0, ni->params, lengthof(ni->params));
-						DrawStringMultiCenter(w->width / 2, w->height - 16, ni->string_id, w->width - 4);
-					}
-					break;
+				break;
 			}
-			break;
-		}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 1: {
-					NewsItem *ni = WP(w, news_d).ni;
-					delete w;
-					ni->duration = 0;
-					_forced_news = INVALID_NEWS;
-					break;
+			case NM_CALLBACK:
+				this->DrawNewsBorder();
+				_draw_news_callback[_news_subtype_data[this->ni->subtype].callback](this, ni);
+				break;
+
+			default:
+				DrawWindowWidgets(this);
+				if (!(this->ni->flags & NF_VIEWPORT)) {
+					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+					DrawStringMultiCenter(140, 38, this->ni->string_id, 276);
+				} else {
+					DrawWindowViewport(this);
+					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
+					DrawStringMultiCenter(this->width / 2, this->height - 16, this->ni->string_id, this->width - 4);
 				}
-
-				case 0: {
-					NewsItem *ni = WP(w, news_d).ni;
-					if (ni->flags & NF_VEHICLE) {
-						Vehicle *v = GetVehicle(ni->data_a);
-						ScrollMainWindowTo(v->x_pos, v->y_pos);
-					} else if (ni->flags & NF_TILE) {
-						if (_ctrl_pressed) {
-							ShowExtraViewPortWindow(ni->data_a);
-							if (ni->flags & NF_TILE2) {
-								ShowExtraViewPortWindow(ni->data_b);
-							}
-						} else {
-							if (!ScrollMainWindowToTile(ni->data_a) && ni->flags & NF_TILE2) {
-								ScrollMainWindowToTile(ni->data_b);
-							}
-						}
-					}
-					break;
-				}
-			}
-			break;
-
-		case WE_KEYPRESS:
-			if (e->we.keypress.keycode == WKC_SPACE) {
-				/* Don't continue. */
-				e->we.keypress.cont = false;
-				delete w;
-			}
-			break;
-
-		case WE_INVALIDATE_DATA: // The chatbar has notified us that is was either created or closed
-			WP(w, news_d).chat_height = e->we.invalidate.data;
-			break;
-
-		case WE_TICK: { // Scroll up newsmessages from the bottom in steps of 4 pixels
-			int y = max(w->top - 4, _screen.height - w->height - 12 - WP(w, news_d).chat_height);
-			if (y == w->top) return;
-
-			if (w->viewport != NULL) {
-				w->viewport->top += y - w->top;
-			}
-
-			int diff = Delta(w->top, y);
-			w->top = y;
-
-			SetDirtyBlocks(w->left, w->top - diff, w->left + w->width, w->top + w->height);
-			break;
+				break;
 		}
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 1:
+				this->ni->duration = 0;
+				delete this;
+				_forced_news = INVALID_NEWS;
+				break;
+
+			case 0:
+				if (this->ni->flags & NF_VEHICLE) {
+					Vehicle *v = GetVehicle(this->ni->data_a);
+					ScrollMainWindowTo(v->x_pos, v->y_pos);
+				} else if (this->ni->flags & NF_TILE) {
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(this->ni->data_a);
+						if (this->ni->flags & NF_TILE2) {
+							ShowExtraViewPortWindow(this->ni->data_b);
+						}
+					} else {
+						if (!ScrollMainWindowToTile(this->ni->data_a) && this->ni->flags & NF_TILE2) {
+							ScrollMainWindowToTile(this->ni->data_b);
+						}
+					}
+				}
+				break;
+		}
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		if (keycode == WKC_SPACE) {
+			/* Don't continue. */
+			delete this;
+			return false;
+		}
+		return true;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		/* The chatbar has notified us that is was either created or closed */
+		this->chat_height = data;
+	}
+
+	virtual void OnTick()
+	{
+		/* Scroll up newsmessages from the bottom in steps of 4 pixels */
+		int y = max(this->top - 4, _screen.height - this->height - 12 - this->chat_height);
+		if (y == this->top) return;
+
+		if (this->viewport != NULL) this->viewport->top += y - this->top;
+
+		int diff = Delta(this->top, y);
+		this->top = y;
+
+		SetDirtyBlocks(this->left, this->top - diff, this->left + this->width, this->top + this->height);
+	}
+};
 
 /**
  * Return the correct index in the pseudo-fifo
@@ -401,7 +402,7 @@ static WindowDesc _news_type13_desc = {
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type13_widgets,
-	NewsWindowProc
+	NULL
 };
 
 static const Widget _news_type2_widgets[] = {
@@ -415,7 +416,7 @@ static WindowDesc _news_type2_desc = {
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type2_widgets,
-	NewsWindowProc
+	NULL
 };
 
 static const Widget _news_type0_widgets[] = {
@@ -431,7 +432,7 @@ static WindowDesc _news_type0_desc = {
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type0_widgets,
-	NewsWindowProc
+	NULL
 };
 
 
@@ -450,7 +451,7 @@ static void ShowNewspaper(NewsItem *ni)
 		case NM_NORMAL:
 		case NM_CALLBACK:
 			_news_type13_desc.top = top;
-			w = new Window(&_news_type13_desc);
+			w = new NewsWindow(&_news_type13_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
 				InitializeWindowViewport(w, 2, 58, 426, 110,
 					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
@@ -459,7 +460,7 @@ static void ShowNewspaper(NewsItem *ni)
 
 		case NM_THIN:
 			_news_type2_desc.top = top;
-			w = new Window(&_news_type2_desc);
+			w = new NewsWindow(&_news_type2_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
 				InitializeWindowViewport(w, 2, 58, 426, 70,
 					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
@@ -468,7 +469,7 @@ static void ShowNewspaper(NewsItem *ni)
 
 		default:
 			_news_type0_desc.top = top;
-			w = new Window(&_news_type0_desc);
+			w = new NewsWindow(&_news_type0_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {
 				InitializeWindowViewport(w, 3, 17, 274, 47,
 					ni->data_a | (ni->flags & NF_VEHICLE ? 0x80000000 : 0), ZOOM_LVL_NEWS);
@@ -478,9 +479,6 @@ static void ShowNewspaper(NewsItem *ni)
 
 	/*DEBUG(misc, 0, " cur %3d, old %2d, lat %3d, for %3d, tot %2d",
 	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
-
-	WP(w, news_d).ni = &_news_items[_forced_news == INVALID_NEWS ? _current_news : _forced_news];
-	w->flags4 |= WF_DISABLE_VP_SCROLL;
 }
 
 /** Show news item in the ticker */
@@ -983,8 +981,8 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			 * We also need an update of the current, forced and visible (open window)
 			 * news's as this shifting could change the items they were pointing to */
 			if (_total_news != 0) {
-				Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-				NewsID visible_news = (w != NULL) ? (NewsID)(WP(w, news_d).ni - _news_items) : INVALID_NEWS;
+				NewsWindow *w = dynamic_cast<NewsWindow*>(FindWindowById(WC_NEWS_WINDOW, 0));
+				NewsID visible_news = (w != NULL) ? (NewsID)(w->ni - _news_items) : INVALID_NEWS;
 
 				for (NewsID i = n;; i = DecreaseIndex(i)) {
 					_news_items[i] = _news_items[DecreaseIndex(i)];
@@ -992,7 +990,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 					if (i != _latest_news) {
 						if (i == _current_news) _current_news = IncreaseIndex(_current_news);
 						if (i == _forced_news) _forced_news = IncreaseIndex(_forced_news);
-						if (i == visible_news) WP(w, news_d).ni = &_news_items[IncreaseIndex(visible_news)];
+						if (i == visible_news) w->ni = &_news_items[IncreaseIndex(visible_news)];
 					}
 
 					if (i == _oldest_news) break;

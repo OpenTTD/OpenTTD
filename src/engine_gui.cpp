@@ -176,8 +176,6 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 {
-	DrawNewsBorder(w);
-
 	EngineID engine = ni->data_a;
 	const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 

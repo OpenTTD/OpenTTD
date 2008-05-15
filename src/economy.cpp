@@ -592,8 +592,6 @@ static void PlayersCheckBankrupt(Player *p)
 
 void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 {
-	DrawNewsBorder(w);
-
 	Player *p = GetPlayer((PlayerID)GB(ni->data_b, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));

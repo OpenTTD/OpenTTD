@@ -10,7 +10,6 @@
 
 void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b);
 void NewsLoop();
-void DrawNewsBorder(const Window *w);
 void InitNewsItemStructs();
 
 extern NewsItem _statusbar_news_item;

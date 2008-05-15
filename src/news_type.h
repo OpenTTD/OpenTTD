@@ -5,7 +5,6 @@
 #ifndef NEWS_TYPE_H
 #define NEWS_TYPE_H
 
-#include "window_type.h"
 #include "date_type.h"
 #include "strings_type.h"
 #include "sound_type.h"
@@ -133,8 +132,5 @@ struct NewsItem {
 
 	uint64 params[10];
 };
-
-typedef bool ValidationProc(uint data_a, uint data_b);
-typedef void DrawNewsCallbackProc(Window *w, const NewsItem *ni);
 
 #endif /* NEWS_TYPE_H */
