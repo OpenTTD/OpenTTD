@@ -230,6 +230,5 @@ static inline SpriteID GetPlayerFaceSprite(PlayerFace pf, PlayerFaceVariable pfv
 void DrawPlayerFace(PlayerFace face, int color, int x, int y);
 PlayerFace ConvertFromOldPlayerFace(uint32 face);
 bool IsValidPlayerFace(PlayerFace pf);
-void DrawFaceStringLabel(const Window *w, byte widget_index, StringID str, uint8 val, bool is_bool_widget);
 
 #endif /* PLAYER_FACE_H */
