@@ -120,114 +120,118 @@ static const Widget _cheat_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void CheatsWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			int clk = WP(w, def_d).data_1;
+struct CheatWindow : Window {
+	int clicked;
 
-			DrawWindowWidgets(w);
-			DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, w->width - 50);
+	CheatWindow(const WindowDesc *desc) : Window(desc)
+	{
+	}
 
-			for (int i = 0, x = 0, y = 45; i != lengthof(_cheats_ui); i++) {
-				const CheatEntry *ce = &_cheats_ui[i];
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
+		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, width - 50);
 
-				DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, x + 5, y + 2);
+		for (int i = 0, x = 0, y = 45; i != lengthof(_cheats_ui); i++) {
+			const CheatEntry *ce = &_cheats_ui[i];
 
-				switch (ce->type) {
-					case SLE_BOOL: {
-						bool on = (*(bool*)ce->variable);
-
-						DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : FR_NONE);
-						SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-					} break;
-
-					default: {
-						int32 val = (int32)ReadValue(ce->variable, ce->type);
-						char buf[512];
-
-						/* Draw [<][>] boxes for settings of an integer-type */
-						DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true, true);
-
-						switch (ce->str) {
-							/* Display date for change date cheat */
-							case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
-
-							/* Draw colored flag for change player cheat */
-							case STR_CHEAT_CHANGE_PLAYER:
-								SetDParam(0, val);
-								GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
-								DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
-								break;
-
-							/* Set correct string for switch climate cheat */
-							case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
-
-							/* Fallthrough */
-							default: SetDParam(0, val);
-						}
-					} break;
-				}
-
-				DrawString(50, y + 1, ce->str, TC_FROMSTRING);
-
-				y += 12;
-			}
-			break;
-		}
-
-		case WE_CLICK: {
-			uint btn = (e->we.click.pt.y - 46) / 12;
-			uint x = e->we.click.pt.x;
-
-			/* Not clicking a button? */
-			if (!IsInsideMM(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;
-
-			const CheatEntry *ce = &_cheats_ui[btn];
-			int value = (int32)ReadValue(ce->variable, ce->type);
-			int oldvalue = value;
-
-			*ce->been_used = true;
+			DrawSprite((*ce->been_used) ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, x + 5, y + 2);
 
 			switch (ce->type) {
-				case SLE_BOOL:
-					value ^= 1;
-					if (ce->proc != NULL) ce->proc(value, 0);
-					break;
+				case SLE_BOOL: {
+					bool on = (*(bool*)ce->variable);
 
-				default:
-					/* Take whatever the function returns */
-					value = ce->proc(value + ((x >= 30) ? 1 : -1), (x >= 30) ? 1 : -1);
+					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : FR_NONE);
+					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+				} break;
 
-					if (value != oldvalue) WP(w, def_d).data_1 = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
-					break;
+				default: {
+					int32 val = (int32)ReadValue(ce->variable, ce->type);
+					char buf[512];
+
+					/* Draw [<][>] boxes for settings of an integer-type */
+					DrawArrowButtons(x + 20, y, 3, clicked - (i * 2), true, true);
+
+					switch (ce->str) {
+						/* Display date for change date cheat */
+						case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
+
+						/* Draw colored flag for change player cheat */
+						case STR_CHEAT_CHANGE_PLAYER:
+							SetDParam(0, val);
+							GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
+							DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
+							break;
+
+						/* Set correct string for switch climate cheat */
+						case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;
+
+						/* Fallthrough */
+						default: SetDParam(0, val);
+					}
+				} break;
 			}
 
-			if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
+			DrawString(50, y + 1, ce->str, TC_FROMSTRING);
 
-			w->flags4 |= 5 << WF_TIMEOUT_SHL;
-
-			w->SetDirty();
-		} break;
-
-		case WE_TIMEOUT:
-			WP(w, def_d).data_1 = 0;
-			w->SetDirty();
-			break;
+			y += 12;
+		}
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		uint btn = (pt.y - 46) / 12;
+		uint x = pt.x;
+
+		/* Not clicking a button? */
+		if (!IsInsideMM(x, 20, 40) || btn >= lengthof(_cheats_ui)) return;
+
+		const CheatEntry *ce = &_cheats_ui[btn];
+		int value = (int32)ReadValue(ce->variable, ce->type);
+		int oldvalue = value;
+
+		*ce->been_used = true;
+
+		switch (ce->type) {
+			case SLE_BOOL:
+				value ^= 1;
+				if (ce->proc != NULL) ce->proc(value, 0);
+				break;
+
+			default:
+				/* Take whatever the function returns */
+				value = ce->proc(value + ((x >= 30) ? 1 : -1), (x >= 30) ? 1 : -1);
+
+				/* The first cheat (money), doesn't return a different value. */
+				if (value != oldvalue || btn == 0) this->clicked = btn * 2 + 1 + ((x >= 30) ? 1 : 0);
+				break;
+		}
+
+		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
+
+		flags4 |= 5 << WF_TIMEOUT_SHL;
+
+		SetDirty();
+	}
+
+	virtual void OnTimeout()
+	{
+		this->clicked = 0;
+		this->SetDirty();
+	}
+};
 
 static const WindowDesc _cheats_desc = {
 	240, 22, 400, 170, 400, 170,
 	WC_CHEATS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cheat_widgets,
-	CheatsWndProc
+	NULL
 };
 
 
 void ShowCheatWindow()
 {
 	DeleteWindowById(WC_CHEATS, 0);
-	new Window(&_cheats_desc);
+	new CheatWindow(&_cheats_desc);
 }
