@@ -2708,12 +2708,11 @@ void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode
 
 void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, WindowClass window_class, WindowNumber window_num)
 {
-	Window *w;
+	Window *w = NULL;
 
 	/* undo clicking on button and drag & drop */
 	if (_thd.place_mode != VHM_NONE || _special_mouse_mode == WSM_DRAGDROP) {
 		w = FindWindowById(_thd.window_class, _thd.window_number);
-		if (w != NULL) w->OnPlaceObjectAbort();
 	}
 
 	SetTileSelectSize(1, 1);
@@ -2734,10 +2733,16 @@ void SetObjectToPlace(CursorID icon, SpriteID pal, ViewportHighlightMode mode, W
 	if (mode == VHM_SPECIAL) // special tools, like tunnels or docks start with presizing mode
 		VpStartPreSizing();
 
-	if ( (int)icon < 0)
+	if ((int)icon < 0) {
 		SetAnimatedMouseCursor(_animcursors[~icon]);
-	else
+	} else {
 		SetMouseCursor(icon, pal);
+	}
+
+	/* Call the abort function only *after* the window class/number
+	 * are reset so one doesn't get into infinite loops when someone
+	 * resets the object to place during the abort callback. */
+	if (w != NULL) w->OnPlaceObjectAbort();
 }
 
 void ResetObjectToPlace()

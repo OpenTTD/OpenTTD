@@ -511,12 +511,9 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			w->InvalidateWidget(RTW_REMOVE);
 			w->InvalidateWidget(RTW_ONE_WAY);
 
-			w = FindWindowById(WC_BUS_STATION, 0);
-			if (w != NULL) WP(w, def_d).close = true;
-			w = FindWindowById(WC_TRUCK_STATION, 0);
-			if (w != NULL) WP(w, def_d).close = true;
-			w = FindWindowById(WC_BUILD_DEPOT, 0);
-			if (w != NULL) WP(w, def_d).close = true;
+			delete FindWindowById(WC_BUS_STATION, 0);
+			delete FindWindowById(WC_TRUCK_STATION, 0);
+			delete FindWindowById(WC_BUILD_DEPOT, 0);
 			break;
 
 		case WE_PLACE_DRAG:
@@ -762,12 +759,8 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_TICK:
-			if (WP(w, def_d).close) delete w;
-			break;
-
 		case WE_DESTROY:
-			if (!WP(w, def_d).close) ResetObjectToPlace();
+			ResetObjectToPlace();
 			break;
 
 		default:
@@ -856,8 +849,6 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT: {
-			if (WP(w, def_d).close) return;
-
 			DrawWindowWidgets(w);
 
 			if (_station_show_coverage) {
@@ -920,16 +911,11 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_TICK:
-			if (WP(w, def_d).close) {
-				delete w;
-				return;
-			}
-
 			CheckRedrawStationCoverage(w);
 			break;
 
 		case WE_DESTROY:
-			if (!WP(w, def_d).close) ResetObjectToPlace();
+			ResetObjectToPlace();
 			break;
 
 		default:

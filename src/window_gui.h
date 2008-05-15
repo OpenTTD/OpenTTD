@@ -527,7 +527,6 @@ struct menu_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
 
 struct def_d {
-	bool close;
 	int16 data_1, data_2, data_3;
 };
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));

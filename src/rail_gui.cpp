@@ -653,12 +653,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		w->DisableWidget(RTW_REMOVE);
 		w->InvalidateWidget(RTW_REMOVE);
 
-		w = FindWindowById(WC_BUILD_SIGNAL, 0);
-		if (w != NULL) WP(w, def_d).close = true;
-		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != NULL) WP(w, def_d).close = true;
-		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w, def_d).close = true;
+		delete FindWindowById(WC_BUILD_SIGNAL, 0);
+		delete FindWindowById(WC_BUILD_STATION, 0);
+		delete FindWindowById(WC_BUILD_DEPOT, 0);
 		break;
 
 	case WE_PLACE_PRESIZE: {
@@ -874,8 +871,6 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		bool newstations = _railstation.newstations;
 		DrawPixelInfo tmp_dpi, *old_dpi;
 		const StationSpec *statspec = newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-
-		if (WP(w, def_d).close) return;
 
 		if (_railstation.dragdrop) {
 			SetTileSelectSize(1, 1);
@@ -1123,15 +1118,11 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TICK:
-		if (WP(w, def_d).close) {
-			delete w;
-			return;
-		}
 		CheckRedrawStationCoverage(w);
 		break;
 
 	case WE_DESTROY:
-		if (!WP(w, def_d).close) ResetObjectToPlace();
+		ResetObjectToPlace();
 		break;
 	}
 }
@@ -1345,12 +1336,8 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 			w->SetDirty();
 			break;
 
-		case WE_TICK:
-			if (WP(w, def_d).close) delete w;
-			return;
-
 		case WE_DESTROY:
-			if (!WP(w, def_d).close) ResetObjectToPlace();
+			ResetObjectToPlace();
 			break;
 		}
 }
@@ -1436,12 +1423,8 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_TICK:
-		if (WP(w, def_d).close) delete w;
-		return;
-
 	case WE_DESTROY:
-		if (!WP(w, def_d).close) ResetObjectToPlace();
+		ResetObjectToPlace();
 		break;
 	}
 }
@@ -1535,12 +1518,8 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 
-	case WE_TICK:
-		if (WP(w, def_d).close) delete w;
-		break;
-
 	case WE_DESTROY:
-		if (!WP(w, def_d).close) ResetObjectToPlace();
+		ResetObjectToPlace();
 		break;
 	}
 }

@@ -102,9 +102,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseButtons();
 
-			w = FindWindowById(WC_BUILD_STATION, 0);
-			if (w != 0)
-				WP(w, def_d).close = true;
+			delete FindWindowById(WC_BUILD_STATION, 0);
 			break;
 
 		case WE_DESTROY:
@@ -171,8 +169,6 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			uint32 avail_airports;
 			const AirportFTAClass *airport;
 
-			if (WP(w, def_d).close) return;
-
 			avail_airports = GetValidAirports();
 
 			w->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
@@ -230,17 +226,12 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case WE_TICK: {
-			if (WP(w, def_d).close) {
-				delete w;
-				return;
-			}
-
+		case WE_TICK:
 			CheckRedrawStationCoverage(w);
-		} break;
+			break;
 
 		case WE_DESTROY:
-			if (!WP(w, def_d).close) ResetObjectToPlace();
+			ResetObjectToPlace();
 			break;
 	}
 }
