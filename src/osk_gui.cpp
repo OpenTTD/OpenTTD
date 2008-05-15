@@ -42,6 +42,7 @@ enum {
 static byte _keystate = KEYS_NONE;
 
 struct OskWindow : public Window {
+	StringID caption;      ///< the caption for this window.
 	QueryString *qs;       ///< text-input
 	int text_btn;          ///< widget number of parent's text field
 	int ok_btn;            ///< widget number of parent's ok button (=0 when ok shouldn't be passed on)
@@ -54,7 +55,7 @@ struct OskWindow : public Window {
 		this->parent = parent;
 		assert(parent != NULL);
 
-		if (parent->widget[button].data != 0) parent->caption = parent->widget[button].data;
+		this->caption = (parent->widget[button].data != STR_NULL) ? parent->widget[button].data : parent->caption;
 
 		this->qs         = parent;
 		this->text_btn   = button;
@@ -96,7 +97,7 @@ struct OskWindow : public Window {
 
 		this->ChangeOskDiabledState(shift);
 
-		SetDParam(0, this->qs->caption);
+		SetDParam(0, this->caption);
 		DrawWindowWidgets(this);
 
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
