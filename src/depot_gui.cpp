@@ -1001,6 +1001,8 @@ void ShowDepotWindow(TileIndex tile, VehicleType type)
 			w = AllocateWindowDescFront<DepotWindow>(&_aircraft_depot_desc, tile); break;
 	}
 
+	if (w == NULL) return;
+
 	w->caption_color = GetTileOwner(tile);
 	w->CreateDepotListWindow(type);
 }
