@@ -94,6 +94,8 @@ enum WindowClass {
 	WC_BUILD_SIGNAL,
 	WC_COMPANY_PASSWORD_WINDOW,
 	WC_OSK,
+
+	WC_INVALID = 0xFFFF
 };
 
 struct Window;
