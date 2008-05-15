@@ -478,194 +478,6 @@ void CheckDifficultyLevels()
 
 extern void StartupEconomy();
 
-enum {
-	GAMEDIFF_WND_TOP_OFFSET = 45,
-	GAMEDIFF_WND_ROWSIZE    = 9
-};
-
-/* Temporary holding place of values in the difficulty window until 'Save' is clicked */
-static GameOptions _opt_mod_temp;
-// 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
-#define DIFF_INGAME_DISABLED_BUTTONS 0x383E
-
-#define NO_SETTINGS_BUTTON 0xFF
-
-/** Carriage for the game settings window data */
-struct difficulty_d {
-	bool clicked_increase;
-	uint8 clicked_button;
-	uint8 timeout;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(difficulty_d));
-
-/* Names of the game difficulty settings window */
-enum GameDifficultyWidgets {
-	GDW_CLOSEBOX = 0,
-	GDW_CAPTION,
-	GDW_UPPER_BG,
-	GDW_LVL_EASY,
-	GDW_LVL_MEDIUM,
-	GDW_LVL_HARD,
-	GDW_LVL_CUSTOM,
-	GDW_HIGHSCORE,
-	GDW_SETTING_BG,
-	GDW_LOWER_BG,
-	GDW_ACCEPT,
-	GDW_CANCEL,
-};
-
-static void GameDifficultyWndProc(Window *w, WindowEvent *e)
-{
-	difficulty_d *diffic_d = &WP(w, difficulty_d);
-	switch (e->event) {
-		case WE_CREATE:
-			diffic_d->clicked_increase = false;
-			diffic_d->clicked_button = NO_SETTINGS_BUTTON;
-			diffic_d->timeout = 0;
-			/* Hide the closebox to make sure that the user aborts or confirms his changes */
-			w->HideWidget(GDW_CLOSEBOX);
-			w->widget[GDW_CAPTION].left = 0;
-			/* Setup disabled buttons when creating window
-			 * disable all other difficulty buttons during gameplay except for 'custom' */
-			w->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
-				GDW_LVL_EASY,
-				GDW_LVL_MEDIUM,
-				GDW_LVL_HARD,
-				GDW_LVL_CUSTOM,
-				WIDGET_LIST_END);
-			w->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
-			w->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
-			w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-			break;
-
-		case WE_PAINT: {
-			DrawWindowWidgets(w);
-
-			/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
-			 *       Bitshifted for each button to see if that bit is set. If it is set, the
-			 *       button is disabled */
-			uint32 disabled = 0;
-			if (_networking && !_network_server) {
-				disabled = MAX_UVALUE(uint32); // Disable all
-			} else if (_game_mode == GM_NORMAL) {
-				disabled = DIFF_INGAME_DISABLED_BUTTONS;
-			}
-
-			int value;
-			int y = GAMEDIFF_WND_TOP_OFFSET;
-			for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-				const GameSettingData *gsd = &_game_setting_info[i];
-				value = ((GDType*)&_opt_mod_temp.diff)[i];
-
-				DrawArrowButtons(5, y, 3,
-						(diffic_d->clicked_button == i) ? 1 + !!diffic_d->clicked_increase : 0,
-						!(HasBit(disabled, i) || gsd->min == value),
-						!(HasBit(disabled, i) || gsd->max == value));
-
-				value += _game_setting_info[i].str;
-				if (i == 4) value *= 1000; // XXX - handle currency option
-				SetDParam(0, value);
-				DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
-
-				y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case GDW_SETTING_BG: { /* Difficulty settings widget, decode click */
-					/* Don't allow clients to make any changes */
-					if (_networking && !_network_server) return;
-
-					const int x = e->we.click.pt.x - 5;
-					if (!IsInsideMM(x, 0, 21)) // Button area
-						return;
-
-					const int y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
-					if (y < 0) return;
-
-					/* Get button from Y coord. */
-					const uint8 btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
-					if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9)
-						return;
-
-					/* Clicked disabled button? */
-					if (_game_mode == GM_NORMAL && HasBit(DIFF_INGAME_DISABLED_BUTTONS, btn))
-						return;
-
-					diffic_d->timeout = 5;
-
-					int16 val = ((GDType*)&_opt_mod_temp.diff)[btn];
-
-					const GameSettingData *info = &_game_setting_info[btn]; // get information about the difficulty setting
-					if (x >= 10) {
-						/* Increase button clicked */
-						val = min(val + info->step, info->max);
-						diffic_d->clicked_increase = true;
-					} else {
-						/* Decrease button clicked */
-						val -= info->step;
-						val = max(val,  info->min);
-						diffic_d->clicked_increase = false;
-					}
-					diffic_d->clicked_button = btn;
-
-					/* save value in temporary variable */
-					((GDType*)&_opt_mod_temp.diff)[btn] = val;
-					w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-					SetDifficultyLevel(3, &_opt_mod_temp); // set difficulty level to custom
-					w->LowerWidget(GDW_LVL_CUSTOM);
-					w->SetDirty();
-				} break;
-
-				case GDW_LVL_EASY:
-				case GDW_LVL_MEDIUM:
-				case GDW_LVL_HARD:
-				case GDW_LVL_CUSTOM:
-					/* temporarily change difficulty level */
-					w->RaiseWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-					SetDifficultyLevel(e->we.click.widget - GDW_LVL_EASY, &_opt_mod_temp);
-					w->LowerWidget(GDW_LVL_EASY + _opt_mod_temp.diff_level);
-					w->SetDirty();
-					break;
-
-				case GDW_HIGHSCORE: // Highscore Table
-					ShowHighscoreTable(_opt_mod_temp.diff_level, -1);
-					break;
-
-				case GDW_ACCEPT: { // Save button - save changes
-					GDType btn, val;
-					for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
-						val = ((GDType*)&_opt_mod_temp.diff)[btn];
-						/* if setting has changed, change it */
-						if (val != ((GDType*)&_opt_ptr->diff)[btn])
-							DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					}
-					DoCommandP(0, UINT_MAX, _opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
-					delete w;
-					/* If we are in the editor, we should reload the economy.
-					 * This way when you load a game, the max loan and interest rate
-					 * are loaded correctly. */
-					if (_game_mode == GM_EDITOR) StartupEconomy();
-					break;
-				}
-
-				case GDW_CANCEL: // Cancel button - close window, abandon changes
-					delete w;
-					break;
-			} break;
-
-		case WE_TICK: /* Handle the visual 'clicking' of the buttons */
-			if (diffic_d->timeout != 0) {
-				diffic_d->timeout--;
-				if (diffic_d->timeout == 0) diffic_d->clicked_button = NO_SETTINGS_BUTTON;
-				w->SetDirty();
-			}
-			break;
-	}
-}
-#undef DIFF_INGAME_DISABLED_BUTTONS
-
 /* Widget definition for the game difficulty settings window */
 static const Widget _game_difficulty_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},           // GDW_CLOSEBOX
@@ -689,16 +501,199 @@ static const WindowDesc _game_difficulty_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_game_difficulty_widgets,
-	GameDifficultyWndProc
+	NULL
+};
+
+struct GameDifficultyWindow : public Window {
+private:
+	bool clicked_increase;
+	uint8 clicked_button;
+	uint8 timeout;
+
+	/* Temporary holding place of values in the difficulty window until 'Save' is clicked */
+	GameOptions opt_mod_temp;
+
+	enum {
+		GAMEDIFF_WND_TOP_OFFSET = 45,
+		GAMEDIFF_WND_ROWSIZE    = 9,
+		// 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
+		DIFF_INGAME_DISABLED_BUTTONS = 0x383E,
+		NO_SETTINGS_BUTTON = 0xFF,
+	};
+
+	/* Names of the game difficulty settings window */
+	enum GameDifficultyWidgets {
+		GDW_CLOSEBOX = 0,
+		GDW_CAPTION,
+		GDW_UPPER_BG,
+		GDW_LVL_EASY,
+		GDW_LVL_MEDIUM,
+		GDW_LVL_HARD,
+		GDW_LVL_CUSTOM,
+		GDW_HIGHSCORE,
+		GDW_SETTING_BG,
+		GDW_LOWER_BG,
+		GDW_ACCEPT,
+		GDW_CANCEL,
+	};
+
+public:
+	GameDifficultyWindow() : Window(&_game_difficulty_desc)
+	{
+		/* Copy current settings (ingame or in intro) to temporary holding place
+		 * change that when setting stuff, copy back on clicking 'OK' */
+		this->opt_mod_temp = *_opt_ptr;
+		this->clicked_increase = false;
+		this->clicked_button = NO_SETTINGS_BUTTON;
+		this->timeout = 0;
+		/* Hide the closebox to make sure that the user aborts or confirms his changes */
+		this->HideWidget(GDW_CLOSEBOX);
+		this->widget[GDW_CAPTION].left = 0;
+		/* Setup disabled buttons when creating window
+		 * disable all other difficulty buttons during gameplay except for 'custom' */
+		this->SetWidgetsDisabledState(_game_mode == GM_NORMAL,
+			GDW_LVL_EASY,
+			GDW_LVL_MEDIUM,
+			GDW_LVL_HARD,
+			GDW_LVL_CUSTOM,
+			WIDGET_LIST_END);
+		this->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
+		this->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
+		this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
+		this->FindWindowPlacementAndResize(&_game_difficulty_desc);
+	}
+
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
+
+		/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
+		 *       Bitshifted for each button to see if that bit is set. If it is set, the
+		 *       button is disabled */
+		uint32 disabled = 0;
+		if (_networking && !_network_server) {
+			disabled = MAX_UVALUE(uint32); // Disable all
+		} else if (_game_mode == GM_NORMAL) {
+			disabled = DIFF_INGAME_DISABLED_BUTTONS;
+		}
+
+		int value;
+		int y = GAMEDIFF_WND_TOP_OFFSET;
+		for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
+			const GameSettingData *gsd = &_game_setting_info[i];
+			value = ((GDType*)&this->opt_mod_temp.diff)[i];
+
+			DrawArrowButtons(5, y, 3,
+					(this->clicked_button == i) ? 1 + !!this->clicked_increase : 0,
+					!(HasBit(disabled, i) || gsd->min == value),
+					!(HasBit(disabled, i) || gsd->max == value));
+
+			value += _game_setting_info[i].str;
+			if (i == 4) value *= 1000; // XXX - handle currency option
+			SetDParam(0, value);
+			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
+
+			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case GDW_SETTING_BG: { /* Difficulty settings widget, decode click */
+				/* Don't allow clients to make any changes */
+				if (_networking && !_network_server) return;
+
+				const int x = pt.x - 5;
+				if (!IsInsideMM(x, 0, 21)) return; // Button area
+
+				const int y = pt.y - GAMEDIFF_WND_TOP_OFFSET;
+				if (y < 0) return;
+
+				/* Get button from Y coord. */
+				const uint8 btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+				if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9) return;
+
+				/* Clicked disabled button? */
+				if (_game_mode == GM_NORMAL && HasBit((int)DIFF_INGAME_DISABLED_BUTTONS, btn)) return;
+
+				this->timeout = 5;
+
+				int16 val = ((GDType*)&this->opt_mod_temp.diff)[btn];
+
+				const GameSettingData *info = &_game_setting_info[btn]; // get information about the difficulty setting
+				if (x >= 10) {
+					/* Increase button clicked */
+					val = min(val + info->step, info->max);
+					this->clicked_increase = true;
+				} else {
+					/* Decrease button clicked */
+					val -= info->step;
+					val = max(val,  info->min);
+					this->clicked_increase = false;
+				}
+				this->clicked_button = btn;
+
+				/* save value in temporary variable */
+				((GDType*)&this->opt_mod_temp.diff)[btn] = val;
+				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
+				SetDifficultyLevel(3, &this->opt_mod_temp); // set difficulty level to custom
+				this->LowerWidget(GDW_LVL_CUSTOM);
+				this->SetDirty();
+			} break;
+
+			case GDW_LVL_EASY:
+			case GDW_LVL_MEDIUM:
+			case GDW_LVL_HARD:
+			case GDW_LVL_CUSTOM:
+				/* temporarily change difficulty level */
+				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
+				SetDifficultyLevel(widget - GDW_LVL_EASY, &this->opt_mod_temp);
+				this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
+				this->SetDirty();
+				break;
+
+			case GDW_HIGHSCORE: // Highscore Table
+				ShowHighscoreTable(this->opt_mod_temp.diff_level, -1);
+				break;
+
+			case GDW_ACCEPT: { // Save button - save changes
+				GDType btn, val;
+				for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
+					val = ((GDType*)&this->opt_mod_temp.diff)[btn];
+					/* if setting has changed, change it */
+					if (val != ((GDType*)&_opt_ptr->diff)[btn])
+						DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				}
+				DoCommandP(0, UINT_MAX, this->opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				delete this;
+				/* If we are in the editor, we should reload the economy.
+				 * This way when you load a game, the max loan and interest rate
+				 * are loaded correctly. */
+				if (_game_mode == GM_EDITOR) StartupEconomy();
+				break;
+			}
+
+			case GDW_CANCEL: // Cancel button - close window, abandon changes
+				delete this;
+				break;
+		}
+	}
+
+	virtual void OnTick()
+	{
+		if (this->timeout != 0) {
+			this->timeout--;
+			if (this->timeout == 0) this->clicked_button = NO_SETTINGS_BUTTON;
+			this->SetDirty();
+		}
+	}
 };
 
 void ShowGameDifficulty()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	/* Copy current settings (ingame or in intro) to temporary holding place
-	 * change that when setting stuff, copy back on clicking 'OK' */
-	_opt_mod_temp = *_opt_ptr;
-	new Window(&_game_difficulty_desc);
+	new GameDifficultyWindow();
 }
 
 static const char *_patches_ui[] = {
