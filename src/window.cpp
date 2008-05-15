@@ -626,8 +626,12 @@ Window::~Window()
 	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
 	_last_z_window--;
 
-	/* Delete any children a window might have in a head-recursive manner */
-	delete FindChildWindow(this);
+	/* Delete all children a window might have in a head-recursive manner */
+	Window *child = FindChildWindow(this);
+	while (child != NULL) {
+		delete child;
+		child = FindChildWindow(this);
+	}
 
 	WindowEvent e;
 	e.event = WE_DESTROY;
