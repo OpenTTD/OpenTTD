@@ -1164,199 +1164,203 @@ static void DrawCompanyOwnerText(const Player *p)
  * @param w window pointer
  * @param e event been triggered
  */
-static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
+struct PlayerCompanyWindow : Window
 {
-	switch (e->event) {
-		case WE_PAINT: {
-			const Player *p = GetPlayer((PlayerID)w->window_number);
-			bool local = w->window_number == _local_player;
+	PlayerCompanyWindowWidgets query_widget;
 
-			w->SetWidgetHiddenState(PCW_WIDGET_NEW_FACE,       !local);
-			w->SetWidgetHiddenState(PCW_WIDGET_COLOR_SCHEME,   !local);
-			w->SetWidgetHiddenState(PCW_WIDGET_PRESIDENT_NAME, !local);
-			w->SetWidgetHiddenState(PCW_WIDGET_COMPANY_NAME,   !local);
-			w->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_house == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
-			if (local && p->location_of_house != 0) w->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
-			w->SetWidgetDisabledState(PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_house == 0);
-			w->SetWidgetHiddenState(PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_house == 0);
-			w->SetWidgetHiddenState(PCW_WIDGET_BUY_SHARE,        local);
-			w->SetWidgetHiddenState(PCW_WIDGET_SELL_SHARE,       local);
-			w->SetWidgetHiddenState(PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
+	PlayerCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->caption_color = this->window_number;
+	}
 
-			if (!local) {
-				if (_patches.allow_shares) { // Shares are allowed
-					/* If all shares are owned by someone (none by nobody), disable buy button */
-					w->SetWidgetDisabledState(PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
-							/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
-							(GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) ||
-							/* Spectators cannot do anything of course */
-							_local_player == PLAYER_SPECTATOR);
+	~PlayerCompanyWindow()
+	{
+		DeleteWindowById(WC_PLAYER_FACE, this->window_number);
+		if (this->window_number == _local_player) DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
+	}
 
-					/* If the player doesn't own any shares, disable sell button */
-					w->SetWidgetDisabledState(PCW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(p, _local_player) == 0) ||
-							/* Spectators cannot do anything of course */
-							_local_player == PLAYER_SPECTATOR);
-				} else { // Shares are not allowed, disable buy/sell buttons
-					w->DisableWidget(PCW_WIDGET_BUY_SHARE);
-					w->DisableWidget(PCW_WIDGET_SELL_SHARE);
-				}
+	virtual void OnPaint()
+	{
+		const Player *p = GetPlayer((PlayerID)this->window_number);
+		bool local = this->window_number == _local_player;
+
+		this->SetWidgetHiddenState(PCW_WIDGET_NEW_FACE,       !local);
+		this->SetWidgetHiddenState(PCW_WIDGET_COLOR_SCHEME,   !local);
+		this->SetWidgetHiddenState(PCW_WIDGET_PRESIDENT_NAME, !local);
+		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_NAME,   !local);
+		this->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_house == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
+		if (local && p->location_of_house != 0) this->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
+		this->SetWidgetDisabledState(PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_house == 0);
+		this->SetWidgetHiddenState(PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_house == 0);
+		this->SetWidgetHiddenState(PCW_WIDGET_BUY_SHARE,        local);
+		this->SetWidgetHiddenState(PCW_WIDGET_SELL_SHARE,       local);
+		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
+
+		if (!local) {
+			if (_patches.allow_shares) { // Shares are allowed
+				/* If all shares are owned by someone (none by nobody), disable buy button */
+				this->SetWidgetDisabledState(PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
+						/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
+						(GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) ||
+						/* Spectators cannot do anything of course */
+						_local_player == PLAYER_SPECTATOR);
+
+				/* If the player doesn't own any shares, disable sell button */
+				this->SetWidgetDisabledState(PCW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(p, _local_player) == 0) ||
+						/* Spectators cannot do anything of course */
+						_local_player == PLAYER_SPECTATOR);
+			} else { // Shares are not allowed, disable buy/sell buttons
+				this->DisableWidget(PCW_WIDGET_BUY_SHARE);
+				this->DisableWidget(PCW_WIDGET_SELL_SHARE);
 			}
-
-			SetDParam(0, p->index);
-			SetDParam(1, p->index);
-
-			DrawWindowWidgets(w);
-
-			/* Player face */
-			DrawPlayerFace(p->face, p->player_color, 2, 16);
-
-			/* "xxx (Manager)" */
-			SetDParam(0, p->index);
-			DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
-
-			/* "Inaugurated:" */
-			SetDParam(0, p->inaugurated_year);
-			DrawString(110, 23, STR_7038_INAUGURATED, TC_FROMSTRING);
-
-			/* "Colour scheme:" */
-			DrawString(110, 43, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
-			/* Draw company-colour bus */
-			DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 44);
-
-			/* "Vehicles:" */
-			DrawPlayerVehiclesAmount((PlayerID)w->window_number);
-
-			/* "Company value:" */
-			SetDParam(0, CalculateCompanyValue(p));
-			DrawString(110, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
-
-			/* Shares list */
-			DrawCompanyOwnerText(p);
-
-			break;
 		}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace((PlayerID)w->window_number, false); break;
+		SetDParam(0, p->index);
+		SetDParam(1, p->index);
 
-				case PCW_WIDGET_COLOR_SCHEME:
-					if (BringWindowToFrontById(WC_PLAYER_COLOR, w->window_number)) break;
-					new SelectPlayerLiveryWindow(&_select_player_livery_desc, (PlayerID)w->window_number);
-					break;
+		DrawWindowWidgets(this);
 
-				case PCW_WIDGET_PRESIDENT_NAME: {
-					const Player *p = GetPlayer((PlayerID)w->window_number);
-					WP(w, def_d).byte_1 = 0;
-					SetDParam(0, p->index);
-					ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, 31, 94, w, CS_ALPHANUMERAL);
-					break;
-				}
+		/* Player face */
+		DrawPlayerFace(p->face, p->player_color, 2, 16);
 
-				case PCW_WIDGET_COMPANY_NAME: {
-					Player *p = GetPlayer((PlayerID)w->window_number);
-					WP(w, def_d).byte_1 = 1;
-					SetDParam(0, p->index);
-					ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
-					break;
-				}
+		/* "xxx (Manager)" */
+		SetDParam(0, p->index);
+		DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
 
-				case PCW_WIDGET_BUILD_VIEW_HQ: {
-					TileIndex tile = GetPlayer((PlayerID)w->window_number)->location_of_house;
-					if (tile == 0) {
-						if ((byte)w->window_number != _local_player)
-							return;
-						SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
-						SetTileSelectSize(2, 2);
-						w->LowerWidget(PCW_WIDGET_BUILD_VIEW_HQ);
-						w->InvalidateWidget(PCW_WIDGET_BUILD_VIEW_HQ);
-					} else {
-						if (_ctrl_pressed) {
-							ShowExtraViewPortWindow(tile);
-						} else {
-							ScrollMainWindowToTile(tile);
-						}
-					}
-					break;
-				}
+		/* "Inaugurated:" */
+		SetDParam(0, p->inaugurated_year);
+		DrawString(110, 23, STR_7038_INAUGURATED, TC_FROMSTRING);
 
-				case PCW_WIDGET_RELOCATE_HQ:
-					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, w);
+		/* "Colour scheme:" */
+		DrawString(110, 43, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
+		/* Draw company-colour bus */
+		DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 44);
+
+		/* "Vehicles:" */
+		DrawPlayerVehiclesAmount((PlayerID)this->window_number);
+
+		/* "Company value:" */
+		SetDParam(0, CalculateCompanyValue(p));
+		DrawString(110, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
+
+		/* Shares list */
+		DrawCompanyOwnerText(p);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace((PlayerID)this->window_number, false); break;
+
+			case PCW_WIDGET_COLOR_SCHEME:
+				if (BringWindowToFrontById(WC_PLAYER_COLOR, this->window_number)) break;
+				new SelectPlayerLiveryWindow(&_select_player_livery_desc, (PlayerID)this->window_number);
+				break;
+
+			case PCW_WIDGET_PRESIDENT_NAME:
+				this->query_widget = PCW_WIDGET_PRESIDENT_NAME;
+				SetDParam(0, this->window_number);
+				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, 31, 94, this, CS_ALPHANUMERAL);
+				break;
+
+			case PCW_WIDGET_COMPANY_NAME:
+				this->query_widget = PCW_WIDGET_COMPANY_NAME;
+				SetDParam(0, this->window_number);
+				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, 31, 150, this, CS_ALPHANUMERAL);
+				break;
+
+			case PCW_WIDGET_BUILD_VIEW_HQ: {
+				TileIndex tile = GetPlayer((PlayerID)this->window_number)->location_of_house;
+				if (tile == 0) {
+					if ((byte)this->window_number != _local_player) return;
+					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
 					SetTileSelectSize(2, 2);
-					w->LowerWidget(PCW_WIDGET_RELOCATE_HQ);
-					w->InvalidateWidget(PCW_WIDGET_RELOCATE_HQ);
-					break;
+					this->LowerWidget(PCW_WIDGET_BUILD_VIEW_HQ);
+					this->InvalidateWidget(PCW_WIDGET_BUILD_VIEW_HQ);
+				} else {
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(tile);
+					} else {
+						ScrollMainWindowToTile(tile);
+					}
+				}
+				break;
+			}
 
-				case PCW_WIDGET_BUY_SHARE:
-					DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
-					break;
+			case PCW_WIDGET_RELOCATE_HQ:
+				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
+				SetTileSelectSize(2, 2);
+				this->LowerWidget(PCW_WIDGET_RELOCATE_HQ);
+				this->InvalidateWidget(PCW_WIDGET_RELOCATE_HQ);
+				break;
 
-				case PCW_WIDGET_SELL_SHARE:
-					DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
-					break;
+			case PCW_WIDGET_BUY_SHARE:
+				DoCommandP(0, this->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
+				break;
+
+			case PCW_WIDGET_SELL_SHARE:
+				DoCommandP(0, this->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
+				break;
 
 #ifdef ENABLE_NETWORK
-				case PCW_WIDGET_COMPANY_PASSWORD:
-					if (w->window_number == _local_player) ShowNetworkCompanyPasswordWindow();
-					break;
+			case PCW_WIDGET_COMPANY_PASSWORD:
+				if (this->window_number == _local_player) ShowNetworkCompanyPasswordWindow();
+				break;
 #endif /* ENABLE_NETWORK */
-			}
-			break;
-
-		case WE_TICK:
-			/* redraw the window every now and then */
-			if ((++w->vscroll.pos & 0x1F) == 0) w->SetDirty();
-			break;
-
-		case WE_PLACE_OBJ:
-			if (DoCommandP(e->we.place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
-				ResetObjectToPlace();
-				w->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
-				w->RaiseButtons();
-			break;
-
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseButtons();
-			break;
-
-		case WE_DESTROY:
-			DeleteWindowById(WC_PLAYER_FACE, w->window_number);
-			if (w->window_number == _local_player) DeleteWindowById(WC_COMPANY_PASSWORD_WINDOW, 0);
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (StrEmpty(e->we.edittext.str)) break;
-
-			_cmd_text = e->we.edittext.str;
-			switch (WP(w, def_d).byte_1) {
-				case 0: /* Change president name */
-					DoCommandP(0, 0, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
-					break;
-				case 1: /* Change company name */
-					DoCommandP(0, 0, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
-					break;
-			}
-			break;
+		}
 	}
-}
 
+	virtual void OnTick()
+	{
+		/* redraw the window every now and then */
+		if ((++this->vscroll.pos & 0x1F) == 0) this->SetDirty();
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		if (DoCommandP(tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
+			ResetObjectToPlace();
+			this->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
+			this->RaiseButtons();
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (StrEmpty(str)) return;
+
+		_cmd_text = str;
+		switch (this->query_widget) {
+			default: NOT_REACHED();
+
+			case PCW_WIDGET_PRESIDENT_NAME:
+				DoCommandP(0, 0, 0, NULL, CMD_CHANGE_PRESIDENT_NAME | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
+				break;
+
+			case PCW_WIDGET_COMPANY_NAME:
+				DoCommandP(0, 0, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
+				break;
+		}
+	}
+};
 
 static const WindowDesc _player_company_desc = {
 	WDP_AUTO, WDP_AUTO, 360, 170, 360, 170,
 	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_company_widgets,
-	PlayerCompanyWndProc
+	NULL
 };
 
 void ShowPlayerCompany(PlayerID player)
 {
-	Window *w;
-
 	if (!IsValidPlayer(player)) return;
 
-	w = AllocateWindowDescFront<Window>(&_player_company_desc, player);
-	if (w != NULL) w->caption_color = w->window_number;
+	AllocateWindowDescFront<PlayerCompanyWindow>(&_player_company_desc, player);
 }
 
 
