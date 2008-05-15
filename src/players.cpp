@@ -360,7 +360,7 @@ set_name:;
 			SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
 			SetDParam(2, p->index);
 			SetDParam(3, t->index);
-			AddNewsItem(STR_02B6, NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY, p->last_build_coordinate, p->index | NB_BNEWCOMPANY);
+			AddNewsItem(STR_02B6, NS_COMPANY_NEW, p->last_build_coordinate, p->index | NB_BNEWCOMPANY);
 		}
 		return;
 	}
@@ -939,7 +939,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			SetDParam(0, STR_705C_BANKRUPT);
 			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
 			SetDParam(2, p->index);
-			AddNewsItem(STR_02B6, NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, p->index | NB_BBANKRUPT);
+			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, p->index | NB_BBANKRUPT);
 
 			/* Remove the company */
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);

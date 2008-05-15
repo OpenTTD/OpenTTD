@@ -861,7 +861,7 @@ static void FloodVehicle(Vehicle *v)
 
 		SetDParam(0, pass);
 		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
-			NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
+			NS_ACCIDENT_VEHICLE,
 			v->index,
 			0);
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);

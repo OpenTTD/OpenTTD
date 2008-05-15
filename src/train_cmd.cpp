@@ -2450,7 +2450,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_LOST,
-					NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE,
+					NS_ADVICE,
 					v->index,
 					0);
 			}
@@ -2647,7 +2647,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 		SetDParam(0, st->index);
 		AddNewsItem(
 			STR_8801_CITIZENS_CELEBRATE_FIRST,
-			NM_THIN, NF_VIEWPORT | NF_VEHICLE, v->owner == _local_player ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
+			v->owner == _local_player ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 			v->index,
 			0
 		);
@@ -2893,7 +2893,7 @@ static void CheckTrainCollision(Vehicle *v)
 
 	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
-		NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
+		NS_ACCIDENT_VEHICLE,
 		v->index,
 		0
 	);
@@ -3617,7 +3617,7 @@ void TrainsYearlyLoop()
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_UNPROFITABLE,
-					NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE,
+					NS_ADVICE,
 					v->index,
 					0);
 			}

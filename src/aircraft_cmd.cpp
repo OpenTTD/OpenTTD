@@ -1398,7 +1398,7 @@ static void CrashAirplane(Vehicle *v)
 
 	SetDParam(1, st->index);
 	AddNewsItem(newsitem,
-		NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
+		NS_ACCIDENT_VEHICLE,
 		v->index,
 		0);
 
@@ -1443,7 +1443,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 		/* show newsitem of celebrating citizens */
 		AddNewsItem(
 			STR_A033_CITIZENS_CELEBRATE_FIRST,
-			NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
+			(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 			v->index,
 			0);
 	}

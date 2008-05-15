@@ -1651,7 +1651,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							SetDParam(1, ind->town->index);
 						}
 						AddNewsItem(indspec->new_industry_text,
-								NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, DNC_NONE, ind->xy, 0);
+								NS_OPENCLOSE, ind->xy, 0);
 						break;
 					}
 				}
@@ -1870,7 +1870,7 @@ static void MaybeNewIndustry(void)
 		SetDParam(1, ind->town->index);
 	}
 	AddNewsItem(ind_spc->new_industry_text,
-		NM_THIN, NF_VIEWPORT | NF_TILE, NT_OPENCLOSE, DNC_NONE, ind->xy, 0);
+		NS_OPENCLOSE, ind->xy, 0);
 }
 
 /**
@@ -2002,12 +2002,12 @@ int WhoCanServiceIndustry(Industry* ind)
 */
 static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int percent)
 {
-	NewsType nt;
+	NewsSubtype ns;
 
 	switch (WhoCanServiceIndustry(ind)) {
-		case 0: nt = NT_INDUSTRY_NOBODY; break;
-		case 1: nt = NT_INDUSTRY_OTHER;  break;
-		case 2: nt = NT_INDUSTRY_PLAYER; break;
+		case 0: ns = NS_INDUSTRY_NOBODY; break;
+		case 1: ns = NS_INDUSTRY_OTHER;  break;
+		case 2: ns = NS_INDUSTRY_PLAYER; break;
 		default: NOT_REACHED(); break;
 	}
 	SetDParam(2, abs(percent));
@@ -2015,7 +2015,7 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	SetDParam(1, ind->index);
 	AddNewsItem(
 		percent >= 0 ? STR_INDUSTRY_PROD_GOUP : STR_INDUSTRY_PROD_GODOWN,
-		NM_THIN, NF_VIEWPORT | NF_TILE, nt, DNC_NONE,
+		ns,
 		ind->xy + TileDiffXY(1, 1), 0
 	);
 }
@@ -2183,15 +2183,15 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 
 	if (!suppress_message && str != STR_NULL) {
-		NewsType nt;
+		NewsSubtype ns;
 		/* Compute news category */
 		if (closeit) {
-			nt = NT_OPENCLOSE;
+			ns = NS_OPENCLOSE;
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
-				case 0: nt = NT_INDUSTRY_NOBODY; break;
-				case 1: nt = NT_INDUSTRY_OTHER;  break;
-				case 2: nt = NT_INDUSTRY_PLAYER; break;
+				case 0: ns = NS_INDUSTRY_NOBODY; break;
+				case 1: ns = NS_INDUSTRY_OTHER;  break;
+				case 2: ns = NS_INDUSTRY_PLAYER; break;
 				default: NOT_REACHED(); break;
 			}
 		}
@@ -2209,7 +2209,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 		/* and report the news to the user */
 		AddNewsItem(str,
-			NM_THIN, NF_VIEWPORT | NF_TILE, nt, DNC_NONE,
+			ns,
 			i->xy + TileDiffXY(1, 1), 0);
 	}
 }

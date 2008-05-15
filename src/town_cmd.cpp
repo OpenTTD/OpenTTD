@@ -2152,7 +2152,7 @@ static void TownActionRoadRebuild(Town *t)
 	SetDParam(1, _current_player);
 
 	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING,
-		NM_NORMAL, NF_TILE, NT_GENERAL, DNC_NONE, t->xy, 0);
+		NS_GENERAL, t->xy, 0);
 }
 
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)

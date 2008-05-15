@@ -409,7 +409,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 	}
 
 	SetDParam(0, st->index);
-	AddNewsItem(msg, NM_SMALL, NF_VIEWPORT | NF_TILE, NT_ACCEPTANCE, DNC_NONE, st->xy, 0);
+	AddNewsItem(msg, NS_ACCEPTANCE, st->xy, 0);
 }
 
 /**

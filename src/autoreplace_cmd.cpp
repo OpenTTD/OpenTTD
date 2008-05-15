@@ -323,7 +323,7 @@ static CommandCost WagonRemoval(Vehicle *v, uint16 old_total_length)
 		if (v == NULL) {
 			/* We sold all the wagons and the train is still not short enough */
 			SetDParam(0, front->unitnumber);
-			AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, front->index, 0);
+			AddNewsItem(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT, NS_ADVICE, front->index, 0);
 			return cost;
 		}
 
@@ -480,7 +480,7 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 					default: NOT_REACHED(); message = 0; break;
 				}
 
-				AddNewsItem(message, NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
+				AddNewsItem(message, NS_ADVICE, v->index, 0);
 			}
 		}
 	}

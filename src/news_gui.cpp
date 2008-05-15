@@ -83,6 +83,41 @@ static DrawNewsCallbackProc * const _draw_news_callback[] = {
 	DrawNewsBankrupcy,        ///< DNC_BANKRUPCY
 };
 
+/**
+ * Data common to all news items of a given subtype (structure)
+ */
+struct NewsSubtypeData {
+	NewsType type;         ///< News category @see NewsType
+	NewsMode display_mode; ///< Display mode value @see NewsMode
+	NewsFlag flags;        ///< Initial NewsFlags bits @see NewsFlag
+	NewsCallback callback; ///< Call-back function
+};
+
+/**
+ * Data common to all news items of a given subtype (actual data)
+ */
+static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
+	/* type,             display_mode, flags,                  callback */
+	{ NT_ARRIVAL_PLAYER,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ARRIVAL_PLAYER
+	{ NT_ARRIVAL_OTHER,   NM_THIN,     NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_ACCIDENT_TILE
+	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ACCIDENT_VEHICLE
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_TILE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_NEW
+	{ NT_OPENCLOSE,       NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_OPENCLOSE
+	{ NT_ECONOMY,         NM_NORMAL,   NF_NONE,                DNC_NONE         }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_PLAYER, NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_INDUSTRY_PLAYER
+	{ NT_INDUSTRY_OTHER,  NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY, NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,          NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,    NM_CALLBACK, NF_NONE,                DNC_VEHICLEAVAIL }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,      NM_SMALL,    NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,       NM_NORMAL,   NF_TILE|NF_TILE2,       DNC_NONE         }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,         NM_NORMAL,   NF_TILE,                DNC_NONE         }, ///< NS_GENERAL
+};
+
 /** Initialize the news-items data structures */
 void InitNewsItemStructs()
 {
@@ -124,8 +159,9 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 		case WE_PAINT: {
 			const NewsItem *ni = WP(w, news_d).ni;
+			const NewsMode display_mode = _news_subtype_data[ni->subtype].display_mode;
 
-			switch (ni->display_mode) {
+			switch (display_mode) {
 				case NM_NORMAL:
 				case NM_THIN: {
 					DrawNewsBorder(w);
@@ -137,7 +173,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 					if (!(ni->flags & NF_VIEWPORT)) {
 						CopyInDParam(0, ni->params, lengthof(ni->params));
-						DrawStringMultiCenter(215, ni->display_mode == NM_NORMAL ? 76 : 56,
+						DrawStringMultiCenter(215, display_mode == NM_NORMAL ? 76 : 56,
 							ni->string_id, w->width - 4);
 					} else {
 						/* Back up transparency options to draw news view */
@@ -160,7 +196,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 				}
 
 				case NM_CALLBACK:
-					_draw_news_callback[ni->callback](w, ni);
+					_draw_news_callback[_news_subtype_data[ni->subtype].callback](w, ni);
 					break;
 
 				default:
@@ -283,7 +319,7 @@ static inline NewsID DecreaseIndex(NewsID i)
  * @see NewsType
  * @see NewsCallback
  */
-void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsType type, NewsCallback callback, uint data_a, uint data_b)
+void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -314,14 +350,12 @@ void AddNewsItem(StringID string, NewsMode display_mode, NewsFlag flags, NewsTyp
 	memset(ni, 0, sizeof(*ni));
 
 	ni->string_id = string;
-	ni->display_mode = display_mode;
-	ni->flags = flags;
+	ni->subtype = subtype;
+	ni->flags = _news_subtype_data[subtype].flags;
 
 	/* show this news message in color? */
 	if (_cur_year >= _patches.colored_news_year) ni->flags |= NF_INCOLOR;
 
-	ni->type = type;
-	ni->callback = callback;
 	ni->data_a = data_a;
 	ni->data_b = data_b;
 	ni->date = _date;
@@ -407,12 +441,12 @@ static void ShowNewspaper(NewsItem *ni)
 	ni->flags &= ~NF_FORCE_BIG;
 	ni->duration = 555;
 
-	SoundFx sound = _news_type_data[ni->type].sound;
+	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
 	if (sound != 0) SndPlayFx(sound);
 
 	int top = _screen.height;
 	Window *w;
-	switch (ni->display_mode) {
+	switch (_news_subtype_data[ni->subtype].display_mode) {
 		case NM_NORMAL:
 		case NM_CALLBACK:
 			_news_type13_desc.top = top;
@@ -493,11 +527,12 @@ static void MoveToNextItem()
 	if (_current_news != _latest_news) {
 		_current_news = (_current_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_current_news);
 		NewsItem *ni = &_news_items[_current_news];
+		const NewsType type = _news_subtype_data[ni->subtype].type;
 
 		/* check the date, don't show too old items */
-		if (_date - _news_type_data[ni->type].age > ni->date) return;
+		if (_date - _news_type_data[type].age > ni->date) return;
 
-		switch (_news_type_data[ni->type].display) {
+		switch (_news_type_data[type].display) {
 			default: NOT_REACHED();
 			case ND_OFF: { // Off - show nothing only a small reminder in the status bar
 				Window *w = FindWindowById(WC_STATUS_BAR, 0);

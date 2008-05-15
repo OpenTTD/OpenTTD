@@ -8,7 +8,7 @@
 #include "news_type.h"
 #include "vehicle_type.h"
 
-void AddNewsItem(StringID string, NewsMode mode, NewsFlag flag, NewsType type, NewsCallback callback, uint data_a, uint data_b);
+void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b);
 void NewsLoop();
 void DrawNewsBorder(const Window *w);
 void InitNewsItemStructs();

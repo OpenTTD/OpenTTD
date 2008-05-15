@@ -664,7 +664,7 @@ static void RoadVehCrash(Vehicle *v)
 	AddNewsItem(
 		(pass == 1) ?
 			STR_9031_ROAD_VEHICLE_CRASH_DRIVER : STR_9032_ROAD_VEHICLE_CRASH_DIE,
-		NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
+		NS_ACCIDENT_VEHICLE,
 		v->index,
 		0
 	);
@@ -830,7 +830,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			AddNewsItem(
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM,
-				NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
+				(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 				v->index,
 				0);
 		}
@@ -841,7 +841,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			AddNewsItem(
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM,
-				NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
+				(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 				v->index,
 				0
 			);

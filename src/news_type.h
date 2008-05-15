@@ -32,6 +32,31 @@ enum NewsType {
 };
 
 /**
+ * News subtypes.
+ */
+enum NewsSubtype {
+	NS_ARRIVAL_PLAYER,   ///< NT_ARRIVAL_PLAYER
+	NS_ARRIVAL_OTHER,    ///< NT_ARRIVAL_OTHER
+	NS_ACCIDENT_TILE,    ///< NT_ACCIDENT (tile)
+	NS_ACCIDENT_VEHICLE, ///< NT_ACCIDENT (vehicle)
+	NS_COMPANY_TROUBLE,  ///< NT_COMPANY_INFO (trouble)
+	NS_COMPANY_MERGER,   ///< NT_COMPANY_INFO (merger)
+	NS_COMPANY_BANKRUPT, ///< NT_COMPANY_INFO (bankrupt)
+	NS_COMPANY_NEW,      ///< NT_COMPANY_INFO (new company)
+	NS_OPENCLOSE,        ///< NT_OPENCLOSE
+	NS_ECONOMY,          ///< NT_ECONOMY
+	NS_INDUSTRY_PLAYER,  ///< NT_INDUSTRY_PLAYER
+	NS_INDUSTRY_OTHER,   ///< NT_INDUSTRY_OTHER
+	NS_INDUSTRY_NOBODY,  ///< NT_INDUSTRY_NOBODY
+	NS_ADVICE,           ///< NT_ADVICE
+	NS_NEW_VEHICLES,     ///< NT_NEW_VEHICLES
+	NS_ACCEPTANCE,       ///< NT_ACCEPTANCE
+	NS_SUBSIDIES,        ///< NT_SUBSIDIES
+	NS_GENERAL,          ///< NT_GENERAL
+	NS_END,              ///< end-of-array marker
+};
+
+/**
  * News mode.
  */
 enum NewsMode {
@@ -100,10 +125,8 @@ struct NewsItem {
 	StringID string_id;    ///< Message text
 	uint16 duration;       ///< Remaining time for showing this news message
 	Date date;             ///< Date of the news
+	NewsSubtype subtype;   ///< News subtype @see NewsSubtype
 	NewsFlag flags;        ///< NewsFlags bits @see NewsFlag
-	NewsMode display_mode; ///< Display mode value @see NewsMode
-	NewsType type;         ///< News category @see NewsType
-	NewsCallback callback; ///< Call-back function
 
 	uint data_a;           ///< Custom data 1 (usually tile or vehicle)
 	uint data_b;           ///< Custom data 2

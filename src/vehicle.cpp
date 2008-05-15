@@ -952,7 +952,7 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 
 	SetDParam(0, _vehicle_type_names[v->type]);
 	SetDParam(1, v->unitnumber);
-	AddNewsItem(msg, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
+	AddNewsItem(msg, NS_ADVICE, v->index, 0);
 }
 
 void AgeVehicle(Vehicle *v)
@@ -1651,7 +1651,7 @@ void VehicleEnterDepot(Vehicle *v)
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, _vehicle_type_names[v->type]);
 					SetDParam(1, v->unitnumber);
-					AddNewsItem(STR_ORDER_REFIT_FAILED, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
+					AddNewsItem(STR_ORDER_REFIT_FAILED, NS_ADVICE, v->index, 0);
 				}
 			} else if (v->owner == _local_player && cost.GetCost() != 0) {
 				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
@@ -1677,7 +1677,7 @@ void VehicleEnterDepot(Vehicle *v)
 				}
 
 				SetDParam(0, v->unitnumber);
-				AddNewsItem(string, NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE, v->index, 0);
+				AddNewsItem(string, NS_ADVICE, v->index, 0);
 			}
 		}
 	}

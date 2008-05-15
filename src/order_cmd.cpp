@@ -1444,7 +1444,7 @@ void CheckOrders(const Vehicle* v)
 		SetDParam(0, v->unitnumber);
 		AddNewsItem(
 			message,
-			NM_SMALL, NF_VIEWPORT | NF_VEHICLE, NT_ADVICE, DNC_NONE,
+			NS_ADVICE,
 			v->index,
 			0
 		);

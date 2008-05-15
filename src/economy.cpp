@@ -531,7 +531,7 @@ static void PlayersCheckBankrupt(Player *p)
 			SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
 			SetDParam(2, owner);
 			AddNewsItem(STR_02B6,
-				NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, owner | NB_BTROUBLE);
+				NS_COMPANY_TROUBLE, 0, owner | NB_BTROUBLE);
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other players if it wants to take
@@ -541,7 +541,7 @@ static void PlayersCheckBankrupt(Player *p)
 				SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
 				SetDParam(2, owner);
 				AddNewsItem(STR_02B6,
-					NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, owner | NB_BTROUBLE);
+					NS_COMPANY_TROUBLE, 0, owner | NB_BTROUBLE);
 				break;
 			}
 
@@ -564,7 +564,7 @@ static void PlayersCheckBankrupt(Player *p)
 			SetDParam(0, STR_705C_BANKRUPT);
 			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
 			SetDParam(2, p->index);
-			AddNewsItem(STR_02B6, NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, owner | NB_BBANKRUPT);
+			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, owner | NB_BBANKRUPT);
 
 			if (IsHumanPlayer(owner)) {
 				/* XXX - If we are in offline mode, leave the player playing. Eg. there
@@ -774,10 +774,10 @@ static void HandleEconomyFluctuations()
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
-		AddNewsItem(STR_7073_WORLD_RECESSION_FINANCIAL, NM_NORMAL, NF_NONE, NT_ECONOMY, DNC_NONE, 0, 0);
+		AddNewsItem(STR_7073_WORLD_RECESSION_FINANCIAL, NS_ECONOMY, 0, 0);
 	} else if (_economy.fluct == -12) {
 		_economy.fluct = GB(Random(), 0, 8) + 312;
-		AddNewsItem(STR_7074_RECESSION_OVER_UPTURN_IN, NM_NORMAL, NF_NONE, NT_ECONOMY, DNC_NONE, 0, 0);
+		AddNewsItem(STR_7074_RECESSION_OVER_UPTURN_IN, NS_ECONOMY, 0, 0);
 	}
 }
 
@@ -1117,14 +1117,14 @@ static void SubsidyMonthlyHandler()
 
 		if (s->age == 12-1) {
 			pair = SetupSubsidyDecodeParam(s, 1);
-			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
+			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, pair.a, pair.b);
 			s->cargo_type = CT_INVALID;
 			modified = true;
 		} else if (s->age == 2*12-1) {
 			st = GetStation(s->to);
 			if (st->owner == _local_player) {
 				pair = SetupSubsidyDecodeParam(s, 1);
-				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
+				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, pair.a, pair.b);
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
@@ -1163,7 +1163,7 @@ static void SubsidyMonthlyHandler()
 				if (!CheckSubsidyDuplicate(s)) {
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
-					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE, pair.a, pair.b);
+					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, pair.a, pair.b);
 					modified = true;
 					break;
 				}
@@ -1380,7 +1380,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			SetDParam(0, _current_player);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
-				NM_NORMAL, NF_TILE | NF_TILE2, NT_SUBSIDIES, DNC_NONE,
+				NS_SUBSIDIES,
 				pair.a, pair.b
 			);
 
@@ -1822,7 +1822,7 @@ static void DoAcquireCompany(Player *p)
 	SetDParam(2, p->index);
 	SetDParam(3, _current_player);
 	SetDParam(4, p->bankrupt_value);
-	AddNewsItem(STR_02B6, NM_CALLBACK, NF_NONE, NT_COMPANY_INFO, DNC_BANKRUPCY, 0, _current_player | NB_BMERGER);
+	AddNewsItem(STR_02B6, NS_COMPANY_MERGER, 0, _current_player | NB_BMERGER);
 
 	/* original code does this a little bit differently */
 	PlayerID pi = p->index;

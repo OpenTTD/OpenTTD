@@ -349,7 +349,7 @@ static void ShipArrivesAt(const Vehicle* v, Station* st)
 		SetDParam(0, st->index);
 		AddNewsItem(
 			STR_9833_CITIZENS_CELEBRATE_FIRST,
-			NM_THIN, NF_VIEWPORT | NF_VEHICLE, (v->owner == _local_player) ? NT_ARRIVAL_PLAYER : NT_ARRIVAL_OTHER, DNC_NONE,
+			(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 			v->index,
 			0);
 	}

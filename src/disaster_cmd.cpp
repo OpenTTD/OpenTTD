@@ -234,7 +234,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 				SetDParam(0, GetStationIndex(tile));
 				AddNewsItem(STR_B000_ZEPPELIN_DISASTER_AT,
-					NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
+					NS_ACCIDENT_VEHICLE,
 					v->index,
 					0);
 			}
@@ -367,7 +367,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 				u->vehstatus |= VS_CRASHED;
 
 				AddNewsItem(STR_B001_ROAD_VEHICLE_DESTROYED,
-					NM_THIN, NF_VIEWPORT | NF_VEHICLE, NT_ACCIDENT, DNC_NONE,
+					NS_ACCIDENT_VEHICLE,
 					u->index,
 					0);
 			}
@@ -442,7 +442,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy, 0);
+			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NS_ACCIDENT_TILE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
@@ -515,7 +515,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 			DestructIndustry(i);
 
 			SetDParam(0, i->town->index);
-			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy, 0);
+			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NS_ACCIDENT_TILE, i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
 	} else if (v->current_order.GetDestination() == 0) {
@@ -600,7 +600,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 		t = ClosestTownFromTile(v->dest_tile, (uint)-1);
 		SetDParam(0, t->index);
 		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
-			NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE,
+			NS_ACCIDENT_TILE,
 			v->tile,
 			0);
 
@@ -978,7 +978,7 @@ static void Disaster_CoalMine_Init()
 			if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CAN_SUBSIDENCE) && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
-					NM_THIN, NF_VIEWPORT | NF_TILE, NT_ACCIDENT, DNC_NONE, i->xy + TileDiffXY(1, 1), 0);
+					NS_ACCIDENT_TILE, i->xy + TileDiffXY(1, 1), 0);
 
 				{
 					TileIndex tile = i->xy;

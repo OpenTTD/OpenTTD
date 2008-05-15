@@ -154,7 +154,7 @@ void CheckSwitchToEuro()
 			_currency_specs[_opt.currency].to_euro != CF_ISEURO &&
 			_cur_year >= _currency_specs[_opt.currency].to_euro) {
 		_opt.currency = 2; // this is the index of euro above.
-		AddNewsItem(STR_EURO_INTRODUCE, NM_NORMAL, NF_NONE, NT_ECONOMY, DNC_NONE, 0, 0);
+		AddNewsItem(STR_EURO_INTRODUCE, NS_ECONOMY, 0, 0);
 	}
 }
 

@@ -468,7 +468,7 @@ static void NewVehicleAvailable(Engine *e)
 
 	SetDParam(0, GetEngineCategoryName(index));
 	SetDParam(1, index);
-	AddNewsItem(STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NM_CALLBACK, NF_NONE, NT_NEW_VEHICLES, DNC_VEHICLEAVAIL, index, 0);
+	AddNewsItem(STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE, NS_NEW_VEHICLES, index, 0);
 }
 
 void EnginesMonthlyLoop()
