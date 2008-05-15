@@ -435,8 +435,7 @@ extern void ShowStatusBar();
 
 void ShowVitalWindows()
 {
-	Window *w = AllocateToolbar();
-	DoZoomInOutWindow(ZOOM_NONE, w);
+	AllocateToolbar();
 
 	/* Status bad only for normal games */
 	if (_game_mode == GM_EDITOR) return;

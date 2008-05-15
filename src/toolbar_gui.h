@@ -5,8 +5,6 @@
 #ifndef TOOLBAR_GUI_H
 #define TOOLBAR_GUI_H
 
-#include "window_type.h"
-
-Window *AllocateToolbar();
+void AllocateToolbar();
 
 #endif /*TOOLBAR_GUI_H*/

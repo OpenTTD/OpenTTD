@@ -45,8 +45,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask);
-static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray);
+static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask = 0, int sel_index = 0, int checked_items = 0);
+static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray);
 
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
@@ -122,9 +122,6 @@ static void ToolbarFastForwardClick(Window *w)
 static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x = 0;
-
-	w = PopupMainToolbMenu(w, 2, STR_02C4_GAME_OPTIONS, 14, 0);
-
 	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SetBit(x,  6);
 	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SetBit(x,  7);
 	if (HasBit(_display_opt, DO_SHOW_SIGNS))         SetBit(x,  8);
@@ -133,7 +130,8 @@ static void ToolbarOptionsClick(Window *w)
 	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, 11);
 	if (IsTransparencySet(TO_HOUSES))                SetBit(x, 12);
 	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, 13);
-	WP(w, menu_d).checked_items = x;
+
+	PopupMainToolbMenu(w, 2, STR_02C4_GAME_OPTIONS, 14, 0, 0, x);
 }
 
 static void MenuClickSettings(int index)
@@ -161,12 +159,12 @@ static void MenuClickSettings(int index)
 
 static void ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, 3, STR_015C_SAVE_GAME, 4, 0);
+	PopupMainToolbMenu(w, 3, STR_015C_SAVE_GAME, 4);
 }
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, 3, STR_0292_SAVE_SCENARIO, 6, 0);
+	PopupMainToolbMenu(w, 3, STR_0292_SAVE_SCENARIO, 6);
 }
 
 static void MenuClickSaveLoad(int index)
@@ -193,7 +191,7 @@ static void MenuClickSaveLoad(int index)
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 3, 0);
+	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 3);
 }
 
 static void MenuClickMap(int index)
@@ -219,7 +217,7 @@ static void MenuClickScenMap(int index)
 
 static void ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, 5, STR_02BB_TOWN_DIRECTORY, 1, 0);
+	PopupMainToolbMenu(w, 5, STR_02BB_TOWN_DIRECTORY, 1);
 }
 
 static void MenuClickTown(int index)
@@ -231,7 +229,7 @@ static void MenuClickTown(int index)
 
 static void ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, 6, STR_02DD_SUBSIDIES, 1, 0);
+	PopupMainToolbMenu(w, 6, STR_02DD_SUBSIDIES, 1);
 }
 
 static void MenuClickSubsidies(int index)
@@ -284,7 +282,7 @@ static void MenuClickCompany(int index)
 
 static void ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6, 0);
+	PopupMainToolbMenu(w, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6);
 }
 
 static void MenuClickGraphs(int index)
@@ -303,7 +301,7 @@ static void MenuClickGraphs(int index)
 
 static void ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2, 0);
+	PopupMainToolbMenu(w, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2);
 }
 
 static void MenuClickLeague(int index)
@@ -415,8 +413,7 @@ static void ToolbarZoomOutClick(Window *w)
 static void ToolbarBuildRailClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
-	Window *w2 = PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
-	WP(w2, menu_d).sel_index = _last_built_railtype;
+	PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes, _last_built_railtype);
 }
 
 static void MenuClickBuildRail(int index)
@@ -431,8 +428,7 @@ static void ToolbarBuildRoadClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
 	/* The standard road button is *always* available */
-	Window *w2 = PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 2, ~(p->avail_roadtypes | ROADTYPES_ROAD));
-	WP(w2, menu_d).sel_index = _last_built_roadtype;
+	PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 2, ~(p->avail_roadtypes | ROADTYPES_ROAD), _last_built_roadtype);
 }
 
 static void MenuClickBuildRoad(int index)
@@ -445,7 +441,7 @@ static void MenuClickBuildRoad(int index)
 
 static void ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, 21, STR_9800_DOCK_CONSTRUCTION, 1, 0);
+	PopupMainToolbMenu(w, 21, STR_9800_DOCK_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildWater(int index)
@@ -457,7 +453,7 @@ static void MenuClickBuildWater(int index)
 
 static void ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1, 0);
+	PopupMainToolbMenu(w, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildAir(int index)
@@ -469,7 +465,7 @@ static void MenuClickBuildAir(int index)
 
 static void ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, 23, STR_LANDSCAPING, 3, 0);
+	PopupMainToolbMenu(w, 23, STR_LANDSCAPING, 3);
 }
 
 static void MenuClickForest(int index)
@@ -485,7 +481,7 @@ static void MenuClickForest(int index)
 
 static void ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, 24, STR_01D3_SOUND_MUSIC, 1, 0);
+	PopupMainToolbMenu(w, 24, STR_01D3_SOUND_MUSIC, 1);
 }
 
 static void MenuClickMusicWindow(int index)
@@ -497,7 +493,7 @@ static void MenuClickMusicWindow(int index)
 
 static void ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3, 0);
+	PopupMainToolbMenu(w, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3);
 }
 
 static void MenuClickNewspaper(int index)
@@ -513,7 +509,7 @@ static void MenuClickNewspaper(int index)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, 26, STR_02D5_LAND_BLOCK_INFO, 6, 0);
+	PopupMainToolbMenu(w, 26, STR_02D5_LAND_BLOCK_INFO, 6);
 }
 
 static void MenuClickSmallScreenshot()
@@ -568,7 +564,7 @@ static void ToolbarScenDateForward(Window *w)
 static void ToolbarScenMapTownDir(Window *w)
 {
 	/* Scenario editor button, *hack*hack* use different button to activate */
-	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 4, 0);
+	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 4);
 }
 
 static void ToolbarScenZoomIn(Window *w)
@@ -1220,7 +1216,7 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
  * aligned with the toolbar's right side.
  * Since the disable-mask is only 8 bits right now, these dropdowns are
  * restricted to 8 items max if any bits of disabled_mask are active.
- * @param w Pointer to a window this dropdown menu belongs to. Has no effect
+ * @param parent Pointer to a window this dropdown menu belongs to. Has no effect
  * whatsoever, only graphically for positioning.
  * @param parent_button The widget identifier of the button that was clicked for
  * this dropdown. The created dropdown then knows what button to raise (button) on
@@ -1234,12 +1230,15 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
  * consecutive indeces from the language file. XXX - fix? Use ingame-string tables?
  * @param item_count Number of strings in the list, see previous parameter
  * @param disabled_mask Bitmask of disabled strings in the list
- * @return Return a pointer to the newly created dropdown window */
-static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask)
+ * @param sel_index The selected toolbar item
+ * @param check_items The items to have a checked mark in front of them.
+ * @return Return a pointer to the newly created dropdown window
+ */
+static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask, int sel_index, int checked_items)
 {
 	assert(disabled_mask == 0 || item_count <= 8);
-	w->LowerWidget(parent_button);
-	w->InvalidateWidget(parent_button);
+	parent->LowerWidget(parent_button);
+	parent->InvalidateWidget(parent_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
@@ -1249,20 +1248,19 @@ static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base
 
 	Point pos = GetToolbarDropdownPos(parent_button, width, height);
 
-	w = new Window(pos.x, pos.y, width, height, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
+	Window *w = new Window(pos.x, pos.y, width, height, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->widget[0].bottom = item_count * 10 + 1;
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 
 	WP(w, menu_d).item_count = item_count;
-	WP(w, menu_d).sel_index = 0;
+	WP(w, menu_d).sel_index = sel_index;
 	WP(w, menu_d).main_button = GB(parent_button, 0, 8);
 	WP(w, menu_d).action_id = (GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button;
 	WP(w, menu_d).string_id = base_string;
-	WP(w, menu_d).checked_items = 0;
+	WP(w, menu_d).checked_items = checked_items;
 	WP(w, menu_d).disabled_items = disabled_mask;
 
 	SndPlayFx(SND_15_BEEP);
-	return w;
 }
 
 /* --- Rendering/drawing the player menu --- */
@@ -1397,14 +1395,14 @@ static const Widget _player_menu_widgets[] = {
 { WIDGETS_END},
 };
 
-static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
+static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray)
 {
-	w->LowerWidget(main_button);
-	w->InvalidateWidget(main_button);
+	parent->LowerWidget(main_button);
+	parent->InvalidateWidget(main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	Point pos = GetToolbarDropdownPos(main_button, 241, 82);
-	w = new Window(pos.x, pos.y, 241, 82, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
+	Window *w = new Window(pos.x, pos.y, 241, 82, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w, menu_d).item_count = 0;
 	WP(w, menu_d).sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
@@ -1422,18 +1420,17 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int main_button, int gray)
 	WP(w, menu_d).disabled_items = 0;
 
 	SndPlayFx(SND_15_BEEP);
-	return w;
 }
 
 /* --- Allocating the toolbar --- */
 
-Window *AllocateToolbar()
+void AllocateToolbar()
 {
 	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
 	_last_built_roadtype = ROADTYPE_ROAD;
 
 	Window *w = new Window((_game_mode != GM_EDITOR) ? &_toolb_normal_desc : &_toolb_scen_desc);
-	if (w == NULL) return NULL;
+	assert(w != NULL);
 
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
@@ -1442,6 +1439,5 @@ Window *AllocateToolbar()
 
 	/* 'w' is for sure a WC_MAIN_TOOLBAR */
 	PositionMainToolbar(w);
-
-	return w;
+	DoZoomInOutWindow(ZOOM_NONE, w);
 }
