@@ -1217,14 +1217,6 @@ typedef void ClientList_Action_Proc(byte client_no);
 // Max 10 actions per client
 #define MAX_CLIENTLIST_ACTION 10
 
-// Some standard bullshit.. defines variables ;)
-static void ClientListWndProc(Window *w, WindowEvent *e);
-static void ClientListPopupWndProc(Window *w, WindowEvent *e);
-static byte _selected_clientlist_item = 255;
-static byte _selected_clientlist_y = 0;
-static char _clientlist_action[MAX_CLIENTLIST_ACTION][50];
-static ClientList_Action_Proc *_clientlist_proc[MAX_CLIENTLIST_ACTION];
-
 enum {
 	CLNWND_OFFSET = 16,
 	CLNWND_ROWSIZE = 10
@@ -1249,7 +1241,7 @@ static WindowDesc _client_list_desc = {
 	WC_CLIENT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_client_list_widgets,
-	ClientListWndProc
+	NULL
 };
 
 // Finds the Xth client-info that is active
@@ -1321,267 +1313,271 @@ static void ClientList_None(byte client_no)
 
 
 
-/**
- * An action is clicked! What do we do?
- */
-static void HandleClientListPopupClick(byte index, byte clientno)
-{
-	/* A click on the Popup of the ClientList.. handle the command */
-	if (index < MAX_CLIENTLIST_ACTION && _clientlist_proc[index] != NULL) {
-		_clientlist_proc[index](clientno);
+struct NetworkClientListPopupWindow : Window {
+	int sel_index;
+	int client_no;
+	char action[MAX_CLIENTLIST_ACTION][50];
+	ClientList_Action_Proc *proc[MAX_CLIENTLIST_ACTION];
+
+	NetworkClientListPopupWindow(int x, int y, const Widget *widgets, int client_no) :
+			Window(x, y, 150, 100, NULL, WC_TOOLBAR_MENU, widgets),
+			sel_index(0), client_no(client_no)
+	{
+		/*
+		 * Fill the actions this client has.
+		 * Watch is, max 50 chars long!
+		 */
+
+		const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
+
+		int i = 0;
+		if (_network_own_client_index != ci->client_index) {
+			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, lastof(this->action[i]));
+			this->proc[i++] = &ClientList_SpeakToClient;
+		}
+
+		if (IsValidPlayer(ci->client_playas) || ci->client_playas == PLAYER_SPECTATOR) {
+			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(this->action[i]));
+			this->proc[i++] = &ClientList_SpeakToCompany;
+		}
+		GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, lastof(this->action[i]));
+		this->proc[i++] = &ClientList_SpeakToAll;
+
+		if (_network_own_client_index != ci->client_index) {
+			/* We are no spectator and the player we want to give money to is no spectator and money gifts are allowed */
+			if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas) && _patches.give_money) {
+				GetString(this->action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(this->action[i]));
+				this->proc[i++] = &ClientList_GiveMoney;
+			}
+		}
+
+		/* A server can kick clients (but not himself) */
+		if (_network_server && _network_own_client_index != ci->client_index) {
+			GetString(this->action[i], STR_NETWORK_CLIENTLIST_KICK, lastof(this->action[i]));
+			this->proc[i++] = &ClientList_Kick;
+
+			sprintf(this->action[i],"Ban"); // XXX GetString?
+			this->proc[i++] = &ClientList_Ban;
+		}
+
+		if (i == 0) {
+			GetString(this->action[i], STR_NETWORK_CLIENTLIST_NONE, lastof(this->action[i]));
+			this->proc[i++] = &ClientList_None;
+		}
+
+		/* Calculate the height */
+		int h = ClientListPopupHeight();
+
+		/* Allocate the popup */
+		this->widget[0].bottom = this->widget[0].top + h;
+		this->widget[0].right = this->widget[0].left + 150;
+
+		this->flags4 &= ~WF_WHITE_BORDER_MASK;
+
+		this->FindWindowPlacementAndResize(150, h + 1);
 	}
-}
 
-/**
- * Finds the amount of clients and set the height correct
- */
-static bool CheckClientListHeight(Window *w)
-{
-	int num = 0;
-	const NetworkClientInfo *ci;
-
-	/* Should be replaced with a loop through all clients */
-	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-		num++;
+	/**
+	 * An action is clicked! What do we do?
+	 */
+	void HandleClientListPopupClick(byte index)
+	{
+		/* A click on the Popup of the ClientList.. handle the command */
+		if (index < MAX_CLIENTLIST_ACTION && this->proc[index] != NULL) {
+			this->proc[index](this->client_no);
+		}
 	}
 
-	num *= CLNWND_ROWSIZE;
+	/**
+	 * Finds the amount of actions in the popup and set the height correct
+	 */
+	uint ClientListPopupHeight()
+	{
+		int num = 0;
 
-	/* If height is changed */
-	if (w->height != CLNWND_OFFSET + num + 1) {
-		// XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1)
-		w->SetDirty();
-		w->widget[3].bottom = w->widget[3].top + num + 2;
-		w->height = CLNWND_OFFSET + num + 1;
-		w->SetDirty();
-		return false;
-	}
-	return true;
-}
+		// Find the amount of actions
+		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++) {
+			if (this->action[i][0] == '\0') continue;
+			if (this->proc[i] == NULL) continue;
+			num++;
+		}
 
-/**
- * Finds the amount of actions in the popup and set the height correct
- */
-static uint ClientListPopupHeight()
-{
-	int num = 0;
+		num *= CLNWND_ROWSIZE;
 
-	// Find the amount of actions
-	for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++) {
-		if (_clientlist_action[i][0] == '\0') continue;
-		if (_clientlist_proc[i] == NULL) continue;
-		num++;
+		return num + 1;
 	}
 
-	num *= CLNWND_ROWSIZE;
 
-	return num + 1;
-}
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
+
+		/* Draw the actions */
+		int sel = this->sel_index;
+		int y = 1;
+		for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++, y += CLNWND_ROWSIZE) {
+			if (this->action[i][0] == '\0') continue;
+			if (this->proc[i] == NULL) continue;
+
+			TextColour colour;
+			if (sel-- == 0) { // Selected item, highlight it
+				GfxFillRect(1, y, 150 - 2, y + CLNWND_ROWSIZE - 1, 0);
+				colour = TC_WHITE;
+			} else {
+				colour = TC_BLACK;
+			}
+
+			DoDrawString(this->action[i], 4, y, colour);
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		/* We selected an action */
+		int index = (_cursor.pos.y - this->top) / CLNWND_ROWSIZE;
+
+		if (_left_button_down) {
+			if (index == -1 || index == this->sel_index) return;
+
+			this->sel_index = index;
+			this->SetDirty();
+		} else {
+			if (index >= 0 && _cursor.pos.y >= this->top) {
+				HandleClientListPopupClick(index);
+			}
+
+			DeleteWindowById(WC_TOOLBAR_MENU, 0);
+		}
+	}
+};
 
 /**
  * Show the popup (action list)
  */
-static Window *PopupClientList(Window *w, int client_no, int x, int y)
+static void PopupClientList(int client_no, int x, int y)
 {
-	int i;
-	const NetworkClientInfo *ci;
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
-	/* Clean the current actions */
-	for (i = 0; i < MAX_CLIENTLIST_ACTION; i++) {
-		_clientlist_action[i][0] = '\0';
-		_clientlist_proc[i] = NULL;
-	}
+	if (NetworkFindClientInfo(client_no) == NULL) return;
 
-	/*
-	 * Fill the actions this client has.
-	 * Watch is, max 50 chars long!
-	 */
-
-	ci = NetworkFindClientInfo(client_no);
-	if (ci == NULL) return NULL;
-
-	i = 0;
-	if (_network_own_client_index != ci->client_index) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, lastof(_clientlist_action[i]));
-		_clientlist_proc[i++] = &ClientList_SpeakToClient;
-	}
-
-	if (IsValidPlayer(ci->client_playas) || ci->client_playas == PLAYER_SPECTATOR) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(_clientlist_action[i]));
-		_clientlist_proc[i++] = &ClientList_SpeakToCompany;
-	}
-	GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, lastof(_clientlist_action[i]));
-	_clientlist_proc[i++] = &ClientList_SpeakToAll;
-
-	if (_network_own_client_index != ci->client_index) {
-		/* We are no spectator and the player we want to give money to is no spectator and money gifts are allowed */
-		if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas) && _patches.give_money) {
-			GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(_clientlist_action[i]));
-			_clientlist_proc[i++] = &ClientList_GiveMoney;
-		}
-	}
-
-	/* A server can kick clients (but not himself) */
-	if (_network_server && _network_own_client_index != ci->client_index) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_KICK, lastof(_clientlist_action[i]));
-		_clientlist_proc[i++] = &ClientList_Kick;
-
-		sprintf(_clientlist_action[i],"Ban"); // XXX GetString?
-		_clientlist_proc[i++] = &ClientList_Ban;
-	}
-
-	if (i == 0) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_NONE, lastof(_clientlist_action[i]));
-		_clientlist_proc[i++] = &ClientList_None;
-	}
-
-	/* Calculate the height */
-	int h = ClientListPopupHeight();
-
-	/* Allocate the popup */
-	w = new Window(x, y, 150, h + 1, ClientListPopupWndProc, WC_TOOLBAR_MENU, _client_list_popup_widgets);
-	w->widget[0].bottom = w->widget[0].top + h;
-	w->widget[0].right = w->widget[0].left + 150;
-
-	w->flags4 &= ~WF_WHITE_BORDER_MASK;
-	WP(w, menu_d).item_count = 0;
-	// Save our client
-	WP(w, menu_d).main_button = client_no;
-	WP(w, menu_d).sel_index = 0;
-
-	return w;
-}
-
-/** Main handle for the client popup list
- * uses menu_d WP macro */
-static void ClientListPopupWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			DrawWindowWidgets(w);
-
-			/* Draw the actions */
-			int sel = WP(w, menu_d).sel_index;
-			int y = 1;
-			for (int i = 0; i < MAX_CLIENTLIST_ACTION; i++, y += CLNWND_ROWSIZE) {
-				if (_clientlist_action[i][0] == '\0') continue;
-				if (_clientlist_proc[i] == NULL) continue;
-
-				TextColour colour;
-				if (sel-- == 0) { // Selected item, highlight it
-					GfxFillRect(1, y, 150 - 2, y + CLNWND_ROWSIZE - 1, 0);
-					colour = TC_WHITE;
-				} else {
-					colour = TC_BLACK;
-				}
-
-				DoDrawString(_clientlist_action[i], 4, y, colour);
-			}
-		} break;
-
-		case WE_MOUSELOOP: {
-			/* We selected an action */
-			int index = (_cursor.pos.y - w->top) / CLNWND_ROWSIZE;
-
-			if (_left_button_down) {
-				if (index == -1 || index == WP(w, menu_d).sel_index) return;
-
-				WP(w, menu_d).sel_index = index;
-				w->SetDirty();
-			} else {
-				if (index >= 0 && _cursor.pos.y >= w->top) {
-					HandleClientListPopupClick(index, WP(w, menu_d).main_button);
-				}
-
-				DeleteWindowById(WC_TOOLBAR_MENU, 0);
-			}
-		} break;
-	}
+	new NetworkClientListPopupWindow(x, y, _client_list_popup_widgets, client_no);
 }
 
 /**
  * Main handle for clientlist
  */
-static void ClientListWndProc(Window *w, WindowEvent *e)
+struct NetworkClientListWindow : Window
 {
-	switch (e->event) {
-		case WE_PAINT: {
-			NetworkClientInfo *ci;
-			int i = 0;
+	byte selected_item;
+	byte selected_y;
 
-			/* Check if we need to reset the height */
-			if (!CheckClientListHeight(w)) break;
-
-			DrawWindowWidgets(w);
-
-			int y = CLNWND_OFFSET;
-
-			FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-				TextColour colour;
-				if (_selected_clientlist_item == i++) { // Selected item, highlight it
-					GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);
-					colour = TC_WHITE;
-				} else {
-					colour = TC_BLACK;
-				}
-
-				if (ci->client_index == NETWORK_SERVER_INDEX) {
-					DrawString(4, y, STR_NETWORK_SERVER, colour);
-				} else {
-					DrawString(4, y, STR_NETWORK_CLIENT, colour);
-				}
-
-				/* Filter out spectators */
-				if (IsValidPlayer(ci->client_playas)) DrawPlayerIcon(ci->client_playas, 64, y + 1);
-
-				DoDrawString(ci->client_name, 81, y, colour);
-
-				y += CLNWND_ROWSIZE;
-			}
-		} break;
-
-		case WE_CLICK:
-			/* Show the popup with option */
-			if (_selected_clientlist_item != 255) {
-				PopupClientList(w, _selected_clientlist_item, e->we.click.pt.x + w->left, e->we.click.pt.y + w->top);
-			}
-			break;
-
-		case WE_MOUSEOVER:
-			/* -1 means we left the current window */
-			if (e->we.mouseover.pt.y == -1) {
-				_selected_clientlist_y = 0;
-				_selected_clientlist_item = 255;
-				w->SetDirty();
-				break;
-			}
-			/* It did not change.. no update! */
-			if (e->we.mouseover.pt.y == _selected_clientlist_y) break;
-
-			/* Find the new selected item (if any) */
-			_selected_clientlist_y = e->we.mouseover.pt.y;
-			if (e->we.mouseover.pt.y > CLNWND_OFFSET) {
-				_selected_clientlist_item = (e->we.mouseover.pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
-			} else {
-				_selected_clientlist_item = 255;
-			}
-
-			/* Repaint */
-			w->SetDirty();
-			break;
-
-		case WE_DESTROY: case WE_CREATE:
-			/* When created or destroyed, data is reset */
-			_selected_clientlist_item = 255;
-			_selected_clientlist_y = 0;
-			break;
+	NetworkClientListWindow(const WindowDesc *desc, WindowNumber window_number) :
+			Window(desc, window_number),
+			selected_item(0),
+			selected_y(255)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	/**
+	 * Finds the amount of clients and set the height correct
+	 */
+	bool CheckClientListHeight()
+	{
+		int num = 0;
+		const NetworkClientInfo *ci;
+
+		/* Should be replaced with a loop through all clients */
+		FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+			num++;
+		}
+
+		num *= CLNWND_ROWSIZE;
+
+		/* If height is changed */
+		if (this->height != CLNWND_OFFSET + num + 1) {
+			// XXX - magic unfortunately; (num + 2) has to be one bigger than heigh (num + 1)
+			this->SetDirty();
+			this->widget[3].bottom = this->widget[3].top + num + 2;
+			this->height = CLNWND_OFFSET + num + 1;
+			this->SetDirty();
+			return false;
+		}
+		return true;
+	}
+
+	virtual void OnPaint()
+	{
+		NetworkClientInfo *ci;
+		int i = 0;
+
+		/* Check if we need to reset the height */
+		if (!this->CheckClientListHeight()) return;
+
+		DrawWindowWidgets(this);
+
+		int y = CLNWND_OFFSET;
+
+		FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+			TextColour colour;
+			if (this->selected_item == i++) { // Selected item, highlight it
+				GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);
+				colour = TC_WHITE;
+			} else {
+				colour = TC_BLACK;
+			}
+
+			if (ci->client_index == NETWORK_SERVER_INDEX) {
+				DrawString(4, y, STR_NETWORK_SERVER, colour);
+			} else {
+				DrawString(4, y, STR_NETWORK_CLIENT, colour);
+			}
+
+			/* Filter out spectators */
+			if (IsValidPlayer(ci->client_playas)) DrawPlayerIcon(ci->client_playas, 64, y + 1);
+
+			DoDrawString(ci->client_name, 81, y, colour);
+
+			y += CLNWND_ROWSIZE;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		/* Show the popup with option */
+		if (this->selected_item != 255) {
+			PopupClientList(this->selected_item, pt.x + this->left, pt.y + this->top);
+		}
+	}
+
+	virtual void OnMouseOver(Point pt, int widget)
+	{
+		/* -1 means we left the current window */
+		if (pt.y == -1) {
+			this->selected_y = 0;
+			this->selected_item = 255;
+			this->SetDirty();
+			return;
+		}
+		/* It did not change.. no update! */
+		if (pt.y == this->selected_y) return;
+
+		/* Find the new selected item (if any) */
+		this->selected_y = pt.y;
+		if (pt.y > CLNWND_OFFSET) {
+			this->selected_item = (pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
+		} else {
+			this->selected_item = 255;
+		}
+
+		/* Repaint */
+		this->SetDirty();
+	}
+};
 
 void ShowClientList()
 {
-	AllocateWindowDescFront<Window>(&_client_list_desc, 0);
+	AllocateWindowDescFront<NetworkClientListWindow>(&_client_list_desc, 0);
 }
 
 

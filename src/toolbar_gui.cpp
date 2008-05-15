@@ -78,13 +78,13 @@ static Point GetToolbarDropdownPos(uint16 parent_button, int width, int height)
 }
 
 /**
- * In a window with menu_d custom extension, retrieve the menu item number from a position
+ * Retrieve the menu item number from a position
  * @param w Window holding the menu items
  * @param x X coordinate of the position
  * @param y Y coordinate of the position
  * @return Index number of the menu item, or \c -1 if no valid selection under position
  */
-static int GetMenuItemIndex(const Window *w)
+static int GetMenuItemIndex(const Window *w, int item_count, int disabled_items)
 {
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
@@ -92,8 +92,8 @@ static int GetMenuItemIndex(const Window *w)
 	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
 		y /= 10;
 
-		if (y < WP(w, const menu_d).item_count &&
-				!HasBit(WP(w, const menu_d).disabled_items, y)) {
+		if (y < item_count &&
+				!HasBit(disabled_items, y)) {
 			return y;
 		}
 	}
@@ -1113,71 +1113,77 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickHelp,        /* 26 */
 };
 
-static void MenuWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			w->widget[0].right = w->width - 1;
-			break;
+struct ToolbarMenuWindow : Window {
+	int item_count;
+	int sel_index;
+	int main_button;
+	int action_id;
+	int checked_items;
+	int disabled_items;
+	StringID base_string;
 
-		case WE_PAINT: {
-			byte count = WP(w, menu_d).item_count;
-			byte sel = WP(w, menu_d).sel_index;
-			uint16 chk = WP(w, menu_d).checked_items;
-			StringID string = WP(w, menu_d).string_id;
-			byte dis = WP(w, menu_d).disabled_items;
+	ToolbarMenuWindow(int x, int y, int width, int height, const Widget *widgets, int item_count,
+										int sel_index, int parent_button, StringID base_string, int checked_items,
+										int disabled_mask) :
+			Window(x, y, width, height, NULL, WC_TOOLBAR_MENU, widgets),
+			item_count(item_count), sel_index(sel_index), main_button(GB(parent_button, 0, 8)),
+			action_id((GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button),
+			checked_items(checked_items), disabled_items(disabled_items), base_string(base_string)
+	{
+		this->widget[0].bottom = item_count * 10 + 1;
+		this->widget[0].right = this->width - 1;
+		this->flags4 &= ~WF_WHITE_BORDER_MASK;
 
-			DrawWindowWidgets(w);
-
-			int x = 1;
-			int y = 1;
-
-			for (; count != 0; count--, string++, sel--) {
-				TextColour color = HasBit(dis, 0) ? TC_GREY : (sel == 0) ? TC_WHITE : TC_BLACK;
-				if (sel == 0) GfxFillRect(x, y, x + w->width - 3, y + 9, 0);
-
-				if (HasBit(chk, 0)) DrawString(x + 2, y, STR_CHECKMARK, color);
-				DrawString(x + 2, y, string, color);
-
-				y += 10;
-				chk >>= 1;
-				dis >>= 1;
-			}
-		} break;
-
-		case WE_DESTROY: {
-				Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-				v->RaiseWidget(WP(w, menu_d).main_button);
-				v->SetDirty();
-				return;
-			}
-
-		case WE_MOUSELOOP: {
-			int index = GetMenuItemIndex(w);
-
-			if (_left_button_down) {
-				if (index == -1 || index == WP(w, menu_d).sel_index) return;
-
-				WP(w, menu_d).sel_index = index;
-				w->SetDirty();
-			} else {
-				if (index < 0) {
-					Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-					if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == WP(w, menu_d).main_button)
-						index = WP(w, menu_d).sel_index;
-				}
-
-				int action_id = WP(w, menu_d).action_id;
-				delete w;
-
-				if (index >= 0) {
-					assert((uint)index <= lengthof(_menu_clicked_procs));
-					_menu_clicked_procs[action_id](index);
-				}
-			}
-		} break;
+		this->FindWindowPlacementAndResize(width, height);
 	}
-}
+
+	~ToolbarMenuWindow()
+	{
+		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		w->RaiseWidget(this->main_button);
+		w->SetDirty();
+	}
+
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
+
+		for (int i = 0, x = 1, y = 1; i != this->item_count; i++, y += 10) {
+			TextColour color = HasBit(this->disabled_items, i) ? TC_GREY : (this->sel_index == i) ? TC_WHITE : TC_BLACK;
+			if (this->sel_index == i) GfxFillRect(x, y, x + this->width - 3, y + 9, 0);
+
+			if (HasBit(this->checked_items, i)) DrawString(x + 2, y, STR_CHECKMARK, color);
+			DrawString(x + 2, y, this->base_string + i, color);
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		int index = GetMenuItemIndex(this, this->item_count, this->disabled_items);
+
+		if (_left_button_down) {
+			if (index == -1 || index == this->sel_index) return;
+
+			this->sel_index = index;
+			this->SetDirty();
+		} else {
+			if (index < 0) {
+				Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
+				if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) == this->main_button) {
+					index = this->sel_index;
+				}
+			}
+
+			int action_id = this->action_id;
+			delete this;
+
+			if (index >= 0) {
+				assert((uint)index <= lengthof(_menu_clicked_procs));
+				_menu_clicked_procs[action_id](index);
+			}
+		}
+	}
+};
 
 /* Dynamic widget length determined by toolbar-string length.
  * See PopupMainToolbMenu en MenuWndProc */
@@ -1248,17 +1254,7 @@ static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID ba
 
 	Point pos = GetToolbarDropdownPos(parent_button, width, height);
 
-	Window *w = new Window(pos.x, pos.y, width, height, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
-	w->widget[0].bottom = item_count * 10 + 1;
-	w->flags4 &= ~WF_WHITE_BORDER_MASK;
-
-	WP(w, menu_d).item_count = item_count;
-	WP(w, menu_d).sel_index = sel_index;
-	WP(w, menu_d).main_button = GB(parent_button, 0, 8);
-	WP(w, menu_d).action_id = (GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button;
-	WP(w, menu_d).string_id = base_string;
-	WP(w, menu_d).checked_items = checked_items;
-	WP(w, menu_d).disabled_items = disabled_mask;
+	new ToolbarMenuWindow(pos.x, pos.y, width, height, _menu_widgets, item_count, sel_index, parent_button, base_string, checked_items, disabled_mask);
 
 	SndPlayFx(SND_15_BEEP);
 }
@@ -1276,119 +1272,141 @@ static int GetPlayerIndexFromMenu(int index)
 	return -1;
 }
 
-static void UpdatePlayerMenuHeight(Window *w)
-{
-	byte num = ActivePlayerCount();
+struct ToolbarPlayerMenuWindow : Window {
+	int item_count;
+	int sel_index;
+	int main_button;
+	int action_id;
+	int gray_items;
 
-	/* Increase one to fit in PlayerList in the menu when in network */
-	if (_networking && WP(w, menu_d).main_button == 9) num++;
+	ToolbarPlayerMenuWindow(int x, int y, int width, int height, const Widget *widgets, int main_button, int gray) :
+			Window(x, y, width, height, NULL, WC_TOOLBAR_MENU, widgets),
+			item_count(0), main_button(main_button), action_id(main_button), gray_items(gray)
+	{
+		this->flags4 &= ~WF_WHITE_BORDER_MASK;
+		this->sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
+		if (_networking && main_button == 9) {
+			if (_local_player != PLAYER_SPECTATOR) {
+				this->sel_index++;
+			} else {
+				/* Select client list by default for spectators */
+				this->sel_index = 0;
+			}
+		}
+	}
 
-	if (WP(w, menu_d).item_count != num) {
-		WP(w, menu_d).item_count = num;
-		w->SetDirty();
-		num = num * 10 + 2;
-		w->height = num;
-		w->widget[0].bottom = w->widget[0].top + num - 1;
-		w->top = GetToolbarDropdownPos(0, w->width, w->height).y;
+	~ToolbarPlayerMenuWindow()
+	{
+		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		w->RaiseWidget(this->main_button);
 		w->SetDirty();
 	}
-}
 
-static void PlayerMenuWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			UpdatePlayerMenuHeight(w);
-			DrawWindowWidgets(w);
+	void UpdatePlayerMenuHeight()
+	{
+		byte num = ActivePlayerCount();
 
-			int x = 1;
-			int y = 1;
-			int sel = WP(w, menu_d).sel_index;
-			int chk = WP(w, menu_d).checked_items; // let this mean gray items.
+		/* Increase one to fit in PlayerList in the menu when in network */
+		if (_networking && this->main_button == 9) num++;
 
-			/* 9 = playerlist */
-			if (_networking && WP(w, menu_d).main_button == 9) {
-				if (sel == 0) {
-					GfxFillRect(x, y, x + 238, y + 9, 0);
-				}
-				DrawString(x + 19, y, STR_NETWORK_CLIENT_LIST, TC_FROMSTRING);
-				y += 10;
-				sel--;
+		if (this->item_count != num) {
+			this->item_count = num;
+			this->SetDirty();
+			num = num * 10 + 2;
+			this->height = num;
+			this->widget[0].bottom = this->widget[0].top + num - 1;
+			this->top = GetToolbarDropdownPos(0, this->width, this->height).y;
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnPaint()
+	{
+		this->UpdatePlayerMenuHeight();
+		DrawWindowWidgets(this);
+
+		int x = 1;
+		int y = 1;
+		int sel = this->sel_index;
+		int gray = this->gray_items;
+
+		/* 9 = playerlist */
+		if (_networking && this->main_button == 9) {
+			if (sel == 0) {
+				GfxFillRect(x, y, x + 238, y + 9, 0);
 			}
-
-			const Player *p;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					if (p->index == sel) {
-						GfxFillRect(x, y, x + 238, y + 9, 0);
-					}
-
-					DrawPlayerIcon(p->index, x + 2, y + 1);
-
-					SetDParam(0, p->index);
-					SetDParam(1, p->index);
-
-					TextColour color = (p->index == sel) ? TC_WHITE : TC_BLACK;
-					if (chk & 1) color = TC_GREY;
-					DrawString(x + 19, y, STR_7021, color);
-
-					y += 10;
-				}
-				chk >>= 1;
-			}
-		 } break;
-
-		case WE_DESTROY: {
-			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-			v->RaiseWidget(WP(w, menu_d).main_button);
-			v->SetDirty();
-			return;
+			DrawString(x + 19, y, STR_NETWORK_CLIENT_LIST, TC_FROMSTRING);
+			y += 10;
+			sel--;
 		}
 
-		case WE_MOUSELOOP: {
-			int index = GetMenuItemIndex(w);
-
-			if (_left_button_down) {
-				UpdatePlayerMenuHeight(w);
-				/* We have a new entry at the top of the list of menu 9 when networking
-				 * so keep that in count */
-				if (_networking && WP(w, menu_d).main_button == 9) {
-					if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
-				} else {
-					index = GetPlayerIndexFromMenu(index);
+		const Player *p;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) {
+				if (p->index == sel) {
+					GfxFillRect(x, y, x + 238, y + 9, 0);
 				}
 
-				if (index == -1 || index == WP(w, menu_d).sel_index) return;
+				DrawPlayerIcon(p->index, x + 2, y + 1);
 
-				WP(w, menu_d).sel_index = index;
-				w->SetDirty();
+				SetDParam(0, p->index);
+				SetDParam(1, p->index);
+
+				TextColour color = (p->index == sel) ? TC_WHITE : TC_BLACK;
+				if (gray & 1) color = TC_GREY;
+				DrawString(x + 19, y, STR_7021, color);
+
+				y += 10;
+			}
+			gray >>= 1;
+		}
+	}
+
+	virtual void OnMouseLoop()
+	{
+		int index = GetMenuItemIndex(this, this->item_count, 0);
+
+		if (_left_button_down) {
+			this->UpdatePlayerMenuHeight();
+			/* We have a new entry at the top of the list of menu 9 when networking
+				* so keep that in count */
+			if (_networking && this->main_button == 9) {
+				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 			} else {
-				int action_id = WP(w, menu_d).action_id;
+				index = GetPlayerIndexFromMenu(index);
+			}
 
-				/* We have a new entry at the top of the list of menu 9 when networking
-				 * so keep that in count */
-				if (_networking && WP(w, menu_d).main_button == 9) {
-					if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
-				} else {
-					index = GetPlayerIndexFromMenu(index);
-				}
+			if (index == -1 || index == this->sel_index) return;
 
-				if (index < 0) {
-					Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-					if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == WP(w, menu_d).main_button)
-						index = WP(w, menu_d).sel_index;
-				}
+			this->sel_index = index;
+			this->SetDirty();
+		} else {
+			int action_id = this->action_id;
 
-				delete w;
+			/* We have a new entry at the top of the list of menu 9 when networking
+				* so keep that in count */
+			if (_networking && this->main_button == 9) {
+				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
+			} else {
+				index = GetPlayerIndexFromMenu(index);
+			}
 
-				if (index >= 0) {
-					assert(index >= 0 && index < 30);
-					_menu_clicked_procs[action_id](index);
+			if (index < 0) {
+				Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
+				if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) == this->main_button) {
+					index = this->sel_index;
 				}
 			}
-		} break;
+
+			delete this;
+
+			if (index >= 0) {
+				assert(index >= 0 && index < 30);
+				_menu_clicked_procs[action_id](index);
+			}
+		}
 	}
-}
+};
 
 static const Widget _player_menu_widgets[] = {
 {    WWT_PANEL, RESIZE_NONE, 14, 0, 240, 0, 81, 0x0, STR_NULL},
@@ -1402,22 +1420,7 @@ static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray)
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	Point pos = GetToolbarDropdownPos(main_button, 241, 82);
-	Window *w = new Window(pos.x, pos.y, 241, 82, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
-	w->flags4 &= ~WF_WHITE_BORDER_MASK;
-	WP(w, menu_d).item_count = 0;
-	WP(w, menu_d).sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
-	if (_networking && main_button == 9) {
-		if (_local_player != PLAYER_SPECTATOR) {
-			WP(w, menu_d).sel_index++;
-		} else {
-			/* Select client list by default for spectators */
-			WP(w, menu_d).sel_index = 0;
-		}
-	}
-	WP(w, menu_d).action_id = main_button;
-	WP(w, menu_d).main_button = main_button;
-	WP(w, menu_d).checked_items = gray;
-	WP(w, menu_d).disabled_items = 0;
+	new ToolbarPlayerMenuWindow(pos.x, pos.y, 241, 82, _player_menu_widgets, main_button, gray);
 
 	SndPlayFx(SND_15_BEEP);
 }

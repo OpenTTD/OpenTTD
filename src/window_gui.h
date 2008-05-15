@@ -515,17 +515,6 @@ public:
 	/*** End of the event handling ***/
 };
 
-struct menu_d {
-	byte item_count;      ///< follow_vehicle
-	byte sel_index;       ///< scrollpos_x
-	byte main_button;     ///< scrollpos_y
-	byte action_id;
-	StringID string_id;   ///< unk30
-	uint16 checked_items; ///< unk32
-	byte disabled_items;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(menu_d));
-
 struct def_d {
 	int16 data_1, data_2, data_3;
 };
