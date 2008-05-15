@@ -850,228 +850,232 @@ enum PatchesSelectionWidgets {
 	PATCHSEL_COMPETITORS
 };
 
-/** The main patches window. Shows a number of categories on top and
- * a selection of patches in that category.
- * Uses WP(w, def_d) macro - data_1, data_2, data_3 */
-static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
-{
+struct PatchesSelectionWindow : Window {
 	static Patches *patches_ptr;
-	static int patches_max = 0;
+	static int patches_max;
 
-	switch (e->event) {
-		case WE_CREATE: {
-			static bool first_time = true;
+	int page;
+	int entry;
+	int click;
 
-			patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
+	PatchesSelectionWindow(const WindowDesc *desc) : Window(desc)
+	{
+		static bool first_time = true;
 
-			/* Build up the dynamic settings-array only once per OpenTTD session */
-			if (first_time) {
-				PatchPage *page;
-				for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
-					uint i;
+		patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 
-					if (patches_max < page->num) patches_max = page->num;
+		/* Build up the dynamic settings-array only once per OpenTTD session */
+		if (first_time) {
+			PatchPage *page;
+			for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
+				uint i;
 
-					page->entries = MallocT<PatchEntry>(page->num);
-					for (i = 0; i != page->num; i++) {
-						uint index;
-						const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
-						assert(sd != NULL);
+				if (patches_max < page->num) patches_max = page->num;
 
-						page->entries[i].setting = sd;
-						page->entries[i].index = index;
-					}
+				page->entries = MallocT<PatchEntry>(page->num);
+				for (i = 0; i != page->num; i++) {
+					uint index;
+					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
+					assert(sd != NULL);
+
+					page->entries[i].setting = sd;
+					page->entries[i].index = index;
 				}
-				first_time = false;
 			}
+			first_time = false;
+		}
 
-			/* Resize the window to fit the largest patch tab */
-			ResizeWindowForWidget(w, PATCHSEL_OPTIONSPANEL, 0, patches_max * 11);
+		/* Resize the window to fit the largest patch tab */
+		ResizeWindowForWidget(this, PATCHSEL_OPTIONSPANEL, 0, patches_max * 11);
 
-			/* Recentre the window for the new size */
-			w->top = w->top - (patches_max * 11) / 2;
+		/* Recentre the window for the new size */
+		this->top = this->top - (patches_max * 11) / 2;
 
-			w->LowerWidget(4);
-		} break;
+		this->LowerWidget(4);
 
-		case WE_PAINT: {
-			int x, y;
-			const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
-			uint i;
-
-			/* Set up selected category */
-			DrawWindowWidgets(w);
-
-			x = 5;
-			y = 47;
-			for (i = 0; i != page->num; i++) {
-				const SettingDesc *sd = page->entries[i].setting;
-				const SettingDescBase *sdb = &sd->desc;
-				const void *var = GetVariableAddress(patches_ptr, &sd->save);
-				bool editable = true;
-				bool disabled = false;
-
-				// We do not allow changes of some items when we are a client in a networkgame
-				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
-				if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
-				if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
-
-				if (sdb->cmd == SDT_BOOLX) {
-					static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
-					/* Draw checkbox for boolean-value either on/off */
-					bool on = (*(bool*)var);
-
-					DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
-					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-				} else {
-					int32 value;
-
-					value = (int32)ReadValue(var, sd->save.conv);
-
-					/* Draw [<][>] boxes for settings of an integer-type */
-					DrawArrowButtons(x, y, 3, WP(w, def_d).data_2 - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
-
-					disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
-					if (disabled) {
-						SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
-					} else {
-						if (sdb->flags & SGF_CURRENCY) {
-							SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
-						} else if (sdb->flags & SGF_MULTISTRING) {
-							SetDParam(0, sdb->str + value + 1);
-						} else {
-							SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
-						}
-						SetDParam(1, value);
-					}
-				}
-				DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
-				y += 11;
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case PATCHSEL_OPTIONSPANEL: {
-					const PatchPage *page = &_patches_page[WP(w, def_d).data_1];
-					const SettingDesc *sd;
-					void *var;
-					int32 value;
-					int x, y;
-					byte btn;
-
-					y = e->we.click.pt.y - 46 - 1;
-					if (y < 0) return;
-
-					x = e->we.click.pt.x - 5;
-					if (x < 0) return;
-
-					btn = y / 11;
-					if (y % 11 > 9) return;
-					if (btn >= page->num) return;
-
-					sd = page->entries[btn].setting;
-
-					/* return if action is only active in network, or only settable by server */
-					if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
-					if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
-					if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
-
-					var = GetVariableAddress(patches_ptr, &sd->save);
-					value = (int32)ReadValue(var, sd->save.conv);
-
-					/* clicked on the icon on the left side. Either scroller or bool on/off */
-					if (x < 21) {
-						const SettingDescBase *sdb = &sd->desc;
-						int32 oldvalue = value;
-
-						switch (sdb->cmd) {
-						case SDT_BOOLX: value ^= 1; break;
-						case SDT_NUMX: {
-							/* Add a dynamic step-size to the scroller. In a maximum of
-							 * 50-steps you should be able to get from min to max,
-							 * unless specified otherwise in the 'interval' variable
-							 * of the current patch. */
-							uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
-							if (step == 0) step = 1;
-
-							// don't allow too fast scrolling
-							if ((w->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
-								_left_button_clicked = false;
-								return;
-							}
-
-							/* Increase or decrease the value and clamp it to extremes */
-							if (x >= 10) {
-								value += step;
-								if (value > sdb->max) value = sdb->max;
-							} else {
-								value -= step;
-								if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
-							}
-
-							/* Set up scroller timeout for numeric values */
-							if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
-								WP(w, def_d).data_2 = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
-								w->flags4 |= 5 << WF_TIMEOUT_SHL;
-								_left_button_clicked = false;
-							}
-						} break;
-						default: NOT_REACHED();
-						}
-
-						if (value != oldvalue) {
-							SetPatchValue(page->entries[btn].index, patches_ptr, value);
-							w->SetDirty();
-						}
-					} else {
-						/* only open editbox for types that its sensible for */
-						if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
-							/* Show the correct currency-translated value */
-							if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
-
-							WP(w, def_d).data_3 = btn;
-							SetDParam(0, value);
-							ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, w, CS_NUMERAL);
-						}
-					}
-				} break;
-
-				case PATCHSEL_INTERFACE: case PATCHSEL_CONSTRUCTION: case PATCHSEL_VEHICLES:
-				case PATCHSEL_STATIONS:  case PATCHSEL_ECONOMY:      case PATCHSEL_COMPETITORS:
-					w->RaiseWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
-					WP(w, def_d).data_1 = e->we.click.widget - PATCHSEL_INTERFACE;
-					w->LowerWidget(WP(w, def_d).data_1 + PATCHSEL_INTERFACE);
-					DeleteWindowById(WC_QUERY_STRING, 0);
-					w->SetDirty();
-					break;
-			}
-			break;
-
-		case WE_TIMEOUT:
-			WP(w, def_d).data_2 = 0;
-			w->SetDirty();
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				const PatchEntry *pe = &_patches_page[WP(w, def_d).data_1].entries[WP(w, def_d).data_3];
-				const SettingDesc *sd = pe->setting;
-				int32 value = atoi(e->we.edittext.str);
-
-				/* Save the correct currency-translated value */
-				if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
-
-				SetPatchValue(pe->index, patches_ptr, value);
-				w->SetDirty();
-			}
-			break;
-
-		case WE_DESTROY:
-			DeleteWindowById(WC_QUERY_STRING, 0);
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		int x, y;
+		const PatchPage *page = &_patches_page[this->page];
+		uint i;
+
+		/* Set up selected category */
+		DrawWindowWidgets(this);
+
+		x = 5;
+		y = 47;
+		for (i = 0; i != page->num; i++) {
+			const SettingDesc *sd = page->entries[i].setting;
+			const SettingDescBase *sdb = &sd->desc;
+			const void *var = GetVariableAddress(patches_ptr, &sd->save);
+			bool editable = true;
+			bool disabled = false;
+
+			// We do not allow changes of some items when we are a client in a networkgame
+			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
+			if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
+			if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
+
+			if (sdb->cmd == SDT_BOOLX) {
+				static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
+				/* Draw checkbox for boolean-value either on/off */
+				bool on = (*(bool*)var);
+
+				DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
+				SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+			} else {
+				int32 value;
+
+				value = (int32)ReadValue(var, sd->save.conv);
+
+				/* Draw [<][>] boxes for settings of an integer-type */
+				DrawArrowButtons(x, y, 3, this->click - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
+
+				disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
+				if (disabled) {
+					SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
+				} else {
+					if (sdb->flags & SGF_CURRENCY) {
+						SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
+					} else if (sdb->flags & SGF_MULTISTRING) {
+						SetDParam(0, sdb->str + value + 1);
+					} else {
+						SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+					}
+					SetDParam(1, value);
+				}
+			}
+			DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
+			y += 11;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case PATCHSEL_OPTIONSPANEL: {
+				const PatchPage *page = &_patches_page[this->page];
+				const SettingDesc *sd;
+				void *var;
+				int32 value;
+				int x, y;
+				byte btn;
+
+				y = pt.y - 46 - 1;
+				if (y < 0) return;
+
+				x = pt.x - 5;
+				if (x < 0) return;
+
+				btn = y / 11;
+				if (y % 11 > 9) return;
+				if (btn >= page->num) return;
+
+				sd = page->entries[btn].setting;
+
+				/* return if action is only active in network, or only settable by server */
+				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
+				if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
+				if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
+
+				var = GetVariableAddress(patches_ptr, &sd->save);
+				value = (int32)ReadValue(var, sd->save.conv);
+
+				/* clicked on the icon on the left side. Either scroller or bool on/off */
+				if (x < 21) {
+					const SettingDescBase *sdb = &sd->desc;
+					int32 oldvalue = value;
+
+					switch (sdb->cmd) {
+					case SDT_BOOLX: value ^= 1; break;
+					case SDT_NUMX: {
+						/* Add a dynamic step-size to the scroller. In a maximum of
+							* 50-steps you should be able to get from min to max,
+							* unless specified otherwise in the 'interval' variable
+							* of the current patch. */
+						uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
+						if (step == 0) step = 1;
+
+						// don't allow too fast scrolling
+						if ((this->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
+							_left_button_clicked = false;
+							return;
+						}
+
+						/* Increase or decrease the value and clamp it to extremes */
+						if (x >= 10) {
+							value += step;
+							if (value > sdb->max) value = sdb->max;
+						} else {
+							value -= step;
+							if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
+						}
+
+						/* Set up scroller timeout for numeric values */
+						if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
+							this->click = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
+							this->flags4 |= 5 << WF_TIMEOUT_SHL;
+							_left_button_clicked = false;
+						}
+					} break;
+					default: NOT_REACHED();
+					}
+
+					if (value != oldvalue) {
+						SetPatchValue(page->entries[btn].index, patches_ptr, value);
+						this->SetDirty();
+					}
+				} else {
+					/* only open editbox for types that its sensible for */
+					if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+						/* Show the correct currency-translated value */
+						if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
+
+						this->entry = btn;
+						SetDParam(0, value);
+						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL);
+					}
+				}
+			} break;
+
+			case PATCHSEL_INTERFACE: case PATCHSEL_CONSTRUCTION: case PATCHSEL_VEHICLES:
+			case PATCHSEL_STATIONS:  case PATCHSEL_ECONOMY:      case PATCHSEL_COMPETITORS:
+				this->RaiseWidget(this->page + PATCHSEL_INTERFACE);
+				this->page = widget - PATCHSEL_INTERFACE;
+				this->LowerWidget(this->page + PATCHSEL_INTERFACE);
+				DeleteWindowById(WC_QUERY_STRING, 0);
+				this->SetDirty();
+				break;
+		}
+	}
+
+	virtual void OnTimeout()
+	{
+		this->click = 0;
+		this->SetDirty();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			const PatchEntry *pe = &_patches_page[this->page].entries[this->entry];
+			const SettingDesc *sd = pe->setting;
+			int32 value = atoi(str);
+
+			/* Save the correct currency-translated value */
+			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
+
+			SetPatchValue(pe->index, patches_ptr, value);
+			this->SetDirty();
+		}
+	}
+};
+
+Patches *PatchesSelectionWindow::patches_ptr = NULL;
+int PatchesSelectionWindow::patches_max = 0;
 
 static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
@@ -1093,13 +1097,13 @@ static const WindowDesc _patches_selection_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_patches_selection_widgets,
-	PatchesSelectionWndProc,
+	NULL,
 };
 
 void ShowPatchesSelection()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	new Window(&_patches_selection_desc);
+	new PatchesSelectionWindow(&_patches_selection_desc);
 }
 
 
@@ -1139,176 +1143,178 @@ enum CustomCurrenciesWidgets {
 	CUSTCURR_TO_EURO,
 };
 
-static char _str_separator[2];
+struct CustomCurrencyWindow : Window {
+	char separator[2];
+	int click;
+	int query_widget;
 
-static void CustCurrencyWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			int x;
-			int y = 20;
-			int clk = WP(w, def_d).data_1;
-			DrawWindowWidgets(w);
-
-			/* exchange rate */
-			DrawArrowButtons(10, y, 3, GB(clk, 0, 2), true, true);
-			SetDParam(0, 1);
-			SetDParam(1, 1);
-			DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
-			y += 12;
-
-			/* separator */
-			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 2, 2) ? FR_LOWERED : FR_NONE);
-			x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
-			DoDrawString(_str_separator, x + 4, y + 1, TC_ORANGE);
-			y += 12;
-
-			/* prefix */
-			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 4, 2) ? FR_LOWERED : FR_NONE);
-			x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
-			DoDrawString(_custom_currency.prefix, x + 4, y + 1, TC_ORANGE);
-			y += 12;
-
-			/* suffix */
-			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 6, 2) ? FR_LOWERED : FR_NONE);
-			x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
-			DoDrawString(_custom_currency.suffix, x + 4, y + 1, TC_ORANGE);
-			y += 12;
-
-			/* switch to euro */
-			DrawArrowButtons(10, y, 3, GB(clk, 8, 2), true, true);
-			SetDParam(0, _custom_currency.to_euro);
-			DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
-			y += 12;
-
-			/* Preview */
-			y += 12;
-			SetDParam(0, 10000);
-			DrawString(35, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
-		} break;
-
-		case WE_CLICK: {
-			int line = (e->we.click.pt.y - 20) / 12;
-			int len = 0;
-			int x = e->we.click.pt.x;
-			StringID str = 0;
-			CharSetFilter afilter = CS_ALPHANUMERAL;
-
-			switch (line) {
-				case CUSTCURR_EXCHANGERATE:
-					if (IsInsideMM(x, 10, 30)) { // clicked buttons
-						if (x < 20) {
-							if (_custom_currency.rate > 1) _custom_currency.rate--;
-							WP(w, def_d).data_1 = 1 << (line * 2 + 0);
-						} else {
-							if (_custom_currency.rate < 5000) _custom_currency.rate++;
-							WP(w, def_d).data_1 = 1 << (line * 2 + 1);
-						}
-					} else { // enter text
-						SetDParam(0, _custom_currency.rate);
-						str = STR_CONFIG_PATCHES_INT32;
-						len = 4;
-						afilter = CS_NUMERAL;
-					}
-					break;
-
-				case CUSTCURR_SEPARATOR:
-					if (IsInsideMM(x, 10, 30)) { // clicked button
-						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
-					}
-					str = BindCString(_str_separator);
-					len = 1;
-					break;
-
-				case CUSTCURR_PREFIX:
-					if (IsInsideMM(x, 10, 30)) { // clicked button
-						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
-					}
-					str = BindCString(_custom_currency.prefix);
-					len = 12;
-					break;
-
-				case CUSTCURR_SUFFIX:
-					if (IsInsideMM(x, 10, 30)) { // clicked button
-						WP(w, def_d).data_1 = 1 << (line * 2 + 1);
-					}
-					str = BindCString(_custom_currency.suffix);
-					len = 12;
-					break;
-
-				case CUSTCURR_TO_EURO:
-					if (IsInsideMM(x, 10, 30)) { // clicked buttons
-						if (x < 20) {
-							_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
-								CF_NOEURO : _custom_currency.to_euro - 1;
-							WP(w, def_d).data_1 = 1 << (line * 2 + 0);
-						} else {
-							_custom_currency.to_euro =
-								Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
-							WP(w, def_d).data_1 = 1 << (line * 2 + 1);
-						}
-					} else { // enter text
-						SetDParam(0, _custom_currency.to_euro);
-						str = STR_CONFIG_PATCHES_INT32;
-						len = 4;
-						afilter = CS_NUMERAL;
-					}
-					break;
-			}
-
-			if (len != 0) {
-				WP(w, def_d).data_2 = line;
-				ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, 250, w, afilter);
-			}
-
-			w->flags4 |= 5 << WF_TIMEOUT_SHL;
-			w->SetDirty();
-		} break;
-
-		case WE_ON_EDIT_TEXT: {
-			if (e->we.edittext.str == NULL) break;
-
-			const char *b = e->we.edittext.str;
-
-			switch (WP(w, def_d).data_2) {
-				case CUSTCURR_EXCHANGERATE:
-					_custom_currency.rate = Clamp(atoi(b), 1, 5000);
-					break;
-
-				case CUSTCURR_SEPARATOR: /* Thousands seperator */
-					_custom_currency.separator = StrEmpty(b) ? ' ' : b[0];
-					ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
-					break;
-
-				case CUSTCURR_PREFIX:
-					ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));
-					break;
-
-				case CUSTCURR_SUFFIX:
-					ttd_strlcpy(_custom_currency.suffix, b, lengthof(_custom_currency.suffix));
-					break;
-
-				case CUSTCURR_TO_EURO: { /* Year to switch to euro */
-					int val = atoi(b);
-
-					_custom_currency.to_euro = (val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));
-					break;
-				}
-			}
-			MarkWholeScreenDirty();
-		} break;
-
-		case WE_TIMEOUT:
-			WP(w, def_d).data_1 = 0;
-			w->SetDirty();
-			break;
-
-		case WE_DESTROY:
-			DeleteWindowById(WC_QUERY_STRING, 0);
-			MarkWholeScreenDirty();
-			break;
+	CustomCurrencyWindow(const WindowDesc *desc) : Window(desc)
+	{
+		this->separator[0] = _custom_currency.separator;
+		this->separator[1] = '\0';
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		int x;
+		int y = 20;
+		DrawWindowWidgets(this);
+
+		/* exchange rate */
+		DrawArrowButtons(10, y, 3, GB(this->click, 0, 2), true, true);
+		SetDParam(0, 1);
+		SetDParam(1, 1);
+		DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
+		y += 12;
+
+		/* separator */
+		DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(this->click, 2, 2) ? FR_LOWERED : FR_NONE);
+		x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
+		DoDrawString(this->separator, x + 4, y + 1, TC_ORANGE);
+		y += 12;
+
+		/* prefix */
+		DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(this->click, 4, 2) ? FR_LOWERED : FR_NONE);
+		x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
+		DoDrawString(_custom_currency.prefix, x + 4, y + 1, TC_ORANGE);
+		y += 12;
+
+		/* suffix */
+		DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(this->click, 6, 2) ? FR_LOWERED : FR_NONE);
+		x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
+		DoDrawString(_custom_currency.suffix, x + 4, y + 1, TC_ORANGE);
+		y += 12;
+
+		/* switch to euro */
+		DrawArrowButtons(10, y, 3, GB(this->click, 8, 2), true, true);
+		SetDParam(0, _custom_currency.to_euro);
+		DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
+		y += 12;
+
+		/* Preview */
+		y += 12;
+		SetDParam(0, 10000);
+		DrawString(35, y + 1, STR_CURRENCY_PREVIEW, TC_FROMSTRING);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		int line = (pt.y - 20) / 12;
+		int len = 0;
+		int x = pt.x;
+		StringID str = 0;
+		CharSetFilter afilter = CS_ALPHANUMERAL;
+
+		switch (line) {
+			case CUSTCURR_EXCHANGERATE:
+				if (IsInsideMM(x, 10, 30)) { // clicked buttons
+					if (x < 20) {
+						if (_custom_currency.rate > 1) _custom_currency.rate--;
+						this->click = 1 << (line * 2 + 0);
+					} else {
+						if (_custom_currency.rate < 5000) _custom_currency.rate++;
+						this->click = 1 << (line * 2 + 1);
+					}
+				} else { // enter text
+					SetDParam(0, _custom_currency.rate);
+					str = STR_CONFIG_PATCHES_INT32;
+					len = 4;
+					afilter = CS_NUMERAL;
+				}
+				break;
+
+			case CUSTCURR_SEPARATOR:
+				if (IsInsideMM(x, 10, 30)) { // clicked button
+					this->click = 1 << (line * 2 + 1);
+				}
+				str = BindCString(this->separator);
+				len = 1;
+				break;
+
+			case CUSTCURR_PREFIX:
+				if (IsInsideMM(x, 10, 30)) { // clicked button
+					this->click = 1 << (line * 2 + 1);
+				}
+				str = BindCString(_custom_currency.prefix);
+				len = 12;
+				break;
+
+			case CUSTCURR_SUFFIX:
+				if (IsInsideMM(x, 10, 30)) { // clicked button
+					this->click = 1 << (line * 2 + 1);
+				}
+				str = BindCString(_custom_currency.suffix);
+				len = 12;
+				break;
+
+			case CUSTCURR_TO_EURO:
+				if (IsInsideMM(x, 10, 30)) { // clicked buttons
+					if (x < 20) {
+						_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
+							CF_NOEURO : _custom_currency.to_euro - 1;
+						this->click = 1 << (line * 2 + 0);
+					} else {
+						_custom_currency.to_euro =
+							Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
+						this->click = 1 << (line * 2 + 1);
+					}
+				} else { // enter text
+					SetDParam(0, _custom_currency.to_euro);
+					str = STR_CONFIG_PATCHES_INT32;
+					len = 4;
+					afilter = CS_NUMERAL;
+				}
+				break;
+		}
+
+		if (len != 0) {
+			this->query_widget = line;
+			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, 250, this, afilter);
+		}
+
+		this->flags4 |= 5 << WF_TIMEOUT_SHL;
+		this->SetDirty();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (str == NULL) return;
+
+		switch (this->query_widget) {
+			case CUSTCURR_EXCHANGERATE:
+				_custom_currency.rate = Clamp(atoi(str), 1, 5000);
+				break;
+
+			case CUSTCURR_SEPARATOR: /* Thousands seperator */
+				_custom_currency.separator = StrEmpty(str) ? ' ' : str[0];
+				ttd_strlcpy(this->separator, str, lengthof(this->separator));
+				break;
+
+			case CUSTCURR_PREFIX:
+				ttd_strlcpy(_custom_currency.prefix, str, lengthof(_custom_currency.prefix));
+				break;
+
+			case CUSTCURR_SUFFIX:
+				ttd_strlcpy(_custom_currency.suffix, str, lengthof(_custom_currency.suffix));
+				break;
+
+			case CUSTCURR_TO_EURO: { /* Year to switch to euro */
+				int val = atoi(str);
+
+				_custom_currency.to_euro = (val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));
+				break;
+			}
+		}
+		MarkWholeScreenDirty();
+	}
+
+	virtual void OnTimeout()
+	{
+		this->click = 0;
+		this->SetDirty();
+	}
+};
 
 static const Widget _cust_currency_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
@@ -1322,14 +1328,11 @@ static const WindowDesc _cust_currency_desc = {
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cust_currency_widgets,
-	CustCurrencyWndProc,
+	NULL,
 };
 
 static void ShowCustCurrency()
 {
-	_str_separator[0] = _custom_currency.separator;
-	_str_separator[1] = '\0';
-
 	DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
-	new Window(&_cust_currency_desc);
+	new CustomCurrencyWindow(&_cust_currency_desc);
 }
