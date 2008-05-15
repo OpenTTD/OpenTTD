@@ -298,27 +298,12 @@ static inline NewsID DecreaseIndex(NewsID i)
 
 /**
  * Add a new newsitem to be shown.
- * @param string String to display, can have special values based on parameter \a display_mode
- * @param display_mode, any of the NewsMode enums (NM_)
- * @param flags any of the NewsFlag enums (NF_)
- * @param type news category, any of the NewsType enums (NT_)
- * @param callback news callback function, any of the NewsCallback enums (DNC_)
+ * @param string String to display
+ * @param subtype news category, any of the NewsSubtype enums (NS_)
  * @param data_a news-specific value based on news type
  * @param data_b news-specific value based on news type
  *
- * @note If the display mode is NM_CALLBACK, special news is shown and parameter
- * \a string has a special meaning.
- *  - For DNC_TRAINAVAIL, DNC_ROADAVAIL, DNC_SHIPAVAIL, DNC_AIRCRAFTAVAIL messages: StringID is
- *    the index of the engine that is shown
- *
- *  - For DNC_BANKRUPCY: bytes 0-3 of StringID contains the player that is in trouble,
- *    and 4-7 contains what kind of bankrupcy message is shown.
- *    @see NewsBankrupcy
- *
- * @see NewsMode
- * @see NewsFlag
- * @see NewsType
- * @see NewsCallback
+ * @see NewsSubype
  */
 void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
 {
