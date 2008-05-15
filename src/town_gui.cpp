@@ -141,140 +141,135 @@ static int GetNthSetBit(uint32 bits, int n)
 	return -1;
 }
 
-static void TownAuthorityWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			const Town *t = GetTown(w->window_number);
-			int numact;
-			uint buttons = GetMaskOfTownActions(&numact, _local_player, t);
+struct TownAuthorityWindow : Window {
+	int sel_index;
 
-			SetVScrollCount(w, numact + 1);
+	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) :
+			Window(desc, window_number), sel_index(-1)
+	{
+		this->vscroll.cap = 5;
 
-			if (WP(w, def_d).data_1 != -1 && !HasBit(buttons, WP(w, def_d).data_1))
-				WP(w, def_d).data_1 = -1;
-
-			w->SetWidgetDisabledState(6, WP(w, def_d).data_1 == -1);
-
-			{
-				int y;
-				const Player *p;
-				int r;
-				StringID str;
-
-				SetDParam(0, w->window_number);
-				DrawWindowWidgets(w);
-
-				DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
-
-				/* Draw list of players */
-				y = 25;
-				FOR_ALL_PLAYERS(p) {
-					if (p->is_active && (HasBit(t->have_ratings, p->index) || t->exclusivity == p->index)) {
-						DrawPlayerIcon(p->index, 2, y);
-
-						SetDParam(0, p->index);
-						SetDParam(1, p->index);
-
-						r = t->ratings[p->index];
-						(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
-						(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
-						(str++,                    r <= RATING_POOR)      || // Poor
-						(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
-						(str++,                    r <= RATING_GOOD)      || // Good
-						(str++,                    r <= RATING_VERYGOOD)  || // Very Good
-						(str++,                    r <= RATING_EXCELLENT) || // Excellent
-						(str++,                    true);                    // Outstanding
-
-						SetDParam(2, str);
-						if (t->exclusivity == p->index) { // red icon for player with exclusive rights
-							DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
-						}
-
-						DrawString(28, y, STR_2024, TC_FROMSTRING);
-						y += 10;
-					}
-				}
-			}
-
-			/* Draw actions list */
-			{
-				int y = 107, i;
-				int pos = w->vscroll.pos;
-
-				if (--pos < 0) {
-					DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
-					y += 10;
-				}
-
-				for (i = 0; buttons; i++, buttons >>= 1) {
-					if (pos <= -5) break; ///< Draw only the 5 fitting lines
-
-					if ((buttons & 1) && --pos < 0) {
-						DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
-						y += 10;
-					}
-				}
-			}
-
-			{
-				int i = WP(w, def_d).data_1;
-
-				if (i != -1) {
-					SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[i]);
-					SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i);
-					DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + i, 313);
-				}
-			}
-
-		} break;
-
-		case WE_DOUBLE_CLICK:
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case TWA_COMMAND_LIST: {
-					const Town *t = GetTown(w->window_number);
-					int y = (e->we.click.pt.y - 0x6B) / 10;
-
-					if (!IsInsideMM(y, 0, 5)) return;
-
-					y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + w->vscroll.pos - 1);
-					if (y >= 0) {
-						WP(w, def_d).data_1 = y;
-						w->SetDirty();
-					}
-					/* Fall through to clicking in case we are double-clicked */
-					if (e->event != WE_DOUBLE_CLICK || y < 0) break;
-				}
-
-				case TWA_EXECUTE:
-					DoCommandP(GetTown(w->window_number)->xy, w->window_number, WP(w, def_d).data_1, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
-					break;
-			}
-			break;
-
-		case WE_100_TICKS:
-			w->SetDirty();
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		const Town *t = GetTown(this->window_number);
+		int numact;
+		uint buttons = GetMaskOfTownActions(&numact, _local_player, t);
+
+		SetVScrollCount(this, numact + 1);
+
+		if (this->sel_index != -1 && !HasBit(buttons, this->sel_index)) {
+			this->sel_index = -1;
+		}
+
+		this->SetWidgetDisabledState(6, this->sel_index == -1);
+
+		SetDParam(0, this->window_number);
+		DrawWindowWidgets(this);
+
+		DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
+
+		/* Draw list of players */
+		int y = 25;
+
+		const Player *p;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active && (HasBit(t->have_ratings, p->index) || t->exclusivity == p->index)) {
+				DrawPlayerIcon(p->index, 2, y);
+
+				SetDParam(0, p->index);
+				SetDParam(1, p->index);
+
+				int r = t->ratings[p->index];
+				StringID str;
+				(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
+				(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
+				(str++,                    r <= RATING_POOR)      || // Poor
+				(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
+				(str++,                    r <= RATING_GOOD)      || // Good
+				(str++,                    r <= RATING_VERYGOOD)  || // Very Good
+				(str++,                    r <= RATING_EXCELLENT) || // Excellent
+				(str++,                    true);                    // Outstanding
+
+				SetDParam(2, str);
+				if (t->exclusivity == p->index) { // red icon for player with exclusive rights
+					DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
+				}
+
+				DrawString(28, y, STR_2024, TC_FROMSTRING);
+				y += 10;
+			}
+		}
+		y = 107;
+		int pos = this->vscroll.pos;
+
+		if (--pos < 0) {
+			DrawString(2, y, STR_2045_ACTIONS_AVAILABLE, TC_FROMSTRING);
+			y += 10;
+		}
+
+		for (int i = 0; buttons; i++, buttons >>= 1) {
+			if (pos <= -5) break; ///< Draw only the 5 fitting lines
+
+			if ((buttons & 1) && --pos < 0) {
+				DrawString(3, y, STR_2046_SMALL_ADVERTISING_CAMPAIGN + i, TC_ORANGE);
+				y += 10;
+			}
+		}
+
+		if (this->sel_index != -1) {
+			SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[this->sel_index]);
+			SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
+			DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + this->sel_index, 313);
+		}
+	}
+
+	virtual void OnDoubleClick(Point pt, int widget) { HandleClick(pt, widget, true); }
+	virtual void OnClick(Point pt, int widget) { HandleClick(pt, widget, false); }
+
+	void HandleClick(Point pt, int widget, bool double_click)
+	{
+		switch (widget) {
+			case TWA_COMMAND_LIST: {
+				const Town *t = GetTown(this->window_number);
+				int y = (pt.y - 0x6B) / 10;
+
+				if (!IsInsideMM(y, 0, 5)) return;
+
+				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + this->vscroll.pos - 1);
+				if (y >= 0) {
+					this->sel_index = y;
+					this->SetDirty();
+				}
+				/* Fall through to clicking in case we are double-clicked */
+				if (!double_click || y < 0) break;
+			}
+
+			case TWA_EXECUTE:
+				DoCommandP(GetTown(this->window_number)->xy, this->window_number, this->sel_index, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+				break;
+		}
+	}
+
+	virtual void OnHundredthTick()
+	{
+		this->SetDirty();
+	}
+};
 
 static const WindowDesc _town_authority_desc = {
 	WDP_AUTO, WDP_AUTO, 317, 222, 317, 222,
 	WC_TOWN_AUTHORITY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_town_authority_widgets,
-	TownAuthorityWndProc
+	NULL
 };
 
 static void ShowTownAuthorityWindow(uint town)
 {
-	Window *w = AllocateWindowDescFront<Window>(&_town_authority_desc, town);
-
-	if (w != NULL) {
-		w->vscroll.cap = 5;
-		WP(w, def_d).data_1 = -1;
-	}
+	AllocateWindowDescFront<TownAuthorityWindow>(&_town_authority_desc, town);
 }
 
 
