@@ -63,86 +63,98 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos, int width)
 	return x > 0;
 }
 
-static void StatusBarWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			const Player *p = (_local_player == PLAYER_SPECTATOR) ? NULL : GetPlayer(_local_player);
+struct StatusBarWindow : Window {
+	bool saving;
+	int ticker_scroll;
+	int reminder_timeout;
 
-			DrawWindowWidgets(w);
-			SetDParam(0, _date);
-			DrawStringCentered(70, 1, (_pause_game || _patches.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING);
+	StatusBarWindow(const WindowDesc *desc) : Window(desc)
+	{
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
+		this->ticker_scroll = -1280;
 
-			if (p != NULL) {
-				/* Draw player money */
-				SetDParam(0, p->player_money);
-				DrawStringCentered(w->widget[2].left + 70, 1, STR_0004, TC_FROMSTRING);
-			}
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-			/* Draw status bar */
-			if (WP(w, def_d).data_3) { // true when saving is active
-				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING);
-			} else if (_do_autosave) {
-				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
-			} else if (_pause_game) {
-				DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING);
-			} else if (WP(w, def_d).data_1 > -1280 && FindWindowById(WC_NEWS_WINDOW,0) == NULL && _statusbar_news_item.string_id != 0) {
-				/* Draw the scrolling news text */
-				if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w, def_d).data_1, w->widget[1].right - w->widget[1].left - 2)) {
-					WP(w, def_d).data_1 = -1280;
-					if (p != NULL) {
-						/* This is the default text */
-						SetDParam(0, p->index);
-						DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
-					}
-				}
-			} else {
+	virtual void OnPaint()
+	{
+		const Player *p = (_local_player == PLAYER_SPECTATOR) ? NULL : GetPlayer(_local_player);
+
+		DrawWindowWidgets(this);
+		SetDParam(0, _date);
+		DrawStringCentered(70, 1, (_pause_game || _patches.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING);
+
+		if (p != NULL) {
+			/* Draw player money */
+			SetDParam(0, p->player_money);
+			DrawStringCentered(this->widget[2].left + 70, 1, STR_0004, TC_FROMSTRING);
+		}
+
+		/* Draw status bar */
+		if (this->saving) { // true when saving is active
+			DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING);
+		} else if (_do_autosave) {
+			DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
+		} else if (_pause_game) {
+			DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING);
+		} else if (this->ticker_scroll > -1280 && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
+			/* Draw the scrolling news text */
+			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[1].right - this->widget[1].left - 2)) {
+				this->ticker_scroll = -1280;
 				if (p != NULL) {
 					/* This is the default text */
 					SetDParam(0, p->index);
-					DrawStringCenteredTruncated(w->widget[1].left + 1, w->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
+					DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
 				}
 			}
-
-			if (WP(w, def_d).data_2 > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, w->widget[1].right - 11, 2);
-		} break;
-
-		case WE_INVALIDATE_DATA:
-			switch (e->we.invalidate.data) {
-				default: NOT_REACHED();
-				case SBI_SAVELOAD_START:  WP(w, def_d).data_3 = true;  break;
-				case SBI_SAVELOAD_FINISH: WP(w, def_d).data_3 = false; break;
-				case SBI_SHOW_TICKER:     WP(w, def_d).data_1 = 360;   break;
-				case SBI_SHOW_REMINDER:   WP(w, def_d).data_2 = 91;    break;
+		} else {
+			if (p != NULL) {
+				/* This is the default text */
+				SetDParam(0, p->index);
+				DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
 			}
-			break;
+		}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 1: ShowLastNewsMessage(); break;
-				case 2: if (_local_player != PLAYER_SPECTATOR) ShowPlayerFinances(_local_player); break;
-				default: ResetObjectToPlace();
-			}
-			break;
-
-		case WE_TICK: {
-			if (_pause_game) return;
-
-			if (WP(w, def_d).data_1 > -1280) { // Scrolling text
-				WP(w, def_d).data_1 -= 2;
-				w->InvalidateWidget(1);
-			}
-
-			if (WP(w, def_d).data_2 > 0) { // Red blot to show there are new unread newsmessages
-				WP(w, def_d).data_2 -= 2;
-			} else if (WP(w, def_d).data_2 < 0) {
-				WP(w, def_d).data_2 = 0;
-				w->InvalidateWidget(1);
-			}
-
-		} break;
+		if (this->reminder_timeout > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, this->widget[1].right - 11, 2);
 	}
-}
+
+	virtual void OnInvalidateData(int data)
+	{
+		switch (data) {
+			default: NOT_REACHED();
+			case SBI_SAVELOAD_START:  this->saving = true;  break;
+			case SBI_SAVELOAD_FINISH: this->saving = false; break;
+			case SBI_SHOW_TICKER:     this->ticker_scroll    = 360; break;
+			case SBI_SHOW_REMINDER:   this->reminder_timeout =  91; break;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 1: ShowLastNewsMessage(); break;
+			case 2: if (_local_player != PLAYER_SPECTATOR) ShowPlayerFinances(_local_player); break;
+			default: ResetObjectToPlace();
+		}
+	}
+
+	virtual void OnTick()
+	{
+		if (_pause_game) return;
+
+		if (this->ticker_scroll > -1280) { // Scrolling text
+			this->ticker_scroll -= 2;
+			this->InvalidateWidget(1);
+		}
+
+		if (this->reminder_timeout > 0) { // Red blot to show there are new unread newsmessages
+			this->reminder_timeout -= 2;
+		} else if (this->reminder_timeout < 0) {
+			this->reminder_timeout = 0;
+			this->InvalidateWidget(1);
+		}
+	}
+};
 
 static const Widget _main_status_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     0,   139,     0,    11, 0x0, STR_NULL},
@@ -156,7 +168,7 @@ static WindowDesc _main_status_desc = {
 	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_main_status_widgets,
-	StatusBarWndProc
+	NULL
 };
 
 /**
@@ -164,16 +176,12 @@ static WindowDesc _main_status_desc = {
  */
 bool IsNewsTickerShown()
 {
-	const Window *w = FindWindowById(WC_STATUS_BAR, 0);
-	return w != NULL && WP(w, const def_d).data_1 > -1280;
+	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
+	return w != NULL && w->ticker_scroll > -1280;
 }
 
 void ShowStatusBar()
 {
 	_main_status_desc.top = _screen.height - 12;
-	Window *w = new Window(&_main_status_desc);
-	if (w != NULL) {
-		CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
-		WP(w, def_d).data_1 = -1280;
-	}
+	new StatusBarWindow(&_main_status_desc);
 }
