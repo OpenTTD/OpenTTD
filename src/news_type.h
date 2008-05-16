@@ -91,17 +91,6 @@ enum NewsCallback {
 };
 
 /**
- * Kinds of bankrupcy
- * @note These flags are or'd with player index
- */
-enum NewsBankrupcy {
-	NB_BTROUBLE    = (1 << 4), ///< Company is in trouble (warning)
-	NB_BMERGER     = (2 << 4), ///< Company has been bought by another company
-	NB_BBANKRUPT   = (3 << 4), ///< Company has gone bankrupt
-	NB_BNEWCOMPANY = (4 << 4), ///< A new company has been started
-};
-
-/**
  * News display options
  */
 enum NewsDisplay {
