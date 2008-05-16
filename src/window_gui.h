@@ -515,11 +515,6 @@ public:
 	/*** End of the event handling ***/
 };
 
-struct def_d {
-	int16 data_1, data_2, data_3;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(def_d));
-
 enum SortListFlags {
 	VL_NONE    = 0,      ///< no sort
 	VL_DESC    = 1 << 0, ///< sort descending or ascending

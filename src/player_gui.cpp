@@ -48,14 +48,14 @@ enum {
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 static void DoSelectPlayerFace(Window *parent, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 
-static void DrawPlayerEconomyStats(const Player *p, byte mode)
+static void DrawPlayerEconomyStats(const Player *p, bool small)
 {
 	int x, y, i, j, year;
 	const Money (*tbl)[EXPENSES_END];
 	Money sum, cost;
 	StringID str;
 
-	if (!(mode & 1)) { // normal sized economics window (mode&1) is minimized status
+	if (!small) { // normal sized economics window
 		/* draw categories */
 		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING);
 		for (i = 0; i != EXPENSES_END; i++)
@@ -154,73 +154,89 @@ static const Widget _player_finances_small_widgets[] = {
 {   WIDGETS_END},
 };
 
+struct PlayerFinancesWindow : Window {
+	bool small;
 
-static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			PlayerID player = (PlayerID)w->window_number;
-			const Player *p = GetPlayer(player);
+	PlayerFinancesWindow(const WindowDesc *desc, PlayerID player, bool show_small,
+					bool show_stickied, int top, int left) :
+			Window(desc, player),
+			small(show_small)
+	{
+		this->caption_color = this->window_number;
 
-			/* Recheck the size of the window as it might need to be resized due to the local player changing */
-			int new_height = ((player != _local_player) ? 0 : 12) + ((WP(w, def_d).data_1 != 0) ? 48 : 74 + 10 * EXPENSES_END);
-			if (w->height != new_height) {
-				/* Make window dirty before and after resizing */
-				w->SetDirty();
-				w->height = new_height;
-				w->SetDirty();
+		if (show_stickied) this->flags4 |= WF_STICKY;
 
-				w->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
-				w->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
-			}
+		/* Check if repositioning from default is required */
+		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
+			this->top = top;
+			this->left = left;
+		}
+	}
 
-			/* Borrow button only shows when there is any more money to loan */
-			w->SetWidgetDisabledState(PFW_WIDGET_INCREASE_LOAN, p->current_loan == _economy.max_loan);
+	virtual void OnPaint()
+	{
+		PlayerID player = (PlayerID)this->window_number;
+		const Player *p = GetPlayer(player);
 
-			/* Repay button only shows when there is any more money to repay */
-			w->SetWidgetDisabledState(PFW_WIDGET_REPAY_LOAN, player != _local_player || p->current_loan == 0);
+		/* Recheck the size of the window as it might need to be resized due to the local player changing */
+		int new_height = ((player != _local_player) ? 0 : 12) + ((this->small != 0) ? 48 : 74 + 10 * EXPENSES_END);
+		if (this->height != new_height) {
+			/* Make window dirty before and after resizing */
+			this->SetDirty();
+			this->height = new_height;
+			this->SetDirty();
 
-			SetDParam(0, p->index);
-			SetDParam(1, p->index);
-			SetDParam(2, LOAN_INTERVAL);
-			DrawWindowWidgets(w);
+			this->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
+			this->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
+		}
 
-			DrawPlayerEconomyStats(p, (byte)WP(w, def_d).data_1);
-		} break;
+		/* Borrow button only shows when there is any more money to loan */
+		this->SetWidgetDisabledState(PFW_WIDGET_INCREASE_LOAN, p->current_loan == _economy.max_loan);
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
-					byte mode = (byte)WP(w, def_d).data_1;
-					bool stickied = !!(w->flags4 & WF_STICKY);
-					int oldtop = w->top;   ///< current top position of the window before closing it
-					int oldleft = w->left; ///< current left position of the window before closing it
-					PlayerID player = (PlayerID)w->window_number;
+		/* Repay button only shows when there is any more money to repay */
+		this->SetWidgetDisabledState(PFW_WIDGET_REPAY_LOAN, player != _local_player || p->current_loan == 0);
 
-					delete w;
-					/* Open up the (toggled size) Finance window at the same position as the previous */
-					DoShowPlayerFinances(player, !HasBit(mode, 0), stickied, oldtop, oldleft);
-				}
-				break;
+		SetDParam(0, p->index);
+		SetDParam(1, p->index);
+		SetDParam(2, LOAN_INTERVAL);
+		DrawWindowWidgets(this);
 
-				case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
-					DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
-					break;
+		DrawPlayerEconomyStats(p, this->small);
+	}
 
-				case PFW_WIDGET_REPAY_LOAN: /* repay loan */
-					DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
-					break;
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
+				bool new_mode = !this->small;
+				bool stickied = !!(this->flags4 & WF_STICKY);
+				int oldtop = this->top;   ///< current top position of the window before closing it
+				int oldleft = this->left; ///< current left position of the window before closing it
+				PlayerID player = (PlayerID)this->window_number;
+
+				delete this;
+				/* Open up the (toggled size) Finance window at the same position as the previous */
+				DoShowPlayerFinances(player, new_mode, stickied, oldtop, oldleft);
 			}
 			break;
+
+			case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
+				DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
+				break;
+
+			case PFW_WIDGET_REPAY_LOAN: /* repay loan */
+				DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
+				break;
+		}
 	}
-}
+};
 
 static const WindowDesc _player_finances_desc = {
 	WDP_AUTO, WDP_AUTO, 407, 86 + 10 * EXPENSES_END, 407, 86 + 10 * EXPENSES_END,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_widgets,
-	PlayerFinancesWndProc
+	NULL
 };
 
 static const WindowDesc _player_finances_small_desc = {
@@ -228,7 +244,7 @@ static const WindowDesc _player_finances_small_desc = {
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_small_widgets,
-	PlayerFinancesWndProc
+	NULL
 };
 
 /**
@@ -246,19 +262,8 @@ static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_sti
 {
 	if (!IsValidPlayer(player)) return;
 
-	Window *w = AllocateWindowDescFront<Window>(show_small ? &_player_finances_small_desc : &_player_finances_desc, player);
-	if (w != NULL) {
-		w->caption_color = w->window_number;
-		WP(w, def_d).data_1 = show_small;
-
-		if (show_stickied) w->flags4 |= WF_STICKY;
-
-		/* Check if repositioning from default is required */
-		if (top != FIRST_GUI_CALL && left != FIRST_GUI_CALL) {
-			w->top = top;
-			w->left = left;
-		}
-	}
+	if (BringWindowToFrontById(WC_FINANCES, player)) return;
+	new PlayerFinancesWindow(show_small ? &_player_finances_small_desc : &_player_finances_desc, player, show_small, show_stickied, top, left);
 }
 
 void ShowPlayerFinances(PlayerID player)
