@@ -36,27 +36,6 @@ enum TimetableViewWindowWidgets {
 	TTV_RESIZE,
 };
 
-struct timetable_d {
-	int sel;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(timetable_d));
-
-static int GetOrderFromTimetableWndPt(Window *w, int y, const Vehicle *v)
-{
-	/*
-	 * Calculation description:
-	 * 15 = 14 (w->widget[TTV_ORDER_VIEW].top) + 1 (frame-line)
-	 * 10 = order text hight
-	 */
-	int sel = (y - 15) / 10;
-
-	if ((uint)sel >= w->vscroll.cap) return INVALID_ORDER;
-
-	sel += w->vscroll.pos;
-
-	return (sel <= v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
-}
-
 void SetTimetableParams(int param1, int param2, uint32 time)
 {
 	if (_patches.timetable_in_ticks) {
@@ -68,208 +47,229 @@ void SetTimetableParams(int param1, int param2, uint32 time)
 	}
 }
 
-static void DrawTimetableWindow(Window *w)
-{
-	const Vehicle *v = GetVehicle(w->window_number);
-	int selected = WP(w, timetable_d).sel;
+struct TimetableWindow : Window {
+	int sel_index;
 
-	SetVScrollCount(w, v->num_orders * 2);
-
-	if (v->owner == _local_player) {
-		if (selected == -1) {
-			w->DisableWidget(TTV_CHANGE_TIME);
-			w->DisableWidget(TTV_CLEAR_TIME);
-		} else if (selected % 2 == 1) {
-			w->EnableWidget(TTV_CHANGE_TIME);
-			w->EnableWidget(TTV_CLEAR_TIME);
-		} else {
-			const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
-			bool disable = order == NULL || !order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION);
-
-			w->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
-			w->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
-		}
-
-		w->EnableWidget(TTV_RESET_LATENESS);
-		w->EnableWidget(TTV_AUTOFILL);
-	} else {
-		w->DisableWidget(TTV_CHANGE_TIME);
-		w->DisableWidget(TTV_CLEAR_TIME);
-		w->DisableWidget(TTV_RESET_LATENESS);
-		w->DisableWidget(TTV_AUTOFILL);
-	}
-
-	w->SetWidgetLoweredState(TTV_AUTOFILL, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
-
-	SetDParam(0, v->index);
-	DrawWindowWidgets(w);
-
-	int y = 15;
-	int i = w->vscroll.pos;
-	VehicleOrderID order_id = (i + 1) / 2;
-	bool final_order = false;
-
-	const Order *order = GetVehicleOrder(v, order_id);
-
-	while (order != NULL) {
-		/* Don't draw anything if it extends past the end of the window. */
-		if (i - w->vscroll.pos >= w->vscroll.cap) break;
-
-		if (i % 2 == 0) {
-			DrawOrderString(v, order, order_id, y, i == selected, true);
-
-			order_id++;
-
-			if (order_id >= v->num_orders) {
-				order = GetVehicleOrder(v, 0);
-				final_order = true;
-			} else {
-				order = order->next;
-			}
-		} else {
-			StringID string;
-
-			if (order->travel_time == 0) {
-				string = STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
-			} else {
-				SetTimetableParams(0, 1, order->travel_time);
-				string = STR_TIMETABLE_TRAVEL_FOR;
-			}
-
-			DrawString(22, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
-
-			if (final_order) break;
-		}
-
-		i++;
-		y += 10;
-	}
-
-	y = w->widget[TTV_SUMMARY_PANEL].top + 1;
-
+	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		uint total_time = 0;
-		bool complete = true;
-
-		for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
-			total_time += order->travel_time + order->wait_time;
-			if (order->travel_time == 0) complete = false;
-			if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
-		}
-
-		if (total_time != 0) {
-			SetTimetableParams(0, 1, total_time);
-			DrawString(2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, TC_BLACK);
-		}
+		this->caption_color = GetVehicle(window_number)->owner;
+		this->vscroll.cap = 8;
+		this->resize.step_height = 10;
+		this->sel_index = -1;
 	}
-	y += 10;
 
-	if (v->lateness_counter == 0 || (!_patches.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
-		DrawString(2, y, STR_TIMETABLE_STATUS_ON_TIME, TC_BLACK);
-	} else {
-		SetTimetableParams(0, 1, abs(v->lateness_counter));
-		DrawString(2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE, TC_BLACK);
+	int GetOrderFromTimetableWndPt(int y, const Vehicle *v)
+	{
+		/*
+		 * Calculation description:
+		 * 15 = 14 (this->widget[TTV_ORDER_VIEW].top) + 1 (frame-line)
+		 * 10 = order text hight
+		 */
+		int sel = (y - 15) / 10;
+
+		if ((uint)sel >= this->vscroll.cap) return INVALID_ORDER;
+
+		sel += this->vscroll.pos;
+
+		return (sel <= v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
 	}
-}
 
-static inline uint32 PackTimetableArgs(const Vehicle *v, uint selected)
-{
-	uint order_number = (selected + 1) / 2;
-	uint is_journey   = (selected % 2 == 1) ? 1 : 0;
+	void OnPaint()
+	{
+		const Vehicle *v = GetVehicle(this->window_number);
+		int selected = this->sel_index;
 
-	if (order_number >= v->num_orders) order_number = 0;
+		SetVScrollCount(this, v->num_orders * 2);
 
-	return v->index | (order_number << 16) | (is_journey << 24);
-}
+		if (v->owner == _local_player) {
+			if (selected == -1) {
+				this->DisableWidget(TTV_CHANGE_TIME);
+				this->DisableWidget(TTV_CLEAR_TIME);
+			} else if (selected % 2 == 1) {
+				this->EnableWidget(TTV_CHANGE_TIME);
+				this->EnableWidget(TTV_CLEAR_TIME);
+			} else {
+				const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
+				bool disable = order == NULL || !order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION);
 
-static void TimetableWndProc(Window *w, WindowEvent *we)
-{
-	switch (we->event) {
-		case WE_PAINT:
-			DrawTimetableWindow(w);
-			break;
-
-		case WE_CLICK: {
-			const Vehicle *v = GetVehicle(w->window_number);
-
-			switch (we->we.click.widget) {
-				case TTV_ORDER_VIEW: /* Order view button */
-					ShowOrdersWindow(v);
-					break;
-
-				case TTV_TIMETABLE_PANEL: { /* Main panel. */
-					int selected = GetOrderFromTimetableWndPt(w, we->we.click.pt.y, v);
-
-					if (selected == INVALID_ORDER || selected == WP(w, timetable_d).sel) {
-						/* Deselect clicked order */
-						WP(w, timetable_d).sel = -1;
-					} else {
-						/* Select clicked order */
-						WP(w, timetable_d).sel = selected;
-					}
-				} break;
-
-				case TTV_CHANGE_TIME: { /* "Wait For" button. */
-					int selected = WP(w, timetable_d).sel;
-					VehicleOrderID real = (selected + 1) / 2;
-
-					if (real >= v->num_orders) real = 0;
-
-					const Order *order = GetVehicleOrder(v, real);
-					StringID current = STR_EMPTY;
-
-					if (order != NULL) {
-						uint time = (selected % 2 == 1) ? order->travel_time : order->wait_time;
-						if (!_patches.timetable_in_ticks) time /= DAY_TICKS;
-
-						if (time != 0) {
-							SetDParam(0, time);
-							current = STR_CONFIG_PATCHES_INT32;
-						}
-					}
-
-					ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, w, CS_NUMERAL);
-				} break;
-
-				case TTV_CLEAR_TIME: { /* Clear waiting time button. */
-					uint32 p1 = PackTimetableArgs(v, WP(w, timetable_d).sel);
-					DoCommandP(0, p1, 0, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
-				} break;
-
-				case TTV_RESET_LATENESS: /* Reset the vehicle's late counter. */
-					DoCommandP(0, v->index, 0, NULL, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
-					break;
-
-				case TTV_AUTOFILL: /* Autofill the timetable. */
-					DoCommandP(0, v->index, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
-					break;
+				this->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
+				this->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
 			}
 
-			w->SetDirty();
-		} break;
+			this->EnableWidget(TTV_RESET_LATENESS);
+			this->EnableWidget(TTV_AUTOFILL);
+		} else {
+			this->DisableWidget(TTV_CHANGE_TIME);
+			this->DisableWidget(TTV_CLEAR_TIME);
+			this->DisableWidget(TTV_RESET_LATENESS);
+			this->DisableWidget(TTV_AUTOFILL);
+		}
 
-		case WE_ON_EDIT_TEXT: {
-			if (we->we.edittext.str == NULL) break;
+		this->SetWidgetLoweredState(TTV_AUTOFILL, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
-			const Vehicle *v = GetVehicle(w->window_number);
+		SetDParam(0, v->index);
+		DrawWindowWidgets(this);
 
-			uint32 p1 = PackTimetableArgs(v, WP(w, timetable_d).sel);
+		int y = 15;
+		int i = this->vscroll.pos;
+		VehicleOrderID order_id = (i + 1) / 2;
+		bool final_order = false;
 
-			uint64 time = StrEmpty(we->we.edittext.str) ? 0 : strtoul(we->we.edittext.str, NULL, 10);
-			if (!_patches.timetable_in_ticks) time *= DAY_TICKS;
+		const Order *order = GetVehicleOrder(v, order_id);
 
-			uint32 p2 = minu(time, MAX_UVALUE(uint16));
+		while (order != NULL) {
+			/* Don't draw anything if it extends past the end of the window. */
+			if (i - this->vscroll.pos >= this->vscroll.cap) break;
 
-			DoCommandP(0, p1, p2, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
-		} break;
+			if (i % 2 == 0) {
+				DrawOrderString(v, order, order_id, y, i == selected, true);
 
-		case WE_RESIZE:
-			/* Update the scroll + matrix */
-			w->vscroll.cap = (w->widget[TTV_TIMETABLE_PANEL].bottom - w->widget[TTV_TIMETABLE_PANEL].top) / 10;
-			break;
+				order_id++;
 
+				if (order_id >= v->num_orders) {
+					order = GetVehicleOrder(v, 0);
+					final_order = true;
+				} else {
+					order = order->next;
+				}
+			} else {
+				StringID string;
+
+				if (order->travel_time == 0) {
+					string = STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
+				} else {
+					SetTimetableParams(0, 1, order->travel_time);
+					string = STR_TIMETABLE_TRAVEL_FOR;
+				}
+
+				DrawString(22, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
+
+				if (final_order) break;
+			}
+
+			i++;
+			y += 10;
+		}
+
+		y = this->widget[TTV_SUMMARY_PANEL].top + 1;
+
+		{
+			uint total_time = 0;
+			bool complete = true;
+
+			for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
+				total_time += order->travel_time + order->wait_time;
+				if (order->travel_time == 0) complete = false;
+				if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
+			}
+
+			if (total_time != 0) {
+				SetTimetableParams(0, 1, total_time);
+				DrawString(2, y, complete ? STR_TIMETABLE_TOTAL_TIME : STR_TIMETABLE_TOTAL_TIME_INCOMPLETE, TC_BLACK);
+			}
+		}
+		y += 10;
+
+		if (v->lateness_counter == 0 || (!_patches.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
+			DrawString(2, y, STR_TIMETABLE_STATUS_ON_TIME, TC_BLACK);
+		} else {
+			SetTimetableParams(0, 1, abs(v->lateness_counter));
+			DrawString(2, y, v->lateness_counter < 0 ? STR_TIMETABLE_STATUS_EARLY : STR_TIMETABLE_STATUS_LATE, TC_BLACK);
+		}
 	}
-}
+
+	static inline uint32 PackTimetableArgs(const Vehicle *v, uint selected)
+	{
+		uint order_number = (selected + 1) / 2;
+		uint is_journey   = (selected % 2 == 1) ? 1 : 0;
+
+		if (order_number >= v->num_orders) order_number = 0;
+
+		return v->index | (order_number << 16) | (is_journey << 24);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		const Vehicle *v = GetVehicle(this->window_number);
+
+		switch (widget) {
+			case TTV_ORDER_VIEW: /* Order view button */
+				ShowOrdersWindow(v);
+				break;
+
+			case TTV_TIMETABLE_PANEL: { /* Main panel. */
+				int selected = GetOrderFromTimetableWndPt(pt.y, v);
+
+				if (selected == INVALID_ORDER || selected == this->sel_index) {
+					/* Deselect clicked order */
+					this->sel_index = -1;
+				} else {
+					/* Select clicked order */
+					this->sel_index = selected;
+				}
+			} break;
+
+			case TTV_CHANGE_TIME: { /* "Wait For" button. */
+				int selected = this->sel_index;
+				VehicleOrderID real = (selected + 1) / 2;
+
+				if (real >= v->num_orders) real = 0;
+
+				const Order *order = GetVehicleOrder(v, real);
+				StringID current = STR_EMPTY;
+
+				if (order != NULL) {
+					uint time = (selected % 2 == 1) ? order->travel_time : order->wait_time;
+					if (!_patches.timetable_in_ticks) time /= DAY_TICKS;
+
+					if (time != 0) {
+						SetDParam(0, time);
+						current = STR_CONFIG_PATCHES_INT32;
+					}
+				}
+
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, this, CS_NUMERAL);
+			} break;
+
+			case TTV_CLEAR_TIME: { /* Clear waiting time button. */
+				uint32 p1 = PackTimetableArgs(v, this->sel_index);
+				DoCommandP(0, p1, 0, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+			} break;
+
+			case TTV_RESET_LATENESS: /* Reset the vehicle's late counter. */
+				DoCommandP(0, v->index, 0, NULL, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+				break;
+
+			case TTV_AUTOFILL: /* Autofill the timetable. */
+				DoCommandP(0, v->index, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+				break;
+		}
+
+		this->SetDirty();
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (str == NULL) return;
+
+		const Vehicle *v = GetVehicle(this->window_number);
+
+		uint32 p1 = PackTimetableArgs(v, this->sel_index);
+
+		uint64 time = StrEmpty(str) ? 0 : strtoul(str, NULL, 10);
+		if (!_patches.timetable_in_ticks) time *= DAY_TICKS;
+
+		uint32 p2 = minu(time, MAX_UVALUE(uint16));
+
+		DoCommandP(0, p1, p2, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		/* Update the scroll + matrix */
+		this->vscroll.cap = (this->widget[TTV_TIMETABLE_PANEL].bottom - this->widget[TTV_TIMETABLE_PANEL].top) / 10;
+	}
+};
 
 static const Widget _timetable_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // TTV_WIDGET_CLOSEBOX
@@ -298,17 +298,10 @@ static const WindowDesc _timetable_desc = {
 	WC_VEHICLE_TIMETABLE, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_timetable_widgets,
-	TimetableWndProc
+	NULL
 };
 
 void ShowTimetableWindow(const Vehicle *v)
 {
-	Window *w = AllocateWindowDescFront<Window>(&_timetable_desc, v->index);
-
-	if (w != NULL) {
-		w->caption_color = v->owner;
-		w->vscroll.cap = 8;
-		w->resize.step_height = 10;
-		WP(w, timetable_d).sel = -1;
-	}
+	AllocateWindowDescFront<TimetableWindow>(&_timetable_desc, v->index);
 }
