@@ -40,11 +40,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-struct vehicledetails_d {
-	byte tab;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehicledetails_d));
-
 struct refit_d {
 	int sel;
 	struct RefitOption *cargo;
@@ -1374,78 +1369,6 @@ static const StringID _vehicle_translation_table[][4] = {
 	},
 };
 
-/** Initialize a newly created vehicle details window */
-void CreateVehicleDetailsWindow(Window *w)
-{
-	const Vehicle *v = GetVehicle(w->window_number);
-
-	switch (v->type) {
-		case VEH_TRAIN:
-			ResizeWindow(w, 0, 39);
-
-			w->vscroll.cap = 6;
-			w->height += 12;
-			w->resize.step_height = 14;
-			w->resize.height = w->height - 14 * 2; // Minimum of 4 wagons in the display
-
-			w->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_8867_NAME_TRAIN;
-			w->widget[VLD_WIDGET_CAPTION].data = STR_8802_DETAILS;
-			break;
-
-		case VEH_ROAD: {
-			w->widget[VLD_WIDGET_CAPTION].data = STR_900C_DETAILS;
-			w->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_902E_NAME_ROAD_VEHICLE;
-
-			if (!RoadVehHasArticPart(v)) break;
-
-			/* Draw the text under the vehicle instead of next to it, minus the
-			* height already allocated for the cargo of the first vehicle. */
-			uint height_extension = 15 - 11;
-
-			/* Add space for the cargo amount for each part. */
-			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-				height_extension += 11;
-			}
-
-			ResizeWindow(w, 0, height_extension);
-		} break;
-
-		case VEH_SHIP:
-			w->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_982F_NAME_SHIP;
-			w->widget[VLD_WIDGET_CAPTION].data = STR_9811_DETAILS;
-			break;
-
-		case VEH_AIRCRAFT:
-			ResizeWindow(w, 0, 11);
-			w->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_A032_NAME_AIRCRAFT;
-			w->widget[VLD_WIDGET_CAPTION].data = STR_A00C_DETAILS;
-			break;
-		default: NOT_REACHED();
-	}
-
-	if (v->type != VEH_TRAIN) {
-		w->vscroll.cap = 1;
-		w->widget[VLD_WIDGET_MIDDLE_DETAILS].right += 12;
-	}
-
-	w->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (w->vscroll.cap << 8) + 1;
-	w->caption_color = v->owner;
-
-	WP(w, vehicledetails_d).tab = 0;
-}
-
-/** Checks whether service interval is enabled for the vehicle. */
-static inline bool IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type)
-{
-	switch (vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:    return _patches.servint_trains   != 0; break;
-		case VEH_ROAD:     return _patches.servint_roadveh  != 0; break;
-		case VEH_SHIP:     return _patches.servint_ships    != 0; break;
-		case VEH_AIRCRAFT: return _patches.servint_aircraft != 0; break;
-	}
-	return false; // kill a compiler warning
-}
 
 extern int GetTrainDetailsWndVScroll(VehicleID veh_id, byte det_tab);
 extern void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vscroll_cap, byte det_tab);
@@ -1453,201 +1376,267 @@ extern void DrawRoadVehDetails(const Vehicle *v, int x, int y);
 extern void DrawShipDetails(const Vehicle *v, int x, int y);
 extern void DrawAircraftDetails(const Vehicle *v, int x, int y);
 
-/**
-* Draw the details for the given vehicle at the position (x, y) of the Details windows
-*
-* @param v current vehicle
-* @param x The x coordinate
-* @param y The y coordinate
-* @param vscroll_pos (train only)
-* @param vscroll_cap (train only)
-* @param det_tab (train only)
-*/
-static inline void DrawVehicleDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint vscroll_cap, byte det_tab)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainDetails(v, x, y, vscroll_pos, vscroll_cap, det_tab);  break;
-		case VEH_ROAD:     DrawRoadVehDetails(v, x, y);  break;
-		case VEH_SHIP:     DrawShipDetails(v, x, y);     break;
-		case VEH_AIRCRAFT: DrawAircraftDetails(v, x, y); break;
-		default: NOT_REACHED();
-	}
-}
+struct VehicleDetailsWindow : Window {
+	int tab;
 
-/** Repaint vehicle details window. */
-static void DrawVehicleDetailsWindow(Window *w)
-{
-	const Vehicle *v = GetVehicle(w->window_number);
-	byte det_tab = WP(w, vehicledetails_d).tab;
+	/** Initialize a newly created vehicle details window */
+	VehicleDetailsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		const Vehicle *v = GetVehicle(this->window_number);
 
-	w->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_player);
+		switch (v->type) {
+			case VEH_TRAIN:
+				ResizeWindow(this, 0, 39);
 
-	if (v->type == VEH_TRAIN) {
-		w->DisableWidget(det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
-		SetVScrollCount(w, GetTrainDetailsWndVScroll(v->index, det_tab));
-	}
+				this->vscroll.cap = 6;
+				this->height += 12;
+				this->resize.step_height = 14;
+				this->resize.height = this->height - 14 * 2; // Minimum of 4 wagons in the display
 
-	w->SetWidgetsHiddenState(v->type != VEH_TRAIN,
-		VLD_WIDGET_SCROLLBAR,
-		VLD_WIDGET_DETAILS_CARGO_CARRIED,
-		VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
-		VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
-		VLD_WIDGET_DETAILS_TOTAL_CARGO,
-		VLD_WIDGET_RESIZE,
-		WIDGET_LIST_END);
+				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_8867_NAME_TRAIN;
+				this->widget[VLD_WIDGET_CAPTION].data = STR_8802_DETAILS;
+				break;
 
-	/* Disable service-scroller when interval is set to disabled */
-	w->SetWidgetsDisabledState(!IsVehicleServiceIntervalEnabled(v->type),
-		VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
-		VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
-		WIDGET_LIST_END);
+			case VEH_ROAD: {
+				this->widget[VLD_WIDGET_CAPTION].data = STR_900C_DETAILS;
+				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_902E_NAME_ROAD_VEHICLE;
 
+				if (!RoadVehHasArticPart(v)) break;
 
-	SetDParam(0, v->index);
-	DrawWindowWidgets(w);
+				/* Draw the text under the vehicle instead of next to it, minus the
+				 * height already allocated for the cargo of the first vehicle. */
+				uint height_extension = 15 - 11;
 
-	/* Draw running cost */
-	SetDParam(1, v->age / 366);
-	SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
-	SetDParam(2, v->max_age / 366);
-	SetDParam(3, v->GetDisplayRunningCost());
-	DrawString(2, 15, _vehicle_translation_table[VST_VEHICLE_AGE_RUNNING_COST_YR][v->type], TC_FROMSTRING);
+				/* Add space for the cargo amount for each part. */
+				for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+					height_extension += 11;
+				}
 
-	/* Draw max speed */
-	switch (v->type) {
-		case VEH_TRAIN:
-			SetDParam(2, v->GetDisplayMaxSpeed());
-			SetDParam(1, v->u.rail.cached_power);
-			SetDParam(0, v->u.rail.cached_weight);
-			SetDParam(3, v->u.rail.cached_max_te / 1000);
-			DrawString(2, 25, (_patches.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
-				STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
-				STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, TC_FROMSTRING);
-			break;
+				ResizeWindow(this, 0, height_extension);
+			} break;
 
-		case VEH_ROAD:
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			SetDParam(0, v->GetDisplayMaxSpeed());
-			DrawString(2, 25, _vehicle_translation_table[VST_VEHICLE_MAX_SPEED][v->type], TC_FROMSTRING);
-			break;
+			case VEH_SHIP:
+				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_982F_NAME_SHIP;
+				this->widget[VLD_WIDGET_CAPTION].data = STR_9811_DETAILS;
+				break;
 
-		default: NOT_REACHED();
+			case VEH_AIRCRAFT:
+				ResizeWindow(this, 0, 11);
+				this->widget[VLD_WIDGET_RENAME_VEHICLE].tooltips = STR_A032_NAME_AIRCRAFT;
+				this->widget[VLD_WIDGET_CAPTION].data = STR_A00C_DETAILS;
+				break;
+			default: NOT_REACHED();
+		}
+
+		if (v->type != VEH_TRAIN) {
+			this->vscroll.cap = 1;
+			this->widget[VLD_WIDGET_MIDDLE_DETAILS].right += 12;
+		}
+
+		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << 8) + 1;
+		this->caption_color = v->owner;
+
+		this->tab = 0;
 	}
 
-	/* Draw profit */
-	SetDParam(0, v->GetDisplayProfitThisYear());
-	SetDParam(1, v->GetDisplayProfitLastYear());
-	DrawString(2, 35, _vehicle_translation_table[VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR][v->type], TC_FROMSTRING);
-
-	/* Draw breakdown & reliability */
-	SetDParam(0, v->reliability * 100 >> 16);
-	SetDParam(1, v->breakdowns_since_last_service);
-	DrawString(2, 45, _vehicle_translation_table[VST_VEHICLE_RELIABILITY_BREAKDOWNS][v->type], TC_FROMSTRING);
-
-	/* Draw service interval text */
-	SetDParam(0, v->service_interval);
-	SetDParam(1, v->date_of_last_service);
-	DrawString(13, w->height - (v->type != VEH_TRAIN ? 11 : 23), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, TC_FROMSTRING);
-
-	switch (v->type) {
-		case VEH_TRAIN:
-			DrawVehicleDetails(v, 2, 57, w->vscroll.pos, w->vscroll.cap, det_tab);
-			break;
-
-		case VEH_ROAD:
-		case VEH_SHIP:
-		case VEH_AIRCRAFT:
-			DrawVehicleImage(v, 3, 57, INVALID_VEHICLE, 0, 0);
-			DrawVehicleDetails(v, 75, 57, w->vscroll.pos, w->vscroll.cap, det_tab);
-			break;
-
-		default: NOT_REACHED();
+	/** Checks whether service interval is enabled for the vehicle. */
+	static bool IsVehicleServiceIntervalEnabled(const VehicleType vehicle_type)
+	{
+		switch (vehicle_type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:    return _patches.servint_trains   != 0; break;
+			case VEH_ROAD:     return _patches.servint_roadveh  != 0; break;
+			case VEH_SHIP:     return _patches.servint_ships    != 0; break;
+			case VEH_AIRCRAFT: return _patches.servint_aircraft != 0; break;
+		}
+		return false; // kill a compiler warning
 	}
-}
 
-/** Message strings for renaming vehicles indexed by vehicle type. */
-static const StringID _name_vehicle_title[] = {
-	STR_8865_NAME_TRAIN,
-	STR_902C_NAME_ROAD_VEHICLE,
-	STR_9831_NAME_SHIP,
-	STR_A030_NAME_AIRCRAFT
+	/**
+	 * Draw the details for the given vehicle at the position (x, y) of the Details windows
+	 *
+	 * @param v current vehicle
+	 * @param x The x coordinate
+	 * @param y The y coordinate
+	 * @param vscroll_pos (train only)
+	 * @param vscroll_cap (train only)
+	 * @param det_tab (train only)
+	 */
+	static void DrawVehicleDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint vscroll_cap, byte det_tab)
+	{
+		switch (v->type) {
+			case VEH_TRAIN:    DrawTrainDetails(v, x, y, vscroll_pos, vscroll_cap, det_tab);  break;
+			case VEH_ROAD:     DrawRoadVehDetails(v, x, y);  break;
+			case VEH_SHIP:     DrawShipDetails(v, x, y);     break;
+			case VEH_AIRCRAFT: DrawAircraftDetails(v, x, y); break;
+			default: NOT_REACHED();
+		}
+	}
+
+	/** Repaint vehicle details window. */
+	virtual void OnPaint()
+	{
+		const Vehicle *v = GetVehicle(this->window_number);
+		byte det_tab = this->tab;
+
+		this->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_player);
+
+		if (v->type == VEH_TRAIN) {
+			this->DisableWidget(det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
+			SetVScrollCount(this, GetTrainDetailsWndVScroll(v->index, det_tab));
+		}
+
+		this->SetWidgetsHiddenState(v->type != VEH_TRAIN,
+			VLD_WIDGET_SCROLLBAR,
+			VLD_WIDGET_DETAILS_CARGO_CARRIED,
+			VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
+			VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
+			VLD_WIDGET_DETAILS_TOTAL_CARGO,
+			VLD_WIDGET_RESIZE,
+			WIDGET_LIST_END);
+
+		/* Disable service-scroller when interval is set to disabled */
+		this->SetWidgetsDisabledState(!IsVehicleServiceIntervalEnabled(v->type),
+			VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
+			VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
+			WIDGET_LIST_END);
+
+
+		SetDParam(0, v->index);
+		DrawWindowWidgets(this);
+
+		/* Draw running cost */
+		SetDParam(1, v->age / 366);
+		SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
+		SetDParam(2, v->max_age / 366);
+		SetDParam(3, v->GetDisplayRunningCost());
+		DrawString(2, 15, _vehicle_translation_table[VST_VEHICLE_AGE_RUNNING_COST_YR][v->type], TC_FROMSTRING);
+
+		/* Draw max speed */
+		switch (v->type) {
+			case VEH_TRAIN:
+				SetDParam(2, v->GetDisplayMaxSpeed());
+				SetDParam(1, v->u.rail.cached_power);
+				SetDParam(0, v->u.rail.cached_weight);
+				SetDParam(3, v->u.rail.cached_max_te / 1000);
+				DrawString(2, 25, (_patches.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
+					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
+					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, TC_FROMSTRING);
+				break;
+
+			case VEH_ROAD:
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				SetDParam(0, v->GetDisplayMaxSpeed());
+				DrawString(2, 25, _vehicle_translation_table[VST_VEHICLE_MAX_SPEED][v->type], TC_FROMSTRING);
+				break;
+
+			default: NOT_REACHED();
+		}
+
+		/* Draw profit */
+		SetDParam(0, v->GetDisplayProfitThisYear());
+		SetDParam(1, v->GetDisplayProfitLastYear());
+		DrawString(2, 35, _vehicle_translation_table[VST_VEHICLE_PROFIT_THIS_YEAR_LAST_YEAR][v->type], TC_FROMSTRING);
+
+		/* Draw breakdown & reliability */
+		SetDParam(0, v->reliability * 100 >> 16);
+		SetDParam(1, v->breakdowns_since_last_service);
+		DrawString(2, 45, _vehicle_translation_table[VST_VEHICLE_RELIABILITY_BREAKDOWNS][v->type], TC_FROMSTRING);
+
+		/* Draw service interval text */
+		SetDParam(0, v->service_interval);
+		SetDParam(1, v->date_of_last_service);
+		DrawString(13, this->height - (v->type != VEH_TRAIN ? 11 : 23), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, TC_FROMSTRING);
+
+		switch (v->type) {
+			case VEH_TRAIN:
+				DrawVehicleDetails(v, 2, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
+				break;
+
+			case VEH_ROAD:
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				DrawVehicleImage(v, 3, 57, INVALID_VEHICLE, 0, 0);
+				DrawVehicleDetails(v, 75, 57, this->vscroll.pos, this->vscroll.cap, det_tab);
+				break;
+
+			default: NOT_REACHED();
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		/** Message strings for renaming vehicles indexed by vehicle type. */
+		static const StringID _name_vehicle_title[] = {
+			STR_8865_NAME_TRAIN,
+			STR_902C_NAME_ROAD_VEHICLE,
+			STR_9831_NAME_SHIP,
+			STR_A030_NAME_AIRCRAFT
+		};
+
+		switch (widget) {
+			case VLD_WIDGET_RENAME_VEHICLE: {// rename
+				const Vehicle *v = GetVehicle(this->window_number);
+				SetDParam(0, v->index);
+				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], 31, 150, this, CS_ALPHANUMERAL);
+			} break;
+
+			case VLD_WIDGET_INCREASE_SERVICING_INTERVAL:   // increase int
+			case VLD_WIDGET_DECREASE_SERVICING_INTERVAL: { // decrease int
+				int mod = _ctrl_pressed ? 5 : 10;
+				const Vehicle *v = GetVehicle(this->window_number);
+
+				mod = (widget == VLD_WIDGET_DECREASE_SERVICING_INTERVAL) ? -mod : mod;
+				mod = GetServiceIntervalClamped(mod + v->service_interval);
+				if (mod == v->service_interval) return;
+
+				DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
+			} break;
+
+			case VLD_WIDGET_DETAILS_CARGO_CARRIED:
+			case VLD_WIDGET_DETAILS_TRAIN_VEHICLES:
+			case VLD_WIDGET_DETAILS_CAPACITY_OF_EACH:
+			case VLD_WIDGET_DETAILS_TOTAL_CARGO:
+				this->SetWidgetsDisabledState(false,
+					VLD_WIDGET_DETAILS_CARGO_CARRIED,
+					VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
+					VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
+					VLD_WIDGET_DETAILS_TOTAL_CARGO,
+					widget,
+					WIDGET_LIST_END);
+
+				this->tab = widget - VLD_WIDGET_DETAILS_CARGO_CARRIED;
+				this->SetDirty();
+				break;
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		/** Message strings for error while renaming indexed by vehicle type. */
+		static const StringID _name_vehicle_error[] = {
+			STR_8866_CAN_T_NAME_TRAIN,
+			STR_902D_CAN_T_NAME_ROAD_VEHICLE,
+			STR_9832_CAN_T_NAME_SHIP,
+			STR_A031_CAN_T_NAME_AIRCRAFT
+		};
+
+		if (!StrEmpty(str)) {
+			_cmd_text = str;
+			DoCommandP(0, this->window_number, 0, NULL, CMD_NAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]));
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		if (delta.x != 0) ResizeButtons(this, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
+		if (delta.y == 0) return;
+
+		this->vscroll.cap += delta.y / 14;
+		this->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (this->vscroll.cap << 8) + 1;
+	}
 };
-
-/** Message strings for error while renaming indexed by vehicle type. */
-static const StringID _name_vehicle_error[] = {
-	STR_8866_CAN_T_NAME_TRAIN,
-	STR_902D_CAN_T_NAME_ROAD_VEHICLE,
-	STR_9832_CAN_T_NAME_SHIP,
-	STR_A031_CAN_T_NAME_AIRCRAFT
-};
-
-/** Window event hook for vehicle details. */
-static void VehicleDetailsWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			CreateVehicleDetailsWindow(w);
-			break;
-
-		case WE_PAINT:
-			DrawVehicleDetailsWindow(w);
-			break;
-
-		case WE_CLICK: {
-			switch (e->we.click.widget) {
-				case VLD_WIDGET_RENAME_VEHICLE: {// rename
-					const Vehicle *v = GetVehicle(w->window_number);
-					SetDParam(0, v->index);
-					ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], 31, 150, w, CS_ALPHANUMERAL);
-				} break;
-
-				case VLD_WIDGET_INCREASE_SERVICING_INTERVAL:   // increase int
-				case VLD_WIDGET_DECREASE_SERVICING_INTERVAL: { // decrease int
-					int mod = _ctrl_pressed ? 5 : 10;
-					const Vehicle *v = GetVehicle(w->window_number);
-
-					mod = (e->we.click.widget == VLD_WIDGET_DECREASE_SERVICING_INTERVAL) ? -mod : mod;
-					mod = GetServiceIntervalClamped(mod + v->service_interval);
-					if (mod == v->service_interval) return;
-
-					DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
-				} break;
-
-				case VLD_WIDGET_DETAILS_CARGO_CARRIED:
-				case VLD_WIDGET_DETAILS_TRAIN_VEHICLES:
-				case VLD_WIDGET_DETAILS_CAPACITY_OF_EACH:
-				case VLD_WIDGET_DETAILS_TOTAL_CARGO:
-					w->SetWidgetsDisabledState(false,
-						VLD_WIDGET_DETAILS_CARGO_CARRIED,
-						VLD_WIDGET_DETAILS_TRAIN_VEHICLES,
-						VLD_WIDGET_DETAILS_CAPACITY_OF_EACH,
-						VLD_WIDGET_DETAILS_TOTAL_CARGO,
-						e->we.click.widget,
-						WIDGET_LIST_END);
-
-					WP(w, vehicledetails_d).tab = e->we.click.widget - VLD_WIDGET_DETAILS_CARGO_CARRIED;
-					w->SetDirty();
-					break;
-			}
-		} break;
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				_cmd_text = e->we.edittext.str;
-				DoCommandP(0, w->window_number, 0, NULL, CMD_NAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(w->window_number)->type]));
-			}
-			break;
-
-		case WE_RESIZE:
-			if (e->we.sizing.diff.x != 0) ResizeButtons(w, VLD_WIDGET_DETAILS_CARGO_CARRIED, VLD_WIDGET_DETAILS_TOTAL_CARGO);
-			if (e->we.sizing.diff.y == 0) break;
-
-			w->vscroll.cap += e->we.sizing.diff.y / 14;
-			w->widget[VLD_WIDGET_MIDDLE_DETAILS].data = (w->vscroll.cap << 8) + 1;
-			break;
-	}
-}
 
 /** Vehicle details window descriptor. */
 static const WindowDesc _vehicle_details_desc = {
@@ -1655,7 +1644,7 @@ static const WindowDesc _vehicle_details_desc = {
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_details_widgets,
-	VehicleDetailsWndProc
+	NULL
 };
 
 /** Shows the vehicle details window of the given vehicle. */
@@ -1663,7 +1652,7 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
 	DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
-	AllocateWindowDescFront<Window>(&_vehicle_details_desc, v->index);
+	AllocateWindowDescFront<VehicleDetailsWindow>(&_vehicle_details_desc, v->index);
 }
 
 
