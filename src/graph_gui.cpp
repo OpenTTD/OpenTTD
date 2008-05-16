@@ -935,196 +935,192 @@ void ShowCompanyLeagueTable()
 /* PERFORMANCE RATING DETAIL */
 /*****************************/
 
-static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
-{
-	static PlayerID _performance_rating_detail_player = INVALID_PLAYER;
+struct PerformanceRatingDetailWindow : Window {
+	static PlayerID player;
+	int timeout;
 
-	switch (e->event) {
-		case WE_PAINT: {
-			byte x;
-			uint16 y = 14;
-			int total_score = 0;
-			int color_done, color_notdone;
-
-			/* Draw standard stuff */
-			DrawWindowWidgets(w);
-
-			/* Check if the currently selected player is still active. */
-			if (_performance_rating_detail_player == INVALID_PLAYER || !GetPlayer(_performance_rating_detail_player)->is_active) {
-				if (_performance_rating_detail_player != INVALID_PLAYER) {
-					/* Raise and disable the widget for the previous selection. */
-					w->RaiseWidget(_performance_rating_detail_player + 13);
-					w->DisableWidget(_performance_rating_detail_player + 13);
-					w->SetDirty();
-
-					_performance_rating_detail_player = INVALID_PLAYER;
-				}
-
-				for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-					if (GetPlayer(i)->is_active) {
-						/* Lower the widget corresponding to this player. */
-						w->LowerWidget(i + 13);
-						w->SetDirty();
-
-						_performance_rating_detail_player = i;
-						break;
-					}
-				}
-			}
-
-			/* If there are no active players, don't display anything else. */
-			if (_performance_rating_detail_player == INVALID_PLAYER) break;
-
-			/* Paint the player icons */
-			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-				if (!GetPlayer(i)->is_active) {
-					/* Check if we have the player as an active player */
-					if (!w->IsWidgetDisabled(i + 13)) {
-						/* Bah, player gone :( */
-						w->DisableWidget(i + 13);
-
-						/* We need a repaint */
-						w->SetDirty();
-					}
-					continue;
-				}
-
-				/* Check if we have the player marked as inactive */
-				if (w->IsWidgetDisabled(i + 13)) {
-					/* New player! Yippie :p */
-					w->EnableWidget(i + 13);
-					/* We need a repaint */
-					w->SetDirty();
-				}
-
-				x = (i == _performance_rating_detail_player) ? 1 : 0;
-				DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
-			}
-
-			/* The colors used to show how the progress is going */
-			color_done = _colour_gradient[COLOUR_GREEN][4];
-			color_notdone = _colour_gradient[COLOUR_RED][4];
-
-			/* Draw all the score parts */
-			for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
-				int val    = _score_part[_performance_rating_detail_player][i];
-				int needed = _score_info[i].needed;
-				int score  = _score_info[i].score;
-
-				y += 20;
-				/* SCORE_TOTAL has his own rulez ;) */
-				if (i == SCORE_TOTAL) {
-					needed = total_score;
-					score = SCORE_MAX;
-				} else {
-					total_score += score;
-				}
-
-				DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, TC_FROMSTRING);
-
-				/* Draw the score */
-				SetDParam(0, score);
-				DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, TC_FROMSTRING);
-
-				/* Calculate the %-bar */
-				x = Clamp(val, 0, needed) * 50 / needed;
-
-				/* SCORE_LOAN is inversed */
-				if (val < 0 && i == SCORE_LOAN) x = 0;
-
-				/* Draw the bar */
-				if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, color_done);
-				if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, color_notdone);
-
-				/* Calculate the % */
-				x = Clamp(val, 0, needed) * 100 / needed;
-
-				/* SCORE_LOAN is inversed */
-				if (val < 0 && i == SCORE_LOAN) x = 0;
-
-				/* Draw it */
-				SetDParam(0, x);
-				DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING);
-
-				/* SCORE_LOAN is inversed */
-				if (i == SCORE_LOAN) val = needed - val;
-
-				/* Draw the amount we have against what is needed
-				 * For some of them it is in currency format */
-				SetDParam(0, val);
-				SetDParam(1, needed);
-				switch (i) {
-					case SCORE_MIN_PROFIT:
-					case SCORE_MIN_INCOME:
-					case SCORE_MAX_INCOME:
-					case SCORE_MONEY:
-					case SCORE_LOAN:
-						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, TC_FROMSTRING);
-						break;
-					default:
-						DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, TC_FROMSTRING);
-				}
-			}
-
-			break;
+	PerformanceRatingDetailWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		/* Disable the players who are not active */
+		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
+			this->SetWidgetDisabledState(i + 13, !GetPlayer(i)->is_active);
 		}
 
-		case WE_CLICK:
-			/* Check which button is clicked */
-			if (IsInsideMM(e->we.click.widget, 13, 21)) {
-				/* Is it no on disable? */
-				if (!w->IsWidgetDisabled(e->we.click.widget)) {
-					w->RaiseWidget(_performance_rating_detail_player + 13);
-					_performance_rating_detail_player = (PlayerID)(e->we.click.widget - 13);
-					w->LowerWidget(_performance_rating_detail_player + 13);
-					w->SetDirty();
-				}
-			}
-			break;
+		this->UpdatePlayerStats();
 
-		case WE_CREATE: {
-			Player *p2;
-
-			/* Disable the players who are not active */
-			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-				w->SetWidgetDisabledState(i + 13, !GetPlayer(i)->is_active);
-			}
-			/* Update all player stats with the current data
-			 * (this is because _score_info is not saved to a savegame) */
-			FOR_ALL_PLAYERS(p2) {
-				if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
-			}
-
-			w->custom[0] = DAY_TICKS;
-			w->custom[1] = 5;
-
-			if (_performance_rating_detail_player != INVALID_PLAYER) w->LowerWidget(_performance_rating_detail_player + 13);
-			w->SetDirty();
-
-			break;
-		}
-
-		case WE_TICK:
-			if (_pause_game != 0) break;
-
-			/* Update the player score every 5 days */
-			if (--w->custom[0] == 0) {
-				w->custom[0] = DAY_TICKS;
-				if (--w->custom[1] == 0) {
-					Player *p2;
-
-					w->custom[1] = 5;
-					FOR_ALL_PLAYERS(p2) {
-						/* Skip if player is not active */
-						if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
-					}
-					w->SetDirty();
-				}
-			}
-
-			break;
+		if (player != INVALID_PLAYER) this->LowerWidget(player + 13);
+		this->SetDirty();
 	}
-}
+
+	void UpdatePlayerStats()
+	{
+		/* Update all player stats with the current data
+		 * (this is because _score_info is not saved to a savegame) */
+		Player *p;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) UpdateCompanyRatingAndValue(p, false);
+		}
+
+		this->timeout = DAY_TICKS * 5;
+
+	}
+
+	virtual void OnPaint()
+	{
+		byte x;
+		uint16 y = 14;
+		int total_score = 0;
+		int color_done, color_notdone;
+
+		/* Draw standard stuff */
+		DrawWindowWidgets(this);
+
+		/* Check if the currently selected player is still active. */
+		if (player == INVALID_PLAYER || !GetPlayer(player)->is_active) {
+			if (player != INVALID_PLAYER) {
+				/* Raise and disable the widget for the previous selection. */
+				this->RaiseWidget(player + 13);
+				this->DisableWidget(player + 13);
+				this->SetDirty();
+
+				player = INVALID_PLAYER;
+			}
+
+			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
+				if (GetPlayer(i)->is_active) {
+					/* Lower the widget corresponding to this player. */
+					this->LowerWidget(i + 13);
+					this->SetDirty();
+
+					player = i;
+					break;
+				}
+			}
+		}
+
+		/* If there are no active players, don't display anything else. */
+		if (player == INVALID_PLAYER) return;
+
+		/* Paint the player icons */
+		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
+			if (!GetPlayer(i)->is_active) {
+				/* Check if we have the player as an active player */
+				if (!this->IsWidgetDisabled(i + 13)) {
+					/* Bah, player gone :( */
+					this->DisableWidget(i + 13);
+
+					/* We need a repaint */
+					this->SetDirty();
+				}
+				continue;
+			}
+
+			/* Check if we have the player marked as inactive */
+			if (this->IsWidgetDisabled(i + 13)) {
+				/* New player! Yippie :p */
+				this->EnableWidget(i + 13);
+				/* We need a repaint */
+				this->SetDirty();
+			}
+
+			x = (i == player) ? 1 : 0;
+			DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
+		}
+
+		/* The colors used to show how the progress is going */
+		color_done = _colour_gradient[COLOUR_GREEN][4];
+		color_notdone = _colour_gradient[COLOUR_RED][4];
+
+		/* Draw all the score parts */
+		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
+			int val    = _score_part[player][i];
+			int needed = _score_info[i].needed;
+			int score  = _score_info[i].score;
+
+			y += 20;
+			/* SCORE_TOTAL has his own rulez ;) */
+			if (i == SCORE_TOTAL) {
+				needed = total_score;
+				score = SCORE_MAX;
+			} else {
+				total_score += score;
+			}
+
+			DrawString(7, y, STR_PERFORMANCE_DETAIL_VEHICLES + i, TC_FROMSTRING);
+
+			/* Draw the score */
+			SetDParam(0, score);
+			DrawStringRightAligned(107, y, SET_PERFORMANCE_DETAIL_INT, TC_FROMSTRING);
+
+			/* Calculate the %-bar */
+			x = Clamp(val, 0, needed) * 50 / needed;
+
+			/* SCORE_LOAN is inversed */
+			if (val < 0 && i == SCORE_LOAN) x = 0;
+
+			/* Draw the bar */
+			if (x !=  0) GfxFillRect(112,     y - 2, 112 + x,  y + 10, color_done);
+			if (x != 50) GfxFillRect(112 + x, y - 2, 112 + 50, y + 10, color_notdone);
+
+			/* Calculate the % */
+			x = Clamp(val, 0, needed) * 100 / needed;
+
+			/* SCORE_LOAN is inversed */
+			if (val < 0 && i == SCORE_LOAN) x = 0;
+
+			/* Draw it */
+			SetDParam(0, x);
+			DrawStringCentered(137, y, STR_PERFORMANCE_DETAIL_PERCENT, TC_FROMSTRING);
+
+			/* SCORE_LOAN is inversed */
+			if (i == SCORE_LOAN) val = needed - val;
+
+			/* Draw the amount we have against what is needed
+				* For some of them it is in currency format */
+			SetDParam(0, val);
+			SetDParam(1, needed);
+			switch (i) {
+				case SCORE_MIN_PROFIT:
+				case SCORE_MIN_INCOME:
+				case SCORE_MAX_INCOME:
+				case SCORE_MONEY:
+				case SCORE_LOAN:
+					DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY, TC_FROMSTRING);
+					break;
+				default:
+					DrawString(167, y, STR_PERFORMANCE_DETAIL_AMOUNT_INT, TC_FROMSTRING);
+			}
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		/* Check which button is clicked */
+		if (IsInsideMM(widget, 13, 21)) {
+			/* Is it no on disable? */
+			if (!this->IsWidgetDisabled(widget)) {
+				this->RaiseWidget(player + 13);
+				player = (PlayerID)(widget - 13);
+				this->LowerWidget(player + 13);
+				this->SetDirty();
+			}
+		}
+	}
+
+	virtual void OnTick()
+	{
+		if (_pause_game != 0) return;
+
+		/* Update the player score every 5 days */
+		if (--this->timeout == 0) {
+			this->UpdatePlayerStats();
+			this->SetDirty();
+		}
+	}
+};
+
+PlayerID PerformanceRatingDetailWindow::player = INVALID_PLAYER;
+
 
 static const Widget _performance_rating_detail_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
@@ -1158,10 +1154,10 @@ static const WindowDesc _performance_rating_detail_desc = {
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_performance_rating_detail_widgets,
-	PerformanceRatingDetailWndProc
+	NULL
 };
 
 void ShowPerformanceRatingDetail()
 {
-	AllocateWindowDescFront<Window>(&_performance_rating_detail_desc, 0);
+	AllocateWindowDescFront<PerformanceRatingDetailWindow>(&_performance_rating_detail_desc, 0);
 }
