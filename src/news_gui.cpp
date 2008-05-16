@@ -723,101 +723,96 @@ enum {
 	WIDGET_NEWSOPT_START_OPTION = 8,  ///< First widget that is part of a group [<] .. [.]
 };
 
-/**
- * Setup the disabled/enabled buttons in the message window
- * If the value is 'off' disable the [<] widget, and enable the [>] one
- * Same-wise for all the others. Starting value of 4 is the first widget
- * group. These are grouped as [<][>] .. [<][>], etc.
- * @param w Window been used
- * @param value to set in the widget
- * @param element index of the group of widget to set
- */
-static void SetMessageButtonStates(Window *w, byte value, int element)
-{
-	element *= NB_WIDG_PER_SETTING;
+static const StringID _message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
 
-	w->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION, value == 0);
-	w->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
-}
+struct MessageOptionsWindow : Window {
+	int state;
 
-/**
- * Event handler of the Message Options window
- * @param w window pointer
- * @param e event been triggered
- */
-static void MessageOptionsWndProc(Window *w, WindowEvent *e)
-{
-	static const StringID message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
+	MessageOptionsWindow(const WindowDesc *desc) : Window(desc)
+	{
+		NewsDisplay all_val;
 
-	/* WP(w, def_d).data_1 stores state of the ALL on/off/summary button */
-	switch (e->event) {
-		case WE_CREATE: {
-			NewsDisplay all_val;
-
-			/* Set up the initial disabled buttons in the case of 'off' or 'full' */
-			all_val = _news_type_data[0].display;
-			for (int i = 0; i < NT_END; i++) {
-				SetMessageButtonStates(w, _news_type_data[i].display, i);
-				/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
-				if (_news_type_data[i].display != all_val) all_val = ND_OFF;
-			}
-			/* If all values are the same value, the ALL-button will take over this value */
-			WP(w, def_d).data_1 = all_val;
-			break;
+		/* Set up the initial disabled buttons in the case of 'off' or 'full' */
+		all_val = _news_type_data[0].display;
+		for (int i = 0; i < NT_END; i++) {
+			this->SetMessageButtonStates(_news_type_data[i].display, i);
+			/* If the value doesn't match the ALL-button value, set the ALL-button value to 'off' */
+			if (_news_type_data[i].display != all_val) all_val = ND_OFF;
 		}
-
-		case WE_PAINT:
-			if (_news_ticker_sound) w->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
-
-			w->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = message_opt[WP(w, def_d).data_1];
-			DrawWindowWidgets(w);
-
-			/* Draw the string of each setting on each button. */
-			for (int i = 0, y = 26; i < NT_END; i++, y += 12) {
-				/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
-				 * which will give centered position */
-				DrawStringCentered(51, y + 1, message_opt[_news_type_data[i].display], TC_BLACK);
-			}
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case WIDGET_NEWSOPT_DROP_SUMMARY: // Dropdown menu for all settings
-					ShowDropDownMenu(w, message_opt, WP(w, def_d).data_1, WIDGET_NEWSOPT_DROP_SUMMARY, 0, 0);
-					break;
-
-				case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
-					_news_ticker_sound ^= 1;
-					w->ToggleWidgetLoweredState(e->we.click.widget);
-					w->InvalidateWidget(e->we.click.widget);
-					break;
-
-				default: { // Clicked on the [<] .. [>] widgets
-					int wid = e->we.click.widget - WIDGET_NEWSOPT_START_OPTION;
-					if (wid >= 0 && wid < (NB_WIDG_PER_SETTING * NT_END)) {
-						int element = wid / NB_WIDG_PER_SETTING;
-						byte val = (_news_type_data[element].display + ((wid % NB_WIDG_PER_SETTING) ? 1 : -1)) % 3;
-
-						SetMessageButtonStates(w, val, element);
-						_news_type_data[element].display = (NewsDisplay)val;
-						w->SetDirty();
-					}
-					break;
-				}
-			}
-			break;
-
-		case WE_DROPDOWN_SELECT: // Select all settings for newsmessages
-			WP(w, def_d).data_1 = e->we.dropdown.index;
-
-			for (int i = 0; i < NT_END; i++) {
-				SetMessageButtonStates(w, e->we.dropdown.index, i);
-				_news_type_data[i].display = (NewsDisplay)e->we.dropdown.index;
-			}
-			w->SetDirty();
-			break;
+		/* If all values are the same value, the ALL-button will take over this value */
+		this->state = all_val;
 	}
-}
+
+	/**
+	 * Setup the disabled/enabled buttons in the message window
+	 * If the value is 'off' disable the [<] widget, and enable the [>] one
+	 * Same-wise for all the others. Starting value of 4 is the first widget
+	 * group. These are grouped as [<][>] .. [<][>], etc.
+	 * @param value to set in the widget
+	 * @param element index of the group of widget to set
+	 */
+	void SetMessageButtonStates(byte value, int element)
+	{
+		element *= NB_WIDG_PER_SETTING;
+
+		this->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION, value == 0);
+		this->SetWidgetDisabledState(element + WIDGET_NEWSOPT_START_OPTION + 2, value == 2);
+	}
+
+	virtual void OnPaint()
+	{
+		if (_news_ticker_sound) this->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
+
+		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = _message_opt[this->state];
+		DrawWindowWidgets(this);
+
+		/* Draw the string of each setting on each button. */
+		for (int i = 0, y = 26; i < NT_END; i++, y += 12) {
+			/* 51 comes from 13 + 89 (left and right of the button)+1, shiefted by one as to get division,
+				* which will give centered position */
+			DrawStringCentered(51, y + 1, _message_opt[_news_type_data[i].display], TC_BLACK);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case WIDGET_NEWSOPT_DROP_SUMMARY: // Dropdown menu for all settings
+				ShowDropDownMenu(this, _message_opt, this->state, WIDGET_NEWSOPT_DROP_SUMMARY, 0, 0);
+				break;
+
+			case WIDGET_NEWSOPT_SOUNDTICKER: // Change ticker sound on/off
+				_news_ticker_sound ^= 1;
+				this->ToggleWidgetLoweredState(widget);
+				this->InvalidateWidget(widget);
+				break;
+
+			default: { // Clicked on the [<] .. [>] widgets
+				int wid = widget - WIDGET_NEWSOPT_START_OPTION;
+				if (wid >= 0 && wid < (NB_WIDG_PER_SETTING * NT_END)) {
+					int element = wid / NB_WIDG_PER_SETTING;
+					byte val = (_news_type_data[element].display + ((wid % NB_WIDG_PER_SETTING) ? 1 : -1)) % 3;
+
+					this->SetMessageButtonStates(val, element);
+					_news_type_data[element].display = (NewsDisplay)val;
+					this->SetDirty();
+				}
+				break;
+			}
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		this->state = index;
+
+		for (int i = 0; i < NT_END; i++) {
+			this->SetMessageButtonStates(index, i);
+			_news_type_data[i].display = (NewsDisplay)index;
+		}
+		this->SetDirty();
+	}
+};
 
 
 /*
@@ -918,13 +913,13 @@ static const WindowDesc _message_options_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,
-	MessageOptionsWndProc
+	NULL
 };
 
 void ShowMessageOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	new Window(&_message_options_desc);
+	new MessageOptionsWindow(&_message_options_desc);
 }
 
 
