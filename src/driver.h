@@ -43,7 +43,7 @@ private:
 
 	static Drivers &GetDrivers()
 	{
-		static Drivers s_drivers;
+		static Drivers &s_drivers = *new Drivers();
 		return s_drivers;
 	}
 
@@ -71,7 +71,14 @@ public:
 	 */
 	virtual ~DriverFactoryBase() {
 		if (this->name == NULL) return;
-		GetDrivers().erase(this->name);
+
+		/* Prefix the name with driver type to make it unique */
+		char buf[32];
+		strecpy(buf, GetDriverTypeName(type), lastof(buf));
+		strecpy(buf + 5, this->name, lastof(buf));
+
+		GetDrivers().erase(buf);
+		if (GetDrivers().empty()) delete &GetDrivers();
 		free(this->name);
 	}
 
