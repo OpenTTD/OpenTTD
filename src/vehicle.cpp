@@ -2757,7 +2757,11 @@ Vehicle* BackuppedVehicle::RestoreBackupVehicle(Vehicle *v, Player *p)
 		memcpy(dest, backup, sizeof(Vehicle));
 
 		/* We decreased the engine count when we sold the engines so we will increase it again. */
-		if (IsEngineCountable(backup)) p->num_engines[backup->engine_type]++;
+		if (IsEngineCountable(backup)) {
+			p->num_engines[backup->engine_type]++;
+			if (IsValidGroupID(backup->group_id)) GetGroup(backup->group_id)->num_engines[backup->engine_type]++;
+			if (backup->IsPrimaryVehicle()) IncreaseGroupNumVehicle(backup->group_id);
+		}
 
 		/* Update hash. */
 		Vehicle *dummy = dest;
