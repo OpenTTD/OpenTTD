@@ -99,58 +99,6 @@ void Window::OnClick(Point pt, int widget)
 	this->HandleWindowEvent(&e);
 }
 
-void Window::OnDoubleClick(Point pt, int widget)
-{
-	WindowEvent e;
-	e.event = WE_DOUBLE_CLICK;
-	e.we.click.pt     = pt;
-	e.we.click.widget = widget;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnRightClick(Point pt, int widget)
-{
-	WindowEvent e;
-	e.event = WE_RCLICK;
-	e.we.click.pt     = pt;
-	e.we.click.widget = widget;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnDragDrop(Point pt, int widget)
-{
-	WindowEvent e;
-	e.event = WE_DRAGDROP;
-	e.we.click.pt     = pt;
-	e.we.click.widget = widget;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnScroll(Point delta)
-{
-	WindowEvent e;
-	e.event = WE_SCROLL;
-	e.we.scroll.delta = delta;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnMouseOver(Point pt, int widget)
-{
-	WindowEvent e;
-	e.event = WE_MOUSEOVER;
-	e.we.click.pt     = pt;
-	e.we.click.widget = widget;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnMouseWheel(int wheel)
-{
-	WindowEvent e;
-	e.event = WE_MOUSEWHEEL;
-	e.we.wheel.wheel = wheel;
-	this->HandleWindowEvent(&e);
-}
-
 void Window::OnMouseLoop()
 {
 	WindowEvent e;
@@ -1972,7 +1920,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 
 	if (mousewheel != 0) {
 		if (_patches.scrollwheel_scrolling == 0) {
-			/* Send WE_MOUSEWHEEL event to window */
+			/* Send mousewheel event to window */
 			w->OnMouseWheel(mousewheel);
 		}
 

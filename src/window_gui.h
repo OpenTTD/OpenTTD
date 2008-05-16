@@ -114,10 +114,6 @@ enum WindowEventCodes {
 	WE_PAINT,        ///< Repaint the window contents
 	WE_KEYPRESS,     ///< Key pressed
 	WE_CLICK,        ///< Left mouse button click
-	WE_DOUBLE_CLICK, ///< Left mouse button double click
-	WE_RCLICK,       ///< Right mouse button click
-	WE_MOUSEOVER,
-	WE_MOUSEWHEEL,
 	WE_MOUSELOOP,    ///< Event for each mouse event in the game (at least once every game tick)
 	WE_TICK,         ///< Regularly occurring event (every game tick)
 	WE_100_TICKS,    ///< Regularly occurring event (every 100 game ticks, approximatelly 3 seconds)
@@ -125,13 +121,11 @@ enum WindowEventCodes {
 	WE_PLACE_OBJ,
 	WE_ABORT_PLACE_OBJ,
 	WE_ON_EDIT_TEXT,
-	WE_DRAGDROP,
 	WE_PLACE_DRAG,
 	WE_PLACE_MOUSEUP,
 	WE_PLACE_PRESIZE,
 	WE_DROPDOWN_SELECT,
 	WE_RESIZE,          ///< Request to resize the window, @see WindowEvent.we.resize
-	WE_SCROLL,
 	WE_INVALIDATE_DATA, ///< Notification that data displayed by the window is obsolete
 	WE_CTRL_CHANGED,    ///< CTRL key has changed state
 };
@@ -176,11 +170,6 @@ struct WindowEvent {
 		} dropdown;
 
 		struct {
-			Point pt;
-			int widget;
-		} mouseover;
-
-		struct {
 			bool cont;      ///< continue the search? (default true)
 			uint16 key;     ///< 16-bit Unicode value of the key
 			uint16 keycode; ///< untranslated key (including shift-state)
@@ -189,14 +178,6 @@ struct WindowEvent {
 		struct {
 			int data;
 		} invalidate;
-
-		struct {
-			Point delta;   ///< delta position against position of last call
-		} scroll;
-
-		struct {
-			int wheel;     ///< how much was 'wheel'd'
-		} wheel;
 
 		struct {
 			bool cont;     ///< continue the search? (default true)
@@ -380,27 +361,27 @@ public:
 	 * @param pt     the point inside the window that has been clicked.
 	 * @param widget the clicked widget.
 	 */
-	virtual void OnDoubleClick(Point pt, int widget);
+	virtual void OnDoubleClick(Point pt, int widget) {}
 
 	/**
 	 * A click with the right mouse button has been made on the window.
 	 * @param pt     the point inside the window that has been clicked.
 	 * @param widget the clicked widget.
 	 */
-	virtual void OnRightClick(Point pt, int widget);
+	virtual void OnRightClick(Point pt, int widget) {}
 
 	/**
 	 * A dragged 'object' has been released.
 	 * @param pt     the point inside the window where the release took place.
 	 * @param widget the widget where the release took place.
 	 */
-	virtual void OnDragDrop(Point pt, int widget);
+	virtual void OnDragDrop(Point pt, int widget) {}
 
 	/**
 	 * Handle the request for (viewport) scrolling.
 	 * @param delta the amount the viewport must be scrolled.
 	 */
-	virtual void OnScroll(Point delta);
+	virtual void OnScroll(Point delta) {}
 
 	/**
 	 * The mouse is currently moving over the window or has just moved outside
@@ -408,13 +389,13 @@ public:
 	 * @param pt     the point inside the window that the mouse hovers over.
 	 * @param widget the widget the mouse hovers over.
 	 */
-	virtual void OnMouseOver(Point pt, int widget);
+	virtual void OnMouseOver(Point pt, int widget) {}
 
 	/**
 	 * The mouse wheel has been turned.
 	 * @param wheel the amount of movement of the mouse wheel.
 	 */
-	virtual void OnMouseWheel(int wheel);
+	virtual void OnMouseWheel(int wheel) {}
 
 
 	/**
