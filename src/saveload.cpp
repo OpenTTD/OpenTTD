@@ -30,6 +30,7 @@
 #include "core/endian_func.hpp"
 #include "vehicle_base.h"
 #include "autoreplace_base.h"
+#include "statusbar_gui.h"
 #include <list>
 
 #include "table/strings.h"
@@ -1493,7 +1494,7 @@ static void SaveFileStart()
 	_fast_forward = 0;
 	if (_cursor.sprite == SPR_CURSOR_MOUSE) SetMouseCursor(SPR_CURSOR_ZZZ, PAL_NONE);
 
-	InvalidateWindowData(WC_STATUS_BAR, 0, true);
+	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_START);
 	_ts.saveinprogress = true;
 }
 
@@ -1504,7 +1505,7 @@ static void SaveFileDone()
 	_fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 
-	InvalidateWindowData(WC_STATUS_BAR, 0, false);
+	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
 	_ts.saveinprogress = false;
 }
 

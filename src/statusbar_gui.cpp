@@ -18,6 +18,7 @@
 #include "window_gui.h"
 #include "variables.h"
 #include "window_func.h"
+#include "statusbar_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -107,7 +108,13 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_INVALIDATE_DATA:
-			WP(w, def_d).data_3 = e->we.invalidate.data;
+			switch (e->we.invalidate.data) {
+				default: NOT_REACHED();
+				case SBI_SAVELOAD_START:  WP(w, def_d).data_3 = true;  break;
+				case SBI_SAVELOAD_FINISH: WP(w, def_d).data_3 = false; break;
+				case SBI_SHOW_TICKER:     WP(w, def_d).data_1 = 360;   break;
+				case SBI_SHOW_REMINDER:   WP(w, def_d).data_2 = 91;    break;
+			}
 			break;
 
 		case WE_CLICK:
@@ -151,6 +158,15 @@ static WindowDesc _main_status_desc = {
 	_main_status_widgets,
 	StatusBarWndProc
 };
+
+/**
+ * Checks whether the news ticker is currently being used.
+ */
+bool IsNewsTickerShown()
+{
+	const Window *w = FindWindowById(WC_STATUS_BAR, 0);
+	return w != NULL && WP(w, const def_d).data_1 > -1280;
+}
 
 void ShowStatusBar()
 {

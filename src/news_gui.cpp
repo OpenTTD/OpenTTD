@@ -18,6 +18,7 @@
 #include "string_func.h"
 #include "widgets/dropdown_func.h"
 #include "map_func.h"
+#include "statusbar_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -472,8 +473,7 @@ static void ShowTicker(const NewsItem *ni)
 	if (_news_ticker_sound) SndPlayFx(SND_16_MORSE);
 
 	_statusbar_news_item = *ni;
-	Window *w = FindWindowById(WC_STATUS_BAR, 0);
-	if (w != NULL) WP(w, def_d).data_1 = 360;
+	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);
 }
 
 
@@ -490,8 +490,7 @@ static bool ReadyForNextItem()
 
 	/* Ticker message
 	 * Check if the status bar message is still being displayed? */
-	const Window *w = FindWindowById(WC_STATUS_BAR, 0);
-	if (w != NULL && WP(w, const def_d).data_1 > -1280) return false;
+	if (IsNewsTickerShown()) return false;
 
 	/* Newspaper message, decrement duration counter */
 	if (ni->duration != 0) ni->duration--;
@@ -517,15 +516,9 @@ static void MoveToNextItem()
 
 		switch (_news_type_data[type].display) {
 			default: NOT_REACHED();
-			case ND_OFF: { // Off - show nothing only a small reminder in the status bar
-				Window *w = FindWindowById(WC_STATUS_BAR, 0);
-
-				if (w != NULL) {
-					WP(w, def_d).data_2 = 91;
-					w->SetDirty();
-				}
+			case ND_OFF: // Off - show nothing only a small reminder in the status bar
+				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
 				break;
-			}
 
 			case ND_SUMMARY: // Summary - show ticker, but if forced big, cascade to full
 				if (!(ni->flags & NF_FORCE_BIG)) {

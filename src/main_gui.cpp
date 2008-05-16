@@ -29,6 +29,7 @@
 #include "player_gui.h"
 #include "settings_type.h"
 #include "toolbar_gui.h"
+#include "statusbar_gui.h"
 #include "variables.h"
 #include "tilehighlight_func.h"
 
@@ -430,8 +431,6 @@ void SetupColorsAndInitialWindow()
 			break;
 	}
 }
-
-extern void ShowStatusBar();
 
 void ShowVitalWindows()
 {

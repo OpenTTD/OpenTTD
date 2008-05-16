@@ -1440,6 +1440,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\statusbar_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\stdafx.h"
 				>
 			</File>
