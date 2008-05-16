@@ -40,15 +40,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-struct refit_d {
-	int sel;
-	struct RefitOption *cargo;
-	struct RefitList *list;
-	uint length;
-	VehicleOrderID order;
-};
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
-
 Sorting _sorting;
 static bool   _internal_sort_order;     // descending/ascending
 
@@ -328,89 +319,141 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 	return selected;
 }
 
-static void VehicleRefitWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			Vehicle *v = GetVehicle(w->window_number);
+struct RefitWindow : public Window {
+	int sel;
+	RefitOption *cargo;
+	RefitList *list;
+	uint length;
+	VehicleOrderID order;
 
-			if (v->type == VEH_TRAIN) {
-				uint length = CountVehiclesInChain(v);
+	RefitWindow(const WindowDesc *desc, const Vehicle *v, VehicleOrderID order) : Window(desc, v->index)
+	{
+		this->caption_color = v->owner;
+		this->vscroll.cap = 8;
+		this->resize.step_height = 14;
 
-				if (length != WP(w, refit_d).length) {
-					/* Consist length has changed, so rebuild the refit list */
-					free(WP(w, refit_d).list->items);
-					free(WP(w, refit_d).list);
-					WP(w, refit_d).list = BuildRefitList(v);
-					WP(w, refit_d).length = length;
-				}
-			}
+		this->order = order;
+		this->sel  = -1;
+		this->list = BuildRefitList(v);
+		if (v->type == VEH_TRAIN) this->length = CountVehiclesInChain(v);
+		SetVScrollCount(this, this->list->num_lines);
 
-			SetVScrollCount(w, WP(w, refit_d).list->num_lines);
+		switch (v->type) {
+			case VEH_TRAIN:
+				this->widget[3].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
+				this->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+				break;
 
-			SetDParam(0, v->index);
-			DrawWindowWidgets(w);
+			case VEH_ROAD:
+				this->widget[3].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
+				this->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+				break;
 
-			WP(w, refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
+			case VEH_SHIP:
+				this->widget[3].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[6].data     = STR_983C_REFIT_SHIP;
+				this->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
+				break;
 
-			if (WP(w, refit_d).cargo != NULL) {
-				CommandCost cost;
+			case VEH_AIRCRAFT:
+				this->widget[3].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
+				this->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
+				this->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
+				break;
 
-				cost = DoCommand(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8,
-								 DC_QUERY_COST, GetCmdRefitVeh(GetVehicle(w->window_number)->type));
+			default: NOT_REACHED();
+		}
 
-				if (CmdSucceeded(cost)) {
-					SetDParam(0, WP(w, refit_d).cargo->cargo);
-					SetDParam(1, _returned_refit_capacity);
-					SetDParam(2, cost.GetCost());
-					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
-				}
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 3: { // listbox
-					int y = e->we.click.pt.y - w->widget[3].top;
-					if (y >= 0) {
-						WP(w, refit_d).sel = (y / (int)w->resize.step_height) + w->vscroll.pos;
-						w->SetDirty();
-					}
-				} break;
-				case 6: // refit button
-					if (WP(w, refit_d).cargo != NULL) {
-						const Vehicle *v = GetVehicle(w->window_number);
-
-						if (WP(w, refit_d).order == INVALID_VEH_ORDER_ID) {
-							int command = 0;
-
-							switch (v->type) {
-								default: NOT_REACHED();
-								case VEH_TRAIN:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
-								case VEH_ROAD:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
-								case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
-								case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
-							}
-							if (DoCommandP(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8, NULL, command)) delete w;
-						} else {
-							if (DoCommandP(v->tile, v->index, WP(w, refit_d).cargo->cargo | WP(w, refit_d).cargo->subtype << 8 | WP(w, refit_d).order << 16, NULL, CMD_ORDER_REFIT)) delete w;
-						}
-					}
-					break;
-			}
-			break;
-
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
-			w->widget[3].data = (w->vscroll.cap << 8) + 1;
-			break;
-
-		case WE_DESTROY:
-			free(WP(w, refit_d).list->items);
-			free(WP(w, refit_d).list);
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	~RefitWindow()
+	{
+		free(this->list->items);
+		free(this->list);
+	}
+
+	virtual void OnPaint()
+	{
+		Vehicle *v = GetVehicle(this->window_number);
+
+		if (v->type == VEH_TRAIN) {
+			uint length = CountVehiclesInChain(v);
+
+			if (length != this->length) {
+				/* Consist length has changed, so rebuild the refit list */
+				free(this->list->items);
+				free(this->list);
+				this->list = BuildRefitList(v);
+				this->length = length;
+			}
+		}
+
+		SetVScrollCount(this, this->list->num_lines);
+
+		SetDParam(0, v->index);
+		DrawWindowWidgets(this);
+
+		this->cargo = DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.pos, this->vscroll.cap, this->resize.step_height);
+
+		if (this->cargo != NULL) {
+			CommandCost cost;
+
+			cost = DoCommand(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8,
+							 DC_QUERY_COST, GetCmdRefitVeh(v->type));
+
+			if (CmdSucceeded(cost)) {
+				SetDParam(0, this->cargo->cargo);
+				SetDParam(1, _returned_refit_capacity);
+				SetDParam(2, cost.GetCost());
+				DrawString(2, this->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, TC_FROMSTRING);
+			}
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 3: { // listbox
+				int y = pt.y - this->widget[3].top;
+				if (y >= 0) {
+					this->sel = (y / (int)this->resize.step_height) + this->vscroll.pos;
+					this->SetDirty();
+				}
+				break;
+			}
+
+			case 6: // refit button
+				if (this->cargo != NULL) {
+					const Vehicle *v = GetVehicle(this->window_number);
+
+					if (this->order == INVALID_VEH_ORDER_ID) {
+						int command = 0;
+
+						switch (v->type) {
+							default: NOT_REACHED();
+							case VEH_TRAIN:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
+							case VEH_ROAD:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
+							case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
+							case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
+						}
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, NULL, command)) delete this;
+					} else {
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, NULL, CMD_ORDER_REFIT)) delete this;
+					}
+				}
+				break;
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
+		this->widget[3].data = (this->vscroll.cap << 8) + 1;
+	}
+};
 
 
 static const Widget _vehicle_refit_widgets[] = {
@@ -430,7 +473,7 @@ static const WindowDesc _vehicle_refit_desc = {
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_refit_widgets,
-	VehicleRefitWndProc,
+	NULL
 };
 
 /** Show the refit window for a vehicle
@@ -439,46 +482,8 @@ static const WindowDesc _vehicle_refit_desc = {
 */
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 {
-	Window *w;
-
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
-
-	w = AllocateWindowDescFront<Window>(&_vehicle_refit_desc, v->index);
-	WP(w, refit_d).order = order;
-
-	if (w != NULL) {
-		w->caption_color = v->owner;
-		w->vscroll.cap = 8;
-		w->resize.step_height = 14;
-		WP(w, refit_d).sel  = -1;
-		WP(w, refit_d).list = BuildRefitList(v);
-		if (v->type == VEH_TRAIN) WP(w, refit_d).length = CountVehiclesInChain(v);
-		SetVScrollCount(w, WP(w, refit_d).list->num_lines);
-
-		switch (v->type) {
-			case VEH_TRAIN:
-				w->widget[3].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
-				w->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
-				w->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
-				break;
-			case VEH_ROAD:
-				w->widget[3].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
-				w->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
-				w->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
-				break;
-			case VEH_SHIP:
-				w->widget[3].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
-				w->widget[6].data     = STR_983C_REFIT_SHIP;
-				w->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
-				break;
-			case VEH_AIRCRAFT:
-				w->widget[3].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
-				w->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
-				w->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
-				break;
-			default: NOT_REACHED();
-		}
-	}
+	new RefitWindow(&_vehicle_refit_desc, v, order);
 }
 
 /** Display additional text from NewGRF in the purchase information window */
