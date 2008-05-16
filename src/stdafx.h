@@ -145,6 +145,10 @@
 	#include <malloc.h> // alloca()
 #endif
 
+#if defined(WIN32)
+	#define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
+#endif
+
 /* Stuff for MSVC */
 #if defined(_MSC_VER)
 	#pragma once
@@ -158,7 +162,6 @@
 	#endif
 	#define _WIN32_IE_ 0x0401         // 4.01 (win98 and NT4SP5+)
 
-	#define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 	#pragma warning(disable: 4244)  // 'conversion' conversion from 'type1' to 'type2', possible loss of data
 	#pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
 	#pragma warning(disable: 4200)  // nonstandard extension used : zero-sized array in struct/union
