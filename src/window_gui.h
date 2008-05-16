@@ -245,8 +245,6 @@ enum WindowDefaultPosition {
 	WDP_ALIGN_TBL = -4, ///< Align the left side of the window with the left side of the main toolbar
 };
 
-#define WP(ptr, str) (*(str*)(ptr)->custom)
-
 /**
  * Scrollbar data structure
  */
@@ -320,7 +318,6 @@ public:
 	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
 
 	Window *parent;        ///< Parent window
-	byte custom[WINDOW_CUSTOM_SIZE]; ///< Additional data depending on window type
 
 	void HandleButtonClick(byte widget);
 
