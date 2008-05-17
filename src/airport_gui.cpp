@@ -138,103 +138,104 @@ void ShowBuildAirToolbar()
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
-enum {
-	BAW_BOTTOMPANEL = 10,
-	BAW_SMALL_AIRPORT,
-	BAW_CITY_AIRPORT,
-	BAW_HELIPORT,
-	BAW_METRO_AIRPORT,
-	BAW_STR_INTERNATIONAL_AIRPORT,
-	BAW_COMMUTER_AIRPORT,
-	BAW_HELIDEPOT,
-	BAW_STR_INTERCONTINENTAL_AIRPORT,
-	BAW_HELISTATION,
-	BAW_LAST_AIRPORT = BAW_HELISTATION,
-	BAW_AIRPORT_COUNT = BAW_LAST_AIRPORT - BAW_SMALL_AIRPORT + 1,
-	BAW_BTN_DONTHILIGHT = BAW_LAST_AIRPORT + 1,
-	BAW_BTN_DOHILIGHT,
-};
+class AirportPickerWindow : public PickerWindowBase {
 
-static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			w->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
-			w->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
-			w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-			break;
+	enum {
+		BAW_BOTTOMPANEL = 10,
+		BAW_SMALL_AIRPORT,
+		BAW_CITY_AIRPORT,
+		BAW_HELIPORT,
+		BAW_METRO_AIRPORT,
+		BAW_STR_INTERNATIONAL_AIRPORT,
+		BAW_COMMUTER_AIRPORT,
+		BAW_HELIDEPOT,
+		BAW_STR_INTERCONTINENTAL_AIRPORT,
+		BAW_HELISTATION,
+		BAW_LAST_AIRPORT = BAW_HELISTATION,
+		BAW_AIRPORT_COUNT = BAW_LAST_AIRPORT - BAW_SMALL_AIRPORT + 1,
+		BAW_BTN_DONTHILIGHT = BAW_LAST_AIRPORT + 1,
+		BAW_BTN_DOHILIGHT,
+	};
 
-		case WE_PAINT: {
-			int i; // airport enabling loop
-			uint32 avail_airports;
-			const AirportFTAClass *airport;
+public:
 
-			avail_airports = GetValidAirports();
+	AirportPickerWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
+		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
+		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 
-			w->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-			if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
-			if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
-			w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-
-			/* 'Country Airport' starts at widget BAW_SMALL_AIRPORT, and if its bit is set, it is
-			 * available, so take its opposite value to set the disabled state.
-			 * There are 9 buildable airports
-			 * XXX TODO : all airports should be held in arrays, with all relevant data.
-			 * This should be part of newgrf-airports, i suppose
-			 */
-			for (i = 0; i < BAW_AIRPORT_COUNT; i++) w->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !HasBit(avail_airports, i));
-
-			/* select default the coverage area to 'Off' (16) */
-			airport = GetAirport(_selected_airport_type);
-			SetTileSelectSize(airport->size_x, airport->size_y);
-
-			int rad = _patches.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
-
-			if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-
-			DrawWindowWidgets(w);
-			/* strings such as 'Size' and 'Coverage Area' */
-			int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
-			text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
-			if (text_end != w->widget[BAW_BOTTOMPANEL].bottom) {
-				w->SetDirty();
-				ResizeWindowForWidget(w, BAW_BOTTOMPANEL, 0, text_end - w->widget[BAW_BOTTOMPANEL].bottom);
-				w->SetDirty();
-			}
-			break;
-		}
-
-		case WE_CLICK: {
-			switch (e->we.click.widget) {
-				case BAW_SMALL_AIRPORT: case BAW_CITY_AIRPORT: case BAW_HELIPORT: case BAW_METRO_AIRPORT:
-				case BAW_STR_INTERNATIONAL_AIRPORT: case BAW_COMMUTER_AIRPORT: case BAW_HELIDEPOT:
-				case BAW_STR_INTERCONTINENTAL_AIRPORT: case BAW_HELISTATION:
-					w->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-					_selected_airport_type = e->we.click.widget - BAW_SMALL_AIRPORT;
-					w->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
-					SndPlayFx(SND_15_BEEP);
-					w->SetDirty();
-					break;
-
-				case BAW_BTN_DONTHILIGHT: case BAW_BTN_DOHILIGHT:
-					_station_show_coverage = (e->we.click.widget != BAW_BTN_DONTHILIGHT);
-					w->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
-					w->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
-					SndPlayFx(SND_15_BEEP);
-					w->SetDirty();
-					break;
-			}
-		} break;
-
-		case WE_TICK:
-			CheckRedrawStationCoverage(w);
-			break;
-
-		case WE_DESTROY:
-			ResetObjectToPlace();
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		int i; // airport enabling loop
+		uint32 avail_airports;
+		const AirportFTAClass *airport;
+
+		avail_airports = GetValidAirports();
+
+		this->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+		if (!HasBit(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
+		if (!HasBit(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
+		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+
+		/* 'Country Airport' starts at widget BAW_SMALL_AIRPORT, and if its bit is set, it is
+		 * available, so take its opposite value to set the disabled state.
+		 * There are 9 buildable airports
+		 * XXX TODO : all airports should be held in arrays, with all relevant data.
+		 * This should be part of newgrf-airports, i suppose
+		 */
+		for (i = 0; i < BAW_AIRPORT_COUNT; i++) this->SetWidgetDisabledState(i + BAW_SMALL_AIRPORT, !HasBit(avail_airports, i));
+
+		/* select default the coverage area to 'Off' (16) */
+		airport = GetAirport(_selected_airport_type);
+		SetTileSelectSize(airport->size_x, airport->size_y);
+
+		int rad = _patches.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+
+		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+
+		DrawWindowWidgets(this);
+		/* strings such as 'Size' and 'Coverage Area' */
+		int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
+		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
+		if (text_end != this->widget[BAW_BOTTOMPANEL].bottom) {
+			this->SetDirty();
+			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, text_end - this->widget[BAW_BOTTOMPANEL].bottom);
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BAW_SMALL_AIRPORT: case BAW_CITY_AIRPORT: case BAW_HELIPORT: case BAW_METRO_AIRPORT:
+			case BAW_STR_INTERNATIONAL_AIRPORT: case BAW_COMMUTER_AIRPORT: case BAW_HELIDEPOT:
+			case BAW_STR_INTERCONTINENTAL_AIRPORT: case BAW_HELISTATION:
+				this->RaiseWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+				_selected_airport_type = widget - BAW_SMALL_AIRPORT;
+				this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
+			case BAW_BTN_DONTHILIGHT: case BAW_BTN_DOHILIGHT:
+				_station_show_coverage = (widget != BAW_BTN_DONTHILIGHT);
+				this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
+				this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+		}
+	}
+
+	virtual void OnTick()
+	{
+		CheckRedrawStationCoverage(this);
+	}
+};
 
 static const Widget _build_airport_picker_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
@@ -268,12 +269,12 @@ static const WindowDesc _build_airport_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_airport_picker_widgets,
-	BuildAirportPickerWndProc
+	NULL
 };
 
 static void ShowBuildAirportPicker()
 {
-	new Window(&_build_airport_desc);
+	new AirportPickerWindow(&_build_airport_desc);
 }
 
 void InitializeAirportGui()
