@@ -348,9 +348,12 @@ private:
 	uint64 decode_params[20];
 	StringID message_1;
 	StringID message_2;
+	bool show_player_face;
 
 public:
-	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget) : Window(pt.x, pt.y, width, height, NULL, WC_ERRMSG, widget)
+	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_player_face) :
+			Window(pt.x, pt.y, width, height, NULL, WC_ERRMSG, widget),
+			show_player_face(show_player_face)
 	{
 		this->duration = _patches.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
@@ -372,22 +375,20 @@ public:
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 
 		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
-		* If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
-		*/
+		 * If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
+		 */
 		SwitchToErrorRefStack();
 		RewindTextRefStack();
 
-		byte i = 0;
-		if (IsWindowOfPrototype(this, _errmsg_face_widgets)) {
+		if (this->show_player_face) {
 			const Player *p = GetPlayer((PlayerID)GetDParamX(this->decode_params, 2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
-			i = 1;
 		}
 
 		byte j = (this->message_1 == INVALID_STRING_ID) ? 1 : 0;
-		DrawStringMultiCenter(this->width - 120, y[i][j], this->message_2, this->width - 2);
+		DrawStringMultiCenter(this->width - 120, y[this->show_player_face][j], this->message_2, this->width - 2);
 		if (j == 0) {
-			DrawStringMultiCenter(this->width - 120, y[i][2], this->message_1, this->width - 2);
+			DrawStringMultiCenter(this->width - 120, y[this->show_player_face][2], this->message_1, this->width - 2);
 		}
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
@@ -447,7 +448,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 240) >> 1;
 			pt.y = (_screen.height - 46) >> 1;
 		}
-		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, _errmsg_widgets);
+		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, _errmsg_widgets, false);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -458,7 +459,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;
 		}
-		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, _errmsg_face_widgets);
+		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, _errmsg_face_widgets, true);
 	}
 }
 

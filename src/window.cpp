@@ -796,11 +796,6 @@ static Window *ForceFindDeletableWindow()
 	NOT_REACHED();
 }
 
-bool IsWindowOfPrototype(const Window *w, const Widget *widget)
-{
-	return (w->original_widget == widget);
-}
-
 /**
  * Assign widgets to a new window by initialising its widget pointers, and by
  * copying the widget array \a widget to \c w->widget to allow for resizable

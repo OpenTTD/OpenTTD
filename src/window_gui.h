@@ -598,8 +598,6 @@ enum WindowFlags {
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
 
-bool IsWindowOfPrototype(const Window *w, const Widget *widget);
-
 /**
  * Open a new window.
  * @param *desc The pointer to the WindowDesc to be created
