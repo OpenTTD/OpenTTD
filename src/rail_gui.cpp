@@ -1473,6 +1473,7 @@ public:
 	{
 		this->hscroll.cap = 5;
 		this->hscroll.count = _waypoint_count;
+		this->FindWindowPlacementAndResize(desc);
 	};
 
 	virtual void OnPaint()
