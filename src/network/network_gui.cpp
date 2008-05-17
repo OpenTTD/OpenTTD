@@ -1597,56 +1597,60 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 	ShowQueryString(STR_EMPTY, caption, 20, 180, FindWindowById(WC_NETWORK_STATUS_WINDOW, 0), CS_ALPHANUMERAL);
 }
 
-
-static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			uint8 progress; // used for progress bar
-			DrawWindowWidgets(w);
-
-			DrawStringCentered(125, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY);
-			switch (_network_join_status) {
-				case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
-				case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
-					progress = 10; // first two stages 10%
-					break;
-				case NETWORK_JOIN_STATUS_WAITING:
-					SetDParam(0, _network_join_waiting);
-					DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_WAITING, TC_GREY);
-					progress = 15; // third stage is 15%
-					break;
-				case NETWORK_JOIN_STATUS_DOWNLOADING:
-					SetDParam(0, _network_join_kbytes);
-					SetDParam(1, _network_join_kbytes_total);
-					DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY);
-					/* Fallthrough */
-				default: /* Waiting is 15%, so the resting receivement of map is maximum 70% */
-					progress = 15 + _network_join_kbytes * (100 - 15) / _network_join_kbytes_total;
-			}
-
-			/* Draw nice progress bar :) */
-			DrawFrameRect(20, 18, (int)((w->width - 20) * progress / 100), 28, 10, FR_NONE);
-		} break;
-
-		case WE_CLICK:
-			if (e->we.click.widget == 2) { //Disconnect button
-				NetworkDisconnect();
-				SwitchMode(SM_MENU);
-				ShowNetworkGameWindow();
-			}
-			break;
-
-		case WE_ON_EDIT_TEXT:
-			if (StrEmpty(e->we.edittext.str)) {
-				NetworkDisconnect();
-				ShowNetworkGameWindow();
-			} else {
-				SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, e->we.edittext.str);
-			}
-			break;
+struct NetworkJoinStatusWindow : Window {
+	NetworkJoinStatusWindow(const WindowDesc *desc) : Window(desc)
+	{
+		this->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		uint8 progress; // used for progress bar
+		DrawWindowWidgets(this);
+
+		DrawStringCentered(125, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY);
+		switch (_network_join_status) {
+			case NETWORK_JOIN_STATUS_CONNECTING: case NETWORK_JOIN_STATUS_AUTHORIZING:
+			case NETWORK_JOIN_STATUS_GETTING_COMPANY_INFO:
+				progress = 10; // first two stages 10%
+				break;
+			case NETWORK_JOIN_STATUS_WAITING:
+				SetDParam(0, _network_join_waiting);
+				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_WAITING, TC_GREY);
+				progress = 15; // third stage is 15%
+				break;
+			case NETWORK_JOIN_STATUS_DOWNLOADING:
+				SetDParam(0, _network_join_kbytes);
+				SetDParam(1, _network_join_kbytes_total);
+				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY);
+				/* Fallthrough */
+			default: /* Waiting is 15%, so the resting receivement of map is maximum 70% */
+				progress = 15 + _network_join_kbytes * (100 - 15) / _network_join_kbytes_total;
+		}
+
+		/* Draw nice progress bar :) */
+		DrawFrameRect(20, 18, (int)((this->width - 20) * progress / 100), 28, 10, FR_NONE);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget == 2) { //Disconnect button
+			NetworkDisconnect();
+			SwitchMode(SM_MENU);
+			ShowNetworkGameWindow();
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (StrEmpty(str)) {
+			NetworkDisconnect();
+			ShowNetworkGameWindow();
+		} else {
+			SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, str);
+		}
+	}
+};
 
 static const Widget _network_join_status_window_widget[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,     0,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -1660,15 +1664,13 @@ static const WindowDesc _network_join_status_window_desc = {
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
 	_network_join_status_window_widget,
-	NetworkJoinStatusWindowWndProc,
+	NULL,
 };
 
 void ShowJoinStatusWindow()
 {
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-	Window *w = new Window(&_network_join_status_window_desc);
-	/* Parent the status window to the lobby */
-	if (w != NULL) w->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
+	new NetworkJoinStatusWindow(&_network_join_status_window_desc);
 }
 
 static void SendChat(const char *buf, DestType type, int dest)
