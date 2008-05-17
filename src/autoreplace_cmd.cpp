@@ -216,7 +216,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 			// copy/clone the orders
 			DoCommand(0, (old_v->index << 16) | new_v->index, old_v->IsOrderListShared() ? CO_SHARE : CO_COPY, DC_EXEC, CMD_CLONE_ORDER);
 			new_v->cur_order_index = old_v->cur_order_index;
-			ChangeVehicleViewWindow(old_v, new_v);
+			ChangeVehicleViewWindow(old_v->index, new_v->index);
 			new_v->profit_this_year = old_v->profit_this_year;
 			new_v->profit_last_year = old_v->profit_last_year;
 			new_v->service_interval = old_v->service_interval;

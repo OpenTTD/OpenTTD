@@ -27,6 +27,7 @@
 #include "core/alloc_type.hpp"
 #include "animated_tile_func.h"
 #include "tilehighlight_func.h"
+#include "core/bitmath_func.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"

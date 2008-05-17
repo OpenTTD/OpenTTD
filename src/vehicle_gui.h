@@ -11,7 +11,6 @@
 #include "order_type.h"
 #include "station_type.h"
 #include "engine_type.h"
-#include "vehicle_base.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
@@ -89,21 +88,6 @@ void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int c
 /* ChangeVehicleViewWindow() moves all windows for one vehicle to another vehicle.
  * For ease of use it can be called with both Vehicle pointers and VehicleIDs. */
 void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index);
-
-static inline void ChangeVehicleViewWindow(const Vehicle *from_v, VehicleID to_index)
-{
-	ChangeVehicleViewWindow(from_v->index, to_index);
-}
-
-static inline void ChangeVehicleViewWindow(VehicleID from_index, const Vehicle *to_v)
-{
-	ChangeVehicleViewWindow(from_index, to_v->index);
-}
-
-static inline void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
-{
-	ChangeVehicleViewWindow(from_v->index, to_v->index);
-}
 
 static inline uint GetVehicleListHeight(VehicleType type)
 {

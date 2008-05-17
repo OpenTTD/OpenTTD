@@ -2805,11 +2805,11 @@ Vehicle *BackuppedVehicle::Restore(Vehicle *v, Player *p)
 {
 	if (!ContainsBackup()) return v;
 	if (v != NULL) {
-		ChangeVehicleViewWindow(v, INVALID_VEHICLE);
+		ChangeVehicleViewWindow(v->index, INVALID_VEHICLE);
 		DoCommand(0, v->index, 1, DC_EXEC, GetCmdSellVeh(v));
 	}
 	v = RestoreBackupVehicle(this->vehicles, p);
-	ChangeVehicleViewWindow(INVALID_VEHICLE, v);
+	ChangeVehicleViewWindow(INVALID_VEHICLE, v->index);
 	if (orders != NULL) RestoreVehicleOrdersBruteForce(v, orders);
 	if (economy != NULL) economy->Restore();
 	/* If we stored cargo as well then we should restore it. */
