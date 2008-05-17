@@ -756,43 +756,6 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
-/** Enum referring to the widgets of the rail stations window */
-enum BuildRailStationWidgets {
-	BRSW_CLOSEBOX = 0,
-	BRSW_CAPTION,
-	BRSW_BACKGROUND,
-
-	BRSW_PLATFORM_DIR_X,
-	BRSW_PLATFORM_DIR_Y,
-
-	BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_DIR_Y,
-	BRSW_PLATFORM_NUM_1,
-	BRSW_PLATFORM_NUM_2,
-	BRSW_PLATFORM_NUM_3,
-	BRSW_PLATFORM_NUM_4,
-	BRSW_PLATFORM_NUM_5,
-	BRSW_PLATFORM_NUM_6,
-	BRSW_PLATFORM_NUM_7,
-
-	BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_NUM_7,
-	BRSW_PLATFORM_LEN_1,
-	BRSW_PLATFORM_LEN_2,
-	BRSW_PLATFORM_LEN_3,
-	BRSW_PLATFORM_LEN_4,
-	BRSW_PLATFORM_LEN_5,
-	BRSW_PLATFORM_LEN_6,
-	BRSW_PLATFORM_LEN_7,
-
-	BRSW_PLATFORM_DRAG_N_DROP,
-
-	BRSW_HIGHLIGHT_OFF,
-	BRSW_HIGHLIGHT_ON,
-
-	BRSW_NEWST_DROPDOWN,
-	BRSW_NEWST_LIST,
-	BRSW_NEWST_SCROLL
-};
-
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
  * --pasky */
 
@@ -816,58 +779,109 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 			CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }
 
-/* Check if the currently selected station size is allowed */
-static void CheckSelectedSize(Window *w, const StationSpec *statspec)
-{
-	if (statspec == NULL || _railstation.dragdrop) return;
+struct BuildRailStationWindow : public PickerWindowBase {
+private:
+	/** Enum referring to the widgets of the rail stations window */
+	enum BuildRailStationWidgets {
+		BRSW_CLOSEBOX = 0,
+		BRSW_CAPTION,
+		BRSW_BACKGROUND,
 
-	if (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
-		w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-		_railstation.numtracks = 1;
-		while (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
-			_railstation.numtracks++;
+		BRSW_PLATFORM_DIR_X,
+		BRSW_PLATFORM_DIR_Y,
+
+		BRSW_PLATFORM_NUM_BEGIN = BRSW_PLATFORM_DIR_Y,
+		BRSW_PLATFORM_NUM_1,
+		BRSW_PLATFORM_NUM_2,
+		BRSW_PLATFORM_NUM_3,
+		BRSW_PLATFORM_NUM_4,
+		BRSW_PLATFORM_NUM_5,
+		BRSW_PLATFORM_NUM_6,
+		BRSW_PLATFORM_NUM_7,
+
+		BRSW_PLATFORM_LEN_BEGIN = BRSW_PLATFORM_NUM_7,
+		BRSW_PLATFORM_LEN_1,
+		BRSW_PLATFORM_LEN_2,
+		BRSW_PLATFORM_LEN_3,
+		BRSW_PLATFORM_LEN_4,
+		BRSW_PLATFORM_LEN_5,
+		BRSW_PLATFORM_LEN_6,
+		BRSW_PLATFORM_LEN_7,
+
+		BRSW_PLATFORM_DRAG_N_DROP,
+
+		BRSW_HIGHLIGHT_OFF,
+		BRSW_HIGHLIGHT_ON,
+
+		BRSW_NEWST_DROPDOWN,
+		BRSW_NEWST_LIST,
+		BRSW_NEWST_SCROLL
+	};
+
+	/* Check if the currently selected station size is allowed */
+	void CheckSelectedSize(const StationSpec *statspec)
+	{
+		if (statspec == NULL || _railstation.dragdrop) return;
+
+		if (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+			this->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+			_railstation.numtracks = 1;
+			while (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+				_railstation.numtracks++;
+			}
+			this->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 		}
-		w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-	}
 
-	if (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
-		w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-		_railstation.platlength = 1;
-		while (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
-			_railstation.platlength++;
+		if (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+			this->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+			_railstation.platlength = 1;
+			while (HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+				_railstation.platlength++;
+			}
+			this->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 		}
-		w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-	}
-}
-
-static DropDownList *BuildStationClassDropDown()
-{
-	DropDownList *list = new DropDownList();
-
-	for (uint i = 0; i < GetNumStationClasses(); i++) {
-		if (i == STAT_CLASS_WAYP) continue;
-		list->push_back(new DropDownListStringItem(GetStationClassName((StationClassID)i), i, false));
 	}
 
-	return list;
-}
+	static DropDownList *BuildStationClassDropDown()
+	{
+		DropDownList *list = new DropDownList();
 
-static void StationBuildWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_CREATE:
-		w->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
+		for (uint i = 0; i < GetNumStationClasses(); i++) {
+			if (i == STAT_CLASS_WAYP) continue;
+			list->push_back(new DropDownListStringItem(GetStationClassName((StationClassID)i), i, false));
+		}
+
+		return list;
+	}
+
+public:
+	BuildRailStationWindow(const WindowDesc *desc, bool newstation) : PickerWindowBase(desc)
+	{
+		this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 		if (_railstation.dragdrop) {
-			w->LowerWidget(BRSW_PLATFORM_DRAG_N_DROP);
+			this->LowerWidget(BRSW_PLATFORM_DRAG_N_DROP);
 		} else {
-			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+			this->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+			this->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
 		}
-		w->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
-		w->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
-		break;
+		this->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
+		this->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
 
-	case WE_PAINT: {
+		this->FindWindowPlacementAndResize(desc);
+
+		_railstation.newstations = newstation;
+
+		if (newstation) {
+			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
+
+			this->vscroll.count = _railstation.station_count;
+			this->vscroll.cap   = 5;
+			this->vscroll.pos   = Clamp(_railstation.station_type - 2, 0, this->vscroll.count - this->vscroll.cap);
+		}
+	}
+
+	virtual void OnPaint()
+	{
 		bool newstations = _railstation.newstations;
 		DrawPixelInfo tmp_dpi, *old_dpi;
 		const StationSpec *statspec = newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
@@ -890,16 +904,16 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		for (uint bits = 0; bits < 7; bits++) {
 			bool disable = bits >= _patches.station_spread;
 			if (statspec == NULL) {
-				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, disable);
-				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, disable);
+				this->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, disable);
+				this->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, disable);
 			} else {
-				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, HasBit(statspec->disallowed_platforms, bits) || disable);
-				w->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, HasBit(statspec->disallowed_lengths,   bits) || disable);
+				this->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, HasBit(statspec->disallowed_platforms, bits) || disable);
+				this->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, HasBit(statspec->disallowed_lengths,   bits) || disable);
 			}
 		}
 
 		SetDParam(0, GetStationClassName(_railstation.station_class));
-		w->DrawWidgets();
+		this->DrawWidgets();
 
 		int y_offset = newstations ? 90 : 0;
 
@@ -930,16 +944,16 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		int text_end = DrawStationCoverageAreaText(2, 166 + y_offset, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
-		if (text_end != w->widget[BRSW_BACKGROUND].bottom) {
-			w->SetDirty();
-			ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
-			w->SetDirty();
+		if (text_end != this->widget[BRSW_BACKGROUND].bottom) {
+			this->SetDirty();
+			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, text_end - this->widget[BRSW_BACKGROUND].bottom);
+			this->SetDirty();
 		}
 
 		if (newstations) {
 			uint y = 35;
 
-			for (uint16 i = w->vscroll.pos; i < _railstation.station_count && i < (uint)(w->vscroll.pos + w->vscroll.cap); i++) {
+			for (uint16 i = this->vscroll.pos; i < _railstation.station_count && i < (uint)(this->vscroll.pos + this->vscroll.cap); i++) {
 				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
 				if (statspec != NULL && statspec->name != 0) {
@@ -955,177 +969,175 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				y += 14;
 			}
 		}
-	} break;
+	}
 
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case BRSW_PLATFORM_DIR_X:
-		case BRSW_PLATFORM_DIR_Y:
-			w->RaiseWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
-			_railstation.orientation = e->we.click.widget - BRSW_PLATFORM_DIR_X;
-			w->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
-			SndPlayFx(SND_15_BEEP);
-			w->SetDirty();
-			break;
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BRSW_PLATFORM_DIR_X:
+			case BRSW_PLATFORM_DIR_Y:
+				this->RaiseWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
+				_railstation.orientation = widget - BRSW_PLATFORM_DIR_X;
+				this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
 
-		case BRSW_PLATFORM_NUM_1:
-		case BRSW_PLATFORM_NUM_2:
-		case BRSW_PLATFORM_NUM_3:
-		case BRSW_PLATFORM_NUM_4:
-		case BRSW_PLATFORM_NUM_5:
-		case BRSW_PLATFORM_NUM_6:
-		case BRSW_PLATFORM_NUM_7: {
-			w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			w->RaiseWidget(BRSW_PLATFORM_DRAG_N_DROP);
+			case BRSW_PLATFORM_NUM_1:
+			case BRSW_PLATFORM_NUM_2:
+			case BRSW_PLATFORM_NUM_3:
+			case BRSW_PLATFORM_NUM_4:
+			case BRSW_PLATFORM_NUM_5:
+			case BRSW_PLATFORM_NUM_6:
+			case BRSW_PLATFORM_NUM_7: {
+				this->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+				this->RaiseWidget(BRSW_PLATFORM_DRAG_N_DROP);
 
-			_railstation.numtracks = e->we.click.widget - BRSW_PLATFORM_NUM_BEGIN;
-			_railstation.dragdrop = false;
+				_railstation.numtracks = widget - BRSW_PLATFORM_NUM_BEGIN;
+				_railstation.dragdrop = false;
 
-			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-			if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
-				/* The previously selected number of platforms in invalid */
-				for (uint i = 0; i < 7; i++) {
-					if (!HasBit(statspec->disallowed_lengths, i)) {
-						w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-						_railstation.platlength = i + 1;
-						break;
+				const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+				if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+					/* The previously selected number of platforms in invalid */
+					for (uint i = 0; i < 7; i++) {
+						if (!HasBit(statspec->disallowed_lengths, i)) {
+							this->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+							_railstation.platlength = i + 1;
+							break;
+						}
 					}
 				}
+
+				this->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+				this->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
 			}
 
-			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-			SndPlayFx(SND_15_BEEP);
-			w->SetDirty();
-			break;
-		}
+			case BRSW_PLATFORM_LEN_1:
+			case BRSW_PLATFORM_LEN_2:
+			case BRSW_PLATFORM_LEN_3:
+			case BRSW_PLATFORM_LEN_4:
+			case BRSW_PLATFORM_LEN_5:
+			case BRSW_PLATFORM_LEN_6:
+			case BRSW_PLATFORM_LEN_7: {
+				this->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+				this->RaiseWidget(BRSW_PLATFORM_DRAG_N_DROP);
 
-		case BRSW_PLATFORM_LEN_1:
-		case BRSW_PLATFORM_LEN_2:
-		case BRSW_PLATFORM_LEN_3:
-		case BRSW_PLATFORM_LEN_4:
-		case BRSW_PLATFORM_LEN_5:
-		case BRSW_PLATFORM_LEN_6:
-		case BRSW_PLATFORM_LEN_7: {
-			w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-			w->RaiseWidget(BRSW_PLATFORM_DRAG_N_DROP);
+				_railstation.platlength = widget - BRSW_PLATFORM_LEN_BEGIN;
+				_railstation.dragdrop = false;
 
-			_railstation.platlength = e->we.click.widget - BRSW_PLATFORM_LEN_BEGIN;
-			_railstation.dragdrop = false;
-
-			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-			if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
-				/* The previously selected number of tracks in invalid */
-				for (uint i = 0; i < 7; i++) {
-					if (!HasBit(statspec->disallowed_platforms, i)) {
-						w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-						_railstation.numtracks = i + 1;
-						break;
+				const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+				if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+					/* The previously selected number of tracks in invalid */
+					for (uint i = 0; i < 7; i++) {
+						if (!HasBit(statspec->disallowed_platforms, i)) {
+							this->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+							_railstation.numtracks = i + 1;
+							break;
+						}
 					}
 				}
+
+				this->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+				this->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
 			}
 
-			w->LowerWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-			w->LowerWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-			SndPlayFx(SND_15_BEEP);
-			w->SetDirty();
-			break;
-		}
+			case BRSW_PLATFORM_DRAG_N_DROP: {
+				_railstation.dragdrop ^= true;
+				this->ToggleWidgetLoweredState(BRSW_PLATFORM_DRAG_N_DROP);
 
-		case BRSW_PLATFORM_DRAG_N_DROP: {
-			_railstation.dragdrop ^= true;
-			w->ToggleWidgetLoweredState(BRSW_PLATFORM_DRAG_N_DROP);
-
-			/* get the first allowed length/number of platforms */
-			const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
-			if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
-				for (uint i = 0; i < 7; i++) {
-					if (!HasBit(statspec->disallowed_lengths, i)) {
-						w->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
-						_railstation.platlength = i + 1;
-						break;
+				/* get the first allowed length/number of platforms */
+				const StationSpec *statspec = _railstation.newstations ? GetCustomStationSpec(_railstation.station_class, _railstation.station_type) : NULL;
+				if (statspec != NULL && HasBit(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+					for (uint i = 0; i < 7; i++) {
+						if (!HasBit(statspec->disallowed_lengths, i)) {
+							this->RaiseWidget(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN);
+							_railstation.platlength = i + 1;
+							break;
+						}
 					}
 				}
-			}
-			if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
-				for (uint i = 0; i < 7; i++) {
-					if (!HasBit(statspec->disallowed_platforms, i)) {
-						w->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
-						_railstation.numtracks = i + 1;
-						break;
+				if (statspec != NULL && HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+					for (uint i = 0; i < 7; i++) {
+						if (!HasBit(statspec->disallowed_platforms, i)) {
+							this->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
+							_railstation.numtracks = i + 1;
+							break;
+						}
 					}
 				}
+
+				this->SetWidgetLoweredState(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN, !_railstation.dragdrop);
+				this->SetWidgetLoweredState(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN, !_railstation.dragdrop);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+			} break;
+
+			case BRSW_HIGHLIGHT_OFF:
+			case BRSW_HIGHLIGHT_ON:
+				_station_show_coverage = (widget != BRSW_HIGHLIGHT_OFF);
+				this->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
+				this->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
+			case BRSW_NEWST_DROPDOWN:
+				ShowDropDownList(this, BuildStationClassDropDown(), _railstation.station_class, BRSW_NEWST_DROPDOWN);
+				break;
+
+			case BRSW_NEWST_LIST: {
+				const StationSpec *statspec;
+				int y = (pt.y - 32) / 14;
+
+				if (y >= this->vscroll.cap) return;
+				y += this->vscroll.pos;
+				if (y >= _railstation.station_count) return;
+
+				/* Check station availability callback */
+				statspec = GetCustomStationSpec(_railstation.station_class, y);
+				if (statspec != NULL &&
+					HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
+					GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
+
+				_railstation.station_type = y;
+
+				this->CheckSelectedSize(statspec);
+
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
 			}
-
-			w->SetWidgetLoweredState(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN, !_railstation.dragdrop);
-			w->SetWidgetLoweredState(_railstation.platlength + BRSW_PLATFORM_LEN_BEGIN, !_railstation.dragdrop);
-			SndPlayFx(SND_15_BEEP);
-			w->SetDirty();
-		} break;
-
-		case BRSW_HIGHLIGHT_OFF:
-		case BRSW_HIGHLIGHT_ON:
-			_station_show_coverage = (e->we.click.widget != BRSW_HIGHLIGHT_OFF);
-			w->SetWidgetLoweredState(BRSW_HIGHLIGHT_OFF, !_station_show_coverage);
-			w->SetWidgetLoweredState(BRSW_HIGHLIGHT_ON, _station_show_coverage);
-			SndPlayFx(SND_15_BEEP);
-			w->SetDirty();
-			break;
-
-		case BRSW_NEWST_DROPDOWN:
-			ShowDropDownList(w, BuildStationClassDropDown(), _railstation.station_class, BRSW_NEWST_DROPDOWN);
-			break;
-
-		case BRSW_NEWST_LIST: {
-			const StationSpec *statspec;
-			int y = (e->we.click.pt.y - 32) / 14;
-
-			if (y >= w->vscroll.cap) return;
-			y += w->vscroll.pos;
-			if (y >= _railstation.station_count) return;
-
-			/* Check station availability callback */
-			statspec = GetCustomStationSpec(_railstation.station_class, y);
-			if (statspec != NULL &&
-				HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
-				GB(GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE), 0, 8) == 0) return;
-
-			_railstation.station_type = y;
-
-			CheckSelectedSize(w, statspec);
-
-			SndPlayFx(SND_15_BEEP);
-			w->SetDirty();
-			break;
 		}
-		}
-	} break;
+	}
 
-	case WE_DROPDOWN_SELECT:
-		if (_railstation.station_class != e->we.dropdown.index) {
-			_railstation.station_class = (StationClassID)e->we.dropdown.index;
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (_railstation.station_class != index) {
+			_railstation.station_class = (StationClassID)index;
 			_railstation.station_type  = 0;
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
-			CheckSelectedSize(w, GetCustomStationSpec(_railstation.station_class, _railstation.station_type));
+			this->CheckSelectedSize(GetCustomStationSpec(_railstation.station_class, _railstation.station_type));
 
-			w->vscroll.count = _railstation.station_count;
-			w->vscroll.pos   = _railstation.station_type;
+			this->vscroll.count = _railstation.station_count;
+			this->vscroll.pos   = _railstation.station_type;
 		}
 
 		SndPlayFx(SND_15_BEEP);
-		w->SetDirty();
-		break;
-
-	case WE_TICK:
-		CheckRedrawStationCoverage(w);
-		break;
-
-	case WE_DESTROY:
-		ResetObjectToPlace();
-		break;
+		this->SetDirty();
 	}
-}
+
+	virtual void OnTick()
+	{
+		CheckRedrawStationCoverage(this);
+	}
+};
 
 /** Widget definition of the standard build rail station window */
 static const Widget _station_builder_widgets[] = {
@@ -1197,7 +1209,7 @@ static const WindowDesc _station_builder_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_station_builder_widgets,
-	StationBuildWndProc
+	NULL
 };
 
 static const WindowDesc _newstation_builder_desc = {
@@ -1205,23 +1217,15 @@ static const WindowDesc _newstation_builder_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_newstation_builder_widgets,
-	StationBuildWndProc
+	NULL
 };
 
 static void ShowStationBuilder()
 {
-	Window *w;
 	if (GetNumStationClasses() <= 2 && GetNumCustomStations(STAT_CLASS_DFLT) == 1) {
-		w = new Window(&_station_builder_desc);
-		_railstation.newstations = false;
+		new BuildRailStationWindow(&_station_builder_desc, false);
 	} else {
-		w = new Window(&_newstation_builder_desc);
-		_railstation.newstations = true;
-		_railstation.station_count = GetNumCustomStations(_railstation.station_class);
-
-		w->vscroll.count = _railstation.station_count;
-		w->vscroll.cap   = 5;
-		w->vscroll.pos   = Clamp(_railstation.station_type - 2, 0, w->vscroll.count - w->vscroll.cap);
+		new BuildRailStationWindow(&_newstation_builder_desc, true);
 	}
 }
 
@@ -1243,104 +1247,99 @@ enum BuildSignalWidgets {
 	BSW_DRAG_SIGNALS_DENSITY_INCREASE,
 };
 
-/**
- * Draw dynamic a signal-sprite in a button in the signal GUI
- * Draw the sprite +1px to the right and down if the button is lowered and change the sprite to sprite + 1 (red to green light)
- *
- * @param w            Window on which the widget is located
- * @param widget_index index of this widget in the window
- * @param image        the sprite to draw
- * @param xrel         the relativ x value of the sprite in the grf
- * @param xsize        the width of the sprite
- */
-static void DrawSignalSprite(const Window *w, byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
-{
-	DrawSprite(image + w->IsWidgetLowered(widget_index), PAL_NONE,
-			w->widget[widget_index].left + (w->widget[widget_index].right - w->widget[widget_index].left) / 2 - xrel - xsize / 2 +
-			w->IsWidgetLowered(widget_index), w->widget[widget_index].bottom - 3 + w->IsWidgetLowered(widget_index));
-}
+struct BuildSignalWindow : public PickerWindowBase {
+private:
+	/**
+	 * Draw dynamic a signal-sprite in a button in the signal GUI
+	 * Draw the sprite +1px to the right and down if the button is lowered and change the sprite to sprite + 1 (red to green light)
+	 *
+	 * @param widget_index index of this widget in the window
+	 * @param image        the sprite to draw
+	 * @param xrel         the relativ x value of the sprite in the grf
+	 * @param xsize        the width of the sprite
+	 */
+	void DrawSignalSprite(byte widget_index, SpriteID image, int8 xrel, uint8 xsize)
+	{
+		DrawSprite(image + this->IsWidgetLowered(widget_index), PAL_NONE,
+				this->widget[widget_index].left + (this->widget[widget_index].right - this->widget[widget_index].left) / 2 - xrel - xsize / 2 +
+				this->IsWidgetLowered(widget_index), this->widget[widget_index].bottom - 3 + this->IsWidgetLowered(widget_index));
+	}
 
-/**
- * Signal selection window event definition
- *
- * @param w window pointer
- * @param e event been triggered
- */
-static void SignalBuildWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			w->LowerWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+public:
+	BuildSignalWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->FindWindowPlacementAndResize(desc);
+	};
 
-			w->SetWidgetLoweredState(BSW_CONVERT, _convert_signal_button);
+	virtual void OnPaint()
+	{
+		this->LowerWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
 
-			w->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
-			w->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
+		this->SetWidgetLoweredState(BSW_CONVERT, _convert_signal_button);
 
-			w->DrawWidgets();
+		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
+		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
 
-			/* The 'hardcoded' off sets are needed because they are reused sprites. */
-			DrawSignalSprite(w, BSW_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_NORM,   0, 12); // xsize of sprite + 1 ==  9
-			DrawSignalSprite(w, BSW_SEMAPHORE_ENTRY, SPR_IMG_SIGNAL_SEMAPHORE_ENTRY, -1, 13); // xsize of sprite + 1 == 10
-			DrawSignalSprite(w, BSW_SEMAPHORE_EXIT,  SPR_IMG_SIGNAL_SEMAPHORE_EXIT,   0, 12); // xsize of sprite + 1 ==  9
-			DrawSignalSprite(w, BSW_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_COMBO,  0, 12); // xsize of sprite + 1 ==  9
-			DrawSignalSprite(w, BSW_ELECTRIC_NORM,   SPR_IMG_SIGNAL_ELECTRIC_NORM,   -1,  4);
-			DrawSignalSprite(w, BSW_ELECTRIC_ENTRY,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY,  -2,  6);
-			DrawSignalSprite(w, BSW_ELECTRIC_EXIT,   SPR_IMG_SIGNAL_ELECTRIC_EXIT,   -2,  6);
-			DrawSignalSprite(w, BSW_ELECTRIC_COMBO,  SPR_IMG_SIGNAL_ELECTRIC_COMBO,  -2,  6);
+		this->DrawWidgets();
 
-			/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
-			SetDParam(0, _patches.drag_signals_density);
-			DrawStringCentered(w->widget[BSW_DRAG_SIGNALS_DENSITY].left + (w->widget[BSW_DRAG_SIGNALS_DENSITY].right -
-					w->widget[BSW_DRAG_SIGNALS_DENSITY].left) / 2 + 1,
-					w->widget[BSW_DRAG_SIGNALS_DENSITY].top + 2, STR_JUST_INT, TC_ORANGE);
-			break;
+		/* The 'hardcoded' off sets are needed because they are reused sprites. */
+		this->DrawSignalSprite(BSW_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_NORM,   0, 12); // xsize of sprite + 1 ==  9
+		this->DrawSignalSprite(BSW_SEMAPHORE_ENTRY, SPR_IMG_SIGNAL_SEMAPHORE_ENTRY, -1, 13); // xsize of sprite + 1 == 10
+		this->DrawSignalSprite(BSW_SEMAPHORE_EXIT,  SPR_IMG_SIGNAL_SEMAPHORE_EXIT,   0, 12); // xsize of sprite + 1 ==  9
+		this->DrawSignalSprite(BSW_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_COMBO,  0, 12); // xsize of sprite + 1 ==  9
+		this->DrawSignalSprite(BSW_ELECTRIC_NORM,   SPR_IMG_SIGNAL_ELECTRIC_NORM,   -1,  4);
+		this->DrawSignalSprite(BSW_ELECTRIC_ENTRY,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY,  -2,  6);
+		this->DrawSignalSprite(BSW_ELECTRIC_EXIT,   SPR_IMG_SIGNAL_ELECTRIC_EXIT,   -2,  6);
+		this->DrawSignalSprite(BSW_ELECTRIC_COMBO,  SPR_IMG_SIGNAL_ELECTRIC_COMBO,  -2,  6);
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case BSW_SEMAPHORE_NORM:
-				case BSW_SEMAPHORE_ENTRY:
-				case BSW_SEMAPHORE_EXIT:
-				case BSW_SEMAPHORE_COMBO:
-				case BSW_ELECTRIC_NORM:
-				case BSW_ELECTRIC_ENTRY:
-				case BSW_ELECTRIC_EXIT:
-				case BSW_ELECTRIC_COMBO:
-					w->RaiseWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
+		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
+		SetDParam(0, _patches.drag_signals_density);
+		DrawStringCentered(this->widget[BSW_DRAG_SIGNALS_DENSITY].left + (this->widget[BSW_DRAG_SIGNALS_DENSITY].right -
+				this->widget[BSW_DRAG_SIGNALS_DENSITY].left) / 2 + 1,
+				this->widget[BSW_DRAG_SIGNALS_DENSITY].top + 2, STR_JUST_INT, TC_ORANGE);
+	}
 
-					_cur_signal_type = (SignalType)((uint)((e->we.click.widget - BSW_SEMAPHORE_NORM) % (SIGTYPE_COMBO + 1)));
-					_cur_signal_variant = e->we.click.widget >= BSW_ELECTRIC_NORM ? SIG_ELECTRIC : SIG_SEMAPHORE;
-					break;
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BSW_SEMAPHORE_NORM:
+			case BSW_SEMAPHORE_ENTRY:
+			case BSW_SEMAPHORE_EXIT:
+			case BSW_SEMAPHORE_COMBO:
+			case BSW_ELECTRIC_NORM:
+			case BSW_ELECTRIC_ENTRY:
+			case BSW_ELECTRIC_EXIT:
+			case BSW_ELECTRIC_COMBO:
+				this->RaiseWidget((_cur_signal_variant == SIG_ELECTRIC ? BSW_ELECTRIC_NORM : BSW_SEMAPHORE_NORM) + _cur_signal_type);
 
-				case BSW_CONVERT:
-					_convert_signal_button = !_convert_signal_button;
-					break;
+				_cur_signal_type = (SignalType)((uint)((widget - BSW_SEMAPHORE_NORM) % (SIGTYPE_COMBO + 1)));
+				_cur_signal_variant = widget >= BSW_ELECTRIC_NORM ? SIG_ELECTRIC : SIG_SEMAPHORE;
+				break;
 
-				case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
-					if (_patches.drag_signals_density > 1) {
-						_patches.drag_signals_density--;
-						SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
-					}
-					break;
+			case BSW_CONVERT:
+				_convert_signal_button = !_convert_signal_button;
+				break;
 
-				case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
-					if (_patches.drag_signals_density < 20) {
-						_patches.drag_signals_density++;
-						SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
-					}
-					break;
+			case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
+				if (_patches.drag_signals_density > 1) {
+					_patches.drag_signals_density--;
+					SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
+				}
+				break;
 
-				default: break;
-			}
+			case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
+				if (_patches.drag_signals_density < 20) {
+					_patches.drag_signals_density++;
+					SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
+				}
+				break;
 
-			w->SetDirty();
-			break;
-
-		case WE_DESTROY:
-			ResetObjectToPlace();
-			break;
+			default: break;
 		}
-}
+
+		this->SetDirty();
+	}
+};
 
 /** Widget definition of the build signal window */
 static const Widget _signal_builder_widgets[] = {
@@ -1371,7 +1370,7 @@ static const WindowDesc _signal_builder_desc = {
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_signal_builder_widgets,
-	SignalBuildWndProc
+	NULL
 };
 
 /**
@@ -1379,55 +1378,55 @@ static const WindowDesc _signal_builder_desc = {
  */
 static void ShowSignalBuilder()
 {
-	new Window(&_signal_builder_desc);
+	new BuildSignalWindow(&_signal_builder_desc);
 }
 
-/** Enum referring to the widgets of the build rail depot window */
-enum BuildRailDepotWidgets {
-	BRDW_CLOSEBOX = 0,
-	BRDW_CAPTION,
-	BRDW_BACKGROUND,
-	BRDW_DEPOT_NE,
-	BRDW_DEPOT_SE,
-	BRDW_DEPOT_SW,
-	BRDW_DEPOT_NW,
-};
+struct BuildRailDepotWindow : public PickerWindowBase {
+private:
+	/** Enum referring to the widgets of the build rail depot window */
+	enum BuildRailDepotWidgets {
+		BRDW_CLOSEBOX = 0,
+		BRDW_CAPTION,
+		BRDW_BACKGROUND,
+		BRDW_DEPOT_NE,
+		BRDW_DEPOT_SE,
+		BRDW_DEPOT_SW,
+		BRDW_DEPOT_NW,
+	};
 
-static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_CREATE: w->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE); break;
+public:
+	BuildRailDepotWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-	case WE_PAINT: {
-		w->DrawWidgets();
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
 
 		DrawTrainDepotSprite(70, 17, DIAGDIR_NE, _cur_railtype);
 		DrawTrainDepotSprite(70, 69, DIAGDIR_SE, _cur_railtype);
 		DrawTrainDepotSprite( 2, 69, DIAGDIR_SW, _cur_railtype);
 		DrawTrainDepotSprite( 2, 17, DIAGDIR_NW, _cur_railtype);
-		break;
-		}
+	}
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
 			case BRDW_DEPOT_NE:
 			case BRDW_DEPOT_SE:
 			case BRDW_DEPOT_SW:
 			case BRDW_DEPOT_NW:
-				w->RaiseWidget(_build_depot_direction + BRDW_DEPOT_NE);
-				_build_depot_direction = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
-				w->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
+				this->RaiseWidget(_build_depot_direction + BRDW_DEPOT_NE);
+				_build_depot_direction = (DiagDirection)(widget - BRDW_DEPOT_NE);
+				this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
 				SndPlayFx(SND_15_BEEP);
-				w->SetDirty();
+				this->SetDirty();
 				break;
 		}
-		break;
-
-	case WE_DESTROY:
-		ResetObjectToPlace();
-		break;
 	}
-}
+};
 
 /** Widget definition of the build rail depot window */
 static const Widget _build_depot_widgets[] = {
@@ -1446,44 +1445,51 @@ static const WindowDesc _build_depot_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_depot_widgets,
-	BuildTrainDepotWndProc
+	NULL
 };
 
 static void ShowBuildTrainDepotPicker()
 {
-	new Window(&_build_depot_desc);
+	new BuildRailDepotWindow(&_build_depot_desc);
 }
 
-/** Enum referring to the widgets of the build NewGRF rail waypoint window */
-enum BuildRailWaypointWidgets {
-	BRWW_CLOSEBOX = 0,
-	BRWW_CAPTION,
-	BRWW_BACKGROUND,
-	BRWW_WAYPOINT_1,
-	BRWW_WAYPOINT_2,
-	BRWW_WAYPOINT_3,
-	BRWW_WAYPOINT_4,
-	BRWW_WAYPOINT_5,
-	BRWW_SCROLL,
-};
+struct BuildRailWaypointWindow : PickerWindowBase {
+private:
+	/** Enum referring to the widgets of the build NewGRF rail waypoint window */
+	enum BuildRailWaypointWidgets {
+		BRWW_CLOSEBOX = 0,
+		BRWW_CAPTION,
+		BRWW_BACKGROUND,
+		BRWW_WAYPOINT_1,
+		BRWW_WAYPOINT_2,
+		BRWW_WAYPOINT_3,
+		BRWW_WAYPOINT_4,
+		BRWW_WAYPOINT_5,
+		BRWW_SCROLL,
+	};
 
-static void BuildWaypointWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
+public:
+	BuildRailWaypointWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->hscroll.cap = 5;
+		this->hscroll.count = _waypoint_count;
+	};
+
+	virtual void OnPaint()
+	{
 		uint i;
 
-		for (i = 0; i < w->hscroll.cap; i++) {
-			w->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (w->hscroll.pos + i) == _cur_waypoint_type);
+		for (i = 0; i < this->hscroll.cap; i++) {
+			this->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (this->hscroll.pos + i) == _cur_waypoint_type);
 		}
 
-		w->DrawWidgets();
+		this->DrawWidgets();
 
-		for (i = 0; i < w->hscroll.cap; i++) {
-			if (w->hscroll.pos + i < w->hscroll.count) {
-				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, w->hscroll.pos + i);
+		for (i = 0; i < this->hscroll.cap; i++) {
+			if (this->hscroll.pos + i < this->hscroll.count) {
+				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, this->hscroll.pos + i);
 
-				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
+				DrawWaypointSprite(2 + i * 68, 25, this->hscroll.pos + i, _cur_railtype);
 
 				if (statspec != NULL &&
 						HasBit(statspec->callbackmask, CBM_STATION_AVAIL) &&
@@ -1492,16 +1498,17 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 				}
 			}
 		}
-		break;
 	}
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
 			case BRWW_WAYPOINT_1:
 			case BRWW_WAYPOINT_2:
 			case BRWW_WAYPOINT_3:
 			case BRWW_WAYPOINT_4:
 			case BRWW_WAYPOINT_5: {
-				byte type = e->we.click.widget - BRWW_WAYPOINT_1 + w->hscroll.pos;
+				byte type = widget - BRWW_WAYPOINT_1 + this->hscroll.pos;
 
 				/* Check station availability callback */
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);
@@ -1511,18 +1518,12 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 
 				_cur_waypoint_type = type;
 				SndPlayFx(SND_15_BEEP);
-				w->SetDirty();
+				this->SetDirty();
 				break;
 			}
 		}
-		break;
 	}
-
-	case WE_DESTROY:
-		ResetObjectToPlace();
-		break;
-	}
-}
+};
 
 /** Widget definition for the build NewGRF rail waypoint window */
 static const Widget _build_waypoint_widgets[] = {
@@ -1545,14 +1546,12 @@ static const WindowDesc _build_waypoint_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_waypoint_widgets,
-	BuildWaypointWndProc
+	NULL
 };
 
 static void ShowBuildWaypointPicker()
 {
-	Window *w = new Window(&_build_waypoint_desc);
-	w->hscroll.cap = 5;
-	w->hscroll.count = _waypoint_count;
+	new BuildRailWaypointWindow(&_build_waypoint_desc);
 }
 
 
