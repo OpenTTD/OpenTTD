@@ -82,7 +82,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE, _opt_newgame.landscape == LT_TROPIC);
 			w->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE, _opt_newgame.landscape == LT_TOYLAND);
 			SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 			break;
 
 		case WE_CLICK:

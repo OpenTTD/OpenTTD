@@ -150,7 +150,7 @@ struct NewGRFAddWindow : public Window {
 		SetVScrollCount(this, n);
 
 		this->SetWidgetDisabledState(ANGRFW_ADD, this->sel == NULL || this->sel->IsOpenTTDBaseGRF());
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		GfxFillRect(wl->left + 1, wl->top + 1, wl->right, wl->bottom, 0xD7);
 
@@ -345,7 +345,7 @@ struct NewGRFWindow : public Window {
 			if (this->sel->IsOpenTTDBaseGRF()) this->DisableWidget(SNGRFS_REMOVE);
 		}
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw NewGRF list */
 		int y = this->widget[SNGRFS_FILE_LIST].top;

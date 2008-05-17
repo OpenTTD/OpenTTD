@@ -1114,7 +1114,7 @@ struct BuildVehicleWindow : Window {
 		/* Set text of sort by dropdown */
 		this->widget[BUILD_VEHICLE_WIDGET_SORT_DROPDOWN].data = _sort_listing[this->vehicle_type][this->sort_criteria];
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, this->eng_list, this->vscroll.pos, max, this->sel_engine, 0, DEFAULT_GROUP);
 
@@ -1129,7 +1129,7 @@ struct BuildVehicleWindow : Window {
 			}
 		}
 
-		DrawSortButtonState(this, BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING, this->descending_sort_order ? SBS_DOWN : SBS_UP);
 	}
 
 	virtual void OnDoubleClick(Point pt, int widget)

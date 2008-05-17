@@ -74,7 +74,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 		const DrawEngineInfo* dei;
 		int width;
 
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		SetDParam(0, GetEngineCategoryName(engine));
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);

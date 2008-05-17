@@ -204,7 +204,7 @@ public:
 
 		SetVScrollCount(this, this->count);
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* and now with the matrix painting */
 		for (byte i = 0; i < this->vscroll.cap && ((i + this->vscroll.pos) < this->count); i++) {
@@ -481,7 +481,7 @@ public:
 		bool has_accept = false;
 
 		SetDParam(0, this->window_number);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		if (HasBit(ind->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(ind->callback_flags, CBM_IND_PRODUCTION_256_TICKS)) {
 			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
@@ -564,7 +564,7 @@ public:
 			return;
 		}
 
-		DrawWindowViewport(this);
+		this->DrawViewport();
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -840,8 +840,8 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 			SetVScrollCount(w, _num_industry_sort);
 
-			DrawWindowWidgets(w);
-			DrawSortButtonState(w, IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
+			w->DrawWidgets();
+			w->DrawSortButtonState(IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
 			uint pos = w->vscroll.pos;
 			int n = 0;

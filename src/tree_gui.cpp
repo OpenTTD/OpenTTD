@@ -72,7 +72,7 @@ public:
 			{ 0x7BA, PAL_NONE }, { 0x7C1, PALETTE_TO_RED, }, { 0x7C8, PALETTE_TO_PALE_GREEN }, { 0x7CF, PALETTE_TO_YELLOW }, { 0x7D6, PALETTE_TO_RED }
 		};
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int i = this->base = _tree_base_by_landscape[_opt.landscape];
 		int count = this->count = _tree_count_by_landscape[_opt.landscape];

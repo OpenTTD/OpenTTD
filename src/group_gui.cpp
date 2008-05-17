@@ -403,7 +403,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 		/* Set text of sort by dropdown */
 		this->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[this->vehicles.sort_type];
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw Matrix Group
 			* The selected group is drawn in white */
@@ -451,7 +451,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 			DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 		}
 
-		DrawSortButtonState(this, GRP_WIDGET_SORT_BY_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 		/* Draw Matrix Vehicle according to the vehicle list built before */
 		max = min(this->vscroll2.pos + this->vscroll2.cap, this->vehicles.list_length);

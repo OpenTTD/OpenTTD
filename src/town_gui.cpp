@@ -167,7 +167,7 @@ struct TownAuthorityWindow : Window {
 		this->SetWidgetDisabledState(6, this->sel_index == -1);
 
 		SetDParam(0, this->window_number);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
 
@@ -310,7 +310,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
 
 			SetDParam(0, t->index);
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			SetDParam(0, t->population);
 			SetDParam(1, t->num_houses);
@@ -324,7 +324,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, t->max_mail);
 			DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
-			DrawWindowViewport(w);
+			w->DrawViewport();
 			break;
 
 		case WE_CLICK:
@@ -489,8 +489,8 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 			SetVScrollCount(w, _num_town_sort);
 
-			DrawWindowWidgets(w);
-			DrawSortButtonState(w, (_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
+			w->DrawWidgets();
+			w->DrawSortButtonState((_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
 
 			{
 				int n = 0;
@@ -626,7 +626,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT:
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 			break;
 
 		case WE_CREATE:

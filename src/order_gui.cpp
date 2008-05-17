@@ -709,7 +709,7 @@ public:
 		}
 
 		SetDParam(0, this->vehicle->index);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int y = 15;
 

@@ -365,7 +365,7 @@ struct DepotWindow : Window {
 			SetDParam(0, depot->town_index);
 		}
 
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		num = this->vscroll.pos * boxes_in_each_row;
 		maxval = min(this->engine_count, num + (rows_in_display * boxes_in_each_row));

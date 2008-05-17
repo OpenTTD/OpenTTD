@@ -75,7 +75,7 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT: {
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			uint y = 15;
 			for (uint i = 0; (i < w->vscroll.cap) && ((i + w->vscroll.pos) < _bridgedata.count); i++) {

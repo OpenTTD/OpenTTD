@@ -684,7 +684,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetDisabledState(19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
 			w->SetWidgetDisabledState(22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 			break;
 
 		case WE_CLICK:
@@ -887,7 +887,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB2);
 			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 			DrawStringCenteredTruncated(w->widget[6].right, w->widget[7].left, 6, STR_00AF, TC_FROMSTRING);
@@ -1146,7 +1146,7 @@ struct ToolbarMenuWindow : Window {
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		for (int i = 0, x = 1, y = 1; i != this->item_count; i++, y += 10) {
 			TextColour color = HasBit(this->disabled_items, i) ? TC_GREY : (this->sel_index == i) ? TC_WHITE : TC_BLACK;
@@ -1323,7 +1323,7 @@ struct ToolbarPlayerMenuWindow : Window {
 	virtual void OnPaint()
 	{
 		this->UpdatePlayerMenuHeight();
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int x = 1;
 		int y = 1;

@@ -285,7 +285,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 				w->RaiseWidget(p->index + 3);
 			}
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			FOR_ALL_PLAYERS(p) {
 				if (!p->is_active) continue;
@@ -384,7 +384,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 			GraphDrawer gd;
 			const Player* p;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			gd.left = 2;
 			gd.top = 18;
@@ -455,7 +455,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 			GraphDrawer gd;
 			const Player* p;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			gd.left = 2;
 			gd.top = 18;
@@ -522,7 +522,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 			GraphDrawer gd;
 			const Player* p;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			gd.left = 2;
 			gd.top = 18;
@@ -589,7 +589,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 			GraphDrawer gd;
 			const Player* p;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			gd.left = 2;
 			gd.top = 18;
@@ -658,7 +658,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 			GraphDrawer gd;
 			const Player* p;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			gd.left = 2;
 			gd.top = 18;
@@ -724,7 +724,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: {
 			GraphDrawer gd;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			int x = 495;
 			int y = 24;
@@ -886,7 +886,7 @@ static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
 			const Player* plist[MAX_PLAYERS];
 			const Player* p;
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			uint pl_num = 0;
 			FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
@@ -973,7 +973,7 @@ struct PerformanceRatingDetailWindow : Window {
 		int color_done, color_notdone;
 
 		/* Draw standard stuff */
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Check if the currently selected player is still active. */
 		if (player == INVALID_PLAYER || !GetPlayer(player)->is_active) {

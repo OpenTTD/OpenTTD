@@ -394,7 +394,7 @@ struct RefitWindow : public Window {
 		SetVScrollCount(this, this->list->num_lines);
 
 		SetDParam(0, v->index);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		this->cargo = DrawVehicleRefitWindow(this->list, this->sel, this->vscroll.pos, this->vscroll.cap, this->resize.step_height);
 
@@ -1028,12 +1028,12 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 			VLW_WIDGET_START_ALL,
 			WIDGET_LIST_END);
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* draw sorting criteria string */
 		DrawString(85, 15, _vehicle_sort_listing[this->vehicles.sort_type], TC_BLACK);
 		/* draw arrow pointing up/down for ascending/descending sorting */
-		DrawSortButtonState(this, VLW_WIDGET_SORT_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 		max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.list_length);
 		for (i = this->vscroll.pos; i < max; ++i) {
@@ -1508,7 +1508,7 @@ struct VehicleDetailsWindow : Window {
 
 
 		SetDParam(0, v->index);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw running cost */
 		SetDParam(1, v->age / 366);
@@ -1942,7 +1942,7 @@ static void DrawVehicleViewWindow(Window *w)
 
 	/* draw widgets & caption */
 	SetDParam(0, v->index);
-	DrawWindowWidgets(w);
+	w->DrawWidgets();
 
 	if (v->vehstatus & VS_CRASHED) {
 		str = STR_8863_CRASHED;
@@ -2021,7 +2021,7 @@ static void DrawVehicleViewWindow(Window *w)
 	/* draw the flag plus orders */
 	DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, PAL_NONE, 2, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1);
 	DrawStringCenteredTruncated(w->widget[VVW_WIDGET_START_STOP_VEH].left + 8, w->widget[VVW_WIDGET_START_STOP_VEH].right, w->widget[VVW_WIDGET_START_STOP_VEH].top + 1, str, TC_FROMSTRING);
-	DrawWindowViewport(w);
+	w->DrawViewport();
 }
 
 /** Command indices for the _vehicle_command_translation_table. */

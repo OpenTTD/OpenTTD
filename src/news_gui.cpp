@@ -182,7 +182,7 @@ struct NewsWindow : Window {
 					/* Back up transparency options to draw news view */
 					TransparencyOptionBits to_backup = _transparency_opt;
 					_transparency_opt = 0;
-					DrawWindowViewport(this);
+					this->DrawViewport();
 					_transparency_opt = to_backup;
 
 					/* Shade the viewport into gray, or color*/
@@ -204,12 +204,12 @@ struct NewsWindow : Window {
 				break;
 
 			default:
-				DrawWindowWidgets(this);
+				this->DrawWidgets();
 				if (!(this->ni->flags & NF_VIEWPORT)) {
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 					DrawStringMultiCenter(140, 38, this->ni->string_id, 276);
 				} else {
-					DrawWindowViewport(this);
+					this->DrawViewport();
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));
 					DrawStringMultiCenter(this->width / 2, this->height - 16, this->ni->string_id, this->width - 4);
 				}
@@ -647,7 +647,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 			int y = 19;
 
 			SetVScrollCount(w, _total_news);
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			if (_total_news == 0) break;
 			NewsID show = min(_total_news, w->vscroll.cap);
@@ -764,7 +764,7 @@ struct MessageOptionsWindow : Window {
 		if (_news_ticker_sound) this->LowerWidget(WIDGET_NEWSOPT_SOUNDTICKER);
 
 		this->widget[WIDGET_NEWSOPT_DROP_SUMMARY].data = _message_opt[this->state];
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw the string of each setting on each button. */
 		for (int i = 0, y = 26; i < NT_END; i++, y += 12) {

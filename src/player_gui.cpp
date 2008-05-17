@@ -193,7 +193,7 @@ struct PlayerFinancesWindow : Window {
 		SetDParam(0, p->index);
 		SetDParam(1, p->index);
 		SetDParam(2, LOAN_INTERVAL);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		DrawPlayerEconomyStats(p, this->small);
 	}
@@ -398,7 +398,7 @@ public:
 		SetDParam(0, STR_00D1_DARK_BLUE + p->livery[scheme].colour1);
 		SetDParam(1, STR_00D1_DARK_BLUE + p->livery[scheme].colour2);
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			if (_livery_class[scheme] == this->livery_class) {
@@ -834,7 +834,7 @@ public:
 				PFW_WIDGET_GLASSES, PFW_WIDGET_GLASSES_L, PFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
 		}
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw dynamic button value and labels for the advanced player face selection window */
 		if (this->advanced) {
@@ -1213,7 +1213,7 @@ struct PlayerCompanyWindow : Window
 		SetDParam(0, p->index);
 		SetDParam(1, p->index);
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Player face */
 		DrawPlayerFace(p->face, p->player_color, 2, 16);
@@ -1367,7 +1367,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 			Player *p = GetPlayer((PlayerID)w->window_number);
 			SetDParam(0, STR_COMPANY_NAME);
 			SetDParam(1, p->index);
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
@@ -1436,7 +1436,7 @@ struct EndGameHighScoreBaseWindow : Window
 		this->widget[0].right = this->width - 1;
 		this->widget[0].bottom = this->height - 1;
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Center Highscore/Endscreen background */
 		*x = max(0, (_screen.width  / 2) - (640 / 2));

@@ -236,7 +236,7 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 		break;
 
 	case WE_CLICK:
@@ -578,7 +578,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT: {
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			int n = _terraform_size * _terraform_size;
 			const int8 *coords = &_multi_terraform_coords[0][0];

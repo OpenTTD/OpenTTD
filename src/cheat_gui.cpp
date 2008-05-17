@@ -129,7 +129,7 @@ struct CheatWindow : Window {
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		DrawStringMultiCenter(200, 25, STR_CHEATS_WARNING, width - 50);
 
 		for (int i = 0, x = 0, y = 45; i != lengthof(_cheats_ui); i++) {

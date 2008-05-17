@@ -49,7 +49,7 @@ public:
 			this->SetWidgetLoweredState(i, IsTransparencySet((TransparencyOption)(i - TTW_WIDGET_SIGNS)));
 		}
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		for (uint i = TO_SIGNS; i < TO_END; i++) {
 			if (HasBit(_transparency_lock, i)) DrawSprite(SPR_LOCK, PAL_NONE, this->widget[TTW_WIDGET_SIGNS + i].left + 1, this->widget[TTW_WIDGET_SIGNS + i].top + 1);
 		}

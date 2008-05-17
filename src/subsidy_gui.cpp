@@ -96,7 +96,7 @@ static void DrawSubsidiesWindow(const Window *w)
 	int x;
 	int y;
 
-	DrawWindowWidgets(w);
+	w->DrawWidgets();
 
 	ConvertDateToYMD(_date, &ymd);
 

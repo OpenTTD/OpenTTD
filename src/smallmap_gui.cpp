@@ -847,7 +847,7 @@ public:
 
 		/* draw the window */
 		SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		tbl = _legend_table[_smallmap_type];
 
@@ -1153,8 +1153,8 @@ public:
 		/* set the number in the title bar */
 		SetDParam(0, this->window_number + 1);
 
-		DrawWindowWidgets(this);
-		DrawWindowViewport(this);
+		this->DrawWidgets();
+		this->DrawViewport();
 	}
 
 	virtual void OnClick(Point pt, int widget)

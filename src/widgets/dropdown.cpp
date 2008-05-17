@@ -118,7 +118,7 @@ struct DropdownWindow : Window {
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int x = 1;
 		int y = 2;

@@ -1536,17 +1536,17 @@ static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right
 	ViewportDrawChk(vp, left, top, right, bottom);
 }
 
-void DrawWindowViewport(const Window *w)
+void Window::DrawViewport() const
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 
-	dpi->left += w->left;
-	dpi->top += w->top;
+	dpi->left += this->left;
+	dpi->top += this->top;
 
-	ViewportDraw(w->viewport, dpi->left, dpi->top, dpi->left + dpi->width, dpi->top + dpi->height);
+	ViewportDraw(this->viewport, dpi->left, dpi->top, dpi->left + dpi->width, dpi->top + dpi->height);
 
-	dpi->left -= w->left;
-	dpi->top -= w->top;
+	dpi->left -= this->left;
+	dpi->top -= this->top;
 }
 
 static inline void ClampViewportToMap(const ViewPort *vp, int &x, int &y)

@@ -194,7 +194,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
 			w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 			DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
 		} break;
 
@@ -565,7 +565,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
 		 *       Bitshifted for each button to see if that bit is set. If it is set, the
@@ -903,7 +903,7 @@ struct PatchesSelectionWindow : Window {
 		uint i;
 
 		/* Set up selected category */
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		x = 5;
 		y = 47;
@@ -1159,7 +1159,7 @@ struct CustomCurrencyWindow : Window {
 	{
 		int x;
 		int y = 20;
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* exchange rate */
 		DrawArrowButtons(10, y, 3, GB(this->click, 0, 2), true, true);

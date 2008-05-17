@@ -315,7 +315,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		SetDParam(2, 1 << _patches_newgame.map_y); // GLAND_MAPSIZE_Y_PULLDOWN
 		SetDParam(3, _patches_newgame.snow_line_height); // GLAND_SNOW_LEVEL_TEXT
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		this->DrawEditBox(GLAND_RANDOM_EDITBOX);
 
@@ -667,7 +667,7 @@ struct CreateScenarioWindow : public Window
 		SetDParam(2, 1 << _patches_newgame.map_y); // CSCEN_MAPSIZE_Y_PULLDOWN
 		SetDParam(3, _patches_newgame.se_flat_world_height); // CSCEN_FLAT_LAND_HEIGHT_TEXT
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -873,7 +873,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw the % complete with a bar and a text */
 		DrawFrameRect(19, 20, (this->width - 18), 37, 14, FR_BORDERONLY);

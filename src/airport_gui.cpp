@@ -69,7 +69,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT:
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 			break;
 
 		case WE_CLICK:
@@ -197,7 +197,7 @@ public:
 
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		/* strings such as 'Size' and 'Coverage Area' */
 		int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;

@@ -108,7 +108,7 @@ struct TimetableWindow : Window {
 		this->SetWidgetLoweredState(TTV_AUTOFILL, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE));
 
 		SetDParam(0, v->index);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int y = 15;
 		int i = this->vscroll.pos;

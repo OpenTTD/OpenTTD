@@ -360,7 +360,7 @@ public:
 			this->widget[RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN].data = _rail_types_list[sel_railtype];
 		}
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* sets up the string for the vehicle that is being replaced to */
 		if (selected_id[0] != INVALID_ENGINE) {

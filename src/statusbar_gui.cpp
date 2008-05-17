@@ -80,7 +80,7 @@ struct StatusBarWindow : Window {
 	{
 		const Player *p = (_local_player == PLAYER_SPECTATOR) ? NULL : GetPlayer(_local_player);
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		SetDParam(0, _date);
 		DrawStringCentered(70, 1, (_pause_game || _patches.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING);
 

@@ -98,7 +98,7 @@ struct OskWindow : public Window {
 		this->ChangeOskDiabledState(shift);
 
 		SetDParam(0, this->caption);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		for (uint i = 0; i < OSK_KEYBOARD_ENTRIES; i++) {
 			DrawCharCentered(_keyboard[shift][i],

@@ -129,7 +129,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 		w->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
 		break;
 
@@ -238,7 +238,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int rad = (_patches.modified_catchment) ? CA_DOCK : CA_UNMODIFIED;
 
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		if (_station_show_coverage) {
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
@@ -318,7 +318,7 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: w->LowerWidget(_ship_depot_direction + 3); break;
 
 	case WE_PAINT:
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		DrawShipDepotSprite(67, 35, 0);
 		DrawShipDepotSprite(35, 51, 1);

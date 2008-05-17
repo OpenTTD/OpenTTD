@@ -83,7 +83,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		DoDrawStringCentered(140, 16, this->landinfo_data[0], TC_LIGHT_BLUE);
 		DoDrawStringCentered(140, 27, this->landinfo_data[1], TC_FROMSTRING);
@@ -289,7 +289,7 @@ struct AboutWindow : public Window {
 			"  Chris Sawyer - For an amazing game!"
 		};
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Show original copyright and revision version */
 		DrawStringCentered(210, 17, STR_00B6_ORIGINAL_COPYRIGHT, TC_FROMSTRING);
@@ -371,7 +371,7 @@ public:
 		};
 
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 
 		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
@@ -998,7 +998,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	virtual void OnPaint()
 	{
 		SetDParam(0, this->caption);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		this->DrawEditBox(QUERY_STR_WIDGET_TEXT);
 	}
@@ -1153,7 +1153,7 @@ struct QueryWindow : public Window {
 	virtual void OnPaint()
 	{
 		CopyInDParam(0, this->params, lengthof(this->params));
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		CopyInDParam(0, this->params, lengthof(this->params));
 
 		DrawStringMultiCenter(this->width / 2, (this->height / 2) - 10, this->message, this->width - 2);
@@ -1419,7 +1419,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		int y;
 
 		SetVScrollCount(this, _fios_num);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		DrawFiosTexts(this->width);
 
 		if (_savegame_sort_dirty) {
@@ -1428,7 +1428,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		}
 
 		GfxFillRect(this->widget[7].left + 1, this->widget[7].top + 1, this->widget[7].right, this->widget[7].bottom, 0xD7);
-		DrawSortButtonState(this, _savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(_savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
 
 		y = this->widget[7].top + 1;
 		for (pos = this->vscroll.pos; pos < _fios_num; pos++) {

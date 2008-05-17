@@ -224,7 +224,7 @@ struct MainWindow : Window
 
 	virtual void OnPaint()
 	{
-		DrawWindowViewport(this);
+		this->DrawViewport();
 		if (_game_mode == GM_MENU) {
 			int off_x = _screen.width / 2;
 

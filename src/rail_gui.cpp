@@ -567,7 +567,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_CREATE: w->DisableWidget(RTW_REMOVE); break;
 
-	case WE_PAINT: DrawWindowWidgets(w); break;
+	case WE_PAINT: w->DrawWidgets(); break;
 
 	case WE_CLICK:
 		if (e->we.click.widget >= RTW_BUILD_NS) {
@@ -899,7 +899,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		}
 
 		SetDParam(0, GetStationClassName(_railstation.station_class));
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		int y_offset = newstations ? 90 : 0;
 
@@ -1277,7 +1277,7 @@ static void SignalBuildWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
 			w->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
 
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			/* The 'hardcoded' off sets are needed because they are reused sprites. */
 			DrawSignalSprite(w, BSW_SEMAPHORE_NORM,  SPR_IMG_SIGNAL_SEMAPHORE_NORM,   0, 12); // xsize of sprite + 1 ==  9
@@ -1399,7 +1399,7 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: w->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE); break;
 
 	case WE_PAINT: {
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		DrawTrainDepotSprite(70, 17, DIAGDIR_NE, _cur_railtype);
 		DrawTrainDepotSprite(70, 69, DIAGDIR_SE, _cur_railtype);
@@ -1477,7 +1477,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 			w->SetWidgetLoweredState(i + BRWW_WAYPOINT_1, (w->hscroll.pos + i) == _cur_waypoint_type);
 		}
 
-		DrawWindowWidgets(w);
+		w->DrawWidgets();
 
 		for (i = 0; i < w->hscroll.cap; i++) {
 			if (w->hscroll.pos + i < w->hscroll.count) {

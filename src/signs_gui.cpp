@@ -75,7 +75,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 			SetVScrollCount(w, _num_sign_sort);
 
 			SetDParam(0, w->vscroll.count);
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			/* No signs? */
 			int y = 16; // offset from top of widget
@@ -197,7 +197,7 @@ struct SignWindow : QueryStringBaseWindow {
 	virtual void OnPaint()
 	{
 		SetDParam(0, this->caption);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		this->DrawEditBox(QUERY_EDIT_SIGN_WIDGET_TEXT);
 	}
 

@@ -468,7 +468,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 				RTW_BUS_STATION,
 				RTW_TRUCK_STATION,
 				WIDGET_LIST_END);
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 			break;
 
 		case WE_CLICK:
@@ -733,7 +733,7 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT:
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
 			DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
@@ -849,7 +849,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_PAINT: {
-			DrawWindowWidgets(w);
+			w->DrawWidgets();
 
 			if (_station_show_coverage) {
 				int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;

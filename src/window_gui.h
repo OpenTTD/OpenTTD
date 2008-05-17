@@ -245,6 +245,12 @@ struct ResizeInfo {
 	uint step_height; ///< Step-size of height resize changes
 };
 
+enum SortButtonState {
+	SBS_OFF,
+	SBS_DOWN,
+	SBS_UP,
+};
+
 /**
  * Data structure for a window viewport
  */
@@ -321,6 +327,10 @@ public:
 	void CDECL SetWidgetsHiddenState(bool hidden_stat, int widgets, ...);
 	void CDECL SetWidgetsLoweredState(bool lowered_stat, int widgets, ...);
 	void InvalidateWidget(byte widget_index) const;
+
+	void DrawWidgets() const;
+	void DrawViewport() const;
+	void DrawSortButtonState(int widget, SortButtonState state) const;
 
 	void SetDirty() const;
 
@@ -612,8 +622,6 @@ Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 	return new Wcls(desc, window_number);
 }
 
-void DrawWindowViewport(const Window *w);
-
 void RelocateAllWindows(int neww, int newh);
 
 /* misc_gui.cpp */
@@ -625,17 +633,6 @@ static inline void GuiShowTooltips(StringID str)
 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
-void DrawWindowWidgets(const Window *w);
-
-enum SortButtonState {
-	SBS_OFF,
-	SBS_DOWN,
-	SBS_UP,
-};
-
-void DrawSortButtonState(const Window *w, int widget, SortButtonState state);
-
-
 
 /* window.cpp */
 extern Window *_z_windows[];

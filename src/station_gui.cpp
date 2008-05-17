@@ -369,10 +369,10 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 		/* Set text of sort by dropdown */
 		this->widget[SLW_SORTDROPBTN].data = _station_sort_listing[this->sort_type];
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* draw arrow pointing up/down for ascending/descending sorting */
-		DrawSortButtonState(this, SLW_SORTBY, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(SLW_SORTBY, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 		int cg_ofst;
 		int x = 89;
@@ -813,7 +813,7 @@ struct StationViewWindow : public Window {
 
 		SetDParam(0, st->index);
 		SetDParam(1, st->facilities);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int x = 2;  ///< coordinates used for printing waiting/accepted/rating of cargo
 		int y = 15;

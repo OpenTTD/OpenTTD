@@ -318,7 +318,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 
 		SetDParam(0, 0x00);
 		SetDParam(1, _lan_internet_types_dropdown[_network_lan_internet]);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Edit box to set player name */
 		this->DrawEditBox(NGWW_PLAYER);
@@ -327,9 +327,9 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (this->servers.sort_type) {
-			case NGWW_NAME    - NGWW_NAME: DrawSortButtonState(this, NGWW_NAME,    arrow); break;
-			case NGWW_CLIENTS - NGWW_NAME: DrawSortButtonState(this, NGWW_CLIENTS, arrow); break;
-			case NGWW_INFO    - NGWW_NAME: DrawSortButtonState(this, NGWW_INFO,    arrow); break;
+			case NGWW_NAME    - NGWW_NAME: this->DrawSortButtonState(NGWW_NAME,    arrow); break;
+			case NGWW_CLIENTS - NGWW_NAME: this->DrawSortButtonState(NGWW_CLIENTS, arrow); break;
+			case NGWW_INFO    - NGWW_NAME: this->DrawSortButtonState(NGWW_INFO,    arrow); break;
 		}
 
 		uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
@@ -727,7 +727,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		SetDParam(3, _network_game_info.companies_max);
 		SetDParam(4, _network_game_info.spectators_max);
 		SetDParam(5, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* editbox to set game name */
 		this->DrawEditBox(NSSW_GAMENAME);
@@ -1036,7 +1036,7 @@ struct NetworkLobbyWindow : public Window {
 
 		/* Draw window widgets */
 		SetDParamStr(0, gi->server_name);
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw company list */
 		pos = this->vscroll.pos;
@@ -1410,7 +1410,7 @@ struct NetworkClientListPopupWindow : Window {
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		/* Draw the actions */
 		int sel = this->sel_index;
@@ -1514,7 +1514,7 @@ struct NetworkClientListWindow : Window
 		/* Check if we need to reset the height */
 		if (!this->CheckClientListHeight()) return;
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		int y = CLNWND_OFFSET;
 
@@ -1606,7 +1606,7 @@ struct NetworkJoinStatusWindow : Window {
 	virtual void OnPaint()
 	{
 		uint8 progress; // used for progress bar
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		DrawStringCentered(125, 35, STR_NETWORK_CONNECTING_1 + _network_join_status, TC_GREY);
 		switch (_network_join_status) {
@@ -1851,7 +1851,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			STR_NETWORK_CHAT_CLIENT_CAPTION
 		};
 
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 
 		assert((uint)this->dtype < lengthof(chat_captions));
 		DrawStringRightAligned(this->widget[2].left - 2, this->widget[2].top + 1, chat_captions[this->dtype], TC_BLACK);
@@ -1953,7 +1953,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 
 	virtual void OnPaint()
 	{
-		DrawWindowWidgets(this);
+		this->DrawWidgets();
 		this->DrawEditBox(4);
 	}
 
