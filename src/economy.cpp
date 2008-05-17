@@ -46,6 +46,7 @@
 #include "gfx_func.h"
 #include "autoreplace_func.h"
 #include "player_gui.h"
+#include "window_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

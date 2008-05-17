@@ -13,6 +13,7 @@
 #include "vehicle_func.h"
 #include "gfx_func.h"
 #include "order_func.h"
+#include "window_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

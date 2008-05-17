@@ -1408,6 +1408,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\sortlist_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\sound_func.h"
 				>
 			</File>

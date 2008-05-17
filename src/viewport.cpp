@@ -47,6 +47,7 @@
 #include "misc/smallvec.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"
+#include "window_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -2171,3 +2171,12 @@ void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int c
 		default: NOT_REACHED();
 	}
 }
+
+void StopGlobalFollowVehicle(const Vehicle *v)
+{
+	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+	if (w != NULL && w->viewport->follow_vehicle == v->index) {
+		ScrollMainWindowTo(v->x_pos, v->y_pos, true); // lock the main view on the vehicle's last position
+		w->viewport->follow_vehicle = INVALID_VEHICLE;
+	}
+}

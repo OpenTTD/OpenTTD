@@ -21,6 +21,7 @@
 #include "widgets/dropdown_func.h"
 #include "engine_func.h"
 #include "engine_base.h"
+#include "window_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

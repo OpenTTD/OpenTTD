@@ -590,11 +590,8 @@ void Vehicle::PreDestructor()
 		delete this->Next();
 	}
 
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-	if (w != NULL && w->viewport->follow_vehicle == this->index) {
-		ScrollMainWindowTo(this->x_pos, this->y_pos, true); // lock the main view on the vehicle's last position
-		w->viewport->follow_vehicle = INVALID_VEHICLE;
-	}
+	extern void StopGlobalFollowVehicle(const Vehicle *v);
+	StopGlobalFollowVehicle(this);
 }
 
 Vehicle::~Vehicle()

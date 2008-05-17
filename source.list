@@ -277,6 +277,7 @@ signs_func.h
 signs_type.h
 slope_func.h
 slope_type.h
+sortlist_type.h
 sound_func.h
 sound_type.h
 sprite.h

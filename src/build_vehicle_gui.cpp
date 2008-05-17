@@ -28,6 +28,7 @@
 #include "gfx_func.h"
 #include "widgets/dropdown_func.h"
 #include "string_func.h"
+#include "window_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

@@ -5,7 +5,8 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
-#include "window_gui.h"
+#include "sortlist_type.h"
+#include "window_type.h"
 #include "vehicle_type.h"
 #include "order_type.h"
 #include "station_type.h"
