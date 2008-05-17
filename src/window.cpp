@@ -804,13 +804,10 @@ static Window *ForceFindDeletableWindow()
  * @param widget pointer of widget array to fill the window with
  *
  * @post \c w->widget points to allocated memory and contains the copied widget array except for the terminating widget,
- *       \c w->original_widget points to the original widgets,
  *       \c w->widget_count contains number of widgets in the allocated memory.
  */
 static void AssignWidgetToWindow(Window *w, const Widget *widget)
 {
-	w->original_widget = widget;
-
 	if (widget != NULL) {
 		uint index = 1;
 

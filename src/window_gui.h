@@ -299,7 +299,6 @@ public:
 	byte caption_color; ///< Background color of the window caption, contains PlayerID
 
 	ViewportData *viewport;      ///< Pointer to viewport data, if present
-	const Widget *original_widget; ///< Original widget layout, copied from WindowDesc
 	Widget *widget;        ///< Widgets of the window
 	uint widget_count;     ///< Number of widgets of the window
 	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
