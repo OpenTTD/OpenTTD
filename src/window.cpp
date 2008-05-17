@@ -2350,3 +2350,13 @@ void RelocateAllWindows(int neww, int newh)
 		w->top = top;
 	}
 }
+
+/** Destructor of the base class PickerWindowBase
+ * Main utility is to stop the base Window destructor from triggering
+ * a free while the child will already be free, in this case by the ResetObjectToPlace().
+ */
+PickerWindowBase::~PickerWindowBase()
+{
+	this->window_class = WC_INVALID; // stop the ancestor from freeing the already (to be) child
+	ResetObjectToPlace();
+}

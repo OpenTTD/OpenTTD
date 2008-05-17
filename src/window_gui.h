@@ -256,7 +256,7 @@ struct ViewportData : ViewPort {
 	int32 dest_scrollpos_y;
 };
 
-	/**
+/**
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
@@ -491,6 +491,17 @@ public:
 	virtual void OnPlacePresize(Point pt, TileIndex tile);
 
 	/*** End of the event handling ***/
+};
+
+/**
+ * Data structure for a window opened from a toolbar
+ */
+class PickerWindowBase : public Window {
+
+public:
+	PickerWindowBase(const WindowDesc *desc) : Window(desc) {}; // nothing special yet, just propagation
+
+	virtual ~PickerWindowBase();
 };
 
 enum SortListFlags {
