@@ -53,87 +53,92 @@ static inline void SetNewLandscapeType(byte landscape)
 	InvalidateWindowClasses(WC_SELECT_GAME);
 }
 
-enum SelectGameIntroWidgets {
-	SGI_GENERATE_GAME = 2,
-	SGI_LOAD_GAME,
-	SGI_PLAY_SCENARIO,
-	SGI_PLAY_HEIGHTMAP,
-	SGI_EDIT_SCENARIO,
-	SGI_PLAY_NETWORK,
-	SGI_TEMPERATE_LANDSCAPE,
-	SGI_ARCTIC_LANDSCAPE,
-	SGI_TROPIC_LANDSCAPE,
-	SGI_TOYLAND_LANDSCAPE,
-	SGI_OPTIONS,
-	SGI_DIFFICULTIES,
-	SGI_PATCHES_OPTIONS,
-	SGI_GRF_SETTINGS,
-	SGI_EXIT,
-};
+struct SelectGameWindow : public Window {
+private:
+	enum SelectGameIntroWidgets {
+		SGI_GENERATE_GAME = 2,
+		SGI_LOAD_GAME,
+		SGI_PLAY_SCENARIO,
+		SGI_PLAY_HEIGHTMAP,
+		SGI_EDIT_SCENARIO,
+		SGI_PLAY_NETWORK,
+		SGI_TEMPERATE_LANDSCAPE,
+		SGI_ARCTIC_LANDSCAPE,
+		SGI_TROPIC_LANDSCAPE,
+		SGI_TOYLAND_LANDSCAPE,
+		SGI_OPTIONS,
+		SGI_DIFFICULTIES,
+		SGI_PATCHES_OPTIONS,
+		SGI_GRF_SETTINGS,
+		SGI_EXIT,
+	};
 
-static void SelectGameWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE: w->LowerWidget(_opt_newgame.landscape + 8); break;
+public:
+	SelectGameWindow(const WindowDesc *desc) : Window(desc)
+	{
+		this->LowerWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-		case WE_PAINT:
-			w->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _opt_newgame.landscape == LT_TEMPERATE);
-			w->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE, _opt_newgame.landscape == LT_ARCTIC);
-			w->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE, _opt_newgame.landscape == LT_TROPIC);
-			w->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE, _opt_newgame.landscape == LT_TOYLAND);
-			SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
-			w->DrawWidgets();
-			break;
+	virtual void OnPaint()
+	{
+		this->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _opt_newgame.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE, _opt_newgame.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE, _opt_newgame.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE, _opt_newgame.landscape == LT_TOYLAND);
+		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
+		this->DrawWidgets();
+	}
 
-		case WE_CLICK:
+	virtual void OnClick(Point pt, int widget)
+	{
 #ifdef ENABLE_NETWORK
-			/* Do not create a network server when you (just) have closed one of the game
-			 * creation/load windows for the network server. */
-			if (SGI_GENERATE_GAME <= e->we.click.widget && e->we.click.widget <= SGI_EDIT_SCENARIO) _is_network_server = false;
+		/* Do not create a network server when you (just) have closed one of the game
+		 * creation/load windows for the network server. */
+		if (IsInsideMM(widget, SGI_GENERATE_GAME, SGI_EDIT_SCENARIO + 1)) _is_network_server = false;
 #endif /* ENABLE_NETWORK */
 
-			switch (e->we.click.widget) {
-				case SGI_GENERATE_GAME:  ShowGenerateLandscape(); break;
-				case SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-				case SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-				case SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
-				case SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
+		switch (widget) {
+			case SGI_GENERATE_GAME:  ShowGenerateLandscape(); break;
+			case SGI_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
+			case SGI_PLAY_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+			case SGI_PLAY_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+			case SGI_EDIT_SCENARIO:  StartScenarioEditor(); break;
 
-				case SGI_PLAY_NETWORK:
-					if (!_network_available) {
-						ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
-					} else {
-						ShowNetworkGameWindow();
-					}
-					break;
+			case SGI_PLAY_NETWORK:
+				if (!_network_available) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				} else {
+					ShowNetworkGameWindow();
+				}
+				break;
 
-				case SGI_TEMPERATE_LANDSCAPE: case SGI_ARCTIC_LANDSCAPE:
-				case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
-					w->RaiseWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
-					SetNewLandscapeType(e->we.click.widget - SGI_TEMPERATE_LANDSCAPE);
-					break;
+			case SGI_TEMPERATE_LANDSCAPE: case SGI_ARCTIC_LANDSCAPE:
+			case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
+				this->RaiseWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
+				SetNewLandscapeType(widget - SGI_TEMPERATE_LANDSCAPE);
+				break;
 
-				case SGI_OPTIONS:         ShowGameOptions(); break;
-				case SGI_DIFFICULTIES:    ShowGameDifficulty(); break;
-				case SGI_PATCHES_OPTIONS: ShowPatchesSelection(); break;
-				case SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
-				case SGI_EXIT:            HandleExitGameRequest(); break;
-			}
-			break;
+			case SGI_OPTIONS:         ShowGameOptions(); break;
+			case SGI_DIFFICULTIES:    ShowGameDifficulty(); break;
+			case SGI_PATCHES_OPTIONS: ShowPatchesSelection(); break;
+			case SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
+			case SGI_EXIT:            HandleExitGameRequest(); break;
+		}
 	}
-}
+};
 
 static const WindowDesc _select_game_desc = {
 	WDP_CENTER, WDP_CENTER, 336, 195, 336, 195,
 	WC_SELECT_GAME, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,
-	SelectGameWndProc
+	NULL
 };
 
 void ShowSelectGameWindow()
 {
-	new Window(&_select_game_desc);
+	new SelectGameWindow(&_select_game_desc);
 }
 
 static void AskExitGameCallback(Window *w, bool confirmed)
