@@ -328,11 +328,6 @@ void ShowAboutWindow()
 	new AboutWindow();
 }
 
-static uint64 _errmsg_decode_params[20];
-static StringID _errmsg_message_1, _errmsg_message_2;
-static uint _errmsg_duration;
-
-
 static const Widget _errmsg_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     4,    11,   239,     0,    13, STR_00B2_MESSAGE, STR_NULL},
@@ -347,96 +342,95 @@ static const Widget _errmsg_face_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void ErrmsgWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
-			DrawWindowWidgets(w);
-			CopyInDParam(0, _errmsg_decode_params, lengthof(_errmsg_decode_params));
+struct ErrmsgWindow : public Window {
+private:
+	uint duration;
+	uint64 decode_params[20];
+	StringID message_1;
+	StringID message_2;
 
-			/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
-			* If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
-			*/
-			SwitchToErrorRefStack();
-			RewindTextRefStack();
-
-			if (!IsWindowOfPrototype(w, _errmsg_face_widgets)) {
-				DrawStringMultiCenter(
-					120,
-					(_errmsg_message_1 == INVALID_STRING_ID ? 25 : 15),
-					_errmsg_message_2,
-					w->width - 2);
-				if (_errmsg_message_1 != INVALID_STRING_ID) {
-					DrawStringMultiCenter(
-						120,
-						30,
-						_errmsg_message_1,
-						w->width - 2);
-				}
-			} else {
-				const Player *p = GetPlayer((PlayerID)GetDParamX(_errmsg_decode_params,2));
-				DrawPlayerFace(p->face, p->player_color, 2, 16);
-
-				DrawStringMultiCenter(
-					214,
-					(_errmsg_message_1 == INVALID_STRING_ID ? 65 : 45),
-					_errmsg_message_2,
-					w->width - 2);
-				if (_errmsg_message_1 != INVALID_STRING_ID) {
-					DrawStringMultiCenter(
-						214,
-						90,
-						_errmsg_message_1,
-						w->width - 2);
-				}
-			}
-
-			/* Switch back to the normal text ref. stack for NewGRF texts */
-			SwitchToNormalRefStack();
-			break;
-
-		case WE_MOUSELOOP:
-			if (_right_button_down) delete w;
-			break;
-
-		case WE_100_TICKS:
-			if (--_errmsg_duration == 0) delete w;
-			break;
-
-		case WE_DESTROY:
-			SetRedErrorSquare(0);
-			extern StringID _switch_mode_errorstr;
-			_switch_mode_errorstr = INVALID_STRING_ID;
-			break;
-
-		case WE_KEYPRESS:
-			if (e->we.keypress.keycode == WKC_SPACE) {
-				/* Don't continue. */
-				e->we.keypress.cont = false;
-				delete w;
-			}
-			break;
+public:
+	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget) : Window(pt.x, pt.y, width, height, NULL, WC_ERRMSG, widget)
+	{
+		this->duration = _patches.errmsg_duration;
+		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
+		this->message_1 = msg1;
+		this->message_2 = msg2;
+		this->desc_flags = WDF_STD_BTN | WDF_DEF_WIDGET;
+		this->FindWindowPlacementAndResize(width, height);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		static int y[][3] = {
+			{15, 25, 30}, // _errmsg_widgets
+			{45, 65, 90}, // _errmsg_face_widgets
+		};
+
+		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+		DrawWindowWidgets(this);
+		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
+
+		/* If the error message comes from a NewGRF, we must use the text ref. stack reserved for error messages.
+		* If the message doesn't come from a NewGRF, it won't use the TTDP-style text ref. stack, so we won't hurt anything
+		*/
+		SwitchToErrorRefStack();
+		RewindTextRefStack();
+
+		byte i = 0;
+		if (IsWindowOfPrototype(this, _errmsg_face_widgets)) {
+			const Player *p = GetPlayer((PlayerID)GetDParamX(this->decode_params, 2));
+			DrawPlayerFace(p->face, p->player_color, 2, 16);
+			i = 1;
+		}
+
+		byte j = (this->message_1 == INVALID_STRING_ID) ? 1 : 0;
+		DrawStringMultiCenter(this->width - 120, y[i][j], this->message_2, this->width - 2);
+		if (j == 0) {
+			DrawStringMultiCenter(this->width - 120, y[i][2], this->message_1, this->width - 2);
+		}
+
+		/* Switch back to the normal text ref. stack for NewGRF texts */
+		SwitchToNormalRefStack();
+	}
+
+	virtual void OnMouseLoop()
+	{
+		if (_right_button_down) delete this;
+	}
+
+	virtual void OnHundredthTick()
+	{
+		if (--this->duration == 0) delete this;
+	}
+
+	~ErrmsgWindow()
+	{
+		SetRedErrorSquare(0);
+		extern StringID _switch_mode_errorstr;
+		_switch_mode_errorstr = INVALID_STRING_ID;
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		if (keycode != WKC_SPACE) return true;
+		delete this;
+		return false;
+	}
+};
 
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 {
 	DeleteWindowById(WC_ERRMSG, 0);
 
-	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
+	if (!_patches.errmsg_duration) return;
 
-	_errmsg_message_1 = msg_1;
-	_errmsg_message_2 = msg_2;
-	CopyOutDParam(_errmsg_decode_params, 0, lengthof(_errmsg_decode_params));
-	_errmsg_duration = _patches.errmsg_duration;
-	if (!_errmsg_duration) return;
+	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
 
 	Point pt;
 	const ViewPort *vp;
-	Window *w;
 
-	if (_errmsg_message_1 != STR_013B_OWNED_BY || GetDParamX(_errmsg_decode_params,2) >= 8) {
+	if (msg_1 != STR_013B_OWNED_BY || GetDParam(2) >= 8) {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
@@ -453,7 +447,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 240) >> 1;
 			pt.y = (_screen.height - 46) >> 1;
 		}
-		w = new Window(pt.x, pt.y, 240, 46, ErrmsgWndProc, WC_ERRMSG, _errmsg_widgets);
+		new ErrmsgWindow(pt, 240, 46, msg_1, msg_2, _errmsg_widgets);
 	} else {
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
@@ -464,12 +458,9 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 			pt.x = (_screen.width - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;
 		}
-		w = new Window(pt.x, pt.y, 334, 137, ErrmsgWndProc, WC_ERRMSG, _errmsg_face_widgets);
+		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, _errmsg_face_widgets);
 	}
-
-	w->desc_flags = WDF_STD_BTN | WDF_DEF_WIDGET;
 }
-
 
 void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 {
