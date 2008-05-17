@@ -77,137 +77,167 @@ static inline void IConsoleResetHistoryPos() {_iconsole_historypos = ICON_HISTOR
 static void IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
-/* ** console window ** */
-static void IConsoleWndProc(Window *w, WindowEvent *e)
+struct IConsoleWindow : Window
 {
-	static byte iconsole_scroll = ICON_BUFFER;
+	static byte scroll;
 
-	switch (e->event) {
-		case WE_PAINT: {
-			int i = iconsole_scroll;
-			int max = (w->height / ICON_LINE_HEIGHT) - 1;
-			int delta = 0;
-			GfxFillRect(w->left, w->top, w->width, w->height - 1, 0);
-			while ((i > 0) && (i > iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
-				DoDrawString(_iconsole_buffer[i], 5,
-					w->height - (iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
-				i--;
-			}
-			/* If the text is longer than the window, don't show the starting ']' */
-			delta = w->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
-			if (delta > 0) {
-				DoDrawString("]", 5, w->height - ICON_LINE_HEIGHT, _icolour_cmd);
-				delta = 0;
-			}
+	IConsoleWindow(const WindowDesc *desc) : Window(desc)
+	{
+		_iconsole_mode = ICONSOLE_OPENED;
+		SetBit(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
 
-			DoDrawString(_iconsole_cmdline.buf, 10 + delta, w->height - ICON_LINE_HEIGHT, _icolour_cmd);
+		this->height = _screen.height / 3;
+		this->width  = _screen.width;
+	}
 
-			if (_iconsole_cmdline.caret)
-				DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, w->height - ICON_LINE_HEIGHT, TC_WHITE);
-			break;
+	~IConsoleWindow()
+	{
+		_iconsole_mode = ICONSOLE_CLOSED;
+		ClrBit(_no_scroll, SCROLL_CON);
+	}
+
+	virtual void OnPaint()
+	{
+		int i = IConsoleWindow::scroll;
+		int max = (this->height / ICON_LINE_HEIGHT) - 1;
+		int delta = 0;
+		GfxFillRect(this->left, this->top, this->width, this->height - 1, 0);
+		while ((i > 0) && (i > IConsoleWindow::scroll - max) && (_iconsole_buffer[i] != NULL)) {
+			DoDrawString(_iconsole_buffer[i], 5,
+				this->height - (IConsoleWindow::scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
+			i--;
 		}
-		case WE_MOUSELOOP:
-			if (HandleCaret(&_iconsole_cmdline)) w->SetDirty();
-			break;
-		case WE_DESTROY:
-			_iconsole_mode = ICONSOLE_CLOSED;
-			break;
-		case WE_KEYPRESS:
-			e->we.keypress.cont = false;
-			switch (e->we.keypress.keycode) {
-				case WKC_UP:
-					IConsoleHistoryNavigate(+1);
-					w->SetDirty();
-					break;
-				case WKC_DOWN:
-					IConsoleHistoryNavigate(-1);
-					w->SetDirty();
-					break;
-				case WKC_SHIFT | WKC_PAGEUP:
-					if (iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0) {
-						iconsole_scroll = 0;
-					} else {
-						iconsole_scroll -= (w->height / ICON_LINE_HEIGHT) - 1;
-					}
-					w->SetDirty();
-					break;
-				case WKC_SHIFT | WKC_PAGEDOWN:
-					if (iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
-						iconsole_scroll = ICON_BUFFER;
-					} else {
-						iconsole_scroll += (w->height / ICON_LINE_HEIGHT) - 1;
-					}
-					w->SetDirty();
-					break;
-				case WKC_SHIFT | WKC_UP:
-					if (iconsole_scroll <= 0) {
-						iconsole_scroll = 0;
-					} else {
-						--iconsole_scroll;
-					}
-					w->SetDirty();
-					break;
-				case WKC_SHIFT | WKC_DOWN:
-					if (iconsole_scroll >= ICON_BUFFER) {
-						iconsole_scroll = ICON_BUFFER;
-					} else {
-						++iconsole_scroll;
-					}
-					w->SetDirty();
-					break;
-				case WKC_BACKQUOTE:
-					IConsoleSwitch();
-					break;
-				case WKC_RETURN: case WKC_NUM_ENTER:
-					IConsolePrintF(_icolour_cmd, "] %s", _iconsole_cmdline.buf);
-					IConsoleHistoryAdd(_iconsole_cmdline.buf);
+		/* If the text is longer than the window, don't show the starting ']' */
+		delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
+		if (delta > 0) {
+			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, _icolour_cmd);
+			delta = 0;
+		}
 
-					IConsoleCmdExec(_iconsole_cmdline.buf);
-					IConsoleClearCommand();
-					break;
-				case WKC_CTRL | WKC_RETURN:
-					_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
-					IConsoleResize(w);
-					MarkWholeScreenDirty();
-					break;
-				case (WKC_CTRL | 'V'):
-					if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
-						IConsoleResetHistoryPos();
-						w->SetDirty();
-					}
-					break;
-				case (WKC_CTRL | 'L'):
-					IConsoleCmdExec("clear");
-					break;
-				case (WKC_CTRL | 'U'):
-					DeleteTextBufferAll(&_iconsole_cmdline);
-					w->SetDirty();
-					break;
-				case WKC_BACKSPACE: case WKC_DELETE:
-					if (DeleteTextBufferChar(&_iconsole_cmdline, e->we.keypress.keycode)) {
-						IConsoleResetHistoryPos();
-						w->SetDirty();
-					}
-					break;
-				case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-					if (MoveTextBufferPos(&_iconsole_cmdline, e->we.keypress.keycode)) {
-						IConsoleResetHistoryPos();
-						w->SetDirty();
-					}
-					break;
-				default:
-					if (IsValidChar(e->we.keypress.key, CS_ALPHANUMERAL)) {
-						iconsole_scroll = ICON_BUFFER;
-						InsertTextBufferChar(&_iconsole_cmdline, e->we.keypress.key);
-						IConsoleResetHistoryPos();
-						w->SetDirty();
-					} else {
-						e->we.keypress.cont = true;
-					}
-			break;
+		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, _icolour_cmd);
+
+		if (_iconsole_cmdline.caret) {
+			DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, this->height - ICON_LINE_HEIGHT, TC_WHITE);
 		}
 	}
-}
+
+	virtual void OnMouseLoop()
+	{
+		if (HandleCaret(&_iconsole_cmdline)) this->SetDirty();
+	}
+
+	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case WKC_UP:
+				IConsoleHistoryNavigate(+1);
+				this->SetDirty();
+				break;
+
+			case WKC_DOWN:
+				IConsoleHistoryNavigate(-1);
+				this->SetDirty();
+				break;
+
+			case WKC_SHIFT | WKC_PAGEUP:
+				if (IConsoleWindow::scroll - (this->height / ICON_LINE_HEIGHT) - 1 < 0) {
+					IConsoleWindow::scroll = 0;
+				} else {
+					IConsoleWindow::scroll -= (this->height / ICON_LINE_HEIGHT) - 1;
+				}
+				this->SetDirty();
+				break;
+
+			case WKC_SHIFT | WKC_PAGEDOWN:
+				if (IConsoleWindow::scroll + (this->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
+					IConsoleWindow::scroll = ICON_BUFFER;
+				} else {
+					IConsoleWindow::scroll += (this->height / ICON_LINE_HEIGHT) - 1;
+				}
+				this->SetDirty();
+				break;
+
+			case WKC_SHIFT | WKC_UP:
+				if (IConsoleWindow::scroll <= 0) {
+					IConsoleWindow::scroll = 0;
+				} else {
+					--IConsoleWindow::scroll;
+				}
+				this->SetDirty();
+				break;
+
+			case WKC_SHIFT | WKC_DOWN:
+				if (IConsoleWindow::scroll >= ICON_BUFFER) {
+					IConsoleWindow::scroll = ICON_BUFFER;
+				} else {
+					++IConsoleWindow::scroll;
+				}
+				this->SetDirty();
+				break;
+
+			case WKC_BACKQUOTE:
+				IConsoleSwitch();
+				break;
+
+			case WKC_RETURN: case WKC_NUM_ENTER:
+				IConsolePrintF(_icolour_cmd, "] %s", _iconsole_cmdline.buf);
+				IConsoleHistoryAdd(_iconsole_cmdline.buf);
+
+				IConsoleCmdExec(_iconsole_cmdline.buf);
+				IConsoleClearCommand();
+				break;
+
+			case WKC_CTRL | WKC_RETURN:
+				_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
+				IConsoleResize(this);
+				MarkWholeScreenDirty();
+				break;
+
+			case (WKC_CTRL | 'V'):
+				if (InsertTextBufferClipboard(&_iconsole_cmdline)) {
+					IConsoleResetHistoryPos();
+					this->SetDirty();
+				}
+				break;
+
+			case (WKC_CTRL | 'L'):
+				IConsoleCmdExec("clear");
+				break;
+
+			case (WKC_CTRL | 'U'):
+				DeleteTextBufferAll(&_iconsole_cmdline);
+				this->SetDirty();
+				break;
+
+			case WKC_BACKSPACE: case WKC_DELETE:
+				if (DeleteTextBufferChar(&_iconsole_cmdline, keycode)) {
+					IConsoleResetHistoryPos();
+					this->SetDirty();
+				}
+				break;
+
+			case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
+				if (MoveTextBufferPos(&_iconsole_cmdline, keycode)) {
+					IConsoleResetHistoryPos();
+					this->SetDirty();
+				}
+				break;
+
+			default:
+				if (IsValidChar(key, CS_ALPHANUMERAL)) {
+					IConsoleWindow::scroll = ICON_BUFFER;
+					InsertTextBufferChar(&_iconsole_cmdline, key);
+					IConsoleResetHistoryPos();
+					this->SetDirty();
+				} else {
+					return true;
+				}
+		}
+		return false;
+	}
+};
+
+byte IConsoleWindow::scroll = ICON_BUFFER;
 
 static const Widget _iconsole_window_widgets[] = {
 	{WIDGETS_END}
@@ -218,7 +248,7 @@ static const WindowDesc _iconsole_window_desc = {
 	WC_CONSOLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_iconsole_window_widgets,
-	IConsoleWndProc,
+	NULL,
 };
 
 void IConsoleInit()
@@ -317,17 +347,12 @@ void IConsoleResize(Window *w)
 void IConsoleSwitch()
 {
 	switch (_iconsole_mode) {
-		case ICONSOLE_CLOSED: {
-			Window *w = new Window(&_iconsole_window_desc);
-			w->height = _screen.height / 3;
-			w->width = _screen.width;
-			_iconsole_mode = ICONSOLE_OPENED;
-			SetBit(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
-		} break;
+		case ICONSOLE_CLOSED:
+			new IConsoleWindow(&_iconsole_window_desc);
+			break;
+
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
-			_iconsole_mode = ICONSOLE_CLOSED;
-			ClrBit(_no_scroll, SCROLL_CON);
 			break;
 	}
 
