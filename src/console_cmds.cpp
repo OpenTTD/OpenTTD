@@ -536,7 +536,11 @@ DEF_CONSOLE_CMD(ConRcon)
 
 	if (argc < 3) return false;
 
-	SEND_COMMAND(PACKET_CLIENT_RCON)(argv[1], argv[2]);
+	if (_network_server) {
+		IConsoleCmdExec(argv[2]);
+	} else {
+		SEND_COMMAND(PACKET_CLIENT_RCON)(argv[1], argv[2]);
+	}
 	return true;
 }
 
