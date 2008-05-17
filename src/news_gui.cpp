@@ -19,6 +19,7 @@
 #include "widgets/dropdown_func.h"
 #include "map_func.h"
 #include "statusbar_gui.h"
+#include "player_face.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -73,7 +74,68 @@ static void MoveToNextItem();
 
 typedef void DrawNewsCallbackProc(struct Window *w, const NewsItem *ni);
 void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
-void DrawNewsBankrupcy(Window *w, const NewsItem *ni);
+
+static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
+{
+	Player *p = GetPlayer((PlayerID)(ni->data_b));
+	DrawPlayerFace(p->face, p->player_color, 2, 23);
+	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
+
+	SetDParam(0, p->index);
+
+	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
+
+	switch (ni->subtype) {
+		case NS_COMPANY_TROUBLE:
+			DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING);
+
+			SetDParam(0, p->index);
+
+			DrawStringMultiCenter(
+				((w->width - 101) >> 1) + 98,
+				90,
+				STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED,
+				w->width - 101);
+			break;
+
+		case NS_COMPANY_MERGER:
+			DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING);
+			SetDParam(0, ni->params[2]);
+			SetDParam(1, p->index);
+			SetDParam(2, ni->params[4]);
+			DrawStringMultiCenter(
+				((w->width - 101) >> 1) + 98,
+				90,
+				ni->params[4] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR,
+				w->width - 101);
+			break;
+
+		case NS_COMPANY_BANKRUPT:
+			DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, TC_FROMSTRING);
+			SetDParam(0, p->index);
+			DrawStringMultiCenter(
+				((w->width - 101) >> 1) + 98,
+				90,
+				STR_705D_HAS_BEEN_CLOSED_DOWN_BY,
+				w->width - 101);
+			break;
+
+		case NS_COMPANY_NEW:
+			DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING);
+			SetDParam(0, p->index);
+			SetDParam(1, ni->params[3]);
+			DrawStringMultiCenter(
+				((w->width - 101) >> 1) + 98,
+				90,
+				STR_705F_STARTS_CONSTRUCTION_NEAR,
+				w->width - 101);
+			break;
+
+		default:
+			NOT_REACHED();
+	}
+}
+
 
 static DrawNewsCallbackProc * const _draw_news_callback[] = {
 	DrawNewsNewVehicleAvail,  ///< DNC_VEHICLEAVAIL

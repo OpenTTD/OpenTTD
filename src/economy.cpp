@@ -29,7 +29,6 @@
 #include "newgrf_station.h"
 #include "unmovable.h"
 #include "cargotype.h"
-#include "player_face.h"
 #include "group.h"
 #include "strings_func.h"
 #include "tile_cmd.h"
@@ -46,7 +45,6 @@
 #include "gfx_func.h"
 #include "autoreplace_func.h"
 #include "player_gui.h"
-#include "window_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -586,67 +584,6 @@ static void PlayersCheckBankrupt(Player *p)
 			if (!IsHumanPlayer(owner) && (!_networking || _network_server) && _ai.enabled)
 				AI_PlayerDied(owner);
 		}
-	}
-}
-
-void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
-{
-	Player *p = GetPlayer((PlayerID)(ni->data_b));
-	DrawPlayerFace(p->face, p->player_color, 2, 23);
-	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
-
-	SetDParam(0, p->index);
-
-	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
-
-	switch (ni->subtype) {
-	case NS_COMPANY_TROUBLE:
-		DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING);
-
-		SetDParam(0, p->index);
-
-		DrawStringMultiCenter(
-			((w->width - 101) >> 1) + 98,
-			90,
-			STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED,
-			w->width - 101);
-		break;
-
-	case NS_COMPANY_MERGER:
-		DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING);
-		SetDParam(0, ni->params[2]);
-		SetDParam(1, p->index);
-		SetDParam(2, ni->params[4]);
-		DrawStringMultiCenter(
-			((w->width - 101) >> 1) + 98,
-			90,
-			ni->params[4] == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR,
-			w->width - 101);
-		break;
-
-	case NS_COMPANY_BANKRUPT:
-		DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, TC_FROMSTRING);
-		SetDParam(0, p->index);
-		DrawStringMultiCenter(
-			((w->width - 101) >> 1) + 98,
-			90,
-			STR_705D_HAS_BEEN_CLOSED_DOWN_BY,
-			w->width - 101);
-		break;
-
-	case NS_COMPANY_NEW:
-		DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING);
-		SetDParam(0, p->index);
-		SetDParam(1, ni->params[3]);
-		DrawStringMultiCenter(
-			((w->width - 101) >> 1) + 98,
-			90,
-			STR_705F_STARTS_CONSTRUCTION_NEAR,
-			w->width - 101);
-		break;
-
-	default:
-		NOT_REACHED();
 	}
 }
 
