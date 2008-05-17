@@ -412,11 +412,11 @@ public:
 		_switch_mode_errorstr = INVALID_STRING_ID;
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		if (keycode != WKC_SPACE) return true;
+		if (keycode != WKC_SPACE) return ES_NOT_HANDLED;
 		delete this;
-		return false;
+		return ES_HANDLED;
 	}
 };
 
@@ -883,9 +883,9 @@ bool HandleCaret(Textbuf *tb)
 	return false;
 }
 
-int QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, bool &cont)
+int QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)
 {
-	cont = false;
+	state = Window::ES_HANDLED;
 
 	switch (keycode) {
 		case WKC_ESC: return 2;
@@ -913,7 +913,7 @@ int QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode
 			if (IsValidChar(key, this->afilter)) {
 				if (InsertTextBufferChar(&this->text, key)) w->InvalidateWidget(wid);
 			} else { // key wasn't caught. Continue only if standard entry specified
-				cont = (this->afilter == CS_ALPHANUMERAL);
+				state = (this->afilter == CS_ALPHANUMERAL) ? Window::ES_HANDLED : Window::ES_NOT_HANDLED;
 			}
 	}
 
@@ -963,9 +963,9 @@ void QueryString::DrawEditBox(Window *w, int wid)
 	_cur_dpi = old_dpi;
 }
 
-int QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, bool &cont)
+int QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state)
 {
-	return this->QueryString::HandleEditBoxKey(this, wid, key, keycode, cont);
+	return this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state);
 }
 
 void QueryStringBaseWindow::HandleEditBox(int wid)
@@ -1038,15 +1038,15 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		this->HandleEditBox(QUERY_STR_WIDGET_TEXT);
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont;
-		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, cont)) {
+		EventState state;
+		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, state)) {
 			case 1: this->OnOk(); // Enter pressed, confirms change
 			/* FALL THROUGH */
 			case 2: delete this; break; // ESC pressed, closes window, abandons changes
 		}
-		return cont;
+		return state;
 	}
 
 	~QueryStringWindow()
@@ -1174,7 +1174,7 @@ struct QueryWindow : public Window {
 		}
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		/* ESC closes the window, Enter confirms the action */
 		switch (keycode) {
@@ -1187,9 +1187,9 @@ struct QueryWindow : public Window {
 				/* Fallthrough */
 			case WKC_ESC:
 				delete this;
-				return false;
+				return ES_HANDLED;
 		}
-		return true;
+		return ES_NOT_HANDLED;
 	}
 };
 
@@ -1523,20 +1523,20 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		}
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		if (keycode == WKC_ESC) {
 			delete this;
-			return false;
+			return ES_HANDLED;
 		}
 
-		bool cont = true;
+		EventState state = ES_NOT_HANDLED;
 		if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) &&
-				this->HandleEditBoxKey(10, key, keycode, cont) == 1) { // Press Enter
+				this->HandleEditBoxKey(10, key, keycode, state) == 1) { // Press Enter
 			this->HandleButtonClick(12);
 		}
 
-		return cont;
+		return state;
 	}
 
 	virtual void OnTimeout()

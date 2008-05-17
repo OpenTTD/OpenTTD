@@ -17,7 +17,7 @@ struct QueryString {
 
 	void DrawEditBox(Window *w, int wid);
 	void HandleEditBox(Window *w, int wid);
-	int HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, bool &cont);
+	int HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state);
 };
 
 struct QueryStringBaseWindow : public Window, public QueryString {
@@ -30,7 +30,7 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 
 	void DrawEditBox(int wid);
 	void HandleEditBox(int wid);
-	int HandleEditBoxKey(int wid, uint16 key, uint16 keycode, bool &cont);
+	int HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
 };
 
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel, int ok);

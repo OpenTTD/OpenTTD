@@ -121,16 +121,16 @@ public:
 		}
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		const uint8 i = keycode - '1';
 		if (i < 9 && i < this->bridges->list_length) {
 			/* Build the requested bridge */
 			this->BuildBridge(i);
 			delete this;
-			return false;
+			return ES_HANDLED;
 		}
-		return true;
+		return ES_NOT_HANDLED;
 	}
 
 	virtual void OnClick(Point pt, int widget)

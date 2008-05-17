@@ -308,14 +308,14 @@ struct NewsWindow : Window {
 		}
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		if (keycode == WKC_SPACE) {
 			/* Don't continue. */
 			delete this;
-			return false;
+			return ES_HANDLED;
 		}
-		return true;
+		return ES_NOT_HANDLED;
 	}
 
 	virtual void OnInvalidateData(int data)

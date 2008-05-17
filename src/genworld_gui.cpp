@@ -470,17 +470,17 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->HandleEditBox(GLAND_RANDOM_EDITBOX);
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont;
-		this->HandleEditBoxKey(GLAND_RANDOM_EDITBOX, key, keycode, cont);
+		EventState state;
+		this->HandleEditBoxKey(GLAND_RANDOM_EDITBOX, key, keycode, state);
 		/* the seed is unsigned, therefore atoi cannot be used.
 			* As 2^32 - 1 (MAX_UVALUE(uint32)) is a 'magic' value
 			* (use random seed) it should not be possible to be
 			* entered into the input field; the generate seed
 			* button can be used instead. */
 		_patches_newgame.generation_seed = minu(strtoul(this->edit_str_buf, NULL, sizeof(this->edit_str_buf) - 1), MAX_UVALUE(uint32) - 1);
-		return cont;
+		return state;
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)

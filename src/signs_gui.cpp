@@ -255,10 +255,10 @@ struct SignWindow : QueryStringBaseWindow {
 		}
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont = true;
-		switch (this->HandleEditBoxKey(QUERY_EDIT_SIGN_WIDGET_TEXT, key, keycode, cont)) {
+		EventState state = ES_NOT_HANDLED;
+		switch (this->HandleEditBoxKey(QUERY_EDIT_SIGN_WIDGET_TEXT, key, keycode, state)) {
 			case 1: // Enter pressed, confirms change
 				RenameSign(this->cur_sign, this->text.buf);
 				/* FALL THROUGH */
@@ -267,7 +267,7 @@ struct SignWindow : QueryStringBaseWindow {
 				delete this;
 				break;
 		}
-		return cont;
+		return state;
 	}
 
 	virtual void OnMouseLoop()

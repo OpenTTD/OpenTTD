@@ -543,9 +543,9 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		this->SetDirty();
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont = true;
+		EventState state = ES_NOT_HANDLED;
 		if (this->field != NGWW_PLAYER) {
 			if (this->server != NULL) {
 				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
@@ -554,10 +554,10 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 					this->server = NULL;
 				}
 			}
-			return cont;
+			return state;
 		}
 
-		if (this->HandleEditBoxKey(NGWW_PLAYER, keycode, key, cont) == 1) return cont; // enter pressed
+		if (this->HandleEditBoxKey(NGWW_PLAYER, keycode, key, state) == 1) return state; // enter pressed
 
 		/* The name is only allowed when it starts with a letter! */
 		if (StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
@@ -565,7 +565,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		} else {
 			ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
 		}
-		return cont;
+		return state;
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -892,16 +892,16 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		if (this->field == NSSW_GAMENAME) this->HandleEditBox(NSSW_GAMENAME);
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont = true;
+		EventState state = ES_NOT_HANDLED;
 		if (this->field == NSSW_GAMENAME) {
-			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, cont) == 1) return cont; // enter pressed
+			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, state) == 1) return state; // enter pressed
 
 			ttd_strlcpy(_network_server_name, this->text.buf, sizeof(_network_server_name));
 		}
 
-		return cont;
+		return state;
 	}
 
 	virtual void OnQueryTextFinished(char *str)
@@ -1878,21 +1878,21 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->HandleEditBox(2);
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont = true;
+		EventState state = ES_NOT_HANDLED;
 		if (keycode == WKC_TAB) {
 			ChatTabCompletion();
 		} else {
 			_chat_tab_completion_active = false;
-			switch (this->HandleEditBoxKey(2, key, keycode, cont)) {
+			switch (this->HandleEditBoxKey(2, key, keycode, state)) {
 				case 1: /* Return */
 					SendChat(this->text.buf, this->dtype, this->dest);
 				/* FALLTHROUGH */
 				case 2: /* Escape */ delete this; break;
 			}
 		}
-		return cont;
+		return state;
 	}
 };
 
@@ -1985,10 +1985,10 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		this->HandleEditBox(4);
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		bool cont;
-		switch (this->HandleEditBoxKey(4, key, keycode, cont)) {
+		EventState state;
+		switch (this->HandleEditBoxKey(4, key, keycode, state)) {
 			case 1: // Return
 				this->OnOk();
 				/* FALL THROUGH */
@@ -1997,7 +1997,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				delete this;
 				break;
 		}
-		return cont;
+		return state;
 	}
 };
 

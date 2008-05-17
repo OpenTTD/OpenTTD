@@ -961,14 +961,14 @@ struct DepotWindow : Window {
 		ResizeDepotButtons(this);
 	}
 
-	virtual bool OnCTRLStateChange()
+	virtual EventState OnCTRLStateChange()
 	{
 		if (this->sel != INVALID_VEHICLE) {
 			_cursor.vehchain = _ctrl_pressed;
 			this->InvalidateWidget(DEPOT_WIDGET_MATRIX);
 		}
 
-		return true;
+		return ES_HANDLED;
 	}
 };
 

@@ -266,6 +266,11 @@ struct ViewportData : ViewPort {
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
+	enum EventState {
+		ES_HANDLED,
+		ES_NOT_HANDLED,
+	};
+
 private:
 	WindowProc *wndproc;   ///< Event handler function for the window. Do not use directly, call HandleWindowEvent() instead.
 	void HandleWindowEvent(WindowEvent *e);
@@ -345,17 +350,17 @@ public:
 	 * A key has been pressed.
 	 * @param key     the Unicode value of the key.
 	 * @param keycode the untranslated key code including shift state.
-	 * @return true if the key press has been handled and no other
+	 * @return ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual bool OnKeyPress(uint16 key, uint16 keycode);
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode);
 
 	/**
 	 * The state of the control key has changed
-	 * @return true if the change has been handled and no other
+	 * @return ES_HANDLED if the change has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual bool OnCTRLStateChange();
+	virtual EventState OnCTRLStateChange();
 
 
 	/**

@@ -68,7 +68,7 @@ void Window::OnPaint()
 	this->HandleWindowEvent(&e);
 }
 
-bool Window::OnKeyPress(uint16 key, uint16 keycode)
+Window::EventState Window::OnKeyPress(uint16 key, uint16 keycode)
 {
 	WindowEvent e;
 	e.event = WE_KEYPRESS;
@@ -77,17 +77,17 @@ bool Window::OnKeyPress(uint16 key, uint16 keycode)
 	e.we.keypress.cont    = true;
 	this->HandleWindowEvent(&e);
 
-	return e.we.keypress.cont;
+	return e.we.keypress.cont ? ES_NOT_HANDLED : ES_HANDLED;
 }
 
-bool Window::OnCTRLStateChange()
+Window::EventState Window::OnCTRLStateChange()
 {
 	WindowEvent e;
 	e.event = WE_CTRL_CHANGED;
 	e.we.ctrl.cont = true;
 	this->HandleWindowEvent(&e);
 
-	return e.we.ctrl.cont;
+	return e.we.ctrl.cont ? ES_NOT_HANDLED : ES_HANDLED;
 }
 
 void Window::OnClick(Point pt, int widget)
@@ -1802,8 +1802,7 @@ void HandleKeypress(uint32 raw_key)
 				w->window_class != WC_COMPANY_PASSWORD_WINDOW) {
 			continue;
 		}
-		;
-		if (!w->OnKeyPress(key, keycode)) return;
+		if (w->OnKeyPress(key, keycode) == Window::ES_HANDLED) return;
 	}
 
 	Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
@@ -1819,7 +1818,7 @@ void HandleCtrlChanged()
 	/* Call the event, start with the uppermost window. */
 	for (Window* const *wz = _last_z_window; wz != _z_windows;) {
 		Window *w = *--wz;
-		if (!w->OnCTRLStateChange()) break;
+		if (w->OnCTRLStateChange() == Window::ES_HANDLED) return;
 	}
 }
 

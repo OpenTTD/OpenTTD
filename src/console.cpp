@@ -126,7 +126,7 @@ struct IConsoleWindow : Window
 		if (HandleCaret(&_iconsole_cmdline)) this->SetDirty();
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		switch (keycode) {
 			case WKC_UP:
@@ -230,10 +230,10 @@ struct IConsoleWindow : Window
 					IConsoleResetHistoryPos();
 					this->SetDirty();
 				} else {
-					return true;
+					return ES_NOT_HANDLED;
 				}
 		}
-		return false;
+		return ES_HANDLED;
 	}
 };
 

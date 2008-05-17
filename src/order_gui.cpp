@@ -926,7 +926,7 @@ public:
 		ResetObjectToPlace();
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		static const KeyToEvent keytoevent[] = {
 			{'D', OrderClick_Skip},
@@ -939,15 +939,15 @@ public:
 			//('?', OrderClick_Service},
 		};
 
-		if (this->vehicle->owner != _local_player) return true;
+		if (this->vehicle->owner != _local_player) return ES_NOT_HANDLED;
 
 		for (uint i = 0; i < lengthof(keytoevent); i++) {
 			if (keycode == keytoevent[i].keycode) {
 				keytoevent[i].proc(this, -1);
-				return false;
+				return ES_HANDLED;
 			}
 		}
-		return true;
+		return ES_NOT_HANDLED;
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)

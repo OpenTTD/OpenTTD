@@ -239,34 +239,34 @@ struct MainWindow : Window
 		}
 	}
 
-	virtual bool OnKeyPress(uint16 key, uint16 keycode)
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		switch (keycode) {
 			case 'Q' | WKC_CTRL:
 			case 'Q' | WKC_META:
 				HandleExitGameRequest();
-				return true;
+				return ES_HANDLED;
 		}
 
 		/* Disable all key shortcuts, except quit shortcuts when
 		* generating the world, otherwise they create threading
 		* problem during the generating, resulting in random
 		* assertions that are hard to trigger and debug */
-		if (IsGeneratingWorld()) return true;
+		if (IsGeneratingWorld()) return ES_NOT_HANDLED;
 
 		if (keycode == WKC_BACKQUOTE) {
 			IConsoleSwitch();
-			return false;
+			return ES_HANDLED;
 		}
 
 		if (keycode == ('B' | WKC_CTRL)) {
 			extern bool _draw_bounding_boxes;
 			_draw_bounding_boxes = !_draw_bounding_boxes;
 			MarkWholeScreenDirty();
-			return false;
+			return ES_HANDLED;
 		}
 
-		if (_game_mode == GM_MENU) return true;
+		if (_game_mode == GM_MENU) return ES_NOT_HANDLED;
 
 		switch (keycode) {
 			case 'C':
@@ -372,9 +372,9 @@ struct MainWindow : Window
 				break;
 #endif
 
-			default: return true;
+			default: return ES_NOT_HANDLED;
 		}
-		return false;
+		return ES_HANDLED;
 	}
 
 	virtual void OnScroll(Point delta)
