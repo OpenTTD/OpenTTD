@@ -811,11 +811,19 @@ void ShowCreateScenario()
 }
 
 
-static const Widget _show_terrain_progress_widgets[] = {
-{    WWT_CAPTION,   RESIZE_NONE,    14,     0,   180,     0,    13, STR_GENERATION_WORLD,   STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   180,    14,    96, 0x0,                    STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    15,    20,   161,    74,    85, STR_GENERATION_ABORT,   STR_NULL}, // Abort button
+static const Widget _generate_progress_widgets[] = {
+{    WWT_CAPTION,   RESIZE_NONE,    14,     0,   180,     0,    13, STR_GENERATION_WORLD,   STR_018C_WINDOW_TITLE_DRAG_THIS}, // GPWW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   180,    14,    96, 0x0,                    STR_NULL},                        // GPWW_BACKGROUND
+{    WWT_TEXTBTN,   RESIZE_NONE,    15,    20,   161,    74,    85, STR_GENERATION_ABORT,   STR_NULL},                        // GPWW_ABORT
 {   WIDGETS_END},
+};
+
+static const WindowDesc _generate_progress_desc = {
+	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
+	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
+	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_generate_progress_widgets,
+	NULL
 };
 
 struct tp_info {
@@ -837,51 +845,52 @@ static void AbortGeneratingWorldCallback(Window *w, bool confirmed)
 	}
 }
 
-static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
-{
-	switch (e->event) {
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 2:
-					if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
-					ShowQuery(
-						STR_GENERATION_ABORT_CAPTION,
-						STR_GENERATION_ABORT_MESSAGE,
-						w,
-						AbortGeneratingWorldCallback
-					);
-					break;
-			}
-			break;
+struct GenerateProgressWindow : public Window {
+private:
+	enum GenerationProgressWindowWidgets {
+		GPWW_CAPTION,
+		GPWW_BACKGROUND,
+		GPWW_ABORT,
+	};
 
-		case WE_PAINT:
-			DrawWindowWidgets(w);
+public:
+	GenerateProgressWindow() : Window(&_generate_progress_desc) {};
 
-			/* Draw the % complete with a bar and a text */
-			DrawFrameRect(19, 20, (w->width - 18), 37, 14, FR_BORDERONLY);
-			DrawFrameRect(20, 21, (int)((w->width - 40) * _tp.percent / 100) + 20, 36, 10, FR_NONE);
-			SetDParam(0, _tp.percent);
-			DrawStringCentered(90, 25, STR_PROGRESS, TC_FROMSTRING);
-
-			/* Tell which class we are generating */
-			DrawStringCentered(90, 46, _tp.cls, TC_FROMSTRING);
-
-			/* And say where we are in that class */
-			SetDParam(0, _tp.current);
-			SetDParam(1, _tp.total);
-			DrawStringCentered(90, 58, STR_GENERATION_PROGRESS, TC_FROMSTRING);
-
-			w->SetDirty();
-			break;
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case GPWW_ABORT:
+				if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
+				ShowQuery(
+					STR_GENERATION_ABORT_CAPTION,
+					STR_GENERATION_ABORT_MESSAGE,
+					this,
+					AbortGeneratingWorldCallback
+				);
+				break;
+		}
 	}
-}
 
-static const WindowDesc _show_terrain_progress_desc = {
-	WDP_CENTER, WDP_CENTER, 181, 97, 181, 97,
-	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
-	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_show_terrain_progress_widgets,
-	ShowTerrainProgressProc
+	virtual void OnPaint()
+	{
+		DrawWindowWidgets(this);
+
+		/* Draw the % complete with a bar and a text */
+		DrawFrameRect(19, 20, (this->width - 18), 37, 14, FR_BORDERONLY);
+		DrawFrameRect(20, 21, (int)((this->width - 40) * _tp.percent / 100) + 20, 36, 10, FR_NONE);
+		SetDParam(0, _tp.percent);
+		DrawStringCentered(90, 25, STR_PROGRESS, TC_FROMSTRING);
+
+		/* Tell which class we are generating */
+		DrawStringCentered(90, 46, _tp.cls, TC_FROMSTRING);
+
+		/* And say where we are in that class */
+		SetDParam(0, _tp.current);
+		SetDParam(1, _tp.total);
+		DrawStringCentered(90, 58, STR_GENERATION_PROGRESS, TC_FROMSTRING);
+
+		this->SetDirty();
+	}
 };
 
 /**
@@ -901,7 +910,8 @@ void PrepareGenerateWorldProgress()
  */
 void ShowGenerateWorldProgress()
 {
-	AllocateWindowDescFront<Window>(&_show_terrain_progress_desc, 0);
+	if (BringWindowToFrontById(WC_GENERATE_PROGRESS_WINDOW, 0)) return;
+	new GenerateProgressWindow();
 }
 
 static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total)
