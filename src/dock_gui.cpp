@@ -230,15 +230,29 @@ void ShowBuildDocksToolbar()
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
-static void BuildDockStationWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_CREATE: w->LowerWidget(_station_show_coverage + 3); break;
+struct BuildDocksStationWindow : public PickerWindowBase {
+private:
+	enum BuildDockStationWidgets {
+		BDSW_CLOSE,
+		BDSW_CAPTION,
+		BDSW_BACKGROUND,
+		BDSW_LT_OFF,
+		BDSW_LT_ON,
+		BDSW_INFO,
+	};
 
-	case WE_PAINT: {
+public:
+	BuildDocksStationWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->LowerWidget(_station_show_coverage + BDSW_LT_OFF);
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void OnPaint()
+	{
 		int rad = (_patches.modified_catchment) ? CA_DOCK : CA_UNMODIFIED;
 
-		w->DrawWidgets();
+		this->DrawWidgets();
 
 		if (_station_show_coverage) {
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
@@ -248,45 +262,40 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 
 		int text_end = DrawStationCoverageAreaText(4, 50, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(4, text_end + 4, SCT_ALL, rad, true) + 4;
-		if (text_end != w->widget[2].bottom) {
-			w->SetDirty();
-			ResizeWindowForWidget(w, 2, 0, text_end - w->widget[2].bottom);
-			w->SetDirty();
+		if (text_end != this->widget[BDSW_BACKGROUND].bottom) {
+			this->SetDirty();
+			ResizeWindowForWidget(this, 2, 0, text_end - this->widget[BDSW_BACKGROUND].bottom);
+			this->SetDirty();
 		}
-
-		break;
 	}
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-			case 3:
-			case 4:
-				w->RaiseWidget(_station_show_coverage + 3);
-				_station_show_coverage = (e->we.click.widget != 3);
-				w->LowerWidget(_station_show_coverage + 3);
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BDSW_LT_OFF:
+			case BDSW_LT_ON:
+				this->RaiseWidget(_station_show_coverage + BDSW_LT_OFF);
+				_station_show_coverage = (widget != BDSW_LT_OFF);
+				this->LowerWidget(_station_show_coverage + BDSW_LT_OFF);
 				SndPlayFx(SND_15_BEEP);
-				w->SetDirty();
+				this->SetDirty();
 				break;
 		}
-		break;
-
-	case WE_TICK:
-		CheckRedrawStationCoverage(w);
-		break;
-
-	case WE_DESTROY:
-		ResetObjectToPlace();
-		break;
 	}
-}
+
+	virtual void OnTick()
+	{
+		CheckRedrawStationCoverage(this);
+	}
+};
 
 static const Widget _build_dock_station_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3068_DOCK,                    STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,    74, 0x0,                              STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,    30,    40, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,    30,    40, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},
-{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    17,    30, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},             // BDSW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3068_DOCK,                    STR_018C_WINDOW_TITLE_DRAG_THIS},   // BDSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,    74, 0x0,                              STR_NULL},                          // BDSW_BACKGROUND
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,    30,    40, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE}, // BDSW_LT_OFF
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,    30,    40, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},  // BDSW_LT_ON
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    17,    30, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},                          // BDSW_INFO
 {   WIDGETS_END},
 };
 
@@ -295,63 +304,73 @@ static const WindowDesc _build_dock_station_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_dock_station_widgets,
-	BuildDockStationWndProc
+	NULL
 };
 
 static void ShowBuildDockStationPicker()
 {
-	new Window(&_build_dock_station_desc);
+	new BuildDocksStationWindow(&_build_dock_station_desc);
 }
 
-static void UpdateDocksDirection()
-{
-	if (_ship_depot_direction != AXIS_X) {
-		SetTileSelectSize(1, 2);
-	} else {
-		SetTileSelectSize(2, 1);
+struct BuildDocksDepotWindow : public PickerWindowBase {
+private:
+	enum BuildDockDepotWidgets {
+		BDDW_CLOSE,
+		BDDW_CAPTION,
+		BDDW_BACKGROUND,
+		BDDW_X,
+		BDDW_Y,
+	};
+
+	static void UpdateDocksDirection()
+	{
+		if (_ship_depot_direction != AXIS_X) {
+			SetTileSelectSize(1, 2);
+		} else {
+			SetTileSelectSize(2, 1);
+		}
 	}
-}
 
-static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_CREATE: w->LowerWidget(_ship_depot_direction + 3); break;
+public:
+	BuildDocksDepotWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->LowerWidget(_ship_depot_direction + BDDW_X);
+		UpdateDocksDirection();
+		this->FindWindowPlacementAndResize(desc);
+	}
 
-	case WE_PAINT:
-		w->DrawWidgets();
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
 
 		DrawShipDepotSprite(67, 35, 0);
 		DrawShipDepotSprite(35, 51, 1);
 		DrawShipDepotSprite(135, 35, 2);
 		DrawShipDepotSprite(167, 51, 3);
-		return;
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case 3:
-		case 4:
-			w->RaiseWidget(_ship_depot_direction + 3);
-			_ship_depot_direction = (e->we.click.widget == 3 ? AXIS_X : AXIS_Y);
-			w->LowerWidget(_ship_depot_direction + 3);
-			SndPlayFx(SND_15_BEEP);
-			UpdateDocksDirection();
-			w->SetDirty();
-			break;
-		}
-	} break;
-
-	case WE_DESTROY:
-		ResetObjectToPlace();
-		break;
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BDDW_X:
+			case BDDW_Y:
+				this->RaiseWidget(_ship_depot_direction + BDDW_X);
+				_ship_depot_direction = (widget == BDDW_X ? AXIS_X : AXIS_Y);
+				this->LowerWidget(_ship_depot_direction + BDDW_X);
+				SndPlayFx(SND_15_BEEP);
+				UpdateDocksDirection();
+				this->SetDirty();
+				break;
+		}
+	}
+};
 
 static const Widget _build_docks_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   203,     0,    13, STR_3800_SHIP_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,    85, 0x0,                             STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,   100,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
-{      WWT_PANEL,   RESIZE_NONE,    14,   103,   200,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},                  // BDDW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   203,     0,    13, STR_3800_SHIP_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // BDDW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,    85, 0x0,                             STR_NULL},                               // BDDW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,   100,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION}, // BDDW_X
+{      WWT_PANEL,   RESIZE_NONE,    14,   103,   200,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION}, // BDDW_Y
 {   WIDGETS_END},
 };
 
@@ -360,14 +379,13 @@ static const WindowDesc _build_docks_depot_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_docks_depot_widgets,
-	BuildDocksDepotWndProc
+	NULL
 };
 
 
 static void ShowBuildDocksDepotPicker()
 {
-	new Window(&_build_docks_depot_desc);
-	UpdateDocksDirection();
+	new BuildDocksDepotWindow(&_build_docks_depot_desc);
 }
 
 
