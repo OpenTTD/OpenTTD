@@ -714,59 +714,59 @@ void ShowBuildRoadScenToolbar()
 	AllocateWindowDescFront<Window>(&_build_road_scen_desc, 0);
 }
 
-/** Enum referring to the widgets of the build road depot window */
-enum BuildRoadDepotWidgets {
-	BRDW_CLOSEBOX = 0,
-	BRDW_CAPTION,
-	BRDW_BACKGROUND,
-	BRDW_DEPOT_NE,
-	BRDW_DEPOT_SE,
-	BRDW_DEPOT_SW,
-	BRDW_DEPOT_NW,
-};
+struct BuildRoadDepotWindow : public PickerWindowBase {
+private:
+	/** Enum referring to the widgets of the build road depot window */
+	enum BuildRoadDepotWidgets {
+		BRDW_CLOSEBOX = 0,
+		BRDW_CAPTION,
+		BRDW_BACKGROUND,
+		BRDW_DEPOT_NE,
+		BRDW_DEPOT_SE,
+		BRDW_DEPOT_SW,
+		BRDW_DEPOT_NW,
+	};
 
-static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
-			break;
-
-		case WE_PAINT:
-			w->DrawWidgets();
-
-			DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
-			DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
-			DrawRoadDepotSprite( 2, 69, DIAGDIR_SW, _cur_roadtype);
-			DrawRoadDepotSprite( 2, 17, DIAGDIR_NW, _cur_roadtype);
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case BRDW_DEPOT_NW:
-				case BRDW_DEPOT_NE:
-				case BRDW_DEPOT_SW:
-				case BRDW_DEPOT_SE:
-					w->RaiseWidget(_road_depot_orientation + BRDW_DEPOT_NE);
-					_road_depot_orientation = (DiagDirection)(e->we.click.widget - BRDW_DEPOT_NE);
-					w->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
-					SndPlayFx(SND_15_BEEP);
-					w->SetDirty();
-					break;
-
-				default:
-					break;
-			}
-			break;
-
-		case WE_DESTROY:
-			ResetObjectToPlace();
-			break;
-
-		default:
-			break;
+public:
+	BuildRoadDepotWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	{
+		this->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
+		if ( _cur_roadtype == ROADTYPE_TRAM) {
+			this->widget[BRDW_CAPTION].data = STR_TRAM_DEPOT_ORIENTATION;
+			for (int i = BRDW_DEPOT_NE; i <= BRDW_DEPOT_NW; i++) this->widget[i].tooltips = STR_SELECT_TRAM_VEHICLE_DEPOT;
+		}
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		DrawRoadDepotSprite(70, 17, DIAGDIR_NE, _cur_roadtype);
+		DrawRoadDepotSprite(70, 69, DIAGDIR_SE, _cur_roadtype);
+		DrawRoadDepotSprite( 2, 69, DIAGDIR_SW, _cur_roadtype);
+		DrawRoadDepotSprite( 2, 17, DIAGDIR_NW, _cur_roadtype);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BRDW_DEPOT_NW:
+			case BRDW_DEPOT_NE:
+			case BRDW_DEPOT_SW:
+			case BRDW_DEPOT_SE:
+				this->RaiseWidget(_road_depot_orientation + BRDW_DEPOT_NE);
+				_road_depot_orientation = (DiagDirection)(widget - BRDW_DEPOT_NE);
+				this->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
+			default:
+				break;
+		}
+	}
+};
 
 /** Widget definition of the build road depot window */
 static const Widget _build_road_depot_widgets[] = {
@@ -780,148 +780,129 @@ static const Widget _build_road_depot_widgets[] = {
 {   WIDGETS_END},
 };
 
-/** Widget definition of the build tram depot window */
-static const Widget _build_tram_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},              // BRDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_TRAM_DEPOT_ORIENTATION,      STR_018C_WINDOW_TITLE_DRAG_THIS},    // BRDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,                             STR_NULL},                           // BRDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_NE
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_SE
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_SW
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                             STR_SELECT_TRAM_VEHICLE_DEPOT},      // BRDW_DEPOT_NW
-{   WIDGETS_END},
-};
-
 static const WindowDesc _build_road_depot_desc = {
 	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_road_depot_widgets,
-	BuildRoadDepotWndProc
-};
-
-static const WindowDesc _build_tram_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 140, 122, 140, 122,
-	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_build_tram_depot_widgets,
-	BuildRoadDepotWndProc
+	NULL
 };
 
 static void ShowRoadDepotPicker()
 {
-	new Window(_cur_roadtype == ROADTYPE_ROAD ? &_build_road_depot_desc : &_build_tram_depot_desc);
+	new BuildRoadDepotWindow(&_build_road_depot_desc);
 }
 
-/** Enum referring to the widgets of the build road station window */
-enum BuildRoadStationWidgets {
-	BRSW_CLOSEBOX = 0,
-	BRSW_CAPTION,
-	BRSW_BACKGROUND,
-	BRSW_STATION_NE,
-	BRSW_STATION_SE,
-	BRSW_STATION_SW,
-	BRSW_STATION_NW,
-	BRSW_STATION_X,
-	BRSW_STATION_Y,
-	BRSW_LT_OFF,
-	BRSW_LT_ON,
-	BRSW_INFO,
-};
+struct BuildRoadStationWindow : public PickerWindowBase {
+private:
+	/** Enum referring to the widgets of the build road station window */
+	enum BuildRoadStationWidgets {
+		BRSW_CLOSEBOX = 0,
+		BRSW_CAPTION,
+		BRSW_BACKGROUND,
+		BRSW_STATION_NE,
+		BRSW_STATION_SE,
+		BRSW_STATION_SW,
+		BRSW_STATION_NW,
+		BRSW_STATION_X,
+		BRSW_STATION_Y,
+		BRSW_LT_OFF,
+		BRSW_LT_ON,
+		BRSW_INFO,
+	};
 
-static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			/* Trams don't have non-drivethrough stations */
-			if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
-				_road_station_picker_orientation = DIAGDIR_END;
-			}
-			w->SetWidgetsDisabledState(_cur_roadtype == ROADTYPE_TRAM,
-				BRSW_STATION_NE,
-				BRSW_STATION_SE,
-				BRSW_STATION_SW,
-				BRSW_STATION_NW,
-				WIDGET_LIST_END);
+public:
+	BuildRoadStationWindow(const WindowDesc *desc, RoadStopType rs) : PickerWindowBase(desc)
+	{
+		/* Trams don't have non-drivethrough stations */
+		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
+			_road_station_picker_orientation = DIAGDIR_END;
+		}
+		this->SetWidgetsDisabledState(_cur_roadtype == ROADTYPE_TRAM,
+			BRSW_STATION_NE,
+			BRSW_STATION_SE,
+			BRSW_STATION_SW,
+			BRSW_STATION_NW,
+			WIDGET_LIST_END);
 
-			w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-			w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
-			break;
+		this->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
+		this->widget[BRSW_CAPTION].data = _road_type_infos[_cur_roadtype].picker_title[rs];
+		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->widget[i].tooltips = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
 
-		case WE_PAINT: {
-			w->DrawWidgets();
-
-			if (_station_show_coverage) {
-				int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
-				SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-			} else {
-				SetTileSelectSize(1, 1);
-			}
-
-			StationType st = (w->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
-
-			StationPickerDrawSprite(103, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 0);
-			StationPickerDrawSprite(103, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 1);
-			StationPickerDrawSprite( 35, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 2);
-			StationPickerDrawSprite( 35, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 3);
-
-			StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
-			StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
-
-			int text_end = DrawStationCoverageAreaText(2, 146,
-				(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-				3, false);
-			text_end = DrawStationCoverageAreaText(2, text_end + 4,
-				(w->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
-				3, true) + 4;
-			if (text_end > w->widget[BRSW_BACKGROUND].bottom) {
-				w->SetDirty();
-				ResizeWindowForWidget(w, BRSW_BACKGROUND, 0, text_end - w->widget[BRSW_BACKGROUND].bottom);
-				w->SetDirty();
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case BRSW_STATION_NE:
-				case BRSW_STATION_SE:
-				case BRSW_STATION_SW:
-				case BRSW_STATION_NW:
-				case BRSW_STATION_X:
-				case BRSW_STATION_Y:
-					w->RaiseWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-					_road_station_picker_orientation = (DiagDirection)(e->we.click.widget - BRSW_STATION_NE);
-					w->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-					SndPlayFx(SND_15_BEEP);
-					w->SetDirty();
-					break;
-
-				case BRSW_LT_OFF:
-				case BRSW_LT_ON:
-					w->RaiseWidget(_station_show_coverage + BRSW_LT_OFF);
-					_station_show_coverage = (e->we.click.widget != BRSW_LT_OFF);
-					w->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
-					SndPlayFx(SND_15_BEEP);
-					w->SetDirty();
-					break;
-
-				default:
-					break;
-			}
-			break;
-
-		case WE_TICK:
-			CheckRedrawStationCoverage(w);
-			break;
-
-		case WE_DESTROY:
-			ResetObjectToPlace();
-			break;
-
-		default:
-			break;
+		this->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+		this->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		if (_station_show_coverage) {
+			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
+			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		} else {
+			SetTileSelectSize(1, 1);
+		}
+
+		StationType st = (this->window_class == WC_BUS_STATION) ? STATION_BUS : STATION_TRUCK;
+
+		StationPickerDrawSprite(103, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 0);
+		StationPickerDrawSprite(103, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 1);
+		StationPickerDrawSprite( 35, 85, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 2);
+		StationPickerDrawSprite( 35, 35, st, INVALID_RAILTYPE, ROADTYPE_ROAD, 3);
+
+		StationPickerDrawSprite(171, 35, st, INVALID_RAILTYPE, _cur_roadtype, 4);
+		StationPickerDrawSprite(171, 85, st, INVALID_RAILTYPE, _cur_roadtype, 5);
+
+		int text_end = DrawStationCoverageAreaText(2, 146,
+			(this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
+			3, false);
+		text_end = DrawStationCoverageAreaText(2, text_end + 4,
+			(this->window_class == WC_BUS_STATION) ? SCT_PASSENGERS_ONLY : SCT_NON_PASSENGERS_ONLY,
+			3, true) + 4;
+		if (text_end > this->widget[BRSW_BACKGROUND].bottom) {
+			this->SetDirty();
+			ResizeWindowForWidget(this, BRSW_BACKGROUND, 0, text_end - this->widget[BRSW_BACKGROUND].bottom);
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case BRSW_STATION_NE:
+			case BRSW_STATION_SE:
+			case BRSW_STATION_SW:
+			case BRSW_STATION_NW:
+			case BRSW_STATION_X:
+			case BRSW_STATION_Y:
+				this->RaiseWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+				_road_station_picker_orientation = (DiagDirection)(widget - BRSW_STATION_NE);
+				this->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
+			case BRSW_LT_OFF:
+			case BRSW_LT_ON:
+				this->RaiseWidget(_station_show_coverage + BRSW_LT_OFF);
+				_station_show_coverage = (widget != BRSW_LT_OFF);
+				this->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	virtual void OnTick()
+	{
+		CheckRedrawStationCoverage(this);
+	}
+};
 
 /** Widget definition of the build raod station window */
 static const Widget _rv_station_picker_widgets[] = {
@@ -947,17 +928,12 @@ static const WindowDesc _rv_station_picker_desc = {
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_rv_station_picker_widgets,
-	RoadStationPickerWndProc
+	NULL
 };
 
 static void ShowRVStationPicker(RoadStopType rs)
 {
-	Window *w = new Window(&_rv_station_picker_desc);
-	if (w == NULL) return;
-
-	w->window_class = (rs == ROADSTOP_BUS) ? WC_BUS_STATION : WC_TRUCK_STATION;
-	w->widget[BRSW_CAPTION].data = _road_type_infos[_cur_roadtype].picker_title[rs];
-	for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) w->widget[i].tooltips = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
+	new BuildRoadStationWindow(&_rv_station_picker_desc, rs);
 }
 
 void InitializeRoadGui()
