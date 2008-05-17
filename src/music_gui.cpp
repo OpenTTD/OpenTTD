@@ -193,18 +193,40 @@ void MusicLoop()
 	}
 }
 
-static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
+struct MusicTrackSelectionWindow : public Window {
+private:
+	enum MusicTrackSelectionWidgets {
+		MTSW_CLOSE,
+		MTSW_CAPTION,
+		MTSW_BACKGROUND,
+		MTSW_LIST_LEFT,
+		MTSW_LIST_RIGHT,
+		MTSW_ALL,
+		MTSW_OLD,
+		MTSW_NEW,
+		MTSW_EZY,
+		MTSW_CUSTOM1,
+		MTSW_CUSTOM2,
+		MTSW_CLEAR,
+		MTSW_SAVE,
+	};
+
+public:
+	MusicTrackSelectionWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
+	{
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void OnPaint()
+	{
 		const byte* p;
 		uint i;
 		int y;
 
-		w->SetWidgetDisabledState(11, msf.playlist <= 3);
-		w->LowerWidget(3);
-		w->LowerWidget(4);
-		w->DrawWidgets();
+		this->SetWidgetDisabledState(MTSW_CLEAR, msf.playlist <= 3);
+		this->LowerWidget(MTSW_LIST_LEFT);
+		this->LowerWidget(MTSW_LIST_RIGHT);
+		this->DrawWidgets();
 
 		GfxFillRect(3, 23, 3 + 177, 23 + 191, 0);
 		GfxFillRect(251, 23, 251 + 177, 23 + 191, 0);
@@ -238,88 +260,88 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			DrawString(252, y, (i < 10) ? STR_01EC_0 : STR_01ED, TC_FROMSTRING);
 			y += 6;
 		}
-		break;
 	}
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 3: { // add to playlist
-			int y = (e->we.click.pt.y - 23) / 6;
-			uint i;
-			byte *p;
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case MTSW_LIST_LEFT: { // add to playlist
+				int y = (pt.y - 23) / 6;
+				uint i;
+				byte *p;
 
-			if (msf.playlist < 4) return;
-			if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
+				if (msf.playlist < 4) return;
+				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
 
-			p = _playlists[msf.playlist];
-			for (i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
-				if (p[i] == 0) {
-					p[i] = y + 1;
-					p[i + 1] = 0;
-					w->SetDirty();
-					SelectSongToPlay();
-					break;
+				p = _playlists[msf.playlist];
+				for (i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
+					if (p[i] == 0) {
+						p[i] = y + 1;
+						p[i + 1] = 0;
+						this->SetDirty();
+						SelectSongToPlay();
+						break;
+					}
 				}
-			}
-		} break;
+			} break;
 
-		case 4: { // remove from playlist
-			int y = (e->we.click.pt.y - 23) / 6;
-			uint i;
-			byte *p;
+			case MTSW_LIST_RIGHT: { // remove from playlist
+				int y = (pt.y - 23) / 6;
+				uint i;
+				byte *p;
 
-			if (msf.playlist < 4) return;
-			if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
+				if (msf.playlist < 4) return;
+				if (!IsInsideMM(y, 0, NUM_SONGS_AVAILABLE)) return;
 
-			p = _playlists[msf.playlist];
-			for (i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
-				p[i] = p[i + 1];
+				p = _playlists[msf.playlist];
+				for (i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
+					p[i] = p[i + 1];
 				}
 
-			w->SetDirty();
-			SelectSongToPlay();
-		} break;
+				this->SetDirty();
+				SelectSongToPlay();
+			} break;
 
-		case 11: // clear
-			_playlists[msf.playlist][0] = 0;
-			w->SetDirty();
-			StopMusic();
-			SelectSongToPlay();
-			break;
+			case MTSW_CLEAR: // clear
+				_playlists[msf.playlist][0] = 0;
+				this->SetDirty();
+				StopMusic();
+				SelectSongToPlay();
+				break;
 
 #if 0
-		case 12: // save
-			ShowInfo("MusicTrackSelectionWndProc:save not implemented");
-			break;
+			case MTSW_SAVE: // save
+				ShowInfo("MusicTrackSelectionWndProc:save not implemented");
+				break;
 #endif
 
-		case 5: case 6: case 7: case 8: case 9: case 10: /* set playlist */
-			msf.playlist = e->we.click.widget - 5;
-			w->SetDirty();
-			InvalidateWindow(WC_MUSIC_WINDOW, 0);
-			StopMusic();
-			SelectSongToPlay();
-			break;
+			case MTSW_ALL: case MTSW_OLD: case MTSW_NEW:
+			case MTSW_EZY: case MTSW_CUSTOM1: case MTSW_CUSTOM2: // set playlist
+				msf.playlist = widget - MTSW_ALL;
+				this->SetDirty();
+				InvalidateWindow(WC_MUSIC_WINDOW, 0);
+				StopMusic();
+				SelectSongToPlay();
+				break;
 		}
-		break;
 	}
-}
+};
 
 static const Widget _music_track_selection_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   431,     0,    13, STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   431,    14,   217, 0x0,                              STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,   181,    22,   215, 0x0,                              STR_01FA_CLICK_ON_MUSIC_TRACK_TO},
-{      WWT_PANEL,   RESIZE_NONE,    14,   250,   429,    22,   215, 0x0,                              STR_CLICK_ON_TRACK_TO_REMOVE},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    44,    51, 0x0,                              STR_01F3_SELECT_ALL_TRACKS_PROGRAM},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    52,    59, 0x0,                              STR_01F4_SELECT_OLD_STYLE_MUSIC},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    60,    67, 0x0,                              STR_01F5_SELECT_NEW_STYLE_MUSIC},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    68,    75, 0x0,                              STR_0330_SELECT_EZY_STREET_STYLE},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    76,    83, 0x0,                              STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    84,    91, 0x0,                              STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,   108,   115, 0x0,                              STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},                  // MTSW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   431,     0,    13, STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // MTSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   431,    14,   217, 0x0,                              STR_NULL},                               // MTSW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   181,    22,   215, 0x0,                              STR_01FA_CLICK_ON_MUSIC_TRACK_TO},       // MTSW_LIST_LEFT
+{      WWT_PANEL,   RESIZE_NONE,    14,   250,   429,    22,   215, 0x0,                              STR_CLICK_ON_TRACK_TO_REMOVE},           // MTSW_LIST_RIGHT
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    44,    51, 0x0,                              STR_01F3_SELECT_ALL_TRACKS_PROGRAM},     // MTSW_ALL
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    52,    59, 0x0,                              STR_01F4_SELECT_OLD_STYLE_MUSIC},        // MTSW_OLD
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    60,    67, 0x0,                              STR_01F5_SELECT_NEW_STYLE_MUSIC},        // MTSW_NEW
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    68,    75, 0x0,                              STR_0330_SELECT_EZY_STREET_STYLE},       // MTSW_EZY
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    76,    83, 0x0,                              STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},  // MTSW_CUSTOM1
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    84,    91, 0x0,                              STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},  // MTSW_CUSTOM2
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,   108,   115, 0x0,                              STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1}, // MTSW_CLEAR
 #if 0
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,                              STR_01F9_SAVE_MUSIC_SETTINGS},
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,                              STR_01F9_SAVE_MUSIC_SETTINGS},           // MTSW_SAVE
 #endif
 {   WIDGETS_END},
 };
@@ -329,24 +351,51 @@ static const WindowDesc _music_track_selection_desc = {
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_music_track_selection_widgets,
-	MusicTrackSelectionWndProc
+	NULL
 };
 
 static void ShowMusicTrackSelection()
 {
-	AllocateWindowDescFront<Window>(&_music_track_selection_desc, 0);
+	AllocateWindowDescFront<MusicTrackSelectionWindow>(&_music_track_selection_desc, 0);
 }
 
-static void MusicWindowWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
+struct MusicWindow : public Window {
+private:
+	enum MusicWidgets {
+		MW_CLOSE,
+		MW_CAPTION,
+		MW_PREV,
+		MW_NEXT,
+		MW_STOP,
+		MW_PLAY,
+		MW_SLIDERS,
+		MW_GAUGE,
+		MW_BACKGROUND,
+		MW_INFO,
+		MW_SHUFFLE,
+		MW_PROGRAMME,
+		MW_ALL,
+		MW_OLD,
+		MW_NEW,
+		MW_EZY,
+		MW_CUSTOM1,
+		MW_CUSTOM2,
+	};
+
+public:
+	MusicWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
+	{
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void OnPaint()
+	{
 		uint i;
 		StringID str;
 
-		w->RaiseWidget(7);
-		w->RaiseWidget(9);
-		w->DrawWidgets();
+		this->RaiseWidget(MW_GAUGE);
+		this->RaiseWidget(MW_INFO);
+		this->DrawWidgets();
 
 		GfxFillRect(187, 16, 200, 33, 0);
 
@@ -403,92 +452,99 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		DrawFrameRect(
 			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, 14, FR_NONE
 		);
-	} break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: // skip to prev
-			if (!_song_is_active)
-				return;
-			SkipToPrevSong();
-			break;
-		case 3: // skip to next
-			if (!_song_is_active)
-				return;
-			SkipToNextSong();
-			break;
-		case 4: // stop playing
-			msf.playing = false;
-			break;
-		case 5: // start playing
-			msf.playing = true;
-			break;
-		case 6: { // volume sliders
-			byte *vol, new_vol;
-			int x = e->we.click.pt.x - 88;
-
-			if (x < 0) return;
-
-			vol = &msf.music_vol;
-			if (x >= 106) {
-				vol = &msf.effect_vol;
-				x -= 106;
-			}
-
-			new_vol = min(max(x - 21, 0) * 2, 127);
-			if (new_vol != *vol) {
-				*vol = new_vol;
-				if (vol == &msf.music_vol)
-					MusicVolumeChanged(new_vol);
-				w->SetDirty();
-			}
-
-			_left_button_clicked = false;
-		} break;
-		case 10: //toggle shuffle
-			msf.shuffle ^= 1;
-			StopMusic();
-			SelectSongToPlay();
-			break;
-		case 11: //show track selection
-			ShowMusicTrackSelection();
-			break;
-		case 12: case 13: case 14: case 15: case 16: case 17: // playlist
-			msf.playlist = e->we.click.widget - 12;
-			w->SetDirty();
-			InvalidateWindow(WC_MUSIC_TRACK_SELECTION, 0);
-			StopMusic();
-			SelectSongToPlay();
-			break;
-		}
-		break;
-
-	case WE_TICK:
-		InvalidateWindowWidget(WC_MUSIC_WINDOW, 0, 7);
-		break;
 	}
 
-}
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case MW_PREV: // skip to prev
+				if (!_song_is_active) return;
+				SkipToPrevSong();
+				break;
+
+			case MW_NEXT: // skip to next
+				if (!_song_is_active) return;
+				SkipToNextSong();
+				break;
+
+			case MW_STOP: // stop playing
+				msf.playing = false;
+				break;
+
+			case MW_PLAY: // start playing
+				msf.playing = true;
+				break;
+
+			case MW_SLIDERS: { // volume sliders
+				byte *vol, new_vol;
+				int x = pt.x - 88;
+
+				if (x < 0) return;
+
+				vol = &msf.music_vol;
+				if (x >= 106) {
+					vol = &msf.effect_vol;
+					x -= 106;
+				}
+
+				new_vol = min(max(x - 21, 0) * 2, 127);
+				if (new_vol != *vol) {
+					*vol = new_vol;
+					if (vol == &msf.music_vol) MusicVolumeChanged(new_vol);
+					this->SetDirty();
+				}
+
+				_left_button_clicked = false;
+			} break;
+
+			case MW_SHUFFLE: //toggle shuffle
+				msf.shuffle ^= 1;
+				StopMusic();
+				SelectSongToPlay();
+				break;
+
+			case MW_PROGRAMME: //show track selection
+				ShowMusicTrackSelection();
+				break;
+
+			case MW_ALL: case MW_OLD: case MW_NEW:
+			case MW_EZY: case MW_CUSTOM1: case MW_CUSTOM2: // playlist
+				msf.playlist = widget - MW_ALL;
+				this->SetDirty();
+				InvalidateWindow(WC_MUSIC_TRACK_SELECTION, 0);
+				StopMusic();
+				SelectSongToPlay();
+				break;
+		}
+	}
+
+#if 0
+	virtual void OnTick()
+	{
+		this->InvalidateWidget(MW_GAUGE);
+	}
+#endif
+};
 
 static const Widget _music_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, SPR_IMG_SKIP_TO_PREV,  STR_01DE_SKIP_TO_PREVIOUS_TRACK},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, SPR_IMG_SKIP_TO_NEXT,  STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    44,    65,    14,    35, SPR_IMG_STOP_MUSIC,    STR_01E0_STOP_PLAYING_MUSIC},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    66,    87,    14,    35, SPR_IMG_PLAY_MUSIC,    STR_01E1_START_PLAYING_MUSIC},
-{      WWT_PANEL,   RESIZE_NONE,    14,    88,   299,    14,    35, 0x0,                   STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC},
-{      WWT_PANEL,   RESIZE_NONE,    14,   186,   201,    15,    34, 0x0,                   STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   299,    36,    57, 0x0,                   STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,    59,   240,    45,    53, 0x0,                   STR_NULL},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,     6,    55,    42,    49, 0x0,                   STR_01FB_TOGGLE_PROGRAM_SHUFFLE},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   244,   293,    42,    49, 0x0,                   STR_01FC_SHOW_MUSIC_TRACK_SELECTION},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,     0,    49,    58,    65, 0x0,                   STR_01F3_SELECT_ALL_TRACKS_PROGRAM},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,    50,    99,    58,    65, 0x0,                   STR_01F4_SELECT_OLD_STYLE_MUSIC},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   100,   149,    58,    65, 0x0,                   STR_01F5_SELECT_NEW_STYLE_MUSIC},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   150,   199,    58,    65, 0x0,                   STR_0330_SELECT_EZY_STREET_STYLE},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   200,   249,    58,    65, 0x0,                   STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   250,   299,    58,    65, 0x0,                   STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},                    // MW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS},          // MW_CAPTION
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, SPR_IMG_SKIP_TO_PREV,  STR_01DE_SKIP_TO_PREVIOUS_TRACK},          // MW_PREV
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, SPR_IMG_SKIP_TO_NEXT,  STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION}, // MW_NEXT
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    44,    65,    14,    35, SPR_IMG_STOP_MUSIC,    STR_01E0_STOP_PLAYING_MUSIC},              // MW_STOP
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    66,    87,    14,    35, SPR_IMG_PLAY_MUSIC,    STR_01E1_START_PLAYING_MUSIC},             // MW_PLAY
+{      WWT_PANEL,   RESIZE_NONE,    14,    88,   299,    14,    35, 0x0,                   STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC},       // MW_SLIDERS
+{      WWT_PANEL,   RESIZE_NONE,    14,   186,   201,    15,    34, 0x0,                   STR_NULL},                                 // MW_GAUGE
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   299,    36,    57, 0x0,                   STR_NULL},                                 // MW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,    14,    59,   240,    45,    53, 0x0,                   STR_NULL},                                 // MW_INFO
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,     6,    55,    42,    49, 0x0,                   STR_01FB_TOGGLE_PROGRAM_SHUFFLE},          // MW_SHUFFLE
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   244,   293,    42,    49, 0x0,                   STR_01FC_SHOW_MUSIC_TRACK_SELECTION},      // MW_PROGRAMME
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,     0,    49,    58,    65, 0x0,                   STR_01F3_SELECT_ALL_TRACKS_PROGRAM},       // MW_ALL
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,    50,    99,    58,    65, 0x0,                   STR_01F4_SELECT_OLD_STYLE_MUSIC},          // MW_OLD
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   100,   149,    58,    65, 0x0,                   STR_01F5_SELECT_NEW_STYLE_MUSIC},          // MW_NEW
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   150,   199,    58,    65, 0x0,                   STR_0330_SELECT_EZY_STREET_STYLE},         // MW_EZY
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   200,   249,    58,    65, 0x0,                   STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},    // MW_CUSTOM1
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   250,   299,    58,    65, 0x0,                   STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},    // MW_CUSTOM2
 {   WIDGETS_END},
 };
 
@@ -497,10 +553,10 @@ static const WindowDesc _music_window_desc = {
 	WC_MUSIC_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_music_window_widgets,
-	MusicWindowWndProc
+	NULL
 };
 
 void ShowMusicWindow()
 {
-	AllocateWindowDescFront<Window>(&_music_window_desc, 0);
+	AllocateWindowDescFront<MusicWindow>(&_music_window_desc, 0);
 }
