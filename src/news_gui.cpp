@@ -702,45 +702,56 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 }
 
 
-static void MessageHistoryWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			int y = 19;
+struct MessageHistoryWindow : Window {
+	MessageHistoryWindow(const WindowDesc *desc) : Window(desc)
+	{
+		this->vscroll.cap = 10;
+		this->vscroll.count = _total_news;
+		this->resize.step_height = 12;
+		this->resize.height = this->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
+		this->resize.step_width = 1;
+		this->resize.width = 200; // can't make window any smaller than 200 pixel
 
-			SetVScrollCount(w, _total_news);
-			w->DrawWidgets();
-
-			if (_total_news == 0) break;
-			NewsID show = min(_total_news, w->vscroll.cap);
-
-			for (NewsID p = w->vscroll.pos; p < w->vscroll.pos + show; p++) {
-				/* get news in correct order */
-				const NewsItem *ni = &_news_items[getNews(p)];
-
-				SetDParam(0, ni->date);
-				DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
-
-				DrawNewsString(82, y, TC_WHITE, ni, w->width - 95);
-				y += 12;
-			}
-			break;
-		}
-
-		case WE_CLICK:
-			if (e->we.click.widget == 3) {
-				int y = (e->we.click.pt.y - 19) / 12;
-				NewsID p = getNews(y + w->vscroll.pos);
-
-				if (p != INVALID_NEWS) ShowNewsMessage(p);
-			}
-			break;
-
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / 12;
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		int y = 19;
+
+		SetVScrollCount(this, _total_news);
+		this->DrawWidgets();
+
+		if (_total_news == 0) return;
+		NewsID show = min(_total_news, this->vscroll.cap);
+
+		for (NewsID p = this->vscroll.pos; p < this->vscroll.pos + show; p++) {
+			/* get news in correct order */
+			const NewsItem *ni = &_news_items[getNews(p)];
+
+			SetDParam(0, ni->date);
+			DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
+
+			DrawNewsString(82, y, TC_WHITE, ni, this->width - 95);
+			y += 12;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget == 3) {
+			int y = (pt.y - 19) / 12;
+			NewsID p = getNews(y + this->vscroll.pos);
+
+			if (p != INVALID_NEWS) ShowNewsMessage(p);
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / 12;
+	}
+};
 
 static const Widget _message_history_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
@@ -757,24 +768,14 @@ static const WindowDesc _message_history_desc = {
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_message_history_widgets,
-	MessageHistoryWndProc
+	NULL
 };
 
 /** Display window with news messages history */
 void ShowMessageHistory()
 {
 	DeleteWindowById(WC_MESSAGE_HISTORY, 0);
-	Window *w = new Window(&_message_history_desc);
-
-	if (w == NULL) return;
-
-	w->vscroll.cap = 10;
-	w->vscroll.count = _total_news;
-	w->resize.step_height = 12;
-	w->resize.height = w->height - 12 * 6; // minimum of 4 items in the list, each item 12 high
-	w->resize.step_width = 1;
-	w->resize.width = 200; // can't make window any smaller than 200 pixel
-	w->SetDirty();
+	new MessageHistoryWindow(&_message_history_desc);
 }
 
 
