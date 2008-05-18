@@ -266,53 +266,52 @@ static void DrawGraph(const GraphDrawer *gw)
 /* GRAPH LEGEND */
 /****************/
 
-static void GraphLegendWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			for (uint i = 3; i < w->widget_count; i++) {
-				if (!HasBit(_legend_excluded_players, i - 3)) w->LowerWidget(i);
-			}
-			break;
+struct GraphLegendWindow : Window {
+	GraphLegendWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		for (uint i = 3; i < this->widget_count; i++) {
+			if (!HasBit(_legend_excluded_players, i - 3)) this->LowerWidget(i);
+		}
+	}
 
-		case WE_PAINT: {
-			const Player *p;
+	virtual void OnPaint()
+	{
+		const Player *p;
 
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) continue;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) continue;
 
-				SetBit(_legend_excluded_players, p->index);
-				w->RaiseWidget(p->index + 3);
-			}
-
-			w->DrawWidgets();
-
-			FOR_ALL_PLAYERS(p) {
-				if (!p->is_active) continue;
-
-				DrawPlayerIcon(p->index, 4, 18 + p->index * 12);
-
-				SetDParam(0, p->index);
-				SetDParam(1, p->index);
-				DrawString(21, 17 + p->index * 12, STR_7021, HasBit(_legend_excluded_players, p->index) ? TC_BLACK : TC_WHITE);
-			}
-			break;
+			SetBit(_legend_excluded_players, p->index);
+			this->RaiseWidget(p->index + 3);
 		}
 
-		case WE_CLICK:
-			if (!IsInsideMM(e->we.click.widget, 3, 11)) return;
+		this->DrawWidgets();
 
-			ToggleBit(_legend_excluded_players, e->we.click.widget - 3);
-			w->ToggleWidgetLoweredState(e->we.click.widget);
-			w->SetDirty();
-			InvalidateWindow(WC_INCOME_GRAPH, 0);
-			InvalidateWindow(WC_OPERATING_PROFIT, 0);
-			InvalidateWindow(WC_DELIVERED_CARGO, 0);
-			InvalidateWindow(WC_PERFORMANCE_HISTORY, 0);
-			InvalidateWindow(WC_COMPANY_VALUE, 0);
-			break;
+		FOR_ALL_PLAYERS(p) {
+			if (!p->is_active) continue;
+
+			DrawPlayerIcon(p->index, 4, 18 + p->index * 12);
+
+			SetDParam(0, p->index);
+			SetDParam(1, p->index);
+			DrawString(21, 17 + p->index * 12, STR_7021, HasBit(_legend_excluded_players, p->index) ? TC_BLACK : TC_WHITE);
+		}
 	}
-}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (!IsInsideMM(widget, 3, 11)) return;
+
+		ToggleBit(_legend_excluded_players, widget - 3);
+		this->ToggleWidgetLoweredState(widget);
+		this->SetDirty();
+		InvalidateWindow(WC_INCOME_GRAPH, 0);
+		InvalidateWindow(WC_OPERATING_PROFIT, 0);
+		InvalidateWindow(WC_DELIVERED_CARGO, 0);
+		InvalidateWindow(WC_PERFORMANCE_HISTORY, 0);
+		InvalidateWindow(WC_COMPANY_VALUE, 0);
+	}
+};
 
 static const Widget _graph_legend_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
@@ -334,12 +333,12 @@ static const WindowDesc _graph_legend_desc = {
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_graph_legend_widgets,
-	GraphLegendWndProc
+	NULL
 };
 
 static void ShowGraphLegend()
 {
-	AllocateWindowDescFront<Window>(&_graph_legend_desc, 0);
+	AllocateWindowDescFront<GraphLegendWindow>(&_graph_legend_desc, 0);
 }
 
 /********************/
@@ -879,35 +878,35 @@ static int CDECL PerfHistComp(const void* elem1, const void* elem2)
 	return p2->old_economy[1].performance_history - p1->old_economy[1].performance_history;
 }
 
-static void CompanyLeagueWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			const Player* plist[MAX_PLAYERS];
-			const Player* p;
+struct CompanyLeagueWindow : Window {
+	CompanyLeagueWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+	}
 
-			w->DrawWidgets();
+	virtual void OnPaint()
+	{
+		const Player *plist[MAX_PLAYERS];
+		const Player *p;
 
-			uint pl_num = 0;
-			FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
+		this->DrawWidgets();
 
-			qsort((void*)plist, pl_num, sizeof(*plist), PerfHistComp);
+		uint pl_num = 0;
+		FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
 
-			for (uint i = 0; i != pl_num; i++) {
-				p = plist[i];
-				SetDParam(0, i + STR_01AC_1ST);
-				SetDParam(1, p->index);
-				SetDParam(2, p->index);
-				SetDParam(3, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+		qsort((void*)plist, pl_num, sizeof(*plist), PerfHistComp);
 
-				DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, TC_FROMSTRING);
-				DrawPlayerIcon(p->index, 27, 16 + i * 10);
-			}
+		for (uint i = 0; i != pl_num; i++) {
+			p = plist[i];
+			SetDParam(0, i + STR_01AC_1ST);
+			SetDParam(1, p->index);
+			SetDParam(2, p->index);
+			SetDParam(3, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
 
-			break;
+			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, TC_FROMSTRING);
+			DrawPlayerIcon(p->index, 27, 16 + i * 10);
 		}
 	}
-}
+};
 
 
 static const Widget _company_league_widgets[] = {
@@ -923,12 +922,12 @@ static const WindowDesc _company_league_desc = {
 	WC_COMPANY_LEAGUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_company_league_widgets,
-	CompanyLeagueWndProc
+	NULL
 };
 
 void ShowCompanyLeagueTable()
 {
-	AllocateWindowDescFront<Window>(&_company_league_desc, 0);
+	AllocateWindowDescFront<CompanyLeagueWindow>(&_company_league_desc, 0);
 }
 
 /*****************************/
