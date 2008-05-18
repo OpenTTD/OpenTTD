@@ -56,7 +56,13 @@ public:
 		name(NULL)
 	{}
 
-	virtual ~BlitterFactoryBase() { if (this->name != NULL) GetBlitters().erase(this->name); free(this->name); }
+	virtual ~BlitterFactoryBase()
+	{
+		if (this->name == NULL) return;
+		GetBlitters().erase(this->name);
+		if (GetBlitters().empty()) delete &GetBlitters();
+		free(this->name);
+	}
 
 	/**
 	 * Find the requested blitter and return his class.
