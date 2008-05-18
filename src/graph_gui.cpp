@@ -24,243 +24,9 @@
 static uint _legend_excluded_players;
 static uint _legend_excluded_cargo;
 
-/************************/
-/* GENERIC GRAPH DRAWER */
-/************************/
-
-enum {
-	GRAPH_MAX_DATASETS = 32,
-	GRAPH_AXIS_LABEL_COLOUR = TC_BLACK,
-	GRAPH_AXIS_LINE_COLOUR  = 215,
-
-	GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gw->left
-	GRAPH_X_POSITION_SEPARATION = 22,  ///< There are 22 pixels between each X value
-
-	GRAPH_NUM_LINES_Y = 9, ///< How many horizontal lines to draw.
-	/* 9 is convenient as that means the distance between them is the height of the graph / 8,
-	 * which is the same
-	 * as height >> 3. */
-};
-
 /* Apparently these don't play well with enums. */
 static const OverflowSafeInt64 INVALID_DATAPOINT(INT64_MAX); // Value used for a datapoint that shouldn't be drawn.
 static const uint INVALID_DATAPOINT_POS = UINT_MAX;  // Used to determine if the previous point was drawn.
-
-struct GraphDrawer {
-	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
-	byte num_dataset;
-	byte num_on_x_axis;
-	bool has_negative_values;
-	byte num_vert_lines;
-
-	/* The starting month and year that values are plotted against. If month is
-	 * 0xFF, use x_values_start and x_values_increment below instead. */
-	byte month;
-	Year year;
-
-	/* These values are used if the graph is being plotted against values
-	 * rather than the dates specified by month and year. */
-	uint16 x_values_start;
-	uint16 x_values_increment;
-
-	int left, top;  ///< Where to start drawing the graph, in pixels.
-	uint height;    ///< The height of the graph in pixels.
-	StringID format_str_y_axis;
-	byte colors[GRAPH_MAX_DATASETS];
-	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
-};
-
-static void DrawGraph(const GraphDrawer *gw)
-{
-	uint x, y;                       ///< Reused whenever x and y coordinates are needed.
-	OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
-	int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
-
-	/* the colors and cost array of GraphDrawer must accomodate
-	 * both values for cargo and players. So if any are higher, quit */
-	assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
-	assert(gw->num_vert_lines > 0);
-
-	byte grid_colour = _colour_gradient[14][4];
-
-	/* The coordinates of the opposite edges of the graph. */
-	int bottom = gw->top + gw->height - 1;
-	int right  = gw->left + GRAPH_X_POSITION_BEGINNING + gw->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
-
-	/* Draw the vertical grid lines. */
-
-	/* Don't draw the first line, as that's where the axis will be. */
-	x = gw->left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
-
-	for (int i = 0; i < gw->num_vert_lines; i++) {
-		GfxFillRect(x, gw->top, x, bottom, grid_colour);
-		x += GRAPH_X_POSITION_SEPARATION;
-	}
-
-	/* Draw the horizontal grid lines. */
-	x = gw->left + GRAPH_X_POSITION_BEGINNING;
-	y = gw->height + gw->top;
-
-	for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
-		GfxFillRect(x, y, right, y, grid_colour);
-		y -= (gw->height / (GRAPH_NUM_LINES_Y - 1));
-	}
-
-	/* Draw the y axis. */
-	GfxFillRect(x, gw->top, x, bottom, GRAPH_AXIS_LINE_COLOUR);
-
-	/* Find the distance from the top of the graph to the x axis. */
-	x_axis_offset = gw->height;
-
-	/* The graph is currently symmetrical about the x axis. */
-	if (gw->has_negative_values) x_axis_offset /= 2;
-
-	/* Draw the x axis. */
-	y = x_axis_offset + gw->top;
-	GfxFillRect(x, y, right, y, GRAPH_AXIS_LINE_COLOUR);
-
-	/* Find the largest value that will be drawn. */
-	if (gw->num_on_x_axis == 0)
-		return;
-
-	assert(gw->num_on_x_axis > 0);
-	assert(gw->num_dataset > 0);
-
-	/* Start of with a value of twice the height of the graph in pixels. It's a
-	 * bit arbitrary, but it makes the cargo payment graph look a little nicer,
-	 * and prevents division by zero when calculating where the datapoint
-	 * should be drawn. */
-	highest_value = x_axis_offset * 2;
-
-	for (int i = 0; i < gw->num_dataset; i++) {
-		if (!HasBit(gw->excluded_data, i)) {
-			for (int j = 0; j < gw->num_on_x_axis; j++) {
-				OverflowSafeInt64 datapoint = gw->cost[i][j];
-
-				if (datapoint != INVALID_DATAPOINT) {
-					/* For now, if the graph has negative values the scaling is
-					 * symmetrical about the x axis, so take the absolute value
-					 * of each data point. */
-					highest_value = max(highest_value, abs(datapoint));
-				}
-			}
-		}
-	}
-
-	/* Round up highest_value so that it will divide cleanly into the number of
-	 * axis labels used. */
-	int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
-	if (round_val != 0) highest_value += (GRAPH_NUM_LINES_Y - 1 - round_val);
-
-	/* draw text strings on the y axis */
-	int64 y_label = highest_value;
-	int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
-
-	/* If there are negative values, the graph goes from highest_value to
-	 * -highest_value, not highest_value to 0. */
-	if (gw->has_negative_values) y_label_separation *= 2;
-
-	x = gw->left + GRAPH_X_POSITION_BEGINNING + 1;
-	y = gw->top - 3;
-
-	for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
-		SetDParam(0, gw->format_str_y_axis);
-		SetDParam(1, y_label);
-		DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
-
-		y_label -= y_label_separation;
-		y += (gw->height / (GRAPH_NUM_LINES_Y - 1));
-	}
-
-	/* draw strings on the x axis */
-	if (gw->month != 0xFF) {
-		x = gw->left + GRAPH_X_POSITION_BEGINNING;
-		y = gw->top + gw->height + 1;
-		byte month = gw->month;
-		Year year  = gw->year;
-		for (int i = 0; i < gw->num_on_x_axis; i++) {
-			SetDParam(0, month + STR_0162_JAN);
-			SetDParam(1, month + STR_0162_JAN + 2);
-			SetDParam(2, year);
-			DrawString(x, y, month == 0 ? STR_016F : STR_016E, GRAPH_AXIS_LABEL_COLOUR);
-
-			month += 3;
-			if (month >= 12) {
-				month = 0;
-				year++;
-			}
-			x += GRAPH_X_POSITION_SEPARATION;
-		}
-	} else {
-		/* Draw the label under the data point rather than on the grid line. */
-		x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2) + 1;
-		y = gw->top + gw->height + 1;
-		uint16 label = gw->x_values_start;
-
-		for (int i = 0; i < gw->num_on_x_axis; i++) {
-			SetDParam(0, label);
-			DrawStringCentered(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
-
-			label += gw->x_values_increment;
-			x += GRAPH_X_POSITION_SEPARATION;
-		}
-	}
-
-	/* draw lines and dots */
-	for (int i = 0; i < gw->num_dataset; i++) {
-		if (!HasBit(gw->excluded_data, i)) {
-			/* Centre the dot between the grid lines. */
-			x = gw->left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
-
-			byte color  = gw->colors[i];
-			uint prev_x = INVALID_DATAPOINT_POS;
-			uint prev_y = INVALID_DATAPOINT_POS;
-
-			for (int j = 0; j < gw->num_on_x_axis; j++) {
-				OverflowSafeInt64 datapoint = gw->cost[i][j];
-
-				if (datapoint != INVALID_DATAPOINT) {
-					/*
-					 * Check whether we need to reduce the 'accuracy' of the
-					 * datapoint value and the highest value to splut overflows.
-					 * And when 'drawing' 'one million' or 'one million and one'
-					 * there is no significant difference, so the least
-					 * significant bits can just be removed.
-					 *
-					 * If there are more bits needed than would fit in a 32 bits
-					 * integer, so at about 31 bits because of the sign bit, the
-					 * least significant bits are removed.
-					 */
-					int mult_range = FindLastBit(x_axis_offset) + FindLastBit(abs(datapoint));
-					int reduce_range = max(mult_range - 31, 0);
-
-					/* Handle negative values differently (don't shift sign) */
-					if (datapoint < 0) {
-						datapoint = -(abs(datapoint) >> reduce_range);
-					} else {
-						datapoint >>= reduce_range;
-					}
-
-					y = gw->top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
-
-					/* Draw the point. */
-					GfxFillRect(x - 1, y - 1, x + 1, y + 1, color);
-
-					/* Draw the line connected to the previous point. */
-					if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, color);
-
-					prev_x = x;
-					prev_y = y;
-				} else {
-					prev_x = INVALID_DATAPOINT_POS;
-					prev_y = INVALID_DATAPOINT_POS;
-				}
-
-				x += GRAPH_X_POSITION_SEPARATION;
-			}
-		}
-	}
-}
 
 /****************/
 /* GRAPH LEGEND */
@@ -272,6 +38,8 @@ struct GraphLegendWindow : Window {
 		for (uint i = 3; i < this->widget_count; i++) {
 			if (!HasBit(_legend_excluded_players, i - 3)) this->LowerWidget(i);
 		}
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
@@ -341,82 +109,325 @@ static void ShowGraphLegend()
 	AllocateWindowDescFront<GraphLegendWindow>(&_graph_legend_desc, 0);
 }
 
+/******************/
+/* BASE OF GRAPHS */
+/*****************/
+
+struct BaseGraphWindow : Window {
+protected:
+	enum {
+		GRAPH_MAX_DATASETS = 32,
+		GRAPH_AXIS_LABEL_COLOUR = TC_BLACK,
+		GRAPH_AXIS_LINE_COLOUR  = 215,
+
+		GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gd_left
+		GRAPH_X_POSITION_SEPARATION = 22,  ///< There are 22 pixels between each X value
+
+		GRAPH_NUM_LINES_Y = 9, ///< How many horizontal lines to draw.
+		/* 9 is convenient as that means the distance between them is the gd_height of the graph / 8,
+		* which is the same
+		* as height >> 3. */
+	};
+
+	uint excluded_data; ///< bitmask of the datasets that shouldn't be displayed.
+	byte num_dataset;
+	byte num_on_x_axis;
+	bool has_negative_values;
+	byte num_vert_lines;
+
+	/* The starting month and year that values are plotted against. If month is
+	 * 0xFF, use x_values_start and x_values_increment below instead. */
+	byte month;
+	Year year;
+
+	/* These values are used if the graph is being plotted against values
+	 * rather than the dates specified by month and year. */
+	uint16 x_values_start;
+	uint16 x_values_increment;
+
+	int gd_left, gd_top;  ///< Where to start drawing the graph, in pixels.
+	uint gd_height;    ///< The height of the graph in pixels.
+	StringID format_str_y_axis;
+	byte colors[GRAPH_MAX_DATASETS];
+	OverflowSafeInt64 cost[GRAPH_MAX_DATASETS][24]; ///< last 2 years
+
+	void DrawGraph() const
+	{
+		uint x, y;                       ///< Reused whenever x and y coordinates are needed.
+		OverflowSafeInt64 highest_value; ///< Highest value to be drawn.
+		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
+
+		/* the colors and cost array of GraphDrawer must accomodate
+		* both values for cargo and players. So if any are higher, quit */
+		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
+		assert(this->num_vert_lines > 0);
+
+		byte grid_colour = _colour_gradient[14][4];
+
+		/* The coordinates of the opposite edges of the graph. */
+		int bottom = this->gd_top + this->gd_height - 1;
+		int right  = this->gd_left + GRAPH_X_POSITION_BEGINNING + this->num_vert_lines * GRAPH_X_POSITION_SEPARATION - 1;
+
+		/* Draw the vertical grid lines. */
+
+		/* Don't draw the first line, as that's where the axis will be. */
+		x = this->gd_left + GRAPH_X_POSITION_BEGINNING + GRAPH_X_POSITION_SEPARATION;
+
+		for (int i = 0; i < this->num_vert_lines; i++) {
+			GfxFillRect(x, this->gd_top, x, bottom, grid_colour);
+			x += GRAPH_X_POSITION_SEPARATION;
+		}
+
+		/* Draw the horizontal grid lines. */
+		x = this->gd_left + GRAPH_X_POSITION_BEGINNING;
+		y = this->gd_height + this->gd_top;
+
+		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+			GfxFillRect(x, y, right, y, grid_colour);
+			y -= (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
+		}
+
+		/* Draw the y axis. */
+		GfxFillRect(x, this->gd_top, x, bottom, GRAPH_AXIS_LINE_COLOUR);
+
+		/* Find the distance from the gd_top of the graph to the x axis. */
+		x_axis_offset = this->gd_height;
+
+		/* The graph is currently symmetrical about the x axis. */
+		if (this->has_negative_values) x_axis_offset /= 2;
+
+		/* Draw the x axis. */
+		y = x_axis_offset + this->gd_top;
+		GfxFillRect(x, y, right, y, GRAPH_AXIS_LINE_COLOUR);
+
+		/* Find the largest value that will be drawn. */
+		if (this->num_on_x_axis == 0)
+			return;
+
+		assert(this->num_on_x_axis > 0);
+		assert(this->num_dataset > 0);
+
+		/* Start of with a value of twice the gd_height of the graph in pixels. It's a
+		* bit arbitrary, but it makes the cargo payment graph look a little nicer,
+		* and prevents division by zero when calculating where the datapoint
+		* should be drawn. */
+		highest_value = x_axis_offset * 2;
+
+		for (int i = 0; i < this->num_dataset; i++) {
+			if (!HasBit(this->excluded_data, i)) {
+				for (int j = 0; j < this->num_on_x_axis; j++) {
+					OverflowSafeInt64 datapoint = this->cost[i][j];
+
+					if (datapoint != INVALID_DATAPOINT) {
+						/* For now, if the graph has negative values the scaling is
+						* symmetrical about the x axis, so take the absolute value
+						* of each data point. */
+						highest_value = max(highest_value, abs(datapoint));
+					}
+				}
+			}
+		}
+
+		/* Round up highest_value so that it will divide cleanly into the number of
+		* axis labels used. */
+		int round_val = highest_value % (GRAPH_NUM_LINES_Y - 1);
+		if (round_val != 0) highest_value += (GRAPH_NUM_LINES_Y - 1 - round_val);
+
+		/* draw text strings on the y axis */
+		int64 y_label = highest_value;
+		int64 y_label_separation = highest_value / (GRAPH_NUM_LINES_Y - 1);
+
+		/* If there are negative values, the graph goes from highest_value to
+		* -highest_value, not highest_value to 0. */
+		if (this->has_negative_values) y_label_separation *= 2;
+
+		x = this->gd_left + GRAPH_X_POSITION_BEGINNING + 1;
+		y = this->gd_top - 3;
+
+		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
+			SetDParam(0, this->format_str_y_axis);
+			SetDParam(1, y_label);
+			DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
+
+			y_label -= y_label_separation;
+			y += (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
+		}
+
+		/* draw strings on the x axis */
+		if (this->month != 0xFF) {
+			x = this->gd_left + GRAPH_X_POSITION_BEGINNING;
+			y = this->gd_top + this->gd_height + 1;
+			byte month = this->month;
+			Year year  = this->year;
+			for (int i = 0; i < this->num_on_x_axis; i++) {
+				SetDParam(0, month + STR_0162_JAN);
+				SetDParam(1, month + STR_0162_JAN + 2);
+				SetDParam(2, year);
+				DrawString(x, y, month == 0 ? STR_016F : STR_016E, GRAPH_AXIS_LABEL_COLOUR);
+
+				month += 3;
+				if (month >= 12) {
+					month = 0;
+					year++;
+				}
+				x += GRAPH_X_POSITION_SEPARATION;
+			}
+		} else {
+			/* Draw the label under the data point rather than on the grid line. */
+			x = this->gd_left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2) + 1;
+			y = this->gd_top + this->gd_height + 1;
+			uint16 label = this->x_values_start;
+
+			for (int i = 0; i < this->num_on_x_axis; i++) {
+				SetDParam(0, label);
+				DrawStringCentered(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
+
+				label += this->x_values_increment;
+				x += GRAPH_X_POSITION_SEPARATION;
+			}
+		}
+
+		/* draw lines and dots */
+		for (int i = 0; i < this->num_dataset; i++) {
+			if (!HasBit(this->excluded_data, i)) {
+				/* Centre the dot between the grid lines. */
+				x = this->gd_left + GRAPH_X_POSITION_BEGINNING + (GRAPH_X_POSITION_SEPARATION / 2);
+
+				byte color  = this->colors[i];
+				uint prev_x = INVALID_DATAPOINT_POS;
+				uint prev_y = INVALID_DATAPOINT_POS;
+
+				for (int j = 0; j < this->num_on_x_axis; j++) {
+					OverflowSafeInt64 datapoint = this->cost[i][j];
+
+					if (datapoint != INVALID_DATAPOINT) {
+						/*
+						* Check whether we need to reduce the 'accuracy' of the
+						* datapoint value and the highest value to splut overflows.
+						* And when 'drawing' 'one million' or 'one million and one'
+						* there is no significant difference, so the least
+						* significant bits can just be removed.
+						*
+						* If there are more bits needed than would fit in a 32 bits
+						* integer, so at about 31 bits because of the sign bit, the
+						* least significant bits are removed.
+						*/
+						int mult_range = FindLastBit(x_axis_offset) + FindLastBit(abs(datapoint));
+						int reduce_range = max(mult_range - 31, 0);
+
+						/* Handle negative values differently (don't shift sign) */
+						if (datapoint < 0) {
+							datapoint = -(abs(datapoint) >> reduce_range);
+						} else {
+							datapoint >>= reduce_range;
+						}
+
+						y = this->gd_top + x_axis_offset - (x_axis_offset * datapoint) / (highest_value >> reduce_range);
+
+						/* Draw the point. */
+						GfxFillRect(x - 1, y - 1, x + 1, y + 1, color);
+
+						/* Draw the line connected to the previous point. */
+						if (prev_x != INVALID_DATAPOINT_POS) GfxDrawLine(prev_x, prev_y, x, y, color);
+
+						prev_x = x;
+						prev_y = y;
+					} else {
+						prev_x = INVALID_DATAPOINT_POS;
+						prev_y = INVALID_DATAPOINT_POS;
+					}
+
+					x += GRAPH_X_POSITION_SEPARATION;
+				}
+			}
+		}
+	}
+
+
+	BaseGraphWindow(const WindowDesc *desc, WindowNumber window_number, int left,
+									int top, int height, bool has_negative_values, StringID format_str_y_axis) :
+			Window(desc, window_number), has_negative_values(has_negative_values),
+			gd_left(left), gd_top(top), gd_height(height), format_str_y_axis(format_str_y_axis)
+	{
+		InvalidateWindow(WC_GRAPH_LEGEND, 0);
+	}
+
+public:
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		uint excluded_players = _legend_excluded_players;
+
+		/* Exclude the players which aren't valid */
+		const Player* p;
+		FOR_ALL_PLAYERS(p) {
+			if (!p->is_active) SetBit(excluded_players, p->index);
+		}
+		this->excluded_data = excluded_players;
+		this->num_vert_lines = 24;
+
+		byte nums = 0;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) nums = max(nums, p->num_valid_stat_ent);
+		}
+		this->num_on_x_axis = min(nums, 24);
+
+		int mo = (_cur_month / 3 - nums) * 3;
+		int yr = _cur_year;
+		while (mo < 0) {
+			yr--;
+			mo += 12;
+		}
+
+		this->year = yr;
+		this->month = mo;
+
+		int numd = 0;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) {
+				this->colors[numd] = _colour_gradient[p->player_color][6];
+				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
+					this->cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : GetGraphData(p, j);
+					i++;
+				}
+			}
+			numd++;
+		}
+
+		this->num_dataset = numd;
+
+		this->DrawGraph();
+	}
+
+	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	{
+		return INVALID_DATAPOINT;
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		/* Clicked on legend? */
+		if (widget == 2) ShowGraphLegend();
+	}
+};
+
 /********************/
 /* OPERATING PROFIT */
 /********************/
 
-static void SetupGraphDrawerForPlayers(GraphDrawer *gd)
-{
-	const Player* p;
-	uint excluded_players = _legend_excluded_players;
-	byte nums;
-	int mo, yr;
-
-	/* Exclude the players which aren't valid */
-	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) SetBit(excluded_players, p->index);
-	}
-	gd->excluded_data = excluded_players;
-	gd->num_vert_lines = 24;
-
-	nums = 0;
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) nums = max(nums, p->num_valid_stat_ent);
-	}
-	gd->num_on_x_axis = min(nums, 24);
-
-	mo = (_cur_month / 3 - nums) * 3;
-	yr = _cur_year;
-	while (mo < 0) {
-		yr--;
-		mo += 12;
+struct OperatingProfitGraphWindow : BaseGraphWindow {
+	OperatingProfitGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
+			BaseGraphWindow(desc, window_number, 2, 18, 136, true, STR_CURRCOMPACT)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
-	gd->year = yr;
-	gd->month = mo;
-}
-
-static void OperatingProfitWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			GraphDrawer gd;
-			const Player* p;
-
-			w->DrawWidgets();
-
-			gd.left = 2;
-			gd.top = 18;
-			gd.height = 136;
-			gd.has_negative_values = true;
-			gd.format_str_y_axis = STR_CURRCOMPACT;
-
-			SetupGraphDrawerForPlayers(&gd);
-
-			int numd = 0;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					gd.colors[numd] = _colour_gradient[p->player_color][6];
-					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (p->old_economy[j].income + p->old_economy[j].expenses);
-						i++;
-					}
-				}
-				numd++;
-			}
-
-			gd.num_dataset = numd;
-
-			DrawGraph(&gd);
-			break;
-		}
-
-		case WE_CLICK:
-			/* Clicked on legend? */
-			if (e->we.click.widget == 2) ShowGraphLegend();
-			break;
+	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	{
+		return p->old_economy[j].income + p->old_economy[j].expenses;
 	}
-}
+};
 
 static const Widget _operating_profit_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
@@ -431,15 +442,13 @@ static const WindowDesc _operating_profit_desc = {
 	WC_OPERATING_PROFIT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_operating_profit_widgets,
-	OperatingProfitWndProc
+	NULL
 };
 
 
 void ShowOperatingProfitGraph()
 {
-	if (AllocateWindowDescFront<Window>(&_operating_profit_desc, 0)) {
-		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-	}
+	AllocateWindowDescFront<OperatingProfitGraphWindow>(&_operating_profit_desc, 0);
 }
 
 
@@ -447,45 +456,18 @@ void ShowOperatingProfitGraph()
 /* INCOME GRAPH */
 /****************/
 
-static void IncomeGraphWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			GraphDrawer gd;
-			const Player* p;
-
-			w->DrawWidgets();
-
-			gd.left = 2;
-			gd.top = 18;
-			gd.height = 104;
-			gd.has_negative_values = false;
-			gd.format_str_y_axis = STR_CURRCOMPACT;
-			SetupGraphDrawerForPlayers(&gd);
-
-			int numd = 0;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					gd.colors[numd] = _colour_gradient[p->player_color][6];
-					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].income;
-						i++;
-					}
-				}
-				numd++;
-			}
-
-			gd.num_dataset = numd;
-
-			DrawGraph(&gd);
-			break;
-		}
-
-		case WE_CLICK:
-			if (e->we.click.widget == 2) ShowGraphLegend();
-			break;
+struct IncomeGraphWindow : BaseGraphWindow {
+	IncomeGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
+			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_CURRCOMPACT)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	{
+		return p->old_economy[j].income;
+	}
+};
 
 static const Widget _income_graph_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
@@ -500,59 +482,30 @@ static const WindowDesc _income_graph_desc = {
 	WC_INCOME_GRAPH, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_income_graph_widgets,
-	IncomeGraphWndProc
+	NULL
 };
 
 void ShowIncomeGraph()
 {
-	if (AllocateWindowDescFront<Window>(&_income_graph_desc, 0)) {
-		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-	}
+	AllocateWindowDescFront<IncomeGraphWindow>(&_income_graph_desc, 0);
 }
 
 /*******************/
 /* DELIVERED CARGO */
 /*******************/
 
-static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			GraphDrawer gd;
-			const Player* p;
-
-			w->DrawWidgets();
-
-			gd.left = 2;
-			gd.top = 18;
-			gd.height = 104;
-			gd.has_negative_values = false;
-			gd.format_str_y_axis = STR_7024;
-			SetupGraphDrawerForPlayers(&gd);
-
-			int numd = 0;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					gd.colors[numd] = _colour_gradient[p->player_color][6];
-					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (OverflowSafeInt64)p->old_economy[j].delivered_cargo;
-						i++;
-					}
-				}
-				numd++;
-			}
-
-			gd.num_dataset = numd;
-
-			DrawGraph(&gd);
-			break;
-		}
-
-		case WE_CLICK:
-			if (e->we.click.widget == 2) ShowGraphLegend();
-			break;
+struct DeliveredCargoGraphWindow : BaseGraphWindow {
+	DeliveredCargoGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
+			BaseGraphWindow(desc, window_number, 2, 18, 104, false, STR_7024)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	{
+		return p->old_economy[j].delivered_cargo;
+	}
+};
 
 static const Widget _delivered_cargo_graph_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
@@ -567,60 +520,36 @@ static const WindowDesc _delivered_cargo_graph_desc = {
 	WC_DELIVERED_CARGO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_delivered_cargo_graph_widgets,
-	DeliveredCargoGraphWndProc
+	NULL
 };
 
 void ShowDeliveredCargoGraph()
 {
-	if (AllocateWindowDescFront<Window>(&_delivered_cargo_graph_desc, 0)) {
-		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-	}
+	AllocateWindowDescFront<DeliveredCargoGraphWindow>(&_delivered_cargo_graph_desc, 0);
 }
 
 /***********************/
 /* PERFORMANCE HISTORY */
 /***********************/
 
-static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			GraphDrawer gd;
-			const Player* p;
-
-			w->DrawWidgets();
-
-			gd.left = 2;
-			gd.top = 18;
-			gd.height = 200;
-			gd.has_negative_values = false;
-			gd.format_str_y_axis = STR_7024;
-			SetupGraphDrawerForPlayers(&gd);
-
-			int numd = 0;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					gd.colors[numd] = _colour_gradient[p->player_color][6];
-					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : (OverflowSafeInt64)p->old_economy[j].performance_history;
-						i++;
-					}
-				}
-				numd++;
-			}
-
-			gd.num_dataset = numd;
-
-			DrawGraph(&gd);
-			break;
-		}
-
-		case WE_CLICK:
-			if (e->we.click.widget == 2) ShowGraphLegend();
-			if (e->we.click.widget == 3) ShowPerformanceRatingDetail();
-			break;
+struct PerformanceHistoryGraphWindow : BaseGraphWindow {
+	PerformanceHistoryGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
+			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_7024)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	{
+		return p->old_economy[j].performance_history;
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget == 3) ShowPerformanceRatingDetail();
+		this->BaseGraphWindow::OnClick(pt, widget);
+	}
+};
 
 static const Widget _performance_history_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                             STR_018B_CLOSE_WINDOW},
@@ -636,59 +565,30 @@ static const WindowDesc _performance_history_desc = {
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_performance_history_widgets,
-	PerformanceHistoryWndProc
+	NULL
 };
 
 void ShowPerformanceHistoryGraph()
 {
-	if (AllocateWindowDescFront<Window>(&_performance_history_desc, 0)) {
-		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-	}
+	AllocateWindowDescFront<PerformanceHistoryGraphWindow>(&_performance_history_desc, 0);
 }
 
 /*****************/
 /* COMPANY VALUE */
 /*****************/
 
-static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			GraphDrawer gd;
-			const Player* p;
-
-			w->DrawWidgets();
-
-			gd.left = 2;
-			gd.top = 18;
-			gd.height = 200;
-			gd.has_negative_values = false;
-			gd.format_str_y_axis = STR_CURRCOMPACT;
-			SetupGraphDrawerForPlayers(&gd);
-
-			int numd = 0;
-			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					gd.colors[numd] = _colour_gradient[p->player_color][6];
-					for (int j = gd.num_on_x_axis, i = 0; --j >= 0;) {
-						gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : p->old_economy[j].company_value;
-						i++;
-					}
-				}
-				numd++;
-			}
-
-			gd.num_dataset = numd;
-
-			DrawGraph(&gd);
-			break;
-		}
-
-		case WE_CLICK:
-			if (e->we.click.widget == 2) ShowGraphLegend();
-			break;
+struct CompanyValueGraphWindow : BaseGraphWindow {
+	CompanyValueGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
+			BaseGraphWindow(desc, window_number, 2, 18, 200, false, STR_CURRCOMPACT)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	{
+		return p->old_economy[j].company_value;
+	}
+};
 
 static const Widget _company_value_graph_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
@@ -703,90 +603,118 @@ static const WindowDesc _company_value_graph_desc = {
 	WC_COMPANY_VALUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_company_value_graph_widgets,
-	CompanyValueGraphWndProc
+	NULL
 };
 
 void ShowCompanyValueGraph()
 {
-	if (AllocateWindowDescFront<Window>(&_company_value_graph_desc, 0)) {
-		InvalidateWindow(WC_GRAPH_LEGEND, 0);
-	}
+	AllocateWindowDescFront<CompanyValueGraphWindow>(&_company_value_graph_desc, 0);
 }
 
 /*****************/
 /* PAYMENT RATES */
 /*****************/
 
-static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			GraphDrawer gd;
-
-			w->DrawWidgets();
-
-			int x = 495;
-			int y = 24;
-
-			gd.excluded_data = _legend_excluded_cargo;
-			gd.left = 2;
-			gd.top = 24;
-			gd.height = w->height - 38;
-			gd.has_negative_values = false;
-			gd.format_str_y_axis = STR_CURRCOMPACT;
-			gd.num_on_x_axis = 20;
-			gd.num_vert_lines = 20;
-			gd.month = 0xFF;
-			gd.x_values_start     = 10;
-			gd.x_values_increment = 10;
-
-			uint i = 0;
-			for (CargoID c = 0; c < NUM_CARGO; c++) {
-				const CargoSpec *cs = GetCargo(c);
-				if (!cs->IsValid()) continue;
-
-				/* Only draw labels for widgets that exist. If the widget doesn't
-				 * exist then the local player has used the climate cheat or
-				 * changed the NewGRF configuration with this window open. */
-				if (i + 3 < w->widget_count) {
-					/* Since the buttons have no text, no images,
-					 * both the text and the colored box have to be manually painted.
-					 * clk_dif will move one pixel down and one pixel to the right
-					 * when the button is clicked */
-					byte clk_dif = w->IsWidgetLowered(i + 3) ? 1 : 0;
-
-					GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
-					GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
-					SetDParam(0, cs->name);
-					DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, TC_FROMSTRING);
-					y += 8;
-				}
-
-				gd.colors[i] = cs->legend_colour;
-				for (uint j = 0; j != 20; j++) {
-					gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
-				}
-
-				i++;
-			}
-			gd.num_dataset = i;
-
-			DrawGraph(&gd);
-
-			DrawString(2 + 46, 24 + gd.height + 7, STR_7062_DAYS_IN_TRANSIT, TC_FROMSTRING);
-			DrawString(2 + 84, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, TC_FROMSTRING);
-			break;
+struct PaymentRatesGraphWindow : BaseGraphWindow {
+	PaymentRatesGraphWindow(const WindowDesc *desc, WindowNumber window_number) :
+			BaseGraphWindow(desc, window_number, 2, 24, 200, false, STR_CURRCOMPACT)
+	{
+		uint num_active = 0;
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			if (GetCargo(c)->IsValid()) num_active++;
 		}
 
-		case WE_CLICK:
-			if (e->we.click.widget >= 3) {
-				ToggleBit(_legend_excluded_cargo, e->we.click.widget - 3);
-				w->ToggleWidgetLoweredState(e->we.click.widget);
-				w->SetDirty();
-			}
-			break;
+		/* Resize the window to fit the cargo types */
+		ResizeWindow(this, 0, max(num_active, 12U) * 8);
+
+		/* Add widgets for each cargo type */
+		this->widget_count += num_active;
+		this->widget = ReallocT(this->widget, this->widget_count + 1);
+		this->widget[this->widget_count].type = WWT_LAST;
+
+		/* Set the properties of each widget */
+		for (uint i = 0; i != num_active; i++) {
+			Widget *wi = &this->widget[3 + i];
+			wi->type     = WWT_PANEL;
+			wi->display_flags = RESIZE_NONE;
+			wi->color    = 12;
+			wi->left     = 493;
+			wi->right    = 562;
+			wi->top      = 24 + i * 8;
+			wi->bottom   = wi->top + 7;
+			wi->data     = 0;
+			wi->tooltips = STR_7064_TOGGLE_GRAPH_FOR_CARGO;
+
+			if (!HasBit(_legend_excluded_cargo, i)) this->LowerWidget(i + 3);
+		}
+
+		this->SetDirty();
+
+		this->gd_height = this->height - 38;
+		this->num_on_x_axis = 20;
+		this->num_vert_lines = 20;
+		this->month = 0xFF;
+		this->x_values_start     = 10;
+		this->x_values_increment = 10;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		this->excluded_data = _legend_excluded_cargo;
+
+		int x = 495;
+		int y = 24;
+
+		uint i = 0;
+		for (CargoID c = 0; c < NUM_CARGO; c++) {
+			const CargoSpec *cs = GetCargo(c);
+			if (!cs->IsValid()) continue;
+
+			/* Only draw labels for widgets that exist. If the widget doesn't
+				* exist then the local player has used the climate cheat or
+				* changed the NewGRF configuration with this window open. */
+			if (i + 3 < this->widget_count) {
+				/* Since the buttons have no text, no images,
+					* both the text and the colored box have to be manually painted.
+					* clk_dif will move one pixel down and one pixel to the right
+					* when the button is clicked */
+				byte clk_dif = this->IsWidgetLowered(i + 3) ? 1 : 0;
+
+				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
+				GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, cs->legend_colour);
+				SetDParam(0, cs->name);
+				DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, TC_FROMSTRING);
+				y += 8;
+			}
+
+			this->colors[i] = cs->legend_colour;
+			for (uint j = 0; j != 20; j++) {
+				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
+			}
+
+			i++;
+		}
+		this->num_dataset = i;
+
+		this->DrawGraph();
+
+		DrawString(2 + 46, 24 + this->gd_height + 7, STR_7062_DAYS_IN_TRANSIT, TC_FROMSTRING);
+		DrawString(2 + 84, 24 - 9, STR_7063_PAYMENT_FOR_DELIVERING, TC_FROMSTRING);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget >= 3) {
+			ToggleBit(_legend_excluded_cargo, widget - 3);
+			this->ToggleWidgetLoweredState(widget);
+			this->SetDirty();
+		}
+	}
+};
 
 static const Widget _cargo_payment_rates_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
@@ -800,46 +728,13 @@ static const WindowDesc _cargo_payment_rates_desc = {
 	WC_PAYMENT_RATES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_cargo_payment_rates_widgets,
-	CargoPaymentRatesWndProc
+	NULL
 };
 
 
 void ShowCargoPaymentRates()
 {
-	Window *w = AllocateWindowDescFront<Window>(&_cargo_payment_rates_desc, 0);
-	if (w == NULL) return;
-
-	/* Count the number of active cargo types */
-	uint num_active = 0;
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		if (GetCargo(c)->IsValid()) num_active++;
-	}
-
-	/* Resize the window to fit the cargo types */
-	ResizeWindow(w, 0, max(num_active, 12U) * 8);
-
-	/* Add widgets for each cargo type */
-	w->widget_count += num_active;
-	w->widget = ReallocT(w->widget, w->widget_count + 1);
-	w->widget[w->widget_count].type = WWT_LAST;
-
-	/* Set the properties of each widget */
-	for (uint i = 0; i != num_active; i++) {
-		Widget *wi = &w->widget[3 + i];
-		wi->type     = WWT_PANEL;
-		wi->display_flags = RESIZE_NONE;
-		wi->color    = 12;
-		wi->left     = 493;
-		wi->right    = 562;
-		wi->top      = 24 + i * 8;
-		wi->bottom   = wi->top + 7;
-		wi->data     = 0;
-		wi->tooltips = STR_7064_TOGGLE_GRAPH_FOR_CARGO;
-
-		if (!HasBit(_legend_excluded_cargo, i)) w->LowerWidget(i + 3);
-	}
-
-	w->SetDirty();
+	AllocateWindowDescFront<PaymentRatesGraphWindow>(&_cargo_payment_rates_desc, 0);
 }
 
 /************************/
@@ -948,7 +843,8 @@ struct PerformanceRatingDetailWindow : Window {
 		this->UpdatePlayerStats();
 
 		if (player != INVALID_PLAYER) this->LowerWidget(player + 13);
-		this->SetDirty();
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	void UpdatePlayerStats()
