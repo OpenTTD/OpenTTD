@@ -1360,35 +1360,38 @@ void ShowPlayerCompany(PlayerID player)
 
 
 
-static void BuyCompanyWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			Player *p = GetPlayer((PlayerID)w->window_number);
-			SetDParam(0, STR_COMPANY_NAME);
-			SetDParam(1, p->index);
-			w->DrawWidgets();
-
-			DrawPlayerFace(p->face, p->player_color, 2, 16);
-
-			SetDParam(0, p->index);
-			SetDParam(1, p->bankrupt_value);
-			DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 3:
-					delete w;
-					break;
-				case 4: {
-					DoCommandP(0, w->window_number, 0, NULL, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
-					break;
-				}
-			}
-			break;
+struct BuyCompanyWindow : Window {
+	BuyCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
 	}
-}
+
+	virtual void OnPaint()
+	{
+		Player *p = GetPlayer((PlayerID)this->window_number);
+		SetDParam(0, STR_COMPANY_NAME);
+		SetDParam(1, p->index);
+		this->DrawWidgets();
+
+		DrawPlayerFace(p->face, p->player_color, 2, 16);
+
+		SetDParam(0, p->index);
+		SetDParam(1, p->bankrupt_value);
+		DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 3:
+				delete this;
+				break;
+
+			case 4:
+				DoCommandP(0, this->window_number, 0, NULL, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
+				break;
+		}
+	}
+};
 
 static const Widget _buy_company_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
@@ -1404,13 +1407,13 @@ static const WindowDesc _buy_company_desc = {
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_buy_company_widgets,
-	BuyCompanyWndProc
+	NULL
 };
 
 
 void ShowBuyCompanyDialog(uint player)
 {
-	AllocateWindowDescFront<Window>(&_buy_company_desc, player);
+	AllocateWindowDescFront<BuyCompanyWindow>(&_buy_company_desc, player);
 }
 
 /********** HIGHSCORE and ENDGAME windows */

@@ -66,55 +66,54 @@ static const DrawEngineInfo _draw_engine_list[4] = {
 	{ DrawAircraftEngine, DrawAircraftEngineInfo },
 };
 
-static void EnginePreviewWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
-		EngineID engine = w->window_number;
-		const DrawEngineInfo* dei;
-		int width;
+struct EnginePreviewWindow : Window {
+	EnginePreviewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+	}
 
-		w->DrawWidgets();
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
 
+		EngineID engine = this->window_number;
 		SetDParam(0, GetEngineCategoryName(engine));
 		DrawStringMultiCenter(150, 44, STR_8101_WE_HAVE_JUST_DESIGNED_A, 296);
 
 		SetDParam(0, engine);
-		DrawStringCentered(w->width >> 1, 80, STR_ENGINE_NAME, TC_BLACK);
+		DrawStringCentered(this->width >> 1, 80, STR_ENGINE_NAME, TC_BLACK);
 
-		dei = &_draw_engine_list[GetEngine(engine)->type];
+		const DrawEngineInfo *dei = &_draw_engine_list[GetEngine(engine)->type];
 
-		width = w->width;
+		int width = this->width;
 		dei->engine_proc(width >> 1, 100, engine, 0);
 		dei->info_proc(engine, width >> 1, 130, width - 52);
-		break;
 	}
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
 			case 4:
-				DoCommandP(0, w->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
+				DoCommandP(0, this->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
 				/* Fallthrough */
 			case 3:
-				delete w;
+				delete this;
 				break;
 		}
-		break;
 	}
-}
+};
 
 static const WindowDesc _engine_preview_desc = {
 	WDP_CENTER, WDP_CENTER, 300, 192, 300, 192,
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_engine_preview_widgets,
-	EnginePreviewWndProc
+	NULL
 };
 
 
 void ShowEnginePreviewWindow(EngineID engine)
 {
-	AllocateWindowDescFront<Window>(&_engine_preview_desc, engine);
+	AllocateWindowDescFront<EnginePreviewWindow>(&_engine_preview_desc, engine);
 }
 
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
