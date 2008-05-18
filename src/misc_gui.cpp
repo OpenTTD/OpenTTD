@@ -352,7 +352,7 @@ private:
 
 public:
 	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_player_face) :
-			Window(pt.x, pt.y, width, height, NULL, WC_ERRMSG, widget),
+			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
 			show_player_face(show_player_face)
 	{
 		this->duration = _patches.errmsg_duration;
@@ -532,7 +532,7 @@ struct TooltipsWindow : public Window
 
 	TooltipsWindow(int x, int y, int width, int height, const Widget *widget,
 								 StringID str, uint paramcount, const uint64 params[]) :
-			Window(x, y, width, height, NULL, WC_TOOLTIPS, widget)
+			Window(x, y, width, height, WC_TOOLTIPS, widget)
 	{
 		this->string_id = str;
 		assert(sizeof(this->params[0]) == sizeof(params[0]));

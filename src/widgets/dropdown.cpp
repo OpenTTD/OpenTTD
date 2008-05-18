@@ -72,7 +72,7 @@ struct DropdownWindow : Window {
 	bool drag_mode;
 	int scrolling;
 
-	DropdownWindow(int x, int y, int width, int height, const Widget *widget) : Window(x, y, width, height, NULL, WC_DROPDOWN_MENU, widget)
+	DropdownWindow(int x, int y, int width, int height, const Widget *widget) : Window(x, y, width, height, WC_DROPDOWN_MENU, widget)
 	{
 	}
 

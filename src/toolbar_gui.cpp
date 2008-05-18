@@ -1125,7 +1125,7 @@ struct ToolbarMenuWindow : Window {
 	ToolbarMenuWindow(int x, int y, int width, int height, const Widget *widgets, int item_count,
 										int sel_index, int parent_button, StringID base_string, int checked_items,
 										int disabled_mask) :
-			Window(x, y, width, height, NULL, WC_TOOLBAR_MENU, widgets),
+			Window(x, y, width, height, WC_TOOLBAR_MENU, widgets),
 			item_count(item_count), sel_index(sel_index), main_button(GB(parent_button, 0, 8)),
 			action_id((GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button),
 			checked_items(checked_items), disabled_items(disabled_items), base_string(base_string)
@@ -1280,7 +1280,7 @@ struct ToolbarPlayerMenuWindow : Window {
 	int gray_items;
 
 	ToolbarPlayerMenuWindow(int x, int y, int width, int height, const Widget *widgets, int main_button, int gray) :
-			Window(x, y, width, height, NULL, WC_TOOLBAR_MENU, widgets),
+			Window(x, y, width, height, WC_TOOLBAR_MENU, widgets),
 			item_count(0), main_button(main_button), action_id(main_button), gray_items(gray)
 	{
 		this->flags4 &= ~WF_WHITE_BORDER_MASK;

@@ -217,7 +217,7 @@ extern void UpdateAllStationVirtCoord();
 
 struct MainWindow : Window
 {
-	MainWindow(int width, int height) : Window(0, 0, width, height, NULL, WC_MAIN_WINDOW, NULL)
+	MainWindow(int width, int height) : Window(0, 0, width, height, WC_MAIN_WINDOW, NULL)
 	{
 		InitializeWindowViewport(this, 0, 0, width, height, TileXY(32, 32), ZOOM_LVL_VIEWPORT);
 	}

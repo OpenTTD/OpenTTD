@@ -963,16 +963,13 @@ void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
  * @param y offset in pixels from the top of the screen
  * @param width width in pixels of the window
  * @param height height in pixels of the window
- * @param *proc see WindowProc function to call when any messages/updates happen to the window
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
  * @return Window pointer of the newly created window
  */
-Window::Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget)
+Window::Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget)
 {
-	this->Initialize(x, y, width, height, proc, cls, widget, 0);
-
-	if (proc != NULL) this->FindWindowPlacementAndResize(width, height);
+	this->Initialize(x, y, width, height, NULL, cls, widget, 0);
 }
 
 

@@ -282,7 +282,7 @@ protected:
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
 public:
-	Window(int x, int y, int width, int height, WindowProc *proc, WindowClass cls, const Widget *widget);
+	Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget);
 	Window(const WindowDesc *desc, WindowNumber number = 0);
 
 	virtual ~Window();

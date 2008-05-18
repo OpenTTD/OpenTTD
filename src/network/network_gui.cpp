@@ -1321,7 +1321,7 @@ struct NetworkClientListPopupWindow : Window {
 	ClientList_Action_Proc *proc[MAX_CLIENTLIST_ACTION];
 
 	NetworkClientListPopupWindow(int x, int y, const Widget *widgets, int client_no) :
-			Window(x, y, 150, 100, NULL, WC_TOOLBAR_MENU, widgets),
+			Window(x, y, 150, 100, WC_TOOLBAR_MENU, widgets),
 			sel_index(0), client_no(client_no)
 	{
 		/*
