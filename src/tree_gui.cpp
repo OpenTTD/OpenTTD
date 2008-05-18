@@ -128,12 +128,12 @@ public:
 		VpSetPlaceSizingLimit(20);
 	}
 
-	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, byte select_proc, Point pt)
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
 	{
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
-	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, byte select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
 	{
 		if (pt.x != -1 && select_proc == DDSP_PLANT_TREES) {
 			DoCommandP(end_tile, this->tree_to_plant, start_tile, NULL,
