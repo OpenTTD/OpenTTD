@@ -1534,7 +1534,7 @@ static void SaveFileError()
 	SaveFileDone();
 }
 
-static ThreadObject *save_thread;
+static ThreadObject *_save_thread;
 
 /** We have written the whole game into memory, _Savegame_pool, now find
  * and appropiate compressor and start writing to file.
@@ -1604,10 +1604,10 @@ static void * CDECL SaveFileToDiskThread(void *arg)
 
 void WaitTillSaved()
 {
-	if (save_thread == NULL) return;
+	if (_save_thread == NULL) return;
 
-	save_thread->Join();
-	save_thread = NULL;
+	_save_thread->Join();
+	_save_thread = NULL;
 }
 
 /**
@@ -1679,7 +1679,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 			SaveFileStart();
 			if (_network_server ||
-						(save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL)) == NULL) {
+						(_save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL)) == NULL) {
 				if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 				SaveOrLoadResult result = SaveFileToDisk(false);
