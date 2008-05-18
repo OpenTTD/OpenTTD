@@ -43,6 +43,37 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+
+bool RoadVehiclesAreBuilt()
+{
+	const Vehicle* v;
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_ROAD) return true;
+	}
+	return false;
+}
+
+/**
+ * Change the side of the road vehicles drive on (server only).
+ * @param tile unused
+ * @param flags operation to perform
+ * @param p1 the side of the road; 0 = left side and 1 = right side
+ * @param p2 unused
+ */
+CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	/* Check boundaries and you can only change this if NO vehicles have been built yet,
+	 * except in the intro-menu where of course it's always possible to do so. */
+	if (p1 > 1 || (_game_mode != GM_MENU && RoadVehiclesAreBuilt())) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		_opt_ptr->road_side = p1;
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+	}
+	return CommandCost();
+}
+
 #define M(x) (1 << (x))
 /* Level crossings may only be built on these slopes */
 static const uint32 VALID_LEVEL_CROSSING_SLOPES = (M(SLOPE_SEN) | M(SLOPE_ENW) | M(SLOPE_NWS) | M(SLOPE_NS) | M(SLOPE_WSE) | M(SLOPE_EW) | M(SLOPE_FLAT));

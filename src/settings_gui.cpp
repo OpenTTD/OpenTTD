@@ -20,7 +20,6 @@
 #include "strings_func.h"
 #include "functions.h"
 #include "window_func.h"
-#include "vehicle_base.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "gfx_func.h"
@@ -101,17 +100,6 @@ static int GetCurRes()
 	}
 	return i;
 }
-
-static inline bool RoadVehiclesAreBuilt()
-{
-	const Vehicle* v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_ROAD) return true;
-	}
-	return false;
-}
-
 
 enum GameOptionsWidgets {
 	GAMEOPT_CURRENCY_BTN    =  4,
@@ -199,6 +187,7 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_ROADSIDE_BTN: { // Setup road-side dropdown
 				int i = 0;
+				extern bool RoadVehiclesAreBuilt();
 
 				/* You can only change the drive side if you are in the menu or ingame with
 				 * no vehicles present. In a networking game only the server can change it */
@@ -322,25 +311,6 @@ struct GameOptionsWindow : Window {
 		}
 	}
 };
-
-/** Change the side of the road vehicles drive on (server only).
- * @param tile unused
- * @param flags operation to perform
- * @param p1 the side of the road; 0 = left side and 1 = right side
- * @param p2 unused
- */
-CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
-{
-	/* Check boundaries and you can only change this if NO vehicles have been built yet,
-	 * except in the intro-menu where of course it's always possible to do so. */
-	if (p1 > 1 || (_game_mode != GM_MENU && RoadVehiclesAreBuilt())) return CMD_ERROR;
-
-	if (flags & DC_EXEC) {
-		_opt_ptr->road_side = p1;
-		InvalidateWindow(WC_GAME_OPTIONS, 0);
-	}
-	return CommandCost();
-}
 
 static const Widget _game_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
