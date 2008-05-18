@@ -92,10 +92,6 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case BTW_CLOSE:
-				ResetObjectToPlace();
-				break;
-
 			case BTW_TYPE_11: case BTW_TYPE_12: case BTW_TYPE_13: case BTW_TYPE_14:
 			case BTW_TYPE_21: case BTW_TYPE_22: case BTW_TYPE_23: case BTW_TYPE_24:
 			case BTW_TYPE_31: case BTW_TYPE_32: case BTW_TYPE_33: case BTW_TYPE_34:
