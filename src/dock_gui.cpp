@@ -125,77 +125,85 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Buoy
 };
 
-static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT:
-		w->DrawWidgets();
-		w->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
-		break;
-
-	case WE_CLICK:
-		if (e->we.click.widget - 3 >= 0 && e->we.click.widget != 5) _build_docks_button_proc[e->we.click.widget - 3](w);
-		break;
-
-	case WE_KEYPRESS:
-		switch (e->we.keypress.keycode) {
-			case '1': BuildDocksClick_Canal(w); break;
-			case '2': BuildDocksClick_Lock(w); break;
-			case '3': BuildDocksClick_Demolish(w); break;
-			case '4': BuildDocksClick_Depot(w); break;
-			case '5': BuildDocksClick_Dock(w); break;
-			case '6': BuildDocksClick_Buoy(w); break;
-			default:  return;
-		}
-		break;
-
-	case WE_PLACE_OBJ:
-		_place_proc(e->we.place.tile);
-		break;
-
-	case WE_PLACE_DRAG: {
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-		return;
+struct BuildDocksToolbarWindow : Window {
+	BuildDocksToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->FindWindowPlacementAndResize(desc);
+		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
-	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1) {
-			switch (e->we.place.select_proc) {
+	~BuildDocksToolbarWindow()
+	{
+		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+	}
+
+	virtual void OnPaint()
+	{
+		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
+		this->DrawWidgets();
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget - 3 >= 0 && widget != 5) _build_docks_button_proc[widget - 3](this);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case '1': BuildDocksClick_Canal(this); break;
+			case '2': BuildDocksClick_Lock(this); break;
+			case '3': BuildDocksClick_Demolish(this); break;
+			case '4': BuildDocksClick_Depot(this); break;
+			case '5': BuildDocksClick_Dock(this); break;
+			case '6': BuildDocksClick_Buoy(this); break;
+			default:  return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	{
+		if (pt.x != -1) {
+			switch (select_proc) {
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
+					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 				case DDSP_CREATE_WATER:
-					DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
+					DoCommandP(end_tile, start_tile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
 					break;
+
 				default: break;
 			}
 		}
-		break;
+	}
 
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
 
 		delete FindWindowById(WC_BUILD_STATION, 0);
 		delete FindWindowById(WC_BUILD_DEPOT, 0);
-		break;
+	}
 
-	case WE_PLACE_PRESIZE: {
-		TileIndex tile_from;
-		TileIndex tile_to;
-
-		tile_from = e->we.place.tile;
-
+	virtual void OnPlacePresize(Point pt, TileIndex tile_from)
+	{
 		DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile_from, NULL));
-		tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, ReverseDiagDir(dir)) : tile_from);
+		TileIndex tile_to = (dir != INVALID_DIAGDIR ? TileAddByDiagDir(tile_from, ReverseDiagDir(dir)) : tile_from);
 
 		VpSetPresizeRange(tile_from, tile_to);
-	} break;
-
-	case WE_DESTROY:
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
-		break;
 	}
-}
+};
 
 static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
@@ -218,7 +226,7 @@ static const WindowDesc _build_docks_toolbar_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,
-	BuildDocksToolbWndProc
+	NULL
 };
 
 void ShowBuildDocksToolbar()
@@ -226,8 +234,7 @@ void ShowBuildDocksToolbar()
 	if (!IsValidPlayer(_current_player)) return;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
-	Window *w = AllocateWindowDescFront<Window>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
-	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
+	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
 }
 
 struct BuildDocksStationWindow : public PickerWindowBase {

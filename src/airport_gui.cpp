@@ -65,51 +65,65 @@ static OnButtonClick * const _build_air_button_proc[] = {
 	BuildAirClick_Demolish,
 };
 
-static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			w->DrawWidgets();
-			break;
-
-		case WE_CLICK:
-			if (e->we.click.widget - 3 >= 0)
-				_build_air_button_proc[e->we.click.widget - 3](w);
-			break;
-
-		case WE_KEYPRESS: {
-			switch (e->we.keypress.keycode) {
-				case '1': BuildAirClick_Airport(w); break;
-				case '2': BuildAirClick_Demolish(w); break;
-				default: return;
-			}
-		} break;
-
-		case WE_PLACE_OBJ:
-			_place_proc(e->we.place.tile);
-			break;
-
-		case WE_PLACE_DRAG:
-			VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-			break;
-
-		case WE_PLACE_MOUSEUP:
-			if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_DEMOLISH_AREA) {
-				GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
-			}
-			break;
-
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseButtons();
-
-			delete FindWindowById(WC_BUILD_STATION, 0);
-			break;
-
-		case WE_DESTROY:
-			if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
-			break;
+struct BuildAirToolbarWindow : Window {
+	BuildAirToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->FindWindowPlacementAndResize(desc);
+		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
-}
+
+	~BuildAirToolbarWindow()
+	{
+		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget - 3 >= 0) {
+			_build_air_button_proc[widget - 3](this);
+		}
+	}
+
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case '1': BuildAirClick_Airport(this); break;
+			case '2': BuildAirClick_Demolish(this); break;
+			default: return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	{
+		if (pt.x != -1 && select_proc == DDSP_DEMOLISH_AREA) {
+			GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+		}
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+
+		delete FindWindowById(WC_BUILD_STATION, 0);
+	}
+};
 
 static const Widget _air_toolbar_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW },
@@ -126,7 +140,7 @@ static const WindowDesc _air_toolbar_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_air_toolbar_widgets,
-	BuildAirToolbWndProc
+	NULL
 };
 
 void ShowBuildAirToolbar()
@@ -134,8 +148,7 @@ void ShowBuildAirToolbar()
 	if (!IsValidPlayer(_current_player)) return;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
-	Window *w = AllocateWindowDescFront<Window>(&_air_toolbar_desc, TRANSPORT_AIR);
-	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
+	AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);
 }
 
 class AirportPickerWindow : public PickerWindowBase {

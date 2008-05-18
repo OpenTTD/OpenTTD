@@ -526,90 +526,99 @@ static const uint16 _rail_keycodes[] = {
 };
 
 
-static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
-{
-	switch (clicked_widget) {
-		case RTW_REMOVE:
-			/* If it is the removal button that has been clicked, do nothing,
-			 * as it is up to the other buttons to drive removal status */
-			return;
-			break;
-		case RTW_BUILD_NS:
-		case RTW_BUILD_X:
-		case RTW_BUILD_EW:
-		case RTW_BUILD_Y:
-		case RTW_AUTORAIL:
-		case RTW_BUILD_WAYPOINT:
-		case RTW_BUILD_STATION:
-		case RTW_BUILD_SIGNALS:
-			/* Removal button is enabled only if the rail/signal/waypoint/station
-			 * button is still lowered.  Once raised, it has to be disabled */
-			w->SetWidgetDisabledState(RTW_REMOVE, !w->IsWidgetLowered(clicked_widget));
-			break;
+struct BuildRailToolbarWindow : Window {
+	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->DisableWidget(RTW_REMOVE);
 
-		default:
-			/* When any other buttons than rail/signal/waypoint/station, raise and
-			 * disable the removal button */
-			w->DisableWidget(RTW_REMOVE);
-			w->RaiseWidget(RTW_REMOVE);
-			break;
+		this->FindWindowPlacementAndResize(desc);
+		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
-}
 
-/**
- * Railway toolbar window event definition
- *
- * @param w window pointer
- * @param e event been triggered
- */
-static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_CREATE: w->DisableWidget(RTW_REMOVE); break;
+	~BuildRailToolbarWindow()
+	{
+		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+	}
 
-	case WE_PAINT: w->DrawWidgets(); break;
+	void UpdateRemoveWidgetStatus(int clicked_widget)
+	{
+		switch (clicked_widget) {
+			case RTW_REMOVE:
+				/* If it is the removal button that has been clicked, do nothing,
+				* as it is up to the other buttons to drive removal status */
+				return;
+				break;
+			case RTW_BUILD_NS:
+			case RTW_BUILD_X:
+			case RTW_BUILD_EW:
+			case RTW_BUILD_Y:
+			case RTW_AUTORAIL:
+			case RTW_BUILD_WAYPOINT:
+			case RTW_BUILD_STATION:
+			case RTW_BUILD_SIGNALS:
+				/* Removal button is enabled only if the rail/signal/waypoint/station
+				* button is still lowered.  Once raised, it has to be disabled */
+				this->SetWidgetDisabledState(RTW_REMOVE, !this->IsWidgetLowered(clicked_widget));
+				break;
 
-	case WE_CLICK:
-		if (e->we.click.widget >= RTW_BUILD_NS) {
-			_remove_button_clicked = false;
-			_build_railroad_button_proc[e->we.click.widget - RTW_BUILD_NS](w);
+			default:
+				/* When any other buttons than rail/signal/waypoint/station, raise and
+				* disable the removal button */
+				this->DisableWidget(RTW_REMOVE);
+				this->RaiseWidget(RTW_REMOVE);
+				break;
 		}
-		UpdateRemoveWidgetStatus(w, e->we.click.widget);
-		if (_ctrl_pressed) RailToolbar_CtrlChanged(w);
-		break;
+	}
 
-	case WE_KEYPRESS:
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget >= RTW_BUILD_NS) {
+			_remove_button_clicked = false;
+			_build_railroad_button_proc[widget - RTW_BUILD_NS](this);
+		}
+		this->UpdateRemoveWidgetStatus(widget);
+		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		EventState state = ES_NOT_HANDLED;
 		for (uint8 i = 0; i != lengthof(_rail_keycodes); i++) {
-			if (e->we.keypress.keycode == _rail_keycodes[i]) {
-				e->we.keypress.cont = false;
+			if (keycode == _rail_keycodes[i]) {
 				_remove_button_clicked = false;
-				_build_railroad_button_proc[i](w);
-				UpdateRemoveWidgetStatus(w, i + RTW_BUILD_NS);
-				if (_ctrl_pressed) RailToolbar_CtrlChanged(w);
+				_build_railroad_button_proc[i](this);
+				this->UpdateRemoveWidgetStatus(i + RTW_BUILD_NS);
+				if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
+				state = ES_HANDLED;
 				break;
 			}
 		}
 		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
-		break;
-
-	case WE_PLACE_OBJ:
-		_place_proc(e->we.place.tile);
-		return;
-
-	case WE_PLACE_DRAG: {
-		/* no dragging if you have pressed the convert button */
-		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && w->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
-
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-		return;
+		return state;
 	}
 
-	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1) {
-			TileIndex start_tile = e->we.place.starttile;
-			TileIndex end_tile = e->we.place.tile;
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
 
-			switch (e->we.place.select_proc) {
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	{
+		/* no dragging if you have pressed the convert button */
+		if (FindWindowById(WC_BUILD_SIGNAL, 0) != NULL && _convert_signal_button && this->IsWidgetLowered(RTW_BUILD_SIGNALS)) return;
+
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	{
+		if (pt.x != -1) {
+			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
@@ -625,7 +634,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
+					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 
 				case DDSP_CONVERT_RAIL:
@@ -643,39 +652,36 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 				case DDSP_PLACE_RAIL_NE:
 				case DDSP_PLACE_RAIL_NW:
-					DoRailroadTrack(e->we.place.select_proc == DDSP_PLACE_RAIL_NE ? TRACK_X : TRACK_Y);
+					DoRailroadTrack(select_proc == DDSP_PLACE_RAIL_NE ? TRACK_X : TRACK_Y);
 					break;
 			}
 		}
-		break;
+	}
 
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
-		w->DisableWidget(RTW_REMOVE);
-		w->InvalidateWidget(RTW_REMOVE);
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+		this->DisableWidget(RTW_REMOVE);
+		this->InvalidateWidget(RTW_REMOVE);
 
 		delete FindWindowById(WC_BUILD_SIGNAL, 0);
 		delete FindWindowById(WC_BUILD_STATION, 0);
 		delete FindWindowById(WC_BUILD_DEPOT, 0);
-		break;
+	}
 
-	case WE_PLACE_PRESIZE: {
-		TileIndex tile = e->we.place.tile;
-
+	virtual void OnPlacePresize(Point pt, TileIndex tile)
+	{
 		DoCommand(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
-	} break;
-
-	case WE_DESTROY:
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
-		break;
-
-	case WE_CTRL_CHANGED:
-		/* do not toggle Remove button by Ctrl when placing station */
-		if (!w->IsWidgetLowered(RTW_BUILD_STATION) && RailToolbar_CtrlChanged(w)) e->we.ctrl.cont = false;
-		break;
 	}
-}
+
+	virtual EventState OnCTRLStateChange()
+	{
+		/* do not toggle Remove button by Ctrl when placing station */
+		if (!this->IsWidgetLowered(RTW_BUILD_STATION) && RailToolbar_CtrlChanged(this)) return ES_HANDLED;
+		return ES_NOT_HANDLED;
+	}
+};
 
 /** Widget definition for the rail toolbar */
 static const Widget _build_rail_widgets[] = {
@@ -710,7 +716,7 @@ static const WindowDesc _build_rail_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_rail_widgets,
-	BuildRailToolbWndProc
+	NULL
 };
 
 
@@ -736,25 +742,24 @@ static void SetupRailToolbar(RailType railtype, Window *w)
 
 void ShowBuildRailToolbar(RailType railtype, int button)
 {
-	Window *w;
+	BuildRailToolbarWindow *w;
 
 	if (!IsValidPlayer(_current_player)) return;
 	if (!ValParamRailtype(railtype)) return;
 
 	// don't recreate the window if we're clicking on a button and the window exists.
-	if (button < 0 || !(w = FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL))) {
+	if (button < 0 || !(w = dynamic_cast<BuildRailToolbarWindow*>(FindWindowById(WC_BUILD_TOOLBAR, TRANSPORT_RAIL)))) {
 		DeleteWindowByClass(WC_BUILD_TOOLBAR);
 		_cur_railtype = railtype;
-		w = AllocateWindowDescFront<Window>(&_build_rail_desc, TRANSPORT_RAIL);
+		w = AllocateWindowDescFront<BuildRailToolbarWindow>(&_build_rail_desc, TRANSPORT_RAIL);
 		SetupRailToolbar(railtype, w);
 	}
 
 	_remove_button_clicked = false;
 	if (w != NULL && button >= RTW_CLOSEBOX) {
 		_build_railroad_button_proc[button](w);
-		UpdateRemoveWidgetStatus(w, button + RTW_BUILD_NS);
+		w->UpdateRemoveWidgetStatus(button + RTW_BUILD_NS);
 	}
-	if (_patches.link_terraform_toolbar) ShowTerraformToolbar(w);
 }
 
 /* TODO: For custom stations, respect their allowed platforms/lengths bitmasks!
