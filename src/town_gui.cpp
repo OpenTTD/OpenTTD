@@ -283,87 +283,96 @@ enum TownViewWidget {
 	TVW_DELETE,
 };
 
-static void TownViewWndProc(Window *w, WindowEvent *e)
-{
-	Town *t = GetTown(w->window_number);
+struct TownViewWindow : Window {
+	TownViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		const Town *t = GetTown(this->window_number);
 
-	switch (e->event) {
-		case WE_CREATE: {
-			bool ingame = _game_mode != GM_EDITOR;
-			if (t->larger_town) w->widget[TVW_CAPTION].data = STR_CITY;
-			w->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
-			w->SetWidgetHiddenState(TVW_EXPAND, ingame);  // hide expand button on game mode
-			w->SetWidgetHiddenState(TVW_SHOWAUTORITY, !ingame); // hide autority button on editor mode
+		this->flags4 |= WF_DISABLE_VP_SCROLL;
+		InitializeWindowViewport(this, 3, 17, 254, 86, t->xy, ZOOM_LVL_TOWN);
 
-			if (ingame) {
-				/* resize caption bar */
-				w->widget[TVW_CAPTION].right = w->widget[TVW_STICKY].left -1;
-				/* move the rename from top on scenario to bottom in game */
-				w->widget[TVW_CHANGENAME].top = w->widget[TVW_EXPAND].top;
-				w->widget[TVW_CHANGENAME].bottom = w->widget[TVW_EXPAND].bottom;
-				w->widget[TVW_CHANGENAME].right = w->widget[TVW_STICKY].right;
-			}
-		} break;
+		bool ingame = _game_mode != GM_EDITOR;
+		if (t->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
+		this->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
+		this->SetWidgetHiddenState(TVW_EXPAND, ingame);  // hide expand button on game mode
+		this->SetWidgetHiddenState(TVW_SHOWAUTORITY, !ingame); // hide autority button on editor mode
 
-		case WE_PAINT:
-			/* disable renaming town in network games if you are not the server */
-			w->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
-
-			SetDParam(0, t->index);
-			w->DrawWidgets();
-
-			SetDParam(0, t->population);
-			SetDParam(1, t->num_houses);
-			DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
-
-			SetDParam(0, t->act_pass);
-			SetDParam(1, t->max_pass);
-			DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
-
-			SetDParam(0, t->act_mail);
-			SetDParam(1, t->max_mail);
-			DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
-
-			w->DrawViewport();
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case TVW_CENTERVIEW: /* scroll to location */
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(t->xy);
-					} else {
-						ScrollMainWindowToTile(t->xy);
-					}
-					break;
-
-				case TVW_SHOWAUTORITY: /* town authority */
-					ShowTownAuthorityWindow(w->window_number);
-					break;
-
-				case TVW_CHANGENAME: /* rename */
-					SetDParam(0, w->window_number);
-					ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, w, CS_ALPHANUMERAL);
-					break;
-
-				case TVW_EXPAND: /* expand town - only available on Scenario editor */
-					ExpandTown(t);
-					break;
-
-				case TVW_DELETE: /* delete town - only available on Scenario editor */
-					delete t;
-					break;
-			} break;
-
-		case WE_ON_EDIT_TEXT:
-			if (!StrEmpty(e->we.edittext.str)) {
-				_cmd_text = e->we.edittext.str;
-				DoCommandP(0, w->window_number, 0, NULL,
-					CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
-			}
-			break;
+		if (ingame) {
+			/* resize caption bar */
+			this->widget[TVW_CAPTION].right = this->widget[TVW_STICKY].left -1;
+			/* move the rename from top on scenario to bottom in game */
+			this->widget[TVW_CHANGENAME].top = this->widget[TVW_EXPAND].top;
+			this->widget[TVW_CHANGENAME].bottom = this->widget[TVW_EXPAND].bottom;
+			this->widget[TVW_CHANGENAME].right = this->widget[TVW_STICKY].right;
+		}
 	}
-}
+
+	virtual void OnPaint()
+	{
+		const Town *t = GetTown(this->window_number);
+
+		/* disable renaming town in network games if you are not the server */
+		this->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
+
+		SetDParam(0, t->index);
+		this->DrawWidgets();
+
+		SetDParam(0, t->population);
+		SetDParam(1, t->num_houses);
+		DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
+
+		SetDParam(0, t->act_pass);
+		SetDParam(1, t->max_pass);
+		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
+
+		SetDParam(0, t->act_mail);
+		SetDParam(1, t->max_mail);
+		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
+
+		this->DrawViewport();
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		Town *t = GetTown(this->window_number);
+
+		switch (widget) {
+			case TVW_CENTERVIEW: /* scroll to location */
+				if (_ctrl_pressed) {
+					ShowExtraViewPortWindow(t->xy);
+				} else {
+					ScrollMainWindowToTile(t->xy);
+				}
+				break;
+
+			case TVW_SHOWAUTORITY: /* town authority */
+				ShowTownAuthorityWindow(this->window_number);
+				break;
+
+			case TVW_CHANGENAME: /* rename */
+				SetDParam(0, this->window_number);
+				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, 31, 130, this, CS_ALPHANUMERAL);
+				break;
+
+			case TVW_EXPAND: /* expand town - only available on Scenario editor */
+				ExpandTown(t);
+				break;
+
+			case TVW_DELETE: /* delete town - only available on Scenario editor */
+				delete t;
+				break;
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (!StrEmpty(str)) {
+			_cmd_text = str;
+			DoCommandP(0, this->window_number, 0, NULL,
+				CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
+		}
+	}
+};
 
 
 static const Widget _town_view_widgets[] = {
@@ -386,19 +395,12 @@ static const WindowDesc _town_view_desc = {
 	WC_TOWN_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_widgets,
-	TownViewWndProc
+	NULL
 };
 
 void ShowTownViewWindow(TownID town)
 {
-	Window *w;
-
-	w = AllocateWindowDescFront<Window>(&_town_view_desc, town);
-
-	if (w != NULL) {
-		w->flags4 |= WF_DISABLE_VP_SCROLL;
-		InitializeWindowViewport(w, 3, 17, 254, 86, GetTown(town)->xy, ZOOM_LVL_TOWN);
-	}
+	AllocateWindowDescFront<TownViewWindow>(&_town_view_desc, town);
 }
 
 enum TownDirectoryWidget {
@@ -622,85 +624,90 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
+struct ScenarioEditorTownGenerationWindow : Window
 {
-	switch (e->event) {
-		case WE_PAINT:
-			w->DrawWidgets();
-			break;
+	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+	}
 
-		case WE_CREATE:
-			w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
-			break;
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
 
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case TSEW_NEWTOWN:
-					HandlePlacePushButton(w, TSEW_NEWTOWN, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
-					break;
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case TSEW_NEWTOWN:
+				HandlePlacePushButton(this, TSEW_NEWTOWN, SPR_CURSOR_TOWN, VHM_RECT, PlaceProc_Town);
+				break;
 
-				case TSEW_RANDOMTOWN: {
-					Town *t;
-					uint size = min(_scengen_town_size, (int)TSM_CITY);
-					TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
+			case TSEW_RANDOMTOWN: {
+				Town *t;
+				uint size = min(_scengen_town_size, (int)TSM_CITY);
+				TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
 
-					w->HandleButtonClick(TSEW_RANDOMTOWN);
-					_generating_world = true;
-					t = CreateRandomTown(20, mode, size);
-					_generating_world = false;
+				this->HandleButtonClick(TSEW_RANDOMTOWN);
+				_generating_world = true;
+				t = CreateRandomTown(20, mode, size);
+				_generating_world = false;
 
-					if (t == NULL) {
-						ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-					} else {
-						ScrollMainWindowToTile(t->xy);
-					}
-				} break;
-
-				case TSEW_MANYRANDOMTOWNS:
-					w->HandleButtonClick(TSEW_MANYRANDOMTOWNS);
-
-					_generating_world = true;
-					if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-					_generating_world = false;
-					break;
-
-				case TSEW_SMALLTOWN: case TSEW_MEDIUMTOWN: case TSEW_LARGETOWN: case TSEW_CITY:
-					w->RaiseWidget(_scengen_town_size + TSEW_SMALLTOWN);
-					_scengen_town_size = e->we.click.widget - TSEW_SMALLTOWN;
-					w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
-					w->SetDirty();
-					break;
+				if (t == NULL) {
+					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+				} else {
+					ScrollMainWindowToTile(t->xy);
+				}
 			} break;
 
-		case WE_TIMEOUT:
-			w->RaiseWidget(TSEW_RANDOMTOWN);
-			w->RaiseWidget(TSEW_MANYRANDOMTOWNS);
-			w->SetDirty();
-			break;
+			case TSEW_MANYRANDOMTOWNS:
+				this->HandleButtonClick(TSEW_MANYRANDOMTOWNS);
 
-		case WE_PLACE_OBJ:
-			_place_proc(e->we.place.tile);
-			break;
+				_generating_world = true;
+				if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+				_generating_world = false;
+				break;
 
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseButtons();
-			w->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
-			w->SetDirty();
-			break;
+			case TSEW_SMALLTOWN: case TSEW_MEDIUMTOWN: case TSEW_LARGETOWN: case TSEW_CITY:
+				this->RaiseWidget(_scengen_town_size + TSEW_SMALLTOWN);
+				_scengen_town_size = widget - TSEW_SMALLTOWN;
+				this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+				this->SetDirty();
+				break;
+		}
 	}
-}
+
+	virtual void OnTimeout()
+	{
+		this->RaiseWidget(TSEW_RANDOMTOWN);
+		this->RaiseWidget(TSEW_MANYRANDOMTOWNS);
+		this->SetDirty();
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+		this->SetDirty();
+	}
+};
 
 static const WindowDesc _scen_edit_town_gen_desc = {
 	WDP_AUTO, WDP_AUTO, 160, 95, 160, 95,
 	WC_SCEN_TOWN_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
-	ScenEditTownGenWndProc,
+	NULL,
 };
 
 void ShowBuildTownWindow()
 {
 	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
-	AllocateWindowDescFront<Window>(&_scen_edit_town_gen_desc, 0);
+	AllocateWindowDescFront<ScenarioEditorTownGenerationWindow>(&_scen_edit_town_gen_desc, 0);
 }
 
