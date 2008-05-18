@@ -138,6 +138,7 @@ void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint 
 {
 	assert(begin <= (uint)el->size());
 	assert(begin + num_items <= (uint)el->size());
+	if (num_items < 2) return;
 	qsort(&((*el)[begin]), num_items, sizeof(EngineID), compare);
 }
 
