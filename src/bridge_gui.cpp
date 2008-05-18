@@ -18,8 +18,12 @@
 #include "gfx_func.h"
 #include "tunnelbridge.h"
 #include "sortlist_type.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
+
+/* Save the sorting during runtime */
+static Listing _bridge_sorting = {false, 0};
 
 /**
  * Carriage for the data we need if we want to build a bridge
@@ -31,6 +35,53 @@ struct BuildBridgeData {
 };
 
 typedef GUIList<BuildBridgeData> GUIBridgeList;
+
+/** Sort the bridges by their index */
+static int CDECL BridgeIndexSorter(const void *a, const void *b)
+{
+	const BuildBridgeData* ba = (BuildBridgeData*)a;
+	const BuildBridgeData* bb = (BuildBridgeData*)b;
+	int r = ba->index - bb->index;
+
+	return (_bridge_sorting.order) ? -r : r;
+}
+
+/** Sort the bridges by their price */
+static int CDECL BridgePriceSorter(const void *a, const void *b)
+{
+	const BuildBridgeData* ba = (BuildBridgeData*)a;
+	const BuildBridgeData* bb = (BuildBridgeData*)b;
+	int r = ba->cost - bb->cost;
+
+	return (_bridge_sorting.order) ? -r : r;
+}
+
+/** Sort the bridges by their maximum speed */
+static int CDECL BridgeSpeedSorter(const void *a, const void *b)
+{
+	const BuildBridgeData* ba = (BuildBridgeData*)a;
+	const BuildBridgeData* bb = (BuildBridgeData*)b;
+	int r = ba->spec->speed - bb->spec->speed;
+
+	return (_bridge_sorting.order) ? -r : r;
+}
+
+typedef int CDECL BridgeSortListingTypeFunction(const void*, const void*);
+
+/* Availible bridge sorting functions */
+static BridgeSortListingTypeFunction* const _bridge_sorter[] = {
+	&BridgeIndexSorter,
+	&BridgePriceSorter,
+	&BridgeSpeedSorter
+};
+
+/* Names of the sorting functions */
+static const StringID _bridge_sort_listing[] = {
+	STR_SORT_BY_NUMBER,
+	STR_ENGINE_SORT_COST,
+	STR_SORT_BY_MAX_SPEED,
+	INVALID_STRING_ID
+};
 
 /**
  * Callback executed after a build Bridge CMD has been called
@@ -49,6 +100,8 @@ void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2)
 enum BuildBridgeSelectionWidgets {
 	BBSW_CLOSEBOX = 0,
 	BBSW_CAPTION,
+	BBSW_DROPDOWN_ORDER,
+	BBSW_DROPDOWN_CRITERIA,
 	BBSW_BRIDGE_LIST,
 	BBSW_SCROLLBAR,
 	BBSW_RESIZEBOX
@@ -58,12 +111,12 @@ class BuildBridgeWindow : public Window {
 private:
 	/* The last size of the build bridge window
 	 * is saved during runtime */
-	static uint8 last_size;
+	static uint last_size;
 
 	TileIndex start_tile;
 	TileIndex end_tile;
 	uint32 type;
-	const GUIBridgeList *bridges;
+	GUIBridgeList *bridges;
 
 	void BuildBridge(uint8 i)
 	{
@@ -71,13 +124,32 @@ private:
 				CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 	}
 
+	/** Sort the builable bridges */
+	void SortBridgeList()
+	{
+		/* Skip sorting if resort bit is not set */
+		if (!(bridges->flags & VL_RESORT)) return;
+
+		qsort(this->bridges->sort_list, this->bridges->list_length, sizeof(this->bridges->sort_list[0]), _bridge_sorter[_bridge_sorting.criteria]);
+
+		/* Display the current sort variant */
+		this->widget[BBSW_DROPDOWN_CRITERIA].data = _bridge_sort_listing[this->bridges->sort_type];
+
+		bridges->flags &= ~VL_RESORT;
+
+		/* Set the modified widgets dirty */
+		this->InvalidateWidget(BBSW_DROPDOWN_CRITERIA);
+		this->InvalidateWidget(BBSW_BRIDGE_LIST);
+	}
+
 public:
-	BuildBridgeWindow(const WindowDesc *desc, TileIndex start, TileIndex end, uint32 br_type, const GUIBridgeList *bl) : Window(desc),
+	BuildBridgeWindow(const WindowDesc *desc, TileIndex start, TileIndex end, uint32 br_type, GUIBridgeList *bl) : Window(desc),
 		start_tile(start),
 		end_tile(end),
 		type(br_type),
 		bridges(bl)
 	{
+		this->SortBridgeList();
 
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly */
 		this->widget[BBSW_CAPTION].data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_1803_SELECT_ROAD_BRIDGE : STR_100D_SELECT_RAIL_BRIDGE;
@@ -107,17 +179,21 @@ public:
 	{
 		this->DrawWidgets();
 
-		uint y = 15;
-		for (uint i = 0; (i < this->vscroll.cap) && ((i + this->vscroll.pos) < this->bridges->list_length); i++) {
-			const BridgeSpec *b = this->bridges->sort_list[i + this->vscroll.pos].spec;
+		this->DrawSortButtonState(BBSW_DROPDOWN_ORDER, (this->bridges->flags & VL_DESC) ? SBS_DOWN : SBS_UP);
 
-			SetDParam(2, this->bridges->sort_list[i + this->vscroll.pos].cost);
+		uint y = this->widget[BBSW_BRIDGE_LIST].top + 2;
+
+		for (uint i = this->vscroll.pos; (i < (this->vscroll.cap + this->vscroll.pos)) && (i < this->bridges->list_length); i++) {
+			const BridgeSpec *b = this->bridges->sort_list[i].spec;
+
+			SetDParam(2, this->bridges->sort_list[i].cost);
 			SetDParam(1, b->speed * 10 / 16);
 			SetDParam(0, b->material);
 
 			DrawSprite(b->sprite, b->pal, 3, y);
 			DrawString(44, y, STR_500D, TC_FROMSTRING);
 			y += this->resize.step_height;
+
 		}
 	}
 
@@ -135,15 +211,42 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == BBSW_BRIDGE_LIST) {
-			uint i = ((int)pt.y - 14) / this->resize.step_height;
-			if (i < this->vscroll.cap) {
-				i += this->vscroll.pos;
-				if (i < this->bridges->list_length) {
-					this->BuildBridge(i);
-					delete this;
+		switch (widget) {
+			default: break;
+			case BBSW_BRIDGE_LIST: {
+				uint i = ((int)pt.y - this->widget[BBSW_BRIDGE_LIST].top) / this->resize.step_height;
+				if (i < this->vscroll.cap) {
+					i += this->vscroll.pos;
+					if (i < this->bridges->list_length) {
+						this->BuildBridge(i);
+						delete this;
+					}
 				}
-			}
+			} break;
+
+			case BBSW_DROPDOWN_ORDER:
+				/* Revers the sort order */
+				this->bridges->flags ^= VL_DESC;
+				_bridge_sorting.order = !_bridge_sorting.order;
+
+				this->bridges->flags |= VL_RESORT;
+				this->SortBridgeList();
+				break;
+
+			case BBSW_DROPDOWN_CRITERIA:
+				ShowDropDownMenu(this, _bridge_sort_listing, bridges->sort_type, BBSW_DROPDOWN_CRITERIA, 0, 0);
+				break;
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (widget == BBSW_DROPDOWN_CRITERIA && this->bridges->sort_type != index) {
+			this->bridges->sort_type = index;
+			_bridge_sorting.criteria = index;
+
+			this->bridges->flags |= VL_RESORT;
+			this->SortBridgeList();
 		}
 	}
 
@@ -158,21 +261,25 @@ public:
 };
 
 /* Set the default size of the Build Bridge Window */
-uint8 BuildBridgeWindow::last_size = 4;
+uint BuildBridgeWindow::last_size = 4;
 
 /* Widget definition for the rail bridge selection window */
 static const Widget _build_bridge_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
-{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  14, 101, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  14,  89, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
-{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199,  90, 101, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
+
+{    WWT_TEXTBTN,   RESIZE_NONE,  7,   0,  80,  14,  25, STR_SORT_BY,                 STR_SORT_ORDER_TIP},               // BBSW_DROPDOWN_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  7,  81, 199,  14,  25, 0x0,                         STR_SORT_CRITERIA_TIP},            // BBSW_DROPDOWN_CRITERIA
+
+{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  26, 113, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  26, 101, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
+{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199, 102, 113, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
 {   WIDGETS_END},
 };
 
 /* Window definition for the rail bridge selection window */
 static const WindowDesc _build_bridge_desc = {
-	WDP_AUTO, WDP_AUTO, 200, 102, 200, 102,
+	WDP_AUTO, WDP_AUTO, 200, 114, 200, 114,
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_bridge_widgets,
@@ -193,7 +300,9 @@ static GUIBridgeList *PushBridgeList(GUIBridgeList *bl, BuildBridgeData item)
 		/* Create the list if needed */
 		bl = new GUIBridgeList();
 		bl->flags |= VL_RESORT;
+		if (_bridge_sorting.order) bl->flags |= VL_DESC;
 		bl->list_length = 1;
+		bl->sort_type = _bridge_sorting.criteria;
 	} else {
 		/* Resize the list */
 		bl->list_length++;
