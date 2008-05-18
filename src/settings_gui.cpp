@@ -151,180 +151,177 @@ static void ShowTownnameDropdown(Window *w, int sel)
 	ShowDropDownList(w, list, sel, GAMEOPT_TOWNNAME_BTN);
 }
 
-/**
- * Update/redraw the languages dropdown
- * @param w   the window the dropdown belongs to
- */
-static void ShowLangDropdown(Window *w)
-{
-	typedef std::map<StringID, int, StringIDCompare> LangList;
-
-	/* Sort language names */
-	LangList langs;
-	for (int i = 0; i < _dynlang.num; i++) langs[SPECSTR_LANGUAGE_START + i] = i;
-
-	DropDownList *list = new DropDownList();
-	for (LangList::iterator it = langs.begin(); it != langs.end(); it++) {
-		list->push_back(new DropDownListStringItem((*it).first, (*it).second, false));
-	}
-
-	ShowDropDownList(w, list, _dynlang.curr, GAMEOPT_LANG_BTN);
-}
-
 static void ShowCustCurrency();
 
-static void GameOptionsWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			int i;
-			StringID str = STR_02BE_DEFAULT;
-
-			w->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
-			if (!w->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
-			SetDParam(0, str);
-			SetDParam(1, _currency_specs[_opt_ptr->currency].name);
-			SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
-			SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
-			SetDParam(4, TownName(_opt_ptr->town_name));
-			SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
-			SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
-			i = GetCurRes();
-			SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
-			SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-			w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
-
-			w->DrawWidgets();
-			DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case GAMEOPT_CURRENCY_BTN: /* Setup currencies dropdown */
-					ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
-					break;
-
-				case GAMEOPT_DISTANCE_BTN: /* Setup distance unit dropdown */
-					ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
-					break;
-
-				case GAMEOPT_ROADSIDE_BTN: { /* Setup road-side dropdown */
-					int i = 0;
-
-					/* You can only change the drive side if you are in the menu or ingame with
-					 * no vehicles present. In a networking game only the server can change it */
-					if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server))
-						i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
-
-					ShowDropDownMenu(w, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
-				} break;
-
-				case GAMEOPT_TOWNNAME_BTN: /* Setup townname dropdown */
-					ShowTownnameDropdown(w, _opt_ptr->town_name);
-					break;
-
-				case GAMEOPT_AUTOSAVE_BTN: /* Setup autosave dropdown */
-					ShowDropDownMenu(w, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
-					break;
-
-				case GAMEOPT_VEHICLENAME_BTN: /* Setup customized vehicle-names dropdown */
-					ShowDropDownMenu(w, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
-					break;
-
-				case GAMEOPT_VEHICLENAME_SAVE: /* Save customized vehicle-names to disk */
-					break;  // not implemented
-
-				case GAMEOPT_LANG_BTN: /* Setup interface language dropdown */
-					ShowLangDropdown(w);
-					break;
-
-				case GAMEOPT_RESOLUTION_BTN: /* Setup resolution dropdown */
-					ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GAMEOPT_RESOLUTION_BTN, 0, 0);
-					break;
-
-				case GAMEOPT_FULLSCREEN: /* Click fullscreen on/off */
-					/* try to toggle full-screen on/off */
-					if (!ToggleFullScreen(!_fullscreen)) {
-						ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
-					}
-					w->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
-					w->SetDirty();
-					break;
-
-				case GAMEOPT_SCREENSHOT_BTN: /* Setup screenshot format dropdown */
-					ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
-					break;
-			}
-			break;
-
-		case WE_DROPDOWN_SELECT:
-			switch (e->we.dropdown.button) {
-				case GAMEOPT_VEHICLENAME_BTN: /* Vehicle design names */
-					if (e->we.dropdown.index == 0) {
-						DeleteCustomEngineNames();
-						MarkWholeScreenDirty();
-					} else if (!(_vehicle_design_names & 1)) {
-						LoadCustomEngineNames();
-						MarkWholeScreenDirty();
-					}
-					break;
-
-				case GAMEOPT_CURRENCY_BTN: /* Currency */
-					if (e->we.dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
-					_opt_ptr->currency = e->we.dropdown.index;
-					MarkWholeScreenDirty();
-					break;
-
-				case GAMEOPT_DISTANCE_BTN: /* Measuring units */
-					_opt_ptr->units = e->we.dropdown.index;
-					MarkWholeScreenDirty();
-					break;
-
-				case GAMEOPT_ROADSIDE_BTN: /* Road side */
-					if (_opt_ptr->road_side != e->we.dropdown.index) { // only change if setting changed
-						DoCommandP(0, e->we.dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
-						MarkWholeScreenDirty();
-					}
-					break;
-
-				case GAMEOPT_TOWNNAME_BTN: /* Town names */
-					if (_game_mode == GM_MENU) {
-						_opt_ptr->town_name = e->we.dropdown.index;
-						InvalidateWindow(WC_GAME_OPTIONS, 0);
-					}
-					break;
-
-				case GAMEOPT_AUTOSAVE_BTN: /* Autosave options */
-					_opt.autosave = _opt_newgame.autosave = e->we.dropdown.index;
-					w->SetDirty();
-					break;
-
-				case GAMEOPT_LANG_BTN: /* Change interface language */
-					ReadLanguagePack(e->we.dropdown.index);
-					CheckForMissingGlyphsInLoadedLanguagePack();
-					UpdateAllStationVirtCoord();
-					UpdateAllWaypointSigns();
-					MarkWholeScreenDirty();
-					break;
-
-				case GAMEOPT_RESOLUTION_BTN: /* Change resolution */
-					if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0], _resolutions[e->we.dropdown.index][1]))
-						w->SetDirty();
-					break;
-
-				case GAMEOPT_SCREENSHOT_BTN: /* Change screenshot format */
-					SetScreenshotFormat(e->we.dropdown.index);
-					w->SetDirty();
-					break;
-			}
-			break;
-
-		case WE_DESTROY:
-			DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
-			break;
+struct GameOptionsWindow : Window {
+	GameOptionsWindow(const WindowDesc *desc) : Window(desc)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
-}
+	~GameOptionsWindow()
+	{
+		DeleteWindowById(WC_CUSTOM_CURRENCY, 0);
+	}
+
+	virtual void OnPaint()
+	{
+		StringID str = STR_02BE_DEFAULT;
+
+		this->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
+		if (!this->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
+		SetDParam(0, str);
+		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
+		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
+		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
+		SetDParam(4, TownName(_opt_ptr->town_name));
+		SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
+		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
+		int i = GetCurRes();
+		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
+		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
+		this->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
+
+		this->DrawWidgets();
+		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, TC_FROMSTRING); // fullscreen
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case GAMEOPT_CURRENCY_BTN: // Setup currencies dropdown
+				ShowDropDownMenu(this, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+				break;
+
+			case GAMEOPT_DISTANCE_BTN: // Setup distance unit dropdown
+				ShowDropDownMenu(this, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
+				break;
+
+			case GAMEOPT_ROADSIDE_BTN: { // Setup road-side dropdown
+				int i = 0;
+
+				/* You can only change the drive side if you are in the menu or ingame with
+				 * no vehicles present. In a networking game only the server can change it */
+				if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server)) {
+					i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
+				}
+
+				ShowDropDownMenu(this, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
+			} break;
+
+			case GAMEOPT_TOWNNAME_BTN: // Setup townname dropdown
+				ShowTownnameDropdown(this, _opt_ptr->town_name);
+				break;
+
+			case GAMEOPT_AUTOSAVE_BTN: // Setup autosave dropdown
+				ShowDropDownMenu(this, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
+				break;
+
+			case GAMEOPT_VEHICLENAME_BTN: // Setup customized vehicle-names dropdown
+				ShowDropDownMenu(this, _designnames_dropdown, (_vehicle_design_names & 1) ? 1 : 0, GAMEOPT_VEHICLENAME_BTN, (_vehicle_design_names & 2) ? 0 : 2, 0);
+				break;
+
+			case GAMEOPT_VEHICLENAME_SAVE: // Save customized vehicle-names to disk
+				break;  // not implemented
+
+			case GAMEOPT_LANG_BTN: { // Setup interface language dropdown
+				typedef std::map<StringID, int, StringIDCompare> LangList;
+
+				/* Sort language names */
+				LangList langs;
+				for (int i = 0; i < _dynlang.num; i++) langs[SPECSTR_LANGUAGE_START + i] = i;
+
+				DropDownList *list = new DropDownList();
+				for (LangList::iterator it = langs.begin(); it != langs.end(); it++) {
+					list->push_back(new DropDownListStringItem((*it).first, (*it).second, false));
+				}
+
+				ShowDropDownList(this, list, _dynlang.curr, GAMEOPT_LANG_BTN);
+			} break;
+
+			case GAMEOPT_RESOLUTION_BTN: // Setup resolution dropdown
+				ShowDropDownMenu(this, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), GAMEOPT_RESOLUTION_BTN, 0, 0);
+				break;
+
+			case GAMEOPT_FULLSCREEN: // Click fullscreen on/off
+				/* try to toggle full-screen on/off */
+				if (!ToggleFullScreen(!_fullscreen)) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_FULLSCREEN_FAILED, 0, 0);
+				}
+				this->SetWidgetLoweredState(GAMEOPT_FULLSCREEN, _fullscreen);
+				this->SetDirty();
+				break;
+
+			case GAMEOPT_SCREENSHOT_BTN: // Setup screenshot format dropdown
+				ShowDropDownMenu(this, BuildDynamicDropdown(SPECSTR_SCREENSHOT_START, _num_screenshot_formats), _cur_screenshot_format, GAMEOPT_SCREENSHOT_BTN, 0, 0);
+				break;
+		}
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		switch (widget) {
+			case GAMEOPT_VEHICLENAME_BTN: // Vehicle design names
+				if (index == 0) {
+					DeleteCustomEngineNames();
+					MarkWholeScreenDirty();
+				} else if (!(_vehicle_design_names & 1)) {
+					LoadCustomEngineNames();
+					MarkWholeScreenDirty();
+				}
+				break;
+
+			case GAMEOPT_CURRENCY_BTN: /* Currency */
+				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
+				_opt_ptr->currency = index;
+				MarkWholeScreenDirty();
+				break;
+
+			case GAMEOPT_DISTANCE_BTN: // Measuring units
+				_opt_ptr->units = index;
+				MarkWholeScreenDirty();
+				break;
+
+			case GAMEOPT_ROADSIDE_BTN: // Road side
+				if (_opt_ptr->road_side != index) { // only change if setting changed
+					DoCommandP(0, index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+					MarkWholeScreenDirty();
+				}
+				break;
+
+			case GAMEOPT_TOWNNAME_BTN: // Town names
+				if (_game_mode == GM_MENU) {
+					_opt_ptr->town_name = index;
+					InvalidateWindow(WC_GAME_OPTIONS, 0);
+				}
+				break;
+
+			case GAMEOPT_AUTOSAVE_BTN: // Autosave options
+				_opt.autosave = _opt_newgame.autosave = index;
+				this->SetDirty();
+				break;
+
+			case GAMEOPT_LANG_BTN: // Change interface language
+				ReadLanguagePack(index);
+				CheckForMissingGlyphsInLoadedLanguagePack();
+				UpdateAllStationVirtCoord();
+				UpdateAllWaypointSigns();
+				MarkWholeScreenDirty();
+				break;
+
+			case GAMEOPT_RESOLUTION_BTN: // Change resolution
+				if (index < _num_resolutions && ChangeResInGame(_resolutions[index][0], _resolutions[index][1])) {
+					this->SetDirty();
+				}
+				break;
+
+			case GAMEOPT_SCREENSHOT_BTN: // Change screenshot format
+				SetScreenshotFormat(index);
+				this->SetDirty();
+				break;
+		}
+	}
+};
 
 /** Change the side of the road vehicles drive on (server only).
  * @param tile unused
@@ -382,14 +379,14 @@ static const WindowDesc _game_options_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,
-	GameOptionsWndProc
+	NULL
 };
 
 
 void ShowGameOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
-	new Window(&_game_options_desc);
+	new GameOptionsWindow(&_game_options_desc);
 }
 
 struct GameSettingData {
