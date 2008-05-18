@@ -74,8 +74,7 @@ Station::~Station()
 	}
 
 	MarkDirty();
-	RebuildStationLists();
-	InvalidateWindowClasses(WC_STATION_LIST);
+	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
 	DeleteWindowById(WC_STATION_VIEW, index);
 

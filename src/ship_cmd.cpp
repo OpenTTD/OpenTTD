@@ -814,7 +814,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(v);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
@@ -851,7 +851,7 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteDepotHighlightOfVehicle(v);
@@ -997,7 +997,7 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 	}
 
 	return cost;

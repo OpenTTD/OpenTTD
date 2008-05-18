@@ -18,6 +18,7 @@
 #include "order_func.h"
 #include "engine_func.h"
 #include "engine_base.h"
+#include "window_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -43,7 +44,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		found = GetLastVehicleInChain(found);
 		/* put the new wagon at the end of the loco. */
 		DoCommandP(0, _new_vehicle_id | (found->index << 16), 0, NULL, CMD_MOVE_RAIL_VEHICLE);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 }
 

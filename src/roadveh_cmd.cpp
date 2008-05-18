@@ -280,7 +280,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(v);
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Road window
@@ -381,7 +381,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		// Invalidate depot
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 		DeleteDepotHighlightOfVehicle(v);
@@ -574,7 +574,7 @@ static void DeleteLastRoadVeh(Vehicle *v)
 
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 
-	RebuildVehicleLists();
+	InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 	InvalidateWindow(WC_COMPANY, v->owner);
 
 	if (IsTileType(v->tile, MP_STATION)) ClearCrashedStation(v);
@@ -2116,7 +2116,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->cargo_subtype = new_subtype;
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-			RebuildVehicleLists();
+			InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		}
 
 		if (only_this) break;

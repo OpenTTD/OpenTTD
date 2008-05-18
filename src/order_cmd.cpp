@@ -546,7 +546,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* Make sure to rebuild the whole list */
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 0);
 	}
 
 	return CommandCost();
@@ -561,7 +561,7 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
 	if (flags & DC_EXEC) {
 		DeleteVehicleOrders(dst);
 		InvalidateVehicleOrder(dst);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 	}
 	return CommandCost();
 }
@@ -673,7 +673,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			cur_order_id++;
 		}
 
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 0);
 	}
 
 	return CommandCost();
@@ -811,7 +811,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* Make sure to rebuild the whole list */
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(GetWindowClassForVehicleType(v->type), 0);
 	}
 
 	return CommandCost();
@@ -1075,7 +1075,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				InvalidateVehicleOrder(dst);
 				InvalidateVehicleOrder(src);
 
-				RebuildVehicleLists();
+				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
 		} break;
 
@@ -1134,7 +1134,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				InvalidateVehicleOrder(dst);
 
-				RebuildVehicleLists();
+				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
 		} break;
 

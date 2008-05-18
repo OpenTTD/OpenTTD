@@ -1781,7 +1781,10 @@ static void DoAcquireCompany(Player *p)
 	p->is_active = false;
 
 	DeletePlayerWindows(pi);
-	RebuildVehicleLists(); //Updates the open windows to add the newly acquired vehicles to the lists
+	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
+	InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
+	InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
+	InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 }
 
 extern int GetAmountOwnedBy(const Player *p, PlayerID owner);

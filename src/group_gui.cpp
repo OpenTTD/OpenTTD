@@ -286,8 +286,8 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->vehicles.flags |= VL_REBUILD;
-		this->groups.flags |= VL_REBUILD;
+		this->vehicles.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+		this->groups.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
 		if (!(IsAllGroupID(this->group_sel) || IsDefaultGroupID(this->group_sel) || IsValidGroupID(this->group_sel))) {
 			this->group_sel = ALL_GROUP;
 			HideDropDownMenu(this);

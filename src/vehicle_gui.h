@@ -133,8 +133,6 @@ struct Sorting {
 extern Sorting _sorting;
 
 /* sorter stuff */
-void RebuildVehicleLists();
-void ResortVehicleLists();
 void SortVehicleList(VehicleListBase *vl);
 void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 window_type);
 

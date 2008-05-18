@@ -803,7 +803,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			}
 
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-			RebuildVehicleLists();
+			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 			InvalidateWindow(WC_COMPANY, v->owner);
 			if (IsLocalPlayer()) {
 				InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
@@ -1272,7 +1272,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			InvalidateWindow(WC_VEHICLE_DEPOT, dst_head->tile);
 		}
 
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 
 	return CommandCost();
@@ -1353,7 +1353,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
@@ -2001,7 +2001,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 					v->cargo_subtype = new_subtype;
 					InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 					InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-					RebuildVehicleLists();
+					InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 				}
 			}
 		}
@@ -2805,7 +2805,7 @@ static void SetVehicleCrashed(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 
-	RebuildVehicleLists();
+	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 
 	BEGIN_ENUM_WAGONS(v)
 		v->vehstatus |= VS_CRASHED;
@@ -3152,7 +3152,7 @@ static void DeleteLastWagon(Vehicle *v)
 		}
 	}
 
-	RebuildVehicleLists();
+	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 
 	MarkSingleVehicleDirty(v);
 

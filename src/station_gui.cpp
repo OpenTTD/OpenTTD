@@ -168,39 +168,6 @@ static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 typedef GUIList<const Station*> GUIStationList;
 
 /**
- * Set the station sort flag for all station-list windows.
- * @param sl_flag Sort list flag to set for all station-list windows
- */
-static void SetStationListsFlag(SortListFlags sl_flag)
-{
-	Window *const *wz;
-
-	FOR_ALL_WINDOWS(wz) {
-		Window *w = *wz;
-		if (w->window_class == WC_STATION_LIST) {
-			dynamic_cast<GUIStationList*>(w)->flags |= sl_flag;
-			w->SetDirty();
-		}
-	}
-}
-
-/**
- * Set the 'VL_REBUILD' flag for all station lists
- */
-void RebuildStationLists()
-{
-	SetStationListsFlag(VL_REBUILD);
-}
-
-/**
- * Set the 'VL_RESORT' flag for all station lists
- */
-void ResortStationLists()
-{
-	SetStationListsFlag(VL_RESORT);
-}
-
-/**
  * Rebuild station list if the VL_REBUILD flag is set
  *
  * @param sl pointer to plstations_d (station list and flags)
@@ -604,6 +571,11 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / 10;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		this->flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
 	}
 };
 

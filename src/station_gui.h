@@ -48,10 +48,6 @@ enum StationViewWidgets {
 	SVW_RESIZE,          ///< Resize button
 };
 
-/* sorter stuff */
-void RebuildStationLists();
-void ResortStationLists();
-
 enum StationCoverageType {
 	SCT_PASSENGERS_ONLY,
 	SCT_NON_PASSENGERS_ONLY,

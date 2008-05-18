@@ -446,7 +446,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); //updates the replace Aircraft window
@@ -461,11 +461,10 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 static void DoDeleteAircraft(Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
 	DeleteDepotHighlightOfVehicle(v);
 	DeleteVehicleChain(v);
-	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+	InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 }
 
 /** Sell an aircraft.
@@ -656,7 +655,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		RebuildVehicleLists();
+		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 	}
 
 	return cost;

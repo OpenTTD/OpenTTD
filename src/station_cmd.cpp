@@ -650,8 +650,7 @@ static void DeleteStationIfEmpty(Station *st)
 {
 	if (st->facilities == 0) {
 		st->delete_ctr = 0;
-		RebuildStationLists();
-		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 	}
 	/* station remains but it probably lost some parts - station sign should stay in the station boundaries */
 	UpdateStationSignCoord(st);
@@ -1051,8 +1050,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		st->MarkTilesDirty(false);
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
-		RebuildStationLists();
-		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 	}
 
@@ -1410,8 +1408,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
-		RebuildStationLists();
-		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
 	}
 	return cost;
@@ -1723,8 +1720,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
-		RebuildStationLists();
-		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
 	}
 
@@ -1820,8 +1816,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
-		RebuildStationLists();
-		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 	}
 
@@ -1979,8 +1974,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
-		RebuildStationLists();
-		InvalidateWindow(WC_STATION_LIST, st->owner);
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 	}
 
@@ -2637,7 +2631,7 @@ CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->name = strdup(_cmd_text);
 
 		UpdateStationVirtCoord(st);
-		ResortStationLists();
+		InvalidateWindowData(WC_STATION_LIST, st->owner, 1);
 		MarkWholeScreenDirty();
 	}
 
@@ -2858,8 +2852,7 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 
 		SetTileOwner(tile, new_player);
 		if (!IsBuoy(tile)) st->owner = new_player; // do not set st->owner for buoys
-		RebuildStationLists();
-		InvalidateWindowClasses(WC_STATION_LIST);
+		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	} else {
 		if (IsDriveThroughStopTile(tile)) {
 			/* Remove the drive-through road stop */

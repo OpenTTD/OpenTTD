@@ -86,47 +86,6 @@ const StringID _vehicle_sort_listing[] = {
 	INVALID_STRING_ID
 };
 
-/**
- * Set sort list flag for all vehicle list windows
- * @param sl_flag Sort list flag to set
- */
-static void SetVehicleListsFlag(SortListFlags sl_flag)
-{
-	Window* const *wz;
-
-	FOR_ALL_WINDOWS(wz) {
-		Window *w = *wz;
-
-		switch (w->window_class) {
-			case WC_TRAINS_LIST:
-			case WC_ROADVEH_LIST:
-			case WC_SHIPS_LIST:
-			case WC_AIRCRAFT_LIST:
-				dynamic_cast<VehicleListBase*>(w)->vehicles.flags |= sl_flag;
-				w->SetDirty();
-				break;
-
-			default: break;
-		}
-	}
-}
-
-/**
- * Rebuild all vehicle list windows
- */
-void RebuildVehicleLists()
-{
-	SetVehicleListsFlag(VL_REBUILD);
-}
-
-/**
- * Resort all vehicle list windows
- */
-void ResortVehicleLists()
-{
-	SetVehicleListsFlag(VL_RESORT);
-}
-
 void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 window_type)
 {
 	if (!(vl->vehicles.flags & VL_REBUILD)) return;
@@ -1186,6 +1145,11 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 		this->widget[VLW_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		this->vehicles.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
 	}
 };
 

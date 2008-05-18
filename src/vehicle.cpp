@@ -1733,7 +1733,7 @@ CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		free(v->name);
 		v->name = strdup(_cmd_text);
-		ResortVehicleLists();
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 1);
 		MarkWholeScreenDirty();
 	}
 
