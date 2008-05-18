@@ -95,7 +95,7 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 
 		case WE_PLACE_MOUSEUP:
 			if (e->we.place.pt.x != -1 && e->we.place.select_proc == DDSP_DEMOLISH_AREA) {
-				GUIPlaceProcDragXY(e);
+				GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
 			}
 			break;
 

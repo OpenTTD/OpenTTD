@@ -110,12 +110,9 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
  * allows for additional implements that are more local. For example X_Y drag
  * of convertrail which belongs in rail_gui.cpp and not terraform_gui.cpp
  **/
-bool GUIPlaceProcDragXY(const WindowEvent *e)
+bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
-	TileIndex start_tile = e->we.place.starttile;
-	TileIndex end_tile = e->we.place.tile;
-
-	switch (e->we.place.select_proc) {
+	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
 			DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 			break;
@@ -267,11 +264,12 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 	case WE_PLACE_MOUSEUP:
 		if (e->we.place.pt.x != -1) {
 			switch (e->we.place.select_proc) {
+				default: NOT_REACHED();
 				case DDSP_DEMOLISH_AREA:
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
-					GUIPlaceProcDragXY(e);
+					GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
 					break;
 			}
 		}
@@ -655,6 +653,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		case WE_PLACE_MOUSEUP:
 			if (e->we.place.pt.x != -1) {
 				switch (e->we.place.select_proc) {
+					default: NOT_REACHED();
 					case DDSP_CREATE_ROCKS:
 					case DDSP_CREATE_DESERT:
 					case DDSP_CREATE_WATER:
@@ -663,7 +662,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 					case DDSP_LOWER_AND_LEVEL_AREA:
 					case DDSP_LEVEL_AREA:
 					case DDSP_DEMOLISH_AREA:
-						GUIPlaceProcDragXY(e);
+						GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
 						break;
 				}
 			}

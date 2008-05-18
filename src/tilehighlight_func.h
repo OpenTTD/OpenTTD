@@ -12,7 +12,7 @@
 
 typedef void PlaceProc(TileIndex tile);
 void PlaceProc_DemolishArea(TileIndex tile);
-bool GUIPlaceProcDragXY(const WindowEvent *e);
+bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile);
 
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, ViewportHighlightMode mode, PlaceProc *placeproc);
 void SetObjectToPlaceWnd(CursorID icon, SpriteID pal, ViewportHighlightMode mode, Window *w);

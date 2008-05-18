@@ -571,7 +571,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 						break;
 
 					case DDSP_DEMOLISH_AREA:
-						GUIPlaceProcDragXY(e);
+						GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
 						break;
 
 					case DDSP_PLACE_ROAD_X_DIR:

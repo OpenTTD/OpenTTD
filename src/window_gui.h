@@ -20,8 +20,6 @@
  */
 static const int MAX_NUMBER_OF_WINDOWS = 25;
 
-typedef void WindowProc(Window *w, WindowEvent *e);
-
 /* How the resize system works:
     First, you need to add a WWT_RESIZEBOX to the widgets, and you need
      to add the flag WDF_RESIZABLE to the window. Now the window is ready
@@ -147,7 +145,7 @@ struct WindowEvent {
 			TileIndex tile;
 			TileIndex starttile;
 			ViewportPlaceMethod select_method;
-			byte select_proc;
+			ViewportDragDropSelectionProcess select_proc;
 		} place;
 
 		struct {
@@ -184,6 +182,8 @@ struct WindowEvent {
 		} ctrl;
 	} we;
 };
+
+typedef void WindowProc(Window *w, WindowEvent *e);
 
 /**
  * High level window description
@@ -482,7 +482,7 @@ public:
 	 * @param select_proc   what will be created when the drag is over.
 	 * @param pt            the exact point on the map where the mouse is.
 	 */
-	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, byte select_proc, Point pt);
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt);
 
 	/**
 	 * The user has dragged over the map when the tile highlight mode
@@ -493,7 +493,7 @@ public:
 	 * @param start_tile    the begin tile of the drag.
 	 * @param end_tile      the end tile of the drag.
 	 */
-	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, byte select_proc, Point pt, TileIndex start_tile, TileIndex end_tile);
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile);
 
 	/**
 	 * The user moves over the map when a tile highlight mode has been set

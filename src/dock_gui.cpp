@@ -162,7 +162,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		if (e->we.place.pt.x != -1) {
 			switch (e->we.place.select_proc) {
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(e);
+					GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
 					break;
 				case DDSP_CREATE_WATER:
 					DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));

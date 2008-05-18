@@ -178,7 +178,7 @@ void Window::OnPlaceObjectAbort()
 }
 
 
-void Window::OnPlaceDrag(ViewportPlaceMethod select_method, byte select_proc, Point pt)
+void Window::OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
 {
 	WindowEvent e;
 	e.event = WE_PLACE_DRAG;
@@ -188,7 +188,7 @@ void Window::OnPlaceDrag(ViewportPlaceMethod select_method, byte select_proc, Po
 	this->HandleWindowEvent(&e);
 }
 
-void Window::OnPlaceMouseUp(ViewportPlaceMethod select_method, byte select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+void Window::OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
 {
 	WindowEvent e;
 	e.event = WE_PLACE_MOUSEUP;

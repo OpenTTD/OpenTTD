@@ -99,7 +99,6 @@ enum WindowClass {
 };
 
 struct Window;
-struct WindowEvent;
 typedef int32 WindowNumber;
 
 #endif /* WINDOW_TYPE_H */

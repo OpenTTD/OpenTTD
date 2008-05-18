@@ -610,6 +610,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 			TileIndex end_tile = e->we.place.tile;
 
 			switch (e->we.place.select_proc) {
+				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype);
@@ -624,7 +625,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DDSP_DEMOLISH_AREA:
-					GUIPlaceProcDragXY(e);
+					GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
 					break;
 
 				case DDSP_CONVERT_RAIL:
