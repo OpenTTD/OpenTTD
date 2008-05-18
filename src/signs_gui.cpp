@@ -170,6 +170,7 @@ struct SignWindow : QueryStringBaseWindow {
 		this->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 
 		UpdateSignEditWindow(si);
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~SignWindow()

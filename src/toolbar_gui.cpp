@@ -666,137 +666,155 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarHelpClick,
 };
 
-static void MainToolbarWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			/* Draw brown-red toolbar bg. */
-			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB2);
-			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+struct MainToolbarWindow : Window {
+	MainToolbarWindow(const WindowDesc *desc) : Window(desc)
+	{
+		this->SetWidgetDisabledState(0, _networking && !_network_server); // if not server, disable pause button
+		this->SetWidgetDisabledState(1, _networking); // if networking, disable fast-forward button
 
-			/* If spectator, disable all construction buttons
-			* ie : Build road, rail, ships, airports and landscaping
-			* Since enabled state is the default, just disable when needed */
-			w->SetWidgetsDisabledState(_current_player == PLAYER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
-			/* disable company list drop downs, if there are no companies */
-			w->SetWidgetsDisabledState(ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 
-			w->SetWidgetDisabledState(19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
-			w->SetWidgetDisabledState(22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
-
-			w->DrawWidgets();
-			break;
-
-		case WE_CLICK:
-			if (_game_mode != GM_MENU && !w->IsWidgetDisabled(e->we.click.widget)) _toolbar_button_procs[e->we.click.widget](w);
-			break;
-
-		case WE_KEYPRESS:
-			switch (e->we.keypress.keycode) {
-				case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(w); break;
-				case WKC_F2: ShowGameOptions(); break;
-				case WKC_F3: MenuClickSaveLoad(0); break;
-				case WKC_F4: ShowSmallMap(); break;
-				case WKC_F5: ShowTownDirectory(); break;
-				case WKC_F6: ShowSubsidiesList(); break;
-				case WKC_F7: ShowPlayerStations(_local_player); break;
-				case WKC_F8: ShowPlayerFinances(_local_player); break;
-				case WKC_F9: ShowPlayerCompany(_local_player); break;
-				case WKC_F10: ShowOperatingProfitGraph(); break;
-				case WKC_F11: ShowCompanyLeagueTable(); break;
-				case WKC_F12: ShowBuildIndustryWindow(); break;
-				case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, VEH_TRAIN); break;
-				case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_ROAD); break;
-				case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_SHIP); break;
-				case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_AIRCRAFT); break;
-				case WKC_NUM_PLUS: // Fall through
-				case WKC_EQUALS: // Fall through
-				case WKC_SHIFT | WKC_EQUALS: // Fall through
-				case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
-				case WKC_NUM_MINUS: // Fall through
-				case WKC_MINUS: // Fall through
-				case WKC_SHIFT | WKC_MINUS: // Fall through
-				case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
-				case WKC_SHIFT | WKC_F7: if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, -1); break;
-				case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(_last_built_roadtype); break;
-				case WKC_SHIFT | WKC_F9: ShowBuildDocksToolbar(); break;
-				case WKC_SHIFT | WKC_F10: if (CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) ShowBuildAirToolbar(); break;
-				case WKC_SHIFT | WKC_F11: ShowBuildTreesToolbar(); break;
-				case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
-				case WKC_CTRL  | 'S': MenuClickSmallScreenshot(); break;
-				case WKC_CTRL  | 'G': MenuClickWorldScreenshot(); break;
-				case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
-				case 'A': if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, 4); break; // Invoke Autorail
-				case 'L': ShowTerraformToolbar(); break;
-				case 'M': ShowSmallMap(); break;
-				case 'V': ShowExtraViewPortWindow(); break;
-				default: return;
-			}
-			e->we.keypress.cont = false;
-			break;
-
-		case WE_PLACE_OBJ:
-			_place_proc(e->we.place.tile);
-			break;
-
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseWidget(25);
-			w->SetDirty();
-			break;
-
-		case WE_TICK:
-			if (w->IsWidgetLowered(0) != !!_pause_game) {
-				w->ToggleWidgetLoweredState(0);
-				w->InvalidateWidget(0);
-			}
-
-			if (w->IsWidgetLowered(1) != !!_fast_forward) {
-				w->ToggleWidgetLoweredState(1);
-				w->InvalidateWidget(1);
-			}
-			break;
-
-		case WE_RESIZE: {
-			/* There are 27 buttons plus some spacings if the space allows it */
-			uint button_width;
-			uint spacing;
-			if (w->width >= 27 * 22) {
-				button_width = 22;
-				spacing = w->width - (27 * button_width);
-			} else {
-				button_width = w->width / 27;
-				spacing = 0;
-			}
-			uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
-
-			for (uint i = 0, x = 0, j = 0; i < 27; i++) {
-				if (extra_spacing_at[j] == i) {
-					j++;
-					uint add = spacing / (lengthof(extra_spacing_at) - j);
-					spacing -= add;
-					x += add;
-				}
-
-				w->widget[i].left = x;
-				x += (spacing != 0) ? button_width : (w->width - x) / (27 - i);
-				w->widget[i].right = x - 1;
-			}
-		} break;
-
-		case WE_TIMEOUT:
-			for (uint i = 2; i < w->widget_count; i++) {
-				if (w->IsWidgetLowered(i)) {
-					w->RaiseWidget(i);
-					w->InvalidateWidget(i);
-				}
-			}
-			break;
-
-		case WE_INVALIDATE_DATA:
-			if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
-			break;
+		PositionMainToolbar(this);
+		DoZoomInOutWindow(ZOOM_NONE, this);
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		/* Draw brown-red toolbar bg. */
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+
+		/* If spectator, disable all construction buttons
+		* ie : Build road, rail, ships, airports and landscaping
+		* Since enabled state is the default, just disable when needed */
+		this->SetWidgetsDisabledState(_current_player == PLAYER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
+		/* disable company list drop downs, if there are no companies */
+		this->SetWidgetsDisabledState(ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
+
+		this->SetWidgetDisabledState(19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
+		this->SetWidgetDisabledState(22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
+
+		this->DrawWidgets();
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(this); break;
+			case WKC_F2: ShowGameOptions(); break;
+			case WKC_F3: MenuClickSaveLoad(0); break;
+			case WKC_F4: ShowSmallMap(); break;
+			case WKC_F5: ShowTownDirectory(); break;
+			case WKC_F6: ShowSubsidiesList(); break;
+			case WKC_F7: ShowPlayerStations(_local_player); break;
+			case WKC_F8: ShowPlayerFinances(_local_player); break;
+			case WKC_F9: ShowPlayerCompany(_local_player); break;
+			case WKC_F10: ShowOperatingProfitGraph(); break;
+			case WKC_F11: ShowCompanyLeagueTable(); break;
+			case WKC_F12: ShowBuildIndustryWindow(); break;
+			case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, VEH_TRAIN); break;
+			case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_ROAD); break;
+			case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_SHIP); break;
+			case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_AIRCRAFT); break;
+			case WKC_NUM_PLUS: // Fall through
+			case WKC_EQUALS: // Fall through
+			case WKC_SHIFT | WKC_EQUALS: // Fall through
+			case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(this); break;
+			case WKC_NUM_MINUS: // Fall through
+			case WKC_MINUS: // Fall through
+			case WKC_SHIFT | WKC_MINUS: // Fall through
+			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
+			case WKC_SHIFT | WKC_F7: if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, -1); break;
+			case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(_last_built_roadtype); break;
+			case WKC_SHIFT | WKC_F9: ShowBuildDocksToolbar(); break;
+			case WKC_SHIFT | WKC_F10: if (CanBuildVehicleInfrastructure(VEH_AIRCRAFT)) ShowBuildAirToolbar(); break;
+			case WKC_SHIFT | WKC_F11: ShowBuildTreesToolbar(); break;
+			case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
+			case WKC_CTRL  | 'S': MenuClickSmallScreenshot(); break;
+			case WKC_CTRL  | 'G': MenuClickWorldScreenshot(); break;
+			case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
+			case 'A': if (CanBuildVehicleInfrastructure(VEH_TRAIN)) ShowBuildRailToolbar(_last_built_railtype, 4); break; // Invoke Autorail
+			case 'L': ShowTerraformToolbar(); break;
+			case 'M': ShowSmallMap(); break;
+			case 'V': ShowExtraViewPortWindow(); break;
+			default: return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseWidget(25);
+		this->SetDirty();
+	}
+
+	virtual void OnTick()
+	{
+		if (this->IsWidgetLowered(0) != !!_pause_game) {
+			this->ToggleWidgetLoweredState(0);
+			this->InvalidateWidget(0);
+		}
+
+		if (this->IsWidgetLowered(1) != !!_fast_forward) {
+			this->ToggleWidgetLoweredState(1);
+			this->InvalidateWidget(1);
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		/* There are 27 buttons plus some spacings if the space allows it */
+		uint button_width;
+		uint spacing;
+		if (this->width >= 27 * 22) {
+			button_width = 22;
+			spacing = this->width - (27 * button_width);
+		} else {
+			button_width = this->width / 27;
+			spacing = 0;
+		}
+		uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
+
+		for (uint i = 0, x = 0, j = 0; i < 27; i++) {
+			if (extra_spacing_at[j] == i) {
+				j++;
+				uint add = spacing / (lengthof(extra_spacing_at) - j);
+				spacing -= add;
+				x += add;
+			}
+
+			this->widget[i].left = x;
+			x += (spacing != 0) ? button_width : (this->width - x) / (27 - i);
+			this->widget[i].right = x - 1;
+		}
+	}
+
+	virtual void OnTimeout()
+	{
+		for (uint i = 2; i < this->widget_count; i++) {
+			if (this->IsWidgetLowered(i)) {
+				this->RaiseWidget(i);
+				this->InvalidateWidget(i);
+			}
+		}
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
+	}
+};
 
 static const Widget _toolb_normal_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_LEFT,    14,     0,     0,     0,    21, SPR_IMG_PAUSE,           STR_0171_PAUSE_GAME},
@@ -840,7 +858,7 @@ static const WindowDesc _toolb_normal_desc = {
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_toolb_normal_widgets,
-	MainToolbarWndProc
+	NULL
 };
 
 
@@ -876,163 +894,176 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarHelpClick,
 };
 
-static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT:
-			w->SetWidgetDisabledState(6, _patches_newgame.starting_year <= MIN_YEAR);
-			w->SetWidgetDisabledState(7, _patches_newgame.starting_year >= MAX_YEAR);
+struct ScenarioEditorToolbarWindow : Window {
+	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window(desc)
+	{
+		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 
-			/* Draw brown-red toolbar bg. */
-			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB2);
-			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
-
-			w->DrawWidgets();
-
-			SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
-			DrawStringCenteredTruncated(w->widget[6].right, w->widget[7].left, 6, STR_00AF, TC_FROMSTRING);
-
-			/* We hide this panel when the toolbar space gets too small */
-			if (w->widget[4].left != w->widget[4].right) {
-				DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING);
-				DrawStringCenteredTruncated(w->widget[4].left + 1, w->widget[4].right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING);
-			}
-
-			break;
-
-		case WE_CLICK:
-			if (_game_mode == GM_MENU) return;
-			_scen_toolbar_button_procs[e->we.click.widget](w);
-			break;
-
-		case WE_KEYPRESS:
-			switch (e->we.keypress.keycode) {
-				case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(w); break;
-				case WKC_F2: ShowGameOptions(); break;
-				case WKC_F3: MenuClickSaveLoad(0); break;
-				case WKC_F4: ToolbarScenGenLand(w); break;
-				case WKC_F5: ToolbarScenGenTown(w); break;
-				case WKC_F6: ToolbarScenGenIndustry(w); break;
-				case WKC_F7: ToolbarScenBuildRoad(w); break;
-				case WKC_F8: ToolbarScenPlantTrees(w); break;
-				case WKC_F9: ToolbarScenPlaceSign(w); break;
-				case WKC_F10: ShowMusicWindow(); break;
-				case WKC_F11: PlaceLandBlockInfo(); break;
-				case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
-				case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
-
-				/* those following are all fall through */
-				case WKC_NUM_PLUS:
-				case WKC_EQUALS:
-				case WKC_SHIFT | WKC_EQUALS:
-				case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
-
-				/* those following are all fall through */
-				case WKC_NUM_MINUS:
-				case WKC_MINUS:
-				case WKC_SHIFT | WKC_MINUS:
-				case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
-
-				case 'L': ShowEditorTerraformToolbar(); break;
-				case 'M': ShowSmallMap(); break;
-				case 'V': ShowExtraViewPortWindow(); break;
-				default: return;
-			}
-			e->we.keypress.cont = false;
-			break;
-
-		case WE_PLACE_OBJ:
-			_place_proc(e->we.place.tile);
-			break;
-
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseWidget(25);
-			w->SetDirty();
-			break;
-
-		case WE_RESIZE: {
-			/* There are 15 buttons plus some spacings if the space allows it.
-			* Furthermore there are two panels of which one is non - essential
-			* and that one can be removed is the space is too small. */
-			uint buttons_width;
-			uint spacing;
-
-			static int normal_min_width = (15 * 22) + (2 * 130);
-			static int one_less_panel_min_width = (15 * 22) + 130;
-
-			if (w->width >= one_less_panel_min_width) {
-				buttons_width = 15 * 22;
-				spacing = w->width - ((w->width >= normal_min_width) ? normal_min_width : one_less_panel_min_width);
-			} else {
-				buttons_width = w->width - 130;
-				spacing = 0;
-			}
-			uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
-
-			/* Yes, it defines about 27 widgets for this toolbar */
-			for (uint i = 0, x = 0, j = 0, b = 0; i < 27; i++) {
-				switch (i) {
-					case 4:
-						w->widget[i].left = x;
-						if (w->width < normal_min_width) {
-							w->widget[i].right = x;
-							j++;
-							continue;
-						}
-
-						x += 130;
-						w->widget[i].right = x - 1;
-						break;
-
-					case 5: {
-						int offset = x - w->widget[i].left;
-						w->widget[i + 1].left  += offset;
-						w->widget[i + 1].right += offset;
-						w->widget[i + 2].left  += offset;
-						w->widget[i + 2].right += offset;
-						w->widget[i].left = x;
-						x += 130;
-						w->widget[i].right = x - 1;
-						i += 2;
-					} break;
-
-					default:
-						if (w->widget[i].bottom == 0) continue;
-
-						w->widget[i].left = x;
-						x += buttons_width / (15 - b);
-						w->widget[i].right = x - 1;
-						buttons_width -= buttons_width / (15 - b);
-						b++;
-						break;
-				}
-
-				if (extra_spacing_at[j] == i) {
-					j++;
-					uint add = spacing / (lengthof(extra_spacing_at) - j);
-					spacing -= add;
-					x += add;
-				}
-			}
-		} break;
-
-		case WE_TICK:
-			if (w->IsWidgetLowered(0) != !!_pause_game) {
-				w->ToggleWidgetLoweredState(0);
-				w->SetDirty();
-			}
-
-			if (w->IsWidgetLowered(1) != !!_fast_forward) {
-				w->ToggleWidgetLoweredState(1);
-				w->SetDirty();
-			}
-			break;
-
-		case WE_INVALIDATE_DATA:
-			HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 9, 10);
-			break;
+		PositionMainToolbar(this);
+		DoZoomInOutWindow(ZOOM_NONE, this);
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		this->SetWidgetDisabledState(6, _patches_newgame.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(7, _patches_newgame.starting_year >= MAX_YEAR);
+
+		/* Draw brown-red toolbar bg. */
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+
+		this->DrawWidgets();
+
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
+		DrawStringCenteredTruncated(this->widget[6].right, this->widget[7].left, 6, STR_00AF, TC_FROMSTRING);
+
+		/* We hide this panel when the toolbar space gets too small */
+		if (this->widget[4].left != this->widget[4].right) {
+			DrawStringCenteredTruncated(this->widget[4].left + 1, this->widget[4].right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING);
+			DrawStringCenteredTruncated(this->widget[4].left + 1, this->widget[4].right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (_game_mode == GM_MENU) return;
+		_scen_toolbar_button_procs[widget](this);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		switch (keycode) {
+			case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(this); break;
+			case WKC_F2: ShowGameOptions(); break;
+			case WKC_F3: MenuClickSaveLoad(0); break;
+			case WKC_F4: ToolbarScenGenLand(this); break;
+			case WKC_F5: ToolbarScenGenTown(this); break;
+			case WKC_F6: ToolbarScenGenIndustry(this); break;
+			case WKC_F7: ToolbarScenBuildRoad(this); break;
+			case WKC_F8: ToolbarScenPlantTrees(this); break;
+			case WKC_F9: ToolbarScenPlaceSign(this); break;
+			case WKC_F10: ShowMusicWindow(); break;
+			case WKC_F11: PlaceLandBlockInfo(); break;
+			case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
+			case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
+
+			/* those following are all fall through */
+			case WKC_NUM_PLUS:
+			case WKC_EQUALS:
+			case WKC_SHIFT | WKC_EQUALS:
+			case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(this); break;
+
+			/* those following are all fall through */
+			case WKC_NUM_MINUS:
+			case WKC_MINUS:
+			case WKC_SHIFT | WKC_MINUS:
+			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
+
+			case 'L': ShowEditorTerraformToolbar(); break;
+			case 'M': ShowSmallMap(); break;
+			case 'V': ShowExtraViewPortWindow(); break;
+			default: return ES_NOT_HANDLED;
+		}
+		return ES_HANDLED;
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseWidget(25);
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		/* There are 15 buttons plus some spacings if the space allows it.
+		 * Furthermore there are two panels of which one is non - essential
+		 * and that one can be removed is the space is too small. */
+		uint buttons_width;
+		uint spacing;
+
+		static int normal_min_width = (15 * 22) + (2 * 130);
+		static int one_less_panel_min_width = (15 * 22) + 130;
+
+		if (this->width >= one_less_panel_min_width) {
+			buttons_width = 15 * 22;
+			spacing = this->width - ((this->width >= normal_min_width) ? normal_min_width : one_less_panel_min_width);
+		} else {
+			buttons_width = this->width - 130;
+			spacing = 0;
+		}
+		uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
+
+		/* Yes, it defines about 27 widgets for this toolbar */
+		for (uint i = 0, x = 0, j = 0, b = 0; i < 27; i++) {
+			switch (i) {
+				case 4:
+					this->widget[i].left = x;
+					if (this->width < normal_min_width) {
+						this->widget[i].right = x;
+						j++;
+						continue;
+					}
+
+					x += 130;
+					this->widget[i].right = x - 1;
+					break;
+
+				case 5: {
+					int offset = x - this->widget[i].left;
+					this->widget[i + 1].left  += offset;
+					this->widget[i + 1].right += offset;
+					this->widget[i + 2].left  += offset;
+					this->widget[i + 2].right += offset;
+					this->widget[i].left = x;
+					x += 130;
+					this->widget[i].right = x - 1;
+					i += 2;
+				} break;
+
+				default:
+					if (this->widget[i].bottom == 0) continue;
+
+					this->widget[i].left = x;
+					x += buttons_width / (15 - b);
+					this->widget[i].right = x - 1;
+					buttons_width -= buttons_width / (15 - b);
+					b++;
+					break;
+			}
+
+			if (extra_spacing_at[j] == i) {
+				j++;
+				uint add = spacing / (lengthof(extra_spacing_at) - j);
+				spacing -= add;
+				x += add;
+			}
+		}
+	}
+
+	virtual void OnTick()
+	{
+		if (this->IsWidgetLowered(0) != !!_pause_game) {
+			this->ToggleWidgetLoweredState(0);
+			this->SetDirty();
+		}
+
+		if (this->IsWidgetLowered(1) != !!_fast_forward) {
+			this->ToggleWidgetLoweredState(1);
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
+	}
+};
 
 static const Widget _toolb_scen_widgets[] = {
 {  WWT_IMGBTN, RESIZE_LEFT, 14,   0,   0,  0, 21, SPR_IMG_PAUSE,       STR_0171_PAUSE_GAME},
@@ -1076,7 +1107,7 @@ static const WindowDesc _toolb_scen_desc = {
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
-	ScenEditToolbarWndProc
+	NULL
 };
 
 /* --- Rendering/handling the drop down menus --- */
@@ -1432,15 +1463,9 @@ void AllocateToolbar()
 	/* Clean old GUI values; railtype is (re)set by rail_gui.cpp */
 	_last_built_roadtype = ROADTYPE_ROAD;
 
-	Window *w = new Window((_game_mode != GM_EDITOR) ? &_toolb_normal_desc : &_toolb_scen_desc);
-	assert(w != NULL);
-
-	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
-
-	w->SetWidgetDisabledState(0, _networking && !_network_server); // if not server, disable pause button
-	w->SetWidgetDisabledState(1, _networking); // if networking, disable fast-forward button
-
-	/* 'w' is for sure a WC_MAIN_TOOLBAR */
-	PositionMainToolbar(w);
-	DoZoomInOutWindow(ZOOM_NONE, w);
+	if (_game_mode == GM_EDITOR) {
+		new ScenarioEditorToolbarWindow(&_toolb_scen_desc);;
+	} else {
+		new MainToolbarWindow(&_toolb_normal_desc);
+	}
 }
