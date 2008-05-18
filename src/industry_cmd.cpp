@@ -55,9 +55,6 @@ static TileIndex _industry_sound_tile;
 int _total_industries;                      //general counter
 uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
 
-const Industry **_industry_sort;
-bool _industry_sort_dirty;
-
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];
 
@@ -168,12 +165,11 @@ Industry::~Industry()
 		} END_TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiff(21, 21))
 	}
 
-	_industry_sort_dirty = true;
 	DecIndustryTypeCount(this->type);
 
 	DeleteSubsidyWithIndustry(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
-	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
+	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 	this->xy = 0;
 }
 
@@ -1556,8 +1552,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	if (GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_PLANT_ON_BUILT) {
 		for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
-	_industry_sort_dirty = true;
-	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
+	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
 }
 
 /** Helper function for Build/Fund an industry
@@ -2240,8 +2235,7 @@ void IndustryMonthlyLoop()
 	_current_player = old_player;
 
 	/* production-change */
-	_industry_sort_dirty = true;
-	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
+	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 1);
 }
 
 
@@ -2251,7 +2245,6 @@ void InitializeIndustries()
 	_Industry_pool.AddBlockToPool();
 
 	ResetIndustryCounts();
-	_industry_sort_dirty = true;
 	_industry_sound_tile = 0;
 }
 

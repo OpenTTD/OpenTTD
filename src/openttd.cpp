@@ -283,7 +283,6 @@ static void InitializeDynamicVariables()
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_town_sort     = NULL;
-	_industry_sort = NULL;
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
 }
@@ -320,7 +319,6 @@ static void ShutdownGame()
 	_Engine_pool.CleanPool();
 
 	free((void*)_town_sort);
-	free((void*)_industry_sort);
 
 	free(_config_file);
 

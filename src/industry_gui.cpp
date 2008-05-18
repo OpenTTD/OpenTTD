@@ -26,6 +26,7 @@
 #include "settings_type.h"
 #include "tilehighlight_func.h"
 #include "string_func.h"
+#include "sortlist_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -697,7 +698,7 @@ enum IndustryDirectoryWidgets {
 	IDW_SORTBYPROD,
 	IDW_SORTBYTRANSPORT,
 	IDW_SPACER,
-	IDW_INDUSRTY_LIST,
+	IDW_INDUSTRY_LIST,
 	IDW_SCROLLBAR,
 	IDW_RESIZE,
 };
@@ -718,12 +719,9 @@ static const Widget _industry_directory_widgets[] = {
 {   WIDGETS_END},
 };
 
-static uint _num_industry_sort;
-
 static char _bufcache[96];
 static const Industry* _last_industry;
-
-static byte _industry_sort_order;
+static int _internal_sort_order;
 
 static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
@@ -731,7 +729,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 	const Industry* j = *(const Industry**)b;
 	int r;
 
-	switch (_industry_sort_order >> 1) {
+	switch (_internal_sort_order >> 1) {
 		default: NOT_REACHED();
 		case 0: /* Sort by Name (handled later) */
 			r = 0;
@@ -798,138 +796,169 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		r = strcmp(buf1, _bufcache);
 	}
 
-	if (_industry_sort_order & 1) r = -r;
+	if (_internal_sort_order & 1) r = -r;
 	return r;
 }
 
+typedef GUIList<const Industry*> GUIIndustryList;
+
 /**
- * Makes a sorted industry list.
- * When there are no industries, the list has to be made. This so when one
- * starts a new game without industries after playing a game with industries
- * the list is not populated with invalid industries from the previous game.
+ * Rebuild industries list if the VL_REBUILD flag is set
+ *
+ * @param sl pointer to industry list
  */
-static void MakeSortedIndustryList()
+static void BuildIndustriesList(GUIIndustryList *sl)
 {
-	const Industry* i;
-	int n = 0;
+	uint n = 0;
+	const Industry *i;
+
+	if (!(sl->flags & VL_REBUILD)) return;
 
 	/* Create array for sorting */
-	_industry_sort = ReallocT(_industry_sort, GetMaxIndustryIndex() + 1);
+	const Industry **industry_sort = MallocT<const Industry*>(GetMaxIndustryIndex() + 1);
 
-	/* Don't attempt a sort if there are no industries */
-	if (GetNumIndustries() != 0) {
-		FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;
-		qsort((void*)_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
-	}
+	DEBUG(misc, 3, "Building industry list");
 
-	_num_industry_sort = n;
-	_last_industry = NULL; // used for "cache"
+	FOR_ALL_INDUSTRIES(i) industry_sort[n++] = i;
 
-	DEBUG(misc, 3, "Resorting industries list");
+	free((void*)sl->sort_list);
+	sl->sort_list = MallocT<const Industry*>(n);
+	sl->list_length = n;
+
+	for (uint i = 0; i < n; ++i) sl->sort_list[i] = industry_sort[i];
+
+	sl->flags &= ~VL_REBUILD;
+	sl->flags |= VL_RESORT;
+	free((void*)industry_sort);
 }
 
 
-static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
+/**
+ * Sort industry list if the VL_RESORT flag is set
+ *
+ * @param sl pointer to industry list
+ */
+static void SortIndustriesList(GUIIndustryList *sl)
 {
-	switch (e->event) {
-		case WE_PAINT: {
-			if (_industry_sort_dirty) {
-				_industry_sort_dirty = false;
-				MakeSortedIndustryList();
-			}
+	if (!(sl->flags & VL_RESORT)) return;
 
-			SetVScrollCount(w, _num_industry_sort);
+	_internal_sort_order = (sl->sort_type << 1) | (sl->flags & VL_DESC);
+	_last_industry = NULL; // used for "cache" in namesorting
+	qsort((void*)sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), &GeneralIndustrySorter);
 
-			w->DrawWidgets();
-			w->DrawSortButtonState(IDW_SORTBYNAME + (_industry_sort_order >> 1), _industry_sort_order & 1 ? SBS_DOWN : SBS_UP);
-
-			uint pos = w->vscroll.pos;
-			int n = 0;
-
-			while (pos < _num_industry_sort) {
-				const Industry* i = _industry_sort[pos];
-				const IndustrySpec *indsp = GetIndustrySpec(i->type);
-				byte p = 0;
-
-				/* Industry name */
-				SetDParam(p++, i->index);
-
-				/* Industry productions */
-				for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-					if (i->produced_cargo[j] == CT_INVALID) continue;
-					SetDParam(p++, i->produced_cargo[j]);
-					SetDParam(p++, i->last_month_production[j]);
-					SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, (Industry*)i, i->type, indsp));
-				}
-
-				/* Transported productions */
-				for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
-					if (i->produced_cargo[j] == CT_INVALID) continue;
-					SetDParam(p++, i->last_month_pct_transported[j] * 100 >> 8);
-				}
-
-				/* Drawing the right string */
-				StringID str = STR_INDUSTRYDIR_ITEM_NOPROD;
-				if (p != 1) str = (p == 5) ? STR_INDUSTRYDIR_ITEM : STR_INDUSTRYDIR_ITEM_TWO;
-				DrawStringTruncated(4, 28 + n * 10, str, TC_FROMSTRING, w->widget[IDW_INDUSRTY_LIST].right - 4);
-
-				pos++;
-				if (++n == w->vscroll.cap) break;
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case IDW_SORTBYNAME: {
-					_industry_sort_order = _industry_sort_order == 0 ? 1 : 0;
-					_industry_sort_dirty = true;
-					w->SetDirty();
-				} break;
-
-				case IDW_SORTBYTYPE: {
-					_industry_sort_order = _industry_sort_order == 2 ? 3 : 2;
-					_industry_sort_dirty = true;
-					w->SetDirty();
-				} break;
-
-				case IDW_SORTBYPROD: {
-					_industry_sort_order = _industry_sort_order == 4 ? 5 : 4;
-					_industry_sort_dirty = true;
-					w->SetDirty();
-				} break;
-
-				case IDW_SORTBYTRANSPORT: {
-					_industry_sort_order = _industry_sort_order == 6 ? 7 : 6;
-					_industry_sort_dirty = true;
-					w->SetDirty();
-				} break;
-
-				case IDW_INDUSRTY_LIST: {
-					int y = (e->we.click.pt.y - 28) / 10;
-					uint16 p;
-
-					if (!IsInsideMM(y, 0, w->vscroll.cap)) return;
-					p = y + w->vscroll.pos;
-					if (p < _num_industry_sort) {
-						if (_ctrl_pressed) {
-							ShowExtraViewPortWindow(_industry_sort[p]->xy);
-						} else {
-							ScrollMainWindowToTile(_industry_sort[p]->xy);
-						}
-					}
-				} break;
-			}
-			break;
-
-		case WE_100_TICKS:
-			w->SetDirty();
-			break;
-
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / 10;
-			break;
-	}
+	sl->flags &= ~VL_RESORT;
 }
+
+/**
+ * The list of industries.
+ */
+struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
+	static Listing industry_sort;
+
+	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
+	{
+		this->vscroll.cap = 16;
+		this->resize.height = this->height - 6 * 10; // minimum 10 items
+		this->resize.step_height = 10;
+		this->FindWindowPlacementAndResize(desc);
+
+		this->sort_list = NULL;
+		this->flags = VL_REBUILD;
+		this->sort_type = industry_sort.criteria;
+		if (industry_sort.order) this->flags |= VL_DESC;
+	}
+
+	virtual void OnPaint()
+	{
+		BuildIndustriesList(this);
+		SortIndustriesList(this);
+
+		SetVScrollCount(this, this->list_length);
+
+		this->DrawWidgets();
+		this->DrawSortButtonState(IDW_SORTBYNAME + this->sort_type, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
+
+		int max = min(this->vscroll.pos + this->vscroll.cap, this->list_length);
+		int y = 28; // start of the list-widget
+
+		for (int n = this->vscroll.pos; n < max; ++n) {
+			const Industry* i = this->sort_list[n];
+			const IndustrySpec *indsp = GetIndustrySpec(i->type);
+			byte p = 0;
+
+			/* Industry name */
+			SetDParam(p++, i->index);
+
+			/* Industry productions */
+			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+				if (i->produced_cargo[j] == CT_INVALID) continue;
+				SetDParam(p++, i->produced_cargo[j]);
+				SetDParam(p++, i->last_month_production[j]);
+				SetDParam(p++, GetCargoSuffix(j + 3, CST_DIR, (Industry*)i, i->type, indsp));
+			}
+
+			/* Transported productions */
+			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+				if (i->produced_cargo[j] == CT_INVALID) continue;
+				SetDParam(p++, i->last_month_pct_transported[j] * 100 >> 8);
+			}
+
+			/* Drawing the right string */
+			StringID str = STR_INDUSTRYDIR_ITEM_NOPROD;
+			if (p != 1) str = (p == 5) ? STR_INDUSTRYDIR_ITEM : STR_INDUSTRYDIR_ITEM_TWO;
+			DrawStringTruncated(4, y, str, TC_FROMSTRING, this->widget[IDW_INDUSTRY_LIST].right - 4);
+
+			y += 10;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case IDW_SORTBYNAME:
+			case IDW_SORTBYTYPE:
+			case IDW_SORTBYPROD:
+			case IDW_SORTBYTRANSPORT:
+				if (this->sort_type == (widget - IDW_SORTBYNAME)) {
+					this->flags ^= VL_DESC;
+				} else {
+					this->sort_type = widget - IDW_SORTBYNAME;
+					this->flags &= ~VL_DESC;
+				}
+				this->flags |= VL_RESORT;
+				this->SetDirty();
+				break;
+
+			case IDW_INDUSTRY_LIST: {
+				int y = (pt.y - 28) / 10;
+				uint16 p;
+
+				if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
+				p = y + this->vscroll.pos;
+				if (p < this->list_length) {
+					if (_ctrl_pressed) {
+						ShowExtraViewPortWindow(this->sort_list[p]->xy);
+					} else {
+						ScrollMainWindowToTile(this->sort_list[p]->xy);
+					}
+				}
+			} break;
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / 10;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		this->flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+		this->InvalidateWidget(IDW_INDUSTRY_LIST);
+	}
+};
+
+Listing IndustryDirectoryWindow::industry_sort = {0, 0};
 
 /** Window definition of the industy directory gui */
 static const WindowDesc _industry_directory_desc = {
@@ -937,17 +966,10 @@ static const WindowDesc _industry_directory_desc = {
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_directory_widgets,
-	IndustryDirectoryWndProc
+	NULL
 };
 
 void ShowIndustryDirectory()
 {
-	Window *w = AllocateWindowDescFront<Window>(&_industry_directory_desc, 0);
-
-	if (w != NULL) {
-		w->vscroll.cap = 16;
-		w->resize.height = w->height - 6 * 10; // minimum 10 items
-		w->resize.step_height = 10;
-		w->SetDirty();
-	}
+	AllocateWindowDescFront<IndustryDirectoryWindow>(&_industry_directory_desc, 0);
 }

@@ -354,9 +354,6 @@ static inline Industry *GetRandomIndustry()
 #define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) if (i->IsValid())
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
-extern const Industry **_industry_sort;
-extern bool _industry_sort_dirty;
-
 static const uint8 IT_INVALID = 255;
 
 #endif /* INDUSTRY_H */
