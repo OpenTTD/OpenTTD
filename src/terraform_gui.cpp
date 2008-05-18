@@ -229,57 +229,67 @@ static OnButtonClick * const _terraform_button_proc[] = {
 	TerraformClick_PlaceSign,
 };
 
-static void TerraformToolbWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT:
-		w->DrawWidgets();
-		break;
-
-	case WE_CLICK:
-		if (e->we.click.widget >= 4) _terraform_button_proc[e->we.click.widget - 4](w);
-		break;
-
-	case WE_KEYPRESS: {
-		uint i;
-
-		for (i = 0; i != lengthof(_terraform_keycodes); i++) {
-			if (e->we.keypress.keycode == _terraform_keycodes[i]) {
-				e->we.keypress.cont = false;
-				_terraform_button_proc[i](w);
-				break;
-			}
-		}
-		break;
+struct TerraformToolbarWindow : Window {
+	TerraformToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
-	case WE_PLACE_OBJ:
-		_place_proc(e->we.place.tile);
-		return;
+	~TerraformToolbarWindow()
+	{
+	}
 
-	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-		break;
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+	}
 
-	case WE_PLACE_MOUSEUP:
-		if (e->we.place.pt.x != -1) {
-			switch (e->we.place.select_proc) {
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget >= 4) _terraform_button_proc[widget - 4](this);
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		for (uint i = 0; i != lengthof(_terraform_keycodes); i++) {
+			if (keycode == _terraform_keycodes[i]) {
+				_terraform_button_proc[i](this);
+				return ES_HANDLED;
+			}
+		}
+		return ES_NOT_HANDLED;
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	{
+		if (pt.x != -1) {
+			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_DEMOLISH_AREA:
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
-					GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
+					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 			}
 		}
-		break;
-
-	case WE_ABORT_PLACE_OBJ:
-		w->RaiseButtons();
-		break;
 	}
-}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+	}
+};
 
 static const Widget _terraform_widgets[] = {
 { WWT_CLOSEBOX,   RESIZE_NONE,     7,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
@@ -303,13 +313,13 @@ static const WindowDesc _terraform_desc = {
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_terraform_widgets,
-	TerraformToolbWndProc
+	NULL
 };
 
 void ShowTerraformToolbar(Window *link)
 {
 	if (!IsValidPlayer(_current_player)) return;
-	Window *w = AllocateWindowDescFront<Window>(&_terraform_desc, 0);
+	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
 	if (w != NULL && link != NULL) {
 		/* Align the terraform toolbar under the main toolbar and put the linked
 		 * toolbar to left of it
@@ -567,123 +577,129 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 	}
 }
 
-static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_CREATE:
-			/* XXX - lighthouse button is widget 11!! Don't forget when changing */
-			w->widget[11].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
-			break;
-
-		case WE_PAINT: {
-			w->DrawWidgets();
-
-			int n = _terraform_size * _terraform_size;
-			const int8 *coords = &_multi_terraform_coords[0][0];
-
-			assert(n != 0);
-			do {
-				DrawSprite(SPR_WHITE_POINT, PAL_NONE, 88 + coords[0], 55 + coords[1]);
-				coords += 2;
-			} while (--n);
-
-			if (w->IsWidgetLowered(5) || w->IsWidgetLowered(6)) // change area-size if raise/lower corner is selected
-				SetTileSelectSize(_terraform_size, _terraform_size);
-
-		} break;
-
-		case WE_KEYPRESS:
-			for (uint i = 0; i != lengthof(_editor_terraform_keycodes); i++) {
-				if (e->we.keypress.keycode == _editor_terraform_keycodes[i]) {
-					e->we.keypress.cont = false;
-					_editor_terraform_button_proc[i](w);
-					break;
-				}
-			}
-			break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12:
-					_editor_terraform_button_proc[e->we.click.widget - 4](w);
-					break;
-				case 13: case 14: { // Increase/Decrease terraform size
-					int size = (e->we.click.widget == 13) ? 1 : -1;
-					w->HandleButtonClick(e->we.click.widget);
-					size += _terraform_size;
-
-					if (!IsInsideMM(size, 1, 8 + 1)) return;
-					_terraform_size = size;
-
-					SndPlayFx(SND_15_BEEP);
-					w->SetDirty();
-				} break;
-				case 15: // gen random land
-					w->HandleButtonClick(15);
-					ShowCreateScenario();
-					break;
-				case 16: // Reset landscape
-					ShowQuery(
-						STR_022C_RESET_LANDSCAPE,
-						STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
-						NULL,
-						ResetLandscapeConfirmationCallback);
-					break;
-			}
-			break;
-
-		case WE_TIMEOUT:
-			for (uint i = 0; i < w->widget_count; i++) {
-				if (w->IsWidgetLowered(i)) {
-					w->RaiseWidget(i);
-					w->InvalidateWidget(i);
-				}
-				if (i == 3) i = 12;
-			}
-			break;
-
-		case WE_PLACE_OBJ:
-			_place_proc(e->we.place.tile);
-			break;
-
-		case WE_PLACE_DRAG:
-			VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.select_method);
-			break;
-
-		case WE_PLACE_MOUSEUP:
-			if (e->we.place.pt.x != -1) {
-				switch (e->we.place.select_proc) {
-					default: NOT_REACHED();
-					case DDSP_CREATE_ROCKS:
-					case DDSP_CREATE_DESERT:
-					case DDSP_CREATE_WATER:
-					case DDSP_CREATE_RIVER:
-					case DDSP_RAISE_AND_LEVEL_AREA:
-					case DDSP_LOWER_AND_LEVEL_AREA:
-					case DDSP_LEVEL_AREA:
-					case DDSP_DEMOLISH_AREA:
-						GUIPlaceProcDragXY(e->we.place.select_proc, e->we.place.starttile, e->we.place.tile);
-						break;
-				}
-			}
-			break;
-
-		case WE_ABORT_PLACE_OBJ:
-			w->RaiseButtons();
-			w->SetDirty();
-			break;
+struct ScenarioEditorLandscapeGenerationWindow : Window {
+	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		/* XXX - lighthouse button is widget 11!! Don't forget when changing */
+		this->widget[11].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint() {
+		this->DrawWidgets();
+
+		int n = _terraform_size * _terraform_size;
+		const int8 *coords = &_multi_terraform_coords[0][0];
+
+		assert(n != 0);
+		do {
+			DrawSprite(SPR_WHITE_POINT, PAL_NONE, 88 + coords[0], 55 + coords[1]);
+			coords += 2;
+		} while (--n);
+
+		if (this->IsWidgetLowered(5) || this->IsWidgetLowered(6)) { // change area-size if raise/lower corner is selected
+			SetTileSelectSize(_terraform_size, _terraform_size);
+		}
+	}
+
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
+	{
+		for (uint i = 0; i != lengthof(_editor_terraform_keycodes); i++) {
+			if (keycode == _editor_terraform_keycodes[i]) {
+				_editor_terraform_button_proc[i](this);
+				return ES_HANDLED;
+			}
+		}
+		return ES_NOT_HANDLED;
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12:
+				_editor_terraform_button_proc[widget - 4](this);
+				break;
+			case 13: case 14: { // Increase/Decrease terraform size
+				int size = (widget == 13) ? 1 : -1;
+				this->HandleButtonClick(widget);
+				size += _terraform_size;
+
+				if (!IsInsideMM(size, 1, 8 + 1)) return;
+				_terraform_size = size;
+
+				SndPlayFx(SND_15_BEEP);
+				this->SetDirty();
+			} break;
+			case 15: // gen random land
+				this->HandleButtonClick(15);
+				ShowCreateScenario();
+				break;
+			case 16: // Reset landscape
+				ShowQuery(
+					STR_022C_RESET_LANDSCAPE,
+					STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
+					NULL,
+					ResetLandscapeConfirmationCallback);
+				break;
+		}
+	}
+
+	virtual void OnTimeout()
+	{
+		for (uint i = 0; i < this->widget_count; i++) {
+			if (this->IsWidgetLowered(i)) {
+				this->RaiseWidget(i);
+				this->InvalidateWidget(i);
+			}
+			if (i == 3) i = 12;
+		}
+	}
+
+	virtual void OnPlaceObject(Point pt, TileIndex tile)
+	{
+		_place_proc(tile);
+	}
+
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
+	{
+		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
+	}
+
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
+	{
+		if (pt.x != -1) {
+			switch (select_proc) {
+				default: NOT_REACHED();
+				case DDSP_CREATE_ROCKS:
+				case DDSP_CREATE_DESERT:
+				case DDSP_CREATE_WATER:
+				case DDSP_CREATE_RIVER:
+				case DDSP_RAISE_AND_LEVEL_AREA:
+				case DDSP_LOWER_AND_LEVEL_AREA:
+				case DDSP_LEVEL_AREA:
+				case DDSP_DEMOLISH_AREA:
+					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
+					break;
+			}
+		}
+	}
+
+	virtual void OnPlaceObjectAbort()
+	{
+		this->RaiseButtons();
+		this->SetDirty();
+	}
+};
 
 static const WindowDesc _scen_edit_land_gen_desc = {
 	WDP_AUTO, WDP_AUTO, 204, 103, 204, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
-	ScenEditLandGenWndProc,
+	NULL,
 };
 
 void ShowEditorTerraformToolbar()
 {
-	AllocateWindowDescFront<Window>(&_scen_edit_land_gen_desc, 0);
+	AllocateWindowDescFront<ScenarioEditorLandscapeGenerationWindow>(&_scen_edit_land_gen_desc, 0);
 }
