@@ -405,11 +405,6 @@ void ShowTownViewWindow(TownID town)
 	AllocateWindowDescFront<TownViewWindow>(&_town_view_desc, town);
 }
 
-enum TownDirectoryWidget {
-	TDW_SORTNAME = 3,
-	TDW_SORTPOPULATION,
-	TDW_CENTERTOWN,
-};
 static const Widget _town_directory_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   195,     0,    13, STR_2000_TOWNS,         STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -482,107 +477,118 @@ static void MakeSortedTownList()
 }
 
 
-static void TownDirectoryWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			if (_town_sort_dirty) {
-				_town_sort_dirty = false;
-				MakeSortedTownList();
-			}
+struct TownDirectoryWindow : public Window {
+	enum TownDirectoryWidget {
+		TDW_SORTNAME = 3,
+		TDW_SORTPOPULATION,
+		TDW_CENTERTOWN,
+	};
 
-			SetVScrollCount(w, _num_town_sort);
+	TownDirectoryWindow(const WindowDesc *desc) : Window(desc, 0)
+	{
+		this->vscroll.cap = 16;
+		this->resize.step_height = 10;
+		this->resize.height = this->height - 10 * 6; // minimum of 10 items in the list, each item 10 high
 
-			w->DrawWidgets();
-			w->DrawSortButtonState((_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
-
-			{
-				int n = 0;
-				uint16 i = w->vscroll.pos;
-				int y = 28;
-
-				while (i < _num_town_sort) {
-					const Town* t = _town_sort[i];
-
-					assert(t->xy);
-
-					SetDParam(0, t->index);
-					SetDParam(1, t->population);
-					DrawString(2, y, STR_2057, TC_FROMSTRING);
-
-					y += 10;
-					i++;
-					if (++n == w->vscroll.cap) break; // max number of towns in 1 window
-				}
-				SetDParam(0, GetWorldPopulation());
-				DrawString(3, w->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
-			}
-		} break;
-
-		case WE_CLICK:
-			switch (e->we.click.widget) {
-				case TDW_SORTNAME: /* Sort by Name ascending/descending */
-					_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
-					_town_sort_dirty = true;
-					w->SetDirty();
-					break;
-
-				case TDW_SORTPOPULATION: /* Sort by Population ascending/descending */
-					_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
-					_town_sort_dirty = true;
-					w->SetDirty();
-					break;
-
-				case TDW_CENTERTOWN: { /* Click on Town Matrix */
-					const Town* t;
-
-					uint16 id_v = (e->we.click.pt.y - 28) / 10;
-
-					if (id_v >= w->vscroll.cap) return; // click out of bounds
-
-					id_v += w->vscroll.pos;
-
-					if (id_v >= _num_town_sort) return; // click out of town bounds
-
-					t = _town_sort[id_v];
-					assert(t->xy);
-					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(t->xy);
-					} else {
-						ScrollMainWindowToTile(t->xy);
-					}
-				} break;
-			}
-			break;
-
-		case WE_100_TICKS:
-			w->SetDirty();
-			break;
-
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / 10;
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		if (_town_sort_dirty) {
+			_town_sort_dirty = false;
+			MakeSortedTownList();
+		}
+
+		SetVScrollCount(this, _num_town_sort);
+
+		this->DrawWidgets();
+		this->DrawSortButtonState((_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
+
+		{
+			int n = 0;
+			uint16 i = this->vscroll.pos;
+			int y = 28;
+
+			while (i < _num_town_sort) {
+				const Town* t = _town_sort[i];
+
+				assert(t->xy);
+
+				SetDParam(0, t->index);
+				SetDParam(1, t->population);
+				DrawString(2, y, STR_2057, TC_FROMSTRING);
+
+				y += 10;
+				i++;
+				if (++n == this->vscroll.cap) break; // max number of towns in 1 window
+			}
+
+			SetDParam(0, GetWorldPopulation());
+			DrawString(3, this->height - 12 + 2, STR_TOWN_POPULATION, TC_FROMSTRING);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case TDW_SORTNAME: /* Sort by Name ascending/descending */
+				_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
+				_town_sort_dirty = true;
+				this->SetDirty();
+				break;
+
+			case TDW_SORTPOPULATION: /* Sort by Population ascending/descending */
+				_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
+				_town_sort_dirty = true;
+				this->SetDirty();
+				break;
+
+			case TDW_CENTERTOWN: { /* Click on Town Matrix */
+				const Town* t;
+
+				uint16 id_v = (pt.y - 28) / 10;
+
+				if (id_v >= this->vscroll.cap) return; // click out of bounds
+
+				id_v += this->vscroll.pos;
+
+				if (id_v >= _num_town_sort) return; // click out of town bounds
+
+				t = _town_sort[id_v];
+				assert(t->xy);
+				if (_ctrl_pressed) {
+					ShowExtraViewPortWindow(t->xy);
+				} else {
+					ScrollMainWindowToTile(t->xy);
+				}
+				break;
+			}
+		}
+	}
+
+	virtual void OnHundredthTick()
+	{
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / 10;
+	}
+};
 
 static const WindowDesc _town_directory_desc = {
 	WDP_AUTO, WDP_AUTO, 208, 202, 208, 202,
 	WC_TOWN_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_town_directory_widgets,
-	TownDirectoryWndProc
+	NULL
 };
-
 
 void ShowTownDirectory()
 {
-	Window *w = AllocateWindowDescFront<Window>(&_town_directory_desc, 0);
-
-	if (w != NULL) {
-		w->vscroll.cap = 16;
-		w->resize.step_height = 10;
-		w->resize.height = w->height - 10 * 6; // minimum of 10 items in the list, each item 10 high
-	}
+	new TownDirectoryWindow(&_town_directory_desc);
 }
 
 void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
