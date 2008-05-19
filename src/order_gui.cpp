@@ -1063,7 +1063,6 @@ static const WindowDesc _orders_train_desc = {
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_train_widgets,
-	NULL
 };
 
 /**
@@ -1104,7 +1103,6 @@ static const WindowDesc _orders_desc = {
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_widgets,
-	NULL
 };
 
 /**
@@ -1145,7 +1143,6 @@ static const WindowDesc _other_orders_desc = {
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_other_orders_widgets,
-	NULL
 };
 
 void ShowOrdersWindow(const Vehicle *v)

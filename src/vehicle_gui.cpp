@@ -432,7 +432,6 @@ static const WindowDesc _vehicle_refit_desc = {
 	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_refit_widgets,
-	NULL
 };
 
 /** Show the refit window for a vehicle
@@ -1158,7 +1157,6 @@ static const WindowDesc _player_vehicle_list_train_desc = {
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
-	NULL
 };
 
 static const WindowDesc _player_vehicle_list_road_veh_desc = {
@@ -1166,7 +1164,6 @@ static const WindowDesc _player_vehicle_list_road_veh_desc = {
 	WC_ROADVEH_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
-	NULL
 };
 
 static const WindowDesc _player_vehicle_list_ship_desc = {
@@ -1174,7 +1171,6 @@ static const WindowDesc _player_vehicle_list_ship_desc = {
 	WC_SHIPS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
-	NULL
 };
 
 static const WindowDesc _player_vehicle_list_aircraft_desc = {
@@ -1182,7 +1178,6 @@ static const WindowDesc _player_vehicle_list_aircraft_desc = {
 	WC_AIRCRAFT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
-	NULL
 };
 
 static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
@@ -1613,7 +1608,6 @@ static const WindowDesc _vehicle_details_desc = {
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_details_widgets,
-	NULL
 };
 
 /** Shows the vehicle details window of the given vehicle. */
@@ -1655,7 +1649,6 @@ static const WindowDesc _vehicle_view_desc = {
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_view_widgets,
-	NULL
 };
 
 /** Vehicle view window descriptor for trains. Only minimum_height and
@@ -1666,7 +1659,6 @@ static const WindowDesc _train_view_desc = {
 	WC_VEHICLE_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_view_widgets,
-	NULL
 };
 
 

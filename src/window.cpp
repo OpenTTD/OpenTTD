@@ -48,169 +48,6 @@ bool _scrolling_viewport;
 byte _special_mouse_mode;
 
 
-/**
- * Call the window event handler for handling event \a e.
- * This is a temporary helper functions that will be removed
- * once all windows that still rely on WindowEvent and
- * WindowEventCodes have been rewritten to use the 'OnXXX'
- * event handlers.
- * @param e Window event to handle
- */
-void Window::HandleWindowEvent(WindowEvent *e)
-{
-	if (wndproc != NULL) wndproc(this, e);
-}
-
-void Window::OnPaint()
-{
-	WindowEvent e;
-	e.event = WE_PAINT;
-	this->HandleWindowEvent(&e);
-}
-
-Window::EventState Window::OnKeyPress(uint16 key, uint16 keycode)
-{
-	WindowEvent e;
-	e.event = WE_KEYPRESS;
-	e.we.keypress.key     = key;
-	e.we.keypress.keycode = keycode;
-	e.we.keypress.cont    = true;
-	this->HandleWindowEvent(&e);
-
-	return e.we.keypress.cont ? ES_NOT_HANDLED : ES_HANDLED;
-}
-
-Window::EventState Window::OnCTRLStateChange()
-{
-	WindowEvent e;
-	e.event = WE_CTRL_CHANGED;
-	e.we.ctrl.cont = true;
-	this->HandleWindowEvent(&e);
-
-	return e.we.ctrl.cont ? ES_NOT_HANDLED : ES_HANDLED;
-}
-
-void Window::OnClick(Point pt, int widget)
-{
-	WindowEvent e;
-	e.event = WE_CLICK;
-	e.we.click.pt     = pt;
-	e.we.click.widget = widget;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnMouseLoop()
-{
-	WindowEvent e;
-	e.event = WE_MOUSELOOP;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnTick()
-{
-	WindowEvent e;
-	e.event = WE_TICK;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnHundredthTick()
-{
-	WindowEvent e;
-	e.event = WE_100_TICKS;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnTimeout()
-{
-	WindowEvent e;
-	e.event = WE_TIMEOUT;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnResize(Point new_size, Point delta)
-{
-	WindowEvent e;
-	e.event = WE_RESIZE;
-	e.we.sizing.size = new_size;
-	e.we.sizing.diff = delta;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnDropdownSelect(int widget, int index)
-{
-	WindowEvent e;
-	e.event = WE_DROPDOWN_SELECT;
-	e.we.dropdown.button = widget;
-	e.we.dropdown.index  = index;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnQueryTextFinished(char *str)
-{
-	WindowEvent e;
-	e.event = WE_ON_EDIT_TEXT;
-	e.we.edittext.str = str;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnInvalidateData(int data)
-{
-	WindowEvent e;
-	e.event = WE_INVALIDATE_DATA;
-	e.we.invalidate.data = data;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnPlaceObject(Point pt, TileIndex tile)
-{
-	WindowEvent e;
-	e.event = WE_PLACE_OBJ;
-	e.we.place.pt   = pt;
-	e.we.place.tile = tile;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnPlaceObjectAbort()
-{
-	WindowEvent e;
-	e.event = WE_ABORT_PLACE_OBJ;
-	this->HandleWindowEvent(&e);
-}
-
-
-void Window::OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
-{
-	WindowEvent e;
-	e.event = WE_PLACE_DRAG;
-	e.we.place.select_method = select_method;
-	e.we.place.select_proc   = select_proc;
-	e.we.place.pt            = pt;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile)
-{
-	WindowEvent e;
-	e.event = WE_PLACE_MOUSEUP;
-	e.we.place.select_method = select_method;
-	e.we.place.select_proc   = select_proc;
-	e.we.place.pt            = pt;
-	e.we.place.tile          = end_tile;
-	e.we.place.starttile     = start_tile;
-	this->HandleWindowEvent(&e);
-}
-
-void Window::OnPlacePresize(Point pt, TileIndex tile)
-{
-	WindowEvent e;
-	e.event = WE_PLACE_PRESIZE;
-	e.we.place.pt   = pt;
-	e.we.place.tile = tile;
-	this->HandleWindowEvent(&e);
-}
-
-
-
 void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 {
 	va_list wdg_list;
@@ -581,9 +418,6 @@ Window::~Window()
 		child = FindChildWindow(this);
 	}
 
-	WindowEvent e;
-	e.event = WE_DESTROY;
-	this->HandleWindowEvent(&e);
 	if (this->viewport != NULL) DeleteWindowViewport(this);
 
 	this->SetDirty();
@@ -831,14 +665,13 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
  * @param y offset in pixels from the top of the screen
  * @param min_width minimum width in pixels of the window
  * @param min_height minimum height in pixels of the window
- * @param *proc see WindowProc function to call when any messages/updates happen to the window
  * @param cls see WindowClass class of the window, used for identification and grouping
  * @param *widget see Widget pointer to the window layout and various elements
  * @param window_number number being assigned to the new window
  * @return Window pointer of the newly created window
  */
 void Window::Initialize(int x, int y, int min_width, int min_height,
-				WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
+				WindowClass cls, const Widget *widget, int window_number)
 {
 	/* We have run out of windows, close one and use that as the place for our new one */
 	if (_last_z_window == endof(_z_windows)) {
@@ -855,7 +688,6 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 	this->top = y;
 	this->width = min_width;
 	this->height = min_height;
-	this->wndproc = proc;
 	AssignWidgetToWindow(this, widget);
 	this->resize.width = min_width;
 	this->resize.height = min_height;
@@ -884,10 +716,6 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 
 	*wz = this;
 	_last_z_window++;
-
-	WindowEvent e;
-	e.event = WE_CREATE;
-	this->HandleWindowEvent(&e);
 }
 
 /**
@@ -969,7 +797,7 @@ void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
  */
 Window::Window(int x, int y, int width, int height, WindowClass cls, const Widget *widget)
 {
-	this->Initialize(x, y, width, height, NULL, cls, widget, 0);
+	this->Initialize(x, y, width, height, cls, widget, 0);
 }
 
 
@@ -1161,10 +989,8 @@ static Point LocalGetWindowPlacement(const WindowDesc *desc, int window_number)
 Window::Window(const WindowDesc *desc, WindowNumber window_number)
 {
 	Point pt = LocalGetWindowPlacement(desc, window_number);
-	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->proc, desc->cls, desc->widgets, window_number);
+	this->Initialize(pt.x, pt.y, desc->minimum_width, desc->minimum_height, desc->cls, desc->widgets, window_number);
 	this->desc_flags = desc->flags;
-
-	if (desc->proc != NULL) this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);
 }
 
 /** Do a search for a window at specific coordinates. For this we start

@@ -226,7 +226,6 @@ static const WindowDesc _build_docks_toolbar_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,
-	NULL
 };
 
 void ShowBuildDocksToolbar()
@@ -311,7 +310,6 @@ static const WindowDesc _build_dock_station_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_dock_station_widgets,
-	NULL
 };
 
 static void ShowBuildDockStationPicker()
@@ -386,7 +384,6 @@ static const WindowDesc _build_docks_depot_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_docks_depot_widgets,
-	NULL
 };
 
 

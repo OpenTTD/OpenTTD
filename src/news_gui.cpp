@@ -445,7 +445,6 @@ static WindowDesc _news_type13_desc = {
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type13_widgets,
-	NULL
 };
 
 static const Widget _news_type2_widgets[] = {
@@ -459,7 +458,6 @@ static WindowDesc _news_type2_desc = {
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type2_widgets,
-	NULL
 };
 
 static const Widget _news_type0_widgets[] = {
@@ -475,7 +473,6 @@ static WindowDesc _news_type0_desc = {
 	WC_NEWS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET,
 	_news_type0_widgets,
-	NULL
 };
 
 
@@ -763,7 +760,6 @@ static const WindowDesc _message_history_desc = {
 	WC_MESSAGE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_message_history_widgets,
-	NULL
 };
 
 /** Display window with news messages history */
@@ -971,7 +967,6 @@ static const WindowDesc _message_options_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_message_options_widgets,
-	NULL
 };
 
 void ShowMessageOptions()

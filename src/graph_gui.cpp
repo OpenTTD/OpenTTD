@@ -101,7 +101,6 @@ static const WindowDesc _graph_legend_desc = {
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_graph_legend_widgets,
-	NULL
 };
 
 static void ShowGraphLegend()
@@ -442,7 +441,6 @@ static const WindowDesc _operating_profit_desc = {
 	WC_OPERATING_PROFIT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_operating_profit_widgets,
-	NULL
 };
 
 
@@ -482,7 +480,6 @@ static const WindowDesc _income_graph_desc = {
 	WC_INCOME_GRAPH, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_income_graph_widgets,
-	NULL
 };
 
 void ShowIncomeGraph()
@@ -520,7 +517,6 @@ static const WindowDesc _delivered_cargo_graph_desc = {
 	WC_DELIVERED_CARGO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_delivered_cargo_graph_widgets,
-	NULL
 };
 
 void ShowDeliveredCargoGraph()
@@ -565,7 +561,6 @@ static const WindowDesc _performance_history_desc = {
 	WC_PERFORMANCE_HISTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_performance_history_widgets,
-	NULL
 };
 
 void ShowPerformanceHistoryGraph()
@@ -603,7 +598,6 @@ static const WindowDesc _company_value_graph_desc = {
 	WC_COMPANY_VALUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_company_value_graph_widgets,
-	NULL
 };
 
 void ShowCompanyValueGraph()
@@ -728,7 +722,6 @@ static const WindowDesc _cargo_payment_rates_desc = {
 	WC_PAYMENT_RATES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_cargo_payment_rates_widgets,
-	NULL
 };
 
 
@@ -817,7 +810,6 @@ static const WindowDesc _company_league_desc = {
 	WC_COMPANY_LEAGUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_company_league_widgets,
-	NULL
 };
 
 void ShowCompanyLeagueTable()
@@ -1049,7 +1041,6 @@ static const WindowDesc _performance_rating_detail_desc = {
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_performance_rating_detail_widgets,
-	NULL
 };
 
 void ShowPerformanceRatingDetail()

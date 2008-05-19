@@ -139,7 +139,6 @@ static const WindowDesc _sign_list_desc = {
 	WC_SIGN_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_sign_list_widget,
-	NULL
 };
 
 
@@ -300,7 +299,6 @@ static const WindowDesc _query_sign_edit_desc = {
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_sign_edit_widgets,
-	NULL
 };
 
 void ShowRenameSignWindow(const Sign *si)

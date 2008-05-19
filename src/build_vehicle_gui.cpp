@@ -1182,7 +1182,6 @@ static const WindowDesc _build_vehicle_desc = {
 	WC_BUILD_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,
-	NULL
 };
 
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)

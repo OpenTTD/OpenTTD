@@ -757,7 +757,6 @@ static const WindowDesc _group_desc = {
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_group_widgets,
-	NULL
 };
 
 void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)

@@ -104,88 +104,6 @@ DECLARE_ENUM_AS_BIT_SET(FrameFlags);
 void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags);
 
 /**
- * Available window events
- */
-enum WindowEventCodes {
-	WE_CREATE,       ///< Initialize the Window
-	WE_DESTROY,      ///< Prepare for deletion of the window
-	WE_PAINT,        ///< Repaint the window contents
-	WE_KEYPRESS,     ///< Key pressed
-	WE_CLICK,        ///< Left mouse button click
-	WE_MOUSELOOP,    ///< Event for each mouse event in the game (at least once every game tick)
-	WE_TICK,         ///< Regularly occurring event (every game tick)
-	WE_100_TICKS,    ///< Regularly occurring event (every 100 game ticks, approximatelly 3 seconds)
-	WE_TIMEOUT,
-	WE_PLACE_OBJ,
-	WE_ABORT_PLACE_OBJ,
-	WE_ON_EDIT_TEXT,
-	WE_PLACE_DRAG,
-	WE_PLACE_MOUSEUP,
-	WE_PLACE_PRESIZE,
-	WE_DROPDOWN_SELECT,
-	WE_RESIZE,          ///< Request to resize the window, @see WindowEvent.we.resize
-	WE_INVALIDATE_DATA, ///< Notification that data displayed by the window is obsolete
-	WE_CTRL_CHANGED,    ///< CTRL key has changed state
-};
-
-/**
- * Data structures for additional data associated with a window event
- * @see WindowEventCodes
- */
-struct WindowEvent {
-	byte event;
-	union {
-		struct {
-			Point pt;
-			int widget;
-		} click;
-
-		struct {
-			Point pt;
-			TileIndex tile;
-			TileIndex starttile;
-			ViewportPlaceMethod select_method;
-			ViewportDragDropSelectionProcess select_proc;
-		} place;
-
-		struct {
-			Point pt;
-			int widget;
-		} dragdrop;
-
-		struct {
-			Point size;
-			Point diff;
-		} sizing;
-
-		struct {
-			char *str;
-		} edittext;
-
-		struct {
-			int button;
-			int index;
-		} dropdown;
-
-		struct {
-			bool cont;      ///< continue the search? (default true)
-			uint16 key;     ///< 16-bit Unicode value of the key
-			uint16 keycode; ///< untranslated key (including shift-state)
-		} keypress;
-
-		struct {
-			int data;
-		} invalidate;
-
-		struct {
-			bool cont;     ///< continue the search? (default true)
-		} ctrl;
-	} we;
-};
-
-typedef void WindowProc(Window *w, WindowEvent *e);
-
-/**
  * High level window description
  */
 struct WindowDesc {
@@ -199,7 +117,6 @@ struct WindowDesc {
 	WindowClass parent_cls; ///< Class of the parent window, @see WindowClass
 	uint32 flags;           ///< Flags, @see WindowDefaultFlags
 	const Widget *widgets;  ///< List of widgets with their position and size for the window
-	WindowProc *proc;       ///< Window event handler function for the window
 };
 
 /**
@@ -271,13 +188,9 @@ struct Window : ZeroedMemoryAllocator {
 		ES_NOT_HANDLED,
 	};
 
-private:
-	WindowProc *wndproc;   ///< Event handler function for the window. Do not use directly, call HandleWindowEvent() instead.
-	void HandleWindowEvent(WindowEvent *e);
-
 protected:
 	void Initialize(int x, int y, int min_width, int min_height,
-			WindowProc *proc, WindowClass cls, const Widget *widget, int window_number);
+			WindowClass cls, const Widget *widget, int window_number);
 	void FindWindowPlacementAndResize(int def_width, int def_height);
 	void FindWindowPlacementAndResize(const WindowDesc *desc);
 
@@ -343,7 +256,7 @@ public:
 	/**
 	 * This window is currently being repainted.
 	 */
-	virtual void OnPaint();
+	virtual void OnPaint() {}
 
 
 	/**
@@ -353,14 +266,14 @@ public:
 	 * @return ES_HANDLED if the key press has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnKeyPress(uint16 key, uint16 keycode);
+	virtual EventState OnKeyPress(uint16 key, uint16 keycode) { return ES_NOT_HANDLED; }
 
 	/**
 	 * The state of the control key has changed
 	 * @return ES_HANDLED if the change has been handled and no other
 	 *         window should receive the event.
 	 */
-	virtual EventState OnCTRLStateChange();
+	virtual EventState OnCTRLStateChange() { return ES_NOT_HANDLED; }
 
 
 	/**
@@ -368,7 +281,7 @@ public:
 	 * @param pt     the point inside the window that has been clicked.
 	 * @param widget the clicked widget.
 	 */
-	virtual void OnClick(Point pt, int widget);
+	virtual void OnClick(Point pt, int widget) {}
 
 	/**
 	 * A double click with the left mouse button has been made on the window.
@@ -415,22 +328,22 @@ public:
 	/**
 	 * Called for every mouse loop run, which is at least once per (game) tick.
 	 */
-	virtual void OnMouseLoop();
+	virtual void OnMouseLoop() {}
 
 	/**
 	 * Called once per (game) tick.
 	 */
-	virtual void OnTick();
+	virtual void OnTick() {}
 
 	/**
 	 * Called once every 100 (game) ticks.
 	 */
-	virtual void OnHundredthTick();
+	virtual void OnHundredthTick() {}
 
 	/**
 	 * Called when this window's timeout has been reached.
 	 */
-	virtual void OnTimeout();
+	virtual void OnTimeout() {}
 
 
 	/**
@@ -438,27 +351,27 @@ public:
 	 * @param new_size the new size of the window.
 	 * @param delta    the amount of which the window size changed.
 	 */
-	virtual void OnResize(Point new_size, Point delta);
+	virtual void OnResize(Point new_size, Point delta) {}
 
 	/**
 	 * A dropdown option associated to this window has been selected.
 	 * @param widget the widget (button) that the dropdown is associated with.
 	 * @param index  the element in the dropdown that is selected.
 	 */
-	virtual void OnDropdownSelect(int widget, int index);
+	virtual void OnDropdownSelect(int widget, int index) {}
 
 	/**
 	 * The query window opened from this window has closed.
 	 * @param str the new value of the string or NULL if the window
 	 *            was cancelled.
 	 */
-	virtual void OnQueryTextFinished(char *str);
+	virtual void OnQueryTextFinished(char *str) {}
 
 	/**
 	 * Some data on this window has become invalid.
 	 * @param data information about the changed data.
 	 */
-	virtual void OnInvalidateData(int data = 0);
+	virtual void OnInvalidateData(int data = 0) {}
 
 
 	/**
@@ -467,12 +380,12 @@ public:
 	 * @param pt   the exact point on the map that has been clicked.
 	 * @param tile the tile on the map that has been clicked.
 	 */
-	virtual void OnPlaceObject(Point pt, TileIndex tile);
+	virtual void OnPlaceObject(Point pt, TileIndex tile) {}
 
 	/**
 	 * The user cancelled a tile highlight mode that has been set.
 	 */
-	virtual void OnPlaceObjectAbort();
+	virtual void OnPlaceObjectAbort() {}
 
 
 	/**
@@ -482,7 +395,7 @@ public:
 	 * @param select_proc   what will be created when the drag is over.
 	 * @param pt            the exact point on the map where the mouse is.
 	 */
-	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt);
+	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt) {}
 
 	/**
 	 * The user has dragged over the map when the tile highlight mode
@@ -493,7 +406,7 @@ public:
 	 * @param start_tile    the begin tile of the drag.
 	 * @param end_tile      the end tile of the drag.
 	 */
-	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile);
+	virtual void OnPlaceMouseUp(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt, TileIndex start_tile, TileIndex end_tile) {}
 
 	/**
 	 * The user moves over the map when a tile highlight mode has been set
@@ -502,7 +415,7 @@ public:
 	 * @param pt   the exact point on the map where the mouse is.
 	 * @param tile the tile on the map where the mouse is.
 	 */
-	virtual void OnPlacePresize(Point pt, TileIndex tile);
+	virtual void OnPlacePresize(Point pt, TileIndex tile) {}
 
 	/*** End of the event handling ***/
 };

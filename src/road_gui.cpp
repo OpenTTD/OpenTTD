@@ -643,7 +643,6 @@ static const WindowDesc _build_road_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_widgets,
-	NULL
 };
 
 /** Widget definition of the build tram toolbar */
@@ -672,7 +671,6 @@ static const WindowDesc _build_tramway_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_tramway_widgets,
-	NULL
 };
 
 void ShowBuildRoadToolbar(RoadType roadtype)
@@ -709,7 +707,6 @@ static const WindowDesc _build_road_scen_desc = {
 	WC_SCEN_BUILD_ROAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,
-	NULL
 };
 
 void ShowBuildRoadScenToolbar()
@@ -789,7 +786,6 @@ static const WindowDesc _build_road_depot_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_road_depot_widgets,
-	NULL
 };
 
 static void ShowRoadDepotPicker()
@@ -932,7 +928,6 @@ static const WindowDesc _rv_station_picker_desc = {
 	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_rv_station_picker_widgets,
-	NULL
 };
 
 static void ShowRVStationPicker(RoadStopType rs)

@@ -283,7 +283,6 @@ static const WindowDesc _build_bridge_desc = {
 	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_bridge_widgets,
-	NULL
 };
 
 /**

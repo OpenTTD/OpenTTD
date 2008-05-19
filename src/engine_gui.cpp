@@ -107,7 +107,6 @@ static const WindowDesc _engine_preview_desc = {
 	WC_ENGINE_PREVIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_engine_preview_widgets,
-	NULL
 };
 
 

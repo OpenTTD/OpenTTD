@@ -250,7 +250,6 @@ static const WindowDesc _newgrf_add_dlg_desc = {
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_add_dlg_widgets,
-	NULL,
 };
 
 
@@ -552,7 +551,6 @@ static const WindowDesc _newgrf_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,
-	NULL,
 };
 
 /** Callback function for the newgrf 'apply changes' confirmation window

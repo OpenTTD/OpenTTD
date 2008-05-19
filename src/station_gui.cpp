@@ -615,7 +615,6 @@ static const WindowDesc _player_stations_desc = {
 	WC_STATION_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_stations_widgets,
-	NULL
 };
 
 /**
@@ -987,7 +986,6 @@ static const WindowDesc _station_view_desc = {
 	WC_STATION_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_station_view_widgets,
-	NULL
 };
 
 /**

@@ -642,7 +642,6 @@ static const WindowDesc _network_game_window_desc = {
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_network_game_window_widgets,
-	NULL,
 };
 
 void ShowNetworkGameWindow()
@@ -977,7 +976,6 @@ static const WindowDesc _network_start_server_window_desc = {
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_start_server_window_widgets,
-	NULL,
 };
 
 static void ShowNetworkStartServerWindow()
@@ -1191,7 +1189,6 @@ static const WindowDesc _network_lobby_window_desc = {
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_network_lobby_window_widgets,
-	NULL,
 };
 
 /* Show the networklobbywindow with the selected server
@@ -1237,12 +1234,11 @@ static const Widget _client_list_popup_widgets[] = {
 {   WIDGETS_END},
 };
 
-static WindowDesc _client_list_desc = {
+static const WindowDesc _client_list_desc = {
 	WDP_AUTO, WDP_AUTO, 250, 1, 250, 1,
 	WC_CLIENT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_client_list_widgets,
-	NULL
 };
 
 // Finds the Xth client-info that is active
@@ -1665,7 +1661,6 @@ static const WindowDesc _network_join_status_window_desc = {
 	WC_NETWORK_STATUS_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_MODAL,
 	_network_join_status_window_widget,
-	NULL,
 };
 
 void ShowJoinStatusWindow()
@@ -1909,7 +1904,6 @@ static const WindowDesc _chat_window_desc = {
 	WC_SEND_NETWORK_MSG, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_chat_window_widgets,
-	NULL
 };
 
 void ShowNetworkChatQueryWindow(DestType type, int dest)
@@ -2018,7 +2012,6 @@ static const WindowDesc _ncp_window_desc = {
 	WC_COMPANY_PASSWORD_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_ncp_window_widgets,
-	NULL
 };
 
 void ShowNetworkCompanyPasswordWindow(Window *parent)

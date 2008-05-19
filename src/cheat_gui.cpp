@@ -226,7 +226,6 @@ static const WindowDesc _cheats_desc = {
 	WC_CHEATS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cheat_widgets,
-	NULL
 };
 
 

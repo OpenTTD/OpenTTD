@@ -179,7 +179,6 @@ static const WindowDesc _subsidies_list_desc = {
 	WC_SUBSIDIES_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_subsidies_list_widgets,
-	NULL
 };
 
 

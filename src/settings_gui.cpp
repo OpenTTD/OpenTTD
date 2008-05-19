@@ -349,7 +349,6 @@ static const WindowDesc _game_options_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_game_options_widgets,
-	NULL
 };
 
 
@@ -468,7 +467,6 @@ static const WindowDesc _game_difficulty_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_game_difficulty_widgets,
-	NULL
 };
 
 struct GameDifficultyWindow : public Window {
@@ -1064,7 +1062,6 @@ static const WindowDesc _patches_selection_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_patches_selection_widgets,
-	NULL,
 };
 
 void ShowPatchesSelection()
@@ -1295,7 +1292,6 @@ static const WindowDesc _cust_currency_desc = {
 	WC_CUSTOM_CURRENCY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cust_currency_widgets,
-	NULL,
 };
 
 static void ShowCustCurrency()

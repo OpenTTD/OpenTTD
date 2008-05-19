@@ -125,7 +125,6 @@ static const WindowDesc _transparency_desc = {
 	WC_TRANSPARENCY_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_transparency_widgets,
-	NULL
 };
 
 void ShowTransparencyToolbar(void)

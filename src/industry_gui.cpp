@@ -91,7 +91,6 @@ static const WindowDesc _build_industry_desc = {
 	WC_BUILD_INDUSTRY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_industry_widgets,
-	NULL,
 };
 
 class BuildIndustryWindow : public Window {
@@ -680,7 +679,6 @@ static const WindowDesc _industry_view_desc = {
 	WC_INDUSTRY_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_view_widgets,
-	NULL
 };
 
 void ShowIndustryViewWindow(int industry)
@@ -968,7 +966,6 @@ static const WindowDesc _industry_directory_desc = {
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_directory_widgets,
-	NULL
 };
 
 void ShowIndustryDirectory()

@@ -801,7 +801,6 @@ static const WindowDesc _build_rail_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_rail_widgets,
-	NULL
 };
 
 
@@ -1323,7 +1322,6 @@ static const WindowDesc _station_builder_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_station_builder_widgets,
-	NULL
 };
 
 /** High level window description of the newGRF station-build window */
@@ -1332,7 +1330,6 @@ static const WindowDesc _newstation_builder_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_newstation_builder_widgets,
-	NULL
 };
 
 /** Open station build window */
@@ -1486,7 +1483,6 @@ static const WindowDesc _signal_builder_desc = {
 	WC_BUILD_SIGNAL, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_signal_builder_widgets,
-	NULL
 };
 
 /**
@@ -1561,7 +1557,6 @@ static const WindowDesc _build_depot_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_depot_widgets,
-	NULL
 };
 
 static void ShowBuildTrainDepotPicker()
@@ -1663,7 +1658,6 @@ static const WindowDesc _build_waypoint_desc = {
 	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_waypoint_widgets,
-	NULL
 };
 
 static void ShowBuildWaypointPicker()

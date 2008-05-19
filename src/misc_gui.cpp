@@ -69,7 +69,6 @@ static const WindowDesc _land_info_desc = {
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_land_info_widgets,
-	NULL
 };
 
 class LandInfoWindow : public Window {
@@ -219,7 +218,6 @@ static const WindowDesc _about_desc = {
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_about_widgets,
-	NULL
 };
 
 struct AboutWindow : public Window {
@@ -1074,7 +1072,6 @@ static const WindowDesc _query_string_desc = {
 	WC_QUERY_STRING, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_string_widgets,
-	NULL
 };
 
 /** Show a query popup window with a textbox in it.
@@ -1208,7 +1205,6 @@ static const WindowDesc _query_desc = {
 	WC_CONFIRM_POPUP_QUERY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_DEF_WIDGET | WDF_MODAL,
 	_query_widgets,
-	NULL
 };
 
 /** Show a modal confirmation window with standard 'yes' and 'no' buttons
@@ -1589,7 +1585,6 @@ static const WindowDesc _load_dialog_desc = {
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_load_dialog_widgets,
-	NULL,
 };
 
 static const WindowDesc _save_dialog_desc = {
@@ -1597,7 +1592,6 @@ static const WindowDesc _save_dialog_desc = {
 	WC_SAVELOAD, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_save_dialog_widgets,
-	NULL,
 };
 
 /** These values are used to convert the file/operations mode into a corresponding file type.

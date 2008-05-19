@@ -248,7 +248,6 @@ static const WindowDesc _iconsole_window_desc = {
 	WC_CONSOLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_iconsole_window_widgets,
-	NULL,
 };
 
 void IConsoleInit()

@@ -140,7 +140,6 @@ static const WindowDesc _air_toolbar_desc = {
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_air_toolbar_widgets,
-	NULL
 };
 
 void ShowBuildAirToolbar()
@@ -282,7 +281,6 @@ static const WindowDesc _build_airport_desc = {
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_airport_picker_widgets,
-	NULL
 };
 
 static void ShowBuildAirportPicker()

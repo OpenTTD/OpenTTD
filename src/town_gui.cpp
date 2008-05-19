@@ -264,7 +264,6 @@ static const WindowDesc _town_authority_desc = {
 	WC_TOWN_AUTHORITY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_town_authority_widgets,
-	NULL
 };
 
 static void ShowTownAuthorityWindow(uint town)
@@ -397,7 +396,6 @@ static const WindowDesc _town_view_desc = {
 	WC_TOWN_VIEW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_widgets,
-	NULL
 };
 
 void ShowTownViewWindow(TownID town)
@@ -583,7 +581,6 @@ static const WindowDesc _town_directory_desc = {
 	WC_TOWN_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_town_directory_widgets,
-	NULL
 };
 
 void ShowTownDirectory()
@@ -710,7 +707,6 @@ static const WindowDesc _scen_edit_town_gen_desc = {
 	WC_SCEN_TOWN_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
-	NULL,
 };
 
 void ShowBuildTownWindow()

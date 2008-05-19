@@ -168,7 +168,6 @@ static WindowDesc _main_status_desc = {
 	WC_STATUS_BAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_main_status_widgets,
-	NULL
 };
 
 /**

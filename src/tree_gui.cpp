@@ -175,7 +175,6 @@ static const WindowDesc _build_trees_desc = {
 	WC_BUILD_TREES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_trees_widgets,
-	NULL
 };
 
 void ShowBuildTreesToolbar()

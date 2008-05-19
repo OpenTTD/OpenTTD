@@ -133,7 +133,6 @@ static const WindowDesc _select_game_desc = {
 	WC_SELECT_GAME, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,
-	NULL
 };
 
 void ShowSelectGameWindow()

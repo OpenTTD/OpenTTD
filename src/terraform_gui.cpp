@@ -313,7 +313,6 @@ static const WindowDesc _terraform_desc = {
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_terraform_widgets,
-	NULL
 };
 
 void ShowTerraformToolbar(Window *link)
@@ -692,7 +691,6 @@ static const WindowDesc _scen_edit_land_gen_desc = {
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
-	NULL,
 };
 
 void ShowEditorTerraformToolbar()

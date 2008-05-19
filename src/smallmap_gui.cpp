@@ -1078,7 +1078,6 @@ static const WindowDesc _smallmap_desc = {
 	WC_SMALLMAP, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_smallmap_widgets,
-	NULL
 };
 
 void ShowSmallMap()
@@ -1224,7 +1223,6 @@ static const WindowDesc _extra_view_port_desc = {
 	WC_EXTRA_VIEW_PORT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_extra_view_port_widgets,
-	NULL
 };
 
 void ShowExtraViewPortWindow(TileIndex tile)

@@ -533,7 +533,6 @@ static const WindowDesc _replace_rail_vehicle_desc = {
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_vehicle_widgets,
-	NULL
 };
 
 static const WindowDesc _replace_vehicle_desc = {
@@ -541,7 +540,6 @@ static const WindowDesc _replace_vehicle_desc = {
 	WC_REPLACE_VEHICLE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_vehicle_widgets,
-	NULL
 };
 
 RailType ReplaceVehicleWindow::sel_railtype = RAILTYPE_RAIL;

@@ -858,7 +858,6 @@ static const WindowDesc _toolb_normal_desc = {
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_toolb_normal_widgets,
-	NULL
 };
 
 
@@ -1107,7 +1106,6 @@ static const WindowDesc _toolb_scen_desc = {
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
-	NULL
 };
 
 /* --- Rendering/handling the drop down menus --- */

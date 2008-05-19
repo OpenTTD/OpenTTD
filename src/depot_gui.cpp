@@ -107,7 +107,6 @@ static const WindowDesc _train_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	NULL
 };
 
 static const WindowDesc _road_depot_desc = {
@@ -115,7 +114,6 @@ static const WindowDesc _road_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	NULL
 };
 
 static const WindowDesc _ship_depot_desc = {
@@ -123,7 +121,6 @@ static const WindowDesc _ship_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	NULL
 };
 
 static const WindowDesc _aircraft_depot_desc = {
@@ -131,7 +128,6 @@ static const WindowDesc _aircraft_depot_desc = {
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
-	NULL
 };
 
 extern int WagonLengthToPixels(int len);

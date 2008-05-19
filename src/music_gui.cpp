@@ -351,7 +351,6 @@ static const WindowDesc _music_track_selection_desc = {
 	WC_MUSIC_TRACK_SELECTION, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_music_track_selection_widgets,
-	NULL
 };
 
 static void ShowMusicTrackSelection()
@@ -553,7 +552,6 @@ static const WindowDesc _music_window_desc = {
 	WC_MUSIC_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_music_window_widgets,
-	NULL
 };
 
 void ShowMusicWindow()

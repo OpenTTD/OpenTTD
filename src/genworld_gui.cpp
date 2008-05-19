@@ -554,7 +554,6 @@ static const WindowDesc _generate_landscape_desc = {
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_generate_landscape_widgets,
-	NULL,
 };
 
 static const WindowDesc _heightmap_load_desc = {
@@ -562,7 +561,6 @@ static const WindowDesc _heightmap_load_desc = {
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_heightmap_load_widgets,
-	NULL,
 };
 
 static void _ShowGenerateLandscape(glwp_modes mode)
@@ -801,7 +799,6 @@ static const WindowDesc _create_scenario_desc = {
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS,
 	_create_scenario_widgets,
-	NULL,
 };
 
 void ShowCreateScenario()
@@ -823,7 +820,6 @@ static const WindowDesc _generate_progress_desc = {
 	WC_GENERATE_PROGRESS_WINDOW, WC_NONE,
 	WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_generate_progress_widgets,
-	NULL
 };
 
 struct tp_info {

@@ -230,7 +230,6 @@ static const WindowDesc _player_finances_desc = {
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_widgets,
-	NULL
 };
 
 static const WindowDesc _player_finances_small_desc = {
@@ -238,7 +237,6 @@ static const WindowDesc _player_finances_small_desc = {
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_small_widgets,
-	NULL
 };
 
 /**
@@ -543,7 +541,6 @@ static const WindowDesc _select_player_livery_desc = {
 	WC_PLAYER_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_widgets,
-	NULL
 };
 
 /**
@@ -1010,7 +1007,6 @@ static const WindowDesc _select_player_face_desc = {
 	WC_PLAYER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_widgets,
-	NULL
 };
 
 /** advanced player face selection window description */
@@ -1019,7 +1015,6 @@ static const WindowDesc _select_player_face_adv_desc = {
 	WC_PLAYER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_adv_widgets,
-	NULL
 };
 
 /**
@@ -1348,7 +1343,6 @@ static const WindowDesc _player_company_desc = {
 	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_company_widgets,
-	NULL
 };
 
 void ShowPlayerCompany(PlayerID player)
@@ -1407,7 +1401,6 @@ static const WindowDesc _buy_company_desc = {
 	WC_BUY_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_buy_company_widgets,
-	NULL
 };
 
 
@@ -1578,7 +1571,6 @@ static const WindowDesc _highscore_desc = {
 	WC_HIGHSCORE, WC_NONE,
 	0,
 	_highscore_widgets,
-	NULL
 };
 
 static const WindowDesc _endgame_desc = {
@@ -1586,7 +1578,6 @@ static const WindowDesc _endgame_desc = {
 	WC_ENDSCREEN, WC_NONE,
 	0,
 	_highscore_widgets,
-	NULL
 };
 
 /** Show the highscore table for a given difficulty. When called from
