@@ -800,7 +800,6 @@ struct BuildVehicleWindow : Window {
 		AirportFTAClass::Flags flags;
 		RoadTypes roadtypes;
 	} filter;
-	byte sel_index;  ///< deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;
 	byte sort_criteria;
 	bool regenerate_list;
