@@ -674,9 +674,9 @@ struct MainToolbarWindow : Window {
 
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 
+		this->FindWindowPlacementAndResize(desc);
 		PositionMainToolbar(this);
 		DoZoomInOutWindow(ZOOM_NONE, this);
-		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
