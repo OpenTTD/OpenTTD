@@ -66,54 +66,63 @@ static void GlobalSortSignList()
 	DEBUG(misc, 3, "Resorting global signs list");
 }
 
-static void SignListWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-		case WE_PAINT: {
-			if (_sign_sort_dirty) GlobalSortSignList();
+struct SignListWindow : Window {
+	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	{
+		this->vscroll.cap = 12;
+		this->resize.step_height = 10;
+		this->resize.height = this->height - 10 * 7; // minimum if 5 in the list
 
-			SetVScrollCount(w, _num_sign_sort);
-
-			SetDParam(0, w->vscroll.count);
-			w->DrawWidgets();
-
-			/* No signs? */
-			int y = 16; // offset from top of widget
-			if (w->vscroll.count == 0) {
-				DrawString(2, y, STR_304A_NONE, TC_FROMSTRING);
-				return;
-			}
-
-			/* Start drawing the signs */
-			for (uint16 i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
-				const Sign *si = _sign_sort[i];
-
-				if (si->owner != OWNER_NONE) DrawPlayerIcon(si->owner, 4, y + 1);
-
-				SetDParam(0, si->index);
-				DrawString(22, y, STR_SIGN_NAME, TC_YELLOW);
-				y += 10;
-			}
-		} break;
-
-		case WE_CLICK:
-			if (e->we.click.widget == 3) {
-				uint32 id_v = (e->we.click.pt.y - 15) / 10;
-
-				if (id_v >= w->vscroll.cap) return;
-				id_v += w->vscroll.pos;
-				if (id_v >= w->vscroll.count) return;
-
-				const Sign *si = _sign_sort[id_v];
-				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-			}
-			break;
-
-		case WE_RESIZE:
-			w->vscroll.cap += e->we.sizing.diff.y / 10;
-			break;
+		this->FindWindowPlacementAndResize(desc);
 	}
-}
+
+	virtual void OnPaint()
+	{
+		if (_sign_sort_dirty) GlobalSortSignList();
+
+		SetVScrollCount(this, _num_sign_sort);
+
+		SetDParam(0, this->vscroll.count);
+		this->DrawWidgets();
+
+		/* No signs? */
+		int y = 16; // offset from top of widget
+		if (this->vscroll.count == 0) {
+			DrawString(2, y, STR_304A_NONE, TC_FROMSTRING);
+			return;
+		}
+
+		/* Start drawing the signs */
+		for (uint16 i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < this->vscroll.count; i++) {
+			const Sign *si = _sign_sort[i];
+
+			if (si->owner != OWNER_NONE) DrawPlayerIcon(si->owner, 4, y + 1);
+
+			SetDParam(0, si->index);
+			DrawString(22, y, STR_SIGN_NAME, TC_YELLOW);
+			y += 10;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget == 3) {
+			uint32 id_v = (pt.y - 15) / 10;
+
+			if (id_v >= this->vscroll.cap) return;
+			id_v += this->vscroll.pos;
+			if (id_v >= this->vscroll.count) return;
+
+			const Sign *si = _sign_sort[id_v];
+			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / 10;
+	}
+};
 
 static const Widget _sign_list_widget[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
@@ -130,18 +139,13 @@ static const WindowDesc _sign_list_desc = {
 	WC_SIGN_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_sign_list_widget,
-	SignListWndProc
+	NULL
 };
 
 
 void ShowSignList()
 {
-	Window *w = AllocateWindowDescFront<Window>(&_sign_list_desc, 0);
-	if (w != NULL) {
-		w->vscroll.cap = 12;
-		w->resize.step_height = 10;
-		w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
-	}
+	AllocateWindowDescFront<SignListWindow>(&_sign_list_desc, 0);
 }
 
 static void RenameSign(SignID index, const char *text)
