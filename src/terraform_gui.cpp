@@ -347,8 +347,6 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 	int sizex, sizey;
 	uint h;
 
-	_generating_world = true; // used to create green terraformed land
-
 	if (_terraform_size == 1) {
 		StringID msg =
 			mode ? STR_0808_CAN_T_RAISE_LAND_HERE : STR_0809_CAN_T_LOWER_LAND_HERE;
@@ -384,8 +382,6 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 			}
 		} END_TILE_LOOP(tile2, sizex, sizey, tile)
 	}
-
-	_generating_world = false;
 }
 
 static void PlaceProc_RaiseBigLand(TileIndex tile)
