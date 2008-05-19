@@ -925,6 +925,8 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 					this->sort_type = widget - IDW_SORTBYNAME;
 					this->flags &= ~VL_DESC;
 				}
+				industry_sort.criteria = this->sort_type;
+				industry_sort.order = HasBit(this->flags, 0);
 				this->flags |= VL_RESORT;
 				this->SetDirty();
 				break;
