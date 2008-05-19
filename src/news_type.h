@@ -82,15 +82,6 @@ DECLARE_ENUM_AS_BIT_SET(NewsFlag);
 
 
 /**
- * Special news items
- */
-enum NewsCallback {
-	DNC_VEHICLEAVAIL  = 0,    ///< Show new vehicle available message. StringID is EngineID
-	DNC_BANKRUPCY     = 1,    ///< Show bankrupcy message. StringID is PlayerID (0-3) and NewsBankrupcy (4-7)
-	DNC_NONE          = 0xFF, ///< No news callback.
-};
-
-/**
  * News display options
  */
 enum NewsDisplay {

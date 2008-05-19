@@ -137,11 +137,6 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 }
 
 
-static DrawNewsCallbackProc * const _draw_news_callback[] = {
-	DrawNewsNewVehicleAvail,  ///< DNC_VEHICLEAVAIL
-	DrawNewsBankrupcy,        ///< DNC_BANKRUPCY
-};
-
 /**
  * Data common to all news items of a given subtype (structure)
  */
@@ -149,7 +144,7 @@ struct NewsSubtypeData {
 	NewsType type;         ///< News category @see NewsType
 	NewsMode display_mode; ///< Display mode value @see NewsMode
 	NewsFlag flags;        ///< Initial NewsFlags bits @see NewsFlag
-	NewsCallback callback; ///< Call-back function
+	DrawNewsCallbackProc *callback; ///< Call-back function
 };
 
 /**
@@ -157,24 +152,24 @@ struct NewsSubtypeData {
  */
 static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
 	/* type,             display_mode, flags,                  callback */
-	{ NT_ARRIVAL_PLAYER,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ARRIVAL_PLAYER
-	{ NT_ARRIVAL_OTHER,   NM_THIN,     NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_ACCIDENT_TILE
-	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ACCIDENT_VEHICLE
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_TILE,                DNC_BANKRUPCY    }, ///< NS_COMPANY_NEW
-	{ NT_OPENCLOSE,       NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_OPENCLOSE
-	{ NT_ECONOMY,         NM_NORMAL,   NF_NONE,                DNC_NONE         }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_PLAYER, NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_INDUSTRY_PLAYER
-	{ NT_INDUSTRY_OTHER,  NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY, NM_THIN,     NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,          NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, DNC_NONE         }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,    NM_CALLBACK, NF_NONE,                DNC_VEHICLEAVAIL }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,      NM_SMALL,    NF_VIEWPORT|NF_TILE,    DNC_NONE         }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,       NM_NORMAL,   NF_TILE|NF_TILE2,       DNC_NONE         }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,         NM_NORMAL,   NF_TILE,                DNC_NONE         }, ///< NS_GENERAL
+	{ NT_ARRIVAL_PLAYER,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_PLAYER
+	{ NT_ARRIVAL_OTHER,   NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCIDENT_TILE
+	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ACCIDENT_VEHICLE
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
+	{ NT_OPENCLOSE,       NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_OPENCLOSE
+	{ NT_ECONOMY,         NM_NORMAL,   NF_NONE,                NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_PLAYER, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_PLAYER
+	{ NT_INDUSTRY_OTHER,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,          NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,    NM_CALLBACK, NF_NONE,                DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,      NM_SMALL,    NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,       NM_NORMAL,   NF_TILE|NF_TILE2,       NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,         NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
 };
 
 /** Initialize the news-items data structures */
@@ -262,7 +257,7 @@ struct NewsWindow : Window {
 
 			case NM_CALLBACK:
 				this->DrawNewsBorder();
-				_draw_news_callback[_news_subtype_data[this->ni->subtype].callback](this, ni);
+				(_news_subtype_data[this->ni->subtype].callback)(this, ni);
 				break;
 
 			default:
