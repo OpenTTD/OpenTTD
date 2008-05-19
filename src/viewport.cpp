@@ -2661,7 +2661,10 @@ calc_heightdiff_single_direction:;
 	_thd.selend.y = y;
 }
 
-/** while dragging */
+/**
+ * Handle the mouse while dragging for placement/resizing.
+ * @return Boolean whether search for a handler should continue
+ */
 bool VpHandlePlaceSizingDrag()
 {
 	if (_special_mouse_mode != WSM_SIZING) return true;

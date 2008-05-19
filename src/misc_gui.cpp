@@ -1081,10 +1081,10 @@ static const WindowDesc _query_string_desc = {
  * @param str StringID for the text shown in the textbox
  * @param caption StringID of text shown in caption of querywindow
  * @param maxlen maximum length in characters allowed. If bit 12 is set we
- * will not check the resulting string against to original string to return success
+ *               will not check the resulting string against to original string to return success
  * @param maxwidth maximum width in pixels allowed
  * @param parent pointer to a Window that will handle the events (ok/cancel) of this
- * window. If NULL, results are handled by global function HandleOnEditText
+ *        window. If NULL, results are handled by global function HandleOnEditText
  * @param afilter filters out unwanted character input */
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter)
 {

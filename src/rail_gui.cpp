@@ -42,25 +42,25 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static RailType _cur_railtype;
-static bool _remove_button_clicked;
-static DiagDirection _build_depot_direction;
-static byte _waypoint_count = 1;
-static byte _cur_waypoint_type;
-static bool _convert_signal_button;       ///< convert signal button in the signal GUI pressed
-static SignalVariant _cur_signal_variant; ///< set the signal variant (for signal GUI)
-static SignalType _cur_signal_type;       ///< set the signal type (for signal GUI)
+static RailType _cur_railtype;               ///< Rail type of the current build-rail toolbar.
+static bool _remove_button_clicked;          ///< Flag whether 'remove' toggle-button is currently enabled
+static DiagDirection _build_depot_direction; ///< Currently selected depot direction
+static byte _waypoint_count = 1;             ///< Number of waypoint types
+static byte _cur_waypoint_type;              ///< Currently selected waypoint type
+static bool _convert_signal_button;          ///< convert signal button in the signal GUI pressed
+static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
+static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
 
 static struct {
-	byte orientation;
-	byte numtracks;
-	byte platlength;
-	bool dragdrop;
+	byte orientation;                 ///< Currently selected rail station orientation
+	byte numtracks;                   ///< Currently selected number of tracks in station (if not \c dragdrop )
+	byte platlength;                  ///< Currently selected platform length of station (if not \c dragdrop )
+	bool dragdrop;                    ///< Use drag & drop to place a station
 
-	bool newstations;
-	StationClassIDByte station_class;
-	byte station_type;
-	byte station_count;
+	bool newstations;                 ///< Are custom station definitions available?
+	StationClassIDByte station_class; ///< Currently selected custom station class (if newstations is \c true )
+	byte station_type;                ///< Station type within the currently selected custom station class (if newstations is \c true )
+	byte station_count;               ///< Number of custom stations (if newstations is \c true )
 } _railstation;
 
 
@@ -111,6 +111,12 @@ static void PlaceRail_AutoRail(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_RAILDIRS, DDSP_PLACE_AUTORAIL);
 }
 
+/**
+ * Try to add an additional rail-track at the entrance of a depot
+ * @param tile  Tile to use for adding the rail-track
+ * @param extra Track to add
+ * @see CcRailDepot()
+ */
 static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 {
 	if (GetRailTileType(tile) != RAIL_TILE_NORMAL) return;
@@ -119,10 +125,11 @@ static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 	DoCommandP(tile, _cur_railtype, extra & 0xFF, NULL, CMD_BUILD_SINGLE_RAIL | CMD_NO_WATER);
 }
 
+/** Additional pieces of track to add at the entrance of a depot. */
 static const uint16 _place_depot_extra[12] = {
-	0x0604, 0x2102, 0x1202, 0x0505,
-	0x2400, 0x2801, 0x1800, 0x1401,
-	0x2203, 0x0904, 0x0A05, 0x1103,
+	0x0604, 0x2102, 0x1202, 0x0505,  // First additional track for directions 0..3
+	0x2400, 0x2801, 0x1800, 0x1401,  // Second additional track
+	0x2203, 0x0904, 0x0A05, 0x1103,  // Third additional track
 };
 
 
@@ -235,6 +242,7 @@ static void PlaceRail_Bridge(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 }
 
+/** Command callback for building a tunnel */
 void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
@@ -285,7 +293,7 @@ enum RailToolbarWidgets {
 };
 
 
-/** Toogles state of the Remove button of Build rail toolbar
+/** Toggles state of the Remove button of Build rail toolbar
  * @param w window the button belongs to
  */
 static void ToggleRailButton_Remove(Window *w)
@@ -316,36 +324,71 @@ static bool RailToolbar_CtrlChanged(Window *w)
 }
 
 
+/**
+ * The "rail N"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_N(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, VHM_RECT, PlaceRail_N);
 }
 
+/**
+ * The "rail NE"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_NE(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, VHM_RECT, PlaceRail_NE);
 }
 
+/**
+ * The "rail E"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_E(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, VHM_RECT, PlaceRail_E);
 }
 
+/**
+ * The "rail NW"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_NW(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, VHM_RECT, PlaceRail_NW);
 }
 
+/**
+ * The "auto-rail"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_AutoRail(Window *w)
 {
 	HandlePlacePushButton(w, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, VHM_RAIL, PlaceRail_AutoRail);
 }
 
+/**
+ * The "demolish"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Demolish(Window *w)
 {
 	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
+/**
+ * The "build depot"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Depot(Window *w)
 {
 	if (HandlePlacePushButton(w, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, VHM_RECT, PlaceRail_Depot)) {
@@ -353,6 +396,12 @@ static void BuildRailClick_Depot(Window *w)
 	}
 }
 
+/**
+ * The "build waypoint"-button click proc of the build-rail toolbar.
+ * If there are newGRF waypoints, also open a window to pick the waypoint type.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
@@ -362,12 +411,22 @@ static void BuildRailClick_Waypoint(Window *w)
 	}
 }
 
+/**
+ * The "build station"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Station(Window *w)
 {
 	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, VHM_RECT, PlaceRail_Station)) ShowStationBuilder();
 }
 
-/** The "build signal"-button proc from BuildRailToolbWndProc() (start ShowSignalBuilder() and/or HandleAutoSignalPlacement()) */
+/**
+ * The "build signal"-button click proc of the build-rail toolbar.
+ * Start ShowSignalBuilder() and/or HandleAutoSignalPlacement().
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_AutoSignals(Window *w)
 {
 	if (_patches.enable_signal_gui != _ctrl_pressed) {
@@ -377,16 +436,31 @@ static void BuildRailClick_AutoSignals(Window *w)
 	}
 }
 
+/**
+ * The "build bridge"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Bridge(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceRail_Bridge);
 }
 
+/**
+ * The "build tunnel"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Tunnel(Window *w)
 {
 	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, VHM_SPECIAL, PlaceRail_Tunnel);
 }
 
+/**
+ * The "remove"-button click proc of the build-rail toolbar.
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Remove(Window *w)
 {
 	if (w->IsWidgetDisabled(RTW_REMOVE)) return;
@@ -416,6 +490,12 @@ static void BuildRailClick_Remove(Window *w)
 	}
 }
 
+/**
+ * The "convert-rail"-button click proc of the build-rail toolbar.
+ * Switches to 'convert-rail' mode
+ * @param w Build-rail toolbar window
+ * @see BuildRailToolbWndProc()
+ */
 static void BuildRailClick_Convert(Window *w)
 {
 	HandlePlacePushButton(w, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, VHM_RECT, PlaceRail_ConvertRail);
@@ -526,6 +606,11 @@ static const uint16 _rail_keycodes[] = {
 };
 
 
+/**
+ * Based on the widget clicked, update the status of the 'remove' button.
+ * @param w              Rail toolbar window
+ * @param clicked_widget Widget clicked in the toolbar
+ */
 struct BuildRailToolbarWindow : Window {
 	BuildRailToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
@@ -740,6 +825,17 @@ static void SetupRailToolbar(RailType railtype, Window *w)
 	w->widget[RTW_BUILD_TUNNEL].data = rti->gui_sprites.build_tunnel;
 }
 
+/**
+ * Open the build rail toolbar window for a specific rail type.
+ * The window may be opened in the 'normal' way by clicking at the rail icon in
+ * the main toolbar, or by means of selecting one of the functions of the
+ * toolbar. In the latter case, the corresponding widget is also selected.
+ *
+ * If the terraform toolbar is linked to the toolbar, that window is also opened.
+ *
+ * @param railtype Rail type to open the window for
+ * @param button   Widget clicked (\c -1 means no button clicked)
+ */
 void ShowBuildRailToolbar(RailType railtype, int button)
 {
 	BuildRailToolbarWindow *w;
@@ -824,11 +920,16 @@ private:
 		BRSW_NEWST_SCROLL
 	};
 
-	/* Check if the currently selected station size is allowed */
+	/**
+	 * Verify whether the currently selected station size is allowed after selecting a new station class/type.
+	 * If not, change the station size variables ( _railstation.numtracks and _railstation.platlength ).
+	 * @param statspec Specification of the new station class/type
+	 */
 	void CheckSelectedSize(const StationSpec *statspec)
 	{
 		if (statspec == NULL || _railstation.dragdrop) return;
 
+		/* If current number of tracks is not allowed, make it as big as possible (which is always less than currently selected) */
 		if (HasBit(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
 			this->RaiseWidget(_railstation.numtracks + BRSW_PLATFORM_NUM_BEGIN);
 			_railstation.numtracks = 1;
@@ -848,6 +949,7 @@ private:
 		}
 	}
 
+	/** Build a dropdown list of available station classes */
 	static DropDownList *BuildStationClassDropDown()
 	{
 		DropDownList *list = new DropDownList();
@@ -859,6 +961,11 @@ private:
 
 		return list;
 	}
+/**
+ * Window event handler of station build window.
+ * @param w Staion build window
+ * @param e Window event to handle
+ */
 
 public:
 	BuildRailStationWindow(const WindowDesc *desc, bool newstation) : PickerWindowBase(desc)
@@ -1210,6 +1317,7 @@ static const Widget _newstation_builder_widgets[] = {
 {   WIDGETS_END},
 };
 
+/** High level window description of the default station-build window */
 static const WindowDesc _station_builder_desc = {
 	WDP_AUTO, WDP_AUTO, 148, 200, 148, 200,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
@@ -1218,6 +1326,7 @@ static const WindowDesc _station_builder_desc = {
 	NULL
 };
 
+/** High level window description of the newGRF station-build window */
 static const WindowDesc _newstation_builder_desc = {
 	WDP_AUTO, WDP_AUTO, 148, 290, 148, 290,
 	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
@@ -1226,6 +1335,7 @@ static const WindowDesc _newstation_builder_desc = {
 	NULL
 };
 
+/** Open station build window */
 static void ShowStationBuilder()
 {
 	if (GetNumStationClasses() <= 2 && GetNumCustomStations(STAT_CLASS_DFLT) == 1) {
@@ -1561,7 +1671,9 @@ static void ShowBuildWaypointPicker()
 	new BuildRailWaypointWindow(&_build_waypoint_desc);
 }
 
-
+/**
+ * Initialize rail building GUI settings
+ */
 void InitializeRailGui()
 {
 	_build_depot_direction = DIAGDIR_NW;
@@ -1570,6 +1682,10 @@ void InitializeRailGui()
 	_railstation.dragdrop = true;
 }
 
+/**
+ * Re-initialize rail-build toolbar after toggling support for electric trains
+ * @param disable Boolean whether electric trains are disabled (removed from the game)
+ */
 void ReinitGuiAfterToggleElrail(bool disable)
 {
 	extern RailType _last_built_railtype;
@@ -1585,6 +1701,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 	MarkWholeScreenDirty();
 }
 
+/** Set the initial (default) railtype to use */
 static void SetDefaultRailGui()
 {
 	if (_local_player == PLAYER_SPECTATOR || !IsValidPlayer(_local_player)) return;
