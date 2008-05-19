@@ -1121,11 +1121,11 @@ enum QueryWidgets {
  * Window used for asking the user a YES/NO question.
  */
 struct QueryWindow : public Window {
-	void (*proc)(Window*, bool); ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
-	uint64 params[10];           ///< local copy of _decode_parameters
-	StringID message;            ///< message shown for query window
+	QueryCallbackProc *proc; ///< callback function executed on closing of popup. Window* points to parent, bool is true if 'yes' clicked, false otherwise
+	uint64 params[10];       ///< local copy of _decode_parameters
+	StringID message;        ///< message shown for query window
 
-	QueryWindow(const WindowDesc *desc, StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool)) : Window(desc)
+	QueryWindow(const WindowDesc *desc, StringID caption, StringID message, Window *parent, QueryCallbackProc *callback) : Window(desc)
 	{
 		if (parent == NULL) parent = FindWindowById(WC_MAIN_WINDOW, 0);
 		this->parent = parent;
@@ -1159,12 +1159,17 @@ struct QueryWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case QUERY_WIDGET_YES:
-				if (this->proc != NULL) {
-					this->proc(this->parent, true);
-					this->proc = NULL;
+			case QUERY_WIDGET_YES: {
+				/* in the Generate New World window, clicking 'Yes' causes
+				 * DeleteNonVitalWindows() to be called - we shouldn't be in a window then */
+				QueryCallbackProc *proc = this->proc;
+				Window *parent = this->parent;
+				delete this;
+				if (proc != NULL) {
+					proc(parent, true);
+					proc = NULL;
 				}
-				/* Fallthrough */
+			} break;
 			case QUERY_WIDGET_NO:
 				delete this;
 				break;
@@ -1215,7 +1220,7 @@ static const WindowDesc _query_desc = {
  * @param parent pointer to parent window, if this pointer is NULL the parent becomes
  * the main window WC_MAIN_WINDOW
  * @param callback callback function pointer to set in the window descriptor*/
-void ShowQuery(StringID caption, StringID message, Window *parent, void (*callback)(Window*, bool))
+void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback)
 {
 	new QueryWindow(&_query_desc, caption, message, parent, callback);
 }

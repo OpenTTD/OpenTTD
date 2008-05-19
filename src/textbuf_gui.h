@@ -28,8 +28,10 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode);
 void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth);
 void UpdateTextBufferSize(Textbuf *tb);
 
+typedef void QueryCallbackProc(Window*, bool);
+
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter);
-void ShowQuery(StringID caption, StringID message, Window *w, void (*callback)(Window*, bool));
+void ShowQuery(StringID caption, StringID message, Window *w, QueryCallbackProc *callback);
 
 /** The number of 'characters' on the on-screen keyboard. */
 static const uint OSK_KEYBOARD_ENTRIES = 50;
