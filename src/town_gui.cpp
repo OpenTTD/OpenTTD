@@ -305,6 +305,8 @@ struct TownViewWindow : Window {
 			this->widget[TVW_CHANGENAME].bottom = this->widget[TVW_EXPAND].bottom;
 			this->widget[TVW_CHANGENAME].right = this->widget[TVW_STICKY].right;
 		}
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
