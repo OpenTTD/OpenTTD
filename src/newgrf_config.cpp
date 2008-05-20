@@ -410,7 +410,6 @@ void ScanNewGRFFiles()
 	 * For that we first have to make an array, the qsort and
 	 * then remake the linked list. */
 	GRFConfig **to_sort = MallocT<GRFConfig*>(num);
-	if (to_sort == NULL) return; // No memory, then don't sort
 
 	uint i = 0;
 	for (GRFConfig *p = _all_grfs; p != NULL; p = p->next, i++) {
@@ -426,6 +425,8 @@ void ScanNewGRFFiles()
 	}
 	to_sort[num - 1]->next = NULL;
 	_all_grfs = to_sort[0];
+
+	free(to_sort);
 }
 
 

@@ -897,6 +897,9 @@ void SwitchMode(int new_mode)
 			SetDParamStr(0, GetSaveLoadErrorString());
 			ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		} else {
+			if (_saveload_mode == SLD_LOAD_SCENARIO) {
+				StartupEngines();
+			}
 			/* Update the local player for a loaded game. It is either always
 			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
 			SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : PLAYER_FIRST);

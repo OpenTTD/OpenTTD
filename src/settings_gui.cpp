@@ -422,7 +422,7 @@ static const GameSettingData _game_setting_info[] = {
 /*
  * A: competitors
  * B: start time in months / 3
- * C: town count (2 = high, 0 = very low)
+ * C: town count (3 = high, 0 = very low)
  * D: industry count (4 = high, 0 = none)
  * E: inital loan / 1000 (in GBP)
  * F: interest rate
@@ -441,9 +441,9 @@ static const GameSettingData _game_setting_info[] = {
  */
 static const GDType _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
 	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
-	{2, 2, 1, 4, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
-	{4, 1, 1, 3, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
-	{7, 0, 0, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, ///< hard
+	{2, 2, 2, 4, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
+	{4, 1, 2, 3, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
+	{7, 0, 3, 3, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, ///< hard
 };
 
 void SetDifficultyLevel(int mode, GameOptions *gm_opt)

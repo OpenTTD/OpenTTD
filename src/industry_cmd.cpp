@@ -1383,7 +1383,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
-	if (_patches.same_industry_close && indspec->accepts_cargo[0] == CT_INVALID)
+	if (_patches.same_industry_close && indspec->IsRawIndustry())
 		/* Allow primary industries to be placed close to any other industry */
 		return true;
 
@@ -1393,7 +1393,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 
 		/* check if an industry that accepts the same goods is nearby */
 		if (in_low_distance &&
-				indspec->accepts_cargo[0] != CT_INVALID && // not a primary industry?
+				!indspec->IsRawIndustry() && // not a primary industry?
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 				/* at least one of those options must be true */
 				_game_mode != GM_EDITOR || // editor must not be stopped
@@ -1896,7 +1896,8 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 
 	/* Check for acceptance of cargo */
-	for (uint j = 0; j < lengthof(ind->accepts_cargo) && ind->accepts_cargo[j] != CT_INVALID; j++) {
+	for (byte j = 0; j < lengthof(ind->accepts_cargo); j++) {
+		if (ind->accepts_cargo[j] == CT_INVALID) continue;
 		if (cargo == ind->accepts_cargo[j]) {
 			if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
 				uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO,
@@ -1910,7 +1911,8 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 	}
 
 	/* Check for produced cargo */
-	for (uint j = 0; j < lengthof(ind->produced_cargo) && ind->produced_cargo[j] != CT_INVALID; j++) {
+	for (byte j = 0; j < lengthof(ind->produced_cargo); j++) {
+		if (ind->produced_cargo[j] == CT_INVALID) continue;
 		if (cargo == ind->produced_cargo[j]) {
 			*c_produces = true;
 			break;
@@ -2072,7 +2074,8 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 		if (smooth_economy) {
 			closeit = true;
-			for (byte j = 0; j < 2 && i->produced_cargo[j] != CT_INVALID; j++){
+			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+				if (i->produced_cargo[j] == CT_INVALID) continue;
 				uint32 r = Random();
 				int old_prod, new_prod, percent;
 				/* If over 60% is transported, mult is 1, else mult is -1. */
