@@ -1,3 +1,25 @@
+0.6.1-RC2 (2008-05-21)
+------------------------------------------------------------------------
+- Fix: Do not send rcon commands of the server to the first client but do directly execute those on the server (r13137)
+- Fix: For multiheaded engines, halve power and running cost when used instead of when loading, to allow callback values to work properly (r13074)
+- Fix: Loading of TTDP savegames with rivers in them [FS#2005] (r13066)
+- Fix: Update build industry window when raw_industry_construction setting is modified (r13060)
+- Fix: Revert changes to multihead engine weight -- the original values were correct (r13023)
+- Fix: Debugging was not possible with MSVC 2008 (r12996)
+- Fix: List used for sorting GRFs was not freed (r12993)
+- Fix: Default difficulty settings were different to TTD's original settings [FS#1977] (r12951)
+- Fix: All vehicles would be available when an original scenario would be played [FS#1982] (r12948)
+- Fix: Keep only first 15 bits for non failed callback results (r12947)
+- Fix: Reading/modifying invalid data under some circumstances (r12943)
+- Fix: Minor errors related to industries accepted/produced cargo (r12933)
+- Fix: Town rating was affected even after the test run (r12920)
+- Fix: Flood road tiles even when there are road works in progress [FS#1965] (r12919)
+- Fix: Do not initialize Station struct with tile=0, buoys will never change that value [FS#1960] (r12915)
+- Fix: Game crash when a spectator/server tried to show an engine with no owner when a NewGRF requested a specific variable (r12914)
+- Fix: Report reverse sprite status (FD/FE) to NewGRF for manually toggled vehicles (r12910)
+- Fix: Vehicles going twice to a depot when the automatic service interfered with the current order [FS#1985] (r12629)
+
+
 0.6.1-RC1 (2008-04-26)
 ------------------------------------------------------------------------
 - Fix: Vehicle groups, engine replacement rules and player/company names were not properly reset/freed after bankrupt (r12906)
