@@ -2438,7 +2438,7 @@ void SetTownRatingTestMode(bool mode)
 	static int ref_count = 0;
 	if (mode) {
 		if (ref_count == 0) {
-			_town_test_ratings.empty();
+			_town_test_ratings.clear();
 		}
 		ref_count++;
 	} else {
