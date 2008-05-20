@@ -60,13 +60,59 @@ static struct IndustryData {
 assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.text));
 assert_compile(lengthof(_fund_gui.index) == lengthof(_fund_gui.enabled));
 
+static void SetupFundArrays(Window *w)
+{
+	IndustryType ind;
+	const IndustrySpec *indsp;
+
+	_fund_gui.count = 0;
+
+	for (uint i = 0; i < lengthof(_fund_gui.index); i++) {
+		_fund_gui.index[i]   = INVALID_INDUSTRYTYPE;
+		_fund_gui.text[i]    = STR_NULL;
+		_fund_gui.enabled[i] = false;
+	}
+
+	if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
+		_fund_gui.index[_fund_gui.count] = INVALID_INDUSTRYTYPE;
+		_fund_gui.count++;
+		WP(w, fnd_d).timer_enabled = false;
+	}
+	/* Fill the arrays with industries.
+	 * The tests performed after the enabled allow to load the industries
+	 * In the same way they are inserted by grf (if any)
+	 */
+	for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
+		indsp = GetIndustrySpec(ind);
+		if (indsp->enabled){
+			/* Rule is that editor mode loads all industries.
+			 * In game mode, all non raw industries are loaded too
+			 * and raw ones are loaded only when setting allows it */
+			if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) {
+				/* Unselect if the industry is no longer in the list */
+				if (WP(w, fnd_d).select == ind) WP(w, fnd_d).index = -1;
+				continue;
+			}
+			_fund_gui.index[_fund_gui.count] = ind;
+			_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
+			/* Keep the selection to the correct line */
+			if (WP(w, fnd_d).select == ind) WP(w, fnd_d).index = _fund_gui.count;
+			_fund_gui.count++;
+		}
+	}
+
+	/* first indutry type is selected if the current selection is invalid.
+	 * I'll be damned if there are none available ;) */
+	if (WP(w, fnd_d).index == -1) {
+		WP(w, fnd_d).index = 0;
+		WP(w, fnd_d).select = _fund_gui.index[0];
+	}
+}
+
 static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE: {
-			IndustryType ind;
-			const IndustrySpec *indsp;
-
 			/* Shorten the window to the equivalant of the additionnal purchase
 			 * info coming from the callback.  SO it will only be available to tis full
 			 * height when newindistries are loaded */
@@ -81,45 +127,15 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 
 			WP(w, fnd_d).timer_enabled = _loaded_newgrf_features.has_newindustries;
 
-			/* Initilialize structures */
-			_fund_gui.count = 0;
-
-			for (uint i = 0; i < lengthof(_fund_gui.index); i++) {
-				_fund_gui.index[i]   = 0xFF;
-				_fund_gui.text[i]    = STR_NULL;
-				_fund_gui.enabled[i] = false;
-			}
-
 			w->vscroll.cap = 8; // rows in grid, same in scroller
 			w->resize.step_height = 13;
 
-			if (_game_mode == GM_EDITOR) { // give room for the Many Random "button"
-				_fund_gui.index[_fund_gui.count] = INVALID_INDUSTRYTYPE;
-				_fund_gui.count++;
-				WP(w, fnd_d).timer_enabled = false;
-			}
+			WP(w, fnd_d).index = -1;
+			WP(w, fnd_d).select = INVALID_INDUSTRYTYPE;
 
-			/* Fill the _fund_gui structure with industries.
-			 * The tests performed after the enabled allow to load the industries
-			 * In the same way they are inserted by grf (if any)
-			 */
-			for (ind = 0; ind < NUM_INDUSTRYTYPES; ind++) {
-				indsp = GetIndustrySpec(ind);
-				if (indsp->enabled){
-					/* Rule is that editor mode loads all industries.
-					 * In game mode, all non raw industries are loaded too
-					 * and raw ones are loaded only when setting allows it */
-					if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _patches.raw_industry_construction == 0) continue;
-					_fund_gui.index[_fund_gui.count] = ind;
-					_fund_gui.enabled[_fund_gui.count] = (_game_mode == GM_EDITOR) || CheckIfCallBackAllowsAvailability(ind, IACT_USERCREATION);
-					_fund_gui.count++;
-				}
-			}
+			/* Initialize arrays */
+			SetupFundArrays(w);
 
-			/* first indutry type is selected.
-			 * I'll be damned if there are none available ;) */
-			WP(w, fnd_d).index = 0;
-			WP(w, fnd_d).select = _fund_gui.index[0];
 			WP(w, fnd_d).callback_timer = DAY_TICKS;
 		} break;
 
@@ -333,6 +349,10 @@ static void BuildDynamicIndustryWndProc(Window *w, WindowEvent *e)
 		case WE_ABORT_PLACE_OBJ:
 			w->RaiseButtons();
 			break;
+
+		case WE_INVALIDATE_DATA:
+			SetupFundArrays(w);
+			SetWindowDirty(w);
 	}
 }
 
