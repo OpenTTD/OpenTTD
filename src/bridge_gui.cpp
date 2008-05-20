@@ -183,7 +183,7 @@ public:
 
 		uint y = this->widget[BBSW_BRIDGE_LIST].top + 2;
 
-		for (uint i = this->vscroll.pos; (i < (this->vscroll.cap + this->vscroll.pos)) && (i < this->bridges->list_length); i++) {
+		for (int i = this->vscroll.pos; (i < (this->vscroll.cap + this->vscroll.pos)) && (i < this->bridges->list_length); i++) {
 			const BridgeSpec *b = this->bridges->sort_list[i].spec;
 
 			SetDParam(2, this->bridges->sort_list[i].cost);
