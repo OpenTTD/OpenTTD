@@ -1645,7 +1645,13 @@ static bool LoadOldMain(LoadgameState *ls)
 				 * clear it for ourselves and let OTTD's rebuild PBS itself */
 				_m[i].m4 &= 0xF; /* Only keep the lower four bits; upper four is PBS */
 				break;
-			default: break;
+
+			case MP_WATER:
+				if (GetWaterClass(i) == 3) MakeRiver(i, Random());
+				break;
+
+			default:
+				break;
 		}
 	}
 

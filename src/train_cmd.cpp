@@ -114,6 +114,9 @@ void TrainPowerChanged(Vehicle* v)
 		if (engine_has_power) {
 			uint16 power = GetVehicleProperty(u, 0x0B, rvi_u->power);
 			if (power != 0) {
+				/* Halve power for multiheaded parts */
+				if (IsMultiheaded(u)) power /= 2;
+
 				total_power += power;
 				/* Tractive effort in (tonnes * 1000 * 10 =) N */
 				max_te += (u->u.rail.cached_veh_weight * 10000 * GetVehicleProperty(u, 0x1F, rvi_u->tractive_effort)) / 256;
@@ -3632,6 +3635,9 @@ Money Train::GetRunningCost() const
 
 		byte cost_factor = GetVehicleProperty(v, 0x0D, rvi->running_cost);
 		if (cost_factor == 0) continue;
+
+		/* Halve running cost for multiheaded parts */
+		if (IsMultiheaded(v)) cost_factor /= 2;
 
 		cost += cost_factor * GetPriceByIndex(rvi->running_cost_class);
 	} while ((v = GetNextVehicle(v)) != NULL);

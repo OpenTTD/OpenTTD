@@ -218,8 +218,8 @@ static int CDECL TrainEnginePowerSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	int va = rvi_a->power << (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
-	int vb = rvi_b->power << (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
+	int va = rvi_a->power;
+	int vb = rvi_b->power;
 	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
@@ -602,7 +602,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 
 	/* Max speed - Engine power */
 	SetDParam(0, GetEngineProperty(engine_number, 0x09, rvi->max_speed) * 10 / 16);
-	SetDParam(1, GetEngineProperty(engine_number, 0x0B, rvi->power) << multihead);
+	SetDParam(1, GetEngineProperty(engine_number, 0x0B, rvi->power));
 	DrawString(x, y, STR_PURCHASE_INFO_SPEED_POWER, TC_FROMSTRING);
 	y += 10;
 
@@ -615,7 +615,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 
 	/* Running cost */
 	if (rvi->running_cost_class != 0xFF) {
-		SetDParam(0, (GetEngineProperty(engine_number, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8) << multihead);
+		SetDParam(0, GetEngineProperty(engine_number, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8);
 		DrawString(x, y, STR_PURCHASE_INFO_RUNNINGCOST, TC_FROMSTRING);
 		y += 10;
 	}
