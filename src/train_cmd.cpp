@@ -2807,10 +2807,10 @@ static void SetVehicleCrashed(Vehicle *v)
 
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 
-	BEGIN_ENUM_WAGONS(v)
+	for (; v != NULL; v = v->Next()) {
 		v->vehstatus |= VS_CRASHED;
 		MarkSingleVehicleDirty(v);
-	END_ENUM_WAGONS(v)
+	}
 
 	/* must be updated after the train has been marked crashed */
 	if (crossing != INVALID_TILE) UpdateLevelCrossing(crossing);
@@ -2819,9 +2819,11 @@ static void SetVehicleCrashed(Vehicle *v)
 static uint CountPassengersInTrain(const Vehicle *v)
 {
 	uint num = 0;
-	BEGIN_ENUM_WAGONS(v)
+
+	for (; v != NULL; v = v->Next()) {
 		if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) num += v->cargo.Count();
-	END_ENUM_WAGONS(v)
+	}
+
 	return num;
 }
 
@@ -3651,9 +3653,7 @@ void ConnectMultiheadedTrains()
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-			Vehicle *u = v;
-
-			BEGIN_ENUM_WAGONS(u) {
+			for (Vehicle *u = v; u != NULL; u = u->Next()) {
 				if (u->u.rail.other_multiheaded_part != NULL) continue; // we already linked this one
 
 				if (IsMultiheaded(u)) {
@@ -3678,7 +3678,7 @@ void ConnectMultiheadedTrains()
 						ClearMultiheaded(u);
 					}
 				}
-			} END_ENUM_WAGONS(u)
+			}
 		}
 	}
 }
@@ -3699,9 +3699,7 @@ void ConvertOldMultiheadToNew()
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN) {
 			if (HasBit(v->subtype, 7) && ((v->subtype & ~0x80) == 0 || (v->subtype & ~0x80) == 4)) {
-				Vehicle *u = v;
-
-				BEGIN_ENUM_WAGONS(u) {
+				for (Vehicle *u = v; u != NULL; u = u->Next()) {
 					const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
 
 					ClrBit(u->subtype, 7);
@@ -3740,7 +3738,7 @@ void ConvertOldMultiheadToNew()
 							break;
 						default: NOT_REACHED(); break;
 					}
-				} END_ENUM_WAGONS(u)
+				}
 			}
 		}
 	}

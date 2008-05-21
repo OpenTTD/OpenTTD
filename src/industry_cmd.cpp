@@ -1953,10 +1953,9 @@ int WhoCanServiceIndustry(Industry* ind)
 		bool c_accepts = false;
 		bool c_produces = false;
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-			const Vehicle *u = v;
-			BEGIN_ENUM_WAGONS(u)
+			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 				CanCargoServiceIndustry(u->cargo_type, ind, &c_accepts, &c_produces);
-			END_ENUM_WAGONS(u)
+			}
 		} else if (v->type == VEH_ROAD || v->type == VEH_SHIP || v->type == VEH_AIRCRAFT) {
 			CanCargoServiceIndustry(v->cargo_type, ind, &c_accepts, &c_produces);
 		} else {

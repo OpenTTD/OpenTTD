@@ -564,9 +564,6 @@ struct InvalidVehicle : public Vehicle {
 	void Tick() {}
 };
 
-#define BEGIN_ENUM_WAGONS(v) do {
-#define END_ENUM_WAGONS(v) } while ((v = v->Next()) != NULL);
-
 static inline VehicleID GetMaxVehicleIndex()
 {
 	/* TODO - This isn't the real content of the function, but

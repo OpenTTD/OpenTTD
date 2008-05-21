@@ -819,19 +819,15 @@ static void FloodVehicle(Vehicle *v)
 
 				if (v->z_pos != airport->delta_z + 1) return;
 			}
-			Vehicle *u;
 
 			if (v->type != VEH_AIRCRAFT) v = v->First();
-			u = v;
 
 			/* crash all wagons, and count passengers */
-			BEGIN_ENUM_WAGONS(v)
-				if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) pass += v->cargo.Count();
-				v->vehstatus |= VS_CRASHED;
-				MarkSingleVehicleDirty(v);
-			END_ENUM_WAGONS(v)
-
-			v = u;
+			for (Vehicle *u = v; u != NULL; u = u->Next()) {
+				if (IsCargoInClass(u->cargo_type, CC_PASSENGERS)) pass += u->cargo.Count();
+				u->vehstatus |= VS_CRASHED;
+				MarkSingleVehicleDirty(u);
+			}
 
 			switch (v->type) {
 				default: NOT_REACHED();
