@@ -560,7 +560,7 @@ static void GetTileDesc_Trees(TileIndex tile, TileDesc *td)
 		td->str = tt == TREE_CACTUS ? STR_2810_CACTUS_PLANTS : STR_280E_TREES;
 	}
 
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
 }
 
 static void AnimateTile_Trees(TileIndex tile)

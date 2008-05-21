@@ -312,7 +312,7 @@ static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 		case UNMOVABLE_OWNED_LAND:  td->str = STR_5805_COMPANY_OWNED_LAND; break;
 		default:                    td->str = STR_5803_COMPANY_HEADQUARTERS; break;
 	}
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
 }
 
 static void AnimateTile_Unmovable(TileIndex tile)

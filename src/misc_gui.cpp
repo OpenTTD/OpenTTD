@@ -73,24 +73,31 @@ static const WindowDesc _land_info_desc = {
 
 class LandInfoWindow : public Window {
 	enum {
-		LAND_INFO_LINES          =   7,
+		LAND_INFO_CENTERED_LINES   = 9,                        ///< Up to 9 centered lines
+		LAND_INFO_MULTICENTER_LINE = LAND_INFO_CENTERED_LINES, ///< One multicenter line
+		LAND_INFO_LINE_END,
+
 		LAND_INFO_LINE_BUFF_SIZE = 512,
 	};
 
 public:
-	char landinfo_data[LAND_INFO_LINES][LAND_INFO_LINE_BUFF_SIZE];
+	char landinfo_data[LAND_INFO_LINE_END][LAND_INFO_LINE_BUFF_SIZE];
 
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
 
-		DoDrawStringCentered(140, 16, this->landinfo_data[0], TC_LIGHT_BLUE);
-		DoDrawStringCentered(140, 27, this->landinfo_data[1], TC_FROMSTRING);
-		DoDrawStringCentered(140, 38, this->landinfo_data[2], TC_FROMSTRING);
-		DoDrawStringCentered(140, 49, this->landinfo_data[3], TC_FROMSTRING);
-		DoDrawStringCentered(140, 60, this->landinfo_data[4], TC_FROMSTRING);
-		if (!StrEmpty(this->landinfo_data[5])) DrawStringMultiCenter(140, 76, BindCString(this->landinfo_data[5]), this->width - 4);
-		if (!StrEmpty(this->landinfo_data[6])) DoDrawStringCentered(140, 71, this->landinfo_data[6], TC_FROMSTRING);
+		uint y = 16;
+		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
+			if (StrEmpty(this->landinfo_data[i])) continue;
+
+			DoDrawStringCentered(140, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING);
+			y += 11;
+		}
+
+		y += 5;
+
+		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) DrawStringMultiCenter(140, y, BindCString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]), this->width - 4);
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
@@ -107,38 +114,81 @@ public:
 		AcceptedCargo ac;
 
 		td.build_date = 0;
+
+		/* Most tiles have only one owner, but
+		 *  - drivethrough roadstops can be build on town owned roads (up to 2 owners) and
+		 *  - roads can have up to four owners (railroad, road, tram, 3rd-roadtype "highway").
+		 */
+		td.owner_type[0] = STR_01A7_OWNER; // At least one owner is displayed, though it might be "N/A".
+		td.owner_type[1] = STR_NULL;       // STR_NULL results in skipping the owner
+		td.owner_type[2] = STR_NULL;
+		td.owner_type[3] = STR_NULL;
+		td.owner[0] = OWNER_NONE;
+		td.owner[1] = OWNER_NONE;
+		td.owner[2] = OWNER_NONE;
+		td.owner[3] = OWNER_NONE;
+
 		GetAcceptedCargo(tile, ac);
 		GetTileDesc(tile, &td);
 
+		uint line_nr = 0;
+
+		/* Tiletype */
 		SetDParam(0, td.dparam[0]);
-		GetString(this->landinfo_data[0], td.str, lastof(this->landinfo_data[0]));
+		GetString(this->landinfo_data[line_nr], td.str, lastof(this->landinfo_data[line_nr]));
+		line_nr++;
 
-		SetDParam(0, STR_01A6_N_A);
-		if (td.owner != OWNER_NONE && td.owner != OWNER_WATER) GetNameOfOwner(td.owner, tile);
-		GetString(this->landinfo_data[1], STR_01A7_OWNER, lastof(this->landinfo_data[1]));
+		/* Up to four owners */
+		for (uint i = 0; i < 4; i++) {
+			if (td.owner_type[i] == STR_NULL) continue;
 
+			SetDParam(0, STR_01A6_N_A);
+			if (td.owner[i] != OWNER_NONE && td.owner[i] != OWNER_WATER) GetNameOfOwner(td.owner[i], tile);
+			GetString(this->landinfo_data[line_nr], td.owner_type[i], lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Cost to clear */
 		StringID str = STR_01A4_COST_TO_CLEAR_N_A;
 		if (CmdSucceeded(costclear)) {
 			SetDParam(0, costclear.GetCost());
 			str = STR_01A5_COST_TO_CLEAR;
 		}
-		GetString(this->landinfo_data[2], str, lastof(this->landinfo_data[2]));
+		GetString(this->landinfo_data[line_nr], str, lastof(this->landinfo_data[line_nr]));
+		line_nr++;
 
+		/* Location */
 		snprintf(_userstring, lengthof(_userstring), "0x%.4X", tile);
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
 		SetDParam(2, TileHeight(tile));
 		SetDParam(3, STR_SPEC_USERSTRING);
-		GetString(this->landinfo_data[3], STR_LANDINFO_COORDS, lastof(this->landinfo_data[3]));
+		GetString(this->landinfo_data[line_nr], STR_LANDINFO_COORDS, lastof(this->landinfo_data[line_nr]));
+		line_nr++;
 
+		/* Local authority */
 		SetDParam(0, STR_01A9_NONE);
 		if (t != NULL && t->IsValid()) {
 			SetDParam(0, STR_TOWN);
 			SetDParam(1, t->index);
 		}
-		GetString(this->landinfo_data[4], STR_01A8_LOCAL_AUTHORITY, lastof(this->landinfo_data[4]));
+		GetString(this->landinfo_data[line_nr], STR_01A8_LOCAL_AUTHORITY, lastof(this->landinfo_data[line_nr]));
+		line_nr++;
 
-		char *strp = GetString(this->landinfo_data[5], STR_01CE_CARGO_ACCEPTED, lastof(this->landinfo_data[5]));
+		/* Build date */
+		if (td.build_date != 0) {
+			SetDParam(0, td.build_date);
+			GetString(this->landinfo_data[line_nr], STR_BUILD_DATE, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Remaining lines stay empty */
+		for (; line_nr < LAND_INFO_CENTERED_LINES; line_nr++) {
+			this->landinfo_data[line_nr][0] = '\0';
+		}
+
+		/* Cargo acceptance is displayed in a extra multiline */
+		char *strp = GetString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE], STR_01CE_CARGO_ACCEPTED, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 		bool found = false;
 
 		for (CargoID i = 0; i < NUM_CARGO; ++i) {
@@ -154,20 +204,13 @@ public:
 				if (ac[i] < 8) {
 					SetDParam(0, ac[i]);
 					SetDParam(1, GetCargo(i)->name);
-					strp = GetString(strp, STR_01D1_8, lastof(this->landinfo_data[5]));
+					strp = GetString(strp, STR_01D1_8, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				} else {
-					strp = GetString(strp, GetCargo(i)->name, lastof(this->landinfo_data[5]));
+					strp = GetString(strp, GetCargo(i)->name, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
 				}
 			}
 		}
-		if (!found) this->landinfo_data[5][0] = '\0';
-
-		if (td.build_date != 0) {
-			SetDParam(0, td.build_date);
-			GetString(this->landinfo_data[6], STR_BUILD_DATE, lastof(this->landinfo_data[6]));
-		} else {
-			this->landinfo_data[6][0] = '\0';
-		}
+		if (!found) this->landinfo_data[LAND_INFO_MULTICENTER_LINE][0] = '\0';
 
 #if defined(_DEBUG)
 #	define LANDINFOD_LEVEL 0

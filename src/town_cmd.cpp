@@ -620,7 +620,7 @@ static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}
 
-	td->owner = OWNER_TOWN;
+	td->owner[0] = OWNER_TOWN;
 }
 
 static TrackStatus GetTileTrackStatus_Town(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)

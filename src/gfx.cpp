@@ -427,9 +427,9 @@ end_of_inner_loop:
 	}
 }
 
-/** Draw a given string with the centre around the given x coordinates
+/** Draw a given string with the centre around the given (x,y) coordinates
  * @param x Centre the string around this pixel width
- * @param y Draw the string at this pixel height (first line's bottom)
+ * @param y Centre the string around this pixel height
  * @param str String to draw
  * @param maxw Maximum width the string can have before it is wrapped */
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw)

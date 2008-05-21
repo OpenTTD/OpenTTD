@@ -336,7 +336,7 @@ static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 	} else {
 		td->str = _clear_land_str[GetClearGround(tile)];
 	}
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
 }
 
 static void ChangeTileOwner_Clear(TileIndex tile, PlayerID old_player, PlayerID new_player)

@@ -41,7 +41,7 @@ static void GetAcceptedCargo_Dummy(TileIndex tile, AcceptedCargo ac)
 static void GetTileDesc_Dummy(TileIndex tile, TileDesc *td)
 {
 	td->str = STR_EMPTY;
-	td->owner = OWNER_NONE;
+	td->owner[0] = OWNER_NONE;
 }
 
 static void AnimateTile_Dummy(TileIndex tile)

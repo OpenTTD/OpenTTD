@@ -2173,7 +2173,7 @@ static void ClickTile_Track(TileIndex tile)
 
 static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 {
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
 	switch (GetRailTileType(tile)) {
 		case RAIL_TILE_NORMAL:
 			td->str = STR_1021_RAILROAD_TRACK;

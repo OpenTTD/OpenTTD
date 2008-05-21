@@ -1188,7 +1188,7 @@ static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 	} else { //so it must be a bridge
 		td->str = GetBridgeSpec(GetBridgeType(tile))->transport_name[GetTunnelBridgeTransportType(tile)];
 	}
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
 }
 
 

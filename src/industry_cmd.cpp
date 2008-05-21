@@ -377,7 +377,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
 	const Industry *i = GetIndustryByTile(tile);
 
-	td->owner = i->owner;
+	td->owner[0] = i->owner;
 	td->str = GetIndustrySpec(i->type)->name;
 	if (!IsIndustryCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);

@@ -738,7 +738,7 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 		default: assert(0); break;
 	}
 
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
 }
 
 static void AnimateTile_Water(TileIndex tile)

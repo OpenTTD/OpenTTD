@@ -49,7 +49,8 @@ struct TileInfo {
 
 struct TileDesc {
 	StringID str;
-	Owner owner;
+	Owner owner[4];
+	StringID owner_type[4];
 	Date build_date;
 	uint64 dparam[2];
 };

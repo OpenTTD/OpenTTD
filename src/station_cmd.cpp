@@ -2188,7 +2188,12 @@ static void GetAcceptedCargo_Station(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 {
-	td->owner = GetTileOwner(tile);
+	td->owner[0] = GetTileOwner(tile);
+	if (IsDriveThroughStopTile(tile) && HasTileRoadType(tile, ROADTYPE_ROAD) && GetStopBuiltOnTownRoad(tile)) {
+		/* Display a second owner */
+		td->owner_type[1] = STR_ROAD_OWNER;
+		td->owner[1] = OWNER_TOWN;
+	}
 	td->build_date = GetStationByTile(tile)->build_date;
 
 	StringID str;

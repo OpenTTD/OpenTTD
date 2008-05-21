@@ -1446,11 +1446,53 @@ static const StringID _road_tile_strings[] = {
 
 static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
-	td->owner = GetTileOwner(tile);
+	Owner rail_owner = INVALID_OWNER;
+	Owner road_owner = INVALID_OWNER;
+	Owner tram_owner = INVALID_OWNER;
+
 	switch (GetRoadTileType(tile)) {
-		case ROAD_TILE_CROSSING: td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING; break;
-		case ROAD_TILE_DEPOT: td->str = STR_1817_ROAD_VEHICLE_DEPOT; break;
-		default: td->str = _road_tile_strings[GetRoadside(tile)]; break;
+		case ROAD_TILE_CROSSING: {
+			td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING;
+			RoadTypes rts = GetRoadTypes(tile);
+			rail_owner = GetTileOwner(tile);
+			if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+			if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+			break;
+		}
+
+		case ROAD_TILE_DEPOT:
+			td->str = STR_1817_ROAD_VEHICLE_DEPOT;
+			road_owner = GetTileOwner(tile); // Tile has only one owner, roadtype does not matter
+			break;
+
+		default: {
+			RoadTypes rts = GetRoadTypes(tile);
+			td->str = (HasBit(rts, ROADTYPE_ROAD) ? _road_tile_strings[GetRoadside(tile)] : STR_TRAMWAY);
+			if (HasBit(rts, ROADTYPE_ROAD)) road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
+			if (HasBit(rts, ROADTYPE_TRAM)) tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
+			break;
+		}
+	}
+
+	/* Now we have to discover, if the tile has only one owner or many:
+	 *   - Find a first_owner of the tile. (Currently road or tram must be present, but this will break when the third type becomes available)
+	 *   - Compare the found owner with the other owners, and test if they differ.
+	 * Note: If road exists it will be the first_owner.
+	 */
+	Owner first_owner = (road_owner == INVALID_OWNER ? tram_owner : road_owner);
+	bool mixed_owners = (tram_owner != INVALID_OWNER && tram_owner != first_owner) || (rail_owner != INVALID_OWNER && rail_owner != first_owner);
+
+	if (mixed_owners) {
+		/* Multiple owners */
+		td->owner_type[0] = (rail_owner == INVALID_OWNER ? STR_NULL : STR_RAIL_OWNER);
+		td->owner[0] = rail_owner;
+		td->owner_type[1] = (road_owner == INVALID_OWNER ? STR_NULL : STR_ROAD_OWNER);
+		td->owner[1] = road_owner;
+		td->owner_type[2] = (tram_owner == INVALID_OWNER ? STR_NULL : STR_TRAM_OWNER);
+		td->owner[2] = tram_owner;
+	} else {
+		/* One to rule them all */
+		td->owner[0] = first_owner;
 	}
 }
 
