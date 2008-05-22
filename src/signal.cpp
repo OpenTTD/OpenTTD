@@ -465,7 +465,7 @@ static inline void ResetSets()
  * Updates blocks in _globset buffer
  *
  * @param owner player whose signals we are updating
- * @return false iff presignal entry would be green (needed for trains leaving depot)
+ * @return state of the first block from _globset
  * @pre IsValidPlayer(owner)
  */
 static SigSegState UpdateSignalsInBuffer(Owner owner)
@@ -630,7 +630,7 @@ void AddSideToSignalBuffer(TileIndex tile, DiagDirection side, Owner owner)
  * @param tile tile where we start
  * @param side side of tile
  * @param owner owner whose signals we will update
- * @return false iff train can leave depot
+ * @return the state of the signal segment
  */
 SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner)
 {
