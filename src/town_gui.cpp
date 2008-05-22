@@ -133,6 +133,7 @@ static int GetNthSetBit(uint32 bits, int n)
 
 struct TownAuthorityWindow : Window {
 private:
+	Town *town;
 	int sel_index;
 
 	enum TownAuthorityWidget {
@@ -149,6 +150,7 @@ public:
 	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) :
 			Window(desc, window_number), sel_index(-1)
 	{
+		this->town = GetTown(this->window_number);
 		this->vscroll.cap = 5;
 
 		this->FindWindowPlacementAndResize(desc);
@@ -156,9 +158,8 @@ public:
 
 	virtual void OnPaint()
 	{
-		const Town *t = GetTown(this->window_number);
 		int numact;
-		uint buttons = GetMaskOfTownActions(&numact, _local_player, t);
+		uint buttons = GetMaskOfTownActions(&numact, _local_player, this->town);
 
 		SetVScrollCount(this, numact + 1);
 
@@ -178,13 +179,13 @@ public:
 
 		const Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && (HasBit(t->have_ratings, p->index) || t->exclusivity == p->index)) {
+			if (p->is_active && (HasBit(this->town->have_ratings, p->index) || this->town->exclusivity == p->index)) {
 				DrawPlayerIcon(p->index, 2, y);
 
 				SetDParam(0, p->index);
 				SetDParam(1, p->index);
 
-				int r = t->ratings[p->index];
+				int r = this->town->ratings[p->index];
 				StringID str;
 				(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
 				(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
@@ -196,7 +197,7 @@ public:
 				(str++,                    true);                    // Outstanding
 
 				SetDParam(2, str);
-				if (t->exclusivity == p->index) { // red icon for player with exclusive rights
+				if (this->town->exclusivity == p->index) { // red icon for player with exclusive rights
 					DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
 				}
 
@@ -235,12 +236,11 @@ public:
 	{
 		switch (widget) {
 			case TWA_COMMAND_LIST: {
-				const Town *t = GetTown(this->window_number);
 				int y = (pt.y - 0x6B) / 10;
 
 				if (!IsInsideMM(y, 0, 5)) return;
 
-				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, t), y + this->vscroll.pos - 1);
+				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, this->town), y + this->vscroll.pos - 1);
 				if (y >= 0) {
 					this->sel_index = y;
 					this->SetDirty();
@@ -250,7 +250,7 @@ public:
 			}
 
 			case TWA_EXECUTE:
-				DoCommandP(GetTown(this->window_number)->xy, this->window_number, this->sel_index, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+				DoCommandP(this->town->xy, this->window_number, this->sel_index, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 				break;
 		}
 	}
@@ -275,6 +275,7 @@ static void ShowTownAuthorityWindow(uint town)
 
 struct TownViewWindow : Window {
 private:
+	Town *town;
 
 	enum TownViewWidget {
 		TVW_CAPTION = 1,
@@ -289,13 +290,13 @@ private:
 public:
 	TownViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		const Town *t = GetTown(this->window_number);
+		this->town = GetTown(this->window_number);
+		bool ingame = _game_mode != GM_EDITOR;
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
-		InitializeWindowViewport(this, 3, 17, 254, 86, t->xy, ZOOM_LVL_TOWN);
+		InitializeWindowViewport(this, 3, 17, 254, 86, this->town->xy, ZOOM_LVL_TOWN);
 
-		bool ingame = _game_mode != GM_EDITOR;
-		if (t->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
+		if (this->town->larger_town) this->widget[TVW_CAPTION].data = STR_CITY;
 		this->SetWidgetHiddenState(TVW_DELETE, ingame);  // hide delete button on game mode
 		this->SetWidgetHiddenState(TVW_EXPAND, ingame);  // hide expand button on game mode
 		this->SetWidgetHiddenState(TVW_SHOWAUTORITY, !ingame); // hide autority button on editor mode
@@ -314,24 +315,22 @@ public:
 
 	virtual void OnPaint()
 	{
-		const Town *t = GetTown(this->window_number);
-
 		/* disable renaming town in network games if you are not the server */
 		this->SetWidgetDisabledState(TVW_CHANGENAME, _networking && !_network_server);
 
-		SetDParam(0, t->index);
+		SetDParam(0, this->town->index);
 		this->DrawWidgets();
 
-		SetDParam(0, t->population);
-		SetDParam(1, t->num_houses);
+		SetDParam(0, this->town->population);
+		SetDParam(1, this->town->num_houses);
 		DrawString(2, 107, STR_2006_POPULATION, TC_FROMSTRING);
 
-		SetDParam(0, t->act_pass);
-		SetDParam(1, t->max_pass);
+		SetDParam(0, this->town->act_pass);
+		SetDParam(1, this->town->max_pass);
 		DrawString(2, 117, STR_200D_PASSENGERS_LAST_MONTH_MAX, TC_FROMSTRING);
 
-		SetDParam(0, t->act_mail);
-		SetDParam(1, t->max_mail);
+		SetDParam(0, this->town->act_mail);
+		SetDParam(1, this->town->max_mail);
 		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		this->DrawViewport();
@@ -339,14 +338,12 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		Town *t = GetTown(this->window_number);
-
 		switch (widget) {
 			case TVW_CENTERVIEW: /* scroll to location */
 				if (_ctrl_pressed) {
-					ShowExtraViewPortWindow(t->xy);
+					ShowExtraViewPortWindow(this->town->xy);
 				} else {
-					ScrollMainWindowToTile(t->xy);
+					ScrollMainWindowToTile(this->town->xy);
 				}
 				break;
 
@@ -360,11 +357,11 @@ public:
 				break;
 
 			case TVW_EXPAND: /* expand town - only available on Scenario editor */
-				ExpandTown(t);
+				ExpandTown(this->town);
 				break;
 
 			case TVW_DELETE: /* delete town - only available on Scenario editor */
-				delete t;
+				delete this->town;
 				break;
 		}
 	}
