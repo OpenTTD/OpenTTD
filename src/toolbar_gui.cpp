@@ -1153,7 +1153,7 @@ struct ToolbarMenuWindow : Window {
 
 	ToolbarMenuWindow(int x, int y, int width, int height, const Widget *widgets, int item_count,
 										int sel_index, int parent_button, StringID base_string, int checked_items,
-										int disabled_mask) :
+										int disabled_items) :
 			Window(x, y, width, height, WC_TOOLBAR_MENU, widgets),
 			item_count(item_count), sel_index(sel_index), main_button(GB(parent_button, 0, 8)),
 			action_id((GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button),
