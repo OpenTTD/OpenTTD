@@ -183,29 +183,45 @@ static void PlaceProc_LevelLand(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_LEVEL_AREA);
 }
 
+/** Enum referring to the widgets of the terraform toolbar */
+enum TerraformToolbarWidgets {
+	TTW_CLOSEBOX = 0,                     ///< Close window button
+	TTW_CAPTION,                          ///< Window caption
+	TTW_STICKY,                           ///< Sticky window button
+	TTW_SEPERATOR,                        ///< Thin seperator line between level land button and demolish button
+	TTW_BUTTONS_START,                    ///< Start of pushable buttons
+	TTW_LOWER_LAND = TTW_BUTTONS_START,   ///< Lower land button
+	TTW_RAISE_LAND,                       ///< Raise land button
+	TTW_LEVEL_LAND,                       ///< Level land button
+	TTW_DEMOLISH,                         ///< Demolish aka dynamite button
+	TTW_BUY_LAND,                         ///< Buy land button
+	TTW_PLANT_TREES,                      ///< Plant trees button (note: opens seperate window, no place-push-button)
+	TTW_PLACE_SIGN,                       ///< Place sign button
+};
+
 static void TerraformClick_Lower(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerLand);
+	HandlePlacePushButton(w, TTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerLand);
 }
 
 static void TerraformClick_Raise(Window *w)
 {
-	HandlePlacePushButton(w, 5, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseLand);
+	HandlePlacePushButton(w, TTW_RAISE_LAND, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseLand);
 }
 
 static void TerraformClick_Level(Window *w)
 {
-	HandlePlacePushButton(w, 6, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, TTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
 }
 
 static void TerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, 7, ANIMCURSOR_DEMOLISH , VHM_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, TTW_DEMOLISH, ANIMCURSOR_DEMOLISH , VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void TerraformClick_BuyLand(Window *w)
 {
-	HandlePlacePushButton(w, 8, SPR_CURSOR_BUY_LAND, VHM_RECT, PlaceProc_BuyLand);
+	HandlePlacePushButton(w, TTW_BUY_LAND, SPR_CURSOR_BUY_LAND, VHM_RECT, PlaceProc_BuyLand);
 }
 
 static void TerraformClick_Trees(Window *w)
@@ -216,7 +232,7 @@ static void TerraformClick_Trees(Window *w)
 
 static void TerraformClick_PlaceSign(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_SIGN, VHM_RECT, PlaceProc_Sign);
+	HandlePlacePushButton(w, TTW_PLACE_SIGN, SPR_CURSOR_SIGN, VHM_RECT, PlaceProc_Sign);
 }
 
 static OnButtonClick * const _terraform_button_proc[] = {
@@ -246,7 +262,7 @@ struct TerraformToolbarWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget >= 4) _terraform_button_proc[widget - 4](this);
+		if (widget >= TTW_BUTTONS_START) _terraform_button_proc[widget - TTW_BUTTONS_START](this);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -292,18 +308,18 @@ struct TerraformToolbarWindow : Window {
 };
 
 static const Widget _terraform_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,     7,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{  WWT_CAPTION,   RESIZE_NONE,     7,  11, 145,   0,  13, STR_LANDSCAPING_TOOLBAR, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{WWT_STICKYBOX,   RESIZE_NONE,     7, 146, 157,   0,  13, STR_NULL,                STR_STICKY_BUTTON},
+{ WWT_CLOSEBOX,   RESIZE_NONE,     7,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},             // TTW_CLOSEBOX
+{  WWT_CAPTION,   RESIZE_NONE,     7,  11, 145,   0,  13, STR_LANDSCAPING_TOOLBAR, STR_018C_WINDOW_TITLE_DRAG_THIS},   // TTW_CAPTION
+{WWT_STICKYBOX,   RESIZE_NONE,     7, 146, 157,   0,  13, STR_NULL,                STR_STICKY_BUTTON},                 // TTW_STICKY
 
-{    WWT_PANEL,   RESIZE_NONE,     7,  66,  69,  14,  35, 0x0,                    STR_NULL},
-{   WWT_IMGBTN,   RESIZE_NONE,     7,   0,  21,  14,  35, SPR_IMG_TERRAFORM_DOWN,  STR_018E_LOWER_A_CORNER_OF_LAND},
-{   WWT_IMGBTN,   RESIZE_NONE,     7,  22,  43,  14,  35, SPR_IMG_TERRAFORM_UP,    STR_018F_RAISE_A_CORNER_OF_LAND},
-{   WWT_IMGBTN,   RESIZE_NONE,     7,  44,  65,  14,  35, SPR_IMG_LEVEL_LAND,      STR_LEVEL_LAND_TOOLTIP},
-{   WWT_IMGBTN,   RESIZE_NONE,     7,  70,  91,  14,  35, SPR_IMG_DYNAMITE,        STR_018D_DEMOLISH_BUILDINGS_ETC},
-{   WWT_IMGBTN,   RESIZE_NONE,     7,  92, 113,  14,  35, SPR_IMG_BUY_LAND,        STR_0329_PURCHASE_LAND_FOR_FUTURE},
-{   WWT_IMGBTN,   RESIZE_NONE,     7, 114, 135,  14,  35, SPR_IMG_PLANTTREES,      STR_0185_PLANT_TREES_PLACE_SIGNS},
-{   WWT_IMGBTN,   RESIZE_NONE,     7, 136, 157,  14,  35, SPR_IMG_SIGN,            STR_0289_PLACE_SIGN},
+{    WWT_PANEL,   RESIZE_NONE,     7,  66,  69,  14,  35, 0x0,                    STR_NULL},                           // TTW_SEPERATOR
+{   WWT_IMGBTN,   RESIZE_NONE,     7,   0,  21,  14,  35, SPR_IMG_TERRAFORM_DOWN,  STR_018E_LOWER_A_CORNER_OF_LAND},   // TTW_LOWER_LAND
+{   WWT_IMGBTN,   RESIZE_NONE,     7,  22,  43,  14,  35, SPR_IMG_TERRAFORM_UP,    STR_018F_RAISE_A_CORNER_OF_LAND},   // TTW_RAISE_LAND
+{   WWT_IMGBTN,   RESIZE_NONE,     7,  44,  65,  14,  35, SPR_IMG_LEVEL_LAND,      STR_LEVEL_LAND_TOOLTIP},            // TTW_LEVEL_LAND
+{   WWT_IMGBTN,   RESIZE_NONE,     7,  70,  91,  14,  35, SPR_IMG_DYNAMITE,        STR_018D_DEMOLISH_BUILDINGS_ETC},   // TTW_DEMOLISH
+{   WWT_IMGBTN,   RESIZE_NONE,     7,  92, 113,  14,  35, SPR_IMG_BUY_LAND,        STR_0329_PURCHASE_LAND_FOR_FUTURE}, // TTW_BUY_LAND
+{   WWT_IMGBTN,   RESIZE_NONE,     7, 114, 135,  14,  35, SPR_IMG_PLANTTREES,      STR_0185_PLANT_TREES_PLACE_SIGNS},  // TTW_PLANT_TREES
+{   WWT_IMGBTN,   RESIZE_NONE,     7, 136, 157,  14,  35, SPR_IMG_SIGN,            STR_0289_PLACE_SIGN},               // TTW_PLACE_SIGN
 
 {   WIDGETS_END},
 };
@@ -438,23 +454,23 @@ static void PlaceProc_RiverArea(TileIndex tile)
 }
 
 static const Widget _scen_edit_land_gen_widgets[] = {
-{  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
-{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   191,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_STICKYBOX,   RESIZE_NONE,     7,   192,   203,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
-{     WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,   102, 0x0,                       STR_NULL},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    16,    37, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    16,    37, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    16,    37, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,    68,    89,    16,    37, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,    90,   111,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_LAKE},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_BUILD_RIVER,       STR_CREATE_RIVER},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   134,   156,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   157,   179,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL}, // XXX - dynamic
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   180,   201,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    45,    56, SPR_ARROW_UP,              STR_0228_INCREASE_SIZE_OF_LAND_AREA},
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    58,    69, SPR_ARROW_DOWN,            STR_0229_DECREASE_SIZE_OF_LAND_AREA},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},
+{  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},                   // ETTW_CLOSEBOX
+{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   191,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},         // ETTW_CAPTION
+{ WWT_STICKYBOX,   RESIZE_NONE,     7,   192,   203,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},                       // ETTW_STICKY
+{     WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,   102, 0x0,                       STR_NULL},                                // ETTW_BACKGROUND
+{    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    16,    37, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},         // ETTW_DEMOLISH
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    16,    37, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},         // ETTW_LOWER_LAND
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    16,    37, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},         // ETTW_RAISE_LAND
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    68,    89,    16,    37, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},                  // ETTW_LEVEL_LAND
+{    WWT_IMGBTN,   RESIZE_NONE,    14,    90,   111,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_LAKE},                         // ETTW_BUILD_CANAL
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_BUILD_RIVER,       STR_CREATE_RIVER},                        // ETTW_BUILD_RIVER
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   134,   156,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE}, // ETTW_PLACE_ROCKS
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   157,   179,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL},                                // ETTW_PLACE_DESERT_LIGHTHOUSE XXX - dynamic
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   180,   201,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},              // ETTW_PLACE_TRANSMITTER
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    45,    56, SPR_ARROW_UP,              STR_0228_INCREASE_SIZE_OF_LAND_AREA},     // ETTW_INCREASE_SIZE
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    58,    69, SPR_ARROW_DOWN,            STR_0229_DECREASE_SIZE_OF_LAND_AREA},     // ETTW_DECREASE_SIZE
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},           // ETTW_NEW_SCENARIO
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},             // ETTW_RESET_LANDSCAPE
 {   WIDGETS_END},
 };
 
@@ -469,53 +485,77 @@ static const int8 _multi_terraform_coords[][2] = {
 	{-28,  0}, {-24, -2}, {-20, -4}, {-16, -6}, {-12, -8}, { -8,-10}, { -4,-12}, {  0,-14}, {  4,-12}, {  8,-10}, { 12, -8}, { 16, -6}, { 20, -4}, { 24, -2}, { 28,  0},
 };
 
+/** Enum referring to the widgets of the editor terraform toolbar */
+enum EditorTerraformToolbarWidgets {
+	ETTW_START = 0,                        ///< Used for iterations
+	ETTW_CLOSEBOX = ETTW_START,            ///< Close window button
+	ETTW_CAPTION,                          ///< Window caption
+	ETTW_STICKY,                           ///< Sticky window button
+	ETTW_BACKGROUND,                       ///< Background of the lower part of the window
+	ETTW_BUTTONS_START,                    ///< Start of pushable buttons
+	ETTW_DEMOLISH = ETTW_BUTTONS_START,    ///< Demolish aka dynamite button
+	ETTW_LOWER_LAND,                       ///< Lower land button
+	ETTW_RAISE_LAND,                       ///< Raise land button
+	ETTW_LEVEL_LAND,                       ///< Level land button
+	ETTW_BUILD_CANAL,                      ///< Build canal button
+	ETTW_BUILD_RIVER,                      ///< Build river button
+	ETTW_PLACE_ROCKS,                      ///< Place rocks button
+	ETTW_PLACE_DESERT_LIGHTHOUSE,          ///< Place desert button (in tropical climate) / place lighthouse button (else)
+	ETTW_PLACE_TRANSMITTER,                ///< Place transmitter button
+	ETTW_BUTTONS_END,                      ///< End of pushable buttons
+	ETTW_INCREASE_SIZE = ETTW_BUTTONS_END, ///< Upwards arrow button to increase terraforming size
+	ETTW_DECREASE_SIZE,                    ///< Downwards arrow button to decrease terraforming size
+	ETTW_NEW_SCENARIO,                     ///< Button for generating a new scenario
+	ETTW_RESET_LANDSCAPE,                  ///< Button for removing all player-owned property
+};
+
 /**
  * @todo Merge with terraform_gui.cpp (move there) after I have cooled down at its braindeadness
  * and changed OnButtonClick to include the widget as well in the function declaration. Post 0.4.0 - Darkvater
  */
 static void EditorTerraformClick_Dynamite(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, ETTW_DEMOLISH, ANIMCURSOR_DEMOLISH, VHM_RECT, PlaceProc_DemolishArea);
 }
 
 static void EditorTerraformClick_LowerBigLand(Window *w)
 {
-	HandlePlacePushButton(w, 5, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerBigLand);
+	HandlePlacePushButton(w, ETTW_LOWER_LAND, ANIMCURSOR_LOWERLAND, VHM_POINT, PlaceProc_LowerBigLand);
 }
 
 static void EditorTerraformClick_RaiseBigLand(Window *w)
 {
-	HandlePlacePushButton(w, 6, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseBigLand);
+	HandlePlacePushButton(w, ETTW_RAISE_LAND, ANIMCURSOR_RAISELAND, VHM_POINT, PlaceProc_RaiseBigLand);
 }
 
 static void EditorTerraformClick_LevelLand(Window *w)
 {
-	HandlePlacePushButton(w, 7, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
+	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
 }
 
 static void EditorTerraformClick_WaterArea(Window *w)
 {
-	HandlePlacePushButton(w, 8, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_WaterArea);
+	HandlePlacePushButton(w, ETTW_BUILD_CANAL, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_WaterArea);
 }
 
 static void EditorTerraformClick_RiverArea(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_CURSOR_RIVER, VHM_RECT, PlaceProc_RiverArea);
+	HandlePlacePushButton(w, ETTW_BUILD_RIVER, SPR_CURSOR_RIVER, VHM_RECT, PlaceProc_RiverArea);
 }
 
 static void EditorTerraformClick_RockyArea(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
+	HandlePlacePushButton(w, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
 }
 
 static void EditorTerraformClick_DesertLightHouse(Window *w)
 {
-	HandlePlacePushButton(w, 11, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, ETTW_PLACE_DESERT_LIGHTHOUSE, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_opt.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
 }
 
 static void EditorTerraformClick_Transmitter(Window *w)
 {
-	HandlePlacePushButton(w, 12, SPR_CURSOR_TRANSMITTER, VHM_RECT, PlaceProc_Transmitter);
+	HandlePlacePushButton(w, ETTW_PLACE_TRANSMITTER, SPR_CURSOR_TRANSMITTER, VHM_RECT, PlaceProc_Transmitter);
 }
 
 static const uint16 _editor_terraform_keycodes[] = {
@@ -575,8 +615,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 struct ScenarioEditorLandscapeGenerationWindow : Window {
 	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		/* XXX - lighthouse button is widget 11!! Don't forget when changing */
-		this->widget[11].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
+		this->widget[ETTW_PLACE_DESERT_LIGHTHOUSE].tooltips = (_opt.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -592,7 +631,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 			coords += 2;
 		} while (--n);
 
-		if (this->IsWidgetLowered(5) || this->IsWidgetLowered(6)) { // change area-size if raise/lower corner is selected
+		if (this->IsWidgetLowered(ETTW_LOWER_LAND) || this->IsWidgetLowered(ETTW_RAISE_LAND)) { // change area-size if raise/lower corner is selected
 			SetTileSelectSize(_terraform_size, _terraform_size);
 		}
 	}
@@ -610,43 +649,45 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		switch (widget) {
-			case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12:
-				_editor_terraform_button_proc[widget - 4](this);
-				break;
-			case 13: case 14: { // Increase/Decrease terraform size
-				int size = (widget == 13) ? 1 : -1;
-				this->HandleButtonClick(widget);
-				size += _terraform_size;
+		if (IsInsideMM(widget, ETTW_BUTTONS_START, ETTW_BUTTONS_END)) {
+			_editor_terraform_button_proc[widget - ETTW_BUTTONS_START](this);
+		} else {
+			switch (widget) {
+				case ETTW_INCREASE_SIZE:
+				case ETTW_DECREASE_SIZE: { // Increase/Decrease terraform size
+					int size = (widget == ETTW_INCREASE_SIZE) ? 1 : -1;
+					this->HandleButtonClick(widget);
+					size += _terraform_size;
 
-				if (!IsInsideMM(size, 1, 8 + 1)) return;
-				_terraform_size = size;
+					if (!IsInsideMM(size, 1, 8 + 1)) return;
+					_terraform_size = size;
 
-				SndPlayFx(SND_15_BEEP);
-				this->SetDirty();
-			} break;
-			case 15: // gen random land
-				this->HandleButtonClick(15);
-				ShowCreateScenario();
-				break;
-			case 16: // Reset landscape
-				ShowQuery(
-					STR_022C_RESET_LANDSCAPE,
-					STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
-					NULL,
-					ResetLandscapeConfirmationCallback);
-				break;
+					SndPlayFx(SND_15_BEEP);
+					this->SetDirty();
+				} break;
+				case ETTW_NEW_SCENARIO: // gen random land
+					this->HandleButtonClick(widget);
+					ShowCreateScenario();
+					break;
+				case ETTW_RESET_LANDSCAPE: // Reset landscape
+					ShowQuery(
+						STR_022C_RESET_LANDSCAPE,
+						STR_RESET_LANDSCAPE_CONFIRMATION_TEXT,
+						NULL,
+						ResetLandscapeConfirmationCallback);
+					break;
+			}
 		}
 	}
 
 	virtual void OnTimeout()
 	{
-		for (uint i = 0; i < this->widget_count; i++) {
+		for (uint i = ETTW_START; i < this->widget_count; i++) {
+			if (i == ETTW_BUTTONS_START) i = ETTW_BUTTONS_END; // skip the buttons
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->InvalidateWidget(i);
 			}
-			if (i == 3) i = 12;
 		}
 	}
 
