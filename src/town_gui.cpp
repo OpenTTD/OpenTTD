@@ -31,16 +31,6 @@
 extern bool GenerateTowns();
 static int _scengen_town_size = 1; // depress medium-sized towns per default
 
-enum TownAuthorityWidget {
-	TWA_CLOSEBOX = 0,
-	TWA_CAPTION,
-	TWA_RATING_INFO,
-	TWA_COMMAND_LIST,
-	TWA_SCROLLBAR,
-	TWA_ACTION_INFO,
-	TWA_EXECUTE,
-};
-
 static const Widget _town_authority_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},              // TWA_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},    // TWA_CAPTION
@@ -142,8 +132,20 @@ static int GetNthSetBit(uint32 bits, int n)
 }
 
 struct TownAuthorityWindow : Window {
+private:
 	int sel_index;
 
+	enum TownAuthorityWidget {
+		TWA_CLOSEBOX = 0,
+		TWA_CAPTION,
+		TWA_RATING_INFO,
+		TWA_COMMAND_LIST,
+		TWA_SCROLLBAR,
+		TWA_ACTION_INFO,
+		TWA_EXECUTE,
+	};
+
+public:
 	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) :
 			Window(desc, window_number), sel_index(-1)
 	{
@@ -271,18 +273,20 @@ static void ShowTownAuthorityWindow(uint town)
 	AllocateWindowDescFront<TownAuthorityWindow>(&_town_authority_desc, town);
 }
 
-
-enum TownViewWidget {
-	TVW_CAPTION = 1,
-	TVW_STICKY,
-	TVW_CENTERVIEW = 6,
-	TVW_SHOWAUTORITY,
-	TVW_CHANGENAME,
-	TVW_EXPAND,
-	TVW_DELETE,
-};
-
 struct TownViewWindow : Window {
+private:
+
+	enum TownViewWidget {
+		TVW_CAPTION = 1,
+		TVW_STICKY,
+		TVW_CENTERVIEW = 6,
+		TVW_SHOWAUTORITY,
+		TVW_CHANGENAME,
+		TVW_EXPAND,
+		TVW_DELETE,
+	};
+
+public:
 	TownViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		const Town *t = GetTown(this->window_number);
@@ -476,12 +480,14 @@ static void MakeSortedTownList()
 
 
 struct TownDirectoryWindow : public Window {
+private:
 	enum TownDirectoryWidget {
 		TDW_SORTNAME = 3,
 		TDW_SORTPOPULATION,
 		TDW_CENTERTOWN,
 	};
 
+public:
 	TownDirectoryWindow(const WindowDesc *desc) : Window(desc, 0)
 	{
 		this->vscroll.cap = 16;
@@ -603,16 +609,6 @@ static void PlaceProc_Town(TileIndex tile)
 	DoCommandP(tile, size, mode, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
 }
 
-enum TownScenarioEditorWidget {
-	TSEW_NEWTOWN = 4,
-	TSEW_RANDOMTOWN,
-	TSEW_MANYRANDOMTOWNS,
-	TSEW_SMALLTOWN,
-	TSEW_MEDIUMTOWN,
-	TSEW_LARGETOWN,
-	TSEW_CITY,
-};
-
 static const Widget _scen_edit_town_gen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -631,6 +627,19 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 
 struct ScenarioEditorTownGenerationWindow : Window
 {
+private:
+	enum TownScenarioEditorWidget {
+		TSEW_NEWTOWN = 4,
+		TSEW_RANDOMTOWN,
+		TSEW_MANYRANDOMTOWNS,
+		TSEW_SMALLTOWN,
+		TSEW_MEDIUMTOWN,
+		TSEW_LARGETOWN,
+		TSEW_CITY,
+	};
+
+public:
+
 	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
