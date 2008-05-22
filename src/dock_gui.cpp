@@ -69,14 +69,21 @@ static void PlaceDocks_BuildLock(TileIndex tile)
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS));
 }
 
-
-enum {
-	DTW_CANAL    = 3,
-	DTW_LOCK     = 4,
-	DTW_DEMOLISH = 6,
-	DTW_DEPOT    = 7,
-	DTW_STATION  = 8,
-	DTW_BUOY     = 9
+/** Enum referring to the widgets of the build dock toolbar */
+enum DockToolbarWidgets {
+	DTW_BEGIN = 0,                 ///< Start of toolbar widgets
+	DTW_CLOSEBOX = DTW_BEGIN,      ///< Close window button
+	DTW_CAPTION,                   ///< Window caption
+	DTW_STICKY,                    ///< Sticky window button
+	DTW_BUTTONS_BEGIN,             ///< Begin of clickable buttons (except seperating panel)
+	DTW_CANAL = DTW_BUTTONS_BEGIN, ///< Build canal button
+	DTW_LOCK,                      ///< Build lock button
+	DTW_SEPERATOR,                 ///< Seperating panel between lock and demolish
+	DTW_DEMOLISH,                  ///< Demolish aka dynamite button
+	DTW_DEPOT,                     ///< Build depot button
+	DTW_STATION,                   ///< Build station button
+	DTW_BUOY,                      ///< Build buoy button
+	DTW_END,                       ///< End of toolbar widgets
 };
 
 
@@ -139,13 +146,13 @@ struct BuildDocksToolbarWindow : Window {
 
 	virtual void OnPaint()
 	{
-		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), 7, 8, 9, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(!CanBuildVehicleInfrastructure(VEH_SHIP), DTW_DEPOT, DTW_STATION, DTW_BUOY, WIDGET_LIST_END);
 		this->DrawWidgets();
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget - 3 >= 0 && widget != 5) _build_docks_button_proc[widget - 3](this);
+		if (widget >= DTW_BUTTONS_BEGIN && widget != DTW_SEPERATOR) _build_docks_button_proc[widget - DTW_BUTTONS_BEGIN](this);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -206,18 +213,18 @@ struct BuildDocksToolbarWindow : Window {
 };
 
 static const Widget _build_docks_toolb_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   123,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   124,   135,     0,    13, 0x0,                        STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                   // DTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   123,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   124,   135,     0,    13, 0x0,                        STR_STICKY_BUTTON},                       // DTW_STICKY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},                    // DTW_CANAL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},                     // DTW_LOCK
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,                        STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,                        STR_NULL},                                // DTW_SEPERATOR
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    48,    69,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    48,    69,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},         // DTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},  // DTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},                // DTW_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},        // DTW_BUOY
 {   WIDGETS_END},
 };
 
