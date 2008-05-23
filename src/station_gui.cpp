@@ -318,6 +318,8 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 		/* set up resort timer */
 		this->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

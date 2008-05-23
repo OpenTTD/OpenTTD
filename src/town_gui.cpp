@@ -640,6 +640,7 @@ public:
 	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

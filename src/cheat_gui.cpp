@@ -125,6 +125,7 @@ struct CheatWindow : Window {
 
 	CheatWindow(const WindowDesc *desc) : Window(desc)
 	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

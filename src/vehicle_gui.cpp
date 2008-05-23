@@ -1401,6 +1401,8 @@ struct VehicleDetailsWindow : Window {
 		this->caption_color = v->owner;
 
 		this->tab = 0;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	/** Checks whether service interval is enabled for the vehicle. */
@@ -1873,6 +1875,8 @@ struct VehicleViewWindow : Window {
 
 				default: NOT_REACHED();
 		}
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~VehicleViewWindow()

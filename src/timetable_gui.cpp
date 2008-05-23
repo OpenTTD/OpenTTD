@@ -56,6 +56,8 @@ struct TimetableWindow : Window {
 		this->vscroll.cap = 8;
 		this->resize.step_height = 10;
 		this->sel_index = -1;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	int GetOrderFromTimetableWndPt(int y, const Vehicle *v)

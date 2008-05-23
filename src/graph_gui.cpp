@@ -769,6 +769,7 @@ static int CDECL PerfHistComp(const void* elem1, const void* elem2)
 struct CompanyLeagueWindow : Window {
 	CompanyLeagueWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

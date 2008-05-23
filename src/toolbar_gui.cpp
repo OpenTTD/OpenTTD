@@ -1322,6 +1322,8 @@ struct ToolbarPlayerMenuWindow : Window {
 				this->sel_index = 0;
 			}
 		}
+
+		this->FindWindowPlacementAndResize(width, height);
 	}
 
 	~ToolbarPlayerMenuWindow()

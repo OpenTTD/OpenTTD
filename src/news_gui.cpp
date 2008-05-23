@@ -795,6 +795,8 @@ struct MessageOptionsWindow : Window {
 		}
 		/* If all values are the same value, the ALL-button will take over this value */
 		this->state = all_val;
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	/**

@@ -165,6 +165,8 @@ struct PlayerFinancesWindow : Window {
 			this->top = top;
 			this->left = left;
 		}
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
@@ -758,7 +760,6 @@ public:
 	SelectPlayerFaceWindow(const WindowDesc *desc, Window *parent, bool advanced, int top, int left) : Window(desc, parent->window_number)
 	{
 		this->parent = parent;
-		this->FindWindowPlacementAndResize(desc);
 		this->caption_color = this->window_number;
 		this->face = GetPlayer((PlayerID)this->window_number)->face;
 		this->advanced = advanced;
@@ -770,6 +771,8 @@ public:
 			this->top = top;
 			this->left = left;
 		}
+
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
@@ -1167,6 +1170,7 @@ struct PlayerCompanyWindow : Window
 	PlayerCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->caption_color = this->window_number;
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
@@ -1357,6 +1361,7 @@ void ShowPlayerCompany(PlayerID player)
 struct BuyCompanyWindow : Window {
 	BuyCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()

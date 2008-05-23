@@ -22,6 +22,7 @@
 struct SubsidyListWindow : Window {
 	SubsidyListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnClick(Point pt, int widget)

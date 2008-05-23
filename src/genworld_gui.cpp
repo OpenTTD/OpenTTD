@@ -645,6 +645,7 @@ struct CreateScenarioWindow : public Window
 	CreateScenarioWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->LowerWidget(_opt_newgame.landscape + CSCEN_TEMPERATE);
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
@@ -850,7 +851,10 @@ private:
 	};
 
 public:
-	GenerateProgressWindow() : Window(&_generate_progress_desc) {};
+	GenerateProgressWindow() : Window(&_generate_progress_desc)
+	{
+		this->FindWindowPlacementAndResize(&_generate_progress_desc);
+	}
 
 	virtual void OnClick(Point pt, int widget)
 	{

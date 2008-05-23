@@ -69,6 +69,7 @@ static const DrawEngineInfo _draw_engine_list[4] = {
 struct EnginePreviewWindow : Window {
 	EnginePreviewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
