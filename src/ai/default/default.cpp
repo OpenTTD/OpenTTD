@@ -3446,7 +3446,8 @@ static int AiFindBestDefaultAirportBlock(TileIndex tile, byte cargo, byte heli, 
 		/* do not build small airport if we have large available and we are not building heli route */
 		uint valid = GetValidAirports();
 		for (uint i = 0; (p = _airport_default_block_data[i]) != NULL; i++) {
-			if (HasBit(valid, p->attr) && !(GetAirport(p->attr)->flags & AirportFTAClass::SHORT_STRIP)) {
+			uint flags = GetAirport(p->attr)->flags;
+			if (HasBit(valid, p->attr) && (flags & AirportFTAClass::AIRPLANES) && !(flags & AirportFTAClass::SHORT_STRIP)) {
 				no_small = true;
 				break;
 			}
