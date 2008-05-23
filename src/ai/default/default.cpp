@@ -3352,7 +3352,8 @@ static void AiStateAirportStuff(Player *p)
 
 			AirportFTAClass::Flags flags = st->Airport()->flags;
 
-			if (!(flags & (_players_ai[p->index].build_kind == 1 && i == 0 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES))) {
+			/* if airport doesn't accept our kind of plane, dismiss it */
+			if (!(flags & (_players_ai[p->index].build_kind == 1 ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES))) {
 				continue;
 			}
 
