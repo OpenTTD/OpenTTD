@@ -134,6 +134,12 @@ static inline bool GetStopBuiltOnTownRoad(TileIndex t)
 	return HasBit(_m[t].m6, 2);
 }
 
+static inline void SetStopBuiltOnTownRoad(TileIndex t, bool on_town_road)
+{
+	assert(IsDriveThroughStopTile(t));
+	SB(_m[t].m6, 2, 1, on_town_road);
+}
+
 
 /**
  * Gets the direction the road stop entrance points towards.

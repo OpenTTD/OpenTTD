@@ -130,10 +130,18 @@ static const RoadBits _invalid_tileh_slopes_road[2][15] = {
 
 Foundation GetRoadFoundation(Slope tileh, RoadBits bits);
 
-bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *edge_road, RoadType rt)
+/**
+ * Is it allowed to remove the given road bits from the given tile?
+ * @param tile      the tile to remove the road from
+ * @param remove    the roadbits that are going to be removed
+ * @param owner     the actual owner of the roadbits of the tile
+ * @param rt        the road type to remove the bits from
+ * @param flags     command flags
+ * @param town_check Shall the town rating checked/affected
+ * @return true when it is allowed to remove the road bits
+ */
+bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType rt, uint32 flags, bool town_check)
 {
-	*edge_road = true;
-
 	if (_game_mode == GM_EDITOR || remove == ROAD_NONE) return true;
 
 	/* Water can always flood and towns can always remove "normal" road pieces.
@@ -146,7 +154,16 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	 * by a town */
 	if (owner != OWNER_TOWN) return (owner == OWNER_NONE) || CheckOwnership(owner);
 
+	if (!town_check) return true;
+
 	if (_cheats.magic_bulldozer.value) return true;
+
+	Town *t = ClosestTownFromTile(tile, UINT_MAX);
+	if (t == NULL) return true;
+
+	/* check if you're allowed to remove the street owned by a town
+	 * removal allowance depends on difficulty setting */
+	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return false;
 
 	/* Get a bitmask of which neighbouring roads has a tile */
 	RoadBits n = ROAD_NONE;
@@ -156,19 +173,19 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	if (present & ROAD_SW && GetAnyRoadBits(TILE_ADDXY(tile,  1,  0), rt) & ROAD_NE) n |= ROAD_SW;
 	if (present & ROAD_NW && GetAnyRoadBits(TILE_ADDXY(tile,  0, -1), rt) & ROAD_SE) n |= ROAD_NW;
 
+	int rating_decrease = RATING_ROAD_DOWN_STEP_EDGE;
 	/* If 0 or 1 bits are set in n, or if no bits that match the bits to remove,
 	 * then allow it */
 	if (KillFirstBit(n) != ROAD_NONE && (n & remove) != ROAD_NONE) {
-		*edge_road = false;
 		/* you can remove all kind of roads with extra dynamite */
-		if (_patches.extra_dynamite) return true;
-
-		const Town *t = ClosestTownFromTile(tile, (uint)-1);
-
-		SetDParam(0, t->index);
-		_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
-		return false;
+		if (!_patches.extra_dynamite) {
+			SetDParam(0, t->index);
+			_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
+			return false;
+		}
+		rating_decrease = RATING_ROAD_DOWN_STEP_INNER;
 	}
+	ChangeTownRating(t, rating_decrease, RATING_ROAD_MINIMUM);
 
 	return true;
 }
@@ -183,26 +200,20 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
  */
 static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, RoadType rt, bool crossing_check, bool town_check = true)
 {
-	/* cost for removing inner/edge -roads */
-	static const uint16 road_remove_cost[2] = {50, 18};
-
-	/* true if the roadpiece was always removeable,
-	 * false if it was a center piece. Affects town ratings drop */
-	bool edge_road;
-
 	RoadTypes rts = GetRoadTypes(tile);
 	/* The tile doesn't have the given road type */
 	if (!HasBit(rts, rt)) return CMD_ERROR;
 
-	Town *t = NULL;
+	bool town_road_under_stop = false;
+
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
-			if (_game_mode != GM_EDITOR && IsRoadOwner(tile, rt, OWNER_TOWN)) t = GetTownByTile(tile);
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
 		case MP_STATION:
 			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
+			if (rt == ROADTYPE_ROAD) town_road_under_stop = GetStopBuiltOnTownRoad(tile);
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
@@ -215,11 +226,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			return CMD_ERROR;
 	}
 
-	if (!CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rt), &edge_road, rt)) return CMD_ERROR;
-
-	/* check if you're allowed to remove the street owned by a town
-	 * removal allowance depends on difficulty setting */
-	if (town_check && !CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
+	if (!CheckAllowRemoveRoad(tile, pieces, town_road_under_stop ? OWNER_TOWN : GetRoadOwner(tile, rt), rt, flags, town_check)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_ROAD)) {
 		/* If it's the last roadtype, just clear the whole tile */
@@ -285,7 +292,6 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 				return CMD_ERROR;
 			}
 
-			if (town_check) ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
 			if (flags & DC_EXEC) {
 				if (HasRoadWorks(tile)) {
 					/* flooding tile with road works, don't forget to remove the effect vehicle too */
@@ -330,10 +336,6 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			/* Don't allow road to be removed from the crossing when there is tram;
 			 * we can't draw the crossing without trambits ;) */
 			if (rt == ROADTYPE_ROAD && HasTileRoadType(tile, ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
-
-			if (rt == ROADTYPE_ROAD) {
-				if (town_check) ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-			}
 
 			if (flags & DC_EXEC) {
 				RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
@@ -654,6 +656,7 @@ do_clear:;
 
 			case MP_STATION:
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
+				if (IsDriveThroughStopTile(tile) && rt == ROADTYPE_ROAD) SetStopBuiltOnTownRoad(tile, false);
 				break;
 
 			default:

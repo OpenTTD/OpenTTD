@@ -2995,16 +2995,15 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
  * Road stops built on town-owned roads check the conditions
  * that would allow clearing of the original road.
  * @param tile road stop tile to check
+ * @param flags command flags
  * @return true if the road can be cleared
  */
-static bool CanRemoveRoadWithStop(TileIndex tile)
+static bool CanRemoveRoadWithStop(TileIndex tile, uint32 flags)
 {
 	/* The road can always be cleared if it was not a town-owned road */
 	if (!GetStopBuiltOnTownRoad(tile)) return true;
 
-	bool edge_road;
-	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, &edge_road, ROADTYPE_ROAD) &&
-				CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_TRAM), OWNER_TOWN, &edge_road, ROADTYPE_TRAM);
+	return CheckAllowRemoveRoad(tile, GetAnyRoadBits(tile, ROADTYPE_ROAD), OWNER_TOWN, ROADTYPE_ROAD, flags);
 }
 
 static CommandCost ClearTile_Station(TileIndex tile, byte flags)
@@ -3029,11 +3028,11 @@ static CommandCost ClearTile_Station(TileIndex tile, byte flags)
 		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
 		case STATION_AIRPORT: return RemoveAirport(st, flags);
 		case STATION_TRUCK:
-			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile))
+			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
 				return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
 			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUS:
-			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile))
+			if (IsDriveThroughStopTile(tile) && !CanRemoveRoadWithStop(tile, flags))
 				return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
 			return RemoveRoadStop(st, flags, tile);
 		case STATION_BUOY:    return RemoveBuoy(st, flags);
