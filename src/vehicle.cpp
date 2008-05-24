@@ -1333,8 +1333,6 @@ static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *e
  */
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count)
 {
-	Vehicle *v;
-
 	/* This function should never be called without an array to store results */
 	assert(!(engine_list == NULL && type != VEH_TRAIN));
 	assert(!(type == VEH_TRAIN && engine_list == NULL && wagon_list == NULL));
@@ -1349,53 +1347,31 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 	if (engine_count != NULL) *engine_count = 0;
 	if (wagon_count != NULL) *wagon_count = 0;
 
-	switch (type) {
-		case VEH_TRAIN:
-			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_TRAIN && v->u.rail.track == TRACK_BIT_DEPOT) {
-					if (IsFrontEngine(v)) {
-						if (engine_list == NULL) continue;
-						if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
-						(*engine_list)[(*engine_count)++] = v;
-					} else if (IsFreeWagon(v)) {
-						if (wagon_list == NULL) continue;
-						if (*wagon_count == *wagon_list_length) ExtendVehicleListSize((const Vehicle***)wagon_list, wagon_list_length, 25);
-						(*wagon_list)[(*wagon_count)++] = v;
-					}
-				}
-			}
-			break;
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		/* General tests for all vehicle types */
+		if (v->type != type) continue;
+		if (v->tile != tile) continue;
 
-		case VEH_ROAD:
-			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_ROAD && v->IsInDepot() && IsRoadVehFront(v)) {
-					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
-					(*engine_list)[(*engine_count)++] = v;
+		switch (type) {
+			case VEH_TRAIN:
+				if (v->u.rail.track != TRACK_BIT_DEPOT) continue;
+				if (wagon_list != NULL && IsFreeWagon(v)) {
+					if (*wagon_count == *wagon_list_length) ExtendVehicleListSize((const Vehicle***)wagon_list, wagon_list_length, 25);
+					(*wagon_list)[(*wagon_count)++] = v;
+					continue;
 				}
-			}
-			break;
+				break;
 
-		case VEH_SHIP:
-			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile && v->type == VEH_SHIP && v->IsInDepot()) {
-					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
-					(*engine_list)[(*engine_count)++] = v;
-				}
-			}
-			break;
+			default:
+				if (!v->IsInDepot()) continue;
+				break;
+		}
 
-		case VEH_AIRCRAFT:
-			FOR_ALL_VEHICLES(v) {
-				if (v->tile == tile &&
-						v->type == VEH_AIRCRAFT && IsNormalAircraft(v) &&
-						v->IsInDepot()) {
-					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
-					(*engine_list)[(*engine_count)++] = v;
-				}
-			}
-			break;
+		if (!v->IsPrimaryVehicle()) continue;
 
-		default: NOT_REACHED();
+		if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
+		(*engine_list)[(*engine_count)++] = v;
 	}
 }
 
