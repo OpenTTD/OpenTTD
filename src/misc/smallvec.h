@@ -1,11 +1,12 @@
 /* $Id$ */
 
-/** @file smallvec.h Simple vector class that allows allocating an item without the need to copy data needlessly. */
+/** @file smallvec.h Simple vector class that allows allocating an item without the need to copy this->data needlessly. */
 
 #ifndef SMALLVEC_H
 #define SMALLVEC_H
 
-template <typename T, uint S> struct SmallVector {
+template <typename T, uint S>
+struct SmallVector {
 	T *data;
 	uint items;
 	uint capacity;
@@ -14,7 +15,7 @@ template <typename T, uint S> struct SmallVector {
 
 	~SmallVector()
 	{
-		free(data);
+		free(this->data);
 	}
 
 	/**
@@ -22,42 +23,42 @@ template <typename T, uint S> struct SmallVector {
 	 */
 	T *Append()
 	{
-		if (items == capacity) {
-			capacity += S;
-			data = ReallocT(data, capacity);
+		if (this->items == this->capacity) {
+			this->capacity += S;
+			this->data = ReallocT(this->data, this->capacity);
 		}
 
-		return &data[items++];
+		return &this->data[this->items++];
 	}
 
 	const T *Begin() const
 	{
-		return data;
+		return this->data;
 	}
 
 	T *Begin()
 	{
-		return data;
+		return this->data;
 	}
 
 	const T *End() const
 	{
-		return &data[items];
+		return &this->data[this->items];
 	}
 
 	T *End()
 	{
-		return &data[items];
+		return &this->data[this->items];
 	}
 
-	const T *Get(size_t index) const
+	const T *Get(uint index) const
 	{
-		return &data[index];
+		return &this->data[index];
 	}
 
-	T *Get(size_t index)
+	T *Get(uint index)
 	{
-		return &data[index];
+		return &this->data[index];
 	}
 };
 
