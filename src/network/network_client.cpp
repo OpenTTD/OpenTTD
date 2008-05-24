@@ -414,7 +414,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, "%s", name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", name);
 		} else if (playas != ci->client_playas) {
 			// The player changed from client-player..
 			// Do not display that for now
@@ -761,7 +761,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	}
 
 	if (ci != NULL)
-		NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), self_send, name, "%s", msg);
+		NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci->client_playas), self_send, name, "%s", msg);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -776,7 +776,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
 
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;
@@ -798,7 +798,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, ci->client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
 
 		// The client is gone, give the NetworkClientInfo free
 		ci->client_index = NETWORK_EMPTY_INDEX;
@@ -821,7 +821,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL)
-		NetworkTextMessage(NETWORK_ACTION_JOIN, 1, false, ci->client_name, "");
+		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name, "");
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
@@ -850,9 +850,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_RCON)
 {
 	char rcon_out[NETWORK_RCONCOMMAND_LENGTH];
-	uint16 color_code;
 
-	color_code = p->Recv_uint16();
+	ConsoleColour color_code = (ConsoleColour)p->Recv_uint16();
 	p->Recv_string(rcon_out, sizeof(rcon_out));
 
 	IConsolePrint(color_code, rcon_out);

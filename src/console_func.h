@@ -7,12 +7,7 @@
 
 #include "console_type.h"
 
-/* console colors/modes */
-extern byte _icolour_def;
-extern byte _icolour_err;
-extern byte _icolour_warn;
-extern byte _icolour_dbg;
-extern byte _icolour_cmd;
+/* console modes */
 extern IConsoleModes _iconsole_mode;
 
 /* console functions */
@@ -21,8 +16,8 @@ void IConsoleFree();
 void IConsoleClose();
 
 /* console output */
-void IConsolePrint(uint16 color_code, const char *string);
-void CDECL IConsolePrintF(uint16 color_code, const char *s, ...);
+void IConsolePrint(ConsoleColour color_code, const char *string);
+void CDECL IConsolePrintF(ConsoleColour color_code, const char *s, ...);
 void IConsoleDebug(const char *dbg, const char *string);
 
 /* Parser */

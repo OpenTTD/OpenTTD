@@ -160,7 +160,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 
 		DEBUG(net, 1, "'%s' made an error and has been disconnected. Reason: '%s'", client_name, str);
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
 		FOR_ALL_CLIENTS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
@@ -779,7 +779,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		NetworkTextMessage(NETWORK_ACTION_JOIN, 1, false, client_name, "");
+		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, client_name, "");
 
 		// Mark the client as pre-active, and wait for an ACK
 		//  so we know he is done loading and in sync with us
@@ -822,17 +822,17 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 	byte flags = GetCommandFlags(cp->cmd);
 
 	if (flags & CMD_SERVER && ci->client_index != NETWORK_SERVER_INDEX) {
-		IConsolePrintF(_icolour_err, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
 		return false;
 	}
 
 	if (flags & CMD_OFFLINE) {
-		IConsolePrintF(_icolour_err, "WARNING: offline only command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: offline only command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
 		return false;
 	}
 
 	if (cp->cmd != CMD_PLAYER_CTRL && !IsValidPlayer(cp->player) && ci->client_index != NETWORK_SERVER_INDEX) {
-		IConsolePrintF(_icolour_err, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
 		return false;
 	}
 
@@ -875,7 +875,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	/* Check if cp->cmd is valid */
 	if (!IsValidCommand(cp->cmd)) {
-		IConsolePrintF(_icolour_err, "WARNING: invalid command from client %d (IP: %s).", ci->client_index, GetPlayerIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: invalid command from client %d (IP: %s).", ci->client_index, GetPlayerIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		free(cp);
 		return;
@@ -892,7 +892,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
 	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas != cp->player) {
-		IConsolePrintF(_icolour_err, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
+		IConsolePrintF(CC_ERROR, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
 		               ci->client_playas + 1, GetPlayerIP(ci), cp->player + 1);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 		free(cp);
@@ -969,7 +969,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	DEBUG(net, 2, "'%s' reported an error and is closing its connection (%s)", client_name, str);
 
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
@@ -998,7 +998,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
+	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
@@ -1052,7 +1052,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 			ci = NetworkFindClientInfoFromIndex(from_index);
 			/* Display the text locally, and that is it */
 			if (ci != NULL)
-				NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
+				NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
 		} else {
 			/* Else find the client to send the message to */
 			FOR_ALL_CLIENTS(cs) {
@@ -1069,7 +1069,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 				ci = NetworkFindClientInfoFromIndex(from_index);
 				ci_to = NetworkFindClientInfoFromIndex(dest);
 				if (ci != NULL && ci_to != NULL)
-					NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), true, ci_to->client_name, "%s", msg);
+					NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci->client_playas), true, ci_to->client_name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
 					if (cs->index == from_index) {
@@ -1097,7 +1097,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		ci = NetworkFindClientInfoFromIndex(from_index);
 		ci_own = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
-			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
+			NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
 			if (from_index == NETWORK_SERVER_INDEX) show_local = false;
 			ci_to = ci_own;
 		}
@@ -1112,7 +1112,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 				StringID str = IsValidPlayer(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 				GetString(name, str, lastof(name));
-				NetworkTextMessage(action, GetDrawStringPlayerColor(ci_own->client_playas), true, name, "%s", msg);
+				NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci_own->client_playas), true, name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
 					if (cs->index == from_index) {
@@ -1132,7 +1132,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		}
 		ci = NetworkFindClientInfoFromIndex(from_index);
 		if (ci != NULL)
-			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
+			NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
 		break;
 	}
 }
@@ -1175,7 +1175,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	if (ci != NULL) {
 		// Display change
 		if (NetworkFindName(client_name)) {
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, 1, false, ci->client_name, "%s", client_name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", client_name);
 			ttd_strlcpy(ci->client_name, client_name, sizeof(ci->client_name));
 			NetworkUpdateClientInfo(ci->client_index);
 		}
@@ -1412,13 +1412,13 @@ static void NetworkAutoCleanCompanies()
 			if (_network_player_info[p->index].months_empty > _network_autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
 				/* Shut the company down */
 				DoCommandP(0, 2, p->index, NULL, CMD_PLAYER_CTRL);
-				IConsolePrintF(_icolour_def, "Auto-cleaned company #%d", p->index + 1);
+				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d", p->index + 1);
 			}
 			/* Is the compnay empty for autoclean_protected-months, and there is a protection? */
 			if (_network_player_info[p->index].months_empty > _network_autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
 				/* Unprotect the company */
 				_network_player_info[p->index].password[0] = '\0';
-				IConsolePrintF(_icolour_def, "Auto-removed protection from company #%d", p->index+1);
+				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", p->index+1);
 				_network_player_info[p->index].months_empty = 0;
 			}
 		} else {
@@ -1527,14 +1527,14 @@ void NetworkServer_Tick(bool send_frame)
 				if (lag > 3) {
 					// Client did still not report in after 4 game-day, drop him
 					//  (that is, the 3 of above, + 1 before any lag is counted)
-					IConsolePrintF(_icolour_err,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->index);
+					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->index);
 					NetworkCloseClient(cs);
 					continue;
 				}
 
 				// Report once per time we detect the lag
 				if (cs->lag_test == 0) {
-					IConsolePrintF(_icolour_warn,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->index);
+					IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->index);
 					cs->lag_test = 1;
 				}
 			} else {
@@ -1543,13 +1543,13 @@ void NetworkServer_Tick(bool send_frame)
 		} else if (cs->status == STATUS_PRE_ACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _network_max_join_time) {
-				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
+				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
 				NetworkCloseClient(cs);
 			}
 		} else if (cs->status == STATUS_INACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
-				IConsolePrintF(_icolour_err,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->index, 4 * DAY_TICKS);
+				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->index, 4 * DAY_TICKS);
 				NetworkCloseClient(cs);
 			}
 		}

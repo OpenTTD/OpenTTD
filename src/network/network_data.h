@@ -6,6 +6,7 @@
 #define NETWORK_DATA_H
 
 #include "../openttd.h"
+#include "../console_type.h"
 #include "network.h"
 #include "network_internal.h"
 
@@ -105,7 +106,7 @@ void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp);
 
 // from network.c
 void NetworkCloseClient(NetworkTCPSocketHandler *cs);
-void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send, const char *name, const char *str, ...);
+void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, ...);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkTCPSocketHandler *cs);
 uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs);
 byte NetworkGetCurrentLanguageIndex();

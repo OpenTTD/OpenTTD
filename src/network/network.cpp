@@ -141,7 +141,7 @@ byte NetworkSpectatorCount()
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
 // If 'self_send' is true, this is the client who is sending the message
-void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send, const char *name, const char *str, ...)
+void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, ...)
 {
 	char buf[1024];
 	va_list va;
@@ -155,16 +155,16 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 
 	switch (action) {
 		case NETWORK_ACTION_SERVER_MESSAGE:
-			color = 1;
+			color = CC_DEFAULT;
 			snprintf(message, sizeof(message), "*** %s", buf);
 			break;
 		case NETWORK_ACTION_JOIN:
-			color = 1;
+			color = CC_DEFAULT;
 			GetString(temp, STR_NETWORK_CLIENT_JOINED, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s", name, temp);
 			break;
 		case NETWORK_ACTION_LEAVE:
-			color = 1;
+			color = CC_DEFAULT;
 			GetString(temp, STR_NETWORK_ERR_LEFT, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s (%s)", name, temp, buf);
 			break;
@@ -651,7 +651,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 
 		GetNetworkErrorMsg(str, errorno, lastof(str));
 
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
 		// Inform other clients of this... strange leaving ;)
 		FOR_ALL_CLIENTS(new_cs) {

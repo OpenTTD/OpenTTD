@@ -1992,7 +1992,7 @@ bool IConsoleSetPatchSetting(const char *name, int32 value)
 	void *ptr;
 
 	if (sd == NULL) {
-		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
+		IConsolePrintF(CC_WARNING, "'%s' is an unknown patch setting.", name);
 		return true;
 	}
 
@@ -2011,7 +2011,7 @@ void IConsoleGetPatchSetting(const char *name)
 	const void *ptr;
 
 	if (sd == NULL) {
-		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
+		IConsolePrintF(CC_WARNING, "'%s' is an unknown patch setting.", name);
 		return;
 	}
 
@@ -2023,13 +2023,13 @@ void IConsoleGetPatchSetting(const char *name)
 		snprintf(value, sizeof(value), "%d", (int32)ReadValue(ptr, sd->save.conv));
 	}
 
-	IConsolePrintF(_icolour_warn, "Current value for '%s' is: '%s' (min: %s%d, max: %d)",
+	IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %d)",
 		name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
 }
 
 void IConsoleListPatches()
 {
-	IConsolePrintF(_icolour_warn, "All patches with their current value:");
+	IConsolePrintF(CC_WARNING, "All patches with their current value:");
 
 	for (const SettingDesc *sd = _patch_settings; sd->save.cmd != SL_END; sd++) {
 		char value[80];
@@ -2040,10 +2040,10 @@ void IConsoleListPatches()
 		} else {
 			snprintf(value, lengthof(value), "%d", (uint32)ReadValue(ptr, sd->save.conv));
 		}
-		IConsolePrintF(_icolour_def, "%s = %s", sd->desc.name, value);
+		IConsolePrintF(CC_DEFAULT, "%s = %s", sd->desc.name, value);
 	}
 
-	IConsolePrintF(_icolour_warn, "Use 'patch' command to change a value");
+	IConsolePrintF(CC_WARNING, "Use 'patch' command to change a value");
 }
 
 /** Save and load handler for patches/settings

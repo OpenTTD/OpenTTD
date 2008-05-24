@@ -36,12 +36,7 @@ IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
 IConsoleVar   *_iconsole_vars;    ///< list of registred vars
 IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 
-/* console colors/modes */
-byte _icolour_def;
-byte _icolour_err;
-byte _icolour_warn;
-byte _icolour_dbg;
-byte _icolour_cmd;
+/* console modes */
 IConsoleModes _iconsole_mode;
 
 /* ** main console ** */
@@ -111,11 +106,11 @@ struct IConsoleWindow : Window
 		/* If the text is longer than the window, don't show the starting ']' */
 		delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
-			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, _icolour_cmd);
+			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, CC_COMMAND);
 			delta = 0;
 		}
 
-		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, _icolour_cmd);
+		DoDrawString(_iconsole_cmdline.buf, 10 + delta, this->height - ICON_LINE_HEIGHT, CC_COMMAND);
 
 		if (_iconsole_cmdline.caret) {
 			DoDrawString("_", 10 + delta + _iconsole_cmdline.caretxoffs, this->height - ICON_LINE_HEIGHT, TC_WHITE);
@@ -181,7 +176,7 @@ struct IConsoleWindow : Window
 				break;
 
 			case WKC_RETURN: case WKC_NUM_ENTER:
-				IConsolePrintF(_icolour_cmd, "] %s", _iconsole_cmdline.buf);
+				IConsolePrintF(CC_COMMAND, "] %s", _iconsole_cmdline.buf);
 				IConsoleHistoryAdd(_iconsole_cmdline.buf);
 
 				IConsoleCmdExec(_iconsole_cmdline.buf);
@@ -254,11 +249,6 @@ static const WindowDesc _iconsole_window_desc = {
 void IConsoleInit()
 {
 	_iconsole_output_file = NULL;
-	_icolour_def  =  1;
-	_icolour_err  =  3;
-	_icolour_warn = 13;
-	_icolour_dbg  =  5;
-	_icolour_cmd  = TC_GOLD;
 	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
 	_iconsole_mode = ICONSOLE_CLOSED;
 
@@ -272,10 +262,10 @@ void IConsoleInit()
 	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
 	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE;
 
-	IConsolePrintF(13, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
-	IConsolePrint(12,  "------------------------------------");
-	IConsolePrint(12,  "use \"help\" for more information");
-	IConsolePrint(12,  "");
+	IConsolePrintF(CC_WARNING, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
+	IConsolePrint(CC_WHITE,  "------------------------------------");
+	IConsolePrint(CC_WHITE,  "use \"help\" for more information");
+	IConsolePrint(CC_WHITE,  "");
 	IConsoleStdLibRegister();
 	IConsoleClearCommand();
 	IConsoleHistoryAdd("");
@@ -304,7 +294,7 @@ static void IConsoleWriteToLogFile(const char *string)
 				fwrite("\n", 1, 1, _iconsole_output_file) != 1) {
 			fclose(_iconsole_output_file);
 			_iconsole_output_file = NULL;
-			IConsolePrintF(_icolour_def, "cannot write to log file");
+			IConsolePrintF(CC_DEFAULT, "cannot write to log file");
 		}
 	}
 }
@@ -312,7 +302,7 @@ static void IConsoleWriteToLogFile(const char *string)
 bool CloseConsoleLogIfActive()
 {
 	if (_iconsole_output_file != NULL) {
-		IConsolePrintF(_icolour_def, "file output complete");
+		IConsolePrintF(CC_DEFAULT, "file output complete");
 		fclose(_iconsole_output_file);
 		_iconsole_output_file = NULL;
 		return true;
@@ -412,7 +402,7 @@ static void IConsoleHistoryNavigate(int direction)
  * @param color_code the colour of the command. Red in case of errors, etc.
  * @param string the message entered or output on the console (notice, error, etc.)
  */
-void IConsolePrint(uint16 color_code, const char *string)
+void IConsolePrint(ConsoleColour color_code, const char *string)
 {
 	char *str;
 #ifdef ENABLE_NETWORK
@@ -456,7 +446,7 @@ void IConsolePrint(uint16 color_code, const char *string)
  * by any other means. Uses printf() style format, for more information look
  * at IConsolePrint()
  */
-void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
+void CDECL IConsolePrintF(ConsoleColour color_code, const char *s, ...)
 {
 	va_list va;
 	char buf[ICON_MAX_STREAMSIZE];
@@ -479,7 +469,7 @@ void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
 void IConsoleDebug(const char *dbg, const char *string)
 {
 	if (_stdlib_developer > 1)
-		IConsolePrintF(_icolour_dbg, "dbg: [%s] %s", dbg, string);
+		IConsolePrintF(CC_DEBUG, "dbg: [%s] %s", dbg, string);
 }
 
 /**
@@ -490,7 +480,7 @@ void IConsoleDebug(const char *dbg, const char *string)
 void IConsoleWarning(const char *string)
 {
 	if (_stdlib_developer > 0)
-		IConsolePrintF(_icolour_warn, "WARNING: %s", string);
+		IConsolePrintF(CC_WARNING, "WARNING: %s", string);
 }
 
 /**
@@ -499,7 +489,7 @@ void IConsoleWarning(const char *string)
  */
 void IConsoleError(const char *string)
 {
-	IConsolePrintF(_icolour_err, "ERROR: %s", string);
+	IConsolePrintF(CC_ERROR, "ERROR: %s", string);
 }
 
 /**
@@ -748,7 +738,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 	memset(&aliasstream, 0, sizeof(aliasstream));
 
 	if (_stdlib_con_developer)
-		IConsolePrintF(_icolour_dbg, "condbg: requested command is an alias; parsing...");
+		IConsolePrintF(CC_DEBUG, "condbg: requested command is an alias; parsing...");
 
 	aliases[0] = aliasstream;
 	for (cmdptr = alias->cmdline, a_index = 0, astream_i = 0; *cmdptr != '\0'; cmdptr++) {
@@ -788,7 +778,7 @@ static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char 
 
 				if (param < 0 || param >= tokencount) {
 					IConsoleError("too many or wrong amount of parameters passed to alias, aborting");
-					IConsolePrintF(_icolour_warn, "Usage of alias '%s': %s", alias->name, alias->cmdline);
+					IConsolePrintF(CC_WARNING, "Usage of alias '%s': %s", alias->name, alias->cmdline);
 					return;
 				}
 
@@ -1001,7 +991,7 @@ void IConsoleVarPrintGetValue(const IConsoleVar *var)
 	}
 
 	value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(_icolour_warn, "Current value for '%s' is:  %s", var->name, value);
+	IConsolePrintF(CC_WARNING, "Current value for '%s' is:  %s", var->name, value);
 }
 
 /**
@@ -1011,7 +1001,7 @@ void IConsoleVarPrintGetValue(const IConsoleVar *var)
 void IConsoleVarPrintSetValue(const IConsoleVar *var)
 {
 	char *value = IConsoleVarGetStringValue(var);
-	IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", var->name, value);
+	IConsolePrintF(CC_WARNING, "'%s' changed to:  %s", var->name, value);
 }
 
 /**
@@ -1028,7 +1018,7 @@ void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[ICON_T
 	uint32 value;
 
 	if (_stdlib_con_developer)
-		IConsolePrintF(_icolour_dbg, "condbg: requested command is a variable");
+		IConsolePrintF(CC_DEBUG, "condbg: requested command is a variable");
 
 	if (tokencount == 0) { /* Just print out value */
 		IConsoleVarPrintGetValue(var);
@@ -1105,13 +1095,13 @@ void IConsoleCmdExec(const char *cmdstr)
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
 		if (!IsValidChar(*cmdptr, CS_ALPHANUMERAL)) {
 			IConsoleError("command contains malformed characters, aborting");
-			IConsolePrintF(_icolour_err, "ERROR: command was: '%s'", cmdstr);
+			IConsolePrintF(CC_ERROR, "ERROR: command was: '%s'", cmdstr);
 			return;
 		}
 	}
 
 	if (_stdlib_con_developer)
-		IConsolePrintF(_icolour_dbg, "condbg: executing cmdline: '%s'", cmdstr);
+		IConsolePrintF(CC_DEBUG, "condbg: executing cmdline: '%s'", cmdstr);
 
 	memset(&tokens, 0, sizeof(tokens));
 	memset(&tokenstream, 0, sizeof(tokenstream));
@@ -1159,7 +1149,7 @@ void IConsoleCmdExec(const char *cmdstr)
 		uint i;
 
 		for (i = 0; tokens[i] != NULL; i++) {
-			IConsolePrintF(_icolour_dbg, "condbg: token %d is: '%s'", i, tokens[i]);
+			IConsolePrintF(CC_DEBUG, "condbg: token %d is: '%s'", i, tokens[i]);
 		}
 	}
 
