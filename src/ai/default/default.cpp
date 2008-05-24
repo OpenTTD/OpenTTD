@@ -3763,11 +3763,11 @@ pos_3:
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
 	} else if (IsTileType(tile, MP_ROAD)) {
-		if (!IsTileOwner(tile, _current_player)) return;
-
 		if (IsLevelCrossing(tile)) goto is_rail_crossing;
 
 		if (IsRoadDepot(tile)) {
+			if (!IsTileOwner(tile, _current_player)) return;
+
 			DiagDirection dir;
 			TileIndex t;
 

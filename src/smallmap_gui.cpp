@@ -490,6 +490,10 @@ static inline uint32 GetSmallMapOwnerPixels(TileIndex tile)
 		case MP_INDUSTRY: o = OWNER_END;          break;
 		case MP_HOUSE:    o = OWNER_TOWN;         break;
 		default:          o = GetTileOwner(tile); break;
+		/* FIXME: For MP_ROAD there are multiple owners.
+		 * GetTileOwner returns the rail owner (level crossing) resp. the owner of ROADTYPE_ROAD (normal road),
+		 * even if there are no ROADTYPE_ROAD bits on the tile.
+		 */
 	}
 
 	return _owner_colors[o];

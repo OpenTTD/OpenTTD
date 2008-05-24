@@ -173,11 +173,6 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, bool *ed
 	return true;
 }
 
-static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool *edge_road, RoadType rt)
-{
-	return CheckAllowRemoveRoad(tile, remove, GetRoadOwner(tile, rt), edge_road, rt);
-}
-
 
 /** Delete a piece of road.
  * @param tile tile where to remove road from
@@ -195,10 +190,14 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 	 * false if it was a center piece. Affects town ratings drop */
 	bool edge_road;
 
+	RoadTypes rts = GetRoadTypes(tile);
+	/* The tile doesn't have the given road type */
+	if (!HasBit(rts, rt)) return CMD_ERROR;
+
 	Town *t = NULL;
 	switch (GetTileType(tile)) {
 		case MP_ROAD:
-			if (_game_mode != GM_EDITOR && GetRoadOwner(tile, rt) == OWNER_TOWN) t = GetTownByTile(tile);
+			if (_game_mode != GM_EDITOR && IsRoadOwner(tile, rt, OWNER_TOWN)) t = GetTownByTile(tile);
 			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 			break;
 
@@ -216,11 +215,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			return CMD_ERROR;
 	}
 
-	RoadTypes rts = GetRoadTypes(tile);
-	/* The tile doesn't have the given road type */
-	if (!HasBit(rts, rt)) return CMD_ERROR;
-
-	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road, rt)) return CMD_ERROR;
+	if (!CheckAllowRemoveRoad(tile, pieces, GetRoadOwner(tile, rt), &edge_road, rt)) return CMD_ERROR;
 
 	/* check if you're allowed to remove the street owned by a town
 	 * removal allowance depends on difficulty setting */
@@ -501,7 +496,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 					if ((existing & pieces) == pieces) {
 						/* We only want to set the (dis)allowed road directions */
-						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && GetRoadOwner(tile, ROADTYPE_ROAD) == _current_player) {
+						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && IsRoadOwner(tile, ROADTYPE_ROAD, _current_player)) {
 							if (crossing) return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 
 							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
@@ -894,7 +889,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 			/* Clear the road if only one piece is on the tile OR the AI tries
 			 * to clear town road OR we are not using the DC_AUTO flag */
 			if ((CountBits(b) == 1 && GetRoadBits(tile, ROADTYPE_TRAM) == ROAD_NONE) ||
-			    ((flags & DC_AI_BUILDING) && IsTileOwner(tile, OWNER_TOWN)) ||
+			    ((flags & DC_AI_BUILDING) && GetOtherRoadBits(tile, ROADTYPE_ROAD) == ROAD_NONE && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) ||
 			    !(flags & DC_AUTO)
 				) {
 				RoadTypes rts = GetRoadTypes(tile);
@@ -1549,9 +1544,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	}
 
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
-		/* ROADTYPE_ROAD denotes the tile owner, so update it too */
-		if (rt != ROADTYPE_ROAD && !HasTileRoadType(tile, rt)) continue;
-
+		/* Update all roadtypes, no matter if they are present */
 		if (GetRoadOwner(tile, rt) == old_player) {
 			SetRoadOwner(tile, rt, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);
 		}

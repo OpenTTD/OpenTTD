@@ -1212,14 +1212,14 @@ static int GrowTownAtRoad(Town *t, TileIndex tile)
 		do target_dir = RandomDiagDir(); while (!(cur_rb & DiagDirToRoadBits(target_dir)));
 		tile = TileAddByDiagDir(tile, target_dir);
 
-		if (IsTileType(tile, MP_ROAD)) {
+		if (IsTileType(tile, MP_ROAD) && !IsRoadDepot(tile) && HasTileRoadType(tile, ROADTYPE_ROAD)) {
 			/* Don't allow building over roads of other cities */
-			if (IsTileOwner(tile, OWNER_TOWN) && GetTownByTile(tile) != t) {
+			if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN) && GetTownByTile(tile) != t) {
 				_grow_town_result = GROWTH_SUCCEED;
-			} else if (IsTileOwner(tile, OWNER_NONE) && _game_mode == GM_EDITOR) {
+			} else if (IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_NONE) && _game_mode == GM_EDITOR) {
 				/* If we are in the SE, and this road-piece has no town owner yet, it just found an
 				 * owner :) (happy happy happy road now) */
-				SetTileOwner(tile, OWNER_TOWN);
+				SetRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN);
 				SetTownIndex(tile, t->index);
 			}
 		}
@@ -2438,8 +2438,8 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	if (IsTileType(tile, MP_HOUSE) || (
-				IsTileType(tile, MP_ROAD) &&
-				GetRoadOwner(tile, ROADTYPE_ROAD) == OWNER_TOWN
+				IsTileType(tile, MP_ROAD) && HasTileRoadType(tile, ROADTYPE_ROAD) &&
+				IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)
 			)) {
 		return GetTownByTile(tile);
 	} else {

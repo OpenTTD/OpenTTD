@@ -187,6 +187,12 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 	}
 }
 
+static inline bool IsRoadOwner(TileIndex t, RoadType rt, Owner o)
+{
+	assert(HasTileRoadType(t, rt));
+	return (GetRoadOwner(t, rt) == o);
+}
+
 /** Which directions are disallowed ? */
 enum DisallowedRoadDirections {
 	DRD_NONE,       ///< None of the directions are disallowed

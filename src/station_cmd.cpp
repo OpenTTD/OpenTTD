@@ -1300,7 +1300,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
 	bool build_over_road  = is_drive_through && IsNormalRoadTile(tile);
-	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
+	bool town_owned_road  = false;
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 
 	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
@@ -1319,14 +1319,17 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Not allowed to build over this road */
 	if (build_over_road) {
-		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
-
 		RoadTypes cur_rts = GetRoadTypes(tile);
 
 		/* there is a road, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_ROAD)) {
 			Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-			if (road_owner != OWNER_TOWN && road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
+			if (road_owner == OWNER_TOWN) {
+				town_owned_road = true;
+				if (!_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
+			} else {
+				if (road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
+			}
 		}
 
 		/* there is a tram, check if we can build road+tram stop over it */
