@@ -879,7 +879,7 @@ struct DepotWindow : Window {
 	{
 		switch (widget) {
 			case DEPOT_WIDGET_MATRIX: {
-				Vehicle *v;
+				Vehicle *v = NULL;
 				VehicleID sel = this->sel;
 
 				this->sel = INVALID_VEHICLE;
