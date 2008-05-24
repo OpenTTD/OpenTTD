@@ -426,7 +426,10 @@ public:
 class PickerWindowBase : public Window {
 
 public:
-	PickerWindowBase(const WindowDesc *desc) : Window(desc) {}; // nothing special yet, just propagation
+	PickerWindowBase(const WindowDesc *desc, Window *parent) : Window(desc)
+	{
+		this->parent = parent;
+	};
 
 	virtual ~PickerWindowBase();
 };

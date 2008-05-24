@@ -26,7 +26,7 @@
 
 static byte _selected_airport_type;
 
-static void ShowBuildAirportPicker();
+static void ShowBuildAirportPicker(Window *parent);
 
 
 void CcBuildAirport(bool success, TileIndex tile, uint32 p1, uint32 p2)
@@ -51,7 +51,7 @@ enum {
 
 static void BuildAirClick_Airport(Window *w)
 {
-	if (HandlePlacePushButton(w, ATW_AIRPORT, SPR_CURSOR_AIRPORT, VHM_RECT, PlaceAirport)) ShowBuildAirportPicker();
+	if (HandlePlacePushButton(w, ATW_AIRPORT, SPR_CURSOR_AIRPORT, VHM_RECT, PlaceAirport)) ShowBuildAirportPicker(w);
 }
 
 static void BuildAirClick_Demolish(Window *w)
@@ -172,7 +172,7 @@ class AirportPickerWindow : public PickerWindowBase {
 
 public:
 
-	AirportPickerWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	AirportPickerWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
@@ -298,9 +298,9 @@ static const WindowDesc _build_airport_desc = {
 	_build_airport_picker_widgets,
 };
 
-static void ShowBuildAirportPicker()
+static void ShowBuildAirportPicker(Window *parent)
 {
-	new AirportPickerWindow(&_build_airport_desc);
+	new AirportPickerWindow(&_build_airport_desc, parent);
 }
 
 void InitializeAirportGui()

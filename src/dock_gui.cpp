@@ -25,8 +25,8 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static void ShowBuildDockStationPicker();
-static void ShowBuildDocksDepotPicker();
+static void ShowBuildDockStationPicker(Window *parent);
+static void ShowBuildDocksDepotPicker(Window *parent);
 
 static Axis _ship_depot_direction;
 
@@ -105,13 +105,13 @@ static void BuildDocksClick_Demolish(Window *w)
 static void BuildDocksClick_Depot(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, VHM_RECT, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
+	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, VHM_RECT, PlaceDocks_Depot)) ShowBuildDocksDepotPicker(w);
 }
 
 static void BuildDocksClick_Dock(Window *w)
 {
 	if (!CanBuildVehicleInfrastructure(VEH_SHIP)) return;
-	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, VHM_SPECIAL, PlaceDocks_Dock)) ShowBuildDockStationPicker();
+	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, VHM_SPECIAL, PlaceDocks_Dock)) ShowBuildDockStationPicker(w);
 }
 
 static void BuildDocksClick_Buoy(Window *w)
@@ -255,7 +255,7 @@ private:
 	};
 
 public:
-	BuildDocksStationWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	BuildDocksStationWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->LowerWidget(_station_show_coverage + BDSW_LT_OFF);
 		this->FindWindowPlacementAndResize(desc);
@@ -319,9 +319,9 @@ static const WindowDesc _build_dock_station_desc = {
 	_build_dock_station_widgets,
 };
 
-static void ShowBuildDockStationPicker()
+static void ShowBuildDockStationPicker(Window *parent)
 {
-	new BuildDocksStationWindow(&_build_dock_station_desc);
+	new BuildDocksStationWindow(&_build_dock_station_desc, parent);
 }
 
 struct BuildDocksDepotWindow : public PickerWindowBase {
@@ -344,7 +344,7 @@ private:
 	}
 
 public:
-	BuildDocksDepotWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	BuildDocksDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->LowerWidget(_ship_depot_direction + BDDW_X);
 		UpdateDocksDirection();
@@ -394,9 +394,9 @@ static const WindowDesc _build_docks_depot_desc = {
 };
 
 
-static void ShowBuildDocksDepotPicker()
+static void ShowBuildDocksDepotPicker(Window *parent)
 {
-	new BuildDocksDepotWindow(&_build_docks_depot_desc);
+	new BuildDocksDepotWindow(&_build_docks_depot_desc, parent);
 }
 
 

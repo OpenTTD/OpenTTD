@@ -65,10 +65,10 @@ static struct {
 
 
 static void HandleStationPlacement(TileIndex start, TileIndex end);
-static void ShowBuildTrainDepotPicker();
-static void ShowBuildWaypointPicker();
-static void ShowStationBuilder();
-static void ShowSignalBuilder();
+static void ShowBuildTrainDepotPicker(Window *parent);
+static void ShowBuildWaypointPicker(Window *parent);
+static void ShowStationBuilder(Window *parent);
+static void ShowSignalBuilder(Window *parent);
 
 void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
@@ -392,7 +392,7 @@ static void BuildRailClick_Demolish(Window *w)
 static void BuildRailClick_Depot(Window *w)
 {
 	if (HandlePlacePushButton(w, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, VHM_RECT, PlaceRail_Depot)) {
-		ShowBuildTrainDepotPicker();
+		ShowBuildTrainDepotPicker(w);
 	}
 }
 
@@ -407,7 +407,7 @@ static void BuildRailClick_Waypoint(Window *w)
 	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
 	if (HandlePlacePushButton(w, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, VHM_RECT, PlaceRail_Waypoint) &&
 			_waypoint_count > 1) {
-		ShowBuildWaypointPicker();
+		ShowBuildWaypointPicker(w);
 	}
 }
 
@@ -418,7 +418,7 @@ static void BuildRailClick_Waypoint(Window *w)
  */
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, VHM_RECT, PlaceRail_Station)) ShowStationBuilder();
+	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, VHM_RECT, PlaceRail_Station)) ShowStationBuilder(w);
 }
 
 /**
@@ -430,7 +430,7 @@ static void BuildRailClick_Station(Window *w)
 static void BuildRailClick_AutoSignals(Window *w)
 {
 	if (_patches.enable_signal_gui != _ctrl_pressed) {
-		if (HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals)) ShowSignalBuilder();
+		if (HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals)) ShowSignalBuilder(w);
 	} else {
 		HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
 	}
@@ -967,7 +967,7 @@ private:
  */
 
 public:
-	BuildRailStationWindow(const WindowDesc *desc, bool newstation) : PickerWindowBase(desc)
+	BuildRailStationWindow(const WindowDesc *desc, Window *parent, bool newstation) : PickerWindowBase(desc, parent)
 	{
 		this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 		if (_railstation.dragdrop) {
@@ -1333,12 +1333,12 @@ static const WindowDesc _newstation_builder_desc = {
 };
 
 /** Open station build window */
-static void ShowStationBuilder()
+static void ShowStationBuilder(Window *parent)
 {
 	if (GetNumStationClasses() <= 2 && GetNumCustomStations(STAT_CLASS_DFLT) == 1) {
-		new BuildRailStationWindow(&_station_builder_desc, false);
+		new BuildRailStationWindow(&_station_builder_desc, parent, false);
 	} else {
-		new BuildRailStationWindow(&_newstation_builder_desc, true);
+		new BuildRailStationWindow(&_newstation_builder_desc, parent, true);
 	}
 }
 
@@ -1379,7 +1379,7 @@ private:
 	}
 
 public:
-	BuildSignalWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	BuildSignalWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	};
@@ -1488,9 +1488,9 @@ static const WindowDesc _signal_builder_desc = {
 /**
  * Open the signal selection window
  */
-static void ShowSignalBuilder()
+static void ShowSignalBuilder(Window *parent)
 {
-	new BuildSignalWindow(&_signal_builder_desc);
+	new BuildSignalWindow(&_signal_builder_desc, parent);
 }
 
 struct BuildRailDepotWindow : public PickerWindowBase {
@@ -1507,7 +1507,7 @@ private:
 	};
 
 public:
-	BuildRailDepotWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	BuildRailDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->LowerWidget(_build_depot_direction + BRDW_DEPOT_NE);
 		this->FindWindowPlacementAndResize(desc);
@@ -1559,9 +1559,9 @@ static const WindowDesc _build_depot_desc = {
 	_build_depot_widgets,
 };
 
-static void ShowBuildTrainDepotPicker()
+static void ShowBuildTrainDepotPicker(Window *parent)
 {
-	new BuildRailDepotWindow(&_build_depot_desc);
+	new BuildRailDepotWindow(&_build_depot_desc, parent);
 }
 
 struct BuildRailWaypointWindow : PickerWindowBase {
@@ -1580,7 +1580,7 @@ private:
 	};
 
 public:
-	BuildRailWaypointWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	BuildRailWaypointWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->hscroll.cap = 5;
 		this->hscroll.count = _waypoint_count;
@@ -1660,9 +1660,9 @@ static const WindowDesc _build_waypoint_desc = {
 	_build_waypoint_widgets,
 };
 
-static void ShowBuildWaypointPicker()
+static void ShowBuildWaypointPicker(Window *parent)
 {
-	new BuildRailWaypointWindow(&_build_waypoint_desc);
+	new BuildRailWaypointWindow(&_build_waypoint_desc, parent);
 }
 
 /**

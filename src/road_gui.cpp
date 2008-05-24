@@ -28,8 +28,8 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static void ShowRVStationPicker(RoadStopType rs);
-static void ShowRoadDepotPicker();
+static void ShowRVStationPicker(Window *parent, RoadStopType rs);
+static void ShowRoadDepotPicker(Window *parent);
 
 static bool _remove_button_clicked;
 static bool _one_way_button_clicked;
@@ -324,19 +324,19 @@ static void BuildRoadClick_Demolish(Window *w)
 static void BuildRoadClick_Depot(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, VHM_RECT, PlaceRoad_Depot)) ShowRoadDepotPicker();
+	if (HandlePlacePushButton(w, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, VHM_RECT, PlaceRoad_Depot)) ShowRoadDepotPicker(w);
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, VHM_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(ROADSTOP_BUS);
+	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, VHM_RECT, PlaceRoad_BusStation)) ShowRVStationPicker(w, ROADSTOP_BUS);
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR || !CanBuildVehicleInfrastructure(VEH_ROAD)) return;
-	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, VHM_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(ROADSTOP_TRUCK);
+	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, VHM_RECT, PlaceRoad_TruckStation)) ShowRVStationPicker(w, ROADSTOP_TRUCK);
 }
 
 /**
@@ -729,7 +729,7 @@ private:
 	};
 
 public:
-	BuildRoadDepotWindow(const WindowDesc *desc) : PickerWindowBase(desc)
+	BuildRoadDepotWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
 		this->LowerWidget(_road_depot_orientation + BRDW_DEPOT_NE);
 		if ( _cur_roadtype == ROADTYPE_TRAM) {
@@ -788,9 +788,9 @@ static const WindowDesc _build_road_depot_desc = {
 	_build_road_depot_widgets,
 };
 
-static void ShowRoadDepotPicker()
+static void ShowRoadDepotPicker(Window *parent)
 {
-	new BuildRoadDepotWindow(&_build_road_depot_desc);
+	new BuildRoadDepotWindow(&_build_road_depot_desc, parent);
 }
 
 struct BuildRoadStationWindow : public PickerWindowBase {
@@ -812,7 +812,7 @@ private:
 	};
 
 public:
-	BuildRoadStationWindow(const WindowDesc *desc, RoadStopType rs) : PickerWindowBase(desc)
+	BuildRoadStationWindow(const WindowDesc *desc, Window *parent, RoadStopType rs) : PickerWindowBase(desc, parent)
 	{
 		/* Trams don't have non-drivethrough stations */
 		if (_cur_roadtype == ROADTYPE_TRAM && _road_station_picker_orientation < DIAGDIR_END) {
@@ -930,9 +930,9 @@ static const WindowDesc _rv_station_picker_desc = {
 	_rv_station_picker_widgets,
 };
 
-static void ShowRVStationPicker(RoadStopType rs)
+static void ShowRVStationPicker(Window *parent, RoadStopType rs)
 {
-	new BuildRoadStationWindow(&_rv_station_picker_desc, rs);
+	new BuildRoadStationWindow(&_rv_station_picker_desc, parent, rs);
 }
 
 void InitializeRoadGui()
