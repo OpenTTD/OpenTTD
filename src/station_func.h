@@ -47,5 +47,6 @@ bool IsStationTileBlocked(TileIndex tile);
 /* Check if a rail station tile is electrifiable. */
 bool IsStationTileElectrifiable(TileIndex tile);
 
+void UpdateAirportsNoise();
 
 #endif /* STATION_FUNC_H */

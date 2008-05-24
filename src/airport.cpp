@@ -43,7 +43,7 @@ void InitializeAirports()
 		_airport_fta_dummy,
 		NULL,
 		0,
-		0, 0,
+		0, 0, 0,
 		0,
 		0
 	);
@@ -57,7 +57,7 @@ void InitializeAirports()
 		_airport_fta_country,
 		_airport_depots_country,
 		lengthof(_airport_depots_country),
-		4, 3,
+		4, 3, 3,
 		0,
 		4
 	);
@@ -71,7 +71,7 @@ void InitializeAirports()
 		_airport_fta_city,
 		_airport_depots_city,
 		lengthof(_airport_depots_city),
-		6, 6,
+		6, 6, 5,
 		0,
 		5
 	);
@@ -85,7 +85,7 @@ void InitializeAirports()
 		_airport_fta_metropolitan,
 		_airport_depots_metropolitan,
 		lengthof(_airport_depots_metropolitan),
-		6, 6,
+		6, 6, 8,
 		0,
 		6
 	);
@@ -99,7 +99,7 @@ void InitializeAirports()
 		_airport_fta_international,
 		_airport_depots_international,
 		lengthof(_airport_depots_international),
-		7, 7,
+		7, 7, 17,
 		0,
 		8
 	);
@@ -113,7 +113,7 @@ void InitializeAirports()
 		_airport_fta_intercontinental,
 		_airport_depots_intercontinental,
 		lengthof(_airport_depots_intercontinental),
-		9, 11,
+		9, 11, 25,
 		0,
 		10
 	);
@@ -127,7 +127,7 @@ void InitializeAirports()
 		_airport_fta_heliport_oilrig,
 		NULL,
 		0,
-		1, 1,
+		1, 1, 1,
 		60,
 		4
 	);
@@ -141,7 +141,7 @@ void InitializeAirports()
 		_airport_fta_heliport_oilrig,
 		NULL,
 		0,
-		1, 1,
+		1, 1, 0,
 		54,
 		3
 	);
@@ -155,7 +155,7 @@ void InitializeAirports()
 		_airport_fta_commuter,
 		_airport_depots_commuter,
 		lengthof(_airport_depots_commuter),
-		5, 4,
+		5, 4, 4,
 		0,
 		4
 	);
@@ -169,7 +169,7 @@ void InitializeAirports()
 		_airport_fta_helidepot,
 		_airport_depots_helidepot,
 		lengthof(_airport_depots_helidepot),
-		2, 2,
+		2, 2, 2,
 		0,
 		4
 	);
@@ -183,7 +183,7 @@ void InitializeAirports()
 		_airport_fta_helistation,
 		_airport_depots_helistation,
 		lengthof(_airport_depots_helistation),
-		4, 2,
+		4, 2, 3,
 		0,
 		4
 	);
@@ -225,6 +225,7 @@ AirportFTAClass::AirportFTAClass(
 	const byte nof_depots_,
 	uint size_x_,
 	uint size_y_,
+	byte noise_level_,
 	byte delta_z_,
 	byte catchment_
 ) :
@@ -238,6 +239,7 @@ AirportFTAClass::AirportFTAClass(
 	entry_points(entry_points_),
 	size_x(size_x_),
 	size_y(size_y_),
+	noise_level(noise_level_),
 	delta_z(delta_z_),
 	catchment(catchment_)
 {

@@ -7,6 +7,7 @@
 
 #include "direction_type.h"
 #include "map_type.h"
+#include "tile_type.h"
 
 enum {MAX_TERMINALS =  10};
 enum {MAX_HELIPADS  =   4};
@@ -144,6 +145,7 @@ struct AirportFTAClass {
 			byte nof_depots,
 			uint size_x,
 			uint size_y,
+			uint8 noise_level,
 			byte delta_z,
 			byte catchment
 		);
@@ -167,6 +169,7 @@ struct AirportFTAClass {
 	const byte *entry_points;             ///< when an airplane arrives at this airport, enter it at position entry_point, index depends on direction
 	byte size_x;
 	byte size_y;
+	uint8 noise_level;                    ///< noise that this airport generates
 	byte delta_z;                         ///< Z adjustment for helicopter pads
 	byte catchment;
 };
@@ -193,5 +196,9 @@ const AirportFTAClass *GetAirport(const byte airport_type);
  * @todo set availability of airports by year, instead of airplane
  */
 uint32 GetValidAirports();
+
+
+/* Calculate the noise this type airport will generate */
+uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_tile, TileIndex tile);
 
 #endif /* AIRPORT_H */

@@ -10,7 +10,27 @@
 #include "town_type.h"
 #include "transport_type.h"
 
-#define GAME_DIFFICULTY_NUM 18
+enum {
+	GAME_DIFFICULTY_AI_NUMBER,
+	GAME_DIFFICULTY_AI_STARTTIME,
+	GAME_DIFFICULTY_TOWN_NUMBER,
+	GAME_DIFFICULTY_INDUSTRIE_NUMBER,
+	GAME_DIFFICULTY_MAX_LOAN,
+	GAME_DIFFICULTY_INITIAL_INTEREST,
+	GAME_DIFFICULTY_VEHICLE_COST,
+	GAME_DIFFICULTY_AI_SPEED,
+	GAME_DIFFICULTY_AI_INTELLIGENCE, ///< no longer in use
+	GAME_DIFFICULTY_VEHICLES_BREAKDOWN,
+	GAME_DIFFICULTY_SUBSIDY_MULTIPLIER,
+	GAME_DIFFICULTY_CONSTRUCTION_COST,
+	GAME_DIFFICULTY_TYPE_TERRAIN,
+	GAME_DIFFICULTY_SEALAKE_NUMBER,
+	GAME_DIFFICULTY_ECONOMY,
+	GAME_DIFFICULTY_LINE_REVERSEMODE,
+	GAME_DIFFICULTY_DISASTERS,
+	GAME_DIFFICULTY_TOWNCOUNCIL_TOLERANCE, ///< minimum required town ratings to be allowed to demolish stuff
+	GAME_DIFFICULTY_NUM,
+};
 
 /** Specific type for Game Difficulty to ease changing the type */
 typedef uint16 GDType;
@@ -221,6 +241,8 @@ struct Patches {
 	bool pause_on_newgame;       ///< Whether to start new games paused or not.
 
 	TownLayoutByte town_layout;  ///< Select town layout
+	bool station_noise_level;        ///< build new airports when the town noise level is still within accepted limits
+	uint16 town_noise_population[3];  ///< Population to base decision on noise evaluation (@see town_council_tolerance)
 
 	bool timetabling;            ///< Whether to allow timetabling.
 	bool timetable_in_ticks;     ///< Whether to show the timetable in ticks rather than days.

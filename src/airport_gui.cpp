@@ -12,6 +12,7 @@
 #include "airport.h"
 #include "sound_func.h"
 #include "window_func.h"
+#include "strings_func.h"
 #include "settings_type.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
@@ -177,12 +178,17 @@ public:
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
 		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 
+		if (_patches.station_noise_level) {
+			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, 10);
+		}
+
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
 		int i; // airport enabling loop
+		uint16 y_noise_offset = 0;
 		uint32 avail_airports;
 		const AirportFTAClass *airport;
 
@@ -210,8 +216,17 @@ public:
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		this->DrawWidgets();
+
+		/* only show the station (airport) noise, if the noise option is activated */
+		if (_patches.station_noise_level) {
+			/* show the noise of the selected airport */
+			SetDParam(0, airport->noise_level);
+			DrawString(2, 206, STR_STATION_NOISE, 0);
+			y_noise_offset = 10;
+		}
+
 		/* strings such as 'Size' and 'Coverage Area' */
-		int text_end = DrawStationCoverageAreaText(2, 206, SCT_ALL, rad, false);
+		int text_end = DrawStationCoverageAreaText(2, this->widget[BAW_BTN_DOHILIGHT].bottom + 4 + y_noise_offset, SCT_ALL, rad, false);
 		text_end = DrawStationCoverageAreaText(2, text_end + 4, SCT_ALL, rad, true) + 4;
 		if (text_end != this->widget[BAW_BOTTOMPANEL].bottom) {
 			this->SetDirty();

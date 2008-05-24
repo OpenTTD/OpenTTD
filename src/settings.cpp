@@ -758,8 +758,11 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			break;
 
 		case SDT_INTLIST: {
-			if (!load_intlist((const char*)p, ptr, sld->length, GetVarMemType(sld->conv)))
+			if (!load_intlist((const char*)p, ptr, sld->length, GetVarMemType(sld->conv))) {
 				ShowInfoF("ini: error in array '%s'", sdb->name);
+			} else if (sd->desc.proc_cnvt != NULL) {
+				sd->desc.proc_cnvt((const char*)p);
+			}
 			break;
 		}
 		default: NOT_REACHED(); break;
@@ -1054,8 +1057,8 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, NULL, from, to)
 #define SDT_LIST(base, var, type, flags, guiflags, def, str, proc)\
 	SDT_CONDLIST(base, var, type, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
-#define SDT_CONDLISTO(base, var, length, type, from, to, flags, guiflags, def, str, proc)\
-	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, length, def, 0, 0, 0, NULL, str, proc, NULL, from, to)
+#define SDT_CONDLISTO(base, var, length, type, from, to, flags, guiflags, def, str, proc, load)\
+	SDT_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, base, var, length, def, 0, 0, 0, NULL, str, proc, load, from, to)
 
 #define SDT_CONDSTR(base, var, type, from, to, flags, guiflags, def, str, proc)\
 	SDT_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, base, var, lengthof(((base*)8)->var), def, 0, 0, 0, NULL, str, proc, NULL, from, to)
@@ -1161,6 +1164,12 @@ static int32 CloseSignalGUI(int32 p1)
 	return 0;
 }
 
+static int32 InvalidateTownViewWindow(int32 p1)
+{
+	InvalidateWindowClassesData(WC_TOWN_VIEW, p1);
+	return 0;
+}
+
 static int32 UpdateConsists(int32 p1)
 {
 	Vehicle *v;
@@ -1258,6 +1267,21 @@ static int32 ConvertLandscape(const char *value)
 {
 	/* try with the old values */
 	return lookup_oneofmany("normal|hilly|desert|candy", value);
+}
+
+/**
+ * Check for decent values been supplied by the user for the noise tolerance setting.
+ * The primary idea is to avoid division by zero in game mode.
+ * The secondary idea is to make it so the values will be somewhat sane and that towns will
+ * not be overcrowed with airports.  It would be easy to abuse such a feature
+ * So basically, 200, 400, 800 are the lowest allowed values */
+static int32 CheckNoiseToleranceLevel(const char *value)
+{
+	Patches *patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
+	for (uint16 i = 0; i < lengthof(patches_ptr->town_noise_population); i++) {
+		patches_ptr->town_noise_population[i] = max(uint16(200 * (i + 1)), patches_ptr->town_noise_population[i]);
+	}
+	return 0;
 }
 
 /* End - Callback Functions */
@@ -1490,6 +1514,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDBOOL(Patches, gradual_loading, 40, SL_MAX_VERSION, 0, 0,  true, STR_CONFIG_PATCHES_GRADUAL_LOADING,    NULL),
 	SDT_CONDBOOL(Patches, road_stop_on_town_road, 47, SL_MAX_VERSION, 0, 0, false, STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD, NULL),
 	SDT_CONDBOOL(Patches, adjacent_stations,      62, SL_MAX_VERSION, 0, 0, true,  STR_CONFIG_PATCHES_ADJACENT_STATIONS, NULL),
+	SDT_CONDBOOL(Patches, station_noise_level,    96, SL_MAX_VERSION, 0, 0, false, STR_CONFIG_PATCHES_NOISE_LEVEL,       InvalidateTownViewWindow),
 
 	/***************************************************************************/
 	/* Economy section of the GUI-configure patches window */
@@ -1531,6 +1556,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, dist_local_authority,SLE_UINT8, 0, 0, 20, 5,  60, 0, STR_NULL, NULL),
 	 SDT_VAR(Patches, wait_oneway_signal,  SLE_UINT8, 0, 0, 15, 2, 100, 0, STR_NULL, NULL),
 	 SDT_VAR(Patches, wait_twoway_signal,  SLE_UINT8, 0, 0, 41, 2, 100, 0, STR_NULL, NULL),
+	SDT_CONDLISTO(Patches, town_noise_population, 3, SLE_UINT16, 96, SL_MAX_VERSION, 0, D0, "800,2000,4000", STR_NULL, NULL, CheckNoiseToleranceLevel),
 
 	/***************************************************************************/
 	/* New Pathfinding patch settings */

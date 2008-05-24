@@ -116,6 +116,9 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	 * bit 2 = STADIUM */
 	byte flags12;
 
+	/* level of noise that all the airports are generating */
+	uint16 noise_reached;
+
 	/* Which players have a statue? */
 	byte statues;
 
@@ -184,6 +187,18 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	void InitializeLayout();
 
 	inline TownLayout GetActiveLayout() const;
+
+	/** Calculate the max town noise
+	 * The value is counted using the population divided by the content of the
+	 * entry in town_noise_population corespondig to the town's tolerance.
+	 * To this result, we add 3, which is the noise of the lowest airport.
+	 * So user can at least buld that airport
+	 * @return the maximum noise level the town will tolerate */
+	inline uint16 MaxTownNoise() const {
+		if (this->population == 0) return 0; // no population? no noise
+
+		return ((this->population / _patches.town_noise_population[_opt.diff.town_council_tolerance]) + 3);
+	}
 };
 
 /**

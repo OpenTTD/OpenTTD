@@ -280,7 +280,9 @@ private:
 	enum TownViewWidget {
 		TVW_CAPTION = 1,
 		TVW_STICKY,
-		TVW_CENTERVIEW = 6,
+		TVW_VIEWPORTPANEL,
+		TVW_INFOPANEL = 5,
+		TVW_CENTERVIEW,
 		TVW_SHOWAUTORITY,
 		TVW_CHANGENAME,
 		TVW_EXPAND,
@@ -310,6 +312,11 @@ public:
 			this->widget[TVW_CHANGENAME].right = this->widget[TVW_STICKY].right;
 		}
 
+		/* Space required for showing noise level information */
+		if (_patches.station_noise_level) {
+			ResizeWindowForWidget(this, TVW_INFOPANEL, 0, 10);
+		}
+
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -334,6 +341,13 @@ public:
 		DrawString(2, 127, STR_200E_MAIL_LAST_MONTH_MAX, TC_FROMSTRING);
 
 		this->DrawViewport();
+
+		/* only show the town noise, if the noise option is activated. */
+		if (_patches.station_noise_level) {
+			SetDParam(0, this->town->noise_reached);
+			SetDParam(1, this->town->MaxTownNoise());
+			DrawString(2, 137, STR_NOISE_IN_TOWN, 0);
+		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -363,6 +377,22 @@ public:
 			case TVW_DELETE: /* delete town - only available on Scenario editor */
 				delete this->town;
 				break;
+		}
+	}
+
+	virtual void OnInvalidateData(int data = 0)
+	{
+		/* Called when setting station noise have changed, in order to resize the window */
+		this->SetDirty(); // refresh display for current size. This will allow to avoid glitches when downgrading
+
+		if (_patches.station_noise_level) { // adjust depending
+			if (this->height == 150) { // window is smaller, needs to be bigger
+				ResizeWindowForWidget(this, TVW_INFOPANEL, 0, 10);
+			}
+		} else {
+			if (this->height != 150) { // window is bigger, needs to be smaller
+				ResizeWindowForWidget(this, TVW_INFOPANEL, 0, -10);
+			}
 		}
 	}
 
@@ -636,7 +666,6 @@ private:
 	};
 
 public:
-
 	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);

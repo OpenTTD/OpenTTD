@@ -5091,7 +5091,7 @@ static void InitializeGRFSpecial()
 	                   |                                        (1 << 0x1D)  // lowmemory
 	                   |                                        (1 << 0x1E); // generalfixes
 
-	_ttdpatch_flags[1] =                                        (0 << 0x07)  // moreairports - based on units of noise
+	_ttdpatch_flags[1] =   ((_patches.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
 	                   |        ((_patches.mammoth_trains ? 1 : 0) << 0x08)  // mammothtrains
 	                   |                                        (1 << 0x09)  // trainrefit
 	                   |                                        (0 << 0x0B)  // subsidiaries

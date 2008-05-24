@@ -22,6 +22,7 @@
 #include "player_base.h"
 #include "player_gui.h"
 #include "settings_type.h"
+#include "station_func.h"
 
 #include "table/strings.h"
 
@@ -400,6 +401,15 @@ CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, ui
 			_opt_ptr->diff_level = 3; // custom difficulty level
 		} else {
 			_opt_ptr->diff_level = p2;
+		}
+
+		/* Since the tolerance of the town council has a direct impact on the noise generation/tolerance,
+		 * launch a re-evaluation of the actual values only when setting has changed */
+		if (p2 == GAME_DIFFICULTY_TOWNCOUNCIL_TOLERANCE && _game_mode == GM_NORMAL) {
+			UpdateAirportsNoise();
+			if (_patches.station_noise_level) {
+				InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
+			}
 		}
 
 		/* If we are a network-client, update the difficult setting (if it is open).
