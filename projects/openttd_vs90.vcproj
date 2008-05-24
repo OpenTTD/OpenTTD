@@ -505,6 +505,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\console_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\currency.cpp"
 				>
 			</File>

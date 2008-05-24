@@ -135,4 +135,9 @@ void IConsoleVarProcAdd(const char *name, IConsoleCmdProc *proc);
 
 /* Supporting functions */
 bool GetArgumentInteger(uint32 *value, const char *arg);
-#endif /* CONSOLE_H */
+
+void IConsoleGUIInit();
+void IConsoleGUIFree();
+void IConsoleGUIPrint(ConsoleColour color_code, char *string);
+
+#endif /* CONSOLE_INTERNAL_H */

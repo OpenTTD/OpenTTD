@@ -13,6 +13,7 @@ cheat.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
+console_gui.cpp
 currency.cpp
 date.cpp
 debug.cpp
