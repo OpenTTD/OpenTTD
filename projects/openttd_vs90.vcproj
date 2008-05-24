@@ -873,7 +873,19 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\console.h"
+				RelativePath=".\..\src\console_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\console_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\console_internal.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\console_type.h"
 				>
 			</File>
 			<File

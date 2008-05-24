@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "console.h"
+#include "console_internal.h"
 #include "debug.h"
 #include "engine_func.h"
 #include "landscape.h"

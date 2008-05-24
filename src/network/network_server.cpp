@@ -15,7 +15,7 @@
 #include "../date_func.h"
 #include "network_server.h"
 #include "network_udp.h"
-#include "../console.h"
+#include "../console_func.h"
 #include "../command_func.h"
 #include "../saveload.h"
 #include "../station_base.h"

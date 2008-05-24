@@ -35,7 +35,7 @@
 #include "signs_func.h"
 #include "fios.h"
 #include "functions.h"
-#include "console.h"
+#include "console_gui.h"
 #include "news_gui.h"
 #include "tilehighlight_func.h"
 

@@ -14,7 +14,7 @@
 #include "network_gui.h"
 #include "../saveload.h"
 #include "../command_func.h"
-#include "../console.h"
+#include "../console_func.h"
 #include "../variables.h"
 #include "../ai/ai.h"
 #include "../core/alloc_func.hpp"

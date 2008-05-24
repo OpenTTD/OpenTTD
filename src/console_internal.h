@@ -1,11 +1,11 @@
 /* $Id$ */
 
-/** @file console.h In-game console. */
+/** @file console_internal.h Internally used functions for the console. */
 
-#ifndef CONSOLE_H
-#define CONSOLE_H
+#ifndef CONSOLE_INTERNAL_H
+#define CONSOLE_INTERNAL_H
 
-#include "window_type.h"
+#include "console_func.h"
 
 /* maximum length of a typed in command */
 #define ICON_CMDLN_SIZE 255
@@ -20,12 +20,6 @@ enum IConsoleVarTypes {
 	ICONSOLE_VAR_INT16,
 	ICONSOLE_VAR_INT32,
 	ICONSOLE_VAR_STRING
-};
-
-enum IConsoleModes {
-	ICONSOLE_FULL,
-	ICONSOLE_OPENED,
-	ICONSOLE_CLOSED
 };
 
 enum IConsoleHookTypes {
@@ -107,27 +101,11 @@ extern IConsoleCmd   *_iconsole_cmds;    ///< list of registred commands
 extern IConsoleVar   *_iconsole_vars;    ///< list of registred vars
 extern IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 
-/* console colors/modes */
-extern byte _icolour_def;
-extern byte _icolour_err;
-extern byte _icolour_warn;
-extern byte _icolour_dbg;
-extern byte _icolour_cmd;
-extern IConsoleModes _iconsole_mode;
-
 /* console functions */
-void IConsoleInit();
-void IConsoleFree();
 void IConsoleClearBuffer();
-void IConsoleResize(Window *w);
-void IConsoleSwitch();
-void IConsoleClose();
 void IConsoleOpen();
 
 /* console output */
-void IConsolePrint(uint16 color_code, const char *string);
-void CDECL IConsolePrintF(uint16 color_code, const char *s, ...);
-void IConsoleDebug(const char *dbg, const char *string);
 void IConsoleWarning(const char *string);
 void IConsoleError(const char *string);
 
@@ -145,7 +123,6 @@ void IConsoleVarPrintGetValue(const IConsoleVar *var);
 void IConsoleVarPrintSetValue(const IConsoleVar *var);
 
 /* Parser */
-void IConsoleCmdExec(const char *cmdstr);
 void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[]);
 
 /* console std lib (register ingame commands/aliases/variables) */

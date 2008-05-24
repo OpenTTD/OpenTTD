@@ -6,7 +6,7 @@
 #include "openttd.h"
 #include "landscape.h"
 #include "gfx_func.h"
-#include "console.h"
+#include "console_func.h"
 #include "variables.h"
 #include "blitter/factory.hpp"
 #include "texteff.hpp"

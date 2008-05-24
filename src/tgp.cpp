@@ -10,7 +10,6 @@
 #include "variables.h"
 #include "void_map.h"
 #include "tgp.h"
-#include "console.h"
 #include "genworld.h"
 #include "core/alloc_func.hpp"
 #include "core/random_func.hpp"

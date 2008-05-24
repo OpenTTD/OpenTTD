@@ -28,7 +28,7 @@
 #include "network/network_internal.h"
 #include "settings_internal.h"
 #include "command_func.h"
-#include "console.h"
+#include "console_func.h"
 #include "saveload.h"
 #include "npf.h"
 #include "yapf/yapf.h"

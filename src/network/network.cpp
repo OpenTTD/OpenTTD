@@ -23,7 +23,7 @@
 #include "core/tcp.h"
 #include "core/core.h"
 #include "network_gui.h"
-#include "../console.h" /* IConsoleCmdExec */
+#include "../console_func.h"
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
 #include "../fileio.h"

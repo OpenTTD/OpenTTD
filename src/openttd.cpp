@@ -41,7 +41,7 @@
 #include "fios.h"
 #include "airport.h"
 #include "aircraft.h"
-#include "console.h"
+#include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
 #include "signs_base.h"

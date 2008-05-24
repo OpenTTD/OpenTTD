@@ -13,7 +13,7 @@
 #include "viewport_func.h"
 #include "command_func.h"
 #include "news_gui.h"
-#include "console.h"
+#include "console_gui.h"
 #include "waypoint.h"
 #include "genworld.h"
 #include "transparency_gui.h"

@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include "openttd.h"
-#include "console.h"
+#include "console_func.h"
 #include "debug.h"
 #include "string_func.h"
 #include "network/core/core.h"

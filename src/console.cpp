@@ -7,10 +7,11 @@
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "window_gui.h"
+#include "console_gui.h"
 #include "variables.h"
 #include <stdarg.h>
 #include <string.h>
-#include "console.h"
+#include "console_internal.h"
 #include "network/network.h"
 #include "network/network_data.h"
 #include "network/network_server.h"

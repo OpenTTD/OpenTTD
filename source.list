@@ -144,7 +144,10 @@ cargotype.h
 cmd_helper.h
 command_func.h
 command_type.h
-console.h
+console_func.h
+console_gui.h
+console_internal.h
+console_type.h
 cheat_func.h
 cheat_type.h
 currency.h
