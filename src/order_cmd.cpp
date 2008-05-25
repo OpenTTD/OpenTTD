@@ -168,7 +168,9 @@ void Order::ConvertFromOldSavegame()
 	/* Then the load/depot action flags because those bits are going to be reused too
 	 * and they reuse the non-stop bits. */
 	if (this->GetType() != OT_GOTO_DEPOT) {
-		if ((this->flags & 4) == 0) {
+		if ((this->flags & 2) != 0) {
+			this->SetLoadType(OLFB_NO_LOAD);
+		} else if ((this->flags & 4) == 0) {
 			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		} else {
 			this->SetLoadType(_settings.gui.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
