@@ -1051,14 +1051,11 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle **engines = NULL;
-	Vehicle **wagons = NULL;
 	uint16 engine_list_length = 0;
 	uint16 engine_count = 0;
-	uint16 wagon_list_length = 0;
-	uint16 wagon_count = 0;
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
-	uint  sell_command, total_number_vehicles;
+	uint sell_command;
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 
 	switch (vehicle_type) {
@@ -1071,25 +1068,14 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &engines, &engine_list_length, &engine_count,
-						                      &wagons,  &wagon_list_length,  &wagon_count);
+	                                          &engines, &engine_list_length, &engine_count);
 
-	total_number_vehicles = engine_count + wagon_count;
-	for (uint i = 0; i < total_number_vehicles; i++) {
-		const Vehicle *v;
-
-		if (i < engine_count) {
-			v = engines[i];
-		} else {
-			v = wagons[i - engine_count];
-		}
-
-		CommandCost ret = DoCommand(tile, v->index, 1, flags, sell_command);
-
+	for (uint i = 0; i < engine_count; i++) {
+		CommandCost ret = DoCommand(tile, engines[i]->index, 1, flags, sell_command);
 		if (CmdSucceeded(ret)) cost.AddCost(ret);
 	}
 
 	free(engines);
-	free(wagons);
 	if (cost.GetCost() == 0) return CMD_ERROR; // no vehicles to sell
 	return cost;
 }
