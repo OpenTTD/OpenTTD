@@ -1200,7 +1200,7 @@ static void AnimateTile_TunnelBridge(TileIndex tile)
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	bool snow_or_desert = HasTunnelBridgeSnowOrDesert(tile);
-	switch (_opt.landscape) {
+	switch (_settings.game_creation.landscape) {
 		case LT_ARCTIC:
 			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);

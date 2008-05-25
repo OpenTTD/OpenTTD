@@ -296,7 +296,7 @@ void StartupEngines()
 		e->lifelength = ei->lifelength + _settings.vehicle.extend_vehicle_life;
 
 		/* prevent certain engines from ever appearing. */
-		if (!HasBit(ei->climates, _opt.landscape)) {
+		if (!HasBit(ei->climates, _settings.game_creation.landscape)) {
 			e->flags |= ENGINE_AVAILABLE;
 			e->player_avail = 0;
 		}

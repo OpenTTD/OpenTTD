@@ -319,8 +319,8 @@ static void FixOldTowns()
 	/* Convert town-names if needed */
 	FOR_ALL_TOWNS(town) {
 		if (IsInsideMM(town->townnametype, 0x20C1, 0x20C3)) {
-			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _opt.town_name;
-			town->townnameparts = GetOldTownName(town->townnameparts, _opt.town_name);
+			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _settings.game_creation.town_name;
+			town->townnameparts = GetOldTownName(town->townnameparts, _settings.game_creation.town_name);
 		}
 	}
 }
@@ -1370,29 +1370,29 @@ static inline bool LoadOldSubsidy(LoadgameState *ls, int num)
 }
 
 static const OldChunks game_difficulty_chunk[] = {
-	OCL_SVAR( OC_UINT16, GameDifficulty, max_no_competitors ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, competitor_start_time ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, number_towns ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, number_industries ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, max_loan ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, initial_interest ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, vehicle_costs ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, competitor_speed ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, competitor_intelligence ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, vehicle_breakdowns ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, subsidy_multiplier ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, construction_cost ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, terrain_type ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, quantity_sea_lakes ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, economy ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, line_reverse_mode ),
-	OCL_SVAR( OC_UINT16, GameDifficulty, disasters ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, max_no_competitors ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_start_time ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, number_towns ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, number_industries ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U16, DifficultySettings, max_loan ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, initial_interest ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, vehicle_costs ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_speed ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_intelligence ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, vehicle_breakdowns ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, subsidy_multiplier ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, construction_cost ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, terrain_type ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, quantity_sea_lakes ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, economy ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, line_reverse_mode ),
+	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, disasters ),
 	OCL_END()
 };
 
 static inline bool LoadOldGameDifficulty(LoadgameState *ls, int num)
 {
-	return LoadChunk(ls, &_opt.diff, game_difficulty_chunk);
+	return LoadChunk(ls, &_settings.difficulty, game_difficulty_chunk);
 }
 
 
@@ -1570,8 +1570,8 @@ static const OldChunks main_chunk[] = {
 
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U16,    1, &_station_tick_ctr ),
 
-	OCL_VAR (  OC_UINT8,    1, &_opt.currency ),
-	OCL_VAR (  OC_UINT8,    1, &_opt.units ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.gui.currency ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.gui.units ),
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_player_tick_index ),
 
 	OCL_NULL( 2 ),               ///< Date stuff, calculated automatically
@@ -1581,19 +1581,19 @@ static const OldChunks main_chunk[] = {
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.interest_rate ),
 	OCL_NULL( 1 ), // available airports
-	OCL_VAR (  OC_UINT8,    1, &_opt.road_side ),
-	OCL_VAR (  OC_UINT8,    1, &_opt.town_name ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.vehicle.road_side ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.game_creation.town_name ),
 
 	OCL_CHUNK( 1, LoadOldGameDifficulty ),
 
 	OCL_ASSERT( 0x77130 ),
 
-	OCL_VAR (  OC_UINT8,    1, &_opt.diff_level ),
-	OCL_VAR (  OC_UINT8,    1, &_opt.landscape ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.difficulty.diff_level ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.game_creation.landscape ),
 	OCL_VAR (  OC_UINT8,    1, &_trees_tick_ctr ),
 
 	OCL_NULL( 1 ),               ///< Custom vehicle types yes/no, no longer used
-	OCL_VAR (  OC_UINT8,    1, &_opt.snow_line ),
+	OCL_VAR (  OC_UINT8,    1, &_settings.game_creation.snow_line ),
 
 	OCL_NULL( 32 ),              ///< new_industry_randtable, no longer used (because of new design)
 	OCL_NULL( 36 ),              ///< cargo-stuff, calculated in InitializeLandscapeVariables
@@ -1628,7 +1628,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	DEBUG(oldloader, 3, "Done, converting game data...");
 
 	/* Fix some general stuff */
-	_opt.landscape = _opt.landscape & 0xF;
+	_settings.game_creation.landscape = _settings.game_creation.landscape & 0xF;
 
 	/* Remap some pointers */
 	_cur_town_ctr      = REMAP_TOWN_IDX(_old_cur_town_ctr);
@@ -1690,7 +1690,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	FixOldVehicles();
 
 	/* We have a new difficulty setting */
-	_opt.diff.town_council_tolerance = Clamp(_opt.diff_level, 0, 2);
+	_settings.difficulty.town_council_tolerance = Clamp(_settings.difficulty.diff_level, 0, 2);
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");

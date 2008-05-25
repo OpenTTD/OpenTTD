@@ -1437,8 +1437,8 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
-				CargoID cid = (goods >= 0) ? ((_opt.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
-						((_opt.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
+				CargoID cid = (goods >= 0) ? ((_settings.game_creation.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
+						((_settings.game_creation.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
 
 				/* Make sure the cargo type is valid in this climate. */
 				if (!GetCargo(cid)->IsValid()) goods = 0;
@@ -2167,11 +2167,11 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x17: // Probability in random game
-				indsp->appear_creation[_opt.landscape] = grf_load_byte(&buf);
+				indsp->appear_creation[_settings.game_creation.landscape] = grf_load_byte(&buf);
 				break;
 
 			case 0x18: // Probability during gameplay
-				indsp->appear_ingame[_opt.landscape] = grf_load_byte(&buf);
+				indsp->appear_ingame[_settings.game_creation.landscape] = grf_load_byte(&buf);
 				break;
 
 			case 0x19: // Map color
@@ -3557,11 +3557,11 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
-			*value = _opt.landscape;
+			*value = _settings.game_creation.landscape;
 			return true;
 
 		case 0x06: // road traffic side, bit 4 clear=left, set=right
-			*value = _opt.road_side << 4;
+			*value = _settings.vehicle.road_side << 4;
 			return true;
 
 		case 0x09: // date fraction
@@ -3635,7 +3635,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		/* case 0x1F: // locale dependent settings not implemented */
 
 		case 0x20: // snow line height
-			*value = _opt.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
+			*value = _settings.game_creation.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
 			return true;
 
 		case 0x21: // OpenTTD version
@@ -3643,7 +3643,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x22: // difficulty level
-			*value = _opt.diff_level;
+			*value = _settings.difficulty.diff_level;
 			return true;
 
 		default: return false;
@@ -5352,7 +5352,7 @@ static void ResetNewGRFData()
 	ResetNewGRFErrors();
 
 	/* Set up the default cargo types */
-	SetupCargoForClimate(_opt.landscape);
+	SetupCargoForClimate(_settings.game_creation.landscape);
 
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = 0;

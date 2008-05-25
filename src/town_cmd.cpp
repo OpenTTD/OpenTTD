@@ -596,7 +596,7 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 		if (callback != CALLBACK_FAILED) {
 			if (accepts[0] != CT_INVALID) ac[accepts[0]] = GB(callback, 0, 4);
 			if (accepts[1] != CT_INVALID) ac[accepts[1]] = GB(callback, 4, 4);
-			if (_opt.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
+			if (_settings.game_creation.landscape != LT_TEMPERATE && HasBit(callback, 12)) {
 				/* The 'S' bit indicates food instead of goods */
 				ac[CT_FOOD] = GB(callback, 8, 4);
 			} else {
@@ -1367,9 +1367,9 @@ static bool CreateTownName(uint32 *townnameparts)
 	 * the other towns may take considerable amount of time (10000 is
 	 * too much). */
 	int tries = 1000;
-	bool grf = (_opt.town_name >= _nb_orig_names);
-	uint32 grfid = grf ? GetGRFTownNameId(_opt.town_name - _nb_orig_names) : 0;
-	uint16 townnametype = grf ? GetGRFTownNameType(_opt.town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + _opt.town_name;
+	bool grf = (_settings.game_creation.town_name >= _nb_orig_names);
+	uint32 grfid = grf ? GetGRFTownNameId(_settings.game_creation.town_name - _nb_orig_names) : 0;
+	uint16 townnametype = grf ? GetGRFTownNameType(_settings.game_creation.town_name - _nb_orig_names) : SPECSTR_TOWNNAME_START + _settings.game_creation.town_name;
 
 	assert(townnameparts != NULL);
 
@@ -1453,14 +1453,14 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->exclusive_counter = 0;
 	t->statues = 0;
 
-	if (_opt.town_name < _nb_orig_names) {
+	if (_settings.game_creation.town_name < _nb_orig_names) {
 		/* Original town name */
 		t->townnamegrfid = 0;
-		t->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+		t->townnametype = SPECSTR_TOWNNAME_START + _settings.game_creation.town_name;
 	} else {
 		/* Newgrf town name */
-		t->townnamegrfid = GetGRFTownNameId(_opt.town_name  - _nb_orig_names);
-		t->townnametype  = GetGRFTownNameType(_opt.town_name - _nb_orig_names);
+		t->townnamegrfid = GetGRFTownNameId(_settings.game_creation.town_name  - _nb_orig_names);
+		t->townnametype  = GetGRFTownNameType(_settings.game_creation.town_name - _nb_orig_names);
 	}
 	t->townnameparts = townnameparts;
 
@@ -1585,7 +1585,7 @@ static const byte _num_initial_towns[4] = {5, 11, 23, 46};  // very low, low, no
 bool GenerateTowns()
 {
 	uint num = 0;
-	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
+	uint n = ScaleByMapSize(_num_initial_towns[_settings.difficulty.number_towns] + (Random() & 7));
 	uint num_cities = _settings.economy.larger_towns == 0 ? 0 : n / _settings.economy.larger_towns;
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
@@ -1879,8 +1879,8 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	HouseZonesBits rad = GetTownRadiusGroup(t, tile);
 
 	/* Above snow? */
-	int land = _opt.landscape;
-	if (land == LT_ARCTIC && z >= _opt.snow_line) land = -1;
+	int land = _settings.game_creation.landscape;
+	if (land == LT_ARCTIC && z >= _settings.game_creation.snow_line) land = -1;
 
 	uint bitmask = (1 << rad) + (1 << (land + 12));
 
@@ -2352,10 +2352,10 @@ static void UpdateTownGrowRate(Town *t)
 		if (n == 0 && !Chance16(1, 12)) return;
 	}
 
-	if (_opt.landscape == LT_ARCTIC) {
+	if (_settings.game_creation.landscape == LT_ARCTIC) {
 		if (TilePixelHeight(t->xy) >= GetSnowLine() && t->act_food == 0 && t->population > 90)
 			return;
-	} else if (_opt.landscape == LT_TROPIC) {
+	} else if (_settings.game_creation.landscape == LT_TROPIC) {
 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food == 0 || t->act_water == 0) && t->population > 60)
 			return;
 	}
@@ -2524,7 +2524,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type)
 	 * owned by a town no removal if rating is lower than ... depends now on
 	 * difficulty setting. Minimum town rating selected by difficulty level
 	 */
-	int modemod = _default_rating_settings[_opt.diff.town_council_tolerance][type];
+	int modemod = _default_rating_settings[_settings.difficulty.town_council_tolerance][type];
 
 	if (GetRating(t) < 16 + modemod && !(flags & DC_NO_TOWN_RATING)) {
 		SetDParam(0, t->index);

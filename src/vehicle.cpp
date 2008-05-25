@@ -127,7 +127,7 @@ bool Vehicle::NeedsServicing() const
 {
 	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
 
-	if (_settings.order.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
+	if (_settings.order.no_servicing_if_no_breakdowns && _settings.difficulty.vehicle_breakdowns == 0) {
 		/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
 		 * Note: If servicing is enabled, we postpone replacement till next service. */
 		return EngineHasReplacementForPlayer(GetPlayer(this->owner), this->engine_type, this->group_id);
@@ -913,7 +913,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if ((rel_old >> 8) != (rel >> 8)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	if (v->breakdown_ctr != 0 || v->vehstatus & VS_STOPPED ||
-			_opt.diff.vehicle_breakdowns < 1 ||
+			_settings.difficulty.vehicle_breakdowns < 1 ||
 			v->cur_speed < 5 || _game_mode == GM_MENU) {
 		return;
 	}
@@ -930,7 +930,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
 	/* reduced breakdowns? */
-	if (_opt.diff.vehicle_breakdowns == 1) rel += 0x6666;
+	if (_settings.difficulty.vehicle_breakdowns == 1) rel += 0x6666;
 
 	/* check if to break down */
 	if (_breakdown_chance[(uint)min(rel, 0xffff) >> 10] <= v->breakdown_chance) {

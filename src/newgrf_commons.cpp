@@ -278,7 +278,7 @@ void IndustryTileOverrideManager::SetEntitySpec(const IndustryTileSpec *its)
  *         Terrain type: 0 normal, 1 desert, 2 rainforest, 4 on or above snowline */
 uint32 GetTerrainType(TileIndex tile)
 {
-	switch (_opt.landscape) {
+	switch (_settings.game_creation.landscape) {
 		case LT_TROPIC: return GetTropicZone(tile);
 		case LT_ARCTIC: return GetTileZ(tile) > GetSnowLine() ? 4 : 0;
 		default:        return 0;

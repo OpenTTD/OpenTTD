@@ -33,45 +33,28 @@ enum {
 
 /** Specific type for Game Difficulty to ease changing the type */
 typedef uint16 GDType;
-struct GameDifficulty {
-	GDType max_no_competitors;
-	GDType competitor_start_time;
-	GDType number_towns;
-	GDType number_industries;
-	GDType max_loan;
-	GDType initial_interest;
-	GDType vehicle_costs;
-	GDType competitor_speed;
-	GDType competitor_intelligence; ///< no longer in use
-	GDType vehicle_breakdowns;
-	GDType subsidy_multiplier;
-	GDType construction_cost;
-	GDType terrain_type;
-	GDType quantity_sea_lakes;
-	GDType economy;
-	GDType line_reverse_mode;
-	GDType disasters;
-	GDType town_council_tolerance;  ///< minimum required town ratings to be allowed to demolish stuff
+/** Settings related to the difficulty of the game */
+struct DifficultySettings {
+	GDType max_no_competitors;               ///< the number of competitors (AIs)
+	GDType competitor_start_time;            ///< how long to wait for the first competitors (AIs)
+	GDType number_towns;                     ///< the amount of towns
+	GDType number_industries;                ///< the amount of industries
+	GDType max_loan;                         ///< the maximum initial loan
+	GDType initial_interest;                 ///< amount of interest (to pay over the loan)
+	GDType vehicle_costs;                    ///< amount of money spent on vehicle running cost
+	GDType competitor_speed;                 ///< the speed at which the AI builds
+	GDType competitor_intelligence;          ///< the competior's (AI) intelligence
+	GDType vehicle_breakdowns;               ///< likelihood of vehicles breaking down
+	GDType subsidy_multiplier;               ///< amount of subsidy
+	GDType construction_cost;                ///< how expensive is building
+	GDType terrain_type;                     ///< the mountainousness of the landscape
+	GDType quantity_sea_lakes;               ///< the amount of seas/lakes
+	GDType economy;                          ///< how volatile is the economy
+	GDType line_reverse_mode;                ///< reversing at stations or not
+	GDType disasters;                        ///< are disasters enabled
+	GDType town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	GDType diff_level;                       ///< the difficulty level
 };
-
-struct GameOptions {
-	GameDifficulty diff;
-	byte diff_level;
-	byte currency;
-	byte units;
-	byte town_name;
-	byte landscape;
-	byte snow_line;
-	byte autosave;
-	byte road_side;
-};
-
-/* These are the options for the current game
- * either ingame, or loaded. Also used for networking games */
-extern GameOptions _opt;
-
-/* These are the default options for a new game */
-extern GameOptions _opt_newgame;
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
@@ -98,6 +81,7 @@ struct GUISettings {
 	uint8  toolbar_pos;                      ///< position of toolbars, 0=left, 1=center, 2=right
 	uint8  window_snap_radius;               ///< windows snap at each other if closer than this
 	bool   always_build_infrastructure;      ///< always allow building of infrastructure, even when you do not have the vehicles for it
+	byte   autosave;                         ///< how often should we do autosaves?
 	bool   keep_all_autosave;                ///< name the autosave in a different way
 	bool   autosave_on_exit;                 ///< save an autosave when you quit the game, but do not ask "Do you really want to quit?"
 	byte   max_num_autosaves;                ///< controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
@@ -117,6 +101,8 @@ struct GUISettings {
 	bool   autorenew;                        ///< should autorenew be enabled for new companies?
 	int16  autorenew_months;                 ///< how many months from EOL of vehicles should autorenew trigger for new companies?
 	int32  autorenew_money;                  ///< how much money before autorenewing for new companies?
+	byte   currency;                         ///< currency we currently use
+	byte   units;                            ///< unit system we show everything
 };
 
 /** Settings related to the creation of games. */
@@ -132,6 +118,9 @@ struct GameCreationSettings {
 	byte   tree_placer;                      ///< the tree placer algorithm
 	byte   heightmap_rotation;               ///< rotation director for the heightmap
 	byte   se_flat_world_height;             ///< land height a flat world gets in SE
+	byte   town_name;                        ///< the town name generator used for town names
+	byte   landscape;                        ///< the landscape we're currently in
+	byte   snow_line;                        ///< the snowline level in this game
 };
 
 /** Settings related to construction in-game */
@@ -266,6 +255,7 @@ struct VehicleSettings {
 	bool   dynamic_engines;                  ///< enable dynamic allocation of engine data
 	bool   never_expire_vehicles;            ///< never expire vehicles
 	byte   extend_vehicle_life;              ///< extend vehicle life by this many years
+	byte   road_side;                        ///< the side of the road vehicles drive on
 };
 
 /** Settings related to the economy. */
@@ -300,6 +290,7 @@ struct StationSettings {
 
 /** All settings together. */
 struct Settings {
+	DifficultySettings   difficulty;         ///< settings related to the difficulty
 	GUISettings          gui;                ///< settings related to the GUI
 	GameCreationSettings game_creation;      ///< settings used during the creation of a game (map)
 	ConstructionSettings construction;       ///< construction of things in-game
@@ -311,9 +302,10 @@ struct Settings {
 	StationSettings      station;            ///< settings related to station management
 };
 
+/** The current settings. */
 extern Settings _settings;
 
-/** The patch values that are used for new games and/or modified in config file */
+/** The settings values that are used for new games and/or modified in config file */
 extern Settings _settings_newgame;
 
 #endif /* SETTINGS_TYPE_H */

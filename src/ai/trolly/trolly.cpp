@@ -1017,7 +1017,7 @@ static void AiNew_State_BuildPath(Player *p)
 	if (_players_ainew[p->index].temp == -1) {
 		DEBUG(ai, 1, "Starting to build new path");
 		// Init the counter
-		_players_ainew[p->index].counter = (4 - _opt.diff.competitor_speed) * AI_BUILDPATH_PAUSE + 1;
+		_players_ainew[p->index].counter = (4 - _settings.difficulty.competitor_speed) * AI_BUILDPATH_PAUSE + 1;
 		// Set the position to the startingplace (-1 because in a minute we do ++)
 		_players_ainew[p->index].path_info.position = -1;
 		// And don't do this again
@@ -1026,7 +1026,7 @@ static void AiNew_State_BuildPath(Player *p)
 	// Building goes very fast on normal rate, so we are going to slow it down..
 	//  By let the counter count from AI_BUILDPATH_PAUSE to 0, we have a nice way :)
 	if (--_players_ainew[p->index].counter != 0) return;
-	_players_ainew[p->index].counter = (4 - _opt.diff.competitor_speed) * AI_BUILDPATH_PAUSE + 1;
+	_players_ainew[p->index].counter = (4 - _settings.difficulty.competitor_speed) * AI_BUILDPATH_PAUSE + 1;
 
 	// Increase the building position
 	_players_ainew[p->index].path_info.position++;

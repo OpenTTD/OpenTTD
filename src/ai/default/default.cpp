@@ -2550,7 +2550,7 @@ handle_nocash:
 		bool is_pass = (
 			_players_ai[p->index].cargo_type == CT_PASSENGERS ||
 			_players_ai[p->index].cargo_type == CT_MAIL ||
-			(_opt.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
+			(_settings.game_creation.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
 		);
 		Order order;
 
@@ -3285,7 +3285,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		bool is_pass = (
 			_players_ai[p->index].cargo_type == CT_PASSENGERS ||
 			_players_ai[p->index].cargo_type == CT_MAIL ||
-			(_opt.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
+			(_settings.game_creation.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
 		);
 		Order order;
 

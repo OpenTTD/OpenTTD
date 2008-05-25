@@ -70,7 +70,7 @@ void ResetIndustries()
 	/* once performed, enable only the current climate industries */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
 		_industry_specs[i].enabled = i < NEW_INDUSTRYOFFSET &&
-				HasBit(_origin_industry_specs[i].climate_availability, _opt.landscape);
+				HasBit(_origin_industry_specs[i].climate_availability, _settings.game_creation.landscape);
 	}
 
 	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
@@ -84,7 +84,7 @@ void ResetIndustries()
 void ResetIndustryCreationProbility(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
-	_industry_specs[type].appear_creation[_opt.landscape] = 0;
+	_industry_specs[type].appear_creation[_settings.game_creation.landscape] = 0;
 }
 
 DEFINE_OLD_POOL_GENERIC(Industry, Industry)
@@ -888,14 +888,14 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	uint field_type;
 	int type;
 
-	if (_opt.landscape == LT_ARCTIC) {
+	if (_settings.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine())
 			return;
 	}
 
 	/* determine field size */
 	r = (Random() & 0x303) + 0x404;
-	if (_opt.landscape == LT_ARCTIC) r += 0x404;
+	if (_settings.game_creation.landscape == LT_ARCTIC) r += 0x404;
 	size_x = GB(r, 0, 8);
 	size_y = GB(r, 8, 8);
 
@@ -926,7 +926,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
 
 	type = 3;
-	if (_opt.landscape != LT_ARCTIC && _opt.landscape != LT_TROPIC) {
+	if (_settings.game_creation.landscape != LT_ARCTIC && _settings.game_creation.landscape != LT_TROPIC) {
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
@@ -1063,7 +1063,7 @@ static bool CheckNewIndustry_NULL(TileIndex tile)
 
 static bool CheckNewIndustry_Forest(TileIndex tile)
 {
-	if (_opt.landscape == LT_ARCTIC) {
+	if (_settings.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
 			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
@@ -1095,7 +1095,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 
 static bool CheckNewIndustry_Farm(TileIndex tile)
 {
-	if (_opt.landscape == LT_ARCTIC) {
+	if (_settings.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
 			_error_message = STR_0239_SITE_UNSUITABLE;
 			return false;
@@ -1700,13 +1700,13 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 {
 	/* We need to bypass the amount given in parameter if it exceeds the maximum dimension of the
 	 * _numof_industry_table.  newgrf can specify a big amount */
-	int num = (amount > NB_NUMOFINDUSTRY) ? amount : _numof_industry_table[_opt.diff.number_industries][amount];
+	int num = (amount > NB_NUMOFINDUSTRY) ? amount : _numof_industry_table[_settings.difficulty.number_industries][amount];
 	const IndustrySpec *ind_spc = GetIndustrySpec(type);
 
 	/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 	num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 
-	if (_opt.diff.number_industries != 0) {
+	if (_settings.difficulty.number_industries != 0) {
 		PlayerID old_player = _current_player;
 		_current_player = OWNER_NONE;
 		assert(num > 0);
@@ -1735,7 +1735,7 @@ void GenerateIndustries()
 	const IndustrySpec *ind_spc;
 
 	/* Find the total amount of industries */
-	if (_opt.diff.number_industries > 0) {
+	if (_settings.difficulty.number_industries > 0) {
 		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 
 			ind_spc = GetIndustrySpec(it);
@@ -1744,12 +1744,12 @@ void GenerateIndustries()
 				ResetIndustryCreationProbility(it);
 			}
 
-			chance = ind_spc->appear_creation[_opt.landscape];
+			chance = ind_spc->appear_creation[_settings.game_creation.landscape];
 			if (ind_spc->enabled && chance > 0) {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
-				int num = (chance > NB_NUMOFINDUSTRY) ? chance : _numof_industry_table[_opt.diff.number_industries][chance];
+				int num = (chance > NB_NUMOFINDUSTRY) ? chance : _numof_industry_table[_settings.difficulty.number_industries][chance];
 
 				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 				num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
@@ -1760,7 +1760,7 @@ void GenerateIndustries()
 
 	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
-	if (_opt.diff.number_industries > 0) {
+	if (_settings.difficulty.number_industries > 0) {
 		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			/* Once the number of industries has been determined, let's really create them.
 			 * The test for chance allows us to try create industries that are available only
@@ -1769,7 +1769,7 @@ void GenerateIndustries()
 			 *          processed that scaling above? No, don't think so.  Will find a way. */
 			ind_spc = GetIndustrySpec(it);
 			if (ind_spc->enabled) {
-				chance = ind_spc->appear_creation[_opt.landscape];
+				chance = ind_spc->appear_creation[_settings.game_creation.landscape];
 				if (chance > 0) PlaceInitialIndustry(it, chance);
 			}
 		}
@@ -1823,7 +1823,7 @@ static void MaybeNewIndustry(void)
 	/* Generate a list of all possible industries that can be built. */
 	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		ind_spc = GetIndustrySpec(j);
-		byte chance = ind_spc->appear_ingame[_opt.landscape];
+		byte chance = ind_spc->appear_ingame[_settings.game_creation.landscape];
 
 		if (!ind_spc->enabled || chance == 0) continue;
 
@@ -1881,7 +1881,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
-	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _opt.landscape == LT_TEMPERATE) return false;
+	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _settings.game_creation.landscape == LT_TEMPERATE) return false;
 	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && GetIndustryTypeCount(type) <= 1;
 }
 
@@ -2072,7 +2072,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	if (standard && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
 		/* decrease or increase */
-		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _opt.landscape == LT_TEMPERATE;
+		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings.game_creation.landscape == LT_TEMPERATE;
 
 		if (smooth_economy) {
 			closeit = true;

@@ -563,7 +563,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 void StartupPlayers()
 {
 	/* The AI starts like in the setting with +2 month max */
-	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
+	_next_competitor_start = _settings.difficulty.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
 static void MaybeStartNewPlayer()
@@ -578,10 +578,10 @@ static void MaybeStartNewPlayer()
 	}
 
 	/* when there's a lot of computers in game, the probability that a new one starts is lower */
-	if (n < (uint)_opt.diff.max_no_competitors &&
+	if (n < (uint)_settings.difficulty.max_no_competitors &&
 			n < (_network_server ?
-				InteractiveRandomRange(_opt.diff.max_no_competitors + 2) :
-				RandomRange(_opt.diff.max_no_competitors + 2)
+				InteractiveRandomRange(_settings.difficulty.max_no_competitors + 2) :
+				RandomRange(_settings.difficulty.max_no_competitors + 2)
 			)) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
@@ -589,7 +589,7 @@ static void MaybeStartNewPlayer()
 	}
 
 	/* The next AI starts like the difficulty setting said, with +2 month max */
-	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + 1;
+	_next_competitor_start = _settings.difficulty.competitor_start_time * 90 * DAY_TICKS + 1;
 	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
 }
 
@@ -994,7 +994,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 /** Save the highscore for the player */
 int8 SaveHighScoreValue(const Player *p)
 {
-	HighScore *hs = _highscore_table[_opt.diff_level];
+	HighScore *hs = _highscore_table[_settings.difficulty.diff_level];
 	uint i;
 	uint16 score = p->old_economy[0].performance_history;
 

@@ -257,7 +257,7 @@ void IncreaseDate()
 		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
 		DebugDumpCommands("ddc:save:%s\n", name);
 #endif /* DUMP_COMMANDS */
-		if (_opt.autosave != 0 && (_cur_month % _autosave_months[_opt.autosave]) == 0) {
+		if (_settings.gui.autosave != 0 && (_cur_month % _autosave_months[_settings.gui.autosave]) == 0) {
 			_do_autosave = true;
 			RedrawAutosave();
 		}

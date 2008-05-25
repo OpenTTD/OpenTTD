@@ -526,7 +526,7 @@ void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
  */
 byte GetSnowLine(void)
 {
-	if (_snow_line == NULL) return _opt.snow_line;
+	if (_snow_line == NULL) return _settings.game_creation.snow_line;
 
 	YearMonthDay ymd;
 	ConvertDateToYMD(_date, &ymd);
@@ -539,7 +539,7 @@ byte GetSnowLine(void)
  */
 byte HighestSnowLine(void)
 {
-	return _snow_line == NULL ? _opt.snow_line : _snow_line->highest_value;
+	return _snow_line == NULL ? _settings.game_creation.snow_line : _snow_line->highest_value;
 }
 
 /**
@@ -818,14 +818,14 @@ void GenerateLandscape(byte mode)
 	static const int gwp_desert_amount = 4 + 8;
 
 	if (mode == GW_HEIGHTMAP) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 1 + gwp_desert_amount : 1);
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings.game_creation.landscape == LT_TROPIC) ? 1 + gwp_desert_amount : 1);
 		LoadHeightmap(_file_to_saveload.name);
 		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 	} else if (_settings.game_creation.land_generator == LG_TERRAGENESIS) {
-		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_settings.game_creation.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
 		GenerateTerrainPerlin();
 	} else {
-		switch (_opt.landscape) {
+		switch (_settings.game_creation.landscape) {
 			case LT_ARCTIC: {
 				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
 
@@ -872,9 +872,9 @@ void GenerateLandscape(byte mode)
 
 				uint32 r = Random();
 
-				uint i = ScaleByMapSize(GB(r, 0, 7) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
+				uint i = ScaleByMapSize(GB(r, 0, 7) + (3 - _settings.difficulty.quantity_sea_lakes) * 256 + 100);
 				for (; i != 0; --i) {
-					GenerateTerrain(_opt.diff.terrain_type, 0);
+					GenerateTerrain(_settings.difficulty.terrain_type, 0);
 				}
 				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 			} break;
@@ -883,7 +883,7 @@ void GenerateLandscape(byte mode)
 
 	ConvertGroundTilesIntoWaterTiles();
 
-	if (_opt.landscape == LT_TROPIC) CreateDesertOrRainForest();
+	if (_settings.game_creation.landscape == LT_TROPIC) CreateDesertOrRainForest();
 }
 
 void OnTick_Town();

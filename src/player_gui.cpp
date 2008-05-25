@@ -1477,7 +1477,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 		} else {
 			/* in single player _local player is always valid */
 			const Player *p = GetPlayer(_local_player);
-			this->window_number = _opt.diff_level;
+			this->window_number = _settings.difficulty.diff_level;
 			this->rank = SaveHighScoreValue(p);
 		}
 

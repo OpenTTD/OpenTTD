@@ -1420,7 +1420,7 @@ static uint GetSaveSlopeZ(uint x, uint y, Track track)
 
 static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint image, uint pos)
 {
-	bool side = (_opt.road_side != 0) && _settings.construction.signal_side;
+	bool side = (_settings.vehicle.road_side != 0) && _settings.construction.signal_side;
 	static const Point SignalPositions[2][12] = {
 		{      /* Signals on the left side */
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
@@ -1789,7 +1789,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 			/* adjust ground tile for desert
 			 * don't adjust for snow, because snow in depots looks weird */
-			if (IsSnowRailGround(ti->tile) && _opt.landscape == LT_TROPIC) {
+			if (IsSnowRailGround(ti->tile) && _settings.game_creation.landscape == LT_TROPIC) {
 				if (image != SPR_FLAT_GRASS_TILE) {
 					image += rti->snow_offset; // tile with tracks
 				} else {
@@ -1953,7 +1953,7 @@ static void TileLoop_Track(TileIndex tile)
 		return;
 	}
 
-	switch (_opt.landscape) {
+	switch (_settings.game_creation.landscape) {
 		case LT_ARCTIC: {
 			uint z;
 			Slope slope = GetTileSlope(tile, &z);

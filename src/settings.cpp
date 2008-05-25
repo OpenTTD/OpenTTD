@@ -63,8 +63,6 @@
 
 #include "table/strings.h"
 
-GameOptions _opt;
-GameOptions _opt_newgame;
 Settings _settings;
 Settings _settings_newgame;
 
@@ -1429,18 +1427,18 @@ static const SettingDesc _gameopt_settings[] = {
 	 * and why not byte for example?
 	 * 'SLE_FILE_I16 | SLE_VAR_U16' in "diff_custom" is needed to get around SlArray() hack
 	 * for savegames version 0 - though it is an array, it has to go through the byteswap process */
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_FILE_I16 | SLE_VAR_U16, 0, 0, GameOptions, diff, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16, 0, 0, GameOptions, diff, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
-	    SDT_VAR(GameOptions, diff_level, SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
-	  SDT_OMANY(GameOptions, units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL, NULL),
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_FILE_I16 | SLE_VAR_U16, 0, 0, Settings, difficulty, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
+	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16, 0, 0, Settings, difficulty, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
+	    SDT_VAR(Settings, difficulty.diff_level, SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
+	  SDT_OMANY(Settings, gui.currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
+	  SDT_OMANY(Settings, gui.units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL, NULL),
 	/* There are only 21 predefined town_name values (0-20), but you can have more with newgrf action F so allow these bigger values (21-255). Invalid values will fallback to english on use and (undefined string) in GUI. */
-	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,   255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
-	  SDT_OMANY(GameOptions, landscape, SLE_UINT8, 0, 0, 0,     3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
-	    SDT_VAR(GameOptions, snow_line, SLE_UINT8, 0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
-	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL, NULL),
-	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8,23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL, NULL),
-	  SDT_OMANY(GameOptions, road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL, NULL),
+	  SDT_OMANY(Settings, game_creation.town_name, SLE_UINT8, 0, 0, 0,   255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
+	  SDT_OMANY(Settings, game_creation.landscape, SLE_UINT8, 0, 0, 0,     3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
+	    SDT_VAR(Settings, game_creation.snow_line, SLE_UINT8, 0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
+	SDT_CONDOMANY(Settings,gui.autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL, NULL),
+	SDT_CONDOMANY(Settings,gui.autosave, SLE_UINT8,23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL, NULL),
+	  SDT_OMANY(Settings, vehicle.road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL, NULL),
 	    SDT_END()
 };
 
@@ -1838,7 +1836,7 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
 
-	proc(ini, _gameopt_settings, "gameopt",  &_opt_newgame);
+	proc(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
 	proc(ini, _patch_settings,   "patches",  &_settings_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
@@ -2086,13 +2084,12 @@ static void Load_OPTS()
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
 	 * autosave-frequency stays when joining a network-server */
-	_opt = _opt_newgame;
-	LoadSettings(_gameopt_settings, &_opt);
+	LoadSettings(_gameopt_settings, &_settings);
 }
 
 static void Save_OPTS()
 {
-	SaveSettings(_gameopt_settings, &_opt);
+	SaveSettings(_gameopt_settings, &_settings);
 }
 
 static void Load_PATS()
@@ -2100,7 +2097,6 @@ static void Load_PATS()
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
 	 * signal_side stays when joining a network-server */
-	_settings = _settings_newgame;
 	LoadSettings(_patch_settings, &_settings);
 }
 

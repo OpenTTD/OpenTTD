@@ -2474,7 +2474,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 
 static bool CheckReverseTrain(Vehicle *v)
 {
-	if (_opt.diff.line_reverse_mode != 0 ||
+	if (_settings.difficulty.line_reverse_mode != 0 ||
 			v->u.rail.track == TRACK_BIT_DEPOT || v->u.rail.track == TRACK_BIT_WORMHOLE ||
 			!(v->direction & 1)) {
 		return false;
@@ -3246,7 +3246,7 @@ static void HandleBrokenTrain(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_opt.landscape != LT_TOYLAND) ?
+			SndPlayVehicleFx((_settings.game_creation.landscape != LT_TOYLAND) ?
 				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
 		}
 

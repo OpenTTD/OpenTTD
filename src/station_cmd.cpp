@@ -296,7 +296,7 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 				CountMapSquareAround(tile, CMSATree) >= 8 ||
 				CountMapSquareAround(tile, CMSAForest) >= 2)
 			) {
-		return _opt.landscape == LT_TROPIC ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
+		return _settings.game_creation.landscape == LT_TROPIC ? STR_SV_STNAME_FOREST : STR_SV_STNAME_WOODS;
 	}
 
 	/* check elevation compared to town */
@@ -1681,7 +1681,7 @@ uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_til
 	 * adding the town_council_tolerance 4 times, as a way to graduate, depending of the tolerance.
 	 * Basically, it says that the less tolerant a town is, the bigger the distance before
 	 * an actual decrease can be granted */
-	uint8 town_tolerance_distance = 8 + (_opt.diff.town_council_tolerance * 4);
+	uint8 town_tolerance_distance = 8 + (_settings.difficulty.town_council_tolerance * 4);
 
 	/* The airport is in the "inner" distance where there is no noise reduction */
 	if (distance < town_tolerance_distance) return afc->noise_level;

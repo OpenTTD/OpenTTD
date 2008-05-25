@@ -211,10 +211,10 @@ static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][12] = {
 	{1500, 1000, 1200, 1000,  500,   32,    20,    0,    0,    0,    0,    0},
 };
 
-/** Desired water percentage (100% == 1024) - indexed by _opt.diff.quantity_sea_lakes */
+/** Desired water percentage (100% == 1024) - indexed by _settings.difficulty.quantity_sea_lakes */
 static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
 
-/** Desired maximum height - indexed by _opt.diff.terrain_type */
+/** Desired maximum height - indexed by _settings.difficulty.terrain_type */
 static const int8 _max_height[4] = {
 	6,       ///< Very flat
 	9,       ///< Flat
@@ -402,7 +402,7 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 		/* Transform height into 0..1 space */
 		fheight = (double)(*h - h_min) / (double)(h_max - h_min);
 		/* Apply sine transform depending on landscape type */
-		switch(_opt.landscape) {
+		switch(_settings.game_creation.landscape) {
 			case LT_TOYLAND:
 			case LT_TEMPERATE:
 				/* Move and scale 0..1 into -1..+1 */
@@ -661,8 +661,8 @@ static void HeightMapSmoothSlopes(height_t dh_max)
  *  - height histogram redistribution by sine wave transform */
 static void HeightMapNormalize()
 {
-	const amplitude_t water_percent = _water_percent[_opt.diff.quantity_sea_lakes];
-	const height_t h_max_new = I2H(_max_height[_opt.diff.terrain_type]);
+	const amplitude_t water_percent = _water_percent[_settings.difficulty.quantity_sea_lakes];
+	const height_t h_max_new = I2H(_max_height[_settings.difficulty.terrain_type]);
 	const height_t roughness = 7 + 3 * _settings.game_creation.tgen_smoothness;
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);

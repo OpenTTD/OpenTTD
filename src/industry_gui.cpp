@@ -195,7 +195,7 @@ public:
 		 * In Editor, you just build, while ingame, or you fund or you prospect */
 		if (_game_mode == GM_EDITOR) {
 			/* We've chosen many random industries but no industries have been specified */
-			if (indsp == NULL) this->enabled[this->selected_index] = _opt.diff.number_industries != 0;
+			if (indsp == NULL) this->enabled[this->selected_index] = _settings.difficulty.number_industries != 0;
 			this->widget[DPIW_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
 		} else {
 			this->widget[DPIW_FUND_WIDGET].data = (_settings.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;

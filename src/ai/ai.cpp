@@ -184,8 +184,8 @@ void AI_RunGameLoop()
 	_ai.tick++;
 
 	/* Make sure the AI follows the difficulty rule.. */
-	assert(_opt.diff.competitor_speed <= 4);
-	if ((_ai.tick & ((1 << (4 - _opt.diff.competitor_speed)) - 1)) != 0) return;
+	assert(_settings.difficulty.competitor_speed <= 4);
+	if ((_ai.tick & ((1 << (4 - _settings.difficulty.competitor_speed)) - 1)) != 0) return;
 
 	/* Check for AI-client (so joining a network with an AI) */
 	if (!_networking || _network_server) {

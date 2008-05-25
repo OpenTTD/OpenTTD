@@ -197,7 +197,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	inline uint16 MaxTownNoise() const {
 		if (this->population == 0) return 0; // no population? no noise
 
-		return ((this->population / _settings.economy.town_noise_population[_opt.diff.town_council_tolerance]) + 3);
+		return ((this->population / _settings.economy.town_noise_population[_settings.difficulty.town_council_tolerance]) + 3);
 	}
 };
 

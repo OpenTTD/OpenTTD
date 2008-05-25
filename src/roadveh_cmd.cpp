@@ -702,7 +702,7 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_opt.landscape != LT_TOYLAND) ?
+			SndPlayVehicleFx((_settings.game_creation.landscape != LT_TOYLAND) ?
 				SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
 		}
 
@@ -1273,7 +1273,7 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 	v->direction = DiagDirToDir(dir);
 
 	Trackdir tdir = _roadveh_depot_exit_trackdir[dir];
-	const RoadDriveEntry *rdp = _road_drive_data[v->u.road.roadtype][(_opt.road_side << RVS_DRIVE_SIDE) + tdir];
+	const RoadDriveEntry *rdp = _road_drive_data[v->u.road.roadtype][(_settings.vehicle.road_side << RVS_DRIVE_SIDE) + tdir];
 
 	int x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
 	int y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
@@ -1451,7 +1451,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	 * In this case v->u.road.state is masked to give the road stop entry direction. */
 	rd = _road_drive_data[v->u.road.roadtype][(
 		(HasBit(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
-		(_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
+		(_settings.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
 		TileIndex tile = v->tile + TileOffsByDiagDir((DiagDirection)(rd.x & 3));
@@ -1529,7 +1529,7 @@ again:
 		}
 
 		/* Get position data for first frame on the new tile */
-		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_opt.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
+		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_settings.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
 
 		x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
 		y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
@@ -1632,7 +1632,7 @@ again:
 			return false;
 		}
 
-		rdp = _road_drive_data[v->u.road.roadtype][(_opt.road_side << RVS_DRIVE_SIDE) + dir];
+		rdp = _road_drive_data[v->u.road.roadtype][(_settings.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
 
 		x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
 		y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
@@ -1711,7 +1711,7 @@ again:
 	 * (the station test and stop type test ensure that other vehicles, using the road stop as
 	 * a through route, do not stop) */
 	if (IsRoadVehFront(v) && ((IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
-			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_opt.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
+			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_settings.vehicle.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
 			(IsInsideMM(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&

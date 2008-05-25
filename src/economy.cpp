@@ -704,7 +704,7 @@ static void PlayersPayInterest()
 
 static void HandleEconomyFluctuations()
 {
-	if (_opt.diff.economy == 0) return;
+	if (_settings.difficulty.economy == 0) return;
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
@@ -813,7 +813,7 @@ void StartupEconomy()
 	for (i = 0; i != NUM_PRICES; i++) {
 		Money price = _price_base[i];
 		if (_price_category[i] != 0) {
-			uint mod = _price_category[i] == 1 ? _opt.diff.vehicle_costs : _opt.diff.construction_cost;
+			uint mod = _price_category[i] == 1 ? _settings.difficulty.vehicle_costs : _settings.difficulty.construction_cost;
 			if (mod < 1) {
 				price = price * 3 >> 2;
 			} else if (mod > 1) {
@@ -829,10 +829,10 @@ void StartupEconomy()
 		_price_frac[i] = 0;
 	}
 
-	_economy.interest_rate = _opt.diff.initial_interest;
-	_economy.infl_amount = _opt.diff.initial_interest;
-	_economy.infl_amount_pr = max(0, _opt.diff.initial_interest - 1);
-	_economy.max_loan_unround = _economy.max_loan = _opt.diff.max_loan * 1000;
+	_economy.interest_rate = _settings.difficulty.initial_interest;
+	_economy.infl_amount = _settings.difficulty.initial_interest;
+	_economy.infl_amount_pr = max(0, _settings.difficulty.initial_interest - 1);
+	_economy.max_loan_unround = _economy.max_loan = _settings.difficulty.max_loan * 1000;
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 }
 
@@ -1162,7 +1162,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	}
 
 	/* zero the distance (thus income) if it's the bank and very short transport. */
-	if (_opt.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10) return 0;
+	if (_settings.game_creation.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10) return 0;
 
 
 	static const int MIN_TIME_FACTOR = 31;
@@ -1313,7 +1313,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 
 			SetDParam(0, _current_player);
 			AddNewsItem(
-				STR_2031_SERVICE_SUBSIDY_AWARDED + _opt.diff.subsidy_multiplier,
+				STR_2031_SERVICE_SUBSIDY_AWARDED + _settings.difficulty.subsidy_multiplier,
 				NS_SUBSIDIES,
 				pair.a, pair.b
 			);
@@ -1360,7 +1360,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 
 	/* Modify profit if a subsidy is in effect */
 	if (subsidised) {
-		switch (_opt.diff.subsidy_multiplier) {
+		switch (_settings.difficulty.subsidy_multiplier) {
 			case 0:  profit += profit >> 1; break;
 			case 1:  profit *= 2; break;
 			case 2:  profit *= 3; break;

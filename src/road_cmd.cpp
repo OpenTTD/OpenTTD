@@ -69,9 +69,9 @@ CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		if (_game_mode == GM_MENU) {
-			_opt_newgame.road_side = p1;
+			_settings.vehicle.road_side = p1;
 		} else {
-			_opt.road_side = p1;
+			_settings.vehicle.road_side = p1;
 		}
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
@@ -1000,7 +1000,7 @@ const byte _road_sloped_sprites[14] = {
 static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
 {
 	return (IsOnSnow(tile) &&
-			!(_opt.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
+			!(_settings.game_creation.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
 				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
 }
 
@@ -1291,7 +1291,7 @@ static const Roadside _town_road_types_2[][2] = {
 
 static void TileLoop_Road(TileIndex tile)
 {
-	switch (_opt.landscape) {
+	switch (_settings.game_creation.landscape) {
 		case LT_ARCTIC:
 			if (IsOnSnow(tile) != (GetTileZ(tile) > GetSnowLine())) {
 				ToggleSnow(tile);
@@ -1337,7 +1337,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const Roadside* new_rs = (_opt.landscape == LT_TOYLAND) ? _town_road_types_2[grp] : _town_road_types[grp];
+			const Roadside* new_rs = (_settings.game_creation.landscape == LT_TOYLAND) ? _town_road_types_2[grp] : _town_road_types[grp];
 			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */

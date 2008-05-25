@@ -49,7 +49,7 @@ static const Widget _select_game_widgets[] = {
 
 static inline void SetNewLandscapeType(byte landscape)
 {
-	_opt_newgame.landscape = landscape;
+	_settings_newgame.game_creation.landscape = landscape;
 	InvalidateWindowClasses(WC_SELECT_GAME);
 }
 
@@ -76,17 +76,17 @@ private:
 public:
 	SelectGameWindow(const WindowDesc *desc) : Window(desc)
 	{
-		this->LowerWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
+		this->LowerWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		this->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _opt_newgame.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE, _opt_newgame.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE, _opt_newgame.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE, _opt_newgame.landscape == LT_TOYLAND);
-		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
+		this->SetWidgetLoweredState(SGI_TEMPERATE_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(SGI_ARCTIC_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(SGI_TROPIC_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(SGI_TOYLAND_LANDSCAPE, _settings_newgame.game_creation.landscape == LT_TOYLAND);
+		SetDParam(0, STR_6801_EASY + _settings_newgame.difficulty.diff_level);
 		this->DrawWidgets();
 	}
 
@@ -115,7 +115,7 @@ public:
 
 			case SGI_TEMPERATE_LANDSCAPE: case SGI_ARCTIC_LANDSCAPE:
 			case SGI_TROPIC_LANDSCAPE: case SGI_TOYLAND_LANDSCAPE:
-				this->RaiseWidget(_opt_newgame.landscape + SGI_TEMPERATE_LANDSCAPE);
+				this->RaiseWidget(_settings_newgame.game_creation.landscape + SGI_TEMPERATE_LANDSCAPE);
 				SetNewLandscapeType(widget - SGI_TEMPERATE_LANDSCAPE);
 				break;
 

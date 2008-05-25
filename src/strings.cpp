@@ -546,7 +546,7 @@ static const Units units[] = {
  */
 uint ConvertSpeedToDisplaySpeed(uint speed)
 {
- return (speed * units[_opt.units].s_m) >> units[_opt.units].s_s;
+ return (speed * units[_settings.gui.units].s_m) >> units[_settings.gui.units].s_s;
 }
 
 /**
@@ -556,7 +556,7 @@ uint ConvertSpeedToDisplaySpeed(uint speed)
  */
 uint ConvertDisplaySpeedToSpeed(uint speed)
 {
-	return ((speed << units[_opt.units].s_s) + units[_opt.units].s_m / 2) / units[_opt.units].s_m;
+	return ((speed << units[_settings.gui.units].s_s) + units[_settings.gui.units].s_m / 2) / units[_settings.gui.units].s_m;
 }
 
 static char* FormatString(char* buff, const char* str, const int64* argv, uint casei, const char* last)
@@ -602,9 +602,9 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 			case SCC_VELOCITY: {// {VELOCITY}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
+				assert(_settings.gui.units < lengthof(units));
 				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv));
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].velocity), args, modifier >> 24, last);
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].velocity), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
@@ -625,18 +625,18 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				switch (cargo_str) {
 					case STR_TONS: {
 						int64 args[1];
-						assert(_opt.units < lengthof(units));
-						args[0] = GetInt32(&argv) * units[_opt.units].w_m >> units[_opt.units].w_s;
-						buff = FormatString(buff, GetStringPtr(units[_opt.units].l_weight), args, modifier >> 24, last);
+						assert(_settings.gui.units < lengthof(units));
+						args[0] = GetInt32(&argv) * units[_settings.gui.units].w_m >> units[_settings.gui.units].w_s;
+						buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].l_weight), args, modifier >> 24, last);
 						modifier = 0;
 						break;
 					}
 
 					case STR_LITERS: {
 						int64 args[1];
-						assert(_opt.units < lengthof(units));
-						args[0] = GetInt32(&argv) * units[_opt.units].v_m >> units[_opt.units].v_s;
-						buff = FormatString(buff, GetStringPtr(units[_opt.units].l_volume), args, modifier >> 24, last);
+						assert(_settings.gui.units < lengthof(units));
+						args[0] = GetInt32(&argv) * units[_settings.gui.units].v_m >> units[_settings.gui.units].v_s;
+						buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].l_volume), args, modifier >> 24, last);
 						modifier = 0;
 						break;
 					}
@@ -718,9 +718,9 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 			case SCC_VOLUME: { // {VOLUME}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt.units].v_m >> units[_opt.units].v_s;
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].l_volume), args, modifier >> 24, last);
+				assert(_settings.gui.units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_settings.gui.units].v_m >> units[_settings.gui.units].v_s;
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].l_volume), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
@@ -763,45 +763,45 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 			case SCC_POWER: { // {POWER}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt.units].p_m >> units[_opt.units].p_s;
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].power), args, modifier >> 24, last);
+				assert(_settings.gui.units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_settings.gui.units].p_m >> units[_settings.gui.units].p_s;
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].power), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_VOLUME_SHORT: { // {VOLUME_S}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt.units].v_m >> units[_opt.units].v_s;
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].s_volume), args, modifier >> 24, last);
+				assert(_settings.gui.units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_settings.gui.units].v_m >> units[_settings.gui.units].v_s;
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].s_volume), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_WEIGHT: { // {WEIGHT}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt.units].w_m >> units[_opt.units].w_s;
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].l_weight), args, modifier >> 24, last);
+				assert(_settings.gui.units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_settings.gui.units].w_m >> units[_settings.gui.units].w_s;
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].l_weight), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_WEIGHT_SHORT: { // {WEIGHT_S}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt.units].w_m >> units[_opt.units].w_s;
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].s_weight), args, modifier >> 24, last);
+				assert(_settings.gui.units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_settings.gui.units].w_m >> units[_settings.gui.units].w_s;
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].s_weight), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
 
 			case SCC_FORCE: { // {FORCE}
 				int64 args[1];
-				assert(_opt.units < lengthof(units));
-				args[0] = GetInt32(&argv) * units[_opt.units].f_m >> units[_opt.units].f_s;
-				buff = FormatString(buff, GetStringPtr(units[_opt.units].force), args, modifier >> 24, last);
+				assert(_settings.gui.units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_settings.gui.units].f_m >> units[_settings.gui.units].f_s;
+				buff = FormatString(buff, GetStringPtr(units[_settings.gui.units].force), args, modifier >> 24, last);
 				modifier = 0;
 				break;
 			}
@@ -1137,7 +1137,7 @@ static char *GenAndCoName(char *buff, uint32 arg, const char* last)
 	const char* const* base;
 	uint num;
 
-	if (_opt.landscape == LT_TOYLAND) {
+	if (_settings.game_creation.landscape == LT_TOYLAND) {
 		base = _silly_surname_list;
 		num  = lengthof(_silly_surname_list);
 	} else {
@@ -1167,7 +1167,7 @@ static char *GenPresidentName(char *buff, uint32 x, const char* last)
 		buff = strecpy(buff, initial, last);
 	}
 
-	if (_opt.landscape == LT_TOYLAND) {
+	if (_settings.game_creation.landscape == LT_TOYLAND) {
 		base = _silly_surname_list;
 		num  = lengthof(_silly_surname_list);
 	} else {

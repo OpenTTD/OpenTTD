@@ -99,7 +99,7 @@ void ResetOldNames();
 void ProcessAsyncSaveFinish();
 void CallWindowTickEvent();
 
-extern void SetDifficultyLevel(int mode, GameOptions *gm_opt);
+extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
 extern void ShowOSErrorBox(const char *buf);
 extern void InitializeRailGUI();
@@ -586,11 +586,10 @@ int ttd_main(int argc, char *argv[])
 	ResetGRFConfig(false);
 
 	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
-	if (_opt_newgame.diff_level == 9) SetDifficultyLevel(0, &_opt_newgame);
+	if (_settings_newgame.difficulty.diff_level == 9) SetDifficultyLevel(0, &_settings_newgame.difficulty);
 
 	/* Make sure _patches is filled with _patches_newgame if we switch to a game directly */
 	if (_switch_mode != SM_NONE) {
-		_opt = _opt_newgame;
 		UpdatePatches();
 	}
 
@@ -767,8 +766,7 @@ static void StartScenario()
 		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 	}
 
-	_opt.diff = _opt_newgame.diff;
-	_opt.diff_level = _opt_newgame.diff_level;
+	_settings.difficulty = _settings_newgame.difficulty;
 
 	/* Inititalize data */
 	StartupEconomy();
@@ -838,7 +836,6 @@ void SwitchMode(int new_mode)
 				if (_network_reload_cfg) {
 					LoadFromConfig();
 					_settings = _settings_newgame;
-					_opt = _opt_newgame;
 					ResetGRFConfig(false);
 				}
 				NetworkServerStart();
@@ -1259,7 +1256,7 @@ static const byte convert_currency[] = {
 /* since savegame version 4.2 the currencies are arranged differently */
 static void UpdateCurrencies()
 {
-	_opt.currency = convert_currency[_opt.currency];
+	_settings.gui.currency = convert_currency[_settings.gui.currency];
 }
 
 /* Up to revision 1413 the invisible tiles at the southern border have not been
@@ -1394,7 +1391,7 @@ bool AfterLoadGame()
 		Town *t;
 		FOR_ALL_TOWNS(t) {
 			t->name = CopyFromOldName(t->townnametype);
-			if (t->name != NULL) t->townnametype = SPECSTR_TOWNNAME_START + _opt.town_name;
+			if (t->name != NULL) t->townnametype = SPECSTR_TOWNNAME_START + _settings.game_creation.town_name;
 		}
 
 		Waypoint *wp;
@@ -1408,7 +1405,7 @@ bool AfterLoadGame()
 	ResetOldNames();
 
 	/* convert road side to my format. */
-	if (_opt.road_side) _opt.road_side = 1;
+	if (_settings.vehicle.road_side) _settings.vehicle.road_side = 1;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
@@ -2226,12 +2223,12 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(58)) {
 		/* patch difficulty number_industries other then zero get bumped to +1
 		 * since a new option (very low at position1) has been added */
-		if (_opt.diff.number_industries > 0) {
-			_opt.diff.number_industries++;
+		if (_settings.difficulty.number_industries > 0) {
+			_settings.difficulty.number_industries++;
 		}
 
 		/* Same goes for number of towns, although no test is needed, just an increment */
-		_opt.diff.number_towns++;
+		_settings.difficulty.number_towns++;
 	}
 
 	if (CheckSavegameVersion(64)) {
