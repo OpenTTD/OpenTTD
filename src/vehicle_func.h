@@ -70,7 +70,6 @@ Money GetTrainRunningCost(const Vehicle *v);
 
 /* Old style list kept for migration */
 uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type);
-void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
 void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner, uint32 index, uint16 window_type);
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine_list, VehicleList *wagon_list);
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);

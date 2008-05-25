@@ -1291,41 +1291,6 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return total_cost;
 }
 
-
-/** Generates a list of vehicles inside a depot
- * Will enlarge allocated space for the list if they are too small, so it's ok to call with (pointer to NULL array, pointer to uninitised uint16, pointer to 0)
- * If one of the lists is not needed (say wagons when finding ships), all the pointers regarding that list should be set to NULL
- * @param type Type of vehicle
- * @param tile The tile the depot is located in
- * @param ***engine_list Pointer to a pointer to an array of vehicles in the depot (old list is freed and a new one is malloced)
- * @param *engine_list_length Allocated size of engine_list. Needs to be set to 0 when engine_list points to a NULL array
- * @param *engine_count The number of engines stored in the list
- * @param ***wagon_list Pointer to a pointer to an array of free wagons in the depot (old list is freed and a new one is malloced)
- * @param *wagon_list_length Allocated size of wagon_list. Needs to be set to 0 when wagon_list points to a NULL array
- * @param *wagon_count The number of engines stored in the list
- */
-void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count)
-{
-	VehicleList engines;
-	VehicleList wagons;
-
-	BuildDepotVehicleList(type, tile, &engines, &wagons);
-
-	if (engines.Length() > 0) {
-		*engine_list = ReallocT(*engine_list, engines.Length());
-		memcpy(*engine_list, engines.Begin(), sizeof(engines.Begin()) * engines.Length());
-	}
-	if (engine_count != NULL) *engine_count = engines.Length();
-
-	if (wagon_list != NULL && wagon_list != engine_list) {
-		if (wagons.Length() > 0) {
-			*wagon_list = ReallocT(*wagon_list, wagons.Length());
-			memcpy(*wagon_list, wagons.Begin(), sizeof(wagons.Begin()) * wagons.Length());
-		}
-		if (wagon_count != NULL) *wagon_count = wagons.Length();
-	}
-}
-
 /**
  * Generate a list of vehicles inside a depot.
  * @param type    Type of vehicle

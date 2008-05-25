@@ -117,10 +117,11 @@ void SortVehicleList(VehicleListBase *vl)
 	vl->vehicles.flags &= ~VL_RESORT;
 }
 
-void DepotSortList(Vehicle **v, uint16 length)
+void DepotSortList(VehicleList *list)
 {
 	_internal_sort_order = 0;
-	qsort((void*)v, length, sizeof(v[0]), _vehicle_sorter[0]);
+	if (list->Length() < 2) return;
+	qsort((void*)list->Begin(), list->Length(), sizeof(list->Begin()), _vehicle_sorter[0]);
 }
 
 /** draw the vehicle profit button in the vehicle list window. */

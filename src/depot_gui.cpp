@@ -131,7 +131,7 @@ static const WindowDesc _aircraft_depot_desc = {
 };
 
 extern int WagonLengthToPixels(int len);
-extern void DepotSortList(Vehicle **v, uint16 length);
+extern void DepotSortList(VehicleList *list);
 
 /**
  * This is the Callback method after the cloning attempt of a vehicle
@@ -240,20 +240,12 @@ struct DepotWindow : Window {
 	VehicleID sel;
 	VehicleType type;
 	bool generate_list;
-	uint16 engine_list_length;
-	uint16 wagon_list_length;
-	uint16 engine_count;
-	uint16 wagon_count;
-	Vehicle **vehicle_list;
-	Vehicle **wagon_list;
+	VehicleList vehicle_list;
+	VehicleList wagon_list;
 
 	DepotWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->sel = INVALID_VEHICLE;
-		this->vehicle_list  = NULL;
-		this->wagon_list    = NULL;
-		this->engine_count  = 0;
-		this->wagon_count   = 0;
 		this->generate_list = true;
 
 		this->FindWindowPlacementAndResize(desc);
@@ -262,8 +254,6 @@ struct DepotWindow : Window {
 	~DepotWindow()
 	{
 		DeleteWindowById(WC_BUILD_VEHICLE, this->window_number);
-		free((void*)this->vehicle_list);
-		free((void*)this->wagon_list);
 	}
 
 	/** Draw a vehicle in the depot window in the box with the top left corner at x,y
@@ -314,11 +304,9 @@ struct DepotWindow : Window {
 
 	void DrawDepotWindow(Window *w)
 	{
-		Vehicle **vl = this->vehicle_list;
 		TileIndex tile = this->window_number;
 		int x, y, i, maxval;
 		uint16 hnum;
-		uint16 num = this->engine_count;
 
 		/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 		uint16 rows_in_display   = this->widget[DEPOT_WIDGET_MATRIX].data >> 8;
@@ -339,15 +327,15 @@ struct DepotWindow : Window {
 		/* determine amount of items for scroller */
 		if (this->type == VEH_TRAIN) {
 			hnum = 8;
-			for (num = 0; num < this->engine_count; num++) {
-				const Vehicle *v = vl[num];
+			for (uint num = 0; num < this->vehicle_list.Length(); num++) {
+				const Vehicle *v = this->vehicle_list[num];
 				hnum = max(hnum, v->u.rail.cached_total_length);
 			}
 			/* Always have 1 empty row, so people can change the setting of the train */
-			SetVScrollCount(w, this->engine_count + this->wagon_count + 1);
+			SetVScrollCount(w, this->vehicle_list.Length() + this->wagon_list.Length() + 1);
 			SetHScrollCount(w, WagonLengthToPixels(hnum));
 		} else {
-			SetVScrollCount(w, (num + this->hscroll.cap - 1) / this->hscroll.cap);
+			SetVScrollCount(w, (this->vehicle_list.Length() + this->hscroll.cap - 1) / this->hscroll.cap);
 		}
 
 		/* locate the depot struct */
@@ -362,24 +350,24 @@ struct DepotWindow : Window {
 
 		w->DrawWidgets();
 
-		num = this->vscroll.pos * boxes_in_each_row;
-		maxval = min(this->engine_count, num + (rows_in_display * boxes_in_each_row));
+		uint16 num = this->vscroll.pos * boxes_in_each_row;
+		maxval = min(this->vehicle_list.Length(), num + (rows_in_display * boxes_in_each_row));
 
 		for (x = 2, y = 15; num < maxval; y += this->resize.step_height, x = 2) { // Draw the rows
 			byte i;
 
 			for (i = 0; i < boxes_in_each_row && num < maxval; i++, num++, x += this->resize.step_width) {
 				/* Draw all vehicles in the current row */
-				const Vehicle *v = vl[num];
+				const Vehicle *v = this->vehicle_list[num];
 				DrawVehicleInDepot(w, v, x, y);
 			}
 		}
 
-		maxval = min(this->engine_count + this->wagon_count, (this->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
+		maxval = min(this->vehicle_list.Length() + this->wagon_list.Length(), (this->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
 
 		/* draw the train wagons, that do not have an engine in front */
 		for (; num < maxval; num++, y += 14) {
-			const Vehicle *v = this->wagon_list[num - this->engine_count];
+			const Vehicle *v = this->wagon_list[num - this->vehicle_list.Length()];
 			const Vehicle *u;
 
 			DrawTrainImage(v, x + 50, y, this->sel, this->hscroll.cap - 29, 0);
@@ -408,7 +396,6 @@ struct DepotWindow : Window {
 
 	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, const Vehicle **veh, GetDepotVehiclePtData *d) const
 	{
-		Vehicle **vl = this->vehicle_list;
 		uint xt, row, xm = 0, ym = 0;
 		int pos, skip = 0;
 		uint16 boxes_in_each_row = this->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
@@ -429,7 +416,7 @@ struct DepotWindow : Window {
 
 		pos = ((row + this->vscroll.pos) * boxes_in_each_row) + xt;
 
-		if (this->engine_count + this->wagon_count <= pos) {
+		if ((int)(this->vehicle_list.Length() + this->wagon_list.Length()) <= pos) {
 			if (this->type == VEH_TRAIN) {
 				d->head  = NULL;
 				d->wagon = NULL;
@@ -439,13 +426,12 @@ struct DepotWindow : Window {
 			}
 		}
 
-		if (this->engine_count > pos) {
-			*veh = vl[pos];
+		if ((int)this->vehicle_list.Length() > pos) {
+			*veh = this->vehicle_list[pos];
 			skip = this->hscroll.pos;
 		} else {
-			vl = this->wagon_list;
-			pos -= this->engine_count;
-			*veh = vl[pos];
+			pos -= this->vehicle_list.Length();
+			*veh = this->wagon_list[pos];
 			/* free wagons don't have an initial loco. */
 			x -= _traininfo_vehicle_width;
 		}
@@ -759,11 +745,9 @@ struct DepotWindow : Window {
 		if (this->generate_list) {
 			/* Generate the vehicle list
 			 * It's ok to use the wagon pointers for non-trains as they will be ignored */
-			BuildDepotVehicleList(this->type, this->window_number,
-				&this->vehicle_list, &this->engine_list_length, &this->engine_count,
-				&this->wagon_list,   &this->wagon_list_length,  &this->wagon_count);
+			BuildDepotVehicleList(this->type, this->window_number, &this->vehicle_list, &this->wagon_list);
 			this->generate_list = false;
-			DepotSortList(this->vehicle_list, this->engine_count);
+			DepotSortList(&this->vehicle_list);
 		}
 		DrawDepotWindow(this);
 	}
@@ -812,7 +796,7 @@ struct DepotWindow : Window {
 
 			case DEPOT_WIDGET_SELL_ALL:
 				/* Only open the confimation window if there are anything to sell */
-				if (this->engine_count != 0 || this->wagon_count != 0) {
+				if (this->vehicle_list.Length() != 0 || this->wagon_list.Length() != 0) {
 					static const StringID confirm_captions[] = {
 						STR_8800_TRAIN_DEPOT,
 						STR_9003_ROAD_VEHICLE_DEPOT,
