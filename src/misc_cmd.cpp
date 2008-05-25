@@ -395,12 +395,14 @@ CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, ui
 {
 	if (p1 != (uint32)-1L && ((int32)p1 >= GAME_DIFFICULTY_NUM || (int32)p1 < 0)) return CMD_ERROR;
 
+	GameOptions *opt_ptr = (_game_mode == GM_MENU) ? &_opt_newgame : &_opt;
+
 	if (flags & DC_EXEC) {
 		if (p1 != (uint32)-1L) {
-			((GDType*)&_opt_ptr->diff)[p1] = p2;
-			_opt_ptr->diff_level = 3; // custom difficulty level
+			((GDType*)&opt_ptr->diff)[p1] = p2;
+			opt_ptr->diff_level = 3; // custom difficulty level
 		} else {
-			_opt_ptr->diff_level = p2;
+			opt_ptr->diff_level = p2;
 		}
 
 		/* Since the tolerance of the town council has a direct impact on the noise generation/tolerance,

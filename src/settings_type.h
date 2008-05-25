@@ -74,9 +74,6 @@ extern GameOptions _opt;
 /* These are the default options for a new game */
 extern GameOptions _opt_newgame;
 
-/* Pointer to one of the two _opt OR _opt_newgame structs */
-extern GameOptions *_opt_ptr;
-
 struct Patches {
 	bool modified_catchment;            ///< different-size catchment areas
 	bool vehicle_speed;                 ///< show vehicle speed

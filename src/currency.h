@@ -39,7 +39,7 @@ extern CurrencySpec _currency_specs[NUM_CURRENCY];
 
 // XXX small hack, but makes the rest of the code a bit nicer to read
 #define _custom_currency (_currency_specs[CUSTOM_CURRENCY_ID])
-#define _currency ((const CurrencySpec*)&_currency_specs[_opt_ptr->currency])
+#define _currency ((const CurrencySpec*)&_currency_specs[(_game_mode == GM_MENU) ? _opt_newgame.currency : _opt.currency])
 
 uint GetMaskOfAllowedCurrencies();
 void CheckSwitchToEuro();

@@ -207,7 +207,6 @@ void StartGeneratingLandscape(glwp_modes mode)
 	/* Copy all XXX_newgame to XXX when coming from outside the editor */
 	UpdatePatches();
 	_opt = _opt_newgame;
-	_opt_ptr = &_opt;
 	ResetGRFConfig(true);
 
 	SndPlayFx(SND_15_BEEP);

@@ -68,7 +68,11 @@ CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (p1 > 1 || (_game_mode != GM_MENU && RoadVehiclesAreBuilt())) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		_opt_ptr->road_side = p1;
+		if (_game_mode == GM_MENU) {
+			_opt_newgame.road_side = p1;
+		} else {
+			_opt.road_side = p1;
+		}
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 	return CommandCost();

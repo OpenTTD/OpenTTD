@@ -65,7 +65,6 @@
 
 GameOptions _opt;
 GameOptions _opt_newgame;
-GameOptions *_opt_ptr;
 Patches _patches;
 Patches _patches_newgame;
 

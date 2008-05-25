@@ -142,8 +142,11 @@ static void ShowTownnameDropdown(Window *w, int sel)
 static void ShowCustCurrency();
 
 struct GameOptionsWindow : Window {
+	GameOptions *opt;
+
 	GameOptionsWindow(const WindowDesc *desc) : Window(desc)
 	{
+		this->opt = (_game_mode == GM_MENU) ? &_opt_newgame : &_opt;
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -159,11 +162,11 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
 		if (!this->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
 		SetDParam(0, str);
-		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
-		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
-		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
-		SetDParam(4, TownName(_opt_ptr->town_name));
-		SetDParam(5, _autosave_dropdown[_opt_ptr->autosave]);
+		SetDParam(1, _currency_specs[this->opt->currency].name);
+		SetDParam(2, STR_UNITS_IMPERIAL + this->opt->units);
+		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + this->opt->road_side);
+		SetDParam(4, TownName(this->opt->town_name));
+		SetDParam(5, _autosave_dropdown[this->opt->autosave]);
 		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
 		int i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
@@ -178,11 +181,11 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case GAMEOPT_CURRENCY_BTN: // Setup currencies dropdown
-				ShowDropDownMenu(this, BuildCurrencyDropdown(), _opt_ptr->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+				ShowDropDownMenu(this, BuildCurrencyDropdown(), this->opt->currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 				break;
 
 			case GAMEOPT_DISTANCE_BTN: // Setup distance unit dropdown
-				ShowDropDownMenu(this, _units_dropdown, _opt_ptr->units, GAMEOPT_DISTANCE_BTN, 0, 0);
+				ShowDropDownMenu(this, _units_dropdown, this->opt->units, GAMEOPT_DISTANCE_BTN, 0, 0);
 				break;
 
 			case GAMEOPT_ROADSIDE_BTN: { // Setup road-side dropdown
@@ -192,18 +195,18 @@ struct GameOptionsWindow : Window {
 				/* You can only change the drive side if you are in the menu or ingame with
 				 * no vehicles present. In a networking game only the server can change it */
 				if ((_game_mode != GM_MENU && RoadVehiclesAreBuilt()) || (_networking && !_network_server)) {
-					i = (-1) ^ (1 << _opt_ptr->road_side); // disable the other value
+					i = (-1) ^ (1 << this->opt->road_side); // disable the other value
 				}
 
-				ShowDropDownMenu(this, _driveside_dropdown, _opt_ptr->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
+				ShowDropDownMenu(this, _driveside_dropdown, this->opt->road_side, GAMEOPT_ROADSIDE_BTN, i, 0);
 			} break;
 
 			case GAMEOPT_TOWNNAME_BTN: // Setup townname dropdown
-				ShowTownnameDropdown(this, _opt_ptr->town_name);
+				ShowTownnameDropdown(this, this->opt->town_name);
 				break;
 
 			case GAMEOPT_AUTOSAVE_BTN: // Setup autosave dropdown
-				ShowDropDownMenu(this, _autosave_dropdown, _opt_ptr->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
+				ShowDropDownMenu(this, _autosave_dropdown, this->opt->autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
 				break;
 
 			case GAMEOPT_VEHICLENAME_BTN: // Setup customized vehicle-names dropdown
@@ -262,17 +265,17 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_CURRENCY_BTN: /* Currency */
 				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
-				_opt_ptr->currency = index;
+				this->opt->currency = index;
 				MarkWholeScreenDirty();
 				break;
 
 			case GAMEOPT_DISTANCE_BTN: // Measuring units
-				_opt_ptr->units = index;
+				this->opt->units = index;
 				MarkWholeScreenDirty();
 				break;
 
 			case GAMEOPT_ROADSIDE_BTN: // Road side
-				if (_opt_ptr->road_side != index) { // only change if setting changed
+				if (this->opt->road_side != index) { // only change if setting changed
 					DoCommandP(0, index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 					MarkWholeScreenDirty();
 				}
@@ -280,7 +283,7 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_TOWNNAME_BTN: // Town names
 				if (_game_mode == GM_MENU) {
-					_opt_ptr->town_name = index;
+					this->opt->town_name = index;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 				break;
@@ -507,7 +510,7 @@ public:
 	{
 		/* Copy current settings (ingame or in intro) to temporary holding place
 		 * change that when setting stuff, copy back on clicking 'OK' */
-		this->opt_mod_temp = *_opt_ptr;
+		this->opt_mod_temp = (_game_mode == GM_MENU) ? _opt_newgame : _opt;
 		this->clicked_increase = false;
 		this->clicked_button = NO_SETTINGS_BUTTON;
 		this->timeout = 0;
@@ -624,11 +627,13 @@ public:
 
 			case GDW_ACCEPT: { // Save button - save changes
 				GDType btn, val;
+				GameOptions *opt_ptr = (_game_mode == GM_MENU) ? &_opt_newgame : &_opt;
 				for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
 					val = ((GDType*)&this->opt_mod_temp.diff)[btn];
 					/* if setting has changed, change it */
-					if (val != ((GDType*)&_opt_ptr->diff)[btn])
+					if (val != ((GDType*)&opt_ptr->diff)[btn]) {
 						DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+					}
 				}
 				DoCommandP(0, UINT_MAX, this->opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				delete this;

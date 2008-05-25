@@ -330,7 +330,6 @@ static void LoadIntroGame()
 {
 	_game_mode = GM_MENU;
 
-	_opt_ptr = &_opt_newgame;
 	ResetGRFConfig(false);
 
 	/* Setup main window */
@@ -584,7 +583,6 @@ int ttd_main(int argc, char *argv[])
 
 	ScanNewGRFFiles();
 
-	_opt_ptr = &_opt_newgame;
 	ResetGRFConfig(false);
 
 	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
@@ -769,8 +767,7 @@ static void StartScenario()
 		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 	}
 
-	_opt_ptr = &_opt;
-	_opt_ptr->diff = _opt_newgame.diff;
+	_opt.diff = _opt_newgame.diff;
 	_opt.diff_level = _opt_newgame.diff_level;
 
 	/* Inititalize data */
@@ -877,7 +874,6 @@ void SwitchMode(int new_mode)
 			break;
 
 		case SM_LOAD: { /* Load game, Play Scenario */
-			_opt_ptr = &_opt;
 			ResetGRFConfig(true);
 			ResetWindowSystem();
 
@@ -921,8 +917,6 @@ void SwitchMode(int new_mode)
 
 		case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
-				_opt_ptr = &_opt;
-
 				SetLocalPlayer(OWNER_NONE);
 				_patches_newgame.starting_year = _cur_year;
 			} else {

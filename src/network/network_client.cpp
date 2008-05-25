@@ -622,8 +622,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		/* If the savegame has successfully loaded, ALL windows have been removed,
 		 * only toolbar/statusbar and gamefield are visible */
 
-		_opt_ptr = &_opt; // during a network game you are always in-game
-
 		// Say we received the map and loaded it correctly!
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
