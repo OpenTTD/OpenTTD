@@ -58,7 +58,7 @@
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
 
 VehicleID _vehicle_id_ctr_day;
-Vehicle *_place_clicked_vehicle;
+const Vehicle *_place_clicked_vehicle;
 VehicleID _new_vehicle_id;
 uint16 _returned_refit_capacity;
 
@@ -526,6 +526,12 @@ void InitializeVehicles()
 }
 
 Vehicle *GetLastVehicleInChain(Vehicle *v)
+{
+	while (v->Next() != NULL) v = v->Next();
+	return v;
+}
+
+const Vehicle *GetLastVehicleInChain(const Vehicle *v)
 {
 	while (v->Next() != NULL) v = v->Next();
 	return v;

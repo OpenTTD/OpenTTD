@@ -24,6 +24,7 @@ typedef void *VehicleFromPosProc(Vehicle *v, void *data);
 void VehicleServiceInDepot(Vehicle *v);
 void VehiclePositionChanged(Vehicle *v);
 Vehicle *GetLastVehicleInChain(Vehicle *v);
+const Vehicle *GetLastVehicleInChain(const Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
@@ -173,7 +174,7 @@ bool EnsureNoVehicleOnGround(TileIndex tile);
 void StopAllVehicles();
 
 extern VehicleID _vehicle_id_ctr_day;
-extern Vehicle *_place_clicked_vehicle;
+extern const Vehicle *_place_clicked_vehicle;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
 

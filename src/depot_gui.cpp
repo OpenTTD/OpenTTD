@@ -144,16 +144,14 @@ void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (!success) return;
 
-	Vehicle *v = GetVehicle(_new_vehicle_id);
+	const Vehicle *v = GetVehicle(_new_vehicle_id);
 
 	ShowVehicleViewWindow(v);
 }
 
-static void TrainDepotMoveVehicle(Vehicle *wagon, VehicleID sel, Vehicle *head)
+static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Vehicle *head)
 {
-	Vehicle *v;
-
-	v = GetVehicle(sel);
+	const Vehicle *v = GetVehicle(sel);
 
 	if (v == wagon) return;
 
@@ -397,8 +395,8 @@ struct DepotWindow : Window {
 	}
 
 	struct GetDepotVehiclePtData {
-		Vehicle *head;
-		Vehicle *wagon;
+		const Vehicle *head;
+		const Vehicle *wagon;
 	};
 
 	enum DepotGUIAction {
@@ -408,7 +406,7 @@ struct DepotWindow : Window {
 		MODE_START_STOP,
 	};
 
-	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, Vehicle **veh, GetDepotVehiclePtData *d) const
+	DepotGUIAction GetVehicleFromDepotWndPt(int x, int y, const Vehicle **veh, GetDepotVehiclePtData *d) const
 	{
 		Vehicle **vl = this->vehicle_list;
 		uint xt, row, xm = 0, ym = 0;
@@ -454,7 +452,7 @@ struct DepotWindow : Window {
 
 		switch (this->type) {
 			case VEH_TRAIN: {
-				Vehicle *v = *veh;
+				const Vehicle *v = *veh;
 				d->head = d->wagon = v;
 
 				/* either pressed the flag or the number, but only when it's a loco */
@@ -501,7 +499,7 @@ struct DepotWindow : Window {
 	void DepotClick(int x, int y)
 	{
 		GetDepotVehiclePtData gdvp = { NULL, NULL };
-		Vehicle *v = NULL;
+		const Vehicle *v = NULL;
 		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(x, y, &v, &gdvp);
 
 		/* share / copy orders */
@@ -879,7 +877,7 @@ struct DepotWindow : Window {
 	{
 		switch (widget) {
 			case DEPOT_WIDGET_MATRIX: {
-				Vehicle *v = NULL;
+				const Vehicle *v = NULL;
 				VehicleID sel = this->sel;
 
 				this->sel = INVALID_VEHICLE;
@@ -908,23 +906,20 @@ struct DepotWindow : Window {
 			case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
 				if (!this->IsWidgetDisabled(DEPOT_WIDGET_SELL) &&
 					this->sel != INVALID_VEHICLE) {
-					Vehicle *v;
 					uint command;
-					int sell_cmd;
-					bool is_engine;
 
 					if (this->IsWidgetDisabled(widget)) return;
 					if (this->sel == INVALID_VEHICLE) return;
 
 					this->HandleButtonClick(widget);
 
-					v = GetVehicle(this->sel);
+					const Vehicle *v = GetVehicle(this->sel);
 					this->sel = INVALID_VEHICLE;
 					this->SetDirty();
 
-					sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
+					int sell_cmd = (v->type == VEH_TRAIN && (widget == DEPOT_WIDGET_SELL_CHAIN || _ctrl_pressed)) ? 1 : 0;
 
-					is_engine = (!(v->type == VEH_TRAIN && !IsFrontEngine(v)));
+					bool is_engine = (!(v->type == VEH_TRAIN && !IsFrontEngine(v)));
 
 					if (is_engine) {
 						_backup_orders_tile = v->tile;

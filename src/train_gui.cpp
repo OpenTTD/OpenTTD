@@ -28,8 +28,8 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (!success) return;
 
 	/* find a locomotive in the depot. */
-	Vehicle *found = NULL;
-	Vehicle *v;
+	const Vehicle *found = NULL;
+	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v) &&
 				v->tile == tile &&
