@@ -19,6 +19,29 @@ struct SmallVector {
 	}
 
 	/**
+	 * Remove all items from the list.
+	 */
+	void Clear()
+	{
+		/* In fact we just reset the item counter avoiding the need to
+		 * probably reallocate the same amount of memory the list was
+		 * previously using. */
+		this->items = 0;
+	}
+
+	/**
+	 * Compact the list down to the smallest block size boundary.
+	 */
+	void Compact()
+	{
+		uint capacity = Align(this->items, S);
+		if (capacity >= this->capacity) return;
+
+		this->capacity = capacity;
+		this->data = ReallocT(this->data, this->capacity);
+	}
+
+	/**
 	 * Append an item and return it.
 	 */
 	T *Append()
@@ -29,6 +52,14 @@ struct SmallVector {
 		}
 
 		return &this->data[this->items++];
+	}
+
+	/**
+	 * Get the number of items in the list.
+	 */
+	uint Length() const
+	{
+		return this->items;
 	}
 
 	const T *Begin() const
@@ -59,6 +90,16 @@ struct SmallVector {
 	T *Get(uint index)
 	{
 		return &this->data[index];
+	}
+
+	const T &operator[](uint index) const
+	{
+		return this->data[index];
+	}
+
+	T &operator[](uint index)
+	{
+		return this->data[index];
 	}
 };
 

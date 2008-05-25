@@ -6,6 +6,7 @@
 #define VEHICLE_TYPE_H
 
 #include "core/enum_type.hpp"
+#include "misc/smallvec.h"
 
 typedef uint16 VehicleID;
 
@@ -55,5 +56,7 @@ enum DepotCommand {
 	DEPOT_LOCATE_HANGAR = (1 << 3), ///< Find another airport if the target one lacks a hangar
 	DEPOT_COMMAND_MASK  = 0xF,
 };
+
+typedef SmallVector<const Vehicle*, 32> VehicleList;
 
 #endif /* VEHICLE_TYPE_H */

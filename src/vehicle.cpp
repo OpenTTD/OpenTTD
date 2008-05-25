@@ -50,6 +50,7 @@
 #include "depot_map.h"
 #include "animated_tile_func.h"
 #include "effectvehicle_base.h"
+#include "core/alloc_func.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -988,9 +989,7 @@ void AgeVehicle(Vehicle *v)
  */
 CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle **vl = NULL;
-	uint16 engine_list_length = 0;
-	uint16 engine_count = 0;
+	VehicleList list;
 	CommandCost return_value = CMD_ERROR;
 	uint stop_command;
 	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
@@ -1009,14 +1008,14 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 		uint32 id = p1;
 		uint16 window_type = p2 & VLW_MASK;
 
-		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, id, window_type);
+		GenerateVehicleSortList(&list, vehicle_type, _current_player, id, window_type);
 	} else {
 		/* Get the list of vehicles in the depot */
-		BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
+		BuildDepotVehicleList(vehicle_type, tile, &list, NULL);
 	}
 
-	for (uint i = 0; i < engine_count; i++) {
-		const Vehicle *v = vl[i];
+	for (uint i = 0; i < list.Length(); i++) {
+		const Vehicle *v = list[i];
 
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
 
@@ -1038,7 +1037,6 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 		}
 	}
 
-	free(vl);
 	return return_value;
 }
 
@@ -1050,9 +1048,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
  */
 CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle **engines = NULL;
-	uint16 engine_list_length = 0;
-	uint16 engine_count = 0;
+	VehicleList list;
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	uint sell_command;
@@ -1067,15 +1063,13 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
 	}
 
 	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &engines, &engine_list_length, &engine_count,
-	                                          &engines, &engine_list_length, &engine_count);
+	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
 
-	for (uint i = 0; i < engine_count; i++) {
-		CommandCost ret = DoCommand(tile, engines[i]->index, 1, flags, sell_command);
+	for (uint i = 0; i < list.Length(); i++) {
+		CommandCost ret = DoCommand(tile, list[i]->index, 1, flags, sell_command);
 		if (CmdSucceeded(ret)) cost.AddCost(ret);
 	}
 
-	free(engines);
 	if (cost.GetCost() == 0) return CMD_ERROR; // no vehicles to sell
 	return cost;
 }
@@ -1091,9 +1085,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
  */
 CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle **vl = NULL;
-	uint16 engine_list_length = 0;
-	uint16 engine_count = 0;
+	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 	bool all_or_nothing = HasBit(p2, 0);
@@ -1101,10 +1093,10 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, &vl, &engine_list_length, &engine_count);
+	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
 
-	for (uint i = 0; i < engine_count; i++) {
-		Vehicle *v = vl[i];
+	for (uint i = 0; i < list.Length(); i++) {
+		Vehicle *v = (Vehicle*)list[i];
 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsInDepot()) continue;
@@ -1119,22 +1111,18 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 				 * We should never reach this if DC_EXEC is set since then it should
 				 * have failed the estimation guess. */
 				assert(!(flags & DC_EXEC));
-				/* Now we will have to return an error.
-				 * This goto will leave the loop and it's ok to do so because
-				 * there is no point in the rest of the loop. */
-				goto error;
+				/* Now we will have to return an error. */
+				return CMD_ERROR;
 			}
 		}
 	}
 
 	if (cost.GetCost() == 0) {
-error:
 		/* Either we didn't replace anything or something went wrong.
 		 * Either way we want to return an error and not execute this command. */
 		cost = CMD_ERROR;
 	}
 
-	free(vl);
 	return cost;
 }
 
@@ -1304,13 +1292,6 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-/* Extend the list size for BuildDepotVehicleList() */
-static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *engine_list_length, uint16 step_size)
-{
-	*engine_list_length = min(*engine_list_length + step_size, GetMaxVehicleIndex() + 1);
-	*engine_list = ReallocT(*engine_list, *engine_list_length);
-}
-
 /** Generates a list of vehicles inside a depot
  * Will enlarge allocated space for the list if they are too small, so it's ok to call with (pointer to NULL array, pointer to uninitised uint16, pointer to 0)
  * If one of the lists is not needed (say wagons when finding ships), all the pointers regarding that list should be set to NULL
@@ -1325,21 +1306,39 @@ static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *e
  */
 void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count)
 {
-	/* This function should never be called without an array to store results */
-	assert(!(engine_list == NULL && type != VEH_TRAIN));
-	assert(!(type == VEH_TRAIN && engine_list == NULL && wagon_list == NULL));
+	VehicleList engines;
+	VehicleList wagons;
 
-	/* Both array and the length should either be NULL to disable the list or both should not be NULL */
-	assert((engine_list == NULL && engine_list_length == NULL) || (engine_list != NULL && engine_list_length != NULL));
-	assert((wagon_list == NULL && wagon_list_length == NULL) || (wagon_list != NULL && wagon_list_length != NULL));
+	BuildDepotVehicleList(type, tile, &engines, &wagons);
 
-	assert(!(engine_list != NULL && engine_count == NULL));
-	assert(!(wagon_list != NULL && wagon_count == NULL));
+	if (engines.Length() > 0) {
+		*engine_list = ReallocT(*engine_list, engines.Length());
+		memcpy(*engine_list, engines[0], sizeof(engines[0]) * engines.Length());
+	}
+	if (engine_count != NULL) *engine_count = engines.Length();
 
-	if (engine_count != NULL) *engine_count = 0;
-	if (wagon_count != NULL) *wagon_count = 0;
+	if (wagon_list != NULL && wagon_list != engine_list) {
+		if (wagons.Length() > 0) {
+			*wagon_list = ReallocT(*wagon_list, wagons.Length());
+			memcpy(*wagon_list, wagons[0], sizeof(wagons[0]) * wagons.Length());
+		}
+		if (wagon_count != NULL) *wagon_count = wagons.Length();
+	}
+}
 
-	Vehicle *v;
+/**
+ * Generate a list of vehicles inside a depot.
+ * @param type    Type of vehicle
+ * @param tile    The tile the depot is located on
+ * @param engines Pointer to list to add vehicles to
+ * @param wagons  Pointer to list to add wagons to (can be NULL)
+ */
+void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engines, VehicleList *wagons)
+{
+	engines->Clear();
+	if (wagons != NULL && wagons != engines) wagons->Clear();
+
+	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* General tests for all vehicle types */
 		if (v->type != type) continue;
@@ -1348,9 +1347,8 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 		switch (type) {
 			case VEH_TRAIN:
 				if (v->u.rail.track != TRACK_BIT_DEPOT) continue;
-				if (wagon_list != NULL && IsFreeWagon(v)) {
-					if (*wagon_count == *wagon_list_length) ExtendVehicleListSize((const Vehicle***)wagon_list, wagon_list_length, 25);
-					(*wagon_list)[(*wagon_count)++] = v;
+				if (wagons != NULL && IsFreeWagon(v)) {
+					*wagons->Append() = v;
 					continue;
 				}
 				break;
@@ -1362,9 +1360,13 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 
 		if (!v->IsPrimaryVehicle()) continue;
 
-		if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
-		(*engine_list)[(*engine_count)++] = v;
+		*engines->Append() = v;
 	}
+
+	/* Ensure the lists are not wasting too much space. If the lists are fresh
+	 * (i.e. built within a command) then this will actually do nothing. */
+	engines->Compact();
+	if (wagons != NULL && wagons != engines) wagons->Compact();
 }
 
 /**
@@ -1385,78 +1387,95 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
  */
 uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
 {
-	uint n = 0;
+	VehicleList list;
+	GenerateVehicleSortList(&list, type, owner, index, window_type);
+
+	if (list.Length() > 0) {
+		*sort_list = ReallocT(*sort_list, list.Length());
+		memcpy(*sort_list, list[0], sizeof(list[0]) * list.Length());
+	}
+
+	return list.Length();
+}
+
+/**
+ * Generate a list of vehicles based on window type.
+ * @param list        Pointer to list to add vehicles to
+ * @param type        Type of vehicle
+ * @param owner       Player to generate list for
+ * @param index       This parameter has different meanings depending on window_type
+ *    <ul>
+ *      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
+ *      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
+ *      <li>VLW_STANDARD: not used<li>
+ *      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
+ *      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
+ *    </ul>
+ * @param window_type The type of window the list is for, using the VLW_ flags in vehicle_gui.h
+ */
+void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
+{
+	list->Clear();
+
 	const Vehicle *v;
 
 	switch (window_type) {
-		case VLW_STATION_LIST: {
+		case VLW_STATION_LIST:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
 						if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == index) {
-							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 50);
-							(*sort_list)[n++] = v;
+							*list->Append() = v;
 							break;
 						}
 					}
 				}
 			}
 			break;
-		}
 
-		case VLW_SHARED_ORDERS: {
+		case VLW_SHARED_ORDERS:
 			FOR_ALL_VEHICLES(v) {
 				/* Find a vehicle with the order in question */
-				if (v->orders != NULL && v->orders->index == index) break;
-			}
-
-			if (v != NULL && v->orders != NULL && v->orders->index == index) {
-				/* Only try to make the list if we found a vehicle using the order in question */
-				for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
-					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 25);
-					(*sort_list)[n++] = v;
+				if (v->orders != NULL && v->orders->index == index) {
+					/* Add all vehicles from this vehicle's shared order list */
+					for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+						*list->Append() = v;
+					}
+					break;
 				}
 			}
 			break;
-		}
 
-		case VLW_STANDARD: {
+		case VLW_STANDARD:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->owner == owner && v->IsPrimaryVehicle()) {
-					/* TODO find a better estimate on the total number of vehicles for current player */
-					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles() / 4);
-					(*sort_list)[n++] = v;
+					*list->Append() = v;
 				}
 			}
 			break;
-		}
 
-		case VLW_DEPOT_LIST: {
+		case VLW_DEPOT_LIST:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->IsPrimaryVehicle()) {
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
 						if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == index) {
-							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 25);
-							(*sort_list)[n++] = v;
+							*list->Append() = v;
 							break;
 						}
 					}
 				}
 			}
 			break;
-		}
 
 		case VLW_GROUP_LIST:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->IsPrimaryVehicle() &&
 						v->owner == owner && v->group_id == index) {
-					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles() / 4);
-
-					(*sort_list)[n++] = v;
+					*list->Append() = v;
 				}
 			}
 			break;
@@ -1464,16 +1483,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		default: NOT_REACHED(); break;
 	}
 
-	if ((n + 100) < *length_of_array) {
-		/* We allocated way too much for sort_list.
-		 * Now we will reduce how much we allocated.
-		 * We will still make it have room for 50 extra vehicles to prevent having
-		 * to move the whole array if just one vehicle is added later */
-		*length_of_array = n + 50;
-		*sort_list = ReallocT(*sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
-	}
-
-	return n;
+	list->Compact();
 }
 
 /**
