@@ -1462,14 +1462,13 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner
  */
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
-	const Vehicle **sort_list = NULL;
-	uint16 array_length = 0;
+	VehicleList list;
 
-	uint n = GenerateVehicleSortList(&sort_list, &array_length, type, owner, id, vlw_flag);
+	GenerateVehicleSortList(&list, type, owner, id, vlw_flag);
 
 	/* Send all the vehicles to a depot */
-	for (uint i = 0; i < n; i++) {
-		const Vehicle *v = sort_list[i];
+	for (uint i = 0; i < list.Length(); i++) {
+		const Vehicle *v = list[i];
 		CommandCost ret = DoCommand(v->tile, v->index, (service ? 1 : 0) | DEPOT_DONT_CANCEL, flags, GetCmdSendToDepot(type));
 
 		/* Return 0 if DC_EXEC is not set this is a valid goto depot command)
@@ -1477,12 +1476,10 @@ CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service,
 			* and we will issue the command. We can now safely quit the loop, knowing
 			* it will succeed at least once. With DC_EXEC we really need to send them to the depot */
 		if (CmdSucceeded(ret) && !(flags & DC_EXEC)) {
-			free((void*)sort_list);
 			return CommandCost();
 		}
 	}
 
-	free((void*)sort_list);
 	return (flags & DC_EXEC) ? CommandCost() : CMD_ERROR;
 }
 
