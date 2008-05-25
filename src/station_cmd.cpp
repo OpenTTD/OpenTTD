@@ -563,7 +563,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 			TileXY(rect.left, rect.bottom),
 			rect.right - rect.left   + 1,
 			rect.top   - rect.bottom + 1,
-			_patches.modified_catchment ? FindCatchmentRadius(st) : (uint)CA_UNMODIFIED
+			_settings.station.modified_catchment ? FindCatchmentRadius(st) : (uint)CA_UNMODIFIED
 		);
 	} else {
 		memset(accepts, 0, sizeof(accepts));
@@ -692,7 +692,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 		 *     b) the build_on_slopes switch is disabled
 		 */
 		if (IsSteepSlope(tileh) ||
-				((_is_old_ai_player || !_patches.build_on_slopes) && tileh != SLOPE_FLAT)) {
+				((_is_old_ai_player || !_settings.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
@@ -750,7 +750,7 @@ static bool CanExpandRailroadStation(const Station *st, uint *fin, Axis axis)
 	uint w = fin[1];
 	uint h = fin[2];
 
-	if (_patches.nonuniform_stations) {
+	if (_settings.station.nonuniform_stations) {
 		/* determine new size of train station region.. */
 		int x = min(TileX(st->train_tile), TileX(tile));
 		int y = min(TileY(st->train_tile), TileY(tile));
@@ -794,7 +794,7 @@ static bool CanExpandRailroadStation(const Station *st, uint *fin, Axis axis)
 		}
 	}
 	/* make sure the final size is not too big. */
-	if (curw > _patches.station_spread || curh > _patches.station_spread) {
+	if (curw > _settings.station.station_spread || curh > _settings.station.station_spread) {
 		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 		return false;
 	}
@@ -883,7 +883,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		w_org = numtracks;
 	}
 
-	if (h_org > _patches.station_spread || w_org > _patches.station_spread) return CMD_ERROR;
+	if (h_org > _settings.station.station_spread || w_org > _settings.station.station_spread) return CMD_ERROR;
 
 	/* these values are those that will be stored in train_tile and station_platforms */
 	uint finalvalues[3];
@@ -896,14 +896,14 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	/* If DC_EXEC is in flag, do not want to pass it to CheckFlatLandBelow, because of a nice bug
 	 * for detail info, see:
 	 * https://sourceforge.net/tracker/index.php?func=detail&aid=1029064&group_id=103924&atid=636365 */
-	CommandCost ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
+	CommandCost ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags & ~DC_EXEC, 5 << axis, _settings.station.nonuniform_stations ? &est : NULL);
 	if (CmdFailed(ret)) return ret;
 	CommandCost cost(EXPENSES_CONSTRUCTION, ret.GetCost() + (numtracks * _price.train_station_track + _price.train_station_length) * plat_len);
 
 	Station *st = NULL;
 	bool check_surrounding = true;
 
-	if (_patches.adjacent_stations) {
+	if (_settings.station.adjacent_stations) {
 		if (est != INVALID_STATION) {
 			if (HasBit(p1, 24)) {
 				/* You can't build an adjacent station over the top of one that
@@ -938,7 +938,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 		if (st->train_tile != 0) {
 			/* check if we want to expanding an already existing station? */
-			if (_is_old_ai_player || !_patches.join_stations)
+			if (_is_old_ai_player || !_settings.station.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 			if (!CanExpandRailroadStation(st, finalvalues, axis))
 				return CMD_ERROR;
@@ -993,7 +993,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		/* Now really clear the land below the station
 		 * It should never return CMD_ERROR.. but you never know ;)
 		 * (a bit strange function name for it, but it really does clear the land, when DC_EXEC is in flags) */
-		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _patches.nonuniform_stations ? &est : NULL);
+		ret = CheckFlatLandBelow(tile_org, w_org, h_org, flags, 5 << axis, _settings.station.nonuniform_stations ? &est : NULL);
 		if (CmdFailed(ret)) return ret;
 
 		st->train_tile = finalvalues[0];
@@ -1162,7 +1162,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 		/* Do not allow removing from stations if non-uniform stations are not enabled
 		 * The check must be here to give correct error message
 		 */
-		if (!_patches.nonuniform_stations) return_cmd_error(STR_NONUNIFORM_STATIONS_DISALLOWED);
+		if (!_settings.station.nonuniform_stations) return_cmd_error(STR_NONUNIFORM_STATIONS_DISALLOWED);
 
 		/* If we reached here, the tile is valid so increase the quantity of tiles we will remove */
 		quantity++;
@@ -1207,7 +1207,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
-	if (_current_player == OWNER_WATER && _patches.nonuniform_stations) {
+	if (_current_player == OWNER_WATER && _settings.station.nonuniform_stations) {
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
 	}
 
@@ -1326,7 +1326,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
 			if (road_owner == OWNER_TOWN) {
 				town_owned_road = true;
-				if (!_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
+				if (!_settings.construction.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
 			} else {
 				if (road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
 			}
@@ -1350,7 +1350,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Station *st = NULL;
 
-	if (!_patches.adjacent_stations || !HasBit(p2, 5)) {
+	if (!_settings.station.adjacent_stations || !HasBit(p2, 5)) {
 		st = GetStationAround(tile, 1, 1, INVALID_STATION);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
@@ -1718,7 +1718,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int h = afc->size_y;
 	Station *st = NULL;
 
-	if (w > _patches.station_spread || h > _patches.station_spread) {
+	if (w > _settings.station.station_spread || h > _settings.station.station_spread) {
 		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
 		return CMD_ERROR;
 	}
@@ -1732,7 +1732,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Check if local auth would allow a new airport */
 	bool autority_refused;
 
-	if (_patches.station_noise_level) {
+	if (_settings.economy.station_noise_level) {
 		/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
 		autority_refused = (t->noise_reached + newnoise_level) > t->MaxTownNoise();
 	} else {
@@ -1749,7 +1749,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_2035_LOCAL_AUTHORITY_REFUSES);
 	}
 
-	if (!_patches.adjacent_stations || !HasBit(p2, 0)) {
+	if (!_settings.station.adjacent_stations || !HasBit(p2, 0)) {
 		st = GetStationAround(tile, w, h, INVALID_STATION);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	} else {
@@ -1824,7 +1824,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
 
-		if (_patches.station_noise_level) {
+		if (_settings.economy.station_noise_level) {
 			InvalidateWindow(WC_TOWN_VIEW, st->town->index);
 		}
 	}
@@ -1881,7 +1881,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
 
-		if (_patches.station_noise_level) {
+		if (_settings.economy.station_noise_level) {
 			InvalidateWindow(WC_TOWN_VIEW, st->town->index);
 		}
 
@@ -2044,7 +2044,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* middle */
 	Station *st = NULL;
 
-	if (!_patches.adjacent_stations || !HasBit(p1, 0)) {
+	if (!_settings.station.adjacent_stations || !HasBit(p1, 0)) {
 		st = GetStationAround(
 				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 				_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
@@ -2774,7 +2774,7 @@ StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
 	int w_prod; // width and height of the "producer" of the cargo
 	int h_prod;
 	int max_rad;
-	if (_patches.modified_catchment) {
+	if (_settings.station.modified_catchment) {
 		w_prod = w;
 		h_prod = h;
 		w += 2 * MAX_CATCHMENT;
@@ -2797,7 +2797,7 @@ StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
 		if (st->IsBuoy()) continue; // bouys don't accept cargo
 
 
-		if (_patches.modified_catchment) {
+		if (_settings.station.modified_catchment) {
 			/* min and max coordinates of the producer relative */
 			const int x_min_prod = max_rad + 1;
 			const int x_max_prod = max_rad + w_prod;
@@ -2851,7 +2851,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 
 		if (st->goods[type].rating == 0) continue; // Lowest possible rating, better not to give cargo anymore
 
-		if (_patches.selectgoods && st->goods[type].last_speed == 0) continue; // Selectively servicing stations, and not this one
+		if (_settings.order.selectgoods && st->goods[type].last_speed == 0) continue; // Selectively servicing stations, and not this one
 
 		if (IsCargoInClass(type, CC_PASSENGERS)) {
 			if (st->facilities == FACIL_TRUCK_STOP) continue; // passengers are never served by just a truck stop
@@ -3076,7 +3076,7 @@ void AfterLoadStations()
 
 static CommandCost TerraformTile_Station(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
-	if (_patches.build_on_slopes && AutoslopeEnabled()) {
+	if (_settings.construction.build_on_slopes && AutoslopeEnabled()) {
 		/* TODO: If you implement newgrf callback 149 'land slope check', you have to decide what to do with it here.
 		 *       TTDP does not call it.
 		 */

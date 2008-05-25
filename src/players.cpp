@@ -65,9 +65,9 @@ void SetLocalPlayer(PlayerID new_player)
 	/* Do not update the patches if we are in the intro GUI */
 	if (IsValidPlayer(new_player) && _game_mode != GM_MENU) {
 		const Player *p = GetPlayer(new_player);
-		_patches.autorenew        = p->engine_renew;
-		_patches.autorenew_months = p->engine_renew_months;
-		_patches.autorenew_money  = p->engine_renew_money;
+		_settings.gui.autorenew        = p->engine_renew;
+		_settings.gui.autorenew_months = p->engine_renew_months;
+		_settings.gui.autorenew_money  = p->engine_renew_money;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 }
@@ -541,9 +541,9 @@ Player *DoStartupNewPlayer(bool is_ai)
 	/* Engine renewal settings */
 	p->engine_renew_list = NULL;
 	p->renew_keep_length = false;
-	p->engine_renew = _patches_newgame.autorenew;
-	p->engine_renew_months = _patches_newgame.autorenew_months;
-	p->engine_renew_money = _patches_newgame.autorenew_money;
+	p->engine_renew = _settings_newgame.gui.autorenew;
+	p->engine_renew_months = _settings_newgame.gui.autorenew_months;
+	p->engine_renew_money = _settings_newgame.gui.autorenew_money;
 
 	GeneratePresidentName(p);
 
@@ -630,7 +630,7 @@ void PlayersYearlyLoop()
 		}
 	}
 
-	if (_patches.show_finances && _local_player != PLAYER_SPECTATOR) {
+	if (_settings.gui.show_finances && _local_player != PLAYER_SPECTATOR) {
 		ShowPlayerFinances(_local_player);
 		p = GetPlayer(_local_player);
 		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
@@ -695,7 +695,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (flags & DC_EXEC) {
 				p->engine_renew = HasBit(p2, 0);
 				if (IsLocalPlayer()) {
-					_patches.autorenew = p->engine_renew;
+					_settings.gui.autorenew = p->engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -708,7 +708,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (flags & DC_EXEC) {
 				p->engine_renew_months = (int16)p2;
 				if (IsLocalPlayer()) {
-					_patches.autorenew_months = p->engine_renew_months;
+					_settings.gui.autorenew_months = p->engine_renew_months;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -721,7 +721,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (flags & DC_EXEC) {
 				p->engine_renew_money = p2;
 				if (IsLocalPlayer()) {
-					_patches.autorenew_money = p->engine_renew_money;
+					_settings.gui.autorenew_money = p->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -771,9 +771,9 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				p->engine_renew_money = p2;
 
 				if (IsLocalPlayer()) {
-					_patches.autorenew = p->engine_renew;
-					_patches.autorenew_months = p->engine_renew_months;
-					_patches.autorenew_money = p->engine_renew_money;
+					_settings.gui.autorenew = p->engine_renew;
+					_settings.gui.autorenew_months = p->engine_renew_months;
+					_settings.gui.autorenew_money = p->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -876,8 +876,8 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Now that we have a new player, broadcast its autorenew settings to
 		 * all clients so everything is in sync */
 		DoCommand(0,
-			(_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4,
-			_patches.autorenew_money,
+			(_settings.gui.autorenew << 15 ) | (_settings.gui.autorenew_months << 16) | 4,
+			_settings.gui.autorenew_money,
 			DC_EXEC,
 			CMD_SET_AUTOREPLACE
 		);
@@ -1122,7 +1122,7 @@ void LoadFromHighScore()
 	}
 
 	/* Initialize end of game variable (when to show highscore chart) */
-	_patches.ending_year = 2051;
+	_settings.gui.ending_year = 2051;
 }
 
 /* Save/load of players */

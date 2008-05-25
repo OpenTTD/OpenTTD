@@ -153,7 +153,7 @@ Order::Order(uint32 packed)
 void Order::ConvertFromOldSavegame()
 {
 	/* First handle non-stop, because those bits are going to be reused. */
-	if (_patches.sg_new_nonstop) {
+	if (_settings.gui.sg_new_nonstop) {
 		this->SetNonStopType((this->flags & 0x08) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 	} else {
 		this->SetNonStopType((this->flags & 0x08) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
@@ -171,7 +171,7 @@ void Order::ConvertFromOldSavegame()
 		if ((this->flags & 4) == 0) {
 			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		} else {
-			this->SetLoadType(_patches.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
+			this->SetLoadType(_settings.gui.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
 		}
 	} else {
 		this->SetDepotActionType(((this->flags & 6) == 4) ? ODATFB_HALT : ODATF_SERVICE_ONLY);
@@ -451,7 +451,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!HasOrderPoolFree(1)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
-	if (v->type == VEH_SHIP && IsHumanPlayer(v->owner) && _patches.pathfinder_for_ships != VPF_NPF) {
+	if (v->type == VEH_SHIP && IsHumanPlayer(v->owner) && _settings.pf.pathfinder_for_ships != VPF_NPF) {
 		/* Make sure the new destination is not too far away from the previous */
 		const Order *prev = NULL;
 		uint n = 0;
@@ -1273,7 +1273,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 			}
 
 			/* Copy timetable if enabled */
-			if (_patches.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
+			if (_settings.order.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
 					bak->order[i].wait_time << 16 | bak->order[i].travel_time, NULL,
 					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
@@ -1386,13 +1386,13 @@ static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
 void CheckOrders(const Vehicle* v)
 {
 	/* Does the user wants us to check things? */
-	if (_patches.order_review_system == 0) return;
+	if (_settings.gui.order_review_system == 0) return;
 
 	/* Do nothing for crashed vehicles */
 	if (v->vehstatus & VS_CRASHED) return;
 
 	/* Do nothing for stopped vehicles if setting is '1' */
-	if (_patches.order_review_system == 1 && v->vehstatus & VS_STOPPED)
+	if (_settings.gui.order_review_system == 1 && v->vehstatus & VS_STOPPED)
 		return;
 
 	/* do nothing we we're not the first vehicle in a share-chain */
@@ -1571,7 +1571,7 @@ void DeleteVehicleOrders(Vehicle *v)
 
 Date GetServiceIntervalClamped(uint index)
 {
-	return (_patches.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
+	return (_settings.vehicle.servint_ispercent) ? Clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : Clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
 /**

@@ -154,7 +154,7 @@ static void AI_RunTick(PlayerID player)
 	Player *p = GetPlayer(player);
 	_current_player = player;
 
-	if (_patches.ainew_active) {
+	if (_settings.ai.ainew_active) {
 		AiNewDoGameLoop(p);
 	} else {
 		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
@@ -178,7 +178,7 @@ void AI_RunGameLoop()
 	if (!_ai.enabled) return;
 
 	/* Don't do anything if we are a network-client, or the AI has been disabled */
-	if (_networking && (!_network_server || !_patches.ai_in_multiplayer)) return;
+	if (_networking && (!_network_server || !_settings.ai.ai_in_multiplayer)) return;
 
 	/* New tick */
 	_ai.tick++;

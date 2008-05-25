@@ -485,8 +485,8 @@ int ttd_main(int argc, char *argv[])
 	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (!StrEmpty(blitter))     ttd_strlcpy(_ini_blitter, blitter, sizeof(_ini_blitter));
 	if (resolution[0] != 0) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
-	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
-	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
+	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
+	if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
 	/* The width and height must be at least 1 pixel, this
 	 * way all internal drawing routines work correctly. */
@@ -652,7 +652,7 @@ void HandleExitGameRequest()
 {
 	if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
 		_exit_game = true;
-	} else if (_patches.autosave_on_exit) {
+	} else if (_settings.gui.autosave_on_exit) {
 		DoExitSave();
 		_exit_game = true;
 	} else {
@@ -684,9 +684,9 @@ static void MakeNewGameDone()
 
 	SetLocalPlayer(PLAYER_FIRST);
 	_current_player = _local_player;
-	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, (_settings.gui.autorenew << 15 ) | (_settings.gui.autorenew_months << 16) | 4, _settings.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
-	SettingsDisableElrail(_patches.disable_elrails);
+	SettingsDisableElrail(_settings.vehicle.disable_elrails);
 	InitializeRailGUI();
 
 #ifdef ENABLE_NETWORK
@@ -711,7 +711,7 @@ static void MakeNewGame(bool from_heightmap)
 	_industry_mngr.ResetMapping();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
-	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);
+	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
 }
 
 static void MakeNewEditorWorldDone()
@@ -728,7 +728,7 @@ static void MakeNewEditorWorld()
 	ResetGRFConfig(true);
 
 	GenerateWorldSetCallback(&MakeNewEditorWorldDone);
-	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
+	GenerateWorld(GW_EMPTY, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
 }
 
 void StartupPlayers();
@@ -778,7 +778,7 @@ static void StartScenario()
 
 	SetLocalPlayer(PLAYER_FIRST);
 	_current_player = _local_player;
-	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, (_settings.gui.autorenew << 15 ) | (_settings.gui.autorenew_months << 16) | 4, _settings.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	MarkWholeScreenDirty();
 }
@@ -837,7 +837,7 @@ void SwitchMode(int new_mode)
 				/* check if we should reload the config */
 				if (_network_reload_cfg) {
 					LoadFromConfig();
-					_patches = _patches_newgame;
+					_settings = _settings_newgame;
 					_opt = _opt_newgame;
 					ResetGRFConfig(false);
 				}
@@ -911,14 +911,14 @@ void SwitchMode(int new_mode)
 		case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
 			SetLocalPlayer(OWNER_NONE);
 
-			GenerateWorld(GW_HEIGHTMAP, 1 << _patches.map_x, 1 << _patches.map_y);
+			GenerateWorld(GW_HEIGHTMAP, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
 			MarkWholeScreenDirty();
 			break;
 
 		case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
 				SetLocalPlayer(OWNER_NONE);
-				_patches_newgame.starting_year = _cur_year;
+				_settings_newgame.game_creation.starting_year = _cur_year;
 			} else {
 				SetDParamStr(0, GetSaveLoadErrorString());
 				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
@@ -944,7 +944,7 @@ void SwitchMode(int new_mode)
 
 		case SM_GENRANDLAND: /* Generate random land within scenario editor */
 			SetLocalPlayer(OWNER_NONE);
-			GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
+			GenerateWorld(GW_RANDOM, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
 			/* XXX: set date */
 			MarkWholeScreenDirty();
 			break;
@@ -1060,16 +1060,16 @@ static void DoAutosave()
 	if (_networking) return;
 #endif /* PSP */
 
-	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
+	if (_settings.gui.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
 		SetDParam(0, _local_player);
 		SetDParam(1, _date);
 		GetString(buf, STR_4004, lastof(buf));
 		ttd_strlcat(buf, ".sav", lengthof(buf));
 	} else {
-		/* generate a savegame name and number according to _patches.max_num_autosaves */
+		/* generate a savegame name and number according to _settings.gui.max_num_autosaves */
 		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);
 
-		if (++_autosave_ctr >= _patches.max_num_autosaves) _autosave_ctr = 0;
+		if (++_autosave_ctr >= _settings.gui.max_num_autosaves) _autosave_ctr = 0;
 	}
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
@@ -1428,7 +1428,7 @@ bool AfterLoadGame()
 	SetDate(_date);
 
 	/* Force dynamic engines off when loading older savegames */
-	if (CheckSavegameVersion(95)) _patches.dynamic_engines = 0;
+	if (CheckSavegameVersion(95)) _settings.vehicle.dynamic_engines = 0;
 
 	/* Load the sprites */
 	GfxLoadSprites();
@@ -1635,9 +1635,9 @@ bool AfterLoadGame()
 		 */
 		if (!_network_dedicated && IsValidPlayer(PLAYER_FIRST)) {
 			p = GetPlayer(PLAYER_FIRST);
-			p->engine_renew        = _patches.autorenew;
-			p->engine_renew_months = _patches.autorenew_months;
-			p->engine_renew_money  = _patches.autorenew_money;
+			p->engine_renew        = _settings.gui.autorenew;
+			p->engine_renew_months = _settings.gui.autorenew_months;
+			p->engine_renew_money  = _settings.gui.autorenew_money;
 		}
 	}
 
@@ -2022,9 +2022,9 @@ bool AfterLoadGame()
 
 	/* from version 38 we have optional elrails, since we cannot know the
 	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (CheckSavegameVersion(38)) _patches.disable_elrails = false;
+	if (CheckSavegameVersion(38)) _settings.vehicle.disable_elrails = false;
 	/* do the same as when elrails were enabled/disabled manually just now */
-	SettingsDisableElrail(_patches.disable_elrails);
+	SettingsDisableElrail(_settings.vehicle.disable_elrails);
 	InitializeRailGUI();
 
 	/* From version 53, the map array was changed for house tiles to allow
@@ -2189,7 +2189,7 @@ bool AfterLoadGame()
 		Town *t;
 
 		FOR_ALL_TOWNS(t) {
-			if (_patches.larger_towns != 0 && (t->index % _patches.larger_towns) == 0) {
+			if (_settings.economy.larger_towns != 0 && (t->index % _settings.economy.larger_towns) == 0) {
 				t->larger_town = true;
 			}
 		}
@@ -2464,22 +2464,22 @@ bool AfterLoadGame()
 		}
 
 		/* Convert old PF settings to new */
-		if (_patches.yapf.rail_use_yapf || CheckSavegameVersion(28)) {
-			_patches.pathfinder_for_trains = VPF_YAPF;
+		if (_settings.pf.yapf.rail_use_yapf || CheckSavegameVersion(28)) {
+			_settings.pf.pathfinder_for_trains = VPF_YAPF;
 		} else {
-			_patches.pathfinder_for_trains = (_patches.new_pathfinding_all ? VPF_NPF : VPF_NTP);
+			_settings.pf.pathfinder_for_trains = (_settings.pf.new_pathfinding_all ? VPF_NPF : VPF_NTP);
 		}
 
-		if (_patches.yapf.road_use_yapf || CheckSavegameVersion(28)) {
-			_patches.pathfinder_for_roadvehs = VPF_YAPF;
+		if (_settings.pf.yapf.road_use_yapf || CheckSavegameVersion(28)) {
+			_settings.pf.pathfinder_for_roadvehs = VPF_YAPF;
 		} else {
-			_patches.pathfinder_for_roadvehs = (_patches.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+			_settings.pf.pathfinder_for_roadvehs = (_settings.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
 		}
 
-		if (_patches.yapf.ship_use_yapf) {
-			_patches.pathfinder_for_ships = VPF_YAPF;
+		if (_settings.pf.yapf.ship_use_yapf) {
+			_settings.pf.pathfinder_for_ships = VPF_YAPF;
 		} else {
-			_patches.pathfinder_for_ships = (_patches.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+			_settings.pf.pathfinder_for_ships = (_settings.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
 		}
 	}
 

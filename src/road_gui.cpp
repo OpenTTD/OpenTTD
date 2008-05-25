@@ -409,12 +409,12 @@ struct BuildRoadToolbarWindow : Window {
 			WIDGET_LIST_END);
 
 		this->FindWindowPlacementAndResize(desc);
-		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
+		if (_settings.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
 	~BuildRoadToolbarWindow()
 	{
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		if (_settings.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
 	}
 
 	/**
@@ -839,7 +839,7 @@ public:
 		this->DrawWidgets();
 
 		if (_station_show_coverage) {
-			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
+			int rad = _settings.station.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		} else {
 			SetTileSelectSize(1, 1);

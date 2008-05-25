@@ -210,7 +210,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT &&
-			(!_patches.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
+			(!_settings.construction.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
 		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 

@@ -69,7 +69,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	_cur_tileloop_tile = 0;
 
 	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
-		SetDate(ConvertYMDToDate(_patches.starting_year, 0, 1));
+		SetDate(ConvertYMDToDate(_settings.game_creation.starting_year, 0, 1));
 		InitializeOldNames();
 	}
 

@@ -324,7 +324,7 @@ void UpdateTownVirtCoord(Town *t)
 	SetDParam(0, t->index);
 	SetDParam(1, t->population);
 	UpdateViewportSignPos(&t->sign, pt.x, pt.y - 24,
-		_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
+		_settings.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL);
 	MarkTownSignDirty(t);
 }
 
@@ -1255,7 +1255,7 @@ static bool GrowTown(Town *t)
 	/* Let the town be a ghost town
 	 * The player wanted it in such a way. Thus there he has it. ;)
 	 * Never reached in editor mode. */
-	if (_patches.town_layout == TL_NO_ROADS && _generating_world) {
+	if (_settings.economy.town_layout == TL_NO_ROADS && _generating_world) {
 		return false;
 	}
 
@@ -1485,7 +1485,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 			break;
 
 		case TSM_CITY:
-			x *= _patches.initial_city_size;
+			x *= _settings.economy.initial_city_size;
 			t->larger_town = true;
 			break;
 	}
@@ -1586,7 +1586,7 @@ bool GenerateTowns()
 {
 	uint num = 0;
 	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
-	uint num_cities = _patches.larger_towns == 0 ? 0 : n / _patches.larger_towns;
+	uint num_cities = _settings.economy.larger_towns == 0 ? 0 : n / _settings.economy.larger_towns;
 
 	SetGeneratingWorldProgress(GWP_TOWN, n);
 
@@ -1594,7 +1594,7 @@ bool GenerateTowns()
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* try 20 times to create a random-sized town for the first loop. */
 		TownSizeMode mode = num_cities > 0 ? TSM_CITY : TSM_RANDOM;
-		if (CreateRandomTown(20, mode, _patches.initial_city_size) != NULL) num++;
+		if (CreateRandomTown(20, mode, _settings.economy.initial_city_size) != NULL) num++;
 		if (num_cities > 0) num_cities--;
 	} while (--n);
 
@@ -2219,7 +2219,7 @@ static void TownActionFundBuildings(Town *t)
 static void TownActionBuyRights(Town *t)
 {
 	/* Check if it's allowed to by the rights */
-	if (!_patches.exclusive_rights) return;
+	if (!_settings.economy.exclusive_rights) return;
 
 	t->exclusive_counter = 12;
 	t->exclusivity = _current_player;
@@ -2333,7 +2333,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	ClrBit(t->flags12, TOWN_IS_FUNDED);
-	if (_patches.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
+	if (_settings.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
 
 	/** Towns are processed every TOWN_GROWTH_FREQUENCY ticks, and this is the
 	 * number of times towns are processed before a new building is built. */
@@ -2362,7 +2362,7 @@ static void UpdateTownGrowRate(Town *t)
 
 	/* Use the normal growth rate values if new buildings have been funded in
 	 * this town and the growth rate is set to none. */
-	uint growth_multiplier = _patches.town_growth_rate != 0 ? _patches.town_growth_rate - 1 : 1;
+	uint growth_multiplier = _settings.economy.town_growth_rate != 0 ? _settings.economy.town_growth_rate - 1 : 1;
 
 	m >>= growth_multiplier;
 	if (t->larger_town) m /= 2;
@@ -2405,7 +2405,7 @@ bool CheckIfAuthorityAllows(TileIndex tile)
 {
 	if (!IsValidPlayer(_current_player)) return true;
 
-	Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+	Town *t = ClosestTownFromTile(tile, _settings.economy.dist_local_authority);
 	if (t == NULL) return true;
 
 	if (t->ratings[_current_player] > RATING_VERYPOOR) return true;

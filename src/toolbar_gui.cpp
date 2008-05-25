@@ -542,8 +542,8 @@ static void ToolbarScenDateBackward(Window *w)
 		w->HandleButtonClick(6);
 		w->SetDirty();
 
-		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year - 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
+		_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -555,8 +555,8 @@ static void ToolbarScenDateForward(Window *w)
 		w->HandleButtonClick(7);
 		w->SetDirty();
 
-		_patches_newgame.starting_year = Clamp(_patches_newgame.starting_year + 1, MIN_YEAR, MAX_YEAR);
-		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
+		_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -905,8 +905,8 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnPaint()
 	{
-		this->SetWidgetDisabledState(6, _patches_newgame.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(7, _patches_newgame.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(6, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(7, _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 
 		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
@@ -914,7 +914,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 		this->DrawWidgets();
 
-		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
+		SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 		DrawStringCenteredTruncated(this->widget[6].right, this->widget[7].left, 6, STR_00AF, TC_FROMSTRING);
 
 		/* We hide this panel when the toolbar space gets too small */

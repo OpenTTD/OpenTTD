@@ -38,7 +38,7 @@ enum TimetableViewWindowWidgets {
 
 void SetTimetableParams(int param1, int param2, uint32 time)
 {
-	if (_patches.timetable_in_ticks) {
+	if (_settings.gui.timetable_in_ticks) {
 		SetDParam(param1, STR_TIMETABLE_TICKS);
 		SetDParam(param2, time);
 	} else {
@@ -172,7 +172,7 @@ struct TimetableWindow : Window {
 		}
 		y += 10;
 
-		if (v->lateness_counter == 0 || (!_patches.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
+		if (v->lateness_counter == 0 || (!_settings.gui.timetable_in_ticks && v->lateness_counter / DAY_TICKS == 0)) {
 			DrawString(2, y, STR_TIMETABLE_STATUS_ON_TIME, TC_BLACK);
 		} else {
 			SetTimetableParams(0, 1, abs(v->lateness_counter));
@@ -222,7 +222,7 @@ struct TimetableWindow : Window {
 
 				if (order != NULL) {
 					uint time = (selected % 2 == 1) ? order->travel_time : order->wait_time;
-					if (!_patches.timetable_in_ticks) time /= DAY_TICKS;
+					if (!_settings.gui.timetable_in_ticks) time /= DAY_TICKS;
 
 					if (time != 0) {
 						SetDParam(0, time);
@@ -259,7 +259,7 @@ struct TimetableWindow : Window {
 		uint32 p1 = PackTimetableArgs(v, this->sel_index);
 
 		uint64 time = StrEmpty(str) ? 0 : strtoul(str, NULL, 10);
-		if (!_patches.timetable_in_ticks) time *= DAY_TICKS;
+		if (!_settings.gui.timetable_in_ticks) time *= DAY_TICKS;
 
 		uint32 p2 = minu(time, MAX_UVALUE(uint16));
 

@@ -265,13 +265,13 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	order.index = 0;
 
 	/* check depot first */
-	if (_patches.gotodepot) {
+	if (_settings.order.gotodepot) {
 		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
 				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
 					if (IsRailDepot(tile)) {
 						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
-						if (_patches.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+						if (_settings.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 						return order;
 					}
 				}
@@ -280,7 +280,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			case MP_ROAD:
 				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
 					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
-					if (_patches.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+					if (_settings.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					return order;
 				}
 				break;
@@ -313,7 +313,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			IsTileOwner(tile, _local_player) &&
 			IsRailWaypoint(tile)) {
 		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
-		if (_patches.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+		if (_settings.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 		return order;
 	}
 
@@ -330,7 +330,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			(facil = FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st_index);
-				if (_patches.new_nonstop && (v->type == VEH_TRAIN || v->type == VEH_ROAD)) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+				if (_settings.gui.new_nonstop && (v->type == VEH_TRAIN || v->type == VEH_ROAD)) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 				return order;
 			}
 		}
@@ -611,7 +611,7 @@ public:
 		this->resize.step_height = 10;
 		this->selected_order = -1;
 		this->vehicle = v;
-		if (_patches.timetabling) {
+		if (_settings.order.timetabling) {
 			this->widget[ORDER_WIDGET_CAPTION].right -= 61;
 		} else {
 			this->HideWidget(ORDER_WIDGET_TIMETABLE_VIEW);

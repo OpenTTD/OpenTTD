@@ -398,7 +398,7 @@ void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
 	ni->flags = _news_subtype_data[subtype].flags;
 
 	/* show this news message in color? */
-	if (_cur_year >= _patches.colored_news_year) ni->flags |= NF_INCOLOR;
+	if (_cur_year >= _settings.gui.colored_news_year) ni->flags |= NF_INCOLOR;
 
 	ni->data_a = data_a;
 	ni->data_b = data_b;

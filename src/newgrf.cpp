@@ -326,7 +326,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	/* Hack for add-on GRFs that need to modify another GRF's engines. This lets
 	 * them use the same engine slots. */
 	const GRFFile *grf_match = NULL;
-	if (_patches.dynamic_engines) {
+	if (_settings.vehicle.dynamic_engines) {
 		uint32 override = _grf_id_overrides[file->grfid];
 		if (override != 0) {
 			grf_match = GetFileByGRFID(override);
@@ -341,7 +341,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	/* Check if this vehicle is already defined... */
 	Engine *e = NULL;
 	FOR_ALL_ENGINES(e) {
-		if (_patches.dynamic_engines && e->grffile != NULL && e->grffile != file && e->grffile != grf_match) continue;
+		if (_settings.vehicle.dynamic_engines && e->grffile != NULL && e->grffile != file && e->grffile != grf_match) continue;
 		if (e->type != type) continue;
 		if (e->internal_id != internal_id) continue;
 
@@ -377,14 +377,14 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_i
 	extern uint32 GetNewGRFOverride(uint32 grfid);
 
 	const GRFFile *grf_match = NULL;
-	if (_patches.dynamic_engines) {
+	if (_settings.vehicle.dynamic_engines) {
 		uint32 override = _grf_id_overrides[file->grfid];
 		if (override != 0) grf_match = GetFileByGRFID(override);
 	}
 
 	const Engine *e = NULL;
 	FOR_ALL_ENGINES(e) {
-		if (_patches.dynamic_engines && e->grffile != file && (grf_match == NULL || e->grffile != grf_match)) continue;
+		if (_settings.vehicle.dynamic_engines && e->grffile != file && (grf_match == NULL || e->grffile != grf_match)) continue;
 		if (e->type != type) continue;
 		if (e->internal_id != internal_id) continue;
 
@@ -3592,7 +3592,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		case 0x0F: // Rail track type cost factors
 			*value = 0;
 			SB(*value, 0, 8, _railtype_cost_multiplier[0]); // normal rail
-			if (_patches.disable_elrails) {
+			if (_settings.vehicle.disable_elrails) {
 				/* skip elrail multiplier - disabled */
 				SB(*value, 8, 8, _railtype_cost_multiplier[2]); // monorail
 			} else {
@@ -4188,10 +4188,10 @@ static uint32 GetPatchVariable(uint8 param)
 {
 	switch (param) {
 		/* start year - 1920 */
-		case 0x0B: return max(_patches.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR;
+		case 0x0B: return max(_settings.game_creation.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR;
 
 		/* freight trains weight factor */
-		case 0x0E: return _patches.freight_trains;
+		case 0x0E: return _settings.vehicle.freight_trains;
 
 		/* empty wagon speed increase */
 		case 0x0F: return 0;
@@ -4200,7 +4200,7 @@ static uint32 GetPatchVariable(uint8 param)
 		 * the following is good for 1x, 2x and 4x (most common?) and...
 		 * well not really for 3x. */
 		case 0x10:
-			switch (_patches.plane_speed) {
+			switch (_settings.vehicle.plane_speed) {
 				default:
 				case 4: return 1;
 				case 3: return 2;
@@ -4382,7 +4382,7 @@ static void ParamSet(byte *buf, size_t len)
 						case 0x01: // Road Vehicles
 						case 0x02: // Ships
 						case 0x03: // Aircraft
-							if (!_patches.dynamic_engines) {
+							if (!_settings.vehicle.dynamic_engines) {
 								src1 = PerformGRM(&_grm_engines[_engine_offsets[feature]], _engine_counts[feature], count, op, target, "vehicles");
 								if (_skip_sprites == -1) return;
 							} else {
@@ -4544,7 +4544,7 @@ static void ParamSet(byte *buf, size_t len)
 
 		case 0x8F: // Rail track type cost factors
 			_railtype_cost_multiplier[0] = GB(res, 0, 8);
-			if (_patches.disable_elrails) {
+			if (_settings.vehicle.disable_elrails) {
 				_railtype_cost_multiplier[1] = GB(res, 0, 8);
 				_railtype_cost_multiplier[2] = GB(res, 8, 8);
 			} else {
@@ -5079,84 +5079,84 @@ static void GRFUnsafe(byte *buf, size_t len)
 
 static void InitializeGRFSpecial()
 {
-	_ttdpatch_flags[0] =  ((_patches.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
-	                   |                                        (1 << 0x0D)  // newairports
-	                   |                                        (1 << 0x0E)  // largestations
-	                   |           ((_patches.longbridges ? 1 : 0) << 0x0F)  // longbridges
-	                   |                                        (0 << 0x10)  // loadtime
-	                   |                                        (1 << 0x12)  // presignals
-	                   |                                        (1 << 0x13)  // extpresignals
-	                   | ((_patches.never_expire_vehicles ? 1 : 0) << 0x16)  // enginespersist
-	                   |                                        (1 << 0x1B)  // multihead
-	                   |                                        (1 << 0x1D)  // lowmemory
-	                   |                                        (1 << 0x1E); // generalfixes
+	_ttdpatch_flags[0] =  ((_settings.station.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
+	                   |                                                 (1 << 0x0D)  // newairports
+	                   |                                                 (1 << 0x0E)  // largestations
+	                   |      ((_settings.construction.longbridges ? 1 : 0) << 0x0F)  // longbridges
+	                   |                                                 (0 << 0x10)  // loadtime
+	                   |                                                 (1 << 0x12)  // presignals
+	                   |                                                 (1 << 0x13)  // extpresignals
+	                   | ((_settings.vehicle.never_expire_vehicles ? 1 : 0) << 0x16)  // enginespersist
+	                   |                                                 (1 << 0x1B)  // multihead
+	                   |                                                 (1 << 0x1D)  // lowmemory
+	                   |                                                 (1 << 0x1E); // generalfixes
 
-	_ttdpatch_flags[1] =   ((_patches.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
-	                   |        ((_patches.mammoth_trains ? 1 : 0) << 0x08)  // mammothtrains
-	                   |                                        (1 << 0x09)  // trainrefit
-	                   |                                        (0 << 0x0B)  // subsidiaries
-	                   |       ((_patches.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
-	                   |                                        (1 << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
-	                   |                                        (1 << 0x13)  // unifiedmaglevmode - set bit 1 mode
-	                   |                                        (1 << 0x14)  // bridgespeedlimits
-	                   |                                        (1 << 0x16)  // eternalgame
-	                   |                                        (1 << 0x17)  // newtrains
-	                   |                                        (1 << 0x18)  // newrvs
-	                   |                                        (1 << 0x19)  // newships
-	                   |                                        (1 << 0x1A)  // newplanes
-	                   |           ((_patches.signal_side ? 1 : 0) << 0x1B)  // signalsontrafficside
-	                   |       ((_patches.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
+	_ttdpatch_flags[1] =   ((_settings.economy.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
+	                   |        ((_settings.vehicle.mammoth_trains ? 1 : 0) << 0x08)  // mammothtrains
+	                   |                                                 (1 << 0x09)  // trainrefit
+	                   |                                                 (0 << 0x0B)  // subsidiaries
+	                   |         ((_settings.order.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
+	                   |                                                 (1 << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
+	                   |                                                 (1 << 0x13)  // unifiedmaglevmode - set bit 1 mode
+	                   |                                                 (1 << 0x14)  // bridgespeedlimits
+	                   |                                                 (1 << 0x16)  // eternalgame
+	                   |                                                 (1 << 0x17)  // newtrains
+	                   |                                                 (1 << 0x18)  // newrvs
+	                   |                                                 (1 << 0x19)  // newships
+	                   |                                                 (1 << 0x1A)  // newplanes
+	                   |      ((_settings.construction.signal_side ? 1 : 0) << 0x1B)  // signalsontrafficside
+	                   |       ((_settings.vehicle.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
 
-	_ttdpatch_flags[2] =                                        (1 << 0x01)  // loadallgraphics - obsolote
-	                   |                                        (1 << 0x03)  // semaphores
-	                   |                                        (0 << 0x0B)  // enhancedgui
-	                   |                                        (0 << 0x0C)  // newagerating
-	                   |       ((_patches.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
-	                   |                                        (1 << 0x0E)  // fullloadany
-	                   |                                        (1 << 0x0F)  // planespeed
-	                   |                                        (0 << 0x10)  // moreindustriesperclimate - obsolete
-	                   |                                        (0 << 0x11)  // moretoylandfeatures
-	                   |                                        (1 << 0x12)  // newstations
-	                   |                                        (1 << 0x13)  // tracktypecostdiff
-	                   |                                        (1 << 0x14)  // manualconvert
-	                   |       ((_patches.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
-	                   |                                        (1 << 0x16)  // canals
-	                   |                                        (1 << 0x17)  // newstartyear
-	                   |    ((_patches.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
-	                   |                                        (1 << 0x19)  // newhouses
-	                   |                                        (1 << 0x1A)  // newbridges
-	                   |                                        (1 << 0x1B)  // newtownnames
-	                   |                                        (1 << 0x1C)  // moreanimation
-	                   |    ((_patches.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
-	                   |                                        (1 << 0x1E)  // newshistory
-	                   |                                        (0 << 0x1F); // custombridgeheads
+	_ttdpatch_flags[2] =                                                 (1 << 0x01)  // loadallgraphics - obsolote
+	                   |                                                 (1 << 0x03)  // semaphores
+	                   |                                                 (0 << 0x0B)  // enhancedgui
+	                   |                                                 (0 << 0x0C)  // newagerating
+	                   |  ((_settings.construction.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
+	                   |                                                 (1 << 0x0E)  // fullloadany
+	                   |                                                 (1 << 0x0F)  // planespeed
+	                   |                                                 (0 << 0x10)  // moreindustriesperclimate - obsolete
+	                   |                                                 (0 << 0x11)  // moretoylandfeatures
+	                   |                                                 (1 << 0x12)  // newstations
+	                   |                                                 (1 << 0x13)  // tracktypecostdiff
+	                   |                                                 (1 << 0x14)  // manualconvert
+	                   |  ((_settings.construction.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
+	                   |                                                 (1 << 0x16)  // canals
+	                   |                                                 (1 << 0x17)  // newstartyear
+	                   |    ((_settings.vehicle.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
+	                   |                                                 (1 << 0x19)  // newhouses
+	                   |                                                 (1 << 0x1A)  // newbridges
+	                   |                                                 (1 << 0x1B)  // newtownnames
+	                   |                                                 (1 << 0x1C)  // moreanimation
+	                   |    ((_settings.vehicle.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
+	                   |                                                 (1 << 0x1E)  // newshistory
+	                   |                                                 (0 << 0x1F); // custombridgeheads
 
-	_ttdpatch_flags[3] =                                        (0 << 0x00)  // newcargodistribution
-	                   |                                        (1 << 0x01)  // windowsnap
-	                   |                                        (0 << 0x02)  // townbuildnoroad
-	                   |                                        (0 << 0x03)  // pathbasedsignalling. To enable if ever pbs is back
-	                   |                                        (0 << 0x04)  // aichoosechance
-	                   |                                        (1 << 0x05)  // resolutionwidth
-	                   |                                        (1 << 0x06)  // resolutionheight
-	                   |                                        (1 << 0x07)  // newindustries
-	                   |         ((_patches.improved_load ? 1 : 0) << 0x08)  // fifoloading
-	                   |                                        (0 << 0x09)  // townroadbranchprob
-	                   |                                        (0 << 0x0A)  // tempsnowline
-	                   |                                        (1 << 0x0B)  // newcargo
-	                   |                                        (1 << 0x0C)  // enhancemultiplayer
-	                   |                                        (1 << 0x0D)  // onewayroads
-	                   |   ((_patches.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
-	                   |                                        (1 << 0x0F)  // statistics
-	                   |                                        (1 << 0x10)  // newsounds
-	                   |                                        (1 << 0x11)  // autoreplace
-	                   |                                        (1 << 0x12)  // autoslope
-	                   |                                        (0 << 0x13)  // followvehicle
-	                   |                                        (1 << 0x14)  // trams
-	                   |                                        (0 << 0x15)  // enhancetunnels
-	                   |                                        (1 << 0x16)  // shortrvs
-	                   |                                        (1 << 0x17)  // articulatedrvs
-	                   |       ((_patches.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
-	                   |                                        (1 << 0x1E); // variablerunningcosts
+	_ttdpatch_flags[3] =                                                 (0 << 0x00)  // newcargodistribution
+	                   |                                                 (1 << 0x01)  // windowsnap
+	                   |                                                 (0 << 0x02)  // townbuildnoroad
+	                   |                                                 (0 << 0x03)  // pathbasedsignalling. To enable if ever pbs is back
+	                   |                                                 (0 << 0x04)  // aichoosechance
+	                   |                                                 (1 << 0x05)  // resolutionwidth
+	                   |                                                 (1 << 0x06)  // resolutionheight
+	                   |                                                 (1 << 0x07)  // newindustries
+	                   |           ((_settings.order.improved_load ? 1 : 0) << 0x08)  // fifoloading
+	                   |                                                 (0 << 0x09)  // townroadbranchprob
+	                   |                                                 (0 << 0x0A)  // tempsnowline
+	                   |                                                 (1 << 0x0B)  // newcargo
+	                   |                                                 (1 << 0x0C)  // enhancemultiplayer
+	                   |                                                 (1 << 0x0D)  // onewayroads
+	                   |   ((_settings.station.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
+	                   |                                                 (1 << 0x0F)  // statistics
+	                   |                                                 (1 << 0x10)  // newsounds
+	                   |                                                 (1 << 0x11)  // autoreplace
+	                   |                                                 (1 << 0x12)  // autoslope
+	                   |                                                 (0 << 0x13)  // followvehicle
+	                   |                                                 (1 << 0x14)  // trams
+	                   |                                                 (0 << 0x15)  // enhancetunnels
+	                   |                                                 (1 << 0x16)  // shortrvs
+	                   |                                                 (1 << 0x17)  // articulatedrvs
+	                   |       ((_settings.vehicle.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
+	                   |                                                 (1 << 0x1E); // variablerunningcosts
 }
 
 static void ResetCustomStations()

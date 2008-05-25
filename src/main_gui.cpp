@@ -48,7 +48,7 @@ static int _rename_what = -1;
 void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 #ifdef ENABLE_NETWORK
-	if (!success || !_patches.give_money) return;
+	if (!success || !_settings.economy.give_money) return;
 
 	char msg[20];
 	/* Inform the player of this action */
@@ -344,7 +344,7 @@ struct MainWindow : Window
 					if (cio == NULL) break;
 
 					/* Only players actually playing can speak to team. Eg spectators cannot */
-					if (_patches.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
+					if (_settings.gui.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
 						const NetworkClientInfo *ci;
 						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 							if (ci->client_playas == cio->client_playas && ci != cio) {

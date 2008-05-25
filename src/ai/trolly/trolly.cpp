@@ -130,9 +130,9 @@ static void AiNew_State_WakeUp(Player *p)
 			// Check all vehicles once in a while
 			_players_ainew[p->index].action = AI_ACTION_CHECK_ALL_VEHICLES;
 			_players_ainew[p->index].last_vehiclecheck_date = _date;
-		} else if (c < 100 && !_patches.ai_disable_veh_roadveh) {
+		} else if (c < 100 && !_settings.ai.ai_disable_veh_roadveh) {
 			// Do we have any spots for road-vehicles left open?
-			if (GetFreeUnitNumber(VEH_ROAD) <= _patches.max_roadveh) {
+			if (GetFreeUnitNumber(VEH_ROAD) <= _settings.vehicle.max_roadveh) {
 				if (c < 85) {
 					_players_ainew[p->index].action = AI_ACTION_TRUCK_ROUTE;
 				} else {
@@ -140,8 +140,8 @@ static void AiNew_State_WakeUp(Player *p)
 				}
 			}
 #if 0
-		} else if (c < 200 && !_patches.ai_disable_veh_train) {
-			if (GetFreeUnitNumber(VEH_TRAIN) <= _patches.max_trains) {
+		} else if (c < 200 && !_settings.ai.ai_disable_veh_train) {
+			if (GetFreeUnitNumber(VEH_TRAIN) <= _settings.vehicle.max_trains) {
 				_players_ainew[p->index].action = AI_ACTION_TRAIN_ROUTE;
 			}
 #endif
@@ -155,7 +155,7 @@ static void AiNew_State_WakeUp(Player *p)
 		return;
 	}
 
-	if (_patches.ai_disable_veh_roadveh && (
+	if (_settings.ai.ai_disable_veh_roadveh && (
 				_players_ainew[p->index].action == AI_ACTION_BUS_ROUTE ||
 				_players_ainew[p->index].action == AI_ACTION_TRUCK_ROUTE
 			)) {
@@ -179,7 +179,7 @@ static void AiNew_State_WakeUp(Player *p)
 	//  to build the route anyway..
 	if (_players_ainew[p->index].action == AI_ACTION_BUS_ROUTE &&
 			money > AI_MINIMUM_BUS_ROUTE_MONEY) {
-		if (GetFreeUnitNumber(VEH_ROAD) > _patches.max_roadveh) {
+		if (GetFreeUnitNumber(VEH_ROAD) > _settings.vehicle.max_roadveh) {
 			_players_ainew[p->index].action = AI_ACTION_NONE;
 			return;
 		}
@@ -190,7 +190,7 @@ static void AiNew_State_WakeUp(Player *p)
 	}
 	if (_players_ainew[p->index].action == AI_ACTION_TRUCK_ROUTE &&
 			money > AI_MINIMUM_TRUCK_ROUTE_MONEY) {
-		if (GetFreeUnitNumber(VEH_ROAD) > _patches.max_roadveh) {
+		if (GetFreeUnitNumber(VEH_ROAD) > _settings.vehicle.max_roadveh) {
 			_players_ainew[p->index].action = AI_ACTION_NONE;
 			return;
 		}
@@ -1035,7 +1035,7 @@ static void AiNew_State_BuildPath(Player *p)
 	if (_players_ainew[p->index].path_info.position == -2) {
 		// This means we are done building!
 
-		if (_players_ainew[p->index].tbt == AI_TRUCK && !_patches.roadveh_queue) {
+		if (_players_ainew[p->index].tbt == AI_TRUCK && !_settings.pf.roadveh_queue) {
 			// If they not queue, they have to go up and down to try again at a station...
 			// We don't want that, so try building some road left or right of the station
 			DiagDirection dir1, dir2, dir3;
@@ -1186,7 +1186,7 @@ static void AiNew_State_GiveOrders(Player *p)
 	}
 
 	// Very handy for AI, goto depot.. but yeah, it needs to be activated ;)
-	if (_patches.gotodepot) {
+	if (_settings.order.gotodepot) {
 		idx = 0;
 		order.MakeGoToDepot(GetDepotByTile(_players_ainew[p->index].depot_tile)->index, ODTFB_PART_OF_ORDERS);
 		AI_DoCommand(0, _players_ainew[p->index].veh_id + (idx << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);

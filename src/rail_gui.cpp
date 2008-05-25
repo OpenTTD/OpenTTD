@@ -182,7 +182,7 @@ static void PlaceRail_Station(TileIndex tile)
 		VpSetPlaceSizingLimit(-1);
 	} else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
-		VpSetPlaceSizingLimit(_patches.station_spread);
+		VpSetPlaceSizingLimit(_settings.station.station_spread);
 	} else {
 		DoCommandP(tile,
 				_railstation.orientation | (_railstation.numtracks << 8) | (_railstation.platlength << 16) | (_ctrl_pressed << 24),
@@ -227,7 +227,7 @@ static void GenericPlaceSignals(TileIndex tile)
 			SB(p1, 7, 1, _convert_signal_button);
 		} else {
 			SB(p1, 3, 1, _ctrl_pressed);
-			SB(p1, 4, 1, (_cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
+			SB(p1, 4, 1, (_cur_year < _settings.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
 			SB(p1, 5, 2, SIGTYPE_NORMAL);
 			SB(p1, 7, 1, 0);
 		}
@@ -429,7 +429,7 @@ static void BuildRailClick_Station(Window *w)
  */
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	if (_patches.enable_signal_gui != _ctrl_pressed) {
+	if (_settings.gui.enable_signal_gui != _ctrl_pressed) {
 		if (HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals)) ShowSignalBuilder(w);
 	} else {
 		HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
@@ -484,7 +484,7 @@ static void BuildRailClick_Remove(Window *w)
 				if (_railstation.orientation == 0) Swap(x, y);
 				SetTileSelectSize(x, y);
 			} else {
-				VpSetPlaceSizingLimit(_patches.station_spread);
+				VpSetPlaceSizingLimit(_settings.station.station_spread);
 			}
 		}
 	}
@@ -547,15 +547,15 @@ static void HandleAutoSignalPlacement()
 		SB(p2,  3, 1, 0);
 		SB(p2,  4, 1, _cur_signal_variant);
 		SB(p2,  6, 1, _ctrl_pressed);
-		SB(p2, 24, 8, _patches.drag_signals_density);
+		SB(p2, 24, 8, _settings.gui.drag_signals_density);
 	} else {
 		SB(p2,  3, 1, 0);
-		SB(p2,  4, 1, (_cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
+		SB(p2,  4, 1, (_cur_year < _settings.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
 		SB(p2,  6, 1, _ctrl_pressed);
-		SB(p2, 24, 8, _patches.drag_signals_density);
+		SB(p2, 24, 8, _settings.gui.drag_signals_density);
 	}
 
-	/* _patches.drag_signals_density is given as a parameter such that each user
+	/* _settings.gui.drag_signals_density is given as a parameter such that each user
 	 * in a network game can specify his/her own signal density */
 	DoCommandP(
 		TileVirtXY(thd->selstart.x, thd->selstart.y),
@@ -617,12 +617,12 @@ struct BuildRailToolbarWindow : Window {
 		this->DisableWidget(RTW_REMOVE);
 
 		this->FindWindowPlacementAndResize(desc);
-		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
+		if (_settings.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
 	~BuildRailToolbarWindow()
 	{
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		if (_settings.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
 	}
 
 	void UpdateRemoveWidgetStatus(int clicked_widget)
@@ -1008,13 +1008,13 @@ public:
 				SetTileSelectSize(x, y);
 		}
 
-		int rad = (_patches.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
+		int rad = (_settings.station.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
 
 		if (_station_show_coverage)
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		for (uint bits = 0; bits < 7; bits++) {
-			bool disable = bits >= _patches.station_spread;
+			bool disable = bits >= _settings.station.station_spread;
 			if (statspec == NULL) {
 				this->SetWidgetDisabledState(bits + BRSW_PLATFORM_NUM_1, disable);
 				this->SetWidgetDisabledState(bits + BRSW_PLATFORM_LEN_1, disable);
@@ -1390,8 +1390,8 @@ public:
 
 		this->SetWidgetLoweredState(BSW_CONVERT, _convert_signal_button);
 
-		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _patches.drag_signals_density == 1);
-		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _patches.drag_signals_density == 20);
+		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_DECREASE, _settings.gui.drag_signals_density == 1);
+		this->SetWidgetDisabledState(BSW_DRAG_SIGNALS_DENSITY_INCREASE, _settings.gui.drag_signals_density == 20);
 
 		this->DrawWidgets();
 
@@ -1406,7 +1406,7 @@ public:
 		this->DrawSignalSprite(BSW_ELECTRIC_COMBO,  SPR_IMG_SIGNAL_ELECTRIC_COMBO,  -2,  6);
 
 		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
-		SetDParam(0, _patches.drag_signals_density);
+		SetDParam(0, _settings.gui.drag_signals_density);
 		DrawStringCentered(this->widget[BSW_DRAG_SIGNALS_DENSITY].left + (this->widget[BSW_DRAG_SIGNALS_DENSITY].right -
 				this->widget[BSW_DRAG_SIGNALS_DENSITY].left) / 2 + 1,
 				this->widget[BSW_DRAG_SIGNALS_DENSITY].top + 2, STR_JUST_INT, TC_ORANGE);
@@ -1434,15 +1434,15 @@ public:
 				break;
 
 			case BSW_DRAG_SIGNALS_DENSITY_DECREASE:
-				if (_patches.drag_signals_density > 1) {
-					_patches.drag_signals_density--;
+				if (_settings.gui.drag_signals_density > 1) {
+					_settings.gui.drag_signals_density--;
 					SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
 				}
 				break;
 
 			case BSW_DRAG_SIGNALS_DENSITY_INCREASE:
-				if (_patches.drag_signals_density < 20) {
-					_patches.drag_signals_density++;
+				if (_settings.gui.drag_signals_density < 20) {
+					_settings.gui.drag_signals_density++;
 					SetWindowDirty(FindWindowById(WC_GAME_OPTIONS, 0));
 				}
 				break;
@@ -1701,7 +1701,7 @@ static void SetDefaultRailGui()
 	if (_local_player == PLAYER_SPECTATOR || !IsValidPlayer(_local_player)) return;
 
 	extern RailType _last_built_railtype;
-	RailType rt = (RailType)_patches.default_rail_type;
+	RailType rt = (RailType)_settings.gui.default_rail_type;
 	if (rt >= RAILTYPE_END) {
 		if (rt == RAILTYPE_END + 2) {
 			/* Find the most used rail type */
@@ -1753,7 +1753,7 @@ static void SetDefaultRailGui()
  */
 int32 ResetSignalVariant(int32 = 0)
 {
-	SignalVariant new_variant = (_cur_year < _patches.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
+	SignalVariant new_variant = (_cur_year < _settings.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
 	if (new_variant != _cur_signal_variant) {
 		Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);

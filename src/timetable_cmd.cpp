@@ -54,7 +54,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
  */
 CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!_patches.timetabling) return CMD_ERROR;
+	if (!_settings.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
@@ -90,7 +90,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  */
 CommandCost CmdSetVehicleOnTime(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!_patches.timetabling) return CMD_ERROR;
+	if (!_settings.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
@@ -116,7 +116,7 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, uint32 flags, uint32 p1, uint32 
  */
 CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!_patches.timetabling) return CMD_ERROR;
+	if (!_settings.order.timetabling) return CMD_ERROR;
 
 	VehicleID veh = GB(p1, 0, 16);
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
@@ -157,7 +157,7 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	v->current_order_time = 0;
 
-	if (!_patches.timetabling) return;
+	if (!_settings.order.timetabling) return;
 
 	/* Make sure the timetable only starts when the vehicle reaches the first
 	 * order, not when travelling from the depot to the first station. */

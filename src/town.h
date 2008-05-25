@@ -197,7 +197,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	inline uint16 MaxTownNoise() const {
 		if (this->population == 0) return 0; // no population? no noise
 
-		return ((this->population / _patches.town_noise_population[_opt.diff.town_council_tolerance]) + 3);
+		return ((this->population / _settings.economy.town_noise_population[_opt.diff.town_council_tolerance]) + 3);
 	}
 };
 
@@ -207,7 +207,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
  */
 inline TownLayout Town::GetActiveLayout() const
 {
-	return (_patches.town_layout == TL_RANDOM) ? this->layout : _patches.town_layout;
+	return (_settings.economy.town_layout == TL_RANDOM) ? this->layout : _settings.economy.town_layout;
 }
 
 struct HouseSpec {

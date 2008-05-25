@@ -1191,7 +1191,7 @@ struct PlayerCompanyWindow : Window
 		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
 
 		if (!local) {
-			if (_patches.allow_shares) { // Shares are allowed
+			if (_settings.economy.allow_shares) { // Shares are allowed
 				/* If all shares are owned by someone (none by nobody), disable buy button */
 				this->SetWidgetDisabledState(PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
 						/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
@@ -1545,7 +1545,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		SetDParam(0, _patches.ending_year);
+		SetDParam(0, _settings.gui.ending_year);
 		SetDParam(1, this->window_number + STR_6801_EASY);
 		DrawStringMultiCenter(x + (640 / 2), y + 62, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, 500);
 

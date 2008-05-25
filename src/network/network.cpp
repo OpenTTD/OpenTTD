@@ -1009,7 +1009,7 @@ static void NetworkInitGameInfo()
 	_network_game_info.spectators_on = 0;
 
 	_network_game_info.game_date = _date;
-	_network_game_info.start_date = ConvertYMDToDate(_patches.starting_year, 0, 1);
+	_network_game_info.start_date = ConvertYMDToDate(_settings.game_creation.starting_year, 0, 1);
 	_network_game_info.map_width = MapSizeX();
 	_network_game_info.map_height = MapSizeY();
 	_network_game_info.map_set = _opt.landscape;

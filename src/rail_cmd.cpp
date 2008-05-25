@@ -292,7 +292,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 
 	/* check track/slope combination */
 	if ((f_new == FOUNDATION_INVALID) ||
-	    ((f_new != FOUNDATION_NONE) && (!_patches.build_on_slopes || _is_old_ai_player))
+	    ((f_new != FOUNDATION_NONE) && (!_settings.construction.build_on_slopes || _is_old_ai_player))
 	   ) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
@@ -756,7 +756,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (tileh != SLOPE_FLAT && (
 				_is_old_ai_player ||
-				!_patches.build_on_slopes ||
+				!_settings.construction.build_on_slopes ||
 				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(dir, tileh)
 			)) {
@@ -1224,7 +1224,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			RailType type = GetRailType(tile);
 
 			/* Converting to the same type or converting 'hidden' elrail -> rail */
-			if (type == totype || (_patches.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC)) continue;
+			if (type == totype || (_settings.vehicle.disable_elrails && totype == RAILTYPE_RAIL && type == RAILTYPE_ELECTRIC)) continue;
 
 			/* Trying to convert other's rail */
 			if (!CheckTileOwnership(tile)) continue;
@@ -1420,7 +1420,7 @@ static uint GetSaveSlopeZ(uint x, uint y, Track track)
 
 static void DrawSingleSignal(TileIndex tile, Track track, byte condition, uint image, uint pos)
 {
-	bool side = (_opt.road_side != 0) && _patches.signal_side;
+	bool side = (_opt.road_side != 0) && _settings.construction.signal_side;
 	static const Point SignalPositions[2][12] = {
 		{      /* Signals on the left side */
 		/*  LEFT      LEFT      RIGHT     RIGHT     UPPER     UPPER */
@@ -2329,7 +2329,7 @@ static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int
  */
 static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_old, Slope tileh_old, uint z_new, Slope tileh_new, TrackBits rail_bits)
 {
-	if (!_patches.build_on_slopes || !AutoslopeEnabled()) return CMD_ERROR;
+	if (!_settings.construction.build_on_slopes || !AutoslopeEnabled()) return CMD_ERROR;
 
 	/* Is the slope-rail_bits combination valid in general? I.e. is it save to call GetRailFoundation() ? */
 	if (CmdFailed(CheckRailSlope(tileh_new, rail_bits, TRACK_BIT_NONE, tile))) return CMD_ERROR;
@@ -2405,7 +2405,7 @@ static CommandCost TerraformTile_Track(TileIndex tile, uint32 flags, uint z_new,
 		/* allow terraforming */
 		return CommandCost(EXPENSES_CONSTRUCTION, was_water ? _price.clear_water : (Money)0);
 	} else {
-		if (_patches.build_on_slopes && AutoslopeEnabled()) {
+		if (_settings.construction.build_on_slopes && AutoslopeEnabled()) {
 			switch (GetRailTileType(tile)) {
 				case RAIL_TILE_WAYPOINT: {
 					CommandCost cost = TestAutoslopeOnRailTile(tile, flags, z_old, tileh_old, z_new, tileh_new, GetRailWaypointBits(tile));

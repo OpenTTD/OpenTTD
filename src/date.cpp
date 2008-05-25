@@ -283,10 +283,10 @@ void IncreaseDate()
 	ShipsYearlyLoop();
 	if (_network_server) NetworkServerYearlyLoop();
 
-	if (_cur_year == _patches.semaphore_build_before) ResetSignalVariant();
+	if (_cur_year == _settings.gui.semaphore_build_before) ResetSignalVariant();
 
 	/* check if we reached end of the game */
-	if (_cur_year == _patches.ending_year) {
+	if (_cur_year == _settings.gui.ending_year) {
 			ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
@@ -303,5 +303,5 @@ void IncreaseDate()
 		InitChatMessage();
 	}
 
-	if (_patches.auto_euro) CheckSwitchToEuro();
+	if (_settings.gui.auto_euro) CheckSwitchToEuro();
 }

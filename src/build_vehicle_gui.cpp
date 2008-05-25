@@ -506,7 +506,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	y += 10;
 
 	/* Wagon speed limit, displayed if above zero */
-	if (_patches.wagon_speed_limits) {
+	if (_settings.vehicle.wagon_speed_limits) {
 		uint max_speed = GetEngineProperty(engine_number, 0x09, rvi->max_speed);
 		if (max_speed > 0) {
 			SetDParam(0, max_speed * 10 / 16);
@@ -544,7 +544,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	y += 10;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
-	if (_patches.realistic_acceleration && rvi->railtype != RAILTYPE_MAGLEV) {
+	if (_settings.vehicle.realistic_acceleration && rvi->railtype != RAILTYPE_MAGLEV) {
 		SetDParam(0, ((weight << multihead) * 10 * GetEngineProperty(engine_number, 0x1F, rvi->tractive_effort)) / 256);
 		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, TC_FROMSTRING);
 		y += 10;

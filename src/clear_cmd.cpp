@@ -346,7 +346,7 @@ static void ChangeTileOwner_Clear(TileIndex tile, PlayerID old_player, PlayerID 
 
 void InitializeClearLand()
 {
-	_opt.snow_line = _patches.snow_line_height * TILE_HEIGHT;
+	_opt.snow_line = _settings.game_creation.snow_line_height * TILE_HEIGHT;
 }
 
 static CommandCost TerraformTile_Clear(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)

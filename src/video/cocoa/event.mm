@@ -288,9 +288,9 @@ static uint32 QZ_MapKey(unsigned short sym)
 	}
 
 	if (_current_mods & NSShiftKeyMask)     key |= WKC_SHIFT;
-	if (_current_mods & NSControlKeyMask)   key |= (_patches.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
+	if (_current_mods & NSControlKeyMask)   key |= (_settings.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_CTRL : WKC_META);
 	if (_current_mods & NSAlternateKeyMask) key |= WKC_ALT;
-	if (_current_mods & NSCommandKeyMask)   key |= (_patches.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
+	if (_current_mods & NSCommandKeyMask)   key |= (_settings.gui.right_mouse_btn_emulation != RMBE_CONTROL ? WKC_META : WKC_CTRL);
 
 	return key << 16;
 }
@@ -459,8 +459,8 @@ static bool QZ_PollEvent()
 		case NSLeftMouseDown:
 		{
 			uint32 keymask = 0;
-			if (_patches.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
-			if (_patches.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
+			if (_settings.gui.right_mouse_btn_emulation == RMBE_COMMAND) keymask |= NSCommandKeyMask;
+			if (_settings.gui.right_mouse_btn_emulation == RMBE_CONTROL) keymask |= NSControlKeyMask;
 
 			pt = _cocoa_subdriver->GetMouseLocation(event);
 
@@ -602,8 +602,8 @@ static bool QZ_PollEvent()
 			} /* else: deltaY was 0.0 and we don't want to do anything */
 
 			/* Set the scroll count for scrollwheel scrolling */
-			_cursor.h_wheel -= (int)([ event deltaX ]* 5 * _patches.scrollwheel_multiplier);
-			_cursor.v_wheel -= (int)([ event deltaY ]* 5 * _patches.scrollwheel_multiplier);
+			_cursor.h_wheel -= (int)([ event deltaX ]* 5 * _settings.gui.scrollwheel_multiplier);
+			_cursor.v_wheel -= (int)([ event deltaY ]* 5 * _settings.gui.scrollwheel_multiplier);
 			break;
 
 		default:
@@ -671,7 +671,7 @@ void QZ_GameLoop()
 
 			bool old_ctrl_pressed = _ctrl_pressed;
 
-			_ctrl_pressed = !!(_current_mods & ( _patches.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask));
+			_ctrl_pressed = !!(_current_mods & ( _settings.gui.right_mouse_btn_emulation != RMBE_CONTROL ? NSControlKeyMask : NSCommandKeyMask));
 			_shift_pressed = !!(_current_mods & NSShiftKeyMask);
 
 			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();

@@ -6,6 +6,7 @@
 #define  YAPF_BASE_HPP
 
 #include "../debug.h"
+#include "../settings_type.h"
 
 extern int _total_pf_time_us;
 
@@ -52,7 +53,7 @@ public:
 protected:
 	Node*                m_pBestDestNode;      ///< pointer to the destination node found at last round
 	Node*                m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
-	const YapfSettings  *m_settings;           ///< current settings (_patches.yapf)
+	const YAPFSettings  *m_settings;           ///< current settings (_settings.yapf)
 	int                  m_max_search_nodes;   ///< maximum number of nodes we are allowed to visit before we give up
 	const Vehicle*       m_veh;                ///< vehicle that we are trying to drive
 
@@ -73,7 +74,7 @@ public:
 	FORCEINLINE CYapfBaseT()
 		: m_pBestDestNode(NULL)
 		, m_pBestIntermediateNode(NULL)
-		, m_settings(&_patches.yapf)
+		, m_settings(&_settings.pf.yapf)
 		, m_max_search_nodes(PfGetSettings().max_search_nodes)
 		, m_veh(NULL)
 		, m_stats_cost_calcs(0)
@@ -91,7 +92,7 @@ protected:
 
 public:
 	/// return current settings (can be custom - player based - but later)
-	FORCEINLINE const YapfSettings& PfGetSettings() const
+	FORCEINLINE const YAPFSettings& PfGetSettings() const
 	{
 		return *m_settings;
 	}

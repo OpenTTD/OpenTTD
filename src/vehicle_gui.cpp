@@ -1220,12 +1220,12 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 {
-	/* If _patches.advanced_vehicle_list > 1, display the Advanced list
-	 * if _patches.advanced_vehicle_list == 1, display Advanced list only for local player
+	/* If _settings.gui.advanced_vehicle_list > 1, display the Advanced list
+	 * if _settings.gui.advanced_vehicle_list == 1, display Advanced list only for local player
 	 * if _ctrl_pressed, do the opposite action (Advanced list x Normal list)
 	 */
 
-	if ((_patches.advanced_vehicle_list > (uint)(player != _local_player)) != _ctrl_pressed) {
+	if ((_settings.gui.advanced_vehicle_list > (uint)(player != _local_player)) != _ctrl_pressed) {
 		ShowPlayerGroup(player, vehicle_type);
 	} else {
 		ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
@@ -1411,10 +1411,10 @@ struct VehicleDetailsWindow : Window {
 	{
 		switch (vehicle_type) {
 			default: NOT_REACHED();
-			case VEH_TRAIN:    return _patches.servint_trains   != 0; break;
-			case VEH_ROAD:     return _patches.servint_roadveh  != 0; break;
-			case VEH_SHIP:     return _patches.servint_ships    != 0; break;
-			case VEH_AIRCRAFT: return _patches.servint_aircraft != 0; break;
+			case VEH_TRAIN:    return _settings.vehicle.servint_trains   != 0; break;
+			case VEH_ROAD:     return _settings.vehicle.servint_roadveh  != 0; break;
+			case VEH_SHIP:     return _settings.vehicle.servint_ships    != 0; break;
+			case VEH_AIRCRAFT: return _settings.vehicle.servint_aircraft != 0; break;
 		}
 		return false; // kill a compiler warning
 	}
@@ -1486,7 +1486,7 @@ struct VehicleDetailsWindow : Window {
 				SetDParam(1, v->u.rail.cached_power);
 				SetDParam(0, v->u.rail.cached_weight);
 				SetDParam(3, v->u.rail.cached_max_te / 1000);
-				DrawString(2, 25, (_patches.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
+				DrawString(2, 25, (_settings.vehicle.realistic_acceleration && v->u.rail.railtype != RAILTYPE_MAGLEV) ?
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE :
 					STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED, TC_FROMSTRING);
 				break;
@@ -1514,7 +1514,7 @@ struct VehicleDetailsWindow : Window {
 		/* Draw service interval text */
 		SetDParam(0, v->service_interval);
 		SetDParam(1, v->date_of_last_service);
-		DrawString(13, this->height - (v->type != VEH_TRAIN ? 11 : 23), _patches.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, TC_FROMSTRING);
+		DrawString(13, this->height - (v->type != VEH_TRAIN ? 11 : 23), _settings.vehicle.servint_ispercent ? STR_SERVICING_INTERVAL_PERCENT : STR_883C_SERVICING_INTERVAL_DAYS, TC_FROMSTRING);
 
 		switch (v->type) {
 			case VEH_TRAIN:
@@ -1953,7 +1953,7 @@ struct VehicleViewWindow : Window {
 					}
 				} else {
 					SetDParam(0, v->GetDisplaySpeed());
-					str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
+					str = STR_TRAIN_STOPPING + _settings.gui.vehicle_speed;
 				}
 			} else { // no train
 				str = STR_8861_STOPPED;
@@ -1963,7 +1963,7 @@ struct VehicleViewWindow : Window {
 				case OT_GOTO_STATION: {
 					SetDParam(0, v->current_order.GetDestination());
 					SetDParam(1, v->GetDisplaySpeed());
-					str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
+					str = STR_HEADING_FOR_STATION + _settings.gui.vehicle_speed;
 				} break;
 
 				case OT_GOTO_DEPOT: {
@@ -1977,9 +1977,9 @@ struct VehicleViewWindow : Window {
 						SetDParam(1, v->GetDisplaySpeed());
 					}
 					if ((v->current_order.GetDepotActionType() & ODATFB_HALT) && !(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
-						str = _heading_for_depot_strings[v->type] + _patches.vehicle_speed;
+						str = _heading_for_depot_strings[v->type] + _settings.gui.vehicle_speed;
 					} else {
-						str = _heading_for_depot_service_strings[v->type] + _patches.vehicle_speed;
+						str = _heading_for_depot_service_strings[v->type] + _settings.gui.vehicle_speed;
 					}
 				} break;
 
@@ -1990,7 +1990,7 @@ struct VehicleViewWindow : Window {
 				case OT_GOTO_WAYPOINT: {
 					assert(v->type == VEH_TRAIN);
 					SetDParam(0, v->current_order.GetDestination());
-					str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
+					str = STR_HEADING_FOR_WAYPOINT + _settings.gui.vehicle_speed;
 					SetDParam(1, v->GetDisplaySpeed());
 					break;
 				}
@@ -2004,7 +2004,7 @@ struct VehicleViewWindow : Window {
 
 				default:
 					if (v->num_orders == 0) {
-						str = STR_NO_ORDERS + _patches.vehicle_speed;
+						str = STR_NO_ORDERS + _settings.gui.vehicle_speed;
 						SetDParam(0, v->GetDisplaySpeed());
 					} else {
 						str = STR_EMPTY;

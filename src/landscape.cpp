@@ -821,7 +821,7 @@ void GenerateLandscape(byte mode)
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 1 + gwp_desert_amount : 1);
 		LoadHeightmap(_file_to_saveload.name);
 		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
-	} else if (_patches.land_generator == LG_TERRAGENESIS) {
+	} else if (_settings.game_creation.land_generator == LG_TERRAGENESIS) {
 		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_TROPIC) ? 3 + gwp_desert_amount : 3);
 		GenerateTerrainPerlin();
 	} else {

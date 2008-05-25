@@ -154,9 +154,9 @@ Trackdir YapfChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg)
+	if (_settings.pf.forbid_90_deg)
 		pfnChooseShipTrack = &CYapfShip3::ChooseShipTrack; // Trackdir, forbid 90-deg
-	else if (_patches.yapf.disable_node_optimization)
+	else if (_settings.pf.yapf.disable_node_optimization)
 		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir, allow 90-deg
 
 	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks);

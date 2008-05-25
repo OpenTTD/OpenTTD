@@ -342,7 +342,7 @@ static void HeightMapGenerate()
 	do {
 		log_frequency = iteration_round - log_frequency_min;
 		if (log_frequency >= 0) {
-			amplitude = _amplitudes_by_smoothness_and_frequency[_patches.tgen_smoothness][log_frequency];
+			amplitude = _amplitudes_by_smoothness_and_frequency[_settings.game_creation.tgen_smoothness][log_frequency];
 		} else {
 			amplitude = 0;
 		}
@@ -531,7 +531,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  */
 static void HeightMapCoastLines()
 {
-	int smallest_size = min(_patches.map_x, _patches.map_y);
+	int smallest_size = min(_settings.game_creation.map_x, _settings.game_creation.map_y);
 	const int margin = 4;
 	uint y, x;
 	double max_x;
@@ -663,7 +663,7 @@ static void HeightMapNormalize()
 {
 	const amplitude_t water_percent = _water_percent[_opt.diff.quantity_sea_lakes];
 	const height_t h_max_new = I2H(_max_height[_opt.diff.terrain_type]);
-	const height_t roughness = 7 + 3 * _patches.tgen_smoothness;
+	const height_t roughness = 7 + 3 * _settings.game_creation.tgen_smoothness;
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
@@ -692,7 +692,7 @@ static inline int perlin_landXY(uint x, uint y)
  */
 static double int_noise(const long x, const long y, const int prime)
 {
-	long n = x + y * prime + _patches.generation_seed;
+	long n = x + y * prime + _settings.game_creation.generation_seed;
 
 	n = (n << 13) ^ n;
 

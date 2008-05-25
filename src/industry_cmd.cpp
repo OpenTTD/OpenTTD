@@ -1075,7 +1075,7 @@ static bool CheckNewIndustry_Forest(TileIndex tile)
 static bool CheckNewIndustry_OilRefinery(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR) return true;
-	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _patches.oil_refinery_limit) return true;
+	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings.game_creation.oil_refinery_limit) return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1087,7 +1087,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (TileHeight(tile) == 0 &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _patches.oil_refinery_limit) return true;
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings.game_creation.oil_refinery_limit) return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1171,7 +1171,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
-	if (_patches.multiple_industry_per_town) return t;
+	if (_settings.economy.multiple_industry_per_town) return t;
 
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->type == (byte)type &&
@@ -1257,7 +1257,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 	/* It is almost impossible to have a fully flat land in TG, so what we
 	 *  do is that we check if we can make the land flat later on. See
 	 *  CheckIfCanLevelIndustryPlatform(). */
-	return !refused_slope || (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
+	return !refused_slope || (_settings.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
 }
 
 static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
@@ -1387,7 +1387,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
-	if (_patches.same_industry_close && indspec->IsRawIndustry())
+	if (_settings.economy.same_industry_close && indspec->IsRawIndustry())
 		/* Allow primary industries to be placed close to any other industry */
 		return true;
 
@@ -1401,8 +1401,8 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 				/* at least one of those options must be true */
 				_game_mode != GM_EDITOR || // editor must not be stopped
-				!_patches.same_industry_close ||
-				!_patches.multiple_industry_per_town)) {
+				!_settings.economy.same_industry_close ||
+				!_settings.economy.multiple_industry_per_town)) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}
@@ -1449,7 +1449,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->production_rate[1] = indspec->production_rate[1];
 
 	/* don't use smooth economy for industries using production related callbacks */
-	if (_patches.smooth_economy &&
+	if (_settings.economy.smooth_economy &&
 	    !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
 	    !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE))             // production change callbacks
 	) {
@@ -1577,7 +1577,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
 
-	if (!custom_shape_check && _patches.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
+	if (!custom_shape_check && _settings.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
 	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
@@ -1621,11 +1621,11 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
-	if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _settings.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
 		return CMD_ERROR;
 	}
 
-	if (_game_mode != GM_EDITOR && _patches.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _settings.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
@@ -2031,7 +2031,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool standard = true;
 	bool suppress_message = false;
 	/* don't use smooth economy for industries using production related callbacks */
-	bool smooth_economy = _patches.smooth_economy &&
+	bool smooth_economy = _settings.economy.smooth_economy &&
 	                      !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
 	                      !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
 	byte div = 0;
@@ -2257,7 +2257,7 @@ bool IndustrySpec::IsRawIndustry() const
 Money IndustrySpec::GetConstructionCost() const
 {
 	return (_price.build_industry *
-			(_patches.raw_industry_construction == 1 && this->IsRawIndustry() ?
+			(_settings.construction.raw_industry_construction == 1 && this->IsRawIndustry() ?
 					this->raw_industry_cost_multiplier :
 					this->cost_multiplier
 			)) >> 8;

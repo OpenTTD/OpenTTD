@@ -667,125 +667,125 @@ void ShowGameDifficulty()
 }
 
 static const char *_patches_ui[] = {
-	"vehicle_speed",
-	"status_long_date",
-	"show_finances",
-	"autoscroll",
-	"reverse_scroll",
-	"smooth_scroll",
-	"errmsg_duration",
-	"toolbar_pos",
-	"measure_tooltip",
-	"window_snap_radius",
-	"population_in_label",
-	"link_terraform_toolbar",
-	"liveries",
-	"prefer_teamchat",
+	"gui.vehicle_speed",
+	"gui.status_long_date",
+	"gui.show_finances",
+	"gui.autoscroll",
+	"gui.reverse_scroll",
+	"gui.smooth_scroll",
+	"gui.errmsg_duration",
+	"gui.toolbar_pos",
+	"gui.measure_tooltip",
+	"gui.window_snap_radius",
+	"gui.population_in_label",
+	"gui.link_terraform_toolbar",
+	"gui.liveries",
+	"gui.prefer_teamchat",
 	/* While the horizontal scrollwheel scrolling is written as general code, only
 	 *  the cocoa (OSX) driver generates input for it.
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
-	"scrollwheel_scrolling",
-	"scrollwheel_multiplier",
+	"gui.scrollwheel_scrolling",
+	"gui.scrollwheel_multiplier",
 #ifdef __APPLE__
 	/* We might need to emulate a right mouse button on mac */
-	"right_mouse_btn_emulation",
+	"gui.right_mouse_btn_emulation",
 #endif
-	"pause_on_newgame",
-	"advanced_vehicle_list",
-	"loading_indicators",
-	"timetable_in_ticks",
-	"default_rail_type",
-	"always_build_infrastructure",
+	"gui.pause_on_newgame",
+	"gui.advanced_vehicle_list",
+	"gui.loading_indicators",
+	"gui.timetable_in_ticks",
+	"gui.default_rail_type",
+	"gui.always_build_infrastructure",
 };
 
 static const char *_patches_construction[] = {
-	"build_on_slopes",
-	"autoslope",
-	"extra_dynamite",
-	"longbridges",
-	"signal_side",
-	"always_small_airport",
-	"enable_signal_gui",
-	"drag_signals_density",
-	"oil_refinery_limit",
-	"semaphore_build_before",
+	"construction.build_on_slopes",
+	"construction.autoslope",
+	"construction.extra_dynamite",
+	"construction.longbridges",
+	"construction.signal_side",
+	"station.always_small_airport",
+	"gui.enable_signal_gui",
+	"gui.drag_signals_density",
+	"game_creation.oil_refinery_limit",
+	"gui.semaphore_build_before",
 };
 
 static const char *_patches_stations[] = {
-	"join_stations",
-	"improved_load",
-	"selectgoods",
-	"new_nonstop",
-	"nonuniform_stations",
-	"station_spread",
-	"serviceathelipad",
-	"modified_catchment",
-	"gradual_loading",
-	"road_stop_on_town_road",
-	"adjacent_stations",
-	"station_noise_level",
+	"station.join_stations",
+	"order.improved_load",
+	"order.selectgoods",
+	"gui.new_nonstop",
+	"station.nonuniform_stations",
+	"station.station_spread",
+	"order.serviceathelipad",
+	"station.modified_catchment",
+	"order.gradual_loading",
+	"construction.road_stop_on_town_road",
+	"station.adjacent_stations",
+	"economy.station_noise_level",
 };
 
 static const char *_patches_economy[] = {
-	"inflation",
-	"raw_industry_construction",
-	"multiple_industry_per_town",
-	"same_industry_close",
-	"bribe",
-	"exclusive_rights",
-	"give_money",
-	"colored_news_year",
-	"ending_year",
-	"smooth_economy",
-	"allow_shares",
-	"town_layout",
-	"mod_road_rebuild",
-	"town_growth_rate",
-	"larger_towns",
-	"initial_city_size",
+	"economy.inflation",
+	"construction.raw_industry_construction",
+	"economy.multiple_industry_per_town",
+	"economy.same_industry_close",
+	"economy.bribe",
+	"economy.exclusive_rights",
+	"economy.give_money",
+	"gui.colored_news_year",
+	"gui.ending_year",
+	"economy.smooth_economy",
+	"economy.allow_shares",
+	"economy.town_layout",
+	"economy.mod_road_rebuild",
+	"economy.town_growth_rate",
+	"economy.larger_towns",
+	"economy.initial_city_size",
 };
 
 static const char *_patches_ai[] = {
-	"ainew_active",
-	"ai_in_multiplayer",
-	"ai_disable_veh_train",
-	"ai_disable_veh_roadveh",
-	"ai_disable_veh_aircraft",
-	"ai_disable_veh_ship",
+	"ai.ainew_active",
+	"ai.ai_in_multiplayer",
+	"ai.ai_disable_veh_train",
+	"ai.ai_disable_veh_roadveh",
+	"ai.ai_disable_veh_aircraft",
+	"ai.ai_disable_veh_ship",
 };
 
 static const char *_patches_vehicles[] = {
-	"realistic_acceleration",
-	"forbid_90_deg",
-	"mammoth_trains",
-	"gotodepot",
-	"roadveh_queue",
-	"pathfinder_for_trains",
-	"pathfinder_for_roadvehs",
-	"pathfinder_for_ships",
-	"train_income_warn",
-	"order_review_system",
-	"never_expire_vehicles",
-	"lost_train_warn",
-	"autorenew",
-	"autorenew_months",
-	"autorenew_money",
-	"max_trains",
-	"max_roadveh",
-	"max_aircraft",
-	"max_ships",
-	"servint_ispercent",
-	"servint_trains",
-	"servint_roadveh",
-	"servint_ships",
-	"servint_aircraft",
-	"no_servicing_if_no_breakdowns",
-	"wagon_speed_limits",
-	"disable_elrails",
-	"freight_trains",
-	"plane_speed",
-	"timetabling",
-	"dynamic_engines",
+	"vehicle.realistic_acceleration",
+	"pf.forbid_90_deg",
+	"vehicle.mammoth_trains",
+	"order.gotodepot",
+	"pf.roadveh_queue",
+	"pf.pathfinder_for_trains",
+	"pf.pathfinder_for_roadvehs",
+	"pf.pathfinder_for_ships",
+	"gui.train_income_warn",
+	"gui.order_review_system",
+	"vehicle.never_expire_vehicles",
+	"gui.lost_train_warn",
+	"gui.autorenew",
+	"gui.autorenew_months",
+	"gui.autorenew_money",
+	"vehicle.max_trains",
+	"vehicle.max_roadveh",
+	"vehicle.max_aircraft",
+	"vehicle.max_ships",
+	"vehicle.servint_ispercent",
+	"vehicle.servint_trains",
+	"vehicle.servint_roadveh",
+	"vehicle.servint_ships",
+	"vehicle.servint_aircraft",
+	"order.no_servicing_if_no_breakdowns",
+	"vehicle.wagon_speed_limits",
+	"vehicle.disable_elrails",
+	"vehicle.freight_trains",
+	"vehicle.plane_speed",
+	"order.timetabling",
+	"vehicle.dynamic_engines",
 };
 
 struct PatchEntry {
@@ -822,7 +822,7 @@ enum PatchesSelectionWidgets {
 };
 
 struct PatchesSelectionWindow : Window {
-	static Patches *patches_ptr;
+	static Settings *patches_ptr;
 	static int patches_max;
 
 	int page;
@@ -833,7 +833,7 @@ struct PatchesSelectionWindow : Window {
 	{
 		static bool first_time = true;
 
-		patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
+		patches_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings;
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
@@ -1045,7 +1045,7 @@ struct PatchesSelectionWindow : Window {
 	}
 };
 
-Patches *PatchesSelectionWindow::patches_ptr = NULL;
+Settings *PatchesSelectionWindow::patches_ptr = NULL;
 int PatchesSelectionWindow::patches_max = 0;
 
 static const Widget _patches_selection_widgets[] = {

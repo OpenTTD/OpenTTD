@@ -249,7 +249,7 @@ void PlaceTreesRandomly()
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_patches.tree_placer != TP_IMPROVED) continue;
+			if (_settings.game_creation.tree_placer != TP_IMPROVED) continue;
 
 			/* Place a number of trees based on the tile height.
 			 *  This gives a cool effect of multiple trees close together.
@@ -296,11 +296,11 @@ void GenerateTrees()
 {
 	uint i, total;
 
-	if (_patches.tree_placer == TP_NONE) return;
+	if (_settings.game_creation.tree_placer == TP_NONE) return;
 
 	if (_opt.landscape != LT_TOYLAND) PlaceMoreTrees();
 
-	switch (_patches.tree_placer) {
+	switch (_settings.game_creation.tree_placer) {
 		case TP_ORIGINAL: i = _opt.landscape == LT_ARCTIC ? 15 : 6; break;
 		case TP_IMPROVED: i = _opt.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED(); return;
@@ -390,7 +390,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 
 					if (_game_mode != GM_EDITOR && IsValidPlayer(_current_player)) {
-						Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+						Town *t = ClosestTownFromTile(tile, _settings.economy.dist_local_authority);
 						if (t != NULL) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
 					}
 
@@ -533,7 +533,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 	uint num;
 
 	if (IsValidPlayer(_current_player)) {
-		Town *t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+		Town *t = ClosestTownFromTile(tile, _settings.economy.dist_local_authority);
 		if (t != NULL) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
 

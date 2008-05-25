@@ -217,7 +217,7 @@ static void CalcEngineReliability(Engine *e)
 	uint age = e->age;
 
 	/* Check for early retirement */
-	if (e->player_avail != 0 && !_patches.never_expire_vehicles) {
+	if (e->player_avail != 0 && !_settings.vehicle.never_expire_vehicles) {
 		int retire_early = e->info.retire_early;
 		uint retire_early_max_age = max(0, e->duration_phase_1 + e->duration_phase_2 - retire_early * 12);
 		if (retire_early != 0 && age >= retire_early_max_age) {
@@ -230,7 +230,7 @@ static void CalcEngineReliability(Engine *e)
 	if (age < e->duration_phase_1) {
 		uint start = e->reliability_start;
 		e->reliability = age * (e->reliability_max - start) / e->duration_phase_1 + start;
-	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || _patches.never_expire_vehicles) {
+	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || _settings.vehicle.never_expire_vehicles) {
 		/* We are at the peak of this engines life. It will have max reliability.
 		 * This is also true if the engines never expire. They will not go bad over time */
 		e->reliability = e->reliability_max;
@@ -293,7 +293,7 @@ void StartupEngines()
 			CalcEngineReliability(e);
 		}
 
-		e->lifelength = ei->lifelength + _patches.extend_vehicle_life;
+		e->lifelength = ei->lifelength + _settings.vehicle.extend_vehicle_life;
 
 		/* prevent certain engines from ever appearing. */
 		if (!HasBit(ei->climates, _opt.landscape)) {

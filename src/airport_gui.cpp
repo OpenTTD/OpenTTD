@@ -70,12 +70,12 @@ struct BuildAirToolbarWindow : Window {
 	BuildAirToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->FindWindowPlacementAndResize(desc);
-		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
+		if (_settings.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
 	~BuildAirToolbarWindow()
 	{
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		if (_settings.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
 	}
 
 	virtual void OnPaint()
@@ -178,7 +178,7 @@ public:
 		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
 		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 
-		if (_patches.station_noise_level) {
+		if (_settings.economy.station_noise_level) {
 			ResizeWindowForWidget(this, BAW_BOTTOMPANEL, 0, 10);
 		}
 
@@ -211,14 +211,14 @@ public:
 		airport = GetAirport(_selected_airport_type);
 		SetTileSelectSize(airport->size_x, airport->size_y);
 
-		int rad = _patches.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+		int rad = _settings.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		this->DrawWidgets();
 
 		/* only show the station (airport) noise, if the noise option is activated */
-		if (_patches.station_noise_level) {
+		if (_settings.economy.station_noise_level) {
 			/* show the noise of the selected airport */
 			SetDParam(0, airport->noise_level);
 			DrawString(2, 206, STR_STATION_NOISE, 0);

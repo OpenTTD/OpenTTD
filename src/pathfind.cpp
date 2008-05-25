@@ -778,7 +778,7 @@ void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagD
 	tpf->enum_proc = enum_proc;
 	tpf->tracktype = TRANSPORT_RAIL;
 	tpf->railtypes = railtypes;
-	tpf->maxlength = min(_patches.pf_maxlength * 3, 10000);
+	tpf->maxlength = min(_settings.pf.opf.pf_maxlength * 3, 10000);
 	tpf->nstack = 0;
 	tpf->new_link = tpf->links;
 	tpf->num_links_left = lengthof(tpf->links);

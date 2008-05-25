@@ -205,7 +205,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* find the first free roadveh id */
 	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_ROAD);
-	if (unit_num > _patches.max_roadveh)
+	if (unit_num > _settings.vehicle.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
@@ -257,7 +257,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->name = NULL;
 
-		v->service_interval = _patches.servint_roadveh;
+		v->service_interval = _settings.vehicle.servint_roadveh;
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
@@ -419,7 +419,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdi
 
 static const Depot* FindClosestRoadDepot(const Vehicle* v)
 {
-	switch (_patches.pathfinder_for_roadvehs) {
+	switch (_settings.pf.pathfinder_for_roadvehs) {
 		case VPF_YAPF: /* YAPF */
 			return YapfFindNearestRoadDepot(v);
 
@@ -863,7 +863,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_patches.vehicle_speed) {
+		if (_settings.gui.vehicle_speed) {
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
@@ -1085,7 +1085,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 				trackdirs = TRACKDIR_BIT_NONE;
 			} else {
 				/* Proper station type, check if there is free loading bay */
-				if (!_patches.roadveh_queue && IsStandardRoadStopTile(tile) &&
+				if (!_settings.pf.roadveh_queue && IsStandardRoadStopTile(tile) &&
 						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
 					trackdirs = TRACKDIR_BIT_NONE;
@@ -1124,7 +1124,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 		return_track(FindFirstBit2x64(trackdirs));
 	}
 
-	switch (_patches.pathfinder_for_roadvehs) {
+	switch (_settings.pf.pathfinder_for_roadvehs) {
 		case VPF_YAPF: { /* YAPF */
 			Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
 			if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
@@ -1211,7 +1211,7 @@ found_best_track:;
 
 static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
-	if (_patches.pathfinder_for_roadvehs == VPF_YAPF) {
+	if (_settings.pf.pathfinder_for_roadvehs == VPF_YAPF) {
 		/* use YAPF */
 		return YapfRoadVehDistanceToTile(v, tile);
 	}
@@ -1887,7 +1887,7 @@ void RoadVehicle::Tick()
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->u.road.slot != NULL || _patches.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
+	if (v->u.road.slot != NULL || _settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

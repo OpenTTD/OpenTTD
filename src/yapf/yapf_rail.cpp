@@ -254,7 +254,7 @@ Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack;
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg) {
+	if (_settings.pf.forbid_90_deg) {
 		pfnChooseRailTrack = &CYapfRail2::stChooseRailTrack; // Trackdir, forbid 90-deg
 	}
 
@@ -311,7 +311,7 @@ bool YapfCheckReverseTrain(Vehicle* v)
 	PfnCheckReverseTrain pfnCheckReverseTrain = CYapfRail1::stCheckReverseTrain;
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg) {
+	if (_settings.pf.forbid_90_deg) {
 		pfnCheckReverseTrain = &CYapfRail2::stCheckReverseTrain; // Trackdir, forbid 90-deg
 	}
 
@@ -341,7 +341,7 @@ bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_pe
 	PfnFindNearestDepotTwoWay pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail1::stFindNearestDepotTwoWay;
 
 	// check if non-default YAPF type needed
-	if (_patches.forbid_90_deg) {
+	if (_settings.pf.forbid_90_deg) {
 		pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail2::stFindNearestDepotTwoWay; // Trackdir, forbid 90-deg
 	}
 

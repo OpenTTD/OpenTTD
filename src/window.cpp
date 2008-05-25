@@ -1217,11 +1217,11 @@ static bool HandleWindowDragging()
 			int nx = x;
 			int ny = y;
 
-			if (_patches.window_snap_radius != 0) {
+			if (_settings.gui.window_snap_radius != 0) {
 				Window* const *vz;
 
-				int hsnap = _patches.window_snap_radius;
-				int vsnap = _patches.window_snap_radius;
+				int hsnap = _settings.gui.window_snap_radius;
+				int vsnap = _settings.gui.window_snap_radius;
 				int delta;
 
 				FOR_ALL_WINDOWS(vz) {
@@ -1467,7 +1467,7 @@ static bool HandleScrollbarScrolling()
 
 static bool HandleViewportScroll()
 {
-	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
+	bool scrollwheel_scrolling = _settings.gui.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 
 	if (!_scrolling_viewport) return true;
 
@@ -1487,7 +1487,7 @@ static bool HandleViewportScroll()
 	}
 
 	Point delta;
-	if (_patches.reverse_scroll) {
+	if (_settings.gui.reverse_scroll) {
 		delta.x = -_cursor.delta.x;
 		delta.y = -_cursor.delta.y;
 	} else {
@@ -1667,7 +1667,7 @@ static void HandleAutoscroll()
 		return;
 	}
 
-	if (_patches.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
+	if (_settings.gui.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
 		int x = _cursor.pos.x;
 		int y = _cursor.pos.y;
 		Window *w = FindWindowFromPt(x, y);
@@ -1719,7 +1719,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 	if (!HandleViewportScroll())     return;
 	if (!HandleMouseOver())          return;
 
-	bool scrollwheel_scrolling = _patches.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
+	bool scrollwheel_scrolling = _settings.gui.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
 
 	int x = _cursor.pos.x;
@@ -1734,7 +1734,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 	if (vp != NULL && (_game_mode == GM_MENU || IsGeneratingWorld())) return;
 
 	if (mousewheel != 0) {
-		if (_patches.scrollwheel_scrolling == 0) {
+		if (_settings.gui.scrollwheel_scrolling == 0) {
 			/* Send mousewheel event to window */
 			w->OnMouseWheel(mousewheel);
 		}
@@ -2059,7 +2059,7 @@ int PositionMainToolbar(Window *w)
 		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 	}
 
-	switch (_patches.toolbar_pos) {
+	switch (_settings.gui.toolbar_pos) {
 		case 1:  w->left = (_screen.width - w->width) / 2; break;
 		case 2:  w->left = _screen.width - w->width; break;
 		default: w->left = 0;

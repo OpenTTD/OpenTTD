@@ -136,12 +136,12 @@ struct BuildDocksToolbarWindow : Window {
 	BuildDocksToolbarWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->FindWindowPlacementAndResize(desc);
-		if (_patches.link_terraform_toolbar) ShowTerraformToolbar(this);
+		if (_settings.gui.link_terraform_toolbar) ShowTerraformToolbar(this);
 	}
 
 	~BuildDocksToolbarWindow()
 	{
-		if (_patches.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		if (_settings.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
 	}
 
 	virtual void OnPaint()
@@ -263,7 +263,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		int rad = (_patches.modified_catchment) ? CA_DOCK : CA_UNMODIFIED;
+		int rad = (_settings.station.modified_catchment) ? CA_DOCK : CA_UNMODIFIED;
 
 		this->DrawWidgets();
 
