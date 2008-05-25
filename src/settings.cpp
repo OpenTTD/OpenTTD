@@ -331,9 +331,11 @@ static IniGroup *ini_getgroup(IniFile *ini, const char *name, size_t len = 0)
 	if (len == 0) len = strlen(name);
 
 	/* does it exist already? */
-	for (group = ini->group; group; group = group->next)
-		if (!memcmp(group->name, name, len) && group->name[len] == 0)
+	for (group = ini->group; group != NULL; group = group->next) {
+		if (!memcmp(group->name, name, len) && group->name[len] == 0) {
 			return group;
+		}
+	}
 
 	/* otherwise make a new one */
 	group = ini_group_alloc(ini, name, len);
@@ -347,8 +349,9 @@ static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
 	IniItem *item;
 	size_t len = strlen(name);
 
-	for (item = group->item; item; item = item->next)
+	for (item = group->item; item != NULL; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;
+	}
 
 	if (!create) return NULL;
 
