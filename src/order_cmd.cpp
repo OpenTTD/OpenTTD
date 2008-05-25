@@ -152,12 +152,15 @@ Order::Order(uint32 packed)
 
 void Order::ConvertFromOldSavegame()
 {
-	/* First handle non-stop, because those bits are going to be reused. */
+	uint8 old_flags = this->flags;
+	this->flags = 0;
+
+	/* First handle non-stop */
 	if (_settings.gui.sg_new_nonstop) {
 		/* OFB_NON_STOP */
-		this->SetNonStopType((this->flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 	} else {
-		this->SetNonStopType((this->flags & 8) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+		this->SetNonStopType((old_flags & 8) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 	}
 
 	switch (this->GetType()) {
@@ -166,32 +169,31 @@ void Order::ConvertFromOldSavegame()
 		default: return;
 	}
 
-	/* Then the load/depot action flags because those bits are going to be reused too
-	 * and they reuse the non-stop bits. */
 	if (this->GetType() != OT_GOTO_DEPOT) {
-		if ((this->flags & 2) != 0) { // OFB_UNLOAD
+		/* Then the load flags */
+		if ((old_flags & 2) != 0) { // OFB_UNLOAD
 			this->SetLoadType(OLFB_NO_LOAD);
-		} else if ((this->flags & 4) == 0) { // !OFB_FULL_LOAD
+		} else if ((old_flags & 4) == 0) { // !OFB_FULL_LOAD
 			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		} else {
 			this->SetLoadType(_settings.gui.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
 		}
-	} else {
-		this->SetDepotActionType(((this->flags & 6) == 4) ? ODATFB_HALT : ODATF_SERVICE_ONLY);
-	}
 
-	/* Finally fix the unload/depot type flags. */
-	if (this->GetType() != OT_GOTO_DEPOT) {
-		if ((this->flags & 1) != 0) { // OFB_TRANSFER
+		/* Finally fix the unload flags */
+		if ((old_flags & 1) != 0) { // OFB_TRANSFER
 			this->SetUnloadType(OUFB_TRANSFER);
-		} else if ((this->flags & 2) != 0) { // OFB_UNLOAD
+		} else if ((old_flags & 2) != 0) { // OFB_UNLOAD
 			this->SetUnloadType(OUFB_UNLOAD);
 		} else {
 			this->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
 		}
 	} else {
-		uint t = ((this->flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
-		if ((this->flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
+		/* Then the depot action flags */
+		this->SetDepotActionType(((old_flags & 6) == 4) ? ODATFB_HALT : ODATF_SERVICE_ONLY);
+
+		/* Finally fix the depot type flags */
+		uint t = ((old_flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
+		if ((old_flags & 2) != 0) t |= ODTFB_PART_OF_ORDERS;
 		this->SetDepotOrderType((OrderDepotTypeFlags)t);
 	}
 }
