@@ -1313,14 +1313,14 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, Vehicle ***engine_l
 
 	if (engines.Length() > 0) {
 		*engine_list = ReallocT(*engine_list, engines.Length());
-		memcpy(*engine_list, engines[0], sizeof(engines[0]) * engines.Length());
+		memcpy(*engine_list, engines.Begin(), sizeof(engines.Begin()) * engines.Length());
 	}
 	if (engine_count != NULL) *engine_count = engines.Length();
 
 	if (wagon_list != NULL && wagon_list != engine_list) {
 		if (wagons.Length() > 0) {
 			*wagon_list = ReallocT(*wagon_list, wagons.Length());
-			memcpy(*wagon_list, wagons[0], sizeof(wagons[0]) * wagons.Length());
+			memcpy(*wagon_list, wagons.Begin(), sizeof(wagons.Begin()) * wagons.Length());
 		}
 		if (wagon_count != NULL) *wagon_count = wagons.Length();
 	}
@@ -1392,7 +1392,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 
 	if (list.Length() > 0) {
 		*sort_list = ReallocT(*sort_list, list.Length());
-		memcpy(*sort_list, list[0], sizeof(list[0]) * list.Length());
+		memcpy(*sort_list, list.Begin(), sizeof(list.Begin()) * list.Length());
 	}
 
 	return list.Length();
