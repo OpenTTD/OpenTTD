@@ -154,9 +154,10 @@ void Order::ConvertFromOldSavegame()
 {
 	/* First handle non-stop, because those bits are going to be reused. */
 	if (_settings.gui.sg_new_nonstop) {
-		this->SetNonStopType((this->flags & 0x08) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+		/* OFB_NON_STOP */
+		this->SetNonStopType((this->flags & 8) ? ONSF_NO_STOP_AT_ANY_STATION : ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 	} else {
-		this->SetNonStopType((this->flags & 0x08) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
+		this->SetNonStopType((this->flags & 8) ? ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS : ONSF_STOP_EVERYWHERE);
 	}
 
 	switch (this->GetType()) {
@@ -168,9 +169,9 @@ void Order::ConvertFromOldSavegame()
 	/* Then the load/depot action flags because those bits are going to be reused too
 	 * and they reuse the non-stop bits. */
 	if (this->GetType() != OT_GOTO_DEPOT) {
-		if ((this->flags & 2) != 0) {
+		if ((this->flags & 2) != 0) { // OFB_UNLOAD
 			this->SetLoadType(OLFB_NO_LOAD);
-		} else if ((this->flags & 4) == 0) {
+		} else if ((this->flags & 4) == 0) { // !OFB_FULL_LOAD
 			this->SetLoadType(OLF_LOAD_IF_POSSIBLE);
 		} else {
 			this->SetLoadType(_settings.gui.sg_full_load_any ? OLF_FULL_LOAD_ANY : OLFB_FULL_LOAD);
@@ -181,13 +182,12 @@ void Order::ConvertFromOldSavegame()
 
 	/* Finally fix the unload/depot type flags. */
 	if (this->GetType() != OT_GOTO_DEPOT) {
-		uint t = ((this->flags & 1) == 0) ? OUF_UNLOAD_IF_POSSIBLE : OUFB_TRANSFER;
-		if ((this->flags & 2) != 0) t |= OUFB_UNLOAD;
-		this->SetUnloadType((OrderUnloadFlags)t);
-
-		if ((this->GetUnloadType() & (OUFB_UNLOAD | OUFB_TRANSFER)) == (OUFB_UNLOAD | OUFB_TRANSFER)) {
+		if ((this->flags & 1) != 0) { // OFB_TRANSFER
 			this->SetUnloadType(OUFB_TRANSFER);
-			this->SetLoadType(OLFB_NO_LOAD);
+		} else if ((this->flags & 2) != 0) { // OFB_UNLOAD
+			this->SetUnloadType(OUFB_UNLOAD);
+		} else {
+			this->SetUnloadType(OUF_UNLOAD_IF_POSSIBLE);
 		}
 	} else {
 		uint t = ((this->flags & 6) == 6) ? ODTFB_SERVICE : ODTF_MANUAL;
