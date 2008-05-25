@@ -618,6 +618,7 @@ static const WindowDesc _town_directory_desc = {
 
 void ShowTownDirectory()
 {
+	if (BringWindowToFrontById(WC_TOWN_DIRECTORY, 0)) return;
 	new TownDirectoryWindow(&_town_directory_desc);
 }
 
