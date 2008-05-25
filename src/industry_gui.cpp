@@ -721,6 +721,34 @@ static char _bufcache[96];
 static const Industry* _last_industry;
 static int _internal_sort_order;
 
+/** Returns percents of cargo transported if industry produces this cargo, else -1
+ * @param i industry to check
+ * @param id cargo slot
+ * @return percents of cargo transported, or -1 if industry doesn't use this cargo slot
+ */
+static inline int GetCargoTransportedPercentsIfValid(const Industry *i, uint id)
+{
+	assert(id < lengthof(i->produced_cargo));
+
+	if (i->produced_cargo[id] == CT_INVALID) return 101;
+	return i->last_month_pct_transported[id] * 100 >> 8;
+}
+
+/** Returns value representing industry's transported cargo
+ * percentage for industry sorting
+ * @param i industry to check
+ * @return value used for sorting
+ */
+static int GetCargoTransportedSortValue(const Industry *i)
+{
+	int p1 = GetCargoTransportedPercentsIfValid(i, 0);
+	int p2 = GetCargoTransportedPercentsIfValid(i, 1);
+
+	if (p1 > p2) Swap(p1, p2); // lower value has higher priority
+
+	return (p1 << 8) + p2;
+}
+
 static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	const Industry* i = *(const Industry**)a;
@@ -752,30 +780,7 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 			break;
 
 		case 3: /* Sort by transported fraction */
-			if (i->produced_cargo[0] == CT_INVALID) {
-				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
-			} else {
-				if (j->produced_cargo[0] == CT_INVALID) {
-					r = 1;
-				} else {
-					int pi;
-					int pj;
-
-					pi = i->last_month_pct_transported[0] * 100 >> 8;
-					if (i->produced_cargo[1] != CT_INVALID) {
-						int p = i->last_month_pct_transported[1] * 100 >> 8;
-						if (p < pi) pi = p;
-					}
-
-					pj = j->last_month_pct_transported[0] * 100 >> 8;
-					if (j->produced_cargo[1] != CT_INVALID) {
-						int p = j->last_month_pct_transported[1] * 100 >> 8;
-						if (p < pj) pj = p;
-					}
-
-					r = pi - pj;
-				}
-			}
+			r = GetCargoTransportedSortValue(i) - GetCargoTransportedSortValue(j);
 			break;
 	}
 
