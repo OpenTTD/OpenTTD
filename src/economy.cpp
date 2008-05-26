@@ -832,7 +832,7 @@ void StartupEconomy()
 	_economy.interest_rate = _settings.difficulty.initial_interest;
 	_economy.infl_amount = _settings.difficulty.initial_interest;
 	_economy.infl_amount_pr = max(0, _settings.difficulty.initial_interest - 1);
-	_economy.max_loan_unround = _economy.max_loan = _settings.difficulty.max_loan * 1000;
+	_economy.max_loan_unround = _economy.max_loan = _settings.difficulty.max_loan;
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 }
 

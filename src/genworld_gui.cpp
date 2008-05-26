@@ -48,7 +48,7 @@ extern void SwitchMode(int new_mode);
 
 static inline void SetNewLandscapeType(byte landscape)
 {
-	_settings.game_creation.landscape = landscape;
+	_settings_newgame.game_creation.landscape = landscape;
 	InvalidateWindowClasses(WC_SELECT_GAME);
 	InvalidateWindowClasses(WC_GENERATE_LANDSCAPE);
 }
@@ -253,7 +253,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : QueryStringBaseWindow(desc, number)
 	{
-		this->LowerWidget(_settings.game_creation.landscape + GLAND_TEMPERATE);
+		this->LowerWidget(_settings_newgame.game_creation.landscape + GLAND_TEMPERATE);
 
 		snprintf(this->edit_str_buf, sizeof(this->edit_str_buf), "%u", _settings_newgame.game_creation.generation_seed);
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
@@ -272,7 +272,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			this->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _settings_newgame.game_creation.land_generator == 0);
 		}
 		/* Disable snowline if not hilly */
-		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _settings.game_creation.landscape != LT_ARCTIC);
+		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _settings_newgame.game_creation.landscape != LT_ARCTIC);
 		/* Disable town, industry and trees in SE */
 		this->SetWidgetDisabledState(GLAND_TOWN_PULLDOWN,     _game_mode == GM_EDITOR);
 		this->SetWidgetDisabledState(GLAND_INDUSTRY_PULLDOWN, _game_mode == GM_EDITOR);
@@ -280,13 +280,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 		this->SetWidgetDisabledState(GLAND_START_DATE_DOWN, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
 		this->SetWidgetDisabledState(GLAND_START_DATE_UP,   _settings_newgame.game_creation.starting_year >= MAX_YEAR);
-		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _settings_newgame.game_creation.snow_line_height <= 2 || _settings.game_creation.landscape != LT_ARCTIC);
-		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _settings_newgame.game_creation.snow_line_height >= MAX_SNOWLINE_HEIGHT || _settings.game_creation.landscape != LT_ARCTIC);
+		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_DOWN, _settings_newgame.game_creation.snow_line_height <= 2 || _settings_newgame.game_creation.landscape != LT_ARCTIC);
+		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_UP,   _settings_newgame.game_creation.snow_line_height >= MAX_SNOWLINE_HEIGHT || _settings_newgame.game_creation.landscape != LT_ARCTIC);
 
-		this->SetWidgetLoweredState(GLAND_TEMPERATE, _settings.game_creation.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(GLAND_ARCTIC,    _settings.game_creation.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(GLAND_TROPICAL,  _settings.game_creation.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(GLAND_TOYLAND,   _settings.game_creation.landscape == LT_TOYLAND);
+		this->SetWidgetLoweredState(GLAND_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(GLAND_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(GLAND_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(GLAND_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 
 		if (_game_mode == GM_EDITOR) {
 			this->widget[GLAND_TOWN_PULLDOWN].data     = STR_6836_OFF;
@@ -345,7 +345,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_ARCTIC:
 			case GLAND_TROPICAL:
 			case GLAND_TOYLAND:
-				this->RaiseWidget(_settings.game_creation.landscape + GLAND_TEMPERATE);
+				this->RaiseWidget(_settings_newgame.game_creation.landscape + GLAND_TEMPERATE);
 				SetNewLandscapeType(widget - GLAND_TEMPERATE);
 				break;
 
@@ -492,13 +492,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_TOWN_PULLDOWN:
 				_settings_newgame.difficulty.number_towns = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				DoCommandP(0, 2, _settings_newgame.difficulty.number_towns, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				IConsoleSetPatchSetting("difficulty.number_towns", _settings_newgame.difficulty.number_towns);
 				break;
 
 			case GLAND_INDUSTRY_PULLDOWN:
 				_settings_newgame.difficulty.number_industries = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				DoCommandP(0, 3, _settings_newgame.difficulty.number_industries, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				IConsoleSetPatchSetting("difficulty.number_industries", _settings_newgame.difficulty.number_industries);
 				break;
 
 			case GLAND_LANDSCAPE_PULLDOWN:
@@ -513,13 +513,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_TERRAIN_PULLDOWN:
 				_settings_newgame.difficulty.terrain_type = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				DoCommandP(0, 12, _settings_newgame.difficulty.terrain_type, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				IConsoleSetPatchSetting("difficulty.terrain_type", _settings_newgame.difficulty.terrain_type);
 				break;
 
 			case GLAND_WATER_PULLDOWN:
 				_settings_newgame.difficulty.quantity_sea_lakes = index;
 				if (_settings_newgame.difficulty.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
-				DoCommandP(0, 13, _settings_newgame.difficulty.quantity_sea_lakes, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+				IConsoleSetPatchSetting("difficulty.quantity_sea_lakes", _settings_newgame.difficulty.quantity_sea_lakes);
 				break;
 		}
 		this->SetDirty();
@@ -642,7 +642,7 @@ struct CreateScenarioWindow : public Window
 
 	CreateScenarioWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->LowerWidget(_settings.game_creation.landscape + CSCEN_TEMPERATE);
+		this->LowerWidget(_settings_newgame.game_creation.landscape + CSCEN_TEMPERATE);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -653,10 +653,10 @@ struct CreateScenarioWindow : public Window
 		this->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_DOWN, _settings_newgame.game_creation.se_flat_world_height <= 0);
 		this->SetWidgetDisabledState(CSCEN_FLAT_LAND_HEIGHT_UP,   _settings_newgame.game_creation.se_flat_world_height >= MAX_TILE_HEIGHT);
 
-		this->SetWidgetLoweredState(CSCEN_TEMPERATE, _settings.game_creation.landscape == LT_TEMPERATE);
-		this->SetWidgetLoweredState(CSCEN_ARCTIC,    _settings.game_creation.landscape == LT_ARCTIC);
-		this->SetWidgetLoweredState(CSCEN_TROPICAL,  _settings.game_creation.landscape == LT_TROPIC);
-		this->SetWidgetLoweredState(CSCEN_TOYLAND,   _settings.game_creation.landscape == LT_TOYLAND);
+		this->SetWidgetLoweredState(CSCEN_TEMPERATE, _settings_newgame.game_creation.landscape == LT_TEMPERATE);
+		this->SetWidgetLoweredState(CSCEN_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
+		this->SetWidgetLoweredState(CSCEN_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
+		this->SetWidgetLoweredState(CSCEN_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
 
 		/* Set parameters for widget text that requires them */
 		SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1)); // CSCEN_START_DATE_TEXT
@@ -674,7 +674,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_ARCTIC:
 			case CSCEN_TROPICAL:
 			case CSCEN_TOYLAND:
-				this->RaiseWidget(_settings.game_creation.landscape + CSCEN_TEMPERATE);
+				this->RaiseWidget(_settings_newgame.game_creation.landscape + CSCEN_TEMPERATE);
 				SetNewLandscapeType(widget - CSCEN_TEMPERATE);
 				break;
 

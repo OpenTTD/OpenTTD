@@ -289,7 +289,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GAMEOPT_AUTOSAVE_BTN: // Autosave options
-				_settings.gui.autosave = _settings.gui.autosave = index;
+				_settings.gui.autosave = _settings_newgame.gui.autosave = index;
 				this->SetDirty();
 				break;
 
@@ -361,90 +361,6 @@ void ShowGameOptions()
 	new GameOptionsWindow(&_game_options_desc);
 }
 
-struct GameSettingData {
-	int16 min;
-	int16 max;
-	int16 step;
-	StringID str;
-};
-
-static const GameSettingData _game_setting_info[] = {
-	{  0,   7,  1, STR_NULL},
-	{  0,   3,  1, STR_6830_IMMEDIATE},
-	{  0,   3,  1, STR_NUM_VERY_LOW},
-	{  0,   4,  1, STR_NONE},
-	{100, 500, 50, STR_NULL},
-	{  2,   4,  1, STR_NULL},
-	{  0,   2,  1, STR_6820_LOW},
-	{  0,   4,  1, STR_681B_VERY_SLOW},
-	{  0,   2,  1, STR_6820_LOW},
-	{  0,   2,  1, STR_6823_NONE},
-	{  0,   3,  1, STR_6826_X1_5},
-	{  0,   2,  1, STR_6820_LOW},
-	{  0,   3,  1, STR_682A_VERY_FLAT},
-	{  0,   3,  1, STR_VERY_LOW},
-	{  0,   1,  1, STR_682E_STEADY},
-	{  0,   1,  1, STR_6834_AT_END_OF_LINE_AND_AT_STATIONS},
-	{  0,   1,  1, STR_6836_OFF},
-	{  0,   2,  1, STR_PERMISSIVE},
-};
-
-/*
- * A: competitors
- * B: start time in months / 3
- * C: town count (3 = high, 0 = very low)
- * D: industry count (4 = high, 0 = none)
- * E: inital loan / 1000 (in GBP)
- * F: interest rate
- * G: running costs (0 = low, 2 = high)
- * H: construction speed of competitors (0 = very slow, 4 = very fast)
- * I: intelligence (0-2)
- * J: breakdowns (0 = off, 2 = normal)
- * K: subsidy multiplier (0 = 1.5, 3 = 4.0)
- * L: construction cost (0-2)
- * M: terrain type (0 = very flat, 3 = mountainous)
- * N: amount of water (0 = very low, 3 = high)
- * O: economy (0 = steady, 1 = fluctuating)
- * P: Train reversing (0 = end of line + stations, 1 = end of line)
- * Q: disasters
- * R: area restructuring (0 = permissive, 2 = hostile)
- */
-static const GDType _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
-	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
-	{2, 2, 2, 4, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, ///< easy
-	{4, 1, 2, 3, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, ///< medium
-	{7, 0, 3, 3, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, ///< hard
-};
-
-void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
-{
-	int i;
-	assert(mode <= 3);
-
-	gm_opt->diff_level = mode;
-	if (mode != 3) { // not custom
-		for (i = 0; i != GAME_DIFFICULTY_NUM; i++)
-			((GDType*)gm_opt)[i] = _default_game_diff[mode][i];
-	}
-}
-
-/**
- * Checks the difficulty levels read from the configuration and
- * forces them to be correct when invalid.
- */
-void CheckDifficultyLevels()
-{
-	if (_settings_newgame.difficulty.diff_level != 3) {
-		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
-	} else {
-		for (uint i = 0; i < GAME_DIFFICULTY_NUM; i++) {
-			GDType *diff = ((GDType*)&_settings_newgame.difficulty) + i;
-			*diff = Clamp(*diff, _game_setting_info[i].min, _game_setting_info[i].max);
-			*diff -= *diff % _game_setting_info[i].step;
-		}
-	}
-}
-
 extern void StartupEconomy();
 
 /* Widget definition for the game difficulty settings window */
@@ -472,20 +388,21 @@ static const WindowDesc _game_difficulty_desc = {
 	_game_difficulty_widgets,
 };
 
+void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
+
 struct GameDifficultyWindow : public Window {
 private:
+	static const uint GAME_DIFFICULTY_NUM = 18;
 	bool clicked_increase;
 	uint8 clicked_button;
 	uint8 timeout;
 
 	/* Temporary holding place of values in the difficulty window until 'Save' is clicked */
-	DifficultySettings opt_mod_temp;
+	Settings opt_mod_temp;
 
 	enum {
 		GAMEDIFF_WND_TOP_OFFSET = 45,
 		GAMEDIFF_WND_ROWSIZE    = 9,
-		// 0x383E = (1 << 13) | (1 << 12) | (1 << 11) | (1 << 5) | (1 << 4) | (1 << 3) | (1 << 2) | (1 << 1)
-		DIFF_INGAME_DISABLED_BUTTONS = 0x383E,
 		NO_SETTINGS_BUTTON = 0xFF,
 	};
 
@@ -510,7 +427,7 @@ public:
 	{
 		/* Copy current settings (ingame or in intro) to temporary holding place
 		 * change that when setting stuff, copy back on clicking 'OK' */
-		this->opt_mod_temp = (_game_mode == GM_MENU) ? _settings_newgame.difficulty : _settings.difficulty;
+		this->opt_mod_temp = (_game_mode == GM_MENU) ? _settings_newgame : _settings;
 		this->clicked_increase = false;
 		this->clicked_button = NO_SETTINGS_BUTTON;
 		this->timeout = 0;
@@ -527,7 +444,7 @@ public:
 			WIDGET_LIST_END);
 		this->SetWidgetDisabledState(GDW_HIGHSCORE, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
 		this->SetWidgetDisabledState(GDW_ACCEPT, _networking && !_network_server); // Save-button in multiplayer (and if client)
-		this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
+		this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
 		this->FindWindowPlacementAndResize(&_game_difficulty_desc);
 	}
 
@@ -535,29 +452,20 @@ public:
 	{
 		this->DrawWidgets();
 
-		/* XXX - Disabled buttons in normal gameplay or during muliplayer as non server.
-		 *       Bitshifted for each button to see if that bit is set. If it is set, the
-		 *       button is disabled */
-		uint32 disabled = 0;
-		if (_networking && !_network_server) {
-			disabled = MAX_UVALUE(uint32); // Disable all
-		} else if (_game_mode == GM_NORMAL) {
-			disabled = DIFF_INGAME_DISABLED_BUTTONS;
-		}
-
-		int value;
+		uint i;
+		const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i);
 		int y = GAMEDIFF_WND_TOP_OFFSET;
-		for (uint i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			const GameSettingData *gsd = &_game_setting_info[i];
-			value = ((GDType*)&this->opt_mod_temp)[i];
+		for (i = 0; i < GAME_DIFFICULTY_NUM; i++, sd++) {
+			const SettingDescBase *sdb = &sd->desc;
+			int32 value = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
+			bool editable = (_game_mode == GM_MENU || (sdb->flags & SGF_NEWGAME_ONLY) == 0);
 
 			DrawArrowButtons(5, y, 3,
 					(this->clicked_button == i) ? 1 + !!this->clicked_increase : 0,
-					!(HasBit(disabled, i) || gsd->min == value),
-					!(HasBit(disabled, i) || gsd->max == value));
+					editable && sdb->min != value,
+					editable && sdb->max != value);
 
-			value += _game_setting_info[i].str;
-			if (i == 4) value *= 1000; // XXX - handle currency option
+			value += sdb->str;
 			SetDParam(0, value);
 			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
 
@@ -582,30 +490,33 @@ public:
 				const uint8 btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
 				if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9) return;
 
+				uint i;
+				const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i) + btn;
+				const SettingDescBase *sdb = &sd->desc;
+
 				/* Clicked disabled button? */
-				if (_game_mode == GM_NORMAL && HasBit((int)DIFF_INGAME_DISABLED_BUTTONS, btn)) return;
+				bool editable = (_game_mode == GM_MENU || (sdb->flags & SGF_NEWGAME_ONLY) == 0);
+				if (!editable) return;
 
 				this->timeout = 5;
+				int32 val = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
 
-				int16 val = ((GDType*)&this->opt_mod_temp)[btn];
-
-				const GameSettingData *info = &_game_setting_info[btn]; // get information about the difficulty setting
 				if (x >= 10) {
 					/* Increase button clicked */
-					val = min(val + info->step, info->max);
+					val = min(val + sdb->interval, sdb->max);
 					this->clicked_increase = true;
 				} else {
 					/* Decrease button clicked */
-					val -= info->step;
-					val = max(val,  info->min);
+					val -= sdb->interval;
+					val = max(val, sdb->min);
 					this->clicked_increase = false;
 				}
 				this->clicked_button = btn;
 
 				/* save value in temporary variable */
-				((GDType*)&this->opt_mod_temp)[btn] = val;
-				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
-				SetDifficultyLevel(3, &this->opt_mod_temp); // set difficulty level to custom
+				WriteValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv, val);
+				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
+				SetDifficultyLevel(3, &this->opt_mod_temp.difficulty); // set difficulty level to custom
 				this->LowerWidget(GDW_LVL_CUSTOM);
 				this->SetDirty();
 			} break;
@@ -615,27 +526,32 @@ public:
 			case GDW_LVL_HARD:
 			case GDW_LVL_CUSTOM:
 				/* temporarily change difficulty level */
-				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
-				SetDifficultyLevel(widget - GDW_LVL_EASY, &this->opt_mod_temp);
-				this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.diff_level);
+				this->RaiseWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
+				SetDifficultyLevel(widget - GDW_LVL_EASY, &this->opt_mod_temp.difficulty);
+				this->LowerWidget(GDW_LVL_EASY + this->opt_mod_temp.difficulty.diff_level);
 				this->SetDirty();
 				break;
 
 			case GDW_HIGHSCORE: // Highscore Table
-				ShowHighscoreTable(this->opt_mod_temp.diff_level, -1);
+				ShowHighscoreTable(this->opt_mod_temp.difficulty.diff_level, -1);
 				break;
 
 			case GDW_ACCEPT: { // Save button - save changes
-				GDType btn, val;
 				Settings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings;
-				for (btn = 0; btn != GAME_DIFFICULTY_NUM; btn++) {
-					val = ((GDType*)&this->opt_mod_temp)[btn];
+
+				uint i;
+				const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i);
+				for (uint btn = 0; btn != GAME_DIFFICULTY_NUM; btn++, sd++) {
+					int32 new_val = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
+					int32 cur_val = (int32)ReadValue(GetVariableAddress(opt_ptr, &sd->save), sd->save.conv);
 					/* if setting has changed, change it */
-					if (val != ((GDType*)&opt_ptr->difficulty)[btn]) {
-						DoCommandP(0, btn, val, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+					if (new_val != cur_val) {
+						DoCommandP(0, i + btn, new_val, NULL, CMD_CHANGE_PATCH_SETTING);
 					}
 				}
-				DoCommandP(0, UINT_MAX, this->opt_mod_temp.diff_level, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
+
+				GetPatchFromName("difficulty.diff_level", &i);
+				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, NULL, CMD_CHANGE_PATCH_SETTING);
 				delete this;
 				/* If we are in the editor, we should reload the economy.
 				 * This way when you load a game, the max loan and interest rate

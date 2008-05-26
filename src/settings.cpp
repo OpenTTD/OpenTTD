@@ -60,6 +60,7 @@
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "blitter/factory.hpp"
+#include "station_func.h"
 
 #include "table/strings.h"
 
@@ -764,7 +765,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		}
 
 		p = (item == NULL) ? sdb->def : string_to_val(sdb, item->value);
-		ptr = GetVariableAddress(object, sld);
+		ptr = GetVariableAddress(sld->global ? NULL : object, sld);
 
 		switch (sdb->cmd) {
 		case SDT_BOOLX: /* All four are various types of (integer) numbers */
@@ -1133,6 +1134,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define NO SGF_NETWORK_ONLY
 #define CR SGF_CURRENCY
 #define NN SGF_NO_NETWORK
+#define NG SGF_NEWGAME_ONLY
 
 /* Begin - Callback Functions for the various settings */
 /* virtual PositionMainToolbar function, calls the right one.*/
@@ -1272,6 +1274,92 @@ static int32 DragSignalsDensityChanged(int32)
 	SetWindowDirty(FindWindowById(WC_BUILD_SIGNAL, 0));
 
 	return 0;
+}
+
+/*
+ * A: competitors
+ * B: start time in months / 3
+ * C: town count (3 = high, 0 = very low)
+ * D: industry count (4 = high, 0 = none)
+ * E: inital loan (in GBP)
+ * F: interest rate
+ * G: running costs (0 = low, 2 = high)
+ * H: construction speed of competitors (0 = very slow, 4 = very fast)
+ * I: intelligence (0-2)
+ * J: breakdowns (0 = off, 2 = normal)
+ * K: subsidy multiplier (0 = 1.5, 3 = 4.0)
+ * L: construction cost (0-2)
+ * M: terrain type (0 = very flat, 3 = mountainous)
+ * N: amount of water (0 = very low, 3 = high)
+ * O: economy (0 = steady, 1 = fluctuating)
+ * P: Train reversing (0 = end of line + stations, 1 = end of line)
+ * Q: disasters
+ * R: area restructuring (0 = permissive, 2 = hostile)
+ * S: the difficulty level
+ */
+static const DifficultySettings _default_game_diff[3] = { /*
+	 A, B, C, D,      E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S*/
+	{2, 2, 2, 4, 300000, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0}, ///< easy
+	{4, 1, 2, 3, 150000, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1}, ///< medium
+	{7, 0, 3, 3, 100000, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2, 2}, ///< hard
+};
+
+void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
+{
+	assert(mode <= 3);
+
+	if (mode != 3) {
+		*gm_opt = _default_game_diff[mode];
+	} else {
+		gm_opt->diff_level = 3;
+	}
+}
+
+/**
+ * Checks the difficulty levels read from the configuration and
+ * forces them to be correct when invalid.
+ */
+void CheckDifficultyLevels()
+{
+	if (_settings_newgame.difficulty.diff_level != 3) {
+		SetDifficultyLevel(_settings_newgame.difficulty.diff_level, &_settings_newgame.difficulty);
+	}
+}
+
+static int32 DifficultyReset(int32 level)
+{
+	SetDifficultyLevel(level, (_game_mode == GM_MENU) ? &_settings_newgame.difficulty : &_settings.difficulty);
+	return 0;
+}
+
+static int32 DifficultyChange(int32)
+{
+	if (_game_mode == GM_MENU) {
+		_settings_newgame.difficulty.diff_level = 3;
+	} else {
+		_settings.difficulty.diff_level = 3;
+	}
+
+	/* If we are a network-client, update the difficult setting (if it is open).
+	 * Use this instead of just dirtying the window because we need to load in
+	 * the new difficulty settings */
+	if (_networking && FindWindowById(WC_GAME_OPTIONS, 0) != NULL) {
+		ShowGameDifficulty();
+	}
+
+	return 0;
+}
+
+static int32 DifficultyNoiseChange(int32 i)
+{
+	if (_game_mode == GM_NORMAL) {
+		UpdateAirportsNoise();
+		if (_settings.economy.station_noise_level) {
+			InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
+		}
+	}
+
+	return DifficultyChange(i);
 }
 
 /**
@@ -1417,6 +1505,9 @@ static const SettingDescGlobVarList _network_settings[] = {
 };
 #endif /* ENABLE_NETWORK */
 
+static const uint GAME_DIFFICULTY_NUM = 18;
+uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
+
 static const SettingDesc _gameopt_settings[] = {
 	/* In version 4 a new difficulty setting has been added to the difficulty settings,
 	 * town attitude towards demolishing. Needs special handling because some dimwit thought
@@ -1427,18 +1518,19 @@ static const SettingDesc _gameopt_settings[] = {
 	 * and why not byte for example?
 	 * 'SLE_FILE_I16 | SLE_VAR_U16' in "diff_custom" is needed to get around SlArray() hack
 	 * for savegames version 0 - though it is an array, it has to go through the byteswap process */
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_FILE_I16 | SLE_VAR_U16, 0, 0, Settings, difficulty, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 0, 3),
-	SDT_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16, 0, 0, Settings, difficulty, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, NULL, 4, SL_MAX_VERSION),
-	    SDT_VAR(Settings, difficulty.diff_level, SLE_UINT8, 0, 0, 0, 0,  3, 0, STR_NULL, NULL),
-	  SDT_OMANY(Settings, gui.currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
-	  SDT_OMANY(Settings, gui.units,     SLE_UINT8, N, 0, 1,     2, "imperial|metric|si", STR_NULL, NULL, NULL),
+	 SDTG_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_FILE_I16 | SLE_VAR_U16,    C, 0, _old_diff_custom, 17, 0, 0, 0, 0, NULL, STR_NULL, NULL, 0,  3),
+	 SDTG_GENERAL("diff_custom", SDT_INTLIST, SL_ARR, SLE_UINT16,                    C, 0, _old_diff_custom, 18, 0, 0, 0, 0, NULL, STR_NULL, NULL, 4, 96),
+
+	      SDT_VAR(Settings, difficulty.diff_level,    SLE_UINT8,                     0, 0, 0, 0,  3, 0, STR_NULL, NULL),
+	    SDT_OMANY(Settings, gui.currency,             SLE_UINT8,                     N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
+	    SDT_OMANY(Settings, gui.units,                SLE_UINT8,                     N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),
 	/* There are only 21 predefined town_name values (0-20), but you can have more with newgrf action F so allow these bigger values (21-255). Invalid values will fallback to english on use and (undefined string) in GUI. */
-	  SDT_OMANY(Settings, game_creation.town_name, SLE_UINT8, 0, 0, 0,   255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
-	  SDT_OMANY(Settings, game_creation.landscape, SLE_UINT8, 0, 0, 0,     3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
-	    SDT_VAR(Settings, game_creation.snow_line, SLE_UINT8, 0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
-	SDT_CONDOMANY(Settings,gui.autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL, NULL),
-	SDT_CONDOMANY(Settings,gui.autosave, SLE_UINT8,23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL, NULL),
-	  SDT_OMANY(Settings, vehicle.road_side, SLE_UINT8, 0, 0, 1,   1, "left|right", STR_NULL, NULL, NULL),
+	    SDT_OMANY(Settings, game_creation.town_name,  SLE_UINT8,                     0, 0, 0, 255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
+	    SDT_OMANY(Settings, game_creation.landscape,  SLE_UINT8,                     0, 0, 0, 3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
+	      SDT_VAR(Settings, game_creation.snow_line,  SLE_UINT8,                     0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
+	SDT_CONDOMANY(Settings, gui.autosave,             SLE_UINT8,  0, 22,             N, 0, 0, 0, "", STR_NULL, NULL, NULL),
+	SDT_CONDOMANY(Settings, gui.autosave,             SLE_UINT8, 23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL, NULL),
+	    SDT_OMANY(Settings, vehicle.road_side,        SLE_UINT8,                     0, 0, 1, 1, "left|right", STR_NULL, NULL, NULL),
 	    SDT_END()
 };
 
@@ -1454,6 +1546,32 @@ static const SettingDesc _gameopt_settings[] = {
 const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Saved patch variables. */
+	/* Do not ADD or REMOVE something in this "difficulty.XXX" table or before it. It breaks savegame compatability. */
+	 SDT_CONDVAR(Settings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      7,  1, STR_NULL,                                  DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.competitor_start_time,     SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      3,  1, STR_6830_IMMEDIATE,                        DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.number_towns,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      3,  1, STR_NUM_VERY_LOW,                          DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     4,     0,      4,  1, STR_NONE,                                  DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.max_loan,                 SLE_UINT32, 97, SL_MAX_VERSION, 0,NG|CR,300000,100000,500000,50000,STR_NULL,                               DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.initial_interest,          SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     2,      4,  1, STR_NULL,                                  DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.vehicle_costs,             SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_6820_LOW,                              DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.competitor_speed,          SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      4,  1, STR_681B_VERY_SLOW,                        DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.competitor_intelligence,   SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_6820_LOW,                              DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.vehicle_breakdowns,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     1,     0,      2,  1, STR_6823_NONE,                             DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.subsidy_multiplier,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      3,  1, STR_6826_X1_5,                             DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.construction_cost,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      2,  1, STR_6820_LOW,                              DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.terrain_type,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     1,     0,      3,  1, STR_682A_VERY_FLAT,                        DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.quantity_sea_lakes,        SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      3,  1, STR_VERY_LOW,                              DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.economy,                   SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_682E_STEADY,                           DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.line_reverse_mode,         SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_6834_AT_END_OF_LINE_AND_AT_STATIONS,   DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.disasters,                 SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      1,  1, STR_6836_OFF,                              DifficultyChange),
+	 SDT_CONDVAR(Settings, difficulty.town_council_tolerance,    SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_PERMISSIVE,                            DifficultyNoiseChange),
+	 SDT_CONDVAR(Settings, difficulty.diff_level,                SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      3,  0, STR_NULL,                                  DifficultyReset),
+
+	/* There are only 21 predefined town_name values (0-20), but you can have more with newgrf action F so allow these bigger values (21-255). Invalid values will fallback to english on use and (undefined string) in GUI. */
+ SDT_CONDOMANY(Settings, game_creation.town_name,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0, 255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
+ SDT_CONDOMANY(Settings, game_creation.landscape,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0,   3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
+	 SDT_CONDVAR(Settings, game_creation.snow_line,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
+ SDT_CONDOMANY(Settings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, "left|right", STR_NULL, NULL, NULL),
 
 	    SDT_BOOL(Settings, construction.build_on_slopes,                                        0,NN,  true,                    STR_CONFIG_PATCHES_BUILDONSLOPES,          NULL),
 	SDT_CONDBOOL(Settings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_AUTOSLOPE,              NULL),
@@ -1593,8 +1711,12 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(Settings, game_creation.heightmap_rotation,              SLE_UINT8,                     S,MS,     0,                     0,       1, 0, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION,    NULL),
 	     SDT_VAR(Settings, game_creation.se_flat_world_height,            SLE_UINT8,                     S, 0,     0,                     0,      15, 0, STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT,  NULL),
 
+ SDT_CONDOMANY(Settings, gui.currency,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
+ SDT_CONDOMANY(Settings, gui.units,                                     SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),
+
 	/***************************************************************************/
 	/* Unsaved patch variables. */
+ SDT_OMANY(Settings, gui.autosave,               SLE_UINT8, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL,               NULL),
 	SDT_BOOL(Settings, gui.vehicle_speed,                     S, 0,  true,                        STR_CONFIG_PATCHES_VEHICLESPEED,                NULL),
 	SDT_BOOL(Settings, gui.status_long_date,                  S, 0,  true,                        STR_CONFIG_PATCHES_LONGDATE,                    NULL),
 	SDT_BOOL(Settings, gui.show_finances,                     S, 0,  true,                        STR_CONFIG_PATCHES_SHOWFINANCES,                NULL),
@@ -1670,6 +1792,31 @@ static const SettingDesc _currency_settings[] = {
 #undef MS
 #undef NO
 #undef CR
+
+static void PrepareOldDiffCustom()
+{
+	memset(_old_diff_custom, 0, sizeof(_old_diff_custom));
+}
+
+static void HandleOldDiffCustom()
+{
+	uint options_to_load = GAME_DIFFICULTY_NUM - (CheckSavegameVersion(4) ? 1 : 0);
+
+	/* If we did read to old_diff_custom, then at least one value must be non 0. */
+	bool old_diff_custom_used = false;
+	for (uint i = 0; i < options_to_load && !old_diff_custom_used; i++) {
+		old_diff_custom_used = (_old_diff_custom[i] != 0);
+	}
+
+	if (!old_diff_custom_used) return;
+
+	for (uint i = 0; i < options_to_load; i++) {
+		const SettingDesc *sd = &_patch_settings[i];
+		void *var = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings, &sd->save);
+		Write_ValidateSetting(var, sd, (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]));
+	}
+}
+
 
 static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 {
@@ -1836,7 +1983,10 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
 
+	PrepareOldDiffCustom();
 	proc(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
+	HandleOldDiffCustom();
+
 	proc(ini, _patch_settings,   "patches",  &_settings_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
@@ -1846,8 +1996,6 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc_list(ini, "bans",    _network_ban_list,  lengthof(_network_ban_list), NULL);
 #endif /* ENABLE_NETWORK */
 }
-
-extern void CheckDifficultyLevels();
 
 /** Load the values from the configuration files */
 void LoadFromConfig()
@@ -1870,6 +2018,7 @@ void SaveToConfig()
 	/* Remove some obsolete groups. These have all been loaded into other groups. */
 	ini_removegroup(ini, "patches");
 	ini_removegroup(ini, "yapf");
+	ini_removegroup(ini, "gameopt");
 
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
@@ -1903,6 +2052,7 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return CMD_ERROR;
 	if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return CMD_ERROR;
+	if ((sd->desc.flags & SGF_NEWGAME_ONLY) && _game_mode != GM_MENU) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Settings *s = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings;
@@ -2034,7 +2184,7 @@ static void LoadSettings(const SettingDesc *osd, void *object)
 {
 	for (; osd->save.cmd != SL_END; osd++) {
 		const SaveLoad *sld = &osd->save;
-		void *ptr = GetVariableAddress(object, sld);
+		void *ptr = GetVariableAddress(sld->global ? NULL : object, sld);
 
 		if (!SlObjectMember(ptr, sld)) continue;
 	}
@@ -2084,12 +2234,9 @@ static void Load_OPTS()
 	/* Copy over default setting since some might not get loaded in
 	 * a networking environment. This ensures for example that the local
 	 * autosave-frequency stays when joining a network-server */
+	PrepareOldDiffCustom();
 	LoadSettings(_gameopt_settings, &_settings);
-}
-
-static void Save_OPTS()
-{
-	SaveSettings(_gameopt_settings, &_settings);
+	HandleOldDiffCustom();
 }
 
 static void Load_PATS()
@@ -2124,7 +2271,7 @@ void UpdatePatches()
 }
 
 extern const ChunkHandler _setting_chunk_handlers[] = {
-	{ 'OPTS', Save_OPTS, Load_OPTS, CH_RIFF},
+	{ 'OPTS', NULL,      Load_OPTS, CH_RIFF},
 	{ 'PATS', Save_PATS, Load_PATS, CH_RIFF | CH_LAST},
 };
 

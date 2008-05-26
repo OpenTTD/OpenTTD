@@ -39,8 +39,8 @@ enum SettingGuiFlagLong {
 	SGF_NETWORK_ONLY = 1 << 3, ///< this setting only applies to network games
 	SGF_CURRENCY     = 1 << 4, ///< the number represents money, so when reading value multiply by exchange rate
 	SGF_NO_NETWORK   = 1 << 5, ///< this setting does not apply to network games; it may not be changed during the game
-	SGF_END          = 1 << 6,
-	/* 3 more possible flags */
+	SGF_NEWGAME_ONLY = 1 << 6, ///< this setting cannot be changed in inside a game
+	SGF_END          = 1 << 7,
 };
 
 DECLARE_ENUM_AS_BIT_SET(SettingGuiFlagLong);

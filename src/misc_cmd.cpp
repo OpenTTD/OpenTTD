@@ -22,7 +22,6 @@
 #include "player_base.h"
 #include "player_gui.h"
 #include "settings_type.h"
-#include "station_func.h"
 
 #include "table/strings.h"
 
@@ -379,47 +378,4 @@ CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Subtract money from local-player */
 	return amount;
-}
-
-/** Change difficulty level/settings (server-only).
- * We cannot really check for valid values of p2 (too much work mostly); stored
- * in file 'settings_gui.c' _game_setting_info[]; we'll just trust the server it knows
- * what to do and does this correctly
- * @param tile unused
- * @param flags operation to perform
- * @param p1 the difficulty setting being changed. If it is -1, the difficulty level
- *           itself is changed. The new value is inside p2
- * @param p2 new value for a difficulty setting or difficulty level
- */
-CommandCost CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (p1 != (uint32)-1L && ((int32)p1 >= GAME_DIFFICULTY_NUM || (int32)p1 < 0)) return CMD_ERROR;
-
-	DifficultySettings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame.difficulty : &_settings.difficulty;
-
-	if (flags & DC_EXEC) {
-		if (p1 != (uint32)-1L) {
-			((GDType*)opt_ptr)[p1] = p2;
-			opt_ptr->diff_level = 3; // custom difficulty level
-		} else {
-			opt_ptr->diff_level = p2;
-		}
-
-		/* Since the tolerance of the town council has a direct impact on the noise generation/tolerance,
-		 * launch a re-evaluation of the actual values only when setting has changed */
-		if (p2 == GAME_DIFFICULTY_TOWNCOUNCIL_TOLERANCE && _game_mode == GM_NORMAL) {
-			UpdateAirportsNoise();
-			if (_settings.economy.station_noise_level) {
-				InvalidateWindowClassesData(WC_TOWN_VIEW, 0);
-			}
-		}
-
-		/* If we are a network-client, update the difficult setting (if it is open).
-		 * Use this instead of just dirtying the window because we need to load in
-		 * the new difficulty settings */
-		if (_networking && !_network_server && FindWindowById(WC_GAME_OPTIONS, 0) != NULL) {
-			ShowGameDifficulty();
-		}
-	}
-	return CommandCost();
 }

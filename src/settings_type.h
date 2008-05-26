@@ -9,51 +9,27 @@
 #include "town_type.h"
 #include "transport_type.h"
 
-enum {
-	GAME_DIFFICULTY_AI_NUMBER,
-	GAME_DIFFICULTY_AI_STARTTIME,
-	GAME_DIFFICULTY_TOWN_NUMBER,
-	GAME_DIFFICULTY_INDUSTRIE_NUMBER,
-	GAME_DIFFICULTY_MAX_LOAN,
-	GAME_DIFFICULTY_INITIAL_INTEREST,
-	GAME_DIFFICULTY_VEHICLE_COST,
-	GAME_DIFFICULTY_AI_SPEED,
-	GAME_DIFFICULTY_AI_INTELLIGENCE,       ///< no longer in use
-	GAME_DIFFICULTY_VEHICLES_BREAKDOWN,
-	GAME_DIFFICULTY_SUBSIDY_MULTIPLIER,
-	GAME_DIFFICULTY_CONSTRUCTION_COST,
-	GAME_DIFFICULTY_TYPE_TERRAIN,
-	GAME_DIFFICULTY_SEALAKE_NUMBER,
-	GAME_DIFFICULTY_ECONOMY,
-	GAME_DIFFICULTY_LINE_REVERSEMODE,
-	GAME_DIFFICULTY_DISASTERS,
-	GAME_DIFFICULTY_TOWNCOUNCIL_TOLERANCE, ///< minimum required town ratings to be allowed to demolish stuff
-	GAME_DIFFICULTY_NUM,
-};
-
-/** Specific type for Game Difficulty to ease changing the type */
-typedef uint16 GDType;
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
-	GDType max_no_competitors;               ///< the number of competitors (AIs)
-	GDType competitor_start_time;            ///< how long to wait for the first competitors (AIs)
-	GDType number_towns;                     ///< the amount of towns
-	GDType number_industries;                ///< the amount of industries
-	GDType max_loan;                         ///< the maximum initial loan
-	GDType initial_interest;                 ///< amount of interest (to pay over the loan)
-	GDType vehicle_costs;                    ///< amount of money spent on vehicle running cost
-	GDType competitor_speed;                 ///< the speed at which the AI builds
-	GDType competitor_intelligence;          ///< the competior's (AI) intelligence
-	GDType vehicle_breakdowns;               ///< likelihood of vehicles breaking down
-	GDType subsidy_multiplier;               ///< amount of subsidy
-	GDType construction_cost;                ///< how expensive is building
-	GDType terrain_type;                     ///< the mountainousness of the landscape
-	GDType quantity_sea_lakes;               ///< the amount of seas/lakes
-	GDType economy;                          ///< how volatile is the economy
-	GDType line_reverse_mode;                ///< reversing at stations or not
-	GDType disasters;                        ///< are disasters enabled
-	GDType town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
-	GDType diff_level;                       ///< the difficulty level
+	byte   max_no_competitors;               ///< the number of competitors (AIs)
+	byte   competitor_start_time;            ///< how long to wait for the first competitors (AIs)
+	byte   number_towns;                     ///< the amount of towns
+	byte   number_industries;                ///< the amount of industries
+	uint32 max_loan;                         ///< the maximum initial loan
+	byte   initial_interest;                 ///< amount of interest (to pay over the loan)
+	byte   vehicle_costs;                    ///< amount of money spent on vehicle running cost
+	byte   competitor_speed;                 ///< the speed at which the AI builds
+	byte   competitor_intelligence;          ///< the competior's (AI) intelligence
+	byte   vehicle_breakdowns;               ///< likelihood of vehicles breaking down
+	byte   subsidy_multiplier;               ///< amount of subsidy
+	byte   construction_cost;                ///< how expensive is building
+	byte   terrain_type;                     ///< the mountainousness of the landscape
+	byte   quantity_sea_lakes;               ///< the amount of seas/lakes
+	byte   economy;                          ///< how volatile is the economy
+	byte   line_reverse_mode;                ///< reversing at stations or not
+	byte   disasters;                        ///< are disasters enabled
+	byte   town_council_tolerance;           ///< minimum required town ratings to be allowed to demolish stuff
+	byte   diff_level;                       ///< the difficulty level
 };
 
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */

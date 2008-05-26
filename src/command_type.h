@@ -233,8 +233,6 @@ enum {
 
 	CMD_SET_ROAD_DRIVE_SIDE,          ///< set the side where the road vehicles drive
 
-	CMD_CHANGE_DIFFICULTY_LEVEL,      ///< change the difficult of a game (each setting for it own)
-
 	CMD_START_STOP_SHIP,              ///< start/stop a ship
 	CMD_SELL_SHIP,                    ///< sell a ship
 	CMD_BUILD_SHIP,                   ///< build a new ship

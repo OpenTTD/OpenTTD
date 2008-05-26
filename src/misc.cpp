@@ -67,6 +67,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	_realtime_tick = 0;
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
+	_settings = _settings_newgame;
 
 	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
 		SetDate(ConvertYMDToDate(_settings.game_creation.starting_year, 0, 1));

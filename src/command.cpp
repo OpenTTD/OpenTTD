@@ -152,7 +152,6 @@ DEF_COMMAND(CmdDoTownAction);
 
 DEF_COMMAND(CmdSetRoadDriveSide);
 
-DEF_COMMAND(CmdChangeDifficultyLevel);
 DEF_COMMAND(CmdChangePatchSetting);
 
 DEF_COMMAND(CmdStartStopShip);
@@ -304,7 +303,6 @@ static const Command _command_proc_table[] = {
 	{CmdDoTownAction,                        0}, /* CMD_DO_TOWN_ACTION */
 
 	{CmdSetRoadDriveSide,           CMD_SERVER}, /* CMD_SET_ROAD_DRIVE_SIDE */
-	{CmdChangeDifficultyLevel,      CMD_SERVER}, /* CMD_CHANGE_DIFFICULTY_LEVEL */
 
 	{CmdStartStopShip,                       0}, /* CMD_START_STOP_SHIP */
 	{CmdSellShip,                            0}, /* CMD_SELL_SHIP */
