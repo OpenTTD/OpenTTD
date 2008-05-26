@@ -74,6 +74,7 @@ struct DropdownWindow : Window {
 
 	DropdownWindow(int x, int y, int width, int height, const Widget *widget) : Window(x, y, width, height, WC_DROPDOWN_MENU, widget)
 	{
+		this->FindWindowPlacementAndResize(width, height);
 	}
 
 	~DropdownWindow()
