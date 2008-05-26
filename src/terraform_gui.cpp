@@ -340,8 +340,8 @@ void ShowTerraformToolbar(Window *link)
 		 * toolbar to left of it
 		 */
 		w->top = 22;
+		w->SetDirty();
 		link->left = w->left - link->width;
-
 		link->SetDirty();
 	}
 }
