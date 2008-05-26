@@ -65,7 +65,7 @@ public: // Temporary: public for conversion only
 
 		do {
 			Swap(*a, *b);
-		} while (((a + 1) != b) && (++a != --b));
+		} while (++a < --b);
 	}
 
 public:
