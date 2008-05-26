@@ -12,6 +12,5 @@ void IConsoleListPatches();
 void LoadFromConfig();
 void SaveToConfig();
 void CheckConfig();
-void UpdatePatches();
 
 #endif /* SETTINGS_FUNC_H */

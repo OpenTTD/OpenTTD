@@ -2265,20 +2265,14 @@ static void Save_PATS()
 
 void CheckConfig()
 {
-	// Increase old default values for pf_maxdepth and pf_maxlength
-	// to support big networks.
+	/*
+	 * Increase old default values for pf_maxdepth and pf_maxlength
+	 * to support big networks.
+	 */
 	if (_settings_newgame.pf.opf.pf_maxdepth == 16 && _settings_newgame.pf.opf.pf_maxlength == 512) {
 		_settings_newgame.pf.opf.pf_maxdepth = 48;
 		_settings_newgame.pf.opf.pf_maxlength = 4096;
 	}
-}
-
-void UpdatePatches()
-{
-	/* Since old(er) savegames don't have any patches saved, we initialise
-	 * them with the default values just as it was in the old days.
-	 * Also new games need this copying-over */
-	_settings = _settings_newgame; /* backwards compatibility */
 }
 
 extern const ChunkHandler _setting_chunk_handlers[] = {

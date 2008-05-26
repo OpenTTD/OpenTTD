@@ -205,7 +205,7 @@ void StartGeneratingLandscape(glwp_modes mode)
 	DeleteAllNonVitalWindows();
 
 	/* Copy all XXX_newgame to XXX when coming from outside the editor */
-	UpdatePatches();
+	_settings = _settings_newgame;
 	ResetGRFConfig(true);
 
 	SndPlayFx(SND_15_BEEP);
@@ -377,7 +377,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_GENERATE_BUTTON: // Generate
-				UpdatePatches();
+				_settings = _settings_newgame;
 
 				if (_settings.economy.town_layout == TL_NO_ROADS) {
 					ShowQuery(

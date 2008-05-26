@@ -588,10 +588,8 @@ int ttd_main(int argc, char *argv[])
 	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
 	if (_settings_newgame.difficulty.diff_level == 9) SetDifficultyLevel(0, &_settings_newgame.difficulty);
 
-	/* Make sure _patches is filled with _patches_newgame if we switch to a game directly */
-	if (_switch_mode != SM_NONE) {
-		UpdatePatches();
-	}
+	/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
+	if (_switch_mode != SM_NONE) _settings = _settings_newgame;
 
 	/* initialize the ingame console */
 	IConsoleInit();
@@ -1915,8 +1913,6 @@ bool AfterLoadGame()
 			}
 		}
 	}
-
-	if (CheckSavegameVersion(22))  UpdatePatches();
 
 	if (CheckSavegameVersion(25)) {
 		Vehicle *v;
