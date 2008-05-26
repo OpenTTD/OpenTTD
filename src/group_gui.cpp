@@ -30,64 +30,6 @@
 
 typedef GUIList<const Group*> GUIGroupList;
 
-static void BuildGroupList(GUIGroupList *gl, PlayerID owner, VehicleType vehicle_type)
-{
-	if (!(gl->flags & VL_REBUILD)) return;
-
-	gl->Clear();
-
-	const Group *g;
-	FOR_ALL_GROUPS(g) {
-		if (g->owner == owner && g->vehicle_type != vehicle_type) *gl->Append() = g;
-	}
-
-	gl->Compact();
-
-	gl->flags &= ~VL_REBUILD;
-	gl->flags |= VL_RESORT;
-}
-
-
-static int CDECL GroupNameSorter(const void *a, const void *b)
-{
-	static const Group *last_group[2] = { NULL, NULL };
-	static char         last_name[2][64] = { "", "" };
-
-	const Group *ga = *(const Group**)a;
-	const Group *gb = *(const Group**)b;
-	int r;
-
-	if (ga != last_group[0]) {
-		last_group[0] = ga;
-		SetDParam(0, ga->index);
-		GetString(last_name[0], STR_GROUP_NAME, lastof(last_name[0]));
-	}
-
-	if (gb != last_group[1]) {
-		last_group[1] = gb;
-		SetDParam(0, gb->index);
-		GetString(last_name[1], STR_GROUP_NAME, lastof(last_name[1]));
-	}
-
-	r = strcmp(last_name[0], last_name[1]); // sort by name
-
-	if (r == 0) return ga->index - gb->index;
-
-	return r;
-}
-
-
-static void SortGroupList(GUIGroupList *gl)
-{
-	if (!(gl->flags & VL_RESORT)) return;
-
-	qsort((void*)gl->Begin(), gl->Length(), sizeof(gl->Begin()), GroupNameSorter);
-
-	gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-	gl->flags &= ~VL_RESORT;
-}
-
-
 enum GroupListWidgets {
 	GRP_WIDGET_CLOSEBOX = 0,
 	GRP_WIDGET_CAPTION,
@@ -176,11 +118,58 @@ static const Widget _group_widgets[] = {
 };
 
 
-struct VehicleGroupWindow : public Window, public VehicleListBase {
+class VehicleGroupWindow : public Window, public VehicleListBase {
+private:
 	GroupID group_sel;
 	VehicleID vehicle_sel;
 	GUIGroupList groups;
 
+	/**
+	 * (Re)Build the group list.
+	 *
+	 * @param owner The owner of the window
+	 */
+	void BuildGroupList(PlayerID owner)
+	{
+		if (!this->groups.NeedRebuild()) return;
+
+		this->groups.Clear();
+
+		const Group *g;
+		FOR_ALL_GROUPS(g) {
+			if (g->owner == owner && g->vehicle_type == this->vehicle_type) {
+				*this->groups.Append() = g;
+			}
+		}
+
+		this->groups.Compact();
+		this->groups.RebuildDone();
+	}
+
+	/** Sort the groups by their name */
+	static int GroupNameSorter(const Group* const *a, const Group* const *b)
+	{
+		static const Group *last_group[2] = { NULL, NULL };
+		static char         last_name[2][64] = { "", "" };
+
+		if (*a != last_group[0]) {
+			last_group[0] = *a;
+			SetDParam(0, (*a)->index);
+			GetString(last_name[0], STR_GROUP_NAME, lastof(last_name[0]));
+		}
+
+		if (*b != last_group[1]) {
+			last_group[1] = *b;
+			SetDParam(0, (*b)->index);
+			GetString(last_name[1], STR_GROUP_NAME, lastof(last_name[1]));
+		}
+
+		int r = strcmp(last_name[0], last_name[1]); // sort by name
+		if (r == 0) return (*a)->index - (*b)->index;
+		return r;
+	}
+
+public:
 	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
@@ -221,8 +210,8 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 		this->vehicles.flags = VL_REBUILD | (this->sorting->order ? VL_DESC : VL_NONE);
 		this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
-		this->groups.flags = VL_REBUILD | VL_NONE;
-		this->groups.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+		this->groups.ForceRebuild();
+		this->groups.NeedResort();
 
 		this->group_sel = ALL_GROUP;
 		this->vehicle_sel = INVALID_VEHICLE;
@@ -277,7 +266,13 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 	virtual void OnInvalidateData(int data)
 	{
 		this->vehicles.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
-		this->groups.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+
+		if (data == 0) {
+			this->groups.ForceRebuild();
+		} else {
+			this->groups.ForceResort();
+		}
+
 		if (!(IsAllGroupID(this->group_sel) || IsDefaultGroupID(this->group_sel) || IsValidGroupID(this->group_sel))) {
 			this->group_sel = ALL_GROUP;
 			HideDropDownMenu(this);
@@ -299,9 +294,8 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 		BuildVehicleList(this, owner, this->group_sel, IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
 		SortVehicleList(this);
 
-
-		BuildGroupList(&this->groups, owner, this->vehicle_type);
-		SortGroupList(&this->groups);
+		this->BuildGroupList(owner);
+		this->groups.Sort(GroupNameSorter);
 
 		SetVScrollCount(this, this->groups.Length());
 		SetVScroll2Count(this, this->vehicles.Length());
@@ -726,9 +720,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 			this->vehicles.flags |= VL_RESORT;
 			this->SetDirty();
 		}
-		if (--this->groups.resort_timer == 0) {
-			this->groups.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			this->groups.flags |= VL_RESORT;
+		if (this->groups.NeedResort()) {
 			this->SetDirty();
 		}
 	}
