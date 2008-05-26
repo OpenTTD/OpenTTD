@@ -806,7 +806,6 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		PlayerID player = (PlayerID)GB(this->window_number, 0, 8);
 
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
-		this->vehicles.Clear();
 		this->caption_color = player;
 
 		/* Hide the widgets that we will not use in this window

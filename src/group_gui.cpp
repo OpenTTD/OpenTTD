@@ -217,12 +217,10 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
 		}
 
-		this->vehicles.Clear();
 		this->vehicles.sort_type = this->sorting->criteria;
 		this->vehicles.flags = VL_REBUILD | (this->sorting->order ? VL_DESC : VL_NONE);
 		this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
-		this->groups.Clear();
 		this->groups.flags = VL_REBUILD | VL_NONE;
 		this->groups.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
