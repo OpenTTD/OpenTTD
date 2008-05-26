@@ -22,9 +22,6 @@
 
 #include "table/strings.h"
 
-/* Save the sorting during runtime */
-static Listing _bridge_sorting = {false, 0};
-
 /**
  * Carriage for the data we need if we want to build a bridge
  */
@@ -35,53 +32,6 @@ struct BuildBridgeData {
 };
 
 typedef GUIList<BuildBridgeData> GUIBridgeList;
-
-/** Sort the bridges by their index */
-static int CDECL BridgeIndexSorter(const void *a, const void *b)
-{
-	const BuildBridgeData* ba = (BuildBridgeData*)a;
-	const BuildBridgeData* bb = (BuildBridgeData*)b;
-	int r = ba->index - bb->index;
-
-	return (_bridge_sorting.order) ? -r : r;
-}
-
-/** Sort the bridges by their price */
-static int CDECL BridgePriceSorter(const void *a, const void *b)
-{
-	const BuildBridgeData* ba = (BuildBridgeData*)a;
-	const BuildBridgeData* bb = (BuildBridgeData*)b;
-	int r = ba->cost - bb->cost;
-
-	return (_bridge_sorting.order) ? -r : r;
-}
-
-/** Sort the bridges by their maximum speed */
-static int CDECL BridgeSpeedSorter(const void *a, const void *b)
-{
-	const BuildBridgeData* ba = (BuildBridgeData*)a;
-	const BuildBridgeData* bb = (BuildBridgeData*)b;
-	int r = ba->spec->speed - bb->spec->speed;
-
-	return (_bridge_sorting.order) ? -r : r;
-}
-
-typedef int CDECL BridgeSortListingTypeFunction(const void*, const void*);
-
-/* Availible bridge sorting functions */
-static BridgeSortListingTypeFunction* const _bridge_sorter[] = {
-	&BridgeIndexSorter,
-	&BridgePriceSorter,
-	&BridgeSpeedSorter
-};
-
-/* Names of the sorting functions */
-static const StringID _bridge_sort_listing[] = {
-	STR_SORT_BY_NUMBER,
-	STR_ENGINE_SORT_COST,
-	STR_SORT_BY_MAX_SPEED,
-	INVALID_STRING_ID
-};
 
 /**
  * Callback executed after a build Bridge CMD has been called
@@ -109,14 +59,37 @@ enum BuildBridgeSelectionWidgets {
 
 class BuildBridgeWindow : public Window {
 private:
-	/* The last size of the build bridge window
-	 * is saved during runtime */
+	/* Runtime saved values */
 	static uint last_size;
+	static Listing last_sorting;
 
+	/* Constants for sorting the bridges */
+	static const StringID sorter_names[];
+	static const GUIBridgeList::SortFunction *const sorter_funcs[];
+
+	/* Internal variables */
 	TileIndex start_tile;
 	TileIndex end_tile;
 	uint32 type;
 	GUIBridgeList *bridges;
+
+	/** Sort the bridges by their index */
+	static int BridgeIndexSorter(const BuildBridgeData *a, const BuildBridgeData *b)
+	{
+		return a->index - b->index;
+	}
+
+	/** Sort the bridges by their price */
+	static int BridgePriceSorter(const BuildBridgeData *a, const BuildBridgeData *b)
+	{
+		return a->cost - b->cost;
+	}
+
+	/** Sort the bridges by their maximum speed */
+	static int BridgeSpeedSorter(const BuildBridgeData *a, const BuildBridgeData *b)
+	{
+		return a->spec->speed - b->spec->speed;
+	}
 
 	void BuildBridge(uint8 i)
 	{
@@ -127,15 +100,10 @@ private:
 	/** Sort the builable bridges */
 	void SortBridgeList()
 	{
-		/* Skip sorting if resort bit is not set */
-		if (!(bridges->flags & VL_RESORT)) return;
-
-		qsort(this->bridges->Begin(), this->bridges->Length(), sizeof(this->bridges->Begin()), _bridge_sorter[_bridge_sorting.criteria]);
+		this->bridges->Sort();
 
 		/* Display the current sort variant */
-		this->widget[BBSW_DROPDOWN_CRITERIA].data = _bridge_sort_listing[this->bridges->sort_type];
-
-		bridges->flags &= ~VL_RESORT;
+		this->widget[BBSW_DROPDOWN_CRITERIA].data = this->sorter_names[this->bridges->SortType()];
 
 		/* Set the modified widgets dirty */
 		this->InvalidateWidget(BBSW_DROPDOWN_CRITERIA);
@@ -149,6 +117,8 @@ public:
 		type(br_type),
 		bridges(bl)
 	{
+		this->bridges->SetListing(this->last_sorting);
+		this->bridges->SetSortFuncs(this->sorter_funcs);
 		this->SortBridgeList();
 
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly */
@@ -171,6 +141,8 @@ public:
 
 	~BuildBridgeWindow()
 	{
+		this->last_sorting = this->bridges->GetListing();
+
 		delete bridges;
 	}
 
@@ -224,27 +196,21 @@ public:
 			} break;
 
 			case BBSW_DROPDOWN_ORDER:
-				/* Revers the sort order */
-				this->bridges->flags ^= VL_DESC;
-				_bridge_sorting.order = !_bridge_sorting.order;
-
-				this->bridges->flags |= VL_RESORT;
-				this->SortBridgeList();
+				this->bridges->ToggleSortOrder();
+				this->SetDirty();
 				break;
 
 			case BBSW_DROPDOWN_CRITERIA:
-				ShowDropDownMenu(this, _bridge_sort_listing, bridges->sort_type, BBSW_DROPDOWN_CRITERIA, 0, 0);
+				ShowDropDownMenu(this, this->sorter_names, this->bridges->SortType(), BBSW_DROPDOWN_CRITERIA, 0, 0);
 				break;
 		}
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		if (widget == BBSW_DROPDOWN_CRITERIA && this->bridges->sort_type != index) {
-			this->bridges->sort_type = index;
-			_bridge_sorting.criteria = index;
+		if (widget == BBSW_DROPDOWN_CRITERIA && this->bridges->SortType() != index) {
+			this->bridges->SetSortType(index);
 
-			this->bridges->flags |= VL_RESORT;
 			this->SortBridgeList();
 		}
 	}
@@ -261,6 +227,23 @@ public:
 
 /* Set the default size of the Build Bridge Window */
 uint BuildBridgeWindow::last_size = 4;
+/* Set the default sorting for the bridges */
+Listing BuildBridgeWindow::last_sorting = {false, 0};
+
+/* Availible bridge sorting functions */
+GUIBridgeList::SortFunction* const BuildBridgeWindow::sorter_funcs[] = {
+	&BridgeIndexSorter,
+	&BridgePriceSorter,
+	&BridgeSpeedSorter
+};
+
+/* Names of the sorting functions */
+const StringID BuildBridgeWindow::sorter_names[] = {
+	STR_SORT_BY_NUMBER,
+	STR_ENGINE_SORT_COST,
+	STR_SORT_BY_MAX_SPEED,
+	INVALID_STRING_ID
+};
 
 /* Widget definition for the rail bridge selection window */
 static const Widget _build_bridge_widgets[] = {
