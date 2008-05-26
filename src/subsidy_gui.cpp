@@ -118,11 +118,14 @@ struct SubsidyListWindow : Window {
 
 				/* Displays the two offered towns */
 				SetupSubsidyDecodeParam(s, 1);
-				x2 = DrawStringTruncated(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING, width);
+				x2 = DrawStringTruncated(x + 2, y, STR_2027_FROM_TO, TC_FROMSTRING, width - 2);
 
-				/* Displays the deadline before voiding the proposal */
-				SetDParam(0, _date - ymd.day + 384 - s->age * 32);
-				DrawStringTruncated(x2, y, STR_2028_BY, TC_FROMSTRING, width - x2);
+				if (width - x2 > 10) {
+					/* Displays the deadline before voiding the proposal */
+					SetDParam(0, _date - ymd.day + 384 - s->age * 32);
+					DrawStringTruncated(x2, y, STR_2028_BY, TC_FROMSTRING, width - x2);
+				}
+
 				y += 10;
 				num++;
 			}
