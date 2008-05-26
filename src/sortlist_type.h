@@ -9,11 +9,12 @@
 #include "date_type.h"
 
 enum SortListFlags {
-	VL_NONE    = 0,      ///< no sort
-	VL_DESC    = 1 << 0, ///< sort descending or ascending
-	VL_RESORT  = 1 << 1, ///< instruct the code to resort the list in the next loop
-	VL_REBUILD = 1 << 2, ///< create sort-listing to use for qsort and friends
-	VL_END     = 1 << 3,
+	VL_NONE       = 0,      ///< no sort
+	VL_DESC       = 1 << 0, ///< sort descending or ascending
+	VL_RESORT     = 1 << 1, ///< instruct the code to resort the list in the next loop
+	VL_REBUILD    = 1 << 2, ///< rebuild the sort list
+	VL_FIRST_SORT = 1 << 3, ///< sort with qsort first
+	VL_END        = 1 << 4,
 };
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
@@ -52,10 +53,25 @@ public: // Temporary: public for conversion only
 		this->resort_timer = DAY_TICKS * 10;
 	}
 
+	/**
+	 * Reverse the list
+	 */
+	void Reverse()
+	{
+		assert(this->IsSortable());
+
+		T *a = this->data;
+		T *b = a + (this->items - 1);
+
+		do {
+			Swap(*a, *b);
+		} while (((a + 1) != b) && (++a != --b));
+	}
+
 public:
 	GUIList() :
 		func_list(NULL),
-		flags(VL_NONE),
+		flags(VL_FIRST_SORT),
 		sort_type(0),
 		resort_timer(1)
 	{};
@@ -78,7 +94,7 @@ public:
 	void SetSortType(uint8 n_type)
 	{
 		if (this->sort_type != n_type) {
-			SETBITS(this->flags, VL_RESORT);
+			SETBITS(this->flags, VL_RESORT | VL_FIRST_SORT);
 			this->sort_type = n_type;
 		}
 	}
@@ -110,6 +126,8 @@ public:
 			CLRBITS(this->flags, VL_DESC);
 		}
 		this->sort_type = l.criteria;
+
+		SETBITS(this->flags, VL_FIRST_SORT);
 	}
 
 	/**
@@ -158,21 +176,16 @@ public:
 	{
 		this->flags ^= VL_DESC;
 
-		if (this->IsSortable()) {
-			T *a = this->data;
-			T *b = a + (this->items - 1);
-
-			do {
-				Swap(*a, *b);
-			} while (((a + 1) != b) && (++a != --b));
-		}
+		if (this->IsSortable()) this->Reverse();
 	}
 
 	/**
 	 * GnomeSort algorithm
 	 *  This sorting uses a slightly modifyied Gnome search.
 	 *  The basic Gnome search trys to sort already sorted
-	 *  list parts. The modification skips these.
+	 *  list parts. The modification skips these. For the first
+	 *  sorting we use qsort since it is faster for irregular
+	 *  sorted data.
 	 *
 	 * @param compare The function to compare two list items
 	 * */
@@ -188,12 +201,20 @@ public:
 		/* Do not sort when the list is not sortable */
 		if (!this->IsSortable()) return;
 
+		const bool desc = HASBITS(this->flags, VL_DESC);
+
+		if (HASBITS(this->flags, VL_FIRST_SORT)) {
+			qsort(this->data, this->items, sizeof(T), (int (*)(const void *a, const void *b))compare);
+
+			if (desc) this->Reverse();
+			return;
+		}
+
 		T *a = this->data;
 		T *b = a + 1;
 
 		uint length = this->items;
 		uint offset = 0; // Jump variable
-		const bool desc = HASBITS(this->flags, VL_DESC);
 
 		while (length > 1) {
 			const int diff = compare(a, b);
