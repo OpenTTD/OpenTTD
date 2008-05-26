@@ -178,16 +178,13 @@ typedef GUIList<const Station*> GUIStationList;
  */
 static void BuildStationsList(GUIStationList *sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
 {
-	uint n = 0;
-	const Station *st;
-
 	if (!(sl->flags & VL_REBUILD)) return;
 
-	/* Create array for sorting */
-	const Station **station_sort = MallocT<const Station*>(GetMaxStationIndex() + 1);
+	sl->Clear();
 
 	DEBUG(misc, 3, "Building station list for player %d", owner);
 
+	const Station *st;
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy() && HasStationInUse(st->index, owner))) {
 			if (facilities & st->facilities) { //only stations with selected facilities
@@ -196,28 +193,23 @@ static void BuildStationsList(GUIStationList *sl, PlayerID owner, byte facilitie
 					if (!st->goods[j].cargo.Empty()) {
 						num_waiting_cargo++; //count number of waiting cargo
 						if (HasBit(cargo_filter, j)) {
-							station_sort[n++] = st;
+							*sl->Append() = st;
 							break;
 						}
 					}
 				}
 				/* stations without waiting cargo */
 				if (num_waiting_cargo == 0 && include_empty) {
-					station_sort[n++] = st;
+					*sl->Append() = st;
 				}
 			}
 		}
 	}
 
-	free((void*)sl->sort_list);
-	sl->sort_list = MallocT<const Station*>(n);
-	sl->list_length = n;
-
-	for (uint i = 0; i < n; ++i) sl->sort_list[i] = station_sort[i];
+	sl->Compact();
 
 	sl->flags &= ~VL_REBUILD;
 	sl->flags |= VL_RESORT;
-	free((void*)station_sort);
 }
 
 
@@ -239,7 +231,7 @@ static void SortStationsList(GUIStationList *sl)
 
 	_internal_sort_order = sl->flags & VL_DESC;
 	_last_station = NULL; // used for "cache" in namesorting
-	qsort((void*)sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), _station_sorter[sl->sort_type]);
+	qsort((void*)sl->Begin(), sl->Length(), sizeof(sl->Begin()), _station_sorter[sl->sort_type]);
 
 	sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 	sl->flags &= ~VL_RESORT;
@@ -311,7 +303,6 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 		this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
 		this->SetWidgetLoweredState(SLW_NOCARGOWAITING, include_empty);
 
-		this->sort_list = NULL;
 		this->flags = VL_REBUILD;
 		this->sort_type = station_sort.criteria;
 		if (station_sort.order) this->flags |= VL_DESC;
@@ -329,7 +320,7 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 		BuildStationsList(this, owner, facilities, _cargo_filter, include_empty);
 		SortStationsList(this);
 
-		SetVScrollCount(this, this->list_length);
+		SetVScrollCount(this, this->Length());
 
 		/* draw widgets, with player's name in the caption */
 		SetDParam(0, owner);
@@ -375,11 +366,11 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 			return;
 		}
 
-		int max = min(this->vscroll.pos + this->vscroll.cap, this->list_length);
+		int max = min(this->vscroll.pos + this->vscroll.cap, this->Length());
 		y = 40; // start of the list-widget
 
 		for (int i = this->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
-			const Station *st = this->sort_list[i];
+			const Station *st = *this->Get(i);
 			int x;
 
 			assert(st->xy != 0);
@@ -413,9 +404,9 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 				id_v += this->vscroll.pos;
 
-				if (id_v >= this->list_length) return; // click out of list bound
+				if (id_v >= this->Length()) return; // click out of list bound
 
-				const Station *st = this->sort_list[id_v];
+				const Station *st = *this->Get(id_v);
 				/* do not check HasStationInUse - it is slow and may be invalid */
 				assert(st->owner == (PlayerID)this->window_number || (st->owner == OWNER_NONE && !st->IsBuoy()));
 

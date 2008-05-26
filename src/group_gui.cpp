@@ -32,22 +32,16 @@ typedef GUIList<const Group*> GUIGroupList;
 
 static void BuildGroupList(GUIGroupList *gl, PlayerID owner, VehicleType vehicle_type)
 {
-	uint n = 0;
-
 	if (!(gl->flags & VL_REBUILD)) return;
 
-	const Group **list = MallocT<const Group*>(GetGroupArraySize());
+	gl->Clear();
 
 	const Group *g;
 	FOR_ALL_GROUPS(g) {
-		if (g->owner == owner && g->vehicle_type == vehicle_type) list[n++] = g;
+		if (g->owner == owner && g->vehicle_type != vehicle_type) *gl->Append() = g;
 	}
 
-	gl->sort_list = ReallocT(gl->sort_list, n);
-	gl->list_length = n;
-
-	for (uint i = 0; i < n; ++i) gl->sort_list[i] = list[i];
-	free(list);
+	gl->Compact();
 
 	gl->flags &= ~VL_REBUILD;
 	gl->flags |= VL_RESORT;
@@ -87,7 +81,7 @@ static void SortGroupList(GUIGroupList *gl)
 {
 	if (!(gl->flags & VL_RESORT)) return;
 
-	qsort((void*)gl->sort_list, gl->list_length, sizeof(gl->sort_list[0]), GroupNameSorter);
+	qsort((void*)gl->Begin(), gl->Length(), sizeof(gl->Begin()), GroupNameSorter);
 
 	gl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 	gl->flags &= ~VL_RESORT;
@@ -223,12 +217,12 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
 		}
 
-		this->vehicles.sort_list = NULL;
+		this->vehicles.Clear();
 		this->vehicles.sort_type = this->sorting->criteria;
 		this->vehicles.flags = VL_REBUILD | (this->sorting->order ? VL_DESC : VL_NONE);
 		this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
-		this->groups.sort_list = NULL;
+		this->groups.Clear();
 		this->groups.flags = VL_REBUILD | VL_NONE;
 		this->groups.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
 
@@ -280,8 +274,6 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 	~VehicleGroupWindow()
 	{
-		free((void*)this->vehicles.sort_list);
-		free((void*)this->groups.sort_list);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -313,17 +305,17 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 		BuildGroupList(&this->groups, owner, this->vehicle_type);
 		SortGroupList(&this->groups);
 
-		SetVScrollCount(this, this->groups.list_length);
-		SetVScroll2Count(this, this->vehicles.list_length);
+		SetVScrollCount(this, this->groups.Length());
+		SetVScroll2Count(this, this->vehicles.Length());
 
 		/* The drop down menu is out, *but* it may not be used, retract it. */
-		if (this->vehicles.list_length == 0 && this->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
+		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
 			this->RaiseWidget(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN);
 			HideDropDownMenu(this);
 		}
 
 		/* Disable all lists management button when the list is empty */
-		this->SetWidgetsDisabledState(this->vehicles.list_length == 0 || _local_player != owner,
+		this->SetWidgetsDisabledState(this->vehicles.Length() == 0 || _local_player != owner,
 				GRP_WIDGET_STOP_ALL,
 				GRP_WIDGET_START_ALL,
 				GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
@@ -352,7 +344,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 				We list all vehicles or ungrouped vehicles */
 		if (IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel)) {
 			SetDParam(0, owner);
-			SetDParam(1, this->vehicles.list_length);
+			SetDParam(1, this->vehicles.Length());
 
 			switch (this->vehicle_type) {
 				case VEH_TRAIN:
@@ -434,9 +426,9 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 		DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
-		max = min(this->vscroll.pos + this->vscroll.cap, this->groups.list_length);
+		max = min(this->vscroll.pos + this->vscroll.cap, this->groups.Length());
 		for (i = this->vscroll.pos ; i < max ; ++i) {
-			const Group *g = this->groups.sort_list[i];
+			const Group *g = this->groups[i];
 
 			assert(g->owner == owner);
 
@@ -454,9 +446,9 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
 		/* Draw Matrix Vehicle according to the vehicle list built before */
-		max = min(this->vscroll2.pos + this->vscroll2.cap, this->vehicles.list_length);
+		max = min(this->vscroll2.pos + this->vscroll2.cap, this->vehicles.Length());
 		for (i = this->vscroll2.pos ; i < max ; ++i) {
-			const Vehicle* v = this->vehicles.sort_list[i];
+			const Vehicle* v = this->vehicles[i];
 
 			assert(v->type == this->vehicle_type && v->owner == owner);
 
@@ -521,9 +513,9 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 				id_g += this->vscroll.pos;
 
-				if (id_g >= this->groups.list_length) return;
+				if (id_g >= this->groups.Length()) return;
 
-				this->group_sel = this->groups.sort_list[id_g]->index;;
+				this->group_sel = this->groups[id_g]->index;;
 
 				this->vehicles.flags |= VL_REBUILD;
 				this->SetDirty();
@@ -538,9 +530,9 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 				id_v += this->vscroll2.pos;
 
-				if (id_v >= this->vehicles.list_length) return; // click out of list bound
+				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
-				v = this->vehicles.sort_list[id_v];
+				v = this->vehicles[id_v];
 
 				this->vehicle_sel = v->index;
 
@@ -628,9 +620,9 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 				id_g += this->vscroll.pos;
 
-				if (id_g >= this->groups.list_length) return;
+				if (id_g >= this->groups.Length()) return;
 
-				DoCommandP(0, this->groups.sort_list[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, this->groups[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
 				break;
 			}
@@ -648,9 +640,9 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 
 				id_v += this->vscroll2.pos;
 
-				if (id_v >= this->vehicles.list_length) return; // click out of list bound
+				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
-				v = this->vehicles.sort_list[id_v];
+				v = this->vehicles[id_v];
 
 				if (vindex == v->index) {
 					ShowVehicleViewWindow(v);
@@ -693,7 +685,7 @@ struct VehicleGroupWindow : public Window, public VehicleListBase {
 				break;
 
 			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-				assert(this->vehicles.list_length != 0);
+				assert(this->vehicles.Length() != 0);
 
 				switch (index) {
 					case GALF_REPLACE: // Replace window

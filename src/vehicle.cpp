@@ -1335,35 +1335,6 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
 }
 
 /**
- * @param sort_list list to store the list in. Either NULL or the length length_of_array tells
- * @param length_of_array informs the length allocated for sort_list. This is not the same as the number of vehicles in the list. Needs to be 0 when sort_list is NULL
- * @param type type of vehicle
- * @param owner PlayerID of owner to generate a list for
- * @param index This parameter has different meanings depending on window_type
- *    <ul>
- *      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
- *      <li>VLW_SHARED_ORDERS: index of order to generate a list for<li>
- *      <li>VLW_STANDARD: not used<li>
- *      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
- *      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
- *    </ul>
- * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
- * @return the number of vehicles added to the list
- */
-uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
-{
-	VehicleList list;
-	GenerateVehicleSortList(&list, type, owner, index, window_type);
-
-	if (list.Length() > 0) {
-		*sort_list = ReallocT(*sort_list, list.Length());
-		memcpy(*sort_list, list.Begin(), sizeof(list.Begin()) * list.Length());
-	}
-
-	return list.Length();
-}
-
-/**
  * Generate a list of vehicles based on window type.
  * @param list        Pointer to list to add vehicles to
  * @param type        Type of vehicle

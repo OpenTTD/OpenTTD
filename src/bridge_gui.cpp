@@ -120,7 +120,7 @@ private:
 
 	void BuildBridge(uint8 i)
 	{
-		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->sort_list[i].index,
+		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->Get(i)->index,
 				CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
 	}
 
@@ -130,7 +130,7 @@ private:
 		/* Skip sorting if resort bit is not set */
 		if (!(bridges->flags & VL_RESORT)) return;
 
-		qsort(this->bridges->sort_list, this->bridges->list_length, sizeof(this->bridges->sort_list[0]), _bridge_sorter[_bridge_sorting.criteria]);
+		qsort(this->bridges->Begin(), this->bridges->Length(), sizeof(this->bridges->Begin()), _bridge_sorter[_bridge_sorting.criteria]);
 
 		/* Display the current sort variant */
 		this->widget[BBSW_DROPDOWN_CRITERIA].data = _bridge_sort_listing[this->bridges->sort_type];
@@ -155,7 +155,7 @@ public:
 		this->widget[BBSW_CAPTION].data = (GB(this->type, 15, 2) == TRANSPORT_ROAD) ? STR_1803_SELECT_ROAD_BRIDGE : STR_100D_SELECT_RAIL_BRIDGE;
 
 		this->resize.step_height = 22;
-		this->vscroll.count = bl->list_length;
+		this->vscroll.count = bl->Length();
 
 		if (this->last_size <= 4) {
 			this->vscroll.cap = 4;
@@ -171,7 +171,6 @@ public:
 
 	~BuildBridgeWindow()
 	{
-		free(this->bridges->sort_list);
 		delete bridges;
 	}
 
@@ -183,10 +182,10 @@ public:
 
 		uint y = this->widget[BBSW_BRIDGE_LIST].top + 2;
 
-		for (int i = this->vscroll.pos; (i < (this->vscroll.cap + this->vscroll.pos)) && (i < this->bridges->list_length); i++) {
-			const BridgeSpec *b = this->bridges->sort_list[i].spec;
+		for (int i = this->vscroll.pos; (i < (this->vscroll.cap + this->vscroll.pos)) && (i < (int)this->bridges->Length()); i++) {
+			const BridgeSpec *b = this->bridges->Get(i)->spec;
 
-			SetDParam(2, this->bridges->sort_list[i].cost);
+			SetDParam(2, this->bridges->Get(i)->cost);
 			SetDParam(1, b->speed * 10 / 16);
 			SetDParam(0, b->material);
 
@@ -200,7 +199,7 @@ public:
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		const uint8 i = keycode - '1';
-		if (i < 9 && i < this->bridges->list_length) {
+		if (i < 9 && i < this->bridges->Length()) {
 			/* Build the requested bridge */
 			this->BuildBridge(i);
 			delete this;
@@ -217,7 +216,7 @@ public:
 				uint i = ((int)pt.y - this->widget[BBSW_BRIDGE_LIST].top) / this->resize.step_height;
 				if (i < this->vscroll.cap) {
 					i += this->vscroll.pos;
-					if (i < this->bridges->list_length) {
+					if (i < this->bridges->Length()) {
 						this->BuildBridge(i);
 						delete this;
 					}
@@ -254,7 +253,7 @@ public:
 	{
 		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 		this->widget[BBSW_BRIDGE_LIST].data = (this->vscroll.cap << 8) + 1;
-		SetVScrollCount(this, this->bridges->list_length);
+		SetVScrollCount(this, this->bridges->Length());
 
 		this->last_size = this->vscroll.cap;
 	}
@@ -284,35 +283,6 @@ static const WindowDesc _build_bridge_desc = {
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_build_bridge_widgets,
 };
-
-/**
- * Add a buildable bridge to the list.
- *  If the list is empty a new one is created.
- *
- * @param bl The list which we want to manage
- * @param item The item to add
- * @return The pointer to the list
- */
-static GUIBridgeList *PushBridgeList(GUIBridgeList *bl, BuildBridgeData item)
-{
-	if (bl == NULL) {
-		/* Create the list if needed */
-		bl = new GUIBridgeList();
-		bl->flags |= VL_RESORT;
-		if (_bridge_sorting.order) bl->flags |= VL_DESC;
-		bl->list_length = 1;
-		bl->sort_type = _bridge_sorting.criteria;
-	} else {
-		/* Resize the list */
-		bl->list_length++;
-	}
-
-	bl->sort_list = ReallocT(bl->sort_list, bl->list_length);
-
-	bl->sort_list[bl->list_length - 1] = item;
-
-	return bl;
-}
 
 /**
  * Prepare the data for the build a bridge window.
@@ -350,24 +320,26 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 		/* total length of bridge */
 		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
 
+		bl = new GUIBridgeList();
+
 		/* loop for all bridgetypes */
 		for (BridgeType brd_type = 0; brd_type != MAX_BRIDGES; brd_type++) {
 			if (CheckBridge_Stuff(brd_type, bridge_len)) {
 				/* bridge is accepted, add to list */
-				BuildBridgeData item;
-				item.index = brd_type;
-				item.spec = GetBridgeSpec(brd_type);
+				BuildBridgeData *item = bl->Append();
+				item->index = brd_type;
+				item->spec = GetBridgeSpec(brd_type);
 				/* Add to terraforming & bulldozing costs the cost of the
 				 * bridge itself (not computed with DC_QUERY_COST) */
-				item.cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * item.spec->price) >> 8);
-				bl = PushBridgeList(bl, item);
+				item->cost = ret.GetCost() + (((int64)tot_bridgedata_len * _price.build_bridge * item->spec->price) >> 8);
 			}
 		}
 	}
 
-	if (bl != NULL) {
+	if (bl != NULL && bl->Length() != 0) {
 		new BuildBridgeWindow(&_build_bridge_desc, start, end, type, bl);
 	} else {
+		if (bl != NULL) delete bl;
 		ShowErrorMessage(errmsg, STR_5015_CAN_T_BUILD_BRIDGE_HERE, TileX(end) * TILE_SIZE, TileY(end) * TILE_SIZE);
 	}
 }

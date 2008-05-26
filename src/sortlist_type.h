@@ -5,6 +5,8 @@
 #ifndef SORTLIST_TYPE_H
 #define SORTLIST_TYPE_H
 
+#include "misc/smallvec.h"
+
 enum SortListFlags {
 	VL_NONE    = 0,      ///< no sort
 	VL_DESC    = 1 << 0, ///< sort descending or ascending
@@ -20,10 +22,8 @@ struct Listing {
 };
 
 template <typename T>
-struct GUIList {
-	T* sort_list;        ///< The items to sort.
+struct GUIList : public SmallVector<T, 32> {
 	SortListFlags flags; ///< used to control sorting/resorting/etc.
-	uint16 list_length;  ///< length of the list being sorted
 	uint16 resort_timer; ///< resort list after a given amount of ticks if set
 	byte sort_type;      ///< what criteria to sort on
 };

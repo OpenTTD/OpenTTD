@@ -812,27 +812,21 @@ typedef GUIList<const Industry*> GUIIndustryList;
  */
 static void BuildIndustriesList(GUIIndustryList *sl)
 {
-	uint n = 0;
-	const Industry *i;
-
 	if (!(sl->flags & VL_REBUILD)) return;
 
-	/* Create array for sorting */
-	const Industry **industry_sort = MallocT<const Industry*>(GetMaxIndustryIndex() + 1);
+	sl->Clear();
 
 	DEBUG(misc, 3, "Building industry list");
 
-	FOR_ALL_INDUSTRIES(i) industry_sort[n++] = i;
+	const Industry *i;
+	FOR_ALL_INDUSTRIES(i) {
+		*sl->Append() = i;
+	}
 
-	free((void*)sl->sort_list);
-	sl->sort_list = MallocT<const Industry*>(n);
-	sl->list_length = n;
-
-	for (uint i = 0; i < n; ++i) sl->sort_list[i] = industry_sort[i];
+	sl->Compact();
 
 	sl->flags &= ~VL_REBUILD;
 	sl->flags |= VL_RESORT;
-	free((void*)industry_sort);
 }
 
 
@@ -847,7 +841,7 @@ static void SortIndustriesList(GUIIndustryList *sl)
 
 	_internal_sort_order = (sl->sort_type << 1) | (sl->flags & VL_DESC);
 	_last_industry = NULL; // used for "cache" in namesorting
-	qsort((void*)sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), &GeneralIndustrySorter);
+	qsort((void*)sl->Begin(), sl->Length(), sizeof(sl->Begin()), &GeneralIndustrySorter);
 
 	sl->flags &= ~VL_RESORT;
 }
@@ -865,7 +859,6 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 		this->resize.step_height = 10;
 		this->FindWindowPlacementAndResize(desc);
 
-		this->sort_list = NULL;
 		this->flags = VL_REBUILD;
 		this->sort_type = industry_sort.criteria;
 		if (industry_sort.order) this->flags |= VL_DESC;
@@ -876,16 +869,16 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 		BuildIndustriesList(this);
 		SortIndustriesList(this);
 
-		SetVScrollCount(this, this->list_length);
+		SetVScrollCount(this, this->Length());
 
 		this->DrawWidgets();
 		this->DrawSortButtonState(IDW_SORTBYNAME + this->sort_type, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
-		int max = min(this->vscroll.pos + this->vscroll.cap, this->list_length);
+		int max = min(this->vscroll.pos + this->vscroll.cap, this->Length());
 		int y = 28; // start of the list-widget
 
 		for (int n = this->vscroll.pos; n < max; ++n) {
-			const Industry* i = this->sort_list[n];
+			const Industry* i = *this->Get(n);
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
 			byte p = 0;
 
@@ -940,11 +933,11 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 
 				if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
 				p = y + this->vscroll.pos;
-				if (p < this->list_length) {
+				if (p < this->Length()) {
 					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow(this->sort_list[p]->xy);
+						ShowExtraViewPortWindow((*this->Get(p))->xy);
 					} else {
-						ScrollMainWindowToTile(this->sort_list[p]->xy);
+						ScrollMainWindowToTile((*this->Get(p))->xy);
 					}
 				}
 			} break;

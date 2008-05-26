@@ -92,7 +92,7 @@ void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 
 
 	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, index);
 
-	vl->vehicles.list_length = GenerateVehicleSortList(&vl->vehicles.sort_list, &vl->vehicles.list_length, vl->vehicle_type, owner, index, window_type);
+	GenerateVehicleSortList(&vl->vehicles, vl->vehicle_type, owner, index, window_type);
 
 	vl->vehicles.flags &= ~VL_REBUILD;
 	vl->vehicles.flags |= VL_RESORT;
@@ -110,7 +110,7 @@ void SortVehicleList(VehicleListBase *vl)
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
 
 	_internal_sort_order = (vl->vehicles.flags & VL_DESC) != 0;
-	qsort((void*)vl->vehicles.sort_list, vl->vehicles.list_length, sizeof(vl->vehicles.sort_list[0]),
+	qsort((void*)vl->vehicles.Begin(), vl->vehicles.Length(), sizeof(vl->vehicles.Begin()),
 		_vehicle_sorter[vl->vehicles.sort_type]);
 
 	vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
@@ -806,8 +806,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		PlayerID player = (PlayerID)GB(this->window_number, 0, 8);
 
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
-		this->vehicles.list_length = 0;
-		this->vehicles.sort_list = NULL;
+		this->vehicles.Clear();
 		this->caption_color = player;
 
 		/* Hide the widgets that we will not use in this window
@@ -925,7 +924,6 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 
 	~VehicleListWindow()
 	{
-		free((void*)this->vehicles.sort_list);
 	}
 
 	virtual void OnPaint()
@@ -940,12 +938,12 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 
 		BuildVehicleList(this, owner, index, window_type);
 		SortVehicleList(this);
-		SetVScrollCount(this, this->vehicles.list_length);
+		SetVScrollCount(this, this->vehicles.Length());
 
 		/* draw the widgets */
 		switch (window_type) {
 			case VLW_SHARED_ORDERS: /* Shared Orders */
-				if (this->vehicles.list_length == 0) {
+				if (this->vehicles.Length() == 0) {
 					/* We can't open this window without vehicles using this order
 					* and we should close the window when deleting the order      */
 					NOT_REACHED();
@@ -981,7 +979,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 			default: NOT_REACHED(); break;
 		}
 
-		this->SetWidgetsDisabledState(this->vehicles.list_length == 0,
+		this->SetWidgetsDisabledState(this->vehicles.Length() == 0,
 			VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 			VLW_WIDGET_STOP_ALL,
 			VLW_WIDGET_START_ALL,
@@ -994,9 +992,9 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
-		max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.list_length);
+		max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
 		for (i = this->vscroll.pos; i < max; ++i) {
-			const Vehicle *v = this->vehicles.sort_list[i];
+			const Vehicle *v = this->vehicles[i];
 			StringID str;
 
 			SetDParam(0, v->GetDisplayProfitThisYear());
@@ -1049,9 +1047,9 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 
 				id_v += this->vscroll.pos;
 
-				if (id_v >= this->vehicles.list_length) return; // click out of list bound
+				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
-				v = this->vehicles.sort_list[id_v];
+				v = this->vehicles[id_v];
 
 				ShowVehicleViewWindow(v);
 			} break;
@@ -1100,7 +1098,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 				}
 				break;
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN:
-				assert(this->vehicles.list_length != 0);
+				assert(this->vehicles.Length() != 0);
 
 				switch (index) {
 					case 0: /* Replace window */
