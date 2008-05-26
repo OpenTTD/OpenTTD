@@ -40,7 +40,7 @@ public: // Temporary: public for conversion only
 	 */
 	bool IsSortable() const
 	{
-		return (this->data != NULL && this->items > 2);
+		return (this->data != NULL && this->items >= 2);
 	}
 
 	/**
@@ -178,11 +178,15 @@ public:
 	 * */
 	FORCEINLINE void Sort(SortFunction compare)
 	{
-		/* Do not sort when the list is not sortable */
-		if (!this->IsSortable()) return;
-
 		/* Do not sort if the resort bit is not set */
 		if (!HASBITS(this->flags, VL_RESORT)) return;
+
+		CLRBITS(this->flags, VL_RESORT);
+
+		this->ResetResortTimer();
+
+		/* Do not sort when the list is not sortable */
+		if (!this->IsSortable()) return;
 
 		T *a = this->data;
 		T *b = a + 1;
@@ -213,10 +217,6 @@ public:
 				}
 			}
 		}
-
-		this->ResetResortTimer();
-
-		CLRBITS(this->flags, VL_RESORT);
 	}
 
 	/**
