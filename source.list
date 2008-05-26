@@ -576,7 +576,6 @@ yapf/yapf_node_rail.hpp
 yapf/yapf_node_road.hpp
 yapf/yapf_rail.cpp
 yapf/yapf_road.cpp
-yapf/yapf_settings.h
 yapf/yapf_ship.cpp
 
 # Video

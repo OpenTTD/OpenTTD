@@ -2492,10 +2492,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\yapf\yapf_settings.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\yapf\yapf_ship.cpp"
 				>
 			</File>
