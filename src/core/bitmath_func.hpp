@@ -97,7 +97,7 @@ template<typename T> static inline bool HasBit(const T x, const uint8 y)
  * @param y The second value
  * @return True if at least one bit is set in both values, false else.
  */
-#define HASBITS(x, y) ((x) & (y))
+#define HASBITS(x, y) (((x) & (y)) != 0)
 
 /**
  * Set a bit in a variable.
