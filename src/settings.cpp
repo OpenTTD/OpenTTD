@@ -2104,9 +2104,20 @@ const SettingDesc *GetPatchFromName(const char *name, uint *i)
 {
 	const SettingDesc *sd;
 
+	/* First check all full names */
 	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
 		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (strcmp(sd->desc.name, name) == 0) return sd;
+	}
+
+	/* Then check the shortcut variant of the name. */
+	for (*i = 0, sd = _patch_settings; sd->save.cmd != SL_END; sd++, (*i)++) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
+		const char *short_name = strchr(sd->desc.name, '.');
+		if (short_name != NULL) {
+			short_name++;
+			if (strcmp(short_name, name) == 0) return sd;
+		}
 	}
 
 	return NULL;
