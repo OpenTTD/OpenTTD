@@ -1730,21 +1730,21 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	uint newnoise_level = GetAirportNoiseLevelForTown(afc, t->xy, tile);
 
 	/* Check if local auth would allow a new airport */
-	bool autority_refused;
+	bool authority_refused;
 
 	if (_settings.economy.station_noise_level) {
 		/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
-		autority_refused = (t->noise_reached + newnoise_level) > t->MaxTownNoise();
+		authority_refused = (t->noise_reached + newnoise_level) > t->MaxTownNoise();
 	} else {
 		uint num = 0;
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
 		}
-		autority_refused = (num >= 2);
+		authority_refused = (num >= 2);
 	}
 
-	if (autority_refused) {
+	if (authority_refused) {
 		SetDParam(0, t->index);
 		return_cmd_error(STR_2035_LOCAL_AUTHORITY_REFUSES);
 	}
