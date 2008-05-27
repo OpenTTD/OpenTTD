@@ -282,7 +282,6 @@ static void ParseResolution(int res[2], const char *s)
 static void InitializeDynamicVariables()
 {
 	/* Dynamic stuff needs to be initialized somewhere... */
-	_town_sort     = NULL;
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
 }
@@ -317,8 +316,6 @@ static void ShutdownGame()
 	_Group_pool.CleanPool();
 	_CargoPacket_pool.CleanPool();
 	_Engine_pool.CleanPool();
-
-	free((void*)_town_sort);
 
 	free(_config_file);
 

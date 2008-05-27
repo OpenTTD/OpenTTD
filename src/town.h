@@ -345,10 +345,6 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold);
 #define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (t->IsValid())
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
-extern bool _town_sort_dirty;
-extern byte _town_sort_order;
-extern const Town **_town_sort;
-
 extern Town *_cleared_town;
 extern int _cleared_town_rating;
 

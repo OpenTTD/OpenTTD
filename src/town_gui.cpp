@@ -24,9 +24,12 @@
 #include "settings_type.h"
 #include "tilehighlight_func.h"
 #include "string_func.h"
+#include "sortlist_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
+
+typedef GUIList<const Town*> GUITownList;
 
 extern bool GenerateTowns();
 static int _scengen_town_size = 1; // depress medium-sized towns per default
@@ -448,64 +451,6 @@ static const Widget _town_directory_widgets[] = {
 };
 
 
-/* used to get a sorted list of the towns */
-static uint _num_town_sort;
-
-static char _bufcache[64];
-static const Town* _last_town;
-
-static int CDECL TownNameSorter(const void *a, const void *b)
-{
-	const Town* ta = *(const Town**)a;
-	const Town* tb = *(const Town**)b;
-	char buf1[64];
-	int r;
-
-	SetDParam(0, ta->index);
-	GetString(buf1, STR_TOWN, lastof(buf1));
-
-	/* If 'b' is the same town as in the last round, use the cached value
-	 *  We do this to speed stuff up ('b' is called with the same value a lot of
-	 *  times after eachother) */
-	if (tb != _last_town) {
-		_last_town = tb;
-		SetDParam(0, tb->index);
-		GetString(_bufcache, STR_TOWN, lastof(_bufcache));
-	}
-
-	r = strcmp(buf1, _bufcache);
-	if (_town_sort_order & 1) r = -r;
-	return r;
-}
-
-static int CDECL TownPopSorter(const void *a, const void *b)
-{
-	const Town* ta = *(const Town**)a;
-	const Town* tb = *(const Town**)b;
-	int r = ta->population - tb->population;
-	if (_town_sort_order & 1) r = -r;
-	return r;
-}
-
-static void MakeSortedTownList()
-{
-	const Town* t;
-	uint n = 0;
-
-	/* Create array for sorting */
-	_town_sort = ReallocT(_town_sort, GetMaxTownIndex() + 1);
-
-	FOR_ALL_TOWNS(t) _town_sort[n++] = t;
-
-	_num_town_sort = n;
-
-	_last_town = NULL; // used for "cache"
-	qsort((void*)_town_sort, n, sizeof(_town_sort[0]), _town_sort_order & 2 ? TownPopSorter : TownNameSorter);
-
-	DEBUG(misc, 3, "Resorting towns list");
-}
-
-
 struct TownDirectoryWindow : public Window {
 private:
 	enum TownDirectoryWidget {
@@ -514,6 +459,65 @@ private:
 		TDW_CENTERTOWN,
 	};
 
+	/* Runtime saved values */
+	static Listing last_sorting;
+	static const Town *last_town;
+
+	/* Constants for sorting towns */
+	static const GUITownList::SortFunction * const sorter_funcs[];
+
+	GUITownList towns;
+
+	void BuildTownList()
+	{
+		if (!this->towns.NeedRebuild()) return;
+
+		this->towns.Clear();
+
+		const Town *t;
+		FOR_ALL_TOWNS(t) {
+			*this->towns.Append() = t;
+		}
+
+		this->towns.Compact();
+		this->towns.RebuildDone();
+	}
+
+	void SortTownList()
+	{
+		last_town = NULL;
+		this->towns.Sort();
+	}
+
+	/** Sort by town name */
+	static int CDECL TownNameSorter(const Town * const *a, const Town * const *b)
+	{
+		static char buf_cache[64];
+		const Town *ta = *a;
+		const Town *tb = *b;
+		char buf[64];
+
+		SetDParam(0, ta->index);
+		GetString(buf, STR_TOWN, lastof(buf));
+
+		/* If 'b' is the same town as in the last round, use the cached value
+		 * We do this to speed stuff up ('b' is called with the same value a lot of
+		 * times after eachother) */
+		if (tb != last_town) {
+			last_town = tb;
+			SetDParam(0, tb->index);
+			GetString(buf_cache, STR_TOWN, lastof(buf_cache));
+		}
+
+		return strcmp(buf, buf_cache);
+	}
+
+	/** Sort by population */
+	static int CDECL TownPopulationSorter(const Town * const *a, const Town * const *b)
+	{
+		return (*a)->population - (*b)->population;
+	}
+
 public:
 	TownDirectoryWindow(const WindowDesc *desc) : Window(desc, 0)
 	{
@@ -521,28 +525,35 @@ public:
 		this->resize.step_height = 10;
 		this->resize.height = this->height - 10 * 6; // minimum of 10 items in the list, each item 10 high
 
+		this->towns.SetListing(this->last_sorting);
+		this->towns.SetSortFuncs(this->sorter_funcs);
+		this->towns.ForceRebuild();
+
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	~TownDirectoryWindow()
+	{
+		this->last_sorting = this->towns.GetListing();
 	}
 
 	virtual void OnPaint()
 	{
-		if (_town_sort_dirty) {
-			_town_sort_dirty = false;
-			MakeSortedTownList();
-		}
+		this->BuildTownList();
+		this->SortTownList();
 
-		SetVScrollCount(this, _num_town_sort);
+		SetVScrollCount(this, this->towns.Length());
 
 		this->DrawWidgets();
-		this->DrawSortButtonState((_town_sort_order <= 1) ? TDW_SORTNAME : TDW_SORTPOPULATION, _town_sort_order & 1 ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(this->towns.sort_type == 0 ? TDW_SORTNAME : TDW_SORTPOPULATION, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		{
 			int n = 0;
 			uint16 i = this->vscroll.pos;
 			int y = 28;
 
-			while (i < _num_town_sort) {
-				const Town* t = _town_sort[i];
+			while (i < this->towns.Length()) {
+				const Town *t = this->towns[i];
 
 				assert(t->xy);
 
@@ -564,29 +575,33 @@ public:
 	{
 		switch (widget) {
 			case TDW_SORTNAME: /* Sort by Name ascending/descending */
-				_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
-				_town_sort_dirty = true;
+				if (this->towns.SortType() == 0) {
+					this->towns.ToggleSortOrder();
+				} else {
+					this->towns.SetSortType(0);
+				}
 				this->SetDirty();
 				break;
 
 			case TDW_SORTPOPULATION: /* Sort by Population ascending/descending */
-				_town_sort_order = (_town_sort_order == 2) ? 3 : 2;
-				_town_sort_dirty = true;
+				if (this->towns.SortType() == 1) {
+					this->towns.ToggleSortOrder();
+				} else {
+					this->towns.SetSortType(1);
+				}
 				this->SetDirty();
 				break;
 
 			case TDW_CENTERTOWN: { /* Click on Town Matrix */
-				const Town* t;
-
 				uint16 id_v = (pt.y - 28) / 10;
 
 				if (id_v >= this->vscroll.cap) return; // click out of bounds
 
 				id_v += this->vscroll.pos;
 
-				if (id_v >= _num_town_sort) return; // click out of town bounds
+				if (id_v >= this->towns.Length()) return; // click out of town bounds
 
-				t = _town_sort[id_v];
+				const Town *t = this->towns[id_v];
 				assert(t->xy);
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(t->xy);
@@ -607,6 +622,24 @@ public:
 	{
 		this->vscroll.cap += delta.y / 10;
 	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (data == 0) {
+			this->towns.ForceRebuild();
+		} else {
+			this->towns.ForceResort();
+		}
+	}
+};
+
+Listing TownDirectoryWindow::last_sorting = {false, 0};
+const Town *TownDirectoryWindow::last_town = NULL;
+
+/* Available town directory sorting functions */
+const GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
+	&TownNameSorter,
+	&TownPopulationSorter,
 };
 
 static const WindowDesc _town_directory_desc = {

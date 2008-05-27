@@ -55,10 +55,6 @@
 uint _total_towns;
 HouseSpec _house_specs[HOUSE_MAX];
 
-bool _town_sort_dirty;
-byte _town_sort_order;
-const Town **_town_sort;
-
 Town *_cleared_town;
 int _cleared_town_rating;
 
@@ -82,7 +78,7 @@ Town::~Town()
 	/* Delete town authority window
 	 * and remove from list of sorted towns */
 	DeleteWindowById(WC_TOWN_VIEW, this->index);
-	_town_sort_dirty = true;
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 	_total_towns--;
 
 	/* Delete all industries belonging to the town */
@@ -348,7 +344,7 @@ static void ChangePopulation(Town *t, int mod)
 	InvalidateWindow(WC_TOWN_VIEW, t->index);
 	UpdateTownVirtCoord(t);
 
-	if (_town_sort_order & 2) _town_sort_dirty = true;
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
 }
 
 /**
@@ -1465,7 +1461,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->townnameparts = townnameparts;
 
 	UpdateTownVirtCoord(t);
-	_town_sort_dirty = true;
+	InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 0);
 
 	t->InitializeLayout();
 
@@ -2099,7 +2095,7 @@ CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		t->name = strdup(_cmd_text);
 
 		UpdateTownVirtCoord(t);
-		_town_sort_dirty = true;
+		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
 		UpdateAllStationVirtCoord();
 		UpdateAllWaypointSigns();
 		MarkWholeScreenDirty();
@@ -2565,7 +2561,6 @@ void InitializeTowns()
 	_cur_town_ctr = 0;
 	_cur_town_iter = 0;
 	_total_towns = 0;
-	_town_sort_dirty = true;
 }
 
 static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
@@ -2736,8 +2731,6 @@ static void Load_TOWN()
 
 void AfterLoadTown()
 {
-	_town_sort_dirty = true;
-
 	Town *t;
 	FOR_ALL_TOWNS(t) t->InitializeLayout();
 }
