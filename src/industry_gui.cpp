@@ -841,7 +841,7 @@ static void SortIndustriesList(GUIIndustryList *sl)
 
 	_internal_sort_order = (sl->sort_type << 1) | (sl->flags & VL_DESC);
 	_last_industry = NULL; // used for "cache" in namesorting
-	qsort((void*)sl->Begin(), sl->Length(), sizeof(sl->Begin()), &GeneralIndustrySorter);
+	qsort((void*)sl->Begin(), sl->Length(), sizeof(*sl->Begin()), &GeneralIndustrySorter);
 
 	sl->flags &= ~VL_RESORT;
 }

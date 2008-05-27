@@ -237,7 +237,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		if (this->servers.Length() == 0) return;
 
 		_internal_sort_order = !!(this->servers.flags & VL_DESC);
-		qsort(this->servers.Begin(), this->servers.Length(), sizeof(this->servers.Begin()), ngame_sorter[this->servers.sort_type]);
+		qsort(this->servers.Begin(), this->servers.Length(), sizeof(*this->servers.Begin()), ngame_sorter[this->servers.sort_type]);
 
 		/* After sorting ngl->sort_list contains the sorted items. Put these back
 		 * into the original list. Basically nothing has changed, we are only

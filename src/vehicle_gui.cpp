@@ -110,7 +110,7 @@ void SortVehicleList(VehicleListBase *vl)
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
 
 	_internal_sort_order = (vl->vehicles.flags & VL_DESC) != 0;
-	qsort((void*)vl->vehicles.Begin(), vl->vehicles.Length(), sizeof(vl->vehicles.Begin()),
+	qsort((void*)vl->vehicles.Begin(), vl->vehicles.Length(), sizeof(*vl->vehicles.Begin()),
 		_vehicle_sorter[vl->vehicles.sort_type]);
 
 	vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
@@ -121,7 +121,7 @@ void DepotSortList(VehicleList *list)
 {
 	_internal_sort_order = 0;
 	if (list->Length() < 2) return;
-	qsort((void*)list->Begin(), list->Length(), sizeof(list->Begin()), _vehicle_sorter[0]);
+	qsort((void*)list->Begin(), list->Length(), sizeof(*list->Begin()), _vehicle_sorter[0]);
 }
 
 /** draw the vehicle profit button in the vehicle list window. */
