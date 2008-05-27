@@ -178,7 +178,7 @@ typedef GUIList<const Station*> GUIStationList;
  */
 static void BuildStationsList(GUIStationList *sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
 {
-	if (!(sl->flags & VL_REBUILD)) return;
+	if (!sl->NeedRebuild()) return;
 
 	sl->Clear();
 
@@ -207,9 +207,7 @@ static void BuildStationsList(GUIStationList *sl, PlayerID owner, byte facilitie
 	}
 
 	sl->Compact();
-
-	sl->flags &= ~VL_REBUILD;
-	sl->flags |= VL_RESORT;
+	sl->RebuildDone();
 }
 
 
@@ -240,11 +238,13 @@ static void SortStationsList(GUIStationList *sl)
 /**
  * The list of stations per player.
  */
-struct PlayerStationsWindow : public Window, public GUIStationList
+struct PlayerStationsWindow : public Window
 {
 	static Listing station_sort;
 	static byte facilities;
 	static bool include_empty;
+
+	GUIStationList stations;
 
 	PlayerStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
@@ -303,36 +303,38 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 		this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
 		this->SetWidgetLoweredState(SLW_NOCARGOWAITING, include_empty);
 
-		this->flags = VL_REBUILD;
-		this->sort_type = station_sort.criteria;
-		if (station_sort.order) this->flags |= VL_DESC;
-
-		/* set up resort timer */
-		this->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+		this->stations.SetListing(station_sort);
+		this->stations.ForceRebuild();
+		this->stations.NeedResort();
 
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	~PlayerStationsWindow()
+	{
+		station_sort = this->stations.GetListing();
 	}
 
 	virtual void OnPaint()
 	{
 		PlayerID owner = (PlayerID)this->window_number;
 
-		BuildStationsList(this, owner, facilities, _cargo_filter, include_empty);
-		SortStationsList(this);
+		BuildStationsList(&this->stations, owner, facilities, _cargo_filter, include_empty);
+		SortStationsList(&this->stations);
 
-		SetVScrollCount(this, this->Length());
+		SetVScrollCount(this, this->stations.Length());
 
 		/* draw widgets, with player's name in the caption */
 		SetDParam(0, owner);
 		SetDParam(1, this->vscroll.count);
 
 		/* Set text of sort by dropdown */
-		this->widget[SLW_SORTDROPBTN].data = _station_sort_listing[this->sort_type];
+		this->widget[SLW_SORTDROPBTN].data = _station_sort_listing[this->stations.SortType()];
 
 		this->DrawWidgets();
 
 		/* draw arrow pointing up/down for ascending/descending sorting */
-		this->DrawSortButtonState(SLW_SORTBY, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(SLW_SORTBY, this->stations.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		int cg_ofst;
 		int x = 89;
@@ -366,11 +368,11 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 			return;
 		}
 
-		int max = min(this->vscroll.pos + this->vscroll.cap, this->Length());
+		int max = min(this->vscroll.pos + this->vscroll.cap, this->stations.Length());
 		y = 40; // start of the list-widget
 
 		for (int i = this->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
-			const Station *st = *this->Get(i);
+			const Station *st = this->stations[i];
 			int x;
 
 			assert(st->xy != 0);
@@ -404,9 +406,9 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 				id_v += this->vscroll.pos;
 
-				if (id_v >= this->Length()) return; // click out of list bound
+				if (id_v >= this->stations.Length()) return; // click out of list bound
 
-				const Station *st = *this->Get(id_v);
+				const Station *st = this->stations[id_v];
 				/* do not check HasStationInUse - it is slow and may be invalid */
 				assert(st->owner == (PlayerID)this->window_number || (st->owner == OWNER_NONE && !st->IsBuoy()));
 
@@ -435,7 +437,7 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 					this->LowerWidget(widget);
 				}
 				this->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-				this->flags |= VL_REBUILD;
+				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
 
@@ -446,7 +448,7 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 				this->LowerWidget(SLW_FACILALL);
 
 				facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-				this->flags |= VL_REBUILD;
+				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
 
@@ -462,22 +464,20 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 				_cargo_filter = _cargo_mask;
 				include_empty = true;
-				this->flags |= VL_REBUILD;
+				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
 			}
 
 			case SLW_SORTBY: // flip sorting method asc/desc
-				this->flags ^= VL_DESC; //DESC-flag
-				station_sort.order = HasBit(this->flags, 0);
-				this->flags |= VL_RESORT;
+				this->stations.ToggleSortOrder();
 				this->flags4 |= 5 << WF_TIMEOUT_SHL;
 				this->LowerWidget(SLW_SORTBY);
 				this->SetDirty();
 				break;
 
 			case SLW_SORTDROPBTN: // select sorting criteria dropdown menu
-				ShowDropDownMenu(this, _station_sort_listing, this->sort_type, SLW_SORTDROPBTN, 0, 0);
+				ShowDropDownMenu(this, _station_sort_listing, this->stations.SortType(), SLW_SORTDROPBTN, 0, 0);
 				break;
 
 			case SLW_NOCARGOWAITING:
@@ -494,8 +494,8 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 					this->LowerWidget(SLW_NOCARGOWAITING);
 				}
-				this->flags |= VL_REBUILD;
 				this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
 
@@ -525,8 +525,8 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 						SetBit(_cargo_filter, c);
 						this->LowerWidget(widget);
 					}
-					this->flags |= VL_REBUILD;
 					this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+					this->stations.ForceRebuild();
 					this->SetDirty();
 				}
 				break;
@@ -535,22 +535,17 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 	virtual void OnDropdownSelect(int widget, int index)
 	{
-		if (this->sort_type != index) {
-			/* value has changed -> resort */
-			this->sort_type = index;
-			station_sort.criteria = this->sort_type;
-			this->flags |= VL_RESORT;
+		if (this->stations.SortType() != index) {
+			this->stations.SetSortType(index);
+			this->SetDirty();
 		}
-		this->SetDirty();
 	}
 
 	virtual void OnTick()
 	{
 		if (_pause_game != 0) return;
-		if (--this->resort_timer == 0) {
+		if (this->stations.NeedResort()) {
 			DEBUG(misc, 3, "Periodic rebuild station list player %d", this->window_number);
-			this->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			this->flags |= VL_REBUILD;
 			this->SetDirty();
 		}
 	}
@@ -568,7 +563,11 @@ struct PlayerStationsWindow : public Window, public GUIStationList
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+		if (data == 0) {
+			this->stations.ForceRebuild();
+		} else {
+			this->stations.ForceResort();
+		}
 	}
 };
 
