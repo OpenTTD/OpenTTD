@@ -1688,11 +1688,11 @@ uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_til
 
 	/* now, we want to have the distance segmented using the distance judged bareable by town
 	 * This will give us the coefficient of reduction the distance provides. */
-	uint noise_reduction = min(afc->noise_level, distance / town_tolerance_distance);
+	uint noise_reduction = distance / town_tolerance_distance;
 
-	/* If the noise reduction equals the airport noise itself, don't give it for free. Use it all minus 1.
+	/* If the noise reduction equals the airport noise itself, don't give it for free.
 	 * Otherwise, simply reduce the airport's level. */
-	return max(1U, noise_reduction == afc->noise_level ? afc->noise_level - 1 : afc->noise_level - noise_reduction);
+	return noise_reduction >= afc->noise_level ? 1 : afc->noise_level - noise_reduction;
 }
 
 /** Place an Airport.
