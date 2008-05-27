@@ -849,8 +849,10 @@ static void SortIndustriesList(GUIIndustryList *sl)
 /**
  * The list of industries.
  */
-struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
+struct IndustryDirectoryWindow : public Window {
 	static Listing industry_sort;
+
+	GUIIndustryList industries;
 
 	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
@@ -859,26 +861,26 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 		this->resize.step_height = 10;
 		this->FindWindowPlacementAndResize(desc);
 
-		this->flags = VL_REBUILD;
-		this->sort_type = industry_sort.criteria;
-		if (industry_sort.order) this->flags |= VL_DESC;
+		this->industries.flags = VL_REBUILD;
+		this->industries.sort_type = industry_sort.criteria;
+		if (industry_sort.order) this->industries.flags |= VL_DESC;
 	}
 
 	virtual void OnPaint()
 	{
-		BuildIndustriesList(this);
-		SortIndustriesList(this);
+		BuildIndustriesList(&this->industries);
+		SortIndustriesList(&this->industries);
 
-		SetVScrollCount(this, this->Length());
+		SetVScrollCount(this, this->industries.Length());
 
 		this->DrawWidgets();
-		this->DrawSortButtonState(IDW_SORTBYNAME + this->sort_type, this->flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(IDW_SORTBYNAME + this->industries.sort_type, this->industries.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
-		int max = min(this->vscroll.pos + this->vscroll.cap, this->Length());
+		int max = min(this->vscroll.pos + this->vscroll.cap, this->industries.Length());
 		int y = 28; // start of the list-widget
 
 		for (int n = this->vscroll.pos; n < max; ++n) {
-			const Industry* i = *this->Get(n);
+			const Industry* i = this->industries[n];
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
 			byte p = 0;
 
@@ -915,15 +917,15 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 			case IDW_SORTBYTYPE:
 			case IDW_SORTBYPROD:
 			case IDW_SORTBYTRANSPORT:
-				if (this->sort_type == (widget - IDW_SORTBYNAME)) {
-					this->flags ^= VL_DESC;
+				if (this->industries.sort_type == (widget - IDW_SORTBYNAME)) {
+					this->industries.flags ^= VL_DESC;
 				} else {
-					this->sort_type = widget - IDW_SORTBYNAME;
-					this->flags &= ~VL_DESC;
+					this->industries.sort_type = widget - IDW_SORTBYNAME;
+					this->industries.flags &= ~VL_DESC;
 				}
-				industry_sort.criteria = this->sort_type;
-				industry_sort.order = HasBit(this->flags, 0);
-				this->flags |= VL_RESORT;
+				industry_sort.criteria = this->industries.sort_type;
+				industry_sort.order = HasBit(this->industries.flags, 0);
+				this->industries.flags |= VL_RESORT;
 				this->SetDirty();
 				break;
 
@@ -933,11 +935,11 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 
 				if (!IsInsideMM(y, 0, this->vscroll.cap)) return;
 				p = y + this->vscroll.pos;
-				if (p < this->Length()) {
+				if (p < this->industries.Length()) {
 					if (_ctrl_pressed) {
-						ShowExtraViewPortWindow((*this->Get(p))->xy);
+						ShowExtraViewPortWindow(this->industries[p]->xy);
 					} else {
-						ScrollMainWindowToTile((*this->Get(p))->xy);
+						ScrollMainWindowToTile(this->industries[p]->xy);
 					}
 				}
 			} break;
@@ -951,12 +953,12 @@ struct IndustryDirectoryWindow : public Window, public GUIIndustryList {
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+		this->industries.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
 		this->InvalidateWidget(IDW_INDUSTRY_LIST);
 	}
 };
 
-Listing IndustryDirectoryWindow::industry_sort = {0, 0};
+Listing IndustryDirectoryWindow::industry_sort = {false, 0};
 
 /** Window definition of the industy directory gui */
 static const WindowDesc _industry_directory_desc = {
