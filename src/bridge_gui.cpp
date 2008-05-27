@@ -74,19 +74,19 @@ private:
 	GUIBridgeList *bridges;
 
 	/** Sort the bridges by their index */
-	static int BridgeIndexSorter(const BuildBridgeData *a, const BuildBridgeData *b)
+	static int CDECL BridgeIndexSorter(const BuildBridgeData *a, const BuildBridgeData *b)
 	{
 		return a->index - b->index;
 	}
 
 	/** Sort the bridges by their price */
-	static int BridgePriceSorter(const BuildBridgeData *a, const BuildBridgeData *b)
+	static int CDECL BridgePriceSorter(const BuildBridgeData *a, const BuildBridgeData *b)
 	{
 		return a->cost - b->cost;
 	}
 
 	/** Sort the bridges by their maximum speed */
-	static int BridgeSpeedSorter(const BuildBridgeData *a, const BuildBridgeData *b)
+	static int CDECL BridgeSpeedSorter(const BuildBridgeData *a, const BuildBridgeData *b)
 	{
 		return a->spec->speed - b->spec->speed;
 	}

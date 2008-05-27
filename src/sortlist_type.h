@@ -26,7 +26,7 @@ struct Listing {
 template <typename T>
 class GUIList : public SmallVector<T, 32> {
 public:
-	typedef int SortFunction(const T*, const T*);
+	typedef int CDECL SortFunction(const T*, const T*);
 
 public: // Temporary: public for conversion only
 	SortFunction* const *func_list; ///< The sort criteria functions
@@ -189,7 +189,7 @@ public:
 	 *
 	 * @param compare The function to compare two list items
 	 * */
-	FORCEINLINE void Sort(SortFunction compare)
+	FORCEINLINE void Sort(SortFunction *compare)
 	{
 		/* Do not sort if the resort bit is not set */
 		if (!HASBITS(this->flags, VL_RESORT)) return;
@@ -204,7 +204,7 @@ public:
 		const bool desc = HASBITS(this->flags, VL_DESC);
 
 		if (HASBITS(this->flags, VL_FIRST_SORT)) {
-			qsort(this->data, this->items, sizeof(T), (int (*)(const void *a, const void *b))compare);
+			qsort(this->data, this->items, sizeof(T), (int (CDECL *)(const void *, const void *))compare);
 
 			if (desc) this->Reverse();
 			return;

@@ -147,7 +147,7 @@ private:
 	}
 
 	/** Sort the groups by their name */
-	static int GroupNameSorter(const Group* const *a, const Group* const *b)
+	static int CDECL GroupNameSorter(const Group* const *a, const Group* const *b)
 	{
 		static const Group *last_group[2] = { NULL, NULL };
 		static char         last_name[2][64] = { "", "" };
@@ -295,7 +295,7 @@ public:
 		SortVehicleList(this);
 
 		this->BuildGroupList(owner);
-		this->groups.Sort(GroupNameSorter);
+		this->groups.Sort(&GroupNameSorter);
 
 		SetVScrollCount(this, this->groups.Length());
 		SetVScroll2Count(this, this->vehicles.Length());
