@@ -97,7 +97,7 @@ protected:
 
 	/* Constants for sorting stations */
 	static const StringID sorter_names[];
-	static const GUIStationList::SortFunction *const sorter_funcs[];
+	static GUIStationList::SortFunction *const sorter_funcs[];
 
 	GUIStationList stations;
 
@@ -543,7 +543,7 @@ uint32 PlayerStationsWindow::cargo_filter = UINT32_MAX;
 const Station *PlayerStationsWindow::last_station = NULL;
 
 /* Availible station sorting functions */
-const GUIStationList::SortFunction *const PlayerStationsWindow::sorter_funcs[] = {
+GUIStationList::SortFunction *const PlayerStationsWindow::sorter_funcs[] = {
 	&StationNameSorter,
 	&StationTypeSorter,
 	&StationWaitingSorter,
