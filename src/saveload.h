@@ -314,7 +314,7 @@ void SlSetArrayIndex(uint index);
 int SlIterateArray();
 
 void SlAutolength(AutolengthProc *proc, void *arg);
-uint SlGetFieldLength();
+size_t SlGetFieldLength();
 void SlSetLength(size_t length);
 size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld);
 
@@ -322,7 +322,7 @@ byte SlReadByte();
 void SlWriteByte(byte b);
 
 void SlGlobList(const SaveLoadGlobVarList *sldg);
-void SlArray(void *array, uint length, VarType conv);
+void SlArray(void *array, size_t length, VarType conv);
 void SlObject(void *object, const SaveLoad *sld);
 bool SlObjectMember(void *object, const SaveLoad *sld);
 

@@ -29,7 +29,7 @@ static void OpenBankFile(const char *filename)
 	uint i;
 
 	FioOpenFile(SOUND_SLOT, filename);
-	uint pos = FioGetPos();
+	size_t pos = FioGetPos();
 	uint count = FioReadDword() / 8;
 
 	/* Simple check for the correct number of original sounds. */

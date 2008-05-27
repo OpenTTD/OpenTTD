@@ -201,6 +201,11 @@
 		typedef _W64 unsigned int UINT_PTR, *PUINT_PTR;
 	#endif /* WIN32 && !_WIN64 && !WIN64 */
 
+	#if defined(_WIN64) || defined(WIN64)
+		#define fseek _fseeki64
+	#endif /* _WIN64 || WIN64 */
+
+
 	#define GCC_PACK
 
 	/* This is needed to zlib uses the stdcall calling convention on visual studio */

@@ -43,7 +43,7 @@ struct Fio {
 static Fio _fio;
 
 /* Get current position in file */
-uint32 FioGetPos()
+size_t FioGetPos()
 {
 	return _fio.pos + (_fio.buffer - _fio.buffer_end);
 }
@@ -53,7 +53,7 @@ const char *FioGetFilename(uint8 slot)
 	return _fio.shortnames[slot];
 }
 
-void FioSeekTo(uint32 pos, int mode)
+void FioSeekTo(size_t pos, int mode)
 {
 	if (mode == SEEK_CUR) pos += FioGetPos();
 	_fio.buffer = _fio.buffer_end = _fio.buffer_start + FIO_BUFFER_SIZE;

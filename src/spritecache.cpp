@@ -25,7 +25,7 @@ uint _sprite_cache_size = 4;
 struct SpriteCache {
 	void *ptr;
 	uint32 id;
-	uint32 file_pos;
+	size_t file_pos;
 	uint16 file_slot;
 	int16 lru;
 };
@@ -123,7 +123,7 @@ void* AllocSprite(size_t);
 static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 {
 	uint8 file_slot = sc->file_slot;
-	uint32 file_pos = sc->file_pos;
+	size_t file_pos = sc->file_pos;
 
 	DEBUG(sprite, 9, "Load sprite %d", id);
 
@@ -241,7 +241,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 {
 	SpriteCache *sc;
-	uint32 file_pos = FioGetPos();
+	size_t file_pos = FioGetPos();
 
 	if (!ReadSpriteHeaderSkipData()) return false;
 
@@ -279,9 +279,9 @@ static inline MemBlock* NextBlock(MemBlock* block)
 	return (MemBlock*)((byte*)block + (block->size & ~S_FREE_MASK));
 }
 
-static uint32 GetSpriteCacheUsage()
+static size_t GetSpriteCacheUsage()
 {
-	uint32 tot_size = 0;
+	size_t tot_size = 0;
 	MemBlock* s;
 
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {

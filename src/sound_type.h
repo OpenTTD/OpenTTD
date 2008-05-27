@@ -20,8 +20,8 @@ struct MusicFileSettings {
 
 struct FileEntry {
 	uint8 file_slot;
-	uint32 file_offset;
-	uint32 file_size;
+	size_t file_offset;
+	size_t file_size;
 	uint16 rate;
 	uint8 bits_per_sample;
 	uint8 channels;

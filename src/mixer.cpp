@@ -104,7 +104,7 @@ MixerChannel *MxAllocateChannel()
 	return NULL;
 }
 
-void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint flags)
+void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, uint flags)
 {
 	mc->memory = mem;
 	mc->flags = flags;
@@ -114,12 +114,12 @@ void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint 
 	mc->frac_speed = (rate << 16) / _play_rate;
 
 	/* adjust the magnitude to prevent overflow */
-	while (size & 0xFFFF0000) {
+	while (size & ~0xFFFF) {
 		size >>= 1;
 		rate = (rate >> 1) + 1;
 	}
 
-	mc->samples_left = size * _play_rate / rate;
+	mc->samples_left = (uint)size * _play_rate / rate;
 }
 
 void MxSetChannelVolume(MixerChannel *mc, uint left, uint right)

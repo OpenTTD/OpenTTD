@@ -1183,7 +1183,7 @@ m3_m4_offset:
 			break;
 	}
 
-	*out_len = op - out;
+	*out_len = (lzo_uint)(op - out);
 	return pd(in_end,ii);
 }
 
@@ -1233,7 +1233,7 @@ DO_COMPRESS	  ( const lzo_byte *in , lzo_uint  in_len,
 	*op++ = 0;
 	*op++ = 0;
 
-	*out_len = op - out;
+	*out_len = (lzo_uint)(op - out);
 	return LZO_E_OK;
 }
 
@@ -1555,7 +1555,7 @@ match_next:
 
 eof_found:
 	assert(t == 1);
-	*out_len = op - out;
+	*out_len = (lzo_uint)(op - out);
 	return (ip == ip_end ? LZO_E_OK :
 		   (ip < ip_end  ? LZO_E_INPUT_NOT_CONSUMED : LZO_E_INPUT_OVERRUN));
 

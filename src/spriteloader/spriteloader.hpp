@@ -26,7 +26,7 @@ public:
 	/**
 	 * Load a sprite from the disk and return a sprite struct which is the same for all loaders.
 	 */
-	virtual bool LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, uint32 file_pos) = 0;
+	virtual bool LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos) = 0;
 
 	virtual ~SpriteLoader() { }
 };

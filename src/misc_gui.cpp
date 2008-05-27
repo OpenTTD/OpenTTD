@@ -751,7 +751,7 @@ static void DelChar(Textbuf *tb, bool backspace)
 
 	if (backspace) s = Utf8PrevChar(s);
 
-	size_t len = Utf8Decode(&c, s);
+	uint16 len = (uint16)Utf8Decode(&c, s);
 	uint width = GetCharacterWidth(FS_NORMAL, c);
 
 	tb->width  -= width;
@@ -807,7 +807,7 @@ void DeleteTextBufferAll(Textbuf *tb)
 bool InsertTextBufferChar(Textbuf *tb, WChar key)
 {
 	const byte charwidth = GetCharacterWidth(FS_NORMAL, key);
-	size_t len = Utf8CharLen(key);
+	uint16 len = (uint16)Utf8CharLen(key);
 	if (tb->length < (tb->maxlength - len) && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
 		memmove(tb->buf + tb->caretpos + len, tb->buf + tb->caretpos, tb->length - tb->caretpos + 1);
 		Utf8Encode(tb->buf + tb->caretpos, key);
@@ -847,7 +847,7 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 			if (tb->caretpos < tb->length) {
 				WChar c;
 
-				tb->caretpos   += Utf8Decode(&c, tb->buf + tb->caretpos);
+				tb->caretpos   += (uint16)Utf8Decode(&c, tb->buf + tb->caretpos);
 				tb->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
 
 				return true;

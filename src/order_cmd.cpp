@@ -1836,7 +1836,7 @@ static void Load_ORDR()
 	if (CheckSavegameVersionOldStyle(5, 2)) {
 		/* Version older than 5.2 did not have a ->next pointer. Convert them
 		    (in the old days, the orderlist was 5000 items big) */
-		uint len = SlGetFieldLength();
+		size_t len = SlGetFieldLength();
 		uint i;
 
 		if (CheckSavegameVersion(5)) {

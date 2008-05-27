@@ -682,7 +682,7 @@ typedef std::list<CargoData> CargoDataList;
  */
 struct StationViewWindow : public Window {
 	uint32 cargo;                 ///< Bitmask of cargo types to expand
-	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
+	size_t cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
 
 	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
@@ -751,7 +751,7 @@ struct StationViewWindow : public Window {
 				}
 			}
 		}
-		SetVScrollCount(this, cargolist.size() + 1); // update scrollbar
+		SetVScrollCount(this, (int)cargolist.size() + 1); // update scrollbar
 
 		/* disable some buttons */
 		this->SetWidgetDisabledState(SVW_RENAME,   st->owner != _local_player);

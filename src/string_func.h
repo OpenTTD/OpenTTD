@@ -81,7 +81,7 @@ static inline WChar Utf8Consume(const char **s)
  * @param c Unicode character.
  * @return Length of UTF-8 encoding for character.
  */
-static inline size_t Utf8CharLen(WChar c)
+static inline int8 Utf8CharLen(WChar c)
 {
 	if (c < 0x80)       return 1;
 	if (c < 0x800)      return 2;
@@ -100,7 +100,7 @@ static inline size_t Utf8CharLen(WChar c)
  * @param c char to query length of
  * @return requested size
  */
-static inline size_t Utf8EncodedCharLen(char c)
+static inline int8 Utf8EncodedCharLen(char c)
 {
 	if (GB(c, 3, 5) == 0x1E) return 4;
 	if (GB(c, 4, 4) == 0x0E) return 3;

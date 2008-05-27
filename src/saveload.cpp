@@ -43,8 +43,8 @@ uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
 uint16 _sl_version;       ///< the major savegame version identifier
 byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
-typedef void WriterProc(uint len);
-typedef uint ReaderProc();
+typedef void WriterProc(size_t len);
+typedef size_t ReaderProc();
 
 /** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
 static struct {
@@ -53,10 +53,10 @@ static struct {
 	byte block_mode;                     ///< ???
 	bool error;                          ///< did an error occur or not
 
-	int obj_len;                         ///< the length of the current object we are busy with
+	size_t obj_len;                      ///< the length of the current object we are busy with
 	int array_index, last_array_index;   ///< in the case of an array, the current and last positions
 
-	uint32 offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
+	size_t offs_base;                    ///< the offset in number of bytes since we started writing data (eg uncompressed savegame size)
 
 	WriterProc *write_bytes;             ///< savegame writer function
 	ReaderProc *read_bytes;              ///< savegame loader function
@@ -123,7 +123,7 @@ void ProcessAsyncSaveFinish()
  */
 static void SlReadFill()
 {
-	uint len = _sl.read_bytes();
+	size_t len = _sl.read_bytes();
 	if (len == 0) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Unexpected end of chunk");
 
 	_sl.bufp = _sl.buf;
@@ -131,7 +131,7 @@ static void SlReadFill()
 	_sl.offs_base += len;
 }
 
-static inline uint32 SlGetOffs() {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
+static inline size_t SlGetOffs() {return _sl.offs_base - (_sl.bufe - _sl.bufp);}
 
 /** Return the size in bytes of a certain type of normal/atomic variable
  * as it appears in memory. See VarTypes
@@ -283,27 +283,27 @@ static uint SlReadSimpleGamma()
  * @param i Index being written
  */
 
-static void SlWriteSimpleGamma(uint i)
+static void SlWriteSimpleGamma(size_t i)
 {
 	if (i >= (1 << 7)) {
 		if (i >= (1 << 14)) {
 			if (i >= (1 << 21)) {
 				assert(i < (1 << 28));
-				SlWriteByte((byte)0xE0 | (i >> 24));
+				SlWriteByte((byte)(0xE0 | (i >> 24)));
 				SlWriteByte((byte)(i >> 16));
 			} else {
-				SlWriteByte((byte)0xC0 | (i >> 16));
+				SlWriteByte((byte)(0xC0 | (i >> 16)));
 			}
 			SlWriteByte((byte)(i >> 8));
 		} else {
 			SlWriteByte((byte)(0x80 | (i >> 8)));
 		}
 	}
-	SlWriteByte(i);
+	SlWriteByte((byte)i);
 }
 
 /** Return how many bytes used to encode a gamma value */
-static inline uint SlGetGammaLength(uint i)
+static inline uint SlGetGammaLength(size_t i)
 {
 	return 1 + (i >= (1 << 7)) + (i >= (1 << 14)) + (i >= (1 << 21));
 }
@@ -312,8 +312,8 @@ static inline uint SlReadSparseIndex() {return SlReadSimpleGamma();}
 static inline void SlWriteSparseIndex(uint index) {SlWriteSimpleGamma(index);}
 
 static inline uint SlReadArrayLength() {return SlReadSimpleGamma();}
-static inline void SlWriteArrayLength(uint length) {SlWriteSimpleGamma(length);}
-static inline uint SlGetArrayLength(uint length) {return SlGetGammaLength(length);}
+static inline void SlWriteArrayLength(size_t length) {SlWriteSimpleGamma(length);}
+static inline uint SlGetArrayLength(size_t length) {return SlGetGammaLength(length);}
 
 void SlSetArrayIndex(uint index)
 {
@@ -321,7 +321,7 @@ void SlSetArrayIndex(uint index)
 	_sl.array_index = index;
 }
 
-static uint32 _next_offs;
+static size_t _next_offs;
 
 /**
  * Iterate through the elements of an array and read the whole thing
@@ -375,7 +375,7 @@ void SlSetLength(size_t length)
 			 * The lower 24 bits are normal
 			 * The uppermost 4 bits are bits 24:27 */
 			assert(length < (1 << 28));
-			SlWriteUint32((length & 0xFFFFFF) | ((length >> 24) << 28));
+			SlWriteUint32((uint32)((length & 0xFFFFFF) | ((length >> 24) << 28)));
 			break;
 		case CH_ARRAY:
 			assert(_sl.last_array_index <= _sl.array_index);
@@ -390,7 +390,7 @@ void SlSetLength(size_t length)
 		default: NOT_REACHED();
 		} break;
 	case NL_CALCLENGTH:
-		_sl.obj_len += length;
+		_sl.obj_len += (int)length;
 		break;
 	}
 }
@@ -422,7 +422,7 @@ static inline void SlSkipBytes(size_t length)
 }
 
 /* Get the length of the current object */
-uint SlGetFieldLength() {return _sl.obj_len;}
+size_t SlGetFieldLength() {return _sl.obj_len;}
 
 /** Return a signed-long version of the value of a setting
  * @param ptr pointer to the variable
@@ -628,7 +628,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
  * @param length The length of the array counted in elements
  * @param conv VarType type of the variable that is used in calculating the size
  */
-static inline size_t SlCalcArrayLen(uint length, VarType conv)
+static inline size_t SlCalcArrayLen(size_t length, VarType conv)
 {
 	return SlCalcConvFileLen(conv) * length;
 }
@@ -639,7 +639,7 @@ static inline size_t SlCalcArrayLen(uint length, VarType conv)
  * @param length The length of the array in elements
  * @param conv VarType type of the atomic array (int, byte, uint64, etc.)
  */
-void SlArray(void *array, uint length, VarType conv)
+void SlArray(void *array, size_t length, VarType conv)
 {
 	/* Automatically calculate the length? */
 	if (_sl.need_length != NL_NONE) {
@@ -710,7 +710,7 @@ void SlList(void *list, SLRefType conv)
 	std::list<void *> *l = (std::list<void *> *) list;
 
 	if (_sl.save) {
-		SlWriteUint32(l->size());
+		SlWriteUint32((uint32)l->size());
 
 		std::list<void *>::iterator iter;
 		for (iter = l->begin(); iter != l->end(); ++iter) {
@@ -884,7 +884,7 @@ void SlGlobList(const SaveLoadGlobVarList *sldg)
  */
 void SlAutolength(AutolengthProc *proc, void *arg)
 {
-	uint32 offs;
+	size_t offs;
 
 	assert(_sl.save);
 
@@ -912,8 +912,8 @@ void SlAutolength(AutolengthProc *proc, void *arg)
 static void SlLoadChunk(const ChunkHandler *ch)
 {
 	byte m = SlReadByte();
-	uint32 len;
-	uint32 endoffs;
+	size_t len;
+	size_t endoffs;
 
 	_sl.block_mode = m;
 	_sl.obj_len = 0;
@@ -1052,7 +1052,7 @@ static void SlLoadChunks()
 
 #include "minilzo.h"
 
-static uint ReadLZO()
+static size_t ReadLZO()
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	uint32 tmp[2];
@@ -1085,13 +1085,13 @@ static uint ReadLZO()
 
 /* p contains the pointer to the buffer, len contains the pointer to the length.
  * len bytes will be written, p and l will be updated to reflect the next buffer. */
-static void WriteLZO(uint size)
+static void WriteLZO(size_t size)
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
 	byte wrkmem[sizeof(byte*)*4096];
 	uint outlen;
 
-	lzo1x_1_compress(_sl.buf, size, out + sizeof(uint32)*2, &outlen, wrkmem);
+	lzo1x_1_compress(_sl.buf, (lzo_uint)size, out + sizeof(uint32)*2, &outlen, wrkmem);
 	((uint32*)out)[1] = TO_BE32(outlen);
 	((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
 	if (fwrite(out, outlen + sizeof(uint32)*2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
@@ -1112,12 +1112,12 @@ static void UninitLZO()
 /*********************************************
  ******** START OF NOCOMP CODE (uncompressed)*
  *********************************************/
-static uint ReadNoComp()
+static size_t ReadNoComp()
 {
 	return fread(_sl.buf, 1, LZO_SIZE, _sl.fh);
 }
 
-static void WriteNoComp(uint size)
+static void WriteNoComp(size_t size)
 {
 	if (fwrite(_sl.buf, 1, size, _sl.fh) != size) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
@@ -1170,9 +1170,9 @@ static void UnInitMem()
 	_Savegame_pool.CleanPool();
 }
 
-static void WriteMem(uint size)
+static void WriteMem(size_t size)
 {
-	_ts.count += size;
+	_ts.count += (uint)size;
 	/* Allocate new block and new buffer-pointer */
 	_Savegame_pool.AddBlockIfNeeded(_ts.count);
 	_sl.buf = GetSavegame(_ts.count);
@@ -1197,7 +1197,7 @@ static bool InitReadZlib()
 	return true;
 }
 
-static uint ReadZlib()
+static size_t ReadZlib()
 {
 	int r;
 
@@ -1237,13 +1237,13 @@ static bool InitWriteZlib()
 	return true;
 }
 
-static void WriteZlibLoop(z_streamp z, byte *p, uint len, int mode)
+static void WriteZlibLoop(z_streamp z, byte *p, size_t len, int mode)
 {
 	byte buf[1024]; // output buffer
 	int r;
 	uint n;
 	z->next_in = p;
-	z->avail_in = len;
+	z->avail_in = (uInt)len;
 	do {
 		z->next_out = buf;
 		z->avail_out = sizeof(buf);
@@ -1258,7 +1258,7 @@ static void WriteZlibLoop(z_streamp z, byte *p, uint len, int mode)
 	} while (z->avail_in || !z->avail_out);
 }
 
-static void WriteZlib(uint len)
+static void WriteZlib(size_t len)
 {
 	WriteZlibLoop(&_z, _sl.buf, len, 0);
 }

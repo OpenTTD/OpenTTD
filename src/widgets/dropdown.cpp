@@ -274,7 +274,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		} else {
 			/* ... and lastly if it won't, enable the scroll bar and fit the
 			 * list in below the widget */
-			int avg_height = list_height / list->size();
+			int avg_height = list_height / (int)list->size();
 			int rows = (screen_bottom - 4 - top) / avg_height;
 			height = rows * avg_height;
 			scroll = true;
@@ -306,8 +306,8 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 		dw->widget[0].right -= 12;
 
 		/* Capacity is the average number of items visible */
-		dw->vscroll.cap   = height * list->size() / list_height;
-		dw->vscroll.count = list->size();
+		dw->vscroll.cap   = height * (uint16)list->size() / list_height;
+		dw->vscroll.count = (uint16)list->size();
 	}
 
 	dw->desc_flags = WDF_DEF_WIDGET;

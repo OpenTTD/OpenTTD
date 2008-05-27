@@ -464,7 +464,7 @@ private:
 	static const Town *last_town;
 
 	/* Constants for sorting towns */
-	static const GUITownList::SortFunction * const sorter_funcs[];
+	static GUITownList::SortFunction * const sorter_funcs[];
 
 	GUITownList towns;
 
@@ -637,7 +637,7 @@ Listing TownDirectoryWindow::last_sorting = {false, 0};
 const Town *TownDirectoryWindow::last_town = NULL;
 
 /* Available town directory sorting functions */
-const GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
+GUITownList::SortFunction * const TownDirectoryWindow::sorter_funcs[] = {
 	&TownNameSorter,
 	&TownPopulationSorter,
 };

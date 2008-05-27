@@ -52,7 +52,7 @@ enum GrfSpecFeature {
 struct GRFLabel {
 	byte label;
 	uint32 nfo_line;
-	uint32 pos;
+	size_t pos;
 	struct GRFLabel *next;
 };
 

@@ -116,7 +116,7 @@ static void Load_ANIT()
 		return;
 	}
 
-	_animated_tile_count = SlGetFieldLength() / sizeof(*_animated_tile_list);
+	_animated_tile_count = (uint)SlGetFieldLength() / sizeof(*_animated_tile_list);
 
 	/* Determine a nice rounded size for the amount of allocated tiles */
 	_animated_tile_allocated = 256;

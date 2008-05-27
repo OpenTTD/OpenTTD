@@ -170,11 +170,11 @@ static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 i
 	return true;
 }
 
-bool SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, uint32 file_pos)
+bool SpriteLoaderPNG::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos)
 {
 	const char *filename = FioGetFilename(file_slot);
-	if (!LoadPNG(sprite, filename, file_pos, false)) return false;
-	if (!LoadPNG(sprite, filename, file_pos, true)) return false;
+	if (!LoadPNG(sprite, filename, (uint32)file_pos, false)) return false;
+	if (!LoadPNG(sprite, filename, (uint32)file_pos, true)) return false;
 	return true;
 }
 

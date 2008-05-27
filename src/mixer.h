@@ -18,7 +18,7 @@ bool MxInitialize(uint rate);
 void MxMixSamples(void *buffer, uint samples);
 
 MixerChannel *MxAllocateChannel();
-void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, uint size, uint rate, uint flags);
+void MxSetChannelRawSrc(MixerChannel *mc, int8 *mem, size_t size, uint rate, uint flags);
 void MxSetChannelVolume(MixerChannel *mc, uint left, uint right);
 void MxActivateChannel(MixerChannel*);
 

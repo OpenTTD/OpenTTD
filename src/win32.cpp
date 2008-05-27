@@ -1090,7 +1090,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	const char *ptr;
 
 	WChar c;
-	size_t width, length;
+	uint16 width, length;
 
 	if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
 		OpenClipboard(NULL);
@@ -1122,7 +1122,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 	for (ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
 		if (!IsPrintable(c)) break;
 
-		size_t len = Utf8CharLen(c);
+		byte len = Utf8CharLen(c);
 		if (tb->length + length >= tb->maxlength - len) break;
 
 		byte charwidth = GetCharacterWidth(FS_NORMAL, c);

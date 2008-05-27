@@ -30,7 +30,7 @@ static void Save_CHTS()
 static void Load_CHTS()
 {
 	Cheat *cht = (Cheat*)&_cheats;
-	uint count = SlGetFieldLength() / 2;
+	size_t count = SlGetFieldLength() / 2;
 
 	for (uint i = 0; i < count; i++) {
 		cht[i].been_used = (SlReadByte() != 0);

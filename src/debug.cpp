@@ -74,7 +74,7 @@ void CDECL debug(const char *dbg, ...)
 		char buf2[lengthof(buf) + 32];
 
 		snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
-		send(_debug_socket, buf2, strlen(buf2), 0);
+		send(_debug_socket, buf2, (int)strlen(buf2), 0);
 	} else
 #endif /* ENABLE_NETWORK */
 	{

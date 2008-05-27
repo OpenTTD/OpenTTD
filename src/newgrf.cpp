@@ -3707,7 +3707,7 @@ static void CfgApply(byte *buf, size_t len)
 	 *                 to place where parameter is to be stored. */
 
 	/* Preload the next sprite */
-	uint32 pos = FioGetPos();
+	size_t pos = FioGetPos();
 	uint16 num = FioReadWord();
 	uint8 type = FioReadByte();
 
