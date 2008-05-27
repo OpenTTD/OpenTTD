@@ -205,6 +205,7 @@ public:
 		const bool desc = HASBITS(this->flags, VL_DESC);
 
 		if (HASBITS(this->flags, VL_FIRST_SORT)) {
+			CLRBITS(this->flags, VL_FIRST_SORT);
 			qsort(this->data, this->items, sizeof(T), (int (CDECL *)(const void *, const void *))compare);
 
 			if (desc) this->Reverse();
