@@ -202,11 +202,7 @@ protected:
 		/* Reset name sorter sort cache */
 		this->last_station = NULL;
 
-		/* Display the current sort variant */
-		this->widget[SLW_SORTDROPBTN].data = this->sorter_names[this->stations.SortType()];
-
-		/* Set the modified widgets dirty */
-		this->InvalidateWidget(SLW_SORTDROPBTN);
+		/* Set the modified widget dirty */
 		this->InvalidateWidget(SLW_LIST);
 	}
 
@@ -273,6 +269,8 @@ public:
 		this->stations.ForceRebuild();
 		this->stations.NeedResort();
 		this->SortStationsList();
+
+		this->widget[SLW_SORTDROPBTN].data = this->sorter_names[this->stations.SortType()];
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -501,6 +499,10 @@ public:
 	{
 		if (this->stations.SortType() != index) {
 			this->stations.SetSortType(index);
+
+			/* Display the current sort variant */
+			this->widget[SLW_SORTDROPBTN].data = this->sorter_names[this->stations.SortType()];
+
 			this->SetDirty();
 		}
 	}
