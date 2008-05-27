@@ -74,7 +74,7 @@ static void FioRestoreFile(int slot)
 #endif /* LIMITED_FDS */
 
 /* Seek to a file and a position */
-void FioSeekToFile(uint8 slot, uint32 pos)
+void FioSeekToFile(uint8 slot, size_t pos)
 {
 	FILE *f;
 #if defined(LIMITED_FDS)
