@@ -197,7 +197,7 @@ protected:
 	/** Sort the stations list */
 	void SortStationsList()
 	{
-		this->stations.Sort();
+		if (!this->stations.Sort()) return;
 
 		/* Reset name sorter sort cache */
 		this->last_station = NULL;

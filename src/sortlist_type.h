@@ -188,18 +188,19 @@ public:
 	 *  sorted data.
 	 *
 	 * @param compare The function to compare two list items
+	 * @return true if the list sequence has been altered
 	 * */
-	FORCEINLINE void Sort(SortFunction *compare)
+	FORCEINLINE bool Sort(SortFunction *compare)
 	{
 		/* Do not sort if the resort bit is not set */
-		if (!HASBITS(this->flags, VL_RESORT)) return;
+		if (!HASBITS(this->flags, VL_RESORT)) return false;
 
 		CLRBITS(this->flags, VL_RESORT);
 
 		this->ResetResortTimer();
 
 		/* Do not sort when the list is not sortable */
-		if (!this->IsSortable()) return;
+		if (!this->IsSortable()) return false;
 
 		const bool desc = HASBITS(this->flags, VL_DESC);
 
@@ -207,7 +208,7 @@ public:
 			qsort(this->data, this->items, sizeof(T), (int (CDECL *)(const void *, const void *))compare);
 
 			if (desc) this->Reverse();
-			return;
+			return true;
 		}
 
 		T *a = this->data;
@@ -238,6 +239,7 @@ public:
 				}
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -253,11 +255,13 @@ public:
 	/**
 	 * Overload of Sort()
 	 * Overloaded to reduce external code
+	 *
+	 * @return true if the list sequence has been altered
 	 */
-	void Sort()
+	bool Sort()
 	{
 		assert(this->func_list != NULL);
-		this->Sort(this->func_list[this->sort_type]);
+		return this->Sort(this->func_list[this->sort_type]);
 	}
 
 	/**
