@@ -1000,6 +1000,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\engine_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\engine_type.h"
 				>
 			</File>

@@ -175,6 +175,7 @@ elrail_func.h
 core/endian_func.hpp
 engine_base.h
 engine_func.h
+engine_gui.h
 engine_type.h
 core/enum_type.hpp
 fiber.hpp

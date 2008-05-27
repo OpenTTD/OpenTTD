@@ -15,6 +15,7 @@
 #include "variables.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
+#include "engine_gui.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -190,3 +191,32 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
 	dei->info_proc(engine, w->width >> 1, 129, w->width - 52);
 }
+
+
+/** Sort all items using qsort() and given 'CompareItems' function
+ * @param el list to be sorted
+ * @param compare function for evaluation of the quicksort
+ */
+void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
+{
+	size_t size = el->size();
+	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
+	 * generally, do not sort if there are less than 2 items */
+	if (size < 2) return;
+	qsort(&((*el)[0]), size, sizeof(EngineID), compare); // MorphOS doesn't know vector::at(int) ...
+}
+
+/** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
+ * @param el list to be sorted
+ * @param compare function for evaluation of the quicksort
+ * @param begin start of sorting
+ * @param num_items count of items to be sorted
+ */
+void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
+{
+	assert(begin <= (uint)el->size());
+	assert(begin + num_items <= (uint)el->size());
+	if (num_items < 2) return;
+	qsort(&((*el)[begin]), num_items, sizeof(EngineID), compare);
+}
+
