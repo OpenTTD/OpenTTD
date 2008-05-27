@@ -682,7 +682,7 @@ typedef std::list<CargoData> CargoDataList;
  */
 struct StationViewWindow : public Window {
 	uint32 cargo;                 ///< Bitmask of cargo types to expand
-	size_t cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
+	uint16 cargo_rows[NUM_CARGO]; ///< Header row for each cargo type
 
 	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
@@ -721,7 +721,7 @@ struct StationViewWindow : public Window {
 				cargolist.push_back(CargoData(i, INVALID_STATION, st->goods[i].cargo.Count()));
 
 				/* Set the row for this cargo entry for the expand/hide button */
-				this->cargo_rows[i] = cargolist.size();
+				this->cargo_rows[i] = (uint16)cargolist.size();
 
 				/* Add an entry for each distinct cargo source. */
 				const CargoList::List *packets = st->goods[i].cargo.Packets();
