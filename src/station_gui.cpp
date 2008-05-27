@@ -30,13 +30,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
-
-static StationSortListingTypeFunction StationNameSorter;
-static StationSortListingTypeFunction StationTypeSorter;
-static StationSortListingTypeFunction StationWaitingSorter;
-static StationSortListingTypeFunction StationRatingMaxSorter;
-
 bool _station_show_coverage;
 
 /**
@@ -86,166 +79,138 @@ static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount
 	if (rating != 0) GfxFillRect(x + 1, y, x + rating, y, 0xD0);
 }
 
-const StringID _station_sort_listing[] = {
-	STR_SORT_BY_DROPDOWN_NAME,
-	STR_SORT_BY_FACILITY,
-	STR_SORT_BY_WAITING,
-	STR_SORT_BY_RATING_MAX,
-	INVALID_STRING_ID
-};
-
-static char _bufcache[64];
-static const Station *_last_station;
-static int _internal_sort_order;
-
-static int CDECL StationNameSorter(const void *a, const void *b)
-{
-	const Station *st1 = *(const Station**)a;
-	const Station *st2 = *(const Station**)b;
-	char buf1[64];
-
-	SetDParam(0, st1->index);
-	GetString(buf1, STR_STATION, lastof(buf1));
-
-	if (st2 != _last_station) {
-		_last_station = st2;
-		SetDParam(0, st2->index);
-		GetString(_bufcache, STR_STATION, lastof(_bufcache));
-	}
-
-	int r = strcmp(buf1, _bufcache); // sort by name
-	return (_internal_sort_order & 1) ? -r : r;
-}
-
-static int CDECL StationTypeSorter(const void *a, const void *b)
-{
-	const Station *st1 = *(const Station**)a;
-	const Station *st2 = *(const Station**)b;
-	return (_internal_sort_order & 1) ? st2->facilities - st1->facilities : st1->facilities - st2->facilities;
-}
-
-static const uint32 _cargo_filter_max = UINT32_MAX;
-static uint32 _cargo_filter = _cargo_filter_max;
-
-static int CDECL StationWaitingSorter(const void *a, const void *b)
-{
-	const Station *st1 = *(const Station**)a;
-	const Station *st2 = *(const Station**)b;
-	Money sum1 = 0, sum2 = 0;
-
-	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (!HasBit(_cargo_filter, j)) continue;
-		if (!st1->goods[j].cargo.Empty()) sum1 += GetTransportedGoodsIncome(st1->goods[j].cargo.Count(), 20, 50, j);
-		if (!st2->goods[j].cargo.Empty()) sum2 += GetTransportedGoodsIncome(st2->goods[j].cargo.Count(), 20, 50, j);
-	}
-
-	return (_internal_sort_order & 1) ? ClampToI32(sum2 - sum1) : ClampToI32(sum1 - sum2);
-}
-
-/**
- * qsort-compatible version of sorting two stations by maximum rating
- * @param a   First object to be sorted, must be of type (const Station *)
- * @param b   Second object to be sorted, must be of type (const Station *)
- * @return    The sort order
- * @retval >0 a should come before b in the list
- * @retval <0 b should come before a in the list
- */
-static int CDECL StationRatingMaxSorter(const void *a, const void *b)
-{
-	const Station *st1 = *(const Station**)a;
-	const Station *st2 = *(const Station**)b;
-	byte maxr1 = 0;
-	byte maxr2 = 0;
-
-	for (CargoID j = 0; j < NUM_CARGO; j++) {
-		if (HasBit(st1->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, st1->goods[j].rating);
-		if (HasBit(st2->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, st2->goods[j].rating);
-	}
-
-	return (_internal_sort_order & 1) ? maxr2 - maxr1 : maxr1 - maxr2;
-}
-
 typedef GUIList<const Station*> GUIStationList;
-
-/**
- * Rebuild station list if the VL_REBUILD flag is set
- *
- * @param sl pointer to plstations_d (station list and flags)
- * @param owner player whose stations are to be in list
- * @param facilities types of stations of interest
- * @param cargo_filter bitmap of cargo types to include
- * @param include_empty whether we should include stations without waiting cargo
- */
-static void BuildStationsList(GUIStationList *sl, PlayerID owner, byte facilities, uint32 cargo_filter, bool include_empty)
-{
-	if (!sl->NeedRebuild()) return;
-
-	sl->Clear();
-
-	DEBUG(misc, 3, "Building station list for player %d", owner);
-
-	const Station *st;
-	FOR_ALL_STATIONS(st) {
-		if (st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy() && HasStationInUse(st->index, owner))) {
-			if (facilities & st->facilities) { //only stations with selected facilities
-				int num_waiting_cargo = 0;
-				for (CargoID j = 0; j < NUM_CARGO; j++) {
-					if (!st->goods[j].cargo.Empty()) {
-						num_waiting_cargo++; //count number of waiting cargo
-						if (HasBit(cargo_filter, j)) {
-							*sl->Append() = st;
-							break;
-						}
-					}
-				}
-				/* stations without waiting cargo */
-				if (num_waiting_cargo == 0 && include_empty) {
-					*sl->Append() = st;
-				}
-			}
-		}
-	}
-
-	sl->Compact();
-	sl->RebuildDone();
-}
-
-
-/**
- * Sort station list if the VL_RESORT flag is set
- *
- * @param sl pointer to plstations_d (station list and flags)
- */
-static void SortStationsList(GUIStationList *sl)
-{
-	static StationSortListingTypeFunction *const _station_sorter[] = {
-		&StationNameSorter,
-		&StationTypeSorter,
-		&StationWaitingSorter,
-		&StationRatingMaxSorter
-	};
-
-	if (!(sl->flags & VL_RESORT)) return;
-
-	_internal_sort_order = sl->flags & VL_DESC;
-	_last_station = NULL; // used for "cache" in namesorting
-	qsort((void*)sl->Begin(), sl->Length(), sizeof(sl->Begin()), _station_sorter[sl->sort_type]);
-
-	sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-	sl->flags &= ~VL_RESORT;
-}
 
 /**
  * The list of stations per player.
  */
-struct PlayerStationsWindow : public Window
+class PlayerStationsWindow : public Window
 {
-	static Listing station_sort;
-	static byte facilities;
-	static bool include_empty;
+protected:
+	/* Runtime saved values */
+	static Listing last_sorting;
+	static byte facilities;               // types of stations of interest
+	static bool include_empty;            // whether we should include stations without waiting cargo
+	static const uint32 cargo_filter_max;
+	static uint32 cargo_filter;           // bitmap of cargo types to include
+	static const Station *last_station;
+
+	/* Constants for sorting stations */
+	static const StringID sorter_names[];
+	static const GUIStationList::SortFunction *const sorter_funcs[];
 
 	GUIStationList stations;
 
+
+	/**
+	 * (Re)Build station list
+	 *
+	 * @param owner player whose stations are to be in list
+	 */
+	void BuildStationsList(const PlayerID owner)
+	{
+		if (!this->stations.NeedRebuild()) return;
+
+		DEBUG(misc, 3, "Building station list for player %d", owner);
+
+		this->stations.Clear();
+
+		const Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (st->owner == owner || (st->owner == OWNER_NONE && !st->IsBuoy() && HasStationInUse(st->index, owner))) {
+				if (this->facilities & st->facilities) { // only stations with selected facilities
+					int num_waiting_cargo = 0;
+					for (CargoID j = 0; j < NUM_CARGO; j++) {
+						if (!st->goods[j].cargo.Empty()) {
+							num_waiting_cargo++; // count number of waiting cargo
+							if (HasBit(this->cargo_filter, j)) {
+								*this->stations.Append() = st;
+								break;
+							}
+						}
+					}
+					/* stations without waiting cargo */
+					if (num_waiting_cargo == 0 && this->include_empty) {
+						*this->stations.Append() = st;
+					}
+				}
+			}
+		}
+
+		this->stations.Compact();
+		this->stations.RebuildDone();
+	}
+
+	/** Sort stations by their name */
+	static int CDECL StationNameSorter(const Station* const *a, const Station* const *b)
+	{
+		static char buf_cache[64];
+		char buf[64];
+
+		SetDParam(0, (*a)->index);
+		GetString(buf, STR_STATION, lastof(buf));
+
+		if (*b != last_station) {
+			last_station = *b;
+			SetDParam(0, (*b)->index);
+			GetString(buf_cache, STR_STATION, lastof(buf_cache));
+		}
+
+		return strcmp(buf, buf_cache);
+	}
+
+	/** Sort stations by their type */
+	static int CDECL StationTypeSorter(const Station* const *a, const Station* const *b)
+	{
+		return (*a)->facilities - (*b)->facilities;
+	}
+
+	/** Sort stations by their waiting cargo */
+	static int CDECL StationWaitingSorter(const Station* const *a, const Station* const *b)
+	{
+		Money sum1 = 0;
+		Money sum2 = 0;
+
+		for (CargoID j = 0; j < NUM_CARGO; j++) {
+			if (!HasBit(cargo_filter, j)) continue;
+			if (!(*a)->goods[j].cargo.Empty()) sum1 += GetTransportedGoodsIncome((*a)->goods[j].cargo.Count(), 20, 50, j);
+			if (!(*b)->goods[j].cargo.Empty()) sum2 += GetTransportedGoodsIncome((*b)->goods[j].cargo.Count(), 20, 50, j);
+		}
+
+		return ClampToI32(sum1 - sum2);
+	}
+
+	/** Sort stations by their rating */
+	static int CDECL StationRatingMaxSorter(const Station* const *a, const Station* const *b)
+	{
+		byte maxr1 = 0;
+		byte maxr2 = 0;
+
+		for (CargoID j = 0; j < NUM_CARGO; j++) {
+			if (HasBit((*a)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr1 = max(maxr1, (*a)->goods[j].rating);
+			if (HasBit((*b)->goods[j].acceptance_pickup, GoodsEntry::PICKUP)) maxr2 = max(maxr2, (*b)->goods[j].rating);
+		}
+
+		return maxr1 - maxr2;
+	}
+
+	/** Sort the stations list */
+	void SortStationsList()
+	{
+		this->stations.Sort();
+
+		/* Reset name sorter sort cache */
+		this->last_station = NULL;
+
+		/* Display the current sort variant */
+		this->widget[SLW_SORTDROPBTN].data = this->sorter_names[this->stations.SortType()];
+
+		/* Set the modified widgets dirty */
+		this->InvalidateWidget(SLW_SORTDROPBTN);
+		this->InvalidateWidget(SLW_LIST);
+	}
+
+public:
 	PlayerStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->caption_color = (byte)this->window_number;
@@ -278,7 +243,7 @@ struct PlayerStationsWindow : public Window
 			wi->data     = 0;
 			wi->tooltips = STR_USE_CTRL_TO_SELECT_MORE;
 
-			if (HasBit(_cargo_filter, c)) this->LowerWidget(SLW_CARGOSTART + i);
+			if (HasBit(this->cargo_filter, c)) this->LowerWidget(SLW_CARGOSTART + i);
 			i++;
 		}
 
@@ -294,42 +259,41 @@ struct PlayerStationsWindow : public Window
 			this->resize.width = this->width;
 		}
 
-		if (_cargo_filter == _cargo_filter_max) _cargo_filter = _cargo_mask;
+		if (this->cargo_filter == this->cargo_filter_max) this->cargo_filter = _cargo_mask;
 
 		for (uint i = 0; i < 5; i++) {
-			if (HasBit(facilities, i)) this->LowerWidget(i + SLW_TRAIN);
+			if (HasBit(this->facilities, i)) this->LowerWidget(i + SLW_TRAIN);
 		}
-		this->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-		this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
-		this->SetWidgetLoweredState(SLW_NOCARGOWAITING, include_empty);
+		this->SetWidgetLoweredState(SLW_FACILALL, this->facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+		this->SetWidgetLoweredState(SLW_CARGOALL, this->cargo_filter == _cargo_mask && this->include_empty);
+		this->SetWidgetLoweredState(SLW_NOCARGOWAITING, this->include_empty);
 
-		this->stations.SetListing(station_sort);
+		this->stations.SetListing(this->last_sorting);
+		this->stations.SetSortFuncs(this->sorter_funcs);
 		this->stations.ForceRebuild();
 		this->stations.NeedResort();
+		this->SortStationsList();
 
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~PlayerStationsWindow()
 	{
-		station_sort = this->stations.GetListing();
+		this->last_sorting = this->stations.GetListing();
 	}
 
 	virtual void OnPaint()
 	{
-		PlayerID owner = (PlayerID)this->window_number;
+		const PlayerID owner = (PlayerID)this->window_number;
 
-		BuildStationsList(&this->stations, owner, facilities, _cargo_filter, include_empty);
-		SortStationsList(&this->stations);
+		this->BuildStationsList(owner);
+		this->SortStationsList();
 
 		SetVScrollCount(this, this->stations.Length());
 
 		/* draw widgets, with player's name in the caption */
 		SetDParam(0, owner);
 		SetDParam(1, this->vscroll.count);
-
-		/* Set text of sort by dropdown */
-		this->widget[SLW_SORTDROPBTN].data = _station_sort_listing[this->stations.SortType()];
 
 		this->DrawWidgets();
 
@@ -346,7 +310,7 @@ struct PlayerStationsWindow : public Window
 			const CargoSpec *cs = GetCargo(c);
 			if (!cs->IsValid()) continue;
 
-			cg_ofst = HasBit(_cargo_filter, c) ? 2 : 1;
+			cg_ofst = HasBit(this->cargo_filter, c) ? 2 : 1;
 			GfxFillRect(x + cg_ofst, y + cg_ofst, x + cg_ofst + 10 , y + cg_ofst + 7, cs->rating_colour);
 			DrawStringCentered(x + 6 + cg_ofst, y + cg_ofst, cs->abbrev, TC_BLACK);
 			x += 14;
@@ -426,17 +390,17 @@ struct PlayerStationsWindow : public Window
 			case SLW_AIRPLANE:
 			case SLW_SHIP:
 				if (_ctrl_pressed) {
-					ToggleBit(facilities, widget - SLW_TRAIN);
+					ToggleBit(this->facilities, widget - SLW_TRAIN);
 					this->ToggleWidgetLoweredState(widget);
 				} else {
 					uint i;
-					FOR_EACH_SET_BIT(i, facilities) {
+					FOR_EACH_SET_BIT(i, this->facilities) {
 						this->RaiseWidget(i + SLW_TRAIN);
 					}
-					SetBit(facilities, widget - SLW_TRAIN);
+					SetBit(this->facilities, widget - SLW_TRAIN);
 					this->LowerWidget(widget);
 				}
-				this->SetWidgetLoweredState(SLW_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+				this->SetWidgetLoweredState(SLW_FACILALL, this->facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
@@ -447,7 +411,7 @@ struct PlayerStationsWindow : public Window
 				}
 				this->LowerWidget(SLW_FACILALL);
 
-				facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
+				this->facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
@@ -462,8 +426,8 @@ struct PlayerStationsWindow : public Window
 				this->LowerWidget(SLW_NOCARGOWAITING);
 				this->LowerWidget(SLW_CARGOALL);
 
-				_cargo_filter = _cargo_mask;
-				include_empty = true;
+				this->cargo_filter = _cargo_mask;
+				this->include_empty = true;
 				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
@@ -477,24 +441,24 @@ struct PlayerStationsWindow : public Window
 				break;
 
 			case SLW_SORTDROPBTN: // select sorting criteria dropdown menu
-				ShowDropDownMenu(this, _station_sort_listing, this->stations.SortType(), SLW_SORTDROPBTN, 0, 0);
+				ShowDropDownMenu(this, this->sorter_names, this->stations.SortType(), SLW_SORTDROPBTN, 0, 0);
 				break;
 
 			case SLW_NOCARGOWAITING:
 				if (_ctrl_pressed) {
-					include_empty = !include_empty;
+					this->include_empty = !this->include_empty;
 					this->ToggleWidgetLoweredState(SLW_NOCARGOWAITING);
 				} else {
 					for (uint i = SLW_CARGOSTART; i < this->widget_count; i++) {
 						this->RaiseWidget(i);
 					}
 
-					_cargo_filter = 0;
-					include_empty = true;
+					this->cargo_filter = 0;
+					this->include_empty = true;
 
 					this->LowerWidget(SLW_NOCARGOWAITING);
 				}
-				this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+				this->SetWidgetLoweredState(SLW_CARGOALL, this->cargo_filter == _cargo_mask && this->include_empty);
 				this->stations.ForceRebuild();
 				this->SetDirty();
 				break;
@@ -511,7 +475,7 @@ struct PlayerStationsWindow : public Window
 					}
 
 					if (_ctrl_pressed) {
-						ToggleBit(_cargo_filter, c);
+						ToggleBit(this->cargo_filter, c);
 						this->ToggleWidgetLoweredState(widget);
 					} else {
 						for (uint i = SLW_CARGOSTART; i < this->widget_count; i++) {
@@ -519,13 +483,13 @@ struct PlayerStationsWindow : public Window
 						}
 						this->RaiseWidget(SLW_NOCARGOWAITING);
 
-						_cargo_filter = 0;
-						include_empty = false;
+						this->cargo_filter = 0;
+						this->include_empty = false;
 
-						SetBit(_cargo_filter, c);
+						SetBit(this->cargo_filter, c);
 						this->LowerWidget(widget);
 					}
-					this->SetWidgetLoweredState(SLW_CARGOALL, _cargo_filter == _cargo_mask && include_empty);
+					this->SetWidgetLoweredState(SLW_CARGOALL, this->cargo_filter == _cargo_mask && this->include_empty);
 					this->stations.ForceRebuild();
 					this->SetDirty();
 				}
@@ -571,9 +535,29 @@ struct PlayerStationsWindow : public Window
 	}
 };
 
-Listing PlayerStationsWindow::station_sort = {0, 0};
+Listing PlayerStationsWindow::last_sorting = {false, 0};
 byte PlayerStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 bool PlayerStationsWindow::include_empty = true;
+const uint32 PlayerStationsWindow::cargo_filter_max = UINT32_MAX;
+uint32 PlayerStationsWindow::cargo_filter = UINT32_MAX;
+const Station *PlayerStationsWindow::last_station = NULL;
+
+/* Availible station sorting functions */
+const GUIStationList::SortFunction *const PlayerStationsWindow::sorter_funcs[] = {
+	&StationNameSorter,
+	&StationTypeSorter,
+	&StationWaitingSorter,
+	&StationRatingMaxSorter
+};
+
+/* Names of the sorting functions */
+const StringID PlayerStationsWindow::sorter_names[] = {
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_FACILITY,
+	STR_SORT_BY_WAITING,
+	STR_SORT_BY_RATING_MAX,
+	INVALID_STRING_ID
+};
 
 
 static const Widget _player_stations_widgets[] = {
