@@ -24,7 +24,6 @@
 #include "table/strings.h"
 
 SignID _new_sign_id;
-uint _total_signs;
 bool _sign_sort_dirty;
 
 /* Initialize the sign-pool */
@@ -115,7 +114,6 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindow(WC_SIGN_LIST, 0);
 		_sign_sort_dirty = true;
 		_new_sign_id = si->index;
-		_total_signs++;
 	}
 
 	return CommandCost();
@@ -162,7 +160,6 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
-			_total_signs--;
 		}
 	}
 
@@ -202,7 +199,6 @@ void PlaceProc_Sign(TileIndex tile)
  */
 void InitializeSigns()
 {
-	_total_signs = 0;
 	_Sign_pool.CleanPool();
 	_Sign_pool.AddBlockToPool();
 }
@@ -241,13 +237,10 @@ static void Save_SIGN()
  */
 static void Load_SIGN()
 {
-	_total_signs = 0;
 	int index;
 	while ((index = SlIterateArray()) != -1) {
 		Sign *si = new (index) Sign();
 		SlObject(si, _sign_desc);
-
-		_total_signs++;
 	}
 
 	_sign_sort_dirty = true;

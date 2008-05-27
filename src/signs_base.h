@@ -40,12 +40,6 @@ static inline SignID GetMaxSignIndex()
 	return GetSignPoolSize() - 1;
 }
 
-static inline uint GetNumSigns()
-{
-	extern uint _total_signs;
-	return _total_signs;
-}
-
 static inline bool IsValidSignID(uint index)
 {
 	return index < GetSignPoolSize() && GetSign(index)->IsValid();
