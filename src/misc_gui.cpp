@@ -1093,8 +1093,9 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	~QueryStringWindow()
 	{
 		if (!this->handled && this->parent != NULL) {
-			this->handled = true;
-			this->parent->OnQueryTextFinished(NULL);
+			Window *parent = this->parent;
+			this->parent = NULL; // so parent doesn't try to delete us again
+			parent->OnQueryTextFinished(NULL);
 		}
 		ClrBit(_no_scroll, SCROLL_EDIT);
 	}
