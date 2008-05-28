@@ -254,8 +254,6 @@ public:
 	ReplaceVehicleWindow(const WindowDesc *desc, VehicleType vehicletype, GroupID id_g) : Window(desc, vehicletype)
 	{
 		this->wagon_btnstate = true; // start with locomotives (all other vehicles will not read this bool)
-		new (&this->list[0]) EngineList();
-		new (&this->list[1]) EngineList();
 		this->update_left   = true;
 		this->update_right  = true;
 		this->init_lists    = true;
@@ -381,12 +379,12 @@ public:
 		/* Draw the lists */
 		for (byte i = 0; i < 2; i++) {
 			uint widget     = (i == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
-			EngineList list = this->list[i]; // which list to draw
+			EngineList *list = &this->list[i]; // which list to draw
 			EngineID start  = i == 0 ? this->vscroll.pos : this->vscroll2.pos; // what is the offset for the start (scrolling)
-			EngineID end    = min((i == 0 ? this->vscroll.cap : this->vscroll2.cap) + start, list.size());
+			EngineID end    = min((i == 0 ? this->vscroll.cap : this->vscroll2.cap) + start, list->size());
 
 			/* Do the actual drawing */
-			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].top + 1, &list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
+			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].top + 1, list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
 
 			/* Also draw the details if an engine is selected */
 			if (this->sel_engine[i] != INVALID_ENGINE) {
