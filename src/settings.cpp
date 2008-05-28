@@ -1793,26 +1793,37 @@ static const SettingDesc _currency_settings[] = {
 #undef NO
 #undef CR
 
+/**
+ * Prepare for reading and old diff_custom by zero-ing the memory.
+ */
 static void PrepareOldDiffCustom()
 {
 	memset(_old_diff_custom, 0, sizeof(_old_diff_custom));
 }
 
-static void HandleOldDiffCustom()
+/**
+ * Reading of the old diff_custom array and transforming it to the new format.
+ * @param savegame is it read from the config or savegame. In the latter case
+ *                 we are sure there is an array; in the former case we have
+ *                 to check that.
+ */
+static void HandleOldDiffCustom(bool savegame)
 {
-	uint options_to_load = GAME_DIFFICULTY_NUM - (CheckSavegameVersion(4) ? 1 : 0);
+	uint options_to_load = GAME_DIFFICULTY_NUM - ((savegame && CheckSavegameVersion(4)) ? 1 : 0);
 
-	/* If we did read to old_diff_custom, then at least one value must be non 0. */
-	bool old_diff_custom_used = false;
-	for (uint i = 0; i < options_to_load && !old_diff_custom_used; i++) {
-		old_diff_custom_used = (_old_diff_custom[i] != 0);
+	if (!savegame) {
+		/* If we did read to old_diff_custom, then at least one value must be non 0. */
+		bool old_diff_custom_used = false;
+		for (uint i = 0; i < options_to_load && !old_diff_custom_used; i++) {
+			old_diff_custom_used = (_old_diff_custom[i] != 0);
+		}
+
+		if (!old_diff_custom_used) return;
 	}
-
-	if (!old_diff_custom_used) return;
 
 	for (uint i = 0; i < options_to_load; i++) {
 		const SettingDesc *sd = &_patch_settings[i];
-		void *var = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings, &sd->save);
+		void *var = GetVariableAddress(savegame ? &_settings : &_settings_newgame, &sd->save);
 		Write_ValidateSetting(var, sd, (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]));
 	}
 }
@@ -1983,10 +1994,6 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, (const SettingDesc*)_win32_settings,   "win32", NULL);
 #endif /* WIN32 */
 
-	PrepareOldDiffCustom();
-	proc(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
-	HandleOldDiffCustom();
-
 	proc(ini, _patch_settings,   "patches",  &_settings_newgame);
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
@@ -2002,6 +2009,11 @@ void LoadFromConfig()
 {
 	IniFile *ini = ini_load(_config_file);
 	ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
+
+	PrepareOldDiffCustom();
+	ini_load_settings(ini, _gameopt_settings, "gameopt",  &_settings_newgame);
+	HandleOldDiffCustom(false);
+
 	HandleSettingDescs(ini, ini_load_settings, ini_load_setting_list);
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
@@ -2247,7 +2259,7 @@ static void Load_OPTS()
 	 * autosave-frequency stays when joining a network-server */
 	PrepareOldDiffCustom();
 	LoadSettings(_gameopt_settings, &_settings);
-	HandleOldDiffCustom();
+	HandleOldDiffCustom(true);
 }
 
 static void Load_PATS()
