@@ -214,9 +214,9 @@ void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
  */
 void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
 {
+	if (num_items < 2) return;
 	assert(begin < el->Length());
 	assert(begin + num_items <= el->Length());
-	if (num_items < 2) return;
 	qsort(el->Get(begin), num_items, sizeof(*el->Begin()), compare);
 }
 
