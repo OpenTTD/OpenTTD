@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Selectee
 STR_SORT_BY                                                     :{BLACK}Sorteer op
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Inwoners
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Productie
-STR_SORT_BY_TYPE                                                :{BLACK}Soort
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Vervoerd
+STR_SORT_BY_PRODUCTION                                          :Productie
+STR_SORT_BY_TYPE                                                :Soort
+STR_SORT_BY_TRANSPORTED                                         :Vervoerd
 STR_SORT_BY_NAME                                                :{BLACK}Naam
 STR_SORT_BY_DROPDOWN_NAME                                       :Naam
 STR_SORT_BY_DATE                                                :{BLACK}Datum

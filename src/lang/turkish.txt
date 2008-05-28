@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Sıralam
 STR_SORT_BY                                                     :{BLACK}Sırala
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Nüfus
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Üretim
-STR_SORT_BY_TYPE                                                :{BLACK}Tür
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Taşınan
+STR_SORT_BY_PRODUCTION                                          :Üretim
+STR_SORT_BY_TYPE                                                :Tür
+STR_SORT_BY_TRANSPORTED                                         :Taşınan
 STR_SORT_BY_NAME                                                :{BLACK}İsim
 STR_SORT_BY_DROPDOWN_NAME                                       :İsim
 STR_SORT_BY_DATE                                                :{BLACK}Tarih

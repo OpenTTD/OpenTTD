@@ -427,9 +427,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorbaren
 STR_SORT_BY                                                     :{BLACK}Rendezés
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Lakosság
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Termelés
-STR_SORT_BY_TYPE                                                :{BLACK}Típus
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Elszállítás
+STR_SORT_BY_PRODUCTION                                          :Termelés
+STR_SORT_BY_TYPE                                                :Típus
+STR_SORT_BY_TRANSPORTED                                         :Elszállítás
 STR_SORT_BY_NAME                                                :{BLACK}Név
 STR_SORT_BY_DROPDOWN_NAME                                       :Név
 STR_SORT_BY_DATE                                                :{BLACK}Dátum

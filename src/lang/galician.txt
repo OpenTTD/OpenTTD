@@ -360,9 +360,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleccio
 STR_SORT_BY                                                     :{BLACK}Ordear por
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Poboación
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Producción
-STR_SORT_BY_TYPE                                                :{BLACK}Tipo
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transportado
+STR_SORT_BY_PRODUCTION                                          :Producción
+STR_SORT_BY_TYPE                                                :Tipo
+STR_SORT_BY_TRANSPORTED                                         :Transportado
 STR_SORT_BY_NAME                                                :{BLACK}Nome
 STR_SORT_BY_DROPDOWN_NAME                                       :Nome
 STR_SORT_BY_DATE                                                :{BLACK}Data

@@ -359,9 +359,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Izve'le'
 STR_SORT_BY                                                     :{BLACK}Saka'rtot pe'c
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Iedzi'vota'ju skaita
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcijas
-STR_SORT_BY_TYPE                                                :{BLACK}Tipa
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transporte'ta'
+STR_SORT_BY_PRODUCTION                                          :Produkcijas
+STR_SORT_BY_TYPE                                                :Tipa
+STR_SORT_BY_TRANSPORTED                                         :Transporte'ta'
 STR_SORT_BY_NAME                                                :{BLACK}Va'rda
 STR_SORT_BY_DROPDOWN_NAME                                       :Va'rds
 STR_SORT_BY_DATE                                                :{BLACK}Datums

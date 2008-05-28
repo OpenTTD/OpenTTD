@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Velja up
 STR_SORT_BY                                                     :{BLACK}Flokka eftir
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Fólksfjöldi
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Framleiðsla
-STR_SORT_BY_TYPE                                                :{BLACK}Tegund
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Flutt
+STR_SORT_BY_PRODUCTION                                          :Framleiðsla
+STR_SORT_BY_TYPE                                                :Tegund
+STR_SORT_BY_TRANSPORTED                                         :Flutt
 STR_SORT_BY_NAME                                                :{BLACK}Nafn
 STR_SORT_BY_DROPDOWN_NAME                                       :Nafn
 STR_SORT_BY_DATE                                                :{BLACK}Dagsetning

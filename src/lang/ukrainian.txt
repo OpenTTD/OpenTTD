@@ -488,9 +488,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Вибе
 STR_SORT_BY                                                     :{BLACK}Сортувати
 
 STR_SORT_BY_POPULATION                                          :{BLACK}за населенням
-STR_SORT_BY_PRODUCTION                                          :{BLACK}за продуктивністю
-STR_SORT_BY_TYPE                                                :{BLACK}за типом
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}за перевезенням
+STR_SORT_BY_PRODUCTION                                          :за продуктивністю
+STR_SORT_BY_TYPE                                                :за типом
+STR_SORT_BY_TRANSPORTED                                         :за перевезенням
 STR_SORT_BY_NAME                                                :{BLACK}за назвою
 STR_SORT_BY_DROPDOWN_NAME                                       :Назва
 STR_SORT_BY_DATE                                                :{BLACK}за датою

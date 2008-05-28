@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Seleccio
 STR_SORT_BY                                                     :{BLACK}Ordenar per
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Població
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Producció
-STR_SORT_BY_TYPE                                                :{BLACK}Tipus
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transportat
+STR_SORT_BY_PRODUCTION                                          :Producció
+STR_SORT_BY_TYPE                                                :Tipus
+STR_SORT_BY_TRANSPORTED                                         :Transportat
 STR_SORT_BY_NAME                                                :{BLACK}Nom
 STR_SORT_BY_DROPDOWN_NAME                                       :Nom
 STR_SORT_BY_DATE                                                :{BLACK}Data

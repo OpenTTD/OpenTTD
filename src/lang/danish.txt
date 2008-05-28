@@ -362,9 +362,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg so
 STR_SORT_BY                                                     :{BLACK}Sortér på
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Indbyggertal
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktion
-STR_SORT_BY_TYPE                                                :{BLACK}Type
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transporteret
+STR_SORT_BY_PRODUCTION                                          :Produktion
+STR_SORT_BY_TYPE                                                :Type
+STR_SORT_BY_TRANSPORTED                                         :Transporteret
 STR_SORT_BY_NAME                                                :{BLACK}Navn
 STR_SORT_BY_DROPDOWN_NAME                                       :Navn
 STR_SORT_BY_DATE                                                :{BLACK}Dato

@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Valitse 
 STR_SORT_BY                                                     :{BLACK}Lajittele
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Asukasluku
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Tuotto
-STR_SORT_BY_TYPE                                                :{BLACK}Tyyppi
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Kuljetettu
+STR_SORT_BY_PRODUCTION                                          :Tuotto
+STR_SORT_BY_TYPE                                                :Tyyppi
+STR_SORT_BY_TRANSPORTED                                         :Kuljetettu
 STR_SORT_BY_NAME                                                :{BLACK}Nimi
 STR_SORT_BY_DROPDOWN_NAME                                       :Nimi
 STR_SORT_BY_DATE                                                :{BLACK}Päiväys

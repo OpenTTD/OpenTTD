@@ -427,9 +427,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber kr
 STR_SORT_BY                                                     :{BLACK}Usporiadat
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacia
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcia
-STR_SORT_BY_TYPE                                                :{BLACK}Typ
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Prepravene
+STR_SORT_BY_PRODUCTION                                          :Produkcia
+STR_SORT_BY_TYPE                                                :Typ
+STR_SORT_BY_TRANSPORTED                                         :Prepravene
 STR_SORT_BY_NAME                                                :{BLACK}Nazov
 STR_SORT_BY_DROPDOWN_NAME                                       :Nazov
 STR_SORT_BY_DATE                                                :{BLACK}Datum

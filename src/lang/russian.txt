@@ -365,9 +365,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Смен
 STR_SORT_BY                                                     :{BLACK}Сортировка
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Население
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Продукция
-STR_SORT_BY_TYPE                                                :{BLACK}Тип
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Вывоз
+STR_SORT_BY_PRODUCTION                                          :Продукция
+STR_SORT_BY_TYPE                                                :Тип
+STR_SORT_BY_TRANSPORTED                                         :Вывоз
 STR_SORT_BY_NAME                                                :{BLACK}Имя
 STR_SORT_BY_DROPDOWN_NAME                                       :Название
 STR_SORT_BY_DATE                                                :{BLACK}Дата

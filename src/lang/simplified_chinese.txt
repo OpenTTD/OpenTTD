@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}选择�
 STR_SORT_BY                                                     :{BLACK}排序
 
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
-STR_SORT_BY_PRODUCTION                                          :{BLACK}产出
-STR_SORT_BY_TYPE                                                :{BLACK}类型
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}已运输
+STR_SORT_BY_PRODUCTION                                          :产出
+STR_SORT_BY_TYPE                                                :类型
+STR_SORT_BY_TRANSPORTED                                         :已运输
 STR_SORT_BY_NAME                                                :{BLACK}姓名
 STR_SORT_BY_DROPDOWN_NAME                                       :姓名
 STR_SORT_BY_DATE                                                :{BLACK}日期

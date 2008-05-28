@@ -405,9 +405,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Izberi k
 STR_SORT_BY                                                     :{BLACK}Sortiraj po
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Prebivalstvo
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Proizvodnja
-STR_SORT_BY_TYPE                                                :{BLACK}Tip
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Prepeljano
+STR_SORT_BY_PRODUCTION                                          :Proizvodnja
+STR_SORT_BY_TYPE                                                :Tip
+STR_SORT_BY_TRANSPORTED                                         :Prepeljano
 STR_SORT_BY_NAME                                                :{BLACK}Ime
 STR_SORT_BY_DROPDOWN_NAME                                       :Ime
 STR_SORT_BY_DATE                                                :{BLACK}Datum

@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}選擇�
 STR_SORT_BY                                                     :{BLACK}排序依照
 
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
-STR_SORT_BY_PRODUCTION                                          :{BLACK}產量
-STR_SORT_BY_TYPE                                                :{BLACK}種類
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}輸出量
+STR_SORT_BY_PRODUCTION                                          :產量
+STR_SORT_BY_TYPE                                                :種類
+STR_SORT_BY_TRANSPORTED                                         :輸出量
 STR_SORT_BY_NAME                                                :{BLACK}名稱
 STR_SORT_BY_DROPDOWN_NAME                                       :名稱
 STR_SORT_BY_DATE                                                :{BLACK}日期

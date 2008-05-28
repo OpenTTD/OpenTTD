@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Sortierk
 STR_SORT_BY                                                     :{BLACK}Sortieren nach
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktion
-STR_SORT_BY_TYPE                                                :{BLACK}Typ
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transportiert
+STR_SORT_BY_PRODUCTION                                          :Produktion
+STR_SORT_BY_TYPE                                                :Typ
+STR_SORT_BY_TRANSPORTED                                         :Transportiert
 STR_SORT_BY_NAME                                                :{BLACK}Name
 STR_SORT_BY_DROPDOWN_NAME                                       :Name
 STR_SORT_BY_DATE                                                :{BLACK}Datum

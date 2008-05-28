@@ -421,9 +421,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber, p
 STR_SORT_BY                                                     :{BLACK}Řadit podle
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populace
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Prudukce
-STR_SORT_BY_TYPE                                                :{BLACK}Typu
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Přepraveno
+STR_SORT_BY_PRODUCTION                                          :Prudukce
+STR_SORT_BY_TYPE                                                :Typu
+STR_SORT_BY_TRANSPORTED                                         :Přepraveno
 STR_SORT_BY_NAME                                                :{BLACK}Podle jména
 STR_SORT_BY_DROPDOWN_NAME                                       :jména
 STR_SORT_BY_DATE                                                :{BLACK}Podle data

@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Välj so
 STR_SORT_BY                                                     :{BLACK}Sortera efter
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Befolkning
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktion
-STR_SORT_BY_TYPE                                                :{BLACK}Typ
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transporterat
+STR_SORT_BY_PRODUCTION                                          :Produktion
+STR_SORT_BY_TYPE                                                :Typ
+STR_SORT_BY_TRANSPORTED                                         :Transporterat
 STR_SORT_BY_NAME                                                :{BLACK}Namn
 STR_SORT_BY_DROPDOWN_NAME                                       :Namn
 STR_SORT_BY_DATE                                                :{BLACK}Datum

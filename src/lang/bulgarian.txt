@@ -365,9 +365,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Избе
 STR_SORT_BY                                                     :{BLACK}Сортирай по
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Население
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Продукция
-STR_SORT_BY_TYPE                                                :{BLACK}Вид
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Транспортирано
+STR_SORT_BY_PRODUCTION                                          :Продукция
+STR_SORT_BY_TYPE                                                :Вид
+STR_SORT_BY_TRANSPORTED                                         :Транспортирано
 STR_SORT_BY_NAME                                                :{BLACK}Име
 STR_SORT_BY_DROPDOWN_NAME                                       :Име
 STR_SORT_BY_DATE                                                :{BLACK}Дата

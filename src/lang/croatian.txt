@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Izaberi 
 STR_SORT_BY                                                     :{BLACK}Sortiraj prema
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Stanovnici
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcija
-STR_SORT_BY_TYPE                                                :{BLACK}Vrsta
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Prevezeno
+STR_SORT_BY_PRODUCTION                                          :Produkcija
+STR_SORT_BY_TYPE                                                :Vrsta
+STR_SORT_BY_TRANSPORTED                                         :Prevezeno
 STR_SORT_BY_NAME                                                :{BLACK}Ime
 STR_SORT_BY_DROPDOWN_NAME                                       :Ime
 STR_SORT_BY_DATE                                                :{BLACK}Datum

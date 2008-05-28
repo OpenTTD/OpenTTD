@@ -363,9 +363,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}정렬 �
 STR_SORT_BY                                                     :{BLACK}정렬
 
 STR_SORT_BY_POPULATION                                          :{BLACK}인구
-STR_SORT_BY_PRODUCTION                                          :{BLACK}생산
-STR_SORT_BY_TYPE                                                :{BLACK}종류
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}수송량
+STR_SORT_BY_PRODUCTION                                          :생산
+STR_SORT_BY_TYPE                                                :종류
+STR_SORT_BY_TRANSPORTED                                         :수송량
 STR_SORT_BY_NAME                                                :{BLACK}이름
 STR_SORT_BY_DROPDOWN_NAME                                       :이름
 STR_SORT_BY_DATE                                                :{BLACK}날짜

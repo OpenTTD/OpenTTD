@@ -463,9 +463,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Sorteeri
 STR_SORT_BY                                                     :{BLACK}Sorteeri:
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Rahvaarv
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Toodang
-STR_SORT_BY_TYPE                                                :{BLACK}Tüüp
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Veetud
+STR_SORT_BY_PRODUCTION                                          :Toodang
+STR_SORT_BY_TYPE                                                :Tüüp
+STR_SORT_BY_TRANSPORTED                                         :Veetud
 STR_SORT_BY_NAME                                                :{BLACK}Nimi
 STR_SORT_BY_DROPDOWN_NAME                                       :Nimi
 STR_SORT_BY_DATE                                                :{BLACK}Daatum

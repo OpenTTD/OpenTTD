@@ -362,9 +362,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Elektu o
 STR_SORT_BY                                                     :{BLACK}Ordigu laŭ
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Enloĝantaro
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktado
-STR_SORT_BY_TYPE                                                :{BLACK}Tipo
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transportiĝis
+STR_SORT_BY_PRODUCTION                                          :Produktado
+STR_SORT_BY_TYPE                                                :Tipo
+STR_SORT_BY_TRANSPORTED                                         :Transportiĝis
 STR_SORT_BY_NAME                                                :{BLACK}Nomo
 STR_SORT_BY_DROPDOWN_NAME                                       :Nomo
 STR_SORT_BY_DATE                                                :{BLACK}Dato

@@ -362,9 +362,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}並べ�
 STR_SORT_BY                                                     :{BLACK}並べ替え
 
 STR_SORT_BY_POPULATION                                          :{BLACK}人口
-STR_SORT_BY_PRODUCTION                                          :{BLACK}生産量
-STR_SORT_BY_TYPE                                                :{BLACK}種類
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}運送済み
+STR_SORT_BY_PRODUCTION                                          :生産量
+STR_SORT_BY_TYPE                                                :種類
+STR_SORT_BY_TRANSPORTED                                         :運送済み
 STR_SORT_BY_NAME                                                :{BLACK}名前
 STR_SORT_BY_DROPDOWN_NAME                                       :名前
 STR_SORT_BY_DATE                                                :{BLACK}日付

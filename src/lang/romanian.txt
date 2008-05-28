@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Alegeti 
 STR_SORT_BY                                                     :{BLACK}Ordoneaza dupa
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populatia
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Productie
-STR_SORT_BY_TYPE                                                :{BLACK}Tip
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transportat
+STR_SORT_BY_PRODUCTION                                          :Productie
+STR_SORT_BY_TYPE                                                :Tip
+STR_SORT_BY_TRANSPORTED                                         :Transportat
 STR_SORT_BY_NAME                                                :{BLACK}Nume
 STR_SORT_BY_DROPDOWN_NAME                                       :Nume
 STR_SORT_BY_DATE                                                :{BLACK}Datã

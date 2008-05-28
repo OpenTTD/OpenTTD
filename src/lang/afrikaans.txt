@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Selektee
 STR_SORT_BY                                                     :{BLACK}Sorteer by
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populasie
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produksie
-STR_SORT_BY_TYPE                                                :{BLACK}Tipe
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Uitgervoer
+STR_SORT_BY_PRODUCTION                                          :Produksie
+STR_SORT_BY_TYPE                                                :Tipe
+STR_SORT_BY_TRANSPORTED                                         :Uitgervoer
 STR_SORT_BY_NAME                                                :{BLACK}Naam
 STR_SORT_BY_DROPDOWN_NAME                                       :Naam
 STR_SORT_BY_DATE                                                :{BLACK}Datum

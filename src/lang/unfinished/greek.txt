@@ -360,9 +360,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Επιλ
 STR_SORT_BY                                                     :{BLACK}Ταξινόμηση κατά
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Πληθυσμός
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Παραγωγή
-STR_SORT_BY_TYPE                                                :{BLACK}Τύπος
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Μεταφέρθηκαν
+STR_SORT_BY_PRODUCTION                                          :Παραγωγή
+STR_SORT_BY_TYPE                                                :Τύπος
+STR_SORT_BY_TRANSPORTED                                         :Μεταφέρθηκαν
 STR_SORT_BY_NAME                                                :{BLACK}Όνομα
 STR_SORT_BY_DROPDOWN_NAME                                       :Όνομα
 STR_SORT_BY_DATE                                                :{BLACK}Μέρα

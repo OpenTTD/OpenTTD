@@ -361,9 +361,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Electsay
 STR_SORT_BY                                                     :{BLACK}Ortsay ybay
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Opulationpay
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Oductionpray
-STR_SORT_BY_TYPE                                                :{BLACK}Ypetay
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Ansportedtray
+STR_SORT_BY_PRODUCTION                                          :Oductionpray
+STR_SORT_BY_TYPE                                                :Ypetay
+STR_SORT_BY_TRANSPORTED                                         :Ansportedtray
 STR_SORT_BY_NAME                                                :{BLACK}Amenay
 STR_SORT_BY_DROPDOWN_NAME                                       :Amenay
 STR_SORT_BY_DATE                                                :{BLACK}Ateday

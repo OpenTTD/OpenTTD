@@ -395,9 +395,9 @@ STR_SORT_CRITERIA_TIP                                           :{BLACK}Pasirink
 STR_SORT_BY                                                     :{BLACK}Rikiuoti pagal
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populiacija
-STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcija
-STR_SORT_BY_TYPE                                                :{BLACK}Tipa
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Pervezimus
+STR_SORT_BY_PRODUCTION                                          :Produkcija
+STR_SORT_BY_TYPE                                                :Tipa
+STR_SORT_BY_TRANSPORTED                                         :Pervezimus
 STR_SORT_BY_NAME                                                :{BLACK}Varda
 STR_SORT_BY_DROPDOWN_NAME                                       :Varda
 STR_SORT_BY_DATE                                                :{BLACK}Data
