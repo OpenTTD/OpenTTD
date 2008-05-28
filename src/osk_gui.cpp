@@ -203,6 +203,11 @@ struct OskWindow : public Window {
 		/* make the caret of the parent window also blink */
 		this->parent->InvalidateWidget(this->text_btn);
 	}
+
+	virtual void OnInvalidateData(int)
+	{
+		this->InvalidateWidget(OSK_WIDGET_TEXT);
+	}
 };
 
 static const Widget _osk_widgets[] = {

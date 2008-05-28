@@ -1083,6 +1083,11 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	{
 		EventState state;
 		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, state)) {
+			default: NOT_REACHED();
+			case 0: {
+				Window *osk = FindWindowById(WC_OSK, 0);
+				if (osk != NULL && osk->parent == this) osk->OnInvalidateData();
+			} break;
 			case 1: this->OnOk(); // Enter pressed, confirms change
 			/* FALL THROUGH */
 			case 2: delete this; break; // ESC pressed, closes window, abandons changes
