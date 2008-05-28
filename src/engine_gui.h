@@ -5,12 +5,12 @@
 #ifndef ENGINE_GUI_H
 #define ENGINE_GUI_H
 
-#include <vector>
+#include "sortlist_type.h"
 
-typedef std::vector<EngineID> EngineList;
+typedef GUIList<EngineID> GUIEngineList;
 
 typedef int CDECL EngList_SortTypeFunction(const void*, const void*); ///< argument type for EngList_Sort()
-void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare);  ///< qsort of the engine list
-void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items); ///< qsort of specified portion of the engine list
+void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare);  ///< qsort of the engine list
+void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items); ///< qsort of specified portion of the engine list
 
 #endif /* ENGINE_GUI_H */

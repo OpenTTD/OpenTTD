@@ -745,13 +745,13 @@ static void DrawVehicleEngine(VehicleType type, int x, int y, EngineID engine, S
  * @param selected_id what engine to highlight as selected, if any
  * @param count_location Offset to print the engine count (used by autoreplace). 0 means it's off
  */
-void DrawEngineList(VehicleType type, int x, int y, const EngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group)
+void DrawEngineList(VehicleType type, int x, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group)
 {
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
 	byte y_offset = 0;
 
-	assert(max <= eng_list->size());
+	assert(max <= eng_list->Length());
 
 	switch (type) {
 		case VEH_TRAIN:
@@ -806,7 +806,7 @@ struct BuildVehicleWindow : Window {
 	bool regenerate_list;
 	EngineID sel_engine;
 	EngineID rename_engine;
-	EngineList eng_list;
+	GUIEngineList eng_list;
 
 	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, tile == 0 ? (int)type : tile)
 	{
@@ -848,7 +848,7 @@ struct BuildVehicleWindow : Window {
 
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
-		if (this->eng_list.size() > 0) this->sel_engine = this->eng_list[0];
+		if (this->eng_list.Length() > 0) this->sel_engine = this->eng_list[0];
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -906,7 +906,7 @@ struct BuildVehicleWindow : Window {
 
 		this->filter.railtype = (this->window_number <= VEH_END) ? RAILTYPE_END : GetRailType(this->window_number);
 
-		this->eng_list.clear();
+		this->eng_list.Clear();
 
 		/* Make list of all available train engines and wagons.
 		* Also check to see if the previously selected engine is still available,
@@ -920,7 +920,8 @@ struct BuildVehicleWindow : Window {
 			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
 			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
 
-			this->eng_list.push_back(eid);
+			*this->eng_list.Append() = eid;
+
 			if (rvi->railveh_type != RAILVEH_WAGON) {
 				num_engines++;
 			} else {
@@ -949,14 +950,14 @@ struct BuildVehicleWindow : Window {
 	{
 		EngineID sel_id = INVALID_ENGINE;
 
-		this->eng_list.clear();
+		this->eng_list.Clear();
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
 			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
-			this->eng_list.push_back(eid);
+			*this->eng_list.Append() = eid;
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
@@ -967,13 +968,13 @@ struct BuildVehicleWindow : Window {
 	void GenerateBuildShipList()
 	{
 		EngineID sel_id = INVALID_ENGINE;
-		this->eng_list.clear();
+		this->eng_list.Clear();
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
-			this->eng_list.push_back(eid);
+			*this->eng_list.Append() = eid;
 
 			if (eid == this->sel_engine) sel_id = eid;
 		}
@@ -985,7 +986,7 @@ struct BuildVehicleWindow : Window {
 	{
 		EngineID sel_id = INVALID_ENGINE;
 
-		this->eng_list.clear();
+		this->eng_list.Clear();
 
 		/* Make list of all available planes.
 		* Also check to see if the previously selected plane is still available,
@@ -998,7 +999,7 @@ struct BuildVehicleWindow : Window {
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (this->window_number > VEH_END && !CanAircraftUseStation(eid, this->window_number)) continue;
 
-			this->eng_list.push_back(eid);
+			*this->eng_list.Append() = eid;
 			if (eid == this->sel_engine) sel_id = eid;
 		}
 
@@ -1039,7 +1040,7 @@ struct BuildVehicleWindow : Window {
 
 			case BUILD_VEHICLE_WIDGET_LIST: {
 				uint i = (pt.y - this->widget[BUILD_VEHICLE_WIDGET_LIST].top) / GetVehicleListHeight(this->vehicle_type) + this->vscroll.pos;
-				size_t num_items = this->eng_list.size();
+				size_t num_items = this->eng_list.Length();
 				this->sel_engine = (i < num_items) ? this->eng_list[i] : INVALID_ENGINE;
 				this->SetDirty();
 				break;
@@ -1105,11 +1106,11 @@ struct BuildVehicleWindow : Window {
 			this->GenerateBuildList();
 		}
 
-		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.size());
+		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.Length());
 
 		this->SetWidgetDisabledState(BUILD_VEHICLE_WIDGET_BUILD, this->window_number <= VEH_END);
 
-		SetVScrollCount(this, this->eng_list.size());
+		SetVScrollCount(this, this->eng_list.Length());
 		SetDParam(0, this->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
 
 		/* Set text of sort by dropdown */

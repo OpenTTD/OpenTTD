@@ -197,13 +197,13 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
  * @param el list to be sorted
  * @param compare function for evaluation of the quicksort
  */
-void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
+void EngList_Sort(GUIEngineList *el, EngList_SortTypeFunction compare)
 {
-	size_t size = el->size();
+	uint size = el->Length();
 	/* out-of-bounds access at the next line for size == 0 (even with operator[] at some systems)
 	 * generally, do not sort if there are less than 2 items */
 	if (size < 2) return;
-	qsort(&((*el)[0]), size, sizeof(EngineID), compare); // MorphOS doesn't know vector::at(int) ...
+	qsort(el->Begin(), size, sizeof(*el->Begin()), compare); // MorphOS doesn't know vector::at(int) ...
 }
 
 /** Sort selected range of items (on indices @ <begin, begin+num_items-1>)
@@ -212,11 +212,11 @@ void EngList_Sort(EngineList *el, EngList_SortTypeFunction compare)
  * @param begin start of sorting
  * @param num_items count of items to be sorted
  */
-void EngList_SortPartial(EngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
+void EngList_SortPartial(GUIEngineList *el, EngList_SortTypeFunction compare, uint begin, uint num_items)
 {
-	assert(begin <= (uint)el->size());
-	assert(begin + num_items <= (uint)el->size());
+	assert(begin < el->Length());
+	assert(begin + num_items <= el->Length());
 	if (num_items < 2) return;
-	qsort(&((*el)[begin]), num_items, sizeof(EngineID), compare);
+	qsort(el->Get(begin), num_items, sizeof(*el->Begin()), compare);
 }
 

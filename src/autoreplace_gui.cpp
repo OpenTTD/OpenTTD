@@ -27,7 +27,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-void DrawEngineList(VehicleType type, int x, int y, const EngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
+void DrawEngineList(VehicleType type, int x, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
 
 static const StringID _rail_types_list[] = {
 	STR_RAIL_VEHICLES,
@@ -143,7 +143,7 @@ class ReplaceVehicleWindow : public Window {
 	EngineID sel_engine[2];
 	uint16 count[2];
 	bool wagon_btnstate; ///< true means engine is selected
-	EngineList list[2];
+	GUIEngineList list[2];
 	bool update_left;
 	bool update_right;
 	bool init_lists;
@@ -185,8 +185,8 @@ class ReplaceVehicleWindow : public Window {
 		VehicleType type = (VehicleType)this->window_number;
 		byte i = draw_left ? 0 : 1;
 
-		EngineList *list = &this->list[i];
-		list->clear();
+		GUIEngineList *list = &this->list[i];
+		list->Clear();
 
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, type) {
@@ -209,7 +209,7 @@ class ReplaceVehicleWindow : public Window {
 				if (eid == this->sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
 			}
 
-			list->push_back(eid);
+			*list->Append() = eid;
 			if (eid == this->sel_engine[i]) selected_engine = eid; // The selected engine is still in the list
 		}
 		this->sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
@@ -224,8 +224,8 @@ class ReplaceVehicleWindow : public Window {
 		if (this->update_left == true) {
 			/* We need to rebuild the left list */
 			GenerateReplaceVehList(this, true);
-			SetVScrollCount(this, this->list[0].size());
-			if (this->init_lists && this->sel_engine[0] == INVALID_ENGINE && this->list[0].size() != 0) {
+			SetVScrollCount(this, this->list[0].Length());
+			if (this->init_lists && this->sel_engine[0] == INVALID_ENGINE && this->list[0].Length() != 0) {
 				this->sel_engine[0] = this->list[0][0];
 			}
 		}
@@ -234,12 +234,12 @@ class ReplaceVehicleWindow : public Window {
 			/* Either we got a request to rebuild the right list or the left list selected a different engine */
 			if (this->sel_engine[0] == INVALID_ENGINE) {
 				/* Always empty the right list when nothing is selected in the left list */
-				this->list[1].clear();
+				this->list[1].Clear();
 				this->sel_engine[1] = INVALID_ENGINE;
 			} else {
 				GenerateReplaceVehList(this, false);
-				SetVScroll2Count(this, this->list[1].size());
-				if (this->init_lists && this->sel_engine[1] == INVALID_ENGINE && this->list[1].size() != 0) {
+				SetVScroll2Count(this, this->list[1].Length());
+				if (this->init_lists && this->sel_engine[1] == INVALID_ENGINE && this->list[1].Length() != 0) {
 					this->sel_engine[1] = this->list[1][0];
 				}
 			}
@@ -379,9 +379,9 @@ public:
 		/* Draw the lists */
 		for (byte i = 0; i < 2; i++) {
 			uint widget     = (i == 0) ? RVW_WIDGET_LEFT_MATRIX : RVW_WIDGET_RIGHT_MATRIX;
-			EngineList *list = &this->list[i]; // which list to draw
+			GUIEngineList *list = &this->list[i]; // which list to draw
 			EngineID start  = i == 0 ? this->vscroll.pos : this->vscroll2.pos; // what is the offset for the start (scrolling)
-			EngineID end    = min((i == 0 ? this->vscroll.cap : this->vscroll2.cap) + start, list->size());
+			EngineID end    = min((i == 0 ? this->vscroll.cap : this->vscroll2.cap) + start, list->Length());
 
 			/* Do the actual drawing */
 			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].top + 1, list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
@@ -435,7 +435,7 @@ public:
 				uint16 click_scroll_pos = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.pos : this->vscroll2.pos;
 				uint16 click_scroll_cap = widget == RVW_WIDGET_LEFT_MATRIX ? this->vscroll.cap : this->vscroll2.cap;
 				byte click_side         = widget == RVW_WIDGET_LEFT_MATRIX ? 0 : 1;
-				size_t engine_count     = this->list[click_side].size();
+				size_t engine_count     = this->list[click_side].Length();
 
 				if (i < click_scroll_cap) {
 					i += click_scroll_pos;
