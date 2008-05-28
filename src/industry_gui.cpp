@@ -27,6 +27,7 @@
 #include "tilehighlight_func.h"
 #include "string_func.h"
 #include "sortlist_type.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -691,10 +692,8 @@ enum IndustryDirectoryWidgets {
 	IDW_CLOSEBOX = 0,
 	IDW_CAPTION,
 	IDW_STICKY,
-	IDW_SORTBYNAME,
-	IDW_SORTBYTYPE,
-	IDW_SORTBYPROD,
-	IDW_SORTBYTRANSPORT,
+	IDW_DROPDOWN_ORDER,
+	IDW_DROPDOWN_CRITERIA,
 	IDW_SPACER,
 	IDW_INDUSTRY_LIST,
 	IDW_SCROLLBAR,
@@ -704,156 +703,149 @@ enum IndustryDirectoryWidgets {
 /** Widget definition of the industy directory gui */
 static const Widget _industry_directory_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},             // IDW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   495,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,    13,   496,   507,     0,    13, 0x0,                     STR_STICKY_BUTTON},                 // IDW_STICKY
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,     0,   100,    14,    25, STR_SORT_BY_NAME,        STR_SORT_ORDER_TIP},                // IDW_SORTBYNAME
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   101,   200,    14,    25, STR_SORT_BY_TYPE,        STR_SORT_ORDER_TIP},                // IDW_SORTBYTYPE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,  STR_SORT_ORDER_TIP},                // IDW_SORTBYPROD
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   301,   400,    14,    25, STR_SORT_BY_TRANSPORTED, STR_SORT_ORDER_TIP},                // IDW_SORTBYTRANSPORT
-{      WWT_PANEL,  RESIZE_RIGHT,    13,   401,   495,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
-{      WWT_PANEL,     RESIZE_RB,    13,     0,   495,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // IDW_INDUSRTY_LIST
-{  WWT_SCROLLBAR,    RESIZE_LRB,    13,   496,   507,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   496,   507,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
+{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   415,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,    13,   416,   427,     0,    13, 0x0,                     STR_STICKY_BUTTON},                 // IDW_STICKY
+
+{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},                // IDW_DROPDOWN_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,    13,    81,   243,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},             // IDW_DROPDOWN_CRITERIA
+{      WWT_PANEL,  RESIZE_RIGHT,    13,   244,   415,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
+
+{      WWT_PANEL,     RESIZE_RB,    13,     0,   415,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // IDW_INDUSRTY_LIST
+{  WWT_SCROLLBAR,    RESIZE_LRB,    13,   416,   427,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   416,   427,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
 {   WIDGETS_END},
 };
 
-static char _bufcache[96];
-static const Industry* _last_industry;
-static int _internal_sort_order;
-
-/** Returns percents of cargo transported if industry produces this cargo, else -1
- * @param i industry to check
- * @param id cargo slot
- * @return percents of cargo transported, or -1 if industry doesn't use this cargo slot
- */
-static inline int GetCargoTransportedPercentsIfValid(const Industry *i, uint id)
-{
-	assert(id < lengthof(i->produced_cargo));
-
-	if (i->produced_cargo[id] == CT_INVALID) return 101;
-	return i->last_month_pct_transported[id] * 100 >> 8;
-}
-
-/** Returns value representing industry's transported cargo
- * percentage for industry sorting
- * @param i industry to check
- * @return value used for sorting
- */
-static int GetCargoTransportedSortValue(const Industry *i)
-{
-	int p1 = GetCargoTransportedPercentsIfValid(i, 0);
-	int p2 = GetCargoTransportedPercentsIfValid(i, 1);
-
-	if (p1 > p2) Swap(p1, p2); // lower value has higher priority
-
-	return (p1 << 8) + p2;
-}
-
-static int CDECL GeneralIndustrySorter(const void *a, const void *b)
-{
-	const Industry* i = *(const Industry**)a;
-	const Industry* j = *(const Industry**)b;
-	int r;
-
-	switch (_internal_sort_order >> 1) {
-		default: NOT_REACHED();
-		case 0: /* Sort by Name (handled later) */
-			r = 0;
-			break;
-
-		case 1: /* Sort by Type */
-			r = i->type - j->type;
-			break;
-
-		case 2: /* Sort by Production */
-			if (i->produced_cargo[0] == CT_INVALID) {
-				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
-			} else {
-				if (j->produced_cargo[0] == CT_INVALID) {
-					r = 1;
-				} else {
-					r =
-						(i->last_month_production[0] + i->last_month_production[1]) -
-						(j->last_month_production[0] + j->last_month_production[1]);
-				}
-			}
-			break;
-
-		case 3: /* Sort by transported fraction */
-			r = GetCargoTransportedSortValue(i) - GetCargoTransportedSortValue(j);
-			break;
-	}
-
-	/* default to string sorting if they are otherwise equal */
-	if (r == 0) {
-		char buf1[96];
-
-		SetDParam(0, i->town->index);
-		GetString(buf1, STR_TOWN, lastof(buf1));
-
-		if (j != _last_industry) {
-			_last_industry = j;
-			SetDParam(0, j->town->index);
-			GetString(_bufcache, STR_TOWN, lastof(_bufcache));
-		}
-		r = strcmp(buf1, _bufcache);
-	}
-
-	if (_internal_sort_order & 1) r = -r;
-	return r;
-}
-
 typedef GUIList<const Industry*> GUIIndustryList;
 
-/**
- * Rebuild industries list if the VL_REBUILD flag is set
- *
- * @param sl pointer to industry list
- */
-static void BuildIndustriesList(GUIIndustryList *sl)
-{
-	if (!(sl->flags & VL_REBUILD)) return;
-
-	sl->Clear();
-
-	DEBUG(misc, 3, "Building industry list");
-
-	const Industry *i;
-	FOR_ALL_INDUSTRIES(i) {
-		*sl->Append() = i;
-	}
-
-	sl->Compact();
-
-	sl->flags &= ~VL_REBUILD;
-	sl->flags |= VL_RESORT;
-}
-
-
-/**
- * Sort industry list if the VL_RESORT flag is set
- *
- * @param sl pointer to industry list
- */
-static void SortIndustriesList(GUIIndustryList *sl)
-{
-	if (!(sl->flags & VL_RESORT)) return;
-
-	_internal_sort_order = (sl->sort_type << 1) | (sl->flags & VL_DESC);
-	_last_industry = NULL; // used for "cache" in namesorting
-	qsort((void*)sl->Begin(), sl->Length(), sizeof(*sl->Begin()), &GeneralIndustrySorter);
-
-	sl->flags &= ~VL_RESORT;
-}
 
 /**
  * The list of industries.
  */
-struct IndustryDirectoryWindow : public Window {
-	static Listing industry_sort;
+class IndustryDirectoryWindow : public Window {
+protected:
+	/* Runtime saved values */
+	static Listing last_sorting;
+	static const Industry *last_industry;
+
+	/* Constants for sorting stations */
+	static const StringID sorter_names[];
+	static GUIIndustryList::SortFunction *const sorter_funcs[];
 
 	GUIIndustryList industries;
 
+	/** (Re)Build industries list */
+	void BuildIndustriesList()
+	{
+		if (!this->industries.NeedRebuild()) return;
+
+		this->industries.Clear();
+
+		DEBUG(misc, 3, "Building industry list");
+
+		const Industry *i;
+		FOR_ALL_INDUSTRIES(i) {
+			*this->industries.Append() = i;
+		}
+
+		this->industries.Compact();
+		this->industries.RebuildDone();
+	}
+
+	/**
+	 * Returns percents of cargo transported if industry produces this cargo, else -1
+	 *
+	 * @param i industry to check
+	 * @param id cargo slot
+	 * @return percents of cargo transported, or -1 if industry doesn't use this cargo slot
+	 */
+	static inline int GetCargoTransportedPercentsIfValid(const Industry *i, uint id)
+	{
+		assert(id < lengthof(i->produced_cargo));
+
+		if (i->produced_cargo[id] == CT_INVALID) return 101;
+		return i->last_month_pct_transported[id] * 100 >> 8;
+	}
+
+	/**
+	 * Returns value representing industry's transported cargo
+	 *  percentage for industry sorting
+	 *
+	 * @param i industry to check
+	 * @return value used for sorting
+	 */
+	static int GetCargoTransportedSortValue(const Industry *i)
+	{
+		int p1 = GetCargoTransportedPercentsIfValid(i, 0);
+		int p2 = GetCargoTransportedPercentsIfValid(i, 1);
+
+		if (p1 > p2) Swap(p1, p2); // lower value has higher priority
+
+		return (p1 << 8) + p2;
+	}
+
+	/** Sort industries by name */
+	static int CDECL IndustryNameSorter(const Industry* const *a, const Industry* const *b)
+	{
+		static char buf_cache[96];
+		static char buf[96];
+
+		SetDParam(0, (*a)->town->index);
+		GetString(buf, STR_TOWN, lastof(buf));
+
+		if (*b != last_industry) {
+			last_industry = *b;
+			SetDParam(0, (*b)->town->index);
+			GetString(buf_cache, STR_TOWN, lastof(buf_cache));
+		}
+
+		return strcmp(buf, buf_cache);
+	}
+
+	/** Sort industries by type and name */
+	static int CDECL IndustryTypeSorter(const Industry* const *a, const Industry* const *b)
+	{
+		int r = (*a)->type - (*b)->type;
+		return (r = 0) ? IndustryNameSorter(a, b) : r;
+	}
+
+	/** Sort industries by production and name */
+	static int CDECL IndustryProductionSorter(const Industry* const *a, const Industry* const *b)
+	{
+		int r;
+
+		if ((*a)->produced_cargo[0] == CT_INVALID) {
+			if ((*b)->produced_cargo[0] != CT_INVALID) return -1;
+		} else {
+			if ((*b)->produced_cargo[0] == CT_INVALID) return 1;
+
+			r = ((*a)->last_month_production[0] + (*a)->last_month_production[1]) -
+			    ((*b)->last_month_production[0] + (*b)->last_month_production[1]);
+		}
+
+		return (r = 0) ? IndustryNameSorter(a, b) : r;
+	}
+
+	/** Sort industries by transported cargo and name */
+	static int CDECL IndustryTransportedCargoSorter(const Industry* const *a, const Industry* const *b)
+	{
+		int r = GetCargoTransportedSortValue(*a) - GetCargoTransportedSortValue(*b);
+		return (r = 0) ? IndustryNameSorter(a, b) : r;
+	}
+
+	/** Sort the industries list */
+	void SortIndustriesList()
+	{
+		if (!this->industries.Sort()) return;
+
+		/* Reset name sorter sort cache */
+		this->last_industry = NULL;
+
+		/* Set the modified widget dirty */
+		this->InvalidateWidget(IDW_INDUSTRY_LIST);
+	}
+
+public:
 	IndustryDirectoryWindow(const WindowDesc *desc, WindowNumber number) : Window(desc, number)
 	{
 		this->vscroll.cap = 16;
@@ -861,20 +853,29 @@ struct IndustryDirectoryWindow : public Window {
 		this->resize.step_height = 10;
 		this->FindWindowPlacementAndResize(desc);
 
-		this->industries.flags = VL_REBUILD;
-		this->industries.sort_type = industry_sort.criteria;
-		if (industry_sort.order) this->industries.flags |= VL_DESC;
+		this->industries.SetListing(this->last_sorting);
+		this->industries.SetSortFuncs(this->sorter_funcs);
+		this->industries.ForceRebuild();
+		this->industries.NeedResort();
+		this->SortIndustriesList();
+
+		this->widget[IDW_DROPDOWN_CRITERIA].data = this->sorter_names[this->industries.SortType()];
+	}
+
+	~IndustryDirectoryWindow()
+	{
+		this->last_sorting = this->industries.GetListing();
 	}
 
 	virtual void OnPaint()
 	{
-		BuildIndustriesList(&this->industries);
-		SortIndustriesList(&this->industries);
+		BuildIndustriesList();
+		SortIndustriesList();
 
 		SetVScrollCount(this, this->industries.Length());
 
 		this->DrawWidgets();
-		this->DrawSortButtonState(IDW_SORTBYNAME + this->industries.sort_type, this->industries.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(IDW_DROPDOWN_ORDER, this->industries.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		int max = min(this->vscroll.pos + this->vscroll.cap, this->industries.Length());
 		int y = 28; // start of the list-widget
@@ -913,20 +914,13 @@ struct IndustryDirectoryWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case IDW_SORTBYNAME:
-			case IDW_SORTBYTYPE:
-			case IDW_SORTBYPROD:
-			case IDW_SORTBYTRANSPORT:
-				if (this->industries.sort_type == (widget - IDW_SORTBYNAME)) {
-					this->industries.flags ^= VL_DESC;
-				} else {
-					this->industries.sort_type = widget - IDW_SORTBYNAME;
-					this->industries.flags &= ~VL_DESC;
-				}
-				industry_sort.criteria = this->industries.sort_type;
-				industry_sort.order = HasBit(this->industries.flags, 0);
-				this->industries.flags |= VL_RESORT;
+			case IDW_DROPDOWN_ORDER:
+				this->industries.ToggleSortOrder();
 				this->SetDirty();
+				break;
+
+			case IDW_DROPDOWN_CRITERIA:
+				ShowDropDownMenu(this, this->sorter_names, this->industries.SortType(), IDW_DROPDOWN_CRITERIA, 0, 0);
 				break;
 
 			case IDW_INDUSTRY_LIST: {
@@ -946,6 +940,15 @@ struct IndustryDirectoryWindow : public Window {
 		}
 	}
 
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (this->industries.SortType() != index) {
+			this->industries.SetSortType(index);
+			this->widget[IDW_DROPDOWN_CRITERIA].data = this->sorter_names[this->industries.SortType()];
+			this->SetDirty();
+		}
+	}
+
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / 10;
@@ -953,16 +956,39 @@ struct IndustryDirectoryWindow : public Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->industries.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+		if (data == 0) {
+			this->industries.ForceRebuild();
+		} else {
+			this->industries.ForceResort();
+		}
 		this->InvalidateWidget(IDW_INDUSTRY_LIST);
 	}
 };
 
-Listing IndustryDirectoryWindow::industry_sort = {false, 0};
+Listing IndustryDirectoryWindow::last_sorting = {false, 0};
+const Industry *IndustryDirectoryWindow::last_industry = NULL;
+
+/* Availible station sorting functions */
+GUIIndustryList::SortFunction* const IndustryDirectoryWindow::sorter_funcs[] = {
+	&IndustryNameSorter,
+	&IndustryTypeSorter,
+	&IndustryProductionSorter,
+	&IndustryTransportedCargoSorter
+};
+
+/* Names of the sorting functions */
+const StringID IndustryDirectoryWindow::sorter_names[] = {
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_SORT_BY_TYPE,
+	STR_SORT_BY_PRODUCTION,
+	STR_SORT_BY_TRANSPORTED,
+	INVALID_STRING_ID
+};
+
 
 /** Window definition of the industy directory gui */
 static const WindowDesc _industry_directory_desc = {
-	WDP_AUTO, WDP_AUTO, 508, 190, 508, 190,
+	WDP_AUTO, WDP_AUTO, 428, 190, 428, 190,
 	WC_INDUSTRY_DIRECTORY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_directory_widgets,
