@@ -27,7 +27,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
+void DrawEngineList(VehicleType type, int x, int y, const EngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
 
 static const StringID _rail_types_list[] = {
 	STR_RAIL_VEHICLES,
@@ -386,7 +386,7 @@ public:
 			EngineID end    = min((i == 0 ? this->vscroll.cap : this->vscroll2.cap) + start, list.size());
 
 			/* Do the actual drawing */
-			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].top + 1, list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
+			DrawEngineList((VehicleType)this->window_number, this->widget[widget].left + 2, this->widget[widget].top + 1, &list, start, end, this->sel_engine[i], i == 0 ? this->widget[RVW_WIDGET_LEFT_MATRIX].right - 2 : 0, selected_group);
 
 			/* Also draw the details if an engine is selected */
 			if (this->sel_engine[i] != INVALID_ENGINE) {

@@ -745,13 +745,13 @@ static void DrawVehicleEngine(VehicleType type, int x, int y, EngineID engine, S
  * @param selected_id what engine to highlight as selected, if any
  * @param count_location Offset to print the engine count (used by autoreplace). 0 means it's off
  */
-void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group)
+void DrawEngineList(VehicleType type, int x, int y, const EngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group)
 {
 	byte step_size = GetVehicleListHeight(type);
 	byte x_offset = 0;
 	byte y_offset = 0;
 
-	assert(max <= eng_list.size());
+	assert(max <= eng_list->size());
 
 	switch (type) {
 		case VEH_TRAIN:
@@ -779,7 +779,7 @@ void DrawEngineList(VehicleType type, int x, int y, const EngineList eng_list, u
 	}
 
 	for (; min < max; min++, y += step_size) {
-		const EngineID engine = eng_list[min];
+		const EngineID engine = (*eng_list)[min];
 		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_player here. */
 		const uint num_engines = GetGroupNumEngines(_local_player, selected_group, engine);
 
@@ -1117,7 +1117,7 @@ struct BuildVehicleWindow : Window {
 
 		this->DrawWidgets();
 
-		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, this->eng_list, this->vscroll.pos, max, this->sel_engine, 0, DEFAULT_GROUP);
+		DrawEngineList(this->vehicle_type, this->widget[BUILD_VEHICLE_WIDGET_LIST].left + 2, this->widget[BUILD_VEHICLE_WIDGET_LIST].top + 1, &this->eng_list, this->vscroll.pos, max, this->sel_engine, 0, DEFAULT_GROUP);
 
 		if (this->sel_engine != INVALID_ENGINE) {
 			const Widget *wi = &this->widget[BUILD_VEHICLE_WIDGET_PANEL];
