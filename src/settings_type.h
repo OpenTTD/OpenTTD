@@ -79,6 +79,7 @@ struct GUISettings {
 	int32  autorenew_money;                  ///< how much money before autorenewing for new companies?
 	byte   currency;                         ///< currency we currently use
 	byte   units;                            ///< unit system we show everything
+	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
 };
 
 /** Settings related to the creation of games. */

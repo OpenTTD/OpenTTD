@@ -1754,6 +1754,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Settings, gui.max_num_autosaves,      SLE_UINT8, S, 0,    16,        0,      255, 0, STR_NULL,                                       NULL),
 	SDT_BOOL(Settings, gui.bridge_pillars,                    S, 0,  true,                        STR_NULL,                                       NULL),
 	SDT_BOOL(Settings, gui.auto_euro,                         S, 0,  true,                        STR_NULL,                                       NULL),
+	 SDT_VAR(Settings, gui.news_message_timeout,   SLE_UINT8, S, 0,     2,        1,      255, 0, STR_NULL,                                       NULL),
 
 	 SDT_VAR(Settings, game_creation.map_x,        SLE_UINT8, S, 0,     8,        6,       11, 0, STR_CONFIG_PATCHES_MAP_X,                       NULL),
 	 SDT_VAR(Settings, game_creation.map_y,        SLE_UINT8, S, 0,     8,        6,       11, 0, STR_CONFIG_PATCHES_MAP_Y,                       NULL),

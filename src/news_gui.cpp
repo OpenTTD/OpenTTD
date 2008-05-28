@@ -24,52 +24,24 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-/** @file news_gui.cpp
- *
- * News system is realized as a FIFO queue (in an array)
- * The positions in the queue can't be rearranged, we only access
- * the array elements through pointers to the elements. Once the
- * array is full, the oldest entry (\a _oldest_news) is being overwritten
- * by the newest (\a _latest_news).
- *
- * \verbatim
- * oldest                   current   lastest
- *  |                          |         |
- * [O------------F-------------C---------L           ]
- *               |
- *            forced
- * \endverbatim
- *
- * Of course by using an array we can have situations like
- *
- * \verbatim
- * [----L          O-----F---------C-----------------]
- * This is where we have wrapped around the array and have
- * (MAX_NEWS - O) + L news items
- * \endverbatim
- */
-
 #define NB_WIDG_PER_SETTING 4
-
-typedef byte NewsID;
-#define INVALID_NEWS 255
 
 NewsItem _statusbar_news_item;
 bool _news_ticker_sound;
-static NewsItem *_news_items = NULL;        ///< The news FIFO queue
-static uint _max_news_items = 0;            ///< size of news FIFO queue
-static NewsID _current_news = INVALID_NEWS; ///< points to news item that should be shown next
-static NewsID _oldest_news = 0;             ///< points to first item in fifo queue
-static NewsID _latest_news = INVALID_NEWS;  ///< points to last item in fifo queue
+
+static uint MIN_NEWS_AMOUNT = 30;           ///< prefered minimum amount of news messages
+static uint _total_news = 0;                ///< current number of news items
+static NewsItem *_oldest_news = NULL;       ///< head of news items queue
+static NewsItem *_latest_news = NULL;       ///< tail of news items queue
 
 /** Forced news item.
  * Users can force an item by accessing the history or "last message".
- * If the message being shown was forced by the user, its index is stored in
- * _forced_news. Otherwise, \a _forced_news variable is INVALID_NEWS. */
-static NewsID _forced_news = INVALID_NEWS;
+ * If the message being shown was forced by the user, a pointer is stored
+ * in _forced_news. Otherwise, \a _forced_news variable is NULL. */
+static NewsItem *_forced_news = NULL;       ///< item the user has asked for
 
-static uint _total_news = 0; ///< Number of news items in FIFO queue @see _news_items
-static void MoveToNextItem();
+/** Current news item (last item shown regularly). */
+static NewsItem *_current_news = NULL;
 
 
 typedef void DrawNewsCallbackProc(struct Window *w, const NewsItem *ni);
@@ -202,7 +174,7 @@ struct NewsWindow : Window {
 		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
 		this->chat_height = (w != NULL) ? w->height : 0;
 
-		this->ni = &_news_items[_forced_news == INVALID_NEWS ? _current_news : _forced_news];
+		this->ni = _forced_news == NULL ? _current_news : _forced_news;
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 
 		this->FindWindowPlacementAndResize(desc);
@@ -288,7 +260,7 @@ struct NewsWindow : Window {
 			case 1:
 				this->ni->duration = 0;
 				delete this;
-				_forced_news = INVALID_NEWS;
+				_forced_news = NULL;
 				break;
 
 			case 0:
@@ -425,9 +397,6 @@ static void ShowNewspaper(NewsItem *ni)
 			}
 			break;
 	}
-
-	/*DEBUG(misc, 0, " cur %3d, old %2d, lat %3d, for %3d, tot %2d",
-	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
 }
 
 /** Show news item in the ticker */
@@ -442,153 +411,17 @@ static void ShowTicker(const NewsItem *ni)
 /** Initialize the news-items data structures */
 void InitNewsItemStructs()
 {
-	free(_news_items);
-	_max_news_items = max(ScaleByMapSize(30), 30U);
-	_news_items = CallocT<NewsItem>(_max_news_items);
-	_current_news = INVALID_NEWS;
-	_oldest_news = 0;
-	_latest_news = INVALID_NEWS;
-	_forced_news = INVALID_NEWS;
+	for (NewsItem *ni = _oldest_news; ni != NULL; ) {
+		NewsItem *next = ni->next;
+		delete ni;
+		ni = next;
+	}
+
 	_total_news = 0;
-}
-
-/**
- * Return the correct index in the pseudo-fifo
- * queue and deals with overflows when increasing the index
- */
-static inline NewsID IncreaseIndex(NewsID i)
-{
-	assert(i != INVALID_NEWS);
-	return (i + 1) % _max_news_items;
-}
-
-/**
- * Return the correct index in the pseudo-fifo
- * queue and deals with overflows when decreasing the index
- */
-static inline NewsID DecreaseIndex(NewsID i)
-{
-	assert(i != INVALID_NEWS);
-	return (i + _max_news_items - 1) % _max_news_items;
-}
-
-/**
- * Add a new newsitem to be shown.
- * @param string String to display
- * @param subtype news category, any of the NewsSubtype enums (NS_)
- * @param data_a news-specific value based on news type
- * @param data_b news-specific value based on news type
- *
- * @see NewsSubype
- */
-void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
-{
-	if (_game_mode == GM_MENU) return;
-
-	/* check the rare case that the oldest (to be overwritten) news item is open */
-	if (_total_news == _max_news_items && (_oldest_news == _current_news || _oldest_news == _forced_news)) {
-		MoveToNextItem();
-	}
-
-	if (_total_news < _max_news_items) _total_news++;
-
-	/* Increase _latest_news. If we have no news yet, use _oldest news as an
-	 * index. We cannot use 0 as _oldest_news can jump around due to
-	 * DeleteVehicleNews */
-	NewsID l_news = _latest_news;
-	_latest_news = (_latest_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_latest_news);
-
-	/* If the fifo-buffer is full, overwrite the oldest entry */
-	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
-		assert(_total_news == _max_news_items);
-		_oldest_news = IncreaseIndex(_oldest_news);
-	}
-
-	/*DEBUG(misc, 0, "+cur %3d, old %2d, lat %3d, for %3d, tot %2d",
-	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
-
-	/* Add news to _latest_news */
-	NewsItem *ni = &_news_items[_latest_news];
-	memset(ni, 0, sizeof(*ni));
-
-	ni->string_id = string;
-	ni->subtype = subtype;
-	ni->flags = _news_subtype_data[subtype].flags;
-
-	/* show this news message in color? */
-	if (_cur_year >= _settings.gui.colored_news_year) ni->flags |= NF_INCOLOR;
-
-	ni->data_a = data_a;
-	ni->data_b = data_b;
-	ni->date = _date;
-	CopyOutDParam(ni->params, 0, lengthof(ni->params));
-
-	Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-	if (w == NULL) return;
-	w->SetDirty();
-	w->vscroll.count = _total_news;
-}
-
-void DeleteVehicleNews(VehicleID vid, StringID news)
-{
-	for (NewsID n = _oldest_news; _latest_news != INVALID_NEWS; n = IncreaseIndex(n)) {
-		const NewsItem *ni = &_news_items[n];
-
-		if (ni->flags & NF_VEHICLE &&
-				ni->data_a == vid &&
-				(news == INVALID_STRING_ID || ni->string_id == news)) {
-			/* If we delete a forced news and it is just before the current news
-			 * then we need to advance to the next news (if any) */
-			if (_forced_news == n) MoveToNextItem();
-			if (_forced_news == INVALID_NEWS && _current_news == n) MoveToNextItem();
-			_total_news--;
-
-			/* If this is the last news item, invalidate _latest_news */
-			if (_total_news == 0) {
-				assert(_latest_news == _oldest_news);
-				_latest_news = INVALID_NEWS;
-				_current_news = INVALID_NEWS;
-			}
-
-			/* Since we only imitate a FIFO removing an arbitrary element does need
-			 * some magic. Remove the item by shifting head towards the tail. eg
-			 *    oldest    remove  last
-			 *        |        |     |
-			 * [------O--------n-----L--]
-			 * will become (change dramatized to make clear)
-			 * [---------O-----------L--]
-			 * We also need an update of the current, forced and visible (open window)
-			 * news's as this shifting could change the items they were pointing to */
-			if (_total_news != 0) {
-				NewsWindow *w = dynamic_cast<NewsWindow*>(FindWindowById(WC_NEWS_WINDOW, 0));
-				NewsID visible_news = (w != NULL) ? (NewsID)(w->ni - _news_items) : INVALID_NEWS;
-
-				for (NewsID i = n;; i = DecreaseIndex(i)) {
-					_news_items[i] = _news_items[DecreaseIndex(i)];
-
-					if (i != _latest_news) {
-						if (i == _current_news) _current_news = IncreaseIndex(_current_news);
-						if (i == _forced_news) _forced_news = IncreaseIndex(_forced_news);
-						if (i == visible_news) w->ni = &_news_items[IncreaseIndex(visible_news)];
-					}
-
-					if (i == _oldest_news) break;
-				}
-				_oldest_news = IncreaseIndex(_oldest_news);
-			}
-
-			/*DEBUG(misc, 0, "-cur %3d, old %2d, lat %3d, for %3d, tot %2d",
-			  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
-
-			Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-			if (w != NULL) {
-				w->SetDirty();
-				w->vscroll.count = _total_news;
-			}
-		}
-
-		if (n == _latest_news) break;
-	}
+	_oldest_news = NULL;
+	_latest_news = NULL;
+	_forced_news = NULL;
+	_current_news = NULL;
 }
 
 /**
@@ -597,10 +430,8 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
  */
 static bool ReadyForNextItem()
 {
-	NewsID item = (_forced_news == INVALID_NEWS) ? _current_news : _forced_news;
-
-	if (item >= _max_news_items) return true;
-	NewsItem *ni = &_news_items[item];
+	NewsItem *ni = _forced_news == NULL ? _current_news : _forced_news;
+	if (ni == NULL) return true;
 
 	/* Ticker message
 	 * Check if the status bar message is still being displayed? */
@@ -617,12 +448,12 @@ static bool ReadyForNextItem()
 static void MoveToNextItem()
 {
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
-	_forced_news = INVALID_NEWS;
+	_forced_news = NULL;
 
 	/* if we're not at the last item, then move on */
 	if (_current_news != _latest_news) {
-		_current_news = (_current_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_current_news);
-		NewsItem *ni = &_news_items[_current_news];
+		_current_news = (_current_news == NULL) ? _oldest_news : _current_news->next;
+		NewsItem *ni = _current_news;
 		const NewsType type = _news_subtype_data[ni->subtype].type;
 
 		/* check the date, don't show too old items */
@@ -648,27 +479,140 @@ static void MoveToNextItem()
 	}
 }
 
+/**
+ * Add a new newsitem to be shown.
+ * @param string String to display
+ * @param subtype news category, any of the NewsSubtype enums (NS_)
+ * @param data_a news-specific value based on news type
+ * @param data_b news-specific value based on news type
+ *
+ * @see NewsSubype
+ */
+void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
+{
+	if (_game_mode == GM_MENU) return;
+
+	/* Create new news item node */
+	NewsItem *ni = new NewsItem;
+
+	ni->string_id = string;
+	ni->subtype = subtype;
+	ni->flags = _news_subtype_data[subtype].flags;
+
+	/* show this news message in color? */
+	if (_cur_year >= _settings.gui.colored_news_year) ni->flags |= NF_INCOLOR;
+
+	ni->data_a = data_a;
+	ni->data_b = data_b;
+	ni->date = _date;
+	CopyOutDParam(ni->params, 0, lengthof(ni->params));
+
+	if (_total_news++ == 0) {
+		assert(_oldest_news == NULL);
+		_oldest_news = ni;
+		ni->prev = NULL;
+	} else {
+		assert(_latest_news->next == NULL);
+		_latest_news->next = ni;
+		ni->prev = _latest_news;
+	}
+
+	ni->next = NULL;
+	_latest_news = ni;
+
+	InvalidateWindow(WC_MESSAGE_HISTORY, 0);
+}
+
+/** Delete a news item from the queue */
+static void DeleteNewsItem(NewsItem *ni)
+{
+	if (_forced_news == ni) {
+		/* about to remove the currently forced item; skip to next */
+		MoveToNextItem();
+	}
+
+	if ((_current_news == ni) && (FindWindowById(WC_MESSAGE_HISTORY, 0) != NULL)) {
+		/* about to remove the currently displayed item; also skip */
+		MoveToNextItem();
+	}
+
+	/* delete item */
+
+	if (ni->prev != NULL) {
+		ni->prev->next = ni->next;
+	} else {
+		assert(_oldest_news == ni);
+		_oldest_news = ni->next;
+	}
+
+	if (ni->next != NULL) {
+		ni->next->prev = ni->prev;
+	} else {
+		assert(_latest_news == ni);
+		_latest_news = ni->prev;
+	}
+
+	if (_current_news == ni) _current_news = ni->prev;
+	_total_news--;
+	delete ni;
+
+	InvalidateWindow(WC_MESSAGE_HISTORY, 0);
+}
+
+void DeleteVehicleNews(VehicleID vid, StringID news)
+{
+	NewsItem *ni = _oldest_news;
+
+	while (ni != NULL) {
+		if (ni->flags & NF_VEHICLE &&
+				ni->data_a == vid &&
+				(news == INVALID_STRING_ID || ni->string_id == news)) {
+			/* grab a pointer to the next item before ni is freed */
+			NewsItem *p = ni->next;
+			DeleteNewsItem(ni);
+			ni = p;
+		} else {
+			ni = ni->next;
+		}
+	}
+}
+
+void RemoveOldNewsItems()
+{
+	NewsItem *next;
+	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != NULL; cur = next) {
+		next = cur->next;
+		if (_date - _news_type_data[_news_subtype_data[cur->subtype].type].age * _settings.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
+	}
+}
+
 void NewsLoop()
 {
 	/* no news item yet */
 	if (_total_news == 0) return;
 
+	static byte _last_clean_month = 0;
+
+	if (_last_clean_month != _cur_month) {
+		RemoveOldNewsItems();
+		_last_clean_month = _cur_month;
+	}
+
 	if (ReadyForNextItem()) MoveToNextItem();
 }
 
 /** Do a forced show of a specific message */
-static void ShowNewsMessage(NewsID i)
+static void ShowNewsMessage(NewsItem *ni)
 {
-	if (_total_news == 0) return;
+	assert(_total_news != 0);
 
 	/* Delete the news window */
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 
 	/* setup forced news item */
-	_forced_news = i;
+	_forced_news = ni;
 
-	if (_forced_news != INVALID_NEWS) {
-		NewsItem *ni = &_news_items[_forced_news];
+	if (_forced_news != NULL) {
 		ni->duration = 555;
 		ni->flags |= NF_FORCE_BIG;
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
@@ -679,36 +623,22 @@ static void ShowNewsMessage(NewsID i)
 /** Show previous news item */
 void ShowLastNewsMessage()
 {
-	if (_forced_news == INVALID_NEWS) {
+	if (_total_news == 0) {
+		return;
+	} else if (_forced_news == NULL) {
 		/* Not forced any news yet, show the current one, unless a news window is
 		 * open (which can only be the current one), then show the previous item */
 		const Window *w = FindWindowById(WC_NEWS_WINDOW, 0);
-		ShowNewsMessage((w == NULL || (_current_news == _oldest_news)) ? _current_news : DecreaseIndex(_current_news));
+		ShowNewsMessage((w == NULL || (_current_news == _oldest_news)) ? _current_news : _current_news->prev);
 	} else if (_forced_news == _oldest_news) {
 		/* We have reached the oldest news, start anew with the latest */
 		ShowNewsMessage(_latest_news);
 	} else {
 		/* 'Scrolling' through news history show each one in turn */
-		ShowNewsMessage(DecreaseIndex(_forced_news));
+		ShowNewsMessage(_forced_news->prev);
 	}
 }
 
-
-/* return news by number, with 0 being the most
- * recent news. Returns INVALID_NEWS if end of queue reached. */
-static NewsID getNews(NewsID i)
-{
-	if (i >= _total_news) return INVALID_NEWS;
-
-	if (_latest_news < i) {
-		i = _latest_news + _max_news_items - i;
-	} else {
-		i = _latest_news - i;
-	}
-
-	i %= _max_news_items;
-	return i;
-}
 
 /**
  * Draw an unformatted news message truncated to a maximum length. If
@@ -775,27 +705,37 @@ struct MessageHistoryWindow : Window {
 		this->DrawWidgets();
 
 		if (_total_news == 0) return;
-		NewsID show = min(_total_news, this->vscroll.cap);
 
-		for (NewsID p = this->vscroll.pos; p < this->vscroll.pos + show; p++) {
-			/* get news in correct order */
-			const NewsItem *ni = &_news_items[getNews(p)];
+		NewsItem *ni = _latest_news;
+		for (int n = this->vscroll.pos; n > 0; n--) {
+			ni = ni->prev;
+			if (ni == NULL) return;
+		}
 
+		for (int n = this->vscroll.cap; n > 0; n--) {
 			SetDParam(0, ni->date);
 			DrawString(4, y, STR_SHORT_DATE, TC_WHITE);
 
 			DrawNewsString(82, y, TC_WHITE, ni, this->width - 95);
 			y += 12;
+
+			ni = ni->prev;
+			if (ni == NULL) return;
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (widget == 3) {
-			int y = (pt.y - 19) / 12;
-			NewsID p = getNews(y + this->vscroll.pos);
+			NewsItem *ni = _latest_news;
+			if (ni == NULL) return;
 
-			if (p != INVALID_NEWS) ShowNewsMessage(p);
+			for (int n = (pt.y - 19) / 12 + this->vscroll.pos; n > 0; n--) {
+				ni = ni->prev;
+				if (ni == NULL) return;
+			}
+
+			ShowNewsMessage(ni);
 		}
 	}
 
