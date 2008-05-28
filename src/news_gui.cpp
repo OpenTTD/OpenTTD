@@ -172,18 +172,26 @@ static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
 	{ NT_GENERAL,         NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
 };
 
-/** Initialize the news-items data structures */
-void InitNewsItemStructs()
-{
-	free(_news_items);
-	_max_news_items = max(ScaleByMapSize(30), 30U);
-	_news_items = CallocT<NewsItem>(_max_news_items);
-	_current_news = INVALID_NEWS;
-	_oldest_news = 0;
-	_latest_news = INVALID_NEWS;
-	_forced_news = INVALID_NEWS;
-	_total_news = 0;
-}
+/**
+ * Per-NewsType data
+ */
+NewsTypeData _news_type_data[NT_END] = {
+	/* name,              age, sound,           display */
+	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_PLAYER
+	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
+	{ "accident",          90, SND_BEGIN,       ND_FULL },  ///< NT_ACCIDENT
+	{ "company_info",      60, SND_BEGIN,       ND_FULL },  ///< NT_COMPANY_INFO
+	{ "openclose",         90, SND_BEGIN,       ND_FULL },  ///< NT_OPENCLOSE
+	{ "economy",           30, SND_BEGIN,       ND_FULL },  ///< NT_ECONOMY
+	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_PLAYER
+	{ "production_other",  30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OTHER
+	{ "production_nobody", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_NOBODY
+	{ "advice",           150, SND_BEGIN,       ND_FULL },  ///< NT_ADVICE
+	{ "new_vehicles",      30, SND_1E_OOOOH,    ND_FULL },  ///< NT_NEW_VEHICLES
+	{ "acceptance",        90, SND_BEGIN,       ND_FULL },  ///< NT_ACCEPTANCE
+	{ "subsidies",        180, SND_BEGIN,       ND_FULL },  ///< NT_SUBSIDIES
+	{ "general",           60, SND_BEGIN,       ND_FULL },  ///< NT_GENERAL
+};
 
 struct NewsWindow : Window {
 	uint16 chat_height;
@@ -334,105 +342,6 @@ struct NewsWindow : Window {
 	}
 };
 
-/**
- * Return the correct index in the pseudo-fifo
- * queue and deals with overflows when increasing the index
- */
-static inline NewsID IncreaseIndex(NewsID i)
-{
-	assert(i != INVALID_NEWS);
-	return (i + 1) % _max_news_items;
-}
-
-/**
- * Return the correct index in the pseudo-fifo
- * queue and deals with overflows when decreasing the index
- */
-static inline NewsID DecreaseIndex(NewsID i)
-{
-	assert(i != INVALID_NEWS);
-	return (i + _max_news_items - 1) % _max_news_items;
-}
-
-/**
- * Add a new newsitem to be shown.
- * @param string String to display
- * @param subtype news category, any of the NewsSubtype enums (NS_)
- * @param data_a news-specific value based on news type
- * @param data_b news-specific value based on news type
- *
- * @see NewsSubype
- */
-void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
-{
-	if (_game_mode == GM_MENU) return;
-
-	/* check the rare case that the oldest (to be overwritten) news item is open */
-	if (_total_news == _max_news_items && (_oldest_news == _current_news || _oldest_news == _forced_news)) {
-		MoveToNextItem();
-	}
-
-	if (_total_news < _max_news_items) _total_news++;
-
-	/* Increase _latest_news. If we have no news yet, use _oldest news as an
-	 * index. We cannot use 0 as _oldest_news can jump around due to
-	 * DeleteVehicleNews */
-	NewsID l_news = _latest_news;
-	_latest_news = (_latest_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_latest_news);
-
-	/* If the fifo-buffer is full, overwrite the oldest entry */
-	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
-		assert(_total_news == _max_news_items);
-		_oldest_news = IncreaseIndex(_oldest_news);
-	}
-
-	/*DEBUG(misc, 0, "+cur %3d, old %2d, lat %3d, for %3d, tot %2d",
-	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
-
-	/* Add news to _latest_news */
-	NewsItem *ni = &_news_items[_latest_news];
-	memset(ni, 0, sizeof(*ni));
-
-	ni->string_id = string;
-	ni->subtype = subtype;
-	ni->flags = _news_subtype_data[subtype].flags;
-
-	/* show this news message in color? */
-	if (_cur_year >= _settings.gui.colored_news_year) ni->flags |= NF_INCOLOR;
-
-	ni->data_a = data_a;
-	ni->data_b = data_b;
-	ni->date = _date;
-	CopyOutDParam(ni->params, 0, lengthof(ni->params));
-
-	Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-	if (w == NULL) return;
-	w->SetDirty();
-	w->vscroll.count = _total_news;
-}
-
-
-/**
- * Per-NewsType data
- */
-NewsTypeData _news_type_data[NT_END] = {
-	/* name,              age, sound,           display */
-	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_PLAYER
-	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
-	{ "accident",          90, SND_BEGIN,       ND_FULL },  ///< NT_ACCIDENT
-	{ "company_info",      60, SND_BEGIN,       ND_FULL },  ///< NT_COMPANY_INFO
-	{ "openclose",         90, SND_BEGIN,       ND_FULL },  ///< NT_OPENCLOSE
-	{ "economy",           30, SND_BEGIN,       ND_FULL },  ///< NT_ECONOMY
-	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_PLAYER
-	{ "production_other",  30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OTHER
-	{ "production_nobody", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_NOBODY
-	{ "advice",           150, SND_BEGIN,       ND_FULL },  ///< NT_ADVICE
-	{ "new_vehicles",      30, SND_1E_OOOOH,    ND_FULL },  ///< NT_NEW_VEHICLES
-	{ "acceptance",        90, SND_BEGIN,       ND_FULL },  ///< NT_ACCEPTANCE
-	{ "subsidies",        180, SND_BEGIN,       ND_FULL },  ///< NT_SUBSIDIES
-	{ "general",           60, SND_BEGIN,       ND_FULL },  ///< NT_GENERAL
-};
-
 
 static const Widget _news_type13_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    15,     0,   429,     0,   169, 0x0, STR_NULL},
@@ -530,6 +439,157 @@ static void ShowTicker(const NewsItem *ni)
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_TICKER);
 }
 
+/** Initialize the news-items data structures */
+void InitNewsItemStructs()
+{
+	free(_news_items);
+	_max_news_items = max(ScaleByMapSize(30), 30U);
+	_news_items = CallocT<NewsItem>(_max_news_items);
+	_current_news = INVALID_NEWS;
+	_oldest_news = 0;
+	_latest_news = INVALID_NEWS;
+	_forced_news = INVALID_NEWS;
+	_total_news = 0;
+}
+
+/**
+ * Return the correct index in the pseudo-fifo
+ * queue and deals with overflows when increasing the index
+ */
+static inline NewsID IncreaseIndex(NewsID i)
+{
+	assert(i != INVALID_NEWS);
+	return (i + 1) % _max_news_items;
+}
+
+/**
+ * Return the correct index in the pseudo-fifo
+ * queue and deals with overflows when decreasing the index
+ */
+static inline NewsID DecreaseIndex(NewsID i)
+{
+	assert(i != INVALID_NEWS);
+	return (i + _max_news_items - 1) % _max_news_items;
+}
+
+/**
+ * Add a new newsitem to be shown.
+ * @param string String to display
+ * @param subtype news category, any of the NewsSubtype enums (NS_)
+ * @param data_a news-specific value based on news type
+ * @param data_b news-specific value based on news type
+ *
+ * @see NewsSubype
+ */
+void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
+{
+	if (_game_mode == GM_MENU) return;
+
+	/* check the rare case that the oldest (to be overwritten) news item is open */
+	if (_total_news == _max_news_items && (_oldest_news == _current_news || _oldest_news == _forced_news)) {
+		MoveToNextItem();
+	}
+
+	if (_total_news < _max_news_items) _total_news++;
+
+	/* Increase _latest_news. If we have no news yet, use _oldest news as an
+	 * index. We cannot use 0 as _oldest_news can jump around due to
+	 * DeleteVehicleNews */
+	NewsID l_news = _latest_news;
+	_latest_news = (_latest_news == INVALID_NEWS) ? _oldest_news : IncreaseIndex(_latest_news);
+
+	/* If the fifo-buffer is full, overwrite the oldest entry */
+	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
+		assert(_total_news == _max_news_items);
+		_oldest_news = IncreaseIndex(_oldest_news);
+	}
+
+	/*DEBUG(misc, 0, "+cur %3d, old %2d, lat %3d, for %3d, tot %2d",
+	  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
+
+	/* Add news to _latest_news */
+	NewsItem *ni = &_news_items[_latest_news];
+	memset(ni, 0, sizeof(*ni));
+
+	ni->string_id = string;
+	ni->subtype = subtype;
+	ni->flags = _news_subtype_data[subtype].flags;
+
+	/* show this news message in color? */
+	if (_cur_year >= _settings.gui.colored_news_year) ni->flags |= NF_INCOLOR;
+
+	ni->data_a = data_a;
+	ni->data_b = data_b;
+	ni->date = _date;
+	CopyOutDParam(ni->params, 0, lengthof(ni->params));
+
+	Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+	if (w == NULL) return;
+	w->SetDirty();
+	w->vscroll.count = _total_news;
+}
+
+void DeleteVehicleNews(VehicleID vid, StringID news)
+{
+	for (NewsID n = _oldest_news; _latest_news != INVALID_NEWS; n = IncreaseIndex(n)) {
+		const NewsItem *ni = &_news_items[n];
+
+		if (ni->flags & NF_VEHICLE &&
+				ni->data_a == vid &&
+				(news == INVALID_STRING_ID || ni->string_id == news)) {
+			/* If we delete a forced news and it is just before the current news
+			 * then we need to advance to the next news (if any) */
+			if (_forced_news == n) MoveToNextItem();
+			if (_forced_news == INVALID_NEWS && _current_news == n) MoveToNextItem();
+			_total_news--;
+
+			/* If this is the last news item, invalidate _latest_news */
+			if (_total_news == 0) {
+				assert(_latest_news == _oldest_news);
+				_latest_news = INVALID_NEWS;
+				_current_news = INVALID_NEWS;
+			}
+
+			/* Since we only imitate a FIFO removing an arbitrary element does need
+			 * some magic. Remove the item by shifting head towards the tail. eg
+			 *    oldest    remove  last
+			 *        |        |     |
+			 * [------O--------n-----L--]
+			 * will become (change dramatized to make clear)
+			 * [---------O-----------L--]
+			 * We also need an update of the current, forced and visible (open window)
+			 * news's as this shifting could change the items they were pointing to */
+			if (_total_news != 0) {
+				NewsWindow *w = dynamic_cast<NewsWindow*>(FindWindowById(WC_NEWS_WINDOW, 0));
+				NewsID visible_news = (w != NULL) ? (NewsID)(w->ni - _news_items) : INVALID_NEWS;
+
+				for (NewsID i = n;; i = DecreaseIndex(i)) {
+					_news_items[i] = _news_items[DecreaseIndex(i)];
+
+					if (i != _latest_news) {
+						if (i == _current_news) _current_news = IncreaseIndex(_current_news);
+						if (i == _forced_news) _forced_news = IncreaseIndex(_forced_news);
+						if (i == visible_news) w->ni = &_news_items[IncreaseIndex(visible_news)];
+					}
+
+					if (i == _oldest_news) break;
+				}
+				_oldest_news = IncreaseIndex(_oldest_news);
+			}
+
+			/*DEBUG(misc, 0, "-cur %3d, old %2d, lat %3d, for %3d, tot %2d",
+			  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
+
+			Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+			if (w != NULL) {
+				w->SetDirty();
+				w->vscroll.count = _total_news;
+			}
+		}
+
+		if (n == _latest_news) break;
+	}
+}
 
 /**
  * Are we ready to show another news item?
@@ -975,67 +1035,4 @@ void ShowMessageOptions()
 {
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	new MessageOptionsWindow(&_message_options_desc);
-}
-
-
-void DeleteVehicleNews(VehicleID vid, StringID news)
-{
-	for (NewsID n = _oldest_news; _latest_news != INVALID_NEWS; n = IncreaseIndex(n)) {
-		const NewsItem *ni = &_news_items[n];
-
-		if (ni->flags & NF_VEHICLE &&
-				ni->data_a == vid &&
-				(news == INVALID_STRING_ID || ni->string_id == news)) {
-			/* If we delete a forced news and it is just before the current news
-			 * then we need to advance to the next news (if any) */
-			if (_forced_news == n) MoveToNextItem();
-			if (_forced_news == INVALID_NEWS && _current_news == n) MoveToNextItem();
-			_total_news--;
-
-			/* If this is the last news item, invalidate _latest_news */
-			if (_total_news == 0) {
-				assert(_latest_news == _oldest_news);
-				_latest_news = INVALID_NEWS;
-				_current_news = INVALID_NEWS;
-			}
-
-			/* Since we only imitate a FIFO removing an arbitrary element does need
-			 * some magic. Remove the item by shifting head towards the tail. eg
-			 *    oldest    remove  last
-			 *        |        |     |
-			 * [------O--------n-----L--]
-			 * will become (change dramatized to make clear)
-			 * [---------O-----------L--]
-			 * We also need an update of the current, forced and visible (open window)
-			 * news's as this shifting could change the items they were pointing to */
-			if (_total_news != 0) {
-				NewsWindow *w = dynamic_cast<NewsWindow*>(FindWindowById(WC_NEWS_WINDOW, 0));
-				NewsID visible_news = (w != NULL) ? (NewsID)(w->ni - _news_items) : INVALID_NEWS;
-
-				for (NewsID i = n;; i = DecreaseIndex(i)) {
-					_news_items[i] = _news_items[DecreaseIndex(i)];
-
-					if (i != _latest_news) {
-						if (i == _current_news) _current_news = IncreaseIndex(_current_news);
-						if (i == _forced_news) _forced_news = IncreaseIndex(_forced_news);
-						if (i == visible_news) w->ni = &_news_items[IncreaseIndex(visible_news)];
-					}
-
-					if (i == _oldest_news) break;
-				}
-				_oldest_news = IncreaseIndex(_oldest_news);
-			}
-
-			/*DEBUG(misc, 0, "-cur %3d, old %2d, lat %3d, for %3d, tot %2d",
-			  _current_news, _oldest_news, _latest_news, _forced_news, _total_news);*/
-
-			Window *w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-			if (w != NULL) {
-				w->SetDirty();
-				w->vscroll.count = _total_news;
-			}
-		}
-
-		if (n == _latest_news) break;
-	}
 }
