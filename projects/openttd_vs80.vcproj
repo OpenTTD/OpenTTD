@@ -760,6 +760,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\vehiclelist.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\viewport.cpp"
 				>
 			</File>
@@ -1593,6 +1597,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\vehicle_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\vehiclelist.h"
 				>
 			</File>
 			<File
