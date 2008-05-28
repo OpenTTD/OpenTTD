@@ -1208,6 +1208,8 @@ struct QueryWindow : public Window {
 				 * DeleteNonVitalWindows() to be called - we shouldn't be in a window then */
 				QueryCallbackProc *proc = this->proc;
 				Window *parent = this->parent;
+				/* Prevent the destructor calling the callback function */
+				this->proc = NULL;
 				delete this;
 				if (proc != NULL) {
 					proc(parent, true);
