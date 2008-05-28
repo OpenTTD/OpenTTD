@@ -68,8 +68,6 @@ void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);
 Money GetTrainRunningCost(const Vehicle *v);
 
-void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner, uint32 index, uint16 window_type);
-void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine_list, VehicleList *wagon_list);
 CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
 void VehicleEnterDepot(Vehicle *v);
 

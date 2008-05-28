@@ -26,6 +26,7 @@
 #include "depot_base.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
+#include "vehiclelist.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

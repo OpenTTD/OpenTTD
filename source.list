@@ -112,6 +112,7 @@ tile_map.cpp
 	#end
 #end
 vehicle.cpp
+vehiclelist.cpp
 viewport.cpp
 waypoint.cpp
 widget.cpp
@@ -324,6 +325,7 @@ vehicle_base.h
 vehicle_func.h
 vehicle_gui.h
 vehicle_type.h
+vehiclelist.h
 viewport_func.h
 viewport_type.h
 waypoint.h

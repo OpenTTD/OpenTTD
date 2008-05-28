@@ -36,6 +36,7 @@
 #include "widgets/dropdown_func.h"
 #include "order_func.h"
 #include "timetable.h"
+#include "vehiclelist.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
