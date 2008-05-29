@@ -1123,12 +1123,12 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 
 
 #define SDTC_CONDVAR(var, type, from, to, flags, guiflags, def, min, max, interval, str, proc)\
-	SDTG_GENERAL(#var, SDT_NUMX, SL_VAR, type, flags, guiflags, _settings_client.var, 0, def, min, max, interval, NULL, str, proc, from, to)
+	SDTG_GENERAL(#var, SDT_NUMX, SL_VAR, type, flags, guiflags, _settings_client.var, 1, def, min, max, interval, NULL, str, proc, from, to)
 #define SDTC_VAR(var, type, flags, guiflags, def, min, max, interval, str, proc)\
 	SDTC_CONDVAR(var, type, 0, SL_MAX_VERSION, flags, guiflags, def, min, max, interval, str, proc)
 
 #define SDTC_CONDBOOL(var, from, to, flags, guiflags, def, str, proc)\
-	SDTG_GENERAL(#var, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, _settings_client.var, 0, def, 0, 1, 0, NULL, str, proc, from, to)
+	SDTG_GENERAL(#var, SDT_BOOLX, SL_VAR, SLE_BOOL, flags, guiflags, _settings_client.var, 1, def, 0, 1, 0, NULL, str, proc, from, to)
 #define SDTC_BOOL(var, flags, guiflags, def, str, proc)\
 	SDTC_CONDBOOL(var, 0, SL_MAX_VERSION, flags, guiflags, def, str, proc)
 
@@ -1143,7 +1143,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 	SDTG_GENERAL(var, SDT_STRING, SL_STR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTC_CONDOMANY(var, type, from, to, flags, guiflags, def, max, full, str, proc)\
-	SDTG_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, _settings_client.var, 0, def, 0, max, 0, full, str, proc, from, to)
+	SDTG_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, _settings_client.var, 1, def, 0, max, 0, full, str, proc, from, to)
 #define SDTC_OMANY(var, type, flags, guiflags, def, max, full, str, proc)\
 	SDTC_CONDOMANY(var, type, 0, SL_MAX_VERSION, flags, guiflags, def, max, full, str, proc)
 
