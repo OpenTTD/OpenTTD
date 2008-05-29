@@ -1555,7 +1555,7 @@ static const SettingDesc _gameopt_settings[] = {
 	    SDT_OMANY(GameSettings, game_creation.town_name,  SLE_UINT8,                     0, 0, 0, 255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
 	    SDT_OMANY(GameSettings, game_creation.landscape,  SLE_UINT8,                     0, 0, 0, 3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
 	      SDT_VAR(GameSettings, game_creation.snow_line,  SLE_UINT8,                     0, 0, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
- SDTC_CONDOMANY(              gui.autosave,             SLE_UINT8,  0, 22,             N, 0, 0, 0, "", STR_NULL, NULL),
+	 SDT_CONDNULL(                                                1,  0, 22),
  SDTC_CONDOMANY(              gui.autosave,             SLE_UINT8, 23, SL_MAX_VERSION, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL, NULL),
 	    SDT_OMANY(GameSettings, vehicle.road_side,        SLE_UINT8,                     0, 0, 1, 1, "left|right", STR_NULL, NULL, NULL),
 	    SDT_END()
