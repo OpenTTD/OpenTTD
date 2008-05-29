@@ -84,7 +84,7 @@ void HashCurrentCompanyPassword()
 	if (StrEmpty(_network_player_info[_local_player].password)) return;
 
 	_password_game_seed = _settings_game.game_creation.generation_seed;
-	ttd_strlcpy(_password_server_unique_id, _network_unique_id, sizeof(_password_server_unique_id));
+	ttd_strlcpy(_password_server_unique_id, _settings_client.network.network_id, sizeof(_password_server_unique_id));
 
 	const char *new_pw = GenerateCompanyPasswordHash(_network_player_info[_local_player].password);
 	ttd_strlcpy(_network_player_info[_local_player].password, new_pw, sizeof(_network_player_info[_local_player].password));
@@ -131,10 +131,10 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 
 	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
-	p->Send_string(_network_player_name); // Player name
+	p->Send_string(_settings_client.network.player_name); // Player name
 	p->Send_uint8 (_network_playas);      // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
-	p->Send_string(_network_unique_id);
+	p->Send_string(_settings_client.network.network_id);
 	MY_CLIENT->Send_Packet(p);
 }
 

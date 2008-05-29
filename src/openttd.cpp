@@ -485,8 +485,8 @@ int ttd_main(int argc, char *argv[])
 	if (_cur_resolution[1] == 0) _cur_resolution[1] = 1;
 
 #if defined(ENABLE_NETWORK)
-	if (dedicated_host) snprintf(_network_server_bind_ip_host, NETWORK_HOSTNAME_LENGTH, "%s", dedicated_host);
-	if (dedicated_port) _network_server_port = dedicated_port;
+	if (dedicated_host) snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", dedicated_host);
+	if (dedicated_port) _settings_client.network.server_port = dedicated_port;
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 #endif /* ENABLE_NETWORK */
 
@@ -680,8 +680,8 @@ static void MakeNewGameDone()
 #ifdef ENABLE_NETWORK
 	/* We are the server, we start a new player (not dedicated),
 	 * so set the default password *if* needed. */
-	if (_network_server && !StrEmpty(_network_default_company_pass)) {
-		char *password = _network_default_company_pass;
+	if (_network_server && !StrEmpty(_settings_client.network.default_company_pass)) {
+		char *password = _settings_client.network.default_company_pass;
 		NetworkChangeCompanyPassword(1, &password);
 	}
 #endif /* ENABLE_NETWORK */
@@ -822,7 +822,7 @@ void SwitchMode(int new_mode)
 			/* But not if we are going to the menu */
 			if (new_mode != SM_MENU) {
 				/* check if we should reload the config */
-				if (_network_reload_cfg) {
+				if (_settings_client.network.reload_cfg) {
 					LoadFromConfig();
 					_settings_game = _settings_newgame;
 					ResetGRFConfig(false);
@@ -1102,7 +1102,7 @@ void GameLoop()
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
 			/* This means that we want to reconnect to the last host
 			 * We do this here, because it means that the network is really closed */
-			NetworkClientConnectGame(_network_last_host, _network_last_port);
+			NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
 		}
 		/* Singleplayer */
 		StateGameLoop();

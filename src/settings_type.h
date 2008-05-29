@@ -8,6 +8,7 @@
 #include "date_type.h"
 #include "town_type.h"
 #include "transport_type.h"
+#include "network/core/config.h"
 
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
@@ -80,6 +81,40 @@ struct GUISettings {
 	byte   currency;                         ///< currency we currently use
 	byte   units;                            ///< unit system we show everything
 	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
+};
+
+/** All settings related to the network. */
+struct NetworkSettings {
+#ifdef ENABLE_NETWORK
+	uint16 sync_freq;
+	uint8  frame_freq;
+	uint16 max_join_time;
+	bool   pause_on_join;
+	char   server_bind_ip[NETWORK_HOSTNAME_LENGTH];
+	uint16 server_port;
+	bool   server_advertise;
+	uint8  lan_internet;
+	char   player_name[NETWORK_NAME_LENGTH];
+	char   server_password[NETWORK_PASSWORD_LENGTH];
+	char   rcon_password[NETWORK_PASSWORD_LENGTH];
+	char   default_company_pass[NETWORK_PASSWORD_LENGTH];
+	char   server_name[NETWORK_NAME_LENGTH];
+	char   connect_to_ip[NETWORK_HOSTNAME_LENGTH];
+	char   network_id[NETWORK_UNIQUE_ID_LENGTH];
+	bool   autoclean_companies;
+	uint8  autoclean_unprotected;
+	uint8  autoclean_protected;
+	uint8  max_companies;
+	uint8  max_clients;
+	uint8  max_spectators;
+	Year   restart_game_year;
+	uint8  min_players;
+	uint8  server_lang;
+	bool   reload_cfg;
+	char   last_host[NETWORK_HOSTNAME_LENGTH];
+	uint16 last_port;
+#else /* ENABLE_NETWORK */
+#endif
 };
 
 /** Settings related to the creation of games. */
@@ -281,6 +316,7 @@ struct GameSettings {
 /** All settings that are only important for the local client. */
 struct ClientSettings {
 	GUISettings          gui;                ///< settings related to the GUI
+	NetworkSettings      network;            ///< settings related to the network
 };
 
 /** The current settings for this game. */

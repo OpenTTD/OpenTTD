@@ -428,7 +428,7 @@ static void NetworkUDPBroadCast(NetworkUDPSocketHandler *socket)
 		struct sockaddr_in out_addr;
 
 		out_addr.sin_family = AF_INET;
-		out_addr.sin_port = htons(_network_server_port);
+		out_addr.sin_port = htons(_settings_client.network.server_port);
 		out_addr.sin_addr.s_addr = _broadcast_list[i];
 
 		DEBUG(net, 4, "[udp] broadcasting to %s", inet_ntoa(out_addr.sin_addr));
@@ -535,7 +535,7 @@ void NetworkUDPRemoveAdvertise()
 	Packet p(PACKET_UDP_SERVER_UNREGISTER);
 	/* Packet is: Version, server_port */
 	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
-	p.Send_uint16(_network_server_port);
+	p.Send_uint16(_settings_client.network.server_port);
 	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 
@@ -584,7 +584,7 @@ void NetworkUDPAdvertise()
 	/* Packet is: WELCOME_MESSAGE, Version, server_port */
 	p.Send_string(NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
 	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
-	p.Send_uint16(_network_server_port);
+	p.Send_uint16(_settings_client.network.server_port);
 	_udp_master_socket->SendPacket(&p, &out_addr);
 }
 

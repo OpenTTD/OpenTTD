@@ -216,8 +216,8 @@ uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs)
 	// This client has missed his ACK packet after 1 DAY_TICKS..
 	//  so we increase his lag for every frame that passes!
 	// The packet can be out by a max of _net_frame_freq
-	if (cs->last_frame_server + DAY_TICKS + _network_frame_freq < _frame_counter)
-		lag += _frame_counter - (cs->last_frame_server + DAY_TICKS + _network_frame_freq);
+	if (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq < _frame_counter)
+		lag += _frame_counter - (cs->last_frame_server + DAY_TICKS + _settings_client.network.frame_freq);
 
 	return lag;
 }
@@ -332,7 +332,7 @@ void CheckMinPlayers()
 {
 	if (!_network_dedicated) return;
 
-	if (NetworkCountPlayers() < _network_min_players) {
+	if (NetworkCountPlayers() < _settings_client.network.min_players) {
 		if (_min_players_paused) return;
 
 		_min_players_paused = true;
@@ -662,7 +662,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 	}
 
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
-	if (cs->status == STATUS_PRE_ACTIVE && _network_pause_on_join) {
+	if (cs->status == STATUS_PRE_ACTIVE && _settings_client.network.pause_on_join) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
 	}
@@ -802,7 +802,7 @@ static bool NetworkListen()
 	SOCKET ls;
 	struct sockaddr_in sin;
 
-	DEBUG(net, 1, "Listening on %s:%d", _network_server_bind_ip_host, _network_server_port);
+	DEBUG(net, 1, "Listening on %s:%d", _settings_client.network.server_bind_ip, _settings_client.network.server_port);
 
 	ls = socket(AF_INET, SOCK_STREAM, 0);
 	if (ls == INVALID_SOCKET) {
@@ -823,7 +823,7 @@ static bool NetworkListen()
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = _network_server_bind_ip;
-	sin.sin_port = htons(_network_server_port);
+	sin.sin_port = htons(_settings_client.network.server_port);
 
 	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
 		ServerStartError("bind() failed");
@@ -923,7 +923,7 @@ void NetworkAddServer(const char *b)
 
 		ttd_strlcpy(host, b, lengthof(host));
 
-		ttd_strlcpy(_network_default_ip, b, lengthof(_network_default_ip));
+		ttd_strlcpy(_settings_client.network.connect_to_ip, b, lengthof(_settings_client.network.connect_to_ip));
 		rport = NETWORK_DEFAULT_PORT;
 
 		ParseConnectionString(&player, &port, host);
@@ -961,8 +961,8 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 
 	if (port == 0) return false;
 
-	ttd_strlcpy(_network_last_host, host, sizeof(_network_last_host));
-	_network_last_port = port;
+	ttd_strlcpy(_settings_client.network.last_host, host, sizeof(_settings_client.network.last_host));
+	_settings_client.network.last_port = port;
 
 	NetworkDisconnect();
 	NetworkUDPCloseAll();
@@ -987,11 +987,16 @@ static void NetworkInitGameInfo()
 {
 	NetworkClientInfo *ci;
 
-	ttd_strlcpy(_network_game_info.server_name, _network_server_name, sizeof(_network_game_info.server_name));
-	ttd_strlcpy(_network_game_info.server_password, _network_server_password, sizeof(_network_server_password));
-	ttd_strlcpy(_network_game_info.rcon_password, _network_rcon_password, sizeof(_network_rcon_password));
-	if (_network_game_info.server_name[0] == '\0')
+	_network_game_info.clients_max    = _settings_client.network.max_clients;
+	_network_game_info.companies_max  = _settings_client.network.max_companies;
+	_network_game_info.spectators_max = _settings_client.network.max_spectators;
+	_network_game_info.server_lang    = _settings_client.network.server_lang;
+	ttd_strlcpy(_network_game_info.server_name, _settings_client.network.server_name, sizeof(_network_game_info.server_name));
+	ttd_strlcpy(_network_game_info.server_password, _settings_client.network.server_password, sizeof(_network_game_info.server_password));
+	ttd_strlcpy(_network_game_info.rcon_password, _settings_client.network.rcon_password, sizeof(_network_game_info.rcon_password));
+	if (StrEmpty(_network_game_info.server_name)) {
 		snprintf(_network_game_info.server_name, sizeof(_network_game_info.server_name), "Unnamed Server");
+	}
 
 	ttd_strlcpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
 
@@ -1014,7 +1019,7 @@ static void NetworkInitGameInfo()
 	_network_game_info.map_height = MapSizeY();
 	_network_game_info.map_set = _settings_game.game_creation.landscape;
 
-	_network_game_info.use_password = (_network_server_password[0] != '\0');
+	_network_game_info.use_password = !StrEmpty(_settings_client.network.server_password);
 
 	// We use _network_client_info[MAX_CLIENT_INFO - 1] to store the server-data in it
 	//  The index is NETWORK_SERVER_INDEX ( = 1)
@@ -1024,8 +1029,8 @@ static void NetworkInitGameInfo()
 	ci->client_index = NETWORK_SERVER_INDEX;
 	ci->client_playas = _network_dedicated ? PLAYER_SPECTATOR : _local_player;
 
-	ttd_strlcpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
-	ttd_strlcpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
+	ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
+	ttd_strlcpy(ci->unique_id, _settings_client.network.network_id, sizeof(ci->unique_id));
 }
 
 bool NetworkServerStart()
@@ -1041,7 +1046,7 @@ bool NetworkServerStart()
 
 	// Try to start UDP-server
 	_network_udp_server = true;
-	_network_udp_server = _udp_server_socket->Listen(_network_server_bind_ip, _network_server_port, false);
+	_network_udp_server = _udp_server_socket->Listen(_network_server_bind_ip, _settings_client.network.server_port, false);
 
 	_network_server = true;
 	_networking = true;
@@ -1332,7 +1337,7 @@ void NetworkGameLoop()
 		_frame_counter++;
 		// Update max-frame-counter
 		if (_frame_counter > _frame_counter_max) {
-			_frame_counter_max = _frame_counter + _network_frame_freq;
+			_frame_counter_max = _frame_counter + _settings_client.network.frame_freq;
 			send_frame = true;
 		}
 
@@ -1382,7 +1387,7 @@ static void NetworkGenerateUniqueId()
 		sprintf(hex_output + di * 2, "%02x", digest[di]);
 
 	/* _network_unique_id is our id */
-	snprintf(_network_unique_id, sizeof(_network_unique_id), "%s", hex_output);
+	snprintf(_settings_client.network.network_id, sizeof(_settings_client.network.network_id), "%s", hex_output);
 }
 
 void NetworkStartDebugLog(const char *hostname, uint16 port)
@@ -1429,12 +1434,12 @@ void NetworkStartUp()
 	_network_advertise_retries = 0;
 
 	/* Load the ip from the openttd.cfg */
-	_network_server_bind_ip = inet_addr(_network_server_bind_ip_host);
+	_network_server_bind_ip = inet_addr(_settings_client.network.server_bind_ip);
 	/* And put the data back in it in case it was an invalid ip */
-	snprintf(_network_server_bind_ip_host, sizeof(_network_server_bind_ip_host), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
+	snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 
 	/* Generate an unique id when there is none yet */
-	if (_network_unique_id[0] == '\0') NetworkGenerateUniqueId();
+	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateUniqueId();
 
 	{
 		byte cl_max = _network_game_info.clients_max;

@@ -865,8 +865,8 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			assert(_local_player == PLAYER_SPECTATOR);
 			SetLocalPlayer(p->index);
 #ifdef ENABLE_NETWORK
-			if (!StrEmpty(_network_default_company_pass)) {
-				char *password = _network_default_company_pass;
+			if (!StrEmpty(_settings_client.network.default_company_pass)) {
+				char *password = _settings_client.network.default_company_pass;
 				NetworkChangeCompanyPassword(1, &password);
 			}
 #endif /* ENABLE_NETWORK */

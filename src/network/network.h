@@ -17,7 +17,6 @@ extern bool _network_server;     ///< network-server is active
 extern bool _network_available;  ///< is network mode available?
 extern bool _network_dedicated;  ///< are we a dedicated server?
 extern bool _network_advertise;  ///< is the server advertising to the master server?
-extern bool _network_reload_cfg; ///< will we reload the entire config for the next game?
 
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */

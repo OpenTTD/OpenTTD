@@ -130,11 +130,7 @@ VARDEF NetworkGameInfo _network_game_info;
 VARDEF NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
 VARDEF NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
-VARDEF char _network_player_name[NETWORK_CLIENT_NAME_LENGTH];
-VARDEF char _network_default_ip[NETWORK_HOSTNAME_LENGTH];
-
 VARDEF uint16 _network_own_client_index;
-VARDEF char _network_unique_id[NETWORK_UNIQUE_ID_LENGTH]; // Our own unique ID
 
 VARDEF uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 VARDEF uint32 _frame_counter_max; // To where we may go with our clients
@@ -144,25 +140,10 @@ VARDEF uint32 _last_sync_frame; // Used in the server to store the last time a s
 // networking settings
 VARDEF uint32 _broadcast_list[MAX_INTERFACES + 1];
 
-VARDEF uint16 _network_server_port;
-/* We use bind_ip and bind_ip_host, where bind_ip_host is the readable form of
-    bind_ip_host, and bind_ip the numeric value, because we want a nice number
-    in the openttd.cfg, but we wants to use the uint32 internally.. */
 VARDEF uint32 _network_server_bind_ip;
-VARDEF char _network_server_bind_ip_host[NETWORK_HOSTNAME_LENGTH];
 VARDEF bool _is_network_server; // Does this client wants to be a network-server?
-VARDEF char _network_server_name[NETWORK_NAME_LENGTH];
-VARDEF char _network_server_password[NETWORK_PASSWORD_LENGTH];
-VARDEF char _network_rcon_password[NETWORK_PASSWORD_LENGTH];
-VARDEF char _network_default_company_pass[NETWORK_PASSWORD_LENGTH];
-
-VARDEF uint16 _network_max_join_time;             ///< Time a client can max take to join
-VARDEF bool _network_pause_on_join;               ///< Pause the game when a client tries to join (more chance of succeeding join)
 
 VARDEF uint16 _redirect_console_to_client;
-
-VARDEF uint16 _network_sync_freq;
-VARDEF uint8 _network_frame_freq;
 
 VARDEF uint32 _sync_seed_1, _sync_seed_2;
 VARDEF uint32 _sync_frame;
@@ -173,26 +154,15 @@ VARDEF uint8 _network_join_waiting;
 VARDEF uint16 _network_join_kbytes;
 VARDEF uint16 _network_join_kbytes_total;
 
-VARDEF char _network_last_host[NETWORK_HOSTNAME_LENGTH];
-VARDEF short _network_last_port;
 VARDEF uint32 _network_last_host_ip;
 VARDEF uint8 _network_reconnect;
 
 VARDEF bool _network_udp_server;
 VARDEF uint16 _network_udp_broadcast;
 
-VARDEF byte _network_lan_internet;
-
 VARDEF bool _network_need_advertise;
 VARDEF uint32 _network_last_advertise_frame;
 VARDEF uint8 _network_advertise_retries;
-
-VARDEF bool _network_autoclean_companies;
-VARDEF uint8 _network_autoclean_unprotected; // Remove a company after X months
-VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X months
-
-VARDEF Year _network_restart_game_year;      // If this year is reached, the server automaticly restarts
-VARDEF uint8 _network_min_players;           // Minimum number of players for game to unpause
 
 void NetworkTCPQueryServer(const char* host, unsigned short port);
 

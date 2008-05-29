@@ -240,7 +240,7 @@ protected:
 public:
 	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
 	{
-		ttd_strlcpy(this->edit_str_buf, _network_player_name, lengthof(this->edit_str_buf));
+		ttd_strlcpy(this->edit_str_buf, _settings_client.network.player_name, lengthof(this->edit_str_buf));
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
 
@@ -290,7 +290,7 @@ public:
 				sel->info.grfconfig == NULL);
 
 		SetDParam(0, 0x00);
-		SetDParam(1, _lan_internet_types_dropdown[_network_lan_internet]);
+		SetDParam(1, _lan_internet_types_dropdown[_settings_client.network.lan_internet]);
 		this->DrawWidgets();
 
 		/* Edit box to set player name */
@@ -315,7 +315,7 @@ public:
 			y += NET_PRC__SIZE_OF_ROW;
 		}
 
-		const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
+		const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_settings_client.network.last_host), _settings_client.network.last_port);
 		/* Draw the last joined server, if any */
 		if (last_joined != NULL) this->DrawServerLine(last_joined, y = this->widget[NGWW_LASTJOINED].top + 3, last_joined == sel);
 
@@ -406,7 +406,7 @@ public:
 				break;
 
 			case NGWW_CONN_BTN: // 'Connection' droplist
-				ShowDropDownMenu(this, _lan_internet_types_dropdown, _network_lan_internet, NGWW_CONN_BTN, 0, 0); // do it for widget NSSW_CONN_BTN
+				ShowDropDownMenu(this, _lan_internet_types_dropdown, _settings_client.network.lan_internet, NGWW_CONN_BTN, 0, 0); // do it for widget NSSW_CONN_BTN
 				break;
 
 			case NGWW_NAME: // Sort by name
@@ -432,7 +432,7 @@ public:
 			} break;
 
 			case NGWW_LASTJOINED: {
-				NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
+				NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_settings_client.network.last_host), _settings_client.network.last_port);
 				if (last_joined != NULL) {
 					this->server = last_joined;
 					this->SetDirty();
@@ -440,7 +440,7 @@ public:
 			} break;
 
 			case NGWW_FIND: // Find server automatically
-				switch (_network_lan_internet) {
+				switch (_settings_client.network.lan_internet) {
 					case 0: NetworkUDPSearchGame(); break;
 					case 1: NetworkUDPQueryMasterServer(); break;
 				}
@@ -448,7 +448,7 @@ public:
 
 			case NGWW_ADD: // Add a server
 				ShowQueryString(
-					BindCString(_network_default_ip),
+					BindCString(_settings_client.network.connect_to_ip),
 					STR_NETWORK_ENTER_IP,
 					31 | 0x1000,  // maximum number of characters OR
 					250, // characters up to this width pixels, whichever is satisfied first
@@ -461,8 +461,8 @@ public:
 
 			case NGWW_JOIN: // Join Game
 				if (this->server != NULL) {
-					snprintf(_network_last_host, sizeof(_network_last_host), "%s", inet_ntoa(*(struct in_addr *)&this->server->ip));
-					_network_last_port = this->server->port;
+					snprintf(_settings_client.network.last_host, sizeof(_settings_client.network.last_host), "%s", inet_ntoa(*(struct in_addr *)&this->server->ip));
+					_settings_client.network.last_port = this->server->port;
 					ShowNetworkLobbyWindow(this->server);
 				}
 				break;
@@ -481,7 +481,7 @@ public:
 	{
 		switch (widget) {
 			case NGWW_CONN_BTN:
-				_network_lan_internet = index;
+				_settings_client.network.lan_internet = index;
 				break;
 
 			default:
@@ -521,9 +521,9 @@ public:
 
 		/* The name is only allowed when it starts with a letter! */
 		if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
-			ttd_strlcpy(_network_player_name, this->edit_str_buf, lengthof(_network_player_name));
+			ttd_strlcpy(_settings_client.network.player_name, this->edit_str_buf, lengthof(_settings_client.network.player_name));
 		} else {
-			ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
+			ttd_strlcpy(_settings_client.network.player_name, "Player", lengthof(_settings_client.network.player_name));
 		}
 		return state;
 	}
@@ -665,7 +665,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
 	{
-		ttd_strlcpy(this->edit_str_buf, _network_server_name, lengthof(this->edit_str_buf));
+		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, lengthof(this->edit_str_buf));
 
 		_saveload_mode = SLD_NEW_GAME;
 		BuildFileList();
@@ -676,7 +676,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 160);
 
 		this->field = NSSW_GAMENAME;
-		_network_game_info.use_password = !StrEmpty(_network_server_password);
+		_network_game_info.use_password = !StrEmpty(_settings_client.network.server_password);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -737,7 +737,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 			case NSSW_SETPWD: // Set password button
 				this->widget_id = NSSW_SETPWD;
-				ShowQueryString(BindCString(_network_server_password), STR_NETWORK_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL);
+				ShowQueryString(BindCString(_settings_client.network.server_password), STR_NETWORK_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL);
 				break;
 
 			case NSSW_SELMAP: { // Select map
@@ -862,7 +862,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		if (this->field == NSSW_GAMENAME) {
 			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, state) == 1) return state; // enter pressed
 
-			ttd_strlcpy(_network_server_name, this->text.buf, sizeof(_network_server_name));
+			ttd_strlcpy(_settings_client.network.server_name, this->text.buf, sizeof(_settings_client.network.server_name));
 		}
 
 		return state;
@@ -873,8 +873,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		if (str == NULL) return;
 
 		if (this->widget_id == NSSW_SETPWD) {
-			ttd_strlcpy(_network_server_password, str, lengthof(_network_server_password));
-			_network_game_info.use_password = !StrEmpty(_network_server_password);
+			ttd_strlcpy(_settings_client.network.server_password, str, lengthof(_settings_client.network.server_password));
+			_network_game_info.use_password = !StrEmpty(_settings_client.network.server_password);
 		} else {
 			int32 value = atoi(str);
 			this->InvalidateWidget(this->widget_id);
@@ -1104,22 +1104,22 @@ struct NetworkLobbyWindow : public Window {
 			case NLWW_JOIN:     // Join company
 				/* Button can be clicked only when it is enabled */
 				_network_playas = this->company;
-				NetworkClientConnectGame(_network_last_host, _network_last_port);
+				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
 				break;
 
 			case NLWW_NEW:      // New company
 				_network_playas = PLAYER_NEW_COMPANY;
-				NetworkClientConnectGame(_network_last_host, _network_last_port);
+				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
 				break;
 
 			case NLWW_SPECTATE: // Spectate game
 				_network_playas = PLAYER_SPECTATOR;
-				NetworkClientConnectGame(_network_last_host, _network_last_port);
+				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
 				break;
 
 			case NLWW_REFRESH:  // Refresh
-				NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
-				NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
+				NetworkTCPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // company info
+				NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
 				break;
 		}
 	}
@@ -1162,8 +1162,8 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-	NetworkTCPQueryServer(_network_last_host, _network_last_port); // company info
-	NetworkUDPQueryServer(_network_last_host, _network_last_port); // general data
+	NetworkTCPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // company info
+	NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
 
 	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
 }
@@ -1894,7 +1894,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	{
 		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, min(lengthof(_network_default_company_pass), lengthof(this->edit_str_buf)), 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, min(lengthof(_settings_client.network.default_company_pass), lengthof(this->edit_str_buf)), 0);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1902,7 +1902,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	void OnOk()
 	{
 		if (this->IsWidgetLowered(NCPWW_SAVE_AS_DEFAULT_PASSWORD)) {
-			snprintf(_network_default_company_pass, lengthof(_network_default_company_pass), "%s", this->edit_str_buf);
+			snprintf(_settings_client.network.default_company_pass, lengthof(_settings_client.network.default_company_pass), "%s", this->edit_str_buf);
 		}
 
 		/* empty password is a '*' because of console argument */

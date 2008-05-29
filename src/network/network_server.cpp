@@ -230,7 +230,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandl
 	Packet *p = NetworkSend_Init(PACKET_SERVER_NEED_PASSWORD);
 	p->Send_uint8(type);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
-	p->Send_string(_network_unique_id);
+	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
 }
 
@@ -255,7 +255,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
 	p->Send_uint16(cs->index);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
-	p->Send_string(_network_unique_id);
+	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
 
 		// Transmit info about all the active clients
@@ -800,7 +800,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 			}
 		}
 
-		if (_network_pause_on_join) {
+		if (_settings_client.network.pause_on_join) {
 			/* Now pause the game till the client is in sync */
 			DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
@@ -1021,7 +1021,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 		/* Now he is! Unpause the game */
 		cs->status = STATUS_ACTIVE;
 
-		if (_network_pause_on_join) {
+		if (_settings_client.network.pause_on_join) {
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 			NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
 		}
@@ -1365,7 +1365,7 @@ void NetworkUpdateClientInfo(uint16 client_index)
 /* Check if we want to restart the map */
 static void NetworkCheckRestartMap()
 {
-	if (_network_restart_game_year != 0 && _cur_year >= _network_restart_game_year) {
+	if (_settings_client.network.restart_game_year != 0 && _cur_year >= _settings_client.network.restart_game_year) {
 		DEBUG(net, 0, "Auto-restarting map. Year %d reached", _cur_year);
 
 		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
@@ -1384,7 +1384,7 @@ static void NetworkAutoCleanCompanies()
 	const Player *p;
 	bool clients_in_company[MAX_PLAYERS];
 
-	if (!_network_autoclean_companies) return;
+	if (!_settings_client.network.autoclean_companies) return;
 
 	memset(clients_in_company, 0, sizeof(clients_in_company));
 
@@ -1409,13 +1409,13 @@ static void NetworkAutoCleanCompanies()
 			_network_player_info[p->index].months_empty++;
 
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
-			if (_network_player_info[p->index].months_empty > _network_autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
+			if (_network_player_info[p->index].months_empty > _settings_client.network.autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
 				/* Shut the company down */
 				DoCommandP(0, 2, p->index, NULL, CMD_PLAYER_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d", p->index + 1);
 			}
 			/* Is the compnay empty for autoclean_protected-months, and there is a protection? */
-			if (_network_player_info[p->index].months_empty > _network_autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
+			if (_network_player_info[p->index].months_empty > _settings_client.network.autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
 				/* Unprotect the company */
 				_network_player_info[p->index].password[0] = '\0';
 				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", p->index+1);
@@ -1510,7 +1510,7 @@ void NetworkServer_Tick(bool send_frame)
 #endif
 
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
-	if (_frame_counter >= _last_sync_frame + _network_sync_freq) {
+	if (_frame_counter >= _last_sync_frame + _settings_client.network.sync_freq) {
 		_last_sync_frame = _frame_counter;
 		send_sync = true;
 	}
@@ -1542,8 +1542,8 @@ void NetworkServer_Tick(bool send_frame)
 			}
 		} else if (cs->status == STATUS_PRE_ACTIVE) {
 			int lag = NetworkCalculateLag(cs);
-			if (lag > _network_max_join_time) {
-				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _network_max_join_time);
+			if (lag > _settings_client.network.max_join_time) {
+				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _settings_client.network.max_join_time);
 				NetworkCloseClient(cs);
 			}
 		} else if (cs->status == STATUS_INACTIVE) {
