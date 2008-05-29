@@ -1471,7 +1471,7 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 }
 
 /* actual loader/saver function */
-void InitializeGame(int mode, uint size_x, uint size_y);
+void InitializeGame(uint size_x, uint size_y, bool reset_date);
 extern bool AfterLoadGame();
 extern void BeforeSaveGame();
 extern bool LoadOldSaveGame(const char *file);
@@ -1634,7 +1634,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
-		InitializeGame(IG_DATE_RESET, 256, 256); // set a mapsize of 256x256 for TTDPatch games or it might get confused
+		InitializeGame(256, 256, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		_sl_version = 0;
 		_sl_minor_version = 0;
@@ -1747,7 +1747,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			/* Old maps were hardcoded to 256x256 and thus did not contain
 			 * any mapsize information. Pre-initialize to 256x256 to not to
 			 * confuse old games */
-			InitializeGame(IG_DATE_RESET, 256, 256);
+			InitializeGame(256, 256, true);
 
 			SlLoadChunks();
 			fmt->uninit_read();

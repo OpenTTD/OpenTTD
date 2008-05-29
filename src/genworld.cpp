@@ -39,7 +39,7 @@ void StartupEconomy();
 void StartupPlayers();
 void StartupDisasters();
 
-void InitializeGame(int mode, uint size_x, uint size_y);
+void InitializeGame(uint size_x, uint size_y, bool reset_date);
 
 /* Please only use this variable in genworld.h and genworld.c and
  *  nowhere else. For speed improvements we need it to be global, but
@@ -253,7 +253,7 @@ void HandleGeneratingWorldAbortion()
  * @param size_x The X-size of the map.
  * @param size_y The Y-size of the map.
  */
-void GenerateWorld(int mode, uint size_x, uint size_y)
+void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 {
 	if (_gw.active) return;
 	_gw.mode   = mode;
@@ -279,7 +279,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	GfxLoadSprites();
 	LoadStringWidthTable();
 
-	InitializeGame(IG_NONE, _gw.size_x, _gw.size_y);
+	InitializeGame(_gw.size_x, _gw.size_y, false);
 	PrepareGenerateWorldProgress();
 
 	/* Re-init the windowing system */

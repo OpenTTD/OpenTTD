@@ -72,11 +72,19 @@ struct SmallFiosItem {
 	char title[255];      ///< internal name of the game
 };
 
+enum {
+	SORT_ASCENDING  = 0,
+	SORT_DESCENDING = 1,
+	SORT_BY_DATE    = 0,
+	SORT_BY_NAME    = 2
+};
+
 /* Variables to display file lists */
 extern FiosItem *_fios_list; ///< defined in misc_gui.cpp
 extern int _fios_num;        ///< defined in fios.cpp, read_only version of _fios_count
 extern SmallFiosItem _file_to_saveload;
 extern SaveLoadDialogMode _saveload_mode;   ///< defined in misc_gui.cpp
+extern byte _savegame_sort_order;
 
 /* Launch save/load dialog */
 void ShowSaveLoadDialog(SaveLoadDialogMode mode);

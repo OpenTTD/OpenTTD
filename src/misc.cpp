@@ -55,7 +55,7 @@ void InitializeCheats();
 void InitializeNPF();
 void InitializeOldNames();
 
-void InitializeGame(int mode, uint size_x, uint size_y)
+void InitializeGame(uint size_x, uint size_y, bool reset_date)
 {
 	AllocateMap(size_x, size_y);
 
@@ -69,7 +69,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	_cur_tileloop_tile = 0;
 	_settings = _settings_newgame;
 
-	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
+	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings.game_creation.starting_year, 0, 1));
 		InitializeOldNames();
 	}

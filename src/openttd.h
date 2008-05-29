@@ -29,21 +29,6 @@ enum SwitchModes {
 	SM_LOAD_HEIGHTMAP  = 12,
 };
 
-
-/* Modes for GenerateWorld */
-enum GenerateWorldModes {
-	GW_NEWGAME   = 0,    /* Generate a map for a new game */
-	GW_EMPTY     = 1,    /* Generate an empty map (sea-level) */
-	GW_RANDOM    = 2,    /* Generate a random map for SE */
-	GW_HEIGHTMAP = 3,    /* Generate a newgame from a heightmap */
-};
-
-/* Modes for InitializeGame, those are _bits_! */
-enum InitializeGameModes {
-	IG_NONE       = 0,  /* Don't do anything special */
-	IG_DATE_RESET = 1,  /* Reset the date when initializing a game */
-};
-
 /* Display Options */
 enum {
 	DO_SHOW_TOWN_NAMES    = 0,
@@ -53,15 +38,6 @@ enum {
 	DO_FULL_DETAIL        = 5,
 	DO_WAYPOINTS          = 6,
 };
-
-enum {
-	SORT_ASCENDING  = 0,
-	SORT_DESCENDING = 1,
-	SORT_BY_DATE    = 0,
-	SORT_BY_NAME    = 2
-};
-
-extern byte _savegame_sort_order;
 
 /* In certain windows you navigate with the arrow keys. Do not scroll the
  * gameview when here. Bitencoded variable that only allows scrolling if all

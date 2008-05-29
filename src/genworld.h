@@ -18,6 +18,14 @@ enum {
 	GENERATE_NEW_SEED = (uint)-1, ///< Create a new random seed
 };
 
+/* Modes for GenerateWorld */
+enum GenerateWorldMode {
+	GW_NEWGAME   = 0,    /* Generate a map for a new game */
+	GW_EMPTY     = 1,    /* Generate an empty map (sea-level) */
+	GW_RANDOM    = 2,    /* Generate a random map for SE */
+	GW_HEIGHTMAP = 3,    /* Generate a newgame from a heightmap */
+};
+
 typedef void gw_done_proc();
 typedef void gw_abort_proc();
 
@@ -27,7 +35,7 @@ struct gw_info {
 	bool wait_for_draw;    ///< Are we waiting on a draw event
 	bool quit_thread;      ///< Do we want to quit the active thread
 	bool threaded;         ///< Whether we run _GenerateWorld threaded
-	int mode;              ///< What mode are we making a world in
+	GenerateWorldMode mode;///< What mode are we making a world in
 	PlayerID lp;           ///< The local_player before generating
 	uint size_x;           ///< X-size of the map
 	uint size_y;           ///< Y-size of the map
@@ -67,7 +75,7 @@ bool IsGenerateWorldThreaded();
 void GenerateWorldSetCallback(gw_done_proc *proc);
 void GenerateWorldSetAbortCallback(gw_abort_proc *proc);
 void WaitTillGeneratedWorld();
-void GenerateWorld(int mode, uint size_x, uint size_y);
+void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y);
 void AbortGeneratingWorld();
 bool IsGeneratingWorldAborted();
 void HandleGeneratingWorldAbortion();
