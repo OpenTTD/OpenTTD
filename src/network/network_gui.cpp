@@ -427,7 +427,7 @@ public:
 				if (id_v >= this->vscroll.cap) return; // click out of bounds
 				id_v += this->vscroll.pos;
 
-				this->server = this->servers[id_v];
+				this->server = (id_v < this->servers.Length()) ? this->servers[id_v] : NULL;
 				this->SetDirty();
 			} break;
 
