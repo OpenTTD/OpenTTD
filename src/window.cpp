@@ -1021,6 +1021,7 @@ void InitWindowSystem()
 	_last_z_window = _z_windows;
 	_mouseover_last_w = NULL;
 	_no_scroll = 0;
+	_scrolling_viewport = 0;
 }
 
 /**
@@ -1707,6 +1708,55 @@ enum MouseClick {
 extern void UpdateTileSelection();
 extern bool VpHandlePlaceSizingDrag();
 
+static void ScrollMainViewport(int x, int y)
+{
+	if (_game_mode != GM_MENU) {
+		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+		assert(w);
+
+		w->viewport->dest_scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
+		w->viewport->dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
+	}
+}
+
+/**
+ * Describes all the different arrow key combinations the game allows
+ * when it is in scrolling mode.
+ * The real arrow keys are bitwise numbered as
+ * 1 = left
+ * 2 = up
+ * 4 = right
+ * 8 = down
+ */
+static const int8 scrollamt[16][2] = {
+	{ 0,  0}, ///<  no key specified
+	{-2,  0}, ///<  1 : left
+	{ 0, -2}, ///<  2 : up
+	{-2, -1}, ///<  3 : left  + up
+	{ 2,  0}, ///<  4 : right
+	{ 0,  0}, ///<  5 : left  + right = nothing
+	{ 2, -1}, ///<  6 : right + up
+	{ 0, -2}, ///<  7 : right + left  + up = up
+	{ 0  ,2}, ///<  8 : down
+	{-2  ,1}, ///<  9 : down  + left
+	{ 0,  0}, ///< 10 : down  + up    = nothing
+	{-2,  0}, ///< 11 : left  + up    +  down = left
+	{ 2,  1}, ///< 12 : down  + right
+	{ 0,  2}, ///< 13 : left  + right +  down = down
+	{ 2,  0}, ///< 14 : right + up    +  down = right
+	{ 0,  0}, ///< 15 : left  + up    +  right + down  = nothing
+};
+
+static bool HandleKeyScrolling()
+{
+	if (_dirkeys && !_no_scroll) {
+		int factor = _shift_pressed ? 50 : 10;
+		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
+		return false;
+	}
+	return true;
+}
+
 void MouseLoop(MouseClick click, int mousewheel)
 {
 	DecreaseWindowCounters();
@@ -1718,6 +1768,7 @@ void MouseLoop(MouseClick click, int mousewheel)
 	if (!HandleScrollbarScrolling()) return;
 	if (!HandleViewportScroll())     return;
 	if (!HandleMouseOver())          return;
+	if (!HandleKeyScrolling())       return;
 
 	bool scrollwheel_scrolling = _settings.gui.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
@@ -1979,6 +2030,12 @@ void InvalidateWindowClassesData(WindowClass cls, int data)
  */
 void CallWindowTickEvent()
 {
+	if (_scroller_click_timeout > 3) {
+		_scroller_click_timeout -= 3;
+	} else {
+		_scroller_click_timeout = 0;
+	}
+
 	for (Window * const *wz = _last_z_window; wz != _z_windows;) {
 		(*--wz)->OnTick();
 	}

@@ -1473,7 +1473,7 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 /* actual loader/saver function */
 void InitializeGame(uint size_x, uint size_y, bool reset_date);
 extern bool AfterLoadGame();
-extern void BeforeSaveGame();
+extern void SaveViewportBeforeSaveGame();
 extern bool LoadOldSaveGame(const char *file);
 
 /** Small helper function to close the to be loaded savegame an signal error */
@@ -1673,7 +1673,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 			_sl_version = SAVEGAME_VERSION;
 
-			BeforeSaveGame();
+			SaveViewportBeforeSaveGame();
 			SlSaveChunks();
 			SlWriteFill(); // flush the save buffer
 

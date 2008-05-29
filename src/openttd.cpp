@@ -23,10 +23,7 @@
 #include "gui.h"
 #include "mixer.h"
 #include "sound_func.h"
-#include "viewport_func.h"
 #include "window_func.h"
-#include "window_gui.h"
-#include "zoom_func.h"
 
 #include "debug.h"
 #include "saveload.h"
@@ -341,8 +338,6 @@ static void LoadIntroGame()
 
 	_pause_game = 0;
 	SetLocalPlayer(PLAYER_FIRST);
-	/* Make sure you can't scroll in the menu */
-	_scrolling_viewport = 0;
 	_cursor.fix_at = false;
 	MarkWholeScreenDirty();
 
@@ -1070,53 +1065,6 @@ static void DoAutosave()
 	}
 }
 
-static void ScrollMainViewport(int x, int y)
-{
-	if (_game_mode != GM_MENU) {
-		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-		assert(w);
-
-		w->viewport->dest_scrollpos_x += ScaleByZoom(x, w->viewport->zoom);
-		w->viewport->dest_scrollpos_y += ScaleByZoom(y, w->viewport->zoom);
-	}
-}
-
-/**
- * Describes all the different arrow key combinations the game allows
- * when it is in scrolling mode.
- * The real arrow keys are bitwise numbered as
- * 1 = left
- * 2 = up
- * 4 = right
- * 8 = down
- */
-static const int8 scrollamt[16][2] = {
-	{ 0,  0}, ///<  no key specified
-	{-2,  0}, ///<  1 : left
-	{ 0, -2}, ///<  2 : up
-	{-2, -1}, ///<  3 : left  + up
-	{ 2,  0}, ///<  4 : right
-	{ 0,  0}, ///<  5 : left  + right = nothing
-	{ 2, -1}, ///<  6 : right + up
-	{ 0, -2}, ///<  7 : right + left  + up = up
-	{ 0  ,2}, ///<  8 : down
-	{-2  ,1}, ///<  9 : down  + left
-	{ 0,  0}, ///< 10 : down  + up    = nothing
-	{-2,  0}, ///< 11 : left  + up    +  down = left
-	{ 2,  1}, ///< 12 : down  + right
-	{ 0,  2}, ///< 13 : left  + right +  down = down
-	{ 2,  0}, ///< 14 : right + up    +  down = right
-	{ 0,  0}, ///< 15 : left  + up    +  right + down  = nothing
-};
-
-static void HandleKeyScrolling()
-{
-	if (_dirkeys && !_no_scroll) {
-		int factor = _shift_pressed ? 50 : 10;
-		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
-	}
-}
-
 void GameLoop()
 {
 	ProcessAsyncSaveFinish();
@@ -1127,9 +1075,6 @@ void GameLoop()
 		DoAutosave();
 		RedrawAutosave();
 	}
-
-	/* handle scrolling of the main window */
-	HandleKeyScrolling();
 
 	/* make a screenshot? */
 	if (IsScreenshotRequested()) ShowScreenshotResult(MakeScreenshot());
@@ -1142,12 +1087,6 @@ void GameLoop()
 
 	IncreaseSpriteLRU();
 	InteractiveRandom();
-
-	if (_scroller_click_timeout > 3) {
-		_scroller_click_timeout -= 3;
-	} else {
-		_scroller_click_timeout = 0;
-	}
 
 	_caret_timer += 3;
 	_palette_animation_counter += 8;
@@ -1180,17 +1119,6 @@ void GameLoop()
 	InputLoop();
 
 	MusicLoop();
-}
-
-void BeforeSaveGame()
-{
-	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-
-	if (w != NULL) {
-		_saved_scrollpos_x = w->viewport->scrollpos_x;
-		_saved_scrollpos_y = w->viewport->scrollpos_y;
-		_saved_scrollpos_zoom = w->viewport->zoom;
-	}
 }
 
 static void ConvertTownOwner()
@@ -1298,20 +1226,8 @@ static bool InitializeWindowsAndCaches()
 	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
 
-	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
-
-	w->viewport->scrollpos_x = _saved_scrollpos_x;
-	w->viewport->scrollpos_y = _saved_scrollpos_y;
-	w->viewport->dest_scrollpos_x = _saved_scrollpos_x;
-	w->viewport->dest_scrollpos_y = _saved_scrollpos_y;
-
-	ViewPort *vp = w->viewport;
-	vp->zoom = min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
-	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
-	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
-
-	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
-	MarkWholeScreenDirty();
+	extern void ResetViewportAfterLoadGame();
+	ResetViewportAfterLoadGame();
 
 	/* Update coordinates of the signs. */
 	UpdateAllStationVirtCoord();

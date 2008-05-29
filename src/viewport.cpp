@@ -2756,3 +2756,33 @@ void ResetObjectToPlace()
 {
 	SetObjectToPlace(SPR_CURSOR_MOUSE, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 }
+
+
+void SaveViewportBeforeSaveGame()
+{
+	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+
+	if (w != NULL) {
+		_saved_scrollpos_x = w->viewport->scrollpos_x;
+		_saved_scrollpos_y = w->viewport->scrollpos_y;
+		_saved_scrollpos_zoom = w->viewport->zoom;
+	}
+}
+
+void ResetViewportAfterLoadGame()
+{
+	Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
+
+	w->viewport->scrollpos_x = _saved_scrollpos_x;
+	w->viewport->scrollpos_y = _saved_scrollpos_y;
+	w->viewport->dest_scrollpos_x = _saved_scrollpos_x;
+	w->viewport->dest_scrollpos_y = _saved_scrollpos_y;
+
+	ViewPort *vp = w->viewport;
+	vp->zoom = min(_saved_scrollpos_zoom, ZOOM_LVL_MAX);
+	vp->virtual_width = ScaleByZoom(vp->width, vp->zoom);
+	vp->virtual_height = ScaleByZoom(vp->height, vp->zoom);
+
+	DoZoomInOutWindow(ZOOM_NONE, w); // update button status
+	MarkWholeScreenDirty();
+}
