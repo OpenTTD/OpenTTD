@@ -257,7 +257,7 @@ void IncreaseDate()
 		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
 		DebugDumpCommands("ddc:save:%s\n", name);
 #endif /* DUMP_COMMANDS */
-		if (_settings.gui.autosave != 0 && (_cur_month % _autosave_months[_settings.gui.autosave]) == 0) {
+		if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
 			_do_autosave = true;
 			RedrawAutosave();
 		}
@@ -283,10 +283,10 @@ void IncreaseDate()
 	ShipsYearlyLoop();
 	if (_network_server) NetworkServerYearlyLoop();
 
-	if (_cur_year == _settings.gui.semaphore_build_before) ResetSignalVariant();
+	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
 
 	/* check if we reached end of the game */
-	if (_cur_year == _settings.gui.ending_year) {
+	if (_cur_year == _settings_client.gui.ending_year) {
 			ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
@@ -303,5 +303,5 @@ void IncreaseDate()
 		InitChatMessage();
 	}
 
-	if (_settings.gui.auto_euro) CheckSwitchToEuro();
+	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();
 }

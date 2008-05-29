@@ -1050,7 +1050,7 @@ void DisasterDailyLoop()
 
 	ResetDisasterDelay();
 
-	if (_settings.difficulty.disasters != 0) DoDisaster();
+	if (_settings_game.difficulty.disasters != 0) DoDisaster();
 }
 
 void StartupDisasters()

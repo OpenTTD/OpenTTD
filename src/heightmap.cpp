@@ -297,7 +297,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 	TileIndex tile;
 
 	/* Get map size and calculate scale and padding values */
-	switch (_settings.game_creation.heightmap_rotation) {
+	switch (_settings_game.game_creation.heightmap_rotation) {
 		default: NOT_REACHED();
 		case HM_COUNTER_CLOCKWISE:
 			width   = MapSizeX();
@@ -322,7 +322,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 	/* Form the landscape */
 	for (row = 0; row < height - 1; row++) {
 		for (col = 0; col < width - 1; col++) {
-			switch (_settings.game_creation.heightmap_rotation) {
+			switch (_settings_game.game_creation.heightmap_rotation) {
 				default: NOT_REACHED();
 				case HM_COUNTER_CLOCKWISE: tile = TileXY(col, row); break;
 				case HM_CLOCKWISE:         tile = TileXY(row, col); break;
@@ -337,7 +337,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				/* Use nearest neighbor resizing to scale map data.
 				 *  We rotate the map 45 degrees (counter)clockwise */
 				img_row = (((row - row_pad) * num_div) / img_scale);
-				switch (_settings.game_creation.heightmap_rotation) {
+				switch (_settings_game.game_creation.heightmap_rotation) {
 					default: NOT_REACHED();
 					case HM_COUNTER_CLOCKWISE:
 						img_col = (((width - 1 - col - col_pad) * num_div) / img_scale);

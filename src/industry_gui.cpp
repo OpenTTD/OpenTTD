@@ -132,7 +132,7 @@ class BuildIndustryWindow : public Window {
 				/* Rule is that editor mode loads all industries.
 				 * In game mode, all non raw industries are loaded too
 				 * and raw ones are loaded only when setting allows it */
-				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _settings.construction.raw_industry_construction == 0) {
+				if (_game_mode != GM_EDITOR && indsp->IsRawIndustry() && _settings_game.construction.raw_industry_construction == 0) {
 					/* Unselect if the industry is no longer in the list */
 					if (this->selected_type == ind) this->selected_index = -1;
 					continue;
@@ -196,10 +196,10 @@ public:
 		 * In Editor, you just build, while ingame, or you fund or you prospect */
 		if (_game_mode == GM_EDITOR) {
 			/* We've chosen many random industries but no industries have been specified */
-			if (indsp == NULL) this->enabled[this->selected_index] = _settings.difficulty.number_industries != 0;
+			if (indsp == NULL) this->enabled[this->selected_index] = _settings_game.difficulty.number_industries != 0;
 			this->widget[DPIW_FUND_WIDGET].data = STR_BUILD_NEW_INDUSTRY;
 		} else {
-			this->widget[DPIW_FUND_WIDGET].data = (_settings.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
+			this->widget[DPIW_FUND_WIDGET].data = (_settings_game.construction.raw_industry_construction == 2 && indsp->IsRawIndustry()) ? STR_PROSPECT_NEW_INDUSTRY : STR_FUND_NEW_INDUSTRY;
 		}
 		this->SetWidgetDisabledState(DPIW_FUND_WIDGET, !this->enabled[this->selected_index]);
 
@@ -305,7 +305,7 @@ public:
 
 					this->SetDirty();
 
-					if ((_game_mode != GM_EDITOR && _settings.construction.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
+					if ((_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indsp != NULL && indsp->IsRawIndustry()) ||
 							this->selected_type == INVALID_INDUSTRYTYPE) {
 						/* Reset the button state if going to prospecting or "build many industries" */
 						this->RaiseButtons();
@@ -326,7 +326,7 @@ public:
 						GenerateIndustries();
 						_generating_world = false;
 					}
-				} else if (_game_mode != GM_EDITOR && _settings.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
+				} else if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && GetIndustrySpec(this->selected_type)->IsRawIndustry()) {
 					DoCommandP(0, this->selected_type, InteractiveRandom(), NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
 					this->HandleButtonClick(DPIW_FUND_WIDGET);
 				} else {

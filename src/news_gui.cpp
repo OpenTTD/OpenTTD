@@ -500,7 +500,7 @@ void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
 	ni->flags = _news_subtype_data[subtype].flags;
 
 	/* show this news message in color? */
-	if (_cur_year >= _settings.gui.colored_news_year) ni->flags |= NF_INCOLOR;
+	if (_cur_year >= _settings_client.gui.colored_news_year) ni->flags |= NF_INCOLOR;
 
 	ni->data_a = data_a;
 	ni->data_b = data_b;
@@ -582,7 +582,7 @@ void RemoveOldNewsItems()
 	NewsItem *next;
 	for (NewsItem *cur = _oldest_news; _total_news > MIN_NEWS_AMOUNT && cur != NULL; cur = next) {
 		next = cur->next;
-		if (_date - _news_type_data[_news_subtype_data[cur->subtype].type].age * _settings.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
+		if (_date - _news_type_data[_news_subtype_data[cur->subtype].type].age * _settings_client.gui.news_message_timeout > cur->date) DeleteNewsItem(cur);
 	}
 }
 

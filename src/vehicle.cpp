@@ -128,20 +128,20 @@ bool Vehicle::NeedsServicing() const
 {
 	if (this->vehstatus & (VS_STOPPED | VS_CRASHED)) return false;
 
-	if (_settings.order.no_servicing_if_no_breakdowns && _settings.difficulty.vehicle_breakdowns == 0) {
+	if (_settings_game.order.no_servicing_if_no_breakdowns && _settings_game.difficulty.vehicle_breakdowns == 0) {
 		/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
 		 * Note: If servicing is enabled, we postpone replacement till next service. */
 		return EngineHasReplacementForPlayer(GetPlayer(this->owner), this->engine_type, this->group_id);
 	}
 
-	return _settings.vehicle.servint_ispercent ?
+	return _settings_game.vehicle.servint_ispercent ?
 		(this->reliability < GetEngine(this->engine_type)->reliability * (100 - this->service_interval) / 100) :
 		(this->date_of_last_service + this->service_interval < _date);
 }
 
 bool Vehicle::NeedsAutomaticServicing() const
 {
-	if (_settings.order.gotodepot && VehicleHasDepotOrders(this)) return false;
+	if (_settings_game.order.gotodepot && VehicleHasDepotOrders(this)) return false;
 	if (this->current_order.IsType(OT_LOADING))            return false;
 	if (this->current_order.IsType(OT_GOTO_DEPOT) && this->current_order.GetDepotOrderType() != ODTFB_SERVICE) return false;
 	return NeedsServicing();
@@ -914,7 +914,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if ((rel_old >> 8) != (rel >> 8)) InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 	if (v->breakdown_ctr != 0 || v->vehstatus & VS_STOPPED ||
-			_settings.difficulty.vehicle_breakdowns < 1 ||
+			_settings_game.difficulty.vehicle_breakdowns < 1 ||
 			v->cur_speed < 5 || _game_mode == GM_MENU) {
 		return;
 	}
@@ -931,7 +931,7 @@ void CheckVehicleBreakdown(Vehicle *v)
 	if (v->type == VEH_SHIP) rel += 0x6666;
 
 	/* reduced breakdowns? */
-	if (_settings.difficulty.vehicle_breakdowns == 1) rel += 0x6666;
+	if (_settings_game.difficulty.vehicle_breakdowns == 1) rel += 0x6666;
 
 	/* check if to break down */
 	if (_breakdown_chance[(uint)min(rel, 0xffff) >> 10] <= v->breakdown_chance) {
@@ -1696,10 +1696,10 @@ UnitID GetFreeUnitNumber(VehicleType type)
 	static UnitID gmax = 0;
 
 	switch (type) {
-		case VEH_TRAIN:    max = _settings.vehicle.max_trains; break;
-		case VEH_ROAD:     max = _settings.vehicle.max_roadveh; break;
-		case VEH_SHIP:     max = _settings.vehicle.max_ships; break;
-		case VEH_AIRCRAFT: max = _settings.vehicle.max_aircraft; break;
+		case VEH_TRAIN:    max = _settings_game.vehicle.max_trains; break;
+		case VEH_ROAD:     max = _settings_game.vehicle.max_roadveh; break;
+		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
+		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
 		default: NOT_REACHED();
 	}
 
@@ -1749,14 +1749,14 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	assert(IsPlayerBuildableVehicleType(type));
 
 	if (!IsValidPlayer(_current_player)) return false;
-	if (_settings.gui.always_build_infrastructure) return true;
+	if (_settings_client.gui.always_build_infrastructure) return true;
 
 	UnitID max;
 	switch (type) {
-		case VEH_TRAIN:    max = _settings.vehicle.max_trains; break;
-		case VEH_ROAD:     max = _settings.vehicle.max_roadveh; break;
-		case VEH_SHIP:     max = _settings.vehicle.max_ships; break;
-		case VEH_AIRCRAFT: max = _settings.vehicle.max_aircraft; break;
+		case VEH_TRAIN:    max = _settings_game.vehicle.max_trains; break;
+		case VEH_ROAD:     max = _settings_game.vehicle.max_roadveh; break;
+		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
+		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
 		default: NOT_REACHED();
 	}
 
@@ -1788,7 +1788,7 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
-	if (p->livery[LS_DEFAULT].in_use && (_settings.gui.liveries == 2 || (_settings.gui.liveries == 1 && player == _local_player))) {
+	if (p->livery[LS_DEFAULT].in_use && (_settings_client.gui.liveries == 2 || (_settings_client.gui.liveries == 1 && player == _local_player))) {
 		/* Determine the livery scheme to use */
 		switch (GetEngine(engine_type)->type) {
 			default: NOT_REACHED();
@@ -2355,7 +2355,7 @@ void Vehicle::HandleLoading(bool mode)
 
 			/* Not the first call for this tick, or still loading */
 			if (mode || !HasBit(this->vehicle_flags, VF_LOADING_FINISHED) ||
-					(_settings.order.timetabling && this->current_order_time < wait_time)) return;
+					(_settings_game.order.timetabling && this->current_order_time < wait_time)) return;
 
 			this->PlayLeaveStationSound();
 

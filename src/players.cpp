@@ -65,9 +65,9 @@ void SetLocalPlayer(PlayerID new_player)
 	/* Do not update the patches if we are in the intro GUI */
 	if (IsValidPlayer(new_player) && _game_mode != GM_MENU) {
 		const Player *p = GetPlayer(new_player);
-		_settings.gui.autorenew        = p->engine_renew;
-		_settings.gui.autorenew_months = p->engine_renew_months;
-		_settings.gui.autorenew_money  = p->engine_renew_money;
+		_settings_client.gui.autorenew        = p->engine_renew;
+		_settings_client.gui.autorenew_months = p->engine_renew_months;
+		_settings_client.gui.autorenew_money  = p->engine_renew_money;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 }
@@ -541,9 +541,9 @@ Player *DoStartupNewPlayer(bool is_ai)
 	/* Engine renewal settings */
 	p->engine_renew_list = NULL;
 	p->renew_keep_length = false;
-	p->engine_renew = _settings_newgame.gui.autorenew;
-	p->engine_renew_months = _settings_newgame.gui.autorenew_months;
-	p->engine_renew_money = _settings_newgame.gui.autorenew_money;
+	p->engine_renew = _settings_client.gui.autorenew;
+	p->engine_renew_months = _settings_client.gui.autorenew_months;
+	p->engine_renew_money = _settings_client.gui.autorenew_money;
 
 	GeneratePresidentName(p);
 
@@ -563,7 +563,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 void StartupPlayers()
 {
 	/* The AI starts like in the setting with +2 month max */
-	_next_competitor_start = _settings.difficulty.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
+	_next_competitor_start = _settings_game.difficulty.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
 static void MaybeStartNewPlayer()
@@ -578,10 +578,10 @@ static void MaybeStartNewPlayer()
 	}
 
 	/* when there's a lot of computers in game, the probability that a new one starts is lower */
-	if (n < (uint)_settings.difficulty.max_no_competitors &&
+	if (n < (uint)_settings_game.difficulty.max_no_competitors &&
 			n < (_network_server ?
-				InteractiveRandomRange(_settings.difficulty.max_no_competitors + 2) :
-				RandomRange(_settings.difficulty.max_no_competitors + 2)
+				InteractiveRandomRange(_settings_game.difficulty.max_no_competitors + 2) :
+				RandomRange(_settings_game.difficulty.max_no_competitors + 2)
 			)) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
@@ -589,7 +589,7 @@ static void MaybeStartNewPlayer()
 	}
 
 	/* The next AI starts like the difficulty setting said, with +2 month max */
-	_next_competitor_start = _settings.difficulty.competitor_start_time * 90 * DAY_TICKS + 1;
+	_next_competitor_start = _settings_game.difficulty.competitor_start_time * 90 * DAY_TICKS + 1;
 	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
 }
 
@@ -630,7 +630,7 @@ void PlayersYearlyLoop()
 		}
 	}
 
-	if (_settings.gui.show_finances && _local_player != PLAYER_SPECTATOR) {
+	if (_settings_client.gui.show_finances && _local_player != PLAYER_SPECTATOR) {
 		ShowPlayerFinances(_local_player);
 		p = GetPlayer(_local_player);
 		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
@@ -695,7 +695,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (flags & DC_EXEC) {
 				p->engine_renew = HasBit(p2, 0);
 				if (IsLocalPlayer()) {
-					_settings.gui.autorenew = p->engine_renew;
+					_settings_client.gui.autorenew = p->engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -708,7 +708,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (flags & DC_EXEC) {
 				p->engine_renew_months = (int16)p2;
 				if (IsLocalPlayer()) {
-					_settings.gui.autorenew_months = p->engine_renew_months;
+					_settings_client.gui.autorenew_months = p->engine_renew_months;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -721,7 +721,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (flags & DC_EXEC) {
 				p->engine_renew_money = p2;
 				if (IsLocalPlayer()) {
-					_settings.gui.autorenew_money = p->engine_renew_money;
+					_settings_client.gui.autorenew_money = p->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -771,9 +771,9 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 				p->engine_renew_money = p2;
 
 				if (IsLocalPlayer()) {
-					_settings.gui.autorenew = p->engine_renew;
-					_settings.gui.autorenew_months = p->engine_renew_months;
-					_settings.gui.autorenew_money = p->engine_renew_money;
+					_settings_client.gui.autorenew = p->engine_renew;
+					_settings_client.gui.autorenew_months = p->engine_renew_months;
+					_settings_client.gui.autorenew_money = p->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -876,8 +876,8 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Now that we have a new player, broadcast its autorenew settings to
 		 * all clients so everything is in sync */
 		DoCommand(0,
-			(_settings.gui.autorenew << 15 ) | (_settings.gui.autorenew_months << 16) | 4,
-			_settings.gui.autorenew_money,
+			(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
+			_settings_client.gui.autorenew_money,
 			DC_EXEC,
 			CMD_SET_AUTOREPLACE
 		);
@@ -994,7 +994,7 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 /** Save the highscore for the player */
 int8 SaveHighScoreValue(const Player *p)
 {
-	HighScore *hs = _highscore_table[_settings.difficulty.diff_level];
+	HighScore *hs = _highscore_table[_settings_game.difficulty.diff_level];
 	uint i;
 	uint16 score = p->old_economy[0].performance_history;
 
@@ -1122,7 +1122,7 @@ void LoadFromHighScore()
 	}
 
 	/* Initialize end of game variable (when to show highscore chart) */
-	_settings.gui.ending_year = 2051;
+	_settings_client.gui.ending_year = 2051;
 }
 
 /* Save/load of players */

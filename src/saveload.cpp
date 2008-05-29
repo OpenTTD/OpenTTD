@@ -1776,7 +1776,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 	}
 }
 
-/** Do a save when exiting the game (patch option) _settings.gui.autosave_on_exit */
+/** Do a save when exiting the game (patch option) _settings_client.gui.autosave_on_exit */
 void DoExitSave()
 {
 	SaveOrLoad("exit.sav", SL_SAVE, AUTOSAVE_DIR);

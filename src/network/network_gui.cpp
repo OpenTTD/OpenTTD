@@ -1334,7 +1334,7 @@ struct NetworkClientListPopupWindow : Window {
 
 		if (_network_own_client_index != ci->client_index) {
 			/* We are no spectator and the player we want to give money to is no spectator and money gifts are allowed */
-			if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas) && _settings.economy.give_money) {
+			if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas) && _settings_game.economy.give_money) {
 				GetString(this->action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(this->action[i]));
 				this->proc[i++] = &ClientList_GiveMoney;
 			}

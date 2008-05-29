@@ -145,7 +145,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Take some extra loan
-			loan = (IsHumanPlayer(_current_player) || _settings.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI;
+			loan = (IsHumanPlayer(_current_player) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI;
 			break;
 		case 1: // Take a loan as big as possible
 			loan = _economy.max_loan - p->current_loan;
@@ -181,7 +181,7 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Pay back one step
-			loan = min(p->current_loan, (Money)(IsHumanPlayer(_current_player) || _settings.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
+			loan = min(p->current_loan, (Money)(IsHumanPlayer(_current_player) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
 			break;
 		case 1: // Pay back as much as possible
 			loan = max(min(p->current_loan, p->player_money), (Money)LOAN_INTERVAL);
@@ -359,7 +359,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!_settings.economy.give_money) return CMD_ERROR;
+	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
 	const Player *p = GetPlayer(_current_player);
 	CommandCost amount(EXPENSES_OTHER, min((Money)p1, (Money)20000000LL));

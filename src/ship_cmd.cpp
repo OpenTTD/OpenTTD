@@ -106,7 +106,7 @@ SpriteID Ship::GetImage(Direction direction) const
 
 static const Depot* FindClosestShipDepot(const Vehicle* v)
 {
-	if (_settings.pf.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
+	if (_settings_game.pf.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
 		Trackdir trackdir = GetVehicleTrackdir(v);
 		NPFFoundTargetData ftd = NPFRouteToDepotTrialError(v->tile, trackdir, false, TRANSPORT_WATER, 0, v->owner, INVALID_RAILTYPES);
 
@@ -137,7 +137,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 
 static void CheckIfShipNeedsService(Vehicle *v)
 {
-	if (_settings.vehicle.servint_ships == 0 || !v->NeedsAutomaticServicing()) return;
+	if (_settings_game.vehicle.servint_ships == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
@@ -196,7 +196,7 @@ static void HandleBrokenShip(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_settings.game_creation.landscape != LT_TOYLAND) ?
+			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
 				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
 		}
 
@@ -320,7 +320,7 @@ static bool ShipAccelerate(Vehicle *v)
 	/*updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_settings.gui.vehicle_speed)
+		if (_settings_client.gui.vehicle_speed)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
@@ -459,7 +459,7 @@ static Track ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 {
 	assert(IsValidDiagDirection(enterdir));
 
-	switch (_settings.pf.pathfinder_for_ships) {
+	switch (_settings_game.pf.pathfinder_for_ships) {
 		case VPF_YAPF: { /* YAPF */
 			Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
 			if (trackdir != INVALID_TRACKDIR) return TrackdirToTrack(trackdir);
@@ -756,7 +756,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
-	if (!Vehicle::AllocateList(NULL, 1) || unit_num > _settings.vehicle.max_ships)
+	if (!Vehicle::AllocateList(NULL, 1) || unit_num > _settings_game.vehicle.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
@@ -800,7 +800,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->name = NULL;
 		v->u.ship.state = TRACK_BIT_DEPOT;
 
-		v->service_interval = _settings.vehicle.servint_ships;
+		v->service_interval = _settings_game.vehicle.servint_ships;
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
 		v->cur_image = 0x0E5E;

@@ -102,7 +102,7 @@ public:
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
 		Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
-		Town *t = ClosestTownFromTile(tile, _settings.economy.dist_local_authority);
+		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		Money old_money = p->player_money;
 		p->player_money = INT64_MAX;
@@ -396,7 +396,7 @@ public:
 			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
 			show_player_face(show_player_face)
 	{
-		this->duration = _settings.gui.errmsg_duration;
+		this->duration = _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
 		this->message_1 = msg1;
 		this->message_2 = msg2;
@@ -465,7 +465,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 {
 	DeleteWindowById(WC_ERRMSG, 0);
 
-	if (!_settings.gui.errmsg_duration) return;
+	if (!_settings_client.gui.errmsg_duration) return;
 
 	if (msg_2 == STR_NULL) msg_2 = STR_EMPTY;
 
@@ -620,7 +620,7 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
 	/* We only show measurement tooltips with patch setting on */
-	if (str == STR_NULL || (paramcount != 0 && !_settings.gui.measure_tooltip)) return;
+	if (str == STR_NULL || (paramcount != 0 && !_settings_client.gui.measure_tooltip)) return;
 
 	for (uint i = 0; i != paramcount; i++) SetDParam(i, params[i]);
 	char buffer[512];

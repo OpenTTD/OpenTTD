@@ -64,9 +64,9 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 {
 	if (p1 == -1) p1 = 3;
 	if (p1 ==  4) p1 = 0;
-	_settings.game_creation.landscape = p1;
+	_settings_game.game_creation.landscape = p1;
 	ReloadNewGRFData();
-	return _settings.game_creation.landscape;
+	return _settings_game.game_creation.landscape;
 }
 
 extern void EnginesMonthlyLoop();
@@ -107,7 +107,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,      &_cheats.build_in_pause.been_used,   NULL                    },
 	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,         &_cheats.no_jetcrash.been_used,      NULL                    },
 	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,          &_cheats.setup_prod.been_used,       NULL                    },
-	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat},
+	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat},
 	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                         &_cheats.change_date.been_used,      &ClickChangeDateCheat   },
 };
 

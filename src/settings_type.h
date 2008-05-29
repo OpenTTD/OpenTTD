@@ -265,10 +265,9 @@ struct StationSettings {
 	byte   station_spread;                   ///< amount a station may spread
 };
 
-/** All settings together. */
-struct Settings {
+/** All settings together for the game. */
+struct GameSettings {
 	DifficultySettings   difficulty;         ///< settings related to the difficulty
-	GUISettings          gui;                ///< settings related to the GUI
 	GameCreationSettings game_creation;      ///< settings used during the creation of a game (map)
 	ConstructionSettings construction;       ///< construction of things in-game
 	AISettings           ai;                 ///< what may the AI do?
@@ -279,10 +278,18 @@ struct Settings {
 	StationSettings      station;            ///< settings related to station management
 };
 
-/** The current settings. */
-extern Settings _settings;
+/** All settings that are only important for the local client. */
+struct ClientSettings {
+	GUISettings          gui;                ///< settings related to the GUI
+};
 
-/** The settings values that are used for new games and/or modified in config file */
-extern Settings _settings_newgame;
+/** The current settings for this game. */
+extern ClientSettings _settings_client;
+
+/** The current settings for this game. */
+extern GameSettings _settings_game;
+
+/** The settings values that are used for new games and/or modified in config file. */
+extern GameSettings _settings_newgame;
 
 #endif /* SETTINGS_TYPE_H */

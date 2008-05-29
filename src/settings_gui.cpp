@@ -142,11 +142,11 @@ static void ShowTownnameDropdown(Window *w, int sel)
 static void ShowCustCurrency();
 
 struct GameOptionsWindow : Window {
-	Settings *opt;
+	GameSettings *opt;
 
 	GameOptionsWindow(const WindowDesc *desc) : Window(desc)
 	{
-		this->opt = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings;
+		this->opt = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -162,11 +162,11 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
 		if (!this->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
 		SetDParam(0, str);
-		SetDParam(1, _currency_specs[this->opt->gui.currency].name);
-		SetDParam(2, STR_UNITS_IMPERIAL + this->opt->gui.units);
+		SetDParam(1, _currency_specs[_settings_client.gui.currency].name);
+		SetDParam(2, STR_UNITS_IMPERIAL + _settings_client.gui.units);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + this->opt->vehicle.road_side);
 		SetDParam(4, TownName(this->opt->game_creation.town_name));
-		SetDParam(5, _autosave_dropdown[this->opt->gui.autosave]);
+		SetDParam(5, _autosave_dropdown[_settings_client.gui.autosave]);
 		SetDParam(6, SPECSTR_LANGUAGE_START + _dynlang.curr);
 		int i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
@@ -181,11 +181,11 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case GAMEOPT_CURRENCY_BTN: // Setup currencies dropdown
-				ShowDropDownMenu(this, BuildCurrencyDropdown(), this->opt->gui.currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+				ShowDropDownMenu(this, BuildCurrencyDropdown(), _settings_client.gui.currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 				break;
 
 			case GAMEOPT_DISTANCE_BTN: // Setup distance unit dropdown
-				ShowDropDownMenu(this, _units_dropdown, this->opt->gui.units, GAMEOPT_DISTANCE_BTN, 0, 0);
+				ShowDropDownMenu(this, _units_dropdown, _settings_client.gui.units, GAMEOPT_DISTANCE_BTN, 0, 0);
 				break;
 
 			case GAMEOPT_ROADSIDE_BTN: { // Setup road-side dropdown
@@ -206,7 +206,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GAMEOPT_AUTOSAVE_BTN: // Setup autosave dropdown
-				ShowDropDownMenu(this, _autosave_dropdown, this->opt->gui.autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
+				ShowDropDownMenu(this, _autosave_dropdown, _settings_client.gui.autosave, GAMEOPT_AUTOSAVE_BTN, 0, 0);
 				break;
 
 			case GAMEOPT_VEHICLENAME_BTN: // Setup customized vehicle-names dropdown
@@ -265,12 +265,12 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_CURRENCY_BTN: /* Currency */
 				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
-				this->opt->gui.currency = index;
+				_settings_client.gui.currency = index;
 				MarkWholeScreenDirty();
 				break;
 
 			case GAMEOPT_DISTANCE_BTN: // Measuring units
-				this->opt->gui.units = index;
+				_settings_client.gui.units = index;
 				MarkWholeScreenDirty();
 				break;
 
@@ -289,7 +289,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GAMEOPT_AUTOSAVE_BTN: // Autosave options
-				_settings.gui.autosave = _settings_newgame.gui.autosave = index;
+				_settings_client.gui.autosave = index;
 				this->SetDirty();
 				break;
 
@@ -398,7 +398,7 @@ private:
 	uint8 timeout;
 
 	/* Temporary holding place of values in the difficulty window until 'Save' is clicked */
-	Settings opt_mod_temp;
+	GameSettings opt_mod_temp;
 
 	enum {
 		GAMEDIFF_WND_TOP_OFFSET = 45,
@@ -427,7 +427,7 @@ public:
 	{
 		/* Copy current settings (ingame or in intro) to temporary holding place
 		 * change that when setting stuff, copy back on clicking 'OK' */
-		this->opt_mod_temp = (_game_mode == GM_MENU) ? _settings_newgame : _settings;
+		this->opt_mod_temp = (_game_mode == GM_MENU) ? _settings_newgame : _settings_game;
 		this->clicked_increase = false;
 		this->clicked_button = NO_SETTINGS_BUTTON;
 		this->timeout = 0;
@@ -537,7 +537,7 @@ public:
 				break;
 
 			case GDW_ACCEPT: { // Save button - save changes
-				Settings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings;
+				GameSettings *opt_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 
 				uint i;
 				const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i);
@@ -738,7 +738,7 @@ enum PatchesSelectionWidgets {
 };
 
 struct PatchesSelectionWindow : Window {
-	static Settings *patches_ptr;
+	static GameSettings *patches_ptr;
 	static int patches_max;
 
 	int page;
@@ -749,7 +749,7 @@ struct PatchesSelectionWindow : Window {
 	{
 		static bool first_time = true;
 
-		patches_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings;
+		patches_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
@@ -762,6 +762,7 @@ struct PatchesSelectionWindow : Window {
 				page->entries = MallocT<PatchEntry>(page->num);
 				for (i = 0; i != page->num; i++) {
 					uint index;
+					printf("%s\n", page->names[i]);
 					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
 					assert(sd != NULL);
 
@@ -912,7 +913,7 @@ struct PatchesSelectionWindow : Window {
 					}
 
 					if (value != oldvalue) {
-						SetPatchValue(page->entries[btn].index, patches_ptr, value);
+						SetPatchValue(page->entries[btn].index, value);
 						this->SetDirty();
 					}
 				} else {
@@ -955,13 +956,13 @@ struct PatchesSelectionWindow : Window {
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
-			SetPatchValue(pe->index, patches_ptr, value);
+			SetPatchValue(pe->index, value);
 			this->SetDirty();
 		}
 	}
 };
 
-Settings *PatchesSelectionWindow::patches_ptr = NULL;
+GameSettings *PatchesSelectionWindow::patches_ptr = NULL;
 int PatchesSelectionWindow::patches_max = 0;
 
 static const Widget _patches_selection_widgets[] = {

@@ -21,7 +21,7 @@ uint32 TownGetVariable(byte variable, byte parameter, bool *available, const Tow
 	switch (variable) {
 		/* Larger towns */
 		case 0x40:
-			if (_settings.economy.larger_towns == 0) return 2;
+			if (_settings_game.economy.larger_towns == 0) return 2;
 			if (t->larger_town) return 1;
 			return 0;
 

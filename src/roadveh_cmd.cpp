@@ -205,7 +205,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* find the first free roadveh id */
 	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_ROAD);
-	if (unit_num > _settings.vehicle.max_roadveh)
+	if (unit_num > _settings_game.vehicle.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
@@ -257,7 +257,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->name = NULL;
 
-		v->service_interval = _settings.vehicle.servint_roadveh;
+		v->service_interval = _settings_game.vehicle.servint_roadveh;
 
 		v->date_of_last_service = _date;
 		v->build_year = _cur_year;
@@ -419,7 +419,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdi
 
 static const Depot* FindClosestRoadDepot(const Vehicle* v)
 {
-	switch (_settings.pf.pathfinder_for_roadvehs) {
+	switch (_settings_game.pf.pathfinder_for_roadvehs) {
 		case VPF_YAPF: /* YAPF */
 			return YapfFindNearestRoadDepot(v);
 
@@ -702,7 +702,7 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_settings.game_creation.landscape != LT_TOYLAND) ?
+			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
 				SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
 		}
 
@@ -863,7 +863,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_settings.gui.vehicle_speed) {
+		if (_settings_client.gui.vehicle_speed) {
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
@@ -1085,7 +1085,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 				trackdirs = TRACKDIR_BIT_NONE;
 			} else {
 				/* Proper station type, check if there is free loading bay */
-				if (!_settings.pf.roadveh_queue && IsStandardRoadStopTile(tile) &&
+				if (!_settings_game.pf.roadveh_queue && IsStandardRoadStopTile(tile) &&
 						!GetRoadStopByTile(tile, rstype)->HasFreeBay()) {
 					/* Station is full and RV queuing is off */
 					trackdirs = TRACKDIR_BIT_NONE;
@@ -1124,7 +1124,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 		return_track(FindFirstBit2x64(trackdirs));
 	}
 
-	switch (_settings.pf.pathfinder_for_roadvehs) {
+	switch (_settings_game.pf.pathfinder_for_roadvehs) {
 		case VPF_YAPF: { /* YAPF */
 			Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
 			if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
@@ -1211,7 +1211,7 @@ found_best_track:;
 
 static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
-	if (_settings.pf.pathfinder_for_roadvehs == VPF_YAPF) {
+	if (_settings_game.pf.pathfinder_for_roadvehs == VPF_YAPF) {
 		/* use YAPF */
 		return YapfRoadVehDistanceToTile(v, tile);
 	}
@@ -1273,7 +1273,7 @@ static bool RoadVehLeaveDepot(Vehicle *v, bool first)
 	v->direction = DiagDirToDir(dir);
 
 	Trackdir tdir = _roadveh_depot_exit_trackdir[dir];
-	const RoadDriveEntry *rdp = _road_drive_data[v->u.road.roadtype][(_settings.vehicle.road_side << RVS_DRIVE_SIDE) + tdir];
+	const RoadDriveEntry *rdp = _road_drive_data[v->u.road.roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + tdir];
 
 	int x = TileX(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].x & 0xF);
 	int y = TileY(v->tile) * TILE_SIZE + (rdp[RVC_DEPOT_START_FRAME].y & 0xF);
@@ -1451,7 +1451,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 	 * In this case v->u.road.state is masked to give the road stop entry direction. */
 	rd = _road_drive_data[v->u.road.roadtype][(
 		(HasBit(v->u.road.state, RVS_IN_DT_ROAD_STOP) ? v->u.road.state & RVSB_ROAD_STOP_TRACKDIR_MASK : v->u.road.state) +
-		(_settings.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
+		(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking][v->u.road.frame + 1];
 
 	if (rd.x & RDE_NEXT_TILE) {
 		TileIndex tile = v->tile + TileOffsByDiagDir((DiagDirection)(rd.x & 3));
@@ -1529,7 +1529,7 @@ again:
 		}
 
 		/* Get position data for first frame on the new tile */
-		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_settings.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
+		rdp = _road_drive_data[v->u.road.roadtype][(dir + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)) ^ v->u.road.overtaking];
 
 		x = TileX(tile) * TILE_SIZE + rdp[start_frame].x;
 		y = TileY(tile) * TILE_SIZE + rdp[start_frame].y;
@@ -1632,7 +1632,7 @@ again:
 			return false;
 		}
 
-		rdp = _road_drive_data[v->u.road.roadtype][(_settings.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
+		rdp = _road_drive_data[v->u.road.roadtype][(_settings_game.vehicle.road_side << RVS_DRIVE_SIDE) + dir];
 
 		x = TileX(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].x;
 		y = TileY(v->tile) * TILE_SIZE + rdp[turn_around_start_frame].y;
@@ -1711,7 +1711,7 @@ again:
 	 * (the station test and stop type test ensure that other vehicles, using the road stop as
 	 * a through route, do not stop) */
 	if (IsRoadVehFront(v) && ((IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END) &&
-			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_settings.vehicle.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
+			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
 			(IsInsideMM(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
@@ -1887,7 +1887,7 @@ void RoadVehicle::Tick()
 static void CheckIfRoadVehNeedsService(Vehicle *v)
 {
 	/* If we already got a slot at a stop, use that FIRST, and go to a depot later */
-	if (v->u.road.slot != NULL || _settings.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
+	if (v->u.road.slot != NULL || _settings_game.vehicle.servint_roadveh == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;

@@ -1020,7 +1020,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 						right  > t->sign.left &&
 						left   < t->sign.left + t->sign.width_1) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-						_settings.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+						_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
 						t->index, t->population);
 				}
 			}
@@ -1036,7 +1036,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 						right  > t->sign.left &&
 						left   < t->sign.left + t->sign.width_1 * 2) {
 					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-						_settings.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+						_settings_client.gui.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
 						t->index, t->population);
 				}
 			}
@@ -1591,7 +1591,7 @@ void UpdateViewportPosition(Window *w)
 		int delta_y = w->viewport->dest_scrollpos_y - w->viewport->scrollpos_y;
 
 		if (delta_x != 0 || delta_y != 0) {
-			if (_settings.gui.smooth_scroll) {
+			if (_settings_client.gui.smooth_scroll) {
 				int max_scroll = ScaleByMapSize1D(512);
 				/* Not at our desired positon yet... */
 				w->viewport->scrollpos_x += Clamp(delta_x / 4, -max_scroll, max_scroll);
@@ -2510,7 +2510,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		}
 	}
 
-	if (_settings.gui.measure_tooltip) {
+	if (_settings_client.gui.measure_tooltip) {
 		TileIndex t0 = TileVirtXY(thd->selstart.x, thd->selstart.y);
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
@@ -2590,7 +2590,7 @@ void VpSelectTilesWithMethod(int x, int y, ViewportPlaceMethod method)
 			style = HT_DIR_X;
 
 calc_heightdiff_single_direction:;
-			if (_settings.gui.measure_tooltip) {
+			if (_settings_client.gui.measure_tooltip) {
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
@@ -2618,7 +2618,7 @@ calc_heightdiff_single_direction:;
 			y = sy + Clamp(y - sy, -limit, limit);
 			} /* Fallthrough */
 		case VPM_X_AND_Y: { /* drag an X by Y area */
-			if (_settings.gui.measure_tooltip) {
+			if (_settings_client.gui.measure_tooltip) {
 				static const StringID measure_strings_area[] = {
 					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
 				};

@@ -103,7 +103,7 @@ RoadTypes GetPlayerRoadtypes(PlayerID p)
 	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
 		const EngineInfo *ei = &e->info;
 
-		if (HasBit(ei->climates, _settings.game_creation.landscape) &&
+		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
 				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
 			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}

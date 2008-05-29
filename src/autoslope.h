@@ -38,7 +38,7 @@ static inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, uint z_new, Slo
  */
 static inline bool AutoslopeEnabled()
 {
-	return (_settings.construction.autoslope &&
+	return (_settings_game.construction.autoslope &&
 	        ((IsValidPlayer(_current_player) && !_is_old_ai_player) ||
 	         (_current_player == OWNER_NONE && _game_mode == GM_EDITOR)));
 }

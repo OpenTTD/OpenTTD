@@ -112,7 +112,7 @@ static void PlantTreesOnTile(TileIndex tile, TreeType treetype, uint count, uint
  */
 static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
-	switch (_settings.game_creation.landscape) {
+	switch (_settings_game.game_creation.landscape) {
 		case LT_TEMPERATE:
 			return (TreeType)(seed * TREE_COUNT_TEMPERATE / 256 + TREE_TEMPERATE);
 
@@ -249,7 +249,7 @@ void PlaceTreesRandomly()
 
 		if (CanPlantTreesOnTile(tile, true)) {
 			PlaceTree(tile, r);
-			if (_settings.game_creation.tree_placer != TP_IMPROVED) continue;
+			if (_settings_game.game_creation.tree_placer != TP_IMPROVED) continue;
 
 			/* Place a number of trees based on the tile height.
 			 *  This gives a cool effect of multiple trees close together.
@@ -259,7 +259,7 @@ void PlaceTreesRandomly()
 			j = GetTileZ(tile) / TILE_HEIGHT * 2;
 			while (j--) {
 				/* Above snowline more trees! */
-				if (_settings.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) {
+				if (_settings_game.game_creation.landscape == LT_ARCTIC && ht > GetSnowLine()) {
 					PlaceTreeAtSameHeight(tile, ht);
 					PlaceTreeAtSameHeight(tile, ht);
 				};
@@ -270,7 +270,7 @@ void PlaceTreesRandomly()
 	} while (--i);
 
 	/* place extra trees at rainforest area */
-	if (_settings.game_creation.landscape == LT_TROPIC) {
+	if (_settings_game.game_creation.landscape == LT_TROPIC) {
 		i = ScaleByMapSize(15000);
 
 		do {
@@ -296,18 +296,18 @@ void GenerateTrees()
 {
 	uint i, total;
 
-	if (_settings.game_creation.tree_placer == TP_NONE) return;
+	if (_settings_game.game_creation.tree_placer == TP_NONE) return;
 
-	if (_settings.game_creation.landscape != LT_TOYLAND) PlaceMoreTrees();
+	if (_settings_game.game_creation.landscape != LT_TOYLAND) PlaceMoreTrees();
 
-	switch (_settings.game_creation.tree_placer) {
-		case TP_ORIGINAL: i = _settings.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
-		case TP_IMPROVED: i = _settings.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
+	switch (_settings_game.game_creation.tree_placer) {
+		case TP_ORIGINAL: i = _settings_game.game_creation.landscape == LT_ARCTIC ? 15 : 6; break;
+		case TP_IMPROVED: i = _settings_game.game_creation.landscape == LT_ARCTIC ?  4 : 2; break;
 		default: NOT_REACHED(); return;
 	}
 
 	total = ScaleByMapSize(1000);
-	if (_settings.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(15000);
+	if (_settings_game.game_creation.landscape == LT_TROPIC) total += ScaleByMapSize(15000);
 	total *= i;
 	SetGeneratingWorldProgress(GWP_TREE, total);
 
@@ -332,7 +332,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p2 >= MapSize()) return CMD_ERROR;
 	/* Check the tree type. It can be random or some valid value within the current climate */
-	if (p1 != (uint)-1 && p1 - _tree_base_by_landscape[_settings.game_creation.landscape] >= _tree_count_by_landscape[_settings.game_creation.landscape]) return CMD_ERROR;
+	if (p1 != (uint)-1 && p1 - _tree_base_by_landscape[_settings_game.game_creation.landscape] >= _tree_count_by_landscape[_settings_game.game_creation.landscape]) return CMD_ERROR;
 
 	// make sure sx,sy are smaller than ex,ey
 	ex = TileX(tile);
@@ -390,7 +390,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 
 					if (_game_mode != GM_EDITOR && IsValidPlayer(_current_player)) {
-						Town *t = ClosestTownFromTile(tile, _settings.economy.dist_local_authority);
+						Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 						if (t != NULL) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
 					}
 
@@ -533,7 +533,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 	uint num;
 
 	if (IsValidPlayer(_current_player)) {
-		Town *t = ClosestTownFromTile(tile, _settings.economy.dist_local_authority);
+		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 		if (t != NULL) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
 
@@ -626,7 +626,7 @@ static void TileLoop_Trees(TileIndex tile)
 	if (GetTreeGround(tile) == TREE_GROUND_SHORE) {
 		TileLoop_Water(tile);
 	} else {
-		switch (_settings.game_creation.landscape) {
+		switch (_settings_game.game_creation.landscape) {
 			case LT_TROPIC: TileLoopTreesDesert(tile); break;
 			case LT_ARCTIC: TileLoopTreesAlps(tile);   break;
 		}
@@ -652,7 +652,7 @@ static void TileLoop_Trees(TileIndex tile)
 
 	switch (GetTreeGrowth(tile)) {
 		case 3: /* regular sized tree */
-			if (_settings.game_creation.landscape == LT_TROPIC &&
+			if (_settings_game.game_creation.landscape == LT_TROPIC &&
 					GetTreeType(tile) != TREE_CACTUS &&
 					GetTropicZone(tile) == TROPICZONE_DESERT) {
 				AddTreeGrowth(tile, 1);
@@ -704,7 +704,7 @@ static void TileLoop_Trees(TileIndex tile)
 					case TREE_GROUND_GRASS: MakeClear(tile, CLEAR_GRASS, GetTreeDensity(tile)); break;
 					case TREE_GROUND_ROUGH: MakeClear(tile, CLEAR_ROUGH, 3); break;
 					default: // snow or desert
-						MakeClear(tile, _settings.game_creation.landscape == LT_TROPIC ? CLEAR_DESERT : CLEAR_SNOW, GetTreeDensity(tile));
+						MakeClear(tile, _settings_game.game_creation.landscape == LT_TROPIC ? CLEAR_DESERT : CLEAR_SNOW, GetTreeDensity(tile));
 						break;
 				}
 			}
@@ -725,7 +725,7 @@ void OnTick_Trees()
 	TreeType tree;
 
 	/* place a tree at a random rainforest spot */
-	if (_settings.game_creation.landscape == LT_TROPIC &&
+	if (_settings_game.game_creation.landscape == LT_TROPIC &&
 			(r = Random(), tile = RandomTileSeed(r), GetTropicZone(tile) == TROPICZONE_RAINFOREST) &&
 			CanPlantTreesOnTile(tile, false) &&
 			(tree = GetRandomTreeType(tile, GB(r, 24, 8))) != TREE_INVALID) {

@@ -459,7 +459,7 @@ static inline uint32 GetSmallMapVegetationPixels(TileIndex tile)
 
 		case MP_TREES:
 			if (GetTreeGround(tile) == TREE_GROUND_SNOW_DESERT) {
-				bits = (_settings.game_creation.landscape == LT_ARCTIC) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
+				bits = (_settings_game.game_creation.landscape == LT_ARCTIC) ? MKCOLOR(0x98575798) : MKCOLOR(0xC25757C2);
 			} else {
 				bits = MKCOLOR(0x54575754);
 			}

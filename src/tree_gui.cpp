@@ -74,8 +74,8 @@ public:
 
 		this->DrawWidgets();
 
-		int i = this->base = _tree_base_by_landscape[_settings.game_creation.landscape];
-		int count = this->count = _tree_count_by_landscape[_settings.game_creation.landscape];
+		int i = this->base = _tree_base_by_landscape[_settings_game.game_creation.landscape];
+		int count = this->count = _tree_count_by_landscape[_settings_game.game_creation.landscape];
 
 		int x = 18;
 		int y = 54;

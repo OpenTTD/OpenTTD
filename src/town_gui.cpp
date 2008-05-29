@@ -79,7 +79,7 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 	TownActions buttons = TACT_NONE;
 
 	/* Spectators and unwanted have no options */
-	if (pid != PLAYER_SPECTATOR && !(_settings.economy.bribe && t->unwanted[pid])) {
+	if (pid != PLAYER_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[pid])) {
 
 		/* Things worth more than this are not shown */
 		Money avail = GetPlayer(pid)->player_money + _price.station_value * 200;
@@ -91,11 +91,11 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 			const TownActions cur = (TownActions)(1 << i);
 
 			/* Is the player not able to bribe ? */
-			if (cur == TACT_BRIBE && (!_settings.economy.bribe || t->ratings[pid] >= RATING_BRIBE_MAXIMUM))
+			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[pid] >= RATING_BRIBE_MAXIMUM))
 				continue;
 
 			/* Is the player not able to buy exclusive rights ? */
-			if (cur == TACT_BUY_RIGHTS && !_settings.economy.exclusive_rights)
+			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights)
 				continue;
 
 			/* Is the player not able to build a statue ? */
@@ -316,7 +316,7 @@ public:
 		}
 
 		/* Space required for showing noise level information */
-		if (_settings.economy.station_noise_level) {
+		if (_settings_game.economy.station_noise_level) {
 			ResizeWindowForWidget(this, TVW_INFOPANEL, 0, 10);
 		}
 
@@ -346,7 +346,7 @@ public:
 		this->DrawViewport();
 
 		/* only show the town noise, if the noise option is activated. */
-		if (_settings.economy.station_noise_level) {
+		if (_settings_game.economy.station_noise_level) {
 			SetDParam(0, this->town->noise_reached);
 			SetDParam(1, this->town->MaxTownNoise());
 			DrawString(2, 137, STR_NOISE_IN_TOWN, 0);
@@ -388,7 +388,7 @@ public:
 		/* Called when setting station noise have changed, in order to resize the window */
 		this->SetDirty(); // refresh display for current size. This will allow to avoid glitches when downgrading
 
-		if (_settings.economy.station_noise_level) { // adjust depending
+		if (_settings_game.economy.station_noise_level) { // adjust depending
 			if (this->height == 150) { // window is smaller, needs to be bigger
 				ResizeWindowForWidget(this, TVW_INFOPANEL, 0, 10);
 			}

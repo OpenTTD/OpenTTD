@@ -580,7 +580,7 @@ int ttd_main(int argc, char *argv[])
 	if (_settings_newgame.difficulty.diff_level == 9) SetDifficultyLevel(0, &_settings_newgame.difficulty);
 
 	/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
-	if (_switch_mode != SM_NONE) _settings = _settings_newgame;
+	if (_switch_mode != SM_NONE) _settings_game = _settings_newgame;
 
 	/* initialize the ingame console */
 	IConsoleInit();
@@ -640,7 +640,7 @@ void HandleExitGameRequest()
 {
 	if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
 		_exit_game = true;
-	} else if (_settings.gui.autosave_on_exit) {
+	} else if (_settings_client.gui.autosave_on_exit) {
 		DoExitSave();
 		_exit_game = true;
 	} else {
@@ -672,9 +672,9 @@ static void MakeNewGameDone()
 
 	SetLocalPlayer(PLAYER_FIRST);
 	_current_player = _local_player;
-	DoCommandP(0, (_settings.gui.autorenew << 15 ) | (_settings.gui.autorenew_months << 16) | 4, _settings.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
-	SettingsDisableElrail(_settings.vehicle.disable_elrails);
+	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
 	InitializeRailGUI();
 
 #ifdef ENABLE_NETWORK
@@ -699,7 +699,7 @@ static void MakeNewGame(bool from_heightmap)
 	_industry_mngr.ResetMapping();
 
 	GenerateWorldSetCallback(&MakeNewGameDone);
-	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
+	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 }
 
 static void MakeNewEditorWorldDone()
@@ -716,7 +716,7 @@ static void MakeNewEditorWorld()
 	ResetGRFConfig(true);
 
 	GenerateWorldSetCallback(&MakeNewEditorWorldDone);
-	GenerateWorld(GW_EMPTY, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
+	GenerateWorld(GW_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 }
 
 void StartupPlayers();
@@ -755,7 +755,7 @@ static void StartScenario()
 		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 	}
 
-	_settings.difficulty = _settings_newgame.difficulty;
+	_settings_game.difficulty = _settings_newgame.difficulty;
 
 	/* Inititalize data */
 	StartupEconomy();
@@ -765,7 +765,7 @@ static void StartScenario()
 
 	SetLocalPlayer(PLAYER_FIRST);
 	_current_player = _local_player;
-	DoCommandP(0, (_settings.gui.autorenew << 15 ) | (_settings.gui.autorenew_months << 16) | 4, _settings.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	MarkWholeScreenDirty();
 }
@@ -824,7 +824,7 @@ void SwitchMode(int new_mode)
 				/* check if we should reload the config */
 				if (_network_reload_cfg) {
 					LoadFromConfig();
-					_settings = _settings_newgame;
+					_settings_game = _settings_newgame;
 					ResetGRFConfig(false);
 				}
 				NetworkServerStart();
@@ -897,7 +897,7 @@ void SwitchMode(int new_mode)
 		case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
 			SetLocalPlayer(OWNER_NONE);
 
-			GenerateWorld(GW_HEIGHTMAP, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
+			GenerateWorld(GW_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			MarkWholeScreenDirty();
 			break;
 
@@ -930,7 +930,7 @@ void SwitchMode(int new_mode)
 
 		case SM_GENRANDLAND: /* Generate random land within scenario editor */
 			SetLocalPlayer(OWNER_NONE);
-			GenerateWorld(GW_RANDOM, 1 << _settings.game_creation.map_x, 1 << _settings.game_creation.map_y);
+			GenerateWorld(GW_RANDOM, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			/* XXX: set date */
 			MarkWholeScreenDirty();
 			break;
@@ -1046,16 +1046,16 @@ static void DoAutosave()
 	if (_networking) return;
 #endif /* PSP */
 
-	if (_settings.gui.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
+	if (_settings_client.gui.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
 		SetDParam(0, _local_player);
 		SetDParam(1, _date);
 		GetString(buf, STR_4004, lastof(buf));
 		ttd_strlcat(buf, ".sav", lengthof(buf));
 	} else {
-		/* generate a savegame name and number according to _settings.gui.max_num_autosaves */
+		/* generate a savegame name and number according to _settings_client.gui.max_num_autosaves */
 		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);
 
-		if (++_autosave_ctr >= _settings.gui.max_num_autosaves) _autosave_ctr = 0;
+		if (++_autosave_ctr >= _settings_client.gui.max_num_autosaves) _autosave_ctr = 0;
 	}
 
 	DEBUG(sl, 2, "Autosaving to '%s'", buf);
@@ -1178,7 +1178,7 @@ static const byte convert_currency[] = {
 /* since savegame version 4.2 the currencies are arranged differently */
 static void UpdateCurrencies()
 {
-	_settings.gui.currency = convert_currency[_settings.gui.currency];
+	_settings_client.gui.currency = convert_currency[_settings_client.gui.currency];
 }
 
 /* Up to revision 1413 the invisible tiles at the southern border have not been
@@ -1301,7 +1301,7 @@ bool AfterLoadGame()
 		Town *t;
 		FOR_ALL_TOWNS(t) {
 			t->name = CopyFromOldName(t->townnametype);
-			if (t->name != NULL) t->townnametype = SPECSTR_TOWNNAME_START + _settings.game_creation.town_name;
+			if (t->name != NULL) t->townnametype = SPECSTR_TOWNNAME_START + _settings_game.game_creation.town_name;
 		}
 
 		Waypoint *wp;
@@ -1315,7 +1315,7 @@ bool AfterLoadGame()
 	ResetOldNames();
 
 	/* convert road side to my format. */
-	if (_settings.vehicle.road_side) _settings.vehicle.road_side = 1;
+	if (_settings_game.vehicle.road_side) _settings_game.vehicle.road_side = 1;
 
 	/* Check if all NewGRFs are present, we are very strict in MP mode */
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
@@ -1335,7 +1335,7 @@ bool AfterLoadGame()
 	SetDate(_date);
 
 	/* Force dynamic engines off when loading older savegames */
-	if (CheckSavegameVersion(95)) _settings.vehicle.dynamic_engines = 0;
+	if (CheckSavegameVersion(95)) _settings_game.vehicle.dynamic_engines = 0;
 
 	/* Load the sprites */
 	GfxLoadSprites();
@@ -1542,9 +1542,9 @@ bool AfterLoadGame()
 		 */
 		if (!_network_dedicated && IsValidPlayer(PLAYER_FIRST)) {
 			p = GetPlayer(PLAYER_FIRST);
-			p->engine_renew        = _settings.gui.autorenew;
-			p->engine_renew_months = _settings.gui.autorenew_months;
-			p->engine_renew_money  = _settings.gui.autorenew_money;
+			p->engine_renew        = _settings_client.gui.autorenew;
+			p->engine_renew_months = _settings_client.gui.autorenew_months;
+			p->engine_renew_money  = _settings_client.gui.autorenew_money;
 		}
 	}
 
@@ -1927,9 +1927,9 @@ bool AfterLoadGame()
 
 	/* from version 38 we have optional elrails, since we cannot know the
 	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (CheckSavegameVersion(38)) _settings.vehicle.disable_elrails = false;
+	if (CheckSavegameVersion(38)) _settings_game.vehicle.disable_elrails = false;
 	/* do the same as when elrails were enabled/disabled manually just now */
-	SettingsDisableElrail(_settings.vehicle.disable_elrails);
+	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
 	InitializeRailGUI();
 
 	/* From version 53, the map array was changed for house tiles to allow
@@ -2094,7 +2094,7 @@ bool AfterLoadGame()
 		Town *t;
 
 		FOR_ALL_TOWNS(t) {
-			if (_settings.economy.larger_towns != 0 && (t->index % _settings.economy.larger_towns) == 0) {
+			if (_settings_game.economy.larger_towns != 0 && (t->index % _settings_game.economy.larger_towns) == 0) {
 				t->larger_town = true;
 			}
 		}
@@ -2131,12 +2131,12 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(58)) {
 		/* patch difficulty number_industries other then zero get bumped to +1
 		 * since a new option (very low at position1) has been added */
-		if (_settings.difficulty.number_industries > 0) {
-			_settings.difficulty.number_industries++;
+		if (_settings_game.difficulty.number_industries > 0) {
+			_settings_game.difficulty.number_industries++;
 		}
 
 		/* Same goes for number of towns, although no test is needed, just an increment */
-		_settings.difficulty.number_towns++;
+		_settings_game.difficulty.number_towns++;
 	}
 
 	if (CheckSavegameVersion(64)) {
@@ -2369,22 +2369,22 @@ bool AfterLoadGame()
 		}
 
 		/* Convert old PF settings to new */
-		if (_settings.pf.yapf.rail_use_yapf || CheckSavegameVersion(28)) {
-			_settings.pf.pathfinder_for_trains = VPF_YAPF;
+		if (_settings_game.pf.yapf.rail_use_yapf || CheckSavegameVersion(28)) {
+			_settings_game.pf.pathfinder_for_trains = VPF_YAPF;
 		} else {
-			_settings.pf.pathfinder_for_trains = (_settings.pf.new_pathfinding_all ? VPF_NPF : VPF_NTP);
+			_settings_game.pf.pathfinder_for_trains = (_settings_game.pf.new_pathfinding_all ? VPF_NPF : VPF_NTP);
 		}
 
-		if (_settings.pf.yapf.road_use_yapf || CheckSavegameVersion(28)) {
-			_settings.pf.pathfinder_for_roadvehs = VPF_YAPF;
+		if (_settings_game.pf.yapf.road_use_yapf || CheckSavegameVersion(28)) {
+			_settings_game.pf.pathfinder_for_roadvehs = VPF_YAPF;
 		} else {
-			_settings.pf.pathfinder_for_roadvehs = (_settings.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+			_settings_game.pf.pathfinder_for_roadvehs = (_settings_game.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
 		}
 
-		if (_settings.pf.yapf.ship_use_yapf) {
-			_settings.pf.pathfinder_for_ships = VPF_YAPF;
+		if (_settings_game.pf.yapf.ship_use_yapf) {
+			_settings_game.pf.pathfinder_for_ships = VPF_YAPF;
 		} else {
-			_settings.pf.pathfinder_for_ships = (_settings.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
+			_settings_game.pf.pathfinder_for_ships = (_settings_game.pf.new_pathfinding_all ? VPF_NPF : VPF_OPF);
 		}
 	}
 

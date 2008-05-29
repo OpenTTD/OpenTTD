@@ -154,7 +154,7 @@ static void AI_RunTick(PlayerID player)
 	Player *p = GetPlayer(player);
 	_current_player = player;
 
-	if (_settings.ai.ainew_active) {
+	if (_settings_game.ai.ainew_active) {
 		AiNewDoGameLoop(p);
 	} else {
 		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
@@ -178,14 +178,14 @@ void AI_RunGameLoop()
 	if (!_ai.enabled) return;
 
 	/* Don't do anything if we are a network-client, or the AI has been disabled */
-	if (_networking && (!_network_server || !_settings.ai.ai_in_multiplayer)) return;
+	if (_networking && (!_network_server || !_settings_game.ai.ai_in_multiplayer)) return;
 
 	/* New tick */
 	_ai.tick++;
 
 	/* Make sure the AI follows the difficulty rule.. */
-	assert(_settings.difficulty.competitor_speed <= 4);
-	if ((_ai.tick & ((1 << (4 - _settings.difficulty.competitor_speed)) - 1)) != 0) return;
+	assert(_settings_game.difficulty.competitor_speed <= 4);
+	if ((_ai.tick & ((1 << (4 - _settings_game.difficulty.competitor_speed)) - 1)) != 0) return;
 
 	/* Check for AI-client (so joining a network with an AI) */
 	if (!_networking || _network_server) {

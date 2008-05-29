@@ -92,7 +92,7 @@ static inline DiagDirection TrainExitDir(Direction direction, TrackBits track)
 byte FreightWagonMult(CargoID cargo)
 {
 	if (!GetCargo(cargo)->is_freight) return 1;
-	return _settings.vehicle.freight_trains;
+	return _settings_game.vehicle.freight_trains;
 }
 
 
@@ -278,7 +278,7 @@ void TrainConsistChanged(Vehicle *v)
 			}
 
 			/* max speed is the minimum of the speed limits of all vehicles in the consist */
-			if ((rvi_u->railveh_type != RAILVEH_WAGON || _settings.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
+			if ((rvi_u->railveh_type != RAILVEH_WAGON || _settings_game.vehicle.wagon_speed_limits) && !UsesWagonOverride(u)) {
 				uint16 speed = GetVehicleProperty(u, 0x09, rvi_u->max_speed);
 				if (speed != 0) max_speed = min(speed, max_speed);
 			}
@@ -726,7 +726,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		Vehicle *v = vl[0];
 
 		UnitID unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
-		if (unit_num > _settings.vehicle.max_trains)
+		if (unit_num > _settings_game.vehicle.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) {
@@ -765,7 +765,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			v->u.rail.railtype = rvi->railtype;
 			_new_vehicle_id = v->index;
 
-			v->service_interval = _settings.vehicle.servint_trains;
+			v->service_interval = _settings_game.vehicle.servint_trains;
 			v->date_of_last_service = _date;
 			v->build_year = _cur_year;
 			v->cur_image = 0xAC2;
@@ -1001,7 +1001,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
 
 	{
-		int max_len = _settings.vehicle.mammoth_trains ? 100 : 10;
+		int max_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
 
 		/* check if all vehicles in the source train are stopped inside a depot. */
 		int src_len = CheckTrainStoppedInDepot(src_head);
@@ -1044,7 +1044,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	/* moving a loco to a new line?, then we need to assign a unitnumber. */
 	if (dst == NULL && !IsFrontEngine(src) && IsTrainEngine(src)) {
 		UnitID unit_num = GetFreeUnitNumber(VEH_TRAIN);
-		if (unit_num > _settings.vehicle.max_trains)
+		if (unit_num > _settings_game.vehicle.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 		if (flags & DC_EXEC) src->unitnumber = unit_num;
@@ -1544,7 +1544,7 @@ static inline void SetLastSpeed(Vehicle *v, int spd)
 	int old = v->u.rail.last_speed;
 	if (spd != old) {
 		v->u.rail.last_speed = spd;
-		if (_settings.gui.vehicle_speed || (old == 0) != (spd == 0)) {
+		if (_settings_client.gui.vehicle_speed || (old == 0) != (spd == 0)) {
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
@@ -1883,7 +1883,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 		if (v->vehstatus & VS_CRASHED || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			if (_settings.vehicle.realistic_acceleration && v->cur_speed != 0) {
+			if (_settings_game.vehicle.realistic_acceleration && v->cur_speed != 0) {
 				ToggleBit(v->u.rail.flags, VRF_REVERSING);
 			} else {
 				v->cur_speed = 0;
@@ -2058,7 +2058,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		return tfdd;
 	}
 
-	switch (_settings.pf.pathfinder_for_trains) {
+	switch (_settings_game.pf.pathfinder_for_trains) {
 		case VPF_YAPF: { /* YAPF */
 			bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
 			tfdd.best_length = found ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
@@ -2369,7 +2369,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 	/* quick return in case only one possible track is available */
 	if (KillFirstBit(tracks) == TRACK_BIT_NONE) return FindFirstTrack(tracks);
 
-	switch (_settings.pf.pathfinder_for_trains) {
+	switch (_settings_game.pf.pathfinder_for_trains) {
 		case VPF_YAPF: { /* YAPF */
 			Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);
 			if (trackdir != INVALID_TRACKDIR) {
@@ -2446,7 +2446,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 			/* it is first time the problem occurred, set the "path not found" flag */
 			SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 			/* and notify user about the event */
-			if (_settings.gui.lost_train_warn && v->owner == _local_player) {
+			if (_settings_client.gui.lost_train_warn && v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_LOST,
@@ -2474,7 +2474,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 
 static bool CheckReverseTrain(Vehicle *v)
 {
-	if (_settings.difficulty.line_reverse_mode != 0 ||
+	if (_settings_game.difficulty.line_reverse_mode != 0 ||
 			v->u.rail.track == TRACK_BIT_DEPOT || v->u.rail.track == TRACK_BIT_WORMHOLE ||
 			!(v->direction & 1)) {
 		return false;
@@ -2487,7 +2487,7 @@ static bool CheckReverseTrain(Vehicle *v)
 
 	assert(v->u.rail.track);
 
-	switch (_settings.pf.pathfinder_for_trains) {
+	switch (_settings_game.pf.pathfinder_for_trains) {
 		case VPF_YAPF: /* YAPF */
 			reverse_best = YapfCheckReverseTrain(v);
 			break;
@@ -2607,13 +2607,13 @@ static int UpdateTrainSpeed(Vehicle *v)
 	uint accel;
 
 	if (v->vehstatus & VS_STOPPED || HasBit(v->u.rail.flags, VRF_REVERSING)) {
-		if (_settings.vehicle.realistic_acceleration) {
+		if (_settings_game.vehicle.realistic_acceleration) {
 			accel = GetTrainAcceleration(v, AM_BRAKE) * 2;
 		} else {
 			accel = v->acceleration * -2;
 		}
 	} else {
-		if (_settings.vehicle.realistic_acceleration) {
+		if (_settings_game.vehicle.realistic_acceleration) {
 			accel = GetTrainAcceleration(v, AM_ACCEL);
 		} else {
 			accel = v->acceleration;
@@ -2754,7 +2754,7 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 /** Modify the speed of the vehicle due to a turn */
 static inline void AffectSpeedByDirChange(Vehicle *v, Direction new_dir)
 {
-	if (_settings.vehicle.realistic_acceleration) return;
+	if (_settings_game.vehicle.realistic_acceleration) return;
 
 	DirDiff diff = DirDifference(v->direction, new_dir);
 	if (diff == DIRDIFF_SAME) return;
@@ -2766,7 +2766,7 @@ static inline void AffectSpeedByDirChange(Vehicle *v, Direction new_dir)
 /** Modify the speed of the vehicle due to a change in altitude */
 static inline void AffectSpeedByZChange(Vehicle *v, byte old_z)
 {
-	if (old_z == v->z_pos || _settings.vehicle.realistic_acceleration) return;
+	if (old_z == v->z_pos || _settings_game.vehicle.realistic_acceleration) return;
 
 	const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->u.rail.railtype];
 
@@ -2971,7 +2971,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 				TrackBits red_signals = TrackdirBitsToTrackBits(TrackStatusToRedSignals(ts) & reachable_trackdirs);
 
 				TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
-				if (_settings.pf.pathfinder_for_trains != VPF_NTP && _settings.pf.forbid_90_deg && prev == NULL) {
+				if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
 					bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
@@ -2999,12 +2999,12 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 100;
-							if (++v->load_unload_time_rem < _settings.pf.wait_oneway_signal * 20) return;
+							if (++v->load_unload_time_rem < _settings_game.pf.wait_oneway_signal * 20) return;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 10;
-							if (++v->load_unload_time_rem < _settings.pf.wait_twoway_signal * 73) {
+							if (++v->load_unload_time_rem < _settings_game.pf.wait_twoway_signal * 73) {
 								TileIndex o_tile = gp.new_tile + TileOffsByDiagDir(enterdir);
 								Direction rdir = ReverseDir(dir);
 
@@ -3246,7 +3246,7 @@ static void HandleBrokenTrain(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
 		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
-			SndPlayVehicleFx((_settings.game_creation.landscape != LT_TOYLAND) ?
+			SndPlayVehicleFx((_settings_game.game_creation.landscape != LT_TOYLAND) ?
 				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
 		}
 
@@ -3406,7 +3406,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	/* mask unreachable track bits if we are forbidden to do 90deg turns */
 	TrackBits bits = TrackdirBitsToTrackBits(trackdirbits);
-	if (_settings.pf.pathfinder_for_trains != VPF_NTP && _settings.pf.forbid_90_deg) {
+	if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) {
 		bits &= ~TrackCrossesTracks(FindFirstTrack(v->u.rail.track));
 	}
 
@@ -3539,7 +3539,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 {
 	static const uint MAX_ACCEPTABLE_DEPOT_DIST = 16;
 
-	if (_settings.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
+	if (_settings_game.vehicle.servint_trains == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
@@ -3614,7 +3614,7 @@ void TrainsYearlyLoop()
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
 			/* show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
-			if (_settings.gui.train_income_warn && v->owner == _local_player && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
+			if (_settings_client.gui.train_income_warn && v->owner == _local_player && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
 				SetDParam(1, v->GetDisplayProfitThisYear());
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(

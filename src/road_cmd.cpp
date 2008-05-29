@@ -69,9 +69,9 @@ CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		if (_game_mode == GM_MENU) {
-			_settings.vehicle.road_side = p1;
+			_settings_game.vehicle.road_side = p1;
 		} else {
-			_settings.vehicle.road_side = p1;
+			_settings_game.vehicle.road_side = p1;
 		}
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
@@ -182,7 +182,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 	 * then allow it */
 	if (KillFirstBit(n) != ROAD_NONE && (n & remove) != ROAD_NONE) {
 		/* you can remove all kind of roads with extra dynamite */
-		if (!_settings.construction.extra_dynamite) {
+		if (!_settings_game.construction.extra_dynamite) {
 			SetDParam(0, t->index);
 			_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 			return false;
@@ -279,7 +279,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			 * @li if build on slopes is disabled */
 			if (IsSteepSlope(tileh) || (IsStraightRoad(other) &&
 					(other & _invalid_tileh_slopes_road[0][tileh & SLOPE_ELEVATED]) != ROAD_NONE) ||
-					(tileh != SLOPE_FLAT && !_settings.construction.build_on_slopes)) {
+					(tileh != SLOPE_FLAT && !_settings_game.construction.build_on_slopes)) {
 				pieces |= MirrorRoadBits(pieces);
 			}
 
@@ -419,7 +419,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 	RoadBits type_bits = existing | *pieces;
 
 	/* Roads on slopes */
-	if (_settings.construction.build_on_slopes && (_invalid_tileh_slopes_road[0][tileh] & (other | type_bits)) == ROAD_NONE) {
+	if (_settings_game.construction.build_on_slopes && (_invalid_tileh_slopes_road[0][tileh] & (other | type_bits)) == ROAD_NONE) {
 
 		/* If we add leveling we've got to pay for it */
 		if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
@@ -439,7 +439,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
 		if (IsSlopeWithOneCornerRaised(tileh)) {
 
 			/* Prevent build on slopes if it isn't allowed */
-			if (_settings.construction.build_on_slopes) {
+			if (_settings_game.construction.build_on_slopes) {
 
 				/* If we add foundation we've got to pay for it */
 				if ((other | existing) == ROAD_NONE) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
@@ -594,7 +594,7 @@ do_clear:;
 		CommandCost ret = CheckRoadSlope(tileh, &pieces, existing, other_bits);
 		/* Return an error if we need to build a foundation (ret != 0) but the
 		 * current patch-setting is turned off (or stupid AI@work) */
-		if (CmdFailed(ret) || (ret.GetCost() != 0 && !_settings.construction.build_on_slopes)) {
+		if (CmdFailed(ret) || (ret.GetCost() != 0 && !_settings_game.construction.build_on_slopes)) {
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		}
 		cost.AddCost(ret);
@@ -849,7 +849,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	Slope tileh = GetTileSlope(tile, NULL);
 	if (tileh != SLOPE_FLAT && (
-				!_settings.construction.build_on_slopes ||
+				!_settings_game.construction.build_on_slopes ||
 				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(dir, tileh)
 			)) {
@@ -1000,7 +1000,7 @@ const byte _road_sloped_sprites[14] = {
 static bool AlwaysDrawUnpavedRoads(TileIndex tile, Roadside roadside)
 {
 	return (IsOnSnow(tile) &&
-			!(_settings.game_creation.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
+			!(_settings_game.game_creation.landscape == LT_TROPIC && HasGrfMiscBit(GMB_DESERT_PAVED_ROADS) &&
 				roadside != ROADSIDE_BARREN && roadside != ROADSIDE_GRASS && roadside != ROADSIDE_GRASS_ROAD_WORKS));
 }
 
@@ -1291,7 +1291,7 @@ static const Roadside _town_road_types_2[][2] = {
 
 static void TileLoop_Road(TileIndex tile)
 {
-	switch (_settings.game_creation.landscape) {
+	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC:
 			if (IsOnSnow(tile) != (GetTileZ(tile) > GetSnowLine())) {
 				ToggleSnow(tile);
@@ -1337,7 +1337,7 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const Roadside* new_rs = (_settings.game_creation.landscape == LT_TOYLAND) ? _town_road_types_2[grp] : _town_road_types[grp];
+			const Roadside* new_rs = (_settings_game.game_creation.landscape == LT_TOYLAND) ? _town_road_types_2[grp] : _town_road_types[grp];
 			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */
@@ -1359,7 +1359,7 @@ static void TileLoop_Road(TileIndex tile)
 	} else if (IncreaseRoadWorksCounter(tile)) {
 		TerminateRoadWorks(tile);
 
-		if (_settings.economy.mod_road_rebuild) {
+		if (_settings_game.economy.mod_road_rebuild) {
 			/* Generate a nicer town surface */
 			const RoadBits old_rb = GetAnyRoadBits(tile, ROADTYPE_ROAD);
 			const RoadBits new_rb = CleanUpRoadBits(tile, old_rb);
@@ -1570,7 +1570,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
-	if (_settings.construction.build_on_slopes && AutoslopeEnabled()) {
+	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled()) {
 		switch (GetRoadTileType(tile)) {
 			case ROAD_TILE_CROSSING:
 				if (!IsSteepSlope(tileh_new) && (GetTileMaxZ(tile) == z_new + GetSlopeMaxZ(tileh_new)) && HasBit(VALID_LEVEL_CROSSING_SLOPES, tileh_new)) return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);

@@ -67,10 +67,10 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	_realtime_tick = 0;
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
-	_settings = _settings_newgame;
+	_settings_game = _settings_newgame;
 
 	if (reset_date) {
-		SetDate(ConvertYMDToDate(_settings.game_creation.starting_year, 0, 1));
+		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 		InitializeOldNames();
 	}
 

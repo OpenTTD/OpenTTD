@@ -407,7 +407,7 @@ Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
 	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir, allow 90-deg
 
 	// check if non-default YAPF type should be used
-	if (_settings.pf.yapf.disable_node_optimization)
+	if (_settings_game.pf.yapf.disable_node_optimization)
 		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir, allow 90-deg
 
 	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir);
@@ -421,7 +421,7 @@ uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile)
 	PfnDistanceToTile pfnDistanceToTile = &CYapfRoad2::stDistanceToTile; // default: ExitDir, allow 90-deg
 
 	// check if non-default YAPF type should be used
-	if (_settings.pf.yapf.disable_node_optimization)
+	if (_settings_game.pf.yapf.disable_node_optimization)
 		pfnDistanceToTile = &CYapfRoad1::stDistanceToTile; // Trackdir, allow 90-deg
 
 	// measure distance in YAPF units
@@ -450,7 +450,7 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 	PfnFindNearestDepot pfnFindNearestDepot = &CYapfRoadAnyDepot2::stFindNearestDepot;
 
 	// check if non-default YAPF type should be used
-	if (_settings.pf.yapf.disable_node_optimization)
+	if (_settings_game.pf.yapf.disable_node_optimization)
 		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir, allow 90-deg
 
 	Depot* ret = pfnFindNearestDepot(v, tile, trackdir);

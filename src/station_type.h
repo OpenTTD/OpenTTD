@@ -57,7 +57,7 @@ enum CatchmentArea {
 	CA_TRAIN           =  4,
 	CA_DOCK            =  5,
 
-	CA_UNMODIFIED      =  4, ///< Used when _settings.station.modified_catchment is false
+	CA_UNMODIFIED      =  4, ///< Used when _settings_game.station.modified_catchment is false
 
 	MAX_CATCHMENT      = 10, ///< Airports have a catchment up to this number.
 };

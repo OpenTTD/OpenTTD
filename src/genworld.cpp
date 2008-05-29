@@ -91,8 +91,8 @@ static void * CDECL _GenerateWorld(void *arg)
 		_generating_world = true;
 		if (_network_dedicated) DEBUG(net, 0, "Generating map, please wait...");
 		/* Set the Random() seed to generation_seed so we produce the same map with the same seed */
-		if (_settings.game_creation.generation_seed == GENERATE_NEW_SEED) _settings.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
-		_random.SetSeed(_settings.game_creation.generation_seed);
+		if (_settings_game.game_creation.generation_seed == GENERATE_NEW_SEED) _settings_game.game_creation.generation_seed = _settings_newgame.game_creation.generation_seed = InteractiveRandom();
+		_random.SetSeed(_settings_game.game_creation.generation_seed);
 		SetGeneratingWorldProgress(GWP_MAP_INIT, 2);
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
 
@@ -105,7 +105,7 @@ static void * CDECL _GenerateWorld(void *arg)
 			SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
 
 			/* Make the map the height of the patch setting */
-			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings.game_creation.se_flat_world_height);
+			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);
 
 			ConvertGroundTilesIntoWaterTiles();
 			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
@@ -165,7 +165,7 @@ static void * CDECL _GenerateWorld(void *arg)
 
 		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 
-		if (_settings.gui.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		if (_settings_client.gui.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 	} catch (...) {
 		_generating_world = false;
 		throw;
@@ -273,7 +273,7 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	_current_player = OWNER_NONE;
 
 	/* Set the date before loading sprites as some newgrfs check it */
-	SetDate(ConvertYMDToDate(_settings.game_creation.starting_year, 0, 1));
+	SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
 
 	/* Load the right landscape stuff */
 	GfxLoadSprites();

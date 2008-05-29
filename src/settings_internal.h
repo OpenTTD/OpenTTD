@@ -84,6 +84,6 @@ enum IniGroupType {
 };
 
 const SettingDesc *GetPatchFromName(const char *name, uint *i);
-bool SetPatchValue(uint index, const Settings *object, int32 value);
+bool SetPatchValue(uint index, int32 value);
 
 #endif /* SETTINGS_H */

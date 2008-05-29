@@ -326,7 +326,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	/* Hack for add-on GRFs that need to modify another GRF's engines. This lets
 	 * them use the same engine slots. */
 	const GRFFile *grf_match = NULL;
-	if (_settings.vehicle.dynamic_engines) {
+	if (_settings_game.vehicle.dynamic_engines) {
 		uint32 override = _grf_id_overrides[file->grfid];
 		if (override != 0) {
 			grf_match = GetFileByGRFID(override);
@@ -341,7 +341,7 @@ static Engine *GetNewEngine(const GRFFile *file, VehicleType type, uint16 intern
 	/* Check if this vehicle is already defined... */
 	Engine *e = NULL;
 	FOR_ALL_ENGINES(e) {
-		if (_settings.vehicle.dynamic_engines && e->grffile != NULL && e->grffile != file && e->grffile != grf_match) continue;
+		if (_settings_game.vehicle.dynamic_engines && e->grffile != NULL && e->grffile != file && e->grffile != grf_match) continue;
 		if (e->type != type) continue;
 		if (e->internal_id != internal_id) continue;
 
@@ -377,14 +377,14 @@ EngineID GetNewEngineID(const GRFFile *file, VehicleType type, uint16 internal_i
 	extern uint32 GetNewGRFOverride(uint32 grfid);
 
 	const GRFFile *grf_match = NULL;
-	if (_settings.vehicle.dynamic_engines) {
+	if (_settings_game.vehicle.dynamic_engines) {
 		uint32 override = _grf_id_overrides[file->grfid];
 		if (override != 0) grf_match = GetFileByGRFID(override);
 	}
 
 	const Engine *e = NULL;
 	FOR_ALL_ENGINES(e) {
-		if (_settings.vehicle.dynamic_engines && e->grffile != file && (grf_match == NULL || e->grffile != grf_match)) continue;
+		if (_settings_game.vehicle.dynamic_engines && e->grffile != file && (grf_match == NULL || e->grffile != grf_match)) continue;
 		if (e->type != type) continue;
 		if (e->internal_id != internal_id) continue;
 
@@ -1437,8 +1437,8 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 				/* If value of goods is negative, it means in fact food or, if in toyland, fizzy_drink acceptance.
 				 * Else, we have "standard" 3rd cargo type, goods or candy, for toyland once more */
-				CargoID cid = (goods >= 0) ? ((_settings.game_creation.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
-						((_settings.game_creation.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
+				CargoID cid = (goods >= 0) ? ((_settings_game.game_creation.landscape == LT_TOYLAND) ? CT_CANDY : CT_GOODS) :
+						((_settings_game.game_creation.landscape == LT_TOYLAND) ? CT_FIZZY_DRINKS : CT_FOOD);
 
 				/* Make sure the cargo type is valid in this climate. */
 				if (!GetCargo(cid)->IsValid()) goods = 0;
@@ -2167,11 +2167,11 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			case 0x17: // Probability in random game
-				indsp->appear_creation[_settings.game_creation.landscape] = grf_load_byte(&buf);
+				indsp->appear_creation[_settings_game.game_creation.landscape] = grf_load_byte(&buf);
 				break;
 
 			case 0x18: // Probability during gameplay
-				indsp->appear_ingame[_settings.game_creation.landscape] = grf_load_byte(&buf);
+				indsp->appear_ingame[_settings_game.game_creation.landscape] = grf_load_byte(&buf);
 				break;
 
 			case 0x19: // Map color
@@ -3557,11 +3557,11 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
-			*value = _settings.game_creation.landscape;
+			*value = _settings_game.game_creation.landscape;
 			return true;
 
 		case 0x06: // road traffic side, bit 4 clear=left, set=right
-			*value = _settings.vehicle.road_side << 4;
+			*value = _settings_game.vehicle.road_side << 4;
 			return true;
 
 		case 0x09: // date fraction
@@ -3592,7 +3592,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		case 0x0F: // Rail track type cost factors
 			*value = 0;
 			SB(*value, 0, 8, _railtype_cost_multiplier[0]); // normal rail
-			if (_settings.vehicle.disable_elrails) {
+			if (_settings_game.vehicle.disable_elrails) {
 				/* skip elrail multiplier - disabled */
 				SB(*value, 8, 8, _railtype_cost_multiplier[2]); // monorail
 			} else {
@@ -3635,7 +3635,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		/* case 0x1F: // locale dependent settings not implemented */
 
 		case 0x20: // snow line height
-			*value = _settings.game_creation.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
+			*value = _settings_game.game_creation.landscape == LT_ARCTIC ? GetSnowLine() : 0xFF;
 			return true;
 
 		case 0x21: // OpenTTD version
@@ -3643,7 +3643,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			return true;
 
 		case 0x22: // difficulty level
-			*value = _settings.difficulty.diff_level;
+			*value = _settings_game.difficulty.diff_level;
 			return true;
 
 		default: return false;
@@ -4188,10 +4188,10 @@ static uint32 GetPatchVariable(uint8 param)
 {
 	switch (param) {
 		/* start year - 1920 */
-		case 0x0B: return max(_settings.game_creation.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR;
+		case 0x0B: return max(_settings_game.game_creation.starting_year, ORIGINAL_BASE_YEAR) - ORIGINAL_BASE_YEAR;
 
 		/* freight trains weight factor */
-		case 0x0E: return _settings.vehicle.freight_trains;
+		case 0x0E: return _settings_game.vehicle.freight_trains;
 
 		/* empty wagon speed increase */
 		case 0x0F: return 0;
@@ -4200,7 +4200,7 @@ static uint32 GetPatchVariable(uint8 param)
 		 * the following is good for 1x, 2x and 4x (most common?) and...
 		 * well not really for 3x. */
 		case 0x10:
-			switch (_settings.vehicle.plane_speed) {
+			switch (_settings_game.vehicle.plane_speed) {
 				default:
 				case 4: return 1;
 				case 3: return 2;
@@ -4382,7 +4382,7 @@ static void ParamSet(byte *buf, size_t len)
 						case 0x01: // Road Vehicles
 						case 0x02: // Ships
 						case 0x03: // Aircraft
-							if (!_settings.vehicle.dynamic_engines) {
+							if (!_settings_game.vehicle.dynamic_engines) {
 								src1 = PerformGRM(&_grm_engines[_engine_offsets[feature]], _engine_counts[feature], count, op, target, "vehicles");
 								if (_skip_sprites == -1) return;
 							} else {
@@ -4544,7 +4544,7 @@ static void ParamSet(byte *buf, size_t len)
 
 		case 0x8F: // Rail track type cost factors
 			_railtype_cost_multiplier[0] = GB(res, 0, 8);
-			if (_settings.vehicle.disable_elrails) {
+			if (_settings_game.vehicle.disable_elrails) {
 				_railtype_cost_multiplier[1] = GB(res, 0, 8);
 				_railtype_cost_multiplier[2] = GB(res, 8, 8);
 			} else {
@@ -5079,23 +5079,23 @@ static void GRFUnsafe(byte *buf, size_t len)
 
 static void InitializeGRFSpecial()
 {
-	_ttdpatch_flags[0] =  ((_settings.station.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
+	_ttdpatch_flags[0] =  ((_settings_game.station.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
 	                   |                                                 (1 << 0x0D)  // newairports
 	                   |                                                 (1 << 0x0E)  // largestations
-	                   |      ((_settings.construction.longbridges ? 1 : 0) << 0x0F)  // longbridges
+	                   |      ((_settings_game.construction.longbridges ? 1 : 0) << 0x0F)  // longbridges
 	                   |                                                 (0 << 0x10)  // loadtime
 	                   |                                                 (1 << 0x12)  // presignals
 	                   |                                                 (1 << 0x13)  // extpresignals
-	                   | ((_settings.vehicle.never_expire_vehicles ? 1 : 0) << 0x16)  // enginespersist
+	                   | ((_settings_game.vehicle.never_expire_vehicles ? 1 : 0) << 0x16)  // enginespersist
 	                   |                                                 (1 << 0x1B)  // multihead
 	                   |                                                 (1 << 0x1D)  // lowmemory
 	                   |                                                 (1 << 0x1E); // generalfixes
 
-	_ttdpatch_flags[1] =   ((_settings.economy.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
-	                   |        ((_settings.vehicle.mammoth_trains ? 1 : 0) << 0x08)  // mammothtrains
+	_ttdpatch_flags[1] =   ((_settings_game.economy.station_noise_level ? 1 : 0) << 0x07)  // moreairports - based on units of noise
+	                   |        ((_settings_game.vehicle.mammoth_trains ? 1 : 0) << 0x08)  // mammothtrains
 	                   |                                                 (1 << 0x09)  // trainrefit
 	                   |                                                 (0 << 0x0B)  // subsidiaries
-	                   |         ((_settings.order.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
+	                   |         ((_settings_game.order.gradual_loading ? 1 : 0) << 0x0C)  // gradualloading
 	                   |                                                 (1 << 0x12)  // unifiedmaglevmode - set bit 0 mode. Not revelant to OTTD
 	                   |                                                 (1 << 0x13)  // unifiedmaglevmode - set bit 1 mode
 	                   |                                                 (1 << 0x14)  // bridgespeedlimits
@@ -5104,14 +5104,14 @@ static void InitializeGRFSpecial()
 	                   |                                                 (1 << 0x18)  // newrvs
 	                   |                                                 (1 << 0x19)  // newships
 	                   |                                                 (1 << 0x1A)  // newplanes
-	                   |      ((_settings.construction.signal_side ? 1 : 0) << 0x1B)  // signalsontrafficside
-	                   |       ((_settings.vehicle.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
+	                   |      ((_settings_game.construction.signal_side ? 1 : 0) << 0x1B)  // signalsontrafficside
+	                   |       ((_settings_game.vehicle.disable_elrails ? 0 : 1) << 0x1C); // electrifiedrailway
 
 	_ttdpatch_flags[2] =                                                 (1 << 0x01)  // loadallgraphics - obsolote
 	                   |                                                 (1 << 0x03)  // semaphores
 	                   |                                                 (0 << 0x0B)  // enhancedgui
 	                   |                                                 (0 << 0x0C)  // newagerating
-	                   |  ((_settings.construction.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
+	                   |  ((_settings_game.construction.build_on_slopes ? 1 : 0) << 0x0D)  // buildonslopes
 	                   |                                                 (1 << 0x0E)  // fullloadany
 	                   |                                                 (1 << 0x0F)  // planespeed
 	                   |                                                 (0 << 0x10)  // moreindustriesperclimate - obsolete
@@ -5119,15 +5119,15 @@ static void InitializeGRFSpecial()
 	                   |                                                 (1 << 0x12)  // newstations
 	                   |                                                 (1 << 0x13)  // tracktypecostdiff
 	                   |                                                 (1 << 0x14)  // manualconvert
-	                   |  ((_settings.construction.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
+	                   |  ((_settings_game.construction.build_on_slopes ? 1 : 0) << 0x15)  // buildoncoasts
 	                   |                                                 (1 << 0x16)  // canals
 	                   |                                                 (1 << 0x17)  // newstartyear
-	                   |    ((_settings.vehicle.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
+	                   |    ((_settings_game.vehicle.freight_trains > 1 ? 1 : 0) << 0x18)  // freighttrains
 	                   |                                                 (1 << 0x19)  // newhouses
 	                   |                                                 (1 << 0x1A)  // newbridges
 	                   |                                                 (1 << 0x1B)  // newtownnames
 	                   |                                                 (1 << 0x1C)  // moreanimation
-	                   |    ((_settings.vehicle.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
+	                   |    ((_settings_game.vehicle.wagon_speed_limits ? 1 : 0) << 0x1D)  // wagonspeedlimits
 	                   |                                                 (1 << 0x1E)  // newshistory
 	                   |                                                 (0 << 0x1F); // custombridgeheads
 
@@ -5139,13 +5139,13 @@ static void InitializeGRFSpecial()
 	                   |                                                 (1 << 0x05)  // resolutionwidth
 	                   |                                                 (1 << 0x06)  // resolutionheight
 	                   |                                                 (1 << 0x07)  // newindustries
-	                   |           ((_settings.order.improved_load ? 1 : 0) << 0x08)  // fifoloading
+	                   |           ((_settings_game.order.improved_load ? 1 : 0) << 0x08)  // fifoloading
 	                   |                                                 (0 << 0x09)  // townroadbranchprob
 	                   |                                                 (0 << 0x0A)  // tempsnowline
 	                   |                                                 (1 << 0x0B)  // newcargo
 	                   |                                                 (1 << 0x0C)  // enhancemultiplayer
 	                   |                                                 (1 << 0x0D)  // onewayroads
-	                   |   ((_settings.station.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
+	                   |   ((_settings_game.station.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
 	                   |                                                 (1 << 0x0F)  // statistics
 	                   |                                                 (1 << 0x10)  // newsounds
 	                   |                                                 (1 << 0x11)  // autoreplace
@@ -5155,7 +5155,7 @@ static void InitializeGRFSpecial()
 	                   |                                                 (0 << 0x15)  // enhancetunnels
 	                   |                                                 (1 << 0x16)  // shortrvs
 	                   |                                                 (1 << 0x17)  // articulatedrvs
-	                   |       ((_settings.vehicle.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
+	                   |       ((_settings_game.vehicle.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
 	                   |                                                 (1 << 0x1E); // variablerunningcosts
 }
 
@@ -5352,7 +5352,7 @@ static void ResetNewGRFData()
 	ResetNewGRFErrors();
 
 	/* Set up the default cargo types */
-	SetupCargoForClimate(_settings.game_creation.landscape);
+	SetupCargoForClimate(_settings_game.game_creation.landscape);
 
 	/* Reset misc GRF features and train list display variables */
 	_misc_grf_features = 0;

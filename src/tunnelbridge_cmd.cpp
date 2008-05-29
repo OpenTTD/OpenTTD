@@ -169,7 +169,7 @@ bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len)
 	if (b->avail_year > _cur_year) return false;
 
 	max = b->max_length;
-	if (max >= 16 && _settings.construction.longbridges) max = 100;
+	if (max >= 16 && _settings_game.construction.longbridges) max = 100;
 
 	return b->min_length <= bridge_len && bridge_len <= max;
 }
@@ -311,7 +311,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (!_is_old_ai_player && _settings.construction.build_on_slopes);
+		bool allow_on_slopes = (!_is_old_ai_player && _settings_game.construction.build_on_slopes);
 
 		/* Try and clear the start landscape */
 		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -576,7 +576,7 @@ static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 	/* Obviously if the bridge/tunnel belongs to us, or no-one, we can remove it */
 	if (CheckTileOwnership(tile) || IsTileOwner(tile, OWNER_NONE)) return true;
 	/* Otherwise we can only remove town-owned stuff with extra patch-settings, or cheat */
-	if (IsTileOwner(tile, OWNER_TOWN) && (_settings.construction.extra_dynamite || _cheats.magic_bulldozer.value)) return true;
+	if (IsTileOwner(tile, OWNER_TOWN) && (_settings_game.construction.extra_dynamite || _cheats.magic_bulldozer.value)) return true;
 	return false;
 }
 
@@ -1123,7 +1123,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 			DrawGroundSpriteAt(image, pal, x, y, z);
 		}
-	} else if (_settings.gui.bridge_pillars) {
+	} else if (_settings_client.gui.bridge_pillars) {
 		/* draw pillars below for high bridges */
 		DrawBridgePillars(psid, ti, axis, type, x, y, z);
 	}
@@ -1200,7 +1200,7 @@ static void AnimateTile_TunnelBridge(TileIndex tile)
 static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	bool snow_or_desert = HasTunnelBridgeSnowOrDesert(tile);
-	switch (_settings.game_creation.landscape) {
+	switch (_settings_game.game_creation.landscape) {
 		case LT_ARCTIC:
 			if (snow_or_desert != (GetTileZ(tile) > GetSnowLine())) {
 				SetTunnelBridgeSnowOrDesert(tile, !snow_or_desert);
@@ -1388,7 +1388,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
-	if (_settings.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile)) {
+	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile)) {
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;

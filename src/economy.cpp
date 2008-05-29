@@ -654,7 +654,7 @@ static void AddInflation()
 	 * inflation doesn't add anything after that either; it even makes playing
 	 * it impossible due to the diverging cost and income rates.
 	 */
-	if ((_cur_year - _settings.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
+	if ((_cur_year - _settings_game.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
 
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
@@ -704,7 +704,7 @@ static void PlayersPayInterest()
 
 static void HandleEconomyFluctuations()
 {
-	if (_settings.difficulty.economy == 0) return;
+	if (_settings_game.difficulty.economy == 0) return;
 
 	if (--_economy.fluct == 0) {
 		_economy.fluct = -(int)GB(Random(), 0, 2);
@@ -813,7 +813,7 @@ void StartupEconomy()
 	for (i = 0; i != NUM_PRICES; i++) {
 		Money price = _price_base[i];
 		if (_price_category[i] != 0) {
-			uint mod = _price_category[i] == 1 ? _settings.difficulty.vehicle_costs : _settings.difficulty.construction_cost;
+			uint mod = _price_category[i] == 1 ? _settings_game.difficulty.vehicle_costs : _settings_game.difficulty.construction_cost;
 			if (mod < 1) {
 				price = price * 3 >> 2;
 			} else if (mod > 1) {
@@ -829,10 +829,10 @@ void StartupEconomy()
 		_price_frac[i] = 0;
 	}
 
-	_economy.interest_rate = _settings.difficulty.initial_interest;
-	_economy.infl_amount = _settings.difficulty.initial_interest;
-	_economy.infl_amount_pr = max(0, _settings.difficulty.initial_interest - 1);
-	_economy.max_loan_unround = _economy.max_loan = _settings.difficulty.max_loan;
+	_economy.interest_rate = _settings_game.difficulty.initial_interest;
+	_economy.infl_amount = _settings_game.difficulty.initial_interest;
+	_economy.infl_amount_pr = max(0, _settings_game.difficulty.initial_interest - 1);
+	_economy.max_loan_unround = _economy.max_loan = _settings_game.difficulty.max_loan;
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 }
 
@@ -1162,7 +1162,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	}
 
 	/* zero the distance (thus income) if it's the bank and very short transport. */
-	if (_settings.game_creation.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10) return 0;
+	if (_settings_game.game_creation.landscape == LT_TEMPERATE && cs->label == 'VALU' && dist < 10) return 0;
 
 
 	static const int MIN_TIME_FACTOR = 31;
@@ -1208,7 +1208,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	 * XXX - Think of something better to
 	 *       1) Only deliver to industries which are withing the catchment radius
 	 *       2) Distribute between industries if more then one is present */
-	best_dist = (_settings.station.station_spread + 8) * 2;
+	best_dist = (_settings_game.station.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
 		indspec = GetIndustrySpec(ind->type);
 		uint i;
@@ -1313,7 +1313,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 
 			SetDParam(0, _current_player);
 			AddNewsItem(
-				STR_2031_SERVICE_SUBSIDY_AWARDED + _settings.difficulty.subsidy_multiplier,
+				STR_2031_SERVICE_SUBSIDY_AWARDED + _settings_game.difficulty.subsidy_multiplier,
 				NS_SUBSIDIES,
 				pair.a, pair.b
 			);
@@ -1360,7 +1360,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 
 	/* Modify profit if a subsidy is in effect */
 	if (subsidised) {
-		switch (_settings.difficulty.subsidy_multiplier) {
+		switch (_settings_game.difficulty.subsidy_multiplier) {
 			case 0:  profit += profit >> 1; break;
 			case 1:  profit *= 2; break;
 			case 2:  profit *= 3; break;
@@ -1481,7 +1481,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	/* We have not waited enough time till the next round of loading/unloading */
 	if (--v->load_unload_time_rem != 0) {
-		if (_settings.order.improved_load && (v->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
+		if (_settings_game.order.improved_load && (v->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 			/* 'Reserve' this cargo for this vehicle, because we were first. */
 			for (; v != NULL; v = v->Next()) {
 				if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
@@ -1517,7 +1517,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		if (v->cargo_cap == 0) continue;
 
 		byte load_amount = EngInfo(v->engine_type)->load_amount;
-		if (_settings.order.gradual_loading && HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
+		if (_settings_game.order.gradual_loading && HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
 			if (cb_load_amount != CALLBACK_FAILED && GB(cb_load_amount, 0, 8) != 0) load_amount = GB(cb_load_amount, 0, 8);
 		}
@@ -1526,7 +1526,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 		if (HasBit(v->vehicle_flags, VF_CARGO_UNLOADING) && (u->current_order.GetUnloadType() & OUFB_NO_UNLOAD) == 0) {
 			uint cargo_count = v->cargo.Count();
-			uint amount_unloaded = _settings.order.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
+			uint amount_unloaded = _settings_game.order.gradual_loading ? min(cargo_count, load_amount) : cargo_count;
 			bool remaining; // Are there cargo entities in this vehicle that can still be unloaded here?
 
 			if (HasBit(ge->acceptance_pickup, GoodsEntry::ACCEPTANCE) && !(u->current_order.GetUnloadType() & OUFB_TRANSFER)) {
@@ -1552,7 +1552,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 			unloading_time += amount_unloaded;
 
 			anything_unloaded = true;
-			if (_settings.order.gradual_loading && remaining) {
+			if (_settings_game.order.gradual_loading && remaining) {
 				completely_emptied = false;
 			} else {
 				/* We have finished unloading (cargo count == 0) */
@@ -1586,14 +1586,14 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
-			if (_settings.order.improved_load && cargo_left[v->cargo_type] <= 0) {
+			if (_settings_game.order.improved_load && cargo_left[v->cargo_type] <= 0) {
 				SetBit(cargo_not_full, v->cargo_type);
 				continue;
 			}
 
 			if (cap > count) cap = count;
-			if (_settings.order.gradual_loading) cap = min(cap, load_amount);
-			if (_settings.order.improved_load) {
+			if (_settings_game.order.gradual_loading) cap = min(cap, load_amount);
+			if (_settings_game.order.improved_load) {
 				/* Don't load stuff that is already 'reserved' for other vehicles */
 				cap = min((uint)cargo_left[v->cargo_type], cap);
 				cargo_left[v->cargo_type] -= cap;
@@ -1637,7 +1637,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	 * all wagons at the same time instead of using the same 'improved'
 	 * loading algorithm for the wagons (only fill wagon when there is
 	 * enough to fill the previous wagons) */
-	if (_settings.order.improved_load && (u->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
+	if (_settings_game.order.improved_load && (u->current_order.GetLoadType() & OLFB_FULL_LOAD)) {
 		/* Update left cargo */
 		for (v = u; v != NULL; v = v->Next()) {
 			if (v->cargo_cap != 0) cargo_left[v->cargo_type] -= v->cargo_cap - v->cargo.Count();
@@ -1647,7 +1647,7 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	v = u;
 
 	if (anything_loaded || anything_unloaded) {
-		if (_settings.order.gradual_loading) {
+		if (_settings_game.order.gradual_loading) {
 			/* The time it takes to load one 'slice' of cargo or passengers depends
 			* on the vehicle type - the values here are those found in TTDPatch */
 			const uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
@@ -1684,11 +1684,11 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 
 	/* Calculate the loading indicator fill percent and display
 	 * In the Game Menu do not display indicators
-	 * If _settings.gui.loading_indicators == 2, show indicators (bool can be promoted to int as 0 or 1 - results in 2 > 0,1 )
-	 * if _settings.gui.loading_indicators == 1, _local_player must be the owner or must be a spectator to show ind., so 1 > 0
-	 * if _settings.gui.loading_indicators == 0, do not display indicators ... 0 is never greater than anything
+	 * If _settings_client.gui.loading_indicators == 2, show indicators (bool can be promoted to int as 0 or 1 - results in 2 > 0,1 )
+	 * if _settings_client.gui.loading_indicators == 1, _local_player must be the owner or must be a spectator to show ind., so 1 > 0
+	 * if _settings_client.gui.loading_indicators == 0, do not display indicators ... 0 is never greater than anything
 	 */
-	if (_game_mode != GM_MENU && (_settings.gui.loading_indicators > (uint)(v->owner != _local_player && _local_player != PLAYER_SPECTATOR))) {
+	if (_game_mode != GM_MENU && (_settings_client.gui.loading_indicators > (uint)(v->owner != _local_player && _local_player != PLAYER_SPECTATOR))) {
 		StringID percent_up_down = STR_NULL;
 		int percent = CalcPercentVehicleFilled(v, &percent_up_down);
 		if (v->fill_percent_te_id == INVALID_TE_ID) {
@@ -1736,7 +1736,7 @@ void LoadUnloadStation(Station *st)
 void PlayersMonthlyLoop()
 {
 	PlayersGenStatistics();
-	if (_settings.economy.inflation && _cur_year < MAX_YEAR)
+	if (_settings_game.economy.inflation && _cur_year < MAX_YEAR)
 		AddInflation();
 	PlayersPayInterest();
 	/* Reset the _current_player flag */
@@ -1802,7 +1802,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	/* Check if buying shares is allowed (protection against modified clients) */
 	/* Cannot buy own shares */
-	if (!IsValidPlayer((PlayerID)p1) || !_settings.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+	if (!IsValidPlayer((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
 
 	p = GetPlayer((PlayerID)p1);
 
@@ -1851,7 +1851,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* Check if selling shares is allowed (protection against modified clients) */
 	/* Cannot sell own shares */
-	if (!IsValidPlayer((PlayerID)p1) || !_settings.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+	if (!IsValidPlayer((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
 
 	p = GetPlayer((PlayerID)p1);
 

@@ -214,10 +214,10 @@ static void LoadSpriteTables()
 	 * This overwrites some of the temperate sprites, such as foundations
 	 * and the ground sprites.
 	 */
-	if (_settings.game_creation.landscape != LT_TEMPERATE) {
+	if (_settings_game.game_creation.landscape != LT_TEMPERATE) {
 		LoadGrfIndexed(
-			files->landscape[_settings.game_creation.landscape - 1].filename,
-			_landscape_spriteindexes[_settings.game_creation.landscape - 1],
+			files->landscape[_settings_game.game_creation.landscape - 1].filename,
+			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
 			i++
 		);
 	}
@@ -248,7 +248,7 @@ static void LoadSpriteTables()
 
 void GfxLoadSprites()
 {
-	DEBUG(sprite, 2, "Loading sprite set %d", _settings.game_creation.landscape);
+	DEBUG(sprite, 2, "Loading sprite set %d", _settings_game.game_creation.landscape);
 
 	GfxInitSpriteMem();
 	LoadSpriteTables();

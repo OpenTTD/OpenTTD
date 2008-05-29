@@ -82,7 +82,7 @@ struct StatusBarWindow : Window {
 
 		this->DrawWidgets();
 		SetDParam(0, _date);
-		DrawStringCentered(70, 1, (_pause_game || _settings.gui.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING);
+		DrawStringCentered(70, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING);
 
 		if (p != NULL) {
 			/* Draw player money */

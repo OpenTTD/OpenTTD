@@ -1123,7 +1123,7 @@ void CommitRailVehListOrderChanges()
 		/* Populate map with current list positions */
 		Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
-			if (!_settings.vehicle.dynamic_engines || e->grffile == source_e->grffile) {
+			if (!_settings_game.vehicle.dynamic_engines || e->grffile == source_e->grffile) {
 				if (e->internal_id == target) target_e = e;
 				lptr_map[e->list_position] = e;
 			}

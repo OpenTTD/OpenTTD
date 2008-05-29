@@ -550,7 +550,7 @@ static void EditorTerraformClick_RockyArea(Window *w)
 
 static void EditorTerraformClick_DesertLightHouse(Window *w)
 {
-	HandlePlacePushButton(w, ETTW_PLACE_DESERT_LIGHTHOUSE, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_settings.game_creation.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
+	HandlePlacePushButton(w, ETTW_PLACE_DESERT_LIGHTHOUSE, SPR_CURSOR_LIGHTHOUSE, VHM_RECT, (_settings_game.game_creation.landscape == LT_TROPIC) ? PlaceProc_DesertArea : PlaceProc_LightHouse);
 }
 
 static void EditorTerraformClick_Transmitter(Window *w)
@@ -615,7 +615,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 struct ScenarioEditorLandscapeGenerationWindow : Window {
 	ScenarioEditorLandscapeGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->widget[ETTW_PLACE_DESERT_LIGHTHOUSE].tooltips = (_settings.game_creation.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
+		this->widget[ETTW_PLACE_DESERT_LIGHTHOUSE].tooltips = (_settings_game.game_creation.landscape == LT_TROPIC) ? STR_028F_DEFINE_DESERT_AREA : STR_028D_PLACE_LIGHTHOUSE;
 		this->FindWindowPlacementAndResize(desc);
 	}
 

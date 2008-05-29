@@ -304,7 +304,7 @@ static inline VarType GetVarFileType(VarType type)
  * to add this to the address of the object */
 static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
 {
-	return (byte*)object + (ptrdiff_t)sld->address;
+	return (byte*)(sld->global ? NULL : object) + (ptrdiff_t)sld->address;
 }
 
 int64 ReadValue(const void *ptr, VarType conv);

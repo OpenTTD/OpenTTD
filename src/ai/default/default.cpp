@@ -1570,21 +1570,21 @@ static void AiStateWantNewRoute(Player *p)
 	for (;;) {
 		r = (uint16)Random();
 
-		if (_settings.ai.ai_disable_veh_train &&
-				_settings.ai.ai_disable_veh_roadveh &&
-				_settings.ai.ai_disable_veh_aircraft &&
-				_settings.ai.ai_disable_veh_ship) {
+		if (_settings_game.ai.ai_disable_veh_train &&
+				_settings_game.ai.ai_disable_veh_roadveh &&
+				_settings_game.ai.ai_disable_veh_aircraft &&
+				_settings_game.ai.ai_disable_veh_ship) {
 			return;
 		}
 
 		if (r < 0x7626) {
-			if (_settings.ai.ai_disable_veh_train) continue;
+			if (_settings_game.ai.ai_disable_veh_train) continue;
 			AiWantTrainRoute(p);
 		} else if (r < 0xC4EA) {
-			if (_settings.ai.ai_disable_veh_roadveh) continue;
+			if (_settings_game.ai.ai_disable_veh_roadveh) continue;
 			AiWantRoadRoute(p);
 		} else if (r < 0xD89B) {
-			if (_settings.ai.ai_disable_veh_aircraft) continue;
+			if (_settings_game.ai.ai_disable_veh_aircraft) continue;
 			AiWantAircraftRoute(p);
 		} else {
 			/* Ships are not implemented in this (broken) AI */
@@ -1603,7 +1603,7 @@ static void AiStateWantNewRoute(Player *p)
 
 static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, byte cargo)
 {
-	uint rad = (_settings.station.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
+	uint rad = (_settings_game.station.modified_catchment) ? CA_TRAIN : CA_UNMODIFIED;
 
 	for (; p->mode != 4; p++) {
 		AcceptedCargo values;
@@ -2550,7 +2550,7 @@ handle_nocash:
 		bool is_pass = (
 			_players_ai[p->index].cargo_type == CT_PASSENGERS ||
 			_players_ai[p->index].cargo_type == CT_MAIL ||
-			(_settings.game_creation.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
+			(_settings_game.game_creation.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
 		);
 		Order order;
 
@@ -2599,7 +2599,7 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 	uint values[NUM_CARGO];
 	int rad;
 
-	if (_settings.station.modified_catchment) {
+	if (_settings_game.station.modified_catchment) {
 		rad = CA_TRUCK; // Same as CA_BUS at the moment?
 	} else { // change that at some point?
 		rad = 4;
@@ -3285,7 +3285,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		bool is_pass = (
 			_players_ai[p->index].cargo_type == CT_PASSENGERS ||
 			_players_ai[p->index].cargo_type == CT_MAIL ||
-			(_settings.game_creation.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
+			(_settings_game.game_creation.landscape == LT_TEMPERATE && _players_ai[p->index].cargo_type == CT_VALUABLES)
 		);
 		Order order;
 
@@ -3423,7 +3423,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 		const AirportFTAClass* airport = GetAirport(p->attr);
 		uint w = airport->size_x;
 		uint h = airport->size_y;
-		uint rad = _settings.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
+		uint rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
 		if (cargo & 0x80) {
 			GetProductionAroundTiles(values, tile2, w, h, rad);
@@ -3975,7 +3975,7 @@ void AiDoGameLoop(Player *p)
 	//  to the patch-setting
 	// Also, it takes into account the setting if the service-interval is in days
 	//  or in %
-	_ai_service_interval = _settings.vehicle.servint_ispercent ? 80 : 180;
+	_ai_service_interval = _settings_game.vehicle.servint_ispercent ? 80 : 180;
 
 	if (IsHumanPlayer(_current_player)) return;
 

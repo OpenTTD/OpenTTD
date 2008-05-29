@@ -375,11 +375,11 @@ static bool IsRadioTowerNearby(TileIndex tile)
 
 void GenerateUnmovables()
 {
-	if (_settings.game_creation.landscape == LT_TOYLAND) return;
+	if (_settings_game.game_creation.landscape == LT_TOYLAND) return;
 
 	/* add radio tower */
 	int radiotowser_to_build = ScaleByMapSize(15); // maximum number of radio towers on the map
-	int lighthouses_to_build = _settings.game_creation.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
+	int lighthouses_to_build = _settings_game.game_creation.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
 	SetGeneratingWorldProgress(GWP_UNMOVABLE, radiotowser_to_build + lighthouses_to_build);
 
 	for (uint i = ScaleByMapSize(1000); i != 0; i--) {
@@ -395,7 +395,7 @@ void GenerateUnmovables()
 		}
 	}
 
-	if (_settings.game_creation.landscape == LT_TROPIC) return;
+	if (_settings_game.game_creation.landscape == LT_TROPIC) return;
 
 	/* add lighthouses */
 	uint maxx = MapMaxX();

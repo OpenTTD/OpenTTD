@@ -70,7 +70,7 @@ void ResetIndustries()
 	/* once performed, enable only the current climate industries */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
 		_industry_specs[i].enabled = i < NEW_INDUSTRYOFFSET &&
-				HasBit(_origin_industry_specs[i].climate_availability, _settings.game_creation.landscape);
+				HasBit(_origin_industry_specs[i].climate_availability, _settings_game.game_creation.landscape);
 	}
 
 	memset(&_industry_tile_specs, 0, sizeof(_industry_tile_specs));
@@ -84,7 +84,7 @@ void ResetIndustries()
 void ResetIndustryCreationProbility(IndustryType type)
 {
 	assert(type < INVALID_INDUSTRYTYPE);
-	_industry_specs[type].appear_creation[_settings.game_creation.landscape] = 0;
+	_industry_specs[type].appear_creation[_settings_game.game_creation.landscape] = 0;
 }
 
 DEFINE_OLD_POOL_GENERIC(Industry, Industry)
@@ -888,14 +888,14 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	uint field_type;
 	int type;
 
-	if (_settings.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= GetSnowLine())
 			return;
 	}
 
 	/* determine field size */
 	r = (Random() & 0x303) + 0x404;
-	if (_settings.game_creation.landscape == LT_ARCTIC) r += 0x404;
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) r += 0x404;
 	size_x = GB(r, 0, 8);
 	size_y = GB(r, 8, 8);
 
@@ -926,7 +926,7 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	END_TILE_LOOP(cur_tile, size_x, size_y, tile)
 
 	type = 3;
-	if (_settings.game_creation.landscape != LT_ARCTIC && _settings.game_creation.landscape != LT_TROPIC) {
+	if (_settings_game.game_creation.landscape != LT_ARCTIC && _settings_game.game_creation.landscape != LT_TROPIC) {
 		type = _plantfarmfield_type[Random() & 0xF];
 	}
 
@@ -1063,7 +1063,7 @@ static bool CheckNewIndustry_NULL(TileIndex tile)
 
 static bool CheckNewIndustry_Forest(TileIndex tile)
 {
-	if (_settings.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) < HighestSnowLine() + TILE_HEIGHT * 2U) {
 			_error_message = STR_4831_FOREST_CAN_ONLY_BE_PLANTED;
 			return false;
@@ -1075,7 +1075,7 @@ static bool CheckNewIndustry_Forest(TileIndex tile)
 static bool CheckNewIndustry_OilRefinery(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR) return true;
-	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings.game_creation.oil_refinery_limit) return true;
+	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1087,7 +1087,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (TileHeight(tile) == 0 &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings.game_creation.oil_refinery_limit) return true;
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _settings_game.game_creation.oil_refinery_limit) return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1095,7 +1095,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 
 static bool CheckNewIndustry_Farm(TileIndex tile)
 {
-	if (_settings.game_creation.landscape == LT_ARCTIC) {
+	if (_settings_game.game_creation.landscape == LT_ARCTIC) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= HighestSnowLine()) {
 			_error_message = STR_0239_SITE_UNSUITABLE;
 			return false;
@@ -1171,7 +1171,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
-	if (_settings.economy.multiple_industry_per_town) return t;
+	if (_settings_game.economy.multiple_industry_per_town) return t;
 
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->type == (byte)type &&
@@ -1257,7 +1257,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 	/* It is almost impossible to have a fully flat land in TG, so what we
 	 *  do is that we check if we can make the land flat later on. See
 	 *  CheckIfCanLevelIndustryPlatform(). */
-	return !refused_slope || (_settings.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
+	return !refused_slope || (_settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !custom_shape && !_ignore_restrictions);
 }
 
 static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
@@ -1387,7 +1387,7 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 	const Industry *i;
 
-	if (_settings.economy.same_industry_close && indspec->IsRawIndustry())
+	if (_settings_game.economy.same_industry_close && indspec->IsRawIndustry())
 		/* Allow primary industries to be placed close to any other industry */
 		return true;
 
@@ -1401,8 +1401,8 @@ static bool CheckIfFarEnoughFromIndustry(TileIndex tile, int type)
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 				/* at least one of those options must be true */
 				_game_mode != GM_EDITOR || // editor must not be stopped
-				!_settings.economy.same_industry_close ||
-				!_settings.economy.multiple_industry_per_town)) {
+				!_settings_game.economy.same_industry_close ||
+				!_settings_game.economy.multiple_industry_per_town)) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
 		}
@@ -1449,7 +1449,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->production_rate[1] = indspec->production_rate[1];
 
 	/* don't use smooth economy for industries using production related callbacks */
-	if (_settings.economy.smooth_economy &&
+	if (_settings_game.economy.smooth_economy &&
 	    !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
 	    !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE))             // production change callbacks
 	) {
@@ -1577,7 +1577,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 		if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 	}
 
-	if (!custom_shape_check && _settings.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
+	if (!custom_shape_check && _settings_game.game_creation.land_generator == LG_TERRAGENESIS && _generating_world && !_ignore_restrictions && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
 	if (!CheckIfFarEnoughFromIndustry(tile, type)) return NULL;
 
 	const Town *t = CheckMultipleIndustryInTown(tile, type);
@@ -1621,11 +1621,11 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now) */
-	if (_game_mode != GM_EDITOR && _settings.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 0 && indspec->IsRawIndustry()) {
 		return CMD_ERROR;
 	}
 
-	if (_game_mode != GM_EDITOR && _settings.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
+	if (_game_mode != GM_EDITOR && _settings_game.construction.raw_industry_construction == 2 && indspec->IsRawIndustry()) {
 		if (flags & DC_EXEC) {
 			/* Prospecting has a chance to fail, however we cannot guarantee that something can
 			 * be built on the map, so the chance gets lower when the map is fuller, but there
@@ -1700,13 +1700,13 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 {
 	/* We need to bypass the amount given in parameter if it exceeds the maximum dimension of the
 	 * _numof_industry_table.  newgrf can specify a big amount */
-	int num = (amount > NB_NUMOFINDUSTRY) ? amount : _numof_industry_table[_settings.difficulty.number_industries][amount];
+	int num = (amount > NB_NUMOFINDUSTRY) ? amount : _numof_industry_table[_settings_game.difficulty.number_industries][amount];
 	const IndustrySpec *ind_spc = GetIndustrySpec(type);
 
 	/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 	num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 
-	if (_settings.difficulty.number_industries != 0) {
+	if (_settings_game.difficulty.number_industries != 0) {
 		PlayerID old_player = _current_player;
 		_current_player = OWNER_NONE;
 		assert(num > 0);
@@ -1735,7 +1735,7 @@ void GenerateIndustries()
 	const IndustrySpec *ind_spc;
 
 	/* Find the total amount of industries */
-	if (_settings.difficulty.number_industries > 0) {
+	if (_settings_game.difficulty.number_industries > 0) {
 		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 
 			ind_spc = GetIndustrySpec(it);
@@ -1744,12 +1744,12 @@ void GenerateIndustries()
 				ResetIndustryCreationProbility(it);
 			}
 
-			chance = ind_spc->appear_creation[_settings.game_creation.landscape];
+			chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
 			if (ind_spc->enabled && chance > 0) {
 				/* once the chance of appearance is determind, it have to be scaled by
 				 * the difficulty level. The "chance" in question is more an index into
 				 * the _numof_industry_table,in fact */
-				int num = (chance > NB_NUMOFINDUSTRY) ? chance : _numof_industry_table[_settings.difficulty.number_industries][chance];
+				int num = (chance > NB_NUMOFINDUSTRY) ? chance : _numof_industry_table[_settings_game.difficulty.number_industries][chance];
 
 				/* These are always placed next to the coastline, so we scale by the perimeter instead. */
 				num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
@@ -1760,7 +1760,7 @@ void GenerateIndustries()
 
 	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
-	if (_settings.difficulty.number_industries > 0) {
+	if (_settings_game.difficulty.number_industries > 0) {
 		for (it = 0; it < NUM_INDUSTRYTYPES; it++) {
 			/* Once the number of industries has been determined, let's really create them.
 			 * The test for chance allows us to try create industries that are available only
@@ -1769,7 +1769,7 @@ void GenerateIndustries()
 			 *          processed that scaling above? No, don't think so.  Will find a way. */
 			ind_spc = GetIndustrySpec(it);
 			if (ind_spc->enabled) {
-				chance = ind_spc->appear_creation[_settings.game_creation.landscape];
+				chance = ind_spc->appear_creation[_settings_game.game_creation.landscape];
 				if (chance > 0) PlaceInitialIndustry(it, chance);
 			}
 		}
@@ -1823,7 +1823,7 @@ static void MaybeNewIndustry(void)
 	/* Generate a list of all possible industries that can be built. */
 	for (j = 0; j < NUM_INDUSTRYTYPES; j++) {
 		ind_spc = GetIndustrySpec(j);
-		byte chance = ind_spc->appear_ingame[_settings.game_creation.landscape];
+		byte chance = ind_spc->appear_ingame[_settings_game.game_creation.landscape];
 
 		if (!ind_spc->enabled || chance == 0) continue;
 
@@ -1881,7 +1881,7 @@ static bool CheckIndustryCloseDownProtection(IndustryType type)
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
 	/* oil wells (or the industries with that flag set) are always allowed to closedown */
-	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _settings.game_creation.landscape == LT_TEMPERATE) return false;
+	if (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD && _settings_game.game_creation.landscape == LT_TEMPERATE) return false;
 	return (indspec->behaviour & INDUSTRYBEH_CANCLOSE_LASTINSTANCE) == 0 && GetIndustryTypeCount(type) <= 1;
 }
 
@@ -2031,7 +2031,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	bool standard = true;
 	bool suppress_message = false;
 	/* don't use smooth economy for industries using production related callbacks */
-	bool smooth_economy = _settings.economy.smooth_economy &&
+	bool smooth_economy = _settings_game.economy.smooth_economy &&
 	                      !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
 	                      !(HasBit(indspec->callback_flags, CBM_IND_MONTHLYPROD_CHANGE) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CHANGE));            // production change callbacks
 	byte div = 0;
@@ -2072,7 +2072,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 
 	if (standard && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
 		/* decrease or increase */
-		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings.game_creation.landscape == LT_TEMPERATE;
+		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE;
 
 		if (smooth_economy) {
 			closeit = true;
@@ -2257,7 +2257,7 @@ bool IndustrySpec::IsRawIndustry() const
 Money IndustrySpec::GetConstructionCost() const
 {
 	return (_price.build_industry *
-			(_settings.construction.raw_industry_construction == 1 && this->IsRawIndustry() ?
+			(_settings_game.construction.raw_industry_construction == 1 && this->IsRawIndustry() ?
 					this->raw_industry_cost_multiplier :
 					this->cost_multiplier
 			)) >> 8;

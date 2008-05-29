@@ -287,7 +287,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	UnitID unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
-	if (unit_num > _settings.vehicle.max_aircraft)
+	if (unit_num > _settings_game.vehicle.max_aircraft)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
@@ -404,7 +404,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->u.air.targetairport = GetStationIndex(tile);
 		v->SetNext(u);
 
-		v->service_interval = _settings.vehicle.servint_aircraft;
+		v->service_interval = _settings_game.vehicle.servint_aircraft;
 
 		v->date_of_last_service = _date;
 		v->build_year = u->build_year = _cur_year;
@@ -664,7 +664,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static void CheckIfAircraftNeedsService(Vehicle *v)
 {
-	if (_settings.vehicle.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
+	if (_settings_game.vehicle.servint_aircraft == 0 || !v->NeedsAutomaticServicing()) return;
 	if (v->IsInDepot()) {
 		VehicleServiceInDepot(v);
 		return;
@@ -884,7 +884,7 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 
 	/* Adjust speed limits by plane speed factor to prevent taxiing
 	 * and take-off speeds being too low. */
-	speed_limit *= _settings.vehicle.plane_speed;
+	speed_limit *= _settings_game.vehicle.plane_speed;
 
 	if (v->u.air.cached_max_speed < speed_limit) {
 		if (v->cur_speed < speed_limit) hard_limit = false;
@@ -902,7 +902,7 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 	 * speeds to that aircraft do not get to taxi speed straight after
 	 * touchdown. */
 	if (!hard_limit && v->cur_speed > speed_limit) {
-		speed_limit = v->cur_speed - max(1, ((v->cur_speed * v->cur_speed) / 16384) / _settings.vehicle.plane_speed);
+		speed_limit = v->cur_speed - max(1, ((v->cur_speed * v->cur_speed) / 16384) / _settings_game.vehicle.plane_speed);
 	}
 
 	spd = min(v->cur_speed + (spd >> 8) + (v->subspeed < t), speed_limit);
@@ -913,12 +913,12 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
 	/* updates statusbar only if speed have changed to save CPU time */
 	if (spd != v->cur_speed) {
 		v->cur_speed = spd;
-		if (_settings.gui.vehicle_speed)
+		if (_settings_client.gui.vehicle_speed)
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
 	/* Adjust distance moved by plane speed setting */
-	if (_settings.vehicle.plane_speed > 1) spd /= _settings.vehicle.plane_speed;
+	if (_settings_game.vehicle.plane_speed > 1) spd /= _settings_game.vehicle.plane_speed;
 
 	if (!(v->direction & 1)) spd = spd * 3 / 4;
 
@@ -1599,7 +1599,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 		AircraftEventHandler_EnterTerminal(v, apc);
 		/* on an airport with helipads, a helicopter will always land there
 		 * and get serviced at the same time - patch setting */
-		if (_settings.order.serviceathelipad) {
+		if (_settings_game.order.serviceathelipad) {
 			if (v->subtype == AIR_HELICOPTER && apc->helipads != NULL) {
 				/* an exerpt of ServiceAircraft, without the invisibility stuff */
 				v->date_of_last_service = _date;

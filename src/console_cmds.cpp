@@ -926,8 +926,8 @@ DEF_CONSOLE_CMD(ConRestart)
 	}
 
 	/* Don't copy the _newgame pointers to the real pointers, so call SwitchMode directly */
-	_settings.game_creation.map_x = MapLogX();
-	_settings.game_creation.map_y = FindFirstBit(MapSizeY());
+	_settings_game.game_creation.map_x = MapLogX();
+	_settings_game.game_creation.map_y = FindFirstBit(MapSizeY());
 	SwitchMode(SM_NEWGAME);
 	return true;
 }
@@ -940,7 +940,7 @@ DEF_CONSOLE_CMD(ConGetSeed)
 		return true;
 	}
 
-	IConsolePrintF(CC_DEFAULT, "Generation Seed: %u", _settings.game_creation.generation_seed);
+	IConsolePrintF(CC_DEFAULT, "Generation Seed: %u", _settings_game.game_creation.generation_seed);
 	return true;
 }
 
@@ -1083,7 +1083,7 @@ DEF_CONSOLE_CMD(ConExit)
 		return true;
 	}
 
-	if (_game_mode == GM_NORMAL && _settings.gui.autosave_on_exit) DoExitSave();
+	if (_game_mode == GM_NORMAL && _settings_client.gui.autosave_on_exit) DoExitSave();
 
 	_exit_game = true;
 	return true;

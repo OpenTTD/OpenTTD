@@ -211,10 +211,10 @@ static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][12] = {
 	{1500, 1000, 1200, 1000,  500,   32,    20,    0,    0,    0,    0,    0},
 };
 
-/** Desired water percentage (100% == 1024) - indexed by _settings.difficulty.quantity_sea_lakes */
+/** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
 static const amplitude_t _water_percent[4] = {20, 80, 250, 400};
 
-/** Desired maximum height - indexed by _settings.difficulty.terrain_type */
+/** Desired maximum height - indexed by _settings_game.difficulty.terrain_type */
 static const int8 _max_height[4] = {
 	6,       ///< Very flat
 	9,       ///< Flat
@@ -342,7 +342,7 @@ static void HeightMapGenerate()
 	do {
 		log_frequency = iteration_round - log_frequency_min;
 		if (log_frequency >= 0) {
-			amplitude = _amplitudes_by_smoothness_and_frequency[_settings.game_creation.tgen_smoothness][log_frequency];
+			amplitude = _amplitudes_by_smoothness_and_frequency[_settings_game.game_creation.tgen_smoothness][log_frequency];
 		} else {
 			amplitude = 0;
 		}
@@ -402,7 +402,7 @@ static void HeightMapSineTransform(height_t h_min, height_t h_max)
 		/* Transform height into 0..1 space */
 		fheight = (double)(*h - h_min) / (double)(h_max - h_min);
 		/* Apply sine transform depending on landscape type */
-		switch(_settings.game_creation.landscape) {
+		switch(_settings_game.game_creation.landscape) {
 			case LT_TOYLAND:
 			case LT_TEMPERATE:
 				/* Move and scale 0..1 into -1..+1 */
@@ -531,7 +531,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  */
 static void HeightMapCoastLines()
 {
-	int smallest_size = min(_settings.game_creation.map_x, _settings.game_creation.map_y);
+	int smallest_size = min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
 	const int margin = 4;
 	uint y, x;
 	double max_x;
@@ -661,9 +661,9 @@ static void HeightMapSmoothSlopes(height_t dh_max)
  *  - height histogram redistribution by sine wave transform */
 static void HeightMapNormalize()
 {
-	const amplitude_t water_percent = _water_percent[_settings.difficulty.quantity_sea_lakes];
-	const height_t h_max_new = I2H(_max_height[_settings.difficulty.terrain_type]);
-	const height_t roughness = 7 + 3 * _settings.game_creation.tgen_smoothness;
+	const amplitude_t water_percent = _water_percent[_settings_game.difficulty.quantity_sea_lakes];
+	const height_t h_max_new = I2H(_max_height[_settings_game.difficulty.terrain_type]);
+	const height_t roughness = 7 + 3 * _settings_game.game_creation.tgen_smoothness;
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
@@ -692,7 +692,7 @@ static inline int perlin_landXY(uint x, uint y)
  */
 static double int_noise(const long x, const long y, const int prime)
 {
-	long n = x + y * prime + _settings.game_creation.generation_seed;
+	long n = x + y * prime + _settings_game.game_creation.generation_seed;
 
 	n = (n << 13) ^ n;
 

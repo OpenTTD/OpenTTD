@@ -213,7 +213,7 @@ static uint NPFSlopeCost(AyStarNode* current)
 
 	if (z2 - z1 > 1) {
 		/* Slope up */
-		return _settings.pf.npf.npf_rail_slope_penalty;
+		return _settings_game.pf.npf.npf_rail_slope_penalty;
 	}
 	return 0;
 	/* Should we give a bonus for slope down? Probably not, we
@@ -260,10 +260,10 @@ static int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* par
 	cost = _trackdir_length[trackdir]; // Should be different for diagonal tracks
 
 	if (IsBuoyTile(current->tile) && IsDiagonalTrackdir(trackdir))
-		cost += _settings.pf.npf.npf_buoy_penalty; // A small penalty for going over buoys
+		cost += _settings_game.pf.npf.npf_buoy_penalty; // A small penalty for going over buoys
 
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
-		cost += _settings.pf.npf.npf_water_curve_penalty;
+		cost += _settings_game.pf.npf.npf_water_curve_penalty;
 
 	/* @todo More penalties? */
 
@@ -285,13 +285,13 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 		case MP_ROAD:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for level crossings */
-			if (IsLevelCrossing(tile)) cost += _settings.pf.npf.npf_crossing_penalty;
+			if (IsLevelCrossing(tile)) cost += _settings_game.pf.npf.npf_crossing_penalty;
 			break;
 
 		case MP_STATION:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for drive-through road stops */
-			if (IsDriveThroughStopTile(tile)) cost += _settings.pf.npf.npf_road_drive_through_penalty;
+			if (IsDriveThroughStopTile(tile)) cost += _settings_game.pf.npf.npf_road_drive_through_penalty;
 			break;
 
 		default:
@@ -306,7 +306,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Check for turns. Road vehicles only really drive diagonal, turns are
 	 * represented by non-diagonal tracks */
 	if (!IsDiagonalTrackdir((Trackdir)current->direction))
-		cost += _settings.pf.npf.npf_road_curve_penalty;
+		cost += _settings_game.pf.npf.npf_road_curve_penalty;
 
 	NPFMarkTile(tile);
 	DEBUG(npf, 4, "Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
@@ -344,7 +344,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 			 * give any station tile a penalty, because every possible route will get
 			 * this penalty exactly once, on its end tile (if it's a station) and it
 			 * will therefore not make a difference. */
-			cost = NPF_TILE_LENGTH + _settings.pf.npf.npf_rail_station_penalty;
+			cost = NPF_TILE_LENGTH + _settings_game.pf.npf.npf_rail_station_penalty;
 			break;
 
 		default:
@@ -366,9 +366,9 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 				SignalType sigtype = GetSignalType(tile, TrackdirToTrack(trackdir));
 				if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO) {
 					/* Penalise exit and combo signals differently (heavier) */
-					cost += _settings.pf.npf.npf_rail_firstred_exit_penalty;
+					cost += _settings_game.pf.npf.npf_rail_firstred_exit_penalty;
 				} else {
-					cost += _settings.pf.npf.npf_rail_firstred_penalty;
+					cost += _settings_game.pf.npf.npf_rail_firstred_penalty;
 				}
 			}
 			/* Record the state of this signal */
@@ -386,14 +386,14 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	 * of course... */
 	new_node.path.node = *current;
 	if (as->EndNodeCheck(as, &new_node) == AYSTAR_FOUND_END_NODE && NPFGetFlag(current, NPF_FLAG_LAST_SIGNAL_RED))
-		cost += _settings.pf.npf.npf_rail_lastred_penalty;
+		cost += _settings_game.pf.npf.npf_rail_lastred_penalty;
 
 	/* Check for slope */
 	cost += NPFSlopeCost(current);
 
 	/* Check for turns */
 	if (current->direction != NextTrackdir((Trackdir)parent->path.node.direction))
-		cost += _settings.pf.npf.npf_rail_curve_penalty;
+		cost += _settings_game.pf.npf.npf_rail_curve_penalty;
 	/*TODO, with realistic acceleration, also the amount of straight track between
 	 *      curves should be taken into account, as this affects the speed limit. */
 
@@ -402,7 +402,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 		/* Penalise any depot tile that is not the last tile in the path. This
 		 * _should_ penalise every occurence of reversing in a depot (and only
 		 * that) */
-		cost += _settings.pf.npf.npf_rail_depot_reverse_penalty;
+		cost += _settings_game.pf.npf.npf_rail_depot_reverse_penalty;
 	}
 
 	/* Check for occupied track */
@@ -634,7 +634,7 @@ static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_tr
 	trackdirbits &= TrackdirReachesTrackdirs(src_trackdir);
 
 	/* Filter out trackdirs that would make 90 deg turns for trains */
-	if (_settings.pf.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
+	if (_settings_game.pf.forbid_90_deg && (type == TRANSPORT_RAIL || type == TRANSPORT_WATER)) trackdirbits &= ~TrackdirCrossesTrackdirs(src_trackdir);
 
 	DEBUG(npf, 6, "After filtering: (%d, %d), possible trackdirs: 0x%X", TileX(dst_tile), TileY(dst_tile), trackdirbits);
 
@@ -970,7 +970,7 @@ void InitializeNPF()
 	//_npf_aystar.max_search_nodes = 0;
 	/* We will limit the number of nodes for now, until we have a better
 	 * solution to really fix performance */
-	_npf_aystar.max_search_nodes = _settings.pf.npf.npf_max_search_nodes;
+	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
 }
 
 void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v)

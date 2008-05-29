@@ -67,14 +67,14 @@ static inline bool AI_AllowNewAI()
 	/* If in network, and server, possible AI */
 	if (_networking && _network_server) {
 		/* Do we want AIs in multiplayer? */
-		if (!_settings.ai.ai_in_multiplayer)
+		if (!_settings_game.ai.ai_in_multiplayer)
 			return false;
 
 		/* Only the NewAI is allowed... sadly enough the old AI just doesn't support this
 		 *  system, because all commands are delayed by at least 1 tick, which causes
 		 *  a big problem, because it uses variables that are only set AFTER the command
 		 *  is really executed... */
-		if (!_settings.ai.ainew_active)
+		if (!_settings_game.ai.ainew_active)
 			return false;
 	}
 

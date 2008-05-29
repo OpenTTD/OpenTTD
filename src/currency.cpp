@@ -150,10 +150,10 @@ uint GetMaskOfAllowedCurrencies()
  **/
 void CheckSwitchToEuro()
 {
-	if (_currency_specs[_settings.gui.currency].to_euro != CF_NOEURO &&
-			_currency_specs[_settings.gui.currency].to_euro != CF_ISEURO &&
-			_cur_year >= _currency_specs[_settings.gui.currency].to_euro) {
-		_settings.gui.currency = 2; // this is the index of euro above.
+	if (_currency_specs[_settings_client.gui.currency].to_euro != CF_NOEURO &&
+			_currency_specs[_settings_client.gui.currency].to_euro != CF_ISEURO &&
+			_cur_year >= _currency_specs[_settings_client.gui.currency].to_euro) {
+		_settings_client.gui.currency = 2; // this is the index of euro above.
 		AddNewsItem(STR_EURO_INTRODUCE, NS_ECONOMY, 0, 0);
 	}
 }

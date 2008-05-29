@@ -83,7 +83,7 @@ void HashCurrentCompanyPassword()
 {
 	if (StrEmpty(_network_player_info[_local_player].password)) return;
 
-	_password_game_seed = _settings.game_creation.generation_seed;
+	_password_game_seed = _settings_game.game_creation.generation_seed;
 	ttd_strlcpy(_password_server_unique_id, _network_unique_id, sizeof(_password_server_unique_id));
 
 	const char *new_pw = GenerateCompanyPasswordHash(_network_player_info[_local_player].password);

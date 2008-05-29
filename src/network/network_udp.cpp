@@ -77,7 +77,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	_network_game_info.game_date     = _date;
 	_network_game_info.map_width     = MapSizeX();
 	_network_game_info.map_height    = MapSizeY();
-	_network_game_info.map_set       = _settings.game_creation.landscape;
+	_network_game_info.map_set       = _settings_game.game_creation.landscape;
 	_network_game_info.companies_on  = ActivePlayerCount();
 	_network_game_info.spectators_on = NetworkSpectatorCount();
 	_network_game_info.grfconfig     = _grfconfig;
