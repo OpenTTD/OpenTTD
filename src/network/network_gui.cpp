@@ -517,10 +517,10 @@ public:
 			return state;
 		}
 
-		if (this->HandleEditBoxKey(NGWW_PLAYER, keycode, key, state) == 1) return state; // enter pressed
+		if (this->HandleEditBoxKey(NGWW_PLAYER, key, keycode, state) == 1) return state; // enter pressed
 
 		/* The name is only allowed when it starts with a letter! */
-		if (StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
+		if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
 			ttd_strlcpy(_network_player_name, this->edit_str_buf, lengthof(_network_player_name));
 		} else {
 			ttd_strlcpy(_network_player_name, "Player", lengthof(_network_player_name));
