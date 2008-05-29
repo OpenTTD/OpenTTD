@@ -176,7 +176,6 @@ public:
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
 
 		this->caption_color = owner;
-		this->hscroll.cap = 224;
 		this->resize.step_width = 1;
 
 		switch (this->vehicle_type) {
@@ -283,7 +282,7 @@ public:
 	virtual void OnPaint()
 	{
 		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
-		int x = 203;
+		int x = this->widget[GRP_WIDGET_LIST_VEHICLE].left + 2;
 		int y2 = PLY_WND_PRC__OFFSET_TOP_WIDGET;
 		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
 		int max;
@@ -437,6 +436,8 @@ public:
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
 
+		int list_width = this->widget[GRP_WIDGET_LIST_VEHICLE].right - this->widget[GRP_WIDGET_LIST_VEHICLE].left - 20;
+
 		/* Draw Matrix Vehicle according to the vehicle list built before */
 		max = min(this->vscroll2.pos + this->vscroll2.cap, this->vehicles.Length());
 		for (i = this->vscroll2.pos ; i < max ; ++i) {
@@ -444,7 +445,7 @@ public:
 
 			assert(v->type == this->vehicle_type && v->owner == owner);
 
-			DrawVehicleImage(v, x + 19, y2 + 6, this->vehicle_sel, this->hscroll.cap, 0);
+			DrawVehicleImage(v, x + 19, y2 + 6, this->vehicle_sel, list_width, 0);
 			DrawVehicleProfitButton(v, x, y2 + 13);
 
 			SetDParam(0, v->unitnumber);
@@ -657,7 +658,6 @@ public:
 
 	virtual void OnResize(Point new_size, Point delta)
 	{
-		this->hscroll.cap += delta.x;
 		this->vscroll.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 		this->vscroll2.cap += delta.y / (int)this->resize.step_height;
 
