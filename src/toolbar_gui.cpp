@@ -47,9 +47,18 @@
 
 static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask = 0, int sel_index = 0, int checked_items = 0);
 static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray);
+static void SplitToolbar(Window *w);
 
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
+
+enum ToolbarMode {
+	TB_NORMAL,
+	TB_UPPER,
+	TB_LOWER
+};
+
+static ToolbarMode _toolbar_mode;
 
 static void SelectSignTool()
 {
@@ -282,7 +291,7 @@ static void MenuClickCompany(int index)
 
 static void ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6);
+	PopupMainToolbMenu(w, 10, STR_0154_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
 }
 
 static void MenuClickGraphs(int index)
@@ -294,6 +303,9 @@ static void MenuClickGraphs(int index)
 		case 3: ShowPerformanceHistoryGraph(); break;
 		case 4: ShowCompanyValueGraph();       break;
 		case 5: ShowCargoPaymentRates();       break;
+		/* functions for combined graphs/league button */
+		case 6: ShowCompanyLeagueTable();      break;
+		case 7: ShowPerformanceRatingDetail(); break;
 	}
 }
 
@@ -533,6 +545,22 @@ static void MenuClickHelp(int index)
 	}
 }
 
+/* --- Switch toolbar button --- */
+
+static void ToolbarSwitchClick(Window *w)
+{
+	if (_toolbar_mode != TB_LOWER) {
+		_toolbar_mode = TB_LOWER;
+	} else {
+		_toolbar_mode = TB_UPPER;
+	}
+
+	SplitToolbar(w);
+	w->HandleButtonClick(27);
+	SetWindowDirty(w);
+	SndPlayFx(SND_15_BEEP);
+}
+
 /* --- Scenario editor specific handlers. */
 
 static void ToolbarScenDateBackward(Window *w)
@@ -631,6 +659,90 @@ static void ToolbarBtn_NULL(Window *w)
 {
 }
 
+/* --- Resizing the toolbar */
+
+static void ResizeToolbar(Window *w)
+{
+	/* There are 27 buttons plus some spacings if the space allows it */
+	uint button_width;
+	uint spacing;
+	if (w->width >= 27 * 22) {
+		button_width = 22;
+		spacing = w->width - (27 * button_width);
+	} else {
+		button_width = w->width / 27;
+		spacing = 0;
+	}
+	uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
+
+	for (uint i = 0, x = 0, j = 0; i < 27; i++) {
+		if (extra_spacing_at[j] == i) {
+			j++;
+			uint add = spacing / (lengthof(extra_spacing_at) - j);
+			spacing -= add;
+			x += add;
+		}
+
+		w->widget[i].type = WWT_IMGBTN;
+		w->widget[i].left = x;
+		x += (spacing != 0) ? button_width : (w->width - x) / (27 - i);
+		w->widget[i].right = x - 1;
+	}
+
+	w->widget[27].type = WWT_EMPTY;
+	_toolbar_mode = TB_NORMAL;
+}
+
+/* --- Split the toolbar */
+
+static void SplitToolbar(Window *w)
+{
+	static const byte arrange14[] = {
+		0,  1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 27,
+		2,  3,  4,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
+	};
+	static const byte arrange15[] = {
+		0,  1,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
+		0,  2,  4,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 27,
+	};
+	static const byte arrange16[] = {
+		0,  1,  2,  4, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
+		0,  1,  3,  5,  6,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
+	};
+	static const byte arrange17[] = {
+		0,  1,  2,  4,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 17, 18, 27,
+		0,  1,  3,  4,  6,  5,  7,  8,  9, 10, 12, 24, 25, 26, 17, 18, 27,
+	};
+	static const byte arrange18[] = {
+		0,  1,  2,  4,  5,  6,  7,  8,  9, 12, 19, 20, 21, 22, 23, 17, 18, 27,
+		0,  1,  3,  4,  5,  6,  7, 10, 13, 14, 15, 16, 24, 25, 26, 17, 18, 27,
+	};
+	static const byte arrange19[] = {
+		0,  1,  2,  4,  5,  6, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 17, 18, 27,
+		0,  1,  3,  4,  7,  8,  9, 10, 12, 25, 19, 20, 21, 22, 23, 26, 17, 18, 27,
+	};
+
+	static const byte *arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
+
+	static const uint icon_size = 22;
+	uint max_icons = max(14U, (w->width + icon_size / 2) / icon_size);
+
+	assert(max_icons >= 14 && max_icons <= 19);
+
+	/* first hide all icons */
+	for (uint i = 0; i < 27; i++) {
+		w->widget[i].type = WWT_EMPTY;
+	}
+
+	/* now activate them all on their proper positions */
+	for (uint i = 0, x = 0, n = max_icons - 14; i < max_icons; i++) {
+		uint icon = arrangements[n][i + ((_toolbar_mode == TB_LOWER) ? max_icons : 0)];
+		w->widget[icon].type = WWT_IMGBTN;
+		w->widget[icon].left = x;
+		x += (w->width - x) / (max_icons - i);
+		w->widget[icon].right = x - 1;
+	}
+}
 
 /* --- Toolbar handling for the 'normal' case */
 
@@ -664,6 +776,7 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarMusicClick,
 	ToolbarNewspaperClick,
 	ToolbarHelpClick,
+	ToolbarSwitchClick,
 };
 
 struct MainToolbarWindow : Window {
@@ -774,29 +887,10 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnResize(Point new_size, Point delta)
 	{
-		/* There are 27 buttons plus some spacings if the space allows it */
-		uint button_width;
-		uint spacing;
-		if (this->width >= 27 * 22) {
-			button_width = 22;
-			spacing = this->width - (27 * button_width);
+		if (this->width <= 19 * 22) {
+			SplitToolbar(this);
 		} else {
-			button_width = this->width / 27;
-			spacing = 0;
-		}
-		uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
-
-		for (uint i = 0, x = 0, j = 0; i < 27; i++) {
-			if (extra_spacing_at[j] == i) {
-				j++;
-				uint add = spacing / (lengthof(extra_spacing_at) - j);
-				spacing -= add;
-				x += add;
-			}
-
-			this->widget[i].left = x;
-			x += (spacing != 0) ? button_width : (this->width - x) / (27 - i);
-			this->widget[i].right = x - 1;
+			ResizeToolbar(this);
 		}
 	}
 
@@ -850,6 +944,7 @@ static const Widget _toolb_normal_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_MUSIC,           STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_MESSAGES,        STR_0203_SHOW_LAST_MESSAGE_NEWS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_IMG_QUERY,           STR_0186_LAND_BLOCK_INFORMATION},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,     0,     0,    21, SPR_SWITCH_TOOLBAR,      STR_EMPTY}, // switch toolbar button. only active when toolbar has been split
 {   WIDGETS_END},
 };
 
