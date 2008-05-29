@@ -28,7 +28,7 @@
 #include "oldpool_func.h"
 #include "core/alloc_func.hpp"
 #include "vehicle_func.h"
-#include "map"
+#include <map>
 
 #include "table/strings.h"
 #include "table/engines.h"
