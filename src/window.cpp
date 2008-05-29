@@ -721,9 +721,14 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 }
 
 /**
- * Find a nice spot for this window and resize it towards the default size.
+ * Resize window towards the default size.
+ * Prior to construction, a position for the new window (for its default size)
+ * has been found with LocalGetWindowPlacement(). Initially, the window is
+ * constructed with minimal size. Resizing the window to its default size is
+ * done here.
  * @param def_width default width in pixels of the window
  * @param def_height default height in pixels of the window
+ * @see Window::Window(), Window::Initialize()
  */
 void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 {
@@ -802,7 +807,17 @@ Window::Window(int x, int y, int width, int height, WindowClass cls, const Widge
 	this->Initialize(x, y, width, height, cls, widget, 0);
 }
 
-
+/**
+ * Decide whether a given rectangle is a good place to open a completely visible new window.
+ * The new window should be within screen borders, and not overlap with another already
+ * existing window (except for the main window in the background).
+ * @param left    Left edge of the rectangle
+ * @param top     Top edge of the rectangle
+ * @param width   Width of the rectangle
+ * @param height  Height of the rectangle
+ * @param pos     If rectangle is good, use this parameter to return the top-left corner of the new window
+ * @return Boolean indication that the rectangle is a good place for the new window
+ */
 static bool IsGoodAutoPlace1(int left, int top, int width, int height, Point &pos)
 {
 	Window* const *wz;
@@ -830,11 +845,26 @@ static bool IsGoodAutoPlace1(int left, int top, int width, int height, Point &po
 	return true;
 }
 
+/**
+ * Decide whether a given rectangle is a good place to open a mostly visible new window.
+ * The new window should be mostly within screen borders, and not overlap with another already
+ * existing window (except for the main window in the background).
+ * @param left    Left edge of the rectangle
+ * @param top     Top edge of the rectangle
+ * @param width   Width of the rectangle
+ * @param height  Height of the rectangle
+ * @param pos     If rectangle is good, use this parameter to return the top-left corner of the new window
+ * @return Boolean indication that the rectangle is a good place for the new window
+ */
 static bool IsGoodAutoPlace2(int left, int top, int width, int height, Point &pos)
 {
 	Window* const *wz;
 
+	/* Left part of the rectangle may be at most 1/4 off-screen,
+	 * right part of the rectangle may be at most 1/2 off-screen
+	 */
 	if (left < -(width>>2) || left > _screen.width - (width>>1)) return false;
+	/* Bottom part of the rectangle may be at most 1/4 off-screen */
 	if (top < 22 || top > _screen.height - (height>>2)) return false;
 
 	/* Make sure it is not obscured by any window. */
@@ -855,13 +885,24 @@ static bool IsGoodAutoPlace2(int left, int top, int width, int height, Point &po
 	return true;
 }
 
+/**
+ * Find a good place for opening a new window of a given width and height.
+ * @param width  Width of the new window
+ * @param height Height of the new window
+ * @return Top-left coordinate of the new window
+ */
 static Point GetAutoPlacePosition(int width, int height)
 {
 	Window* const *wz;
 	Point pt;
 
+	/* First attempt, try top-left of the screen */
 	if (IsGoodAutoPlace1(0, 24, width, height, pt)) return pt;
 
+	/* Second attempt, try around all existing windows with a distance of 2 pixels.
+	 * The new window must be entirely on-screen, and not overlap with an existing window.
+	 * Eight starting points are tried, two at each corner.
+	 */
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
@@ -876,6 +917,10 @@ static Point GetAutoPlacePosition(int width, int height)
 		if (IsGoodAutoPlace1(w->left + w->width - width, w->top - height - 2,    width, height, pt)) return pt;
 	}
 
+	/* Third attempt, try around all existing windows with a distance of 2 pixels.
+	 * The new window may be partly off-screen, and must not overlap with an existing window.
+	 * Only four starting points are tried.
+	 */
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
@@ -886,6 +931,9 @@ static Point GetAutoPlacePosition(int width, int height)
 		if (IsGoodAutoPlace2(w->left, w->top - height - 2,    width, height, pt)) return pt;
 	}
 
+	/* Fourth and final attempt, put window at diagonal starting from (0, 24), try multiples
+	 * of (+5, +5)
+	 */
 	{
 		int left = 0, top = 24;
 
