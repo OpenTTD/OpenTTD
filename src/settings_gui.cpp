@@ -762,7 +762,6 @@ struct PatchesSelectionWindow : Window {
 				page->entries = MallocT<PatchEntry>(page->num);
 				for (i = 0; i != page->num; i++) {
 					uint index;
-					printf("%s\n", page->names[i]);
 					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
 					assert(sd != NULL);
 
