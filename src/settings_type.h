@@ -86,33 +86,33 @@ struct GUISettings {
 /** All settings related to the network. */
 struct NetworkSettings {
 #ifdef ENABLE_NETWORK
-	uint16 sync_freq;
-	uint8  frame_freq;
-	uint16 max_join_time;
-	bool   pause_on_join;
-	char   server_bind_ip[NETWORK_HOSTNAME_LENGTH];
-	uint16 server_port;
-	bool   server_advertise;
-	uint8  lan_internet;
-	char   player_name[NETWORK_NAME_LENGTH];
-	char   server_password[NETWORK_PASSWORD_LENGTH];
-	char   rcon_password[NETWORK_PASSWORD_LENGTH];
-	char   default_company_pass[NETWORK_PASSWORD_LENGTH];
-	char   server_name[NETWORK_NAME_LENGTH];
-	char   connect_to_ip[NETWORK_HOSTNAME_LENGTH];
-	char   network_id[NETWORK_UNIQUE_ID_LENGTH];
-	bool   autoclean_companies;
-	uint8  autoclean_unprotected;
-	uint8  autoclean_protected;
-	uint8  max_companies;
-	uint8  max_clients;
-	uint8  max_spectators;
-	Year   restart_game_year;
-	uint8  min_players;
-	uint8  server_lang;
-	bool   reload_cfg;
-	char   last_host[NETWORK_HOSTNAME_LENGTH];
-	uint16 last_port;
+	uint16 sync_freq;                                     ///< how often do we check whether we are still in-sync
+	uint8  frame_freq;                                    ///< how often do we send commands to the clients
+	uint16 max_join_time;                                 ///< maximum amount of time, in game ticks, a client may take to join
+	bool   pause_on_join;                                 ///< pause the game when people join
+	char   server_bind_ip[NETWORK_HOSTNAME_LENGTH];       ///< IP address the server binds to
+	uint16 server_port;                                   ///< port the server listens on
+	char   server_name[NETWORK_NAME_LENGTH];              ///< name of the server
+	char   server_password[NETWORK_PASSWORD_LENGTH];      ///< passowrd for joining this server
+	char   rcon_password[NETWORK_PASSWORD_LENGTH];        ///< passowrd for rconsole (server side)
+	bool   server_advertise;                              ///< advertise the server to the masterserver
+	uint8  lan_internet;                                  ///< search on the LAN or internet for servers
+	char   player_name[NETWORK_NAME_LENGTH];              ///< name of the player
+	char   default_company_pass[NETWORK_PASSWORD_LENGTH]; ///< default password for new companies in encrypted form
+	char   connect_to_ip[NETWORK_HOSTNAME_LENGTH];        ///< default for the "Add server" query
+	char   network_id[NETWORK_UNIQUE_ID_LENGTH];          ///< semi-unique ID of the client
+	bool   autoclean_companies;                           ///< automatically remove companies that are not in use
+	uint8  autoclean_unprotected;                         ///< remove passwordless companies after this many months
+	uint8  autoclean_protected;                           ///< remove the password from passworded companies after this many months
+	uint8  max_companies;                                 ///< maximum amount of companies
+	uint8  max_clients;                                   ///< maximum amount of clients
+	uint8  max_spectators;                                ///< maximum amount of spectators
+	Year   restart_game_year;                             ///< year the server restarts
+	uint8  min_players;                                   ///< minimum amount of players to unpause the game
+	uint8  server_lang;                                   ///< language of the server
+	bool   reload_cfg;                                    ///< reload the config file before restarting
+	char   last_host[NETWORK_HOSTNAME_LENGTH];            ///< IP address of the last joined server
+	uint16 last_port;                                     ///< port of the last joined server
 #else /* ENABLE_NETWORK */
 #endif
 };
