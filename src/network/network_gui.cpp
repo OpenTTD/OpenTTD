@@ -38,9 +38,6 @@
 #define BGC 5
 #define BTC 15
 
-/* Global to remember sorting after window has been closed */
-static Listing _ng_sorting;
-
 static bool _chat_tab_completion_active;
 
 static void ShowNetworkStartServerWindow();
@@ -87,57 +84,6 @@ void UpdateNetworkGameWindow(bool unselect)
 	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect);
 }
 
-static bool _internal_sort_order; // Used for Qsort order-flipping
-typedef int CDECL NGameNameSortFunction(const void*, const void*);
-
-/** Qsort function to sort by name. */
-static int CDECL NGameNameSorter(const void *a, const void *b)
-{
-	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
-	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
-	int r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
-
-	return _internal_sort_order ? -r : r;
-}
-
-/** Qsort function to sort by the amount of clients online on a
- * server. If the two servers have the same amount, the one with the
- * higher maximum is preferred. */
-static int CDECL NGameClientSorter(const void *a, const void *b)
-{
-	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
-	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
-	/* Reverse as per default we are interested in most-clients first */
-	int r = cmp1->info.clients_on - cmp2->info.clients_on;
-
-	if (r == 0) r = cmp1->info.clients_max - cmp2->info.clients_max;
-	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
-
-	return _internal_sort_order ? -r : r;
-}
-
-/** Qsort function to sort by joinability. If both servers are the
- * same, prefer the non-passworded server first. */
-static int CDECL NGameAllowedSorter(const void *a, const void *b)
-{
-	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
-	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
-
-	/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
-	int r = StrEmpty(cmp1->info.server_revision) - StrEmpty(cmp2->info.server_revision);
-
-	/* Reverse default as we are interested in version-compatible clients first */
-	if (r == 0) r = cmp2->info.version_compatible - cmp1->info.version_compatible;
-	/* The version-compatible ones are then sorted with NewGRF compatible first, incompatible last */
-	if (r == 0) r = cmp2->info.compatible - cmp1->info.compatible;
-	/* Passworded servers should be below unpassworded servers */
-	if (r == 0) r = cmp1->info.use_password - cmp2->info.use_password;
-	/* Finally sort on the name of the server */
-	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
-
-	return _internal_sort_order ? -r : r;
-}
-
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
 enum NetworkGameWindowWidgets {
 	NGWW_CLOSE,         ///< Close 'X' button
@@ -171,34 +117,17 @@ enum NetworkGameWindowWidgets {
 
 typedef GUIList<NetworkGameList*> GUIGameServerList;
 
-struct NetworkGameWindow : public QueryStringBaseWindow {
+class NetworkGameWindow : public QueryStringBaseWindow {
+protected:
+	/* Runtime saved values */
+	static Listing last_sorting;
+
+	/* Constants for sorting servers */
+	static GUIGameServerList::SortFunction *const sorter_funcs[];
+
 	byte field;                  ///< selected text-field
 	NetworkGameList *server;     ///< selected server
 	GUIGameServerList servers;   ///< list with game servers.
-
-	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
-	{
-		ttd_strlcpy(this->edit_str_buf, _network_player_name, lengthof(this->edit_str_buf));
-		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
-
-		UpdateNetworkGameWindow(true);
-
-		this->vscroll.cap = 11;
-		this->resize.step_height = NET_PRC__SIZE_OF_ROW;
-
-		this->field = NGWW_PLAYER;
-		this->server = NULL;
-
-		this->servers.flags = VL_REBUILD | (_ng_sorting.order ? VL_DESC : VL_NONE);
-		this->servers.sort_type = _ng_sorting.criteria;
-
-		this->FindWindowPlacementAndResize(desc);
-	}
-
-	~NetworkGameWindow()
-	{
-	}
 
 	/**
 	 * (Re)build the network game list as its amount has changed because
@@ -206,7 +135,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 	 */
 	void BuildNetworkGameList()
 	{
-		if (!(this->servers.flags & VL_REBUILD)) return;
+		if (!this->servers.NeedRebuild()) return;
 
 		/* Create temporary array of games to use for listing */
 		this->servers.Clear();
@@ -216,40 +145,63 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		}
 
 		this->servers.Compact();
-
-		/* Force resort */
-		this->servers.flags &= ~VL_REBUILD;
-		this->servers.flags |= VL_RESORT;
+		this->servers.RebuildDone();
 	}
 
+	/** Sort servers by name. */
+	static int CDECL NGameNameSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	{
+		return strcasecmp((*a)->info.server_name, (*b)->info.server_name);
+	}
+
+	/** Sort servers by the amount of clients online on a
+	 * server. If the two servers have the same amount, the one with the
+	 * higher maximum is preferred. */
+	static int CDECL NGameClientSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	{
+		/* Reverse as per default we are interested in most-clients first */
+		int r = (*a)->info.clients_on - (*b)->info.clients_on;
+
+		if (r == 0) r = (*a)->info.clients_max - (*b)->info.clients_max;
+		if (r == 0) r = NGameNameSorter(a, b);
+
+		return r;
+	}
+
+	/** Sort servers by joinability. If both servers are the
+	 * same, prefer the non-passworded server first. */
+	static int CDECL NGameAllowedSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	{
+		/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
+		int r = StrEmpty((*a)->info.server_revision) - StrEmpty((*b)->info.server_revision);
+
+		/* Reverse default as we are interested in version-compatible clients first */
+		if (r == 0) r = (*b)->info.version_compatible - (*a)->info.version_compatible;
+		/* The version-compatible ones are then sorted with NewGRF compatible first, incompatible last */
+		if (r == 0) r = (*b)->info.compatible - (*a)->info.compatible;
+		/* Passworded servers should be below unpassworded servers */
+		if (r == 0) r = (*a)->info.use_password - (*b)->info.use_password;
+		/* Finally sort on the name of the server */
+		if (r == 0) r = NGameNameSorter(a, b);
+
+		return r;
+	}
+
+	/** Sort the server list */
 	void SortNetworkGameList()
 	{
-		static NGameNameSortFunction * const ngame_sorter[] = {
-			&NGameNameSorter,
-			&NGameClientSorter,
-			&NGameAllowedSorter
-		};
-
-		NetworkGameList *item;
-		uint i;
-
-		if (!(this->servers.flags & VL_RESORT)) return;
-		if (this->servers.Length() == 0) return;
-
-		_internal_sort_order = !!(this->servers.flags & VL_DESC);
-		qsort(this->servers.Begin(), this->servers.Length(), sizeof(*this->servers.Begin()), ngame_sorter[this->servers.sort_type]);
+		if (!this->servers.Sort()) return;
 
 		/* After sorting ngl->sort_list contains the sorted items. Put these back
 		 * into the original list. Basically nothing has changed, we are only
 		 * shuffling the ->next pointers */
 		_network_game_list = this->servers[0];
-		for (item = _network_game_list, i = 1; i != this->servers.Length(); i++) {
+		NetworkGameList *item = _network_game_list;
+		for (uint i = 1; i != this->servers.Length(); i++) {
 			item->next = this->servers[i];
 			item = item->next;
 		}
 		item->next = NULL;
-
-		this->servers.flags &= ~VL_RESORT;
 	}
 
 	/**
@@ -285,16 +237,44 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		}
 	}
 
+public:
+	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	{
+		ttd_strlcpy(this->edit_str_buf, _network_player_name, lengthof(this->edit_str_buf));
+		this->afilter = CS_ALPHANUMERAL;
+		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
+
+		UpdateNetworkGameWindow(true);
+
+		this->vscroll.cap = 11;
+		this->resize.step_height = NET_PRC__SIZE_OF_ROW;
+
+		this->field = NGWW_PLAYER;
+		this->server = NULL;
+
+		this->servers.SetListing(this->last_sorting);
+		this->servers.SetSortFuncs(this->sorter_funcs);
+		this->servers.ForceRebuild();
+		this->SortNetworkGameList();
+
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	~NetworkGameWindow()
+	{
+		this->last_sorting = this->servers.GetListing();
+	}
+
 	virtual void OnPaint()
 	{
 		const NetworkGameList *sel = this->server;
-		const SortButtonState arrow = (this->servers.flags & VL_DESC) ? SBS_DOWN : SBS_UP;
+		const SortButtonState arrow = this->servers.IsDescSortOrder() ? SBS_DOWN : SBS_UP;
 
-		if (this->servers.flags & VL_REBUILD) {
+		if (this->servers.NeedRebuild()) {
 			this->BuildNetworkGameList();
 			SetVScrollCount(this, this->servers.Length());
 		}
-		if (this->servers.flags & VL_RESORT) this->SortNetworkGameList();
+		this->SortNetworkGameList();
 
 		/* 'Refresh' button invisible if no server selected */
 		this->SetWidgetDisabledState(NGWW_REFRESH, sel == NULL);
@@ -319,28 +299,20 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		DrawString(this->widget[NGWW_PLAYER].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
 
 		/* Sort based on widgets: name, clients, compatibility */
-		switch (this->servers.sort_type) {
+		switch (this->servers.SortType()) {
 			case NGWW_NAME    - NGWW_NAME: this->DrawSortButtonState(NGWW_NAME,    arrow); break;
 			case NGWW_CLIENTS - NGWW_NAME: this->DrawSortButtonState(NGWW_CLIENTS, arrow); break;
 			case NGWW_INFO    - NGWW_NAME: this->DrawSortButtonState(NGWW_INFO,    arrow); break;
 		}
 
 		uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
-		int32 n = 0;
-		int32 pos = this->vscroll.pos;
-		const NetworkGameList *cur_item = _network_game_list;
 
-		while (pos > 0 && cur_item != NULL) {
-			pos--;
-			cur_item = cur_item->next;
-		}
+		const int max = min(this->vscroll.pos + this->vscroll.cap, this->servers.Length());
 
-		while (cur_item != NULL) {
-			this->DrawServerLine(cur_item, y, cur_item == sel);
-
-			cur_item = cur_item->next;
+		for (int i = this->vscroll.pos; i < max; ++i) {
+			const NetworkGameList *ngl = this->servers[i];
+			this->DrawServerLine(ngl, y, ngl == sel);
 			y += NET_PRC__SIZE_OF_ROW;
-			if (++n == this->vscroll.cap) break; // max number of games in the window
 		}
 
 		const NetworkGameList *last_joined = NetworkGameListAddItem(inet_addr(_network_last_host), _network_last_port);
@@ -440,26 +412,22 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 			case NGWW_NAME: // Sort by name
 			case NGWW_CLIENTS: // Sort by connected clients
 			case NGWW_INFO: // Connectivity (green dot)
-				if (this->servers.sort_type == widget - NGWW_NAME) this->servers.flags ^= VL_DESC;
-				this->servers.flags |= VL_RESORT;
-				this->servers.sort_type = widget - NGWW_NAME;
-
-				_ng_sorting.order = !!(this->servers.flags & VL_DESC);
-				_ng_sorting.criteria = this->servers.sort_type;
+				if (this->servers.SortType() == widget - NGWW_NAME) {
+					this->servers.ToggleSortOrder();
+				} else {
+					this->servers.SetSortType(widget - NGWW_NAME);
+					this->servers.ForceResort();
+				}
 				this->SetDirty();
 				break;
 
 			case NGWW_MATRIX: { // Matrix to show networkgames
-				NetworkGameList *cur_item;
 				uint32 id_v = (pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
 				if (id_v >= this->vscroll.cap) return; // click out of bounds
 				id_v += this->vscroll.pos;
 
-				cur_item = _network_game_list;
-				for (; id_v > 0 && cur_item != NULL; id_v--) cur_item = cur_item->next;
-
-				this->server = cur_item;
+				this->server = this->servers[id_v];
 				this->SetDirty();
 			} break;
 
@@ -531,7 +499,7 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 	virtual void OnInvalidateData(int data)
 	{
 		if (data != 0) this->server = NULL;
-		this->servers.flags |= VL_REBUILD;
+		this->servers.ForceRebuild();
 		this->SetDirty();
 	}
 
@@ -588,6 +556,14 @@ struct NetworkGameWindow : public QueryStringBaseWindow {
 		}
 	}
 };
+
+Listing NetworkGameWindow::last_sorting = {false, 2};
+GUIGameServerList::SortFunction *const NetworkGameWindow::sorter_funcs[] = {
+	&NGameNameSorter,
+	&NGameClientSorter,
+	&NGameAllowedSorter
+};
+
 
 static const Widget _network_game_window_widgets[] = {
 /* TOP */
@@ -650,9 +626,6 @@ void ShowNetworkGameWindow()
 		for (srv = &_network_host_list[0]; srv != endof(_network_host_list) && *srv != NULL; srv++) {
 			NetworkAddServer(*srv);
 		}
-
-		_ng_sorting.criteria = 2; // sort default by collectivity (green-dots on top)
-		_ng_sorting.order = 0;    // sort ascending by default
 	}
 
 	new NetworkGameWindow(&_network_game_window_desc);
