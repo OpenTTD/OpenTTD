@@ -8,6 +8,8 @@
 #include "network/network_server.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+#include "strings_type.h"
+#include "core/math_func.hpp"
 #include "rev.h"
 
 #include <stdarg.h>
