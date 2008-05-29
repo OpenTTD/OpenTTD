@@ -61,9 +61,6 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 
 void ShowSmallMap();
 void ShowExtraViewPortWindow(TileIndex tile = INVALID_TILE);
-void SetVScrollCount(Window *w, int num);
-void SetVScroll2Count(Window *w, int num);
-void SetHScrollCount(Window *w, int num);
 
 void BuildFileList();
 void SetFiosType(const byte fiostype);

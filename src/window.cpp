@@ -2068,6 +2068,30 @@ int PositionMainToolbar(Window *w)
 	return w->left;
 }
 
+void SetVScrollCount(Window *w, int num)
+{
+	w->vscroll.count = num;
+	num -= w->vscroll.cap;
+	if (num < 0) num = 0;
+	if (num < w->vscroll.pos) w->vscroll.pos = num;
+}
+
+void SetVScroll2Count(Window *w, int num)
+{
+	w->vscroll2.count = num;
+	num -= w->vscroll2.cap;
+	if (num < 0) num = 0;
+	if (num < w->vscroll2.pos) w->vscroll2.pos = num;
+}
+
+void SetHScrollCount(Window *w, int num)
+{
+	w->hscroll.count = num;
+	num -= w->hscroll.cap;
+	if (num < 0) num = 0;
+	if (num < w->hscroll.pos) w->hscroll.pos = num;
+}
+
 /**
  * Relocate all windows to fit the new size of the game application screen
  * @param neww New width of the game application screen
