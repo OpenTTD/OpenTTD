@@ -574,6 +574,7 @@ class SmallMapWindow : public Window
 	int32 scroll_x;
 	int32 scroll_y;
 	int32 subscroll;
+	uint8 refresh;
 
 public:
 	/**
@@ -1019,7 +1020,7 @@ public:
 	virtual void OnTick()
 	{
 		/* update the window every now and then */
-		if ((++this->vscroll.pos & 0x1F) == 0) this->SetDirty();
+		if ((++this->refresh & 0x1F) == 0) this->SetDirty();
 	}
 
 	virtual void OnScroll(Point delta)

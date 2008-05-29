@@ -1304,10 +1304,10 @@ struct PlayerCompanyWindow : Window
 		}
 	}
 
-	virtual void OnTick()
+	virtual void OnHundredthTick()
 	{
 		/* redraw the window every now and then */
-		if ((++this->vscroll.pos & 0x1F) == 0) this->SetDirty();
+		this->SetDirty();
 	}
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
