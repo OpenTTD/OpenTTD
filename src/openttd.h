@@ -39,17 +39,6 @@ enum {
 	DO_WAYPOINTS          = 6,
 };
 
-/* In certain windows you navigate with the arrow keys. Do not scroll the
- * gameview when here. Bitencoded variable that only allows scrolling if all
- * elements are zero */
-enum {
-	SCROLL_CON  = 0,
-	SCROLL_EDIT = 1,
-	SCROLL_SAVE = 2,
-	SCROLL_CHAT = 4,
-};
-extern byte _no_scroll;
-
 extern byte _game_mode;
 extern bool _exit_game;
 extern int8 _pause_game;

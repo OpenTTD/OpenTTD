@@ -536,6 +536,21 @@ extern Window *_z_windows[];
 extern Window **_last_z_window;
 #define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)
 
+/**
+ * In certain windows you navigate with the arrow keys. Do not scroll the
+ * gameview when here. Bitencoded variable that only allows scrolling if all
+ * elements are zero
+ */
+enum {
+	SCROLL_CON  = 0,
+	SCROLL_EDIT = 1,
+	SCROLL_SAVE = 2,
+	SCROLL_CHAT = 4,
+};
+
+/** Disable scrolling of the main viewport when an input-window is active. */
+extern byte _no_scroll;
+
 extern Point _cursorpos_drag_start;
 
 extern int _scrollbar_start_pos;

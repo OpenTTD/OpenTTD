@@ -347,7 +347,6 @@ static void LoadIntroGame()
 	if (_music_driver->IsSongPlaying()) ResetMusic();
 }
 
-byte _no_scroll;
 byte _savegame_sort_order;
 #if defined(UNIX) && !defined(__MORPHOS__)
 extern void DedicatedFork();

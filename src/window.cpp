@@ -37,6 +37,7 @@ static Window *_mouseover_last_w = NULL; ///< Window of the last MOUSEOVER event
 Window *_z_windows[MAX_NUMBER_OF_WINDOWS];
 Window **_last_z_window; ///< always points to the next free space in the z-array
 
+byte _no_scroll;
 Point _cursorpos_drag_start;
 
 int _scrollbar_start_pos;
