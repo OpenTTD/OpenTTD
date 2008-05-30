@@ -810,10 +810,8 @@ void SwitchMode(int new_mode)
 		if (_networking) {
 			if (_network_server && (new_mode == SM_LOAD || new_mode == SM_NEWGAME)) {
 				NetworkReboot();
-				NetworkUDPCloseAll();
 			} else {
 				NetworkDisconnect();
-				NetworkUDPCloseAll();
 			}
 		}
 

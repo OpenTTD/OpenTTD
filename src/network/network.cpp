@@ -877,12 +877,22 @@ static void NetworkClose()
 	}
 
 	if (_network_server) {
-		// We are a server, also close the listensocket
+		/* We are a server, also close the listensocket */
 		closesocket(_listensocket);
 		_listensocket = INVALID_SOCKET;
 		DEBUG(net, 1, "Closed listener");
-		NetworkUDPCloseAll();
 	}
+	NetworkUDPCloseAll();
+
+	/* Free all queued commands */
+	while (_local_command_queue != NULL) {
+		CommandPacket *p = _local_command_queue;
+		_local_command_queue = _local_command_queue->next;
+		free(p);
+	}
+
+	_networking = false;
+	_network_server = false;
 }
 
 // Inits the network (cleans sockets and stuff)
@@ -988,7 +998,6 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 	_settings_client.network.last_port = port;
 
 	NetworkDisconnect();
-	NetworkUDPCloseAll();
 	NetworkInitialize();
 
 	// Try to connect
@@ -1114,16 +1123,6 @@ void NetworkReboot()
 	}
 
 	NetworkClose();
-
-	// Free all queued commands
-	while (_local_command_queue != NULL) {
-		CommandPacket *p = _local_command_queue;
-		_local_command_queue = _local_command_queue->next;
-		free(p);
-	}
-
-	_networking = false;
-	_network_server = false;
 }
 
 // We want to disconnect from the host/clients
@@ -1142,16 +1141,6 @@ void NetworkDisconnect()
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
 	NetworkClose();
-
-	// Free all queued commands
-	while (_local_command_queue != NULL) {
-		CommandPacket *p = _local_command_queue;
-		_local_command_queue = _local_command_queue->next;
-		free(p);
-	}
-
-	_networking = false;
-	_network_server = false;
 }
 
 // Receives something from the network
