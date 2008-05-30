@@ -1796,14 +1796,12 @@ static const int8 scrollamt[16][2] = {
 	{ 0,  0}, ///< 15 : left  + up    +  right + down  = nothing
 };
 
-static bool HandleKeyScrolling()
+static void HandleKeyScrolling()
 {
 	if (_dirkeys && !_no_scroll) {
 		int factor = _shift_pressed ? 50 : 10;
 		ScrollMainViewport(scrollamt[_dirkeys][0] * factor, scrollamt[_dirkeys][1] * factor);
-		return false;
 	}
-	return true;
 }
 
 void MouseLoop(MouseClick click, int mousewheel)
@@ -1811,13 +1809,14 @@ void MouseLoop(MouseClick click, int mousewheel)
 	DecreaseWindowCounters();
 	HandlePlacePresize();
 	UpdateTileSelection();
+	HandleKeyScrolling();
+
 	if (!VpHandlePlaceSizingDrag())  return;
 	if (!HandleDragDrop())           return;
 	if (!HandleWindowDragging())     return;
 	if (!HandleScrollbarScrolling()) return;
 	if (!HandleViewportScroll())     return;
 	if (!HandleMouseOver())          return;
-	if (!HandleKeyScrolling())       return;
 
 	bool scrollwheel_scrolling = _settings_client.gui.scrollwheel_scrolling == 1 && (_cursor.v_wheel != 0 || _cursor.h_wheel != 0);
 	if (click == MC_NONE && mousewheel == 0 && !scrollwheel_scrolling) return;
