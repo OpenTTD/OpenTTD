@@ -168,9 +168,11 @@ NewsTypeData _news_type_data[NT_END] = {
 struct NewsWindow : Window {
 	uint16 chat_height;
 	NewsItem *ni;
+	static uint duration;
 
 	NewsWindow(const WindowDesc *desc, NewsItem *ni) : Window(desc), ni(ni)
 	{
+		NewsWindow::duration = 555;
 		const Window *w = FindWindowById(WC_SEND_NETWORK_MSG, 0);
 		this->chat_height = (w != NULL) ? w->height : 0;
 
@@ -258,7 +260,7 @@ struct NewsWindow : Window {
 	{
 		switch (widget) {
 			case 1:
-				this->ni->duration = 0;
+				NewsWindow::duration = 0;
 				delete this;
 				_forced_news = NULL;
 				break;
@@ -314,6 +316,8 @@ struct NewsWindow : Window {
 	}
 };
 
+/* static */ uint NewsWindow::duration; ///< Remaining time for showing current news message
+
 
 static const Widget _news_type13_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    15,     0,   429,     0,   169, 0x0, STR_NULL},
@@ -361,7 +365,6 @@ static WindowDesc _news_type0_desc = {
 static void ShowNewspaper(NewsItem *ni)
 {
 	ni->flags &= ~NF_FORCE_BIG;
-	ni->duration = 555;
 
 	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
 	if (sound != 0) SndPlayFx(sound);
@@ -438,10 +441,10 @@ static bool ReadyForNextItem()
 	if (IsNewsTickerShown()) return false;
 
 	/* Newspaper message, decrement duration counter */
-	if (ni->duration != 0) ni->duration--;
+	if (NewsWindow::duration != 0) NewsWindow::duration--;
 
 	/* neither newsticker nor newspaper are running */
-	return (ni->duration == 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
+	return (NewsWindow::duration == 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
 }
 
 /** Move to the next news item */
@@ -613,7 +616,7 @@ static void ShowNewsMessage(NewsItem *ni)
 	_forced_news = ni;
 
 	if (_forced_news != NULL) {
-		ni->duration = 555;
+		NewsWindow::duration = 555;
 		ni->flags |= NF_FORCE_BIG;
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);

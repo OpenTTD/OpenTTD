@@ -104,7 +104,6 @@ struct NewsItem {
 	NewsItem *prev;        ///< Previous news item
 	NewsItem *next;        ///< Next news item
 	StringID string_id;    ///< Message text
-	uint16 duration;       ///< Remaining time for showing this news message
 	Date date;             ///< Date of the news
 	NewsSubtype subtype;   ///< News subtype @see NewsSubtype
 	NewsFlag flags;        ///< NewsFlags bits @see NewsFlag
