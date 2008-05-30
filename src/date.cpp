@@ -7,8 +7,7 @@
 #include "variables.h"
 #include "settings_type.h"
 #include "network/network.h"
-#include "network/network_data.h"
-#include "network/network_server.h"
+#include "network/network_func.h"
 #include "currency.h"
 #include "window_func.h"
 #include "functions.h"
@@ -268,7 +267,9 @@ void IncreaseDate()
 		TownsMonthlyLoop();
 		IndustryMonthlyLoop();
 		StationMonthlyLoop();
+#ifdef ENABLE_NETWORK
 		if (_network_server) NetworkServerMonthlyLoop();
+#endif /* ENABLE_NETWORK */
 	}
 
 	/* check if we entered a new year? */
@@ -281,7 +282,9 @@ void IncreaseDate()
 	RoadVehiclesYearlyLoop();
 	AircraftYearlyLoop();
 	ShipsYearlyLoop();
+#ifdef ENABLE_NETWORK
 	if (_network_server) NetworkServerYearlyLoop();
+#endif /* ENABLE_NETWORK */
 
 	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
 

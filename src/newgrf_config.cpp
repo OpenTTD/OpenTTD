@@ -8,11 +8,11 @@
 #include "variables.h"
 #include "saveload.h"
 #include "md5.h"
-#include "network/network_data.h"
 #include "newgrf.h"
 #include "newgrf_config.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+#include "network/network_type.h"
 
 #include "fileio.h"
 #include "fios.h"

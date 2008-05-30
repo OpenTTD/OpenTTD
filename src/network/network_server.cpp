@@ -8,7 +8,7 @@
 #include "../openttd.h" // XXX StringID
 #include "../debug.h"
 #include "../strings_func.h"
-#include "network_data.h"
+#include "network_internal.h"
 #include "core/tcp.h"
 #include "../vehicle_base.h"
 #include "../vehicle_func.h"
@@ -804,7 +804,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 			/* Now pause the game till the client is in sync */
 			DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
-			NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (incoming client)", NETWORK_SERVER_INDEX);
+			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (incoming client)", NETWORK_SERVER_INDEX);
 		}
 	} else {
 		// Wrong status for this packet, give a warning to client, and close connection
@@ -1023,7 +1023,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 		if (_settings_client.network.pause_on_join) {
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-			NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
+			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
 		}
 
 		CheckMinPlayers();
@@ -1040,7 +1040,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 
 
-void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index)
 {
 	NetworkTCPSocketHandler *cs;
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
@@ -1146,7 +1146,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 
 	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
 
-	NetworkServer_HandleChat(action, desttype, dest, msg, cs->index);
+	NetworkServerSendChat(action, desttype, dest, msg, cs->index);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
@@ -1582,4 +1582,82 @@ void NetworkServerMonthlyLoop()
 	NetworkAutoCleanCompanies();
 }
 
+void NetworkServerChangeOwner(PlayerID current_player, PlayerID new_player)
+{
+	/* The server has to handle all administrative issues, for example
+	 * updating and notifying all clients of what has happened */
+	NetworkTCPSocketHandler *cs;
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+
+	/* The server has just changed from player */
+	if (current_player == ci->client_playas) {
+		ci->client_playas = new_player;
+		NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+	}
+
+	/* Find all clients that were in control of this company, and mark them as new_player */
+	FOR_ALL_CLIENTS(cs) {
+		ci = DEREF_CLIENT_INFO(cs);
+		if (current_player == ci->client_playas) {
+			ci->client_playas = new_player;
+			NetworkUpdateClientInfo(ci->client_index);
+		}
+	}
+}
+
+const char* GetPlayerIP(const NetworkClientInfo* ci)
+{
+	struct in_addr addr;
+
+	addr.s_addr = ci->client_ip;
+	return inet_ntoa(addr);
+}
+
+void NetworkServerShowStatusToConsole()
+{
+	static const char* const stat_str[] = {
+		"inactive",
+		"authorizing",
+		"authorized",
+		"waiting",
+		"loading map",
+		"map done",
+		"ready",
+		"active"
+	};
+
+	NetworkTCPSocketHandler *cs;
+	FOR_ALL_CLIENTS(cs) {
+		int lag = NetworkCalculateLag(cs);
+		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+		const char* status;
+
+		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
+			cs->index, ci->client_name, status, lag,
+			ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
+			GetPlayerIP(ci), ci->unique_id);
+	}
+}
+
+void NetworkServerSendRcon(uint16 client_index, ConsoleColour colour_code, const char *string)
+{
+	SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromIndex(client_index), colour_code, string);
+}
+
+void NetworkServerSendError(uint16 client_index, NetworkErrorCode error)
+{
+	SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(client_index), error);
+}
+
+bool NetworkCompanyHasPlayers(PlayerID company)
+{
+	const NetworkTCPSocketHandler *cs;
+	const NetworkClientInfo *ci;
+	FOR_ALL_CLIENTS(cs) {
+		ci = DEREF_CLIENT_INFO(cs);
+		if (ci->client_playas == company) return true;
+	}
+	return false;
+}
 #endif /* ENABLE_NETWORK */

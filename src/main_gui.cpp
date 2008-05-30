@@ -34,9 +34,7 @@
 #include "tilehighlight_func.h"
 
 #include "network/network.h"
-#include "network/network_data.h"
-#include "network/network_client.h"
-#include "network/network_server.h"
+#include "network/network_func.h"
 #include "network/network_gui.h"
 
 #include "table/sprites.h"
@@ -55,9 +53,9 @@ void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	snprintf(msg, sizeof(msg), "%d", p1);
 
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg);
+		NetworkClientSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, NETWORK_SERVER_INDEX);
 	}
 #endif /* ENABLE_NETWORK */
 }

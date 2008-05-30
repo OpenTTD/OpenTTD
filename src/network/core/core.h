@@ -62,7 +62,7 @@ public:
 	 * Whether this socket is currently bound to a socket.
 	 * @return true when the socket is bound, false otherwise
 	 */
-	bool IsConnected() { return this->sock != INVALID_SOCKET; }
+	bool IsConnected() const { return this->sock != INVALID_SOCKET; }
 
 	/**
 	 * Whether the current client connected to the socket has quit.
@@ -70,7 +70,7 @@ public:
 	 * data), the socket in not closed; only the packet is dropped.
 	 * @return true when the current client has quit, false otherwise
 	 */
-	bool HasClientQuit() { return this->has_quit; }
+	bool HasClientQuit() const { return this->has_quit; }
 
 	void Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf);
 	void Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf);

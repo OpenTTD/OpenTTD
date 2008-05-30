@@ -10,17 +10,14 @@
 #include "landscape.h"
 #include "saveload.h"
 #include "variables.h"
-#include "network/network_data.h"
-#include "network/network_client.h"
-#include "network/network_server.h"
-#include "network/network_udp.h"
+#include "network/network.h"
+#include "network/network_func.h"
 #include "command_func.h"
 #include "settings_func.h"
 #include "fios.h"
 #include "fileio.h"
 #include "screenshot.h"
 #include "genworld.h"
-#include "network/network.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
@@ -425,8 +422,8 @@ DEF_CONSOLE_CMD(ConBan)
 	}
 
 	if (ci != NULL) {
-		banip = inet_ntoa(*(struct in_addr *)&ci->client_ip);
-		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+		banip = GetPlayerIP(ci);
+		NetworkServerSendError(index, NETWORK_ERROR_KICKED);
 		IConsolePrint(CC_DEFAULT, "Client banned");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Client not online, banned IP");
@@ -539,43 +536,19 @@ DEF_CONSOLE_CMD(ConRcon)
 	if (_network_server) {
 		IConsoleCmdExec(argv[2]);
 	} else {
-		SEND_COMMAND(PACKET_CLIENT_RCON)(argv[1], argv[2]);
+		NetworkClientSendRcon(argv[1], argv[2]);
 	}
 	return true;
 }
 
 DEF_CONSOLE_CMD(ConStatus)
 {
-	static const char* const stat_str[] = {
-		"inactive",
-		"authorizing",
-		"authorized",
-		"waiting",
-		"loading map",
-		"map done",
-		"ready",
-		"active"
-	};
-
-	NetworkTCPSocketHandler *cs;
-
 	if (argc == 0) {
 		IConsoleHelp("List the status of all clients connected to the server. Usage 'status'");
 		return true;
 	}
 
-	FOR_ALL_CLIENTS(cs) {
-		int lag = NetworkCalculateLag(cs);
-		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
-		const char* status;
-
-		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
-		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
-			cs->index, ci->client_name, status, lag,
-			ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
-			GetPlayerIP(ci), ci->unique_id);
-	}
-
+	NetworkServerShowStatusToConsole();
 	return true;
 }
 
@@ -629,7 +602,7 @@ DEF_CONSOLE_CMD(ConKick)
 	}
 
 	if (ci != NULL) {
-		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
+		NetworkServerSendError(index, NETWORK_ERROR_KICKED);
 	} else {
 		IConsoleError("Client not found");
 	}
@@ -640,8 +613,6 @@ DEF_CONSOLE_CMD(ConKick)
 DEF_CONSOLE_CMD(ConResetCompany)
 {
 	const Player *p;
-	NetworkTCPSocketHandler *cs;
-	const NetworkClientInfo *ci;
 	PlayerID index;
 
 	if (argc == 0) {
@@ -672,15 +643,11 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		return true;
 	}
 
-	/* Check if the company has active players */
-	FOR_ALL_CLIENTS(cs) {
-		ci = DEREF_CLIENT_INFO(cs);
-		if (ci->client_playas == index) {
-			IConsoleError("Cannot remove company: a client is connected to that company.");
-			return true;
-		}
+	if (NetworkCompanyHasPlayers(index)) {
+		IConsoleError("Cannot remove company: a client is connected to that company.");
+		return false;
 	}
-	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	if (ci->client_playas == index) {
 		IConsoleError("Cannot remove company: the server is connected to that company.");
 		return true;
@@ -1187,9 +1154,9 @@ DEF_CONSOLE_CMD(ConSay)
 	if (argc != 2) return false;
 
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
+		NetworkClientSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
 	}
 
 	return true;
@@ -1241,9 +1208,9 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 	}
 
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2]);
+		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2]);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
 	}
 
 	return true;
@@ -1260,9 +1227,9 @@ DEF_CONSOLE_CMD(ConSayClient)
 	if (argc != 3) return false;
 
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
+		NetworkClientSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
 	}
 
 	return true;
@@ -1291,7 +1258,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 	ttd_strlcpy(_network_player_info[_local_player].password, argv[0], sizeof(_network_player_info[_local_player].password));
 
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
+		NetworkClientSetPassword();
 	} else {
 		HashCurrentCompanyPassword();
 	}

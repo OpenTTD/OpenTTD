@@ -5,6 +5,8 @@
 #ifndef NETWORK_GAMELIST_H
 #define NETWORK_GAMELIST_H
 
+#include "network_type.h"
+
 /** Structure with information shown in the game list (GUI) */
 struct NetworkGameList {
 	NetworkGameInfo info;  ///< The game information of this server

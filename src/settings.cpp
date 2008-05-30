@@ -25,10 +25,7 @@
 #include "screenshot.h"
 #include "variables.h"
 #include "network/network.h"
-#include "network/network_data.h"
-#include "network/network_client.h"
-#include "network/network_server.h"
-#include "network/network_udp.h"
+#include "network/network_func.h"
 #include "settings_internal.h"
 #include "command_func.h"
 #include "console_func.h"
@@ -1446,23 +1443,7 @@ static int32 UpdateMinPlayers(int32 p1)
 
 static int32 UpdatePlayerName(int32 p1)
 {
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-
-	if (ci == NULL) return 0;
-
-	/* Don't change the name if it is the same as the old name */
-	if (strcmp(ci->client_name, _settings_client.network.player_name) != 0) {
-		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.player_name);
-		} else {
-			if (NetworkFindName(_settings_client.network.player_name)) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.player_name);
-				ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
-				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
-			}
-		}
-	}
-
+	NetworkUpdatePlayerName();
 	return 0;
 }
 

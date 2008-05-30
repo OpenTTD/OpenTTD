@@ -9,7 +9,7 @@
 #include "network.h"
 #include "../date_func.h"
 #include "../fios.h"
-#include "network_data.h"
+#include "network_internal.h"
 #include "network_client.h"
 #include "network_gui.h"
 #include "network_gamelist.h"
@@ -1559,6 +1559,12 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 	ShowQueryString(STR_EMPTY, caption, 20, 180, FindWindowById(WC_NETWORK_STATUS_WINDOW, 0), CS_ALPHANUMERAL);
 }
 
+// Vars needed for the join-GUI
+NetworkJoinStatus _network_join_status;
+uint8 _network_join_waiting;
+uint16 _network_join_kbytes;
+uint16 _network_join_kbytes_total;
+
 struct NetworkJoinStatusWindow : Window {
 	NetworkJoinStatusWindow(const WindowDesc *desc) : Window(desc)
 	{
@@ -1640,7 +1646,7 @@ static void SendChat(const char *buf, DestType type, int dest)
 	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_CHAT)((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf);
 	} else {
-		NetworkServer_HandleChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, NETWORK_SERVER_INDEX);
+		NetworkServerSendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, NETWORK_SERVER_INDEX);
 	}
 }
 

@@ -5,11 +5,10 @@
 #ifndef NETWORK_GUI_H
 #define NETWORK_GUI_H
 
-#include "../window_type.h"
-
 #ifdef ENABLE_NETWORK
 
-#include "network_data.h"
+#include "../window_type.h"
+#include "network_type.h"
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 void ShowNetworkGiveMoneyWindow(PlayerID player); // PlayerID

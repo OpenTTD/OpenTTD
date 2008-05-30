@@ -7,10 +7,13 @@
 
 #ifdef ENABLE_NETWORK
 
-#include "../player_type.h"
-#include "../economy_type.h"
+#include "network.h"
+#include "network_func.h"
+#include "core/os_abstraction.h"
+#include "core/core.h"
 #include "core/config.h"
-#include "core/game.h"
+#include "core/packet.h"
+#include "core/tcp.h"
 
 /**
  * If this line is enable, every frame will have a sync test
@@ -29,50 +32,14 @@
  */
 //#define NETWORK_SEND_DOUBLE_SEED
 
+#define MAX_TEXT_MSG_LEN 1024 /* long long long long sentences :-) */
 
-enum {
-	/**
-	 * How many clients can we have? Like.. MAX_PLAYERS - 1 is the amount of
-	 *  players that can really play.. so.. a max of 4 spectators.. gives us..
-	 *  MAX_PLAYERS + 3
-	 */
-	MAX_CLIENTS = MAX_PLAYERS + 3,
-
-	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1 */
-	MAX_CLIENT_INFO = MAX_CLIENTS + 1,
-
-	/** Maximum number of internet interfaces supported. */
-	MAX_INTERFACES = 9,
-
-	/** How many vehicle/station types we put over the network */
-	NETWORK_VEHICLE_TYPES = 5,
-	NETWORK_STATION_TYPES = 5,
+enum MapPacket {
+	MAP_PACKET_START,
+	MAP_PACKET_NORMAL,
+	MAP_PACKET_END,
 };
 
-struct NetworkPlayerInfo {
-	char company_name[NETWORK_NAME_LENGTH];         ///< Company name
-	char password[NETWORK_PASSWORD_LENGTH];         ///< The password for the player
-	Year inaugurated_year;                          ///< What year the company started in
-	Money company_value;                            ///< The company value
-	Money money;                                    ///< The amount of money the company has
-	Money income;                                   ///< How much did the company earned last year
-	uint16 performance;                             ///< What was his performance last month?
-	bool use_password;                              ///< Is there a password
-	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      ///< How many vehicles are there of this type?
-	uint16 num_station[NETWORK_STATION_TYPES];      ///< How many stations are there of this type?
-	char players[NETWORK_PLAYERS_LENGTH];           ///< The players that control this company (Name1, name2, ..)
-	uint16 months_empty;                            ///< How many months the company is empty
-};
-
-struct NetworkClientInfo {
-	uint16 client_index;                            ///< Index of the client (same as ClientState->index)
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
-	byte client_lang;                               ///< The language of the client
-	PlayerID client_playas;                         ///< As which player is this client playing (PlayerID)
-	uint32 client_ip;                               ///< IP-address of the client (so he can be banned)
-	Date join_date;                                 ///< Gamedate the player has joined
-	char unique_id[NETWORK_UNIQUE_ID_LENGTH];       ///< Every play sends an unique id so we can indentify him
-};
 
 enum NetworkJoinStatus {
 	NETWORK_JOIN_STATUS_CONNECTING,
@@ -126,70 +93,83 @@ enum NetworkLanguage {
 	NETLANG_COUNT
 };
 
-VARDEF NetworkGameInfo _network_game_info;
-VARDEF NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
-VARDEF NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+#define VARDEF extern
 
-VARDEF uint16 _network_own_client_index;
+extern NetworkGameInfo _network_game_info;
+extern NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
 
-VARDEF uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
-VARDEF uint32 _frame_counter_max; // To where we may go with our clients
+extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
+extern uint32 _frame_counter_max; // To where we may go with our clients
 
-VARDEF uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
+extern uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 
 // networking settings
-VARDEF uint32 _broadcast_list[MAX_INTERFACES + 1];
+extern uint32 _broadcast_list[MAX_INTERFACES + 1];
 
-VARDEF uint32 _network_server_bind_ip;
-VARDEF bool _is_network_server; // Does this client wants to be a network-server?
+extern uint32 _network_server_bind_ip;
 
-VARDEF uint16 _redirect_console_to_client;
-
-VARDEF uint32 _sync_seed_1, _sync_seed_2;
-VARDEF uint32 _sync_frame;
-VARDEF bool _network_first_time;
+extern uint32 _sync_seed_1, _sync_seed_2;
+extern uint32 _sync_frame;
+extern bool _network_first_time;
 // Vars needed for the join-GUI
-VARDEF NetworkJoinStatus _network_join_status;
-VARDEF uint8 _network_join_waiting;
-VARDEF uint16 _network_join_kbytes;
-VARDEF uint16 _network_join_kbytes_total;
+extern NetworkJoinStatus _network_join_status;
+extern uint8 _network_join_waiting;
+extern uint16 _network_join_kbytes;
+extern uint16 _network_join_kbytes_total;
 
-VARDEF uint32 _network_last_host_ip;
-VARDEF uint8 _network_reconnect;
+extern uint32 _network_last_host_ip;
+extern uint8 _network_reconnect;
 
-VARDEF bool _network_udp_server;
-VARDEF uint16 _network_udp_broadcast;
+extern bool _network_udp_server;
+extern uint16 _network_udp_broadcast;
 
-VARDEF bool _network_need_advertise;
-VARDEF uint32 _network_last_advertise_frame;
-VARDEF uint8 _network_advertise_retries;
+extern uint8 _network_advertise_retries;
+
+// following externs are instantiated at network.cpp
+extern CommandPacket *_local_command_queue;
+
+// Here we keep track of the clients
+//  (and the client uses [0] for his own communication)
+extern NetworkTCPSocketHandler _clients[MAX_CLIENTS];
 
 void NetworkTCPQueryServer(const char* host, unsigned short port);
 
-byte NetworkSpectatorCount();
-
-VARDEF char *_network_host_list[10];
-VARDEF char *_network_ban_list[25];
-
-void ParseConnectionString(const char **player, const char **port, char *connection_string);
-void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const char *b);
 void NetworkRebuildHostList();
-bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
-void NetworkPopulateCompanyInfo();
 void UpdateNetworkGameWindow(bool unselect);
-void CheckMinPlayers();
-void NetworkStartDebugLog(const char *hostname, uint16 port);
-
-void NetworkUDPCloseAll();
-void NetworkGameLoop();
-void NetworkUDPGameLoop();
-bool NetworkServerStart();
-bool NetworkClientConnectGame(const char *host, uint16 port);
-void NetworkReboot();
-void NetworkDisconnect();
 
 bool IsNetworkCompatibleVersion(const char *version);
+
+void NetworkExecuteCommand(CommandPacket *cp);
+void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp);
+
+// from network.c
+void NetworkCloseClient(NetworkTCPSocketHandler *cs);
+void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, ...);
+void NetworkGetClientName(char *clientname, size_t size, const NetworkTCPSocketHandler *cs);
+uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs);
+byte NetworkGetCurrentLanguageIndex();
+NetworkTCPSocketHandler *NetworkFindClientStateFromIndex(uint16 client_index);
+unsigned long NetworkResolveHost(const char *hostname);
+char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
+bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
+
+#define DEREF_CLIENT(i) (&_clients[i])
+// This returns the NetworkClientInfo from a NetworkClientState
+#define DEREF_CLIENT_INFO(cs) (&_network_client_info[cs - _clients])
+
+// Macros to make life a bit more easier
+#define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
+#define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command()
+#define DEF_CLIENT_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
+#define DEF_SERVER_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(NetworkTCPSocketHandler *cs, Packet *p)
+#define DEF_SERVER_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command(NetworkTCPSocketHandler *cs)
+#define DEF_SERVER_SEND_COMMAND_PARAM(type) void NetworkPacketSend_ ## type ## _command
+
+#define SEND_COMMAND(type) NetworkPacketSend_ ## type ## _command
+#define RECEIVE_COMMAND(type) NetworkPacketReceive_ ## type ## _command
+
+#define FOR_ALL_CLIENTS(cs) for (cs = _clients; cs != endof(_clients) && cs->IsConnected(); cs++)
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_INTERNAL_H */

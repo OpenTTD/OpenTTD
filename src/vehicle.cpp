@@ -25,7 +25,6 @@
 #include "industry_map.h"
 #include "station_map.h"
 #include "water_map.h"
-#include "network/network.h"
 #include "yapf/yapf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"

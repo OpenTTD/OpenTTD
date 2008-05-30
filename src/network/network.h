@@ -17,6 +17,7 @@ extern bool _network_server;     ///< network-server is active
 extern bool _network_available;  ///< is network mode available?
 extern bool _network_dedicated;  ///< are we a dedicated server?
 extern bool _network_advertise;  ///< is the server advertising to the master server?
+extern bool _is_network_server;  ///< Does this client wants to be a network-server?
 
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */
@@ -29,6 +30,7 @@ static inline void NetworkShutDown() {}
 #define _network_available 0
 #define _network_dedicated 0
 #define _network_advertise 0
+#define _is_network_server 0
 
 #endif /* ENABLE_NETWORK */
 

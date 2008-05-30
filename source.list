@@ -210,11 +210,12 @@ music.h
 namegen_func.h
 network/network.h
 network/network_client.h
-network/network_data.h
+network/network_func.h
 network/network_gamelist.h
 network/network_gui.h
 network/network_internal.h
 network/network_server.h
+network/network_type.h
 network/network_udp.h
 newgrf.h
 newgrf_callbacks.h

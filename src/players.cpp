@@ -13,7 +13,7 @@
 #include "saveload.h"
 #include "command_func.h"
 #include "network/network.h"
-#include "network/network_internal.h"
+#include "network/network_func.h"
 #include "variables.h"
 #include "cheat_func.h"
 #include "ai/ai.h"

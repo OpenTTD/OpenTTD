@@ -3,7 +3,7 @@
 /** @file network.cpp Base functions for networking support. */
 
 #include "../stdafx.h"
-#include "network_data.h"
+#include "../player_type.h"
 
 #ifdef ENABLE_NETWORK
 
@@ -15,6 +15,7 @@
 #include "../variables.h"
 #include "../date_func.h"
 #include "../newgrf_config.h"
+#include "network_internal.h"
 #include "network_client.h"
 #include "network_server.h"
 #include "network_udp.h"
@@ -38,7 +39,6 @@
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
 #endif /* DEBUG_DUMP_COMMANDS */
-
 #include "table/strings.h"
 
 bool _network_reload_cfg;
@@ -46,6 +46,29 @@ bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _network_advertise;  ///< is the server advertising to the master server?
+bool _is_network_server;  ///< Does this client wants to be a network-server?
+NetworkGameInfo _network_game_info;
+NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
+NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+uint16 _network_own_client_index;
+uint16 _redirect_console_to_client;
+bool _network_need_advertise;
+uint32 _network_last_advertise_frame;
+uint8 _network_reconnect;
+char *_network_host_list[10];
+char *_network_ban_list[25];
+uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
+uint32 _frame_counter_max; // To where we may go with our clients
+uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
+uint32 _broadcast_list[MAX_INTERFACES + 1];
+uint32 _network_server_bind_ip;
+uint32 _sync_seed_1, _sync_seed_2;
+uint32 _sync_frame;
+bool _network_first_time;
+uint32 _network_last_host_ip;
+bool _network_udp_server;
+uint16 _network_udp_broadcast;
+uint8 _network_advertise_retries;
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
@@ -337,13 +360,13 @@ void CheckMinPlayers()
 
 		_min_players_paused = true;
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
 	} else {
 		if (!_min_players_paused) return;
 
 		_min_players_paused = false;
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
 	}
 }
 
@@ -664,7 +687,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && _settings_client.network.pause_on_join) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
 	}
 
 	cs->Destroy();

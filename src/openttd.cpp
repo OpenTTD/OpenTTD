@@ -6,7 +6,6 @@
 
 #define VARDEF
 #include "variables.h"
-#include "network/network_internal.h"
 #undef VARDEF
 
 #include "openttd.h"
@@ -41,6 +40,7 @@
 #include "console_func.h"
 #include "screenshot.h"
 #include "network/network.h"
+#include "network/network_func.h"
 #include "signs_base.h"
 #include "signs_func.h"
 #include "waypoint.h"

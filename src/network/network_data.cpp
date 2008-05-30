@@ -6,7 +6,7 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "network_data.h"
+#include "network_internal.h"
 #include "network_client.h"
 #include "../command_func.h"
 #include "../callback_table.h"

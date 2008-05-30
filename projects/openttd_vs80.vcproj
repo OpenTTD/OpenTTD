@@ -1140,7 +1140,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_data.h"
+				RelativePath=".\..\src\network\network_func.h"
 				>
 			</File>
 			<File
@@ -1157,6 +1157,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\network_server.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\network_type.h"
 				>
 			</File>
 			<File

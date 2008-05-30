@@ -11,7 +11,7 @@
 #include "../../openttd.h"
 #include "../../variables.h"
 
-#include "../network_data.h"
+#include "../network_internal.h"
 #include "packet.h"
 #include "tcp.h"
 

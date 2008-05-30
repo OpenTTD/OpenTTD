@@ -11,6 +11,7 @@
 #include "../debug.h"
 #include "../newgrf_config.h"
 #include "../core/alloc_func.hpp"
+#include "network_internal.h"
 #include "core/game.h"
 #include "network_udp.h"
 #include "network_gamelist.h"

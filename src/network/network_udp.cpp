@@ -11,11 +11,11 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "network_data.h"
 #include "../date_func.h"
 #include "../map_func.h"
 #include "network_gamelist.h"
 #include "network_udp.h"
+#include "network_internal.h"
 #include "../variables.h"
 #include "../newgrf_config.h"
 #include "../core/endian_func.hpp"

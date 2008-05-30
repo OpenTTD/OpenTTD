@@ -7,7 +7,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../openttd.h"
-#include "network_data.h"
+#include "network_internal.h"
 #include "core/tcp.h"
 #include "network_client.h"
 #include "network_gamelist.h"
@@ -936,6 +936,41 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkTCPSocketHandler *cs)
 	}
 
 	return res;
+}
+
+void NetworkClientSendRcon(const char *password, const char *command)
+{
+	SEND_COMMAND(PACKET_CLIENT_RCON)(password, command);
+}
+
+void NetworkUpdatePlayerName()
+{
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+
+	if (ci == NULL) return;
+
+	/* Don't change the name if it is the same as the old name */
+	if (strcmp(ci->client_name, _settings_client.network.player_name) != 0) {
+		if (!_network_server) {
+			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.player_name);
+		} else {
+			if (NetworkFindName(_settings_client.network.player_name)) {
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.player_name);
+				ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
+				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+			}
+		}
+	}
+}
+
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg)
+{
+	SEND_COMMAND(PACKET_CLIENT_CHAT)(action, type, dest, msg);
+}
+
+void NetworkClientSetPassword()
+{
+	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
 }
 
 #endif /* ENABLE_NETWORK */

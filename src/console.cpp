@@ -3,13 +3,13 @@
 /** @file console.cpp Handling of the in-game console. */
 
 #include "stdafx.h"
-#include "console_internal.h"
-#include "network/network_data.h"
-#include "network/network_server.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "strings_type.h"
 #include "core/math_func.hpp"
+#include "console_internal.h"
+#include "network/network.h"
+#include "network/network_func.h"
 #include "rev.h"
 
 #include <stdarg.h>
@@ -92,7 +92,7 @@ void IConsolePrint(ConsoleColour color_code, const char *string)
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != 0) {
 		/* Redirect the string to the client */
-		SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromIndex(_redirect_console_to_client), color_code, string);
+		NetworkServerSendRcon(_redirect_console_to_client, color_code, string);
 		return;
 	}
 #endif

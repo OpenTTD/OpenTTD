@@ -14,7 +14,7 @@
 #include "town.h"
 #include "news_func.h"
 #include "network/network.h"
-#include "network/network_data.h"
+#include "network/network_func.h"
 #include "variables.h"
 #include "vehicle_gui.h"
 #include "ai/ai.h"
@@ -488,25 +488,7 @@ static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
 
 	if (!_network_server) return;
 
-	/* The server has to handle all administrative issues, for example
-	* updating and notifying all clients of what has happened */
-	NetworkTCPSocketHandler *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-
-	/* The server has just changed from player */
-	if (current_player == ci->client_playas) {
-		ci->client_playas = new_player;
-		NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
-	}
-
-	/* Find all clients that were in control of this company, and mark them as new_player */
-	FOR_ALL_CLIENTS(cs) {
-		ci = DEREF_CLIENT_INFO(cs);
-		if (current_player == ci->client_playas) {
-			ci->client_playas = new_player;
-			NetworkUpdateClientInfo(ci->client_index);
-		}
-	}
+	NetworkServerChangeOwner(current_player, new_player);
 #endif /* ENABLE_NETWORK */
 }
 
