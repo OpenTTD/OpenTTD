@@ -597,43 +597,6 @@ DEF_CONSOLE_CMD(ConServerInfo)
 	return true;
 }
 
-DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount)
-{
-	if (_network_game_info.clients_max > MAX_CLIENTS) {
-		_network_game_info.clients_max = MAX_CLIENTS;
-		IConsoleError("Maximum clients out of bounds, truncating to limit.");
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount)
-{
-	if (_network_game_info.companies_max > MAX_PLAYERS) {
-		_network_game_info.companies_max = MAX_PLAYERS;
-		IConsoleError("Maximum companies out of bounds, truncating to limit.");
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount)
-{
-	/* XXX see ConHookValidateMaxClientsCount */
-	if (_network_game_info.spectators_max > 10) {
-		_network_game_info.spectators_max = 10;
-		IConsoleError("Maximum spectators out of bounds, truncating to limit.");
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_HOOK(ConHookCheckMinPlayers)
-{
-	CheckMinPlayers();
-	return true;
-}
-
 DEF_CONSOLE_CMD(ConKick)
 {
 	NetworkClientInfo *ci;
@@ -1305,30 +1268,6 @@ DEF_CONSOLE_CMD(ConSayClient)
 	return true;
 }
 
-DEF_CONSOLE_HOOK(ConHookServerPW)
-{
-	if (strcmp(_settings_client.network.server_password, "*") == 0) {
-		_settings_client.network.server_password[0] = '\0';
-		_network_game_info.use_password = false;
-	} else {
-		ttd_strlcpy(_network_game_info.server_password, _settings_client.network.server_password, sizeof(_network_game_info.server_password));
-		_network_game_info.use_password = true;
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_HOOK(ConHookRconPW)
-{
-	if (strcmp(_settings_client.network.rcon_password, "*") == 0) {
-		_settings_client.network.rcon_password[0] = '\0';
-	}
-
-	ttd_strlcpy(_network_game_info.rcon_password, _settings_client.network.rcon_password, sizeof(_network_game_info.rcon_password));
-
-	return true;
-}
-
 extern void HashCurrentCompanyPassword();
 
 /* Also use from within player_gui to change the password graphically */
@@ -1362,56 +1301,6 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 	return true;
 }
 
-DEF_CONSOLE_HOOK(ConProcPlayerName)
-{
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-
-	if (ci == NULL) return false;
-
-	/* Don't change the name if it is the same as the old name */
-	if (strcmp(ci->client_name, _settings_client.network.player_name) != 0) {
-		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.player_name);
-		} else {
-			if (NetworkFindName(_settings_client.network.player_name)) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.player_name);
-				ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
-				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
-			}
-		}
-	}
-
-	return true;
-}
-
-DEF_CONSOLE_HOOK(ConHookServerName)
-{
-	ttd_strlcpy(_network_game_info.server_name, _settings_client.network.server_name, sizeof(_network_game_info.server_name));
-	return true;
-}
-
-DEF_CONSOLE_HOOK(ConHookServerAdvertise)
-{
-	if (!_network_advertise) // remove us from advertising
-		NetworkUDPRemoveAdvertise();
-
-	return true;
-}
-
-DEF_CONSOLE_CMD(ConProcServerIP)
-{
-	if (argc == 0) {
-		IConsolePrintF(CC_WARNING, "Current value for 'server_ip': %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
-		return true;
-	}
-
-	if (argc != 1) return false;
-
-	_network_server_bind_ip = (strcmp(argv[0], "all") == 0) ? inet_addr("0.0.0.0") : inet_addr(argv[0]);
-	snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
-	IConsolePrintF(CC_WARNING, "'server_ip' changed to:  %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
-	return true;
-}
 #endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConPatch)
@@ -1427,17 +1316,7 @@ DEF_CONSOLE_CMD(ConPatch)
 	if (argc == 2) {
 		IConsoleGetPatchSetting(argv[1]);
 	} else {
-		uint32 val;
-
-		if (GetArgumentInteger(&val, argv[2])) {
-			if (!IConsoleSetPatchSetting(argv[1], val)) {
-				if (_network_server) {
-					IConsoleError("This command/variable is not available during network games.");
-				} else {
-					IConsoleError("This command/variable is only available to a network server.");
-				}
-			}
-		}
+		IConsoleSetPatchSetting(argv[1], argv[2]);
 	}
 
 	return true;
@@ -1595,71 +1474,36 @@ void IConsoleStdLibRegister()
 	IConsoleCmdHookAdd("unpause",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 
 	/*** Networking variables ***/
-	IConsoleVarRegister("net_frame_freq",        &_settings_client.network.frame_freq, ICONSOLE_VAR_BYTE, "The amount of frames before a command will be (visibly) executed. Default value: 1");
-	IConsoleVarHookAdd("net_frame_freq",         ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarRegister("net_sync_freq",         &_settings_client.network.sync_freq,  ICONSOLE_VAR_UINT16, "The amount of frames to check if the game is still in sync. Default value: 100");
-	IConsoleVarHookAdd("net_sync_freq",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
-	IConsoleVarStringRegister("server_pw",       &_settings_client.network.server_password, sizeof(_settings_client.network.server_password), "Set the server password to protect your server. Use '*' to clear the password");
-	IConsoleVarHookAdd("server_pw",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("server_pw",              ICONSOLE_HOOK_POST_ACTION, ConHookServerPW);
-	IConsoleAliasRegister("server_password",     "server_pw %+");
-	IConsoleVarStringRegister("rcon_pw",         &_settings_client.network.rcon_password, sizeof(_settings_client.network.rcon_password), "Set the rcon-password to change server behaviour. Use '*' to disable rcon");
-	IConsoleVarHookAdd("rcon_pw",                ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("rcon_pw",                ICONSOLE_HOOK_POST_ACTION, ConHookRconPW);
-	IConsoleAliasRegister("rcon_password",       "rcon_pw %+");
 	IConsoleVarStringRegister("company_pw",      NULL, 0, "Set a password for your company, so no one without the correct password can join. Use '*' to clear the password");
 	IConsoleVarHookAdd("company_pw",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleVarProcAdd("company_pw",             NetworkChangeCompanyPassword);
 	IConsoleAliasRegister("company_password",    "company_pw %+");
 
-	IConsoleVarStringRegister("name",            &_settings_client.network.player_name, sizeof(_settings_client.network.player_name), "Set your name for multiplayer");
-	IConsoleVarHookAdd("name",                   ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleVarHookAdd("name",                   ICONSOLE_HOOK_POST_ACTION, ConProcPlayerName);
-	IConsoleVarStringRegister("server_name",     &_settings_client.network.server_name, sizeof(_settings_client.network.server_name), "Set the name of the server for multiplayer");
-	IConsoleVarHookAdd("server_name",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("server_name",            ICONSOLE_HOOK_POST_ACTION, ConHookServerName);
-
-	IConsoleVarRegister("server_port",           &_settings_client.network.server_port, ICONSOLE_VAR_UINT32, "Set the server port. Changes take effect the next time you start a server");
-	IConsoleVarRegister("server_ip",             &_network_server_bind_ip, ICONSOLE_VAR_UINT32, "Set the IP the server binds to. Changes take effect the next time you start a server. Use 'all' to bind to any IP.");
-	IConsoleVarProcAdd("server_ip",              ConProcServerIP);
-	IConsoleAliasRegister("server_bind_ip",      "server_ip %+");
-	IConsoleAliasRegister("server_ip_bind",      "server_ip %+");
-	IConsoleAliasRegister("server_bind",         "server_ip %+");
-	IConsoleVarRegister("server_advertise",      &_settings_client.network.server_advertise, ICONSOLE_VAR_BOOLEAN, "Set if the server will advertise to the master server and show up there");
-	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("server_advertise",       ICONSOLE_HOOK_POST_ACTION, ConHookServerAdvertise);
-
-	IConsoleVarRegister("max_clients",           &_network_game_info.clients_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of connected players during runtime. Default value: 10");
-	IConsoleVarHookAdd("max_clients",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("max_clients",            ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxClientsCount);
-	IConsoleVarRegister("max_companies",         &_network_game_info.companies_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active companies during runtime. Default value: 8");
-	IConsoleVarHookAdd("max_companies",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("max_companies",          ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxCompaniesCount);
-	IConsoleVarRegister("max_spectators",        &_network_game_info.spectators_max, ICONSOLE_VAR_BYTE, "Control the maximum amount of active spectators during runtime. Default value: 9");
-	IConsoleVarHookAdd("max_spectators",         ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("max_spectators",         ICONSOLE_HOOK_POST_ACTION, ConHookValidateMaxSpectatorsCount);
-
-	IConsoleVarRegister("max_join_time",         &_settings_client.network.max_join_time, ICONSOLE_VAR_UINT16, "Set the maximum amount of time (ticks) a client is allowed to join. Default value: 500");
-
-	IConsoleVarRegister("pause_on_join",         &_settings_client.network.pause_on_join, ICONSOLE_VAR_BOOLEAN, "Set if the server should pause gameplay while a client is joining. This might help slow users");
-	IConsoleVarHookAdd("pause_on_join",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
-	IConsoleVarRegister("autoclean_companies",   &_settings_client.network.autoclean_companies, ICONSOLE_VAR_BOOLEAN, "Automatically shut down inactive companies to free them up for other players. Customize with 'autoclean_(un)protected'");
-	IConsoleVarHookAdd("autoclean_companies",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarRegister("autoclean_protected",   &_settings_client.network.autoclean_protected, ICONSOLE_VAR_BYTE, "Automatically remove the password from an inactive company after the given amount of months");
-	IConsoleVarHookAdd("autoclean_protected",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarRegister("autoclean_unprotected", &_settings_client.network.autoclean_unprotected, ICONSOLE_VAR_BYTE, "Automatically shut down inactive companies after the given amount of months");
-	IConsoleVarHookAdd("autoclean_unprotected",  ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarRegister("restart_game_year",     &_settings_client.network.restart_game_year, ICONSOLE_VAR_UINT16, "Auto-restart the server when Jan 1st of the set year is reached. Use '0' to disable this");
-	IConsoleVarHookAdd("restart_game_year",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
-	IConsoleVarRegister("min_players",           &_settings_client.network.min_players, ICONSOLE_VAR_BYTE, "Automatically pause the game when the number of active players passes below the given amount");
-	IConsoleVarHookAdd("min_players",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleVarHookAdd("min_players",            ICONSOLE_HOOK_POST_ACTION, ConHookCheckMinPlayers);
-	IConsoleVarRegister("reload_cfg",            &_settings_client.network.reload_cfg, ICONSOLE_VAR_BOOLEAN, "reload the entire config file between the end of this game, and starting the next new game - dedicated servers");
-	IConsoleVarHookAdd("reload_cfg",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
+	IConsoleAliasRegister("net_frame_freq",        "patch frame_freq %+");
+	IConsoleAliasRegister("net_sync_freq",         "patch sync_freq %+");
+	IConsoleAliasRegister("server_pw",             "patch server_password %+");
+	IConsoleAliasRegister("server_password",       "patch server_password %+");
+	IConsoleAliasRegister("rcon_pw",               "patch rcon_password %+");
+	IConsoleAliasRegister("rcon_password",         "patch rcon_password %+");
+	IConsoleAliasRegister("name",                  "patch player_name %+");
+	IConsoleAliasRegister("server_name",           "patch server_name %+");
+	IConsoleAliasRegister("server_port",           "patch server_port %+");
+	IConsoleAliasRegister("server_ip",             "patch server_bind_ip %+");
+	IConsoleAliasRegister("server_bind_ip",        "patch server_bind_ip %+");
+	IConsoleAliasRegister("server_ip_bind",        "patch server_bind_ip %+");
+	IConsoleAliasRegister("server_bind",           "patch server_bind_ip %+");
+	IConsoleAliasRegister("server_advertise",      "patch server_advertise %+");
+	IConsoleAliasRegister("max_clients",           "patch max_clients %+");
+	IConsoleAliasRegister("max_companies",         "patch max_companies %+");
+	IConsoleAliasRegister("max_spectators",        "patch max_spectators %+");
+	IConsoleAliasRegister("max_join_time",         "patch max_join_time %+");
+	IConsoleAliasRegister("pause_on_join",         "patch pause_on_join %+");
+	IConsoleAliasRegister("autoclean_companies",   "patch autoclean_companies %+");
+	IConsoleAliasRegister("autoclean_protected",   "patch autoclean_protected %+");
+	IConsoleAliasRegister("autoclean_unprotected", "patch autoclean_unprotected %+");
+	IConsoleAliasRegister("restart_game_year",     "patch restart_game_year %+");
+	IConsoleAliasRegister("min_players",           "patch min_players %+");
+	IConsoleAliasRegister("reload_cfg",            "patch reload_cfg %+");
 #endif /* ENABLE_NETWORK */
 
 	// debugging stuff

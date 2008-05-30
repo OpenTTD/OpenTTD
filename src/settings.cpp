@@ -25,7 +25,10 @@
 #include "screenshot.h"
 #include "variables.h"
 #include "network/network.h"
-#include "network/network_internal.h"
+#include "network/network_data.h"
+#include "network/network_client.h"
+#include "network/network_server.h"
+#include "network/network_udp.h"
 #include "settings_internal.h"
 #include "command_func.h"
 #include "console_func.h"
@@ -1135,12 +1138,12 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 #define SDTC_CONDLIST(var, type, length, flags, guiflags, def, str, proc, from, to)\
 	SDTG_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, _settings_client.var, length, def, 0, 0, 0, NULL, str, proc, from, to)
 #define SDTC_LIST(var, type, flags, guiflags, def, str, proc)\
-	SDTG_GENERAL(var, SDT_INTLIST, SL_ARR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
+	SDTG_GENERAL(#var, SDT_INTLIST, SL_ARR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTC_CONDSTR(var, type, length, flags, guiflags, def, str, proc, from, to)\
 	SDTG_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, _settings_client.var, length, def, 0, 0, 0, NULL, str, proc, from, to)
 #define SDTC_STR(var, type, flags, guiflags, def, str, proc)\
-	SDTG_GENERAL(var, SDT_STRING, SL_STR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
+	SDTG_GENERAL(#var, SDT_STRING, SL_STR, type, flags, guiflags, _settings_client.var, lengthof(_settings_client.var), def, 0, 0, 0, NULL, str, proc, 0, SL_MAX_VERSION)
 
 #define SDTC_CONDOMANY(var, type, from, to, flags, guiflags, def, max, full, str, proc)\
 	SDTG_GENERAL(#var, SDT_ONEOFMANY, SL_VAR, type, flags, guiflags, _settings_client.var, 1, def, 0, max, 0, full, str, proc, from, to)
@@ -1433,6 +1436,69 @@ static int32 CheckNoiseToleranceLevel(const char *value)
 	return 0;
 }
 
+#ifdef ENABLE_NETWORK
+
+static int32 UpdateMinPlayers(int32 p1)
+{
+	CheckMinPlayers();
+	return 0;
+}
+
+static int32 UpdatePlayerName(int32 p1)
+{
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+
+	if (ci == NULL) return 0;
+
+	/* Don't change the name if it is the same as the old name */
+	if (strcmp(ci->client_name, _settings_client.network.player_name) != 0) {
+		if (!_network_server) {
+			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.player_name);
+		} else {
+			if (NetworkFindName(_settings_client.network.player_name)) {
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.player_name);
+				ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
+				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+			}
+		}
+	}
+
+	return 0;
+}
+
+static int32 UpdateServerName(int32 p1)
+{
+	ttd_strlcpy(_network_game_info.server_name, _settings_client.network.server_name, sizeof(_network_game_info.server_name));
+	return 0;
+}
+
+static int32 UpdateServerPassword(int32 p1)
+{
+	if (strcmp(_settings_client.network.server_password, "*") == 0) {
+		_settings_client.network.server_password[0] = '\0';
+		_network_game_info.use_password = false;
+	} else {
+		ttd_strlcpy(_network_game_info.server_password, _settings_client.network.server_password, sizeof(_network_game_info.server_password));
+		_network_game_info.use_password = true;
+	}
+
+	return 0;
+}
+
+static int32 UpdateRconPassword(int32 p1)
+{
+	if (strcmp(_settings_client.network.rcon_password, "*") == 0) {
+		_settings_client.network.rcon_password[0] = '\0';
+	}
+
+	ttd_strlcpy(_network_game_info.rcon_password, _settings_client.network.rcon_password, sizeof(_network_game_info.rcon_password));
+
+	return 0;
+}
+
+#endif /* ENABLE_NETWORK */
+
+
 /* End - Callback Functions */
 
 #ifndef EXTERNAL_PLAYER
@@ -1498,39 +1564,6 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_STR("keyboard_caps",    SLE_STRB, S, 0, _keyboard_opt[1],       NULL,    STR_NULL, NULL),
 	  SDTG_END()
 };
-
-#ifdef ENABLE_NETWORK
-static const SettingDescGlobVarList _network_settings[] = {
-	  SDTG_VAR("sync_freq",           SLE_UINT16,C|S,0, _settings_client.network.sync_freq,            100, 0,   100,   0, STR_NULL, NULL),
-	  SDTG_VAR("frame_freq",           SLE_UINT8,C|S,0, _settings_client.network.frame_freq,             0, 0,   100,   0, STR_NULL, NULL),
-	  SDTG_VAR("max_join_time",       SLE_UINT16, S, 0, _settings_client.network.max_join_time,        500, 0, 32000,   0, STR_NULL, NULL),
-	 SDTG_BOOL("pause_on_join",                   S, 0, _settings_client.network.pause_on_join,        true,               STR_NULL, NULL),
-	  SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _settings_client.network.server_bind_ip,       "0.0.0.0",          STR_NULL, NULL),
-	  SDTG_VAR("server_port",         SLE_UINT16, S, 0, _settings_client.network.server_port,          NETWORK_DEFAULT_PORT, 0, 65535, 0, STR_NULL, NULL),
-	 SDTG_BOOL("server_advertise",                S, 0, _settings_client.network.server_advertise,     false,              STR_NULL, NULL),
-	  SDTG_VAR("lan_internet",         SLE_UINT8, S, 0, _settings_client.network.lan_internet,           0, 0,     1,   0, STR_NULL, NULL),
-	  SDTG_STR("player_name",           SLE_STRB, S, 0, _settings_client.network.player_name,          NULL,               STR_NULL, NULL),
-	  SDTG_STR("server_password",       SLE_STRB, S, 0, _settings_client.network.server_password,      NULL,               STR_NULL, NULL),
-	  SDTG_STR("rcon_password",         SLE_STRB, S, 0, _settings_client.network.rcon_password,        NULL,               STR_NULL, NULL),
-	  SDTG_STR("default_company_pass",  SLE_STRB, S, 0, _settings_client.network.default_company_pass, NULL,               STR_NULL, NULL),
-	  SDTG_STR("server_name",           SLE_STRB, S, 0, _settings_client.network.server_name,          NULL,               STR_NULL, NULL),
-	  SDTG_STR("connect_to_ip",         SLE_STRB, S, 0, _settings_client.network.connect_to_ip,        NULL,               STR_NULL, NULL),
-	  SDTG_STR("network_id",            SLE_STRB, S, 0, _settings_client.network.network_id,           NULL,               STR_NULL, NULL),
-	 SDTG_BOOL("autoclean_companies",             S, 0, _settings_client.network.autoclean_companies,  false,              STR_NULL, NULL),
-	  SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _settings_client.network.autoclean_unprotected,12, 0,     60,   0, STR_NULL, NULL),
-	  SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _settings_client.network.autoclean_protected,  36, 0,    180,   0, STR_NULL, NULL),
-	  SDTG_VAR("max_companies",        SLE_UINT8, S, 0, _settings_client.network.max_companies,      8, 1, MAX_PLAYERS, 0, STR_NULL, NULL),
-	  SDTG_VAR("max_clients",          SLE_UINT8, S, 0, _settings_client.network.max_clients,       10, 2, MAX_CLIENTS, 0, STR_NULL, NULL),
-	  SDTG_VAR("max_spectators",       SLE_UINT8, S, 0, _settings_client.network.max_spectators,    10, 0, MAX_CLIENTS, 0, STR_NULL, NULL),
-	  SDTG_VAR("restart_game_year",    SLE_INT32, S,D0, _settings_client.network.restart_game_year,  0, MIN_YEAR, MAX_YEAR, 1, STR_NULL, NULL),
-	  SDTG_VAR("min_players",          SLE_UINT8, S, 0, _settings_client.network.min_players,               0, 0, 10,   0, STR_NULL, NULL),
-	SDTG_OMANY("server_lang",          SLE_UINT8, S, 0, _settings_client.network.server_lang,     0, 35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
-	 SDTG_BOOL("reload_cfg",                      S, 0, _settings_client.network.reload_cfg,           false,              STR_NULL, NULL),
-	  SDTG_STR("last_host",             SLE_STRB, S, 0, _settings_client.network.last_host,            "0.0.0.0",          STR_NULL, NULL),
-	  SDTG_VAR("last_port",           SLE_UINT16, S, 0, _settings_client.network.last_port,            0, 0, UINT16_MAX, 0, STR_NULL ,NULL),
-	  SDTG_END()
-};
-#endif /* ENABLE_NETWORK */
 
 static const uint GAME_DIFFICULTY_NUM = 18;
 uint16 _old_diff_custom[GAME_DIFFICULTY_NUM];
@@ -1746,45 +1779,75 @@ SDTC_CONDOMANY(              gui.units,                                     SLE_
 
 	/***************************************************************************/
 	/* Unsaved patch variables. */
-	SDTC_OMANY(gui.autosave,               SLE_UINT8, S, 0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL,                     NULL),
-	 SDTC_BOOL(gui.vehicle_speed,                     S, 0,  true,                        STR_CONFIG_PATCHES_VEHICLESPEED,                NULL),
-	 SDTC_BOOL(gui.status_long_date,                  S, 0,  true,                        STR_CONFIG_PATCHES_LONGDATE,                    NULL),
-	 SDTC_BOOL(gui.show_finances,                     S, 0,  true,                        STR_CONFIG_PATCHES_SHOWFINANCES,                NULL),
-	 SDTC_BOOL(gui.autoscroll,                        S, 0, false,                        STR_CONFIG_PATCHES_AUTOSCROLL,                  NULL),
-	 SDTC_BOOL(gui.reverse_scroll,                    S, 0, false,                        STR_CONFIG_PATCHES_REVERSE_SCROLLING,           NULL),
-	 SDTC_BOOL(gui.smooth_scroll,                     S, 0, false,                        STR_CONFIG_PATCHES_SMOOTH_SCROLLING,            NULL),
-	 SDTC_BOOL(gui.measure_tooltip,                   S, 0, false,                        STR_CONFIG_PATCHES_MEASURE_TOOLTIP,             NULL),
-	  SDTC_VAR(gui.errmsg_duration,        SLE_UINT8, S, 0,     5,        0,       20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,             NULL),
-	  SDTC_VAR(gui.toolbar_pos,            SLE_UINT8, S,MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,                 v_PositionMainToolbar),
-	  SDTC_VAR(gui.window_snap_radius,     SLE_UINT8, S,D0,    10,        1,       32, 0, STR_CONFIG_PATCHES_SNAP_RADIUS,                 NULL),
-	 SDTC_BOOL(gui.population_in_label,               S, 0,  true,                        STR_CONFIG_PATCHES_POPULATION_IN_LABEL,         PopulationInLabelActive),
-	 SDTC_BOOL(gui.link_terraform_toolbar,            S, 0, false,                        STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,      NULL),
-	  SDTC_VAR(gui.liveries,               SLE_UINT8, S,MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_LIVERIES,                    RedrawScreen),
-	 SDTC_BOOL(gui.prefer_teamchat,                   S, 0, false,                        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,             NULL),
-	  SDTC_VAR(gui.scrollwheel_scrolling,  SLE_UINT8, S,MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING,       NULL),
-	  SDTC_VAR(gui.scrollwheel_multiplier, SLE_UINT8, S, 0,     5,        1,       15, 1, STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER,      NULL),
-	 SDTC_BOOL(gui.pause_on_newgame,                  S, 0, false,                        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,           NULL),
-	  SDTC_VAR(gui.advanced_vehicle_list,  SLE_UINT8, S,MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,      NULL),
-	 SDTC_BOOL(gui.timetable_in_ticks,                S, 0, false,                        STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS,          NULL),
-	  SDTC_VAR(gui.loading_indicators,     SLE_UINT8, S,MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_LOADING_INDICATORS,          RedrawScreen),
-	  SDTC_VAR(gui.default_rail_type,      SLE_UINT8, S,MS,     4,        0,        6, 0, STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE,           NULL),
-	 SDTC_BOOL(gui.enable_signal_gui,                 S, 0, false,                        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,           CloseSignalGUI),
-	  SDTC_VAR(gui.drag_signals_density,   SLE_UINT8, S, 0,     4,        1,       20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,        DragSignalsDensityChanged),
-	  SDTC_VAR(gui.semaphore_build_before, SLE_INT32, S, NC, 1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
-	 SDTC_BOOL(gui.train_income_warn,                 S, 0,  true,                        STR_CONFIG_PATCHES_WARN_INCOME_LESS,            NULL),
-	  SDTC_VAR(gui.order_review_system,    SLE_UINT8, S,MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,                NULL),
-	 SDTC_BOOL(gui.lost_train_warn,                   S, 0,  true,                        STR_CONFIG_PATCHES_WARN_LOST_TRAIN,             NULL),
-	 SDTC_BOOL(gui.autorenew,                         S, 0, false,                        STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,           EngineRenewUpdate),
-	  SDTC_VAR(gui.autorenew_months,       SLE_INT16, S, 0,     6,      -12,       12, 0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,            EngineRenewMonthsUpdate),
-	  SDTC_VAR(gui.autorenew_money,         SLE_UINT, S,CR,100000,        0,  2000000, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,             EngineRenewMoneyUpdate),
-	 SDTC_BOOL(gui.always_build_infrastructure,       S, 0, false,                        STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
-	 SDTC_BOOL(gui.new_nonstop,                       S, 0, false,                        STR_CONFIG_PATCHES_NEW_NONSTOP,                 NULL),
-	 SDTC_BOOL(gui.keep_all_autosave,                 S, 0, false,                        STR_NULL,                                       NULL),
-	 SDTC_BOOL(gui.autosave_on_exit,                  S, 0, false,                        STR_NULL,                                       NULL),
-	  SDTC_VAR(gui.max_num_autosaves,      SLE_UINT8, S, 0,    16,        0,      255, 0, STR_NULL,                                       NULL),
-	 SDTC_BOOL(gui.bridge_pillars,                    S, 0,  true,                        STR_NULL,                                       NULL),
-	 SDTC_BOOL(gui.auto_euro,                         S, 0,  true,                        STR_NULL,                                       NULL),
-	  SDTC_VAR(gui.news_message_timeout,   SLE_UINT8, S, 0,     2,        1,      255, 0, STR_NULL,                                       NULL),
+	SDTC_OMANY(gui.autosave,                  SLE_UINT8, S,  0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL,                     NULL),
+	 SDTC_BOOL(gui.vehicle_speed,                        S,  0,  true,                        STR_CONFIG_PATCHES_VEHICLESPEED,                NULL),
+	 SDTC_BOOL(gui.status_long_date,                     S,  0,  true,                        STR_CONFIG_PATCHES_LONGDATE,                    NULL),
+	 SDTC_BOOL(gui.show_finances,                        S,  0,  true,                        STR_CONFIG_PATCHES_SHOWFINANCES,                NULL),
+	 SDTC_BOOL(gui.autoscroll,                           S,  0, false,                        STR_CONFIG_PATCHES_AUTOSCROLL,                  NULL),
+	 SDTC_BOOL(gui.reverse_scroll,                       S,  0, false,                        STR_CONFIG_PATCHES_REVERSE_SCROLLING,           NULL),
+	 SDTC_BOOL(gui.smooth_scroll,                        S,  0, false,                        STR_CONFIG_PATCHES_SMOOTH_SCROLLING,            NULL),
+	 SDTC_BOOL(gui.measure_tooltip,                      S,  0, false,                        STR_CONFIG_PATCHES_MEASURE_TOOLTIP,             NULL),
+	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,             NULL),
+	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,                 v_PositionMainToolbar),
+	  SDTC_VAR(gui.window_snap_radius,        SLE_UINT8, S, D0,    10,        1,       32, 0, STR_CONFIG_PATCHES_SNAP_RADIUS,                 NULL),
+	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_PATCHES_POPULATION_IN_LABEL,         PopulationInLabelActive),
+	 SDTC_BOOL(gui.link_terraform_toolbar,               S,  0, false,                        STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,      NULL),
+	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_LIVERIES,                    RedrawScreen),
+	 SDTC_BOOL(gui.prefer_teamchat,                      S,  0, false,                        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,             NULL),
+	  SDTC_VAR(gui.scrollwheel_scrolling,     SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING,       NULL),
+	  SDTC_VAR(gui.scrollwheel_multiplier,    SLE_UINT8, S,  0,     5,        1,       15, 1, STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER,      NULL),
+	 SDTC_BOOL(gui.pause_on_newgame,                     S,  0, false,                        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,           NULL),
+	  SDTC_VAR(gui.advanced_vehicle_list,     SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,      NULL),
+	 SDTC_BOOL(gui.timetable_in_ticks,                   S,  0, false,                        STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS,          NULL),
+	  SDTC_VAR(gui.loading_indicators,        SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_LOADING_INDICATORS,          RedrawScreen),
+	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     4,        0,        6, 0, STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE,           NULL),
+	 SDTC_BOOL(gui.enable_signal_gui,                    S,  0, false,                        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,           CloseSignalGUI),
+	  SDTC_VAR(gui.drag_signals_density,      SLE_UINT8, S,  0,     4,        1,       20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,        DragSignalsDensityChanged),
+	  SDTC_VAR(gui.semaphore_build_before,    SLE_INT32, S, NC,  1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
+	 SDTC_BOOL(gui.train_income_warn,                    S,  0,  true,                        STR_CONFIG_PATCHES_WARN_INCOME_LESS,            NULL),
+	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,                NULL),
+	 SDTC_BOOL(gui.lost_train_warn,                      S,  0,  true,                        STR_CONFIG_PATCHES_WARN_LOST_TRAIN,             NULL),
+	 SDTC_BOOL(gui.autorenew,                            S,  0, false,                        STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,           EngineRenewUpdate),
+	  SDTC_VAR(gui.autorenew_months,          SLE_INT16, S,  0,     6,      -12,       12, 0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,            EngineRenewMonthsUpdate),
+	  SDTC_VAR(gui.autorenew_money,            SLE_UINT, S, CR,100000,        0,  2000000, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,             EngineRenewMoneyUpdate),
+	 SDTC_BOOL(gui.always_build_infrastructure,          S,  0, false,                        STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE, RedrawScreen),
+	 SDTC_BOOL(gui.new_nonstop,                          S,  0, false,                        STR_CONFIG_PATCHES_NEW_NONSTOP,                 NULL),
+	 SDTC_BOOL(gui.keep_all_autosave,                    S,  0, false,                        STR_NULL,                                       NULL),
+	 SDTC_BOOL(gui.autosave_on_exit,                     S,  0, false,                        STR_NULL,                                       NULL),
+	  SDTC_VAR(gui.max_num_autosaves,         SLE_UINT8, S,  0,    16,        0,      255, 0, STR_NULL,                                       NULL),
+	 SDTC_BOOL(gui.bridge_pillars,                       S,  0,  true,                        STR_NULL,                                       NULL),
+	 SDTC_BOOL(gui.auto_euro,                            S,  0,  true,                        STR_NULL,                                       NULL),
+	  SDTC_VAR(gui.news_message_timeout,      SLE_UINT8, S,  0,     2,        1,      255, 0, STR_NULL,                                       NULL),
+
+#ifdef ENABLE_NETWORK
+	  SDTC_VAR(network.sync_freq,            SLE_UINT16,C|S,NO,   100,        0,      100, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.frame_freq,            SLE_UINT8,C|S,NO,     0,        0,      100, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_join_time,        SLE_UINT16, S, NO,   500,        0,    32000, 0, STR_NULL,                                       NULL),
+	 SDTC_BOOL(network.pause_on_join,                    S, NO,  true,                        STR_NULL,                                       NULL),
+	  SDTC_STR(network.server_bind_ip,         SLE_STRB, S, NO, "0.0.0.0",                    STR_NULL,                                       NULL),
+	  SDTC_VAR(network.server_port,          SLE_UINT16, S, NO,NETWORK_DEFAULT_PORT,0,65535,0,STR_NULL,                                       NULL),
+	 SDTC_BOOL(network.server_advertise,                 S, NO, false,                        STR_NULL,                                       NULL),
+	  SDTC_VAR(network.lan_internet,          SLE_UINT8, S, NO,     0,        0,        1, 0, STR_NULL,                                       NULL),
+	  SDTC_STR(network.player_name,            SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       UpdatePlayerName),
+	  SDTC_STR(network.server_password,        SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateServerPassword),
+	  SDTC_STR(network.rcon_password,          SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateRconPassword),
+	  SDTC_STR(network.default_company_pass,   SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),
+	  SDTC_STR(network.server_name,            SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateServerName),
+	  SDTC_STR(network.connect_to_ip,          SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),
+	  SDTC_STR(network.network_id,             SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       NULL),
+	 SDTC_BOOL(network.autoclean_companies,              S, NO, false,                        STR_NULL,                                       NULL),
+	  SDTC_VAR(network.autoclean_unprotected, SLE_UINT8, S, NO,    12,     0,          60, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.autoclean_protected,   SLE_UINT8, S, NO,    36,     0,         180, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_companies,         SLE_UINT8, S, NO,     8,     1, MAX_PLAYERS, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_clients,           SLE_UINT8, S, NO,    10,     2, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,    10,     0, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.restart_game_year,     SLE_INT32, S,D0|NO|NC,0, MIN_YEAR, MAX_YEAR, 1, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.min_players,           SLE_UINT8, S, NO,     0,     0,        10,   0, STR_NULL,                                       UpdateMinPlayers),
+	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
+	 SDTC_BOOL(network.reload_cfg,                       S, NO, false,                        STR_NULL,                                       NULL),
+	  SDTC_STR(network.last_host,              SLE_STRB, S,  0, "0.0.0.0",                    STR_NULL,                                       NULL),
+	  SDTC_VAR(network.last_port,            SLE_UINT16, S,  0,     0,     0,  UINT16_MAX, 0, STR_NULL,                                       NULL),
+#endif /* ENABLE_NETWORK */
 
 	/*
 	 * Since the network code (CmdChangePatchSetting and friends) use the index in this array to decide
@@ -2026,7 +2089,6 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 	proc(ini, _currency_settings,"currency", &_custom_currency);
 
 #ifdef ENABLE_NETWORK
-	proc(ini, (const SettingDesc*)_network_settings, "network", NULL);
 	proc_list(ini, "servers", _network_host_list, lengthof(_network_host_list), NULL);
 	proc_list(ini, "bans",    _network_ban_list,  lengthof(_network_ban_list), NULL);
 #endif /* ENABLE_NETWORK */
@@ -2090,7 +2152,7 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (sd == NULL) return CMD_ERROR;
 	if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) return CMD_ERROR;
 
-	if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return CMD_ERROR;
+	if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking && _game_mode != GM_MENU) return CMD_ERROR;
 	if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return CMD_ERROR;
 	if ((sd->desc.flags & SGF_NEWGAME_ONLY) && _game_mode != GM_MENU) return CMD_ERROR;
 
@@ -2140,6 +2202,23 @@ bool SetPatchValue(uint index, int32 value)
 	return false;
 }
 
+/**
+ * Set a patch value with a string.
+ * @param index the patch settings index.
+ * @param value the value to write
+ * @note CANNOT BE SAVED IN THE SAVEGAME.
+ */
+bool SetPatchValue(uint index, const char *value)
+{
+	const SettingDesc *sd = &_patch_settings[index];
+	assert(sd->save.conv & SLF_NETWORK_NO);
+
+	char *var = (char*)GetVariableAddress(NULL, &sd->save);
+	ttd_strlcpy(var, value, sd->save.length);
+
+	return true;
+}
+
 const SettingDesc *GetPatchFromName(const char *name, uint *i)
 {
 	const SettingDesc *sd;
@@ -2165,23 +2244,40 @@ const SettingDesc *GetPatchFromName(const char *name, uint *i)
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-bool IConsoleSetPatchSetting(const char *name, int32 value)
+void IConsoleSetPatchSetting(const char *name, const char *value)
 {
-	bool success;
 	uint index;
 	const SettingDesc *sd = GetPatchFromName(name, &index);
-	void *ptr;
 
 	if (sd == NULL) {
 		IConsolePrintF(CC_WARNING, "'%s' is an unknown patch setting.", name);
-		return true;
 	}
 
-	GameSettings *s = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
-	ptr = GetVariableAddress(s, &sd->save);
+	bool success;
+	if (sd->desc.cmd == SDT_STRING) {
+		success = SetPatchValue(index, value);
+	} else {
+		uint32 val;
+		extern bool GetArgumentInteger(uint32 *value, const char *arg);
+		success = GetArgumentInteger(&val, value);
+		if (success) success = SetPatchValue(index, val);
+	}
 
-	success = SetPatchValue(index, value);
-	return success;
+	if (!success) {
+		if (_network_server) {
+			IConsoleError("This command/variable is not available during network games.");
+		} else {
+			IConsoleError("This command/variable is only available to a network server.");
+		}
+	}
+}
+
+void IConsoleSetPatchSetting(const char *name, int value)
+{
+	uint index;
+	const SettingDesc *sd = GetPatchFromName(name, &index);
+	assert(sd != NULL);
+	SetPatchValue(index, value);
 }
 
 void IConsoleGetPatchSetting(const char *name)
@@ -2198,14 +2294,18 @@ void IConsoleGetPatchSetting(const char *name)
 
 	ptr = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
 
-	if (sd->desc.cmd == SDT_BOOLX) {
-		snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
+	if (sd->desc.cmd == SDT_STRING) {
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s'", name, (const char *)ptr);
 	} else {
-		snprintf(value, sizeof(value), "%d", (int32)ReadValue(ptr, sd->save.conv));
-	}
+		if (sd->desc.cmd == SDT_BOOLX) {
+			snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
+		} else {
+			snprintf(value, sizeof(value), "%d", (int32)ReadValue(ptr, sd->save.conv));
+		}
 
-	IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %d)",
-		name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
+		IConsolePrintF(CC_WARNING, "Current value for '%s' is: '%s' (min: %s%d, max: %d)",
+			name, value, (sd->desc.flags & SGF_0ISDISABLED) ? "(0) " : "", sd->desc.min, sd->desc.max);
+	}
 }
 
 void IConsoleListPatches()
@@ -2218,6 +2318,8 @@ void IConsoleListPatches()
 
 		if (sd->desc.cmd == SDT_BOOLX) {
 			snprintf(value, lengthof(value), (*(bool*)ptr == 1) ? "on" : "off");
+		} else if (sd->desc.cmd == SDT_STRING) {
+			snprintf(value, sizeof(value), "%s", (const char *)ptr);
 		} else {
 			snprintf(value, lengthof(value), "%d", (uint32)ReadValue(ptr, sd->save.conv));
 		}

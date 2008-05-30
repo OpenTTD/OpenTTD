@@ -5,7 +5,8 @@
 #ifndef SETTINGS_FUNC_H
 #define SETTINGS_FUNC_H
 
-bool IConsoleSetPatchSetting(const char *name, int32 value);
+void IConsoleSetPatchSetting(const char *name, const char *value);
+void IConsoleSetPatchSetting(const char *name, int32 value);
 void IConsoleGetPatchSetting(const char *name);
 void IConsoleListPatches();
 

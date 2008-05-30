@@ -105,10 +105,6 @@ extern IConsoleAlias *_iconsole_aliases; ///< list of registred aliases
 void IConsoleClearBuffer();
 void IConsoleOpen();
 
-/* console output */
-void IConsoleWarning(const char *string);
-void IConsoleError(const char *string);
-
 /* Commands */
 void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc);
 void IConsoleAliasRegister(const char *name, const char *cmd);

@@ -19,6 +19,8 @@ void IConsoleClose();
 void IConsolePrint(ConsoleColour color_code, const char *string);
 void CDECL IConsolePrintF(ConsoleColour color_code, const char *s, ...);
 void IConsoleDebug(const char *dbg, const char *string);
+void IConsoleWarning(const char *string);
+void IConsoleError(const char *string);
 
 /* Parser */
 void IConsoleCmdExec(const char *cmdstr);
