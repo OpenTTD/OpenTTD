@@ -5,6 +5,8 @@
 #ifndef SORTLIST_TYPE_H
 #define SORTLIST_TYPE_H
 
+#include "core/enum_type.hpp"
+#include "core/bitmath_func.hpp"
 #include "misc/smallvec.h"
 #include "date_type.h"
 

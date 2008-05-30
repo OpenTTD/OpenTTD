@@ -5,6 +5,9 @@
 #ifndef SMALLVEC_H
 #define SMALLVEC_H
 
+#include "../core/alloc_func.hpp"
+#include "../core/math_func.hpp"
+
 template <typename T, uint S>
 struct SmallVector {
 	T *data;
