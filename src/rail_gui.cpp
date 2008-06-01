@@ -1649,7 +1649,7 @@ static const Widget _build_waypoint_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,     7,   207,   272,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_4
 {      WWT_PANEL,   RESIZE_NONE,     7,   275,   340,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},        // BRWW_WAYPOINT_5
 
-{ WWT_HSCROLLBAR,   RESIZE_NONE,    7,     1,   343,     80,    91, 0x0,          STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BRWW_SCROLL
+{ WWT_HSCROLLBAR,   RESIZE_NONE,    7,     1,   343,     80,    91, 0x0,          STR_HSCROLL_BAR_SCROLLS_LIST},     // BRWW_SCROLL
 {    WIDGETS_END},
 };
 
