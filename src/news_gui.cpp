@@ -364,8 +364,6 @@ static WindowDesc _news_type0_desc = {
 /** Open up an own newspaper window for the news item */
 static void ShowNewspaper(NewsItem *ni)
 {
-	ni->flags &= ~NF_FORCE_BIG;
-
 	SoundFx sound = _news_type_data[_news_subtype_data[ni->subtype].type].sound;
 	if (sound != 0) SndPlayFx(sound);
 
@@ -468,12 +466,9 @@ static void MoveToNextItem()
 				InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SHOW_REMINDER);
 				break;
 
-			case ND_SUMMARY: // Summary - show ticker, but if forced big, cascade to full
-				if (!(ni->flags & NF_FORCE_BIG)) {
-					ShowTicker(ni);
-					break;
-				}
-				/* Fallthrough */
+			case ND_SUMMARY: // Summary - show ticker
+				ShowTicker(ni);
+				break;
 
 			case ND_FULL: // Full - show newspaper
 				ShowNewspaper(ni);
@@ -616,8 +611,6 @@ static void ShowNewsMessage(NewsItem *ni)
 	_forced_news = ni;
 
 	if (_forced_news != NULL) {
-		NewsWindow::duration = 555;
-		ni->flags |= NF_FORCE_BIG;
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);
 	}
