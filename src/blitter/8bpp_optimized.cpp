@@ -6,38 +6,34 @@
 #include "../zoom_func.h"
 #include "../debug.h"
 #include "../core/alloc_func.hpp"
+#include "../core/math_func.hpp"
 #include "8bpp_optimized.hpp"
 
 static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 
 void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
-	const uint8 *src, *src_next;
-	uint8 *dst, *dst_line;
-	uint offset = 0;
-
 	/* Find the offset of this zoom-level */
-	offset = ((const uint8 *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2] | ((const byte *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2 + 1] << 8;
+	uint offset = ((const uint8 *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2] | ((const byte *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2 + 1] << 8;
 
 	/* Find where to start reading in the source sprite */
-	src = (const uint8 *)bp->sprite + offset;
-	dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
+	const uint8 *src = (const uint8 *)bp->sprite + offset;
+	uint8 *dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* Skip over the top lines in the source image */
 	for (int y = 0; y < bp->skip_top; y++) {
-		uint trans, pixels;
 		for (;;) {
-			trans = *src++;
-			pixels = *src++;
+			uint trans = *src++;
+			uint pixels = *src++;
 			if (trans == 0 && pixels == 0) break;
 			src += pixels;
 		}
 	}
 
-	src_next = src;
+	const uint8 *src_next = src;
 
 	for (int y = 0; y < bp->height; y++) {
-		dst = dst_line;
+		uint8 *dst = dst_line;
 		dst_line += bp->pitch;
 
 		uint skip_left = bp->skip_left;
@@ -45,8 +41,8 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 
 		for (;;) {
 			src = src_next;
-			uint8 trans = *src++;
-			uint8 pixels = *src++;
+			uint trans = *src++;
+			uint pixels = *src++;
 			src_next = src + pixels;
 			if (trans == 0 && pixels == 0) break;
 			if (width <= 0) continue;
@@ -75,7 +71,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 			dst += trans;
 			width -= trans;
 			if (width <= 0) continue;
-			if (pixels > width) pixels = width;
+			pixels = min<uint>(pixels, (uint)width);
 			width -= pixels;
 
 			switch (mode) {
@@ -104,99 +100,98 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 
 Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {
-	Sprite *dest_sprite;
-	byte *temp_dst;
-	uint memory = 0;
-	uint index = 0;
-
 	/* Make memory for all zoom-levels */
-	memory += (int)(ZOOM_LVL_END - ZOOM_LVL_BEGIN) * sizeof(uint16);
+	uint memory = (int)(ZOOM_LVL_END - ZOOM_LVL_BEGIN) * sizeof(uint16);
+
 	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
 		memory += UnScaleByZoom(sprite->height, i) * UnScaleByZoom(sprite->width, i);
-		index += 2;
 	}
 
 	/* We have no idea how much memory we really need, so just guess something */
 	memory *= 5;
-	temp_dst = MallocT<byte>(memory);
+	byte *temp_dst = MallocT<byte>(memory);
+	byte *dst = &temp_dst[(ZOOM_LVL_END - ZOOM_LVL_BEGIN) * 2];
 
 	/* Make the sprites per zoom-level */
 	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
-		/* Store the scaled image */
-		const SpriteLoader::CommonPixel *src;
-
 		/* Store the index table */
+		uint index = dst - temp_dst;
 		temp_dst[i * 2] = index & 0xFF;
 		temp_dst[i * 2 + 1] = (index >> 8) & 0xFF;
 
-		byte *dst = &temp_dst[index];
+		/* cache values, because compiler can't cache it */
+		int scaled_height = UnScaleByZoom(sprite->height, i);
+		int scaled_width  = UnScaleByZoom(sprite->width,  i);
+		int scaled_1      =   ScaleByZoom(1,              i);
 
-		for (int y = 0; y < UnScaleByZoom(sprite->height, i); y++) {
+		for (int y = 0; y < scaled_height; y++) {
 			uint trans = 0;
 			uint pixels = 0;
-			uint last_color = 0;
-			uint count_index = 0;
-			uint rx = 0;
-			src = &sprite->data[ScaleByZoom(y, i) * sprite->width];
+			uint last_colour = 0;
+			byte *count_dst = NULL;
 
-			for (int x = 0; x < UnScaleByZoom(sprite->width, i); x++) {
-				uint color = 0;
+			/* Store the scaled image */
+			const SpriteLoader::CommonPixel *src = &sprite->data[ScaleByZoom(y, i) * sprite->width];
+			const SpriteLoader::CommonPixel *src_end = &src[sprite->width];
+
+			for (int x = 0; x < scaled_width; x++) {
+				uint colour = 0;
 
 				/* Get the color keeping in mind the zoom-level */
-				for (int j = 0; j < ScaleByZoom(1, i); j++) {
-					if (src->m != 0) color = src->m;
-					src++;
-					rx++;
+				for (int j = 0; j < scaled_1; j++) {
+					if (src->m != 0) colour = src->m;
 					/* Because of the scaling it might happen we read outside the buffer. Avoid that. */
-					if (rx == sprite->width) break;
+					if (++src == src_end) break;
 				}
 
-				if (last_color == 0 || color == 0 || pixels == 255) {
-					if (count_index != 0) {
+				if (last_colour == 0 || colour == 0 || pixels == 255) {
+					if (count_dst != NULL) {
 						/* Write how many non-transparent bytes we get */
-						temp_dst[count_index] = pixels;
+						*count_dst = pixels;
 						pixels = 0;
-						count_index = 0;
+						count_dst = NULL;
 					}
 					/* As long as we find transparency bytes, keep counting */
-					if (color == 0) {
-						last_color = 0;
+					if (colour == 0) {
+						last_colour = 0;
 						trans++;
 						continue;
 					}
 					/* No longer transparency, so write the amount of transparent bytes */
 					*dst = trans;
-					dst++; index++;
+					dst++;
 					trans = 0;
 					/* Reserve a byte for the pixel counter */
-					count_index = index;
-					dst++; index++;
+					count_dst = dst;
+					dst++;
 				}
-				last_color = color;
+				last_colour = colour;
 				pixels++;
-				*dst = color;
-				dst++; index++;
+				*dst = colour;
+				dst++;
 			}
 
-			if (count_index != 0) temp_dst[count_index] = pixels;
+			if (count_dst != NULL) *count_dst = pixels;
 
 			/* Write line-ending */
-			*dst = 0; dst++; index++;
-			*dst = 0; dst++; index++;
+			*dst = 0; dst++;
+			*dst = 0; dst++;
 		}
 	}
 
+	uint size = dst - temp_dst;
+
 	/* Safety check, to make sure we guessed the size correctly */
-	assert(index < memory);
+	assert(size < memory);
 
 	/* Allocate the exact amount of memory we need */
-	dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + index);
+	Sprite *dest_sprite = (Sprite *)allocator(sizeof(*dest_sprite) + size);
 
 	dest_sprite->height = sprite->height;
 	dest_sprite->width  = sprite->width;
 	dest_sprite->x_offs = sprite->x_offs;
 	dest_sprite->y_offs = sprite->y_offs;
-	memcpy(dest_sprite->data, temp_dst, index);
+	memcpy(dest_sprite->data, temp_dst, size);
 	free(temp_dst);
 
 	return dest_sprite;
