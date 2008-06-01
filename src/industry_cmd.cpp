@@ -330,6 +330,20 @@ static uint GetSlopeZ_Industry(TileIndex tile, uint x, uint y)
 
 static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 {
+	IndustryGfx gfx = GetIndustryGfx(tile);
+
+	/* For NewGRF industry tiles we might not be drawing a foundation. We need to
+	 * account for this, otherwise we might be applying a FOUNDATION_LEVELED
+	 * on a steep slope which is not allowed. Furthermore other structures should
+	 * draw the wall of the foundation in this case.
+	 */
+	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
+		const IndustryTileSpec *indts = GetIndustryTileSpec(gfx);
+		if (indts->grf_prop.spritegroup != NULL && HasBit(indts->callback_flags, CBM_INDT_DRAW_FOUNDATIONS)) {
+			uint32 callback_res = GetIndustryTileCallback(CBID_INDUSTRY_DRAW_FOUNDATIONS, 0, 0, gfx, GetIndustryByTile(tile), tile);
+			if (callback_res == 0) return FOUNDATION_NONE;
+		}
+	}
 	return FlatteningFoundation(tileh);
 }
 

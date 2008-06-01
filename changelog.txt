@@ -1,3 +1,9 @@
+0.6.1 (2008-06-01)
+------------------------------------------------------------------------
+- Fix: Industry tiles would sometimes tell they need a 'level' slope when they do not want the slope (r13348)
+- Fix: Attempts to make the old AI perform better (r13217, r13221, r13222)
+
+
 0.6.1-RC2 (2008-05-21)
 ------------------------------------------------------------------------
 - Fix: Do not send rcon commands of the server to the first client but do directly execute those on the server (r13137)

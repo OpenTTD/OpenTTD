@@ -591,8 +591,18 @@ static const AiDefaultBlockData _airportdata_ai_5[] = {
 	MKEND(),
 };
 
+static const AiDefaultBlockData _airportdata_ai_6[] = {
+	MKAIR(6, 0, 0),
+	MKEND(),
+};
+
 static const AiDefaultBlockData _airportdata_ai_7[] = {
 	MKAIR(7, 0, 0),
+	MKEND(),
+};
+
+static const AiDefaultBlockData _airportdata_ai_8[] = {
+	MKAIR(8, 0, 0),
 	MKEND(),
 };
 
@@ -600,6 +610,8 @@ static const AiDefaultBlockData _airportdata_ai_7[] = {
 #undef MDEND
 
 static const AiDefaultBlockData * const _airport_default_block_data[] = {
+	_airportdata_ai_8, // helistation
+	_airportdata_ai_6, // helidepot
 	_airportdata_ai_7, // intercontinental airport
 	_airportdata_ai_4, // international airport
 	_airportdata_ai_3, // metropolitan airport
