@@ -71,12 +71,8 @@ void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_t
 		uint end = *index_tbl++;
 
 		do {
-		#ifdef NDEBUG
-			LoadNextSprite(start, file_index, *sprite_id);
-		#else
 			bool b = LoadNextSprite(start, file_index, *sprite_id);
 			assert(b);
-		#endif
 			(*sprite_id)++;
 		} while (++start <= end);
 	}

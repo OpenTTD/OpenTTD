@@ -156,11 +156,7 @@ void DriverFactoryBase::RegisterDriver(const char *name, Driver::Type type, int 
 	strecpy(buf, GetDriverTypeName(type), lastof(buf));
 	strecpy(buf + 5, name, lastof(buf));
 
-#if !defined(NDEBUG) || defined(WITH_ASSERT)
-	/* NDEBUG disables asserts and gives a warning: unused variable 'P' */
-	std::pair<Drivers::iterator, bool> P =
-#endif /* !NDEBUG */
-	GetDrivers().insert(Drivers::value_type(buf, this));
+	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(buf, this));
 	assert(P.second);
 }
 

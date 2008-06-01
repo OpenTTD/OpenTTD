@@ -886,23 +886,19 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 
 SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view)
 {
-	#if !defined(NDEBUG) || defined(WITH_ASSERT)
 	const Engine *e = GetEngine(engine);
-	#endif /* !defined(NDEBUG) || defined(WITH_ASSERT) */
-
-	const SpriteGroup *group;
-	ResolverObject object;
-
-	assert(e->type == VEH_AIRCRAFT);
 
 	/* Only valid for helicopters */
+	assert(e->type == VEH_AIRCRAFT);
 	assert(!(e->u.air.subtype & AIR_CTOL));
+
+	ResolverObject object;
 
 	NewVehicleResolver(&object, engine, v);
 
 	object.info_view = info_view;
 
-	group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
+	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
 	group = Resolve(group, &object);
 
 	if (group == NULL || group->type != SGT_RESULT) return 0;
