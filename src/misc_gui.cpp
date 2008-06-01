@@ -253,6 +253,7 @@ static const char *credits[] = {
 	"  Michael Blunck - Pre-Signals and Semaphores © 2003",
 	"  George - Canal/Lock graphics © 2003-2004",
 	"  David Dallaston - Tram tracks",
+	"  Zephyris - Trams",
 	"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
 	"  All Translators - Who made OpenTTD a truly international game",
 	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",

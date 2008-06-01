@@ -5,7 +5,7 @@ log() {
 }
 
 set_default() {
-	released_version=""
+	released_version="0.6.1"
 
 	ignore_extra_parameters="0"
 	# We set all kinds of defaults for params. Later on the user can override
@@ -40,8 +40,8 @@ set_default() {
 	enable_static="1"
 	enable_translator="0"
 	enable_unicode="1"
-	enable_assert="1"
-	enable_strip="0"
+	enable_assert="0"
+	enable_strip="1"
 	enable_universal="1"
 	enable_osx_g5="0"
 	enable_cocoa_quartz="1"
