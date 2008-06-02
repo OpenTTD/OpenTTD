@@ -2906,6 +2906,17 @@ static CargoID TranslateCargo(uint8 feature, uint8 ctype)
 }
 
 
+static bool IsValidGroupID(uint16 groupid, const char *function)
+{
+	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
+		grfmsg(1, "%s: Spriteset 0x%04X out of range (maximum 0x%02X) or empty, skipping.", function, groupid, _cur_grffile->spritegroups_count - 1);
+		return false;
+	}
+
+	return true;
+}
+
+
 static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 cidcount, bool wagover)
 {
 	static EngineID *last_engines;
@@ -2936,13 +2947,9 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 		for (uint c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
 			uint16 groupid = grf_load_word(&bp);
+			if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) continue;
 
 			grfmsg(8, "VehicleMapSpriteGroup: * [%d] Cargo type 0x%X, group id 0x%02X", c, ctype, groupid);
-
-			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(1, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping", groupid, _cur_grffile->spritegroups_count);
-				continue;
-			}
 
 			ctype = TranslateCargo(feature, ctype);
 			if (ctype == CT_INVALID) continue;
@@ -2959,18 +2966,12 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 	{
 		byte *bp = &buf[4 + idcount + cidcount * 3];
 		uint16 groupid = grf_load_word(&bp);
+		if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) return;
 
 		grfmsg(8, "-- Default group id 0x%04X", groupid);
 
 		for (uint i = 0; i < idcount; i++) {
 			EngineID engine = GetNewEngine(_cur_grffile, (VehicleType)feature, buf[3 + i])->index;
-
-			/* Don't tell me you don't love duplicated code! */
-			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(1, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
-				       groupid, _cur_grffile->spritegroups_count);
-				continue;
-			}
 
 			if (wagover) {
 				SetWagonOverrideSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
@@ -2988,12 +2989,7 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
-
-	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-		grfmsg(1, "CanalMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
-		       groupid, _cur_grffile->spritegroups_count);
-		return;
-	}
+	if (!IsValidGroupID(groupid, "CanalMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
 		CanalFeature cf = (CanalFeature)buf[3 + i];
@@ -3024,12 +3020,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 		for (uint c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
 			uint16 groupid = grf_load_word(&bp);
-
-			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(1, "StationMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
-				       groupid, _cur_grffile->spritegroups_count);
-				continue;
-			}
+			if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) continue;
 
 			ctype = TranslateCargo(GSF_STATION, ctype);
 			if (ctype == CT_INVALID) continue;
@@ -3041,12 +3032,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	{
 		byte *bp = &buf[4 + idcount + cidcount * 3];
 		uint16 groupid = grf_load_word(&bp);
-
-		if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-			grfmsg(1, "StationMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping",
-			       groupid, _cur_grffile->spritegroups_count);
-			return;
-		}
+		if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
 		for (uint i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
@@ -3069,12 +3055,7 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
-
-	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-		grfmsg(1, "TownHouseMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
-		       groupid, _cur_grffile->spritegroups_count);
-		return;
-	}
+	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
 		uint8 hid = buf[3 + i];
@@ -3093,12 +3074,7 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
-
-	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-		grfmsg(1, "IndustryMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
-		       groupid, _cur_grffile->spritegroups_count);
-		return;
-	}
+	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
 		uint8 id = buf[3 + i];
@@ -3117,12 +3093,7 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
-
-	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-		grfmsg(1, "IndustrytileMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
-		       groupid, _cur_grffile->spritegroups_count);
-		return;
-	}
+	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
 		uint8 id = buf[3 + i];
@@ -3141,12 +3112,7 @@ static void CargoMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 {
 	byte *bp = &buf[4 + idcount + cidcount * 3];
 	uint16 groupid = grf_load_word(&bp);
-
-	if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-		grfmsg(1, "CargoMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
-		       groupid, _cur_grffile->spritegroups_count);
-		return;
-	}
+	if (!IsValidGroupID(groupid, "CargoMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
 		CargoID cid = buf[3 + i];
