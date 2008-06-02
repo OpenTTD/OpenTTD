@@ -215,32 +215,25 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 
 static const FiosItem* GetFiosItem(const char* file)
 {
-	int i;
-
 	_saveload_mode = SLD_LOAD_GAME;
 	BuildFileList();
 
-	for (i = 0; i < _fios_num; i++) {
-		if (strcmp(file, _fios_list[i].name) == 0) break;
-		if (strcmp(file, _fios_list[i].title) == 0) break;
+	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
+		if (strcmp(file, item->name) == 0) return item;
+		if (strcmp(file, item->title) == 0) return item;
 	}
 
-	if (i == _fios_num) { // If no name matches, try to parse it as number
-		char* endptr;
+	/* If no name matches, try to parse it as number */
+	char *endptr;
+	int i = strtol(file, &endptr, 10);
+	if (file == endptr || *endptr != '\0') i = -1;
 
-		i = strtol(file, &endptr, 10);
-		if (file == endptr || *endptr != '\0') i = -1;
-	}
-
-	return IsInsideMM(i, 0, _fios_num) ? &_fios_list[i] : NULL;
+	return IsInsideMM(i, 0, _fios_items.Length()) ? _fios_items.Get(i) : NULL;
 }
 
 
 DEF_CONSOLE_CMD(ConLoad)
 {
-	const FiosItem *item;
-	const char *file;
-
 	if (argc == 0) {
 		IConsoleHelp("Load a game by name or index. Usage: 'load <file | number>'");
 		return true;
@@ -248,8 +241,8 @@ DEF_CONSOLE_CMD(ConLoad)
 
 	if (argc != 2) return false;
 
-	file = argv[1];
-	item = GetFiosItem(file);
+	const char *file = argv[1];
+	const FiosItem *item = GetFiosItem(file);
 	if (item != NULL) {
 		switch (item->type) {
 			case FIOS_TYPE_FILE: case FIOS_TYPE_OLDFILE: {
@@ -272,9 +265,6 @@ DEF_CONSOLE_CMD(ConLoad)
 
 DEF_CONSOLE_CMD(ConRemove)
 {
-	const FiosItem* item;
-	const char* file;
-
 	if (argc == 0) {
 		IConsoleHelp("Remove a savegame by name or index. Usage: 'rm <file | number>'");
 		return true;
@@ -282,8 +272,8 @@ DEF_CONSOLE_CMD(ConRemove)
 
 	if (argc != 2) return false;
 
-	file = argv[1];
-	item = GetFiosItem(file);
+	const char *file = argv[1];
+	const FiosItem *item = GetFiosItem(file);
 	if (item != NULL) {
 		if (!FiosDelete(item->name))
 			IConsolePrintF(CC_ERROR, "%s: Failed to delete file", file);
@@ -299,8 +289,6 @@ DEF_CONSOLE_CMD(ConRemove)
 /* List all the files in the current dir via console */
 DEF_CONSOLE_CMD(ConListFiles)
 {
-	int i;
-
 	if (argc == 0) {
 		IConsoleHelp("List all loadable savegames and directories in the current dir via console. Usage: 'ls | dir'");
 		return true;
@@ -308,9 +296,8 @@ DEF_CONSOLE_CMD(ConListFiles)
 
 	BuildFileList();
 
-	for (i = 0; i < _fios_num; i++) {
-		const FiosItem *item = &_fios_list[i];
-		IConsolePrintF(CC_DEFAULT, "%d) %s", i, item->title);
+	for (uint i = 0; i < _fios_items.Length(); i++) {
+		IConsolePrintF(CC_DEFAULT, "%d) %s", i, _fios_items[i].title);
 	}
 
 	FiosFreeSavegameList();
@@ -320,9 +307,6 @@ DEF_CONSOLE_CMD(ConListFiles)
 /* Change the dir via console */
 DEF_CONSOLE_CMD(ConChangeDirectory)
 {
-	const FiosItem *item;
-	const char *file;
-
 	if (argc == 0) {
 		IConsoleHelp("Change the dir via console. Usage: 'cd <directory | number>'");
 		return true;
@@ -330,8 +314,8 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 
 	if (argc != 2) return false;
 
-	file = argv[1];
-	item = GetFiosItem(file);
+	const char *file = argv[1];
+	const FiosItem *item = GetFiosItem(file);
 	if (item != NULL) {
 		switch (item->type) {
 			case FIOS_TYPE_DIR: case FIOS_TYPE_DRIVE: case FIOS_TYPE_PARENT:

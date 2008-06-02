@@ -50,7 +50,6 @@
 #include "table/strings.h"
 
 /* Variables to display file lists */
-FiosItem *_fios_list;
 SaveLoadDialogMode _saveload_mode;
 
 
@@ -1300,11 +1299,11 @@ void BuildFileList()
 		case SLD_NEW_GAME:
 		case SLD_LOAD_SCENARIO:
 		case SLD_SAVE_SCENARIO:
-			_fios_list = FiosGetScenarioList(_saveload_mode); break;
+			FiosGetScenarioList(_saveload_mode); break;
 		case SLD_LOAD_HEIGHTMAP:
-			_fios_list = FiosGetHeightmapList(_saveload_mode); break;
+			FiosGetHeightmapList(_saveload_mode); break;
 
-		default: _fios_list = FiosGetSavegameList(_saveload_mode); break;
+		default: FiosGetSavegameList(_saveload_mode); break;
 	}
 }
 
@@ -1333,8 +1332,8 @@ static void MakeSortedSaveGameList()
 	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
 	 * Only sort savegames/scenarios, not directories
 	 */
-	for (int i = 0; i < _fios_num; i++) {
-		switch (_fios_list[i].type) {
+	for (const FiosItem *item = _fios_items.Begin(); item != _fios_items.End(); item++) {
+		switch (item->type) {
 			case FIOS_TYPE_DIR:    sort_start++; break;
 			case FIOS_TYPE_PARENT: sort_start++; break;
 			case FIOS_TYPE_DRIVE:  sort_end++;   break;
@@ -1342,9 +1341,9 @@ static void MakeSortedSaveGameList()
 		}
 	}
 
-	uint s_amount = _fios_num - sort_start - sort_end;
+	uint s_amount = _fios_items.Length() - sort_start - sort_end;
 	if (s_amount > 0) {
-		qsort(_fios_list + sort_start, s_amount, sizeof(FiosItem), compare_FiosItems);
+		qsort(_fios_items.Get(sort_start), s_amount, sizeof(FiosItem), compare_FiosItems);
 	}
 }
 
@@ -1443,10 +1442,9 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 	virtual void OnPaint()
 	{
-		int pos;
 		int y;
 
-		SetVScrollCount(this, _fios_num);
+		SetVScrollCount(this, _fios_items.Length());
 		this->DrawWidgets();
 		DrawFiosTexts(this->width);
 
@@ -1459,8 +1457,8 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		this->DrawSortButtonState(_savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
 
 		y = this->widget[7].top + 1;
-		for (pos = this->vscroll.pos; pos < _fios_num; pos++) {
-			const FiosItem *item = _fios_list + pos;
+		for (uint pos = this->vscroll.pos; pos < _fios_items.Length(); pos++) {
+			const FiosItem *item = _fios_items.Get(pos);
 
 			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], this->width - 18);
 			y += 10;
@@ -1497,14 +1495,12 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 			case 7: { // Click the listbox
 				int y = (pt.y - this->widget[widget].top - 1) / 10;
-				char *name;
-				const FiosItem *file;
 
 				if (y < 0 || (y += this->vscroll.pos) >= this->vscroll.count) return;
 
-				file = _fios_list + y;
+				const FiosItem *file = _fios_items.Get(y);
 
-				name = FiosBrowseTo(file);
+				char *name = FiosBrowseTo(file);
 				if (name != NULL) {
 					if (_saveload_mode == SLD_LOAD_GAME || _saveload_mode == SLD_LOAD_SCENARIO) {
 						_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;

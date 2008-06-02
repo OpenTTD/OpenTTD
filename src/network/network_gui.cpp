@@ -670,7 +670,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		_saveload_mode = SLD_NEW_GAME;
 		BuildFileList();
 		this->vscroll.cap = 12;
-		this->vscroll.count = _fios_num + 1;
+		this->vscroll.count = _fios_items.Length();
 
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 160);
@@ -683,7 +683,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 	virtual void OnPaint()
 	{
-		int y = NSSWND_START, pos;
+		int y = NSSWND_START;
 		const FiosItem *item;
 
 		/* draw basic widgets */
@@ -703,9 +703,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		/* draw list of maps */
 		GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
 
-		pos = this->vscroll.pos;
-		while (pos < _fios_num + 1) {
-			item = _fios_list + pos - 1;
+		for (uint pos = this->vscroll.pos; pos < _fios_items.Length() + 1; pos++) {
+			item = _fios_items.Get(pos - 1);
 			if (item == this->map || (pos == 0 && this->map == NULL))
 				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
 
@@ -714,7 +713,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			} else {
 				DoDrawString(item->title, 14, y, _fios_colors[item->type] );
 			}
-			pos++;
 			y += NSSWND_ROWSIZE;
 
 			if (y >= this->vscroll.cap * NSSWND_ROWSIZE + NSSWND_START) break;
@@ -746,7 +744,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				y += this->vscroll.pos;
 				if (y >= this->vscroll.count) return;
 
-				this->map = (y == 0) ? NULL : _fios_list + y - 1;
+				this->map = (y == 0) ? NULL : _fios_items.Get(y - 1);
 				this->SetDirty();
 			} break;
 
