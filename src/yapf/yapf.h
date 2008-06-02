@@ -16,7 +16,7 @@
  * @param tracks   available tracks on the new tile (to choose from)
  * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
+Trackdir YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks);
 
 /** Finds the best path for given road vehicle.
  * @param v        the RV that needs to find a path
@@ -24,7 +24,7 @@ Trackdir YapfChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
  * @param enterdir diagonal direction which the RV will enter this new tile from
  * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir);
+Trackdir YapfChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir);
 
 /** Finds the best path for given train.
  * @param v        the train that needs to find a path
@@ -34,7 +34,7 @@ Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
  * @param path_not_found [out] true is returned if no path can be found (returned Trackdir is only a 'guess')
  * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found);
+Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found);
 
 /** Used by RV multistop feature to find the nearest road stop that has a free slot.
  * @param v      RV (its current tile will be the origin)
@@ -58,17 +58,17 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v);
  * @param reversed     receives true if train needs to reversed first
  * @return       the true if depot was found.
  */
-bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed);
+bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed);
 
 /** Returns true if it is better to reverse the train before leaving station */
-bool YapfCheckReverseTrain(Vehicle* v);
+bool YapfCheckReverseTrain(const Vehicle* v);
 
 /** Use this function to notify YAPF that track layout (or signal configuration) has change */
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track);
 
 /** performance measurement helpers */
 void* NpfBeginInterval();
-int NpfEndInterval(void* perf);
+int NpfEndInterval(void *perf);
 
 
 extern int _aystar_stats_open_size;

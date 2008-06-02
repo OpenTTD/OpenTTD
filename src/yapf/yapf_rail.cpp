@@ -45,7 +45,7 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
-	static bool stFindNearestDepotTwoWay(Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
+	static bool stFindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
 	{
 		Tpf pf1;
 		bool result1 = pf1.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_distance, reverse_penalty, depot_tile, reversed);
@@ -64,7 +64,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE bool FindNearestDepotTwoWay(Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
+	FORCEINLINE bool FindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
 	{
 		// set origin and destination nodes
 		Yapf().SetOrigin(t1, td1, t2, td2, reverse_penalty, true);
@@ -121,7 +121,7 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
-	static Trackdir stChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
+	static Trackdir stChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
 	{
 		// create pathfinder instance
 		Tpf pf1;
@@ -148,7 +148,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE Trackdir ChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
+	FORCEINLINE Trackdir ChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
 	{
 		// set origin and destination nodes
 		Yapf().SetOrigin(v->tile, GetVehicleTrackdir(v), INVALID_TILE, INVALID_TRACKDIR, 1, true);
@@ -181,7 +181,7 @@ public:
 		return next_trackdir;
 	}
 
-	static bool stCheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
+	static bool stCheckReverseTrain(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
 	{
 		Tpf pf1;
 		bool result1 = pf1.CheckReverseTrain(v, t1, td1, t2, td2, reverse_penalty);
@@ -198,7 +198,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE bool CheckReverseTrain(Vehicle* v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
+	FORCEINLINE bool CheckReverseTrain(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int reverse_penalty)
 	{
 		// create pathfinder instance
 		// set origin and destination nodes
@@ -247,10 +247,10 @@ struct CYapfAnyDepotRail1 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail1, CFollowT
 struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
 
 
-Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
+Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
 {
 	// default is YAPF type 2
-	typedef Trackdir (*PfnChooseRailTrack)(Vehicle*, TileIndex, DiagDirection, TrackBits, bool*);
+	typedef Trackdir (*PfnChooseRailTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits, bool*);
 	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack;
 
 	// check if non-default YAPF type needed
@@ -263,10 +263,10 @@ Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	return td_ret;
 }
 
-bool YapfCheckReverseTrain(Vehicle* v)
+bool YapfCheckReverseTrain(const Vehicle* v)
 {
 	/* last wagon */
-	Vehicle* last_veh = GetLastVehicleInChain(v);
+	const Vehicle *last_veh = GetLastVehicleInChain(v);
 
 	// get trackdirs of both ends
 	Trackdir td = GetVehicleTrackdir(v);
@@ -307,7 +307,7 @@ bool YapfCheckReverseTrain(Vehicle* v)
 		reverse_penalty += DistanceManhattan(cur_tile, tile_rev) * YAPF_TILE_LENGTH;
 	}
 
-	typedef bool (*PfnCheckReverseTrain)(Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int);
+	typedef bool (*PfnCheckReverseTrain)(const Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int);
 	PfnCheckReverseTrain pfnCheckReverseTrain = CYapfRail1::stCheckReverseTrain;
 
 	// check if non-default YAPF type needed
@@ -323,12 +323,12 @@ bool YapfCheckReverseTrain(Vehicle* v)
 	return reverse;
 }
 
-bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
+bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
 {
 	*depot_tile = INVALID_TILE;
 	*reversed = false;
 
-	Vehicle* last_veh = GetLastVehicleInChain(v);
+	const Vehicle *last_veh = GetLastVehicleInChain(v);
 
 	TileIndex tile = v->tile;
 	TileIndex last_tile = last_veh->tile;
@@ -337,7 +337,7 @@ bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_pe
 	Trackdir td = GetVehicleTrackdir(v);
 	Trackdir td_rev = ReverseTrackdir(GetVehicleTrackdir(last_veh));
 
-	typedef bool (*PfnFindNearestDepotTwoWay)(Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int, int, TileIndex*, bool*);
+	typedef bool (*PfnFindNearestDepotTwoWay)(const Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int, int, TileIndex*, bool*);
 	PfnFindNearestDepotTwoWay pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail1::stFindNearestDepotTwoWay;
 
 	// check if non-default YAPF type needed

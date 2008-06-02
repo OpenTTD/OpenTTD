@@ -11,7 +11,7 @@ protected:
 	RailTypes m_compatible_railtypes;
 
 public:
-	void SetDestination(Vehicle* v)
+	void SetDestination(const Vehicle* v)
 	{
 		m_compatible_railtypes = v->u.rail.compatible_railtypes;
 	}
@@ -84,7 +84,7 @@ protected:
 	}
 
 public:
-	void SetDestination(Vehicle* v)
+	void SetDestination(const Vehicle* v)
 	{
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:

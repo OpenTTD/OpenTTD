@@ -34,7 +34,7 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 'w';}
 
-	static Trackdir ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+	static Trackdir ChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 	{
 		// handle special case - when next tile is destination tile
 		if (tile == v->dest_tile) {
@@ -147,24 +147,25 @@ struct CYapfShip2 : CYapfT<CYapfShip_TypesT<CYapfShip2, CFollowTrackWater    , C
 struct CYapfShip3 : CYapfT<CYapfShip_TypesT<CYapfShip3, CFollowTrackWaterNo90, CShipNodeListTrackDir> > {};
 
 /** Ship controller helper - path finder invoker */
-Trackdir YapfChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+Trackdir YapfChooseShipTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
 {
 	// default is YAPF type 2
-	typedef Trackdir (*PfnChooseShipTrack)(Vehicle*, TileIndex, DiagDirection, TrackBits);
+	typedef Trackdir (*PfnChooseShipTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits);
 	PfnChooseShipTrack pfnChooseShipTrack = CYapfShip2::ChooseShipTrack; // default: ExitDir, allow 90-deg
 
 	// check if non-default YAPF type needed
-	if (_settings_game.pf.forbid_90_deg)
+	if (_settings_game.pf.forbid_90_deg) {
 		pfnChooseShipTrack = &CYapfShip3::ChooseShipTrack; // Trackdir, forbid 90-deg
-	else if (_settings_game.pf.yapf.disable_node_optimization)
+	} else if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnChooseShipTrack = &CYapfShip1::ChooseShipTrack; // Trackdir, allow 90-deg
+	}
 
 	Trackdir td_ret = pfnChooseShipTrack(v, tile, enterdir, tracks);
 	return td_ret;
 }
 
 /** performance measurement helper */
-void* NpfBeginInterval()
+void * NpfBeginInterval()
 {
 	CPerformanceTimer& perf = *new CPerformanceTimer;
 	perf.Start();
@@ -172,7 +173,7 @@ void* NpfBeginInterval()
 }
 
 /** performance measurement helper */
-int NpfEndInterval(void* vperf)
+int NpfEndInterval(void *vperf)
 {
 	CPerformanceTimer& perf = *(CPerformanceTimer*)vperf;
 	perf.Stop();

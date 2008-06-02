@@ -51,11 +51,11 @@ public:
 
 	NodeList             m_nodes;              ///< node list multi-container
 protected:
-	Node*                m_pBestDestNode;      ///< pointer to the destination node found at last round
-	Node*                m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
+	Node                *m_pBestDestNode;      ///< pointer to the destination node found at last round
+	Node                *m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
 	const YAPFSettings  *m_settings;           ///< current settings (_settings_game.yapf)
 	int                  m_max_search_nodes;   ///< maximum number of nodes we are allowed to visit before we give up
-	const Vehicle*       m_veh;                ///< vehicle that we are trying to drive
+	const Vehicle       *m_veh;                ///< vehicle that we are trying to drive
 
 	int                  m_stats_cost_calcs;   ///< stats - how many node's costs were calculated
 	int                  m_stats_cache_hits;   ///< stats - how many node's costs were reused from cache
@@ -281,7 +281,7 @@ public:
 		m_nodes.InsertOpenNode(n);
 	}
 
-	const Vehicle* GetVehicle() const {return m_veh;}
+	const Vehicle * GetVehicle() const {return m_veh;}
 
 	void DumpBase(DumpTarget &dmp) const
 	{

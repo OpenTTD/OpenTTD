@@ -191,7 +191,7 @@ public:
 	FORCEINLINE int PlatformLengthPenalty(int platform_length)
 	{
 		int cost = 0;
-		const Vehicle* v = Yapf().GetVehicle();
+		const Vehicle *v = Yapf().GetVehicle();
 		assert(v != NULL);
 		assert(v->type == VEH_TRAIN);
 		assert(v->u.rail.cached_total_length != 0);
@@ -261,7 +261,7 @@ public:
 		int segment_entry_cost = 0;
 		int segment_cost = 0;
 
-		const Vehicle* v = Yapf().GetVehicle();
+		const Vehicle *v = Yapf().GetVehicle();
 
 		// start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment
 		TILE cur(n.m_key.m_tile, n.m_key.m_td);

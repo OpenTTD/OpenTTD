@@ -83,7 +83,7 @@ public:
 			// base tile cost depending on distance between edges
 			segment_cost += Yapf().OneTileCost(tile, trackdir);
 
-			const Vehicle* v = Yapf().GetVehicle();
+			const Vehicle *v = Yapf().GetVehicle();
 			// we have reached the vehicle's destination - segment should end here to avoid target skipping
 			if (v->current_order.IsType(OT_GOTO_STATION) && tile == v->dest_tile) break;
 
@@ -253,13 +253,13 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 'r';}
 
-	static Trackdir stChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
+	static Trackdir stChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir)
 	{
 		Tpf pf;
 		return pf.ChooseRoadTrack(v, tile, enterdir);
 	}
 
-	FORCEINLINE Trackdir ChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
+	FORCEINLINE Trackdir ChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir)
 	{
 		// handle special case - when next tile is destination tile
 		if (tile == v->dest_tile) {
@@ -400,21 +400,22 @@ struct CYapfRoadAnyDepot1 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot1, CRoadNod
 struct CYapfRoadAnyDepot2 : CYapfT<CYapfRoad_TypesT<CYapfRoadAnyDepot2, CRoadNodeListExitDir , CYapfDestinationAnyDepotRoadT> > {};
 
 
-Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
+Trackdir YapfChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir)
 {
 	// default is YAPF type 2
-	typedef Trackdir (*PfnChooseRoadTrack)(Vehicle*, TileIndex, DiagDirection);
+	typedef Trackdir (*PfnChooseRoadTrack)(const Vehicle*, TileIndex, DiagDirection);
 	PfnChooseRoadTrack pfnChooseRoadTrack = &CYapfRoad2::stChooseRoadTrack; // default: ExitDir, allow 90-deg
 
 	// check if non-default YAPF type should be used
-	if (_settings_game.pf.yapf.disable_node_optimization)
+	if (_settings_game.pf.yapf.disable_node_optimization) {
 		pfnChooseRoadTrack = &CYapfRoad1::stChooseRoadTrack; // Trackdir, allow 90-deg
+	}
 
 	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir);
 	return td_ret;
 }
 
-uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile)
+uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile)
 {
 	// default is YAPF type 2
 	typedef uint (*PfnDistanceToTile)(const Vehicle*, TileIndex);

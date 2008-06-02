@@ -22,7 +22,7 @@ struct CFollowTrackT
 		EC_NO_WAY,
 	};
 
-	const Vehicle*      m_veh;           ///< moving vehicle
+	const Vehicle      *m_veh;           ///< moving vehicle
 	TileIndex           m_old_tile;      ///< the origin (vehicle moved from) before move
 	Trackdir            m_old_td;        ///< the trackdir (the vehicle was on) before move
 	TileIndex           m_new_tile;      ///< the new tile (the vehicle has entered)
@@ -33,14 +33,14 @@ struct CFollowTrackT
 	bool                m_is_station;    ///< last turn passed station
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
 	ErrorCode           m_err;
-	CPerformanceTimer* m_pPerf;
+	CPerformanceTimer  *m_pPerf;
 
-	FORCEINLINE CFollowTrackT(const Vehicle* v = NULL, CPerformanceTimer* pPerf = NULL)
+	FORCEINLINE CFollowTrackT(const Vehicle *v = NULL, CPerformanceTimer* pPerf = NULL)
 	{
 		Init(v, pPerf);
 	}
 
-	FORCEINLINE void Init(const Vehicle* v, CPerformanceTimer* pPerf)
+	FORCEINLINE void Init(const Vehicle *v, CPerformanceTimer* pPerf)
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
