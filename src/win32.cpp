@@ -780,7 +780,7 @@ void FiosGetDrives()
 {
 #if defined(WINCE)
 	/* WinCE only knows one drive: / */
-	FiosItem *fios = _fios_items.Append()();
+	FiosItem *fios = _fios_items.Append();
 	fios->type = FIOS_TYPE_DRIVE;
 	fios->mtime = 0;
 	snprintf(fios->name, lengthof(fios->name), PATHSEP "");
@@ -791,7 +791,7 @@ void FiosGetDrives()
 
 	GetLogicalDriveStrings(sizeof(drives), drives);
 	for (s = drives; *s != '\0';) {
-		FiosItem *fios = _fios_items.Append()();
+		FiosItem *fios = _fios_items.Append();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
 		snprintf(fios->name, lengthof(fios->name),  "%c:", s[0] & 0xFF);
