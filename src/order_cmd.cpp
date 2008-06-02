@@ -1613,6 +1613,95 @@ static bool OrderConditionCompare(OrderConditionComparator occ, int variable, in
 }
 
 /**
+ * Process a conditional order and determine the next order.
+ * @param order the order the vehicle currently has
+ * @param v the vehicle to update
+ * @return index of next order to jump to, or INVALID_VEH_ORDER_ID to use the next order
+ */
+static VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
+{
+	if (order->GetType() != OT_CONDITIONAL) return INVALID_VEH_ORDER_ID;
+
+	bool skip_order = false;
+	OrderConditionComparator occ = order->GetConditionComparator();
+	uint16 value = order->GetConditionValue();
+
+	switch (order->GetConditionVariable()) {
+		case OCV_LOAD_PERCENTAGE:  skip_order = OrderConditionCompare(occ, CalcPercentVehicleFilled(v, NULL), value); break;
+		case OCV_RELIABILITY:      skip_order = OrderConditionCompare(occ, v->reliability * 100 >> 16,        value); break;
+		case OCV_MAX_SPEED:        skip_order = OrderConditionCompare(occ, v->GetDisplayMaxSpeed(),           value); break;
+		case OCV_AGE:              skip_order = OrderConditionCompare(occ, v->age / 366,                      value); break;
+		case OCV_REQUIRES_SERVICE: skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
+		case OCV_UNCONDITIONALLY:  skip_order = true; break;
+		default: NOT_REACHED();
+	}
+
+	return skip_order ? order->GetConditionSkipToOrder() : (VehicleOrderID)INVALID_VEH_ORDER_ID;
+}
+
+/**
+ * Update the vehicle's destination tile from an order.
+ * @param order the order the vehicle currently has
+ * @param v the vehicle to update
+ */
+static bool UpdateOrderDest(Vehicle *v, const Order *order)
+{
+	switch (order->GetType()) {
+		case OT_GOTO_STATION:
+			v->dest_tile = v->GetOrderStationLocation(order->GetDestination());
+			break;
+
+		case OT_GOTO_DEPOT:
+			if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
+				/* We need to search for the nearest depot (hangar). */
+				TileIndex location;
+				DestinationID destination;
+				bool reverse;
+
+				if (v->FindClosestDepot(&location, &destination, &reverse)) {
+					v->dest_tile = location;
+					v->current_order.MakeGoToDepot(destination, ODTFB_PART_OF_ORDERS);
+
+					/* If there is no depot in front, reverse automatically (trains only) */
+					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+
+					if (v->type == VEH_AIRCRAFT && v->u.air.state == FLYING && v->u.air.targetairport != destination) {
+						/* The aircraft is now heading for a different hangar than the next in the orders */
+						extern void AircraftNextAirportPos_and_Order(Vehicle *v);
+						AircraftNextAirportPos_and_Order(v);
+					}
+				} else {
+					UpdateVehicleTimetable(v, true);
+					v->cur_order_index++;
+				}
+			} else if (v->type != VEH_AIRCRAFT) {
+				v->dest_tile = GetDepot(order->GetDestination())->xy;
+			}
+			break;
+
+		case OT_GOTO_WAYPOINT:
+			v->dest_tile = GetWaypoint(order->GetDestination())->xy;
+			break;
+
+		case OT_CONDITIONAL: {
+			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
+			UpdateVehicleTimetable(v, true);
+			if (next_order != INVALID_VEH_ORDER_ID) {
+				v->cur_order_index = next_order;
+			} else {
+				v->cur_order_index++;
+			}
+			return false;
+		}
+
+		default:
+			v->dest_tile = 0;
+			return false;
+	}
+	return true;
+}
+
+/**
  * Handle the orders of a vehicle and determine the next place
  * to go to if needed.
  * @param v the vehicle to do this for.
@@ -1710,71 +1799,7 @@ bool ProcessOrders(Vehicle *v)
 			break;
 	}
 
-	switch (order->GetType()) {
-		case OT_GOTO_STATION:
-			v->dest_tile = v->GetOrderStationLocation(order->GetDestination());
-			break;
-
-		case OT_GOTO_DEPOT:
-			if (v->current_order.GetDepotActionType() & ODATFB_NEAREST_DEPOT) {
-				/* We need to search for the nearest depot (hangar). */
-				TileIndex location;
-				DestinationID destination;
-				bool reverse;
-
-				if (v->FindClosestDepot(&location, &destination, &reverse)) {
-					v->dest_tile = location;
-					v->current_order.MakeGoToDepot(destination, ODTFB_PART_OF_ORDERS);
-
-					/* If there is no depot in front, reverse automatically (trains only) */
-					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
-
-					if (v->type == VEH_AIRCRAFT && v->u.air.state == FLYING && v->u.air.targetairport != destination) {
-						/* The aircraft is now heading for a different hangar than the next in the orders */
-						extern void AircraftNextAirportPos_and_Order(Vehicle *v);
-						AircraftNextAirportPos_and_Order(v);
-					}
-				} else {
-					UpdateVehicleTimetable(v, true);
-					v->cur_order_index++;
-				}
-			} else if (v->type != VEH_AIRCRAFT) {
-				v->dest_tile = GetDepot(order->GetDestination())->xy;
-			}
-			break;
-
-		case OT_GOTO_WAYPOINT:
-			v->dest_tile = GetWaypoint(order->GetDestination())->xy;
-			break;
-
-		case OT_CONDITIONAL: {
-			bool skip_order = false;
-			OrderConditionComparator occ = order->GetConditionComparator();
-			uint16 value = order->GetConditionValue();
-
-			switch (order->GetConditionVariable()) {
-				case OCV_LOAD_PERCENTAGE:  skip_order = OrderConditionCompare(occ, CalcPercentVehicleFilled(v, NULL), value); break;
-				case OCV_RELIABILITY:      skip_order = OrderConditionCompare(occ, v->reliability * 100 >> 16,        value); break;
-				case OCV_MAX_SPEED:        skip_order = OrderConditionCompare(occ, v->GetDisplayMaxSpeed(),           value); break;
-				case OCV_AGE:              skip_order = OrderConditionCompare(occ, v->age / 366,                      value); break;
-				case OCV_REQUIRES_SERVICE: skip_order = OrderConditionCompare(occ, v->NeedsServicing(),               value); break;
-				case OCV_UNCONDITIONALLY:  skip_order = true; break;
-				default: NOT_REACHED();
-			}
-			UpdateVehicleTimetable(v, true);
-			if (skip_order) {
-				v->cur_order_index = order->GetConditionSkipToOrder();
-			} else {
-				v->cur_order_index++;
-			}
-		} return false;
-
-		default:
-			v->dest_tile = 0;
-			return false;
-	}
-
-	return may_reverse;
+	return UpdateOrderDest(v, order) && may_reverse;
 }
 
 /**
