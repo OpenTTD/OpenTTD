@@ -2243,6 +2243,7 @@ static void TownActionBribe(Town *t)
 		 */
 		if (t->ratings[_current_player] > RATING_BRIBE_DOWN_TO) {
 			t->ratings[_current_player] = RATING_BRIBE_DOWN_TO;
+			InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 		}
 	} else {
 		ChangeTownRating(t, RATING_BRIBE_UP_STEP, RATING_BRIBE_MAXIMUM);
@@ -2323,6 +2324,8 @@ static void UpdateTownGrowRate(Town *t)
 	for (uint i = 0; i < MAX_PLAYERS; i++) {
 		t->ratings[i] = Clamp(t->ratings[i], RATING_MINIMUM, RATING_MAXIMUM);
 	}
+
+	InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 
 	ClrBit(t->flags12, TOWN_IS_FUNDED);
 	if (_settings_game.economy.town_growth_rate == 0 && t->fund_buildings_months == 0) return;
@@ -2495,6 +2498,7 @@ void ChangeTownRating(Town *t, int add, int max)
 		_town_test_ratings[t] = rating;
 	} else {
 		t->ratings[_current_player] = rating;
+		InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 	}
 }
 
