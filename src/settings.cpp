@@ -2232,6 +2232,7 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 
 	if (sd == NULL) {
 		IConsolePrintF(CC_WARNING, "'%s' is an unknown patch setting.", name);
+		return;
 	}
 
 	bool success;
