@@ -2917,17 +2917,18 @@ static bool IsValidGroupID(uint16 groupid, const char *function)
 }
 
 
-static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 cidcount, bool wagover)
+static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
 {
 	static EngineID *last_engines;
 	static uint last_engines_count;
+	bool wagover = false;
 
-	if (!wagover) {
-		if (last_engines_count != idcount) {
-			last_engines = ReallocT(last_engines, idcount);
-			last_engines_count = idcount;
-		}
-	} else {
+	/* Test for 'wagon override' flag */
+	if (HasBit(idcount, 7)) {
+		wagover = true;
+		/* Strip off the flag */
+		idcount = GB(idcount, 0, 7);
+
 		if (last_engines_count == 0) {
 			grfmsg(0, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with");
 			return;
@@ -2935,64 +2936,76 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount, uint8 
 
 		grfmsg(6, "VehicleMapSpriteGroup: WagonOverride: %u engines, %u wagons",
 				last_engines_count, idcount);
+	} else {
+		if (last_engines_count != idcount) {
+			last_engines = ReallocT(last_engines, idcount);
+			last_engines_count = idcount;
+		}
 	}
 
+	EngineID engines[idcount];
 	for (uint i = 0; i < idcount; i++) {
-		uint8 engine_id = buf[3 + i];
-		EngineID engine = GetNewEngine(_cur_grffile, (VehicleType)feature, engine_id)->index;
-		byte *bp = &buf[4 + idcount];
+		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, grf_load_byte(&buf))->index;
+		if (!wagover) last_engines[i] = engines[i];
+	}
 
-		grfmsg(7, "VehicleMapSpriteGroup: [%d] Engine %d...", i, engine);
+	uint8 cidcount = grf_load_byte(&buf);
+	for (uint c = 0; c < cidcount; c++) {
+		uint8 ctype = grf_load_byte(&buf);
+		uint16 groupid = grf_load_word(&buf);
+		if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) continue;
 
-		for (uint c = 0; c < cidcount; c++) {
-			uint8 ctype = grf_load_byte(&bp);
-			uint16 groupid = grf_load_word(&bp);
-			if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) continue;
+		grfmsg(8, "VehicleMapSpriteGroup: * [%d] Cargo type 0x%X, group id 0x%02X", c, ctype, groupid);
 
-			grfmsg(8, "VehicleMapSpriteGroup: * [%d] Cargo type 0x%X, group id 0x%02X", c, ctype, groupid);
+		ctype = TranslateCargo(feature, ctype);
+		if (ctype == CT_INVALID) continue;
 
-			ctype = TranslateCargo(feature, ctype);
-			if (ctype == CT_INVALID) continue;
+		for (uint i = 0; i < idcount; i++) {
+			EngineID engine = engines[i];
+
+			grfmsg(7, "VehicleMapSpriteGroup: [%d] Engine %d...", i, engine);
 
 			if (wagover) {
 				SetWagonOverrideSprites(engine, ctype, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
 				SetCustomEngineSprites(engine, ctype, _cur_grffile->spritegroups[groupid]);
-				last_engines[i] = engine;
 			}
 		}
 	}
 
-	{
-		byte *bp = &buf[4 + idcount + cidcount * 3];
-		uint16 groupid = grf_load_word(&bp);
-		if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) return;
+	uint16 groupid = grf_load_word(&buf);
+	if (!IsValidGroupID(groupid, "VehicleMapSpriteGroup")) return;
 
-		grfmsg(8, "-- Default group id 0x%04X", groupid);
+	grfmsg(8, "-- Default group id 0x%04X", groupid);
 
-		for (uint i = 0; i < idcount; i++) {
-			EngineID engine = GetNewEngine(_cur_grffile, (VehicleType)feature, buf[3 + i])->index;
+	for (uint i = 0; i < idcount; i++) {
+		EngineID engine = engines[i];
 
-			if (wagover) {
-				SetWagonOverrideSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
-			} else {
-				SetCustomEngineSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid]);
-				SetEngineGRF(engine, _cur_grffile);
-				last_engines[i] = engine;
-			}
+		if (wagover) {
+			SetWagonOverrideSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+		} else {
+			SetCustomEngineSprites(engine, CT_DEFAULT, _cur_grffile->spritegroups[groupid]);
+			SetEngineGRF(engine, _cur_grffile);
 		}
 	}
 }
 
 
-static void CanalMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	byte *bp = &buf[4 + idcount + cidcount * 3];
-	uint16 groupid = grf_load_word(&bp);
+	CanalFeature cfs[idcount];
+	for (uint i = 0; i < idcount; i++) {
+		cfs[i] = (CanalFeature)grf_load_byte(&buf);
+	}
+
+	uint8 cidcount = grf_load_byte(&buf);
+	buf += cidcount * 3;
+
+	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "CanalMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		CanalFeature cf = (CanalFeature)buf[3 + i];
+		CanalFeature cf = cfs[i];
 
 		if (cf >= CF_END) {
 			grfmsg(1, "CanalMapSpriteGroup: Canal subset %d out of range, skipping", cf);
@@ -3004,62 +3017,69 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 }
 
 
-static void StationMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 {
+	uint8 stations[idcount];
 	for (uint i = 0; i < idcount; i++) {
-		uint8 stid = buf[3 + i];
-		StationSpec *statspec = _cur_grffile->stations[stid];
+		stations[i] = grf_load_byte(&buf);
+	}
 
-		if (statspec == NULL) {
-			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stid);
-			return;
-		}
+	uint8 cidcount = grf_load_byte(&buf);
+	for (uint c = 0; c < cidcount; c++) {
+		uint8 ctype = grf_load_byte(&buf);
+		uint16 groupid = grf_load_word(&buf);
+		if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) continue;
 
-		byte *bp = &buf[4 + idcount];
+		ctype = TranslateCargo(GSF_STATION, ctype);
+		if (ctype == CT_INVALID) continue;
 
-		for (uint c = 0; c < cidcount; c++) {
-			uint8 ctype = grf_load_byte(&bp);
-			uint16 groupid = grf_load_word(&bp);
-			if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) continue;
+		for (uint i = 0; i < idcount; i++) {
+			StationSpec *statspec = _cur_grffile->stations[stations[i]];
 
-			ctype = TranslateCargo(GSF_STATION, ctype);
-			if (ctype == CT_INVALID) continue;
+			if (statspec == NULL) {
+				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
+				return;
+			}
 
 			statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
 		}
 	}
 
-	{
-		byte *bp = &buf[4 + idcount + cidcount * 3];
-		uint16 groupid = grf_load_word(&bp);
-		if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
+	uint16 groupid = grf_load_word(&buf);
+	if (!IsValidGroupID(groupid, "StationMapSpriteGroup")) return;
 
-		for (uint i = 0; i < idcount; i++) {
-			uint8 stid = buf[3 + i];
-			StationSpec *statspec = _cur_grffile->stations[stid];
-			if (statspec == NULL) {
-				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stid);
-				continue;
-			}
+	for (uint i = 0; i < idcount; i++) {
+		StationSpec *statspec = _cur_grffile->stations[stations[i]];
 
-			statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
-			statspec->grffile = _cur_grffile;
-			statspec->localidx = stid;
-			SetCustomStationSpec(statspec);
+		if (statspec == NULL) {
+			grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
+			continue;
 		}
+
+		statspec->spritegroup[CT_DEFAULT] = _cur_grffile->spritegroups[groupid];
+		statspec->grffile = _cur_grffile;
+		statspec->localidx = stations[i];
+		SetCustomStationSpec(statspec);
 	}
 }
 
 
-static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	byte *bp = &buf[4 + idcount + cidcount * 3];
-	uint16 groupid = grf_load_word(&bp);
+	uint8 houses[idcount];
+	for (uint i = 0; i < idcount; i++) {
+		houses[i] = grf_load_byte(&buf);
+	}
+
+	/* Skip the cargo type section, we only care about the default group */
+	uint8 cidcount = grf_load_byte(&buf);
+	buf += cidcount * 3;
+
+	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "TownHouseMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		uint8 hid = buf[3 + i];
-		HouseSpec *hs = _cur_grffile->housespec[hid];
+		HouseSpec *hs = _cur_grffile->housespec[houses[i]];
 
 		if (hs == NULL) {
 			grfmsg(1, "TownHouseMapSpriteGroup: Too many houses defined, skipping");
@@ -3070,15 +3090,22 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	}
 }
 
-static void IndustryMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	byte *bp = &buf[4 + idcount + cidcount * 3];
-	uint16 groupid = grf_load_word(&bp);
+	uint8 industries[idcount];
+	for (uint i = 0; i < idcount; i++) {
+		industries[i] = grf_load_byte(&buf);
+	}
+
+	/* Skip the cargo type section, we only care about the default group */
+	uint8 cidcount = grf_load_byte(&buf);
+	buf += cidcount * 3;
+
+	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "IndustryMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		uint8 id = buf[3 + i];
-		IndustrySpec *indsp = _cur_grffile->industryspec[id];
+		IndustrySpec *indsp = _cur_grffile->industryspec[industries[i]];
 
 		if (indsp == NULL) {
 			grfmsg(1, "IndustryMapSpriteGroup: Too many industries defined, skipping");
@@ -3089,15 +3116,22 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	}
 }
 
-static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	byte *bp = &buf[4 + idcount + cidcount * 3];
-	uint16 groupid = grf_load_word(&bp);
+	uint8 indtiles[idcount];
+	for (uint i = 0; i < idcount; i++) {
+		indtiles[i] = grf_load_byte(&buf);
+	}
+
+	/* Skip the cargo type section, we only care about the default group */
+	uint8 cidcount = grf_load_byte(&buf);
+	buf += cidcount * 3;
+
+	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "IndustrytileMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		uint8 id = buf[3 + i];
-		IndustryTileSpec *indtsp = _cur_grffile->indtspec[id];
+		IndustryTileSpec *indtsp = _cur_grffile->indtspec[indtiles[i]];
 
 		if (indtsp == NULL) {
 			grfmsg(1, "IndustrytileMapSpriteGroup: Too many industry tiles defined, skipping");
@@ -3108,17 +3142,25 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
 	}
 }
 
-static void CargoMapSpriteGroup(byte *buf, uint8 idcount, uint8 cidcount)
+static void CargoMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	byte *bp = &buf[4 + idcount + cidcount * 3];
-	uint16 groupid = grf_load_word(&bp);
+	CargoID cargos[idcount];
+	for (uint i = 0; i < idcount; i++) {
+		cargos[i] = grf_load_byte(&buf);
+	}
+
+	/* Skip the cargo type section, we only care about the default group */
+	uint8 cidcount = grf_load_byte(&buf);
+	buf += cidcount * 3;
+
+	uint16 groupid = grf_load_word(&buf);
 	if (!IsValidGroupID(groupid, "CargoMapSpriteGroup")) return;
 
 	for (uint i = 0; i < idcount; i++) {
-		CargoID cid = buf[3 + i];
+		CargoID cid = cargos[i];
 
 		if (cid >= NUM_CARGO) {
-			grfmsg(1, "CargoMapSpriteGroup: Cargo ID %d out of range, skipping");
+			grfmsg(1, "CargoMapSpriteGroup: Cargo ID %d out of range, skipping", cid);
 			continue;
 		}
 
@@ -3153,16 +3195,15 @@ static void FeatureMapSpriteGroup(byte *buf, size_t len)
 
 	if (!check_length(len, 6, "FeatureMapSpriteGroup")) return;
 
-	uint8 feature = buf[1];
-	uint8 idcount = buf[2] & 0x7F;
-	bool wagover = (buf[2] & 0x80) == 0x80;
-
-	if (!check_length(len, 3 + idcount, "FeatureMapSpriteGroup")) return;
+	buf++;
+	uint8 feature = grf_load_byte(&buf);
+	uint8 idcount = grf_load_byte(&buf);
 
 	/* If idcount is zero, this is a feature callback */
 	if (idcount == 0) {
-		byte *bp = &buf[4];
-		uint16 groupid = grf_load_word(&bp);
+		/* Skip number of cargo ids? */
+		grf_load_byte(&buf);
+		uint16 groupid = grf_load_word(&buf);
 
 		grfmsg(6, "FeatureMapSpriteGroup: Adding generic feature callback for feature %d", feature);
 
@@ -3170,42 +3211,38 @@ static void FeatureMapSpriteGroup(byte *buf, size_t len)
 		return;
 	}
 
-	uint8 cidcount = buf[3 + idcount];
-	if (!check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup")) return;
-
-	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d",
-			feature, idcount, cidcount, wagover);
+	grfmsg(6, "FeatureMapSpriteGroup: Feature %d, %d ids", feature, idcount);
 
 	switch (feature) {
 		case GSF_TRAIN:
 		case GSF_ROAD:
 		case GSF_SHIP:
 		case GSF_AIRCRAFT:
-			VehicleMapSpriteGroup(buf, feature, idcount, cidcount, wagover);
+			VehicleMapSpriteGroup(buf, feature, idcount);
 			return;
 
 		case GSF_CANAL:
-			CanalMapSpriteGroup(buf, idcount, cidcount);
+			CanalMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_STATION:
-			StationMapSpriteGroup(buf, idcount, cidcount);
+			StationMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_TOWNHOUSE:
-			TownHouseMapSpriteGroup(buf, idcount, cidcount);
+			TownHouseMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_INDUSTRIES:
-			IndustryMapSpriteGroup(buf, idcount, cidcount);
+			IndustryMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_INDUSTRYTILES:
-			IndustrytileMapSpriteGroup(buf, idcount, cidcount);
+			IndustrytileMapSpriteGroup(buf, idcount);
 			return;
 
 		case GSF_CARGOS:
-			CargoMapSpriteGroup(buf, idcount, cidcount);
+			CargoMapSpriteGroup(buf, idcount);
 			return;
 
 		default:
