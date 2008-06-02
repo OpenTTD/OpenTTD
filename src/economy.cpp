@@ -643,7 +643,7 @@ static void AddInflation()
 	 * 12 -> months per year
 	 * This is only a good approxiamtion for small values
 	 */
-	Money inf = _economy.infl_amount * 54;
+	int32 inf = _economy.infl_amount * 54;
 
 	for (uint i = 0; i != NUM_PRICES; i++) {
 		AddSingleInflation((Money*)&_price + i, _price_frac + i, inf);

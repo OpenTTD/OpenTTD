@@ -18,7 +18,7 @@ struct Economy {
 	int fluct;
 	byte interest_rate;     ///< Interest
 	byte infl_amount;       ///< inflation amount
-	byte infl_amount_pr;    ///< "floating" portion of inflation
+	byte infl_amount_pr;    ///< inflation rate for payment rates
 };
 
 struct Subsidy {
