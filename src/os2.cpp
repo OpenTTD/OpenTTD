@@ -67,7 +67,7 @@ void FiosGetDrives()
 #endif
 
 		if (disk == disk2) {
-			FiosItem *fios = FiosAlloc();
+			FiosItem *fios = _fios_items.Append()();
 			fios->type = FIOS_TYPE_DRIVE;
 			fios->mtime = 0;
 #ifndef __INNOTEK_LIBC__
