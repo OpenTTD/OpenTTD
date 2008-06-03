@@ -3302,7 +3302,7 @@ static void FeatureNewName(byte *buf, size_t len)
 			case GSF_ROAD:
 			case GSF_SHIP:
 			case GSF_AIRCRAFT:
-				if (id < GetEnginePoolSize()) {
+				if (!generic) {
 					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, id);
 					StringID string = AddGRFString(_cur_grffile->grfid, e->index, lang, new_scheme, name, e->info.string_id);
 					e->info.string_id = string;
