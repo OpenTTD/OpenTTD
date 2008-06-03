@@ -651,10 +651,18 @@ void SlArray(void *array, size_t length, VarType conv)
 	/* NOTICE - handle some buggy stuff, in really old versions everything was saved
 	 * as a byte-type. So detect this, and adjust array size accordingly */
 	if (!_sl.save && _sl_version == 0) {
+		/* all arrays except difficulty settings */
 		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
 				conv == SLE_INT32 || conv == SLE_UINT32) {
-			length *= SlCalcConvFileLen(conv);
-			conv = SLE_INT8;
+			SlCopyBytes(array, length * SlCalcConvFileLen(conv));
+			return;
+		}
+		/* used for conversion of Money 32bit->64bit */
+		if (conv == (SLE_FILE_I32 | SLE_VAR_I64)) {
+			for (uint i = 0; i < length; i++) {
+				((int64*)array)[i] = (int32)BSWAP32(SlReadUint32());
+			}
+			return;
 		}
 	}
 

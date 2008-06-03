@@ -46,11 +46,11 @@ struct SubsidyListWindow : Window {
 		}
 
 		if (num == 0) {
-			y -= 10; /* "None" */
+			y -= 10; // "None"
 			if (y < 0) return;
 		}
 
-		y -= 11; /* "Services already subsidised:" */
+		y -= 11; // "Services already subsidised:"
 		if (y < 0) return;
 
 		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
