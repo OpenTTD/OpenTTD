@@ -5,6 +5,10 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
+#ifndef VARDEF
+#define VARDEF extern
+#endif
+
 /* Amount of game ticks */
 VARDEF uint16 _tick_counter;
 

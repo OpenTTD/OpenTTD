@@ -5,10 +5,6 @@
 #ifndef OPENTTD_H
 #define OPENTTD_H
 
-#ifndef VARDEF
-#define VARDEF extern
-#endif
-
 enum GameModes {
 	GM_MENU,
 	GM_NORMAL,
