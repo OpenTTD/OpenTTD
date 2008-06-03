@@ -568,6 +568,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\gamelog.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\genworld.cpp"
 				>
 			</File>
@@ -1033,6 +1037,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\functions.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\gamelog.h"
 				>
 			</File>
 			<File

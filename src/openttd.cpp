@@ -54,6 +54,7 @@
 #include "strings_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"
+#include "gamelog.h"
 #include "cheat_func.h"
 #include "animated_tile_func.h"
 #include "functions.h"
@@ -304,6 +305,7 @@ static void ShutdownGame()
 	UnInitializeAirports();
 
 	/* Uninitialize variables that are allocated dynamically */
+	GamelogReset();
 	_Town_pool.CleanPool();
 	_Industry_pool.CleanPool();
 	_Station_pool.CleanPool();
@@ -1256,6 +1258,13 @@ bool AfterLoadGame()
 {
 	TileIndex map_size = MapSize();
 	Player *p;
+
+	if (CheckSavegameVersion(98)) GamelogOldver();
+
+	GamelogTestRevision();
+	GamelogTestMode();
+
+	if (CheckSavegameVersion(98)) GamelogGRFAddList(_grfconfig);
 
 	/* in version 2.1 of the savegame, town owner was unified. */
 	if (CheckSavegameVersionOldStyle(2, 1)) ConvertTownOwner();
@@ -2419,6 +2428,8 @@ bool AfterLoadGame()
 			}
 		}
 	}
+
+	if (_debug_gamelog_level > 0) GamelogPrintDebug();
 
 	return InitializeWindowsAndCaches();
 }

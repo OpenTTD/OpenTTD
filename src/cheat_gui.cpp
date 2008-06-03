@@ -19,6 +19,7 @@
 #include "rail_gui.h"
 #include "gui.h"
 #include "player_gui.h"
+#include "gamelog.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -65,7 +66,12 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 	if (p1 == -1) p1 = 3;
 	if (p1 ==  4) p1 = 0;
 	_settings_game.game_creation.landscape = p1;
+
+	GamelogStartAction(GLAT_CHEAT);
+	GamelogTestMode();
 	ReloadNewGRFData();
+	GamelogStopAction();
+
 	return _settings_game.game_creation.landscape;
 }
 

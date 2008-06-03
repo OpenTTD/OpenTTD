@@ -25,6 +25,7 @@
 #include "texteff.hpp"
 #include "gfx_func.h"
 #include "core/alloc_type.hpp"
+#include "gamelog.h"
 #include "animated_tile_func.h"
 #include "tilehighlight_func.h"
 #include "core/bitmath_func.hpp"
@@ -110,6 +111,13 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	InitializeLandscapeVariables(false);
 
 	ResetObjectToPlace();
+
+	GamelogReset();
+	GamelogStartAction(GLAT_START);
+	GamelogRevision();
+	GamelogMode();
+	GamelogGRFAddList(_grfconfig);
+	GamelogStopAction();
 }
 
 

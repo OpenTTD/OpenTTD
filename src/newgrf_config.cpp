@@ -12,6 +12,7 @@
 #include "newgrf_config.h"
 #include "core/alloc_func.hpp"
 #include "string_func.h"
+#include "gamelog.h"
 #include "network/network_type.h"
 
 #include "fileio.h"
@@ -231,12 +232,15 @@ GRFListCompatibility IsGoodGRFConfigList()
 
 				/* Non-found has precedence over compatibility load */
 				if (res != GLC_NOT_FOUND) res = GLC_COMPATIBLE;
+				GamelogGRFCompatible(f);
 				goto compatible_grf;
 			}
 
 			/* No compatible grf was found, mark it as disabled */
 			md5sumToString(buf, lastof(buf), c->md5sum);
 			DEBUG(grf, 0, "NewGRF %08X (%s) not found; checksum %s", BSWAP32(c->grfid), c->filename, buf);
+
+			GamelogGRFRemove(c->grfid);
 
 			c->status = GCS_NOT_FOUND;
 			res = GLC_NOT_FOUND;

@@ -28,6 +28,7 @@ engine.cpp
 fileio.cpp
 fios.cpp
 fontcache.cpp
+gamelog.cpp
 genworld.cpp
 gfx.cpp
 gfxinit.cpp
@@ -184,6 +185,7 @@ fileio.h
 fios.h
 fontcache.h
 functions.h
+gamelog.h
 genworld.h
 core/geometry_type.hpp
 gfx_func.h

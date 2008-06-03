@@ -30,6 +30,7 @@ int _debug_yapf_level;
 int _debug_freetype_level;
 int _debug_sl_level;
 int _debug_station_level;
+int _debug_gamelog_level;
 
 
 struct DebugLevel {
@@ -54,24 +55,17 @@ struct DebugLevel {
 	DEBUG_LEVEL(freetype),
 	DEBUG_LEVEL(sl),
 	DEBUG_LEVEL(station),
+	DEBUG_LEVEL(gamelog),
 	};
 #undef DEBUG_LEVEL
 
 #if !defined(NO_DEBUG_MESSAGES)
 
-void CDECL debug(const char *dbg, ...)
+void CDECL debug_print(const char *dbg, const char *buf)
 {
-	va_list va;
-	va_start(va, dbg);
-	const char *s;
-	char buf[1024];
-
-	s = va_arg(va, const char*);
-	vsnprintf(buf, lengthof(buf), s, va);
-	va_end(va);
 #if defined(ENABLE_NETWORK)
 	if (_debug_socket != INVALID_SOCKET) {
-		char buf2[lengthof(buf) + 32];
+		char buf2[1024 + 32];
 
 		snprintf(buf2, lengthof(buf2), "dbg: [%s] %s\n", dbg, buf);
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
@@ -88,6 +82,20 @@ void CDECL debug(const char *dbg, ...)
 #endif
 		IConsoleDebug(dbg, buf);
 	}
+}
+
+void CDECL debug(const char *dbg, ...)
+{
+	va_list va;
+	va_start(va, dbg);
+	const char *s;
+	char buf[1024];
+
+	s = va_arg(va, const char*);
+	vsnprintf(buf, lengthof(buf), s, va);
+	va_end(va);
+
+	debug_print(dbg, buf);
 }
 #endif /* NO_DEBUG_MESSAGES */
 

@@ -15,6 +15,7 @@
 #include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "gfx_func.h"
+#include "gamelog.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -564,8 +565,11 @@ static void NewGRFConfirmationCallback(Window *w, bool confirmed)
 		GRFConfig *c;
 		int i = 0;
 
+		GamelogStartAction(GLAT_GRF);
+		GamelogGRFUpdate(_grfconfig, nw->list); // log GRF changes
 		CopyGRFConfigList(nw->orig_list, nw->list, false);
 		ReloadNewGRFData();
+		GamelogStopAction();
 
 		/* Show new, updated list */
 		for (c = nw->list; c != NULL && c != nw->sel; c = c->next, i++) {}

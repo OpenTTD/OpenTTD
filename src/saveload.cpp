@@ -32,10 +32,11 @@
 #include "autoreplace_base.h"
 #include "statusbar_gui.h"
 #include <list>
+#include "gamelog.h"
 
 #include "table/strings.h"
 
-extern const uint16 SAVEGAME_VERSION = 97;
+extern const uint16 SAVEGAME_VERSION = 98;
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
@@ -765,7 +766,7 @@ static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
  * @param sld The SaveLoad description of the object so we know how to manipulate it
  * @return size of given objetc
  */
-static size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
+size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
 {
 	size_t length = 0;
 
@@ -1286,6 +1287,7 @@ static void UninitWriteZlib()
  *******************************************/
 
 /* these define the chunks */
+extern const ChunkHandler _gamelog_chunk_handlers[];
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _name_chunk_handlers[];
 extern const ChunkHandler _cheat_chunk_handlers[] ;
@@ -1307,6 +1309,7 @@ extern const ChunkHandler _group_chunk_handlers[];
 extern const ChunkHandler _cargopacket_chunk_handlers[];
 
 static const ChunkHandler * const _chunk_handlers[] = {
+	_gamelog_chunk_handlers,
 	_misc_chunk_handlers,
 	_name_chunk_handlers,
 	_cheat_chunk_handlers,
@@ -1643,10 +1646,16 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 	/* Load a TTDLX or TTDPatch game */
 	if (mode == SL_OLD_LOAD) {
 		InitializeGame(256, 256, true); // set a mapsize of 256x256 for TTDPatch games or it might get confused
+		GamelogReset();
 		if (!LoadOldSaveGame(filename)) return SL_REINIT;
 		_sl_version = 0;
 		_sl_minor_version = 0;
-		if (!AfterLoadGame()) return SL_REINIT;
+		GamelogStartAction(GLAT_LOAD);
+		if (!AfterLoadGame()) {
+			GamelogStopAction();
+			return SL_REINIT;
+		}
+		GamelogStopAction();
 		return SL_OK;
 	}
 
@@ -1757,15 +1766,24 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			 * confuse old games */
 			InitializeGame(256, 256, true);
 
+			GamelogReset();
+
 			SlLoadChunks();
 			fmt->uninit_read();
 			fclose(_sl.fh);
+
+			GamelogStartAction(GLAT_LOAD);
 
 			_savegame_type = SGT_OTTD;
 
 			/* After loading fix up savegame for any internal changes that
 			 * might've occured since then. If it fails, load back the old game */
-			if (!AfterLoadGame()) return SL_REINIT;
+			if (!AfterLoadGame()) {
+				GamelogStopAction();
+				return SL_REINIT;
+			}
+
+			GamelogStopAction();
 		}
 
 		return SL_OK;

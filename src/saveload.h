@@ -317,6 +317,7 @@ void SlAutolength(AutolengthProc *proc, void *arg);
 size_t SlGetFieldLength();
 void SlSetLength(size_t length);
 size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld);
+size_t SlCalcObjLength(const void *object, const SaveLoad *sld);
 
 byte SlReadByte();
 void SlWriteByte(byte b);

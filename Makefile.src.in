@@ -89,6 +89,32 @@ $(LANG_OBJS_DIR)/$(STRGEN):
 $(LANG_OBJS_DIR)/table/strings.h: $(LANG_DIR)/english.txt $(LANG_OBJS_DIR)/$(STRGEN)
 	$(MAKE) -C $(LANG_OBJS_DIR) table/strings.h
 
+
+# Determine if we are using a modified version
+ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
+REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
+else
+# Are we a git dir?
+ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
+REV_MODIFIED := $(shell if cd "$(SRC_DIR)/.." && git diff-index HEAD src | read dummy; then echo M; fi)
+else
+# Are we a hg (Mercurial) dir?
+ifeq ($(shell if test -d $(SRC_DIR)/../.hg; then echo 1; fi), 1)
+REV_MODIFIED := $(shell if hg status $(SRC_DIR) | grep -v '^?' | read dummy; then echo M; fi)
+else
+MODIFIED="1"
+endif
+endif
+endif
+
+ifneq ($(MODIFIED),"1")
+ifeq ($(REV_MODIFIED),)
+MODIFIED="0"
+else
+MODIFIED="2"
+endif
+endif
+
 # Make the revision number
 ifdef REVISION
 REV := $(REVISION)
@@ -97,7 +123,6 @@ else
 # Are we a SVN dir?
 ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 # Find if the local source if modified
-REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
 # Find the revision like: rXXXX-branch
 REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
 REV_NR := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^Last Changed Rev:/ { print $$4 }')
@@ -105,13 +130,13 @@ else
 # Are we a git dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.git; then echo 1; fi), 1)
 # Find the revision like: gXXXXM-branch
-REV := g$(shell if head=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(shell if cd "$(SRC_DIR)/.." && git diff-index HEAD src | read dummy; then echo M; fi)$(shell git branch|grep '[*]' | sed 's/\* /-/;s/^-master$$//')
+REV := g$(shell if head=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null`; then echo "$$head" | cut -c1-8; fi)$(REV_MODIFIED)$(shell git branch|grep '[*]' | sed 's/\* /-/;s/^-master$$//')
 REV_NR := $(shell LC_ALL=C cd "$(SRC_DIR)/.." && git log --pretty=format:%s src | grep -m 1 "^(svn r[0-9]*)" | sed "s/.*(svn r\([0-9]*\)).*/\1/" )
 else
 # Are we a hg (Mercurial) dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.hg; then echo 1; fi), 1)
 # Find the revision like: hXXXXM-branch
-REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(shell if hg status $(SRC_DIR) | grep -v '^?' | read dummy; then echo M; fi)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
+REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(REV_MODIFIED)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
 REV_NR := $(shell LC_ALL=C hg log -k "svn" -l 1 --template "{desc}\n" $(SRC_DIR) | grep -m 1 "^(svn r[0-9]*)" | sed "s/.*(svn r\([0-9]*\)).*/\1/" )
 endif
 endif
@@ -287,7 +312,7 @@ $(ENDIAN_CHECK): $(SRC_DIR)/endian_check.cpp
 # Revision files
 
 $(SRC_DIR)/rev.cpp: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/rev.cpp.in
-	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s#@@REVISION@@#$(REV_NR)#g;s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/rev.cpp
+	$(Q)cat $(SRC_DIR)/rev.cpp.in      | sed "s#@@REVISION@@#$(REV_NR)#g;s#@@VERSION@@#$(REV)#g;s#@@MODIFIED@@#$(MODIFIED)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/rev.cpp
 
 $(SRC_DIR)/ottdres.rc: $(CONFIG_CACHE_VERSION) $(SRC_DIR)/ottdres.rc.in
 	$(Q)cat $(SRC_DIR)/ottdres.rc.in | sed "s#@@REVISION@@#$(REV_NR)#g;s#@@VERSION@@#$(REV)#g;s#@@DATE@@#`date +%d.%m.%y`#g" > $(SRC_DIR)/ottdres.rc

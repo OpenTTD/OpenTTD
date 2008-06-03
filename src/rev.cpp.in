@@ -23,6 +23,16 @@
 const char _openttd_revision[] = "@@VERSION@@";
 
 /**
+ * Let us know if current build was modified. This detection
+ * works even in the case when revision string is overriden by
+ * --revision argument.
+ * Value 0 means no modification, 1 is for unknown state
+ * (compiling from sources without any version control software)
+ * and 2 is for modified revision.
+ */
+const byte _openttd_revision_modified = @@MODIFIED@@;
+
+/**
  * The NewGRF revision of OTTD:
  * bits  meaning.
  * 28-31 major version

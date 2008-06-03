@@ -29,6 +29,7 @@
 #include "player_func.h"
 #include "player_base.h"
 #include "settings_type.h"
+#include "gamelog.h"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"
@@ -1303,6 +1304,11 @@ DEF_CONSOLE_CMD(ConListDumpVariables)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConGamelogPrint)
+{
+	GamelogPrintConsole();
+	return true;
+}
 
 #ifdef _DEBUG
 /* ****************************************** */
@@ -1366,6 +1372,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("clear",        ConClearBuffer);
 	IConsoleCmdRegister("patch",        ConPatch);
 	IConsoleCmdRegister("list_patches", ConListPatches);
+	IConsoleCmdRegister("gamelog",      ConGamelogPrint);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("del",      "rm %+");

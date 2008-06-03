@@ -25,6 +25,7 @@
 #include "core/random_func.hpp"
 #include "core/bitmath_func.hpp"
 #include "string_func.h"
+#include "gamelog.h"
 #include <ctype.h>
 #include <tchar.h>
 #include <errno.h>
@@ -454,6 +455,15 @@ static void Handler2()
 
 extern bool CloseConsoleLogIfActive();
 
+static HANDLE _file_crash_log;
+
+static void GamelogPrintCrashLogProc(const char *s)
+{
+	DWORD num_written;
+	WriteFile(_file_crash_log, s, strlen(s), &num_written, NULL);
+	WriteFile(_file_crash_log, "\r\n", strlen("\r\n"), &num_written, NULL);
+}
+
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
 	char *output;
@@ -588,17 +598,15 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		os.dwOSVersionInfoSize = sizeof(os);
 		GetVersionEx(&os);
 		output += sprintf(output, "\r\nSystem information:\r\n"
-			" Windows version %d.%d %d %s\r\n",
+			" Windows version %d.%d %d %s\r\n\r\n",
 			os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
 	}
 
-	{
-		HANDLE file = CreateFile(_T("crash.log"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+	_file_crash_log = CreateFile(_T("crash.log"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+
+	if (_file_crash_log != INVALID_HANDLE_VALUE) {
 		DWORD num_written;
-		if (file != INVALID_HANDLE_VALUE) {
-			WriteFile(file, _crash_msg, output - _crash_msg, &num_written, NULL);
-			CloseHandle(file);
-		}
+		WriteFile(_file_crash_log, _crash_msg, output - _crash_msg, &num_written, NULL);
 	}
 
 #if !defined(_DEBUG)
@@ -635,6 +643,11 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		FreeLibrary(dbghelp);
 	}
 #endif
+
+	if (_file_crash_log != INVALID_HANDLE_VALUE) {
+		GamelogPrint(&GamelogPrintCrashLogProc);
+		CloseHandle(_file_crash_log);
+	}
 
 	/* Close any possible log files */
 	CloseConsoleLogIfActive();

@@ -203,6 +203,35 @@ Several important non-standard controls:
   http://wiki.openttd.org/index.php/Console
 
 
+5.1) Logging of potentially dangerous actions:
+---- ----------------------------------------
+
+OpenTTD is a complex program, and together with NewGRF, it may show a buggy
+behaviour. But not only bugs in code can cause problems. There are several
+ways to affect game state possibly resulting in program crash or multiplayer
+desyncs.
+Easier way would be to forbid all these unsafe actions, but that would affect
+game usability for many players. We certainly do not want that.
+However, we receive bugreports because of this. To reduce time spent with
+solving these problems, these potentially unsafe actions are logged in
+the savegame (including crash.sav). Log is stored in crash logs, too.
+
+Information logged:
+
+* Adding / removing / changing order of NewGRFs
+* Changing NewGRF parameters, loading compatible NewGRF
+* Changing game mode (scenario editor <-> normal game)
+* Loading game saved in a different OTTD / TTDPatch / TTD version
+* Running a modified OTTD build
+* Changing patch settings affecting NewGRF behaviour (non-networksafe patches)
+* Changing landscape (by cheat)
+
+No personal information is stored.
+
+You can show the gamelog by typing 'gamelog' in the console or by running
+OpenTTD in debug mode.
+
+
 6.0) Configuration File:
 ---- -------------------
 The configuration file for OpenTTD (openttd.cfg) is in a simple Windows-like

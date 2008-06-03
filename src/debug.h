@@ -47,8 +47,10 @@
 	extern int _debug_freetype_level;
 	extern int _debug_sl_level;
 	extern int _debug_station_level;
+	extern int _debug_gamelog_level;
 
 	void CDECL debug(const char *dbg, ...);
+	void CDECL debug_print(const char *dbg, const char *buf);
 #endif /* NO_DEBUG_MESSAGES */
 
 void SetDebugString(const char *s);

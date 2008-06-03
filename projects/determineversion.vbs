@@ -14,23 +14,28 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	file.Close
 End Sub
 
-Sub UpdateFile(revision, version, cur_date, filename)
+Sub UpdateFile(modified, revision, version, cur_date, filename)
 	FSO.CopyFile filename & ".in", filename
+	FindReplaceInFile filename, "@@MODIFIED@@", modified
 	FindReplaceInFile filename, "@@REVISION@@", revision
 	FindReplaceInFile filename, "@@VERSION@@", version
 	FindReplaceInFile filename, "@@DATE@@", cur_date
 End Sub
 
 Sub UpdateFiles(version)
-	Dim WshShell, cur_date, revision, oExec
+	Dim WshShell, cur_date, modified, revision, oExec
 	Set WshShell = CreateObject("WScript.Shell")
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
 	revision = 0
+	modified = 1
 	Select Case Mid(version, 1, 1)
 		Case "r" ' svn
 			revision = Mid(version, 2)
 			If InStr(revision, "M") Then
 				revision = Mid(revision, 1, InStr(revision, "M") - 1)
+				modified = 2
+			Else
+				modified = 0
 			End If
 			If InStr(revision, "-") Then
 				revision = Mid(revision, 1, InStr(revision, "-") - 1)
@@ -49,8 +54,8 @@ Sub UpdateFiles(version)
 			End If
 	End Select
 
-	UpdateFile revision, version, cur_date, "../src/rev.cpp"
-	UpdateFile revision, version, cur_date, "../src/ottdres.rc"
+	UpdateFile modified, revision, version, cur_date, "../src/rev.cpp"
+	UpdateFile modified, revision, version, cur_date, "../src/ottdres.rc"
 End Sub
 
 Function ReadRegistryKey(shive, subkey, valuename, architecture)

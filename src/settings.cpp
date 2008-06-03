@@ -60,6 +60,7 @@
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "blitter/factory.hpp"
+#include "gamelog.h"
 #include "station_func.h"
 
 #include "table/strings.h"
@@ -2128,8 +2129,20 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (flags & DC_EXEC) {
 		GameSettings *s = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
 		void *var = GetVariableAddress(s, &sd->save);
-		Write_ValidateSetting(var, sd, (int32)p2);
-		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
+
+		int32 oldval = (int32)ReadValue(var, sd->save.conv);
+		int32 newval = (int32)p2;
+
+		Write_ValidateSetting(var, sd, newval);
+		newval = (int32)ReadValue(var, sd->save.conv);
+
+		if (sd->desc.proc != NULL) sd->desc.proc(newval);
+
+		if ((sd->desc.flags & SGF_NO_NETWORK) && oldval != newval) {
+			GamelogStartAction(GLAT_PATCH);
+			GamelogPatch(sd->desc.name, oldval, newval);
+			GamelogStopAction();
+		}
 
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
