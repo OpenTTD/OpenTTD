@@ -258,7 +258,7 @@ uint DistanceFromEdge(TileIndex tile)
  * Although it really is a square search...
  * Every tile will be tested by means of the callback function proc,
  * which will determine if yes or no the given tile meets criteria of search.
- * @param tile to start the search from
+ * @param tile to start the search from. Upon completion, it will return the tile matching the search
  * @param size: number of tiles per side of the desired search area
  * @param proc: callback testing function pointer.
  * @param data to be passed to the callback function. Depends on the implementation
@@ -266,7 +266,7 @@ uint DistanceFromEdge(TileIndex tile)
  * @pre proc != NULL
  * @pre size > 0
  */
-bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, uint32 data)
+bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, uint32 data)
 {
 	uint n, x, y;
 	DiagDirection dir;
@@ -274,14 +274,17 @@ bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, ui
 	assert(proc != NULL);
 	assert(size > 0);
 
-	x = TileX(tile);
-	y = TileY(tile);
+	x = TileX(*tile);
+	y = TileY(*tile);
 
 	if (size % 2 == 1) {
 		/* If the length of the side is uneven, the center has to be checked
 		 * separately, as the pattern of uneven sides requires to go around the center */
 		n = 2;
-		if (proc(TileXY(x, y), data)) return true;
+		if (proc(TileXY(x, y), data)) {
+			*tile = TileXY(x, y);
+			return true;
+		}
 
 		/* If tile test is not successful, get one tile down and left,
 		 * ready for a test in first circle around center tile */
@@ -302,6 +305,7 @@ bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, ui
 			for (j = n; j != 0; j--) {
 				if (x <= MapMaxX() && y <= MapMaxY() && ///< Is the tile within the map?
 						proc(TileXY(x, y), data)) {     ///< Is the callback successful?
+					*tile = TileXY(x, y);
 					return true;                        ///< then stop the search
 				}
 
@@ -314,5 +318,7 @@ bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, ui
 		x += _tileoffs_by_dir[DIR_W].x;
 		y += _tileoffs_by_dir[DIR_W].y;
 	}
+
+	*tile = INVALID_TILE;
 	return false;
 }

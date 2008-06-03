@@ -2193,7 +2193,7 @@ static void TownActionBuildStatue(Town *t)
 {
 	TileIndex tile = t->xy;
 
-	if (CircularTileSearch(tile, 9, SearchTileForStatue, t->index)) {
+	if (CircularTileSearch(&tile, 9, SearchTileForStatue, t->index)) {
 		SetBit(t->statues, _current_player); // Once found and built, "inform" the Town
 	}
 }

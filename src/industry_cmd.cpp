@@ -995,7 +995,7 @@ static void ChopLumberMillTrees(Industry *i)
 
 	if (!IsIndustryCompleted(tile)) return;  ///< Can't proceed if not completed
 
-	if (CircularTileSearch(tile, 40, SearchLumberMillTrees, 0)) ///< 40x40 tiles  to search
+	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, 0)) ///< 40x40 tiles  to search
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
 }
 
