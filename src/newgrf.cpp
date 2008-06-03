@@ -1404,7 +1404,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				 * date before 1930, as this breaks the build date stuff.
 				 * @see FinaliseHouseArray() for more details.
 				 */
-				if (housespec->min_date < 1930) housespec->min_date = 1930;
+				if (housespec->min_year < 1930) housespec->min_year = 1930;
 
 				_loaded_newgrf_features.has_newhouses = true;
 			} break;
@@ -1415,8 +1415,8 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 			case 0x0A: { // Availability years
 				uint16 years = grf_load_word(&buf);
-				housespec->min_date = GB(years, 0, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 0, 8);
-				housespec->max_date = GB(years, 8, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 8, 8);
+				housespec->min_year = GB(years, 0, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 0, 8);
+				housespec->max_year = GB(years, 8, 8) > 150 ? MAX_YEAR : ORIGINAL_BASE_YEAR + GB(years, 8, 8);
 			} break;
 
 			case 0x0B: // Population
@@ -5585,7 +5585,7 @@ static void FinaliseHouseArray()
 	 * On the other hand, why 1930? Just 'fix' the houses with the lowest
 	 * minimum introduction date to 0.
 	 */
-	Year min_date = MAX_YEAR;
+	Year min_year = MAX_YEAR;
 
 	for (GRFFile *file = _first_grffile; file != NULL; file = file->next) {
 		if (file->housespec == NULL) continue;
@@ -5594,16 +5594,16 @@ static void FinaliseHouseArray()
 			HouseSpec *hs = file->housespec[i];
 			if (hs != NULL) {
 				_house_mngr.SetEntitySpec(hs);
-				if (hs->min_date < min_date) min_date = hs->min_date;
+				if (hs->min_year < min_year) min_year = hs->min_year;
 			}
 		}
 	}
 
-	if (min_date != 0) {
+	if (min_year != 0) {
 		for (int i = 0; i < HOUSE_MAX; i++) {
 			HouseSpec *hs = GetHouseSpecs(i);
 
-			if (hs->enabled && hs->min_date == min_date) hs->min_date = 0;
+			if (hs->enabled && hs->min_year == min_year) hs->min_year = 0;
 		}
 	}
 }

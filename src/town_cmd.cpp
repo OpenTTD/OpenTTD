@@ -1931,7 +1931,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			}
 		}
 
-		if (_cur_year < hs->min_date || _cur_year > hs->max_date) continue;
+		if (_cur_year < hs->min_year || _cur_year > hs->max_year) continue;
 
 		/* Special houses that there can be only one of. */
 		uint oneof = 0;

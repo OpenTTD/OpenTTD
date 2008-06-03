@@ -1809,8 +1809,8 @@ static const HouseSpec _original_house_specs[] = {
 	/**
 	 *                                                              remove_rating_decrease
 	 *                                                               |    mail_generation
-	 *     min_date                                                  |    |    1st CargoID acceptance
-	 *     |         max_date                                        |    |    |    2nd CargoID acceptance
+	 *     min_year                                                  |    |    1st CargoID acceptance
+	 *     |         max_year                                        |    |    |    2nd CargoID acceptance
 	 *     |         |    population                                 |    |    |    |    3th CargoID acceptance
 	 *     |         |    |    removal_cost                          |    |    |    |    |
 	 *     |         |    |    |    building_name                    |    |    |    |    |
