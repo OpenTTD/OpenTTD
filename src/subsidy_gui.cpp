@@ -37,23 +37,29 @@ struct SubsidyListWindow : Window {
 		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age < 12) {
 				y -= 10;
-				if (y < 0) this->HandleClick(s);
+				if (y < 0) {
+					this->HandleClick(s);
+					return;
+				}
 				num++;
 			}
 		}
 
 		if (num == 0) {
-			y -= 10;
+			y -= 10; /* "None" */
 			if (y < 0) return;
 		}
 
-		y -= 11;
+		y -= 11; /* "Services already subsidised:" */
 		if (y < 0) return;
 
 		for (const Subsidy *s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
 				y -= 10;
-				if (y < 0) this->HandleClick(s);
+				if (y < 0) {
+					this->HandleClick(s);
+					return;
+				}
 			}
 		}
 	}
