@@ -2916,7 +2916,6 @@ static bool IsValidGroupID(uint16 groupid, const char *function)
 	return true;
 }
 
-
 static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
 {
 	static EngineID *last_engines;
@@ -2943,7 +2942,7 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
 		}
 	}
 
-	EngineID engines[idcount];
+	EngineID *engines = (EngineID*)alloca(idcount * sizeof(*engines));
 	for (uint i = 0; i < idcount; i++) {
 		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, grf_load_byte(&buf))->index;
 		if (!wagover) last_engines[i] = engines[i];
@@ -2993,7 +2992,7 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
 
 static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	CanalFeature cfs[idcount];
+	CanalFeature *cfs = (CanalFeature*)alloca(idcount * sizeof(*cfs));
 	for (uint i = 0; i < idcount; i++) {
 		cfs[i] = (CanalFeature)grf_load_byte(&buf);
 	}
@@ -3019,7 +3018,7 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
 
 static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	uint8 stations[idcount];
+	uint8 *stations = (uint8*)alloca(idcount * sizeof(*stations));
 	for (uint i = 0; i < idcount; i++) {
 		stations[i] = grf_load_byte(&buf);
 	}
@@ -3066,7 +3065,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 
 static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	uint8 houses[idcount];
+	uint8 *houses = (uint8*)alloca(idcount * sizeof(*houses));
 	for (uint i = 0; i < idcount; i++) {
 		houses[i] = grf_load_byte(&buf);
 	}
@@ -3092,7 +3091,7 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 
 static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	uint8 industries[idcount];
+	uint8 *industries = (uint8*)alloca(idcount * sizeof(*industries));
 	for (uint i = 0; i < idcount; i++) {
 		industries[i] = grf_load_byte(&buf);
 	}
@@ -3118,7 +3117,7 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 
 static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	uint8 indtiles[idcount];
+	uint8 *indtiles = (uint8*)alloca(idcount * sizeof(*indtiles));
 	for (uint i = 0; i < idcount; i++) {
 		indtiles[i] = grf_load_byte(&buf);
 	}
@@ -3144,7 +3143,7 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 
 static void CargoMapSpriteGroup(byte *buf, uint8 idcount)
 {
-	CargoID cargos[idcount];
+	CargoID *cargos = (CargoID*)alloca(idcount * sizeof(*cargos));
 	for (uint i = 0; i < idcount; i++) {
 		cargos[i] = grf_load_byte(&buf);
 	}
