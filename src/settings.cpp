@@ -1447,20 +1447,10 @@ static int32 UpdatePlayerName(int32 p1)
 	return 0;
 }
 
-static int32 UpdateServerName(int32 p1)
-{
-	ttd_strlcpy(_network_game_info.server_name, _settings_client.network.server_name, sizeof(_network_game_info.server_name));
-	return 0;
-}
-
 static int32 UpdateServerPassword(int32 p1)
 {
 	if (strcmp(_settings_client.network.server_password, "*") == 0) {
 		_settings_client.network.server_password[0] = '\0';
-		_network_game_info.use_password = false;
-	} else {
-		ttd_strlcpy(_network_game_info.server_password, _settings_client.network.server_password, sizeof(_network_game_info.server_password));
-		_network_game_info.use_password = true;
 	}
 
 	return 0;
@@ -1471,8 +1461,6 @@ static int32 UpdateRconPassword(int32 p1)
 	if (strcmp(_settings_client.network.rcon_password, "*") == 0) {
 		_settings_client.network.rcon_password[0] = '\0';
 	}
-
-	ttd_strlcpy(_network_game_info.rcon_password, _settings_client.network.rcon_password, sizeof(_network_game_info.rcon_password));
 
 	return 0;
 }
@@ -1813,7 +1801,7 @@ SDTC_CONDOMANY(              gui.units,                                     SLE_
 	  SDTC_STR(network.server_password,        SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateServerPassword),
 	  SDTC_STR(network.rcon_password,          SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateRconPassword),
 	  SDTC_STR(network.default_company_pass,   SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),
-	  SDTC_STR(network.server_name,            SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateServerName),
+	  SDTC_STR(network.server_name,            SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.connect_to_ip,          SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.network_id,             SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(network.autoclean_companies,              S, NO, false,                        STR_NULL,                                       NULL),
@@ -2196,6 +2184,7 @@ bool SetPatchValue(uint index, const char *value)
 
 	char *var = (char*)GetVariableAddress(NULL, &sd->save);
 	ttd_strlcpy(var, value, sd->save.length);
+	if (sd->desc.proc != NULL) sd->desc.proc(0);
 
 	return true;
 }

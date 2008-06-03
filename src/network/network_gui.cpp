@@ -383,7 +383,7 @@ public:
 			if (!sel->info.compatible) {
 				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, sel->info.version_compatible ? STR_NETWORK_GRF_MISMATCH : STR_NETWORK_VERSION_MISMATCH, TC_FROMSTRING); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
-				/* Show: server full, when clients_on == clients_max */
+				/* Show: server full, when clients_on == max_clients */
 				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_SERVER_FULL, TC_FROMSTRING); // server full
 			} else if (sel->info.use_password) {
 				DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, y, STR_NETWORK_PASSWORD, TC_FROMSTRING); // password warning
@@ -676,7 +676,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 160);
 
 		this->field = NSSW_GAMENAME;
-		_network_game_info.use_password = !StrEmpty(_settings_client.network.server_password);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -688,17 +687,17 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 		/* draw basic widgets */
 		SetDParam(1, _connection_types_dropdown[_network_advertise]);
-		SetDParam(2, _network_game_info.clients_max);
-		SetDParam(3, _network_game_info.companies_max);
-		SetDParam(4, _network_game_info.spectators_max);
-		SetDParam(5, STR_NETWORK_LANG_ANY + _network_game_info.server_lang);
+		SetDParam(2, _settings_client.network.max_clients);
+		SetDParam(3, _settings_client.network.max_companies);
+		SetDParam(4, _settings_client.network.max_spectators);
+		SetDParam(5, STR_NETWORK_LANG_ANY + _settings_client.network.server_lang);
 		this->DrawWidgets();
 
 		/* editbox to set game name */
 		this->DrawEditBox(NSSW_GAMENAME);
 
 		/* if password is set, draw red '*' next to 'Set password' button */
-		if (_network_game_info.use_password) DoDrawString("*", 408, 23, TC_RED);
+		if (!StrEmpty(_settings_client.network.server_password)) DoDrawString("*", 408, 23, TC_RED);
 
 		/* draw list of maps */
 		GfxFillRect(11, 63, 258, 215, 0xD7);  // black background of maps list
@@ -762,13 +761,13 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 					switch (widget) {
 						default: NOT_REACHED();
 						case NSSW_CLIENTS_BTND: case NSSW_CLIENTS_BTNU:
-							_network_game_info.clients_max    = Clamp(_network_game_info.clients_max    + widget - NSSW_CLIENTS_TXT,    2, MAX_CLIENTS);
+							_settings_client.network.max_clients    = Clamp(_settings_client.network.max_clients    + widget - NSSW_CLIENTS_TXT,    2, MAX_CLIENTS);
 							break;
 						case NSSW_COMPANIES_BTND: case NSSW_COMPANIES_BTNU:
-							_network_game_info.companies_max  = Clamp(_network_game_info.companies_max  + widget - NSSW_COMPANIES_TXT,  1, MAX_PLAYERS);
+							_settings_client.network.max_companies  = Clamp(_settings_client.network.max_companies  + widget - NSSW_COMPANIES_TXT,  1, MAX_PLAYERS);
 							break;
 						case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU:
-							_network_game_info.spectators_max = Clamp(_network_game_info.spectators_max + widget - NSSW_SPECTATORS_TXT, 0, MAX_CLIENTS);
+							_settings_client.network.max_spectators = Clamp(_settings_client.network.max_spectators + widget - NSSW_SPECTATORS_TXT, 0, MAX_CLIENTS);
 							break;
 					}
 				}
@@ -777,26 +776,26 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 			case NSSW_CLIENTS_TXT:    // Click on number of players
 				this->widget_id = NSSW_CLIENTS_TXT;
-				SetDParam(0, _network_game_info.clients_max);
+				SetDParam(0, _settings_client.network.max_clients);
 				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_CLIENTS,    3, 50, this, CS_NUMERAL);
 				break;
 
 			case NSSW_COMPANIES_TXT:  // Click on number of companies
 				this->widget_id = NSSW_COMPANIES_TXT;
-				SetDParam(0, _network_game_info.companies_max);
+				SetDParam(0, _settings_client.network.max_companies);
 				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_COMPANIES,  3, 50, this, CS_NUMERAL);
 				break;
 
 			case NSSW_SPECTATORS_TXT: // Click on number of spectators
 				this->widget_id = NSSW_SPECTATORS_TXT;
-				SetDParam(0, _network_game_info.spectators_max);
+				SetDParam(0, _settings_client.network.max_spectators);
 				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_SPECTATORS, 3, 50, this, CS_NUMERAL);
 				break;
 
 			case NSSW_LANGUAGE_BTN: { // Language
 				uint sel = 0;
 				for (uint i = 0; i < lengthof(_language_dropdown) - 1; i++) {
-					if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _network_game_info.server_lang) {
+					if (_language_dropdown[i] == STR_NETWORK_LANG_ANY + _settings_client.network.server_lang) {
 						sel = i;
 						break;
 					}
@@ -840,7 +839,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				_network_advertise = (index != 0);
 				break;
 			case NSSW_LANGUAGE_BTN:
-				_network_game_info.server_lang = _language_dropdown[index] - STR_NETWORK_LANG_ANY;
+				_settings_client.network.server_lang = _language_dropdown[index] - STR_NETWORK_LANG_ANY;
 				break;
 			default:
 				NOT_REACHED();
@@ -872,15 +871,14 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 		if (this->widget_id == NSSW_SETPWD) {
 			ttd_strlcpy(_settings_client.network.server_password, str, lengthof(_settings_client.network.server_password));
-			_network_game_info.use_password = !StrEmpty(_settings_client.network.server_password);
 		} else {
 			int32 value = atoi(str);
 			this->InvalidateWidget(this->widget_id);
 			switch (this->widget_id) {
 				default: NOT_REACHED();
-				case NSSW_CLIENTS_TXT:    _network_game_info.clients_max    = Clamp(value, 2, MAX_CLIENTS); break;
-				case NSSW_COMPANIES_TXT:  _network_game_info.companies_max  = Clamp(value, 1, MAX_PLAYERS); break;
-				case NSSW_SPECTATORS_TXT: _network_game_info.spectators_max = Clamp(value, 0, MAX_CLIENTS); break;
+				case NSSW_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(value, 2, MAX_CLIENTS); break;
+				case NSSW_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(value, 1, MAX_PLAYERS); break;
+				case NSSW_SPECTATORS_TXT: _settings_client.network.max_spectators = Clamp(value, 0, MAX_CLIENTS); break;
 			}
 		}
 

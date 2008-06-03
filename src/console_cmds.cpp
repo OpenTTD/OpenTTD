@@ -538,18 +538,15 @@ DEF_CONSOLE_CMD(ConStatus)
 
 DEF_CONSOLE_CMD(ConServerInfo)
 {
-	const NetworkGameInfo *gi;
-
 	if (argc == 0) {
 		IConsoleHelp("List current and maximum client/player limits. Usage 'server_info'");
 		IConsoleHelp("You can change these values by setting the variables 'max_clients', 'max_companies' and 'max_spectators'");
 		return true;
 	}
 
-	gi = &_network_game_info;
-	IConsolePrintF(CC_DEFAULT, "Current/maximum clients:    %2d/%2d", gi->clients_on, gi->clients_max);
-	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", ActivePlayerCount(), gi->companies_max);
-	IConsolePrintF(CC_DEFAULT, "Current/maximum spectators: %2d/%2d", NetworkSpectatorCount(), gi->spectators_max);
+	IConsolePrintF(CC_DEFAULT, "Current/maximum clients:    %2d/%2d", _network_game_info.clients_on, _settings_client.network.max_clients);
+	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", ActivePlayerCount(), _settings_client.network.max_companies);
+	IConsolePrintF(CC_DEFAULT, "Current/maximum spectators: %2d/%2d", NetworkSpectatorCount(), _settings_client.network.max_spectators);
 
 	return true;
 }

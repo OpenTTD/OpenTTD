@@ -23,6 +23,7 @@
 #include "../player_base.h"
 #include "../player_func.h"
 #include "../settings_type.h"
+#include "../rev.h"
 
 #include "core/udp.h"
 
@@ -68,21 +69,36 @@ public:
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 {
 	// Just a fail-safe.. should never happen
-	if (!_network_udp_server)
+	if (!_network_udp_server) {
 		return;
+	}
+
+	NetworkGameInfo ngi;
+
+	/* Update some game_info */
+	ngi.clients_on     = _network_game_info.clients_on;
+	ngi.start_date     = _network_game_info.start_date;
+
+	ngi.server_lang    = _settings_client.network.server_lang;
+	ngi.use_password   = !StrEmpty(_settings_client.network.server_password);
+	ngi.clients_max    = _settings_client.network.max_clients;
+	ngi.companies_on   = ActivePlayerCount();
+	ngi.companies_max  = _settings_client.network.max_companies;
+	ngi.spectators_on  = NetworkSpectatorCount();
+	ngi.spectators_max = _settings_client.network.max_spectators;
+	ngi.game_date      = _date;
+	ngi.map_width      = MapSizeX();
+	ngi.map_height     = MapSizeY();
+	ngi.map_set        = _settings_game.game_creation.landscape;
+	ngi.dedicated      = _network_dedicated;
+	ngi.grfconfig      = _grfconfig;
+
+	ttd_strlcpy(ngi.map_name, _network_game_info.map_name, lengthof(ngi.map_name));
+	ttd_strlcpy(ngi.server_name, _settings_client.network.server_name, lengthof(ngi.server_name));
+	ttd_strlcpy(ngi.server_revision, _openttd_revision, lengthof(ngi.server_revision));
 
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
-
-	// Update some game_info
-	_network_game_info.game_date     = _date;
-	_network_game_info.map_width     = MapSizeX();
-	_network_game_info.map_height    = MapSizeY();
-	_network_game_info.map_set       = _settings_game.game_creation.landscape;
-	_network_game_info.companies_on  = ActivePlayerCount();
-	_network_game_info.spectators_on = NetworkSpectatorCount();
-	_network_game_info.grfconfig     = _grfconfig;
-
-	this->Send_NetworkGameInfo(&packet, &_network_game_info);
+	this->Send_NetworkGameInfo(&packet, &ngi);
 
 	// Let the client know that we are here
 	this->SendPacket(&packet, client_addr);

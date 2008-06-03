@@ -10,7 +10,7 @@
 #include "network_type.h"
 #include "../console_type.h"
 
-extern NetworkGameInfo _network_game_info;
+extern NetworkServerGameInfo _network_game_info;
 extern NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
 extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 

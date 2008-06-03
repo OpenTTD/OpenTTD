@@ -47,7 +47,7 @@ bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _network_advertise;  ///< is the server advertising to the master server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
-NetworkGameInfo _network_game_info;
+NetworkServerGameInfo _network_game_info;
 NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
 NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 uint16 _network_own_client_index;
@@ -624,7 +624,7 @@ static NetworkTCPSocketHandler *NetworkAllocClient(SOCKET s)
 	if (_network_server) {
 		// Can we handle a new client?
 		if (_network_clients_connected >= MAX_CLIENTS) return NULL;
-		if (_network_game_info.clients_on >= _network_game_info.clients_max) return NULL;
+		if (_network_game_info.clients_on >= _settings_client.network.max_clients) return NULL;
 
 		// Register the login
 		client_no = _network_clients_connected++;
@@ -1019,39 +1019,13 @@ static void NetworkInitGameInfo()
 {
 	NetworkClientInfo *ci;
 
-	_network_game_info.clients_max    = _settings_client.network.max_clients;
-	_network_game_info.companies_max  = _settings_client.network.max_companies;
-	_network_game_info.spectators_max = _settings_client.network.max_spectators;
-	_network_game_info.server_lang    = _settings_client.network.server_lang;
-	ttd_strlcpy(_network_game_info.server_name, _settings_client.network.server_name, sizeof(_network_game_info.server_name));
-	ttd_strlcpy(_network_game_info.server_password, _settings_client.network.server_password, sizeof(_network_game_info.server_password));
-	ttd_strlcpy(_network_game_info.rcon_password, _settings_client.network.rcon_password, sizeof(_network_game_info.rcon_password));
-	if (StrEmpty(_network_game_info.server_name)) {
-		snprintf(_network_game_info.server_name, sizeof(_network_game_info.server_name), "Unnamed Server");
+	if (StrEmpty(_settings_client.network.server_name)) {
+		snprintf(_settings_client.network.server_name, sizeof(_settings_client.network.server_name), "Unnamed Server");
 	}
 
-	ttd_strlcpy(_network_game_info.server_revision, _openttd_revision, sizeof(_network_game_info.server_revision));
-
-	// The server is a client too ;)
-	if (_network_dedicated) {
-		_network_game_info.clients_on = 0;
-		_network_game_info.companies_on = 0;
-		_network_game_info.dedicated = true;
-	} else {
-		_network_game_info.clients_on = 1;
-		_network_game_info.companies_on = 1;
-		_network_game_info.dedicated = false;
-	}
-
-	_network_game_info.spectators_on = 0;
-
-	_network_game_info.game_date = _date;
+	/* The server is a client too */
+	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
 	_network_game_info.start_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
-	_network_game_info.map_width = MapSizeX();
-	_network_game_info.map_height = MapSizeY();
-	_network_game_info.map_set = _settings_game.game_creation.landscape;
-
-	_network_game_info.use_password = !StrEmpty(_settings_client.network.server_password);
 
 	// We use _network_client_info[MAX_CLIENT_INFO - 1] to store the server-data in it
 	//  The index is NETWORK_SERVER_INDEX ( = 1)
@@ -1453,19 +1427,7 @@ void NetworkStartUp()
 	/* Generate an unique id when there is none yet */
 	if (StrEmpty(_settings_client.network.network_id)) NetworkGenerateUniqueId();
 
-	{
-		byte cl_max = _network_game_info.clients_max;
-		byte cp_max = _network_game_info.companies_max;
-		byte sp_max = _network_game_info.spectators_max;
-		byte s_lang = _network_game_info.server_lang;
-
-		memset(&_network_game_info, 0, sizeof(_network_game_info));
-		_network_game_info.clients_max = cl_max;
-		_network_game_info.companies_max = cp_max;
-		_network_game_info.spectators_max = sp_max;
-		_network_game_info.server_lang = s_lang;
-	}
-
+	memset(&_network_game_info, 0, sizeof(_network_game_info));
 
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");

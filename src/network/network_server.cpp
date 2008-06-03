@@ -614,7 +614,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
 	/* We now want a password from the client else we do not allow him in! */
-	if (_network_game_info.use_password) {
+	if (!StrEmpty(_settings_client.network.server_password)) {
 		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
 	} else {
 		if (IsValidPlayer(ci->client_playas) && _network_player_info[ci->client_playas].password[0] != '\0') {
@@ -655,13 +655,13 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	// join another company does not affect these values
 	switch (playas) {
 		case PLAYER_NEW_COMPANY: /* New company */
-			if (ActivePlayerCount() >= _network_game_info.companies_max) {
+			if (ActivePlayerCount() >= _settings_client.network.max_companies) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
 			break;
 		case PLAYER_SPECTATOR: /* Spectator */
-			if (NetworkSpectatorCount() >= _network_game_info.spectators_max) {
+			if (NetworkSpectatorCount() >= _settings_client.network.max_spectators) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
 			}
@@ -711,7 +711,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 	if (cs->status == STATUS_AUTHORIZING && type == NETWORK_GAME_PASSWORD) {
 		// Check game-password
-		if (strcmp(password, _network_game_info.server_password) != 0) {
+		if (strcmp(password, _settings_client.network.server_password) != 0) {
 			// Password is invalid
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 			return;
@@ -1187,12 +1187,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	char pass[NETWORK_PASSWORD_LENGTH];
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
-	if (_network_game_info.rcon_password[0] == '\0') return;
+	if (StrEmpty(_settings_client.network.rcon_password)) return;
 
 	p->Recv_string(pass, sizeof(pass));
 	p->Recv_string(command, sizeof(command));
 
-	if (strcmp(pass, _network_game_info.rcon_password) != 0) {
+	if (strcmp(pass, _settings_client.network.rcon_password) != 0) {
 		DEBUG(net, 0, "[rcon] wrong password from client-id %d", cs->index);
 		return;
 	}

@@ -95,7 +95,6 @@ enum NetworkLanguage {
 
 #define VARDEF extern
 
-extern NetworkGameInfo _network_game_info;
 extern NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
 
 extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
