@@ -3465,16 +3465,16 @@ static void GraphicsNew(byte *buf, size_t len)
 		/* Special not-TTDP-compatible case used in openttd(d/w).grf
 		 * Missing shore sprites and initialisation of SPR_SHORE_BASE */
 		grfmsg(2, "GraphicsNew: Loading 10 missing shore sprites from openttd(d/w).grf.");
-		LoadNextSprite(       SPR_SHORE_BASE          +  0, _file_index, _nfo_line++); // SLOPE_STEEP_S
-		LoadNextSprite(       SPR_SHORE_BASE          +  5, _file_index, _nfo_line++); // SLOPE_STEEP_W
-		LoadNextSprite(       SPR_SHORE_BASE          +  7, _file_index, _nfo_line++); // SLOPE_WSE
-		LoadNextSprite(       SPR_SHORE_BASE          + 10, _file_index, _nfo_line++); // SLOPE_STEEP_N
-		LoadNextSprite(       SPR_SHORE_BASE          + 11, _file_index, _nfo_line++); // SLOPE_NWS
-		LoadNextSprite(       SPR_SHORE_BASE          + 13, _file_index, _nfo_line++); // SLOPE_ENW
-		LoadNextSprite(       SPR_SHORE_BASE          + 14, _file_index, _nfo_line++); // SLOPE_SEN
-		LoadNextSprite(       SPR_SHORE_BASE          + 15, _file_index, _nfo_line++); // SLOPE_STEEP_E
-		LoadNextSprite(       SPR_SHORE_BASE          + 16, _file_index, _nfo_line++); // SLOPE_EW
-		LoadNextSprite(       SPR_SHORE_BASE          + 17, _file_index, _nfo_line++); // SLOPE_NS
+		LoadNextSprite(SPR_SHORE_BASE +  0, _file_index, _nfo_line++); // SLOPE_STEEP_S
+		LoadNextSprite(SPR_SHORE_BASE +  5, _file_index, _nfo_line++); // SLOPE_STEEP_W
+		LoadNextSprite(SPR_SHORE_BASE +  7, _file_index, _nfo_line++); // SLOPE_WSE
+		LoadNextSprite(SPR_SHORE_BASE + 10, _file_index, _nfo_line++); // SLOPE_STEEP_N
+		LoadNextSprite(SPR_SHORE_BASE + 11, _file_index, _nfo_line++); // SLOPE_NWS
+		LoadNextSprite(SPR_SHORE_BASE + 13, _file_index, _nfo_line++); // SLOPE_ENW
+		LoadNextSprite(SPR_SHORE_BASE + 14, _file_index, _nfo_line++); // SLOPE_SEN
+		LoadNextSprite(SPR_SHORE_BASE + 15, _file_index, _nfo_line++); // SLOPE_STEEP_E
+		LoadNextSprite(SPR_SHORE_BASE + 16, _file_index, _nfo_line++); // SLOPE_EW
+		LoadNextSprite(SPR_SHORE_BASE + 17, _file_index, _nfo_line++); // SLOPE_NS
 		if (_loaded_newgrf_features.shore == SHORE_REPLACE_NONE) _loaded_newgrf_features.shore = SHORE_REPLACE_ONLY_NEW;
 		return;
 	}
