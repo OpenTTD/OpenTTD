@@ -307,7 +307,7 @@ public:
 
 		uint16 y = NET_PRC__OFFSET_TOP_WIDGET + 3;
 
-		const int max = min(this->vscroll.pos + this->vscroll.cap, this->servers.Length());
+		const int max = min(this->vscroll.pos + this->vscroll.cap, (int)this->servers.Length());
 
 		for (int i = this->vscroll.pos; i < max; ++i) {
 			const NetworkGameList *ngl = this->servers[i];
