@@ -616,6 +616,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		}
 
 		case 0x48: return GetEngine(v->engine_type)->flags; // Vehicle Type Info
+		case 0x49: return v->build_year;
 
 		/* Variables which use the parameter */
 		case 0x60: // Count consist's engine ID occurance

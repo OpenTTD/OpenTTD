@@ -3648,6 +3648,14 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			*value = _settings_game.difficulty.diff_level;
 			return true;
 
+		case 0x23: // long format date
+			*value = _date;
+			return true;
+
+		case 0x24: // long format year
+			*value = _cur_year;
+			return true;
+
 		default: return false;
 	}
 }
