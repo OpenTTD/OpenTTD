@@ -1,13 +1,11 @@
 /* $Id$ */
 
 /**
- * @file config.h Configuration options of the network stuff
+ * @file config.h Configuration options of the network stuff. It is used even when compiling without network support.
  */
 
 #ifndef NETWORK_CORE_CONFIG_H
 #define NETWORK_CORE_CONFIG_H
-
-#ifdef ENABLE_NETWORK
 
 /** DNS hostname of the masterserver */
 #define NETWORK_MASTER_SERVER_HOST "master.openttd.org"
@@ -53,7 +51,5 @@ enum {
 	 */
 	NETWORK_NUM_LANDSCAPES        =    4,
 };
-
-#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_CONFIG_H */
