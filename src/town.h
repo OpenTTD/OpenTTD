@@ -16,6 +16,7 @@
 #include "settings_type.h"
 #include "strings_type.h"
 #include "viewport_type.h"
+#include "economy_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
@@ -242,6 +243,13 @@ struct HouseSpec {
 	/* grf file related properties*/
 	uint8 local_id;                    ///< id defined by the grf file for this house
 	const struct GRFFile *grffile;     ///< grf file that introduced this house
+
+	/**
+	 * Get the cost for removing this house
+	 * @return the cost (inflation corrected etc)
+	 */
+	Money GetRemovalCost() const;
+
 };
 
 extern HouseSpec _house_specs[HOUSE_MAX];

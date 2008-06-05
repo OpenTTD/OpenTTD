@@ -127,6 +127,11 @@ void Town::InitializeLayout()
 	}
 }
 
+Money HouseSpec::GetRemovalCost() const
+{
+	return (_price.remove_house * this->removal_cost) >> 8;
+}
+
 // Local
 static int _grow_town_result;
 
@@ -517,7 +522,7 @@ static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
 	CommandCost cost(EXPENSES_CONSTRUCTION);
-	cost.AddCost(_price.remove_house * hs->removal_cost >> 8);
+	cost.AddCost(hs->GetRemovalCost());
 
 	int rating = hs->remove_rating_decrease;
 	_cleared_town_rating += rating;
