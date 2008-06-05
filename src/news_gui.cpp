@@ -128,17 +128,17 @@ static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
 	{ NT_ARRIVAL_OTHER,   NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_OTHER
 	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCIDENT_TILE
 	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ACCIDENT_VEHICLE
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,    NM_CALLBACK, NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
+	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
 	{ NT_OPENCLOSE,       NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_OPENCLOSE
 	{ NT_ECONOMY,         NM_NORMAL,   NF_NONE,                NULL                    }, ///< NS_ECONOMY
 	{ NT_INDUSTRY_PLAYER, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_PLAYER
 	{ NT_INDUSTRY_OTHER,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OTHER
 	{ NT_INDUSTRY_NOBODY, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_NOBODY
 	{ NT_ADVICE,          NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,    NM_CALLBACK, NF_NONE,                DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_NEW_VEHICLES,    NM_NORMAL,   NF_NONE,                DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
 	{ NT_ACCEPTANCE,      NM_SMALL,    NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCEPTANCE
 	{ NT_SUBSIDIES,       NM_NORMAL,   NF_TILE|NF_TILE2,       NULL                    }, ///< NS_SUBSIDIES
 	{ NT_GENERAL,         NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
@@ -208,6 +208,11 @@ struct NewsWindow : Window {
 			case NM_THIN: {
 				this->DrawNewsBorder();
 
+				if (_news_subtype_data[this->ni->subtype].callback != NULL) {
+					(_news_subtype_data[this->ni->subtype].callback)(this, ni);
+					break;
+				}
+
 				DrawString(2, 1, STR_00C6, TC_FROMSTRING);
 
 				SetDParam(0, this->ni->date);
@@ -236,11 +241,6 @@ struct NewsWindow : Window {
 				}
 				break;
 			}
-
-			case NM_CALLBACK:
-				this->DrawNewsBorder();
-				(_news_subtype_data[this->ni->subtype].callback)(this, ni);
-				break;
 
 			default:
 				this->DrawWidgets();
@@ -371,7 +371,6 @@ static void ShowNewspaper(NewsItem *ni)
 	Window *w;
 	switch (_news_subtype_data[ni->subtype].display_mode) {
 		case NM_NORMAL:
-		case NM_CALLBACK:
 			_news_type13_desc.top = top;
 			w = new NewsWindow(&_news_type13_desc, ni);
 			if (ni->flags & NF_VIEWPORT) {

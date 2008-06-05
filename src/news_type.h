@@ -62,7 +62,6 @@ enum NewsMode {
 	NM_SMALL    = 0, ///< Show only a small popup informing us about vehicle age for example
 	NM_NORMAL   = 1, ///< Show a simple news message (height 170 pixels)
 	NM_THIN     = 2, ///< Show a simple news message (height 130 pixels)
-	NM_CALLBACK = 3, ///< Do some special processing before displaying news message. Which callback to call is in NewsCallback
 };
 
 /**
