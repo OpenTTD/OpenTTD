@@ -184,6 +184,13 @@ void LoadCustomEngineNames()
 	DEBUG(misc, 1, "LoadCustomEngineNames: not done");
 }
 
+/* Determine if an engine type is a wagon (and not a loco) */
+static bool IsWagon(EngineID index)
+{
+	const Engine *e = GetEngine(index);
+	return e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON;
+}
+
 static void CalcEngineReliability(Engine *e)
 {
 	uint age = e->age;
@@ -256,10 +263,9 @@ void StartupEngines()
 		e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
 		e->duration_phase_3 = GB(r, 9, 7) + 120;
 
-		e->reliability_spd_dec = (ei->unk2&0x7F) << 2;
+		e->reliability_spd_dec = ei->decay_speed << 2;
 
-		/* my invented flag for something that is a wagon */
-		if (ei->unk2 & 0x80) {
+		if (IsWagon(e->index)) {
 			e->age = 0xFFFF;
 		} else {
 			CalcEngineReliability(e);
@@ -375,13 +381,6 @@ CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32
 	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_player);
 
 	return CommandCost();
-}
-
-/* Determine if an engine type is a wagon (and not a loco) */
-static bool IsWagon(EngineID index)
-{
-	const Engine *e = GetEngine(index);
-	return e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON;
 }
 
 StringID GetEngineCategoryName(EngineID engine);

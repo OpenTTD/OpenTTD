@@ -18,7 +18,7 @@ enum {
 /** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date
- * @param b unk2, flag for carriage(bit 7) and decay speed(bits0..6)
+ * @param b decay speed
  * @param c life length
  * @param d base life
  * @param e Bitmask of the climates
@@ -29,18 +29,18 @@ enum {
 
 /** Writes the properties of a train carriage into the EngineInfo struct.
  * @param a Introduction date
- * @param b unk2, flag for carriage(bit 7) and decay speed(bits0..6)
+ * @param b decay speed
  * @param c life length
  * @param d base life
  * @param e Bitmask of the climates
  * @see MK
  * @note the 5 between d and e is the load amount
  */
-#define MW(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b | 0x80, 5, e, 0, 8, 0, 0, 0, STR_EMPTY }
+#define MW(a, b, c, d, e) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, c, d, b, 5, e, 0, 8, 0, 0, 0, STR_EMPTY }
 
 /** Writes the properties of a ship into the EngineInfo struct.
  * @param a Introduction date
- * @param b unk2, flag for carriage(bit 7) and decay speed(bits0..6)
+ * @param b decay speed
  * @param c life length
  * @param d base life
  * @param e Bitmask of the climates
@@ -51,7 +51,7 @@ enum {
 
 /** Writes the properties of an aeroplane into the EngineInfo struct.
  * @param a Introduction date
- * @param b unk2, flag for carriage(bit 7) and decay speed(bits0..6)
+ * @param b decay speed
  * @param c life length
  * @param d base life
  * @param e Bitmask of the climates

@@ -417,18 +417,6 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
-static void dewagonize(int condition, Engine *e)
-{
-	if (condition != 0) {
-		e->info.unk2 &= ~0x80;
-		if (e->u.rail.railveh_type == RAILVEH_WAGON)
-			e->u.rail.railveh_type = RAILVEH_SINGLEHEAD;
-	} else {
-		e->info.unk2 |= 0x80;
-		e->u.rail.railveh_type = RAILVEH_WAGON;
-	}
-}
-
 static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -468,7 +456,15 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 			case 0x0B: // Power
 				rvi->power = grf_load_word(&buf);
-				dewagonize(rvi->power, e);
+
+				/* Set engine / wagon state based on power */
+				if (rvi->power != 0) {
+					if (rvi->railveh_type == RAILVEH_WAGON) {
+						rvi->railveh_type = RAILVEH_SINGLEHEAD;
+					}
+				} else {
+					rvi->railveh_type = RAILVEH_WAGON;
+				}
 				break;
 
 			case 0x0D: // Running cost factor
@@ -2300,7 +2296,7 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 							break;
 
 						case 0x02: // Decay speed
-							SB(ei->unk2, 0, 7, grf_load_byte(&buf) & 0x7F);
+							ei->decay_speed = grf_load_byte(&buf);
 							break;
 
 						case 0x03: // Vehicle life
