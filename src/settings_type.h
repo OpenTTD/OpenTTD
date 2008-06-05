@@ -78,9 +78,13 @@ struct GUISettings {
 	bool   autorenew;                        ///< should autorenew be enabled for new companies?
 	int16  autorenew_months;                 ///< how many months from EOL of vehicles should autorenew trigger for new companies?
 	int32  autorenew_money;                  ///< how much money before autorenewing for new companies?
+	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
+};
+
+/** Settings related to currency/unit systems. */
+struct LocaleSettings {
 	byte   currency;                         ///< currency we currently use
 	byte   units;                            ///< unit system we show everything
-	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
 };
 
 /** All settings related to the network. */
@@ -311,6 +315,7 @@ struct GameSettings {
 	VehicleSettings      vehicle;            ///< options for vehicles
 	EconomySettings      economy;            ///< settings to change the economy
 	StationSettings      station;            ///< settings related to station management
+	LocaleSettings       locale;             ///< settings related to used currency/unit system in the current game
 };
 
 /** All settings that are only important for the local client. */

@@ -162,8 +162,8 @@ struct GameOptionsWindow : Window {
 		this->SetWidgetDisabledState(GAMEOPT_VEHICLENAME_SAVE, !(_vehicle_design_names & 1));
 		if (!this->IsWidgetDisabled(GAMEOPT_VEHICLENAME_SAVE)) str = STR_02BF_CUSTOM;
 		SetDParam(0, str);
-		SetDParam(1, _currency_specs[_settings_client.gui.currency].name);
-		SetDParam(2, STR_UNITS_IMPERIAL + _settings_client.gui.units);
+		SetDParam(1, _currency_specs[this->opt->locale.currency].name);
+		SetDParam(2, STR_UNITS_IMPERIAL + this->opt->locale.units);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + this->opt->vehicle.road_side);
 		SetDParam(4, TownName(this->opt->game_creation.town_name));
 		SetDParam(5, _autosave_dropdown[_settings_client.gui.autosave]);
@@ -181,11 +181,11 @@ struct GameOptionsWindow : Window {
 	{
 		switch (widget) {
 			case GAMEOPT_CURRENCY_BTN: // Setup currencies dropdown
-				ShowDropDownMenu(this, BuildCurrencyDropdown(), _settings_client.gui.currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+				ShowDropDownMenu(this, BuildCurrencyDropdown(), this->opt->locale.currency, GAMEOPT_CURRENCY_BTN, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
 				break;
 
 			case GAMEOPT_DISTANCE_BTN: // Setup distance unit dropdown
-				ShowDropDownMenu(this, _units_dropdown, _settings_client.gui.units, GAMEOPT_DISTANCE_BTN, 0, 0);
+				ShowDropDownMenu(this, _units_dropdown, this->opt->locale.units, GAMEOPT_DISTANCE_BTN, 0, 0);
 				break;
 
 			case GAMEOPT_ROADSIDE_BTN: { // Setup road-side dropdown
@@ -265,12 +265,12 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_CURRENCY_BTN: /* Currency */
 				if (index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
-				_settings_client.gui.currency = index;
+				this->opt->locale.currency = index;
 				MarkWholeScreenDirty();
 				break;
 
 			case GAMEOPT_DISTANCE_BTN: // Measuring units
-				_settings_client.gui.units = index;
+				this->opt->locale.units = index;
 				MarkWholeScreenDirty();
 				break;
 

@@ -1178,7 +1178,7 @@ static const byte convert_currency[] = {
 /* since savegame version 4.2 the currencies are arranged differently */
 static void UpdateCurrencies()
 {
-	_settings_client.gui.currency = convert_currency[_settings_client.gui.currency];
+	_settings_game.locale.currency = convert_currency[_settings_game.locale.currency];
 }
 
 /* Up to revision 1413 the invisible tiles at the southern border have not been
