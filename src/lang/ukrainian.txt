@@ -503,6 +503,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за містк
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
 STR_SORT_BY_MODEL                                               :Модель
 STR_SORT_BY_VALUE                                               :за ціною
+STR_SORT_BY_LENGTH                                              :Довжина
 STR_SORT_BY_FACILITY                                            :Вид станцій
 STR_SORT_BY_WAITING                                             :за ціною вантажу
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
@@ -610,6 +611,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Варт
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Вартість очистки: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :немає
 STR_01A7_OWNER                                                  :{BLACK}Власник: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Власник дороги: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Власник трамвайної дороги: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Власник залізниці: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Місцева влада: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :немає
 STR_01AA_NAME                                                   :{BLACK}Назва
@@ -1178,6 +1182,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Мно�
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Фактор швидкості літаків: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Дозволити безпересадкові зупинки на муніципальних дорогах: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Дозволити будувати суміжні станції: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Дозволити декілька NewGRF наборів транспорту: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Будувати малі аеропорти можна завжди: {ORANGE}{STRING}
 
@@ -1837,6 +1842,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Дорога з
 STR_1816_TREE_LINED_ROAD                                        :Дорога з насадженнями
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Автомобільне депо
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Залізничний переїзд
+STR_TRAMWAY                                                     :Трамвайна дорога
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Не можна знести автобусну станцію...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Не можна знести вантажну станцію...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Не можна знести пасажирську трамвайну станцію...
@@ -3343,6 +3349,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Відс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Відсутній GRF файл(и)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зняття з паузи може привести до аварійної відмови OpenTTD. Не рапортуйте про наступні відмови.{}Ви дійсно хочете зняти з паузи?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник:
@@ -3706,4 +3714,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Збіл
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\йцукенгшщзхїфівапролджє  ячсмитьбю. .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄ  ЯЧСМИТЬБЮ, .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Дозволити залежний від міста рівень шуму для аеропортів: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Генерований шум: {GOLD}{COMMA}
 ########

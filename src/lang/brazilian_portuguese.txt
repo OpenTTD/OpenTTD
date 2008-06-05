@@ -487,6 +487,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo pa
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Proprietário: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Dono da estrada: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Dono da linha de bonde: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Dono da linha de trem: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nenhum
 STR_01AA_NAME                                                   :{BLACK}Nome
@@ -1055,6 +1058,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multipl
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Fator de velocidade para aeronaves: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações drive-through em ruas locais: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Ativar múltiplos conjuntos NewGRF de locomotivas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1365,7 +1369,7 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nome do jogo
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Idioma, versão do servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Clique num jogo da lista para o selecionar
-STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}O servidor que você entrou última vez:
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}O servidor que você entrou da última vez:
 STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Clique para selecionar o servidor que você jogou da última vez
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Localizar servidor
@@ -1714,6 +1718,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Rodovia ilumina
 STR_1816_TREE_LINED_ROAD                                        :Rodovia arborizada
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garagem
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passagem de nível
+STR_TRAMWAY                                                     :Linha de bonde
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossível remover estação de ônibus
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossível remover parada de caminhões
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossível remover estação de bonde...
@@ -2659,13 +2664,13 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no 
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_ORDER_GO_TO                                                 :Vá para
-STR_ORDER_GO_NON_STOP_TO                                        :Vá não parando para
+STR_ORDER_GO_NON_STOP_TO                                        :Ir sem parar para
 STR_ORDER_GO_VIA                                                :Vá via
-STR_ORDER_GO_NON_STOP_VIA                                       :Vá não parando via
+STR_ORDER_GO_NON_STOP_VIA                                       :Ir sem parar via
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full load all cargo
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carregar tudo
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carregar completamente qualquer carga
-STR_ORDER_DROP_NO_LOADING                                       :Não carregando
+STR_ORDER_DROP_NO_LOADING                                       :Não carregar
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceito
 STR_ORDER_DROP_UNLOAD                                           :Descarregar tudo
 STR_ORDER_DROP_TRANSFER                                         :Transferir
@@ -3183,6 +3188,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subseqüentes.{}Você realmente quer despausar?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
@@ -3413,7 +3420,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Alternar
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Alternar transparência para estruturas como faróis e antenas, talvez no futuro para efeitos visuais
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Alternar transparência para catenária. CTRL+click para travar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Altera transparência para os indicadores de carga
-STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Definir objetos invisíveis ao invés de transparente
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Definir objetivos como invisíveis ao invés de transparentes.
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3546,4 +3553,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permitir controle de ruído de aeronaves pelas cidades: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Ruído gerado: {GOLD}{COMMA}
 ########

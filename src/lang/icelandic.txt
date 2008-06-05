@@ -1,7 +1,7 @@
 ##name Icelandic
 ##ownname Íslenska
 ##isocode is_IS
-##plural 9
+##plural 0
 ##gender karlkyn kvenkyn hvorugkyn
 
 #
@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} frá {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Tekur við: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Tekur við: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Birgðir: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Farþegar
 STR_0010_COAL                                                   :Kol
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Burðargeta all
 STR_SORT_BY_MAX_SPEED                                           :Hámarkshraði
 STR_SORT_BY_MODEL                                               :Týpa
 STR_SORT_BY_VALUE                                               :Virði
+STR_SORT_BY_LENGTH                                              :Lengd
 STR_SORT_BY_FACILITY                                            :Tegund stöðvar
 STR_SORT_BY_WAITING                                             :Verðgildi farms á stöð
 STR_SORT_BY_RATING_MAX                                          :Flutningur farms
@@ -485,6 +487,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnað
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnaður við hreinsun: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Enginn
 STR_01A7_OWNER                                                  :{BLACK}Eigandi: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Eigandi vegs: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Eigandi spors: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Eigandi lestarteina: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Bæjaryfirvöld: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Enginn
 STR_01AA_NAME                                                   :{BLACK}Nafn
@@ -1053,6 +1058,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Margfal
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Hraðastuðull flugvéla: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leyfa strætóstöðvar á gangstéttum bæja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Heimila sambyggingu stöðva: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Virkja mörg NewGRF vélasöfn: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltaf leyfa litla flugvelli: {ORANGE}{STRING}
 
@@ -1172,6 +1178,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :sjálfgefið
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betri vegi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 net
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 net
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :slembið
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Staðsetning tækjasláar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Vinstri
@@ -1362,6 +1369,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nafn
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nafn leiksins
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Tungumál, útgáfa þjóns o.s.frv.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Ýttu á leik á listanum til að velja hann
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Þjónninn sem þú tengdist síðast:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Smelltu til að velja þjóninn sem þú tengdist í síðast
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Finna þjón
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Leita að þjónum á neti
@@ -1709,6 +1718,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vegur með umfe
 STR_1816_TREE_LINED_ROAD                                        :Trjáskreyttur vegur
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Bifreiðaskýli
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Vega/lestar gatnamót
+STR_TRAMWAY                                                     :Sporvagn
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Get ekki fjarlægt strætóstoppistöð...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Get ekki flutt vörubílastöð...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Get ekki fjarlægt farþegasporvagnastöð...
@@ -2651,6 +2661,68 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} L
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyrir
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :Fara að
+STR_ORDER_GO_VIA                                                :Fara gegnum
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Hlaða ef það er hægt
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fullhlaða öllum farmi
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fullhlaða hvaða farmi sem er
+STR_ORDER_DROP_NO_LOADING                                       :Ekki hlaða
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Afhlaða ef tekið er við farmi
+STR_ORDER_DROP_UNLOAD                                           :Afhlaða allt
+STR_ORDER_DROP_TRANSFER                                         :Flytja
+STR_ORDER_DROP_NO_UNLOADING                                     :Ekki afhlaða
+STR_ORDER_FULL_LOAD                                             :(Fullhlaða)
+STR_ORDER_FULL_LOAD_ANY                                         :(Fullhlaða hvaða farmi sem er)
+STR_ORDER_NO_LOAD                                               :(Ekki hlaða)
+STR_ORDER_UNLOAD                                                :(Afhlaða og taka farm)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Afhlaða og bíða fullhleðslu)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Afhlaða og bíða eftir hvaða fullhleðslu sem er)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Afhlaða og yfirgefa tóm)
+STR_ORDER_TRANSFER                                              :(Flytja og taka farm)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Flytja og bíða fullfermis)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Flytja og bíða hvaða fullfermis sem er)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Flytja og yfirgefa tóm)
+STR_ORDER_NO_UNLOAD                                             :(Ekki afhlaða en taka farm)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ekki afhlaða en býða fullfermis)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ekki afhlaða og bíða hvaða fullfermis sem er)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Breyta stanshegðun valinna skipana
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Breyta fermishegðun valinna skipana
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Breyta hegðun affermingar valinna skipanna
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Bæta við ítarlegri skipun
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fara í næsta skýli
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fara í næsta flugskýli
+STR_ORDER_NEAREST_DEPOT                                         :næsta
+STR_ORDER_NEAREST_HANGAR                                        :næsta flugskýli
+STR_ORDER_SERVICE_AT                                            :Skoða í
+STR_ORDER_TRAIN_DEPOT                                           :lestaskýli
+STR_ORDER_ROAD_DEPOT                                            :bifreiðaskýli
+STR_ORDER_SHIP_DEPOT                                            :skipaskýli
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} flugskýli
+
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Hleðsluhlutfall
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Áreiðanleiki
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Hámarkshraði
+STR_ORDER_CONDITIONAL_AGE                                       :Aldur farartækis (í árum)
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Alltaf
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :er jafnt og
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :er ekki jafnt og
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :er minna en
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :er minna en eða jafnt og
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :er stærra en
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :er stærra en eða jafnt og
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er satt
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er ósatt
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Hoppa í skipun {COMMA}
+STR_CONDITIONAL_NUM                                             :Hoppa í skipun {COMMA} þegar {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Hoppa í skipun {COMMA} þegar {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Ferðalag (ekki sett í áætlun)
 STR_TIMETABLE_TRAVEL_FOR                                        :Ferðast í {STRING}
@@ -2708,6 +2780,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Virði: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Fermandi / Affermandi
+STR_LEAVING                                                     :{LTBLUE}Yfirgefur
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Lest þarf að vera stöðvuð í skýli
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Get ekki sent lest í skýli...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ekki pláss fyrir fleiri skipanir
@@ -3107,6 +3180,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Vantar G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vantar GRF skrá(r)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD getur hrunið ef leikur er settur af stað. Ekki skrá villufærslur fyrir eftirfarandi hrun.{}Ertu viss um að þú viljir setja leikinn af stað?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki:
@@ -3337,6 +3412,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Virkja/a
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Virkja/afvirkja gegnsæji bygginga á borð við vita og möstur. CTRL+smella til að læsa.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Virkja/afvirkja gegnsæji raflína. CTRL+smella til að læsa.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Virkja/afvirkja gegnsæji hleðslumæla. CTRL+smella til að læsa.
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Gera hluti ósýnilega en ekki gagnsæja
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3467,4 +3543,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Auka þ�
 ########
 
 ############ on screen keyboard
+########
+
+############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}Hávaðamörk í bænum: {ORANGE}{COMMA}{BLACK}  mest: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Hávaði við flugvöll: {GOLD}{COMMA}
 ########

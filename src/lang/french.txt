@@ -487,6 +487,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coût du
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coût du balayage: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propriétaire: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Propriétaire de la route: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Propriétaire du tramway: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Propriétaire des rails: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Municipalité: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Aucun
 STR_01AA_NAME                                                   :{BLACK}Nom
@@ -1055,6 +1058,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multipl
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Facteur de vitesse des aéroplanes: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Autoriser les arrêts de bus sur les routes des municipalités: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Autoriser la construction de stations adjacentes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Utiliser plusieurs NewGRF de véhicules: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Toujours permettre les petits aéroports: {ORANGE}{STRING}
 
@@ -1714,6 +1718,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Route avec lamp
 STR_1816_TREE_LINED_ROAD                                        :Route avec lignée d'arbustres
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Dépôt de véhicules routiers
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Route/rail Croisement à niveau
+STR_TRAMWAY                                                     :Tramway
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossible de supprimer la station de bus...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossible de supprimer la station de camions...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossible de retirer la station de tramway pour passagers...
@@ -3183,6 +3188,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichier(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichier(s) GRF manquant(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne créez pas de rapport de bug pour ceux-ci.{}Voulez-vous vraiment retirer la pause?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Séparateur :
@@ -3544,6 +3551,12 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Augmente
 ########
 
 ############ on screen keyboard
-STR_OSK_KEYBOARD_LAYOUT                                         :²&é"'(-è_çà)=azertyuiop^$qsdfghjklmù*wxcvbn,;:!
-STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :²1234567890°+AZERTYUIOP¨£QSDFGHJKLM%µWXCVBN?./§
+STR_OSK_KEYBOARD_LAYOUT                                         :²&é"'(-è_çà)= azertyuiop^$qsdfghjklmù*<wxcvbn,;:!
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    : 1234567890°+ AZERTYUIOP¨£QSDFGHJKLM%µ>WXCVBN?./§
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permettre plus d'aéroport par ville, selon les nuisances: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Limite de nuisance pour la ville: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Bruit généré: {GOLD}{COMMA}
 ########

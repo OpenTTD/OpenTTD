@@ -18,6 +18,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} undervejs fra {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterer: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterer: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Forsyninger: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passagerer
 STR_0010_COAL                                                   :Kul
@@ -1363,6 +1364,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Navn
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Spillets navn
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprog, server version, osv.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klik på et spil fra listen for at vælge det
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Den senest tilsluttede server:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klik for at vælge den server du spillede på sidst
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Søg netværket for en server
@@ -1396,6 +1399,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start et
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spillets navn:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Navnet vil blive vist til andre spillere i menuen, hvor man vælger netværksspil
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Skriv et navn for netværksspillet
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Sæt kodeord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskyt dit spil med et kodeord hvis du ikke vil have fremmede med
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vælg et kort:
@@ -1452,7 +1456,10 @@ STR_NETWORK_LANG_SPANISH                                        :Spansk
 STR_NETWORK_LANG_SWEDISH                                        :Svensk
 STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :Kroatisk
+STR_NETWORK_LANG_CATALAN                                        :Catalansk
+STR_NETWORK_LANG_ESTONIAN                                       :Estisk
 STR_NETWORK_LANG_GALICIAN                                       :Galicisk
 STR_NETWORK_LANG_GREEK                                          :Græsk
 STR_NETWORK_LANG_LATVIAN                                        :Lettisk
@@ -1554,6 +1561,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRIN
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
 STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv tekst i netværks-chat
 STR_NETWORK_NAME_CHANGE                                         :har skiftet navn til
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serveren har lukket ned for dette spil
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Serveren genstarter...{}Vent venligst...
@@ -1957,6 +1965,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vælg Sp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vælg scenarie (grøn), predefineret spil (blå), eller nyt tilfældigt spil
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generer nyt tilfældigt spil
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Hent højdekort
+STR_SAVE_OSKTITLE                                               :{BLACK}Skriv et navn til det gemte spil
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} i vejen
@@ -2652,14 +2661,40 @@ STR_ORDER_GO_TO                                                 :Gå til
 STR_ORDER_GO_NON_STOP_TO                                        :Gå uden stop til
 STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå uden stop via
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Åbn hvis tilgængelig
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af alt gods
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last af hvilket som helst gods
+STR_ORDER_DROP_NO_LOADING                                       :Ingen lastning
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Los hvis gods accepteres
 STR_ORDER_DROP_UNLOAD                                           :Aflæs alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
+STR_ORDER_DROP_NO_UNLOADING                                     :Ingen losning
+STR_ORDER_FULL_LOAD                                             :(Fuld last)
+STR_ORDER_FULL_LOAD_ANY                                         :(Fuld last af hvilket som helst gods)
+STR_ORDER_NO_LOAD                                               :(Ingen lastning)
+STR_ORDER_UNLOAD                                                :(Los og medtag gods)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Los og vent på fuld last)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Los og vent på fuld last af hvilket som helst gods)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Los og efterlad tom)
+STR_ORDER_TRANSFER                                              :(Overfør og last gods)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Overfør og vent på fuld last)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Overfør og vent på fuld last af hvilket som helst gods)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Overfør og efterlad tom)
+STR_ORDER_NO_UNLOAD                                             :(Los ikke og last gods)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Los ikke og vent på fuld last)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Los ikke og vent på fuld last af hvilket som helst gods)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ændr standseregel for den valgte ordre
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ændr lasteregel for den valgte ordre
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ændr losseregel for den valgte ordre
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Indsæt en avanceret ordre
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gå til nærmeste depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Flyv til nærmeste hangar
 STR_ORDER_NEAREST_DEPOT                                         :det nærmeste
 STR_ORDER_NEAREST_HANGAR                                        :den nærmeste hangar
+STR_ORDER_SERVICE_AT                                            :Servicer i
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Gå direkte til service i
 STR_ORDER_TRAIN_DEPOT                                           :Remise
 STR_ORDER_ROAD_DEPOT                                            :Værksted
 STR_ORDER_SHIP_DEPOT                                            :Skibsdok
@@ -2667,6 +2702,12 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} hangar
 
+STR_ORDER_CONDITIONAL                                           :Betinget ordrespring
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data som ordrespring baseres på
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hvordan data sammenlignes med den givne værdi
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Værdi data skal sammenlignes med
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skriv værdi der sammenlignes med
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Last-procentdel
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Pålidelighed
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Tophastighed
 STR_ORDER_CONDITIONAL_AGE                                       :Køretøjets alder (år)
@@ -2681,6 +2722,9 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :er større elle
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :er sand
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :er falsk
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Spring til ordre {COMMA}
+STR_CONDITIONAL_NUM                                             :Spring til ordre {COMMA} når {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Spring til ordre {COMMA} når {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
@@ -2729,6 +2773,7 @@ STR_REFIT_ORDER                                                 :(Ombyg til {STR
 STR_TIMETABLE_VIEW                                              :{BLACK}Køreplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Skift til køreplan-visning
 STR_ORDER_VIEW                                                  :{BLACK}Ordrer
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Skift til ordrevisning
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordrer)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på ordrer - -
 STR_SERVICE                                                     :{BLACK}Service
@@ -3137,6 +3182,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Tilskuer:
@@ -3274,6 +3320,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Ændre d
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Verdensgenerering
 STR_RANDOM_SEED                                                 :{BLACK}Tilfældig
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klik for at angive tilfældighed
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Skriv startværdi til tilfældige tal
 STR_LAND_GENERATOR                                              :{BLACK}Terrængenerator:
 STR_TREE_PLACER                                                 :{BLACK}Træalgoritme:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Højdekortets rotation:
@@ -3366,6 +3413,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skift ge
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skift gennemsigtighed for strukturer som fyrtårne og antenner, og måske i fremtiden for øjeguf
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Slå transparens til/fra for køreledninger. CTRL+klik for at låse.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Slå gennemsigtighed til/fra for laste-indikatorer
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Gør objekter usynlige i stedet for gennemsigtige
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3498,4 +3546,7 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Forøg t
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
 ########

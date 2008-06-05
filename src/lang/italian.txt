@@ -488,6 +488,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costo di
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costo di demolizione: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Proprietario: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Proprietario strada: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Proprietario tranvia: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Proprietario ferrovia: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autorità locale: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nessuno
 STR_01AA_NAME                                                   :{BLACK}Nome
@@ -1056,6 +1059,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Moltipl
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Fattore di velocità degli aeromobili: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Consenti fermate passanti sulle strade delle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Consenti la costruzione di stazioni adiacenti: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Abilita pacchetti di locomotive NewGRF multipli: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti sempre la costruzione di piccoli aeroporti: {ORANGE}{STRING}
 
@@ -1242,8 +1246,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permett
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Diretto a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Diretto a {WAYPOINT}, {VELOCITY}
 
-STR_GO_TO_WAYPOINT                                              :Procedi attraverso {WAYPOINT}
-STR_GO_NON_STOP_TO_WAYPOINT                                     :Procedi no-stop attraverso {WAYPOINT}
+STR_GO_TO_WAYPOINT                                              :Passa per {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Passa no-stop per {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :Waypoint di {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Waypoint di {TOWN} #{COMMA}
@@ -1366,7 +1370,7 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nome della partita
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Lingua, versione del server, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Fare clic su una partita in elenco per selezionarla
-STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}L'ultimo server utilizzato.
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Ultimo server utilizzato:
 STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Fare clic per selezionare il server su cui si è giocato l'ultima volta
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Trova server
@@ -1715,6 +1719,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Strada con lamp
 STR_1816_TREE_LINED_ROAD                                        :Strada alberata
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Deposito automezzi
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Passaggio a livello
+STR_TRAMWAY                                                     :Tranvia
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Impossibile rimuovere la stazione degli autobus...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Impossibile rimuovere l'area di carico per camion...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Impossibile rimuovere la stazione tram passeggeri...
@@ -2660,9 +2665,9 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Treno di
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_ORDER_GO_TO                                                 :Vai a
-STR_ORDER_GO_NON_STOP_TO                                        :Vai non-stop a
-STR_ORDER_GO_VIA                                                :Procedi verso
-STR_ORDER_GO_NON_STOP_VIA                                       :Procedi non-stop verso
+STR_ORDER_GO_NON_STOP_TO                                        :Vai no-stop a
+STR_ORDER_GO_VIA                                                :Passa per
+STR_ORDER_GO_NON_STOP_VIA                                       :Passa no-stop per
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carica se possibile
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Attendi pieno carico
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi qualsiasi carico
@@ -2691,8 +2696,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambia l
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Inserisce un ordine avanzato
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Vai al deposito più vicino
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Vai all'hangar più vicino
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Deposito più vicino
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar più vicino
 STR_ORDER_NEAREST_DEPOT                                         :più vicino
 STR_ORDER_NEAREST_HANGAR                                        :più vicino Hangar
 STR_ORDER_SERVICE_AT                                            :Manutenzione al
@@ -2700,11 +2705,11 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenzione no
 STR_ORDER_TRAIN_DEPOT                                           :Deposito ferroviario
 STR_ORDER_ROAD_DEPOT                                            :Deposito automezzi
 STR_ORDER_SHIP_DEPOT                                            :Deposito navale
-STR_GO_TO_DEPOT                                                 :{0:STRING} {2:STRING} di {1:TOWN}
+STR_GO_TO_DEPOT                                                 :{0:STRING}l {2:STRING} di {1:TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
-STR_GO_TO_HANGAR                                                :{STRING}l'Hangar di {STATION}
+STR_GO_TO_HANGAR                                                :{STRING}ll'Hangar di {STATION}
 
-STR_ORDER_CONDITIONAL                                           :Salto condizionale a ordine
+STR_ORDER_CONDITIONAL                                           :Salto condizionale
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dato del veicolo sul quale basare il salto
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Modalità di confronto del dato del veicolo con il valore inserito
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Valore col quale confrontare il dato del veicolo
@@ -2716,7 +2721,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Età del veicol
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Manutenzione richiesta
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :è uguale a
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :è diverso da
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :è diversa da
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :è minore di
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :è minore o uguale a
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :è maggiore di
@@ -3184,6 +3189,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mancano 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}File GRF mancanti
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash: nel caso, si prega di non inviare segnalazioni bug al riguardo.{}Uscire dalla pausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separatore:
@@ -3547,4 +3554,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumenta 
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'ì qwertyuiopè+asdfghjklòàù<zxcvbnm,.- .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"£$%&/()=?^ QWERTYUIOPé*ASDFGHJKLç°§>ZXCVBNM;:_ .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Consenti controllo rumore aeroporti da parte delle città: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Rumore generato: {GOLD}{COMMA}
 ########

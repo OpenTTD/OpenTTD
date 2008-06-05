@@ -376,6 +376,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kokonaiskapasit
 STR_SORT_BY_MAX_SPEED                                           :Huippunopeus
 STR_SORT_BY_MODEL                                               :Malli
 STR_SORT_BY_VALUE                                               :Arvo
+STR_SORT_BY_LENGTH                                              :Pituus
 STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Rahtauksen arvosana
@@ -852,6 +853,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Rakenna uutta t
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rakenna uutta teollisuutta
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...voidaan rakentaa vain sademetsäalueisiin.
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...voidaan rakentaa vain aavikkoalueisiin.
@@ -1109,7 +1111,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Oma yhtiö
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aikataulut ajoneuvoille: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Raidetyyppi oletuksena: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Oletusraidetyyppi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköraide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Yksiraiteinen
@@ -1159,6 +1161,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :oletus
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :parempia teitä
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 ruudukko
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 ruudukko
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :satunnainen
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vasen
@@ -1189,6 +1192,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
+
 
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto
@@ -1680,8 +1684,10 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Rakennus täytyy purkaa ensin.
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (City)
 STR_2006_POPULATION                                             :{BLACK}Asukasluku: {ORANGE}{COMMA}{BLACK}  Taloja: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Nimeä kaupunki
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kaupungin nimeä ei voi vaihtaa.
@@ -2599,6 +2605,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on tiellä.
 
+
+
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
@@ -2732,6 +2740,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Radasta puuttuu
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Uusi {STRING} on nyt saatavilla!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uusi {STRING} on nyt saatavilla! - {ENGINE}
+
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Ei voi asettaa aikataulua.
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vain asemalla voi odottaa.
@@ -3045,6 +3054,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteenso
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Puuttuvat GRF tiedostot tarvitaan pelin lataamiseksi.
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Välimerkki:
@@ -3167,6 +3177,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitett
 STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
 STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Suurin vääntömomentti: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 
@@ -3328,3 +3341,15 @@ STR_FUND_NEW_INDUSTRY                                           :{BLACK}Perusta
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Koekaivaus
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Rakenna
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Valitse tehdas listasta
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

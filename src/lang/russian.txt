@@ -380,6 +380,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Вместим�
 STR_SORT_BY_MAX_SPEED                                           :Максимальная скорость
 STR_SORT_BY_MODEL                                               :Модель
 STR_SORT_BY_VALUE                                               :Стоимость
+STR_SORT_BY_LENGTH                                              :Длина
 STR_SORT_BY_FACILITY                                            :Тип станции
 STR_SORT_BY_WAITING                                             :Кол-во товара на станции
 STR_SORT_BY_RATING_MAX                                          :Рейтинг грузов
@@ -487,6 +488,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Чтоб
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Чтобы очистить, надо: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :нет данных
 STR_01A7_OWNER                                                  :{BLACK}Владелец: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Владелец дороги: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Владелец трамвая: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Владелец ЖД пути: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Администрация: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Нет
 STR_01AA_NAME                                                   :{BLACK}Имя
@@ -1055,6 +1059,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Мно�
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Коэффициент скорости авиатранспорта: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Позволять строить остановки на городских дорогах: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Разрешить строительство смежных станций: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Включить поддержку нескольких NewGRF сетов: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Малые аэропорты всегда доступны: {ORANGE}{STRING}
 
@@ -1714,6 +1719,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Дорога с
 STR_1816_TREE_LINED_ROAD                                        :Шоссе
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Гараж
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Железнодорожный переезд
+STR_TRAMWAY                                                     :Трамвай
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Невозможно удалить автобусную остановку...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Невозможно удалить грузовой терминал...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Не могу удалить пассажирскую трамвайную станцию...
@@ -2667,6 +2673,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Депо
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд мешает
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_ORDER_GO_TO                                                 :Идти на
 STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановки на
 STR_ORDER_GO_VIA                                                :Идти через
@@ -3192,6 +3200,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не н�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Пропущенные GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель:
@@ -3555,4 +3565,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Увел
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума для аэропортов: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Производимый шум: {GOLD}{COMMA}
 ########

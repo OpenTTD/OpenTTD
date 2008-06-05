@@ -2,7 +2,7 @@
 ##ownname Čeština
 ##isocode cs_CZ
 ##plural 6
-##case nom gen dat acc voc loc ins big
+##case nom gen dat acc voc loc ins big small
 ##gender f m n
 
 #
@@ -544,6 +544,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za 
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za vyčištění: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Vlastník: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Majitel silnice: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Majitel tratě: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Majitel tratě: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Místní správa: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nic
 STR_01AA_NAME                                                   :{BLACK}Jméno
@@ -1112,6 +1115,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pro sim
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit průjezdné zastávky na silnicích vlastněných obcemi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Více grafických setů s vozidly vedle sebe: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Malá letiště se budou moci stále stavět: {ORANGE}{STRING}
 
@@ -1771,6 +1775,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Silnice s pouli
 STR_1816_TREE_LINED_ROAD                                        :Silnice s alejí
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garáž
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Železniční přejezd
+STR_TRAMWAY                                                     :Tramvaj
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nelze odstranit autobusovou zastávku...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nelze odstranit nakládací rampu...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nelze zbourat tramvajovou stanici pro cestující...
@@ -2752,6 +2757,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ovlivnit
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ovlivnit vykládání u vybraného příkazu
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Vložit složitější příkaz
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jet do nejbližšího depa
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Jet do nejbližšího hangáru
 STR_ORDER_NEAREST_DEPOT                                         :nebližšího
@@ -2765,6 +2771,29 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} hangár
 
+STR_ORDER_CONDITIONAL                                           :Podmíněné přeskočení příkazu
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porovnat vlastnost vozidla se zadanou hodnotou
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, se kterou srovnat vlastnost vozidla
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadej hodnotu pro srovnávání
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procento naložení
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolehlivost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximální rychlost
+STR_ORDER_CONDITIONAL_AGE                                       :Stáří vozidla (v letech)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vyžaduje údržbu
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vždy
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :se rovná
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :se nerovná
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :je menší než
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :je menší nebo rovno
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :je více než
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :je více nebo rovno
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je pravda
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :není pravda
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Skočit na příkaz {COMMA}
+STR_CONDITIONAL_NUM                                             :Skočit na příkaz {COMMA}, když {STRING.small} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Skočit na příkaz {COMMA}, když {STRING.small} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
@@ -3222,6 +3251,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro nač
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač:
@@ -3585,4 +3616,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :"+ěščřžýáíé=-\qwertyuiopú)asdfghjklů'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~1234567890_+|QWERTYUIOP/(}}ASDFGHJKL:!  ZXCVBNM?:_ .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Umožnit městům ovlivňovat hlukový limit pro letiště: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Hlukový limit ve městě: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Vytvářený hluk: {GOLD}{COMMA}
 ########

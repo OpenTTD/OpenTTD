@@ -486,6 +486,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Sloopkos
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Sloopkosten: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :(geen)
 STR_01A7_OWNER                                                  :{BLACK}Eigenaar: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Weg eigenaar: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Tramspoor eigenaar: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Spoor eigenaar: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gemeente: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Geen
 STR_01AA_NAME                                                   :{BLACK}Naam
@@ -1054,6 +1057,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Gewicht
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Vliegtuig snelheidsverhouding: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Laat toe dat doorrij wegstops worden geplaatst op door stad beheerde wegen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bouwen van aangrenzende stations toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Activeer meerdere NewGRF treinsets: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
@@ -1713,6 +1717,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Weg met straatl
 STR_1816_TREE_LINED_ROAD                                        :Weg met bomenrij
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Wegvoertuigdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Gelijke weg/spoorweg kruising
+STR_TRAMWAY                                                     :Tramspoor
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan busstation niet verwijderen...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan vrachtwagenstation niet verwijderen...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Kan passagiers tram station niet verwijderen...
@@ -3182,6 +3187,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Er zijn 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF bestand(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken:
@@ -3545,4 +3552,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Geluidsniveau controle door steden voor vliegvelden toestaan: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Geluidslimiet in steden: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Geluid gegenereerd: {GOLD}{COMMA}
 ########

@@ -1380,7 +1380,7 @@ STR_NETWORK_SERVER_VERSION                                      :{SILVER}Sunucu 
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Sunucu adresi:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Başlama tarihi:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Şimdiki tarih:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}Şifre korumalı!
+STR_NETWORK_PASSWORD                                            :{SILVER}Parola korumalı!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SUNUCU KAPALI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SUNUCU DOLU
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}SÜRÜM UYUŞMAZLIĞI
@@ -2649,6 +2649,44 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaylar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Yolda tren var
+STR_ORDER_GO_VIA                                                :Üzerinden git
+STR_ORDER_GO_NON_STOP_VIA                                       :Durmadan üzerinden git
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Mümkünse yükle
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Tüm kargoyu yükle
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Her kargoyu yükle
+STR_ORDER_DROP_NO_LOADING                                       :Yükleme yapma
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kabul edilirse yükle
+STR_ORDER_DROP_UNLOAD                                           :Tümünü boşalt
+STR_ORDER_DROP_TRANSFER                                         :Aktar
+STR_ORDER_DROP_NO_UNLOADING                                     :Boşaltma yapma
+STR_ORDER_FULL_LOAD                                             :(Tam yükle)
+STR_ORDER_FULL_LOAD_ANY                                         :(Her kargoyu tam yükle)
+STR_ORDER_NO_LOAD                                               :(Yükleme yapma)
+STR_ORDER_UNLOAD                                                :(Kargoyu boşalt ve al)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Boşalt ve tam yüklemeyi bekle)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Boşalt ve boş kal)
+STR_ORDER_TRANSFER                                              :(Aktar ve kargoyu al)
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Gelişmiş talimat ekle
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara git
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
+STR_ORDER_NEAREST_DEPOT                                         :en yakın
+STR_ORDER_NEAREST_HANGAR                                        :en yakın Hangar
+STR_ORDER_TRAIN_DEPOT                                           :Tren Garı
+STR_ORDER_ROAD_DEPOT                                            :Araba Garajı
+STR_ORDER_SHIP_DEPOT                                            :Tershane
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Azami hız
+STR_ORDER_CONDITIONAL_AGE                                       :Araç yaşı (yıl)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bakım gerektirir
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Her zaman
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} için gezi
@@ -2696,6 +2734,7 @@ STR_REFIT_TIP                                                   :{BLACK}Bu talim
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Zaman çizelgesi
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zaman tablosu görünümüne geç
+STR_ORDER_VIEW                                                  :{BLACK}Talimatlar
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Talimatlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Talimatların Sonu - -
 STR_SERVICE                                                     :{BLACK}Bakım
@@ -3102,6 +3141,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GR
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu yüklemek için gerekli olan GRF dosyaları eksik
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç:
@@ -3385,10 +3425,12 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}İsim da
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Sonraki tabelaya git
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Önceki tabelaya git
+STR_SIGN_OSKTITLE                                               :{BLACK}Tabela için bir isim girin
 
 ########
 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Parayla Yap
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Tetkik arama
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}İnşa et
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Bu listeden uygun fabrikayı seçin
 
@@ -3449,4 +3491,7 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Sinyal s
 ########
 
 ############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

@@ -378,6 +378,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet
 STR_SORT_BY_MAX_SPEED                                           :Maximal hastighet
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Värde
+STR_SORT_BY_LENGTH                                              :Längd
 STR_SORT_BY_FACILITY                                            :Stationstyp
 STR_SORT_BY_WAITING                                             :Väntande last-värde
 STR_SORT_BY_RATING_MAX                                          :Lasts-värdering
@@ -485,6 +486,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnad 
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Otillgänglig
 STR_01A7_OWNER                                                  :{BLACK}Ägare: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Vägens ägare: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Spårvägens ägare: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Järnvägens ägare: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokala myndigheter: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Namn
@@ -1053,6 +1057,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Godsfak
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Hastighetsfaktor för flygplan: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillåt genomfarts-stop på stadsägda vägar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillåt byggande av närliggande stationer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Tillåt flera NewGRF-set: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
@@ -1363,6 +1368,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Namn
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Namn på nätverksspelet
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Språk, serverversion, mm
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klicka på ett spel från listan för att välja det
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Servern du senast anslöt till:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Välj servern du senast spelade på
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Leta server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Leta på nätverket efter en server
@@ -1710,6 +1717,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Väg med gatube
 STR_1816_TREE_LINED_ROAD                                        :Väg med träd
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Bussgarage
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Väg-/Järnvägskorsning
+STR_TRAMWAY                                                     :Spårväg
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan inte ta bort busstation...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan inte ta bort lastbilsstation...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Kan inte ta bort passagerar-spårvagnsstation...
@@ -2779,6 +2787,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Värde: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lastar / lastar av
+STR_LEAVING                                                     :{LTBLUE}Lämnar
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tåget måste stoppas inne i depån
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan inte skicka tåg till depå...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ingen mer plats för order
@@ -3178,6 +3187,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare:
@@ -3541,4 +3552,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Öka dra
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillåt stadskontrollerade bullernivåer för flygplatser: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Bullernivågräns i stad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Genererat buller: {GOLD}{COMMA}
 ########

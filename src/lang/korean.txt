@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({1:STATION}에서 온 {0:SHORTCARGO})
 STR_000C_ACCEPTS                                                :{BLACK}받음: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}받음: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}공급: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :승객
 STR_0010_COAL                                                   :석탄
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :화물당 총 �
 STR_SORT_BY_MAX_SPEED                                           :최고 속력
 STR_SORT_BY_MODEL                                               :모델
 STR_SORT_BY_VALUE                                               :가격
+STR_SORT_BY_LENGTH                                              :길이
 STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
 STR_SORT_BY_RATING_MAX                                          :화물 성취도
@@ -801,15 +803,15 @@ STR_02DA_ON                                                     :{BLACK}켜기
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}보조금 표시
 STR_02DD_SUBSIDIES                                              :보조금
 STR_02DE_MAP_OF_WORLD                                           :전체 지도 보기
-STR_EXTRA_VIEW_PORT                                             :추가 보임창
+STR_EXTRA_VIEW_PORT                                             :외부 화면
 STR_SIGN_LIST                                                   :팻말 목록
 STR_02DF_TOWN_DIRECTORY                                         :도시 목록
 STR_TOWN_POPULATION                                             :{BLACK}세계 인구: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}보임창 {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}보임창으로 복사
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}이 지역의 풍경을 이 보임창으로 복사합니다
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}보임창에서 붙여넣기
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}이 지역의 풍경을 이 보임창에 붙여넣습니다
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}외부 화면 {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}외부 화면에 저장
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}현재 장소를 외부 화면에 저장합니다.
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}이 장소로 이동
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}외부 화면에 저장된 장소로 이동합니다.
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}화폐 단위
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1092,7 +1094,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 보임창 스크롤: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 화면 스크롤: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리측정 툴팁 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
@@ -1121,9 +1123,9 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회�
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}기본값으로 사용할 철도의 종류 (새 게임/불러오기 후): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}자주 쓰는 철도 종류 설정: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전개 철도
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전기 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :모노레일
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :자기부상
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
@@ -1172,6 +1174,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :기본값
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :개선된 도로
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :무작위
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :왼쪽
@@ -1238,8 +1241,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업�
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}(으)로 향하는 중
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}, {VELOCITY}(으)로 향하는 중
 
-STR_GO_TO_WAYPOINT                                              :{WAYPOINT}을/를 경유
-STR_GO_NON_STOP_TO_WAYPOINT                                     :{WAYPOINT}을/를 직통 경유
+STR_GO_TO_WAYPOINT                                              :[경유] {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :[경유, 직통] {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :웨이포인트 {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :웨이포인트 {TOWN} #{COMMA}
@@ -1271,7 +1274,7 @@ STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}산업�
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리거나 내리기, 나무 심기 등의 지형 툴바를 엽니다.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지평편집
-STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}위치좌표값
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}땅을 평평하게 고릅니다.
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}무작위 나무
@@ -1362,6 +1365,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}이름
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}게임 이름
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}언어, 서버 버전 등
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}선택하려면 목록에서 게임을 클릭하세요
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}최근에 접속한 서버:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}최근에 플레이한 서버를 선택하려면 클릭하세요
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}서버 검색
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}서버를 네트워크에서 검색합니다
@@ -1615,7 +1620,7 @@ STR_0810_DESERT                                                 :사막
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}잘못된 방향으로 땅이 기울어졌습니다
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}불가능한 트랙 조합입니다
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}터널에 영향을 주는 지형편집입니다
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}터널 때문에 지형을 편집할 수 없습니다.
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}이미 해수면에 도달했습니다
 STR_1004_TOO_HIGH                                               :{WHITE}너무 높습니다!
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}알맞지 않은 철로입니다.
@@ -1819,7 +1824,7 @@ STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
-STR_LANDSCAPING                                                 :지형편집
+STR_LANDSCAPING                                                 :지형 편집
 STR_2800_PLANT_TREES                                            :나무 심기
 STR_2801_PLACE_SIGN                                             :팻말 달기
 STR_2802_TREES                                                  :{WHITE}나무
@@ -2651,6 +2656,76 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간에 기차가 있습니다
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_GO_TO                                                 :목적지
+STR_ORDER_GO_NON_STOP_TO                                        :급행
+STR_ORDER_GO_VIA                                                :경유
+STR_ORDER_GO_NON_STOP_VIA                                       :직통 경유
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :적재 옵션
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :종류에 상관 없이 화물을 가득 실음
+STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :하차 옵션
+STR_ORDER_DROP_UNLOAD                                           :모든 화물 하차
+STR_ORDER_DROP_TRANSFER                                         :환승
+STR_ORDER_DROP_NO_UNLOADING                                     :화물 하차 않음
+STR_ORDER_FULL_LOAD                                             :(가득 실음)
+STR_ORDER_FULL_LOAD_ANY                                         :(종류에 상관 없이 모든 화물 적재)
+STR_ORDER_NO_LOAD                                               :(싣지 않기)
+STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 싣고 출발)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 종류에 상관없이 모든 화물 적재)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(화물 하차 후 빈 차로 출발)
+STR_ORDER_TRANSFER                                              :(환승 후 화물 받음)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(환승 후 모든 화물 적재)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 종류에 상관없이 모든 화물 적재)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(환승 후 빈 차로 출발)
+STR_ORDER_NO_UNLOAD                                             :(내리지 않고 화물을 받음)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않고 가득 찰 때까지 기다림)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 특정 화물이 가득 찰 때까지 기다림)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}선택한 목적지에서의 정차 방식을 변경합니다
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}선택한 목적지에서의 화물 적재 방식을 변경합니다
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택한 목적지에서의 화물 하차 방식을 변경합니다
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}확장된 이동경로를 입력합니다
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차량기지로
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격납고로
+STR_ORDER_NEAREST_DEPOT                                         :가까운
+STR_ORDER_NEAREST_HANGAR                                        :가까운 격납고
+STR_ORDER_SERVICE_AT                                            :[점검]
+STR_ORDER_SERVICE_NON_STOP_AT                                   :[점검, 급행]
+STR_ORDER_TRAIN_DEPOT                                           :차량기지
+STR_ORDER_ROAD_DEPOT                                            :차고
+STR_ORDER_SHIP_DEPOT                                            :정박소
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} 격납고
+
+STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 차량값
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}차량 데이터와 주어진 값을 비교하는 방법
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}차량 데이터에 대해 비교하기 위한 값
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}비교할 값을 입력하세요
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :적재율
+STR_ORDER_CONDITIONAL_RELIABILITY                               :신뢰도
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :최고 속력
+STR_ORDER_CONDITIONAL_AGE                                       :연식 (년)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :점검 필요성
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :항상
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :=
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :≠
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :＜
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :≤
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :＞
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :≥
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :이 있을 때
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :이 없을 때
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :{COMMA}(으)로 건너뛰기
+STR_CONDITIONAL_NUM                                             :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
+STR_CONDITIONAL_TRUE_FALSE                                      :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING})
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :여행 (시간표 없음)
 STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}로 여행
@@ -2708,6 +2783,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}싣는중 / 내리는중
+STR_LEAVING                                                     :{LTBLUE}떠남
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에서 정지해있어야 합니다!
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}기차를 기지로 보낼 수 없습니다...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}더이상 경로를 지정할 공간이 없습니다
@@ -3107,6 +3183,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지는 OpenTTD를 망가뜨릴 수 있습니다. 차후에 나오는 버그를 위해 버그 리포트를 파일로 만들지 마십시오.{}일시정지하시겠습니까?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY} = {COMMA}파운드
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}단위구분:
@@ -3318,7 +3396,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: 
 
 ############ Date formatting
 STR_DATE_TINY                                                   :{2:NUM}.{1:STRING}.{0:STRING}
-STR_DATE_SHORT                                                  :{1:NUM}년 {0:STRING}월
+STR_DATE_SHORT                                                  :{1:NUM}년 {0:STRING}
 STR_DATE_LONG                                                   :{2:NUM}년 {1:STRING}월 {0:STRING}일
 
 ########
@@ -3337,6 +3415,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리 �
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}케이블 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3469,4 +3548,7 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}드래�
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
 ########

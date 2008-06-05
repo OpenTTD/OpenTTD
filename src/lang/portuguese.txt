@@ -2638,6 +2638,15 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro comboio chega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Comboio no caminho
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é diferente de
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viagem (sem programação)
 STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
@@ -3092,6 +3101,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de troca: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
@@ -3447,4 +3457,10 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converte
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade de sinais
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir densidade de sinais
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar densidade de sinais
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

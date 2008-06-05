@@ -19,6 +19,7 @@ STR_0008_WAITING                                                :{BLACK}Čekanje
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000C_ACCEPTS                                                :{BLACK}Prihvaća: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prihvaća: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Zalihe: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Putnici
 STR_0010_COAL                                                   :Ugljen
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Ukupna nosivost
 STR_SORT_BY_MAX_SPEED                                           :Maksimalna brzina
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrijednost
+STR_SORT_BY_LENGTH                                              :Dužina
 STR_SORT_BY_FACILITY                                            :Vrsta stanice
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
 STR_SORT_BY_RATING_MAX                                          :Ocjena tereta
@@ -1170,6 +1172,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :inicijalno
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bolje ceste
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 mreža
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :nasumično
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Položaj glavne alatne trake: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Lijevo
@@ -1201,6 +1204,16 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Promijeni vrijednost postavke
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Neki ili svi od zadanih servisnih intervala ispod nisu kompatibilni s odabranim postavkama! Valjane vrijednosti su 5-90% ili 30-800 dana.
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nije preporučivo)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Nije preporučivo)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučivo)
 
 STR_TEMPERATE_LANDSCAPE                                         :Blagi krajolik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Pod-arktički krajolik
@@ -1336,6 +1349,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Više ig
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ime igrača:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ovo je ime po kojem će te drugi igrači raspoznavati
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Upiši svoje ime
 STR_NETWORK_CONNECTION                                          :{BLACK}Veza:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Izaberi između internetske igre ili igre preko lokalne mreže (LAN)
 
@@ -2622,6 +2636,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
 
+
+
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}
@@ -3075,6 +3091,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Nedostaj
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nedostaje GRF datoteka(e)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauziranje može uzrokovati rušenje OpenTTD-a. Nemojte slati prijave bugova za posljedična rušenja.{}Želite li stvarno odpauzirati?
 
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Razdjelnik:
@@ -3426,4 +3443,10 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Pretvara
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gustoća signala prilikom izgradnje
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Smanji gustoću signala prilikom izgradnje
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povećaj gustoću signala prilikom izgradnje
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

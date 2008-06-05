@@ -379,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidad por t
 STR_SORT_BY_MAX_SPEED                                           :Velocidad máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_LENGTH                                              :Longitud
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Esperando valor de la carga
 STR_SORT_BY_RATING_MAX                                          :Clasificación de la carga
@@ -486,6 +487,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coste de
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coste de desbroce: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietario: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Propietario de la carretera: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Propietario del tranvía: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Propietario de la vía del tren: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoridad local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ninguna
 STR_01AA_NAME                                                   :{BLACK}Nombre
@@ -1054,6 +1058,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Carga e
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Factor velocidad avión: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permite conducir en paradas sobre carreteras de ciudades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construcción en estaciones contiguas : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Activar motor  de multiples NewGRF: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir siempre aeropuertos pequeños: {ORANGE}{STRING}
 
@@ -1364,6 +1369,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nombre
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nombre del juego
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Idioma, versión del servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Pulse en un juego de la lista para seleccionarlo
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}El servidor al que has estado conectado la última vez:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Pulsa para seleccionar el servidor al que has jugado la última vez
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Buscar servidor
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Buscar en la red servidores
@@ -1711,6 +1718,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Carretera con f
 STR_1816_TREE_LINED_ROAD                                        :Carretera arbolada
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depósito de carretera
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Paso a nivel
+STR_TRAMWAY                                                     :Tranvía
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}No se puede quitar la estación de bus...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}No se puede quitar la estación de camiones...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}No se puede quitar estación de tranvía de pasajeros...
@@ -3180,6 +3188,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
@@ -3543,4 +3553,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incremen
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permitir a la ciudad controlar el nivel de ruidos de los aeropuertos: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Nivel de ruido en ciudad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Ruido generado: {GOLD}{COMMA}
 ########

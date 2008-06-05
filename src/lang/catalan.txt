@@ -486,6 +486,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de 
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietari: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Propietari de la carretera: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Propietari del rail del tramvia: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Propietari del rail: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritat Local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ningú
 STR_01AA_NAME                                                   :{BLACK}Nom
@@ -1054,6 +1057,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multipl
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Factor de velocitat dels avions: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permet situar parades en carreteres que són propietat del poble: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permet construir estacions annexes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Activa diversos paquets de motors NewGRF: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permet sempre aeroports petits: {ORANGE}{STRING}
 
@@ -1713,6 +1717,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Carretera amb f
 STR_1816_TREE_LINED_ROAD                                        :Carretera de tres carrils
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Cotxeres
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Pas a nivell
+STR_TRAMWAY                                                     :Rail de Tramvia
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}No es pot treure l'estació d'autobusos...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}No es pot treure l'estació de camions...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}No puc treure l'estació de tramvies de passatgers
@@ -3182,6 +3187,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
@@ -3545,4 +3552,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incremen
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permet a la ciutat controlar el nivell de soroll dels aeroports: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Soroll generat: {GOLD}{COMMA}
 ########
