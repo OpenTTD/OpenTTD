@@ -40,11 +40,11 @@ uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 
 	if (type == VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(engine);
-		capacity[rvi->cargo_type] = rvi->capacity;
+		capacity[rvi->cargo_type] = GetEngineProperty(engine, 0x14, rvi->capacity);
 		if (rvi->railveh_type == RAILVEH_MULTIHEAD) capacity[rvi->cargo_type] += rvi->capacity;
 	} else if (type == VEH_ROAD) {
 		const RoadVehicleInfo *rvi = RoadVehInfo(engine);
-		capacity[rvi->cargo_type] = rvi->capacity;
+		capacity[rvi->cargo_type] = GetEngineProperty(engine, 0x0F, rvi->capacity);
 	}
 
 	if (!HasBit(EngInfo(engine)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
