@@ -3113,7 +3113,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 
 invalid_rail:
 	/* We've reached end of line?? */
-	if (prev != NULL) error("!Disconnecting train");
+	if (prev != NULL) error("Disconnecting train");
 
 reverse_train_direction:
 	v->load_unload_time_rem = 0;

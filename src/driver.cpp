@@ -87,7 +87,7 @@ const Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type typ
 				delete newd;
 			}
 		}
-		error("Couldn't find any suitable %s driver", GetDriverTypeName(type));
+		usererror("Couldn't find any suitable %s driver", GetDriverTypeName(type));
 	} else {
 		char *parm;
 		char buffer[256];
@@ -125,7 +125,7 @@ const Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type typ
 			const char *err = newd->Start(parms);
 			if (err != NULL) {
 				delete newd;
-				error("Unable to load driver '%s'. The error was: %s", d->name, err);
+				usererror("Unable to load driver '%s'. The error was: %s", d->name, err);
 			}
 
 			DEBUG(driver, 1, "Successfully loaded %s driver '%s'", GetDriverTypeName(type), d->name);
@@ -133,7 +133,7 @@ const Driver *DriverFactoryBase::SelectDriver(const char *name, Driver::Type typ
 			*GetActiveDriver(type) = newd;
 			return newd;
 		}
-		error("No such %s driver: %s\n", GetDriverTypeName(type), buffer);
+		usererror("No such %s driver: %s\n", GetDriverTypeName(type), buffer);
 	}
 }
 

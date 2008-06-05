@@ -24,7 +24,7 @@ static void PrepareHeader(WAVEHDR *hdr)
 	hdr->lpData = MallocT<char>(_bufsize * 4);
 	if (hdr->lpData == NULL ||
 			waveOutPrepareHeader(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
-		error("waveOutPrepareHeader failed");
+		usererror("waveOutPrepareHeader failed");
 }
 
 static void FillHeaders()
@@ -35,7 +35,7 @@ static void FillHeaders()
 		if (!(hdr->dwFlags & WHDR_INQUEUE)) {
 			MxMixSamples(hdr->lpData, hdr->dwBufferLength / 4);
 			if (waveOutWrite(_waveout, hdr, sizeof(WAVEHDR)) != MMSYSERR_NOERROR)
-				error("waveOutWrite failed");
+				usererror("waveOutWrite failed");
 		}
 	}
 }

@@ -107,10 +107,10 @@ static void CreateWindowsConsoleThread()
 	/* Create event to signal when console input is ready */
 	_hInputReady = CreateEvent(NULL, false, false, NULL);
 	_hWaitForInputHandling = CreateEvent(NULL, false, false, NULL);
-	if (_hInputReady == NULL || _hWaitForInputHandling == NULL) error("Cannot create console event!");
+	if (_hInputReady == NULL || _hWaitForInputHandling == NULL) usererror("Cannot create console event!");
 
 	_hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, NULL, 0, &dwThreadId);
-	if (_hThread == NULL) error("Cannot create console thread!");
+	if (_hThread == NULL) usererror("Cannot create console thread!");
 
 	DEBUG(driver, 2, "Windows console thread started");
 }

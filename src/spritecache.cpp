@@ -169,7 +169,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			static byte warning_level = 0;
 			DEBUG(sprite, warning_level, "Tried to load non sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
 			warning_level = 6;
-			if (id == SPR_IMG_QUERY) error("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non- sprite?");
+			if (id == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non- sprite?");
 			return (void*)GetSprite(SPR_IMG_QUERY);
 		}
 
@@ -246,7 +246,7 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	if (!ReadSpriteHeaderSkipData()) return false;
 
 	if (load_index >= MAX_SPRITES) {
-		error("Tried to load too many sprites (#%d; max %d)", load_index, MAX_SPRITES);
+		usererror("Tried to load too many sprites (#%d; max %d)", load_index, MAX_SPRITES);
 	}
 
 	sc = AllocateSpriteCache(load_index);

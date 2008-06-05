@@ -1468,7 +1468,7 @@ static bool IndividualRoadVehicleController(Vehicle *v, const Vehicle *prev)
 		}
 
 		if (dir == INVALID_TRACKDIR) {
-			if (!IsRoadVehFront(v)) error("!Disconnecting road vehicle.");
+			if (!IsRoadVehFront(v)) error("Disconnecting road vehicle.");
 			v->cur_speed = 0;
 			return false;
 		}

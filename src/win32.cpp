@@ -92,14 +92,14 @@ void SetExceptionString(const char *s, ...)
 }
 #endif
 
-void ShowOSErrorBox(const char *buf)
+void ShowOSErrorBox(const char *buf, bool system)
 {
 	MyShowCursor(true);
 	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
 
 /* if exception tracker is enabled, we crash here to let the exception handler handle it. */
 #if defined(WIN32_EXCEPTION_TRACKER) && !defined(_DEBUG)
-	if (*buf == '!') {
+	if (system) {
 		_exception_string = buf;
 		*(byte*)0 = 0;
 	}
@@ -961,7 +961,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 #if !defined(WINCE)
 	/* Check if a win9x user started the win32 version */
-	if (HasBit(GetVersion(), 31)) error("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
+	if (HasBit(GetVersion(), 31)) usererror("This version of OpenTTD doesn't run on windows 95/98/ME.\nPlease download the win9x binary and try again.");
 #endif
 
 	/* For UNICODE we need to convert the commandline to char* _AND_

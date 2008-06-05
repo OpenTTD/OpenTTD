@@ -1603,7 +1603,7 @@ bool GenerateTowns()
 	if (num == 0 && CreateRandomTown(10000, TSM_RANDOM, 0) == NULL) {
 		if (GetNumTowns() == 0) {
 			/* XXX - can we handle that more gracefully? */
-			if (_game_mode != GM_EDITOR) error("Could not generate any town");
+			if (_game_mode != GM_EDITOR) usererror("Could not generate any town");
 
 			return false;
 		}

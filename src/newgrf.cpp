@@ -5783,7 +5783,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	 * processed once at initialization.  */
 	if (stage != GLS_FILESCAN && stage != GLS_SAFETYSCAN && stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
-		if (_cur_grffile == NULL) error("File '%s' lost in cache.\n", filename);
+		if (_cur_grffile == NULL) usererror("File '%s' lost in cache.\n", filename);
 		if (stage == GLS_RESERVE && config->status != GCS_INITIALISED) return;
 		if (stage == GLS_ACTIVATION && !HasBit(config->flags, GCF_RESERVED)) return;
 		_cur_grffile->is_ottdfile = config->IsOpenTTDBaseGRF();
@@ -5989,7 +5989,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 			if (stage > GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) continue;
 
 			/* @todo usererror() */
-			if (!FioCheckFileExists(c->filename)) error("NewGRF file is missing '%s'", c->filename);
+			if (!FioCheckFileExists(c->filename)) usererror("NewGRF file is missing '%s'", c->filename);
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c, slot++, stage);

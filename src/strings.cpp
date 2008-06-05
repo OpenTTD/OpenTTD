@@ -178,7 +178,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 
 	if (index >= _langtab_num[tab]) {
 		error(
-			"!String 0x%X is invalid. "
+			"String 0x%X is invalid. "
 			"Probably because an old version of the .lng file.\n", string
 		);
 	}
@@ -1427,7 +1427,7 @@ void InitializeLanguagePacks()
 		FioAppendDirectory(path, lengthof(path), sp, LANG_DIR);
 		language_count += GetLanguageList(files, language_count, lengthof(files), path);
 	}
-	if (language_count == 0) error("No available language packs (invalid versions?)");
+	if (language_count == 0) usererror("No available language packs (invalid versions?)");
 
 	/* Acquire the locale of the current system */
 	const char *lang = GetCurrentLocale("LC_MESSAGES");
@@ -1463,7 +1463,7 @@ void InitializeLanguagePacks()
 		dl->num++;
 	}
 
-	if (dl->num == 0) error("Invalid version of language packs");
+	if (dl->num == 0) usererror("Invalid version of language packs");
 
 	/* We haven't found the language in the config nor the one in the locale.
 	 * Now we set it to one of the fallback languages */
@@ -1471,7 +1471,7 @@ void InitializeLanguagePacks()
 		chosen_language = (language_fallback != -1) ? language_fallback : en_GB_fallback;
 	}
 
-	if (!ReadLanguagePack(chosen_language)) error("Can't read language pack '%s'", dl->ent[chosen_language].file);
+	if (!ReadLanguagePack(chosen_language)) usererror("Can't read language pack '%s'", dl->ent[chosen_language].file);
 }
 
 /**

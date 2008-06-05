@@ -214,7 +214,7 @@ void ShowInfo(const char *str)
 	fprintf(stderr, "%s\n", str);
 }
 
-void ShowOSErrorBox(const char *buf)
+void ShowOSErrorBox(const char *buf, bool system)
 {
 #if defined(__APPLE__)
 	/* this creates an NSAlertPanel with the contents of 'buf'

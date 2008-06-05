@@ -99,11 +99,31 @@ void CallWindowTickEvent();
 
 extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
 extern Player* DoStartupNewPlayer(bool is_ai);
-extern void ShowOSErrorBox(const char *buf);
+extern void ShowOSErrorBox(const char *buf, bool system);
 extern void InitializeRailGUI();
 
 /**
- * Error handling for fatal errors.
+ * Error handling for fatal user errors.
+ * @param s the string to print.
+ * @note Does NEVER return.
+ */
+void CDECL usererror(const char *s, ...)
+{
+	va_list va;
+	char buf[512];
+
+	va_start(va, s);
+	vsnprintf(buf, lengthof(buf), s, va);
+	va_end(va);
+
+	ShowOSErrorBox(buf, false);
+	if (_video_driver != NULL) _video_driver->Stop();
+
+	exit(1);
+}
+
+/**
+ * Error handling for fatal non-user errors.
  * @param s the string to print.
  * @note Does NEVER return.
  */
@@ -116,7 +136,7 @@ void CDECL error(const char *s, ...)
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
 
-	ShowOSErrorBox(buf);
+	ShowOSErrorBox(buf, true);
 	if (_video_driver != NULL) _video_driver->Stop();
 
 	assert(0);
@@ -524,30 +544,30 @@ int ttd_main(int argc, char *argv[])
 	DEBUG(misc, 1, "Loading blitter...");
 	if (BlitterFactoryBase::SelectBlitter(_ini_blitter) == NULL)
 		StrEmpty(_ini_blitter) ?
-			error("Failed to autoprobe blitter") :
-			error("Failed to select requested blitter '%s'; does it exist?", _ini_blitter);
+			usererror("Failed to autoprobe blitter") :
+			usererror("Failed to select requested blitter '%s'; does it exist?", _ini_blitter);
 
 	DEBUG(driver, 1, "Loading drivers...");
 
 	_sound_driver = (SoundDriver*)SoundDriverFactoryBase::SelectDriver(_ini_sounddriver, Driver::DT_SOUND);
 	if (_sound_driver == NULL) {
 		StrEmpty(_ini_sounddriver) ?
-			error("Failed to autoprobe sound driver") :
-			error("Failed to select requested sound driver '%s'", _ini_sounddriver);
+			usererror("Failed to autoprobe sound driver") :
+			usererror("Failed to select requested sound driver '%s'", _ini_sounddriver);
 	}
 
 	_music_driver = (MusicDriver*)MusicDriverFactoryBase::SelectDriver(_ini_musicdriver, Driver::DT_MUSIC);
 	if (_music_driver == NULL) {
 		StrEmpty(_ini_musicdriver) ?
-			error("Failed to autoprobe music driver") :
-			error("Failed to select requested music driver '%s'", _ini_musicdriver);
+			usererror("Failed to autoprobe music driver") :
+			usererror("Failed to select requested music driver '%s'", _ini_musicdriver);
 	}
 
 	_video_driver = (VideoDriver*)VideoDriverFactoryBase::SelectDriver(_ini_videodriver, Driver::DT_VIDEO);
 	if (_video_driver == NULL) {
 		StrEmpty(_ini_videodriver) ?
-			error("Failed to autoprobe video driver") :
-			error("Failed to select requested video driver '%s'", _ini_videodriver);
+			usererror("Failed to autoprobe video driver") :
+			usererror("Failed to select requested video driver '%s'", _ini_videodriver);
 	}
 
 	_savegame_sort_order = SORT_BY_DATE | SORT_DESCENDING;

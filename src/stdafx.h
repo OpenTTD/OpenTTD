@@ -317,6 +317,7 @@ assert_compile(sizeof(uint8)  == 1);
 	#define CloseConnection OTTD_CloseConnection
 #endif /* __APPLE__ */
 
+void NORETURN CDECL usererror(const char *str, ...);
 void NORETURN CDECL error(const char *str, ...);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 

@@ -186,7 +186,7 @@ void FioOpenFile(int slot, const char *filename)
 	FioFreeHandle();
 #endif /* LIMITED_FDS */
 	f = FioFOpenFile(filename);
-	if (f == NULL) error("Cannot open file '%s'", filename);
+	if (f == NULL) usererror("Cannot open file '%s'", filename);
 	uint32 pos = ftell(f);
 
 	FioCloseFile(slot); // if file was opened before, close it

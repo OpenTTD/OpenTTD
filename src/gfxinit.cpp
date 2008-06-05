@@ -55,7 +55,7 @@ static uint LoadGrfFile(const char *filename, uint load_index, int file_index)
 		load_index++;
 		sprite_id++;
 		if (load_index >= MAX_SPRITES) {
-			error("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
+			usererror("Too many sprites. Recompile with higher MAX_SPRITES value or remove some custom GRF files.");
 		}
 	}
 	DEBUG(sprite, 2, "Currently %i sprites are loaded", load_index);

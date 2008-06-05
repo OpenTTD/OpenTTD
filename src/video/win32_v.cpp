@@ -59,7 +59,7 @@ static void MakePalette()
 
 	}
 	_wnd.gdi_palette = CreatePalette(pal);
-	if (_wnd.gdi_palette == NULL) error("CreatePalette failed!\n");
+	if (_wnd.gdi_palette == NULL) usererror("CreatePalette failed!\n");
 }
 
 static void UpdatePalette(HDC dc, uint start, uint count)
@@ -292,7 +292,7 @@ static bool MakeWindow(bool full_screen)
 			_sntprintf(Windowtitle, sizeof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
 
 			_wnd.main_wnd = CreateWindow(_T("OTTD"), Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
-			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
+			if (_wnd.main_wnd == NULL) usererror("CreateWindow failed");
 			ShowWindow(_wnd.main_wnd, showstyle);
 		}
 	}
@@ -671,7 +671,7 @@ static void RegisterWndClass()
 		};
 
 		registered = true;
-		if (!RegisterClass(&wnd)) error("RegisterClass failed");
+		if (!RegisterClass(&wnd)) usererror("RegisterClass failed");
 	}
 }
 
@@ -684,7 +684,7 @@ static bool AllocateDibSection(int w, int h)
 	w = max(w, 64);
 	h = max(h, 64);
 
-	if (bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
+	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	if (w == _screen.width && h == _screen.height)
 		return false;
@@ -707,7 +707,7 @@ static bool AllocateDibSection(int w, int h)
 
 	dc = GetDC(0);
 	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.buffer_bits, NULL, 0);
-	if (_wnd.dib_sect == NULL) error("CreateDIBSection failed");
+	if (_wnd.dib_sect == NULL) usererror("CreateDIBSection failed");
 	ReleaseDC(0, dc);
 
 	return true;

@@ -118,7 +118,7 @@ static void GetVideoModes()
 	modes = SDL_CALL SDL_ListModes(NULL, SDL_SWSURFACE + (_fullscreen ? SDL_FULLSCREEN : 0));
 
 	if (modes == NULL)
-		error("sdl: no modes available");
+		usererror("sdl: no modes available");
 
 	_all_modes = (modes == (void*)-1);
 
@@ -198,7 +198,7 @@ static bool CreateMainSurface(int w, int h)
 
 	DEBUG(driver, 1, "SDL: using mode %dx%dx%d", w, h, bpp);
 
-	if (bpp == 0) error("Can't use a blitter that blits 0 bpp for normal visuals");
+	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 
 	/* Give the application an icon */
 	icon = SDL_CALL SDL_LoadBMP(ICON_DIR PATHSEP "openttd.32.bmp");

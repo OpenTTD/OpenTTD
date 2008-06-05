@@ -145,7 +145,7 @@ void ShowInfo(const char *str)
 	WinTerminate(hab);
 }
 
-void ShowOSErrorBox(const char *buf)
+void ShowOSErrorBox(const char *buf, bool system)
 {
 	HAB hab;
 	HMQ hmq;

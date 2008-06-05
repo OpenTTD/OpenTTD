@@ -323,12 +323,12 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		Packet *p;
 
 		// Make a dump of the current game
-		if (SaveOrLoad(filename, SL_SAVE, AUTOSAVE_DIR) != SL_OK) error("network savedump failed");
+		if (SaveOrLoad(filename, SL_SAVE, AUTOSAVE_DIR) != SL_OK) usererror("network savedump failed");
 
 		file_pointer = FioFOpenFile(filename, "rb", AUTOSAVE_DIR);
 		fseek(file_pointer, 0, SEEK_END);
 
-		if (ftell(file_pointer) == 0) error("network savedump failed - zero sized savegame?");
+		if (ftell(file_pointer) == 0) usererror("network savedump failed - zero sized savegame?");
 
 		// Now send the _frame_counter and how many packets are coming
 		p = NetworkSend_Init(PACKET_SERVER_MAP);
@@ -355,7 +355,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			p->Send_uint8(MAP_PACKET_NORMAL);
 			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
 
-			if (ferror(file_pointer)) error("Error reading temporary network savegame!");
+			if (ferror(file_pointer)) usererror("Error reading temporary network savegame!");
 
 			p->size += res;
 			cs->Send_Packet(p);
