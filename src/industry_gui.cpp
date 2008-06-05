@@ -806,13 +806,13 @@ protected:
 	static int CDECL IndustryTypeSorter(const Industry* const *a, const Industry* const *b)
 	{
 		int r = (*a)->type - (*b)->type;
-		return (r = 0) ? IndustryNameSorter(a, b) : r;
+		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
 	/** Sort industries by production and name */
 	static int CDECL IndustryProductionSorter(const Industry* const *a, const Industry* const *b)
 	{
-		int r;
+		int r = 0;
 
 		if ((*a)->produced_cargo[0] == CT_INVALID) {
 			if ((*b)->produced_cargo[0] != CT_INVALID) return -1;
@@ -823,14 +823,14 @@ protected:
 			    ((*b)->last_month_production[0] + (*b)->last_month_production[1]);
 		}
 
-		return (r = 0) ? IndustryNameSorter(a, b) : r;
+		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
 	/** Sort industries by transported cargo and name */
 	static int CDECL IndustryTransportedCargoSorter(const Industry* const *a, const Industry* const *b)
 	{
 		int r = GetCargoTransportedSortValue(*a) - GetCargoTransportedSortValue(*b);
-		return (r = 0) ? IndustryNameSorter(a, b) : r;
+		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
 	/** Sort the industries list */
