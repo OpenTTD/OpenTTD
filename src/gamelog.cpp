@@ -502,7 +502,7 @@ void GamelogGRFAdd(const GRFConfig *newg)
  */
 void GamelogGRFCompatible(const GRFIdentifier *newg)
 {
-	assert(_gamelog_action_type == GLAT_LOAD);
+	assert(_gamelog_action_type == GLAT_LOAD || _gamelog_action_type == GLAT_GRF);
 
 	LoggedChange *lc = GamelogChange(GLCT_GRFCOMPAT);
 	if (lc == NULL) return;
