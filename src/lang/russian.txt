@@ -1462,7 +1462,7 @@ STR_NETWORK_LANG_SPANISH                                        :Испанск�
 STR_NETWORK_LANG_SWEDISH                                        :Шведский
 STR_NETWORK_LANG_TURKISH                                        :Турецкий
 STR_NETWORK_LANG_UKRAINIAN                                      :Украинский
-STR_NETWORK_LANG_AFRIKAANS                                      :Африканский
+STR_NETWORK_LANG_AFRIKAANS                                      :Африкаанс
 STR_NETWORK_LANG_CROATIAN                                       :Хорватский
 STR_NETWORK_LANG_CATALAN                                        :Каталанский
 STR_NETWORK_LANG_ESTONIAN                                       :Эстонский

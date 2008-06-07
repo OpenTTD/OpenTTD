@@ -201,7 +201,7 @@ STR_00E6_VEHICLES                                               :차량
 STR_00E7_INDUSTRIES                                             :산업시설
 STR_00E8_ROUTES                                                 :경로
 STR_00E9_VEGETATION                                             :초목
-STR_00EA_OWNERS                                                 :소유자
+STR_00EA_OWNERS                                                 :소유주
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}도로
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}철도
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}역/공항/항구
@@ -262,7 +262,7 @@ STR_0123_FIELDS                                                 :{BLACK}{TINYFON
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}나무
 STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}바위
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}물
-STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}소유자 없음
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}소유주 없음
 STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}마을
 STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}산업 시설
 STR_012A_DESERT                                                 :{BLACK}{TINYFONT}사막
@@ -343,11 +343,11 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :경영 수익 그래프
-STR_0155_INCOME_GRAPH                                           :수입 그래프
+STR_0155_INCOME_GRAPH                                           :수익 그래프
 STR_0156_DELIVERED_CARGO_GRAPH                                  :수송 화물량 그래프
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :성취도 그래프
 STR_0158_COMPANY_VALUE_GRAPH                                    :회사가치 그래프
-STR_0159_CARGO_PAYMENT_RATES                                    :화물 지불량 그래프
+STR_0159_CARGO_PAYMENT_RATES                                    :화물 운송단가 그래프
 STR_015A_COMPANY_LEAGUE_TABLE                                   :회사 성취도 순위
 STR_PERFORMANCE_DETAIL_MENU                                     :상세 성취도
 ############ range for menu ends
@@ -445,7 +445,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}철도 �
 STR_0182_BUILD_ROADS                                            :{BLACK}도로 건설
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}항만 건설
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}공항 건설
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}나무 심기, 팻말 달기 등
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}나무 심기
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}지역 정보
 STR_0187_OPTIONS                                                :{BLACK}옵션
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -466,7 +466,7 @@ STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}맵에 �
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}맵에 산업시설 표시
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}맵에 수송경로 표시
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}맵에 초목 표시
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}맵에 부지 소유자 표시
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}맵에 부지 소유주 표시
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}마을 이름 표시/숨기기
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}올해 수입: {CURRENCY} (작년: {CURRENCY})
 
@@ -486,7 +486,10 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지�
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}없음
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :없음
-STR_01A7_OWNER                                                  :{BLACK}소유자: {LTBLUE}{STRING}
+STR_01A7_OWNER                                                  :{BLACK}소유주: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}도로 소유주: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}전찻길 소유주: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}철도 소유주: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}지역 당국: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :없음
 STR_01AA_NAME                                                   :{BLACK}이름
@@ -1027,7 +1030,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}드래�
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}사실감있는 열차 가속 사용 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (NPF 필요)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}점차적으로 차량 싣기 : {ORANGE}{STRING}
@@ -1055,6 +1058,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}무거�
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}비행기 속도 인수: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}마을이 소유중인 도로를 통과하는 버스 정류장 건설 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}정거장 근처에 건물 짓기 허용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}여러 개의 NewGRF 엔진 세트를 허용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}소형 공항의 건설을 허용 : {ORANGE}{STRING}
 
@@ -1714,6 +1718,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :신호등이 �
 STR_1816_TREE_LINED_ROAD                                        :가로수가 있는 도로
 STR_1817_ROAD_VEHICLE_DEPOT                                     :차고
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :철도 건널목
+STR_TRAMWAY                                                     :전찻길
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}버스정류장을 제거할 수 없습니다...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}트럭 터미널을 제거할 수 없습니다...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}승객 전차 정거장을 제거할 수 없습니다...
@@ -1797,7 +1802,7 @@ STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :소규모 광�
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :중규모 광고 캠페인
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :대규모 광고 캠페인
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :지역 도로 재공사에 투자
-STR_204A_BUILD_STATUE_OF_COMPANY                                :회사 소유자의 동상 건설
+STR_204A_BUILD_STATUE_OF_COMPANY                                :회사 소유주의 동상 건설
 STR_204B_FUND_NEW_BUILDINGS                                     :새로운 건물에 투자
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :수송 권한 독점권 구입
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :지역 당국에 뇌물 먹이기
@@ -2190,7 +2195,7 @@ STR_6820_LOW                                                    :낮음
 STR_6821_MEDIUM                                                 :보통
 STR_6822_HIGH                                                   :높음
 STR_6823_NONE                                                   :고장 안남
-STR_6824_REDUCED                                                :재생산
+STR_6824_REDUCED                                                :적음
 STR_6825_NORMAL                                                 :일반
 STR_6826_X1_5                                                   :1.5배 지급
 STR_6827_X2                                                     :2배 지급
@@ -2252,7 +2257,7 @@ STR_7021                                                        :{COMPANY} {COMP
 STR_7022_INCOME_GRAPH                                           :{WHITE}수익 그래프
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}수행 이익 그래프
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}경영 수익 그래프
 STR_7026_BANK_BALANCE                                           :{WHITE}소유금
 STR_7027_LOAN                                                   :{WHITE}대출
 STR_MAX_LOAN                                                    :{WHITE}최대 대출:  {BLACK}{CURRENCY}
@@ -2310,9 +2315,9 @@ STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}새로운 운송회사 등장!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY}이/가 {TOWN}에서 공사를 시작했습니다!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}회사를 인수할 수 없습니다...
-STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}화물 운송비 지급량
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}화물 운송단가 비율
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}통과시간
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}10단위(또는 1만리터)의 화물을 20칸의 거리로 운송할 때의 운송비 지급량입니다.
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}10 단위(1만 리터)의 화물을 20칸 거리만큼 운송할 때의 운송비 지급량
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}이 화물에 대한 그래프 켜기/끄기
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :엔지니어
@@ -2658,7 +2663,7 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간에 기차가 있습니다
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
-STR_ORDER_GO_TO                                                 :목적지
+STR_ORDER_GO_TO                                                 :[운행]
 STR_ORDER_GO_NON_STOP_TO                                        :급행
 STR_ORDER_GO_VIA                                                :경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직통 경유
@@ -3097,7 +3102,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 
 STR_BRIBE_FAILED                                                :{WHITE}당신의 뇌물 수수 행위가
 STR_BRIBE_FAILED_2                                              :{WHITE}지역 당국에 의해 발각되었습니다!
-STR_BUILD_DATE                                                  :{BLACK}생산: {LTBLUE}{DATE_LONG}
+STR_BUILD_DATE                                                  :{BLACK}건설날짜: {LTBLUE}{DATE_LONG}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}상세 성취도
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}자세히
@@ -3181,7 +3186,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}사라�
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용불가능합니다
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라진 GRF 파일이 게임 로드에 사용될 수 있습니다
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지는 OpenTTD를 망가뜨릴 수 있습니다. 차후에 나오는 버그를 위해 버그 리포트를 파일로 만들지 마십시오.{}일시정지하시겠습니까?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류를 위해 버그 리포트를 보관하지 마십시오.{}일시정지를 해제하시겠습니까?
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 
@@ -3551,4 +3556,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}도시가 공항에서 나오는 소음을 제한하도록 함: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}소음 원인: {GOLD}{COMMA}
 ########
