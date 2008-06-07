@@ -880,7 +880,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 	NewVehicleResolver(&object, engine, v);
 
 	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
-	if (group == NULL || group->type != SGT_RESULT) return 0;
+	if (group == NULL || group->type != SGT_RESULT || group->g.result.num_sprites == 0) return 0;
 
 	return group->g.result.sprite + (direction % group->g.result.num_sprites);
 }
@@ -903,7 +903,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 	const SpriteGroup *group = GetWagonOverrideSpriteSet(engine, CT_DEFAULT, engine);
 	group = Resolve(group, &object);
 
-	if (group == NULL || group->type != SGT_RESULT) return 0;
+	if (group == NULL || group->type != SGT_RESULT || group->g.result.num_sprites == 0) return 0;
 
 	if (v == NULL) return group->g.result.sprite;
 
