@@ -20,19 +20,17 @@ private:
 	OTTDThreadFunc m_proc;
 	void     *m_param;
 	bool     m_attached;
-	OTTDThreadTerminateFunc m_terminate_func;
 
 public:
 	/**
 	 * Create a win32 thread and start it, calling proc(param).
 	 */
-	ThreadObject_Win32(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func) :
+	ThreadObject_Win32(OTTDThreadFunc proc, void *param) :
 		m_id_thr(0),
 		m_h_thr(NULL),
 		m_proc(proc),
 		m_param(param),
-		m_attached(false),
-		m_terminate_func(terminate_func)
+		m_attached(false)
 	{
 		m_h_thr = (HANDLE)_beginthreadex(NULL, 0, &stThreadProc, this, CREATE_SUSPENDED, &m_id_thr);
 		if (m_h_thr == NULL) return;
@@ -47,8 +45,7 @@ public:
 		m_h_thr(NULL),
 		m_proc(NULL),
 		m_param(NULL),
-		m_attached(false),
-		m_terminate_func(NULL)
+		m_attached(false)
 	{
 		BOOL ret = DuplicateHandle(GetCurrentProcess(), GetCurrentThread(), GetCurrentProcess(), &m_h_thr, 0, FALSE, DUPLICATE_SAME_ACCESS);
 		if (!ret) return;
@@ -133,14 +130,12 @@ private:
 			m_proc(m_param);
 		} catch (...) {
 		}
-
-		if (this->m_terminate_func != NULL) this->m_terminate_func(this);
 	}
 };
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func)
+/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
 {
-	return new ThreadObject_Win32(proc, param, terminate_func);
+	return new ThreadObject_Win32(proc, param);
 }
 
 /* static */ ThreadObject* ThreadObject::AttachCurrent()

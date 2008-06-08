@@ -156,7 +156,6 @@ static void _GenerateWorld(void *arg)
 		/* Show all vital windows again, because we have hidden them */
 		if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 		_gw.active   = false;
-		_gw.thread   = NULL;
 		_gw.proc     = NULL;
 		_gw.threaded = false;
 
@@ -199,6 +198,7 @@ void WaitTillGeneratedWorld()
 	if (_gw.thread == NULL) return;
 	_gw.quit_thread = true;
 	_gw.thread->Join();
+	delete _gw.thread;
 	_gw.thread   = NULL;
 	_gw.threaded = false;
 }
@@ -233,9 +233,7 @@ void HandleGeneratingWorldAbortion()
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 
-	ThreadObject *thread = _gw.thread;
 	_gw.active   = false;
-	_gw.thread   = NULL;
 	_gw.proc     = NULL;
 	_gw.abortp   = NULL;
 	_gw.threaded = false;
@@ -243,7 +241,7 @@ void HandleGeneratingWorldAbortion()
 	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
 	MarkWholeScreenDirty();
 
-	thread->Exit();
+	_gw.thread->Exit();
 }
 
 /**
@@ -287,8 +285,14 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	/* Create toolbars */
 	SetupColorsAndInitialWindow();
 
+	if (_gw.thread != NULL) {
+		_gw.thread->Join();
+		delete _gw.thread;
+		_gw.thread = NULL;
+	}
+
 	if (_network_dedicated ||
-	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL, &ThreadObject::TerminateCleanup)) == NULL) {
+	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL)) == NULL) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_GenerateWorld(NULL);

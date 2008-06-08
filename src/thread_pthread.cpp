@@ -22,18 +22,16 @@ private:
 	bool      m_attached;        ///< True if the ThreadObject was attached to an existing thread.
 	sem_t     m_sem_start;       ///< Here the new thread waits before it starts.
 	sem_t     m_sem_stop;        ///< Here the other thread can wait for this thread to end.
-	OTTDThreadTerminateFunc m_terminate_func; ///< Function to call on thread termination.
 
 public:
 	/**
 	 * Create a pthread and start it, calling proc(param).
 	 */
-	ThreadObject_pthread(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func) :
+	ThreadObject_pthread(OTTDThreadFunc proc, void *param) :
 		m_thr(0),
 		m_proc(proc),
 		m_param(param),
-		m_attached(false),
-		m_terminate_func(terminate_func)
+		m_attached(false)
 	{
 		sem_init(&m_sem_start, 0, 0);
 		sem_init(&m_sem_stop, 0, 0);
@@ -49,8 +47,7 @@ public:
 		m_thr(0),
 		m_proc(NULL),
 		m_param(0),
-		m_attached(true),
-		m_terminate_func(NULL)
+		m_attached(true)
 	{
 		sem_init(&m_sem_start, 0, 0);
 		sem_init(&m_sem_stop, 0, 0);
@@ -145,14 +142,12 @@ private:
 
 		/* Notify threads waiting for our completion */
 		sem_post(&m_sem_stop);
-
-		if (this->m_terminate_func != NULL) this->m_terminate_func(this);
 	}
 };
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func)
+/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
 {
-	return new ThreadObject_pthread(proc, param, terminate_func);
+	return new ThreadObject_pthread(proc, param);
 }
 
 /* static */ ThreadObject *ThreadObject::AttachCurrent()

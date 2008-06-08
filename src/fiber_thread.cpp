@@ -32,7 +32,7 @@ public:
 	{
 		this->m_sem = ThreadSemaphore::New();
 		/* Create a thread and start stFiberProc */
-		this->m_thread = ThreadObject::New(&stFiberProc, this, NULL);
+		this->m_thread = ThreadObject::New(&stFiberProc, this);
 	}
 
 	/**

@@ -95,6 +95,7 @@ static void NORETURN SlError(StringID string, const char *extra_msg = NULL)
 
 typedef void (*AsyncSaveFinishProc)();
 static AsyncSaveFinishProc _async_save_finish = NULL;
+static ThreadObject *_save_thread;
 
 /**
  * Called by save thread to tell we finished saving.
@@ -117,6 +118,12 @@ void ProcessAsyncSaveFinish()
 	_async_save_finish();
 
 	_async_save_finish = NULL;
+
+	if (_save_thread != NULL) {
+		_save_thread->Join();
+		delete _save_thread;
+		_save_thread = NULL;
+	}
 }
 
 /**
@@ -1545,8 +1552,6 @@ static void SaveFileError()
 	SaveFileDone();
 }
 
-static ThreadObject *_save_thread;
-
 /** We have written the whole game into memory, _Savegame_pool, now find
  * and appropiate compressor and start writing to file.
  */
@@ -1617,6 +1622,7 @@ void WaitTillSaved()
 	if (_save_thread == NULL) return;
 
 	_save_thread->Join();
+	delete _save_thread;
 	_save_thread = NULL;
 }
 
@@ -1695,7 +1701,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 			SaveFileStart();
 			if (_network_server ||
-						(_save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL, &ThreadObject::TerminateCleanup)) == NULL) {
+						(_save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL)) == NULL) {
 				if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 				SaveOrLoadResult result = SaveFileToDisk(false);
