@@ -1607,10 +1607,9 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 	}
 }
 
-static void * CDECL SaveFileToDiskThread(void *arg)
+static void SaveFileToDiskThread(void *arg)
 {
 	SaveFileToDisk(true);
-	return NULL;
 }
 
 void WaitTillSaved()

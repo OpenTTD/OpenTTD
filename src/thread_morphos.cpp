@@ -34,7 +34,6 @@ struct OTTDThreadStartupMessage {
 	struct Message msg;  ///< standard exec.library message (MUST be the first thing in the message struct!)
 	OTTDThreadFunc func; ///< function the thread will execute
 	void *arg;           ///< functions arguments for the thread function
-	void *ret;           ///< return value of the thread function
 };
 
 
@@ -79,7 +78,6 @@ public:
 		/* Things we'll pass down to the child by utilizing NP_StartupMsg */
 		m_msg.func = proc;
 		m_msg.arg  = param;
-		m_msg.ret  = NULL;
 
 		m_replyport = CreateMsgPort();
 
@@ -161,10 +159,9 @@ public:
 		return true;
 	}
 
-	/* virtual */ void *Join()
+	/* virtual */ void Join()
 	{
 		struct OTTDThreadStartupMessage *reply;
-		void *ret;
 
 		/* You cannot join yourself */
 		assert(!IsCurrent());
@@ -173,13 +170,9 @@ public:
 		KPutStr("[OpenTTD] Wait for child to quit...\n");
 		WaitPort(m_replyport);
 
-		reply = (struct OTTDThreadStartupMessage *)GetMsg(m_replyport);
-		ret   = reply->ret;
-
+		GetMsg(m_replyport);
 		DeleteMsgPort(m_replyport);
 		m_thr = 0;
-
-		return ret;
 	}
 
 	/* virtual */ bool IsCurrent()
@@ -209,7 +202,7 @@ private:
 
 		if (NewGetTaskAttrs(NULL, &msg, sizeof(struct OTTDThreadStartupMessage *), TASKINFOTYPE_STARTUPMSG, TAG_DONE) && msg != NULL) {
 			try {
-				msg->ret = msg->func(msg->arg);
+				msg->func(msg->arg);
 			} catch(...) {
 				KPutStr("[Child] Returned to main()\n");
 			}
@@ -256,7 +249,7 @@ public:
 
 	/* virtual */ void Set()
 	{
-		// Check if semaphore count is really important there.
+		/* Check if semaphore count is really important there. */
 		ReleaseSemaphore(&m_sem);
 	}
 

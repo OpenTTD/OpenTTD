@@ -95,18 +95,15 @@ public:
 		throw 0;
 	}
 
-	/* virtual */ void *Join()
+	/* virtual */ void Join()
 	{
 		/* You cannot join yourself */
 		assert(!IsCurrent());
 
-		void *ret;
-		pthread_join(m_thr, &ret);
+		pthread_join(m_thr, NULL);
 		m_thr = 0;
 
 		delete this;
-
-		return ret;
 	}
 
 	/* virtual */ bool IsCurrent()
@@ -126,14 +123,15 @@ private:
 	 */
 	static void *stThreadProc(void *thr)
 	{
-		return ((ThreadObject_pthread *)thr)->ThreadProc();
+		((ThreadObject_pthread *)thr)->ThreadProc();
+		pthread_exit(NULL);
 	}
 
 	/**
 	 * A new thread is created, and this function is called. Call the custom
 	 *  function of the creator of the thread.
 	 */
-	void *ThreadProc()
+	void ThreadProc()
 	{
 		/* The new thread stops here so the calling thread can complete pthread_create() call */
 		sem_wait(&m_sem_start);
@@ -152,8 +150,6 @@ private:
 		sem_post(&m_sem_stop);
 
 		if (exit) delete this;
-
-		pthread_exit(NULL);
 	}
 };
 

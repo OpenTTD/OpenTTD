@@ -109,7 +109,7 @@ private:
 	/**
 	 * First function which is called within the fiber.
 	 */
-	static void * CDECL stFiberProc(void *fiber)
+	static void stFiberProc(void *fiber)
 	{
 		Fiber_Thread *cur = (Fiber_Thread *)fiber;
 		/* Now suspend the thread until we get SwitchToFiber() for the first time */
@@ -124,8 +124,6 @@ private:
 			s_main->m_sem->Set();
 			throw;
 		}
-
-		return NULL;
 	}
 };
 

@@ -20,7 +20,6 @@ private:
 	OTTDThreadFunc m_proc;
 	void     *m_param;
 	bool     m_attached;
-	void     *ret;
 
 public:
 	/**
@@ -91,14 +90,12 @@ public:
 		throw 0;
 	}
 
-	/* virtual */ void *Join()
+	/* virtual */ void Join()
 	{
 		/* You cannot join yourself */
 		assert(!IsCurrent());
 
 		WaitForSingleObject(m_h_thr, INFINITE);
-
-		return this->ret;
 	}
 
 	/* virtual */ bool IsCurrent()
@@ -119,21 +116,20 @@ private:
 	 */
 	static uint CALLBACK stThreadProc(void *thr)
 	{
-		return ((ThreadObject_Win32 *)thr)->ThreadProc();
+		((ThreadObject_Win32 *)thr)->ThreadProc();
+		return 0;
 	}
 
 	/**
 	 * A new thread is created, and this function is called. Call the custom
 	 *  function of the creator of the thread.
 	 */
-	uint ThreadProc()
+	void ThreadProc()
 	{
 		try {
-			this->ret = m_proc(m_param);
+			m_proc(m_param);
 		} catch (...) {
 		}
-
-		return 0;
 	}
 };
 

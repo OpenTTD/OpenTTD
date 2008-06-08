@@ -5,7 +5,7 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-typedef void * (CDECL *OTTDThreadFunc)(void *);
+typedef void (*OTTDThreadFunc)(void *);
 
 /**
  * A Thread Object which works on all our supported OSes.
@@ -37,7 +37,7 @@ public:
 	/**
 	 * Join this thread.
 	 */
-	virtual void *Join() = 0;
+	virtual void Join() = 0;
 
 	/**
 	 * Check if this thread is the current active thread.
@@ -64,7 +64,7 @@ public:
 	 * Convert the current thread to a new ThreadObject.
 	 * @return A new ThreadObject with the current thread attached to it.
 	 */
-	static ThreadObject* AttachCurrent();
+	static ThreadObject *AttachCurrent();
 
 	/**
 	 * Find the Id of the current running thread.

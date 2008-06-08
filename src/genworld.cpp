@@ -85,7 +85,7 @@ bool IsGenerateWorldThreaded()
 /**
  * The internal, real, generate function.
  */
-static void * CDECL _GenerateWorld(void *arg)
+static void _GenerateWorld(void *arg)
 {
 	try {
 		_generating_world = true;
@@ -170,7 +170,6 @@ static void * CDECL _GenerateWorld(void *arg)
 		_generating_world = false;
 		throw;
 	}
-	return NULL;
 }
 
 /**
