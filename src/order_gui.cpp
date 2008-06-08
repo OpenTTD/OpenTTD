@@ -566,6 +566,7 @@ private:
 	{
 		/* Don't skip when there's nothing to skip */
 		if (_ctrl_pressed && w->vehicle->cur_order_index == w->OrderGetSel()) return;
+		if (w->vehicle->num_orders == 0) return;
 
 		DoCommandP(w->vehicle->tile, w->vehicle->index, _ctrl_pressed ? w->OrderGetSel() : ((w->vehicle->cur_order_index + 1) % w->vehicle->num_orders),
 				NULL, CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_CAN_T_SKIP_TO_ORDER : STR_CAN_T_SKIP_ORDER));
