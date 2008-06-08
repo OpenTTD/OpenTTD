@@ -119,6 +119,7 @@ public:
 	{
 		this->bridges->SetListing(this->last_sorting);
 		this->bridges->SetSortFuncs(this->sorter_funcs);
+		this->bridges->NeedResort();
 		this->SortBridgeList();
 
 		/* Change the data, or the caption of the gui. Set it to road or rail, accordingly */
