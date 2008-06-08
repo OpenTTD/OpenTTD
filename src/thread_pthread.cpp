@@ -22,16 +22,18 @@ private:
 	bool      m_attached;        ///< True if the ThreadObject was attached to an existing thread.
 	sem_t     m_sem_start;       ///< Here the new thread waits before it starts.
 	sem_t     m_sem_stop;        ///< Here the other thread can wait for this thread to end.
+	OTTDThreadTerminateFunc m_terminate_func; ///< Function to call on thread termination.
 
 public:
 	/**
 	 * Create a pthread and start it, calling proc(param).
 	 */
-	ThreadObject_pthread(OTTDThreadFunc proc, void *param) :
+	ThreadObject_pthread(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func) :
 		m_thr(0),
 		m_proc(proc),
 		m_param(param),
-		m_attached(false)
+		m_attached(false),
+		m_terminate_func(terminate_func)
 	{
 		sem_init(&m_sem_start, 0, 0);
 		sem_init(&m_sem_stop, 0, 0);
@@ -47,7 +49,8 @@ public:
 		m_thr(0),
 		m_proc(NULL),
 		m_param(0),
-		m_attached(true)
+		m_attached(true),
+		m_terminate_func(NULL)
 	{
 		sem_init(&m_sem_start, 0, 0);
 		sem_init(&m_sem_stop, 0, 0);
@@ -102,8 +105,6 @@ public:
 
 		pthread_join(m_thr, NULL);
 		m_thr = 0;
-
-		delete this;
 	}
 
 	/* virtual */ bool IsCurrent()
@@ -136,26 +137,22 @@ private:
 		/* The new thread stops here so the calling thread can complete pthread_create() call */
 		sem_wait(&m_sem_start);
 
-		/* Did this thread die naturally/via exit, or did it join? */
-		bool exit = false;
-
 		/* Call the proc of the creator to continue this thread */
 		try {
 			m_proc(m_param);
 		} catch (...) {
-			exit = true;
 		}
 
 		/* Notify threads waiting for our completion */
 		sem_post(&m_sem_stop);
 
-		if (exit) delete this;
+		if (this->m_terminate_func != NULL) this->m_terminate_func(this);
 	}
 };
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func)
 {
-	return new ThreadObject_pthread(proc, param);
+	return new ThreadObject_pthread(proc, param, terminate_func);
 }
 
 /* static */ ThreadObject *ThreadObject::AttachCurrent()

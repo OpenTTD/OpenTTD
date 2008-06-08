@@ -288,7 +288,7 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	SetupColorsAndInitialWindow();
 
 	if (_network_dedicated ||
-	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL)) == NULL) {
+	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL, &ThreadObject::TerminateCleanup)) == NULL) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_GenerateWorld(NULL);

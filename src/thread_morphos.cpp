@@ -57,6 +57,7 @@ void KPutStr(CONST_STRPTR format)
 class ThreadObject_MorphOS : public ThreadObject {
 private:
 	APTR m_thr;                  ///< System thread identifier.
+	OTTDThreadTerminateFunc m_terminate_func; ///< Function to call on thread termination.
 	struct MsgPort *m_replyport;
 	struct OTTDThreadStartupMessage m_msg;
 
@@ -64,7 +65,9 @@ public:
 	/**
 	 * Create a sub process and start it, calling proc(param).
 	 */
-	ThreadObject_MorphOS(OTTDThreadFunc proc, void *param) : m_thr(0)
+	ThreadObject_MorphOS(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func) :
+		m_thr(0),
+		m_terminate_func(terminate_func)
 	{
 		struct Task *parent;
 
@@ -111,7 +114,9 @@ public:
 	/**
 	 * Create a thread and attach current thread to it.
 	 */
-	ThreadObject_MorphOS() : m_thr(0)
+	ThreadObject_MorphOS() :
+		m_thr(0),
+		m_terminate_func(NULL)
 	{
 		m_thr = FindTask(NULL);
 	}
@@ -210,12 +215,14 @@ private:
 
 		/*  Quit the child, exec.library will reply the startup msg internally. */
 		KPutStr("[Child] Done.\n");
+
+		if (this->terminate_func != NULL) this->terminate_func(this);
 	}
 };
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func)
 {
-	return new ThreadObject_MorphOS(proc, param);
+	return new ThreadObject_MorphOS(proc, param, terminate_func);
 }
 
 /* static */ ThreadObject *ThreadObject::AttachCurrent()

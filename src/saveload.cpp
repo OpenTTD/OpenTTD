@@ -1695,7 +1695,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 
 			SaveFileStart();
 			if (_network_server ||
-						(_save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL)) == NULL) {
+						(_save_thread = ThreadObject::New(&SaveFileToDiskThread, NULL, &ThreadObject::TerminateCleanup)) == NULL) {
 				if (!_network_server) DEBUG(sl, 1, "Cannot create savegame thread, reverting to single-threaded mode...");
 
 				SaveOrLoadResult result = SaveFileToDisk(false);

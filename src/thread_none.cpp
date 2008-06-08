@@ -6,7 +6,7 @@
 #include "thread.h"
 #include "fiber.hpp"
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func)
 {
 	return NULL;
 }

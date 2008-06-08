@@ -6,6 +6,7 @@
 #define THREAD_H
 
 typedef void (*OTTDThreadFunc)(void *);
+typedef void (*OTTDThreadTerminateFunc)(class ThreadObject *self);
 
 /**
  * A Thread Object which works on all our supported OSes.
@@ -56,9 +57,10 @@ public:
 	 *  with optinal params.
 	 * @param proc The procedure to call inside the thread.
 	 * @param param The params to give with 'proc'.
+	 * @param terminate_func The function (or NULL) to call when the thread terminates.
 	 * @return True if the thread was started correctly.
 	 */
-	static ThreadObject *New(OTTDThreadFunc proc, void *param);
+	static ThreadObject *New(OTTDThreadFunc proc, void *param, OTTDThreadTerminateFunc terminate_func);
 
 	/**
 	 * Convert the current thread to a new ThreadObject.
@@ -71,6 +73,12 @@ public:
 	 * @return The thread ID of the current active thread.
 	 */
 	static uint CurrentId();
+
+	/**
+	 * A OTTDThreadTerminateFunc, which cleans up the thread itself
+	 *  at termination of the thread (so it becomes self-managed).
+	 */
+	static void TerminateCleanup(ThreadObject *self) { delete self; }
 };
 
 /**
