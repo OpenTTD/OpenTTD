@@ -528,7 +528,7 @@ static void DeleteNewsItem(NewsItem *ni)
 		MoveToNextItem();
 	}
 
-	if ((_current_news == ni) && (FindWindowById(WC_MESSAGE_HISTORY, 0) != NULL)) {
+	if ((_current_news == ni) && (FindWindowById(WC_NEWS_WINDOW, 0) != NULL)) {
 		/* about to remove the currently displayed item; also skip */
 		MoveToNextItem();
 	}
