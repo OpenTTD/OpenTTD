@@ -686,7 +686,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		const FiosItem *item;
 
 		/* draw basic widgets */
-		SetDParam(1, _connection_types_dropdown[_network_advertise]);
+		SetDParam(1, _connection_types_dropdown[_settings_client.network.server_advertise]);
 		SetDParam(2, _settings_client.network.max_clients);
 		SetDParam(3, _settings_client.network.max_companies);
 		SetDParam(4, _settings_client.network.max_spectators);
@@ -748,7 +748,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			} break;
 
 			case NSSW_CONNTYPE_BTN: // Connection type
-				ShowDropDownMenu(this, _connection_types_dropdown, _network_advertise, NSSW_CONNTYPE_BTN, 0, 0); // do it for widget NSSW_CONNTYPE_BTN
+				ShowDropDownMenu(this, _connection_types_dropdown, _settings_client.network.server_advertise, NSSW_CONNTYPE_BTN, 0, 0); // do it for widget NSSW_CONNTYPE_BTN
 				break;
 
 			case NSSW_CLIENTS_BTND:    case NSSW_CLIENTS_BTNU:    // Click on up/down button for number of clients
@@ -836,7 +836,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	{
 		switch (widget) {
 			case NSSW_CONNTYPE_BTN:
-				_network_advertise = (index != 0);
+				_settings_client.network.server_advertise = (index != 0);
 				break;
 			case NSSW_LANGUAGE_BTN:
 				_settings_client.network.server_lang = _language_dropdown[index] - STR_NETWORK_LANG_ANY;

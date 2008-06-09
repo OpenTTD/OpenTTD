@@ -45,7 +45,6 @@ bool _network_reload_cfg;
 bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
-bool _network_advertise;  ///< is the server advertising to the master server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
 NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
@@ -1110,7 +1109,7 @@ void NetworkDisconnect()
 		}
 	}
 
-	if (_network_advertise) NetworkUDPRemoveAdvertise();
+	if (_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise();
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 

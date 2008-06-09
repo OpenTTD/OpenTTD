@@ -52,7 +52,7 @@ DEF_UDP_RECEIVE_COMMAND(Master, PACKET_UDP_MASTER_ACK_REGISTER)
 	DEBUG(net, 2, "[udp] advertising on master server successful");
 
 	/* We are advertised, but we don't want to! */
-	if (!_network_advertise) NetworkUDPRemoveAdvertise();
+	if (!_settings_client.network.server_advertise) NetworkUDPRemoveAdvertise();
 }
 
 ///*** Communication with clients (we are server) ***/
@@ -562,7 +562,7 @@ void NetworkUDPAdvertise()
 	struct sockaddr_in out_addr;
 
 	/* Check if we should send an advertise */
-	if (!_networking || !_network_server || !_network_udp_server || !_network_advertise)
+	if (!_networking || !_network_server || !_network_udp_server || !_settings_client.network.server_advertise)
 		return;
 
 	/* check for socket */
