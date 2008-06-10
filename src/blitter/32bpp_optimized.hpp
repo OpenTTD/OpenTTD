@@ -14,6 +14,9 @@ public:
 	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
 
 	/* virtual */ const char *GetName() { return "32bpp-optimized"; }
+
+	template <BlitterMode mode, ZoomLevel zoom> void Draw(Blitter::BlitterParams *bp);
+	template <BlitterMode mode> void Draw(Blitter::BlitterParams *bp, ZoomLevel zoom);
 };
 
 class FBlitter_32bppOptimized: public BlitterFactory<FBlitter_32bppOptimized> {

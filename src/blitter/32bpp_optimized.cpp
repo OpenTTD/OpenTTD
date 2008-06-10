@@ -10,7 +10,7 @@
 
 static FBlitter_32bppOptimized iFBlitter_32bppOptimized;
 
-void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+template <BlitterMode mode, ZoomLevel zoom> inline void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp)
 {
 	const SpriteLoader::CommonPixel *src, *src_line;
 	uint32 *dst, *dst_line;
@@ -63,6 +63,27 @@ void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, 
 			dst++;
 			src += ScaleByZoom(1, zoom);
 		}
+	}
+}
+
+template <BlitterMode mode> inline void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, ZoomLevel zoom)
+{
+	switch (zoom) {
+		default: NOT_REACHED();
+		case ZOOM_LVL_NORMAL: Draw<mode, ZOOM_LVL_NORMAL>(bp); return;
+		case ZOOM_LVL_OUT_2X: Draw<mode, ZOOM_LVL_OUT_2X>(bp); return;
+		case ZOOM_LVL_OUT_4X: Draw<mode, ZOOM_LVL_OUT_4X>(bp); return;
+		case ZOOM_LVL_OUT_8X: Draw<mode, ZOOM_LVL_OUT_8X>(bp); return;
+	}
+}
+
+void Blitter_32bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
+{
+	switch (mode) {
+		default: NOT_REACHED();
+		case BM_NORMAL:       Draw<BM_NORMAL>      (bp, zoom); return;
+		case BM_COLOUR_REMAP: Draw<BM_COLOUR_REMAP>(bp, zoom); return;
+		case BM_TRANSPARENT:  Draw<BM_TRANSPARENT> (bp, zoom); return;
 	}
 }
 
