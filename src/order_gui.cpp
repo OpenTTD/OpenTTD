@@ -43,10 +43,13 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_SCROLLBAR,
 	ORDER_WIDGET_SKIP,
 	ORDER_WIDGET_DELETE,
+	ORDER_WIDGET_NON_STOP_DROPDOWN,
 	ORDER_WIDGET_NON_STOP,
-	ORDER_WIDGET_GOTO,
 	ORDER_WIDGET_GOTO_DROPDOWN,
+	ORDER_WIDGET_GOTO,
+	ORDER_WIDGET_FULL_LOAD_DROPDOWN,
 	ORDER_WIDGET_FULL_LOAD,
+	ORDER_WIDGET_UNLOAD_DROPDOWN,
 	ORDER_WIDGET_UNLOAD,
 	ORDER_WIDGET_REFIT,
 	ORDER_WIDGET_SERVICE,
@@ -444,13 +447,7 @@ private:
 		if (order == NULL || order->GetLoadType() == load_type) return;
 
 		if (load_type < 0) {
-			switch (order->GetLoadType()) {
-				case OLF_LOAD_IF_POSSIBLE: load_type = OLFB_FULL_LOAD;       break;
-				case OLFB_FULL_LOAD:       load_type = OLF_FULL_LOAD_ANY;    break;
-				case OLF_FULL_LOAD_ANY:    load_type = OLFB_NO_LOAD;         break;
-				case OLFB_NO_LOAD:         load_type = OLF_LOAD_IF_POSSIBLE; break;
-				default: NOT_REACHED();
-			}
+			load_type = order->GetLoadType() == OLF_LOAD_IF_POSSIBLE ? OLF_FULL_LOAD_ANY : OLF_LOAD_IF_POSSIBLE;
 		}
 		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_LOAD | (load_type << 4), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 	}
@@ -507,13 +504,7 @@ private:
 		if (order == NULL || order->GetUnloadType() == unload_type) return;
 
 		if (unload_type < 0) {
-			switch (order->GetUnloadType()) {
-				case OUF_UNLOAD_IF_POSSIBLE: unload_type = OUFB_UNLOAD;            break;
-				case OUFB_UNLOAD:            unload_type = OUFB_TRANSFER;          break;
-				case OUFB_TRANSFER:          unload_type = OUFB_NO_UNLOAD;         break;
-				case OUFB_NO_UNLOAD:         unload_type = OUF_UNLOAD_IF_POSSIBLE; break;
-				default: NOT_REACHED();
-			}
+			unload_type = order->GetUnloadType() == OUF_UNLOAD_IF_POSSIBLE ? OUFB_UNLOAD : OUF_UNLOAD_IF_POSSIBLE;
 		}
 
 		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_UNLOAD | (unload_type << 4), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
@@ -534,9 +525,10 @@ private:
 
 		/* Keypress if negative, so 'toggle' to the next */
 		if (non_stop < 0) {
-			non_stop = (order->GetNonStopType() + 1) % ONSF_END;
+			non_stop = order->GetNonStopType() ^ ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS;
 		}
 
+		w->InvalidateWidget(ORDER_WIDGET_NON_STOP);
 		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_NON_STOP | non_stop << 4,  NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 	}
 
@@ -631,9 +623,6 @@ public:
 
 		if (this->vehicle->owner == _local_player) {
 			/* Set the strings for the dropdown boxes. */
-			this->widget[ORDER_WIDGET_NON_STOP].data        = _order_non_stop_drowdown[order == NULL ? 0 : order->GetNonStopType()];
-			this->widget[ORDER_WIDGET_FULL_LOAD].data       = _order_full_load_drowdown[order == NULL ? 0 : order->GetLoadType()];
-			this->widget[ORDER_WIDGET_UNLOAD].data          = _order_unload_drowdown[order == NULL ? 0 : order->GetUnloadType()];
 			this->widget[ORDER_WIDGET_COND_VARIABLE].data   = _order_conditional_variable[order == NULL ? 0 : order->GetConditionVariable()];
 			this->widget[ORDER_WIDGET_COND_COMPARATOR].data = _order_conditional_condition[order == NULL ? 0 : order->GetConditionComparator()];
 
@@ -646,8 +635,11 @@ public:
 
 			/* non-stop only for trains */
 			this->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP,  (this->vehicle->type != VEH_TRAIN && this->vehicle->type != VEH_ROAD) || order == NULL);
+			this->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP_DROPDOWN, this->IsWidgetDisabled(ORDER_WIDGET_NON_STOP));
 			this->SetWidgetDisabledState(ORDER_WIDGET_FULL_LOAD, order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // full load
+			this->SetWidgetDisabledState(ORDER_WIDGET_FULL_LOAD_DROPDOWN, this->IsWidgetDisabled(ORDER_WIDGET_FULL_LOAD));
 			this->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD,    order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // unload
+			this->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD_DROPDOWN, this->IsWidgetDisabled(ORDER_WIDGET_UNLOAD));
 			/* Disable list of vehicles with the same shared orders if there is no list */
 			this->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders || this->vehicle->orders == NULL);
 			this->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
@@ -660,35 +652,53 @@ public:
 			this->HideWidget(ORDER_WIDGET_COND_VALUE);
 		}
 
+		this->ShowWidget(ORDER_WIDGET_NON_STOP_DROPDOWN);
 		this->ShowWidget(ORDER_WIDGET_NON_STOP);
+		this->ShowWidget(ORDER_WIDGET_UNLOAD_DROPDOWN);
 		this->ShowWidget(ORDER_WIDGET_UNLOAD);
+		this->ShowWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);
 		this->ShowWidget(ORDER_WIDGET_FULL_LOAD);
 
+		this->RaiseWidget(ORDER_WIDGET_NON_STOP);
+		this->RaiseWidget(ORDER_WIDGET_FULL_LOAD);
+		this->RaiseWidget(ORDER_WIDGET_UNLOAD);
+
 		if (order != NULL) {
+			this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 			switch (order->GetType()) {
 				case OT_GOTO_STATION:
-					if (!GetStation(order->GetDestination())->IsBuoy()) break;
+					if (!GetStation(order->GetDestination())->IsBuoy()) {
+						this->SetWidgetLoweredState(ORDER_WIDGET_FULL_LOAD, order->GetLoadType() == OLF_FULL_LOAD_ANY);
+						this->SetWidgetLoweredState(ORDER_WIDGET_UNLOAD, order->GetUnloadType() == OUFB_UNLOAD);
+						break;
+					}
 					/* Fall-through */
 
 				case OT_GOTO_WAYPOINT:
+					this->DisableWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);
 					this->DisableWidget(ORDER_WIDGET_FULL_LOAD);
+					this->DisableWidget(ORDER_WIDGET_UNLOAD_DROPDOWN);
 					this->DisableWidget(ORDER_WIDGET_UNLOAD);
 					break;
 
 				case OT_GOTO_DEPOT:
-					this->DisableWidget(ORDER_WIDGET_FULL_LOAD);
-
 					/* Remove unload and replace it with refit */
+					this->HideWidget(ORDER_WIDGET_UNLOAD_DROPDOWN);
 					this->HideWidget(ORDER_WIDGET_UNLOAD);
-					this->ShowWidget(ORDER_WIDGET_REFIT);
+					this->HideWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);
 					this->HideWidget(ORDER_WIDGET_FULL_LOAD);
+					this->ShowWidget(ORDER_WIDGET_REFIT);
 					this->ShowWidget(ORDER_WIDGET_SERVICE);
+					this->SetWidgetLoweredState(ORDER_WIDGET_SERVICE, order->GetDepotOrderType() & ODTFB_SERVICE);
 					break;
 
 				case OT_CONDITIONAL: {
+					this->HideWidget(ORDER_WIDGET_NON_STOP_DROPDOWN);
 					this->HideWidget(ORDER_WIDGET_NON_STOP);
 					this->HideWidget(ORDER_WIDGET_UNLOAD);
+					this->HideWidget(ORDER_WIDGET_UNLOAD_DROPDOWN);
 					this->HideWidget(ORDER_WIDGET_FULL_LOAD);
+					this->HideWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);
 					this->ShowWidget(ORDER_WIDGET_COND_VARIABLE);
 					this->ShowWidget(ORDER_WIDGET_COND_COMPARATOR);
 					this->ShowWidget(ORDER_WIDGET_COND_VALUE);
@@ -703,8 +713,11 @@ public:
 				} break;
 
 				default: // every other orders
+					this->DisableWidget(ORDER_WIDGET_NON_STOP_DROPDOWN);
 					this->DisableWidget(ORDER_WIDGET_NON_STOP);
+					this->DisableWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);
 					this->DisableWidget(ORDER_WIDGET_FULL_LOAD);
+					this->DisableWidget(ORDER_WIDGET_UNLOAD_DROPDOWN);
 					this->DisableWidget(ORDER_WIDGET_UNLOAD);
 			}
 		}
@@ -790,9 +803,13 @@ public:
 				OrderClick_Delete(this, 0);
 				break;
 
-			case ORDER_WIDGET_NON_STOP: {
+			case ORDER_WIDGET_NON_STOP:
+				OrderClick_Nonstop(this, -1);
+				break;
+
+			case ORDER_WIDGET_NON_STOP_DROPDOWN: {
 				const Order *o = GetVehicleOrder(this->vehicle, this->OrderGetSel());
-				ShowDropDownMenu(this, _order_non_stop_drowdown, o->GetNonStopType(), ORDER_WIDGET_NON_STOP, 0, o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12));
+				ShowDropDownMenu(this, _order_non_stop_drowdown, o->GetNonStopType(), ORDER_WIDGET_NON_STOP_DROPDOWN, 0, o->IsType(OT_GOTO_STATION) ? 0 : (o->IsType(OT_GOTO_WAYPOINT) ? 3 : 12));
 			} break;
 
 			case ORDER_WIDGET_GOTO:
@@ -800,15 +817,23 @@ public:
 				break;
 
 			case ORDER_WIDGET_GOTO_DROPDOWN:
-				ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, 0, ORDER_WIDGET_GOTO, 0, 0, this->widget[ORDER_WIDGET_GOTO_DROPDOWN].right - this->widget[ORDER_WIDGET_GOTO].left);
+				ShowDropDownMenu(this, this->vehicle->type == VEH_AIRCRAFT ? _order_goto_dropdown_aircraft : _order_goto_dropdown, 0, ORDER_WIDGET_GOTO_DROPDOWN, 0, 0);
 				break;
 
 			case ORDER_WIDGET_FULL_LOAD:
-				ShowDropDownMenu(this, _order_full_load_drowdown, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetLoadType(), ORDER_WIDGET_FULL_LOAD, 0, 2);
+				OrderClick_FullLoad(this, -1);
+				break;
+
+			case ORDER_WIDGET_FULL_LOAD_DROPDOWN:
+				ShowDropDownMenu(this, _order_full_load_drowdown, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetLoadType(), ORDER_WIDGET_FULL_LOAD_DROPDOWN, 0, 2);
 				break;
 
 			case ORDER_WIDGET_UNLOAD:
-				ShowDropDownMenu(this, _order_unload_drowdown, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetUnloadType(), ORDER_WIDGET_UNLOAD, 0, 8);
+				OrderClick_Unload(this, -1);
+				break;
+
+			case ORDER_WIDGET_UNLOAD_DROPDOWN:
+				ShowDropDownMenu(this, _order_unload_drowdown, GetVehicleOrder(this->vehicle, this->OrderGetSel())->GetUnloadType(), ORDER_WIDGET_UNLOAD_DROPDOWN, 0, 8);
 				break;
 
 			case ORDER_WIDGET_REFIT:
@@ -871,25 +896,21 @@ public:
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
-			case ORDER_WIDGET_NON_STOP:
+			case ORDER_WIDGET_NON_STOP_DROPDOWN:
 				OrderClick_Nonstop(this, index);
 				break;
 
-			case ORDER_WIDGET_FULL_LOAD:
+			case ORDER_WIDGET_FULL_LOAD_DROPDOWN:
 				OrderClick_FullLoad(this, index);
 				break;
 
-			case ORDER_WIDGET_UNLOAD:
+			case ORDER_WIDGET_UNLOAD_DROPDOWN:
 				OrderClick_Unload(this, index);
 				break;
 
-			case ORDER_WIDGET_GOTO:
+			case ORDER_WIDGET_GOTO_DROPDOWN:
 				switch (index) {
-					case 0:
-						this->ToggleWidgetLoweredState(ORDER_WIDGET_GOTO);
-						OrderClick_Goto(this, 0);
-						break;
-
+					case 0: OrderClick_Goto(this, 0); break;
 					case 1: OrderClick_NearestDepot(this, 0); break;
 					case 2: OrderClick_Conditional(this, 0); break;
 					default: NOT_REACHED();
@@ -1040,11 +1061,14 @@ static const Widget _orders_train_widgets[] = {
 
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   123,    88,    99, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    88,    99, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   123,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_NON_STOP},          // ORDER_WIDGET_NON_STOP
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   123,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_NON_STOP},          // ORDER_WIDGET_NON_STOP_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,     0,   111,    76,    87, STR_ORDER_NON_STOP,      STR_ORDER_TOOLTIP_NON_STOP},          // ORDER_WIDGET_NON_STOP
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   248,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,   360,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   124,   235,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},      // ORDER_WIDGET_FULL_LOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   248,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
@@ -1080,11 +1104,14 @@ static const Widget _orders_widgets[] = {
 
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   123,    88,    99, STR_8823_SKIP,           STR_8853_SKIP_THE_CURRENT_ORDER},     // ORDER_WIDGET_SKIP
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   124,   247,    88,    99, STR_8824_DELETE,         STR_8854_DELETE_THE_HIGHLIGHTED},     // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_TB,      14,     0,     0,    76,    87, 0x0,                     0x0},                                 // ORDER_WIDGET_NON_STOP
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   248,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,      14,   248,   359,    88,    99, STR_8826_GO_TO,          STR_8856_INSERT_A_NEW_ORDER_BEFORE},  // ORDER_WIDGET_GOTO
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,   360,   371,    88,    99, STR_EMPTY,               STR_ORDER_GO_TO_DROPDOWN_TOOLTIP},    // ORDER_WIDGET_GOTO_DROPDOWN
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD
-	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_FULL_LOAD},         // ORDER_WIDGET_FULL_LOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,     0,   173,    76,    87, STR_ORDER_TOGGLE_FULL_LOAD, STR_ORDER_TOOLTIP_FULL_LOAD},      // ORDER_WIDGET_FULL_LOAD
+	{   WWT_DROPDOWN,   RESIZE_TB,      14,   186,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,      14,   186,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   185,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   186,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
@@ -1120,10 +1147,13 @@ static const Widget _other_orders_widgets[] = {
 
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SKIP
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_DELETE
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_NON_STOP
-	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO_DROPDOWN
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_GOTO
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_FULL_LOAD
+	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
 	{      WWT_EMPTY,   RESIZE_NONE,    14,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE
