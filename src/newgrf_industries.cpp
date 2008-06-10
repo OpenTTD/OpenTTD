@@ -296,6 +296,8 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		case 0x67:
 		case 0x68: return GetCountAndDistanceOfClosestInstance(parameter, variable == 0x68 ? GB(GetRegister(0x101), 0, 8) : 0, industry);
 
+		case 0x69: return industry->construction_date; // Date when built - long format - (in days)
+
 		/* Get a variable from the persistent storage */
 		case 0x7C: return industry->psa.Get(parameter);
 
