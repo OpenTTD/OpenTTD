@@ -265,7 +265,7 @@ static inline void IncHouseConstructionTick(TileIndex t)
 }
 
 /**
- * Set the year that this house was constructed (between 1920 and 2175).
+ * Set the year that this house was constructed.
  * @param t the tile of this house
  * @param year the year to set
  * @pre IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)
@@ -273,11 +273,11 @@ static inline void IncHouseConstructionTick(TileIndex t)
 static inline void SetHouseConstructionYear(TileIndex t, Year year)
 {
 	assert(IsTileType(t, MP_HOUSE) && IsHouseCompleted(t));
-	_m[t].m5 = Clamp(year - ORIGINAL_BASE_YEAR, 0, 0xFF);
+	_m[t].m5 = Clamp(year - GetHouseSpecs(GetHouseType(t))->min_year, 0, 0xFF);
 }
 
 /**
- * Get the year that this house was constructed (between 1920 and 2175).
+ * Get the year that this house was constructed.
  * @param t the tile of this house
  * @pre IsTileType(t, MP_HOUSE)
  * @return year
@@ -285,7 +285,7 @@ static inline void SetHouseConstructionYear(TileIndex t, Year year)
 static inline Year GetHouseConstructionYear(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return IsHouseCompleted(t) ? _m[t].m5 + ORIGINAL_BASE_YEAR : 0;
+	return IsHouseCompleted(t) ? _m[t].m5 + GetHouseSpecs(GetHouseType(t))->min_year : 0;
 }
 
 /**

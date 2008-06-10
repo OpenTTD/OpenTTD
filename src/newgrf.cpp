@@ -1538,6 +1538,14 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				ret = true;
 			} break;
 
+			case 0x21: // long introduction year
+				housespec->min_year = grf_load_word(&buf);
+				break;
+
+			case 0x22: // long maximum year
+				housespec->max_year = grf_load_word(&buf);
+				break;
+
 			default:
 				ret = true;
 				break;
