@@ -90,4 +90,7 @@ template <typename T> FORCEINLINE T* ReallocT(T *t_ptr, size_t num_elements)
 	return t_ptr;
 }
 
+/** alloca() has to be called in the parent function, so define AllocaM() as a macro */
+#define AllocaM(T, num_elements) ((T*)alloca((num_elements) * sizeof(T)))
+
 #endif /* ALLOC_FUNC_HPP */

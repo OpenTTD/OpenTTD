@@ -549,7 +549,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 		if (!IsCompatibleRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
 		/* Allow for the wagon and the articulated parts, plus one to "terminate" the list. */
-		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
+		Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
 		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 		if (!Vehicle::AllocateList(vl, num_vehicles))
@@ -716,7 +716,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
 		/* Allow for the dual-heads and the articulated parts, plus one to "terminate" the list. */
-		Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
+		Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
 		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 		if (!Vehicle::AllocateList(vl, num_vehicles)) {

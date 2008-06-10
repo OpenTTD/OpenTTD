@@ -474,7 +474,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	_ident = GetTickCount(); // something pretty unique
 
-	MakeCRCTable((uint32*)alloca(256 * sizeof(uint32)));
+	MakeCRCTable(AllocaM(uint32, 256));
 	_crash_msg = output = (char*)LocalAlloc(LMEM_FIXED, 8192);
 
 	{

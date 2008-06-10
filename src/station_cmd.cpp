@@ -1013,7 +1013,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
 		track = AxisToTrack(axis);
 
-		layout_ptr = (byte*)alloca(numtracks * plat_len);
+		layout_ptr = AllocaM(byte, numtracks * plat_len);
 		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
 
 		numtracks_orig = numtracks;

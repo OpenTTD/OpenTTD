@@ -194,7 +194,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	uint num_vehicles = 1 + CountArticulatedParts(p1, false);
 
 	/* Allow for the front and the articulated parts, plus one to "terminate" the list. */
-	Vehicle **vl = (Vehicle**)alloca(sizeof(*vl) * (num_vehicles + 1));
+	Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
 	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
 	if (!Vehicle::AllocateList(vl, num_vehicles)) {
