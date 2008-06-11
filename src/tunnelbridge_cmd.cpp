@@ -738,7 +738,7 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
  * @param y Sprite Y position of front pillar.
  * @param z_bridge Absolute height of bridge bottom.
  */
-static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, BridgeType type, int x, int y, int z_bridge)
+static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
 {
 	/* Do not draw bridge pillars if they are invisible */
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
@@ -746,8 +746,6 @@ static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis 
 	SpriteID image = psid->sprite;
 
 	if (image != 0) {
-		bool drawfarpillar = !HasBit(GetBridgeSpec(type)->flags, 0);
-
 		/* "side" specifies the side the pillars stand on.
 		 * The length of the pillars is then set to the height of the bridge over the corners of this edge.
 		 *
@@ -1041,32 +1039,25 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	/* Z position of the bridge sprites relative to bridge height (downwards) */
 	static const int BRIDGE_Z_START = 3;
 
-	const PalSpriteID *psid;
-	uint base_offset;
-	TileIndex rampnorth;
-	TileIndex rampsouth;
-	TransportType transport_type;
-	Axis axis;
-	uint piece;
-	BridgeType type;
-	int x;
-	int y;
-	uint z;
-
 	if (!IsBridgeAbove(ti->tile)) return;
 
-	rampnorth = GetNorthernBridgeEnd(ti->tile);
-	rampsouth = GetSouthernBridgeEnd(ti->tile);
-	transport_type = GetTunnelBridgeTransportType(rampsouth);
+	TileIndex rampnorth = GetNorthernBridgeEnd(ti->tile);
+	TileIndex rampsouth = GetSouthernBridgeEnd(ti->tile);
+	TransportType transport_type = GetTunnelBridgeTransportType(rampsouth);
 
-	axis = GetBridgeAxis(ti->tile);
-	piece = CalcBridgePiece(
+	Axis axis = GetBridgeAxis(ti->tile);
+	uint piece = CalcBridgePiece(
 		GetTunnelBridgeLength(ti->tile, rampnorth) + 1,
 		GetTunnelBridgeLength(ti->tile, rampsouth) + 1
 	);
-	type = GetBridgeType(rampsouth);
 
+	const PalSpriteID *psid;
+	bool drawfarpillar;
 	if (transport_type != TRANSPORT_WATER) {
+		BridgeType type =  GetBridgeType(rampsouth);
+		drawfarpillar = !HasBit(GetBridgeSpec(type)->flags, 0);
+
+		uint base_offset;
 		if (transport_type == TRANSPORT_RAIL) {
 			base_offset = GetRailTypeInfo(GetRailType(rampsouth))->bridge_offset;
 		} else {
@@ -1075,14 +1066,16 @@ void DrawBridgeMiddle(const TileInfo* ti)
 
 		psid = base_offset + GetBridgeSpriteTable(type, piece);
 	} else {
+		drawfarpillar = true;
 		psid = _aqueduct_sprites;
 	}
+
 	if (axis != AXIS_X) psid += 4;
 
-	x = ti->x;
-	y = ti->y;
+	int x = ti->x;
+	int y = ti->y;
 	uint bridge_z = GetBridgeHeight(rampsouth);
-	z = bridge_z - BRIDGE_Z_START;
+	uint z = bridge_z - BRIDGE_Z_START;
 
 	/* Add a bounding box, that separates the bridge from things below it. */
 	AddSortableSpriteToDraw(SPR_EMPTY_BOUNDING_BOX, PAL_NONE, x, y, 16, 16, 1, bridge_z - TILE_HEIGHT + BB_Z_SEPARATOR);
@@ -1147,7 +1140,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 		}
 	} else if (_settings_client.gui.bridge_pillars) {
 		/* draw pillars below for high bridges */
-		DrawBridgePillars(psid, ti, axis, type, x, y, z);
+		DrawBridgePillars(psid, ti, axis, drawfarpillar, x, y, z);
 	}
 }
 
