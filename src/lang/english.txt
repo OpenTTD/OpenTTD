@@ -1943,6 +1943,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Select s
 STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Coast or riverbank
 STR_3806_SHIP_DEPOT                                             :Ship depot
+STR_AQUEDUCT                                                    :Aqueduct
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Can't build on water
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Must demolish canal first
 

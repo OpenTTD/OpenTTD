@@ -1204,11 +1204,12 @@ static void GetAcceptedCargo_TunnelBridge(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
 {
+	TransportType tt = GetTunnelBridgeTransportType(tile);
+
 	if (IsTunnel(tile)) {
-		td->str = (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) ?
-			STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
-	} else { //so it must be a bridge
-		td->str = GetBridgeSpec(GetBridgeType(tile))->transport_name[GetTunnelBridgeTransportType(tile)];
+		td->str = (tt == TRANSPORT_RAIL) ? STR_5017_RAILROAD_TUNNEL : STR_5018_ROAD_TUNNEL;
+	} else { // IsBridge(tile)
+		td->str = (tt == TRANSPORT_WATER) ? STR_AQUEDUCT : GetBridgeSpec(GetBridgeType(tile))->transport_name[tt];
 	}
 	td->owner[0] = GetTileOwner(tile);
 }
