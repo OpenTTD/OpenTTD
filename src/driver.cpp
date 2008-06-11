@@ -183,3 +183,18 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 
 	return p;
 }
+
+/** Frees memory used for this->name
+ */
+DriverFactoryBase::~DriverFactoryBase() {
+	if (this->name == NULL) return;
+
+	/* Prefix the name with driver type to make it unique */
+	char buf[32];
+	strecpy(buf, GetDriverTypeName(type), lastof(buf));
+	strecpy(buf + 5, this->name, lastof(buf));
+
+	GetDrivers().erase(buf);
+	if (GetDrivers().empty()) delete &GetDrivers();
+	free(this->name);
+}
