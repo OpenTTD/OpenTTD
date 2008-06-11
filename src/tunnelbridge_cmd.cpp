@@ -315,7 +315,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (!_is_old_ai_player && _settings_game.construction.build_on_slopes);
+		bool allow_on_slopes = (!_is_old_ai_player && _settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
 
 		/* Try and clear the start landscape */
 		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -335,6 +335,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 		if (CmdFailed(terraform_cost_south) || (terraform_cost_south.GetCost() != 0 && !allow_on_slopes))
 			return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 		cost.AddCost(terraform_cost_south);
+
+		if (transport_type == TRANSPORT_WATER && (tileh_start == SLOPE_FLAT || tileh_end == SLOPE_FLAT)) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
 	if (!replace_bridge) {
