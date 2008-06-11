@@ -69,7 +69,7 @@ static void PlaceDocks_BuildLock(TileIndex tile)
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS));
 }
 
-static void PlaceDocks_Bridge(TileIndex tile)
+static void PlaceDocks_Aqueduct(TileIndex tile)
 {
 	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
 }
@@ -89,7 +89,7 @@ enum DockToolbarWidgets {
 	DTW_DEPOT,                     ///< Build depot button
 	DTW_STATION,                   ///< Build station button
 	DTW_BUOY,                      ///< Build buoy button
-	DTW_BUILD_BRIDGE,              ///< Build bride button
+	DTW_BUILD_AQUEDUCT,            ///< Build aqueduct button
 	DTW_END,                       ///< End of toolbar widgets
 };
 
@@ -127,9 +127,9 @@ static void BuildDocksClick_Buoy(Window *w)
 	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, VHM_RECT, PlaceDocks_Buoy);
 }
 
-static void BuildDocksClick_Bridge(Window *w)
+static void BuildDocksClick_Aqueduct(Window *w)
 {
-	HandlePlacePushButton(w, DTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceDocks_Bridge);
+	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceDocks_Aqueduct);
 }
 
 
@@ -142,7 +142,7 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Depot,
 	BuildDocksClick_Dock,
 	BuildDocksClick_Buoy,
-	BuildDocksClick_Bridge
+	BuildDocksClick_Aqueduct
 };
 
 struct BuildDocksToolbarWindow : Window {
@@ -177,7 +177,7 @@ struct BuildDocksToolbarWindow : Window {
 			case '4': BuildDocksClick_Depot(this); break;
 			case '5': BuildDocksClick_Dock(this); break;
 			case '6': BuildDocksClick_Buoy(this); break;
-			case '7': BuildDocksClick_Bridge(this); break;
+			case '7': BuildDocksClick_Aqueduct(this); break;
 			default:  return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -200,7 +200,7 @@ struct BuildDocksToolbarWindow : Window {
 				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
 					extern void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2);
-					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
+					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_CAN_T_BUILD_AQUEDUCT_HERE));
 
 				case DDSP_DEMOLISH_AREA:
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
@@ -244,7 +244,7 @@ static const Widget _build_docks_toolb_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},  // DTW_DEPOT
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},                // DTW_STATION
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},        // DTW_BUOY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   178,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},              // DTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   178,    14,    35, SPR_IMG_BRIDGE,             STR_BUILD_AQUEDUCT},                      // DTW_BUILD_AQUEDUCT
 {   WIDGETS_END},
 };
 

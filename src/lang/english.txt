@@ -3008,6 +3008,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Can't na
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First ship arrives at {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Place a buoy which can be used as a waypoint
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Can't place buoy here...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Build aqueduct
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Can't build aqueduct here...
 STR_9836_RENAME                                                 :{BLACK}Rename
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Rename ship type
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Rename ship type
