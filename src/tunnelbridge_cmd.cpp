@@ -456,6 +456,9 @@ not_valid_below:;
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost.AddCost((int64)bridge_len * _price.build_bridge * GetBridgeSpec(bridge_type)->price >> 8);
+
+		/* Aqueducts are a little more expensive. */
+		if (transport_type == TRANSPORT_WATER) cost.AddCost((int64)bridge_len * _price.clear_water);
 	}
 
 	return cost;
@@ -1429,7 +1432,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 
 static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new)
 {
-	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile)) {
+	if (_settings_game.construction.build_on_slopes && AutoslopeEnabled() && IsBridge(tile) && GetTunnelBridgeTransportType(tile) != TRANSPORT_WATER) {
 		DiagDirection direction = GetTunnelBridgeDirection(tile);
 		Axis axis = DiagDirToAxis(direction);
 		CommandCost res;
