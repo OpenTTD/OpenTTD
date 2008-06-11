@@ -483,13 +483,19 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
-			if (!IsCoast(tile)) return true;
-			switch (GetTileSlope(tile, NULL)) {
-				case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
-				case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
-				case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
-				case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
-				default: return false;
+			switch (GetWaterTileType(tile)) {
+				default: NOT_REACHED();
+				case WATER_TILE_DEPOT: case WATER_TILE_CLEAR: return true;
+				case WATER_TILE_LOCK: return DiagDirToAxis(GetLockDirection(tile)) == DiagDirToAxis(DirToDiagDir(from));
+
+				case WATER_TILE_COAST:
+					switch (GetTileSlope(tile, NULL)) {
+						case SLOPE_W: return (from == DIR_SE) || (from == DIR_E) || (from == DIR_NE);
+						case SLOPE_S: return (from == DIR_NE) || (from == DIR_N) || (from == DIR_NW);
+						case SLOPE_E: return (from == DIR_NW) || (from == DIR_W) || (from == DIR_SW);
+						case SLOPE_N: return (from == DIR_SW) || (from == DIR_S) || (from == DIR_SE);
+						default: return false;
+					}
 			}
 
 		case MP_RAILWAY:
@@ -507,7 +513,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 
 		case MP_STATION:  return IsOilRig(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
 		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
-		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER;
+		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
 		default:          return false;
 	}
 }
