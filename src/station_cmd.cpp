@@ -1496,7 +1496,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Make sure the specified tile is a road stop of the correct type */
-	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != p2) return CMD_ERROR;
+	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != GB(p2, 0, 1)) return CMD_ERROR;
 	Station *st = GetStationByTile(tile);
 	/* Save the stop info before it is removed */
 	bool is_drive_through = IsDriveThroughStopTile(tile);
