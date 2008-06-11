@@ -3451,7 +3451,7 @@ static void GraphicsNew(byte *buf, size_t len)
 		/* 0x0F */ { A5BLOCK_INVALID,      0,                  12, 0,                                           "Sloped rail track"     }, // Not yet used by OTTD.
 		/* 0x10 */ { A5BLOCK_FIXED,        SPR_AIRPORTX_BASE,  15, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"      },
 		/* 0x11 */ { A5BLOCK_FIXED,        SPR_ROADSTOP_BASE,   8, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"    },
-		/* 0x12 */ { A5BLOCK_INVALID,      0,                   8, 0,                                           "Aqueduct graphics"     }, // Not yet used by OTTD.
+		/* 0x12 */ { A5BLOCK_FIXED,        SPR_AQUEDUCT_BASE,   8, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"     },
 		/* 0x13 */ { A5BLOCK_FIXED,        SPR_AUTORAIL_BASE,  55, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"     },
 		/* 0x14 */ { A5BLOCK_ALLOW_OFFSET, SPR_FLAGS_BASE,      1, FLAGS_SPRITE_COUNT,                          "Flag graphics"         },
 		/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,    1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },

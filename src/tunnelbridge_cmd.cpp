@@ -227,9 +227,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 
+		case TRANSPORT_WATER:
+			break;
+
 		default:
-			/* For now, only TRANSPORT_RAIL and TRANSPORT_ROAD are allowed.
-			 * But let not this stops us for preparing the future */
+			/* Airports don't have tunnels. */
 			return CMD_ERROR;
 	}
 
@@ -250,9 +252,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
 	}
 
-	/* set and test bridge length, availability */
 	bridge_len = sx + sy - x - y - 1;
-	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+	if (transport_type != TRANSPORT_WATER) {
+		/* set and test bridge length, availability */
+		if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+	}
 
 	/* retrieve landscape height and ensure it's on land */
 	tile_start = TileXY(x, y);
@@ -366,6 +370,11 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			case TRANSPORT_ROAD:
 				MakeRoadBridgeRamp(tile_start, owner, bridge_type, dir,                 roadtypes);
 				MakeRoadBridgeRamp(tile_end,   owner, bridge_type, ReverseDiagDir(dir), roadtypes);
+				break;
+
+			case TRANSPORT_WATER:
+				MakeAqueductBridgeRamp(tile_start, owner, dir);
+				MakeAqueductBridgeRamp(tile_end,   owner, ReverseDiagDir(dir));
 				break;
 
 			default:
@@ -926,7 +935,11 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 
 		/* Table number 6 always refers to the bridge heads for any bridge type */
-		psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
+		if (transport_type != TRANSPORT_WATER) {
+			psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
+		} else {
+			psid = _aqueduct_sprites + base_offset;
+		}
 
 		if (!ice) {
 			DrawClearLandTile(ti, 3);
@@ -1023,7 +1036,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	/* Z position of the bridge sprites relative to bridge height (downwards) */
 	static const int BRIDGE_Z_START = 3;
 
-	const PalSpriteID* psid;
+	const PalSpriteID *psid;
 	uint base_offset;
 	TileIndex rampnorth;
 	TileIndex rampsouth;
@@ -1048,13 +1061,17 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	);
 	type = GetBridgeType(rampsouth);
 
-	if (transport_type == TRANSPORT_RAIL) {
-		base_offset = GetRailTypeInfo(GetRailType(rampsouth))->bridge_offset;
-	} else {
-		base_offset = 8;
-	}
+	if (transport_type != TRANSPORT_WATER) {
+		if (transport_type == TRANSPORT_RAIL) {
+			base_offset = GetRailTypeInfo(GetRailType(rampsouth))->bridge_offset;
+		} else {
+			base_offset = 8;
+		}
 
-	psid = base_offset + GetBridgeSpriteTable(type, piece);
+		psid = base_offset + GetBridgeSpriteTable(type, piece);
+	} else {
+		psid = _aqueduct_sprites;
+	}
 	if (axis != AXIS_X) psid += 4;
 
 	x = ti->x;
@@ -1342,7 +1359,7 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 		}
 	} else { // IsBridge(tile)
 
-		if (v->IsPrimaryVehicle()) {
+		if (v->IsPrimaryVehicle() && v->type != VEH_SHIP) {
 			/* modify speed of vehicle */
 			uint16 spd = GetBridgeSpec(GetBridgeType(tile))->speed;
 
@@ -1358,29 +1375,51 @@ static VehicleEnterTileStatus VehicleEnter_TunnelBridge(Vehicle *v, TileIndex ti
 				case DIAGDIR_SW: if ((x & 0xF) != TILE_SIZE - 1) return VETSB_CONTINUE; break;
 				case DIAGDIR_NW: if ((y & 0xF) != 0)             return VETSB_CONTINUE; break;
 			}
-			if (v->type == VEH_TRAIN) {
-				v->u.rail.track = TRACK_BIT_WORMHOLE;
-				ClrBit(v->u.rail.flags, VRF_GOINGUP);
-				ClrBit(v->u.rail.flags, VRF_GOINGDOWN);
-			} else {
-				v->u.road.state = RVSB_WORMHOLE;
+			switch (v->type) {
+				case VEH_TRAIN:
+					v->u.rail.track = TRACK_BIT_WORMHOLE;
+					ClrBit(v->u.rail.flags, VRF_GOINGUP);
+					ClrBit(v->u.rail.flags, VRF_GOINGDOWN);
+					break;
+
+				case VEH_ROAD:
+					v->u.road.state = RVSB_WORMHOLE;
+					break;
+
+				case VEH_SHIP:
+					v->u.ship.state = TRACK_BIT_WORMHOLE;
+					break;
+
+				default: NOT_REACHED();
 			}
 			return VETSB_ENTERED_WORMHOLE;
 		} else if (DirToDiagDir(v->direction) == ReverseDiagDir(dir)) {
 			v->tile = tile;
-			if (v->type == VEH_TRAIN) {
-				if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
-					v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
-					return VETSB_ENTERED_WORMHOLE;
-				}
-			} else {
-				if (v->u.road.state == RVSB_WORMHOLE) {
-					v->u.road.state = _road_exit_tunnel_state[dir];
-					v->u.road.frame = 0;
-					return VETSB_ENTERED_WORMHOLE;
-				}
+			switch (v->type) {
+				case VEH_TRAIN:
+					if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
+						v->u.rail.track = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+						return VETSB_ENTERED_WORMHOLE;
+					}
+					break;
+
+				case VEH_ROAD:
+					if (v->u.road.state == RVSB_WORMHOLE) {
+						v->u.road.state = _road_exit_tunnel_state[dir];
+						v->u.road.frame = 0;
+						return VETSB_ENTERED_WORMHOLE;
+					}
+					break;
+
+				case VEH_SHIP:
+					if (v->u.ship.state == TRACK_BIT_WORMHOLE) {
+						v->u.ship.state = (DiagDirToAxis(dir) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y);
+						return VETSB_ENTERED_WORMHOLE;
+					}
+					break;
+
+				default: NOT_REACHED();
 			}
-			return VETSB_CONTINUE;
 		}
 	}
 	return VETSB_CONTINUE;

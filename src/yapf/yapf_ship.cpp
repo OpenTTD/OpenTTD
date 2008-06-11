@@ -109,6 +109,9 @@ public:
 			/* new trackdir does not match the next one when going straight */
 			c += 10;
 		}
+
+		c += YAPF_TILE_LENGTH * tf->m_tiles_skipped;
+
 		// apply it
 		n.m_cost = n.m_parent->m_cost + c;
 		return true;

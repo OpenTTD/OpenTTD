@@ -264,7 +264,7 @@ protected:
 		}
 
 		// tunnel holes and bridge ramps can be entered only from proper direction
-		if (!IsWaterTT() && IsTileType(m_new_tile, MP_TUNNELBRIDGE)) {
+		if (IsTileType(m_new_tile, MP_TUNNELBRIDGE)) {
 			if (IsTunnel(m_new_tile)) {
 				if (!m_is_tunnel) {
 					DiagDirection tunnel_enterdir = GetTunnelBridgeDirection(m_new_tile);

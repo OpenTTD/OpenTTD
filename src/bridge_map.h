@@ -200,5 +200,15 @@ static inline void MakeRailBridgeRamp(TileIndex t, Owner o, BridgeType bridgetyp
 	MakeBridgeRamp(t, o, bridgetype, d, TRANSPORT_RAIL, r);
 }
 
+/**
+ * Make a bridge ramp for aqueducts.
+ * @param t          the tile to make a bridge ramp
+ * @param o          the new owner of the bridge ramp
+ * @param d          the direction this ramp must be facing
+ */
+static inline void MakeAqueductBridgeRamp(TileIndex t, Owner o, DiagDirection d)
+{
+	MakeBridgeRamp(t, o, 0, d, TRANSPORT_WATER, 0);
+}
 
 #endif /* BRIDGE_MAP_H */

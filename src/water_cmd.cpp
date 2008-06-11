@@ -40,6 +40,7 @@
 #include "newgrf_cargo.h"
 #include "effectvehicle_func.h"
 #include "oldpool_func.h"
+#include "tunnelbridge_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -506,6 +507,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 
 		case MP_STATION:  return IsOilRig(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
 		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER;
 		default:          return false;
 	}
 }

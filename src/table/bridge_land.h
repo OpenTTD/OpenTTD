@@ -28,6 +28,12 @@
 # define MW(a) {a, PALETTE_TO_STRUCT_WHITE}
 # define MC(a) {a, PALETTE_TO_STRUCT_CONCRETE}
 
+static const PalSpriteID _aqueduct_sprites[] = {
+	{ SPR_AQUEDUCT_MIDDLE_X, PAL_NONE }, {                  0x0, PAL_NONE }, { SPR_AQUEDUCT_PILLAR_X, PAL_NONE }, {                  0x0, PAL_NONE },
+	{ SPR_AQUEDUCT_MIDDLE_Y, PAL_NONE }, {                  0x0, PAL_NONE }, { SPR_AQUEDUCT_PILLAR_Y, PAL_NONE }, {                  0x0, PAL_NONE },
+	{  SPR_AQUEDUCT_RAMP_SW, PAL_NONE }, { SPR_AQUEDUCT_RAMP_SE, PAL_NONE }, {  SPR_AQUEDUCT_RAMP_NE, PAL_NONE }, { SPR_AQUEDUCT_RAMP_NW, PAL_NONE },
+};
+
 static const PalSpriteID _bridge_sprite_table_4_0[] = {
 	{  0x9A9, PAL_NONE }, {  0x99F, PAL_NONE }, {  0x9B1, PAL_NONE }, {    0x0, PAL_NONE },
 	{  0x9A5, PAL_NONE }, {  0x997, PAL_NONE }, {  0x9AD, PAL_NONE }, {    0x0, PAL_NONE },

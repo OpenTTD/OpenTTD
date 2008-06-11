@@ -599,90 +599,102 @@ static void ShipController(Vehicle *v)
 	BeginVehicleMove(v);
 
 	GetNewVehiclePosResult gp = GetNewVehiclePos(v);
-	if (gp.old_tile == gp.new_tile) {
-		/* Staying in tile */
-		if (v->IsInDepot()) {
-			gp.x = v->x_pos;
-			gp.y = v->y_pos;
-		} else {
-			/* Not inside depot */
-			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-			if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
+	if (v->u.ship.state != TRACK_BIT_WORMHOLE) {
+		/* Not on a bridge */
+		if (gp.old_tile == gp.new_tile) {
+			/* Staying in tile */
+			if (v->IsInDepot()) {
+				gp.x = v->x_pos;
+				gp.y = v->y_pos;
+			} else {
+				/* Not inside depot */
+				r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+				if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
 
-			/* A leave station order only needs one tick to get processed, so we can
-			 * always skip ahead. */
-			if (v->current_order.IsType(OT_LEAVESTATION)) {
-				v->current_order.Free();
-				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-			} else if (v->dest_tile != 0) {
-				/* We have a target, let's see if we reached it... */
-				if (v->current_order.IsType(OT_GOTO_STATION) &&
-						IsBuoyTile(v->dest_tile) &&
-						DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
-					/* We got within 3 tiles of our target buoy, so let's skip to our
-					 * next order */
-					UpdateVehicleTimetable(v, true);
-					v->cur_order_index++;
-					v->current_order.MakeDummy();
-					InvalidateVehicleOrder(v);
-				} else {
-					/* Non-buoy orders really need to reach the tile */
-					if (v->dest_tile == gp.new_tile) {
-						if (v->current_order.IsType(OT_GOTO_DEPOT)) {
-							if ((gp.x & 0xF) == 8 && (gp.y & 0xF) == 8) {
-								VehicleEnterDepot(v);
-								return;
-							}
-						} else if (v->current_order.IsType(OT_GOTO_STATION)) {
-							v->last_station_visited = v->current_order.GetDestination();
+				/* A leave station order only needs one tick to get processed, so we can
+				* always skip ahead. */
+				if (v->current_order.IsType(OT_LEAVESTATION)) {
+					v->current_order.Free();
+					InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+				} else if (v->dest_tile != 0) {
+					/* We have a target, let's see if we reached it... */
+					if (v->current_order.IsType(OT_GOTO_STATION) &&
+							IsBuoyTile(v->dest_tile) &&
+							DistanceManhattan(v->dest_tile, gp.new_tile) <= 3) {
+						/* We got within 3 tiles of our target buoy, so let's skip to our
+						* next order */
+						UpdateVehicleTimetable(v, true);
+						v->cur_order_index++;
+						v->current_order.MakeDummy();
+						InvalidateVehicleOrder(v);
+					} else {
+						/* Non-buoy orders really need to reach the tile */
+						if (v->dest_tile == gp.new_tile) {
+							if (v->current_order.IsType(OT_GOTO_DEPOT)) {
+								if ((gp.x & 0xF) == 8 && (gp.y & 0xF) == 8) {
+									VehicleEnterDepot(v);
+									return;
+								}
+							} else if (v->current_order.IsType(OT_GOTO_STATION)) {
+								v->last_station_visited = v->current_order.GetDestination();
 
-							/* Process station in the orderlist. */
-							Station *st = GetStation(v->current_order.GetDestination());
-							if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
-								ShipArrivesAt(v, st);
-								v->BeginLoading();
-							} else { // leave stations without docks right aways
-								v->current_order.MakeLeaveStation();
-								v->cur_order_index++;
-								InvalidateVehicleOrder(v);
+								/* Process station in the orderlist. */
+								Station *st = GetStation(v->current_order.GetDestination());
+								if (st->facilities & FACIL_DOCK) { // ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations
+									ShipArrivesAt(v, st);
+									v->BeginLoading();
+								} else { // leave stations without docks right aways
+									v->current_order.MakeLeaveStation();
+									v->cur_order_index++;
+									InvalidateVehicleOrder(v);
+								}
 							}
 						}
 					}
 				}
 			}
+		} else {
+			DiagDirection diagdir;
+			/* New tile */
+			if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY()) {
+				goto reverse_direction;
+			}
+
+			dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
+			assert(dir == DIR_NE || dir == DIR_SE || dir == DIR_SW || dir == DIR_NW);
+			diagdir = DirToDiagDir(dir);
+			tracks = GetAvailShipTracks(gp.new_tile, diagdir);
+			if (tracks == TRACK_BIT_NONE) goto reverse_direction;
+
+			/* Choose a direction, and continue if we find one */
+			track = ChooseShipTrack(v, gp.new_tile, diagdir, tracks);
+			if (track == INVALID_TRACK) goto reverse_direction;
+
+			b = _ship_subcoord[diagdir][track];
+
+			gp.x = (gp.x & ~0xF) | b[0];
+			gp.y = (gp.y & ~0xF) | b[1];
+
+			/* Call the landscape function and tell it that the vehicle entered the tile */
+			r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
+			if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
+
+			if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+				v->tile = gp.new_tile;
+				v->u.ship.state = TrackToTrackBits(track);
+			}
+
+			v->direction = (Direction)b[2];
 		}
 	} else {
-		DiagDirection diagdir;
-		/* New tile */
-		if (TileX(gp.new_tile) >= MapMaxX() || TileY(gp.new_tile) >= MapMaxY()) {
-			goto reverse_direction;
+		/* On a bridge */
+		if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			v->x_pos = gp.x;
+			v->y_pos = gp.y;
+			VehiclePositionChanged(v);
+			if (!(v->vehstatus & VS_HIDDEN)) EndVehicleMove(v);
+			return;
 		}
-
-		dir = ShipGetNewDirectionFromTiles(gp.new_tile, gp.old_tile);
-		assert(dir == DIR_NE || dir == DIR_SE || dir == DIR_SW || dir == DIR_NW);
-		diagdir = DirToDiagDir(dir);
-		tracks = GetAvailShipTracks(gp.new_tile, diagdir);
-		if (tracks == TRACK_BIT_NONE) goto reverse_direction;
-
-		/* Choose a direction, and continue if we find one */
-		track = ChooseShipTrack(v, gp.new_tile, diagdir, tracks);
-		if (track == INVALID_TRACK) goto reverse_direction;
-
-		b = _ship_subcoord[diagdir][track];
-
-		gp.x = (gp.x & ~0xF) | b[0];
-		gp.y = (gp.y & ~0xF) | b[1];
-
-		/* Call the landscape function and tell it that the vehicle entered the tile */
-		r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
-		if (HasBit(r, VETS_CANNOT_ENTER)) goto reverse_direction;
-
-		if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
-			v->tile = gp.new_tile;
-			v->u.ship.state = TrackToTrackBits(track);
-		}
-
-		v->direction = (Direction)b[2];
 	}
 
 	/* update image of ship, as well as delta XY */

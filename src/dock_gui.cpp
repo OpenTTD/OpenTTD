@@ -69,6 +69,12 @@ static void PlaceDocks_BuildLock(TileIndex tile)
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS));
 }
 
+static void PlaceDocks_Bridge(TileIndex tile)
+{
+	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_BUILD_BRIDGE);
+}
+
+
 /** Enum referring to the widgets of the build dock toolbar */
 enum DockToolbarWidgets {
 	DTW_BEGIN = 0,                 ///< Start of toolbar widgets
@@ -83,6 +89,7 @@ enum DockToolbarWidgets {
 	DTW_DEPOT,                     ///< Build depot button
 	DTW_STATION,                   ///< Build station button
 	DTW_BUOY,                      ///< Build buoy button
+	DTW_BUILD_BRIDGE,              ///< Build bride button
 	DTW_END,                       ///< End of toolbar widgets
 };
 
@@ -120,6 +127,11 @@ static void BuildDocksClick_Buoy(Window *w)
 	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, VHM_RECT, PlaceDocks_Buoy);
 }
 
+static void BuildDocksClick_Bridge(Window *w)
+{
+	HandlePlacePushButton(w, DTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceDocks_Bridge);
+}
+
 
 typedef void OnButtonClick(Window *w);
 static OnButtonClick * const _build_docks_button_proc[] = {
@@ -129,7 +141,8 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Demolish,
 	BuildDocksClick_Depot,
 	BuildDocksClick_Dock,
-	BuildDocksClick_Buoy
+	BuildDocksClick_Buoy,
+	BuildDocksClick_Bridge
 };
 
 struct BuildDocksToolbarWindow : Window {
@@ -164,6 +177,7 @@ struct BuildDocksToolbarWindow : Window {
 			case '4': BuildDocksClick_Depot(this); break;
 			case '5': BuildDocksClick_Dock(this); break;
 			case '6': BuildDocksClick_Buoy(this); break;
+			case '7': BuildDocksClick_Bridge(this); break;
 			default:  return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -183,6 +197,11 @@ struct BuildDocksToolbarWindow : Window {
 	{
 		if (pt.x != -1) {
 			switch (select_proc) {
+				case DDSP_BUILD_BRIDGE:
+					ResetObjectToPlace();
+					extern void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2);
+					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
+
 				case DDSP_DEMOLISH_AREA:
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
@@ -214,8 +233,8 @@ struct BuildDocksToolbarWindow : Window {
 
 static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                   // DTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   123,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // DTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   124,   135,     0,    13, 0x0,                        STR_STICKY_BUTTON},                       // DTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   166,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   167,   178,     0,    13, 0x0,                        STR_STICKY_BUTTON},                       // DTW_STICKY
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},                    // DTW_CANAL
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},                     // DTW_LOCK
 
@@ -225,11 +244,12 @@ static const Widget _build_docks_toolb_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},  // DTW_DEPOT
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},                // DTW_STATION
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},        // DTW_BUOY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   178,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},              // DTW_BUILD_BRIDGE
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
-	WDP_ALIGN_TBR, 22, 136, 36, 136, 36,
+	WDP_ALIGN_TBR, 22, 179, 36, 179, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,

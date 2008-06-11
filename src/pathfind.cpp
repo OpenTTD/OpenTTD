@@ -112,9 +112,28 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 
 static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
 {
-	RememberData rd;
-
 	assert(tpf->tracktype == TRANSPORT_WATER);
+
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		/* wrong track type */
+		if (GetTunnelBridgeTransportType(tile) != tpf->tracktype) return;
+
+		DiagDirection dir = GetTunnelBridgeDirection(tile);
+		/* entering tunnel / bridge? */
+		if (dir == direction) {
+			TileIndex endtile = GetOtherTunnelBridgeEnd(tile);
+
+			tpf->rd.cur_length += GetTunnelBridgeLength(tile, endtile) + 1;
+
+			TPFSetTileBit(tpf, tile, 14);
+			TPFSetTileBit(tpf, endtile, 14);
+
+			tile = endtile;
+		} else {
+			/* leaving tunnel / bridge? */
+			if (ReverseDiagDir(dir) != direction) return;
+		}
+	}
 
 	/* This addition will sometimes overflow by a single tile.
 	 * The use of TILE_MASK here makes sure that we still point at a valid
@@ -133,7 +152,7 @@ static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection dire
 	do {
 		Track track = RemoveFirstTrack(&bits);
 		if (bits != TRACK_BIT_NONE) only_one_track = false;
-		rd = tpf->rd;
+		RememberData rd = tpf->rd;
 
 		/* Change direction 4 times only */
 		if (!only_one_track && track != tpf->rd.last_choosen_track) {
