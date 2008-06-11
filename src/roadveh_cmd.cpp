@@ -1714,6 +1714,7 @@ again:
 			_road_veh_data_1[v->u.road.state - RVSB_IN_ROAD_STOP + (_settings_game.vehicle.road_side << RVS_DRIVE_SIDE)] == v->u.road.frame) ||
 			(IsInsideMM(v->u.road.state, RVSB_IN_DT_ROAD_STOP, RVSB_IN_DT_ROAD_STOP_END) &&
 			v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile)) &&
+			v->owner == GetRoadOwner(v->tile, v->u.road.roadtype) &&
 			GetRoadStopType(v->tile) == (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK) &&
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
