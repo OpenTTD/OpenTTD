@@ -1268,9 +1268,9 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR))) {
 			/* When clearing the bridge/tunnel failed there are still vehicles on/in
 			 * the bridge/tunnel. As all *our* vehicles are already removed, they
-			 * must be of another owner. Therefor this must be a road bridge/tunnel.
+			 * must be of another owner. Therefore this can't be rail tunnel/bridge.
 			 * In that case we can safely reassign the ownership to OWNER_NONE. */
-			assert(GetTunnelBridgeTransportType(tile) == TRANSPORT_ROAD);
+			assert(GetTunnelBridgeTransportType(tile) != TRANSPORT_RAIL);
 			SetTileOwner(tile, OWNER_NONE);
 		}
 	}

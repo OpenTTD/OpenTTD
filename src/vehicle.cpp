@@ -206,7 +206,7 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 /** Procedure called for every vehicle found in tunnel/bridge in the hash map */
 static void *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 {
-	if (v->type != VEH_TRAIN && v->type != VEH_ROAD) return NULL;
+	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
