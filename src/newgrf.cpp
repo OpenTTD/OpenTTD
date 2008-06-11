@@ -3433,28 +3433,28 @@ static void GraphicsNew(byte *buf, size_t len)
 
 	static const Action5Type action5_types[] = {
 		/* Note: min_sprites should not be changed. Therefore these constants are directly here and not in sprites.h */
-		/* 0x00 */ { A5BLOCK_INVALID,      0,                   0, 0,                                           "Type 0x00"             },
-		/* 0x01 */ { A5BLOCK_INVALID,      0,                   0, 0,                                           "Type 0x01"             },
-		/* 0x02 */ { A5BLOCK_INVALID,      0,                   0, 0,                                           "Type 0x02"             },
-		/* 0x03 */ { A5BLOCK_INVALID,      0,                   0, 0,                                           "Type 0x03"             },
-		/* 0x04 */ { A5BLOCK_FIXED,        SPR_SIGNALS_BASE,   48, PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT,    "Signal graphics"       },
-		/* 0x05 */ { A5BLOCK_FIXED,        SPR_ELRAIL_BASE,    48, ELRAIL_SPRITE_COUNT,                         "Catenary graphics"     },
-		/* 0x06 */ { A5BLOCK_FIXED,        SPR_SLOPES_BASE,    74, NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT, "Foundation graphics"   },
-		/* 0x07 */ { A5BLOCK_INVALID,      0,                  75, 0,                                           "TTDP GUI graphics"     }, // Not used by OTTD.
-		/* 0x08 */ { A5BLOCK_FIXED,        SPR_CANALS_BASE,    65, CANALS_SPRITE_COUNT,                         "Canal graphics"        },
-		/* 0x09 */ { A5BLOCK_FIXED,        SPR_ONEWAY_BASE,     6, ONEWAY_SPRITE_COUNT,                         "One way road graphics" },
-		/* 0x0A */ { A5BLOCK_FIXED,        SPR_2CCMAP_BASE,   256, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"       },
-		/* 0x0B */ { A5BLOCK_FIXED,        SPR_TRAMWAY_BASE,  113, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"      },
-		/* 0x0C */ { A5BLOCK_INVALID,      0,                 133, 0,                                           "Snowy temperate tree"  }, // Not yet used by OTTD.
-		/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,     16, SPR_SHORE_SPRITE_COUNT,                      "Shore graphics"        },
-		/* 0x0E */ { A5BLOCK_INVALID,      0,                   0, 0,                                           "New Signals graphics"  }, // Not yet used by OTTD.
-		/* 0x0F */ { A5BLOCK_INVALID,      0,                  12, 0,                                           "Sloped rail track"     }, // Not yet used by OTTD.
-		/* 0x10 */ { A5BLOCK_FIXED,        SPR_AIRPORTX_BASE,  15, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"      },
-		/* 0x11 */ { A5BLOCK_FIXED,        SPR_ROADSTOP_BASE,   8, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"    },
-		/* 0x12 */ { A5BLOCK_FIXED,        SPR_AQUEDUCT_BASE,   8, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"     },
-		/* 0x13 */ { A5BLOCK_FIXED,        SPR_AUTORAIL_BASE,  55, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"     },
-		/* 0x14 */ { A5BLOCK_ALLOW_OFFSET, SPR_FLAGS_BASE,      1, FLAGS_SPRITE_COUNT,                          "Flag graphics"         },
-		/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,    1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },
+		/* 0x00 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x00"             },
+		/* 0x01 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x01"             },
+		/* 0x02 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x02"             },
+		/* 0x03 */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "Type 0x03"             },
+		/* 0x04 */ { A5BLOCK_FIXED,        SPR_SIGNALS_BASE,            48, PRESIGNAL_SEMAPHORE_AND_PBS_SPRITE_COUNT,    "Signal graphics"       },
+		/* 0x05 */ { A5BLOCK_FIXED,        SPR_ELRAIL_BASE,             48, ELRAIL_SPRITE_COUNT,                         "Catenary graphics"     },
+		/* 0x06 */ { A5BLOCK_FIXED,        SPR_SLOPES_BASE,             74, NORMAL_AND_HALFTILE_FOUNDATION_SPRITE_COUNT, "Foundation graphics"   },
+		/* 0x07 */ { A5BLOCK_INVALID,      0,                           75, 0,                                           "TTDP GUI graphics"     }, // Not used by OTTD.
+		/* 0x08 */ { A5BLOCK_FIXED,        SPR_CANALS_BASE,             65, CANALS_SPRITE_COUNT,                         "Canal graphics"        },
+		/* 0x09 */ { A5BLOCK_FIXED,        SPR_ONEWAY_BASE,              6, ONEWAY_SPRITE_COUNT,                         "One way road graphics" },
+		/* 0x0A */ { A5BLOCK_FIXED,        SPR_2CCMAP_BASE,            256, TWOCCMAP_SPRITE_COUNT,                       "2CC colour maps"       },
+		/* 0x0B */ { A5BLOCK_FIXED,        SPR_TRAMWAY_BASE,           113, TRAMWAY_SPRITE_COUNT,                        "Tramway graphics"      },
+		/* 0x0C */ { A5BLOCK_INVALID,      0,                          133, 0,                                           "Snowy temperate tree"  }, // Not yet used by OTTD.
+		/* 0x0D */ { A5BLOCK_FIXED,        SPR_SHORE_BASE,              16, SPR_SHORE_SPRITE_COUNT,                      "Shore graphics"        },
+		/* 0x0E */ { A5BLOCK_INVALID,      0,                            0, 0,                                           "New Signals graphics"  }, // Not yet used by OTTD.
+		/* 0x0F */ { A5BLOCK_FIXED,        SPR_TRACKS_FOR_SLOPES_BASE,  12, TRACKS_FOR_SLOPES_SPRITE_COUNT,              "Sloped rail track"     },
+		/* 0x10 */ { A5BLOCK_FIXED,        SPR_AIRPORTX_BASE,           15, AIRPORTX_SPRITE_COUNT,                       "Airport graphics"      },
+		/* 0x11 */ { A5BLOCK_FIXED,        SPR_ROADSTOP_BASE,            8, ROADSTOP_SPRITE_COUNT,                       "Road stop graphics"    },
+		/* 0x12 */ { A5BLOCK_FIXED,        SPR_AQUEDUCT_BASE,            8, AQUEDUCT_SPRITE_COUNT,                       "Aqueduct graphics"     },
+		/* 0x13 */ { A5BLOCK_FIXED,        SPR_AUTORAIL_BASE,           55, AUTORAIL_SPRITE_COUNT,                       "Autorail graphics"     },
+		/* 0x14 */ { A5BLOCK_ALLOW_OFFSET, SPR_FLAGS_BASE,               1, FLAGS_SPRITE_COUNT,                          "Flag graphics"         },
+		/* 0x15 */ { A5BLOCK_ALLOW_OFFSET, SPR_OPENTTD_BASE,             1, OPENTTD_SPRITE_COUNT,                        "OpenTTD GUI graphics"  },
 	};
 
 	if (!check_length(len, 2, "GraphicsNew")) return;
