@@ -177,6 +177,7 @@ struct BuildDocksToolbarWindow : Window {
 			case '4': BuildDocksClick_Depot(this); break;
 			case '5': BuildDocksClick_Dock(this); break;
 			case '6': BuildDocksClick_Buoy(this); break;
+			case 'B':
 			case '7': BuildDocksClick_Aqueduct(this); break;
 			default:  return ES_NOT_HANDLED;
 		}
