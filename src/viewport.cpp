@@ -1870,7 +1870,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 						y <  si->sign.top + 12 &&
 						x >= si->sign.left &&
 						x <  si->sign.left + si->sign.width_1) {
-					ShowRenameSignWindow(si);
+					HandleClickOnSign(si);
 					return true;
 				}
 			}
@@ -1884,7 +1884,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 						y <  si->sign.top + 24 &&
 						x >= si->sign.left &&
 						x <  si->sign.left + si->sign.width_1 * 2) {
-					ShowRenameSignWindow(si);
+					HandleClickOnSign(si);
 					return true;
 				}
 			}
@@ -1900,7 +1900,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 						y <  si->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= si->sign.left &&
 						x <  si->sign.left + ScaleByZoom(si->sign.width_2, vp->zoom)) {
-					ShowRenameSignWindow(si);
+					HandleClickOnSign(si);
 					return true;
 				}
 			}

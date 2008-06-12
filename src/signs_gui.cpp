@@ -8,6 +8,7 @@
 #include "textbuf_gui.h"
 #include "window_gui.h"
 #include "player_gui.h"
+#include "player_func.h"
 #include "signs_base.h"
 #include "signs_func.h"
 #include "debug.h"
@@ -300,6 +301,15 @@ static const WindowDesc _query_sign_edit_desc = {
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_query_sign_edit_widgets,
 };
+
+void HandleClickOnSign(const Sign *si)
+{
+	if (_ctrl_pressed && si->owner == _local_player) {
+		RenameSign(si->index, "");
+		return;
+	}
+	ShowRenameSignWindow(si);
+}
 
 void ShowRenameSignWindow(const Sign *si)
 {

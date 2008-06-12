@@ -15,6 +15,7 @@ void PlaceProc_Sign(TileIndex tile);
 
 /* signs_gui.cpp */
 void ShowRenameSignWindow(const Sign *si);
+void HandleClickOnSign(const Sign *si);
 
 void ShowSignList();
 
