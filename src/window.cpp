@@ -1809,7 +1809,6 @@ void MouseLoop(MouseClick click, int mousewheel)
 	DecreaseWindowCounters();
 	HandlePlacePresize();
 	UpdateTileSelection();
-	HandleKeyScrolling();
 
 	if (!VpHandlePlaceSizingDrag())  return;
 	if (!HandleDragDrop())           return;
@@ -1949,6 +1948,7 @@ void HandleMouseEvents()
  */
 void InputLoop()
 {
+	HandleKeyScrolling();
 	HandleMouseEvents();
 	HandleAutoscroll();
 }
