@@ -2948,7 +2948,7 @@ static void VehicleMapSpriteGroup(byte *buf, byte feature, uint8 idcount)
 
 	EngineID *engines = AllocaM(EngineID, idcount);
 	for (uint i = 0; i < idcount; i++) {
-		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, grf_load_byte(&buf))->index;
+		engines[i] = GetNewEngine(_cur_grffile, (VehicleType)feature, grf_load_extended(&buf))->index;
 		if (!wagover) last_engines[i] = engines[i];
 	}
 
@@ -3281,7 +3281,14 @@ static void FeatureNewName(byte *buf, size_t len)
 	uint8 lang     = grf_load_byte(&buf);
 	uint8 num      = grf_load_byte(&buf);
 	bool generic   = HasBit(lang, 7);
-	uint16 id      = generic ? grf_load_word(&buf) : grf_load_byte(&buf);
+	uint16 id;
+	if (generic) {
+		id = grf_load_word(&buf);
+	} else if (feature <= GSF_AIRCRAFT) {
+		id = grf_load_extended(&buf);
+	} else {
+		id = grf_load_byte(&buf);
+	}
 
 	ClrBit(lang, 7);
 
