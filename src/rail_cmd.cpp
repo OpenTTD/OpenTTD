@@ -1382,7 +1382,8 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 				cost.AddCost(ret);
 			}
 
-			if (water_ground) {
+			/* when bankrupting, don't make water dirty, there could be a ship on lower halftile */
+			if (water_ground && !(flags & DC_BANKRUPT)) {
 				if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 				/* The track was removed, and left a coast tile. Now also clear the water. */
