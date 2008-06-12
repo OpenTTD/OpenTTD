@@ -79,8 +79,9 @@ uint ApplyFoundationToSlope(Foundation f, Slope *s)
 	if (!IsFoundation(f)) return 0;
 
 	if (IsLeveledFoundation(f)) {
+		uint dz = TILE_HEIGHT + (IsSteepSlope(*s) ? TILE_HEIGHT : 0);
 		*s = SLOPE_FLAT;
-		return TILE_HEIGHT;
+		return dz;
 	}
 
 	if (f != FOUNDATION_STEEP_BOTH && IsNonContinuousFoundation(f)) {
@@ -402,6 +403,9 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 
 			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
 			OffsetGroundSprite(31, 9);
+		} else if (IsLeveledFoundation(f)) {
+			AddSortableSpriteToDraw(leveled_base + SlopeWithOneCornerRaised(highest_corner), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z - TILE_HEIGHT);
+			OffsetGroundSprite(31, 1);
 		} else if (f == FOUNDATION_STEEP_LOWER) {
 			/* one corner raised */
 			OffsetGroundSprite(31, 1);

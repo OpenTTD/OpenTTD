@@ -337,8 +337,7 @@ static Foundation GetFoundation_Industry(TileIndex tile, Slope tileh)
 	IndustryGfx gfx = GetIndustryGfx(tile);
 
 	/* For NewGRF industry tiles we might not be drawing a foundation. We need to
-	 * account for this, otherwise we might be applying a FOUNDATION_LEVELED
-	 * on a steep slope which is not allowed. Furthermore other structures should
+	 * account for this, as other structures should
 	 * draw the wall of the foundation in this case.
 	 */
 	if (gfx >= NEW_INDUSTRYTILEOFFSET) {
