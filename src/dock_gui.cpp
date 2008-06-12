@@ -129,7 +129,7 @@ static void BuildDocksClick_Buoy(Window *w)
 
 static void BuildDocksClick_Aqueduct(Window *w)
 {
-	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_BRIDGE, VHM_RECT, PlaceDocks_Aqueduct);
+	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, VHM_RECT, PlaceDocks_Aqueduct);
 }
 
 
@@ -234,8 +234,8 @@ struct BuildDocksToolbarWindow : Window {
 
 static const Widget _build_docks_toolb_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                   // DTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   166,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // DTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   167,   178,     0,    13, 0x0,                        STR_STICKY_BUTTON},                       // DTW_STICKY
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   146,   157,     0,    13, 0x0,                        STR_STICKY_BUTTON},                       // DTW_STICKY
 {     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},                    // DTW_CANAL
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},                     // DTW_LOCK
 
@@ -245,12 +245,12 @@ static const Widget _build_docks_toolb_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},  // DTW_DEPOT
 {     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},                // DTW_STATION
 {     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},        // DTW_BUOY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   178,    14,    35, SPR_IMG_BRIDGE,             STR_BUILD_AQUEDUCT},                      // DTW_BUILD_AQUEDUCT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_AQUEDUCT,           STR_BUILD_AQUEDUCT},                      // DTW_BUILD_AQUEDUCT
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
-	WDP_ALIGN_TBR, 22, 179, 36, 179, 36,
+	WDP_ALIGN_TBR, 22, 158, 36, 158, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,

@@ -49,7 +49,7 @@ enum Sprites {
 
 	/* Extra graphic spritenumbers */
 	SPR_OPENTTD_BASE     = 4896,
-	OPENTTD_SPRITE_COUNT = 145,
+	OPENTTD_SPRITE_COUNT = 147,
 
 	/* Halftile-selection sprites */
 	SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE,
@@ -1252,6 +1252,7 @@ enum Sprites {
 	SPR_IMG_SHIP_DEPOT    = 748,
 	SPR_IMG_SHIP_DOCK     = 746,
 	SPR_IMG_BOUY          = 693,
+	SPR_IMG_AQUEDUCT      = SPR_OPENTTD_BASE + 145,
 
 	/* music_gui.c */
 	SPR_IMG_SKIP_TO_PREV  = 709,
@@ -1354,6 +1355,7 @@ enum CursorSprite {
 	SPR_CURSOR_CANAL          = SPR_OPENTTD_BASE + 89,
 	SPR_CURSOR_LOCK           = SPR_OPENTTD_BASE + 87,
 	SPR_CURSOR_RIVER          = SPR_OPENTTD_BASE + 137,
+	SPR_CURSOR_AQUEDUCT       = SPR_OPENTTD_BASE + 146,
 
 	/* shared road & rail cursors */
 	SPR_CURSOR_BRIDGE         = 2593,
