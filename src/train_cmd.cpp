@@ -211,6 +211,8 @@ void TrainConsistChanged(Vehicle *v)
 		u->u.rail.first_engine = v == u ? INVALID_ENGINE : first_engine;
 		u->u.rail.railtype = rvi_u->railtype;
 
+		if (IsTrainEngine(u)) first_engine = u->engine_type;
+
 		/* Set user defined data to its default value */
 		u->u.rail.user_def_data = rvi_u->user_def_data;
 	}
@@ -224,8 +226,6 @@ void TrainConsistChanged(Vehicle *v)
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
 		if (!HasBit(EngInfo(u->engine_type)->misc_flags, EF_RAIL_TILTS)) train_can_tilt = false;
-
-		if (IsTrainEngine(u)) first_engine = u->engine_type;
 
 		/* Cache wagon override sprite group. NULL is returned if there is none */
 		u->u.rail.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->u.rail.first_engine);
