@@ -477,7 +477,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			* (use random seed) it should not be possible to be
 			* entered into the input field; the generate seed
 			* button can be used instead. */
-		_settings_newgame.game_creation.generation_seed = minu(strtoul(this->edit_str_buf, NULL, sizeof(this->edit_str_buf) - 1), MAX_UVALUE(uint32) - 1);
+		_settings_newgame.game_creation.generation_seed = minu(strtoul(this->edit_str_buf, NULL, 10), MAX_UVALUE(uint32) - 1);
 		return state;
 	}
 
