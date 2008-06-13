@@ -1270,8 +1270,11 @@ static void Load_PLYR()
 		_player_colors[index] = p->player_color;
 
 		/* This is needed so an AI is attached to a loaded AI */
-		if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
+		if (p->is_ai && (!_networking || _network_server) && _ai.enabled) {
+			/* Clear the memory of the new AI, otherwise we might be doing wrong things. */
+			memset(&_players_ainew[index], 0, sizeof(PlayerAiNew));
 			AI_StartNewAI(p->index);
+		}
 	}
 }
 
