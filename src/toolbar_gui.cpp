@@ -1046,13 +1046,13 @@ struct ScenarioEditorToolbarWindow : Window {
 			case WKC_NUM_PLUS:
 			case WKC_EQUALS:
 			case WKC_SHIFT | WKC_EQUALS:
-			case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(this); break;
+			case WKC_SHIFT | WKC_F5: ToolbarScenZoomIn(this); break;
 
 			/* those following are all fall through */
 			case WKC_NUM_MINUS:
 			case WKC_MINUS:
 			case WKC_SHIFT | WKC_MINUS:
-			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
+			case WKC_SHIFT | WKC_F6: ToolbarScenZoomOut(this); break;
 
 			case 'L': ShowEditorTerraformToolbar(); break;
 			case 'M': ShowSmallMap(); break;
@@ -1155,7 +1155,7 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 9, 10);
 	}
 };
 
