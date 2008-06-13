@@ -989,6 +989,18 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
+private:
+	enum ToolbarScenEditorWidgets {
+		TBSE_PAUSE        = 0,
+		TBSE_FASTFORWARD,
+		TBSE_SPACERPANEL  = 4,
+		TBSE_DATEBACKWARD = 6,
+		TBSE_DATEFORWARD,
+		TBSE_ZOOMIN       = 9,
+		TBSE_ZOOMOUT,
+	};
+
+public:
 	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window(desc)
 	{
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
@@ -1000,8 +1012,8 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnPaint()
 	{
-		this->SetWidgetDisabledState(6, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
-		this->SetWidgetDisabledState(7, _settings_newgame.game_creation.starting_year >= MAX_YEAR);
+		this->SetWidgetDisabledState(TBSE_DATEBACKWARD, _settings_newgame.game_creation.starting_year <= MIN_YEAR);
+		this->SetWidgetDisabledState(TBSE_DATEFORWARD, _settings_newgame.game_creation.starting_year >= MAX_YEAR);
 
 		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
@@ -1010,12 +1022,13 @@ struct ScenarioEditorToolbarWindow : Window {
 		this->DrawWidgets();
 
 		SetDParam(0, ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
-		DrawStringCenteredTruncated(this->widget[6].right, this->widget[7].left, 6, STR_00AF, TC_FROMSTRING);
+		DrawStringCenteredTruncated(this->widget[TBSE_DATEBACKWARD].right, this->widget[TBSE_DATEFORWARD].left, 6, STR_00AF, TC_FROMSTRING);
 
 		/* We hide this panel when the toolbar space gets too small */
-		if (this->widget[4].left != this->widget[4].right) {
-			DrawStringCenteredTruncated(this->widget[4].left + 1, this->widget[4].right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING);
-			DrawStringCenteredTruncated(this->widget[4].left + 1, this->widget[4].right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING);
+		const Widget *panel = &this->widget[TBSE_SPACERPANEL];
+		if (panel->left != panel->right) {
+			DrawStringCenteredTruncated(panel->left + 1, panel->right - 1,  1, STR_0221_OPENTTD, TC_FROMSTRING);
+			DrawStringCenteredTruncated(panel->left + 1, panel->right - 1, 11, STR_0222_SCENARIO_EDITOR, TC_FROMSTRING);
 		}
 	}
 
@@ -1142,20 +1155,20 @@ struct ScenarioEditorToolbarWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (this->IsWidgetLowered(0) != !!_pause_game) {
-			this->ToggleWidgetLoweredState(0);
+		if (this->IsWidgetLowered(TBSE_PAUSE) != !!_pause_game) {
+			this->ToggleWidgetLoweredState(TBSE_PAUSE);
 			this->SetDirty();
 		}
 
-		if (this->IsWidgetLowered(1) != !!_fast_forward) {
-			this->ToggleWidgetLoweredState(1);
+		if (this->IsWidgetLowered(TBSE_FASTFORWARD) != !!_fast_forward) {
+			this->ToggleWidgetLoweredState(TBSE_FASTFORWARD);
 			this->SetDirty();
 		}
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 9, 10);
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, TBSE_ZOOMIN, TBSE_ZOOMOUT);
 	}
 };
 
