@@ -689,7 +689,7 @@ void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub)
 	}
 }
 
-static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub)
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub)
 {
 	const DrawPixelInfo *dpi = _cur_dpi;
 	Blitter::BlitterParams bp;
@@ -715,8 +715,8 @@ static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMod
 	bp.height = UnScaleByZoom(sprite->height - clip_top - clip_bottom, dpi->zoom);
 	bp.top = 0;
 	bp.left = 0;
-	bp.skip_left = UnScaleByZoom(clip_left, dpi->zoom);
-	bp.skip_top = UnScaleByZoom(clip_top, dpi->zoom);
+	bp.skip_left = UnScaleByZoomLower(clip_left, dpi->zoom);
+	bp.skip_top = UnScaleByZoomLower(clip_top, dpi->zoom);
 
 	x += ScaleByZoom(bp.skip_left, dpi->zoom);
 	y += ScaleByZoom(bp.skip_top, dpi->zoom);
@@ -766,6 +766,9 @@ static inline void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMod
 		bp.width -= UnScaleByZoom(x, dpi->zoom);
 		if (bp.width <= 0) return;
 	}
+
+	assert(bp.skip_left + bp.width <= UnScaleByZoom(sprite->width, dpi->zoom));
+	assert(bp.skip_top + bp.height <= UnScaleByZoom(sprite->height, dpi->zoom));
 
 	BlitterFactoryBase::GetCurrentBlitter()->Draw(&bp, mode, dpi->zoom);
 }
