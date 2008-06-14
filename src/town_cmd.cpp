@@ -1642,13 +1642,14 @@ HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile)
  * @param random_bits required for newgrf houses
  * @pre house can be built here
  */
-static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
+static inline void ClearMakeHouseTile(TileIndex tile, Town *t, byte counter, byte stage, HouseID type, byte random_bits)
 {
 	CommandCost cc = DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR);
 
 	assert(CmdSucceeded(cc));
 
-	MakeHouseTile(tile, tid, counter, stage, type, random_bits);
+	IncreaseBuildingCount(t, type);
+	MakeHouseTile(tile, t->index, counter, stage, type, random_bits);
 	if (GetHouseSpecs(type)->building_flags & BUILDING_IS_ANIMATED) AddAnimatedTile(tile);
 
 	MarkTileDirtyByTile(tile);
@@ -1665,14 +1666,14 @@ static inline void ClearMakeHouseTile(TileIndex tile, TownID tid, byte counter, 
  * @param random_bits required for newgrf houses
  * @pre house can be built here
  */
-static void MakeTownHouse(TileIndex t, TownID tid, byte counter, byte stage, HouseID type, byte random_bits)
+static void MakeTownHouse(TileIndex t, Town *town, byte counter, byte stage, HouseID type, byte random_bits)
 {
 	BuildingFlags size = GetHouseSpecs(type)->building_flags;
 
-	ClearMakeHouseTile(t, tid, counter, stage, type, random_bits);
-	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(t + TileDiffXY(0, 1), tid, counter, stage, ++type, random_bits);
-	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(t + TileDiffXY(1, 0), tid, counter, stage, ++type, random_bits);
-	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(t + TileDiffXY(1, 1), tid, counter, stage, ++type, random_bits);
+	ClearMakeHouseTile(t, town, counter, stage, type, random_bits);
+	if (size & BUILDING_2_TILES_Y)   ClearMakeHouseTile(t + TileDiffXY(0, 1), town, counter, stage, ++type, random_bits);
+	if (size & BUILDING_2_TILES_X)   ClearMakeHouseTile(t + TileDiffXY(1, 0), town, counter, stage, ++type, random_bits);
+	if (size & BUILDING_HAS_4_TILES) ClearMakeHouseTile(t + TileDiffXY(1, 1), town, counter, stage, ++type, random_bits);
 }
 
 
@@ -1965,7 +1966,6 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 
 		/* build the house */
 		t->num_houses++;
-		IncreaseBuildingCount(t, house);
 
 		/* Special houses that there can be only one of. */
 		t->flags12 |= oneof;
@@ -1986,7 +1986,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			}
 		}
 
-		MakeTownHouse(tile, t->index, construction_counter, construction_stage, house, Random());
+		MakeTownHouse(tile, t, construction_counter, construction_stage, house, Random());
 
 		return true;
 	}
@@ -1995,9 +1995,10 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 }
 
 
-static void DoClearTownHouseHelper(TileIndex tile)
+static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
 {
 	assert(IsTileType(tile, MP_HOUSE));
+	DecreaseBuildingCount(t, house);
 	DoClearSquare(tile);
 	DeleteAnimatedTile(tile);
 }
@@ -2046,7 +2047,6 @@ void ClearTownHouse(Town *t, TileIndex tile)
 	}
 
 	t->num_houses--;
-	DecreaseBuildingCount(t, house);
 
 	/* Clear flags for houses that only may exist once/town. */
 	if (hs->building_flags & BUILDING_IS_CHURCH) {
@@ -2057,10 +2057,10 @@ void ClearTownHouse(Town *t, TileIndex tile)
 
 	/* Do the actual clearing of tiles */
 	uint eflags = hs->building_flags;
-	DoClearTownHouseHelper(tile);
-	if (eflags & BUILDING_2_TILES_X)   DoClearTownHouseHelper(tile + TileDiffXY(1, 0));
-	if (eflags & BUILDING_2_TILES_Y)   DoClearTownHouseHelper(tile + TileDiffXY(0, 1));
-	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1));
+	DoClearTownHouseHelper(tile, t, house);
+	if (eflags & BUILDING_2_TILES_Y)   DoClearTownHouseHelper(tile + TileDiffXY(0, 1), t, ++house);
+	if (eflags & BUILDING_2_TILES_X)   DoClearTownHouseHelper(tile + TileDiffXY(1, 0), t, ++house);
+	if (eflags & BUILDING_HAS_4_TILES) DoClearTownHouseHelper(tile + TileDiffXY(1, 1), t, ++house);
 }
 
 static bool IsUniqueTownName(const char *name)
