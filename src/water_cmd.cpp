@@ -734,15 +734,16 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_TILE_CLEAR:
-			if (!IsCanal(tile)) {
-				td->str = STR_3804_WATER;
-			} else {
-				td->str = STR_LANDINFO_CANAL;
+			switch (GetWaterClass(tile)) {
+				case WATER_CLASS_SEA:   td->str = STR_3804_WATER;     break;
+				case WATER_CLASS_CANAL: td->str = STR_LANDINFO_CANAL; break;
+				case WATER_CLASS_RIVER: td->str = STR_LANDINFO_RIVER; break;
+				default: assert(0); break;
 			}
 			break;
 		case WATER_TILE_COAST: td->str = STR_3805_COAST_OR_RIVERBANK; break;
-		case WATER_TILE_LOCK : td->str = STR_LANDINFO_LOCK; break;
-		case WATER_TILE_DEPOT: td->str = STR_3806_SHIP_DEPOT; break;
+		case WATER_TILE_LOCK : td->str = STR_LANDINFO_LOCK;           break;
+		case WATER_TILE_DEPOT: td->str = STR_3806_SHIP_DEPOT;         break;
 		default: assert(0); break;
 	}
 

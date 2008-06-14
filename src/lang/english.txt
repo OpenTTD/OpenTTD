@@ -1291,6 +1291,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Can't bu
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Build locks
 STR_LANDINFO_LOCK                                               :Lock
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Can't place rivers here...
+STR_LANDINFO_RIVER                                              :River
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...buoy is in use!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordinates: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
