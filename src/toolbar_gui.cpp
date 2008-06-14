@@ -58,6 +58,22 @@ enum ToolbarMode {
 	TB_LOWER
 };
 
+enum ToolbarScenEditorWidgets {
+	TBSE_PAUSE        = 0,
+	TBSE_FASTFORWARD,
+	TBSE_SPACERPANEL  = 4,
+	TBSE_DATEBACKWARD = 6,
+	TBSE_DATEFORWARD,
+	TBSE_ZOOMIN       = 9,
+	TBSE_ZOOMOUT,
+	TBSE_LANDGENERATE,
+	TBSE_TOWNGENERATE,
+	TBSE_INDUSTRYGENERATE,
+	TBSE_BUILDROAD,
+	TBSE_PLANTTREES,
+	TBSE_PLACESIGNS,
+};
+
 static ToolbarMode _toolbar_mode;
 
 static void SelectSignTool()
@@ -567,7 +583,7 @@ static void ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-		w->HandleButtonClick(6);
+		w->HandleButtonClick(TBSE_DATEBACKWARD);
 		w->SetDirty();
 
 		_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year - 1, MIN_YEAR, MAX_YEAR);
@@ -580,7 +596,7 @@ static void ToolbarScenDateForward(Window *w)
 {
 	/* don't allow too fast scrolling */
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-		w->HandleButtonClick(7);
+		w->HandleButtonClick(TBSE_DATEFORWARD);
 		w->SetDirty();
 
 		_settings_newgame.game_creation.starting_year = Clamp(_settings_newgame.game_creation.starting_year + 1, MIN_YEAR, MAX_YEAR);
@@ -598,7 +614,7 @@ static void ToolbarScenMapTownDir(Window *w)
 static void ToolbarScenZoomIn(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(9);
+		w->HandleButtonClick(TBSE_ZOOMIN);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -606,14 +622,14 @@ static void ToolbarScenZoomIn(Window *w)
 static void ToolbarScenZoomOut(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(10);
+		w->HandleButtonClick(TBSE_ZOOMOUT);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
 
 static void ToolbarScenGenLand(Window *w)
 {
-	w->HandleButtonClick(11);
+	w->HandleButtonClick(TBSE_LANDGENERATE);
 	SndPlayFx(SND_15_BEEP);
 
 	ShowEditorTerraformToolbar();
@@ -622,35 +638,35 @@ static void ToolbarScenGenLand(Window *w)
 
 static void ToolbarScenGenTown(Window *w)
 {
-	w->HandleButtonClick(12);
+	w->HandleButtonClick(TBSE_TOWNGENERATE);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildTownWindow();
 }
 
 static void ToolbarScenGenIndustry(Window *w)
 {
-	w->HandleButtonClick(13);
+	w->HandleButtonClick(TBSE_INDUSTRYGENERATE);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildIndustryWindow();
 }
 
 static void ToolbarScenBuildRoad(Window *w)
 {
-	w->HandleButtonClick(14);
+	w->HandleButtonClick(TBSE_BUILDROAD);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildRoadScenToolbar();
 }
 
 static void ToolbarScenPlantTrees(Window *w)
 {
-	w->HandleButtonClick(15);
+	w->HandleButtonClick(TBSE_PLANTTREES);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildTreesToolbar();
 }
 
 static void ToolbarScenPlaceSign(Window *w)
 {
-	w->HandleButtonClick(16);
+	w->HandleButtonClick(TBSE_PLACESIGNS);
 	SndPlayFx(SND_15_BEEP);
 	SelectSignTool();
 }
@@ -983,17 +999,6 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 };
 
 struct ScenarioEditorToolbarWindow : Window {
-private:
-	enum ToolbarScenEditorWidgets {
-		TBSE_PAUSE        = 0,
-		TBSE_FASTFORWARD,
-		TBSE_SPACERPANEL  = 4,
-		TBSE_DATEBACKWARD = 6,
-		TBSE_DATEFORWARD,
-		TBSE_ZOOMIN       = 9,
-		TBSE_ZOOMOUT,
-	};
-
 public:
 	ScenarioEditorToolbarWindow(const WindowDesc *desc) : Window(desc)
 	{
