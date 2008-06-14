@@ -1124,6 +1124,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\mem_func.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\minilzo.h"
 				>
 			</File>
@@ -1441,6 +1445,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\slope_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\sort_func.hpp"
 				>
 			</File>
 			<File

@@ -6,16 +6,7 @@
 #define BLOB_HPP
 
 #include "../core/alloc_func.hpp"
-
-/** Type-safe version of memcpy().
- * @param d destination buffer
- * @param s source buffer
- * @param num_items number of items to be copied (!not number of bytes!) */
-template <class Titem_>
-FORCEINLINE void MemCpyT(Titem_* d, const Titem_* s, int num_items = 1)
-{
-	memcpy(d, s, num_items * sizeof(Titem_));
-}
+#include "../core/mem_func.hpp"
 
 /** Base class for simple binary blobs.
 *  Item is byte.

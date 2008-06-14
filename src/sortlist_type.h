@@ -7,6 +7,8 @@
 
 #include "core/enum_type.hpp"
 #include "core/bitmath_func.hpp"
+#include "core/mem_func.hpp"
+#include "core/sort_func.hpp"
 #include "misc/smallvec.h"
 #include "date_type.h"
 
@@ -53,21 +55,6 @@ public: // Temporary: public for conversion only
 	{
 		/* Resort every 10 days */
 		this->resort_timer = DAY_TICKS * 10;
-	}
-
-	/**
-	 * Reverse the list
-	 */
-	void Reverse()
-	{
-		assert(this->IsSortable());
-
-		T *a = this->data;
-		T *b = a + (this->items - 1);
-
-		do {
-			Swap(*a, *b);
-		} while (++a < --b);
 	}
 
 public:
@@ -174,25 +161,23 @@ public:
 	 *  Since that is the worst condition for the sort function
 	 *  reverse the list here.
 	 */
-	FORCEINLINE void ToggleSortOrder()
+	void ToggleSortOrder()
 	{
 		this->flags ^= VL_DESC;
 
-		if (this->IsSortable()) this->Reverse();
+		if (this->IsSortable()) MemReverseT(this->data, this->items);
 	}
 
 	/**
-	 * GnomeSort algorithm
-	 *  This sorting uses a slightly modifyied Gnome search.
-	 *  The basic Gnome search trys to sort already sorted
-	 *  list parts. The modification skips these. For the first
-	 *  sorting we use qsort since it is faster for irregular
-	 *  sorted data.
+	 * Sort the list.
+	 *  For the first sorting we use qsort since it is
+	 *  faster for irregular sorted data. After that we
+	 *  use gsort.
 	 *
 	 * @param compare The function to compare two list items
 	 * @return true if the list sequence has been altered
 	 * */
-	FORCEINLINE bool Sort(SortFunction *compare)
+	bool Sort(SortFunction *compare)
 	{
 		/* Do not sort if the resort bit is not set */
 		if (!HASBITS(this->flags, VL_RESORT)) return false;
@@ -208,40 +193,12 @@ public:
 
 		if (HASBITS(this->flags, VL_FIRST_SORT)) {
 			CLRBITS(this->flags, VL_FIRST_SORT);
-			qsort(this->data, this->items, sizeof(T), (int (CDECL *)(const void *, const void *))compare);
 
-			if (desc) this->Reverse();
+			QSortT(this->data, this->items, compare, desc);
 			return true;
 		}
 
-		T *a = this->data;
-		T *b = a + 1;
-
-		uint length = this->items;
-		uint offset = 0; // Jump variable
-
-		while (length > 1) {
-			const int diff = compare(a, b);
-			if ((!desc && diff <= 0) || (desc && diff >= 0)) {
-				if (offset != 0) {
-					/* Jump back to the last direction switch point */
-					a += offset;
-					b += offset;
-					offset = 0;
-					continue;
-				}
-				a++;
-				b++;
-				length--;
-			} else {
-				Swap(*a, *b);
-				if (a != this->data) {
-					offset++;
-					a--;
-					b--;
-				}
-			}
-		}
+		GSortT(this->data, this->items, compare, desc);
 		return true;
 	}
 
