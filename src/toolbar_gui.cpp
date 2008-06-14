@@ -866,12 +866,6 @@ struct MainToolbarWindow : Window {
 		_place_proc(tile);
 	}
 
-	virtual void OnPlaceObjectAbort()
-	{
-		this->RaiseWidget(25);
-		this->SetDirty();
-	}
-
 	virtual void OnTick()
 	{
 		if (this->IsWidgetLowered(0) != !!_pause_game) {
@@ -1078,12 +1072,6 @@ public:
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
 		_place_proc(tile);
-	}
-
-	virtual void OnPlaceObjectAbort()
-	{
-		this->RaiseWidget(25);
-		this->SetDirty();
 	}
 
 	virtual void OnResize(Point new_size, Point delta)
