@@ -18,6 +18,7 @@
 #include "core/math_func.hpp"
 #include "settings_type.h"
 #include "core/alloc_func.hpp"
+#include "core/sort_func.hpp"
 #include "landscape_type.h"
 
 #include "table/palettes.h"
@@ -1312,14 +1313,14 @@ bool ToggleFullScreen(bool fs)
 	return result;
 }
 
-static int CDECL compare_res(const void *pa, const void *pb)
+static int CDECL compare_res(const uint16 *pa, const uint16 *pb)
 {
-	int x = ((const uint16*)pa)[0] - ((const uint16*)pb)[0];
+	int x = pa[0] - pb[0];
 	if (x != 0) return x;
-	return ((const uint16*)pa)[1] - ((const uint16*)pb)[1];
+	return pa[1] - pb[1];
 }
 
 void SortResolutions(int count)
 {
-	qsort(_resolutions, count, sizeof(_resolutions[0]), compare_res);
+	QSortT((uint16*)_resolutions, count, compare_res);
 }
