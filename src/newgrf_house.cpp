@@ -254,6 +254,12 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		/* Land info for nearby tiles. */
 		case 0x62: return GetNearbyTileInformation(parameter, tile);
 
+		/* Current animation frame of nearby house tiles */
+		case 0x63: {
+			TileIndex testtile = GetNearbyTile(parameter, tile);
+			return IsTileType(testtile, MP_HOUSE) ? GetHouseAnimationFrame(testtile) : 0;
+		}
+
 		/* Read GRF parameter */
 		case 0x7F: return GetGRFParameter(object->u.house.house_id, parameter);
 	}
