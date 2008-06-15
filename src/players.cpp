@@ -28,6 +28,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "core/alloc_func.hpp"
+#include "core/sort_func.hpp"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
@@ -1021,12 +1022,9 @@ int8 SaveHighScoreValue(const Player *p)
 }
 
 /** Sort all players given their performance */
-static int CDECL HighScoreSorter(const void *a, const void *b)
+static int CDECL HighScoreSorter(const Player* const *a, const Player* const *b)
 {
-	const Player *pa = *(const Player* const*)a;
-	const Player *pb = *(const Player* const*)b;
-
-	return pb->old_economy[0].performance_history - pa->old_economy[0].performance_history;
+	return (*b)->old_economy[0].performance_history - (*a)->old_economy[0].performance_history;
 }
 
 /* Save the highscores in a network game when it has ended */
@@ -1040,7 +1038,8 @@ int8 SaveHighScoreValueNetwork()
 
 	/* Sort all active players with the highest score first */
 	FOR_ALL_PLAYERS(p) if (p->is_active) pl[count++] = p;
-	qsort((Player*)pl, count, sizeof(pl[0]), HighScoreSorter);
+
+	GSortT(pl, count, &HighScoreSorter);
 
 	{
 		uint i;
