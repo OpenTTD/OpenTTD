@@ -818,6 +818,8 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (flags & DC_EXEC) _current_player = OWNER_NONE;
 
+	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
+
 	switch (p1) {
 	case 0: { /* Create a new player */
 		/* Joining Client:

@@ -16,6 +16,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "gfx_func.h"
+#include "sortlist_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -758,34 +759,54 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 	return _performance_titles[minu(value, 1000) >> 6];
 }
 
-static int CDECL PerfHistComp(const void* elem1, const void* elem2)
-{
-	const Player* p1 = *(const Player* const*)elem1;
-	const Player* p2 = *(const Player* const*)elem2;
+class CompanyLeagueWindow : public Window {
+private:
+	GUIList<const Player*> players;
 
-	return p2->old_economy[1].performance_history - p1->old_economy[1].performance_history;
-}
+	/**
+	 * (Re)Build the company league list
+	 */
+	void BuildPlayerList()
+	{
+		if (!this->players.NeedRebuild()) return;
 
-struct CompanyLeagueWindow : Window {
+		this->players.Clear();
+
+		const Player *p;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active) {
+				*this->players.Append() = p;
+			}
+		}
+
+		this->players.Compact();
+		this->players.RebuildDone();
+	}
+
+	/** Sort the company league by performance history */
+	static int CDECL PerformanceSorter(const Player* const *p1, const Player* const *p2)
+	{
+		return (*p2)->old_economy[1].performance_history - (*p1)->old_economy[1].performance_history;
+	}
+
+public:
 	CompanyLeagueWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
+		this->players.ForceRebuild();
+		this->players.NeedResort();
+
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		const Player *plist[MAX_PLAYERS];
-		const Player *p;
+		this->BuildPlayerList();
+		this->players.Sort(&PerformanceSorter);
 
 		this->DrawWidgets();
 
-		uint pl_num = 0;
-		FOR_ALL_PLAYERS(p) if (p->is_active) plist[pl_num++] = p;
-
-		qsort((void*)plist, pl_num, sizeof(*plist), PerfHistComp);
-
-		for (uint i = 0; i != pl_num; i++) {
-			p = plist[i];
+		for (uint i = 0; i != this->players.Length(); i++) {
+			const Player *p = this->players[i];
 			SetDParam(0, i + STR_01AC_1ST);
 			SetDParam(1, p->index);
 			SetDParam(2, p->index);
@@ -793,6 +814,22 @@ struct CompanyLeagueWindow : Window {
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, TC_FROMSTRING);
 			DrawPlayerIcon(p->index, 27, 16 + i * 10);
+		}
+	}
+
+	virtual void OnTick()
+	{
+		if (this->players.NeedResort()) {
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (data == 0) {
+			this->players.ForceRebuild();
+		} else {
+			this->players.ForceResort();
 		}
 	}
 };
