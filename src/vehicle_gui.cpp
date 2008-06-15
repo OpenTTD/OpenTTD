@@ -31,6 +31,8 @@
 #include "vehicle_func.h"
 #include "autoreplace_gui.h"
 #include "core/alloc_func.hpp"
+#include "core/mem_func.hpp"
+#include "core/sort_func.hpp"
 #include "string_func.h"
 #include "settings_type.h"
 #include "widgets/dropdown_func.h"
@@ -42,9 +44,8 @@
 #include "table/strings.h"
 
 Sorting _sorting;
-static bool   _internal_sort_order;     // descending/ascending
 
-typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
+typedef int CDECL VehicleSortListingTypeFunction(const Vehicle* const *, const Vehicle* const *);
 
 static VehicleSortListingTypeFunction VehicleNumberSorter;
 static VehicleSortListingTypeFunction VehicleNameSorter;
@@ -101,7 +102,6 @@ void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 
 
 /* cached values for VehicleNameSorter to spare many GetString() calls */
 static const Vehicle *_last_vehicle[2] = { NULL, NULL };
-static char           _last_name[2][64] = { "", "" };
 
 void SortVehicleList(VehicleListBase *vl)
 {
@@ -110,9 +110,7 @@ void SortVehicleList(VehicleListBase *vl)
 	/* invalidate cached values for name sorter - vehicle names could change */
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
 
-	_internal_sort_order = (vl->vehicles.flags & VL_DESC) != 0;
-	qsort((void*)vl->vehicles.Begin(), vl->vehicles.Length(), sizeof(*vl->vehicles.Begin()),
-		_vehicle_sorter[vl->vehicles.sort_type]);
+	QSortT(vl->vehicles.Begin(), vl->vehicles.Length(), _vehicle_sorter[vl->vehicles.sort_type], vl->vehicles.flags & VL_DESC);
 
 	vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 	vl->vehicles.flags &= ~VL_RESORT;
@@ -120,9 +118,8 @@ void SortVehicleList(VehicleListBase *vl)
 
 void DepotSortList(VehicleList *list)
 {
-	_internal_sort_order = 0;
 	if (list->Length() < 2) return;
-	qsort((void*)list->Begin(), list->Length(), sizeof(*list->Begin()), _vehicle_sorter[0]);
+	QSortT(list->Begin(), list->Length(), _vehicle_sorter[0]);
 }
 
 /** draw the vehicle profit button in the vehicle list window. */
@@ -507,183 +504,136 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 }
 
 
-/* if the sorting criteria had the same value, sort vehicle by unitnumber */
-#define VEHICLEUNITNUMBERSORTER(r, a, b) {if (r == 0) {r = a->unitnumber - b->unitnumber;}}
-
-static int CDECL VehicleNumberSorter(const void *a, const void *b)
+/** Sort vehicles by their number */
+static int CDECL VehicleNumberSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r = va->unitnumber - vb->unitnumber;
-
-	return (_internal_sort_order & 1) ? -r : r;
+	return (*a)->unitnumber - (*b)->unitnumber;
 }
 
-static int CDECL VehicleNameSorter(const void *a, const void *b)
+/** Sort vehicles by their name */
+static int CDECL VehicleNameSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r;
+	static char last_name[2][64];
 
-	if (va != _last_vehicle[0]) {
-		_last_vehicle[0] = va;
-		SetDParam(0, va->index);
-		GetString(_last_name[0], STR_VEHICLE_NAME, lastof(_last_name[0]));
+	if (*a != _last_vehicle[0]) {
+		_last_vehicle[0] = *a;
+		SetDParam(0, (*a)->index);
+		GetString(last_name[0], STR_VEHICLE_NAME, lastof(last_name[0]));
 	}
 
-	if (vb != _last_vehicle[1]) {
-		_last_vehicle[1] = vb;
-		SetDParam(0, vb->index);
-		GetString(_last_name[1], STR_VEHICLE_NAME, lastof(_last_name[1]));
+	if (*b != _last_vehicle[1]) {
+		_last_vehicle[1] = *b;
+		SetDParam(0, (*b)->index);
+		GetString(last_name[1], STR_VEHICLE_NAME, lastof(last_name[1]));
 	}
 
-	r = strcmp(_last_name[0], _last_name[1]); // sort by name
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	int r = strcmp(last_name[0], last_name[1]);
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-static int CDECL VehicleAgeSorter(const void *a, const void *b)
+/** Sort vehicles by their age */
+static int CDECL VehicleAgeSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r = va->age - vb->age;
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	int r = (*a)->age - (*b)->age;
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-static int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
+/** Sort vehicles by this year profit */
+static int CDECL VehicleProfitThisYearSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r = ClampToI32(va->GetDisplayProfitThisYear() - vb->GetDisplayProfitThisYear());
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	int r = ClampToI32((*a)->GetDisplayProfitThisYear() - (*b)->GetDisplayProfitThisYear());
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-static int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
+/** Sort vehicles by last year profit */
+static int CDECL VehicleProfitLastYearSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r = ClampToI32(va->GetDisplayProfitLastYear() - vb->GetDisplayProfitLastYear());
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	int r = ClampToI32((*a)->GetDisplayProfitLastYear() - (*b)->GetDisplayProfitLastYear());
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-static int CDECL VehicleCargoSorter(const void *a, const void *b)
+/** Sort vehicles by their cargo */
+static int CDECL VehicleCargoSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	const Vehicle* v;
-	AcceptedCargo cargoa;
-	AcceptedCargo cargob;
+	const Vehicle *v;
+	AcceptedCargo diff;
+	MemSetT(diff, 0);
+
+	/* Append the cargo of the connected weagons */
+	for (v = *a; v != NULL; v = v->Next()) diff[v->cargo_type] += v->cargo_cap;
+	for (v = *b; v != NULL; v = v->Next()) diff[v->cargo_type] -= v->cargo_cap;
+
 	int r = 0;
-
-	memset(cargoa, 0, sizeof(cargoa));
-	memset(cargob, 0, sizeof(cargob));
-	for (v = va; v != NULL; v = v->Next()) cargoa[v->cargo_type] += v->cargo_cap;
-	for (v = vb; v != NULL; v = v->Next()) cargob[v->cargo_type] += v->cargo_cap;
-
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		r = cargoa[i] - cargob[i];
+		r = diff[i];
 		if (r != 0) break;
 	}
 
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-static int CDECL VehicleReliabilitySorter(const void *a, const void *b)
+/** Sort vehicles by their reliability */
+static int CDECL VehicleReliabilitySorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r = va->reliability - vb->reliability;
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	int r = (*a)->reliability - (*b)->reliability;
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
-static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
+/** Sort vehicles by their max speed */
+static int CDECL VehicleMaxSpeedSorter(const Vehicle* const *a, const Vehicle* const *b)
 {
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r;
-
-	if (va->type == VEH_TRAIN && vb->type == VEH_TRAIN) {
-		r = va->u.rail.cached_max_speed - vb->u.rail.cached_max_speed;
-	} else {
-		r = va->max_speed - vb->max_speed;
-	}
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
-}
-
-static int CDECL VehicleModelSorter(const void *a, const void *b)
-{
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	int r = va->engine_type - vb->engine_type;
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
-}
-
-static int CDECL VehicleValueSorter(const void *a, const void *b)
-{
-	const Vehicle* va = *(const Vehicle**)a;
-	const Vehicle* vb = *(const Vehicle**)b;
-	const Vehicle *u;
-	Money valuea = 0, valueb = 0;
-
-	for (u = va; u != NULL; u = u->Next()) valuea += u->value;
-	for (u = vb; u != NULL; u = u->Next()) valueb += u->value;
-
-	int r = ClampToI32(valuea - valueb);
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
-}
-
-static int CDECL VehicleLengthSorter(const void *a, const void *b)
-{
-	const Vehicle *va = *(const Vehicle**)a;
-	const Vehicle *vb = *(const Vehicle**)b;
 	int r = 0;
+	if ((*a)->type == VEH_TRAIN && (*b)->type == VEH_TRAIN) {
+		r = (*a)->u.rail.cached_max_speed - (*b)->u.rail.cached_max_speed;
+	} else {
+		r = (*a)->max_speed - (*b)->max_speed;
+	}
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
+}
 
-	switch (va->type) {
+/** Sort vehicles by model */
+static int CDECL VehicleModelSorter(const Vehicle* const *a, const Vehicle* const *b)
+{
+	int r = (*a)->engine_type - (*b)->engine_type;
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
+}
+
+/** Sort vehciles by their value */
+static int CDECL VehicleValueSorter(const Vehicle* const *a, const Vehicle* const *b)
+{
+	const Vehicle *u;
+	Money diff = 0;
+
+	for (u = *a; u != NULL; u = u->Next()) diff += u->value;
+	for (u = *b; u != NULL; u = u->Next()) diff -= u->value;
+
+	int r = ClampToI32(diff);
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
+}
+
+/** Sort vehicles by their length */
+static int CDECL VehicleLengthSorter(const Vehicle* const *a, const Vehicle* const *b)
+{
+	int r = 0;
+	switch ((*a)->type) {
 		case VEH_TRAIN:
-			r = va->u.rail.cached_total_length - vb->u.rail.cached_total_length;
+			r = (*a)->u.rail.cached_total_length - (*b)->u.rail.cached_total_length;
 			break;
 
-		case VEH_ROAD:
-			for (const Vehicle *u = va; u != NULL; u = u->Next()) r += u->u.road.cached_veh_length;
-			for (const Vehicle *u = vb; u != NULL; u = u->Next()) r -= u->u.road.cached_veh_length;
-			break;
+		case VEH_ROAD: {
+			const Vehicle *u;
+			for (u = *a; u != NULL; u = u->Next()) r += u->u.road.cached_veh_length;
+			for (u = *b; u != NULL; u = u->Next()) r -= u->u.road.cached_veh_length;
+		} break;
 
 		default: NOT_REACHED();
 	}
-
-	VEHICLEUNITNUMBERSORTER(r, va, vb);
-
-	return (_internal_sort_order & 1) ? -r : r;
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
 void InitializeGUI()
 {
-	memset(&_sorting, 0, sizeof(_sorting));
+	MemSetT(&_sorting, 0);
 }
 
 /** Assigns an already open vehicle window to a new vehicle.
