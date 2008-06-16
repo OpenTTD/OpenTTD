@@ -80,7 +80,7 @@ struct ChildScreenSpriteToDraw {
 	const SubSprite *sub;           ///< only draw a rectangular part of the sprite
 	int32 x;
 	int32 y;
-	ChildScreenSpriteToDraw *next;
+	int next;                       ///< next child to draw (-1 at the end)
 };
 
 struct ParentSpriteToDraw {
@@ -102,7 +102,6 @@ struct ParentSpriteToDraw {
 	int zmax;                       ///< maximal world Z coordinate of bounding box
 
 	int first_child;                ///< the first child to draw.
-	int last_child;                 ///< the last sprite to draw.
 	bool comparison_done;           ///< Used during sprite sorting: true if sprite has been compared with all other sprites
 };
 
@@ -676,10 +675,9 @@ void AddSortableSpriteToDraw(SpriteID image, SpriteID pal, int x, int y, int w, 
 	ps->zmax = z + max(bb_offset_z, dz) - 1;
 
 	ps->comparison_done = false;
-	ps->first_child = _vd.child_screen_sprites_to_draw.items;
-	ps->last_child  = _vd.child_screen_sprites_to_draw.items;
+	ps->first_child = -1;
 
-	_vd.last_child = &ps->last_child;
+	_vd.last_child = &ps->first_child;
 
 	if (_vd.combine_sprites == 1) _vd.combine_sprites = 2;
 }
@@ -717,17 +715,22 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	/* Append the sprite to the active ChildSprite list.
-	 * If the active ParentSprite is a foundation, update last_foundation_child as well. */
+	*_vd.last_child = _vd.child_screen_sprites_to_draw.items;
+
 	ChildScreenSpriteToDraw *cs = _vd.child_screen_sprites_to_draw.Append();
 	cs->image = image;
 	cs->pal = pal;
 	cs->sub = sub;
 	cs->x = x;
 	cs->y = y;
-	cs->next = NULL;
+	cs->next = -1;
 
-	*_vd.last_child = _vd.child_screen_sprites_to_draw.items;
+	/* Append the sprite to the active ChildSprite list.
+	 * If the active ParentSprite is a foundation, update last_foundation_child as well.
+	 * Note: ChildSprites of foundations are NOT sequential in the vector, as selection sprites are added at last. */
+	if (_vd.last_foundation_child[0] == _vd.last_child) _vd.last_foundation_child[0] = &cs->next;
+	if (_vd.last_foundation_child[1] == _vd.last_child) _vd.last_foundation_child[1] = &cs->next;
+	_vd.last_child = &cs->next;
 }
 
 /* Returns a StringSpriteToDraw */
@@ -1350,8 +1353,10 @@ static void ViewportDrawParentSprites(const ParentSpriteToSortVector *psd, const
 		const ParentSpriteToDraw *ps = *it;
 		if (ps->image != SPR_EMPTY_BOUNDING_BOX) DrawSprite(ps->image, ps->pal, ps->x, ps->y, ps->sub);
 
-		const ChildScreenSpriteToDraw *last = csstdv->Get(ps->last_child);
-		for (const ChildScreenSpriteToDraw *cs = csstdv->Get(ps->first_child); cs != last; cs++) {
+		int child_idx = ps->first_child;
+		while (child_idx >= 0) {
+			const ChildScreenSpriteToDraw *cs = csstdv->Get(child_idx);
+			child_idx = cs->next;
 			DrawSprite(cs->image, cs->pal, ps->left + cs->x, ps->top + cs->y, cs->sub);
 		}
 	}
