@@ -151,7 +151,7 @@ public:
 	{
 		this->DrawWidgets();
 
-		this->DrawSortButtonState(BBSW_DROPDOWN_ORDER, (this->bridges->flags & VL_DESC) ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(BBSW_DROPDOWN_ORDER, this->bridges->IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		uint y = this->widget[BBSW_BRIDGE_LIST].top + 2;
 

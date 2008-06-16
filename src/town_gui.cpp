@@ -545,7 +545,7 @@ public:
 		SetVScrollCount(this, this->towns.Length());
 
 		this->DrawWidgets();
-		this->DrawSortButtonState(this->towns.sort_type == 0 ? TDW_SORTNAME : TDW_SORTPOPULATION, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(this->towns.SortType() == 0 ? TDW_SORTNAME : TDW_SORTPOPULATION, this->towns.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		{
 			int n = 0;
