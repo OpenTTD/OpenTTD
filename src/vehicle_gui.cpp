@@ -90,14 +90,13 @@ const StringID _vehicle_sort_listing[] = {
 
 void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 window_type)
 {
-	if (!(vl->vehicles.flags & VL_REBUILD)) return;
+	if (!vl->vehicles.NeedRebuild()) return;
 
 	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, index);
 
 	GenerateVehicleSortList(&vl->vehicles, vl->vehicle_type, owner, index, window_type);
 
-	vl->vehicles.flags &= ~VL_REBUILD;
-	vl->vehicles.flags |= VL_RESORT;
+	vl->vehicles.RebuildDone();
 }
 
 /* cached values for VehicleNameSorter to spare many GetString() calls */
@@ -105,15 +104,10 @@ static const Vehicle *_last_vehicle[2] = { NULL, NULL };
 
 void SortVehicleList(VehicleListBase *vl)
 {
-	if (!(vl->vehicles.flags & VL_RESORT)) return;
+	if (vl->vehicles.Sort(_vehicle_sorter[vl->vehicles.SortType()])) return;
 
 	/* invalidate cached values for name sorter - vehicle names could change */
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
-
-	QSortT(vl->vehicles.Begin(), vl->vehicles.Length(), _vehicle_sorter[vl->vehicles.sort_type], vl->vehicles.flags & VL_DESC);
-
-	vl->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-	vl->vehicles.flags &= ~VL_RESORT;
 }
 
 void DepotSortList(VehicleList *list)
@@ -865,15 +859,16 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 			default: NOT_REACHED(); break;
 		}
 
-		this->vehicles.flags = VL_REBUILD | (this->sorting->order ? VL_DESC : VL_NONE);
-		this->vehicles.sort_type = this->sorting->criteria;
-		this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+		this->vehicles.SetListing(*this->sorting);
+		this->vehicles.ForceRebuild();
+		this->vehicles.NeedResort();
 
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	~VehicleListWindow()
 	{
+		*this->sorting = this->vehicles.GetListing();
 	}
 
 	virtual void OnPaint()
@@ -938,9 +933,9 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		this->DrawWidgets();
 
 		/* draw sorting criteria string */
-		DrawString(85, 15, _vehicle_sort_listing[this->vehicles.sort_type], TC_BLACK);
+		DrawString(85, 15, _vehicle_sort_listing[this->vehicles.SortType()], TC_BLACK);
 		/* draw arrow pointing up/down for ascending/descending sorting */
-		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
 		for (i = this->vscroll.pos; i < max; ++i) {
@@ -980,14 +975,11 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 	{
 		switch (widget) {
 			case VLW_WIDGET_SORT_ORDER: /* Flip sorting method ascending/descending */
-				this->vehicles.flags ^= VL_DESC;
-				this->vehicles.flags |= VL_RESORT;
-
-				this->sorting->order = !!(this->vehicles.flags & VL_DESC);
+				this->vehicles.ToggleSortOrder();
 				this->SetDirty();
 				break;
 			case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
-				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 				return;
 			case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / this->resize.step_height;
@@ -1040,12 +1032,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 	{
 		switch (widget) {
 			case VLW_WIDGET_SORT_BY_PULLDOWN:
-				if (this->vehicles.sort_type != index) {
-					/* value has changed -> resort */
-					this->vehicles.flags |= VL_RESORT;
-					this->vehicles.sort_type = index;
-					this->sorting->criteria = this->vehicles.sort_type;
-				}
+				this->vehicles.SetSortType(index);
 				break;
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN:
 				assert(this->vehicles.Length() != 0);
@@ -1078,13 +1065,11 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 	virtual void OnTick()
 	{
 		if (_pause_game != 0) return;
-		if (--this->vehicles.resort_timer == 0) {
+		if (this->vehicles.NeedResort()) {
 			StationID station = ((this->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(this->window_number, 16, 16) : INVALID_STATION;
 			PlayerID owner = (PlayerID)this->caption_color;
 
 			DEBUG(misc, 3, "Periodic resort %d list player %d at station %d", this->vehicle_type, owner, station);
-			this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			this->vehicles.flags |= VL_RESORT;
 			this->SetDirty();
 		}
 	}
@@ -1097,7 +1082,11 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->vehicles.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
+		if (data == 0) {
+			this->vehicles.ForceRebuild();
+		} else {
+			this->vehicles.ForceResort();
+		}
 	}
 };
 

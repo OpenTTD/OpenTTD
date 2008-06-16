@@ -205,9 +205,9 @@ public:
 			case VEH_AIRCRAFT: this->sorting = &_sorting.aircraft; break;
 		}
 
-		this->vehicles.sort_type = this->sorting->criteria;
-		this->vehicles.flags = VL_REBUILD | (this->sorting->order ? VL_DESC : VL_NONE);
-		this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS; // Set up resort timer
+		this->vehicles.SetListing(*this->sorting);
+		this->vehicles.ForceRebuild();
+		this->vehicles.NeedResort();
 
 		this->groups.ForceRebuild();
 		this->groups.NeedResort();
@@ -260,15 +260,16 @@ public:
 
 	~VehicleGroupWindow()
 	{
+		*this->sorting = this->vehicles.GetListing();
 	}
 
 	virtual void OnInvalidateData(int data)
 	{
-		this->vehicles.flags |= (data == 0 ? VL_REBUILD : VL_RESORT);
-
 		if (data == 0) {
+			this->vehicles.ForceRebuild();
 			this->groups.ForceRebuild();
 		} else {
+			this->vehicles.ForceResort();
 			this->groups.ForceResort();
 		}
 
@@ -384,7 +385,7 @@ public:
 		}
 
 		/* Set text of sort by dropdown */
-		this->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[this->vehicles.sort_type];
+		this->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[this->vehicles.SortType()];
 
 		this->DrawWidgets();
 
@@ -434,7 +435,7 @@ public:
 			DrawStringRightAligned(187, y1 + 1, STR_GROUP_TINY_NUM, (this->group_sel == g->index) ? TC_WHITE : TC_BLACK);
 		}
 
-		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.flags & VL_DESC ? SBS_DOWN : SBS_UP);
+		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
 		int list_width = this->widget[GRP_WIDGET_LIST_VEHICLE].right - this->widget[GRP_WIDGET_LIST_VEHICLE].left - 20;
 
@@ -472,21 +473,18 @@ public:
 
 		switch(widget) {
 			case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
-				this->vehicles.flags ^= VL_DESC;
-				this->vehicles.flags |= VL_RESORT;
-
-				this->sorting->order = !!(this->vehicles.flags & VL_DESC);
+				this->vehicles.ToggleSortOrder();
 				this->SetDirty();
 				break;
 
 			case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.sort_type,  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.SortType(),  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 				return;
 
 			case GRP_WIDGET_ALL_VEHICLES: // All vehicles button
 				if (!IsAllGroupID(this->group_sel)) {
 					this->group_sel = ALL_GROUP;
-					this->vehicles.flags |= VL_REBUILD;
+					this->vehicles.ForceRebuild();
 					this->SetDirty();
 				}
 				break;
@@ -494,7 +492,7 @@ public:
 			case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles button
 				if (!IsDefaultGroupID(this->group_sel)) {
 					this->group_sel = DEFAULT_GROUP;
-					this->vehicles.flags |= VL_REBUILD;
+					this->vehicles.ForceRebuild();
 					this->SetDirty();
 				}
 				break;
@@ -510,7 +508,7 @@ public:
 
 				this->group_sel = this->groups[id_g]->index;;
 
-				this->vehicles.flags |= VL_REBUILD;
+				this->vehicles.ForceRebuild();
 				this->SetDirty();
 				break;
 			}
@@ -669,11 +667,7 @@ public:
 	{
 		switch (widget) {
 			case GRP_WIDGET_SORT_BY_DROPDOWN:
-				if (this->vehicles.sort_type != index) {
-					this->vehicles.flags |= VL_RESORT;
-					this->vehicles.sort_type = index;
-					this->sorting->criteria = this->vehicles.sort_type;
-				}
+				this->vehicles.SetSortType(index);
 				break;
 
 			case GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN:
@@ -715,12 +709,7 @@ public:
 	virtual void OnTick()
 	{
 		if (_pause_game != 0) return;
-		if (--this->vehicles.resort_timer == 0) {
-			this->vehicles.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-			this->vehicles.flags |= VL_RESORT;
-			this->SetDirty();
-		}
-		if (this->groups.NeedResort()) {
+		if (this->groups.NeedResort() || this->vehicles.NeedResort()) {
 			this->SetDirty();
 		}
 	}
