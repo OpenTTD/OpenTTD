@@ -345,7 +345,7 @@ static void MenuClickLeague(int index)
 static void ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, 12, STR_INDUSTRY_DIR, 2, (_current_player == PLAYER_SPECTATOR) ? (1 << 1) : 0);
+	PopupMainToolbMenu(w, 12, STR_INDUSTRY_DIR, 2, (_current_player == PLAYER_SPECTATOR) ? 2 : 0);
 }
 
 static void MenuClickIndustry(int index)
