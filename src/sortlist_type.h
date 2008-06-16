@@ -32,7 +32,7 @@ class GUIList : public SmallVector<T, 32> {
 public:
 	typedef int CDECL SortFunction(const T*, const T*);
 
-public: // Temporary: public for conversion only
+protected:
 	SortFunction* const *func_list; ///< The sort criteria functions
 	SortListFlags flags;            ///< used to control sorting/resorting/etc.
 	uint8 sort_type;                ///< what criteria to sort on
@@ -249,7 +249,7 @@ public:
 	void RebuildDone()
 	{
 		CLRBITS(this->flags, VL_REBUILD);
-		SETBITS(this->flags, VL_RESORT);
+		SETBITS(this->flags, VL_RESORT | VL_FIRST_SORT);
 	}
 };
 
