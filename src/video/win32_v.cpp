@@ -740,7 +740,7 @@ static void FindResolutions()
 			uint j;
 
 			for (j = 0; j < n; j++) {
-				if (_resolutions[j].width == dm.dmPelsWidth && _resolutions[j].height == dm.dmPelsHeight) break;
+				if (_resolutions[j].width == (int)dm.dmPelsWidth && _resolutions[j].height == (int)dm.dmPelsHeight) break;
 			}
 
 			/* In the previous loop we have checked already existing/added resolutions if
