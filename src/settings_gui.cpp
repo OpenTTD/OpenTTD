@@ -93,8 +93,8 @@ static int GetCurRes()
 	int i;
 
 	for (i = 0; i != _num_resolutions; i++) {
-		if (_resolutions[i][0] == _screen.width &&
-				_resolutions[i][1] == _screen.height) {
+		if (_resolutions[i].width == _screen.width &&
+				_resolutions[i].height == _screen.height) {
 			break;
 		}
 	}
@@ -302,7 +302,7 @@ struct GameOptionsWindow : Window {
 				break;
 
 			case GAMEOPT_RESOLUTION_BTN: // Change resolution
-				if (index < _num_resolutions && ChangeResInGame(_resolutions[index][0], _resolutions[index][1])) {
+				if (index < _num_resolutions && ChangeResInGame(_resolutions[index].width, _resolutions[index].height)) {
 					this->SetDirty();
 				}
 				break;

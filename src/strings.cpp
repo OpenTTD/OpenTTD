@@ -1213,7 +1213,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, 
 	if (IsInsideMM(ind, (SPECSTR_RESOLUTION_START - 0x70E4), (SPECSTR_RESOLUTION_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_RESOLUTION_START - 0x70E4);
 		buff += snprintf(
-			buff, last - buff + 1, "%dx%d", _resolutions[i][0], _resolutions[i][1]
+			buff, last - buff + 1, "%dx%d", _resolutions[i].width, _resolutions[i].height
 		);
 		return buff;
 	}

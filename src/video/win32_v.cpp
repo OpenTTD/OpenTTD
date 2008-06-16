@@ -36,7 +36,7 @@ bool _force_full_redraw;
 bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
-static uint16 _bck_resolution[2];
+static Dimension _bck_resolution;
 #if !defined(UNICODE)
 uint _codepage;
 #endif
@@ -371,10 +371,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 
 		case WM_DESTROY:
-			if (_window_maximize) {
-				_cur_resolution[0] = _bck_resolution[0];
-				_cur_resolution[1] = _bck_resolution[1];
-			}
+			if (_window_maximize) _cur_resolution = _bck_resolution;
 			return 0;
 
 		case WM_LBUTTONDOWN:
@@ -530,10 +527,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
-				if (_window_maximize) {
-					_bck_resolution[0] = _cur_resolution[0];
-					_bck_resolution[1] = _cur_resolution[1];
-				}
+				if (_window_maximize) _bck_resolution = _cur_resolution;
 				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
@@ -713,7 +707,7 @@ static bool AllocateDibSection(int w, int h)
 	return true;
 }
 
-static const uint16 default_resolutions[][2] = {
+static const Dimension default_resolutions[] = {
 	{  640,  480 },
 	{  800,  600 },
 	{ 1024,  768 },
@@ -746,7 +740,7 @@ static void FindResolutions()
 			uint j;
 
 			for (j = 0; j < n; j++) {
-				if (_resolutions[j][0] == dm.dmPelsWidth && _resolutions[j][1] == dm.dmPelsHeight) break;
+				if (_resolutions[j].width == dm.dmPelsWidth && _resolutions[j].height == dm.dmPelsHeight) break;
 			}
 
 			/* In the previous loop we have checked already existing/added resolutions if
@@ -754,8 +748,8 @@ static void FindResolutions()
 			 * looped all and found none, add the new one to the list. If we have reached the
 			 * maximum amount of resolutions, then quit querying the display */
 			if (j == n) {
-				_resolutions[j][0] = dm.dmPelsWidth;
-				_resolutions[j][1] = dm.dmPelsHeight;
+				_resolutions[j].width  = dm.dmPelsWidth;
+				_resolutions[j].height = dm.dmPelsHeight;
 				if (++n == lengthof(_resolutions)) break;
 			}
 		}
@@ -784,13 +778,13 @@ const char *VideoDriver_Win32::Start(const char * const *parm)
 
 	FindResolutions();
 
-	DEBUG(driver, 2, "Resolution for display: %dx%d", _cur_resolution[0], _cur_resolution[1]);
+	DEBUG(driver, 2, "Resolution for display: %dx%d", _cur_resolution.width, _cur_resolution.height);
 
 	// fullscreen uses those
-	_wnd.width_org = _cur_resolution[0];
-	_wnd.height_org = _cur_resolution[1];
+	_wnd.width_org  = _cur_resolution.width;
+	_wnd.height_org = _cur_resolution.height;
 
-	AllocateDibSection(_cur_resolution[0], _cur_resolution[1]);
+	AllocateDibSection(_cur_resolution.width, _cur_resolution.height);
 	MakeWindow(_fullscreen);
 
 	MarkWholeScreenDirty();

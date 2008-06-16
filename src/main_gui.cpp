@@ -446,8 +446,8 @@ void ShowVitalWindows()
  */
 void GameSizeChanged()
 {
-	_cur_resolution[0] = _screen.width;
-	_cur_resolution[1] = _screen.height;
+	_cur_resolution.width  = _screen.width;
+	_cur_resolution.height = _screen.height;
 	ScreenSizeChanged();
 	RelocateAllWindows(_screen.width, _screen.height);
 	MarkWholeScreenDirty();

@@ -96,7 +96,7 @@ static void DrawSurfaceToScreen()
 	}
 }
 
-static const uint16 default_resolutions[][2] = {
+static const Dimension default_resolutions[] = {
 	{ 640,  480},
 	{ 800,  600},
 	{1024,  768},
@@ -134,12 +134,12 @@ static void GetVideoModes()
 			if (w >= 640 && h >= 480) {
 				int j;
 				for (j = 0; j < n; j++) {
-					if (_resolutions[j][0] == w && _resolutions[j][1] == h) break;
+					if (_resolutions[j].width == w && _resolutions[j].height == h) break;
 				}
 
 				if (j == n) {
-					_resolutions[j][0] = w;
-					_resolutions[j][1] = h;
+					_resolutions[j].width  = w;
+					_resolutions[j].height = h;
 					if (++n == lengthof(_resolutions)) break;
 				}
 			}
@@ -160,21 +160,21 @@ static void GetAvailableVideoMode(int *w, int *h)
 
 	// is the wanted mode among the available modes?
 	for (i = 0; i != _num_resolutions; i++) {
-		if (*w == _resolutions[i][0] && *h == _resolutions[i][1]) return;
+		if (*w == _resolutions[i].width && *h == _resolutions[i].height) return;
 	}
 
 	// use the closest possible resolution
 	best = 0;
-	delta = abs((_resolutions[0][0] - *w) * (_resolutions[0][1] - *h));
+	delta = abs((_resolutions[0].width - *w) * (_resolutions[0].height - *h));
 	for (i = 1; i != _num_resolutions; ++i) {
-		uint newdelta = abs((_resolutions[i][0] - *w) * (_resolutions[i][1] - *h));
+		uint newdelta = abs((_resolutions[i].width - *w) * (_resolutions[i].height - *h));
 		if (newdelta < delta) {
 			best = i;
 			delta = newdelta;
 		}
 	}
-	*w = _resolutions[best][0];
-	*h = _resolutions[best][1];
+	*w = _resolutions[best].width;
+	*h = _resolutions[best].height;
 }
 
 #ifndef ICON_DIR
@@ -441,7 +441,7 @@ const char *VideoDriver_SDL::Start(const char * const *parm)
 	DEBUG(driver, 1, "SDL: using driver '%s'", buf);
 
 	GetVideoModes();
-	CreateMainSurface(_cur_resolution[0], _cur_resolution[1]);
+	CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
 	MarkWholeScreenDirty();
 
 	SDL_CALL SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY, SDL_DEFAULT_REPEAT_INTERVAL);
@@ -534,7 +534,7 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 {
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
-	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution[0], _cur_resolution[1])) {
+	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution.width, _cur_resolution.height)) {
 		// switching resolution failed, put back full_screen to original status
 		_fullscreen ^= true;
 		return false;

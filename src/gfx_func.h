@@ -60,8 +60,8 @@ extern bool _screen_disable_anim;   ///< Disable palette animation (important fo
 extern int _pal_first_dirty;
 extern int _pal_count_dirty;
 extern int _num_resolutions;
-extern uint16 _resolutions[32][2];
-extern uint16 _cur_resolution[2];
+extern Dimension _resolutions[32];
+extern Dimension _cur_resolution;
 extern Colour _cur_palette[256];
 
 void HandleKeypress(uint32 key);

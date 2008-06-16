@@ -206,8 +206,8 @@ static void QZ_UpdateVideoModes()
 	count = _cocoa_subdriver->ListModes(modes, lengthof(modes));
 
 	for (i = 0; i < count; i++) {
-		_resolutions[i][0] = modes[i].x;
-		_resolutions[i][1] = modes[i].y;
+		_resolutions[i].width  = modes[i].x;
+		_resolutions[i].height = modes[i].y;
 	}
 
 	_num_resolutions = count;
@@ -317,8 +317,8 @@ const char *VideoDriver_Cocoa::Start(const char * const *parm)
 	/* Don't create a window or enter fullscreen if we're just going to show a dialog. */
 	if (_cocoa_video_dialog) return NULL;
 
-	width = _cur_resolution[0];
-	height = _cur_resolution[1];
+	width  = _cur_resolution.width;
+	height = _cur_resolution.height;
 	bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
 
 	_cocoa_subdriver = QZ_CreateSubdriver(width, height, bpp, _fullscreen, true);

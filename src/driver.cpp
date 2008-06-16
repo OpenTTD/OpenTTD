@@ -14,8 +14,8 @@
 VideoDriver *_video_driver;
 char _ini_videodriver[32];
 int _num_resolutions;
-uint16 _resolutions[32][2];
-uint16 _cur_resolution[2];
+Dimension _resolutions[32];
+Dimension _cur_resolution;
 
 SoundDriver *_sound_driver;
 char _ini_sounddriver[32];

@@ -285,7 +285,7 @@ md_continue_here:;
  * @param res variable to store the resolution in.
  * @param s   the string to decompose.
  */
-static void ParseResolution(int res[2], const char *s)
+static void ParseResolution(Dimension *res, const char *s)
 {
 	const char *t = strchr(s, 'x');
 	if (t == NULL) {
@@ -293,8 +293,8 @@ static void ParseResolution(int res[2], const char *s)
 		return;
 	}
 
-	res[0] = max(strtoul(s, NULL, 0), 64UL);
-	res[1] = max(strtoul(t + 1, NULL, 0), 64UL);
+	res->width  = max(strtoul(s, NULL, 0), 64UL);
+	res->height = max(strtoul(t + 1, NULL, 0), 64UL);
 }
 
 static void InitializeDynamicVariables()
@@ -379,7 +379,7 @@ int ttd_main(int argc, char *argv[])
 	int i;
 	const char *optformat;
 	char musicdriver[32], sounddriver[32], videodriver[32], blitter[32];
-	int resolution[2] = {0, 0};
+	Dimension resolution = {0, 0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
 	bool save_config = true;
@@ -444,7 +444,7 @@ int ttd_main(int argc, char *argv[])
 			debuglog_conn = mgo.opt;
 			break;
 #endif /* ENABLE_NETWORK */
-		case 'r': ParseResolution(resolution, mgo.opt); break;
+		case 'r': ParseResolution(&resolution, mgo.opt); break;
 		case 't': startyear = atoi(mgo.opt); break;
 		case 'd': {
 #if defined(WIN32)
@@ -497,14 +497,14 @@ int ttd_main(int argc, char *argv[])
 	if (!StrEmpty(sounddriver)) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (!StrEmpty(blitter))     ttd_strlcpy(_ini_blitter, blitter, sizeof(_ini_blitter));
-	if (resolution[0] != 0) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
+	if (resolution.width != 0) { _cur_resolution = resolution; }
 	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
 
 	/* The width and height must be at least 1 pixel, this
 	 * way all internal drawing routines work correctly. */
-	if (_cur_resolution[0] == 0) _cur_resolution[0] = 1;
-	if (_cur_resolution[1] == 0) _cur_resolution[1] = 1;
+	if (_cur_resolution.width  <= 0) _cur_resolution.width  = 1;
+	if (_cur_resolution.height <= 0) _cur_resolution.height = 1;
 
 #if defined(ENABLE_NETWORK)
 	if (dedicated_host) snprintf(_settings_client.network.server_bind_ip, sizeof(_settings_client.network.server_bind_ip), "%s", dedicated_host);

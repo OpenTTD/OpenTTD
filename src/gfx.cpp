@@ -1313,14 +1313,14 @@ bool ToggleFullScreen(bool fs)
 	return result;
 }
 
-static int CDECL compare_res(const uint16 *pa, const uint16 *pb)
+static int CDECL compare_res(const Dimension *pa, const Dimension *pb)
 {
-	int x = pa[0] - pb[0];
+	int x = pa->width - pb->width;
 	if (x != 0) return x;
-	return pa[1] - pb[1];
+	return pa->height - pb->height;
 }
 
 void SortResolutions(int count)
 {
-	QSortT((uint16*)_resolutions, count, compare_res);
+	QSortT(_resolutions, count, &compare_res);
 }

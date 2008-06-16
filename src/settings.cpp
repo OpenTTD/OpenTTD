@@ -1510,7 +1510,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	  SDTG_STR("sounddriver",      SLE_STRB,C|S,0, _ini_sounddriver,       NULL,    STR_NULL, NULL),
 	  SDTG_STR("blitter",          SLE_STRB,C|S,0, _ini_blitter,           NULL,    STR_NULL, NULL),
 	  SDTG_STR("language",         SLE_STRB, S, 0, _dynlang.curr_file,     NULL,    STR_NULL, NULL),
-	 SDTG_LIST("resolution",     SLE_UINT16, S, 0, _cur_resolution,   "640,480",    STR_NULL, NULL),
+	SDTG_CONDLIST("resolution",  SLE_INT, 2, S, 0, _cur_resolution,   "640,480",    STR_NULL, NULL, 0, SL_MAX_VERSION), // workaround for implicit lengthof() in SDTG_LIST
 	  SDTG_STR("screenshot_format",SLE_STRB, S, 0, _screenshot_format_name,NULL,    STR_NULL, NULL),
 	  SDTG_STR("savegame_format",  SLE_STRB, S, 0, _savegame_format,       NULL,    STR_NULL, NULL),
 	 SDTG_BOOL("rightclick_emulate",         S, 0, _rightclick_emulate,   false,    STR_NULL, NULL),
