@@ -93,6 +93,8 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x18: return object->callback_param2;
 		case 0x1C: return object->last_value;
 
+		case 0x5F: return (object->GetRandomBits(object) << 8) | object->GetTriggers(object);
+
 		case 0x7D: return _temp_store.Get(parameter);
 
 		/* Not a common variable, so evalute the feature specific variables */
