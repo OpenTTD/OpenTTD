@@ -715,17 +715,19 @@ static void ResizeToolbar(Window *w)
 	/* There are 27 buttons plus some spacings if the space allows it */
 	uint button_width;
 	uint spacing;
-	if (w->width >= (int)w->widget_count * 22) {
+	uint widgetcount = w->widget_count - 1;
+
+	if (w->width >= (int)widgetcount * 22) {
 		button_width = 22;
-		spacing = w->width - (w->widget_count * button_width);
+		spacing = w->width - (widgetcount * button_width);
 	} else {
-		button_width = w->width / w->widget_count;
+		button_width = w->width / widgetcount;
 		spacing = 0;
 	}
 
 	uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
 	uint i = 0;
-	for (uint x = 0, j = 0; i < w->widget_count; i++) {
+	for (uint x = 0, j = 0; i < widgetcount; i++) {
 		if (extra_spacing_at[j] == i) {
 			j++;
 			uint add = spacing / (lengthof(extra_spacing_at) - j);
@@ -735,7 +737,7 @@ static void ResizeToolbar(Window *w)
 
 		w->widget[i].type = WWT_IMGBTN;
 		w->widget[i].left = x;
-		x += (spacing != 0) ? button_width : (w->width - x) / (w->widget_count - i);
+		x += (spacing != 0) ? button_width : (w->width - x) / (widgetcount - i);
 		w->widget[i].right = x - 1;
 	}
 
@@ -780,7 +782,7 @@ static void SplitToolbar(Window *w)
 	assert(max_icons >= 14 && max_icons <= 19);
 
 	/* first hide all icons */
-	for (uint i = 0; i < w->widget_count; i++) {
+	for (uint i = 0; i < w->widget_count - 1; i++) {
 		w->widget[i].type = WWT_EMPTY;
 	}
 
@@ -940,7 +942,7 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnTimeout()
 	{
-		for (uint i = TBN_SETTINGS; i < this->widget_count; i++) {
+		for (uint i = TBN_SETTINGS; i < this->widget_count - 1; i++) {
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->InvalidateWidget(i);
@@ -1133,7 +1135,7 @@ public:
 		}
 		uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
 
-		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count; i++) {
+		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count - 1; i++) {
 			switch (i) {
 				case 4:
 					this->widget[i].left = x;
