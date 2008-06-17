@@ -177,38 +177,55 @@ static void ToolbarFastForwardClick(Window *w)
 
 /* --- Options button menu --- */
 
+enum OptionMenuEntries {
+	OME_GAMEOPTIONS    = 0,
+	OME_DIFFICULTIES,
+	OME_PATCHES,
+	OME_NEWGRFSETTINGS,
+	OME_TRANSPARENCIES,
+	OME_SHOW_TOWNNAMES = 6,
+	OME_SHOW_STATIONNAMES,
+	OME_SHOW_SIGNS,
+	OME_SHOW_WAYPOINTNAMES,
+	OME_FULL_ANIMATION,
+	OME_FULL_DETAILS,
+	OME_TRANSPARENTBUILDINGS,
+	OME_SHOW_STATIONSIGNS,
+	OME_END,
+};
+
 static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x = 0;
-	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SetBit(x,  6);
-	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SetBit(x,  7);
-	if (HasBit(_display_opt, DO_SHOW_SIGNS))         SetBit(x,  8);
-	if (HasBit(_display_opt, DO_WAYPOINTS))          SetBit(x,  9);
-	if (HasBit(_display_opt, DO_FULL_ANIMATION))     SetBit(x, 10);
-	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, 11);
-	if (IsTransparencySet(TO_HOUSES))                SetBit(x, 12);
-	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, 13);
+	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SetBit(x, OME_SHOW_TOWNNAMES);
+	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SetBit(x, OME_SHOW_STATIONNAMES);
+	if (HasBit(_display_opt, DO_SHOW_SIGNS))         SetBit(x, OME_SHOW_SIGNS);
+	if (HasBit(_display_opt, DO_WAYPOINTS))          SetBit(x, OME_SHOW_WAYPOINTNAMES);
+	if (HasBit(_display_opt, DO_FULL_ANIMATION))     SetBit(x, OME_FULL_ANIMATION);
+	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, OME_FULL_DETAILS);
+	if (IsTransparencySet(TO_HOUSES))                SetBit(x, OME_TRANSPARENTBUILDINGS);
+	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, OME_SHOW_STATIONSIGNS);
 
-	PopupMainToolbMenu(w, TBN_SETTINGS, STR_02C4_GAME_OPTIONS, 14, 0, 0, x);
+	PopupMainToolbMenu(w, TBN_SETTINGS, STR_02C4_GAME_OPTIONS, OME_END, 0, 0, x);
 }
 
 static void MenuClickSettings(int index)
 {
 	switch (index) {
-		case  0: ShowGameOptions();                              return;
-		case  1: ShowGameDifficulty();                           return;
-		case  2: ShowPatchesSelection();                         return;
-		case  3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
-		case  4: ShowTransparencyToolbar();                      break;
+		case OME_GAMEOPTIONS:          ShowGameOptions();                              return;
+		case OME_DIFFICULTIES:         ShowGameDifficulty();                           return;
+		case OME_PATCHES:              ShowPatchesSelection();                         return;
+		case OME_NEWGRFSETTINGS:       ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
+		case OME_TRANSPARENCIES:       ShowTransparencyToolbar();                      break;
 
-		case  6: ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);    break;
-		case  7: ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
-		case  8: ToggleBit(_display_opt, DO_SHOW_SIGNS);         break;
-		case  9: ToggleBit(_display_opt, DO_WAYPOINTS);          break;
-		case 10: ToggleBit(_display_opt, DO_FULL_ANIMATION);     break;
-		case 11: ToggleBit(_display_opt, DO_FULL_DETAIL);        break;
-		case 12: ToggleTransparency(TO_HOUSES);                  break;
-		case 13: ToggleTransparency(TO_SIGNS);                   break;
+		case OME_SHOW_TOWNNAMES:       ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);    break;
+		case OME_SHOW_STATIONNAMES:    ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
+		case OME_SHOW_SIGNS:           ToggleBit(_display_opt, DO_SHOW_SIGNS);         break;
+		case OME_SHOW_WAYPOINTNAMES:   ToggleBit(_display_opt, DO_WAYPOINTS);          break;
+		case OME_FULL_ANIMATION:       ToggleBit(_display_opt, DO_FULL_ANIMATION);     break;
+		case OME_FULL_DETAILS:         ToggleBit(_display_opt, DO_FULL_DETAIL);        break;
+		case OME_TRANSPARENTBUILDINGS: ToggleTransparency(TO_HOUSES);                  break;
+		case OME_SHOW_STATIONSIGNS:    ToggleTransparency(TO_SIGNS);                   break;
 	}
 	MarkWholeScreenDirty();
 }
