@@ -58,10 +58,43 @@ enum ToolbarMode {
 	TB_LOWER
 };
 
+enum ToolbarNormalWidgets {
+	TBN_PAUSE         = 0,
+	TBN_FASTFORWARD,
+	TBN_SETTINGS,
+	TBN_SAVEGAME,
+	TBN_SMALLMAP,
+	TBN_TOWNDIRECTORY,
+	TBN_SUBSIDIES,
+	TBN_STATIONS,
+	TBN_FINANCES,
+	TBN_PLAYERS,
+	TBN_GRAPHICS,
+	TBN_LEAGUE,
+	TBN_INDUSTRIES,
+	TBN_VEHICLESTART,      ///< trains, actually.  So following are trucks, boats and planes
+	TBN_TRAINS        = TBN_VEHICLESTART,
+	TBN_ROADVEHS,
+	TBN_SHIPS,
+	TBN_AIRCRAFTS,
+	TBN_ZOOMIN,
+	TBN_ZOOMOUT,
+	TBN_RAILS,
+	TBN_ROADS,
+	TBN_WATER,
+	TBN_AIR,
+	TBN_LANDSCAPE,
+	TBN_MUSICSOUND,
+	TBN_NEWSREPORT,
+	TBN_HELP,
+	TBN_SWITCHBAR,         ///< only available when toolbar has been split
+};
+
 enum ToolbarScenEditorWidgets {
 	TBSE_PAUSE        = 0,
 	TBSE_FASTFORWARD,
-	TBSE_SPACERPANEL  = 4,
+	TBSE_SAVESCENARIO = 3,
+	TBSE_SPACERPANEL,
 	TBSE_DATEBACKWARD = 6,
 	TBSE_DATEFORWARD,
 	TBSE_ZOOMIN       = 9,
@@ -156,7 +189,7 @@ static void ToolbarOptionsClick(Window *w)
 	if (IsTransparencySet(TO_HOUSES))                SetBit(x, 12);
 	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, 13);
 
-	PopupMainToolbMenu(w, 2, STR_02C4_GAME_OPTIONS, 14, 0, 0, x);
+	PopupMainToolbMenu(w, TBN_SETTINGS, STR_02C4_GAME_OPTIONS, 14, 0, 0, x);
 }
 
 static void MenuClickSettings(int index)
@@ -184,12 +217,12 @@ static void MenuClickSettings(int index)
 
 static void ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, 3, STR_015C_SAVE_GAME, 4);
+	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_015C_SAVE_GAME, 4);
 }
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, 3, STR_0292_SAVE_SCENARIO, 6);
+	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_0292_SAVE_SCENARIO, 6);
 }
 
 static void MenuClickSaveLoad(int index)
@@ -216,7 +249,7 @@ static void MenuClickSaveLoad(int index)
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 3);
+	PopupMainToolbMenu(w, TBN_SMALLMAP, STR_02DE_MAP_OF_WORLD, 3);
 }
 
 static void MenuClickMap(int index)
@@ -242,7 +275,7 @@ static void MenuClickScenMap(int index)
 
 static void ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, 5, STR_02BB_TOWN_DIRECTORY, 1);
+	PopupMainToolbMenu(w, TBN_TOWNDIRECTORY, STR_02BB_TOWN_DIRECTORY, 1);
 }
 
 static void MenuClickTown(int index)
@@ -254,7 +287,7 @@ static void MenuClickTown(int index)
 
 static void ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, 6, STR_02DD_SUBSIDIES, 1);
+	PopupMainToolbMenu(w, TBN_SUBSIDIES, STR_02DD_SUBSIDIES, 1);
 }
 
 static void MenuClickSubsidies(int index)
@@ -266,7 +299,7 @@ static void MenuClickSubsidies(int index)
 
 static void ToolbarStationsClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, 7, 0);
+	PopupMainPlayerToolbMenu(w, TBN_STATIONS, 0);
 }
 
 static void MenuClickStations(int index)
@@ -278,7 +311,7 @@ static void MenuClickStations(int index)
 
 static void ToolbarFinancesClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, 8, 0);
+	PopupMainPlayerToolbMenu(w, TBN_FINANCES, 0);
 }
 
 static void MenuClickFinances(int index)
@@ -290,7 +323,7 @@ static void MenuClickFinances(int index)
 
 static void ToolbarPlayersClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, 9, 0);
+	PopupMainPlayerToolbMenu(w, TBN_PLAYERS, 0);
 }
 
 static void MenuClickCompany(int index)
@@ -307,7 +340,7 @@ static void MenuClickCompany(int index)
 
 static void ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, 10, STR_0154_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
+	PopupMainToolbMenu(w, TBN_GRAPHICS, STR_0154_OPERATING_PROFIT_GRAPH, (_toolbar_mode == TB_NORMAL) ? 6 : 8);
 }
 
 static void MenuClickGraphs(int index)
@@ -329,7 +362,7 @@ static void MenuClickGraphs(int index)
 
 static void ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2);
+	PopupMainToolbMenu(w, TBN_LEAGUE, STR_015A_COMPANY_LEAGUE_TABLE, 2);
 }
 
 static void MenuClickLeague(int index)
@@ -345,7 +378,7 @@ static void MenuClickLeague(int index)
 static void ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, 12, STR_INDUSTRY_DIR, 2, (_current_player == PLAYER_SPECTATOR) ? 2 : 0);
+	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_DIR, 2, (_current_player == PLAYER_SPECTATOR) ? 2 : 0);
 }
 
 static void MenuClickIndustry(int index)
@@ -366,7 +399,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == veh && v->IsPrimaryVehicle()) ClrBit(dis, v->owner);
 	}
-	PopupMainPlayerToolbMenu(w, 13 + veh, dis);
+	PopupMainPlayerToolbMenu(w, TBN_VEHICLESTART + veh, dis);
 }
 
 
@@ -421,7 +454,7 @@ static void MenuClickShowAir(int index)
 static void ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(17);
+		w->HandleButtonClick(TBN_ZOOMIN);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -431,7 +464,7 @@ static void ToolbarZoomInClick(Window *w)
 static void ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(18);
+		w->HandleButtonClick(TBN_ZOOMOUT);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -441,7 +474,7 @@ static void ToolbarZoomOutClick(Window *w)
 static void ToolbarBuildRailClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
-	PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes, _last_built_railtype);
+	PopupMainToolbMenu(w, TBN_RAILS, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes, _last_built_railtype);
 }
 
 static void MenuClickBuildRail(int index)
@@ -456,7 +489,7 @@ static void ToolbarBuildRoadClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
 	/* The standard road button is *always* available */
-	PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 2, ~(p->avail_roadtypes | ROADTYPES_ROAD), _last_built_roadtype);
+	PopupMainToolbMenu(w, TBN_ROADS, STR_180A_ROAD_CONSTRUCTION, 2, ~(p->avail_roadtypes | ROADTYPES_ROAD), _last_built_roadtype);
 }
 
 static void MenuClickBuildRoad(int index)
@@ -469,7 +502,7 @@ static void MenuClickBuildRoad(int index)
 
 static void ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, 21, STR_9800_DOCK_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, TBN_WATER, STR_9800_DOCK_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildWater(int index)
@@ -481,7 +514,7 @@ static void MenuClickBuildWater(int index)
 
 static void ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, TBN_AIR, STR_A01D_AIRPORT_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildAir(int index)
@@ -493,7 +526,7 @@ static void MenuClickBuildAir(int index)
 
 static void ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, 23, STR_LANDSCAPING, 3);
+	PopupMainToolbMenu(w, TBN_LANDSCAPE, STR_LANDSCAPING, 3);
 }
 
 static void MenuClickForest(int index)
@@ -509,7 +542,7 @@ static void MenuClickForest(int index)
 
 static void ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, 24, STR_01D3_SOUND_MUSIC, 1);
+	PopupMainToolbMenu(w, TBN_MUSICSOUND, STR_01D3_SOUND_MUSIC, 1);
 }
 
 static void MenuClickMusicWindow(int index)
@@ -521,7 +554,7 @@ static void MenuClickMusicWindow(int index)
 
 static void ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3);
+	PopupMainToolbMenu(w, TBN_NEWSREPORT, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3);
 }
 
 static void MenuClickNewspaper(int index)
@@ -537,7 +570,7 @@ static void MenuClickNewspaper(int index)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, 26, STR_02D5_LAND_BLOCK_INFO, 6);
+	PopupMainToolbMenu(w, TBN_HELP, STR_02D5_LAND_BLOCK_INFO, 6);
 }
 
 static void MenuClickSmallScreenshot()
@@ -572,7 +605,7 @@ static void ToolbarSwitchClick(Window *w)
 	}
 
 	SplitToolbar(w);
-	w->HandleButtonClick(27);
+	w->HandleButtonClick(TBN_SWITCHBAR);
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 }
@@ -799,8 +832,8 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 struct MainToolbarWindow : Window {
 	MainToolbarWindow(const WindowDesc *desc) : Window(desc)
 	{
-		this->SetWidgetDisabledState(0, _networking && !_network_server); // if not server, disable pause button
-		this->SetWidgetDisabledState(1, _networking); // if networking, disable fast-forward button
+		this->SetWidgetDisabledState(TBN_PAUSE, _networking && !_network_server); // if not server, disable pause button
+		this->SetWidgetDisabledState(TBN_FASTFORWARD, _networking); // if networking, disable fast-forward button
 
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
 
@@ -818,12 +851,12 @@ struct MainToolbarWindow : Window {
 		/* If spectator, disable all construction buttons
 		* ie : Build road, rail, ships, airports and landscaping
 		* Since enabled state is the default, just disable when needed */
-		this->SetWidgetsDisabledState(_current_player == PLAYER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(_current_player == PLAYER_SPECTATOR, TBN_RAILS, TBN_ROADS, TBN_WATER, TBN_AIR, TBN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		this->SetWidgetsDisabledState(ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(ActivePlayerCount() == TBN_PAUSE, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);
 
-		this->SetWidgetDisabledState(19, !CanBuildVehicleInfrastructure(VEH_TRAIN));
-		this->SetWidgetDisabledState(22, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
+		this->SetWidgetDisabledState(TBN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
+		this->SetWidgetDisabledState(TBN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
 
 		this->DrawWidgets();
 	}
@@ -885,14 +918,14 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnTick()
 	{
-		if (this->IsWidgetLowered(0) != !!_pause_game) {
-			this->ToggleWidgetLoweredState(0);
-			this->InvalidateWidget(0);
+		if (this->IsWidgetLowered(TBN_PAUSE) != !!_pause_game) {
+			this->ToggleWidgetLoweredState(TBN_PAUSE);
+			this->InvalidateWidget(TBN_PAUSE);
 		}
 
-		if (this->IsWidgetLowered(1) != !!_fast_forward) {
-			this->ToggleWidgetLoweredState(1);
-			this->InvalidateWidget(1);
+		if (this->IsWidgetLowered(TBN_FASTFORWARD) != !!_fast_forward) {
+			this->ToggleWidgetLoweredState(TBN_FASTFORWARD);
+			this->InvalidateWidget(TBN_FASTFORWARD);
 		}
 	}
 
@@ -907,7 +940,7 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnTimeout()
 	{
-		for (uint i = 2; i < this->widget_count; i++) {
+		for (uint i = TBN_SETTINGS; i < this->widget_count; i++) {
 			if (this->IsWidgetLowered(i)) {
 				this->RaiseWidget(i);
 				this->InvalidateWidget(i);
@@ -917,7 +950,7 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
+		if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) HandleZoomMessage(this, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, TBN_ZOOMIN, TBN_ZOOMOUT);
 	}
 };
 
@@ -1415,7 +1448,7 @@ struct ToolbarPlayerMenuWindow : Window {
 	{
 		this->flags4 &= ~WF_WHITE_BORDER_MASK;
 		this->sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
-		if (_networking && main_button == 9) {
+		if (_networking && main_button == TBN_PLAYERS) {
 			if (_local_player != PLAYER_SPECTATOR) {
 				this->sel_index++;
 			} else {
@@ -1439,7 +1472,7 @@ struct ToolbarPlayerMenuWindow : Window {
 		byte num = ActivePlayerCount();
 
 		/* Increase one to fit in PlayerList in the menu when in network */
-		if (_networking && this->main_button == 9) num++;
+		if (_networking && this->main_button == TBN_PLAYERS) num++;
 
 		if (this->item_count != num) {
 			this->item_count = num;
@@ -1463,7 +1496,7 @@ struct ToolbarPlayerMenuWindow : Window {
 		int gray = this->gray_items;
 
 		/* 9 = playerlist */
-		if (_networking && this->main_button == 9) {
+		if (_networking && this->main_button == TBN_PLAYERS) {
 			if (sel == 0) {
 				GfxFillRect(x, y, x + 238, y + 9, 0);
 			}
@@ -1502,7 +1535,7 @@ struct ToolbarPlayerMenuWindow : Window {
 			this->UpdatePlayerMenuHeight();
 			/* We have a new entry at the top of the list of menu 9 when networking
 				* so keep that in count */
-			if (_networking && this->main_button == 9) {
+			if (_networking && this->main_button == TBN_PLAYERS) {
 				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 			} else {
 				index = GetPlayerIndexFromMenu(index);
@@ -1517,7 +1550,7 @@ struct ToolbarPlayerMenuWindow : Window {
 
 			/* We have a new entry at the top of the list of menu 9 when networking
 				* so keep that in count */
-			if (_networking && this->main_button == 9) {
+			if (_networking && this->main_button == TBN_PLAYERS) {
 				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
 			} else {
 				index = GetPlayerIndexFromMenu(index);
