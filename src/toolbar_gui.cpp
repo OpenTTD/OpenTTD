@@ -1099,8 +1099,7 @@ public:
 		}
 		uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
 
-		/* Yes, it defines about 27 widgets for this toolbar */
-		for (uint i = 0, x = 0, j = 0, b = 0; i < 27; i++) {
+		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count; i++) {
 			switch (i) {
 				case 4:
 					this->widget[i].left = x;
