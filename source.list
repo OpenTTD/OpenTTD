@@ -175,6 +175,7 @@ effectvehicle_func.h
 effectvehicle_base.h
 elrail_func.h
 core/endian_func.hpp
+core/endian_type.hpp
 engine_base.h
 engine_func.h
 engine_gui.h

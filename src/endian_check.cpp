@@ -12,6 +12,21 @@
 #include <stdio.h>
 #include <string.h>
 
+/** Supported endian types */
+enum Endian {
+	ENDIAN_LITTLE, ///< little endian
+	ENDIAN_BIG     ///< big endian
+};
+
+/**
+ * Shortcut to printf("#define TTD_*_ENDIAN 0/1")
+ * @param endian endian type to define
+ */
+static inline void printf_endian(Endian endian)
+{
+	printf("#define TTD_ENDIAN %s\n", endian == ENDIAN_LITTLE ? "TTD_LITTLE_ENDIAN" : "TTD_BIG_ENDIAN");
+}
+
 /**
  * Main call of the endian_check program
  * @param argc argument count
@@ -30,23 +45,23 @@ int main (int argc, char *argv[])
 	printf("#ifndef ENDIAN_H\n#define ENDIAN_H\n");
 
 	if (force_LE == 1) {
-		printf("#define TTD_LITTLE_ENDIAN\n");
+		printf_endian(ENDIAN_LITTLE);
 	} else if (force_BE == 1) {
-		printf("#define TTD_BIG_ENDIAN\n");
+		printf_endian(ENDIAN_BIG);
 	} else if (force_PREPROCESSOR == 1) {
 		/* Support for universal binaries on OSX
 		 * Universal binaries supports both PPC and x86
 		 * If a compiler for OSX gets this setting, it will always pick the correct endian and no test is needed
 		 */
 		printf("#ifdef __BIG_ENDIAN__\n");
-		printf("#define TTD_BIG_ENDIAN\n");
+		printf_endian(ENDIAN_BIG);
 		printf("#else\n");
-		printf("#define TTD_LITTLE_ENDIAN\n");
+		printf_endian(ENDIAN_LITTLE);
 		printf("#endif\n");
 	} else if (*(short*)endian_test == 1 ) {
-		printf("#define TTD_LITTLE_ENDIAN\n");
+		printf_endian(ENDIAN_LITTLE);
 	} else {
-		printf("#define TTD_BIG_ENDIAN\n");
+		printf_endian(ENDIAN_BIG);
 	}
 	printf("#endif\n");
 

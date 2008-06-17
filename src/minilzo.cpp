@@ -230,9 +230,9 @@
 #  error "LZO_ALIGNED_OK_4 must not be defined on this system"
 #endif
 
-#define LZO_LITTLE_ENDIAN	   1234
-#define LZO_BIG_ENDIAN		  4321
-#define LZO_PDP_ENDIAN		  3412
+#define LZO_LITTLE_ENDIAN 1234
+#define LZO_BIG_ENDIAN    4321
+#define LZO_PDP_ENDIAN    3412
 
 #if !defined(LZO_BYTE_ORDER)
 #  if defined(MFX_BYTE_ORDER)

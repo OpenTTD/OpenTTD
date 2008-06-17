@@ -247,12 +247,12 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 		sig_bit.gray  = 8;
 		png_set_sBIT(png_ptr, info_ptr, &sig_bit);
 
-#ifdef TTD_LITTLE_ENDIAN
+#if TTD_ENDIAN == TTD_LITTLE_ENDIAN
 		png_set_bgr(png_ptr);
 		png_set_filler(png_ptr, 0, PNG_FILLER_AFTER);
 #else
 		png_set_filler(png_ptr, 0, PNG_FILLER_BEFORE);
-#endif
+#endif /* TTD_ENDIAN == TTD_LITTLE_ENDIAN */
 	}
 
 	/* use by default 64k temp memory */

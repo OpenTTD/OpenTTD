@@ -1251,11 +1251,11 @@ bool ReadLanguagePack(int lang_index)
 		return false;
 	}
 
-#if defined(TTD_BIG_ENDIAN)
+#if TTD_ENDIAN == TTD_BIG_ENDIAN
 	for (i = 0; i != 32; i++) {
 		lang_pack->offsets[i] = ReadLE16Aligned(&lang_pack->offsets[i]);
 	}
-#endif
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
 	tot_count = 0;
 	for (i = 0; i != 32; i++) {
