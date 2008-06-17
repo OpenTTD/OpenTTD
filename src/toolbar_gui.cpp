@@ -162,11 +162,11 @@ static void ToolbarOptionsClick(Window *w)
 static void MenuClickSettings(int index)
 {
 	switch (index) {
-		case 0: ShowGameOptions();      return;
-		case 1: ShowGameDifficulty();   return;
-		case 2: ShowPatchesSelection(); return;
-		case 3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
-		case 4: ShowTransparencyToolbar(); break;
+		case  0: ShowGameOptions();                              return;
+		case  1: ShowGameDifficulty();                           return;
+		case  2: ShowPatchesSelection();                         return;
+		case  3: ShowNewGRFSettings(!_networking, true, true, &_grfconfig);   return;
+		case  4: ShowTransparencyToolbar();                      break;
 
 		case  6: ToggleBit(_display_opt, DO_SHOW_TOWN_NAMES);    break;
 		case  7: ToggleBit(_display_opt, DO_SHOW_STATION_NAMES); break;
