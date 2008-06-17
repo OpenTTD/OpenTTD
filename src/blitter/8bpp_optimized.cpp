@@ -14,10 +14,11 @@ static FBlitter_8bppOptimized iFBlitter_8bppOptimized;
 void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom)
 {
 	/* Find the offset of this zoom-level */
-	uint offset = ((const uint8 *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2] | ((const byte *)bp->sprite)[(int)(zoom - ZOOM_LVL_BEGIN) * 2 + 1] << 8;
+	const SpriteData *sprite_src = (const SpriteData *)bp->sprite;
+	uint offset = sprite_src->offset[zoom];
 
 	/* Find where to start reading in the source sprite */
-	const uint8 *src = (const uint8 *)bp->sprite + offset;
+	const uint8 *src = sprite_src->data + offset;
 	uint8 *dst_line = (uint8 *)bp->dst + bp->top * bp->pitch + bp->left;
 
 	/* Skip over the top lines in the source image */
@@ -101,7 +102,7 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator)
 {
 	/* Make memory for all zoom-levels */
-	uint memory = (int)(ZOOM_LVL_END - ZOOM_LVL_BEGIN) * sizeof(uint16);
+	uint memory = sizeof(SpriteData);
 
 	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
 		memory += UnScaleByZoom(sprite->height, i) * UnScaleByZoom(sprite->width, i);
@@ -109,15 +110,14 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 
 	/* We have no idea how much memory we really need, so just guess something */
 	memory *= 5;
-	byte *temp_dst = MallocT<byte>(memory);
-	byte *dst = &temp_dst[(ZOOM_LVL_END - ZOOM_LVL_BEGIN) * 2];
+	SpriteData *temp_dst = (SpriteData *)MallocT<byte>(memory);
+	byte *dst = temp_dst->data;
 
 	/* Make the sprites per zoom-level */
 	for (ZoomLevel i = ZOOM_LVL_BEGIN; i < ZOOM_LVL_END; i++) {
 		/* Store the index table */
-		uint index = dst - temp_dst;
-		temp_dst[i * 2] = index & 0xFF;
-		temp_dst[i * 2 + 1] = (index >> 8) & 0xFF;
+		uint offset = dst - temp_dst->data;
+		temp_dst->offset[i] = offset;
 
 		/* cache values, because compiler can't cache it */
 		int scaled_height = UnScaleByZoom(sprite->height, i);
@@ -179,7 +179,7 @@ Sprite *Blitter_8bppOptimized::Encode(SpriteLoader::Sprite *sprite, Blitter::All
 		}
 	}
 
-	uint size = dst - temp_dst;
+	uint size = dst - (byte *)temp_dst;
 
 	/* Safety check, to make sure we guessed the size correctly */
 	assert(size < memory);

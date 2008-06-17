@@ -16,6 +16,9 @@ enum ZoomLevel {
 	ZOOM_LVL_OUT_8X,
 	ZOOM_LVL_END,
 
+	/* Number of zoom levels */
+	ZOOM_LVL_COUNT = ZOOM_LVL_END - ZOOM_LVL_BEGIN,
+
 	/* Here we define in which zoom viewports are */
 	ZOOM_LVL_VIEWPORT = ZOOM_LVL_NORMAL,
 	ZOOM_LVL_NEWS     = ZOOM_LVL_NORMAL,
