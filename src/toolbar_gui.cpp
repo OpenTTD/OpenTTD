@@ -1152,7 +1152,7 @@ public:
 		}
 		uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
 
-		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count - 1; i++) {
+		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count; i++) {
 			switch (i) {
 				case 4:
 					this->widget[i].left = x;
