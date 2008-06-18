@@ -4,6 +4,7 @@
 
 #include "../stdafx.h"
 #include "../core/alloc_func.hpp"
+#include "../core/math_func.hpp"
 #include "../gfx_func.h"
 #include "../zoom_func.h"
 #include "../debug.h"
@@ -291,20 +292,29 @@ int Blitter_32bppAnim::BufferSize(int width, int height)
 void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 {
 	assert(!_screen_disable_anim);
-	uint8 *anim = this->anim_buf;
+	assert(_screen.width == this->anim_buf_width && _screen.height == this->anim_buf_height);
 
 	/* Never repaint the transparency pixel */
-	if (start == 0) start++;
+	if (start == 0) {
+		start++;
+		count--;
+	}
+
+	const uint8 *anim = this->anim_buf;
+	uint32 *dst = (uint32 *)_screen.dst_ptr;
 
 	/* Let's walk the anim buffer and try to find the pixels */
-	for (int y = 0; y < this->anim_buf_height; y++) {
-		for (int x = 0; x < this->anim_buf_width; x++) {
-			if (*anim >= start && *anim <= start + count) {
+	for (int y = this->anim_buf_height; y != 0 ; y--) {
+		for (int x = this->anim_buf_width; x != 0 ; x--) {
+			uint colour = *anim;
+			if (IsInsideBS(colour, start, count)) {
 				/* Update this pixel */
-				this->SetPixel(_screen.dst_ptr, x, y, *anim);
+				*dst = LookupColourInPalette(colour);
 			}
+			dst++;
 			anim++;
 		}
+		dst += _screen.pitch - _screen.width;
 	}
 
 	/* Make sure the backend redraws the whole screen */
