@@ -292,7 +292,6 @@ int Blitter_32bppAnim::BufferSize(int width, int height)
 void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 {
 	assert(!_screen_disable_anim);
-	assert(_screen.width == this->anim_buf_width && _screen.height == this->anim_buf_height);
 
 	/* Never repaint the transparency pixel */
 	if (start == 0) {
@@ -314,7 +313,7 @@ void Blitter_32bppAnim::PaletteAnimate(uint start, uint count)
 			dst++;
 			anim++;
 		}
-		dst += _screen.pitch - _screen.width;
+		dst += _screen.pitch - this->anim_buf_width;
 	}
 
 	/* Make sure the backend redraws the whole screen */
