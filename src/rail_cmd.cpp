@@ -1847,12 +1847,12 @@ default_waypoint:
 
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
-		/* End now if buildings are invisible */
-		if (IsInvisibilitySet(TO_BUILDINGS)) return;
-
 		foreach_draw_tile_seq(dtss, dts->seq) {
 			SpriteID image = dtss->image.sprite;
 			SpriteID pal;
+
+			/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
+			if (IsInvisibilitySet(TO_BUILDINGS) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
 
 			/* Unlike stations, our default waypoint has no variation for
 			 * different railtype, so don't use the railtype offset if

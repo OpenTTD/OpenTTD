@@ -187,14 +187,14 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 
 	if (GB(image, 0, SPRITE_WIDTH) != 0) DrawGroundSprite(image, pal);
 
-	/* End now if industries are invisible */
-	if (IsInvisibilitySet(TO_INDUSTRIES)) return;
-
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		if (GB(dtss->image.sprite, 0, SPRITE_WIDTH) == 0) continue;
 
 		image = dtss->image.sprite;
 		pal   = dtss->image.pal;
+
+		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
+		if (IsInvisibilitySet(TO_INDUSTRIES) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 

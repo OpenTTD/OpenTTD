@@ -2221,12 +2221,13 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawTramCatenary(ti, axis == AXIS_X ? ROAD_X : ROAD_Y);
 	}
 
-	/* End now if buildings are invisible */
-	if (IsInvisibilitySet(TO_BUILDINGS)) return;
-
 	const DrawTileSeqStruct *dtss;
 	foreach_draw_tile_seq(dtss, t->seq) {
 		SpriteID image = dtss->image.sprite;
+
+		/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
+		if (IsInvisibilitySet(TO_BUILDINGS) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
+
 		if (relocation == 0 || HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += total_offset;
 		} else {
