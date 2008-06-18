@@ -95,7 +95,8 @@ enum ToolbarScenEditorWidgets {
 	TBSE_FASTFORWARD,
 	TBSE_SAVESCENARIO = 3,
 	TBSE_SPACERPANEL,
-	TBSE_DATEBACKWARD = 6,
+	TBSE_SEPARATOR,
+	TBSE_DATEBACKWARD,
 	TBSE_DATEFORWARD,
 	TBSE_ZOOMIN       = 9,
 	TBSE_ZOOMOUT,
@@ -1154,7 +1155,7 @@ public:
 
 		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count; i++) {
 			switch (i) {
-				case 4:
+				case TBSE_SPACERPANEL:
 					this->widget[i].left = x;
 					if (this->width < normal_min_width) {
 						this->widget[i].right = x;
@@ -1166,7 +1167,7 @@ public:
 					this->widget[i].right = x - 1;
 					break;
 
-				case 5: {
+				case TBSE_SEPARATOR: {
 					int offset = x - this->widget[i].left;
 					this->widget[i + 1].left  += offset;
 					this->widget[i + 1].right += offset;
