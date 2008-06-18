@@ -98,7 +98,8 @@ enum ToolbarScenEditorWidgets {
 	TBSE_SEPARATOR,
 	TBSE_DATEBACKWARD,
 	TBSE_DATEFORWARD,
-	TBSE_ZOOMIN       = 9,
+	TBSE_SMALLMAP,
+	TBSE_ZOOMIN,
 	TBSE_ZOOMOUT,
 	TBSE_LANDGENERATE,
 	TBSE_TOWNGENERATE,
@@ -106,6 +107,14 @@ enum ToolbarScenEditorWidgets {
 	TBSE_BUILDROAD,
 	TBSE_PLANTTREES,
 	TBSE_PLACESIGNS,
+};
+
+/** The idea of this enum is to allow a separation between widget position
+ * and _menu_clicked_procs's entry.  By shifting, the "action" id is extracted and
+ * kept safe for usage when reuired.
+ * @see ToolbarMenuWindow::OnMouseLoop */
+enum ScenarioEditorMenuActions {
+	SEMA_MAP_CLICK = 17 << 8,
 };
 
 static ToolbarMode _toolbar_mode;
@@ -658,8 +667,12 @@ static void ToolbarScenDateForward(Window *w)
 
 static void ToolbarScenMapTownDir(Window *w)
 {
-	/* Scenario editor button, *hack*hack* use different button to activate */
-	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 4);
+	/* Scenario editor button, Use different button to activate.
+	 * This scheme will allow to have an action (SEMA_MAP_CLICK, which is in fact
+	 * an entry in _menu_clicked_procs) while at the same time having a start button
+	 * who is not at the same index as its action
+	 * @see ToolbarMenuWindow::OnMouseLoop */
+	PopupMainToolbMenu(w, TBSE_SMALLMAP | SEMA_MAP_CLICK, STR_02DE_MAP_OF_WORLD, 4);
 }
 
 static void ToolbarScenZoomIn(Window *w)
