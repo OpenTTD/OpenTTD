@@ -2,11 +2,18 @@
 
 /** @file palettes.h The colour translation of the GRF palettes. */
 
-#define M(r, g, b) { r, g, b }
+#include "../core/endian_type.hpp"
+
+#if TTD_ENDIAN == TTD_BIG_ENDIAN
+	#define M(r, g, b) { 0xff, r, g, b }
+#else
+	#define M(r, g, b) { b, g, r, 0xff }
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+
 static const Colour _palettes[][256] = {
 	/* palette 1 (TTD Windows) */
 	{
-		M(  0,   0,   0), M(212,   0, 212), M(212,   0, 212), M(212,   0, 212),
+		{  0, 0, 0, 0  }, M(212,   0, 212), M(212,   0, 212), M(212,   0, 212),
 		M(212,   0, 212), M(212,   0, 212), M(212,   0, 212), M(212,   0, 212),
 		M(212,   0, 212), M(212,   0, 212), M(168, 168, 168), M(184, 184, 184),
 		M(200, 200, 200), M(216, 216, 216), M(232, 232, 232), M(252, 252, 252),
@@ -74,7 +81,7 @@ static const Colour _palettes[][256] = {
 
 	/* palette 2 (mixed TTD DOS + TTD Windows palette */
 	{
-		M(  0,   0,   0), M( 16,  16,  16), M( 32,  32,  32), M( 48,  48,  48),
+		{  0, 0, 0, 0  }, M( 16,  16,  16), M( 32,  32,  32), M( 48,  48,  48),
 		M( 65,  64,  65), M( 82,  80,  82), M( 98, 101,  98), M(115, 117, 115),
 		M(131, 133, 131), M(148, 149, 148), M(168, 168, 168), M(184, 184, 184),
 		M(200, 200, 200), M(216, 216, 216), M(232, 232, 232), M(252, 252, 252),

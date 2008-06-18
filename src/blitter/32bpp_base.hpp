@@ -37,11 +37,10 @@ public:
 
 	/**
 	 * Look up the colour in the current palette.
-	 **/
-	static inline uint32 LookupColourInPalette(uint8 index)
+	 */
+	static inline uint32 LookupColourInPalette(uint index)
 	{
-		if (index == 0) return 0x00000000; // Full transparent pixel */
-		return ComposeColour(0xFF, _cur_palette[index].r, _cur_palette[index].g, _cur_palette[index].b);
+		return _cur_palette[index];
 	}
 
 	/**

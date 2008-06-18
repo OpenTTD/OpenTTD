@@ -5,6 +5,7 @@
 #ifndef GFX_TYPE_H
 #define GFX_TYPE_H
 
+#include "core/endian_type.hpp"
 #include "core/enum_type.hpp"
 #include "core/geometry_type.hpp"
 #include "zoom_type.h"
@@ -142,9 +143,13 @@ struct DrawPixelInfo {
 };
 
 struct Colour {
-	byte r;
-	byte g;
-	byte b;
+#if TTD_ENDIAN == TTD_BIG_ENDIAN
+	uint8 a, r, g, b; ///< colour channels in BE order
+#else
+	uint8 b, g, r, a; ///< colour channels in LE order
+#endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
+
+	operator uint32 () { return *(uint32 *)this; }
 };
 
 enum FontSize {

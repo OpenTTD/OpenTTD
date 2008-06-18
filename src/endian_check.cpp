@@ -19,7 +19,7 @@ enum Endian {
 };
 
 /**
- * Shortcut to printf("#define TTD_*_ENDIAN 0/1")
+ * Shortcut to printf("#define TTD_ENDIAN TTD_*_ENDIAN")
  * @param endian endian type to define
  */
 static inline void printf_endian(Endian endian)
