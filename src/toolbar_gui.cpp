@@ -1611,6 +1611,11 @@ static const Widget _player_menu_widgets[] = {
 { WIDGETS_END},
 };
 
+/** Shows the list of players appearing under the buttons that are linked to options for
+ * multiple players.
+ * @param parent Window who triggered that action.  It's the toolbar, in fact
+ * @param main_button widget which has been used
+ * @param gray bit-mapping of the items that will need to be grayed out once displayed */
 static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray)
 {
 	parent->LowerWidget(main_button);
