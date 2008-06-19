@@ -70,6 +70,13 @@ public:
 	{
 		const char *default_blitter = "8bpp-optimized";
 
+#if defined(__APPLE__)
+		/* MacOS X 10.5 removed 8bpp fullscreen support.
+		 * Because of this we will pick 32bpp by default */
+		if (MacOSVersionIsAtLeast(10, 5, 0)) {
+			default_blitter = "32bpp-anim";
+		}
+#endif /* defined(__APPLE__) */
 		if (GetBlitters().size() == 0) return NULL;
 		const char *bname = (StrEmpty(name)) ? default_blitter : name;
 
