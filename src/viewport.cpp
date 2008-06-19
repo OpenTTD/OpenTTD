@@ -546,7 +546,7 @@ void OffsetGroundSprite(int x, int y)
 	}
 
 	/* _vd.last_child == NULL if foundation sprite was clipped by the viewport bounds */
-	if (_vd.last_child != NULL) _vd.foundation[_vd.foundation_part] = _vd.parent_sprites_to_draw.items - 1;
+	if (_vd.last_child != NULL) _vd.foundation[_vd.foundation_part] = _vd.parent_sprites_to_draw.Length() - 1;
 
 	_vd.foundation_offset[_vd.foundation_part].x = x;
 	_vd.foundation_offset[_vd.foundation_part].y = y;
@@ -715,7 +715,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 		pal = PALETTE_TO_TRANSPARENT;
 	}
 
-	*_vd.last_child = _vd.child_screen_sprites_to_draw.items;
+	*_vd.last_child = _vd.child_screen_sprites_to_draw.Length();
 
 	ChildScreenSpriteToDraw *cs = _vd.child_screen_sprites_to_draw.Append();
 	cs->image = image;
@@ -1478,7 +1478,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	ViewportAddSigns(&_vd.dpi);
 	ViewportAddWaypoints(&_vd.dpi);
 
-	if (_vd.tile_sprites_to_draw.items != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
+	if (_vd.tile_sprites_to_draw.Length() != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
 
 	ParentSpriteToDraw *psd_end = _vd.parent_sprites_to_draw.End();
 	for (ParentSpriteToDraw *it = _vd.parent_sprites_to_draw.Begin(); it != psd_end; it++) {
@@ -1490,15 +1490,15 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	if (_draw_bounding_boxes) ViewportDrawBoundingBoxes(&_vd.parent_sprites_to_sort);
 
-	if (_vd.string_sprites_to_draw.items != 0) ViewportDrawStrings(&_vd.dpi, &_vd.string_sprites_to_draw);
+	if (_vd.string_sprites_to_draw.Length() != 0) ViewportDrawStrings(&_vd.dpi, &_vd.string_sprites_to_draw);
 
 	_cur_dpi = old_dpi;
 
-	_vd.string_sprites_to_draw.items = 0;
-	_vd.tile_sprites_to_draw.items = 0;
-	_vd.parent_sprites_to_draw.items = 0;
-	_vd.parent_sprites_to_sort.items = 0;
-	_vd.child_screen_sprites_to_draw.items = 0;
+	_vd.string_sprites_to_draw.Clear();
+	_vd.tile_sprites_to_draw.Clear();
+	_vd.parent_sprites_to_draw.Clear();
+	_vd.parent_sprites_to_sort.Clear();
+	_vd.child_screen_sprites_to_draw.Clear();
 }
 
 /** Make sure we don't draw a too big area at a time.
