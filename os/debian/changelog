@@ -4,6 +4,36 @@ openttd (0.7~svn) unstable; urgency=low
 
  -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat, 22 Mar 2007 21:07:05 +0100
 
+openttd (0.6.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sun, 01 Jun 2008 15:35:00 +0200
+
+openttd (0.6.1~RC2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 21 May 2008 00:05:00 +0200
+
+openttd (0.6.1~RC1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat, 26 Apr 2008 22:55:00 +0200
+
+openttd (0.6.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 01 Apr 2008 13:33:37 +0100
+
+openttd (0.6.0~RC1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 26 Mar 2008 15:51:40 +0100
+
 openttd (0.6.0~beta5) unstable; urgency=low
 
   * New upstream release.
