@@ -385,7 +385,7 @@ public:
 		}
 
 		/* Set text of sort by dropdown */
-		this->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = _vehicle_sort_listing[this->vehicles.SortType()];
+		this->widget[GRP_WIDGET_SORT_BY_DROPDOWN].data = this->vehicle_sorter_names[this->vehicles.SortType()];
 
 		this->DrawWidgets();
 
@@ -478,7 +478,7 @@ public:
 				break;
 
 			case GRP_WIDGET_SORT_BY_DROPDOWN: // Select sorting criteria dropdown menu
-				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.SortType(),  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(),  GRP_WIDGET_SORT_BY_DROPDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 				return;
 
 			case GRP_WIDGET_ALL_VEHICLES: // All vehicles button

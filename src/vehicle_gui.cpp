@@ -45,21 +45,19 @@
 
 Sorting _sorting;
 
-typedef int CDECL VehicleSortListingTypeFunction(const Vehicle* const *, const Vehicle* const *);
+static GUIVehicleList::SortFunction VehicleNumberSorter;
+static GUIVehicleList::SortFunction VehicleNameSorter;
+static GUIVehicleList::SortFunction VehicleAgeSorter;
+static GUIVehicleList::SortFunction VehicleProfitThisYearSorter;
+static GUIVehicleList::SortFunction VehicleProfitLastYearSorter;
+static GUIVehicleList::SortFunction VehicleCargoSorter;
+static GUIVehicleList::SortFunction VehicleReliabilitySorter;
+static GUIVehicleList::SortFunction VehicleMaxSpeedSorter;
+static GUIVehicleList::SortFunction VehicleModelSorter;
+static GUIVehicleList::SortFunction VehicleValueSorter;
+static GUIVehicleList::SortFunction VehicleLengthSorter;
 
-static VehicleSortListingTypeFunction VehicleNumberSorter;
-static VehicleSortListingTypeFunction VehicleNameSorter;
-static VehicleSortListingTypeFunction VehicleAgeSorter;
-static VehicleSortListingTypeFunction VehicleProfitThisYearSorter;
-static VehicleSortListingTypeFunction VehicleProfitLastYearSorter;
-static VehicleSortListingTypeFunction VehicleCargoSorter;
-static VehicleSortListingTypeFunction VehicleReliabilitySorter;
-static VehicleSortListingTypeFunction VehicleMaxSpeedSorter;
-static VehicleSortListingTypeFunction VehicleModelSorter;
-static VehicleSortListingTypeFunction VehicleValueSorter;
-static VehicleSortListingTypeFunction VehicleLengthSorter;
-
-static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
+GUIVehicleList::SortFunction* const VehicleListBase::vehicle_sorter_funcs[] = {
 	&VehicleNumberSorter,
 	&VehicleNameSorter,
 	&VehicleAgeSorter,
@@ -73,7 +71,7 @@ static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleLengthSorter,
 };
 
-const StringID _vehicle_sort_listing[] = {
+const StringID VehicleListBase::vehicle_sorter_names[] = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_AGE,
@@ -104,7 +102,7 @@ static const Vehicle *_last_vehicle[2] = { NULL, NULL };
 
 void SortVehicleList(VehicleListBase *vl)
 {
-	if (vl->vehicles.Sort(_vehicle_sorter[vl->vehicles.SortType()])) return;
+	if (vl->vehicles.Sort()) return;
 
 	/* invalidate cached values for name sorter - vehicle names could change */
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
@@ -113,7 +111,7 @@ void SortVehicleList(VehicleListBase *vl)
 void DepotSortList(VehicleList *list)
 {
 	if (list->Length() < 2) return;
-	QSortT(list->Begin(), list->Length(), _vehicle_sorter[0]);
+	QSortT(list->Begin(), list->Length(), &VehicleNumberSorter);
 }
 
 /** draw the vehicle profit button in the vehicle list window. */
@@ -933,7 +931,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		this->DrawWidgets();
 
 		/* draw sorting criteria string */
-		DrawString(85, 15, _vehicle_sort_listing[this->vehicles.SortType()], TC_BLACK);
+		DrawString(85, 15, this->vehicle_sorter_names[this->vehicles.SortType()], TC_BLACK);
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
@@ -979,7 +977,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 				this->SetDirty();
 				break;
 			case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
-				ShowDropDownMenu(this, _vehicle_sort_listing, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
+				ShowDropDownMenu(this, this->vehicle_sorter_names, this->vehicles.SortType(), VLW_WIDGET_SORT_BY_PULLDOWN, 0, (this->vehicle_type == VEH_TRAIN || this->vehicle_type == VEH_ROAD) ? 0 : (1 << 10));
 				return;
 			case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / this->resize.step_height;

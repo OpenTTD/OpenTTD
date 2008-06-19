@@ -15,10 +15,6 @@
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
 
-#define PERIODIC_RESORT_DAYS 10
-
-extern const StringID _vehicle_sort_listing[];
-
 /** Constants of vehicle view widget indices */
 enum VehicleViewWindowWidgets {
 	VVW_WIDGET_CLOSEBOX = 0,
@@ -121,6 +117,14 @@ struct VehicleListBase {
 	GUIVehicleList vehicles;  ///< The list of vehicles
 	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
 	VehicleType vehicle_type; ///< The vehicle type that is sorted
+
+	static const StringID vehicle_sorter_names[];
+	static GUIVehicleList::SortFunction *const vehicle_sorter_funcs[];
+
+	VehicleListBase()
+	{
+		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
+	}
 };
 
 struct Sorting {
