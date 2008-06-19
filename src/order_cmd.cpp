@@ -1644,7 +1644,7 @@ static VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle 
  * @param order the order the vehicle currently has
  * @param v the vehicle to update
  */
-static bool UpdateOrderDest(Vehicle *v, const Order *order)
+static bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0)
 {
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:
@@ -1691,7 +1691,13 @@ static bool UpdateOrderDest(Vehicle *v, const Order *order)
 			} else {
 				v->cur_order_index++;
 			}
-			return false;
+
+			if (conditional_depth > v->num_orders) return false;
+
+			/* Get the current order */
+			if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
+
+			return UpdateOrderDest(v, GetVehicleOrder(v, v->cur_order_index), conditional_depth + 1);
 		}
 
 		default:
