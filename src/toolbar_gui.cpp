@@ -46,7 +46,7 @@
 #include "table/sprites.h"
 
 static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask = 0, int sel_index = 0, int checked_items = 0);
-static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray);
+static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray = 0);
 static void SplitToolbar(Window *w);
 
 RailType _last_built_railtype;
@@ -326,7 +326,7 @@ static void MenuClickSubsidies(int index)
 
 static void ToolbarStationsClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, TBN_STATIONS, 0);
+	PopupMainPlayerToolbMenu(w, TBN_STATIONS);
 }
 
 static void MenuClickStations(int index)
@@ -338,7 +338,7 @@ static void MenuClickStations(int index)
 
 static void ToolbarFinancesClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, TBN_FINANCES, 0);
+	PopupMainPlayerToolbMenu(w, TBN_FINANCES);
 }
 
 static void MenuClickFinances(int index)
@@ -350,7 +350,7 @@ static void MenuClickFinances(int index)
 
 static void ToolbarPlayersClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, TBN_PLAYERS, 0);
+	PopupMainPlayerToolbMenu(w, TBN_PLAYERS);
 }
 
 static void MenuClickCompany(int index)
