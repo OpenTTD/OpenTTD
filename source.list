@@ -1,10 +1,8 @@
 # Source Files
 airport.cpp
-core/alloc_func.cpp
 animated_tile.cpp
 articulated_vehicles.cpp
 aystar.cpp
-core/bitmath_func.cpp
 bmp.cpp
 callback_table.cpp
 cargopacket.cpp
@@ -62,7 +60,6 @@ pathfind.cpp
 players.cpp
 queue.cpp
 rail.cpp
-core/random_func.cpp
 rev.cpp
 road.cpp
 saveload.cpp
@@ -127,8 +124,6 @@ ai/ai.h
 aircraft.h
 airport.h
 airport_movement.h
-core/alloc_func.hpp
-core/alloc_type.hpp
 animated_tile_func.h
 articulated_vehicles.h
 autoreplace_base.h
@@ -137,7 +132,6 @@ autoreplace_gui.h
 autoreplace_type.h
 autoslope.h
 aystar.h
-core/bitmath_func.hpp
 bmp.h
 bridge.h
 callback_table.h
@@ -174,13 +168,10 @@ economy_type.h
 effectvehicle_func.h
 effectvehicle_base.h
 elrail_func.h
-core/endian_func.hpp
-core/endian_type.hpp
 engine_base.h
 engine_func.h
 engine_gui.h
 engine_type.h
-core/enum_type.hpp
 fiber.hpp
 fileio.h
 fios.h
@@ -188,7 +179,6 @@ fontcache.h
 functions.h
 gamelog.h
 genworld.h
-core/geometry_type.hpp
 gfx_func.h
 gfx_type.h
 gfxinit.h
@@ -205,9 +195,7 @@ livery.h
 lzoconf.h
 map_func.h
 map_type.h
-core/math_func.hpp
 md5.h
-core/mem_func.hpp
 minilzo.h
 mixer.h
 music.h
@@ -252,7 +240,6 @@ openttd.h
 order_base.h
 order_func.h
 order_type.h
-core/overflowsafe_type.hpp
 pathfind.h
 player_base.h
 player_face.h
@@ -264,7 +251,6 @@ queue.h
 rail.h
 rail_gui.h
 rail_type.h
-core/random_func.hpp
 rev.h
 road_cmd.h
 road_func.h
@@ -288,8 +274,6 @@ signs_func.h
 signs_type.h
 slope_func.h
 slope_type.h
-core/smallvec_type.hpp
-core/sort_func.hpp
 sortlist_type.h
 sound_func.h
 sound_type.h
@@ -361,6 +345,24 @@ sound/cocoa_s.h
 video/cocoa/cocoa_keys.h
 video/cocoa/cocoa_v.h
 #end
+
+# Core Source Code
+core/alloc_func.hpp
+core/alloc_func.cpp
+core/alloc_type.hpp
+core/bitmath_func.hpp
+core/bitmath_func.cpp
+core/endian_func.hpp
+core/endian_type.hpp
+core/enum_type.hpp
+core/geometry_type.hpp
+core/math_func.hpp
+core/mem_func.hpp
+core/overflowsafe_type.hpp
+core/random_func.hpp
+core/random_func.cpp
+core/smallvec_type.hpp
+core/sort_func.hpp
 
 # GUI Source Code
 aircraft_gui.cpp

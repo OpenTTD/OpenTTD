@@ -453,10 +453,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\alloc_func.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\animated_tile.cpp"
 				>
 			</File>
@@ -466,10 +462,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\aystar.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\bitmath_func.cpp"
 				>
 			</File>
 			<File
@@ -681,10 +673,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\random_func.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\rev.cpp"
 				>
 			</File>
@@ -805,14 +793,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\alloc_func.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\alloc_type.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\animated_tile_func.h"
 				>
 			</File>
@@ -842,10 +822,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\aystar.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\bitmath_func.hpp"
 				>
 			</File>
 			<File
@@ -993,14 +969,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\endian_func.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\endian_type.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\engine_base.h"
 				>
 			</File>
@@ -1014,10 +982,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\engine_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\enum_type.hpp"
 				>
 			</File>
 			<File
@@ -1046,10 +1010,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\genworld.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\geometry_type.hpp"
 				>
 			</File>
 			<File
@@ -1117,15 +1077,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\math_func.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\md5.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\mem_func.hpp"
 				>
 			</File>
 			<File
@@ -1305,10 +1257,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\overflowsafe_type.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\pathfind.h"
 				>
 			</File>
@@ -1350,10 +1298,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\rail_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\random_func.hpp"
 				>
 			</File>
 			<File
@@ -1446,14 +1390,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\slope_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\smallvec_type.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\core\sort_func.hpp"
 				>
 			</File>
 			<File
@@ -1682,6 +1618,74 @@
 			</File>
 			<File
 				RelativePath=".\..\src\zoom_type.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Core Source Code"
+			>
+			<File
+				RelativePath=".\..\src\core\alloc_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\alloc_func.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\alloc_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\bitmath_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\bitmath_func.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\endian_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\endian_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\enum_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\geometry_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\math_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\mem_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\overflowsafe_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\random_func.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\random_func.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\smallvec_type.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\core\sort_func.hpp"
 				>
 			</File>
 		</Filter>
