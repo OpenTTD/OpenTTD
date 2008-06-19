@@ -288,6 +288,7 @@ signs_func.h
 signs_type.h
 slope_func.h
 slope_type.h
+core/smallvec_type.hpp
 core/sort_func.hpp
 sortlist_type.h
 sound_func.h
@@ -552,7 +553,6 @@ misc/dbg_helpers.cpp
 misc/dbg_helpers.h
 misc/fixedsizearray.hpp
 misc/hashtable.hpp
-misc/smallvec.h
 misc/str.hpp
 misc/strapi.hpp
 

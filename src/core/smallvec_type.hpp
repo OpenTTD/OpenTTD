@@ -1,12 +1,12 @@
 /* $Id$ */
 
-/** @file smallvec.h Simple vector class that allows allocating an item without the need to copy this->data needlessly. */
+/** @file smallvec_type.hpp Simple vector class that allows allocating an item without the need to copy this->data needlessly. */
 
-#ifndef SMALLVEC_H
-#define SMALLVEC_H
+#ifndef SMALLVEC_TYPE_HPP
+#define SMALLVEC_TYPE_HPP
 
-#include "../core/alloc_func.hpp"
-#include "../core/math_func.hpp"
+#include "alloc_func.hpp"
+#include "math_func.hpp"
 
 /**
  * Simple vector template class.
@@ -19,11 +19,13 @@
  * @param S The steps of allocation
  */
 template <typename T, uint S>
-struct SmallVector {
+class SmallVector {
+protected:
 	T *data;       ///< The pointer to the first item
 	uint items;    ///< The number of items stored
 	uint capacity; ///< The avalible space for storing items
 
+public:
 	SmallVector() : data(NULL), items(0), capacity(0) { }
 
 	~SmallVector()
@@ -160,4 +162,4 @@ struct SmallVector {
 	}
 };
 
-#endif /* SMALLVEC_H */
+#endif /* SMALLVEC_TYPE_HPP */

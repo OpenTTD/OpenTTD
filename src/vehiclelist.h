@@ -5,7 +5,7 @@
 #ifndef VEHICLELIST_H
 #define VEHICLELIST_H
 
-#include "misc/smallvec.h"
+#include "core/smallvec_type.hpp"
 
 typedef SmallVector<const Vehicle *, 32> VehicleList;
 

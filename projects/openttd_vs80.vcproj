@@ -1452,6 +1452,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\smallvec_type.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\sort_func.hpp"
 				>
 			</File>
@@ -2401,10 +2405,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\misc\hashtable.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\misc\smallvec.h"
 				>
 			</File>
 			<File

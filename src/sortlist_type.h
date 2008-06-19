@@ -9,7 +9,7 @@
 #include "core/bitmath_func.hpp"
 #include "core/mem_func.hpp"
 #include "core/sort_func.hpp"
-#include "misc/smallvec.h"
+#include "core/smallvec_type.hpp"
 #include "date_type.h"
 
 enum SortListFlags {

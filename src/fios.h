@@ -6,7 +6,7 @@
 #define FIOS_H
 
 #include "strings_type.h"
-#include "misc/smallvec.h"
+#include "core/smallvec_type.hpp"
 
 enum {
 	/**

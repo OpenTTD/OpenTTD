@@ -44,7 +44,7 @@
 #include "settings_type.h"
 #include "station_func.h"
 #include "core/alloc_type.hpp"
-#include "misc/smallvec.h"
+#include "core/smallvec_type.hpp"
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
