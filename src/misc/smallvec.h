@@ -8,11 +8,21 @@
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
 
+/**
+ * Simple vector template class.
+ *
+ * @note There are no asserts in the class so you have
+ *       to care about that you grab an item which is
+ *       inside the list.
+ *
+ * @param T The type of the items stored
+ * @param S The steps of allocation
+ */
 template <typename T, uint S>
 struct SmallVector {
-	T *data;
-	uint items;
-	uint capacity;
+	T *data;       ///< The pointer to the first item
+	uint items;    ///< The number of items stored
+	uint capacity; ///< The avalible space for storing items
 
 	SmallVector() : data(NULL), items(0), capacity(0) { }
 
@@ -65,41 +75,85 @@ struct SmallVector {
 		return this->items;
 	}
 
+	/**
+	 * Get the pointer to the first item (const)
+	 *
+	 * @return the pointer to the first item
+	 */
 	const T *Begin() const
 	{
 		return this->data;
 	}
 
+	/**
+	 * Get the pointer to the first item
+	 *
+	 * @return the pointer to the first item
+	 */
 	T *Begin()
 	{
 		return this->data;
 	}
 
+	/**
+	 * Get the pointer behind the last valid item (const)
+	 *
+	 * @return the pointer behind the last valid item
+	 */
 	const T *End() const
 	{
 		return &this->data[this->items];
 	}
 
+	/**
+	 * Get the pointer behind the last valid item
+	 *
+	 * @return the pointer behind the last valid item
+	 */
 	T *End()
 	{
 		return &this->data[this->items];
 	}
 
+	/**
+	 * Get the pointer to item "number" (const)
+	 *
+	 * @param index the position of the item
+	 * @return the pointer to the item
+	 */
 	const T *Get(uint index) const
 	{
 		return &this->data[index];
 	}
 
+	/**
+	 * Get the pointer to item "number"
+	 *
+	 * @param index the position of the item
+	 * @return the pointer to the item
+	 */
 	T *Get(uint index)
 	{
 		return &this->data[index];
 	}
 
+	/**
+	 * Get item "number" (const)
+	 *
+	 * @param index the positon of the item
+	 * @return the item
+	 */
 	const T &operator[](uint index) const
 	{
 		return this->data[index];
 	}
 
+	/**
+	 * Get item "number"
+	 *
+	 * @param index the positon of the item
+	 * @return the item
+	 */
 	T &operator[](uint index)
 	{
 		return this->data[index];
