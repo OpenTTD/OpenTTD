@@ -460,8 +460,8 @@ static HANDLE _file_crash_log;
 static void GamelogPrintCrashLogProc(const char *s)
 {
 	DWORD num_written;
-	WriteFile(_file_crash_log, s, strlen(s), &num_written, NULL);
-	WriteFile(_file_crash_log, "\r\n", strlen("\r\n"), &num_written, NULL);
+	WriteFile(_file_crash_log, s, (DWORD)strlen(s), &num_written, NULL);
+	WriteFile(_file_crash_log, "\r\n", (DWORD)strlen("\r\n"), &num_written, NULL);
 }
 
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)

@@ -1033,7 +1033,7 @@ int8 SaveHighScoreValueNetwork()
 {
 	const Player* p;
 	const Player* pl[MAX_PLAYERS];
-	size_t count = 0;
+	uint count = 0;
 	int8 player = -1;
 
 	/* Sort all active players with the highest score first */
