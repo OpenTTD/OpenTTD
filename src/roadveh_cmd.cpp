@@ -1732,7 +1732,7 @@ again:
 				RoadStopType type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? ROADSTOP_BUS : ROADSTOP_TRUCK;
 
 				/* Check if next inline bay is free */
-				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type)) {
+				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
 					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
 
 					if (rs_n->IsFreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY))) {
