@@ -46,6 +46,7 @@
 #include "road_func.h"
 #include "player_base.h"
 #include "settings_type.h"
+#include "network/network.h"
 #include "map_func.h"
 #include <map>
 
@@ -3800,6 +3801,29 @@ static void CfgApply(byte *buf, size_t len)
 	}
 }
 
+/**
+ * Disable a static NewGRF when it is influencing another (non-static)
+ * NewGRF as this could cause desyncs.
+ *
+ * We could just tell the NewGRF querying that the file doesn't exist,
+ * but that might give unwanted results. Disabling the NewGRF gives the
+ * best result as no NewGRF author can complain about that.
+ * @param c the NewGRF to disable.
+ */
+static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
+{
+	if (c->error != NULL) {
+		free(c->error->custom_message);
+		free(c->error->data);
+		free(c->error);
+	}
+	c->status = GCS_DISABLED;
+	c->error  = CallocT<GRFError>(1);
+	c->error->data = strdup(_cur_grfconfig->name);
+	c->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+	c->error->message  = STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC;
+}
+
 /* Action 0x07 */
 /* Action 0x09 */
 static void SkipIf(byte *buf, size_t len)
@@ -3853,7 +3877,12 @@ static void SkipIf(byte *buf, size_t len)
 	if (param == 0x88 && condtype != 0x0B && condtype != 0x0C) {
 		/* GRF ID checks */
 
-		const GRFConfig *c = GetGRFConfig(cond_val);
+		GRFConfig *c = GetGRFConfig(cond_val);
+
+		if (c != NULL && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur_grfconfig->flags, GCF_STATIC) && c->status != GCS_DISABLED && _networking) {
+			DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
+			c = NULL;
+		}
 
 		if (condtype != 10 && c == NULL) {
 			grfmsg(7, "SkipIf: GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
@@ -4455,7 +4484,12 @@ static void ParamSet(byte *buf, size_t len)
 		} else {
 			/* Read another GRF File's parameter */
 			const GRFFile *file = GetFileByGRFID(data);
-			if (file == NULL || src1 >= file->param_end) {
+			GRFConfig *c = GetGRFConfig(data);
+			if (c != NULL && HasBit(c->status, GCF_STATIC) && !HasBit(_cur_grfconfig->status, GCF_STATIC) && _networking) {
+				/* Disable the read GRF if it is a static NewGRF. */
+				DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
+				src1 = 0;
+			} else if (file == NULL || src1 >= file->param_end || (c != NULL && c->status == GCS_DISABLED)) {
 				src1 = 0;
 			} else {
 				src1 = file->param[src1];
