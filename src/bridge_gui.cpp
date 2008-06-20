@@ -60,7 +60,7 @@ enum BuildBridgeSelectionWidgets {
 class BuildBridgeWindow : public Window {
 private:
 	/* Runtime saved values */
-	static uint last_size;
+	static uint16 last_size;
 	static Listing last_sorting;
 
 	/* Constants for sorting the bridges */
@@ -132,9 +132,8 @@ public:
 			this->vscroll.cap = 4;
 		} else {
 			/* Resize the bridge selection window if we used a bigger one the last time */
-			this->vscroll.cap = (this->vscroll.count > this->last_size) ? this->last_size : this->vscroll.count;
+			this->vscroll.cap = min(this->last_size, this->vscroll.count);
 			ResizeWindow(this, 0, (this->vscroll.cap - 4) * this->resize.step_height);
-			this->widget[BBSW_BRIDGE_LIST].data = (this->vscroll.cap << 8) + 1;
 		}
 
 		this->FindWindowPlacementAndResize(desc);
@@ -222,12 +221,12 @@ public:
 		this->widget[BBSW_BRIDGE_LIST].data = (this->vscroll.cap << 8) + 1;
 		SetVScrollCount(this, this->bridges->Length());
 
-		this->last_size = this->vscroll.cap;
+		this->last_size = max(this->vscroll.cap, this->last_size);
 	}
 };
 
 /* Set the default size of the Build Bridge Window */
-uint BuildBridgeWindow::last_size = 4;
+uint16 BuildBridgeWindow::last_size = 4;
 /* Set the default sorting for the bridges */
 Listing BuildBridgeWindow::last_sorting = {false, 0};
 
