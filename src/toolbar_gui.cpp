@@ -201,7 +201,7 @@ enum OptionMenuEntries {
 	OME_FULL_DETAILS,
 	OME_TRANSPARENTBUILDINGS,
 	OME_SHOW_STATIONSIGNS,
-	OME_END,
+	OME_MENUCOUNT,
 };
 
 static void ToolbarOptionsClick(Window *w)
@@ -216,7 +216,7 @@ static void ToolbarOptionsClick(Window *w)
 	if (IsTransparencySet(TO_HOUSES))                SetBit(x, OME_TRANSPARENTBUILDINGS);
 	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, OME_SHOW_STATIONSIGNS);
 
-	PopupMainToolbMenu(w, TBN_SETTINGS, STR_02C4_GAME_OPTIONS, OME_END, 0, 0, x);
+	PopupMainToolbMenu(w, TBN_SETTINGS, STR_02C4_GAME_OPTIONS, OME_MENUCOUNT, 0, 0, x);
 }
 
 static void MenuClickSettings(int index)
@@ -242,32 +242,49 @@ static void MenuClickSettings(int index)
 
 /* --- Saving/loading button menu --- */
 
+enum SaveLoadEditorMenuEntries {
+	SLEME_SAVE_SCENARIO   = 0,
+	SLEME_LOAD_SCENARIO,
+	SLEME_LOAD_HEIGHTMAP,
+	SLEME_EXIT_TOINTRO,
+	SLEME_EXIT_GAME       = 5,
+	SLEME_MENUCOUNT,
+};
+
+enum SaveLoadNormalMenuEntries {
+	SLNME_SAVE_GAME   = 0,
+	SLNME_LOAD_GAME,
+	SLNME_EXIT_TOINTRO,
+	SLNME_EXIT_GAME,
+	SLNME_MENUCOUNT,
+};
+
 static void ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_015C_SAVE_GAME, 4);
+	PopupMainToolbMenu(w, TBN_SAVEGAME, STR_015C_SAVE_GAME, SLNME_MENUCOUNT);
 }
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_0292_SAVE_SCENARIO, 6);
+	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_0292_SAVE_SCENARIO, SLEME_MENUCOUNT);
 }
 
 static void MenuClickSaveLoad(int index)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch (index) {
-			case 0: ShowSaveLoadDialog(SLD_SAVE_SCENARIO);  break;
-			case 1: ShowSaveLoadDialog(SLD_LOAD_SCENARIO);  break;
-			case 2: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
-			case 3: AskExitToGameMenu();                    break;
-			case 5: HandleExitGameRequest();                break;
+			case SLEME_SAVE_SCENARIO:  ShowSaveLoadDialog(SLD_SAVE_SCENARIO);  break;
+			case SLEME_LOAD_SCENARIO:  ShowSaveLoadDialog(SLD_LOAD_SCENARIO);  break;
+			case SLEME_LOAD_HEIGHTMAP: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+			case SLEME_EXIT_TOINTRO:   AskExitToGameMenu();                    break;
+			case SLEME_EXIT_GAME:      HandleExitGameRequest();                break;
 		}
 	} else {
 		switch (index) {
-			case 0: ShowSaveLoadDialog(SLD_SAVE_GAME); break;
-			case 1: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-			case 2: AskExitToGameMenu();               break;
-			case 3: HandleExitGameRequest();           break;
+			case SLNME_SAVE_GAME:      ShowSaveLoadDialog(SLD_SAVE_GAME); break;
+			case SLNME_LOAD_GAME:      ShowSaveLoadDialog(SLD_LOAD_GAME); break;
+			case SLNME_EXIT_TOINTRO:   AskExitToGameMenu();               break;
+			case SLNME_EXIT_GAME:      HandleExitGameRequest();           break;
 		}
 	}
 }
