@@ -46,8 +46,8 @@ typedef uint8  Day;
 
 struct YearMonthDay {
 	Year  year;
-	Month month;
-	Day   day;
+	Month month; ///< 0 - 11
+	Day   day;   ///< 1 - 31
 };
 
 static const Year INVALID_YEAR = -1;

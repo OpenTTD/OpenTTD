@@ -3566,9 +3566,13 @@ bool GetGlobalVariable(byte param, uint32 *value)
 			*value = Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 			return true;
 
-		case 0x02: // current month
-			*value = _cur_month;
+		case 0x02: { // detailed date information: month of year (bit 0-7), day of month (bit 8-12), leap year (bit 15), day of year (bit 16-24)
+			YearMonthDay ymd;
+			ConvertDateToYMD(_date, &ymd);
+			Date start_of_year = ConvertYMDToDate(ymd.year, 0, 1);
+			*value = ymd.month | (ymd.day - 1) << 8 | (IsLeapYear(ymd.year) ? 1 << 15 : 0) | (_date - start_of_year) << 16;
 			return true;
+		}
 
 		case 0x03: // current climate, 0=temp, 1=arctic, 2=trop, 3=toyland
 			*value = _settings_game.game_creation.landscape;

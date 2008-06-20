@@ -16,4 +16,9 @@ void SetDate(Date date);
 void ConvertDateToYMD(Date date, YearMonthDay *ymd);
 Date ConvertYMDToDate(Year year, Month month, Day day);
 
+static inline bool IsLeapYear(Year yr)
+{
+	return yr % 4 == 0 && (yr % 100 != 0 || yr % 400 == 0);
+}
+
 #endif /* DATE_FUNC_H */

@@ -77,11 +77,6 @@ static const uint16 _accum_days_for_month[] = {
 	ACCUM_SEP, ACCUM_OCT, ACCUM_NOV, ACCUM_DEC,
 };
 
-static inline bool IsLeapYear(Year yr)
-{
-	return yr % 4 == 0 && (yr % 100 != 0 || yr % 400 == 0);
-}
-
 /**
  * Converts a Date to a Year, Month & Day.
  * @param date the date to convert from
