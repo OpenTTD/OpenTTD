@@ -59,12 +59,12 @@ static bool _savegame_sort_dirty;
 static const Widget _land_info_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,    14,    92, 0x0,                            STR_NULL},
+{      WWT_PANEL, RESIZE_BOTTOM,    14,     0,   279,    14,    99, 0x0,                            STR_NULL},
 {    WIDGETS_END},
 };
 
 static const WindowDesc _land_info_desc = {
-	WDP_AUTO, WDP_AUTO, 280, 93, 280, 93,
+	WDP_AUTO, WDP_AUTO, 280, 100, 280, 100,
 	WC_LAND_INFO, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_land_info_widgets,
@@ -86,15 +86,15 @@ public:
 	{
 		this->DrawWidgets();
 
-		uint y = 16;
+		uint y = 21;
 		for (uint i = 0; i < LAND_INFO_CENTERED_LINES; i++) {
-			if (StrEmpty(this->landinfo_data[i])) continue;
+			if (StrEmpty(this->landinfo_data[i])) break;
 
 			DoDrawStringCentered(140, y, this->landinfo_data[i], i == 0 ? TC_LIGHT_BLUE : TC_FROMSTRING);
-			y += 11;
+			y += i == 0 ? 16 : 12;
 		}
 
-		y += 5;
+		y += 6;
 
 		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) DrawStringMultiCenter(140, y, BindCString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]), this->width - 4);
 	}
@@ -181,10 +181,8 @@ public:
 			line_nr++;
 		}
 
-		/* Remaining lines stay empty */
-		for (; line_nr < LAND_INFO_CENTERED_LINES; line_nr++) {
-			this->landinfo_data[line_nr][0] = '\0';
-		}
+		/* Mark last line empty */
+		this->landinfo_data[line_nr][0] = '\0';
 
 		/* Cargo acceptance is displayed in a extra multiline */
 		char *strp = GetString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE], STR_01CE_CARGO_ACCEPTED, lastof(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]));
@@ -211,6 +209,12 @@ public:
 		}
 		if (!found) this->landinfo_data[LAND_INFO_MULTICENTER_LINE][0] = '\0';
 
+		if (found) line_nr += 2;
+
+		if (line_nr > 6) ResizeWindow(this, 0, 12 * (line_nr - 6));
+
+		this->FindWindowPlacementAndResize(&_land_info_desc);
+
 #if defined(_DEBUG)
 #	define LANDINFOD_LEVEL 0
 #else
@@ -226,8 +230,6 @@ public:
 		DEBUG(misc, LANDINFOD_LEVEL, "m6           = %#x", _m[tile].m6);
 		DEBUG(misc, LANDINFOD_LEVEL, "m7           = %#x", _me[tile].m7);
 #undef LANDINFOD_LEVEL
-
-		this->FindWindowPlacementAndResize(&_land_info_desc);
 	}
 };
 
