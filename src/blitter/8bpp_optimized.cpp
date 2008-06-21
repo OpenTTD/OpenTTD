@@ -71,24 +71,28 @@ void Blitter_8bppOptimized::Draw(Blitter::BlitterParams *bp, BlitterMode mode, Z
 			/* Skip transparent pixels */
 			dst += trans;
 			width -= trans;
-			if (width <= 0) continue;
+			if (width <= 0 || pixels == 0) continue;
 			pixels = min<uint>(pixels, (uint)width);
 			width -= pixels;
 
 			switch (mode) {
-				case BM_COLOUR_REMAP:
-					for (uint x = 0; x < pixels; x++) {
-						if (bp->remap[*src] != 0) *dst = bp->remap[*src];
+				case BM_COLOUR_REMAP: {
+					const uint8 *remap = bp->remap;
+					do {
+						uint m = remap[*src];
+						if (m != 0) *dst = m;
 						dst++; src++;
-					}
-					break;
+					} while (--pixels != 0);
+				} break;
 
-				case BM_TRANSPARENT:
-					for (uint x = 0; x < pixels; x++) {
-						*dst = bp->remap[*dst];
-						dst++; src++;
-					}
-					break;
+				case BM_TRANSPARENT: {
+					const uint8 *remap = bp->remap;
+					src += pixels;
+					do {
+						*dst = remap[*dst];
+						dst++;
+					} while (--pixels != 0);
+				} break;
 
 				default:
 					memcpy(dst, src, pixels);
