@@ -201,6 +201,88 @@ uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
 	return GetNearbyTileInformation(tile);
 }
 
+/** Callback function to search a house by its HouseID
+ * @param tile TileIndex to be examined
+ * @param data house id, in order to get the specs
+ * @return true or false, if found or not
+ */
+static bool SearchNearbyHouseID(TileIndex tile, uint32 data)
+{
+	if (IsTileType(tile, MP_HOUSE)) {
+		const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile)); // tile been examined
+		if (hs->grffile != NULL) { // must be one from a grf file
+			const HouseSpec *test_hs = GetHouseSpecs((HouseID)GB(data, 0, 16));
+			return hs->local_id == test_hs->local_id &&  // same local id as the one requested
+				hs->grffile->grfid == test_hs->grffile->grfid;  // from the same grf
+		}
+	}
+	return false;
+}
+
+/** Callback function to search a house by its classID
+ * @param tile TileIndex to be examined
+ * @param data house id, in order to get the specs
+ * @return true or false, if found or not
+ */
+static bool SearchNearbyHouseClass(TileIndex tile, uint32 data)
+{
+	if (IsTileType(tile, MP_HOUSE)) {
+		const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile)); // tile been examined
+		if (hs->grffile != NULL) { // must be one from a grf file
+			const HouseSpec *test_hs = GetHouseSpecs((HouseID)GB(data, 0, 16));
+			return hs->class_id == test_hs->class_id &&  // same classid as the one requested
+				hs->grffile->grfid == test_hs->grffile->grfid;  // from the same grf
+		}
+	}
+	return false;
+}
+
+/** Callback function to search a house by its grfID
+ * @param tile TileIndex to be examined
+ * @param data house id, in order to get the specs
+ * @return true or false, if found or not
+ */
+static bool SearchNearbyHouseGRFID(TileIndex tile, uint32 data)
+{
+	if (IsTileType(tile, MP_HOUSE)) {
+		const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile)); // tile been examined
+		if (hs->grffile != NULL) { // must be one from a grf file
+			const HouseSpec *test_hs = GetHouseSpecs((HouseID)GB(data, 0, 16));
+			return hs->grffile->grfid == test_hs->grffile->grfid;  // from the same grf
+		}
+	}
+	return false;
+}
+
+/** This function will activate a search around a central tile, looking for some houses
+ * that fit the requested characteristics
+ * @param parameter that is given by the callback.
+ *                  bits 0..6 radius of the search
+ *                  bits 7..8 search type i.e.: 0 = houseID/ 1 = classID/ 2 = grfID
+ * @param tile TileIndex from which to start the search
+ * @param data the HouseID that is associated to the house work who started the callback
+ * @result the Manhattan distance from the center tile, if any, and 0 if failure
+  */
+static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, uint32 data)
+{
+	static TestTileOnSearchProc * const search_procs[3] = {
+		SearchNearbyHouseID,
+		SearchNearbyHouseClass,
+		SearchNearbyHouseGRFID,
+	};
+	TileIndex found_tile = tile;
+	uint8 searchtype = GB(parameter, 6, 2);
+	uint8 searchradius = GB(parameter, 0, 6);
+	if (searchtype >= lengthof(search_procs)) return 0;  // do not run on ill-defined code
+	if (searchradius < 2) return 0; // do not use a too low radius
+
+	/* Use a pointer for the tile to start the search. Will be required for calculating the distance*/
+	if (CircularTileSearch(&found_tile, searchradius, search_procs[searchtype], data)) {
+		return DistanceManhattan(found_tile, tile);
+	}
+	return 0;
+}
+
 /**
  * HouseGetVariable():
  *
@@ -259,6 +341,12 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 			TileIndex testtile = GetNearbyTile(parameter, tile);
 			return IsTileType(testtile, MP_HOUSE) ? GetHouseAnimationFrame(testtile) : 0;
 		}
+
+		/* Cargo acceptance history of nearby stations */
+		/*case 0x64: not implemented yet */
+
+		/* Distance test for some house types */
+		case 0x65: return GetDistanceFromNearbyHouse(parameter, tile, object->u.house.house_id);
 
 		/* Read GRF parameter */
 		case 0x7F: return GetGRFParameter(object->u.house.house_id, parameter);
