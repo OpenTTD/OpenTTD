@@ -291,27 +291,37 @@ static void MenuClickSaveLoad(int index)
 
 /* --- Map button menu --- */
 
+enum MapMenuEntries {
+	MME_SHOW_SMALLMAP        = 0,
+	MME_SHOW_EXTRAVIEWPORTS,
+	MME_SHOW_SIGNLISTS,
+	MME_SHOW_TOWNDIRECTORY,    ///< This entry is only used in Editor mode
+	MME_MENUCOUNT_NORMAL = 3,
+	MME_MENUCOUNT_EDITOR = 4,
+};
+
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_SMALLMAP, STR_02DE_MAP_OF_WORLD, 3);
+	PopupMainToolbMenu(w, TBN_SMALLMAP, STR_02DE_MAP_OF_WORLD, MME_MENUCOUNT_NORMAL);
+}
+
+static void ToolbarScenMapTownDir(Window *w)
+{
+	/* Scenario editor button, Use different button to activate.
+	 * This scheme will allow to have an action (SEMA_MAP_CLICK, which is in fact
+	 * an entry in _menu_clicked_procs) while at the same time having a start button
+	 * who is not at the same index as its action
+	 * @see ToolbarMenuWindow::OnMouseLoop */
+	PopupMainToolbMenu(w, TBSE_SMALLMAP | SEMA_MAP_CLICK, STR_02DE_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
 }
 
 static void MenuClickMap(int index)
 {
 	switch (index) {
-		case 0: ShowSmallMap();            break;
-		case 1: ShowExtraViewPortWindow(); break;
-		case 2: ShowSignList();            break;
-	}
-}
-
-static void MenuClickScenMap(int index)
-{
-	switch (index) {
-		case 0: ShowSmallMap();            break;
-		case 1: ShowExtraViewPortWindow(); break;
-		case 2: ShowSignList();            break;
-		case 3: ShowTownDirectory();       break;
+		case MME_SHOW_SMALLMAP:       ShowSmallMap();            break;
+		case MME_SHOW_EXTRAVIEWPORTS: ShowExtraViewPortWindow(); break;
+		case MME_SHOW_SIGNLISTS:      ShowSignList();            break;
+		case MME_SHOW_TOWNDIRECTORY:  if (_game_mode == GM_EDITOR) ShowTownDirectory(); break;
 	}
 }
 
@@ -680,16 +690,6 @@ static void ToolbarScenDateForward(Window *w)
 		SetDate(ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
-}
-
-static void ToolbarScenMapTownDir(Window *w)
-{
-	/* Scenario editor button, Use different button to activate.
-	 * This scheme will allow to have an action (SEMA_MAP_CLICK, which is in fact
-	 * an entry in _menu_clicked_procs) while at the same time having a start button
-	 * who is not at the same index as its action
-	 * @see ToolbarMenuWindow::OnMouseLoop */
-	PopupMainToolbMenu(w, TBSE_SMALLMAP | SEMA_MAP_CLICK, STR_02DE_MAP_OF_WORLD, 4);
 }
 
 static void ToolbarScenZoomIn(Window *w)
@@ -1314,7 +1314,7 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 	MenuClickShowRoad,    /* 14 */
 	MenuClickShowShips,   /* 15 */
 	MenuClickShowAir,     /* 16 */
-	MenuClickScenMap,     /* 17 */
+	MenuClickMap,         /* 17 */
 	NULL,                 /* 18 */
 	MenuClickBuildRail,   /* 19 */
 	MenuClickBuildRoad,   /* 20 */
