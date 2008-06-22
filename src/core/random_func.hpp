@@ -59,12 +59,12 @@ void SetRandomSeed(uint32 seed);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint DoRandomRange(uint max, int line, const char *file);
 #else
-	static inline uint32 Random() { return _random.Next(); }
-	static inline uint32 RandomRange(uint16 max) { return _random.Next(max); }
+	static FORCEINLINE uint32 Random() { return _random.Next(); }
+	static FORCEINLINE uint32 RandomRange(uint16 max) { return _random.Next(max); }
 #endif
 
-static inline uint32 InteractiveRandom() { return _interactive_random.Next(); }
-static inline uint32 InteractiveRandomRange(uint16 max) { return _interactive_random.Next(max); }
+static FORCEINLINE uint32 InteractiveRandom() { return _interactive_random.Next(); }
+static FORCEINLINE uint32 InteractiveRandomRange(uint16 max) { return _interactive_random.Next(max); }
 
 /**
  * Checks if a given randomize-number is below a given probability.
@@ -81,7 +81,7 @@ static inline uint32 InteractiveRandomRange(uint16 max) { return _interactive_ra
  * @param r The given randomize-number
  * @return True if v is less or equals (a/b)
  */
-static inline bool Chance16I(const uint a, const uint b, const uint32 r)
+static FORCEINLINE bool Chance16I(const uint a, const uint b, const uint32 r)
 {
 	assert(b != 0);
 	return (uint16)r < (uint16)(((a << 16) + b / 2) / b);
@@ -99,7 +99,7 @@ static inline bool Chance16I(const uint a, const uint b, const uint32 r)
  * @param b The denominator of the fraction
  * @return True in (a/b) percent
  */
-static inline bool Chance16(const uint a, const uint b)
+static FORCEINLINE bool Chance16(const uint a, const uint b)
 {
 	return Chance16I(a, b, Random());
 }
@@ -119,7 +119,7 @@ static inline bool Chance16(const uint a, const uint b)
  * @param r The variable to save the randomize-number from Random()
  * @return True in (a/b) percent
  */
-static inline bool Chance16R(const uint a, const uint b, uint32 &r)
+static FORCEINLINE bool Chance16R(const uint a, const uint b, uint32 &r)
 {
 	r = Random();
 	return Chance16I(a, b, r);

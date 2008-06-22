@@ -20,8 +20,8 @@
  * @param comparator Function that compares two elements.
  * @param desc Sort descending.
  */
-template<typename T>
-FORCEINLINE void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
+template <typename T>
+static FORCEINLINE void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
 {
 	if (num < 2) return;
 
@@ -44,8 +44,8 @@ FORCEINLINE void QSortT(T *base, uint num, int (CDECL *comparator)(const T*, con
  * @param comparator Function that compares two elements.
  * @param desc Sort descending.
  */
-template<typename T>
-FORCEINLINE void GSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
+template <typename T>
+static inline void GSortT(T *base, uint num, int (CDECL *comparator)(const T*, const T*), bool desc = false)
 {
 	if (num < 2) return;
 

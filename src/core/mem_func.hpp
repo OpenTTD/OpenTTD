@@ -16,7 +16,7 @@
  * @param num number of items to be copied. (!not number of bytes!)
  */
 template <typename T>
-FORCEINLINE void MemCpyT(T *destination, const T *source, uint num = 1)
+static FORCEINLINE void MemCpyT(T *destination, const T *source, uint num = 1)
 {
 	memcpy(destination, source, num * sizeof(T));
 }
@@ -29,7 +29,7 @@ FORCEINLINE void MemCpyT(T *destination, const T *source, uint num = 1)
  * @param num number of items to be copied. (!not number of bytes!)
  */
 template <typename T>
-FORCEINLINE void MemMoveT(T *destination, const T *source, uint num = 1)
+static FORCEINLINE void MemMoveT(T *destination, const T *source, uint num = 1)
 {
 	memmove(destination, source, num * sizeof(T));
 }
@@ -42,7 +42,7 @@ FORCEINLINE void MemMoveT(T *destination, const T *source, uint num = 1)
  * @param num number of items to be set (!not number of bytes!)
  */
 template <typename T>
-FORCEINLINE void MemSetT(T *ptr, int value, uint num = 1)
+static FORCEINLINE void MemSetT(T *ptr, int value, uint num = 1)
 {
 	memset(ptr, value, num * sizeof(T));
 }
@@ -56,7 +56,7 @@ FORCEINLINE void MemSetT(T *ptr, int value, uint num = 1)
  * @return an int value indicating the relationship between the content of the two buffers
  */
 template <typename T>
-FORCEINLINE int MemCmpT(const T *ptr1, const T *ptr2, uint num = 1)
+static FORCEINLINE int MemCmpT(const T *ptr1, const T *ptr2, uint num = 1)
 {
 	return memcmp(ptr1, ptr2, num * sizeof(T));
 }
@@ -69,8 +69,8 @@ FORCEINLINE int MemCmpT(const T *ptr1, const T *ptr2, uint num = 1)
  * @param ptr1 Start-pointer to the block of memory.
  * @param ptr2 End-pointer to the block of memory.
  */
-template<typename T>
-FORCEINLINE void MemReverseT(T *ptr1, T *ptr2)
+template <typename T>
+static FORCEINLINE void MemReverseT(T *ptr1, T *ptr2)
 {
 	assert(ptr1 != NULL && ptr2 != NULL);
 	assert(ptr1 < ptr2);
@@ -86,8 +86,8 @@ FORCEINLINE void MemReverseT(T *ptr1, T *ptr2)
  * @param ptr Pointer to the block of memory.
  * @param num The number of items we want to reverse.
  */
-template<typename T>
-FORCEINLINE void MemReverseT(T *ptr, uint num)
+template <typename T>
+static FORCEINLINE void MemReverseT(T *ptr, uint num)
 {
 	assert(ptr != NULL);
 

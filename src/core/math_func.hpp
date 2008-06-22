@@ -27,7 +27,8 @@
  * @param b The second value
  * @return The greater value or a if equals
  */
-template<typename T> static inline T max(const T a, const T b)
+template <typename T>
+static FORCEINLINE T max(const T a, const T b)
 {
 	return (a >= b) ? a : b;
 }
@@ -42,7 +43,8 @@ template<typename T> static inline T max(const T a, const T b)
  * @param b The second value
  * @return The smaller value or b if equals
  */
-template<typename T> static inline T min(const T a, const T b)
+template <typename T>
+static FORCEINLINE T min(const T a, const T b)
 {
 	return (a < b) ? a : b;
 }
@@ -56,7 +58,7 @@ template<typename T> static inline T min(const T a, const T b)
  * @param b The second integer
  * @return The smaller value
  */
-static inline int min(const int a, const int b)
+static FORCEINLINE int min(const int a, const int b)
 {
 	return (a < b) ? a : b;
 }
@@ -70,7 +72,7 @@ static inline int min(const int a, const int b)
  * @param b The second unsigned integer
  * @return The smaller value
  */
-static inline uint minu(const uint a, const uint b)
+static FORCEINLINE uint minu(const uint a, const uint b)
 {
 	return (a < b) ? a : b;
 }
@@ -82,7 +84,8 @@ static inline uint minu(const uint a, const uint b)
  * @param a The value we want to unsign
  * @return The unsigned value
  */
-template <typename T> static inline T abs(const T a)
+template <typename T>
+static FORCEINLINE T abs(const T a)
 {
 	return (a < (T)0) ? -a : a;
 }
@@ -95,7 +98,8 @@ template <typename T> static inline T abs(const T a)
  * @param n The base of the number we are searching
  * @return The smallest multiple of n equal or greater than x
  */
-template<typename T> static inline T Align(const T x, uint n)
+template <typename T>
+static FORCEINLINE T Align(const T x, uint n)
 {
 	n--;
 	return (T)((x + n) & ~(n));
@@ -117,7 +121,7 @@ template<typename T> static inline T Align(const T x, uint n)
  * @returns A value between min and max which is closest to a.
  * @see ClampU(uint, uint, uint)
  */
-static inline int Clamp(const int a, const int min, const int max)
+static FORCEINLINE int Clamp(const int a, const int min, const int max)
 {
 	if (a <= min) return min;
 	if (a >= max) return max;
@@ -140,7 +144,7 @@ static inline int Clamp(const int a, const int min, const int max)
  * @returns A value between min and max which is closest to a.
  * @see Clamp(int, int, int)
  */
-static inline uint ClampU(const uint a, const uint min, const uint max)
+static FORCEINLINE uint ClampU(const uint a, const uint min, const uint max)
 {
 	if (a <= min) return min;
 	if (a >= max) return max;
@@ -161,7 +165,7 @@ static inline uint ClampU(const uint a, const uint min, const uint max)
  * @return The 64-bit value reduced to a 32-bit value
  * @see Clamp(int, int, int)
  */
-static inline int32 ClampToI32(const int64 a)
+static FORCEINLINE int32 ClampToI32(const int64 a)
 {
 	if (a <= INT32_MIN) return INT32_MIN;
 	if (a >= INT32_MAX) return INT32_MAX;
@@ -175,7 +179,7 @@ static inline int32 ClampToI32(const int64 a)
  * @return The 64-bit value reduced to a 16-bit value
  * @see ClampU(uint, uint, uint)
  */
-static inline uint16 ClampToU16(const uint64 a)
+static FORCEINLINE uint16 ClampToU16(const uint64 a)
 {
 	return (uint16)(a <= UINT16_MAX ? a : UINT16_MAX);
 }
@@ -187,7 +191,8 @@ static inline uint16 ClampToU16(const uint64 a)
  * @param b The second scalar
  * @return The absolute difference between the given scalars
  */
-template <typename T> static inline T Delta(const T a, const T b) {
+template <typename T>
+static FORCEINLINE T Delta(const T a, const T b) {
 	return (a < b) ? b - a : a - b;
 }
 
@@ -203,7 +208,8 @@ template <typename T> static inline T Delta(const T a, const T b) {
  * @param size The size of the interval
  * @return True if the value is in the interval, false else.
  */
-template<typename T> static inline bool IsInsideBS(const T x, const uint base, const uint size)
+template <typename T>
+static FORCEINLINE bool IsInsideBS(const T x, const uint base, const uint size)
 {
 	return (uint)(x - base) < size;
 }
@@ -218,7 +224,8 @@ template<typename T> static inline bool IsInsideBS(const T x, const uint base, c
  * @param max The maximum of the interval
  * @see IsInsideBS()
  */
-template<typename T> static inline bool IsInsideMM(const T x, const uint min, const uint max)
+template <typename T>
+static FORCEINLINE bool IsInsideMM(const T x, const uint min, const uint max)
 {
 	return (uint)(x - min) < (max - min);
 }
@@ -228,7 +235,8 @@ template<typename T> static inline bool IsInsideMM(const T x, const uint min, co
  * @param a variable to swap with b
  * @param b variable to swap with a
  */
-template<typename T> void Swap(T& a, T& b)
+template <typename T>
+static FORCEINLINE void Swap(T &a, T &b)
 {
 	T t = a;
 	a = b;

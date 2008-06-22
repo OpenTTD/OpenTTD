@@ -24,7 +24,8 @@ void NORETURN ReallocError(size_t size);
  * @param num_elements the number of elements to allocate of the given type.
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
-template <typename T> FORCEINLINE T* MallocT(size_t num_elements)
+template <typename T>
+static FORCEINLINE T *MallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -48,7 +49,8 @@ template <typename T> FORCEINLINE T* MallocT(size_t num_elements)
  * @param num_elements the number of elements to allocate of the given type.
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
-template <typename T> FORCEINLINE T* CallocT(size_t num_elements)
+template <typename T>
+static FORCEINLINE T *CallocT(size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always
@@ -73,7 +75,8 @@ template <typename T> FORCEINLINE T* CallocT(size_t num_elements)
  * @param num_elements the number of elements to allocate of the given type.
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
-template <typename T> FORCEINLINE T* ReallocT(T *t_ptr, size_t num_elements)
+template <typename T>
+FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always

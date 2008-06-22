@@ -21,7 +21,8 @@
  * @param n The number of bits to read.
  * @return The selected bits, aligned to a LSB.
  */
-template<typename T> static inline uint GB(const T x, const uint8 s, const uint8 n)
+template <typename T>
+static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
 {
 	return (x >> s) & ((1U << n) - 1);
 }
@@ -43,7 +44,8 @@ template<typename T> static inline uint GB(const T x, const uint8 s, const uint8
  * @param d The actually new bits to save in the defined position.
  * @return The new value of x
  */
-template<typename T, typename U> static inline T SB(T& x, const uint8 s, const uint8 n, const U d)
+template <typename T, typename U>
+static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)
 {
 	x &= (T)(~(((1U << n) - 1) << s));
 	x |= (T)(d << s);
@@ -64,7 +66,8 @@ template<typename T, typename U> static inline T SB(T& x, const uint8 s, const u
  * @param i The value to add at the given startposition in the given window.
  * @return The new value of x
  */
-template<typename T, typename U> static inline T AB(T& x, const uint8 s, const uint8 n, const U i)
+template <typename T, typename U>
+static FORCEINLINE T AB(T &x, const uint8 s, const uint8 n, const U i)
 {
 	const T mask = (T)(((1U << n) - 1) << s);
 	x = (T)((x & ~mask) | ((x + (i << s)) & mask));
@@ -82,7 +85,8 @@ template<typename T, typename U> static inline T AB(T& x, const uint8 s, const u
  * @param y The position of the bit to check, started from the LSB
  * @return True if the bit is set, false else.
  */
-template<typename T> static inline bool HasBit(const T x, const uint8 y)
+template <typename T>
+static FORCEINLINE bool HasBit(const T x, const uint8 y)
 {
 	return (x & ((T)1U << y)) != 0;
 }
@@ -110,7 +114,8 @@ template<typename T> static inline bool HasBit(const T x, const uint8 y)
  * @param y The bit position to set
  * @return The new value of the old value with the bit set
  */
-template<typename T> static inline T SetBit(T& x, const uint8 y)
+template <typename T>
+static FORCEINLINE T SetBit(T &x, const uint8 y)
 {
 	return x = (T)(x | (T)(1U << y));
 }
@@ -138,7 +143,8 @@ template<typename T> static inline T SetBit(T& x, const uint8 y)
  * @param y The bit position to clear
  * @return The new value of the old value with the bit cleared
  */
-template<typename T> static inline T ClrBit(T& x, const uint8 y)
+template <typename T>
+static FORCEINLINE T ClrBit(T &x, const uint8 y)
 {
 	return x = (T)(x & ~((T)1U << y));
 }
@@ -166,7 +172,8 @@ template<typename T> static inline T ClrBit(T& x, const uint8 y)
  * @param y The bit position to toggle
  * @return The new value of the old value with the bit toggled
  */
-template<typename T> static inline T ToggleBit(T& x, const uint8 y)
+template <typename T>
+static FORCEINLINE T ToggleBit(T &x, const uint8 y)
 {
 	return x = (T)(x ^ (T)(1U << y));
 }
@@ -201,7 +208,7 @@ extern const uint8 _ffb_64[64];
  * @return The position of the first bit which is set
  * @see FIND_FIRST_BIT
  */
-static inline uint8 FindFirstBit2x64(const int value)
+static FORCEINLINE uint8 FindFirstBit2x64(const int value)
 {
 	if ((value & 0xFF) == 0) {
 		return FIND_FIRST_BIT((value >> 8) & 0x3F) + 8;
@@ -223,7 +230,8 @@ uint8 FindLastBit(uint64 x);
  * @param value The value to clear the first bit
  * @return The new value with the first bit cleared
  */
-template<typename T> static inline T KillFirstBit(T value)
+template <typename T>
+static FORCEINLINE T KillFirstBit(T value)
 {
 	return value &= (T)(value - 1);
 }
@@ -234,7 +242,8 @@ template<typename T> static inline T KillFirstBit(T value)
  * @param value the value to count the number of bits in.
  * @return the number of bits.
  */
-template<typename T> static inline uint CountBits(T value)
+template <typename T>
+static inline uint CountBits(T value)
 {
 	uint num;
 
@@ -258,7 +267,8 @@ template<typename T> static inline uint CountBits(T value)
  * @param n The number how many we waht to rotate
  * @return A bit rotated number
  */
-template<typename T> static inline T ROL(const T x, const uint8 n)
+template <typename T>
+static FORCEINLINE T ROL(const T x, const uint8 n)
 {
 	return (T)(x << n | x >> (sizeof(x) * 8 - n));
 }
@@ -271,7 +281,8 @@ template<typename T> static inline T ROL(const T x, const uint8 n)
  * @param n The number how many we waht to rotate
  * @return A bit rotated number
  */
-template<typename T> static inline T ROR(const T x, const uint8 n)
+template <typename T>
+static FORCEINLINE T ROR(const T x, const uint8 n)
 {
 	return (T)(x >> n | x << (sizeof(x) * 8 - n));
 }
@@ -305,7 +316,7 @@ template<typename T> static inline T ROR(const T x, const uint8 n)
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static inline uint32 BSWAP32(uint32 x)
+	static FORCEINLINE uint32 BSWAP32(uint32 x)
 	{
 		return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
 	}
@@ -315,7 +326,7 @@ template<typename T> static inline T ROR(const T x, const uint8 n)
 	 * @param x the variable to bitswap
 	 * @return the bitswapped value.
 	 */
-	static inline uint16 BSWAP16(uint16 x)
+	static FORCEINLINE uint16 BSWAP16(uint16 x)
 	{
 		return (x >> 8) | (x << 8);
 	}

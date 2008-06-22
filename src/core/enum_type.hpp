@@ -73,7 +73,8 @@ struct MakeEnumPropsT {
 template <typename Tenum_t> struct TinyEnumT;
 
 /** The general declaration of TinyEnumT<> (above) */
-template <typename Tenum_t> struct TinyEnumT
+template <typename Tenum_t>
+struct TinyEnumT
 {
 	typedef Tenum_t enum_type;                      ///< expose our enumeration type (i.e. Trackdir) to outside
 	typedef EnumPropsT<Tenum_t> Props;              ///< make easier access to our enumeration propeties

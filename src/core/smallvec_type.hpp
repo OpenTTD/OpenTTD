@@ -36,7 +36,7 @@ public:
 	/**
 	 * Remove all items from the list.
 	 */
-	void Clear()
+	FORCEINLINE void Clear()
 	{
 		/* In fact we just reset the item counter avoiding the need to
 		 * probably reallocate the same amount of memory the list was
@@ -47,7 +47,7 @@ public:
 	/**
 	 * Compact the list down to the smallest block size boundary.
 	 */
-	void Compact()
+	FORCEINLINE void Compact()
 	{
 		uint capacity = Align(this->items, S);
 		if (capacity >= this->capacity) return;
@@ -59,7 +59,7 @@ public:
 	/**
 	 * Append an item and return it.
 	 */
-	T *Append()
+	FORCEINLINE T *Append()
 	{
 		if (this->items == this->capacity) {
 			this->capacity += S;
@@ -72,7 +72,7 @@ public:
 	/**
 	 * Get the number of items in the list.
 	 */
-	uint Length() const
+	FORCEINLINE uint Length() const
 	{
 		return this->items;
 	}
@@ -82,7 +82,7 @@ public:
 	 *
 	 * @return the pointer to the first item
 	 */
-	const T *Begin() const
+	FORCEINLINE const T *Begin() const
 	{
 		return this->data;
 	}
@@ -92,7 +92,7 @@ public:
 	 *
 	 * @return the pointer to the first item
 	 */
-	T *Begin()
+	FORCEINLINE T *Begin()
 	{
 		return this->data;
 	}
@@ -102,7 +102,7 @@ public:
 	 *
 	 * @return the pointer behind the last valid item
 	 */
-	const T *End() const
+	FORCEINLINE const T *End() const
 	{
 		return &this->data[this->items];
 	}
@@ -112,7 +112,7 @@ public:
 	 *
 	 * @return the pointer behind the last valid item
 	 */
-	T *End()
+	FORCEINLINE T *End()
 	{
 		return &this->data[this->items];
 	}
@@ -123,7 +123,7 @@ public:
 	 * @param index the position of the item
 	 * @return the pointer to the item
 	 */
-	const T *Get(uint index) const
+	FORCEINLINE const T *Get(uint index) const
 	{
 		return &this->data[index];
 	}
@@ -134,7 +134,7 @@ public:
 	 * @param index the position of the item
 	 * @return the pointer to the item
 	 */
-	T *Get(uint index)
+	FORCEINLINE T *Get(uint index)
 	{
 		return &this->data[index];
 	}
@@ -145,7 +145,7 @@ public:
 	 * @param index the positon of the item
 	 * @return the item
 	 */
-	const T &operator[](uint index) const
+	FORCEINLINE const T &operator[](uint index) const
 	{
 		return this->data[index];
 	}
@@ -156,7 +156,7 @@ public:
 	 * @param index the positon of the item
 	 * @return the item
 	 */
-	T &operator[](uint index)
+	FORCEINLINE T &operator[](uint index)
 	{
 		return this->data[index];
 	}

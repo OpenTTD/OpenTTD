@@ -37,20 +37,20 @@ struct SmallStackSafeStackAlloc {
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	inline operator T* () { return data; }
+	FORCEINLINE operator T* () { return data; }
 
 	/**
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	inline T* operator -> () { return data; }
+	FORCEINLINE T* operator -> () { return data; }
 
 	/**
 	 * Gets a pointer to the last data element stored in this wrapper.
 	 * @note needed because endof does not work properly for pointers.
 	 * @return the 'endof' pointer.
 	 */
-	inline T* EndOf() {
+	FORCEINLINE T* EndOf() {
 #if !defined(__NDS__)
 		return endof(data);
 #else
@@ -74,14 +74,14 @@ public:
 	 * @param size the amount of bytes to allocate.
 	 * @return the given amounts of bytes zeroed.
 	 */
-	void *operator new(size_t size) { return CallocT<byte>(size); }
+	FORCEINLINE void *operator new(size_t size) { return CallocT<byte>(size); }
 
 	/**
 	 * Memory allocator for an array of class instances.
 	 * @param size the amount of bytes to allocate.
 	 * @return the given amounts of bytes zeroed.
 	 */
-	void *operator new[](size_t size) { return CallocT<byte>(size); }
+	FORCEINLINE void *operator new[](size_t size) { return CallocT<byte>(size); }
 
 	/**
 	 * Memory release for a single class instance.
@@ -91,7 +91,7 @@ public:
 	 * @warning The value of the \a size parameter can only be trusted for
 	 *          classes that have their own (virtual) destructor method.
 	 */
-	void operator delete(void *ptr, size_t size) { free(ptr); }
+	FORCEINLINE void operator delete(void *ptr, size_t size) { free(ptr); }
 
 	/**
 	 * Memory release for an array of class instances.
@@ -101,7 +101,7 @@ public:
 	 * @warning The value of the \a size parameter can only be trusted for
 	 *          classes that have their own (virtual) destructor method.
 	 */
-	void operator delete[](void *ptr, size_t size) { free(ptr); }
+	FORCEINLINE void operator delete[](void *ptr, size_t size) { free(ptr); }
 };
 
 #endif /* ALLOC_TYPE_HPP */
