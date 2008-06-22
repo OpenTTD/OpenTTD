@@ -931,6 +931,12 @@ make_cflags_and_ldflags() {
 			# Make sure we mark GCC 2.95 flag for Makefile.src.in, as we
 			#  need a lovely hack there to make it compile correctly.
 			gcc295="1"
+
+			# Disable warnings about unused variables when
+			# compiling with asserts disabled
+			if [ $enable_assert -eq 0 ]; then
+				CFLAGS="$CFLAGS -Wno-unused"
+			fi
 		fi
 
 		if [ $cc_version -ge 30 ]; then
