@@ -76,7 +76,7 @@ static FORCEINLINE T *CallocT(size_t num_elements)
  * @return NULL when num_elements == 0, non-NULL otherwise.
  */
 template <typename T>
-FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
+static FORCEINLINE T *ReallocT(T *t_ptr, size_t num_elements)
 {
 	/*
 	 * MorphOS cannot handle 0 elements allocations, or rather that always

@@ -59,12 +59,26 @@ void SetRandomSeed(uint32 seed);
 	#define RandomRange(max) DoRandomRange(max, __LINE__, __FILE__)
 	uint DoRandomRange(uint max, int line, const char *file);
 #else
-	static FORCEINLINE uint32 Random() { return _random.Next(); }
-	static FORCEINLINE uint32 RandomRange(uint16 max) { return _random.Next(max); }
+	static FORCEINLINE uint32 Random()
+	{
+		return _random.Next();
+	}
+
+	static FORCEINLINE uint32 RandomRange(uint16 max)
+	{
+		return _random.Next(max);
+	}
 #endif
 
-static FORCEINLINE uint32 InteractiveRandom() { return _interactive_random.Next(); }
-static FORCEINLINE uint32 InteractiveRandomRange(uint16 max) { return _interactive_random.Next(max); }
+static FORCEINLINE uint32 InteractiveRandom()
+{
+	return _interactive_random.Next();
+}
+
+static FORCEINLINE uint32 InteractiveRandomRange(uint16 max)
+{
+	return _interactive_random.Next(max);
+}
 
 /**
  * Checks if a given randomize-number is below a given probability.

@@ -192,7 +192,8 @@ static FORCEINLINE uint16 ClampToU16(const uint64 a)
  * @return The absolute difference between the given scalars
  */
 template <typename T>
-static FORCEINLINE T Delta(const T a, const T b) {
+static FORCEINLINE T Delta(const T a, const T b)
+{
 	return (a < b) ? b - a : a - b;
 }
 

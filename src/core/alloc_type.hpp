@@ -29,28 +29,39 @@ struct SmallStackSafeStackAlloc {
 
 	/** Allocating the memory */
 	SmallStackSafeStackAlloc() : data(MallocT<T>(length)), len(length) {}
+
 	/** And freeing when it goes out of scope */
-	~SmallStackSafeStackAlloc() { free(data); }
+	~SmallStackSafeStackAlloc()
+	{
+		free(data);
+	}
 #endif
 
 	/**
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	FORCEINLINE operator T* () { return data; }
+	FORCEINLINE operator T* ()
+	{
+		return data;
+	}
 
 	/**
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	FORCEINLINE T* operator -> () { return data; }
+	FORCEINLINE T* operator -> ()
+	{
+		return data;
+	}
 
 	/**
 	 * Gets a pointer to the last data element stored in this wrapper.
 	 * @note needed because endof does not work properly for pointers.
 	 * @return the 'endof' pointer.
 	 */
-	FORCEINLINE T* EndOf() {
+	FORCEINLINE T* EndOf()
+	{
 #if !defined(__NDS__)
 		return endof(data);
 #else
