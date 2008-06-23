@@ -674,7 +674,7 @@ static void DeletePlayerStuff(PlayerID pi)
  * if p1 = 2, then
  * - p2 = minimum amount of money available
  * if p1 = 3, then:
- * - p1 bits  8-15 = engine group
+ * - p1 bits 16-31 = engine group
  * - p2 bits  0-15 = old engine type
  * - p2 bits 16-31 = new engine type
  * if p1 = 4, then:
