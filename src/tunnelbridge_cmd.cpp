@@ -160,15 +160,18 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.terraform);
 }
 
-bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len)
+bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags)
 {
-	const BridgeSpec *b = GetBridgeSpec(bridge_type);
-	uint max; // max possible length of a bridge (with patch 100)
+	if (flags & DC_QUERY_COST) {
+		return bridge_len <= (_settings_game.construction.longbridges ? 100 : 16);
+	}
 
 	if (bridge_type >= MAX_BRIDGES) return false;
+
+	const BridgeSpec *b = GetBridgeSpec(bridge_type);
 	if (b->avail_year > _cur_year) return false;
 
-	max = b->max_length;
+	uint max = b->max_length;
 	if (max >= 16 && _settings_game.construction.longbridges) max = 100;
 
 	return b->min_length <= bridge_len && bridge_len <= max;
@@ -255,7 +258,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	bridge_len = sx + sy - x - y - 1;
 	if (transport_type != TRANSPORT_WATER) {
 		/* set and test bridge length, availability */
-		if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
+		if (!CheckBridge_Stuff(bridge_type, bridge_len, flags)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 	}
 
 	/* retrieve landscape height and ensure it's on land */
