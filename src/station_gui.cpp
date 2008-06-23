@@ -168,16 +168,15 @@ protected:
 	/** Sort stations by their waiting cargo */
 	static int CDECL StationWaitingSorter(const Station* const *a, const Station* const *b)
 	{
-		Money sum1 = 0;
-		Money sum2 = 0;
+		Money diff = 0;
 
 		for (CargoID j = 0; j < NUM_CARGO; j++) {
 			if (!HasBit(cargo_filter, j)) continue;
-			if (!(*a)->goods[j].cargo.Empty()) sum1 += GetTransportedGoodsIncome((*a)->goods[j].cargo.Count(), 20, 50, j);
-			if (!(*b)->goods[j].cargo.Empty()) sum2 += GetTransportedGoodsIncome((*b)->goods[j].cargo.Count(), 20, 50, j);
+			if (!(*a)->goods[j].cargo.Empty()) diff += GetTransportedGoodsIncome((*a)->goods[j].cargo.Count(), 20, 50, j);
+			if (!(*b)->goods[j].cargo.Empty()) diff -= GetTransportedGoodsIncome((*b)->goods[j].cargo.Count(), 20, 50, j);
 		}
 
-		return ClampToI32(sum1 - sum2);
+		return ClampToI32(diff);
 	}
 
 	/** Sort stations by their rating */
