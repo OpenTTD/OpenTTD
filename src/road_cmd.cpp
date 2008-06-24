@@ -576,6 +576,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MP_TUNNELBRIDGE:
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
+			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) return CMD_ERROR;
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
 			if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
@@ -734,6 +735,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
 		if (tile == end_tile && !HasBit(p2, 1)) bits &= ROAD_NW | ROAD_NE;
 		if (tile == start_tile && HasBit(p2, 0)) bits &= ROAD_SE | ROAD_SW;
 
+		_error_message = INVALID_STRING_ID;
 		CommandCost ret = DoCommand(tile, drd << 6 | rt << 4 | bits, 0, flags, CMD_BUILD_ROAD);
 		if (CmdFailed(ret)) {
 			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
