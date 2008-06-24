@@ -368,14 +368,14 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 
 		DoCommandP(tile, SLOPE_N, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_MSG(msg));
 	} else {
-		SndPlayTileFx(SND_1F_SPLAT, tile);
-
 		assert(_terraform_size != 0);
 		/* check out for map overflows */
 		sizex = min(MapSizeX() - TileX(tile) - 1, _terraform_size);
 		sizey = min(MapSizeY() - TileY(tile) - 1, _terraform_size);
 
 		if (sizex == 0 || sizey == 0) return;
+
+		SndPlayTileFx(SND_1F_SPLAT, tile);
 
 		if (mode != 0) {
 			/* Raise land */
