@@ -8,7 +8,6 @@
 #include "debug.h"
 #include "core/enum_type.hpp"
 #include "string_func.h"
-#include <string>
 #include <map>
 
 bool GetDriverParamBool(const char * const *parm, const char *name);
@@ -37,9 +36,17 @@ DECLARE_POSTFIX_INCREMENT(Driver::Type);
 class DriverFactoryBase {
 private:
 	Driver::Type type;
-	char *name;
+	const char *name;
 	int priority;
-	typedef std::map<std::string, DriverFactoryBase *> Drivers;
+
+	struct StringCompare {
+		bool operator () (const char *a, const char *b) const
+		{
+			return strcmp(a, b) < 0;
+		}
+	};
+
+	typedef std::map<const char *, DriverFactoryBase *, StringCompare> Drivers;
 
 	static Drivers &GetDrivers()
 	{

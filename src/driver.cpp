@@ -156,7 +156,9 @@ void DriverFactoryBase::RegisterDriver(const char *name, Driver::Type type, int 
 	strecpy(buf, GetDriverTypeName(type), lastof(buf));
 	strecpy(buf + 5, name, lastof(buf));
 
-	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(buf, this));
+	const char *longname = strdup(buf);
+
+	std::pair<Drivers::iterator, bool> P = GetDrivers().insert(Drivers::value_type(longname, this));
 	assert(P.second);
 }
 
@@ -194,7 +196,14 @@ DriverFactoryBase::~DriverFactoryBase() {
 	strecpy(buf, GetDriverTypeName(type), lastof(buf));
 	strecpy(buf + 5, this->name, lastof(buf));
 
-	GetDrivers().erase(buf);
+	Drivers::iterator it = GetDrivers().find(buf);
+	assert(it != GetDrivers().end());
+
+	const char *longname = (*it).first;
+
+	GetDrivers().erase(it);
+	free((void *)longname);
+
 	if (GetDrivers().empty()) delete &GetDrivers();
-	free(this->name);
+	free((void *)this->name);
 }
