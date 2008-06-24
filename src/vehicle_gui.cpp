@@ -1309,7 +1309,7 @@ struct VehicleDetailsWindow : Window {
 
 				/* Add space for the cargo amount for each part. */
 				for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-					height_extension += 11;
+					if (u->cargo_cap != 0) height_extension += 11;
 				}
 
 				ResizeWindow(this, 0, height_extension);
