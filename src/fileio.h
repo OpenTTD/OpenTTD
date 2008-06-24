@@ -5,8 +5,6 @@
 #ifndef FILEIO_H
 #define FILEIO_H
 
-#include <map>
-#include <string>
 #include "core/enum_type.hpp"
 
 void FioSeekTo(size_t pos, int mode);
@@ -63,22 +61,6 @@ DECLARE_POSTFIX_INCREMENT(Searchpath);
 extern const char *_searchpaths[NUM_SEARCHPATHS];
 
 /**
- * The define of a TarList.
- */
-struct TarListEntry {
-	const char *filename;
-};
-struct TarFileListEntry {
-	TarListEntry *tar;
-	size_t size;
-	size_t position;
-};
-typedef std::map<std::string, TarListEntry *> TarList;
-typedef std::map<std::string, TarFileListEntry> TarFileList;
-extern TarList _tar_list;
-extern TarFileList _tar_filelist;
-
-/**
  * Checks whether the given search path is a valid search path
  * @param sp the search path to check
  * @return true if the search path is valid
@@ -90,10 +72,6 @@ static inline bool IsValidSearchPath(Searchpath sp)
 
 /** Iterator for all the search paths */
 #define FOR_ALL_SEARCHPATHS(sp) for (sp = SP_FIRST_DIR; sp < NUM_SEARCHPATHS; sp++) if (IsValidSearchPath(sp))
-#define FOR_ALL_TARS(tar) for (tar = _tar_filelist.begin(); tar != _tar_filelist.end(); tar++)
-
-typedef bool FioTarFileListCallback(const char *filename, int size, void *userdata);
-FILE *FioTarFileList(const char *tar, const char *mode, size_t *filesize, FioTarFileListCallback *callback, void *userdata);
 
 void FioFCloseFile(FILE *f);
 FILE *FioFOpenFile(const char *filename, const char *mode = "rb", Subdirectory subdir = DATA_DIR, size_t *filesize = NULL);

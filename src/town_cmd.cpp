@@ -47,6 +47,7 @@
 #include "functions.h"
 #include "animated_tile_func.h"
 #include "date_func.h"
+#include <map>
 
 #include "table/strings.h"
 #include "table/sprites.h"

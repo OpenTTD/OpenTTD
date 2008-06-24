@@ -27,6 +27,7 @@
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "station_func.h"
+#include <map>
 
 #include "table/sprites.h"
 #include "table/strings.h"

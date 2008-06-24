@@ -11,6 +11,7 @@
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
 #include "string_func.h"
+#include "tar_type.h"
 #ifdef WIN32
 #include <windows.h>
 #else

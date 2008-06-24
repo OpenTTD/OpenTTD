@@ -1453,6 +1453,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\tar_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\terraform_gui.h"
 				>
 			</File>

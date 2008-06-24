@@ -289,6 +289,7 @@ string_func.h
 string_type.h
 strings_func.h
 strings_type.h
+tar_type.h
 terraform_gui.h
 textbuf_gui.h
 texteff.hpp
