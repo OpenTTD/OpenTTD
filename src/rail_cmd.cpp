@@ -1113,6 +1113,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
+			!HasTrack(tile, track) ||
 			!EnsureNoTrainOnTrack(tile, track) ||
 			!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
