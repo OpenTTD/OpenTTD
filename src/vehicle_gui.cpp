@@ -219,7 +219,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				}
 			}
 		}
-	} while (v->type == VEH_TRAIN && (u = u->Next()) != NULL && num_lines < max_lines);
+	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (u = u->Next()) != NULL && num_lines < max_lines);
 
 	list->num_lines = num_lines;
 	list->items = refit;
