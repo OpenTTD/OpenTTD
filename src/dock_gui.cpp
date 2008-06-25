@@ -61,12 +61,17 @@ static void PlaceDocks_Buoy(TileIndex tile)
 
 static void PlaceDocks_BuildCanal(TileIndex tile)
 {
-	VpStartPlaceSizing(tile, VPM_X_OR_Y, DDSP_CREATE_WATER);
+	VpStartPlaceSizing(tile, (_game_mode == GM_EDITOR) ? VPM_X_AND_Y : VPM_X_OR_Y, DDSP_CREATE_WATER);
 }
 
 static void PlaceDocks_BuildLock(TileIndex tile)
 {
 	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS));
+}
+
+static void PlaceDocks_BuildRiver(TileIndex tile)
+{
+	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
 }
 
 static void PlaceDocks_Aqueduct(TileIndex tile)
@@ -89,6 +94,7 @@ enum DockToolbarWidgets {
 	DTW_DEPOT,                     ///< Build depot button
 	DTW_STATION,                   ///< Build station button
 	DTW_BUOY,                      ///< Build buoy button
+	DTW_RIVER,                     ///< Build river button (in scenario editor)
 	DTW_BUILD_AQUEDUCT,            ///< Build aqueduct button
 	DTW_END,                       ///< End of toolbar widgets
 };
@@ -96,6 +102,7 @@ enum DockToolbarWidgets {
 
 static void BuildDocksClick_Canal(Window *w)
 {
+
 	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, VHM_RECT, PlaceDocks_BuildCanal);
 }
 
@@ -127,6 +134,12 @@ static void BuildDocksClick_Buoy(Window *w)
 	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, VHM_RECT, PlaceDocks_Buoy);
 }
 
+static void BuildDocksClick_River(Window *w)
+{
+	if (_game_mode != GM_EDITOR) return;
+	HandlePlacePushButton(w, DTW_RIVER, SPR_CURSOR_RIVER, VHM_RECT, PlaceDocks_BuildRiver);
+}
+
 static void BuildDocksClick_Aqueduct(Window *w)
 {
 	HandlePlacePushButton(w, DTW_BUILD_AQUEDUCT, SPR_CURSOR_AQUEDUCT, VHM_RECT, PlaceDocks_Aqueduct);
@@ -142,6 +155,7 @@ static OnButtonClick * const _build_docks_button_proc[] = {
 	BuildDocksClick_Depot,
 	BuildDocksClick_Dock,
 	BuildDocksClick_Buoy,
+	BuildDocksClick_River,
 	BuildDocksClick_Aqueduct
 };
 
@@ -177,8 +191,9 @@ struct BuildDocksToolbarWindow : Window {
 			case '4': BuildDocksClick_Depot(this); break;
 			case '5': BuildDocksClick_Dock(this); break;
 			case '6': BuildDocksClick_Buoy(this); break;
+			case '7': BuildDocksClick_River(this); break;
 			case 'B':
-			case '7': BuildDocksClick_Aqueduct(this); break;
+			case '8': BuildDocksClick_Aqueduct(this); break;
 			default:  return ES_NOT_HANDLED;
 		}
 		return ES_HANDLED;
@@ -207,7 +222,10 @@ struct BuildDocksToolbarWindow : Window {
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 				case DDSP_CREATE_WATER:
-					DoCommandP(end_tile, start_tile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
+					DoCommandP(end_tile, start_tile, (_game_mode == GM_EDITOR ? _ctrl_pressed : 0), CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
+					break;
+				case DDSP_CREATE_RIVER:
+					DoCommandP(end_tile, start_tile, 2, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_PLACE_RIVERS));
 					break;
 
 				default: break;
@@ -233,24 +251,25 @@ struct BuildDocksToolbarWindow : Window {
 };
 
 static const Widget _build_docks_toolb_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                   // DTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},         // DTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   146,   157,     0,    13, 0x0,                        STR_STICKY_BUTTON},                       // DTW_STICKY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},                    // DTW_CANAL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},                     // DTW_LOCK
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},                  // DTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_9801_WATERWAYS_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   148,   159,     0,    13, 0x0,                             STR_STICKY_BUTTON},                      // DTW_STICKY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,             STR_BUILD_CANALS_TIP},                   // DTW_CANAL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,              STR_BUILD_LOCKS_TIP},                    // DTW_LOCK
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,                        STR_NULL},                                // DTW_SEPERATOR
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    48,    14,    35, 0x0,                             STR_NULL},                               // DTW_SEPERATOR
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    48,    69,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},         // DTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},  // DTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},                // DTW_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},        // DTW_BUOY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_AQUEDUCT,           STR_BUILD_AQUEDUCT},                      // DTW_BUILD_AQUEDUCT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    49,    70,    14,    35, SPR_IMG_DYNAMITE,                STR_018D_DEMOLISH_BUILDINGS_ETC},        // DTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    71,    92,    14,    35, SPR_IMG_SHIP_DEPOT,              STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING}, // DTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    93,   114,    14,    35, SPR_IMG_SHIP_DOCK,               STR_981D_BUILD_SHIP_DOCK},               // DTW_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   115,   136,    14,    35, SPR_IMG_BOUY,                    STR_9834_POSITION_BUOY_WHICH_CAN},       // DTW_BUOY
+{     WWT_EMPTY,    RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                             STR_NULL},                               // DTW_RIVER
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   137,   159,    14,    35, SPR_IMG_AQUEDUCT,                STR_BUILD_AQUEDUCT},                     // DTW_BUILD_AQUEDUCT
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
-	WDP_ALIGN_TBR, 22, 158, 36, 158, 36,
+	WDP_ALIGN_TBR, 22, 160, 36, 160, 36,
 	WC_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,
@@ -262,6 +281,38 @@ void ShowBuildDocksToolbar()
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);
+}
+
+/* Widget definition for the build docks in scenario editor window */
+static const Widget _build_docks_scen_toolb_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                           STR_018B_CLOSE_WINDOW},           // DTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   102,     0,    13, STR_9801_WATERWAYS_CONSTRUCTION_SE, STR_018C_WINDOW_TITLE_DRAG_THIS}, // DTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   103,   114,     0,    13, 0x0,                                STR_STICKY_BUTTON},               // DTW_STICKY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,                STR_CREATE_LAKE},                 // DTW_CANAL
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,                 STR_BUILD_LOCKS_TIP},             // DTW_LOCK
+
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    48,    14,    35, 0x0,                                STR_NULL},                        // DTW_SEPERATOR
+
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    49,    70,    14,    35, SPR_IMG_DYNAMITE,                   STR_018D_DEMOLISH_BUILDINGS_ETC}, // DTW_DEMOLISH
+{     WWT_EMPTY,    RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                                STR_NULL},                        // DTW_DEPOT
+{     WWT_EMPTY,    RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                                STR_NULL},                        // DTW_STATION
+{     WWT_EMPTY,    RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                                STR_NULL},                        // DTW_BUOY
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    71,    92,    14,    35, SPR_IMG_BUILD_RIVER,                STR_CREATE_RIVER},                // DTW_RIVER
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    93,   114,    14,    35, SPR_IMG_AQUEDUCT,                   STR_BUILD_AQUEDUCT},              // DTW_BUILD_AQUEDUCT
+{   WIDGETS_END},
+};
+
+/* Window definition for the build docks in scenario editor window */
+static const WindowDesc _build_docks_scen_toolbar_desc = {
+	WDP_AUTO, WDP_AUTO, 115, 36, 115, 36,
+	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
+	_build_docks_scen_toolb_widgets,
+};
+
+void ShowBuildDocksScenToolbar()
+{
+	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_scen_toolbar_desc, TRANSPORT_WATER);
 }
 
 struct BuildDocksStationWindow : public PickerWindowBase {

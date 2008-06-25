@@ -40,6 +40,7 @@ void ShowOrdersWindow(const Vehicle *v);
 
 /* dock_gui.cpp */
 void ShowBuildDocksToolbar();
+void ShowBuildDocksScenToolbar();
 
 /* aircraft_gui.cpp */
 void ShowBuildAirToolbar();

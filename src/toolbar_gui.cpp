@@ -105,6 +105,7 @@ enum ToolbarScenEditorWidgets {
 	TBSE_TOWNGENERATE,
 	TBSE_INDUSTRYGENERATE,
 	TBSE_BUILDROAD,
+	TBSE_BUILDDOCKS,
 	TBSE_PLANTTREES,
 	TBSE_PLACESIGNS,
 };
@@ -556,7 +557,7 @@ static void MenuClickBuildRoad(int index)
 
 static void ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_WATER, STR_9800_DOCK_CONSTRUCTION, 1);
+	PopupMainToolbMenu(w, TBN_WATER, STR_9800_WATERWAYS_CONSTRUCTION, 1);
 }
 
 static void MenuClickBuildWater(int index)
@@ -736,6 +737,13 @@ static void ToolbarScenBuildRoad(Window *w)
 	w->HandleButtonClick(TBSE_BUILDROAD);
 	SndPlayFx(SND_15_BEEP);
 	ShowBuildRoadScenToolbar();
+}
+
+static void ToolbarScenBuildDocks(Window *w)
+{
+	w->HandleButtonClick(TBSE_BUILDDOCKS);
+	SndPlayFx(SND_15_BEEP);
+	ShowBuildDocksScenToolbar();
 }
 
 static void ToolbarScenPlantTrees(Window *w)
@@ -1068,9 +1076,9 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarScenGenTown,
 	ToolbarScenGenIndustry,
 	ToolbarScenBuildRoad,
+	ToolbarScenBuildDocks,
 	ToolbarScenPlantTrees,
 	ToolbarScenPlaceSign,
-	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -1131,10 +1139,11 @@ public:
 			case WKC_F5: ToolbarScenGenTown(this); break;
 			case WKC_F6: ToolbarScenGenIndustry(this); break;
 			case WKC_F7: ToolbarScenBuildRoad(this); break;
-			case WKC_F8: ToolbarScenPlantTrees(this); break;
-			case WKC_F9: ToolbarScenPlaceSign(this); break;
-			case WKC_F10: ShowMusicWindow(); break;
-			case WKC_F11: PlaceLandBlockInfo(); break;
+			case WKC_F8: ToolbarScenBuildDocks(this); break;
+			case WKC_F9: ToolbarScenPlantTrees(this); break;
+			case WKC_F10: ToolbarScenPlaceSign(this); break;
+			case WKC_F11: ShowMusicWindow(); break;
+			case WKC_F12: PlaceLandBlockInfo(); break;
 			case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
 			case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
 
@@ -1171,17 +1180,17 @@ public:
 		uint buttons_width;
 		uint spacing;
 
-		static int normal_min_width = (15 * 22) + (2 * 130);
-		static int one_less_panel_min_width = (15 * 22) + 130;
+		static int normal_min_width = (16 * 22) + (2 * 130);
+		static int one_less_panel_min_width = (16 * 22) + 130;
 
 		if (this->width >= one_less_panel_min_width) {
-			buttons_width = 15 * 22;
+			buttons_width = 16 * 22;
 			spacing = this->width - ((this->width >= normal_min_width) ? normal_min_width : one_less_panel_min_width);
 		} else {
 			buttons_width = this->width - 130;
 			spacing = 0;
 		}
-		uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 16, 0 };
+		static const uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 17, 0 };
 
 		for (uint i = 0, x = 0, j = 0, b = 0; i < this->widget_count; i++) {
 			switch (i) {
@@ -1213,9 +1222,9 @@ public:
 					if (this->widget[i].bottom == 0) continue;
 
 					this->widget[i].left = x;
-					x += buttons_width / (15 - b);
+					x += buttons_width / (16 - b);
 					this->widget[i].right = x - 1;
-					buttons_width -= buttons_width / (15 - b);
+					buttons_width -= buttons_width / (16 - b);
 					b++;
 					break;
 			}
@@ -1269,10 +1278,10 @@ static const Widget _toolb_scen_widgets[] = {
 {  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_TOWN,        STR_022F_TOWN_GENERATION},
 {  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_INDUSTRY,    STR_0230_INDUSTRY_GENERATION},
 {  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_BUILDROAD,   STR_0231_ROAD_CONSTRUCTION},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_BUILDWATER,  STR_0183_BUILD_SHIP_DOCKS},
 {  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_PLANTTREES,  STR_0288_PLANT_TREES},
 {  WWT_IMGBTN, RESIZE_NONE, 14,   0,   0,  0, 21, SPR_IMG_SIGN,        STR_0289_PLACE_SIGN},
 
-{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
 {   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},

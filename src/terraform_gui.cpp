@@ -131,12 +131,6 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 		case DDSP_CREATE_DESERT:
 			GenerateDesertArea(end_tile, start_tile);
 			break;
-		case DDSP_CREATE_WATER:
-			DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
-			break;
-		case DDSP_CREATE_RIVER:
-			DoCommandP(end_tile, start_tile, 2, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_PLACE_RIVERS));
-			break;
 		default:
 			return false;
 	}
@@ -443,34 +437,23 @@ static void PlaceProc_DesertArea(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_DESERT);
 }
 
-static void PlaceProc_WaterArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_WATER);
-}
-
-static void PlaceProc_RiverArea(TileIndex tile)
-{
-	VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CREATE_RIVER);
-}
 
 static const Widget _scen_edit_land_gen_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},                   // ETTW_CLOSEBOX
-{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   191,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},         // ETTW_CAPTION
-{ WWT_STICKYBOX,   RESIZE_NONE,     7,   192,   203,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},                       // ETTW_STICKY
-{     WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,   102, 0x0,                       STR_NULL},                                // ETTW_BACKGROUND
+{   WWT_CAPTION,   RESIZE_NONE,     7,    11,   150,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},         // ETTW_CAPTION
+{ WWT_STICKYBOX,   RESIZE_NONE,     7,   151,   162,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},                       // ETTW_STICKY
+{     WWT_PANEL,   RESIZE_NONE,     7,     0,   162,    14,   102, 0x0,                       STR_NULL},                                // ETTW_BACKGROUND
 {    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    16,    37, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},         // ETTW_DEMOLISH
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    16,    37, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},         // ETTW_LOWER_LAND
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    16,    37, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},         // ETTW_RAISE_LAND
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    68,    89,    16,    37, SPR_IMG_LEVEL_LAND,        STR_LEVEL_LAND_TOOLTIP},                  // ETTW_LEVEL_LAND
-{    WWT_IMGBTN,   RESIZE_NONE,    14,    90,   111,    16,    37, SPR_IMG_BUILD_CANAL,       STR_CREATE_LAKE},                         // ETTW_BUILD_CANAL
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_BUILD_RIVER,       STR_CREATE_RIVER},                        // ETTW_BUILD_RIVER
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   134,   156,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE}, // ETTW_PLACE_ROCKS
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   157,   179,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL},                                // ETTW_PLACE_DESERT_LIGHTHOUSE XXX - dynamic
-{    WWT_IMGBTN,   RESIZE_NONE,    14,   180,   201,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},              // ETTW_PLACE_TRANSMITTER
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   90,    111,    16,    37, SPR_IMG_ROCKS,             STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE}, // ETTW_PLACE_ROCKS
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   112,   133,    16,    37, SPR_IMG_LIGHTHOUSE_DESERT, STR_NULL},                                // ETTW_PLACE_DESERT_LIGHTHOUSE XXX - dynamic
+{    WWT_IMGBTN,   RESIZE_NONE,    14,   134,   156,    16,    37, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},              // ETTW_PLACE_TRANSMITTER
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    45,    56, SPR_ARROW_UP,              STR_0228_INCREASE_SIZE_OF_LAND_AREA},     // ETTW_INCREASE_SIZE
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   150,   161,    58,    69, SPR_ARROW_DOWN,            STR_0229_DECREASE_SIZE_OF_LAND_AREA},     // ETTW_DECREASE_SIZE
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},           // ETTW_NEW_SCENARIO
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    24,   179,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},             // ETTW_RESET_LANDSCAPE
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    2,    161,    76,    87, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},           // ETTW_NEW_SCENARIO
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    2,    161,    89,   100, STR_022B_RESET_LANDSCAPE,  STR_RESET_LANDSCAPE_TOOLTIP},             // ETTW_RESET_LANDSCAPE
 {   WIDGETS_END},
 };
 
@@ -497,8 +480,6 @@ enum EditorTerraformToolbarWidgets {
 	ETTW_LOWER_LAND,                       ///< Lower land button
 	ETTW_RAISE_LAND,                       ///< Raise land button
 	ETTW_LEVEL_LAND,                       ///< Level land button
-	ETTW_BUILD_CANAL,                      ///< Build canal button
-	ETTW_BUILD_RIVER,                      ///< Build river button
 	ETTW_PLACE_ROCKS,                      ///< Place rocks button
 	ETTW_PLACE_DESERT_LIGHTHOUSE,          ///< Place desert button (in tropical climate) / place lighthouse button (else)
 	ETTW_PLACE_TRANSMITTER,                ///< Place transmitter button
@@ -533,16 +514,6 @@ static void EditorTerraformClick_LevelLand(Window *w)
 	HandlePlacePushButton(w, ETTW_LEVEL_LAND, SPR_CURSOR_LEVEL_LAND, VHM_POINT, PlaceProc_LevelLand);
 }
 
-static void EditorTerraformClick_WaterArea(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_BUILD_CANAL, SPR_CURSOR_CANAL, VHM_RECT, PlaceProc_WaterArea);
-}
-
-static void EditorTerraformClick_RiverArea(Window *w)
-{
-	HandlePlacePushButton(w, ETTW_BUILD_RIVER, SPR_CURSOR_RIVER, VHM_RECT, PlaceProc_RiverArea);
-}
-
 static void EditorTerraformClick_RockyArea(Window *w)
 {
 	HandlePlacePushButton(w, ETTW_PLACE_ROCKS, SPR_CURSOR_ROCKY_AREA, VHM_RECT, PlaceProc_RockyArea);
@@ -565,9 +536,7 @@ static const uint16 _editor_terraform_keycodes[] = {
 	'E',
 	'R',
 	'T',
-	'Y',
-	'U',
-	'I'
+	'Y'
 };
 
 typedef void OnButtonClick(Window *w);
@@ -576,8 +545,6 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 	EditorTerraformClick_LowerBigLand,
 	EditorTerraformClick_RaiseBigLand,
 	EditorTerraformClick_LevelLand,
-	EditorTerraformClick_WaterArea,
-	EditorTerraformClick_RiverArea,
 	EditorTerraformClick_RockyArea,
 	EditorTerraformClick_DesertLightHouse,
 	EditorTerraformClick_Transmitter
@@ -708,8 +675,6 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 				default: NOT_REACHED();
 				case DDSP_CREATE_ROCKS:
 				case DDSP_CREATE_DESERT:
-				case DDSP_CREATE_WATER:
-				case DDSP_CREATE_RIVER:
 				case DDSP_RAISE_AND_LEVEL_AREA:
 				case DDSP_LOWER_AND_LEVEL_AREA:
 				case DDSP_LEVEL_AREA:
@@ -728,7 +693,7 @@ struct ScenarioEditorLandscapeGenerationWindow : Window {
 };
 
 static const WindowDesc _scen_edit_land_gen_desc = {
-	WDP_AUTO, WDP_AUTO, 204, 103, 204, 103,
+	WDP_AUTO, WDP_AUTO, 163, 103, 163, 103,
 	WC_SCEN_LAND_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,

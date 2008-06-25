@@ -704,7 +704,7 @@ static const Widget _build_road_scen_widgets[] = {
 
 static const WindowDesc _build_road_scen_desc = {
 	WDP_AUTO, WDP_AUTO, 197, 36, 197, 36,
-	WC_SCEN_BUILD_ROAD, WC_NONE,
+	WC_SCEN_BUILD_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,
 };
