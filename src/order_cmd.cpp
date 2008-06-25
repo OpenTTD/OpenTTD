@@ -419,7 +419,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
-			if (new_order.GetDepotOrderType() & ~ODTFB_PART_OF_ORDERS) return CMD_ERROR;
+			if (new_order.GetDepotOrderType() & ~(ODTFB_PART_OF_ORDERS | ((new_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) != 0 ? ODTFB_SERVICE : 0))) return CMD_ERROR;
 			if (new_order.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT) return CMD_ERROR;
 			break;
 		}
