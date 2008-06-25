@@ -962,10 +962,10 @@ void PlantRandomFarmField(const Industry *i)
 /**
  * Search callback function for ChopLumberMillTrees
  * @param tile to test
- * @param data that is passed by the caller.  In this case, nothing
+ * @param user_data that is passed by the caller.  In this case, nothing
  * @return the result of the test
  */
-static bool SearchLumberMillTrees(TileIndex tile, uint32 data)
+static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) > 2) { ///< 3 and up means all fully grown trees
 		PlayerID old_player = _current_player;
@@ -994,7 +994,7 @@ static void ChopLumberMillTrees(Industry *i)
 
 	if (!IsIndustryCompleted(tile)) return;  ///< Can't proceed if not completed
 
-	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, 0)) ///< 40x40 tiles  to search
+	if (CircularTileSearch(&tile, 40, SearchLumberMillTrees, NULL)) ///< 40x40 tiles  to search
 		i->produced_cargo_waiting[0] = min(0xffff, i->produced_cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
 }
 

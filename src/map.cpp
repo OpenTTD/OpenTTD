@@ -261,12 +261,12 @@ uint DistanceFromEdge(TileIndex tile)
  * @param tile to start the search from. Upon completion, it will return the tile matching the search
  * @param size: number of tiles per side of the desired search area
  * @param proc: callback testing function pointer.
- * @param data to be passed to the callback function. Depends on the implementation
+ * @param user_data to be passed to the callback function. Depends on the implementation
  * @return result of the search
  * @pre proc != NULL
  * @pre size > 0
  */
-bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, uint32 data)
+bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, void *user_data)
 {
 	uint n, x, y;
 	DiagDirection dir;
@@ -281,7 +281,7 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, u
 		/* If the length of the side is uneven, the center has to be checked
 		 * separately, as the pattern of uneven sides requires to go around the center */
 		n = 2;
-		if (proc(TileXY(x, y), data)) {
+		if (proc(TileXY(x, y), user_data)) {
 			*tile = TileXY(x, y);
 			return true;
 		}
@@ -304,7 +304,7 @@ bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, u
 			uint j;
 			for (j = n; j != 0; j--) {
 				if (x <= MapMaxX() && y <= MapMaxY() && ///< Is the tile within the map?
-						proc(TileXY(x, y), data)) {     ///< Is the callback successful?
+						proc(TileXY(x, y), user_data)) {     ///< Is the callback successful?
 					*tile = TileXY(x, y);
 					return true;                        ///< then stop the search
 				}

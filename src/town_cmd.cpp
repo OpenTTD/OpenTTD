@@ -2182,12 +2182,13 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 /**
  * Search callback function for TownActionBuildStatue
  * @param tile on which to perform the search
- * @param town_id The town_id for which we want a statue
+ * @param user_data The town_id for which we want a statue
  * @return the result of the test
  */
-static bool SearchTileForStatue(TileIndex tile, uint32 town_id)
+static bool SearchTileForStatue(TileIndex tile, void *user_data)
 {
-	return DoBuildStatueOfCompany(tile, town_id);
+	TownID *town_id = (TownID *)user_data;
+	return DoBuildStatueOfCompany(tile, *town_id);
 }
 
 /**
@@ -2199,7 +2200,7 @@ static void TownActionBuildStatue(Town *t)
 {
 	TileIndex tile = t->xy;
 
-	if (CircularTileSearch(&tile, 9, SearchTileForStatue, t->index)) {
+	if (CircularTileSearch(&tile, 9, SearchTileForStatue, &t->index)) {
 		SetBit(t->statues, _current_player); // Once found and built, "inform" the Town
 	}
 }

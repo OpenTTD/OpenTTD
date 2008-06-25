@@ -203,15 +203,16 @@ uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
 
 /** Callback function to search a house by its HouseID
  * @param tile TileIndex to be examined
- * @param data house id, in order to get the specs
+ * @param user_data house id, in order to get the specs
  * @return true or false, if found or not
  */
-static bool SearchNearbyHouseID(TileIndex tile, uint32 data)
+static bool SearchNearbyHouseID(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_HOUSE)) {
 		const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile)); // tile been examined
 		if (hs->grffile != NULL) { // must be one from a grf file
-			const HouseSpec *test_hs = GetHouseSpecs((HouseID)GB(data, 0, 16));
+			HouseID *test_house = (HouseID *)user_data;
+			const HouseSpec *test_hs = GetHouseSpecs(*test_house);
 			return hs->local_id == test_hs->local_id &&  // same local id as the one requested
 				hs->grffile->grfid == test_hs->grffile->grfid;  // from the same grf
 		}
@@ -221,15 +222,16 @@ static bool SearchNearbyHouseID(TileIndex tile, uint32 data)
 
 /** Callback function to search a house by its classID
  * @param tile TileIndex to be examined
- * @param data house id, in order to get the specs
+ * @param user_data house id, in order to get the specs
  * @return true or false, if found or not
  */
-static bool SearchNearbyHouseClass(TileIndex tile, uint32 data)
+static bool SearchNearbyHouseClass(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_HOUSE)) {
 		const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile)); // tile been examined
 		if (hs->grffile != NULL) { // must be one from a grf file
-			const HouseSpec *test_hs = GetHouseSpecs((HouseID)GB(data, 0, 16));
+			HouseID *test_house = (HouseID *)user_data;
+			const HouseSpec *test_hs = GetHouseSpecs(*test_house);
 			return hs->class_id == test_hs->class_id &&  // same classid as the one requested
 				hs->grffile->grfid == test_hs->grffile->grfid;  // from the same grf
 		}
@@ -239,15 +241,16 @@ static bool SearchNearbyHouseClass(TileIndex tile, uint32 data)
 
 /** Callback function to search a house by its grfID
  * @param tile TileIndex to be examined
- * @param data house id, in order to get the specs
+ * @param user_data house id, in order to get the specs
  * @return true or false, if found or not
  */
-static bool SearchNearbyHouseGRFID(TileIndex tile, uint32 data)
+static bool SearchNearbyHouseGRFID(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_HOUSE)) {
 		const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile)); // tile been examined
 		if (hs->grffile != NULL) { // must be one from a grf file
-			const HouseSpec *test_hs = GetHouseSpecs((HouseID)GB(data, 0, 16));
+			HouseID *test_house = (HouseID *)user_data;
+			const HouseSpec *test_hs = GetHouseSpecs(*test_house);
 			return hs->grffile->grfid == test_hs->grffile->grfid;  // from the same grf
 		}
 	}
@@ -260,10 +263,10 @@ static bool SearchNearbyHouseGRFID(TileIndex tile, uint32 data)
  *                  bits 0..6 radius of the search
  *                  bits 7..8 search type i.e.: 0 = houseID/ 1 = classID/ 2 = grfID
  * @param tile TileIndex from which to start the search
- * @param data the HouseID that is associated to the house work who started the callback
- * @result the Manhattan distance from the center tile, if any, and 0 if failure
-  */
-static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, uint32 data)
+ * @param house the HouseID that is associated to the house, the callback is called for
+ * @return the Manhattan distance from the center tile, if any, and 0 if failure
+ */
+static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, HouseID house)
 {
 	static TestTileOnSearchProc * const search_procs[3] = {
 		SearchNearbyHouseID,
@@ -277,7 +280,7 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, uint32
 	if (searchradius < 1) return 0; // do not use a too low radius
 
 	/* Use a pointer for the tile to start the search. Will be required for calculating the distance*/
-	if (CircularTileSearch(&found_tile, 2 * searchradius + 1, search_procs[searchtype], data)) {
+	if (CircularTileSearch(&found_tile, 2 * searchradius + 1, search_procs[searchtype], &house)) {
 		return DistanceManhattan(found_tile, tile);
 	}
 	return 0;

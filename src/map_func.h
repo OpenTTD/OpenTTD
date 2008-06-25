@@ -383,15 +383,15 @@ static inline TileIndex TileAddByDiagDir(TileIndex tile, DiagDirection dir)
  * A callback function type for searching tiles.
  *
  * @param tile The tile to test
- * @param data additional data for the callback function to use
+ * @param user_data additional data for the callback function to use
  * @return A boolean value, depend on the definition of the function.
  */
-typedef bool TestTileOnSearchProc(TileIndex tile, uint32 data);
+typedef bool TestTileOnSearchProc(TileIndex tile, void *user_data);
 
 /**
  * Searches for some cirumstances of a tile around a given tile with a helper function.
  */
-bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, uint32 data);
+bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, void *user_data);
 
 /**
  * Get a random tile out of a given seed.
