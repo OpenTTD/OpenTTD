@@ -274,10 +274,10 @@ static uint32 GetDistanceFromNearbyHouse(uint8 parameter, TileIndex tile, uint32
 	uint8 searchtype = GB(parameter, 6, 2);
 	uint8 searchradius = GB(parameter, 0, 6);
 	if (searchtype >= lengthof(search_procs)) return 0;  // do not run on ill-defined code
-	if (searchradius < 2) return 0; // do not use a too low radius
+	if (searchradius < 1) return 0; // do not use a too low radius
 
 	/* Use a pointer for the tile to start the search. Will be required for calculating the distance*/
-	if (CircularTileSearch(&found_tile, searchradius, search_procs[searchtype], data)) {
+	if (CircularTileSearch(&found_tile, 2 * searchradius + 1, search_procs[searchtype], data)) {
 		return DistanceManhattan(found_tile, tile);
 	}
 	return 0;
