@@ -299,6 +299,8 @@ static inline HouseSpec *GetHouseSpecs(HouseID house_id)
 	return &_house_specs[house_id];
 }
 
+TileIndex GetHouseNorthPart(HouseID &house);
+
 /**
  * Check if a TownID is valid.
  * @param index to inquiry in the pool of town

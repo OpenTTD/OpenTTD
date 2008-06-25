@@ -2011,7 +2011,7 @@ static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
  * @param house Is changed to the HouseID of the north tile of the same house
  * @return TileDiff from the tile of the given HouseID to the north tile
  */
-static TileIndex GetHouseNorthPart(HouseID &house)
+TileIndex GetHouseNorthPart(HouseID &house)
 {
 	if (house >= 3) { // house id 0,1,2 MUST be single tile houses, or this code breaks.
 		if (GetHouseSpecs(house - 1)->building_flags & TILE_SIZE_2x1) {
