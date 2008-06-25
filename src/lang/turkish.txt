@@ -2905,8 +2905,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kamyon m
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kamyonun taşıyacağı kargo türünü seçin
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :İskele yapımı
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}İskele yapımı
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Buraya iskele yapılamaz...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Tersanesi
 STR_9804_NEW_SHIPS                                              :{BLACK}Yeni gemi

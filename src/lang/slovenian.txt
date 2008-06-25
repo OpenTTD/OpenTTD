@@ -3024,8 +3024,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ni možn
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izberi tip tovora, ki ga bo vozilo prevažalo
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Gradnja pomola
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Gradnja pomola
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Ni mogoče zgraditi pomola tukaj ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Ladijska garaža
 STR_9804_NEW_SHIPS                                              :{BLACK}Nove ladje

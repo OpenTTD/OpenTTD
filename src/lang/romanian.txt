@@ -2935,8 +2935,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nu pot a
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de marfă pe care o transportă autovehiculul
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Construcţie port
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construcţie port
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nu pot construi port aici...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Şantierul Naval {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nave noi

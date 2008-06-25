@@ -2916,8 +2916,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}無法�
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}選擇車輛要運送的酬載種類
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :建造碼頭
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}建造碼頭
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}無法在此建造碼頭...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} 船塢
 STR_9804_NEW_SHIPS                                              :{BLACK}購買船舶

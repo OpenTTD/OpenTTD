@@ -1828,8 +1828,6 @@ STR_9034_RENAME                                                 :{BLACK}Pârsauk
 
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Ostas uzbūve
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Ostas uzbūve
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nevar uzbūvēt ostu šeit
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Kuģu depo
 STR_9804_NEW_SHIPS                                              :{BLACK}Jauni kuģi

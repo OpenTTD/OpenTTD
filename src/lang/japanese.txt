@@ -2853,8 +2853,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}道路�
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}運送する貨物種類を選択します
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :埠頭の建設
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}埠頭の建設
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}ここに埠頭が建設できません...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}造船所
 STR_9804_NEW_SHIPS                                              :{BLACK}新規船舶

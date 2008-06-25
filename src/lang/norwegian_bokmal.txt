@@ -2837,8 +2837,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Velg en type varer som kjøretøyet skal lastes med
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Bygg havn
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Bygg havn
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge havn her...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} skipsdepot
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skip

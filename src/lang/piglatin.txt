@@ -2826,8 +2826,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}An'tcay 
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Electsay ypetay ofway argocay orfay oadray ehiclevay otay arrycay
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Ockday onstructioncay
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Ockday onstructioncay
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}An'tcay uildbay ockday erehay...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Ipshay Epotday
 STR_9804_NEW_SHIPS                                              :{BLACK}Ewnay Ipsshay

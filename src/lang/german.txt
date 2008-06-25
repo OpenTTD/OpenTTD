@@ -2856,8 +2856,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Straßen
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wählen Sie aus, welche Fracht das Straßenfahrzeug transportieren soll
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Hafenanlage bauen
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Hafenanlage bauen
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Hafen kann hier nicht gebaut werden...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Werft
 STR_9804_NEW_SHIPS                                              :{BLACK}Neue Schiffe

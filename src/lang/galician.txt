@@ -2607,8 +2607,6 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reaxusta
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Non se pode repara-lo vehículo
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Construcción de Peiraos
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construcción de Peiraos
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Non se pode construí-lo peirao aí...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Depósito de Barcos de {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Novos Barcos

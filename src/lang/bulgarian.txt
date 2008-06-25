@@ -2930,8 +2930,6 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Прео
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Избор тип това за автомобила да превозва
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Създаване на Пристанище
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Създаване на Пристанище
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Не може да построиш пристанище тук...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Корабно депо
 STR_9804_NEW_SHIPS                                              :{BLACK}Нови Кораби
