@@ -1291,6 +1291,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan hier
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Bouw sluis
 STR_LANDINFO_LOCK                                               :Sluis
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Kan hier geen rivier plaatsen...
+STR_LANDINFO_RIVER                                              :Rivier
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}... boei is in gebruik!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coördinaten: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1943,6 +1946,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selectee
 STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Kust of rivierbed
 STR_3806_SHIP_DEPOT                                             :Scheepswerf
+STR_AQUEDUCT                                                    :Aquaduct
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan niet op water bouwen
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Het kanaal moet eerst verwijderd worden
 
@@ -2662,14 +2666,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in de weg
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Ga naar
 STR_ORDER_GO_NON_STOP_TO                                        :Ga non-stop naar
 STR_ORDER_GO_VIA                                                :Ga via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ga non-stop via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Alle vracht vol laden
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laden wanneer beschikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Volledig laden
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Volledig en stoort vracht laden
 STR_ORDER_DROP_NO_LOADING                                       :Niet laden
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles lossen
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Ontladen wanneeer geaccepteerd
 STR_ORDER_DROP_UNLOAD                                           :Alles ontladen
 STR_ORDER_DROP_TRANSFER                                         :Transfer
@@ -3002,6 +3009,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Kan schi
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten...{}Eerste schip arriveert in {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Plaats boei, kan gebruikt worden voor extra tussenstops
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Kan boei hier niet plaatsen...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Bouw aquaduct
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kan hier geen aquaduct bouwen...
 STR_9836_RENAME                                                 :{BLACK}Hernoem
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Hernoem schiptype
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Hernoem schiptype
@@ -3154,6 +3163,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} moet g
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} heeft OpenTTD versie {STRING} of beter nodig.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF bestand is bedoelt voor het vertalen van
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn teveel NewGRFs geladen.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} als statisch NewGRF met {STRING} kan desyncs veroorzaken.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst

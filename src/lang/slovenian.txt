@@ -528,6 +528,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za 
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za čiščenje: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Ni na voljo
 STR_01A7_OWNER                                                  :{BLACK}Lastnik: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Lastnik ceste: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Lastnik tramvaj proge: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Lastnik železnice: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalna oblast: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Brez
 STR_01AA_NAME                                                   :{BLACK}Ime
@@ -1096,6 +1099,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Koefici
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Faktor hitrosti letal: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Dovoli prehodne postaje na cestah v lasti mest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Dovoli gradnjo združljivih postaj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Omogoči večkratni set NewGRF pogona: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vedno dovoli majhna letališča: {ORANGE}{STRING}
 
@@ -1328,6 +1332,9 @@ STR_LANDINFO_CANAL                                              :Kanal
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ni mogoče zgraditi zapornic tukaj ...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Gradnja zapornic
 STR_LANDINFO_LOCK                                               :Zapornica
+
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Ni mogoča postavitev rek tukaj...
+STR_LANDINFO_RIVER                                              :reka
 
 STR_BUOY_IS_IN_USE                                              :{WHITE} ... boja v uporabi!
 
@@ -1755,6 +1762,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta z razsvet
 STR_1816_TREE_LINED_ROAD                                        :Drevored
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garaža
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Cestno/železniško križišče
+STR_TRAMWAY                                                     :tramvaj
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Ni mogoča odstranitev avtobusne postaje...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Ni mogoča odstranitev tovorne postaje...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nemogoča odstranitev potniške tramvaj postaje...
@@ -1981,6 +1989,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Izberi o
 STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Obala ali nabrežje
 STR_3806_SHIP_DEPOT                                             :Ladjedelnica
+STR_AQUEDUCT                                                    :vodovod
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE} ... Nemogoča gradnja na vodi
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprej moraš porušiti kanal
 
@@ -2737,14 +2746,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v napoto
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Pojdi do
 STR_ORDER_GO_NON_STOP_TO                                        :Pojdi non-stop do
 STR_ORDER_GO_VIA                                                :Pojdi preko
 STR_ORDER_GO_NON_STOP_VIA                                       :Pojdi non-stop preko
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Napolni vse vrste tovora
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Napolni, če je na voljo
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Napolni ves tovor
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Napolni kakršenkoli tovor
 STR_ORDER_DROP_NO_LOADING                                       :Brez polnjenja
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Razloži vse
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Razloži, če je sprejeto
 STR_ORDER_DROP_UNLOAD                                           :Razloži vse
 STR_ORDER_DROP_TRANSFER                                         :Pretovori
@@ -2768,6 +2780,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Spremeni
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Spremeni način praznjenja označenega ukaza
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Vstavi napreden ukaz
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pojdi v najbližjo garažo
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Pojdi v najbližji hangar
 STR_ORDER_NEAREST_DEPOT                                         :najbližjo
@@ -3076,6 +3089,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Ni mogo�
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prva ladja prispela na postajo {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Postavi bojo, ki je lahko uporabljena kot točka poti
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Ni mogoče postaviti boje tukaj ...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Gradnja vodovoda
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Ni mogoča gradnja vodovoda tukaj...
 STR_9836_RENAME                                                 :{BLACK}Preimenuj
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Preimenuj ladjo
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Preimenuj ladjo
@@ -3258,6 +3273,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manjkajo
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manjkajoče datoteke GRF, ki omogočajo nalaganje igre
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manjkajoče GRF datoteke
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Izklop pavze lahko sesuje OpenTTD. Ne poročaj o napaki zaradi takih problemov.{}Zagotovo želiš izklopiti pavzo?
+
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjalni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3622,4 +3639,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povečaj
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Omogoči mestni nadzor hrupa za letališča: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Meja hrupa v mestu: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Efektivni hrup: {GOLD}{COMMA}
 ########

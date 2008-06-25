@@ -1082,7 +1082,7 @@ STR_CONFIG_PATCHES_OFF                                          :vypnuto
 STR_CONFIG_PATCHES_ON                                           :zapnuto
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Ukazovat rychlost vozidla ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Povolit výstavbu na svazích kopců a na pobřežích: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Úpravy terénu pod budovami, kolejemi atd. (tzv. autoslope): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Srovnání terénu pod budovami, kolejemi atd. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
@@ -1092,7 +1092,7 @@ STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Spojova
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Použij vylepšený algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Nakládat vozidla postupně: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflace: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vozit zboží do stanice jen když je poptávka: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dodávat zboží do stanice jen když je poptávka: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Povolit stavbu velmi dlouhých mostů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Povolit příkaz 'jeď do depa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob manuálního budování primárního průmyslu: {ORANGE}{STRING}
@@ -1113,7 +1113,7 @@ STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožni
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit průjezdné zastávky na silnicích vlastněných obcemi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stavba průjezdných zastávek na obecních silnicích: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Více grafických setů s vozidly vedle sebe: {ORANGE}{STRING}
 
@@ -1126,7 +1126,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, kromě zas
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u všech vozidel
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vlak prodělává: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky obnovit dopravní prostředek, když je starý
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před / po dosažení maximálního stáří
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimální částka pro automatické obnovení: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
@@ -1219,7 +1219,7 @@ STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnout
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Vypnout elektrickou železnici: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barevné noviny se objeví v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Počáteční datum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Ukončit hru v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé změny ekonomiky (více menších změn)
@@ -1229,7 +1229,7 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafor
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu signálů: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vyber vzor městských silnic: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vzor městských silnic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žádné silnice
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :původní
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
@@ -1249,9 +1249,9 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :pomalá
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :normální
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :rychlá
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Podíl měst, které budou růst dvakrát tak rychle: {ORANGE}1 z {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl měst, které budou růst dvakrát tak rychle: {ORANGE}žádné
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Násobitel původní velikosti města: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Podíl měst, ze kterých se stanou velkoměsta: {ORANGE}1 z {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl měst, ze kterých se stanou velkoměsta: {ORANGE}žádné
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Činitel základní velikosti města: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Odstraňovat nesmyslné prvky vozovky při výstavbě silnic
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Ovládaní
@@ -1348,6 +1348,9 @@ STR_LANDINFO_CANAL                                              :Průplav
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Zde nemohu postavit zdymadlo...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Stavět zdymadlo
 STR_LANDINFO_LOCK                                               :Zdymadlo
+
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Zde nelze vytvořit řeku...
+STR_LANDINFO_RIVER                                              :Řeka
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bójka je používána!
 
@@ -2001,6 +2004,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Zvolit o
 STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobřeží nebo břeh
 STR_3806_SHIP_DEPOT                                             :Lodní depo
+STR_AQUEDUCT                                                    :Akvadukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}... nemohu stavět na vodě
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Nejprve je třeba zničit průplav
 
@@ -2726,14 +2730,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě je vlak
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Jet bez zastavení
 STR_ORDER_GO_TO                                                 :Jet do
 STR_ORDER_GO_NON_STOP_TO                                        :Jet bez zastavení do
 STR_ORDER_GO_VIA                                                :Jet přes
 STR_ORDER_GO_NON_STOP_VIA                                       :Jet bez zastavení přes
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plně naložit čímkoli
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Pokud možno naložit
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plně naložit vším
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plně naložit čímkoli
 STR_ORDER_DROP_NO_LOADING                                       :Nenakládat
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Vyložit vše
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Vyložit vyžadovaný náklad
 STR_ORDER_DROP_UNLOAD                                           :Vyložit vše
 STR_ORDER_DROP_TRANSFER                                         :Přeložit
@@ -3066,6 +3073,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nelze p�
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První loď přistála v {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku, kterou lze použít jako navigační bod
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Zde nelze umístit bójku...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Postavit akvadukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tady není možné postavit akvadukt...
 STR_9836_RENAME                                                 :{BLACK}Přejmenovat
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Přejmenovat typ lodi
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Přejmenovat typ lodi

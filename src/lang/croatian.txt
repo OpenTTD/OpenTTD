@@ -1283,6 +1283,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Ovdje ni
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Izgradi brane
 STR_LANDINFO_LOCK                                               :Brana
 
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...plutača je u uporabi!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinate: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1449,6 +1450,8 @@ STR_NETWORK_LANG_SPANISH                                        :Španjolski
 STR_NETWORK_LANG_SWEDISH                                        :Švedski
 STR_NETWORK_LANG_TURKISH                                        :Turski
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinski
+STR_NETWORK_LANG_GREEK                                          :Grčki
+STR_NETWORK_LANG_LATVIAN                                        :Latvijski
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Predvorje igre za više igrača
@@ -1697,6 +1700,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta sa semafo
 STR_1816_TREE_LINED_ROAD                                        :Cesta s tri trake
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Spremište cestovnih vozila
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Prijelaz ceste preko željezničke pruge
+STR_TRAMWAY                                                     :Tramvaj
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nije moguće ukloniti autobusnu stanicu...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nije moguće ukloniti kamionsku stanicu...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nije moguće ukloniti putničku tramvajsku stanicu...
@@ -1712,6 +1716,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Najprije moraš srušiti građevinu
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Grad)
 STR_2006_POPULATION                                             :{BLACK}Stanovništvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Preimenuj grad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nije moguće preimenovati grad...
@@ -1921,6 +1926,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Odaberi 
 STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Obala ili riječni nasip
 STR_3806_SHIP_DEPOT                                             :Spremište brodova
+STR_AQUEDUCT                                                    :Akvadukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Nije moguće graditi na vodi
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprije moraš srušiti kanal
 

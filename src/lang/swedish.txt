@@ -1291,6 +1291,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan inte
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Bygg slussar
 STR_LANDINFO_LOCK                                               :Sluss
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Kan inte placera flod här...
+STR_LANDINFO_RIVER                                              :Flod
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bojen används!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1943,6 +1946,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Välj sk
 STR_3804_WATER                                                  :Vatten
 STR_3805_COAST_OR_RIVERBANK                                     :Kust eller flodbank
 STR_3806_SHIP_DEPOT                                             :Skeppsdepå
+STR_AQUEDUCT                                                    :Akvedukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan inte bygga på vatten
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Måste först ta bort kanalen
 
@@ -2662,14 +2666,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vägen
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Utan uppehåll
 STR_ORDER_GO_TO                                                 :Åk till
 STR_ORDER_GO_NON_STOP_TO                                        :Åk non-stop till
 STR_ORDER_GO_VIA                                                :Åk via
 STR_ORDER_GO_NON_STOP_VIA                                       :Åk non-stop via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full last, vilket gods som helst
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lasta om möjligt
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full last alla frakttyper
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full last någon frakttyp
 STR_ORDER_DROP_NO_LOADING                                       :Lasta ej
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Lasta av allt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Lasta av om accepterat
 STR_ORDER_DROP_UNLOAD                                           :Lasta av allt
 STR_ORDER_DROP_TRANSFER                                         :Överför
@@ -3002,6 +3009,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Kan inte
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första skeppet ankommer till {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Positionsboj, som kan som kan användas för ytterligare vägpunkter
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Kan inte placera boj här...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Bygg akvedukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kan inte bygga akvedukt här...
 STR_9836_RENAME                                                 :{BLACK}Byt namn på
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Byt namn på skeppstyp
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Byt namn på skeppstyp

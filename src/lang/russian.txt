@@ -1293,6 +1293,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Нево
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Построить шлюзы
 STR_LANDINFO_LOCK                                               :Шлюз
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Не возможно расположить реку здесь...
+STR_LANDINFO_RIVER                                              :Река
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...этот буй используется!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Координаты: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1945,6 +1948,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Выбе
 STR_3804_WATER                                                  :Вода
 STR_3805_COAST_OR_RIVERBANK                                     :Морской или речной берег
 STR_3806_SHIP_DEPOT                                             :Верфь
+STR_AQUEDUCT                                                    :Акведук
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Невозможно построить на воде
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Сначала надо уничтожить канал
 
@@ -2675,14 +2679,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд мешает
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Без остановки
 STR_ORDER_GO_TO                                                 :Идти на
 STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановки на
 STR_ORDER_GO_VIA                                                :Идти через
 STR_ORDER_GO_NON_STOP_VIA                                       :Идти без остановки через
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Полн. загр. любым грузом
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Погрузить если доступно
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Полная загрузка всего груза
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Полная загрузка любым грузом
 STR_ORDER_DROP_NO_LOADING                                       :Не грузиться
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Выгрузить все
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Разгузиться если груз принимается
 STR_ORDER_DROP_UNLOAD                                           :Выгрузить все
 STR_ORDER_DROP_TRANSFER                                         :Передать
@@ -3015,6 +3022,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Не м�
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый корабль причалил к {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Буй помогает в навигации, если дистанция большая, исользуйте его как точку маршрута
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Не могу построить буй здесь...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Построить акведук
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Не могу построить акведук здесь...
 STR_9836_RENAME                                                 :{BLACK}Переимен.
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Переименовать
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Переименовать
@@ -3167,6 +3176,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} дол
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} требует OpenTTD версии {STRING} или выше.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Слишком много загружено новой графики
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {STRING} в качестве статического NewGRF с {STRING} Может вызвать ошибку синхронизации.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список

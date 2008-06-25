@@ -391,7 +391,7 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potència/Cost 
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de càrrega
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha càrrega d'aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
-STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
+STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (incloent carga sense espera)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Trens Disponibles
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehicles Disponibles
 STR_AVAILABLE_SHIPS                                             :{BLACK}Vaixells Disponibles
@@ -1291,6 +1291,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Aquí no
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Construeix rescloses
 STR_LANDINFO_LOCK                                               :Resclosa
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Aquí no es poden posar rius...
+STR_LANDINFO_RIVER                                              :Riu
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia en ús!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordenades: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1943,6 +1946,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Seleccio
 STR_3804_WATER                                                  :Aigua
 STR_3805_COAST_OR_RIVERBANK                                     :Costa o marge de riu
 STR_3806_SHIP_DEPOT                                             :Drassana
+STR_AQUEDUCT                                                    :Aqüeducte
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...No es pot construir dins l'aigua
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Has de demolir el canal primer
 
@@ -2662,14 +2666,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en el camí
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Sense parar
 STR_ORDER_GO_TO                                                 :Ves a
 STR_ORDER_GO_NON_STOP_TO                                        :Ves sense parar a
 STR_ORDER_GO_VIA                                                :Ves via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ves sense parar via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Càrrega completa de qualsevol càrrega
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carrega si està disponible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carrega del tot totes les càrregues
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carrega del tot qualsevol càrrega
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Càrrega completa de qualsevol càrrega
 STR_ORDER_DROP_NO_LOADING                                       :No carreguis
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarrega tot
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarrega si s'accepta
 STR_ORDER_DROP_UNLOAD                                           :Descarrega tot
 STR_ORDER_DROP_TRANSFER                                         :Transfereix
@@ -2827,7 +2834,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Disminue
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Mostra els detalls de càrrega transportada
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra els detalls d'elements del tren
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra les capacitats de cada element
-STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra la capacitat total del tren, separat per tipus de càrrega
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra la capacitat total del tren, separada per tipus de càrrega
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Llista d'ordres - clica en una per seleccionar-la
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta l'ordre actual, i comença la següent. CTRL + clic salta l'ordre seleccionada
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborra l'ordre seleccionada
@@ -3002,6 +3009,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}No es po
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebració popular . . .{}El 1er. vaixell arriba a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Situa boia, que pot ser útil per marques de ruta addicionals
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Aquí no es pot situar una boia...
+STR_BUILD_AQUEDUCT                                              :{BLACK} Construeix aqüeducte
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Aquí no es pot construir un aqüeducte...
 STR_9836_RENAME                                                 :{BLACK}Reanomena
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Reanomena tipus de vaixell
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Reanomena tipus de vaixell
@@ -3124,7 +3133,7 @@ STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Quantita
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}El benefici del vehicle amb els menors ingressos (de tots els vehicles més antics de 2 anys)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Quantitat de diners fets durant el mes amb el mínim benefici dels darrers 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Quantitat de diners fets durant el mes amb el màxim benefici dels darrers 12 trimestres
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unitats de càrrega entregada en els darrers quatre trimestres.
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unitats de càrrega entregades en els darrers quatre trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Tipus de càrrega entregada durant el darrer trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Quantitats de diners en efectiu
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tens un prèstec elevat?
@@ -3154,6 +3163,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ha de 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necessita OpenTTD versió {STRING} o més modern.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {STRING} com a NewGRF estàtic amb {STRING} podria causar desincronitzacions.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista

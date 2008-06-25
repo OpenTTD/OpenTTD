@@ -2,7 +2,6 @@
 ##ownname 한국어
 ##isocode ko_KR
 ##plural 1
-##gender a b
 
 #
 
@@ -1047,7 +1046,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTD패치에 적합한 급행(논스톱) 처리 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTD패치에 적합한 직통(논스톱) 처리 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
@@ -1291,6 +1290,9 @@ STR_LANDINFO_CANAL                                              :운하
 STR_CANT_BUILD_LOCKS                                            :{WHITE}여기에 갑문을 지을 수 없습니다...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}갑문 짓기
 STR_LANDINFO_LOCK                                               :갑문
+
+STR_CANT_PLACE_RIVERS                                           :{WHITE}여기에 강을 만들 수 없습니다...
+STR_LANDINFO_RIVER                                              :강
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...사용중인 부이입니다!
 
@@ -1944,6 +1946,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}정박�
 STR_3804_WATER                                                  :물
 STR_3805_COAST_OR_RIVERBANK                                     :해안 또는 강기슭
 STR_3806_SHIP_DEPOT                                             :정박소
+STR_AQUEDUCT                                                    :수도교
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...물 위에 지을 수 없습니다
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}운하를 먼저 제거하십시오
 
@@ -2663,28 +2666,31 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간에 기차가 있습니다
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
 STR_ORDER_GO_TO                                                 :[운행]
-STR_ORDER_GO_NON_STOP_TO                                        :급행
+STR_ORDER_GO_NON_STOP_TO                                        :직통
 STR_ORDER_GO_VIA                                                :경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직통 경유
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}적재 옵션
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :적재 옵션
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :종류에 상관 없이 화물을 가득 실음
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :화물 하나만 가득 실음
 STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}하차 옵션
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :하차 옵션
 STR_ORDER_DROP_UNLOAD                                           :모든 화물 하차
 STR_ORDER_DROP_TRANSFER                                         :환승
 STR_ORDER_DROP_NO_UNLOADING                                     :화물 하차 않음
 STR_ORDER_FULL_LOAD                                             :(가득 실음)
-STR_ORDER_FULL_LOAD_ANY                                         :(종류에 상관 없이 모든 화물 적재)
+STR_ORDER_FULL_LOAD_ANY                                         :(화물 하나만 가득 실음)
 STR_ORDER_NO_LOAD                                               :(싣지 않기)
 STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 싣고 출발)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 종류에 상관없이 모든 화물 적재)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 화물 하나만 가득 실음)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(화물 하차 후 빈 차로 출발)
 STR_ORDER_TRANSFER                                              :(환승 후 화물 받음)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(환승 후 모든 화물 적재)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 종류에 상관없이 모든 화물 적재)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 화물 하나만 가득 실음)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(환승 후 빈 차로 출발)
 STR_ORDER_NO_UNLOAD                                             :(내리지 않고 화물을 받음)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않고 가득 찰 때까지 기다림)
@@ -2700,7 +2706,7 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격�
 STR_ORDER_NEAREST_DEPOT                                         :가까운
 STR_ORDER_NEAREST_HANGAR                                        :가까운 격납고
 STR_ORDER_SERVICE_AT                                            :[점검]
-STR_ORDER_SERVICE_NON_STOP_AT                                   :[점검, 급행]
+STR_ORDER_SERVICE_NON_STOP_AT                                   :[점검, 직통]
 STR_ORDER_TRAIN_DEPOT                                           :차량기지
 STR_ORDER_ROAD_DEPOT                                            :차고
 STR_ORDER_SHIP_DEPOT                                            :정박소
@@ -3003,6 +3009,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}선박�
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}첫 선박이 {STATION}에 도착했습니다!{}시민들이 환호하고 있습니다!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}웨이포인트로 사용할 부이를 설치합니다.
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}여기에 부이를 설치할 수 없습니다...
+STR_BUILD_AQUEDUCT                                              :{BLACK}수도교 짓기
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}여기에 수도교를 지을 수 없습니다...
 STR_9836_RENAME                                                 :{BLACK}이름 지정
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}선박 타입의 이름 지정
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}선박 타입의 이름 지정

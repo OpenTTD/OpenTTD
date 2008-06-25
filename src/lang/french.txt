@@ -1292,6 +1292,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossib
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Construire des écluses
 STR_LANDINFO_LOCK                                               :Ecluse
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Impossible de construire une rivière ici...
+STR_LANDINFO_RIVER                                              :Rivière
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bouée utilisée !
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordonnées: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1944,6 +1947,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Choisir 
 STR_3804_WATER                                                  :Eau
 STR_3805_COAST_OR_RIVERBANK                                     :Rivage ou berge
 STR_3806_SHIP_DEPOT                                             :Dépôt naval
+STR_AQUEDUCT                                                    :Aqueduc
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Impossible de construire sur l'eau
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Vous devez d'abord détruire le canal
 
@@ -2663,14 +2667,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train présent
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Sans arrêt
 STR_ORDER_GO_TO                                                 :Aller à
 STR_ORDER_GO_NON_STOP_TO                                        :Aller sans arrêt à
 STR_ORDER_GO_VIA                                                :Passer par
 STR_ORDER_GO_NON_STOP_VIA                                       :Passer sans arrêt par
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Chargement complet par un seul type
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Charger si possible
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Chargement complet
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Chargement complet par un seul type
 STR_ORDER_DROP_NO_LOADING                                       :Pas de chargement
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Décharger tout
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Décharger si accepté
 STR_ORDER_DROP_UNLOAD                                           :Décharger tout
 STR_ORDER_DROP_TRANSFER                                         :Transférer
@@ -2951,6 +2958,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossib
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Construction de voies navigables
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Construction de voies navigables
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Voies navigables
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Impossible de construire port ici...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Dépôt naval
 STR_9804_NEW_SHIPS                                              :{BLACK}Nouveaux navires
@@ -3003,6 +3013,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Impossib
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Les habitants célèbrent {}l'arrivée du premier navire à {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Placer une bouée, peut servir de guide aux navires
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Impossible de placer une bouée ici...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Construire un aqueduc
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Impossible de construire un aqueduc ici...
 STR_9836_RENAME                                                 :{BLACK}Renommer
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renommer type de navire
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Renommer type de navire
@@ -3155,6 +3167,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} doit �
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} nécessite OpenTTD version {STRING} ou supérieur.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronistation.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ajouter
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Ajouter un fichier NewGRF à la liste

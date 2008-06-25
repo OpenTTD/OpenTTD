@@ -1292,6 +1292,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossí
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Construir eclusas
 STR_LANDINFO_LOCK                                               :Eclusa
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Impossível fazer rios aqui...
+STR_LANDINFO_RIVER                                              :Rio
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...bóia está em uso!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1944,6 +1947,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecion
 STR_3804_WATER                                                  :Água
 STR_3805_COAST_OR_RIVERBANK                                     :Costa ou margem
 STR_3806_SHIP_DEPOT                                             :Depósito naval
+STR_AQUEDUCT                                                    :Aqueduto
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Impossível construir na água
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Deve demolir o canal primeiro
 
@@ -2663,14 +2667,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no caminho
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Sem parar
 STR_ORDER_GO_TO                                                 :Vá para
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sem parar para
 STR_ORDER_GO_VIA                                                :Vá via
 STR_ORDER_GO_NON_STOP_VIA                                       :Ir sem parar via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carregar qualquer carga
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carregar tudo
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carregar completamente qualquer carga
 STR_ORDER_DROP_NO_LOADING                                       :Não carregar
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarregar tudo
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceito
 STR_ORDER_DROP_UNLOAD                                           :Descarregar tudo
 STR_ORDER_DROP_TRANSFER                                         :Transferir
@@ -3003,6 +3010,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Impossí
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{} Primeira embarcação chega a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Posicione a bóia, que pode ser usada para marcar pontos de rota adicionais
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Impossível posicionar bóia aqui...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Construir aqueduto
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Impossível construir aqueduto aqui
 STR_9836_RENAME                                                 :{BLACK}Renomear
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renomear tipo de embarcação
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Renomear tipo de embarcação
@@ -3155,6 +3164,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} deve s
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requer versão {STRING} ou maior do OpenTTD.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitos NewGRFs foram carregados.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRING} como um NewGRF estático em conjunto com {STRING} pode causar desincronias.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
