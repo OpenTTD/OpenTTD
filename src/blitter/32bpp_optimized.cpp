@@ -142,13 +142,20 @@ inline void Blitter_32bppOptimized::Draw(const Blitter::BlitterParams *bp, ZoomL
 					 *  we produce a result the newgrf maker didn't expect ;) */
 
 					/* Make the current color a bit more black, so it looks like this image is transparent */
-					src_px += n;
 					src_n += n;
-
-					do {
-						*dst = MakeTransparent(*dst, 192);
-						dst++;
-					} while (--n != 0);
+					if (src_px->a == 255) {
+						src_px += n;
+						do {
+							*dst = MakeTransparent(*dst, 3, 4);
+							dst++;
+						} while (--n != 0);
+					} else {
+						do {
+							*dst = MakeTransparent(*dst, (256 * 4 - src_px->a), 256 * 4);
+							dst++;
+							src_px++;
+						} while (--n != 0);
+					}
 					break;
 
 				default:

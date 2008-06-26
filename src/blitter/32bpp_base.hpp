@@ -105,16 +105,17 @@ public:
 	/**
 	* Make a pixel looks like it is transparent.
 	* @param colour the colour already on the screen.
-	* @param amount the amount of transparency, times 256.
+	* @param nom the amount of transparency, nominator, makes colour lighter.
+	* @param denom denominator, makes colour darker.
 	* @return the new colour for the screen.
 	*/
-	static inline uint32 MakeTransparent(uint32 colour, uint amount)
+	static inline uint32 MakeTransparent(uint32 colour, uint nom, uint denom = 256)
 	{
 		uint r = GB(colour, 16, 8);
 		uint g = GB(colour, 8,  8);
 		uint b = GB(colour, 0,  8);
 
-		return ComposeColour(0xFF, r * amount / 256, g * amount / 256, b * amount / 256);
+		return ComposeColour(0xFF, r * nom / denom, g * nom / denom, b * nom / denom);
 	}
 
 	/**
