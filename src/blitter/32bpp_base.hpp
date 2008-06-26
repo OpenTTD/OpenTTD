@@ -30,7 +30,7 @@ public:
 	/**
 	 * Compose a colour based on RGB values.
 	 */
-	static inline uint ComposeColour(uint a, uint r, uint g, uint b)
+	static inline uint32 ComposeColour(uint a, uint r, uint g, uint b)
 	{
 		return (((a) << 24) & 0xFF000000) | (((r) << 16) & 0x00FF0000) | (((g) << 8) & 0x0000FF00) | ((b) & 0x000000FF);
 	}
@@ -46,44 +46,60 @@ public:
 	/**
 	 * Compose a colour based on RGBA values and the current pixel value.
 	 */
-	static inline uint ComposeColourRGBA(uint r, uint g, uint b, uint a, uint current)
+	static inline uint32 ComposeColourRGBANoCheck(uint r, uint g, uint b, uint a, uint32 current)
+	{
+		uint cr = GB(current, 16, 8);
+		uint cg = GB(current, 8,  8);
+		uint cb = GB(current, 0,  8);
+
+		/* The 256 is wrong, it should be 255, but 256 is much faster... */
+		return ComposeColour(0xFF,
+							(r * a + cr * (256 - a)) / 256,
+							(g * a + cg * (256 - a)) / 256,
+							(b * a + cb * (256 - a)) / 256);
+	}
+
+	/**
+	 * Compose a colour based on RGBA values and the current pixel value.
+	 * Handles fully transparent and solid pixels in a special (faster) way.
+	 */
+	static inline uint32 ComposeColourRGBA(uint r, uint g, uint b, uint a, uint32 current)
 	{
 		if (a == 0) return current;
 		if (a >= 255) return ComposeColour(0xFF, r, g, b);
 
-		uint cr, cg, cb;
-		cr = GB(current, 16, 8);
-		cg = GB(current, 8,  8);
-		cb = GB(current, 0,  8);
-
-		/* The 256 is wrong, it should be 255, but 256 is much faster... */
-		return ComposeColour(0xFF,
-												(r * a + cr * (256 - a)) / 256,
-												(g * a + cg * (256 - a)) / 256,
-												(b * a + cb * (256 - a)) / 256);
+		return ComposeColourRGBANoCheck(r, g, b, a, current);
 	}
 
 	/**
-	* Compose a colour based on Pixel value, alpha value, and the current pixel value.
-	*/
-	static inline uint ComposeColourPA(uint colour, uint a, uint current)
+	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
+	 */
+	static inline uint32 ComposeColourPANoCheck(uint32 colour, uint a, uint32 current)
+	{
+		uint r  = GB(colour,  16, 8);
+		uint g  = GB(colour,  8,  8);
+		uint b  = GB(colour,  0,  8);
+		uint cr = GB(current, 16, 8);
+		uint cg = GB(current, 8,  8);
+		uint cb = GB(current, 0,  8);
+
+		/* The 256 is wrong, it should be 255, but 256 is much faster... */
+		return ComposeColour(0xFF,
+							(r * a + cr * (256 - a)) / 256,
+							(g * a + cg * (256 - a)) / 256,
+							(b * a + cb * (256 - a)) / 256);
+	}
+
+	/**
+	 * Compose a colour based on Pixel value, alpha value, and the current pixel value.
+	 * Handles fully transparent and solid pixels in a special (faster) way.
+	 */
+	static inline uint32 ComposeColourPA(uint32 colour, uint a, uint32 current)
 	{
 		if (a == 0) return current;
 		if (a >= 255) return (colour | 0xFF000000);
 
-		uint r, g, b, cr, cg, cb;
-		r  = GB(colour,  16, 8);
-		g  = GB(colour,  8,  8);
-		b  = GB(colour,  0,  8);
-		cr = GB(current, 16, 8);
-		cg = GB(current, 8,  8);
-		cb = GB(current, 0,  8);
-
-		/* The 256 is wrong, it should be 255, but 256 is much faster... */
-		return ComposeColour(0xFF,
-												(r * a + cr * (256 - a)) / 256,
-												(g * a + cg * (256 - a)) / 256,
-												(b * a + cb * (256 - a)) / 256);
+		return ComposeColourPANoCheck(colour, a, current);
 	}
 
 	/**
@@ -92,12 +108,11 @@ public:
 	* @param amount the amount of transparency, times 256.
 	* @return the new colour for the screen.
 	*/
-	static inline uint MakeTransparent(uint colour, uint amount)
+	static inline uint32 MakeTransparent(uint32 colour, uint amount)
 	{
-		uint r, g, b;
-		r = GB(colour, 16, 8);
-		g = GB(colour, 8,  8);
-		b = GB(colour, 0,  8);
+		uint r = GB(colour, 16, 8);
+		uint g = GB(colour, 8,  8);
+		uint b = GB(colour, 0,  8);
 
 		return ComposeColour(0xFF, r * amount / 256, g * amount / 256, b * amount / 256);
 	}
@@ -107,12 +122,11 @@ public:
 	* @param colour the colour to make grey.
 	* @return the new colour, now grey.
 	*/
-	static inline uint MakeGrey(uint colour)
+	static inline uint32 MakeGrey(uint32 colour)
 	{
-		uint r, g, b;
-		r = GB(colour, 16, 8);
-		g = GB(colour, 8,  8);
-		b = GB(colour, 0,  8);
+		uint r = GB(colour, 16, 8);
+		uint g = GB(colour, 8,  8);
+		uint b = GB(colour, 0,  8);
 
 		/* To avoid doubles and stuff, multiple it with a total of 65536 (16bits), then
 		*  divide by it to normalize the value to a byte again. See heightmap.cpp for

@@ -101,8 +101,28 @@ static FORCEINLINE T abs(const T a)
 template <typename T>
 static FORCEINLINE T Align(const T x, uint n)
 {
+	assert((n & (n - 1)) == 0 && n != 0);
 	n--;
-	return (T)((x + n) & ~(n));
+	return (T)((x + n) & ~((T)n));
+}
+
+/**
+ * Return the smallest multiple of n equal or greater than x
+ * Applies to pointers only
+ *
+ * @note n must be a power of 2
+ * @param x The min value
+ * @param n The base of the number we are searching
+ * @return The smallest multiple of n equal or greater than x
+ * @see Align()
+ */
+
+assert_compile(sizeof(size_t) == sizeof(void *));
+
+template <typename T>
+static FORCEINLINE T *AlignPtr(T *x, uint n)
+{
+	return (T *)Align((size_t)x, n);
 }
 
 /**

@@ -149,7 +149,7 @@ struct Colour {
 	uint8 b, g, r, a; ///< colour channels in LE order
 #endif /* TTD_ENDIAN == TTD_BIG_ENDIAN */
 
-	operator uint32 () { return *(uint32 *)this; }
+	operator uint32 () const { return *(uint32 *)this; }
 };
 
 enum FontSize {

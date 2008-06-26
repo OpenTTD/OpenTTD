@@ -10,13 +10,17 @@
 
 class Blitter_32bppOptimized : public Blitter_32bppSimple {
 public:
+	struct SpriteData {
+		uint32 offset[ZOOM_LVL_COUNT][2];
+		byte data[VARARRAY_SIZE];
+	};
+
 	/* virtual */ void Draw(Blitter::BlitterParams *bp, BlitterMode mode, ZoomLevel zoom);
 	/* virtual */ Sprite *Encode(SpriteLoader::Sprite *sprite, Blitter::AllocatorProc *allocator);
 
 	/* virtual */ const char *GetName() { return "32bpp-optimized"; }
 
-	template <BlitterMode mode, ZoomLevel zoom> void Draw(Blitter::BlitterParams *bp);
-	template <BlitterMode mode> void Draw(Blitter::BlitterParams *bp, ZoomLevel zoom);
+	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 };
 
 class FBlitter_32bppOptimized: public BlitterFactory<FBlitter_32bppOptimized> {

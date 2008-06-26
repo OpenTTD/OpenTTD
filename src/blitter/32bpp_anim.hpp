@@ -34,6 +34,8 @@ public:
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation();
 
 	/* virtual */ const char *GetName() { return "32bpp-anim"; }
+
+	template <BlitterMode mode> void Draw(const Blitter::BlitterParams *bp, ZoomLevel zoom);
 };
 
 class FBlitter_32bppAnim: public BlitterFactory<FBlitter_32bppAnim> {
