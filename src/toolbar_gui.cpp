@@ -95,7 +95,7 @@ enum ToolbarScenEditorWidgets {
 	TBSE_FASTFORWARD,
 	TBSE_SAVESCENARIO = 3,
 	TBSE_SPACERPANEL,
-	TBSE_SEPARATOR,
+	TBSE_DATEPANEL,
 	TBSE_DATEBACKWARD,
 	TBSE_DATEFORWARD,
 	TBSE_SMALLMAP,
@@ -1206,7 +1206,7 @@ public:
 					this->widget[i].right = x - 1;
 					break;
 
-				case TBSE_SEPARATOR: {
+				case TBSE_DATEPANEL: {
 					int offset = x - this->widget[i].left;
 					this->widget[i + 1].left  += offset;
 					this->widget[i + 1].right += offset;
