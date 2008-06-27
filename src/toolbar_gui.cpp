@@ -843,7 +843,7 @@ static void SplitToolbar(Window *w)
 
 	static const byte *arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
 
-	uint max_icons = max(TBP_TOOLBAR_MINBUTTON, (w->width + TBP_BUTTONWIDTH / 2) / TBP_BUTTONWIDTH);
+	uint max_icons = max(TBP_TOOLBAR_MINBUTTON, (ToolBarProperties)((w->width + TBP_BUTTONWIDTH / 2) / TBP_BUTTONWIDTH));
 
 	assert(max_icons >= TBP_TOOLBAR_MINBUTTON && max_icons <= TBP_NORMAL_MAXBUTTON);
 
