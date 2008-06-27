@@ -52,6 +52,17 @@ static void SplitToolbar(Window *w);
 RailType _last_built_railtype;
 RoadType _last_built_roadtype;
 
+/** This enum gathers properties of both toolbars */
+enum ToolBarProperties {
+	TBP_BUTTONWIDTH        =  22,  ///< width of a button
+	TBP_BUTTONHEIGHT       =  22,  ///< height of a button, but hwight of the toolbar too
+	TBP_DATEPANELWIDTH     = 130,  ///< used in scenario editor to calculate width of the toolbar.
+
+	TBP_TOOLBAR_MINBUTTON  =  14,  ///< references both toolbars
+	TBP_NORMAL_MAXBUTTON   =  19,  ///< normal toolbar has this many buttons
+	TBP_SCENARIO_MAXBUTTON =  16,  ///< while the scenario has these
+};
+
 enum ToolbarMode {
 	TB_NORMAL,
 	TB_UPPER,
@@ -773,15 +784,15 @@ static void ResizeToolbar(Window *w)
 	uint spacing;
 	uint widgetcount = w->widget_count - 1;
 
-	if (w->width >= (int)widgetcount * 22) {
-		button_width = 22;
+	if (w->width >= (int)widgetcount * TBP_BUTTONWIDTH) {
+		button_width = TBP_BUTTONWIDTH;
 		spacing = w->width - (widgetcount * button_width);
 	} else {
 		button_width = w->width / widgetcount;
 		spacing = 0;
 	}
 
-	uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
+	static const uint extra_spacing_at[] = { 4, 8, 13, 17, 19, 24, 0 };
 	uint i = 0;
 	for (uint x = 0, j = 0; i < widgetcount; i++) {
 		if (extra_spacing_at[j] == i) {
@@ -832,10 +843,9 @@ static void SplitToolbar(Window *w)
 
 	static const byte *arrangements[] = { arrange14, arrange15, arrange16, arrange17, arrange18, arrange19 };
 
-	static const uint icon_size = 22;
-	uint max_icons = max(14U, (w->width + icon_size / 2) / icon_size);
+	uint max_icons = max(TBP_TOOLBAR_MINBUTTON, (w->width + TBP_BUTTONWIDTH / 2) / TBP_BUTTONWIDTH);
 
-	assert(max_icons >= 14 && max_icons <= 19);
+	assert(max_icons >= TBP_TOOLBAR_MINBUTTON && max_icons <= TBP_NORMAL_MAXBUTTON);
 
 	/* first hide all icons */
 	for (uint i = 0; i < w->widget_count - 1; i++) {
@@ -843,7 +853,7 @@ static void SplitToolbar(Window *w)
 	}
 
 	/* now activate them all on their proper positions */
-	for (uint i = 0, x = 0, n = max_icons - 14; i < max_icons; i++) {
+	for (uint i = 0, x = 0, n = max_icons - TBP_TOOLBAR_MINBUTTON; i < max_icons; i++) {
 		uint icon = arrangements[n][i + ((_toolbar_mode == TB_LOWER) ? max_icons : 0)];
 		w->widget[icon].type = WWT_IMGBTN;
 		w->widget[icon].left = x;
@@ -989,7 +999,7 @@ struct MainToolbarWindow : Window {
 
 	virtual void OnResize(Point new_size, Point delta)
 	{
-		if (this->width <= 19 * 22) {
+		if (this->width <= TBP_NORMAL_MAXBUTTON * TBP_BUTTONWIDTH) {
 			SplitToolbar(this);
 		} else {
 			ResizeToolbar(this);
@@ -1051,7 +1061,7 @@ static const Widget _toolb_normal_widgets[] = {
 };
 
 static const WindowDesc _toolb_normal_desc = {
-	0, 0, 0, 22, 640, 22,
+	0, 0, 0, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET,
 	_toolb_normal_widgets,
@@ -1174,20 +1184,20 @@ public:
 
 	virtual void OnResize(Point new_size, Point delta)
 	{
-		/* There are 15 buttons plus some spacings if the space allows it.
+		/* There are 16 buttons plus some spacings if the space allows it.
 		 * Furthermore there are two panels of which one is non - essential
-		 * and that one can be removed is the space is too small. */
+		 * and that one can be removed if the space is too small. */
 		uint buttons_width;
 		uint spacing;
 
-		static int normal_min_width = (16 * 22) + (2 * 130);
-		static int one_less_panel_min_width = (16 * 22) + 130;
+		static const int normal_min_width = (TBP_SCENARIO_MAXBUTTON * TBP_BUTTONWIDTH) + (2 * TBP_DATEPANELWIDTH);
+		static const int one_less_panel_min_width = (TBP_SCENARIO_MAXBUTTON * TBP_BUTTONWIDTH) + TBP_DATEPANELWIDTH;
 
 		if (this->width >= one_less_panel_min_width) {
-			buttons_width = 16 * 22;
+			buttons_width = TBP_SCENARIO_MAXBUTTON * TBP_BUTTONWIDTH;
 			spacing = this->width - ((this->width >= normal_min_width) ? normal_min_width : one_less_panel_min_width);
 		} else {
-			buttons_width = this->width - 130;
+			buttons_width = this->width - TBP_DATEPANELWIDTH;
 			spacing = 0;
 		}
 		static const uint extra_spacing_at[] = { 3, 4, 7, 8, 10, 17, 0 };
@@ -1202,7 +1212,7 @@ public:
 						continue;
 					}
 
-					x += 130;
+					x += TBP_DATEPANELWIDTH;
 					this->widget[i].right = x - 1;
 					break;
 
@@ -1213,7 +1223,7 @@ public:
 					this->widget[i + 2].left  += offset;
 					this->widget[i + 2].right += offset;
 					this->widget[i].left = x;
-					x += 130;
+					x += TBP_DATEPANELWIDTH;
 					this->widget[i].right = x - 1;
 					i += 2;
 				} break;
@@ -1222,9 +1232,9 @@ public:
 					if (this->widget[i].bottom == 0) continue;
 
 					this->widget[i].left = x;
-					x += buttons_width / (16 - b);
+					x += buttons_width / (TBP_SCENARIO_MAXBUTTON - b);
 					this->widget[i].right = x - 1;
-					buttons_width -= buttons_width / (16 - b);
+					buttons_width -= buttons_width / (TBP_SCENARIO_MAXBUTTON - b);
 					b++;
 					break;
 			}
@@ -1295,7 +1305,7 @@ static const Widget _toolb_scen_widgets[] = {
 };
 
 static const WindowDesc _toolb_scen_desc = {
-	0, 0, 130, 22, 640, 22,
+	0, 0, 130, TBP_BUTTONHEIGHT, 640, TBP_BUTTONHEIGHT,
 	WC_MAIN_TOOLBAR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
