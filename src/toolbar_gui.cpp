@@ -55,7 +55,7 @@ RoadType _last_built_roadtype;
 /** This enum gathers properties of both toolbars */
 enum ToolBarProperties {
 	TBP_BUTTONWIDTH        =  22,  ///< width of a button
-	TBP_BUTTONHEIGHT       =  22,  ///< height of a button, but hwight of the toolbar too
+	TBP_BUTTONHEIGHT       =  22,  ///< height of a button as well as the toolbars
 	TBP_DATEPANELWIDTH     = 130,  ///< used in scenario editor to calculate width of the toolbar.
 
 	TBP_TOOLBAR_MINBUTTON  =  14,  ///< references both toolbars
@@ -123,7 +123,7 @@ enum ToolbarScenEditorWidgets {
 
 /** The idea of this enum is to allow a separation between widget position
  * and _menu_clicked_procs's entry.  By shifting, the "action" id is extracted and
- * kept safe for usage when reuired.
+ * kept safe for usage when required.
  * @see ToolbarMenuWindow::OnMouseLoop */
 enum ScenarioEditorMenuActions {
 	SEMA_MAP_CLICK = 17 << 8,
@@ -308,8 +308,8 @@ enum MapMenuEntries {
 	MME_SHOW_EXTRAVIEWPORTS,
 	MME_SHOW_SIGNLISTS,
 	MME_SHOW_TOWNDIRECTORY,    ///< This entry is only used in Editor mode
-	MME_MENUCOUNT_NORMAL = 3,
-	MME_MENUCOUNT_EDITOR = 4,
+	MME_MENUCOUNT_NORMAL     = 3,
+	MME_MENUCOUNT_EDITOR     = 4,
 };
 
 static void ToolbarMapClick(Window *w)
