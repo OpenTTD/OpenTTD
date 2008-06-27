@@ -242,7 +242,7 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 
 	if (mta == MTA_FINAL_DELIVERY && !tmp.Empty()) {
 		/* There are some packets that could not be delivered at the station, put them back */
-		tmp.MoveTo(this, MAX_UVALUE(uint));
+		tmp.MoveTo(this, UINT_MAX);
 		tmp.packets.clear();
 	}
 

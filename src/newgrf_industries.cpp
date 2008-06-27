@@ -135,7 +135,7 @@ uint32 GetIndustryIDAtOffset(TileIndex tile, const Industry *i)
 
 static uint32 GetClosestIndustry(TileIndex tile, IndustryType type, const Industry *current)
 {
-	uint32 best_dist = MAX_UVALUE(uint32);
+	uint32 best_dist = UINT32_MAX;
 	const Industry *i;
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->type != type || i == current) continue;
@@ -158,7 +158,7 @@ static uint32 GetCountAndDistanceOfClosestInstance(byte param_setID, byte layout
 {
 	uint32 GrfID = GetRegister(0x100);  ///< Get the GRFID of the definition to look for in register 100h
 	IndustryType ind_index;
-	uint32 closest_dist = MAX_UVALUE(uint32);
+	uint32 closest_dist = UINT32_MAX;
 	byte count = 0;
 
 	/* Determine what will be the industry type to look for */

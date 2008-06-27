@@ -261,7 +261,7 @@ struct TimetableWindow : Window {
 		uint64 time = StrEmpty(str) ? 0 : strtoul(str, NULL, 10);
 		if (!_settings_client.gui.timetable_in_ticks) time *= DAY_TICKS;
 
-		uint32 p2 = minu(time, MAX_UVALUE(uint16));
+		uint32 p2 = minu(time, UINT16_MAX);
 
 		DoCommandP(0, p1, p2, NULL, CMD_CHANGE_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 	}

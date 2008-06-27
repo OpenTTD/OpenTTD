@@ -324,7 +324,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	 * removing his/her property doesn't fail because of lack of money.
 	 * Not too drastically though, because it could overflow */
 	if (new_player == PLAYER_SPECTATOR) {
-		GetPlayer(old_player)->player_money = MAX_UVALUE(uint64) >> 2; // jackpot ;p
+		GetPlayer(old_player)->player_money = UINT64_MAX >> 2; // jackpot ;p
 	}
 
 	if (new_player == PLAYER_SPECTATOR) {

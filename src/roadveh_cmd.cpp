@@ -727,7 +727,7 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 	TileIndex dest = INVALID_TILE;
 	const RoadStop *rs = GetStation(station)->GetPrimaryRoadStop(this);
 	if (rs != NULL) {
-		uint mindist = MAX_UVALUE(uint);
+		uint mindist = UINT_MAX;
 
 		for (; rs != NULL; rs = rs->GetNextRoadStop(this)) {
 			uint dist = DistanceManhattan(this->tile, rs->xy);
