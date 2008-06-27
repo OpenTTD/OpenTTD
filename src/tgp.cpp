@@ -203,13 +203,13 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
  * - indexed by "smoothness setting" and log2(frequency) */
 static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][12] = {
 	/* Very smooth */
-	{1000,  350,  123,   43,   15,    1,     1,    0,    0,    0,    0,    0},
+	{16000,  5600,  1968,   688,   240,    16,    16,    0,    0,    0,    0,    0},
 	/* Smooth */
-	{1000, 1000,  403,  200,   64,    8,     1,    0,    0,    0,    0,    0},
+	{16000, 16000,  6448,  3200,  1024,   128,    16,    0,    0,    0,    0,    0},
 	/* Rough */
-	{1000, 1200,  800,  500,  200,   16,     4,    0,    0,    0,    0,    0},
+	{16000, 19200, 12800,  8000,  3200,   256,    64,    0,    0,    0,    0,    0},
 	/* Very Rough */
-	{1500, 1000, 1200, 1000,  500,   32,    20,    0,    0,    0,    0,    0},
+	{24000, 16000, 19200, 16000,  8000,   512,   320,    0,    0,    0,    0,    0},
 };
 
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
@@ -267,8 +267,6 @@ static inline height_t RandomHeight(amplitude_t rMax)
 {
 	amplitude_t ra = (Random() << 16) | (Random() & 0x0000FFFF);
 	height_t rh;
-	/* Scale the amplitude for better resolution */
-	rMax *= 16;
 	/* Spread height into range -rMax..+rMax */
 	rh = A2H(ra % (2 * rMax + 1) - rMax);
 	return rh;
