@@ -173,13 +173,14 @@ struct HeightMap
 	uint     total_size; //< height map total size
 	uint     size_x;     //< MapSizeX()
 	uint     size_y;     //< MapSizeY()
+
+	inline height_t &height(uint x, uint y) {
+		return h[x + y * dim_x];
+	}
 };
 
 /** Global height map instance */
 static HeightMap _height_map = {NULL, 0, 0, 0, 0};
-
-/** Height map accessors */
-#define HeightMapXY(x, y) _height_map.h[(x) + (y) * _height_map.dim_x]
 
 /** Conversion: int to height_t */
 #define I2H(i) ((i) << height_decimal_bits)
@@ -290,7 +291,7 @@ static bool ApplyNoise(uint log_frequency, amplitude_t amplitude)
 		for (y = 0; y <= _height_map.size_y; y += step) {
 			for (x = 0; x <= _height_map.size_x; x += step) {
 				height_t height = (amplitude > 0) ? RandomHeight(amplitude) : 0;
-				HeightMapXY(x, y) = height;
+				_height_map.height(x, y) = height;
 			}
 		}
 		return true;
@@ -300,26 +301,26 @@ static bool ApplyNoise(uint log_frequency, amplitude_t amplitude)
 	 * Interpolate height values at odd x, even y tiles */
 	for (y = 0; y <= _height_map.size_y; y += 2 * step) {
 		for (x = 0; x < _height_map.size_x; x += 2 * step) {
-			height_t h00 = HeightMapXY(x + 0 * step, y);
-			height_t h02 = HeightMapXY(x + 2 * step, y);
+			height_t h00 = _height_map.height(x + 0 * step, y);
+			height_t h02 = _height_map.height(x + 2 * step, y);
 			height_t h01 = (h00 + h02) / 2;
-			HeightMapXY(x + 1 * step, y) = h01;
+			_height_map.height(x + 1 * step, y) = h01;
 		}
 	}
 
 	/* Interpolate height values at odd y tiles */
 	for (y = 0; y < _height_map.size_y; y += 2 * step) {
 		for (x = 0; x <= _height_map.size_x; x += step) {
-			height_t h00 = HeightMapXY(x, y + 0 * step);
-			height_t h20 = HeightMapXY(x, y + 2 * step);
+			height_t h00 = _height_map.height(x, y + 0 * step);
+			height_t h20 = _height_map.height(x, y + 2 * step);
 			height_t h10 = (h00 + h20) / 2;
-			HeightMapXY(x, y + 1 * step) = h10;
+			_height_map.height(x, y + 1 * step) = h10;
 		}
 	}
 
 	for (y = 0; y <= _height_map.size_y; y += step) {
 		for (x = 0; x <= _height_map.size_x; x += step) {
-			HeightMapXY(x, y) += RandomHeight(amplitude);
+			_height_map.height(x, y) += RandomHeight(amplitude);
 		}
 	}
 	return (step > 1);
@@ -356,7 +357,7 @@ static void HeightMapGetMinMaxAvg(height_t *min_ptr, height_t *max_ptr, height_t
 {
 	height_t h_min, h_max, h_avg, *h;
 	int64 h_accu = 0;
-	h_min = h_max = HeightMapXY(0, 0);
+	h_min = h_max = _height_map.height(0, 0);
 
 	/* Get h_min, h_max and accumulate heights into h_accu */
 	FOR_ALL_TILES_IN_HEIGHT(h) {
@@ -544,7 +545,7 @@ static void HeightMapCoastLines()
 		max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
 		if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
 		for (x = 0; x < max_x; x++) {
-			HeightMapXY(x, y) = 0;
+			_height_map.height(x, y) = 0;
 		}
 
 		/* Bottom left */
@@ -552,7 +553,7 @@ static void HeightMapCoastLines()
 		max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
 		if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
 		for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
-			HeightMapXY(x, y) = 0;
+			_height_map.height(x, y) = 0;
 		}
 	}
 
@@ -563,7 +564,7 @@ static void HeightMapCoastLines()
 		max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
 		if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
 		for (y = 0; y < max_y; y++) {
-			HeightMapXY(x, y) = 0;
+			_height_map.height(x, y) = 0;
 		}
 
 
@@ -572,7 +573,7 @@ static void HeightMapCoastLines()
 		max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
 		if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
 		for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
-			HeightMapXY(x, y) = 0;
+			_height_map.height(x, y) = 0;
 		}
 	}
 }
@@ -595,21 +596,21 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 	/* Search for the coast (first non-water tile) */
 	for (x = org_x, y = org_y, ed = 0; IsValidXY(x, y) && ed < max_coast_dist_from_edge; x += dir_x, y += dir_y, ed++) {
 		/* Coast found? */
-		if (HeightMapXY(x, y) > 15) break;
+		if (_height_map.height(x, y) > 15) break;
 
 		/* Coast found in the neighborhood? */
-		if (IsValidXY(x + dir_y, y + dir_x) && HeightMapXY(x + dir_y, y + dir_x) > 0) break;
+		if (IsValidXY(x + dir_y, y + dir_x) && _height_map.height(x + dir_y, y + dir_x) > 0) break;
 
 		/* Coast found in the neighborhood on the other side */
-		if (IsValidXY(x - dir_y, y - dir_x) && HeightMapXY(x - dir_y, y - dir_x) > 0) break;
+		if (IsValidXY(x - dir_y, y - dir_x) && _height_map.height(x - dir_y, y - dir_x) > 0) break;
 	}
 
 	/* Coast found or max_coast_dist_from_edge has been reached.
 	 * Soften the coast slope */
 	for (depth = 0; IsValidXY(x, y) && depth <= max_coast_Smooth_depth; depth++, x += dir_x, y += dir_y) {
-		h = HeightMapXY(x, y);
+		h = _height_map.height(x, y);
 		h = min(h, h_prev + (4 + depth)); // coast softening formula
-		HeightMapXY(x, y) = h;
+		_height_map.height(x, y) = h;
 		h_prev = h;
 	}
 }
@@ -642,14 +643,14 @@ static void HeightMapSmoothSlopes(height_t dh_max)
 	int x, y;
 	for (y = 1; y <= (int)_height_map.size_y; y++) {
 		for (x = 1; x <= (int)_height_map.size_x; x++) {
-			height_t h_max = min(HeightMapXY(x - 1, y), HeightMapXY(x, y - 1)) + dh_max;
-			if (HeightMapXY(x, y) > h_max) HeightMapXY(x, y) = h_max;
+			height_t h_max = min(_height_map.height(x - 1, y), _height_map.height(x, y - 1)) + dh_max;
+			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
 	for (y = _height_map.size_y - 1; y >= 0; y--) {
 		for (x = _height_map.size_x - 1; x >= 0; x--) {
-			height_t h_max = min(HeightMapXY(x + 1, y), HeightMapXY(x, y + 1)) + dh_max;
-			if (HeightMapXY(x, y) > h_max) HeightMapXY(x, y) = h_max;
+			height_t h_max = min(_height_map.height(x + 1, y), _height_map.height(x, y + 1)) + dh_max;
+			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
 }
@@ -676,12 +677,6 @@ static void HeightMapNormalize()
 	HeightMapSineTransform(12, h_max_new);
 	HeightMapSmoothSlopes(16);
 }
-
-static inline int perlin_landXY(uint x, uint y)
-{
-	return HeightMapXY(x, y);
-}
-
 
 /**
  * The Perlin Noise calculation using large primes
@@ -808,7 +803,7 @@ void GenerateTerrainPerlin()
 	/* Transfer height map into OTTD map */
 	for (y = 2; y < _height_map.size_y - 2; y++) {
 		for (x = 2; x < _height_map.size_x - 2; x++) {
-			int height = H2I(HeightMapXY(x, y));
+			int height = H2I(_height_map.height(x, y));
 			if (height < 0) height = 0;
 			if (height > 15) height = 15;
 			TgenSetTileHeight(TileXY(x, y), height);
