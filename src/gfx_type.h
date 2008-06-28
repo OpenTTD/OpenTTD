@@ -216,4 +216,11 @@ enum StringColorFlags {
 	IS_PALETTE_COLOR = 0x100, ///< color value is already a real palette color index, not an index of a StringColor
 };
 
+/** Define the operation GfxFillRect performs */
+enum FillRectMode {
+	FILLRECT_OPAQUE,  ///< Fill rectangle with a single color
+	FILLRECT_CHECKER, ///< Draw only every second pixel, used for greying-out
+	FILLRECT_RECOLOR, ///< Apply a recolor sprite to the screen content
+};
+
 #endif /* GFX_TYPE_H */

@@ -914,7 +914,7 @@ struct MainToolbarWindow : Window {
 	{
 		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4, FILLRECT_CHECKER);
 
 		/* If spectator, disable all construction buttons
 		* ie : Build road, rail, ships, airports and landscaping
@@ -1118,7 +1118,7 @@ public:
 
 		/* Draw brown-red toolbar bg. */
 		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB2);
-		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4 | (1 << PALETTE_MODIFIER_GREYOUT));
+		GfxFillRect(0, 0, this->width - 1, this->height - 1, 0xB4, FILLRECT_CHECKER);
 
 		this->DrawWidgets();
 

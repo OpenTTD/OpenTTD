@@ -146,7 +146,7 @@ struct DropdownWindow : Window {
 
 					if (item->masked) {
 						GfxFillRect(x, y, x + width, y + item_height - 1,
-							(1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[this->widget[0].color][5]
+							_colour_gradient[this->widget[0].color][5], FILLRECT_CHECKER
 						);
 					}
 				} else {

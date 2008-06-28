@@ -51,7 +51,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 {
 	Player *p = GetPlayer((PlayerID)(ni->data_b));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
-	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
+	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOR);
 
 	SetDParam(0, p->index);
 
@@ -233,7 +233,7 @@ struct NewsWindow : Window {
 					ViewPort *vp = this->viewport;
 					GfxFillRect(vp->left - this->left, vp->top - this->top,
 						vp->left - this->left + vp->width - 1, vp->top - this->top + vp->height - 1,
-						(this->ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY) | (1 << USE_COLORTABLE)
+						(this->ni->flags & NF_INCOLOR ? PALETTE_TO_TRANSPARENT : PALETTE_TO_STRUCT_GREY), FILLRECT_RECOLOR
 					);
 
 					CopyInDParam(0, this->ni->params, lengthof(this->ni->params));

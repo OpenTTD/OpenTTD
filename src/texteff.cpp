@@ -241,7 +241,7 @@ void DrawChatMessage()
 			_screen.height - _chatmsg_box.y - count * 13 - 2,
 			_chatmsg_box.x + _chatmsg_box.width - 1,
 			_screen.height - _chatmsg_box.y - 2,
-			PALETTE_TO_TRANSPARENT | (1 << USE_COLORTABLE) // black, but with some alpha for background
+			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOR // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */

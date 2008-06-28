@@ -1471,12 +1471,6 @@ enum Modifiers {
 	PALETTE_MODIFIER_TRANSPARENT  = TRANSPARENT_BIT,
 	///this bit is set when a recoloring process is in action
 	PALETTE_MODIFIER_COLOR        = RECOLOR_BIT,
-
-	//This is used for the GfxFillRect function
-	///Used to draw a "grey out" rectangle. @see GfxFillRect
-	PALETTE_MODIFIER_GREYOUT        = TRANSPARENT_BIT,
-	///Set when a colortable mode is used. @see GfxFillRect
-	USE_COLORTABLE                  = RECOLOR_BIT,
 };
 
 /** Masks needed for sprite operations.

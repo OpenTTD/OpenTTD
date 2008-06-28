@@ -89,7 +89,21 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 }
 
 
-void GfxFillRect(int left, int top, int right, int bottom, int color)
+/**
+ * Applies a certain FillRectMode-operation to a rectangle [left, right] x [top, bottom] on the screen.
+ *
+ * @pre dpi->zoom == ZOOM_LVL_NORMAL, right >= left, bottom >= top
+ * @param left Minimum X (inclusive)
+ * @param top Minimum Y (inclusive)
+ * @param right Maximum X (inclusive)
+ * @param bottom Maximum Y (inclusive)
+ * @param color A 8 bit palette index (FILLRECT_OPAQUE and FILLRECT_CHECKER) or a recolor spritenumber (FILLRECT_RECOLOR)
+ * @param mode
+ *         FILLRECT_OPAQUE:   Fill the rectangle with the specified color
+ *         FILLRECT_CHECKER:  Like FILLRECT_OPAQUE, but only draw every second pixel (used to grey out things)
+ *         FILLRECT_RECOLOR:  Apply a recolor sprite to every pixel in the rectangle currently on screen
+ */
+void GfxFillRect(int left, int top, int right, int bottom, int color, FillRectMode mode)
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const DrawPixelInfo *dpi = _cur_dpi;
@@ -116,18 +130,23 @@ void GfxFillRect(int left, int top, int right, int bottom, int color)
 
 	dst = blitter->MoveTo(dpi->dst_ptr, left, top);
 
-	if (!HasBit(color, PALETTE_MODIFIER_GREYOUT)) {
-		if (!HasBit(color, USE_COLORTABLE)) {
+	switch (mode) {
+		default: // FILLRECT_OPAQUE
 			blitter->DrawRect(dst, right, bottom, (uint8)color);
-		} else {
+			break;
+
+		case FILLRECT_RECOLOR:
 			blitter->DrawColorMappingRect(dst, right, bottom, GB(color, 0, PALETTE_WIDTH));
+			break;
+
+		case FILLRECT_CHECKER: {
+			byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
+			do {
+				for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8)color);
+				dst = blitter->MoveTo(dst, 0, 1);
+			} while (--bottom > 0);
+			break;
 		}
-	} else {
-		byte bo = (oleft - left + dpi->left + otop - top + dpi->top) & 1;
-		do {
-			for (int i = (bo ^= 1); i < right; i += 2) blitter->SetPixel(dst, i, 0, (uint8)color);
-			dst = blitter->MoveTo(dst, 0, 1);
-		} while (--bottom > 0);
 	}
 }
 

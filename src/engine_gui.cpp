@@ -202,7 +202,7 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni)
 	DrawStringMultiCenter(w->width >> 1, 57, STR_NEW_VEHICLE_TYPE, w->width - 2);
 
 	dei->engine_proc(w->width >> 1, 88, engine, 0);
-	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY | (1 << USE_COLORTABLE));
+	GfxFillRect(25, 56, w->width - 56, 112, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOR);
 	dei->info_proc(engine, w->width >> 1, 129, w->width - 52);
 }
 

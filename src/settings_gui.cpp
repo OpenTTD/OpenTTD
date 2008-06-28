@@ -1005,7 +1005,7 @@ void ShowPatchesSelection()
  */
 void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right)
 {
-	int color = (1 << PALETTE_MODIFIER_GREYOUT) | _colour_gradient[COLOUR_YELLOW][2];
+	int color = _colour_gradient[COLOUR_YELLOW][2];
 
 	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : FR_NONE);
@@ -1014,9 +1014,9 @@ void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, b
 
 	/* Grey out the buttons that aren't clickable */
 	if (!clickable_left)
-		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, color);
+		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, color, FILLRECT_CHECKER);
 	if (!clickable_right)
-		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, color);
+		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, color, FILLRECT_CHECKER);
 }
 
 /** These are not, strickly speaking, widget enums,
