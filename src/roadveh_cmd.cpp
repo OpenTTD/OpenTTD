@@ -1719,7 +1719,7 @@ again:
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-		Station* st = GetStationByTile(v->tile);
+		Station *st = GetStationByTile(v->tile);
 
 		/* Vehicle is at the stop position (at a bay) in a road stop.
 		 * Note, if vehicle is loading/unloading it has already been handled,
@@ -1754,19 +1754,13 @@ again:
 
 			v->last_station_visited = st->index;
 
-			if (IsDriveThroughStopTile(v->tile) || v->current_order.GetDestination() == st->index) {
+			if (IsDriveThroughStopTile(v->tile) || (v->current_order.IsType(OT_GOTO_STATION) && v->current_order.GetDestination() == st->index)) {
 				RoadVehArrivesAt(v, st);
 				v->BeginLoading();
-			} else {
-				v->current_order.MakeLeaveStation();
-				InvalidateVehicleOrder(v);
+				return false;
 			}
-
-			return false;
-		}
-
-		/* Vehicle is ready to leave a bay in a road stop */
-		if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
+		} else {
+			/* Vehicle is ready to leave a bay in a road stop */
 			if (rs->IsEntranceBusy()) {
 				/* Road stop entrance is busy, so wait as there is nowhere else to go */
 				v->cur_speed = 0;
