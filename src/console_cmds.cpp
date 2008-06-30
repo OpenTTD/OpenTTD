@@ -1184,15 +1184,16 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 
 	if (argc != 3) return false;
 
-	if (atoi(argv[1]) < 1 || atoi(argv[1]) > MAX_PLAYERS) {
+	PlayerID player_id = (PlayerID)(atoi(argv[1]) - 1);
+	if (!IsValidPlayer(player_id) || !GetPlayer(player_id)->is_active) {
 		IConsolePrintF(CC_DEFAULT, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2]);
+		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, player_id, argv[2]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, player_id, argv[2], NETWORK_SERVER_INDEX);
 	}
 
 	return true;
