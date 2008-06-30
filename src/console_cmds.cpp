@@ -407,9 +407,9 @@ DEF_CONSOLE_CMD(ConBan)
 	}
 
 	if (ci != NULL) {
+		IConsolePrint(CC_DEFAULT, "Client banned");
 		banip = GetPlayerIP(ci);
 		NetworkServerSendError(index, NETWORK_ERROR_KICKED);
-		IConsolePrint(CC_DEFAULT, "Client banned");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Client not online, banned IP");
 	}
