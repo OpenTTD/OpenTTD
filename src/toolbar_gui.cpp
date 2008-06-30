@@ -281,7 +281,7 @@ static void ToolbarScenSaveOrLoad(Window *w)
 	PopupMainToolbMenu(w, TBSE_SAVESCENARIO, STR_0292_SAVE_SCENARIO, SLEME_MENUCOUNT);
 }
 
-static void MenuClickSaveLoad(int index)
+static void MenuClickSaveLoad(int index = 0)
 {
 	if (_game_mode == GM_EDITOR) {
 		switch (index) {
@@ -939,7 +939,7 @@ struct MainToolbarWindow : Window {
 		switch (keycode) {
 			case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(this); break;
 			case WKC_F2: ShowGameOptions(); break;
-			case WKC_F3: MenuClickSaveLoad(0); break;
+			case WKC_F3: MenuClickSaveLoad(); break;
 			case WKC_F4: ShowSmallMap(); break;
 			case WKC_F5: ShowTownDirectory(); break;
 			case WKC_F6: ShowSubsidiesList(); break;
@@ -1144,7 +1144,7 @@ public:
 		switch (keycode) {
 			case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(this); break;
 			case WKC_F2: ShowGameOptions(); break;
-			case WKC_F3: MenuClickSaveLoad(0); break;
+			case WKC_F3: MenuClickSaveLoad(); break;
 			case WKC_F4: ToolbarScenGenLand(this); break;
 			case WKC_F5: ToolbarScenGenTown(this); break;
 			case WKC_F6: ToolbarScenGenIndustry(this); break;
