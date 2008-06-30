@@ -298,6 +298,18 @@ static TileIndex GetOrderLocation(const Order& o)
 	}
 }
 
+static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int conditional_depth = 0)
+{
+	if (cur->IsType(OT_CONDITIONAL)) {
+		if (conditional_depth > v->num_orders) return 0;
+
+		conditional_depth++;
+		return max(GetOrderDistance(prev, &v->orders[cur->GetConditionSkipToOrder()], v, conditional_depth),
+				GetOrderDistance(prev, (prev + 1 == &v->orders[v->num_orders]) ? v->orders : (prev + 1), v, conditional_depth));
+	}
+
+	return DistanceManhattan(GetOrderLocation(*prev), GetOrderLocation(*cur));
+}
 
 /** Add an order to the orderlist of a vehicle.
  * @param tile unused
@@ -468,10 +480,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (++n == sel_ord && prev != NULL) break;
 		}
 		if (prev != NULL) {
-			uint dist = DistanceManhattan(
-				GetOrderLocation(*prev),
-				GetOrderLocation(new_order)
-			);
+			uint dist = GetOrderDistance(prev, &new_order, v);
 			if (dist >= 130) {
 				return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
 			}
