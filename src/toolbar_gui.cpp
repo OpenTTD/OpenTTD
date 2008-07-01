@@ -520,7 +520,7 @@ static void MenuClickShowAir(int index)
 static void ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(TBN_ZOOMIN);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? TBSE_ZOOMIN : TBN_ZOOMIN);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -530,7 +530,7 @@ static void ToolbarZoomInClick(Window *w)
 static void ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(TBN_ZOOMOUT);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? TBSE_ZOOMOUT : TBN_ZOOMOUT);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -702,22 +702,6 @@ static void ToolbarScenDateForward(Window *w)
 		SetDate(ConvertYMDToDate(_settings_newgame.game_creation.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
-}
-
-static void ToolbarScenZoomIn(Window *w)
-{
-	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(TBSE_ZOOMIN);
-		SndPlayFx(SND_15_BEEP);
-	}
-}
-
-static void ToolbarScenZoomOut(Window *w)
-{
-	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick(TBSE_ZOOMOUT);
-		SndPlayFx(SND_15_BEEP);
-	}
 }
 
 static void ToolbarScenGenLand(Window *w)
@@ -1080,8 +1064,8 @@ static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarScenDateBackward,
 	ToolbarScenDateForward,
 	ToolbarScenMapTownDir,
-	ToolbarScenZoomIn,
-	ToolbarScenZoomOut,
+	ToolbarZoomInClick,
+	ToolbarZoomOutClick,
 	ToolbarScenGenLand,
 	ToolbarScenGenTown,
 	ToolbarScenGenIndustry,
@@ -1161,13 +1145,13 @@ public:
 			case WKC_NUM_PLUS:
 			case WKC_EQUALS:
 			case WKC_SHIFT | WKC_EQUALS:
-			case WKC_SHIFT | WKC_F5: ToolbarScenZoomIn(this); break;
+			case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(this); break;
 
 			/* those following are all fall through */
 			case WKC_NUM_MINUS:
 			case WKC_MINUS:
 			case WKC_SHIFT | WKC_MINUS:
-			case WKC_SHIFT | WKC_F6: ToolbarScenZoomOut(this); break;
+			case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(this); break;
 
 			case 'L': ShowEditorTerraformToolbar(); break;
 			case 'M': ShowSmallMap(); break;
