@@ -205,17 +205,21 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 /** Walk through all items of _height_map.h */
 #define FOR_ALL_TILES_IN_HEIGHT(h) for (h = _height_map.h; h < &_height_map.h[_height_map.total_size]; h++)
 
+/** Maximum index into array of noise amplitudes */
+static const int TGP_FREQUENCY_MAX = 6;
+
 /** Noise amplitudes (multiplied by 1024)
  * - indexed by "smoothness setting" and log2(frequency) */
-static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][12] = {
+static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][TGP_FREQUENCY_MAX + 1] = {
+	/* lowest frequncy....  ...highest (every corner) */
 	/* Very smooth */
-	{16000,  5600,  1968,   688,   240,    16,    16,    0,    0,    0,    0,    0},
+	{16000,  5600,  1968,   688,   240,    16,    16},
 	/* Smooth */
-	{16000, 16000,  6448,  3200,  1024,   128,    16,    0,    0,    0,    0,    0},
+	{16000, 16000,  6448,  3200,  1024,   128,    16},
 	/* Rough */
-	{16000, 19200, 12800,  8000,  3200,   256,    64,    0,    0,    0,    0,    0},
+	{16000, 19200, 12800,  8000,  3200,   256,    64},
 	/* Very Rough */
-	{24000, 16000, 19200, 16000,  8000,   512,   320,    0,    0,    0,    0,    0},
+	{24000, 16000, 19200, 16000,  8000,   512,   320},
 };
 
 /** Desired water percentage (100% == 1024) - indexed by _settings_game.difficulty.quantity_sea_lakes */
@@ -364,18 +368,22 @@ static void HeightMapGenerate()
 	uint iteration_round = 0;
 	amplitude_t amplitude;
 	bool continue_iteration;
-	uint log_size_min, log_frequency_min;
+	int log_size_min, log_frequency_min;
 	int log_frequency;
 
-	/* Find first power of two that fits */
-	for (log_size_min = 6; (1U << log_size_min) < size_min; log_size_min++) { }
-	log_frequency_min = log_size_min - 6;
+	/* Find first power of two that fits, so that later log_frequency == TGP_FREQUENCY_MAX in the last iteration */
+	for (log_size_min = TGP_FREQUENCY_MAX; (1U << log_size_min) < size_min; log_size_min++) { }
+	log_frequency_min = log_size_min - TGP_FREQUENCY_MAX;
+
+	/* Zero must be part of the iteration, else initialization will fail. */
+	assert(log_frequency_min >= 0);
 
 	/* Keep increasing the frequency until we reach the step size equal to one tile */
 	do {
 		log_frequency = iteration_round - log_frequency_min;
 		if (log_frequency >= 0) {
 			/* Apply noise for the next frequency */
+			assert(log_frequency <= TGP_FREQUENCY_MAX);
 			amplitude = _amplitudes_by_smoothness_and_frequency[_settings_game.game_creation.tgen_smoothness][log_frequency];
 		} else {
 			/* Amplitude for the low frequencies on big maps is 0, i.e. initialise with zero height */
@@ -384,6 +392,7 @@ static void HeightMapGenerate()
 		continue_iteration = ApplyNoise(iteration_round, amplitude);
 		iteration_round++;
 	} while (continue_iteration);
+	assert(log_frequency == TGP_FREQUENCY_MAX);
 }
 
 /** Returns min, max and average height from height map */
