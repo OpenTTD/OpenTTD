@@ -520,7 +520,7 @@ static void MenuClickShowAir(int index)
 static void ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? TBSE_ZOOMIN : TBN_ZOOMIN);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)TBSE_ZOOMIN : (byte)TBN_ZOOMIN);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
@@ -530,7 +530,7 @@ static void ToolbarZoomInClick(Window *w)
 static void ToolbarZoomOutClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0))) {
-		w->HandleButtonClick((_game_mode == GM_EDITOR) ? TBSE_ZOOMOUT : TBN_ZOOMOUT);
+		w->HandleButtonClick((_game_mode == GM_EDITOR) ? (byte)TBSE_ZOOMOUT : (byte)TBN_ZOOMOUT);
 		SndPlayFx(SND_15_BEEP);
 	}
 }
