@@ -683,6 +683,8 @@ static void ShowScreenshotResult(bool b)
 
 static void MakeNewGameDone()
 {
+	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
+
 	/* In a dedicated server, the server does not play */
 	if (_network_dedicated) {
 		SetLocalPlayer(PLAYER_SPECTATOR);
@@ -696,7 +698,6 @@ static void MakeNewGameDone()
 	_current_player = _local_player;
 	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
-	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
 	InitializeRailGUI();
 
 #ifdef ENABLE_NETWORK
