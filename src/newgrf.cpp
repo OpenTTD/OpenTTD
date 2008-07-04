@@ -235,6 +235,23 @@ static GRFFile *GetFileByFilename(const char *filename)
 	return file;
 }
 
+/** Reset all NewGRFData that was used only while processing data */
+static void ClearTemporaryNewGRFData()
+{
+	/* Clear the GOTO labels used for GRF processing */
+	for (GRFLabel *l = _cur_grffile->label; l != NULL;) {
+		GRFLabel *l2 = l->next;
+		free(l);
+		l = l2;
+	}
+	_cur_grffile->label = NULL;
+
+	/* Clear the list of spritegroups */
+	free(_cur_grffile->spritegroups);
+	_cur_grffile->spritegroups = NULL;
+	_cur_grffile->spritegroups_count = 0;
+}
+
 
 typedef std::map<StringID *, uint32> StringIDToGRFIDMapping;
 StringIDToGRFIDMapping _string_to_grf_mapping;
@@ -3826,6 +3843,9 @@ static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 	c->error->data = strdup(_cur_grfconfig->name);
 	c->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
 	c->error->message  = STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC;
+
+	ClearTemporaryNewGRFData();
+	_skip_sprites = -1;
 }
 
 /* Action 0x07 */
@@ -3984,6 +4004,7 @@ static void SkipIf(byte *buf, size_t len)
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
 		if (_cur_grfconfig->status != GCS_ACTIVATED) {
 			_cur_grfconfig->status = GCS_DISABLED;
+			ClearTemporaryNewGRFData();
 		}
 	}
 }
@@ -4156,7 +4177,7 @@ static void GRFLoadError(byte *buf, size_t len)
 		/* This is a fatal error, so make sure the GRF is deactivated and no
 		 * more of it gets loaded. */
 		_cur_grfconfig->status = GCS_DISABLED;
-
+		ClearTemporaryNewGRFData();
 		_skip_sprites = -1;
 	}
 
@@ -4339,6 +4360,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 		/* Deactivate GRF */
 		grfmsg(0, "ParamSet: GRM: Unable to allocate %d %s, deactivating", count, type);
 		_cur_grfconfig->status = GCS_DISABLED;
+		ClearTemporaryNewGRFData();
 		_skip_sprites = -1;
 		return UINT_MAX;
 	}
@@ -4417,7 +4439,7 @@ static void ParamSet(byte *buf, size_t len)
 							if (_cur_spriteid + count >= 16384) {
 								grfmsg(0, "ParamSet: GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
 								_cur_grfconfig->status = GCS_DISABLED;
-
+								ClearTemporaryNewGRFData();
 								_skip_sprites = -1;
 								return;
 							}
@@ -4778,6 +4800,7 @@ static void FeatureTownName(byte *buf, size_t len)
 					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
 					DelGRFTownName(grfid);
 					_cur_grfconfig->status = GCS_DISABLED;
+					ClearTemporaryNewGRFData();
 					_skip_sprites = -1;
 					return;
 				}
@@ -5068,6 +5091,7 @@ static void TranslateGRFStrings(byte *buf, size_t len)
 		_cur_grfconfig->error = error;
 
 		_cur_grfconfig->status = GCS_DISABLED;
+		ClearTemporaryNewGRFData();
 		_skip_sprites = -1;
 		return;
 	}
@@ -5431,23 +5455,6 @@ static void ResetNewGRFData()
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
-}
-
-/** Reset all NewGRFData that was used only while processing data */
-static void ClearTemporaryNewGRFData()
-{
-	/* Clear the GOTO labels used for GRF processing */
-	for (GRFLabel *l = _cur_grffile->label; l != NULL;) {
-		GRFLabel *l2 = l->next;
-		free(l);
-		l = l2;
-	}
-	_cur_grffile->label = NULL;
-
-	/* Clear the list of spritegroups */
-	free(_cur_grffile->spritegroups);
-	_cur_grffile->spritegroups = NULL;
-	_cur_grffile->spritegroups_count = 0;
 }
 
 static void BuildCargoTranslationMap()
