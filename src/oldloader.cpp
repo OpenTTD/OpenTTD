@@ -1007,9 +1007,13 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 
 	if (!LoadChunk(ls, p, player_chunk)) return false;
 
+	if (_old_string_id == 0) {
+		p->is_active = false;
+		return true;
+	}
+
 	p->name_1 = RemapOldStringID(_old_string_id);
 	p->president_name_1 = RemapOldStringID(_old_string_id_2);
-	p->player_money = p->player_money;
 	_players_ai[_current_player_id].tick = ai_tick;
 
 	if (num == 0) {
