@@ -275,17 +275,8 @@ void AfterLoadVehicles(bool clear_te_id)
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		assert(v->first != NULL);
+		assert(v->First() != NULL);
 
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
-			if (IsFrontEngine(v)) v->u.rail.last_speed = v->cur_speed; // update displayed train speed
-			TrainConsistChanged(v);
-		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
-			RoadVehUpdateCache(v);
-		}
-	}
-
-	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_ROAD:
 				v->u.road.roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
@@ -318,6 +309,19 @@ void AfterLoadVehicles(bool clear_te_id)
 
 		v->left_coord = INVALID_COORD;
 		VehiclePositionChanged(v);
+	}
+}
+
+void InitializeVehicleCaches()
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
+			if (IsFrontEngine(v)) v->u.rail.last_speed = v->cur_speed; // update displayed train speed
+			TrainConsistChanged(v);
+		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
+			RoadVehUpdateCache(v);
+		}
 	}
 }
 

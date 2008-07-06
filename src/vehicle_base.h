@@ -191,6 +191,7 @@ DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 struct SaveLoad;
 extern const SaveLoad *GetVehicleDescription(VehicleType vt);
 extern void AfterLoadVehicles(bool clear_te_id);
+extern void InitializeVehicleCaches();
 struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
 

@@ -1265,6 +1265,8 @@ static bool InitializeWindowsAndCaches()
 		}
 	}
 
+	InitializeVehicleCaches();
+
 	SetCachedEngineCounts();
 
 	/* Towns have a noise controlled number of airports system
@@ -1381,16 +1383,6 @@ bool AfterLoadGame()
 
 	/* reinit the landscape variables (landscape might have changed) */
 	InitializeLandscapeVariables(true);
-
-	/* from version 38 we have optional elrails, since we cannot know the
-	 * preference of a user, let elrails enabled; it can be disabled manually */
-	if (CheckSavegameVersion(38)) _settings_game.vehicle.disable_elrails = false;
-
-	/* Do the same as when elrails were enabled/disabled manually just now.
-	 * This needs to be done before AfterLoadVehicles because that relies on
-	 * the compatible railtypes and such to be correct. */
-	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
-	InitializeRailGUI();
 
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
@@ -1962,6 +1954,13 @@ bool AfterLoadGame()
 			v->current_order.SetRefit(CT_NO_REFIT);
 		}
 	}
+
+	/* from version 38 we have optional elrails, since we cannot know the
+	 * preference of a user, let elrails enabled; it can be disabled manually */
+	if (CheckSavegameVersion(38)) _settings_game.vehicle.disable_elrails = false;
+	/* do the same as when elrails were enabled/disabled manually just now */
+	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
+	InitializeRailGUI();
 
 	/* From version 53, the map array was changed for house tiles to allow
 	 * space for newhouses grf features. A new byte, m7, was also added. */
