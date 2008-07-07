@@ -1563,7 +1563,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_VAR ( OC_FILE_U32 | OC_VAR_I64,   1, &_economy.max_loan ),
 	OCL_VAR ( OC_FILE_U32 | OC_VAR_I64,   1, &_economy.max_loan_unround ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_economy.fluct ),
+	OCL_VAR (  OC_INT16,    1, &_economy.fluct ),
 
 	OCL_VAR ( OC_UINT16,    1, &_disaster_delay ),
 
