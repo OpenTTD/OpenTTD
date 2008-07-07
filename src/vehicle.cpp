@@ -1650,7 +1650,7 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 			if (v->u.rail.track == TRACK_BIT_DEPOT) // We'll assume the train is facing outwards
 				return DiagDirToDiagTrackdir(GetRailDepotDirection(v->tile)); // Train in depot
 
-			if (v->u.rail.track == TRACK_BIT_WORMHOLE) // train in tunnel, so just use his direction and assume a diagonal track
+			if (v->u.rail.track == TRACK_BIT_WORMHOLE) // train in tunnel or on bridge, so just use his direction and assume a diagonal track
 				return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.rail.track), v->direction);
@@ -1659,6 +1659,9 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 			if (v->IsInDepot())
 				// We'll assume the ship is facing outwards
 				return DiagDirToDiagTrackdir(GetShipDepotDirection(v->tile));
+
+			if (v->u.ship.state == TRACK_BIT_WORMHOLE) // ship on aqueduct, so just use his direction and assume a diagonal track
+				return DiagDirToDiagTrackdir(DirToDiagDir(v->direction));
 
 			return TrackDirectionToTrackdir(FindFirstTrack(v->u.ship.state), v->direction);
 
