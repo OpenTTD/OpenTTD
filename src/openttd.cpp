@@ -1265,8 +1265,6 @@ static bool InitializeWindowsAndCaches()
 		}
 	}
 
-	InitializeVehicleCaches();
-
 	SetCachedEngineCounts();
 
 	/* Towns have a noise controlled number of airports system
