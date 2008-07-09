@@ -286,14 +286,15 @@ enum {
  * This enums defines some flags which can be used for the commands.
  */
 enum {
-	DC_EXEC            = 0x01, ///< execute the given command
-	DC_AUTO            = 0x02, ///< don't allow building on structures
-	DC_QUERY_COST      = 0x04, ///< query cost only,  don't build.
-	DC_NO_WATER        = 0x08, ///< don't allow building on water
-	DC_NO_RAIL_OVERLAP = 0x10, ///< don't allow overlap of rails (used in buildrail)
-	DC_AI_BUILDING     = 0x20, ///< special building rules for AI
-	DC_NO_TOWN_RATING  = 0x40, ///< town rating does not disallow you from building
-	DC_BANKRUPT        = 0x80, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
+	DC_EXEC            = 0x001, ///< execute the given command
+	DC_AUTO            = 0x002, ///< don't allow building on structures
+	DC_QUERY_COST      = 0x004, ///< query cost only,  don't build.
+	DC_NO_WATER        = 0x008, ///< don't allow building on water
+	DC_NO_RAIL_OVERLAP = 0x010, ///< don't allow overlap of rails (used in buildrail)
+	DC_AI_BUILDING     = 0x020, ///< special building rules for AI
+	DC_NO_TOWN_RATING  = 0x040, ///< town rating does not disallow you from building
+	DC_BANKRUPT        = 0x080, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
+	DC_AUTOREPLACE     = 0x100, ///< autoreplace/autorenew is in progress
 };
 
 /**

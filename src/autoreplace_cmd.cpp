@@ -128,7 +128,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
  * @param new_engine_type The EngineID to replace to
  * @return value is cost of the replacement or CMD_ERROR
  */
-static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, const Player *p, EngineID new_engine_type)
+static CommandCost ReplaceVehicle(Vehicle **w, uint32 flags, Money total_cost, const Player *p, EngineID new_engine_type)
 {
 	CommandCost cost;
 	CommandCost sell_value;
@@ -151,7 +151,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 	 * We take it back if building fails or when we really sell the old engine */
 	SubtractMoneyFromPlayer(sell_value);
 
-	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, GetCmdBuildVeh(old_v));
+	cost = DoCommand(old_v->tile, new_engine_type, 0, flags | DC_AUTOREPLACE, GetCmdBuildVeh(old_v));
 	if (CmdFailed(cost)) {
 		/* Take back the money we just gave the player */
 		sell_value.MultiplyCost(-1);
@@ -259,7 +259,7 @@ static CommandCost ReplaceVehicle(Vehicle **w, byte flags, Money total_cost, con
 			if (next_veh != NULL) {
 				/* Verify that the wagons can be placed on the engine in question.
 				 * This is done by building an engine, test if the wagons can be added and then sell the test engine. */
-				DoCommand(old_v->tile, new_engine_type, 3, DC_EXEC, GetCmdBuildVeh(old_v));
+				DoCommand(old_v->tile, new_engine_type, 0, DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_v));
 				Vehicle *temp = GetVehicle(_new_vehicle_id);
 				tmp_move = DoCommand(0, (temp->index << 16) | next_veh->index, 1, 0, CMD_MOVE_RAIL_VEHICLE);
 				DoCommand(0, temp->index, 0, DC_EXEC, GetCmdSellVeh(old_v));
