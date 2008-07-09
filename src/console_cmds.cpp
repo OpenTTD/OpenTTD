@@ -426,9 +426,9 @@ DEF_CONSOLE_CMD(ConBan)
 	}
 
 	if (ci != NULL) {
+		IConsolePrint(_icolour_def, "Client banned");
 		banip = inet_ntoa(*(struct in_addr *)&ci->client_ip);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
-		IConsolePrint(_icolour_def, "Client banned");
 	} else {
 		IConsolePrint(_icolour_def, "Client not online, banned IP");
 	}

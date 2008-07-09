@@ -473,7 +473,7 @@ static void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			 * (use random seed) it should not be possible to be
 			 * entered into the input field; the generate seed
 			 * button can be used instead. */
-			_patches_newgame.generation_seed = minu(strtoul(_genseed_buffer, NULL, sizeof(_genseed_buffer) - 1), MAX_UVALUE(uint32) - 1);
+			_patches_newgame.generation_seed = minu(strtoul(_genseed_buffer, NULL, 10), MAX_UVALUE(uint32) - 1);
 			break;
 
 		case WE_DROPDOWN_SELECT:

@@ -609,6 +609,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 {
+	if (cs->status != STATUS_INACTIVE) {
+		/* Illegal call, return error and ignore the packet */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return;
+	}
+
 	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
 	/* We now want a password from the client else we do not allow him in! */
@@ -625,6 +631,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 {
+	if (cs->status != STATUS_INACTIVE) {
+		/* Illegal call, return error and ignore the packet */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return;
+	}
+
 	char name[NETWORK_CLIENT_NAME_LENGTH];
 	char unique_id[NETWORK_UNIQUE_ID_LENGTH];
 	NetworkClientInfo *ci;
@@ -1009,6 +1021,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 {
+	if (cs->status < STATUS_AUTH) {
+		/* Illegal call, return error and ignore the packet */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
+		return;
+	}
+
 	uint32 frame = p->Recv_uint32();
 
 	/* The client is trying to catch up with the server */
@@ -1137,6 +1155,12 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 {
+	if (cs->status < STATUS_AUTH) {
+		/* Illegal call, return error and ignore the packet */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
+		return;
+	}
+
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	DestType desttype = (DestType)p->Recv_uint8();
 	int dest = p->Recv_uint16();
@@ -1149,6 +1173,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 {
+	if (cs->status != STATUS_ACTIVE) {
+		/* Illegal call, return error and ignore the packet */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return;
+	}
+
 	char password[NETWORK_PASSWORD_LENGTH];
 	const NetworkClientInfo *ci;
 
@@ -1162,6 +1192,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 {
+	if (cs->status != STATUS_ACTIVE) {
+		/* Illegal call, return error and ignore the packet */
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+		return;
+	}
+
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkClientInfo *ci;
 

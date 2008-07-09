@@ -543,6 +543,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				assert(w->widget[ORDER_WIDGET_REFIT].bottom        == w->widget[ORDER_WIDGET_UNLOAD].bottom);
 				assert(w->widget[ORDER_WIDGET_REFIT].display_flags == w->widget[ORDER_WIDGET_UNLOAD].display_flags);
 			}
+		if (GetVehicle(w->window_number)->num_orders == 0) return;
 
 			if (_patches.timetabling) {
 				w->widget[ORDER_WIDGET_CAPTION].right -= 61;
