@@ -113,27 +113,6 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 	return buttons;
 }
 
-/**
- * Get the position of the Nth set bit.
- *
- * If there is no Nth bit set return -1
- *
- * @param bits The value to search in
- * @param n The Nth set bit from which we want to know the position
- * @return The position of the Nth set bit
- */
-static int GetNthSetBit(uint32 bits, int n)
-{
-	if (n >= 0) {
-		uint i;
-		FOR_EACH_SET_BIT(i, bits) {
-			n--;
-			if (n < 0) return i;
-		}
-	}
-	return -1;
-}
-
 struct TownAuthorityWindow : Window {
 private:
 	Town *town;
@@ -148,6 +127,27 @@ private:
 		TWA_ACTION_INFO,
 		TWA_EXECUTE,
 	};
+
+	/**
+	 * Get the position of the Nth set bit.
+	 *
+	 * If there is no Nth bit set return -1
+	 *
+	 * @param bits The value to search in
+	 * @param n The Nth set bit from which we want to know the position
+	 * @return The position of the Nth set bit
+	 */
+	static int GetNthSetBit(uint32 bits, int n)
+	{
+		if (n >= 0) {
+			uint i;
+			FOR_EACH_SET_BIT(i, bits) {
+				n--;
+				if (n < 0) return i;
+			}
+		}
+		return -1;
+	}
 
 public:
 	TownAuthorityWindow(const WindowDesc *desc, WindowNumber window_number) :
