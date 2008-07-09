@@ -1107,6 +1107,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	if (!ValParamTrackOrientation(track) ||
 			!IsTileType(tile, MP_RAILWAY) ||
+			!HasTrack(tile, track) ||
 			!EnsureNoTrainOnTrack(tile, track) ||
 			!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
@@ -1376,7 +1377,10 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 				cost.AddCost(ret);
 			}
 
-			if (water_ground) {
+			/* when bankrupting, don't make water dirty, there could be a ship on lower halftile */
+			if (water_ground && !(flags & DC_BANKRUPT)) {
+				if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
+
 				/* The track was removed, and left a coast tile. Now also clear the water. */
 				if (flags & DC_EXEC) DoClearSquare(tile);
 				cost.AddCost(_price.clear_water);
@@ -2098,6 +2102,19 @@ set_ground:
 
 static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)
 {
+	/* Case of half tile slope with water. */
+	if (mode == TRANSPORT_WATER && IsPlainRailTile(tile) && GetRailGroundType(tile) == RAIL_GROUND_WATER) {
+		TrackBits tb = GetTrackBits(tile);
+		switch (tb) {
+			default: NOT_REACHED();
+			case TRACK_BIT_UPPER: tb = TRACK_BIT_LOWER; break;
+			case TRACK_BIT_LOWER: tb = TRACK_BIT_UPPER; break;
+			case TRACK_BIT_LEFT:  tb = TRACK_BIT_RIGHT; break;
+			case TRACK_BIT_RIGHT: tb = TRACK_BIT_LEFT;  break;
+		}
+		return CombineTrackStatus(TrackBitsToTrackdirBits(tb), TRACKDIR_BIT_NONE);
+	}
+
 	if (mode != TRANSPORT_RAIL) return 0;
 
 	TrackBits trackbits = TRACK_BIT_NONE;

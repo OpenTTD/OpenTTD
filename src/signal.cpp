@@ -298,6 +298,7 @@ static SigFlags ExploreSegment(Owner owner)
 				}
 
 				if (GetRailTileType(tile) == RAIL_TILE_WAYPOINT) {
+					if (GetWaypointAxis(tile) != DiagDirToAxis(enterdir)) continue;
 					if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 					tile += TileOffsByDiagDir(exitdir);
 					/* enterdir and exitdir stay the same */
