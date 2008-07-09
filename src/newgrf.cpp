@@ -44,6 +44,7 @@
 #include "road_func.h"
 #include "player_base.h"
 #include "settings_type.h"
+#include "network/network.h"
 #include "map_func.h"
 
 #include "table/strings.h"
@@ -222,6 +223,23 @@ static GRFFile *GetFileByFilename(const char *filename)
 		if (strcmp(file->filename, filename) == 0) break;
 	}
 	return file;
+}
+
+/** Reset all NewGRFData that was used only while processing data */
+static void ClearTemporaryNewGRFData()
+{
+	/* Clear the GOTO labels used for GRF processing */
+	for (GRFLabel *l = _cur_grffile->label; l != NULL;) {
+		GRFLabel *l2 = l->next;
+		free(l);
+		l = l2;
+	}
+	_cur_grffile->label = NULL;
+
+	/* Clear the list of spritegroups */
+	free(_cur_grffile->spritegroups);
+	_cur_grffile->spritegroups = NULL;
+	_cur_grffile->spritegroups_count = 0;
 }
 
 
@@ -3670,6 +3688,32 @@ static void CfgApply(byte *buf, int len)
 	}
 }
 
+/**
+ * Disable a static NewGRF when it is influencing another (non-static)
+ * NewGRF as this could cause desyncs.
+ *
+ * We could just tell the NewGRF querying that the file doesn't exist,
+ * but that might give unwanted results. Disabling the NewGRF gives the
+ * best result as no NewGRF author can complain about that.
+ * @param c the NewGRF to disable.
+ */
+static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
+{
+	if (c->error != NULL) {
+		free(c->error->custom_message);
+		free(c->error->data);
+		free(c->error);
+	}
+	c->status = GCS_DISABLED;
+	c->error  = CallocT<GRFError>(1);
+	c->error->data = strdup(_cur_grfconfig->name);
+	c->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+	c->error->message  = STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC;
+
+	ClearTemporaryNewGRFData();
+	_skip_sprites = -1;
+}
+
 /* Action 0x07 */
 /* Action 0x09 */
 static void SkipIf(byte *buf, int len)
@@ -3723,7 +3767,12 @@ static void SkipIf(byte *buf, int len)
 	if (param == 0x88 && condtype != 0x0B && condtype != 0x0C) {
 		/* GRF ID checks */
 
-		const GRFConfig *c = GetGRFConfig(cond_val);
+		GRFConfig *c = GetGRFConfig(cond_val);
+
+		if (c != NULL && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur_grfconfig->flags, GCF_STATIC) && c->status != GCS_DISABLED && _networking) {
+			DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
+			c = NULL;
+		}
 
 		if (condtype != 10 && c == NULL) {
 			grfmsg(7, "SkipIf: GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
@@ -3821,6 +3870,7 @@ static void SkipIf(byte *buf, int len)
 		/* If an action 8 hasn't been encountered yet, disable the grf. */
 		if (_cur_grfconfig->status != GCS_ACTIVATED) {
 			_cur_grfconfig->status = GCS_DISABLED;
+			ClearTemporaryNewGRFData();
 		}
 	}
 }
@@ -3993,7 +4043,7 @@ static void GRFLoadError(byte *buf, int len)
 		/* This is a fatal error, so make sure the GRF is deactivated and no
 		 * more of it gets loaded. */
 		_cur_grfconfig->status = GCS_DISABLED;
-
+		ClearTemporaryNewGRFData();
 		_skip_sprites = -1;
 	}
 
@@ -4176,6 +4226,7 @@ static uint32 PerformGRM(uint32 *grm, uint16 num_ids, uint16 count, uint8 op, ui
 		/* Deactivate GRF */
 		grfmsg(0, "ParamSet: GRM: Unable to allocate %d %s, deactivating", count, type);
 		_cur_grfconfig->status = GCS_DISABLED;
+		ClearTemporaryNewGRFData();
 		_skip_sprites = -1;
 		return UINT_MAX;
 	}
@@ -4266,8 +4317,8 @@ static void ParamSet(byte *buf, int len)
 									if (_cur_spriteid + count >= 16384) {
 										grfmsg(0, "ParamSet: GRM: Unable to allocate %d sprites; try changing NewGRF order", count);
 										_cur_grfconfig->status = GCS_DISABLED;
-
-										_skip_sprites = -1;
+										ClearTemporaryNewGRFData();
+ 										_skip_sprites = -1;
 										return;
 									}
 
@@ -4299,7 +4350,12 @@ static void ParamSet(byte *buf, int len)
 		} else {
 			/* Read another GRF File's parameter */
 			const GRFFile *file = GetFileByGRFID(data);
-			if (file == NULL || src1 >= file->param_end) {
+			GRFConfig *c = GetGRFConfig(data);
+			if (c != NULL && HasBit(c->status, GCF_STATIC) && !HasBit(_cur_grfconfig->status, GCF_STATIC) && _networking) {
+				/* Disable the read GRF if it is a static NewGRF. */
+				DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
+				src1 = 0;
+			} else if (file == NULL || src1 >= file->param_end || (c != NULL && c->status == GCS_DISABLED)) {
 				src1 = 0;
 			} else {
 				src1 = file->param[src1];
@@ -4584,6 +4640,7 @@ static void FeatureTownName(byte *buf, int len)
 					grfmsg(0, "FeatureTownName: definition 0x%02X doesn't exist, deactivating", ref_id);
 					DelGRFTownName(grfid);
 					_cur_grfconfig->status = GCS_DISABLED;
+					ClearTemporaryNewGRFData();
 					_skip_sprites = -1;
 					return;
 				}
@@ -4874,6 +4931,7 @@ static void TranslateGRFStrings(byte *buf, int len)
 		_cur_grfconfig->error = error;
 
 		_cur_grfconfig->status = GCS_DISABLED;
+		ClearTemporaryNewGRFData();
 		_skip_sprites = -1;
 		return;
 	}
@@ -5239,23 +5297,6 @@ static void ResetNewGRFData()
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
-}
-
-/** Reset all NewGRFData that was used only while processing data */
-static void ClearTemporaryNewGRFData()
-{
-	/* Clear the GOTO labels used for GRF processing */
-	for (GRFLabel *l = _cur_grffile->label; l != NULL;) {
-		GRFLabel *l2 = l->next;
-		free(l);
-		l = l2;
-	}
-	_cur_grffile->label = NULL;
-
-	/* Clear the list of spritegroups */
-	free(_cur_grffile->spritegroups);
-	_cur_grffile->spritegroups = NULL;
-	_cur_grffile->spritegroups_count = 0;
 }
 
 static void BuildCargoTranslationMap()

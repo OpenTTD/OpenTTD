@@ -1902,11 +1902,6 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			}
 
 			if ((hs->extra_flags & BUILDING_IS_HISTORICAL) && !_generating_world) continue;
-
-			if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
-				uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
-				if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) == 0) continue;
-			}
 		}
 
 		if (_cur_year < hs->min_date || _cur_year > hs->max_date) continue;
@@ -1920,7 +1915,7 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			SetBit(oneof, TOWN_HAS_STADIUM);
 		}
 
-		if (HASBITS(t->flags12 , oneof)) continue;
+		if (HASBITS(t->flags12, oneof)) continue;
 
 		/* Make sure there is no slope? */
 		bool noslope = (hs->building_flags & TILE_NOT_SLOPED) != 0;
@@ -1934,6 +1929,11 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 			if (!CheckTownBuild2House(&tile, t, maxz, noslope, DIAGDIR_SE)) continue;
 		} else {
 			/* 1x1 house checks are already done */
+		}
+
+		if (HasBit(hs->callback_mask, CBM_HOUSE_ALLOW_CONSTRUCTION)) {
+			uint16 callback_res = GetHouseCallback(CBID_HOUSE_ALLOW_CONSTRUCTION, 0, 0, house, t, tile);
+			if (callback_res != CALLBACK_FAILED && GB(callback_res, 0, 8) == 0) continue;
 		}
 
 		/* build the house */

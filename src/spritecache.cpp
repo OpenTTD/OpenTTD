@@ -28,6 +28,7 @@ struct SpriteCache {
  	uint32 file_pos;
 	uint16 file_slot;
  	int16 lru;
+	bool real_sprite; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as non-real sprite. If the non-real sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 };
 
 
@@ -176,6 +177,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		byte *dest = (byte *)AllocSprite(num);
 
 		sc->ptr = dest;
+		sc->real_sprite = false;
 		FioReadBlock(dest, num);
 
 		return sc->ptr;
@@ -217,8 +219,12 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			}
 		}
 
+		sc->real_sprite = false;
+
 		return sc->ptr;
 	}
+
+	sc->real_sprite = true;
 
 	if (!real_sprite) {
 		static byte warning_level = 0;
@@ -255,6 +261,7 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	sc->ptr = NULL;
 	sc->lru = 0;
 	sc->id = file_sprite_id;
+	sc->real_sprite = false;
 
 	return true;
 }
@@ -269,6 +276,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
 	scnew->id = scold->id;
+	scnew->real_sprite = scold->real_sprite;
 }
 
 
@@ -454,7 +462,7 @@ const void *GetRawSprite(SpriteID sprite, bool real_sprite)
 	p = sc->ptr;
 
 	/* Load the sprite, if it is not loaded, yet */
-	if (p == NULL) p = ReadSprite(sc, sprite, real_sprite);
+	if (p == NULL || sc->real_sprite != real_sprite) p = ReadSprite(sc, sprite, real_sprite);
 
 	return p;
 }

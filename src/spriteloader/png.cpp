@@ -44,7 +44,7 @@ static bool OpenPNGFile(const char *filename, uint32 id, bool mask)
 	return false;
 }
 
-static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 id, bool mask)
+static bool LoadPNG(SpriteLoader::Sprite *sprite, const char *filename, uint32 id, volatile bool mask)
 {
 	png_byte header[8];
 	png_structp png_ptr;
