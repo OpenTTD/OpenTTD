@@ -44,7 +44,7 @@ static inline const BridgeSpec *GetBridgeSpec(BridgeType i)
 
 void DrawBridgeMiddle(const TileInfo *ti);
 
-bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len);
+bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags = 0);
 int CalcBridgeLenCostFactor(int x);
 
 void ResetBridges();
