@@ -502,10 +502,13 @@ int32 SettingsDisableElrail(int32 p1)
 		}
 	}
 
-	/* setup total power for trains */
+	/* Fix the total power and acceleration for trains */
 	FOR_ALL_VEHICLES(v) {
-		/* power is cached only for front engines */
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) TrainPowerChanged(v);
+		/* power and acceleration is cached only for front engines */
+		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
+			TrainPowerChanged(v);
+			UpdateTrainAcceleration(v);
+		}
 	}
 
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);

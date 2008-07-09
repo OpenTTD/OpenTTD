@@ -2011,7 +2011,7 @@ static const SaveLoad _economy_desc[] = {
 	SLE_CONDVAR(Economy, max_loan_unround, SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
 	SLE_CONDVAR(Economy, max_loan_unround, SLE_INT64,                  65, SL_MAX_VERSION),
 	SLE_CONDVAR(Economy, max_loan_unround_fract, SLE_UINT16,           70, SL_MAX_VERSION),
-	    SLE_VAR(Economy, fluct,            SLE_FILE_I16 | SLE_VAR_I32),
+	    SLE_VAR(Economy, fluct,            SLE_INT16),
 	    SLE_VAR(Economy, interest_rate,    SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount,      SLE_UINT8),
 	    SLE_VAR(Economy, infl_amount_pr,   SLE_UINT8),

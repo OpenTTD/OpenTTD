@@ -993,9 +993,13 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 
 	if (!LoadChunk(ls, p, player_chunk)) return false;
 
+	if (_old_string_id == 0) {
+		p->is_active = false;
+		return true;
+	}
+
 	p->name_1 = RemapOldStringID(_old_string_id);
 	p->president_name_1 = RemapOldStringID(_old_string_id_2);
-	p->player_money = p->player_money;
 	_players_ai[_current_player_id].tick = ai_tick;
 
 	if (num == 0) {
@@ -1540,7 +1544,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_VAR ( OC_FILE_U32 | OC_VAR_I64,   1, &_economy.max_loan ),
 	OCL_VAR ( OC_FILE_U32 | OC_VAR_I64,   1, &_economy.max_loan_unround ),
-	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32,   1, &_economy.fluct ),
+	OCL_VAR (  OC_INT16,    1, &_economy.fluct ),
 
 	OCL_VAR ( OC_UINT16,    1, &_disaster_delay ),
 
