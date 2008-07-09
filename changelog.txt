@@ -23,7 +23,6 @@ X 13623 make things look nicer
 - Fix: First determine where to *exactly* build a house before asking a NewGRF whether the location is good instead of possibly moving the house a tile after the NewGRF said the location is good (r13489)
 - Fix: Track was not removed on company bankrupcy when there was a ship on lower halftile (r13488)
 - Fix: Let ships also navigate on half-tile sloped watery rail tiles (r13485)
-- Fix: Road vehicles stoppping at drive through stations of other companies [FS#2050] (r13480)
 - Fix: Division by zero when one would press 'd' (skip order) when there's no order (r13409)
 - Fix: Do not crash when resolving vehicle sprite groups with zero sprites (r13397)
 - Fix: In the purchase list, CB36 for capacity was not called for the first part of rail and road vehicles (r13385)

@@ -1814,13 +1814,12 @@ again:
 			v->u.road.frame == RVC_DRIVE_THROUGH_STOP_FRAME))) {
 
 		RoadStop *rs = GetRoadStopByTile(v->tile, GetRoadStopType(v->tile));
-		Station* st = GetStationByTile(v->tile);
+		Station *st = GetStationByTile(v->tile);
 
 		/* Vehicle is at the stop position (at a bay) in a road stop.
 		 * Note, if vehicle is loading/unloading it has already been handled,
 		 * so if we get here the vehicle has just arrived or is just ready to leave. */
-		if (v->current_order.type != OT_LEAVESTATION &&
-				v->current_order.type != OT_GOTO_DEPOT) {
+		if (v->current_order.type != OT_LEAVESTATION) {
 			/* Vehicle has arrived at a bay in a road stop */
 
 			if (IsDriveThroughStopTile(v->tile)) {
@@ -1828,7 +1827,7 @@ again:
 				RoadStop::Type type = IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? RoadStop::BUS : RoadStop::TRUCK;
 
 				/* Check if next inline bay is free */
-				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type)) {
+				if (IsDriveThroughStopTile(next_tile) && (GetRoadStopType(next_tile) == type) && GetStationIndex(v->tile) == GetStationIndex(next_tile)) {
 					RoadStop *rs_n = GetRoadStopByTile(next_tile, type);
 
 					if (rs_n->IsFreeBay(HasBit(v->u.road.state, RVS_USING_SECOND_BAY))) {
@@ -1850,14 +1849,13 @@ again:
 
 			v->last_station_visited = GetStationIndex(v->tile);
 
-			RoadVehArrivesAt(v, st);
-			v->BeginLoading();
-
-			return false;
-		}
-
-		/* Vehicle is ready to leave a bay in a road stop */
-		if (v->current_order.type != OT_GOTO_DEPOT) {
+			if (IsDriveThroughStopTile(v->tile) || (v->current_order.type == OT_GOTO_STATION && v->current_order.dest == st->index)) {
+				RoadVehArrivesAt(v, st);
+				v->BeginLoading();
+				return false;
+			}
+		} else {
+			/* Vehicle is ready to leave a bay in a road stop */
 			if (rs->IsEntranceBusy()) {
 				/* Road stop entrance is busy, so wait as there is nowhere else to go */
 				v->cur_speed = 0;

@@ -23,7 +23,7 @@
 
 void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 {
-	uint y_offset = RoadVehHasArticPart(v) ? 15 :0;
+	uint y_offset = RoadVehHasArticPart(v) ? 15 : 0;
 	StringID str;
 
 	SetDParam(0, v->engine_type);
@@ -62,6 +62,8 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 		DrawStringTruncated(x, y + 10 + y_offset, STR_JUST_STRING, TC_BLUE, 380 - x);
 
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+			if (u->cargo_cap == 0) continue;
+
 			str = STR_8812_EMPTY;
 			if (!u->cargo.Empty()) {
 				SetDParam(0, u->cargo_type);
