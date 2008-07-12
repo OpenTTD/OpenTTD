@@ -856,11 +856,12 @@ struct BuildVehicleWindow : Window {
 	/* Setup widget strings to fit the different types of vehicles */
 	void SetupWindowStrings(VehicleType type)
 	{
+		bool available_vehicle = this->window_number <= VEH_END;
 		switch (type) {
 			default: NOT_REACHED();
 
 			case VEH_TRAIN:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_JUST_STRING;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_TRAINS : STR_JUST_STRING;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_881F_BUILD_VEHICLE;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN;
@@ -869,7 +870,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_ROAD:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9006_NEW_ROAD_VEHICLES;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_ROAD_VEHICLES : STR_9006_NEW_ROAD_VEHICLES;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9007_BUILD_VEHICLE;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9027_BUILD_THE_HIGHLIGHTED_ROAD;
@@ -878,7 +879,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_SHIP:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_9808_NEW_SHIPS;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_SHIPS : STR_9808_NEW_SHIPS;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9826_BUILD_THE_HIGHLIGHTED_SHIP;
@@ -887,7 +888,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = STR_A005_NEW_AIRCRAFT;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_AIRCRAFT : STR_A005_NEW_AIRCRAFT;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_A006_BUILD_AIRCRAFT;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT;
