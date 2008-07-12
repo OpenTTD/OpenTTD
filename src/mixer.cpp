@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "mixer.h"
+#include "core/math_func.hpp"
 
 struct MixerChannel {
 	bool active;
@@ -19,8 +20,8 @@ struct MixerChannel {
 	uint32 samples_left;
 
 	/* Mixing volume */
-	uint volume_left;
-	uint volume_right;
+	int volume_left;
+	int volume_right;
 
 	uint flags;
 };
@@ -28,14 +29,22 @@ struct MixerChannel {
 static MixerChannel _channels[8];
 static uint32 _play_rate;
 
+/**
+ * The theoretical maximum volume for a single sound sample. Multiple sound
+ * samples should not exceed this limit as it will sound too loud. It also
+ * stops overflowing when too many sounds are played at the same time, which
+ * causes an even worse sound quality.
+ */
+static const int MAX_VOLUME = 128 * 128;
+
 
 static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 {
 	int8 *b;
 	uint32 frac_pos;
 	uint32 frac_speed;
-	uint volume_left;
-	uint volume_right;
+	int volume_left;
+	int volume_right;
 
 	if (samples > sc->samples_left) samples = sc->samples_left;
 	sc->samples_left -= samples;
@@ -50,15 +59,15 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 	if (frac_speed == 0x10000) {
 		/* Special case when frac_speed is 0x10000 */
 		do {
-			buffer[0] += *b * volume_left >> 8;
-			buffer[1] += *b * volume_right >> 8;
+			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 8), -MAX_VOLUME, MAX_VOLUME);
+			buffer[0] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
 			b++;
 			buffer += 2;
 		} while (--samples > 0);
 	} else {
 		do {
-			buffer[0] += *b * volume_left >> 8;
-			buffer[1] += *b * volume_right >> 8;
+			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 8), -MAX_VOLUME, MAX_VOLUME);
+			buffer[0] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
 			buffer += 2;
 			frac_pos += frac_speed;
 			b += frac_pos >> 16;
