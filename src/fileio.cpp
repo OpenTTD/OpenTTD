@@ -373,7 +373,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		for (TarLinkList::iterator link = _tar_linklist.begin(); link != _tar_linklist.end(); link++) {
 			const std::string &src = link->first;
 			uint len = src.length();
-			if (resolved_len >= len && resolved_name[len - 1] == PATHSEPCHAR && src.compare(0, len, resolved_name, len) == 0) {
+			if (resolved_len >= len && resolved_name[len - 1] == PATHSEPCHAR && strncmp(src.c_str(), resolved_name, len) == 0) {
 				/* Apply link */
 				char resolved_name2[MAX_RESOLVED_LENGTH];
 				const std::string &dest = link->second;
