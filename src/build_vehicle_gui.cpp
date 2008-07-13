@@ -804,6 +804,7 @@ struct BuildVehicleWindow : Window {
 	bool descending_sort_order;
 	byte sort_criteria;
 	bool regenerate_list;
+	bool listview_mode;
 	EngineID sel_engine;
 	EngineID rename_engine;
 	GUIEngineList eng_list;
@@ -844,7 +845,17 @@ struct BuildVehicleWindow : Window {
 				break;
 		}
 		this->SetupWindowStrings(type);
-		ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
+
+		this->listview_mode = (this->window_number <= VEH_END);
+		/* If we are just viewing the list of vehicles, we do not need the Build button.
+		 * So we just hide it, and enlarge the Rename buton by the now vacant place. */
+		if (this->listview_mode) {
+			this->HideWidget(BUILD_VEHICLE_WIDGET_BUILD);
+			this->widget[BUILD_VEHICLE_WIDGET_RENAME].left = this->widget[BUILD_VEHICLE_WIDGET_BUILD].left;
+		} else {
+			/* Both are visible, adjust the size of each */
+			ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
+		}
 
 		this->GenerateBuildList(); // generate the list, since we need it in the next line
 		/* Select the first engine in the list as default when opening the window */
@@ -856,12 +867,11 @@ struct BuildVehicleWindow : Window {
 	/* Setup widget strings to fit the different types of vehicles */
 	void SetupWindowStrings(VehicleType type)
 	{
-		bool available_vehicle = this->window_number <= VEH_END;
 		switch (type) {
 			default: NOT_REACHED();
 
 			case VEH_TRAIN:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_TRAINS : STR_JUST_STRING;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_TRAINS : STR_JUST_STRING;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_8843_TRAIN_VEHICLE_SELECTION;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_881F_BUILD_VEHICLE;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN;
@@ -870,7 +880,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_ROAD:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_ROAD_VEHICLES : STR_9006_NEW_ROAD_VEHICLES;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_ROAD_VEHICLES : STR_9006_NEW_ROAD_VEHICLES;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9026_ROAD_VEHICLE_SELECTION;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9007_BUILD_VEHICLE;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9027_BUILD_THE_HIGHLIGHTED_ROAD;
@@ -879,7 +889,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_SHIP:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_SHIPS : STR_9808_NEW_SHIPS;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_SHIPS : STR_9808_NEW_SHIPS;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_9825_SHIP_SELECTION_LIST_CLICK;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_9809_BUILD_SHIP;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_9826_BUILD_THE_HIGHLIGHTED_SHIP;
@@ -888,7 +898,7 @@ struct BuildVehicleWindow : Window {
 				break;
 
 			case VEH_AIRCRAFT:
-				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = available_vehicle ? STR_AVAILABLE_AIRCRAFT : STR_A005_NEW_AIRCRAFT;
+				this->widget[BUILD_VEHICLE_WIDGET_CAPTION].data    = this->listview_mode ? STR_AVAILABLE_AIRCRAFT : STR_A005_NEW_AIRCRAFT;
 				this->widget[BUILD_VEHICLE_WIDGET_LIST].tooltips   = STR_A025_AIRCRAFT_SELECTION_LIST;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].data      = STR_A006_BUILD_AIRCRAFT;
 				this->widget[BUILD_VEHICLE_WIDGET_BUILD].tooltips  = STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT;
@@ -905,7 +915,7 @@ struct BuildVehicleWindow : Window {
 		int num_engines = 0;
 		int num_wagons  = 0;
 
-		this->filter.railtype = (this->window_number <= VEH_END) ? RAILTYPE_END : GetRailType(this->window_number);
+		this->filter.railtype = (this->listview_mode) ? RAILTYPE_END : GetRailType(this->window_number);
 
 		this->eng_list.Clear();
 
@@ -998,7 +1008,7 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
-			if (this->window_number > VEH_END && !CanAircraftUseStation(eid, this->window_number)) continue;
+			if (!this->listview_mode && !CanAircraftUseStation(eid, this->window_number)) continue;
 
 			*this->eng_list.Append() = eid;
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1109,8 +1119,6 @@ struct BuildVehicleWindow : Window {
 
 		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.Length());
 
-		this->SetWidgetDisabledState(BUILD_VEHICLE_WIDGET_BUILD, this->window_number <= VEH_END);
-
 		SetVScrollCount(this, this->eng_list.Length());
 		SetDParam(0, this->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
 
@@ -1171,7 +1179,9 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnResize(Point new_size, Point delta)
 	{
-		if (delta.x != 0) ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
+		if (delta.x != 0 && !this->listview_mode) {
+			ResizeButtons(this, BUILD_VEHICLE_WIDGET_BUILD, BUILD_VEHICLE_WIDGET_RENAME);
+		}
 		if (delta.y == 0) return;
 
 		this->vscroll.cap += delta.y / (int)GetVehicleListHeight(this->vehicle_type);
