@@ -223,6 +223,9 @@ const char *_searchpaths[NUM_SEARCHPATHS];
 TarList _tar_list;
 TarFileList _tar_filelist;
 
+typedef std::map<std::string, std::string> TarLinkList;
+static TarLinkList _tar_linklist; ///< List of directory links
+
 /**
  * Check whether the given file exists
  * @param filename the file to try for existance
@@ -357,11 +360,31 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 
 	/* We can only use .tar in case of data-dir, and read-mode */
 	if (f == NULL && subdir == DATA_DIR && mode[0] == 'r') {
+		static const uint MAX_RESOLVED_LENGTH = 2 * (100 + 100 + 155) + 1; // Enough space to hold two filenames plus link. See 'TarHeader'.
+		char resolved_name[MAX_RESOLVED_LENGTH];
+
 		/* Filenames in tars are always forced to be lowercase */
-		char *lcfilename = strdup(filename);
-		strtolower(lcfilename);
-		TarFileList::iterator it = _tar_filelist.find(lcfilename);
-		free(lcfilename);
+		strcpy(resolved_name, filename);
+		strtolower(resolved_name);
+
+		uint resolved_len = strlen(resolved_name);
+
+		/* Resolve ONE directory link */
+		for (TarLinkList::iterator link = _tar_linklist.begin(); link != _tar_linklist.end(); link++) {
+			const std::string &src = link->first;
+			uint len = src.length();
+			if (resolved_len >= len && resolved_name[len - 1] == PATHSEPCHAR && src.compare(0, len, resolved_name, len) == 0) {
+				/* Apply link */
+				char resolved_name2[MAX_RESOLVED_LENGTH];
+				const std::string &dest = link->second;
+				strcpy(resolved_name2, &(resolved_name[len]));
+				strcpy(resolved_name, dest.c_str());
+				strcpy(&(resolved_name[dest.length()]), resolved_name2);
+				break; // Only resolve one level
+			}
+		}
+
+		TarFileList::iterator it = _tar_filelist.find(resolved_name);
 		if (it != _tar_filelist.end()) {
 			f = FioFOpenFileTar(&((*it).second), filesize);
 		}
@@ -443,6 +466,22 @@ char *BuildWithFullPath(const char *dir)
 	return dest;
 }
 
+/**
+ * Simplify filenames from tars.
+ * Replace '/' by PATHSEPCHAR, and force 'name' to lowercase.
+ * @param name Filename to process.
+ */
+static void SimplifyFileName(char *name)
+{
+	/* Force lowercase */
+	strtolower(name);
+
+	/* Tar-files always have '/' path-seperator, but we want our PATHSEPCHAR */
+#if (PATHSEPCHAR != '/')
+	for (char *n = name; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
+#endif
+}
+
 static bool TarListAddFile(const char *filename)
 {
 	/* The TAR-header, repeated for every file */
@@ -478,9 +517,13 @@ static bool TarListAddFile(const char *filename)
 	tar_entry->filename = strdup(filename);
 	_tar_list.insert(TarList::value_type(filename, tar_entry));
 
+	TarLinkList links; ///< Temporary list to collect links
+
 	TarHeader th;
 	char buf[sizeof(th.name) + 1], *end;
 	char name[sizeof(th.prefix) + 1 + sizeof(th.name) + 1];
+	char link[sizeof(th.linkname) + 1];
+	char dest[sizeof(th.prefix) + 1 + sizeof(th.name) + 1 + 1 + sizeof(th.linkname) + 1];
 	size_t num = 0, pos = 0;
 
 	/* Make a char of 512 empty bytes */
@@ -522,24 +565,95 @@ static bool TarListAddFile(const char *filename)
 		buf[sizeof(th.size)] = '\0';
 		int skip = strtol(buf, &end, 8);
 
-		/* 0 byte sized files can be skipped (dirs, symlinks, ..) */
-		if (skip == 0) continue;
+		switch (th.typeflag) {
+			case '\0':
+			case '0': { // regular file
+				/* Ignore empty files */
+				if (skip == 0) break;
 
-		/* Store this entry in the list */
-		TarFileListEntry entry;
-		entry.tar      = tar_entry;
-		entry.size     = skip;
-		entry.position = pos;
-		/* Force lowercase */
-		strtolower(name);
+				if (strlen(name) == 0) break;
 
-		/* Tar-files always have '/' path-seperator, but we want our PATHSEPCHAR */
-#if (PATHSEPCHAR != '/')
-		for (char *n = name; *n != '\0'; n++) if (*n == '/') *n = PATHSEPCHAR;
-#endif
+				/* Store this entry in the list */
+				TarFileListEntry entry;
+				entry.tar      = tar_entry;
+				entry.size     = skip;
+				entry.position = pos;
 
-		DEBUG(misc, 6, "Found file in tar: %s (%d bytes, %d offset)", name, skip, pos);
-		if (_tar_filelist.insert(TarFileList::value_type(name, entry)).second) num++;
+				/* Convert to lowercase and our PATHSEPCHAR */
+				SimplifyFileName(name);
+
+				DEBUG(misc, 6, "Found file in tar: %s (%d bytes, %d offset)", name, skip, pos);
+				if (_tar_filelist.insert(TarFileList::value_type(name, entry)).second) num++;
+
+				break;
+			}
+
+			case '1': // hard links
+			case '2': { // symbolic links
+				/* Copy the destination of the link in a safe way at the end of 'linkname' */
+				memcpy(link, th.linkname, sizeof(th.linkname));
+				link[sizeof(th.linkname)] = '\0';
+
+				if (strlen(name) == 0 || strlen(link) == 0) break;
+
+				/* Convert to lowercase and our PATHSEPCHAR */
+				SimplifyFileName(name);
+				SimplifyFileName(link);
+
+				/* Only allow relative links */
+				if (link[0] == PATHSEPCHAR) {
+					DEBUG(misc, 1, "Ignoring absolute link in tar: %s -> %s", name, link);
+					break;
+				}
+
+				/* Process relative path.
+				 * Note: The destination of links must not contain any directory-links. */
+				strcpy(dest, name);
+				char *destpos = strrchr(dest, PATHSEPCHAR);
+				if (destpos == NULL) destpos = dest;
+				*destpos = '\0';
+
+				char *pos = link;
+				while (*pos != '\0') {
+					char *next = strchr(link, PATHSEPCHAR);
+					if (next == NULL) next = pos + strlen(pos);
+
+					/* Skip '.' (current dir) */
+					if (next != pos + 1 || pos[0] != '.') {
+						if (next == pos + 2 && pos[0] == '.' && pos[1] == '.') {
+							/* level up */
+							if (dest[0] == '\0') {
+								DEBUG(misc, 1, "Ignoring link pointing outside of data directory: %s -> %s", name, link);
+								break;
+							}
+
+							/* Truncate 'dest' after last PATHSEPCHAR.
+							 * This assumes, that the truncated part is a real directory and not a link */
+							destpos = strrchr(dest, PATHSEPCHAR);
+							if (destpos == NULL) destpos = dest;
+						} else {
+							/* Append at end of 'dest' */
+							if (destpos != dest) *(destpos++) = PATHSEPCHAR;
+							strncpy(destpos, pos, next - pos);
+							destpos += next - pos;
+						}
+						*destpos = '\0';
+					}
+
+					pos = next;
+				}
+
+				/* Store links in temporary list */
+				DEBUG(misc, 6, "Found link in tar: %s -> %s", name, dest);
+				links.insert(TarLinkList::value_type(name, dest));
+
+				break;
+			}
+
+			default:
+				/* Ignore other types */
+				break;
+		}
 
 		/* Skip to the next block.. */
 		skip = Align(skip, 512);
@@ -549,6 +663,32 @@ static bool TarListAddFile(const char *filename)
 
 	DEBUG(misc, 1, "Found tar '%s' with %d new files", filename, num);
 	fclose(f);
+
+	/* Resolve file links and store directory links.
+	 * We restrict usage of links to two cases:
+	 *  1) Links to directories:
+	 *      Both the source path and the destination path must NOT contain any further links.
+	 *      When resolving files at most one directory link is resolved.
+	 *  2) Links to files:
+	 *      The destination path must NOT contain any links.
+	 *      The source path may contain one directory link.
+	 */
+	for (TarLinkList::iterator link = links.begin(); link != links.end(); link++) {
+		const std::string &src = link->first;
+		const std::string &dest = link->second;
+
+		TarFileList::iterator dest_file = _tar_filelist.find(dest);
+		if (dest_file != _tar_filelist.end()) {
+			/* Link to file. Process the link like the destination file. */
+			_tar_filelist.insert(TarFileList::value_type(src, dest_file->second));
+		} else {
+			/* Destination file not found. Assume 'link to directory' */
+			/* Append PATHSEPCHAR to 'src' and 'dest' */
+			const std::string src_path = src + PATHSEPCHAR;
+			const std::string dst_path = (dest.length() == 0 ? "" : dest + PATHSEPCHAR);
+			_tar_linklist.insert(TarLinkList::value_type(src_path, dst_path));
+		}
+	}
 
 	return true;
 }
