@@ -262,9 +262,13 @@ static int TruncateString(char *str, int maxw)
 				return ddd_w;
 			}
 		} else {
-			if (c == SCC_SETX) str++;
-			else if (c == SCC_SETXY) str += 2;
-			else if (c == SCC_TINYFONT) {
+			if (c == SCC_SETX) {
+				w = *str;
+				str++;
+			} else if (c == SCC_SETXY) {
+				w = *str;
+				str += 2;
+			} else if (c == SCC_TINYFONT) {
 				size = FS_SMALL;
 				ddd = GetCharacterWidth(size, '.') * 3;
 			} else if (c == SCC_BIGFONT) {
