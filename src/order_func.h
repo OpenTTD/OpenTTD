@@ -38,7 +38,7 @@ void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v);
 bool ProcessOrders(Vehicle *v);
 
-void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable);
+void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int width);
 
 #define MIN_SERVINT_PERCENT  5
 #define MAX_SERVINT_PERCENT 90

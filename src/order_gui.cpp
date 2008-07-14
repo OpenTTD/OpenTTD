@@ -162,7 +162,7 @@ extern uint ConvertSpeedToDisplaySpeed(uint speed);
 extern uint ConvertDisplaySpeedToSpeed(uint speed);
 
 
-void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable)
+void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int width)
 {
 	StringID str = (v->cur_order_index == order_index) ? STR_8805 : STR_8804;
 	SetDParam(6, STR_EMPTY);
@@ -257,7 +257,7 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 	}
 
 	SetDParam(0, order_index + 1);
-	DrawString(2, y, str, selected ? TC_WHITE : TC_BLACK);
+	DrawStringTruncated(2, y, str, selected ? TC_WHITE : TC_BLACK, width);
 }
 
 
@@ -734,7 +734,7 @@ public:
 			/* Don't draw anything if it extends past the end of the window. */
 			if (i - this->vscroll.pos >= this->vscroll.cap) break;
 
-			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false);
+			DrawOrderString(this->vehicle, order, i, y, i == this->selected_order, false, this->widget[ORDER_WIDGET_ORDER_LIST].right - 4);
 			y += 10;
 
 			i++;

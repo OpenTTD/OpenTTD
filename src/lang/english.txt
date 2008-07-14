@@ -2664,8 +2664,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING4} {STRING2}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING4} {STRING2}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING4} {STRING2}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING4} {STRING2}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Go to
 STR_ORDER_GO_NON_STOP_TO                                        :Go non-stop to
@@ -2738,8 +2738,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Jump to order {
 STR_CONDITIONAL_NUM                                             :Jump to order {COMMA} when {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Jump to order {COMMA} when {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
-STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING1}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Travel (not timetabled)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Travel for {STRING1}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING1}
 STR_TIMETABLE_DAYS                                              :{COMMA} day{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}

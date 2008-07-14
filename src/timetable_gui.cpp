@@ -124,7 +124,7 @@ struct TimetableWindow : Window {
 			if (i - this->vscroll.pos >= this->vscroll.cap) break;
 
 			if (i % 2 == 0) {
-				DrawOrderString(v, order, order_id, y, i == selected, true);
+				DrawOrderString(v, order, order_id, y, i == selected, true, this->widget[TTV_TIMETABLE_PANEL].right - 4);
 
 				order_id++;
 
@@ -144,7 +144,7 @@ struct TimetableWindow : Window {
 					string = STR_TIMETABLE_TRAVEL_FOR;
 				}
 
-				DrawString(22, y, string, (i == selected) ? TC_WHITE : TC_BLACK);
+				DrawStringTruncated(2, y, string, (i == selected) ? TC_WHITE : TC_BLACK, this->widget[TTV_TIMETABLE_PANEL].right - 4);
 
 				if (final_order) break;
 			}
