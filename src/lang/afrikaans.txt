@@ -2608,8 +2608,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in die weg
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (Nie gerooster nie)
-STR_TIMETABLE_TRAVEL_FOR                                        :Reis vir {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (Nie gerooster nie)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis vir {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en bly vir {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} da{P g e}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" e}

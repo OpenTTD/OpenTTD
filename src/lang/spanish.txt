@@ -2665,8 +2665,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}, 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en camino
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Sin paradas
 STR_ORDER_GO_TO                                                 :Ir a
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sin paradas a
@@ -2739,8 +2739,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Saltar a orden 
 STR_CONDITIONAL_NUM                                             :Saltar a orden {COMMA} cuando {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Saltar a orden{COMMA} cuando {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaje (sin horarios)
-STR_TIMETABLE_TRAVEL_FOR                                        :Viaje para {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viaje (sin horarios)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viaje para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :y estancia en {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} días{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} señal{P "" s}

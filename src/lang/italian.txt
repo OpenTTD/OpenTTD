@@ -2666,8 +2666,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Deposito
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Il primo treno arriva a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Treno di mezzo
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}No-stop
 STR_ORDER_GO_TO                                                 :Vai a
 STR_ORDER_GO_NON_STOP_TO                                        :Vai no-stop a
@@ -2740,8 +2740,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Salta all'ordin
 STR_CONDITIONAL_NUM                                             :Salta all'ordine {COMMA} se {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Salta all'ordine {COMMA} se {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viaggia senza orario
-STR_TIMETABLE_TRAVEL_FOR                                        :Viaggia per {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viaggia senza orario
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viaggia per {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e sosta per {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} giorn{P o i}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick

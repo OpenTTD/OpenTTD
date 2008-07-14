@@ -2665,8 +2665,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Depósit
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro trem chega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no caminho
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Sem parar
 STR_ORDER_GO_TO                                                 :Vá para
 STR_ORDER_GO_NON_STOP_TO                                        :Ir sem parar para
@@ -2739,8 +2739,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Saltar para a o
 STR_CONDITIONAL_NUM                                             :Saltar para a ordem {COMMA} quando {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Saltar para a ordem {COMMA} quando {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viajar (não progamado)
-STR_TIMETABLE_TRAVEL_FOR                                        :Viajar para {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viajar (não progamado)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viajar para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tique{P "" s}

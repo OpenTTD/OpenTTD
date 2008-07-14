@@ -2748,8 +2748,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg na drodze
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Przejazd (bez ustalonego czasu)
-STR_TIMETABLE_TRAVEL_FOR                                        :Przejazd przez {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Przejazd (bez ustalonego czasu)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Przejazd przez {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P zień ni ni}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" i ów}

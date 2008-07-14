@@ -2744,8 +2744,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak je slovesno pripeljal{}na postajo {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v napoto
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Pojdi do
 STR_ORDER_GO_NON_STOP_TO                                        :Pojdi non-stop do
@@ -2818,8 +2818,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Sko훾i na ukaz 
 STR_CONDITIONAL_NUM                                             :Sko훾i na ukaz {COMMA}, ko je {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Sko훾i na ukaz {COMMA}, ko je {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Potovanje (brez 훾asovnih tabel)
-STR_TIMETABLE_TRAVEL_FOR                                        :Potuj za {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Potovanje (brez 훾asovnih tabel)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Potuj za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :in ostani za {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P an neva i i}
 STR_TIMETABLE_TICKS                                             :{COMMA} pik{P a i e ""}

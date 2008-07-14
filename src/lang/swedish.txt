@@ -2664,8 +2664,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} t
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vägen
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Utan uppehåll
 STR_ORDER_GO_TO                                                 :Åk till
 STR_ORDER_GO_NON_STOP_TO                                        :Åk non-stop till
@@ -2738,8 +2738,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Skippa till ord
 STR_CONDITIONAL_NUM                                             :Skippa till order {COMMA} när {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Skippa till order {COMMA} när {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Avres (Inte tillagd i tidtabell)
-STR_TIMETABLE_TRAVEL_FOR                                        :Res till {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Avres (Inte tillagd i tidtabell)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Res till {STRING}
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}

@@ -2661,8 +2661,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民慶賀 . . .{}首輛列車抵達 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (詳細資料)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}前方有列車
-STR_8804                                                        :{SETX 10}{COMMA}：{STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}：{STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}：{SETX 30}{STRING} {STRING}
 STR_ORDER_GO_TO                                                 :前往
 STR_ORDER_GO_NON_STOP_TO                                        :直達
 STR_ORDER_GO_VIA                                                :經由
@@ -2722,8 +2722,8 @@ STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等於
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :不等於
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :漫遊 (無時刻表)
-STR_TIMETABLE_TRAVEL_FOR                                        :通行於 {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}漫遊 (無時刻表)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}通行於 {STRING}
 STR_TIMETABLE_STAY_FOR                                          :並等待 {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} 日
 STR_TIMETABLE_TICKS                                             :{COMMA} tick

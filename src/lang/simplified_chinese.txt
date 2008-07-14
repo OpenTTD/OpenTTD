@@ -2479,8 +2479,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (详细信息)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}指定位置有列车
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :旅行 (无时间表)
-STR_TIMETABLE_TRAVEL_FOR                                        :前往 {STRING} 旅行
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}旅行 (无时间表)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}前往 {STRING} 旅行
 STR_TIMETABLE_STAY_FOR                                          :并且在 {STRING} 停留
 STR_TIMETABLE_DAYS                                              :{COMMA} 天
 STR_TIMETABLE_TICKS                                             :{COMMA} 个标记

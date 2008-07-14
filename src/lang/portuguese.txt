@@ -2648,8 +2648,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é diferente de
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Viagem (sem programação)
-STR_TIMETABLE_TRAVEL_FOR                                        :Viajar durante {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viagem (sem programação)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viajar durante {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" s}

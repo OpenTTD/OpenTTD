@@ -2621,8 +2621,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i veien
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reise (uten tidstabell)
-STR_TIMETABLE_TRAVEL_FOR                                        :Reise for {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reise (uten tidstabell)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reise for {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og bli værende i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tikk

@@ -2664,8 +2664,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Inwoners feesten... {}Eerste trein arriveert in {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in de weg
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Ga naar
 STR_ORDER_GO_NON_STOP_TO                                        :Ga non-stop naar
@@ -2738,8 +2738,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Spring naar ord
 STR_CONDITIONAL_NUM                                             :Spring naar order {COMMA} wanneer {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Spring naar order {COMMA} wanneer {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Reis (geen dienstregeling)
-STR_TIMETABLE_TRAVEL_FOR                                        :Reis naar {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (geen dienstregeling)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis naar {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" ken}

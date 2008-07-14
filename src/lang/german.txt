@@ -2640,8 +2640,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zug ist im Weg
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Fahren (ohne Fahrplan)
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING} lang fahren
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Fahren (ohne Fahrplan)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} lang fahren
 STR_TIMETABLE_STAY_FOR                                          :und {STRING} lang bleiben
 STR_TIMETABLE_DAYS                                              :{COMMA} Tag{P "" e}
 STR_TIMETABLE_TICKS                                             :{COMMA} Tick{P "" s}

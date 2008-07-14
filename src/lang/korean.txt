@@ -2664,8 +2664,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}{STATION}에 처음으로 기차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간에 기차가 있습니다
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
 STR_ORDER_GO_TO                                                 :[운행]
 STR_ORDER_GO_NON_STOP_TO                                        :직통
@@ -2738,8 +2738,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :{COMMA}(으)로
 STR_CONDITIONAL_NUM                                             :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
 STR_CONDITIONAL_TRUE_FALSE                                      :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING})
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :여행 (시간표 없음)
-STR_TIMETABLE_TRAVEL_FOR                                        :{STRING}로 여행
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}여행 (시간표 없음)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING}로 여행
 STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}에 머무름
 STR_TIMETABLE_DAYS                                              :{COMMA} 일
 STR_TIMETABLE_TICKS                                             :{COMMA} 틱

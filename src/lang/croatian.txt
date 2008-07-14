@@ -2644,8 +2644,8 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na 
 
 
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Putovanje (bez rasporeda)
-STR_TIMETABLE_TRAVEL_FOR                                        :Putovanje za {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Putovanje (bez rasporeda)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Putovanje za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" a ova}

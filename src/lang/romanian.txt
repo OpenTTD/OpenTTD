@@ -2656,8 +2656,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Depoul {
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cetăţenii sărbătoresc {}sosirea primului tren la {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalii)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren în drum
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_GO_TO                                                 :Du-te la
 STR_ORDER_GO_NON_STOP_TO                                        :Du-te fără oprire la
 STR_ORDER_GO_VIA                                                :Du-te prin
@@ -2718,8 +2718,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :este adevărat
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :este fals
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Calatorie (fara orar)
-STR_TIMETABLE_TRAVEL_FOR                                        :Calatorii pentru {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Calatorie (fara orar)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Calatorii pentru {STRING}
 STR_TIMETABLE_STAY_FOR                                          :si opriri pentru {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} zi{P "" le}
 STR_TIMETABLE_TICKS                                             :{COMMA} programare{P "" s}

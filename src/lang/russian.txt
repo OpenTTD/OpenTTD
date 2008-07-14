@@ -2677,8 +2677,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Депо
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жители празднуют!{}Первый поезд прибыл на станцию {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд мешает
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Без остановки
 STR_ORDER_GO_TO                                                 :Идти на
 STR_ORDER_GO_NON_STOP_TO                                        :Идти без остановки на
@@ -2751,8 +2751,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Перейти 
 STR_CONDITIONAL_NUM                                             :Перейти к заданию {COMMA} когда {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Перейти к заданию {COMMA} когда {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Путешествует (не учитывается)
-STR_TIMETABLE_TRAVEL_FOR                                        :Идти до {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Путешествует (не учитывается)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Идти до {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}
 STR_TIMETABLE_TICKS                                             :{COMMA} тик{P "" а ов}

@@ -2607,8 +2607,8 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on 
 
 
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Kiertävä (ei aikataulua)
-STR_TIMETABLE_TRAVEL_FOR                                        :Kulje kohteeseen {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Kiertävä (ei aikataulua)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Kulje kohteeseen {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} päivä{P "" ä}
 STR_TIMETABLE_TICKS                                             :{COMMA} tunti{P "" a}

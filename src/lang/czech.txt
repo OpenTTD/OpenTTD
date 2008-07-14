@@ -2728,8 +2728,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Železni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V cestě je vlak
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Jet bez zastavení
 STR_ORDER_GO_TO                                                 :Jet do
 STR_ORDER_GO_NON_STOP_TO                                        :Jet bez zastavení do
@@ -2802,8 +2802,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Skočit na př�
 STR_CONDITIONAL_NUM                                             :Skočit na příkaz {COMMA}, když {STRING.small} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Skočit na příkaz {COMMA}, když {STRING.small} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Jet do (mimo jízdní řád)
-STR_TIMETABLE_TRAVEL_FOR                                        :Jet do {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Jet do (mimo jízdní řád)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Jet do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ny nů}
 STR_TIMETABLE_TICKS                                             :{COMMA} cykl{P us y ů}

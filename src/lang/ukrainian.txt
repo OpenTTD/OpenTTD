@@ -2824,8 +2824,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поїзд на шляху
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Без зупинки
 STR_ORDER_GO_TO                                                 :Прямувати до
 STR_ORDER_GO_NON_STOP_TO                                        :Прямувати без зупинок до
@@ -2898,8 +2898,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Перейти 
 STR_CONDITIONAL_NUM                                             :Перейти до наказу {COMMA}, якщо {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Перейти до наказу {COMMA}, якщо {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Прямує (не за розкладом)
-STR_TIMETABLE_TRAVEL_FOR                                        :Прямує до {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Прямує (не за розкладом)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Прямує до {STRING}
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ні нів}
 STR_TIMETABLE_TICKS                                             :{COMMA} одиниц{P ю і ь}

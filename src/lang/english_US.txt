@@ -2619,8 +2619,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Travel (not timetabled)
-STR_TIMETABLE_TRAVEL_FOR                                        :Travel for {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Travel (not timetabled)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Travel for {STRING}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} day{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}

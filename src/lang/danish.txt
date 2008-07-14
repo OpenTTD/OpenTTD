@@ -2655,8 +2655,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} r
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_GO_TO                                                 :Gå til
 STR_ORDER_GO_NON_STOP_TO                                        :Gå uden stop til
 STR_ORDER_GO_VIA                                                :Gå via
@@ -2726,8 +2726,8 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Spring til ordr
 STR_CONDITIONAL_NUM                                             :Spring til ordre {COMMA} når {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Spring til ordre {COMMA} når {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Rejs (ikke iflg. køreplan)
-STR_TIMETABLE_TRAVEL_FOR                                        :Rejs i {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Rejs (ikke iflg. køreplan)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Rejs i {STRING}
 STR_TIMETABLE_STAY_FOR                                          :og vent i {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" e}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik

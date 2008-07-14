@@ -2610,8 +2610,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Etailsday)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Aintray inway ethay ayway
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :Aveltray (otnay imetabledtay)
-STR_TIMETABLE_TRAVEL_FOR                                        :Aveltray orfay {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Aveltray (otnay imetabledtay)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Aveltray orfay {STRING}
 STR_TIMETABLE_STAY_FOR                                          :andway aystay orfay {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} ay{P "" s}day
 STR_TIMETABLE_TICKS                                             :{COMMA} ick{P "" s}tay
