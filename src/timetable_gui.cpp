@@ -84,19 +84,18 @@ struct TimetableWindow : Window {
 		SetVScrollCount(this, v->num_orders * 2);
 
 		if (v->owner == _local_player) {
-			if (selected == -1) {
-				this->DisableWidget(TTV_CHANGE_TIME);
-				this->DisableWidget(TTV_CLEAR_TIME);
-			} else if (selected % 2 == 1) {
-				this->EnableWidget(TTV_CHANGE_TIME);
-				this->EnableWidget(TTV_CLEAR_TIME);
-			} else {
+			bool disable = true;
+			if (selected != -1) {
 				const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
-				bool disable = order == NULL || !order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION);
-
-				this->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
-				this->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
+				if (selected % 2 == 1) {
+					disable = order != NULL && order->IsType(OT_CONDITIONAL);
+				} else {
+					disable = order == NULL || ((!order->IsType(OT_GOTO_STATION) || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) && !order->IsType(OT_CONDITIONAL));
+				}
 			}
+
+			this->SetWidgetDisabledState(TTV_CHANGE_TIME, disable);
+			this->SetWidgetDisabledState(TTV_CLEAR_TIME, disable);
 
 			this->EnableWidget(TTV_RESET_LATENESS);
 			this->EnableWidget(TTV_AUTOFILL);
@@ -137,7 +136,9 @@ struct TimetableWindow : Window {
 			} else {
 				StringID string;
 
-				if (order->travel_time == 0) {
+				if (order->IsType(OT_CONDITIONAL)) {
+					string = STR_TIMETABLE_NO_TRAVEL;
+				} else if (order->travel_time == 0) {
 					string = STR_TIMETABLE_TRAVEL_NOT_TIMETABLED;
 				} else {
 					SetTimetableParams(0, 1, order->travel_time);
@@ -161,7 +162,7 @@ struct TimetableWindow : Window {
 
 			for (const Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
 				total_time += order->travel_time + order->wait_time;
-				if (order->travel_time == 0) complete = false;
+				if (order->travel_time == 0 && !order->IsType(OT_CONDITIONAL)) complete = false;
 				if (order->wait_time == 0 && order->IsType(OT_GOTO_STATION) && !(order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) complete = false;
 			}
 

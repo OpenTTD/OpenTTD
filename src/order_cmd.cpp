@@ -1694,10 +1694,12 @@ static bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_dept
 
 		case OT_CONDITIONAL: {
 			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
-			UpdateVehicleTimetable(v, true);
 			if (next_order != INVALID_VEH_ORDER_ID) {
+				UpdateVehicleTimetable(v, false);
 				v->cur_order_index = next_order;
+				v->current_order_time += GetVehicleOrder(v, next_order)->travel_time;
 			} else {
+				UpdateVehicleTimetable(v, true);
 				v->cur_order_index++;
 			}
 

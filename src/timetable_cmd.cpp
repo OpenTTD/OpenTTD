@@ -69,8 +69,10 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	bool packed_time = HasBit(p1, 25);
 	bool is_journey = HasBit(p1, 24) || packed_time;
 	if (!is_journey) {
-		if (!order->IsType(OT_GOTO_STATION)) return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
+		if (!order->IsType(OT_GOTO_STATION) && !order->IsType(OT_CONDITIONAL)) return_cmd_error(STR_TIMETABLE_ONLY_WAIT_AT_STATIONS);
 		if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
+	} else {
+		if (order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
 	}
 
 	if (flags & DC_EXEC) {
@@ -175,7 +177,9 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 			 * adjusted later by people who aren't. */
 			time_taken = (((time_taken - 1) / DAY_TICKS) + 1) * DAY_TICKS;
 
-			ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
+			if (!v->current_order.IsType(OT_CONDITIONAL)) {
+				ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
+			}
 			return;
 		} else if (v->cur_order_index == 0) {
 			/* Otherwise if we're at the beginning and it already has a value,

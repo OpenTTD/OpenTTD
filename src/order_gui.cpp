@@ -251,6 +251,13 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				if (order->GetConditionVariable() == OCV_MAX_SPEED) value = ConvertSpeedToDisplaySpeed(value);
 				SetDParam(5, value);
 			}
+
+			if (timetable && order->wait_time > 0) {
+				SetDParam(6, STR_TIMETABLE_AND_TRAVEL_FOR);
+				SetTimetableParams(7, 8, order->wait_time);
+			} else {
+				SetDParam(6, STR_EMPTY);
+			}
 			break;
 
 		default: NOT_REACHED();
