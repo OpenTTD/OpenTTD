@@ -60,14 +60,14 @@ static void mix_int8_to_int16(MixerChannel *sc, int16 *buffer, uint samples)
 		/* Special case when frac_speed is 0x10000 */
 		do {
 			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 8), -MAX_VOLUME, MAX_VOLUME);
-			buffer[0] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
+			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
 			b++;
 			buffer += 2;
 		} while (--samples > 0);
 	} else {
 		do {
 			buffer[0] = Clamp(buffer[0] + (*b * volume_left  >> 8), -MAX_VOLUME, MAX_VOLUME);
-			buffer[0] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
+			buffer[1] = Clamp(buffer[1] + (*b * volume_right >> 8), -MAX_VOLUME, MAX_VOLUME);
 			buffer += 2;
 			frac_pos += frac_speed;
 			b += frac_pos >> 16;
