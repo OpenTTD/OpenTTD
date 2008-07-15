@@ -55,7 +55,7 @@ void ResetBridges()
 	/* First, free sprite table data */
 	for (BridgeType i = 0; i < MAX_BRIDGES; i++) {
 		if (_bridge[i].sprite_table != NULL) {
-			for (uint j = 0; j < 7; j++) free(_bridge[i].sprite_table[j]);
+			for (BridgePieces j = BRIDGE_PIECE_NORTH; j < BRIDGE_PIECE_INVALID; j++) free(_bridge[i].sprite_table[j]);
 			free(_bridge[i].sprite_table);
 		}
 	}
@@ -106,10 +106,10 @@ bool HasBridgeFlatRamp(Slope tileh, Axis axis)
 	return (tileh != SLOPE_FLAT);
 }
 
-static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
+static inline const PalSpriteID *GetBridgeSpriteTable(int index, BridgePieces table)
 {
 	const BridgeSpec *bridge = GetBridgeSpec(index);
-	assert(table < 7);
+	assert(table < BRIDGE_PIECE_INVALID);
 	if (bridge->sprite_table == NULL || bridge->sprite_table[table] == NULL) {
 		return _bridge_sprite_table[index][table];
 	} else {
@@ -940,9 +940,9 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 		if (ti->tileh == SLOPE_FLAT) base_offset += 4; // sloped bridge head
 
-		/* Table number 6 always refers to the bridge heads for any bridge type */
+		/* Table number BRIDGE_PIECE_HEAD always refers to the bridge heads for any bridge type */
 		if (transport_type != TRANSPORT_WATER) {
-			psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), 6)[base_offset];
+			psid = &GetBridgeSpriteTable(GetBridgeType(ti->tile), BRIDGE_PIECE_HEAD)[base_offset];
 		} else {
 			psid = _aqueduct_sprites + base_offset;
 		}
@@ -990,14 +990,15 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 
 /** Compute bridge piece. Computes the bridge piece to display depending on the position inside the bridge.
- * bridges pieces sequence (middle parts)
- * bridge len 1: 0
- * bridge len 2: 0 1
- * bridge len 3: 0 4 1
- * bridge len 4: 0 2 3 1
- * bridge len 5: 0 2 5 3 1
- * bridge len 6: 0 2 3 2 3 1
- * bridge len 7: 0 2 3 4 2 3 1
+ * bridges pieces sequence (middle parts).
+ * Note that it is not covering the bridge heads, which are always referenced by the same sprite table.
+ * bridge len 1: BRIDGE_PIECE_NORTH
+ * bridge len 2: BRIDGE_PIECE_NORTH  BRIDGE_PIECE_SOUTH
+ * bridge len 3: BRIDGE_PIECE_NORTH  BRIDGE_PIECE_MIDDLE_ODD   BRIDGE_PIECE_SOUTH
+ * bridge len 4: BRIDGE_PIECE_NORTH  BRIDGE_PIECE_INNER_NORTH  BRIDGE_PIECE_INNER_SOUTH  BRIDGE_PIECE_SOUTH
+ * bridge len 5: BRIDGE_PIECE_NORTH  BRIDGE_PIECE_INNER_NORTH  BRIDGE_PIECE_MIDDLE_EVEN  BRIDGE_PIECE_INNER_SOUTH  BRIDGE_PIECE_SOUTH
+ * bridge len 6: BRIDGE_PIECE_NORTH  BRIDGE_PIECE_INNER_NORTH  BRIDGE_PIECE_INNER_SOUTH  BRIDGE_PIECE_INNER_NORTH  BRIDGE_PIECE_INNER_SOUTH  BRIDGE_PIECE_SOUTH
+ * bridge len 7: BRIDGE_PIECE_NORTH  BRIDGE_PIECE_INNER_NORTH  BRIDGE_PIECE_INNER_SOUTH  BRIDGE_PIECE_MIDDLE_ODD   BRIDGE_PIECE_INNER_NORTH  BRIDGE_PIECE_INNER_SOUTH  BRIDGE_PIECE_SOUTH
  * #0 - always as first, #1 - always as last (if len>1)
  * #2,#3 are to pair in order
  * for odd bridges: #5 is going in the bridge middle if on even position, #4 on odd (counting from 0)
@@ -1005,18 +1006,18 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
  * @param south Southernmost tile of bridge
  * @return Index of bridge piece
  */
-static uint CalcBridgePiece(uint north, uint south)
+static BridgePieces CalcBridgePiece(uint north, uint south)
 {
 	if (north == 1) {
-		return 0;
+		return BRIDGE_PIECE_NORTH;
 	} else if (south == 1) {
-		return 1;
+		return BRIDGE_PIECE_SOUTH;
 	} else if (north < south) {
-		return north & 1 ? 3 : 2;
+		return north & 1 ? BRIDGE_PIECE_INNER_SOUTH : BRIDGE_PIECE_INNER_NORTH;
 	} else if (north > south) {
-		return south & 1 ? 2 : 3;
+		return south & 1 ? BRIDGE_PIECE_INNER_NORTH : BRIDGE_PIECE_INNER_SOUTH;
 	} else {
-		return north & 1 ? 5 : 4;
+		return north & 1 ? BRIDGE_PIECE_MIDDLE_EVEN : BRIDGE_PIECE_MIDDLE_ODD;
 	}
 }
 
@@ -1049,7 +1050,7 @@ void DrawBridgeMiddle(const TileInfo* ti)
 	TransportType transport_type = GetTunnelBridgeTransportType(rampsouth);
 
 	Axis axis = GetBridgeAxis(ti->tile);
-	uint piece = CalcBridgePiece(
+	BridgePieces piece = CalcBridgePiece(
 		GetTunnelBridgeLength(ti->tile, rampnorth) + 1,
 		GetTunnelBridgeLength(ti->tile, rampsouth) + 1
 	);

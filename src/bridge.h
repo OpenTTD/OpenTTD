@@ -9,6 +9,23 @@
 #include "direction_type.h"
 #include "tile_cmd.h"
 
+/** This enum is related to the definition of bridge pieces,
+ * which is used to determine the proper sprite table to use
+ * while drawing a given bridge part.
+ */
+enum BridgePieces {
+	BRIDGE_PIECE_NORTH = 0,
+	BRIDGE_PIECE_SOUTH,
+	BRIDGE_PIECE_INNER_NORTH,
+	BRIDGE_PIECE_INNER_SOUTH,
+	BRIDGE_PIECE_MIDDLE_ODD,
+	BRIDGE_PIECE_MIDDLE_EVEN,
+	BRIDGE_PIECE_HEAD,
+	BRIDGE_PIECE_INVALID,
+};
+
+DECLARE_POSTFIX_INCREMENT(BridgePieces);
+
 enum {
 	MAX_BRIDGES = 13
 };
