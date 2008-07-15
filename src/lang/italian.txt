@@ -444,7 +444,7 @@ STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Zooma la
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Zooma la visuale indietro
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci ferrovie
 STR_0182_BUILD_ROADS                                            :{BLACK}Costruisci strade
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci moli
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci trasporti su acqua
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aeroporti
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Pianta alberi, posiziona cartelli etc.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informazioni area terreno
@@ -1290,7 +1290,7 @@ STR_BUILD_CANALS_TIP                                            :{BLACK}Costruis
 STR_LANDINFO_CANAL                                              :Canale
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossibile costruire qui le chiuse...
-STR_BUILD_LOCKS_TIP                                             :{BLACK}Costruisci chiuse
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Costruisce chiuse per i canali
 STR_LANDINFO_LOCK                                               :Chiuse
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Impossibile creare un fiume qui...
@@ -3014,7 +3014,7 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Impossib
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}La prima nave attracca a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Posiziona una boa che può essere usata come waypoint
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Impossibile posizionare una boa qui...
-STR_BUILD_AQUEDUCT                                              :{BLACK}Costruisci acquedotto
+STR_BUILD_AQUEDUCT                                              :{BLACK}Costruisce un acquedotto
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Impossibile costruire un acquedotto qui...
 STR_9836_RENAME                                                 :{BLACK}Rinomina
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Rinomina il tipo di nave

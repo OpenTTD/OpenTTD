@@ -36,6 +36,7 @@ STR_0012_OIL.r                                                  :нафти
 STR_0012_OIL.z                                                  :нафту
 STR_0013_LIVESTOCK                                              :худоба
 STR_0013_LIVESTOCK.z                                            :худобу
+STR_0013_LIVESTOCK.r                                            :худоби
 STR_0014_GOODS                                                  :товари
 STR_0014_GOODS.r                                                :товарів
 STR_0014_GOODS.z                                                :товари
@@ -128,6 +129,7 @@ STR_0032_OIL.r                                                  :нафти
 STR_0032_OIL.z                                                  :нафту
 STR_0033_LIVESTOCK                                              :худоба
 STR_0033_LIVESTOCK.z                                            :худобу
+STR_0033_LIVESTOCK.r                                            :худоби
 STR_0034_GOODS                                                  :товари
 STR_0034_GOODS.r                                                :товарів
 STR_0034_GOODS.z                                                :товари

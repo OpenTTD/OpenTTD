@@ -3037,6 +3037,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ni možn
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izberi tip tovora, ki ga bo vozilo prevažalo
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Gradnja vodnih poti
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Gradnja vodnih poti
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vodne poti
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Ni mogoče zgraditi pomola tukaj ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Ladijska garaža
 STR_9804_NEW_SHIPS                                              :{BLACK}Nove ladje
@@ -3243,6 +3246,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} je pot
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteko na seznam

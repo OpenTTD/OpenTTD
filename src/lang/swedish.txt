@@ -2957,6 +2957,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan inte
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj lasttyp för fordon
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Farledskonstruktion
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Farledskonstruktion
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Farled
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan inte bygga hamn här...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} skeppsdepå
 STR_9804_NEW_SHIPS                                              :{BLACK}Nytt skepp
@@ -3163,6 +3166,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} måste
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} kräver OpenTTD version {STRING} eller bättre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laddar {STRING} som statisk NewGRF med {STRING} kan orsaka osynk.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan
