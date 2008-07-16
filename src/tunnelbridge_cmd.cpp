@@ -155,7 +155,7 @@ static CommandCost CheckBridgeSlopeSouth(Axis axis, Slope *tileh, uint *z)
 bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags)
 {
 	if (flags & DC_QUERY_COST) {
-		return bridge_len <= (_patches.longbridges ? 100 : 16);
+		return bridge_len <= (_patches.longbridges ? 100U : 16U);
 	}
 
 	if (bridge_type >= MAX_BRIDGES) return false;

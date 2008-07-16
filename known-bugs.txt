@@ -15,6 +15,7 @@ Bugs for 0.6.1
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 
+- 2129	Strings from message boxes could sometimes change (e.g. the screenshot filename)
 - 2085	Vehicle list of shared vehicles without orders not possible
 - 1944	Road vehicles not picking empty drivethrough platform
 - 1923	Unique names not always enforced

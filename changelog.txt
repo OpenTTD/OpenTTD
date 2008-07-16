@@ -1,4 +1,4 @@
-0.6.2-RC1 (2008-??-??)
+0.6.2-RC1 (2008-07-16)
 ------------------------------------------------------------------------
 - Fix: Possible buffer overflow in string truncation code (r13700)
 - Fix: Handle SETX(Y) properly when truncating a string instead of ignoring it and returning a too long string (r13699)
@@ -14,7 +14,6 @@
 - Fix: Server crashing when banning the rconning client (r13661)
 - Fix: Signals were not updated correctly when a player removed a non-existing track piece (r13626)
 - Fix: Crash when one tries to raise the nothern corner of MP_VOID tiles (i.e. the southern corner of the tiles on the southern map edge) in the scenario editor [FS#2106] (r13624)
-X 13623 make things look nicer
 - Fix: Only the front of a RV would be considered when determining to what cargos a vehicle can be refitted instead of all cargos [FS#2109] (r13622)
 - Fix: If the first bridge can not be build for a given length, then none of the other bridges can. Effectively meaning that if someone replaces the first bridge with a bridge that can be only 3 tiles longs then only other bridges that can be 3 tiles long will be buildable, but only if they are 3 tiles long [FS#2100] (r13611)
 - Fix: Signal states could be propagated through waypoints built in orthogonal axis (r13589)
