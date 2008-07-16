@@ -1,5 +1,10 @@
 0.6.2-RC1 (2008-??-??)
 ------------------------------------------------------------------------
+- Fix: Possible buffer overflow in string truncation code (r13700)
+- Fix: Handle SETX(Y) properly when truncating a string instead of ignoring it and returning a too long string (r13699)
+- Fix: In some cases the (sound) mixer could overflow causing artefacts in the sound [FS#2120] (r13695)
+- Fix: Do not rely on .tar files always ending with a block of zeros (r13693)
+- Fix: Make sure a command is ran in the context of autoreplace or not (r13691)
 - Fix: In the case that elrails and 'realistic' acceleration are disabled all electrified engines would have no power on load, until the vehicle got turned around, loaded or got into a depot [FS#2102]- Fix: Saving TTD imported games in recession failed due to wrong (and unneeded) type conversions in the saveload code [FS#2131] (r13679)
 - Fix: Inactive companies from old (TTD) saves could be marked active in some cases, which then loads garbage in their statistics and such [FS#2126] (r13676)
 - Fix: Memory leak when NewGRFs got forcefully disabled and they defined GOTO labels (r13675)

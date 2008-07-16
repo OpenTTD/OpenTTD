@@ -31,6 +31,7 @@
 #include <sys/stat.h>
 #if defined(_MSC_VER) && !defined(WINCE)
 	#include <dbghelp.h>
+	#include "strings_func.h"
 #endif
 
 static bool _has_console;
@@ -491,6 +492,8 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 
 	if (_exception_string)
 		output += sprintf(output, "Reason: %s\r\n", _exception_string);
+
+	output += sprintf(output, "Language: %s\r\n", _dynlang.curr_file);
 
 #ifdef _M_AMD64
 	output += sprintf(output, "Exception %.8X at %.16IX\r\n"

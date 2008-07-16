@@ -230,15 +230,20 @@ static int TruncateString(char *str, int maxw)
 			w += GetCharacterWidth(size, c);
 
 			if (w >= maxw) {
-				/* string got too big... insert dotdotdot */
-				ddd_pos[0] = ddd_pos[1] = ddd_pos[2] = '.';
-				ddd_pos[3] = '\0';
+				/* string got too big... insert dotdotdot, but make sure we do not
+				 * print anything beyond the string termination character. */
+				for (int i = 0; *ddd_pos != '\0' && i < 3; i++, ddd_pos++) *ddd_pos = '.';
+				*ddd_pos = '\0';
 				return ddd_w;
 			}
 		} else {
-			if (c == SCC_SETX) str++;
-			else if (c == SCC_SETXY) str += 2;
-			else if (c == SCC_TINYFONT) {
+			if (c == SCC_SETX) {
+				w = *str;
+				str++;
+			} else if (c == SCC_SETXY) {
+				w = *str;
+				str += 2;
+			} else if (c == SCC_TINYFONT) {
 				size = FS_SMALL;
 				ddd = GetCharacterWidth(size, '.') * 3;
 			} else if (c == SCC_BIGFONT) {

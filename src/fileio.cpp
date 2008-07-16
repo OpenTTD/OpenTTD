@@ -483,9 +483,10 @@ static bool TarListAddFile(const char *filename)
 	char empty[512];
 	memset(&empty[0], 0, sizeof(empty));
 
-	while (!feof(f)) {
-		fread(&th, 1, 512, f);
-		pos += 512;
+	for (;;) { // Note: feof() always returns 'false' after 'fseek()'. Cool, isn't it?
+		size_t num_bytes_read = fread(&th, 1, 512, f);
+		if (num_bytes_read != 512) break;
+		pos += num_bytes_read;
 
 		/* Check if we have the new tar-format (ustar) or the old one (a lot of zeros after 'link' field) */
 		if (strncmp(th.magic, "ustar", 5) != 0 && memcmp(&th.magic, &empty[0], 512 - offsetof(TarHeader, magic)) != 0) {

@@ -802,7 +802,7 @@ void ShipsYearlyLoop()
  * @param tile tile of depot where ship is built
  * @param flags type of operation
  * @param p1 ship type being built (engine)
- * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
+ * @param p2 unused
  */
 CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -820,7 +820,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileDepotType(tile, TRANSPORT_WATER)) return CMD_ERROR;
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
-	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_SHIP);
+	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
 	if (!Vehicle::AllocateList(NULL, 1) || unit_num > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);

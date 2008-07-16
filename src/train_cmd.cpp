@@ -697,8 +697,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
  * @param tile tile of the depot where rail-vehicle is built
  * @param flags type of operation
  * @param p1 engine type id
- * @param p2 bit 0 when set, the train will get number 0, otherwise it will get a free number
- *           bit 1 prevents any free cars from being added to the train
+ * @param p2 bit 1 prevents any free cars from being added to the train
  */
 CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -736,7 +735,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 		Vehicle *v = vl[0];
 
-		UnitID unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
+		UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -809,7 +808,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			TrainConsistChanged(v);
 			UpdateTrainGroupID(v);
 
-			if (!HasBit(p2, 1)) { // check if the cars should be added to the new vehicle
+			if (!HasBit(p2, 1) && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
 			}
 

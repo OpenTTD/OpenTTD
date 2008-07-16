@@ -271,7 +271,7 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  * @param tile tile of depot where aircraft is built
  * @param flags for command
  * @param p1 aircraft type being built (engine)
- * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
+ * @param p2 unused
  * return result of operation.  Could be cost, error
  */
 CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -296,7 +296,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
-	UnitID unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
+	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_AIRCRAFT);
 	if (unit_num > _patches.max_aircraft)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 

@@ -147,6 +147,8 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 			free(sprite.data);
 
+			sc->real_sprite = true;
+
 			return sc->ptr;
 		}
 		/* If the PNG couldn't be loaded, fall back to 8bpp grfs */

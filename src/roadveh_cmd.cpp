@@ -163,7 +163,7 @@ void RoadVehUpdateCache(Vehicle *v)
  * @param tile tile of depot where road vehicle is built
  * @param flags operation to perform
  * @param p1 bus/truck type being built (engine)
- * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
+ * @param p2 unused
  */
 CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -197,7 +197,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = vl[0];
 
 	/* find the first free roadveh id */
-	unit_num = HasBit(p2, 0) ? 0 : GetFreeUnitNumber(VEH_ROAD);
+	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_ROAD);
 	if (unit_num > _patches.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
