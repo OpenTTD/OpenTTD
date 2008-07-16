@@ -3098,6 +3098,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} måste
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} kräver OpenTTD version {STRING} eller bättre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laddar {STRING} som statisk NewGRF med {STRING} kan orsaka osynk.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan
@@ -3129,6 +3130,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Avskiljare:

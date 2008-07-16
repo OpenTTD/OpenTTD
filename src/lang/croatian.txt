@@ -1204,6 +1204,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Promijeni vrijednost postavke
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Neki ili svi od zadanih servisnih intervala ispod nisu kompatibilni s odabranim postavkama! Valjane vrijednosti su 5-90% ili 30-800 dana.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nije preporučivo)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Nije preporučivo)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučivo)
 STR_TEMPERATE_LANDSCAPE                                         :Blagi krajolik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Pod-arktički krajolik
 STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropski krajolik
@@ -1700,6 +1709,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Najprije moraš srušiti građevinu
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Grad)
 STR_2006_POPULATION                                             :{BLACK}Stanovništvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Preimenuj grad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nije moguće preimenovati grad...

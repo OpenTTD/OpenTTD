@@ -33,9 +33,9 @@ STR_0011_MAIL.z                                                 :пошту
 STR_0012_OIL                                                    :нафта
 STR_0012_OIL.r                                                  :нафти
 STR_0012_OIL.z                                                  :нафту
-STR_0013_LIVESTOCK                                              :тварини
-STR_0013_LIVESTOCK.r                                            :тварин
-STR_0013_LIVESTOCK.z                                            :тварин
+STR_0013_LIVESTOCK                                              :худоба
+STR_0013_LIVESTOCK.z                                            :худобу
+STR_0013_LIVESTOCK.r                                            :худоби
 STR_0014_GOODS                                                  :товари
 STR_0014_GOODS.r                                                :товарів
 STR_0014_GOODS.z                                                :товари
@@ -126,9 +126,9 @@ STR_0031_MAIL.z                                                 :пошту
 STR_0032_OIL                                                    :нафта
 STR_0032_OIL.r                                                  :нафти
 STR_0032_OIL.z                                                  :нафту
-STR_0033_LIVESTOCK                                              :тварини
-STR_0033_LIVESTOCK.r                                            :тварин
-STR_0033_LIVESTOCK.z                                            :тварин
+STR_0033_LIVESTOCK                                              :худоба
+STR_0033_LIVESTOCK.z                                            :худобу
+STR_0033_LIVESTOCK.r                                            :худоби
 STR_0034_GOODS                                                  :товари
 STR_0034_GOODS.r                                                :товарів
 STR_0034_GOODS.z                                                :товари
@@ -212,7 +212,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} пас�
 STR_QUANTITY_COAL                                               :{WEIGHT} вугілля
 STR_QUANTITY_MAIL                                               :{COMMA} сум{P ка ки ок} пошти
 STR_QUANTITY_OIL                                                :{VOLUME} нафти
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} гол{P ова ови ів} тварин{P и и ""}
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} кор{P ова ови ів}
 STR_QUANTITY_GOODS                                              :{COMMA} ящи{P к ки ків} товарів
 STR_QUANTITY_GRAIN                                              :{WEIGHT} зерна
 STR_QUANTITY_WOOD                                               :{WEIGHT} деревини
@@ -394,9 +394,9 @@ STR_012C_MESSAGE                                                :{WHITE}Пові
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Відміна
 STR_012F_OK                                                     :{BLACK}Так
-STR_0130_RENAME                                                 :{BLACK}Ім'я
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дуже багато імен
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Таке ім'я вже є
+STR_0130_RENAME                                                 :{BLACK}Назва
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дуже багато назв
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Така назва вже є
 
 STR_OSNAME_WINDOWS                                              :Windows
 STR_OSNAME_UNIX                                                 :Unix
@@ -491,7 +491,7 @@ STR_SORT_BY_PRODUCTION                                          :{BLACK}за п�
 STR_SORT_BY_TYPE                                                :{BLACK}за типом
 STR_SORT_BY_TRANSPORTED                                         :{BLACK}за перевезенням
 STR_SORT_BY_NAME                                                :{BLACK}за назвою
-STR_SORT_BY_DROPDOWN_NAME                                       :Назва
+STR_SORT_BY_DROPDOWN_NAME                                       :за назвою
 STR_SORT_BY_DATE                                                :{BLACK}за датою
 STR_SORT_BY_NUMBER                                              :за номером
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :за прибутком минулого року
@@ -500,18 +500,18 @@ STR_SORT_BY_AGE                                                 :за віком
 STR_SORT_BY_RELIABILITY                                         :за надійністю
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
-STR_SORT_BY_MODEL                                               :Модель
+STR_SORT_BY_MODEL                                               :за моделлю
 STR_SORT_BY_VALUE                                               :за ціною
-STR_SORT_BY_FACILITY                                            :Вид станцій
+STR_SORT_BY_FACILITY                                            :за типом станції
 STR_SORT_BY_WAITING                                             :за ціною вантажу
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
-STR_ENGINE_SORT_ENGINE_ID                                       :ID (класичне)
-STR_ENGINE_SORT_COST                                            :Ціна
-STR_ENGINE_SORT_POWER                                           :Потужність
-STR_ENGINE_SORT_INTRO_DATE                                      :Дата випуску
-STR_ENGINE_SORT_RUNNING_COST                                    :Вартість експлуатації
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Потужність/Вартість експлуатації
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Місткість
+STR_ENGINE_SORT_ENGINE_ID                                       :за ID (класичне)
+STR_ENGINE_SORT_COST                                            :за ціною
+STR_ENGINE_SORT_POWER                                           :за потужністю
+STR_ENGINE_SORT_INTRO_DATE                                      :за датою випуску
+STR_ENGINE_SORT_RUNNING_COST                                    :за вартістю експлуатації
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :за потужністю/вартістю експлуатації
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :за місткістю
 STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки що нічого перевозити
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Вибрати весь транспорт
 STR_SELECT_ALL_TYPES                                            :{BLACK}Вибрати всі типи вантажів
@@ -723,7 +723,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Заг�
 STR_MESSAGES_ALL                                                :{YELLOW}Відображати повідомлення: відкл. / коротко / повно
 STR_MESSAGE_SOUND                                               :{YELLOW}Звукове сповіщення для підсумкових новин
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...дуже далеко від попереднього пункту призначення
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії, що досягли {NUM}{}({STRING} рівень)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії, які досягли {NUM}{}({STRING} рівень)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Бізнесмен
@@ -763,7 +763,7 @@ STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...на�
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...невідповідне місце
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...забагато міст
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Не можна створити місто
-STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...На карті немає вільного місця
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...на карті немає вільного місця
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Збільшити розмір міста
 STR_023C_EXPAND                                                 :{BLACK}Розширити
 STR_023D_RANDOM_TOWN                                            :{BLACK}Випадкове місто
@@ -914,7 +914,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Про
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Інформація про ділянку
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Вкл/викл консоль
+STR_CONSOLE_SETTING                                             :Вкл./відкл. консоль
 STR_02D7_SCREENSHOT_CTRL_S                                      :Копія екрану (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Копія всієї карти (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Про гру 'OpenTTD'
@@ -966,7 +966,7 @@ STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Пока
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Показати налаштування складності
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову гру, використовуючи сценарій
 STR_0304_QUIT                                                   :{BLACK}Вихід
-STR_0305_QUIT_OPENTTD                                           :{BLACK}покинути 'OpenTTD'
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Вийти з OpenTTD
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна будувати лише у містах
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Вибрати 'помірний' клімат
@@ -1093,7 +1093,7 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}Без 
 
 STR_PASSENGERS                                                  :пасАжир
 STR_BAGS                                                        :мішків
-STR_TONS                                                        :тонИ
+STR_TONS                                                        :тони
 STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штук
 STR_CRATES                                                      :ЯщикИ
@@ -1212,7 +1212,7 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Покраще�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Обертання карти висот: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти годинникової
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :За годинниковою
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Рівень висоти для карт з плоским рельєфом: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Рівень висоти для карт з пласким рельєфом: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
@@ -1464,7 +1464,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Пере
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Виберіть вид вантажу для перевезення
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переобладнати поїзд для перевезення вибраного виду вантажу
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Неможливо переобладнати поїзд...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Тривалість обслуговування у відсотках: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Інтервал техогляду у відсотках: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Ласкаво просимо до тестування нового інтелекту. Якщо Ви помітили недолік, надішліть копію екрану у форум.
@@ -1703,8 +1703,8 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-ро�
 
 STR_PNGMAP_ERROR                                                :{WHITE}Неможливо завантажити ландшафт з PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...файл не знайдено
-STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо конвертувати. треба 8 чи 24-bit PNG формат.
-STR_PNGMAP_ERR_MISC                                             :{WHITE}...Помилка. (можливо зіпсований файл)
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо конвертувати. Треба 8 чи 24-bit PNG формат.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...помилка (можливо, зіпсований файл).
 
 STR_BMPMAP_ERROR                                                :{WHITE}Не можу завантажити ландшафт з BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...неможливо перетворити тип зображення
@@ -1786,7 +1786,7 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Доро
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Будівництво дороги
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Будівництво трамвайної колії
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Виберіть дорожній міст
-STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... односторонні дороги не можуть перетинатись
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...односторонні дороги не можуть перетинатись
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Неможливо тут побудувати дорогу ...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Тут не можна побудувати трамвайну колію...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Неможливо прибрати дорогу звідси...
@@ -2320,35 +2320,35 @@ STR_6815_DISASTERS                                              :{LTBLUE}Сти�
 STR_CITY_APPROVAL                                               :{LTBLUE}Відношення влади до перебудови території міста: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_NONE                                                        :Нема
+STR_NONE                                                        :нема
 STR_NUM_VERY_LOW                                                :дуже мало
-STR_6816_LOW                                                    :МалО
-STR_6817_NORMAL                                                 :Нормально
-STR_6818_HIGH                                                   :Багато
+STR_6816_LOW                                                    :мало
+STR_6817_NORMAL                                                 :нормально
+STR_6818_HIGH                                                   :багато
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Дуже повільно
 STR_681C_SLOW                                                   :Повільно
-STR_681D_MEDIUM                                                 :Середньо
-STR_681E_FAST                                                   :Швидко
-STR_681F_VERY_FAST                                              :Дуже швидко
-STR_VERY_LOW                                                    :Дуже мало
-STR_6820_LOW                                                    :МаЛо
-STR_6821_MEDIUM                                                 :Середньо
-STR_6822_HIGH                                                   :Багато
-STR_6823_NONE                                                   :Відкл.
-STR_6824_REDUCED                                                :Знижено
-STR_6825_NORMAL                                                 :Нормально
+STR_681D_MEDIUM                                                 :середньо
+STR_681E_FAST                                                   :швидко
+STR_681F_VERY_FAST                                              :дуже швидко
+STR_VERY_LOW                                                    :дуже мало
+STR_6820_LOW                                                    :мало
+STR_6821_MEDIUM                                                 :середньо
+STR_6822_HIGH                                                   :багато
+STR_6823_NONE                                                   :відкл.
+STR_6824_REDUCED                                                :знижено
+STR_6825_NORMAL                                                 :нормально
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Дуже рівний
-STR_682B_FLAT                                                   :Рівнинний
-STR_682C_HILLY                                                  :Горбкуватий
-STR_682D_MOUNTAINOUS                                            :Гористий
-STR_682E_STEADY                                                 :Стабільна
-STR_682F_FLUCTUATING                                            :Нестійка
+STR_682A_VERY_FLAT                                              :плаский
+STR_682B_FLAT                                                   :рівнинний
+STR_682C_HILLY                                                  :горбкуватий
+STR_682D_MOUNTAINOUS                                            :гористий
+STR_682E_STEADY                                                 :стабільна
+STR_682F_FLUCTUATING                                            :нестійка
 STR_6830_IMMEDIATE                                              :відразу
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 місяці після гравця
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 місяців після гравця
@@ -2358,9 +2358,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :лише в к�
 STR_6836_OFF                                                    :відкл.
 STR_6837_ON                                                     :вкл.
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Показати таблицю рекордів
-STR_PERMISSIVE                                                  :Допустиме
-STR_TOLERANT                                                    :Терпиме
-STR_HOSTILE                                                     :Вороже
+STR_PERMISSIVE                                                  :допустиме
+STR_TOLERANT                                                    :терпиме
+STR_HOSTILE                                                     :вороже
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2564,7 +2564,7 @@ STR_801B_PASSENGER_CAR                                          :Пасажир�
 STR_801C_MAIL_VAN                                               :Поштовий
 STR_801D_COAL_CAR                                               :Вугільний
 STR_801E_OIL_TANKER                                             :Нафтовий
-STR_801F_LIVESTOCK_VAN                                          :Вагон для тварин
+STR_801F_LIVESTOCK_VAN                                          :Вагон для худоби
 STR_8020_GOODS_VAN                                              :Товарний
 STR_8021_GRAIN_HOPPER                                           :Вагон для зерна
 STR_8022_WOOD_TRUCK                                             :Вагон для деревини
@@ -2594,7 +2594,7 @@ STR_8039_PASSENGER_CAR                                          :Пасажир�
 STR_803A_MAIL_VAN                                               :Вагон для пошти
 STR_803B_COAL_CAR                                               :Вагон для вугілля
 STR_803C_OIL_TANKER                                             :Цистерна для нафти
-STR_803D_LIVESTOCK_VAN                                          :вантажівка для тварин
+STR_803D_LIVESTOCK_VAN                                          :вантажівка для худоби
 STR_803E_GOODS_VAN                                              :вантажівка для товарів
 STR_803F_GRAIN_HOPPER                                           :вагон для зерна
 STR_8040_WOOD_TRUCK                                             :лісовоз
@@ -3260,6 +3260,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} має
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} потребує версію OpenTTD не нижче {STRING}.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, для якого це призначалось перекласти
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Завантажено забагато NewGRF-файлів.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Завантаження {STRING} як статичного NewGRF з {STRING} може викликати десинхронізацію.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Додати файли NewGRF до списку
@@ -3291,6 +3292,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Відс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Відсутній GRF файл(и)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зняття з паузи може привести до аварійної відмови OpenTTD. Не рапортуйте про наступні відмови.{}Ви дійсно хочете зняти з паузи?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник:
@@ -3489,7 +3491,7 @@ STR_HELISTATION                                                 :{BLACK}Гелі
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Малі аеропорти
 STR_LARGE_AIRPORTS                                              :{BLACK}Великі аеропорти
-STR_HUB_AIRPORTS                                                :{BLACK}Мега-аеропорти
+STR_HUB_AIRPORTS                                                :{BLACK}Вузлові аеропорти
 STR_HELIPORTS                                                   :{BLACK}Геліко-аеропорт
 
 ############ Tooltip measurment

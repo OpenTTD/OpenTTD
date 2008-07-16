@@ -1077,7 +1077,7 @@ STR_CONFIG_PATCHES_OFF                                          :vypnuto
 STR_CONFIG_PATCHES_ON                                           :zapnuto
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Ukazovat rychlost vozidla ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Povolit výstavbu na svazích kopců a na pobřežích: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Úpravy terénu pod budovami, kolejemi atd. (tzv. autoslope): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Srovnání terénu pod budovami, kolejemi atd. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
@@ -1088,7 +1088,7 @@ STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Odjet, 
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Použij vylepšený algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Nakládat vozidla postupně: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflace: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vozit zboží do stanice jen když je poptávka: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dodávat zboží do stanice jen když je poptávka: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Povolit stavbu velmi dlouhých mostů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Povolit příkaz 'jeď do depa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Způsob manuálního budování primárního průmyslu: {ORANGE}{STRING}
@@ -1109,7 +1109,7 @@ STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Umožni
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nejednolité stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Pro simulaci těžkých vlaků vynásobit hmotnost nákladu: {ORANGE}{STRING}x
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Činitel rychlosti letadel: {ORANGE}1/{STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit průjezdné zastávky na silnicích vlastněných obcemi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Stavba průjezdných zastávek na obecních silnicích: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavění přilehlých stanic: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Malá letiště se budou moci stále stavět: {ORANGE}{STRING}
@@ -1121,7 +1121,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, kromě zas
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u všech vozidel
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vlak prodělává: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky obnovit dopravní prostředek, když je starý
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před / po dosažení maximálního stáří
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimální částka pro automatické obnovení: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
@@ -1215,7 +1215,7 @@ STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnout
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonů: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Vypnout elektrickou železnici: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barevné noviny se objeví v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Počáteční datum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Ukončit hru v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé změny ekonomiky (více menších změn)
@@ -1225,7 +1225,7 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafor
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu signálů: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vyber vzor městských silnic: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vzor městských silnic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žádné silnice
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :původní
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
@@ -1244,9 +1244,9 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :pomalá
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :normální
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :rychlá
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Podíl měst, které budou růst dvakrát tak rychle: {ORANGE}1 z {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl měst, které budou růst dvakrát tak rychle: {ORANGE}žádné
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Násobitel původní velikosti města: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Podíl měst, ze kterých se stanou velkoměsta: {ORANGE}1 z {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl měst, ze kterých se stanou velkoměsta: {ORANGE}žádné
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Činitel základní velikosti města: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Odstraňovat nesmyslné prvky vozovky při výstavbě silnic
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Ovládaní
@@ -3193,6 +3193,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro nač
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddělovač:

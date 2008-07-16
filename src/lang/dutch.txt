@@ -3098,6 +3098,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} moet g
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} heeft OpenTTD versie {STRING} of beter nodig.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF bestand is bedoelt voor het vertalen van
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn teveel NewGRFs geladen.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} als statisch NewGRF met {STRING} kan desyncs veroorzaken.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst
@@ -3129,6 +3130,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Er zijn 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF bestand(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken:

@@ -3130,6 +3130,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Vantar G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Vantar GRF skrá(r)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD getur hrunið ef leikur er settur af stað. Ekki skrá villufærslur fyrir eftirfarandi hrun.{}Ertu viss um að þú viljir setja leikinn af stað?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Leikurinn var vistaður í útgáfu án sporvagna. Allir sporvagnar hafa verið fjarlægðir.
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Aðskilnaðarmerki:

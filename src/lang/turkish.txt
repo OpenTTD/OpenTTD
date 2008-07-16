@@ -1381,7 +1381,7 @@ STR_NETWORK_SERVER_VERSION                                      :{SILVER}Sunucu 
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Sunucu adresi:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Başlama tarihi:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Şimdiki tarih:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}Şifre korumalı!
+STR_NETWORK_PASSWORD                                            :{SILVER}Parola korumalı!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SUNUCU KAPALI
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SUNUCU DOLU
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}SÜRÜM UYUŞMAZLIĞI
@@ -3413,6 +3413,7 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Önceki 
 ########
 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Parayla Yap
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Tetkik arama
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}İnşa et
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Bu listeden uygun fabrikayı seçin
 

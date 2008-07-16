@@ -3178,6 +3178,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} je pot
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteko na seznam
@@ -3209,6 +3210,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manjkajo
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manjkajoče GRF datoteke
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Izklop pavze lahko sesuje OpenTTD. Ne poročaj o napaki zaradi takih problemov.{}Zagotovo želiš izklopiti pavzo?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjalni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ločitev:

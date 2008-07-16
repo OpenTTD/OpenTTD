@@ -3099,6 +3099,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} debe s
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requiere OpenTTD versión {STRING} o superior.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {STRING} como NewGRF estático con {STRING} puede causar desincronizaciones.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Añadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista
@@ -3130,6 +3131,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:

@@ -852,6 +852,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Rakenna uutta t
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rakenna uutta teollisuutta
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...voidaan rakentaa vain sademetsäalueisiin.
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...voidaan rakentaa vain aavikkoalueisiin.
@@ -1111,7 +1112,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Oma yhtiö
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aikataulut ajoneuvoille: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Raidetyyppi oletuksena: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Oletusraidetyyppi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköraide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Yksiraiteinen
@@ -1682,8 +1683,10 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Rakennus täytyy purkaa ensin.
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (City)
 STR_2006_POPULATION                                             :{BLACK}Asukasluku: {ORANGE}{COMMA}{BLACK}  Taloja: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Nimeä kaupunki
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kaupungin nimeä ei voi vaihtaa.

@@ -389,7 +389,7 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potència/Cost 
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de càrrega
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha càrrega d'aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
-STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
+STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (incloent carga sense espera)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Trens Disponibles
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehicles Disponibles
 STR_AVAILABLE_SHIPS                                             :{BLACK}Vaixells Disponibles
@@ -2758,7 +2758,7 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Disminue
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Mostra els detalls de càrrega transportada
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Mostra els detalls d'elements del tren
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Mostra les capacitats de cada element
-STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra la capacitat total del tren, separat per tipus de càrrega
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Mostra la capacitat total del tren, separada per tipus de càrrega
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Llista d'ordres - clica en una per seleccionar-la
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Salta l'ordre actual, i comença la següent. CTRL + clic salta l'ordre seleccionada
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborra l'ordre seleccionada
@@ -3068,7 +3068,7 @@ STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Quantita
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}El benefici del vehicle amb els menors ingressos (de tots els vehicles més antics de 2 anys)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Quantitat de diners fets durant el mes amb el mínim benefici dels darrers 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Quantitat de diners fets durant el mes amb el màxim benefici dels darrers 12 trimestres
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unitats de càrrega entregada en els darrers quatre trimestres.
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unitats de càrrega entregades en els darrers quatre trimestres.
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Tipus de càrrega entregada durant el darrer trimestre.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Quantitats de diners en efectiu
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tens un prèstec elevat?
@@ -3098,6 +3098,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ha de 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necessita OpenTTD versió {STRING} o més modern.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {STRING} com a NewGRF estàtic amb {STRING} podria causar desincronitzacions.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista
@@ -3129,6 +3130,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:

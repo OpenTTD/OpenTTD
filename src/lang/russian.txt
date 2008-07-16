@@ -3111,6 +3111,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} дол
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} требует OpenTTD версии {STRING} или выше.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Слишком много загружено новой графики
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {STRING} в качестве статического NewGRF с {STRING} Может вызвать ошибку синхронизации.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список
@@ -3142,6 +3143,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не н�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Пропущенные GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделитель:
