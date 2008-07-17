@@ -35,7 +35,7 @@ enum {
 };
 
 struct NetworkPlayerInfo {
-	char company_name[NETWORK_NAME_LENGTH];         ///< Company name
+	char company_name[NETWORK_COMPANY_NAME_LENGTH]; ///< Company name
 	char password[NETWORK_PASSWORD_LENGTH];         ///< The password for the player
 	Year inaugurated_year;                          ///< What year the company started in
 	Money company_value;                            ///< The company value
