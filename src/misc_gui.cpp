@@ -96,7 +96,10 @@ public:
 
 		y += 6;
 
-		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) DrawStringMultiCenter(140, y, BindCString(this->landinfo_data[LAND_INFO_MULTICENTER_LINE]), this->width - 4);
+		if (!StrEmpty(this->landinfo_data[LAND_INFO_MULTICENTER_LINE])) {
+			SetDParamStr(0, this->landinfo_data[LAND_INFO_MULTICENTER_LINE]);
+			DrawStringMultiCenter(140, y, STR_JUST_RAW_STRING, this->width - 4);
+		}
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
@@ -157,11 +160,12 @@ public:
 		line_nr++;
 
 		/* Location */
-		snprintf(_userstring, lengthof(_userstring), "0x%.4X", tile);
+		char tmp[16];
+		snprintf(tmp, lengthof(tmp), "0x%.4X", tile);
 		SetDParam(0, TileX(tile));
 		SetDParam(1, TileY(tile));
 		SetDParam(2, TileHeight(tile));
-		SetDParam(3, STR_SPEC_USERSTRING);
+		SetDParamStr(3, tmp);
 		GetString(this->landinfo_data[line_nr], STR_LANDINFO_COORDS, lastof(this->landinfo_data[line_nr]));
 		line_nr++;
 
@@ -652,10 +656,11 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 {
 	bool first = true;
 
-	char *b = InlineString(_userstring, supplies ? STR_SUPPLIES : STR_000D_ACCEPTS);
+	char string[512];
+	char *b = InlineString(string, supplies ? STR_SUPPLIES : STR_000D_ACCEPTS);
 
 	for (CargoID i = 0; i < NUM_CARGO; i++) {
-		if (b >= lastof(_userstring) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
+		if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
 		switch (sct) {
 			case SCT_PASSENGERS_ONLY: if (!IsCargoInClass(i, CC_PASSENGERS)) continue; break;
 			case SCT_NON_PASSENGERS_ONLY: if (IsCargoInClass(i, CC_PASSENGERS)) continue; break;
@@ -680,9 +685,10 @@ static int DrawStationCoverageText(const AcceptedCargo cargo,
 	*b = '\0';
 
 	/* Make sure we detect any buffer overflow */
-	assert(b < endof(_userstring));
+	assert(b < endof(string));
 
-	return DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
+	SetDParamStr(0, string);
+	return DrawStringMultiLine(str_x, str_y, STR_JUST_RAW_STRING, 144);
 }
 
 /**

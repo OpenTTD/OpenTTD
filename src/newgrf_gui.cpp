@@ -50,19 +50,24 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 	char buff[256];
 
 	if (c->error != NULL) {
-		SetDParamStr(0, c->filename);
-		SetDParamStr(1, c->error->data);
-		for (uint i = 0; i < c->error->num_params; i++) {
-			uint32 param = 0;
-			byte param_number = c->error->param_number[i];
-
-			if (param_number < c->num_params) param = c->param[param_number];
-
-			SetDParam(2 + i, param);
-		}
-
 		char message[512];
-		GetString(message, c->error->custom_message != NULL ? BindCString(c->error->custom_message) : c->error->message, lastof(message));
+		if (c->error->custom_message == NULL) {
+			SetDParamStr(0, c->filename);
+			SetDParamStr(1, c->error->data);
+			for (uint i = 0; i < c->error->num_params; i++) {
+				uint32 param = 0;
+				byte param_number = c->error->param_number[i];
+
+				if (param_number < c->num_params) param = c->param[param_number];
+
+				SetDParam(2 + i, param);
+			}
+
+			GetString(message, c->error->message, lastof(message));
+		} else {
+			SetDParamStr(0, c->error->custom_message);
+			GetString(message, STR_JUST_RAW_STRING, lastof(message));
+		}
 
 		SetDParamStr(0, message);
 		y += DrawStringMultiLine(x, y, c->error->severity, w, bottom - y);
@@ -88,7 +93,8 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 	if (show_params) {
 		if (c->num_params > 0) {
 			GRFBuildParamList(buff, c, lastof(buff));
-			SetDParamStr(0, buff);
+			SetDParam(0, STR_JUST_RAW_STRING);
+			SetDParamStr(1, buff);
 		} else {
 			SetDParam(0, STR_01A9_NONE);
 		}
@@ -102,7 +108,8 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 
 	/* Draw GRF info if it exists */
 	if (c->info != NULL && !StrEmpty(c->info)) {
-		SetDParamStr(0, c->info);
+		SetDParam(0, STR_JUST_RAW_STRING);
+		SetDParamStr(1, c->info);
 		y += DrawStringMultiLine(x, y, STR_02BD, w, bottom - y);
 	} else {
 		y += DrawStringMultiLine(x, y, STR_NEWGRF_NO_INFO, w, bottom - y);
@@ -487,9 +494,10 @@ struct NewGRFWindow : public Window {
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
 				if (this->sel == NULL) break;
 
-				char buff[512];
+				static char buff[512];
 				GRFBuildParamList(buff, this->sel, lastof(buff));
-				ShowQueryString(BindCString(buff), STR_NEWGRF_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL);
+				SetDParamStr(0, buff);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL);
 				break;
 			}
 		}

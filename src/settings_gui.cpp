@@ -1115,7 +1115,8 @@ struct CustomCurrencyWindow : Window {
 				if (IsInsideMM(x, 10, 30)) { // clicked button
 					this->click = 1 << (line * 2 + 1);
 				}
-				str = BindCString(this->separator);
+				SetDParamStr(0, this->separator);
+				str = STR_JUST_RAW_STRING;
 				len = 1;
 				break;
 
@@ -1123,7 +1124,8 @@ struct CustomCurrencyWindow : Window {
 				if (IsInsideMM(x, 10, 30)) { // clicked button
 					this->click = 1 << (line * 2 + 1);
 				}
-				str = BindCString(_custom_currency.prefix);
+				SetDParamStr(0, _custom_currency.prefix);
+				str = STR_JUST_RAW_STRING;
 				len = 12;
 				break;
 
@@ -1131,7 +1133,8 @@ struct CustomCurrencyWindow : Window {
 				if (IsInsideMM(x, 10, 30)) { // clicked button
 					this->click = 1 << (line * 2 + 1);
 				}
-				str = BindCString(_custom_currency.suffix);
+				SetDParamStr(0, _custom_currency.suffix);
+				str = STR_JUST_RAW_STRING;
 				len = 12;
 				break;
 

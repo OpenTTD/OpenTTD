@@ -1442,7 +1442,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Hráčů
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hráčů online / maximálně
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HŘE
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientů:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Prostředí:  {WHITE}{STRING}

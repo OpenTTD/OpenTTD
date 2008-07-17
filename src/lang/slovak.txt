@@ -1438,7 +1438,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienti online / klienti max
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HRE
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Prostredie:  {WHITE}{STRING}

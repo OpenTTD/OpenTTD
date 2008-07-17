@@ -332,7 +332,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			DrawString( 12,  91, STR_HEIGHTMAP_NAME, TC_BLACK);
 			SetDParamStr(0, this->name);
-			DrawStringTruncated(114,  91, STR_ORANGE, TC_BLACK, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
+			DrawStringTruncated(114,  91, STR_JUST_RAW_STRING, TC_ORANGE, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
 		}
 	}
 

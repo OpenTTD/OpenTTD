@@ -1349,7 +1349,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Pelaajia
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Pelaajia pelissä/enintään.
 STR_NETWORK_GAME_INFO                                           :{SILVER}PELITIEDOT
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Pelaajat:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Kieli:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Ruudusto:  {WHITE}{STRING}

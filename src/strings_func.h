@@ -11,8 +11,6 @@ char *InlineString(char *buf, StringID string);
 char *GetString(char *buffr, StringID string, const char *last);
 const char *GetStringPtr(StringID string);
 
-extern char _userstring[128];
-
 void InjectDParam(int amount);
 
 static inline void SetDParamX(uint64 *s, uint n, uint64 v)
@@ -28,15 +26,7 @@ static inline void SetDParam(uint n, uint64 v)
 	_decode_parameters[n] = v;
 }
 
-/* Used to bind a C string name to a dparam number.
- * NOTE: This has a short lifetime. You can't
- *       use this string much later or it will be gone. */
 void SetDParamStr(uint n, const char *str);
-
-/** This function takes a C-string and allocates a temporary string ID.
- * The duration of the bound string is valid only until the next call to GetString,
- * so be careful. */
-StringID BindCString(const char *str);
 
 static inline uint64 GetDParamX(const uint64 *s, uint n)
 {

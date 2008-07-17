@@ -758,7 +758,8 @@ static void StartScenario()
 	/* invalid type */
 	if (_file_to_saveload.mode == SL_INVALID) {
 		DEBUG(sl, 0, "Savegame is obsolete or invalid format: '%s'", _file_to_saveload.name);
-		SetDParamStr(0, GetSaveLoadErrorString());
+		SetDParam(0, STR_JUST_RAW_STRING);
+		SetDParamStr(1, GetSaveLoadErrorString());
 		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 		_game_mode = GM_MENU;
 		return;
@@ -774,7 +775,8 @@ static void StartScenario()
 	/* Load game */
 	if (SaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, SCENARIO_DIR) != SL_OK) {
 		LoadIntroGame();
-		SetDParamStr(0, GetSaveLoadErrorString());
+		SetDParam(0, STR_JUST_RAW_STRING);
+		SetDParamStr(1, GetSaveLoadErrorString());
 		ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 	}
 
@@ -886,7 +888,8 @@ void SwitchMode(int new_mode)
 
 			if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL, NO_DIRECTORY)) {
 				LoadIntroGame();
-				SetDParamStr(0, GetSaveLoadErrorString());
+				SetDParam(0, STR_JUST_RAW_STRING);
+				SetDParamStr(1, GetSaveLoadErrorString());
 				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 			} else {
 				if (_saveload_mode == SLD_LOAD_SCENARIO) {
@@ -927,7 +930,8 @@ void SwitchMode(int new_mode)
 				SetLocalPlayer(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
 			} else {
-				SetDParamStr(0, GetSaveLoadErrorString());
+				SetDParam(0, STR_JUST_RAW_STRING);
+				SetDParamStr(1, GetSaveLoadErrorString());
 				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 			}
 			break;
@@ -941,7 +945,8 @@ void SwitchMode(int new_mode)
 			/* Make network saved games on pause compatible to singleplayer */
 			if (_networking && _pause_game == 1) _pause_game = 2;
 			if (SaveOrLoad(_file_to_saveload.name, SL_SAVE, NO_DIRECTORY) != SL_OK) {
-				SetDParamStr(0, GetSaveLoadErrorString());
+				SetDParam(0, STR_JUST_RAW_STRING);
+				SetDParamStr(1, GetSaveLoadErrorString());
 				ShowErrorMessage(INVALID_STRING_ID, STR_012D, 0, 0);
 			} else {
 				DeleteWindowById(WC_SAVELOAD, 0);

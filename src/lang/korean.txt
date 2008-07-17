@@ -1384,7 +1384,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}클라이언트
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}클라이언트 온라인 / 최대 접속자수{}회사 온라인 / 최대 회사수
 STR_NETWORK_GAME_INFO                                           :{SILVER}게임 정보
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}클라이언트:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}언어:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}기후:  {WHITE}{STRING}

@@ -1345,7 +1345,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Ientsclay
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Ientsclay onlineway / ientsclay axmay{}Ompaniescay onlineway / ompaniescay axmay
 STR_NETWORK_GAME_INFO                                           :{SILVER}EGAMay INFOWAY
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Ientsclay:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Anguagelay:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Ilesettay:  {WHITE}{STRING}

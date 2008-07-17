@@ -1509,7 +1509,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Клієнти
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Клієнти в мережі/макс.клієнтів{}Компанії в мережі/макс.компаній
 STR_NETWORK_GAME_INFO                                           :{SILVER}Інформація про гру
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Шаблон:  {WHITE}{STRING}

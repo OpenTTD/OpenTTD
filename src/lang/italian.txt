@@ -1386,7 +1386,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Client
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Client online / client max{}Compagnie online / compagnie max
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAZIONI PARTITA
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Client:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Lingua:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Paesaggio:  {WHITE}{STRING}

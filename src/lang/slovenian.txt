@@ -1426,7 +1426,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Gosti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Gosti na zvezi / največ gostov{}Podjetja na zvezi / največ podjetij
 STR_NETWORK_GAME_INFO                                           :{SILVER}IGRA - INFO
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Gosti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Nabor ploščic:  {WHITE}{STRING}

@@ -1315,7 +1315,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientoj
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientoj surrete / maksimume{}Kompanioj surrete / maksimume
 STR_NETWORK_GAME_INFO                                           :{SILVER}LUDINFORMOJ
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientoj:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Lingvo:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tegolaro:  {WHITE}{STRING}

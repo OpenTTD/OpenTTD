@@ -1465,7 +1465,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliendid
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliente sees / enim kliente{}Ettevõtteid sees / enim ettevõtteid
 STR_NETWORK_GAME_INFO                                           :{SILVER}MÄNGU ANDMED
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Kliendid:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Keel:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Ruudustik:  {WHITE}{STRING}

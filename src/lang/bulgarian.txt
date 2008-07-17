@@ -1410,7 +1410,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Играчи
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Онлайн играчи / макс. брой играчи{}Онлайн компании / макс. компании
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФО ЗА ИГРАТА
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Играчи:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Език:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Терен:  {WHITE}{STRING}

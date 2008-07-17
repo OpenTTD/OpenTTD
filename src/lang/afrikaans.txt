@@ -1350,7 +1350,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliente
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliente oplyn / Kliente maks{}Maatskappye oplyn / Maatskappye maks
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMASIE
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Kliente:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Blokkiestel:  {WHITE}{STRING}

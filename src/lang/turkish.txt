@@ -1371,7 +1371,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Oyuncular
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Bağlı oyuncular / en fazla oyuncu
 STR_NETWORK_GAME_INFO                                           :{SILVER}OYUN BİLGİSİ
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}İstemciler:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Dil:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Set:  {WHITE}{STRING}

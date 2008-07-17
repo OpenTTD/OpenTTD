@@ -1441,7 +1441,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientów
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientów podłączonych / maks.{}Firm podłączonych / maks.
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O GRZE
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienci:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Język:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Krajobraz:  {WHITE}{STRING}

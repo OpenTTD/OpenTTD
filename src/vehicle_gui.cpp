@@ -453,7 +453,8 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	uint32 cmask = EngInfo(engine)->refit_mask;
 	/* List of cargo types available in this climate */
 	uint32 lmask = _cargo_mask;
-	char *b = _userstring;
+	char string[512];
+	char *b = string;
 
 	/* Draw nothing if the engine is not refittable */
 	if (CountBits(cmask) <= 1) return 0;
@@ -477,9 +478,9 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 		for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
 			if (!HasBit(cmask, cid)) continue;
 
-			if (b >= lastof(_userstring) - (2 + 2 * 4)) break; // ", " and two calls to Utf8Encode()
+			if (b >= lastof(string) - (2 + 2 * 4)) break; // ", " and two calls to Utf8Encode()
 
-			if (!first) b = strecpy(b, ", ", lastof(_userstring));
+			if (!first) b = strecpy(b, ", ", lastof(string));
 			first = false;
 
 			b = InlineString(b, GetCargo(cid)->name);
@@ -490,9 +491,9 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	*b = '\0';
 
 	/* Make sure we detect any buffer overflow */
-	assert(b < endof(_userstring));
+	assert(b < endof(string));
 
-	return DrawStringMultiLine(x, y, STR_SPEC_USERSTRING, w);
+	return DrawStringMultiLine(x, y, STR_JUST_RAW_STRING, w);
 }
 
 

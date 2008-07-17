@@ -1377,7 +1377,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / maks. klienter{}Selskaber online / maks. selskaber
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIL INFO
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Sprog:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Klima:  {WHITE}{STRING}

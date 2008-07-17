@@ -1438,7 +1438,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Játékos:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tájtípus:  {WHITE}{STRING}

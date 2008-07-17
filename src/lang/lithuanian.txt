@@ -1324,7 +1324,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Zaidejai
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Zaidzia / maksimaliai zaideju
 STR_NETWORK_GAME_INFO                                           :{SILVER}Zaidimo informacija
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Zaidejai:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Kalba:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Pavadinimas:  {WHITE}{STRING}

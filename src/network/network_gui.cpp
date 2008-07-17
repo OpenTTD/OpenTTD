@@ -216,7 +216,7 @@ protected:
 		if (highlight) GfxFillRect(this->widget[NGWW_NAME].left + 1, y - 2, this->widget[NGWW_INFO].right - 1, y + 9, 10);
 
 		SetDParamStr(0, cur_item->info.server_name);
-		DrawStringTruncated(this->widget[NGWW_NAME].left + 5, y, STR_02BD, TC_BLACK, this->widget[NGWW_NAME].right - this->widget[NGWW_NAME].left - 5);
+		DrawStringTruncated(this->widget[NGWW_NAME].left + 5, y, STR_JUST_RAW_STRING, TC_BLACK, this->widget[NGWW_NAME].right - this->widget[NGWW_NAME].left - 5);
 
 		SetDParam(0, cur_item->info.clients_on);
 		SetDParam(1, cur_item->info.clients_max);
@@ -325,7 +325,7 @@ public:
 			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 58, STR_NETWORK_GAME_INFO, TC_FROMSTRING);
 		} else if (!sel->online) {
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 68, STR_ORANGE, TC_FROMSTRING); // game name
+			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 68, STR_JUST_RAW_STRING, TC_ORANGE); // game name
 
 			DrawStringCentered(this->widget[NGWW_DETAILS].left + 115, 132, STR_NETWORK_SERVER_OFFLINE, TC_FROMSTRING); // server offline
 		} else { // show game info
@@ -336,10 +336,10 @@ public:
 
 
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringCenteredTruncated(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, STR_ORANGE, TC_BLACK); // game name
+			DrawStringCenteredTruncated(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 62, STR_JUST_RAW_STRING, TC_ORANGE); // game name
 
 			SetDParamStr(0, sel->info.map_name);
-			DrawStringCenteredTruncated(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, STR_02BD, TC_BLACK); // map name
+			DrawStringCenteredTruncated(this->widget[NGWW_DETAILS].left, this->widget[NGWW_DETAILS].right, 74, STR_JUST_RAW_STRING, TC_BLACK); // map name
 
 			SetDParam(0, sel->info.clients_on);
 			SetDParam(1, sel->info.clients_max);
@@ -447,8 +447,9 @@ public:
 				break;
 
 			case NGWW_ADD: // Add a server
+				SetDParamStr(0, _settings_client.network.connect_to_ip);
 				ShowQueryString(
-					BindCString(_settings_client.network.connect_to_ip),
+					STR_JUST_RAW_STRING,
 					STR_NETWORK_ENTER_IP,
 					31 | 0x1000,  // maximum number of characters OR
 					250, // characters up to this width pixels, whichever is satisfied first
@@ -734,7 +735,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 			case NSSW_SETPWD: // Set password button
 				this->widget_id = NSSW_SETPWD;
-				ShowQueryString(BindCString(_settings_client.network.server_password), STR_NETWORK_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL);
+				SetDParamStr(0, _settings_client.network.server_password);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NETWORK_SET_PASSWORD, 20, 250, this, CS_ALPHANUMERAL);
 				break;
 
 			case NSSW_SELMAP: { // Select map

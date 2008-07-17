@@ -1380,7 +1380,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clienţi
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clienţi online / Nr. max. clienţi{}Companii online / Nr. max. companii
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JOC
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clienţi:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Limba:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}

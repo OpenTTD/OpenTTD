@@ -45,7 +45,6 @@
 #include "table/control_codes.h"
 
 DynamicLanguages _dynlang;
-char _userstring[128];
 uint64 _decode_parameters[20];
 
 static char *StationGetSpecialString(char *buff, int x, const char* last);
@@ -95,17 +94,6 @@ static inline const int64 *GetArgvPtr(const int64 **argv, int n)
 	return result;
 }
 
-
-#define NUM_BOUND_STRINGS 8
-
-/* Array to hold the bound strings. */
-static const char *_bound_strings[NUM_BOUND_STRINGS];
-
-/* This index is used to implement a "round-robin" allocating of
- * slots for BindCString. NUM_BOUND_STRINGS slots are reserved.
- * Which means that after NUM_BOUND_STRINGS calls to BindCString,
- * the indices will be reused. */
-static int _bind_index;
 
 const char *GetStringPtr(StringID string)
 {
@@ -167,13 +155,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 			return FormatString(buffr, GetGRFStringPtr(index + 0x1000), argv, 0, last);
 
 		case 31:
-			/* dynamic strings. These are NOT to be passed through the formatter,
-			 * but passed through verbatim. */
-			if (index < (STR_SPEC_USERSTRING & 0x7FF)) {
-				return strecpy(buffr, _bound_strings[index], last);
-			}
-
-			return FormatString(buffr, _userstring, NULL, 0, last);
+			NOT_REACHED();
 	}
 
 	if (index >= _langtab_num[tab]) {
@@ -200,32 +182,13 @@ char *InlineString(char *buf, StringID string)
 }
 
 
-/**
- * This function takes a C-string and allocates a temporary string ID.
- * The StringID of the bound string is valid until BindCString is called
- * another NUM_BOUND_STRINGS times. So be careful when using it.
- * @param str temp string to add
- * @return the id of that temp string
- * @note formatting a DATE_TINY calls BindCString twice, thus reduces the
- *       amount of 'user' bound strings by 2.
- * @todo rewrite the BindCString system to make the limit flexible and
- *       non-round-robin. For example by using smart pointers that free
- *       the allocated StringID when they go out-of-scope/are freed.
- */
-StringID BindCString(const char *str)
-{
-	int idx = (++_bind_index) & (NUM_BOUND_STRINGS - 1);
-	_bound_strings[idx] = str;
-	return idx + STR_SPEC_DYNSTRING;
-}
-
 /** This function is used to "bind" a C string to a OpenTTD dparam slot.
  * @param n slot of the string
  * @param str string to bind
  */
 void SetDParamStr(uint n, const char *str)
 {
-	SetDParam(n, BindCString(str));
+	SetDParam(n, (uint64)str);
 }
 
 void InjectDParam(int amount)
@@ -334,7 +297,7 @@ static char *FormatTinyDate(char *buff, Date date, const char* last)
 	snprintf(day,   lengthof(day),   "%02i", ymd.day);
 	snprintf(month, lengthof(month), "%02i", ymd.month + 1);
 
-	int64 args[3] = { BindCString(day), BindCString(month), ymd.year };
+	int64 args[3] = { (int64)day, (int64)month, ymd.year };
 	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
 }
 
@@ -591,6 +554,12 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			case SCC_STRING_ID: // {STRINL}
 				buff = GetStringWithArgs(buff, Utf8Consume(&str), argv, last);
 				break;
+
+			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
+				const char *str = (const char*)GetInt64(&argv);
+				buff = FormatString(buff, str, argv, casei, last);
+				break;
+			}
 
 			case SCC_DATE_LONG: // {DATE_LONG}
 				buff = FormatYmdString(buff, GetInt32(&argv), last);
@@ -1519,8 +1488,8 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 					 */
 					static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
 					Utf8Encode(err_str, SCC_YELLOW);
-					StringID err_msg = BindCString(err_str);
-					ShowErrorMessage(INVALID_STRING_ID, err_msg, 0, 0);
+					SetDParamStr(0, err_str);
+					ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
 					return;
 				}
 			}

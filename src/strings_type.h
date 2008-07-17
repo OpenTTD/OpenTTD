@@ -79,10 +79,6 @@ enum SpecialStrings {
 	// reserve 32 strings for screenshot formats
 	SPECSTR_SCREENSHOT_START   = SPECSTR_RESOLUTION_END + 1,
 	SPECSTR_SCREENSHOT_END     = SPECSTR_SCREENSHOT_START + 0x1F,
-
-	// Used to implement SetDParamStr
-	STR_SPEC_DYNSTRING         = 0xF800,
-	STR_SPEC_USERSTRING        = 0xF808,
 };
 
 #endif /* STRINGS_TYPE_H */

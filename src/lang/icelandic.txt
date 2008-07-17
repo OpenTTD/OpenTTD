@@ -1382,7 +1382,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Notendur
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Tengdir notendur / hámarksfjöldi notenda
 STR_NETWORK_GAME_INFO                                           :{SILVER}UPPLÝSINGAR UM LEIK
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Notendur:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Tungumál:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Landslag:  {WHITE}{STRING}

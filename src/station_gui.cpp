@@ -810,13 +810,14 @@ struct StationViewWindow : public Window {
 		}
 
 		if (this->widget[SVW_ACCEPTS].data == STR_3032_RATINGS) { // small window with list of accepted cargo
-			char *b = _userstring;
+			char string[512];
+			char *b = string;
 			bool first = true;
 
 			b = InlineString(b, STR_000C_ACCEPTS);
 
 			for (CargoID i = 0; i < NUM_CARGO; i++) {
-				if (b >= lastof(_userstring) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
+				if (b >= lastof(string) - (1 + 2 * 4)) break; // ',' or ' ' and two calls to Utf8Encode()
 				if (HasBit(st->goods[i].acceptance_pickup, GoodsEntry::ACCEPTANCE)) {
 					if (first) {
 						first = false;
@@ -835,9 +836,10 @@ struct StationViewWindow : public Window {
 			*b = '\0';
 
 			/* Make sure we detect any buffer overflow */
-			assert(b < endof(_userstring));
+			assert(b < endof(string));
 
-			DrawStringMultiLine(2, this->widget[SVW_ACCEPTLIST].top + 1, STR_SPEC_USERSTRING, this->widget[SVW_ACCEPTLIST].right - this->widget[SVW_ACCEPTLIST].left);
+			SetDParamStr(0, string);
+			DrawStringMultiLine(2, this->widget[SVW_ACCEPTLIST].top + 1, STR_JUST_RAW_STRING, this->widget[SVW_ACCEPTLIST].right - this->widget[SVW_ACCEPTLIST].left);
 		} else { // extended window with list of cargo ratings
 			y = this->widget[SVW_RATINGLIST].top + 1;
 

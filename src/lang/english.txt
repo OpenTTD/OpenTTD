@@ -862,13 +862,14 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Fund new indust
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fund new industry
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{RAW_STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can only be built in rainforest areas
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...can only be built in desert areas
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSED  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot successfully saved as '{STRING}'
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot successfully saved as '{RAW_STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot failed!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Purchase land for future use
@@ -1296,7 +1297,7 @@ STR_LANDINFO_RIVER                                              :River
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...buoy is in use!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coordinates: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
+STR_LANDINFO_COORDS                                             :{BLACK}Coordinates: {LTBLUE}{NUM}x{NUM}x{NUM} ({RAW_STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Can't remove part of station...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Can't convert railtype here...
@@ -1384,13 +1385,12 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max{}Companies online / companies max
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Language:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Map size:  {WHITE}{COMMA}x{COMMA}
-STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{STRING}
-STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Server version:  {WHITE}{RAW_STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Server address:  {WHITE}{RAW_STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Start date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Current date:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Password protected!
@@ -1474,7 +1474,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvian
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparing to join:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparing to join:   {ORANGE}{RAW_STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}A list of all companies currently in this game. You can either join one or start a new one if there is a free company slot
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}New company
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Create a new company
@@ -1487,7 +1487,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Refresh 
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}COMPANY INFO
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name:  {WHITE}{STRING}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Company name:  {WHITE}{RAW_STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguration:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Company value:  {WHITE}{CURRENCY}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Current balance:  {WHITE}{CURRENCY}
@@ -1496,7 +1496,7 @@ STR_NETWORK_PERFORMANCE                                         :{SILVER}Perform
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Stations:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
-STR_NETWORK_PLAYERS                                             :{SILVER}Players:  {WHITE}{STRING}
+STR_NETWORK_PLAYERS                                             :{SILVER}Players:  {WHITE}{RAW_STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Connecting...
 
@@ -1559,15 +1559,15 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :has joined the game
 STR_NETWORK_GIVE_MONEY                                          :gave your company some money ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :you gave {STRING} some money ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :you gave {RAW_STRING} some money ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {RAW_STRING}: {GRAY}{RAW_STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {RAW_STRING}: {GRAY}{RAW_STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {RAW_STRING}: {GRAY}{RAW_STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {RAW_STRING}: {GRAY}{RAW_STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[All] {RAW_STRING}: {GRAY}{RAW_STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enter text for network chat
 STR_NETWORK_NAME_CHANGE                                         :has changed his/her name to
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} The server closed the session
@@ -1958,11 +1958,11 @@ STR_4003_DELETE                                                 :{BLACK}Delete
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unable to read drive
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{STRING}
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{RAW_STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Unable to delete file
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Game Load Failed{}{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internal error: {STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame - {STRING}
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Game Load Failed{}{RAW_STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Internal error: {RAW_STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Broken savegame - {RAW_STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Savegame is made with newer version
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File not readable
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File not writeable
@@ -3150,25 +3150,25 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply ch
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Set parameters
 STR_NEWGRF_TIP                                                  :{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}There are currently no newgrf files installed! Please refer to the manual for instructions on installing new graphics
-STR_NEWGRF_FILENAME                                             :{BLACK}Filename: {SILVER}{STRING}
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
-STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+STR_NEWGRF_FILENAME                                             :{BLACK}Filename: {SILVER}{RAW_STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{RAW_STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{RAW_STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game; this can crash OpenTTD.{}Are you absolutely sure about this?
 
-STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} will not work with the TTDPatch version reported by OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} is for the {STRING} version of TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is designed to be used with {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} must be loaded before {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} must be loaded after {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} requires OpenTTD version {STRING} or better.
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{RAW_STRING}
+STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warning: {SILVER}{RAW_STRING}
+STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{RAW_STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{RAW_STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{RAW_STRING} will not work with the TTDPatch version reported by OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{RAW_STRING} is for the {RAW_STRING} version of TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{RAW_STRING} is designed to be used with {RAW_STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalid parameter for {RAW_STRING}: parameter {RAW_STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{RAW_STRING} must be loaded before {RAW_STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{RAW_STRING} must be loaded after {RAW_STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{RAW_STRING} requires OpenTTD version {RAW_STRING} or better.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Too many NewGRFs are loaded.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {STRING} as static NewGRF with {STRING} could cause desyncs.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {RAW_STRING} as static NewGRF with {RAW_STRING} could cause desyncs.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list
@@ -3179,7 +3179,7 @@ STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move the
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Move Down
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move the selected NewGRF file down the list
 STR_NEWGRF_FILE_TIP                                             :{BLACK}A list of the NewGRF files that are installed. Click a file to change its parameters
-STR_NEWGRF_PARAMETER                                            :{BLACK}Parameters: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parameters: {SILVER}{STRING1}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Enter NewGRF parameters
 STR_NEWGRF_NO_INFO                                              :{BLACK}No information available
 
@@ -3412,7 +3412,7 @@ STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: 
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
 
 ############ Date formatting
-STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
+STR_DATE_TINY                                                   :{RAW_STRING}-{RAW_STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 

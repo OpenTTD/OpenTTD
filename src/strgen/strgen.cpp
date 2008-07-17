@@ -490,6 +490,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"SKIP", EmitSingleChar, SCC_SKIP, 1, 0},
 
 	{"STRING", EmitSingleChar, SCC_STRING, 1, C_CASE},
+	{"RAW_STRING", EmitSingleChar, SCC_RAW_STRING_POINTER, 1, 0},
 
 	// Numbers
 	{"COMMA", EmitSingleChar, SCC_COMMA, 1, 0}, // Number with comma
@@ -717,7 +718,8 @@ static const CmdStruct *TranslateCmdForCompare(const CmdStruct *a)
 			strcmp(a->cmd, "STRING2") == 0 ||
 			strcmp(a->cmd, "STRING3") == 0 ||
 			strcmp(a->cmd, "STRING4") == 0 ||
-			strcmp(a->cmd, "STRING5") == 0) {
+			strcmp(a->cmd, "STRING5") == 0 ||
+			strcmp(a->cmd, "RAW_STRING") == 0){
 		return FindCmd("STRING", 6);
 	}
 

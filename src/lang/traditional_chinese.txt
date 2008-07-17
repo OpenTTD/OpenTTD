@@ -1382,7 +1382,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}客戶端
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}線上客戶端 / 客戶端上限{}線上公司 / 公司上限
 STR_NETWORK_GAME_INFO                                           :{SILVER}遊戲資訊
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}客戶端：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}語言：{WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}網格組：{WHITE}{STRING}

@@ -1305,7 +1305,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}客户端
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}在线客户端 / 最多 - 在线公司 / 最多
 STR_NETWORK_GAME_INFO                                           :{SILVER}游戏信息
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}客 户 端：   {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}语　　言：   {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}场景类型：   {WHITE}{STRING}

@@ -1371,7 +1371,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DE JOGO
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Conjunto de blocos:  {WHITE}{STRING}

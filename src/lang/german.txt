@@ -1372,7 +1372,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Teilnehmer
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Teilnehmer anwesend / max.
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIEL-INFO
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Teilnehmer:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Sprache:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Landschaft:  {WHITE}{STRING}

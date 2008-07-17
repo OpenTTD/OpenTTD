@@ -1372,7 +1372,6 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klijenti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klijenata online / klijenata maks{}Tvrtki online / tvrki maks.
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O IGRI
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klijenti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik:  {WHITE}{STRING}
 STR_NETWORK_TILESET                                             :{SILVER}Set pločica:  {WHITE}{STRING}
