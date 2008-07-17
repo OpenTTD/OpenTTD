@@ -493,6 +493,7 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
 	/* Make sure we detect any buffer overflow */
 	assert(b < endof(string));
 
+	SetDParamStr(0, string);
 	return DrawStringMultiLine(x, y, STR_JUST_RAW_STRING, w);
 }
 
