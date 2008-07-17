@@ -54,9 +54,9 @@ public:
 
 		/* The 256 is wrong, it should be 255, but 256 is much faster... */
 		return ComposeColour(0xFF,
-							(r * a + cr * (256 - a)) / 256,
-							(g * a + cg * (256 - a)) / 256,
-							(b * a + cb * (256 - a)) / 256);
+							((int)(r - cr) * a) / 256 + cr,
+							((int)(g - cg) * a) / 256 + cg,
+							((int)(b - cb) * a) / 256 + cb);
 	}
 
 	/**
@@ -79,15 +79,8 @@ public:
 		uint r  = GB(colour,  16, 8);
 		uint g  = GB(colour,  8,  8);
 		uint b  = GB(colour,  0,  8);
-		uint cr = GB(current, 16, 8);
-		uint cg = GB(current, 8,  8);
-		uint cb = GB(current, 0,  8);
 
-		/* The 256 is wrong, it should be 255, but 256 is much faster... */
-		return ComposeColour(0xFF,
-							(r * a + cr * (256 - a)) / 256,
-							(g * a + cg * (256 - a)) / 256,
-							(b * a + cb * (256 - a)) / 256);
+		return ComposeColourRGBANoCheck(r, g, b, a, current);
 	}
 
 	/**
