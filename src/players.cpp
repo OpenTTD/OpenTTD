@@ -823,6 +823,11 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (p1) {
 	case 0: { /* Create a new player */
+		/* This command is only executed in a multiplayer game */
+		if (!_networking) return CMD_ERROR;
+
+#ifdef ENABLE_NETWORK
+
 		/* Joining Client:
 		 * _local_player: PLAYER_SPECTATOR
 		 * _network_playas/cid = requested company/player
@@ -830,28 +835,19 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * Other client(s)/server:
 		 * _local_player/_network_playas: what they play as
 		 * cid = requested company/player of joining client */
-		Player *p;
-#ifdef ENABLE_NETWORK
 		uint16 cid = p2; // ClientID
-#endif /* ENABLE_NETWORK */
-
-		/* This command is only executed in a multiplayer game */
-		if (!_networking) return CMD_ERROR;
 
 		/* Has the network client a correct ClientID? */
 		if (!(flags & DC_EXEC)) return CommandCost();
-#ifdef ENABLE_NETWORK
 		if (cid >= MAX_CLIENT_INFO) return CommandCost();
-#endif /* ENABLE_NETWORK */
 
 		/* Delete multiplayer progress bar */
 		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
-		p = DoStartupNewPlayer(false);
+		Player *p = DoStartupNewPlayer(false);
 
 		/* A new player could not be created, revert to being a spectator */
 		if (p == NULL) {
-#ifdef ENABLE_NETWORK
 			if (_network_server) {
 				NetworkClientInfo *ci = &_network_client_info[cid];
 				ci->client_playas = PLAYER_SPECTATOR;
@@ -859,7 +855,6 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			} else if (_local_player == PLAYER_SPECTATOR) {
 				_network_playas = PLAYER_SPECTATOR;
 			}
-#endif /* ENABLE_NETWORK */
 			break;
 		}
 
@@ -867,12 +862,10 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (_local_player != _network_playas && _network_playas == p->index) {
 			assert(_local_player == PLAYER_SPECTATOR);
 			SetLocalPlayer(p->index);
-#ifdef ENABLE_NETWORK
 			if (!StrEmpty(_settings_client.network.default_company_pass)) {
 				char *password = _settings_client.network.default_company_pass;
 				NetworkChangeCompanyPassword(1, &password);
 			}
-#endif /* ENABLE_NETWORK */
 			MarkWholeScreenDirty();
 		}
 
@@ -885,7 +878,6 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			CMD_SET_AUTOREPLACE
 		);
 
-#ifdef ENABLE_NETWORK
 		if (_network_server) {
 			/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
 			 * server-side in network_server.c:838, function
