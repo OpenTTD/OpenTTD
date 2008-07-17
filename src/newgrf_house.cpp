@@ -591,7 +591,7 @@ bool CanDeleteHouse(TileIndex tile)
 
 	/* Human players are always allowed to remove buildings, as is water and
 	 * anyone using the scenario editor. */
-	if ((IsValidPlayer(_current_player) && IsHumanPlayer(_current_player))
+	if ((IsValidPlayerID(_current_player) && IsHumanPlayer(_current_player))
 			|| _current_player == OWNER_WATER || _current_player == OWNER_NONE) return true;
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {

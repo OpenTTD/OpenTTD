@@ -341,7 +341,7 @@ static uint NetworkCountPlayers()
 
 	FOR_ALL_CLIENTS(cs) {
 		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
-		if (IsValidPlayer(ci->client_playas)) count++;
+		if (IsValidPlayerID(ci->client_playas)) count++;
 	}
 
 	return count;

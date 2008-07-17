@@ -467,11 +467,11 @@ static inline void ResetSets()
  *
  * @param owner player whose signals we are updating
  * @return state of the first block from _globset
- * @pre IsValidPlayer(owner)
+ * @pre IsValidPlayerID(owner)
  */
 static SigSegState UpdateSignalsInBuffer(Owner owner)
 {
-	assert(IsValidPlayer(owner));
+	assert(IsValidPlayerID(owner));
 
 	bool first = true;  // first block?
 	SigSegState state = SIGSEG_FREE; // value to return

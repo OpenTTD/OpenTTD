@@ -152,7 +152,7 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 	 * Towns are not be allowed to remove non "normal" road pieces, like tram
 	 * tracks as that would result in trams that cannot turn. */
 	if (_current_player == OWNER_WATER ||
-			(rt == ROADTYPE_ROAD && !IsValidPlayer(_current_player))) return true;
+			(rt == ROADTYPE_ROAD && !IsValidPlayerID(_current_player))) return true;
 
 	/* Only do the special processing if the road is owned
 	 * by a town */
@@ -471,7 +471,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-player is building the road */
-	if ((IsValidPlayer(_current_player) && p2 != 0) || (_current_player == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
+	if ((IsValidPlayerID(_current_player) && p2 != 0) || (_current_player == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
 
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
 

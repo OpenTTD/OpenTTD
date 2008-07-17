@@ -342,7 +342,7 @@ struct MainWindow : Window
 					if (cio == NULL) break;
 
 					/* Only players actually playing can speak to team. Eg spectators cannot */
-					if (_settings_client.gui.prefer_teamchat && IsValidPlayer(cio->client_playas)) {
+					if (_settings_client.gui.prefer_teamchat && IsValidPlayerID(cio->client_playas)) {
 						const NetworkClientInfo *ci;
 						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 							if (ci->client_playas == cio->client_playas && ci != cio) {

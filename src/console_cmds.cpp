@@ -608,7 +608,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	index = (PlayerID)(atoi(argv[1]) - 1);
 
 	/* Check valid range */
-	if (!IsValidPlayer(index)) {
+	if (!IsValidPlayerID(index)) {
 		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
@@ -654,7 +654,7 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
 		               ci->client_index, ci->client_name,
-		               ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
+		               ci->client_playas + (IsValidPlayerID(ci->client_playas) ? 1 : 0),
 		               GetPlayerIP(ci));
 	}
 
@@ -694,7 +694,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 		 * players are offset by one to ease up on users (eg players 1-8 not 0-7) */
 		if (_network_playas != PLAYER_SPECTATOR) {
 			_network_playas--;
-			if (!IsValidPlayer(_network_playas)) return false;
+			if (!IsValidPlayerID(_network_playas)) return false;
 		}
 	}
 	if (port != NULL) {
@@ -1185,7 +1185,7 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 	if (argc != 3) return false;
 
 	PlayerID player_id = (PlayerID)(atoi(argv[1]) - 1);
-	if (!IsValidPlayer(player_id) || !GetPlayer(player_id)->is_active) {
+	if (!IsValidPlayerID(player_id) || !GetPlayer(player_id)->is_active) {
 		IConsolePrintF(CC_DEFAULT, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
@@ -1224,12 +1224,12 @@ extern void HashCurrentCompanyPassword();
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
-		if (!IsValidPlayer(_local_player)) return true; // dedicated server
+		if (!IsValidPlayerID(_local_player)) return true; // dedicated server
 		IConsolePrintF(CC_WARNING, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
 		return true;
 	}
 
-	if (!IsValidPlayer(_local_player)) {
+	if (!IsValidPlayerID(_local_player)) {
 		IConsoleError("You have to own a company to make use of this command.");
 		return false;
 	}

@@ -1122,7 +1122,7 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 	VehicleListWindow *w;
 	WindowNumber num;
 
-	if (!IsValidPlayer(player)) return;
+	if (!IsValidPlayerID(player)) return;
 
 	num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | player;
 

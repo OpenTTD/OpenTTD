@@ -327,7 +327,7 @@ static const WindowDesc _terraform_desc = {
 
 void ShowTerraformToolbar(Window *link)
 {
-	if (!IsValidPlayer(_current_player)) return;
+	if (!IsValidPlayerID(_current_player)) return;
 	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
 	if (w != NULL && link != NULL) {
 		/* Align the terraform toolbar under the main toolbar and put the linked
@@ -574,7 +574,7 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		/* Delete all stations owned by a player */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (IsValidPlayer(st->owner)) delete st;
+			if (IsValidPlayerID(st->owner)) delete st;
 		}
 	}
 }

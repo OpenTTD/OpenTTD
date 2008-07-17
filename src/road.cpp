@@ -84,7 +84,7 @@ bool HasRoadTypesAvail(const PlayerID p, const RoadTypes rts)
 	if (p == OWNER_TOWN || _game_mode == GM_EDITOR || IsGeneratingWorld()) {
 		avail_roadtypes = ROADTYPES_ROAD;
 	} else {
-		if (!IsValidPlayer(p)) return false;
+		if (!IsValidPlayerID(p)) return false;
 		avail_roadtypes = (RoadTypes)GetPlayer(p)->avail_roadtypes | ROADTYPES_ROAD; // road is available for always for everybody
 	}
 	return (rts & ~avail_roadtypes) == 0;

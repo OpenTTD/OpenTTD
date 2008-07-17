@@ -675,7 +675,7 @@ static const WindowDesc _build_tramway_desc = {
 
 void ShowBuildRoadToolbar(RoadType roadtype)
 {
-	if (!IsValidPlayer(_current_player)) return;
+	if (!IsValidPlayerID(_current_player)) return;
 	_cur_roadtype = roadtype;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);

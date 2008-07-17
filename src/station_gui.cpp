@@ -601,7 +601,7 @@ static const WindowDesc _player_stations_desc = {
  */
 void ShowPlayerStations(PlayerID player)
 {
-	if (!IsValidPlayer(player)) return;
+	if (!IsValidPlayerID(player)) return;
 
 	AllocateWindowDescFront<PlayerStationsWindow>(&_player_stations_desc, player);
 }

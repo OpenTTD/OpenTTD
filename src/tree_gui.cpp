@@ -179,6 +179,6 @@ static const WindowDesc _build_trees_desc = {
 
 void ShowBuildTreesToolbar()
 {
-	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
+	if (_game_mode != GM_EDITOR && !IsValidPlayerID(_current_player)) return;
 	AllocateWindowDescFront<BuildTreesWindow>(&_build_trees_desc, 0);
 }

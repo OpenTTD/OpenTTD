@@ -956,7 +956,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
 
-			if (IsValidPlayer(_current_player)) {
+			if (IsValidPlayerID(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
 			}
 		}
@@ -1382,7 +1382,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_ROAD);
 
-			if (IsValidPlayer(_current_player)) {
+			if (IsValidPlayerID(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
 			}
 			st->sign.width_1 = 0;
@@ -1778,7 +1778,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st->town = t;
 			st->string_id = GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
-			if (IsValidPlayer(_current_player)) {
+			if (IsValidPlayerID(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
 			}
 			st->sign.width_1 = 0;
@@ -1911,7 +1911,7 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->town = ClosestTownFromTile(tile, UINT_MAX);
 		st->string_id = GenerateStationName(st, tile, STATIONNAMING_BUOY);
 
-		if (IsValidPlayer(_current_player)) {
+		if (IsValidPlayerID(_current_player)) {
 			SetBit(st->town->have_ratings, _current_player);
 		}
 		st->sign.width_1 = 0;
@@ -1960,7 +1960,7 @@ bool HasStationInUse(StationID station, PlayerID player)
 static CommandCost RemoveBuoy(Station *st, uint32 flags)
 {
 	/* XXX: strange stuff */
-	if (!IsValidPlayer(_current_player)) return_cmd_error(INVALID_STRING_ID);
+	if (!IsValidPlayerID(_current_player)) return_cmd_error(INVALID_STRING_ID);
 
 	TileIndex tile = st->dock_tile;
 
@@ -2070,7 +2070,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_DOCK);
 
-			if (IsValidPlayer(_current_player)) {
+			if (IsValidPlayerID(_current_player)) {
 				SetBit(st->town->have_ratings, _current_player);
 			}
 		}
@@ -2153,7 +2153,7 @@ static void DrawTile_Station(TileInfo *ti)
 	PlayerID owner = GetTileOwner(ti->tile);
 
 	SpriteID palette;
-	if (IsValidPlayer(owner)) {
+	if (IsValidPlayerID(owner)) {
 		palette = PLAYER_SPRITE_COLOR(owner);
 	} else {
 		/* Some stations are not owner by a player, namely oil rigs */
@@ -2573,7 +2573,7 @@ static void UpdateStationRating(Station *st)
 				(rating += 13, true);
 			}
 
-			if (IsValidPlayer(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
+			if (IsValidPlayerID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
 			{
 				byte days = ge->days_since_pickup;

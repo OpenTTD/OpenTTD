@@ -103,7 +103,7 @@ public:
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
-		Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
+		Player *p = GetPlayer(IsValidPlayerID(_local_player) ? _local_player : PLAYER_FIRST);
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
 		Money old_money = p->player_money;
@@ -1364,7 +1364,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	{
 		/* Check if we are not a spectator who wants to generate a name..
 				Let's use the name of player #0 for now. */
-		const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : PLAYER_FIRST);
+		const Player *p = GetPlayer(IsValidPlayerID(_local_player) ? _local_player : PLAYER_FIRST);
 
 		SetDParam(0, p->index);
 		SetDParam(1, _date);

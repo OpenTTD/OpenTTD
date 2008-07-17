@@ -452,10 +452,10 @@ not_valid_below:;
 	 * It's unnecessary to execute this command every time for every bridge. So it is done only
 	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	 */
-	if (!(flags & DC_QUERY_COST) || (IsValidPlayer(_current_player) && GetPlayer(_current_player)->is_ai)) {
+	if (!(flags & DC_QUERY_COST) || (IsValidPlayerID(_current_player) && GetPlayer(_current_player)->is_ai)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
-		if (IsValidPlayer(_current_player) && !_is_old_ai_player)
+		if (IsValidPlayerID(_current_player) && !_is_old_ai_player)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost.AddCost((int64)bridge_len * _price.build_bridge * GetBridgeSpec(bridge_type)->price >> 8);

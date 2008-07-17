@@ -630,7 +630,7 @@ int ttd_main(int argc, char *argv[])
 
 				if (_network_playas != PLAYER_SPECTATOR) {
 					_network_playas--;
-					if (!IsValidPlayer(_network_playas)) return false;
+					if (!IsValidPlayerID(_network_playas)) return false;
 				}
 			}
 			if (port != NULL) rport = atoi(port);
@@ -1573,7 +1573,7 @@ bool AfterLoadGame()
 		 * becomes player 0, unless we are in the scenario editor where all the
 		 * players are 'invalid'.
 		 */
-		if (!_network_dedicated && IsValidPlayer(PLAYER_FIRST)) {
+		if (!_network_dedicated && IsValidPlayerID(PLAYER_FIRST)) {
 			p = GetPlayer(PLAYER_FIRST);
 			p->engine_renew        = _settings_client.gui.autorenew;
 			p->engine_renew_months = _settings_client.gui.autorenew_months;
@@ -2322,7 +2322,7 @@ bool AfterLoadGame()
 				for (uint i = 0; i < 4; i++) {
 					PlayerID o = p->share_owners[i];
 					if (o == PLAYER_SPECTATOR) continue;
-					if (!IsValidPlayer(o) || o == p->index || !GetPlayer(o)->is_active) p->share_owners[i] = PLAYER_SPECTATOR;
+					if (!IsValidPlayerID(o) || o == p->index || !GetPlayer(o)->is_active) p->share_owners[i] = PLAYER_SPECTATOR;
 				}
 			}
 		}
@@ -2374,7 +2374,7 @@ bool AfterLoadGame()
 
 			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
 				Owner o = GetTileOwner(t);
-				if (IsValidPlayer(o) && !GetPlayer(o)->is_active) {
+				if (IsValidPlayerID(o) && !GetPlayer(o)->is_active) {
 					_current_player = o;
 					ChangeTileOwner(t, o, PLAYER_SPECTATOR);
 				}
@@ -2388,7 +2388,7 @@ bool AfterLoadGame()
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					/* update even non-existing road types to update tile owner too */
 					Owner o = GetRoadOwner(t, rt);
-					if (IsValidPlayer(o) && !GetPlayer(o)->is_active) SetRoadOwner(t, rt, OWNER_NONE);
+					if (IsValidPlayerID(o) && !GetPlayer(o)->is_active) SetRoadOwner(t, rt, OWNER_NONE);
 				}
 				if (IsLevelCrossing(t)) {
 					Owner o = GetTileOwner(t);

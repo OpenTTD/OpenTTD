@@ -252,7 +252,7 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 			byte colours;
 			bool is_ai = false;
 
-			if (IsValidPlayer(industry->founder)) {
+			if (IsValidPlayerID(industry->founder)) {
 				const Player *p = GetPlayer(industry->founder);
 				const Livery *l = &p->livery[LS_DEFAULT];
 

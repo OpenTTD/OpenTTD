@@ -252,7 +252,7 @@ static const WindowDesc _player_finances_small_desc = {
  */
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top, int left)
 {
-	if (!IsValidPlayer(player)) return;
+	if (!IsValidPlayerID(player)) return;
 
 	if (BringWindowToFrontById(WC_FINANCES, player)) return;
 	new PlayerFinancesWindow(show_small ? &_player_finances_small_desc : &_player_finances_desc, player, show_small, show_stickied, top, left);
@@ -1030,7 +1030,7 @@ static const WindowDesc _select_player_face_adv_desc = {
  */
 static void DoSelectPlayerFace(Window *parent, bool adv, int top, int left)
 {
-	if (!IsValidPlayer((PlayerID)parent->window_number)) return;
+	if (!IsValidPlayerID((PlayerID)parent->window_number)) return;
 
 	if (BringWindowToFrontById(WC_PLAYER_FACE, parent->window_number)) return;
 	new SelectPlayerFaceWindow(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, parent, adv, top, left); // simple or advanced window
@@ -1349,7 +1349,7 @@ static const WindowDesc _player_company_desc = {
 
 void ShowPlayerCompany(PlayerID player)
 {
-	if (!IsValidPlayer(player)) return;
+	if (!IsValidPlayerID(player)) return;
 
 	AllocateWindowDescFront<PlayerCompanyWindow>(&_player_company_desc, player);
 }
@@ -1495,7 +1495,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		if (!IsValidPlayer(_local_player)) return;
+		if (!IsValidPlayerID(_local_player)) return;
 
 		p = GetPlayer(_local_player);
 		/* We need to get performance from last year because the image is shown

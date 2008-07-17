@@ -1784,7 +1784,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	/* Check if buying shares is allowed (protection against modified clients) */
 	/* Cannot buy own shares */
-	if (!IsValidPlayer((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+	if (!IsValidPlayerID((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
 
 	p = GetPlayer((PlayerID)p1);
 
@@ -1833,7 +1833,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* Check if selling shares is allowed (protection against modified clients) */
 	/* Cannot sell own shares */
-	if (!IsValidPlayer((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+	if (!IsValidPlayerID((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
 
 	p = GetPlayer((PlayerID)p1);
 
@@ -1871,7 +1871,7 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	PlayerID pid = (PlayerID)p1;
 
 	/* Disable takeovers in multiplayer games */
-	if (!IsValidPlayer(pid) || _networking) return CMD_ERROR;
+	if (!IsValidPlayerID(pid) || _networking) return CMD_ERROR;
 
 	/* Do not allow players to take over themselves */
 	if (pid == _current_player) return CMD_ERROR;

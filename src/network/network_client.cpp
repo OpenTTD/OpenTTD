@@ -367,7 +367,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		current = (Owner)p->Recv_uint8();
-		if (!IsValidPlayer(current)) return NETWORK_RECV_STATUS_CLOSE_QUERY;
+		if (!IsValidPlayerID(current)) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		p->Recv_string(_network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
 		_network_player_info[current].inaugurated_year = p->Recv_uint32();
@@ -624,7 +624,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 		/* New company/spectator (invalid player) or company we want to join is not active
 		 * Switch local player to spectator and await the server's judgement */
-		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayer(_network_playas) ||
+		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayerID(_network_playas) ||
 				!GetPlayer(_network_playas)->is_active) {
 
 			SetLocalPlayer(PLAYER_SPECTATOR);
@@ -737,10 +737,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 
 			/* For speaking to company or giving money, we need the player-name */
 			case NETWORK_ACTION_GIVE_MONEY:
-				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
+				if (!IsValidPlayerID(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
 				/* fallthrough */
 			case NETWORK_ACTION_CHAT_COMPANY: {
-				StringID str = IsValidPlayer(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+				StringID str = IsValidPlayerID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));

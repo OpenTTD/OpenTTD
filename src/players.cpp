@@ -54,17 +54,17 @@ HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
  * Sets the local player and updates the patch settings that are set on a
  * per-company (player) basis to reflect the core's state in the GUI.
  * @param new_player the new player
- * @pre IsValidPlayer(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE
+ * @pre IsValidPlayerID(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE
  */
 void SetLocalPlayer(PlayerID new_player)
 {
 	/* Player could also be PLAYER_SPECTATOR or OWNER_NONE */
-	assert(IsValidPlayer(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE);
+	assert(IsValidPlayerID(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE);
 
 	_local_player = new_player;
 
 	/* Do not update the patches if we are in the intro GUI */
-	if (IsValidPlayer(new_player) && _game_mode != GM_MENU) {
+	if (IsValidPlayerID(new_player) && _game_mode != GM_MENU) {
 		const Player *p = GetPlayer(new_player);
 		_settings_client.gui.autorenew        = p->engine_renew;
 		_settings_client.gui.autorenew_months = p->engine_renew_months;
@@ -83,7 +83,7 @@ uint16 GetDrawStringPlayerColor(PlayerID player)
 {
 	/* Get the color for DrawString-subroutines which matches the color
 	 * of the player */
-	if (!IsValidPlayer(player)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOR;
+	if (!IsValidPlayerID(player)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOR;
 	return (_colour_gradient[_player_colors[player]][4]) | IS_PALETTE_COLOR;
 }
 
@@ -166,7 +166,7 @@ PlayerFace ConvertFromOldPlayerFace(uint32 face)
  * @param pf the fact to check
  * @return true if and only if the face is valid
  */
-bool IsValidPlayerFace(PlayerFace pf)
+bool IsValidPlayerIDFace(PlayerFace pf)
 {
 	if (!ArePlayerFaceBitsValid(pf, PFV_GEN_ETHN, GE_WM)) return false;
 
@@ -203,7 +203,7 @@ bool CheckPlayerHasMoney(CommandCost cost)
 {
 	if (cost.GetCost() > 0) {
 		PlayerID pid = _current_player;
-		if (IsValidPlayer(pid) && cost.GetCost() > GetPlayer(pid)->player_money) {
+		if (IsValidPlayerID(pid) && cost.GetCost() > GetPlayer(pid)->player_money) {
 			SetDParam(0, cost.GetCost());
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
@@ -259,7 +259,7 @@ void SubtractMoneyFromPlayer(CommandCost cost)
 {
 	PlayerID pid = _current_player;
 
-	if (IsValidPlayer(pid)) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
+	if (IsValidPlayerID(pid)) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
 void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cst)
@@ -279,7 +279,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 	SetDParam(2, owner);
 
 	if (owner != OWNER_TOWN) {
-		if (!IsValidPlayer(owner)) {
+		if (!IsValidPlayerID(owner)) {
 			SetDParam(0, STR_0150_SOMEONE);
 		} else {
 			const Player* p = GetPlayer(owner);
@@ -686,7 +686,7 @@ static void DeletePlayerStuff(PlayerID pi)
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidPlayer(_current_player)) return CMD_ERROR;
+	if (!IsValidPlayerID(_current_player)) return CMD_ERROR;
 
 	Player *p = GetPlayer(_current_player);
 	switch (GB(p1, 0, 3)) {
@@ -889,7 +889,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			ci->client_playas = p->index;
 			NetworkUpdateClientInfo(ci->client_index);
 
-			if (IsValidPlayer(ci->client_playas)) {
+			if (IsValidPlayerID(ci->client_playas)) {
 				PlayerID player_backup = _local_player;
 				_network_player_info[p->index].months_empty = 0;
 
@@ -922,7 +922,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	case 2: { /* Delete a player */
 		Player *p;
 
-		if (!IsValidPlayer((PlayerID)p2)) return CMD_ERROR;
+		if (!IsValidPlayerID((PlayerID)p2)) return CMD_ERROR;
 
 		if (!(flags & DC_EXEC)) return CommandCost();
 
@@ -949,7 +949,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		PlayerID pid_old = (PlayerID)GB(p2,  0, 16);
 		PlayerID pid_new = (PlayerID)GB(p2, 16, 16);
 
-		if (!IsValidPlayer(pid_old) || !IsValidPlayer(pid_new)) return CMD_ERROR;
+		if (!IsValidPlayerID(pid_old) || !IsValidPlayerID(pid_new)) return CMD_ERROR;
 
 		if (!(flags & DC_EXEC)) return CMD_ERROR;
 

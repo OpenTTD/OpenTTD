@@ -1296,7 +1296,7 @@ struct NetworkClientListPopupWindow : Window {
 			this->proc[i++] = &ClientList_SpeakToClient;
 		}
 
-		if (IsValidPlayer(ci->client_playas) || ci->client_playas == PLAYER_SPECTATOR) {
+		if (IsValidPlayerID(ci->client_playas) || ci->client_playas == PLAYER_SPECTATOR) {
 			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(this->action[i]));
 			this->proc[i++] = &ClientList_SpeakToCompany;
 		}
@@ -1305,7 +1305,7 @@ struct NetworkClientListPopupWindow : Window {
 
 		if (_network_own_client_index != ci->client_index) {
 			/* We are no spectator and the player we want to give money to is no spectator and money gifts are allowed */
-			if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas) && _settings_game.economy.give_money) {
+			if (IsValidPlayerID(_network_playas) && IsValidPlayerID(ci->client_playas) && _settings_game.economy.give_money) {
 				GetString(this->action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(this->action[i]));
 				this->proc[i++] = &ClientList_GiveMoney;
 			}
@@ -1494,7 +1494,7 @@ struct NetworkClientListWindow : Window
 			}
 
 			/* Filter out spectators */
-			if (IsValidPlayer(ci->client_playas)) DrawPlayerIcon(ci->client_playas, 64, y + 1);
+			if (IsValidPlayerID(ci->client_playas)) DrawPlayerIcon(ci->client_playas, 64, y + 1);
 
 			DoDrawString(ci->client_name, 81, y, colour);
 

@@ -448,7 +448,7 @@ error:
 	if (--_docommand_recursive == 0 && !(flags & DC_BANKRUPT)) {
 		SubtractMoneyFromPlayer(res);
 		/* XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player */
-		if (tile != 0 && IsValidPlayer(_current_player)) {
+		if (tile != 0 && IsValidPlayerID(_current_player)) {
 			GetPlayer(_current_player)->last_build_coordinate = tile;
 		}
 	}
@@ -467,7 +467,7 @@ error:
 Money GetAvailableMoneyForCommand()
 {
 	PlayerID pid = _current_player;
-	if (!IsValidPlayer(pid)) return INT64_MAX;
+	if (!IsValidPlayerID(pid)) return INT64_MAX;
 	return GetPlayer(pid)->player_money;
 }
 
@@ -608,7 +608,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_player, tile, p1, p2, cmd, _cmd_text);
 
 	/* update last build coordinate of player. */
-	if (tile != 0 && IsValidPlayer(_current_player)) {
+	if (tile != 0 && IsValidPlayerID(_current_player)) {
 		GetPlayer(_current_player)->last_build_coordinate = tile;
 	}
 

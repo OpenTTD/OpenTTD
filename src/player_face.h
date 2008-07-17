@@ -229,6 +229,6 @@ static inline SpriteID GetPlayerFaceSprite(PlayerFace pf, PlayerFaceVariable pfv
 
 void DrawPlayerFace(PlayerFace face, int color, int x, int y);
 PlayerFace ConvertFromOldPlayerFace(uint32 face);
-bool IsValidPlayerFace(PlayerFace pf);
+bool IsValidPlayerIDFace(PlayerFace pf);
 
 #endif /* PLAYER_FACE_H */

@@ -959,7 +959,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				PlayerID player = (PlayerID)GetInt32(&argv);
 
 				/* Nothing is added for AI or inactive players */
-				if (IsHumanPlayer(player) && IsValidPlayer(player)) {
+				if (IsHumanPlayer(player) && IsValidPlayerID(player)) {
 					int64 args[1];
 					args[0] = player + 1;
 					buff = GetStringWithArgs(buff, STR_7002_PLAYER, args, last);

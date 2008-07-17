@@ -419,7 +419,7 @@ public:
 
 void ShowBuildIndustryWindow()
 {
-	if (_game_mode != GM_EDITOR && !IsValidPlayer(_current_player)) return;
+	if (_game_mode != GM_EDITOR && !IsValidPlayerID(_current_player)) return;
 	if (BringWindowToFrontById(WC_BUILD_INDUSTRY, 0)) return;
 	new BuildIndustryWindow();
 }

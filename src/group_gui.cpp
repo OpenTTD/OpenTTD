@@ -732,7 +732,7 @@ static const WindowDesc _group_desc = {
 
 void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
 {
-	if (!IsValidPlayer(player)) return;
+	if (!IsValidPlayerID(player)) return;
 
 	WindowClass wc;
 

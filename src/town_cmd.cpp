@@ -529,7 +529,7 @@ static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 	_cleared_town_rating += rating;
 	Town *t = _cleared_town = GetTownByTile(tile);
 
-	if (IsValidPlayer(_current_player)) {
+	if (IsValidPlayerID(_current_player)) {
 		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
@@ -2314,12 +2314,12 @@ static void UpdateTownGrowRate(Town *t)
 		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
-				if (IsValidPlayer(st->owner)) {
+				if (IsValidPlayerID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
 					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
 				}
 			} else {
-				if (IsValidPlayer(st->owner)) {
+				if (IsValidPlayerID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_DOWN_STEP;
 					t->ratings[st->owner] = max(new_rating, INT16_MIN);
 				}
@@ -2405,7 +2405,7 @@ static void UpdateTownUnwanted(Town *t)
 
 bool CheckIfAuthorityAllows(TileIndex tile)
 {
-	if (!IsValidPlayer(_current_player)) return true;
+	if (!IsValidPlayerID(_current_player)) return true;
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 	if (t == NULL) return true;
@@ -2482,7 +2482,7 @@ void ChangeTownRating(Town *t, int add, int max)
 {
 	/* if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff */
 	if (t == NULL ||
-			!IsValidPlayer(_current_player) ||
+			!IsValidPlayerID(_current_player) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
 	}
@@ -2520,7 +2520,7 @@ static const int _default_rating_settings [3][3] = {
 bool CheckforTownRating(uint32 flags, Town *t, byte type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == NULL || !IsValidPlayer(_current_player) || _cheats.magic_bulldozer.value)
+	if (t == NULL || !IsValidPlayerID(_current_player) || _cheats.magic_bulldozer.value)
 		return true;
 
 	/* check if you're allowed to remove the street/bridge/tunnel/industry
