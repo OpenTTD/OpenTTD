@@ -866,17 +866,20 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				char *password = _settings_client.network.default_company_pass;
 				NetworkChangeCompanyPassword(1, &password);
 			}
+
+			_current_player = _local_player;
+
+			/* Now that we have a new player, broadcast our autorenew settings to
+			 * all clients so everything is in sync */
+			NetworkSend_Command(0,
+				(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
+				_settings_client.gui.autorenew_money,
+				CMD_SET_AUTOREPLACE,
+				NULL
+			);
+
 			MarkWholeScreenDirty();
 		}
-
-		/* Now that we have a new player, broadcast its autorenew settings to
-		 * all clients so everything is in sync */
-		DoCommand(0,
-			(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
-			_settings_client.gui.autorenew_money,
-			DC_EXEC,
-			CMD_SET_AUTOREPLACE
-		);
 
 		if (_network_server) {
 			/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
