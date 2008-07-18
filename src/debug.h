@@ -21,9 +21,9 @@
 
 #ifdef NO_DEBUG_MESSAGES
 	#if defined(__GNUC__) && (__GNUC__ < 3)
-		#define DEBUG(name, level, args...)
+		#define DEBUG(name, level, args...) { }
 	#else
-		#define DEBUG(name, level, ...)
+		#define DEBUG(name, level, ...) { }
 	#endif
 #else /* NO_DEBUG_MESSAGES */
 	#if defined(__GNUC__) && (__GNUC__ < 3)
