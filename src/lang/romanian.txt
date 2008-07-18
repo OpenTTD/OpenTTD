@@ -1808,7 +1808,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanţează construcţia de noi clădiri comerciale în oraş.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Cumpără drepturi exclusive în acest oraş pe o perioadă de un an. Autorităţile locale vor permite doar companiei tale să transporte călători şi mărfuri.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Mituieste autoritãtile locale pentru a-ti îmbunãtãti ratingul, dar cu riscul de a fi prins si de a plãti amenzi serioase.{}  Cost: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanţat de {COMPANY} pentru reconstrucţia străzilor aduce 6 luni de haos participanţilor la trafic!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Haos pe străzile din {TOWN}!{}{}Programul finanţat de {RAW_STRING} pentru reconstrucţia străzilor aduce 6 luni de haos participanţilor la trafic!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (în construcţie)
@@ -2299,15 +2299,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Clasamen
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Companie de transport cu probleme!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} va fi vândută dacă situaţia financiară nu se va îmbunătăţi curând!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} va fi vândută dacă situaţia financiară nu se va îmbunătăţi curând!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Preşedinte)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Fuziune între companii de transport!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} a fost vândută companiei {COMPANY} la preţul de {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} a fost vândută companiei {RAW_STRING} la preţul de {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Căutăm o companie de transport care să preia societatea noastră {}{}Doriţi să cumpăraţi {COMPANY} la preţul de {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Faliment!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Compania {COMPANY} a fost închisă şi toate activele au fost valorificate de creditori!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Compania {RAW_STRING} a fost închisă şi toate activele au fost valorificate de creditori!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}A apărut o nouă companie!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} şi-a stabilit sediul lângă {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} şi-a stabilit sediul lângă {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nu se poate cumpăra compania...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Preţurile transportului de călători şi mărfuri
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Zile în tranzit
@@ -2348,7 +2348,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vinde 25
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nu se pot cumpăra 25% din acţiunile acestei companii...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nu se pot vinde 25% din acţiunile acestei companii...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% deţinute de {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} a fost preluată de {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} a fost preluată de {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Această companie încă nu vinde acţiuni...
 
 STR_LIVERY_DEFAULT                                              :Uniforma standard

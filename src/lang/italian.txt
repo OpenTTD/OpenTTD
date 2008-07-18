@@ -1817,7 +1817,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanzia la costruzione di nuovi edifici commerciali nella città.{}  Costo: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra un 1 di diritti di trasporto esclusivi in città. L'autorità cittadina permetterà a passeggeri e merci di usare solo le stazioni della compagnia.{} Costo: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Corrompi l'autorità locale per autmentare la tua valutazione, con il rischio di una severa multa se scoperto.{}  Costo: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione delle strade finanziata dalla {COMPANY} porterà 6 mesi di disagio agli automobilisti!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione delle strade finanziata dalla {RAW_STRING} porterà 6 mesi di disagio agli automobilisti!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (in costruzione)
@@ -2309,15 +2309,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Classifi
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Compagnia di trasporti in difficolta!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}La {COMPANY} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}La {RAW_STRING} verrà venduta o dichiarerà bancarotta a meno che le prestazioni non migliorino presto!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Presidente)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Fusione tra compagnie di trasporti!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}La {COMPANY} è stata venduta alla {COMPANY} per {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}La {RAW_STRING} è stata venduta alla {RAW_STRING} per {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Stiamo cercando una compagnia di trasporti disposta a rilevare la nostra società.{}{} Vorrebbe acquistare la {COMPANY} per {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bancarotta!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}La {COMPANY} è stata chiusa dai creditori e tutti i suoi beni sono stati venduti!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}La {RAW_STRING} è stata chiusa dai creditori e tutti i suoi beni sono stati venduti!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nuova compagnia di trasporti!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}La {COMPANY} inizia a costruire vicino a {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}La {RAW_STRING} inizia a costruire vicino a {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Impossibile comprare la compagnia...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tariffe di pagamento merci
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Giorni di viaggio
@@ -2358,7 +2358,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vende il
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Impossibile comprare il 25% delle azioni...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Impossibile vendere il 25% delle azioni...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% posseduto dalla {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}La {COMPANY} è stata rilevata dalla {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}La {RAW_STRING} è stata rilevata dalla {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Questa compagnia non è abbastanza vecchia per scambiare azioni...
 
 STR_LIVERY_DEFAULT                                              :Livrea standard

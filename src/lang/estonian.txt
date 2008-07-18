@@ -1895,7 +1895,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Uute ärihoonete ehitamise rahastamine selles linnas.{} Hind: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Üheks aastaks monopoolsete veoõiguste ostmine selles linnas. Linna omavalitsus lubab reisijate ja kauba veoks kasutada ainult sinu jaamasid.{} Hind: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Linna omavalitusele ettevõtte hinnangu tõstmise eesmärgil altkäemaksu pakkumine. Vahele jäädes tuleb trahvi maksta.{} Hind: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Ettevõtte {COMPANY} poolt rahastatud teedeehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Liikluskaos linnas {TOWN}!{}{}Ettevõtte {RAW_STRING} poolt rahastatud teedeehitus tekitab 6 kuu jooksul maanteedel liiklushäireid!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (ehitusel)
@@ -2387,15 +2387,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Ettevõt
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Ettevõttel on probleeme!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Ettevõte {COMPANY} müüakse maha ja kuulutatakse pankrot, kui tulemused peatselt ei parane!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Ettevõte {RAW_STRING} müüakse maha ja kuulutatakse pankrot, kui tulemused peatselt ei parane!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(President)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Ettevõtete ühinemine!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} müüdi ettevõttele {COMPANY} {CURRENCY} eest!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} müüdi ettevõttele {RAW_STRING} {CURRENCY} eest!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Otsime ettevõtet, kes võtaks meie firma üle.{}{}Kas soovite osta ettevõtte {COMPANY} {CURRENCY} eest?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Pankrot!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} suleti asutajate poolt ja kõik varad müüakse maha!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} suleti asutajate poolt ja kõik varad müüakse maha!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Loodi uus ettevõte!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Ettevõte {COMPANY} alustas linna {TOWN} lähedal ehitustöid!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Ettevõte {RAW_STRING} alustas linna {TOWN} lähedal ehitustöid!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ettevõtet ei saa osta...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Veoste hinnagraafik
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Päevi teel
@@ -2436,7 +2436,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Müü 25
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Selle ettevõtte aktsiatest ei saa 25% osta...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Selle ettevõtte aktsiatest ei saa 25% müüa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% on ettevõtte {COMPANY} käes)
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} võeti üle ettevõtte {RAW_STRING} poolt!
 STR_PROTECTED                                                   :{WHITE}See ettevõtte pole veel piisavalt vana, et aktsiaid vahetada...
 
 STR_LIVERY_DEFAULT                                              :Firmavärv

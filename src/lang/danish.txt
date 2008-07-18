@@ -1807,7 +1807,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finansiér opførelse af forretningsbygninger i byen.{}  Pris: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Køb et års eksklusive rettigheder til transport i byen. De lokale myndigheder vil kun tillade passagerer og last at bruge dine stationer.{} Prist: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestik de lokale myndigheder til at hæve din bedømmelse, med risiko for en stor straf hvis det bliver opdaget.{}  Pris: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i byen {TOWN}!{}{}Vejfornyelse betalt af {COMPANY} forårsager 6 måneders kaos i trafikken!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i byen {TOWN}!{}{}Vejfornyelse betalt af {RAW_STRING} forårsager 6 måneders kaos i trafikken!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (under konstruktion)
@@ -2298,15 +2298,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Selskabs
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportselskab i vanskeligheder!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} vil blive erklæret konkurs eller solgt, hvis ikke ydelsen stiger snart!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} vil blive erklæret konkurs eller solgt, hvis ikke ydelsen stiger snart!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Direktør)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Fussion mellem transportselskaber!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} er blevet solgt til {COMPANY} for {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} er blevet solgt til {RAW_STRING} for {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Vi leder efter et selskab til at overtage vores{}{}Vil du købe {COMPANY} for {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankerupt!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} er blevet lukket af kreditorerne og alle ejendomme er solgt!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} er blevet lukket af kreditorerne og alle ejendomme er solgt!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nyt transportselskab er startet!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} starter konstruktion i nærheden af {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} starter konstruktion i nærheden af {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kan ikke købe selskab...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Lastudbetalingsrater
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Antal dage undervejs
@@ -2347,7 +2347,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Sælg 25
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan ikke købe 25% aktier i dette selskab...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan ikke sælge 25% aktier i dette selskab...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% ejes af {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} er blevet overtaget af {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} er blevet overtaget af {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Dette selskab sælger ikke aktier endnu...
 
 STR_LIVERY_DEFAULT                                              :Standardfarver

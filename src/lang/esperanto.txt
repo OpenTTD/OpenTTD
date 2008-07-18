@@ -1673,7 +1673,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Fondu la konstruadon de novaj komercaj konstruaĵoj en la urbo.{}  Kosto: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Aĉetu ekskluzivan transportrajton en la urbo por 1 jaro. La urbo nur permesos pasaĝerojn kaj ŝarĝojn uzi viajn staciojn {} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subaĉetu la lokajn estrojn por pliigi vian rendimenton, riskante grandan punon je kapto.{} Kosto: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafika ĥaoso en {TOWN}!{}{}Vojrekonstruada programo komencita de {COMPANY} alportas 6-monatan mizeron al vojuzantoj!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafika ĥaoso en {TOWN}!{}{}Vojrekonstruada programo komencita de {RAW_STRING} alportas 6-monatan mizeron al vojuzantoj!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (konstruata)
@@ -2142,15 +2142,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Kompania
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportkompanio en problemoj!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} forvendiĝos aŭ bankrotiĝos krom se ĝi pli bone faros!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} forvendiĝos aŭ bankrotiĝos krom se ĝi pli bone faros!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Manaĝanto)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportkompania kuniĝo!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} vendiĝis al {COMPANY} por {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} vendiĝis al {RAW_STRING} por {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ni serĉas transportkompanion por transpreni nian kompanion.{}{}Ĉu vi volas aĉeti {COMPANY} por {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrote!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} estas fermita de kreditantoj kaj ĉiuj partoj vendiĝis!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} estas fermita de kreditantoj kaj ĉiuj partoj vendiĝis!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nova transportkompanio lanĉiĝis!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} ekkonstruas ĉe {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} ekkonstruas ĉe {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ne povas aĉeti kompanion...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ŝarĝpagaj Tarifoj
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Tagoj en transporto
@@ -2186,7 +2186,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vendu 25
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ne povas aĉeti 25%-an dividaĵon...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ne povas vendi 25%-an dividaĵon...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% posedataj de {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} estas transprenita de {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} estas transprenita de {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Ĉi tiu kompanio ne sufiĉe aĝas por jam komerci dividaĵojn...
 
 STR_LIVERY_DEFAULT                                              :Normala Koloro

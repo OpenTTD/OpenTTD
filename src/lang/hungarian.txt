@@ -1868,7 +1868,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}  Új kereskedelmi épületek építésének támogatása a városban.{}  Ára: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}  Egy éves kizárólagos szállítási jogok vétele a városban. Az önkormányzat csak a te állomásaid használatát engedi meg az utasoknak és az áruknak.{}  Ára: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} A megítélésed növelése az önkormányzat megvesztegetésével, komoly büntetést kockáztatva, ha ez kiderül.{} Ára: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Közlekedési zűrzavar {TOWN} városában!{}{}{COMPANY} által indított útjavítás keseríti meg hat hónapig az autóvezetők életét!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Közlekedési zűrzavar {TOWN} városában!{}{}{RAW_STRING} által indított útjavítás keseríti meg hat hónapig az autóvezetők életét!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (építés alatt)
@@ -2396,15 +2396,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}A cégek
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Egy szállítási cég bajban van!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} csődöt jelent vagy el kell adni, ha teljesítménye nem nő hamarosan!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} csődöt jelent vagy el kell adni, ha teljesítménye nem nő hamarosan!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME} {}(Elnök)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Szállítási cégek egyesülése!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY}  céget felvásárolta {COMPANY}  {CURRENCY}-ért!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING}  céget felvásárolta {RAW_STRING}  {CURRENCY}-ért!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Egy olyan szállítási céget keresünk, aki tovább vezetné a cégünket{}{}Megveszed {COMPANY}  céget {CURRENCY}-ért?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Csőd!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} céget bezáratták a hitelezői és minden vagyonát elárverezték!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} céget bezáratták a hitelezői és minden vagyonát elárverezték!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Új szállítási vállalatot alapítottak!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} {TOWN} közelében kezd építkezni!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} {TOWN} közelében kezd építkezni!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nem veheted meg a céget...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Rakományok szállítási díja
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Úton töltött napok
@@ -2445,7 +2445,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}25% elad
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nem vehetsz 25%-ot ebből a cégből...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nem adhatsz el 25%-ot ebből a cégből...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% {COMPANY} tulajdona)
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} céget felvásárolta {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} céget felvásárolta {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Ez a cég egyelőre még nem rendelkezik részvényekkel...
 
 STR_LIVERY_DEFAULT                                              :Alapértelmezett

@@ -1815,7 +1815,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}  가격: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}  가격: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} 성취도를 올리기 위해 처벌을 감수하고 지역 당국에 뇌물을 줍니다.{}  가격: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{COMPANY}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}의 교통 혼잡!{}{}{RAW_STRING}에 의한 도로 재공사 프로그램이 운전자들에게 6개월간의 고통을 가져왔습니다!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (공사중)
@@ -2307,15 +2307,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}회사 �
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}운송회사에 문제가 생김!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY}이/가 퍼포먼스가 오르지 않아 곧 팔리거나 파산될 위기에 처했습니다!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING}이/가 퍼포먼스가 오르지 않아 곧 팔리거나 파산될 위기에 처했습니다!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(매니저)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}운송 회사 합병!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY}이/가 {COMPANY}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING}이/가 {RAW_STRING}에게 {CURRENCY}의 가격으로 인수합병되었습니다!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY}의 가격으로 인수합병하시겠습니까?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}파산!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}새로운 운송회사 등장!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY}이/가 {TOWN}에서 공사를 시작했습니다!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING}이/가 {TOWN}에서 공사를 시작했습니다!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}회사를 인수할 수 없습니다...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}화물 운송단가 비율
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}통과시간
@@ -2356,7 +2356,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}이 회�
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}이 회사 주식의 25%를 매입할 수 없습니다...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}이 회사 주식의 25%를 매도할 수 없습니다...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% {COMPANY}의 소유)
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}의 관리권이 {COMPANY}(으)로 넘어갔습니다!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING}의 관리권이 {RAW_STRING}(으)로 넘어갔습니다!
 STR_PROTECTED                                                   :{WHITE}이 회사는 주식을 거래할 만큼 오래되지 않았습니다...
 
 STR_LIVERY_DEFAULT                                              :기본 색상

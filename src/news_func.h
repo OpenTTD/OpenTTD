@@ -8,7 +8,7 @@
 #include "news_type.h"
 #include "vehicle_type.h"
 
-void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b);
+void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b, void *free_data = NULL);
 void NewsLoop();
 void InitNewsItemStructs();
 

@@ -2148,11 +2148,15 @@ static void TownActionRoadRebuild(Town *t)
 {
 	t->road_build_months = 6;
 
+	char *company_name = MallocT<char>(64);
+	SetDParam(0, _current_player);
+	GetString(company_name, STR_COMPANY_NAME, company_name + 64);
+
 	SetDParam(0, t->index);
-	SetDParam(1, _current_player);
+	SetDParamStr(1, company_name);
 
 	AddNewsItem(STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING,
-		NS_GENERAL, t->xy, 0);
+		NS_GENERAL, t->xy, 0, company_name);
 }
 
 static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)

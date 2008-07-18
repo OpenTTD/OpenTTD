@@ -357,11 +357,13 @@ set_name:;
 		MarkWholeScreenDirty();
 
 		if (!IsHumanPlayer(p->index)) {
+			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+			cni->FillData(p);
 			SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
 			SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
-			SetDParam(2, p->index);
+			SetDParamStr(2, cni->company_name);
 			SetDParam(3, t->index);
-			AddNewsItem(STR_02B6, NS_COMPANY_NEW, p->last_build_coordinate, p->index);
+			AddNewsItem(STR_02B6, NS_COMPANY_NEW, p->last_build_coordinate, 0, cni);
 		}
 		return;
 	}
@@ -795,6 +797,32 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return CommandCost();
 }
 
+/**
+ * Fill the CompanyNewsInformation struct with the required data.
+ * @param p the current company.
+ * @param other the other company.
+ */
+void CompanyNewsInformation::FillData(const Player *p, const Player *other)
+{
+	SetDParam(0, p->index);
+	GetString(this->company_name, STR_COMPANY_NAME, lastof(this->company_name));
+
+	if (other == NULL) {
+		*this->other_company_name = '\0';
+	} else {
+		SetDParam(0, other->index);
+		GetString(this->other_company_name, STR_COMPANY_NAME, lastof(this->other_company_name));
+		p = other;
+	}
+
+	SetDParam(0, p->index);
+	GetString(this->president_name, STR_7058_PRESIDENT, lastof(this->president_name));
+
+	this->colour = p->player_color;
+	this->face = p->face;
+
+}
+
 /** Control the players: add, delete, etc.
  * @param tile unused
  * @param flags operation to perform
@@ -933,11 +961,14 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Delete any open window of the company */
 			DeletePlayerWindows(p->index);
 
+			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+			cni->FillData(p);
+
 			/* Show the bankrupt news */
 			SetDParam(0, STR_705C_BANKRUPT);
 			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-			SetDParam(2, p->index);
-			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, p->index);
+			SetDParamStr(2, cni->company_name);
+			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
 			/* Remove the company */
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);

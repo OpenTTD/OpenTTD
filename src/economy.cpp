@@ -494,8 +494,6 @@ static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
 
 static void PlayersCheckBankrupt(Player *p)
 {
-	PlayerID owner;
-
 	/*  If the player has money again, it does not go bankrupt */
 	if (p->player_money >= 0) {
 		p->quarters_of_bankrupcy = 0;
@@ -504,23 +502,28 @@ static void PlayersCheckBankrupt(Player *p)
 
 	p->quarters_of_bankrupcy++;
 
-	owner = p->index;
+	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+	cni->FillData(p);
 
 	switch (p->quarters_of_bankrupcy) {
+		default:
+			free(cni);
+			break;
+
 		case 2:
 			SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
 			SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
-			SetDParam(2, owner);
-			AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, owner);
+			SetDParamStr(2, cni->company_name);
+			AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, 0, cni);
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other players if it wants to take
 		          over when it is a human company? -- TrueLight */
-			if (IsHumanPlayer(owner)) {
+			if (IsHumanPlayer(p->index)) {
 				SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
 				SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
-				SetDParam(2, owner);
-				AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, owner);
+				SetDParamStr(2, cni->company_name);
+				AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, 0, cni);
 				break;
 			}
 
@@ -529,23 +532,24 @@ static void PlayersCheckBankrupt(Player *p)
 			Money val = CalculateCompanyValue(p);
 			if (val > 0) {
 				p->bankrupt_value = val;
-				p->bankrupt_asked = 1 << owner; // Don't ask the owner
+				p->bankrupt_asked = 1 << p->index; // Don't ask the owner
 				p->bankrupt_timeout = 0;
+				free(cni);
 				break;
 			}
 			/* Else, falltrue to case 4... */
 		}
 		case 4: {
 			/* Close everything the owner has open */
-			DeletePlayerWindows(owner);
+			DeletePlayerWindows(p->index);
 
 			/* Show bankrupt news */
 			SetDParam(0, STR_705C_BANKRUPT);
 			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-			SetDParam(2, p->index);
-			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, owner);
+			SetDParamStr(2, cni->company_name);
+			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
-			if (IsHumanPlayer(owner)) {
+			if (IsHumanPlayer(p->index)) {
 				/* XXX - If we are in offline mode, leave the player playing. Eg. there
 				 * is no THE-END, otherwise mark the player as spectator to make sure
 				 * he/she is no long in control of this company */
@@ -555,16 +559,16 @@ static void PlayersCheckBankrupt(Player *p)
 					break;
 				}
 
-				ChangeNetworkOwner(owner, PLAYER_SPECTATOR);
+				ChangeNetworkOwner(p->index, PLAYER_SPECTATOR);
 			}
 
 			/* Remove the player */
-			ChangeOwnershipOfPlayerItems(owner, PLAYER_SPECTATOR);
+			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
 			/* Register the player as not-active */
 			p->is_active = false;
 
-			if (!IsHumanPlayer(owner) && (!_networking || _network_server) && _ai.enabled)
-				AI_PlayerDied(owner);
+			if (!IsHumanPlayer(p->index) && (!_networking || _network_server) && _ai.enabled)
+				AI_PlayerDied(p->index);
 		}
 	}
 }
@@ -1733,12 +1737,15 @@ static void DoAcquireCompany(Player *p)
 	int i;
 	Money value;
 
+	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+	cni->FillData(p, GetPlayer(_current_player));
+
 	SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
 	SetDParam(1, p->bankrupt_value == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
-	SetDParam(2, p->index);
-	SetDParam(3, _current_player);
+	SetDParamStr(2, cni->company_name);
+	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, p->bankrupt_value);
-	AddNewsItem(STR_02B6, NS_COMPANY_MERGER, 0, _current_player);
+	AddNewsItem(STR_02B6, NS_COMPANY_MERGER, 0, 0, cni);
 
 	/* original code does this a little bit differently */
 	PlayerID pi = p->index;

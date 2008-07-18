@@ -109,7 +109,26 @@ struct NewsItem {
 	uint data_a;           ///< Custom data 1 (usually tile or vehicle)
 	uint data_b;           ///< Custom data 2
 
+	void *free_data;       ///< Data to be freed when the news item has reached it's end.
+
 	uint64 params[10];
+};
+
+/**
+ * Data that needs to be stored for company news messages.
+ * The problem with company news messages are the custom name
+ * of the companies and the fact that the company data is reset,
+ * resulting in wrong names and such.
+ */
+struct CompanyNewsInformation {
+	char company_name[64];       ///< The name of the company
+	char president_name[64];     ///< The name of the president
+	char other_company_name[64]; ///< The name of the company taking over this one
+
+	uint32 face; ///< The face of the president
+	byte colour; ///< The colour related to the company
+
+	void FillData(const struct Player *p, const struct Player *other = NULL);
 };
 
 #endif /* NEWS_TYPE_H */

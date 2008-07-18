@@ -49,19 +49,19 @@ void DrawNewsNewVehicleAvail(Window *w, const NewsItem *ni);
 
 static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 {
-	Player *p = GetPlayer((PlayerID)(ni->data_b));
-	DrawPlayerFace(p->face, p->player_color, 2, 23);
+	const CompanyNewsInformation *cni = (const CompanyNewsInformation*)ni->free_data;
+
+	DrawPlayerFace(cni->face, cni->colour, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOR);
 
-	SetDParam(0, p->index);
-
-	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
+	SetDParamStr(0, cni->president_name);
+	DrawStringMultiCenter(49, 148, STR_JUST_RAW_STRING, 94);
 
 	switch (ni->subtype) {
 		case NS_COMPANY_TROUBLE:
 			DrawStringCentered(w->width >> 1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, TC_FROMSTRING);
 
-			SetDParam(0, p->index);
+			SetDParam(0, ni->params[2]);
 
 			DrawStringMultiCenter(
 				((w->width - 101) >> 1) + 98,
@@ -73,7 +73,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 		case NS_COMPANY_MERGER:
 			DrawStringCentered(w->width >> 1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, TC_FROMSTRING);
 			SetDParam(0, ni->params[2]);
-			SetDParam(1, p->index);
+			SetDParam(1, ni->params[3]);
 			SetDParam(2, ni->params[4]);
 			DrawStringMultiCenter(
 				((w->width - 101) >> 1) + 98,
@@ -84,7 +84,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 
 		case NS_COMPANY_BANKRUPT:
 			DrawStringCentered(w->width >> 1, 1, STR_705C_BANKRUPT, TC_FROMSTRING);
-			SetDParam(0, p->index);
+			SetDParam(0, ni->params[2]);
 			DrawStringMultiCenter(
 				((w->width - 101) >> 1) + 98,
 				90,
@@ -94,7 +94,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 
 		case NS_COMPANY_NEW:
 			DrawStringCentered(w->width >> 1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, TC_FROMSTRING);
-			SetDParam(0, p->index);
+			SetDParam(0, ni->params[2]);
 			SetDParam(1, ni->params[3]);
 			DrawStringMultiCenter(
 				((w->width - 101) >> 1) + 98,
@@ -485,7 +485,7 @@ static void MoveToNextItem()
  *
  * @see NewsSubype
  */
-void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
+void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b, void *free_data)
 {
 	if (_game_mode == GM_MENU) return;
 
@@ -501,6 +501,7 @@ void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b)
 
 	ni->data_a = data_a;
 	ni->data_b = data_b;
+	ni->free_data = free_data;
 	ni->date = _date;
 	CopyOutDParam(ni->params, 0, lengthof(ni->params));
 
@@ -548,6 +549,8 @@ static void DeleteNewsItem(NewsItem *ni)
 		assert(_latest_news == ni);
 		_latest_news = ni->prev;
 	}
+
+	free(ni->free_data);
 
 	if (_current_news == ni) _current_news = ni->prev;
 	_total_news--;

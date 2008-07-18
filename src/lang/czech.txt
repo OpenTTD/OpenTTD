@@ -1873,7 +1873,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Dotovat stavbu nových obchodních budov ve městě.{}  Cena: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koupit výhradní práva k přepravě zboží z tohoto města po dobu jednoho roku. Místní správa dovolí cestujícím a nákladu používat pouze stanice tvé společnosti.{} Cena: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podplatit místní správu pro zvýšení hodnocení společnosti. Riziko trestu v případě přistižení.{}  Cena: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN} zažívá dopravní chaos!{}{}Program přestavby ulic sponzorovaný {COMPANY} přináší motoristům 6 měsíců utrpení!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN} zažívá dopravní chaos!{}{}Program přestavby ulic sponzorovaný {RAW_STRING} přináší motoristům 6 měsíců utrpení!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (ve výstavbě)
@@ -2365,15 +2365,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabulka 
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Dopravní společnost má problémy!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} bude prodána nebo vyhlásí bankrot, pokud se brzy nezvýší výkonnost!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} bude prodána nebo vyhlásí bankrot, pokud se brzy nezvýší výkonnost!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Prezident)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Sloučení dopravních společností!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} byla prodána {COMPANY} za {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} byla prodána {RAW_STRING} za {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Hledáme společnost, která převezme naši společnost.{}{}Chcete zakoupit {COMPANY} za {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrot!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} byla zavřena veřiteli a podíly byly prodány!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} byla zavřena veřiteli a podíly byly prodány!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nová společnost založena!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} začíná stavět poblíž {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} začíná stavět poblíž {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nemohu koupit společnost...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ceny za přepravu nákladu
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Doba přepravy ve dnech
@@ -2414,7 +2414,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Prodat 2
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nemohu koupit podíl v této společnosti...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nemohu prodat podíl v této společnosti...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% vlastněno {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} byla převzata {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} byla převzata {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Tato společnost zatím neobchoduje s akciemi...
 
 STR_LIVERY_DEFAULT                                              :Výchozí barva

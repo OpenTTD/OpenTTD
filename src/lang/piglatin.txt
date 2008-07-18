@@ -1764,7 +1764,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Undfay ethay onstructioncay ofway ewnay ommercialcay uildingsbay inway ethay owntay.{}  Ostcay: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Uybay 1 ear'syay exclusiveway ansporttray ightsray inway owntay. Owntay authorityway illway onlyway allowway assengerspay andway argocay otay useway ouryay ompany'scay ationsstay.{} Ostcay: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Ibebray ethay ocallay authorityway otay increaseway ouryay atingray, atway ethay iskray ofway away everesay enaltypay ifway aughtcay.{}  Ostcay: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Affictray aoschay inway {TOWN}!{}{}Oadray ebuildingray ogrammepray undedfay ybay {COMPANY} ingsbray 6 onthsmay ofway iserymay otay otoristsmay!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Affictray aoschay inway {TOWN}!{}{}Oadray ebuildingray ogrammepray undedfay ybay {RAW_STRING} ingsbray 6 onthsmay ofway iserymay otay otoristsmay!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (underway onstructioncay)
@@ -2254,15 +2254,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Ompanyca
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Ansporttray ompanycay inway oubletray!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} illway ebay oldsay offway orway eclaredday ankruptbay unlessway erformancepay increasesway oonsay!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} illway ebay oldsay offway orway eclaredday ankruptbay unlessway erformancepay increasesway oonsay!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Anagermay)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Ansporttray ompanycay ergermay!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} ashay eenbay oldsay otay {COMPANY} orfay {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} ashay eenbay oldsay otay {RAW_STRING} orfay {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Eway areway ookinglay orfay away ansporttray ompanycay otay aketay-overway ourway ompanycay.{}{}Oday ouyay antway otay urchasepay {COMPANY} orfay {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Ankruptbay!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} ashay eenbay osedclay ownday ybay editorscray andway allway assetsway oldsay offway!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} ashay eenbay osedclay ownday ybay editorscray andway allway assetsway oldsay offway!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Ewnay ansporttray ompanycay aunchedlay!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} artsstay onstructioncay earnay {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} artsstay onstructioncay earnay {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}An'tcay uybay ompanycay...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Argocay Aymentpay Atesray
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Aysday inway ansittray
@@ -2303,7 +2303,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Ellsay 2
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}An'tcay uybay 25% areshay inway isthay ompanycay...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}An'tcay ellsay 25% areshay inway isthay ompanycay...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% ownedway ybay {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} ashay eenbay akentay overway ybay {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} ashay eenbay akentay overway ybay {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Isthay ompanycay isway otnay oldway enoughway otay adetray aresshay etyay...
 
 STR_LIVERY_DEFAULT                                              :Andardstay Iverylay

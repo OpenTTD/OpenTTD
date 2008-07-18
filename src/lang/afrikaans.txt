@@ -1767,7 +1767,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Fonds die bou van nuwe kommersieel geboue in die stad.{}  Prys: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koop 1 jare eksklusief vervoer regte in dorp. Dorp raad sal slegs passasiers en cargo toelaat om jou maatskappy se stasies te gebruik.{} Prys: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Omkoop die plaaslike raad om jou gradering te verbeter, by die risiko van 'n ernstig straf indien gevang{}  Kos: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeer warboel in {TOWN}!{}{}Pad heropbou program befonds deur {COMPANY} bring 6 maande van ellende na motoriste!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeer warboel in {TOWN}!{}{}Pad heropbou program befonds deur {RAW_STRING} bring 6 maande van ellende na motoriste!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (onder konstruksie)
@@ -2257,15 +2257,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Maatskap
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Vervoer maatsappy in moelikheid!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} sal binnekort afverkoop of bankrospeler verklaar word tensy prestasie verbeter!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} sal binnekort afverkoop of bankrospeler verklaar word tensy prestasie verbeter!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Bestuurder)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Vervoer maatskappy samesmelting!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} is na {COMPANY} vir  {CURRENCY} verkoop!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} is na {RAW_STRING} vir  {CURRENCY} verkoop!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ons is opsoek na 'n vervoer maatskappy wat ons se maatskappy sal oorvat.{}{}Wil jy {COMPANY} koop vir {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrotspeler!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} is deur skuldeisers toegemaak en alle bates is afverkoop!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} is deur skuldeisers toegemaak en alle bates is afverkoop!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nuwe vervoer maatskappy geloods!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} begin konstruksie naby {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} begin konstruksie naby {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Maatskappy kan nie aangekoop word nie...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Vrag Betaalings Grade
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dae in deurtog
@@ -2301,7 +2301,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Verkoop 
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan nie 25% aandeel in die maatskappy koop nie...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan nie 25% aandeel in die maatskappy verkoop nie...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% besit by {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} is deur {COMPANY} oorgevat!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} is deur {RAW_STRING} oorgevat!
 STR_PROTECTED                                                   :{WHITE}Die maatskappy is nie oud genoeg om aandeele te handel nie...
 
 STR_LIVERY_DEFAULT                                              :Standaard Lewery

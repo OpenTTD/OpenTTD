@@ -1815,7 +1815,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Bekosta uppbyggnad av nya kommersiella byggnader i staden.{}  Kostnad: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens myndigheter kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{} Kostnad: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Muta de lokala myndigheterna för att öka din värdering, på risken av att få höga böter om du blir upptäckt.{}  Kostnad: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Vägombyggnadsprogram bekostat av {COMPANY} medför 6 månader av elände för bilister!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Vägombyggnadsprogram bekostat av {RAW_STRING} medför 6 månader av elände för bilister!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (under byggnation)
@@ -2307,15 +2307,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Företag
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportföretag har problem!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} kommer att säljas eller gå bankrutt om det inte går bättre snart!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} kommer att säljas eller gå bankrutt om det inte går bättre snart!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(VD)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportföretag slås ihop!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} har sålts till {COMPANY} för {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} har sålts till {RAW_STRING} för {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Vi letar efter någon som vill köpa och ta över vårt företag{}{}Vill du köpa {COMPANY} för {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrutt!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} har avvecklats av investerarna och tillgångarna har sålts ut!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} har avvecklats av investerarna och tillgångarna har sålts ut!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nytt transportföretag startat!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} börjar bygga nära {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} börjar bygga nära {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kan inte köpa företag...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Fraktförtjänster
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dagar i transit
@@ -2356,7 +2356,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Sälj 25
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan inte köpa 25% andelar i detta företag...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan inte sälja 25% andelar i detta företag...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% ägs av {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har tagits över av {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} har tagits över av {RAW_STRING}!
 STR_PROTECTED                                                   :{WHITE}Det här företaget bedriver inte aktiehandel ännu....
 
 STR_LIVERY_DEFAULT                                              :Normalt Färgschema
