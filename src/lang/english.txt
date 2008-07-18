@@ -1384,6 +1384,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Enter th
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max{}Companies online / companies max
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Map size
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Map size of the game{}Click to sort by area
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Date
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Current date
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Years
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Number of years{}the game is running
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Language:  {WHITE}{STRING}

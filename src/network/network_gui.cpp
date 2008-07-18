@@ -97,6 +97,9 @@ enum NetworkGameWindowWidgets {
 
 	NGWW_NAME,          ///< 'Name' button
 	NGWW_CLIENTS,       ///< 'Clients' button
+	NGWW_MAPSIZE,       ///< 'Map size' button
+	NGWW_DATE,          ///< 'Date' button
+	NGWW_YEARS,         ///< 'Years' button
 	NGWW_INFO,          ///< Third button in the game list panel
 
 	NGWW_MATRIX,        ///< Panel with list of games
@@ -169,6 +172,30 @@ protected:
 		return r;
 	}
 
+	/** Sort servers by map size */
+	static int CDECL NGameMapSizeSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	{
+		/* Sort by the area of the map. */
+		int r = ((*a)->info.map_height) * ((*a)->info.map_width) - ((*b)->info.map_height) * ((*b)->info.map_width);
+
+		if (r == 0) r = (*a)->info.map_width - (*b)->info.map_width;
+		return (r != 0) ? r : NGameClientSorter(a, b);
+	}
+
+	/** Sort servers by current date */
+	static int CDECL NGameDateSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	{
+		int r = (*a)->info.game_date - (*b)->info.game_date;
+		return (r != 0) ? r : NGameClientSorter(a, b);
+	}
+
+	/** Sort servers by the number of days the game is running */
+	static int CDECL NGameYearsSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	{
+		int r = (*a)->info.game_date - (*a)->info.start_date - (*b)->info.game_date + (*b)->info.start_date;
+		return (r != 0) ? r : NGameDateSorter(a, b);
+	}
+
 	/** Sort servers by joinability. If both servers are the
 	 * same, prefer the non-passworded server first. */
 	static int CDECL NGameAllowedSorter(NetworkGameList* const *a, NetworkGameList* const *b)
@@ -219,14 +246,38 @@ protected:
 		SetDParamStr(0, cur_item->info.server_name);
 		DrawStringTruncated(this->widget[NGWW_NAME].left + 5, y, STR_JUST_RAW_STRING, TC_BLACK, this->widget[NGWW_NAME].right - this->widget[NGWW_NAME].left - 5);
 
-		SetDParam(0, cur_item->info.clients_on);
-		SetDParam(1, cur_item->info.clients_max);
-		SetDParam(2, cur_item->info.companies_on);
-		SetDParam(3, cur_item->info.companies_max);
-		DrawStringCentered(this->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
-
-		/* only draw icons if the server is online */
+		/* only draw details if the server is online */
 		if (cur_item->online) {
+			SetDParam(0, cur_item->info.clients_on);
+			SetDParam(1, cur_item->info.clients_max);
+			SetDParam(2, cur_item->info.companies_on);
+			SetDParam(3, cur_item->info.companies_max);
+			DrawStringCentered(this->widget[NGWW_CLIENTS].left + 39, y, STR_NETWORK_GENERAL_ONLINE, TC_GOLD);
+
+			/* map size */
+			if (!this->IsWidgetHidden(NGWW_MAPSIZE)) {
+				SetDParam(0, cur_item->info.map_width);
+				SetDParam(1, cur_item->info.map_height);
+				DrawStringCentered(this->widget[NGWW_MAPSIZE].left + 39, y, STR_NETWORK_MAP_SIZE_SHORT, TC_BLACK);
+			}
+
+			/* current date */
+			if (!this->IsWidgetHidden(NGWW_DATE)) {
+				YearMonthDay ymd;
+				ConvertDateToYMD(cur_item->info.game_date, &ymd);
+				SetDParam(0, ymd.year);
+				DrawStringCentered(this->widget[NGWW_DATE].left + 29, y, STR_JUST_INT, TC_BLACK);
+			}
+
+			/* number of years the game is running */
+			if (!this->IsWidgetHidden(NGWW_YEARS)) {
+				YearMonthDay ymd_cur, ymd_start;
+				ConvertDateToYMD(cur_item->info.game_date, &ymd_cur);
+				ConvertDateToYMD(cur_item->info.start_date, &ymd_start);
+				SetDParam(0, ymd_cur.year - ymd_start.year);
+				DrawStringCentered(this->widget[NGWW_YEARS].left + 29, y, STR_JUST_INT, TC_BLACK);
+			}
+
 			/* draw a lock if the server is password protected */
 			if (cur_item->info.use_password) DrawSprite(SPR_LOCK, PAL_NONE, this->widget[NGWW_INFO].left + 5, y - 1);
 
@@ -303,6 +354,9 @@ public:
 		switch (this->servers.SortType()) {
 			case NGWW_NAME    - NGWW_NAME: this->DrawSortButtonState(NGWW_NAME,    arrow); break;
 			case NGWW_CLIENTS - NGWW_NAME: this->DrawSortButtonState(NGWW_CLIENTS, arrow); break;
+			case NGWW_MAPSIZE - NGWW_NAME: if (!this->IsWidgetHidden(NGWW_MAPSIZE)) this->DrawSortButtonState(NGWW_MAPSIZE, arrow); break;
+			case NGWW_DATE    - NGWW_NAME: if (!this->IsWidgetHidden(NGWW_DATE))    this->DrawSortButtonState(NGWW_DATE,    arrow); break;
+			case NGWW_YEARS   - NGWW_NAME: if (!this->IsWidgetHidden(NGWW_YEARS))   this->DrawSortButtonState(NGWW_YEARS,   arrow); break;
 			case NGWW_INFO    - NGWW_NAME: this->DrawSortButtonState(NGWW_INFO,    arrow); break;
 		}
 
@@ -410,9 +464,12 @@ public:
 				ShowDropDownMenu(this, _lan_internet_types_dropdown, _settings_client.network.lan_internet, NGWW_CONN_BTN, 0, 0); // do it for widget NSSW_CONN_BTN
 				break;
 
-			case NGWW_NAME: // Sort by name
+			case NGWW_NAME:    // Sort by name
 			case NGWW_CLIENTS: // Sort by connected clients
-			case NGWW_INFO: // Connectivity (green dot)
+			case NGWW_MAPSIZE: // Sort by map size
+			case NGWW_DATE:    // Sort by date
+			case NGWW_YEARS:   // Sort by years
+			case NGWW_INFO:    // Connectivity (green dot)
 				if (this->servers.SortType() == widget - NGWW_NAME) {
 					this->servers.ToggleSortOrder();
 				} else {
@@ -546,6 +603,36 @@ public:
 
 		SetVScrollCount(this, this->servers.Length());
 
+		/* Additional colums in server list */
+		if (this->width > NetworkGameWindow::MIN_EXTRA_COLUMNS_WIDTH + GetWidgetWidth(NGWW_MAPSIZE)
+				+ GetWidgetWidth(NGWW_DATE) + GetWidgetWidth(NGWW_YEARS)) {
+			/* show columns 'Map size', 'Date' and 'Years' */
+			this->SetWidgetsHiddenState(false, NGWW_MAPSIZE, NGWW_DATE, NGWW_YEARS, WIDGET_LIST_END);
+			AlignWidgetRight(NGWW_YEARS,   NGWW_INFO);
+			AlignWidgetRight(NGWW_DATE,    NGWW_YEARS);
+			AlignWidgetRight(NGWW_MAPSIZE, NGWW_DATE);
+			AlignWidgetRight(NGWW_CLIENTS, NGWW_MAPSIZE);
+		} else if (this->width > NetworkGameWindow::MIN_EXTRA_COLUMNS_WIDTH + GetWidgetWidth(NGWW_MAPSIZE) + GetWidgetWidth(NGWW_DATE)) {
+			/* show columns 'Map size' and 'Date' */
+			this->SetWidgetsHiddenState(false, NGWW_MAPSIZE, NGWW_DATE, WIDGET_LIST_END);
+			this->HideWidget(NGWW_YEARS);
+			AlignWidgetRight(NGWW_DATE,    NGWW_INFO);
+			AlignWidgetRight(NGWW_MAPSIZE, NGWW_DATE);
+			AlignWidgetRight(NGWW_CLIENTS, NGWW_MAPSIZE);
+		} else if (this->width > NetworkGameWindow::MIN_EXTRA_COLUMNS_WIDTH + GetWidgetWidth(NGWW_MAPSIZE)) {
+			/* show column 'Map size' */
+			this->ShowWidget(NGWW_MAPSIZE);
+			this->SetWidgetsHiddenState(true, NGWW_DATE, NGWW_YEARS, WIDGET_LIST_END);
+			AlignWidgetRight(NGWW_MAPSIZE, NGWW_INFO);
+			AlignWidgetRight(NGWW_CLIENTS, NGWW_MAPSIZE);
+		} else {
+			/* hide columns 'Map size', 'Date' and 'Years' */
+			this->SetWidgetsHiddenState(true, NGWW_MAPSIZE, NGWW_DATE, NGWW_YEARS, WIDGET_LIST_END);
+			AlignWidgetRight(NGWW_CLIENTS, NGWW_INFO);
+		}
+		this->widget[NGWW_NAME].right = this->widget[NGWW_CLIENTS].left - 1;
+
+		/* BOTTOM */
 		int widget_width = this->widget[NGWW_FIND].right - this->widget[NGWW_FIND].left;
 		int space = (this->width - 4 * widget_width - 25) / 3;
 
@@ -557,12 +644,17 @@ public:
 			offset += space;
 		}
 	}
+
+	static const int MIN_EXTRA_COLUMNS_WIDTH = 550;   ///< default width of the window
 };
 
-Listing NetworkGameWindow::last_sorting = {false, 2};
+Listing NetworkGameWindow::last_sorting = {false, 5};
 GUIGameServerList::SortFunction *const NetworkGameWindow::sorter_funcs[] = {
 	&NGameNameSorter,
 	&NGameClientSorter,
+	&NGameMapSizeSorter,
+	&NGameDateSorter,
+	&NGameYearsSorter,
 	&NGameAllowedSorter
 };
 
@@ -579,8 +671,11 @@ static const Widget _network_game_window_widgets[] = {
 {    WWT_EDITBOX,   RESIZE_LR,     BGC,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_PLAYER
 
 /* LEFT SIDE */
-{ WWT_PUSHTXTBTN,   RESIZE_RIGHT,  BTC,    10,    70,    42,    53, STR_NETWORK_GAME_NAME,            STR_NETWORK_GAME_NAME_TIP},        // NGWW_NAME
-{ WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,    71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,      STR_NETWORK_CLIENTS_CAPTION_TIP},  // NGWW_CLIENTS
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,    70,    42,    53, STR_NETWORK_GAME_NAME,            STR_NETWORK_GAME_NAME_TIP},        // NGWW_NAME
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    71,   150,    42,    53, STR_NETWORK_CLIENTS_CAPTION,      STR_NETWORK_CLIENTS_CAPTION_TIP},  // NGWW_CLIENTS
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    71,   150,    42,    53, STR_NETWORK_MAP_SIZE_CAPTION,     STR_NETWORK_MAP_SIZE_CAPTION_TIP}, // NGWW_MAPSIZE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    71,   130,    42,    53, STR_NETWORK_DATE_CAPTION,         STR_NETWORK_DATE_CAPTION_TIP},     // NGWW_DATE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    71,   130,    42,    53, STR_NETWORK_YEARS_CAPTION,        STR_NETWORK_YEARS_CAPTION_TIP},    // NGWW_YEARS
 { WWT_PUSHTXTBTN,   RESIZE_LR,     BTC,   151,   190,    42,    53, STR_EMPTY,                        STR_NETWORK_INFO_ICONS_TIP},       // NGWW_INFO
 
 {     WWT_MATRIX,   RESIZE_RB,     BGC,    10,   190,    54,   208, (11 << 8) + 1,                    STR_NETWORK_CLICK_GAME_TO_SELECT}, // NGWW_MATRIX
@@ -608,7 +703,7 @@ static const Widget _network_game_window_widgets[] = {
 };
 
 static const WindowDesc _network_game_window_desc = {
-	WDP_CENTER, WDP_CENTER, 450, 264, 550, 264,
+	WDP_CENTER, WDP_CENTER, 450, 264, 780, 264,
 	WC_NETWORK_WINDOW, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_network_game_window_widgets,
