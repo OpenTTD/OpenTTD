@@ -50,7 +50,6 @@
 	extern int _debug_gamelog_level;
 
 	void CDECL debug(const char *dbg, ...);
-	void CDECL debug_print(const char *dbg, const char *buf);
 #endif /* NO_DEBUG_MESSAGES */
 
 void SetDebugString(const char *s);

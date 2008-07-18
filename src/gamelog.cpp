@@ -114,10 +114,12 @@ void GamelogStopAction()
 {
 	assert(_gamelog_action_type != GLAT_NONE); // nobody should try to stop if there is no action in progress
 
+	bool print = _current_action != NULL;
+
 	_current_action = NULL;
 	_gamelog_action_type = GLAT_NONE;
 
-	if (_debug_gamelog_level > 4) GamelogPrintDebug();
+	if (print) GamelogPrintDebug(5);
 }
 
 /** Resets and frees all memory allocated - used before loading or starting a new game
@@ -318,14 +320,22 @@ void GamelogPrintConsole()
 	GamelogPrint(&GamelogPrintConsoleProc);
 }
 
+static int _gamelog_print_level = 0; ///< gamelog debug level we need to print stuff
 
 static void GamelogPrintDebugProc(const char *s)
 {
-	debug_print("gamelog", s);
+	DEBUG(gamelog, _gamelog_print_level, s);
 }
 
-void GamelogPrintDebug()
+
+/** Prints gamelog to debug output. Code is executed even when
+ * there will be no output. It is called very seldom, so it
+ * doesn't matter that much. At least it gives more uniform code...
+ * @param level debug level we need to print stuff
+ */
+void GamelogPrintDebug(int level)
 {
+	_gamelog_print_level = level;
 	GamelogPrint(&GamelogPrintDebugProc);
 }
 

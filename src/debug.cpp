@@ -61,7 +61,7 @@ struct DebugLevel {
 
 #if !defined(NO_DEBUG_MESSAGES)
 
-void CDECL debug_print(const char *dbg, const char *buf)
+static void debug_print(const char *dbg, const char *buf)
 {
 #if defined(ENABLE_NETWORK)
 	if (_debug_socket != INVALID_SOCKET) {

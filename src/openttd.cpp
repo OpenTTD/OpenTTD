@@ -2455,7 +2455,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (_debug_gamelog_level > 0) GamelogPrintDebug();
+	GamelogPrintDebug(1);
 
 	return InitializeWindowsAndCaches();
 }

@@ -25,7 +25,7 @@ void GamelogReset();
 typedef void GamelogPrintProc(const char *s);
 void GamelogPrint(GamelogPrintProc *proc); // needed for WIN32 / WINCE crash.log
 
-void GamelogPrintDebug();
+void GamelogPrintDebug(int level);
 void GamelogPrintConsole();
 
 void GamelogRevision();
