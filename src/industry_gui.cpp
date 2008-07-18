@@ -28,6 +28,7 @@
 #include "string_func.h"
 #include "sortlist_type.h"
 #include "widgets/dropdown_func.h"
+#include "player_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

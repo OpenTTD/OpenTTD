@@ -5,6 +5,8 @@
 #ifndef PLAYER_BASE_H
 #define PLAYER_BASE_H
 
+#include "player_type.h"
+#include "oldpool.h"
 #include "road_type.h"
 #include "rail_type.h"
 #include "date_type.h"
@@ -22,7 +24,12 @@ struct PlayerEconomyEntry {
 	Money company_value;
 };
 
-struct Player {
+DECLARE_OLD_POOL(Player, Player, 1, MAX_PLAYERS)
+
+struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
+	Player(uint16 name_1 = 0, bool is_ai = false);
+	~Player();
+
 	uint32 name_2;
 	uint16 name_1;
 	char *name;
@@ -42,7 +49,6 @@ struct Player {
 	RailTypes avail_railtypes;
 	RoadTypes avail_roadtypes;
 	byte block_preview;
-	PlayerByte index;
 
 	uint32 cargo_types; ///< which cargo types were transported the last year
 
@@ -59,7 +65,6 @@ struct Player {
 	int16 bankrupt_timeout;
 	Money bankrupt_value;
 
-	bool is_active;
 	bool is_ai;
 
 	Money yearly_expenses[3][EXPENSES_END];
@@ -71,7 +76,19 @@ struct Player {
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
 	uint16 *num_engines; ///< caches the number of engines of each type the player owns (no need to save this)
+
+	inline bool IsValid() const { return this->name_1 != 0; }
 };
+
+inline bool operator < (PlayerID p, uint u) {return (uint)p < u;}
+
+static inline bool IsValidPlayerID(PlayerID index)
+{
+	return index < GetPlayerPoolSize() && GetPlayer(index)->IsValid();
+}
+
+#define FOR_ALL_PLAYERS_FROM(d, start) for (d = GetPlayer(start); d != NULL; d = (d->index + 1U < GetPlayerPoolSize()) ? GetPlayer(d->index + 1U) : NULL) if (d->IsValid())
+#define FOR_ALL_PLAYERS(d) FOR_ALL_PLAYERS_FROM(d, 0)
 
 struct PlayerMoneyBackup {
 private:
@@ -85,25 +102,14 @@ public:
 	void Restore();
 };
 
-extern Player _players[MAX_PLAYERS];
-#define FOR_ALL_PLAYERS(p) for (p = _players; p != endof(_players); p++)
-
 static inline byte ActivePlayerCount()
 {
 	const Player *p;
 	byte count = 0;
 
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) count++;
-	}
+	FOR_ALL_PLAYERS(p) count++;
 
 	return count;
-}
-
-static inline Player *GetPlayer(PlayerID i)
-{
-	assert(IsInsideBS(i, PLAYER_FIRST, lengthof(_players)));
-	return &_players[i];
 }
 
 Money CalculateCompanyValue(const Player *p);

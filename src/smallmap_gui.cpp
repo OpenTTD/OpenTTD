@@ -619,10 +619,8 @@ public:
 
 			/* now fill with the player colors */
 			FOR_ALL_PLAYERS(p) {
-				if (p->is_active) {
-					_owner_colors[p->index] =
-						_colour_gradient[p->player_color][5] * 0x01010101;
-				}
+				_owner_colors[p->index] =
+					_colour_gradient[p->player_color][5] * 0x01010101;
 			}
 		}
 

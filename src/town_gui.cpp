@@ -182,7 +182,7 @@ public:
 
 		const Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && (HasBit(this->town->have_ratings, p->index) || this->town->exclusivity == p->index)) {
+			if ((HasBit(this->town->have_ratings, p->index) || this->town->exclusivity == p->index)) {
 				DrawPlayerIcon(p->index, 2, y);
 
 				SetDParam(0, p->index);

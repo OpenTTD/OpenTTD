@@ -124,9 +124,6 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	byte current = 0;
 	/* Go through all the players */
 	FOR_ALL_PLAYERS(player) {
-		/* Skip non-active players */
-		if (!player->is_active) continue;
-
 		current++;
 
 		/* Send the information */

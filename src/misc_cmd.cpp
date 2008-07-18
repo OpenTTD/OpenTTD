@@ -69,7 +69,7 @@ CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (scheme == LS_DEFAULT && state == 0) {
 		const Player *pp;
 		FOR_ALL_PLAYERS(pp) {
-			if (pp->is_active && pp != p && pp->player_color == colour) return CMD_ERROR;
+			if (pp != p && pp->player_color == colour) return CMD_ERROR;
 		}
 	}
 
@@ -208,7 +208,6 @@ static bool IsUniqueCompanyName(const char *name)
 	char buf[512];
 
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) continue;
 		SetDParam(0, p->index);
 		GetString(buf, STR_COMPANY_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
@@ -245,7 +244,6 @@ static bool IsUniquePresidentName(const char *name)
 	char buf[512];
 
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) continue;
 		SetDParam(0, p->index);
 		GetString(buf, STR_PLAYER_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;

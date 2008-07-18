@@ -24,6 +24,7 @@
 #include "settings_type.h"
 #include "tunnelbridge.h"
 #include "tilehighlight_func.h"
+#include "player_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

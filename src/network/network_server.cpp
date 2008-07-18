@@ -89,8 +89,6 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	NetworkPopulateCompanyInfo();
 
 	FOR_ALL_PLAYERS(player) {
-		if (!player->is_active) continue;
-
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
 		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
@@ -1299,12 +1297,9 @@ void NetworkPopulateCompanyInfo()
 	uint i;
 	uint16 months_empty;
 
-	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) {
-			memset(&_network_player_info[p->index], 0, sizeof(NetworkPlayerInfo));
-			continue;
-		}
+	memset(_network_player_info, 0, sizeof(_network_player_info));
 
+	FOR_ALL_PLAYERS(p) {
 		// Clean the info but not the password
 		ttd_strlcpy(password, _network_player_info[p->index].password, sizeof(password));
 		months_empty = _network_player_info[p->index].months_empty;
@@ -1436,7 +1431,7 @@ static void NetworkAutoCleanCompanies()
 	/* Go through all the comapnies */
 	FOR_ALL_PLAYERS(p) {
 		/* Skip the non-active once */
-		if (!p->is_active || p->is_ai) continue;
+		if (p->is_ai) continue;
 
 		if (!clients_in_company[p->index]) {
 			/* The company is empty for one month more */

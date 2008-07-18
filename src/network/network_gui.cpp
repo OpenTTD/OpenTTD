@@ -31,6 +31,7 @@
 #include "../widgets/dropdown_func.h"
 #include "../querystring_gui.h"
 #include "../sortlist_type.h"
+#include "../player_base.h"
 
 #include "table/strings.h"
 #include "../table/sprites.h"

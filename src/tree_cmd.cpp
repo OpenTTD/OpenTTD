@@ -23,6 +23,7 @@
 #include "water_map.h"
 #include "water.h"
 #include "landscape_type.h"
+#include "player_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

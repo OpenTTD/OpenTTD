@@ -3897,8 +3897,7 @@ static void AiHandleTakeover(Player *p)
 
 		// Ask the guy with the highest performance hist.
 		FOR_ALL_PLAYERS(pp) {
-			if (pp->is_active &&
-					!(asked & 1) &&
+			if (!(asked & 1) &&
 					pp->bankrupt_asked == 0 &&
 					best_val < pp->old_economy[1].performance_history) {
 				best_val = pp->old_economy[1].performance_history;

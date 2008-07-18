@@ -562,20 +562,19 @@ static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 		/* Set generating_world to true to get instant-green grass after removing
 		 * player property. */
 		_generating_world = true;
-		/* Delete all players */
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
-				p->is_active = false;
-			}
-		}
-		_generating_world = false;
 
 		/* Delete all stations owned by a player */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (IsValidPlayerID(st->owner)) delete st;
 		}
+
+		/* Delete all players */
+		FOR_ALL_PLAYERS(p) {
+			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
+			delete p;
+		}
+		_generating_world = false;
 	}
 }
 

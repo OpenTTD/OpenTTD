@@ -38,17 +38,36 @@
 #include "rail.h"
 #include "sprite.h"
 #include "debug.h"
+#include "oldpool_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
 
-Player _players[MAX_PLAYERS];
 PlayerByte _local_player;
 PlayerByte _current_player;
 /* NOSAVE: can be determined from player structs */
 byte _player_colors[MAX_PLAYERS];
 PlayerFace _player_face; ///< for player face storage in openttd.cfg
 HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
+
+DEFINE_OLD_POOL_GENERIC(Player, Player)
+
+Player::Player(uint16 name_1, bool is_ai) : name_1(name_1), is_ai(is_ai)
+{
+	for (uint j = 0; j < 4; j++) this->share_owners[j] = PLAYER_SPECTATOR;
+}
+
+Player::~Player()
+{
+	free(this->name);
+	free(this->president_name);
+	free(this->num_engines);
+
+	if (CleaningPool()) return;
+
+	DeletePlayerWindows(this->index);
+	this->name_1 = 0;
+}
 
 /**
  * Sets the local player and updates the patch settings that are set on a
@@ -425,8 +444,6 @@ static byte GeneratePlayerColour()
 	/* Move the colors that look similar to each player's color to the side */
 	Player *p;
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) continue;
-
 		Colours pcolour = (Colours)p->player_color;
 
 		for (uint i = 0; i < COLOUR_END; i++) {
@@ -471,7 +488,7 @@ restart:;
 			continue;
 
 		FOR_ALL_PLAYERS(pp) {
-			if (pp->is_active && p != pp) {
+			if (p != pp) {
 				SetDParam(0, pp->index);
 				GetString(buffer2, STR_PLAYER_NAME, lastof(buffer2));
 				if (strcmp(buffer2, buffer) == 0)
@@ -480,25 +497,6 @@ restart:;
 		}
 		return;
 	}
-}
-
-static Player *AllocatePlayer()
-{
-	Player *p;
-	/* Find a free slot */
-	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) {
-			free(p->name);
-			free(p->president_name);
-			PlayerID i = p->index;
-			memset(p, 0, sizeof(Player));
-			memset(&_players_ai[i], 0, sizeof(PlayerAI));
-			memset(&_players_ainew[i], 0, sizeof(PlayerAiNew));
-			p->index = i;
-			return p;
-		}
-	}
-	return NULL;
 }
 
 void ResetPlayerLivery(Player *p)
@@ -518,21 +516,20 @@ void ResetPlayerLivery(Player *p)
  */
 Player *DoStartupNewPlayer(bool is_ai)
 {
-	Player *p;
+	Player *p = new Player(STR_SV_UNNAMED, is_ai);
 
-	p = AllocatePlayer();
 	if (p == NULL) return NULL;
+
+	memset(&_players_ai[p->index], 0, sizeof(PlayerAI));
+	memset(&_players_ainew[p->index], 0, sizeof(PlayerAiNew));
 
 	/* Make a color */
 	p->player_color = GeneratePlayerColour();
 	ResetPlayerLivery(p);
 	_player_colors[p->index] = p->player_color;
-	p->name_1 = STR_SV_UNNAMED;
-	p->is_active = true;
 
 	p->player_money = p->current_loan = 100000;
 
-	p->is_ai = is_ai;
 	_players_ai[p->index].state = 5; // AIS_WANT_NEW_ROUTE
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = PLAYER_SPECTATOR;
 
@@ -557,7 +554,6 @@ Player *DoStartupNewPlayer(bool is_ai)
 	if (is_ai && (!_networking || _network_server) && _ai.enabled)
 		AI_StartNewAI(p->index);
 
-	free(p->num_engines);
 	p->num_engines = CallocT<uint16>(GetEnginePoolSize());
 
 	return p;
@@ -577,7 +573,7 @@ static void MaybeStartNewPlayer()
 	/* count number of competitors */
 	n = 0;
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai) n++;
+		if (p->is_ai) n++;
 	}
 
 	/* when there's a lot of computers in game, the probability that a new one starts is lower */
@@ -598,26 +594,25 @@ static void MaybeStartNewPlayer()
 
 void InitializePlayers()
 {
-	memset(_players, 0, sizeof(_players));
-	for (PlayerID i = PLAYER_FIRST; i != MAX_PLAYERS; i++) {
-		_players[i].index = i;
-		for (uint j = 0; j < 4; j++) _players[i].share_owners[j] = PLAYER_SPECTATOR;
-	}
+	_Player_pool.CleanPool();
+	_Player_pool.AddBlockToPool();
 	_cur_player_tick_index = 0;
 }
 
 void OnTick_Players()
 {
-	Player *p;
-
 	if (_game_mode == GM_EDITOR) return;
 
-	p = GetPlayer((PlayerID)_cur_player_tick_index);
-	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
-	if (p->name_1 != 0) GenerateCompanyName(p);
+	if (IsValidPlayerID((PlayerID)_cur_player_tick_index)) {
+		Player *p = GetPlayer((PlayerID)_cur_player_tick_index);
+		if (p->name_1 != 0) GenerateCompanyName(p);
 
-	if (AI_AllowNewAI() && _game_mode != GM_MENU && !--_next_competitor_start)
-		MaybeStartNewPlayer();
+		if (AI_AllowNewAI() && _game_mode != GM_MENU && !--_next_competitor_start) {
+			MaybeStartNewPlayer();
+		}
+	}
+
+	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
 }
 
 void PlayersYearlyLoop()
@@ -626,11 +621,9 @@ void PlayersYearlyLoop()
 
 	/* Copy statistics */
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) {
-			memmove(&p->yearly_expenses[1], &p->yearly_expenses[0], sizeof(p->yearly_expenses) - sizeof(p->yearly_expenses[0]));
-			memset(&p->yearly_expenses[0], 0, sizeof(p->yearly_expenses[0]));
-			InvalidateWindow(WC_FINANCES, p->index);
-		}
+		memmove(&p->yearly_expenses[1], &p->yearly_expenses[0], sizeof(p->yearly_expenses) - sizeof(p->yearly_expenses[0]));
+		memset(&p->yearly_expenses[0], 0, sizeof(p->yearly_expenses[0]));
+		InvalidateWindow(WC_FINANCES, p->index);
 	}
 
 	if (_settings_client.gui.show_finances && _local_player != PLAYER_SPECTATOR) {
@@ -642,20 +635,6 @@ void PlayersYearlyLoop()
 			SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
-}
-
-static void DeletePlayerStuff(PlayerID pi)
-{
-	Player *p;
-
-	DeletePlayerWindows(pi);
-	p = GetPlayer(pi);
-	p->name_1 = STR_NULL;
-	p->president_name_1 = STR_NULL;
-	free(p->name);
-	free(p->president_name);
-	p->name = NULL;
-	p->president_name = NULL;
 }
 
 /** Change engine renewal parameters
@@ -972,7 +951,8 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Remove the company */
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
-			p->is_active = false;
+
+			delete p;
 		}
 	} break;
 
@@ -985,7 +965,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (!(flags & DC_EXEC)) return CMD_ERROR;
 
 		ChangeOwnershipOfPlayerItems(pid_old, pid_new);
-		DeletePlayerStuff(pid_old);
+		delete GetPlayer(pid_old);
 	} break;
 
 	default: return CMD_ERROR;
@@ -1063,7 +1043,7 @@ int8 SaveHighScoreValueNetwork()
 	int8 player = -1;
 
 	/* Sort all active players with the highest score first */
-	FOR_ALL_PLAYERS(p) if (p->is_active) pl[count++] = p;
+	FOR_ALL_PLAYERS(p) pl[count++] = p;
 
 	GSortT(pl, count, &HighScoreSorter);
 
@@ -1200,7 +1180,7 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDARR(Player, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Player, is_ai,                 SLE_BOOL, 2, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, is_active,             SLE_BOOL, 4, SL_MAX_VERSION),
+	SLE_CONDNULL(1, 4, 99),
 
 	/* Engine renewal settings */
 	SLE_CONDNULL(512, 16, 18),
@@ -1281,10 +1261,8 @@ static void Save_PLYR()
 {
 	Player *p;
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) {
-			SlSetArrayIndex(p->index);
-			SlAutolength((AutolengthProc*)SaveLoad_PLYR, p);
-		}
+		SlSetArrayIndex(p->index);
+		SlAutolength((AutolengthProc*)SaveLoad_PLYR, p);
 	}
 }
 
@@ -1292,7 +1270,7 @@ static void Load_PLYR()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Player *p = GetPlayer((PlayerID)index);
+		Player *p = new (index) Player();
 		SaveLoad_PLYR(p);
 		_player_colors[index] = p->player_color;
 

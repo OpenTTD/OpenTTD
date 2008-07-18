@@ -94,7 +94,15 @@ struct TinyEnumT
 	/** Assignment operator (from Tenum_t type) */
 	FORCEINLINE TinyEnumT& operator = (enum_type e)
 	{
-		m_val = (storage_type)e; return *this;
+		m_val = (storage_type)e;
+		return *this;
+	}
+
+	/** Assignment operator (from Tenum_t type) */
+	FORCEINLINE TinyEnumT& operator = (uint u)
+	{
+		m_val = (storage_type)u;
+		return *this;
 	}
 
 	/** postfix ++ operator on tiny type */

@@ -193,7 +193,7 @@ void AI_RunGameLoop()
 		const Player* p;
 
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->is_ai) {
+			if (p->is_ai) {
 				/* This should always be true, else something went wrong... */
 				assert(_ai_player[p->index].active);
 
@@ -249,6 +249,6 @@ void AI_Uninitialize()
 	const Player* p;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai) AI_PlayerDied(p->index);
+		if (p->is_ai) AI_PlayerDied(p->index);
 	}
 }

@@ -44,8 +44,8 @@ static int32 ClickMoneyCheat(int32 p1, int32 p2)
  */
 static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 {
-	while (IsValidPlayerID((PlayerID)p1)) {
-		if (_players[p1].is_active) {
+	while ((uint)p1 < GetPlayerPoolSize()) {
+		if (IsValidPlayerID((PlayerID)p1)) {
 			SetLocalPlayer((PlayerID)p1);
 
 			MarkWholeScreenDirty();

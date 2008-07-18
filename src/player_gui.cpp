@@ -346,7 +346,7 @@ private:
 		if (HasBit(this->sel, LS_DEFAULT) && widget == PLW_WIDGET_PRI_COL_DROPDOWN) {
 			const Player *p;
 			FOR_ALL_PLAYERS(p) {
-				if (p->is_active && p->index != _local_player) SetBit(used_colours, p->player_color);
+				if (p->index != _local_player) SetBit(used_colours, p->player_color);
 			}
 		}
 

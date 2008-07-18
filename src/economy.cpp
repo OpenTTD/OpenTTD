@@ -292,7 +292,6 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		/* See if the old_player had shares in other companies */
 		_current_player = old_player;
 		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) continue;
 			for (i = 0; i < 4; i++) {
 				if (p->share_owners[i] == old_player) {
 					/* Sell his shares */
@@ -565,10 +564,11 @@ static void PlayersCheckBankrupt(Player *p)
 			/* Remove the player */
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
 			/* Register the player as not-active */
-			p->is_active = false;
 
 			if (!IsHumanPlayer(p->index) && (!_networking || _network_server) && _ai.enabled)
 				AI_PlayerDied(p->index);
+
+			delete p;
 		}
 	}
 }
@@ -588,18 +588,16 @@ static void PlayersGenStatistics()
 		return;
 
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) {
-			memmove(&p->old_economy[1], &p->old_economy[0], sizeof(p->old_economy) - sizeof(p->old_economy[0]));
-			p->old_economy[0] = p->cur_economy;
-			memset(&p->cur_economy, 0, sizeof(p->cur_economy));
+		memmove(&p->old_economy[1], &p->old_economy[0], sizeof(p->old_economy) - sizeof(p->old_economy[0]));
+		p->old_economy[0] = p->cur_economy;
+		memset(&p->cur_economy, 0, sizeof(p->cur_economy));
 
-			if (p->num_valid_stat_ent != 24) p->num_valid_stat_ent++;
+		if (p->num_valid_stat_ent != 24) p->num_valid_stat_ent++;
 
-			UpdateCompanyRatingAndValue(p, true);
-			PlayersCheckBankrupt(p);
+		UpdateCompanyRatingAndValue(p, true);
+		PlayersCheckBankrupt(p);
 
-			if (p->block_preview != 0) p->block_preview--;
-		}
+		if (p->block_preview != 0) p->block_preview--;
 	}
 
 	InvalidateWindow(WC_INCOME_GRAPH, 0);
@@ -678,8 +676,6 @@ static void PlayersPayInterest()
 	int interest = _economy.interest_rate * 54;
 
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active) continue;
-
 		_current_player = p->index;
 
 		SubtractMoneyFromPlayer(CommandCost(EXPENSES_LOAN_INT, (Money)BigMulSU(p->current_loan, interest, 16)));
@@ -1767,13 +1763,13 @@ static void DoAcquireCompany(Player *p)
 	}
 	_current_player = old_player;
 
-	p->is_active = false;
-
 	DeletePlayerWindows(pi);
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 	InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 	InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
+
+	delete p;
 }
 
 extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
@@ -1786,17 +1782,13 @@ extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
  */
 CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
 	CommandCost cost(EXPENSES_OTHER);
 
 	/* Check if buying shares is allowed (protection against modified clients) */
 	/* Cannot buy own shares */
 	if (!IsValidPlayerID((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
 
-	p = GetPlayer((PlayerID)p1);
-
-	/* Cannot buy shares of non-existent nor bankrupted company */
-	if (!p->is_active) return CMD_ERROR;
+	Player *p = GetPlayer((PlayerID)p1);
 
 	/* Protect new companies from hostile takeovers */
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
@@ -1835,23 +1827,17 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
  */
 CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-	Money cost;
-
 	/* Check if selling shares is allowed (protection against modified clients) */
 	/* Cannot sell own shares */
 	if (!IsValidPlayerID((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
 
-	p = GetPlayer((PlayerID)p1);
-
-	/* Cannot sell shares of non-existent nor bankrupted company */
-	if (!p->is_active) return CMD_ERROR;
+	Player *p = GetPlayer((PlayerID)p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, _current_player) == 0) return CommandCost();
 
 	/* adjust it a little to make it less profitable to sell and buy */
-	cost = CalculateCompanyValue(p) >> 2;
+	Money cost = CalculateCompanyValue(p) >> 2;
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
@@ -1874,7 +1860,6 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
  */
 CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
 	PlayerID pid = (PlayerID)p1;
 
 	/* Disable takeovers in multiplayer games */
@@ -1883,7 +1868,7 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Do not allow players to take over themselves */
 	if (pid == _current_player) return CMD_ERROR;
 
-	p = GetPlayer(pid);
+	Player *p = GetPlayer(pid);
 
 	if (!p->is_ai) return CMD_ERROR;
 

@@ -27,11 +27,6 @@ static inline bool IsLocalPlayer()
 	return _local_player == _current_player;
 }
 
-static inline bool IsValidPlayerID(PlayerID pi)
-{
-	return IsInsideBS(pi, PLAYER_FIRST, MAX_PLAYERS);
-}
-
 static inline bool IsInteractivePlayer(PlayerID pi)
 {
 	return pi == _local_player;

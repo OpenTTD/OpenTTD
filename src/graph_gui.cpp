@@ -45,20 +45,17 @@ struct GraphLegendWindow : Window {
 
 	virtual void OnPaint()
 	{
-		const Player *p;
+		for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
+			if (IsValidPlayerID(p)) continue;
 
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) continue;
-
-			SetBit(_legend_excluded_players, p->index);
-			this->RaiseWidget(p->index + 3);
+			SetBit(_legend_excluded_players, p);
+			this->RaiseWidget(p + 3);
 		}
 
 		this->DrawWidgets();
 
+		const Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) continue;
-
 			DrawPlayerIcon(p->index, 4, 18 + p->index * 12);
 
 			SetDParam(0, p->index);
@@ -360,16 +357,16 @@ public:
 		uint excluded_players = _legend_excluded_players;
 
 		/* Exclude the players which aren't valid */
-		const Player* p;
-		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) SetBit(excluded_players, p->index);
+		for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
+			if (!IsValidPlayerID(p)) SetBit(excluded_players, p);
 		}
 		this->excluded_data = excluded_players;
 		this->num_vert_lines = 24;
 
 		byte nums = 0;
+		const Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) nums = max(nums, p->num_valid_stat_ent);
+			nums = max(nums, p->num_valid_stat_ent);
 		}
 		this->num_on_x_axis = min(nums, 24);
 
@@ -384,8 +381,9 @@ public:
 		this->month = mo;
 
 		int numd = 0;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
+		for (PlayerID k = PLAYER_FIRST; k < MAX_PLAYERS; k++) {
+			if (IsValidPlayerID(k)) {
+				p = GetPlayer(k);
 				this->colors[numd] = _colour_gradient[p->player_color][6];
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
 					this->cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : GetGraphData(p, j);
@@ -774,9 +772,7 @@ private:
 
 		const Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				*this->players.Append() = p;
-			}
+			*this->players.Append() = p;
 		}
 
 		this->players.Compact();
@@ -867,7 +863,7 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		/* Disable the players who are not active */
 		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-			this->SetWidgetDisabledState(i + 13, !GetPlayer(i)->is_active);
+			this->SetWidgetDisabledState(i + 13, !IsValidPlayerID(i));
 		}
 
 		this->UpdatePlayerStats();
@@ -883,7 +879,7 @@ struct PerformanceRatingDetailWindow : Window {
 		 * (this is because _score_info is not saved to a savegame) */
 		Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) UpdateCompanyRatingAndValue(p, false);
+			UpdateCompanyRatingAndValue(p, false);
 		}
 
 		this->timeout = DAY_TICKS * 5;
@@ -901,7 +897,7 @@ struct PerformanceRatingDetailWindow : Window {
 		this->DrawWidgets();
 
 		/* Check if the currently selected player is still active. */
-		if (player == INVALID_PLAYER || !GetPlayer(player)->is_active) {
+		if (player == INVALID_PLAYER || !IsValidPlayerID(player)) {
 			if (player != INVALID_PLAYER) {
 				/* Raise and disable the widget for the previous selection. */
 				this->RaiseWidget(player + 13);
@@ -912,7 +908,7 @@ struct PerformanceRatingDetailWindow : Window {
 			}
 
 			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-				if (GetPlayer(i)->is_active) {
+				if (IsValidPlayerID(i)) {
 					/* Lower the widget corresponding to this player. */
 					this->LowerWidget(i + 13);
 					this->SetDirty();
@@ -928,7 +924,7 @@ struct PerformanceRatingDetailWindow : Window {
 
 		/* Paint the player icons */
 		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-			if (!GetPlayer(i)->is_active) {
+			if (!IsValidPlayerID(i)) {
 				/* Check if we have the player as an active player */
 				if (!this->IsWidgetDisabled(i + 13)) {
 					/* Bah, player gone :( */

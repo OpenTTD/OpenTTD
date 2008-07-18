@@ -1001,14 +1001,14 @@ static const OldChunks player_chunk[] = {
 
 static bool LoadOldPlayer(LoadgameState *ls, int num)
 {
-	Player *p = GetPlayer((PlayerID)num);
+	Player *p = new (num) Player();
 
 	_current_player_id = (PlayerID)num;
 
 	if (!LoadChunk(ls, p, player_chunk)) return false;
 
 	if (_old_string_id == 0) {
-		p->is_active = false;
+		delete p;
 		return true;
 	}
 

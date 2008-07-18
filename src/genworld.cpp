@@ -145,7 +145,7 @@ static void _GenerateWorld(void *arg)
 		}
 
 		ResetObjectToPlace();
-		SetLocalPlayer(_gw.lp);
+		_local_player = _gw.lp;
 
 		SetGeneratingWorldProgress(GWP_GAME_START, 1);
 		/* Call any callback */

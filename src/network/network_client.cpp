@@ -624,9 +624,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 		/* New company/spectator (invalid player) or company we want to join is not active
 		 * Switch local player to spectator and await the server's judgement */
-		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayerID(_network_playas) ||
-				!GetPlayer(_network_playas)->is_active) {
-
+		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayerID(_network_playas)) {
 			SetLocalPlayer(PLAYER_SPECTATOR);
 
 			if (_network_playas != PLAYER_SPECTATOR) {

@@ -313,7 +313,7 @@ static PlayerID GetBestPlayer(uint8 pp)
 		best_hist = -1;
 		best_player = PLAYER_SPECTATOR;
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && p->block_preview == 0 && !HasBit(mask, p->index) &&
+			if (p->block_preview == 0 && !HasBit(mask, p->index) &&
 					p->old_economy[0].performance_history > best_hist) {
 				best_hist = p->old_economy[0].performance_history;
 				best_player = p->index;
@@ -428,14 +428,10 @@ static void NewVehicleAvailable(Engine *e)
 		/* maybe make another rail type available */
 		RailType railtype = e->u.rail.railtype;
 		assert(railtype < RAILTYPE_END);
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) SetBit(p->avail_railtypes, railtype);
-		}
+		FOR_ALL_PLAYERS(p) SetBit(p->avail_railtypes, railtype);
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) SetBit(p->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
-		}
+		FOR_ALL_PLAYERS(p) SetBit(p->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
 	SetDParam(0, GetEngineCategoryName(index));

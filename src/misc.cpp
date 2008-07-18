@@ -100,8 +100,8 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	InitializeTrains();
 	InitializeNPF();
 
-	AI_Initialize();
 	InitializePlayers();
+	AI_Initialize();
 	InitializeCheats();
 
 	InitTextEffects();

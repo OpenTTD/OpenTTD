@@ -45,6 +45,7 @@
 #include "rail_gui.h"
 #include "tilehighlight_func.h"
 #include "querystring_gui.h"
+#include "player_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

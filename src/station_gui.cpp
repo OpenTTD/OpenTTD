@@ -26,6 +26,7 @@
 #include "widgets/dropdown_func.h"
 #include "newgrf_cargo.h"
 #include "string_func.h"
+#include "player_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

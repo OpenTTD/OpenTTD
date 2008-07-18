@@ -594,7 +594,6 @@ DEF_CONSOLE_CMD(ConKick)
 
 DEF_CONSOLE_CMD(ConResetCompany)
 {
-	const Player *p;
 	PlayerID index;
 
 	if (argc == 0) {
@@ -613,12 +612,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		return true;
 	}
 
-	/* Check if company does exist */
-	p = GetPlayer(index);
-	if (!p->is_active) {
-		IConsoleError("Company does not exist.");
-		return true;
-	}
+	const Player *p = GetPlayer(index);
 
 	if (p->is_ai) {
 		IConsoleError("Company is owned by an AI.");
@@ -1157,8 +1151,6 @@ DEF_CONSOLE_CMD(ConPlayers)
 	FOR_ALL_PLAYERS(p) {
 		char buffer[512];
 
-		if (!p->is_active) continue;
-
 		const NetworkPlayerInfo *npi = &_network_player_info[p->index];
 
 		GetString(buffer, STR_00D1_DARK_BLUE + _player_colors[p->index], lastof(buffer));
@@ -1185,7 +1177,7 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 	if (argc != 3) return false;
 
 	PlayerID player_id = (PlayerID)(atoi(argv[1]) - 1);
-	if (!IsValidPlayerID(player_id) || !GetPlayer(player_id)->is_active) {
+	if (!IsValidPlayerID(player_id)) {
 		IConsolePrintF(CC_DEFAULT, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}

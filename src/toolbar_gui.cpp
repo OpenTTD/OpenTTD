@@ -1482,7 +1482,7 @@ static int GetPlayerIndexFromMenu(int index)
 		const Player *p;
 
 		FOR_ALL_PLAYERS(p) {
-			if (p->is_active && --index < 0) return p->index;
+			if (--index < 0) return p->index;
 		}
 	}
 	return -1;
@@ -1558,19 +1558,18 @@ struct ToolbarPlayerMenuWindow : Window {
 			sel--;
 		}
 
-		const Player *p;
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				if (p->index == sel) {
+		for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
+			if (IsValidPlayerID(p)) {
+				if (p == sel) {
 					GfxFillRect(x, y, x + 238, y + 9, 0);
 				}
 
-				DrawPlayerIcon(p->index, x + 2, y + 1);
+				DrawPlayerIcon(p, x + 2, y + 1);
 
-				SetDParam(0, p->index);
-				SetDParam(1, p->index);
+				SetDParam(0, p);
+				SetDParam(1, p);
 
-				TextColour color = (p->index == sel) ? TC_WHITE : TC_BLACK;
+				TextColour color = (p == sel) ? TC_WHITE : TC_BLACK;
 				if (gray & 1) color = TC_GREY;
 				DrawString(x + 19, y, STR_7021, color);
 

@@ -302,6 +302,7 @@ static void InitializeDynamicVariables()
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
+	_Player_pool.AddBlockToPool();
 }
 
 
@@ -335,6 +336,7 @@ static void ShutdownGame()
 	_Group_pool.CleanPool();
 	_CargoPacket_pool.CleanPool();
 	_Engine_pool.CleanPool();
+	_Player_pool.CleanPool();
 
 	free(_config_file);
 
@@ -523,9 +525,6 @@ int ttd_main(int argc, char *argv[])
 
 	/* initialize all variables that are allocated dynamically */
 	InitializeDynamicVariables();
-
-	/* start the AI */
-	AI_Initialize();
 
 	/* Sample catalogue */
 	DEBUG(misc, 1, "Loading sound effects...");
@@ -1165,16 +1164,6 @@ static void ConvertTownOwner()
 	}
 }
 
-/* before savegame version 4, the name of the company determined if it existed */
-static void CheckIsPlayerActive()
-{
-	Player *p;
-
-	FOR_ALL_PLAYERS(p) {
-		if (p->name_1 != 0) p->is_active = true;
-	}
-}
-
 /* since savegame version 4.1, exclusive transport rights are stored at towns */
 static void UpdateExclusiveRights()
 {
@@ -1404,10 +1393,6 @@ bool AfterLoadGame()
 		return false;
 	}
 
-	/* in version 4.1 of the savegame, is_active was introduced to determine
-	 * if a player does exist, rather then checking name_1 */
-	if (CheckSavegameVersionOldStyle(4, 1)) CheckIsPlayerActive();
-
 	/* The void tiles on the southern border used to belong to a wrong class (pre 4.3).
 	 * This problem appears in savegame version 21 too, see r3455. But after loading the
 	 * savegame and saving again, the buggy map array could be converted to new savegame
@@ -1418,7 +1403,7 @@ bool AfterLoadGame()
 	 *  a player does not exist yet. So create one here.
 	 * 1 exeption: network-games. Those can have 0 players
 	 *   But this exeption is not true for non dedicated network_servers! */
-	if (!_players[0].is_active && (!_networking || (_networking && _network_server && !_network_dedicated)))
+	if (!IsValidPlayerID(PLAYER_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated)))
 		DoStartupNewPlayer(false);
 
 	if (CheckSavegameVersion(72)) {
@@ -2316,14 +2301,10 @@ bool AfterLoadGame()
 		 *     (caused by cheating players in earlier revisions) */
 		Player *p;
 		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) {
-				for (uint i = 0; i < 4; i++) { p->share_owners[i] = PLAYER_SPECTATOR; }
-			} else {
-				for (uint i = 0; i < 4; i++) {
-					PlayerID o = p->share_owners[i];
-					if (o == PLAYER_SPECTATOR) continue;
-					if (!IsValidPlayerID(o) || o == p->index || !GetPlayer(o)->is_active) p->share_owners[i] = PLAYER_SPECTATOR;
-				}
+			for (uint i = 0; i < 4; i++) {
+				PlayerID o = p->share_owners[i];
+				if (o == PLAYER_SPECTATOR) continue;
+				if (!IsValidPlayerID(o) || o == p->index) p->share_owners[i] = PLAYER_SPECTATOR;
 			}
 		}
 	}
@@ -2374,7 +2355,7 @@ bool AfterLoadGame()
 
 			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
 				Owner o = GetTileOwner(t);
-				if (IsValidPlayerID(o) && !GetPlayer(o)->is_active) {
+				if (o < MAX_PLAYERS && !IsValidPlayerID(o)) {
 					_current_player = o;
 					ChangeTileOwner(t, o, PLAYER_SPECTATOR);
 				}
@@ -2388,11 +2369,11 @@ bool AfterLoadGame()
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					/* update even non-existing road types to update tile owner too */
 					Owner o = GetRoadOwner(t, rt);
-					if (IsValidPlayerID(o) && !GetPlayer(o)->is_active) SetRoadOwner(t, rt, OWNER_NONE);
+					if (o < MAX_PLAYERS && !IsValidPlayerID(o)) SetRoadOwner(t, rt, OWNER_NONE);
 				}
 				if (IsLevelCrossing(t)) {
 					Owner o = GetTileOwner(t);
-					if (!GetPlayer(o)->is_active) {
+					if (!IsValidPlayerID(o)) {
 						/* remove leftover rail piece from crossing (from very old savegames) */
 						_current_player = o;
 						DoCommand(t, 0, GetCrossingRailTrack(t), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);

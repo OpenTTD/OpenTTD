@@ -21,6 +21,7 @@
 #include "player_func.h"
 #include "slope_func.h"
 #include "tilehighlight_func.h"
+#include "player_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
