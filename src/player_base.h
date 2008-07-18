@@ -80,11 +80,9 @@ struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
 	inline bool IsValid() const { return this->name_1 != 0; }
 };
 
-inline bool operator < (PlayerID p, uint u) {return (uint)p < u;}
-
 static inline bool IsValidPlayerID(PlayerID index)
 {
-	return index < GetPlayerPoolSize() && GetPlayer(index)->IsValid();
+	return (uint)index < GetPlayerPoolSize() && GetPlayer(index)->IsValid();
 }
 
 #define FOR_ALL_PLAYERS_FROM(d, start) for (d = GetPlayer(start); d != NULL; d = (d->index + 1U < GetPlayerPoolSize()) ? GetPlayer(d->index + 1U) : NULL) if (d->IsValid())

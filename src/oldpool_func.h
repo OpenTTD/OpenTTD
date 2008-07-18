@@ -17,7 +17,7 @@ template<typename T, typename Tid, OldMemoryPool<T> *Tpool> T *PoolItem<T, Tid, 
 {
 	uint last_minus_one = Tpool->GetSize() - 1;
 
-	for (T *t = Tpool->Get(first); t != NULL; t = (t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
+	for (T *t = Tpool->Get(first); t != NULL; t = ((uint)t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
 		if (!t->IsValid()) {
 			first = t->index;
 			Tid index = t->index;
@@ -44,7 +44,7 @@ template<typename T, typename Tid, OldMemoryPool<T> *Tpool> bool PoolItem<T, Tid
 {
 	uint last_minus_one = Tpool->GetSize() - 1;
 
-	for (T *t = Tpool->Get(Tpool->first_free_index); t != NULL; t = (t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
+	for (T *t = Tpool->Get(Tpool->first_free_index); t != NULL; t = ((uint)t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
 		if (!t->IsValid()) return true;
 		Tpool->first_free_index = t->index;
 	}
