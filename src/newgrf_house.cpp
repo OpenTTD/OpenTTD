@@ -69,12 +69,8 @@ void UpdateHousesAndTowns()
 		IncreaseBuildingCount(town, house_id);
 		if (IsHouseCompleted(t)) town->population += GetHouseSpecs(house_id)->population;
 
-		/* Increase the number of houses for every house tile which
-		 * has a size bit set. Multi tile buildings have got only
-		 * one tile with such a bit set, so there is no problem. */
-		if (GetHouseSpecs(GetHouseType(t))->building_flags & BUILDING_HAS_1_TILE) {
-			town->num_houses++;
-		}
+		/* Increase the number of houses for every house, but only once. */
+		if (GetHouseNorthPart(house_id) == 0) town->num_houses++;
 	}
 
 	/* Update the population and num_house dependant values */
