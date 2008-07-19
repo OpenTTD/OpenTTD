@@ -25,6 +25,7 @@
 #include "player_func.h"
 #include "animated_tile_func.h"
 #include "functions.h"
+#include "tunnelbridge_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -294,10 +295,17 @@ static uint32 GetRailContinuationInfo(TileIndex tile)
 	uint i;
 
 	for (i = 0; i < lengthof(x_dir); i++, dir++, diagdir++) {
-		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(tile + TileOffsByDir(*dir), TRANSPORT_RAIL, 0));
+		TileIndex neighbour_tile = tile + TileOffsByDir(*dir);
+		TrackBits trackbits = TrackStatusToTrackBits(GetTileTrackStatus(neighbour_tile, TRANSPORT_RAIL, 0));
 		if (trackbits != TRACK_BIT_NONE) {
 			/* If there is any track on the tile, set the bit in the second byte */
 			SetBit(res, i + 8);
+
+			/* With tunnels and bridges the tile has tracks, but they are not necessarily connected
+			 * with the next tile because the ramp is not going in the right direction. */
+			if (IsTileType(neighbour_tile, MP_TUNNELBRIDGE) && GetTunnelBridgeDirection(neighbour_tile) != *diagdir) {
+				continue;
+			}
 
 			/* If any track reaches our exit direction, set the bit in the lower byte */
 			if (trackbits & DiagdirReachesTracks(*diagdir)) SetBit(res, i);
