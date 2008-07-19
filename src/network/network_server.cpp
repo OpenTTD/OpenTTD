@@ -901,7 +901,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 * to match the player in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
-	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0) && ci->client_playas != cp->player) {
+	if (!(cp->cmd == CMD_PLAYER_CTRL && cp->p1 == 0 && ci->client_playas == PLAYER_NEW_COMPANY) && ci->client_playas != cp->player) {
 		IConsolePrintF(_icolour_err, "WARNING: player %d (IP: %s) tried to execute a command as player %d, kicking...",
 		               ci->client_playas + 1, GetPlayerIP(ci), cp->player + 1);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);

@@ -45,6 +45,7 @@ bool _network_advertise;  ///< is the server advertising to the master server?
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
+assert_compile((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME + 1);
 
 // global variables (declared in network_data.h)
 CommandPacket *_local_command_queue;

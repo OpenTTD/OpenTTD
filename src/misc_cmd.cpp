@@ -225,14 +225,12 @@ static bool IsUniqueCompanyName(const char *name)
  */
 CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-
-	if (StrEmpty(_cmd_text)) return CMD_ERROR;
+	if (StrEmpty(_cmd_text) || strlen(_cmd_text) > MAX_LENGTH_COMPANY_NAME) return CMD_ERROR;
 
 	if (!IsUniqueCompanyName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	if (flags & DC_EXEC) {
-		p = GetPlayer(_current_player);
+		Player *p = GetPlayer(_current_player);
 		free(p->name);
 		p->name = strdup(_cmd_text);
 		MarkWholeScreenDirty();
@@ -264,14 +262,12 @@ static bool IsUniquePresidentName(const char *name)
  */
 CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p;
-
-	if (StrEmpty(_cmd_text)) return CMD_ERROR;
+	if (StrEmpty(_cmd_text) || strlen(_cmd_text) > MAX_LENGTH_PRESIDENT_NAME) return CMD_ERROR;
 
 	if (!IsUniquePresidentName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	if (flags & DC_EXEC) {
-		p = GetPlayer(_current_player);
+		Player *p = GetPlayer(_current_player);
 		free(p->president_name);
 		p->president_name = strdup(_cmd_text);
 

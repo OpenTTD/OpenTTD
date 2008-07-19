@@ -22,10 +22,11 @@ enum {
 	SEND_MTU                      = 1460, ///< Number of bytes we can pack in a single packet
 
 	NETWORK_GAME_INFO_VERSION     =    4, ///< What version of game-info do we use?
-	NETWORK_COMPANY_INFO_VERSION  =    4, ///< What version of company info is this?
+	NETWORK_COMPANY_INFO_VERSION  =    5, ///< What version of company info is this?
 	NETWORK_MASTER_SERVER_VERSION =    1, ///< What version of master-server-protocol do we use?
 
 	NETWORK_NAME_LENGTH           =   80, ///< The maximum length of the server name and map name, in bytes including '\0'
+	NETWORK_COMPANY_NAME_LENGTH   =   32, ///< The maximum length of the company name, in bytes including '\0'
 	NETWORK_HOSTNAME_LENGTH       =   80, ///< The maximum length of the host name, in bytes including '\0'
 	NETWORK_UNIQUE_ID_LENGTH      =   33, ///< The maximum length of the unique id of the clients, in bytes including '\0'
 	NETWORK_REVISION_LENGTH       =   15, ///< The maximum length of the revision, in bytes including '\0'

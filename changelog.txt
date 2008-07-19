@@ -1,3 +1,13 @@
+0.6.2 ?? (2008-??-??)
+------------------------------------------------------------------------
+- Fix: NewGRF rail continuation would always mark a tunnel on the same axis as connected, even when the tunnel faces the wrong direction (r13734)
+- Fix: Assumption that non-north tiles of a house do not have the 1x1 building bit set was flawed with some NewGRFs. This caused the amount of houses to differ, which causes the town radii to differ, which causes desyncs when towns are expanded (r13729)
+- Fix: Possible desync on the autorenew settings 20+ game years (i.e. 4.5+ hours) after a company was started (r13718)
+- Fix: Any player could construct new companies [FS#2144] (r13716)
+- Fix: Possible crash on creating a network packet (r13713)
+- Fix: Enforce the length restrictions of company and president name in the commands too (r13712)
+
+
 0.6.2-RC1 (2008-07-16)
 ------------------------------------------------------------------------
 - Fix: Possible buffer overflow in string truncation code (r13700)

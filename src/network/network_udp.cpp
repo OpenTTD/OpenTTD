@@ -92,12 +92,6 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 
 DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 {
-	NetworkTCPSocketHandler *cs;
-	NetworkClientInfo *ci;
-	Player *player;
-	byte current = 0;
-	int i;
-
 	// Just a fail-safe.. should never happen
 	if (!_network_udp_server) return;
 
@@ -110,6 +104,8 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* Fetch the latest version of everything */
 	NetworkPopulateCompanyInfo();
 
+	Player *player;
+	byte current = 0;
 	/* Go through all the players */
 	FOR_ALL_PLAYERS(player) {
 		/* Skip non-active players */
@@ -130,57 +126,14 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 		/* Send 1 if there is a passord for the company else send 0 */
 		packet.Send_bool  (!StrEmpty(_network_player_info[player->index].password));
 
-		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
+		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
 			packet.Send_uint16(_network_player_info[player->index].num_vehicle[i]);
+		}
 
-		for (i = 0; i < NETWORK_STATION_TYPES; i++)
+		for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
 			packet.Send_uint16(_network_player_info[player->index].num_station[i]);
-
-		/* Find the clients that are connected to this player */
-		FOR_ALL_CLIENTS(cs) {
-			ci = DEREF_CLIENT_INFO(cs);
-			if (ci->client_playas == player->index) {
-				packet.Send_bool  (true);
-				packet.Send_string(ci->client_name);
-				packet.Send_string(ci->unique_id);
-				packet.Send_uint32(ci->join_date);
-			}
-		}
-		/* Also check for the server itself */
-		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-		if (ci->client_playas == player->index) {
-			packet.Send_bool  (true);
-			packet.Send_string(ci->client_name);
-			packet.Send_string(ci->unique_id);
-			packet.Send_uint32(ci->join_date);
-		}
-
-		/* Indicates end of client list */
-		packet.Send_bool(false);
-	}
-
-	/* And check if we have any spectators */
-	FOR_ALL_CLIENTS(cs) {
-		ci = DEREF_CLIENT_INFO(cs);
-		if (!IsValidPlayer(ci->client_playas)) {
-			packet.Send_bool  (true);
-			packet.Send_string(ci->client_name);
-			packet.Send_string(ci->unique_id);
-			packet.Send_uint32(ci->join_date);
 		}
 	}
-
-	/* Also check for the server itself */
-	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-	if (!IsValidPlayer(ci->client_playas)) {
-		packet.Send_bool  (true);
-		packet.Send_string(ci->client_name);
-		packet.Send_string(ci->unique_id);
-		packet.Send_uint32(ci->join_date);
-	}
-
-	/* Indicates end of client list */
-	packet.Send_bool(false);
 
 	this->SendPacket(&packet, client_addr);
 }

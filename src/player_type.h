@@ -30,6 +30,11 @@ enum Owner {
 };
 DECLARE_POSTFIX_INCREMENT(Owner);
 
+enum {
+	MAX_LENGTH_PRESIDENT_NAME = 31, ///< The maximum length for a president's name
+	MAX_LENGTH_COMPANY_NAME   = 31, ///< The maximum length for a company's name
+};
+
 /** Define basic enum properties */
 template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};
 typedef TinyEnumT<Owner> OwnerByte;

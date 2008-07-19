@@ -1181,7 +1181,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					const Player *p = GetPlayer((PlayerID)w->window_number);
 					WP(w, def_d).byte_1 = 0;
 					SetDParam(0, p->index);
-					ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, 31, 94, w, CS_ALPHANUMERAL);
+					ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME, 94, w, CS_ALPHANUMERAL);
 					break;
 				}
 
@@ -1189,7 +1189,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					Player *p = GetPlayer((PlayerID)w->window_number);
 					WP(w, def_d).byte_1 = 1;
 					SetDParam(0, p->index);
-					ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, 31, 150, w, CS_ALPHANUMERAL);
+					ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_PRESIDENT_NAME, 150, w, CS_ALPHANUMERAL);
 					break;
 				}
 
