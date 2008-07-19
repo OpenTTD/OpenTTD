@@ -1297,7 +1297,9 @@ void NetworkPopulateCompanyInfo()
 	uint i;
 	uint16 months_empty;
 
-	memset(_network_player_info, 0, sizeof(_network_player_info));
+	for (PlayerID pid = PLAYER_FIRST; pid < MAX_PLAYERS; pid++) {
+		if (!IsValidPlayerID(pid)) memset(&_network_player_info[pid], 0, sizeof(NetworkPlayerInfo));
+	}
 
 	FOR_ALL_PLAYERS(p) {
 		// Clean the info but not the password
