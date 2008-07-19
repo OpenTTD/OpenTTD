@@ -367,7 +367,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		current = (Owner)p->Recv_uint8();
-		if (!IsValidPlayerID(current)) return NETWORK_RECV_STATUS_CLOSE_QUERY;
+		if (current >= MAX_PLAYERS) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		p->Recv_string(_network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
 		_network_player_info[current].inaugurated_year = p->Recv_uint32();
