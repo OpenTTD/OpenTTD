@@ -71,7 +71,7 @@ static int CDECL EngineNumberSorter(const void *a, const void *b)
 {
 	const EngineID va = *(const EngineID*)a;
 	const EngineID vb = *(const EngineID*)b;
-	int r = va - vb;
+	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
 
 	return _internal_sort_order ? -r : r;
 }
@@ -189,15 +189,6 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	Money va = (rvi_a->running_cost * GetPriceByIndex(rvi_a->running_cost_class)) / max(1U, (uint)rvi_a->power);
 	Money vb = (rvi_b->running_cost * GetPriceByIndex(rvi_b->running_cost_class)) / max(1U, (uint)rvi_b->power);
 	int r = ClampToI32(vb - va);
-
-	return _internal_sort_order ? -r : r;
-}
-
-static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
-{
-	const EngineID va = *(const EngineID*)a;
-	const EngineID vb = *(const EngineID*)b;
-	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
 
 	return _internal_sort_order ? -r : r;
 }
@@ -381,7 +372,7 @@ static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
 
 static EngList_SortTypeFunction * const _sorter[][10] = {{
 	/* Trains */
-	&TrainEngineNumberSorter,
+	&EngineNumberSorter,
 	&TrainEngineCostSorter,
 	&TrainEngineSpeedSorter,
 	&TrainEnginePowerSorter,

@@ -59,7 +59,7 @@ enum ReplaceVehicleWindowWidgets {
 	RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE,
 };
 
-static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
+static int CDECL EngineNumberSorter(const void *a, const void *b)
 {
 	const EngineID va = *(const EngineID*)a;
 	const EngineID vb = *(const EngineID*)b;
@@ -213,7 +213,7 @@ class ReplaceVehicleWindow : public Window {
 			if (eid == this->sel_engine[i]) selected_engine = eid; // The selected engine is still in the list
 		}
 		this->sel_engine[i] = selected_engine; // update which engine we selected (the same or none, if it's not in the list anymore)
-		if (type == VEH_TRAIN) EngList_Sort(list, &TrainEngineNumberSorter);
+		EngList_Sort(list, &EngineNumberSorter);
 	}
 
 	/** Generate the lists */
