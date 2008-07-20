@@ -629,7 +629,7 @@ int ttd_main(int argc, char *argv[])
 
 				if (_network_playas != PLAYER_SPECTATOR) {
 					_network_playas--;
-					if (!IsValidPlayerID(_network_playas)) return false;
+					if (_network_playas >= MAX_PLAYERS) return false;
 				}
 			}
 			if (port != NULL) rport = atoi(port);
