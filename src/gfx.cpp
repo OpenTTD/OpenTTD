@@ -1008,7 +1008,7 @@ void DrawMouseCursor()
 	}
 
 	w = _cursor.size.x;
-	x = _cursor.pos.x + _cursor.offs.x;
+	x = _cursor.pos.x + _cursor.offs.x + _cursor.short_vehicle_offset;
 	if (x < 0) {
 		w += x;
 		x = 0;
@@ -1036,7 +1036,7 @@ void DrawMouseCursor()
 
 	/* Draw cursor on screen */
 	_cur_dpi = &_screen;
-	DrawSprite(_cursor.sprite, _cursor.pal, _cursor.pos.x, _cursor.pos.y);
+	DrawSprite(_cursor.sprite, _cursor.pal, _cursor.pos.x + _cursor.short_vehicle_offset, _cursor.pos.y);
 
 	_video_driver->MakeDirty(_cursor.draw_pos.x, _cursor.draw_pos.y, _cursor.draw_size.x, _cursor.draw_size.y);
 
@@ -1287,6 +1287,7 @@ static void SetCursorSprite(SpriteID cursor, SpriteID pal)
 	cv->offs.y = p->y_offs;
 
 	cv->dirty = true;
+	cv->short_vehicle_offset = 0;
 }
 
 static void SwitchAnimatedCursor()

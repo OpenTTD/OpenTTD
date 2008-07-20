@@ -513,6 +513,20 @@ struct DepotWindow : Window {
 					this->sel = v->index;
 					this->SetDirty();
 					SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, this);
+
+					switch (v->type) {
+						case VEH_TRAIN:
+							_cursor.short_vehicle_offset = 16 - v->u.rail.cached_veh_length * 2;
+							break;
+
+						case VEH_ROAD:
+							_cursor.short_vehicle_offset = 16 - v->u.road.cached_veh_length * 2;
+							break;
+
+						default:
+							_cursor.short_vehicle_offset = 0;
+							break;
+					}
 					_cursor.vehchain = _ctrl_pressed;
 				}
 			} break;
