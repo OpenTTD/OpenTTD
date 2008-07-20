@@ -453,27 +453,27 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case OT_CONDITIONAL: {
 			VehicleOrderID skip_to = new_order.GetConditionSkipToOrder();
-			if (skip_to != 0 && skip_to >= v->num_orders) {printf("%i: %i\n", skip_to, __LINE__); return CMD_ERROR;} // Always allow jumping to the first (even when there is no order).
-			if (new_order.GetConditionVariable() > OCV_END) {printf("%i\n", __LINE__); return CMD_ERROR;}
+			if (skip_to != 0 && skip_to >= v->num_orders) return CMD_ERROR; // Always allow jumping to the first (even when there is no order).
+			if (new_order.GetConditionVariable() > OCV_END) return CMD_ERROR;
 
 			OrderConditionComparator occ = new_order.GetConditionComparator();
-			if (occ > OCC_END) {printf("%i\n", __LINE__); return CMD_ERROR;}
+			if (occ > OCC_END) return CMD_ERROR;
 			switch (new_order.GetConditionVariable()) {
 				case OCV_REQUIRES_SERVICE:
-					if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) return CMD_ERROR;
 					break;
 
 				case OCV_UNCONDITIONALLY:
-					if (occ != OCC_EQUALS) {printf("%i\n", __LINE__); return CMD_ERROR;}
-					if (new_order.GetConditionValue() != 0) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					if (occ != OCC_EQUALS) return CMD_ERROR;
+					if (new_order.GetConditionValue() != 0) return CMD_ERROR;
 					break;
 
 				case OCV_LOAD_PERCENTAGE:
 				case OCV_RELIABILITY:
-					if (new_order.GetConditionValue() > 100) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					if (new_order.GetConditionValue() > 100) return CMD_ERROR;
 					/* FALL THROUGH */
 				default:
-					if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) return CMD_ERROR;
 					break;
 			}
 		} break;
@@ -1312,7 +1312,6 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 
 			if (!DoCommandP(0, v->index + (i << 16), o.Pack(), NULL,
 					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
-				printf("huh?\n");
 				break;
 			}
 
@@ -1320,7 +1319,6 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 			if (_settings_game.order.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
 					o.wait_time << 16 | o.travel_time, NULL,
 					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
-				printf("umh?\n");
 				break;
 			}
 		}
