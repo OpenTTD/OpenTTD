@@ -197,8 +197,4 @@ const AirportFTAClass *GetAirport(const byte airport_type);
  */
 uint32 GetValidAirports();
 
-
-/* Calculate the noise this type airport will generate */
-uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_tile, TileIndex tile);
-
 #endif /* AIRPORT_H */
