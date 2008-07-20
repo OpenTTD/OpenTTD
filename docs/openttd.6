@@ -1,28 +1,37 @@
 .\"                                      Hey, EMACS: -*- nroff -*-
 .\" Please adjust this date whenever revising the manpage.
-.Dd Sep 15, 2007
+.Dd Jul 20, 2008
 .Dt OPENTTD 6
 .Sh NAME
 .Nm openttd
 .Nd An open source clone of the Microprose game "Transport Tycoon Deluxe"
 .Sh SYNOPSIS
 .Nm
-.Op Fl Defhi
+.Op Fl Defhix
 .Op Fl G Ar seed
+.Op Fl b Ar blitter
 .Op Fl d Ar [level | cat=lvl[, ...]]
+.Op Fl c Ar config_file
 .Op Fl g Ar [savegame]
+.Op Fl l Ar host[:port]
 .Op Fl n Ar host[:port][#player]
 .Op Fl r Ar widthxheight
 .Op Fl t Ar date
 .Op Fl m Ar driver
 .Op Fl s Ar driver
 .Op Fl v Ar driver
+.Op Fl b Ar blitter
 .Sh OPTIONS
 .Bl -tag -width ".Fl n Ar host[:port][#player]"
-.It Fl D
+.It Fl D Ar [host][:port]
 Start a dedicated server
 .It Fl G Ar seed
 Seed the pseudo random number generator
+.It Fl b Ar blitter
+Set the blitter, see
+.Fl h
+.It Fl c Ar config_file
+Use 'config_file' instead of 'openttd.cfg'
 .It Fl d Ar [level]
 Set debug verbosity for all categories to
 .Ar level
@@ -42,6 +51,9 @@ at start or start a new game if omitted
 Display a summary of all options and available drivers
 .It Fl i
 Force to use the DOS palette (use this if you see a lot of magenta)
+.It Fl l Ar host[:port]
+Redirect DEBUG(), See
+.Fl D
 .It Fl m Ar driver
 Set the music driver, see
 .Fl h
@@ -57,6 +69,8 @@ Set the starting date
 .It Fl v Ar driver
 Set the video driver, see
 .Fl h
+.It Fl x
+Do not automatically save to config file on exit
 .El
 .Sh SEE ALSO
 http://wiki.openttd.org/, http://www.openttd.org
