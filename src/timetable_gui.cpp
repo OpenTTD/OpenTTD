@@ -86,7 +86,7 @@ struct TimetableWindow : Window {
 		if (v->owner == _local_player) {
 			bool disable = true;
 			if (selected != -1) {
-				const Order *order = GetVehicleOrder(v, (selected + 1) / 2);
+				const Order *order = GetVehicleOrder(v, ((selected + 1) / 2) % v->num_orders);
 				if (selected % 2 == 1) {
 					disable = order != NULL && order->IsType(OT_CONDITIONAL);
 				} else {

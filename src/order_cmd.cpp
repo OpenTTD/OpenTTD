@@ -375,8 +375,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Non stop not allowed for non-trains. */
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
 
-			/* Full load and unload are mutual exclusive. */
-			if ((new_order.GetLoadType() & OLFB_FULL_LOAD) && (new_order.GetUnloadType() & OUFB_UNLOAD)) return CMD_ERROR;
+			/* No load and no unload are mutual exclusive. */
+			if ((new_order.GetLoadType() & OLFB_NO_LOAD) && (new_order.GetUnloadType() & OUFB_NO_UNLOAD)) return CMD_ERROR;
 
 			/* Filter invalid load/unload types. */
 			switch (new_order.GetLoadType()) {
@@ -437,7 +437,6 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case OT_GOTO_WAYPOINT: {
-
 			if (v->type != VEH_TRAIN) return CMD_ERROR;
 
 			if (!IsValidWaypointID(new_order.GetDestination())) return CMD_ERROR;
@@ -453,11 +452,30 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case OT_CONDITIONAL: {
-			if (!IsPlayerBuildableVehicleType(v)) return CMD_ERROR;
-
 			VehicleOrderID skip_to = new_order.GetConditionSkipToOrder();
-			if (skip_to >= v->num_orders) return CMD_ERROR;
-			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE) return CMD_ERROR;
+			if (skip_to != 0 && skip_to >= v->num_orders) {printf("%i: %i\n", skip_to, __LINE__); return CMD_ERROR;} // Always allow jumping to the first (even when there is no order).
+			if (new_order.GetConditionVariable() > OCV_END) {printf("%i\n", __LINE__); return CMD_ERROR;}
+
+			OrderConditionComparator occ = new_order.GetConditionComparator();
+			if (occ > OCC_END) {printf("%i\n", __LINE__); return CMD_ERROR;}
+			switch (new_order.GetConditionVariable()) {
+				case OCV_REQUIRES_SERVICE:
+					if (occ != OCC_IS_TRUE && occ != OCC_IS_FALSE) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					break;
+
+				case OCV_UNCONDITIONALLY:
+					if (occ != OCC_EQUALS) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					if (new_order.GetConditionValue() != 0) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					break;
+
+				case OCV_LOAD_PERCENTAGE:
+				case OCV_RELIABILITY:
+					if (new_order.GetConditionValue() > 100) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					/* FALL THROUGH */
+				default:
+					if (occ == OCC_IS_TRUE || occ == OCC_IS_FALSE) {printf("%i\n", __LINE__); return CMD_ERROR;}
+					break;
+			}
 		} break;
 
 		default: return CMD_ERROR;
@@ -938,6 +956,10 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					break;
 			}
 			break;
+
+		case MOF_COND_DESTINATION:
+			if (data >= v->num_orders) return CMD_ERROR;
+			break;
 	}
 
 	if (flags & DC_EXEC) {
@@ -995,6 +1017,10 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			case MOF_COND_VALUE:
 				order->SetConditionValue(data);
+				break;
+
+			case MOF_COND_DESTINATION:
+				order->SetConditionSkipToOrder(data);
 				break;
 
 			default: NOT_REACHED();
@@ -1280,15 +1306,31 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 		 *  in network the commands are queued before send, the second insert always
 		 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
 		for (uint i = 0; bak->order[i].IsValid(); i++) {
-			if (!DoCommandP(0, v->index + (i << 16), bak->order[i].Pack(), NULL,
+			Order o = bak->order[i];
+			/* Conditional orders need to have their destination to be valid on insertion. */
+			if (o.IsType(OT_CONDITIONAL)) o.SetConditionSkipToOrder(0);
+
+			if (!DoCommandP(0, v->index + (i << 16), o.Pack(), NULL,
 					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
+				printf("huh?\n");
 				break;
 			}
 
 			/* Copy timetable if enabled */
 			if (_settings_game.order.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
-					bak->order[i].wait_time << 16 | bak->order[i].travel_time, NULL,
+					o.wait_time << 16 | o.travel_time, NULL,
 					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
+				printf("umh?\n");
+				break;
+			}
+		}
+
+			/* Fix the conditional orders' destination. */
+		for (uint i = 0; bak->order[i].IsValid(); i++) {
+			if (!bak->order[i].IsType(OT_CONDITIONAL)) continue;
+
+			if (!DoCommandP(0, v->index + (i << 16), MOF_LOAD | (bak->order[i].GetConditionSkipToOrder() << 4), NULL,
+					CMD_MODIFY_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
 			}
 		}

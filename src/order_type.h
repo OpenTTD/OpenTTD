@@ -126,6 +126,7 @@ enum ModifyOrderFlags {
 	MOF_COND_VARIABLE,   ///< A conditional variable changes.
 	MOF_COND_COMPARATOR, ///< A comparator changes.
 	MOF_COND_VALUE,      ///< The value to set the condition to.
+	MOF_COND_DESTINATION,///< Change the destination of a conditional order.
 	MOF_END
 };
 
