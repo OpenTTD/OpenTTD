@@ -584,7 +584,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			} break;
 
 			case 0x1A: // Alter purchase list sort order
-				AlterRailVehListOrder(e->index, grf_load_byte(&buf));
+				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
 				break;
 
 			case 0x1B: // Powered wagons power bonus
@@ -6002,7 +6002,7 @@ static void AfterLoadGRFs()
 	InitGRFTownGeneratorNames();
 
 	/* Run all queued vehicle list order changes */
-	CommitRailVehListOrderChanges();
+	CommitVehicleListOrderChanges();
 
 	/* Load old shore sprites in new position, if they were replaced by ActionA */
 	ActivateOldShore();

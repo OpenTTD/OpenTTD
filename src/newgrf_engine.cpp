@@ -1093,7 +1093,7 @@ struct ListOrderChange {
 
 static std::list<ListOrderChange> _list_order_changes;
 
-void AlterRailVehListOrder(EngineID engine, EngineID target)
+void AlterVehicleListOrder(EngineID engine, EngineID target)
 {
 	/* Add the list order change to a queue */
 	ListOrderChange loc;
@@ -1102,7 +1102,7 @@ void AlterRailVehListOrder(EngineID engine, EngineID target)
 	_list_order_changes.push_back(loc);
 }
 
-void CommitRailVehListOrderChanges()
+void CommitVehicleListOrderChanges()
 {
 	/* List position to Engine map */
 	typedef std::map<uint16, Engine*> ListPositionMap;
@@ -1120,7 +1120,7 @@ void CommitRailVehListOrderChanges()
 
 		/* Populate map with current list positions */
 		Engine *e;
-		FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) {
+		FOR_ALL_ENGINES_OF_TYPE(e, source_e->type) {
 			if (!_settings_game.vehicle.dynamic_engines || e->grffile == source_e->grffile) {
 				if (e->internal_id == target) target_e = e;
 				lptr_map[e->list_position] = e;
