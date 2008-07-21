@@ -1166,7 +1166,21 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 
 	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
 
-	NetworkServerSendChat(action, desttype, dest, msg, cs->index);
+	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	switch (action) {
+		case NETWORK_ACTION_GIVE_MONEY:
+			if (!IsValidPlayerID(ci->client_playas)) break;
+			/* Fall-through */
+		case NETWORK_ACTION_CHAT:
+		case NETWORK_ACTION_CHAT_CLIENT:
+		case NETWORK_ACTION_CHAT_COMPANY:
+			NetworkServerSendChat(action, desttype, dest, msg, cs->index);
+			break;
+		default:
+			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_index, GetPlayerIP(ci));
+			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+			break;
+	}
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
