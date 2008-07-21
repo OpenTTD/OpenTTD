@@ -1440,13 +1440,13 @@ static void NetworkAutoCleanCompanies()
 			_network_player_info[p->index].months_empty++;
 
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
-			if (_network_player_info[p->index].months_empty > _settings_client.network.autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
+			if (_settings_client.network.autoclean_unprotected != 0 && _network_player_info[p->index].months_empty > _settings_client.network.autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
 				/* Shut the company down */
 				DoCommandP(0, 2, p->index, NULL, CMD_PLAYER_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d", p->index + 1);
 			}
 			/* Is the compnay empty for autoclean_protected-months, and there is a protection? */
-			if (_network_player_info[p->index].months_empty > _settings_client.network.autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
+			if (_settings_client.network.autoclean_protected != 0 && _network_player_info[p->index].months_empty > _settings_client.network.autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
 				/* Unprotect the company */
 				_network_player_info[p->index].password[0] = '\0';
 				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", p->index+1);
