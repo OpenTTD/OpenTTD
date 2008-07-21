@@ -644,14 +644,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	p->Recv_string(client_revision, sizeof(client_revision));
 
-#if defined(WITH_REV) || defined(WITH_REV_HACK)
 	// Check if the client has revision control enabled
 	if (!IsNetworkCompatibleVersion(client_revision)) {
 		// Different revisions!!
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
 		return;
 	}
-#endif
 
 	p->Recv_string(name, sizeof(name));
 	playas = (Owner)p->Recv_uint8();
