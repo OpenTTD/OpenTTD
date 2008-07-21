@@ -792,6 +792,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				ei->base_intro = grf_load_dword(&buf);
 				break;
 
+			case 0x20: // Alter purchase list sort order
+				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
+				break;
+
 			default:
 				ret = true;
 				break;
@@ -899,6 +903,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				ei->base_intro = grf_load_dword(&buf);
 				break;
 
+			case 0x1B: // Alter purchase list sort order
+				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
+				break;
+
 			default:
 				ret = true;
 				break;
@@ -1002,6 +1010,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 			case 0x1A: // Long format introduction date (days since year 0)
 				ei->base_intro = grf_load_dword(&buf);
+				break;
+
+			case 0x1B: // Alter purchase list sort order
+				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
 				break;
 
 			default:
