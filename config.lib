@@ -32,13 +32,7 @@ set_default() {
 	personal_dir="1"
 	shared_dir="1"
 	install_dir="/"
-	if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
-		with_menu_entry="1"
-		menu_dir="share/applications"
-	else
-		with_menu_entry="0"
-		menu_dir=""
-	fi
+	menu_dir=""
 	menu_group="Game;"
 	enable_debug="0"
 	enable_desync_debug="0"
@@ -56,6 +50,7 @@ set_default() {
 	enable_cocoa_quickdraw="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
+	with_menu_entry="2"
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
@@ -871,6 +866,15 @@ check_params() {
 		log 1 "installation directory... $install_dir"
 	else
 		log 1 "installation directory... none"
+	fi
+
+	if [ "$with_menu_entry" = "2" ]; then
+		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
+			with_menu_entry="1"
+			menu_dir="share/applications"
+		else
+			with_menu_entry="0"
+		fi
 	fi
 }
 
