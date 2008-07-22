@@ -847,6 +847,16 @@ check_params() {
 		fi
 	fi
 
+	if [ "$with_menu_entry" = "2" ]; then
+		# add a freedesktop menu item only for some UNIX systems
+		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
+			with_menu_entry="1"
+			menu_dir="share/applications"
+		else
+			with_menu_entry="0"
+		fi
+	fi
+
 	if [ -n "$personal_dir" ]
 	then
 		log 1 "personal home directory... $personal_dir"
@@ -868,13 +878,11 @@ check_params() {
 		log 1 "installation directory... none"
 	fi
 
-	if [ "$with_menu_entry" = "2" ]; then
-		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
-			with_menu_entry="1"
-			menu_dir="share/applications"
-		else
-			with_menu_entry="0"
-		fi
+	if [ -n "$menu_dir" ]
+	then
+		log 1 "menu item directory... $menu_dir"
+	else
+		log 1 "menu item directory... none"
 	fi
 }
 
