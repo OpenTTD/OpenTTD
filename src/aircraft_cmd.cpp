@@ -1631,6 +1631,11 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 				v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 			}
 			break;
+		case OT_CONDITIONAL:
+			/* In case of a conditional order we just have to wait a tick
+			 * longer, so the conditional order can actually be processed;
+			 * we should not clear the order as that makes us go nowhere. */
+			return;
 		default:  // orders have been deleted (no orders), goto depot and don't bother us
 			v->current_order.Free();
 			v->u.air.state = HANGAR;
