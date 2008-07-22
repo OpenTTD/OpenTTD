@@ -43,9 +43,15 @@ if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
 	exit $?
 fi
 
+export SHOW_HELP="0"
+
 set_default
 detect_params "$@"
 check_params
+if [ "$SHOW_HELP" != "0" ]; then
+	showhelp
+	exit 0
+fi
 save_params
 make_cflags_and_ldflags
 

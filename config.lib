@@ -144,7 +144,7 @@ detect_params() {
 		optarg=`expr "x$p" : 'x[^=]*=\(.*\)'`
 
 		case "$p" in
-			--help | -h)                  showhelp; exit 0;;
+			--help | -h)                  SHOW_HELP="1";;
 
 			--config-log)                 prev_p="config_log";;
 			--config-log=*)               config_log="$optarg";;
@@ -2373,7 +2373,7 @@ showhelp() {
 	echo "  --strip=STRIP                  the strip to use [HOST-strip]"
 	echo "  --awk=AWK                      the awk to use in configure [awk]"
 	echo "  --lipo=LIPO                    the lipo to use (OSX ONLY) [HOST-lipo]"
-	echo "  --os=OS                        the OS we are compiling for [DETECT]"
+	echo "  --os=OS                        the OS we are compiling for [$os]"
 	echo "                                 DETECT/UNIX/OSX/FREEBSD/OPENBSD/NETBSD/"
 	echo "                                 MORPHOS/HPUX/BEOS/SUNOS/CYGWIN/MINGW/OS2/"
 	echo "                                 WINCE/PSP"
@@ -2383,23 +2383,23 @@ showhelp() {
 	echo ""
 	echo "Paths:"
 	echo "  --prefix-dir=dir               specifies the prefix for all installed"
-	echo "                                 files [/usr/local]"
+	echo "                                 files [$prefix_dir]"
 	echo "  --binary-dir=dir               location of the binary. Will be prefixed"
-	echo "                                 with the prefix-dir [games]"
+	echo "                                 with the prefix-dir [$binary_dir]"
 	echo "  --data-dir=dir                 location of data files (lang, data, gm)."
 	echo "                                 Will be prefixed with the prefix-dir"
-	echo "                                 [share/games/openttd]"
+	echo "                                 [$data_dir]"
 	echo "  --icon-dir=dir                 location of icons. Will be prefixed"
-	echo "                                 with the prefix-dir [share/pixmaps]"
+	echo "                                 with the prefix-dir [$icon_dir]"
 	echo "  --menu-dir=dir                 location of the menu item. (UNIX only, except OSX)"
 	echo "                                 Will be prefixed with the prefix-dir"
-	echo "                                 [share/applications]"
+	echo "                                 [$menu_dir]"
 	echo "  --personal-dir=dir             location of the personal directory"
-	echo "                                 [os-dependent default]"
+	echo "                                 [$personal_dir]"
 	echo "  --shared-dir=dir               location of shared data files"
-	echo "                                 [os-dependent default]"
+	echo "                                 [$shared_dir]"
 	echo "  --install-dir=dir              specifies the root to install to."
-	echo "                                 Useful to install into jails [/]"
+	echo "                                 Useful to install into jails [$install_dir]"
 	echo ""
 	echo "Features and packages:"
 	echo "  --enable-debug[=LVL]           enable debug-mode (LVL=[0123], 0 is release)"
