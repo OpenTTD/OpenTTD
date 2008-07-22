@@ -29,9 +29,11 @@ set_default() {
 	binary_dir="games"
 	data_dir="share/games/openttd"
 	icon_dir="share/pixmaps"
+	menu_dir="share/applications"
 	personal_dir="1"
 	shared_dir="1"
 	install_dir="/"
+	menu_group="Game;"
 	enable_debug="0"
 	enable_desync_debug="0"
 	enable_profiling="0"
@@ -48,6 +50,7 @@ set_default() {
 	enable_cocoa_quickdraw="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
+	with_menu_entry="1"
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
@@ -86,9 +89,11 @@ set_default() {
 		binary_dir
 		data_dir
 		icon_dir
+		menu_dir
 		personal_dir
 		shared_dir
 		install_dir
+		menu_group
 		enable_debug
 		enable_desync_debug
 		enable_profiling
@@ -105,6 +110,7 @@ set_default() {
 		enable_cocoa_quickdraw
 		with_osx_sysroot
 		with_application_bundle
+		with_menu_entry
 		with_sdl
 		with_cocoa
 		with_zlib
@@ -191,6 +197,9 @@ detect_params() {
 			--icon-dir)                   prevp_p="icon-dir";;
 			--icon-dir=*)                 icon_dir="$optarg";;
 
+			--menu-dir)                   prevp_p="menu_dir";;
+			--menu-dir=*)                 menu_dir="$optarg";;
+
 			--personal-dir)               prevp_p="personal-dir";;
 			--personal-dir=*)             personal_dir="$optarg";;
 			--without-personal-dir)       personal_dir="";;
@@ -201,6 +210,14 @@ detect_params() {
 
 			--install-dir)                prevp_p="install-dir";;
 			--install-dir=*)              install_dir="$optarg";;
+
+
+
+			--with-menu-entry)            with_menu_entry="1";;
+			--without-menu-entry)         with_menu_entry="0";;
+
+			--menu_group)                 prevp_p="menu_group";;
+			--menu_group=*)               menu_group="$optarg";;
 
 
 
@@ -737,7 +754,7 @@ check_params() {
 			# First, are we a real OSX system, else we can't detect it
 			native=`LC_ALL=C uname | tr '[A-Z]' '[a-z]' | grep darwin`
 			# If $host doesn't match $build , we are cross-compiling
-			if [ -n "$native" ] && [ "$build" == "$host" ]; then
+			if [ -n "$native" ] && [ "$build" = "$host" ]; then
 				$cxx_build $SRC_DIR/os/macosx/G5_detector.cpp -o G5_detector
 				res=`./G5_detector`
 				rm -f G5_detector
@@ -848,6 +865,13 @@ check_params() {
 		log 1 "installation directory... $install_dir"
 	else
 		log 1 "installation directory... none"
+	fi
+
+	if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ] || [ "$os" = "OS2" ] || [ "$os" = "WINCE" ] || [ "$os" = "PSP" ] || [ "$os" = "OSX" ] || [ "$os" = "MORPHOS" ]; then
+		# Don't create a .desktop file
+		with_menu_entry="0"
+		menu_dir=""
+		menu_group=""
 	fi
 }
 
@@ -2227,6 +2251,25 @@ make_sed() {
 		s#!!GCC295!!#$gcc295#g;
 		s#!!DISTCC!!#$distcc#g;
 	"
+
+	if [ "$with_menu_entry" = "1" ]; then
+		SRC_REPLACE="$SRC_REPLACE
+			s#!!MENU_DIR!!#$prefix_dir/$menu_dir#g;
+		"
+	else
+		SRC_REPLACE="$SRC_REPLACE
+			s#!!MENU_DIR!!##g;
+		"
+	fi
+}
+
+generate_menu_item() {
+	MENU_REPLACE="
+		s#!!TTD!!#$TTD#g;
+		s#!!MENU_GROUP!!#$menu_group#g
+	"
+	echo "Generating menu item..."
+	< $ROOT_DIR/media/openttd.desktop.in sed "$MENU_REPLACE" > media/openttd.desktop
 }
 
 generate_main() {
@@ -2243,6 +2286,10 @@ generate_main() {
 	cp $SOURCE_LIST config.cache.source.list
 	# Make sure config.cache is OLDER then config.cache.source.list
 	touch config.cache
+
+	if [ "$with_menu_entry" = "1" ]; then
+		generate_menu_item
+	fi
 }
 
 generate_lang() {
@@ -2341,6 +2388,9 @@ showhelp() {
 	echo "                                 [share/games/openttd]"
 	echo "  --icon-dir=dir                 location of icons. Will be prefixed"
 	echo "                                 with the prefix-dir [share/pixmaps]"
+	echo "  --menu-dir=dir                 location of the menu item. (UNIX only, except OSX)"
+	echo "                                 Will be prefixed with the prefix-dir"
+	echo "                                 [share/applications]"
 	echo "  --personal-dir=dir             location of the personal directory"
 	echo "                                 [os-dependent default]"
 	echo "  --shared-dir=dir               location of shared data files"
@@ -2369,6 +2419,9 @@ showhelp() {
 	echo "                                 (OSX ONLY)"
 	echo "  --without-application-bundle   disable generation of application bundle"
 	echo "                                 (OSX ONLY)"
+	echo "  --with-menu-entry              Generate a menu item on for UNIX desktops (Except OSX)"
+	echo "  --without-menu-entry           Don't generate a menu item"
+	echo "  --menu_group=group             Category in which the menu item will be placed (UNIX only, except OSX)"
 	echo "  --with-direct-music            enable direct music support (Win32 ONLY)"
 	echo "  --with-sort=sort               define a non-default location for sort"
 	echo "  --with-midi=midi               define which midi-player to use"
