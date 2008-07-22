@@ -607,12 +607,14 @@ struct NewGRFWindow : public Window {
 				GetGRFPresetList(&_grf_preset_list);
 
 				/* Switch to this preset */
-				for (uint i = 0; i < lengthof(_grf_preset_list); i++) {
+				for (uint i = 0; i < _grf_preset_list.Length(); i++) {
 					if (_grf_preset_list[i] != NULL && strcmp(_grf_preset_list[i], str) == 0) {
 						this->preset = i;
 						break;
 					}
 				}
+
+				this->SetDirty();
 				break;
 
 			case SNGRFS_SET_PARAMETERS: {
