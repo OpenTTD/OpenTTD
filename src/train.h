@@ -262,7 +262,6 @@ static inline Vehicle *GetNextUnit(Vehicle *v)
 
 void ConvertOldMultiheadToNew();
 void ConnectMultiheadedTrains();
-uint CountArticulatedParts(EngineID engine_type);
 
 void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
