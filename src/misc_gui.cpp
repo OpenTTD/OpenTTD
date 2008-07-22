@@ -378,14 +378,14 @@ void ShowAboutWindow()
 static const Widget _errmsg_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     4,    11,   239,     0,    13, STR_00B2_MESSAGE, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,     4,     0,   239,    14,    45, 0x0,              STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,   4,     0,   239,    14,    45, 0x0,              STR_NULL},
 {    WIDGETS_END},
 };
 
 static const Widget _errmsg_face_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     4,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,     4,     0,   333,    14,   136, 0x0,                   STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,   4,     0,   333,    14,   136, 0x0,                   STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -397,6 +397,8 @@ private:
 	StringID message_2;
 	bool show_player_face;
 
+	int y[2];
+
 public:
 	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_player_face) :
 			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
@@ -407,16 +409,35 @@ public:
 		this->message_1 = msg1;
 		this->message_2 = msg2;
 		this->desc_flags = WDF_STD_BTN | WDF_DEF_WIDGET;
+
+		SwitchToErrorRefStack();
+		RewindTextRefStack();
+
+		assert(msg2 != INVALID_STRING_ID);
+
+		int h2 = 3 + GetStringHeight(msg2, width - 2); // msg2 is printed first
+		int h1 = (msg1 == INVALID_STRING_ID) ? 0 : 3 + GetStringHeight(msg1, width - 2);
+
+		SwitchToNormalRefStack();
+
+		int h = 15 + h1 + h2;
+		height = max<int>(height, h);
+
+		if (msg1 == INVALID_STRING_ID) {
+			// only 1 line will be printed
+			y[1] = (height - 15) / 2 + 15 - 5;
+		} else {
+			int over = (height - h) / 4;
+
+			y[1] = 15 + h2 / 2 + 1 - 5 + over;
+			y[0] = height - 3 - h1 / 2 - 5 - over;
+		}
+
 		this->FindWindowPlacementAndResize(width, height);
 	}
 
 	virtual void OnPaint()
 	{
-		static int y[][3] = {
-			{15, 25, 30}, // _errmsg_widgets
-			{45, 65, 90}, // _errmsg_face_widgets
-		};
-
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
 		this->DrawWidgets();
 		CopyInDParam(0, this->decode_params, lengthof(this->decode_params));
@@ -432,11 +453,8 @@ public:
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 		}
 
-		byte j = (this->message_1 == INVALID_STRING_ID) ? 1 : 0;
-		DrawStringMultiCenter(this->width - 120, y[this->show_player_face][j], this->message_2, this->width - 2);
-		if (j == 0) {
-			DrawStringMultiCenter(this->width - 120, y[this->show_player_face][2], this->message_1, this->width - 2);
-		}
+		DrawStringMultiCenter(this->width - 120, y[1], this->message_2, this->width - 2);
+		if (this->message_1 != INVALID_STRING_ID) DrawStringMultiCenter(this->width - 120, y[0], this->message_1, this->width - 2);
 
 		/* Switch back to the normal text ref. stack for NewGRF texts */
 		SwitchToNormalRefStack();

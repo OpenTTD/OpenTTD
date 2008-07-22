@@ -452,6 +452,52 @@ end_of_inner_loop:
 	}
 }
 
+
+/** Calculates height of string (in pixels). Accepts multiline string with '\0' as separators.
+ * @param src string to check
+ * @param num number of extra lines (output of FormatStringLinebreaks())
+ * @note assumes text won't be truncated. FormatStringLinebreaks() is a good way to ensure that.
+ * @return height of pixels of string when it is drawn
+ */
+static int GetMultilineStringHeight(const char *src, int num)
+{
+	int maxy = 0;
+	int y = 0;
+	int fh = GetCharacterHeight(_cur_fontsize);
+
+	for (;;) {
+		WChar c = Utf8Consume(&src);
+
+		switch (c) {
+			case 0:            y += fh; if (--num < 0) return maxy; break;
+			case '\n':         y += fh;                             break;
+			case SCC_SETX:     src++;                               break;
+			case SCC_SETXY:    src++; y = (int)*src++;              break;
+			case SCC_TINYFONT: fh = GetCharacterHeight(FS_SMALL);   break;
+			case SCC_BIGFONT:  fh = GetCharacterHeight(FS_LARGE);   break;
+			default:           maxy = max<int>(maxy, y + fh);       break;
+		}
+	}
+}
+
+
+/** Calculates height of string (in pixels). The string is changed to a multiline string if needed.
+ * @param str string to check
+ * @param maxw maximum string width
+ * @return height of pixels of string when it is drawn
+ */
+int GetStringHeight(StringID str, int maxw)
+{
+	char buffer[512];
+
+	GetString(buffer, str, lastof(buffer));
+
+	uint32 tmp = FormatStringLinebreaks(buffer, maxw);
+
+	return GetMultilineStringHeight(buffer, GB(tmp, 0, 16));
+}
+
+
 /** Draw a given string with the centre around the given (x,y) coordinates
  * @param x Centre the string around this pixel width
  * @param y Centre the string around this pixel height
