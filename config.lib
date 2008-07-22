@@ -29,10 +29,16 @@ set_default() {
 	binary_dir="games"
 	data_dir="share/games/openttd"
 	icon_dir="share/pixmaps"
-	menu_dir="share/applications"
 	personal_dir="1"
 	shared_dir="1"
 	install_dir="/"
+	if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
+		with_menu_entry="1"
+		menu_dir="share/applications"
+	else
+		with_menu_entry="0"
+		menu_dir=""
+	fi
 	menu_group="Game;"
 	enable_debug="0"
 	enable_desync_debug="0"
@@ -50,7 +56,6 @@ set_default() {
 	enable_cocoa_quickdraw="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
-	with_menu_entry="1"
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
@@ -866,13 +871,6 @@ check_params() {
 		log 1 "installation directory... $install_dir"
 	else
 		log 1 "installation directory... none"
-	fi
-
-	if [ "$os" = "CYGWIN" ] || [ "$os" = "MINGW" ] || [ "$os" = "OS2" ] || [ "$os" = "WINCE" ] || [ "$os" = "PSP" ] || [ "$os" = "OSX" ] || [ "$os" = "MORPHOS" ]; then
-		# Don't create a .desktop file
-		with_menu_entry="0"
-		menu_dir=""
-		menu_group=""
 	fi
 }
 
@@ -2420,9 +2418,8 @@ showhelp() {
 	echo "                                 (OSX ONLY)"
 	echo "  --without-application-bundle   disable generation of application bundle"
 	echo "                                 (OSX ONLY)"
-	echo "  --with-menu-entry              Generate a menu item on for UNIX desktops (Except OSX)"
-	echo "  --without-menu-entry           Don't generate a menu item"
-	echo "  --menu_group=group             Category in which the menu item will be placed (UNIX only, except OSX)"
+	echo "  --without-menu-entry           Don't generate a menu item (Freedesktop based only)"
+	echo "  --menu_group=group             Category in which the menu item will be placed (Freedesktop based only)"
 	echo "  --with-direct-music            enable direct music support (Win32 ONLY)"
 	echo "  --with-sort=sort               define a non-default location for sort"
 	echo "  --with-midi=midi               define which midi-player to use"
