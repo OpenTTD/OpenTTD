@@ -162,4 +162,36 @@ public:
 	}
 };
 
+
+/**
+ * Simple vector template class, with automatic free.
+ *
+ * @note There are no asserts in the class so you have
+ *       to care about that you grab an item which is
+ *       inside the list.
+ *
+ * @param T The type of the items stored, must be a pointer
+ * @param S The steps of allocation
+ */
+template <typename T, uint S>
+class AutoFreeSmallVector : public SmallVector<T, S> {
+public:
+	~AutoFreeSmallVector()
+	{
+		this->Clear();
+	}
+
+	/**
+	 * Remove all items from the list.
+	 */
+	FORCEINLINE void Clear()
+	{
+		for (uint i = 0; i < this->items; i++) {
+			free(this->data[i]);
+		}
+
+		this->items = 0;
+	}
+};
+
 #endif /* SMALLVEC_TYPE_HPP */

@@ -62,6 +62,7 @@
 #include "blitter/factory.hpp"
 #include "gamelog.h"
 #include "station_func.h"
+#include "settings_func.h"
 
 #include "table/strings.h"
 
@@ -2097,6 +2098,55 @@ void SaveToConfig()
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	NewsDisplaySaveConfig(ini, "news_display");
 	SaveVersionInConfig(ini);
+	ini_save(_config_file, ini);
+	ini_free(ini);
+}
+
+void GetGRFPresetList(GRFPresetList *list)
+{
+	list->Clear();
+
+	IniFile *ini = ini_load(_config_file);
+	IniGroup *group;
+	for (group = ini->group; group != NULL; group = group->next) {
+		if (strncmp(group->name, "preset-", 7) == 0) {
+			*list->Append() = strdup(group->name + 7);
+		}
+	}
+
+	ini_free(ini);
+}
+
+GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
+{
+	char *section = (char*)alloca(strlen(config_name) + 8);
+	sprintf(section, "preset-%s", config_name);
+
+	IniFile *ini = ini_load(_config_file);
+	GRFConfig *config = GRFLoadConfig(ini, section, false);
+	ini_free(ini);
+
+	return config;
+}
+
+void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
+{
+	char *section = (char*)alloca(strlen(config_name) + 8);
+	sprintf(section, "preset-%s", config_name);
+
+	IniFile *ini = ini_load(_config_file);
+	GRFSaveConfig(ini, section, config);
+	ini_save(_config_file, ini);
+	ini_free(ini);
+}
+
+void DeleteGRFPresetFromConfig(const char *config_name)
+{
+	char *section = (char*)alloca(strlen(config_name) + 8);
+	sprintf(section, "preset-%s", config_name);
+
+	IniFile *ini = ini_load(_config_file);
+	ini_removegroup(ini, section);
 	ini_save(_config_file, ini);
 	ini_free(ini);
 }

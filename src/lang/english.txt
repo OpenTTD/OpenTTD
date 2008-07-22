@@ -3181,6 +3181,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Too many NewGRFs are loaded.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {RAW_STRING} as static NewGRF with {RAW_STRING} could cause desyncs.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Load the selected preset
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Save preset
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Save the current list as a preset
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Enter name for preset
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Delete preset
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Delete the currently selected preset
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list
 STR_NEWGRF_REMOVE                                               :{BLACK}Remove

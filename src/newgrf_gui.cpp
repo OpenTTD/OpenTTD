@@ -16,6 +16,8 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "gamelog.h"
+#include "settings_func.h"
+#include "widgets/dropdown_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -260,6 +262,24 @@ static const WindowDesc _newgrf_add_dlg_desc = {
 	_newgrf_add_dlg_widgets,
 };
 
+static GRFPresetList _grf_preset_list;
+
+class DropDownListPresetItem : public DropDownListItem {
+public:
+	DropDownListPresetItem(int result) : DropDownListItem(result, false) {}
+
+	virtual ~DropDownListPresetItem() {}
+
+	virtual StringID String() const
+	{
+		return STR_EMPTY;
+	}
+
+	virtual void Draw(int x, int y, uint width, uint height, bool sel) const
+	{
+		DoDrawStringTruncated(_grf_preset_list[this->result], x + 2, y, sel ? TC_WHITE : TC_BLACK, x + width);
+	}
+};
 
 static void NewGRFConfirmationCallback(Window *w, bool confirmed);
 
@@ -271,7 +291,11 @@ struct NewGRFWindow : public Window {
 	enum ShowNewGRFStateWidgets {
 		SNGRFS_CLOSEBOX = 0,
 		SNGRFS_CAPTION,
-		SNGRFS_BACKGROUND,
+		SNGRFS_BACKGROUND1,
+		SNGRFS_PRESET_LIST,
+		SNGRFS_PRESET_SAVE,
+		SNGRFS_PRESET_DELETE,
+		SNGRFS_BACKGROUND2,
 		SNGRFS_ADD,
 		SNGRFS_REMOVE,
 		SNGRFS_MOVE_UP,
@@ -290,6 +314,8 @@ struct NewGRFWindow : public Window {
 	bool editable;         ///< is the window editable
 	bool show_params;      ///< are the grf-parameters shown in the info-panel
 	bool execute;          ///< on pressing 'apply changes' are grf changes applied immediately, or only list is updated
+	int query_widget;      ///< widget that opened a query
+	int preset;            ///< selected preset
 
 	NewGRFWindow(const WindowDesc *desc, bool editable, bool show_params, bool exec_changes, GRFConfig **config) : Window(desc, 0)
 	{
@@ -300,8 +326,10 @@ struct NewGRFWindow : public Window {
 		this->editable    = editable;
 		this->execute     = exec_changes;
 		this->show_params = show_params;
+		this->preset      = -1;
 
 		CopyGRFConfigList(&this->list, *config, false);
+		GetGRFPresetList(&_grf_preset_list);
 
 		this->FindWindowPlacementAndResize(desc);
 		this->SetupNewGRFWindow();
@@ -317,6 +345,7 @@ struct NewGRFWindow : public Window {
 
 		/* Remove the temporary copy of grf-list used in window */
 		ClearGRFConfigList(&this->list);
+		_grf_preset_list.Clear();
 	}
 
 	void SetupNewGRFWindow()
@@ -329,8 +358,12 @@ struct NewGRFWindow : public Window {
 		this->vscroll.cap = (this->widget[SNGRFS_FILE_LIST].bottom - this->widget[SNGRFS_FILE_LIST].top) / 14 + 1;
 		SetVScrollCount(this, i);
 
-		this->SetWidgetDisabledState(SNGRFS_ADD, !this->editable);
-		this->SetWidgetDisabledState(SNGRFS_APPLY_CHANGES, !this->editable);
+		this->SetWidgetsDisabledState(!this->editable,
+			SNGRFS_PRESET_LIST,
+			SNGRFS_ADD,
+			SNGRFS_APPLY_CHANGES,
+			WIDGET_LIST_END
+		);
 	}
 
 	virtual void OnPaint()
@@ -350,6 +383,13 @@ struct NewGRFWindow : public Window {
 			if (this->sel == this->list)       this->DisableWidget(SNGRFS_MOVE_UP);
 			if (this->sel->next == NULL)       this->DisableWidget(SNGRFS_MOVE_DOWN);
 			if (this->sel->IsOpenTTDBaseGRF()) this->DisableWidget(SNGRFS_REMOVE);
+		}
+
+		if (this->preset == -1) {
+			this->widget[SNGRFS_PRESET_LIST].data = STR_02BF_CUSTOM;
+		} else {
+			SetDParamStr(0, _grf_preset_list[this->preset]);
+			this->widget[SNGRFS_PRESET_LIST].data = STR_JUST_RAW_STRING;
 		}
 
 		this->DrawWidgets();
@@ -404,6 +444,36 @@ struct NewGRFWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
+			case SNGRFS_PRESET_LIST: {
+				DropDownList *list = new DropDownList();
+
+				/* Add 'None' option for clearing list */
+				list->push_back(new DropDownListStringItem(STR_NONE, -1, false));
+
+				for (uint i = 0; i < _grf_preset_list.Length(); i++) {
+					if (_grf_preset_list[i] != NULL) {
+						list->push_back(new DropDownListPresetItem(i));
+					}
+				}
+
+				ShowDropDownList(this, list, this->preset, SNGRFS_PRESET_LIST);
+				break;
+			}
+
+			case SNGRFS_PRESET_SAVE:
+				this->query_widget = widget;
+				ShowQueryString(STR_EMPTY, STR_NEWGRF_PRESET_SAVE_QUERY, 32, 100, this, CS_ALPHANUMERAL);
+				break;
+
+			case SNGRFS_PRESET_DELETE:
+				if (this->preset == -1) return;
+
+				DeleteGRFPresetFromConfig(_grf_preset_list[this->preset]);
+				GetGRFPresetList(&_grf_preset_list);
+				this->preset = -1;
+				this->SetDirty();
+				break;
+
 			case SNGRFS_ADD: // Add GRF
 				DeleteWindowByClass(WC_SAVELOAD);
 				new NewGRFAddWindow(&_newgrf_add_dlg_desc, &this->list);
@@ -428,6 +498,7 @@ struct NewGRFWindow : public Window {
 				}
 
 				this->sel = newsel;
+				this->preset = -1;
 				this->SetupNewGRFWindow();
 				this->SetDirty();
 				break;
@@ -445,6 +516,7 @@ struct NewGRFWindow : public Window {
 						break;
 					}
 				}
+				this->preset = -1;
 				this->SetDirty();
 				break;
 			}
@@ -461,6 +533,7 @@ struct NewGRFWindow : public Window {
 						break;
 					}
 				}
+				this->preset = -1;
 				this->SetDirty();
 				break;
 			}
@@ -494,6 +567,7 @@ struct NewGRFWindow : public Window {
 			case SNGRFS_SET_PARAMETERS: { // Edit parameters
 				if (this->sel == NULL) break;
 
+				this->query_widget = widget;
 				static char buff[512];
 				GRFBuildParamList(buff, this->sel, lastof(buff));
 				SetDParamStr(0, buff);
@@ -503,18 +577,57 @@ struct NewGRFWindow : public Window {
 		}
 	}
 
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		if (index == -1) {
+			ClearGRFConfigList(&this->list);
+			this->preset = -1;
+		} else {
+			GRFConfig *c = LoadGRFPresetFromConfig(_grf_preset_list[index]);
+
+			if (c != NULL) {
+				this->sel = NULL;
+				ClearGRFConfigList(&this->list);
+				this->list = c;
+				this->preset = index;
+			}
+		}
+
+		this->SetupNewGRFWindow();
+		this->SetDirty();
+	}
+
 	virtual void OnQueryTextFinished(char *str)
 	{
 		if (str == NULL) return;
 
-		/* Parse our new "int list" */
-		GRFConfig *c = this->sel;
-		c->num_params = parse_intlist(str, (int*)c->param, lengthof(c->param));
+		switch (this->query_widget) {
+			case SNGRFS_PRESET_SAVE:
+				SaveGRFPresetToConfig(str, this->list);
+				GetGRFPresetList(&_grf_preset_list);
 
-		/* parse_intlist returns -1 on error */
-		if (c->num_params == (byte)-1) c->num_params = 0;
+				/* Switch to this preset */
+				for (uint i = 0; i < lengthof(_grf_preset_list); i++) {
+					if (_grf_preset_list[i] != NULL && strcmp(_grf_preset_list[i], str) == 0) {
+						this->preset = i;
+						break;
+					}
+				}
+				break;
 
-		this->SetDirty();
+			case SNGRFS_SET_PARAMETERS: {
+				/* Parse our new "int list" */
+				GRFConfig *c = this->sel;
+				c->num_params = parse_intlist(str, (int*)c->param, lengthof(c->param));
+
+				/* parse_intlist returns -1 on error */
+				if (c->num_params == (byte)-1) c->num_params = 0;
+
+				this->preset = -1;
+				this->SetDirty();
+				break;
+			}
+		}
 	}
 
 	virtual void OnResize(Point new_size, Point delta)
@@ -532,6 +645,7 @@ struct NewGRFWindow : public Window {
 
 	virtual void OnInvalidateData(int data = 0)
 	{
+		this->preset = -1;
 		this->SetupNewGRFWindow();
 	}
 };
@@ -540,23 +654,27 @@ struct NewGRFWindow : public Window {
 static const Widget _newgrf_widgets[] = {
 {   WWT_CLOSEBOX,  RESIZE_NONE, 10,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW },            // SNGRFS_CLOSEBOX
 {    WWT_CAPTION, RESIZE_RIGHT, 10,  11, 299,   0,  13, STR_NEWGRF_SETTINGS_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS },  // SNGRFS_CAPTION
-{      WWT_PANEL, RESIZE_RIGHT, 10,   0, 299,  14,  29, STR_NULL,                    STR_NULL },                         // SNGRFS_BACKGROUND
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3,  10,  79,  16,  27, STR_NEWGRF_ADD,              STR_NEWGRF_ADD_TIP },               // SNGRFS_ADD
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3,  80, 149,  16,  27, STR_NEWGRF_REMOVE,           STR_NEWGRF_REMOVE_TIP },            // SNGRFS_REMOVE
-{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3, 150, 219,  16,  27, STR_NEWGRF_MOVEUP,           STR_NEWGRF_MOVEUP_TIP },            // SNGRFS_MOVE_UP
-{ WWT_PUSHTXTBTN, RESIZE_RIGHT,  3, 220, 289,  16,  27, STR_NEWGRF_MOVEDOWN,         STR_NEWGRF_MOVEDOWN_TIP },          // SNGRFS_MOVE_DOWN
-{     WWT_MATRIX,    RESIZE_RB, 10,   0, 287,  30,  99, 0x501,                       STR_NEWGRF_FILE_TIP },              // SNGRFS_FILE_LIST
-{  WWT_SCROLLBAR,   RESIZE_LRB, 10, 288, 299,  30,  99, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
-{      WWT_PANEL,   RESIZE_RTB, 10,   0, 299, 100, 212, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
-{ WWT_PUSHTXTBTN,    RESIZE_TB, 10,   0, 143, 213, 224, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
-{ WWT_PUSHTXTBTN,   RESIZE_RTB, 10, 144, 287, 213, 224, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },                         // SNGRFS_APPLY_CHANGES
-{  WWT_RESIZEBOX,  RESIZE_LRTB, 10, 288, 299, 213, 224, 0x0,                         STR_RESIZE_BUTTON },                // SNGRFS_RESIZE
+{      WWT_PANEL, RESIZE_RIGHT, 10,   0, 299,  14,  41, STR_NULL,                    STR_NULL },                         // SNGRFS_BACKGROUND1
+{   WWT_DROPDOWN, RESIZE_RIGHT,  3,  10, 103,  16,  27, STR_EMPTY,                   STR_NEWGRF_PRESET_LIST_TIP },       // SNGRFS_PRESET_LIST
+{ WWT_PUSHTXTBTN,    RESIZE_LR,  3, 104, 196,  16,  27, STR_NEWGRF_PRESET_SAVE,      STR_NEWGRF_PRESET_SAVE_TIP },       // SNGRFS_PRESET_SAVE
+{ WWT_PUSHTXTBTN,    RESIZE_LR,  3, 197, 289,  16,  27, STR_NEWGRF_PRESET_DELETE,    STR_NEWGRF_PRESET_DELETE_TIP },     // SNGRFS_PRESET_DELETE
+{      WWT_PANEL, RESIZE_RIGHT, 10,   0, 299,  30,  45, STR_NULL,                    STR_NULL },                         // SNGRFS_BACKGROUND
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3,  10,  79,  32,  43, STR_NEWGRF_ADD,              STR_NEWGRF_ADD_TIP },               // SNGRFS_ADD
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3,  80, 149,  32,  43, STR_NEWGRF_REMOVE,           STR_NEWGRF_REMOVE_TIP },            // SNGRFS_REMOVE
+{ WWT_PUSHTXTBTN,  RESIZE_NONE,  3, 150, 219,  32,  43, STR_NEWGRF_MOVEUP,           STR_NEWGRF_MOVEUP_TIP },            // SNGRFS_MOVE_UP
+{ WWT_PUSHTXTBTN, RESIZE_RIGHT,  3, 220, 289,  32,  43, STR_NEWGRF_MOVEDOWN,         STR_NEWGRF_MOVEDOWN_TIP },          // SNGRFS_MOVE_DOWN
+{     WWT_MATRIX,    RESIZE_RB, 10,   0, 287,  46, 115, 0x501,                       STR_NEWGRF_FILE_TIP },              // SNGRFS_FILE_LIST
+{  WWT_SCROLLBAR,   RESIZE_LRB, 10, 288, 299,  46, 115, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
+{      WWT_PANEL,   RESIZE_RTB, 10,   0, 299, 116, 228, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
+{ WWT_PUSHTXTBTN,    RESIZE_TB, 10,   0, 143, 229, 240, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
+{ WWT_PUSHTXTBTN,   RESIZE_RTB, 10, 144, 287, 229, 240, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },                         // SNGRFS_APPLY_CHANGES
+{  WWT_RESIZEBOX,  RESIZE_LRTB, 10, 288, 299, 229, 240, 0x0,                         STR_RESIZE_BUTTON },                // SNGRFS_RESIZE
 { WIDGETS_END },
 };
 
 /* Window definition of the manage newgrfs window */
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 225, 300, 225,
+	WDP_CENTER, WDP_CENTER, 300, 241, 300, 241,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,
