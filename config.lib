@@ -214,10 +214,11 @@ detect_params() {
 
 
 			--with-menu-entry)            with_menu_entry="1";;
+			--with-menu-entry=*)          with_menu_entry="$optarg";;
 			--without-menu-entry)         with_menu_entry="0";;
 
-			--menu_group)                 prevp_p="menu_group";;
-			--menu_group=*)               menu_group="$optarg";;
+			--menu-group)                 prevp_p="menu_group";;
+			--menu-group=*)               menu_group="$optarg";;
 
 
 
