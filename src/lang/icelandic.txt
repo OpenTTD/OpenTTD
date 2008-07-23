@@ -1813,7 +1813,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Kosta byggingu verslunarhúsnæðis í bænum.{}  Kostnaður: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kaupa 1 árs flutningsrétt í þessum bæ. Bæjaryfirvöld munu aðeins leyfa notkun á þínum flutningsleiðum.{} Kostnaður: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Múta bæjaryfirvöldum til að auka við fylgi þitt, með hættu á þungri refsingu komist það upp.{}  Kostnaður: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Glundroði í umferð {TOWN}!{}{}Uppbygging vega kostuð af {RAW_STRING} veldur 6 mánaða vesæld meðal ökumanna!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Glundroði í umferð {TOWN}!{}{}Uppbygging vega kostuð af {STRING} veldur 6 mánaða vesæld meðal ökumanna!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (í byggingu)
@@ -2304,15 +2304,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Fyrirtæ
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Flutningsfyrirtæki í vandræðum!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} mun vera selt eða skráð gjaldþrota nema það fari að taka sig á sem fyrst!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} mun vera selt eða skráð gjaldþrota nema það fari að taka sig á sem fyrst!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Forstöðumaður)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Samruni flutningsfyrirtækja!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} hefur verið selt {RAW_STRING} fyrir {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} hefur verið selt {STRING} fyrir {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Við erum að leita að flutningsfyrirtæki til að taka yfir okkar rekstri.{}{}Viltu kaupa {COMPANY} fyrir {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Gjaldþrota!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} hefur verið lokað af bankanum og allar eignir seldar!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} hefur verið lokað af bankanum og allar eignir seldar!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nýtt flutningsfyrirtæki stofnað!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} hefur byggingu nálægt {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} hefur byggingu nálægt {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Get ekki keypt fyrirtæki...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Farmgjöld
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dagar í flutningi
@@ -2353,7 +2353,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Selja 25
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Get ekki keypt 25% hlut í þessu fyrirtæki...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Get ekki selt 25% hlut í þessu fyrirtæki...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% í eigu {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} hefur verið yfirtekið af {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} hefur verið yfirtekið af {STRING}!
 STR_PROTECTED                                                   :{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla með hluti ...
 
 STR_LIVERY_DEFAULT                                              :Aðal litaskema

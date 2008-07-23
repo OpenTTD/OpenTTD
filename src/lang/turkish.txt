@@ -1801,7 +1801,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Şehirde ticari binaların yapımı için bağış yap.{}  Fiyatı: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Bir yıllık nakliyat haklarını satın al. Belediye sadece senin şirkete izin verir.{} Fiyat: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Yakalanma riskini göze alarak belediyeye rüşvet ver.{}  Fiyat: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {RAW_STRING} şirketinin yol yapım çalışmaları başladı!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (inşa halinde)
@@ -2292,15 +2292,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Şirketl
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Şirket tehlikede!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING}, performansı artmazsa satılacak ya da yok olacak!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING}, performansı artmazsa satılacak ya da yok olacak!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Yönetici)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Şirketler birleşti!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING}, {RAW_STRING} tarafından {CURRENCY} fiyatıyla alındı!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING}, {STRING} tarafından {CURRENCY} fiyatıyla alındı!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Şirketimizi satın alacak birilerini arıyoruz.{}{} {COMPANY} şirketini şu fiyata almak ister misiniz: {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}İflas!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} iflas etti ve kapatıldı!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} iflas etti ve kapatıldı!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Yeni şirket kuruldu!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING}, {TOWN} yakınlarında inşaata başladı!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING}, {TOWN} yakınlarında inşaata başladı!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Şirket satın alınamaz...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Kargo ödemeleri
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Taşıma süresi
@@ -2341,7 +2341,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Şirketi
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Şirketin %25'i alınamıyor...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Şirketin %25'i satılamıyor...
 STR_707D_OWNED_BY                                               :{WHITE}(%{COMMA} ortağı {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING}, {RAW_STRING} tarafından alındı!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING}, {STRING} tarafından alındı!
 STR_PROTECTED                                                   :{WHITE}Bu şirket hisselerini satacak kadar eski değil...
 
 STR_LIVERY_DEFAULT                                              :Şirket Rengi

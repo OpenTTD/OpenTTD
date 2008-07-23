@@ -1815,7 +1815,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciële gebouwen in de stad.{}  Kosten: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Koop 1 jaar exclusieve transportrechten in deze stad. De gemeenteraad staat passagiers en goederen toe alleen jouw stations te gebruiken.{} Kosten: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Koop het plaatselijk gezag om om je rang te verhogen, met het gevaar van een strenge sanctie, wanneer gepakt.{}  Kosten: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {RAW_STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Verkeerschaos in {TOWN}!{}{}Wegreparatie betaald door {STRING} zorgt voor 6 maanden van irritatie bij weggebruikers!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (in aanbouw)
@@ -2307,15 +2307,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Bedrijfs
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportbedrijf in de problemen!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} wordt verkocht of failliet verklaard tenzij financiële situatie snel verbetert!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} wordt verkocht of failliet verklaard tenzij financiële situatie snel verbetert!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Directeur)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportbedrijf overgenomen!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} is verkocht aan {RAW_STRING} voor {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} is verkocht aan {STRING} voor {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}We zoeken voor een transportbedrijf dat ons bedrijf over kan nemen.{}{}Wil je {COMPANY} kopen voor {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Failliet!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} is gesloten door schuldeisers en alle eigendommen zijn verkocht!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} is gesloten door schuldeisers en alle eigendommen zijn verkocht!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nieuw transportbedrijf opgestart!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} begint werkzaamheden bij {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} begint werkzaamheden bij {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kan bedrijf niet kopen...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Betalingsverhouding Vracht
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dagen onderweg
@@ -2356,7 +2356,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Verkoop 
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan geen 25% aandeel in dit bedrijf kopen...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan geen 25% aandeel in dit bedrijf verkopen...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% eigendom van {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} is overgenomen door {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} is overgenomen door {STRING}!
 STR_PROTECTED                                                   :{WHITE}Dit bedrijf verhandelt nog geen aandelen...
 
 STR_LIVERY_DEFAULT                                              :Standaard Logo

@@ -1816,7 +1816,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Pagar la construcción de nuevos edificios comerciales en la población.{}  Coste: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compre la exclusiva durante 1 año de los derechos de transporte en esta población. Las autoridades solo permitirán el uso de las estaciones de su empresa.{} Coste: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Soborne a las autoridades locales para aumentar su ranking, con el riesgo de una severa penalización si es descubierto.{}  Coste: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {RAW_STRING} causa 6 meses de problemas a los conductores!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Colapso circulatorio en {TOWN}!{}{}¡Programa de reconstrucción de carreteras patrocinado por {STRING} causa 6 meses de problemas a los conductores!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (bajo construcción)
@@ -2308,15 +2308,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Ranking 
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}¡Empresa en problemas!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} debe ser vendida o declarada en bancarrota a no ser que mejore su actuación!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} debe ser vendida o declarada en bancarrota a no ser que mejore su actuación!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Presidente)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}¡Absorción de empresa de transportes!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}¡{RAW_STRING} ha sido vendida a {RAW_STRING} por {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}¡{STRING} ha sido vendida a {STRING} por {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Estamos buscando una empresa de transportes para adquirir la nuestra{}{}¿Deseas comprar {COMPANY} por {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}¡Bancarrota!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} ha sido cerrada por acreedores y todos sus activos se han vendido!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} ha sido cerrada por acreedores y todos sus activos se han vendido!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}¡Nueva empresa de transportes!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} comienza su construcción cerca de {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} comienza su construcción cerca de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}No se puede comprar la empresa...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tasas de pago por carga
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Días en tránsito
@@ -2357,7 +2357,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vender 2
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No se puede comprar el 25% de acciones...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No se puede vender el 25% de acciones...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propiedad de {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} ha sido comprada por {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} ha sido comprada por {STRING}!
 STR_PROTECTED                                                   :{WHITE}Esta empresa todavía no dispone acciones a la venta...
 
 STR_LIVERY_DEFAULT                                              :Estación normal

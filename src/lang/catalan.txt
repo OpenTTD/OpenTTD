@@ -1815,7 +1815,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financia la construcció de nous edificis comercials a la població.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva empresa de transports als passatgers i les mercaderies.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Suborna les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}  Cost: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Caos de trànsit en  {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {RAW_STRING} porta 6 mesos de misèria als motoristes!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Caos de trànsit en  {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {STRING} porta 6 mesos de misèria als motoristes!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (en construcció)
@@ -2307,15 +2307,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Taula de
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Empresa de Transport en dificultats!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} ha de ser venuda o declarar-se en fallida a menys que el seu rendiment s'incrementi aviat!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} ha de ser venuda o declarar-se en fallida a menys que el seu rendiment s'incrementi aviat!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(President)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Fusió d'Empreses de Transport!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} s'ha venut a {RAW_STRING} per {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} s'ha venut a {STRING} per {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Busquem empresa de transports per absorbir la nostra empresa{}{}Vols comprar a {COMPANY} per {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Fallida!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} ha estat tancada per els acreidors i tots els seus actius venuts!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} ha estat tancada per els acreidors i tots els seus actius venuts!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Creada nova empresa de transports!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} comença la construcció prop de {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} comença la construcció prop de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}No pots comprar l'empresa...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tarifes de Pagament de Càrrega
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dies en trànsit
@@ -2356,7 +2356,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Ven un 2
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No pots comprar el 25% de participació en aquesta empresa...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No pots vendre el 25% de participació en aquesta empresa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propietat de {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} ha estat absorbida per {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} ha estat absorbida per {STRING}!
 STR_PROTECTED                                                   :{WHITE}Aquesta empresa ja no negocia participacions...
 
 STR_LIVERY_DEFAULT                                              :Decoració estandard

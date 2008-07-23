@@ -1766,7 +1766,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}  Kustannus: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{} Kustannus: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}  Kulu: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}{RAW_STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}{STRING} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (rakennusvaiheessa)
@@ -2254,15 +2254,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Yhtiöki
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Kuljetusyhtiö vaikeuksissa!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} myydään tai julistetaan konkurssiin, ellei suorituskyky lisäänny pian!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} myydään tai julistetaan konkurssiin, ellei suorituskyky lisäänny pian!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(pääjohtaja)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Kuljetusyhtiöiden sulautuminen!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} on myyty yhtiölle {RAW_STRING} hintaan {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} on myyty yhtiölle {STRING} hintaan {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Etsimme kuljetusyhtiötä, joka ottaisi haltuunsa yhtiömme{}{}Haluatko ostaa yhtiön {COMPANY} hintaan {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Konkurssi!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} on suljettu velkojien toimesta ja kaikki omaisuus on myyty pois!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} on suljettu velkojien toimesta ja kaikki omaisuus on myyty pois!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Uusi kuljetusyhtiö perustettu!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} aloittaa rakentamisen kaupugin {TOWN} lähistölle!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} aloittaa rakentamisen kaupugin {TOWN} lähistölle!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Yhtiötä ei voi ostaa...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Rahtimaksutaksat
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Päivää kauttakulussa
@@ -2298,7 +2298,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Myy 25{N
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Tästä yhtiöstä ei voi ostaa 25{NBSP}%:n osuutta...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Tästä yhtiöstä ei voi myydä 25{NBSP}%:n osuutta...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}{NBSP}%:n omistus: {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {RAW_STRING} on ottanut haltuun {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {STRING} on ottanut haltuun {STRING}!
 STR_PROTECTED                                                   :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
 STR_LIVERY_DEFAULT                                              :Normaalit tunnusvärit

@@ -1663,7 +1663,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} 资助市内建设新的商业设施。{}  费用：{CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} 购买该市一年的运输专营权，其间市政府只允许选用贵公司的运输服务。{} 费用：{CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} 贿赂地方政府，但如果被发现可能遭到惩罚。{}  费用：{CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {RAW_STRING} 资助的市政道路重建导致市内交通瘫痪 6 个月！
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}的交通陷入混乱！{}{}由 {STRING} 资助的市政道路重建导致市内交通瘫痪 6 个月！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (建设中)
@@ -2130,15 +2130,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}公司�
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}运输公司陷入困境！
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} 如果不能在短期摆脱困境，则将被收购或破产！
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} 如果不能在短期摆脱困境，则将被收购或破产！
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(总裁)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}运输公司合并！
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} 被 {RAW_STRING} 以 {CURRENCY} 收购！
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} 被 {STRING} 以 {CURRENCY} 收购！
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}我们正在寻找一家愿意收购我们的公司。{}{}您愿意收购 {COMPANY} ({CURRENCY}) 吗？
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}破产！
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} 已经宣布破产，所有资产均已抵债！
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} 已经宣布破产，所有资产均已抵债！
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}新的运输公司开业大吉！
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} 在 {TOWN} 附近开工建设！
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} 在 {TOWN} 附近开工建设！
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}不能收购公司……
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}货物运费
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}运输时间
@@ -2174,7 +2174,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}出售�
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}不能购买此公司的股份……
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}不能出售此公司的股份……
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% 由 {COMPANY} 所有)
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} 被 {RAW_STRING} 收购！
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} 被 {STRING} 收购！
 STR_PROTECTED                                                   :{WHITE}这个公司刚刚开业，还不能进行股权交易……
 
 STR_LIVERY_DEFAULT                                              :标准外观

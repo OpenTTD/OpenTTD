@@ -1795,7 +1795,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financiraj izgradnju novih poslovnih prostora u gradu.{}  Trošak: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kupi jednogodišnje ekskluzivno pravo prijevoza u gradu. Gradska vlast će dopustiti putnicima i teretu da koriste stanice samo tvoje tvrtke.{} Trošak: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podmiti lokalnu vlast zbog povećanja rejtinga, riskirajući ozbiljne kazne ako vas uhvate{} Trošak: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN} zahvatile prometne gužve!{}{}Program rekonstrukcije cesta koji financira tvrtka {RAW_STRING} sljedećih će 6 mjeseci zadavati glavobolje motoriziranima!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN} zahvatile prometne gužve!{}{}Program rekonstrukcije cesta koji financira tvrtka {STRING} sljedećih će 6 mjeseci zadavati glavobolje motoriziranima!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (u izgradnji)
@@ -2286,15 +2286,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tablica 
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Prijevozna tvrtka u nevoljama!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{RAW_STRING} će biti rasprodana ili objaviti bankrot ukoliko se učinak uskoro ne poboljša!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} će biti rasprodana ili objaviti bankrot ukoliko se učinak uskoro ne poboljša!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Direktor)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Spajanje prijevoznih tvrtki!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{RAW_STRING} je prodana tvrtki {RAW_STRING} za {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} je prodana tvrtki {STRING} za {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Tražimo prijevoznu tvrtku koja bi preuzela našu tvrtku.{}{}Želiš li kupiti tvrtku {COMPANY} za {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrot!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{RAW_STRING} je zatvorena od strane kreditora i sva je imovina rasprodana!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} je zatvorena od strane kreditora i sva je imovina rasprodana!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Osnovana je nova prijevozna tvrtka!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{RAW_STRING} započinje gradnju blizu grada {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} započinje gradnju blizu grada {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nije moguće kupiti tvrtku...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Isplatne rate tereta
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dana u tranzitu
@@ -2335,7 +2335,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Prodaj 2
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Nije moguće kupiti 25% udjela u ovoj tvrtci...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Nije moguće prodati 25% udjela u ovoj tvrtci...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% u vlasništvu {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{RAW_STRING} je preuzeta od strane tvrtke {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} je preuzeta od strane tvrtke {STRING}!
 STR_PROTECTED                                                   :{WHITE}Ova tvrka još nije dovoljno stara da bi trgovala udjelima...
 
 STR_LIVERY_DEFAULT                                              :Standardna boja
