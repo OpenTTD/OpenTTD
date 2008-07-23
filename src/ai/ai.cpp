@@ -12,6 +12,7 @@
 #include "../player_base.h"
 #include "ai.h"
 #include "default/default.h"
+#include "trolly/trolly.h"
 #include "../signal_func.h"
 
 AIStruct _ai;
@@ -225,6 +226,13 @@ void AI_PlayerDied(PlayerID player)
 {
 	/* Called if this AI died */
 	_ai_player[player].active = false;
+
+	if (_players_ainew[player].pathfinder == NULL) return;
+
+	AyStarMain_Free(_players_ainew[player].pathfinder);
+	delete _players_ainew[player].pathfinder;
+	_players_ainew[player].pathfinder = NULL;
+
 }
 
 /**
@@ -246,9 +254,5 @@ void AI_Initialize()
  */
 void AI_Uninitialize()
 {
-	const Player* p;
-
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_ai) AI_PlayerDied(p->index);
-	}
+	for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) AI_PlayerDied(p);
 }
