@@ -878,7 +878,7 @@ check_params() {
 
 	if [ "$man_dir" = "1" ]; then
 		# add manpage on UNIX systems
-		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OSX"]; then
+		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OSX" ]; then
 			man_dir="share/man/man6"
 		else
 			man_dir=""
@@ -924,7 +924,7 @@ check_params() {
 
 	if [ -n "$man_dir" ]
 	then
-		log 1 "manual page directory... $mean_dir"
+		log 1 "manual page directory... $man_dir"
 	else
 		log 1 "manual page directory... none"
 	fi
