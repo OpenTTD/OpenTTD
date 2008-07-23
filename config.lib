@@ -2283,6 +2283,7 @@ make_sed() {
 		s#!!TTD!!#$TTD#g;
 		s#!!BINARY_DIR!!#$prefix_dir/$binary_dir#g;
 		s#!!DATA_DIR!!#$prefix_dir/$data_dir#g;
+		s#!!DOC_DIR!!#$prefix_dir/$doc_dir#g;
 		s#!!MAN_DIR!!#$prefix_dir/$man_dir#g;
 		s#!!ICON_DIR!!#$prefix_dir/$icon_dir#g;
 		s#!!ICON_THEME_DIR!!#$prefix_dir/$icon_theme_dir#g;
