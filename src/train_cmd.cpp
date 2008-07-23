@@ -2905,13 +2905,13 @@ static void CheckTrainCollision(Vehicle *v)
 
 static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
-	Direction dir = *(Direction*)data;
+	DiagDirection exitdir = *(DiagDirection *)data;
 
-	if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-		DirDiff diff = ChangeDirDiff(DirDifference(v->direction, dir), DIRDIFF_90RIGHT);
-
-		if (diff == DIRDIFF_90RIGHT || (v->cur_speed <= 5 && diff <= DIRDIFF_REVERSE)) return v;
+	/* front engine of a train, not inside wormhole or depot */
+	if (v->type == VEH_TRAIN && IsFrontEngine(v) && (v->u.rail.track & TRACK_BIT_MASK) != 0) {
+		if (v->cur_speed <= 5 && TrainExitDir(v->direction, v->u.rail.track) == exitdir) return v;
 	}
+
 	return NULL;
 }
 
@@ -3004,11 +3004,13 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 							v->subspeed = 0;
 							v->progress = 255 - 10;
 							if (++v->load_unload_time_rem < _settings_game.pf.wait_twoway_signal * 73) {
-								TileIndex o_tile = gp.new_tile + TileOffsByDiagDir(enterdir);
-								Direction rdir = ReverseDir(dir);
+								DiagDirection exitdir = TrackdirToExitdir(i);
+								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
+
+								exitdir = ReverseDiagDir(exitdir);
 
 								/* check if a train is waiting on the other side */
-								if (VehicleFromPos(o_tile, &rdir, &CheckVehicleAtSignal) == NULL) return;
+								if (VehicleFromPos(o_tile, &exitdir, &CheckVehicleAtSignal) == NULL) return;
 							}
 						}
 						goto reverse_train_direction;
