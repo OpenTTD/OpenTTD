@@ -424,7 +424,7 @@ public:
 		height = max<int>(height, h);
 
 		if (msg1 == INVALID_STRING_ID) {
-			// only 1 line will be printed
+			/* only 1 line will be printed */
 			y[1] = (height - 15) / 2 + 15 - 5;
 		} else {
 			int over = (height - h) / 4;
@@ -518,10 +518,10 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 		if ((x | y) != 0) {
 			pt = RemapCoords2(x, y);
 			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
-			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
-			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top, vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
+			pt.x = Clamp(UnScaleByZoom(pt.x - vp->virtual_left, vp->zoom) + vp->left - (334 / 2),  0, _screen.width  - 334);
+			pt.y = Clamp(UnScaleByZoom(pt.y - vp->virtual_top,  vp->zoom) + vp->top  - (137 / 2), 22, _screen.height - 137);
 		} else {
-			pt.x = (_screen.width - 334) >> 1;
+			pt.x = (_screen.width  - 334) >> 1;
 			pt.y = (_screen.height - 137) >> 1;
 		}
 		new ErrmsgWindow(pt, 334, 137, msg_1, msg_2, _errmsg_face_widgets, true);
@@ -1050,7 +1050,7 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	{
 		if (this->orig == NULL || strcmp(this->text.buf, this->orig) != 0) {
 			/* If the parent is NULL, the editbox is handled by general function
-				* HandleOnEditText */
+			 * HandleOnEditText */
 			if (this->parent != NULL) {
 				this->parent->OnQueryTextFinished(this->text.buf);
 			} else {
@@ -1184,7 +1184,7 @@ struct QueryWindow : public Window {
 		this->top = parent->top + (parent->height / 2) - (this->height / 2);
 
 		/* Create a backup of the variadic arguments to strings because it will be
-		* overridden pretty often. We will copy these back for drawing */
+		 * overridden pretty often. We will copy these back for drawing */
 		CopyOutDParam(this->params, 0, lengthof(this->params));
 		this->widget[QUERY_WIDGET_CAPTION].data = caption;
 		this->message    = message;
@@ -1272,7 +1272,8 @@ static const WindowDesc _query_desc = {
  * @param message string that will be shown for the window
  * @param parent pointer to parent window, if this pointer is NULL the parent becomes
  * the main window WC_MAIN_WINDOW
- * @param callback callback function pointer to set in the window descriptor*/
+ * @param callback callback function pointer to set in the window descriptor
+ */
 void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallbackProc *callback)
 {
 	new QueryWindow(&_query_desc, caption, message, parent, callback);
@@ -1382,7 +1383,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	void GenerateFileName()
 	{
 		/* Check if we are not a spectator who wants to generate a name..
-				Let's use the name of player #0 for now. */
+		 * Let's use the name of player #0 for now. */
 		const Player *p = GetPlayer(IsValidPlayerID(_local_player) ? _local_player : PLAYER_FIRST);
 
 		SetDParam(0, p->index);
@@ -1421,7 +1422,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 240);
 
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
-		* will be unpaused in the WE_DESTROY event handler. */
+		 * will be unpaused in the WE_DESTROY event handler. */
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
 			if (_pause_game >= 0) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 		}
@@ -1593,7 +1594,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	virtual void OnTimeout()
 	{
 		/* This test protects against using widgets 11 and 12 which are only available
-		 * in those two saveload mode  */
+		 * in those two saveload mode */
 		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) return;
 
 		if (this->IsWidgetLowered(11)) { // Delete button clicked
