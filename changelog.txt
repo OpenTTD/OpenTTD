@@ -1,5 +1,10 @@
 0.6.2 ?? (2008-??-??)
 ------------------------------------------------------------------------
+- Fix: Several minor memory leaks. They only happened once per game (r13809, 13810)
+- Fix: Checking for train waiting at other side of two-way signal was broken [FS#2162] (r13806)
+- Fix: Some revision checking code was unintentionally disabled (r13776)
+- Fix: Enforce the validity of a NetworkAction (chat packet) issued by a client (r13775)
+- Fix: Selecting non-full length vehicles in the depot gui would place the "mouse pointer" out of the center of the vehicle making it hard to "aim" [FS#2147] (r13759)
 - Fix: NewGRF rail continuation would always mark a tunnel on the same axis as connected, even when the tunnel faces the wrong direction (r13734)
 - Fix: Assumption that non-north tiles of a house do not have the 1x1 building bit set was flawed with some NewGRFs. This caused the amount of houses to differ, which causes the town radii to differ, which causes desyncs when towns are expanded (r13729)
 - Fix: Possible desync on the autorenew settings 20+ game years (i.e. 4.5+ hours) after a company was started (r13718)

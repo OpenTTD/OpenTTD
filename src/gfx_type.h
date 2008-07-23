@@ -112,6 +112,7 @@ struct AnimCursor {
 struct CursorVars {
 	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
+	int short_vehicle_offset;     ///< offset of the X for short vehicles
 	SpriteID sprite; ///< current image of cursor
 	SpriteID pal;
 

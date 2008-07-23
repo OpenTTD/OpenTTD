@@ -440,6 +440,20 @@ static void DepotClick(Window *w, int x, int y)
 				WP(w, depot_d).sel = v->index;
 				SetWindowDirty(w);
 				SetObjectToPlaceWnd(image, GetVehiclePalette(v), VHM_DRAG, w);
+
+				switch (v->type) {
+					case VEH_TRAIN:
+						_cursor.short_vehicle_offset = 16 - v->u.rail.cached_veh_length * 2;
+						break;
+
+					case VEH_ROAD:
+						_cursor.short_vehicle_offset = 16 - v->u.road.cached_veh_length * 2;
+						break;
+
+					default:
+						_cursor.short_vehicle_offset = 0;
+						break;
+				}
 			}
 			}
 			break;

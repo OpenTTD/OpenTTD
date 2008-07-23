@@ -646,14 +646,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	p->Recv_string(client_revision, sizeof(client_revision));
 
-#if defined(WITH_REV) || defined(WITH_REV_HACK)
 	// Check if the client has revision control enabled
 	if (!IsNetworkCompatibleVersion(client_revision)) {
 		// Different revisions!!
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
 		return;
 	}
-#endif
 
 	p->Recv_string(name, sizeof(name));
 	playas = (Owner)p->Recv_uint8();
@@ -1168,7 +1166,21 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 
 	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
 
-	NetworkServer_HandleChat(action, desttype, dest, msg, cs->index);
+	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	switch (action) {
+		case NETWORK_ACTION_GIVE_MONEY:
+			if (!IsValidPlayer(ci->client_playas)) break;
+			/* Fall-through */
+		case NETWORK_ACTION_CHAT:
+		case NETWORK_ACTION_CHAT_CLIENT:
+		case NETWORK_ACTION_CHAT_COMPANY:
+			NetworkServer_HandleChat(action, desttype, dest, msg, cs->index);
+			break;
+		default:
+			IConsolePrintF(_icolour_err, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_index, GetPlayerIP(ci));
+			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
+			break;
+	}
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
