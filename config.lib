@@ -116,7 +116,6 @@ set_default() {
 		enable_cocoa_quickdraw
 		with_osx_sysroot
 		with_application_bundle
-		with_menu_entry
 		with_sdl
 		with_cocoa
 		with_zlib
