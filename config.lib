@@ -28,11 +28,14 @@ set_default() {
 	prefix_dir="/usr/local"
 	binary_dir="games"
 	data_dir="share/games/openttd"
+	doc_dir="1"
 	icon_dir="share/pixmaps"
+	icon_theme_dir="1"
 	personal_dir="1"
 	shared_dir="1"
 	install_dir="/"
-	menu_dir=""
+	man_dir="1"
+	menu_dir="1"
 	menu_group="Game;"
 	enable_debug="0"
 	enable_desync_debug="0"
@@ -50,7 +53,7 @@ set_default() {
 	enable_cocoa_quickdraw="1"
 	with_osx_sysroot="1"
 	with_application_bundle="1"
-	with_menu_entry="2"
+	with_menu_entry="1"
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
@@ -88,7 +91,10 @@ set_default() {
 		prefix_dir
 		binary_dir
 		data_dir
+		doc_dir
 		icon_dir
+		icon_theme_dir
+		man_dir
 		menu_dir
 		personal_dir
 		shared_dir
@@ -194,11 +200,22 @@ detect_params() {
 			--data-dir)                   prevp_p="data-dir";;
 			--data-dir=*)                 data_dir="$optarg";;
 
+			--doc-dir)                    prevp_p="doc-dir";;
+			--doc-dir=*)                  doc_dir="$optarg";;
+
 			--icon-dir)                   prevp_p="icon-dir";;
 			--icon-dir=*)                 icon_dir="$optarg";;
 
+			--icon-theme-dir)             prevp_p="icon-theme-dir";;
+			--icon-theme-dir=*)           icon_theme_dir="$optarg";;
+			--without-icon-theme)         icon_theme_dir="";;
+
 			--menu-dir)                   prevp_p="menu_dir";;
 			--menu-dir=*)                 menu_dir="$optarg";;
+			--without-menu-entry)         menu_dir="";;
+
+			--man-dir)                    prevp_p="man_dir";;
+			--man-dir=*)                  menu_dir="$optarg";;
 
 			--personal-dir)               prevp_p="personal-dir";;
 			--personal-dir=*)             personal_dir="$optarg";;
@@ -212,10 +229,6 @@ detect_params() {
 			--install-dir=*)              install_dir="$optarg";;
 
 
-
-			--with-menu-entry)            with_menu_entry="1";;
-			--with-menu-entry=*)          with_menu_entry="$optarg";;
-			--without-menu-entry)         with_menu_entry="0";;
 
 			--menu-group)                 prevp_p="menu_group";;
 			--menu-group=*)               menu_group="$optarg";;
@@ -828,6 +841,22 @@ check_params() {
 		fi
 	fi
 
+	if [ "$doc_dir" = "1" ]; then
+		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
+			doc_dir="share/doc/openttd"
+		else
+			doc_dir="$data_dir/docs"
+		fi
+	fi
+
+	if [ "$icon_theme_dir" = "1" ]; then
+		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
+			icon_theme_dir="share/icons/hicolor"
+		else
+			icon_theme_dir=""
+		fi
+	fi
+
 	if [ "$personal_dir" = "1" ]; then
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
 			personal_dir="OpenTTD"
@@ -847,13 +876,21 @@ check_params() {
 		fi
 	fi
 
-	if [ "$with_menu_entry" = "2" ]; then
+	if [ "$man_dir" = "1" ]; then
+		# add manpage on UNIX systems
+		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ] || [ "$os" = "OSX"]; then
+			man_dir="share/man/man6"
+		else
+			man_dir=""
+		fi
+	fi
+
+	if [ "$menu_dir" = "1" ]; then
 		# add a freedesktop menu item only for some UNIX systems
 		if [ "$os" = "UNIX" ] || [ "$os" = "FREEBSD" ] || [ "$os" = "OPENBSD" ] || [ "$os" = "NETBSD" ] || [ "$os" = "HPUX" ] || [ "$os" = "SUNOS" ]; then
-			with_menu_entry="1"
 			menu_dir="share/applications"
 		else
-			with_menu_entry="0"
+			menu_dir=""
 		fi
 	fi
 
@@ -876,6 +913,20 @@ check_params() {
 		log 1 "installation directory... $install_dir"
 	else
 		log 1 "installation directory... none"
+	fi
+
+	if [ -n "$icon_theme_dir" ]
+	then
+		log 1 "icon theme directory... $icon_theme_dir"
+	else
+		log 1 "icon theme directory... none"
+	fi
+
+	if [ -n "$man_dir" ]
+	then
+		log 1 "manual page directory... $mean_dir"
+	else
+		log 1 "manual page directory... none"
 	fi
 
 	if [ -n "$menu_dir" ]
@@ -2232,7 +2283,9 @@ make_sed() {
 		s#!!TTD!!#$TTD#g;
 		s#!!BINARY_DIR!!#$prefix_dir/$binary_dir#g;
 		s#!!DATA_DIR!!#$prefix_dir/$data_dir#g;
+		s#!!MAN_DIR!!#$prefix_dir/$man_dir#g;
 		s#!!ICON_DIR!!#$prefix_dir/$icon_dir#g;
+		s#!!ICON_THEME_DIR!!#$prefix_dir/$icon_theme_dir#g;
 		s#!!PERSONAL_DIR!!#$personal_dir#g;
 		s#!!SHARED_DIR!!#$shared_dir#g;
 		s#!!INSTALL_DIR!!#$install_dir#g;
@@ -2263,7 +2316,27 @@ make_sed() {
 		s#!!DISTCC!!#$distcc#g;
 	"
 
-	if [ "$with_menu_entry" = "1" ]; then
+	if [ "$icon_theme_dir" != "" ]; then
+		SRC_REPLACE="$SRC_REPLACE
+			s#!!ICON_THEME_DIR!!#$prefix_dir/$icon_theme_dir#g;
+		"
+	else
+		SRC_REPLACE="$SRC_REPLACE
+			s#!!ICON_THEME_DIR!!##g;
+		"
+	fi
+
+	if [ "$man_dir" != "" ]; then
+		SRC_REPLACE="$SRC_REPLACE
+			s#!!MAN_DIR!!#$prefix_dir/$man_dir#g;
+		"
+	else
+		SRC_REPLACE="$SRC_REPLACE
+			s#!!MAN_DIR!!##g;
+		"
+	fi
+
+	if [ "$menu_dir" != "" ]; then
 		SRC_REPLACE="$SRC_REPLACE
 			s#!!MENU_DIR!!#$prefix_dir/$menu_dir#g;
 		"
@@ -2298,7 +2371,7 @@ generate_main() {
 	# Make sure config.cache is OLDER then config.cache.source.list
 	touch config.cache
 
-	if [ "$with_menu_entry" = "1" ]; then
+	if [ "$menu_dir" != "" ]; then
 		generate_menu_item
 	fi
 }
@@ -2397,8 +2470,17 @@ showhelp() {
 	echo "  --data-dir=dir                 location of data files (lang, data, gm)."
 	echo "                                 Will be prefixed with the prefix-dir"
 	echo "                                 [$data_dir]"
+	echo "  --doc-dir=dir                  location of the doc files"
+	echo "                                 Will be prefixed with the prefix-dir"
+	echo "                                 [$doc_dir]"
 	echo "  --icon-dir=dir                 location of icons. Will be prefixed"
 	echo "                                 with the prefix-dir [$icon_dir]"
+	echo "  --icon-theme-dir=dir           location of icon theme."
+	echo "                                 Will be prefixed with the prefix-dir"
+	echo "                                 and postfixed with size-dirs [$icon_theme_dir]"
+	echo "  --man-dir=dir                  location of the manual page (UNIX only)"
+	echo "                                 Will be prefixed with the prefix-dir"
+	echo "                                 [$man_dir]"
 	echo "  --menu-dir=dir                 location of the menu item. (UNIX only, except OSX)"
 	echo "                                 Will be prefixed with the prefix-dir"
 	echo "                                 [$menu_dir]"
