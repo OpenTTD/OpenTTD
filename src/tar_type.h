@@ -11,15 +11,17 @@
 /** The define of a TarList. */
 struct TarListEntry {
 	const char *filename;
+
+	~TarListEntry() { free((void*)this->filename); }
 };
 
 struct TarFileListEntry {
-	TarListEntry *tar;
+	const char *tar_filename;
 	size_t size;
 	size_t position;
 };
 
-typedef std::map<std::string, TarListEntry *> TarList;
+typedef std::map<std::string, TarListEntry> TarList;
 typedef std::map<std::string, TarFileListEntry> TarFileList;
 extern TarList _tar_list;
 extern TarFileList _tar_filelist;

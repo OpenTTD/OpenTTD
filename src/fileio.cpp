@@ -337,7 +337,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 
 FILE *FioFOpenFileTar(TarFileListEntry *entry, size_t *filesize)
 {
-	FILE *f = fopen(entry->tar->filename, "rb");
+	FILE *f = fopen(entry->tar_filename, "rb");
 	assert(f != NULL);
 
 	fseek(f, entry->position, SEEK_SET);
@@ -513,9 +513,8 @@ static bool TarListAddFile(const char *filename)
 	FILE *f = fopen(filename, "rb");
 	assert(f != NULL);
 
-	TarListEntry *tar_entry = MallocT<TarListEntry>(1);
-	tar_entry->filename = strdup(filename);
-	_tar_list.insert(TarList::value_type(filename, tar_entry));
+	const char *dupped_filename = strdup(filename);
+	_tar_list[filename].filename = dupped_filename;
 
 	TarLinkList links; ///< Temporary list to collect links
 
@@ -575,9 +574,9 @@ static bool TarListAddFile(const char *filename)
 
 				/* Store this entry in the list */
 				TarFileListEntry entry;
-				entry.tar      = tar_entry;
-				entry.size     = skip;
-				entry.position = pos;
+				entry.tar_filename = dupped_filename;
+				entry.size         = skip;
+				entry.position     = pos;
 
 				/* Convert to lowercase and our PATHSEPCHAR */
 				SimplifyFileName(name);
