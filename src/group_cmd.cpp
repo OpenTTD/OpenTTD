@@ -51,7 +51,8 @@ DEFINE_OLD_POOL_GENERIC(Group, Group)
 Group::Group(PlayerID owner)
 {
 	this->owner = owner;
-	this->num_engines = CallocT<uint16>(GetEnginePoolSize());
+
+	if (this->IsValid()) this->num_engines = CallocT<uint16>(GetEnginePoolSize());
 }
 
 Group::~Group()
