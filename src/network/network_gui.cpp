@@ -767,7 +767,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		_saveload_mode = SLD_NEW_GAME;
 		BuildFileList();
 		this->vscroll.cap = 12;
-		this->vscroll.count = _fios_items.Length();
+		this->vscroll.count = _fios_items.Length() + 1;
 
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 160);
