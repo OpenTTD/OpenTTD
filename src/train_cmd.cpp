@@ -210,11 +210,7 @@ static void RailVehicleLengthChanged(const Vehicle *u)
 		GetString(buffer, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, lastof(buffer));
 		DEBUG(grf, 0, "%s", buffer + 3);
 
-#ifdef ENABLE_NETWORK
 		if (!_networking) _pause_game = -1;
-#else
-		_pause_game = -1;
-#endif
 	}
 }
 
@@ -233,11 +229,8 @@ void CheckTrainsLengths()
 						SetDParam(0, v->index);
 						SetDParam(1, v->owner);
 						ShowErrorMessage(INVALID_STRING_ID, STR_BROKEN_VEHICLE_LENGTH, 0, 0);
-#ifdef ENABLE_NETWORK
+
 						if (!_networking) _pause_game = -1;
-#else
-						_pause_game = -1;
-#endif
 					}
 				}
 			}
