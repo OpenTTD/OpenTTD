@@ -13,6 +13,7 @@ enum GamelogActionType {
 	GLAT_GRF,          ///< GRF changed
 	GLAT_CHEAT,        ///< Cheat was used
 	GLAT_PATCH,        ///< Patches setting changed
+	GLAT_GRFBUG,       ///< GRF bug was triggered
 	GLAT_END,          ///< So we know how many GLATs are there
 	GLAT_NONE  = 0xFF, ///< No logging active; in savegames, end of list
 };
@@ -42,5 +43,7 @@ void GamelogGRFCompatible(const GRFIdentifier *newg);
 void GamelogTestRevision();
 void GamelogTestMode();
 void GamelogTestGRF();
+
+bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id);
 
 #endif /* GAMELOG_H */

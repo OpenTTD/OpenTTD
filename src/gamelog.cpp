@@ -39,6 +39,7 @@ enum GamelogChangeType {
 	GLCT_GRFCOMPAT,   ///< Loading compatible GRF
 	GLCT_GRFPARAM,    ///< GRF parameter changed
 	GLCT_GRFMOVE,     ///< GRF order changed
+	GLCT_GRFBUG,      ///< GRF bug triggered
 	GLCT_END,         ///< So we know how many GLCTs are there
 	GLCT_NONE = 0xFF, ///< In savegames, end of list
 };
@@ -79,6 +80,11 @@ struct LoggedChange {
 			int32 oldval;    ///< old value
 			int32 newval;    ///< new value
 		} patch;
+		struct {
+			uint64 data;     ///< additional data
+			uint32 grfid;    ///< ID of problematic GRF
+			byte bug;        ///< type of bug, @see enum GRFBugs
+		} grfbug;
 	};
 };
 
@@ -198,7 +204,8 @@ static const char *la_text[] = {
 	"game loaded",
 	"GRF config changed",
 	"cheat was used",
-	"patch settings changed"
+	"patch settings changed",
+	"GRF bug triggered",
 };
 
 assert_compile(lengthof(la_text) == GLAT_END);
@@ -300,6 +307,15 @@ void GamelogPrint(GamelogPrintProc *proc)
 						BSWAP32(lc->grfmove.grfid), abs(lc->grfmove.offset), lc->grfmove.offset >= 0 ? "down" : "up" );
 					PrintGrfFilename(buf, lc->grfmove.grfid);
 					break;
+
+				case GLCT_GRFBUG:
+					switch (lc->grfbug.bug) {
+						default: NOT_REACHED();
+						case GBUG_VEH_LENGTH:
+							AddDebugText(buf, "Rail vehicle changes length outside a depot: GRF ID %08X, internal ID 0x%X", BSWAP32(lc->grfbug.grfid), (uint)lc->grfbug.data);
+							PrintGrfFilename(buf, lc->grfbug.grfid);
+							break;
+					}
 			}
 
 			proc(buf);
@@ -466,6 +482,51 @@ void GamelogTestMode()
 	}
 
 	if (mode == NULL || mode->mode.mode != _game_mode || mode->mode.landscape != _settings_game.game_creation.landscape) GamelogMode();
+}
+
+
+/** Logs triggered GRF bug.
+ * @param grfid ID of problematic GRF
+ * @param bug type of bug, @see enum GRFBugs
+ * @param data additional data
+ */
+static void GamelogGRFBug(uint32 grfid, byte bug, uint64 data)
+{
+	assert(_gamelog_action_type == GLAT_GRFBUG);
+
+	LoggedChange *lc = GamelogChange(GLCT_GRFBUG);
+	if (lc == NULL) return;
+
+	lc->grfbug.data  = data;
+	lc->grfbug.grfid = grfid;
+	lc->grfbug.bug   = bug;
+}
+
+/** Logs GRF bug - rail vehicle has different length after reversing.
+ * Ensures this is logged only once for each GRF and engine type
+ * This check takes some time, but it is called pretty seldom, so it
+ * doesn't matter that much (ideally it shouldn't be called at all).
+ * @param engine engine to log
+ * @return true iff a unique record was done
+ */
+bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id)
+{
+	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
+	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
+		const LoggedChange *lcend = &la->change[la->changes];
+		for (const LoggedChange *lc = la->change; lc != lcend; lc++) {
+			if (lc->ct == GLCT_GRFBUG && lc->grfbug.grfid == grfid &&
+					lc->grfbug.bug == GBUG_VEH_LENGTH && lc->grfbug.data == internal_id) {
+				return false;
+			}
+		}
+	}
+
+	GamelogStartAction(GLAT_GRFBUG);
+	GamelogGRFBug(grfid, GBUG_VEH_LENGTH, internal_id);
+	GamelogStopAction();
+
+	return true;
 }
 
 
@@ -724,8 +785,15 @@ static const SaveLoad _glog_grfparam_desc[] = {
 };
 
 static const SaveLoad _glog_grfmove_desc[] = {
-	SLE_VAR(LoggedChange, grfmove.grfid,    SLE_UINT32),
-	SLE_VAR(LoggedChange, grfmove.offset,   SLE_INT32),
+	SLE_VAR(LoggedChange, grfmove.grfid,     SLE_UINT32),
+	SLE_VAR(LoggedChange, grfmove.offset,    SLE_INT32),
+	SLE_END()
+};
+
+static const SaveLoad _glog_grfbug_desc[] = {
+	SLE_VAR(LoggedChange, grfbug.data,       SLE_UINT64),
+	SLE_VAR(LoggedChange, grfbug.grfid,      SLE_UINT32),
+	SLE_VAR(LoggedChange, grfbug.bug,        SLE_UINT8),
 	SLE_END()
 };
 
@@ -738,7 +806,8 @@ static const SaveLoad *_glog_desc[] = {
 	_glog_grfrem_desc,
 	_glog_grfcompat_desc,
 	_glog_grfparam_desc,
-	_glog_grfmove_desc
+	_glog_grfmove_desc,
+	_glog_grfbug_desc,
 };
 
 assert_compile(lengthof(_glog_desc) == GLCT_END);

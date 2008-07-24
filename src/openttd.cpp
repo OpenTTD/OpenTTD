@@ -1013,7 +1013,7 @@ void StateGameLoop()
 					length = 0;
 					for (Vehicle *u = v; u != NULL; u = u->Next()) wagons[length++] = u->u.rail;
 
-					TrainConsistChanged(v);
+					TrainConsistChanged(v, true);
 
 					length = 0;
 					for (Vehicle *u = v; u != NULL; u = u->Next()) {
@@ -1265,6 +1265,8 @@ static bool InitializeWindowsAndCaches()
 	 * So each airport's noise value must be added to the town->noise_reached value
 	 * Reset each town's noise_reached value to '0' before. */
 	UpdateAirportsNoise();
+
+	CheckTrainsLengths();
 
 	return true;
 }
@@ -1759,7 +1761,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
+			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v, true);
 		}
 
 	}
@@ -2466,4 +2468,5 @@ void ReloadNewGRFData()
 	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) InvalidateWindowData(WC_PLAYER_COLOR, i, _loaded_newgrf_features.has_2CC);
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
+	CheckTrainsLengths();
 }

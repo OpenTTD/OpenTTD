@@ -3217,6 +3217,10 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Missing 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{0:RAW_STRING}' is likely to cause desyncs and/or crashes.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash.
+
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without tram support. All trams have been removed.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency

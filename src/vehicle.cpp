@@ -279,7 +279,7 @@ void AfterLoadVehicles(bool clear_te_id)
 
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
 			if (IsFrontEngine(v)) v->u.rail.last_speed = v->cur_speed; // update displayed train speed
-			TrainConsistChanged(v);
+			TrainConsistChanged(v, false);
 		} else if (v->type == VEH_ROAD && IsRoadVehFront(v)) {
 			RoadVehUpdateCache(v);
 		}
@@ -1377,7 +1377,7 @@ void VehicleEnterDepot(Vehicle *v)
 			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 			v->load_unload_time_rem = 0;
 			ClrBit(v->u.rail.flags, VRF_TOGGLE_REVERSE);
-			TrainConsistChanged(v);
+			TrainConsistChanged(v, true);
 			break;
 
 		case VEH_ROAD:

@@ -225,6 +225,7 @@ Information logged:
 * Running a modified OTTD build
 * Changing patch settings affecting NewGRF behaviour (non-networksafe patches)
 * Changing landscape (by cheat)
+* Triggering NewGRF bugs
 
 No personal information is stored.
 
