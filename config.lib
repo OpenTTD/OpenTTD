@@ -214,7 +214,7 @@ detect_params() {
 			--without-menu-entry)         menu_dir="";;
 
 			--man-dir)                    prevp_p="man_dir";;
-			--man-dir=*)                  menu_dir="$optarg";;
+			--man-dir=*)                  man_dir="$optarg";;
 
 			--personal-dir)               prevp_p="personal-dir";;
 			--personal-dir=*)             personal_dir="$optarg";;
