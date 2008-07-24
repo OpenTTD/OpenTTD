@@ -593,6 +593,7 @@ struct NewGRFWindow : public Window {
 			}
 		}
 
+		this->sel = NULL;
 		this->SetupNewGRFWindow();
 		this->SetDirty();
 	}
