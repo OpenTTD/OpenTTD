@@ -1441,6 +1441,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Vlož IP
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Hráčů
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hráčů online / maximálně
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Rozměry mapy
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Rozměry mapy ve hře{}Kliknutím hry seřadíš podle plochy
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Aktuální datum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Roků
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Počet let,{}po které už hra běží
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HŘE
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientů:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
@@ -2905,7 +2916,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vložit 
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit čas pro splnění jízdního příkazu
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat ukazatel zpoždění, takže vozidlo pojede na čas
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
 STR_SERVICE_HINT                                                :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Porucha
@@ -2926,7 +2937,7 @@ STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nelze ob
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Přejmenovat typ železničního vozidla
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu přejmenovat typ železničního vozidla...
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
-STR_RESET_LATENESS                                              :{BLACK}Smazat ukazatel zpoždění
+STR_RESET_LATENESS                                              :{BLACK}Zapomenout zpoždění
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
@@ -2958,7 +2969,7 @@ STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silničn
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} silniční{P "" "" ch} vozid{P lo la el}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Garáže pro silniční vozidla {TOWN}
-STR_9004_NEW_VEHICLES                                           :{BLACK}Nová silniční vozidla
+STR_9004_NEW_VEHICLES                                           :{BLACK}Nová vozidla
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nová silniční vozidla
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Koupit silniční vozidlo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemohu koupit nové silniční vozidlo...
@@ -3020,6 +3031,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nelze p�
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber typ nákladu, který má vozidlo převážet
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Výstavba vodních kanálů
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Výstavba vodních kanálů
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vodní kanály
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Zde nelze postavit přístav...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Lodní depo {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nové lodě
@@ -3256,6 +3270,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chyběj�
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro načtení hry chybí GRF soubory
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 

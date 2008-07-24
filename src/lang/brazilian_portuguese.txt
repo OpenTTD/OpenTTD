@@ -1384,6 +1384,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Coloque 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes{}Empresas ligados / max, empresas
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DO JOGO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
@@ -2738,9 +2742,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Saltar para a o
 STR_CONDITIONAL_NUM                                             :Saltar para a ordem {COMMA} quando {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Saltar para a ordem {COMMA} quando {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Não viajar
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viajar (não progamado)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viajar para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viajar por {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tique{P "" s}
 
@@ -3197,6 +3203,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}arquivo(
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m) arquivo(s) GRF para carregar o jogo
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subseqüentes.{}Você realmente quer despausar?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 

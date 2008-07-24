@@ -863,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financer une no
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financer une nouvelle industrie
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...peut seulement être construit en ville
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...peut seulement être construit en forêt tropicale
@@ -1384,6 +1385,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Saisir l
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients en ligne / clients max
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Taille
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Taille de la carte{}Cliquer pour trier par surface
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Date
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Date courante
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Années
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Nombre d'années{}écoulées dans le jeu
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFOS SUR LE SERVEUR
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Langue:  {WHITE}{STRING}
@@ -2738,9 +2750,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Sauter à l'ord
 STR_CONDITIONAL_NUM                                             :Sauter à l'ordre {COMMA} quand {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Sauter à l'ordre {COMMA} quand {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Pas de voyage
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Voyager (sans horaires)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Voyager pendant {STRING}
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} jour{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
@@ -3168,6 +3182,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF 
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronistation.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Charger la liste sélectionnée
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Sauver la liste
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Sauver la liste courante
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Entrer un nom pour la liste
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Supprimer la liste
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Supprimer la liste sélectionnée
 STR_NEWGRF_ADD                                                  :{BLACK}Ajouter
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Ajouter un fichier NewGRF à la liste
 STR_NEWGRF_REMOVE                                               :{BLACK}Retirer
@@ -3197,6 +3217,10 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichier(
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichier(s) GRF absent(s) pour pouvoir charger la partie
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichier(s) GRF manquant(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne créez pas de rapport de bug pour ceux-ci.{}Voulez-vous vraiment retirer la pause?
+
+STR_NEWGRF_BROKEN                                               :{WHITE}Le comportement du NewGRF '{0:STRING}' peut causer des erreurs de synchronisation et/ou des plantages.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il modifie la longueur de vehicule pour '{1:ENGINE}' en dehors du dépot.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 

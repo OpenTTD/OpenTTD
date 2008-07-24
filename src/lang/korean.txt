@@ -1383,6 +1383,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}호스�
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}클라이언트
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}클라이언트 온라인 / 최대 접속자수{}회사 온라인 / 최대 회사수
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}맵 크기
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}게임의 맵 사이즈{}크기별로 정렬하려면 클릭
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}날짜
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}현재 날짜
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}연도
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}게임이 진행중인 연도 수
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}게임 정보
 STR_NETWORK_CLIENTS                                             :{SILVER}클라이언트:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}언어:  {WHITE}{STRING}
@@ -2737,9 +2748,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :{COMMA}(으)로
 STR_CONDITIONAL_NUM                                             :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING} {COMMA} 일때)
 STR_CONDITIONAL_TRUE_FALSE                                      :[조건 경로] {COMMA}번째 경로로 건너뛰기 ({STRING} {STRING})
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}운행정보 없음
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}여행 (시간표 없음)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING}로 여행
 STR_TIMETABLE_STAY_FOR                                          :그리고 {STRING}에 머무름
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :그리고 {STRING}(으)로 이동
 STR_TIMETABLE_DAYS                                              :{COMMA} 일
 STR_TIMETABLE_TICKS                                             :{COMMA} 틱
 
@@ -3196,6 +3209,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라�
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라진 GRF 파일이 게임 로드에 사용될 수 있습니다
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류를 위해 버그 리포트를 보관하지 마십시오.{}일시정지를 해제하시겠습니까?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 

@@ -1384,6 +1384,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Introduc
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes online / máx clientes{}Compañías online / máximo compañías
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Tamaño del mapa
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Tamaño del mapa del juego{}Pulsa para ordenar por area
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Fecha
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Fecha actual
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Años
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Número de años{}que el juego está ejecutado
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO JUEGO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
@@ -2738,9 +2749,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Saltar a orden 
 STR_CONDITIONAL_NUM                                             :Saltar a orden {COMMA} cuando {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Saltar a orden{COMMA} cuando {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Sin viaje
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viaje (sin horarios)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viaje para {STRING}
 STR_TIMETABLE_STAY_FOR                                          :y estancia en {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :y viajar por {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} días{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} señal{P "" s}
 
@@ -3197,6 +3210,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fichero(
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(s) GRF para poder cargar el juego
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
 

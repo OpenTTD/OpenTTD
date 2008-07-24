@@ -1383,6 +1383,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}IP adres
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Spelers
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Spelers online / spelers maximaal
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kaart grootte
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Kaart grootte van het spel{}Klik om te sorteren per gebied
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Huidige datum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Jaren
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Aantal jaren{}het spel draait
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMATIE
 STR_NETWORK_CLIENTS                                             :{SILVER}Spelers:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
@@ -2737,9 +2748,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Spring naar ord
 STR_CONDITIONAL_NUM                                             :Spring naar order {COMMA} wanneer {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Spring naar order {COMMA} wanneer {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Niet rijden
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (geen dienstregeling)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis naar {STRING}
 STR_TIMETABLE_STAY_FOR                                          :en blijf voor {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :en rijdt naar {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" en}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" ken}
 
@@ -3167,6 +3180,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF bestand
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn teveel NewGRFs geladen.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} als statisch NewGRF met {STRING} kan desyncs veroorzaken.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laad de geselecteerd voorkeursinstelling
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Bewaar voorkeursinstelling
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Bewaar de huidige lijst als voorkeursinstelling
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Kies een naam voor deze voorkeursinstelling
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Verwijder voorkeursinstelling
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Verwijder de geselecteerde voorkeursinstelling
 STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst
 STR_NEWGRF_REMOVE                                               :{BLACK}Verwijderen
@@ -3196,6 +3215,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missend(
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Er zijn missende GRF bestanden om het spel te laden
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ontbrekende GRF bestand(en)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pauze uit zetten kan OpenTTD laten vastlopen. Geef geen fout rapporten bij herhaaldelijk vastlopen.{}Weet je zeker dat je pauze wilt uit zetten?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spel was opgeslagen in een versie zonder tram ondersteuning. Alle trams zijn verwijderd.
 

@@ -35,8 +35,8 @@ STR_0012_OIL                                                    :нафта
 STR_0012_OIL.r                                                  :нафти
 STR_0012_OIL.z                                                  :нафту
 STR_0013_LIVESTOCK                                              :худоба
-STR_0013_LIVESTOCK.z                                            :худобу
 STR_0013_LIVESTOCK.r                                            :худоби
+STR_0013_LIVESTOCK.z                                            :худобу
 STR_0014_GOODS                                                  :товари
 STR_0014_GOODS.r                                                :товарів
 STR_0014_GOODS.z                                                :товари
@@ -128,8 +128,8 @@ STR_0032_OIL                                                    :нафта
 STR_0032_OIL.r                                                  :нафти
 STR_0032_OIL.z                                                  :нафту
 STR_0033_LIVESTOCK                                              :худоба
-STR_0033_LIVESTOCK.z                                            :худобу
 STR_0033_LIVESTOCK.r                                            :худоби
+STR_0033_LIVESTOCK.z                                            :худобу
 STR_0034_GOODS                                                  :товари
 STR_0034_GOODS.r                                                :товарів
 STR_0034_GOODS.z                                                :товари
@@ -1508,6 +1508,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Введ
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Клієнти
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Клієнти в мережі/макс.клієнтів{}Компанії в мережі/макс.компаній
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}Інформація про гру
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
@@ -2899,9 +2903,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Перейти 
 STR_CONDITIONAL_NUM                                             :Перейти до наказу {COMMA}, якщо {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Перейти до наказу {COMMA}, якщо {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Не прямувати
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Прямує (не за розкладом)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Прямує до {STRING}
 STR_TIMETABLE_STAY_FOR                                          :і стояти {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :і прямувати до {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ні нів}
 STR_TIMETABLE_TICKS                                             :{COMMA} одиниц{P ю і ь}
 
@@ -3358,6 +3364,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Відс
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Відсутні GRF-файли  для завантаження гри
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Відсутній GRF файл(и)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зняття з паузи може привести до аварійної відмови OpenTTD. Не рапортуйте про наступні відмови.{}Ви дійсно хочете зняти з паузи?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 

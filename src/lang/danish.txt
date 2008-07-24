@@ -486,6 +486,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Ejer: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Ejer af vej: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Ejer af sporvej: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Ejer af jernbane: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokal myndighed: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Navn
@@ -1054,6 +1057,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vægtfa
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Fly-hastighedsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillad gennemkørsels-stop på veje ejet af en by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillad bygning af tilstødende stationer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Muliggør flere NewGRF køretøjssæt: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
@@ -1287,6 +1291,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikke
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Byg sluser
 STR_LANDINFO_LOCK                                               :Sluse
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Kan ikke placere floder her...
+STR_LANDINFO_RIVER                                              :Flod
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}... bøjen er i brug!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1376,6 +1383,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv ad
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / maks. klienter{}Selskaber online / maks. selskaber
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIL INFO
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Sprog:  {WHITE}{STRING}
@@ -1712,6 +1723,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vej med gadelyg
 STR_1816_TREE_LINED_ROAD                                        :Vej med vejtræer
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Værksted
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneoverskæring
+STR_TRAMWAY                                                     :Sporvej
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Kan ikke fjerne rutebilstation...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kan ikke fjerne fragtcentral...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Kan ikke fjerne passager-sporvognsstation
@@ -1937,6 +1949,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vælg re
 STR_3804_WATER                                                  :Vand
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller flodbred
 STR_3806_SHIP_DEPOT                                             :Skibsdok
+STR_AQUEDUCT                                                    :Akvædukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...kan ikke bygge på vand
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanal må fjernes først
 
@@ -2656,14 +2669,17 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Uden stop
 STR_ORDER_GO_TO                                                 :Gå til
 STR_ORDER_GO_NON_STOP_TO                                        :Gå uden stop til
 STR_ORDER_GO_VIA                                                :Gå via
 STR_ORDER_GO_NON_STOP_VIA                                       :Gå uden stop via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Fuld last af hvilken som helst type
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Åbn hvis tilgængelig
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Fuld last af alt gods
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Fuld last af hvilket som helst gods
 STR_ORDER_DROP_NO_LOADING                                       :Ingen lastning
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Los alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Los hvis gods accepteres
 STR_ORDER_DROP_UNLOAD                                           :Aflæs alt
 STR_ORDER_DROP_TRANSFER                                         :Overfør
@@ -2944,6 +2960,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg lasttype som lastbilen skal transportere
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Bygning af vandveje
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Bygning af vandveje
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vandveje
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge en havn her...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} skibsdok
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skibe
@@ -2996,6 +3015,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Kan ikke
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første skib ankommer til {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Positionsbøje, kan bruges som yderligere navigationspunkt
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Kan ikke placere en bøje her...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Byg akvædukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kan ikke bygge akvædukt her...
 STR_9836_RENAME                                                 :{BLACK}Omdøb
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Omdøb skibstypen
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Omdøb skibstypen
@@ -3148,6 +3169,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} skal i
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} kræver OpenTTD version {STRING} eller højere.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen, som den er lavet til at oversætte,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF sæt er indlæst.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af {STRING} som statisk NewGRF med {STRING} kan forårsage de-sykronisering.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Tilføj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Tilføj et NewGRF sæt til listen
@@ -3179,6 +3201,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
+
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3546,4 +3570,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillad byer at fastsætte støjgrænser for lufthavne: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Støjgrænse i byen: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Genereret støj: {GOLD}{COMMA}
 ########

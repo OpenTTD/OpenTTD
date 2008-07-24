@@ -442,6 +442,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Uplna kapacita 
 STR_SORT_BY_MAX_SPEED                                           :Maximalna rychlost
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Hodnota
+STR_SORT_BY_LENGTH                                              :Dlžka
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
@@ -549,6 +550,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Náklady
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Náklady na odstránenie: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Neznáme
 STR_01A7_OWNER                                                  :{BLACK}Vlastník: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Vlastník cesty: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Vlastník elektrickovej dráhy: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Vlastník železnice: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Miestna správa: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Neznáme
 STR_01AA_NAME                                                   :{BLACK}Meno
@@ -1117,6 +1121,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Váhov�
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Faktor rýchlosti lietadiel: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Povolit prejazdné zastávky na mestských cestách: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Povolit stavbu oddelených staníc: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Povolit viaceré NewGRF sety s rušnami: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vždy povolit stavbu malých letísk: {ORANGE}{STRING}
 
@@ -1350,6 +1355,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Tu sa ne
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Postavit stavidla ...
 STR_LANDINFO_LOCK                                               :Stavidlo
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Tu nie je možné umiestnit rieku ...
+STR_LANDINFO_RIVER                                              :Rieka
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}... boja sa pouziva!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Súradnice: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1427,6 +1435,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nazov
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nazov hry
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jazyk, verzia serveru, atd.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Vyberte hru zo zoznamu
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}The server you joined last time:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Kliknite pre vyber servera na ktorom ste hrali naposledy
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Najst server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Hladat po sieti servery
@@ -1437,6 +1447,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Zadajte 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienti online / klienti max
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Velkost mapy
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Velkost mapy v hre{}Kliknite pre triedenie podla rozlohy
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Dátum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Aktuálny dátum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Roky
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Pocet rokov,{}kolko hra beží
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HRE
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jazyk:  {WHITE}{STRING}
@@ -1773,6 +1794,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta s lampami
 STR_1816_TREE_LINED_ROAD                                        :Cesta v aleji
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garaz
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Zeleznicne priecestie
+STR_TRAMWAY                                                     :Elektrickova dráha
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nie je možné odstránit autobusovú stanicu ...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nie je možné odstránit nakladaciu rampu ...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nie je možné odstránit osobnú elektrickovú stanicu ...
@@ -1998,6 +2020,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vyber or
 STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobrezie alebo nabrezie
 STR_3806_SHIP_DEPOT                                             :Lodenica
+STR_AQUEDUCT                                                    :Akvadukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}... nemoze byt postavene na vode
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Najprv sa musí zbúrat kanál
 
@@ -2715,12 +2738,65 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy vlak dorazil do stanice {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v ceste
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
+STR_ORDER_GO_TO                                                 :Chod do
+STR_ORDER_GO_NON_STOP_TO                                        :Chod non-stop do
+STR_ORDER_GO_VIA                                                :Chod cez
+STR_ORDER_GO_NON_STOP_VIA                                       :Chdo non-stop cez
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Plne nalož cokolvek
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Nalož pri dostupnosti
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Plne nalož všetko
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Plne nalož cokolvek
+STR_ORDER_DROP_NO_LOADING                                       :Nenakladaj
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Vylož všetko
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Vylož pri prijímaní
+STR_ORDER_DROP_UNLOAD                                           :Vylož všetko
+STR_ORDER_DROP_TRANSFER                                         :Prelož
+STR_ORDER_DROP_NO_UNLOADING                                     :Nevykladaj
+STR_ORDER_FULL_LOAD                                             :(Plne nalož)
+STR_ORDER_FULL_LOAD_ANY                                         :(Plne nalož akýkolvek náklad)
+STR_ORDER_NO_LOAD                                               :(Nenakladaj)
+STR_ORDER_UNLOAD                                                :(Vylož a nalož náklad)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Vylož a pockaj na plné naloženie)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Vylož a pockaj na plné naloženie akéhokoľvek nákladu)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Vylož a nechaj prázdne)
+STR_ORDER_TRANSFER                                              :(Prelož a nalož)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Prelož a pockaj na plné naloženie)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Prelož a pockaj na plné naloženie akéhokolvek nákladu)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Prelož a nechaj prázdne)
+STR_ORDER_NO_UNLOAD                                             :(Nevykladaj a nalož)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a pockaj na plné naloženie)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a pockaj na plné naloženie akéhokolvek nákladu)
 
 
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, s ktorou sa majú porovnat dáta vozidla
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadajte hodnotu voci ktorej sa ma porovnat
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Spolahlivost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximálna rýchlost
+STR_ORDER_CONDITIONAL_AGE                                       :Vek vozidla (v rokoch)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vyžaduje servis
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Vždy
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je rovné
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nie je rovné
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :je menej ako
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :je menej alebo rovné
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :je viac ako
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :je viac alebo rovné
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je pravda
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je nepravda
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Skok na príkaz {COMMA}
+STR_CONDITIONAL_NUM                                             :Skok na príkaz {COMMA} ak {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Skok na príkaz {COMMA} ak {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Necestuj
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Cesta (neurcený cas)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Cesta do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :prestávka {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :a cestuj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ni ní}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" y ov}
 
@@ -2774,6 +2850,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Naklada/Vyklada
+STR_LEAVING                                                     :{LTBLUE}Opúšta
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musi byt zastaveny v depe
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlak sa neda poslat do depa...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nemozno zadat dalsie prikazy
@@ -2936,6 +3013,7 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Prestavb
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyberte požadovaný typ nákladu pre cestné vozidlo
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Waterways construction
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tu nemozno postavit pristav ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Lodenica
 STR_9804_NEW_SHIPS                                              :{BLACK}Nove lode
@@ -2988,6 +3066,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nemozno 
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prva lod dorazila do {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Postavit boju pouzitelnu pre vyznacenie trasy
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Tu nemozno postavit boju ...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Postavit akvadukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tu nie je možné postavit akvadukt ...
 STR_9836_RENAME                                                 :{BLACK}Premenovat
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Premenovat typ lode
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Premenovat typ lode
@@ -3141,6 +3221,12 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} vyžad
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Nahraných príliš vela NewGRF súborov.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrat vybraný zoznam
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit zoznam
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Uložit aktuálne nastavenie ako zoznam
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Zadajte názov zoznamu
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Vymazat zoznam
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Vymazat vybraný zoznam
 STR_NEWGRF_ADD                                                  :{BLACK}Pridat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridat NewGRF súbor do zoznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odstránit
@@ -3170,6 +3256,9 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chýbaj�
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Cýbajú GRF súbory potrebné pre nahratie hry
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chýba(jú) GRF súbor(y)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzovanie môže spôsobit pád OpenTTD. Nezaznamenávajte nasledujúce chyby.{}Naozaj chcete odpauzovat?
+
+
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3534,4 +3623,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Povolit mestom urcené hlukové limity pre letiská: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Hlukový limit v meste: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Vytváraný hluk: {GOLD}{COMMA}
 ########
