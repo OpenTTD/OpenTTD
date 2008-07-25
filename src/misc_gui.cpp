@@ -116,7 +116,7 @@ public:
 		TileDesc td;
 		AcceptedCargo ac;
 
-		td.build_date = 0;
+		td.build_date = INVALID_DATE;
 
 		/* Most tiles have only one owner, but
 		 *  - drivethrough roadstops can be build on town owned roads (up to 2 owners) and
@@ -180,7 +180,7 @@ public:
 		line_nr++;
 
 		/* Build date */
-		if (td.build_date != 0) {
+		if (td.build_date != INVALID_DATE) {
 			SetDParam(0, td.build_date);
 			GetString(this->landinfo_data[line_nr], STR_BUILD_DATE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
