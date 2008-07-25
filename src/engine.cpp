@@ -342,11 +342,11 @@ void EnginesDailyLoop()
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player_rank++;
 				}
-			} else if (e->preview_player_rank != PLAYER_SPECTATOR) {
+			} else if (e->preview_player_rank != 0xFF) {
 				PlayerID best_player = GetBestPlayer(e->preview_player_rank);
 
 				if (best_player == PLAYER_SPECTATOR) {
-					e->preview_player_rank = PLAYER_SPECTATOR;
+					e->preview_player_rank = 0xFF;
 					continue;
 				}
 

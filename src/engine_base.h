@@ -20,7 +20,7 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 	uint16 duration_phase_1, duration_phase_2, duration_phase_3;
 	byte lifelength;
 	byte flags;
-	PlayerByte preview_player_rank;
+	uint8 preview_player_rank;
 	byte preview_wait;
 	PlayerMask player_avail;
 	uint8 image_index; ///< Original vehicle image index
