@@ -570,7 +570,11 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case MP_STATION:
-			if (!IsDriveThroughStopTile(tile)) return CMD_ERROR;
+			if (IsDriveThroughStopTile(tile)) {
+				if (pieces & ~AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)))) goto do_clear;
+			} else {
+				if (pieces & ~DiagDirToRoadBits(GetRoadStopDir(tile))) goto do_clear;
+			}
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			break;
 
