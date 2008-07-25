@@ -110,6 +110,7 @@ void ResetStationClasses();
 StationClassID AllocateStationClass(uint32 cls);
 void SetStationClassName(StationClassID sclass, StringID name);
 StringID GetStationClassName(StationClassID sclass);
+const StationSpec *GetStationSpec(TileIndex t);
 
 uint GetNumStationClasses();
 uint GetNumCustomStations(StationClassID sclass);

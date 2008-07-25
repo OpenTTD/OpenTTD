@@ -3126,6 +3126,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Your att
 STR_BRIBE_FAILED_2                                              :{WHITE}discovered by a regional investigator
 STR_BUILD_DATE                                                  :{BLACK}Built: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Station class: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Station type: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{RAW_STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailed performance rating
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})

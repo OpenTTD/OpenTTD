@@ -73,7 +73,7 @@ static const WindowDesc _land_info_desc = {
 
 class LandInfoWindow : public Window {
 	enum {
-		LAND_INFO_CENTERED_LINES   = 9,                        ///< Up to 9 centered lines
+		LAND_INFO_CENTERED_LINES   = 12,                       ///< Up to 12 centered lines
 		LAND_INFO_MULTICENTER_LINE = LAND_INFO_CENTERED_LINES, ///< One multicenter line
 		LAND_INFO_LINE_END,
 
@@ -131,6 +131,11 @@ public:
 		td.owner[2] = OWNER_NONE;
 		td.owner[3] = OWNER_NONE;
 
+		td.station_class = STR_NULL;
+		td.station_name = STR_NULL;
+
+		td.grf = NULL;
+
 		GetAcceptedCargo(tile, ac);
 		GetTileDesc(tile, &td);
 
@@ -185,6 +190,29 @@ public:
 			GetString(this->landinfo_data[line_nr], STR_BUILD_DATE, lastof(this->landinfo_data[line_nr]));
 			line_nr++;
 		}
+
+		/* Station class */
+		if (td.station_class != STR_NULL) {
+			SetDParam(0, td.station_class);
+			GetString(this->landinfo_data[line_nr], STR_TILEDESC_STATION_CLASS, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* Station type name */
+		if (td.station_name != STR_NULL) {
+			SetDParam(0, td.station_name);
+			GetString(this->landinfo_data[line_nr], STR_TILEDESC_STATION_TYPE, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		/* NewGRF name */
+		if (td.grf != NULL) {
+			SetDParamStr(0, td.grf);
+			GetString(this->landinfo_data[line_nr], STR_TILEDESC_NEWGRF_NAME, lastof(this->landinfo_data[line_nr]));
+			line_nr++;
+		}
+
+		assert(line_nr < LAND_INFO_CENTERED_LINES);
 
 		/* Mark last line empty */
 		this->landinfo_data[line_nr][0] = '\0';

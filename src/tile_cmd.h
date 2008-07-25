@@ -52,6 +52,9 @@ struct TileDesc {
 	Owner owner[4];
 	StringID owner_type[4];
 	Date build_date;
+	StringID station_class;
+	StringID station_name;
+	const char *grf;
 	uint64 dparam[2];
 };
 

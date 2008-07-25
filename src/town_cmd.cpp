@@ -616,10 +616,17 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
-	td->str = GetHouseSpecs(GetHouseType(tile))->building_name;
+	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+
+	td->str = hs->building_name;
 	if (!IsHouseCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
+	}
+
+	if (hs->grffile != NULL) {
+		const GRFConfig *gc = GetGRFConfig(hs->grffile->grfid);
+		td->grf = gc->name;
 	}
 
 	td->owner[0] = OWNER_TOWN;

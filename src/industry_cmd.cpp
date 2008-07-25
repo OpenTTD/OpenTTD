@@ -389,12 +389,17 @@ static void GetAcceptedCargo_Industry(TileIndex tile, AcceptedCargo ac)
 static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 {
 	const Industry *i = GetIndustryByTile(tile);
+	const IndustrySpec *is = GetIndustrySpec(i->type);
 
 	td->owner[0] = i->owner;
-	td->str = GetIndustrySpec(i->type)->name;
+	td->str = is->name;
 	if (!IsIndustryCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
+	}
+
+	if (is->grf_prop.grffile != NULL) {
+		td->grf = GetGRFConfig(is->grf_prop.grffile->grfid)->name;
 	}
 }
 

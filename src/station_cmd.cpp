@@ -43,6 +43,7 @@
 #include "oldpool_func.h"
 #include "animated_tile_func.h"
 #include "elrail_func.h"
+#include "newgrf.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -2311,6 +2312,18 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 		td->owner[1] = OWNER_TOWN;
 	}
 	td->build_date = GetStationByTile(tile)->build_date;
+
+	const StationSpec *spec = GetStationSpec(tile);
+
+	if (spec != NULL) {
+		td->station_class = GetStationClassName(spec->sclass);
+		td->station_name = spec->name;
+
+		if (spec->grffile != NULL) {
+			const GRFConfig *gc = GetGRFConfig(spec->grffile->grfid);
+			td->grf = gc->name;
+		}
+	}
 
 	StringID str;
 	switch (GetStationType(tile)) {

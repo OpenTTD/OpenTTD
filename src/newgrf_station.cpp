@@ -835,7 +835,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 }
 
 
-static const StationSpec* GetStationSpec(TileIndex t)
+const StationSpec *GetStationSpec(TileIndex t)
 {
 	const Station* st;
 	uint specindex;
