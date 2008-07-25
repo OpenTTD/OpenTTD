@@ -3132,6 +3132,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mancano 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}File GRF mancanti
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Uscire dalla pausa può causare un crash: nel caso, si prega di non inviare segnalazioni bug al riguardo.{}Uscire dalla pausa?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}La lunghezza dei veicoli  '{1:ENGINE}' può cambiare al di fuori dei depositi.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Il treno '{VEHICLE}' della '{COMPANY}' ha una lunghezza non valida, probabilmente a causa di problemi con un NewGRF. È possibile che si verifichino errori di sincronizzazione o crash.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}La partita è stata salvata in una versione senza il supporto per i tram. Tutte le tranvie sono state rimosse.
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta personalizzata
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cambio: {ORANGE}{CURRENCY} = £ {COMMA}

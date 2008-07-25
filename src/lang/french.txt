@@ -3131,6 +3131,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichier(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichier(s) GRF manquant(s)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Retirer la pause peut faire planter OpenTTD. Ne créez pas de rapport de bug pour ceux-ci.{}Voulez-vous vraiment retirer la pause?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Il modifie la longueur de vehicule pour '{1:ENGINE}' en dehors du dépot.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Le train '{VEHICLE}' appartenant à '{COMPANY}' a une longueur invalide. Celà est probablement dû à des problèmes avec des NewGRFs. Le jeu peut avoir des erreurs de synchronisation ou planter.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Partie sauvegardée avec une version sans support des tramways. Tous les tramways ont été supprimés.
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}

@@ -2833,7 +2833,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Označen
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Jízdní řád - příkaz vybereš kliknutím.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Změnit čas pro splnění jízdního příkazu
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Zrušit čas pro splnění jízdního příkazu
-STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat ukazatel zpoždění, takže vozidlo pojede na čas
+STR_TIMETABLE_RESET_LATENESS_TOOLTIP                            :{BLACK}Smazat zpoždění, takže vozidlo pojede na čas
 STR_SERVICE_HINT                                                :{BLACK}Přeskoč tento cíl, pokud není potřeba pravidelná údržba
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Porucha
@@ -2856,7 +2856,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu p
 STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}U označeného příkazu vozidlo musí vyložit náklad
 STR_TRANSFER                                                    :{BLACK}Překládka
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
-STR_RESET_LATENESS                                              :{BLACK}Smazat ukazatel zpoždění
+STR_RESET_LATENESS                                              :{BLACK}Zapomenout zpoždění
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
@@ -2888,7 +2888,7 @@ STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silničn
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} silniční{P "" "" ch} vozid{P lo la el}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}Garáže pro silniční vozidla {TOWN}
-STR_9004_NEW_VEHICLES                                           :{BLACK}Nová silniční vozidla
+STR_9004_NEW_VEHICLES                                           :{BLACK}Nová vozidla
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nová silniční vozidla
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Koupit silniční vozidlo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemohu koupit nové silniční vozidlo...

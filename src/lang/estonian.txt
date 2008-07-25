@@ -699,72 +699,39 @@ STR_023D_RANDOM_TOWN                                            :{BLACK}Suvaline
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Ehita linn suvalisse kohta
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Tööstuste loomine
 STR_0240_COAL_MINE                                              :{BLACK}Kivisöekaevandus
-STR_0240_COAL_MINE.in                                           :{BLACK}Kivisöekaevanduses
 STR_0241_POWER_STATION                                          :{BLACK}Elektrijaam
-STR_0241_POWER_STATION.in                                       :{BLACK}Elektrijaamas
 STR_0242_SAWMILL                                                :{BLACK}Saeveski
-STR_0242_SAWMILL.in                                             :{BLACK}Saeveskis
 STR_0243_FOREST                                                 :{BLACK}Mets
 STR_0244_OIL_REFINERY                                           :{BLACK}Naftarafineerimistehas
-STR_0244_OIL_REFINERY.in                                        :{BLACK}Naftarafineerimistehases
 STR_0245_OIL_RIG                                                :{BLACK}Naftapuurplatvorm
-STR_0245_OIL_RIG.in                                             :{BLACK}Naftapuurplatvormis
 STR_0246_FACTORY                                                :{BLACK}Tehas
-STR_0246_FACTORY.in                                             :{BLACK}Tehases
 STR_0247_STEEL_MILL                                             :{BLACK}Terasetööstus
-STR_0247_STEEL_MILL.in                                          :{BLACK}Terasetööstuses
 STR_0248_FARM                                                   :{BLACK}Põllumajandusettevõte
-STR_0248_FARM.in                                                :{BLACK}Põllumajandusettevõttes
 STR_0249_IRON_ORE_MINE                                          :{BLACK}Rauamaagikaevandus
-STR_0249_IRON_ORE_MINE.in                                       :{BLACK}Rauamaagikaevanduses
 STR_024A_OIL_WELLS                                              :{BLACK}Naftapuuraugud
-STR_024A_OIL_WELLS.in                                           :{BLACK}Naftapuuraukudes
 STR_024B_BANK                                                   :{BLACK}Pank
-STR_024B_BANK.in                                                :{BLACK}Pangas
 STR_024C_PAPER_MILL                                             :{BLACK}Paberitehas
-STR_024C_PAPER_MILL.in                                          :{BLACK}Paberitehases
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Toidutöötlustehas
-STR_024D_FOOD_PROCESSING_PLANT.in                               :{BLACK}Toidutöötlustehases
 STR_024E_PRINTING_WORKS                                         :{BLACK}Trükikoda
-STR_024E_PRINTING_WORKS.in                                      :{BLACK}Trükikojas
 STR_024F_GOLD_MINE                                              :{BLACK}Kullakaevandus
-STR_024F_GOLD_MINE.in                                           :{BLACK}Kullakaevanduses
 STR_0250_LUMBER_MILL                                            :{BLACK}Saeveski
-STR_0250_LUMBER_MILL.in                                         :{BLACK}Saeveskis
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Puuviljaistandus
-STR_0251_FRUIT_PLANTATION.in                                    :{BLACK}Puuviljaistanduses
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kummipuuistandus
-STR_0252_RUBBER_PLANTATION.in                                   :{BLACK}Kummipuuistanduses
 STR_0253_WATER_SUPPLY                                           :{BLACK}Veepumbad
-STR_0253_WATER_SUPPLY.in                                        :{BLACK}Veepumpades
 STR_0254_WATER_TOWER                                            :{BLACK}Veetorn
-STR_0254_WATER_TOWER.in                                         :{BLACK}Veetornis
 STR_0255_DIAMOND_MINE                                           :{BLACK}Teemantikaevandus
-STR_0255_DIAMOND_MINE.in                                        :{BLACK}Teemantikaevanduses
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Vasemaagikaevandus
-STR_0256_COPPER_ORE_MINE.in                                     :{BLACK}Vasemaagikaevanduses
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Suhkruvatimets
-STR_0257_COTTON_CANDY_FOREST.in                                 :{BLACK}Suhkruvatimetsas
 STR_0258_CANDY_FACTORY                                          :{BLACK}Maiustuste tehas
-STR_0258_CANDY_FACTORY.in                                       :{BLACK}Maiustuste tehases
 STR_0259_BATTERY_FARM                                           :{BLACK}Patareitalu
-STR_0259_BATTERY_FARM.in                                        :{BLACK}Patareitalus
 STR_025A_COLA_WELLS                                             :{BLACK}Koolapumbad
-STR_025A_COLA_WELLS.in                                          :{BLACK}Koolapumpades
 STR_025B_TOY_SHOP                                               :{BLACK}Mänguasjapood
-STR_025B_TOY_SHOP.in                                            :{BLACK}Mänguasjapoes
 STR_025C_TOY_FACTORY                                            :{BLACK}Mänguasjatehas
-STR_025C_TOY_FACTORY.in                                         :{BLACK}Mänguasjatehases
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastmassiallikad
-STR_025D_PLASTIC_FOUNTAINS.in                                   :{BLACK}Plastmassiallikates
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Kihisevate jookide tehas
-STR_025E_FIZZY_DRINK_FACTORY.in                                 :{BLACK}Kihisevate jookide tehases
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Mulligeneraator
-STR_025F_BUBBLE_GENERATOR.in                                    :{BLACK}Mulligeneraatoris
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Iirisekaevandus
-STR_0260_TOFFEE_QUARRY.in                                       :{BLACK}Iirisekaevanduses
 STR_0261_SUGAR_MINE                                             :{BLACK}Suhkrukaevandus
-STR_0261_SUGAR_MINE.in                                          :{BLACK}Suhkrukaevanduses
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Ehita kivisöekaevandus
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Ehita elektrijaam
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Ehita saeveski
@@ -1894,7 +1861,6 @@ STR_205C_PIGGY_BANK                                             :Krossu pank
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
-STR_INDUSTRY_FORMAT.in                                          :{TOWN} {STRING.in}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -3217,6 +3183,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mängu l
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuduolevad GRF failid
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pausi lõpetamine võib põhjustada OpenTTD krahhi. Ära teavita järgnevatest krahhidest.{}Oled sa tõepoolest veendunud, et sa soovid pausi lõpetada?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes muudab sõiduki '{1:ENGINE}' pikkust.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng salvestati trammide toetuseta versioonis. Kõik trammid eemaldati.
 STR_CURRENCY_WINDOW                                             :{WHITE}Isiklik valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}

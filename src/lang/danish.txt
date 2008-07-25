@@ -3129,6 +3129,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Tilskuer:
