@@ -342,11 +342,11 @@ void EnginesDailyLoop()
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player_rank++;
 				}
-			} else if (e->preview_player_rank != 0xFF) {
+			} else if (e->preview_player_rank != PLAYER_SPECTATOR) {
 				PlayerID best_player = GetBestPlayer(e->preview_player_rank);
 
 				if (best_player == PLAYER_SPECTATOR) {
-					e->preview_player_rank = 0xFF;
+					e->preview_player_rank = PLAYER_SPECTATOR;
 					continue;
 				}
 
@@ -419,7 +419,7 @@ static void NewVehicleAvailable(Engine *e)
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
 	/* Now available for all players */
-	e->player_avail = (byte)-1;
+	e->player_avail = (PlayerMask)-1;
 
 	/* Do not introduce new rail wagons */
 	if (IsWagon(index)) return;

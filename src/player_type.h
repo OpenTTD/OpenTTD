@@ -42,6 +42,8 @@ typedef TinyEnumT<Owner> OwnerByte;
 typedef Owner PlayerID;
 typedef OwnerByte PlayerByte;
 
+typedef uint8 PlayerMask;
+
 struct Player;
 typedef uint32 PlayerFace; ///< player face bits, info see in player_face.h
 

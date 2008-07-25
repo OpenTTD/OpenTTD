@@ -124,7 +124,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	byte statues;
 
 	/* Player ratings as well as a mask that determines which players have a rating. */
-	byte have_ratings;
+	PlayerMask have_ratings;
 	uint8 unwanted[MAX_PLAYERS]; ///< how many months companies aren't wanted by towns (bribe)
 	PlayerByte exclusivity;      ///< which player has exslusivity
 	uint8 exclusive_counter;     ///< months till the exclusivity expires
