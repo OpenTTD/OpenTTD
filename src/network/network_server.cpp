@@ -47,7 +47,6 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler
 	//    uint16:  The index of the client (always unique on a server. 1 = server)
 	//    uint8:  As which player the client is playing
 	//    String: The name of the client
-	//    String: The unique id of the client
 	//
 
 	if (ci->client_index != NETWORK_EMPTY_INDEX) {
@@ -55,7 +54,6 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler
 		p->Send_uint16(ci->client_index);
 		p->Send_uint8 (ci->client_playas);
 		p->Send_string(ci->client_name);
-		p->Send_string(ci->unique_id);
 
 		cs->Send_Packet(p);
 	}

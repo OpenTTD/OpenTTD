@@ -58,7 +58,7 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 	 * the complete train, which is without the weight of cargo we just
 	 * moved back into some (of the) new wagon(s).
 	 */
-	if (dest->type == VEH_TRAIN) TrainConsistChanged(dest->First());
+	if (dest->type == VEH_TRAIN) TrainConsistChanged(dest->First(), true);
 }
 
 static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID engine_type)

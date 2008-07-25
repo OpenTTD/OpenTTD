@@ -1,5 +1,7 @@
-0.6.2 ?? (2008-??-??)
+0.6.2-RC2 (2008-07-25)
 ------------------------------------------------------------------------
+- Fix: Building through the wrong side of a drive through station was allowed [FS#2166] (r13822)
+- Fix: Check for vehicle length changes outside a depot (callback 0x11) and give a warning about that [FS#2150] (r13816)
 - Fix: Several minor memory leaks. They only happened once per game (r13809, 13810)
 - Fix: Checking for train waiting at other side of two-way signal was broken [FS#2162] (r13806)
 - Fix: Some revision checking code was unintentionally disabled (r13776)
@@ -9,6 +11,7 @@
 - Fix: Assumption that non-north tiles of a house do not have the 1x1 building bit set was flawed with some NewGRFs. This caused the amount of houses to differ, which causes the town radii to differ, which causes desyncs when towns are expanded (r13729)
 - Fix: Possible desync on the autorenew settings 20+ game years (i.e. 4.5+ hours) after a company was started (r13718)
 - Fix: Any player could construct new companies [FS#2144] (r13716)
+- Fix: Remove the unique_id from the message that a client has joined as it is only exposes the unique_id more than needed (r13714)
 - Fix: Possible crash on creating a network packet (r13713)
 - Fix: Enforce the length restrictions of company and president name in the commands too (r13712)
 

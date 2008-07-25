@@ -347,13 +347,11 @@ static inline Corner GetRailFoundationCorner(Foundation f)
  * Returns the foundation needed to flatten a slope.
  * The returned foundation is either FOUNDATION_NONE if the tile was already flat, or FOUNDATION_LEVELED.
  *
- * @pre      The slope must not be steep.
  * @param s  The current #Slope.
  * @return   The needed #Foundation.
  */
 static inline Foundation FlatteningFoundation(Slope s)
 {
-	assert(!IsSteepSlope(s));
 	return (s == SLOPE_FLAT ? FOUNDATION_NONE : FOUNDATION_LEVELED);
 }
 

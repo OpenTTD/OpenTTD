@@ -26,7 +26,13 @@ enum GRFStatus {
 	GCS_ACTIVATED     ///< GRF file has been activated
 };
 
-enum GRFListCompatibility{
+/** Encountered GRF bugs */
+enum GRFBugs {
+	GBUG_VEH_LENGTH,  ///< Length of rail vehicle changes when not inside a depot
+};
+
+/** Status of post-gameload GRF compatibility check */
+enum GRFListCompatibility {
 	GLC_ALL_GOOD,
 	GLC_COMPATIBLE,
 	GLC_NOT_FOUND
@@ -52,10 +58,11 @@ struct GRFConfig : public GRFIdentifier {
 	char *info;
 	GRFError *error;
 
-	uint8 flags;
-	GRFStatus status;
-	uint32 param[0x80];
-	uint8 num_params;
+	uint8 flags;        ///< NOSAVE: GCF_Flags, bitset
+	GRFStatus status;   ///< NOSAVE: GRFStatus, enum
+	uint32 grf_bugs;    ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
+	uint32 param[0x80]; ///< GRF parameters
+	uint8 num_params;   ///< Number of used parameters
 
 	struct GRFConfig *next;
 

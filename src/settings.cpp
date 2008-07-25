@@ -1154,7 +1154,7 @@ static int32 UpdateConsists(int32 p1)
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
-		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v, true);
 	}
 	return 0;
 }

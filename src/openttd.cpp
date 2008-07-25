@@ -1331,6 +1331,8 @@ static bool InitializeWindowsAndCaches()
 		players[v->owner]->num_engines[v->engine_type]++;
 	}
 
+	CheckTrainsLengths();
+
 	return true;
 }
 
@@ -1812,7 +1814,7 @@ bool AfterLoadGame()
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v);
+			if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v, true);
 		}
 
 	}
@@ -2482,4 +2484,5 @@ void ReloadNewGRFData()
 	UpdateHousesAndTowns();
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
+	CheckTrainsLengths();
 }

@@ -107,7 +107,7 @@ void UnloadWagonOverrides()
 
 /* Space for NUM_CARGO real cargos and 2 pseudo cargos, CT_DEFAULT and CT_PURCHASE */
 static const SpriteGroup *_engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_CARGO + 2];
-static const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
+const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {

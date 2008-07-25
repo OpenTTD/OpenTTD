@@ -67,7 +67,7 @@ extern const char *_searchpaths[NUM_SEARCHPATHS];
  */
 struct TarListEntry {
 	const char *filename;
-
+	TarListEntry() : filename(NULL) {}
 	~TarListEntry() { free((void*)this->filename); }
 };
 struct TarFileListEntry {

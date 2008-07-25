@@ -11,7 +11,7 @@ by the number below on http://bugs.openttd.org.
 If the bug report is closed, it has been fixed, which then can be verified
 in the latest SVN version of /trunk.
 
-Bugs for 0.6.1
+Bugs for 0.6.2-RC2
 ------------------------------------------------------------------------
 URL: http://bugs.openttd.org
 

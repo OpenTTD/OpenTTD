@@ -63,7 +63,7 @@ void MarkSingleVehicleDirty(const Vehicle *v);
 
 UnitID GetFreeUnitNumber(VehicleType type);
 
-void TrainConsistChanged(Vehicle *v);
+void TrainConsistChanged(Vehicle *v, bool same_length);
 void TrainPowerChanged(Vehicle *v);
 Money GetTrainRunningCost(const Vehicle *v);
 

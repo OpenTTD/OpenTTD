@@ -47,6 +47,7 @@
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
 #include "settings_type.h"
+#include "network/network.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"
@@ -177,13 +178,70 @@ static void TrainCargoChanged(Vehicle* v)
 }
 
 
+/** Logs a bug in GRF and shows a warning message if this
+ * is for the first time this happened.
+ * @param u first vehicle of chain
+ */
+static void RailVehicleLengthChanged(const Vehicle *u)
+{
+	extern const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
+	if (_engine_grf[u->engine_type] == NULL) return;
+
+	uint32 grfid = _engine_grf[u->engine_type]->grfid;
+	GRFConfig *grfconfig = GetGRFConfig(grfid);
+	if (!HasBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH)) {
+		SetBit(grfconfig->grf_bugs, GBUG_VEH_LENGTH);
+		SetDParamStr(0, grfconfig->name);
+		SetDParam(1, u->engine_type);
+		ShowErrorMessage(STR_NEWGRF_BROKEN_VEHICLE_LENGTH, STR_NEWGRF_BROKEN, 0, 0);
+
+		/* debug output */
+		char buffer[512];
+
+		SetDParamStr(0, grfconfig->name);
+		GetString(buffer, STR_NEWGRF_BROKEN, lastof(buffer));
+		DEBUG(grf, 0, "%s", buffer + 3);
+
+		SetDParam(1, u->engine_type);
+		GetString(buffer, STR_NEWGRF_BROKEN_VEHICLE_LENGTH, lastof(buffer));
+		DEBUG(grf, 0, "%s", buffer + 3);
+
+		if (!_networking) _pause_game = -1;
+	}
+}
+
+/** Checks if lengths of all rail vehicles are valid. If not, shows an error message. */
+void CheckTrainsLengths()
+{
+	const Vehicle *v;
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_TRAIN && v->First() == v && !(v->vehstatus & VS_CRASHED)) {
+			for (const Vehicle *u = v, *w = v->Next(); w != NULL; u = w, w = w->Next()) {
+				if (u->u.rail.track != TRACK_BIT_DEPOT) {
+					if ((w->u.rail.track != TRACK_BIT_DEPOT &&
+							max(abs(u->x_pos - w->x_pos), abs(u->y_pos - w->y_pos)) != u->u.rail.cached_veh_length) ||
+							(w->u.rail.track == TRACK_BIT_DEPOT && TicksToLeaveDepot(u) <= 0)) {
+						SetDParam(0, v->index);
+						SetDParam(1, v->owner);
+						ShowErrorMessage(INVALID_STRING_ID, STR_BROKEN_VEHICLE_LENGTH, 0, 0);
+
+						if (!_networking) _pause_game = -1;
+					}
+				}
+			}
+		}
+	}
+}
+
 /**
  * Recalculates the cached stuff of a train. Should be called each time a vehicle is added
  * to/removed from the chain, and when the game is loaded.
  * Note: this needs to be called too for 'wagon chains' (in the depot, without an engine)
  * @param v First vehicle of the chain.
+ * @param same_length should length of vehicles stay the same?
  */
-void TrainConsistChanged(Vehicle* v)
+void TrainConsistChanged(Vehicle *v, bool same_length)
 {
 	uint16 max_speed = 0xFFFF;
 
@@ -291,8 +349,14 @@ void TrainConsistChanged(Vehicle* v)
 			veh_len = GetVehicleCallback(CBID_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
 		}
 		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
-		veh_len = Clamp(veh_len, 0, u->Next() == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
-		u->u.rail.cached_veh_length = 8 - veh_len;
+		veh_len = 8 - Clamp(veh_len, 0, u->Next() == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
+
+		/* verify length hasn't changed */
+		if (same_length && veh_len != u->u.rail.cached_veh_length) RailVehicleLengthChanged(u);
+
+		/* update vehicle length? */
+		if (!same_length) u->u.rail.cached_veh_length = veh_len;
+
 		v->u.rail.cached_total_length += u->u.rail.cached_veh_length;
 	}
 
@@ -630,7 +694,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			_new_vehicle_id = v->index;
 
 			VehiclePositionChanged(v);
-			TrainConsistChanged(v->First());
+			TrainConsistChanged(v->First(), false);
 			UpdateTrainGroupID(v->First());
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -805,7 +869,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				AddArticulatedParts(vl, VEH_TRAIN);
 			}
 
-			TrainConsistChanged(v);
+			TrainConsistChanged(v, false);
 			UpdateTrainGroupID(v);
 
 			if (!HasBit(p2, 1) && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
@@ -1257,7 +1321,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		if (src_head != NULL) {
 			NormaliseTrainConsist(src_head);
-			TrainConsistChanged(src_head);
+			TrainConsistChanged(src_head, false);
 			UpdateTrainGroupID(src_head);
 			if (IsFrontEngine(src_head)) {
 				/* Update the refit button and window */
@@ -1270,7 +1334,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		if (dst_head != NULL) {
 			NormaliseTrainConsist(dst_head);
-			TrainConsistChanged(dst_head);
+			TrainConsistChanged(dst_head, false);
 			UpdateTrainGroupID(dst_head);
 			if (IsFrontEngine(dst_head)) {
 				/* Update the refit button and window */
@@ -1443,7 +1507,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				/* 5. If the train still exists, update its acceleration, window, etc. */
 				if (first != NULL) {
 					NormaliseTrainConsist(first);
-					TrainConsistChanged(first);
+					TrainConsistChanged(first, false);
 					UpdateTrainGroupID(first);
 					if (IsFrontEngine(first)) InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 				}
@@ -1509,7 +1573,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* 3. If it is still a valid train after selling, update its acceleration and cached values */
 			if (flags & DC_EXEC && first != NULL) {
 				NormaliseTrainConsist(first);
-				TrainConsistChanged(first);
+				TrainConsistChanged(first, false);
 				UpdateTrainGroupID(first);
 				InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 			}
@@ -1845,7 +1909,7 @@ static void ReverseTrainDirection(Vehicle *v)
 	ClrBit(v->u.rail.flags, VRF_REVERSING);
 
 	/* recalculate cached data */
-	TrainConsistChanged(v);
+	TrainConsistChanged(v, true);
 
 	/* update all images */
 	for (Vehicle *u = v; u != NULL; u = u->Next()) u->cur_image = u->GetImage(u->direction);
@@ -2022,7 +2086,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	_returned_refit_capacity = num;
 
 	/* Update the train's cached variables */
-	if (flags & DC_EXEC) TrainConsistChanged(GetVehicle(p1)->First());
+	if (flags & DC_EXEC) TrainConsistChanged(GetVehicle(p1)->First(), false);
 
 	return cost;
 }
@@ -3281,7 +3345,7 @@ static void DeleteLastWagon(Vehicle *v)
 		InvalidateWindow(WC_COMPANY, v->owner);
 	} else {
 		/* Recalculate cached train properties */
-		TrainConsistChanged(first);
+		TrainConsistChanged(first, false);
 		/* Update the depot window if the first vehicle is in depot -
 		 * if v == first, then it is updated in PreDestructor() */
 		if (first->u.rail.track == TRACK_BIT_DEPOT) {
