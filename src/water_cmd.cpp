@@ -109,10 +109,20 @@ static void MarkCanalsAndRiversAroundDirty(TileIndex tile)
  * whether the tile used to be canal or 'normal' water.
  * @param t the tile to change.
  * @param o the owner of the new tile.
+ * @param include_invalid_water_class Also consider WATER_CLASS_INVALID, i.e. industry tiles on land
  */
-void SetWaterClassDependingOnSurroundings(TileIndex t)
+void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_water_class)
 {
-	assert(GetTileSlope(t, NULL) == SLOPE_FLAT);
+	/* If the slope is not flat, we always assume 'land' (if allowed). Also for one-corner-raised-shores.
+	 * Note: Wrt. autosloping under industry tiles this is the most fool-proof behaviour. */
+	if (GetTileSlope(t, NULL) != SLOPE_FLAT) {
+		if (include_invalid_water_class) {
+			SetWaterClass(t, WATER_CLASS_INVALID);
+			return;
+		} else {
+			NOT_REACHED();
+		}
+	}
 
 	/* Mark tile dirty in all cases */
 	MarkTileDirtyByTile(t);
@@ -156,6 +166,11 @@ void SetWaterClassDependingOnSurroundings(TileIndex t)
 
 			default: break;
 		}
+	}
+
+	if (!has_water && !has_canal && !has_river && include_invalid_water_class) {
+		SetWaterClass(t, WATER_CLASS_INVALID);
+		return;
 	}
 
 	if (has_river && !has_canal) {
@@ -219,12 +234,21 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o)
 {
-	assert(IsTileType(tile, MP_WATER) || (IsTileType(tile, MP_STATION) && (IsBuoy(tile) || IsDock(tile))));
+	assert(IsTileType(tile, MP_WATER) || (IsTileType(tile, MP_STATION) && (IsBuoy(tile) || IsDock(tile) || IsOilRig(tile))) || IsTileType(tile, MP_INDUSTRY));
 
-	switch (GetWaterClass(tile)) {
+	WaterClass wc = GetWaterClass(tile);
+
+	/* Autoslope might turn an originally canal or river tile into land */
+	uint z;
+	if (GetTileSlope(tile, &z) != SLOPE_FLAT) wc = WATER_CLASS_INVALID;
+
+	if (wc == WATER_CLASS_SEA && z > 0) wc = WATER_CLASS_CANAL;
+
+	switch (wc) {
 		case WATER_CLASS_SEA:   MakeWater(tile);              break;
 		case WATER_CLASS_CANAL: MakeCanal(tile, o, Random()); break;
 		case WATER_CLASS_RIVER: MakeRiver(tile, Random());    break;
+		default:                DoClearSquare(tile);          break;
 	}
 }
 
@@ -512,7 +536,7 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 			return false;
 
 		case MP_STATION:  return IsOilRig(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
-		case MP_INDUSTRY: return (GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0;
+		case MP_INDUSTRY: return IsIndustryTileOnWater(tile);
 		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
 		default:          return false;
 	}
@@ -671,6 +695,7 @@ void DrawWaterClassGround(const TileInfo *ti) {
 		case WATER_CLASS_SEA:   DrawSeaWater(ti->tile); break;
 		case WATER_CLASS_CANAL: DrawCanalWater(ti->tile); break;
 		case WATER_CLASS_RIVER: DrawRiverWater(ti); break;
+		default: NOT_REACHED();
 	}
 }
 
@@ -882,9 +907,9 @@ static void FloodVehicle(Vehicle *v)
  */
 static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 {
-	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, sea-docks (water part), rail with flooded halftile
+	/* FLOOD_ACTIVE:  'single-corner-raised'-coast, sea, sea-shipdepots, sea-buoys, sea-docks (water part), rail with flooded halftile, sea-water-industries, sea-oilrigs
 	 * FLOOD_DRYUP:   coast with more than one corner raised, coast with rail-track, coast with trees
-	 * FLOOD_PASSIVE: oilrig, water-industries
+	 * FLOOD_PASSIVE: (not used)
 	 * FLOOD_NONE:    canals, rivers, everything else
 	 */
 	switch (GetTileType(tile)) {
@@ -906,13 +931,13 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 			return (GetTreeGround(tile) == TREE_GROUND_SHORE ? FLOOD_DRYUP : FLOOD_NONE);
 
 		case MP_STATION:
-			if (IsBuoy(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT)) {
+			if (IsBuoy(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsOilRig(tile)) {
 				return (GetWaterClass(tile) == WATER_CLASS_SEA ? FLOOD_ACTIVE : FLOOD_NONE);
 			}
-			return (IsOilRig(tile) ? FLOOD_PASSIVE : FLOOD_NONE);
+			return FLOOD_NONE;
 
 		case MP_INDUSTRY:
-			return ((GetIndustrySpec(GetIndustryType(tile))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0 ? FLOOD_PASSIVE : FLOOD_NONE);
+			return ((IsIndustryTileOnWater(tile) && GetWaterClass(tile) == WATER_CLASS_SEA) ? FLOOD_ACTIVE : FLOOD_NONE);
 
 		default:
 			return FLOOD_NONE;

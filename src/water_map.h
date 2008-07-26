@@ -16,6 +16,7 @@ enum WaterClass {
 	WATER_CLASS_SEA,
 	WATER_CLASS_CANAL,
 	WATER_CLASS_RIVER,
+	WATER_CLASS_INVALID, ///< Used for industry tiles on land (also for oilrig if newgrf says so)
 };
 
 enum DepotPart {
@@ -45,14 +46,18 @@ static inline WaterTileType GetWaterTileType(TileIndex t)
 
 static inline WaterClass GetWaterClass(TileIndex t)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION));
-	return (WaterClass)GB(_m[t].m3, 0, 2);
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY));
+	return (WaterClass)(IsTileType(t, MP_INDUSTRY) ? GB(_m[t].m1, 5, 2) : GB(_m[t].m3, 0, 2));
 }
 
 static inline void SetWaterClass(TileIndex t, WaterClass wc)
 {
-	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION));
-	SB(_m[t].m3, 0, 2, wc);
+	assert(IsTileType(t, MP_WATER) || IsTileType(t, MP_STATION) || IsTileType(t, MP_INDUSTRY));
+	if (IsTileType(t, MP_INDUSTRY)) {
+		SB(_m[t].m1, 5, 2, wc);
+	} else {
+		SB(_m[t].m3, 0, 2, wc);
+	}
 }
 
 /** IsWater return true if any type of clear water like ocean, river, canal */

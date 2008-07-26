@@ -1035,6 +1035,7 @@
     <ul>
      <li>m1 bit 7: clear = under construction
       <ul>
+       <li>m1 bits 6..5 : Water class (sea, canal, river or land)
        <li>m1 bits 3..2: construction counter, for buildings under construction incremented on every periodic tile processing</li>
        <li>m1 bits 1..0: stage of construction (<tt>3</tt> = completed), incremented when the construction counter wraps around<br>
            the meaning is different for some animated tiles which are never under construction (types <tt>01</tt>, <tt>1E</tt>..<tt>20</tt>, <tt>30</tt>, <tt>58</tt>; see above)</li>

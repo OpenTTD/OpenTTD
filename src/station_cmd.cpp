@@ -2932,7 +2932,8 @@ void BuildOilRig(TileIndex tile)
 
 	st->string_id = GenerateStationName(st, tile, STATIONNAMING_OILRIG);
 
-	MakeOilrig(tile, st->index);
+	assert(IsTileType(tile, MP_INDUSTRY));
+	MakeOilrig(tile, st->index, GetWaterClass(tile));
 
 	st->owner = OWNER_NONE;
 	st->airport_flags = 0;
@@ -2967,7 +2968,8 @@ void DeleteOilRig(TileIndex tile)
 {
 	Station *st = GetStationByTile(tile);
 
-	MakeWater(tile);
+	MakeWaterKeepingClass(tile, OWNER_NONE);
+	MarkTileDirtyByTile(tile);
 
 	st->dock_tile = 0;
 	st->airport_tile = 0;

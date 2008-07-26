@@ -7,7 +7,7 @@
 
 #include "industry.h"
 #include "tile_map.h"
-
+#include "water_map.h"
 
 
 /**
@@ -155,13 +155,24 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 }
 
 /**
+ * Tests if the industry tile was built on water.
+ * @param t the industry tile
+ * @return true iff on water
+ */
+static inline bool IsIndustryTileOnWater(TileIndex t)
+{
+	assert(IsTileType(t, MP_INDUSTRY));
+	return (GetWaterClass(t) != WATER_CLASS_INVALID);
+}
+
+/**
  * Make the given tile an industry tile
  * @param t      the tile to make an industry tile
  * @param index  the industry this tile belongs to
  * @param gfx    the graphics to use for the tile
  * @param random the random value
  */
-static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random)
+static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, uint8 random, WaterClass wc)
 {
 	SetTileType(t, MP_INDUSTRY);
 	_m[t].m1 = 0;
@@ -170,6 +181,7 @@ static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx, 
 	_m[t].m4 = 0;
 	SetIndustryGfx(t, gfx);
 	_me[t].m7 = random;
+	SetWaterClass(t, wc);
 }
 
 /**

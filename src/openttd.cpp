@@ -2340,8 +2340,8 @@ bool AfterLoadGame()
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (GetTileSlope(t, NULL) != SLOPE_FLAT) continue;
 
-			if (IsTileType(t, MP_WATER) && IsLock(t)) SetWaterClassDependingOnSurroundings(t);
-			if (IsTileType(t, MP_STATION) && (IsDock(t) || IsBuoy(t))) SetWaterClassDependingOnSurroundings(t);
+			if (IsTileType(t, MP_WATER) && IsLock(t)) SetWaterClassDependingOnSurroundings(t, false);
+			if (IsTileType(t, MP_STATION) && (IsDock(t) || IsBuoy(t))) SetWaterClassDependingOnSurroundings(t, false);
 		}
 	}
 
@@ -2434,6 +2434,22 @@ bool AfterLoadGame()
 					_switch_mode_errorstr = STR_LOADGAME_REMOVED_TRAMS;
 				}
 				delete v;
+			}
+		}
+	}
+
+	if (CheckSavegameVersion(99)) {
+		/* Set newly introduced WaterClass of industry tiles */
+		for (TileIndex t = 0; t < map_size; t++) {
+			if (IsTileType(t, MP_STATION) && IsOilRig(t)) {
+				SetWaterClassDependingOnSurroundings(t, true);
+			}
+			if (IsTileType(t, MP_INDUSTRY)) {
+				if ((GetIndustrySpec(GetIndustryType(t))->behaviour & INDUSTRYBEH_BUILT_ONWATER) != 0) {
+					SetWaterClassDependingOnSurroundings(t, true);
+				} else {
+					SetWaterClass(t, WATER_CLASS_INVALID);
+				}
 			}
 		}
 	}

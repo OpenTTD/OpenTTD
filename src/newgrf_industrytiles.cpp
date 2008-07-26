@@ -25,6 +25,7 @@
 #include "town.h"
 #include "command_func.h"
 #include "animated_tile_func.h"
+#include "water.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -185,7 +186,15 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 
 	if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-	if (GB(image, 0, SPRITE_WIDTH) != 0) DrawGroundSprite(image, pal);
+	if (GB(image, 0, SPRITE_WIDTH) != 0) {
+		/* If the ground sprite is the default flat water sprite, draw also canal/river borders
+		 * Do not do this if the tile's WaterClass is 'land'. */
+		if (image == SPR_FLAT_WATER_TILE && IsIndustryTileOnWater(ti->tile)) {
+			DrawWaterClassGround(ti);
+		} else {
+			DrawGroundSprite(image, pal);
+		}
+	}
 
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		if (GB(dtss->image.sprite, 0, SPRITE_WIDTH) == 0) continue;

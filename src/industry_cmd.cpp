@@ -147,7 +147,8 @@ Industry::~Industry()
 	BEGIN_TILE_LOOP(tile_cur, this->width, this->height, this->xy);
 		if (IsTileType(tile_cur, MP_INDUSTRY)) {
 			if (GetIndustryIndex(tile_cur) == this->index) {
-				DoClearSquare(tile_cur);
+				/* MakeWaterKeepingClass() can also handle 'land' */
+				MakeWaterKeepingClass(tile_cur, OWNER_NONE);
 			}
 		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
 			DeleteOilRig(tile_cur);
@@ -300,7 +301,13 @@ static void DrawTile_Industry(TileInfo *ti)
 	/* DrawFoundation() modifes ti->z and ti->tileh */
 	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-	DrawGroundSprite(image, pal);
+	/* If the ground sprite is the default flat water sprite, draw also canal/river borders.
+	 * Do not do this if the tile's WaterClass is 'land'. */
+	if (image == SPR_FLAT_WATER_TILE && IsIndustryTileOnWater(ti->tile)) {
+		DrawWaterClassGround(ti);
+	} else {
+		DrawGroundSprite(image, pal);
+	}
 
 	/* If industries are transparent and invisible, do not draw the upper part */
 	if (IsInvisibilitySet(TO_INDUSTRIES)) return;
@@ -724,6 +731,8 @@ static void TileLoop_Industry(TileIndex tile)
 	IndustryGfx newgfx;
 	IndustryGfx gfx;
 
+	if (IsIndustryTileOnWater(tile)) TileLoop_Water(tile);
+
 	TriggerIndustryTile(tile, INDTILE_TRIGGER_TILE_LOOP);
 
 	if (!IsIndustryCompleted(tile)) {
@@ -748,14 +757,6 @@ static void TileLoop_Industry(TileIndex tile)
 	gfx = GetIndustryGfx(tile);
 
 	switch (gfx) {
-	case GFX_OILRIG_1: // coast line at oilrigs
-	case GFX_OILRIG_2:
-	case GFX_OILRIG_3:
-	case GFX_OILRIG_4:
-	case GFX_OILRIG_5:
-		TileLoop_Water(tile);
-		break;
-
 	case GFX_COAL_MINE_TOWER_NOT_ANIMATED:
 	case GFX_COPPER_MINE_TOWER_NOT_ANIMATED:
 	case GFX_GOLD_MINE_TOWER_NOT_ANIMATED:
@@ -1548,9 +1549,11 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			size = it->ti.y;
 			if (size > i->height)i->height = size;
 
+			WaterClass wc = (IsWaterTile(cur_tile) ? GetWaterClass(cur_tile) : WATER_CLASS_INVALID);
+
 			DoCommand(cur_tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-			MakeIndustry(cur_tile, i->index, it->gfx, Random());
+			MakeIndustry(cur_tile, i->index, it->gfx, Random(), wc);
 
 			if (_generating_world) {
 				SetIndustryConstructionCounter(cur_tile, 3);

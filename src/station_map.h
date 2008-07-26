@@ -313,9 +313,10 @@ static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d
 	SetWaterClass(t + TileOffsByDiagDir(d), wc);
 }
 
-static inline void MakeOilrig(TileIndex t, StationID sid)
+static inline void MakeOilrig(TileIndex t, StationID sid, WaterClass wc)
 {
 	MakeStation(t, OWNER_NONE, sid, STATION_OILRIG, 0);
+	SetWaterClass(t, wc);
 }
 
 #endif /* STATION_MAP_H */
