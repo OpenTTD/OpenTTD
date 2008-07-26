@@ -584,7 +584,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			} break;
 
 			case 0x1A: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
+				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
 				break;
 
 			case 0x1B: // Powered wagons power bonus
@@ -793,7 +793,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x20: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
+				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
 				break;
 
 			default:
@@ -904,7 +904,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x1B: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
+				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
 				break;
 
 			default:
@@ -1013,7 +1013,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				break;
 
 			case 0x1B: // Alter purchase list sort order
-				AlterVehicleListOrder(e->index, grf_load_byte(&buf));
+				AlterVehicleListOrder(e->index, grf_load_extended(&buf));
 				break;
 
 			default:
