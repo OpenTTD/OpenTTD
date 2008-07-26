@@ -374,7 +374,7 @@ public:
 			SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 		}
 
-		DrawString(145, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_02BD, TC_BLACK);
+		DrawStringTruncated(this->widget[RVW_WIDGET_INFO_TAB].left + 6, this->widget[RVW_WIDGET_INFO_TAB].top + 1, STR_02BD, TC_BLACK, this->GetWidgetWidth(RVW_WIDGET_INFO_TAB) - 12);
 
 		/* Draw the lists */
 		for (byte i = 0; i < 2; i++) {
@@ -422,11 +422,13 @@ public:
 				EngineID veh_from = this->sel_engine[0];
 				EngineID veh_to = this->sel_engine[1];
 				DoCommandP(0, 3 + (this->sel_group << 16) , veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
+				this->SetDirty();
 			} break;
 
 			case RVW_WIDGET_STOP_REPLACE: { /* Stop replacing */
 				EngineID veh_from = this->sel_engine[0];
 				DoCommandP(0, 3 + (this->sel_group << 16), veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
+				this->SetDirty();
 			} break;
 
 			case RVW_WIDGET_LEFT_MATRIX:
