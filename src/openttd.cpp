@@ -2454,6 +2454,7 @@ void ReloadNewGRFData()
 	/* reload grf data */
 	GfxLoadSprites();
 	LoadStringWidthTable();
+	ResetEconomy();
 	/* reload vehicles */
 	ResetVehiclePosHash();
 	AfterLoadVehicles(false);

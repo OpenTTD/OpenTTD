@@ -621,7 +621,7 @@ static void AddSingleInflation(Money *value, uint16 *frac, int32 amt)
 	}
 }
 
-static void AddInflation()
+static void AddInflation(bool check_year = true)
 {
 	/* The cargo payment inflation differs from the normal inflation, so the
 	 * relative amount of money you make with a transport decreases slowly over
@@ -638,7 +638,7 @@ static void AddInflation()
 	 * inflation doesn't add anything after that either; it even makes playing
 	 * it impossible due to the diverging cost and income rates.
 	 */
-	if ((_cur_year - _settings_game.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
+	if (check_year && (_cur_year - _settings_game.game_creation.starting_year) >= (ORIGINAL_MAX_YEAR - ORIGINAL_BASE_YEAR)) return;
 
 	/* Approximation for (100 + infl_amount)% ** (1 / 12) - 100%
 	 * scaled by 65536
@@ -818,6 +818,35 @@ void StartupEconomy()
 	_economy.fluct = GB(Random(), 0, 8) + 168;
 }
 
+void ResetEconomy()
+{
+	/* Test if resetting the economy is needed. */
+	bool needed = false;
+
+	for (CargoID c = 0; c < NUM_CARGO; c++) {
+		const CargoSpec *cs = GetCargo(c);
+		if (!cs->IsValid()) continue;
+		if (_cargo_payment_rates[c] == 0) {
+			needed = true;
+			break;
+		}
+	}
+
+	if (!needed) return;
+
+	/* Remember old unrounded maximum loan value. NewGRF has the ability
+	 * to change all the other inflation affected base costs. */
+	Money old_value = _economy.max_loan_unround;
+
+	/* Reset the economy */
+	StartupEconomy();
+	InitializeLandscapeVariables(false);
+
+	/* Reapply inflation, ignoring the year */
+	while (old_value > _economy.max_loan_unround) {
+		AddInflation(false);
+	}
+}
 
 Money GetPriceByIndex(uint8 index)
 {
@@ -1718,8 +1747,7 @@ void LoadUnloadStation(Station *st)
 void PlayersMonthlyLoop()
 {
 	PlayersGenStatistics();
-	if (_settings_game.economy.inflation && _cur_year < MAX_YEAR)
-		AddInflation();
+	if (_settings_game.economy.inflation) AddInflation();
 	PlayersPayInterest();
 	/* Reset the _current_player flag */
 	_current_player = OWNER_NONE;

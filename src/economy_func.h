@@ -19,6 +19,7 @@ struct Player;
 
 void ResetPriceBaseMultipliers();
 void SetPriceBaseMultiplier(uint price, byte factor);
+void ResetEconomy();
 
 extern const ScoreInfo _score_info[];
 extern int _score_part[MAX_PLAYERS][SCORE_END];
