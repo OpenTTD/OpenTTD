@@ -137,15 +137,15 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 
 	SetDParam(0, (_price.build_railvehicle >> 3) * GetEngineProperty(engine, 0x17, rvi->base_cost) >> 5);
 	SetDParam(2, GetEngineProperty(engine, 0x09, rvi->max_speed) * 10 / 16);
-	SetDParam(3, GetEngineProperty(engine, 0x0B, rvi->power) << multihead);
+	SetDParam(3, GetEngineProperty(engine, 0x0B, rvi->power));
 	SetDParam(1, GetEngineProperty(engine, 0x16, rvi->weight) << multihead);
 
-	SetDParam(4, GetEngineProperty(engine, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8 << multihead);
+	SetDParam(4, GetEngineProperty(engine, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8);
 
 	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_TRAIN);
 	if (capacity != 0) {
 		SetDParam(5, rvi->cargo_type);
-		SetDParam(6, capacity << multihead);
+		SetDParam(6, capacity);
 	} else {
 		SetDParam(5, CT_INVALID);
 	}

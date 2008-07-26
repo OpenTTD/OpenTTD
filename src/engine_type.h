@@ -36,15 +36,15 @@ enum EngineClass {
 struct RailVehicleInfo {
 	byte image_index;
 	RailVehicleTypes railveh_type;
-	byte base_cost;
+	byte base_cost;                 ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
 	RailTypeByte railtype;
 	uint16 max_speed;
-	uint16 power;
-	uint16 weight;
-	byte running_cost;
+	uint16 power;                   ///< Power of engine;           For multiheaded engines the sum of both engine powers.
+	uint16 weight;                  ///< Weight of vehicle;         For multiheaded engines the weight of each single engine.
+	byte running_cost;              ///< Running cost of engine;    For multiheaded engines the sum of both running costs.
 	byte running_cost_class;
 	EngineClass engclass;           ///< Class of engine for this vehicle
-	byte capacity;
+	byte capacity;                  ///< Cargo capacity of vehicle; For multiheaded engines the capacity of each single engine.
 	CargoID cargo_type;
 	byte ai_rank;
 	byte ai_passenger_only; ///< Bit value to tell AI that this engine is for passenger use only
