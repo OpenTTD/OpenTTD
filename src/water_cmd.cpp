@@ -535,7 +535,10 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 			}
 			return false;
 
-		case MP_STATION:  return IsOilRig(tile) || (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
+		case MP_STATION:
+			if (IsOilRig(tile)) return GetWaterClass(tile) != WATER_CLASS_INVALID;
+			return (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
+
 		case MP_INDUSTRY: return IsIndustryTileOnWater(tile);
 		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
 		default:          return false;
