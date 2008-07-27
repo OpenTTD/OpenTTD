@@ -11,6 +11,8 @@
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 
+static const uint MAX_ARTICULATED_PARTS = 100; ///< Maximum of articulated parts per vehicle, i.e. when to abort calling the articulated vehicle callback.
+
 uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
 	if (!HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
@@ -22,7 +24,7 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 	}
 
 	uint i;
-	for (i = 1; i < MAX_UVALUE(EngineID); i++) {
+	for (i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine_type, v);
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 	}
@@ -49,7 +51,7 @@ uint16 *GetCapacityOfArticulatedParts(EngineID engine, VehicleType type)
 
 	if (!HasBit(EngInfo(engine)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return capacity;
 
-	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
+	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, engine, NULL);
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) break;
 
@@ -75,7 +77,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 	if (!HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return;
 
-	for (uint i = 1; i < MAX_UVALUE(EngineID); i++) {
+	for (uint i = 1; i < MAX_ARTICULATED_PARTS; i++) {
 		uint16 callback = GetVehicleCallback(CBID_VEHICLE_ARTIC_ENGINE, i, 0, v->engine_type, v);
 		if (callback == CALLBACK_FAILED || GB(callback, 0, 8) == 0xFF) return;
 
