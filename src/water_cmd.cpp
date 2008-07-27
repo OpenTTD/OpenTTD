@@ -536,11 +536,29 @@ static bool IsWateredTile(TileIndex tile, Direction from)
 			return false;
 
 		case MP_STATION:
-			if (IsOilRig(tile)) return GetWaterClass(tile) != WATER_CLASS_INVALID;
+			if (IsOilRig(tile)) {
+				/* Do not draw waterborders inside of industries.
+				 * Note: There is no easy way to detect the industry of an oilrig tile. */
+				TileIndex src_tile = tile + TileOffsByDir(from);
+				if ((IsTileType(src_tile, MP_STATION) && IsOilRig(src_tile)) ||
+				    (IsTileType(src_tile, MP_INDUSTRY))) return true;
+
+				return GetWaterClass(tile) != WATER_CLASS_INVALID;
+			}
 			return (IsDock(tile) && GetTileSlope(tile, NULL) == SLOPE_FLAT) || IsBuoy(tile);
 
-		case MP_INDUSTRY: return IsIndustryTileOnWater(tile);
+		case MP_INDUSTRY: {
+			/* Do not draw waterborders inside of industries.
+			 * Note: There is no easy way to detect the industry of an oilrig tile. */
+			TileIndex src_tile = tile + TileOffsByDir(from);
+			if ((IsTileType(src_tile, MP_STATION) && IsOilRig(src_tile)) ||
+			    (IsTileType(src_tile, MP_INDUSTRY) && GetIndustryIndex(src_tile) == GetIndustryIndex(tile))) return true;
+
+			return IsIndustryTileOnWater(tile);
+		}
+
 		case MP_TUNNELBRIDGE: return GetTunnelBridgeTransportType(tile) == TRANSPORT_WATER && ReverseDiagDir(GetTunnelBridgeDirection(tile)) == DirToDiagDir(from);
+
 		default:          return false;
 	}
 }
