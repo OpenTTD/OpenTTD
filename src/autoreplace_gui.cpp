@@ -23,6 +23,7 @@
 #include "engine_base.h"
 #include "window_gui.h"
 #include "engine_gui.h"
+#include "articulated_vehicles.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -98,41 +99,17 @@ void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 }
 
-/** Get the default cargo type for an engine
- * @param engine the EngineID to get the cargo for
- * @return the cargo type carried by the engine (CT_INVALID if engine got no cargo capacity)
- */
-static CargoID EngineCargo(EngineID engine)
-{
-	if (engine == INVALID_ENGINE) return CT_INVALID; // surely INVALID_ENGINE can't carry anything but CT_INVALID
-
-	switch (GetEngine(engine)->type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:
-			if (RailVehInfo(engine)->capacity == 0) return CT_INVALID; // no capacity -> can't carry cargo
-			return RailVehInfo(engine)->cargo_type;
-		case VEH_ROAD:       return RoadVehInfo(engine)->cargo_type;
-		case VEH_SHIP:       return ShipVehInfo(engine)->cargo_type;
-		case VEH_AIRCRAFT:   return CT_PASSENGERS; // all planes are build with passengers by default
-	}
-}
-
 /** Figure out if two engines got at least one type of cargo in common (refitting if needed)
  * @param engine_a one of the EngineIDs
  * @param engine_b the other EngineID
+ * @param type the type of the engines
  * @return true if they can both carry the same type of cargo (or at least one of them got no capacity at all)
  */
-static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b)
+static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b, VehicleType type)
 {
-	CargoID a = EngineCargo(engine_a);
-	CargoID b = EngineCargo(engine_b);
-
-	 /* we should always be able to refit to/from locomotives without capacity
-	  * Because of that, CT_INVALID shoudl always return true */
-	if (a == CT_INVALID || b == CT_INVALID || a == b) return true; // they carry no ro the same type by default
-	if (EngInfo(engine_a)->refit_mask & EngInfo(engine_b)->refit_mask) return true; // both can refit to the same
-	if (CanRefitTo(engine_a, b) || CanRefitTo(engine_b, a)) return true; // one can refit to what the other one carries
-	return false;
+	uint32 available_cargos_a = GetUnionOfArticulatedRefitMasks(engine_a, type, true);
+	uint32 available_cargos_b = GetUnionOfArticulatedRefitMasks(engine_b, type, true);
+	return (available_cargos_a == 0 || available_cargos_b == 0 || (available_cargos_a & available_cargos_b) != 0);
 }
 
 /**
@@ -202,7 +179,7 @@ class ReplaceVehicleWindow : public Window {
 			} else {
 				/* This is for engines we can replace to and they should depend on what we selected to replace from */
 				if (!IsEngineBuildable(eid, type, _local_player)) continue; // we need to be able to build the engine
-				if (!EnginesGotCargoInCommon(eid, this->sel_engine[0])) continue; // the engines needs to be able to carry the same cargo
+				if (!EnginesGotCargoInCommon(eid, this->sel_engine[0], type)) continue; // the engines needs to be able to carry the same cargo
 
 				/* Road vehicles can't be replaced by trams and vice-versa */
 				if (type == VEH_ROAD && HasBit(EngInfo(this->sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) continue;
