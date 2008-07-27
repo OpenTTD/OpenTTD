@@ -1286,7 +1286,7 @@ make_cflags_and_ldflags() {
 
 	if [ "$with_osx_sysroot" != "0" ] && [ "$with_osx_sysroot" != "3" ]; then
 		CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX$with_osx_sysroot.sdk"
-		LDFLAGS="$LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$with_osx_sysroot.sdk"
+		LDFLAGS="$LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$with_osx_sysroot.sdk -mmacosx-version-min=10.4"
 	fi
 
 	if [ -n "$personal_dir" ]; then
@@ -2247,7 +2247,7 @@ make_sed() {
 	T_LDFLAGS="$LDFLAGS"
 	if [ "$with_osx_sysroot" = "3" ]; then
 		T_CFLAGS="$T_CFLAGS -isysroot /Developer/SDKs/MacOSX$osx_sysroot_version.sdk"
-		T_LDFLAGS="$T_LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$osx_sysroot_version.sdk"
+		T_LDFLAGS="$T_LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$osx_sysroot_version.sdk -mmacosx-version-min=10.4"
 	fi
 
 	SRC_OBJS_DIR="$BASE_SRC_OBJS_DIR/$OBJS_SUBDIR"
