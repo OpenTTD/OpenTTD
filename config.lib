@@ -1504,7 +1504,7 @@ check_lipo() {
 }
 
 set_universal_binary_flags() {
-    if [ -n "osx_target_version" ]; then
+	if [ -n "$osx_target_version" ]; then
 		# if we don't speficy a target version then we presume 10.4
 		osx_target_version=10.4
 	fi
@@ -2246,6 +2246,7 @@ detect_cputype() {
 
 make_sed() {
 	T_CFLAGS="$CFLAGS"
+	T_LDFLAGS="$LDFLAGS"
 
 	# We check here if we are PPC, because then we need to enable FOUR_BYTE_BOOL
 	#  We do this here, and not sooner, so universal builds also have this
