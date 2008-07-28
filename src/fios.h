@@ -105,6 +105,8 @@ StringID FiosGetDescText(const char **path, uint32 *total_free);
 bool FiosDelete(const char *name);
 /* Make a filename from a name */
 void FiosMakeSavegameName(char *buf, const char *name, size_t size);
+/* Determines type of savegame (or tells it is not a savegame) */
+FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title);
 
 int CDECL compare_FiosItems(const void *a, const void *b);
 

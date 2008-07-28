@@ -297,12 +297,12 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
  * @param mode Save/load mode.
  * @param file Name of the file to check.
  * @param ext A pointer to the extension identifier inside file
- * @param title Buffer if a callback wants to lookup the title of the file
+ * @param title Buffer if a callback wants to lookup the title of the file; NULL to skip the lookup
  * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a savegame
  * @see FiosGetFileList
  * @see FiosGetSavegameList
  */
-static FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
+FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
 {
 	/* Show savegame files
 	 * .SAV OpenTTD saved game
@@ -314,7 +314,7 @@ static FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 		if (strcasecmp(ext, ".ss1") == 0 || strcasecmp(ext, ".sv1") == 0 ||
 				strcasecmp(ext, ".sv2") == 0) {
-			GetOldSaveGameName(title, _fios_path, file);
+			if (title != NULL) GetOldSaveGameName(title, _fios_path, file);
 			return FIOS_TYPE_OLDFILE;
 		}
 	}

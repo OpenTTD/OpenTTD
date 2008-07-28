@@ -460,11 +460,21 @@ int ttd_main(int argc, char *argv[])
 			if (mgo.opt != NULL) {
 				ttd_strlcpy(_file_to_saveload.name, mgo.opt, sizeof(_file_to_saveload.name));
 				_switch_mode = SM_LOAD;
-			} else {
-				_switch_mode = SM_NEWGAME;
-				/* Give a random map */
-				generation_seed = InteractiveRandom();
+				_file_to_saveload.mode = SL_LOAD;
+
+				/* if the file doesn't exist or it is not a valid savegame, let the saveload code show an error */
+				const char *t = strrchr(_file_to_saveload.name, '.');
+				if (t != NULL) {
+					FiosType ft = FiosGetSavegameListCallback(SLD_LOAD_GAME, _file_to_saveload.name, t, NULL);
+					if (ft != FIOS_TYPE_INVALID) SetFiosType(ft);
+				}
+
+				break;
 			}
+
+			_switch_mode = SM_NEWGAME;
+			/* Give a random map */
+			generation_seed = InteractiveRandom();
 			break;
 		case 'G': generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
