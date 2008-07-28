@@ -1634,6 +1634,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(GB(p1, 0, 16));
+	const Industry *ind = NULL;
 
 	/* Check if the to-be built/founded industry is available for this climate. */
 	if (!indspec->enabled) {
@@ -1657,17 +1658,8 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					 * because parameter evaluation order is not guaranteed in the c++ standard
 					 */
 					tile = RandomTile();
-					const Industry *ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table), p2);
+					ind = CreateNewIndustryHelper(tile, p1, flags, indspec, RandomRange(indspec->num_table), p2);
 					if (ind != NULL) {
-						SetDParam(0, indspec->name);
-						if (indspec->new_industry_text > STR_LAST_STRINGID) {
-							SetDParam(1, STR_TOWN);
-							SetDParam(2, ind->town->index);
-						} else {
-							SetDParam(1, ind->town->index);
-						}
-						AddNewsItem(indspec->new_industry_text,
-								NS_OPENCLOSE, ind->xy, 0);
 						break;
 					}
 				}
@@ -1684,7 +1676,19 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (--num < 0) num = indspec->num_table - 1;
 		} while (!CheckIfIndustryTilesAreFree(tile, itt[num], num, p1));
 
-		if (CreateNewIndustryHelper(tile, p1, flags, indspec, num, p2) == NULL) return CMD_ERROR;
+		ind = CreateNewIndustryHelper(tile, p1, flags, indspec, num, p2);
+		if (ind == NULL) return CMD_ERROR;
+	}
+
+	if (flags & DC_EXEC && _game_mode != GM_EDITOR && ind != NULL) {
+		SetDParam(0, indspec->name);
+		if (indspec->new_industry_text > STR_LAST_STRINGID) {
+			SetDParam(1, STR_TOWN);
+			SetDParam(2, ind->town->index);
+		} else {
+			SetDParam(1, ind->town->index);
+		}
+		AddNewsItem(indspec->new_industry_text, NS_OPENCLOSE, ind->xy, 0);
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
