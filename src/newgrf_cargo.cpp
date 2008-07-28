@@ -109,9 +109,15 @@ CargoID GetCargoTranslation(uint8 cargo, const GRFFile *grffile, bool usebit)
 		/* Else the cargo value is a 'climate independent' 'bitnum' */
 		if (HasBit(_cargo_mask, cargo)) return GetCargoIDByBitnum(cargo);
 	} else {
-		/* If the GRF contains a translation table (and the cargo is in bounds)
-		 * then get the cargo ID for the label */
-		if (cargo < grffile->cargo_max) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
+		/* If the GRF contains a translation table... */
+		if (grffile->cargo_max > 0) {
+			/* ...and the cargo is in bounds, then get the cargo ID for
+			 * the label */
+			if (cargo < grffile->cargo_max) return GetCargoIDByLabel(grffile->cargo_list[cargo]);
+		} else {
+			/* Else the cargo value is a 'climate independent' 'bitnum' */
+			if (HasBit(_cargo_mask, cargo)) return GetCargoIDByBitnum(cargo);
+		}
 	}
 	return CT_INVALID;
 }
