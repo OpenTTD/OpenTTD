@@ -458,7 +458,7 @@ int ttd_main(int argc, char *argv[])
 		case 'i': _use_dos_palette = true; break;
 		case 'g':
 			if (mgo.opt != NULL) {
-				strcpy(_file_to_saveload.name, mgo.opt);
+				ttd_strlcpy(_file_to_saveload.name, mgo.opt, sizeof(_file_to_saveload.name));
 				_switch_mode = SM_LOAD;
 			} else {
 				_switch_mode = SM_NEWGAME;
