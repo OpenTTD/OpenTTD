@@ -210,6 +210,23 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	IndustryType type = object->u.industry.type;
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
+	/* Shall the variable get resolved in parent scope and are we not yet in parent scope? */
+	if (object->u.industry.gfx == INVALID_INDUSTRYTILE && object->scope == VSG_SCOPE_PARENT) {
+		/* Pass the request on to the town of the industry */
+		const Town *t;
+
+		if (industry != NULL) {
+			t = industry->town;
+		} else if (tile != INVALID_TILE) {
+			t = ClosestTownFromTile(tile, UINT_MAX);
+		} else {
+			*available = false;
+			return UINT_MAX;
+		}
+
+		return TownGetVariable(variable, parameter, available, t);
+	}
+
 	if (industry == NULL) {
 		/* industry does not exist, only use those variables that are "safe" */
 		switch (variable) {
