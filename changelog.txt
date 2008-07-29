@@ -1,3 +1,16 @@
+0.6.2 (2008-??-??)
+------------------------------------------------------------------------
+- Fix: NewGRF Callback 10 (visual effect and powered wagons setting) and powered wagons operation were not performed for articulated wagons [FS#2167] (r13870)
+- Fix: In some cases the sprite cache could be filled with unremovable items [FS#2153] (r13869)
+- Fix: Return of wrong parent scope of (NewGRF) industry variables (r13868)
+- Fix: Loading of TTD(Patch) savegames from the command line did not work (r13859)
+- Fix: Buffer overflow for too long filename supplied as '-g' parameter (r13858)
+- Fix: Cargo type lookup was incorrect for NewGRF version 7 files without a translation table [FS#2157] (r13855)
+- Fix: GetTownByTile() is only valid for houses and roads (r13851)
+- Fix: Power, running cost and capacity of multiheaded engines were (too often) doubled in newspaper resp. offer window (r13844)
+- Fix: FreeType may return a bitmap glyph even if a grey-scale glyph was requested [FS#2152] (r13832)
+
+
 0.6.2-RC2 (2008-07-25)
 ------------------------------------------------------------------------
 - Fix: Building through the wrong side of a drive through station was allowed [FS#2166] (r13822)

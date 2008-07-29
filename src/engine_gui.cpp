@@ -14,6 +14,7 @@
 #include "variables.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
+#include "articulated_vehicles.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -116,21 +117,34 @@ void ShowEnginePreviewWindow(EngineID engine)
 	AllocateWindowDescFront(&_engine_preview_desc, engine);
 }
 
+static uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type)
+{
+	uint total = 0;
+
+	uint16 *cap = GetCapacityOfArticulatedParts(engine, type);
+	for (uint c = 0; c < NUM_CARGO; c++) {
+		total += cap[c];
+	}
+
+	return total;
+}
+
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 1 : 0;
 
-	SetDParam(0, (_price.build_railvehicle >> 3) * rvi->base_cost >> 5);
-	SetDParam(2, rvi->max_speed * 10 / 16);
-	SetDParam(3, rvi->power << multihead);
-	SetDParam(1, rvi->weight << multihead);
+	SetDParam(0, (_price.build_railvehicle >> 3) * GetEngineProperty(engine, 0x17, rvi->base_cost) >> 5);
+	SetDParam(2, GetEngineProperty(engine, 0x09, rvi->max_speed) * 10 / 16);
+	SetDParam(3, GetEngineProperty(engine, 0x0B, rvi->power));
+	SetDParam(1, GetEngineProperty(engine, 0x16, rvi->weight) << multihead);
 
-	SetDParam(4, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) >> 8 << multihead);
+	SetDParam(4, GetEngineProperty(engine, 0x0D, rvi->running_cost) * GetPriceByIndex(rvi->running_cost_class) >> 8);
 
-	if (rvi->capacity != 0) {
+	uint capacity = GetTotalCapacityOfArticulatedParts(engine, VEH_TRAIN);
+	if (capacity != 0) {
 		SetDParam(5, rvi->cargo_type);
-		SetDParam(6, rvi->capacity << multihead);
+		SetDParam(6, capacity);
 	} else {
 		SetDParam(5, CT_INVALID);
 	}
@@ -140,11 +154,11 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
-	SetDParam(0, (_price.aircraft_base >> 3) * avi->base_cost >> 5);
+	SetDParam(0, (_price.aircraft_base >> 3) * GetEngineProperty(engine, 0x0B, avi->base_cost) >> 5);
 	SetDParam(1, avi->max_speed * 10 / 16);
 	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
-	SetDParam(4, avi->running_cost * _price.aircraft_running >> 8);
+	SetDParam(4, GetEngineProperty(engine, 0x0E, avi->running_cost) * _price.aircraft_running >> 8);
 
 	DrawStringMultiCenter(x, y, STR_A02E_COST_MAX_SPEED_CAPACITY, maxw);
 }
@@ -153,11 +167,11 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
 
-	SetDParam(0, (_price.roadveh_base >> 3) * rvi->base_cost >> 5);
+	SetDParam(0, (_price.roadveh_base >> 3) * GetEngineProperty(engine, 0x11, rvi->base_cost) >> 5);
 	SetDParam(1, rvi->max_speed * 10 / 32);
 	SetDParam(2, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) >> 8);
 	SetDParam(3, rvi->cargo_type);
-	SetDParam(4, rvi->capacity);
+	SetDParam(4, GetTotalCapacityOfArticulatedParts(engine, VEH_ROAD));
 
 	DrawStringMultiCenter(x, y, STR_902A_COST_SPEED_RUNNING_COST, maxw);
 }
@@ -165,11 +179,11 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const ShipVehicleInfo *svi = ShipVehInfo(engine);
-	SetDParam(0, svi->base_cost * (_price.ship_base >> 3) >> 5);
-	SetDParam(1, svi->max_speed * 10 / 32);
+	SetDParam(0, GetEngineProperty(engine, 0x0A, svi->base_cost) * (_price.ship_base >> 3) >> 5);
+	SetDParam(1, GetEngineProperty(engine, 0x0B, svi->max_speed) * 10 / 32);
 	SetDParam(2, svi->cargo_type);
-	SetDParam(3, svi->capacity);
-	SetDParam(4, svi->running_cost * _price.ship_running >> 8);
+	SetDParam(3, GetEngineProperty(engine, 0x0D, svi->capacity));
+	SetDParam(4, GetEngineProperty(engine, 0x0F, svi->running_cost) * _price.ship_running >> 8);
 	DrawStringMultiCenter(x, y, STR_982E_COST_MAX_SPEED_CAPACITY, maxw);
 }
 

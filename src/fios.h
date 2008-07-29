@@ -42,7 +42,7 @@ enum FileType {
 	FT_HEIGHTMAP, ///< heightmap file
 };
 
-enum {
+enum FiosType {
 	FIOS_TYPE_DRIVE        =   0,
 	FIOS_TYPE_PARENT       =   1,
 	FIOS_TYPE_DIR          =   2,
@@ -99,6 +99,8 @@ bool FiosDelete(const char *name);
 void FiosMakeSavegameName(char *buf, const char *name, size_t size);
 /* Allocate a new FiosItem */
 FiosItem *FiosAlloc();
+/* Determines type of savegame (or tells it is not a savegame) */
+byte FiosGetSavegameListCallback(int mode, const char *file, const char *ext, char *title);
 
 int CDECL compare_FiosItems(const void *a, const void *b);
 

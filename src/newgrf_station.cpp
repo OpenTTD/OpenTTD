@@ -17,7 +17,7 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "cargotype.h"
-#include "town_map.h"
+#include "town.h"
 #include "newgrf_town.h"
 #include "gfx_func.h"
 #include "date_func.h"
@@ -358,12 +358,12 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	if (object->scope == VSG_SCOPE_PARENT) {
 		/* Pass the request on to the town of the station */
-		Town *t;
+		const Town *t;
 
 		if (st != NULL) {
 			t = st->town;
 		} else if (tile != INVALID_TILE) {
-			t = GetTownByTile(tile);
+			t = ClosestTownFromTile(tile, UINT_MAX);
 		} else {
 			*available = false;
 			return UINT_MAX;
