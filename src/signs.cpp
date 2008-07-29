@@ -24,7 +24,6 @@
 #include "table/strings.h"
 
 SignID _new_sign_id;
-bool _sign_sort_dirty;
 
 /* Initialize the sign-pool */
 DEFINE_OLD_POOL_GENERIC(Sign, Sign)
@@ -111,8 +110,7 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		si->z = GetSlopeZ(x, y);
 		UpdateSignVirtCoords(si);
 		MarkSignDirty(si);
-		InvalidateWindow(WC_SIGN_LIST, 0);
-		_sign_sort_dirty = true;
+		InvalidateWindowData(WC_SIGN_LIST, 0, 0);
 		_new_sign_id = si->index;
 	}
 
@@ -148,8 +146,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			MarkSignDirty(si);
 			UpdateSignVirtCoords(si);
 			MarkSignDirty(si);
-			InvalidateWindow(WC_SIGN_LIST, 0);
-			_sign_sort_dirty = true;
+			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
 		}
 	} else { // Delete sign
 		if (flags & DC_EXEC) {
@@ -158,8 +155,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			MarkSignDirty(si);
 			delete si;
 
-			InvalidateWindow(WC_SIGN_LIST, 0);
-			_sign_sort_dirty = true;
+			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
 		}
 	}
 
@@ -242,8 +238,6 @@ static void Load_SIGN()
 		Sign *si = new (index) Sign();
 		SlObject(si, _sign_desc);
 	}
-
-	_sign_sort_dirty = true;
 }
 
 extern const ChunkHandler _sign_chunk_handlers[] = {

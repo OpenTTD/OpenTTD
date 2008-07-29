@@ -8,7 +8,6 @@
 #include "signs_type.h"
 
 extern SignID _new_sign_id;
-extern bool _sign_sort_dirty;
 
 void UpdateAllSignVirtCoords();
 void PlaceProc_Sign(TileIndex tile);

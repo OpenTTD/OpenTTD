@@ -21,67 +21,80 @@
 #include "gfx_func.h"
 #include "viewport_func.h"
 #include "querystring_gui.h"
+#include "sortlist_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static const Sign **_sign_sort;
-static uint _num_sign_sort;
+struct SignList {
+	typedef GUIList<const Sign *> GUISignList;
 
-static char _bufcache[64];
-static const Sign *_last_sign;
+	static const Sign *last_sign;
+	GUISignList signs;
 
-static int CDECL SignNameSorter(const void *a, const void *b)
-{
-	const Sign *sign0 = *(const Sign**)a;
-	const Sign *sign1 = *(const Sign**)b;
-	char buf1[64];
+	void BuildSignsList()
+	{
+		if (!this->signs.NeedRebuild()) return;
 
-	SetDParam(0, sign0->index);
-	GetString(buf1, STR_SIGN_NAME, lastof(buf1));
+		DEBUG(misc, 3, "Building sign list");
 
-	if (sign1 != _last_sign) {
-		_last_sign = sign1;
-		SetDParam(0, sign1->index);
-		GetString(_bufcache, STR_SIGN_NAME, lastof(_bufcache));
+		this->signs.Clear();
+
+		const Sign *si;
+		FOR_ALL_SIGNS(si) *this->signs.Append() = si;
+
+		this->signs.Compact();
+		this->signs.RebuildDone();
 	}
 
-	return strcmp(buf1, _bufcache); // sort by name
-}
+	/** Sort signs by their name */
+	static int CDECL SignNameSorter(const Sign* const *a, const Sign* const *b)
+	{
+		static char buf_cache[64];
+		char buf[64];
 
-static void GlobalSortSignList()
-{
-	const Sign *si;
-	uint n = 0;
+		SetDParam(0, (*a)->index);
+		GetString(buf, STR_SIGN_NAME, lastof(buf));
 
-	/* Create array for sorting */
-	_sign_sort = ReallocT(_sign_sort, GetMaxSignIndex() + 1);
+		if (*b != last_sign) {
+			last_sign = *b;
+			SetDParam(0, (*b)->index);
+			GetString(buf_cache, STR_SIGN_NAME, lastof(buf_cache));
+		}
 
-	FOR_ALL_SIGNS(si) _sign_sort[n++] = si;
-	_num_sign_sort = n;
+		return strcasecmp(buf, buf_cache);
+	}
 
-	qsort((void*)_sign_sort, n, sizeof(_sign_sort[0]), SignNameSorter);
+	void SortSignsList()
+	{
+		if (!this->signs.Sort(&SignNameSorter)) return;
 
-	_sign_sort_dirty = false;
+		/* Reset the name sorter sort cache */
+		this->last_sign = NULL;
+	}
+};
 
-	DEBUG(misc, 3, "Resorting global signs list");
-}
+const Sign *SignList::last_sign = NULL;
 
-struct SignListWindow : Window {
+struct SignListWindow : Window, SignList {
 	SignListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->vscroll.cap = 12;
 		this->resize.step_height = 10;
 		this->resize.height = this->height - 10 * 7; // minimum if 5 in the list
 
+		this->signs.ForceRebuild();
+		this->signs.NeedResort();
+
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		if (_sign_sort_dirty) GlobalSortSignList();
+		BuildSignsList();
+		SortSignsList();
 
-		SetVScrollCount(this, _num_sign_sort);
+		SetVScrollCount(this, this->signs.Length());
 
 		SetDParam(0, this->vscroll.count);
 		this->DrawWidgets();
@@ -95,7 +108,7 @@ struct SignListWindow : Window {
 
 		/* Start drawing the signs */
 		for (uint16 i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < this->vscroll.count; i++) {
-			const Sign *si = _sign_sort[i];
+			const Sign *si = this->signs[i];
 
 			if (si->owner != OWNER_NONE) DrawPlayerIcon(si->owner, 4, y + 1);
 
@@ -114,7 +127,7 @@ struct SignListWindow : Window {
 			id_v += this->vscroll.pos;
 			if (id_v >= this->vscroll.count) return;
 
-			const Sign *si = _sign_sort[id_v];
+			const Sign *si = this->signs[id_v];
 			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 		}
 	}
@@ -122,6 +135,15 @@ struct SignListWindow : Window {
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / 10;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		if (data == 0) {
+			this->signs.ForceRebuild();
+		} else {
+			this->signs.ForceResort();
+		}
 	}
 };
 
@@ -163,7 +185,7 @@ enum QueryEditSignWidgets {
 	QUERY_EDIT_SIGN_WIDGET_NEXT,
 };
 
-struct SignWindow : QueryStringBaseWindow {
+struct SignWindow : QueryStringBaseWindow, SignList {
 	SignID cur_sign;
 
 	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(desc)
@@ -210,36 +232,52 @@ struct SignWindow : QueryStringBaseWindow {
 	{
 		switch (widget) {
 			case QUERY_EDIT_SIGN_WIDGET_PREVIOUS: {
-				if (_sign_sort_dirty) GlobalSortSignList();
-				SignID sign_index = _sign_sort[_num_sign_sort - 1]->index;
-				for (uint i = 1; i < _num_sign_sort; i++) {
-					if (this->cur_sign == _sign_sort[i]->index) {
-						sign_index = _sign_sort[i - 1]->index;
+				/* Rebuild the sign list */
+				this->signs.ForceRebuild();
+				this->signs.NeedResort();
+				this->BuildSignsList();
+				this->SortSignsList();
+
+				/* By default pick the last entry */
+				const Sign *si = this->signs[this->signs.Length(
+				) - 1];
+
+				for (uint i = 1; i < this->signs.Length(); i++) {
+					if (this->cur_sign == this->signs[i]->index) {
+						si = this->signs[i - 1];
 						break;
 					}
 				}
-				const Sign *si = GetSign(sign_index);
 
 				/* Scroll to sign and reopen window */
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				UpdateSignEditWindow(si);
-			} break;
+				break;
+			}
 
 			case QUERY_EDIT_SIGN_WIDGET_NEXT: {
-				if (_sign_sort_dirty) GlobalSortSignList();
-				SignID sign_index = _sign_sort[0]->index;
-				for (uint i = 0; i < _num_sign_sort - 1; i++) {
-					if (this->cur_sign == _sign_sort[i]->index) {
-						sign_index = _sign_sort[i + 1]->index;
+				/* Rebuild the sign list */
+				this->signs.ForceRebuild();
+				this->signs.NeedResort();
+				this->BuildSignsList();
+				this->SortSignsList();
+
+				/* By default pick the last entry */
+				const Sign *si = this->signs[this->signs.Length(
+				) - 1];
+
+				for (uint i = 0; i < this->signs.Length() - 1; i++) {
+					if (this->cur_sign == this->signs[i]->index) {
+						si = this->signs[i + 1];
 						break;
 					}
 				}
-				const Sign *si = GetSign(sign_index);
 
 				/* Scroll to sign and reopen window */
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 				UpdateSignEditWindow(si);
-			} break;
+				break;
+			}
 
 			case QUERY_EDIT_SIGN_WIDGET_TEXT:
 				ShowOnScreenKeyboard(this, widget, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
