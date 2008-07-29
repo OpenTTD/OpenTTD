@@ -137,7 +137,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		file_pos  = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
-	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
+	if (real_sprite && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
 #ifdef WITH_PNG
 		/* Try loading 32bpp graphics in case we are 32bpp output */
 		SpriteLoaderPNG sprite_loader;
@@ -147,7 +147,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 			free(sprite.data);
 
-			sc->real_sprite = true;
+			sc->real_sprite = real_sprite;
 
 			return sc->ptr;
 		}
@@ -173,13 +173,13 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			DEBUG(sprite, warning_level, "Tried to load non sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
 			warning_level = 6;
 			if (id == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non- sprite?");
-			return (void*)GetSprite(SPR_IMG_QUERY);
+			return (void*)GetRawSprite(SPR_IMG_QUERY, true);
 		}
 
 		byte *dest = (byte *)AllocSprite(num);
 
 		sc->ptr = dest;
-		sc->real_sprite = false;
+		sc->real_sprite = real_sprite;
 		FioReadBlock(dest, num);
 
 		return sc->ptr;
@@ -194,6 +194,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 	 *  something ;) The image should really have been a data-stream
 	 *  (so type = 0xFF basicly). */
 	if (id >= 4845 && id <= 4881) {
+		assert(real_sprite);
 		uint height = FioReadByte();
 		uint width  = FioReadWord();
 		Sprite *sprite;
@@ -221,21 +222,22 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			}
 		}
 
-		sc->real_sprite = false;
+		sc->real_sprite = real_sprite;
 
 		return sc->ptr;
 	}
-
-	sc->real_sprite = true;
 
 	if (!real_sprite) {
 		static byte warning_level = 0;
 		DEBUG(sprite, warning_level, "Tried to load real sprite #%d as a non sprite. Probable cause: NewGRF interference", id);
 		warning_level = 6;
+		return (void*)GetRawSprite(id, true);
 	}
 
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
+
+	sc->real_sprite = real_sprite;
 
 	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos)) return NULL;
 	if (id == 142) sprite.height = 10; // Compensate for a TTD bug
