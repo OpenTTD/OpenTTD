@@ -108,28 +108,28 @@ void TrainPowerChanged(Vehicle *v)
 	uint32 max_te = 0;
 
 	for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-		/* Power is not added for articulated parts */
-		if (IsArticulatedPart(u)) continue;
-
 		RailType railtype = GetRailType(u->tile);
-		bool engine_has_power = HasPowerOnRail(u->u.rail.railtype, railtype);
-		bool wagon_has_power  = HasPowerOnRail(v->u.rail.railtype, railtype);
 
-		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
+		/* Power is not added for articulated parts */
+		if (!IsArticulatedPart(u)) {
+			bool engine_has_power = HasPowerOnRail(u->u.rail.railtype, railtype);
 
-		if (engine_has_power) {
-			uint16 power = GetVehicleProperty(u, 0x0B, rvi_u->power);
-			if (power != 0) {
-				/* Halve power for multiheaded parts */
-				if (IsMultiheaded(u)) power /= 2;
+			const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
 
-				total_power += power;
-				/* Tractive effort in (tonnes * 1000 * 10 =) N */
-				max_te += (u->u.rail.cached_veh_weight * 10000 * GetVehicleProperty(u, 0x1F, rvi_u->tractive_effort)) / 256;
+			if (engine_has_power) {
+				uint16 power = GetVehicleProperty(u, 0x0B, rvi_u->power);
+				if (power != 0) {
+					/* Halve power for multiheaded parts */
+					if (IsMultiheaded(u)) power /= 2;
+
+					total_power += power;
+					/* Tractive effort in (tonnes * 1000 * 10 =) N */
+					max_te += (u->u.rail.cached_veh_weight * 10000 * GetVehicleProperty(u, 0x1F, rvi_u->tractive_effort)) / 256;
+				}
 			}
 		}
 
-		if (HasBit(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
+		if (HasBit(u->u.rail.flags, VRF_POWEREDWAGON) && HasPowerOnRail(v->u.rail.railtype, railtype)) {
 			total_power += RailVehInfo(u->u.rail.first_engine)->pow_wag_power;
 		}
 	}
@@ -162,10 +162,11 @@ static void TrainCargoChanged(Vehicle *v)
 		if (!IsArticulatedPart(u)) {
 			/* vehicle weight is the sum of the weight of the vehicle and the weight of its cargo */
 			vweight += GetVehicleProperty(u, 0x16, RailVehInfo(u->engine_type)->weight);
+		}
 
-			/* powered wagons have extra weight added */
-			if (HasBit(u->u.rail.flags, VRF_POWEREDWAGON))
-				vweight += RailVehInfo(u->u.rail.first_engine)->pow_wag_weight;
+		/* powered wagons have extra weight added */
+		if (HasBit(u->u.rail.flags, VRF_POWEREDWAGON)) {
+			vweight += RailVehInfo(u->u.rail.first_engine)->pow_wag_weight;
 		}
 
 		/* consist weight is the sum of the weight of all vehicles in the consist */
@@ -306,22 +307,22 @@ void TrainConsistChanged(Vehicle *v, bool same_length)
 			}
 		}
 
+		/* Check powered wagon / visual effect callback */
+		if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
+			uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
+
+			if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = GB(callback, 0, 8);
+		}
+
+		if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
+			UsesWagonOverride(u) && !HasBit(u->u.rail.cached_vis_effect, 7)) {
+			/* wagon is powered */
+			SetBit(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
+		} else {
+			ClrBit(u->u.rail.flags, VRF_POWEREDWAGON);
+		}
+
 		if (!IsArticulatedPart(u)) {
-			/* Check powered wagon / visual effect callback */
-			if (HasBit(EngInfo(u->engine_type)->callbackmask, CBM_TRAIN_WAGON_POWER)) {
-				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
-
-				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = GB(callback, 0, 8);
-			}
-
-			if (rvi_v->pow_wag_power != 0 && rvi_u->railveh_type == RAILVEH_WAGON &&
-				UsesWagonOverride(u) && !HasBit(u->u.rail.cached_vis_effect, 7)) {
-				/* wagon is powered */
-				SetBit(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
-			} else {
-				ClrBit(u->u.rail.flags, VRF_POWEREDWAGON);
-			}
-
 			/* Do not count powered wagons for the compatible railtypes, as wagons always
 			   have railtype normal */
 			if (rvi_u->power > 0) {
