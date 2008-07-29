@@ -381,7 +381,7 @@ static int CDECL GRFSorter(const void *p1, const void *p2)
 	const GRFConfig *c1 = *(const GRFConfig **)p1;
 	const GRFConfig *c2 = *(const GRFConfig **)p2;
 
-	return strcmp(c1->name != NULL ? c1->name : c1->filename,
+	return strcasecmp(c1->name != NULL ? c1->name : c1->filename,
 		c2->name != NULL ? c2->name : c2->filename);
 }
 
