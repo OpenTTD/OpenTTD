@@ -5746,19 +5746,6 @@ static void FinaliseIndustriesArray()
 	}
 }
 
-/** Each cargo string needs to be mapped from TTDPatch to OpenTTD string IDs.
- * This is done after loading so that strings from Action 4 will be mapped
- * properly. */
-static void MapNewCargoStrings()
-{
-	for (CargoID c = 0; c < NUM_CARGO; c++) {
-		CargoSpec *cs = &_cargo[c];
-		/* Don't map if the cargo is unavailable or not from NewGRF */
-		if (cs->grfid == 0) continue;
-	}
-}
-
-
 /* Here we perform initial decoding of some special sprites (as are they
  * described at http://www.ttdpatch.net/src/newgrf.txt, but this is only a very
  * partial implementation yet). */
@@ -6005,10 +5992,6 @@ static void AfterLoadGRFs()
 
 	/* Create dynamic list of industry legends for smallmap_gui.cpp */
 	BuildIndustriesLegend();
-
-	/* Map cargo strings. This is a separate step because cargos are
-	 * loaded before strings... */
-	MapNewCargoStrings();
 
 	/* Update the townname generators list */
 	InitGRFTownGeneratorNames();
