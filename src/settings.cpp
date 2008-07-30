@@ -1890,6 +1890,30 @@ static void HandleOldDiffCustom(bool savegame)
 	}
 }
 
+/** tries to convert newly introduced news settings based on old ones
+ * @param name pointer to the string defining name of the old news config
+ * @param value pointer to the string defining value of the old news config
+ * @returns true if conversion could have been made */
+bool ConvertOldNewsSetting(const char *name, const char *value)
+{
+	if (strcasecmp(name, "openclose") == 0) {
+		/* openclose has been split in "open" and "close".
+		 * So the job is now to decrypt the value of the old news config
+		 * and give it to the two newly introduced ones*/
+
+		NewsDisplay display = ND_OFF;  //default
+		if (strcasecmp(value, "full") == 0) {
+			display = ND_FULL;
+		} else if (strcasecmp(value, "summarized") == 0) {
+			display = ND_SUMMARY;
+		}
+		/* tranfert of values */
+		_news_type_data[NT_INDUSTRY_OPEN].display = display;
+		_news_type_data[NT_INDUSTRY_CLOSE].display = display;
+		return true;
+	}
+	return false;
+}
 
 static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 {
@@ -1907,8 +1931,14 @@ static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 				break;
 			}
 		}
+
+		/* the config been read is not within current aceptable config */
 		if (news_item == -1) {
-			DEBUG(misc, 0, "Invalid display option: %s", item->name);
+			/* if the conversion function cannot process it, advice by a debug warning*/
+			if (!ConvertOldNewsSetting(item->name, item->value)) {
+				DEBUG(misc, 0, "Invalid display option: %s", item->name);
+			}
+			/* in all cases, there is nothing left to do */
 			continue;
 		}
 

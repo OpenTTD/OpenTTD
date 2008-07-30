@@ -132,7 +132,8 @@ static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
 	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
 	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
 	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
-	{ NT_OPENCLOSE,       NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_OPENCLOSE
+	{ NT_INDUSTRY_OPEN,   NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_CLOSE
 	{ NT_ECONOMY,         NM_NORMAL,   NF_NONE,                NULL                    }, ///< NS_ECONOMY
 	{ NT_INDUSTRY_PLAYER, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_PLAYER
 	{ NT_INDUSTRY_OTHER,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OTHER
@@ -153,7 +154,8 @@ NewsTypeData _news_type_data[NT_END] = {
 	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
 	{ "accident",          90, SND_BEGIN,       ND_FULL },  ///< NT_ACCIDENT
 	{ "company_info",      60, SND_BEGIN,       ND_FULL },  ///< NT_COMPANY_INFO
-	{ "openclose",         90, SND_BEGIN,       ND_FULL },  ///< NT_OPENCLOSE
+	{ "open",              90, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OPEN
+	{ "close",             90, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_CLOSE
 	{ "economy",           30, SND_BEGIN,       ND_FULL },  ///< NT_ECONOMY
 	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_PLAYER
 	{ "production_other",  30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OTHER
@@ -947,7 +949,8 @@ NEWS_SETTINGS_LINE(26, NT_ARRIVAL_PLAYER,  STR_0206_ARRIVAL_OF_FIRST_VEHICLE),
 NEWS_SETTINGS_LINE(26, NT_ARRIVAL_OTHER,   STR_0207_ARRIVAL_OF_FIRST_VEHICLE),
 NEWS_SETTINGS_LINE(26, NT_ACCIDENT,        STR_0208_ACCIDENTS_DISASTERS),
 NEWS_SETTINGS_LINE(26, NT_COMPANY_INFO,    STR_0209_COMPANY_INFORMATION),
-NEWS_SETTINGS_LINE(26, NT_OPENCLOSE,       STR_NEWS_OPEN_CLOSE),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OPEN,   STR_NEWS_INDUSTRY_OPEN),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_CLOSE,  STR_NEWS_INDUSTRY_CLOSE),
 NEWS_SETTINGS_LINE(26, NT_ECONOMY,         STR_020A_ECONOMY_CHANGES),
 NEWS_SETTINGS_LINE(26, NT_INDUSTRY_PLAYER, STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER),
 NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OTHER,  STR_INDUSTRY_CHANGES_SERVED_BY_OTHER),

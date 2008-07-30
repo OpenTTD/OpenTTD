@@ -1688,7 +1688,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		} else {
 			SetDParam(1, ind->town->index);
 		}
-		AddNewsItem(indspec->new_industry_text, NS_OPENCLOSE, ind->xy, 0);
+		AddNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->xy, 0);
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
@@ -1890,7 +1890,7 @@ static void MaybeNewIndustry(void)
 		SetDParam(1, ind->town->index);
 	}
 	AddNewsItem(ind_spc->new_industry_text,
-		NS_OPENCLOSE, ind->xy, 0);
+		NS_INDUSTRY_OPEN, ind->xy, 0);
 }
 
 /**
@@ -2205,7 +2205,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		NewsSubtype ns;
 		/* Compute news category */
 		if (closeit) {
-			ns = NS_OPENCLOSE;
+			ns = NS_INDUSTRY_CLOSE;
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
 				case 0: ns = NS_INDUSTRY_NOBODY; break;

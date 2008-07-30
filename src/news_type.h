@@ -17,7 +17,8 @@ enum NewsType {
 	NT_ARRIVAL_OTHER,   ///< Cargo arrived for competitor
 	NT_ACCIDENT,        ///< An accident or disaster has occurred
 	NT_COMPANY_INFO,    ///< Company info (new companies, bankrupcy messages)
-	NT_OPENCLOSE,       ///< Opening and closing of industries
+	NT_INDUSTRY_OPEN,   ///< Opening of industries
+	NT_INDUSTRY_CLOSE,  ///< Closing of industries
 	NT_ECONOMY,         ///< Economic changes (recession, industry up/dowm)
 	NT_INDUSTRY_PLAYER, ///< Production changes of industry serviced by local player
 	NT_INDUSTRY_OTHER,  ///< Production changes of industry serviced by competitor(s)
@@ -42,7 +43,8 @@ enum NewsSubtype {
 	NS_COMPANY_MERGER,   ///< NT_COMPANY_INFO (merger)
 	NS_COMPANY_BANKRUPT, ///< NT_COMPANY_INFO (bankrupt)
 	NS_COMPANY_NEW,      ///< NT_COMPANY_INFO (new company)
-	NS_OPENCLOSE,        ///< NT_OPENCLOSE
+	NS_INDUSTRY_OPEN,    ///< NS_INDUSTRY_OPEN
+	NS_INDUSTRY_CLOSE,   ///< NS_INDUSTRY_CLOSE
 	NS_ECONOMY,          ///< NT_ECONOMY
 	NS_INDUSTRY_PLAYER,  ///< NT_INDUSTRY_PLAYER
 	NS_INDUSTRY_OTHER,   ///< NT_INDUSTRY_OTHER
