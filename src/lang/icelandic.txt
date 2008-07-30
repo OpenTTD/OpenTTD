@@ -591,7 +591,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aðkoma
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aðkoma fyrsta farartækis á stöð andstæðings
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Slys / hamfarir
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Fyrirtækisupplýsingar
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Opnun / lokun iðnaða
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Efnahagsbreytingar
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af leikmanni
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Framleiðslubreytingar fyrirtækja þjónustuð af mótherjum

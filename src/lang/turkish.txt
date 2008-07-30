@@ -584,7 +584,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncun
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin durağına ilk aracın gelişi
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Şirket bilgisi
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Fabrika açılış/kapanışları
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi değişimleri
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Oyuncunun hizmet ettiği fabrikalardaki üretim değişiklikleri
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Rakiplerin hizmet ettiği fabrikalardaki üretim değişiklikleri

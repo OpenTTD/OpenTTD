@@ -648,7 +648,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příje
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příjezd prvního vozidla do konkurenční stanice
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nehody / katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informace o společnosti
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otevření / zavření továren
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Změny v ekonomice
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Změny produkce průmyslu obsluhovaného hráčem
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Změny produkce průmyslu obsluhovaného konkurencí

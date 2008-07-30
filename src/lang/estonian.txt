@@ -644,7 +644,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Mängij
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Konkurendi jaama saabus esimene veovahend
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Õnnetused / katastroofid
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Ettevõtte teave
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Tööstuste avamised ja sulgemised
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Muutused majanduses
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Mängija poolt teenindavate tööstuste toodangumuutused
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Konkurentide poolt teenindavate tööstuste toodangumuutused

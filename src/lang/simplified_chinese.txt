@@ -586,7 +586,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}玩家�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}对手车站的剪彩仪式
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故/灾难
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司信息
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}开启/关闭工业设施
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}经济变化
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}对玩家有利的工业产量变化
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}对对手有利的工业产量变化

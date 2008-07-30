@@ -591,7 +591,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er vé
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station d'un competiteur
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / désastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informations corporatives
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ouvertures/fermetures d'industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Changements de production des industries desservies par vous
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Changements de production des industries desservies par les autres

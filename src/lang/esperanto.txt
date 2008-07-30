@@ -585,7 +585,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Unua ve
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Unua veturilo atingas konkurantan stacion
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Akcidentoj / katastrofoj
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompaniaj informoj
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Malfermo / fermo de industrioj
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomiaj ŝanĝoj
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Konsiloj / informoj pri propraj veturiloj
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novaj veturiloj

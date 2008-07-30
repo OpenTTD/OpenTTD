@@ -588,7 +588,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak prvog vozila u stanicu suparnika
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nesreće / katastrofe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Podatci vezani za tvrtku
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otvaranje / zatvaranje industrija
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promjene u gospodarstvu
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Izmjene u produktivnosti industrija djelovanjem igrača
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Izmjene u produktivnosti industrija djelovanjem suparnika

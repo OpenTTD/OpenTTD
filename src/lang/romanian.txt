@@ -589,7 +589,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea primului vehicul la una din statiile competitorilor
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidente/dezastre
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informatii despre companie
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Deschidere / inchidere industrii
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbări economice
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Schimbări de producţie la industrii partenere cu jucătorul
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa

@@ -585,7 +585,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Første køyretøy kjem fram på stasjonen til motstandaren
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker/katastrofar
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firma informasjon
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Opning / stenging av industriar
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringar
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produksjonsendringar for industriar betente av spelaren sjølve
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksjonsendringar for industriar betente av konkurrent(ar)

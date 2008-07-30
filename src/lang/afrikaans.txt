@@ -584,7 +584,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aankoms
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aankoms van eerste voertuig tot mededinger se stasie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukke / rampe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Maatskappy informasie
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Oop / sluiting van nywerhede
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomie veranderings
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Raad / informasie op speler se voertuie
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuwe voertuie

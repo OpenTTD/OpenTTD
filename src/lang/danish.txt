@@ -590,7 +590,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til modstanderens station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Uheld / katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Selskabsinformation
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Åbning / lukning af industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiændringer
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produktionsændringer for industrier forsynet af spilleren
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsændringer for industrier forsynet af deltager(e)

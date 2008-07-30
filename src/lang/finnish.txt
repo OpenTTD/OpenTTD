@@ -585,7 +585,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimm�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Vahingot/onnettomuudet
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Yhtiön tiedot
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Avaa / tehtaiden sulkemiset
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Talouden muutokset
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Neuvoja/tietoja pelaajan ajoneuvoista
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Uudet ajoneuvot

@@ -590,7 +590,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}당신�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}경쟁사의 첫 차량 도착
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}사고 / 재앙
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}회사 정보
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}산업 띄우기 / 끄기
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}경제적 변화
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}플레이어에 의한 산업시설의 생산품 변화
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산품 변화

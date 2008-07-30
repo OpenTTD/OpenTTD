@@ -590,7 +590,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}首個交通工具已到達競爭對手的車站
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}意外 / 災難
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司資訊
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}工業開張/倒閉消息
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}經濟氣候變化
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}工業提供給玩家的產量變更
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}工業提供給競爭者的產量變更

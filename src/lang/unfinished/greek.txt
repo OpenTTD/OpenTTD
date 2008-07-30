@@ -582,7 +582,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφι�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ατυχήματα / καταστροφές
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Πληροφορίες εταιρείας
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Άνοιγμα / κλείσιμο  των βιομηχανιών
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Συμβουλές / πληροφορίες για τα οχήματα του παίκτη
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα

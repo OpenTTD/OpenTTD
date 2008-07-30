@@ -650,7 +650,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első j
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első jármű megérkezése az ellenfél megállójába
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Balesetek / természeti csapások
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginformációk
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Ipari létesítmények létrejötte / bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Termelésváltozások az általad szállított ipari cégeknél
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Termelésváltozások a konkurrenseid által szállított ipari cégeknél

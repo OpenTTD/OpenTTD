@@ -585,7 +585,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}プレ�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}競争者の駅へ車両の初めての到着
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故／災害
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}会社情報
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}産業の開業／閉業
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}経済の変化
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}プレヤーが運送している産業の生産量が変更したとき
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}競争者が運送している産業の生産量が変更したとき

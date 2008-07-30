@@ -582,7 +582,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Spe'le'
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sa'ncens'a stacija' ierodas pirmais transporta li'dzeklis
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Negadijumi / ava'rijas
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompa'nijas informa'cija
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Atvērt / aizvērt industrijas
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomijas izmain'as
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Padoms / informa'cija par spe'le'ta'ja transporta li'dzekl'iem
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Jaunie transporta li'dzekl'i

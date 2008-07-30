@@ -632,7 +632,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prihod 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prihod prvega vozila na nasprotnikovo postajo
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nesreče / katastrofe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacije o podjetju
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Odpiranje / zapiranje industrij
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomske spremembe
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Proizvodne spremembe industrij v igralčevi oskrbi
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Proizvodne spremembe industrij v oskrbi tekmecev

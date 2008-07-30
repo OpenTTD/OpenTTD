@@ -654,7 +654,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd prveho vozidla do stanice konkurencie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Havarie / Katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacie o spolocnosti
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Vznik a zánik priemyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmeny v ekonomike
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Zmeny produkcie priemyslu obsluhovaného hrácom
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmeny produkcie priemyslu obsluhovaného konkurenciou

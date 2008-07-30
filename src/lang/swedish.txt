@@ -590,7 +590,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst av första fordonet vid konkurrenternas stn.
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Olyckor / katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Företagsinformation
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Öppning / stängning av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Förändringar av ekonomin
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Förändringar i produktion vid industrier trafikerad av spelaren
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Förändringar i produktion vid industrier trafikerad av motståndare

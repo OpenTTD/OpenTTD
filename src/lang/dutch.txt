@@ -590,7 +590,6 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij concurrerend station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukken/rampen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedrijfsinformatie
-STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Openen / sluiten van industrieën
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Veranderingen in de economie
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Productie veranderingen van industriën bezocht door speler
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Productie veranderingen van industriën bezocht door tegenstander(s)
