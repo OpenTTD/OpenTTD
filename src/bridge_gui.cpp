@@ -247,15 +247,15 @@ const StringID BuildBridgeWindow::sorter_names[] = {
 
 /* Widget definition for the rail bridge selection window */
 static const Widget _build_bridge_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  7,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  7,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  10,   0,  13, STR_00C5,                    STR_018B_CLOSE_WINDOW},            // BBSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11, 199,   0,  13, STR_100D_SELECT_RAIL_BRIDGE, STR_018C_WINDOW_TITLE_DRAG_THIS},  // BBSW_CAPTION
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  7,   0,  80,  14,  25, STR_SORT_BY,                 STR_SORT_ORDER_TIP},               // BBSW_DROPDOWN_ORDER
-{   WWT_DROPDOWN,   RESIZE_NONE,  7,  81, 199,  14,  25, 0x0,                         STR_SORT_CRITERIA_TIP},            // BBSW_DROPDOWN_CRITERIA
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  80,  14,  25, STR_SORT_BY,                 STR_SORT_ORDER_TIP},               // BBSW_DROPDOWN_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  81, 199,  14,  25, 0x0,                         STR_SORT_CRITERIA_TIP},            // BBSW_DROPDOWN_CRITERIA
 
-{     WWT_MATRIX, RESIZE_BOTTOM,  7,   0, 187,  26, 113, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  7, 188, 199,  26, 101, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
-{  WWT_RESIZEBOX,     RESIZE_TB,  7, 188, 199, 102, 113, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
+{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_DARK_GREEN,   0, 187,  26, 113, 0x401,                       STR_101F_BRIDGE_SELECTION_CLICK},  // BBSW_BRIDGE_LIST
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_DARK_GREEN, 188, 199,  26, 101, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST}, // BBSW_SCROLLBAR
+{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_DARK_GREEN, 188, 199, 102, 113, 0x0,                         STR_RESIZE_BUTTON},                // BBSW_RESIZEBOX
 {   WIDGETS_END},
 };
 
