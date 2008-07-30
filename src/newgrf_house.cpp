@@ -183,15 +183,6 @@ static uint32 GetNumHouses(HouseID house_id, const Town *town)
 	return map_class_count << 24 | town_class_count << 16 | map_id_count << 8 | town_id_count;
 }
 
-static uint32 GetGRFParameter(HouseID house_id, byte parameter)
-{
-	const HouseSpec *hs = GetHouseSpecs(house_id);
-	const GRFFile *file = hs->grffile;
-
-	if (parameter >= file->param_end) return 0;
-	return file->param[parameter];
-}
-
 uint32 GetNearbyTileInformation(byte parameter, TileIndex tile)
 {
 	tile = GetNearbyTile(parameter, tile);
@@ -369,9 +360,6 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 
 		/* Distance test for some house types */
 		case 0x65: return GetDistanceFromNearbyHouse(parameter, tile, object->u.house.house_id);
-
-		/* Read GRF parameter */
-		case 0x7F: return GetGRFParameter(object->u.house.house_id, parameter);
 	}
 
 	DEBUG(grf, 1, "Unhandled house property 0x%X", variable);
@@ -410,6 +398,9 @@ static void NewHouseResolver(ResolverObject *res, HouseID house_id, TileIndex ti
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+
+	const HouseSpec *hs = GetHouseSpecs(house_id);
+	res->grffile         = (hs != NULL ? hs->grffile : NULL);
 }
 
 uint16 GetHouseCallback(CallbackID callback, uint32 param1, uint32 param2, HouseID house_id, Town *town, TileIndex tile)

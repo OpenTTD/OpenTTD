@@ -439,16 +439,6 @@ static void VehicleSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint32 GetGRFParameter(EngineID engine_type, byte parameter)
-{
-	const GRFFile *file = GetEngineGRF(engine_type);
-
-	if (file == NULL) return 0;
-	if (parameter >= file->param_end) return 0;
-	return file->param[parameter];
-}
-
-
 static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 {
 	const Livery *l;
@@ -479,7 +469,6 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			case 0x49: return _cur_year; // 'Long' format build year
 			case 0xC4: return Clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR; // Build year
 			case 0xDA: return INVALID_VEHICLE; // Next vehicle
-			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); // Read GRF parameter
 		}
 
 		*available = false;
@@ -631,8 +620,6 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 				return count;
 			}
-
-		case 0x7F: return GetGRFParameter(v->engine_type, parameter); // Read GRF parameter
 
 		case 0xFE:
 		case 0xFF: {
@@ -832,6 +819,9 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+
+	const Engine *e = GetEngine(engine_type);
+	res->grffile         = (e != NULL ? e->grffile : NULL);
 }
 
 

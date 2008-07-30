@@ -41,15 +41,6 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
 	return _industry_mngr.GetID(GB(grf_type, 0, 6), grf_id);
 }
 
-static uint32 GetGRFParameter(IndustryType ind_id, byte parameter)
-{
-	const IndustrySpec *indspec = GetIndustrySpec(ind_id);
-	const GRFFile *file = indspec->grf_prop.grffile;
-
-	if (parameter >= file->param_end) return 0;
-	return file->param[parameter];
-}
-
 /**
  * Finds the distance for the closest tile with water/land given a tile
  * @param tile  the tile to find the distance too
@@ -230,8 +221,6 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 	if (industry == NULL) {
 		/* industry does not exist, only use those variables that are "safe" */
 		switch (variable) {
-			/* Read GRF parameter */
-			case 0x7F: return GetGRFParameter(type, parameter);
 			/* Manhattan distance of closes dry/water tile */
 			case 0x43: return GetClosestWaterDistance(tile, (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) == 0);
 		}
@@ -317,9 +306,6 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 
 		/* Get a variable from the persistent storage */
 		case 0x7C: return industry->psa.Get(parameter);
-
-		/* Read GRF parameter */
-		case 0x7F: return GetGRFParameter(type, parameter);
 
 		/* Industry structure access*/
 		case 0x80: return industry->xy;
@@ -430,6 +416,9 @@ static void NewIndustryResolver(ResolverObject *res, TileIndex tile, Industry *i
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+
+	const IndustrySpec *indspec = GetIndustrySpec(type);
+	res->grffile         = (indspec != NULL ? indspec->grf_prop.grffile : NULL);
 }
 
 uint16 GetIndustryCallback(CallbackID callback, uint32 param1, uint32 param2, Industry *industry, IndustryType type, TileIndex tile)

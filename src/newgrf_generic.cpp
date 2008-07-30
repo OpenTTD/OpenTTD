@@ -113,7 +113,7 @@ static const SpriteGroup *GenericCallbackResolveReal(const ResolverObject *objec
 }
 
 
-static inline void NewGenericResolver(ResolverObject *res)
+static inline void NewGenericResolver(ResolverObject *res, const GRFFile *grffile)
 {
 	res->GetRandomBits = &GenericCallbackGetRandomBits;
 	res->GetTriggers   = &GenericCallbackGetTriggers;
@@ -128,6 +128,7 @@ static inline void NewGenericResolver(ResolverObject *res)
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+	res->grffile         = grffile;
 }
 
 
@@ -166,7 +167,7 @@ uint16 GetAiPurchaseCallbackResult(uint8 feature, CargoID cargo_type, uint8 defa
 {
 	ResolverObject object;
 
-	NewGenericResolver(&object);
+	NewGenericResolver(&object, *file);
 
 	object.callback = CBID_GENERIC_AI_PURCHASE_SELECTION;
 	object.u.generic.cargo_type        = cargo_type;

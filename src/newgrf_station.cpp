@@ -590,6 +590,7 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+	res->grffile         = (statspec != NULL ? statspec->grffile : NULL);
 }
 
 static const SpriteGroup *ResolveStation(ResolverObject *object)

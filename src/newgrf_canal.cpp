@@ -71,7 +71,7 @@ static const SpriteGroup *CanalResolveReal(const ResolverObject *object, const S
 }
 
 
-static void NewCanalResolver(ResolverObject *res, TileIndex tile)
+static void NewCanalResolver(ResolverObject *res, TileIndex tile, const GRFFile *grffile)
 {
 	res->GetRandomBits = &CanalGetRandomBits;
 	res->GetTriggers   = &CanalGetTriggers;
@@ -88,6 +88,7 @@ static void NewCanalResolver(ResolverObject *res, TileIndex tile)
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+	res->grffile         = grffile;
 }
 
 
@@ -96,7 +97,7 @@ SpriteID GetCanalSprite(CanalFeature feature, TileIndex tile)
 	ResolverObject object;
 	const SpriteGroup *group;
 
-	NewCanalResolver(&object, tile);
+	NewCanalResolver(&object, tile, _water_feature[feature].grffile);
 
 	group = Resolve(_water_feature[feature].group, &object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;

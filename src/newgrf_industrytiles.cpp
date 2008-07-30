@@ -30,15 +30,6 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static uint32 GetGRFParameter(IndustryGfx indtile_id, byte parameter)
-{
-	const IndustryTileSpec *indtspec = GetIndustryTileSpec(indtile_id);
-	const GRFFile *file = indtspec->grf_prop.grffile;
-
-	if (parameter >= file->param_end) return 0;
-	return file->param[parameter];
-}
-
 /**
  * Based on newhouses equivalent, but adapted for newindustries
  * @param parameter from callback.  It's in fact a pair of coordinates
@@ -110,9 +101,6 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 
 		/* Get industry tile ID at offset */
 		case 0x62 : return GetIndustryIDAtOffset(GetNearbyTile(parameter, tile), inds);
-
-		/* Read GRF parameter */
-		case 0x7F: return GetGRFParameter(GetIndustryGfx(tile), parameter);
 	}
 
 	DEBUG(grf, 1, "Unhandled industry tile property 0x%X", variable);
@@ -174,6 +162,9 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+
+	const IndustryTileSpec *its = GetIndustryTileSpec(gfx);
+	res->grffile         = (its != NULL ? its->grf_prop.grffile : NULL);
 }
 
 void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_color, byte stage, IndustryGfx gfx)

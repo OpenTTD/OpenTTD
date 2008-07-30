@@ -67,6 +67,7 @@ static void NewCargoResolver(ResolverObject *res, const CargoSpec *cs)
 	res->trigger         = 0;
 	res->reseed          = 0;
 	res->count           = 0;
+	res->grffile         = cs->grffile;
 }
 
 

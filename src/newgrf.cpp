@@ -1732,7 +1732,7 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 			case 0x08: /* Bit number of cargo */
 				cs->bitnum = grf_load_byte(&buf);
 				if (cs->IsValid()) {
-					cs->grfid = _cur_grffile->grfid;
+					cs->grffile = _cur_grffile;
 					SetBit(_cargo_mask, cid + i);
 				} else {
 					ClrBit(_cargo_mask, cid + i);
@@ -3045,6 +3045,7 @@ static void CanalMapSpriteGroup(byte *buf, uint8 idcount)
 			continue;
 		}
 
+		_water_feature[cf].grffile = _cur_grffile;
 		_water_feature[cf].group = _cur_grffile->spritegroups[groupid];
 	}
 }
@@ -3198,7 +3199,7 @@ static void CargoMapSpriteGroup(byte *buf, uint8 idcount)
 		}
 
 		CargoSpec *cs = &_cargo[cid];
-		cs->grfid = _cur_grffile->grfid;
+		cs->grffile = _cur_grffile;
 		cs->group = _cur_grffile->spritegroups[groupid];
 	}
 }

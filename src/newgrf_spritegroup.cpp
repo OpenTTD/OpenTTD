@@ -97,6 +97,10 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x7D: return _temp_store.Get(parameter);
 
+		case 0x7F:
+			if (object == NULL || object->grffile == NULL || parameter >= object->grffile->param_end) return 0;
+			return object->grffile->param[parameter];
+
 		/* Not a common variable, so evalute the feature specific variables */
 		default: return object->GetVariable(object, variable, parameter, available);
 	}

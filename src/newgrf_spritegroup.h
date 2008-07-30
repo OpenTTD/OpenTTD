@@ -218,6 +218,8 @@ struct ResolverObject {
 
 	BaseStorageArray *psa; ///< The persistent storage array of this resolved object.
 
+	const GRFFile *grffile; ///< GRFFile the resolved SpriteGroup belongs to
+
 	union {
 		struct {
 			const struct Vehicle *self;

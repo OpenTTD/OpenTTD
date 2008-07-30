@@ -25,7 +25,6 @@ enum TownEffect {
 struct CargoSpec {
 	uint8 bitnum;
 	CargoLabel label;
-	uint32 grfid;
 	uint8 legend_colour;
 	uint8 rating_colour;
 	uint8 weight;
@@ -46,6 +45,7 @@ struct CargoSpec {
 	SpriteID sprite;
 
 	uint16 classes;
+	const struct GRFFile *grffile;   ///< NewGRF where 'group' belongs to
 	const struct SpriteGroup *group;
 
 	bool IsValid() const;
