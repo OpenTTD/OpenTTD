@@ -856,6 +856,13 @@ void ShowCompanyLeagueTable()
 /*****************************/
 
 struct PerformanceRatingDetailWindow : Window {
+private:
+	enum PerformanteRatingWidgets {
+		PRW_PLAYER_FIRST = 13,
+		PRW_PLAYER_LAST  = 20,
+	};
+
+public:
 	static PlayerID player;
 	int timeout;
 
@@ -863,12 +870,12 @@ struct PerformanceRatingDetailWindow : Window {
 	{
 		/* Disable the players who are not active */
 		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-			this->SetWidgetDisabledState(i + 13, !IsValidPlayerID(i));
+			this->SetWidgetDisabledState(i + PRW_PLAYER_FIRST, !IsValidPlayerID(i));
 		}
 
 		this->UpdatePlayerStats();
 
-		if (player != INVALID_PLAYER) this->LowerWidget(player + 13);
+		if (player != INVALID_PLAYER) this->LowerWidget(player + PRW_PLAYER_FIRST);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -900,8 +907,8 @@ struct PerformanceRatingDetailWindow : Window {
 		if (player == INVALID_PLAYER || !IsValidPlayerID(player)) {
 			if (player != INVALID_PLAYER) {
 				/* Raise and disable the widget for the previous selection. */
-				this->RaiseWidget(player + 13);
-				this->DisableWidget(player + 13);
+				this->RaiseWidget(player + PRW_PLAYER_FIRST);
+				this->DisableWidget(player + PRW_PLAYER_FIRST);
 				this->SetDirty();
 
 				player = INVALID_PLAYER;
@@ -910,7 +917,7 @@ struct PerformanceRatingDetailWindow : Window {
 			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 				if (IsValidPlayerID(i)) {
 					/* Lower the widget corresponding to this player. */
-					this->LowerWidget(i + 13);
+					this->LowerWidget(i + PRW_PLAYER_FIRST);
 					this->SetDirty();
 
 					player = i;
@@ -926,9 +933,9 @@ struct PerformanceRatingDetailWindow : Window {
 		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
 			if (!IsValidPlayerID(i)) {
 				/* Check if we have the player as an active player */
-				if (!this->IsWidgetDisabled(i + 13)) {
+				if (!this->IsWidgetDisabled(i + PRW_PLAYER_FIRST)) {
 					/* Bah, player gone :( */
-					this->DisableWidget(i + 13);
+					this->DisableWidget(i + PRW_PLAYER_FIRST);
 
 					/* We need a repaint */
 					this->SetDirty();
@@ -937,9 +944,9 @@ struct PerformanceRatingDetailWindow : Window {
 			}
 
 			/* Check if we have the player marked as inactive */
-			if (this->IsWidgetDisabled(i + 13)) {
+			if (this->IsWidgetDisabled(i + PRW_PLAYER_FIRST)) {
 				/* New player! Yippie :p */
-				this->EnableWidget(i + 13);
+				this->EnableWidget(i + PRW_PLAYER_FIRST);
 				/* We need a repaint */
 				this->SetDirty();
 			}
@@ -1017,12 +1024,12 @@ struct PerformanceRatingDetailWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		/* Check which button is clicked */
-		if (IsInsideMM(widget, 13, 21)) {
+		if (IsInsideMM(widget, PRW_PLAYER_FIRST, PRW_PLAYER_LAST + 1)) {
 			/* Is it no on disable? */
 			if (!this->IsWidgetDisabled(widget)) {
-				this->RaiseWidget(player + 13);
-				player = (PlayerID)(widget - 13);
-				this->LowerWidget(player + 13);
+				this->RaiseWidget(player + PRW_PLAYER_FIRST);
+				player = (PlayerID)(widget - PRW_PLAYER_FIRST);
+				this->LowerWidget(player + PRW_PLAYER_FIRST);
 				this->SetDirty();
 			}
 		}
