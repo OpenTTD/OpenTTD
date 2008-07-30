@@ -77,13 +77,13 @@ enum DynamicPlaceIndustriesWidgets {
 
 /** Widget definition of the dynamic place industries gui */
 static const Widget _build_industry_widgets[] = {
-{   WWT_CLOSEBOX,    RESIZE_NONE,    7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},            // DPIW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_RIGHT,    7,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},  // DPIW_CAPTION
-{     WWT_MATRIX,      RESIZE_RB,    7,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},      // DPIW_MATRIX_WIDGET
-{  WWT_SCROLLBAR,     RESIZE_LRB,    7,   158,   169,    14,   118, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DPIW_SCROLLBAR
-{      WWT_PANEL,     RESIZE_RTB,    7,     0,   169,   119,   199, 0x0,                            STR_NULL},                         // DPIW_INFOPANEL
-{    WWT_TEXTBTN,     RESIZE_RTB,    7,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,          STR_NULL},                         // DPIW_FUND_WIDGET
-{  WWT_RESIZEBOX,    RESIZE_LRTB,    7,   158,   169,   200,   211, 0x0,                            STR_RESIZE_BUTTON},                // DPIW_RESIZE_WIDGET
+{   WWT_CLOSEBOX,    RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},            // DPIW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_DARK_GREEN,    11,   169,     0,    13, STR_0314_FUND_NEW_INDUSTRY,     STR_018C_WINDOW_TITLE_DRAG_THIS},  // DPIW_CAPTION
+{     WWT_MATRIX,      RESIZE_RB,  COLOUR_DARK_GREEN,     0,   157,    14,   118, 0x801,                          STR_INDUSTRY_SELECTION_HINT},      // DPIW_MATRIX_WIDGET
+{  WWT_SCROLLBAR,     RESIZE_LRB,  COLOUR_DARK_GREEN,   158,   169,    14,   118, 0x0,                            STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DPIW_SCROLLBAR
+{      WWT_PANEL,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   169,   119,   199, 0x0,                            STR_NULL},                         // DPIW_INFOPANEL
+{    WWT_TEXTBTN,     RESIZE_RTB,  COLOUR_DARK_GREEN,     0,   157,   200,   211, STR_FUND_NEW_INDUSTRY,          STR_NULL},                         // DPIW_FUND_WIDGET
+{  WWT_RESIZEBOX,    RESIZE_LRTB,  COLOUR_DARK_GREEN,   158,   169,   200,   211, 0x0,                            STR_RESIZE_BUTTON},                // DPIW_RESIZE_WIDGET
 {   WIDGETS_END},
 };
 
@@ -663,15 +663,15 @@ static void UpdateIndustryProduction(Industry *i)
 
 /** Widget definition of the view industy gui */
 static const Widget _industry_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     9,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // IVW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,     9,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},  // IVW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
-{      WWT_PANEL,     RESIZE_RB,     9,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
-{      WWT_INSET,     RESIZE_RB,     9,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
-{      WWT_PANEL,    RESIZE_RTB,     9,     0,   259,   106,   107, 0x0,               STR_NULL},                         // IVW_INFO
-{ WWT_PUSHTXTBTN,     RESIZE_TB,     9,     0,   129,   108,   119, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
-{      WWT_PANEL,    RESIZE_RTB,     9,   130,   247,   108,   119, 0x0,               STR_NULL},                         // IVW_SPACER
-{  WWT_RESIZEBOX,   RESIZE_LRTB,     9,   248,   259,   108,   119, 0x0,               STR_RESIZE_BUTTON},                // IVW_RESIZE
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_CREAM,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // IVW_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_CREAM,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},  // IVW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_CREAM,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},                // IVW_STICKY
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_CREAM,     0,   259,    14,   105, 0x0,               STR_NULL},                         // IVW_BACKGROUND
+{      WWT_INSET,     RESIZE_RB,  COLOUR_CREAM,     2,   257,    16,   103, 0x0,               STR_NULL},                         // IVW_VIEWPORT
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,     0,   259,   106,   107, 0x0,               STR_NULL},                         // IVW_INFO
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_CREAM,     0,   129,   108,   119, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON}, // IVW_GOTO
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_CREAM,   130,   247,   108,   119, 0x0,               STR_NULL},                         // IVW_SPACER
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_CREAM,   248,   259,   108,   119, 0x0,               STR_RESIZE_BUTTON},                // IVW_RESIZE
 {   WIDGETS_END},
 };
 
@@ -703,17 +703,17 @@ enum IndustryDirectoryWidgets {
 
 /** Widget definition of the industy directory gui */
 static const Widget _industry_directory_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},             // IDW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   415,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
-{  WWT_STICKYBOX,     RESIZE_LR,    13,   416,   427,     0,    13, 0x0,                     STR_STICKY_BUTTON},                 // IDW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},             // IDW_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_BROWN,    11,   415,     0,    13, STR_INDUSTRYDIR_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // IDW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   416,   427,     0,    13, 0x0,                     STR_STICKY_BUTTON},                 // IDW_STICKY
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    13,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},                // IDW_DROPDOWN_ORDER
-{   WWT_DROPDOWN,   RESIZE_NONE,    13,    81,   243,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},             // IDW_DROPDOWN_CRITERIA
-{      WWT_PANEL,  RESIZE_RIGHT,    13,   244,   415,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_BROWN,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},                // IDW_DROPDOWN_ORDER
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_BROWN,    81,   243,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},             // IDW_DROPDOWN_CRITERIA
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_BROWN,   244,   415,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
 
-{      WWT_PANEL,     RESIZE_RB,    13,     0,   415,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // IDW_INDUSRTY_LIST
-{  WWT_SCROLLBAR,    RESIZE_LRB,    13,   416,   427,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   416,   427,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   415,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // IDW_INDUSRTY_LIST
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   416,   427,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   416,   427,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
 {   WIDGETS_END},
 };
 
