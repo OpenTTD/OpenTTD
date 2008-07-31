@@ -191,12 +191,12 @@ struct NewsWindow : Window {
 		int top = 0;
 		int bottom = this->height - 1;
 
-		GfxFillRect(left, top, right, bottom, 0xF);
+		GfxFillRect(left,  top,    right, bottom, 0xF);
 
-		GfxFillRect(left, top, left, bottom, 0xD7);
-		GfxFillRect(right, top, right, bottom, 0xD7);
-		GfxFillRect(left, top, right, top, 0xD7);
-		GfxFillRect(left, bottom, right, bottom, 0xD7);
+		GfxFillRect(left,  top,    left,  bottom, 0xD7);
+		GfxFillRect(right, top,    right, bottom, 0xD7);
+		GfxFillRect(left,  top,    right, top,    0xD7);
+		GfxFillRect(left,  bottom, right, bottom, 0xD7);
 
 		DrawString(left + 2, top + 1, STR_00C6, TC_FROMSTRING);
 	}
@@ -322,8 +322,8 @@ struct NewsWindow : Window {
 
 
 static const Widget _news_type13_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    15,     0,   429,     0,   169, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    15,     0,    10,     0,    11, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   169, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -335,8 +335,8 @@ static WindowDesc _news_type13_desc = {
 };
 
 static const Widget _news_type2_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    15,     0,   429,     0,   129, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    15,     0,    10,     0,    11, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,   429,     0,   129, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_WHITE,     0,    10,     0,    11, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -348,10 +348,10 @@ static WindowDesc _news_type2_desc = {
 };
 
 static const Widget _news_type0_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,     5,     0,   279,    14,    86, 0x0,              STR_NULL},
-{   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     5,    11,   279,     0,    13, STR_012C_MESSAGE, STR_NULL},
-{      WWT_INSET,   RESIZE_NONE,     5,     2,   277,    16,    64, 0x0,              STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,   279,    14,    86, 0x0,              STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,    11,   279,     0,    13, STR_012C_MESSAGE, STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,  COLOUR_LIGHT_BLUE,     2,   277,    16,    64, 0x0,              STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -746,12 +746,12 @@ struct MessageHistoryWindow : Window {
 };
 
 static const Widget _message_history_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   387,     0,    13, STR_MESSAGE_HISTORY, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    13,   388,   399,     0,    13, 0x0,                 STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_RB,    13,     0,   387,    14,   139, 0x0,                 STR_MESSAGE_HISTORY_TIP},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    13,   388,   399,    14,   127, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   388,   399,   128,   139, 0x0,                 STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_BROWN,    11,   387,     0,    13, STR_MESSAGE_HISTORY, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   388,   399,     0,    13, 0x0,                 STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   387,    14,   139, 0x0,                 STR_MESSAGE_HISTORY_TIP},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_BROWN,   388,   399,    14,   127, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_BROWN,   388,   399,   128,   139, 0x0,                 STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
