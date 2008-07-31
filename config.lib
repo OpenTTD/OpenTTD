@@ -1504,12 +1504,14 @@ check_lipo() {
 }
 
 set_universal_binary_flags() {
-	if [ -n "$osx_target_version" ]; then
+	if [ -z "$osx_target_version" ]; then
 		# if we don't speficy a target version then we presume 10.4
 		osx_target_version=10.4
 	fi
 
 	if [ "$osx_target_version" = "10.4" ]; then
+		# Apple added u to 10.4 to show that it's universal
+		# There is a version without the u, but it's only in Xcode 2.0 and people should use the free update to 2.5
 		osx_sysroot_version=10.4u
 	else
 		osx_sysroot_version="$osx_target_version"
