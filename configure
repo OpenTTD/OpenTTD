@@ -32,7 +32,7 @@ MEDIA_DIR="$ROOT_DIR/media"
 SOURCE_LIST="$ROOT_DIR/source.list"
 
 if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
-	if ! [ -f "config.cache" ]; then
+	if [ ! -f "config.cache" ]; then
 		echo "can't reconfigure, because never configured before"
 		exit 1
 	fi
@@ -43,7 +43,9 @@ if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
 	exit $?
 fi
 
-export SHOW_HELP="0"
+# 'export SHOW_HELP="0"' doesn't work on some systems
+SHOW_HELP="0"
+export SHOW_HELP
 
 set_default
 detect_params "$@"
@@ -70,7 +72,7 @@ else
 	PIPE_SORT="$sort"
 fi
 
-if ! [ -f "$LANG_DIR/english.txt" ]; then
+if [ ! -f "$LANG_DIR/english.txt" ]; then
 	echo "Languages not found in $LANG_DIR. Can't continue without it."
 	echo "Please make sure the dir exists and contains at least english.txt"
 fi
