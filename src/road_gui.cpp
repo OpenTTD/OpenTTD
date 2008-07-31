@@ -620,21 +620,21 @@ struct BuildRoadToolbarWindow : Window {
 
 /** Widget definition of the build road toolbar */
 static const Widget _build_road_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},             // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   250,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   251,   262,     0,    13, 0x0,                        STR_STICKY_BUTTON},                 // RTW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},             // RTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   250,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},   // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   251,   262,     0,    13, 0x0,                        STR_STICKY_BUTTON},                 // RTW_STICKY
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_X_DIR,         STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_X
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_Y_DIR,         STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOROAD,           STR_BUILD_AUTOROAD_TIP},            // RTW_AUTOROAD
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},   // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_ROAD_VEHICLE_DEPOT}, // RTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_BUS_STATION},        // RTW_BUS_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_TRUCK_LOADING_BAY},  // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   154,   175,    14,    35, SPR_IMG_ROAD_ONE_WAY,       STR_TOGGLE_ONE_WAY_ROAD},           // RTW_ONE_WAY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   176,   218,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},        // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   219,   240,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},        // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   241,   262,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},  // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_ROAD_X_DIR,         STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_X
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_ROAD_Y_DIR,         STR_180B_BUILD_ROAD_SECTION},       // RTW_ROAD_Y
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    65,    14,    35, SPR_IMG_AUTOROAD,           STR_BUILD_AUTOROAD_TIP},            // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},   // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,         STR_180C_BUILD_ROAD_VEHICLE_DEPOT}, // RTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   110,   131,    14,    35, SPR_IMG_BUS_STATION,        STR_180D_BUILD_BUS_STATION},        // RTW_BUS_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,          STR_180E_BUILD_TRUCK_LOADING_BAY},  // RTW_TRUCK_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   154,   175,    14,    35, SPR_IMG_ROAD_ONE_WAY,       STR_TOGGLE_ONE_WAY_ROAD},           // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   176,   218,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},        // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   219,   240,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},        // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   241,   262,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR},  // RTW_REMOVE
 
 {   WIDGETS_END},
 };
@@ -648,21 +648,21 @@ static const WindowDesc _build_road_desc = {
 
 /** Widget definition of the build tram toolbar */
 static const Widget _build_tramway_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},                // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   228,     0,    13, STR_WHITE_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},      // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   229,   240,     0,    13, 0x0,                            STR_STICKY_BUTTON},                    // RTW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},                // RTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   228,     0,    13, STR_WHITE_TRAMWAY_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},      // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   229,   240,     0,    13, 0x0,                            STR_STICKY_BUTTON},                    // RTW_STICKY
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_TRAMWAY_X_DIR,          STR_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_X
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_TRAMWAY_Y_DIR,          STR_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOTRAM,               STR_BUILD_AUTOTRAM_TIP},               // RTW_AUTOROAD
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,               STR_018D_DEMOLISH_BUILDINGS_ETC},      // RTW_DEMOLISH
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,             STR_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   131,    14,    35, SPR_IMG_BUS_STATION,            STR_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,              STR_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                            STR_NULL},                             // RTW_ONE_WAY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   154,   196,    14,    35, SPR_IMG_BRIDGE,                 STR_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   197,   218,    14,    35, SPR_IMG_ROAD_TUNNEL,            STR_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   219,   240,    14,    35, SPR_IMG_REMOVE,                 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_TRAMWAY_X_DIR,          STR_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_X
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_TRAMWAY_Y_DIR,          STR_BUILD_TRAMWAY_SECTION},            // RTW_ROAD_Y
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    65,    14,    35, SPR_IMG_AUTOTRAM,               STR_BUILD_AUTOTRAM_TIP},               // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    66,    87,    14,    35, SPR_IMG_DYNAMITE,               STR_018D_DEMOLISH_BUILDINGS_ETC},      // RTW_DEMOLISH
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    88,   109,    14,    35, SPR_IMG_ROAD_DEPOT,             STR_BUILD_TRAM_VEHICLE_DEPOT},         // RTW_DEPOT
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   110,   131,    14,    35, SPR_IMG_BUS_STATION,            STR_BUILD_PASSENGER_TRAM_STATION},     // RTW_BUS_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   132,   153,    14,    35, SPR_IMG_TRUCK_BAY,              STR_BUILD_CARGO_TRAM_STATION},         // RTW_TRUCK_STATION
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                            STR_NULL},                             // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   154,   196,    14,    35, SPR_IMG_BRIDGE,                 STR_BUILD_TRAMWAY_BRIDGE},             // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   197,   218,    14,    35, SPR_IMG_ROAD_TUNNEL,            STR_BUILD_TRAMWAY_TUNNEL},             // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   219,   240,    14,    35, SPR_IMG_REMOVE,                 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS}, // RTW_REMOVE
 
 {   WIDGETS_END},
 };
@@ -685,21 +685,21 @@ void ShowBuildRoadToolbar(RoadType roadtype)
 
 /** Widget definition of the build road toolbar in the scenario editor */
 static const Widget _build_road_scen_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},            // RTW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   184,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},  // RTW_CAPTION
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   185,   196,     0,    13, 0x0,                        STR_STICKY_BUTTON},                // RTW_STICKY
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},            // RTW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,    11,   184,     0,    13, STR_1802_ROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},  // RTW_CAPTION
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   185,   196,     0,    13, 0x0,                        STR_STICKY_BUTTON},                // RTW_STICKY
 
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_ROAD_X_DIR,         STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_X
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_ROAD_Y_DIR,         STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_Y
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_AUTOROAD,           STR_BUILD_AUTOROAD_TIP},           // RTW_AUTOROAD
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},  // RTW_DEMOLISH
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_DEPOT
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_BUS_STATION
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_TRUCK_STATION
-{     WWT_IMGBTN,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_ROAD_ONE_WAY,       STR_TOGGLE_ONE_WAY_ROAD},          // RTW_ONE_WAY
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   110,   152,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},       // RTW_BUILD_BRIDGE
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   153,   174,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},       // RTW_BUILD_TUNNEL
-{     WWT_IMGBTN,   RESIZE_NONE,     7,   175,   196,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,    21,    14,    35, SPR_IMG_ROAD_X_DIR,         STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_X
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    22,    43,    14,    35, SPR_IMG_ROAD_Y_DIR,         STR_180B_BUILD_ROAD_SECTION},      // RTW_ROAD_Y
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    44,    65,    14,    35, SPR_IMG_AUTOROAD,           STR_BUILD_AUTOROAD_TIP},           // RTW_AUTOROAD
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    66,    87,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},  // RTW_DEMOLISH
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_DEPOT
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_BUS_STATION
+{      WWT_EMPTY,   RESIZE_NONE,  COLOUR_DARK_GREEN,     0,     0,     0,     0, 0x0,                        STR_NULL},                         // RTW_TRUCK_STATION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,    88,   109,    14,    35, SPR_IMG_ROAD_ONE_WAY,       STR_TOGGLE_ONE_WAY_ROAD},          // RTW_ONE_WAY
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   110,   152,    14,    35, SPR_IMG_BRIDGE,             STR_180F_BUILD_ROAD_BRIDGE},       // RTW_BUILD_BRIDGE
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   153,   174,    14,    35, SPR_IMG_ROAD_TUNNEL,        STR_1810_BUILD_ROAD_TUNNEL},       // RTW_BUILD_TUNNEL
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   175,   196,    14,    35, SPR_IMG_REMOVE,             STR_1811_TOGGLE_BUILD_REMOVE_FOR}, // RTW_REMOVE
 {   WIDGETS_END},
 };
 
@@ -772,13 +772,13 @@ public:
 
 /** Widget definition of the build road depot window */
 static const Widget _build_road_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},              // BRDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1806_ROAD_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // BRDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,                             STR_NULL},                           // BRDW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_NE
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_SE
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_SW
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_NW
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},              // BRDW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   139,     0,    13, STR_1806_ROAD_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // BRDW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   139,    14,   121, 0x0,                             STR_NULL},                           // BRDW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         71,   136,    17,    66, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_NE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         71,   136,    69,   118, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_SE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,          3,    68,    69,   118, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_SW
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,          3,    68,    17,    66, 0x0,                             STR_1813_SELECT_ROAD_VEHICLE_DEPOT}, // BRDW_DEPOT_NW
 {   WIDGETS_END},
 };
 
@@ -907,20 +907,20 @@ public:
 
 /** Widget definition of the build raod station window */
 static const Widget _rv_station_picker_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},             // BRSW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   206,     0,    13, STR_NULL,                         STR_018C_WINDOW_TITLE_DRAG_THIS},   // BRSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   206,    14,   176, 0x0,                              STR_NULL},                          // BRSW_BACKGROUND
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},             // BRSW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   206,     0,    13, STR_NULL,                         STR_018C_WINDOW_TITLE_DRAG_THIS},   // BRSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   206,    14,   176, 0x0,                              STR_NULL},                          // BRSW_BACKGROUND
 
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                              STR_NULL},                          // BRSW_STATION_NE
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                              STR_NULL},                          // BRSW_STATION_SE
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                              STR_NULL},                          // BRSW_STATION_SW
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                              STR_NULL},                          // BRSW_STATION_NW
-{      WWT_PANEL,   RESIZE_NONE,    14,   139,   204,    17,    66, 0x0,                              STR_NULL},                          // BRSW_STATION_X
-{      WWT_PANEL,   RESIZE_NONE,    14,   139,   204,    69,   118, 0x0,                              STR_NULL},                          // BRSW_STATION_Y
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    17,    66, 0x0,                              STR_NULL},                          // BRSW_STATION_NE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        71,   136,    69,   118, 0x0,                              STR_NULL},                          // BRSW_STATION_SE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    69,   118, 0x0,                              STR_NULL},                          // BRSW_STATION_SW
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         3,    68,    17,    66, 0x0,                              STR_NULL},                          // BRSW_STATION_NW
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       139,   204,    17,    66, 0x0,                              STR_NULL},                          // BRSW_STATION_X
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       139,   204,    69,   118, 0x0,                              STR_NULL},                          // BRSW_STATION_Y
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE}, // BRSW_LT_OFF
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},  // BRSW_LT_ON
-{      WWT_LABEL,   RESIZE_NONE,     7,     0,   139,   120,   133, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},                          // BRSW_INFO
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        10,    69,   133,   144, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE}, // BRSW_LT_OFF
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        70,   129,   133,   144, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},  // BRSW_LT_ON
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   139,   120,   133, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},                          // BRSW_INFO
 {   WIDGETS_END},
 };
 
