@@ -188,7 +188,7 @@ char *InlineString(char *buf, StringID string)
  */
 void SetDParamStr(uint n, const char *str)
 {
-	SetDParam(n, (uint64)str);
+	SetDParam(n, (uint64)(size_t)str);
 }
 
 void InjectDParam(int amount)
@@ -297,7 +297,7 @@ static char *FormatTinyDate(char *buff, Date date, const char* last)
 	snprintf(day,   lengthof(day),   "%02i", ymd.day);
 	snprintf(month, lengthof(month), "%02i", ymd.month + 1);
 
-	int64 args[3] = { (int64)day, (int64)month, ymd.year };
+	int64 args[3] = { (int64)(size_t)day, (int64)(size_t)month, ymd.year };
 	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
 }
 
@@ -556,7 +556,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 
 			case SCC_RAW_STRING_POINTER: { // {RAW_STRING}
-				const char *str = (const char*)GetInt64(&argv);
+				const char *str = (const char*)(size_t)GetInt64(&argv);
 				buff = FormatString(buff, str, argv, casei, last);
 				break;
 			}
