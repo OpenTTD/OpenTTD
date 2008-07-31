@@ -231,7 +231,7 @@ public:
 			Widget *wi = &this->widget[SLW_CARGOSTART + i];
 			wi->type     = WWT_PANEL;
 			wi->display_flags = RESIZE_NONE;
-			wi->color    = 14;
+			wi->color    = COLOUR_GREY;
 			wi->left     = 89 + i * 14;
 			wi->right    = wi->left + 13;
 			wi->top      = 14;
@@ -563,28 +563,28 @@ const StringID PlayerStationsWindow::sorter_names[] = {
 
 
 static const Widget _player_stations_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // SLW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   346,   357,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   345,    37,   161, 0x0,               STR_3057_STATION_NAMES_CLICK_ON},  // SLW_LIST
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   346,   357,    37,   149, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   346,   357,   150,   161, 0x0,               STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // SLW_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   346,   357,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   345,    37,   161, 0x0,               STR_3057_STATION_NAMES_CLICK_ON},  // SLW_LIST
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   346,   357,    37,   149, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   346,   357,   150,   161, 0x0,               STR_RESIZE_BUTTON},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    13,    14,    24, STR_TRAIN,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_TRAIN
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    27,    14,    24, STR_LORRY,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_TRUCK
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    28,    41,    14,    24, STR_BUS,           STR_USE_CTRL_TO_SELECT_MORE},      // SLW_BUS
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    42,    55,    14,    24, STR_PLANE,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_AIRPLANE
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    56,    69,    14,    24, STR_SHIP,          STR_USE_CTRL_TO_SELECT_MORE},      // SLW_SHIP
-{      WWT_PANEL,   RESIZE_NONE,    14,    70,    83,    14,    24, 0x0,               STR_SELECT_ALL_FACILITIES},        // SLW_FACILALL
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    13,    14,    24, STR_TRAIN,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_TRAIN
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    14,    27,    14,    24, STR_LORRY,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_TRUCK
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    28,    41,    14,    24, STR_BUS,           STR_USE_CTRL_TO_SELECT_MORE},      // SLW_BUS
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    42,    55,    14,    24, STR_PLANE,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_AIRPLANE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    56,    69,    14,    24, STR_SHIP,          STR_USE_CTRL_TO_SELECT_MORE},      // SLW_SHIP
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    70,    83,    14,    24, 0x0,               STR_SELECT_ALL_FACILITIES},        // SLW_FACILALL
 
-{      WWT_PANEL,   RESIZE_NONE,    14,    83,    88,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_BETWEEN
-{      WWT_PANEL,   RESIZE_NONE,    14,    89,   102,    14,    24, 0x0,               STR_NO_WAITING_CARGO},             // SLW_NOCARGOWAITING
-{      WWT_PANEL,   RESIZE_NONE,    14,   103,   116,    14,    24, 0x0,               STR_SELECT_ALL_TYPES},             // SLW_CARGOALL
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   117,   357,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_RIGHT
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    83,    88,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_BETWEEN
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    89,   102,    14,    24, 0x0,               STR_NO_WAITING_CARGO},             // SLW_NOCARGOWAITING
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   103,   116,    14,    24, 0x0,               STR_SELECT_ALL_TYPES},             // SLW_CARGOALL
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   117,   357,    14,    24, 0x0,               STR_NULL},                         // SLW_PAN_RIGHT
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY,       STR_SORT_ORDER_TIP},               // SLW_SORTBY
-{   WWT_DROPDOWN,   RESIZE_NONE,    14,    81,   243,    25,    36, 0x0,               STR_SORT_CRITERIA_TIP},            // SLW_SORTDROPBTN
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   357,    25,    36, 0x0,               STR_NULL},                         // SLW_PAN_SORT_RIGHT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    25,    36, STR_SORT_BY,       STR_SORT_ORDER_TIP},               // SLW_SORTBY
+{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    81,   243,    25,    36, 0x0,               STR_SORT_CRITERIA_TIP},            // SLW_SORTDROPBTN
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   244,   357,    25,    36, 0x0,               STR_NULL},                         // SLW_PAN_SORT_RIGHT
 {   WIDGETS_END},
 };
 
@@ -608,20 +608,20 @@ void ShowPlayerStations(PlayerID player)
 }
 
 static const Widget _station_view_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},                // SVW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   236,     0,    13, STR_300A_0,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   237,   248,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   236,    14,    65, 0x0,               STR_NULL},                             // SVW_WAITING
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   237,   248,    14,    65, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   248,    66,    97, 0x0,               STR_NULL},                             // SVW_ACCEPTLIST / SVW_RATINGLIST
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    59,    98,   109, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION}, // SVW_LOCATION
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    60,   120,    98,   109, STR_3032_RATINGS,  STR_3054_SHOW_STATION_RATINGS},        // SVW_RATINGS / SVW_ACCEPTS
-{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   121,   180,    98,   109, STR_0130_RENAME,   STR_3055_CHANGE_NAME_OF_STATION},      // SVW_RENAME
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   181,   194,    98,   109, STR_TRAIN,         STR_SCHEDULED_TRAINS_TIP },            // SVW_TRAINS
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   195,   208,    98,   109, STR_LORRY,         STR_SCHEDULED_ROAD_VEHICLES_TIP },     // SVW_ROADVEHS
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   209,   222,    98,   109, STR_PLANE,         STR_SCHEDULED_AIRCRAFT_TIP },          // SVW_PLANES
-{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   223,   236,    98,   109, STR_SHIP,          STR_SCHEDULED_SHIPS_TIP },             // SVW_SHIPS
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   237,   248,    98,   109, 0x0,               STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},                // SVW_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   236,     0,    13, STR_300A_0,        STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   237,   248,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   236,    14,    65, 0x0,               STR_NULL},                             // SVW_WAITING
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   237,   248,    14,    65, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   248,    66,    97, 0x0,               STR_NULL},                             // SVW_ACCEPTLIST / SVW_RATINGLIST
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,    59,    98,   109, STR_00E4_LOCATION, STR_3053_CENTER_MAIN_VIEW_ON_STATION}, // SVW_LOCATION
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,    60,   120,    98,   109, STR_3032_RATINGS,  STR_3054_SHOW_STATION_RATINGS},        // SVW_RATINGS / SVW_ACCEPTS
+{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   121,   180,    98,   109, STR_0130_RENAME,   STR_3055_CHANGE_NAME_OF_STATION},      // SVW_RENAME
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   181,   194,    98,   109, STR_TRAIN,         STR_SCHEDULED_TRAINS_TIP },            // SVW_TRAINS
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   195,   208,    98,   109, STR_LORRY,         STR_SCHEDULED_ROAD_VEHICLES_TIP },     // SVW_ROADVEHS
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   209,   222,    98,   109, STR_PLANE,         STR_SCHEDULED_AIRCRAFT_TIP },          // SVW_PLANES
+{ WWT_PUSHTXTBTN,   RESIZE_LRTB,  COLOUR_GREY,   223,   236,    98,   109, STR_SHIP,          STR_SCHEDULED_SHIPS_TIP },             // SVW_SHIPS
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   237,   248,    98,   109, 0x0,               STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 

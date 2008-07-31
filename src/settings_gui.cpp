@@ -317,33 +317,33 @@ struct GameOptionsWindow : Window {
 };
 
 static const Widget _game_options_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,             STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   369,    14,   238, 0x0,                               STR_NULL},
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,           STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    20,    55, STR_MEASURING_UNITS,               STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,                          STR_MEASURING_UNITS_SELECTION},
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    62,    97, STR_02E6_ROAD_VEHICLES,            STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,    76,    87, STR_02E7,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    62,    97, STR_02EB_TOWN_NAMES,               STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,    76,    87, STR_02EC,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   104,   139, STR_02F4_AUTOSAVE,                 STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,   118,   129, STR_02F5,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,             STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   369,    14,   238, 0x0,                               STR_NULL},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,           STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    20,    55, STR_MEASURING_UNITS,               STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,    34,    45, STR_02E4,                          STR_MEASURING_UNITS_SELECTION},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,    62,    97, STR_02E6_ROAD_VEHICLES,            STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,    76,    87, STR_02E7,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,    62,    97, STR_02EB_TOWN_NAMES,               STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,    76,    87, STR_02EC,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   104,   139, STR_02F4_AUTOSAVE,                 STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   118,   129, STR_02F5,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,     STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   119,   207,   218, STR_02BD,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES,        STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,     STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   119,   207,   218, STR_02BD,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES,        STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   104,   139, STR_OPTIONS_LANG,                  STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,              STR_OPTIONS_LANG_TIP},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   104,   139, STR_OPTIONS_LANG,                  STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,              STR_OPTIONS_LANG_TIP},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   146,   190, STR_OPTIONS_RES,                   STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,               STR_OPTIONS_RES_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   149,   169,   176,   184, STR_EMPTY,                         STR_OPTIONS_FULLSCREEN_TIP},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,    10,   179,   146,   190, STR_OPTIONS_RES,                   STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,               STR_OPTIONS_RES_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   149,   169,   176,   184, STR_EMPTY,                         STR_OPTIONS_FULLSCREEN_TIP},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,     STR_NULL},
-{ WWT_DROPDOWNIN,   RESIZE_NONE,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,     STR_NULL},
+{ WWT_DROPDOWNIN,   RESIZE_NONE,  COLOUR_GREY,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 
 {   WIDGETS_END},
 };
@@ -366,18 +366,18 @@ extern void StartupEconomy();
 
 /* Widget definition for the game difficulty settings window */
 static const Widget _game_difficulty_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},           // GDW_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS}, // GDW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,                          STR_NULL},                        // GDW_UPPER_BG
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_6801_EASY,                STR_NULL},                        // GDW_LVL_EASY
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_6802_MEDIUM,              STR_NULL},                        // GDW_LVL_MEDIUM
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_6803_HARD,                STR_NULL},                        // GDW_LVL_HARD
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_6804_CUSTOM,              STR_NULL},                        // GDW_LVL_CUSTOM
-{    WWT_TEXTBTN,   RESIZE_NONE,     6,    10,   357,    28,    39, STR_6838_SHOW_HI_SCORE_CHART, STR_NULL},                        // GDW_HIGHSCORE
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   262, 0x0,                          STR_NULL},                        // GDW_SETTING_BG
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,   263,   278, 0x0,                          STR_NULL},                        // GDW_LOWER_BG
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,     STR_NULL},                        // GDW_ACCEPT
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   186,   266,   265,   276, STR_012E_CANCEL,              STR_NULL},                        // GDW_CANCEL
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,      0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},           // GDW_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_MAUVE,     11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS}, // GDW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,      0,   369,    14,    41, 0x0,                          STR_NULL},                        // GDW_UPPER_BG
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    10,    96,    16,    27, STR_6801_EASY,                STR_NULL},                        // GDW_LVL_EASY
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,    97,   183,    16,    27, STR_6802_MEDIUM,              STR_NULL},                        // GDW_LVL_MEDIUM
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   184,   270,    16,    27, STR_6803_HARD,                STR_NULL},                        // GDW_LVL_HARD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   271,   357,    16,    27, STR_6804_CUSTOM,              STR_NULL},                        // GDW_LVL_CUSTOM
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREEN,     10,   357,    28,    39, STR_6838_SHOW_HI_SCORE_CHART, STR_NULL},                        // GDW_HIGHSCORE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,      0,   369,    42,   262, 0x0,                          STR_NULL},                        // GDW_SETTING_BG
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,      0,   369,   263,   278, 0x0,                          STR_NULL},                        // GDW_LOWER_BG
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,     STR_NULL},                        // GDW_ACCEPT
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   186,   266,   265,   276, STR_012E_CANCEL,              STR_NULL},                        // GDW_CANCEL
 {   WIDGETS_END},
 };
 
@@ -966,17 +966,17 @@ GameSettings *PatchesSelectionWindow::patches_ptr = NULL;
 int PatchesSelectionWindow::patches_max = 0;
 
 static const Widget _patches_selection_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,                             STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,    50, 0x0,                             STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_MAUVE,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,     0,   369,    14,    41, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,     0,   369,    42,    50, 0x0,                             STR_NULL},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_CONFIG_PATCHES_VEHICLES,     STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_CONFIG_PATCHES_STATIONS,     STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    28,    39, STR_CONFIG_PATCHES_ECONOMY,      STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    28,    39, STR_CONFIG_PATCHES_AI,           STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  184,   270,    16,    27, STR_CONFIG_PATCHES_VEHICLES,     STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  271,   357,    16,    27, STR_CONFIG_PATCHES_STATIONS,     STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,    96,    28,    39, STR_CONFIG_PATCHES_ECONOMY,      STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   97,   183,    28,    39, STR_CONFIG_PATCHES_AI,           STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1207,9 +1207,9 @@ struct CustomCurrencyWindow : Window {
 };
 
 static const Widget _cust_currency_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   229,     0,    13, STR_CURRENCY_WINDOW, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   229,    14,   119, 0x0,                 STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   229,     0,    13, STR_CURRENCY_WINDOW, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   229,    14,   119, 0x0,                 STR_NULL},
 {   WIDGETS_END},
 };
 
