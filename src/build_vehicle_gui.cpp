@@ -49,17 +49,17 @@ enum BuildVehicleWidgets {
 };
 
 static const Widget _build_vehicle_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
-	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   239,     0,    13, 0x0,                     STR_018C_WINDOW_TITLE_DRAG_THIS },
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},
-	{   WWT_DROPDOWN,  RESIZE_RIGHT,    14,    81,   239,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
-	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   227,    26,    39, 0x101,                   STR_NULL },
-	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   228,   239,    26,    39, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
-	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   239,    40,   161, 0x0,                     STR_NULL },
+	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
+	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   239,     0,    13, 0x0,                     STR_018C_WINDOW_TITLE_DRAG_THIS },
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},
+	{   WWT_DROPDOWN,  RESIZE_RIGHT,  COLOUR_GREY,    81,   239,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
+	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   227,    26,    39, 0x101,                   STR_NULL },
+	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   228,   239,    26,    39, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   239,    40,   161, 0x0,                     STR_NULL },
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   162,   173, 0x0,                     STR_NULL },
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   115,   227,   162,   173, 0x0,                     STR_NULL },
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   228,   239,   162,   173, 0x0,                     STR_RESIZE_BUTTON },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   114,   162,   173, 0x0,                     STR_NULL },
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY,   115,   227,   162,   173, 0x0,                     STR_NULL },
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,                     STR_RESIZE_BUTTON },
 	{   WIDGETS_END},
 };
 
