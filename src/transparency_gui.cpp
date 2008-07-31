@@ -55,14 +55,9 @@ public:
 		}
 
 		/* Do not draw button for invisible loading indicators */
-		for (uint i = 0; i < 8; i++) {
-			if (i < TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS) {
-				DrawFrameRect(i * 22, 38, i * 22 + 19, 46, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i) ? FR_LOWERED : FR_NONE);
-			} else if (i == TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS) {
-				DrawFrameRect(i * 22, 38, i * 22 + 41, 46, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i) ? FR_LOWERED : FR_NONE);
-			} else { // i > TTW_WIDGET_BRIDGES - TTW_WIDGET_SIGNS
-				DrawFrameRect((i + 1) * 22, 38, (i + 1) * 22 + 19, 46, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i) ? FR_LOWERED : FR_NONE);
-			}
+		for (uint i = TTW_WIDGET_SIGNS; i <= TTW_WIDGET_CATENARY; i++) {
+			const Widget *wi = &this->widget[i];
+			DrawFrameRect(wi->left + 1, 38, wi->right - 1, 46, COLOUR_PALE_GREEN, HasBit(_invisibility_opt, i - TTW_WIDGET_SIGNS) ? FR_LOWERED : FR_NONE);
 		}
 	}
 
