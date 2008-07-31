@@ -143,9 +143,11 @@ endif
 endif
 endif
 
-# Make sure we have something in REV
+# Make sure we have something in REV and REV_NR
 ifeq ($(REV),)
 REV := norev000
+endif
+ifeq ($(REV_NR),)
 REV_NR := 0
 endif
 
