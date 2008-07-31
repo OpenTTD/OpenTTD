@@ -159,7 +159,7 @@ RES := $(shell if [ "`cat $(CONFIG_CACHE_ENDIAN) 2>/dev/null`" != "$(ENDIAN_FORC
 # If there is a change in the source-file-list, make sure we recheck the deps
 RES := $(shell if [ "`cat $(CONFIG_CACHE_SOURCE) 2>/dev/null`" != "$(SRCS)" ]; then echo "$(SRCS)" > $(CONFIG_CACHE_SOURCE); fi )
 # If there is a change in the revision, make sure we recompile rev.cpp
-RES := $(shell if [ "`cat $(CONFIG_CACHE_VERSION) 2>/dev/null`" != "$(REV)" ]; then echo "$(REV)" > $(CONFIG_CACHE_VERSION); fi )
+RES := $(shell if [ "`cat $(CONFIG_CACHE_VERSION) 2>/dev/null`" != "$(REV) $(MODIFIED)" ]; then echo "$(REV) $(MODIFIED)" > $(CONFIG_CACHE_VERSION); fi )
 
 ifndef MAKEDEPEND
 # The slow, but always correct, dep-check
