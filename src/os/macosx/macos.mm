@@ -171,18 +171,23 @@ const char *GetCurrentLocale(const char *)
 	NSString* preferredLang = [languages objectAtIndex:0];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
 
-	/* MacOS 10.3.9 can't handle encoding:NSASCIIStringEncoding
-	 * we will completely disable compiling it for such old targets to avoid a warning */
-#if (MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_3)
-	/* Note: MAC_OS_X_VERSION_MAX_ALLOWED is the current OSX version/SDK by default */
+	/* Since Apple introduced encoding to CString in OSX 10.4 we have to make a few conditions
+	 * to get the right code for the used version of OSX. */
+#if (MAC_OS_X_VERSION_MAX_ALLOWED == MAC_OS_X_VERSION_10_4)
+	/* 10.4 can compile both versions just fine and will select the correct version at runtime based
+	 * on the version of OSX at execution time. */
 	if (MacOSVersionIsAtLeast(10, 4, 0)) {
 		[ preferredLang getCString:retbuf maxLength:32 encoding:NSASCIIStringEncoding ];
-	} else {
-#else
-	/* 10.3.9 needs to start the { too */
-	{
+	} else
 #endif
-		[ preferredLang getCString:retbuf maxLength:32 ];
+	{
+		[ preferredLang getCString:retbuf maxLength:32
+#if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5)
+		/* If 10.5+ is used to compile then encoding is needed here.
+		 * If 10.3 or 10.4 is used for compiling then this line is used by 10.3 and encoding should not be present here. */
+		encoding:NSASCIIStringEncoding
+#endif
+		];
 	}
 	return retbuf;
 }
