@@ -1805,7 +1805,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
 	const Station *st;
 
-	if (!HasBit(_display_opt, DO_SHOW_STATION_NAMES)) return false;
+	if (!HasBit(_display_opt, DO_SHOW_STATION_NAMES) || IsInvisibilitySet(TO_SIGNS)) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
@@ -1922,7 +1922,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 {
 	const Waypoint *wp;
 
-	if (!HasBit(_display_opt, DO_WAYPOINTS)) return false;
+	if (!HasBit(_display_opt, DO_WAYPOINTS) || IsInvisibilitySet(TO_SIGNS)) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:
