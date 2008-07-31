@@ -228,7 +228,7 @@ public:
 		this->LowerWidget(MTSW_LIST_RIGHT);
 		this->DrawWidgets();
 
-		GfxFillRect(3, 23, 3 + 177, 23 + 191, 0);
+		GfxFillRect(  3, 23, 3 + 177,   23 + 191, 0);
 		GfxFillRect(251, 23, 251 + 177, 23 + 191, 0);
 
 		DrawStringCentered(92, 15, STR_01EE_TRACK_INDEX, TC_FROMSTRING);
@@ -328,20 +328,20 @@ public:
 };
 
 static const Widget _music_track_selection_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},                  // MTSW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   431,     0,    13, STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // MTSW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   431,    14,   217, 0x0,                              STR_NULL},                               // MTSW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,   181,    22,   215, 0x0,                              STR_01FA_CLICK_ON_MUSIC_TRACK_TO},       // MTSW_LIST_LEFT
-{      WWT_PANEL,   RESIZE_NONE,    14,   250,   429,    22,   215, 0x0,                              STR_CLICK_ON_TRACK_TO_REMOVE},           // MTSW_LIST_RIGHT
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    44,    51, 0x0,                              STR_01F3_SELECT_ALL_TRACKS_PROGRAM},     // MTSW_ALL
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    52,    59, 0x0,                              STR_01F4_SELECT_OLD_STYLE_MUSIC},        // MTSW_OLD
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    60,    67, 0x0,                              STR_01F5_SELECT_NEW_STYLE_MUSIC},        // MTSW_NEW
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    68,    75, 0x0,                              STR_0330_SELECT_EZY_STREET_STYLE},       // MTSW_EZY
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    76,    83, 0x0,                              STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},  // MTSW_CUSTOM1
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,    84,    91, 0x0,                              STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},  // MTSW_CUSTOM2
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,   108,   115, 0x0,                              STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1}, // MTSW_CLEAR
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},                  // MTSW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   431,     0,    13, STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},        // MTSW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   431,    14,   217, 0x0,                              STR_NULL},                               // MTSW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   181,    22,   215, 0x0,                              STR_01FA_CLICK_ON_MUSIC_TRACK_TO},       // MTSW_LIST_LEFT
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   250,   429,    22,   215, 0x0,                              STR_CLICK_ON_TRACK_TO_REMOVE},           // MTSW_LIST_RIGHT
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    44,    51, 0x0,                              STR_01F3_SELECT_ALL_TRACKS_PROGRAM},     // MTSW_ALL
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    52,    59, 0x0,                              STR_01F4_SELECT_OLD_STYLE_MUSIC},        // MTSW_OLD
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    60,    67, 0x0,                              STR_01F5_SELECT_NEW_STYLE_MUSIC},        // MTSW_NEW
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    68,    75, 0x0,                              STR_0330_SELECT_EZY_STREET_STYLE},       // MTSW_EZY
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    76,    83, 0x0,                              STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},  // MTSW_CUSTOM1
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,    84,    91, 0x0,                              STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},  // MTSW_CUSTOM2
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,   108,   115, 0x0,                              STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1}, // MTSW_CLEAR
 #if 0
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,                              STR_01F9_SAVE_MUSIC_SETTINGS},           // MTSW_SAVE
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   186,   245,   124,   131, 0x0,                              STR_01F9_SAVE_MUSIC_SETTINGS},           // MTSW_SAVE
 #endif
 {   WIDGETS_END},
 };
@@ -434,22 +434,22 @@ public:
 			DrawStringCentered(25 + i * 50, 59, STR_01D5_ALL + i, msf.playlist == i ? TC_WHITE : TC_BLACK);
 		}
 
-		DrawStringCentered(31, 43, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK));
+		DrawStringCentered( 31, 43, STR_01E9_SHUFFLE, (msf.shuffle ? TC_WHITE : TC_BLACK));
 		DrawStringCentered(269, 43, STR_01EA_PROGRAM, TC_FROMSTRING);
 		DrawStringCentered(141, 15, STR_01DB_MUSIC_VOLUME, TC_FROMSTRING);
 		DrawStringCentered(141, 29, STR_01DD_MIN_MAX, TC_FROMSTRING);
 		DrawStringCentered(247, 15, STR_01DC_EFFECTS_VOLUME, TC_FROMSTRING);
 		DrawStringCentered(247, 29, STR_01DD_MIN_MAX, TC_FROMSTRING);
 
-		DrawFrameRect(108, 23, 174, 26, 14, FR_LOWERED);
-		DrawFrameRect(214, 23, 280, 26, 14, FR_LOWERED);
+		DrawFrameRect(108, 23, 174, 26, COLOUR_GREY, FR_LOWERED);
+		DrawFrameRect(214, 23, 280, 26, COLOUR_GREY, FR_LOWERED);
 
 		DrawFrameRect(
-			108 + msf.music_vol / 2, 22, 111 + msf.music_vol / 2, 28, 14, FR_NONE
+			108 + msf.music_vol / 2, 22, 111 + msf.music_vol / 2, 28, COLOUR_GREY, FR_NONE
 		);
 
 		DrawFrameRect(
-			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, 14, FR_NONE
+			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, COLOUR_GREY, FR_NONE
 		);
 	}
 
@@ -526,24 +526,24 @@ public:
 };
 
 static const Widget _music_window_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},                    // MW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS},          // MW_CAPTION
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, SPR_IMG_SKIP_TO_PREV,  STR_01DE_SKIP_TO_PREVIOUS_TRACK},          // MW_PREV
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, SPR_IMG_SKIP_TO_NEXT,  STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION}, // MW_NEXT
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    44,    65,    14,    35, SPR_IMG_STOP_MUSIC,    STR_01E0_STOP_PLAYING_MUSIC},              // MW_STOP
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    66,    87,    14,    35, SPR_IMG_PLAY_MUSIC,    STR_01E1_START_PLAYING_MUSIC},             // MW_PLAY
-{      WWT_PANEL,   RESIZE_NONE,    14,    88,   299,    14,    35, 0x0,                   STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC},       // MW_SLIDERS
-{      WWT_PANEL,   RESIZE_NONE,    14,   186,   201,    15,    34, 0x0,                   STR_NULL},                                 // MW_GAUGE
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   299,    36,    57, 0x0,                   STR_NULL},                                 // MW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,    14,    59,   240,    45,    53, 0x0,                   STR_NULL},                                 // MW_INFO
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,     6,    55,    42,    49, 0x0,                   STR_01FB_TOGGLE_PROGRAM_SHUFFLE},          // MW_SHUFFLE
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   244,   293,    42,    49, 0x0,                   STR_01FC_SHOW_MUSIC_TRACK_SELECTION},      // MW_PROGRAMME
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,     0,    49,    58,    65, 0x0,                   STR_01F3_SELECT_ALL_TRACKS_PROGRAM},       // MW_ALL
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,    50,    99,    58,    65, 0x0,                   STR_01F4_SELECT_OLD_STYLE_MUSIC},          // MW_OLD
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   100,   149,    58,    65, 0x0,                   STR_01F5_SELECT_NEW_STYLE_MUSIC},          // MW_NEW
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   150,   199,    58,    65, 0x0,                   STR_0330_SELECT_EZY_STREET_STYLE},         // MW_EZY
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   200,   249,    58,    65, 0x0,                   STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},    // MW_CUSTOM1
-{    WWT_PUSHBTN,   RESIZE_NONE,    14,   250,   299,    58,    65, 0x0,                   STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},    // MW_CUSTOM2
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},                    // MW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   299,     0,    13, STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS},          // MW_CAPTION
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    21,    14,    35, SPR_IMG_SKIP_TO_PREV,  STR_01DE_SKIP_TO_PREVIOUS_TRACK},          // MW_PREV
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    22,    43,    14,    35, SPR_IMG_SKIP_TO_NEXT,  STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION}, // MW_NEXT
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    44,    65,    14,    35, SPR_IMG_STOP_MUSIC,    STR_01E0_STOP_PLAYING_MUSIC},              // MW_STOP
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    66,    87,    14,    35, SPR_IMG_PLAY_MUSIC,    STR_01E1_START_PLAYING_MUSIC},             // MW_PLAY
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    88,   299,    14,    35, 0x0,                   STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC},       // MW_SLIDERS
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   186,   201,    15,    34, 0x0,                   STR_NULL},                                 // MW_GAUGE
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   299,    36,    57, 0x0,                   STR_NULL},                                 // MW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    59,   240,    45,    53, 0x0,                   STR_NULL},                                 // MW_INFO
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,     6,    55,    42,    49, 0x0,                   STR_01FB_TOGGLE_PROGRAM_SHUFFLE},          // MW_SHUFFLE
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   244,   293,    42,    49, 0x0,                   STR_01FC_SHOW_MUSIC_TRACK_SELECTION},      // MW_PROGRAMME
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    49,    58,    65, 0x0,                   STR_01F3_SELECT_ALL_TRACKS_PROGRAM},       // MW_ALL
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,    50,    99,    58,    65, 0x0,                   STR_01F4_SELECT_OLD_STYLE_MUSIC},          // MW_OLD
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   100,   149,    58,    65, 0x0,                   STR_01F5_SELECT_NEW_STYLE_MUSIC},          // MW_NEW
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   150,   199,    58,    65, 0x0,                   STR_0330_SELECT_EZY_STREET_STYLE},         // MW_EZY
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   249,    58,    65, 0x0,                   STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},    // MW_CUSTOM1
+{    WWT_PUSHBTN,   RESIZE_NONE,  COLOUR_GREY,   250,   299,    58,    65, 0x0,                   STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},    // MW_CUSTOM2
 {   WIDGETS_END},
 };
 
