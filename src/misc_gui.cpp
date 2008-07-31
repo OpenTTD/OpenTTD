@@ -58,9 +58,9 @@ static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
 static const Widget _land_info_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL, RESIZE_BOTTOM,    14,     0,   279,    14,    99, 0x0,                            STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   279,     0,    13, STR_01A3_LAND_AREA_INFORMATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL, RESIZE_BOTTOM,  COLOUR_GREY,     0,   279,    14,    99, 0x0,                            STR_NULL},
 {    WIDGETS_END},
 };
 
@@ -283,10 +283,10 @@ void PlaceLandBlockInfo()
 }
 
 static const Widget _about_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   419,     0,    13, STR_015B_OPENTTD, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   419,    14,   271, 0x0,              STR_NULL},
-{      WWT_FRAME,   RESIZE_NONE,    14,     5,   414,    40,   245, STR_NULL,         STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   419,     0,    13, STR_015B_OPENTTD, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   419,    14,   271, 0x0,              STR_NULL},
+{      WWT_FRAME,   RESIZE_NONE,  COLOUR_GREY,     5,   414,    40,   245, STR_NULL,         STR_NULL},
 {    WIDGETS_END},
 };
 
@@ -404,16 +404,16 @@ void ShowAboutWindow()
 }
 
 static const Widget _errmsg_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     4,    11,   239,     0,    13, STR_00B2_MESSAGE, STR_NULL},
-{      WWT_PANEL,   RESIZE_BOTTOM,   4,     0,   239,    14,    45, 0x0,              STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   239,     0,    13, STR_00B2_MESSAGE, STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   239,    14,    45, 0x0,              STR_NULL},
 {    WIDGETS_END},
 };
 
 static const Widget _errmsg_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     4,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM, STR_NULL},
-{      WWT_PANEL,   RESIZE_BOTTOM,   4,     0,   333,    14,   136, 0x0,                   STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    COLOUR_RED,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    COLOUR_RED,    11,   333,     0,    13, STR_00B3_MESSAGE_FROM, STR_NULL},
+{      WWT_PANEL,   RESIZE_BOTTOM,  COLOUR_RED,     0,   333,    14,   136, 0x0,                   STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -613,7 +613,7 @@ void HideFillingPercent(TextEffectID te_id)
 }
 
 static const Widget _tooltips_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   199,     0,    31, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,     0,    31, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1137,12 +1137,12 @@ struct QueryStringWindow : public QueryStringBaseWindow
 };
 
 static const Widget _query_string_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   259,     0,    13, STR_012D,        STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   259,    14,    29, 0x0,             STR_NULL},
-{    WWT_EDITBOX,   RESIZE_NONE,    14,     2,   257,    16,    27, 0x0,             STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   129,    30,    41, STR_012E_CANCEL, STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   259,    30,    41, STR_012F_OK,     STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_012D,        STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,             STR_NULL},
+{    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,             STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   129,    30,    41, STR_012E_CANCEL, STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   130,   259,    30,    41, STR_012F_OK,     STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1278,11 +1278,11 @@ struct QueryWindow : public Window {
 
 
 static const Widget _query_widgets[] = {
-{  WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-{   WWT_CAPTION, RESIZE_NONE,  4,  11, 209,   0,  13, STR_NULL,        STR_NULL},
-{     WWT_PANEL, RESIZE_NONE,  4,   0, 209,  14,  81, 0x0, /*OVERRIDE*/STR_NULL},
-{WWT_PUSHTXTBTN, RESIZE_NONE,  3,  20,  90,  62,  73, STR_00C9_NO,     STR_NULL},
-{WWT_PUSHTXTBTN, RESIZE_NONE,  3, 120, 190,  62,  73, STR_00C8_YES,    STR_NULL},
+{  WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_RED,      0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW},
+{   WWT_CAPTION, RESIZE_NONE,  COLOUR_RED,     11, 209,   0,  13, STR_NULL,        STR_NULL},
+{     WWT_PANEL, RESIZE_NONE,  COLOUR_RED,      0, 209,  14,  81, 0x0, /*OVERRIDE*/STR_NULL},
+{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW,  20,  90,  62,  73, STR_00C9_NO,     STR_NULL},
+{WWT_PUSHTXTBTN, RESIZE_NONE,  COLOUR_YELLOW, 120, 190,  62,  73, STR_00C8_YES,    STR_NULL},
 {   WIDGETS_END },
 };
 
@@ -1309,34 +1309,34 @@ void ShowQuery(StringID caption, StringID message, Window *parent, QueryCallback
 
 
 static const Widget _load_dialog_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_NULL,         STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,              STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   256,    48,   153, 0x0,              STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   151, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   141, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   142,   153, 0x0,              STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,         STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,              STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   153, 0x0,              STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
+{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   151, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   141, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   142,   153, 0x0,              STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _save_dialog_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_NULL,         STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,     0,   256,    26,    47, 0x0,              STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,    14,     0,   256,    48,   151, 0x0,              STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
-{      WWT_INSET,     RESIZE_RB,    14,     2,   243,    50,   150, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   151, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   256,   152,   167, 0x0,              STR_NULL},
-{    WWT_EDITBOX,    RESIZE_RTB,    14,     2,   254,   154,   165, STR_SAVE_OSKTITLE, STR_400B_CURRENTLY_SELECTED_NAME},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   127,   168,   179, STR_4003_DELETE,  STR_400C_DELETE_THE_CURRENTLY_SELECTED},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   128,   244,   168,   179, STR_4002_SAVE,    STR_400D_SAVE_THE_CURRENT_GAME_USING},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   168,   179, 0x0,              STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   256,     0,    13, STR_NULL,         STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   127,    14,    25, STR_SORT_BY_NAME, STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   128,   256,    14,    25, STR_SORT_BY_DATE, STR_SORT_ORDER_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,     0,   256,    26,    47, 0x0,              STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   256,    48,   151, 0x0,              STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,  COLOUR_GREY,   245,   256,    48,    59, SPR_HOUSE_ICON,   STR_SAVELOAD_HOME_BUTTON},
+{      WWT_INSET,     RESIZE_RB,  COLOUR_GREY,     2,   243,    50,   150, 0x0,              STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   245,   256,    60,   151, 0x0,              STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   256,   152,   167, 0x0,              STR_NULL},
+{    WWT_EDITBOX,    RESIZE_RTB,  COLOUR_GREY,     2,   254,   154,   165, STR_SAVE_OSKTITLE, STR_400B_CURRENTLY_SELECTED_NAME},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   127,   168,   179, STR_4003_DELETE,  STR_400C_DELETE_THE_CURRENTLY_SELECTED},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   128,   244,   168,   179, STR_4002_SAVE,    STR_400D_SAVE_THE_CURRENT_GAME_USING},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   245,   256,   168,   179, 0x0,              STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
