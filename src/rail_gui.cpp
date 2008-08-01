@@ -3,6 +3,7 @@
 /** @file rail_gui.cpp File for dealing with rail construction user interface */
 
 #include "stdafx.h"
+#include "direction_type.h"
 #include "openttd.h"
 #include "tile_cmd.h"
 #include "landscape.h"
@@ -51,8 +52,8 @@ static bool _convert_signal_button;          ///< convert signal button in the s
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
 static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
 
-static struct {
-	byte orientation;                 ///< Currently selected rail station orientation
+struct RailStationGUISettings {
+	Axis orientation;                 ///< Currently selected rail station orientation
 	byte numtracks;                   ///< Currently selected number of tracks in station (if not \c dragdrop )
 	byte platlength;                  ///< Currently selected platform length of station (if not \c dragdrop )
 	bool dragdrop;                    ///< Use drag & drop to place a station
@@ -61,7 +62,8 @@ static struct {
 	StationClassIDByte station_class; ///< Currently selected custom station class (if newstations is \c true )
 	byte station_type;                ///< Station type within the currently selected custom station class (if newstations is \c true )
 	byte station_count;               ///< Number of custom stations (if newstations is \c true )
-} _railstation;
+};
+static RailStationGUISettings _railstation; ///< Settings of the station builder GUI
 
 
 static void HandleStationPlacement(TileIndex start, TileIndex end);
@@ -864,7 +866,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	if (sy > ey) Swap(sy, ey);
 	w = ex - sx + 1;
 	h = ey - sy + 1;
-	if (!_railstation.orientation) Swap(w, h);
+	if (_railstation.orientation == AXIS_X) Swap(w, h);
 
 	DoCommandP(TileXY(sx, sy),
 			_railstation.orientation | (w << 8) | (h << 16) | (_ctrl_pressed << 24),
@@ -995,7 +997,7 @@ public:
 		} else {
 			int x = _railstation.numtracks;
 			int y = _railstation.platlength;
-			if (_railstation.orientation == 0) Swap(x, y);
+			if (_railstation.orientation == AXIS_X) Swap(x, y);
 			if (!_remove_button_clicked)
 				SetTileSelectSize(x, y);
 		}
@@ -1081,7 +1083,7 @@ public:
 			case BRSW_PLATFORM_DIR_X:
 			case BRSW_PLATFORM_DIR_Y:
 				this->RaiseWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
-				_railstation.orientation = widget - BRSW_PLATFORM_DIR_X;
+				_railstation.orientation = (Axis)(widget - BRSW_PLATFORM_DIR_X);
 				this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
