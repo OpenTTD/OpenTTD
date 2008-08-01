@@ -564,7 +564,6 @@ check_params() {
 	detect_png
 	detect_freetype
 	detect_fontconfig
-	detect_iconv
 	detect_pspconfig
 	detect_libtimidity
 
@@ -828,6 +827,10 @@ check_params() {
 			shared_dir=""
 		fi
 	fi
+
+	# "set_universal_binary_flags" needs to be before "detect_iconv"
+	set_universal_binary_flags
+	detect_iconv
 
 	if [ -n "$personal_dir" ]
 	then
@@ -1188,11 +1191,6 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -mtune=970 -mcpu=970 -mpowerpc-gpopt"
 	fi
 
-	if [ "$with_osx_sysroot" != "0" ] && [ "$with_osx_sysroot" != "3" ]; then
-		CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX$with_osx_sysroot.sdk"
-		LDFLAGS="$LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$with_osx_sysroot.sdk"
-	fi
-
 	if [ -n "$personal_dir" ]; then
 		CFLAGS="$CFLAGS -DWITH_PERSONAL_DIR -DPERSONAL_DIR=\\\\\"$personal_dir\\\\\""
 	fi
@@ -1406,6 +1404,26 @@ check_lipo() {
 		$cc_host lipo.test.c -o lipo.test
 		check_compiler "host lipo" "lipo" "$host" "$lipo" "$LIPO" "lipo" "lipo" "4" "-info lipo.test"
 		rm -f lipo.test.c lipo.test
+	fi
+}
+
+set_universal_binary_flags() {
+	if [ -z "$osx_target_version" ]; then
+		# if we don't speficy a target version then we presume 10.4
+		osx_target_version=10.4
+	fi
+
+	if [ "$osx_target_version" = "10.4" ]; then
+		# Apple added u to 10.4 to show that it's universal
+		# There is a version without the u, but it's only in Xcode 2.0 and people should use the free update to 2.5
+		osx_sysroot_version=10.4u
+	else
+		osx_sysroot_version="$osx_target_version"
+	fi
+
+	if [ "$with_osx_sysroot" = "3" ]; then
+		CFLAGS="$CFLAGS -isysroot /Developer/SDKs/MacOSX$osx_sysroot_version.sdk -mmacosx-version-min=$osx_target_version"
+		LDFLAGS="$LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$osx_sysroot_version.sdk -mmacosx-version-min=$osx_target_version"
 	fi
 }
 
@@ -2129,6 +2147,9 @@ detect_cputype() {
 }
 
 make_sed() {
+	T_CFLAGS="$CFLAGS"
+	T_LDFLAGS="$LDFLAGS"
+
 	# We check here if we are PPC, because then we need to enable FOUR_BYTE_BOOL
 	#  We do this here, and not sooner, so universal builds also have this
 	#  automatically correct
@@ -2137,17 +2158,7 @@ make_sed() {
 	#  bytes too, but only for PPC.
 	ppc=`$cc_host -dumpmachine | egrep "powerpc|ppc"`
 	if [ -n "$ppc" ]; then
-		T_CFLAGS="$CFLAGS -DFOUR_BYTE_BOOL"
-		osx_sysroot_version=10.4u
-	else
-		T_CFLAGS="$CFLAGS"
-		osx_sysroot_version=10.4u
-	fi
-
-	T_LDFLAGS="$LDFLAGS"
-	if [ "$with_osx_sysroot" = "3" ]; then
-		T_CFLAGS="$T_CFLAGS -isysroot /Developer/SDKs/MacOSX$osx_sysroot_version.sdk"
-		T_LDFLAGS="$T_LDFLAGS -Wl,-syslibroot,/Developer/SDKs/MacOSX$osx_sysroot_version.sdk"
+		T_CFLAGS="$T_CFLAGS -DFOUR_BYTE_BOOL"
 	fi
 
 	SRC_OBJS_DIR="$BASE_SRC_OBJS_DIR/$OBJS_SUBDIR"
