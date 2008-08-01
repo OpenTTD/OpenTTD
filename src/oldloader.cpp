@@ -1688,7 +1688,6 @@ static bool LoadOldMain(LoadgameState *ls)
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
 
-	free(_old_map3);
 	free(_old_vehicle_names);
 
 	return true;
