@@ -571,40 +571,32 @@ static void HandleAutoSignalPlacement()
 
 typedef void OnButtonClick(Window *w);
 
-static OnButtonClick * const _build_railroad_button_proc[] = {
-	BuildRailClick_N,
-	BuildRailClick_NE,
-	BuildRailClick_E,
-	BuildRailClick_NW,
-	BuildRailClick_AutoRail,
-	BuildRailClick_Demolish,
-	BuildRailClick_Depot,
-	BuildRailClick_Waypoint,
-	BuildRailClick_Station,
-	BuildRailClick_AutoSignals,
-	BuildRailClick_Bridge,
-	BuildRailClick_Tunnel,
-	BuildRailClick_Remove,
-	BuildRailClick_Convert
+/** Data associated with a push button in the build rail toolbar window */
+struct RailBuildingGUIButtonData {
+	uint16 keycode;            ///< Keycode associated with the button
+	OnButtonClick *click_proc; ///< Procedure to call when button is clicked
 };
 
-static const uint16 _rail_keycodes[] = {
-	'1',
-	'2',
-	'3',
-	'4',
-	'5',
-	'6',
-	'7', // depot
-	'8', // waypoint
-	'9', // station
-	'S', // signals
-	'B', // bridge
-	'T', // tunnel
-	'R', // remove
-	'C', // convert rail
+/**
+ * GUI rail-building button data constants.
+ * Offsets match widget order, starting at RTW_BUILD_NS
+ */
+static const RailBuildingGUIButtonData _rail_build_button_data[] = {
+	{'1', BuildRailClick_N          },
+	{'2', BuildRailClick_NE         },
+	{'3', BuildRailClick_E          },
+	{'4', BuildRailClick_NW         },
+	{'5', BuildRailClick_AutoRail   },
+	{'6', BuildRailClick_Demolish   },
+	{'7', BuildRailClick_Depot      },
+	{'8', BuildRailClick_Waypoint   },
+	{'9', BuildRailClick_Station    },
+	{'S', BuildRailClick_AutoSignals},
+	{'B', BuildRailClick_Bridge     },
+	{'T', BuildRailClick_Tunnel     },
+	{'R', BuildRailClick_Remove     },
+	{'C', BuildRailClick_Convert    }
 };
-
 
 /**
  * Based on the widget clicked, update the status of the 'remove' button.
@@ -664,7 +656,7 @@ struct BuildRailToolbarWindow : Window {
 	{
 		if (widget >= RTW_BUILD_NS) {
 			_remove_button_clicked = false;
-			_build_railroad_button_proc[widget - RTW_BUILD_NS](this);
+			_rail_build_button_data[widget - RTW_BUILD_NS].click_proc(this);
 		}
 		this->UpdateRemoveWidgetStatus(widget);
 		if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
@@ -673,10 +665,10 @@ struct BuildRailToolbarWindow : Window {
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		for (uint8 i = 0; i != lengthof(_rail_keycodes); i++) {
-			if (keycode == _rail_keycodes[i]) {
+		for (uint8 i = 0; i != lengthof(_rail_build_button_data); i++) {
+			if (keycode == _rail_build_button_data[i].keycode) {
 				_remove_button_clicked = false;
-				_build_railroad_button_proc[i](this);
+				_rail_build_button_data[i].click_proc(this);
 				this->UpdateRemoveWidgetStatus(i + RTW_BUILD_NS);
 				if (_ctrl_pressed) RailToolbar_CtrlChanged(this);
 				state = ES_HANDLED;
@@ -852,7 +844,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 
 	_remove_button_clicked = false;
 	if (w != NULL && button >= RTW_CLOSEBOX) {
-		_build_railroad_button_proc[button](w);
+		_rail_build_button_data[button].click_proc(w);
 		w->UpdateRemoveWidgetStatus(button + RTW_BUILD_NS);
 	}
 }
