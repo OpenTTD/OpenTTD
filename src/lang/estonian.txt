@@ -3183,7 +3183,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mängu l
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuduolevad GRF failid
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pausi lõpetamine võib põhjustada OpenTTD krahhi. Ära teavita järgnevatest krahhidest.{}Oled sa tõepoolest veendunud, et sa soovid pausi lõpetada?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes muudab sõiduki '{1:ENGINE}' pikkust.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng salvestati trammide toetuseta versioonis. Kõik trammid eemaldati.
 STR_CURRENCY_WINDOW                                             :{WHITE}Isiklik valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}

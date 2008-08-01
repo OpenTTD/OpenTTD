@@ -1,5 +1,6 @@
-0.6.2 (2008-??-??)
+0.6.2 (2008-08-01)
 ------------------------------------------------------------------------
+- Fix: Custom vehicle names from TTD(Patch) games were lost (r13884)
 - Fix: NewGRF Callback 10 (visual effect and powered wagons setting) and powered wagons operation were not performed for articulated wagons [FS#2167] (r13870)
 - Fix: In some cases the sprite cache could be filled with unremovable items [FS#2153] (r13869)
 - Fix: Return of wrong parent scope of (NewGRF) industry variables (r13868)

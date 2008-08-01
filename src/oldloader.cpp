@@ -324,6 +324,8 @@ static void FixOldStations()
 	}
 }
 
+static StringID *_old_vehicle_names = NULL;
+
 static void FixOldVehicles()
 {
 	/* Check for shared orders, and link them correctly */
@@ -331,6 +333,8 @@ static void FixOldVehicles()
 
 	FOR_ALL_VEHICLES(v) {
 		Vehicle *u;
+
+		v->name = CopyFromOldName(_old_vehicle_names[v->index]);
 
 		/* We haven't used this bit for stations for ages */
 		if (v->type == VEH_ROAD &&
@@ -416,6 +420,8 @@ static void ReadTTDPatchFlags()
 	/* Somehow.... there was an error in some savegames, so 0 becomes 1
 	and 1 becomes 2. The rest of the values are okay */
 	if (_old_vehicle_multiplier < 2) _old_vehicle_multiplier++;
+
+	_old_vehicle_names = MallocT<StringID>(_old_vehicle_multiplier * 850);
 
 	/* TTDPatch increases the Vehicle-part in the middle of the game,
 	so if the multipler is anything else but 1, the assert fails..
@@ -1265,8 +1271,8 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 
 		if (_old_next_ptr != 0xFFFF) v->next = GetVehiclePoolSize() <= _old_next_ptr ? new (_old_next_ptr) InvalidVehicle() : GetVehicle(_old_next_ptr);
 
-		_old_string_id = RemapOldStringID(_old_string_id);
-		v->name = CopyFromOldName(_old_string_id);
+		_old_vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
+		v->name = NULL;
 
 		/* Vehicle-subtype is different in TTD(Patch) */
 		if (v->type == VEH_SPECIAL) v->subtype = v->subtype >> 1;
@@ -1606,8 +1612,10 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	DEBUG(oldloader, 3, "Reading main chunk...");
 	/* Load the biggest chunk */
+	_old_vehicle_names = NULL;
 	if (!LoadChunk(ls, NULL, main_chunk)) {
 		DEBUG(oldloader, 0, "Loading failed");
+		free(_old_vehicle_names);
 		return false;
 	}
 	DEBUG(oldloader, 3, "Done, converting game data...");
@@ -1679,6 +1687,9 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
+
+	free(_old_map3);
+	free(_old_vehicle_names);
 
 	return true;
 }

@@ -3292,6 +3292,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Відс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Відсутній GRF файл(и)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зняття з паузи може привести до аварійної відмови OpenTTD. Не рапортуйте про наступні відмови.{}Ви дійсно хочете зняти з паузи?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Поведінка NewGRF '{0:STRING}' може спричинити розсинхронізацію та/або аварійне завершення.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Це змінить довжину транспорту для '{1:ENGINE}', якщо він не в депо.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Потяг '{VEHICLE}', який належить '{COMPANY}', має неправильну довжину. Можливо, це спричинено проблемами з NewGRFs. Гра може розсинхронізуватись або аварійно завершитись.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}

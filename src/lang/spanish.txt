@@ -3131,6 +3131,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Tasa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}

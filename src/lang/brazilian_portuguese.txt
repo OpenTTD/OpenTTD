@@ -3132,6 +3132,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subseqüentes.{}Você realmente quer despausar?
 
+STR_NEWGRF_BROKEN                                               :{WHITE} '{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Muda o tamanho de um veículo para '{1:ENGINE}' apesar de não estar em um depósito.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}

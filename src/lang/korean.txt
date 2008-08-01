@@ -3131,6 +3131,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류를 위해 버그 리포트를 보관하지 마십시오.{}일시정지를 해제하시겠습니까?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'이/가 차고 안에 있지 않으면 차량 길이가 바뀝니다.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'은/는 유효하지 않은 길이를 가지고 있습니다. NewGRF에 의한 문제일 수 있으며 비동기화/충돌을 일으킬 수 있습니다.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 STR_CURRENCY_WINDOW                                             :{WHITE}사용자 화폐 단위
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}환율: {ORANGE}{CURRENCY} = {COMMA}파운드

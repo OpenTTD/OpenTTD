@@ -3193,6 +3193,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Cýbajú
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chýba(jú) GRF súbor(y)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzovanie môže spôsobit pád OpenTTD. Nezaznamenávajte nasledujúce chyby.{}Naozaj chcete odpauzovat?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' asi sposobí desynchronizáciu a/alebo pád hry.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dlžku vozidla '{1:ENGINE}' mimo depa.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnu dlžku. Pravdeposobne to sposobil problém s NewGRF. Je možná desynchronizácia alebo pád hry.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}
