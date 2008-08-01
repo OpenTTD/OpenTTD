@@ -591,6 +591,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do primeiro veículo à estação de um oponente
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acidentes / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informações da empresa
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Abertura de indústrias
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fechamento de indústrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Alterações econômicas
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Mudanças na produção de indústrias providas pelo jogador
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Mudanças na produção de indústrias providas pelo(s) competidor(es)
@@ -862,6 +864,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financiar nova 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financiar nova indústria
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só pode ser construído em cidades
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...só pode ser construído em zonas florestais
@@ -1384,8 +1387,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes{}Empresas ligados / max, empresas
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Tamanho do mapa
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Tamanho do mapa do jogo{}Clique para exibir por área
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Data
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Data atual
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Anos
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Número de anos{}decorridos no jogo
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DO JOGO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -3118,6 +3128,10 @@ STR_BRIBE_FAILED                                                :{WHITE}A sua te
 STR_BRIBE_FAILED_2                                              :{WHITE}descoberta por um investigador regional
 STR_BUILD_DATE                                                  :{BLACK}Construído: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Classe de Estação: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalhes de rendimentos
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3173,6 +3187,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF f
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitos NewGRFs foram carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRING} como um NewGRF estático em conjunto com {STRING} pode causar desincronias.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega o padrão selecionado
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvar padrão
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Salva a lista atual como um padrão
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Digite um nome para o padrão
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Remover padrão
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Remove o padrão selecionado
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Remover
@@ -3203,6 +3223,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Arquivo(s) GRF faltantes
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Despausar pode travar OpenTTD. Não envie relatórios de erros sobre travas subseqüentes.{}Você realmente quer despausar?
 
+STR_NEWGRF_BROKEN                                               :{WHITE} '{0:STRING}' tem altas chances de causar desincronias e/ou travamentos.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Muda o tamanho de um veículo para '{1:ENGINE}' apesar de não estar em um depósito.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trem '{VEHICLE}' de '{COMPANY}' tem um tamanho inválido. Provavelmente causado por um NewGRF. O jogo pode travar ou sair de sincronia.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jogo foi salvo numa versão sem suporte a bondes. Todos os bondes foram removidos.
 

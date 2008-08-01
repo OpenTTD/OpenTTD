@@ -3179,6 +3179,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Sinu alt
 STR_BRIBE_FAILED_2                                              :{WHITE}kohalike uurijate poolt avastatud
 STR_BUILD_DATE                                                  :{BLACK}Ehitatud: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Jaama liik: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Jaama rühm: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Üksikasjalik tulemushinnang
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Üksikasjalik
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3272,6 +3276,7 @@ STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Pausi l�
 
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}' käitumine põhjustab tõenäoliselt sünkrooni katkemisi ja/või mängu kokkujooksmiseid.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Depoost väljas asudes muudab sõiduki '{1:ENGINE}' pikkust.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Ettevõtte '{1:COMPANY}' rongil '{0:VEHICLE}' on ebasobiv pikkus. See on tõenäoliselt põhjustatud problemaatilistest NewGRF-dest. Mäng võib kokku joosta või
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Mäng salvestati trammide toetuseta versioonis. Kõik trammid eemaldati.
 

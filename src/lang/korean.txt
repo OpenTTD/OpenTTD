@@ -590,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}당신�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}경쟁사의 첫 차량 도착
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}사고 / 재앙
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}회사 정보
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}산업시설의 건설
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}산업시설의 폐쇄
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}경제적 변화
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}플레이어에 의한 산업시설의 생산품 변화
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산품 변화
@@ -861,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :새로운 산�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}새로운 산업시설 건설
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...도시에만 건설할 수 있습니다!
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...열대우림 지역에만 건설할 수 있습니다!
@@ -3124,6 +3127,10 @@ STR_BRIBE_FAILED                                                :{WHITE}당신�
 STR_BRIBE_FAILED_2                                              :{WHITE}지역 당국에 의해 발각되었습니다!
 STR_BUILD_DATE                                                  :{BLACK}건설날짜: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}정거장 등급: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}정거장 종류: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}상세 성취도
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}자세히
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3179,6 +3186,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자�
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING}를 포함한 정적 NewGRF {0:STRING}(을)를 불러오는 것은 비동기화를 야기시킬 수 있습니다.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}선택한 프리셋을 불러옵니다
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}프리셋 저장
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}현재 목록을 프리셋으로 저장
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}프리셋 이름 입력
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}프리셋 제거
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}현재 선택한 프리셋 제거
 STR_NEWGRF_ADD                                                  :{BLACK}추가
 STR_NEWGRF_ADD_TIP                                              :{BLACK}NewGRF 파일을 목록에 추가
 STR_NEWGRF_REMOVE                                               :{BLACK}제거
@@ -3209,6 +3222,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류를 위해 버그 리포트를 보관하지 마십시오.{}일시정지를 해제하시겠습니까?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'이/가 차고 안에 있지 않으면 차량 길이가 바뀝니다.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{1:COMPANY}'의 열차 '{0:VEHICLE}'은/는 유효하지 않은 길이를 가지고 있습니다. NewGRF에 의한 문제일 수 있으며 비동기화/충돌을 일으킬 수 있습니다.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}전차를 지원하지 않는 버전으로 게임이 저장되었습니다. 모든 전차는 제거되었습니다.
 

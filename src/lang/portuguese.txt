@@ -1283,6 +1283,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Não é 
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Construir diques
 STR_LANDINFO_LOCK                                               :Dique
 
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia está em uso!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordenadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1369,6 +1370,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Introduz
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DE JOGO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
@@ -1711,6 +1716,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}O edifício deve ser demolido primeiro
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Cidade)
 STR_2006_POPULATION                                             :{BLACK}População: {ORANGE}{COMMA}{BLACK}  Casas: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Renomear Cidade
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Não é possível renomear cidade...
@@ -1920,6 +1926,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Seleccio
 STR_3804_WATER                                                  :Água
 STR_3805_COAST_OR_RIVERBANK                                     :Costa ou margem
 STR_3806_SHIP_DEPOT                                             :Depósito naval
+STR_AQUEDUCT                                                    :Aqueduto
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Não é possível construir na água
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Precisa de demolir o canal primeiro
 
@@ -1947,6 +1954,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccio
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleccionar cenário (verde), jogo pré-programado (azul), ou novo jogo aleatório
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Gerar novo jogo aleatório
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Carregar mapa de alturas
+STR_SAVE_OSKTITLE                                               :{BLACK}Introduza um nome para o jogo gravado
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} no caminho
@@ -2636,11 +2644,56 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro comboio chega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Comboio no caminho
+STR_ORDER_NON_STOP                                              :{BLACK}Sem paragens
+STR_ORDER_GO_TO                                                 :Ir para
+STR_ORDER_GO_NON_STOP_TO                                        :Ir, sem paragens, para
+STR_ORDER_GO_VIA                                                :Ir via
+STR_ORDER_GO_NON_STOP_VIA                                       :Ir, sem paragens, via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Carga completa de qualquer mercadoria
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carregar se disponível
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Carga completa de todas as mercadorias
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Carga completa de qualquer mercadoria
+STR_ORDER_DROP_NO_LOADING                                       :Sem carga
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Descarregar todas
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Descarregar se aceite
+STR_ORDER_DROP_UNLOAD                                           :Descarregar todas
+STR_ORDER_DROP_TRANSFER                                         :Transferir
+STR_ORDER_DROP_NO_UNLOADING                                     :Sem descarga
+STR_ORDER_FULL_LOAD                                             :(Carga completa)
+STR_ORDER_FULL_LOAD_ANY                                         :(Carga completa de qualquer mercadoria)
+STR_ORDER_NO_LOAD                                               :(Não carregar)
+STR_ORDER_UNLOAD                                                :(Descarregar e levar mercadoria)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Descarregar e aguardar carga compelta)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Descarregar e aguardar qualquer cargar completa)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Descarregar e partir vazio)
+STR_ORDER_TRANSFER                                              :(Transferir e levar mercadoria)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transferir e aguardar por carga completa)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transferir e aguardar por qualquer carga completa)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transferir e partir vazio)
+STR_ORDER_NO_UNLOAD                                             :(Não descarregar e carregar mercadoria)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Não descarregar e aguardar por carga completa)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Não descarregar e aguardar por qualquer carga completa)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Mudar o comportamento de paragem da ordem realçada
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Mudar o comportamento de carga da ordem realçada
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Mudar o comportamento de descarga da ordem realçada
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Inserir uma ordem avançada
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ir para o depósito mais próximo
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ir para o hangar mais próximo
+STR_ORDER_NEAREST_DEPOT                                         :o mais próximo
+STR_ORDER_NEAREST_HANGAR                                        :o hangar mais próximo
+STR_ORDER_SERVICE_AT                                            :Serviço em
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Serviço ininterrupto em
+STR_ORDER_TRAIN_DEPOT                                           :Depósito de comboios
+STR_ORDER_ROAD_DEPOT                                            :Depósito para veículos de estrada
+STR_ORDER_SHIP_DEPOT                                            :Depósito para navios
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_CONDITIONAL                                           :Saltar ordem condicionalmente
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é diferente de
@@ -3013,6 +3066,7 @@ STR_BRIBE_FAILED                                                :{WHITE}A sua te
 STR_BRIBE_FAILED_2                                              :{WHITE}descoberta por um investigador regional
 STR_BUILD_DATE                                                  :{BLACK}Construído: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalhes de rendimentos
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3096,6 +3150,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ficheiro
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m) ficheiro(s) GRF para carregar jogo
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
+
 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada

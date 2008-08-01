@@ -592,6 +592,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni di un avversario
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidenti / disastri
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informazioni sulla compagnia
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Apertura di industrie
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Chiusura di industrie
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambiamenti economici
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Cambiamenti produzione industrie servite dal giocatore
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Cambiamenti produzione industrie servite dagli avversari
@@ -1387,8 +1389,8 @@ STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Client
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Client online / client max{}Compagnie online / compagnie max
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
-STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Dimensione mappa
-STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Dimensione della mappa in uso{}Fare clic per ordinare per area
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Dim. mappa
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Dimensione della mappa in uso - fare clic per ordinare per area
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Data
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Data corrente
@@ -3126,6 +3128,10 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Il tuo tentativo di corruzione è stato
 STR_BRIBE_FAILED_2                                              :{WHITE}scoperto dalla Guardia di Finanzia.
 STR_BUILD_DATE                                                  :{BLACK}Costruito il: {LTBLUE}{DATE_LONG}
+
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Categoria stazione: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Tipo stazione: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Valutazione dettagliata prestazioni
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Dettagli

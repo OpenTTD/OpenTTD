@@ -591,6 +591,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er vé
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station d'un competiteur
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / désastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informations corporatives
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Ouvertures d'industries
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fermetures d'industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Changements de production des industries desservies par vous
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Changements de production des industries desservies par les autres
@@ -2753,7 +2755,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Pas de
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Voyager (sans horaires)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Voyager pendant {STRING}
 STR_TIMETABLE_STAY_FOR                                          :et rester pendant {STRING}
-STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :et voyager pendant {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} jour{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
@@ -3125,6 +3127,10 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Votre tentative de corruption à été
 STR_BRIBE_FAILED_2                                              :{WHITE}révélée à la presse par un journaliste régional.
 STR_BUILD_DATE                                                  :{BLACK}Construit le: {LTBLUE}{DATE_LONG}
+
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Classe de station: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Type de station: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Détail de l'évaluation de la performance
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Détail

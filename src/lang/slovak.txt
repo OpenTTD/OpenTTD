@@ -925,6 +925,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financovat novy
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financovat novy priemysel
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... moze byt postavene len v meste
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... moze byt postavene len v dazdovom pralese
@@ -2768,8 +2769,28 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Prelož a nech
 STR_ORDER_NO_UNLOAD                                             :(Nevykladaj a nalož)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nevykladaj a pockaj na plné naloženie)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nevykladaj a pockaj na plné naloženie akéhokolvek nákladu)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmenit sposob zastavovania pre tento príkaz
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmenit sposob nakladania pre tento príkaz
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Zmenit sposob vykladania pre tento príkaz
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Vložit zložitejší príkaz
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Chod do najbližšieho depa
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Chod do najbližšieho hangáru
+STR_ORDER_NEAREST_DEPOT                                         :najbližší
+STR_ORDER_NEAREST_HANGAR                                        :najbližší hangár
+STR_ORDER_SERVICE_AT                                            :Servis v
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Servis non-stop v
+STR_ORDER_TRAIN_DEPOT                                           :Depo
+STR_ORDER_ROAD_DEPOT                                            :Garáž
+STR_ORDER_SHIP_DEPOT                                            :Lodenica
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangár
 
+STR_ORDER_CONDITIONAL                                           :Podmienený príkaz skoku
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Sposob porovnania údajov vozidla so zadanou hodnotou
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Hodnota, s ktorou sa majú porovnat dáta vozidla
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Zadajte hodnotu voci ktorej sa ma porovnat
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percento naplnenia
@@ -3013,6 +3034,8 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyberte 
 
 ##id 0x9800
 STR_9800_WATERWAYS_CONSTRUCTION                                 :Waterways construction
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Výstavba vodných ciest
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vodné cesty
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tu nemozno postavit pristav ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Lodenica
 STR_9804_NEW_SHIPS                                              :{BLACK}Nove lode
@@ -3166,6 +3189,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Vas poku
 STR_BRIBE_FAILED_2                                              :{WHITE}miestnym vysetrovatelom.
 STR_BUILD_DATE                                                  :{BLACK}Postavene: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Trieda stanice: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Typ stanice: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailny rating vykonu
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobne
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3219,6 +3246,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} vyžaduje verziu OpenTTD {STRING} alebo vyššiu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Nahraných príliš vela NewGRF súborov.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahratie {STRING} ako statického NewGRF s {STRING} by mohlo sposobit desynchronizáciu.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrat vybraný zoznam
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit zoznam
@@ -3256,6 +3284,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Cýbajú
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chýba(jú) GRF súbor(y)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauzovanie môže spôsobit pád OpenTTD. Nezaznamenávajte nasledujúce chyby.{}Naozaj chcete odpauzovat?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Správanie NewGRF '{STRING}' asi sposobí desynchronizáciu a/alebo pád hry.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmenilo dlžku vozidla '{1:ENGINE}' mimo depa.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patriaci '{COMPANY}' má neplatnu dlžku. Pravdeposobne to sposobil problém s NewGRF. Je možná desynchronizácia alebo pád hry.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra bola uložená vo verzii bez elektriciek. Vsetky elektricky boli odstránené.
 

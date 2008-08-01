@@ -715,6 +715,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}При�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Прибуття першого транспорту на станцію конкурента
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Нещасні випадки/стихійні лиха
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Інформація компанії
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Відкриття підприємств
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Закриття підприємств
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Зміни в економіці
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Зміна обсягів виробництва на підприємствах, обслуговуваних гравцем
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Зміна обсягів виробництва на підприємствах, обслуговуваних суперниками
@@ -986,6 +988,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Нова про
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Нова промисловість
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна будувати лише у містах
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...можна будувати лише у джунглях
@@ -1508,8 +1511,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Клієнти
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Клієнти в мережі/макс.клієнтів{}Компанії в мережі/макс.компаній
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Розмір карти
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Розмір карти гри{}Клікніть для сортування за районом
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Дата
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Поточна дата
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Роки
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Кількість років{}впродовж яких іде гра
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}Інформація про гру
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -3279,6 +3289,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Ваша
 STR_BRIBE_FAILED_2                                              :{WHITE}викрита місцевим слідчим
 STR_BUILD_DATE                                                  :{BLACK}Рік випуску: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Клас станції: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Тип станції: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Детальна характеристика продуктивності
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Детально
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3334,6 +3348,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, �
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Завантажено забагато NewGRF-файлів.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Завантаження {STRING} як статичного NewGRF з {STRING} може викликати десинхронізацію.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Завантажити обрані настройки
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Записати настройки
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Записати поточний список як настройки
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Введіть назву настройок
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Видалити настройки
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Видалити обрані настройки
 STR_NEWGRF_ADD                                                  :{BLACK}Додати
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Додати файли NewGRF до списку
 STR_NEWGRF_REMOVE                                               :{BLACK}Видалити
@@ -3364,6 +3384,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Відс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Відсутній GRF файл(и)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Зняття з паузи може привести до аварійної відмови OpenTTD. Не рапортуйте про наступні відмови.{}Ви дійсно хочете зняти з паузи?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Поведінка NewGRF '{0:STRING}' може спричинити розсинхронізацію та/або аварійне завершення.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Це змінить довжину транспорту для '{1:ENGINE}', якщо він не в депо.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Потяг '{VEHICLE}', який належить '{COMPANY}', має неправильну довжину. Можливо, це спричинено проблемами з NewGRFs. Гра може розсинхронізуватись або аварійно завершитись.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Гра була записана у версії без підтримки трамваїв. Усі трамваї були видалені.
 

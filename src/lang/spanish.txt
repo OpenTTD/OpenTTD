@@ -862,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Fundar nueva in
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fundar nueva industria
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...sólo se puede construir en poblaciones
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...sólo se puede construir en áreas de selva
@@ -3125,6 +3126,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Su inten
 STR_BRIBE_FAILED_2                                              :{WHITE}descubierto por un investigador regional.
 STR_BUILD_DATE                                                  :{BLACK}Construido: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalle de rendimiento
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalle
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3180,6 +3182,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF 
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {STRING} como NewGRF estático con {STRING} puede causar desincronizaciones.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Cargar la programación seleccionada
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Grabar programación
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Grabar lista actual como una programación
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Introduce nombre de la programación
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Borrar programación
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Borrar la programación seleccionada
 STR_NEWGRF_ADD                                                  :{BLACK}Añadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Añadir un NewGRF a la lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Quitar
@@ -3210,6 +3218,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.
 
