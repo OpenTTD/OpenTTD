@@ -2972,8 +2972,8 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
 	DiagDirection exitdir = *(DiagDirection *)data;
 
-	/* front engine of a train, not inside wormhole or depot */
-	if (v->type == VEH_TRAIN && IsFrontEngine(v) && (v->u.rail.track & TRACK_BIT_MASK) != 0) {
+	/* front engine of a train, not inside wormhole or depot, not crashed */
+	if (v->type == VEH_TRAIN && IsFrontEngine(v) && (v->u.rail.track & TRACK_BIT_MASK) != 0 && !(v->vehstatus & VS_CRASHED)) {
 		if (v->cur_speed <= 5 && TrainExitDir(v->direction, v->u.rail.track) == exitdir) return v;
 	}
 
