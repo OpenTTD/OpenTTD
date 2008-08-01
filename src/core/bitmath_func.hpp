@@ -27,22 +27,22 @@ static FORCEINLINE uint GB(const T x, const uint8 s, const uint8 n)
 	return (x >> s) & ((1U << n) - 1);
 }
 
-/** Set n bits from x starting at bit s to d
+/** Set \a n bits in \a x starting at bit \a s to \a d
  *
- * This function sets n bits from x which started as bit s to the value of
- * d. The parameters x, s and n works the same as the parameters of
- * #GB. The result is saved in x again. Unused bits in the window
- * provided by n are set to 0 if the value of b isn't "big" enough.
+ * This function sets \a n bits from \a x which started as bit \a s to the value of
+ * \a d. The parameters \a x, \a s and \a n works the same as the parameters of
+ * #GB. The result is saved in \a x again. Unused bits in the window
+ * provided by n are set to 0 if the value of \a d isn't "big" enough.
  * This is not a bug, its a feature.
  *
- * @note Parameter x must be a variable as the result is saved there.
- * @note To avoid unexpecting results the value of b should not use more
- *       space as the provided space of n bits (log2)
+ * @note Parameter \a x must be a variable as the result is saved there.
+ * @note To avoid unexpecting results the value of \a d should not use more
+ *       space as the provided space of \a n bits (log2)
  * @param x The variable to change some bits
  * @param s The startposition for the new bits
  * @param n The size/window for the new bits
  * @param d The actually new bits to save in the defined position.
- * @return The new value of x
+ * @return The new value of \a x
  */
 template <typename T, typename U>
 static FORCEINLINE T SB(T &x, const uint8 s, const uint8 n, const U d)

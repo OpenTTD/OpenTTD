@@ -17,13 +17,21 @@
 static const char *UPARROW   = "\xEE\x8A\xA0";
 static const char *DOWNARROW = "\xEE\x8A\xAA";
 
+/**
+ * Compute the vertical position of the draggable part of scrollbar
+ * @param sb     Scrollbar list data
+ * @param top    Top position of the scrollbar (top position of the up-button)
+ * @param bottom Bottom position of the scrollbar (bottom position of the down-button)
+ * @return A Point, with x containing the top coordinate of the draggable part, and
+ *                       y containing the bottom coordinate of the draggable part
+ */
 static Point HandleScrollbarHittest(const Scrollbar *sb, int top, int bottom)
 {
 	Point pt;
 	int height, count, pos, cap;
 
-	top += 10;
-	bottom -= 9;
+	top += 10;   // top    points to just below the up-button
+	bottom -= 9; // bottom points to top of the down-button
 
 	height = (bottom - top);
 
@@ -153,7 +161,15 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 	return found_index;
 }
 
-
+/**
+ * Draw frame rectangle.
+ * @param left   Left edge of the frame
+ * @param top    Top edge of the frame
+ * @param right  Right edge of the frame
+ * @param bottom Bottom edge of the frame
+ * @param ctab   Colour table to use. @see _colour_gradient
+ * @param flags  Flags controlling how to draw the frame. @see FrameFlags
+ */
 void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlags flags)
 {
 	uint dark         = _colour_gradient[ctab][3];

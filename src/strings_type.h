@@ -5,11 +5,14 @@
 #ifndef STRINGS_TYPE_H
 #define STRINGS_TYPE_H
 
+/**
+ * Numeric value that represents a string, independent of the selected language.
+ */
 typedef uint16 StringID;
-static const StringID INVALID_STRING_ID = 0xFFFF;
+static const StringID INVALID_STRING_ID = 0xFFFF;  ///< Constant representing an invalid string
 
 enum {
-	MAX_LANG = 64,
+	MAX_LANG = 64, ///< Maximal number of languages supported by the game
 };
 
 /** Information about a language */
@@ -26,7 +29,7 @@ struct DynamicLanguages {
 	Language ent[MAX_LANG];   ///< Information about the languages
 };
 
-// special string constants
+/** Special string constants */
 enum SpecialStrings {
 
 	// special strings for town names. the town name is generated dynamically on request.

@@ -11,6 +11,7 @@
 #include "zoom_type.h"
 
 typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
+
 struct PalSpriteID {
 	SpriteID sprite;
 	SpriteID pal;
@@ -110,6 +111,7 @@ struct AnimCursor {
 	byte display_time; ///< Amount of ticks this sprite will be shown
 };
 
+/** Collection of variables for cursor-display and -animation */
 struct CursorVars {
 	Point pos, size, offs, delta; ///< position, size, offset from top-left, and movement
 	Point draw_pos, draw_size;    ///< position and size bounding-box for drawing
@@ -153,6 +155,7 @@ struct Colour {
 	operator uint32 () const { return *(uint32 *)this; }
 };
 
+/** Available font sizes */
 enum FontSize {
 	FS_NORMAL,
 	FS_SMALL,

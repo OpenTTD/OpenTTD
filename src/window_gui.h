@@ -80,7 +80,7 @@ enum {
  */
 struct Widget {
 	byte type;                        ///< Widget type, see WindowWidgetTypes
-	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see ResizeFlags
+	byte display_flags;               ///< Resize direction, alignment, etc. during resizing. @see ResizeFlags
 	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
 	int16 left, right, top, bottom;   ///< The position offsets inside the window
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
@@ -149,7 +149,7 @@ enum WindowDefaultPosition {
 struct Scrollbar {
 	uint16 count;  ///< Number of elements in the list
 	uint16 cap;    ///< Number of visible elements of the scroll bar
-	uint16 pos;
+	uint16 pos;    ///< Index of first visible item of the list
 };
 
 /**
