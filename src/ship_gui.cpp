@@ -24,7 +24,7 @@ void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 	DrawSprite(v->GetImage(DIR_W), GetVehiclePalette(v), x + 32, y + 10);
 
 	if (v->index == selection) {
-		DrawFrameRect(x - 5, y - 1, x + 67, y + 21, 15, FR_BORDERONLY);
+		DrawFrameRect(x - 5, y - 1, x + 67, y + 21, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

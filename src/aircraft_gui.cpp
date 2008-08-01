@@ -72,7 +72,7 @@ void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
 		DrawSprite(rotor_sprite, PAL_NONE, x + 25, y + 5);
 	}
 	if (v->index == selection) {
-		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, 0xF, FR_BORDERONLY);
+		DrawFrameRect(x - 1, y - 1, x + 58, y + 21, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 

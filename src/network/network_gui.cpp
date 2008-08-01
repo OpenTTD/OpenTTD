@@ -1691,7 +1691,7 @@ struct NetworkJoinStatusWindow : Window {
 		}
 
 		/* Draw nice progress bar :) */
-		DrawFrameRect(20, 18, (int)((this->width - 20) * progress / 100), 28, 10, FR_NONE);
+		DrawFrameRect(20, 18, (int)((this->width - 20) * progress / 100), 28, COLOUR_MAUVE, FR_NONE);
 	}
 
 	virtual void OnClick(Point pt, int widget)

@@ -1056,19 +1056,19 @@ struct CustomCurrencyWindow : Window {
 		y += 12;
 
 		/* separator */
-		DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(this->click, 2, 2) ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 2, 2) ? FR_LOWERED : FR_NONE);
 		x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, TC_FROMSTRING);
 		DoDrawString(this->separator, x + 4, y + 1, TC_ORANGE);
 		y += 12;
 
 		/* prefix */
-		DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(this->click, 4, 2) ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 4, 2) ? FR_LOWERED : FR_NONE);
 		x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, TC_FROMSTRING);
 		DoDrawString(_custom_currency.prefix, x + 4, y + 1, TC_ORANGE);
 		y += 12;
 
 		/* suffix */
-		DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(this->click, 6, 2) ? FR_LOWERED : FR_NONE);
+		DrawFrameRect(10, y + 1, 29, y + 9, COLOUR_DARK_BLUE, GB(this->click, 6, 2) ? FR_LOWERED : FR_NONE);
 		x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, TC_FROMSTRING);
 		DoDrawString(_custom_currency.suffix, x + 4, y + 1, TC_ORANGE);
 		y += 12;

@@ -148,7 +148,7 @@ struct CheatWindow : Window {
 				case SLE_BOOL: {
 					bool on = (*(bool*)ce->variable);
 
-					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? 6 : 4, on ? FR_LOWERED : FR_NONE);
+					DrawFrameRect(x + 20, y + 1, x + 30 + 9, y + 9, on ? COLOUR_GREEN : COLOUR_RED, on ? FR_LOWERED : FR_NONE);
 					SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 				} break;
 

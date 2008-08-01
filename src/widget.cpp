@@ -496,7 +496,7 @@ void Window::DrawWidgets() const
 
 
 	if (this->flags4 & WF_WHITE_BORDER_MASK) {
-		DrawFrameRect(0, 0, this->width - 1, this->height - 1, 0xF, FR_BORDERONLY);
+		DrawFrameRect(0, 0, this->width - 1, this->height - 1, COLOUR_WHITE, FR_BORDERONLY);
 	}
 
 }

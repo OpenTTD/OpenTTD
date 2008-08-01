@@ -132,7 +132,7 @@ void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection, int c
 	}
 
 	if (highlight_w != 0) {
-		DrawFrameRect(x - 1, y - 1, x - 1 + highlight_w, y + 12, 15, FR_BORDERONLY);
+		DrawFrameRect(x - 1, y - 1, x - 1 + highlight_w, y + 12, COLOUR_WHITE, FR_BORDERONLY);
 	}
 }
 
