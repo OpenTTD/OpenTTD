@@ -630,9 +630,9 @@ static void RoadVehIsCrashed(Vehicle *v)
 	}
 }
 
-static void* EnumCheckRoadVehCrashTrain(Vehicle* v, void* data)
+static Vehicle *EnumCheckRoadVehCrashTrain(Vehicle *v, void *data)
 {
-	const Vehicle* u = (Vehicle*)data;
+	const Vehicle *u = (Vehicle*)data;
 
 	return
 		v->type == VEH_TRAIN &&
@@ -765,12 +765,12 @@ struct RoadVehFindData {
 	Direction dir;
 };
 
-static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
+static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 {
 	static const int8 dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
 	static const int8 dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
 
-	const RoadVehFindData* rvf = (RoadVehFindData*)data;
+	const RoadVehFindData *rvf = (RoadVehFindData*)data;
 
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
@@ -801,10 +801,10 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 	rvf.dir = dir;
 	rvf.veh = v;
 	if (front->u.road.state == RVSB_WORMHOLE) {
-		u = (Vehicle*)VehicleFromPos(v->tile, &rvf, EnumCheckRoadVehClose);
+		u = VehicleFromPos(v->tile, &rvf, EnumCheckRoadVehClose);
 		if (u == NULL) u = (Vehicle*)VehicleFromPos(GetOtherTunnelBridgeEnd(v->tile), &rvf, EnumCheckRoadVehClose);
 	} else {
-		u = (Vehicle*)VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
+		u = VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
 	}
 
 	/* This code protects a roadvehicle from being blocked for ever
@@ -913,7 +913,7 @@ struct OvertakeData {
 	Trackdir trackdir;
 };
 
-static void* EnumFindVehBlockingOvertake(Vehicle* v, void* data)
+static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void* data)
 {
 	const OvertakeData* od = (OvertakeData*)data;
 

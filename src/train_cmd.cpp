@@ -1692,7 +1692,7 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
  * @param v vehicle on tile
  * @return v if it is a train, NULL otherwise
  */
-static void *TrainOnTileEnum(Vehicle *v, void *)
+static Vehicle *TrainOnTileEnum(Vehicle *v, void *)
 {
 	return (v->type == VEH_TRAIN) ? v : NULL;
 }
@@ -1704,7 +1704,7 @@ static void *TrainOnTileEnum(Vehicle *v, void *)
  * @param data tile with crossing we are testing
  * @return v if it is approaching a crossing, NULL otherwise
  */
-static void *TrainApproachingCrossingEnum(Vehicle *v, void *data)
+static Vehicle *TrainApproachingCrossingEnum(Vehicle *v, void *data)
 {
 	/* not a train || not front engine || crashed */
 	if (v->type != VEH_TRAIN || !IsFrontEngine(v) || v->vehstatus & VS_CRASHED) return NULL;
@@ -1730,14 +1730,14 @@ static Vehicle *TrainApproachingCrossing(TileIndex tile)
 	DiagDirection dir = AxisToDiagDir(GetCrossingRailAxis(tile));
 	TileIndex tile_from = tile + TileOffsByDiagDir(dir);
 
-	Vehicle *v = (Vehicle*)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
+	Vehicle *v = VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
 
 	if (v != NULL) return v;
 
 	dir = ReverseDiagDir(dir);
 	tile_from = tile + TileOffsByDiagDir(dir);
 
-	return (Vehicle*)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
+	return VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
 }
 
 
@@ -1752,7 +1752,7 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 	assert(IsLevelCrossingTile(tile));
 
 	/* train on crossing || train approaching crossing */
-	bool new_state = VehicleFromPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
+	bool new_state = VehicleFromPos(tile, NULL, &TrainOnTileEnum) != NULL || TrainApproachingCrossing(tile);
 
 	if (new_state != IsCrossingBarred(tile)) {
 		if (new_state && sound) {
@@ -2896,7 +2896,7 @@ struct TrainCollideChecker {
 	uint num;    ///< number of dead if train collided
 };
 
-static void *FindTrainCollideEnum(Vehicle *v, void *data)
+static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 {
 	TrainCollideChecker *tcc = (TrainCollideChecker*)data;
 
@@ -2968,7 +2968,7 @@ static void CheckTrainCollision(Vehicle *v)
 	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
 }
 
-static void *CheckVehicleAtSignal(Vehicle *v, void *data)
+static Vehicle *CheckVehicleAtSignal(Vehicle *v, void *data)
 {
 	DiagDirection exitdir = *(DiagDirection *)data;
 

@@ -156,7 +156,7 @@ StringID VehicleInTheWayErrMsg(const Vehicle* v)
 	}
 }
 
-static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
+static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 {
 	byte z = *(byte*)data;
 
@@ -204,7 +204,7 @@ Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_c
 
 
 /** Procedure called for every vehicle found in tunnel/bridge in the hash map */
-static void *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
+static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 {
 	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
 
@@ -374,13 +374,13 @@ const int HASH_RES = 0;
 
 static Vehicle *_new_vehicle_position_hash[TOTAL_HASH_SIZE];
 
-static void *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc)
+static Vehicle *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc)
 {
 	for (int y = yl; ; y = (y + (1 << HASH_BITS)) & (HASH_MASK << HASH_BITS)) {
 		for (int x = xl; ; x = (x + 1) & HASH_MASK) {
 			Vehicle *v = _new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
 			for (; v != NULL; v = v->next_new_hash) {
-				void *a = proc(v, data);
+				Vehicle *a = proc(v, data);
 				if (a != NULL) return a;
 			}
 			if (x == xu) break;
@@ -392,7 +392,7 @@ static void *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, Vehicle
 }
 
 
-void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
+Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
 {
 	const int COLL_DIST = 6;
 
@@ -406,7 +406,7 @@ void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
 }
 
 
-void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
+Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
 	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
 	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
@@ -415,7 +415,7 @@ void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 	for (; v != NULL; v = v->next_new_hash) {
 		if (v->tile != tile) continue;
 
-		void *a = proc(v, data);
+		Vehicle *a = proc(v, data);
 		if (a != NULL) return a;
 	}
 

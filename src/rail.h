@@ -193,10 +193,10 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	return RailBuildCost(to) + _price.remove_rail;
 }
 
-void *UpdateTrainPowerProc(Vehicle *v, void *data);
+Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data);
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype);
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
-void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
+Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data);
 int TicksToLeaveDepot(const Vehicle *v);
 
 Foundation GetRailFoundation(Slope tileh, TrackBits bits);

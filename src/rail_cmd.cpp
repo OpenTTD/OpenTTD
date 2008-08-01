@@ -92,7 +92,7 @@ const byte _track_sloped_sprites[14] = {
  */
 
 
-void *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
+Vehicle *EnsureNoTrainOnTrackProc(Vehicle *v, void *data)
 {
 	TrackBits rail_bits = *(TrackBits *)data;
 
@@ -1162,7 +1162,7 @@ CommandCost CmdRemoveSignalTrack(TileIndex tile, uint32 flags, uint32 p1, uint32
 }
 
 /** Update power of train under which is the railtype being converted */
-void *UpdateTrainPowerProc(Vehicle *v, void *data)
+Vehicle *UpdateTrainPowerProc(Vehicle *v, void *data)
 {
 	/* Similiar checks as in TrainPowerChanged() */
 

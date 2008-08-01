@@ -19,7 +19,7 @@
 #define IS_CUSTOM_FIRSTHEAD_SPRITE(x) (x == 0xFD)
 #define IS_CUSTOM_SECONDHEAD_SPRITE(x) (x == 0xFE)
 
-typedef void *VehicleFromPosProc(Vehicle *v, void *data);
+typedef Vehicle *VehicleFromPosProc(Vehicle *v, void *data);
 
 void VehicleServiceInDepot(Vehicle *v);
 void VehiclePositionChanged(Vehicle *v);
@@ -28,8 +28,8 @@ const Vehicle *GetLastVehicleInChain(const Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
-void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
-void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
+Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
+Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
 Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 uint8 CalcPercentVehicleFilled(const Vehicle *v, StringID *color);
