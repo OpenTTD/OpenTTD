@@ -1701,6 +1701,8 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_slope_penalty,                  SLE_UINT,                     0, 0, (  1 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_curve_penalty,                  SLE_UINT,                     0, 0, 1,                         0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_rail_depot_reverse_penalty,          SLE_UINT,                     0, 0, ( 50 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.npf.npf_rail_pbs_cross_penalty,              SLE_UINT,100, SL_MAX_VERSION, 0, 0, (  3 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.npf.npf_rail_pbs_signal_back_penalty,        SLE_UINT,100, SL_MAX_VERSION, 0, 0, ( 15 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_buoy_penalty,                        SLE_UINT,                     0, 0, (  2 * NPF_TILE_LENGTH),   0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_water_curve_penalty,                 SLE_UINT,                     0, 0, (NPF_TILE_LENGTH / 4),     0,  100000, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.npf.npf_road_curve_penalty,                  SLE_UINT,                     0, 0, 1,                         0,  100000, 0, STR_NULL,         NULL),

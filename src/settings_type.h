@@ -185,6 +185,8 @@ struct NPFSettings {
 	uint32 npf_rail_slope_penalty;           ///< the penalty for sloping upwards
 	uint32 npf_rail_curve_penalty;           ///< the penalty for curves
 	uint32 npf_rail_depot_reverse_penalty;   ///< the penalty for reversing in depots
+	uint32 npf_rail_pbs_cross_penalty;       ///< the penalty for crossing a reserved rail track
+	uint32 npf_rail_pbs_signal_back_penalty; ///< the penalty for passing a pbs signal from the backside
 	uint32 npf_buoy_penalty;                 ///< the penalty for going over (through) a buoy
 	uint32 npf_water_curve_penalty;          ///< the penalty for curves
 	uint32 npf_road_curve_penalty;           ///< the penalty for curves

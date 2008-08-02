@@ -66,6 +66,8 @@ enum {
 /* Flags for AyStarNode.userdata[NPF_NODE_FLAGS]. Use NPFGetBit() and NPFGetBit() to use them. */
 enum NPFNodeFlag {
 	NPF_FLAG_SEEN_SIGNAL,       ///< Used to mark that a signal was seen on the way, for rail only
+	NPF_FLAG_2ND_SIGNAL,        ///< Used to mark that two signals were seen, rail only
+	NPF_FLAG_3RD_SIGNAL,        ///< Used to mark that three signals were seen, rail only
 	NPF_FLAG_REVERSE,           ///< Used to mark that this node was reached from the second start node, if applicable
 	NPF_FLAG_LAST_SIGNAL_RED,   ///< Used to mark that the last signal on this path was red
 	NPF_FLAG_IGNORE_START_TILE, ///< Used to mark that the start tile is invalid, and searching should start from the second tile on

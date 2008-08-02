@@ -24,6 +24,7 @@
 #include "vehicle_base.h"
 #include "settings_type.h"
 #include "tunnelbridge.h"
+#include "pbs.h"
 
 static AyStar _npf_aystar;
 
@@ -221,6 +222,23 @@ static uint NPFSlopeCost(AyStarNode* current)
 	 * there is only one level of steepness... */
 }
 
+static uint NPFReservedTrackCost(AyStarNode *current)
+{
+	TileIndex tile = current->tile;
+	TrackBits track = TrackToTrackBits(TrackdirToTrack((Trackdir)current->direction));
+	TrackBits res = GetReservedTrackbits(tile);
+
+	if (NPFGetFlag(current, NPF_FLAG_3RD_SIGNAL) || ((res & track) == TRACK_BIT_NONE && !TracksOverlap(res | track))) return 0;
+
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		DiagDirection exitdir = TrackdirToExitdir((Trackdir)current->direction);
+		if (GetTunnelBridgeDirection(tile) == ReverseDiagDir(exitdir)) {
+			return  _settings_game.pf.npf.npf_rail_pbs_cross_penalty * (GetTunnelBridgeLength(tile, GetOtherTunnelBridgeEnd(tile)) + 1);
+		}
+	}
+	return  _settings_game.pf.npf.npf_rail_pbs_cross_penalty;
+}
+
 /**
  * Mark tiles by mowing the grass when npf debug level >= 1.
  * Will not work for multiplayer games, since it can (will) cause desyncs.
@@ -354,30 +372,46 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	/* Determine extra costs */
 
 	/* Check for signals */
-	if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir)) {
-		/* Ordinary track with signals */
-		if (GetSignalStateByTrackdir(tile, trackdir) == SIGNAL_STATE_RED) {
-			/* Signal facing us is red */
-			if (!NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
-				/* Penalize the first signal we
-				 * encounter, if it is red */
+	if (IsTileType(tile, MP_RAILWAY)) {
+		if (HasSignalOnTrackdir(tile, trackdir)) {
+			/* Ordinary track with signals */
+			if (GetSignalStateByTrackdir(tile, trackdir) == SIGNAL_STATE_RED) {
+				/* Signal facing us is red */
+				if (!NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
+					/* Penalize the first signal we
+					 * encounter, if it is red */
 
-				/* Is this a presignal exit or combo? */
-				SignalType sigtype = GetSignalType(tile, TrackdirToTrack(trackdir));
-				if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO) {
-					/* Penalise exit and combo signals differently (heavier) */
-					cost += _settings_game.pf.npf.npf_rail_firstred_exit_penalty;
-				} else {
-					cost += _settings_game.pf.npf.npf_rail_firstred_penalty;
+					/* Is this a presignal exit or combo? */
+					SignalType sigtype = GetSignalType(tile, TrackdirToTrack(trackdir));
+					if (!IsPbsSignal(sigtype)) {
+						if (sigtype == SIGTYPE_EXIT || sigtype == SIGTYPE_COMBO) {
+							/* Penalise exit and combo signals differently (heavier) */
+							cost += _settings_game.pf.npf.npf_rail_firstred_exit_penalty;
+						} else {
+							cost += _settings_game.pf.npf.npf_rail_firstred_penalty;
+						}
+					}
 				}
+				/* Record the state of this signal */
+				NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, true);
+			} else {
+				/* Record the state of this signal */
+				NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, false);
 			}
-			/* Record the state of this signal */
-			NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, true);
-		} else {
-			/* Record the state of this signal */
-			NPFSetFlag(current, NPF_FLAG_LAST_SIGNAL_RED, false);
+			if (NPFGetFlag(current, NPF_FLAG_SEEN_SIGNAL)) {
+				if (NPFGetFlag(current, NPF_FLAG_2ND_SIGNAL)) {
+					NPFSetFlag(current, NPF_FLAG_3RD_SIGNAL, true);
+				} else {
+					NPFSetFlag(current, NPF_FLAG_2ND_SIGNAL, true);
+				}
+			} else {
+				NPFSetFlag(current, NPF_FLAG_SEEN_SIGNAL, true);
+			}
 		}
-		NPFSetFlag(current, NPF_FLAG_SEEN_SIGNAL, true);
+
+		if (HasPbsSignalOnTrackdir(tile, ReverseTrackdir(trackdir)) && !NPFGetFlag(current, NPF_FLAG_3RD_SIGNAL)) {
+			cost += _settings_game.pf.npf.npf_rail_pbs_signal_back_penalty;
+		}
 	}
 
 	/* Penalise the tile if it is a target tile and the last signal was
@@ -406,7 +440,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 	}
 
 	/* Check for occupied track */
-	//TODO
+	cost += NPFReservedTrackCost(current);
 
 	NPFMarkTile(tile);
 	DEBUG(npf, 4, "Calculating G for: (%d, %d). Result: %d", TileX(current->tile), TileY(current->tile), cost);
