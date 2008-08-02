@@ -456,6 +456,17 @@ static int32 NPFFindDepot(AyStar* as, OpenListNode *current)
 		AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
 
+/** Find any safe and free tile. */
+static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
+{
+	const Vehicle *v = ((NPFFindStationOrTileData*)as->user_target)->v;
+
+	return
+		IsSafeWaitingPosition(v, current->path.node.tile, (Trackdir)current->path.node.direction, true, _settings_game.pf.forbid_90_deg) &&
+		IsWaitingPositionFree(v, current->path.node.tile, (Trackdir)current->path.node.direction, _settings_game.pf.forbid_90_deg) ?
+			AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
+}
+
 /* Will find a station identified using the NPFFindStationOrTileData */
 static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 {
@@ -820,6 +831,18 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		}
 	}
 
+	if (NPFGetFlag(&current->path.node, NPF_FLAG_IGNORE_RESERVED)) {
+		/* Mask out any reserved tracks. */
+		TrackBits reserved = GetReservedTrackbits(dst_tile);
+		trackdirbits &= ~TrackBitsToTrackdirBits(reserved);
+
+		uint bits = TrackdirBitsToTrackBits(trackdirbits);
+		int i;
+		FOR_EACH_SET_BIT(i, bits) {
+			if (TracksOverlap(reserved | TrackToTrackBits((Track)i))) trackdirbits &= ~TrackToTrackdirBits((Track)i);
+		}
+	}
+
 	/* Enumerate possible track */
 	uint i = 0;
 	while (trackdirbits != 0) {
@@ -1063,6 +1086,30 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 		DEBUG(npf, 1, "Could not find route to any depot from tile 0x%X.", tile);
 	}
 	return best_result;
+}
+
+NPFFoundTargetData NPFRouteToSafeTile(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool override_railtype)
+{
+	assert(v->type == VEH_TRAIN);
+
+	NPFFindStationOrTileData fstd;
+	fstd.v = v;
+	fstd.reserve_path = true;
+
+	AyStarNode start1;
+	start1.tile = tile;
+	/* We set this in case the target is also the start tile, we will just
+	 * return a not found then */
+	start1.user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;
+	start1.direction = trackdir;
+	NPFSetFlag(&start1, NPF_FLAG_IGNORE_RESERVED, true);
+
+	RailTypes railtypes = v->u.rail.compatible_railtypes;
+	if (override_railtype) railtypes |= GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes;
+
+	/* perform a breadth first search. Target is NULL,
+	 * since we are just looking for any safe tile...*/
+	return NPFRouteInternal(&start1, true, NULL, false, &fstd, NPFFindSafeTile, NPFCalcZero, TRANSPORT_RAIL, 0, v->owner, railtypes, 0);
 }
 
 void InitializeNPF()

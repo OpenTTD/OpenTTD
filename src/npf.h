@@ -72,6 +72,7 @@ enum NPFNodeFlag {
 	NPF_FLAG_LAST_SIGNAL_RED,   ///< Used to mark that the last signal on this path was red
 	NPF_FLAG_IGNORE_START_TILE, ///< Used to mark that the start tile is invalid, and searching should start from the second tile on
 	NPF_FLAG_TARGET_RESERVED,   ///< Used to mark that the possible reservation target is already reserved
+	NPF_FLAG_IGNORE_RESERVED,   ///< Used to mark that reserved tiles should be considered impassable
 };
 
 /* Meant to be stored in AyStar.userpath */
@@ -110,6 +111,12 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir t
 /* Search by trying each depot in order of Manhattan Distance. Good for lots
  * of choices and accurate heuristics, such as water. */
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+
+/**
+ * Search for any safe tile using a breadth first search and try to reserve a path.
+ */
+NPFFoundTargetData NPFRouteToSafeTile(const Vehicle *v, TileIndex tile, Trackdir trackdir,bool override_railtype);
+
 
 void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reserve_path = false);
 
