@@ -53,6 +53,7 @@
 #include "effectvehicle_func.h"
 #include "gamelog.h"
 #include "network/network.h"
+#include "pbs.h"
 
 #include "table/strings.h"
 #include "table/train_cmd.h"
@@ -2369,6 +2370,37 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	return false;
 }
 
+/** Clear the reservation of a tile that was just left by a wagon on track_dir. */
+static void ClearPathReservation(TileIndex tile, Trackdir track_dir)
+{
+	DiagDirection dir = TrackdirToExitdir(track_dir);
+
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		/* Are we just leaving a tunnel/bridge? */
+		if (GetTunnelBridgeDirection(tile) == ReverseDiagDir(dir)) {
+			TileIndex end = GetOtherTunnelBridgeEnd(tile);
+
+			SetTunnelBridgeReservation(tile, false);
+			SetTunnelBridgeReservation(end, false);
+
+			if (_settings_client.gui.show_track_reservation) {
+				MarkTileDirtyByTile(tile);
+				MarkTileDirtyByTile(end);
+			}
+		}
+	} else if (IsRailwayStationTile(tile)) {
+		TileIndex new_tile = TileAddByDiagDir(tile, dir);
+		/* If the new tile is not a further tile of the same station, we
+		 * clear the reservation for the whole platform. */
+		if (!IsCompatibleTrainStationTile(new_tile, tile)) {
+			SetRailwayStationPlatformReservation(tile, ReverseDiagDir(dir), false);
+		}
+	} else {
+		/* Any other tile */
+		UnreserveRailTrack(tile, TrackdirToTrack(track_dir));
+	}
+}
+
 /** Check for station tiles */
 struct TrainTrackFollowerData {
 	TileIndex dest_coords;
@@ -3029,6 +3061,10 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 						TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
 						return;
 					}
+					if (v->Next() == NULL && IsRailDepotTile(v->tile) && HasBit(r, VETS_ENTERED_WORMHOLE)) {
+						SetDepotWaypointReservation(v->tile, false);
+						if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
+					}
 
 					if (v->current_order.IsType(OT_LEAVESTATION)) {
 						v->current_order.Free();
@@ -3133,6 +3169,16 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 				if (IsFrontEngine(v)) v->load_unload_time_rem = 0;
 
 				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
+					Track track = FindFirstTrack(chosen_track);
+					Trackdir tdir = TrackDirectionToTrackdir(track, chosen_dir);
+					if (IsFrontEngine(v) && HasPbsSignalOnTrackdir(gp.new_tile, tdir)) {
+						SetSignalStateByTrackdir(gp.new_tile, tdir, SIGNAL_STATE_RED);
+						MarkTileDirtyByTile(gp.new_tile);
+					}
+
+					/* Clear any track reservation when the last vehicle leaves the tile */
+					if (v->Next() == NULL) ClearPathReservation(v->tile, GetVehicleTrackdir(v));
+
 					v->tile = gp.new_tile;
 
 					if (GetTileRailType(gp.new_tile) != GetTileRailType(gp.old_tile)) {
