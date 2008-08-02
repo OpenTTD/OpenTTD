@@ -2833,6 +2833,79 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	return best_track;
 }
 
+/**
+ * Try to reserve a path to a safe position.
+ *
+ * @param v The vehicle
+ * @return True if a path could be reserved
+ */
+bool TryPathReserve(Vehicle *v, bool first_tile_okay, bool mark_as_stuck)
+{
+	assert(v->type == VEH_TRAIN && IsFrontEngine(v));
+
+	/* We have to handle depots specially as the track follower won't look
+	 * at the depot tile itself but starts from the next tile. If we are still
+	 * inside the depot, a depot reservation can never be ours. */
+	if (v->u.rail.track & TRACK_BIT_DEPOT) {
+		if (GetDepotWaypointReservation(v->tile)) {
+			if (mark_as_stuck) MarkTrainAsStuck(v);
+			return false;
+		} else {
+			/* Depot not reserved, but the next tile might be. */
+			TileIndex next_tile = TileAddByDiagDir(v->tile, GetRailDepotDirection(v->tile));
+			if (HasReservedTracks(next_tile, DiagdirReachesTracks(GetRailDepotDirection(v->tile)))) return false;
+		}
+	}
+
+	/* Special check if we are in front of a two-sided conventional signal. */
+	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
+	TileIndex next_tile = TileAddByDiagDir(v->tile, dir);
+	if (IsTileType(next_tile, MP_RAILWAY) && HasReservedTracks(next_tile, DiagdirReachesTracks(dir))) {
+		/* Can have only one reserved trackdir. */
+		Trackdir td = FindFirstTrackdir((TrackdirBits)(GetReservedTrackbits(next_tile) * 0x101 & DiagdirReachesTrackdirs(dir)));
+		if (HasSignalOnTrackdir(next_tile, td) && HasSignalOnTrackdir(next_tile, ReverseTrackdir(td)) &&
+				!IsPbsSignal(GetSignalType(next_tile, TrackdirToTrack(td)))) {
+			/* Signal already reserved, is not ours. */
+			if (mark_as_stuck) MarkTrainAsStuck(v);
+			return false;
+		}
+	}
+
+	PBSTileInfo origin = FollowTrainReservation(v);
+	/* If we have a reserved path and the path ends at a safe tile, we are finished already. */
+	if (origin.okay && (v->tile != origin.tile || first_tile_okay)) {
+		/* Can't be stuck then. */
+		if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+		return true;
+	}
+
+	/* If we are in a depot, tentativly reserve the depot. */
+	if (v->u.rail.track & TRACK_BIT_DEPOT) {
+		SetDepotWaypointReservation(v->tile, true);
+		if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
+	}
+
+	DiagDirection exitdir = TrackdirToExitdir(origin.trackdir);
+	TileIndex     new_tile = TileAddByDiagDir(origin.tile, exitdir);
+	TrackBits     reachable = TrackdirBitsToTrackBits((TrackdirBits)GetTileTrackStatus(new_tile, TRANSPORT_RAIL, 0) & DiagdirReachesTrackdirs(exitdir));
+
+	if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) reachable &= ~TrackCrossesTracks(TrackdirToTrack(origin.trackdir));
+
+	bool res_made = false;
+	ChooseTrainTrack(v, new_tile, exitdir, reachable, true, &res_made, mark_as_stuck);
+
+	if (!res_made) {
+		/* Free the depot reservation as well. */
+		if (v->u.rail.track & TRACK_BIT_DEPOT) SetDepotWaypointReservation(v->tile, false);
+		return false;
+	}
+
+	if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+	return true;
+}
+
 
 static bool CheckReverseTrain(Vehicle *v)
 {
@@ -3872,6 +3945,38 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	if (CheckTrainStayInDepot(v)) return;
 
 	if (!mode) HandleLocomotiveSmokeCloud(v);
+
+	/* Handle stuck trains. */
+	if (!mode && HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
+		++v->load_unload_time_rem;
+
+		/* Should we try reversing this tick if still stuck? */
+		bool turn_around = v->load_unload_time_rem % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.wait_for_pbs_path < 255;
+
+		if (!turn_around && v->u.rail.force_proceed == 0) return;
+		if (!TryPathReserve(v)) {
+			/* Still stuck. */
+			if (turn_around) ReverseTrainDirection(v);
+
+			if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK) && v->load_unload_time_rem > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
+				/* Show message to player. */
+				if (_settings_client.gui.lost_train_warn && v->owner == _local_player) {
+					SetDParam(0, v->unitnumber);
+					AddNewsItem(
+						STR_TRAIN_IS_STUCK,
+						NS_ADVICE,
+						v->index,
+						0);
+				}
+				v->load_unload_time_rem = 0;
+			}
+			/* Exit if force proceed not pressed, else reset stuck flag anyway. */
+			if (v->u.rail.force_proceed == 0) return;
+			ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+			v->load_unload_time_rem = 0;
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		}
+	}
 
 	int j = UpdateTrainSpeed(v);
 

@@ -274,6 +274,7 @@ void UpdateTrainAcceleration(Vehicle* v);
 void CheckTrainsLengths();
 
 void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin = INVALID_TILE, Trackdir orig_td = INVALID_TRACKDIR);
+bool TryPathReserve(Vehicle *v, bool mark_as_stuck = false, bool first_tile_okay = false);
 
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.

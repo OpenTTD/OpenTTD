@@ -988,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't sh
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Train {COMMA} can't find a path to continue.
 STR_TRAIN_IS_LOST                                               :{WHITE}Train {COMMA} is lost.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
