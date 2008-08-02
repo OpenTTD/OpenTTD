@@ -1773,8 +1773,8 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	/* train on crossing || train approaching crossing */
-	bool new_state = VehicleFromPos(tile, NULL, &TrainOnTileEnum) != NULL || TrainApproachingCrossing(tile);
+	/* train on crossing || train approaching crossing || reserved */
+	bool new_state = VehicleFromPos(tile, NULL, &TrainOnTileEnum) != NULL || TrainApproachingCrossing(tile) || GetCrossingReservation(tile);
 
 	if (new_state != IsCrossingBarred(tile)) {
 		if (new_state && sound) {
@@ -3733,6 +3733,10 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 
 				if (IsFrontEngine(v)) {
 					v->load_unload_time_rem = 0;
+
+					/* If we are approching a crossing that is reserved, play the sound now. */
+					TileIndex crossing = TrainApproachingCrossingTile(v);
+					if (crossing != INVALID_TILE && GetCrossingReservation(crossing)) SndPlayTileFx(SND_0E_LEVEL_CROSSING, crossing);
 
 					/* Always try to extend the reservation when entering a tile. */
 					CheckNextTrainTile(v);
