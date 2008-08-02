@@ -338,19 +338,24 @@ static inline TrackBits GetRailDepotReservation(TileIndex t)
 }
 
 
+static inline bool IsPbsSignal(SignalType s)
+{
+	return s == SIGTYPE_PBS || s == SIGTYPE_PBS_ONEWAY;
+}
+
 static inline SignalType GetSignalType(TileIndex t, Track track)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
 	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
-	return (SignalType)GB(_m[t].m2, pos, 2);
+	return (SignalType)GB(_m[t].m2, pos, 3);
 }
 
 static inline void SetSignalType(TileIndex t, Track track, SignalType s)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);
 	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 0;
-	SB(_m[t].m2, pos, 2, s);
-	if (track == INVALID_TRACK) SB(_m[t].m2, 4, 2, s);
+	SB(_m[t].m2, pos, 3, s);
+	if (track == INVALID_TRACK) SB(_m[t].m2, 4, 3, s);
 }
 
 static inline bool IsPresignalEntry(TileIndex t, Track track)
@@ -375,15 +380,15 @@ static inline void CycleSignalSide(TileIndex t, Track track)
 
 static inline SignalVariant GetSignalVariant(TileIndex t, Track track)
 {
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 6 : 2;
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	return (SignalVariant)GB(_m[t].m2, pos, 1);
 }
 
 static inline void SetSignalVariant(TileIndex t, Track track, SignalVariant v)
 {
-	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 6 : 2;
+	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 7 : 3;
 	SB(_m[t].m2, pos, 1, v);
-	if (track == INVALID_TRACK) SB(_m[t].m2, 6, 1, v);
+	if (track == INVALID_TRACK) SB(_m[t].m2, 7, 1, v);
 }
 
 /** These are states in which a signal can be. Currently these are only two, so
@@ -508,6 +513,19 @@ static inline void SetSignalStateByTrackdir(TileIndex tile, Trackdir trackdir, S
 	} else {
 		SetSignalStates(tile, GetSignalStates(tile) & ~SignalAlongTrackdir(trackdir));
 	}
+}
+
+/**
+ * Is a pbs signal present along the trackdir?
+ * @param tile the tile to check
+ * @param td the trackdir to check
+ */
+static inline bool HasPbsSignalOnTrackdir(TileIndex tile, Trackdir td)
+{
+	return
+		IsTileType(tile, MP_RAILWAY) &&
+		HasSignalOnTrackdir(tile, td) &&
+		IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)));
 }
 
 

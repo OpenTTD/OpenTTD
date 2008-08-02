@@ -49,7 +49,7 @@ CStrA ValueStr(DiagDirection dd)
 
 /** SignalType short names. */
 static const char* signal_type_names[] = {
-	"NORMAL", "ENTRY", "EXIT", "COMBO",
+	"NORMAL", "ENTRY", "EXIT", "COMBO", "PBS", "NOENTRY",
 };
 
 /** Return name of given SignalType. */

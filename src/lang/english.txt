@@ -1679,12 +1679,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track w
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railway track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railway track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track with combo-signals
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Railway track with advanced signals
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Railway track with one-way advanced signals
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Railway track with normal and pre-signals
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Railway track with normal and exit-signals
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Railway track with normal and combo-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Railway track with normal and advanced signals
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Railway track with normal and one-way advanced signals
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Railway track with pre- and exit-signals
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Railway track with pre- and combo-signals
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Railway track with pre- and advanced signals
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Railway track with pre- and one-way advanced signals
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Railway track with exit- and combo-signals
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Railway track with exit- and advanced signals
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Railway track with exit- and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railway track with combo- and advanced signals
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railway track with combo- and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railway track with advanced and one-way advanced signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
 
 

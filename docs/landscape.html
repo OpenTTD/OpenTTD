@@ -376,29 +376,39 @@
          </tr>
         </table>
         <ul>
-         <li>m2 bit 6: Signal 0 and 1: set = semaphore signals, clear = light signals</li>
-         <li>m2 bit 2: Signal 2 and 3: set = semaphore signals, clear = light signals</li>
-         <li>m2 bits 5..4: type of signal 0 and 1 (same values as m2 bits 1..0)</li>
-         <li>m2 bits 1..0: type of signal 2 and 3
+         <li>m2 bit 7: Signal 0 and 1: set = semaphore signals, clear = light signals</li>
+         <li>m2 bit 3: Signal 2 and 3: set = semaphore signals, clear = light signals</li>
+         <li>m2 bits 6..4: type of signal 0 and 1 (same values as m2 bits 2..0)</li>
+         <li>m2 bits 2..0: type of signal 2 and 3
           <table>
            <tr>
-            <td nowrap="nowrap" valign="top"><tt>00</tt>: </td>
+            <td nowrap="nowrap" valign="top"><tt>000</tt>: </td>
             <td align="left">normal signals</td>
            </tr>
 
            <tr>
-            <td nowrap="nowrap" valign="top"><tt>01</tt>: </td>
+            <td nowrap="nowrap" valign="top"><tt>001</tt>: </td>
             <td align="left">pre-signals</td>
            </tr>
 
            <tr>
-            <td nowrap="nowrap" valign="top"><tt>10</tt>: </td>
+            <td nowrap="nowrap" valign="top"><tt>010</tt>: </td>
             <td align="left">exit-signals</td>
            </tr>
 
            <tr>
-            <td nowrap="nowrap" valign="top"><tt>11</tt>: </td>
+            <td nowrap="nowrap" valign="top"><tt>011</tt>: </td>
             <td align="left">combo-signals</td>
+           </tr>
+
+           <tr>
+            <td nowrap="nowrap" valign="top"><tt>100</tt>: </td>
+            <td align="left">pbs signals</td>
+           </tr>
+
+           <tr>
+            <td nowrap="nowrap" valign="top"><tt>101</tt>: </td>
+            <td align="left">no-entry signals</td>
            </tr>
           </table>
          </li>

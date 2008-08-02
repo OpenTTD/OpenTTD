@@ -14,10 +14,14 @@ enum SignalVariant {
 
 /** Type of signal, i.e. how does the signal behave? */
 enum SignalType {
-	SIGTYPE_NORMAL  = 0, ///< normal signal
-	SIGTYPE_ENTRY   = 1, ///< presignal block entry
-	SIGTYPE_EXIT    = 2, ///< presignal block exit
-	SIGTYPE_COMBO   = 3  ///< presignal inter-block
+	SIGTYPE_NORMAL     = 0, ///< normal signal
+	SIGTYPE_ENTRY      = 1, ///< presignal block entry
+	SIGTYPE_EXIT       = 2, ///< presignal block exit
+	SIGTYPE_COMBO      = 3, ///< presignal inter-block
+	SIGTYPE_PBS        = 4, ///< normal pbs signal
+	SIGTYPE_PBS_ONEWAY = 5, ///< no-entry signal
+	SIGTYPE_LAST       = SIGTYPE_PBS_ONEWAY,
+	SIGTYPE_LAST_NOPBS = SIGTYPE_COMBO
 };
 
 
