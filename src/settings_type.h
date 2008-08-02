@@ -219,6 +219,7 @@ struct YAPFSettings {
 	int32  rail_look_ahead_signal_p1;        ///< constant in polynomial penalty function
 	int32  rail_look_ahead_signal_p2;        ///< constant in polynomial penalty function
 	uint32 rail_pbs_cross_penalty;           ///< penalty for crossing a reserved tile
+	uint32 rail_pbs_station_penalty;         ///< penalty for crossing a reserved station tile
 	uint32 rail_pbs_signal_back_penalty;     ///< penalty for passing a pbs signal from the backside
 	uint32 rail_doubleslip_penalty;          ///< penalty for passing a double slip switch
 
