@@ -830,7 +830,7 @@ public:
 			}
 		}
 
-		this->LowerWidget(_smallmap_type + SMT_OWNER);
+		this->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
 
 		this->SmallMapCenterOnCurrentPos();
