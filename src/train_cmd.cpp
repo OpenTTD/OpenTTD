@@ -63,6 +63,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image);
 static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
+static void CheckNextTrainTile(Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
@@ -1892,6 +1893,9 @@ static void ReverseTrainDirection(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
+	/* Clear path reservation in front. */
+	FreeTrainTrackReservation(v);
+
 	/* Check if we were approaching a rail/road-crossing */
 	TileIndex crossing = TrainApproachingCrossingTile(v);
 
@@ -1928,6 +1932,27 @@ static void ReverseTrainDirection(Vehicle *v)
 	/* maybe we are approaching crossing now, after reversal */
 	crossing = TrainApproachingCrossingTile(v);
 	if (crossing != INVALID_TILE) MaybeBarCrossingWithSound(crossing);
+
+	/* If we are inside a depot after reversing, don't bother with path reserving. */
+	if (v->u.rail.track & TRACK_BIT_DEPOT) return;
+
+	/* TrainExitDir does not always produce the desired dir for depots and
+	 * tunnels/bridges that is needed for UpdateSignalsOnSegment. */
+	DiagDirection dir = TrainExitDir(v->direction, v->u.rail.track);
+	if (IsRailDepotTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE)) dir = INVALID_DIAGDIR;
+
+	if (UpdateSignalsOnSegment(v->tile, dir, v->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
+		/* If we are currently on a tile with conventional signals, we can't treat the
+		 * current tile as a safe tile or we would enter a PBS block without a reservation. */
+		bool first_tile_okay = !(IsTileType(v->tile, MP_RAILWAY) &&
+			HasSignalOnTrackdir(v->tile, GetVehicleTrackdir(v)) &&
+			!IsPbsSignal(GetSignalType(v->tile, FindFirstTrack(v->u.rail.track))));
+
+		if (TryPathReserve(v, true, first_tile_okay)) {
+			/* Do a look-ahead now in case our current tile was already a safe tile. */
+			CheckNextTrainTile(v);
+		}
+	}
 }
 
 /** Reverse train.
