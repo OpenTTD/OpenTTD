@@ -63,6 +63,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image);
 static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
+static void CheckIfTrainNeedsService(Vehicle *v);
 static void CheckNextTrainTile(Vehicle *v);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
@@ -2892,7 +2893,11 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	PBSTileInfo   res_dest(tile, INVALID_TRACKDIR, false);
 	DiagDirection dest_enterdir = enterdir;
 	if (do_track_reservation) {
-		if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_CONDITIONAL)) ProcessOrders(v);
+		/* Check if the train needs service here, so it has a chance to always find a depot.
+		 * Also check if the current order is a service order so we don't reserve a path to
+		 * the destination but instead to the next one if service isn't needed. */
+		CheckIfTrainNeedsService(v);
+		if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_CONDITIONAL) || v->current_order.IsType(OT_GOTO_DEPOT)) ProcessOrders(v);
 
 		res_dest = ExtendTrainReservation(v, &tracks, &dest_enterdir);
 		if (res_dest.tile == INVALID_TILE) {
