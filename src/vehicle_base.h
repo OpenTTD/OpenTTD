@@ -115,7 +115,7 @@ struct VehicleRail {
 	 * 0xffff == not in train */
 	EngineID first_engine;
 
-	byte flags;
+	uint16 flags;
 	TrackBitsByte track;
 	byte force_proceed;
 	RailTypeByte railtype;
@@ -143,6 +143,9 @@ enum VehicleRailFlags {
 
 	/* used for vehicle var 0xFE bit 8 (toggled each time the train is reversed, accurate for first vehicle only) */
 	VRF_TOGGLE_REVERSE = 7,
+
+	/* used to mark a train that can't get a path reservation */
+	VRF_TRAIN_STUCK    = 8,
 };
 
 struct VehicleAir {

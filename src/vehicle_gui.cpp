@@ -1895,6 +1895,8 @@ struct VehicleViewWindow : Window {
 			} else { // no train
 				str = STR_8861_STOPPED;
 			}
+		} else if (v->type == VEH_TRAIN && HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
+			str = STR_TRAIN_STUCK;
 		} else { // vehicle is in a "normal" state, show current order
 			switch (v->current_order.GetType()) {
 				case OT_GOTO_STATION: {

@@ -2905,6 +2905,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, 
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Incompatible rail types
 STR_TRAIN_NO_POWER                                              :{RED}No power
 STR_TRAIN_START_NO_CATENARY                                     :This track lacks catenary, so the train can't start
+STR_TRAIN_STUCK                                                 :{ORANGE}Waiting for free path
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}New {STRING} now available!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}

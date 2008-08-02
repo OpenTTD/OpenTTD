@@ -1614,10 +1614,27 @@ static inline void SetLastSpeed(Vehicle *v, int spd)
 	}
 }
 
-static void SwapTrainFlags(byte *swap_flag1, byte *swap_flag2)
+/** Mark a train as stuck and stop it if it isn't stopped right now. */
+static void MarkTrainAsStuck(Vehicle *v)
 {
-	byte flag1 = *swap_flag1;
-	byte flag2 = *swap_flag2;
+	if (!HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
+		/* It is the first time the problem occured, set the "train stuck" flag. */
+		SetBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+		v->load_unload_time_rem	= 0;
+
+		/* Stop train */
+		v->cur_speed = 0;
+		v->subspeed = 0;
+		SetLastSpeed(v, 0);
+
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	}
+}
+
+static void SwapTrainFlags(uint16 *swap_flag1, uint16 *swap_flag2)
+{
+	uint16 flag1 = *swap_flag1;
+	uint16 flag2 = *swap_flag2;
 
 	/* Clear the flags */
 	ClrBit(*swap_flag1, VRF_GOINGUP);
@@ -2670,7 +2687,7 @@ static int UpdateTrainSpeed(Vehicle *v)
 {
 	uint accel;
 
-	if (v->vehstatus & VS_STOPPED || HasBit(v->u.rail.flags, VRF_REVERSING)) {
+	if (v->vehstatus & VS_STOPPED || HasBit(v->u.rail.flags, VRF_REVERSING) || HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
 		if (_settings_game.vehicle.realistic_acceleration) {
 			accel = GetTrainAcceleration(v, AM_BRAKE) * 2;
 		} else {
@@ -3058,6 +3075,9 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 					if (red_signals & chosen_track && v->u.rail.force_proceed == 0) {
 						/* In front of a red signal */
 						Trackdir i = FindFirstTrackdir(trackdirbits);
+
+						/* Don't handle stuck trains here. */
+						if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) return;
 
 						if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 							v->cur_speed = 0;
@@ -3499,7 +3519,11 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		return;
 	}
 
-	if (v->u.rail.force_proceed != 0) v->u.rail.force_proceed--;
+	if (v->u.rail.force_proceed != 0) {
+		v->u.rail.force_proceed--;
+		ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	}
 
 	/* train is broken down? */
 	if (v->breakdown_ctr != 0) {
