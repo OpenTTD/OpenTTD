@@ -2666,6 +2666,94 @@ static Track DoTrainPathfind(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 }
 
 /**
+ * Extend a train path as far as possible. Stops on encountering a safe tile,
+ * another reservation or a track choice.
+ * @return INVALID_TILE indicates that the reservation failed.
+ */
+static PBSTileInfo ExtendTrainReservation(const Vehicle *v, TrackBits *new_tracks, DiagDirection *enterdir)
+{
+	bool no_90deg_turns = _settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg;
+	PBSTileInfo origin = FollowTrainReservation(v);
+
+	CFollowTrackRail ft(v);
+
+	TileIndex tile = origin.tile;
+	Trackdir  cur_td = origin.trackdir;
+	while (ft.Follow(tile, cur_td)) {
+		if (KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
+			/* Possible signal tile. */
+			if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) break;
+		}
+
+		if (no_90deg_turns) {
+			ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(ft.m_old_td);
+			if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) break;
+		}
+
+		/* Station, depot or waypoint are a possible target. */
+		bool target_seen = ft.m_is_station || (IsTileType(ft.m_new_tile, MP_RAILWAY) && !IsPlainRailTile(ft.m_new_tile));
+		if (target_seen || KillFirstBit(ft.m_new_td_bits) != TRACKDIR_BIT_NONE) {
+			/* Choice found or possible target encountered.
+			 * On finding a possible target, we need to stop and let the pathfinder handle the
+			 * remaining path. This is because we don't know if this target is in one of our
+			 * orders, so we might cause pathfinding to fail later on if we find a choice.
+			 * This failure would cause a bogous call to TryReserveSafePath which might reserve
+			 * a wrong path not leading to our next destination. */
+			if (HasReservedTracks(ft.m_new_tile, TrackdirBitsToTrackBits(TrackdirReachesTrackdirs(ft.m_old_td)))) break;
+
+			/* If we did skip some tiles, backtrack to the first skipped tile so the pathfinder
+			 * actually starts its search at the first unreserved tile. */
+			if (ft.m_tiles_skipped != 0) ft.m_new_tile -= TileOffsByDiagDir(ft.m_exitdir) * ft.m_tiles_skipped;
+
+			/* Choice found, path valid but not okay. Save info about the choice tile as well. */
+			if (new_tracks) *new_tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
+			if (enterdir) *enterdir = ft.m_exitdir;
+			return PBSTileInfo(ft.m_new_tile, ft.m_old_td, false);
+		}
+
+		tile = ft.m_new_tile;
+		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
+
+		if (IsSafeWaitingPosition(v, tile, cur_td, true, no_90deg_turns)) {
+			bool wp_free = IsWaitingPositionFree(v, tile, cur_td, no_90deg_turns);
+			if (!(wp_free && TryReserveRailTrack(tile, TrackdirToTrack(cur_td)))) break;
+			/* Safe position is all good, path valid and okay. */
+			return PBSTileInfo(tile, cur_td, true);
+		}
+
+		if (!TryReserveRailTrack(tile, TrackdirToTrack(cur_td))) break;
+	}
+
+	if (ft.m_err == CFollowTrackRail::EC_OWNER && ft.m_err == CFollowTrackRail::EC_NO_WAY) {
+		/* End of line, path valid and okay. */
+		return PBSTileInfo(ft.m_old_tile, ft.m_old_td, true);
+	}
+
+	/* Sorry, can't reserve path, back out. */
+	tile = origin.tile;
+	cur_td = origin.trackdir;
+	TileIndex stopped = ft.m_old_tile;
+	Trackdir  stopped_td = ft.m_old_td;
+	while (tile != stopped || cur_td != stopped_td) {
+		if (!ft.Follow(tile, cur_td)) break;
+
+		if (no_90deg_turns) {
+			ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(ft.m_old_td);
+			assert(ft.m_new_td_bits != TRACKDIR_BIT_NONE);
+		}
+		assert(KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE);
+
+		tile = ft.m_new_tile;
+		cur_td = FindFirstTrackdir(ft.m_new_td_bits);
+
+		UnreserveRailTrack(tile, TrackdirToTrack(cur_td));
+	}
+
+	/* Path invalid. */
+	return PBSTileInfo();
+}
+
+/**
  * Try to reserve any path to a safe tile, ignoring the vehicle's destination.
  * Safe tiles are tiles in front of a signal, depots and station tiles at end of line.
  *
@@ -2732,8 +2820,6 @@ static const Order* GetNextTrainOrder(const Vehicle *v, VehicleOrderID *order_in
 static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck)
 {
 	Track best_track = INVALID_TRACK;
-	/* pathfinders are able to tell that route was only 'guessed' */
-	bool path_not_found = false;
 	bool do_track_reservation = _settings_game.pf.reserve_paths || force_res;
 	bool changed_signal = false;
 
@@ -2760,35 +2846,51 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		best_track = track;
 	}
 
+	PBSTileInfo   res_dest(tile, INVALID_TRACKDIR, false);
+	DiagDirection dest_enterdir = enterdir;
 	if (do_track_reservation) {
 		if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_CONDITIONAL)) ProcessOrders(v);
+
+		res_dest = ExtendTrainReservation(v, &tracks, &dest_enterdir);
+		if (res_dest.tile == INVALID_TILE) {
+			/* Reservation failed? */
+			if (mark_stuck) MarkTrainAsStuck(v);
+			if (changed_signal) SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(best_track, enterdir), SIGNAL_STATE_RED);
+			return FindFirstTrack(tracks);
+		}
 	}
 
-	PBSTileInfo res_dest;
-	best_track = DoTrainPathfind(v, tile, enterdir, tracks, &path_not_found, do_track_reservation, &res_dest);
+	if (res_dest.tile != INVALID_TILE && !res_dest.okay) {
+		/* Pathfinders are able to tell that route was only 'guessed'. */
+		bool      path_not_found = false;
+		TileIndex new_tile = res_dest.tile;
 
-	/* handle "path not found" state */
-	if (path_not_found) {
-		/* PF didn't find the route */
-		if (!HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
-			/* it is first time the problem occurred, set the "path not found" flag */
-			SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
-			/* and notify user about the event */
-			if (_settings_client.gui.lost_train_warn && v->owner == _local_player) {
-				SetDParam(0, v->unitnumber);
-				AddNewsItem(
-					STR_TRAIN_IS_LOST,
-					NS_ADVICE,
-					v->index,
-					0);
+		Track next_track = DoTrainPathfind(v, new_tile, dest_enterdir, tracks, &path_not_found, do_track_reservation, &res_dest);
+		if (new_tile == tile) best_track = next_track;
+
+		/* handle "path not found" state */
+		if (path_not_found) {
+			/* PF didn't find the route */
+			if (!HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
+				/* it is first time the problem occurred, set the "path not found" flag */
+				SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
+				/* and notify user about the event */
+				if (_settings_client.gui.lost_train_warn && v->owner == _local_player) {
+					SetDParam(0, v->unitnumber);
+					AddNewsItem(
+						STR_TRAIN_IS_LOST,
+						NS_ADVICE,
+						v->index,
+						0);
+				}
 			}
-		}
-	} else {
-		/* route found, is the train marked with "path not found" flag? */
-		if (HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
-			/* clear the flag as the PF's problem was solved */
-			ClrBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
-			/* can we also delete the "News" item somehow? */
+		} else {
+			/* route found, is the train marked with "path not found" flag? */
+			if (HasBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
+				/* clear the flag as the PF's problem was solved */
+				ClrBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
+				/* can we also delete the "News" item somehow? */
+			}
 		}
 	}
 
