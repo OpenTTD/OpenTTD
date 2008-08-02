@@ -504,6 +504,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 					}
 				} else {
 					SetTrackBits(tile, present);
+					SetTrackReservation(tile, GetTrackReservation(tile) & present);
 				}
 			}
 			break;
