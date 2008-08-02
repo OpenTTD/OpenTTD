@@ -908,6 +908,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 			 * direction of the first signal given as parameter by CmdBuildManySignals */
 			SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | (p2 & SignalOnTrack(track)));
 			SetSignalVariant(tile, track, sigvar);
+			SetSignalType(tile, track, sigtype);
 		}
 
 		if (IsPbsSignal(sigtype)) {
@@ -987,6 +988,7 @@ static bool CheckSignalAutoFill(TileIndex &tile, Trackdir &trackdir, int &signal
  * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
  * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
+ * - p2 = (bit  7- 9) - default signal type
  * - p2 = (bit 24-31) - user defined signals_density
  */
 static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -1024,6 +1026,9 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	/* Autofill must start on a valid track to be able to avoid loops */
 	if (autofill && !HasTrack(tile, track)) return CMD_ERROR;
 
+	SignalType sigtype = (SignalType)GB(p2, 7, 3);
+	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
+
 	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignals(tile)) {
 		signals = GetPresentSignals(tile) & SignalOnTrack(track);
@@ -1031,8 +1036,10 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 
 		/* copy signal/semaphores style (independent of CTRL) */
 		semaphores = GetSignalVariant(tile, track) != SIG_ELECTRIC;
+
+		sigtype = GetSignalType(tile, track);
 	} else { // no signals exist, drag a two-way signal stretch
-		signals = SignalOnTrack(track);
+		signals = IsPbsSignal(sigtype) ? SignalAlongTrackdir(trackdir) : SignalOnTrack(track);
 	}
 
 	byte signal_dir = 0;
@@ -1054,6 +1061,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 			uint32 p1 = GB(TrackdirToTrack(trackdir), 0, 3);
 			SB(p1, 3, 1, mode);
 			SB(p1, 4, 1, semaphores);
+			SB(p1, 5, 3, sigtype);
 
 			/* Pick the correct orientation for the track direction */
 			signals = 0;
@@ -1103,6 +1111,7 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
  * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
  * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
+ * - p2 = (bit  7- 9) - default signal type
  * - p2 = (bit 24-31) - user defined signals_density
  * @see CmdSignalTrackHelper
  */
@@ -1166,6 +1175,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
  * - p2 = (bit  4)    - 0 = signals, 1 = semaphores
  * - p2 = (bit  5)    - 0 = build, 1 = remove signals
  * - p2 = (bit  6)    - 0 = selected stretch, 1 = auto fill
+ * - p2 = (bit  7- 9) - default signal type
  * - p2 = (bit 24-31) - user defined signals_density
  * @see CmdSignalTrackHelper
  */
