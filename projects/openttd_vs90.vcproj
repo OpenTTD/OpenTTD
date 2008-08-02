@@ -661,6 +661,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\pbs.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\players.cpp"
 				>
 			</File>
@@ -1258,6 +1262,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\pathfind.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\pbs.h"
 				>
 			</File>
 			<File

@@ -57,6 +57,7 @@ os_timer.cpp
 	ottdres.rc
 #end
 pathfind.cpp
+pbs.cpp
 players.cpp
 queue.cpp
 rail.cpp
@@ -241,6 +242,7 @@ order_base.h
 order_func.h
 order_type.h
 pathfind.h
+pbs.h
 player_base.h
 player_face.h
 player_func.h
