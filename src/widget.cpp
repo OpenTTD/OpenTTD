@@ -167,15 +167,15 @@ int GetWidgetFromPos(const Window *w, int x, int y)
  * @param top    Top edge of the frame
  * @param right  Right edge of the frame
  * @param bottom Bottom edge of the frame
- * @param ctab   Colour table to use. @see _colour_gradient
+ * @param color  Colour table to use. @see _colour_gradient
  * @param flags  Flags controlling how to draw the frame. @see FrameFlags
  */
-void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlags flags)
+void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags)
 {
-	uint dark         = _colour_gradient[ctab][3];
-	uint medium_dark  = _colour_gradient[ctab][5];
-	uint medium_light = _colour_gradient[ctab][6];
-	uint light        = _colour_gradient[ctab][7];
+	uint dark         = _colour_gradient[color][3];
+	uint medium_dark  = _colour_gradient[color][5];
+	uint medium_light = _colour_gradient[color][6];
+	uint light        = _colour_gradient[color][7];
 
 	if (flags & FR_TRANSPARENT) {
 		GfxFillRect(left, top, right, bottom, PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOR);
