@@ -590,6 +590,19 @@ static inline bool TracksOverlap(TrackBits bits)
 }
 
 /**
+ * Check if a given track is contained within or overlaps some other tracks.
+ *
+ * @param tracks Tracks to be testet against
+ * @param track The track to test
+ * @return true if the track is already in the tracks or overlaps the tracks.
+ */
+static inline bool TrackOverlapsTracks(TrackBits tracks, Track track)
+{
+	if (HasBit(tracks, track)) return true;
+	return TracksOverlap(tracks | TrackToTrackBits(track));
+}
+
+/**
  * Checks whether the trackdir means that we are reversing.
  * @param dir the trackdir to check
  * @return true if it is a reversing road trackdir
