@@ -1727,6 +1727,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_CONDVAR(GameSettings, pf.yapf.rail_look_ahead_signal_p2,               SLE_INT, 28, SL_MAX_VERSION, 0, 0,     5,              -1000000, 1000000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.rail_pbs_cross_penalty,                 SLE_UINT,100, SL_MAX_VERSION, 0, 0,     3 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.rail_pbs_signal_back_penalty,           SLE_UINT,100, SL_MAX_VERSION, 0, 0,    15 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
+	 SDT_CONDVAR(GameSettings, pf.yapf.rail_doubleslip_penalty,                SLE_UINT,100, SL_MAX_VERSION, 0, 0,     1 * YAPF_TILE_LENGTH,  0, 1000000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.rail_longer_platform_penalty,           SLE_UINT, 33, SL_MAX_VERSION, 0, 0,     8 * YAPF_TILE_LENGTH,  0,   20000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.rail_longer_platform_per_tile_penalty,  SLE_UINT, 33, SL_MAX_VERSION, 0, 0,     0 * YAPF_TILE_LENGTH,  0,   20000, 0, STR_NULL,         NULL),
 	 SDT_CONDVAR(GameSettings, pf.yapf.rail_shorter_platform_penalty,          SLE_UINT, 33, SL_MAX_VERSION, 0, 0,    40 * YAPF_TILE_LENGTH,  0,   20000, 0, STR_NULL,         NULL),

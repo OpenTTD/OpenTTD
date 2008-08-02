@@ -105,6 +105,16 @@ public:
 		return cost;
 	}
 
+	FORCEINLINE int SwitchCost(TileIndex tile1, TileIndex tile2, DiagDirection exitdir)
+	{
+		if (IsTileType(tile1, MP_RAILWAY) && IsTileType(tile2, MP_RAILWAY)) {
+			bool t1 = KillFirstBit(GetTrackBits(tile1) & DiagdirReachesTracks(ReverseDiagDir(exitdir))) != TRACK_BIT_NONE;
+			bool t2 = KillFirstBit(GetTrackBits(tile2) & DiagdirReachesTracks(exitdir)) != TRACK_BIT_NONE;
+			if (t1 && t2) return Yapf().PfGetSettings().rail_doubleslip_penalty;
+		}
+		return 0;
+	}
+
 	/** Return one tile cost (base cost + level crossing penalty). */
 	FORCEINLINE int OneTileCost(TileIndex& tile, Trackdir trackdir)
 	{
@@ -305,6 +315,7 @@ public:
 		for (;;) {
 			/* Transition cost (cost of the move from previous tile) */
 			transition_cost = Yapf().CurveCost(prev.td, cur.td);
+			transition_cost += Yapf().SwitchCost(prev.tile, cur.tile, TrackdirToExitdir(prev.td));
 
 			/* First transition cost counts against segment entry cost, other transitions
 			 * inside segment will come to segment cost (and will be cached) */
