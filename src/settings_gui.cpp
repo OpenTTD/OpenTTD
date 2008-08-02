@@ -627,6 +627,8 @@ static const char *_patches_construction[] = {
 	"gui.drag_signals_density",
 	"game_creation.oil_refinery_limit",
 	"gui.semaphore_build_before",
+	"gui.default_signal_type",
+	"gui.cycle_signal_types",
 };
 
 static const char *_patches_stations[] = {

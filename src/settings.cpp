@@ -1790,6 +1790,8 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(gui.auto_euro,                            S,  0,  true,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.news_message_timeout,      SLE_UINT8, S,  0,     2,        1,      255, 0, STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.show_track_reservation,               S,  0, false,                        STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION,      RedrawScreen),
+	  SDTC_VAR(gui.default_signal_type,       SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE,         NULL),
+	  SDTC_VAR(gui.cycle_signal_types,        SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES,          NULL),
 
 #ifdef ENABLE_NETWORK
 	  SDTC_VAR(network.sync_freq,            SLE_UINT16,C|S,NO,   100,        0,      100, 0, STR_NULL,                                       NULL),

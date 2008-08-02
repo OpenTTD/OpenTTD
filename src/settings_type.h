@@ -80,6 +80,8 @@ struct GUISettings {
 	int32  autorenew_money;                  ///< how much money before autorenewing for new companies?
 	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
 	bool   show_track_reservation;           ///< highlight reserved tracks.
+	uint8  default_signal_type;              ///< the signal type to build by default.
+	uint8  cycle_signal_types;               ///< what signal types to cycle with the build signal tool.
 };
 
 /** Settings related to currency/unit systems. */

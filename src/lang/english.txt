@@ -1172,6 +1172,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow b
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging, place signals every: {ORANGE}{STRING1} tile(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signal type to build by default: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Advanced
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :One-way advanced
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cycle through signal types: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normal only
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advanced only
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :All
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Select town-road layout: {ORANGE}{STRING1}

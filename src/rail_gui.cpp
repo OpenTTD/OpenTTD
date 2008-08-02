@@ -52,6 +52,9 @@ static bool _convert_signal_button;          ///< convert signal button in the s
 static SignalVariant _cur_signal_variant;    ///< set the signal variant (for signal GUI)
 static SignalType _cur_signal_type;          ///< set the signal type (for signal GUI)
 
+/* Map _patches.default_signal_type to the corresponding signal type */
+static const SignalType _default_signal_type[] = {SIGTYPE_NORMAL, SIGTYPE_PBS, SIGTYPE_PBS_ONEWAY};
+
 struct RailStationGUISettings {
 	Axis orientation;                 ///< Currently selected rail station orientation
 	byte numtracks;                   ///< Currently selected number of tracks in station (if not \c dragdrop )
@@ -218,6 +221,9 @@ static void GenericPlaceSignals(TileIndex tile)
 	} else {
 		const Window *w = FindWindowById(WC_BUILD_SIGNAL, 0);
 
+		/* Map _patches.cycle_signal_types to the lower and upper allowed signal type. */
+		static const uint cycle_bounds[] = {SIGTYPE_NORMAL | (SIGTYPE_LAST_NOPBS << 3), SIGTYPE_PBS | (SIGTYPE_LAST << 3), SIGTYPE_NORMAL | (SIGTYPE_LAST << 3)};
+
 		/* various bitstuffed elements for CmdBuildSingleSignal() */
 		uint32 p1 = track;
 
@@ -225,13 +231,15 @@ static void GenericPlaceSignals(TileIndex tile)
 			/* signal GUI is used */
 			SB(p1, 3, 1, _ctrl_pressed);
 			SB(p1, 4, 1, _cur_signal_variant);
-			SB(p1, 5, 2, _cur_signal_type);
-			SB(p1, 7, 1, _convert_signal_button);
+			SB(p1, 5, 3, _cur_signal_type);
+			SB(p1, 8, 1, _convert_signal_button);
+			SB(p1, 9, 6, cycle_bounds[_settings_client.gui.cycle_signal_types]);
 		} else {
 			SB(p1, 3, 1, _ctrl_pressed);
 			SB(p1, 4, 1, (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC));
-			SB(p1, 5, 2, SIGTYPE_NORMAL);
-			SB(p1, 7, 1, 0);
+			SB(p1, 5, 3, _default_signal_type[_settings_client.gui.default_signal_type]);
+			SB(p1, 8, 1, 0);
+			SB(p1, 9, 6, cycle_bounds[_settings_client.gui.cycle_signal_types]);
 		}
 
 		DoCommandP(tile, p1, 0, CcPlaySound1E, CMD_BUILD_SIGNALS |

@@ -794,8 +794,10 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * - p1 = (bit 0-2) - track-orientation, valid values: 0-5 (Track enum)
  * - p1 = (bit 3)   - 1 = override signal/semaphore, or pre/exit/combo signal or (for bit 7) toggle variant (CTRL-toggle)
  * - p1 = (bit 4)   - 0 = signals, 1 = semaphores
- * - p1 = (bit 5-6) - type of the signal, for valid values see enum SignalType in rail_map.h
- * - p1 = (bit 7)   - convert the present signal type and variant
+ * - p1 = (bit 5-7) - type of the signal, for valid values see enum SignalType in rail_map.h
+ * - p1 = (bit 8)   - convert the present signal type and variant
+ * - p1 = (bit 9-11)- start cycle from this signal type
+ * - p1 = (bit 12-14)-wrap around after this signal type
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
  * TODO: p2 should be replaced by two bits for "along" and "against" the track.
  */
@@ -804,9 +806,13 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	Track track = (Track)GB(p1, 0, 3);
 	bool ctrl_pressed = HasBit(p1, 3); // was the CTRL button pressed
 	SignalVariant sigvar = (ctrl_pressed ^ HasBit(p1, 4)) ? SIG_SEMAPHORE : SIG_ELECTRIC; // the signal variant of the new signal
-	SignalType sigtype = (SignalType)GB(p1, 5, 2); // the signal type of the new signal
-	bool convert_signal = HasBit(p1, 7); // convert button pressed
+	SignalType sigtype = (SignalType)GB(p1, 5, 3); // the signal type of the new signal
+	bool convert_signal = HasBit(p1, 8); // convert button pressed
+	SignalType cycle_start = (SignalType)GB(p1, 9, 3);
+	SignalType cycle_stop = (SignalType)GB(p1, 12, 3);
 	CommandCost cost;
+
+	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
 
 	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoTrainOnTrack(tile, track))
 		return CMD_ERROR;
@@ -869,7 +875,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 		if (p2 == 0) {
 			if (!HasSignalOnTrack(tile, track)) {
 				/* build new signals */
-				SetPresentSignals(tile, GetPresentSignals(tile) | SignalOnTrack(track));
+				SetPresentSignals(tile, GetPresentSignals(tile) | (IsPbsSignal(sigtype) ? KillFirstBit(SignalOnTrack(track)) : SignalOnTrack(track)));
 				SetSignalType(tile, track, sigtype);
 				SetSignalVariant(tile, track, sigvar);
 			} else {
@@ -886,10 +892,12 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 					}
 
 				} else if (ctrl_pressed) {
-					/* cycle between normal -> pre -> exit -> combo -> ... */
-					sigtype = GetSignalType(tile, track);
+					/* cycle between cycle_start and cycle_end */
+					sigtype = (SignalType)(GetSignalType(tile, track) + 1);
 
-					SetSignalType(tile, track, sigtype == SIGTYPE_COMBO ? SIGTYPE_NORMAL : (SignalType)(sigtype + 1));
+					if (sigtype < cycle_start || sigtype > cycle_stop) sigtype = cycle_start;
+
+					SetSignalType(tile, track, sigtype);
 				} else {
 					/* cycle the signal side: both -> left -> right -> both -> ... */
 					CycleSignalSide(tile, track);
@@ -902,6 +910,10 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 			SetSignalVariant(tile, track, sigvar);
 		}
 
+		if (IsPbsSignal(sigtype)) {
+			uint mask = GetPresentSignals(tile) & SignalOnTrack(track);
+			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetTrackReservation(tile), track) ? (uint)-1 : 0) & mask));
+		}
 		MarkTileDirtyByTile(tile);
 		AddTrackToSignalBuffer(tile, track, _current_player);
 		YapfNotifyTrackLayoutChange(tile, track);
