@@ -45,6 +45,7 @@ static inline byte SignalOnTrack(Track track)
 enum SigSegState {
 	SIGSEG_FREE,    ///< Free and has no pre-signal exits or at least one green exit
 	SIGSEG_FULL,    ///< Occupied by a train
+	SIGSEG_PBS,     ///< Segment is a PBS segment
 };
 
 SigSegState UpdateSignalsOnSegment(TileIndex tile, DiagDirection side, Owner owner);

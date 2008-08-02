@@ -2379,7 +2379,10 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 		return true;
 	}
 
+	SigSegState seg_state;
+
 	if (v->u.rail.force_proceed == 0) {
+		/* force proceed was not pressed */
 		if (++v->load_unload_time_rem < 37) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
@@ -2387,11 +2390,26 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 
 		v->load_unload_time_rem = 0;
 
-		if (UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner) == SIGSEG_FULL) {
+		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
+		if (seg_state == SIGSEG_FULL || GetDepotWaypointReservation(v->tile)) {
+			/* Full and no PBS signal in block or depot reserved, can't exit. */
 			InvalidateWindowClasses(WC_TRAINS_LIST);
 			return true;
 		}
+	} else {
+		seg_state = _settings_game.pf.reserve_paths ? SIGSEG_PBS : UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 	}
+
+	/* Only leave when we can reserve a path to our destination. */
+	if (seg_state == SIGSEG_PBS && !TryPathReserve(v) && v->u.rail.force_proceed == 0) {
+		/* No path and no force proceed. */
+		InvalidateWindowClasses(WC_TRAINS_LIST);
+		MarkTrainAsStuck(v);
+		return true;
+	}
+
+	SetDepotWaypointReservation(v->tile, true);
+	if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
 
 	VehicleServiceInDepot(v);
 	InvalidateWindowClasses(WC_TRAINS_LIST);
