@@ -380,7 +380,7 @@ static inline void CycleSignalSide(TileIndex t, Track track)
 	byte pos = (track == TRACK_LOWER || track == TRACK_RIGHT) ? 4 : 6;
 
 	sig = GB(_m[t].m3, pos, 2);
-	if (--sig == 0) sig = 3;
+	if (--sig == 0) sig = IsPbsSignal(GetSignalType(t, track)) ? 2 : 3;
 	SB(_m[t].m3, pos, 2, sig);
 }
 

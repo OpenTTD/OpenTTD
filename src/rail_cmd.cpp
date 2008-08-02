@@ -889,6 +889,9 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 						/* convert the present signal to the chosen type and variant */
 						SetSignalType(tile, track, sigtype);
 						SetSignalVariant(tile, track, sigvar);
+						if (IsPbsSignal(sigtype) && (GetPresentSignals(tile) & SignalOnTrack(track)) == SignalOnTrack(track)) {
+							SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | KillFirstBit(SignalOnTrack(track)));
+						}
 					}
 
 				} else if (ctrl_pressed) {
@@ -898,6 +901,9 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 					if (sigtype < cycle_start || sigtype > cycle_stop) sigtype = cycle_start;
 
 					SetSignalType(tile, track, sigtype);
+					if (IsPbsSignal(sigtype) && (GetPresentSignals(tile) & SignalOnTrack(track)) == SignalOnTrack(track)) {
+						SetPresentSignals(tile, (GetPresentSignals(tile) & ~SignalOnTrack(track)) | KillFirstBit(SignalOnTrack(track)));
+					}
 				} else {
 					/* cycle the signal side: both -> left -> right -> both -> ... */
 					CycleSignalSide(tile, track);
