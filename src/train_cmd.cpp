@@ -3068,6 +3068,21 @@ static void SetVehicleCrashed(Vehicle *v)
 {
 	if (v->u.rail.crash_anim_pos != 0) return;
 
+	/* Free a possible path reservation and try to mark all tiles occupied by the train reserved. */
+	if (IsFrontEngine(v)) {
+		/* Remove all reservations, also the ones currently under the train
+		 * and any railway station paltform reservation. */
+		FreeTrainTrackReservation(v);
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+			ClearPathReservation(u->tile, GetVehicleTrackdir(u));
+		}
+		/* Try to reserve all tiles directly under the train, but not the whole
+		 * railway station platform or both tunnel/bridge ends. */
+		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+			TryReserveRailTrack(u->tile, TrackdirToTrack(GetVehicleTrackdir(u)));
+		}
+	}
+
 	/* we may need to update crossing we were approaching */
 	TileIndex crossing = TrainApproachingCrossingTile(v);
 
@@ -3451,6 +3466,12 @@ static void DeleteLastWagon(Vehicle *v)
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 
 	MarkSingleVehicleDirty(v);
+
+	/* Clear a possible path reservation */
+	if ((IsFrontEngine(v) && !(v->u.rail.track & TRACK_BIT_DEPOT))
+			|| ((v->u.rail.track & ~TRACK_BIT_MASK) == TRACK_BIT_NONE && (v->tile != u->tile || (u->u.rail.track & ~TRACK_BIT_MASK) != TRACK_BIT_NONE))) {
+		if (HasReservedTracks(v->tile, v->u.rail.track)) UnreserveRailTrack(v->tile, TrackBitsToTrack(v->u.rail.track));
+	}
 
 	/* 'v' shouldn't be accessed after it has been deleted */
 	TrackBits track = v->u.rail.track;

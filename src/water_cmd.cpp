@@ -887,7 +887,10 @@ static void FloodVehicle(Vehicle *v)
 			switch (v->type) {
 				default: NOT_REACHED();
 				case VEH_TRAIN:
-					if (IsFrontEngine(v)) pass += 4; // driver
+					if (IsFrontEngine(v)) {
+						pass += 4; // driver
+						FreeTrainTrackReservation(v);
+					}
 					v->u.rail.crash_anim_pos = 4000; // max 4440, disappear pretty fast
 					InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 					break;
