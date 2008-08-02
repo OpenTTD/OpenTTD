@@ -3396,14 +3396,18 @@ static inline void AffectSpeedByZChange(Vehicle *v, byte old_z)
 	}
 }
 
-static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
+static bool TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
 	if (IsTileType(tile, MP_RAILWAY) &&
 			GetRailTileType(tile) == RAIL_TILE_SIGNALS) {
 		TrackdirBits tracks = TrackBitsToTrackdirBits(GetTrackBits(tile)) & DiagdirReachesTrackdirs(dir);
 		Trackdir trackdir = FindFirstTrackdir(tracks);
-		UpdateSignalsOnSegment(tile, TrackdirToExitdir(trackdir), GetTileOwner(tile));
+		if (UpdateSignalsOnSegment(tile,  TrackdirToExitdir(trackdir), GetTileOwner(tile)) == SIGSEG_PBS && HasSignalOnTrackdir(tile, trackdir)) {
+			/* A PBS block with a non-PBS signal facing us? */
+			if (!IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) return true;
+		}
 	}
+	return false;
 }
 
 
@@ -3766,7 +3770,23 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 		}
 
 		if (update_signals_crossing) {
-			if (IsFrontEngine(v)) TrainMovedChangeSignals(gp.new_tile, enterdir);
+			if (IsFrontEngine(v)) {
+				if (TrainMovedChangeSignals(gp.new_tile, enterdir)) {
+					/* We are entering a block with PBS signals right now, but
+					 * not through a PBS signal. This means we don't have a
+					 * reservation right now. As a conventional signal will only
+					 * ever be green if no other train is in the block, getting
+					 * a path should always be possible. If the player built
+					 * such a strange network that it is not possible, the train
+					 * will be marked as stuck and the player has to deal with
+					 * the problem. */
+					if ((!HasReservedTracks(gp.new_tile, v->u.rail.track) &&
+							!TryReserveRailTrack(gp.new_tile, FindFirstTrack(v->u.rail.track))) ||
+							!TryPathReserve(v)) {
+						MarkTrainAsStuck(v);
+					}
+				}
+			}
 
 			/* Signals can only change when the first
 			 * (above) or the last vehicle moves. */
