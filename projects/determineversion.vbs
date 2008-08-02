@@ -9,7 +9,7 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	data = file.ReadAll
 	file.Close
 	data = Replace(data, to_find, replacement)
-	Set file = FSO.CreateTextFile(FileName, -1, 0)
+	Set file = FSO.CreateTextFile(filename, -1, 0)
 	file.Write data
 	file.Close
 End Sub
@@ -141,6 +141,11 @@ Function DetermineSVNVersion()
 		' Do we have subversion installed? Check immediatelly whether we've got a modified WC.
 		Set oExec = WshShell.Exec("svnversion ../src")
 		If Err.Number = 0 Then
+			' Wait till the application is finished ...
+			Do While oExec.Status = 0
+			Loop
+		End If
+		If Err.Number = 0 And oExec.ExitCode = 0 Then
 			Dim modified
 			If InStr(OExec.StdOut.ReadLine(), "M") Then
 				modified = "M"
@@ -178,6 +183,11 @@ Function DetermineSVNVersion()
 		Err.Clear
 		Set oExec = WshShell.Exec("git rev-parse --verify --short=8 HEAD")
 		If Err.Number = 0 Then
+			' Wait till the application is finished ...
+			Do While oExec.Status = 0
+			Loop
+		End If
+		If Err.Number = 0 And oExec.ExitCode = 0 Then
 			version = "g" & oExec.StdOut.ReadLine()
 			Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
 			Do While oExec.Status = 0 And Err.Number = 0
@@ -199,6 +209,11 @@ Function DetermineSVNVersion()
 			Err.Clear
 			Set oExec = WshShell.Exec("hg tip")
 			If Err.Number = 0 Then
+				' Wait till the application is finished ...
+				Do While oExec.Status = 0
+				Loop
+			End If
+			If Err.Number = 0 And oExec.ExitCode = 0 Then
 				version = "h" & Mid(OExec.StdOut.ReadLine(), 19, 8)
 				Set oExec = WshShell.Exec("hg status ../src")
 				If Err.Number = 0 Then
