@@ -204,6 +204,41 @@ static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)
 		!IsStationTileBlocked(t1);
 }
 
+/**
+ * Get the reservation state of the rail station
+ * @pre IsRailwayStationTile(t)
+ * @param t the station tile
+ * @return reservation state
+ */
+static inline bool GetRailwayStationReservation(TileIndex t)
+{
+	assert(IsRailwayStationTile(t));
+	return HasBit(_m[t].m6, 2);
+}
+
+/**
+ * Set the reservation state of the rail station
+ * @pre IsRailwayStationTile(t)
+ * @param t the station tile
+ * @param b the reservation state
+ */
+static inline void SetRailwayStationReservation(TileIndex t, bool b)
+{
+	assert(IsRailwayStationTile(t));
+	SB(_m[t].m6, 2, 1, b ? 1 : 0);
+}
+
+/**
+ * Get the reserved track bits for a waypoint
+ * @pre IsRailwayStationTile(t)
+ * @param t the tile
+ * @return reserved track bits
+ */
+static inline TrackBits GetRailStationReservation(TileIndex t)
+{
+	return GetRailwayStationReservation(t) ? AxisToTrackBits(GetRailStationAxis(t)) : TRACK_BIT_NONE;
+}
+
 
 static inline DiagDirection GetDockDirection(TileIndex t)
 {
@@ -277,6 +312,7 @@ static inline void MakeRailStation(TileIndex t, Owner o, StationID sid, Axis a, 
 {
 	MakeStation(t, o, sid, STATION_RAIL, section + a);
 	SetRailType(t, rt);
+	SetRailwayStationReservation(t, false);
 }
 
 static inline void MakeRoadStop(TileIndex t, Owner o, StationID sid, RoadStopType rst, RoadTypes rt, DiagDirection d)

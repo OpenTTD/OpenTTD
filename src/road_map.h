@@ -253,6 +253,43 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 	return AxisToTrackBits(GetCrossingRailAxis(tile));
 }
 
+
+/**
+ * Get the reservation state of the rail crossing
+ * @pre IsLevelCrossingTile(t)
+ * @param t the crossing tile
+ * @return reservation state
+ */
+static inline bool GetCrossingReservation(TileIndex t)
+{
+	assert(IsLevelCrossingTile(t));
+	return HasBit(_m[t].m5, 4);
+}
+
+/**
+ * Set the reservation state of the rail crossing
+ * @note Works for both waypoints and rail depots
+ * @pre IsLevelCrossingTile(t)
+ * @param t the crossing tile
+ * @param b the reservation state
+ */
+static inline void SetCrossingReservation(TileIndex t, bool b)
+{
+	assert(IsLevelCrossingTile(t));
+	SB(_m[t].m5, 4, 1, b ? 1 : 0);
+}
+
+/**
+ * Get the reserved track bits for a rail crossing
+ * @pre IsLevelCrossingTile(t)
+ * @param t the tile
+ * @return reserved track bits
+ */
+static inline TrackBits GetRailCrossingReservation(TileIndex t)
+{
+	return GetCrossingReservation(t) ? GetCrossingRailBits(t) : TRACK_BIT_NONE;
+}
+
 static inline bool IsCrossingBarred(TileIndex t)
 {
 	assert(IsLevelCrossing(t));

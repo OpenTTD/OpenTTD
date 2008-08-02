@@ -224,6 +224,87 @@ static inline WaypointID GetWaypointIndex(TileIndex t)
 	return (WaypointID)_m[t].m2;
 }
 
+
+/**
+ * Returns the reserved track bits of the tile
+ * @pre IsPlainRailTile(t)
+ * @param t the tile to query
+ * @return the track bits
+ */
+static inline TrackBits GetTrackReservation(TileIndex t)
+{
+	assert(IsPlainRailTile(t));
+	byte track_b = GB(_m[t].m2, 8, 3);
+	Track track = (Track)(track_b - 1);    // map array saves Track+1
+	if (track_b == 0) return TRACK_BIT_NONE;
+	return (TrackBits)(TrackToTrackBits(track) | (HasBit(_m[t].m2, 11) ? TrackToTrackBits(TrackToOppositeTrack(track)) : 0));
+}
+
+/**
+ * Sets the reserved track bits of the tile
+ * @pre IsPlainRailTile(t) && !TracksOverlap(b)
+ * @param t the tile to change
+ * @param b the track bits
+ */
+static inline void SetTrackReservation(TileIndex t, TrackBits b)
+{
+	assert(IsPlainRailTile(t));
+	assert(b != INVALID_TRACK_BIT);
+	assert(!TracksOverlap(b));
+	Track track = RemoveFirstTrack(&b);
+	SB(_m[t].m2, 8, 3, track == INVALID_TRACK ? 0 : track+1);
+	SB(_m[t].m2, 11, 1, (byte)(b != TRACK_BIT_NONE));
+}
+
+/**
+ * Get the reservation state of the waypoint or depot
+ * @note Works for both waypoints and rail depots
+ * @pre IsRailWaypoint(t) || IsRailDepot(t)
+ * @param t the waypoint/depot tile
+ * @return reservation state
+ */
+static inline bool GetDepotWaypointReservation(TileIndex t)
+{
+	assert(IsRailWaypoint(t) || IsRailDepot(t));
+	return HasBit(_m[t].m5, 4);
+}
+
+/**
+ * Set the reservation state of the waypoint or depot
+ * @note Works for both waypoints and rail depots
+ * @pre IsRailWaypoint(t) || IsRailDepot(t)
+ * @param t the waypoint/depot tile
+ * @param b the reservation state
+ */
+static inline void SetDepotWaypointReservation(TileIndex t, bool b)
+{
+	assert(IsRailWaypoint(t) || IsRailDepot(t));
+	SB(_m[t].m5, 4, 1, (byte)b);
+}
+
+/**
+ * Get the reserved track bits for a waypoint
+ * @pre IsRailWaypoint(t)
+ * @param t the tile
+ * @return reserved track bits
+ */
+static inline TrackBits GetRailWaypointReservation(TileIndex t)
+{
+	return GetDepotWaypointReservation(t) ? GetRailWaypointBits(t) : TRACK_BIT_NONE;
+}
+
+/**
+ * Get the reserved track bits for a depot
+ * @pre IsRailDepot(t)
+ * @param t the tile
+ * @return reserved track bits
+ */
+static inline TrackBits GetRailDepotReservation(TileIndex t)
+{
+	return GetDepotWaypointReservation(t) ? TrackToTrackBits(GetRailDepotTrack(t)) : TRACK_BIT_NONE;
+}
+
+
 static inline SignalType GetSignalType(TileIndex t, Track track)
 {
 	assert(GetRailTileType(t) == RAIL_TILE_SIGNALS);

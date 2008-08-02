@@ -11,6 +11,7 @@
 #include "bridge_map.h"
 #include "tunnel_map.h"
 #include "transport_type.h"
+#include "track_func.h"
 
 
 /**
@@ -78,6 +79,44 @@ static inline TileIndex GetOtherTunnelBridgeEnd(TileIndex t)
 {
 	assert(IsTileType(t, MP_TUNNELBRIDGE));
 	return IsTunnel(t) ? GetOtherTunnelEnd(t) : GetOtherBridgeEnd(t);
+}
+
+
+/**
+ * Get the reservation state of the rail tunnel/bridge
+ * @pre IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
+ * @param t the tile
+ * @return reservation state
+ */
+static inline bool GetTunnelBridgeReservation(TileIndex t)
+{
+	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
+	return HasBit(_m[t].m5, 4);
+}
+
+/**
+ * Set the reservation state of the rail tunnel/bridge
+ * @pre IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
+ * @param t the tile
+ * @param b the reservation state
+ */
+static inline void SetTunnelBridgeReservation(TileIndex t, bool b)
+{
+	assert(IsTileType(t, MP_TUNNELBRIDGE));
+	assert(GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL);
+	SB(_m[t].m5, 4, 1, b ? 1 : 0);
+}
+
+/**
+ * Get the reserved track bits for a rail tunnel/bridge
+ * @pre IsTileType(t, MP_TUNNELBRIDGE) && GetTunnelBridgeTransportType(t) == TRANSPORT_RAIL
+ * @param t the tile
+ * @return reserved track bits
+ */
+static inline TrackBits GetRailTunnelBridgeReservation(TileIndex t)
+{
+	return GetTunnelBridgeReservation(t) ? DiagDirToDiagTrackBits(GetTunnelBridgeDirection(t)) : TRACK_BIT_NONE;
 }
 
 #endif /* TUNNELBRIDGE_MAP_H */

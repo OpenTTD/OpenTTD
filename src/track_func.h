@@ -198,6 +198,21 @@ static inline bool IsValidTrackdir(Trackdir trackdir)
  */
 
 /**
+ * Find the opposite track to a given track.
+ *
+ * TRACK_LOWER -> TRACK_UPPER and vice versa, likewise for left/right.
+ * TRACK_X is mapped to TRACK_Y and reversed.
+ *
+ * @param t the track to convert
+ * @return the opposite track
+ */
+static inline Track TrackToOppositeTrack(Track t)
+{
+	assert(t != INVALID_TRACK);
+	return (Track)(t ^ 1);
+}
+
+/**
  * Maps a trackdir to the reverse trackdir.
  *
  * Returns the reverse trackdir of a Trackdir value. The reverse trackdir

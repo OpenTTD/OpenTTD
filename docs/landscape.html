@@ -407,6 +407,39 @@
          <li>m4 bits 7..4: bit clear = signal 3..0 shows red</li>
         </ul>
        </li>
+       <li>m2 bits 8..10: track reserved for pbs
+         <table>
+          <tr>
+            <td><tt>0</tt>&nbsp; </td>
+            <td>not reserved</td>
+          </tr>
+          <tr>
+            <td><tt>1</tt>&nbsp; </td>
+            <td>X direction</td>
+          </tr>
+          <tr>
+            <td><tt>2</tt>&nbsp; </td>
+            <td>Y direction</td>
+          </tr>
+          <tr>
+            <td><tt>3</tt>&nbsp; </td>
+            <td>north corner (W-E)</td>
+          </tr>
+          <tr>
+            <td><tt>4</tt>&nbsp; </td>
+            <td>south corner (W-E)</td>
+          </tr>
+          <tr>
+            <td><tt>5</tt>&nbsp; </td>
+            <td>west corner (N-S)</td>
+          </tr>
+          <tr>
+            <td><tt>6</tt>&nbsp; </td>
+            <td>east corner (N-S)</td>
+          </tr>
+         </table>
+       </li>
+       <li>m2 bit 11: opposite track is reserved, too</li>
       </ul>
      </li>
      <li>m5 bit 7 set, bit 6 clear: checkpoint
@@ -425,6 +458,7 @@
          </tr>
         </table>
        </li>
+       <li>m5 bit 4: pbs reservation state</li>
       </ul>
      </li>
      <li>m5 bit 7 set, bit 6 set: railway depot
@@ -452,6 +486,7 @@
          </tr>
         </table>
        </li>
+       <li>m5 bit 4: pbs reservation state</li>
       </ul>
      </li>
      <li>m6 bits 7..6 : Possibility of a bridge above, in the <a href="#bridge_direction">direction specified</a></li>
@@ -582,6 +617,7 @@
          </li>
           <li>m4 bit 5: set if crossing lights are on</li>
          <li>m4 bits 4..0: <a href="#OwnershipInfo">owner</a> of the road type 0 (normal road)</li>
+         <li>m5 bit 4: pbs reservation state</li>
         </ul>
        </li>
       </ul>
@@ -898,6 +934,7 @@
      </li>
      <li>m6 bits 5..3: the station type (rail, airport, truck, bus, oilrig, dock, buoy)</li>
      <li>m6 bit 2: 1 when a drive through road stop is built over a town owned road, otherwise 0</li>
+     <li>m6 bit 2: pbs reservation state for railway stations</li>
      <li>m6 bits 1..0 : <a href="#tropic_zone">Tropic zone definition</a></li>
      <li>m7: animation frame</li>
     </ul>
@@ -1370,6 +1407,7 @@
      <li>m3 bits 3..0: <a href="#TrackType">track type</a> for railway</li>
      <li>m3 bits 2..0: present road types for road</li>
      <li>m4 bit 7 set = on snow or desert</li>
+     <li>m5 bit 4: pbs reservation state for railway</li>
      <li>m5 bits 7 clear: tunnel entrance/exit</li>
      <li>m5 bit 7 set: bridge ramp
       <ul>
