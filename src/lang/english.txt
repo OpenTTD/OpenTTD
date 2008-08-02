@@ -2948,6 +2948,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Build th
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Speed: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacity: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{RAW_STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{RAW_STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name road vehicle
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Can't name road vehicle...

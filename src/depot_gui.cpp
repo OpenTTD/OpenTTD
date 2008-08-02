@@ -609,7 +609,6 @@ struct DepotWindow : Window {
 				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_TRAIN_TIP;
 				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE;
 				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
-				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR;
 
 				this->widget[DEPOT_WIDGET_BUILD].data        = STR_8815_NEW_VEHICLES;
 				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_8840_BUILD_NEW_TRAIN_VEHICLE;
@@ -633,7 +632,6 @@ struct DepotWindow : Window {
 				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_ROADVEH_TIP;
 				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9024_DRAG_ROAD_VEHICLE_TO_HERE;
 				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
-				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_9022_VEHICLES_CLICK_ON_VEHICLE;
 
 				this->widget[DEPOT_WIDGET_BUILD].data        = STR_9004_NEW_VEHICLES;
 				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9023_BUILD_NEW_ROAD_VEHICLE;
@@ -657,7 +655,6 @@ struct DepotWindow : Window {
 				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_DEPOT_SHIP_TIP;
 				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9821_DRAG_SHIP_TO_HERE_TO_SELL;
 				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
-				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;
 
 				this->widget[DEPOT_WIDGET_BUILD].data        = STR_9804_NEW_SHIPS;
 				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9820_BUILD_NEW_SHIP;
@@ -681,7 +678,6 @@ struct DepotWindow : Window {
 				this->widget[DEPOT_WIDGET_START_ALL].tooltips= STR_MASS_START_HANGAR_TIP;
 				this->widget[DEPOT_WIDGET_SELL].tooltips     = STR_A023_DRAG_AIRCRAFT_TO_HERE_TO;
 				this->widget[DEPOT_WIDGET_SELL_ALL].tooltips = STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
-				this->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;
 
 				this->widget[DEPOT_WIDGET_BUILD].data        = STR_A003_NEW_AIRCRAFT;
 				this->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_A022_BUILD_NEW_AIRCRAFT;
@@ -841,6 +837,73 @@ struct DepotWindow : Window {
 
 		}
 	}
+
+	virtual void OnRightClick(Point pt, int widget)
+	{
+		if (widget != DEPOT_WIDGET_MATRIX) return;
+
+		GetDepotVehiclePtData gdvp = { NULL, NULL };
+		const Vehicle *v = NULL;
+		DepotGUIAction mode = this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp);
+
+		if (this->type == VEH_TRAIN) v = gdvp.wagon;
+
+		if (v != NULL && mode == MODE_DRAG_VEHICLE) {
+			AcceptedCargo capacity, loaded;
+			memset(capacity, 0, sizeof(capacity));
+			memset(loaded, 0, sizeof(loaded));
+
+			/* Display info for single (articulated) vehicle, or for whole chain starting with selected vehicle */
+			bool whole_chain = (this->type == VEH_TRAIN && _ctrl_pressed);
+
+			/* loop through vehicle chain and collect cargos */
+			uint num = 0;
+			for (const Vehicle *w = v; w != NULL; w = w->Next()) {
+				if (w->cargo_cap > 0 && w->cargo_type < NUM_CARGO) {
+					capacity[w->cargo_type] += w->cargo_cap;
+					loaded  [w->cargo_type] += w->cargo.Count();
+				}
+
+				if (w->type == VEH_TRAIN && !EngineHasArticPart(w)) {
+					num++;
+					if (!whole_chain) break;
+				}
+			}
+
+			/* Build tooltipstring */
+			static char details[1024];
+			details[0] = '\0';
+			char *pos = details;
+
+			for (CargoID cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+				if (capacity[cargo_type] == 0) continue;
+
+				SetDParam(0, cargo_type);           // {CARGO} #1
+				SetDParam(1, loaded[cargo_type]);   // {CARGO} #2
+				SetDParam(2, cargo_type);           // {SHORTCARGO} #1
+				SetDParam(3, capacity[cargo_type]); // {SHORTCARGO} #2
+				pos = GetString(pos, STR_DEPOT_VEHICLE_TOOLTIP_CARGO, lastof(details));
+			}
+
+			/* Show tooltip window */
+			uint64 args[2];
+			args[0] = (whole_chain ? num : v->engine_type);
+			args[1] = (uint64)details;
+			GuiShowTooltips(whole_chain ? STR_DEPOT_VEHICLE_TOOLTIP_CHAIN : STR_DEPOT_VEHICLE_TOOLTIP, 2, args);
+		} else {
+			/* Show tooltip help */
+			StringID tooltip = INVALID_STRING_ID;
+			switch (this->type) {
+				case VEH_TRAIN:    tooltip = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR; break;
+				case VEH_ROAD:     tooltip = STR_9022_VEHICLES_CLICK_ON_VEHICLE; break;
+				case VEH_SHIP:     tooltip = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;   break;
+				case VEH_AIRCRAFT: tooltip = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;break;
+				default: NOT_REACHED();
+			}
+			GuiShowTooltips(tooltip);
+		}
+	}
+
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
