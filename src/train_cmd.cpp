@@ -2327,6 +2327,44 @@ void Train::PlayLeaveStationSound() const
 	SndPlayVehicleFx(sfx[RailVehInfo(engtype)->engclass], this);
 }
 
+/** Check if the train is on the last reserved tile and try to extend the path then. */
+static void CheckNextTrainTile(Vehicle *v)
+{
+	/* Don't do any look-ahead if path_backoff_interval is 255. */
+	if (_settings_game.pf.path_backoff_interval == 255) return;
+
+	/* Exit if we reached our destination or are inside a depot. */
+	if ((v->tile == v->dest_tile && !v->current_order.IsType(OT_GOTO_STATION)) || v->u.rail.track & TRACK_BIT_DEPOT) return;
+	/* Exit if we are on a station tile and are going to stop. */
+	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
+	/* Exit if the current order doesn't have a destination, but the train has orders. */
+	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION)) && v->num_orders > 0) return;
+
+	Trackdir td = GetVehicleTrackdir(v);
+
+	/* On a tile with a red non-pbs signal, don't look ahead. */
+	if (IsTileType(v->tile, MP_RAILWAY) && HasSignalOnTrackdir(v->tile, td) &&
+			!IsPbsSignal(GetSignalType(v->tile, TrackdirToTrack(td))) &&
+			GetSignalStateByTrackdir(v->tile, td) == SIGNAL_STATE_RED) return;
+
+	CFollowTrackRail ft(v);
+	if (!ft.Follow(v->tile, td)) return;
+
+	if (!HasReservedTracks(ft.m_new_tile, TrackdirBitsToTrackBits(ft.m_new_td_bits))) {
+		/* Next tile is not reserved. */
+		if (KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
+			if (HasPbsSignalOnTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) {
+				/* If the next tile is a PBS signal, try to make a reservation. */
+				TrackBits tracks = TrackdirBitsToTrackBits(ft.m_new_td_bits);
+				if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) {
+					tracks &= ~TrackCrossesTracks(TrackdirToTrack(ft.m_old_td));
+				}
+				ChooseTrainTrack(v, ft.m_new_tile, ft.m_exitdir, tracks, false, NULL, false);
+			}
+		}
+	}
+}
+
 static bool CheckTrainStayInDepot(Vehicle *v)
 {
 	/* bail out if not all wagons are in the same depot or not in a depot at all */
@@ -3503,8 +3541,6 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 					goto invalid_rail;
 				}
 
-				if (IsFrontEngine(v)) v->load_unload_time_rem = 0;
-
 				if (!HasBit(r, VETS_ENTERED_WORMHOLE)) {
 					Track track = FindFirstTrack(chosen_track);
 					Trackdir tdir = TrackDirectionToTrackdir(track, chosen_dir);
@@ -3533,6 +3569,13 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 				if (prev == NULL) AffectSpeedByDirChange(v, chosen_dir);
 
 				v->direction = chosen_dir;
+
+				if (IsFrontEngine(v)) {
+					v->load_unload_time_rem = 0;
+
+					/* Always try to extend the reservation when entering a tile. */
+					CheckNextTrainTile(v);
+				}
 			}
 		} else {
 			/* In a tunnel or on a bridge
@@ -3543,7 +3586,10 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 					min(v->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed);
 			}
 
-			if (!IsTileType(gp.new_tile, MP_TUNNELBRIDGE) || !HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
+				/* Perform look-ahead on tunnel exit. */
+				if (IsFrontEngine(v)) CheckNextTrainTile(v);
+			} else {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				VehiclePositionChanged(v);
@@ -3577,6 +3623,9 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 				if (IsLevelCrossingTile(gp.old_tile)) UpdateLevelCrossing(gp.old_tile);
 			}
 		}
+
+		/* Do not check on every tick to save some computing time. */
+		if (IsFrontEngine(v) && v->tick_counter % _settings_game.pf.path_backoff_interval == 0) CheckNextTrainTile(v);
 	}
 	return;
 
@@ -3930,6 +3979,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 	/* exit if train is stopped */
 	if (v->vehstatus & VS_STOPPED && v->cur_speed == 0) return;
 
+	bool valid_order = v->current_order.IsValid() && v->current_order.GetType() != OT_CONDITIONAL;
 	if (ProcessOrders(v) && CheckReverseTrain(v)) {
 		v->load_unload_time_rem = 0;
 		v->cur_speed = 0;
@@ -3946,6 +3996,11 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 
 	if (!mode) HandleLocomotiveSmokeCloud(v);
 
+	/* We had no order but have an order now, do look ahead. */
+	if (!valid_order && v->current_order.IsValid()) {
+		CheckNextTrainTile(v);
+	}
+
 	/* Handle stuck trains. */
 	if (!mode && HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
 		++v->load_unload_time_rem;
@@ -3953,7 +4008,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		/* Should we try reversing this tick if still stuck? */
 		bool turn_around = v->load_unload_time_rem % (_settings_game.pf.wait_for_pbs_path * DAY_TICKS) == 0 && _settings_game.pf.wait_for_pbs_path < 255;
 
-		if (!turn_around && v->u.rail.force_proceed == 0) return;
+		if (!turn_around && v->load_unload_time_rem % _settings_game.pf.path_backoff_interval != 0 && v->u.rail.force_proceed == 0) return;
 		if (!TryPathReserve(v)) {
 			/* Still stuck. */
 			if (turn_around) ReverseTrainDirection(v);
