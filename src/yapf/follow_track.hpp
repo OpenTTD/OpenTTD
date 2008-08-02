@@ -24,6 +24,7 @@ struct CFollowTrackT
 	};
 
 	const Vehicle      *m_veh;           ///< moving vehicle
+	Owner               m_veh_owner;     ///< owner of the vehicle
 	TileIndex           m_old_tile;      ///< the origin (vehicle moved from) before move
 	Trackdir            m_old_td;        ///< the trackdir (the vehicle was on) before move
 	TileIndex           m_new_tile;      ///< the new tile (the vehicle has entered)
@@ -42,10 +43,23 @@ struct CFollowTrackT
 		Init(v, railtype_override, pPerf);
 	}
 
+	FORCEINLINE CFollowTrackT(Owner o, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
+	{
+		m_veh = NULL;
+		Init(o, railtype_override, pPerf);
+	}
+
 	FORCEINLINE void Init(const Vehicle *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
+		Init(v != NULL ? v->owner : INVALID_OWNER, railtype_override == INVALID_RAILTYPES ? v->u.rail.compatible_railtypes : railtype_override, pPerf);
+	}
+
+	FORCEINLINE void Init(Owner o, RailTypes railtype_override, CPerformanceTimer *pPerf)
+	{
+		assert((!IsRoadTT() || m_veh != NULL) && (!IsRailTT() || railtype_override != INVALID_RAILTYPES));
+		m_veh_owner = o;
 		m_pPerf = pPerf;
 		// don't worry, all is inlined so compiler should remove unnecessary initializations
 		m_new_tile = INVALID_TILE;
@@ -54,7 +68,7 @@ struct CFollowTrackT
 		m_is_station = m_is_bridge = m_is_tunnel = false;
 		m_tiles_skipped = 0;
 		m_err = EC_NONE;
-		if (IsRailTT()) m_railtypes = railtype_override == INVALID_RAILTYPES ? v->u.rail.compatible_railtypes : railtype_override;
+		m_railtypes = railtype_override;
 	}
 
 	FORCEINLINE static TransportType TT() {return Ttr_type_;}
@@ -88,7 +102,7 @@ struct CFollowTrackT
 		m_old_tile = old_tile;
 		m_old_td = old_td;
 		m_err = EC_NONE;
-		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), m_veh->u.road.compatible_roadtypes)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
+		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), m_veh ? m_veh->u.road.compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
 		       (GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;
@@ -172,7 +186,7 @@ protected:
 		if (IsRailTT() && GetTileType(m_new_tile) == MP_RAILWAY && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
-			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh->u.road.compatible_roadtypes));
+			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh != NULL ? m_veh->u.road.compatible_roadtypes : 0));
 
 			if (m_new_td_bits == 0) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.
@@ -252,7 +266,7 @@ protected:
 				return false;
 			}
 			// don't try to enter other player's depots
-			if (GetTileOwner(m_new_tile) != m_veh->owner) {
+			if (GetTileOwner(m_new_tile) != m_veh_owner) {
 				m_err = EC_OWNER;
 				return false;
 			}
@@ -266,7 +280,7 @@ protected:
 		}
 
 		// rail transport is possible only on tiles with the same owner as vehicle
-		if (IsRailTT() && GetTileOwner(m_new_tile) != m_veh->owner) {
+		if (IsRailTT() && GetTileOwner(m_new_tile) != m_veh_owner) {
 			// different owner
 			m_err = EC_NO_WAY;
 			return false;
