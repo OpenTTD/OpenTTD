@@ -9,6 +9,7 @@
 #include "yapf_costrail.hpp"
 #include "yapf_destrail.hpp"
 #include "../vehicle_func.h"
+#include "../pbs.h"
 
 #define DEBUG_YAPF_CACHE 0
 
@@ -16,7 +17,115 @@ int _total_pf_time_us = 0;
 
 
 
+template <class Types>
+class CYapfReserveTrack
+{
+public:
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
+	typedef typename Types::TrackFollower TrackFollower;
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
 
+protected:
+	/// to access inherited pathfinder
+	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+
+private:
+	TileIndex m_res_dest;         ///< The reservation target tile
+	Trackdir  m_res_dest_td;      ///< The reservation target trackdir
+	Node      *m_res_node;        ///< The reservation target node
+	TileIndex m_res_fail_tile;    ///< The tile where the reservation failed
+	Trackdir  m_res_fail_td;      ///< The trackdir where the reservation failed
+
+	bool FindSafePositionProc(TileIndex tile, Trackdir td)
+	{
+		if (IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns())) {
+			m_res_dest = tile;
+			m_res_dest_td = td;
+			return false;   // Stop iterating segment
+		}
+		return true;
+	}
+
+	bool ReserveSingleTrack(TileIndex tile, Trackdir td)
+	{
+		if (!TryReserveRailTrack(tile, TrackdirToTrack(td))) {
+			/* Tile couldn't be reserved, undo. */
+			m_res_fail_tile = tile;
+			m_res_fail_td = td;
+			return false;
+		}
+		/* YAPF can sometimes skip parts of a station, so make sure we
+		 * always reserve the whole platform. */
+		if (IsRailwayStationTile(tile)) SetRailwayStationPlatformReservation(tile, TrackdirToExitdir(ReverseTrackdir(td)), true);
+		return tile != m_res_dest;
+	}
+
+	bool UnreserveSingleTrack(TileIndex tile, Trackdir td)
+	{
+		if (tile != m_res_fail_tile || td != m_res_fail_td) UnreserveRailTrack(tile, TrackdirToTrack(td));
+		return tile != m_res_dest && (tile != m_res_fail_tile || td != m_res_fail_td);
+	}
+
+public:
+	/** Set the target to where the reservation should be extended. */
+	inline void SetReservationTarget(Node *node, TileIndex tile, Trackdir td)
+	{
+		m_res_node = node;
+		m_res_dest = tile;
+		m_res_dest_td = td;
+	}
+
+	/** Check the node for a possible reservation target. */
+	inline void FindSafePositionOnNode(Node *node)
+	{
+		assert(node->m_parent != NULL);
+
+		/* We will never pass more than two signals, no need to check for a safe tile. */
+		if (node->m_parent->m_num_signals_passed >= 2) return;
+
+		if (!node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::FindSafePositionProc)) {
+			m_res_node = node;
+		}
+	}
+
+	/** Try to reserve the path till the reservation target. */
+	bool TryReservePath(PBSTileInfo *target)
+	{
+		m_res_fail_tile = INVALID_TILE;
+
+		if (target != NULL) {
+			target->tile = m_res_dest;
+			target->trackdir = m_res_dest_td;
+			target->okay = false;
+		}
+
+		/* Don't bother if the target is reserved. */
+		if (!IsWaitingPositionFree(Yapf().GetVehicle(), m_res_dest, m_res_dest_td)) return false;
+
+		for (Node *node = m_res_node; node->m_parent != NULL; node = node->m_parent) {
+			node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::ReserveSingleTrack);
+			if (m_res_fail_tile != INVALID_TILE) {
+				/* Reservation failed, undo. */
+				Node *fail_node = m_res_node;
+				TileIndex stop_tile = m_res_fail_tile;
+				do {
+					/* If this is the node that failed, stop at the failed tile. */
+					m_res_fail_tile = fail_node == node ? stop_tile : INVALID_TILE;
+					fail_node->IterateTiles(Yapf().GetVehicle(), Yapf(), *this, &CYapfReserveTrack<Types>::UnreserveSingleTrack);
+				} while (fail_node != node && (fail_node = fail_node->m_parent) != NULL);
+
+				return false;
+			}
+		}
+
+		if (target != NULL) target->okay = true;
+
+		if (Yapf().CanUseGlobalCache(*m_res_node))
+			YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
+
+		return true;
+	}
+};
 
 template <class Types>
 class CYapfFollowAnyDepotRailT
@@ -95,7 +204,7 @@ public:
 };
 
 template <class Types>
-class CYapfFollowRailT
+class CYapfFollowRailT : protected CYapfReserveTrack<Types>
 {
 public:
 	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
@@ -121,16 +230,18 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
-	static Trackdir stChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
+	static Trackdir stChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, PBSTileInfo *target)
 	{
 		// create pathfinder instance
 		Tpf pf1;
-		Trackdir result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
+#if !DEBUG_YAPF_CACHE
+		Trackdir result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found, reserve_track, target);
 
-#if DEBUG_YAPF_CACHE
+#else
+		Trackdir result1 = pf1.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found, false, NULL);
 		Tpf pf2;
 		pf2.DisableCache(true);
-		Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
+		Trackdir result2 = pf2.ChooseRailTrack(v, tile, enterdir, tracks, path_not_found, reserve_track, target);
 		if (result1 != result2) {
 			DEBUG(yapf, 0, "CACHE ERROR: ChooseRailTrack() = [%d, %d]", result1, result2);
 			DumpTarget dmp1, dmp2;
@@ -148,10 +259,13 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE Trackdir ChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
+	FORCEINLINE Trackdir ChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, PBSTileInfo *target)
 	{
+		if (target != NULL) target->tile = INVALID_TILE;
+
 		// set origin and destination nodes
-		Yapf().SetOrigin(v->tile, GetVehicleTrackdir(v), INVALID_TILE, INVALID_TRACKDIR, 1, true);
+		PBSTileInfo origin = FollowTrainReservation(v);
+		Yapf().SetOrigin(origin.tile, origin.trackdir, INVALID_TILE, INVALID_TRACKDIR, 1, true);
 		Yapf().SetDestination(v);
 
 		// find the best path
@@ -166,17 +280,23 @@ public:
 		Trackdir next_trackdir = INVALID_TRACKDIR;
 		Node *pNode = Yapf().GetBestNode();
 		if (pNode != NULL) {
+			// reserve till end of path
+			this->SetReservationTarget(pNode, pNode->GetLastTile(), pNode->GetLastTrackdir());
+
 			// path was found or at least suggested
 			// walk through the path back to the origin
 			Node* pPrev = NULL;
 			while (pNode->m_parent != NULL) {
 				pPrev = pNode;
 				pNode = pNode->m_parent;
+
+				this->FindSafePositionOnNode(pPrev);
 			}
 			// return trackdir from the best origin node (one of start nodes)
 			Node& best_next_node = *pPrev;
-			assert(best_next_node.GetTile() == tile);
 			next_trackdir = best_next_node.GetTrackdir();
+
+			if (reserve_track && path_found) this->TryReservePath(target);
 		}
 		return next_trackdir;
 	}
@@ -247,10 +367,10 @@ struct CYapfAnyDepotRail1 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail1, CFollowT
 struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
 
 
-Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found)
+Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, PBSTileInfo *target)
 {
 	// default is YAPF type 2
-	typedef Trackdir (*PfnChooseRailTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits, bool*);
+	typedef Trackdir (*PfnChooseRailTrack)(const Vehicle*, TileIndex, DiagDirection, TrackBits, bool*, bool, PBSTileInfo*);
 	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack;
 
 	// check if non-default YAPF type needed
@@ -258,7 +378,7 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
 		pfnChooseRailTrack = &CYapfRail2::stChooseRailTrack; // Trackdir, forbid 90-deg
 	}
 
-	Trackdir td_ret = pfnChooseRailTrack(v, tile, enterdir, tracks, path_not_found);
+	Trackdir td_ret = pfnChooseRailTrack(v, tile, enterdir, tracks, path_not_found, reserve_track, target);
 
 	return td_ret;
 }
@@ -330,11 +450,8 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 
 	const Vehicle *last_veh = GetLastVehicleInChain(v);
 
-	TileIndex tile = v->tile;
+	PBSTileInfo origin = FollowTrainReservation(v);
 	TileIndex last_tile = last_veh->tile;
-
-	// their trackdirs
-	Trackdir td = GetVehicleTrackdir(v);
 	Trackdir td_rev = ReverseTrackdir(GetVehicleTrackdir(last_veh));
 
 	typedef bool (*PfnFindNearestDepotTwoWay)(const Vehicle*, TileIndex, Trackdir, TileIndex, Trackdir, int, int, TileIndex*, bool*);
@@ -345,7 +462,7 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 		pfnFindNearestDepotTwoWay = &CYapfAnyDepotRail2::stFindNearestDepotTwoWay; // Trackdir, forbid 90-deg
 	}
 
-	bool ret = pfnFindNearestDepotTwoWay(v, tile, td, last_tile, td_rev, max_distance, reverse_penalty, depot_tile, reversed);
+	bool ret = pfnFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_distance, reverse_penalty, depot_tile, reversed);
 	return ret;
 }
 

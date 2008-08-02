@@ -12,6 +12,9 @@
 #include "debug.h"
 #include "direction_func.h"
 #include "settings_type.h"
+#include "road_func.h"
+#include "vehicle_base.h"
+#include "yapf/follow_track.hpp"
 
 /**
  * Get the reserved trackbits for any tile, regardless of type.
@@ -154,4 +157,120 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 		default:
 			break;
 	}
+}
+
+/**
+ * Follow a train reservation to the last tile.
+ *
+ * @param v the vehicle
+ * @returns The last tile of the reservation or the current train tile if no reservation present.
+ */
+PBSTileInfo FollowTrainReservation(const Vehicle *v)
+{
+	assert(v->type == VEH_TRAIN);
+
+	TileIndex tile = v->tile;
+	Trackdir  trackdir = GetVehicleTrackdir(v);
+
+	if (IsRailDepotTile(tile) && !GetRailDepotReservation(tile)) return PBSTileInfo(tile, trackdir, false);
+
+	/* Do not disallow 90 deg turns as the setting might have changed between reserving and now. */
+	CFollowTrackRail ft(v, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes);
+	while (ft.Follow(tile, trackdir)) {
+		TrackdirBits reserved = (TrackdirBits)(ft.m_new_td_bits & (GetReservedTrackbits(ft.m_new_tile) * 0x101));
+
+		/* No reservation --> path end found */
+		if (reserved == TRACKDIR_BIT_NONE) break;
+
+		/* Can't have more than one reserved trackdir */
+		Trackdir new_trackdir = FindFirstTrackdir(reserved);
+
+		/* One-way signal against us. The reservation can't be ours as it is not
+		 * a safe position from our direction and we can never pass the signal. */
+		if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, new_trackdir)) break;
+
+		tile = ft.m_new_tile;
+		trackdir = new_trackdir;
+
+		/* Depot tile? Can't continue. */
+		if (IsRailDepotTile(tile)) break;
+		/* Non-pbs signal? Reservation can't continue. */
+		if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) break;
+	}
+
+	return PBSTileInfo(tile, trackdir, IsSafeWaitingPosition(v, tile, trackdir, true, _settings_game.pf.forbid_90_deg));
+}
+
+/**
+ * Determine whether a certain track on a tile is a safe position to end a path.
+ *
+ * @param v the vehicle to test for
+ * @param tile The tile
+ * @param trackdir The trackdir to test
+ * @param include_line_end Should end-of-line tiles be considered safe?
+ * @param forbid_90def Don't allow trains to make 90 degree turns
+ * @return True if it is a safe position
+ */
+bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg)
+{
+	if (IsRailDepotTile(tile)) return true;
+
+	if (IsTileType(tile, MP_RAILWAY)) {
+		/* For non-pbs signals, stop on the signal tile. */
+		if (HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) return true;
+	}
+
+	/* Check next tile. For perfomance reasons, we check for 90 degree turns ourself. */
+	CFollowTrackRail ft(v, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes);
+
+	/* End of track? */
+	if (!ft.Follow(tile, trackdir)) {
+		/* Last tile of a terminus station is a safe position. */
+		if (include_line_end) return true;
+	}
+
+	/* Check for reachable tracks. */
+	ft.m_new_td_bits &= DiagdirReachesTrackdirs(ft.m_exitdir);
+	if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) return include_line_end;
+	if (forbid_90deg) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
+
+	if (ft.m_new_td_bits != TRACKDIR_BIT_NONE && KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
+		/* PBS signal on next trackdir? Safe position. */
+		if (HasPbsSignalOnTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) return true;
+	}
+
+	return false;
+}
+
+/**
+ * Check if a safe position is free.
+ *
+ * @param v the vehicle to test for
+ * @param tile The tile
+ * @param trackdir The trackdir to test
+ * @param forbid_90def Don't allow trains to make 90 degree turns
+ * @return True if the position is free
+ */
+bool IsWaitingPositionFree(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg)
+{
+	Track     track = TrackdirToTrack(trackdir);
+	TrackBits reserved = GetReservedTrackbits(tile);
+
+	/* Tile reserved? Can never be a free waiting position. */
+	if (TrackOverlapsTracks(reserved, track)) return false;
+
+	/* Not reserved and depot or not a pbs signal -> free. */
+	if (IsRailDepotTile(tile)) return true;
+	if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, track))) return true;
+
+	/* Check the next tile, if it's a PBS signal, it has to be free as well. */
+	CFollowTrackRail ft(v, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes);
+
+	if (!ft.Follow(tile, trackdir)) return true;
+
+	/* Check for reachable tracks. */
+	ft.m_new_td_bits &= DiagdirReachesTrackdirs(ft.m_exitdir);
+	if (forbid_90deg) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
+
+	return !HasReservedTracks(ft.m_new_tile, TrackdirBitsToTrackBits(ft.m_new_td_bits));
 }

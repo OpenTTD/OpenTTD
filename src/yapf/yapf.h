@@ -8,6 +8,7 @@
 #include "../debug.h"
 #include "../depot_type.h"
 #include "../direction_type.h"
+#include "../pbs.h"
 
 /** Finds the best path for given ship.
  * @param v        the ship that needs to find a path
@@ -32,9 +33,11 @@ Trackdir YapfChooseRoadTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
  * @param enterdir diagonal direction which the RV will enter this new tile from
  * @param tracks   available trackdirs on the new tile (to choose from)
  * @param path_not_found [out] true is returned if no path can be found (returned Trackdir is only a 'guess')
+ * @param reserve_track indicates whether YAPF should try to reserve the found path
+ * @param target   [out] the target tile of the reservation, free is set to true if path was reserved
  * @return         the best trackdir for next turn or INVALID_TRACKDIR if the path could not be found
  */
-Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found);
+Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, PBSTileInfo *target);
 
 /** Used by RV multistop feature to find the nearest road stop that has a free slot.
  * @param v      RV (its current tile will be the origin)

@@ -177,6 +177,37 @@ struct CYapfRailNodeT
 	FORCEINLINE Trackdir GetLastTrackdir() const {assert(m_segment != NULL); return m_segment->m_last_td;}
 	FORCEINLINE void SetLastTileTrackdir(TileIndex tile, Trackdir td) {assert(m_segment != NULL); m_segment->m_last_tile = tile; m_segment->m_last_td = td;}
 
+	template <class Tbase, class Tfunc, class Tpf>
+	bool IterateTiles(const Vehicle *v, Tpf &yapf, Tbase &obj, bool (Tfunc::*func)(TileIndex, Trackdir)) const
+	{
+		typename Tbase::TrackFollower ft(v, yapf.GetCompatibleRailTypes());
+		TileIndex cur = base::GetTile();
+		Trackdir  cur_td = base::GetTrackdir();
+
+		while (cur != GetLastTile() || cur_td != GetLastTrackdir()) {
+			if (!((obj.*func)(cur, cur_td))) return false;
+
+			ft.Follow(cur, cur_td);
+			cur = ft.m_new_tile;
+			assert(KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE);
+			cur_td = FindFirstTrackdir(ft.m_new_td_bits);
+
+			/* Did we skip tiles because of a station? */
+			if (ft.m_is_station && ft.m_tiles_skipped > 0) {
+				TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(cur_td));
+				TileIndex     tile = TILE_ADD(cur, -diff * ft.m_tiles_skipped);
+
+				/* Call func for all tiles in between. */
+				for (int i = 0; i < ft.m_tiles_skipped; ++i) {
+					if (!(obj.*func)(tile, cur_td)) return false;
+					tile = TILE_ADD(tile, diff);
+				}
+			}
+		}
+
+		return (obj.*func)(cur, cur_td);
+	}
+
 	void Dump(DumpTarget &dmp) const
 	{
 		base::Dump(dmp);
