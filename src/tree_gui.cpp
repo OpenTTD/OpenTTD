@@ -151,23 +151,23 @@ public:
 };
 
 static const Widget _build_trees_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},              // BTW_CLOSE
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   142,     0,    13, STR_2802_TREES,        STR_018C_WINDOW_TITLE_DRAG_THIS},    // BTW_CAPTION
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   142,    14,   183, 0x0,                   STR_NULL},                           // BTW_BACKGROUND
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_11
-{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_12
-{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_13
-{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_14
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_21
-{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_22
-{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_23
-{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_24
-{      WWT_PANEL,   RESIZE_NONE,    14,     2,    35,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_31
-{      WWT_PANEL,   RESIZE_NONE,    14,    37,    70,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_32
-{      WWT_PANEL,   RESIZE_NONE,    14,    72,   105,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_33
-{      WWT_PANEL,   RESIZE_NONE,    14,   107,   140,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_34
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},          // BTW_TYPE_RANDOM
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   140,   170,   181, STR_028A_RANDOM_TREES, STR_028B_PLANT_TREES_RANDOMLY_OVER}, // BTW_MANY_RANDOM
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},              // BTW_CLOSE
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,  11,   142,     0,    13, STR_2802_TREES,        STR_018C_WINDOW_TITLE_DRAG_THIS},    // BTW_CAPTION
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,   142,    14,   183, 0x0,                   STR_NULL},                           // BTW_BACKGROUND
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_11
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_12
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_13
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    16,    61, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_14
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_21
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_22
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_23
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,    63,   108, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_24
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,         2,    35,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_31
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        37,    70,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_32
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,        72,   105,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_33
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,       107,   140,   110,   155, 0x0,                   STR_280D_SELECT_TREE_TYPE_TO_PLANT}, // BTW_TYPE_34
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   157,   168, STR_TREES_RANDOM_TYPE, STR_TREES_RANDOM_TYPE_TIP},          // BTW_TYPE_RANDOM
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         2,   140,   170,   181, STR_028A_RANDOM_TREES, STR_028B_PLANT_TREES_RANDOMLY_OVER}, // BTW_MANY_RANDOM
 {    WIDGETS_END},
 };
 

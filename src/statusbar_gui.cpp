@@ -157,9 +157,9 @@ struct StatusBarWindow : Window {
 };
 
 static const Widget _main_status_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   139,     0,    11, 0x0, STR_NULL},
-{    WWT_PUSHBTN,   RESIZE_RIGHT,   14,   140,   179,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
-{    WWT_PUSHBTN,   RESIZE_LR,      14,   180,   319,     0,    11, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   COLOUR_GREY,     0,   139,     0,    11, 0x0, STR_NULL},
+{    WWT_PUSHBTN,   RESIZE_RIGHT,  COLOUR_GREY,   140,   179,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
+{    WWT_PUSHBTN,   RESIZE_LR,     COLOUR_GREY,   180,   319,     0,    11, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 

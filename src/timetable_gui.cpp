@@ -275,23 +275,23 @@ struct TimetableWindow : Window {
 };
 
 static const Widget _timetable_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // TTV_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,   14,    11,   326,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},      // TTV_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,      14,   327,   387,     0,    13, STR_ORDER_VIEW,             STR_ORDER_VIEW_TOOLTIP},               // TTV_ORDER_VIEW
-	{  WWT_STICKYBOX,   RESIZE_LR,      14,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                    // TTV_STICKY
+	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},                // TTV_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   326,     0,    13, STR_TIMETABLE_TITLE,        STR_018C_WINDOW_TITLE_DRAG_THIS},      // TTV_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   327,   387,     0,    13, STR_ORDER_VIEW,             STR_ORDER_VIEW_TOOLTIP},               // TTV_ORDER_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   388,   399,     0,    13, STR_NULL,                   STR_STICKY_BUTTON},                    // TTV_STICKY
 
-	{      WWT_PANEL,   RESIZE_RB,      14,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},                // TTV_TIMETABLE_PANEL
-	{  WWT_SCROLLBAR,   RESIZE_LRB,     14,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},     // TTV_SCROLLBAR
+	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   387,    14,    95, STR_NULL,                   STR_TIMETABLE_TOOLTIP},                // TTV_TIMETABLE_PANEL
+	{  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_GREY,   388,   399,    14,    95, STR_NULL,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},     // TTV_SCROLLBAR
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,     0,   399,    96,   117, STR_NULL,                   STR_NULL},                             // TTV_SUMMARY_PANEL
+	{      WWT_PANEL,   RESIZE_RTB,    COLOUR_GREY,     0,   399,    96,   117, STR_NULL,                   STR_NULL},                             // TTV_SUMMARY_PANEL
 
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,     0,   109,   118,   129, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},      // TTV_CHANGE_TIME
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   110,   219,   118,   129, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},     // TTV_CLEAR_TIME
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   220,   337,   118,   129, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP}, // TTV_RESET_LATENESS
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   338,   387,   118,   129, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},       // TTV_AUTOFILL
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   109,   118,   129, STR_TIMETABLE_CHANGE_TIME,  STR_TIMETABLE_WAIT_TIME_TOOLTIP},      // TTV_CHANGE_TIME
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   110,   219,   118,   129, STR_CLEAR_TIME,             STR_TIMETABLE_CLEAR_TIME_TOOLTIP},     // TTV_CLEAR_TIME
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   220,   337,   118,   129, STR_RESET_LATENESS,         STR_TIMETABLE_RESET_LATENESS_TOOLTIP}, // TTV_RESET_LATENESS
+	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   338,   387,   118,   129, STR_TIMETABLE_AUTOFILL,     STR_TIMETABLE_AUTOFILL_TOOLTIP},       // TTV_AUTOFILL
 
-	{      WWT_PANEL,   RESIZE_RTB,     14,   388,   387,   118,   129, STR_NULL,                   STR_NULL},                             // TTV_EMPTY
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   388,   399,   118,   129, STR_NULL,                   STR_RESIZE_BUTTON},                    // TTV_RESIZE
+	{      WWT_PANEL,   RESIZE_RTB,    COLOUR_GREY,   388,   387,   118,   129, STR_NULL,                   STR_NULL},                             // TTV_EMPTY
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,   COLOUR_GREY,   388,   399,   118,   129, STR_NULL,                   STR_RESIZE_BUTTON},                    // TTV_RESIZE
 
 	{    WIDGETS_END }
 };

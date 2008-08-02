@@ -407,14 +407,14 @@ struct RefitWindow : public Window {
 
 
 static const Widget _vehicle_refit_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    28,   139, 0x801,                               STR_EMPTY},
-	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
-	{      WWT_PANEL,     RESIZE_TB,    14,     0,   239,   140,   161, 0x0,                                 STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   227,   162,   173, 0x0,                                 STR_NULL},
-	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   162,   173, 0x0,                                 STR_RESIZE_BUTTON},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
+	{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
+	{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+	{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   227,    28,   139, 0x801,                               STR_EMPTY},
+	{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,     0,   239,   140,   161, 0x0,                                 STR_NULL},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   227,   162,   173, 0x0,                                 STR_NULL},
+	{  WWT_RESIZEBOX,     RESIZE_TB,  COLOUR_GREY,   228,   239,   162,   173, 0x0,                                 STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
@@ -690,24 +690,24 @@ enum VehicleListWindowWidgets {
 };
 
 static const Widget _vehicle_list_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
-	{   WWT_DROPDOWN,   RESIZE_NONE,    14,    81,   247,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
-	{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                  STR_NULL},
-	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x0,                  STR_NULL},
-	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
+	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   247,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
+	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
+	{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    81,   247,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
+	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   248,   259,    14,    25, 0x0,                  STR_NULL},
+	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   247,    26,   169, 0x0,                  STR_NULL},
+	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	/* Widget to be shown for other players hiding the following 6 widgets */
-	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   247,   170,   181, 0x0,                  STR_NULL},
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   105,   170,   181, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-	{   WWT_DROPDOWN,     RESIZE_TB,    14,   106,   223,   170,   181, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   170,   181, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
+	{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   106,   223,   170,   181, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
 
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,    14,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
-	{      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   170,   181, 0x0,                  STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
+	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
+	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   248,   247,   170,   181, 0x0,                  STR_NULL},
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
@@ -1217,20 +1217,20 @@ enum VehicleDetailsWindowWidgets {
 
 /** Vehicle details widgets. */
 static const Widget _vehicle_details_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},                  // VLD_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,  RESIZE_RIGHT, 14,  11, 364,   0,  13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},        // VLD_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,     RESIZE_LR, 14, 365, 404,   0,  13, STR_01AA_NAME,        STR_NULL /* filled in later */},         // VLD_WIDGET_RENAME_VEHICLE
-	{      WWT_PANEL,  RESIZE_RIGHT, 14,   0, 404,  14,  55, 0x0,                  STR_NULL},                               // VLD_WIDGET_TOP_DETAILS
-	{ WWT_PUSHTXTBTN,     RESIZE_TB, 14,   0,  10, 101, 106, STR_0188,             STR_884D_INCREASE_SERVICING_INTERVAL},   // VLD_WIDGET_INCREASE_SERVICING_INTERVAL
-	{ WWT_PUSHTXTBTN,     RESIZE_TB, 14,   0,  10, 107, 112, STR_0189,             STR_884E_DECREASE_SERVICING_INTERVAL},   // VLD_WIDGET_DECREASE_SERVICING_INTERVAL
-	{      WWT_PANEL,    RESIZE_RTB, 14,  11, 404, 101, 112, 0x0,                  STR_NULL},                               // VLD_WIDGET_BOTTOM_RIGHT
-	{     WWT_MATRIX,     RESIZE_RB, 14,   0, 392,  56, 100, 0x701,                STR_NULL},                               // VLD_WIDGET_MIDDLE_DETAILS
-	{  WWT_SCROLLBAR,    RESIZE_LRB, 14, 393, 404,  56, 100, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},       // VLD_WIDGET_SCROLLBAR
-	{ WWT_PUSHTXTBTN,     RESIZE_TB, 14,   0,  95, 113, 124, STR_013C_CARGO,       STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED}, // VLD_WIDGET_DETAILS_CARGO_CARRIED
-	{ WWT_PUSHTXTBTN,     RESIZE_TB, 14,  96, 194, 113, 124, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},// VLD_WIDGET_DETAILS_TRAIN_VEHICLES
-	{ WWT_PUSHTXTBTN,     RESIZE_TB, 14, 195, 293, 113, 124, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},       // VLD_WIDGET_DETAILS_CAPACITY_OF_EACH
-	{ WWT_PUSHTXTBTN,    RESIZE_RTB, 14, 294, 392, 113, 124, STR_TOTAL_CARGO,      STR_SHOW_TOTAL_CARGO},                   // VLD_WIDGET_DETAILS_TOTAL_CARGO
-	{  WWT_RESIZEBOX,   RESIZE_LRTB, 14, 393, 404, 113, 124, 0x0,                  STR_RESIZE_BUTTON},                      // VLD_RESIZE
+	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},                  // VLD_WIDGET_CLOSEBOX
+	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,  11, 364,   0,  13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},        // VLD_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,     RESIZE_LR,  COLOUR_GREY, 365, 404,   0,  13, STR_01AA_NAME,        STR_NULL /* filled in later */},         // VLD_WIDGET_RENAME_VEHICLE
+	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   0, 404,  14,  55, 0x0,                  STR_NULL},                               // VLD_WIDGET_TOP_DETAILS
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 101, 106, STR_0188,             STR_884D_INCREASE_SERVICING_INTERVAL},   // VLD_WIDGET_INCREASE_SERVICING_INTERVAL
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 107, 112, STR_0189,             STR_884E_DECREASE_SERVICING_INTERVAL},   // VLD_WIDGET_DECREASE_SERVICING_INTERVAL
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,  11, 404, 101, 112, 0x0,                  STR_NULL},                               // VLD_WIDGET_BOTTOM_RIGHT
+	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,   0, 392,  56, 100, 0x701,                STR_NULL},                               // VLD_WIDGET_MIDDLE_DETAILS
+	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY, 393, 404,  56, 100, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},       // VLD_WIDGET_SCROLLBAR
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  95, 113, 124, STR_013C_CARGO,       STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED}, // VLD_WIDGET_DETAILS_CARGO_CARRIED
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,  96, 194, 113, 124, STR_013D_INFORMATION, STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES},// VLD_WIDGET_DETAILS_TRAIN_VEHICLES
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY, 195, 293, 113, 124, STR_013E_CAPACITIES,  STR_8851_SHOW_CAPACITIES_OF_EACH},       // VLD_WIDGET_DETAILS_CAPACITY_OF_EACH
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_GREY, 294, 392, 113, 124, STR_TOTAL_CARGO,      STR_SHOW_TOTAL_CARGO},                   // VLD_WIDGET_DETAILS_TOTAL_CARGO
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY, 393, 404, 113, 124, 0x0,                  STR_RESIZE_BUTTON},                      // VLD_RESIZE
 	{   WIDGETS_END},
 };
 
@@ -1563,22 +1563,22 @@ static void ShowVehicleDetailsWindow(const Vehicle *v)
 
 /** Vehicle view widgets. */
 static const Widget _vehicle_view_widgets[] = {
-	{   WWT_CLOSEBOX,  RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                 STR_018B_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX
-	{    WWT_CAPTION, RESIZE_RIGHT,  14,  11, 237,   0,  13, 0x0 /* filled later */,   STR_018C_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
-	{  WWT_STICKYBOX,    RESIZE_LR,  14, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },               // VVW_WIDGET_STICKY
-	{      WWT_PANEL,    RESIZE_RB,  14,   0, 231,  14, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_PANEL
-	{      WWT_INSET,    RESIZE_RB,  14,   2, 229,  16, 101, 0x0,                      STR_NULL },                        // VVW_WIDGET_VIEWPORT
-	{    WWT_PUSHBTN,   RESIZE_RTB,  14,   0, 237, 104, 115, 0x0,                      0x0 /* filled later */ },          // VVW_WIDGET_START_STOP_VEH
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  0x0 /* filled later */ },          // VVW_WIDGET_CENTER_MAIN_VIEH
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },          // VVW_WIDGET_GOTO_DEPOT
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_REFIT_VEHICLE,        0x0 /* filled later */ },          // VVW_WIDGET_REFIT_VEH
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  68,  85, SPR_SHOW_ORDERS,          0x0 /* filled later */ },          // VVW_WIDGET_SHOW_ORDERS
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */ },          // VVW_WIDGET_SHOW_DETAILS
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },          // VVW_WIDGET_CLONE_VEH
-	{      WWT_PANEL,   RESIZE_LRB,  14, 232, 249, 104, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_EMPTY_BOTTOM_RIGHT
-	{  WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                      STR_NULL },                        // VVW_WIDGET_RESIZE
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_FORCE_VEHICLE_TURN,   STR_9020_FORCE_VEHICLE_TO_TURN_AROUND }, // VVW_WIDGET_TURN_AROUND
-	{ WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_IGNORE_SIGNALS,       STR_884A_FORCE_TRAIN_TO_PROCEED },       // VVW_WIDGET_FORCE_PROCEED
+	{   WWT_CLOSEBOX,  RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,                 STR_018B_CLOSE_WINDOW },           // VVW_WIDGET_CLOSEBOX
+	{    WWT_CAPTION, RESIZE_RIGHT,  COLOUR_GREY,  11, 237,   0,  13, 0x0 /* filled later */,   STR_018C_WINDOW_TITLE_DRAG_THIS }, // VVW_WIDGET_CAPTION
+	{  WWT_STICKYBOX,    RESIZE_LR,  COLOUR_GREY, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },               // VVW_WIDGET_STICKY
+	{      WWT_PANEL,    RESIZE_RB,  COLOUR_GREY,   0, 231,  14, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_PANEL
+	{      WWT_INSET,    RESIZE_RB,  COLOUR_GREY,   2, 229,  16, 101, 0x0,                      STR_NULL },                        // VVW_WIDGET_VIEWPORT
+	{    WWT_PUSHBTN,   RESIZE_RTB,  COLOUR_GREY,   0, 237, 104, 115, 0x0,                      0x0 /* filled later */ },          // VVW_WIDGET_START_STOP_VEH
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  0x0 /* filled later */ },          // VVW_WIDGET_CENTER_MAIN_VIEH
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },          // VVW_WIDGET_GOTO_DEPOT
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_REFIT_VEHICLE,        0x0 /* filled later */ },          // VVW_WIDGET_REFIT_VEH
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  68,  85, SPR_SHOW_ORDERS,          0x0 /* filled later */ },          // VVW_WIDGET_SHOW_ORDERS
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS, 0x0 /* filled later */ },          // VVW_WIDGET_SHOW_DETAILS
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  32,  49, 0x0 /* filled later */,   0x0 /* filled later */ },          // VVW_WIDGET_CLONE_VEH
+	{      WWT_PANEL,   RESIZE_LRB,  COLOUR_GREY, 232, 249, 104, 103, 0x0,                      STR_NULL },                        // VVW_WIDGET_EMPTY_BOTTOM_RIGHT
+	{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_GREY, 238, 249, 104, 115, 0x0,                      STR_NULL },                        // VVW_WIDGET_RESIZE
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_FORCE_VEHICLE_TURN,   STR_9020_FORCE_VEHICLE_TO_TURN_AROUND }, // VVW_WIDGET_TURN_AROUND
+	{ WWT_PUSHIMGBTN,    RESIZE_LR,  COLOUR_GREY, 232, 249,  50,  67, SPR_IGNORE_SIGNALS,       STR_884A_FORCE_TRAIN_TO_PROCEED },       // VVW_WIDGET_FORCE_PROCEED
 {   WIDGETS_END},
 };
 
