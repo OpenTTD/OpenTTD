@@ -11,14 +11,20 @@ protected:
 	RailTypes m_compatible_railtypes;
 
 public:
-	void SetDestination(const Vehicle* v)
+	void SetDestination(const Vehicle *v, bool override_rail_type = false)
 	{
 		m_compatible_railtypes = v->u.rail.compatible_railtypes;
+		if (override_rail_type) m_compatible_railtypes |= GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes;
 	}
 
 	bool IsCompatibleRailType(RailType rt)
 	{
 		return HasBit(m_compatible_railtypes, rt);
+	}
+
+	RailTypes GetCompatibleRailTypes() const
+	{
+		return m_compatible_railtypes;
 	}
 };
 

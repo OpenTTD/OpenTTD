@@ -271,7 +271,7 @@ public:
 
 		EndSegmentReasonBits end_segment_reason = ESRB_NONE;
 
-		TrackFollower tf_local(v, &Yapf().m_perf_ts_cost);
+		TrackFollower tf_local(v, Yapf().GetCompatibleRailTypes(), &Yapf().m_perf_ts_cost);
 
 		if (!has_parent) {
 			/* We will jump to the middle of the cost calculator assuming that segment cache is not used. */
@@ -373,7 +373,7 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Move to the next tile/trackdir. */
 			tf = &tf_local;
-			tf_local.Init(v, &Yapf().m_perf_ts_cost);
+			tf_local.Init(v, Yapf().GetCompatibleRailTypes(), &Yapf().m_perf_ts_cost);
 
 			if (!tf_local.Follow(cur.tile, cur.td)) {
 				assert(tf_local.m_err != TrackFollower::EC_NONE);

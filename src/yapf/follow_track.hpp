@@ -34,13 +34,14 @@ struct CFollowTrackT
 	int                 m_tiles_skipped; ///< number of skipped tunnel or station tiles
 	ErrorCode           m_err;
 	CPerformanceTimer  *m_pPerf;
+	RailTypes           m_railtypes;
 
-	FORCEINLINE CFollowTrackT(const Vehicle *v = NULL, CPerformanceTimer* pPerf = NULL)
+	FORCEINLINE CFollowTrackT(const Vehicle *v = NULL, RailTypes railtype_override = INVALID_RAILTYPES, CPerformanceTimer *pPerf = NULL)
 	{
-		Init(v, pPerf);
+		Init(v, railtype_override, pPerf);
 	}
 
-	FORCEINLINE void Init(const Vehicle *v, CPerformanceTimer* pPerf)
+	FORCEINLINE void Init(const Vehicle *v, RailTypes railtype_override, CPerformanceTimer *pPerf)
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_TRAIN));
 		m_veh = v;
@@ -52,6 +53,7 @@ struct CFollowTrackT
 		m_is_station = m_is_bridge = m_is_tunnel = false;
 		m_tiles_skipped = 0;
 		m_err = EC_NONE;
+		if (IsRailTT()) m_railtypes = railtype_override == INVALID_RAILTYPES ? v->u.rail.compatible_railtypes : railtype_override;
 	}
 
 	FORCEINLINE static TransportType TT() {return Ttr_type_;}
@@ -79,7 +81,7 @@ struct CFollowTrackT
 
 	/** main follower routine. Fills all members and return true on success.
 	 *  Otherwise returns false if track can't be followed. */
-	FORCEINLINE bool Follow(TileIndex old_tile, Trackdir old_td)
+	inline bool Follow(TileIndex old_tile, Trackdir old_td)
 	{
 		m_old_tile = old_tile;
 		m_old_td = old_td;
@@ -256,7 +258,7 @@ protected:
 		// rail transport is possible only on compatible rail types
 		if (IsRailTT()) {
 			RailType rail_type = GetTileRailType(m_new_tile);
-			if (!HasBit(m_veh->u.rail.compatible_railtypes, rail_type)) {
+			if (!HasBit(m_railtypes, rail_type)) {
 				// incompatible rail type
 				m_err = EC_RAIL_TYPE;
 				return false;
