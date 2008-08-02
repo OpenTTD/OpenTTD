@@ -368,6 +368,12 @@ static inline bool IsPresignalExit(TileIndex t, Track track)
 	return GetSignalType(t, track) == SIGTYPE_EXIT || GetSignalType(t, track) == SIGTYPE_COMBO;
 }
 
+/** One-way signals can't be passed the 'wrong' way. */
+static inline bool IsOnewaySignal(TileIndex t, Track track)
+{
+	return GetSignalType(t, track) != SIGTYPE_PBS;
+}
+
 static inline void CycleSignalSide(TileIndex t, Track track)
 {
 	byte sig;

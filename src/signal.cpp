@@ -256,6 +256,7 @@ enum SigFlags {
 	SF_GREEN  = 1 << 3, ///< green exitsignal found
 	SF_GREEN2 = 1 << 4, ///< two or more green exits found
 	SF_FULL   = 1 << 5, ///< some of buffers was full, do not continue
+	SF_PBS    = 1 << 6, ///< pbs signal found
 };
 
 DECLARE_ENUM_AS_BIT_SET(SigFlags)
@@ -323,13 +324,19 @@ static SigFlags ExploreSegment(Owner owner)
 						Trackdir trackdir = (Trackdir)FindFirstBit((tracks * 0x101) & _enterdir_to_trackdirbits[enterdir]);
 						Trackdir reversedir = ReverseTrackdir(trackdir);
 						/* add (tile, reversetrackdir) to 'to-be-updated' set when there is
-						 * ANY signal in REVERSE direction
+						 * ANY conventional signal in REVERSE direction
 						 * (if it is a presignal EXIT and it changes, it will be added to 'to-be-done' set later) */
 						if (HasSignalOnTrackdir(tile, reversedir)) {
-							if (!_tbuset.Add(tile, reversedir)) return flags | SF_FULL;
+							if (IsPbsSignal(sig)) {
+								flags |= SF_PBS;
+							} else if (!_tbuset.Add(tile, reversedir)) {
+								return flags | SF_FULL;
+							}
 						}
+						if (HasSignalOnTrackdir(tile, trackdir) && !IsOnewaySignal(tile, track)) flags |= SF_PBS;
+
 						/* if it is a presignal EXIT in OUR direction and we haven't found 2 green exits yes, do special check */
-						if (!(flags & SF_GREEN2) && (sig & SIGTYPE_EXIT) && HasSignalOnTrackdir(tile, trackdir)) { // found presignal exit
+						if (!(flags & SF_GREEN2) && IsPresignalExit(tile, track) && HasSignalOnTrackdir(tile, trackdir)) { // found presignal exit
 							if (flags & SF_EXIT) flags |= SF_EXIT2; // found two (or more) exits
 							flags |= SF_EXIT; // found at least one exit - allow for compiler optimizations
 							if (GetSignalStateByTrackdir(tile, trackdir) == SIGNAL_STATE_GREEN) { // found green presignal exit
@@ -337,6 +344,7 @@ static SigFlags ExploreSegment(Owner owner)
 								flags |= SF_GREEN;
 							}
 						}
+
 						continue;
 					}
 				}
@@ -434,13 +442,13 @@ static void UpdateSignalsAroundSegment(SigFlags flags)
 					newstate = SIGNAL_STATE_RED;
 				}
 			} else { // entry, at least one exit, no green exit
-				if (sig & SIGTYPE_ENTRY && (flags & SF_EXIT && !(flags & SF_GREEN))) newstate = SIGNAL_STATE_RED;
+				if (IsPresignalEntry(tile, TrackdirToTrack(trackdir)) && flags & SF_EXIT && !(flags & SF_GREEN)) newstate = SIGNAL_STATE_RED;
 			}
 		}
 
 		/* only when the state changes */
 		if (newstate != GetSignalStateByTrackdir(tile, trackdir)) {
-			if (sig & SIGTYPE_EXIT) {
+			if (IsPresignalExit(tile, TrackdirToTrack(trackdir))) {
 				/* for pre-signal exits, add block to the global set */
 				DiagDirection exitdir = TrackdirToExitdir(ReverseTrackdir(trackdir));
 				_globset.Add(tile, exitdir); // do not check for full global set, first update all signals

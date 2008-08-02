@@ -2181,12 +2181,13 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 
 			b &= a;
 
-			/* When signals are not present (in neither
-			 * direction), we pretend them to be green. (So if
-			 * signals are only one way, the other way will
-			 * implicitely become `red' */
-			if ((a & 0xC) == 0) b |= 0xC;
-			if ((a & 0x3) == 0) b |= 0x3;
+			/* When signals are not present (in neither direction),
+			 * we pretend them to be green. Otherwise, it depends on
+			 * the signal type. For signals that are only active from
+			 * one side, we set the missing signals explicitely to
+			 * `green'. Otherwise, they implicitely become `red'. */
+			if (!IsOnewaySignal(tile, TRACK_UPPER) || (a & SignalOnTrack(TRACK_UPPER)) == 0) b |= ~a & SignalOnTrack(TRACK_UPPER);
+			if (!IsOnewaySignal(tile, TRACK_LOWER) || (a & SignalOnTrack(TRACK_LOWER)) == 0) b |= ~a & SignalOnTrack(TRACK_LOWER);
 
 			if ((b & 0x8) == 0) red_signals |= (TRACKDIR_BIT_LEFT_N | TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE | TRACKDIR_BIT_UPPER_E);
 			if ((b & 0x4) == 0) red_signals |= (TRACKDIR_BIT_LEFT_S | TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW | TRACKDIR_BIT_UPPER_W);
