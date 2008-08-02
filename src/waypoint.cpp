@@ -33,6 +33,8 @@
 #include "newgrf_station.h"
 #include "oldpool_func.h"
 #include "viewport_func.h"
+#include "pbs.h"
+#include "train.h"
 
 #include "table/strings.h"
 
@@ -320,6 +322,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
 		RedrawWaypointSign(wp);
 
+		Vehicle *v = NULL;
 		if (justremove) {
 			TrackBits tracks = GetRailWaypointBits(tile);
 			bool reserved = GetDepotWaypointReservation(tile);
@@ -327,10 +330,15 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 			if (reserved) SetTrackReservation(tile, tracks);
 			MarkTileDirtyByTile(tile);
 		} else {
+			if (GetDepotWaypointReservation(tile)) {
+				v = GetTrainForReservation(tile, track);
+				if (v != NULL) FreeTrainTrackReservation(v);
+			}
 			DoClearSquare(tile);
 			AddTrackToSignalBuffer(tile, track, owner);
 		}
 		YapfNotifyTrackLayoutChange(tile, track);
+		if (v != NULL) TryPathReserve(v, true);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);

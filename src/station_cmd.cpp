@@ -44,6 +44,7 @@
 #include "animated_tile_func.h"
 #include "elrail_func.h"
 #include "newgrf.h"
+#include "core/smallvec_type.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1019,11 +1020,20 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 		numtracks_orig = numtracks;
 
+		SmallVector<Vehicle*, 4> affected_vehicles;
 		do {
 			TileIndex tile = tile_org;
 			int w = plat_len;
 			do {
 				byte layout = *layout_ptr++;
+				if (IsRailwayStationTile(tile) && GetRailwayStationReservation(tile)) {
+					Vehicle *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
+					if (v != NULL) {
+						FreeTrainTrackReservation(v);
+						*affected_vehicles.Append() = v;
+					}
+				}
+
 				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p2, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
@@ -1047,6 +1057,10 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 			YapfNotifyTrackLayoutChange(tile_org, track);
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
+
+		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
+			TryPathReserve(affected_vehicles[i], true);
+		}
 
 		st->MarkTilesDirty(false);
 		UpdateStationVirtCoordDirty(st);
@@ -1173,6 +1187,12 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 			uint specindex = GetCustomStationSpecIndex(tile2);
 			Track track = GetRailStationTrack(tile2);
 			Owner owner = GetTileOwner(tile2);
+			Vehicle *v = NULL;
+
+			if (GetRailwayStationReservation(tile2)) {
+				v = GetTrainForReservation(tile2, track);
+				if (v != NULL) FreeTrainTrackReservation(v);
+			}
 
 			DoClearSquare(tile2);
 			st->rect.AfterRemoveTile(st, tile2);
@@ -1187,6 +1207,8 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 			MakeRailwayStationAreaSmaller(st);
 			st->MarkTilesDirty(false);
 			UpdateStationSignCoord(st);
+
+			if (v != NULL) TryPathReserve(v, true);
 
 			/* if we deleted the whole station, delete the train facility. */
 			if (st->train_tile == 0) {
@@ -1236,9 +1258,15 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 					/* read variables before the station tile is removed */
 					Track track = GetRailStationTrack(tile);
 					Owner owner = GetTileOwner(tile); // _current_player can be OWNER_WATER
+					Vehicle *v = NULL;
+					if (GetRailwayStationReservation(tile)) {
+						v = GetTrainForReservation(tile, track);
+						if (v != NULL) FreeTrainTrackReservation(v);
+					}
 					DoClearSquare(tile);
 					AddTrackToSignalBuffer(tile, track, owner);
 					YapfNotifyTrackLayoutChange(tile, track);
+					if (v != NULL) TryPathReserve(v, true);
 				}
 			}
 			tile += TileDiffXY(1, 0);

@@ -46,6 +46,8 @@
 #include "functions.h"
 #include "elrail_func.h"
 #include "oldpool_func.h"
+#include "pbs.h"
+#include "core/smallvec_type.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -458,6 +460,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	 * so do not call GetTileOwner(tile) in any case here */
 	Owner owner = INVALID_OWNER;
 
+	Vehicle *v = NULL;
+
 	switch (GetTileType(tile)) {
 		case MP_ROAD: {
 			if (!IsLevelCrossing(tile) ||
@@ -468,6 +472,10 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			}
 
 			if (flags & DC_EXEC) {
+				if (HasReservedTracks(tile, trackbit)) {
+					v = GetTrainForReservation(tile, track);
+					if (v != NULL) FreeTrainTrackReservation(v);
+				}
 				owner = GetTileOwner(tile);
 				MakeRoadNormal(tile, GetCrossingRoadBits(tile), GetRoadTypes(tile), GetTownIndex(tile), GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY));
 			}
@@ -492,6 +500,10 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				cost.AddCost(DoCommand(tile, track, 0, flags, CMD_REMOVE_SIGNALS));
 
 			if (flags & DC_EXEC) {
+				if (HasReservedTracks(tile, trackbit)) {
+					v = GetTrainForReservation(tile, track);
+					if (v != NULL) FreeTrainTrackReservation(v);
+				}
 				owner = GetTileOwner(tile);
 				present ^= trackbit;
 				if (present == 0) {
@@ -531,6 +543,8 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			AddTrackToSignalBuffer(tile, track, owner);
 			YapfNotifyTrackLayoutChange(tile, track);
 		}
+
+		if (v != NULL) TryPathReserve(v, true);
 	}
 
 	return cost;
@@ -1259,11 +1273,24 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Trying to convert other's rail */
 			if (!CheckTileOwnership(tile)) continue;
 
+			SmallVector<Vehicle*, 2> vehicles_affected;
+
 			/* Vehicle on the tile when not converting Rail <-> ElRail
 			 * Tunnels and bridges have special check later */
 			if (tt != MP_TUNNELBRIDGE) {
 				if (!IsCompatibleRail(type, totype) && !EnsureNoVehicleOnGround(tile)) continue;
 				if (flags & DC_EXEC) { // we can safely convert, too
+					TrackBits reserved = GetReservedTrackbits(tile);
+					Track     track;
+					while ((track = RemoveFirstTrack(&reserved)) != INVALID_TRACK) {
+						Vehicle *v = GetTrainForReservation(tile, track);
+						if (v != NULL && !HasPowerOnRail(v->u.rail.railtype, totype)) {
+							/* No power on new rail type, reroute. */
+							FreeTrainTrackReservation(v);
+							*vehicles_affected.Append() = v;
+						}
+					}
+
 					SetRailType(tile, totype);
 					MarkTileDirtyByTile(tile);
 					/* update power of train engines on this tile */
@@ -1320,13 +1347,19 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							GetVehicleTunnelBridge(tile, endtile) != NULL) continue;
 
 					if (flags & DC_EXEC) {
+						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
+						if (GetTunnelBridgeReservation(tile)) {
+							Vehicle *v = GetTrainForReservation(tile, track);
+							if (v != NULL) {
+								FreeTrainTrackReservation(v);
+								*vehicles_affected.Append() = v;
+							}
+						}
 						SetRailType(tile, totype);
 						SetRailType(endtile, totype);
 
 						VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
 						VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
-
-						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 
 						YapfNotifyTrackLayoutChange(tile, track);
 						YapfNotifyTrackLayoutChange(endtile, track);
@@ -1353,6 +1386,10 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					cost.AddCost(RailConvertCost(type, totype));
 					break;
 			}
+
+			for (uint i = 0; i < vehicles_affected.Length(); ++i) {
+				TryPathReserve(vehicles_affected[i], true);
+			}
 		}
 	}
 
@@ -1371,11 +1408,18 @@ static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 		/* read variables before the depot is removed */
 		DiagDirection dir = GetRailDepotDirection(tile);
 		Owner owner = GetTileOwner(tile);
+		Vehicle *v = NULL;
+
+		if (GetDepotWaypointReservation(tile)) {
+			v = GetTrainForReservation(tile, DiagDirToDiagTrack(dir));
+			if (v != NULL) FreeTrainTrackReservation(v);
+		}
 
 		DoClearSquare(tile);
 		delete GetDepotByTile(tile);
 		AddSideToSignalBuffer(tile, dir, owner);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
+		if (v != NULL) TryPathReserve(v, true);
 	}
 
 	return CommandCost(EXPENSES_CONSTRUCTION, _price.remove_train_depot);

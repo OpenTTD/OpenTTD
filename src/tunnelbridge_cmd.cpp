@@ -630,7 +630,14 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 		if (GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL) {
 			/* We first need to request values before calling DoClearSquare */
 			DiagDirection dir = GetTunnelBridgeDirection(tile);
+			Track track = DiagDirToDiagTrack(dir);
 			Owner owner = GetTileOwner(tile);
+
+			Vehicle *v = NULL;
+			if (GetTunnelBridgeReservation(tile)) {
+				v = GetTrainForReservation(tile, track);
+				if (v != NULL) FreeTrainTrackReservation(v);
+			}
 
 			DoClearSquare(tile);
 			DoClearSquare(endtile);
@@ -639,9 +646,10 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 			AddSideToSignalBuffer(tile,    ReverseDiagDir(dir), owner);
 			AddSideToSignalBuffer(endtile, dir,                 owner);
 
-			Track track = DiagDirToDiagTrack(dir);
 			YapfNotifyTrackLayoutChange(tile,    track);
 			YapfNotifyTrackLayoutChange(endtile, track);
+
+			if (v != NULL) TryPathReserve(v);
 		} else {
 			DoClearSquare(tile);
 			DoClearSquare(endtile);
@@ -689,6 +697,12 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 		bool rail = GetTunnelBridgeTransportType(tile) == TRANSPORT_RAIL;
 		Owner owner = GetTileOwner(tile);
 		uint height = GetBridgeHeight(tile);
+		Vehicle *v = NULL;
+
+		if (rail && GetTunnelBridgeReservation(tile)) {
+			v = GetTrainForReservation(tile, DiagDirToDiagTrack(direction));
+			if (v != NULL) FreeTrainTrackReservation(v);
+		}
 
 		DoClearSquare(tile);
 		DoClearSquare(endtile);
@@ -710,6 +724,8 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 			Track track = DiagDirToDiagTrack(direction);
 			YapfNotifyTrackLayoutChange(tile,    track);
 			YapfNotifyTrackLayoutChange(endtile, track);
+
+			if (v != NULL) TryPathReserve(v, true);
 		}
 	}
 
