@@ -2215,6 +2215,12 @@ static void DrawTile_Station(TileInfo *ti)
 			image += total_offset;
 		}
 		DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
+
+		/* PBS debugging, draw reserved tracks darker */
+		if (_settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && GetRailwayStationReservation(ti->tile)) {
+			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
+			DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
+		}
 	}
 
 	if (IsRailwayStation(ti->tile) && HasCatenaryDrawn(GetRailType(ti->tile)) && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);

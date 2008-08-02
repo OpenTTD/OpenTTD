@@ -613,6 +613,7 @@ static const char *_patches_ui[] = {
 	"gui.timetable_in_ticks",
 	"gui.default_rail_type",
 	"gui.always_build_infrastructure",
+	"gui.show_track_reservation",
 };
 
 static const char *_patches_construction[] = {

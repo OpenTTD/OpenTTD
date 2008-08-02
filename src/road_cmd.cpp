@@ -1176,6 +1176,12 @@ static void DrawTile_Road(TileInfo *ti)
 			}
 
 			DrawGroundSprite(image, pal);
+
+			/* PBS debugging, draw reserved tracks darker */
+			if (_settings_client.gui.show_track_reservation && GetCrossingReservation(ti->tile)) {
+				DrawGroundSprite(GetCrossingRoadAxis(ti->tile) == AXIS_Y ? GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_y : GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_x, PALETTE_CRASH);
+			}
+
 			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
 				DrawGroundSprite(SPR_TRAMWAY_OVERLAY + (GetCrossingRoadAxis(ti->tile) ^ 1), pal);
 				DrawTramCatenary(ti, GetCrossingRoadBits(ti->tile));

@@ -79,6 +79,7 @@ struct GUISettings {
 	int16  autorenew_months;                 ///< how many months from EOL of vehicles should autorenew trigger for new companies?
 	int32  autorenew_money;                  ///< how much money before autorenewing for new companies?
 	byte   news_message_timeout;             ///< how much longer than the news message "age" should we keep the message in the history
+	bool   show_track_reservation;           ///< highlight reserved tracks.
 };
 
 /** Settings related to currency/unit systems. */

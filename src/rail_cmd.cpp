@@ -1688,6 +1688,29 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 		if (track & TRACK_BIT_RIGHT) DrawGroundSprite(rti->base_sprites.single_e, PAL_NONE);
 	}
 
+	/* PBS debugging, draw reserved tracks darker */
+	if (_settings_client.gui.show_track_reservation) {
+		TrackBits pbs = GetTrackReservation(ti->tile);
+		if (pbs & TRACK_BIT_X) {
+			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
+				DrawGroundSprite(rti->base_sprites.single_y, PALETTE_CRASH);
+			} else {
+				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
+			}
+		}
+		if (pbs & TRACK_BIT_Y) {
+			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
+				DrawGroundSprite(rti->base_sprites.single_x, PALETTE_CRASH);
+			} else {
+				DrawGroundSprite(_track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.single_sloped - 20, PALETTE_CRASH);
+			}
+		}
+		if (pbs & TRACK_BIT_UPPER) AddSortableSpriteToDraw(rti->base_sprites.single_n, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + (ti->tileh & SLOPE_N ? 8 : 0));
+		if (pbs & TRACK_BIT_LOWER) AddSortableSpriteToDraw(rti->base_sprites.single_s, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + (ti->tileh & SLOPE_S ? 8 : 0));
+		if (pbs & TRACK_BIT_LEFT)  AddSortableSpriteToDraw(rti->base_sprites.single_w, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + (ti->tileh & SLOPE_W ? 8 : 0));
+		if (pbs & TRACK_BIT_RIGHT) AddSortableSpriteToDraw(rti->base_sprites.single_e, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + (ti->tileh & SLOPE_E ? 8 : 0));
+	}
+
 	if (IsValidCorner(halftile_corner)) {
 		DrawFoundation(ti, HalftileFoundation(halftile_corner));
 
@@ -1702,6 +1725,11 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 			default: break;
 		}
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
+
+		if (_settings_client.gui.show_track_reservation && IsSteepSlope(ti->tileh) && HasReservedTracks(ti->tile, CornerToTrackBits(halftile_corner))) {
+			static const byte _corner_to_track_sprite[] = {3, 1, 2, 0};
+			AddSortableSpriteToDraw(_corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 16);
+		}
 	}
 }
 
@@ -1845,6 +1873,11 @@ default_waypoint:
 		}
 
 		DrawGroundSprite(image, PAL_NONE);
+
+		/* PBS debugging, draw reserved tracks darker */
+		if (_settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile)) {
+			DrawGroundSprite(GetWaypointAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
+		}
 
 		if (HasCatenaryDrawn(GetRailType(ti->tile))) DrawCatenary(ti);
 
