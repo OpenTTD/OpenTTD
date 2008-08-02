@@ -31,6 +31,8 @@ PBSTileInfo FollowTrainReservation(const Vehicle *v);
 bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg = false);
 bool IsWaitingPositionFree(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg = false);
 
+Vehicle *GetTrainForReservation(TileIndex tile, Track track);
+
 /**
  * Check whether some of tracks is reserved on a tile.
  *

@@ -14,6 +14,7 @@
 #include "settings_type.h"
 #include "road_func.h"
 #include "vehicle_base.h"
+#include "vehicle_func.h"
 #include "yapf/follow_track.hpp"
 
 /**
@@ -159,6 +160,37 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 	}
 }
 
+
+/** Follow a reservation starting from a specific tile to the end. */
+static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
+{
+	/* Do not disallow 90 deg turns as the setting might have changed between reserving and now. */
+	CFollowTrackRail ft(o, rts);
+	while (ft.Follow(tile, trackdir)) {
+		TrackdirBits reserved = (TrackdirBits)(ft.m_new_td_bits & (GetReservedTrackbits(ft.m_new_tile) * 0x101));
+
+		/* No reservation --> path end found */
+		if (reserved == TRACKDIR_BIT_NONE) break;
+
+		/* Can't have more than one reserved trackdir */
+		Trackdir new_trackdir = FindFirstTrackdir(reserved);
+
+		/* One-way signal against us. The reservation can't be ours as it is not
+		 * a safe position from our direction and we can never pass the signal. */
+		if (!ignore_oneway && HasOnewaySignalBlockingTrackdir(ft.m_new_tile, new_trackdir)) break;
+
+		tile = ft.m_new_tile;
+		trackdir = new_trackdir;
+
+		/* Depot tile? Can't continue. */
+		if (IsRailDepotTile(tile)) break;
+		/* Non-pbs signal? Reservation can't continue. */
+		if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) break;
+	}
+
+	return PBSTileInfo(tile, trackdir, false);
+}
+
 /**
  * Follow a train reservation to the last tile.
  *
@@ -174,31 +206,61 @@ PBSTileInfo FollowTrainReservation(const Vehicle *v)
 
 	if (IsRailDepotTile(tile) && !GetRailDepotReservation(tile)) return PBSTileInfo(tile, trackdir, false);
 
-	/* Do not disallow 90 deg turns as the setting might have changed between reserving and now. */
-	CFollowTrackRail ft(v, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes);
-	while (ft.Follow(tile, trackdir)) {
-		TrackdirBits reserved = (TrackdirBits)(ft.m_new_td_bits & (GetReservedTrackbits(ft.m_new_tile) * 0x101));
+	PBSTileInfo res = FollowReservation(v->owner, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes, tile, trackdir);
+	res.okay = IsSafeWaitingPosition(v, res.tile, res.trackdir, true, _settings_game.pf.forbid_90_deg);
+	return res;
+}
 
-		/* No reservation --> path end found */
-		if (reserved == TRACKDIR_BIT_NONE) break;
+/** Callback for VehicleFromPos to find a train on a specific track. */
+static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
+{
+	PBSTileInfo info = *(PBSTileInfo *)data;
 
-		/* Can't have more than one reserved trackdir */
-		Trackdir new_trackdir = FindFirstTrackdir(reserved);
+	if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) && HasBit((TrackBits)v->u.rail.track, TrackdirToTrack(info.trackdir))) return v;
 
-		/* One-way signal against us. The reservation can't be ours as it is not
-		 * a safe position from our direction and we can never pass the signal. */
-		if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, new_trackdir)) break;
+	return NULL;
+}
 
-		tile = ft.m_new_tile;
-		trackdir = new_trackdir;
+/**
+ * Find the train which has reserved a specific path.
+ *
+ * @param tile A tile on the path.
+ * @param track A reserved track on the tile.
+ * @return The vehicle holding the reservation or NULL if the path is stray.
+ */
+Vehicle *GetTrainForReservation(TileIndex tile, Track track)
+{
+	assert(HasReservedTracks(tile, TrackToTrackBits(track)));
+	Trackdir  trackdir = TrackToTrackdir(track);
 
-		/* Depot tile? Can't continue. */
-		if (IsRailDepotTile(tile)) break;
-		/* Non-pbs signal? Reservation can't continue. */
-		if (IsTileType(tile, MP_RAILWAY) && HasSignalOnTrackdir(tile, trackdir) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(trackdir)))) break;
+	RailTypes rts = GetRailTypeInfo(GetTileRailType(tile))->compatible_railtypes;
+
+	/* Follow the path from tile to both ends, one of the end tiles should
+	 * have a train on it. We need FollowReservation to ignore one-way signals
+	 * here, as one of the two search directions will be the "wrong" way. */
+	for (int i = 0; i < 2; ++i, trackdir = ReverseTrackdir(trackdir)) {
+		PBSTileInfo dest = FollowReservation(GetTileOwner(tile), rts, tile, trackdir, true);
+
+		Vehicle *v = VehicleFromPos(dest.tile, &dest, FindTrainOnTrackEnum);
+		if (v != NULL) return v->First();
+
+		/* Special case for stations: check the whole platform for a vehicle. */
+		if (IsRailwayStationTile(dest.tile)) {
+			TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(dest.trackdir)));
+			for (TileIndex st_tile = dest.tile + diff; IsCompatibleTrainStationTile(st_tile, dest.tile); st_tile += diff) {
+				v = VehicleFromPos(st_tile, &dest, FindTrainOnTrackEnum);
+				if (v != NULL) return v->First();
+			}
+		}
+
+		/* Special case for bridges/tunnels: check the other end as well. */
+		if (IsTileType(dest.tile, MP_TUNNELBRIDGE)) {
+			v = VehicleFromPos(GetOtherTunnelBridgeEnd(dest.tile), &dest, FindTrainOnTrackEnum);
+			if (v != NULL) return v->First();
+		}
 	}
 
-	return PBSTileInfo(tile, trackdir, IsSafeWaitingPosition(v, tile, trackdir, true, _settings_game.pf.forbid_90_deg));
+	return NULL;
 }
 
 /**
