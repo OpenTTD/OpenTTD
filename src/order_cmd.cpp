@@ -1667,7 +1667,7 @@ static bool OrderConditionCompare(OrderConditionComparator occ, int variable, in
  * @param v the vehicle to update
  * @return index of next order to jump to, or INVALID_VEH_ORDER_ID to use the next order
  */
-static VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
+VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v)
 {
 	if (order->GetType() != OT_CONDITIONAL) return INVALID_VEH_ORDER_ID;
 
@@ -1693,7 +1693,7 @@ static VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle 
  * @param order the order the vehicle currently has
  * @param v the vehicle to update
  */
-static bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0)
+bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 {
 	switch (order->GetType()) {
 		case OT_GOTO_STATION:

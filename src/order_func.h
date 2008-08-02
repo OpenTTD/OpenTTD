@@ -37,6 +37,8 @@ bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v);
 bool ProcessOrders(Vehicle *v);
+bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0);
+VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v);
 
 void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int width);
 
