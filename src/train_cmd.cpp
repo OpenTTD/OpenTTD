@@ -2646,6 +2646,50 @@ static bool TryReserveSafeTrack(const Vehicle* v, TileIndex tile, Trackdir td, b
 	}
 }
 
+/**
+ * Query the next order after a certain order index.
+ *
+ * @param v The vehicle
+ * @param order_index [in/out] Index of the current order, returns index of the chosen order
+ * @return Pointer to the order or NULL if the order chain was completely followed
+ *          without finding a suitable order.
+ */
+static const Order* GetNextTrainOrder(const Vehicle *v, VehicleOrderID *order_index)
+{
+	++(*order_index);
+
+	do {
+		/* Wrap around. */
+		if (*order_index >= v->num_orders) *order_index = 0;
+
+		Order *order = GetVehicleOrder(v, *order_index);
+		assert(order != NULL);
+
+		switch (order->GetType()) {
+			case OT_GOTO_DEPOT:
+				/* Skip service in depot orders when the train doesn't need service. */
+				if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) break;
+			case OT_GOTO_STATION:
+			case OT_GOTO_WAYPOINT:
+				return order;
+			case OT_CONDITIONAL: {
+				VehicleOrderID next = ProcessConditionalOrder(order, v);
+				if (next != INVALID_VEH_ORDER_ID) {
+					*order_index = next;
+					continue;
+				}
+				break;
+			}
+			default:
+				break;
+		}
+
+		++(*order_index);
+	} while (*order_index != v->cur_order_index);
+
+	return NULL;
+}
+
 /* choose a track */
 static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck)
 {
@@ -2738,6 +2782,49 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	}
 
 	if (got_reservation != NULL) *got_reservation = true;
+
+	/* Reservation target found and free, check if it is safe. */
+	Order          cur_order = v->current_order;
+	TileIndex      cur_dest_tile = v->dest_tile;
+	VehicleOrderID order_index = v->cur_order_index;
+	while (!IsSafeWaitingPosition(v, res_dest.tile, res_dest.trackdir, true, _settings_game.pf.forbid_90_deg)) {
+		/* Extend reservation until we have found a safe position. */
+		DiagDirection exitdir = TrackdirToExitdir(res_dest.trackdir);
+		TileIndex     next_tile = TileAddByDiagDir(res_dest.tile, exitdir);
+		TrackBits     reachable = TrackdirBitsToTrackBits((TrackdirBits)(GetTileTrackStatus(next_tile, TRANSPORT_RAIL, 0))) & DiagdirReachesTracks(exitdir);
+		if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) {
+			reachable &= ~TrackCrossesTracks(TrackdirToTrack(res_dest.trackdir));
+		}
+
+		/* Get next order with destination. */
+		const Order *order = GetNextTrainOrder(v, &order_index);
+		if (order != NULL) {
+			v->current_order = *order;
+			UpdateOrderDest(v, order);
+			PBSTileInfo cur_dest;
+			DoTrainPathfind(v, next_tile, exitdir, reachable, NULL, true, &cur_dest);
+			if (cur_dest.tile != INVALID_TILE) {
+				res_dest = cur_dest;
+				if (res_dest.okay) continue;
+				/* Path found, but could not be reserved. */
+				FreeTrainTrackReservation(v);
+				if (mark_stuck) MarkTrainAsStuck(v);
+				if (got_reservation != NULL) *got_reservation = false;
+				changed_signal = false;
+				break;
+			}
+		}
+		/* No order or no safe position found, try any position. */
+		if (!TryReserveSafeTrack(v, res_dest.tile, res_dest.trackdir, true)) {
+			FreeTrainTrackReservation(v);
+			if (mark_stuck) MarkTrainAsStuck(v);
+			if (got_reservation != NULL) *got_reservation = false;
+			changed_signal = false;
+		}
+		break;
+	}
+	v->current_order = cur_order;
+	v->dest_tile = cur_dest_tile;
 
 	TryReserveRailTrack(v->tile, TrackdirToTrack(GetVehicleTrackdir(v)));
 
