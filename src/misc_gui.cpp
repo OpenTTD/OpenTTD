@@ -622,15 +622,17 @@ struct TooltipsWindow : public Window
 	StringID string_id;
 	byte paramcount;
 	uint64 params[5];
+	bool use_left_mouse_button;
 
 	TooltipsWindow(int x, int y, int width, int height, const Widget *widget,
-								 StringID str, uint paramcount, const uint64 params[]) :
+								 StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button) :
 			Window(x, y, width, height, WC_TOOLTIPS, widget)
 	{
 		this->string_id = str;
 		assert(sizeof(this->params[0]) == sizeof(params[0]));
 		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
+		this->use_left_mouse_button = use_left_mouse_button;
 
 		this->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
 		this->widget[0].right = width;
@@ -654,25 +656,21 @@ struct TooltipsWindow : public Window
 	{
 		/* We can show tooltips while dragging tools. These are shown as long as
 		 * we are dragging the tool. Normal tooltips work with rmb */
-		if (this->paramcount == 0 ) {
-			if (!_right_button_down) delete this;
-		} else {
-			if (!_left_button_down) delete this;
-		}
+		if (this->use_left_mouse_button ? !_left_button_down : !_right_button_down) delete this;
 	}
 };
 
 /** Shows a tooltip
  * @param str String to be displayed
  * @param paramcount number of params to deal with
- * @param params (optional) up to 5 pieces of additional information that may be
- * added to a tooltip; currently only supports parameters of {NUM} (integer) */
-void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[])
+ * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
+ * @param use_left_mouse_button close the tooltip when the left (true) or right (false) mousebutton is released
+ */
+void GuiShowTooltips(StringID str, uint paramcount, const uint64 params[], bool use_left_mouse_button)
 {
 	DeleteWindowById(WC_TOOLTIPS, 0);
 
-	/* We only show measurement tooltips with patch setting on */
-	if (str == STR_NULL || (paramcount != 0 && !_settings_client.gui.measure_tooltip)) return;
+	if (str == STR_NULL) return;
 
 	for (uint i = 0; i != paramcount; i++) SetDParam(i, params[i]);
 	char buffer[512];
@@ -694,7 +692,7 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[
 	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
 	int x = Clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
-	new TooltipsWindow(x, y, br.width, br.height, _tooltips_widgets, str, paramcount, params);
+	new TooltipsWindow(x, y, br.width, br.height, _tooltips_widgets, str, paramcount, params, use_left_mouse_button);
 }
 
 

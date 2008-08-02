@@ -2201,6 +2201,17 @@ void UpdateTileSelection()
 	}
 }
 
+/** Displays the measurement tooltips when selecting multiple tiles
+ * @param str String to be displayed
+ * @param paramcount number of params to deal with
+ * @param params (optional) up to 5 pieces of additional information that may be added to a tooltip
+ */
+static inline void ShowMeasurementTooltips(StringID str, uint paramcount, const uint64 params[])
+{
+	if (!_settings_client.gui.measure_tooltip) return;
+	GuiShowTooltips(str, paramcount, params, true);
+}
+
 /** highlighting tiles while only going over them with the mouse */
 void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDragDropSelectionProcess process)
 {
@@ -2254,7 +2265,7 @@ void VpSetPresizeRange(TileIndex from, TileIndex to)
 	_thd.next_drawstyle = HT_RECT;
 
 	/* show measurement only if there is any length to speak of */
-	if (distance > 1) GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, &distance);
+	if (distance > 1) ShowMeasurementTooltips(STR_MEASURE_LENGTH, 1, &distance);
 }
 
 static void VpStartPreSizing()
@@ -2535,7 +2546,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			if (heightdiff != 0) params[index++] = heightdiff;
 		}
 
-		GuiShowTooltipsWithArgs(measure_strings_length[index], index, params);
+		ShowMeasurementTooltips(measure_strings_length[index], index, params);
 	}
 
 	thd->selend.x = x;
@@ -2614,7 +2625,7 @@ calc_heightdiff_single_direction:;
 					if (heightdiff != 0) params[index++] = heightdiff;
 				}
 
-				GuiShowTooltipsWithArgs(measure_strings_length[index], index, params);
+				ShowMeasurementTooltips(measure_strings_length[index], index, params);
 			} break;
 
 		case VPM_X_AND_Y_LIMITED: { /* drag an X by Y constrained rect area */
@@ -2654,7 +2665,7 @@ calc_heightdiff_single_direction:;
 					if (heightdiff != 0) params[index++] = heightdiff;
 				}
 
-				GuiShowTooltipsWithArgs(measure_strings_area[index], index, params);
+				ShowMeasurementTooltips(measure_strings_area[index], index, params);
 			}
 		break;
 

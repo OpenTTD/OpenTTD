@@ -524,11 +524,7 @@ Wcls *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 void RelocateAllWindows(int neww, int newh);
 
 /* misc_gui.cpp */
-void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint64 params[]);
-static inline void GuiShowTooltips(StringID str)
-{
-	GuiShowTooltipsWithArgs(str, 0, NULL);
-}
+void GuiShowTooltips(StringID str, uint paramcount = 0, const uint64 params[] = NULL, bool use_left_mouse_button = false);
 
 /* widget.cpp */
 int GetWidgetFromPos(const Window *w, int x, int y);
