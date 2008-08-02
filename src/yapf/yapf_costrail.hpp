@@ -136,7 +136,7 @@ public:
 		if (IsTileType(tile, MP_RAILWAY)) {
 			bool has_signal_against = HasSignalOnTrackdir(tile, ReverseTrackdir(trackdir));
 			bool has_signal_along = HasSignalOnTrackdir(tile, trackdir);
-			if (has_signal_against && !has_signal_along) {
+			if (has_signal_against && !has_signal_along && IsOnewaySignal(tile, TrackdirToTrack(trackdir))) {
 				// one-way signal in opposite direction
 				n.m_segment->m_end_segment_reason |= ESRB_DEAD_END;
 			} else if (has_signal_along) {

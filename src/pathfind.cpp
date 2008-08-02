@@ -674,7 +674,7 @@ start_at:
 			if (HasSignals(tile)) {
 				if (!HasSignalOnTrackdir(tile, track)) {
 					/* if one way signal not pointing towards us, stop going in this direction => End of rail segment. */
-					if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
+					if (HasSignalOnTrackdir(tile, ReverseTrackdir(track)) && IsOnewaySignal(tile, TrackdirToTrack(track))) {
 						bits = TRACK_BIT_NONE;
 						break;
 					}
