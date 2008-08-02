@@ -33,6 +33,7 @@
 #include "newgrf_text.h"
 #include "direction_func.h"
 #include "yapf/yapf.h"
+#include "yapf/follow_track.hpp"
 #include "cargotype.h"
 #include "group.h"
 #include "table/sprites.h"
@@ -58,6 +59,7 @@
 #include "table/strings.h"
 #include "table/train_cmd.h"
 
+static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck);
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image);
 static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
@@ -2133,14 +2135,17 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 	tfdd.best_length = UINT_MAX;
 	tfdd.reverse = false;
 
-	TileIndex tile = v->tile;
-	if (IsRailDepotTile(tile)) {
-		tfdd.tile = tile;
+	PBSTileInfo origin = FollowTrainReservation(v);
+	if (IsRailDepotTile(origin.tile)) {
+		tfdd.tile = origin.tile;
 		tfdd.best_length = 0;
 		return tfdd;
 	}
 
-	switch (_settings_game.pf.pathfinder_for_trains) {
+	uint8 pathfinder = _settings_game.pf.pathfinder_for_trains;
+	if ((_settings_game.pf.reserve_paths || HasReservedTracks(v->tile, v->u.rail.track)) && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
+
+	switch (pathfinder) {
 		case VPF_YAPF: { /* YAPF */
 			bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
 			tfdd.best_length = found ? max_distance / 2 : UINT_MAX; // some fake distance or NOT_FOUND
@@ -2169,12 +2174,12 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		case VPF_NTP: { /* NTP */
 			/* search in the forward direction first. */
 			DiagDirection i = TrainExitDir(v->direction, v->u.rail.track);
-			NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+			NewTrainPathfind(v->tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 			if (tfdd.best_length == UINT_MAX){
 				tfdd.reverse = true;
 				/* search in backwards direction */
 				i = TrainExitDir(ReverseDir(v->direction), v->u.rail.track);
-				NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+				NewTrainPathfind(v->tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 			}
 		} break;
 	}
@@ -2401,6 +2406,54 @@ static void ClearPathReservation(TileIndex tile, Trackdir track_dir)
 	}
 }
 
+/** Free the reserved path in front of a vehicle. */
+void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin, Trackdir orig_td)
+{
+	assert(IsFrontEngine(v));
+
+	TileIndex tile = origin != INVALID_TILE ? origin : v->tile;
+	Trackdir  td = orig_td != INVALID_TRACKDIR ? orig_td : GetVehicleTrackdir(v);
+	bool      free_tile = tile != v->tile || !(IsRailwayStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
+
+	/* Don't free reservation if it's not ours. */
+	if (TracksOverlap(GetReservedTrackbits(tile) | TrackToTrackBits(TrackdirToTrack(td)))) return;
+
+	CFollowTrackRail ft(v, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes);
+	while (ft.Follow(tile, td)) {
+		tile = ft.m_new_tile;
+		TrackdirBits bits = (TrackdirBits)(ft.m_new_td_bits & (GetReservedTrackbits(tile) * 0x101));
+		td = RemoveFirstTrackdir(&bits);
+		assert(bits == TRACKDIR_BIT_NONE);
+
+		if (!IsValidTrackdir(td)) break;
+
+		if (IsTileType(tile, MP_RAILWAY)) {
+			if (HasSignalOnTrackdir(tile, td) && !IsPbsSignal(GetSignalType(tile, TrackdirToTrack(td)))) {
+				/* Conventional signal along trackdir: remove reservation and stop. */
+				UnreserveRailTrack(tile, TrackdirToTrack(td));
+				break;
+			}
+			if (HasPbsSignalOnTrackdir(tile, td)) {
+				if (GetSignalStateByTrackdir(tile, td) == SIGNAL_STATE_RED) {
+					/* Red PBS signal? Can't be our reservation, would be green then. */
+					break;
+				} else {
+					/* Turn the signal back to red. */
+					SetSignalStateByTrackdir(tile, td, SIGNAL_STATE_RED);
+					MarkTileDirtyByTile(tile);
+				}
+			} else if (HasSignalOnTrackdir(tile, ReverseTrackdir(td)) && IsOnewaySignal(tile, TrackdirToTrack(td))) {
+				break;
+			}
+		}
+
+		/* Don't free first station/bridge/tunnel if we are on it. */
+		if (free_tile || (!ft.m_is_station && !ft.m_is_tunnel && !ft.m_is_bridge)) ClearPathReservation(tile, td);
+
+		free_tile = true;
+	}
+}
+
 /** Check for station tiles */
 struct TrainTrackFollowerData {
 	TileIndex dest_coords;
@@ -2466,25 +2519,34 @@ static const byte _search_directions[6][4] = {
 
 static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
 
-/* choose a track */
-static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
+/**
+ * Perform pathfinding for a train.
+ *
+ * @param v The train
+ * @param tile The tile the train is about to enter
+ * @param enterdir Diagonal direction the train is coming from
+ * @param tracks Usable tracks on the new tile
+ * @param path_not_found [out] Set to false if the pathfinder couldn't find a way to the destination
+ * @param do_track_reservation
+ * @param dest [out]
+ * @return The best track the train should follow
+ */
+static Track DoTrainPathfind(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool do_track_reservation, PBSTileInfo *dest)
 {
 	Track best_track;
-	/* pathfinders are able to tell that route was only 'guessed' */
-	bool path_not_found = false;
 
 #ifdef PF_BENCHMARK
 	TIC()
 #endif
 
-	assert((tracks & ~TRACK_BIT_MASK) == 0);
+	if (path_not_found) *path_not_found = false;
 
-	/* quick return in case only one possible track is available */
-	if (KillFirstBit(tracks) == TRACK_BIT_NONE) return FindFirstTrack(tracks);
+	uint8 pathfinder = _settings_game.pf.pathfinder_for_trains;
+	if (do_track_reservation && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
 
-	switch (_settings_game.pf.pathfinder_for_trains) {
+	switch (pathfinder) {
 		case VPF_YAPF: { /* YAPF */
-			Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, &path_not_found);
+			Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, tracks, path_not_found, do_track_reservation, dest);
 			if (trackdir != INVALID_TRACKDIR) {
 				best_track = TrackdirToTrack(trackdir);
 			} else {
@@ -2496,12 +2558,18 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 			void *perf = NpfBeginInterval();
 
 			NPFFindStationOrTileData fstd;
-			NPFFillWithOrderData(&fstd, v);
-			/* The enterdir for the new tile, is the exitdir for the old tile */
-			Trackdir trackdir = GetVehicleTrackdir(v);
-			assert(trackdir != INVALID_TRACKDIR);
+			NPFFillWithOrderData(&fstd, v, do_track_reservation);
 
-			NPFFoundTargetData ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, true, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
+			PBSTileInfo origin = FollowTrainReservation(v);
+			assert(IsValidTrackdir(origin.trackdir));
+
+			NPFFoundTargetData ftd = NPFRouteToStationOrTile(origin.tile, origin.trackdir, true, &fstd, TRANSPORT_RAIL, 0, v->owner, v->u.rail.compatible_railtypes);
+
+			if (dest != NULL) {
+				dest->tile = ftd.node.tile;
+				dest->trackdir = (Trackdir)ftd.node.direction;
+				dest->okay = ftd.res_okay;
+			}
 
 			if (ftd.best_trackdir == INVALID_TRACKDIR) {
 				/* We are already at our target. Just do something
@@ -2513,7 +2581,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 				 * the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 				 * we did not find our target, but ftd.best_trackdir contains the direction leading
 				 * to the tile closest to our target. */
-				if (ftd.best_bird_dist != 0) path_not_found = true;
+				if (ftd.best_bird_dist != 0 && path_not_found != NULL) *path_not_found = true;
 				/* Discard enterdir information, making it a normal track */
 				best_track = TrackdirToTrack(ftd.best_trackdir);
 			}
@@ -2538,7 +2606,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 				v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 			/* check whether the path was found or only 'guessed' */
-			if (fd.best_bird_dist != 0) path_not_found = true;
+			if (fd.best_bird_dist != 0 && path_not_found != NULL) *path_not_found = true;
 
 			if (fd.best_track == INVALID_TRACKDIR) {
 				/* blaha */
@@ -2551,6 +2619,71 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 			DEBUG(yapf, 4, "[NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
 		} break;
 	}
+
+#ifdef PF_BENCHMARK
+	TOC("PF time = ", 1)
+#endif
+
+	return best_track;
+}
+
+/**
+ * Try to reserve any path to a safe tile, ignoring the vehicle's destination.
+ * Safe tiles are tiles in front of a signal, depots and station tiles at end of line.
+ *
+ * @param v The vehicle.
+ * @param tile The tile the search should start from.
+ * @param td The trackdir the search should start from.
+ * @param override_tailtype Whether all physically compatible railtypes should be followed.
+ * @return True if a path to a safe stopping tile could be reserved.
+ */
+static bool TryReserveSafeTrack(const Vehicle* v, TileIndex tile, Trackdir td, bool override_tailtype)
+{
+	if (_settings_game.pf.pathfinder_for_trains == VPF_YAPF) {
+		return YapfRailFindNearestSafeTile(v, tile, td, override_tailtype);
+	} else {
+		return NPFRouteToSafeTile(v, tile, td, override_tailtype).res_okay;
+	}
+}
+
+/* choose a track */
+static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck)
+{
+	Track best_track = INVALID_TRACK;
+	/* pathfinders are able to tell that route was only 'guessed' */
+	bool path_not_found = false;
+	bool do_track_reservation = _settings_game.pf.reserve_paths || force_res;
+	bool changed_signal = false;
+
+	assert((tracks & ~TRACK_BIT_MASK) == 0);
+
+	if (got_reservation != NULL) *got_reservation = false;
+
+	/* Don't use tracks here as the setting to forbid 90 deg turns might have been switched between reservation and now. */
+	TrackBits res_tracks = (TrackBits)(GetReservedTrackbits(tile) & DiagdirReachesTracks(enterdir));
+	/* Do we have a suitable reserved track? */
+	if (res_tracks != TRACK_BIT_NONE) return FindFirstTrack(res_tracks);
+
+	/* Quick return in case only one possible track is available */
+	if (KillFirstBit(tracks) == TRACK_BIT_NONE) {
+		Track track = FindFirstTrack(tracks);
+		/* We need to check for signals only here, as a junction tile can't have signals. */
+		if (track != INVALID_TRACK && HasPbsSignalOnTrackdir(tile, TrackEnterdirToTrackdir(track, enterdir))) {
+			do_track_reservation = true;
+			changed_signal = true;
+			SetSignalStateByTrackdir(tile, TrackEnterdirToTrackdir(track, enterdir), SIGNAL_STATE_GREEN);
+		} else if (!do_track_reservation) {
+			return track;
+		}
+		best_track = track;
+	}
+
+	if (do_track_reservation) {
+		if (v->current_order.IsType(OT_DUMMY) || v->current_order.IsType(OT_CONDITIONAL)) ProcessOrders(v);
+	}
+
+	PBSTileInfo res_dest;
+	best_track = DoTrainPathfind(v, tile, enterdir, tracks, &path_not_found, do_track_reservation, &res_dest);
 
 	/* handle "path not found" state */
 	if (path_not_found) {
@@ -2577,9 +2710,38 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 		}
 	}
 
-#ifdef PF_BENCHMARK
-	TOC("PF time = ", 1)
-#endif
+	/* No track reservation requested -> finished. */
+	if (!do_track_reservation) return best_track;
+
+	/* A path was found, but could not be reserved. */
+	if (res_dest.tile != INVALID_TILE && !res_dest.okay) {
+		if (mark_stuck) MarkTrainAsStuck(v);
+		FreeTrainTrackReservation(v);
+		return best_track;
+	}
+
+	/* No possible reservation target found, we are probably lost. */
+	if (res_dest.tile == INVALID_TILE) {
+		/* Try to find any safe destination. */
+		PBSTileInfo origin = FollowTrainReservation(v);
+		if (TryReserveSafeTrack(v, origin.tile, origin.trackdir, false)) {
+			TrackBits res = GetReservedTrackbits(tile) & DiagdirReachesTracks(enterdir);
+			best_track = FindFirstTrack(res);
+			TryReserveRailTrack(v->tile, TrackdirToTrack(GetVehicleTrackdir(v)));
+			if (got_reservation != NULL) *got_reservation = true;
+			if (changed_signal) MarkTileDirtyByTile(tile);
+		} else {
+			FreeTrainTrackReservation(v);
+			if (mark_stuck) MarkTrainAsStuck(v);
+		}
+		return best_track;
+	}
+
+	if (got_reservation != NULL) *got_reservation = true;
+
+	TryReserveRailTrack(v->tile, TrackdirToTrack(GetVehicleTrackdir(v)));
+
+	if (changed_signal) MarkTileDirtyByTile(tile);
 
 	return best_track;
 }
@@ -3104,8 +3266,8 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 				if (prev == NULL) {
 					/* Currently the locomotive is active. Determine which one of the
 					 * available tracks to choose */
-					chosen_track = TrackToTrackBits(ChooseTrainTrack(v, gp.new_tile, enterdir, bits));
-					assert(chosen_track & bits);
+					chosen_track = TrackToTrackBits(ChooseTrainTrack(v, gp.new_tile, enterdir, bits, false, NULL, true));
+					assert(chosen_track & (bits | GetReservedTrackbits(gp.new_tile)));
 
 					/* Check if it's a red signal and that force proceed is not clicked. */
 					if (red_signals & chosen_track && v->u.rail.force_proceed == 0) {

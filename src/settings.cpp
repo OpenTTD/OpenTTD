@@ -1690,6 +1690,10 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(GameSettings, pf.wait_twoway_signal,                SLE_UINT8,                     0, 0,    41,     2,     100, 0, STR_NULL,                                  NULL),
 	SDT_CONDLISTO(GameSettings, economy.town_noise_population, 3,   SLE_UINT16, 96, SL_MAX_VERSION, 0,D0, "800,2000,4000",          STR_NULL,                                  NULL, CheckNoiseToleranceLevel),
 
+	 SDT_CONDVAR(GameSettings, pf.wait_for_pbs_path,                 SLE_UINT8,100, SL_MAX_VERSION, 0, 0,    30,     2,     255, 0, STR_NULL,                                  NULL),
+	SDT_CONDBOOL(GameSettings, pf.reserve_paths,                               100, SL_MAX_VERSION, 0, 0, false,                    STR_NULL,                                  NULL),
+	 SDT_CONDVAR(GameSettings, pf.path_backoff_interval,             SLE_UINT8,100, SL_MAX_VERSION, 0, 0,    20,     1,     255, 0, STR_NULL,                                  NULL),
+
 	     SDT_VAR(GameSettings, pf.opf.pf_maxlength,                          SLE_UINT16,                     0, 0,  4096,                    64,   65535, 0, STR_NULL,         NULL),
 	     SDT_VAR(GameSettings, pf.opf.pf_maxdepth,                            SLE_UINT8,                     0, 0,    48,                     4,     255, 0, STR_NULL,         NULL),
 

@@ -244,6 +244,10 @@ struct PathfinderSettings {
 	byte   wait_oneway_signal;               ///< waitingtime in days before a oneway signal
 	byte   wait_twoway_signal;               ///< waitingtime in days before a twoway signal
 
+	bool   reserve_paths;                    ///< always reserve paths regardless of signal type.
+	byte   wait_for_pbs_path;                ///< how long to wait for a path reservation.
+	byte   path_backoff_interval;            ///< ticks between checks for a free path.
+
 	OPFSettings  opf;                        ///< pathfinder settings for the old pathfinder
 	NPFSettings  npf;                        ///< pathfinder settings for the new pathfinder
 	YAPFSettings yapf;                       ///< pathfinder settings for the yet another pathfinder
