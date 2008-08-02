@@ -66,7 +66,7 @@ void SetRailwayStationPlatformReservation(TileIndex start, DiagDirection dir, bo
 
 	do {
 		SetRailwayStationReservation(tile, b);
-		if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(tile);
+		MarkTileDirtyByTile(tile);
 		tile = TILE_ADD(tile, diff);
 	} while (IsCompatibleTrainStationTile(tile, start));
 }
@@ -92,6 +92,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
 				if (!GetDepotWaypointReservation(tile)) {
 					SetDepotWaypointReservation(tile, true);
+					MarkTileDirtyByTile(tile);
 					return true;
 				}
 			}
@@ -107,6 +108,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 		case MP_STATION:
 			if (IsRailwayStation(tile) && !GetRailwayStationReservation(tile)) {
 				SetRailwayStationReservation(tile, true);
+				MarkTileDirtyByTile(tile);
 				return true;
 			}
 			break;
@@ -139,7 +141,10 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IsRailWaypoint(tile) || IsRailDepot(tile)) SetDepotWaypointReservation(tile, false);
+			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
+				SetDepotWaypointReservation(tile, false);
+				MarkTileDirtyByTile(tile);
+			}
 			if (IsPlainRailTile(tile)) UnreserveTrack(tile, t);
 			break;
 
@@ -148,7 +153,10 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			break;
 
 		case MP_STATION:
-			if (IsRailwayStation(tile)) SetRailwayStationReservation(tile, false);
+			if (IsRailwayStation(tile)) {
+				SetRailwayStationReservation(tile, false);
+				MarkTileDirtyByTile(tile);
+			}
 			break;
 
 		case MP_TUNNELBRIDGE:

@@ -26,6 +26,7 @@
 #include "animated_tile_func.h"
 #include "functions.h"
 #include "tunnelbridge_map.h"
+#include "rail_map.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -405,7 +406,12 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
-		case 0x44: return 2;         // PBS status
+		case 0x44:
+			if (IsTileType(tile, MP_RAILWAY) && IsRailWaypoint(tile)) {
+				return GetDepotWaypointReservation(tile) ? 7 : 4;
+			} else {
+				return GetRailwayStationReservation(tile) ? 7 : 4; // PBS status
+			}
 		case 0x45:
 			if (!HasBit(_svc.valid, 2)) { _svc.v45 = GetRailContinuationInfo(tile); SetBit(_svc.valid, 2); }
 			return _svc.v45;
