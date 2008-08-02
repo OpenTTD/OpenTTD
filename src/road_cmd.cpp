@@ -344,7 +344,10 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			if (flags & DC_EXEC) {
 				RoadTypes rts = GetRoadTypes(tile) & ComplementRoadTypes(RoadTypeToRoadTypes(rt));
 				if (rts == ROADTYPES_NONE) {
-					MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailType(tile));
+					TrackBits tracks = GetCrossingRailBits(tile);
+					bool reserved = GetCrossingReservation(tile);
+					MakeRailNormal(tile, GetTileOwner(tile), tracks, GetRailType(tile));
+					if (reserved) SetTrackReservation(tile, tracks);
 				} else {
 					SetRoadTypes(tile, rts);
 				}
@@ -562,7 +565,9 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (flags & DC_EXEC) {
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 				/* Always add road to the roadtypes (can't draw without it) */
+				bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(OtherAxis(roaddir)));
 				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
+				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
 				MarkTileDirtyByTile(tile);
 			}

@@ -249,7 +249,9 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 		const StationSpec* statspec;
 
+		bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(axis));
 		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
+		SetDepotWaypointReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
 		statspec = GetCustomStationSpec(STAT_CLASS_WAYP, p1);
@@ -319,7 +321,10 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		RedrawWaypointSign(wp);
 
 		if (justremove) {
-			MakeRailNormal(tile, GetTileOwner(tile), GetRailWaypointBits(tile), GetRailType(tile));
+			TrackBits tracks = GetRailWaypointBits(tile);
+			bool reserved = GetDepotWaypointReservation(tile);
+			MakeRailNormal(tile, GetTileOwner(tile), tracks, GetRailType(tile));
+			if (reserved) SetTrackReservation(tile, tracks);
 			MarkTileDirtyByTile(tile);
 		} else {
 			DoClearSquare(tile);
