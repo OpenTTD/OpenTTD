@@ -257,6 +257,39 @@ static inline void SetTrackReservation(TileIndex t, TrackBits b)
 }
 
 /**
+ * Try to reserve a specific track on a tile
+ * @pre IsPlainRailTile(t) && HasTrack(tile, t)
+ * @param tile the tile
+ * @param t the rack to reserve
+ * @return true if successful
+ */
+static inline bool TryReserveTrack(TileIndex tile, Track t)
+{
+	assert(HasTrack(tile, t));
+	TrackBits bits = TrackToTrackBits(t);
+	TrackBits res = GetTrackReservation(tile);
+	if ((res & bits) != TRACK_BIT_NONE) return false;  // already reserved
+	res |= bits;
+	if (TracksOverlap(res)) return false;  // crossing reservation present
+	SetTrackReservation(tile, res);
+	return true;
+}
+
+/**
+ * Lift the reservation of a specific track on a tile
+ * @pre IsPlainRailTile(t) && HasTrack(tile, t)
+ * @param tile the tile
+ * @param t the track to free
+ */
+static inline void UnreserveTrack(TileIndex tile, Track t)
+{
+	assert(HasTrack(tile, t));
+	TrackBits res = GetTrackReservation(tile);
+	res &= ~TrackToTrackBits(t);
+	SetTrackReservation(tile, res);
+}
+
+/**
  * Get the reservation state of the waypoint or depot
  * @note Works for both waypoints and rail depots
  * @pre IsRailWaypoint(t) || IsRailDepot(t)
