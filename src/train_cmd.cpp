@@ -3654,6 +3654,13 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 								if (VehicleFromPos(o_tile, &exitdir, &CheckVehicleAtSignal) == NULL) return;
 							}
 						}
+
+						/* If we would reverse but are currently in a PBS block and
+						 * reversing of stuck trains is disabled, don't reverse. */
+						if (_settings_game.pf.wait_for_pbs_path == 255 && UpdateSignalsOnSegment(v->tile, enterdir, v->owner) == SIGSEG_PBS) {
+							v->load_unload_time_rem = 0;
+							return;
+						}
 						goto reverse_train_direction;
 					}
 				} else {
