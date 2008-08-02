@@ -66,6 +66,17 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 /** Returns true if it is better to reverse the train before leaving station */
 bool YapfCheckReverseTrain(const Vehicle* v);
 
+/**
+ * Try to extend the reserved path of a train to the nearest safe tile.
+ *
+ * @param v    The train that needs to find a safe tile.
+ * @param tile Last tile of the current reserved path.
+ * @param td   Last trackdir of the current reserved path.
+ * @param override_railtype Should all physically compabtible railtypes be searched, even if the vehicle can't on them on it own?
+ * @return True if the path could be extended to a safe tile.
+ */
+bool YapfRailFindNearestSafeTile(const Vehicle *v, TileIndex tile, Trackdir td, bool override_railtype);
+
 /** Use this function to notify YAPF that track layout (or signal configuration) has change */
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track);
 

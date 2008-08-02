@@ -204,6 +204,88 @@ public:
 };
 
 template <class Types>
+class CYapfFollowAnySafeTileRailT : protected CYapfReserveTrack<Types>
+{
+public:
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
+	typedef typename Types::TrackFollower TrackFollower;
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
+
+protected:
+	/// to access inherited path finder
+	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+
+public:
+	/** Called by YAPF to move from the given node to the next tile. For each
+	 *  reachable trackdir on the new tile creates new node, initializes it
+	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
+	inline void PfFollowNode(Node& old_node)
+	{
+		TrackFollower F(Yapf().GetVehicle(), Yapf().GetCompatibleRailTypes());
+		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()))
+			Yapf().AddMultipleNodes(&old_node, F);
+	}
+
+	/** Return debug report character to identify the transportation type */
+	FORCEINLINE char TransportTypeChar() const {return 't';}
+
+	static bool stFindNearestSafeTile(const Vehicle *v, TileIndex t1, Trackdir td, bool override_railtype)
+	{
+		/* Create pathfinder instance */
+		Tpf pf1;
+#if !DEBUG_YAPF_CACHE
+		bool result1 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, false);
+
+#else
+		bool result2 = pf1.FindNearestSafeTile(v, t1, td, override_railtype, true);
+		Tpf pf2;
+		pf2.DisableCache(true);
+		bool result1 = pf2.FindNearestSafeTile(v, t1, td, override_railtype, false);
+		if (result1 != result2) {
+			DEBUG(yapf, 0, "CACHE ERROR: FindSafeTile() = [%s, %s]", result2 ? "T" : "F", result1 ? "T" : "F");
+			DumpTarget dmp1, dmp2;
+			pf1.DumpBase(dmp1);
+			pf2.DumpBase(dmp2);
+			FILE *f1 = fopen("C:\\yapf1.txt", "wt");
+			FILE *f2 = fopen("C:\\yapf2.txt", "wt");
+			fwrite(dmp1.m_out.Data(), 1, dmp1.m_out.Size(), f1);
+			fwrite(dmp2.m_out.Data(), 1, dmp2.m_out.Size(), f2);
+			fclose(f1);
+			fclose(f2);
+		}
+#endif
+
+		return result1;
+	}
+
+	bool FindNearestSafeTile(const Vehicle *v, TileIndex t1, Trackdir td, bool override_railtype, bool dont_reserve)
+	{
+		/* Set origin and destination. */
+		Yapf().SetOrigin(t1, td);
+		Yapf().SetDestination(v, override_railtype);
+
+		bool bFound = Yapf().FindPath(v);
+		if (!bFound) return false;
+
+		/* Found a destination, set as reservation target. */
+		Node *pNode = Yapf().GetBestNode();
+		this->SetReservationTarget(pNode, pNode->GetLastTile(), pNode->GetLastTrackdir());
+
+		/* Walk through the path back to the origin. */
+		Node* pPrev = NULL;
+		while (pNode->m_parent != NULL) {
+			pPrev = pNode;
+			pNode = pNode->m_parent;
+
+			this->FindSafePositionOnNode(pPrev);
+		}
+
+		return dont_reserve || this->TryReservePath(NULL);
+	}
+};
+
+template <class Types>
 class CYapfFollowRailT : protected CYapfReserveTrack<Types>
 {
 public:
@@ -366,6 +448,9 @@ struct CYapfRail2         : CYapfT<CYapfRail_TypesT<CYapfRail2        , CFollowT
 struct CYapfAnyDepotRail1 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail1, CFollowTrackRail    , CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
 struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
 
+struct CYapfAnySafeTileRail1 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail1, CFollowTrackFreeRail    , CRailNodeListTrackDir, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT> > {};
+struct CYapfAnySafeTileRail2 : CYapfT<CYapfRail_TypesT<CYapfAnySafeTileRail2, CFollowTrackFreeRailNo90, CRailNodeListTrackDir, CYapfDestinationAnySafeTileRailT , CYapfFollowAnySafeTileRailT> > {};
+
 
 Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool reserve_track, PBSTileInfo *target)
 {
@@ -464,6 +549,19 @@ bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reve
 
 	bool ret = pfnFindNearestDepotTwoWay(v, origin.tile, origin.trackdir, last_tile, td_rev, max_distance, reverse_penalty, depot_tile, reversed);
 	return ret;
+}
+
+bool YapfRailFindNearestSafeTile(const Vehicle *v, TileIndex tile, Trackdir td, bool override_railtype)
+{
+	typedef bool (*PfnFindNearestSafeTile)(const Vehicle*, TileIndex, Trackdir, bool);
+	PfnFindNearestSafeTile pfnFindNearestSafeTile = CYapfAnySafeTileRail1::stFindNearestSafeTile;
+
+	/* check if non-default YAPF type needed */
+	if (_settings_game.pf.forbid_90_deg) {
+		pfnFindNearestSafeTile = &CYapfAnySafeTileRail2::stFindNearestSafeTile;
+	}
+
+	return pfnFindNearestSafeTile(v, tile, td, override_railtype);
 }
 
 /** if any track changes, this counter is incremented - that will invalidate segment cost cache */

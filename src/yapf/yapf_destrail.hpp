@@ -63,6 +63,41 @@ public:
 };
 
 template <class Types>
+class CYapfDestinationAnySafeTileRailT
+	: public CYapfDestinationRailBase
+{
+public:
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
+	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
+	typedef typename Node::Key Key;               ///< key to hash tables
+
+	/// to access inherited path finder
+	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
+
+	/// Called by YAPF to detect if node ends in the desired destination
+	FORCEINLINE bool PfDetectDestination(Node& n)
+	{
+		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
+	}
+
+	/// Called by YAPF to detect if node ends in the desired destination
+	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
+	{
+		return
+			IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, Types::TrackFollower::Allow90degTurns()) &&
+			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, Types::TrackFollower::Allow90degTurns());
+	}
+
+	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate. */
+	FORCEINLINE bool PfCalcEstimate(Node& n)
+	{
+		n.m_estimate = n.m_cost;
+		return true;
+	}
+};
+
+template <class Types>
 class CYapfDestinationTileOrStationRailT
 	: public CYapfDestinationRailBase
 {

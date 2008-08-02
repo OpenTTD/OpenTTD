@@ -387,6 +387,11 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 			} else if (cur.tile_type == MP_RAILWAY && IsRailWaypoint(cur.tile)) {
 				/* Waypoint is also a good reason to finish. */
 				end_segment_reason |= ESRB_WAYPOINT;
+			} else if (TrackFollower::MaskReservedTracks() && cur.tile_type == MP_RAILWAY) {
+				/* Searching for a safe tile? */
+				if (HasSignalOnTrackdir(cur.tile, cur.td) && !IsPbsSignal(GetSignalType(cur.tile, TrackdirToTrack(cur.td)))) {
+					end_segment_reason |= ESRB_SAFE_TILE;
+				}
 			}
 
 			/* Apply min/max speed penalties only when inside the look-ahead radius. Otherwise
@@ -419,6 +424,10 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 				} else {
 					end_segment_reason |= ESRB_DEAD_END;
 				}
+
+				if (TrackFollower::MaskReservedTracks() && tf_local.m_err != TrackFollower::EC_90DEG) {
+					end_segment_reason |= ESRB_SAFE_TILE;
+				}
 				break;
 			}
 
@@ -431,6 +440,11 @@ no_entry_cost: // jump here at the beginning if the node has no parent (it is th
 
 			/* Gather the next tile/trackdir/tile_type/rail_type. */
 			TILE next(tf_local.m_new_tile, (Trackdir)FindFirstBit2x64(tf_local.m_new_td_bits));
+
+			if (TrackFollower::MaskReservedTracks() && HasPbsSignalOnTrackdir(next.tile, next.td)) {
+				/* Possible safe tile. */
+				end_segment_reason |= ESRB_SAFE_TILE;
+			}
 
 			/* Check the next tile for the rail type. */
 			if (next.rail_type != cur.rail_type) {

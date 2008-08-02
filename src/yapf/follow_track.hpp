@@ -10,8 +10,8 @@
 
 /** Track follower helper template class (can serve pathfinders and vehicle
  *  controllers). See 6 different typedefs below for 3 different transport
- *  types w/ of w/o 90-deg turns allowed */
-template <TransportType Ttr_type_, bool T90deg_turns_allowed_ = true>
+ *  types w/ or w/o 90-deg turns allowed */
+template <TransportType Ttr_type_, bool T90deg_turns_allowed_ = true, bool Tmask_reserved_tracks = false>
 struct CFollowTrackT
 {
 	enum ErrorCode {
@@ -20,6 +20,7 @@ struct CFollowTrackT
 		EC_RAIL_TYPE,
 		EC_90DEG,
 		EC_NO_WAY,
+		EC_RESERVED,
 	};
 
 	const Vehicle      *m_veh;           ///< moving vehicle
@@ -62,6 +63,7 @@ struct CFollowTrackT
 	FORCEINLINE bool IsTram() {return IsRoadTT() && HasBit(m_veh->u.road.compatible_roadtypes, ROADTYPE_TRAM);}
 	FORCEINLINE static bool IsRoadTT() {return TT() == TRANSPORT_ROAD;}
 	FORCEINLINE static bool Allow90degTurns() {return T90deg_turns_allowed_;}
+	FORCEINLINE static bool MaskReservedTracks() {return Tmask_reserved_tracks;}
 
 	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
 	FORCEINLINE DiagDirection GetSingleTramBit(TileIndex tile)
@@ -103,6 +105,21 @@ struct CFollowTrackT
 			m_new_td_bits &= (TrackdirBits)~(int)TrackdirCrossesTrackdirs(m_old_td);
 			if (m_new_td_bits == TRACKDIR_BIT_NONE) {
 				m_err = EC_90DEG;
+				return false;
+			}
+		}
+		if (MaskReservedTracks()) {
+			TrackBits reserved = GetReservedTrackbits(m_new_tile);
+			/* Mask already reserved trackdirs. */
+			m_new_td_bits &= ~TrackBitsToTrackdirBits(reserved);
+			/* Mask out all trackdirs that conflict with the reservation. */
+			uint bits = (uint)TrackdirBitsToTrackBits(m_new_td_bits);
+			int i;
+			FOR_EACH_SET_BIT(i, bits) {
+				if (TracksOverlap(reserved | TrackToTrackBits((Track)i))) m_new_td_bits &= ~TrackToTrackdirBits((Track)i);
+			}
+			if (m_new_td_bits == TRACKDIR_BIT_NONE) {
+				m_err = EC_RESERVED;
 				return false;
 			}
 		}
@@ -381,5 +398,8 @@ typedef CFollowTrackT<TRANSPORT_RAIL , true > CFollowTrackRail;
 typedef CFollowTrackT<TRANSPORT_WATER, false> CFollowTrackWaterNo90;
 typedef CFollowTrackT<TRANSPORT_ROAD , false> CFollowTrackRoadNo90;
 typedef CFollowTrackT<TRANSPORT_RAIL , false> CFollowTrackRailNo90;
+
+typedef CFollowTrackT<TRANSPORT_RAIL , true , true> CFollowTrackFreeRail;
+typedef CFollowTrackT<TRANSPORT_RAIL , false, true> CFollowTrackFreeRailNo90;
 
 #endif /* FOLLOW_TRACK_HPP */
