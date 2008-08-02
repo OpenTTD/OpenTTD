@@ -441,9 +441,48 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
 	}
 }
 
-/* To be called when current contains the (shortest route to) the target node.
+/**
+ * Find the node containing the first signal on the path.
+ *
+ * If the first signal is on the very first two tiles of the path,
+ * the second signal is returnd. If no suitable signal is present, the
+ * last node of the path is returned.
+ */
+static const PathNode* FindSafePosition(PathNode *path, const Vehicle *v)
+{
+	/* If there is no signal, reserve the whole path. */
+	PathNode *sig = path;
+
+	for(; path->parent != NULL; path = path->parent) {
+		if (IsSafeWaitingPosition(v, path->node.tile, (Trackdir)path->node.direction, true, _settings_game.pf.forbid_90_deg)) {
+			sig = path;
+		}
+	}
+
+	return sig;
+}
+
+/**
+ * Lift the reservation of the tiles from @p start till @p end, excluding @p end itself.
+ */
+static void ClearPathReservation(const PathNode *start, const PathNode *end)
+{
+	bool first_run = true;
+	for (; start != end; start = start->parent) {
+		if (IsRailwayStationTile(start->node.tile) && first_run) {
+			SetRailwayStationPlatformReservation(start->node.tile, TrackdirToExitdir((Trackdir)start->node.direction), false);
+		} else {
+			UnreserveRailTrack(start->node.tile, TrackdirToTrack((Trackdir)start->node.direction));
+		}
+		first_run = false;
+	}
+}
+
+/**
+ * To be called when @p current contains the (shortest route to) the target node.
  * Will fill the contents of the NPFFoundTargetData using
- * AyStarNode[NPF_TRACKDIR_CHOICE].
+ * AyStarNode[NPF_TRACKDIR_CHOICE]. If requested, path reservation
+ * is done here.
  */
 static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
 {
@@ -452,6 +491,40 @@ static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
 	ftd->best_path_dist = current->g;
 	ftd->best_bird_dist = 0;
 	ftd->node = current->path.node;
+	ftd->res_okay = false;
+
+	if (as->user_target != NULL && ((NPFFindStationOrTileData*)as->user_target)->reserve_path && as->user_data[NPF_TYPE] == TRANSPORT_RAIL) {
+		/* Path reservation is requested. */
+		const Vehicle  *v = ((NPFFindStationOrTileData*)as->user_target)->v;
+
+		const PathNode *target = FindSafePosition(&current->path, v);
+		ftd->node = target->node;
+
+		/* If the target is a station skip to platform end. */
+		if (IsRailwayStationTile(target->node.tile)) {
+			DiagDirection dir = TrackdirToExitdir((Trackdir)target->node.direction);
+			uint len = GetStationByTile(target->node.tile)->GetPlatformLength(target->node.tile, dir);
+			TileIndex end_tile = TILE_ADD(target->node.tile, (len - 1) * TileOffsByDiagDir(dir));
+
+			/* Update only end tile, trackdir of a station stays the same. */
+			ftd->node.tile = end_tile;
+			if (!IsWaitingPositionFree(v, end_tile, (Trackdir)target->node.direction, _settings_game.pf.forbid_90_deg)) return;
+			SetRailwayStationPlatformReservation(target->node.tile, dir, true);
+			SetRailwayStationReservation(target->node.tile, false);
+		} else {
+			if (!IsWaitingPositionFree(v, target->node.tile, (Trackdir)target->node.direction, _settings_game.pf.forbid_90_deg)) return;
+		}
+
+		for (const PathNode *cur = target; cur->parent != NULL; cur = cur->parent) {
+			if (!TryReserveRailTrack(cur->node.tile, TrackdirToTrack((Trackdir)cur->node.direction))) {
+				/* Reservation failed, undo. */
+				ClearPathReservation(target, cur);
+				return;
+			}
+		}
+
+		ftd->res_okay = true;
+	}
 }
 
 /**
@@ -782,7 +855,9 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, bool ignore_start
 	/* Initialize result */
 	result.best_bird_dist = (uint)-1;
 	result.best_path_dist = (uint)-1;
-	result.best_trackdir = INVALID_TRACKDIR;
+	result.best_trackdir  = INVALID_TRACKDIR;
+	result.node.tile      = INVALID_TILE;
+	result.res_okay       = false;
 	_npf_aystar.user_path = &result;
 
 	/* Initialize target */
@@ -868,7 +943,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	 */
 	Queue depots;
 	int r;
-	NPFFoundTargetData best_result = {(uint)-1, (uint)-1, INVALID_TRACKDIR, {INVALID_TILE, 0, {0, 0}}};
+	NPFFoundTargetData best_result = {(uint)-1, (uint)-1, INVALID_TRACKDIR, {INVALID_TILE, 0, {0, 0}}, false};
 	NPFFoundTargetData result;
 	NPFFindStationOrTileData target;
 	AyStarNode start;
@@ -973,7 +1048,7 @@ void InitializeNPF()
 	_npf_aystar.max_search_nodes = _settings_game.pf.npf.npf_max_search_nodes;
 }
 
-void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v)
+void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reserve_path)
 {
 	/* Ships don't really reach their stations, but the tile in front. So don't
 	 * save the station id for ships. For roadvehs we don't store it either,
@@ -989,4 +1064,6 @@ void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v)
 		fstd->dest_coords = v->dest_tile;
 		fstd->station_index = INVALID_STATION;
 	}
+	fstd->reserve_path = reserve_path;
+	fstd->v = v;
 }

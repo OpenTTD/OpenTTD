@@ -45,6 +45,8 @@ enum {
 struct NPFFindStationOrTileData {
 	TileIndex dest_coords;   ///< An indication of where the station is, for heuristic purposes, or the target tile
 	StationID station_index; ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
+	bool      reserve_path;  ///< Indicates whether the found path should be reserved
+	const Vehicle* v;        ///< The vehicle we are pathfinding for
 };
 
 /* Indices into AyStar.userdata[] */
@@ -67,6 +69,7 @@ enum NPFNodeFlag {
 	NPF_FLAG_REVERSE,           ///< Used to mark that this node was reached from the second start node, if applicable
 	NPF_FLAG_LAST_SIGNAL_RED,   ///< Used to mark that the last signal on this path was red
 	NPF_FLAG_IGNORE_START_TILE, ///< Used to mark that the start tile is invalid, and searching should start from the second tile on
+	NPF_FLAG_TARGET_RESERVED,   ///< Used to mark that the possible reservation target is already reserved
 };
 
 /* Meant to be stored in AyStar.userpath */
@@ -75,6 +78,7 @@ struct NPFFoundTargetData {
 	uint best_path_dist;    ///< The shortest path. Is (uint)-1 if no path is found
 	Trackdir best_trackdir; ///< The trackdir that leads to the shortest path/closest birds dist
 	AyStarNode node;        ///< The node within the target the search led us to
+	bool res_okay;          ///< True if a path reservation could be made
 };
 
 /* These functions below are _not_ re-entrant, in favor of speed! */
@@ -105,7 +109,7 @@ NPFFoundTargetData NPFRouteToDepotBreadthFirstTwoWay(TileIndex tile1, Trackdir t
  * of choices and accurate heuristics, such as water. */
 NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 
-void NPFFillWithOrderData(NPFFindStationOrTileData* fstd, Vehicle* v);
+void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reserve_path = false);
 
 
 /*
