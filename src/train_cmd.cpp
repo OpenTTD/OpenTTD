@@ -3834,6 +3834,20 @@ reverse_train_direction:
 	ReverseTrainDirection(v);
 }
 
+/** Collect trackbits of all crashed train vehicles on a tile
+ * @param v Vehicle passed from VehicleFromPos()
+ * @param data trackdirbits for the result
+ * @return NULL to not abort VehicleFromPos()
+ */
+static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
+{
+	TrackBits *trackbits = (TrackBits *)data;
+
+	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) *trackbits |= v->u.rail.track;
+
+	return NULL;
+}
+
 /**
  * Deletes/Clears the last wagon of a crashed train. It takes the engine of the
  * train, then goes to the last wagon and deletes that. Each call to this function
@@ -3870,19 +3884,30 @@ static void DeleteLastWagon(Vehicle *v)
 
 	MarkSingleVehicleDirty(v);
 
-	/* Clear a possible path reservation */
-	if ((IsFrontEngine(v) && !(v->u.rail.track & TRACK_BIT_DEPOT))
-			|| ((v->u.rail.track & ~TRACK_BIT_MASK) == TRACK_BIT_NONE && (v->tile != u->tile || (u->u.rail.track & ~TRACK_BIT_MASK) != TRACK_BIT_NONE))) {
-		if (HasReservedTracks(v->tile, v->u.rail.track)) UnreserveRailTrack(v->tile, TrackBitsToTrack(v->u.rail.track));
-	}
-
 	/* 'v' shouldn't be accessed after it has been deleted */
-	TrackBits track = v->u.rail.track;
+	TrackBits trackbits = v->u.rail.track;
+	Track track = TrackBitsToTrack(trackbits);
 	TileIndex tile = v->tile;
 	Owner owner = v->owner;
 
 	delete v;
-	v = NULL; // make sure nobody will won't try to read 'v' anymore
+	v = NULL; // make sure nobody will try to read 'v' anymore
+
+	if (HasReservedTracks(tile, trackbits)) {
+		UnreserveRailTrack(tile, track);
+
+		/* If there are still crashed vehicles on the tile, give the track reservation to them */
+		TrackBits remaining_trackbits = TRACK_BIT_NONE;
+		VehicleFromPos(tile, &remaining_trackbits, CollectTrackbitsFromCrashedVehiclesEnum);
+
+		/* It is important that these two are the first in the loop, as reservation cannot deal with every trackbit combination */
+		assert(TRACK_BEGIN == TRACK_X && TRACK_Y == TRACK_BEGIN + 1);
+		for (Track t = TRACK_BEGIN; t < TRACK_END; t++) {
+			if (HasBit(remaining_trackbits, t)) {
+				TryReserveRailTrack(tile, t);
+			}
+		}
+	}
 
 	/* check if the wagon was on a road/rail-crossing */
 	if (IsLevelCrossingTile(tile)) UpdateLevelCrossing(tile);
@@ -3891,7 +3916,7 @@ static void DeleteLastWagon(Vehicle *v)
 	if (IsTileType(tile, MP_TUNNELBRIDGE) || IsRailDepotTile(tile)) {
 		UpdateSignalsOnSegment(tile, INVALID_DIAGDIR, owner);
 	} else {
-		SetSignalsOnBothDir(tile, (Track)(FIND_FIRST_BIT(track)), owner);
+		SetSignalsOnBothDir(tile, track, owner);
 	}
 }
 
