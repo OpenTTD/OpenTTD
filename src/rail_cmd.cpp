@@ -877,6 +877,15 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	}
 
 	if (flags & DC_EXEC) {
+		Vehicle *v = NULL;
+		/* The new/changed signal could block our path. As this can lead to
+		 * stale reservations, we clear the path reservation here and try
+		 * to redo it later on. */
+		if (HasReservedTracks(tile, TrackToTrackBits(track))) {
+			v = GetTrainForReservation(tile, track);
+			if (v != NULL) FreeTrainTrackReservation(v);
+		}
+
 		if (!HasSignals(tile)) {
 			/* there are no signals at all on this tile yet */
 			SetHasSignals(tile, true);
@@ -938,6 +947,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 		MarkTileDirtyByTile(tile);
 		AddTrackToSignalBuffer(tile, track, _current_player);
 		YapfNotifyTrackLayoutChange(tile, track);
+		if (v != NULL) TryPathReserve(v, true);
 	}
 
 	return cost;
@@ -1166,6 +1176,10 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
+		Vehicle *v = NULL;
+		if (HasReservedTracks(tile, TrackToTrackBits(track))) {
+			v = GetTrainForReservation(tile, track);
+		}
 		SetPresentSignals(tile, GetPresentSignals(tile) & ~SignalOnTrack(track));
 
 		/* removed last signal from tile? */
@@ -1177,6 +1191,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 		AddTrackToSignalBuffer(tile, track, GetTileOwner(tile));
 		YapfNotifyTrackLayoutChange(tile, track);
+		if (v != NULL) TryPathReserve(v, false);
 
 		MarkTileDirtyByTile(tile);
 	}
