@@ -1404,7 +1404,7 @@ struct ToolbarMenuWindow : Window {
 /* Dynamic widget length determined by toolbar-string length.
  * See PopupMainToolbMenu en MenuWndProc */
 static const Widget _menu_widgets[] = {
-{    WWT_PANEL, RESIZE_NONE, 14, 0,  0, 0, 0, 0x0, STR_NULL},
+{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 0,  0, 0, 0, 0x0, STR_NULL},
 { WIDGETS_END},
 };
 
@@ -1626,7 +1626,7 @@ struct ToolbarPlayerMenuWindow : Window {
 };
 
 static const Widget _player_menu_widgets[] = {
-{    WWT_PANEL, RESIZE_NONE, 14, 0, 240, 0, 81, 0x0, STR_NULL},
+{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 0, 240, 0, 81, 0x0, STR_NULL},
 { WIDGETS_END},
 };
 
