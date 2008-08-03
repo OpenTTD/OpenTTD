@@ -590,17 +590,22 @@ void ResizeButtons(Window *w, byte left, byte right)
 }
 
 /** Resize a widget and shuffle other widgets around to fit. */
-void ResizeWindowForWidget(Window *w, int widget, int delta_x, int delta_y)
+void ResizeWindowForWidget(Window *w, uint widget, int delta_x, int delta_y)
 {
 	int right  = w->widget[widget].right;
 	int bottom = w->widget[widget].bottom;
 
 	for (uint i = 0; i < w->widget_count; i++) {
-		if (w->widget[i].left >= right) w->widget[i].left += delta_x;
+		if (w->widget[i].left >= right && i != widget) w->widget[i].left += delta_x;
 		if (w->widget[i].right >= right) w->widget[i].right += delta_x;
-		if (w->widget[i].top >= bottom) w->widget[i].top += delta_y;
+		if (w->widget[i].top >= bottom && i != widget) w->widget[i].top += delta_y;
 		if (w->widget[i].bottom >= bottom) w->widget[i].bottom += delta_y;
 	}
+
+	/* A hidden widget has bottom == top or right == left, we need to make it
+	 * one less to fit in its new gap. */
+	if (right  == w->widget[widget].left) w->widget[widget].right--;
+	if (bottom == w->widget[widget].top)  w->widget[widget].bottom--;
 
 	w->width  += delta_x;
 	w->height += delta_y;
