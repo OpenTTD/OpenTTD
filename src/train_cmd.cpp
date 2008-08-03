@@ -3027,7 +3027,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
  * @param v The vehicle
  * @return True if a path could be reserved
  */
-bool TryPathReserve(Vehicle *v, bool first_tile_okay, bool mark_as_stuck)
+bool TryPathReserve(Vehicle *v, bool mark_as_stuck, bool first_tile_okay)
 {
 	assert(v->type == VEH_TRAIN && IsFrontEngine(v));
 
