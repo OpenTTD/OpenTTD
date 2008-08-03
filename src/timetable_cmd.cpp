@@ -69,8 +69,8 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	bool packed_time = HasBit(p1, 25);
 	bool is_journey = HasBit(p1, 24) || packed_time;
 
-	uint16 wait_time   = 0;
-	uint16 travel_time = 0;
+	int wait_time   = -1;
+	int travel_time = -1;
 	if (packed_time) {
 		travel_time = GB(p2, 0, 16);
 		wait_time   = GB(p2, 16, 16);;
@@ -80,7 +80,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		wait_time   = GB(p2, 0, 16);
 	}
 
-	if (wait_time != 0) {
+	if (wait_time != -1) {
 		switch (order->GetType()) {
 			case OT_GOTO_STATION:
 				if (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) return_cmd_error(STR_TIMETABLE_NOT_STOPPING_HERE);
@@ -93,11 +93,11 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		}
 	}
 
-	if (travel_time != 0 && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
+	if (travel_time != -1 && order->IsType(OT_CONDITIONAL)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (wait_time   != 0) ChangeTimetable(v, order_number, wait_time,   false);
-		if (travel_time != 0) ChangeTimetable(v, order_number, travel_time, true);
+		if (wait_time   != -1) ChangeTimetable(v, order_number, wait_time,   false);
+		if (travel_time != -1) ChangeTimetable(v, order_number, travel_time, true);
 	}
 
 	return CommandCost();
