@@ -3437,11 +3437,6 @@ static void SetVehicleCrashed(Vehicle *v)
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			ClearPathReservation(u->tile, GetVehicleTrackdir(u));
 		}
-		/* Try to reserve all tiles directly under the train, but not the whole
-		 * railway station platform or both tunnel/bridge ends. */
-		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-			TryReserveRailTrack(u->tile, TrackdirToTrack(GetVehicleTrackdir(u)));
-		}
 	}
 
 	/* we may need to update crossing we were approaching */
@@ -3510,6 +3505,15 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 			/* two drivers + passengers killed in train coll (if it was not crashed already) */
 			tcc->num += 2 + CountPassengersInTrain(coll);
 			SetVehicleCrashed(coll);
+		}
+
+		/* Try to reserve all tiles directly under the crashed trains.
+		 * As there might be more than two trains involved, we have to do that for all vehicles */
+		const Vehicle *u;
+		FOR_ALL_VEHICLES(u) {
+			if (u->type == VEH_TRAIN && HASBITS(u->vehstatus, VS_CRASHED)) {
+				TryReserveRailTrack(u->tile, TrackBitsToTrack(u->u.rail.track));
+			}
 		}
 	}
 
