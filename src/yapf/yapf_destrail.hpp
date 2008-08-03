@@ -70,6 +70,7 @@ public:
 	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 	typedef typename Node::Key Key;               ///< key to hash tables
+	typedef typename Types::TrackFollower TrackFollower; ///< TrackFollower. Need to typedef for gcc 2.95
 
 	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
@@ -84,8 +85,8 @@ public:
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		return
-			IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, Types::TrackFollower::Allow90degTurns()) &&
-			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, Types::TrackFollower::Allow90degTurns());
+			IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, TrackFollower::Allow90degTurns()) &&
+			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, TrackFollower::Allow90degTurns());
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
