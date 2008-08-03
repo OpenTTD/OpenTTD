@@ -896,7 +896,8 @@ public:
 			}
 		}
 
-		if (!FillDrawPixelInfo(&new_dpi, 3, 17, this->width - 28 + 22, this->height - 64 - 11 - diff)) return;
+		const Widget *wi = &this->widget[SM_WIDGET_MAP];
+		if (!FillDrawPixelInfo(&new_dpi, wi->left + 1, wi->top + 1, wi->right - wi->left - 1, wi->bottom - wi->top - 1)) return;
 
 		this->DrawSmallMap(&new_dpi);
 	}
