@@ -57,8 +57,6 @@ static const Widget _smallmap_widgets[] = {
 
 /* number of used industries */
 static int _smallmap_industry_count;
-/* number of industries per column*/
-static uint _industries_per_column;
 
 /** Macro for ordinary entry of LegendAndColor */
 #define MK(a,b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
@@ -157,7 +155,6 @@ void BuildIndustriesLegend()
 {
 	const IndustrySpec *indsp;
 	uint j = 0;
-	uint free_slot, diff;
 
 	/* Add each name */
 	for (IndustryType i = 0; i < NUM_INDUSTRYTYPES; i++) {
@@ -180,18 +177,6 @@ void BuildIndustriesLegend()
 
 	/* Store number of enabled industries */
 	_smallmap_industry_count = j;
-
-	_industries_per_column = _smallmap_industry_count / 3;
-	free_slot = _smallmap_industry_count % 3;
-
-	/* recalculate column break for first two columns(i) */
-	diff = 0;
-	for (int i = 1; i <= 2; i++) {
-		if (free_slot > 0) diff = diff + 1;
-		_legend_from_industries[i * _industries_per_column + diff].col_break = true;
-		if (free_slot > 0) free_slot--;
-	}
-
 }
 
 static const LegendAndColour * const _legend_table[] = {
@@ -565,10 +550,6 @@ class SmallMapWindow : public Window
 		SMT_OWNER = 5,
 	};
 
-	enum {
-		BASE_NB_PER_COLUMN = 6,
-	};
-
 	static SmallMapType map_type;
 	static bool show_towns;
 
@@ -807,28 +788,17 @@ public:
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number)
 	{
 		/* Resize the window to fit industries list */
-		if (_industries_per_column > BASE_NB_PER_COLUMN) {
-			uint diff = ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1;
+		Widget *legend = &this->widget[SM_WIDGET_LEGEND];
+		int rows = (legend->bottom - legend->top) / 6;
+		int columns = 2;
 
-			this->height = this->height + diff;
-
-			Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
-			wi->bottom = wi->bottom + diff;
-
-			wi = &this->widget[SM_WIDGET_BUTTONSPANEL]; // filler panel under smallmap buttons
-			wi->bottom = wi->bottom + diff - 1;
-
-			/* Change widget position
-			 * - footer panel
-			 * - enable all industry
-			 * - disable all industry
-			 * - resize window button
-			 */
-			for (uint i = SM_WIDGET_BOTTOMPANEL; i <= SM_WIDGET_RESIZEBOX; i++) {
-				wi           = &this->widget[i];
-				wi->top      = wi->top + diff;
-				wi->bottom   = wi->bottom + diff;
-			}
+		if ((_smallmap_industry_count + columns - 1) / columns > rows) {
+			int delta = ((_smallmap_industry_count + columns - 1) / columns - rows) * 6;
+			/* Resize the filler widget, and move widgets below it. */
+			ResizeWindowForWidget(this, SM_WIDGET_BUTTONSPANEL, 0, delta);
+			/* The legend widget needs manual adjustment as it lays outside
+			 * the filler widget's bounds. */
+			legend->bottom += delta;
 		}
 
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
@@ -840,8 +810,6 @@ public:
 
 	virtual void OnPaint()
 	{
-		int x, y, y_org;
-		uint diff;
 		DrawPixelInfo new_dpi;
 
 		/* Hide Enable all/Disable all buttons if is not industry type small map*/
@@ -852,15 +820,14 @@ public:
 		SetDParam(0, STR_00E5_CONTOURS + this->map_type);
 		this->DrawWidgets();
 
-		/* difference in window size */
-		diff = (_industries_per_column > BASE_NB_PER_COLUMN) ? ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1 : 0;
+		const Widget *legend = &this->widget[SM_WIDGET_LEGEND];
 
-		x = 4;
-		y_org = this->height - 44 - 11 - diff;
-		y = y_org;
+		int y_org = legend->top + 1;
+		int x = 4;
+		int y = y_org;
 
 		for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
-			if (tbl->col_break) {
+			if (tbl->col_break || y >= legend->bottom) {
 				/* Column break needed, continue at top, 123 pixels (one "row")
 				 * to the right. */
 				x += 123;
@@ -955,24 +922,14 @@ public:
 					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
 					uint column = (pt.x - 4) / 123;
 					uint line = (pt.y - wi->top - 2) / 6;
-					uint free = _smallmap_industry_count % 3;
+					int rows_per_column = (wi->bottom - wi->top) / 6;
 
-					if (column <= 3) {
-						/* check if click is on industry label*/
-						uint industry_pos = 0;
-						for (uint i = 0; i <= column; i++) {
-							uint diff = (free > 0) ? 1 : 0;
-							uint max_column_lines = _industries_per_column + diff;
-
-							if (i < column) industry_pos = industry_pos + _industries_per_column + diff;
-
-							if (i == column && line <= max_column_lines - 1) {
-								industry_pos = industry_pos + line;
-								_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
-							}
-							if( free > 0) free--;
-						}
+					/* check if click is on industry label*/
+					int industry_pos = (column * rows_per_column) + line;
+					if (industry_pos < _smallmap_industry_count) {
+						_legend_from_industries[industry_pos].show_on_map = !_legend_from_industries[industry_pos].show_on_map;
 					}
+
 					/* Raise the two buttons "all", as we have done a specific choice */
 					this->RaiseWidget(SM_WIDGET_ENABLEINDUSTRIES);
 					this->RaiseWidget(SM_WIDGET_DISABLEINDUSTRIES);
