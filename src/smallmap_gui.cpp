@@ -840,7 +840,6 @@ public:
 
 	virtual void OnPaint()
 	{
-		const LegendAndColour *tbl;
 		int x, y, y_org;
 		uint diff;
 		DrawPixelInfo new_dpi;
@@ -853,8 +852,6 @@ public:
 		SetDParam(0, STR_00E5_CONTOURS + this->map_type);
 		this->DrawWidgets();
 
-		tbl = _legend_table[this->map_type];
-
 		/* difference in window size */
 		diff = (_industries_per_column > BASE_NB_PER_COLUMN) ? ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1 : 0;
 
@@ -862,7 +859,14 @@ public:
 		y_org = this->height - 44 - 11 - diff;
 		y = y_org;
 
-		for (;;) {
+		for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
+			if (tbl->col_break) {
+				/* Column break needed, continue at top, 123 pixels (one "row")
+				 * to the right. */
+				x += 123;
+				y = y_org;
+			}
+
 			if (this->map_type == SMT_INDUSTRY) {
 				/* Industry name must be formated, since it's not in tiny font in the specs.
 				 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
@@ -884,16 +888,7 @@ public:
 			}
 			GfxFillRect(x + 1, y + 2, x + 7, y + 4, tbl->colour); // legend color
 
-			tbl += 1;
 			y += 6;
-
-			if (tbl->end) { // end of the list
-				break;
-			} else if (tbl->col_break) {
-				/*  break asked, continue at top, 123 pixels (one "row") to the right */
-				x += 123;
-				y = y_org;
-			}
 		}
 
 		const Widget *wi = &this->widget[SM_WIDGET_MAP];
