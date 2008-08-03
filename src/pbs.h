@@ -27,7 +27,7 @@ struct PBSTileInfo {
 	PBSTileInfo(TileIndex _t, Trackdir _td, bool _okay) : tile(_t), trackdir(_td), okay(_okay) {}
 };
 
-PBSTileInfo FollowTrainReservation(const Vehicle *v);
+PBSTileInfo FollowTrainReservation(const Vehicle *v, Vehicle **train_on_res = NULL);
 bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool include_line_end, bool forbid_90deg = false);
 bool IsWaitingPositionFree(const Vehicle *v, TileIndex tile, Trackdir trackdir, bool forbid_90deg = false);
 

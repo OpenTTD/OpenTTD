@@ -204,13 +204,24 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 	return PBSTileInfo(tile, trackdir, false);
 }
 
+/** Callback for VehicleFromPos to find a train on a specific track. */
+static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
+{
+	PBSTileInfo info = *(PBSTileInfo *)data;
+
+	if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) && HasBit((TrackBits)v->u.rail.track, TrackdirToTrack(info.trackdir))) return v;
+
+	return NULL;
+}
+
 /**
  * Follow a train reservation to the last tile.
  *
  * @param v the vehicle
+ * @param train_on_res Is set to a train we might encounter
  * @returns The last tile of the reservation or the current train tile if no reservation present.
  */
-PBSTileInfo FollowTrainReservation(const Vehicle *v)
+PBSTileInfo FollowTrainReservation(const Vehicle *v, Vehicle **train_on_res)
 {
 	assert(v->type == VEH_TRAIN);
 
@@ -221,17 +232,8 @@ PBSTileInfo FollowTrainReservation(const Vehicle *v)
 
 	PBSTileInfo res = FollowReservation(v->owner, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes, tile, trackdir);
 	res.okay = IsSafeWaitingPosition(v, res.tile, res.trackdir, true, _settings_game.pf.forbid_90_deg);
+	if (train_on_res != NULL) *train_on_res = VehicleFromPos(res.tile, &res, FindTrainOnTrackEnum);
 	return res;
-}
-
-/** Callback for VehicleFromPos to find a train on a specific track. */
-static Vehicle *FindTrainOnTrackEnum(Vehicle *v, void *data)
-{
-	PBSTileInfo info = *(PBSTileInfo *)data;
-
-	if (v->type == VEH_TRAIN && !(v->vehstatus & VS_CRASHED) && HasBit((TrackBits)v->u.rail.track, TrackdirToTrack(info.trackdir))) return v;
-
-	return NULL;
 }
 
 /**

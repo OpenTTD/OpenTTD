@@ -3059,13 +3059,22 @@ bool TryPathReserve(Vehicle *v, bool mark_as_stuck, bool first_tile_okay)
 		}
 	}
 
-	PBSTileInfo origin = FollowTrainReservation(v);
+	Vehicle *other_train = NULL;
+	PBSTileInfo origin = FollowTrainReservation(v, &other_train);
 	/* If we have a reserved path and the path ends at a safe tile, we are finished already. */
 	if (origin.okay && (v->tile != origin.tile || first_tile_okay)) {
 		/* Can't be stuck then. */
 		if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
 		return true;
+	}
+	/* The path we are driving on is alread blocked by some other train.
+	 * This can only happen when tracks and signals are changed. A crash
+	 * is probably imminent, don't do any further reservation because
+	 * it might cause stale reservations. */
+	if (other_train != NULL && v->tile != origin.tile) {
+		if (mark_as_stuck) MarkTrainAsStuck(v);
+		return false;
 	}
 
 	/* If we are in a depot, tentativly reserve the depot. */
