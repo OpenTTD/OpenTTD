@@ -55,8 +55,6 @@ static const Widget _smallmap_widgets[] = {
 {  WIDGETS_END},
 };
 
-static int _smallmap_type;
-static bool _smallmap_show_towns = true;
 /* number of used industries */
 static int _smallmap_industry_count;
 /* number of industries per column*/
@@ -571,6 +569,9 @@ class SmallMapWindow : public Window
 		BASE_NB_PER_COLUMN = 6,
 	};
 
+	static SmallMapType map_type;
+	static bool show_towns;
+
 	int32 scroll_x;
 	int32 scroll_y;
 	int32 subscroll;
@@ -591,7 +592,7 @@ public:
 	 * @param type type of map requested (vegetation, owners, routes, etc)
 	 * @param show_towns true if the town names should be displayed, false if not.
 	 */
-	void DrawSmallMap(DrawPixelInfo *dpi, int type, bool show_towns)
+	void DrawSmallMap(DrawPixelInfo *dpi)
 	{
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		DrawPixelInfo *old_dpi;
@@ -608,7 +609,7 @@ public:
 		GfxFillRect(dpi->left, dpi->top, dpi->left + dpi->width - 1, dpi->top + dpi->height - 1, 0);
 
 		/* setup owner table */
-		if (type == SMT_OWNER) {
+		if (this->map_type == SMT_OWNER) {
 			const Player *p;
 
 			/* fill with some special colors */
@@ -673,7 +674,7 @@ public:
 			/* number of lines */
 			reps = (dpi->height - y + 1) / 2;
 			if (reps > 0) {
-				DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[type]);
+				DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[this->map_type]);
 			}
 
 	skip_column:
@@ -691,7 +692,7 @@ public:
 		}
 
 		/* draw vehicles? */
-		if (type == SMT_CONTOUR || type == SMT_VEHICLES) {
+		if (this->map_type == SMT_CONTOUR || this->map_type == SMT_VEHICLES) {
 			Vehicle *v;
 			bool skip;
 			byte color;
@@ -729,7 +730,7 @@ public:
 					}
 
 					/* Calculate pointer to pixel and the color */
-					color = (type == SMT_VEHICLES) ? _vehicle_type_colors[v->type] : 0xF;
+					color = (this->map_type == SMT_VEHICLES) ? _vehicle_type_colors[v->type] : 0xF;
 
 					/* And draw either one or two pixels depending on clipping */
 					blitter->SetPixel(dpi->dst_ptr, x, y, color);
@@ -738,7 +739,7 @@ public:
 			}
 		}
 
-		if (show_towns) {
+		if (this->show_towns) {
 			const Town *t;
 
 			FOR_ALL_TOWNS(t) {
@@ -830,8 +831,8 @@ public:
 			}
 		}
 
-		this->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
-		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, _smallmap_show_towns);
+		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
+		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 
 		this->SmallMapCenterOnCurrentPos();
 		this->FindWindowPlacementAndResize(desc);
@@ -845,14 +846,14 @@ public:
 		DrawPixelInfo new_dpi;
 
 		/* Hide Enable all/Disable all buttons if is not industry type small map*/
-		this->SetWidgetHiddenState(SM_WIDGET_ENABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
-		this->SetWidgetHiddenState(SM_WIDGET_DISABLEINDUSTRIES, _smallmap_type != SMT_INDUSTRY);
+		this->SetWidgetHiddenState(SM_WIDGET_ENABLEINDUSTRIES, this->map_type != SMT_INDUSTRY);
+		this->SetWidgetHiddenState(SM_WIDGET_DISABLEINDUSTRIES, this->map_type != SMT_INDUSTRY);
 
 		/* draw the window */
-		SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
+		SetDParam(0, STR_00E5_CONTOURS + this->map_type);
 		this->DrawWidgets();
 
-		tbl = _legend_table[_smallmap_type];
+		tbl = _legend_table[this->map_type];
 
 		/* difference in window size */
 		diff = (_industries_per_column > BASE_NB_PER_COLUMN) ? ((_industries_per_column - BASE_NB_PER_COLUMN) * BASE_NB_PER_COLUMN) + 1 : 0;
@@ -862,7 +863,7 @@ public:
 		y = y_org;
 
 		for (;;) {
-			if (_smallmap_type == SMT_INDUSTRY) {
+			if (this->map_type == SMT_INDUSTRY) {
 				/* Industry name must be formated, since it's not in tiny font in the specs.
 				 * So, draw with a parameter and use the STR_SMALLMAP_INDUSTRY string, which is tiny font.*/
 				SetDParam(0, tbl->legend);
@@ -897,7 +898,7 @@ public:
 
 		if (!FillDrawPixelInfo(&new_dpi, 3, 17, this->width - 28 + 22, this->height - 64 - 11 - diff)) return;
 
-		this->DrawSmallMap(&new_dpi, _smallmap_type, _smallmap_show_towns);
+		this->DrawSmallMap(&new_dpi);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -928,9 +929,9 @@ public:
 			case SM_WIDGET_ROUTES:     // Show transport routes
 			case SM_WIDGET_VEGETATION: // Show vegetation
 			case SM_WIDGET_OWNERS:     // Show land owners
-				this->RaiseWidget(_smallmap_type + SM_WIDGET_CONTOUR);
-				_smallmap_type = widget - SM_WIDGET_CONTOUR;
-				this->LowerWidget(_smallmap_type + SM_WIDGET_CONTOUR);
+				this->RaiseWidget(this->map_type + SM_WIDGET_CONTOUR);
+				this->map_type = (SmallMapType)(widget - SM_WIDGET_CONTOUR);
+				this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
 				this->SetDirty();
 				SndPlayFx(SND_15_BEEP);
@@ -944,8 +945,8 @@ public:
 				break;
 
 			case SM_WIDGET_TOGGLETOWNNAME: // Toggle town names
-				this->ToggleWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME);
-				_smallmap_show_towns = this->IsWidgetLowered(SM_WIDGET_TOGGLETOWNNAME);
+				this->show_towns = !this->show_towns;
+				this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 
 				this->SetDirty();
 				SndPlayFx(SND_15_BEEP);
@@ -953,7 +954,7 @@ public:
 
 			case SM_WIDGET_LEGEND: // Legend
 				/* if industry type small map*/
-				if (_smallmap_type == SMT_INDUSTRY) {
+				if (this->map_type == SMT_INDUSTRY) {
 					/* if click on industries label, find right industry type and enable/disable it */
 					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
 					uint column = (pt.x - 4) / 123;
@@ -1075,6 +1076,9 @@ public:
 		this->SetDirty();
 	}
 };
+
+SmallMapWindow::SmallMapType SmallMapWindow::map_type = SMT_CONTOUR;
+bool SmallMapWindow::show_towns = true;
 
 static const WindowDesc _smallmap_desc = {
 	WDP_AUTO, WDP_AUTO, 350, 214, 446, 314,
