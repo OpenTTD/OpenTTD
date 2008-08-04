@@ -1471,12 +1471,13 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 	ViewportAddLandscape();
 	ViewportAddVehicles(&_vd.dpi);
-	DrawTextEffects(&_vd.dpi);
 
 	ViewportAddTownNames(&_vd.dpi);
 	ViewportAddStationNames(&_vd.dpi);
 	ViewportAddSigns(&_vd.dpi);
 	ViewportAddWaypoints(&_vd.dpi);
+
+	DrawTextEffects(&_vd.dpi);
 
 	if (_vd.tile_sprites_to_draw.Length() != 0) ViewportDrawTileSprites(&_vd.tile_sprites_to_draw);
 
