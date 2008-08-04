@@ -16,6 +16,7 @@
 #include "network_gamelist.h"
 #include "network_udp.h"
 #include "network_internal.h"
+#include "core/host.h"
 #include "../variables.h"
 #include "../newgrf_config.h"
 #include "../core/endian_func.hpp"

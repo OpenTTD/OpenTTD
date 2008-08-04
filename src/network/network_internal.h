@@ -147,7 +147,6 @@ void NetworkGetClientName(char *clientname, size_t size, const NetworkTCPSocketH
 uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs);
 byte NetworkGetCurrentLanguageIndex();
 NetworkTCPSocketHandler *NetworkFindClientStateFromIndex(uint16 client_index);
-unsigned long NetworkResolveHost(const char *hostname);
 char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 

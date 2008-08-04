@@ -2449,6 +2449,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\core\host.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\host.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\os_abstraction.h"
 				>
 			</File>

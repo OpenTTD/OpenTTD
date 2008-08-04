@@ -566,6 +566,8 @@ network/core/config.h
 network/core/core.cpp
 network/core/core.h
 network/core/game.h
+network/core/host.cpp
+network/core/host.h
 network/core/os_abstraction.h
 network/core/packet.cpp
 network/core/packet.h
