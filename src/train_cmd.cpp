@@ -3436,6 +3436,11 @@ static void SetVehicleCrashed(Vehicle *v)
 		FreeTrainTrackReservation(v);
 		for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 			ClearPathReservation(u->tile, GetVehicleTrackdir(u));
+			if (IsTileType(u->tile, MP_TUNNELBRIDGE)) {
+				/* ClearPathReservation will not free the wormhole exit
+				 * if the train has just entered the wormhole. */
+				SetTunnelBridgeReservation(GetOtherTunnelBridgeEnd(u->tile), false);
+			}
 		}
 	}
 
@@ -3511,7 +3516,12 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 		 * As there might be more than two trains involved, we have to do that for all vehicles */
 		const Vehicle *u;
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_TRAIN && HASBITS(u->vehstatus, VS_CRASHED)) {
+			if (u->type == VEH_TRAIN && HASBITS(u->vehstatus, VS_CRASHED) && (u->u.rail.track & TRACK_BIT_DEPOT) == TRACK_BIT_NONE) {
+				TrackBits trackbits = u->u.rail.track;
+				if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+					/* Vehicle is inside a wormhole, v->u.rail.track contains no useful value then. */
+					trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
+				}
 				TryReserveRailTrack(u->tile, TrackBitsToTrack(u->u.rail.track));
 			}
 		}
@@ -3843,7 +3853,14 @@ static Vehicle *CollectTrackbitsFromCrashedVehiclesEnum(Vehicle *v, void *data)
 {
 	TrackBits *trackbits = (TrackBits *)data;
 
-	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) *trackbits |= v->u.rail.track;
+	if (v->type == VEH_TRAIN && (v->vehstatus & VS_CRASHED) != 0) {
+		if ((v->u.rail.track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+			/* Vehicle is inside a wormhole, v->u.rail.track contains no useful value then. */
+			*trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(v->tile));
+		} else {
+			*trackbits |= v->u.rail.track;
+		}
+	}
 
 	return NULL;
 }
@@ -3886,13 +3903,18 @@ static void DeleteLastWagon(Vehicle *v)
 
 	/* 'v' shouldn't be accessed after it has been deleted */
 	TrackBits trackbits = v->u.rail.track;
-	Track track = TrackBitsToTrack(trackbits);
 	TileIndex tile = v->tile;
 	Owner owner = v->owner;
 
 	delete v;
 	v = NULL; // make sure nobody will try to read 'v' anymore
 
+	if ((trackbits & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+		/* Vehicle is inside a wormhole, v->u.rail.track contains no useful value then. */
+		trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(tile));
+	}
+
+	Track track = TrackBitsToTrack(trackbits);
 	if (HasReservedTracks(tile, trackbits)) {
 		UnreserveRailTrack(tile, track);
 
