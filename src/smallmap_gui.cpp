@@ -38,6 +38,8 @@ static const Widget _smallmap_widgets[] = {
 { WWT_STICKYBOX,     RESIZE_LR,  COLOUR_BROWN,   338,   349,     0,    13, 0x0,                     STR_STICKY_BUTTON},
 {     WWT_PANEL,     RESIZE_RB,  COLOUR_BROWN,     0,   349,    14,   157, 0x0,                     STR_NULL},
 {     WWT_INSET,     RESIZE_RB,  COLOUR_BROWN,     2,   347,    16,   155, 0x0,                     STR_NULL},
+{     WWT_PANEL,    RESIZE_RTB,  COLOUR_BROWN,     0,   261,   158,   201, 0x0,                     STR_NULL},
+{     WWT_PANEL,   RESIZE_LRTB,  COLOUR_BROWN,   262,   349,   158,   158, 0x0,                     STR_NULL},
 {    WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_BROWN,   284,   305,   158,   179, SPR_IMG_SHOW_COUNTOURS,  STR_0191_SHOW_LAND_CONTOURS_ON_MAP},
 {    WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_BROWN,   306,   327,   158,   179, SPR_IMG_SHOW_VEHICLES,   STR_0192_SHOW_VEHICLES_ON_MAP},
 {    WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_BROWN,   328,   349,   158,   179, SPR_IMG_INDUSTRY,        STR_0193_SHOW_INDUSTRIES_ON_MAP},
@@ -46,8 +48,6 @@ static const Widget _smallmap_widgets[] = {
 {    WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_BROWN,   328,   349,   180,   201, SPR_IMG_COMPANY_GENERAL, STR_0196_SHOW_LAND_OWNERS_ON_MAP},
 {    WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_BROWN,   262,   283,   158,   179, SPR_IMG_SMALLMAP,        STR_SMALLMAP_CENTER},
 {    WWT_IMGBTN,   RESIZE_LRTB,  COLOUR_BROWN,   262,   283,   180,   201, SPR_IMG_TOWN,            STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
-{     WWT_PANEL,    RESIZE_RTB,  COLOUR_BROWN,     0,   261,   158,   201, 0x0,                     STR_NULL},
-{     WWT_PANEL,   RESIZE_LRTB,  COLOUR_BROWN,   262,   349,   202,   202, 0x0,                     STR_NULL},
 {     WWT_PANEL,    RESIZE_RTB,  COLOUR_BROWN,     0,   337,   202,   213, 0x0,                     STR_NULL},
 {   WWT_TEXTBTN,     RESIZE_TB,  COLOUR_BROWN,     0,    99,   202,   213, STR_MESSAGES_ENABLE_ALL, STR_NULL},
 {   WWT_TEXTBTN,     RESIZE_TB,  COLOUR_BROWN,   100,   201,   202,   213, STR_MESSAGES_DISABLE_ALL,STR_NULL},
@@ -524,7 +524,10 @@ static void DrawHorizMapIndicator(int x, int y, int x2, int y2)
 }
 
 enum SmallMapWindowWidgets {
-	SM_WIDGET_MAP = 4,
+	SM_WIDGET_MAP_BORDER = 3,
+	SM_WIDGET_MAP,
+	SM_WIDGET_LEGEND,
+	SM_WIDGET_BUTTONSPANEL,
 	SM_WIDGET_CONTOUR,
 	SM_WIDGET_VEHICLES,
 	SM_WIDGET_INDUSTRIES,
@@ -533,8 +536,6 @@ enum SmallMapWindowWidgets {
 	SM_WIDGET_OWNERS,
 	SM_WIDGET_CENTERMAP,
 	SM_WIDGET_TOGGLETOWNNAME,
-	SM_WIDGET_LEGEND,
-	SM_WIDGET_BUTTONSPANEL,
 	SM_WIDGET_BOTTOMPANEL,
 	SM_WIDGET_ENABLEINDUSTRIES,
 	SM_WIDGET_DISABLEINDUSTRIES,
@@ -557,6 +558,9 @@ class SmallMapWindow : public Window
 	int32 scroll_y;
 	int32 subscroll;
 	uint8 refresh;
+
+	static const int COLUMN_WIDTH = 119;
+	static const int MIN_LEGEND_HEIGHT = 6 * 7;
 
 public:
 	/**
@@ -785,22 +789,37 @@ public:
 		this->SetDirty();
 	}
 
+	void ResizeLegend()
+	{
+		Widget *legend = &this->widget[SM_WIDGET_LEGEND];
+		int rows = (legend->bottom - legend->top) - 1;
+		int columns = (legend->right - legend->left) / COLUMN_WIDTH;
+		int new_rows = (this->map_type == SMT_INDUSTRY) ? ((_smallmap_industry_count + columns - 1) / columns) * 6 : MIN_LEGEND_HEIGHT;
+
+		new_rows = max(new_rows, MIN_LEGEND_HEIGHT);
+
+		if (new_rows != rows) {
+			this->SetDirty();
+
+			/* The legend widget needs manual adjustment as by default
+			 * it lays outside the filler widget's bounds. */
+			legend->top--;
+			/* Resize the filler widget, and move widgets below it. */
+			ResizeWindowForWidget(this, SM_WIDGET_BUTTONSPANEL, 0, new_rows - rows);
+			legend->top++;
+
+			/* Resize map border widget so the window stays the same size */
+			ResizeWindowForWidget(this, SM_WIDGET_MAP_BORDER, 0, rows - new_rows);
+			/* Manually adjust the map widget as it lies completely within
+			 * the map border widget */
+			this->widget[SM_WIDGET_MAP].bottom += rows - new_rows;
+
+			this->SetDirty();
+		}
+	}
+
 	SmallMapWindow(const WindowDesc *desc, int window_number) : Window(desc, window_number)
 	{
-		/* Resize the window to fit industries list */
-		Widget *legend = &this->widget[SM_WIDGET_LEGEND];
-		int rows = (legend->bottom - legend->top) / 6;
-		int columns = 2;
-
-		if ((_smallmap_industry_count + columns - 1) / columns > rows) {
-			int delta = ((_smallmap_industry_count + columns - 1) / columns - rows) * 6;
-			/* Resize the filler widget, and move widgets below it. */
-			ResizeWindowForWidget(this, SM_WIDGET_BUTTONSPANEL, 0, delta);
-			/* The legend widget needs manual adjustment as it lays outside
-			 * the filler widget's bounds. */
-			legend->bottom += delta;
-		}
-
 		this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 		this->SetWidgetLoweredState(SM_WIDGET_TOGGLETOWNNAME, this->show_towns);
 
@@ -828,9 +847,9 @@ public:
 
 		for (const LegendAndColour *tbl = _legend_table[this->map_type]; !tbl->end; ++tbl) {
 			if (tbl->col_break || y >= legend->bottom) {
-				/* Column break needed, continue at top, 123 pixels (one "row")
-				 * to the right. */
-				x += 123;
+				/* Column break needed, continue at top, COLUMN_WIDTH pixels
+				 * (one "row") to the right. */
+				x += COLUMN_WIDTH;
 				y = y_org;
 			}
 
@@ -896,6 +915,8 @@ public:
 				this->map_type = (SmallMapType)(widget - SM_WIDGET_CONTOUR);
 				this->LowerWidget(this->map_type + SM_WIDGET_CONTOUR);
 
+				this->ResizeLegend();
+
 				this->SetDirty();
 				SndPlayFx(SND_15_BEEP);
 				break;
@@ -920,7 +941,7 @@ public:
 				if (this->map_type == SMT_INDUSTRY) {
 					/* if click on industries label, find right industry type and enable/disable it */
 					Widget *wi = &this->widget[SM_WIDGET_LEGEND]; // label panel
-					uint column = (pt.x - 4) / 123;
+					uint column = (pt.x - 4) / COLUMN_WIDTH;
 					uint line = (pt.y - wi->top - 2) / 6;
 					int rows_per_column = (wi->bottom - wi->top) / 6;
 
@@ -1027,6 +1048,11 @@ public:
 		this->subscroll = sub;
 
 		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		if (delta.x != 0 && this->map_type == SMT_INDUSTRY) this->ResizeLegend();
 	}
 };
 

@@ -607,6 +607,9 @@ void ResizeWindowForWidget(Window *w, uint widget, int delta_x, int delta_y)
 	if (right  == w->widget[widget].left) w->widget[widget].right--;
 	if (bottom == w->widget[widget].top)  w->widget[widget].bottom--;
 
+	if (w->widget[widget].left > w->widget[widget].right)  w->widget[widget].right  = w->widget[widget].left;
+	if (w->widget[widget].top  > w->widget[widget].bottom) w->widget[widget].bottom = w->widget[widget].top;
+
 	w->width  += delta_x;
 	w->height += delta_y;
 	w->resize.width  += delta_x;
