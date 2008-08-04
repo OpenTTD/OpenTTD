@@ -47,7 +47,7 @@ int _pal_count_dirty;
 Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
-byte _colour_gradient[16][8];
+byte _colour_gradient[COLOUR_END][8];
 bool _use_dos_palette;
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);

@@ -159,7 +159,7 @@ protected:
 		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
 		assert(this->num_vert_lines > 0);
 
-		byte grid_colour = _colour_gradient[14][4];
+		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
 
 		/* The coordinates of the opposite edges of the graph. */
 		int bottom = this->gd_top + this->gd_height - 1;
