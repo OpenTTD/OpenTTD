@@ -43,14 +43,14 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // BEOS
 
 	if (sock < 0) {
 		DEBUG(net, 0, "[core] error creating socket");
-		return;
+		return 0;
 	}
 
 	char *output_pointer = NULL;
 	int output_length = _netstat(sock, &output_pointer, 1);
 	if (output_length < 0) {
 		DEBUG(net, 0, "[core] error running _netstat");
-		return;
+		return 0;
 	}
 
 	int index;
@@ -155,7 +155,7 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // !GET
 	}
 
 	const char *buf_end = buf + ifconf.ifc_len;
-	int index;
+	int index = 0;
 	for (const char *p = buf; p < buf_end && index != 0;) {
 		const struct ifreq* req = (const struct ifreq*)p;
 
@@ -177,6 +177,8 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // !GET
 	}
 
 	closesocket(sock);
+	
+	return index;
 }
 #endif /* all NetworkFindBroadcastIPsInternals */
 
