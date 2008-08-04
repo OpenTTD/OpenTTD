@@ -230,21 +230,16 @@ static void DedicatedHandleKeyInput()
 	SetEvent(_hWaitForInputHandling);
 #endif
 
-	/* XXX - strtok() does not 'forget' \n\r if it is the first character! */
-	strtok(input_line, "\r\n"); // Forget about the final \n (or \r)
-	{ /* Remove any special control characters */
-		uint i;
-		for (i = 0; i < lengthof(input_line); i++) {
-			if (input_line[i] == '\n' || input_line[i] == '\r') // cut missed beginning '\0'
-				input_line[i] = '\0';
-
-			if (input_line[i] == '\0')
-				break;
-
-			if (!IsInsideMM(input_line[i], ' ', 256))
-				input_line[i] = ' ';
+	/* strtok() does not 'forget' \r\n if the string starts with it,
+	 * so we have to manually remove that! */
+	strtok(input_line, "\r\n");
+	for (char *c = input_line; *c != '\0'; c++) {
+		if (*c == '\n' || *c == '\r' || c == lastof(input_line)) {
+			*c = '\0';
+			break;
 		}
 	}
+	str_validate(input_line);
 
 	IConsoleCmdExec(input_line); // execute command
 }
