@@ -7,6 +7,7 @@
 #include "../../stdafx.h"
 #include "../../debug.h"
 #include "os_abstraction.h"
+#include "../../core/alloc_func.hpp"
 
 /**
  * Internal implementation for finding the broadcast IPs.
@@ -117,15 +118,15 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // Win3
 	if (sock == INVALID_SOCKET) return 0;
 
 	DWORD len = 0;
-	INTERFACE_INFO ifo[MAX_INTERFACES];
-	memset(&ifo[0], 0, sizeof(ifo));
-	if ((WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, &ifo[0], sizeof(ifo), &len, NULL, NULL)) != 0) {
+	INTERFACE_INFO *ifo = AllocaM(INTERFACE_INFO, limit);
+	memset(ifo, 0, limit * sizeof(*ifo));
+	if ((WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, &ifo[0], limit * sizeof(*ifo), &len, NULL, NULL)) != 0) {
 		closesocket(sock);
-		return;
+		return 0;
 	}
 
 	int index = 0;
-	for (int j = 0; j < len / sizeof(*ifo) && index != limit; j++) {
+	for (uint j = 0; j < len / sizeof(*ifo) && index != limit; j++) {
 		if (ifo[j].iiFlags & IFF_LOOPBACK) continue;
 		if (!(ifo[j].iiFlags & IFF_BROADCAST)) continue;
 
