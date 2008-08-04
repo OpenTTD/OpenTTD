@@ -2221,7 +2221,7 @@ static void DrawTile_Station(TileInfo *ti)
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationType(ti->tile)][GetStationGfx(ti->tile)];
 
 
-	if (IsBuoy(ti->tile) || IsDock(ti->tile) || IsOilRig(ti->tile)) {
+	if (IsBuoy(ti->tile) || IsDock(ti->tile) || (IsOilRig(ti->tile) && GetWaterClass(ti->tile) != WATER_CLASS_INVALID)) {
 		if (ti->tileh == SLOPE_FLAT) {
 			DrawWaterClassGround(ti);
 		} else {
