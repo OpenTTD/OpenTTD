@@ -3522,7 +3522,7 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
 					/* Vehicle is inside a wormhole, v->u.rail.track contains no useful value then. */
 					trackbits |= DiagDirToDiagTrackBits(GetTunnelBridgeDirection(u->tile));
 				}
-				TryReserveRailTrack(u->tile, TrackBitsToTrack(u->u.rail.track));
+				TryReserveRailTrack(u->tile, TrackBitsToTrack(trackbits));
 			}
 		}
 	}
