@@ -548,7 +548,9 @@ class SmallMapWindow : public Window
 		SMT_CONTOUR,
 		SMT_VEHICLES,
 		SMT_INDUSTRY,
-		SMT_OWNER = 5,
+		SMT_ROUTES,
+		SMT_VEGETATION,
+		SMT_OWNER,
 	};
 
 	static SmallMapType map_type;
