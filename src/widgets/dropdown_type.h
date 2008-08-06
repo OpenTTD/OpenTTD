@@ -19,9 +19,10 @@ public:
 
 	DropDownListItem(int result, bool masked) : result(result), masked(masked) {}
 	virtual ~DropDownListItem() {}
-	virtual StringID String() const;
-	virtual uint Height(uint width) const;
-	virtual void Draw(int x, int y, uint width, uint height, bool sel) const;
+
+	virtual bool Selectable() const { return false; }
+	virtual uint Height(uint width) const { return 10; }
+	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
 };
 
 /**
@@ -34,7 +35,9 @@ public:
 	DropDownListStringItem(StringID string, int result, bool masked) : DropDownListItem(result, masked), string(string) {}
 	virtual ~DropDownListStringItem() {}
 
-	StringID String() const;
+	virtual bool Selectable() const { return true; }
+	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
+	virtual StringID String() const { return this->string; }
 };
 
 /**
@@ -47,8 +50,8 @@ public:
 	DropDownListParamStringItem(StringID string, int result, bool masked) : DropDownListStringItem(string, result, masked) {}
 	virtual ~DropDownListParamStringItem() {}
 
-	StringID String() const;
-	void SetParam(uint index, uint64 value) { decode_params[index] = value; }
+	virtual StringID String() const;
+	virtual void SetParam(uint index, uint64 value) { decode_params[index] = value; }
 };
 
 /**

@@ -299,20 +299,25 @@ public:
 
 	virtual ~DropDownListColourItem() {}
 
-	virtual StringID String() const
+	StringID String() const
 	{
 		return _colour_dropdown[this->result];
 	}
 
-	virtual uint Height(uint width) const
+	uint Height(uint width) const
 	{
 		return 14;
 	}
+	
+	bool Selectable() const
+	{
+		return true;
+	}
 
-	virtual void Draw(int x, int y, uint width, uint height, bool sel) const
+	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 	{
 		DrawSprite(SPR_VEH_BUS_SIDE_VIEW, PALETTE_RECOLOR_START + this->result, x + 16, y + 7);
-		DrawStringTruncated(x + 32, y + 3, this->String(), sel ? TC_WHITE : TC_BLACK, x + width - 30);
+		DrawStringTruncated(x + 32, y + 3, this->String(), sel ? TC_WHITE : TC_BLACK, width - 30);
 	}
 };
 

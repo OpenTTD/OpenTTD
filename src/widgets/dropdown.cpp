@@ -17,30 +17,24 @@
 #include "../table/sprites.h"
 #include "table/strings.h"
 
-StringID DropDownListItem::String() const
+void DropDownListItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 {
-	return STR_NULL;
+	int c1 = _colour_gradient[bg_colour][3];
+	int c2 = _colour_gradient[bg_colour][7];
+
+	GfxFillRect(x + 1, y + 3, x + width - 2, y + 3, c1);
+	GfxFillRect(x + 1, y + 4, x + width - 2, y + 4, c2);
 }
 
-uint DropDownListItem::Height(uint width) const
+void DropDownListStringItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 {
-	return 10;
-}
-
-StringID DropDownListStringItem::String() const
-{
-	return this->string;
+	DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, width);
 }
 
 StringID DropDownListParamStringItem::String() const
 {
 	for (uint i = 0; i < lengthof(this->decode_params); i++) SetDParam(i, this->decode_params[i]);
 	return this->string;
-}
-
-void DropDownListItem::Draw(int x, int y, uint width, uint height, bool sel) const
-{
-	DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, x + width);
 }
 
 /**
@@ -106,7 +100,7 @@ struct DropdownWindow : Window {
 			int item_height = item->Height(width);
 
 			if (y < item_height) {
-				if (item->masked || item->String() == STR_NULL) return false;
+				if (item->masked || !item->Selectable()) return false;
 				value = item->result;
 				return true;
 			}
@@ -125,7 +119,7 @@ struct DropdownWindow : Window {
 		int y = 2;
 
 		int sel    = this->selected_index;
-		int width  = this->widget[0].right - 3;
+		int width  = this->widget[0].right - 2;
 		int height = this->widget[0].bottom;
 		int pos    = this->vscroll.pos;
 
@@ -139,22 +133,14 @@ struct DropdownWindow : Window {
 			if (--pos >= 0) continue;
 
 			if (y + item_height < height) {
-				if (item->String() != STR_NULL) {
-					if (sel == item->result) GfxFillRect(x + 1, y, x + width, y + item_height - 1, 0);
+				if (sel == item->result) GfxFillRect(x + 1, y, x + width - 1, y + item_height - 1, 0);
 
-					item->Draw(x, y, width, 10, sel == item->result);
+				item->Draw(x, y, width, height, sel == item->result, (TextColour)this->widget[0].color);
 
-					if (item->masked) {
-						GfxFillRect(x, y, x + width, y + item_height - 1,
-							_colour_gradient[this->widget[0].color][5], FILLRECT_CHECKER
-						);
-					}
-				} else {
-					int c1 = _colour_gradient[this->widget[0].color][3];
-					int c2 = _colour_gradient[this->widget[0].color][7];
-
-					GfxFillRect(x + 1, y + 3, x + this->width - 5, y + 3, c1);
-					GfxFillRect(x + 1, y + 4, x + this->width - 5, y + 4, c2);
+				if (item->masked) {
+					GfxFillRect(x, y, x + width - 1, y + item_height - 1,
+						_colour_gradient[this->widget[0].color][5], FILLRECT_CHECKER
+					);
 				}
 			}
 			y += item_height;
