@@ -294,8 +294,9 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 
 	/* check track/slope combination */
 	if ((f_new == FOUNDATION_INVALID) ||
-	    ((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes || _is_old_ai_player))
-	   ) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes || _is_old_ai_player))) {
+		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+	}
 
 	Foundation f_old = GetRailFoundation(tileh, existing);
 	return CommandCost(EXPENSES_CONSTRUCTION, f_new != f_old ? _price.terraform : (Money)0);
