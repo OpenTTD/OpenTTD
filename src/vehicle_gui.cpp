@@ -630,45 +630,34 @@ void InitializeGUI()
 	MemSetT(&_sorting, 0);
 }
 
-/** Assigns an already open vehicle window to a new vehicle.
- * Assigns an already open vehicle window to a new vehicle. If the vehicle got
- * any sub window open (orders and so on) it will change owner too.
- * @param from_index the current owner of the window
- * @param to_index the new owner of the window
+/**
+ * Assign a vehicle window a new vehicle
+ * @param window_class WindowClass to search for
+ * @param from_index the old vehicle ID
+ * @param to_index the new vehicle ID
+ */
+static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_index, VehicleID to_index)
+{
+	Window *w = FindWindowById(window_class, from_index);
+	if (w != NULL) {
+		w->window_number = to_index;
+		if (w->viewport != NULL) w->viewport->follow_vehicle = to_index;
+		w->SetDirty();
+	}
+}
+
+/**
+ * Report a change in vehicle IDs (due to autoreplace) to affected vehicle windows.
+ * @param from_index the old vehicle ID
+ * @param to_index the new vehicle ID
  */
 void ChangeVehicleViewWindow(VehicleID from_index, VehicleID to_index)
 {
-	Window *w = FindWindowById(WC_VEHICLE_VIEW, from_index);
-
-	if (w != NULL) {
-		w->window_number = to_index;
-		w->viewport->follow_vehicle = to_index;
-		w->SetDirty();
-
-		w = FindWindowById(WC_VEHICLE_ORDERS, from_index);
-		if (w != NULL) {
-			w->window_number = to_index;
-			w->SetDirty();
-		}
-
-		w = FindWindowById(WC_VEHICLE_REFIT, from_index);
-		if (w != NULL) {
-			w->window_number = to_index;
-			w->SetDirty();
-		}
-
-		w = FindWindowById(WC_VEHICLE_DETAILS, from_index);
-		if (w != NULL) {
-			w->window_number = to_index;
-			w->SetDirty();
-		}
-
-		w = FindWindowById(WC_VEHICLE_TIMETABLE, from_index);
-		if (w != NULL) {
-			w->window_number = to_index;
-			w->SetDirty();
-		}
-	}
+	ChangeVehicleWindow(WC_VEHICLE_VIEW,      from_index, to_index);
+	ChangeVehicleWindow(WC_VEHICLE_ORDERS,    from_index, to_index);
+	ChangeVehicleWindow(WC_VEHICLE_REFIT,     from_index, to_index);
+	ChangeVehicleWindow(WC_VEHICLE_DETAILS,   from_index, to_index);
+	ChangeVehicleWindow(WC_VEHICLE_TIMETABLE, from_index, to_index);
 }
 
 enum VehicleListWindowWidgets {
