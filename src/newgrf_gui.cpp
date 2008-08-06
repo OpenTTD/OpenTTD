@@ -269,13 +269,13 @@ public:
 	DropDownListPresetItem(int result) : DropDownListItem(result, false) {}
 
 	virtual ~DropDownListPresetItem() {}
-
-	virtual StringID String() const
+	
+	bool Selectable() const
 	{
-		return STR_EMPTY;
+		return true;
 	}
 
-	virtual void Draw(int x, int y, uint width, uint height, bool sel) const
+	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 	{
 		DoDrawStringTruncated(_grf_preset_list[this->result], x + 2, y, sel ? TC_WHITE : TC_BLACK, x + width);
 	}
