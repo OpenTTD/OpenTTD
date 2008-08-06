@@ -269,7 +269,7 @@ public:
 	DropDownListPresetItem(int result) : DropDownListItem(result, false) {}
 
 	virtual ~DropDownListPresetItem() {}
-	
+
 	bool Selectable() const
 	{
 		return true;
