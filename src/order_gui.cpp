@@ -619,6 +619,12 @@ public:
 		this->FindWindowPlacementAndResize(desc);
 	}
 
+	virtual void OnInvalidateData(int data = 0)
+	{
+		/* Autoreplace replaced the vehicle */
+		this->vehicle = GetVehicle(this->window_number);
+	}
+
 	virtual void OnPaint()
 	{
 		bool shared_orders = this->vehicle->IsOrderListShared();

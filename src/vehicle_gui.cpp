@@ -642,7 +642,7 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 	if (w != NULL) {
 		w->window_number = to_index;
 		if (w->viewport != NULL) w->viewport->follow_vehicle = to_index;
-		w->SetDirty();
+		if (to_index != INVALID_VEHICLE) InvalidateThisWindowData(w);
 	}
 }
 
