@@ -157,7 +157,7 @@ struct CheatWindow : Window {
 					char buf[512];
 
 					/* Draw [<][>] boxes for settings of an integer-type */
-					DrawArrowButtons(x + 20, y, 3, clicked - (i * 2), true, true);
+					DrawArrowButtons(x + 20, y, COLOUR_YELLOW, clicked - (i * 2), true, true);
 
 					switch (ce->str) {
 						/* Display date for change date cheat */

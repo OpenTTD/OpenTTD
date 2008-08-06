@@ -536,7 +536,7 @@ public:
 			DrawStringTruncated(x, y, STR_482B_TRANSPORTED, TC_FROMSTRING, this->widget[IVW_INFO].right - x);
 			/* Let's put out those buttons.. */
 			if (IsProductionAlterable(i)) {
-				DrawArrowButtons(5, y, 3, (this->clicked_line == j + 1) ? this->clicked_button : 0,
+				DrawArrowButtons(5, y, COLOUR_YELLOW, (this->clicked_line == j + 1) ? this->clicked_button : 0,
 						!IsProductionMinimum(i, j), !IsProductionMaximum(i, j));
 			}
 			y += 10;
