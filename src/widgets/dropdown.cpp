@@ -26,6 +26,13 @@ void DropDownListItem::Draw(int x, int y, uint width, uint height, bool sel, int
 	GfxFillRect(x + 1, y + 4, x + width - 2, y + 4, c2);
 }
 
+uint DropDownListStringItem::Width() const
+{
+	char buffer[512];
+	GetString(buffer, this->String(), lastof(buffer));
+	return GetStringBoundingBox(buffer).width;
+}
+
 void DropDownListStringItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 {
 	DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, width);
@@ -232,6 +239,19 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	/* The preferred position is just below the dropdown calling widget */
 	int top = w->top + wi->bottom + 1;
 
+	bool auto_width = (width == UINT_MAX);
+
+	if (auto_width) {
+		/* Find the longest item in the list */
+		width = 0;
+		for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
+			const DropDownListItem *item = *it;
+			width = max(width, item->Width() + 5);
+		}
+	} else if (width == 0) {
+		width = wi->right - wi->left + 1;
+	}
+
 	/* Total length of list */
 	int list_height = 0;
 
@@ -264,10 +284,11 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 			int rows = (screen_bottom - 4 - top) / avg_height;
 			height = rows * avg_height;
 			scroll = true;
+			/* Add space for the scroll bar if we automatically determined
+			 * the width of the list. */
+			if (auto_width) width += 12;
 		}
 	}
-
-	if (width == 0) width = wi->right - wi->left + 1;
 
 	DropdownWindow *dw = new DropdownWindow(
 		w->left + wi->left,

@@ -22,6 +22,7 @@ public:
 
 	virtual bool Selectable() const { return false; }
 	virtual uint Height(uint width) const { return 10; }
+	virtual uint Width() const { return 0; }
 	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
 };
 
@@ -36,6 +37,7 @@ public:
 	virtual ~DropDownListStringItem() {}
 
 	virtual bool Selectable() const { return true; }
+	virtual uint Width() const;
 	virtual void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const;
 	virtual StringID String() const { return this->string; }
 };
@@ -68,6 +70,8 @@ typedef std::list<DropDownListItem *> DropDownList;
  * @param button   The widget within the parent window that is used to determine
  *                 the list's location.
  * @param width    Override the width determined by the selected widget.
+ *                 If UINT_MAX then the width is determined by the widest item
+ *                 in the list.
  */
 void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width = 0);
 
