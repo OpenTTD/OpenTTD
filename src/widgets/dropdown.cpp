@@ -71,6 +71,7 @@ struct DropdownWindow : Window {
 	int selected_index;
 	byte click_delay;
 	bool drag_mode;
+	bool instant_close;
 	int scrolling;
 
 	DropdownWindow(int x, int y, int width, int height, const Widget *widget) : Window(x, y, width, height, WC_DROPDOWN_MENU, widget)
@@ -196,7 +197,17 @@ struct DropdownWindow : Window {
 
 			if (!_left_button_clicked) {
 				this->drag_mode = false;
-				if (!this->GetDropDownItem(item)) return;
+				if (!this->GetDropDownItem(item)) {
+					if (this->instant_close) {
+						if (GetWidgetFromPos(w2, _cursor.pos.x - w2->left, _cursor.pos.y - w2->top) == this->parent_button) {
+							/* Send event for selected option if we're still
+							 * on the parent button of the list. */
+							w2->OnDropdownSelect(this->parent_button, this->selected_index);
+						}
+						delete this;
+					}
+					return;
+				}
 				this->click_delay = 2;
 			} else {
 				if (_cursor.pos.y <= this->top + 2) {
@@ -218,7 +229,7 @@ struct DropdownWindow : Window {
 	}
 };
 
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width)
+void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool instant_close)
 {
 	bool is_dropdown_menu_shown = w->IsWidgetLowered(button);
 
@@ -327,6 +338,7 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	dw->selected_index   = selected;
 	dw->click_delay      = 0;
 	dw->drag_mode        = true;
+	dw->instant_close    = instant_close;
 }
 
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
