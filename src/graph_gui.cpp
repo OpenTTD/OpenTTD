@@ -114,7 +114,6 @@ struct BaseGraphWindow : Window {
 protected:
 	enum {
 		GRAPH_MAX_DATASETS = 32,
-		GRAPH_AXIS_LABEL_COLOUR = TC_BLACK,
 		GRAPH_AXIS_LINE_COLOUR  = 215,
 
 		GRAPH_X_POSITION_BEGINNING  = 44,  ///< Start the graph 44 pixels from gd_left
@@ -131,6 +130,7 @@ protected:
 	byte num_on_x_axis;
 	bool has_negative_values;
 	byte num_vert_lines;
+	static const TextColour graph_axis_label_colour = TC_BLACK; ///< colour of the graph axis label.
 
 	/* The starting month and year that values are plotted against. If month is
 	 * 0xFF, use x_values_start and x_values_increment below instead. */
@@ -244,7 +244,7 @@ protected:
 		for (int i = 0; i < GRAPH_NUM_LINES_Y; i++) {
 			SetDParam(0, this->format_str_y_axis);
 			SetDParam(1, y_label);
-			DrawStringRightAligned(x, y, STR_0170, GRAPH_AXIS_LABEL_COLOUR);
+			DrawStringRightAligned(x, y, STR_0170, graph_axis_label_colour);
 
 			y_label -= y_label_separation;
 			y += (this->gd_height / (GRAPH_NUM_LINES_Y - 1));
@@ -260,7 +260,7 @@ protected:
 				SetDParam(0, month + STR_0162_JAN);
 				SetDParam(1, month + STR_0162_JAN + 2);
 				SetDParam(2, year);
-				DrawString(x, y, month == 0 ? STR_016F : STR_016E, GRAPH_AXIS_LABEL_COLOUR);
+				DrawString(x, y, month == 0 ? STR_016F : STR_016E, graph_axis_label_colour);
 
 				month += 3;
 				if (month >= 12) {
@@ -277,7 +277,7 @@ protected:
 
 			for (int i = 0; i < this->num_on_x_axis; i++) {
 				SetDParam(0, label);
-				DrawStringCentered(x, y, STR_01CB, GRAPH_AXIS_LABEL_COLOUR);
+				DrawStringCentered(x, y, STR_01CB, graph_axis_label_colour);
 
 				label += this->x_values_increment;
 				x += GRAPH_X_POSITION_SEPARATION;
