@@ -1069,6 +1069,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 		semaphores = GetSignalVariant(tile, track) != SIG_ELECTRIC;
 
 		sigtype = GetSignalType(tile, track);
+		/* Don't but copy pre-signal type */
+		if (sigtype < SIGTYPE_PBS) sigtype = SIGTYPE_NORMAL;
 	} else { // no signals exist, drag a two-way signal stretch
 		signals = IsPbsSignal(sigtype) ? SignalAlongTrackdir(trackdir) : SignalOnTrack(track);
 	}
