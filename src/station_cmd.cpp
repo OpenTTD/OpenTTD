@@ -1027,6 +1027,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 			do {
 				byte layout = *layout_ptr++;
 				if (IsRailwayStationTile(tile) && GetRailwayStationReservation(tile)) {
+					/* Check for trains having a reservation for this tile. */
 					Vehicle *v = GetTrainForReservation(tile, AxisToTrack(GetRailStationAxis(tile)));
 					if (v != NULL) {
 						FreeTrainTrackReservation(v);
@@ -1062,9 +1063,10 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		} while (--numtracks);
 
 		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
+			/* Restore reservations of trains. */
 			Vehicle *v = affected_vehicles[i];
 			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), true);
-			TryPathReserve(v, true);
+			TryPathReserve(v, true, true);
 			for (; v->Next() != NULL; v = v->Next()) ;
 			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(GetVehicleTrackdir(v))), true);
 		}
@@ -1198,7 +1200,14 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 			if (GetRailwayStationReservation(tile2)) {
 				v = GetTrainForReservation(tile2, track);
-				if (v != NULL) FreeTrainTrackReservation(v);
+				if (v != NULL) {
+					/* Free train reservation. */
+					FreeTrainTrackReservation(v);
+					if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), false);
+					Vehicle *temp = v;
+					for (; temp->Next() != NULL; temp = temp->Next()) ;
+					if (IsRailwayStationTile(temp->tile)) SetRailwayStationPlatformReservation(temp->tile, TrackdirToExitdir(ReverseTrackdir(GetVehicleTrackdir(temp))), false);
+				}
 			}
 
 			DoClearSquare(tile2);
@@ -1215,7 +1224,13 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 			st->MarkTilesDirty(false);
 			UpdateStationSignCoord(st);
 
-			if (v != NULL) TryPathReserve(v, true);
+			if (v != NULL) {
+				/* Restore station reservation. */
+				if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), true);
+				TryPathReserve(v, true, true);
+				for (; v->Next() != NULL; v = v->Next()) ;
+				if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(GetVehicleTrackdir(v))), true);
+			}
 
 			/* if we deleted the whole station, delete the train facility. */
 			if (st->train_tile == 0) {
