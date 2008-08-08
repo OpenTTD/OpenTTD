@@ -159,7 +159,7 @@ public:
 		} else if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
 			int cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;
 			if (!IsDiagonalTrackdir(trackdir)) cost = (cost * YAPF_TILE_CORNER_LENGTH) / YAPF_TILE_LENGTH;
-			return cost;
+			return cost * (skipped + 1);
 		}
 		return 0;
 	}
