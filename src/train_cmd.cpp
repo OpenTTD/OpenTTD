@@ -1949,6 +1949,7 @@ static void ReverseTrainDirection(Vehicle *v)
 			HasSignalOnTrackdir(v->tile, GetVehicleTrackdir(v)) &&
 			!IsPbsSignal(GetSignalType(v->tile, FindFirstTrack(v->u.rail.track))));
 
+		if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), true);
 		if (TryPathReserve(v, true, first_tile_okay)) {
 			/* Do a look-ahead now in case our current tile was already a safe tile. */
 			CheckNextTrainTile(v);

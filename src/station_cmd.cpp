@@ -1031,6 +1031,9 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 					if (v != NULL) {
 						FreeTrainTrackReservation(v);
 						*affected_vehicles.Append() = v;
+						if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), false);
+						for (; v->Next() != NULL; v = v->Next()) ;
+						if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(GetVehicleTrackdir(v))), false);
 					}
 				}
 
@@ -1059,7 +1062,11 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		} while (--numtracks);
 
 		for (uint i = 0; i < affected_vehicles.Length(); ++i) {
-			TryPathReserve(affected_vehicles[i], true);
+			Vehicle *v = affected_vehicles[i];
+			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), true);
+			TryPathReserve(v, true);
+			for (; v->Next() != NULL; v = v->Next()) ;
+			if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(ReverseTrackdir(GetVehicleTrackdir(v))), true);
 		}
 
 		st->MarkTilesDirty(false);
