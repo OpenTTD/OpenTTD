@@ -177,7 +177,7 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // !GET
 	}
 
 	closesocket(sock);
-	
+
 	return index;
 }
 #endif /* all NetworkFindBroadcastIPsInternals */

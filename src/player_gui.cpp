@@ -308,7 +308,7 @@ public:
 	{
 		return 14;
 	}
-	
+
 	bool Selectable() const
 	{
 		return true;
