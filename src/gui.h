@@ -23,7 +23,7 @@ void InitializeGUI();
 void ShowGameOptions();
 void ShowGameDifficulty();
 void ShowPatchesSelection();
-void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right);
+void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right);
 
 /* graph_gui.cpp */
 void ShowOperatingProfitGraph();

@@ -461,7 +461,7 @@ public:
 			int32 value = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
 			bool editable = (_game_mode == GM_MENU || (sdb->flags & SGF_NEWGAME_ONLY) == 0);
 
-			DrawArrowButtons(5, y, 3,
+			DrawArrowButtons(5, y, COLOUR_YELLOW,
 					(this->clicked_button == i) ? 1 + !!this->clicked_increase : 0,
 					editable && sdb->min != value,
 					editable && sdb->max != value);
@@ -823,7 +823,7 @@ struct PatchesSelectionWindow : Window {
 				value = (int32)ReadValue(var, sd->save.conv);
 
 				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x, y, 3, this->click - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
+				DrawArrowButtons(x, y, COLOUR_YELLOW, this->click - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
 
 				disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 				if (disabled) {
@@ -1001,23 +1001,23 @@ void ShowPatchesSelection()
  * Draw [<][>] boxes.
  * @param x the x position to draw
  * @param y the y position to draw
- * @param ctab the color of the buttons
+ * @param button_colour the colour of the button
  * @param state 0 = none clicked, 1 = first clicked, 2 = second clicked
  * @param clickable_left is the left button clickable?
  * @param clickable_right is the right button clickable?
  */
-void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right)
+void DrawArrowButtons(int x, int y, Colours c, byte state, bool clickable_left, bool clickable_right)
 {
-	int color = _colour_gradient[COLOUR_YELLOW][2];
+	int colour = _colour_gradient[COLOUR_YELLOW][2];
 
-	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : FR_NONE);
-	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(x,      y + 1, x +  9, y + 9, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
+	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
 	DrawStringCentered(x +  5, y + 1, STR_6819, TC_FROMSTRING); // [<]
 	DrawStringCentered(x + 15, y + 1, STR_681A, TC_FROMSTRING); // [>]
 
 	/* Grey out the buttons that aren't clickable */
 	if (!clickable_left)
-		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, color, FILLRECT_CHECKER);
+		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, colour, FILLRECT_CHECKER);
 	if (!clickable_right)
 		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, color, FILLRECT_CHECKER);
 }
@@ -1052,7 +1052,7 @@ struct CustomCurrencyWindow : Window {
 		this->DrawWidgets();
 
 		/* exchange rate */
-		DrawArrowButtons(10, y, 3, GB(this->click, 0, 2), true, true);
+		DrawArrowButtons(10, y, COLOUR_YELLOW, GB(this->click, 0, 2), true, true);
 		SetDParam(0, 1);
 		SetDParam(1, 1);
 		DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, TC_FROMSTRING);
@@ -1077,7 +1077,7 @@ struct CustomCurrencyWindow : Window {
 		y += 12;
 
 		/* switch to euro */
-		DrawArrowButtons(10, y, 3, GB(this->click, 8, 2), true, true);
+		DrawArrowButtons(10, y, COLOUR_YELLOW, GB(this->click, 8, 2), true, true);
 		SetDParam(0, _custom_currency.to_euro);
 		DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, TC_FROMSTRING);
 		y += 12;
