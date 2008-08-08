@@ -1006,7 +1006,7 @@ void ShowPatchesSelection()
  * @param clickable_left is the left button clickable?
  * @param clickable_right is the right button clickable?
  */
-void DrawArrowButtons(int x, int y, Colours c, byte state, bool clickable_left, bool clickable_right)
+void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right)
 {
 	int colour = _colour_gradient[COLOUR_YELLOW][2];
 
@@ -1016,10 +1016,12 @@ void DrawArrowButtons(int x, int y, Colours c, byte state, bool clickable_left, 
 	DrawStringCentered(x + 15, y + 1, STR_681A, TC_FROMSTRING); // [>]
 
 	/* Grey out the buttons that aren't clickable */
-	if (!clickable_left)
+	if (!clickable_left) {
 		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, colour, FILLRECT_CHECKER);
-	if (!clickable_right)
-		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, color, FILLRECT_CHECKER);
+	}
+	if (!clickable_right) {
+		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, colour, FILLRECT_CHECKER);
+	}
 }
 
 /** These are not, strickly speaking, widget enums,
