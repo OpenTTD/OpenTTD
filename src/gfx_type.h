@@ -191,7 +191,7 @@ enum Colours {
 	COLOUR_GREY,
 	COLOUR_WHITE,
 	COLOUR_END,
-	INVALID_COLOUR = 0xFF
+	INVALID_COLOUR = 0xFF,
 };
 
 /** Colour of the strings, see _string_colormap in table/palettes.h or docs/ottd-colourtext-palette.png */
@@ -214,6 +214,13 @@ enum TextColour {
 	TC_GREY        = 0x0E,
 	TC_DARK_BLUE   = 0x0F,
 	TC_BLACK       = 0x10,
+};
+
+/** Defines a few values that are related to animations using palette changes */
+enum PaletteAnimationSizes {
+	PALETTE_ANIM_SIZE_WIN   = 28,   ///< number of animated colours in Windows palette
+	PALETTE_ANIM_SIZE_DOS   = 38,   ///< number of animated colours in DOS palette
+	PALETTE_ANIM_SIZE_START = 217,  ///< Index in  the _palettes array from which all animations are taking places (table/palettes.h)
 };
 
 enum StringColorFlags {

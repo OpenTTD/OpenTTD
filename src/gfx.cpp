@@ -997,8 +997,8 @@ void DoPaletteAnimations()
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
 	const ExtraPaletteValues *ev = &_extra_palette_values;
-	int c = _use_dos_palette ? 38 : 28;
-	Colour old_val[38];
+	int c = _use_dos_palette ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
+	Colour old_val[PALETTE_ANIM_SIZE_DOS];
 	uint i;
 	uint j;
 	uint old_tc = _palette_animation_counter;
@@ -1007,7 +1007,7 @@ void DoPaletteAnimations()
 		_palette_animation_counter = 0;
 	}
 
-	d = &_cur_palette[217];
+	d = &_cur_palette[PALETTE_ANIM_SIZE_START];
 	memcpy(old_val, d, c * sizeof(*old_val));
 
 	/* Dark blue water */
@@ -1101,8 +1101,8 @@ void DoPaletteAnimations()
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		_palette_animation_counter = old_tc;
 	} else {
-		if (memcmp(old_val, &_cur_palette[217], c * sizeof(*old_val)) != 0) {
-			_pal_first_dirty = 217;
+		if (memcmp(old_val, &_cur_palette[PALETTE_ANIM_SIZE_START], c * sizeof(*old_val)) != 0) {
+			_pal_first_dirty = PALETTE_ANIM_SIZE_START;
 			_pal_count_dirty = c;
 		}
 	}
