@@ -139,15 +139,27 @@ public:
 		return cost;
 	}
 
+	/** Check for a reserved station platform. */
+	FORCEINLINE bool IsAnyStationTileReserved(TileIndex tile, Trackdir trackdir, int skipped)
+	{
+		TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(trackdir)));
+		for (; skipped >= 0; skipped--, tile += diff) {
+			if (GetRailwayStationReservation(tile)) return true;
+		}
+		return false;
+	}
+
 	/** The cost for reserved tiles, including skipped ones. */
-	FORCEINLINE int ReservationCost(Node& n, TileIndex& tile, Trackdir trackdir, int skipped)
+	FORCEINLINE int ReservationCost(Node& n, TileIndex tile, Trackdir trackdir, int skipped)
 	{
 		if (n.m_num_signals_passed >= m_sig_look_ahead_costs.Size() / 2) return 0;
 
-		if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
-			int cost = IsRailwayStationTile(tile) ? Yapf().PfGetSettings().rail_pbs_station_penalty : Yapf().PfGetSettings().rail_pbs_cross_penalty;
+		if (IsRailwayStationTile(tile) && IsAnyStationTileReserved(tile, trackdir, skipped)) {
+			return Yapf().PfGetSettings().rail_pbs_station_penalty * (skipped + 1);
+		} else if (TrackOverlapsTracks(GetReservedTrackbits(tile), TrackdirToTrack(trackdir))) {
+			int cost = Yapf().PfGetSettings().rail_pbs_cross_penalty;
 			if (!IsDiagonalTrackdir(trackdir)) cost = (cost * YAPF_TILE_CORNER_LENGTH) / YAPF_TILE_LENGTH;
-			return cost * (skipped + 1);
+			return cost;
 		}
 		return 0;
 	}
