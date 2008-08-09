@@ -87,7 +87,7 @@ int DoDrawStringCentered(int x, int y, const char *str, uint16 color);
 int DrawString(int x, int y, StringID str, uint16 color);
 int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw);
 
-int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool multiline_skipping = false);
+int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool parse_string_also_when_clipped = false);
 int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw);
 
 void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color);

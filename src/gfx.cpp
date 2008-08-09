@@ -677,7 +677,7 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 	src = buffer;
 
 	for (;;) {
-		DoDrawString(src, x, y, 0xFE, false);
+		DoDrawString(src, x, y, 0xFE, true);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
@@ -770,14 +770,16 @@ void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
  * @param y                   Offset from top side of the screen, if negative offset from the bottom
  * @param real_colour         Colour of the string, see _string_colormap in
  *                            table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
- * @param multiline_skipping  By default, always test the available space where to draw the string.
-                              When in multipline drawing, it would already be done,
-                              so no need to re-perform the same kind (more or less) of verifications.
-                              It's not only an optimisation, it's also a way to ensures the string will be parsed
+ * @param parse_string_also_when_clipped
+ *                            By default, always test the available space where to draw the string.
+ *                            When in multipline drawing, it would already be done,
+ *                            so no need to re-perform the same kind (more or less) of verifications.
+ *                            It's not only an optimisation, it's also a way to ensures the string will be parsed
+ *                            (as there are certain side effects on global variables, which are important for the next line)
  * @return                    the x-coordinates where the drawing has finished.
  *                            If nothing is drawn, the originally passed x-coordinate is returned
  */
-int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool multiline_skipping)
+int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
@@ -787,7 +789,7 @@ int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool mult
 	byte colour = real_colour & 0xFF;  // extract the 8 bits colour index that is required for the mapping
 	byte previous_colour = colour;
 
-	if (!multiline_skipping) {
+	if (!parse_string_also_when_clipped) {
 		/* in "mode multiline", the available space have been verified. Not in regular one.
 		 * So if the string cannot be drawn, return the original start to say so.*/
 		if (x >= dpi->left + dpi->width ||
