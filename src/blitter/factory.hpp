@@ -10,6 +10,10 @@
 #include "../string_func.h"
 #include <map>
 
+#if defined(WITH_COCOA)
+bool QZ_CanDisplay8bpp();
+#endif /* defined(WITH_COCOA) */
+
 /**
  * The base factory, keeping track of all blitters.
  */
@@ -77,13 +81,15 @@ public:
 	{
 		const char *default_blitter = "8bpp-optimized";
 
-#if defined(__APPLE__)
-		/* MacOS X 10.5 removed 8bpp fullscreen support.
-		 * Because of this we will pick 32bpp by default */
-		if (MacOSVersionIsAtLeast(10, 5, 0)) {
+#if defined(WITH_COCOA)
+		/* Some people reported lack of fullscreen support in 8 bpp mode.
+		 * While we prefer 8 bpp since it's faster, we will still have to test for support. */
+		if (!QZ_CanDisplay8bpp()) {
+			/* The main display can't go to 8 bpp fullscreen mode.
+			 * We will have to switch to 32 bpp by default. */
 			default_blitter = "32bpp-anim";
 		}
-#endif /* defined(__APPLE__) */
+#endif /* defined(WITH_COCOA) */
 		if (GetBlitters().size() == 0) return NULL;
 		const char *bname = (StrEmpty(name)) ? default_blitter : name;
 
