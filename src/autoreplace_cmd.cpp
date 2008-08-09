@@ -123,7 +123,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 				/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
 				uint16 *default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);
 				for (CargoID cid = 0; cid < NUM_CARGO; cid++) {
-					if (cid != cargo_type && default_capacity[cid] > 0) return cargo_type;
+					if (cid != v->cargo_type && default_capacity[cid] > 0) return v->cargo_type;
 				}
 
 				return CT_NO_REFIT;
