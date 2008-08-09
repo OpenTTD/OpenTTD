@@ -627,7 +627,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 
 	for (;;) {
 		w = GetStringBoundingBox(src).width;
-		DoDrawString(src, x - (w >> 1), y, 0xFE);
+		DoDrawString(src, x - (w >> 1), y, TC_FROMSTRING, false);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
@@ -677,7 +677,7 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 	src = buffer;
 
 	for (;;) {
-		DoDrawString(src, x, y, 0xFE);
+		DoDrawString(src, x, y, TC_FROMSTRING, false);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
@@ -762,40 +762,49 @@ void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
 	GfxMainBlitter(GetGlyph(size, c), x - w / 2, y, BM_COLOUR_REMAP);
 }
 
-/** Draw a string at the given coordinates with the given colour
- * @param string     The string to draw
- * @param x          Offset from left side of the screen, if negative offset from the right side
- * @param y          Offset from top side of the screen, if negative offset from the bottom
- * @param real_color Colour of the string, see _string_colormap in
- *                   table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
- * @return the x-coordinates where the drawing has finished. If nothing is drawn
- *         the originally passed x-coordinate is returned */
-int DoDrawString(const char *string, int x, int y, uint16 real_color)
+/** Draw a string at the given coordinates with the given colour.
+ *  While drawing the string, parse it in case some formatting is specified,
+ *  like new colour, new size or even positionning.
+ * @param string              The string to draw
+ * @param x                   Offset from left side of the screen, if negative offset from the right side
+ * @param y                   Offset from top side of the screen, if negative offset from the bottom
+ * @param real_colour         Colour of the string, see _string_colormap in
+ *                            table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param multiline_skipping  By default, always test the available space where to draw the string.
+                              When in multipline drawing, it would already be done,
+                              so no need to re-perform the same kind (more or less) of verifications.
+                              It's not only an optimisation, it's also a way to ensures the string will be parsed
+ * @return                    the x-coordinates where the drawing has finished.
+ *                            If nothing is drawn, the originally passed x-coordinate is returned
+ */
+int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool multiline_skipping)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
 	WChar c;
 	int xo = x, yo = y;
 
-	byte color = real_color & 0xFF;
-	byte previous_color = color;
+	byte colour = real_colour & 0xFF;  // extract the 8 bits colour index that is required for the mapping
+	byte previous_colour = colour;
 
-	if (color != 0xFE) {
+	if (!multiline_skipping) {
+		/* in "mode multiline", the available space have been verified. Not in regular one.
+		 * So if the string cannot be drawn, return the original start to say so.*/
 		if (x >= dpi->left + dpi->width ||
 				x + _screen.width * 2 <= dpi->left ||
 				y >= dpi->top + dpi->height ||
 				y + _screen.height <= dpi->top)
 					return x;
 
-		if (color != 0xFF) {
-switch_color:;
-			if (real_color & IS_PALETTE_COLOR) {
-				_string_colorremap[1] = color;
+		if (colour != TC_INVALID) { // the invalid colour flag test should not  really occur.  But better be safe
+switch_colour:;
+			if (real_colour & IS_PALETTE_COLOR) {
+				_string_colorremap[1] = colour;
 				_string_colorremap[2] = _use_dos_palette ? 1 : 215;
 			} else {
 				uint palette = _use_dos_palette ? 1 : 0;
-				_string_colorremap[1] = _string_colormap[palette][color].text;
-				_string_colorremap[2] = _string_colormap[palette][color].shadow;
+				_string_colorremap[1] = _string_colormap[palette][colour].text;
+				_string_colorremap[2] = _string_colormap[palette][colour].shadow;
 			}
 			_color_remap_ptr = _string_colorremap;
 		}
@@ -815,7 +824,7 @@ skip_char:;
 skip_cont:;
 		if (c == 0) {
 			_last_fontsize = size;
-			return x;
+			return x;  // Nothing more to draw, get out. And here is the new x position
 		}
 		if (IsPrintable(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
@@ -824,16 +833,16 @@ skip_cont:;
 			}
 			x += GetCharacterWidth(size, c);
 		} else if (c == '\n') { // newline = {}
-			x = xo;
+			x = xo;  // We require a new line, so the x coordinate is reset
 			y += GetCharacterHeight(size);
 			goto check_bounds;
-		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change color?
-			previous_color = color;
-			color = (byte)(c - SCC_BLUE);
-			goto switch_color;
-		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous color
-			Swap(color, previous_color);
-			goto switch_color;
+		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change colour?
+			previous_colour = colour;
+			colour = (byte)(c - SCC_BLUE);
+			goto switch_colour;
+		} else if (c == SCC_PREVIOUS_COLOUR) { // revert to the previous colour
+			Swap(colour, previous_colour);
+			goto switch_colour;
 		} else if (c == SCC_SETX) { // {SETX}
 			x = xo + (byte)*string++;
 		} else if (c == SCC_SETXY) {// {SETXY}

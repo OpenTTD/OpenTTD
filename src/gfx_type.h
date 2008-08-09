@@ -214,6 +214,7 @@ enum TextColour {
 	TC_GREY        = 0x0E,
 	TC_DARK_BLUE   = 0x0F,
 	TC_BLACK       = 0x10,
+	TC_INVALID     = 0xFF,
 };
 
 /** Defines a few values that are related to animations using palette changes */
