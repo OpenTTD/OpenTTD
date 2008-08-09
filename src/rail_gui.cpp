@@ -1409,13 +1409,13 @@ public:
 		this->DrawSignalSprite(BSW_SEMAPHORE_EXIT,  SPR_IMG_SIGNAL_SEMAPHORE_EXIT,   0, 12); // xsize of sprite + 1 ==  9
 		this->DrawSignalSprite(BSW_SEMAPHORE_COMBO, SPR_IMG_SIGNAL_SEMAPHORE_COMBO,  0, 12); // xsize of sprite + 1 ==  9
 		this->DrawSignalSprite(BSW_SEMAPHORE_PBS,   SPR_IMG_SIGNAL_SEMAPHORE_PBS,    0, 12); // xsize of sprite + 1 ==  9
-		this->DrawSignalSprite(BSW_SEMAPHORE_PBS_OWAY, SPR_IMG_SIGNAL_SEMAPHORE_PBSOWAY, -1, 13); // xsize of sprite + 1 == 10
+		this->DrawSignalSprite(BSW_SEMAPHORE_PBS_OWAY, SPR_IMG_SIGNAL_SEMAPHORE_PBS_OWAY, -1, 13); // xsize of sprite + 1 == 10
 		this->DrawSignalSprite(BSW_ELECTRIC_NORM,   SPR_IMG_SIGNAL_ELECTRIC_NORM,   -1,  4);
 		this->DrawSignalSprite(BSW_ELECTRIC_ENTRY,  SPR_IMG_SIGNAL_ELECTRIC_ENTRY,  -2,  6);
 		this->DrawSignalSprite(BSW_ELECTRIC_EXIT,   SPR_IMG_SIGNAL_ELECTRIC_EXIT,   -2,  6);
 		this->DrawSignalSprite(BSW_ELECTRIC_COMBO,  SPR_IMG_SIGNAL_ELECTRIC_COMBO,  -2,  6);
 		this->DrawSignalSprite(BSW_ELECTRIC_PBS,    SPR_IMG_SIGNAL_ELECTRIC_PBS,    -1,  4);
-		this->DrawSignalSprite(BSW_ELECTRIC_PBS_OWAY,SPR_IMG_SIGNAL_ELECTRIC_OBSOWAY,-2,  6);
+		this->DrawSignalSprite(BSW_ELECTRIC_PBS_OWAY,SPR_IMG_SIGNAL_ELECTRIC_PBS_OWAY,-2,  6);
 
 		/* Draw dragging signal density value in the BSW_DRAG_SIGNALS_DENSITY widget */
 		SetDParam(0, _settings_client.gui.drag_signals_density);
