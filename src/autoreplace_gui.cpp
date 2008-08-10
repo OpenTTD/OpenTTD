@@ -23,7 +23,6 @@
 #include "engine_base.h"
 #include "window_gui.h"
 #include "engine_gui.h"
-#include "articulated_vehicles.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -99,19 +98,6 @@ void AddRemoveEngineFromAutoreplaceAndBuildWindows(VehicleType type)
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE); // The build windows needs updating as well
 }
 
-/** Figure out if two engines got at least one type of cargo in common (refitting if needed)
- * @param engine_a one of the EngineIDs
- * @param engine_b the other EngineID
- * @param type the type of the engines
- * @return true if they can both carry the same type of cargo (or at least one of them got no capacity at all)
- */
-static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b, VehicleType type)
-{
-	uint32 available_cargos_a = GetUnionOfArticulatedRefitMasks(engine_a, type, true);
-	uint32 available_cargos_b = GetUnionOfArticulatedRefitMasks(engine_b, type, true);
-	return (available_cargos_a == 0 || available_cargos_b == 0 || (available_cargos_a & available_cargos_b) != 0);
-}
-
 /**
  * Window for the autoreplacing of vehicles.
  */
@@ -143,10 +129,6 @@ class ReplaceVehicleWindow : public Window {
 		if (draw_left && show_engines) {
 			/* Ensure that the railtype is specific to the selected one */
 			if (rvi->railtype != this->sel_railtype) return false;
-		} else {
-			/* Ensure that it's a compatible railtype to the selected one (like electric <-> diesel)
-			 * The vehicle do not have to have power on the railtype in question, only able to drive (pulled if needed) */
-			if (!IsCompatibleRail(rvi->railtype, this->sel_railtype)) return false;
 		}
 		return true;
 	}
@@ -177,13 +159,7 @@ class ReplaceVehicleWindow : public Window {
 				/* Skip drawing the engines we don't have any of and haven't set for replacement */
 				if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), eid, selected_group) == INVALID_ENGINE) continue;
 			} else {
-				/* This is for engines we can replace to and they should depend on what we selected to replace from */
-				if (!IsEngineBuildable(eid, type, _local_player)) continue; // we need to be able to build the engine
-				if (!EnginesGotCargoInCommon(eid, this->sel_engine[0], type)) continue; // the engines needs to be able to carry the same cargo
-
-				/* Road vehicles can't be replaced by trams and vice-versa */
-				if (type == VEH_ROAD && HasBit(EngInfo(this->sel_engine[0])->misc_flags, EF_ROAD_TRAM) != HasBit(e->info.misc_flags, EF_ROAD_TRAM)) continue;
-				if (eid == this->sel_engine[0]) continue; // we can't replace an engine into itself (that would be autorenew)
+				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_player)) continue;
 			}
 
 			*list->Append() = eid;

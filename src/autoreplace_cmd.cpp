@@ -24,6 +24,69 @@
 
 #include "table/strings.h"
 
+/** Figure out if two engines got at least one type of cargo in common (refitting if needed)
+ * @param engine_a one of the EngineIDs
+ * @param engine_b the other EngineID
+ * @param type the type of the engines
+ * @return true if they can both carry the same type of cargo (or at least one of them got no capacity at all)
+ */
+static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b, VehicleType type)
+{
+	uint32 available_cargos_a = GetUnionOfArticulatedRefitMasks(engine_a, type, true);
+	uint32 available_cargos_b = GetUnionOfArticulatedRefitMasks(engine_b, type, true);
+	return (available_cargos_a == 0 || available_cargos_b == 0 || (available_cargos_a & available_cargos_b) != 0);
+}
+
+/**
+ * Checks some basic properties whether autoreplace is allowed
+ * @param from Origin engine
+ * @param to Destination engine
+ * @param player Player to check for
+ * @return true if autoreplace is allowed
+ */
+bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player)
+{
+	/* First we make sure that it's a valid type the user requested
+	 * check that it's an engine that is in the engine array */
+	if (!IsEngineIndex(from) || !IsEngineIndex(to)) return false;
+
+	/* we can't replace an engine into itself (that would be autorenew) */
+	if (from == to) return false;
+
+	VehicleType type = GetEngine(from)->type;
+
+	/* check that the new vehicle type is available to the player and its type is the same as the original one */
+	if (!IsEngineBuildable(to, type, player)) return false;
+
+	switch (type) {
+		case VEH_TRAIN: {
+			const RailVehicleInfo *rvi_from = RailVehInfo(from);
+			const RailVehicleInfo *rvi_to   = RailVehInfo(to);
+
+			/* make sure the railtypes are compatible */
+			if ((GetRailTypeInfo(rvi_from->railtype)->compatible_railtypes & GetRailTypeInfo(rvi_to->railtype)->compatible_railtypes) == 0) return false;
+
+			/* make sure we do not replace wagons with engines or vise versa */
+			if ((rvi_from->railveh_type == RAILVEH_WAGON) != (rvi_to->railveh_type == RAILVEH_WAGON)) return false;
+			break;
+		}
+
+		case VEH_ROAD:
+			/* make sure that we do not replace a tram with a normal road vehicles or vise versa */
+			if (HasBit(EngInfo(from)->misc_flags, EF_ROAD_TRAM) != HasBit(EngInfo(to)->misc_flags, EF_ROAD_TRAM)) return false;
+			break;
+
+		case VEH_AIRCRAFT:
+			/* make sure that we do not replace a plane with a helicopter or vise versa */
+			if ((AircraftVehInfo(from)->subtype & AIR_CTOL) != (AircraftVehInfo(to)->subtype & AIR_CTOL)) return false;
+			break;
+
+		default: break;
+	}
+
+	/* the engines needs to be able to carry the same cargo */
+	return EnginesGotCargoInCommon(from, to, type);
+}
 
 /*
  * move the cargo from one engine to another if possible

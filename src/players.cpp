@@ -717,21 +717,7 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 			if (!IsValidGroupID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
 			if (new_engine_type != INVALID_ENGINE) {
-				/* First we make sure that it's a valid type the user requested
-				 * check that it's an engine that is in the engine array */
-				if (!IsEngineIndex(new_engine_type)) return CMD_ERROR;
-
-				/* check that the new vehicle type is the same as the original one */
-				if (GetEngine(old_engine_type)->type != GetEngine(new_engine_type)->type) return CMD_ERROR;
-
-				/* make sure that we do not replace a plane with a helicopter or vise versa */
-				if (GetEngine(new_engine_type)->type == VEH_AIRCRAFT &&
-						(AircraftVehInfo(old_engine_type)->subtype & AIR_CTOL) != (AircraftVehInfo(new_engine_type)->subtype & AIR_CTOL)) {
-					return CMD_ERROR;
-				}
-
-				/* make sure that the player can actually buy the new engine */
-				if (!HasBit(GetEngine(new_engine_type)->player_avail, _current_player)) return CMD_ERROR;
+				if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_player)) return CMD_ERROR;
 
 				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, id_g, flags);
 			} else {

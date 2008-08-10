@@ -100,4 +100,6 @@ static inline CommandCost RemoveEngineReplacementForPlayer(Player *p, EngineID e
 	return RemoveEngineReplacement(&p->engine_renew_list, engine, group, flags);
 }
 
+bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player);
+
 #endif /* AUTOREPLACE_FUNC_H */
