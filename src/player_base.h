@@ -24,7 +24,11 @@ struct PlayerEconomyEntry {
 	Money company_value;
 };
 
-DECLARE_OLD_POOL(Player, Player, 1, MAX_PLAYERS)
+/* The third parameter and the number after >> MUST be the same,
+ * otherwise more (or less) players will be allowed to be
+ * created than what MAX_PLAYER specifies!
+ */
+DECLARE_OLD_POOL(Player, Player, 1, MAX_PLAYERS >> 1)
 
 struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
 	Player(uint16 name_1 = 0, bool is_ai = false);

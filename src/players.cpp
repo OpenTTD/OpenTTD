@@ -516,9 +516,9 @@ void ResetPlayerLivery(Player *p)
  */
 Player *DoStartupNewPlayer(bool is_ai)
 {
-	Player *p = new Player(STR_SV_UNNAMED, is_ai);
+	if (!Player::CanAllocateItem()) return NULL;
 
-	if (p == NULL) return NULL;
+	Player *p = new Player(STR_SV_UNNAMED, is_ai);
 
 	memset(&_players_ai[p->index], 0, sizeof(PlayerAI));
 	memset(&_players_ainew[p->index], 0, sizeof(PlayerAiNew));
