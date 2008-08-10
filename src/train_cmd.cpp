@@ -3695,6 +3695,8 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 							return;
 						}
 						goto reverse_train_direction;
+					} else {
+						TryReserveRailTrack(gp.new_tile, TrackBitsToTrack(chosen_track));
 					}
 				} else {
 					static const TrackBits _matching_tracks[8] = {
@@ -3777,7 +3779,10 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 
 			if (IsTileType(gp.new_tile, MP_TUNNELBRIDGE) && HasBit(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y), VETS_ENTERED_WORMHOLE)) {
 				/* Perform look-ahead on tunnel exit. */
-				if (IsFrontEngine(v)) CheckNextTrainTile(v);
+				if (IsFrontEngine(v)) {
+					TryReserveRailTrack(gp.new_tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(gp.new_tile)));
+					CheckNextTrainTile(v);
+				}
 			} else {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;

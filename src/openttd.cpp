@@ -2504,6 +2504,20 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Reserve all tracks trains are currently on. */
+	if (CheckSavegameVersion(101)) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_TRAIN) {
+				if ((v->u.rail.track & TRACK_BIT_WORMHOLE) == TRACK_BIT_WORMHOLE) {
+					TryReserveRailTrack(v->tile, DiagDirToDiagTrack(GetTunnelBridgeDirection(v->tile)));
+				} else if ((v->u.rail.track & TRACK_BIT_MASK) != TRACK_BIT_NONE) {
+					TryReserveRailTrack(v->tile, TrackBitsToTrack(v->u.rail.track));
+				}
+			}
+		}
+	}
+
 	GamelogPrintDebug(1);
 
 	return InitializeWindowsAndCaches();
