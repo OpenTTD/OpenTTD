@@ -654,6 +654,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd prveho vozidla do stanice konkurencie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Havarie / Katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacie o spolocnosti
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Vznik priemyslu
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zánik priemyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmeny v ekonomike
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Zmeny produkcie priemyslu obsluhovaného hrácom
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmeny produkcie priemyslu obsluhovaného konkurenciou
@@ -1739,6 +1741,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kola
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signalmi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicné kolaje s combo signálmi
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Kolajnice so semaformi pbs
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Železnicné kolaje s normálnymi a pre-signálmi
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Železnicné kolaje s normálnymi a exit-signálmi
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Zeleznicné kolaje s normálnymi a combo signálmi

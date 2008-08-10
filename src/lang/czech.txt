@@ -648,6 +648,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příje
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příjezd prvního vozidla do konkurenční stanice
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nehody / katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informace o společnosti
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Otevírání průmyslu
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zavírání průmyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Změny v ekonomice
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Změny produkce průmyslu obsluhovaného hráčem
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Změny produkce průmyslu obsluhovaného konkurencí
@@ -919,6 +921,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Investovat do p
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Investovat do průmyslu
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... může být budováno jen v pralesech
@@ -1043,6 +1046,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemůžu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemůžu kopírovat seznam příkazů...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec sdílených příkazů - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Vlak {COMMA} nemůže najít cestu.
 STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA} je ztracen.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Zisk vlaku {COMMA} za poslední rok byl {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropská měnová unie{}{}Euro se v této zemi stalo jedinou měnou pro každodenní obchodní transakce!
@@ -1191,6 +1195,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :první dostupný
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :poslední dostupný
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :nejpoužívanější
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vyznačovat rezervovanou trať: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje pro budování i bez dostupných vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
@@ -1223,9 +1228,17 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Počát
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Ukončit hru v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé změny ekonomiky (více menších změn)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat signály každých(é): {ORANGE}{STRING} dilků(y)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat návěstidla každých(é): {ORANGE}{STRING} dilků(y)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu signálů: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu návěstidel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Výchozí typ návěstidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :obyčejné
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :dokonalejší (PBS)
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :jednosměrné dokonalejší (PBS)
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Vybírat dokola návěstidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :pouze obyčejná
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :pouze dokonalejší (PBS)
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :všechna
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vzor městských silnic: {ORANGE}{STRING}
@@ -1396,6 +1409,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Průmysl
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA} % přepraveno)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA} %/{COMMA} % přepraveno)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Názvy průmyslu - na průmysl se podíváš kliknutím na jeho jméno
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... příliš blízko k jinému průmyslu
 
@@ -1728,16 +1742,27 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Zvolit o
 STR_1021_RAILROAD_TRACK                                         :Koleje
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Železniční depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... území vlastní jiná společnost
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniční trať s normálními signály
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniční trať s presignály
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniční trať s výstupními signály
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniční trať s kombinovanými signály
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstím (pre-signal)
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s normálním a výjezdovým návěstím (exit-signal)
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s normálním a cestovým návěstím (combo-signal)
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým (pre-signal) a výjezdovým návěstím (exit-signal)
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým (pre-signal) a cestovým návěstím (combo-signal)
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s výjezdovým (exit-signal) a cestovým návěstím (combo-signal)
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Koleje s obyčejným návěstidlem
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Koleje s vjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Koleje s výjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Koleje s cestovým (kombinovaným) návěstidlem
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Koleje s dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Koleje s jednosměrným dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s obyčejným a výjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s obyčejným a cestovým (kombinovaným) návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Koleje s obyčejným a dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Koleje s obyčejným a jednosměrným dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým a výjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým a cestovým návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Koleje s vjezdovým a dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Koleje s vjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s výjezdovým a cestovým návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Koleje s výjezdovým a dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Koleje s výjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Koleje s cestovým (kombinovaným) a dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Koleje s cestovým (kombinovaným) a jednosměrným dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Koleje s dokonalejším (PBS) a jednosměrným dokonalejším návěstidlem
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejprve nutno odstranit stanici
 
 
@@ -2811,9 +2836,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Skočit na př�
 STR_CONDITIONAL_NUM                                             :Skočit na příkaz {COMMA}, když {STRING.small} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Skočit na příkaz {COMMA}, když {STRING.small} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nikam nejet
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Jet do (mimo jízdní řád)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Jet do {STRING}
 STR_TIMETABLE_STAY_FOR                                          :a zůstat {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :a jet {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P en ny nů}
 STR_TIMETABLE_TICKS                                             :{COMMA} cykl{P us y ů}
 
@@ -2943,6 +2970,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje,
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Neslučitelné druhy kolejí
 STR_TRAIN_NO_POWER                                              :{RED}Bez proudu
 STR_TRAIN_START_NO_CATENARY                                     :Tato trať není elektrifikována, vlak nemůže odjet
+STR_TRAIN_STUCK                                                 :{ORANGE}Čekám na volnou cestu
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G á ý é} {STRING} k dispozici!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -3006,6 +3034,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Koupit o
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Cena provozu: {CURRENCY} ročně{}Kapacita: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo la el}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Přejmenovat silniční vozidlo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nelze přejmenovat silniční vozidlo...
@@ -3186,6 +3217,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Tvůj po
 STR_BRIBE_FAILED_2                                              :{WHITE}odhalen místním vyšetřovatelem.
 STR_BUILD_DATE                                                  :{BLACK}Postaveno: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Třída stanice: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Druh stanice: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Podrobné hodnocení výkonu
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobně
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3239,7 +3274,14 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRING} jako statické NewGRF s {STRING} může způsobit chybu synchronizace.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrát vybranou předvolbu
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit předvolbu
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Uložit tento seznam jako předvolbu
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Zadej název předvolby
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Odstranit předvolbu
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Odstranit vybranou předvolbu
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat NewGRF soubor do seznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odebrat
@@ -3270,6 +3312,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro nač
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mění délku vozidla '{1:ENGINE}', které není v depu.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 
@@ -3557,8 +3602,8 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Jméno musí být unikátní
 
 #### Improved sign GUI
-STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Na další signál
-STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na předešlý signál
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Na další návěstidlo
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na předešlé návěstidlo
 STR_SIGN_OSKTITLE                                               :{BLACK}Zadej název pro značku
 
 ########
@@ -3617,20 +3662,24 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Změnit 
 ########
 
 ############ signal GUI
-STR_SIGNAL_SELECTION                                            :{WHITE}Výběr signálů
-STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Zde nelze změnit signály...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardní signál (semafor){}Signály jsou nutné, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vjezdový signál (semafor){}Svítí zeleně do té doby, kdy v dalším úseku trati je alespoň jeden zeleně svítící výjezdový signál. Jinak svítí červeně.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdový signál (semafor){}Chová se stejně jako normální signál, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinovaný signál (semafor){}Kombinovaný signál jednoduše slouží jako zároveň vjezdový a výjezdový signál. Tím je možné postavit velké "řetězce" presignálů.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardní signál (elektrický){}Signály jsou nutné, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vjezdový signál (elektrický){}Svítí zeleně do té doby, kdy v dalším úseku trati je alespoň jeden zeleně svítící výjezdový signál. Jinak svítí červeně.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdový signál (elektrický){}Chová se stejně jako normální signál, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinovaný signál (elektrický){}Kombinovaný signál jednoduše slouží jako zároveň vjezdový a výjezdový signál. Tím je možné postavit velké "řetězce" presignálů.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Změna signálů{}Pokud je vybrána, signál se změní kliknutím na něj. Při kliknutí s CTRL se bude přepínat mezi variantami existujícího signálu.
-STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě signálů tažením
-STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi signály
-STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi signály
+STR_SIGNAL_SELECTION                                            :{WHITE}Výběr návěstidel
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Zde nelze změnit návěstidla...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Cestové návěstidlo (semafor){}Cestové-kombinované slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Cestové návěstidlo (elektrické){}Cestové-kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím na něj. Při kliknutí s CTRL se bude přepínat mezi variantami existujícího návěstidla.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě návěstidel tažením
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi návěstidly
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi návěstidly
 ########
 
 ############ on screen keyboard

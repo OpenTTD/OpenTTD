@@ -988,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orde
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopiëren...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde gedeelde orders - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Trein {COMMA} kan geen route vinden om verder te gaan.
 STR_TRAIN_IS_LOST                                               :{WHITE}Trein {COMMA} is verdwaald.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Winst van trein {COMMA} was vorig jaar {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
@@ -1136,6 +1137,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Eerst beschikbare
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikbare
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Toon gereserveerd spoor: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Geef bouwgereedschap weer wanneer geen geschikte voertuigen beschikbaar zijn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
@@ -1171,6 +1173,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Sta het
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semaphore seinen voor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein GUI: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Seintype die standaard moet worden gebouwd: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normaal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Geavanceerd
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Eenrichting geavanceerd
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Blader door seintypen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Alleen normaal
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Alleen geavanceerd
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allemaal
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}De stadsindeling "geen wegen" is niet geldig in de scenario editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecteer stedelijke wegindeling: {ORANGE}{STRING}
@@ -1341,6 +1351,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% vervoerd)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% vervoerd)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industrie namen - klik op naam om scherm te centreren op industrie
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...te dicht bij een andere industrie
 
@@ -1677,12 +1688,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Spoor met norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Spoor met voorseinen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Spoor met uitgangseinen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Spoor met combinatieseinen
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Spoor met pbs-seinen
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Treinrails met eenrichtings geavanceerde seinen
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Spoor met normale en pre-seinen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Spoor met normale en uitgangs-signalen
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Spoor met normale en dubbele-signalen
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Treinrails met gewoon en geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Treinrails met gewoon en eenrichtings geavanceerde seinen
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Spoor met pre- en uitgangs- signalen
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Spoor met pre- en dubbele- signalen
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Treinrails met vóór- en geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Treinrails met vóór- en eenrichtings geavanceerde seinen
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Spoor met uitgangs- en dubbele- signalen
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Treinrails met exit- en geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Treinrails met exit- en eenrichtings geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Treinrails met combo- en geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Treinrails met combo- en eenrichtings geavanceerde seinen
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Treinrails met geavanceerde en eenrichtings geavanceerde seinen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Treinstation moet eerst verwijderd worden
 
 
@@ -2884,6 +2906,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het st
 STR_INCOMPATIBLE_RAIL_TYPES                                     :spoortypes niet verenigbaar
 STR_TRAIN_NO_POWER                                              :{RED}Geen stroom
 STR_TRAIN_START_NO_CATENARY                                     :Er is geen bovenleiding, de trein kan niet starten
+STR_TRAIN_STUCK                                                 :{ORANGE}Wacht op vrije route
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nieuw {STRING} nu beschikbaar!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2947,6 +2970,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bouw het
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Prijs: {CURRENCY}{}Snelheid: {VELOCITY}{}Brandstofkosten: {CURRENCY}/jr{}Capaciteit: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capaciteit: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} voertuig{P "" en}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Hernoem wegvoertuig
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan wegvoertuig niet hernoemen...
@@ -3578,10 +3604,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standaar
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ingangssein (semaphore){}Groen zolang als er een of meer groene exitseinen zijn volgend na dit sein. Anders is deze rood.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exitsein (semaphore){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combo-voor-seinen te sturen.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Sein (semaphore){}Het combo sein gedraagt zicht als zowel Ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Geavanceerde seinen (semaphoor){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Eenrichtings geavanceerde seinen (semaphoor){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standaard sein (electric){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Ingangssein (electric){}Groen wanneer er meer dan een groen exit-sein is in het volgende traject. Anders is deze rood.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sein (electric){}Gedraagt zich hetzelfde als een standaard sein, maar is nodig om ingangs- & combo voorseinen aan te sturen.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sein (electric){}Het combo sein gedraagt zicht als zowel ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Eenrichtings geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, CTRL-klik schakeld tussen de bestaande varianten.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein gesleepte sein dichtheid

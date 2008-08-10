@@ -990,6 +990,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossib
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossibile copiare la lista degli ordini...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fine degli ordini condivisi - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Il Treno {COMMA} non riesce a trovare un percorso per proseguire
 STR_TRAIN_IS_LOST                                               :{WHITE}Il Treno {COMMA} si è perso
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Il profitto del Treno {COMMA} per l'anno scorso è stato {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unione Monetaria Europea!{}{}È stato introdotto l'Euro come unica moneta per le transazioni quotidiane nel nostro Paese!
@@ -1138,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :La prima disponibile
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :L'ultima disponibile
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :La più usata
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostra i binari riservati: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Consenti costruzione di infrastrutture senza veicoli disponibili: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
@@ -1173,6 +1175,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permett
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore, piazza i segnali ogni: {ORANGE}{STRING} quadrato/i
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci automaticamente i semafori prima del: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Abilita l'interfaccia di selezione segnali: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo di segnale predefinito: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normale
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avanzato
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Avanzato a senso unico
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Tipi di segnale fra cui alternare: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo normali
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo avanzati
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Tutti
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}L'opzione "Nessuna nuova strada" non è valida nell'editor di scenari
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposizione delle strade cittadine: {ORANGE}{STRING}
@@ -1343,6 +1353,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% trasportato)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% trasportato)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nomi delle industrie - fare clic su un nome per centrare la visuale sull'industria
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...troppo vicina ad un'altra industria
 
@@ -1679,12 +1690,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia con se
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia con pre-segnali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia con segnali di uscita
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia con segnali combinati
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ferrovia con segnali avanzati
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ferrovia con segnali avanzati a senso unico
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ferrovia con segnali normali e pre-segnali
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ferrovia con segnali normali e di uscita
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ferrovia con segnali normali e combinati
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ferrovia con segnali normali e avanzati
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ferrovia con segnali normali e avanzati a senso unico
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ferrovia con pre-segnali e segnali di uscita
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ferrovia con pre-segnali e segnali combinati
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ferrovia con pre-segnali e segnali avanzati
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ferrovia con pre-segnali e segnali avanzati a senso unico
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ferrovia con segnali di uscita e combinati
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ferrovia con segnali di uscita e avanzati
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ferrovia con segnali di uscita e avanzati a senso unico
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ferrovia con segnali combinati e avanzati
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ferrovia con segnali combinati e avanzati a senso unico
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ferrovia con segnali avanzati e avanzati a senso unico
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bisogna rimuovere la stazione prima
 
 
@@ -1928,7 +1950,7 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centra l
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Mostra la valutazione della stazione
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Cambia il nome della stazione
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Mostra la lista delle merci accettate
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale principale sulla stazione
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nomi delle stazioni - fare clic su un nome per centrare la visuale sulla stazione
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Seleziona dimensione/tipo di aeroporto
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -2771,7 +2793,7 @@ STR_UNKNOWN_DESTINATION                                         :destinazione sc
 STR_8812_EMPTY                                                  :{LTBLUE}Vuoto
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} da {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} da {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Il Treno {COMMA} sta aspettando nel deposito
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Il Treno {COMMA} ha raggiunto il deposito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi veicoli
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
@@ -2886,6 +2908,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipi di rotaia non compatibili
 STR_TRAIN_NO_POWER                                              :{RED}Alimentazione mancante
 STR_TRAIN_START_NO_CATENARY                                     :In questo binario manca la catenaria, quindi il treno non può essere avviato
+STR_TRAIN_STUCK                                                 :{ORANGE}In attesa di un percorso libero
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuov{G o a} {STRING} disponibile!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2925,7 +2948,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacit�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve essere fermo nel deposito automezzi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossibile vendere l'automezzo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossibile fermare/avviare l'automezzo...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}L'Automezzo {COMMA} sta aspettando nel deposito
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}L'Automezzo {COMMA} ha raggiunto il deposito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Diretto al Deposito di {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Diretto al Deposito di {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenzione al Deposito di {TOWN}
@@ -2949,6 +2972,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Costruis
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Costo: {CURRENCY}{}Velocità: {VELOCITY}{}Costo d'esercizio: {CURRENCY}/anno{}Capacità: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacità: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} component{P e i}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Rinomina l'automezzo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossibile rinominare l'automezzo...
@@ -3004,7 +3030,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Diretto
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Diretto al Deposito di {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Manutenzione al Deposito di {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenzione al Deposito di {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}La Nave {COMMA} sta aspettano nel deposito
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}La Nave {COMMA} ha raggiunto il deposito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Costruisce un molo per le navi
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Costruisce un deposito navale (per costruire e manutenere le navi)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navi - fare clic su una nave per informazioni
@@ -3069,7 +3095,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diretto
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diretto all'Hangar di {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Manutenzione all'Hangar di {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Manutenzione all'Hangar di {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L'Aeromobile {COMMA} sta aspettano nell'hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L'Aeromobile {COMMA} ha raggiunto l'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeromobile di mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossibile fermare/avviare l'aeromobile...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'aeromobile è in volo
@@ -3580,10 +3606,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale 
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale avanzato (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali avanzati possono essere attraversati al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale avanzato a senso unico (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali a senso unico non possono essere attraversati al contrario.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale normale (luminoso){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale avanzato (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali avanzati possono essere attraversati al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale avanzato a senso unico (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali a senso unico non possono essere attraversati al contrario.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti

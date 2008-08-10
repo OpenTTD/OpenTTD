@@ -592,6 +592,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пер�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Первое трансп. средство противника на станции
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Аварии/Катастрофы
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информация о Компании
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Открытие производства
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Закрытие производства
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Изменения в экономике
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Изменения уровня производства предприятий, обслуживаемых игроком
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Изменения уровня производства предприятий, обслуживаемых соперниками
@@ -863,6 +865,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Создать 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Создать новое предприятие
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можно строить только в городах
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...можно строить только в тропиках
@@ -987,6 +990,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Нево
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Невозможно скопировать список заданий
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Конец общих заданий - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Поезд {COMMA} не может найти путь для продолжения движения.
 STR_TRAIN_IS_LOST                                               :{WHITE}Поезд {COMMA} заблудился
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Доход поезда {COMMA} за прошлый год составил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
@@ -1135,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Маглев
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Перв. доступн.
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Посл. доступн.
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Наиб. исп.
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Показывать зарезервированные пути: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показывать окно покупки когда нет доступного транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
@@ -1170,6 +1175,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При установке светофоров линией, ставить кажд{P 1 ую ые ые}: {ORANGE}{STRING} клет{P 1 ку ки ок}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Строить семафоры старого стиля: {ORANGE}до {STRING} года
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Включить меню сигналов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Тип сигнала по умолчанию: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Обычные
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :ПМС
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :одностор. ПМС
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Выбор сигналов (Ctrl+клик): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :только обычные
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :только ПМС
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :все
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Расположение дорог "не строить дороги" не действительно в редакторе сценариев
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Расположение дорог у городов: {ORANGE}{STRING}
@@ -1340,6 +1353,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Пром
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Название производства, нажмите для центровки
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...слишком близко к другому предприятию
 
@@ -1384,6 +1398,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Введ
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Клиенты
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Клиентов сейчас/макс. {}Компаний сейчас/макс.
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Размер карты
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Размер карты игры{}Нажмите для сортировки по площади
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Дата
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Текущая дата
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Года
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Кол-во лет{} в игре
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФОРМАЦИЯ ОБ ИГРЕ
 STR_NETWORK_CLIENTS                                             :{SILVER}Клиенты:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Язык:  {WHITE}{STRING}
@@ -1665,12 +1690,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ж/Д путь 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ж/Д путь с пресигналами
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/Д путь с выходными сигналами
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/д путь с комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ж/д пути с ПМС сигналами
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ж/д пути с односторонними ПМС сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Рельсы и нормальными и пре-сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Рельсы и нормальными и выходными сигналами
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ж/д путь с нормальными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ж/д пути с обычными и ПМС сигналами
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ж/д пути с обычными и односторонними ПМС сигналами
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Рельсы с пре- и выходными сигналами
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ж/д путь с пре- и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ж/д пути с пре- и ПМС сигналами
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ж/д пути с пре- и односторонними ПМС сигналами
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ж/д путь с выходными и комбо-сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ж/д пути с выходными и ПМС сигналами
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ж/д пути с выходными и односторонними ПМС сигналами
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути с комбо и ПМС сигналами
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо и односторонними ПМС сигналами
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с ПМС и односторонними ПМС сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ЖД станцию
 
 
@@ -2881,6 +2917,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Остан
 STR_INCOMPATIBLE_RAIL_TYPES                                     :IНесовместимый тип рельс
 STR_TRAIN_NO_POWER                                              :{RED}Нет тока.
 STR_TRAIN_START_NO_CATENARY                                     :Кто-то украл все провода, поезд не может ехать...
+STR_TRAIN_STUCK                                                 :{ORANGE}Ожидает свободного пути
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Появился новый {STRING}!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2944,6 +2981,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Пост
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Стоимость обслуживания: {CURRENCY}/год{}Емкость: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Емкость: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} единиц{P а "" ""}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Назвать автотранспорт
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Невозможно переименовать автотранспорт ...
@@ -3124,6 +3164,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Ваша
 STR_BRIBE_FAILED_2                                              :{WHITE}обнаружена региональным следователем
 STR_BUILD_DATE                                                  :{BLACK}Построено: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Класс станции: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Тип станции: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Рейтинг в деталях
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Детали
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3179,6 +3223,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, �
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Слишком много загружено новой графики
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {STRING} в качестве статического NewGRF с {STRING} Может вызвать ошибку синхронизации.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Загрузить выбранный набор
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Сохранить набор
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Сохранить этот список как набор
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Название набора
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Удалить набор
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Удалить выбранный набор
 STR_NEWGRF_ADD                                                  :{BLACK}Добавить
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавить файл NewGRF в список
 STR_NEWGRF_REMOVE                                               :{BLACK}Удалить
@@ -3208,6 +3258,10 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Отсу
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не найдены файлы NewGRF, необходимые для загрузки игры
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Пропущенные GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
+
+STR_NEWGRF_BROKEN                                               :{WHITE}Поведение строки '{STRING}' файла NewGRF может привести к потере синхронизации и вылету игры.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта '{1:ENGINE}' находящегося вне депо.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд '{VEHICLE}' принадлежащий '{COMPANY}' имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 
@@ -3561,10 +3615,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Стан
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входной сигнал (семафор){}Горит зеленым, если хотя бы один из выходных сигналов зеленый на следующей секции путей. Во всех других случаях горит красным.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Выходной светофор (семафор).{} Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбо-светофор (семафор){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Стандартный светофор (электро){}Сигналы необходимы для предотвращения аварий поездов на путях.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входной светофор (элетро){}Горит зеленым, если хотя бы один из выходных сигналов зеленый на следующей секции путей. Во всех других случаях горит красным.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Выходной светофор (электро){}Работает как обычный светофор, но его значение (цвет) необходимы для нормальной работы входящих и комбинированных пресигналов.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбо-светофор (электро){}Комбо-светофор работает как сдвоенный входной и выходной светофор. Это позволяет построить большую разветвленную сеть.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд может проехать ПМС сигнал, направленный в другую сторону
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Односторонний ПМС сигнал. ПМС сигнал позволяет нескольким поездам находиться в одном сигнальном блоке, если каждый поезд может зарезервировать безопасный путь. Поезд НЕ может проехать односторонний ПМС сигнал, направленный в другую сторону
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Изменение типа сигнала{}Когда кнопка нажата, щелкните для преобразования существующего сигнала в сигнал выбранного типа и варианта,  или щелкните с нажатым Ctrl для переборов существующих вариантов.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Плотность расстановки сигналов при протягивании.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Уменьшить плотность сигналов при протягивании

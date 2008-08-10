@@ -1370,6 +1370,14 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Unesi ad
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klijenti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klijenata online / klijenata maks{}Tvrtki online / tvrki maks.
+
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Trenutni datum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Godine
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Broj godina{}koliko igra traje
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O IGRI
 STR_NETWORK_CLIENTS                                             :{SILVER}Klijenti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik:  {WHITE}{STRING}
@@ -1392,6 +1400,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Započni
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Ime igre:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Ime igre bit će prikazno drugim igračima u izborniku za odabir igre s više igrača
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Upišite ime mrežne igre
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Postavi zaporku
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zaštiti svoju igru pomoću zaporke ukoliko ne želiš da bude javno dostupna
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Odaberi kartu:
@@ -1448,6 +1457,11 @@ STR_NETWORK_LANG_SPANISH                                        :Španjolski
 STR_NETWORK_LANG_SWEDISH                                        :Švedski
 STR_NETWORK_LANG_TURKISH                                        :Turski
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrajinski
+STR_NETWORK_LANG_AFRIKAANS                                      :afrikaanski
+STR_NETWORK_LANG_CROATIAN                                       :hrvatski
+STR_NETWORK_LANG_CATALAN                                        :katalonski
+STR_NETWORK_LANG_ESTONIAN                                       :estonski
+STR_NETWORK_LANG_GALICIAN                                       :galicijski
 STR_NETWORK_LANG_GREEK                                          :Grčki
 STR_NETWORK_LANG_LATVIAN                                        :Latvijski
 ############ End of leave-in-this-order
@@ -1548,6 +1562,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privatno] {STR
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
 STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
 STR_NETWORK_NAME_CHANGE                                         :je promjeni {G o la lo} svoje ime u
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Poslužitelj je zatvorio sesiju
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Poslužitelj se ponovno pokreće...{}Molimo pričekajte...
@@ -1611,6 +1626,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Previsok
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nije prikladno za želježnicku prugu
 STR_1007_ALREADY_BUILT                                          :{WHITE}...već izgrađeno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprije moraš ukloniti željezničku prugu
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Cesta je jednosmjerna ili je blokirana
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Izgradnja željeznice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Izgradnja elektrificirane željeznice
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Izgradnja jednotračne željeznice
@@ -2639,6 +2655,9 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Spremiš
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi vlak je stigao na {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalji)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Neprestano
 
 
 
@@ -3009,6 +3028,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Tvoj pok
 STR_BRIBE_FAILED_2                                              :{WHITE}otkriven od strane regionalnog istražitelja
 STR_BUILD_DATE                                                  :{BLACK}Izgrađeno: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljna procjena rezultata
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalji
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3092,6 +3112,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Neprona�
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Nedostaje(u) datoteka(e) GRF za učitavanje igre
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nedostaje GRF datoteka(e)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauziranje može uzrokovati rušenje OpenTTD-a. Nemojte slati prijave bugova za posljedična rušenja.{}Želite li stvarno odpauzirati?
+
 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta

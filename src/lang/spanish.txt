@@ -591,6 +591,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Llegada
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Llegada del 1er veh. estación de la competencia
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidentes / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Información de la empresa
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Apertura de industrias
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Cierre de industrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambios en la economía
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Cambios de producción en las industrias servidas por el jugador
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Cambios de producción en las industrias servidas por los competidores
@@ -987,6 +989,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No se pu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No se puede copiar la lista de órdenes...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fin de órdenes compartidas - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}El tren {COMMA} no puede encontrar el camino para continuar.
 STR_TRAIN_IS_LOST                                               :{WHITE}Tren {COMMA} está perdido.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}El beneficio del tren {COMMA} para el pasado año fué {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}El Euro es introducido como la moneda oficial para todas las transacciones de su país!
@@ -1135,6 +1138,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primero disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Más usado
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ver vías reservadas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Herramientas de construcción aún sin vehículos apropiados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
@@ -1170,6 +1174,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cuando arrastre colocar señales cada: {ORANGE}{STRING} casilla(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Coloca automáticamente semáforos antes de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar la GUI de señales: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de señal a construir por defecto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avanzada
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Un sentido avanzada
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cambiar entre tipos de señales: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo normales
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo avanzada
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todas
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}El trazado de ciudad "no más carreteras" no es válido en el editor de escenarios
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecciona trazado de carretera en ciudad: {ORANGE}{STRING}
@@ -1340,6 +1352,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nombre de industrias - pulse en el nombre para centrar la vista en él
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...demasiado cercano a otra industria
 
@@ -1676,12 +1689,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía del tren c
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía del tren con pre-señales
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vía del tren con señales de salida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía del tren con señales combo
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Via del tren con señales pbs
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vía de tren con señales avanzadas de un sentido
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vía de tren con señales normales y preseñalización
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vía de tren con señales normales y señales de salida
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vía de tren con señales combo y normales
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vía de tren con señales avanzadas y normales
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vía de tren con señales normales y avanzadas de un sentido
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vía de tren con preseñalización y señales de salida
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vía de tren con preseñalización y señales combo
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vía de tren con señales avanzadas y preseñales
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vía de tren con señales avanzadas de un sentido y preseñales
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vía de tren con señales de salida y señales combo
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vía de tren con señales avanzadas y de salida
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vía de tren con señales avanzadas de un sentido y de salida
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vía de tren con señales avanzadas y combo
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vía de tren con señales avanzadas de un sentido y combo
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vía de tren con señales avanzadas de un sentido y avanzadas
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Debes quitar la estación de tren primero
 
 
@@ -2883,6 +2907,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de vía incompatible
 STR_TRAIN_NO_POWER                                              :{RED}Sin potencia
 STR_TRAIN_START_NO_CATENARY                                     :Esta vía carece la catenaria, así que el tren no puede comenzar
+STR_TRAIN_STUCK                                                 :{ORANGE}Esperando vía libre
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nuevo{STRING} ahora disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2946,6 +2971,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construi
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Coste: {CURRENCY}{}Velocidad: {VELOCITY}{}Coste Operativo: {CURRENCY}/año{}Capacidad: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidad: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehículo {P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nombrar vehículo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No se puede nombrar vehículo...
@@ -3126,6 +3154,9 @@ STR_BRIBE_FAILED                                                :{WHITE}Su inten
 STR_BRIBE_FAILED_2                                              :{WHITE}descubierto por un investigador regional.
 STR_BUILD_DATE                                                  :{BLACK}Construido: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Clase de estación: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Tipo de estación: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalle de rendimiento
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalle
@@ -3218,6 +3249,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Problema con el NewGRF '{STRING}' puede causar desincronización o cuelgues
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 
@@ -3573,10 +3605,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Señales
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Señal de entrada (semáforo){}Verde si existe una o más señales de salida en el tramo en verde, de lo contrario estará en rojo
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Señal de salida (semáforo){}Se comporta de la misma manera que una señal normal, pero es necesario para activar el color correcto a la entrada y antes de la combinación de señales.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Señales combo (semáforos){}Las señales combo simplemente actúan como una señal de entrada y de salida. Esto permite construir grandes "árboles" de preseñales.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Señalal Avanzada (semáforo){}Un señal avanzada permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar por la vía a un lugar seguro. Pueden ser traspasadas desde atrás.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Señales Avanzadas de un sentido (semáforo){}Una señal avanzada que permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar a un lugar seguro. Señales de un sentido no permiten ser traspasadas desde atrás.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Señal normal (eléctrica){}Las señales son necesarias para evitar accidentes de trenes en vías con más de un tren.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Señal de entrada (eléctrica){}Verde si existe una o más señales verdes en el siguiente segmento de vía. Si no, mostrará el rojo.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Señal de salida (eléctrica){}Actua igual que una señal normal solo pero es necesaria para cambiar el color correcto en preseñales de entrada y combo.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo señal (eléctrica){}La señal combo actua como señal de entrada y salida. Esto permite construir grandes "árboles" de preseñales.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Señal Avanzada (electrica){}Un señal avanzada permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar por la vía a un lugar seguro. Pueden ser traspasadas desde atrás.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Señal Avanzada de un sentido (electrica){}Una señal avanzada que permite a más de un tren entrar a un bloque de señal a la vez, si el tren puede retornar a un lugar seguro. Señales de un sentido no permiten ser traspasadas desde atrás.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Convertir señal{}Cuando es seleccionado, pulsando sobre una señal existente la convertiremos a la variante indicada. Pulsa CTRL-click para cambiar de variante.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Arrastrar densidad de señales
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrementar arrastre de intensidad de señales

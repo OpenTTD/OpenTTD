@@ -762,10 +762,6 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Гол�
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Покажи последното съобщение или отчет на новините
 STR_OFF                                                         :изключено
-STR_OFF.m                                                       :изключен
-STR_OFF.f                                                       :изключена
-STR_OFF.n                                                       :изключено
-STR_OFF.p                                                       :изключени
 STR_SUMMARY                                                     :Обобщение
 STR_FULL                                                        :Пълно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
@@ -839,10 +835,6 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Авто
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Интервала между две автозаписваня
 STR_02F7_OFF                                                    :изключено
-STR_02F7_OFF.m                                                  :изключен
-STR_02F7_OFF.f                                                  :изключена
-STR_02F7_OFF.n                                                  :изключено
-STR_02F7_OFF.p                                                  :изключени
 STR_02F8_EVERY_3_MONTHS                                         :всеки 3 месеца
 STR_02F9_EVERY_6_MONTHS                                         :всеки 6 месеца
 STR_02FA_EVERY_12_MONTHS                                        :всеки 12 месеца
@@ -871,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Инвести�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Инвестирай в нова индустрия
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построено само в градовете
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...може да бъде построено само около и в джунглите
@@ -1030,15 +1023,7 @@ STR_CONFIG_PATCHES_TIP                                          :{BLACK}Наст
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройка на кръпките
 
 STR_CONFIG_PATCHES_OFF                                          :изключено
-STR_CONFIG_PATCHES_OFF.m                                        :изключен
-STR_CONFIG_PATCHES_OFF.f                                        :изключена
-STR_CONFIG_PATCHES_OFF.n                                        :изключено
-STR_CONFIG_PATCHES_OFF.p                                        :изключени
 STR_CONFIG_PATCHES_ON                                           :включено
-STR_CONFIG_PATCHES_ON.m                                         :включен
-STR_CONFIG_PATCHES_ON.f                                         :включена
-STR_CONFIG_PATCHES_ON.n                                         :включено
-STR_CONFIG_PATCHES_ON.p                                         :включени
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Скорост на МПС в лента за състоянието: {ORANGE}{STRING.f}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Строене на склонове и брегове: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Тераформиране под постройки (autoslope): {ORANGE}{STRING.n}
@@ -1195,10 +1180,6 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :по-добри
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3х3 мрежа
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :случаен
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM.m                         :случаен
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM.f                         :случайна
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM.n                         :случайно
-STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM.p                         :случайни
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Позиция на лентата за инструменти: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :ляво
@@ -1225,10 +1206,6 @@ STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Икон
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Съперници
 
 STR_CONFIG_PATCHES_DISABLED                                     :изключено
-STR_CONFIG_PATCHES_DISABLED.m                                   :изключен
-STR_CONFIG_PATCHES_DISABLED.f                                   :изключена
-STR_CONFIG_PATCHES_DISABLED.n                                   :изключено
-STR_CONFIG_PATCHES_DISABLED.p                                   :изключени
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
@@ -1408,6 +1385,11 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Въве
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Играчи
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Онлайн играчи / макс. брой играчи{}Онлайн компании / макс. компании
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФО ЗА ИГРАТА
 STR_NETWORK_CLIENTS                                             :{SILVER}Играчи:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Език:  {WHITE}{STRING}
@@ -2206,30 +2188,10 @@ STR_CITY_APPROVAL                                               :{LTBLUE}Отн�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :николко
-STR_NONE.m                                                      :ни един
-STR_NONE.f                                                      :ни една
-STR_NONE.n                                                      :ни едно
-STR_NONE.p                                                      :ни едни
 STR_NUM_VERY_LOW                                                :мн. малко
-STR_NUM_VERY_LOW.m                                              :много малък
-STR_NUM_VERY_LOW.f                                              :много малка
-STR_NUM_VERY_LOW.n                                              :много малко
-STR_NUM_VERY_LOW.p                                              :много малки
 STR_6816_LOW                                                    :малко
-STR_6816_LOW.m                                                  :малък
-STR_6816_LOW.f                                                  :малка
-STR_6816_LOW.n                                                  :малко
-STR_6816_LOW.p                                                  :малки
 STR_6817_NORMAL                                                 :нормално
-STR_6817_NORMAL.m                                               :нормален
-STR_6817_NORMAL.f                                               :нормална
-STR_6817_NORMAL.n                                               :нормално
-STR_6817_NORMAL.p                                               :нормални
 STR_6818_HIGH                                                   :голямо
-STR_6818_HIGH.m                                                 :голям
-STR_6818_HIGH.f                                                 :голяма
-STR_6818_HIGH.n                                                 :голямо
-STR_6818_HIGH.p                                                 :големи
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :много бавно
@@ -2239,20 +2201,8 @@ STR_681E_FAST                                                   :бързо
 STR_681F_VERY_FAST                                              :много бързо
 STR_VERY_LOW                                                    :много ниско
 STR_6820_LOW                                                    :ниско
-STR_6820_LOW.m                                                  :нисък
-STR_6820_LOW.f                                                  :ниска
-STR_6820_LOW.n                                                  :ниско
-STR_6820_LOW.p                                                  :ниски
 STR_6821_MEDIUM                                                 :средно
-STR_6821_MEDIUM.m                                               :среден
-STR_6821_MEDIUM.f                                               :средна
-STR_6821_MEDIUM.n                                               :средно
-STR_6821_MEDIUM.p                                               :средни
 STR_6822_HIGH                                                   :високо
-STR_6822_HIGH.m                                                 :висок
-STR_6822_HIGH.f                                                 :висока
-STR_6822_HIGH.n                                                 :високо
-STR_6822_HIGH.p                                                 :високи
 STR_6823_NONE                                                   :без
 STR_6824_REDUCED                                                :намалени
 STR_6825_NORMAL                                                 :нормални
@@ -2265,15 +2215,7 @@ STR_682B_FLAT                                                   :равнине�
 STR_682C_HILLY                                                  :хълмист
 STR_682D_MOUNTAINOUS                                            :планински
 STR_682E_STEADY                                                 :стабилна
-STR_682E_STEADY.m                                               :стабилен
-STR_682E_STEADY.f                                               :стабилна
-STR_682E_STEADY.n                                               :стабилно
-STR_682E_STEADY.p                                               :стабилни
 STR_682F_FLUCTUATING                                            :променлива
-STR_682F_FLUCTUATING.m                                          :променлив
-STR_682F_FLUCTUATING.f                                          :променлива
-STR_682F_FLUCTUATING.n                                          :променливо
-STR_682F_FLUCTUATING.p                                          :променливи
 STR_6830_IMMEDIATE                                              :веднага
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 месеца след играча
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 месеца след играча
@@ -2281,10 +2223,6 @@ STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 месеца 
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :в края на линията и станциите
 STR_6835_AT_END_OF_LINE_ONLY                                    :само в края на линията
 STR_6836_OFF                                                    :изключено
-STR_6836_OFF.m                                                  :изключен
-STR_6836_OFF.f                                                  :изключена
-STR_6836_OFF.n                                                  :изключено
-STR_6836_OFF.p                                                  :изключени
 STR_6837_ON                                                     :включено
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Покажи класирането
 STR_PERMISSIVE                                                  :разрешаващи
@@ -2998,6 +2936,8 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Купи
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорост: {VELOCITY}{}Оперативен разход: {CURRENCY}/год{}Вместимост: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Преименувай МПС-то
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Не може да преименуваш МПС-то...
@@ -3178,6 +3118,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Твоя
 STR_BRIBE_FAILED_2                                              :{WHITE}разкрит от местен дознател
 STR_BUILD_DATE                                                  :{BLACK}Построен: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Подробна оценка на представянето
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Подробности
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3262,6 +3203,7 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Липс
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Липсващи GRF файлове при зареждане на игра
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Липсва GRF файл(ове)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Може да счупи OpenTTD. Не пускайте съобщение за грешка за последвали счупвания.{}Желаете ли да се махне паузата?
+
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Играта бе записана във версия без поддръжка на трамваи. Всички трамваи са изтрити.
 
