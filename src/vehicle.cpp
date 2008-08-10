@@ -2345,8 +2345,16 @@ void Vehicle::LeaveStation()
 	HideFillingPercent(this->fill_percent_te_id);
 	this->fill_percent_te_id = INVALID_TE_ID;
 
-	/* Trigger station animation for trains only */
-	if (this->type == VEH_TRAIN && IsTileType(this->tile, MP_STATION)) StationAnimationTrigger(st, this->tile, STAT_ANIM_TRAIN_DEPARTS);
+	if (this->type == VEH_TRAIN) {
+		/* Trigger station animation (trains only) */
+		if (IsTileType(this->tile, MP_STATION)) StationAnimationTrigger(st, this->tile, STAT_ANIM_TRAIN_DEPARTS);
+
+		/* Try to reserve a path when leaving the station as we
+		 * might not be marked as wanting a reservation, e.g.
+		 * when an overlenght train gets turned around in a station.
+		 */
+		TryPathReserve(this, true, true);
+	}
 }
 
 

@@ -1950,9 +1950,12 @@ static void ReverseTrainDirection(Vehicle *v)
 			!IsPbsSignal(GetSignalType(v->tile, FindFirstTrack(v->u.rail.track))));
 
 		if (IsRailwayStationTile(v->tile)) SetRailwayStationPlatformReservation(v->tile, TrackdirToExitdir(GetVehicleTrackdir(v)), true);
-		if (TryPathReserve(v, true, first_tile_okay)) {
+		if (TryPathReserve(v, false, first_tile_okay)) {
 			/* Do a look-ahead now in case our current tile was already a safe tile. */
 			CheckNextTrainTile(v);
+		} else if (v->current_order.GetType() != OT_LOADING) {
+			/* Do not wait for a way out when we're still loading */
+			MarkTrainAsStuck(v);
 		}
 	}
 }
