@@ -694,7 +694,7 @@ void QZ_GameLoop()
 			st += GetTick() - st0;
 #endif
 			_screen.dst_ptr = _cocoa_subdriver->GetPixelBuffer();
-			DrawChatMessage();
+			NetworkDrawChatMessage();
 			DrawMouseCursor();
 			_cocoa_subdriver->Draw();
 		}

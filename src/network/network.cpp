@@ -230,7 +230,7 @@ void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool se
 
 	DebugDumpCommands("ddc:cmsg:%d;%d;%s\n", _date, _date_fract, message);
 	IConsolePrintF(color, "%s", message);
-	AddChatMessage(color, duration, "%s", message);
+	NetworkAddChatMessage(color, duration, "%s", message);
 }
 
 // Calculate the frame-lag of a client

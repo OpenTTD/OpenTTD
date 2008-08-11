@@ -385,6 +385,7 @@ intro_gui.cpp
 main_gui.cpp
 misc_gui.cpp
 music_gui.cpp
+network/network_chat_gui.cpp
 network/network_gui.cpp
 newgrf_gui.cpp
 news_gui.cpp

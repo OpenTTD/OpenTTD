@@ -33,10 +33,6 @@ void SetDate(Date date)
 	ConvertDateToYMD(date, &ymd);
 	_cur_year = ymd.year;
 	_cur_month = ymd.month;
-#ifdef ENABLE_NETWORK
-	_network_last_advertise_frame = 0;
-	_network_need_advertise = true;
-#endif /* ENABLE_NETWORK */
 }
 
 #define M(a, b) ((a << 5) | b)
@@ -161,7 +157,6 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 /** Functions used by the IncreaseDate function */
 
 extern void WaypointsDailyLoop();
-extern void ChatMessageDailyLoop();
 extern void EnginesDailyLoop();
 extern void DisasterDailyLoop();
 
@@ -228,7 +223,9 @@ void IncreaseDate()
 	/* yeah, increase day counter and call various daily loops */
 	_date++;
 
-	ChatMessageDailyLoop();
+#ifdef ENABLE_NETWORK
+	NetworkChatMessageDailyLoop();
+#endif /* ENABLE_NETWORK */
 
 	DisasterDailyLoop();
 	WaypointsDailyLoop();
@@ -296,9 +293,11 @@ void IncreaseDate()
 		_date -= days_this_year;
 		FOR_ALL_VEHICLES(v) v->date_of_last_service -= days_this_year;
 
+#ifdef ENABLE_NETWORK
 		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out
 		 *  all of them if the date is set back, else those messages will hang for ever */
-		InitChatMessage();
+		NetworkInitChatMessage();
+#endif /* ENABLE_NETWORK */
 	}
 
 	if (_settings_client.gui.auto_euro) CheckSwitchToEuro();

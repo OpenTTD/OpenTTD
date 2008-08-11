@@ -518,7 +518,7 @@ void VideoDriver_SDL::MainLoop()
 		} else {
 			SDL_CALL SDL_Delay(1);
 			_screen.dst_ptr = _sdl_screen->pixels;
-			DrawChatMessage();
+			NetworkDrawChatMessage();
 			DrawMouseCursor();
 			DrawSurfaceToScreen();
 		}

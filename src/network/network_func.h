@@ -57,6 +57,11 @@ void NetworkServerSendRcon(uint16 client_index, ConsoleColour colour_code, const
 void NetworkServerSendError(uint16 client_index, NetworkErrorCode error);
 void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, uint16 from_index);
 
+void NetworkInitChatMessage();
+void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *message, ...);
+void NetworkUndrawChatMessage();
+void NetworkChatMessageDailyLoop();
+
 #define FOR_ALL_ACTIVE_CLIENT_INFOS(ci) for (ci = _network_client_info; ci != endof(_network_client_info); ci++) if (ci->client_index != NETWORK_EMPTY_INDEX)
 
 #endif /* ENABLE_NETWORK */

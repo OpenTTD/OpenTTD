@@ -23,6 +23,7 @@
 #include "cheat_func.h"
 #include "window_func.h"
 #include "tilehighlight_func.h"
+#include "network/network.h"
 
 #include "table/sprites.h"
 
@@ -1984,7 +1985,7 @@ void UpdateWindows()
 	FOR_ALL_WINDOWS(wz) {
 		if ((*wz)->viewport != NULL) UpdateViewportPosition(*wz);
 	}
-	DrawChatMessage();
+	NetworkDrawChatMessage();
 	/* Redraw mouse cursor in case it was hidden */
 	DrawMouseCursor();
 }

@@ -1768,6 +1768,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\network_chat_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\network_gui.cpp"
 				>
 			</File>

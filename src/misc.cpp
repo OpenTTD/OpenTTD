@@ -29,6 +29,7 @@
 #include "animated_tile_func.h"
 #include "tilehighlight_func.h"
 #include "core/bitmath_func.hpp"
+#include "network/network_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -105,7 +106,9 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	InitializeCheats();
 
 	InitTextEffects();
-	InitChatMessage();
+#ifdef ENABLE_NETWORK
+	NetworkInitChatMessage();
+#endif /* ENABLE_NETWORK */
 	InitializeAnimatedTiles();
 
 	InitializeLandscapeVariables(false);

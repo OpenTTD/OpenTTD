@@ -20,6 +20,7 @@
 #include "core/alloc_func.hpp"
 #include "core/sort_func.hpp"
 #include "landscape_type.h"
+#include "network/network_func.h"
 
 #include "table/palettes.h"
 #include "table/sprites.h"
@@ -81,7 +82,10 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 	if (xo == 0 && yo == 0) return;
 
 	if (_cursor.visible) UndrawMouseCursor();
-	UndrawChatMessage();
+
+#ifdef ENABLE_NETWORK
+	NetworkUndrawChatMessage();
+#endif /* ENABLE_NETWORK */
 
 	blitter->ScrollBuffer(_screen.dst_ptr, left, top, width, height, xo, yo);
 	/* This part of the screen is now dirty. */
@@ -1252,7 +1256,10 @@ void RedrawScreenRect(int left, int top, int right, int bottom)
 			UndrawMouseCursor();
 		}
 	}
-	UndrawChatMessage();
+
+#ifdef ENABLE_NETWORK
+	NetworkUndrawChatMessage();
+#endif /* ENABLE_NETWORK */
 
 	DrawOverlappedWindowForAll(left, top, right, bottom);
 
