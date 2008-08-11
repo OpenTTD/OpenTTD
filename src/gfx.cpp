@@ -1003,7 +1003,6 @@ void DoPaletteAnimations()
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const Colour *s;
-	Colour *d;
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
@@ -1018,14 +1017,16 @@ void DoPaletteAnimations()
 		_palette_animation_counter = 0;
 	}
 
-	d = &_cur_palette[PALETTE_ANIM_SIZE_START];
-	memcpy(old_val, d, c * sizeof(*old_val));
+	Colour *palette_pos = &_cur_palette[PALETTE_ANIM_SIZE_START];  // Points to where animations are taking place on the palette
+	/* Makes a copy of the current anmation palette in old_val,
+	 * so the work on the current palette could be compared, see if there has been any changes */
+	memcpy(old_val, palette_pos, c * sizeof(*old_val));
 
 	/* Dark blue water */
 	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
 	j = EXTR(320, 5);
 	for (i = 0; i != 5; i++) {
-		*d++ = s[j];
+		*palette_pos++ = s[j];
 		j++;
 		if (j == 5) j = 0;
 	}
@@ -1034,7 +1035,7 @@ void DoPaletteAnimations()
 	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_TOY : ev->glitter_water;
 	j = EXTR(128, 15);
 	for (i = 0; i != 5; i++) {
-		*d++ = s[j];
+		*palette_pos++ = s[j];
 		j += 3;
 		if (j >= 15) j -= 15;
 	}
@@ -1043,7 +1044,7 @@ void DoPaletteAnimations()
 	s = ev->fizzy_drink;
 	j = EXTR2(512, 5);
 	for (i = 0; i != 5; i++) {
-		*d++ = s[j];
+		*palette_pos++ = s[j];
 		j++;
 		if (j == 5) j = 0;
 	}
@@ -1052,7 +1053,7 @@ void DoPaletteAnimations()
 	s = ev->oil_ref;
 	j = EXTR2(512, 7);
 	for (i = 0; i != 7; i++) {
-		*d++ = s[j];
+		*palette_pos++ = s[j];
 		j++;
 		if (j == 7) j = 0;
 	}
@@ -1065,26 +1066,26 @@ void DoPaletteAnimations()
 		(v = 255, i < 0x3f) ||
 		(v = 128, i < 0x4A || i >= 0x75) ||
 		(v = 20);
-		d->r = v;
-		d->g = 0;
-		d->b = 0;
-		d++;
+		palette_pos->r = v;
+		palette_pos->g = 0;
+		palette_pos->b = 0;
+		palette_pos++;
 
 		i ^= 0x40;
 		(v = 255, i < 0x3f) ||
 		(v = 128, i < 0x4A || i >= 0x75) ||
 		(v = 20);
-		d->r = v;
-		d->g = 0;
-		d->b = 0;
-		d++;
+		palette_pos->r = v;
+		palette_pos->g = 0;
+		palette_pos->b = 0;
+		palette_pos++;
 	}
 
 	/* Handle lighthouse and stadium animation */
 	s = ev->lighthouse;
 	j = EXTR(256, 4);
 	for (i = 0; i != 4; i++) {
-		*d++ = s[j];
+		*palette_pos++ = s[j];
 		j++;
 		if (j == 4) j = 0;
 	}
@@ -1095,7 +1096,7 @@ void DoPaletteAnimations()
 		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
 		j = EXTR(320, 5);
 		for (i = 0; i != 5; i++) {
-			*d++ = s[j];
+			*palette_pos++ = s[j];
 			j++;
 			if (j == 5) j = 0;
 		}
@@ -1104,7 +1105,7 @@ void DoPaletteAnimations()
 		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_TOY : ev->glitter_water;
 		j = EXTR(128, 15);
 		for (i = 0; i != 5; i++) {
-			*d++ = s[j];
+			*palette_pos++ = s[j];
 			j += 3;
 			if (j >= 15) j -= 15;
 		}
@@ -1114,6 +1115,7 @@ void DoPaletteAnimations()
 		_palette_animation_counter = old_tc;
 	} else {
 		if (memcmp(old_val, &_cur_palette[PALETTE_ANIM_SIZE_START], c * sizeof(*old_val)) != 0) {
+			/* Did we changed anything on the palette? Seems so.  Mark it as dirty */
 			_pal_first_dirty = PALETTE_ANIM_SIZE_START;
 			_pal_count_dirty = c;
 		}
