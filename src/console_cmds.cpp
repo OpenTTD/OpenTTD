@@ -1267,13 +1267,13 @@ DEF_CONSOLE_CMD(ConPatch)
 DEF_CONSOLE_CMD(ConListPatches)
 {
 	if (argc == 0) {
-		IConsoleHelp("List patch options. Usage: 'list_patches'");
+		IConsoleHelp("List patch options. Usage: 'list_patches [<pre-filter>]'");
 		return true;
 	}
 
-	if (argc != 1) return false;
+	if (argc > 2) return false;
 
-	IConsoleListPatches();
+	IConsoleListPatches((argc == 2) ? argv[1] : NULL);
 	return true;
 }
 

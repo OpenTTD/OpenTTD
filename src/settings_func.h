@@ -10,7 +10,7 @@
 void IConsoleSetPatchSetting(const char *name, const char *value);
 void IConsoleSetPatchSetting(const char *name, int32 value);
 void IConsoleGetPatchSetting(const char *name);
-void IConsoleListPatches();
+void IConsoleListPatches(const char *prefilter);
 
 void LoadFromConfig();
 void SaveToConfig();

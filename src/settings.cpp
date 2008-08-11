@@ -2385,11 +2385,14 @@ void IConsoleGetPatchSetting(const char *name)
 	}
 }
 
-void IConsoleListPatches()
+void IConsoleListPatches(const char *prefilter)
 {
 	IConsolePrintF(CC_WARNING, "All patches with their current value:");
 
 	for (const SettingDesc *sd = _patch_settings; sd->save.cmd != SL_END; sd++) {
+		if (prefilter != NULL) {
+			if (strncmp(sd->desc.name, prefilter, min(strlen(sd->desc.name), strlen(prefilter))) != 0) continue;
+		}
 		char value[80];
 		const void *ptr = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
 
