@@ -32,8 +32,6 @@
  */
 //#define NETWORK_SEND_DOUBLE_SEED
 
-#define MAX_TEXT_MSG_LEN 1024 /* long long long long sentences :-) */
-
 enum MapPacket {
 	MAP_PACKET_START,
 	MAP_PACKET_NORMAL,

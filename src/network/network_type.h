@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file network_internal.h Variables and function used internally. */
+/** @file network_type.h Types used for networking. */
 
 #ifndef NETWORK_TYPE_H
 #define NETWORK_TYPE_H

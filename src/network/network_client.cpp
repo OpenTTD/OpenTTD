@@ -245,7 +245,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	//    uint8:  ActionID (see network_data.h, NetworkAction)
 	//    uint8:  Destination Type (see network_data.h, DestType);
 	//    uint16: Destination Player
-	//    String: Message (max MAX_TEXT_MSG_LEN)
+	//    String: Message (max NETWORK_CHAT_LENGTH)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_CHAT);
@@ -713,13 +713,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 {
-	char name[NETWORK_NAME_LENGTH], msg[MAX_TEXT_MSG_LEN];
+	char name[NETWORK_NAME_LENGTH], msg[NETWORK_CHAT_LENGTH];
 	const NetworkClientInfo *ci = NULL, *ci_to;
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	uint16 index = p->Recv_uint16();
 	bool self_send = p->Recv_bool();
-	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
+	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;

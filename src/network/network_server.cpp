@@ -509,7 +509,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, N
 	// Data:
 	//    uint8:  ActionID (see network_data.h, NetworkAction)
 	//    uint16:  Client-index
-	//    String: Message (max MAX_TEXT_MSG_LEN)
+	//    String: Message (max NETWORK_CHAT_LENGTH)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_CHAT);
@@ -1160,9 +1160,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	DestType desttype = (DestType)p->Recv_uint8();
 	int dest = p->Recv_uint16();
-	char msg[MAX_TEXT_MSG_LEN];
+	char msg[NETWORK_CHAT_LENGTH];
 
-	p->Recv_string(msg, MAX_TEXT_MSG_LEN);
+	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 
 	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 	switch (action) {
