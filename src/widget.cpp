@@ -479,7 +479,7 @@ void Window::DrawWidgets() const
 				GfxFillRect(r.left + 2, r.top + 2, r.right - 2, r.bottom - 2, _colour_gradient[_player_colors[this->caption_color]][4]);
 			}
 
-			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, 0x84);
+			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top + 2, wi->data, TC_FROMSTRING);
 			break;
 
 		case WWT_DROPDOWN: {
