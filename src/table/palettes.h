@@ -151,33 +151,46 @@ static const Colour _palettes[][256] = {
 #define GET_PALETTE(x) _palettes[x]
 
 struct ExtraPaletteValues {
-	Colour a[15];  // dark blue water
-	Colour ac[15]; // dark blue water Toyland
-	Colour lighthouse[12]; // lighthouse & stadium
-	Colour oil_ref[21];    // oil refinery
-	Colour e[15];  // ???
-	Colour b[45];  // glittery water
-	Colour bc[45]; // glittery water Toyland
+	Colour dark_water[15];        ///< dark blue water
+	Colour dark_water_TOY[15];    ///< dark blue water Toyland
+	Colour lighthouse[12];        ///< lighthouse & stadium
+	Colour oil_ref[21];           ///< oil refinery
+	Colour fizzy_drink[15];       ///< fizzy drinks
+	Colour glitter_water[45];     ///< glittery water
+	Colour glitter_water_TOY[45]; ///< glittery water Toyland
 };
 
 static const ExtraPaletteValues _extra_palette_values = {
+	/* dark blue water */
 	{ M( 32,  68, 112), M( 36,  72, 116), M( 40,  76, 120), M( 44,  80, 124),
-		M( 48,  84, 128) },
+	  M( 48,  84, 128) },
+
+	/* dark blue water Toyland */
 	{ M( 28, 108, 124), M( 32, 112, 128), M( 36, 116, 132), M( 40, 120, 136),
-		M( 44, 124, 140) },
+	  M( 44, 124, 140) },
+
+	/* lighthouse & stadium */
 	{ M(240, 208,   0), M(  0,   0,   0), M(  0,   0,   0), M(  0,   0,   0) },
+
+	/* oil refinery */
 	{ M(252,  60,   0), M(252,  84,   0), M(252, 108,   0), M(252, 124,   0),
-		M(252, 148,   0), M(252, 172,   0), M(252, 196,   0) },
+	  M(252, 148,   0), M(252, 172,   0), M(252, 196,   0) },
+
+	/* fizzy drinks */
 	{ M( 76,  24,   8), M(108,  44,  24), M(144,  72,  52), M(176, 108,  84),
-		M(212, 148, 128) },
+	  M(212, 148, 128) },
+
+	/* glittery water */
 	{ M(216, 244, 252), M(172, 208, 224), M(132, 172, 196), M(100, 132, 168),
-		M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144),
-		M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144),
-		M(100, 132, 168), M(132, 172, 196), M(172, 208, 224) },
+	  M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144),
+	  M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144), M( 72, 100, 144),
+	  M(100, 132, 168), M(132, 172, 196), M(172, 208, 224) },
+
+	/* glittery water Toyland */
 	{ M(216, 244, 252), M(180, 220, 232), M(148, 200, 216), M(116, 180, 196),
-		M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184),
-		M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184),
-		M(116, 180, 196), M(148, 200, 216), M(180, 220, 232) }
+	  M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184),
+	  M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184), M( 92, 164, 184),
+	  M(116, 180, 196), M(148, 200, 216), M(180, 220, 232) }
 };
 #undef M
 

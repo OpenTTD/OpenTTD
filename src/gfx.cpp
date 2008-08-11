@@ -1022,7 +1022,7 @@ void DoPaletteAnimations()
 	memcpy(old_val, d, c * sizeof(*old_val));
 
 	/* Dark blue water */
-	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->ac : ev->a;
+	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
 	j = EXTR(320, 5);
 	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
@@ -1031,7 +1031,7 @@ void DoPaletteAnimations()
 	}
 
 	/* Glittery water */
-	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->bc : ev->b;
+	s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_TOY : ev->glitter_water;
 	j = EXTR(128, 15);
 	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
@@ -1039,7 +1039,8 @@ void DoPaletteAnimations()
 		if (j >= 15) j -= 15;
 	}
 
-	s = ev->e;
+	/* Fizzy Drink bubbles animation */
+	s = ev->fizzy_drink;
 	j = EXTR2(512, 5);
 	for (i = 0; i != 5; i++) {
 		*d++ = s[j];
@@ -1091,7 +1092,7 @@ void DoPaletteAnimations()
 	/* Animate water for old DOS graphics */
 	if (_use_dos_palette) {
 		/* Dark blue water DOS */
-		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->ac : ev->a;
+		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
 		j = EXTR(320, 5);
 		for (i = 0; i != 5; i++) {
 			*d++ = s[j];
@@ -1100,7 +1101,7 @@ void DoPaletteAnimations()
 		}
 
 		/* Glittery water DOS */
-		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->bc : ev->b;
+		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->glitter_water_TOY : ev->glitter_water;
 		j = EXTR(128, 15);
 		for (i = 0; i != 5; i++) {
 			*d++ = s[j];
