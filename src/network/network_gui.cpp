@@ -288,11 +288,11 @@ protected:
 	}
 
 public:
-	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH, desc)
 	{
-		ttd_strlcpy(this->edit_str_buf, _settings_client.network.player_name, lengthof(this->edit_str_buf));
+		ttd_strlcpy(this->edit_str_buf, _settings_client.network.player_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
 
 		UpdateNetworkGameWindow(true);
 
@@ -758,9 +758,9 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	FiosItem *map;               ///< Selected map
 	byte widget_id;              ///< The widget that has the pop-up input menu
 
-	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(desc)
+	NetworkStartServerWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH, desc)
 	{
-		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, lengthof(this->edit_str_buf));
+		ttd_strlcpy(this->edit_str_buf, _settings_client.network.server_name, this->edit_str_size);
 
 		_saveload_mode = SLD_NEW_GAME;
 		BuildFileList();
@@ -768,7 +768,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		this->vscroll.count = _fios_items.Length() + 1;
 
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 160);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 160);
 
 		this->field = NSSW_GAMENAME;
 
@@ -1747,13 +1747,13 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	DestType dtype;
 	int dest;
 
-	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(desc)
+	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH, desc)
 	{
 		this->LowerWidget(2);
 		this->dtype   = type;
 		this->dest    = dest;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
 
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
 		SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
@@ -1822,7 +1822,9 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	 */
 	void ChatTabCompletion()
 	{
-		static char _chat_tab_completion_buf[lengthof(this->edit_str_buf)];
+		static char _chat_tab_completion_buf[NETWORK_CHAT_LENGTH];
+		assert(this->edit_str_size == lengthof(_chat_tab_completion_buf));
+
 		Textbuf *tb = &this->text;
 		size_t len, tb_len;
 		uint item;
@@ -1875,9 +1877,9 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 
 				/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
 				if (pre_buf == tb_buf) {
-					snprintf(tb->buf, lengthof(this->edit_str_buf), "%s: ", cur_name);
+					snprintf(tb->buf, this->edit_str_size, "%s: ", cur_name);
 				} else {
-					snprintf(tb->buf, lengthof(this->edit_str_buf), "%s %s", pre_buf, cur_name);
+					snprintf(tb->buf, this->edit_str_size, "%s %s", pre_buf, cur_name);
 				}
 
 				/* Update the textbuffer */
@@ -1988,11 +1990,11 @@ enum NetworkCompanyPasswordWindowWidgets {
 };
 
 struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
-	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(desc)
+	NetworkCompanyPasswordWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(lengthof(_settings_client.network.default_company_pass), desc)
 	{
 		this->parent = parent;
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, min(lengthof(_settings_client.network.default_company_pass), lengthof(this->edit_str_buf)), 0);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -2004,7 +2006,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 		}
 
 		/* empty password is a '*' because of console argument */
-		if (StrEmpty(this->edit_str_buf)) snprintf(this->edit_str_buf, lengthof(this->edit_str_buf), "*");
+		if (StrEmpty(this->edit_str_buf)) snprintf(this->edit_str_buf, this->edit_str_size, "*");
 		char *password = this->edit_str_buf;
 		NetworkChangeCompanyPassword(1, &password);
 	}

@@ -1056,7 +1056,7 @@ enum QueryStringWidgets {
 
 struct QueryStringWindow : public QueryStringBaseWindow
 {
-	QueryStringWindow(const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(desc)
+	QueryStringWindow(size_t size, const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(size, desc)
 	{
 		this->parent = parent;
 		SetBit(_no_scroll, SCROLL_EDIT);
@@ -1167,19 +1167,12 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	QueryStringWindow *w = new QueryStringWindow(&_query_string_desc, parent);
+	QueryStringWindow *w = new QueryStringWindow(realmaxlen + 1, &_query_string_desc, parent);
 
-	assert(realmaxlen < lengthof(w->edit_str_buf));
+	GetString(w->edit_str_buf, str, &w->edit_str_buf[realmaxlen]);
+	w->edit_str_buf[realmaxlen] = '\0';
 
-	GetString(w->edit_str_buf, str, lastof(w->edit_str_buf));
-	w->edit_str_buf[realmaxlen - 1] = '\0';
-
-	if (maxlen & 0x1000) {
-		w->orig = NULL;
-	} else {
-		strecpy(w->orig_str_buf, w->edit_str_buf, lastof(w->orig_str_buf));
-		w->orig = w->orig_str_buf;
-	}
+	if (!(maxlen & 0x1000)) w->orig = strdup(w->edit_str_buf);
 
 	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
 	w->caption = caption;
@@ -1414,11 +1407,11 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 		SetDParam(0, p->index);
 		SetDParam(1, _date);
-		GetString(this->edit_str_buf, STR_4004, lastof(this->edit_str_buf));
+		GetString(this->edit_str_buf, STR_4004, &this->edit_str_buf[this->edit_str_size - 1]);
 		SanitizeFilename(this->edit_str_buf);
 	}
 
-	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(desc)
+	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(64, desc)
 	{
 		static const StringID saveload_captions[] = {
 			STR_4001_LOAD_GAME,
@@ -1445,7 +1438,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		this->LowerWidget(7);
 
 		this->afilter = CS_ALPHANUMERAL;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 240);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 240);
 
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */

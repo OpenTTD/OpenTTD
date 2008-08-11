@@ -188,7 +188,7 @@ enum QueryEditSignWidgets {
 struct SignWindow : QueryStringBaseWindow, SignList {
 	SignID cur_sign;
 
-	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(desc)
+	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(31, desc)
 	{
 		SetBit(_no_scroll, SCROLL_EDIT);
 		this->caption = STR_280B_EDIT_SIGN_TEXT;
@@ -206,17 +206,19 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 	void UpdateSignEditWindow(const Sign *si)
 	{
+		char *last_of = &this->edit_str_buf[this->edit_str_size - 1];
+
 		/* Display an empty string when the sign hasnt been edited yet */
 		if (si->name != NULL) {
 			SetDParam(0, si->index);
-			GetString(this->edit_str_buf, STR_SIGN_NAME, lastof(this->edit_str_buf));
+			GetString(this->edit_str_buf, STR_SIGN_NAME, last_of);
 		} else {
-			GetString(this->edit_str_buf, STR_EMPTY, lastof(this->edit_str_buf));
+			GetString(this->edit_str_buf, STR_EMPTY, last_of);
 		}
-		this->edit_str_buf[lengthof(this->edit_str_buf) - 1] = '\0';
+		*last_of = '\0';
 
 		this->cur_sign = si->index;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, 31, 255); // Allow 31 characters (including \0)
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 255);
 
 		this->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 	}

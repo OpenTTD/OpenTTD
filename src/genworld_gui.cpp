@@ -251,12 +251,12 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	char name[64];
 	glwp_modes mode;
 
-	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : QueryStringBaseWindow(desc, number)
+	GenerateLandscapeWindow(const WindowDesc *desc, WindowNumber number = 0) : QueryStringBaseWindow(11, desc, number)
 	{
 		this->LowerWidget(_settings_newgame.game_creation.landscape + GLAND_TEMPERATE);
 
-		snprintf(this->edit_str_buf, sizeof(this->edit_str_buf), "%u", _settings_newgame.game_creation.generation_seed);
-		InitializeTextBuffer(&this->text, this->edit_str_buf, lengthof(this->edit_str_buf), 120);
+		snprintf(this->edit_str_buf, this->edit_str_size, "%u", _settings_newgame.game_creation.generation_seed);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
 		this->caption = STR_NULL;
 		this->afilter = CS_NUMERAL;
 
@@ -367,7 +367,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 			case GLAND_RANDOM_BUTTON: // Random seed
 				_settings_newgame.game_creation.generation_seed = InteractiveRandom();
-				snprintf(this->edit_str_buf, lengthof(this->edit_str_buf), "%u", _settings_newgame.game_creation.generation_seed);
+				snprintf(this->edit_str_buf, this->edit_str_size, "%u", _settings_newgame.game_creation.generation_seed);
 				UpdateTextBufferSize(&this->text);
 				this->SetDirty();
 				break;

@@ -48,7 +48,7 @@ struct OskWindow : public Window {
 	int ok_btn;            ///< widget number of parent's ok button (=0 when ok shouldn't be passed on)
 	int cancel_btn;        ///< widget number of parent's cancel button (=0 when cancel shouldn't be passed on; text will be reverted to original)
 	Textbuf *text;         ///< pointer to parent's textbuffer (to update caret position)
-	char orig_str_buf[64]; ///< Original string.
+	char *orig_str_buf;    ///< Original string.
 
 	OskWindow(const WindowDesc *desc, QueryStringBaseWindow *parent, int button, int cancel, int ok) : Window(desc)
 	{
@@ -64,13 +64,18 @@ struct OskWindow : public Window {
 		this->text       = &parent->text;
 
 		/* make a copy in case we need to reset later */
-		strcpy(this->orig_str_buf, this->qs->text.buf);
+		this->orig_str_buf = strdup(this->qs->text.buf);
 
 		SetBit(_no_scroll, SCROLL_EDIT);
 		/* Not needed by default. */
 		this->DisableWidget(OSK_WIDGET_SPECIAL);
 
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	~OskWindow()
+	{
+		free(this->orig_str_buf);
 	}
 
 	/**
