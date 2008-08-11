@@ -223,7 +223,7 @@ public:
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle(), Yapf().GetCompatibleRailTypes());
-		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()))
+		if (F.Follow(old_node.GetLastTile(), old_node.GetLastTrackdir()) && F.MaskReservedTracks())
 			Yapf().AddMultipleNodes(&old_node, F);
 	}
 
