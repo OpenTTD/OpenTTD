@@ -82,6 +82,9 @@ struct GUISettings {
 	bool   show_track_reservation;           ///< highlight reserved tracks.
 	uint8  default_signal_type;              ///< the signal type to build by default.
 	uint8  cycle_signal_types;               ///< what signal types to cycle with the build signal tool.
+
+	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
+	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.
 #ifdef ENABLE_NETWORK
 	uint16 network_chat_box_width;           ///< width of the chat box in pixels
 	uint8  network_chat_box_height;          ///< height of the chat box in lines

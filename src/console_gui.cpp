@@ -14,29 +14,117 @@
 #include "string_func.h"
 #include "gfx_func.h"
 #include "core/math_func.hpp"
+#include "settings_type.h"
 #include "rev.h"
 
 #include "table/strings.h"
 
-#define ICON_BUFFER 79
-#define ICON_HISTORY_SIZE 20
-#define ICON_LINE_HEIGHT 12
-#define ICON_RIGHT_BORDERWIDTH 10
-#define ICON_BOTTOM_BORDERWIDTH 12
-#define ICON_MAX_ALIAS_LINES 40
-#define ICON_TOKEN_COUNT 20
+enum {
+	ICON_HISTORY_SIZE       = 20,
+	ICON_LINE_HEIGHT        = 12,
+	ICON_RIGHT_BORDERWIDTH  = 10,
+	ICON_BOTTOM_BORDERWIDTH = 12,
+};
 
-/* console modes */
-IConsoleModes _iconsole_mode;
+/**
+ * Container for a single line of console output
+ */
+struct IConsoleLine {
+	static IConsoleLine *front; ///< The front of the console backlog buffer
+	static int size;            ///< The amount of items in the backlog
 
-/* ** main console ** */
-static char *_iconsole_buffer[ICON_BUFFER + 1];
-static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
-static Textbuf _iconsole_cmdline;
+	IConsoleLine *previous; ///< The previous console message.
+	char *buffer;          ///< The data to store.
+	uint16 colour;         ///< The colour of the line.
+	uint16 time;           ///< The amount of time the line is in the backlog.
+
+	/**
+	 * Initialize the console line.
+	 * @param buffer the data to print.
+	 * @param colour the colour of the line.
+	 */
+	IConsoleLine(char *buffer, uint16 colour) :
+			previous(IConsoleLine::front),
+			buffer(buffer),
+			colour(colour),
+			time(0)
+	{
+		IConsoleLine::front = this;
+		IConsoleLine::size++;
+	}
+
+	/**
+	 * Clear this console line and any further ones.
+	 */
+	~IConsoleLine()
+	{
+		IConsoleLine::size--;
+		free(buffer);
+
+		delete previous;
+	}
+
+	/**
+	 * Get the index-ed item in the list.
+	 */
+	static const IConsoleLine *Get(uint index)
+	{
+		const IConsoleLine *item = IConsoleLine::front;
+		while (index != 0 && item != NULL) {
+			index--;
+			item = item->previous;
+		}
+
+		return item;
+	}
+
+	/**
+	 * Truncate the list removing everything older than/more than the amount
+	 * as specified in the config file.
+	 * As a side effect also increase the time the other lines have been in
+	 * the list.
+	 * @return true if and only if items got removed.
+	 */
+	static bool Truncate()
+	{
+		IConsoleLine *cur = IConsoleLine::front;
+		if (cur == NULL) return false;
+
+		int count = 1;
+		for (IConsoleLine *item = cur->previous; item != NULL; count++, cur = item, item = item->previous) {
+			if (item->time > _settings_client.gui.console_backlog_timeout &&
+					count > _settings_client.gui.console_backlog_length) {
+				delete item;
+				cur->previous = NULL;
+				return true;
+			}
+
+			if (item->time != MAX_UVALUE(typeof(item->time))) item->time++;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Reset the complete console line backlog.
+	 */
+	static void Reset()
+	{
+		delete IConsoleLine::front;
+		IConsoleLine::front = NULL;
+		IConsoleLine::size = 0;
+	}
+};
+
+/* static */ IConsoleLine *IConsoleLine::front = NULL;
+/* static */ int IConsoleLine::size  = 0;
+
 
 /* ** main console cmd buffer ** */
+static Textbuf _iconsole_cmdline;
 static char *_iconsole_history[ICON_HISTORY_SIZE];
 static byte _iconsole_historypos;
+IConsoleModes _iconsole_mode;
 
 /* *************** *
  *  end of header  *
@@ -60,7 +148,7 @@ static void IConsoleHistoryNavigate(int direction);
 
 struct IConsoleWindow : Window
 {
-	static byte scroll;
+	static int scroll;
 
 	IConsoleWindow(const WindowDesc *desc) : Window(desc)
 	{
@@ -79,17 +167,15 @@ struct IConsoleWindow : Window
 
 	virtual void OnPaint()
 	{
-		int i = IConsoleWindow::scroll;
 		int max = (this->height / ICON_LINE_HEIGHT) - 1;
-		int delta = 0;
+		const IConsoleLine *print = IConsoleLine::Get(IConsoleWindow::scroll);
 		GfxFillRect(this->left, this->top, this->width, this->height - 1, 0);
-		while ((i > 0) && (i > IConsoleWindow::scroll - max) && (_iconsole_buffer[i] != NULL)) {
-			DoDrawString(_iconsole_buffer[i], 5,
-				this->height - (IConsoleWindow::scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
-			i--;
+		for (int i = 0; i < max && print != NULL; i++, print = print->previous) {
+			DoDrawString(print->buffer, 5,
+				this->height - (2 + i) * ICON_LINE_HEIGHT, print->colour);
 		}
 		/* If the text is longer than the window, don't show the starting ']' */
-		delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
+		int delta = this->width - 10 - _iconsole_cmdline.width - ICON_RIGHT_BORDERWIDTH;
 		if (delta > 0) {
 			DoDrawString("]", 5, this->height - ICON_LINE_HEIGHT, CC_COMMAND);
 			delta = 0;
@@ -102,6 +188,15 @@ struct IConsoleWindow : Window
 		}
 	}
 
+	virtual void OnHundredthTick()
+	{
+		if (IConsoleLine::Truncate() &&
+				(IConsoleWindow::scroll > IConsoleLine::size)) {
+			IConsoleWindow::scroll = max(0, IConsoleLine::size - (this->height / ICON_LINE_HEIGHT) + 1);
+			this->SetDirty();
+		}
+	}
+
 	virtual void OnMouseLoop()
 	{
 		if (HandleCaret(&_iconsole_cmdline)) this->SetDirty();
@@ -109,6 +204,7 @@ struct IConsoleWindow : Window
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
+		const int scroll_height = (this->height / ICON_LINE_HEIGHT) - 1;
 		switch (keycode) {
 			case WKC_UP:
 				IConsoleHistoryNavigate(+1);
@@ -120,25 +216,25 @@ struct IConsoleWindow : Window
 				this->SetDirty();
 				break;
 
-			case WKC_SHIFT | WKC_PAGEUP:
-				if (IConsoleWindow::scroll - (this->height / ICON_LINE_HEIGHT) - 1 < 0) {
+			case WKC_SHIFT | WKC_PAGEDOWN:
+				if (IConsoleWindow::scroll - scroll_height < 0) {
 					IConsoleWindow::scroll = 0;
 				} else {
-					IConsoleWindow::scroll -= (this->height / ICON_LINE_HEIGHT) - 1;
+					IConsoleWindow::scroll -= scroll_height;
 				}
 				this->SetDirty();
 				break;
 
-			case WKC_SHIFT | WKC_PAGEDOWN:
-				if (IConsoleWindow::scroll + (this->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
-					IConsoleWindow::scroll = ICON_BUFFER;
+			case WKC_SHIFT | WKC_PAGEUP:
+				if (IConsoleWindow::scroll + scroll_height > IConsoleLine::size - scroll_height) {
+					IConsoleWindow::scroll = IConsoleLine::size - scroll_height;
 				} else {
-					IConsoleWindow::scroll += (this->height / ICON_LINE_HEIGHT) - 1;
+					IConsoleWindow::scroll += scroll_height;
 				}
 				this->SetDirty();
 				break;
 
-			case WKC_SHIFT | WKC_UP:
+			case WKC_SHIFT | WKC_DOWN:
 				if (IConsoleWindow::scroll <= 0) {
 					IConsoleWindow::scroll = 0;
 				} else {
@@ -147,9 +243,9 @@ struct IConsoleWindow : Window
 				this->SetDirty();
 				break;
 
-			case WKC_SHIFT | WKC_DOWN:
-				if (IConsoleWindow::scroll >= ICON_BUFFER) {
-					IConsoleWindow::scroll = ICON_BUFFER;
+			case WKC_SHIFT | WKC_UP:
+				if (IConsoleWindow::scroll >= IConsoleLine::size) {
+					IConsoleWindow::scroll = IConsoleLine::size;
 				} else {
 					++IConsoleWindow::scroll;
 				}
@@ -206,7 +302,7 @@ struct IConsoleWindow : Window
 
 			default:
 				if (IsValidChar(key, CS_ALPHANUMERAL)) {
-					IConsoleWindow::scroll = ICON_BUFFER;
+					IConsoleWindow::scroll = 0;
 					InsertTextBufferChar(&_iconsole_cmdline, key);
 					IConsoleResetHistoryPos();
 					this->SetDirty();
@@ -218,7 +314,7 @@ struct IConsoleWindow : Window
 	}
 };
 
-byte IConsoleWindow::scroll = ICON_BUFFER;
+int IConsoleWindow::scroll = 0;
 
 static const Widget _iconsole_window_widgets[] = {
 	{WIDGETS_END}
@@ -236,9 +332,9 @@ void IConsoleGUIInit()
 	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
 	_iconsole_mode = ICONSOLE_CLOSED;
 
+	IConsoleLine::Reset();
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
-	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
-	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
+
 	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
 	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE;
 
@@ -252,11 +348,7 @@ void IConsoleGUIInit()
 
 void IConsoleClearBuffer()
 {
-	uint i;
-	for (i = 0; i <= ICON_BUFFER; i++) {
-		free(_iconsole_buffer[i]);
-		_iconsole_buffer[i] = NULL;
-	}
+	IConsoleLine::Reset();
 }
 
 void IConsoleGUIFree()
@@ -353,14 +445,6 @@ static void IConsoleHistoryNavigate(int direction)
  */
 void IConsoleGUIPrint(ConsoleColour color_code, char *str)
 {
-	/* move up all the strings in the buffer one place and do the same for colour
-	 * to accomodate for the new command/message */
-	free(_iconsole_buffer[0]);
-	memmove(&_iconsole_buffer[0], &_iconsole_buffer[1], sizeof(_iconsole_buffer[0]) * ICON_BUFFER);
-	_iconsole_buffer[ICON_BUFFER] = str;
-
-	memmove(&_iconsole_cbuffer[0], &_iconsole_cbuffer[1], sizeof(_iconsole_cbuffer[0]) * ICON_BUFFER);
-	_iconsole_cbuffer[ICON_BUFFER] = color_code;
-
+	new IConsoleLine(str, color_code);
 	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }
