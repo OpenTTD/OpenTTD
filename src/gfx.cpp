@@ -770,8 +770,8 @@ void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
  *  While drawing the string, parse it in case some formatting is specified,
  *  like new colour, new size or even positionning.
  * @param string              The string to draw
- * @param x                   Offset from left side of the screen, if negative offset from the right side
- * @param y                   Offset from top side of the screen, if negative offset from the bottom
+ * @param x                   Offset from left side of the screen
+ * @param y                   Offset from top side of the screen
  * @param real_colour         Colour of the string, see _string_colormap in
  *                            table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @param parse_string_also_when_clipped
@@ -796,11 +796,7 @@ int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool pars
 	if (!parse_string_also_when_clipped) {
 		/* in "mode multiline", the available space have been verified. Not in regular one.
 		 * So if the string cannot be drawn, return the original start to say so.*/
-		if (x >= dpi->left + dpi->width ||
-				x + _screen.width * 2 <= dpi->left ||
-				y >= dpi->top + dpi->height ||
-				y + _screen.height <= dpi->top)
-					return x;
+		if (x >= dpi->left + dpi->width || y >= dpi->top + dpi->height) return x;
 
 		if (colour != TC_INVALID) { // the invalid colour flag test should not  really occur.  But better be safe
 switch_colour:;
