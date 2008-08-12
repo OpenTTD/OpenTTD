@@ -124,7 +124,7 @@ else
 ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 # Find if the local source if modified
 # Find the revision like: rXXXX-branch
-REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$2, a, "/"); BRANCH="-"a[5] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branch/ { split($$2, a, "/");  i=1; while(i<length(a) && a[i++]!="branches"); BRANCH="-"a[i] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
 REV_NR := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^Last Changed Rev:/ { print $$4 }')
 else
 # Are we a git dir?
