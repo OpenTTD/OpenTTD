@@ -544,8 +544,8 @@ struct TextRefStack {
 		if (this->position >= 2) {
 			this->position -= 2;
 		} else {
-			for (uint i = lengthof(stack) - 3; i >= this->position; i--) {
-				this->stack[this->position + 2] = this->stack[this->position];
+			for (int i = lengthof(stack) - 1; i >= this->position + 2; i--) {
+				this->stack[i] = this->stack[i - 2];
 			}
 		}
 		this->stack[this->position]     = GB(word, 0, 8);
