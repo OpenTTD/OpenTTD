@@ -21,33 +21,37 @@
 #include "../querystring_gui.h"
 #include "../town.h"
 #include "../window_func.h"
+#include "../settings_type.h"
 #include "network_internal.h"
 #include "network_client.h"
 
 #include "table/strings.h"
 
-assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH);
+/* The draw buffer must be able to contain the chat message, player name and the "[All]" message,
+ * some spaces and possible translations of [All] to other languages. */
+assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
 enum {
-	MAX_CHAT_MESSAGES      =  10,
+	NETWORK_CHAT_LINE_HEIGHT = 13,
 };
 
 struct ChatMessage {
-	char message[NETWORK_CHAT_LENGTH];
+	char message[DRAW_STRING_BUFFER];
 	uint16 color;
 	Date end_date;
 };
 
 /* used for chat window */
-static ChatMessage _chatmsg_list[MAX_CHAT_MESSAGES];
+static ChatMessage *_chatmsg_list = NULL;
 static bool _chatmessage_dirty = false;
 static bool _chatmessage_visible = false;
 static bool _chat_tab_completion_active;
+static uint MAX_CHAT_MESSAGES = 0;
 
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
-static const PointDimension _chatmsg_box = {10, 30, 500, 150};
-static uint8 _chatmessage_backup[150 * 500 * 6]; // (height * width)
+static PointDimension _chatmsg_box;
+static uint8 *_chatmessage_backup = NULL;
 
 static inline uint GetChatMessageCount()
 {
@@ -67,7 +71,7 @@ static inline uint GetChatMessageCount()
  */
 void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *message, ...)
 {
-	char buf[NETWORK_CHAT_LENGTH];
+	char buf[DRAW_STRING_BUFFER];
 	const char *bufp;
 	va_list va;
 	uint msg_count;
@@ -77,8 +81,7 @@ void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *messa
 	vsnprintf(buf, lengthof(buf), message, va);
 	va_end(va);
 
-
-	Utf8TrimString(buf, NETWORK_CHAT_LENGTH);
+	Utf8TrimString(buf, DRAW_STRING_BUFFER);
 
 	/* Force linebreaks for strings that are too long */
 	lines = GB(FormatStringLinebreaks(buf, _chatmsg_box.width - 8), 0, 16) + 1;
@@ -109,6 +112,15 @@ void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *messa
 
 void NetworkInitChatMessage()
 {
+	MAX_CHAT_MESSAGES   = _settings_client.gui.network_chat_box_height;
+
+	_chatmsg_list       = ReallocT(_chatmsg_list, _settings_client.gui.network_chat_box_height);
+	_chatmsg_box.x      = 10;
+	_chatmsg_box.y      = 30;
+	_chatmsg_box.width  = _settings_client.gui.network_chat_box_width;
+	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * NETWORK_CHAT_LINE_HEIGHT;
+	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * sizeof(uint32));
+
 	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		_chatmsg_list[i].message[0] = '\0';
 	}
@@ -212,7 +224,7 @@ void NetworkDrawChatMessage()
 	}
 	if (width <= 0 || height <= 0) return;
 
-	assert(blitter->BufferSize(width, height) < (int)sizeof(_chatmessage_backup));
+	assert(blitter->BufferSize(width, height) < (int)(_chatmsg_box.width * _chatmsg_box.height * sizeof(uint32)));
 
 	/* Make a copy of the screen as it is before painting (for undraw) */
 	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _chatmessage_backup, width, height);
@@ -222,14 +234,14 @@ void NetworkDrawChatMessage()
 	/* Paint a half-transparent box behind the chat messages */
 	GfxFillRect(
 			_chatmsg_box.x,
-			_screen.height - _chatmsg_box.y - count * 13 - 2,
+			_screen.height - _chatmsg_box.y - count * NETWORK_CHAT_LINE_HEIGHT - 2,
 			_chatmsg_box.x + _chatmsg_box.width - 1,
 			_screen.height - _chatmsg_box.y - 2,
 			PALETTE_TO_TRANSPARENT, FILLRECT_RECOLOR // black, but with some alpha for background
 		);
 
 	/* Paint the chat messages starting with the lowest at the bottom */
-	for (uint y = 13; count-- != 0; y += 13) {
+	for (uint y = NETWORK_CHAT_LINE_HEIGHT; count-- != 0; y += NETWORK_CHAT_LINE_HEIGHT) {
 		DoDrawString(_chatmsg_list[count].message, _chatmsg_box.x + 3, _screen.height - _chatmsg_box.y - y + 1, _chatmsg_list[count].color);
 	}
 

@@ -1804,6 +1804,9 @@ const SettingDesc _patch_settings[] = {
 	  SDTC_VAR(gui.cycle_signal_types,        SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES,          NULL),
 
 #ifdef ENABLE_NETWORK
+	  SDTC_VAR(gui.network_chat_box_width,   SLE_UINT16, S,  0,   700,      200,    65535, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(gui.network_chat_box_height,   SLE_UINT8, S,  0,    25,        5,      255, 0, STR_NULL,                                       NULL),
+
 	  SDTC_VAR(network.sync_freq,            SLE_UINT16,C|S,NO,   100,        0,      100, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.frame_freq,            SLE_UINT8,C|S,NO,     0,        0,      100, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_join_time,        SLE_UINT16, S, NO,   500,        0,    32000, 0, STR_NULL,                                       NULL),

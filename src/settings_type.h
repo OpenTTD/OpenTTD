@@ -82,6 +82,10 @@ struct GUISettings {
 	bool   show_track_reservation;           ///< highlight reserved tracks.
 	uint8  default_signal_type;              ///< the signal type to build by default.
 	uint8  cycle_signal_types;               ///< what signal types to cycle with the build signal tool.
+#ifdef ENABLE_NETWORK
+	uint16 network_chat_box_width;           ///< width of the chat box in pixels
+	uint8  network_chat_box_height;          ///< height of the chat box in lines
+#endif
 };
 
 /** Settings related to currency/unit systems. */
