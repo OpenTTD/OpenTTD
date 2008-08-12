@@ -216,7 +216,7 @@ static uint32 GetTime()
 
 static void DedicatedHandleKeyInput()
 {
-	static char input_line[200] = "";
+	static char input_line[1024] = "";
 
 	if (!InputWaiting()) return;
 
