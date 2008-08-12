@@ -26,6 +26,8 @@
 
 #include "table/strings.h"
 
+assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH);
+
 enum {
 	MAX_CHAT_MESSAGES      =  10,
 };

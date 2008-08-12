@@ -320,7 +320,7 @@ static inline int TruncateStringID(StringID src, char *dest, int maxw, const cha
  */
 int DrawString(int x, int y, StringID str, uint16 color)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
 	return DoDrawString(buffer, x, y, color);
@@ -339,7 +339,7 @@ int DrawString(int x, int y, StringID str, uint16 color)
  */
 int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	TruncateStringID(str, buffer, maxw, lastof(buffer));
 	return DoDrawString(buffer, x, y, color);
 }
@@ -356,7 +356,7 @@ int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw)
  */
 int DrawStringRightAligned(int x, int y, StringID str, uint16 color)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	int w;
 
 	GetString(buffer, str, lastof(buffer));
@@ -377,7 +377,7 @@ int DrawStringRightAligned(int x, int y, StringID str, uint16 color)
  */
 void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, uint maxw)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 
 	TruncateStringID(str, buffer, maxw, lastof(buffer));
 	DoDrawString(buffer, x - GetStringBoundingBox(buffer).width, y, color);
@@ -409,7 +409,7 @@ void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color)
  */
 int DrawStringCentered(int x, int y, StringID str, uint16 color)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	int w;
 
 	GetString(buffer, str, lastof(buffer));
@@ -433,7 +433,7 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
  */
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	int w = TruncateStringID(str, buffer, xr - xl, lastof(buffer));
 	return DoDrawString(buffer, (xl + xr - w) / 2, y, color);
 }
@@ -595,7 +595,7 @@ static int GetMultilineStringHeight(const char *src, int num)
  */
 int GetStringHeight(StringID str, int maxw)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
 
@@ -612,7 +612,7 @@ int GetStringHeight(StringID str, int maxw)
  * @param maxw Maximum width the string can have before it is wrapped */
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	uint32 tmp;
 	int num, w, mt;
 	const char *src;
@@ -655,7 +655,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 
 uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	uint32 tmp;
 	int num, mt;
 	uint total_height;
@@ -878,7 +878,7 @@ skip_cont:;
  */
 int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw)
 {
-	char buffer[512];
+	char buffer[DRAW_STRING_BUFFER];
 	ttd_strlcpy(buffer, str, sizeof(buffer));
 	TruncateString(buffer, maxw);
 	return DoDrawString(buffer, x, y, color);

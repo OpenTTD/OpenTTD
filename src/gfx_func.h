@@ -75,6 +75,11 @@ void ScreenSizeChanged();
 void GameSizeChanged();
 void UndrawMouseCursor();
 
+enum {
+	/* Size of the buffer used for drawing strings. */
+	DRAW_STRING_BUFFER = 1024,
+};
+
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
