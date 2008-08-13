@@ -18,6 +18,12 @@
 #include <windows.h>
 #include <tchar.h>
 
+/** Only MSVC has this header, MinGW supplies the required constants itself */
+#ifdef _MSC_VER
+# define COMPILE_MULTIMON_STUBS
+# include <multimon.h>
+#endif /* _MSC_VER */
+
 static struct {
 	HWND main_wnd;
 	HBITMAP dib_sect;
@@ -280,8 +286,8 @@ static bool MakeWindow(bool full_screen)
 #endif
 		w = r.right - r.left;
 		h = r.bottom - r.top;
-		x = (GetSystemMetrics(SM_CXSCREEN) - w) / 2;
-		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
+		x = ((GetSystemMetrics(SM_CXVIRTUALSCREEN) - w) / 2) - GetSystemMetrics(SM_XVIRTUALSCREEN);
+		y = ((GetSystemMetrics(SM_CYVIRTUALSCREEN) - h) / 2) - GetSystemMetrics(SM_YVIRTUALSCREEN);
 
 		if (_wnd.main_wnd) {
 			ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL); // remove maximize-flag
