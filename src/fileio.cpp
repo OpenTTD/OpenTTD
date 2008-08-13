@@ -367,12 +367,12 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 		strcpy(resolved_name, filename);
 		strtolower(resolved_name);
 
-		uint resolved_len = strlen(resolved_name);
+		size_t resolved_len = strlen(resolved_name);
 
 		/* Resolve ONE directory link */
 		for (TarLinkList::iterator link = _tar_linklist.begin(); link != _tar_linklist.end(); link++) {
 			const std::string &src = link->first;
-			uint len = src.length();
+			size_t len = src.length();
 			if (resolved_len >= len && resolved_name[len - 1] == PATHSEPCHAR && strncmp(src.c_str(), resolved_name, len) == 0) {
 				/* Apply link */
 				char resolved_name2[MAX_RESOLVED_LENGTH];

@@ -39,11 +39,11 @@ struct QueryString {
 };
 
 struct QueryStringBaseWindow : public Window, public QueryString {
-	const size_t edit_str_size;
 	char *edit_str_buf;
 	char *orig_str_buf;
+	const uint16 edit_str_size;
 
-	QueryStringBaseWindow(size_t size, const WindowDesc *desc, WindowNumber window_number = 0) : Window(desc, window_number), edit_str_size(size)
+	QueryStringBaseWindow(uint16 size, const WindowDesc *desc, WindowNumber window_number = 0) : Window(desc, window_number), edit_str_size(size)
 	{
 		this->edit_str_buf = CallocT<char>(size);
 	}

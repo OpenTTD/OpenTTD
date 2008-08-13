@@ -1056,7 +1056,7 @@ enum QueryStringWidgets {
 
 struct QueryStringWindow : public QueryStringBaseWindow
 {
-	QueryStringWindow(size_t size, const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(size, desc)
+	QueryStringWindow(uint16 size, const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(size, desc)
 	{
 		this->parent = parent;
 		SetBit(_no_scroll, SCROLL_EDIT);
