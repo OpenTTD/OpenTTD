@@ -884,6 +884,7 @@ static int AiNew_HowManyVehicles(Player *p)
 		length = _players_ainew[p->index].path_info.route_length;
 		// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
 		tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
+		if (tiles_a_day == 0) tiles_a_day = 1;
 		// We want a vehicle in a station once a month at least, so, calculate it!
 		// (the * 2 is because we have 2 stations ;))
 		amount = length * 2 * 2 / tiles_a_day / 30;
@@ -900,6 +901,7 @@ static int AiNew_HowManyVehicles(Player *p)
 		length = _players_ainew[p->index].path_info.route_length;
 		// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
 		tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
+		if (tiles_a_day == 0) tiles_a_day = 1;
 		if (_players_ainew[p->index].from_deliver) {
 			max_cargo = GetIndustry(_players_ainew[p->index].from_ic)->last_month_production[0];
 		} else {
