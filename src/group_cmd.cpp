@@ -170,7 +170,8 @@ static bool IsUniqueGroupName(const char *name)
  */
 CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidGroupID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
+	if (!IsValidGroupID(p1)) return CMD_ERROR;
+	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_GROUP_NAME_BYTES) return CMD_ERROR;
 
 	Group *g = GetGroup(p1);
 	if (g->owner != _current_player) return CMD_ERROR;

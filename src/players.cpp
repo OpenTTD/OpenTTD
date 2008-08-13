@@ -366,8 +366,7 @@ verify_name:;
 		}
 
 		GetString(buffer, str, lastof(buffer));
-		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 150)
-			goto bad_town_name;
+		if (strlen(buffer) >= MAX_LENGTH_COMPANY_NAME_BYTES) goto bad_town_name;
 
 set_name:;
 		p->name_1 = str;

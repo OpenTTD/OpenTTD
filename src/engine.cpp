@@ -487,7 +487,8 @@ static bool IsUniqueEngineName(const char *name)
  */
 CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsEngineIndex(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
+	if (!IsEngineIndex(p1)) return CMD_ERROR;
+	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_ENGINE_NAME_BYTES) return CMD_ERROR;
 
 	if (!IsUniqueEngineName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 

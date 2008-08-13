@@ -133,6 +133,8 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* If _cmd_text 0 means the new text for the sign is non-empty.
 	 * So rename the sign. If it is empty, it has no name, so delete it */
 	if (!StrEmpty(_cmd_text)) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
+
 		if (flags & DC_EXEC) {
 			Sign *si = GetSign(p1);
 

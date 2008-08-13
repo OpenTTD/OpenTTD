@@ -1502,7 +1502,8 @@ static bool IsUniqueVehicleName(const char *name)
  */
 CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidVehicleID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_VEHICLE_NAME_BYTES) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
 

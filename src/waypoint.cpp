@@ -389,6 +389,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (!CheckTileOwnership(wp->xy)) return CMD_ERROR;
 
 	if (!StrEmpty(_cmd_text)) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_WAYPOINT_NAME_BYTES) return CMD_ERROR;
 		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 		if (flags & DC_EXEC) {

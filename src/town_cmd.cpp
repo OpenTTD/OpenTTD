@@ -1394,7 +1394,7 @@ restart:
 		}
 
 		/* Check size and width */
-		if (strlen(buf1) >= 31 || GetStringBoundingBox(buf1).width > 130) continue;
+		if (strlen(buf1) >= MAX_LENGTH_TOWN_NAME_BYTES || GetStringBoundingBox(buf1).width > MAX_LENGTH_TOWN_NAME_PIXELS) continue;
 
 		FOR_ALL_TOWNS(t2) {
 			/* We can't just compare the numbers since
@@ -2093,7 +2093,8 @@ static bool IsUniqueTownName(const char *name)
  */
 CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidTownID(p1) || StrEmpty(_cmd_text)) return CMD_ERROR;
+	if (!IsValidTownID(p1)) return CMD_ERROR;
+	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
 
 	if (!IsUniqueTownName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
