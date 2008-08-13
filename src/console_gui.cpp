@@ -99,7 +99,7 @@ struct IConsoleLine {
 				return true;
 			}
 
-			if (item->time != MAX_UVALUE(typeof(item->time))) item->time++;
+			if (item->time != MAX_UVALUE(uint16)) item->time++;
 		}
 
 		return false;
