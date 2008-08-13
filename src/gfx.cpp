@@ -1003,16 +1003,16 @@ void DoPaletteAnimations()
 {
 	Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 	const Colour *s;
+	const ExtraPaletteValues *ev = &_extra_palette_values;
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
-	const ExtraPaletteValues *ev = &_extra_palette_values;
 	const int colour_rotation_amount = _use_dos_palette ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
 	Colour old_val[PALETTE_ANIM_SIZE_DOS];
 	const int oldval_size = colour_rotation_amount * sizeof(*old_val);
+	const uint old_tc = _palette_animation_counter;
 	uint i;
 	uint j;
-	uint old_tc = _palette_animation_counter;
 
 	if (blitter != NULL && blitter->UsePaletteAnimation() == Blitter::PALETTE_ANIMATION_NONE) {
 		_palette_animation_counter = 0;
