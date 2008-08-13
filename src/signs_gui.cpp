@@ -188,7 +188,7 @@ enum QueryEditSignWidgets {
 struct SignWindow : QueryStringBaseWindow, SignList {
 	SignID cur_sign;
 
-	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(31, desc)
+	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_BYTES, desc)
 	{
 		SetBit(_no_scroll, SCROLL_EDIT);
 		this->caption = STR_280B_EDIT_SIGN_TEXT;
@@ -218,7 +218,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		*last_of = '\0';
 
 		this->cur_sign = si->index;
-		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 255);
+		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, MAX_LENGTH_SIGN_NAME_PIXELS);
 
 		this->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 	}

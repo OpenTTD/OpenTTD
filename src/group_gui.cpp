@@ -554,7 +554,7 @@ public:
 				const Group *g = GetGroup(this->group_sel);
 
 				SetDParam(0, g->index);
-				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, 31, 150, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL);
 			} break;
 
 

@@ -1475,7 +1475,7 @@ struct VehicleDetailsWindow : Window {
 			case VLD_WIDGET_RENAME_VEHICLE: {// rename
 				const Vehicle *v = GetVehicle(this->window_number);
 				SetDParam(0, v->index);
-				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], 31, 150, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], MAX_LENGTH_VEHICLE_NAME_BYTES, MAX_LENGTH_VEHICLE_NAME_PIXELS, this, CS_ALPHANUMERAL);
 			} break;
 
 			case VLD_WIDGET_INCREASE_SERVICING_INTERVAL:   // increase int

@@ -1222,7 +1222,7 @@ struct PlayerCompanyWindow : Window
 
 		/* "xxx (Manager)" */
 		SetDParam(0, p->index);
-		DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, 94);
+		DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, MAX_LENGTH_PRESIDENT_NAME_PIXELS);
 
 		/* "Inaugurated:" */
 		SetDParam(0, p->inaugurated_year);
@@ -1257,13 +1257,13 @@ struct PlayerCompanyWindow : Window
 			case PCW_WIDGET_PRESIDENT_NAME:
 				this->query_widget = PCW_WIDGET_PRESIDENT_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME, 94, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME_BYTES, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL);
 				break;
 
 			case PCW_WIDGET_COMPANY_NAME:
 				this->query_widget = PCW_WIDGET_COMPANY_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME, 150, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL);
 				break;
 
 			case PCW_WIDGET_BUILD_VIEW_HQ: {

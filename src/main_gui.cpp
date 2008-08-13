@@ -145,7 +145,7 @@ void ShowRenameWaypointWindow(const Waypoint *wp)
 	_rename_id = id;
 	_rename_what = 1;
 	SetDParam(0, id);
-	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, NULL, CS_ALPHANUMERAL);
+	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_WAYPOINT_NAME_BYTES, MAX_LENGTH_WAYPOINT_NAME_PIXELS, NULL, CS_ALPHANUMERAL);
 }
 
 

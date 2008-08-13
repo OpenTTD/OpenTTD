@@ -911,7 +911,7 @@ struct StationViewWindow : public Window {
 
 			case SVW_RENAME:
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, 31, 180, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS, this, CS_ALPHANUMERAL);
 				break;
 
 			case SVW_TRAINS: { // Show a list of scheduled trains to this station

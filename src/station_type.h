@@ -62,4 +62,9 @@ enum CatchmentArea {
 	MAX_CATCHMENT      = 10, ///< Airports have a catchment up to this number.
 };
 
+enum {
+	MAX_LENGTH_STATION_NAME_BYTES  =  31, ///< The maximum length of a station name in bytes including '\0'
+	MAX_LENGTH_STATION_NAME_PIXELS = 180, ///< The maximum length of a station name in pixels
+};
+
 #endif /* STATION_TYPE_H */

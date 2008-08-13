@@ -56,4 +56,9 @@ enum DepotCommand {
 	DEPOT_COMMAND_MASK  = 0xF,
 };
 
+enum {
+	MAX_LENGTH_VEHICLE_NAME_BYTES  =  31, ///< The maximum length of a vehicle name in bytes including '\0'
+	MAX_LENGTH_VEHICLE_NAME_PIXELS = 150, ///< The maximum length of a vehicle name in pixels
+};
+
 #endif /* VEHICLE_TYPE_H */

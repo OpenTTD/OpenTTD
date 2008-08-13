@@ -140,7 +140,9 @@ enum {
 };
 
 enum {
-	NUM_VEHICLE_TYPES = 6
+	NUM_VEHICLE_TYPES             =   6,
+	MAX_LENGTH_ENGINE_NAME_BYTES  =  31, ///< The maximum length of an engine name in bytes including '\0'
+	MAX_LENGTH_ENGINE_NAME_PIXELS = 160, ///< The maximum length of an engine name in pixels
 };
 
 static const EngineID INVALID_ENGINE = 0xFFFF;

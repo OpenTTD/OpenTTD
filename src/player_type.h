@@ -31,8 +31,10 @@ enum Owner {
 DECLARE_POSTFIX_INCREMENT(Owner);
 
 enum {
-	MAX_LENGTH_PRESIDENT_NAME = 31, ///< The maximum length for a president's name
-	MAX_LENGTH_COMPANY_NAME   = 31, ///< The maximum length for a company's name
+	MAX_LENGTH_PRESIDENT_NAME_BYTES  =  31, ///< The maximum length of a president name in bytes including '\0'
+	MAX_LENGTH_PRESIDENT_NAME_PIXELS =  94, ///< The maximum length of a president name in pixels
+	MAX_LENGTH_COMPANY_NAME_BYTES    =  31, ///< The maximum length of a company name in bytes including '\0'
+	MAX_LENGTH_COMPANY_NAME_PIXELS   = 150, ///< The maximum length of a company name in pixels
 };
 
 /** Define basic enum properties */

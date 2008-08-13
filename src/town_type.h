@@ -81,4 +81,9 @@ enum TownLayout {
 template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_NO_ROADS, NUM_TLS, NUM_TLS> {};
 typedef TinyEnumT<TownLayout> TownLayoutByte; //typedefing-enumification of TownLayout
 
+enum {
+	MAX_LENGTH_TOWN_NAME_BYTES  =  31, ///< The maximum length of a town name in bytes including '\0'
+	MAX_LENGTH_TOWN_NAME_PIXELS = 130, ///< The maximum length of a town name in pixels
+};
+
 #endif /* TOWN_TYPE_H */
