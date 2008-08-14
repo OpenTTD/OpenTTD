@@ -156,7 +156,7 @@ ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 # Find if the local source if modified
 REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
 # Find the revision like: rXXXX-branch
-REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branches/ { split($$2, a, "/"); i=1; while(i<length(a) && a[i++]!="branches"); BRANCH="-"a[i] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branches/ { split($$2, a, "/"); for (i in a) if(a[i]=="branches") { BRANCH="-"a[i+1]; break } } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
 endif
 endif
 # Make sure we have something in REV
