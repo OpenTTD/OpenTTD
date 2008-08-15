@@ -31,7 +31,6 @@ VIAddVersionKey "LegalCopyright" " "
 Name "${APPNAMEANDVERSION} ${APPBITS} bits version ${EXTRA_VERSION}"
 
 ; NOTE: Keep trailing backslash!
-InstallDir "$PROGRAMFILES\OpenTTD\"
 InstallDirRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Install Folder"
 OutFile "openttd-${APPVERSION}-${APPARCH}.exe"
 CRCCheck force
@@ -395,8 +394,9 @@ Function GetWindowsVersion
 	ClearErrors
 	StrCpy $R0 "winnt"
 
-	ReadRegStr $R1 HKLM "SOFTWARE\MICROSOFT\WINDOWS NT\CurrentVersion" CurrentVersion
-	IfErrors 0 WinNT
+	GetVersion::WindowsPlatformId
+	Pop $R0
+	IntCmp $R0 2 WinNT 0
 	StrCpy $R0 "win9x"
 WinNT:
 	ClearErrors
@@ -406,10 +406,9 @@ FunctionEnd
 ;-------------------------------------------------------------------------------
 ; Check whether we're not running an installer for 64 bits on 32 bits and vice versa
 Function CheckProcessorArchitecture
-	cpudesc::tell
-	Pop $0                     ;full identification string in $0
-	StrCpy $1 $0 2, 56         ;pull out the architecture
-	StrCmp $1 "00" 0 Win64
+	GetVersion::WindowsPlatformArchitecture
+	Pop $R0
+	IntCmp $R0 64 Win64 0
 	ClearErrors
 	IntCmp ${APPBITS} 64 0 Done
 	MessageBox MB_OKCANCEL|MB_ICONSTOP "You want to install the 64 bits OpenTTD on a 32 bits Operating System. This is not going to work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
