@@ -139,6 +139,8 @@ callback_table.h
 cargo_type.h
 cargopacket.h
 cargotype.h
+cheat_func.h
+cheat_type.h
 cmd_helper.h
 command_func.h
 command_type.h
@@ -146,8 +148,6 @@ console_func.h
 console_gui.h
 console_internal.h
 console_type.h
-cheat_func.h
-cheat_type.h
 currency.h
 date_func.h
 date_type.h
@@ -166,8 +166,8 @@ widgets/dropdown_func.h
 widgets/dropdown_type.h
 economy_func.h
 economy_type.h
-effectvehicle_func.h
 effectvehicle_base.h
+effectvehicle_func.h
 elrail_func.h
 engine_base.h
 engine_func.h
@@ -302,9 +302,9 @@ tile_type.h
 tilehighlight_func.h
 tilehighlight_type.h
 timetable.h
+toolbar_gui.h
 town.h
 town_type.h
-toolbar_gui.h
 track_func.h
 track_type.h
 train.h
@@ -322,13 +322,13 @@ vehicle_type.h
 vehiclelist.h
 viewport_func.h
 viewport_type.h
+water.h
 waypoint.h
 waypoint_type.h
+win32.h
 music/win32_m.h
 sound/win32_s.h
 video/win32_v.h
-water.h
-win32.h
 window_func.h
 window_gui.h
 window_type.h
@@ -350,11 +350,11 @@ video/cocoa/cocoa_v.h
 #end
 
 # Core Source Code
-core/alloc_func.hpp
 core/alloc_func.cpp
+core/alloc_func.hpp
 core/alloc_type.hpp
-core/bitmath_func.hpp
 core/bitmath_func.cpp
+core/bitmath_func.hpp
 core/endian_func.hpp
 core/endian_type.hpp
 core/enum_type.hpp
@@ -362,8 +362,8 @@ core/geometry_type.hpp
 core/math_func.hpp
 core/mem_func.hpp
 core/overflowsafe_type.hpp
-core/random_func.hpp
 core/random_func.cpp
+core/random_func.hpp
 core/smallvec_type.hpp
 core/sort_func.hpp
 

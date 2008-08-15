@@ -845,6 +845,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\cheat_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\cheat_type.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\cmd_helper.h"
 				>
 			</File>
@@ -870,14 +878,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\console_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\cheat_func.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\cheat_type.h"
 				>
 			</File>
 			<File
@@ -953,11 +953,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\effectvehicle_func.h"
+				RelativePath=".\..\src\effectvehicle_base.h"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\effectvehicle_base.h"
+				RelativePath=".\..\src\effectvehicle_func.h"
 				>
 			</File>
 			<File
@@ -1497,15 +1497,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\toolbar_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\town.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\town_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\toolbar_gui.h"
 				>
 			</File>
 			<File
@@ -1577,11 +1577,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\water.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\waypoint.h"
 				>
 			</File>
 			<File
 				RelativePath=".\..\src\waypoint_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\win32.h"
 				>
 			</File>
 			<File
@@ -1594,14 +1602,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\video\win32_v.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\water.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\win32.h"
 				>
 			</File>
 			<File
@@ -1629,11 +1629,11 @@
 			Name="Core Source Code"
 			>
 			<File
-				RelativePath=".\..\src\core\alloc_func.hpp"
+				RelativePath=".\..\src\core\alloc_func.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\alloc_func.cpp"
+				RelativePath=".\..\src\core\alloc_func.hpp"
 				>
 			</File>
 			<File
@@ -1641,11 +1641,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\bitmath_func.hpp"
+				RelativePath=".\..\src\core\bitmath_func.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\bitmath_func.cpp"
+				RelativePath=".\..\src\core\bitmath_func.hpp"
 				>
 			</File>
 			<File
@@ -1677,11 +1677,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\random_func.hpp"
+				RelativePath=".\..\src\core\random_func.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\core\random_func.cpp"
+				RelativePath=".\..\src\core\random_func.hpp"
 				>
 			</File>
 			<File
