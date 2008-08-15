@@ -30,6 +30,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 #include "newgrf_station.h"
+#include "newgrf_text.h"
 #include "group.h"
 #include "order_func.h"
 #include "strings_func.h"
@@ -977,6 +978,72 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
+/** Start/Stop a vehicle
+ * @param tile unused
+ * @param flags type of operation
+ * @param p1 vehicle to start/stop
+ * @param p2 unused
+ * @return result of operation.  Nothing if everything went well
+ */
+CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+
+	Vehicle *v = GetVehicle(p1);
+
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+
+	switch (v->type) {
+		case VEH_TRAIN:
+			if (v->vehstatus & VS_STOPPED && v->u.rail.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
+			break;
+
+		case VEH_SHIP:
+		case VEH_ROAD:
+			break;
+
+		case VEH_AIRCRAFT:
+			/* cannot stop airplane when in flight, or when taking off / landing */
+			if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7) return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
+			break;
+
+		default: return CMD_ERROR;
+	}
+
+	/* Check if this vehicle can be started/stopped. The callback will fail or
+	 * return 0xFF if it can. */
+	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
+	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF) {
+		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
+		return_cmd_error(error);
+	}
+
+	if (flags & DC_EXEC) {
+		static const StringID vehicle_waiting_in_depot[] = {
+			STR_8814_TRAIN_IS_WAITING_IN_DEPOT,
+			STR_9016_ROAD_VEHICLE_IS_WAITING,
+			STR_981C_SHIP_IS_WAITING_IN_DEPOT,
+			STR_A014_AIRCRAFT_IS_WAITING_IN,
+		};
+
+		static const WindowClass vehicle_list[] = {
+			WC_TRAINS_LIST,
+			WC_ROADVEH_LIST,
+			WC_SHIPS_LIST,
+			WC_AIRCRAFT_LIST,
+		};
+
+		if (v->IsStoppedInDepot()) DeleteVehicleNews(p1, vehicle_waiting_in_depot[v->type]);
+
+		v->vehstatus ^= VS_STOPPED;
+		v->cur_speed = 0;
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowClasses(vehicle_list[v->type]);
+	}
+	return CommandCost();
+}
+
 /** Starts or stops a lot of vehicles
  * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param flags type of operation
@@ -991,18 +1058,9 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 {
 	VehicleList list;
 	CommandCost return_value = CMD_ERROR;
-	uint stop_command;
 	VehicleType vehicle_type = (VehicleType)GB(p2, 0, 5);
 	bool start_stop = HasBit(p2, 5);
 	bool vehicle_list_window = HasBit(p2, 6);
-
-	switch (vehicle_type) {
-		case VEH_TRAIN:    stop_command = CMD_START_STOP_TRAIN;    break;
-		case VEH_ROAD:     stop_command = CMD_START_STOP_ROADVEH;  break;
-		case VEH_SHIP:     stop_command = CMD_START_STOP_SHIP;     break;
-		case VEH_AIRCRAFT: stop_command = CMD_START_STOP_AIRCRAFT; break;
-		default: return CMD_ERROR;
-	}
 
 	if (vehicle_list_window) {
 		uint32 id = p1;
@@ -1027,7 +1085,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 			}
 		}
 
-		CommandCost ret = DoCommand(tile, v->index, 0, flags, stop_command);
+		CommandCost ret = DoCommand(tile, v->index, 0, flags, CMD_START_STOP_VEHICLE);
 
 		if (CmdSucceeded(ret)) {
 			return_value = CommandCost();

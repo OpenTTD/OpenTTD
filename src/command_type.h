@@ -172,8 +172,6 @@ enum {
 	CMD_BUILD_RAIL_VEHICLE,           ///< build a rail vehicle
 	CMD_MOVE_RAIL_VEHICLE,            ///< move a rail vehicle (in the depot)
 
-	CMD_START_STOP_TRAIN,             ///< start or stop a train
-
 	CMD_SELL_RAIL_WAGON,              ///< sell a rail wagon
 
 	CMD_SEND_TRAIN_TO_DEPOT,          ///< send a train to a depot
@@ -205,7 +203,6 @@ enum {
 	CMD_RENAME_STATION,               ///< rename a station
 
 	CMD_SELL_AIRCRAFT,                ///< sell an aircraft
-	CMD_START_STOP_AIRCRAFT,          ///< start/stop an aircraft
 	CMD_BUILD_AIRCRAFT,               ///< build an aircraft
 	CMD_SEND_AIRCRAFT_TO_HANGAR,      ///< send an aircraft to a hanger
 	CMD_REFIT_AIRCRAFT,               ///< refit the cargo space of an aircraft
@@ -214,7 +211,6 @@ enum {
 	CMD_RENAME_SIGN,                  ///< rename a sign
 
 	CMD_BUILD_ROAD_VEH,               ///< build a road vehicle
-	CMD_START_STOP_ROADVEH,           ///< start/stop a road vehicle
 	CMD_SELL_ROAD_VEH,                ///< sell a road vehicle
 	CMD_SEND_ROADVEH_TO_DEPOT,        ///< send a road vehicle to the depot
 	CMD_TURN_ROADVEH,                 ///< turn a road vehicle around
@@ -233,7 +229,6 @@ enum {
 
 	CMD_SET_ROAD_DRIVE_SIDE,          ///< set the side where the road vehicles drive
 
-	CMD_START_STOP_SHIP,              ///< start/stop a ship
 	CMD_SELL_SHIP,                    ///< sell a ship
 	CMD_BUILD_SHIP,                   ///< build a new ship
 	CMD_SEND_SHIP_TO_DEPOT,           ///< send a ship to a depot
@@ -262,6 +257,7 @@ enum {
 	CMD_SET_AUTOREPLACE,              ///< set an autoreplace entry
 
 	CMD_CLONE_VEHICLE,                ///< clone a vehicle
+	CMD_START_STOP_VEHICLE,           ///< start or stop a vehicle
 	CMD_MASS_START_STOP,              ///< start/stop all vehicles (in a depot)
 	CMD_DEPOT_SELL_ALL_VEHICLES,      ///< sell all vehicles which are in a given depot
 	CMD_DEPOT_MASS_AUTOREPLACE,       ///< force the autoreplace to take action in a given depot

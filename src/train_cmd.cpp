@@ -1347,42 +1347,6 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	return CommandCost();
 }
 
-/** Start/Stop a train.
- * @param tile unused
- * @param flags type of operation
- * @param p1 train to start/stop
- * @param p2 unused
- */
-CommandCost CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
-
-	Vehicle *v = GetVehicle(p1);
-
-	if (v->type != VEH_TRAIN || !CheckOwnership(v->owner)) return CMD_ERROR;
-
-	/* Check if this train can be started/stopped. The callback will fail or
-	 * return 0xFF if it can. */
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF) {
-		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
-		return_cmd_error(error);
-	}
-
-	if (v->vehstatus & VS_STOPPED && v->u.rail.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
-
-	if (flags & DC_EXEC) {
-		if (v->vehstatus & VS_STOPPED && v->u.rail.track == TRACK_BIT_DEPOT) {
-			DeleteVehicleNews(p1, STR_8814_TRAIN_IS_WAITING_IN_DEPOT);
-		}
-
-		v->vehstatus ^= VS_STOPPED;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-	}
-	return CommandCost();
-}
-
 /** Sell a (single) train wagon/engine.
  * @param tile unused
  * @param flags type of operation

@@ -348,7 +348,7 @@ static void AiHandleReplaceTrain(Player *p)
 				CmdSucceeded(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE))) {
 			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), &orderbak);
-			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
+			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
@@ -378,7 +378,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 			VehicleID veh = _new_vehicle_id;
 
 			AiRestoreVehicleOrders(GetVehicle(veh), &orderbak);
-			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
+			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
 	}
@@ -406,7 +406,7 @@ static void AiHandleReplaceAircraft(Player *p)
 				CmdSucceeded(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) {
 			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), &orderbak);
-			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
+			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
@@ -2563,7 +2563,7 @@ handle_nocash:
 		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
-	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_TRAIN);
+	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 
 	DoCommand(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
@@ -3298,7 +3298,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
-	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
+	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 	DoCommand(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 
 	if (_players_ai[p->index].num_want_fullload != 0) _players_ai[p->index].num_want_fullload--;
@@ -3596,7 +3596,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 		DoCommand(0, loco_id + (i << 16), order.Pack(), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
-	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
+	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 
 	DoCommand(0, loco_id, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 

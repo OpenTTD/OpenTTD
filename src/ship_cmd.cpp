@@ -873,43 +873,6 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return ret;
 }
 
-/** Start/Stop a ship.
- * @param tile unused
- * @param flags type of operation
- * @param p1 ship ID to start/stop
- * @param p2 unused
- */
-CommandCost CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
-{
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
-
-	Vehicle *v = GetVehicle(p1);
-
-	if (v->type != VEH_SHIP || !CheckOwnership(v->owner)) return CMD_ERROR;
-
-	/* Check if this ship can be started/stopped. The callback will fail or
-	 * return 0xFF if it can. */
-	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF) {
-		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
-		return_cmd_error(error);
-	}
-
-	if (flags & DC_EXEC) {
-		if (v->IsStoppedInDepot()) {
-			DeleteVehicleNews(p1, STR_981C_SHIP_IS_WAITING_IN_DEPOT);
-		}
-
-		v->vehstatus ^= VS_STOPPED;
-		v->cur_speed = 0;
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClasses(WC_SHIPS_LIST);
-	}
-
-	return CommandCost();
-}
-
 bool Ship::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
 	const Depot *depot = FindClosestShipDepot(this);

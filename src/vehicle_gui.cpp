@@ -1627,10 +1627,10 @@ enum VehicleCommandTranslation {
 /** Command codes for the shared buttons indexed by VehicleCommandTranslation and vehicle type. */
 static const uint32 _vehicle_command_translation_table[][4] = {
 	{ // VCT_CMD_START_STOP
-		CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN),
-		CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE),
-		CMD_START_STOP_SHIP | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP),
-		CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT)
+		CMD_START_STOP_VEHICLE | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN),
+		CMD_START_STOP_VEHICLE | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE),
+		CMD_START_STOP_VEHICLE | CMD_MSG(STR_9818_CAN_T_STOP_START_SHIP),
+		CMD_START_STOP_VEHICLE | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT)
 	},
 	{ // VCT_CMD_GOTO_DEPOT
 		/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */

@@ -89,8 +89,6 @@ DEF_COMMAND(CmdPlantTree);
 DEF_COMMAND(CmdBuildRailVehicle);
 DEF_COMMAND(CmdMoveRailVehicle);
 
-DEF_COMMAND(CmdStartStopTrain);
-
 DEF_COMMAND(CmdSellRailWagon);
 
 DEF_COMMAND(CmdSendTrainToDepot);
@@ -124,7 +122,6 @@ DEF_COMMAND(CmdChangePresidentName);
 DEF_COMMAND(CmdRenameStation);
 
 DEF_COMMAND(CmdSellAircraft);
-DEF_COMMAND(CmdStartStopAircraft);
 DEF_COMMAND(CmdBuildAircraft);
 DEF_COMMAND(CmdSendAircraftToHangar);
 DEF_COMMAND(CmdRefitAircraft);
@@ -133,7 +130,6 @@ DEF_COMMAND(CmdPlaceSign);
 DEF_COMMAND(CmdRenameSign);
 
 DEF_COMMAND(CmdBuildRoadVeh);
-DEF_COMMAND(CmdStartStopRoadVeh);
 DEF_COMMAND(CmdSellRoadVeh);
 DEF_COMMAND(CmdSendRoadVehToDepot);
 DEF_COMMAND(CmdTurnRoadVeh);
@@ -154,7 +150,6 @@ DEF_COMMAND(CmdSetRoadDriveSide);
 
 DEF_COMMAND(CmdChangePatchSetting);
 
-DEF_COMMAND(CmdStartStopShip);
 DEF_COMMAND(CmdSellShip);
 DEF_COMMAND(CmdBuildShip);
 DEF_COMMAND(CmdSendShipToDepot);
@@ -182,6 +177,7 @@ DEF_COMMAND(CmdRemoveSignalTrack);
 DEF_COMMAND(CmdSetAutoReplace);
 
 DEF_COMMAND(CmdCloneVehicle);
+DEF_COMMAND(CmdStartStopVehicle);
 DEF_COMMAND(CmdMassStartStopVehicle);
 DEF_COMMAND(CmdDepotSellAllVehicles);
 DEF_COMMAND(CmdDepotMassAutoReplace);
@@ -243,7 +239,6 @@ static const Command _command_proc_table[] = {
 	{CmdPlantTree,                    CMD_AUTO}, /* CMD_PLANT_TREE */
 	{CmdBuildRailVehicle,                    0}, /* CMD_BUILD_RAIL_VEHICLE */
 	{CmdMoveRailVehicle,                     0}, /* CMD_MOVE_RAIL_VEHICLE */
-	{CmdStartStopTrain,                      0}, /* CMD_START_STOP_TRAIN */
 
 	{CmdSellRailWagon,                       0}, /* CMD_SELL_RAIL_WAGON */
 	{CmdSendTrainToDepot,                    0}, /* CMD_SEND_TRAIN_TO_DEPOT */
@@ -276,7 +271,6 @@ static const Command _command_proc_table[] = {
 	{CmdRenameStation,                       0}, /* CMD_RENAME_STATION */
 
 	{CmdSellAircraft,                        0}, /* CMD_SELL_AIRCRAFT */
-	{CmdStartStopAircraft,                   0}, /* CMD_START_STOP_AIRCRAFT */
 
 	{CmdBuildAircraft,                       0}, /* CMD_BUILD_AIRCRAFT */
 	{CmdSendAircraftToHangar,                0}, /* CMD_SEND_AIRCRAFT_TO_HANGAR */
@@ -286,7 +280,6 @@ static const Command _command_proc_table[] = {
 	{CmdRenameSign,                          0}, /* CMD_RENAME_SIGN */
 
 	{CmdBuildRoadVeh,                        0}, /* CMD_BUILD_ROAD_VEH */
-	{CmdStartStopRoadVeh,                    0}, /* CMD_START_STOP_ROADVEH */
 	{CmdSellRoadVeh,                         0}, /* CMD_SELL_ROAD_VEH */
 	{CmdSendRoadVehToDepot,                  0}, /* CMD_SEND_ROADVEH_TO_DEPOT */
 	{CmdTurnRoadVeh,                         0}, /* CMD_TURN_ROADVEH */
@@ -304,7 +297,6 @@ static const Command _command_proc_table[] = {
 
 	{CmdSetRoadDriveSide,           CMD_SERVER}, /* CMD_SET_ROAD_DRIVE_SIDE */
 
-	{CmdStartStopShip,                       0}, /* CMD_START_STOP_SHIP */
 	{CmdSellShip,                            0}, /* CMD_SELL_SHIP */
 	{CmdBuildShip,                           0}, /* CMD_BUILD_SHIP */
 	{CmdSendShipToDepot,                     0}, /* CMD_SEND_SHIP_TO_DEPOT */
@@ -332,6 +324,7 @@ static const Command _command_proc_table[] = {
 	{CmdChangePatchSetting,         CMD_SERVER}, /* CMD_CHANGE_PATCH_SETTING */
 	{CmdSetAutoReplace,                      0}, /* CMD_SET_AUTOREPLACE */
 	{CmdCloneVehicle,                        0}, /* CMD_CLONE_VEHICLE */
+	{CmdStartStopVehicle,                    0}, /* CMD_START_STOP_VEHICLE */
 	{CmdMassStartStopVehicle,                0}, /* CMD_MASS_START_STOP */
 	{CmdDepotSellAllVehicles,                0}, /* CMD_DEPOT_SELL_ALL_VEHICLES */
 	{CmdDepotMassAutoReplace,                0}, /* CMD_DEPOT_MASS_AUTOREPLACE */

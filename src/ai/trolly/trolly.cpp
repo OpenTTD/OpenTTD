@@ -1220,7 +1220,7 @@ static void AiNew_State_StartVehicle(Player *p)
 		AI_DoCommand(0, _players_ainew[p->index].veh_id, 1, DC_EXEC, CMD_SKIP_TO_ORDER);
 
 	// 3, 2, 1... go! (give START_STOP command ;))
-	AI_DoCommand(0, _players_ainew[p->index].veh_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
+	AI_DoCommand(0, _players_ainew[p->index].veh_id, 0, DC_EXEC, CMD_START_STOP_VEHICLE);
 	// Try to build an other vehicle (that function will stop building when needed)
 	_players_ainew[p->index].idle  = 10;
 	_players_ainew[p->index].state = AI_STATE_BUILD_VEHICLE;
