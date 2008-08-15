@@ -36,7 +36,7 @@ enum EngineClass {
 struct RailVehicleInfo {
 	byte image_index;
 	RailVehicleTypes railveh_type;
-	byte base_cost;                 ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
+	byte cost_factor;               ///< Purchase cost factor;      For multiheaded engines the sum of both engine prices.
 	RailTypeByte railtype;
 	uint16 max_speed;
 	uint16 power;                   ///< Power of engine;           For multiheaded engines the sum of both engine powers.
@@ -61,7 +61,7 @@ struct RailVehicleInfo {
 
 struct ShipVehicleInfo {
 	byte image_index;
-	byte base_cost;
+	byte cost_factor;
 	uint16 max_speed;
 	CargoID cargo_type;
 	uint16 capacity;
@@ -81,7 +81,7 @@ enum {
 
 struct AircraftVehicleInfo {
 	byte image_index;
-	byte base_cost;
+	byte cost_factor;
 	byte running_cost;
 	byte subtype;
 	SoundFxByte sfx;
@@ -93,7 +93,7 @@ struct AircraftVehicleInfo {
 
 struct RoadVehicleInfo {
 	byte image_index;
-	byte base_cost;
+	byte cost_factor;
 	byte running_cost;
 	byte running_cost_class;
 	SoundFxByte sfx;

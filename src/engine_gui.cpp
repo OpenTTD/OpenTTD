@@ -135,7 +135,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 1 : 0;
 
-	SetDParam(0, (_price.build_railvehicle >> 3) * GetEngineProperty(engine, 0x17, rvi->base_cost) >> 5);
+	SetDParam(0, (_price.build_railvehicle >> 3) * GetEngineProperty(engine, 0x17, rvi->cost_factor) >> 5);
 	SetDParam(2, GetEngineProperty(engine, 0x09, rvi->max_speed) * 10 / 16);
 	SetDParam(3, GetEngineProperty(engine, 0x0B, rvi->power));
 	SetDParam(1, GetEngineProperty(engine, 0x16, rvi->weight) << multihead);
@@ -155,7 +155,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
-	SetDParam(0, (_price.aircraft_base >> 3) * GetEngineProperty(engine, 0x0B, avi->base_cost) >> 5);
+	SetDParam(0, (_price.aircraft_base >> 3) * GetEngineProperty(engine, 0x0B, avi->cost_factor) >> 5);
 	SetDParam(1, avi->max_speed * 10 / 16);
 	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
@@ -168,7 +168,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine);
 
-	SetDParam(0, (_price.roadveh_base >> 3) * GetEngineProperty(engine, 0x11, rvi->base_cost) >> 5);
+	SetDParam(0, (_price.roadveh_base >> 3) * GetEngineProperty(engine, 0x11, rvi->cost_factor) >> 5);
 	SetDParam(1, rvi->max_speed * 10 / 32);
 	SetDParam(2, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) >> 8);
 	SetDParam(3, rvi->cargo_type);
@@ -180,7 +180,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const ShipVehicleInfo *svi = ShipVehInfo(engine);
-	SetDParam(0, GetEngineProperty(engine, 0x0A, svi->base_cost) * (_price.ship_base >> 3) >> 5);
+	SetDParam(0, GetEngineProperty(engine, 0x0A, svi->cost_factor) * (_price.ship_base >> 3) >> 5);
 	SetDParam(1, GetEngineProperty(engine, 0x0B, svi->max_speed) * 10 / 32);
 	SetDParam(2, svi->cargo_type);
 	SetDParam(3, GetEngineProperty(engine, 0x0D, svi->capacity));

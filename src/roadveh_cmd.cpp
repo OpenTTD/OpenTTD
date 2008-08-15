@@ -134,7 +134,7 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 
 static CommandCost EstimateRoadVehCost(EngineID engine_type)
 {
-	return CommandCost(EXPENSES_NEW_VEHICLES, ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->base_cost)) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->cost_factor)) >> 5);
 }
 
 byte GetRoadVehLength(const Vehicle *v)

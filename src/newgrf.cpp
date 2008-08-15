@@ -546,7 +546,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x17: // Cost factor
-				rvi->base_cost = grf_load_byte(&buf);
+				rvi->cost_factor = grf_load_byte(&buf);
 				break;
 
 			case 0x18: // AI rank
@@ -735,7 +735,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			} break;
 
 			case 0x11: // Cost factor
-				rvi->base_cost = grf_load_byte(&buf); // ?? is it base_cost?
+				rvi->cost_factor = grf_load_byte(&buf);
 				break;
 
 			case 0x12: // SFX
@@ -833,7 +833,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x0A: // Cost factor
-				svi->base_cost = grf_load_byte(&buf); // ?? is it base_cost?
+				svi->cost_factor = grf_load_byte(&buf);
 				break;
 
 			case 0x0B: // Speed (1 unit is 0.5 kmh)
@@ -952,7 +952,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				break;
 
 			case 0x0B: // Cost factor
-				avi->base_cost = grf_load_byte(&buf); // ?? is it base_cost?
+				avi->cost_factor = grf_load_byte(&buf);
 				break;
 
 			case 0x0C: // Speed (1 unit is 8 mph, we translate to 1 unit is 1 km/h)

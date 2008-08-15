@@ -337,7 +337,7 @@ static bool ShipAccelerate(Vehicle *v)
 
 static CommandCost EstimateShipCost(EngineID engine_type)
 {
-	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->base_cost) * (_price.ship_base >> 3) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->cost_factor) * (_price.ship_base >> 3) >> 5);
 }
 
 static void ShipArrivesAt(const Vehicle* v, Station* st)

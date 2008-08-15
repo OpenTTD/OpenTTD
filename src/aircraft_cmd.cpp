@@ -228,7 +228,7 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 
 static CommandCost EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
 {
-	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine, 0x0B, avi->base_cost) * (_price.aircraft_base >> 3) >> 5);
+	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine, 0x0B, avi->cost_factor) * (_price.aircraft_base >> 3) >> 5);
 }
 
 
