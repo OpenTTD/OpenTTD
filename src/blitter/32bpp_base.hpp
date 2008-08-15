@@ -26,6 +26,7 @@ public:
 	/* virtual */ int BufferSize(int width, int height);
 	/* virtual */ void PaletteAnimate(uint start, uint count);
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation();
+	/* virtual */ int GetBytesPerPixel() { return 4; }
 
 	/**
 	 * Compose a colour based on RGB values.

@@ -28,6 +28,7 @@ public:
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation() { return Blitter::PALETTE_ANIMATION_NONE; };
 
 	/* virtual */ const char *GetName() { return "null"; }
+	/* virtual */ int GetBytesPerPixel() { return 0; }
 };
 
 class FBlitter_Null: public BlitterFactory<FBlitter_Null> {

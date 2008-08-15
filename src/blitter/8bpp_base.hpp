@@ -25,6 +25,7 @@ public:
 	/* virtual */ int BufferSize(int width, int height);
 	/* virtual */ void PaletteAnimate(uint start, uint count);
 	/* virtual */ Blitter::PaletteAnimation UsePaletteAnimation();
+	/* virtual */ int GetBytesPerPixel() { return 1; }
 };
 
 #endif /* BLITTER_8BPP_BASE_HPP */

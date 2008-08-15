@@ -119,7 +119,7 @@ void NetworkInitChatMessage()
 	_chatmsg_box.y      = 30;
 	_chatmsg_box.width  = _settings_client.gui.network_chat_box_width;
 	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * NETWORK_CHAT_LINE_HEIGHT;
-	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * sizeof(uint32));
+	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
 
 	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		_chatmsg_list[i].message[0] = '\0';
@@ -224,7 +224,7 @@ void NetworkDrawChatMessage()
 	}
 	if (width <= 0 || height <= 0) return;
 
-	assert(blitter->BufferSize(width, height) < (int)(_chatmsg_box.width * _chatmsg_box.height * sizeof(uint32)));
+	assert(blitter->BufferSize(width, height) <= (int)(_chatmsg_box.width * _chatmsg_box.height * blitter->GetBytesPerPixel()));
 
 	/* Make a copy of the screen as it is before painting (for undraw) */
 	blitter->CopyToBuffer(blitter->MoveTo(_screen.dst_ptr, x, y), _chatmessage_backup, width, height);
