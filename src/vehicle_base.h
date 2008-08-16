@@ -483,6 +483,29 @@ public:
 	 */
 	inline bool IsOrderListShared() const { return this->next_shared != NULL || this->prev_shared != NULL; };
 
+	/**
+	 * Copy certain configurations and statistics of a vehicle after successful autoreplace/renew
+	 * The function shall copy everything that cannot be copied by a command (like orders / group etc),
+	 * and that shall not be resetted for the new vehicle.
+	 * @param src The old vehicle
+	 */
+	inline void CopyVehicleConfigAndStatistics(const Vehicle *src)
+	{
+		this->unitnumber = src->unitnumber;
+
+		this->cur_order_index = src->cur_order_index;
+		this->current_order = src->current_order;
+		this->dest_tile  = src->dest_tile;
+
+		this->profit_this_year = src->profit_this_year;
+		this->profit_last_year = src->profit_last_year;
+
+		this->current_order_time = src->current_order_time;
+		this->lateness_counter = src->lateness_counter;
+
+		this->service_interval = src->service_interval;
+	}
+
 	bool NeedsAutorenewing(const Player *p) const;
 
 	/**

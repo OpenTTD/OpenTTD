@@ -247,6 +247,20 @@ static inline Vehicle *GetNextVehicle(const Vehicle *v)
 	return v->Next();
 }
 
+/** Get the previous real (non-articulated part) vehicle in the consist.
+ * @param w Vehicle.
+ * @return Previous vehicle in the consist.
+ */
+static inline Vehicle *GetPrevVehicle(const Vehicle *w)
+{
+	assert(w->type == VEH_TRAIN);
+
+	Vehicle *v = w->Previous();
+	while (v != NULL && IsArticulatedPart(v)) v = v->Previous();
+
+	return v;
+}
+
 /** Get the next real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
  * @param v Vehicle.
  * @return Next vehicle in the consist.
@@ -256,6 +270,19 @@ static inline Vehicle *GetNextUnit(Vehicle *v)
 	assert(v->type == VEH_TRAIN);
 	v = GetNextVehicle(v);
 	if (v != NULL && IsRearDualheaded(v)) v = GetNextVehicle(v);
+
+	return v;
+}
+
+/** Get the previous real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
+ * @param v Vehicle.
+ * @return Previous vehicle in the consist.
+ */
+static inline Vehicle *GetPrevUnit(Vehicle *v)
+{
+	assert(v->type == VEH_TRAIN);
+	v = GetPrevVehicle(v);
+	if (v != NULL && IsRearDualheaded(v)) v = GetPrevVehicle(v);
 
 	return v;
 }

@@ -101,6 +101,19 @@ public:
 	}
 
 	/**
+	 * Returns the error message of a command
+	 * @return the error message, if succeeded INVALID_STRING_ID
+	 */
+	StringID GetErrorMessage() const
+	{
+		extern StringID _error_message;
+
+		if (this->success) return INVALID_STRING_ID;
+		if (this->message != INVALID_STRING_ID) return this->message;
+		return _error_message;
+	}
+
+	/**
 	 * Did this command succeed?
 	 * @return true if and only if it succeeded
 	 */
@@ -259,6 +272,7 @@ enum {
 	CMD_CLONE_VEHICLE,                ///< clone a vehicle
 	CMD_START_STOP_VEHICLE,           ///< start or stop a vehicle
 	CMD_MASS_START_STOP,              ///< start/stop all vehicles (in a depot)
+	CMD_AUTOREPLACE_VEHICLE,          ///< replace/renew a vehicle while it is in a depot
 	CMD_DEPOT_SELL_ALL_VEHICLES,      ///< sell all vehicles which are in a given depot
 	CMD_DEPOT_MASS_AUTOREPLACE,       ///< force the autoreplace to take action in a given depot
 
@@ -290,7 +304,7 @@ enum {
 	DC_AI_BUILDING     = 0x020, ///< special building rules for AI
 	DC_NO_TOWN_RATING  = 0x040, ///< town rating does not disallow you from building
 	DC_BANKRUPT        = 0x080, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
-	DC_AUTOREPLACE     = 0x100, ///< autoreplace/autorenew is in progress
+	DC_AUTOREPLACE     = 0x100, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
 };
 
 /**

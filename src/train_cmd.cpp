@@ -1011,6 +1011,7 @@ static void NormaliseTrainConsist(Vehicle *v)
 /** Move a rail vehicle around inside the depot.
  * @param tile unused
  * @param flags type of operation
+ *              Note: DC_AUTOREPLACE is set when autoreplace tries to undo its modifications or moves vehicles to temporary locations inside the depot.
  * @param p1 various bitstuffed elements
  * - p1 (bit  0 - 15) source vehicle index
  * - p1 (bit 16 - 31) what wagon to put the source wagon AFTER, XXX - INVALID_VEHICLE to make a new line
@@ -1069,12 +1070,13 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	/* when moving all wagons, we can't have the same src_head and dst_head */
 	if (HasBit(p2, 0) && src_head == dst_head) return CommandCost();
 
-	{
-		int max_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
+	/* check if all vehicles in the source train are stopped inside a depot. */
+	int src_len = CheckTrainStoppedInDepot(src_head);
+	if (src_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
 
-		/* check if all vehicles in the source train are stopped inside a depot. */
-		int src_len = CheckTrainStoppedInDepot(src_head);
-		if (src_len < 0) return_cmd_error(STR_881A_TRAINS_CAN_ONLY_BE_ALTERED);
+	if ((flags & DC_AUTOREPLACE) == 0) {
+		/* Check whether there are more than 'max_len' train units (articulated parts and rear heads do not count) in the new chain */
+		int max_len = _settings_game.vehicle.mammoth_trains ? 100 : 10;
 
 		/* check the destination row if the source and destination aren't the same. */
 		if (src_head != dst_head) {
@@ -1112,7 +1114,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	/* moving a loco to a new line?, then we need to assign a unitnumber. */
 	if (dst == NULL && !IsFrontEngine(src) && IsTrainEngine(src)) {
-		UnitID unit_num = GetFreeUnitNumber(VEH_TRAIN);
+		UnitID unit_num = ((flags & DC_AUTOREPLACE) != 0 ? 0 : GetFreeUnitNumber(VEH_TRAIN));
 		if (unit_num > _settings_game.vehicle.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
@@ -1137,7 +1139,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	 * one 'attaches' an already 'attached' vehicle causing more trouble
 	 * than it actually solves (infinite loops and such).
 	 */
-	if (dst_head != NULL && !src_in_dst) {
+	if (dst_head != NULL && !src_in_dst && (flags & DC_AUTOREPLACE) == 0) {
 		/*
 		 * When performing the 'allow wagon attach' callback, we have to check
 		 * that for each and every wagon, not only the first one. This means

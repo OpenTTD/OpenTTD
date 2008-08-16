@@ -52,6 +52,30 @@ struct Randomizer {
 extern Randomizer _random; ///< Random used in the game state calculations
 extern Randomizer _interactive_random; ///< Random used every else where is does not (directly) influence the game state
 
+/** Stores the state of all random number generators */
+struct SavedRandomSeeds {
+	Randomizer random;
+	Randomizer interactive_random;
+};
+
+/** Saves the current seeds
+ * @param storage Storage for saving
+ */
+static inline void SaveRandomSeeds(SavedRandomSeeds *storage)
+{
+	storage->random = _random;
+	storage->interactive_random = _interactive_random;
+}
+
+/** Restores previously saved seeds
+ * @param storage Storage where SaveRandomSeeds() stored th seeds
+ */
+static inline void RestoreRandomSeeds(const SavedRandomSeeds &storage)
+{
+	_random = storage.random;
+	_interactive_random = storage.interactive_random;
+}
+
 void SetRandomSeed(uint32 seed);
 #ifdef RANDOM_DEBUG
 	#define Random() DoRandom(__LINE__, __FILE__)

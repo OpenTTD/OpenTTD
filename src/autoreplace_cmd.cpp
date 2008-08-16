@@ -124,6 +124,31 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 }
 
 
+/** Transfer cargo from a single (articulated )old vehicle to the new vehicle chain
+ * @param old_veh Old vehicle that will be sold
+ * @param new_head Head of the completely constructed new vehicle chain
+ */
+static void TransferCargo(Vehicle *old_veh, Vehicle *new_head)
+{
+	/* Loop through source parts */
+	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
+		if (src->cargo_type >= NUM_CARGO || src->cargo.Count() == 0) continue;
+
+		/* Find free space in the new chain */
+		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
+			if (dest->cargo_type != src->cargo_type) continue;
+
+			uint amount = min(src->cargo.Count(), dest->cargo_cap - dest->cargo.Count());
+			if (amount <= 0) continue;
+
+			src->cargo.MoveTo(&dest->cargo, amount);
+		}
+	}
+
+	/* Update train weight etc., the old vehicle will be sold anyway */
+	if (new_head->type == VEH_TRAIN) TrainConsistChanged(new_head, true);
+}
+
 /**
  * Tests whether refit orders that applied to v will also apply to the new vehicle type
  * @param v The vehicle to be replaced
@@ -588,5 +613,370 @@ CommandCost MaybeReplaceVehicle(Vehicle *v, uint32 flags, bool display_costs)
 	/* Start the vehicle if we stopped it earlier */
 	if (stopped) v->vehstatus &= ~VS_STOPPED;
 
+	return cost;
+}
+
+/** Builds and refits a replacement vehicle
+ * Important: The old vehicle is still in the original vehicle chain (used for determining the cargo when the old vehicle did not carry anything, but the new one does)
+ * @param old_veh A single (articulated/multiheaded) vehicle that shall be replaced.
+ * @param new_vehicle Returns the newly build and refittet vehicle
+ * @return cost or error
+ */
+static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehicle)
+{
+	*new_vehicle = NULL;
+
+	/* Shall the vehicle be replaced? */
+	const Player *p = GetPlayer(_current_player);
+	EngineID e = GetNewEngineType(old_veh, p);
+	if (e == INVALID_ENGINE) return CommandCost(); // neither autoreplace is set, nor autorenew is triggered
+
+	/* Does it need to be refitted */
+	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e);
+	if (refit_cargo == CT_INVALID) return CommandCost(); // incompatible cargos
+
+	/* Build the new vehicle */
+	CommandCost cost = DoCommand(old_veh->tile, e, 0, DC_EXEC | DC_AUTOREPLACE, GetCmdBuildVeh(old_veh));
+	if (cost.Failed()) return cost;
+
+	Vehicle *new_veh = GetVehicle(_new_vehicle_id);
+	*new_vehicle = new_veh;
+
+	/* Refit the vehicle if needed */
+	if (refit_cargo != CT_NO_REFIT) {
+		cost.AddCost(DoCommand(0, new_veh->index, refit_cargo, DC_EXEC, GetCmdRefitVeh(new_veh)));
+		assert(cost.Succeeded()); // This should be ensured by GetNewCargoTypeForReplace()
+	}
+
+	/* Try to reverse the vehicle, but do not care if it fails as the new type might not be reversible */
+	if (new_veh->type == VEH_TRAIN && HasBit(old_veh->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+		DoCommand(0, new_veh->index, true, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
+	}
+
+	return cost;
+}
+
+/** Issue a start/stop command
+ * @param v a vehicle
+ * @param evaluate_callback shall the start/stop callback be evaluated?
+ * @return success or error
+ */
+static inline CommandCost StartStopVehicle(const Vehicle *v, bool evaluate_callback)
+{
+	return DoCommand(0, v->index, evaluate_callback ? 1 : 0, DC_EXEC | DC_AUTOREPLACE, CMD_START_STOP_VEHICLE);
+}
+
+/** Issue a train vehicle move command
+ * @param v The vehicle to move
+ * @param after The vehicle to insert 'v' after, or NULL to start new chain
+ * @param whole_chain move all vehicles following 'v' (true), or only 'v' (false)
+ * @return success or error
+ */
+static inline CommandCost MoveVehicle(const Vehicle *v, const Vehicle *after, uint32 flags, bool whole_chain)
+{
+	return DoCommand(0, v->index | (after != NULL ? after->index : INVALID_VEHICLE) << 16, whole_chain ? 1 : 0, flags, CMD_MOVE_RAIL_VEHICLE);
+}
+
+/** Copy head specific things to the new vehicle chain after it was successfully constructed
+ * @param old_head The old front vehicle (no wagons attached anymore)
+ * @param new_head The new head of the completely replaced vehicle chain
+ * @param flags the command flags to use
+ */
+static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, uint32 flags)
+{
+	CommandCost cost = CommandCost();
+
+	/* Share orders */
+	if (cost.Succeeded() && old_head != new_head) cost.AddCost(DoCommand(0, (old_head->index << 16) | new_head->index, CO_SHARE, DC_EXEC, CMD_CLONE_ORDER));
+
+	/* Copy group membership */
+	if (cost.Succeeded() && old_head != new_head) cost.AddCost(DoCommand(0, old_head->group_id, new_head->index, DC_EXEC, CMD_ADD_VEHICLE_GROUP));
+
+	/* Perform start/stop check whether the new vehicle suits newgrf restrictions etc. */
+	if (cost.Succeeded()) {
+		/* Start the vehicle, might be denied by certain things */
+		assert((new_head->vehstatus & VS_STOPPED) != 0);
+		cost.AddCost(StartStopVehicle(new_head, true));
+
+		/* Stop the vehicle again, but do not care about evil newgrfs allowing starting but not stopping :p */
+		if (cost.Succeeded()) cost.AddCost(StartStopVehicle(new_head, false));
+	}
+
+	/* Last do those things which do never fail (resp. we do not care about), but which are not undo-able */
+	if (cost.Succeeded() && old_head != new_head && (flags & DC_EXEC) != 0) {
+		/* Copy vehicle name */
+		if (old_head->name != NULL) {
+			_cmd_text = old_head->name;
+			DoCommand(0, new_head->index, 0, DC_EXEC | DC_AUTOREPLACE, CMD_NAME_VEHICLE);
+			_cmd_text = NULL;
+		}
+
+		/* Copy other things which cannot be copied by a command and which shall not stay resetted from the build vehicle command */
+		new_head->CopyVehicleConfigAndStatistics(old_head);
+
+		/* Switch vehicle windows to the new vehicle, so they are not closed when the old vehicle is sold */
+		ChangeVehicleViewWindow(old_head->index, new_head->index);
+	}
+
+	return cost;
+}
+
+/** Replace a whole vehicle chain
+ * @param chain vehicle chain to let autoreplace/renew operator on
+ * @param flags command flags
+ * @param wagon_removal remove wagons when the resulting chain occupies more tiles than the old did
+ * @param nothing_to_do is set to 'false' when something was done (only valid when not failed)
+ * @return cost or error
+ */
+static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_removal, bool *nothing_to_do)
+{
+	Vehicle *old_head = *chain;
+
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
+
+	if (old_head->type == VEH_TRAIN) {
+		/* Store the length of the old vehicle chain, rounded up to whole tiles */
+		uint16 old_total_length = (old_head->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE * TILE_SIZE;
+
+		int num_units = 0; ///< Number of units in the chain
+		for (Vehicle *w = old_head; w != NULL; w = GetNextUnit(w)) num_units++;
+
+		Vehicle **old_vehs = CallocT<Vehicle *>(num_units); ///< Will store vehicles of the old chain in their order
+		Vehicle **new_vehs = CallocT<Vehicle *>(num_units); ///< New vehicles corresponding to old_vehs or NULL if no replacement
+		Money *new_costs = MallocT<Money>(num_units);       ///< Costs for buying and refitting the new vehicles
+
+		/* Collect vehicles and build replacements
+		 * Note: The replacement vehicles can only successfully build as long as the old vehicles are still in their chain */
+		int i;
+		Vehicle *w;
+		for (w = old_head, i = 0; w != NULL; w = GetNextUnit(w), i++) {
+			assert(i < num_units);
+			old_vehs[i] = w;
+
+			CommandCost ret = BuildReplacementVehicle(old_vehs[i], &new_vehs[i]);
+			cost.AddCost(ret);
+			if (cost.Failed()) break;
+
+			new_costs[i] = ret.GetCost();
+			if (new_vehs[i] != NULL) *nothing_to_do = false;
+		}
+		Vehicle *new_head = (new_vehs[0] != NULL ? new_vehs[0] : old_vehs[0]);
+
+		/* Separate the head, so we can start constructing the new chain */
+		if (cost.Succeeded()) {
+			Vehicle *second = GetNextUnit(old_head);
+			if (second != NULL) cost.AddCost(MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true));
+
+			assert(GetNextUnit(new_head) == NULL);
+		}
+
+		/* Append engines to the new chain
+		 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
+		 * OTOH the vehicle attach callback is more expensive this way :s */
+		Vehicle *last_engine = NULL; ///< Shall store the last engine unit after this step
+		if (cost.Succeeded()) {
+			for (int i = num_units - 1; i > 0; i--) {
+				Vehicle *append = (new_vehs[i] != NULL ? new_vehs[i] : old_vehs[i]);
+
+				if (RailVehInfo(append->engine_type)->railveh_type == RAILVEH_WAGON) continue;
+
+				if (last_engine == NULL) last_engine = append;
+				cost.AddCost(MoveVehicle(append, new_head, DC_EXEC, false));
+				if (cost.Failed()) break;
+			}
+			if (last_engine == NULL) last_engine = new_head;
+		}
+
+		/* When wagon removal is enabled and the new engines without any wagons are already longer than the old, we have to fail */
+		if (cost.Succeeded() && wagon_removal && new_head->u.rail.cached_total_length > old_total_length) cost = CommandCost(STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT);
+
+		/* Append/insert wagons into the new vehicle chain
+		 * We do this from back to front, so we can stop when wagon removal or maximum train length (i.e. from mammoth-train setting) is triggered.
+		 */
+		if (cost.Succeeded()) {
+			for (int i = num_units - 1; i > 0; i--) {
+				assert(last_engine != NULL);
+				Vehicle *append = (new_vehs[i] != NULL ? new_vehs[i] : old_vehs[i]);
+
+				if (RailVehInfo(append->engine_type)->railveh_type == RAILVEH_WAGON) {
+					/* Insert wagon after 'last_engine' */
+					CommandCost res = MoveVehicle(append, last_engine, DC_EXEC, false);
+
+					if (res.Succeeded() && wagon_removal && new_head->u.rail.cached_total_length > old_total_length) {
+						MoveVehicle(append, NULL, DC_EXEC | DC_AUTOREPLACE, false);
+						break;
+					}
+
+					cost.AddCost(res);
+					if (cost.Failed()) break;
+				} else {
+					/* We have reached 'last_engine', continue with the next engine towards the front */
+					assert(append == last_engine);
+					last_engine = GetPrevUnit(last_engine);
+				}
+			}
+		}
+
+		/* Sell superfluous new vehicles that could not be inserted. */
+		if (cost.Succeeded() && wagon_removal) {
+			for (int i = 1; i < num_units; i++) {
+				Vehicle *wagon = new_vehs[i];
+				if (wagon == NULL) continue;
+				if (wagon->First() == new_head) break;
+
+				assert(RailVehInfo(wagon->engine_type)->railveh_type == RAILVEH_WAGON);
+
+				/* Sell wagon */
+				CommandCost ret = DoCommand(0, wagon->index, 0, DC_EXEC, GetCmdSellVeh(wagon));
+				assert(ret.Succeeded());
+				new_vehs[i] = NULL;
+
+				/* Revert the money subtraction when the vehicle was built.
+				 * This value is different from the sell value, esp. because of refitting */
+				cost.AddCost(-new_costs[i]);
+			}
+		}
+
+		/* The new vehicle chain is constructed, now take over orders and everything... */
+		if (cost.Succeeded()) cost.AddCost(CopyHeadSpecificThings(old_head, new_head, flags));
+
+		if (cost.Succeeded()) {
+			/* Success ! */
+			if ((flags & DC_EXEC) != 0 && new_head != old_head) {
+				*chain = new_head;
+			}
+
+			/* Transfer cargo of old vehicles and sell them*/
+			for (int i = 0; i < num_units; i++) {
+				Vehicle *w = old_vehs[i];
+				/* Is the vehicle again part of the new chain?
+				 * Note: We cannot test 'new_vehs[i] != NULL' as wagon removal might cause to remove both */
+				if (w->First() == new_head) continue;
+
+				if ((flags & DC_EXEC) != 0) TransferCargo(w, new_head);
+
+				cost.AddCost(DoCommand(0, w->index, 0, flags, GetCmdSellVeh(w)));
+				if ((flags & DC_EXEC) != 0) {
+					old_vehs[i] = NULL;
+					if (i == 0) old_head = NULL;
+				}
+			}
+		}
+
+		/* If we are not in DC_EXEC undo everything */
+		if ((flags & DC_EXEC) == 0) {
+			/* Separate the head, so we can reattach the old vehicles */
+			Vehicle *second = GetNextUnit(old_head);
+			if (second != NULL) MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true);
+
+			assert(GetNextUnit(old_head) == NULL);
+
+			/* Rearrange old vehicles and sell new
+			 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
+			 * Note: The vehicle attach callback is disabled here :) */
+
+			for (int i = num_units - 1; i >= 0; i--) {
+				if (i > 0) {
+					CommandCost ret = MoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
+					assert(ret.Succeeded());
+				}
+				if (new_vehs[i] != NULL) {
+					DoCommand(0, new_vehs[i]->index, 0, DC_EXEC, GetCmdSellVeh(new_vehs[i]));
+					new_vehs[i] = NULL;
+				}
+			}
+		}
+
+		free(old_vehs);
+		free(new_vehs);
+		free(new_costs);
+	} else {
+		/* Build and refit replacement vehicle */
+		Vehicle *new_head = NULL;
+		cost.AddCost(BuildReplacementVehicle(old_head, &new_head));
+
+		/* Was a new vehicle constructed? */
+		if (cost.Succeeded() && new_head != NULL) {
+			*nothing_to_do = false;
+
+			/* The new vehicle is constructed, now take over orders and everything... */
+			cost.AddCost(CopyHeadSpecificThings(old_head, new_head, flags));
+
+			if (cost.Succeeded()) {
+				/* The new vehicle is constructed, now take over cargo */
+				if ((flags & DC_EXEC) != 0) {
+					TransferCargo(old_head, new_head);
+					*chain = new_head;
+				}
+
+				/* Sell the old vehicle */
+				cost.AddCost(DoCommand(0, old_head->index, 0, flags, GetCmdSellVeh(old_head)));
+			}
+
+			/* If we are not in DC_EXEC undo everything */
+			if ((flags & DC_EXEC) == 0) {
+				DoCommand(0, new_head->index, 0, DC_EXEC, GetCmdSellVeh(new_head));
+			}
+		}
+	}
+
+	return cost;
+}
+
+/** Autoreplace a vehicles
+ * @param tile not used
+ * @param flags type of operation
+ * @param p1 Index of vehicle
+ * @param p2 not used
+ */
+CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
+	bool nothing_to_do = true;
+
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	Vehicle *v = GetVehicle(p1);
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!v->IsInDepot()) return CMD_ERROR;
+	if (HASBITS(v->vehstatus, VS_CRASHED)) return CMD_ERROR;
+
+	const Player *p = GetPlayer(_current_player);
+	bool wagon_removal = p->renew_keep_length;
+
+	/* Test whether any replacement is set, before issuing a whole lot of commands that would end in nothing changed */
+	Vehicle *w = v;
+	bool any_replacements = false;
+	while (w != NULL && !any_replacements) {
+		any_replacements = (GetNewEngineType(w, p) != INVALID_ENGINE);
+		w = (w->type == VEH_TRAIN ? GetNextUnit(w) : NULL);
+	}
+
+	if (any_replacements) {
+		bool was_stopped = (v->vehstatus & VS_STOPPED) != 0;
+
+		/* Stop the vehicle */
+		if (!was_stopped) cost.AddCost(StartStopVehicle(v, true));
+		if (cost.Failed()) return cost;
+
+		assert(v->IsStoppedInDepot());
+
+		/* We have to construct the new vehicle chain to test whether it is valid.
+		 * Vehicle construction needs random bits, so we have to save the random seeds
+		 * to prevent desyncs and to replay newgrf callbacks during DC_EXEC */
+		SavedRandomSeeds saved_seeds;
+		SaveRandomSeeds(&saved_seeds);
+		cost.AddCost(ReplaceChain(&v, flags & ~DC_EXEC, wagon_removal, &nothing_to_do));
+		RestoreRandomSeeds(saved_seeds);
+
+		if (cost.Succeeded() && (flags & DC_EXEC) != 0) {
+			CommandCost ret = ReplaceChain(&v, flags, wagon_removal, &nothing_to_do);
+			assert(ret.Succeeded() && ret.GetCost() == cost.GetCost());
+		}
+
+		/* Restart the vehicle */
+		if (!was_stopped) cost.AddCost(StartStopVehicle(v, false));
+	}
+
+	if (cost.Succeeded() && nothing_to_do) cost = CommandCost(STR_AUTOREPLACE_NOTHING_TO_DO);
 	return cost;
 }

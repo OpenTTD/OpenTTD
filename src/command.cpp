@@ -179,6 +179,7 @@ DEF_COMMAND(CmdSetAutoReplace);
 DEF_COMMAND(CmdCloneVehicle);
 DEF_COMMAND(CmdStartStopVehicle);
 DEF_COMMAND(CmdMassStartStopVehicle);
+DEF_COMMAND(CmdAutoreplaceVehicle);
 DEF_COMMAND(CmdDepotSellAllVehicles);
 DEF_COMMAND(CmdDepotMassAutoReplace);
 
@@ -326,6 +327,7 @@ static const Command _command_proc_table[] = {
 	{CmdCloneVehicle,                        0}, /* CMD_CLONE_VEHICLE */
 	{CmdStartStopVehicle,                    0}, /* CMD_START_STOP_VEHICLE */
 	{CmdMassStartStopVehicle,                0}, /* CMD_MASS_START_STOP */
+	{CmdAutoreplaceVehicle,                  0}, /* CMD_AUTOREPLACE_VEHICLE */
 	{CmdDepotSellAllVehicles,                0}, /* CMD_DEPOT_SELL_ALL_VEHICLES */
 	{CmdDepotMassAutoReplace,                0}, /* CMD_DEPOT_MASS_AUTOREPLACE */
 	{CmdCreateGroup,                         0}, /* CMD_CREATE_GROUP */

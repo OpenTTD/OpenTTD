@@ -717,7 +717,47 @@ void CallVehicleTicks()
 				v->leave_depot_instantly = false;
 				v->vehstatus &= ~VS_STOPPED;
 			}
-			MaybeReplaceVehicle(v, DC_EXEC, true);
+
+			/* Store the position of the effect as the vehicle pointer will become invalid later */
+			int x = v->x_pos;
+			int y = v->y_pos;
+			int z = v->z_pos;
+
+			const Player *p = GetPlayer(_current_player);
+			SubtractMoneyFromPlayer(CommandCost(EXPENSES_NEW_VEHICLES, (Money)p->engine_renew_money));
+			CommandCost res = DoCommand(0, v->index, 0, DC_EXEC, CMD_AUTOREPLACE_VEHICLE);
+			if (res.Succeeded()) v = NULL; // no longer valid
+			SubtractMoneyFromPlayer(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)p->engine_renew_money));
+
+			if (IsLocalPlayer()) {
+				if (res.Succeeded()) {
+					ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
+				} else {
+					StringID error_message = res.GetErrorMessage();
+
+					if (error_message != STR_AUTOREPLACE_NOTHING_TO_DO && error_message != INVALID_STRING_ID) {
+						if (error_message == STR_0003_NOT_ENOUGH_CASH_REQUIRES) error_message = STR_AUTOREPLACE_MONEY_LIMIT;
+
+						StringID message;
+						if (error_message == STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
+							message = error_message;
+						} else {
+							switch (v->type) {
+								case VEH_TRAIN:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
+								case VEH_ROAD:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
+								case VEH_SHIP:     message = STR_SHIP_AUTORENEW_FAILED;        break;
+								case VEH_AIRCRAFT: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
+								default: NOT_REACHED();
+							}
+						}
+
+						SetDParam(0, v->unitnumber);
+						SetDParam(1, error_message);
+						AddNewsItem(message, NS_ADVICE, v->index, 0);
+					}
+				}
+			}
+
 			v = w;
 		}
 		_current_player = OWNER_NONE;
@@ -982,11 +1022,14 @@ void AgeVehicle(Vehicle *v)
  * @param tile unused
  * @param flags type of operation
  * @param p1 vehicle to start/stop
- * @param p2 unused
+ * @param p2 bit 0: Shall the start/stop newgrf callback be evaluated (only valid with DC_AUTOREPLACE for network safety)
  * @return result of operation.  Nothing if everything went well
  */
 CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
+	/* Disable the effect of p2 bit 0, when DC_AUTOREPLACE is not set */
+	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
+
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
@@ -1013,7 +1056,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	/* Check if this vehicle can be started/stopped. The callback will fail or
 	 * return 0xFF if it can. */
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF) {
+	if (callback != CALLBACK_FAILED && GB(callback, 0, 8) != 0xFF && HasBit(p2, 0)) {
 		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
 		return_cmd_error(error);
 	}
@@ -1033,7 +1076,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			WC_AIRCRAFT_LIST,
 		};
 
-		if (v->IsStoppedInDepot()) DeleteVehicleNews(p1, vehicle_waiting_in_depot[v->type]);
+		if (v->IsStoppedInDepot() && (flags & DC_AUTOREPLACE) == 0) DeleteVehicleNews(p1, vehicle_waiting_in_depot[v->type]);
 
 		v->vehstatus ^= VS_STOPPED;
 		v->cur_speed = 0;
@@ -1153,18 +1196,21 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
 
+	bool did_something = false;
+
 	for (uint i = 0; i < list.Length(); i++) {
 		Vehicle *v = (Vehicle*)list[i];
 
 		/* Ensure that the vehicle completely in the depot */
 		if (!v->IsInDepot()) continue;
 
-		CommandCost ret = MaybeReplaceVehicle(v, flags, false);
+		CommandCost ret = DoCommand(0, v->index, 0, flags, CMD_AUTOREPLACE_VEHICLE);
 
 		if (CmdSucceeded(ret)) {
+			did_something = true;
 			cost.AddCost(ret);
 		} else {
-			if (all_or_nothing) {
+			if (ret.GetErrorMessage() != STR_AUTOREPLACE_NOTHING_TO_DO && all_or_nothing) {
 				/* We failed to replace a vehicle even though we set all or nothing.
 				 * We should never reach this if DC_EXEC is set since then it should
 				 * have failed the estimation guess. */
@@ -1175,7 +1221,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 		}
 	}
 
-	if (cost.GetCost() == 0) {
+	if (!did_something) {
 		/* Either we didn't replace anything or something went wrong.
 		 * Either way we want to return an error and not execute this command. */
 		cost = CMD_ERROR;
@@ -1567,7 +1613,7 @@ CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (!IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	if ((flags & DC_AUTOREPLACE) == 0 && !IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 
 	if (flags & DC_EXEC) {
 		free(v->name);
