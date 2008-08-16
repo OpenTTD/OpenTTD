@@ -1019,9 +1019,10 @@ struct DepotWindow : Window {
 		if (this->sel != INVALID_VEHICLE) {
 			_cursor.vehchain = _ctrl_pressed;
 			this->InvalidateWidget(DEPOT_WIDGET_MATRIX);
+			return ES_HANDLED;
 		}
 
-		return ES_HANDLED;
+		return ES_NOT_HANDLED;
 	}
 };
 
