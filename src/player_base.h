@@ -92,18 +92,6 @@ static inline bool IsValidPlayerID(PlayerID index)
 #define FOR_ALL_PLAYERS_FROM(d, start) for (d = GetPlayer(start); d != NULL; d = (d->index + 1U < GetPlayerPoolSize()) ? GetPlayer(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_PLAYERS(d) FOR_ALL_PLAYERS_FROM(d, 0)
 
-struct PlayerMoneyBackup {
-private:
-	Money backup_yearly_expenses[EXPENSES_END];
-	PlayerEconomyEntry backup_cur_economy;
-	Player *p;
-
-public:
-	PlayerMoneyBackup(Player *player);
-
-	void Restore();
-};
-
 static inline byte ActivePlayerCount()
 {
 	const Player *p;
