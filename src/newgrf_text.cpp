@@ -239,8 +239,8 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 			case 0x80: d += Utf8Encode(d, SCC_NEWGRF_PRINT_DWORD + c - 0x7B); break;
 			case 0x81: {
 				StringID string;
-				string  = *str++;
-				string |= *str++ << 8;
+				string  = ((uint8)*str++);
+				string |= ((uint8)*str++) << 8;
 				d += Utf8Encode(d, SCC_STRING_ID);
 				d += Utf8Encode(d, MapGRFStringID(grfid, string));
 				break;
@@ -271,14 +271,22 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 			case 0x9A:
 				switch (*str++) {
 					case 0: /* FALL THROUGH */
-					case 1: d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY); break;
+					case 1:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_QWORD_CURRENCY);
+						break;
 					case 3: {
-						uint16 tmp = *str++;
-						tmp |= (*str++) << 8;
-						d += Utf8Encode(d, SCC_NEWGRF_PUSH_WORD); d += Utf8Encode(d, tmp);
+						uint16 tmp  = ((uint8)*str++);
+						tmp        |= ((uint8)*str++) << 8;
+						d += Utf8Encode(d, SCC_NEWGRF_PUSH_WORD);
+						d += Utf8Encode(d, tmp);
 					} break;
-					case 4: d += Utf8Encode(d, SCC_NEWGRF_UNPRINT); d += Utf8Encode(d, *str++); break;
-					default: grfmsg(1, "missing handler for extended format code"); break;
+					case 4:
+						d += Utf8Encode(d, SCC_NEWGRF_UNPRINT);
+						d += Utf8Encode(d, *str++);
+						break;
+					default:
+						grfmsg(1, "missing handler for extended format code");
+						break;
 				}
 				break;
 
