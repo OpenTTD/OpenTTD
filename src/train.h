@@ -255,7 +255,7 @@ static inline Vehicle *GetNextUnit(Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
 	v = GetNextVehicle(v);
-	if (v != NULL && IsRearDualheaded(v)) v = v->Next();
+	if (v != NULL && IsRearDualheaded(v)) v = GetNextVehicle(v);
 
 	return v;
 }
